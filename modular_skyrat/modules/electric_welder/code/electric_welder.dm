@@ -11,6 +11,8 @@
 	power_use_amount = POWER_CELL_USE_LOW
 	var/cell_override = /obj/item/stock_parts/cell/high
 	var/powered = FALSE
+	/// Should fix runtimes?
+	var/icon/overlay_icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	max_fuel = 20
 
 /obj/item/weldingtool/electric/ComponentInitialize()
@@ -76,10 +78,11 @@
 /obj/item/weldingtool/electric/handle_fuel_and_temps(used = 0, mob/living/user)
 	return
 
+
 /obj/item/weldingtool/electric/update_overlays()
 	. = ..()
 	if(powered)
-		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/tools.dmi', "elwelder_on")
+		. += mutable_appearance(icon/overlay_icon, "elwelder_on")
 
 /obj/item/weldingtool/electric/examine()
 	. = ..()
