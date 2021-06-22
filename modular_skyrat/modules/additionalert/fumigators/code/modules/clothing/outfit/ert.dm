@@ -21,9 +21,9 @@
 	name = "Fumigator Leader"
 
 	id = /obj/item/card/id/advanced/centcom/ert
-	suit =  /obj/item/clothing/suit/apron/waders
+	suit =  /obj/item/clothing/suit/bio_suit/scientist
 	glasses = /obj/item/clothing/glasses/biker
-	head = /obj/item/clothing/head/soft/red
+	head = /obj/item/clothing/head/bio_hood/scientist
 	mask = /obj/item/clothing/mask/breathmuzzle/speak
 	uniform = /obj/item/clothing/under/rank/civilian/hydroponics
 	gloves = /obj/item/clothing/gloves/botanic_leather
