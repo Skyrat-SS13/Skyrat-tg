@@ -181,7 +181,7 @@
 	if(user.owned_turf.name in no_trail)
 		QDEL_NULL(src)
 	if(user.owned_turf.name in long_trail)
-		QDEL_IN(src, 60 SECONDS)
+		QDEL_IN(src, 150 SECONDS)
 		user.owned_turf = null
 	else
 		QDEL_IN(src, 15 SECONDS)
