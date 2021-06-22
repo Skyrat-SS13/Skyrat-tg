@@ -504,10 +504,6 @@
 /datum/loadout_item/uniform/sweater
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SWEATERS
 
-/datum/loadout_item/uniform/sweater/turtleneck
-	name = "Tactitool Turtleneck"
-	path = /obj/item/clothing/under/syndicate/tacticool
-
 /datum/loadout_item/uniform/sweater/tactical1
 	name = "Irish Tactical Sweater"
 	path = /obj/item/clothing/under/misc/tactical1
@@ -515,10 +511,6 @@
 /datum/loadout_item/uniform/sweater/tactical2
 	name = "British Tactical Sweater"
 	path = /obj/item/clothing/under/uvf
-
-/datum/loadout_item/uniform/sweater/turtleneck/skirt
-	name = "Tactitool Skirtleneck"
-	path = /obj/item/clothing/under/syndicate/tacticool/skirt
 
 /datum/loadout_item/uniform/sweater/creamsweater
 	name = "Cream Commando Sweater"
