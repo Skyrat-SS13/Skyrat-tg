@@ -1,10 +1,9 @@
 //File for miscellaneous fluff objects, both item and structure
 //This one is specifically for ruin-specific items, such as ID, lore, or super-specific decorations
 
-
 /* ----------------- ID Cards ----------------- */
-/obj/item/card/id/away/old/salvagepod	//WIP
-	name = "Cutter's Pod Access Card"	//Used for salvagepost ruin access
+/obj/item/card/id/away/old/salvagepod	//Used for salvagepost ruin access	-- NOT WORKING YET REE
+	name = "Cutter's Pod Access Card"
 	desc = "An ancient access card with the words \"Cutter's Pod\" printed on in big bold letters. It'll be a miracle if this still works."
 	trim = /datum/id_trim/away/old/eng
 
@@ -57,8 +56,7 @@
 	timestamp_otherside = list()
 
 /* ----------------- Fluff/Decor ----------------- */
-//Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, AWAKENED AIs
-/obj/structure/decorative/fluff/ai_node
+/obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
 	name = "ai node"
 	desc = "A mysterious, blinking device, attached straight to a surface. It's function is beyond you."
