@@ -52,7 +52,7 @@
 	inhand_icon_state = "bl_suit"
 	has_sensor = HAS_SENSORS //SKYRAT EDIT - ADDITION
 	//armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 40) //SKYRAT EDIT - REMOVAL
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0) // SKYRAT EDIT
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0) // SKYRAT EDIT - ADDITION
 	fitted = FEMALE_UNIFORM_TOP
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 
