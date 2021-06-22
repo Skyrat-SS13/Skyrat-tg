@@ -1,6 +1,6 @@
 /datum/ert/weedkiller
-	roles = list(/datum/antagonist/ert/pizza)
-	leader_role = /datum/antagonist/ert/pizza/leader
+	roles = list(/datum/antagonist/ert/weedkiller)
+	leader_role = /datum/antagonist/ert/weedkiller/leader
 	rename_team = "ERT Pest Control"
 	code = "Green"
 	mission = "Clear out all insects, weeds and or vines."
