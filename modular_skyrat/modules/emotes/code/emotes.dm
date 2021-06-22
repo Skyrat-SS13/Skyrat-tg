@@ -107,7 +107,9 @@
 
 /datum/emote/living/awoo/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	SEND_SOUND(user, sound('modular_skyrat/modules/emotes/sound/voice/awoo.ogg'))
+	for(var/i in view(1, user))
+		var/mob/user_to_play_to = i
+		user_to_play_to.playsound_local(user, 'modular_skyrat/modules/emotes/sound/voice/awoo.ogg')
 
 /datum/emote/living/nya
 	key = "nya"
@@ -118,7 +120,9 @@
 
 /datum/emote/living/nya/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	SEND_SOUND(user, sound('modular_skyrat/modules/emotes/sound/voice/nya.ogg'))
+	for(var/i in view(1, user))
+		var/mob/user_to_play_to = i
+		user_to_play_to.playsound_local(user, 'modular_skyrat/modules/emotes/sound/voice/nya.ogg')
 
 /datum/emote/living/weh
 	key = "weh"
@@ -341,9 +345,9 @@
 	vary = TRUE
 
 /datum/emote/living/bork/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	SEND_SOUND(user, sound('modular_skyrat/modules/emotes/sound/voice/bork.ogg'))
-
+	for(var/i in view(1, user))
+		var/mob/user_to_play_to = i
+		user_to_play_to.playsound_local(user, 'modular_skyrat/modules/emotes/sound/voice/bork.ogg')
 /datum/emote/living/hoot
 	key = "hoot"
 	key_third_person = "hoots"
@@ -371,8 +375,9 @@
 
 /datum/emote/living/woof/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	SEND_SOUND(user, sound('modular_skyrat/modules/emotes/sound/voice/woof.ogg'))
-
+	for(var/i in view(1, user))
+		var/mob/user_to_play_to = i
+		user_to_play_to.playsound_local(user, 'modular_skyrat/modules/emotes/sound/voice/woof.ogg')
 
 /datum/emote/living/baa
 	key = "baa"
@@ -408,8 +413,9 @@
 
 /datum/emote/living/awoo2/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	SEND_SOUND(user, sound('modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'))
-
+	for(var/i in view(1, user))
+		var/mob/user_to_play_to = i
+		user_to_play_to.playsound_local(user, 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg')
 
 /datum/emote/living/rattle
 	key = "rattle"
