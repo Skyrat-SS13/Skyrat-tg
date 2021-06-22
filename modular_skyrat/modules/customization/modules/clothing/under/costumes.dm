@@ -98,7 +98,7 @@
 
 /obj/item/clothing/under/syndicate/tacticool/sensors
 	name = "tacticool turtleneck"
-	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
+	desc = "A classic turtleneck and pants combo, now with added suit sensors for use with related networks."
 	icon_state = "tactifool"
 	inhand_icon_state = "bl_suit"
 	has_sensor = HAS_SENSORS
@@ -106,7 +106,7 @@
 
 /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
 	name = "tacticool skirtleneck"
-	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
+	desc = "A classic turtleneck and skirt combo, now with added suit sensors for use with related networks."
 	icon_state = "tactifool_skirt"
 	inhand_icon_state = "bl_suit"
 	has_sensor = HAS_SENSORS
