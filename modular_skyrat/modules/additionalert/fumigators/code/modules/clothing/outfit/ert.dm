@@ -1,4 +1,4 @@
-/datum/outfit/centcom/ert/weedkiller
+/datum/outfit/ert/weedkiller
 	name = "Fumigator"
 	id = /obj/item/card/id/advanced/centcom/ert
 	suit =  /obj/item/clothing/suit/apron/waders
@@ -17,7 +17,7 @@
 		/obj/item/grenade/chem_grenade/antiweed,\
 		)
 
-/datum/outfit/centcom/ert/weedkiller/leader
+/datum/outfit/ert/weedkiller/leader
 	name = "Fumigator Leader"
 
 	id = /obj/item/card/id/advanced/centcom/ert
