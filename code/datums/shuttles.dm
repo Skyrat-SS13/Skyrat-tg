@@ -215,8 +215,6 @@
 	admin_notes = "For player punishment."
 	who_can_purchase = null
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/map_template/shuttle/emergency/russiafightpit
 	suffix = "russiafightpit"
 	name = "Mother Russia Bleeds"
