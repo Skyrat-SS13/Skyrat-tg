@@ -96,10 +96,10 @@
 	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
 	icon_state = "arthur_morgan"
 
+
 /obj/item/clothing/under/syndicate/tacticool/sensors
 	name = "tacticool turtleneck"
-	desc = "A classic turtleneck and pants combo, now with added suit sensors for use with related networks."
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	desc = "A snug turtleneck, supposedly an offbrand version of Nanotrasen's own."
 	icon_state = "tactifool"
 	inhand_icon_state = "bl_suit"
 	has_sensor = HAS_SENSORS
@@ -107,11 +107,32 @@
 
 /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
 	name = "tacticool skirtleneck"
-	desc = "A classic turtleneck and skirt combo, now with added suit sensors for use with related networks."
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	desc = "A snug turtleneck, supposedly an offbrand version of Nanotrasen's own."
 	icon_state = "tactifool_skirt"
 	inhand_icon_state = "bl_suit"
 	has_sensor = HAS_SENSORS
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 	fitted = FEMALE_UNIFORM_TOP
 	dying_key = DYE_REGISTRY_JUMPSKIRT
+
+/obj/item/clothing/under/syndicate/tacticool/CtrlShiftClick(mob/user) //This handles changing the design between new and old for skirtle and turtlenecks
+	. = ..()
+	if(user.canUseTopic(src, TRUE, FALSE, TRUE, TRUE, FALSE))
+		var/style = "tactifool"
+		var/choice = input(user, "Choose the a reskin for [src]","Reskin Outfit") as null|anything in list("Black (Original)", "Navy (New)")
+		switch (choice)
+			if("Black (Original)")
+				if(istype(src, /obj/item/clothing/under/syndicate/tacticool/skirt))
+					style = "tactifool_arcade_skirt"
+				else
+					style = "tactifool_arcade"
+			if ("Navy (New)")
+				if(istype(src, /obj/item/clothing/under/syndicate/tacticool/skirt))
+					style = "tactifool_skirt"
+				else
+					style = "tactifool"
+		if(QDELETED(src))
+			return
+		icon_state = style
+		update_icon()
+		to_chat(user, "[src] is now skinned as '[choice]'.")

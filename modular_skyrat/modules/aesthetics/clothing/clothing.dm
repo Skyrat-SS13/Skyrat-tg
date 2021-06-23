@@ -51,3 +51,4 @@
 ///////////////////////////////////////////////////////////////////////TURTLENECKS
 /obj/item/clothing/under/syndicate
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
