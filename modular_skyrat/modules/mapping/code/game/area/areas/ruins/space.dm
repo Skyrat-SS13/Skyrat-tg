@@ -21,3 +21,18 @@
 
 /area/ruin/space/has_grav/powered/skyrat/blackmarket
 	name = "Shady Market"
+
+/area/ruin/space/has_grav/shuttle8532engineering
+	name = "Shuttle 8532 Engine Room"
+
+/area/ruin/space/has_grav/shuttle8532researchbay
+	name = "Shuttle 8532 Research Bay"
+
+/area/ruin/space/has_grav/shuttle8532cargohall
+	name = "Shuttle 8532 Cargo Hall"
+
+/area/ruin/space/has_grav/shuttle8532crewquarters
+	name = "Shuttle 8532 Crew Quarters"
+
+/area/ruin/space/has_grav/shuttle8532bridge
+	name = "Shuttle 8532 Bridge"

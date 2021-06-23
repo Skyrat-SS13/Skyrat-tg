@@ -210,6 +210,10 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/uniform/suit/scarface
+	name = "Cuban suit"
+	path = /obj/item/clothing/under/suit/white/scarface
+
 /datum/loadout_item/uniform/suit/vice
 	name = "Grey and Black suit"
 	path = /obj/item/clothing/under/misc/vice_officer
@@ -294,6 +298,10 @@
 	path = /obj/item/clothing/under/whiterussian
 	cost = 4
 
+/datum/loadout_item/uniform/suit/beige
+	name = "Beige Suit"
+	path = /obj/item/clothing/under/suit/beige
+
 
 //SKIRTS
 /datum/loadout_item/uniform/skirt
@@ -302,6 +310,10 @@
 /datum/loadout_item/uniform/skirt/skirtblack
 	name = "Black skirt"
 	path = /obj/item/clothing/under/dress/skirt
+
+/datum/loadout_item/uniform/skirt/suitskirtblack
+	name = "Black Suitskirt"
+	path = /obj/item/clothing/under/suit/black/skirt
 
 /datum/loadout_item/uniform/skirt/skirtblue
 	name = "Blue skirt"
@@ -556,6 +568,16 @@
 	path = /obj/item/clothing/under/rank/captain/dress
 	restricted_roles = list("Captain")
 
+/datum/loadout_item/uniform/job/impcap
+	name = "Captain's Naval Jumpsuit"
+	path = /obj/item/clothing/under/rank/captain/imperial
+	restricted_roles = list("Captain", "Nanotrasen Representative")
+
+/datum/loadout_item/uniform/job/imphop
+	name = "Head of Personnel's Naval Jumpsuit"
+	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
+
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
  	path = /obj/item/clothing/under/rank/prisoner/lowsec
@@ -613,6 +635,11 @@
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
  	restricted_roles = list("Head of Security")
 
+/datum/loadout_item/uniform/job/imphos
+ 	name = "Head of Security's Naval Uniform"
+ 	path = /obj/item/clothing/under/rank/security/head_of_security/imperial
+ 	restricted_roles = list("Head of Security")
+
 /datum/loadout_item/uniform/job/solhos
  	name = "Head of Security Sol uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
@@ -643,10 +670,20 @@
 	path = /obj/item/clothing/under/rank/security/brigguard
 	restricted_roles = list("Corrections Officer","Warden")
 
-/datum/loadout_item/uniform/job/coroffshir
+/datum/loadout_item/uniform/job/coroffshirw
 	name = "Corrections Officer Skirt"
 	path = /obj/item/clothing/under/rank/security/brigguard/women
 	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/peacetrouse
+	name = "Peacekeeper Trousers"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
+
+/datum/loadout_item/uniform/job/peacetrouse
+	name = "Security Trousers"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
 
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
@@ -678,7 +715,6 @@
 	path = /obj/item/clothing/under/misc/discounder
 	restricted_roles = list("Detective")
 	restricted_desc = "Superstar Detectives"
-
 
 /datum/loadout_item/uniform/job/seckilt
 	name = "Security Kilt"
@@ -712,6 +748,13 @@
 /datum/loadout_item/uniform/job/purplescrubs
 	name = "Purple Scrubs"
 	path = /obj/item/clothing/under/rank/medical/doctor/purple
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/whitescrubs
+	name = "White Scrubs"
+	path = /obj/item/clothing/under/rank/medical/doctor/white
+	extra_info = LOADOUT_INFO_ONE_COLOR
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
@@ -757,6 +800,11 @@
 	restricted_roles = list("Chief Medical Officer", "Chemist")
 	restricted_desc = "Chemistry"
 
+/datum/loadout_item/uniform/job/impcmo
+	name = "Chief Medical Officer's Naval Uniform"
+	path = /obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
+	restricted_roles = list("Chief Medical Officer")
+
 /datum/loadout_item/uniform/job/gorka_cargo
 	name = "Supply Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka
@@ -800,6 +848,12 @@
 	path = /obj/item/clothing/under/rank/cargo/qm/casual
 	restricted_roles = list("Quartermaster")
 
+/datum/loadout_item/uniform/job/engtrous
+	name = "Engineering Trousers"
+	path = /obj/item/clothing/under/rank/engineering/engineer/trouser
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
 /datum/loadout_item/uniform/job/engformal
 	name = "Engineering Formal Suit"
 	path = /obj/item/clothing/under/rank/engineering/engineer/formal
@@ -811,6 +865,16 @@
 	path = /obj/item/clothing/under/rank/engineering/engineer/formal/skirt
 	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
 	restricted_desc = "Engineering"
+
+/datum/loadout_item/uniform/job/impce
+	name = "Chief Engineer's Naval Uniform"
+	path = /obj/item/clothing/under/rank/engineering/chief_engineer/imperial
+	restricted_roles = list("Chief Engineer")
+
+/datum/loadout_item/uniform/job/imprd
+	name = "Research Director's Naval Uniform"
+	path = /obj/item/clothing/under/rank/rnd/research_director/imperial
+	restricted_roles = list("Research Director")
 
 
 
@@ -860,6 +924,30 @@
 	name = "Command Utility Uniform"
 	path = /obj/item/clothing/under/utility/com
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcommand
+	name = "Light Grey Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcom
+	name = "Grey Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial/grey
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impred
+	name = "Red Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial/red
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")	//NT Reps would never wear red, it's unbefitting
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcomtrous
+	name = "Grey Officer's Naval Jumpsuit (Trousers)"
+	path = /obj/item/clothing/under/imperial/grey/trouser
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/robosleek
@@ -1087,4 +1175,3 @@
 	name = "Green Feminine Christmas Suit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/costume/christmas/croptop/green*/
-

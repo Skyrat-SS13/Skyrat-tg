@@ -101,12 +101,12 @@
 	health = 100
 	harm_intent_damage = 5
 	melee_damage_lower = 10
-	melee_damage_upper = 15
+	melee_damage_upper = 10
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot, /obj/effect/spawner/lootdrop/astrum/sciloot)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(ROLE_ABDUCTOR)
@@ -119,10 +119,10 @@
 
 /mob/living/simple_animal/hostile/abductor/melee
 	melee_damage_lower = 10
-	melee_damage_upper = 25
+	melee_damage_upper = 20
 	icon_state = "abductor_scientist_melee"
 	icon_living = "abductor_scientist_melee"
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot, /obj/effect/spawner/lootdrop/astrum/sciloot)
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -132,12 +132,12 @@
 
 /mob/living/simple_animal/hostile/abductor/agent
 	name = "Abductor Agent"
-	melee_damage_lower = 20
-	melee_damage_upper = 30
+	melee_damage_lower = 15
+	melee_damage_upper = 22
 	icon_state = "abductor_agent"
 	icon_living = "abductor_agent"
-	maxHealth = 220
-	health = 220
+	maxHealth = 160
+	health = 160
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
 
 //RANGED
@@ -148,8 +148,8 @@
 	minimum_distance = 5
 	icon_state = "abductor_scientist_gun"
 	icon_living = "abductor_scientist_gun"
-	maxHealth = 150
-	health = 150
+	maxHealth = 120
+	health = 120
 	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
@@ -158,8 +158,8 @@
 	name = "Abductor Combat Specialist"
 	icon_state = "abductor_agent_combat_gun"
 	icon_living = "abductor_agent_combat_gun"
-	maxHealth = 170
-	health = 170
+	maxHealth = 140
+	health = 140
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
 
 //GHOSTROLES
@@ -245,18 +245,13 @@
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
-	loot = list(/obj/item/gun/energy/alien/astrum = 10,
+	loot = list(/obj/item/organ/heart/cybernetic/tier3 = 10,
 				/obj/item/clothing/suit/armor/abductor/astrum = 10,
 				/obj/item/clothing/head/helmet/astrum = 10,
-				/obj/item/organ/cyberimp/arm/armblade = 2,
-				/obj/effect/gibspawner/generic = 20)
-
-/obj/item/gun/energy/alien/astrum
-	name = "alien energy pistol"
-	desc = "A seemingly complicated gun, that isn't so complicated after all."
-	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
-	pin = /obj/item/firing_pin
-	
+				/obj/item/organ/cyberimp/arm/armblade = 5,
+				/obj/effect/gibspawner/generic = 10,
+				/obj/item/organ/eyes/night_vision/alien = 5
+				)
 
 /obj/item/gun/energy/alien/zeta
 	name = "Zeta Blaster"
@@ -277,6 +272,7 @@
 	icon_state = "alienpistol"
 	inhand_icon_state = "alienpistol"
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+	cell = /obj/item/stock_parts/cell/pulse/pistol
 
 /obj/item/clothing/suit/armor/abductor/astrum
 	name = "agent vest"
@@ -329,8 +325,8 @@
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
 	icon_gib = "syndicate_gib"
-	health = 1800
-	maxHealth = 1800
+	health = 1500
+	maxHealth = 1500
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
@@ -347,6 +343,6 @@
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum/death(gibbed)
 	spawn_gibs()
 	spawn_gibs()
-	new /obj/item/key/gateway/home(src.loc)
+	new /obj/item/key/gateway(src.loc)
 	new/obj/item/gun/energy/alien/zeta(src.loc)
 	qdel(src)
