@@ -106,6 +106,9 @@
 	name = "DS-2 Fitness Halls"
 	icon_state = "fitness"
 
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/service/library
+	name = "DS-2 Library"
+	icon_state = "library"
 
 //Hallways
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/halls
