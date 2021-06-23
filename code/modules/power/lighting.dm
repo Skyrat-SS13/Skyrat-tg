@@ -414,7 +414,7 @@
 //SKYRAT EDIT END
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(trigger = TRUE)
+/obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE)
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE
@@ -448,7 +448,9 @@
 				set_light(BR, PO, CO)
 		*/
 		//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
-		if(maploaded)
+		if(instant)
+			turn_on(trigger)
+		else if(maploaded)
 			turn_on(trigger)
 			maploaded = FALSE
 		else if(!turning_on)
@@ -693,10 +695,10 @@
 			if(status != LIGHT_OK)
 				break
 			on = !on
-			update(0)
+			update(FALSE, TRUE) //SKYRAT EDIT CHANGE
 			sleep(rand(5, 15))
 		on = (status == LIGHT_OK)
-		update(0)
+		update(FALSE, TRUE) //SKYRAT EDIT CHANGE
 	flickering = FALSE
 
 // ai attack - make lights flicker, because why not
@@ -792,6 +794,11 @@
 		user.put_in_active_hand(L)
 
 	status = LIGHT_EMPTY
+
+	//SKYRAT EDIT ADDITION
+	if(flickering)
+		stop_flickering()
+	//SKYRAT EDIT END
 	update()
 	return L
 
@@ -818,6 +825,10 @@
 		if(on)
 			do_sparks(3, TRUE, src)
 	status = LIGHT_BROKEN
+	//SKYRAT EDIT ADDITION
+	if(flickering)
+		stop_flickering()
+	//SKYRAT EDIT END
 	update()
 
 /obj/machinery/light/proc/fix()
