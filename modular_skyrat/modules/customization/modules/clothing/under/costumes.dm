@@ -119,7 +119,7 @@
 	. = ..()
 	if(user.canUseTopic(src, TRUE, FALSE, TRUE, TRUE, FALSE))
 		var/style = "tactifool"
-		var/choice = input(user, "Choose the a reskin for [src]","Reskin Outfit") as null|anything in list("Black (Original)", "Navy (New)")
+		var/choice = tgui_alert(user, "Choose the a reskin for [src]", "Reskin Outfit", list("Black (Original)", "Navy (New)"))
 		switch (choice)
 			if("Black (Original)")
 				if(istype(src, /obj/item/clothing/under/syndicate/tacticool/skirt))
