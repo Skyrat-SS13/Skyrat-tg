@@ -165,3 +165,12 @@
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/research
 	name = "DS-2 Research"
 	icon_state = "research"
+
+//Medbay
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay
+	name = "DS-2 Medical Bay"
+	icon_state = "medbay1"
+
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay/chem
+	name = "DS-2 Chemistry"
+	icon_state = "chem"
