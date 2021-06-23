@@ -156,3 +156,8 @@
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southeast
 	name = "DS-2 Starboard Quarter Maintenance"
 	icon_state = "smaint_2"
+
+//Research
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/research
+	name = "DS-2 Research"
+	icon_state = "research"
