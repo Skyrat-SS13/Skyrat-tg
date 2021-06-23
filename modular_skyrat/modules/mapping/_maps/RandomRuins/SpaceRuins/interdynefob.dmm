@@ -191,13 +191,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/service/dorms/fitness)
-"bi" = (
-/obj/structure/table/glass,
-/obj/item/clothing/gloves/color/latex,
-/obj/item/healthanalyzer,
-/obj/item/clothing/glasses/hud/health,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "bj" = (
 /obj/structure/table/wood,
 /turf/open/floor/holofloor/chapel,
@@ -267,7 +260,13 @@
 	dir = 8
 	},
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/research)
-"bC" = (
+"bB" = (
+/obj/structure/table/glass,
+/obj/item/storage/box/beakers{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/storage/box/syringes,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "bF" = (
@@ -714,17 +713,6 @@
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest)
-"es" = (
-/obj/structure/table/glass,
-/obj/structure/reagent_dispensers/virusfood/directional/south,
-/obj/item/book/manual/wiki/infections{
-	pixel_y = 7
-	},
-/obj/item/reagent_containers/dropper,
-/obj/item/reagent_containers/syringe/antiviral,
-/obj/item/reagent_containers/spray/cleaner,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "et" = (
 /obj/machinery/power/rtg/advanced,
 /obj/structure/cable,
@@ -926,6 +914,9 @@
 	dir = 8
 	},
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security/prison)
+"fG" = (
+/turf/open/floor/iron/white/corner,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "fH" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/turnstile{
@@ -1077,6 +1068,12 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/commissary)
+"gs" = (
+/obj/structure/closet/l3closet/virology,
+/turf/open/floor/iron/white/side{
+	dir = 4
+	},
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "gv" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
@@ -1220,6 +1217,18 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/warehouse)
+"hi" = (
+/obj/structure/table/glass,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/pen/red,
+/obj/item/hand_labeler,
+/obj/item/restraints/handcuffs,
+/obj/item/clothing/glasses/science,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "hp" = (
 /obj/effect/turf_decal/siding/yellow/corner{
 	dir = 4
@@ -1533,6 +1542,16 @@
 /obj/item/aicard,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge)
+"iU" = (
+/obj/machinery/door/airlock/virology{
+	name = "Virology";
+	req_access_txt = "150"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "iV" = (
 /obj/structure/barricade/wooden,
 /obj/effect/turf_decal/siding/thinplating,
@@ -1590,11 +1609,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/service/dorms/fitness)
-"jq" = (
-/turf/open/floor/iron/white/corner{
-	dir = 1
-	},
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "js" = (
 /obj/structure/table/reinforced,
 /obj/machinery/defibrillator_mount/loaded/directional/west,
@@ -1813,10 +1827,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/grimy,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/northwest)
-"kJ" = (
-/obj/machinery/smartfridge/chemistry/virology/preloaded,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "kK" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/syndicate{
@@ -1911,6 +1921,10 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge/admiral)
+"lo" = (
+/obj/item/food/grown/banana,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "lp" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -2376,6 +2390,9 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge/eva)
+"ob" = (
+/turf/open/floor/iron/white/side,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "oc" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -2622,6 +2639,17 @@
 	dir = 9
 	},
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest)
+"pl" = (
+/obj/structure/table/glass,
+/obj/structure/reagent_dispensers/virusfood/directional/south,
+/obj/item/book/manual/wiki/infections{
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/dropper,
+/obj/item/reagent_containers/syringe/antiviral,
+/obj/item/reagent_containers/spray/cleaner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "pm" = (
 /obj/effect/turf_decal/siding/white/corner{
 	dir = 4
@@ -2907,6 +2935,22 @@
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/mining_equipment)
+"qT" = (
+/obj/structure/table/glass,
+/obj/machinery/reagentgrinder{
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 5
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 10
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 10
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "qU" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security/armory)
@@ -3303,6 +3347,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest)
+"sY" = (
+/obj/machinery/smartfridge/chemistry/virology/preloaded,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "te" = (
 /obj/structure/spider/stickyweb,
 /turf/open/floor/plating,
@@ -3485,18 +3533,6 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security/lawyer)
-"tZ" = (
-/obj/structure/table/glass,
-/obj/item/paper_bin{
-	pixel_x = -2;
-	pixel_y = 5
-	},
-/obj/item/pen/red,
-/obj/item/hand_labeler,
-/obj/item/restraints/handcuffs,
-/obj/item/clothing/glasses/science,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "ub" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/smooth_half{
@@ -3599,6 +3635,11 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest)
+"uB" = (
+/turf/open/floor/iron/white/side{
+	dir = 1
+	},
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "uC" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/item/seeds/banana,
@@ -3868,10 +3909,6 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark/smooth_edge,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/halls)
-"vH" = (
-/obj/item/food/grown/banana,
-/turf/open/floor/grass,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "vL" = (
 /obj/structure/lattice/catwalk/plated,
 /obj/structure/cable,
@@ -4131,10 +4168,8 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/hangar)
 "wX" = (
-/obj/structure/closet/l3closet/virology,
-/turf/open/floor/iron/white/side{
-	dir = 4
-	},
+/obj/structure/chair/sofa/bench/right,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "wY" = (
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -4237,8 +4272,8 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/northwest)
 "xv" = (
-/mob/living/carbon/human/species/monkey,
-/turf/open/floor/grass,
+/obj/structure/chair/sofa/bench/left,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "xw" = (
 /obj/structure/lattice/catwalk,
@@ -4301,6 +4336,10 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security)
+"xU" = (
+/mob/living/carbon/human/species/monkey,
+/turf/open/floor/grass,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "xV" = (
 /obj/structure/weightmachine/stacklifter,
 /turf/open/floor/iron/dark/side{
@@ -4318,22 +4357,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/engine/o2,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/engineering)
-"xZ" = (
-/obj/structure/table/glass,
-/obj/machinery/reagentgrinder{
-	pixel_y = 3
-	},
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 5
-	},
-/obj/item/stack/sheet/mineral/gold{
-	amount = 10
-	},
-/obj/item/stack/sheet/mineral/uranium{
-	amount = 10
-	},
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "ya" = (
 /obj/structure/table,
 /obj/machinery/microwave{
@@ -4615,6 +4638,13 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/service/diner)
+"zq" = (
+/obj/structure/table/glass,
+/obj/item/clothing/gloves/color/latex,
+/obj/item/healthanalyzer,
+/obj/item/clothing/glasses/hud/health,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "zr" = (
 /turf/open/floor/iron/dark/side{
 	dir = 4
@@ -4940,9 +4970,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
-"Bg" = (
-/turf/open/floor/iron/white/side,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "Bh" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 4
@@ -5209,6 +5236,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/solars/southwest)
+"Ct" = (
+/obj/machinery/computer/pandemic,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "Cv" = (
 /obj/structure/dresser,
 /turf/open/floor/wood/large,
@@ -5524,6 +5555,9 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/cargo/hangar)
+"DZ" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "Ec" = (
 /obj/machinery/door/window/survival_pod{
 	dir = 1;
@@ -6318,16 +6352,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest)
-"IJ" = (
-/obj/machinery/door/airlock/virology{
-	name = "Virology";
-	req_access_txt = "150"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "IN" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/door/window/survival_pod{
@@ -7188,10 +7212,6 @@
 /obj/effect/turf_decal/skyrat_decals/syndicate/top/left,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge)
-"Nu" = (
-/obj/machinery/computer/pandemic,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "Nv" = (
 /obj/structure/table/wood,
 /obj/item/storage/book/bible/syndicate,
@@ -7354,9 +7374,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/solars/northeast)
-"Ob" = (
-/turf/open/floor/iron/white/corner,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "Oc" = (
 /obj/structure/table/reinforced,
 /obj/item/multitool/circuit,
@@ -7540,6 +7557,11 @@
 	},
 /turf/open/floor/vault/rock,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security/prison)
+"Pa" = (
+/turf/open/floor/iron/white/corner{
+	dir = 1
+	},
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "Pc" = (
 /obj/effect/turf_decal/siding/wideplating{
 	dir = 8
@@ -8331,15 +8353,6 @@
 /obj/effect/turf_decal/skyrat_decals/syndicate/bottom/middle,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge)
-"Tm" = (
-/obj/structure/table/glass,
-/obj/item/storage/box/beakers{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/storage/box/syringes,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "To" = (
 /obj/machinery/chem_dispenser/mutagensaltpeter,
 /turf/open/floor/iron/dark/smooth_large,
@@ -8940,11 +8953,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/maintenance/southwest)
-"WG" = (
-/turf/open/floor/iron/white/side{
-	dir = 1
-	},
-/area/ruin/space/has_grav/powered/skyrat/interdynefob/medbay)
 "WH" = (
 /obj/machinery/seed_extractor,
 /turf/open/floor/iron/dark/smooth_large,
@@ -16310,7 +16318,7 @@ gf
 th
 MB
 MB
-MB
+uB
 MB
 TQ
 kw
@@ -16318,8 +16326,8 @@ kw
 kw
 kw
 gG
-vH
-xv
+lo
+xU
 qj
 qj
 qj
@@ -16398,7 +16406,7 @@ MB
 fv
 MB
 MB
-MB
+ob
 MB
 HB
 Px
@@ -16484,16 +16492,16 @@ MB
 MB
 ML
 kw
+Or
 MB
-MB
-MB
+uB
 MB
 HB
 fM
 fM
 Bd
 kw
-xv
+xU
 gG
 gG
 kw
@@ -16574,7 +16582,7 @@ PB
 fP
 fP
 MB
-MB
+uB
 MB
 HB
 ms
@@ -16582,7 +16590,7 @@ fM
 eO
 kw
 th
-IJ
+iU
 th
 kw
 kw
@@ -16662,17 +16670,17 @@ zi
 zi
 fP
 MB
+ob
 MB
-MB
 kw
 kw
 kw
 kw
 kw
-Tm
-Ob
-bC
-bC
+bB
+fG
+DZ
+DZ
 kw
 mc
 mc
@@ -16750,17 +16758,17 @@ zi
 zi
 ul
 MB
-MB
+uB
 MB
 kw
-wX
+gs
 qC
 kz
 kw
-bi
-Bg
-WG
-xZ
+zq
+ob
+uB
+qT
 kw
 mc
 mc
@@ -16837,7 +16845,7 @@ zi
 zi
 zi
 fP
-MB
+wX
 MB
 MB
 zx
@@ -16845,10 +16853,10 @@ MB
 Ko
 MB
 Yq
-bC
-bC
-jq
-tZ
+DZ
+DZ
+Pa
+hi
 kw
 mc
 mc
@@ -16925,18 +16933,18 @@ zi
 zi
 zi
 fP
+xv
 MB
-MB
-MB
+ML
 kw
 kw
 kw
 kw
 kw
 kw
-kJ
-Nu
-es
+sY
+Ct
+pl
 kw
 mc
 mc
