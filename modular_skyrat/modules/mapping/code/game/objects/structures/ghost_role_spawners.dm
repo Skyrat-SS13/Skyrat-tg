@@ -47,6 +47,20 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
+/obj/effect/mob_spawn/human/ds2/prisoner
+	name = "Syndicate Prisoner"
+	short_desc = "You are the syndicate prisoner aboard an unknown station."
+	flavour_text = "You don't know where you are, but you know you are a prisoner. The plastitanium clues you into your captors.. as for why you're here? That's up to you."
+	important_info = "You are still subject to standard prisoner policy, and must Adminhelp before antagonizing Interdyne."
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s"
+	outfit = /datum/outfit/ds2/prisoner
+	roundstart = FALSE
+	permanent = FALSE
+	death = FALSE
+	can_use_alias = TRUE
+	any_station_species = TRUE
+
 //OUTFITS//
 /datum/outfit/syndicatespace/syndicrew
 	ears = /obj/item/radio/headset/cybersun
@@ -55,6 +69,12 @@
 /datum/outfit/syndicatespace/syndicaptain
 	ears = /obj/item/radio/headset/cybersun/captain
 	id_trim = /datum/id_trim/syndicom/skyrat/captain
+
+/datum/outfit/ds2/prisoner
+	name = "Syndicate Prisoner"
+	uniform = /obj/item/clothing/under/rank/prisoner
+	shoes = /obj/item/clothing/shoes/sneakers/orange
+	id = /obj/item/card/id/advanced/prisoner
 
 //ITEMS//
 /obj/item/radio/headset/cybersun
