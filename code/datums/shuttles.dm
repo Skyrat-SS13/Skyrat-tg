@@ -367,8 +367,6 @@
 	admin_notes = "An abomination with no functional medbay, sections missing, and some very fragile windows. Surprisingly airtight."
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/map_template/shuttle/emergency/narnar
 	suffix = "narnar"
 	name = "Shuttle 667"
