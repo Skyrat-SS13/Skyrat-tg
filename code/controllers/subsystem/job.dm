@@ -745,6 +745,7 @@ SUBSYSTEM_DEF(job)
 		return TRUE
 	if(M.job && M.job == "Cyborg")
 		destination = locate(/obj/effect/landmark/start/cyborg) in GLOB.landmarks_list
+		M.latejoin_find_parent_ai(destination.z)
 		destination.JoinPlayerHere(M, buckle)
 		return TRUE
 	//SKYRAT EDIT END
