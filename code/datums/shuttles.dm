@@ -289,8 +289,6 @@
 /datum/map_template/arena
 	name = "The Arena"
 	mappath = "_maps/templates/the_arena.dmm"
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/map_template/shuttle/emergency/birdboat
 	suffix = "birdboat"
