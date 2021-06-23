@@ -226,9 +226,12 @@ Borg Shaker
 	/datum/reagent/consumable/ethanol/whiskey, /datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/creme_de_coconut,
 	//SKYRAT EDIT ADDITION BEGIN
 	/datum/reagent/consumable/berryjuice, /datum/reagent/consumable/blumpkinjuice, /datum/reagent/consumable/watermelonjuice,
-	/datum/reagent/consumable/pumpkinjuice, /datum/reagent/consumable/vanilla)
+	/datum/reagent/consumable/pumpkinjuice, /datum/reagent/consumable/vanilla, /datum/reagent/consumable/flour, /datum/reagent/consumable/eggyolk,
+	/datum/reagent/consumable/mayonnaise, /datum/reagent/consumable/bbqsauce, /datum/reagent/consumable/ketchup,/datum/reagent/consumable/blackpepper,
+	/datum/reagent/consumable/salt,/datum/reagent/consumable/enzyme
+)
 	//SKYRAT EDIT ADDITION END
-
+e
 /obj/item/reagent_containers/borghypo/borgshaker/attack(mob/M, mob/user)
 	return //Can't inject stuff with a shaker, can we? //not with that attitude
 

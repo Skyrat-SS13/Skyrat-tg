@@ -458,23 +458,33 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		/obj/item/reagent_containers/glass/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		/obj/item/reagent_containers/food/condiment/enzyme,
-		/obj/item/pen,
+		/obj/item/reagent_containers/glass/beaker/plastic, //I know a shaker is more appropiate but this is for ease of identification //Skyrat Edit makes service borgs less awful
+		/obj/item/reagent_containers/food/condiment/flour, //Skyrat Edit makes service borgs less awful
+		/obj/item/borg/apparatus/beaker/service,
+		/obj/item/borg/lollipop,
+		/obj/item/rsf/cookiesynth,
+		/obj/item/borg/cyborghug/medical,
+		/obj/item/reagent_containers/borghypo/borgshaker,
+		/obj/item/storage/bag/tray,
+		/obj/item/cooking/cyborg/power, //Skyrat Edit makes service borgs less awful
+		/obj/item/reagent_containers/syringe, //Skyrat Edit makes service borgs less
+		/obj/item/screwdriver/cyborg/power, //Skyrat Edit makes service borgs less
+		/obj/item/crowbar/cyborg/power, //Skyrat Edit makes service borgs less
+		/obj/item/stack/sheet/iron, //Skyrat Edit makes service borgs less
+		/obj/item/stack/sheet/glass, //Skyrat Edit makes service borgs less
+		/obj/item/reagent_containers/dropper,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
-		/obj/item/razor,
-		/obj/item/rsf,
-		/obj/item/instrument/guitar,
-		/obj/item/instrument/piano_synth,
-		/obj/item/reagent_containers/dropper,
-		/obj/item/lighter,
-		/obj/item/storage/bag/tray,
-		/obj/item/reagent_containers/borghypo/borgshaker,
-		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
-		/obj/item/borg/apparatus/beaker/service)
+		/obj/item/razor,
+		/obj/item/stack/rods/cyborg, //Skyrat Edit makes service borgs less awful
+		/obj/item/soap/nanotrasen, //Skyrat Edit makes service borgs less awful
+		/obj/item/weldingtool/mini, //Skyrat Edit makes service borgs less awful
+		/obj/item/lighter,
+		/obj/item/lightreplacer/cyborg, //Skyrat Edit makes service borgs less awful
+		/obj/item/rsf,
+		/obj/item/instrument/piano_synth)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
 	cyborg_base_icon = "service_m" // display as butlerborg for radial model selection

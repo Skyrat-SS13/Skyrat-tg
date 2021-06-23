@@ -48,3 +48,27 @@
 		tool_behaviour = TOOL_SCREWDRIVER
 		to_chat(user, "<span class='notice'>You attach the screw bit to [src].</span>")
 		icon_state = "drill_screw_cyborg"
+
+/obj/item/cooking/cyborg/power
+	name =	"automated cooking tool"
+	desc = "A cyborg fitted module resembling the rolling pins and Knifes"
+	icon = 'modular_skyrat/modules/cyborg/icons/items_cyborg.dmi'
+	icon_state = "knife_screw_cyborg"
+	hitsound = 'sound/items/drill_hit.ogg'
+	usesound = 'sound/items/drill_use.ogg'
+	toolspeed = 0.5
+
+/obj/item/cooking/cyborg/power/examine()
+	. = ..()
+	. += " It's fitted with a [tool_behaviour == TOOL_KNIFE ? "screw" : "bolt"] head."
+
+/obj/item/cooking/cyborg/power/attack_self(mob/user)
+	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
+	if(tool_behaviour == TOOL_ROLLINGPIN)
+		tool_behaviour = TOOL_KNIFE
+		to_chat(user, "<span class='notice'>You attach the rolling pin bit to [src].</span>")
+		icon_state = "rolling_bolt_cyborg"
+	else
+		tool_behaviour = TOOL_KNIFE
+		to_chat(user, "<span class='notice'>You attach the knife bit to [src].</span>")
+		icon_state = "knife_screw_cyborg"
