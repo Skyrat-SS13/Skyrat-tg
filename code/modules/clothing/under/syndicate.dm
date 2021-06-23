@@ -7,8 +7,7 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 40)
 	alt_covers_chest = TRUE
 	icon = 'icons/obj/clothing/under/syndicate.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-//	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ICON OVERRIDDEN BY modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+//	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ICON OVERRIDDEN BY modular_skyrat\modules\aesthetics\clothing
 
 /obj/item/clothing/under/syndicate/skirt
 	name = "tactical skirtleneck"
