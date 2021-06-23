@@ -114,6 +114,10 @@
 	name = "DS-2 Library"
 	icon_state = "library"
 
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/service/hydroponics
+	name = "DS-2 Hydroponics"
+	icon_state = "garden"
+
 //Hallways
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/halls
 	name = "DS-2 Central Halls"
