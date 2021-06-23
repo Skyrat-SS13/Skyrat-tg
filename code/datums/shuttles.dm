@@ -379,8 +379,6 @@
 
 /datum/map_template/shuttle/emergency/narnar/prerequisites_met()
 	return SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_NARNAR]
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/map_template/shuttle/emergency/pubby
 	suffix = "pubby"
