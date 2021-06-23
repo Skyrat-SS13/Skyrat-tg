@@ -152,6 +152,7 @@
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	can_be_tied = TRUE //SKYRAT EDIT
+	clothing_flags = NOSLIP
 
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
