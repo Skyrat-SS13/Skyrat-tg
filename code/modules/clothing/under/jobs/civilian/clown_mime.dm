@@ -28,11 +28,7 @@
 	desc = "<i>'HONK!'</i>"
 	icon_state = "clown"
 	inhand_icon_state = "clown"
-	//SKYRAT EDIT REMOVAL BEGIN
-	/*
 	species_exception = list(/datum/species/golem/bananium)
-	*/
-	//SKYRAT EDIT END
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
 

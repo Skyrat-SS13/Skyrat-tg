@@ -168,8 +168,6 @@
 /datum/antagonist/ert/intern/leader/unarmed
 	outfit = /datum/outfit/centcom/centcom_intern/leader/unarmed
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/antagonist/ert/clown
 	role = "Clown"
 	outfit = /datum/outfit/centcom/ert/clown
@@ -201,8 +199,6 @@
 /datum/antagonist/ert/commander/party
 	role = "Party Coordinator"
 	outfit = /datum/outfit/centcom/ert/commander/party
-*/
-//SKYRAT EDIT END
 
 /datum/antagonist/ert/create_team(datum/team/ert/new_team)
 	if(istype(new_team))

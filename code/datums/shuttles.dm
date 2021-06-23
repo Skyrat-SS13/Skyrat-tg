@@ -194,15 +194,11 @@
 	var/datum/supply_pack/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/shuttle_engine]
 	P.special_enabled = TRUE
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/map_template/shuttle/emergency/asteroid
 	suffix = "asteroid"
 	name = "Asteroid Station Emergency Shuttle"
 	description = "A respectable mid-sized shuttle that first saw service shuttling Nanotrasen crew to and from their asteroid belt embedded facilities."
 	credit_cost = CARGO_CRATE_VALUE * 6
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/map_template/shuttle/emergency/bar
 	suffix = "bar"
