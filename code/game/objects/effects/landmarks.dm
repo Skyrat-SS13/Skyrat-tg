@@ -64,9 +64,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/prisoner
 	name = "Prisoner"
 	icon_state = "Prisoner"
-
-/obj/effect/landmark/start/prisoner/after_round_start()
-	return
+	delete_after_roundstart = FALSE // SKYRAT EDIT ADD -- ONSTATION LATEJOINS
 
 /obj/effect/landmark/start/janitor
 	name = "Janitor"
@@ -195,6 +193,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
 	icon_state = "Cyborg"
+	delete_after_roundstart = FALSE // SKYRAT EDIT ADD -- ONSTATION LATEJOINS
 
 /obj/effect/landmark/start/ai
 	name = "AI"
