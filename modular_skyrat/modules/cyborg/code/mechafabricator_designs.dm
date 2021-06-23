@@ -21,6 +21,6 @@
 	id = "affection_module"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/affectionmodule
-	materials = list(/datum/material/iron=4000, /datum/material/glass=1000)
+	materials = list(/datum/material/iron=1000, /datum/material/glass=500)
 	construction_time = 40
 	category = list("Cyborg Upgrade Modules")
