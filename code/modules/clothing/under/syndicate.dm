@@ -7,11 +7,13 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 40)
 	alt_covers_chest = TRUE
 	icon = 'icons/obj/clothing/under/syndicate.dmi'
-	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi' //SKYRAT EDIT - ADDITION
+//	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - REMOVAL
 
 /obj/item/clothing/under/syndicate/skirt
 	name = "tactical skirtleneck"
 	desc = "A non-descript and slightly suspicious looking skirtleneck."
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi' //SKYRAT EDIT - ADDIITION
 	icon_state = "syndicate_skirt"
 	inhand_icon_state = "bl_suit"
 	has_sensor = NO_SENSORS
@@ -28,6 +30,7 @@
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 0, BIO = 0, RAD = 10, FIRE = 50, ACID = 40)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	can_adjust = FALSE
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ADDITION
 
 /obj/item/clothing/under/syndicate/bloodred/sleepytime
 	name = "blood-red pajamas"
@@ -67,6 +70,7 @@
 	icon_state = "camogreen"
 	inhand_icon_state = "g_suit"
 	can_adjust = FALSE
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ADDITION
 
 /obj/item/clothing/under/syndicate/soviet
 	name = "Ratnik 5 tracksuit"
@@ -75,12 +79,14 @@
 	can_adjust = FALSE
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 	resistance_flags = NONE
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ADDITION
 
 /obj/item/clothing/under/syndicate/combat
 	name = "combat uniform"
 	desc = "With a suit lined with this many pockets, you are ready to operate."
 	icon_state = "syndicate_combat"
 	can_adjust = FALSE
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ADDITION
 
 /obj/item/clothing/under/syndicate/rus_army
 	name = "advanced military tracksuit"
@@ -89,3 +95,4 @@
 	can_adjust = FALSE
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 	resistance_flags = NONE
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ADDITION
