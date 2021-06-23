@@ -68,6 +68,10 @@
 	name = "DS-2 Vault"
 	icon_state = "nuke_storage"
 
+/area/ruin/space/has_grav/powered/skyrat/interdynefob/bridge/eva
+	name = "DS-2 E.V.A."
+	icon_state = "eva"
+
 //Security
 /area/ruin/space/has_grav/powered/skyrat/interdynefob/security
 	name = "DS-2 Security"
