@@ -339,7 +339,7 @@
 	message = "lets out a woof."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-
+  
 /datum/emote/living/baa
 	key = "baa"
 	key_third_person = "baas"
@@ -363,13 +363,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/wurble.ogg'
-
-/datum/emote/living/awoo2
-	key = "awoo2"
-	key_third_person = "awoos"
-	message = "lets out an awoo!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
 
 /datum/emote/living/rattle
 	key = "rattle"
