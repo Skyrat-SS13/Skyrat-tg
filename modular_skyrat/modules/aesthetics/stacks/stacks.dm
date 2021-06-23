@@ -21,3 +21,9 @@
 
 /obj/item/stack/sheet/mineral/plasma
 	icon = 'modular_skyrat/modules/aesthetics/stacks/stack_objects.dmi'
+
+/obj/item/stack/ore/diamond/ten
+	amount = 10
+
+/obj/item/stack/ore/bluespace_crystal/five
+	amount = 5

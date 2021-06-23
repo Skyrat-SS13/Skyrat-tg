@@ -124,7 +124,7 @@
 					/obj/item/ammo_box/magazine/multi_sprite/croon)
 	crate_name = "unmarked weapons crate"
 	dangerous = TRUE
-	
+
 /datum/supply_pack/costumes_toys/randomised/improvised
 	name = "Improvised Weapons Crate"
 	desc = "Really hit rock bottom? Well, we've got a few things laying around from a sting-op on pirates we could lend you. (We'll expect these back.)" //they don't, actually.
@@ -568,3 +568,11 @@
 					/obj/item/soap/nanotrasen)
 	crate_name = "shower crate"
 */
+
+/datum/supply_pack/vending/wardrobes/kink
+	name = "Dorms-Time Restock"
+	desc = "This crate contains a refill a certain outlawed vending machine."
+	cost = CARGO_CRATE_VALUE * 1.5
+	contains = list(/obj/item/vending_refill/kink)
+	crate_name = "dorms-time restock"
+	contraband = TRUE

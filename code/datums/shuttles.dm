@@ -230,6 +230,7 @@
 	credit_cost = CARGO_CRATE_VALUE * 30
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
+
 /datum/map_template/shuttle/emergency/monastery
 	suffix = "monastery"
 	name = "Grand Corporate Monastery"
@@ -307,8 +308,7 @@
 	admin_notes = "Has airlocks on both sides of the shuttle and will probably intersect near the front on some stations that build past departures."
 	credit_cost = CARGO_CRATE_VALUE * 5
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
 /datum/map_template/shuttle/emergency/clown
 	suffix = "clown"
 	name = "Snappop(tm)!"
@@ -319,8 +319,7 @@
 	Have a fun ride!"
 	admin_notes = "Brig is replaced by anchored greentext book surrounded by lavaland chasms, stationside door has been removed to prevent accidental dropping. No brig."
 	credit_cost = CARGO_CRATE_VALUE * 16
-*/
-//SKYRAT EDIT REMOVAL END
+	who_can_purchase = null //SKYRAT EDIT CHANGE
 
 /datum/map_template/shuttle/emergency/cramped
 	suffix = "cramped"
@@ -403,8 +402,7 @@
 	credit_cost = CARGO_CRATE_VALUE * 200
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
 /datum/map_template/shuttle/emergency/imfedupwiththisworld
 	suffix = "imfedupwiththisworld"
 	name = "Oh, Hi Daniel"
@@ -413,8 +411,6 @@
 	admin_notes = "Tiny, with a single airlock and wooden walls. What could go wrong?"
 	who_can_purchase = null
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 2)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/map_template/shuttle/emergency/goon
 	suffix = "goon"
@@ -430,8 +426,6 @@
 	admin_notes = "ONLY NINETIES KIDS REMEMBER. Uses the fun balloon and drone from the Emergency Bar."
 	credit_cost = CARGO_CRATE_VALUE * 5
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/map_template/shuttle/emergency/wabbajack
 	suffix = "wabbajack"
 	name = "NT Lepton Violet"
@@ -440,8 +434,7 @@
 	Needless to say, no engineering team wanted to go near the thing, and it's only being used as an Emergency Escape Shuttle because there is literally nothing else available."
 	admin_notes = "If the crew can solve the puzzle, they will wake the wabbajack statue. It will likely not end well. There's a reason it's boarded up. Maybe they should have just left it alone."
 	credit_cost = CARGO_CRATE_VALUE * 30
-*/
-//SKYRAT EDIT REMOVAL END
+	who_can_purchase = null //SKYRAT EDIT CHANGE
 
 /datum/map_template/shuttle/emergency/omega
 	suffix = "omega"
