@@ -84,7 +84,11 @@
 	resistance_flags = FLAMMABLE
 	actions_types = list(/datum/action/item_action/adjust)
 	dog_fashion = /datum/dog_fashion/head/clown
+	//SKYRAT EDIT REMOVAL BEGIN
+	/*
 	species_exception = list(/datum/species/golem/bananium)
+	*/
+	//SKYRAT EDIT END
 	var/list/clownmask_designs = list()
 
 /obj/item/clothing/mask/gas/clown_hat/Initialize(mapload)
@@ -130,7 +134,12 @@
 	inhand_icon_state = "sexyclown"
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
+	//SKYRAT EDIT REMOVAL BEGIN
+	/* this could be done fully modularly
+	but the compiler is screaming
 	species_exception = list(/datum/species/golem/bananium)
+	*/
+	//SKYRAT EDIT END
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"

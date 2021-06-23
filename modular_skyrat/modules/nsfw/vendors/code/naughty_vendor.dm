@@ -1,6 +1,6 @@
 /obj/machinery/vending/dorms
 	name = "\improper Dorms-Time Vending Machine"
-	desc = "A vending machine for all your fun games and activities in the recreational room!"
+	desc = "A rebranded vending machine, the words \"Kink-Mate\" are sprayed on the side. Recently illegalized following a controversy regarding Nanotrasen policy."
 	product_ads = "Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!"
 	icon = 'modular_skyrat/modules/nsfw/vendors/icons/vending.dmi'
 	icon_state = "kink"

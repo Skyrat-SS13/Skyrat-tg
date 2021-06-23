@@ -328,6 +328,8 @@
 	category = list("Durand")
 
 //H.O.N.K
+//SKYRAT EDIT REMOVAL BEGIN
+/*no honk
 /datum/design/honk_chassis
 	name = "Exosuit Chassis (\"H.O.N.K\")"
 	id = "honk_chassis"
@@ -390,6 +392,8 @@
 	materials = list(/datum/material/iron=20000,/datum/material/bananium=5000)
 	construction_time = 200
 	category = list("H.O.N.K")
+*/
+//SKYRAT EDIT END
 
 
 //Phazon
@@ -684,6 +688,8 @@
 	construction_time = 100
 	category = list("Exosuit Equipment")
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/design/mech_mousetrap_mortar
 	name = "H.O.N.K Weapon (Mousetrap Mortar)"
 	id = "mech_mousetrap_mortar"
@@ -719,7 +725,8 @@
 	materials = list(/datum/material/iron=20000,/datum/material/bananium=7500)
 	construction_time = 400
 	category = list("Exosuit Equipment")
-
+*/
+//SKYRAT EDIT END
 /////////////////////////////////////////
 //////////////Borg Upgrades//////////////
 /////////////////////////////////////////
@@ -796,6 +803,8 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/design/borg_transform_clown
 	name = "Cyborg Upgrade (Clown Model)"
 	id = "borg_transform_clown"
@@ -804,6 +813,8 @@
 	materials = list(/datum/material/iron = 15000, /datum/material/glass = 15000, /datum/material/bananium = 1000)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
+*/
+//SKYRAT EDIT END
 
 /datum/design/borg_upgrade_selfrepair
 	name = "Cyborg Upgrade (Self-repair)"

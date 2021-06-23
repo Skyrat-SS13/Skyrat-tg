@@ -116,6 +116,8 @@
 /obj/structure/closet/crate/secure/loot/deconstruct(disassembled = TRUE)
 	boom()
 
+//SKYRAT EDIT REMOVAL - MOVED TO MODULAR
+/*
 /obj/structure/closet/crate/secure/loot/proc/spawn_loot()
 	var/loot = rand(1,100) //100 different crates with varying chances of spawning
 	switch(loot)
@@ -233,3 +235,4 @@
 		if(100)
 			new /obj/item/melee/skateboard/hoverboard(src)
 	spawned_loot = TRUE
+*/

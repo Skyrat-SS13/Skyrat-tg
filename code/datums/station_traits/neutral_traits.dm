@@ -1,9 +1,13 @@
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/station_trait/bananium_shipment
 	name = "Bananium Shipment"
 	trait_type = STATION_TRAIT_NEUTRAL
 	weight = 5
 	report_message = "Rumors has it that the clown planet has been sending support packages to clowns in this system"
 	trait_to_give = STATION_TRAIT_BANANIUM_SHIPMENTS
+*/
+//SKYRAT EDIT END
 
 /datum/station_trait/unnatural_atmosphere
 	name = "Unnatural atmospherical properties"

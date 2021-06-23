@@ -1099,8 +1099,12 @@
 /mob/living/carbon/human/species/golem/bluespace
 	race = /datum/species/golem/bluespace
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /mob/living/carbon/human/species/golem/bananium
 	race = /datum/species/golem/bananium
+*/
+//SKYRAT EDIT END
 
 /mob/living/carbon/human/species/golem/blood_cult
 	race = /datum/species/golem/runic

@@ -568,6 +568,8 @@
 
 
 //honk
+//SKYRAT EDIT REMOVAL BEGIN
+/*no honk
 /datum/species/golem/bananium
 	name = "Bananium Golem"
 	id = "bananium golem"
@@ -673,6 +675,8 @@
 /datum/species/golem/bananium/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 	speech_args[SPEECH_SPANS] |= SPAN_CLOWN
+*/
+//SKYRAT EDIT END
 
 /datum/species/golem/runic
 	name = "Runic Golem"

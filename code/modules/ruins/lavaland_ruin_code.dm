@@ -67,7 +67,11 @@
 		/obj/item/stack/sheet/mineral/gold = /datum/species/golem/gold,
 		/obj/item/stack/sheet/mineral/silver = /datum/species/golem/silver,
 		/obj/item/stack/sheet/mineral/uranium = /datum/species/golem/uranium,
+		//SKYRAT EDIT REMOVAL BEGIN
+		/*
 		/obj/item/stack/sheet/mineral/bananium = /datum/species/golem/bananium,
+		*/
+		//SKYRAT EDIT END
 		/obj/item/stack/sheet/mineral/titanium = /datum/species/golem/titanium,
 		/obj/item/stack/sheet/mineral/plastitanium = /datum/species/golem/plastitanium,
 		/obj/item/stack/sheet/mineral/abductor = /datum/species/golem/alloy,

@@ -95,6 +95,9 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/under/color/grey = 1,
 		/obj/item/clothing/gloves/color/fyellow = 1,
 		/obj/effect/spawner/lootdrop/gloves = 1,
+		//SKYRAT EDIT BEGIN
+		/obj/item/vending_refill/kink = 1,
+		//SKYRAT EDIT END
 		/obj/item/storage/wallet/random = 1,
 		/obj/item/clothing/glasses/science = 1,
 		/obj/item/clothing/glasses/meson = 1,

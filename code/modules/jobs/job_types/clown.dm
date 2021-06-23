@@ -63,10 +63,14 @@
 
 	id_trim = /datum/id_trim/job/clown
 
+//SKYRAT EDIT REMOVAL START
+/*
 /datum/outfit/job/clown/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_BANANIUM_SHIPMENTS))
 		backpack_contents[/obj/item/stack/sheet/mineral/bananium/five] = 1
+*/
+//SKYRAT EDIT END
 
 /datum/outfit/job/clown/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()

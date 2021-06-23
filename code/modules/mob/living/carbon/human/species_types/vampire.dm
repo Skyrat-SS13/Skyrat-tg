@@ -1,3 +1,4 @@
+//The warning originates from synths.dm
 /datum/species/vampire
 	name = "Vampire"
 	id = "vampire"

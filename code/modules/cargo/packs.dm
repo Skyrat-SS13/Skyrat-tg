@@ -1318,7 +1318,11 @@
 					/obj/item/reagent_containers/glass/bottle/random_virus,
 					/obj/item/reagent_containers/glass/bottle/fake_gbs,
 					/obj/item/reagent_containers/glass/bottle/magnitis,
+					//SKYRAT EDIT REMOVAL BEGIN
+					/*
 					/obj/item/reagent_containers/glass/bottle/pierrot_throat,
+					*/
+					//SKYRAT EDIT END
 					/obj/item/reagent_containers/glass/bottle/brainrot,
 					/obj/item/reagent_containers/glass/bottle/anxiety,
 					/obj/item/reagent_containers/glass/bottle/beesease,

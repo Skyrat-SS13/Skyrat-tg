@@ -877,6 +877,8 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
+//SKYRAT EDIT REMOVAL START
+/*
 /////////////////////////Clown tech/////////////////////////
 /datum/techweb_node/clown
 	id = "clown"
@@ -903,6 +905,8 @@
 		"mech_punching_face",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+*/
+//SKYRAT EDIT END
 
 ////////////////////////Computer tech////////////////////////
 /datum/techweb_node/comptech

@@ -142,6 +142,8 @@ Charged extracts:
 	user.visible_message(span_notice("[src] distills into a potion!"))
 	..()
 
+//SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODULAR
+/*
 /obj/item/slimecross/charged/pyrite
 	colour = "pyrite"
 	effect_desc = "Creates bananium. Oh no."
@@ -150,6 +152,8 @@ Charged extracts:
 	new /obj/item/stack/sheet/mineral/bananium(get_turf(user), 10)
 	user.visible_message(span_warning("[src] solidifies with a horrifying banana stench!"))
 	..()
+*/
+//SKYRAT EDIT END
 
 /obj/item/slimecross/charged/red
 	colour = "red"
@@ -181,7 +185,12 @@ Charged extracts:
 
 /obj/item/slimecross/charged/pink
 	colour = "pink"
+	//SKYRAT EDIT BEGIN
+	/*
 	effect_desc = "Produces a... lovepotion... no ERP."
+	*/
+	effect_desc = "Produces a love potion."
+	//SKYRAT EDIT END
 
 /obj/item/slimecross/charged/pink/do_effect(mob/user)
 	new /obj/item/slimepotion/lovepotion(get_turf(user))

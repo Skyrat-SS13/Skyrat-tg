@@ -106,22 +106,6 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/awoo.ogg'
 
-/datum/emote/living/nya
-	key = "nya"
-	key_third_person = "nyas"
-	message = "lets out a nya!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/nya.ogg'
-
-/datum/emote/living/weh
-	key = "weh"
-	key_third_person = "wehs"
-	message = "lets out a weh!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/weh.ogg'
-
 /datum/emote/living/mothsqueak
 	key = "msqueak"
 	key_third_person = "lets out a tiny squeak"
@@ -144,7 +128,6 @@
 	message = "merps!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/merp.ogg'
 
 /datum/emote/living/bark
 	key = "bark"
@@ -323,9 +306,9 @@
 /datum/emote/living/blep
 	key = "blep"
 	key_third_person = "bleps"
-	message = "bleps their tongue out. Blep."
-	message_AI = "shows an image of a random blepping animal. Blep."
-	message_robot = "bleps their robo-tongue out. Blep."
+	message = "bleps their tongue out."
+	message_AI = "shows an image of a random blepping animal."
+	message_robot = "bleps their robo-tongue out."
 
 /datum/emote/living/bork
 	key = "bork"
@@ -333,7 +316,6 @@
 	message = "lets out a bork."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/bork.ogg'
 
 /datum/emote/living/hoot
 	key = "hoot"
@@ -341,8 +323,6 @@
 	message = "hoots!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
-	//cooldown = 2 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/growl
 	key = "growl"
@@ -359,8 +339,6 @@
 	message = "lets out a woof."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	//sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg' - REMOVED (SOUND EFFECT SUCKS)
-	sound = 'modular_skyrat/modules/emotes/sound/voice/woof2.ogg'
 
 /datum/emote/living/baa
 	key = "baa"
@@ -392,8 +370,6 @@
 	message = "lets out an awoo!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
-	//cooldown = 3 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/rattle
 	key = "rattle"
@@ -465,10 +441,3 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/moo.ogg'
 
-/datum/emote/living/honk
-	key = "honk1"
-	key_third_person = "honks loudly like a goose!"
-	message = "honks loudly like a goose!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/goose_honk.ogg'

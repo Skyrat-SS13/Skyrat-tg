@@ -82,6 +82,8 @@
 	category = list("Exosuit Modules")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
+//SKYRAT EDIT REMOVAL START
+/*
 /datum/design/board/honker_main
 	name = "\"H.O.N.K\" Central Control module"
 	desc = "Allows for the construction of a \"H.O.N.K\" Central Control module."
@@ -105,6 +107,8 @@
 	build_path = /obj/item/circuitboard/mecha/honker/targeting
 	category = list("Exosuit Modules")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+*/
+//SKYRAT EDIT END
 
 /datum/design/board/phazon_main
 	name = "\"Phazon\" Central Control module"

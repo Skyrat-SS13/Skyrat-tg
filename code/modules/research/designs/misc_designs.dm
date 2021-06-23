@@ -127,6 +127,8 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/design/air_horn
 	name = "Air Horn"
 	desc = "Damn son, where'd you find this?"
@@ -135,6 +137,8 @@
 	materials = list(/datum/material/iron = 4000, /datum/material/bananium = 1000)
 	build_path = /obj/item/bikehorn/airhorn
 	category = list("Equipment")
+*/
+//SKYRAT EDIT END
 
 
 /datum/design/mesons

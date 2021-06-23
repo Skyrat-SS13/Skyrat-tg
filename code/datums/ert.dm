@@ -88,6 +88,8 @@
 	leader_role = /datum/antagonist/ert/intern/leader/unarmed
 	rename_team = "Unarmed Horde of Interns"
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/ert/erp
 	roles = list(/datum/antagonist/ert/security/party, /datum/antagonist/ert/clown/party, /datum/antagonist/ert/engineer/party, /datum/antagonist/ert/janitor/party)
 	leader_role = /datum/antagonist/ert/commander/party
@@ -96,3 +98,5 @@
 	mission = "Create entertainment for the crew."
 	polldesc = "a Code Rainbow Nanotrasen Emergency Response Party"
 	code = "Rainbow"
+*/
+//SKYRAT EDIT END

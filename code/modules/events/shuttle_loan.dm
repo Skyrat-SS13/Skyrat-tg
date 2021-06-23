@@ -175,7 +175,11 @@
 					T = pick_n_take(empty_shuttle_turfs)
 					new infected_assistant(T)
 				shuttle_spawns.Add(/obj/structure/closet/crate)
+				//SKYRAT EDIT REMOVAL BEGIN
+				/*
 				shuttle_spawns.Add(/obj/item/reagent_containers/glass/bottle/pierrot_throat)
+				*/
+				//SKYRAT EDIT END
 				shuttle_spawns.Add(/obj/item/reagent_containers/glass/bottle/magnitis)
 
 			if(DEPARTMENT_RESUPPLY)

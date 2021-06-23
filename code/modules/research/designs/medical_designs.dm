@@ -517,6 +517,8 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_MEDICAL
 
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/design/implant_sadtrombone
 	name = "Sad Trombone Implant Case"
 	desc = "Makes death amusing."
@@ -525,6 +527,8 @@
 	materials = list(/datum/material/glass = 500, /datum/material/bananium = 500)
 	build_path = /obj/item/implantcase/sad_trombone
 	category = list("Medical Designs")
+*/
+//SKYRAT EDIT END
 
 
 /datum/design/implant_chem

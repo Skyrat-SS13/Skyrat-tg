@@ -137,5 +137,9 @@
 		var/mob/living/L = source
 		if(fake_species && L.health > disguise_fail_health)
 			switch(fake_species.type)
+			//SKYRAT EDIT REMOVAL BEGIN
+			/* yes i know, it causes warnings, but "tg may add something later", and frankly that causes less issues (modularity wise too)
 				if (/datum/species/golem/bananium)
 					speech_args[SPEECH_SPANS] |= SPAN_CLOWN
+			*/
+			//SKYRAT EDIT END
