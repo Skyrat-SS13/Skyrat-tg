@@ -1,5 +1,7 @@
-//Re-textures based off the survival pods with one goal in mind: re-coloring. Now your spaceships can be painted!
-//(Do faded tones - DONT USE NEON BRIGHT COLORS, I /WILL/ CRY)
+//Re-textures based off the survival pods, without the orange stripe. Now you can re-color them to paint your spaceships!
+//(Do faded tones - DONT USE NEON BRIGHT COLORS, I /WILL/ CRY, and your ship will look like literal crap)
+//Also make sure you properly var-edit everything hnngh
+
 /turf/closed/wall/mineral/titanium/spaceship
 	icon = 'modular_skyrat/modules/mapping/icons/unique/spaceships/shipwalls.dmi'
 	icon_state = "ship_walls-0"
@@ -9,7 +11,6 @@
 
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal
 	icon_state = "map-shuttle_nd"
-	base_icon_state = "ship_walls-0"
 	smoothing_flags = SMOOTH_BITMASK
 
 /turf/closed/wall/mineral/titanium/spaceship/nosmooth

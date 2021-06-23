@@ -32,7 +32,7 @@
 /obj/item/paper/fluff/ruins/salvagepost
 	name = "note"
 	desc = "A lazily written note, with a few smudges."
-	info = "I'll just be honest: I fucked up. Turns out that when that ship got pulled in from the edge of the shipment lanes, there was a reason it was abandoned. Finally cracked into the engine room and a shitload of... drones, maybe? scampered all over me. Lost my grav-cannon in the hustle, and might have cut a fuel line.. so I can't exactly finish the salvage. Hoped you'd be able to do something about it when you take my place on-duty... ask the dropship if they have a gun before they leave ya here, I guess? Might be best to flush out the gas first though, you know how well shooting around that stuff goes... --- ~Best regards, Noah, the better Salvage Techie"
+	info = "I'll just be honest: I fucked up. Turns out that when that ship got pulled in from the edge of the shipment lanes, there was a reason it was abandoned. Finally cracked into the engine room and a shitload of... drones, maybe? scampered all over me. Lost my grav-cannon in the hustle, and might have cut a fuel line.. so I can't exactly finish the salvage. Hoped you'd be able to do something about it when you take my place on-duty... ask the dropship if they have a gun before they leave ya here, I guess? Might be best to flush out the gas first though, you know how well shooting around that stuff goes... --- ~Best regards, Noah, the better Salvage Techie --- P.S., the corpo's left us some mindbreakers, something about 'recreational drugs leading to a more welcoming workplace', yada-yada. I wouldn't touch 'em but that's up to you I guess."
 
 /obj/item/tape/ruins/ghostship	//An early 'AI' that gained self-awareness, praising the Machine God. Yes, this whole map is a Hardspace Shipbreaker reference.
 	icon_state = "tape_blue"
@@ -73,7 +73,7 @@
 		return
 	else if(. && !QDELETED(src))
 		visible_message("<span class='notice'>[src] sparks and explodes! You hear a faint, buzzy scream...</span>","<span class='hear'>You hear a loud pop, followed by a faint, buzzy scream.</span>")
-		playsound(src.loc, 'sound/weapons/slashmiss.ogg', 75, TRUE)	//add that sound i downloaded + credit creator
+		playsound(src.loc, 'modular_skyrat/modules/mapping/code/sounds/MachineDeath.ogg', 75, TRUE)	//Credit to @yungfunnyman#3798 (I'll find a proper name to credit)
 		do_sparks(2, TRUE, src)
 		qdel(src)
 		return
