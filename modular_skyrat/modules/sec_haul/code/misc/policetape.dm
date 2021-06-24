@@ -103,7 +103,7 @@
 			return TRUE
 		//if(allowed(target_carbon) && target_carbon.m_intent != MOVE_INTENT_WALK)	//Allowed people NEED to walk (?) ((If so, remove allowed(target_carbon) from above))
 		if(!crumpled)
-			if(target_carbon.combat_mode || target_carbon.m_intent != MOVE_INTENT_WALK)
+			if(target_carbon.combat_mode || target_carbon.m_intent == MOVE_INTENT_WALK)
 				crumple()
 				visible_message("<span class='notice'>[target_carbon] pushes through \the [src] aggressively, ruining the tape!</span>")
 				return TRUE
