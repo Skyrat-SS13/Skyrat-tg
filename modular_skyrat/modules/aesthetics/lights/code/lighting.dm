@@ -3,6 +3,7 @@
 	overlayicon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting_overlay.dmi'
 	var/maploaded = FALSE //So we don't have a lot of stress on startup.
 	var/turning_on = FALSE //More stress stuff.
+	var/constant_flickering = FALSE // Are we always flickering?
 	var/flicker_timer = null
 	var/roundstart_flicker = FALSE
 
@@ -43,19 +44,19 @@
 	on = FALSE
 	update(FALSE, TRUE)
 
-	flickering = TRUE
+	constant_flickering = TRUE
 
 	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_on), rand(5, 10))
 
 /obj/machinery/light/proc/stop_flickering()
-	flickering = FALSE
+	constant_flickering = FALSE
 
 	if(flicker_timer)
 		deltimer(flicker_timer)
 		flicker_timer = null
 
 /obj/machinery/light/proc/flicker_on()
-	if(!flickering)
+	if(!constant_flickering)
 		return
 
 	var/area/A = get_area(src)
@@ -67,7 +68,7 @@
 	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_off), rand(5, 10))
 
 /obj/machinery/light/proc/flicker_off()
-	if(!flickering)
+	if(!constant_flickering)
 		return
 
 	var/area/A = get_area(src)

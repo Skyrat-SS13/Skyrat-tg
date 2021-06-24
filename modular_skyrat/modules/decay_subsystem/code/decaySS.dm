@@ -6,10 +6,10 @@ These procs are incredibly expensive and should only really be run once. That's 
 
 #define WALL_RUST_PERCENT_CHANCE 15
 #define FLOOR_DIRT_PERCENT_CHANCE 15
-#define FLOOR_BLOOD_PERCENT_CHANCE 2
-#define FLOOR_VOMIT_PERCENT_CHANCE 2
+#define FLOOR_BLOOD_PERCENT_CHANCE 1
+#define FLOOR_VOMIT_PERCENT_CHANCE 1
 #define FLOOR_OIL_PERCENT_CHANCE 5
-#define FLOOR_TILE_MISSING_PERCENT_CHANCE 2
+#define FLOOR_TILE_MISSING_PERCENT_CHANCE 1
 #define LIGHT_FLICKER_PERCENT_CHANCE 5
 
 SUBSYSTEM_DEF(decay)
@@ -35,9 +35,12 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDECAY had no possible turfs to use!")
 
-	severity_modifier = rand(1, 4)
+	severity_modifier = 1
 
 	message_admins("SSDecay severity modifier set to [severity_modifier]")
+
+	if(!severity_modifier)
+		return
 
 	do_common()
 
@@ -50,14 +53,17 @@ SUBSYSTEM_DEF(decay)
 /datum/controller/subsystem/decay/proc/do_common()
 	for(var/turf/open/floor/iterating_floor in possible_turfs)
 		if(!istype(iterating_floor, /turf/open/floor/plating))
-			if(prob(FLOOR_TILE_MISSING_PERCENT_CHANCE * severity_modifier))
+			if(prob(FLOOR_TILE_MISSING_PERCENT_CHANCE * severity_modifier) && prob(50))
 				iterating_floor.break_tile_to_plating()
 
 		if(prob(FLOOR_DIRT_PERCENT_CHANCE * severity_modifier))
 			new /obj/effect/decal/cleanable/dirt(iterating_floor)
 
+		if(prob(FLOOR_DIRT_PERCENT_CHANCE * severity_modifier))
+			new /obj/effect/decal/cleanable/dirt(iterating_floor)
+
 	for(var/turf/closed/iterating_wall in possible_turfs)
-		if(prob(WALL_RUST_PERCENT_CHANCE))
+		if(prob(WALL_RUST_PERCENT_CHANCE * severity_modifier))
 			var/mutable_appearance/rust = mutable_appearance(iterating_wall.icon, "rust")
 			iterating_wall.add_overlay(rust)
 

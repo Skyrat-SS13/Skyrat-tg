@@ -534,6 +534,10 @@
 	if(cell)
 		. += "Its backup power charge meter reads [round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
 
+	//SKYRAT EDIT ADDITION
+	if(constant_flickering)
+		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
+	//SKYRAT EDIT END
 
 
 // attack with item - insert light (if right type), otherwise try to break the light
@@ -544,6 +548,14 @@
 	if(istype(W, /obj/item/lightreplacer))
 		var/obj/item/lightreplacer/LR = W
 		LR.ReplaceLight(src, user)
+
+	//SKYRAT EDIT ADDITION
+	if(istype(W, /obj/item/multitool) && constant_flickering)
+		to_chat(user, span_notice("You start repairing the ballast of [src] with [W]."))
+		if(do_after(user, 2 SECONDS, src))
+			stop_flickering()
+			to_chat(user, span_notice("You repair the ballast of [src]!"))
+	//SKYRAT EDTI END
 
 	// attempt to insert light
 	else if(istype(W, /obj/item/light))
@@ -794,11 +806,6 @@
 		user.put_in_active_hand(L)
 
 	status = LIGHT_EMPTY
-
-	//SKYRAT EDIT ADDITION
-	if(flickering)
-		stop_flickering()
-	//SKYRAT EDIT END
 	update()
 	return L
 
@@ -825,10 +832,6 @@
 		if(on)
 			do_sparks(3, TRUE, src)
 	status = LIGHT_BROKEN
-	//SKYRAT EDIT ADDITION
-	if(flickering)
-		stop_flickering()
-	//SKYRAT EDIT END
 	update()
 
 /obj/machinery/light/proc/fix()
