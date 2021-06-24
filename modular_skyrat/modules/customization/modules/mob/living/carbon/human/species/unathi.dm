@@ -1,6 +1,6 @@
 /datum/species/unathi
 	name = "Unathi"
-	id = "unathi"
+	id = SPECIES_UNATHI
 	default_color = "4B4B4B"
 	species_traits = list(
 		MUTCOLORS,

@@ -1,6 +1,6 @@
 /datum/species/tajaran
 	name = "Tajaran"
-	id = "tajaran"
+	id = SPECIES_TAJARAN
 	default_color = "4B4B4B"
 	species_traits = list(
 		MUTCOLORS,

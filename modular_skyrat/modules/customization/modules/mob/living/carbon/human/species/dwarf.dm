@@ -1,6 +1,6 @@
 /datum/species/dwarf
 	name = "Dwarf"
-	id = "dwarf"
+	id = SPECIES_DWARF
 	limbs_id = "human"
 	default_color = "FFFFFF"
 	say_mod = "bellows"

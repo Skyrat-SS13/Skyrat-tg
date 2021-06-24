@@ -1,7 +1,7 @@
 /datum/species/xeno
 	// A cloning mistake, crossing human and xenomorph DNA
 	name = "Xenomorph Hybrid"
-	id = "xeno"
+	id = SPECIES_XENO
 	say_mod = "hisses"
 	default_color = "00FF00"
 	species_traits = list(

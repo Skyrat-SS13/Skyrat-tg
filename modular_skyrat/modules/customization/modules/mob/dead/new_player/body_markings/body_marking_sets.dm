@@ -4,7 +4,7 @@
 	///List of the body markings in this set
 	var/body_marking_list
 	///Which species is this marking recommended to. Important for randomisations.
-	var/recommended_species = list("synthmammal", "mammal", "tajaran", "vulpkanin", "aquatic", "akula")
+	var/recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_TAJARAN, SPECIES_VULP, SPECIES_AQUATIC, SPECIES_AKULA)
 
 /datum/body_marking_set/none
 	name = "None"
@@ -149,7 +149,7 @@
 
 /datum/body_marking_set/xeno
 	name = "Xeno"
-	body_marking_list = list("Xeno", "Xeno Head")
+	body_marking_list = list(SPECIES_XENO, "Xeno Head")
 
 /datum/body_marking_set/datashark
 	name = "Datashark"
@@ -197,7 +197,7 @@
 
 //VOX MARKINGS
 /datum/body_marking_set/vox
-	recommended_species = list("vox")
+	recommended_species = list(SPECIES_VOX)
 
 /datum/body_marking_set/vox/vox
 	name = "Vox"
@@ -220,7 +220,7 @@
 	body_marking_list = list("Vox Talon", "Vox Heart Tattoo")
 
 /datum/body_marking_set/synthliz
-	recommended_species = list("synthliz")
+	recommended_species = list(SPECIES_SYNTHLIZ)
 
 /datum/body_marking_set/synthliz/scutes
 	name = "Synth Scutes"
@@ -237,7 +237,7 @@
 //MOTH
 
 /datum/body_marking_set/moth
-	recommended_species = list("moth")
+	recommended_species = list(SPECIES_MOTH)
 
 /datum/body_marking_set/moth/reddish
 	name = "Reddish"

@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			GLOB.customizable_races[S.id] = TRUE
 		qdel(S)
 	if(!GLOB.roundstart_races.len)
-		GLOB.roundstart_races["human"] = TRUE
+		GLOB.roundstart_races[SPECIES_HUMAN] = TRUE
 
 /datum/species
 	mutant_bodyparts = list()

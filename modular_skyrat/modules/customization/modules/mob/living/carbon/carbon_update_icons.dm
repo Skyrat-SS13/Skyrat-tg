@@ -67,7 +67,7 @@
 	if(head)
 		var/desired_icon = head.worn_icon
 		var/used_style = NONE
-		if(dna?.species.id == "vox")
+		if(dna?.species.id == SPECIES_VOX)
 			used_style = STYLE_VOX
 		else if(dna?.species.mutant_bodyparts["snout"])
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]
@@ -97,7 +97,7 @@
 	if(wear_mask)
 		var/desired_icon = wear_mask.worn_icon
 		var/used_style = NONE
-		if(dna?.species.id == "vox")
+		if(dna?.species.id == SPECIES_VOX)
 			used_style = STYLE_VOX
 		else if(dna?.species.mutant_bodyparts["snout"])
 			var/datum/sprite_accessory/snouts/S = GLOB.sprite_accessories["snout"][dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME]]

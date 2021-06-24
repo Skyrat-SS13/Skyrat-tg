@@ -47,19 +47,19 @@
 	return null
 
 /datum/sprite_accessory/tails/lizard
-	recommended_species = list("lizard", "ashlizard", "synthmammal", "mammal", "unathi", "silverlizard")
+	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
 	organ_type = /obj/item/organ/tail/lizard
 	general_type = "lizard"
 
 /datum/sprite_accessory/tails/human
-	recommended_species = list("human", "synthhuman", "felinid", "synthmammal", "mammal")
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL)
 	organ_type = /obj/item/organ/tail/cat
 
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
 	icon_state = "monkey"
 	icon = 'icons/mob/mutant_bodyparts.dmi'
-	recommended_species = list("human", "synthhuman", "felinid", "synthmammal", "mammal", "monkey")
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY)
 	color_src = FALSE
 	organ_type = /obj/item/organ/tail/monkey
 
@@ -78,13 +78,13 @@
 /datum/sprite_accessory/tails/none
 	name = "None"
 	icon_state = "none"
-	recommended_species = list("synthmammal", "mammal", "human", "synthhuman", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID)
 	color_src = null
 	factual = FALSE
 
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
-	recommended_species = list("synthmammal", "mammal","human", "synthhuman", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID)
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	organ_type = /obj/item/organ/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
@@ -93,15 +93,15 @@
 	organ_type = /obj/item/organ/tail/fluffy
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin
-	recommended_species = list("synthmammal", "mammal", "human", "synthhuman", "vulpkanin", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_VULP, SPECIES_HUMANOID)
 	general_type = "vulpine"
 
 /datum/sprite_accessory/tails/mammal/wagging/tajaran
-	recommended_species = list("synthmammal", "mammal", "human", "synthhuman", "tajaran", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_TAJARAN, SPECIES_HUMANOID)
 	general_type = "feline"
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
-	recommended_species = list("synthmammal", "mammal", "human", "synthhuman", "akula", "aquatic", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID)
 	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/avian1

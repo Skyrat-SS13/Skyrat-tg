@@ -9,7 +9,7 @@
 
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"
-	id = "slimeperson"
+	id = SPECIES_SLIMESTART
 	limbs_id = "slime"
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
 	default_color = "00FFFF"

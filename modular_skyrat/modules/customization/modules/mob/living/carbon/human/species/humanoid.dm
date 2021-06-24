@@ -1,6 +1,6 @@
 /datum/species/humanoid
 	name = "Humanoid"
-	id = "humanoid"
+	id = SPECIES_HUMANOID
 	default_color = "4B4B4B"
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,

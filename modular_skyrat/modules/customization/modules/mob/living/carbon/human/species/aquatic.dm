@@ -1,6 +1,6 @@
 /datum/species/aquatic
 	name = "Aquatic"
-	id = "aquatic"
+	id = SPECIES_AQUATIC
 	default_color = "4B4B4B"
 	species_traits = list(
 		MUTCOLORS,

@@ -19,6 +19,28 @@
 #define REAGENT_ORGANIC 1
 #define REAGENT_SYNTHETIC 2
 
+//Species IDs. If you wanna look at tg's species ID defines, go look in the *other* DNA.dm file
+#define SPECIES_AKULA "akula"
+#define SPECIES_AQUATIC "aquatic"
+#define SPECIES_DWARF "dwarf"
+#define SPECIES_HUMANOID "humanoid"
+#define SPECIES_INSECT "insect"
+#define SPECIES_MAMMAL "mammal"
+#define SPECIES_IPC "ipc"
+#define SPECIES_PODPERSON_WEAK "podweak"
+#define SPECIES_SYNTHLIZ "synthliz"
+#define SPECIES_SYNTHMAMMAL "synthmammal"
+#define SPECIES_SYNTHHUMAN "synthhuman"
+#define SPECIES_SLIMESTART "slimeperson"	//There's already SPECIES_SLIMEPERSON in tg
+#define SPECIES_SKRELL "skrell"
+#define SPECIES_TAJARAN "tajaran"
+#define SPECIES_UNATHI "unathi"
+#define SPECIES_VOX "vox"
+#define SPECIES_VULP "vulpkanin"
+#define SPECIES_XENO "xeno"
+
+#define SPECIES_MUTANT "mutant"
+
 //Some defines for sprite accessories
 // Which color source we're using when the accessory is added
 #define DEFAULT_PRIMARY		1

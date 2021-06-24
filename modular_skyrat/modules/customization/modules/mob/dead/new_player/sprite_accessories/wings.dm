@@ -6,7 +6,7 @@
 	generic = "Wings"
 	key = "wings"
 	color_src = USE_ONE_COLOR
-	recommended_species = list("human", "synthhuman", "felinid", "lizard", "synthmammal", "mammal", "synthliz")
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_LIZARD, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_SYNTHLIZ)
 	organ_type = /obj/item/organ/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 
@@ -34,7 +34,7 @@
 /datum/sprite_accessory/wings/moth
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_wings.dmi' //Needs new icon to suit new naming convention
 	default_color = "FFF"
-	recommended_species = list("moth", "synthmammal", "mammal", "insect") //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
+	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT) //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/wings/moth
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
@@ -127,7 +127,7 @@
 /datum/sprite_accessory/wings/mammal
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	default_color = DEFAULT_PRIMARY
-	recommended_species = list("synthmammal", "mammal", "lizard", "insect", "synthliz")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT, SPECIES_SYNTHLIZ)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one

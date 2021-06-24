@@ -3,7 +3,7 @@
 	default_color = "FFF"
 	key = "fluff"
 	generic = "Fluff"
-	recommended_species = list("moth", "synthmammal", "mammal", "insect")
+	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT)
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/fluff/moth/none
