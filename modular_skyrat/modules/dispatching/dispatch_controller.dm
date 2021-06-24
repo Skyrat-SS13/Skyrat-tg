@@ -524,18 +524,16 @@ SUBSYSTEM_DEF(dispatch)
 			return TRUE
 
 		if("ticket-clear")
-			var/resp = tgui_alert(user, "Are you sure you want to reset this ticket? This will also clear the handler flag!", "Ticket Clear", list("Yes", "No"))
-
-			if(resp!="Yes")
-				return TRUE
-
 			var/ticket = ui_data_by_mob[user]["mdata"]["ticketActive"]
 			var/datum/dispatch_ticket/ticket_i = tickets[ticket]
 
-			ticket_i.message_creator("Your ticket has been cleared. Please wait for a new handler.")
-
-			ticket_i.handle(null)
-			ticket_i.status = SSDISPATCH_TICKET_STATUS_OPEN
+			if(ticket_i.status == SSDISPATCH_TICKET_STATUS_ACTIVE)
+				var/resp = tgui_alert(user, "Are you sure you want to clear this ticket without finalizing it?", "Ticket Clear", list("Yes", "No"))
+				if(resp!="Yes")
+					return TRUE
+				ticket_i.message_creator("Your ticket has been cleared. Please wait for a new handler.")
+				ticket_i.handle(null)
+				ticket_i.status = SSDISPATCH_TICKET_STATUS_OPEN
 			ui_data_by_mob[user]["mdata"]["ticketActive"] = "None"
 
 			return TRUE
