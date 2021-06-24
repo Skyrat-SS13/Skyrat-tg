@@ -64,7 +64,7 @@
 		on = TRUE
 		update(FALSE, TRUE)
 
-	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_off), rand(1, 5))
+	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_off), rand(5, 10))
 
 /obj/machinery/light/proc/flicker_off()
 	if(!flickering)
@@ -76,7 +76,7 @@
 		on = FALSE
 		update(FALSE, TRUE)
 
-	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_on), rand(1, 50))
+	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_on), rand(5, 50))
 
 /obj/machinery/light/Initialize(mapload = TRUE)
 	. = ..()
