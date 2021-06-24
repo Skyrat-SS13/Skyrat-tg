@@ -6,24 +6,13 @@
 	if(!ishuman(usr)) return
 	SSdispatch.ui_interact(usr, null, "ticket-new")
 
-/datum/action/item_action/dispatch_ticket_view
-	name = "Dispatch Manager"
-	button_icon_state = "round_end"
-
-/datum/action/item_action/dispatch_ticket_view/Trigger()
-	if(!ishuman(usr)) return
-	var/mob/living/carbon/human/user = usr
-	var/obj/item/card/id/idcard = user.get_idcard()
-	if(!idcard || !(\
-		(ACCESS_SECURITY in idcard.access) ||\
-		(ACCESS_MEDICAL in idcard.access) ||\
-		(ACCESS_ENGINE in idcard.access) ))
-		to_chat(user, "<span class='warning'>Invalid Access.</span>")
+/obj/item/radio/headset/RightClick(mob/user)
+	var/list/holder_roles = SSdispatch.get_holder_roles(user)
+	if(!holder_roles.len)
+		to_chat(user, span_warning("You are not authorized to access the Ticket Browser."))
 		return
-
 	SSdispatch.ui_interact(user, null, "ticket-manage")
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
-	actions += new /datum/action/item_action/dispatch_ticket_view(src)
 	actions += new /datum/action/item_action/dispatch_ticket_new(src)
