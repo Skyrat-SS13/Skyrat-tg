@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(dispatch)
 	var/datum/dispatch_ticket/ticket = new(user, tdata)
 	user.visible_message("[user] makes a loud chime!")
 	for(var/mob/mob in viewers(world.view, user))
-		SEND_SOUND(mob, '/sound/machinesterminal_success.ogg')
+		SEND_SOUND(mob, '/sound/machines/terminal_success.ogg')
 	var/key = "[ticket.title]-[ticket.creator]-[uppertext(random_string(4, GLOB.hex_characters))]"
 	tickets[key] = ticket
 	ticket.key = key
