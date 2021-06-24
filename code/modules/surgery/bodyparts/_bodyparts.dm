@@ -448,8 +448,14 @@
 	var/base_roll = rand(1, round(damage ** WOUND_DAMAGE_EXPONENT))
 	var/injury_roll = base_roll
 	injury_roll += check_woundings_mods(woundtype, damage, wound_bonus, bare_wound_bonus)
-	var/list/wounds_checking = GLOB.global_wound_types[woundtype]
-
+	//var/list/wounds_checking = GLOB.global_wound_types[woundtype] SKRYAT EDIT ORIGINAL
+	//SKYRAT EDIT CHANGE START
+	var/list/wounds_checking
+	if((owner.mob_biotypes & (MOB_ROBOTIC)) || src.status == BODYPART_ROBOTIC)
+		wounds_checking = GLOB.global_wound_types_synth[woundtype]
+	if((owner.mob_biotypes & MOB_ORGANIC) || !src.status == BODYPART_ROBOTIC)
+		wounds_checking = GLOB.global_wound_types[woundtype]
+	//SKYRAT EDIT END
 	if(injury_roll > WOUND_DISMEMBER_OUTRIGHT_THRESH && prob(get_damage() / max_damage * 100))
 		var/datum/wound/loss/dismembering = new
 		dismembering.apply_dismember(src, woundtype, outright=TRUE)
@@ -1009,9 +1015,10 @@
 /obj/item/bodypart/proc/get_bleed_rate()
 	if(HAS_TRAIT(owner, TRAIT_NOBLEED))
 		return
+	/* SKYRAT EDIT REMOVAL
 	if(status != BODYPART_ORGANIC) // maybe in the future we can bleed oil from aug parts, but not now
 		return
-
+	*/ //SKYRAT EDIT END
 	var/bleed_rate = 0
 	if(generic_bleedstacks > 0)
 		bleed_rate += 0.5

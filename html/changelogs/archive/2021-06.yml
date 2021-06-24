@@ -489,3 +489,111 @@
   - balance: Medibots are no longer able to be upgraded
   sasichkamega:
   - rscadd: added a small heal to those on the same tile as felinid while purring.
+2021-06-21:
+  Cheshify:
+  - bugfix: Vox should no longer be able to breathe station airmix with black-market
+      organs.
+  Gandalf2k15:
+  - rscadd: The Nanotrasen Representative has been added to the game!
+  - rscadd: More explosion sound effects!
+  Melbert:
+  - bugfix: Fixed nuke ops lobby meta exploit
+  - bugfix: Fixes contractor tablets breaking due to contract targets cryoing.
+  OrionTheFox:
+  - bugfix: The CE's Naval Uniform has been remodelled to be more recognizable from
+      the HoS's, as well as their antennae properly attached. Nanotrasen's Representative
+      is now also welcome to a selection of these uniforms.
+  Ryll/Shaps:
+  - bugfix: OOC heart commendations should once again function and poll people as
+      it should during the shuttle's return trip.
+  SkyratBot:
+  - bugfix: tgui input lists no longer break when duplicate keys are passed
+  - bugfix: H.A.U.L. gauntlets no longer output a message about losing their grip
+      power when you drop them to the floor.
+  - bugfix: Removing the H.A.U.L. gauntlets while pulling something will now stop
+      the enhanced pulling effect.
+  - bugfix: Fixed signal ports receiving signals when a signal is not actually sent
+  - bugfix: Some overlays missing from variant defibs are now properly applied.
+  - spellcheck: multiple projectiles are now pluralized correctly
+  - bugfix: People with digitigrade legs are now properly paralyzed by the Paraplegic
+      perk
+  - bugfix: Usable_limbs can no longer be set below 0, which let people walk when
+      they shouldn't be able to
+  - bugfix: Tachyon-doppler arrays now connect with servers on different z-levels.
+  - bugfix: Makes roleblocks in mafia actually end properly
+  ZephyrTFA:
+  - bugfix: Cryo Storage now silences PDAs that it hoovers.
+2021-06-22:
+  ATHATH:
+  - bugfix: Stunning a cyborg with a contractor baton now puts your contractor baton
+      on cooldown, just like knocking a human down does. Don't worry, you can still
+      easily chainstun/baton 'n' bash borgs with contractor batons.
+  - soundadd: Attempting to stun a cyborg with a classic baton or a telebaton will
+      play a CLONGing noise, produce a special message, and put your baton on cooldown.
+      Harmbatonning cyborgs with classic batons and telebatons still works, of course.
+  - refactor: The code for classic batons, telebatons, and contractor batons has been
+      doc'd slightly better and refactored a bit.
+  - bugfix: Some edge cases involving cyborgs who somehow both are clumsy and can
+      wield a classic baton have been accounted for. This shouldn't affect normal
+      gameplay unless an admin tries some REALLY weird stuff. Like, clumsy contractor
+      cyborg level weird.
+  SkyratBot:
+  - bugfix: Fix some runtimes with quirks and equipping silicons.
+  - bugfix: Eggs now give 5u yolk no matter what it is cracked in
+  - balance: The traitor's Agent ID card has a new option available during forging
+      called Wallet ID Spoofing. Selecting this option will automatically snap the
+      Agent ID card to the front of any wallet, allowing the traitor to hide more
+      valuable ID cards behind it. This is disabled when the card is unforged.
+  - refactor: Refactors dbcore.dm to possibly resolve the crashes that happen on Terry.
+  coiax:
+  - tweak: You can now open your own mail, even after being mindswapped into a different
+      body. Or being podcloned. Or some other horrific body replacement experiment.
+2021-06-23:
+  Cheshify:
+  - bugfix: Anthromorphs can now wear chaplain stuff.
+  Gandalf2k15:
+  - rscadd: Synthetics can now suffer moderate to severe wounds, watch out!
+  MMMiracles:
+  - rscadd: Tramstation's Tram is now more capable of making things regret being in
+      the way of it
+  - bugfix: Tramstation's Tram is now less likely to unintentionally explode
+  Semoro and azizonkg:
+  - bugfix: Ported fixes of SStimer subsystem from RU SS220 Paradise
+  - config: 'Added a new config var: flag/log_timers_on_bucket_reset'
+  SkyratBot:
+  - bugfix: Specific chem dispenser recipes no longer create fonts of infinite power.
+  - bugfix: Fixed explosions delimbing you if they're weaker
+  - bugfix: Cigarettes with the smoke_all property actually let you smoke in everything
+      the cigarette contains now.
+  - bugfix: Intento leaderboard works good
+  - imageadd: new sprites for mech action figures
+  - bugfix: Replaces broken valueless space cash item in old AI sat ruin with a 200
+      credit one
+  - imageadd: New turf decals for alternative tiletypes
+  linnpap:
+  - soundadd: Replaced the *woof sound
+2021-06-24:
+  DuffCreeper:
+  - balance: Removes 'Lick' and 'Boop' to be an upgrade at robotics for borgs
+  - code_imp: Removed icky single letter vars
+  Gandalf2k15:
+  - rscdel: The duplicate *awoo2 has been removed from the pool of available emotes.
+  Melbert:
+  - refactor: Cow tipping and medibot tipping is now a component.
+  SkyratBot:
+  - bugfix: Paper bins after being stacked too high to fall over or getting burnt
+      will no longer void your "important" paper forms when trying to add more paper
+      afterwards.
+  SpaceVampire:
+  - balance: Late-Join cyborgs not being linked to the AI correctly.
+  YakumoChen:
+  - bugfix: Dynamic will no longer create malf humans for players for never play silicon
+      in the first place.
+  ZephyrTFA:
+  - bugfix: A lot of icon states were missing
+  - code_imp: Electric Welders are much cleaner under the hood
+  capsaicinz:
+  - rscadd: Added a new space ruin, "Shuttle 8532"
+  thestubborn:
+  - rscadd: a full engineer ert and one for plants
+  - bugfix: the brig skirt works now
