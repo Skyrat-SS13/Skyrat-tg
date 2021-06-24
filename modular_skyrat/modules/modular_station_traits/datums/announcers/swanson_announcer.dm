@@ -1,4 +1,4 @@
-/datum/centcom_announcer/intern
+/datum/centcom_announcer/swanson
 	welcome_sounds = list(
 		'modular_skyrat/modules/modular_station_traits/sound/swanson/welcome/1.ogg',
 		'modular_skyrat/modules/modular_station_traits/sound/swanson/welcome/2.ogg',
