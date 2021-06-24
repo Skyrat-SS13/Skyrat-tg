@@ -181,6 +181,12 @@
 					/obj/item/clothing/under/tachawaiian/purple = 3,
 					/obj/item/clothing/under/tachawaiian/green = 3,
 					/obj/item/clothing/under/tachawaiian/blue = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby = 3,
 					/obj/item/clothing/glasses/betterunshit = 5,
 					/obj/item/clothing/glasses/thin = 3)	//SKYRAT EDIT ADDITION END
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,

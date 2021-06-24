@@ -218,6 +218,38 @@
 	name = "Grey and Black suit"
 	path = /obj/item/clothing/under/misc/vice_officer
 
+/datum/loadout_item/uniform/suit/greyskirty
+	name = "Grey Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby
+
+/datum/loadout_item/uniform/suit/blackskirty
+	name = "Black Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby
+
+/datum/loadout_item/uniform/suit/gentleskirty
+	name = "Gentle Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+
+/datum/loadout_item/uniform/suit/gentleskirty
+	name = "Gentle Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+
+/datum/loadout_item/uniform/suit/burgskirty
+	name = "Burgundy Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby
+
+/datum/loadout_item/uniform/suit/tanskirty
+	name = "Tan Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby
+
+/datum/loadout_item/uniform/suit/blueskirty
+	name = "Blue Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby
+
+/datum/loadout_item/uniform/suit/greenskirty
+	name = "Green Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby
+
 /datum/loadout_item/uniform/suit/femblack
 	name = "Feminine Suit"
 	path = /obj/item/clothing/under/suit/black/female

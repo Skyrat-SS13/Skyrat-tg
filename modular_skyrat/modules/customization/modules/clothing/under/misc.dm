@@ -565,5 +565,54 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
+/obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby
+	desc = "A white shirt with a grey pancilskirt."
+	name = "grey suit skirt"
+	icon_state = "detective_skirty"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+
+/obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby
+	desc = "A white shirt with a dark pancilskirt."
+	name = "black suit skirt"
+	icon_state = "internalaffairs_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+	desc = "A black shirt with a grey pancilskirt."
+	name = "gentle suit skirt"
+	icon_state = "gentlesuit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby
+	desc = "A satin white shirt with a dark red pancilskirt."
+	name = "burgundy suit skirt"
+	icon_state = "burgundy_suit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby
+	desc = "A satin white shirt with a tan pancilskirt."
+	name = "tan suit skirt"
+	icon_state = "tan_suit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby
+	desc = "A satin white shirt with a light blue pancilskirt."
+	name = "blue suit skirt"
+	icon_state = "bluesuit_suit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby
+	desc = "A satin white shirt with a light green pancilskirt."
+	name = "green suit skirt"
+	icon_state = "greensuit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 
