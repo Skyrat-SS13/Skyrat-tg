@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(decay)
 /datum/controller/subsystem/decay/proc/do_common()
 	for(var/turf/open/floor/iterating_floor in possible_turfs)
 		if(!istype(iterating_floor, /turf/open/floor/plating))
-			if(prob(FLOOR_TILE_MISSING_PERCENT_CHANCE * severity_modifier) && prob(50))
+			if(prob(FLOOR_TILE_MISSING_PERCENT_CHANCE * severity_modifier) && prob(60))
 				iterating_floor.break_tile_to_plating()
 
 		if(prob(FLOOR_DIRT_PERCENT_CHANCE * severity_modifier))
