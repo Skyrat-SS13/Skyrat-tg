@@ -192,6 +192,7 @@
 	id = /obj/item/card/id/advanced/gold/generic
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationadmiral
+	ears = /obj/item/radio/headset/interdyne/command
 
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/H)
 	H.faction |= ROLE_SYNDICATE
