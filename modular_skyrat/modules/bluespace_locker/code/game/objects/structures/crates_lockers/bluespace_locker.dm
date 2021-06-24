@@ -27,6 +27,8 @@
 	icon_state = null
 	desc = ""
 	cutting_tool = null
+	has_opened_overlay = FALSE
+	has_closed_overlay = FALSE
 	can_weld_shut = FALSE
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -35,8 +37,7 @@
 /obj/structure/closet/bluespace/internal/Initialize()
 	. = ..()
 	if(SSbluespace_locker.internal_locker && SSbluespace_locker.internal_locker != src)
-		qdel(src)
-		return
+		return INITIALIZE_HINT_QDEL_FORCE
 	SSbluespace_locker.internal_locker = src
 
 /obj/structure/closet/bluespace/internal/get_other_locker()
