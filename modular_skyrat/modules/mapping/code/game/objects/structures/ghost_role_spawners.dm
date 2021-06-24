@@ -143,7 +143,7 @@
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
-/datum/outfit/ds2/syndicate/research
+/datum/outfit/ds2/syndicate/researcher
 	name = "DS-2 Researcher"
 	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
@@ -174,7 +174,7 @@
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	suit = 	suit = /obj/item/clothing/suit/armor/bulletproof
+	suit = /obj/item/clothing/suit/armor/bulletproof
 	head = /obj/item/clothing/head/helmet/swat
 	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
 
