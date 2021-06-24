@@ -258,8 +258,6 @@ SUBSYSTEM_DEF(dispatch)
 	var/datum/dispatch_ticket/t2 = b
 	var/v1 = get_dispatch_priority_value(t1.priority)
 	var/v2 = get_dispatch_priority_value(t2.priority)
-	message_admins(v1)
-	message_admins(v2)
 	if(v1 > v2) return -1
 	if(v2 > v1) return 1
 	return 0
