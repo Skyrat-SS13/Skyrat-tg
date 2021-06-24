@@ -9,7 +9,7 @@ These procs are incredibly expensive and should only really be run once. That's 
 #define FLOOR_BLOOD_PERCENT_CHANCE 2
 #define FLOOR_VOMIT_PERCENT_CHANCE 2
 #define FLOOR_OIL_PERCENT_CHANCE 5
-#define LIGHT_FLICKER_PERCENT_CHANCE 50
+#define LIGHT_FLICKER_PERCENT_CHANCE 10
 
 SUBSYSTEM_DEF(decay)
 	name = "Decay System"
@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(decay)
 			if(prob(FLOOR_BLOOD_PERCENT_CHANCE * severity_modifier))
 				new /obj/effect/decal/cleanable/blood(iterating_floor)
 		for(var/obj/machinery/light/iterating_light in iterating_maintenance)
-			if(prob(LIGHT_FLICKER_PERCENT_CHANCE * severity_modifier))
+			if(prob(LIGHT_FLICKER_PERCENT_CHANCE))
 				iterating_light.start_flickering()
 
 /datum/controller/subsystem/decay/proc/do_engineering()
@@ -82,5 +82,5 @@ SUBSYSTEM_DEF(decay)
 				new /obj/effect/decal/cleanable/vomit(iterating_floor)
 		if(is_type_in_list(iterating_medical, list(/area/medical/coldroom, /area/medical/morgue, /area/medical/psychology)))
 			for(var/obj/machinery/light/iterating_light in iterating_medical)
-				if(prob(LIGHT_FLICKER_PERCENT_CHANCE * severity_modifier))
+				if(prob(LIGHT_FLICKER_PERCENT_CHANCE))
 					iterating_light.start_flickering()
