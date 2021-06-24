@@ -149,7 +149,7 @@
 
 /datum/body_marking_set/xeno
 	name = "Xeno"
-	body_marking_list = list(SPECIES_XENO, "Xeno Head")
+	body_marking_list = list("Xeno", "Xeno Head")
 
 /datum/body_marking_set/datashark
 	name = "Datashark"
