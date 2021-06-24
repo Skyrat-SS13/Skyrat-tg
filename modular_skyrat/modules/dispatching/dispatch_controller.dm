@@ -142,22 +142,23 @@ SUBSYSTEM_DEF(dispatch)
 
 	if(ui_data_by_mob[user]["tdata"]["should_clear"])
 		ui_data_by_mob[user]["tdata"] = list(
-				"creator" = "",
-				"creator-spoofed" = FALSE,
-				"priority" = "",
-				"type" = "",
-				"location" = "",
-				"location-spoofed" = FALSE,
-				"templateName" = "None",
-				"templateUse" = FALSE,
-				"title" = "",
-				"extra" = "",
-				"imageAttached" = FALSE,
-				"image" = null,
-				"suspect" = FALSE,
-				"suspectName" = "",
-				"suspectDesc" = "",
-				"should_clear" = FALSE)
+			"creator" = "",
+			"creator-spoofed" = FALSE,
+			"priority" = "",
+			"type" = "",
+			"location" = "",
+			"location-spoofed" = FALSE,
+			"templateName" = "None",
+			"templateUse" = FALSE,
+			"title" = "",
+			"extra" = "",
+			"imageAttached" = FALSE,
+			"image" = null,
+			"suspect" = FALSE,
+			"suspectName" = "",
+			"suspectDesc" = "",
+			"should_clear" = FALSE
+		)
 
 	if(ui_data_by_mob[user]["mdata"]["should_clear"])
 		if(!ui_data_by_mob[user]["ticket"])
@@ -168,7 +169,8 @@ SUBSYSTEM_DEF(dispatch)
 				"holderClocked" = FALSE,
 				"should_clear" = FALSE,
 				"ticketActive" = "None",
-				"ticketData" = list())
+				"ticketData" = list()
+			)
 		else load_ticket_data_into_mdata(user, tickets[ui_data_by_mob[user]["ticket"]])
 
 	if(!type && ui_o)
@@ -258,9 +260,9 @@ SUBSYSTEM_DEF(dispatch)
 	var/datum/dispatch_ticket/t2 = b
 	var/v1 = get_dispatch_priority_value(t1.priority)
 	var/v2 = get_dispatch_priority_value(t2.priority)
-	if(v1 > v2) return -1
-	if(v2 > v1) return 1
-	return 0
+	if(v1 == v2)
+		return 0
+	return v1 > v2 ? -1 : 1
 
 ///Takes a user, and a ticket, and loads the ticket information into their ticketData store
 /datum/controller/subsystem/dispatch/proc/load_ticket_data_into_mdata(mob/user, datum/dispatch_ticket/ticket)
@@ -374,11 +376,9 @@ SUBSYSTEM_DEF(dispatch)
 		if("spoof-location") // Comms Agents
 			if(!ishuman(user))
 				return FALSE
-
 			var/mob/living/carbon/human/user_human = user
 			if(!(user_human.ears.obj_flags & EMAGGED))
 				return FALSE
-
 			ui_data_by_mob[user]["tdata"]["location"] = "[input(user, "Enter Fake Location", "Location Spoof", "")]"
 			ui_data_by_mob[user]["tdata"]["location-spoofed"] = TRUE
 			return TRUE
@@ -386,14 +386,11 @@ SUBSYSTEM_DEF(dispatch)
 		if("spoof-creator") // Comms Agents
 			if(!ishuman(user))
 				return FALSE
-
 			var/mob/living/carbon/human/user_human = user
 			if(!(user_human.ears.obj_flags & EMAGGED))
 				return FALSE
-
 			ui_data_by_mob[user]["tdata"]["creator"] = "[input(user, "Enter Fake Creator", "Creator Spoof", "")]"
 			ui_data_by_mob[user]["tdata"]["creator-spoofed"] = TRUE
-
 			return TRUE
 
 		if("set-ticket-title")
@@ -443,90 +440,63 @@ SUBSYSTEM_DEF(dispatch)
 
 		if("ticket-select")
 			var/resp = tgui_input_list(user, "Select Ticket", "Ticket Select", get_ticket_list_for_type(ui_data_by_mob[user]["mdata"]["holderActiveType"]))
-
 			if(!resp)
 				return TRUE
-
 			ui_data_by_mob[user]["mdata"]["ticketActive"] = resp
 			load_ticket_data_into_mdata(user, tickets[resp])
-
 			return TRUE
 
 		if("ticket-select-all")
 			var/resp = tgui_input_list(user, "Select Ticket", "Ticket Select", get_ticket_list_for_type(ui_data_by_mob[user]["mdata"]["holderActiveType"], FALSE))
-
 			if(!resp)
 				return TRUE
-
 			ui_data_by_mob[user]["mdata"]["ticketActive"] = resp
 			load_ticket_data_into_mdata(user, tickets[resp])
-
 			return TRUE
 
 		if("ticket-handle")
 			var/resp = tgui_alert(user, "Are you sure you want to handle this ticket?", "Ticket Handle", list("Yes", "No"))
-
 			if(resp!="Yes")
 				return TRUE
-
 			var/ticket = ui_data_by_mob[user]["mdata"]["ticketActive"]
 			var/datum/dispatch_ticket/ticket_i = tickets[ticket]
-
 			if(!ticket_i)
 				CRASH("invalid ticket identifier '[ticket]'")
-
 			ticket_i.handle(user)
-
 			ui_data_by_mob[user]["mdata"]["ticketData"]["handler"] = "[ticket_i.handler]"
 			ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket_i.status
 			ui_data_by_mob[user]["ticket"] = ticket
-
 			return TRUE
 
 		if("ticket-reject")
 			var/resp = tgui_alert(user, "Are you sure you want to reject this ticket?", "Ticket Reject", list("Yes", "No"))
-
 			if(resp!="Yes")
 				return TRUE
-
 			var/ticket = ui_data_by_mob[user]["mdata"]["ticketActive"]
 			var/datum/dispatch_ticket/ticket_i = tickets[ticket]
-
 			if(!ticket_i)
 				CRASH("invalid ticket identifier '[ticket]'")
-
 			ticket_i.status = SSDISPATCH_TICKET_STATUS_REJECTED
-
 			ticket_i.message_creator("Your ticket has been rejected!")
-
 			ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket_i.status
-
 			return TRUE
 
 		if("ticket-resolve")
 			var/resp = tgui_alert(user, "Are you sure you want to resolve this ticket?", "Ticket Resolve", list("Yes", "No"))
-
 			if(resp!="Yes")
 				return TRUE
-
 			var/ticket = ui_data_by_mob[user]["mdata"]["ticketActive"]
 			var/datum/dispatch_ticket/ticket_i = tickets[ticket]
-
 			if(!ticket_i)
 				CRASH("invalid ticket identifier '[ticket]'")
-
 			ticket_i.status = SSDISPATCH_TICKET_STATUS_RESOLVED
-
 			ticket_i.message_creator("Your ticket has been resolved!")
-
 			ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket_i.status
-
 			return TRUE
 
 		if("ticket-clear")
 			var/ticket = ui_data_by_mob[user]["mdata"]["ticketActive"]
 			var/datum/dispatch_ticket/ticket_i = tickets[ticket]
-
 			if(ticket_i.status == SSDISPATCH_TICKET_STATUS_ACTIVE)
 				var/resp = tgui_alert(user, "Are you sure you want to clear this ticket without finalizing it?", "Ticket Clear", list("Yes", "No"))
 				if(resp!="Yes")
@@ -535,7 +505,6 @@ SUBSYSTEM_DEF(dispatch)
 				ticket_i.handle(null)
 				ticket_i.status = SSDISPATCH_TICKET_STATUS_OPEN
 			ui_data_by_mob[user]["mdata"]["ticketActive"] = "None"
-
 			return TRUE
 
 		if("ticket-refresh")
