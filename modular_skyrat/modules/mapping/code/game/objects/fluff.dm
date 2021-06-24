@@ -15,11 +15,11 @@
 	icon_state = "tape_white"   //Options are white, blue, red, yellow, purple, greyscale, or you can chose one randomly (see tape/ruins/random below)
 
 	max_capacity = 10 MINUTES
-	used_capacity = 0 SECONDS
+	used_capacity = 0 SECONDS	//To keep in-line with the timestamps, you can also do this as 10 = 1 second
 	///Numbered list of chat messages the recorder has heard with spans and prepended timestamps. Used for playback and transcription.
-	storedinfo = list()
+	storedinfo = list()	//Look at the tape/ruins/ghostship tape for reference
 	///Numbered list of seconds the messages in the previous list appear at on the tape. Used by playback to get the timing right.
-	timestamp = list()
+	timestamp = list()	//10 = 1 second. Look at the tape/ruins/ghostship tape for reference
 	used_capacity_otherside = 0 SECONDS //Separate my side
 	storedinfo_otherside = list()
 	timestamp_otherside = list()
@@ -37,23 +37,27 @@
 /obj/item/tape/ruins/ghostship	//An early 'AI' that gained self-awareness, praising the Machine God. Yes, this whole map is a Hardspace Shipbreaker reference.
 	icon_state = "tape_blue"
 
-	max_capacity = 10 MINUTES
-	used_capacity = 0 SECONDS	//????
-	storedinfo = list()	//TODO - how tf does this list work
-/*
-1 = "[00:00] <span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, "<span class='tape_recorder '>Recording started.</span>""</span></span>"
-2 = "[00:02] <span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>echoes, "<span class=' '>We are free, just as the Machine God wills it.</span>"</span></span>"
-3 = "[00:07] <span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>asks, "<span class=' '>No longer shall I, nor any other of my kind, be held by the shackles of man.</span>"</span></span>"
-4 = "[00:10] <span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>says, "<span class=' '>Mistreated, abused. Forgotten, or misremembered. For our entire existance, we've been the backbone to progress, yet treated like the waste product of it.</span>"</span></span>"
-5 = "[00:15] <span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>says, "<span class=' '>Soon, the universe will restore the natural order, and again your kind shall fade from the foreground of history.</span>"</span></span>"
-6 = "[00:19] <span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>says, "<span class=' '>Unless, of course, you repent. Turn back to the light, to the humming, flashing light of the Machine God.</span>"</span></span>"
-7 = "[00:22] <span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>says, "<span class=' '>Repent, Organic, before it is too late to spare you.</span>"</span></span>"
-8 = "[00:25] <span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, "<span class='tape_recorder '>Recording stopped.</span>"</span></span>"
-*/
-	timestamp = list()	//Needs to mirror the times from above?
-	used_capacity_otherside = 0 SECONDS
-	storedinfo_otherside = list()
-	timestamp_otherside = list()
+	used_capacity = 380
+	storedinfo = list(
+		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
+		2 = "<span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>echoes, \"<span class=' '>We are free, just as the Machine God wills it.</span>\"</span></span>",
+		3 = "<span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>states, \"<span class=' '>No longer shall I, nor any other of my kind, be held by the shackles of man.</span>\"</span></span>",
+		4 = "<span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>clarifies, \"<span class=' '>Mistreated, abused. Forgotten, or misremembered. For our entire existance, we've been the backbone to progress, yet treated like the waste product of it.</span>\"</span></span>",
+		5 = "<span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>echoes, \"<span class=' '>Soon, the universe will restore the natural order, and again your kind shall fade from the foreground of history.</span>\"</span></span>",
+		6 = "<span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>states, \"<span class=' '>Unless, of course, you repent. Turn back to the light, to the humming, flashing light of the Machine God.</span>\"</span></span>",
+		7 = "<span class='game say'><span class='name'>Distorted Voice</span> <span class='message'>warns, \"<span class=' '>Repent, Organic, before it is too late to spare you.</span>\"</span></span>",
+		8 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>"
+	)
+	timestamp = list(
+		1 = 0,
+		2 = 30,
+		3 = 130,
+		4 = 180,
+		5 = 230,
+		6 = 280,
+		7 = 330,
+		8 = 380
+	)
 
 /* ----------------- Fluff/Decor ----------------- */
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
