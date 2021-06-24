@@ -9,7 +9,8 @@ These procs are incredibly expensive and should only really be run once. That's 
 #define FLOOR_BLOOD_PERCENT_CHANCE 2
 #define FLOOR_VOMIT_PERCENT_CHANCE 2
 #define FLOOR_OIL_PERCENT_CHANCE 5
-#define LIGHT_FLICKER_PERCENT_CHANCE 10
+#define FLOOR_TILE_MISSING_PERCENT_CHANCE 2
+#define LIGHT_FLICKER_PERCENT_CHANCE 5
 
 SUBSYSTEM_DEF(decay)
 	name = "Decay System"
@@ -47,7 +48,11 @@ SUBSYSTEM_DEF(decay)
 	do_medical()
 
 /datum/controller/subsystem/decay/proc/do_common()
-	for(var/turf/open/iterating_floor in possible_turfs)
+	for(var/turf/open/floor/iterating_floor in possible_turfs)
+		if(!istype(iterating_floor, /turf/open/floor/plating))
+			if(prob(FLOOR_TILE_MISSING_PERCENT_CHANCE * severity_modifier))
+				iterating_floor.break_tile_to_plating()
+
 		if(prob(FLOOR_DIRT_PERCENT_CHANCE * severity_modifier))
 			new /obj/effect/decal/cleanable/dirt(iterating_floor)
 
@@ -60,7 +65,10 @@ SUBSYSTEM_DEF(decay)
 	for(var/area/maintenance/iterating_maintenance in possible_areas)
 		for(var/turf/open/iterating_floor in iterating_maintenance)
 			if(prob(FLOOR_BLOOD_PERCENT_CHANCE * severity_modifier))
-				new /obj/effect/decal/cleanable/blood(iterating_floor)
+				var/obj/effect/decal/cleanable/blood/spawned_blood = new (iterating_floor)
+				if(!iterating_floor.Enter(spawned_blood))
+					qdel(spawned_blood) //No blood under windows.
+
 		for(var/obj/machinery/light/iterating_light in iterating_maintenance)
 			if(prob(LIGHT_FLICKER_PERCENT_CHANCE))
 				iterating_light.start_flickering()
@@ -69,17 +77,28 @@ SUBSYSTEM_DEF(decay)
 	for(var/area/engineering/iterating_engineering in possible_areas)
 		for(var/turf/open/iterating_floor in iterating_engineering)
 			if(prob(FLOOR_BLOOD_PERCENT_CHANCE * severity_modifier))
-				new /obj/effect/decal/cleanable/blood(iterating_floor)
+				var/obj/effect/decal/cleanable/blood/spawned_blood = new (iterating_floor)
+				if(!iterating_floor.Enter(spawned_blood))
+					qdel(spawned_blood)
+
 			if(prob(FLOOR_OIL_PERCENT_CHANCE * severity_modifier))
-				new /obj/effect/decal/cleanable/oil(iterating_floor)
+				var/obj/effect/decal/cleanable/oil/spawned_oil = new (iterating_floor)
+				if(!iterating_floor.Enter(spawned_oil))
+					qdel(spawned_oil)
 
 /datum/controller/subsystem/decay/proc/do_medical()
 	for(var/area/medical/iterating_medical in possible_areas)
 		for(var/turf/open/iterating_floor in iterating_medical)
 			if(prob(FLOOR_BLOOD_PERCENT_CHANCE * severity_modifier))
-				new /obj/effect/decal/cleanable/blood(iterating_floor)
+				var/obj/effect/decal/cleanable/blood/spawned_blood = new (iterating_floor)
+				if(!iterating_floor.Enter(spawned_blood))
+					qdel(spawned_blood)
+
 			if(prob(FLOOR_VOMIT_PERCENT_CHANCE * severity_modifier))
-				new /obj/effect/decal/cleanable/vomit(iterating_floor)
+				var/obj/effect/decal/cleanable/vomit/spawned_vomit = new (iterating_floor)
+				if(!iterating_floor.Enter(spawned_vomit))
+					qdel(spawned_vomit)
+
 		if(is_type_in_list(iterating_medical, list(/area/medical/coldroom, /area/medical/morgue, /area/medical/psychology)))
 			for(var/obj/machinery/light/iterating_light in iterating_medical)
 				if(prob(LIGHT_FLICKER_PERCENT_CHANCE))
