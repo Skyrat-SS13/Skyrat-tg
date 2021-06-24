@@ -23,7 +23,12 @@
 		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/11.ogg',
 		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/12.ogg',
 		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/13.ogg',
-		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/14.ogg')
+		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/14.ogg',
+		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/15.ogg',
+		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/16.ogg',
+		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/17.ogg',
+		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/18.ogg',
+		'modular_skyrat/modules/modular_station_traits/sound/swanson/alerts/19.ogg')
 
 
 	command_report_sounds = list('modular_skyrat/modules/modular_station_traits/sound/swanson/commandreport/1.ogg',
