@@ -66,7 +66,7 @@ export class Changelog extends Component {
   getData = (date, attemptNumber = 1) => {
     const { act } = useBackend(this.context);
     const self = this;
-    const maxAttempts = 6;
+    const maxAttempts = 20; //SKYRAT EDIT CHANGE
 
     if (attemptNumber > maxAttempts) {
       return this.setData('Failed to load data after ' + maxAttempts + ' attempts');
@@ -80,7 +80,7 @@ export class Changelog extends Component {
         const errorRegex = /^Cannot find/;
 
         if (errorRegex.test(result)) {
-          const timeout = 50 + attemptNumber * 50;
+          const timeout = 400 + attemptNumber * 50; //SKYRAT EDIT CHANGE
 
           self.setData(
             'Loading changelog data' + '.'.repeat(attemptNumber + 3)
