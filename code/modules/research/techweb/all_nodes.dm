@@ -85,6 +85,10 @@
 		"cyborgrecharger",
 		"robocontrol",
 		"sflash",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"affection_module",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/mech
@@ -219,6 +223,7 @@
 		"comp_length",
 		"comp_light",
 		"comp_logic",
+		"comp_multiplexer",
 		"comp_not",
 		"comp_radio",
 		"comp_ram",
