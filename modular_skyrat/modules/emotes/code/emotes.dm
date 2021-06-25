@@ -342,7 +342,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/hoot.ogg'
-	//cooldown = 2 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/growl
 	key = "growl"
@@ -359,8 +358,7 @@
 	message = "lets out a woof."
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	//sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg' - REMOVED (SOUND EFFECT SUCKS)
-	sound = 'modular_skyrat/modules/emotes/sound/voice/woof2.ogg'
+	sound = 'modular_skyrat/modules/emotes/sound/voice/woof.ogg'
 
 /datum/emote/living/baa
 	key = "baa"
@@ -385,15 +383,6 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/voice/wurble.ogg'
-
-/datum/emote/living/awoo2
-	key = "awoo2"
-	key_third_person = "awoos"
-	message = "lets out an awoo!"
-	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/voice/long_awoo.ogg'
-	//cooldown = 3 SECONDS -- Removed as the current global cooldown is larger
 
 /datum/emote/living/rattle
 	key = "rattle"

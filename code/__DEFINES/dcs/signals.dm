@@ -130,14 +130,14 @@
 #define COMSIG_ATOM_UPDATED_ICON "atom_updated_icon"
 ///from base of [/atom/proc/smooth_icon]: ()
 #define COMSIG_ATOM_SMOOTHED_ICON "atom_smoothed_icon"
-///from base of atom/Entered(): (atom/movable/entering, /atom/oldLoc)
+///from base of atom/Entered(): (atom/movable/arrived, direction)
 #define COMSIG_ATOM_ENTERED "atom_entered"
-/// Sent from the atom that just Entered src. From base of atom/Entered(): (/atom/entered_atom, /atom/oldLoc)
+/// Sent from the atom that just Entered src. From base of atom/Entered(): (/atom/destination, direction)
 #define COMSIG_ATOM_ENTERING "atom_entering"
-///from base of atom/Exit(): (/atom/movable/exiting, /atom/newloc)
+///from base of atom/Exit(): (/atom/movable/leaving, direction)
 #define COMSIG_ATOM_EXIT "atom_exit"
 	#define COMPONENT_ATOM_BLOCK_EXIT (1<<0)
-///from base of atom/Exited(): (atom/movable/exiting, atom/newloc)
+///from base of atom/Exited(): (atom/movable/gone, direction)
 #define COMSIG_ATOM_EXITED "atom_exited"
 ///from base of atom/Bumped(): (/atom/movable)
 #define COMSIG_ATOM_BUMPED "atom_bumped"
@@ -368,9 +368,9 @@
 
 ///from base of area/proc/power_change(): ()
 #define COMSIG_AREA_POWER_CHANGE "area_power_change"
-///from base of area/Entered(): (atom/movable/M)
+///from base of area/Entered(): (atom/movable/arrived, direction)
 #define COMSIG_AREA_ENTERED "area_entered"
-///from base of area/Exited(): (atom/movable/M)
+///from base of area/Exited(): (atom/movable/gone, direction)
 #define COMSIG_AREA_EXITED "area_exited"
 
 // /turf signals
@@ -761,13 +761,19 @@
 /// from /obj/machinery/atmospherics/components/unary/cryo_cell/set_on(bool): (on)
 #define COMSIG_CRYO_SET_ON "cryo_set_on"
 
+// /obj/machinery/atmospherics/components/binary/valve signals
+
+/// from /obj/machinery/atmospherics/components/binary/valve/toggle(): (on)
+#define COMSIG_VALVE_SET_OPEN "valve_toggled"
+
 // /obj/machinery/door/airlock signals
 
 //from /obj/machinery/door/airlock/open(): (forced)
 #define COMSIG_AIRLOCK_OPEN "airlock_open"
 //from /obj/machinery/door/airlock/close(): (forced)
 #define COMSIG_AIRLOCK_CLOSE "airlock_close"
-
+///from /obj/machinery/door/airlock/set_bolt():
+#define COMSIG_AIRLOCK_SET_BOLT "airlock_set_bolt"
 // /obj/item signals
 
 ///from base of obj/item/equipped(): (/mob/equipper, slot)
@@ -1223,7 +1229,7 @@
 	#define COMPONENT_SKIP_ATTACK (1<<1)
 ///from base of atom/attack_ghost(): (mob/dead/observer/ghost)
 #define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"
-///from base of atom/attack_hand(): (mob/user)
+///from base of atom/attack_hand(): (mob/user, list/modifiers)
 #define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"
 ///from base of atom/attack_paw(): (mob/user)
 #define COMSIG_ATOM_ATTACK_PAW "atom_attack_paw"
@@ -1270,6 +1276,9 @@
 
 ///from /obj/item/assembly/proc/pulsed()
 #define COMSIG_ASSEMBLY_PULSED "assembly_pulsed"
+
+///from base of /obj/item/mmi/set_brainmob(): (mob/living/brain/new_brainmob)
+#define COMSIG_MMI_SET_BRAINMOB "mmi_set_brainmob"
 
 /// Exoprobe adventure finished: (result) result is ADVENTURE_RESULT_??? values
 #define COMSIG_ADVENTURE_FINISHED "adventure_done"
