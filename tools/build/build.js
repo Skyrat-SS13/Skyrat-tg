@@ -1,5 +1,10 @@
 #!/usr/bin/env node
 /**
+ * Build script for /tg/station 13 codebase.
+ *
+ * This script uses Juke Build, read the docs here:
+ * https://github.com/stylemistake/juke-build
+ *
  * @file
  * @copyright 2021 Aleksej Komarov
  * @license MIT
@@ -139,8 +144,20 @@ const TgsTarget = Juke.createTarget({
   },
 });
 
+<<<<<<< HEAD
 Juke.setup({
   default: process.env.CBT_BUILD_MODE === "TGS" ? TgsTarget : DefaultTarget,
 }).then((code) => {
   process.exit(code);
 });
+=======
+const TGS_MODE = process.env.CBT_BUILD_MODE === 'TGS';
+
+Juke
+  .setup({
+    default: TGS_MODE ? TgsTarget : DefaultTarget,
+  })
+  .then((code) => {
+    process.exit(code);
+  });
+>>>>>>> f59adc2537b (Juke Build 0.4.0 (#59796))
