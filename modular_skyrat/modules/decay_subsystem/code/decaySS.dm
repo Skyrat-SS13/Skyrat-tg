@@ -79,7 +79,7 @@ SUBSYSTEM_DEF(decay)
 			if(prob(FLOOR_COBWEB_PERCENT_CHANCE * severity_modifier))
 				var/obj/structure/spider/stickyweb/spawned_web = new (iterating_floor)
 				if(!iterating_floor.Enter(spawned_web))
-					qdel(spawned_blood)
+					qdel(spawned_web)
 
 		for(var/obj/machinery/light/iterating_light in iterating_maintenance)
 			if(prob(LIGHT_FLICKER_PERCENT_CHANCE))
