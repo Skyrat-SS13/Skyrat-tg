@@ -32,8 +32,8 @@
 			playsound(get_turf(src), 'modular_skyrat/sound/effects/watersplash.ogg', 25, TRUE)
 
 		if("smoke")
-			name = "lizard's smoke"
-			desc = "It's a mist of smoke."
+			name = "blazing mist"
+			desc = "It's a storm of smoke."
 			icon_state = "smoke"
 			src.add_overlay(image('modular_skyrat/master_files/icons/effects/turf_effects.dmi', "smoke_top", ABOVE_MOB_LAYER))
 			playsound(get_turf(src), 'sound/effects/wounds/sizzle2.ogg', 25, TRUE)
@@ -130,7 +130,7 @@
 			'sound/effects/footstep/hardbarefoot2.ogg',
 			'sound/effects/footstep/hardbarefoot3.ogg',
 			'sound/effects/footstep/hardbarefoot4.ogg',
-			'sound/effects/footstep/hardbarefoot5.ogg'), 100, TRUE)
+			'sound/effects/footstep/hardbarefoot5.ogg'), 50, TRUE)
 
 		if("hoofprint")
 			name = "hoofprint"
@@ -140,7 +140,7 @@
 			'sound/effects/footstep/hardbarefoot2.ogg',
 			'sound/effects/footstep/hardbarefoot3.ogg',
 			'sound/effects/footstep/hardbarefoot4.ogg',
-			'sound/effects/footstep/hardbarefoot5.ogg'), 100, TRUE)
+			'sound/effects/footstep/hardbarefoot5.ogg'), 50, TRUE)
 		if("footprint")
 			name = "footprint"
 			desc = "It's a footprint left on the ground."
@@ -149,7 +149,7 @@
 			'sound/effects/footstep/hardbarefoot2.ogg',
 			'sound/effects/footstep/hardbarefoot3.ogg',
 			'sound/effects/footstep/hardbarefoot4.ogg',
-			'sound/effects/footstep/hardbarefoot5.ogg'), 100, TRUE)
+			'sound/effects/footstep/hardbarefoot5.ogg'), 50, TRUE)
 
 		if("clawprint")
 			name = "clawprint"
@@ -159,7 +159,7 @@
 			'sound/effects/footstep/hardbarefoot2.ogg',
 			'sound/effects/footstep/hardbarefoot3.ogg',
 			'sound/effects/footstep/hardbarefoot4.ogg',
-			'sound/effects/footstep/hardbarefoot5.ogg'), 100, TRUE)
+			'sound/effects/footstep/hardbarefoot5.ogg'), 50, TRUE)
 
 		if("shoeprint")
 			name = "shoeprint"
@@ -169,7 +169,7 @@
 			'sound/effects/footstep/floor2.ogg',
 			'sound/effects/footstep/floor3.ogg',
 			'sound/effects/footstep/floor4.ogg',
-			'sound/effects/footstep/floor5.ogg'), 100, TRUE)
+			'sound/effects/footstep/floor5.ogg'), 50, TRUE)
 
 		else
 			return

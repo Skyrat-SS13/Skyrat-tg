@@ -7,26 +7,24 @@ var/current_turf
 /datum/emote/living/mark_turf
 	key = "turf"
 	key_third_person = "turf"
-	cooldown = 10 SECONDS
+	cooldown = 4 SECONDS
 
 /datum/emote/living/mark_turf/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
 	var/mob/living/carbon/human/human_user = user
 
 	if(ishuman(user))
+		//feet
 		if(!(DIGITIGRADE in human_user.dna.species.species_traits) && !(human_user.dna.species.mutant_bodyparts["taur"]))
 			user.allowed_turfs += "footprint"
 
-		//species & taurs
-		if(ismammal(user) || issynthanthro(user))
-			if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
-				user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
+		if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
+			user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
 
+		//species & taurs
 		if(islizard(user) || issynthliz(user) || HAS_TRAIT(user, TRAIT_ASH_ASPECT))
 			user.allowed_turfs += "smoke"
-
-			if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
-				user.allowed_turfs += "clawprint"
+			user.allowed_turfs -= list("pawprint", "hoofprint")
 
 		if(isplasmaman(user))
 			if(human_user.w_uniform && istype(human_user.w_uniform, /obj/item/clothing/under/plasmaman))
@@ -66,7 +64,7 @@ var/current_turf
 		if(human_user.dna.species.mutant_bodyparts["taur"])
 			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
 			if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
-				user.allowed_turfs -= "clawprint" //e
+				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
 				if(!(human_user.wear_suit && istype(human_user.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
 					user.allowed_turfs += "constrict"
 
