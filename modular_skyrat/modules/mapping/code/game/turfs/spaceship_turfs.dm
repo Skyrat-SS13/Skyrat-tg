@@ -6,7 +6,7 @@
 	icon = 'modular_skyrat/modules/mapping/icons/unique/spaceships/shipwalls.dmi'
 	icon_state = "ship_walls-0"
 	base_icon_state = "ship_walls"
-	sheet_type = /obj/item/stack/sheet/mineral/titanium/spaceship
+	sheet_type = /obj/item/stack/sheet/spaceship
 	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_SHIPWALLS)
 	canSmoothWith = list(SMOOTH_GROUP_SHIPWALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SURVIVAL_TIANIUM_POD, SMOOTH_GROUP_SHUTTLE_PARTS)
 
@@ -50,7 +50,7 @@
 	icon = 'modular_skyrat/modules/mapping/icons/unique/spaceships/shipwindows.dmi'
 	icon_state = "pod_window-0"
 	base_icon_state = "pod_window"
-	glass_type = /obj/item/stack/sheet/titaniumglass/spaceship
+	glass_type = /obj/item/stack/sheet/spaceshipglass
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTLE_PARTS, SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE, SMOOTH_GROUP_SHIPWALLS)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
