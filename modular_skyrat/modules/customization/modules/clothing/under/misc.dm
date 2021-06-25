@@ -163,7 +163,6 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
-
 /obj/item/clothing/under/enclaveo/real
 	name = "neo american officer uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
