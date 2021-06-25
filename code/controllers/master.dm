@@ -534,9 +534,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 			queue_node.update_nextfire()
 
-			if (postpone >= world.tick_lag)
-				queue_node.next_fire += postpone
-
 			queue_node.queued_time = 0
 
 			//remove from queue
