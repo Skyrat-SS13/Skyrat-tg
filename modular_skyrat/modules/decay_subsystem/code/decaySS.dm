@@ -10,7 +10,8 @@ These procs are incredibly expensive and should only really be run once. That's 
 #define FLOOR_VOMIT_PERCENT_CHANCE 1
 #define FLOOR_OIL_PERCENT_CHANCE 5
 #define FLOOR_TILE_MISSING_PERCENT_CHANCE 1
-#define LIGHT_FLICKER_PERCENT_CHANCE 5
+#define FLOOR_COBWEB_PERCENT_CHANCE 1
+#define LIGHT_FLICKER_PERCENT_CHANCE 10
 
 SUBSYSTEM_DEF(decay)
 	name = "Decay System"
@@ -74,6 +75,11 @@ SUBSYSTEM_DEF(decay)
 				var/obj/effect/decal/cleanable/blood/spawned_blood = new (iterating_floor)
 				if(!iterating_floor.Enter(spawned_blood))
 					qdel(spawned_blood) //No blood under windows.
+
+			if(prob(FLOOR_COBWEB_PERCENT_CHANCE * severity_modifier))
+				var/obj/structure/spider/stickyweb/spawned_web = new (iterating_floor)
+				if(!iterating_floor.Enter(spawned_web))
+					qdel(spawned_blood)
 
 		for(var/obj/machinery/light/iterating_light in iterating_maintenance)
 			if(prob(LIGHT_FLICKER_PERCENT_CHANCE))
