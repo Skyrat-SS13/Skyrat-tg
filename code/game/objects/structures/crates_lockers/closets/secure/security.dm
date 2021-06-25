@@ -203,6 +203,7 @@
 	new /obj/item/pinpointer/crew(src)
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/box/rxglasses/spyglasskit(src)
+	new /obj/item/taperoll/police(src) //SKYRAT EDIT ADDITION - Detective starts with this in their locker :)
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"
