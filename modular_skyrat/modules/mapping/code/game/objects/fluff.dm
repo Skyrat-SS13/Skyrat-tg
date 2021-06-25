@@ -64,24 +64,23 @@
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
 	name = "ai node"
 	desc = "A mysterious, blinking device, attached straight to a surface. It's function is beyond you."
-	icon_state = "ai_node"
+	icon_state = "ai_node"	//credit to @Hay#7679 on the SR Discord
 
-	max_integrity = 150
-	integrity_failure = 0	//makes sure it just pops when broken
-	anchored = TRUE	//spawns in already attached to an item
+	max_integrity = 100
+	integrity_failure = 0
+	anchored = TRUE
 	can_be_unanchored = FALSE	//cannot be removed without being destroyed
 
-/obj/structure/decorative/fluff/ai_node/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1)
+/obj/structure/decorative/fluff/ai_node/take_damage()
 	. = ..()
 	if(obj_integrity >= 50)	//breaks it a bit earlier than it should, but still takes a few hits to kill it
 		return
 	else if(. && !QDELETED(src))
 		visible_message("<span class='notice'>[src] sparks and explodes! You hear a faint, buzzy scream...</span>","<span class='hear'>You hear a loud pop, followed by a faint, buzzy scream.</span>")
-		playsound(src.loc, 'modular_skyrat/modules/mapping/code/sounds/MachineDeath.ogg', 75, TRUE)	//Credit to @yungfunnyman#3798 (I'll find a proper name to credit)
+		playsound(src.loc, 'modular_skyrat/modules/mapping/code/sounds/MachineDeath.ogg', 75, TRUE)	//Credit to @yungfunnyman#3798 on the SR Discord
 		do_sparks(2, TRUE, src)
 		qdel(src)
 		return
-
 
 /* ----- Metal Poles (These shouldn't be in this file but there's not a better place tbh) -----*/
 //Just a re-done Tram Rail, but with all 4 directions instead of being stuck east/west - more varied placement, and a more vague name. Good for mapping support beams/antennae/etc
