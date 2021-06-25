@@ -20,7 +20,8 @@
 	var/short_desc = "The mapper forgot to set this!"
 	var/flavour_text = ""
 	var/important_info = ""
-	var/faction = null
+	/// Lazy string list of factions that the spawned mob will be in upon spawn
+	var/list/faction
 	var/permanent = FALSE //If true, the spawner will not disappear upon running out of uses.
 	var/random = FALSE //Don't set a name or gender, just go random
 	var/antagonist_type
@@ -35,12 +36,20 @@
 	var/show_flavour = TRUE
 	var/banType = ROLE_LAVALAND
 	var/ghost_usable = TRUE
+<<<<<<< HEAD
 	var/list/excluded_gamemodes
+=======
+	// If the spawner is ready to function at the moment
+	var/ready = TRUE
+	/// If the spawner uses radials
+	var/radial_based = FALSE
+>>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/effect/mob_spawn/attack_ghost(mob/user)
 	if(!SSticker.HasRoundStarted() || !loc || !ghost_usable)
 		return
+<<<<<<< HEAD
 	var/ghost_role = tgui_alert(usr,"Become [mob_name]? (Warning, You can no longer be revived!)",,list("Yes","No"))
 	if(ghost_role == "No" || !loc || QDELETED(user))
 		return
@@ -57,6 +66,12 @@
 		return
 	//SKYRAT EDIT ADDITION END
 
+=======
+	if(!radial_based)
+		var/ghost_role = tgui_alert(usr, "Become [mob_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
+		if(ghost_role == "No" || !loc || QDELETED(user))
+			return
+>>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, span_warning("An admin has temporarily disabled non-admin ghost roles!"))
 		return
@@ -71,11 +86,17 @@
 	if(QDELETED(src) || QDELETED(user))
 		return
 	log_game("[key_name(user)] became [mob_name]")
+<<<<<<< HEAD
 	//create(ckey = user.ckey) //ORIGINAL
 	create(user.ckey, null, user) //SKYRAT EDIT CHANGE
+=======
+	create(user)
+>>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
+	if(faction)
+		faction = string_list(faction)
 	if(instant || (roundstart && (mapload || (SSticker && SSticker.current_state > GAME_STATE_SETTING_UP))))
 		INVOKE_ASYNC(src, .proc/create)
 	else if(ghost_usable)
@@ -115,12 +136,17 @@
 /obj/effect/mob_spawn/proc/equip(mob/M)
 	return
 
+<<<<<<< HEAD
 ///obj/effect/mob_spawn/proc/create(ckey, newname) //ORIGINAL
 /obj/effect/mob_spawn/proc/create(ckey, newname, mob/user) //SKYRAT EDIT CHANGE
 	//SKYRAT EDIT CHANGE BEGIN
 	//var/mob/living/M = new mob_type(get_turf(src)) //ORIGINAL
 	var/mob/living/M = create_mob(user, newname)
 	/*
+=======
+/obj/effect/mob_spawn/proc/create(mob/user, newname)
+	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
+>>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 	if(!random || newname)
 		if(newname)
 			M.real_name = newname
@@ -134,7 +160,7 @@
 	*/
 	//SKYRAT EDIT CHANGE END
 	if(faction)
-		M.faction = list(faction)
+		M.faction = faction
 	if(disease)
 		M.ForceContractDisease(new disease)
 	if(death)
@@ -146,8 +172,8 @@
 	M.color = mob_color
 	equip(M)
 
-	if(ckey)
-		M.ckey = ckey
+	if(user?.ckey)
+		M.ckey = user.ckey
 		if(show_flavour)
 			var/output_message = "<span class='infoplain'><span class='big bold'>[short_desc]</span></span>"
 			if(flavour_text != "")
@@ -403,7 +429,7 @@
 
 //Non-human spawners
 
-/obj/effect/mob_spawn/AICorpse/create(ckey) //Creates a corrupted AI
+/obj/effect/mob_spawn/AICorpse/create(mob/user) //Creates a corrupted AI
 	var/A = locate(/mob/living/silicon/ai) in loc
 	if(A)
 		return
@@ -423,7 +449,7 @@
 /obj/effect/mob_spawn/slime/equip(mob/living/simple_animal/slime/S)
 	S.colour = mobcolour
 
-/obj/effect/mob_spawn/facehugger/create(ckey) //Creates a squashed facehugger
+/obj/effect/mob_spawn/facehugger/create(mob/user) //Creates a squashed facehugger
 	var/obj/item/clothing/mask/facehugger/O = new(src.loc) //variable O is a new facehugger at the location of the landmark
 	O.name = src.name
 	O.Die() //call the facehugger's death proc
