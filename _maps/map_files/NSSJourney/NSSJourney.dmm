@@ -3133,8 +3133,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "ary" = (
-/turf/closed/wall,
-/area/space)
+/obj/effect/turf_decal/vg_decals/atmos/mix{
+	dir = 8
+	},
+/turf/open/floor/engine/vacuum,
+/area/engineering/atmos)
 "arz" = (
 /obj/effect/spawner/lootdrop/gross_decal_spawner,
 /obj/structure/sign/poster/contraband/random{
@@ -27369,6 +27372,7 @@
 /area/engineering/atmos)
 "bQC" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
 "bQD" = (
@@ -28130,12 +28134,13 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bTV" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
 	name = "N2O to Pure"
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
+	dir = 4
 	},
 /turf/open/floor/iron/cafeteria,
 /area/engineering/atmos)
@@ -28353,12 +28358,13 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
 	dir = 4
 	},
 /turf/open/floor/iron/white/corner,
 /area/engineering/atmos)
 "bUU" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "bUV" = (
@@ -28367,6 +28373,7 @@
 /area/engineering/atmos)
 "bUW" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "bUY" = (
@@ -28628,14 +28635,16 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bWc" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
 	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
+	dir = 8
 	},
 /turf/open/floor/iron/white/corner,
 /area/engineering/atmos)
@@ -29185,12 +29194,16 @@
 	c_tag = "Atmospherics East";
 	dir = 8
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
 	name = "Plasma to Pure"
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
@@ -29483,13 +29496,14 @@
 /obj/machinery/computer/atmos_control/tank/toxin_tank{
 	dir = 8
 	},
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bYU" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bYV" = (
@@ -29498,6 +29512,7 @@
 /area/engineering/atmos)
 "bYW" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bYX" = (
@@ -29658,10 +29673,14 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bZK" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -30437,7 +30456,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "ccB" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "ccC" = (
@@ -30446,6 +30465,7 @@
 /area/engineering/atmos)
 "ccD" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "ccE" = (
@@ -31254,21 +31274,28 @@
 /obj/machinery/computer/atmos_control/tank/nitrogen_tank{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
+	color = "#ff0000"
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
 	dir = 8
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "cgW" = (
 /obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red,
+/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
 /obj/effect/turf_decal/tile/red{
+	color = "#ff0000"
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "cgX" = (
@@ -31280,16 +31307,20 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "cgY" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
 /obj/machinery/atmospherics/components/binary/pump/off{
 	dir = 1;
 	name = "N2 To Pure"
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000"
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	color = "#ff0000";
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
@@ -31309,6 +31340,9 @@
 	},
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible,
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "chb" = (
@@ -32287,14 +32321,14 @@
 /turf/open/floor/iron,
 /area/engineering/main)
 "clT" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "clU" = (
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "clV" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "clW" = (
@@ -32405,14 +32439,17 @@
 /area/security/prison)
 "cmU" = (
 /obj/machinery/light/small/directional/south,
+/obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "cmV" = (
 /obj/machinery/light/small/directional/south,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "cmW" = (
 /obj/machinery/light/small/directional/south,
+/obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "cmX" = (
@@ -51205,7 +51242,9 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "qXk" = (
-/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 1
+	},
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "qXC" = (
@@ -95222,7 +95261,7 @@ bzs
 hLb
 bOh
 bPk
-bPm
+ary
 bPm
 bOh
 bTW
@@ -102098,7 +102137,7 @@ xzh
 xzh
 xzh
 xzh
-ary
+alP
 alP
 alP
 alP
@@ -102355,7 +102394,7 @@ xzh
 sNY
 xzh
 xzh
-ary
+alP
 aEn
 aqz
 aru
@@ -102612,7 +102651,7 @@ xzh
 xzh
 xzh
 xzh
-ary
+alP
 aKe
 hhu
 cAb
@@ -102869,7 +102908,7 @@ xzh
 xzh
 xzh
 xzh
-ary
+alP
 aML
 aqA
 jaC
