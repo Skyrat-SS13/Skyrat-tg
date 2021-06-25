@@ -568,6 +568,16 @@
 	path = /obj/item/clothing/under/rank/captain/dress
 	restricted_roles = list("Captain")
 
+/datum/loadout_item/uniform/job/impcap
+	name = "Captain's Naval Jumpsuit"
+	path = /obj/item/clothing/under/rank/captain/imperial
+	restricted_roles = list("Captain", "Nanotrasen Representative")
+
+/datum/loadout_item/uniform/job/imphop
+	name = "Head of Personnel's Naval Jumpsuit"
+	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
+
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
  	path = /obj/item/clothing/under/rank/prisoner/lowsec
@@ -623,6 +633,11 @@
 /datum/loadout_item/uniform/job/navyblueuniformhos
  	name = "Head of Security navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
+ 	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/uniform/job/imphos
+ 	name = "Head of Security's Naval Uniform"
+ 	path = /obj/item/clothing/under/rank/security/head_of_security/imperial
  	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/uniform/job/solhos
@@ -785,6 +800,11 @@
 	restricted_roles = list("Chief Medical Officer", "Chemist")
 	restricted_desc = "Chemistry"
 
+/datum/loadout_item/uniform/job/impcmo
+	name = "Chief Medical Officer's Naval Uniform"
+	path = /obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
+	restricted_roles = list("Chief Medical Officer")
+
 /datum/loadout_item/uniform/job/gorka_cargo
 	name = "Supply Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka
@@ -846,6 +866,16 @@
 	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
 	restricted_desc = "Engineering"
 
+/datum/loadout_item/uniform/job/impce
+	name = "Chief Engineer's Naval Uniform"
+	path = /obj/item/clothing/under/rank/engineering/chief_engineer/imperial
+	restricted_roles = list("Chief Engineer")
+
+/datum/loadout_item/uniform/job/imprd
+	name = "Research Director's Naval Uniform"
+	path = /obj/item/clothing/under/rank/rnd/research_director/imperial
+	restricted_roles = list("Research Director")
+
 
 
 //JOB - UTILITY
@@ -894,6 +924,30 @@
 	name = "Command Utility Uniform"
 	path = /obj/item/clothing/under/utility/com
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcommand
+	name = "Light Grey Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcom
+	name = "Grey Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial/grey
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impred
+	name = "Red Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial/red
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")	//NT Reps would never wear red, it's unbefitting
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcomtrous
+	name = "Grey Officer's Naval Jumpsuit (Trousers)"
+	path = /obj/item/clothing/under/imperial/grey/trouser
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/robosleek
@@ -1121,4 +1175,3 @@
 	name = "Green Feminine Christmas Suit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/costume/christmas/croptop/green*/
-

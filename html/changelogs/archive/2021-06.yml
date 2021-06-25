@@ -418,3 +418,209 @@
   - tweak: Blueshields now get the lynx
   thestubborn:
   - bugfix: fixed the parka, digi ira uniform
+2021-06-18:
+  ZephyrTFA:
+  - bugfix: Flipped Tables are no longer coder bait
+  - bugfix: Turnstiles are no longer coder bait
+2021-06-19:
+  Cheshify:
+  - rscdel: The Medical Beamgun is no longer available at cargo.
+  Gandalf2k15:
+  - balance: The taser has been rebalanced.
+  RatFromTheJungle:
+  - rscdel: Removed the nasty ass TK head glow.
+  SkyratBot:
+  - bugfix: Power fist no longer occasionally and randomly says it does not have enough
+      gas when it has enough
+  - rscdel: Removed the fake error texture floor tiles.
+  - bugfix: Connects Delta's cryopod room to the station's power grid
+  Useroth:
+  - rscadd: Added ticket counter in the ticket statpanel
+  ZephyrTFA:
+  - server: SSjobs no longer runtimes if it can't find a single job in the job config
+  capsaicinz:
+  - bugfix: Moved the cargo chatroom and supply request console.
+  thestubborn:
+  - bugfix: digi bastards can now wear thankfully wear briefs, and sadly the ira uniform
+  - bugfix: countess, karn, and formal red now hide shoes
+2021-06-20:
+  Arkatos:
+  - bugfix: Smartfridges will now show an approximate number of their stored items
+      correctly on their sprite.
+  - bugfix: Smartfridges will now count maximum number of allowed items correctly.
+  - bugfix: Smartfridges will now show their UI only when directly interacted with.
+  Cheshify:
+  - balance: Mothership Astrum has been entirely rebalanced again.
+  - bugfix: Accidental debug tools and mapping errors have been removed from Astrum.
+  - bugfix: Dangerous Research should have all of it's floors in place.
+  OrionTheFox:
+  - rscadd: Nanotrasen has been hard at work shipping out new (old) warning tape rolls
+      for departments with common hazards!
+  - bugfix: To avoid a pending lawsuit, Nanotrasen has re-evaluated the fire safety
+      of their new ERT hangars, and properly sectioned them off from the rest of the
+      arrivals hallways on Delta and Meta.
+  SkyratBot:
+  - bugfix: Metastation has received the correct health HUDs for its new medbay
+  - bugfix: Camera coverage has been improved in Metastation's medbay
+  - bugfix: Restores drug vendor to Kilostation Medbay
+  - bugfix: Restores Crew Health Monitor to to the Kilostation medbay
+  - bugfix: 'Additional scrubbers/vents to some areas on Kilo that had inadequate
+      coverage qol: Declutter pass of Kilo medbay, holodeck area'
+  - bugfix: Some cameras in Kilostation now have better names
+  - bugfix: Misc. piping and wiring issues on Kilostation have been repaired
+  - bugfix: Missing air alarm added to Kilostation Botany
+  - bugfix: The water tank stuck in a door in Kilostation engineering has been released
+      back into its natural maintenance habitat
+  - bugfix: Chat feedback is improved when setting down briefcase launchpads.
+  - bugfix: Urinals no longer alert you about the letter "i" being stuck to your hand
+      in certain edge cases.
+  - rscadd: Added a new machine to the robotics lab; the ectoscopic sniffer.
+  - bugfix: Fixed being unable to add extra circuit components when an integrated
+      circuit was removed.
+  - bugfix: Combat defibs no longer enable their safeties when being EMPed
+  - bugfix: Visible message sends its message to mobs that are also its location
+  - bugfix: shock_touching (Renamed to shock_pulling) now actually uses the damage
+      value provided
+  - code_imp: Removed useless mob/user input for cooldowncheck
+  - code_imp: Added recharge_time variable to paddles for variable charge times
+  - code_imp: Added can_hurt, do_success, and do_cancel to reduce code duplication
+  - bugfix: Luminescents once again use slime extracts
+  ZephyrTFA:
+  - balance: Medibots are no longer able to be upgraded
+  sasichkamega:
+  - rscadd: added a small heal to those on the same tile as felinid while purring.
+2021-06-21:
+  Cheshify:
+  - bugfix: Vox should no longer be able to breathe station airmix with black-market
+      organs.
+  Gandalf2k15:
+  - rscadd: The Nanotrasen Representative has been added to the game!
+  - rscadd: More explosion sound effects!
+  Melbert:
+  - bugfix: Fixed nuke ops lobby meta exploit
+  - bugfix: Fixes contractor tablets breaking due to contract targets cryoing.
+  OrionTheFox:
+  - bugfix: The CE's Naval Uniform has been remodelled to be more recognizable from
+      the HoS's, as well as their antennae properly attached. Nanotrasen's Representative
+      is now also welcome to a selection of these uniforms.
+  Ryll/Shaps:
+  - bugfix: OOC heart commendations should once again function and poll people as
+      it should during the shuttle's return trip.
+  SkyratBot:
+  - bugfix: tgui input lists no longer break when duplicate keys are passed
+  - bugfix: H.A.U.L. gauntlets no longer output a message about losing their grip
+      power when you drop them to the floor.
+  - bugfix: Removing the H.A.U.L. gauntlets while pulling something will now stop
+      the enhanced pulling effect.
+  - bugfix: Fixed signal ports receiving signals when a signal is not actually sent
+  - bugfix: Some overlays missing from variant defibs are now properly applied.
+  - spellcheck: multiple projectiles are now pluralized correctly
+  - bugfix: People with digitigrade legs are now properly paralyzed by the Paraplegic
+      perk
+  - bugfix: Usable_limbs can no longer be set below 0, which let people walk when
+      they shouldn't be able to
+  - bugfix: Tachyon-doppler arrays now connect with servers on different z-levels.
+  - bugfix: Makes roleblocks in mafia actually end properly
+  ZephyrTFA:
+  - bugfix: Cryo Storage now silences PDAs that it hoovers.
+2021-06-22:
+  ATHATH:
+  - bugfix: Stunning a cyborg with a contractor baton now puts your contractor baton
+      on cooldown, just like knocking a human down does. Don't worry, you can still
+      easily chainstun/baton 'n' bash borgs with contractor batons.
+  - soundadd: Attempting to stun a cyborg with a classic baton or a telebaton will
+      play a CLONGing noise, produce a special message, and put your baton on cooldown.
+      Harmbatonning cyborgs with classic batons and telebatons still works, of course.
+  - refactor: The code for classic batons, telebatons, and contractor batons has been
+      doc'd slightly better and refactored a bit.
+  - bugfix: Some edge cases involving cyborgs who somehow both are clumsy and can
+      wield a classic baton have been accounted for. This shouldn't affect normal
+      gameplay unless an admin tries some REALLY weird stuff. Like, clumsy contractor
+      cyborg level weird.
+  SkyratBot:
+  - bugfix: Fix some runtimes with quirks and equipping silicons.
+  - bugfix: Eggs now give 5u yolk no matter what it is cracked in
+  - balance: The traitor's Agent ID card has a new option available during forging
+      called Wallet ID Spoofing. Selecting this option will automatically snap the
+      Agent ID card to the front of any wallet, allowing the traitor to hide more
+      valuable ID cards behind it. This is disabled when the card is unforged.
+  - refactor: Refactors dbcore.dm to possibly resolve the crashes that happen on Terry.
+  coiax:
+  - tweak: You can now open your own mail, even after being mindswapped into a different
+      body. Or being podcloned. Or some other horrific body replacement experiment.
+2021-06-23:
+  Cheshify:
+  - bugfix: Anthromorphs can now wear chaplain stuff.
+  Gandalf2k15:
+  - rscadd: Synthetics can now suffer moderate to severe wounds, watch out!
+  MMMiracles:
+  - rscadd: Tramstation's Tram is now more capable of making things regret being in
+      the way of it
+  - bugfix: Tramstation's Tram is now less likely to unintentionally explode
+  Semoro and azizonkg:
+  - bugfix: Ported fixes of SStimer subsystem from RU SS220 Paradise
+  - config: 'Added a new config var: flag/log_timers_on_bucket_reset'
+  SkyratBot:
+  - bugfix: Specific chem dispenser recipes no longer create fonts of infinite power.
+  - bugfix: Fixed explosions delimbing you if they're weaker
+  - bugfix: Cigarettes with the smoke_all property actually let you smoke in everything
+      the cigarette contains now.
+  - bugfix: Intento leaderboard works good
+  - imageadd: new sprites for mech action figures
+  - bugfix: Replaces broken valueless space cash item in old AI sat ruin with a 200
+      credit one
+  - imageadd: New turf decals for alternative tiletypes
+  linnpap:
+  - soundadd: Replaced the *woof sound
+2021-06-24:
+  DuffCreeper:
+  - balance: Removes 'Lick' and 'Boop' to be an upgrade at robotics for borgs
+  - code_imp: Removed icky single letter vars
+  Gandalf2k15:
+  - rscdel: The duplicate *awoo2 has been removed from the pool of available emotes.
+  Melbert:
+  - refactor: Cow tipping and medibot tipping is now a component.
+  SkyratBot:
+  - bugfix: Paper bins after being stacked too high to fall over or getting burnt
+      will no longer void your "important" paper forms when trying to add more paper
+      afterwards.
+  SpaceVampire:
+  - balance: Late-Join cyborgs not being linked to the AI correctly.
+  YakumoChen:
+  - bugfix: Dynamic will no longer create malf humans for players for never play silicon
+      in the first place.
+  ZephyrTFA:
+  - bugfix: A lot of icon states were missing
+  - code_imp: Electric Welders are much cleaner under the hood
+  capsaicinz:
+  - rscadd: Added a new space ruin, "Shuttle 8532"
+  thestubborn:
+  - rscadd: a full engineer ert and one for plants
+  - bugfix: the brig skirt works now
+2021-06-25:
+  DuffCreeper:
+  - bugfix: Fixed up 'Affection' module being abled to be added to a borg multiple
+      times. Also restricted it to dogborgs only
+  - bugfix: Fixed an exploit relating to the shrink module
+  Elli-Skala:
+  - bugfix: fixed space vine gases being freezing cold
+  OrionTheFox:
+  - bugfix: Hazard tapes now block running instead of walking. They're like holobarriers
+      lite.
+  SkyratBot:
+  - bugfix: 'Fixed heretic ghouls having reduced max health after being revived after
+      deghouled qol: heretic ghouls now have a little moodlet tooltip'
+  - refactor: Refactors USB code to be easier to use for less experienced coders.
+  - bugfix: Bodybags can once again be closed.
+  - bugfix: Cargo crates no longer deliver a complementary emissive blocker with every
+      delivery.
+  - bugfix: Directional lighting no longer creates shadows on emissive flooring.
+  - bugfix: 'QMs can now use the Nanotrasen Internal Requisition Network program on
+      modular computers to order things remotely. qol: All people may now download
+      the Nanotrasen Internal Requisition Network program on modular computers to
+      request to order things remotely.'
+  - balance: The Forcefield Projector takes a second to put a forcefield down.
+  - bugfix: The spare Codex Cicatrix created by the ritual, no longer comes with free
+      charges.
+  thestubborn:
+  - bugfix: battered sausage now shows up
