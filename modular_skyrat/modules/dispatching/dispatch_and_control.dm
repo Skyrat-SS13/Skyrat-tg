@@ -1,127 +1,39 @@
-/obj/machinery/dispatch_control
-	name = "Dispatch and Control Console"
-	icon = 'modular_skyrat/modules/dispatching/icons/dcc.dmi'
-	icon_state = "computer"
-	use_power = NO_POWER_USE
-	idle_power_usage = 100
-	active_power_usage = 300
-	var/mob/current_user
-	var/overlay_state = "dcc"
+/datum/action/item_action/dispatch_management
+	name = "Dispatch and Control"
+	button_icon_state = "roundend"
 	var/dispatch_type
 	var/current_filter = "Nothing"
 
-/obj/machinery/dispatch_control/update_overlays()
+/obj/item/radio/headset/Initialize()
 	. = ..()
-	if(overlay_state != "off")
-		. += mutable_appearance(icon, overlay_state + "_mon")
-		. += mutable_appearance(icon, overlay_state + "_key")
+	actions += new /datum/action/item_action/dispatch_management(src)
 
-/obj/machinery/dispatch_control/attack_hand(mob/living/user, list/modifiers)
-	if(RIGHT_CLICK in modifiers)
-		if(use_power == ACTIVE_POWER_USE)
-			console_shutdown()
+/// Yes I know this is ugly. I dont care. ~ZephyrTFA
+/datum/action/item_action/dispatch_management/Grant(mob/M)
+	if(!ishuman(M))
 		return
+	var/mob/living/carbon/human/user = M
+	var/obj/item/radio/headset = user.ears
+	if(!istype(headset))
+		return
+	if(RADIO_CHANNEL_COMMAND in headset.channels)
+		return ..()
 
+/datum/action/item_action/dispatch_management/Trigger()
+	var/mob/user = usr
+	if(!istype(user))
+		return
 	if(!SSdispatch.ui_data_by_mob[user] || !SSdispatch.ui_data_by_mob[user]["mdata"]["holderActive"])
-		to_chat(user, span_boldwarning("You must be Active to use the console!"))
+		to_chat(user, span_boldwarning("You must be Active to sign into Dispatch and Control!"))
 		return
-
-	if(use_power == ACTIVE_POWER_USE)
-		if(current_user && user != current_user)
-			message_viewers("New user detected. Resetting Console.")
-			current_user = null
-			SStgui.close_uis(src)
-			return
-
-		current_user = user
-		dispatch_type = SSdispatch.ui_data_by_mob[user]["mdata"]["holderActiveType"]
-		if(!SSdispatch.dispatch_online[dispatch_type])
-			SSdispatch.dispatch_online[dispatch_type] = src
-
-		current_user = user
-		ui_interact(user)
+	dispatch_type = SSdispatch.ui_data_by_mob[user]["mdata"]["holderActiveType"]
+	if(SSdispatch.dispatch_online[dispatch_type] && SSdispatch.dispatch_online[dispatch_type] != src)
+		to_chat(user, span_boldwarning("Dispatch for '[dispatch_type]' already active!"))
 		return
+	SSdispatch.dispatch_online[dispatch_type] = src
+	ui_interact(user)
 
-	if(use_power == NO_POWER_USE && directly_use_power(active_power_usage))
-		console_bootup()
-		return
-
-/obj/machinery/dispatch_control/Initialize()
-	. = ..()
-	RegisterSignal(src, COMSIG_MACHINERY_POWER_LOST, .proc/console_powerfail)
-
-/obj/machinery/dispatch_control/Destroy()
-	UnregisterSignal(src, COMSIG_MACHINERY_POWER_LOST)
-	if(SSdispatch.dispatch_online == src)
-		SSdispatch.dispatch_online = null
-	return ..()
-
-/obj/machinery/dispatch_control/proc/state_change(state)
-	overlay_state = initial(overlay_state) + "[state]"
-	update_icon()
-
-/obj/machinery/dispatch_control/proc/message_viewers(message)
-	if(use_power == NO_POWER_USE)
-		return
-	for(var/mob/mob in viewers(world.view, src))
-		balloon_alert(mob, message)
-
-/obj/machinery/dispatch_control/proc/console_poweron()
-	use_power = ACTIVE_POWER_USE
-	state_change("on")
-	message_viewers("Welcome to Dispatch and Control V1.5")
-	SSdispatch.message_type_holders(dispatch_type, "Dispatch Online")
-
-/obj/machinery/dispatch_control/proc/console_bootup(stage = STAGE_ONE)
-	if(stage != STAGE_ONE && use_power == NO_POWER_USE) // We were shutdown in the middle of bootup
-		audible_message("[src] makes a loud screeching sound as it's internal transmitter array suddenly halts!")
-		return
-
-	use_power = IDLE_POWER_USE
-	state_change("boot[stage]")
-
-	switch(stage)
-		if(STAGE_ONE)
-			message_viewers("Connecting to Database...")
-			addtimer(CALLBACK(src, .proc/console_bootup, STAGE_TWO), 0.5 SECONDS)
-
-		if(STAGE_TWO)
-			if(SSdispatch.dispatch_online[dispatch_type] && SSdispatch.dispatch_online[dispatch_type] != src)
-				message_viewers("Database reports '[dispatch_type]' Dispatch already active")
-				console_shutdown()
-				return
-
-			message_viewers("Requesting Data...")
-			addtimer(CALLBACK(src, .proc/console_bootup, STAGE_THREE), 0.5 SECONDS)
-
-		if(STAGE_THREE)
-			message_viewers("Recieving Data...")
-			addtimer(CALLBACK(src, .proc/console_bootup, STAGE_FOUR), 0.5 SECONDS)
-
-		if(STAGE_FOUR)
-			message_viewers("Preparing...")
-			addtimer(CALLBACK(src, .proc/console_poweron), 0.5 SECONDS)
-
-/obj/machinery/dispatch_control/proc/console_powerfail()
-	SIGNAL_HANDLER
-
-	addtimer(CALLBACK(.proc/console_shutdown, TRUE), 0.1 SECONDS)
-
-/obj/machinery/dispatch_control/proc/console_shutdown(powerfail = FALSE)
-	if(use_power == NO_POWER_USE) // Already shutdown
-		return
-
-	if(SSdispatch.dispatch_online[dispatch_type] == src)
-		SSdispatch.dispatch_online[dispatch_type] = null
-		SSdispatch.message_type_holders(dispatch_type, "Dispatch Offline")
-
-	current_user = null
-
-	message_viewers(powerfail ? "Warning: Power Failure" : "Shuting Down...")
-	use_power = NO_POWER_USE
-	state_change("off")
-
-/obj/machinery/dispatch_control/proc/get_all_holder_statuses()
+/datum/action/item_action/dispatch_management/proc/get_all_holder_statuses()
 	var/list/mob/holders = list()
 	for(var/mob/holder as anything in SSdispatch.job_type_holders[dispatch_type])
 		holders |= holder
@@ -134,29 +46,29 @@
 		holder_status[holder] = uniform.sensor_mode
 	return holder_status
 
-/obj/machinery/dispatch_control/proc/ui_data_holder_list()
+/datum/action/item_action/dispatch_management/proc/ui_data_holder_list()
 	. = list()
 	for(var/holder in get_all_holder_statuses())
 		. += REF(holder)
 
-/obj/machinery/dispatch_control/proc/ui_data_holder_status()
+/datum/action/item_action/dispatch_management/proc/ui_data_holder_status()
 	var/list/data = get_all_holder_statuses()
 	. = list()
 	for(var/mob/living/carbon/human/holder as anything in data)
 		.[REF(holder)] = "[data[holder]]"
 
-/obj/machinery/dispatch_control/proc/ui_data_holder_ref_table()
+/datum/action/item_action/dispatch_management/proc/ui_data_holder_ref_table()
 	var/list/data = get_all_holder_statuses()
 	. = list()
 	for(var/mob/living/carbon/human/holder as anything in data)
 		.[REF(holder)] = "[holder.real_name]"
 
-/obj/machinery/dispatch_control/proc/ui_data_holder_activity()
+/datum/action/item_action/dispatch_management/proc/ui_data_holder_activity()
 	. = list()
 	for(var/holder in get_all_holder_statuses())
 		.[REF(holder)] = SSdispatch.ui_data_by_mob[holder]["mdata"]["holderActive"]
 
-/obj/machinery/dispatch_control/proc/ui_data_holder_current_ticket()
+/datum/action/item_action/dispatch_management/proc/ui_data_holder_current_ticket()
 	. = list()
 	for(var/holder in get_all_holder_statuses())
 		if(SSdispatch.ui_data_by_mob[holder])
@@ -164,14 +76,14 @@
 		else
 			.[REF(holder)] = "None"
 
-/obj/machinery/dispatch_control/proc/ui_data_holder_locs()
+/datum/action/item_action/dispatch_management/proc/ui_data_holder_locs()
 	var/list/data = get_all_holder_statuses()
 	. = list()
 	for(var/holder in data)
 		if(data[holder] == SENSOR_COORDS)
 			.[REF(holder)] = "[get_area(holder)]"
 
-/obj/machinery/dispatch_control/proc/ui_data_tickets()
+/datum/action/item_action/dispatch_management/proc/ui_data_tickets()
 	. = list()
 	for(var/ticket_key in SSdispatch.tickets)
 		var/datum/dispatch_ticket/ticket = SSdispatch.tickets[ticket_key]
@@ -194,39 +106,39 @@
 				. += ticket
 			continue
 
-/obj/machinery/dispatch_control/proc/ui_data_ticket_list()
+/datum/action/item_action/dispatch_management/proc/ui_data_ticket_list()
 	. = list()
 	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		. += ticket.key
 
-/obj/machinery/dispatch_control/proc/ui_data_ticket_status()
+/datum/action/item_action/dispatch_management/proc/ui_data_ticket_status()
 	. = list()
 	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.status]"
 
-/obj/machinery/dispatch_control/proc/ui_data_ticket_priority()
+/datum/action/item_action/dispatch_management/proc/ui_data_ticket_priority()
 	. = list()
 	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.priority]"
 
-/obj/machinery/dispatch_control/proc/ui_data_ticket_location()
+/datum/action/item_action/dispatch_management/proc/ui_data_ticket_location()
 	. = list()
 	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.location]"
 
-/obj/machinery/dispatch_control/proc/ui_data_ticket_title()
+/datum/action/item_action/dispatch_management/proc/ui_data_ticket_title()
 	. = list()
 	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.title]"
 
-/obj/machinery/dispatch_control/ui_interact(mob/user, datum/tgui/ui)
+/datum/action/item_action/dispatch_management/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "DispatchConsole")
 		ui.autoupdate = TRUE
 		ui.open()
 
-/obj/machinery/dispatch_control/ui_data(mob/user)
+/datum/action/item_action/dispatch_management/ui_data(mob/user)
 	var/list/data = list()
 	data["self_ref"] = REF(user)
 	data["filterby"] = current_filter
@@ -247,7 +159,7 @@
 	)
 	return data
 
-/obj/machinery/dispatch_control/ui_act(action, list/params)
+/datum/action/item_action/dispatch_management/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
