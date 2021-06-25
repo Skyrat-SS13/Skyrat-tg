@@ -10,6 +10,8 @@
 
 	light_color = LIGHT_COLOR_GREEN
 
+	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
+
 /obj/machinery/computer/stockexchange/Initialize()
 	. = ..()
 	logged_in = "SS13 Cargo Department"
