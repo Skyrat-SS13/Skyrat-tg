@@ -231,9 +231,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			GLOB.roundstart_races += S.id
 			qdel(S)
 	if(!GLOB.roundstart_races.len)
+<<<<<<< HEAD
 		GLOB.roundstart_races += "human"
 */
 //SKYRAT EDIT REMOVAL END
+=======
+		GLOB.roundstart_races += SPECIES_HUMAN
+>>>>>>> 279c93a0a7d (Adds Defines for Species IDs (#59797))
 
 /**
  * Checks if a species is eligible to be picked at roundstart.

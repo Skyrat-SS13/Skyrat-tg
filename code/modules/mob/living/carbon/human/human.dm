@@ -447,7 +447,7 @@
 
 	/* SKYRAT EDIT - REMOVAL
 	//Check for nonhuman scum
-	if(dna && dna.species.id && dna.species.id != "human")
+	if(dna && dna.species.id && dna.species.id != SPECIES_HUMAN)
 		threatcount += 1
 	*/
 

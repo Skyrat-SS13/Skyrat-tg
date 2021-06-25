@@ -80,7 +80,7 @@
 					var/mob/living/carbon/human/human = M
 					/* - SKRYAT EDIT CHANGE ORIGINAL
 					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
-						if(human.dna && human.dna.species.id != "fly")
+						if(human.dna && human.dna.species.id != SPECIES_FLY)
 							to_chat(M, span_hear("You hear a buzzing in your ears."))
 							human.set_species(/datum/species/fly)
 							log_game("[human] ([key_name(human)]) was turned into a fly person")
