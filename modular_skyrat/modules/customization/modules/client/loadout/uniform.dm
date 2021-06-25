@@ -76,6 +76,7 @@
 /datum/loadout_item/uniform/loincloth/cloth	//Sensor version for station crew
 	name = "Cloth Loincloth"
 	path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/uniform/pinkstripper
 	name = "Pink stripper outfit"
