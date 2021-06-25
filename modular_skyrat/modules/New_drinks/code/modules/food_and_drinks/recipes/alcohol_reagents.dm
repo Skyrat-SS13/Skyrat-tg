@@ -7,7 +7,7 @@
 	glass_icon = 'modular_skyrat/modules/New_drinks/icons/obj/CIAH.dmi'
 	glass_icon_state = "cum_glass"
 	shot_glass_icon_state = "cum_shot"	//I'm funny, I know
-	glass_name = "Cum in the Hot Tub"
+	glass_name = "Cream in the Hot Tub"
 	glass_desc = "Doesn't really leave it to the imagination, eh?"
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub_semen
