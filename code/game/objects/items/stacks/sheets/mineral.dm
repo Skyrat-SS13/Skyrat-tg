@@ -298,6 +298,7 @@ GLOBAL_LIST_INIT(bananium_recipes, list ( \
 GLOBAL_LIST_INIT(titanium_recipes, list ( \
 	new/datum/stack_recipe("titanium tile", /obj/item/stack/tile/mineral/titanium, 1, 4, 20), \
 	new/datum/stack_recipe("shuttle seat", /obj/structure/chair/comfy/shuttle, 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("spaceship plating", /obj/item/stack/sheet/mineral/titanium/spaceship, 1, time = 5), \	/*SKYRAT EDIT - Spaceship Wall crafting*/
 	))
 
 /obj/item/stack/sheet/mineral/titanium/get_main_recipes()
