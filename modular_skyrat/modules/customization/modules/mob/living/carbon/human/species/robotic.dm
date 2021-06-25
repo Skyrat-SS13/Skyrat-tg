@@ -91,6 +91,8 @@
 	var/datum/action/innate/monitor_change/screen
 	var/saved_screen = "Blank"
 
+	flavor_text = "An Integrated Positronic Chassis is the name given to a positronic brain within a metal work chassis. Under SolGov laws, legally recognized IPC citizens must not be forced into servitude via laws. Non-citizens, and often citizens of the frontiers, rarely enjoy such a protection."
+
 /datum/species/robotic/ipc/spec_revival(mob/living/carbon/human/H)
 	. = ..()
 	//TODO: fix this
@@ -166,6 +168,8 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
 
+	flavor_text = "Synthetic Citizens, especially the wealthier classes, often enjoy customised chassis to suit their self-image, personality, or whatever other factors they desire. Some even become anthropomorphic lizards."
+
 /datum/species/robotic/synthliz/get_random_body_markings(list/passed_features)
 	var/name = pick("Synth Pecs Lights", "Synth Scutes", "Synth Pecs")
 	var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
@@ -204,6 +208,8 @@
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
+
+	flavor_text = "Synthetic Citizens, especially the wealthier classes, often enjoy customised chassis to suit their self-image, personality, or whatever other factors they desire. Some even become anthropomorphic creatures."
 
 /datum/species/robotic/synthetic_mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -289,3 +295,5 @@
 	reagent_flags = PROCESS_SYNTHETIC
 	species_language_holder = /datum/language_holder/machine
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/synthhuman_parts_greyscale.dmi'
+
+	flavor_text = "Synthetic Citizens, especially the wealthier classes, often enjoy customised chassis to suit their self-image, personality, or whatever other factors they desire."

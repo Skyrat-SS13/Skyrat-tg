@@ -37,6 +37,8 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
 
+	flavor_text = "Perhaps genemodders or their offspring, or just a smaller, lesser known species, many species throughout the galaxy take the form of an anthropomorphized creature, recognizable to humans or not."
+
 /datum/species/mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color

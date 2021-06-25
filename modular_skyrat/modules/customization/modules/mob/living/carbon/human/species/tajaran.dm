@@ -31,6 +31,8 @@
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
 	limbs_id = "mammal"
 
+	flavor_text = "A humanoid species resembling Earthen Felines, the Tajara hail from the planet Ahdomai, with a culture and society still recovering from the brutal abuses suffered under their rulers, the 'Overseers', and the resulting bloody war against them."
+
 /datum/species/tajaran/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color

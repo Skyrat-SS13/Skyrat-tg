@@ -31,6 +31,9 @@
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
 	limbs_id = "mammal"
 
+	flavor_text = "The Vulpkanin, in many ways, are a species in recovery. Hailing from the planet of Atlam, a now desolate waste after a stellar disaster, the Vulpkanin are spread across the galaxy, making a living for themselves and recovering the best they can. Physically, the Vulpkanin resemble a variety of earthen canids, and have a heightened appetite."
+
+
 /datum/species/vulpkanin/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color

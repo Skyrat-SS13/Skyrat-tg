@@ -33,6 +33,8 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_id = "lizard"
 
+	flavor_text = "Hailing from the harsh, arid planet of Moghes, in the Uueoa-Esa system, the Unathi are an honor-bound race, with a society that focuses the importance of the Clan, the Faith, and the Region. Not to be confused with their distant cousins, the Lizardpeople."
+
 /datum/species/unathi/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color

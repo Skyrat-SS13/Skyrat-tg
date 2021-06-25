@@ -3171,6 +3171,7 @@ GLOBAL_LIST_INIT(food, list(
 /datum/preferences/proc/ShowSpeciesMenu(mob/user)
 	var/list/dat = list()
 	dat += "<center><b>Choose your character's species:</b></center>"
+	dat += "<center><b><u>Species Descriptions are Placeholders, and are not confirmed to align with current lore, nor enforced by staff to be accurate to your character.</b></u></center>"
 	dat += "<center><a href='?_src_=prefs;preference=close_species;task=input'>Back</a></center>"
 	dat += "<hr>"
 	var/list/playables = list()

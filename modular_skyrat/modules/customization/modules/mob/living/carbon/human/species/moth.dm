@@ -21,6 +21,8 @@
 	learnable_languages = list(/datum/language/common, /datum/language/moffic)
 	payday_modifier = 0.75
 
+	flavor_text = "The mothmen are a species of humanoids, closely resembling various members of the Lepidoptera order, commonly known as Earthen Moths."
+
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"
 	var/list/candidates = GLOB.body_marking_sets.Copy()

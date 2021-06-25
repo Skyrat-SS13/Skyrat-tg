@@ -286,6 +286,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
 	learnable_languages = list(/datum/language/common, /datum/language/nekomimetic)
+	flavor_text = "A race of genemodders, anime fanatics, and their offspring, the Felinids are a species of human-like humanoids, with the usual additions of cat-like ears and a cat tail. They have no centralised culture or goverment, though a significant portion have learned the language of 'Nekomimetic', a broken mess of various old earth asian languages."
 
 /datum/species/human/monkey
 	mutant_bodyparts = list()
@@ -294,6 +295,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
+	flavor_text = "Hailing from the Sol system, and having spread out far across the galaxy, Humanity are the fore-runner of the galaxy, the galactic superpower, owning all major galactic powers, from SolGov to the USSP, NanoTrasen to the Syndicate, and everything in between."
 
 /datum/species/mush
 	mutant_bodyparts = list()
@@ -306,12 +308,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	can_have_genitals = FALSE
 	can_augment = FALSE
 	learnable_languages = list(/datum/language/common, /datum/language/calcic)
+	flavor_text = "A plasmaman is a term that refers to an individual, or corpse, of any number of humanoid species, submitted to exposure to intense, supercooled plasma, melting their flesh, and turning their body into plasma-ified bone. Due to this, they ignite when not in an environment of pure plasma."
 
 /datum/species/ethereal
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
 	learnable_languages = list(/datum/language/common, /datum/language/voltaic)
+	flavor_text = "The Etherials are an electro-organic species that hails from Sprout. They emit light, consume electricity, and their skin is of a burning heat. They have four castes within their social structure, a motherly caste, a worker caste, a service caste, and a military caste."
 
 /datum/species/pod
 	name = "Primal Podperson"

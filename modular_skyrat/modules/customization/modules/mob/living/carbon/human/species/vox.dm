@@ -42,6 +42,9 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	learnable_languages = list(/datum/language/common, /datum/language/vox)
 
+	flavor_text = "The Vox are nomadic, bio-engineered creatures, hailing from large station-like constructions known as an 'arkships'. Vox are often raiders and scavengers, gathering materials to sustain their arkships. Some arkships, however, take a different approach, prefering amicable relations with non-Vox societys, and obtaining materials via trade. These Vox are commonly seen on NanoTrasen stations."
+
+
 /datum/species/vox/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	var/datum/outfit/vox/O = new /datum/outfit/vox
 	H.equipOutfit(O, visualsOnly)

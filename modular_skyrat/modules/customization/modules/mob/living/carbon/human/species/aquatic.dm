@@ -34,6 +34,8 @@
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/akula_parts_greyscale.dmi'
 	limbs_id = "akula"
 
+	flavor_text = "Aquatic, a catch-all term for any species of people that live underwater, either partially (as would need to be the case on NanoTrasen space stations), or entirely. They may take a wide variety of forms, shapes, personalities, and cultures."
+
 /datum/species/aquatic/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color

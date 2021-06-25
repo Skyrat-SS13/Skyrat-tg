@@ -33,3 +33,4 @@
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/xeno_parts_greyscale.dmi'
 	damage_overlay_type = "xeno"
 
+	flavor_text = "Sometimes, people experience freak accidents. Sometimes, people allow themselves to become under the whims of mad science. Whatever the case, there exists a race of peoples known as the Xenomorph Hybrids. They're self explanatory. A bastardisation of Xenomorph and some base race, usually human, and their offspring. While no doubt terrifying to those living in the core worlds, out in the frontiers, there's much, much worse, and hybrids rarely get a second glance."

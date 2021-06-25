@@ -27,3 +27,5 @@
 	disliked_food = JUNKFOOD | FRIED //Dwarves hate foods that have no nutrition other than alcohol.
 	species_language_holder = /datum/language_holder/dwarf
 	learnable_languages = list(/datum/language/common, /datum/language/dwarf)
+
+	flavor_text = "No-one quite knows where the dwarves come from, possibly the offspring of genemodding fantasy fans, possibly hailing from a long-lost culture and species. One thing is for sure. They're round, short, and loud."

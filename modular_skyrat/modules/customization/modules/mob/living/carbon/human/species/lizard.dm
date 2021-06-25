@@ -7,6 +7,8 @@
 	learnable_languages = list(/datum/language/common, /datum/language/draconic)
 	payday_modifier = 0.75
 
+	flavor_text = "Hailing from the harsh, arid planet of Tizira, in the Rizkalon system, the Lizardpeople are a race that come from a warrior culture, a fact which most notably came ahead in the Human/Lizard wars of the 25th century. Not to be confused with their distant cousins, the Unathi."
+
 /datum/species/lizard/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
 	var/main_color = random_short_color()
@@ -35,3 +37,5 @@
 	locations = list(/datum/cultural_info/location/stateless)
 	factions = list(/datum/cultural_info/faction/none)
 	learnable_languages = list(/datum/language/draconic)
+
+	flavor_text = "A species of residents to the NanoTrasen owned mining planet nicknamed 'Lavaland', Ash Walkers are primitive, tribal, distant cousins of the Lizardpeople and the Unathi, and not a legally recognized people by SolGov."

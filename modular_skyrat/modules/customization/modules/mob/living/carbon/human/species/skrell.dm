@@ -40,6 +40,8 @@
 
 	learnable_languages = list(/datum/language/common, /datum/language/skrell)
 
+	flavor_text = "An aquatic species, well known for their almost translucent skin in various colours, purely social tentacles sprouting out of their head, and a pocket inside their head, the Skrell come from Qerr'balak, a planet of luxury, wealth, and good living conditions"
+
 /obj/item/organ/tongue/skrell
 	name = "internal vocal sacs"
 	desc = "An Strange looking sac."

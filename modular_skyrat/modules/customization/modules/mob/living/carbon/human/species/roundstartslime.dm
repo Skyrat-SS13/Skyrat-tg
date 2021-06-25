@@ -20,6 +20,8 @@
 	specific_alpha = 155
 	markings_alpha = 130 //This is set lower than the other so that the alpha values don't stack on top of each other so much
 
+	flavor_text = "Perhaps due to a xenobiological transformation, intentional or otherwise, or perhaps just as a lesser known species, Slime Hybrids, Slime People, Or whatever slime-related word they use to describe themselves, are a species of gelatinous, sentient beings with the ability to manipulate their body constitution."
+
 /datum/action/innate/slime_change
 	name = "Alter Form"
 	check_flags = AB_CHECK_CONSCIOUS

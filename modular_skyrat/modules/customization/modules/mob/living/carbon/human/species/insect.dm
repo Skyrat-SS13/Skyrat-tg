@@ -36,3 +36,5 @@
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/insect_parts_greyscale.dmi'
+
+	flavor_text = "Perhaps genemodders or their offspring, or just a smaller, lesser known species, many species throughout the galaxy take the form of an anthropomorphized creature, recognizable to humans or not. Some even appear to be insect-like."
