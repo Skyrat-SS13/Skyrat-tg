@@ -70,3 +70,47 @@ obj/item/stock_parts/cell/medigun/experimental //This cell type is meant to be u
 	.=..()
 	target.adjustToxLoss(-2.5) //Toxin is treatable, but inefficent//
 //T2 Healing Projectiles//
+//Tier II Brute Projectile//
+/obj/item/ammo_casing/energy/medical/brute2
+	projectile_type = /obj/projectile/energy/medical/brute2
+	select_name = "Brute II"
+
+/obj/projectile/energy/medical/brute2
+	name = "strong brute heal shot"
+
+/obj/projectile/energy/medical/brute2/on_hit(mob/living/target)
+	.=..()
+	target.adjustBruteLoss(-7.5)
+//Tier II Burn Projectile//
+/obj/item/ammo_casing/energy/medical/burn2
+	projectile_type = /obj/projectile/energy/medical/burn2
+	select_name = "Burn II"
+
+/obj/projectile/energy/medical/burn2
+	name = "strong burn heal shot"
+
+/obj/projectile/energy/medical/burn2/on_hit(mob/living/target)
+	.=..()
+	target.adjustFireLoss(-7.5)
+//Tier II Oxy Projectile//
+/obj/item/ammo_casing/energy/medical/oxy2
+	projectile_type = /obj/projectile/energy/medical/oxy2
+	select_name = "Oxy II"
+
+/obj/projectile/energy/medical/oxy2
+	name = "strong oxygen heal shot"
+
+/obj/projectile/energy/medical/oxy2/on_hit(mob/living/target)
+	.=..()
+	target.adjustOxyLoss(-10)
+//Tier II Toxin Projectile//
+/obj/item/ammo_casing/energy/medical/toxin2
+	projectile_type = /obj/projectile/energy/medical/toxin2
+	select_name = "Toxin II"
+
+/obj/projectile/energy/medical/toxin2
+	name = "strong toxin heal shot"
+
+/obj/projectile/energy/medical/toxin2/on_hit(mob/living/target)
+	.=..()
+	target.adjustToxLoss(-3.5)

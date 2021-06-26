@@ -43,7 +43,7 @@
 	cell_type = /obj/item/stock_parts/cell/medigun/experimental
 	maxcells = 6
 	selfcharge = 1
-	var/can_charge = FALSE
+	can_charge = FALSE
 	//Medigun Cells// Spritework is done by Arctaisia!
 //Default Cell//
 /obj/item/medicell
@@ -80,6 +80,36 @@
 	icon_state = "Toxin1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin1
 //End of Tier I Cells/
+//Tier II Cells/
+//Brute II//
+/obj/item/medicell/brute2
+	name = "Brute II Medicell"
+	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Brute1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute2
+//Burn II//
+/obj/item/medicell/burn2
+	name = "Burn II Medicell"
+	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Burn1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn2
+//Toxin II//
+/obj/item/medicell/toxin2
+	name = "Toxin II Medicell"
+	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Toxin1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/toxin2
+//Oxygen II//
+/obj/item/medicell/oxy2
+	name = "Oxygen II Medicell"
+	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Oxygen1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/oxy2
+//End of Tier II
 //Medigun Upgrade//
 /obj/item/gun/energy/medigun/attackby(obj/item/medicell/M, mob/user)
 	if(cellcount >= maxcells)
