@@ -159,7 +159,7 @@
 	desc = "A nest crawling with... something!"
 	icon_state = "nest_rats"
 	light_color = LIGHT_COLOR_GREEN
-	max_mobs = 8
+	max_mobs = 6
 	spawn_cooldown = 15 SECONDS
 	monster_types = list(/mob/living/simple_animal/hostile/rat)
 
