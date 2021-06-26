@@ -12,10 +12,10 @@
 	max_integrity = 150
 	var/spawn_delay = 0
 	var/list/var/monster_types = list(/mob/living/simple_animal/crab)
-	var/max_mobs = 5
+	var/max_mobs = 3
 	var/list/faction = list("nest spawned")
 	var/spawned_mobs = 0
-	var/spawn_cooldown = 10 SECONDS
+	var/spawn_cooldown = 30 SECONDS
 	var/regenerate_time = 5 MINUTES //How long it takes to regenerate mobs!
 	var/list/registered_turfs = list()
 
