@@ -16,7 +16,7 @@
 	var/list/faction = list("nest spawned")
 	var/spawned_mobs = 0
 	var/spawn_cooldown = 30 SECONDS
-	var/regenerate_time = 5 MINUTES //How long it takes to regenerate mobs!
+	var/regenerate_time = 10 MINUTES //How long it takes to regenerate mobs!
 	var/list/registered_turfs = list()
 
 /obj/structure/mob_spawner/swarmers
@@ -59,13 +59,21 @@
 	registered_turfs = null
 	return ..()
 
-/obj/structure/mob_spawner/proc/proximity_trigger()
+/obj/structure/mob_spawner/proc/proximity_trigger(datum/source, sent_mob)
 	SIGNAL_HANDLER
 	if(spawned_mobs >= max_mobs)
 		return
 	if(spawn_delay > world.time)
 		return
 	spawn_delay = world.time + spawn_cooldown
+
+	if(!isliving(sent_mob))
+		return
+
+	var/mob/living/entered_mob = sent_mob
+
+	if(entered_mob.faction in faction)
+		return
 
 	playsound(src, pick('modular_skyrat/master_files/sound/effects/rustle1.ogg', 'modular_skyrat/master_files/sound/effects/rustle2.ogg'))
 
