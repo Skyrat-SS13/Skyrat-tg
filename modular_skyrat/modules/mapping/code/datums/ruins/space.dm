@@ -17,12 +17,6 @@
 	suffix = "interdynefob.dmm"
 	always_place = TRUE
 
-/datum/map_template/ruin/space/skyrat/oldstation
-	id = "oldstation"
-	suffix = "oldstation_skyrat.dmm"
-	name = "Code Charlie Station"
-	description = "Nanotrasen would like to remind all crew - inside our sectors, you are safe. You will be protected. You have nothing to fear."
-
 /datum/map_template/ruin/space/skyrat/derelictferry
 	id = "derelictferry"
 	suffix = "derelictferry.dmm"
