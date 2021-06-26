@@ -111,6 +111,7 @@
 	name = "sticky cobwebs"
 	desc = "A mush of sticky cobwebs and nasty looking eggs..."
 	icon_state = "nest_spider"
+	light_color = LIGHT_COLOR_RED
 	monster_types = list(/mob/living/simple_animal/hostile/giant_spider/hunter, /mob/living/simple_animal/hostile/giant_spider)
 
 /obj/structure/mob_spawner/bush
