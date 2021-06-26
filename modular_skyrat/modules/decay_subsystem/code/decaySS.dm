@@ -5,12 +5,16 @@ These procs are incredibly expensive and should only really be run once. That's 
 
 
 #define WALL_RUST_PERCENT_CHANCE 15
+
 #define FLOOR_DIRT_PERCENT_CHANCE 15
 #define FLOOR_BLOOD_PERCENT_CHANCE 1
 #define FLOOR_VOMIT_PERCENT_CHANCE 1
 #define FLOOR_OIL_PERCENT_CHANCE 5
 #define FLOOR_TILE_MISSING_PERCENT_CHANCE 1
 #define FLOOR_COBWEB_PERCENT_CHANCE 1
+
+#define NEST_PERCENT_CHANCE 1
+
 #define LIGHT_FLICKER_PERCENT_CHANCE 10
 
 SUBSYSTEM_DEF(decay)
@@ -21,6 +25,13 @@ SUBSYSTEM_DEF(decay)
 	var/list/possible_turfs = list()
 	var/list/possible_areas = list()
 	var/severity_modifier = 1
+
+	var/list/possible_nests = list(
+		/obj/structure/mob_spawner/swarmers,
+		/obj/structure/mob_spawner/spiders,
+		/obj/structure/mob_spawner/bush,
+		/obj/structure/mob_spawner/grapes,
+		)
 
 /datum/controller/subsystem/decay/Initialize()
 	for(var/turf/iterating_turf in world)
@@ -80,6 +91,12 @@ SUBSYSTEM_DEF(decay)
 				var/obj/structure/spider/stickyweb/spawned_web = new (iterating_floor)
 				if(!iterating_floor.Enter(spawned_web))
 					qdel(spawned_web)
+
+			if(prob(NEST_PERCENT_CHANCE * severity_modifier))
+				var/obj/structure/mob_spawner/spawned_spawner = pick(possible_nests)
+				spawned_spawner = new(iterating_floor)
+				if(!iterating_floor.Enter(spawned_spawner))
+					qdel(spawned_spawner)
 
 		for(var/obj/machinery/light/iterating_light in iterating_maintenance)
 			if(prob(LIGHT_FLICKER_PERCENT_CHANCE))

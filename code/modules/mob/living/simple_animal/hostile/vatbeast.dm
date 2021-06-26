@@ -25,6 +25,8 @@
 
 	var/obj/effect/proc_holder/tentacle_slap/tentacle_slap
 
+	ghost_controllable = TRUE //SKYRAT EDIT CHANGE - BE GOOD!
+
 /mob/living/simple_animal/hostile/vatbeast/Initialize()
 	. = ..()
 	tentacle_slap = new(src)
