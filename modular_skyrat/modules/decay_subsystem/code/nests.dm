@@ -128,7 +128,7 @@
 /obj/structure/mob_spawner/waspnest
 	name = "wasp nest"
 	desc = "Filled with little beings that exist only to make your life a living hell."
-	icon_state = "nest_wasp"
+	icon_state = "nest_bee"
 	light_color = LIGHT_COLOR_YELLOW
 	monster_types = list(/mob/living/simple_animal/hostile/bee/wasp)
 	max_mobs = 10
@@ -160,7 +160,7 @@
 	icon_state = "nest_rats"
 	light_color = LIGHT_COLOR_GREEN
 	max_mobs = 8
-	spawn_cooldown = 2 SECONDS
+	spawn_cooldown = 15 SECONDS
 	monster_types = list(/mob/living/simple_animal/hostile/rat)
 
 /obj/structure/mob_spawner/grapes
