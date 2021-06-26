@@ -43,6 +43,7 @@
 	cell_type = /obj/item/stock_parts/cell/medigun/experimental
 	maxcells = 6
 	selfcharge = 1
+	var/can_charge = FALSE
 	//Medigun Cells// Spritework is done by Arctaisia!
 //Default Cell//
 /obj/item/medicell
