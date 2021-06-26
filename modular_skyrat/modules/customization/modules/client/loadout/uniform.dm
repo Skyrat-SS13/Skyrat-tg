@@ -76,6 +76,7 @@
 /datum/loadout_item/uniform/loincloth/cloth	//Sensor version for station crew
 	name = "Cloth Loincloth"
 	path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/uniform/pinkstripper
 	name = "Pink stripper outfit"
@@ -217,6 +218,38 @@
 /datum/loadout_item/uniform/suit/vice
 	name = "Grey and Black suit"
 	path = /obj/item/clothing/under/misc/vice_officer
+
+/datum/loadout_item/uniform/suit/greyskirty
+	name = "Grey Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby
+
+/datum/loadout_item/uniform/suit/blackskirty
+	name = "Black Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby
+
+/datum/loadout_item/uniform/suit/gentleskirty
+	name = "Gentle Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+
+/datum/loadout_item/uniform/suit/gentleskirty
+	name = "Gentle Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+
+/datum/loadout_item/uniform/suit/burgskirty
+	name = "Burgundy Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby
+
+/datum/loadout_item/uniform/suit/tanskirty
+	name = "Tan Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby
+
+/datum/loadout_item/uniform/suit/blueskirty
+	name = "Blue Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby
+
+/datum/loadout_item/uniform/suit/greenskirty
+	name = "Green Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby
 
 /datum/loadout_item/uniform/suit/femblack
 	name = "Feminine Suit"
