@@ -15,11 +15,10 @@
 	var/maxcells = 3
 	var/cellcount = 0
 	var/list/installedcells = list()
-//standard MediGun//
+//standard MediGun// This is what you will get from Cargo, most likely.
 /obj/item/gun/energy/medigun/standard
 
-
-//Medigun Cells//
+//Medigun Cells// Spritework is done by Arctaisia!
 //Default Cell//
 /obj/item/medicell
 	name = "Default Medicell"
@@ -29,6 +28,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/ammo_type = /obj/item/ammo_casing/energy/medical //This is the ammo type that all mediguns come with.
 
+/obj/item/medicell/Initialize()
+	. =..()
+	AddElement(/datum/element/item_scaling, 0.5, 1)
 //Tier I cells//
 //Brute I//
 /obj/item/medicell/brute1
