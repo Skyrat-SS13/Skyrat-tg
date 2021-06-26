@@ -110,6 +110,36 @@
 	icon_state = "Oxygen1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy2
 //End of Tier II
+//Tier III Cells/
+//Brute III//
+/obj/item/medicell/brute3
+	name = "Brute III Medicell"
+	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Brute1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute3
+//Burn III//
+/obj/item/medicell/burn3
+	name = "Burn III Medicell"
+	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Burn1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn3
+//Toxin III//
+/obj/item/medicell/toxin3
+	name = "Toxin III Medicell"
+	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Toxin1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/toxin3
+//Oxygen III//
+/obj/item/medicell/oxy3
+	name = "Oxygen III Medicell"
+	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
+	w_class = WEIGHT_CLASS_SMALL
+	icon_state = "Oxygen1"
+	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
+//End of Tier III
 //Medigun Upgrade//
 /obj/item/gun/energy/medigun/attackby(obj/item/medicell/M, mob/user)
 	if(cellcount >= maxcells)
