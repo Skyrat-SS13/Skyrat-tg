@@ -10,8 +10,11 @@
 	anchored = TRUE
 	layer = TABLE_LAYER
 	max_integrity = 150
+	light_range = 2
+	light_power = 1
+	light_color = LIGHT_COLOR_LAVA
 	var/spawn_delay = 0
-	var/list/var/monster_types = list(/mob/living/simple_animal/crab)
+	var/list/var/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	var/max_mobs = 3
 	var/list/faction = list("nest spawned")
 	var/spawned_mobs = 0
@@ -23,6 +26,7 @@
 	name = "broken metal heap"
 	desc = "A heap of broken metal... it's moving."
 	icon_state = "nest_swarmer"
+	light_color = LIGHT_COLOR_BLUE
 	monster_types = list(/mob/living/simple_animal/hostile/swarmer/ai, /mob/living/simple_animal/hostile/swarmer/ai/resource, /mob/living/simple_animal/hostile/swarmer/ai/ranged_combat)
 
 /obj/structure/mob_spawner/spiders
@@ -35,12 +39,14 @@
 	name = "bloody bush"
 	desc = "A bush... oozing blood?"
 	icon_state = "nest_grass"
+	light_color = LIGHT_COLOR_GREEN
 	monster_types = list(/mob/living/simple_animal/hostile/killertomato, /mob/living/simple_animal/hostile/venus_human_trap)
 
 /obj/structure/mob_spawner/grapes
 	name = "grapevine"
 	desc = "A grapevine... with... eggs?"
 	icon_state = "nest_grapes"
+	light_color = LIGHT_COLOR_PURPLE
 	monster_types = list(/mob/living/simple_animal/hostile/ooze/grapes)
 
 /obj/structure/mob_spawner/grapes/Destroy()
