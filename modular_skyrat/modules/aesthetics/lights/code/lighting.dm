@@ -7,7 +7,7 @@
 	var/flicker_timer = null
 	var/roundstart_flicker = FALSE
 
-/obj/machinery/light/proc/turn_on(trigger)
+/obj/machinery/light/proc/turn_on(trigger, play_sound = TRUE)
 	if(QDELETED(src))
 		return
 	turning_on = FALSE
@@ -38,11 +38,12 @@
 		else
 			use_power = ACTIVE_POWER_USE
 			set_light(BR, PO, CO)
-			playsound(src.loc, 'modular_skyrat/modules/aesthetics/lights/sound/light_on.ogg', 65, 1)
+			if(play_sound)
+				playsound(src.loc, 'modular_skyrat/modules/aesthetics/lights/sound/light_on.ogg', 65, 1)
 
 /obj/machinery/light/proc/start_flickering()
 	on = FALSE
-	update(FALSE, TRUE)
+	update(FALSE, TRUE, FALSE)
 
 	constant_flickering = TRUE
 
@@ -63,7 +64,7 @@
 
 	if(A.lightswitch && A.power_light)
 		on = TRUE
-		update(FALSE, TRUE)
+		update(FALSE, TRUE, FALSE)
 
 	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_off), rand(5, 10))
 
@@ -75,7 +76,7 @@
 
 	if(A.lightswitch && A.power_light)
 		on = FALSE
-		update(FALSE, TRUE)
+		update(FALSE, TRUE, FALSE)
 
 	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_on), rand(5, 50))
 

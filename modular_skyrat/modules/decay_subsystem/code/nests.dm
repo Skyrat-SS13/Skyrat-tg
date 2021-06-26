@@ -97,8 +97,6 @@
 	retaliated = FALSE
 	visible_message(span_danger("[src] calms down."))
 
-
-
 ///////////// CUSTOM SPAWNERS
 /obj/structure/mob_spawner/swarmers
 	name = "broken metal heap"
@@ -111,7 +109,7 @@
 	name = "sticky cobwebs"
 	desc = "A mush of sticky cobwebs and nasty looking eggs..."
 	icon_state = "nest_spider"
-	light_color = LIGHT_COLOR_RED
+	light_color = LIGHT_COLOR_BLOOD_MAGIC
 	monster_types = list(/mob/living/simple_animal/hostile/giant_spider/hunter, /mob/living/simple_animal/hostile/giant_spider)
 
 /obj/structure/mob_spawner/bush
@@ -121,18 +119,24 @@
 	light_color = LIGHT_COLOR_GREEN
 	monster_types = list(/mob/living/simple_animal/hostile/killertomato)
 
-/obj/structure/mob_spawner/beehive
-	name = "beehive"
-	desc = "Buzz!"
-	icon_state = "nest_bee"
+/mob/living/simple_animal/hostile/bee/wasp
+	name = "wasp"
+	desc = "Little bastard!"
+	maxHealth = 20
+	health = 20
+
+/obj/structure/mob_spawner/waspnest
+	name = "wasp nest"
+	desc = "Filled with little beings that exist only to make your life a living hell."
+	icon_state = "nest_wasp"
 	light_color = LIGHT_COLOR_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/bee)
+	monster_types = list(/mob/living/simple_animal/hostile/bee/wasp)
 	max_mobs = 10
 	spawn_cooldown = 2 SECONDS
 
 	var/swarmed = FALSE
 
-/obj/structure/mob_spawner/beehive/attacked_by(obj/item/I, mob/living/user)
+/obj/structure/mob_spawner/waspnest/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
 	if(!swarmed)
 		playsound(src, 'sound/creatures/bee.ogg', 100)
