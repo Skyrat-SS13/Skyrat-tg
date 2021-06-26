@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(decay)
 		/obj/structure/mob_spawner/spiders,
 		/obj/structure/mob_spawner/bush,
 		/obj/structure/mob_spawner/grapes,
-		/obj/structure/mob_spawner/waspnest,
+		/obj/structure/mob_spawner/beehive,
 		/obj/structure/mob_spawner/rats,
 		/obj/structure/mob_spawner/headcrab
 		)

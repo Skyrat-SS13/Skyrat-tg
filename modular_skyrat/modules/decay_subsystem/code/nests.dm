@@ -38,8 +38,12 @@
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
 /obj/structure/mob_spawner/Destroy()
-	for(var/loot_item in loot)
-		new loot_item (loc)
+	for(var/path in loot)
+		var/number = loot[path]
+		if(!isnum(number))//Default to 1
+			number = 1
+		for(var/i in 1 to number)
+			new path (loc)
 	playsound(src, 'sound/effects/blobattack.ogg', 100)
 	for(var/t in registered_turfs)
 		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
@@ -104,6 +108,10 @@
 	icon_state = "nest_swarmer"
 	light_color = LIGHT_COLOR_BLUE
 	monster_types = list(/mob/living/simple_animal/hostile/swarmer/ai/resource)
+	loot = list(/obj/item/stack/sheet/bluespace_crystal/five, /obj/item/stack/sheet/mineral/diamond)
+
+/obj/item/stack/sheet/bluespace_crystal/five
+	amount = 5
 
 /obj/structure/mob_spawner/spiders
 	name = "sticky cobwebs"
@@ -111,6 +119,22 @@
 	icon_state = "nest_spider"
 	light_color = LIGHT_COLOR_BLOOD_MAGIC
 	monster_types = list(/mob/living/simple_animal/hostile/giant_spider/hunter, /mob/living/simple_animal/hostile/giant_spider)
+	loot = list(/obj/item/spider_egg = 4)
+
+/obj/item/spider_egg
+	name = "spider egg"
+	desc = "A white egg with something crawling around inside. Looks... fragile."
+	icon = 'modular_skyrat/modules/decay_subsystem/icons/loot.dmi'
+	icon_state = "spider_egg"
+
+/obj/item/spider_egg/attack_self(mob/user, modifiers)
+	. = ..()
+	to_chat(user, span_danger("You begin to crack open [src]..."))
+	if(do_after(user, 3 SECONDS, src))
+		to_chat(user, span_userdanger("You crack [src] open, something monsterous crawls out!"))
+		playsound(src, 'sound/effects/blobattack.ogg', 100)
+		new /mob/living/simple_animal/hostile/giant_spider (user.loc)
+		qdel(src)
 
 /obj/structure/mob_spawner/bush
 	name = "bloody bush"
@@ -118,25 +142,20 @@
 	icon_state = "nest_grass"
 	light_color = LIGHT_COLOR_GREEN
 	monster_types = list(/mob/living/simple_animal/hostile/killertomato)
+	loot = list(/obj/item/seeds/random = 3)
 
-/mob/living/simple_animal/hostile/bee/wasp
-	name = "wasp"
-	desc = "Little bastard!"
-	maxHealth = 20
-	health = 20
-
-/obj/structure/mob_spawner/waspnest
-	name = "wasp nest"
+/obj/structure/mob_spawner/beehive
+	name = "beehive"
 	desc = "Filled with little beings that exist only to make your life a living hell."
 	icon_state = "nest_bee"
 	light_color = LIGHT_COLOR_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/bee/wasp)
+	monster_types = list(/mob/living/simple_animal/hostile/bee)
 	max_mobs = 10
 	spawn_cooldown = 2 SECONDS
-
+	loot = list(/obj/item/reagent_containers/honeycomb = 5, /obj/item/queen_bee)
 	var/swarmed = FALSE
 
-/obj/structure/mob_spawner/waspnest/attacked_by(obj/item/I, mob/living/user)
+/obj/structure/mob_spawner/beehive/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
 	if(!swarmed)
 		playsound(src, 'sound/creatures/bee.ogg', 100)
@@ -153,6 +172,7 @@
 	monster_types = list(/mob/living/simple_animal/hostile/headcrab)
 	max_mobs = 6
 	spawn_cooldown = 5 SECONDS
+	loot = list(/obj/item/fish = 5)
 
 /obj/structure/mob_spawner/rats
 	name = "nasty nest"
@@ -162,6 +182,7 @@
 	max_mobs = 6
 	spawn_cooldown = 15 SECONDS
 	monster_types = list(/mob/living/simple_animal/hostile/rat)
+	loot = list(/obj/item/seeds/replicapod = 2)
 
 /obj/structure/mob_spawner/grapes
 	name = "grapevine"
@@ -169,6 +190,7 @@
 	icon_state = "nest_grapes"
 	light_color = LIGHT_COLOR_PURPLE
 	monster_types = list(/mob/living/simple_animal/hostile/ooze/grapes)
+	loot = list(/obj/item/food/grown/berries/glow = 10)
 
 /obj/structure/mob_spawner/grapes/Destroy()
 	new /mob/living/simple_animal/hostile/vatbeast(loc)
