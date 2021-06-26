@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(decay)
 					qdel(spawned_web)
 
 			if(prob(NEST_PERCENT_CHANCE * severity_modifier))
-				var/obj/structure/mob_spawner/spawned_spawner = pick(possible_nests)
+				var/spawned_spawner = pick(possible_nests)
 				spawned_spawner = new(iterating_floor)
 				if(!iterating_floor.Enter(spawned_spawner))
 					qdel(spawned_spawner)
