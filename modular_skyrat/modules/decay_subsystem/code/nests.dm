@@ -65,7 +65,7 @@
 	registered_turfs = null
 	return ..()
 
-/obj/structure/mob_spawner/proc/proximity_trigger(datum/source, sent_mob)
+/obj/structure/mob_spawner/proc/proximity_trigger(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
 	if(spawned_mobs >= max_mobs)
 		return
@@ -73,10 +73,10 @@
 		return
 	spawn_delay = world.time + spawn_cooldown
 
-	if(!isliving(sent_mob))
+	if(!isliving(AM))
 		return
 
-	var/mob/living/entered_mob = sent_mob
+	var/mob/living/entered_mob = AM
 
 	if(entered_mob.faction in faction)
 		return
