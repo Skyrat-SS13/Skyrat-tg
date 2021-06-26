@@ -9,6 +9,7 @@
 	anchored = TRUE
 	density = TRUE
 	pixel_y = -5    //I dunno why this sprite lines up differently, but this is a better value to line this one up in a way that looks built into a wall
+	gpstag = SPACE_SIGNAL_GPSTAG	//really the only non-aesthetic change, gives the space ruin GPS signal
 
 /obj/item/gps/computer/space/wrench_act(mob/living/user, obj/item/I)
 	..()
