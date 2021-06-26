@@ -1,7 +1,7 @@
 //Base Medigun Code//
 /obj/item/gun/energy/medigun
 	name = "MediGun"
-	desc = "This is my smart gun, it won't hurt anyone friendly, infact it will make them heal!"
+	desc = "This is my smart gun, it won't hurt anyone friendly, infact it will make them heal! Please tell github if you somehow manage to get this gun."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
 	inhand_icon_state = null
@@ -15,10 +15,35 @@
 	var/maxcells = 3
 	var/cellcount = 0
 	var/list/installedcells = list()
+
+/obj/item/gun/energy/medigun/examine(mob/user)
+	. = ..()
+	if(maxcells)
+		. += "<b>[cellcount]</b> out of <b>[maxcells]</b> cell slots are filled."
+		. += span_info("You can use right click to remove the most recently inserted Medicell from the chamber.")
+		for(var/A in installedcells)
+			var/obj/item/medicell/M = A
+			. += span_notice("There is \a [M] in the chamber.")
+
 //standard MediGun// This is what you will get from Cargo, most likely.
 /obj/item/gun/energy/medigun/standard
+	name = "VeyMedical CWM-479 Cell Powered Medigun"
+	desc = "This is the standard model Medigun produced by Vey-Med, meant for healing in less than ideal scenarios. The Medicell chamber is rated to fit three cells"
 
-//Medigun Cells// Spritework is done by Arctaisia!
+//Upgarded Medigun//
+/obj/item/gun/energy/medigun/upgraded
+	name = "VeyMedical CWM-479-FC Cell Powered Medigun"
+	desc = "This is the upgraded version of the standard CWM-497 Medigun, the battery inside is upgraded to better work with chargers along with having more capacity."
+	cell_type = /obj/item/stock_parts/cell/medigun/upgraded
+
+//CMO and CC MediGun
+/obj/item/gun/energy/medigun/cmo
+	name = "VeyMedical CWM-479-CC Cell Powered Medigun"
+	desc = "The most advanced version of the CWM-479 line of mediguns, it features slots for six cells and a auto recharging battery"
+	cell_type = /obj/item/stock_parts/cell/medigun/experimental
+	maxcells = 6
+	selfcharge = 1
+	//Medigun Cells// Spritework is done by Arctaisia!
 //Default Cell//
 /obj/item/medicell
 	name = "Default Medicell"

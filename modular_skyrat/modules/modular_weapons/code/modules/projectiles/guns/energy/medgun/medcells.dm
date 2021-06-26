@@ -8,6 +8,7 @@ obj/item/stock_parts/cell/medigun/upgraded
 	name = "Upgraded Medigun Cell"
 	maxcharge = 1500
 	chargerate = 160
+
 obj/item/stock_parts/cell/medigun/experimental //This cell type is meant to be used in self charging mediguns like CMO and ERT one.//
 	name = "Experiemental Medigun Cell"
 	maxcharge = 1800
@@ -38,7 +39,7 @@ obj/item/stock_parts/cell/medigun/experimental //This cell type is meant to be u
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
 	projectile_type = /obj/projectile/energy/medical/brute1
-	select_name = "Brute"
+	select_name = "Brute I"
 
 /obj/projectile/energy/medical/brute1
 	name = "brute heal shot"
