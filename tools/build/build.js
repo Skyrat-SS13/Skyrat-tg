@@ -144,13 +144,6 @@ const TgsTarget = Juke.createTarget({
   },
 });
 
-<<<<<<< HEAD
-Juke.setup({
-  default: process.env.CBT_BUILD_MODE === "TGS" ? TgsTarget : DefaultTarget,
-}).then((code) => {
-  process.exit(code);
-});
-=======
 const TGS_MODE = process.env.CBT_BUILD_MODE === 'TGS';
 
 Juke
@@ -160,4 +153,3 @@ Juke
   .then((code) => {
     process.exit(code);
   });
->>>>>>> f59adc2537b (Juke Build 0.4.0 (#59796))
