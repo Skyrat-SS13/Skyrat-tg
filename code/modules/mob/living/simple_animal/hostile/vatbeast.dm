@@ -79,7 +79,9 @@
 	if(.)
 		return
 
-	if(owner.stat)
+	var/mob/living/user = usr //SKYRAT EDIT CHANGE
+
+	if(user.stat) //SKYRAT EDIT CHANGE
 		remove_ranged_ability()
 		return
 
@@ -91,10 +93,10 @@
 
 	var/mob/living/living_target = target
 
-	owner.visible_message("<span class='warning>[owner] slaps [living_target] with its tentacle!</span>", span_notice("You slap [living_target] with your tentacle."))
-	playsound(owner, 'sound/effects/assslap.ogg', 90)
+	user.visible_message("<span class='warning>[user] slaps [living_target] with its tentacle!</span>", span_notice("You slap [living_target] with your tentacle.")) //SKYRAT EDIT CHANGE
+	playsound(user, 'sound/effects/assslap.ogg', 90)//SKYRAT EDIT CHANGE
 	var/atom/throw_target = get_edge_target_turf(target, ranged_ability_user.dir)
-	living_target.throw_at(throw_target, 6, 4, owner)
+	living_target.throw_at(throw_target, 6, 4, user) //SKYRAT EDIT CHANGE
 	living_target.apply_damage(30)
 	current_cooldown = world.time + cooldown
 	remove_ranged_ability()
