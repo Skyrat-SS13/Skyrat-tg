@@ -196,9 +196,9 @@
 	monster_types = list(/mob/living/simple_animal/hostile/ooze/grapes)
 	loot = list(/obj/item/food/grown/berries/glow = 10)
 
-/obj/structure/mob_spawner/grapes/Destroy()
+/obj/structure/mob_spawner/grapes/obj_break(damage_flag)
+	. = ..()
 	new /mob/living/simple_animal/hostile/vatbeast(loc)
-	return ..()
 
 
 
