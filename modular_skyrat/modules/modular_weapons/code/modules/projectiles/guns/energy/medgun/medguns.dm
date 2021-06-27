@@ -160,7 +160,6 @@
 		if(last_cell)
 			last_cell.forceMove(drop_location())
 		installedcells -= last_cell
-		installedcells.len--
 		ammo_type.len--
 		cellcount -= 1
 	else
