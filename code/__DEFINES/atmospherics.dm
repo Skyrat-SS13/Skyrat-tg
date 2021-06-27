@@ -264,9 +264,9 @@
 //PIPES
 //Atmos pipe limits
 /// (kPa) What pressure pumps and powered equipment max out at.
-#define MAX_OUTPUT_PRESSURE 4500
+#define MAX_OUTPUT_PRESSURE 15000 //SKYRAT CHANGE: TRIPLES MAX OUTPUT PRESSURE
 /// (L/s) Maximum speed powered equipment can work at.
-#define MAX_TRANSFER_RATE 200
+#define MAX_TRANSFER_RATE 500 //SKYRAT CHANGE: TRIPLES MAX TRANSFER RATE.
 /// How many percent of the contents that an overclocked volume pumps leak into the air
 #define VOLUME_PUMP_LEAK_AMOUNT 0.1
 //used for device_type vars

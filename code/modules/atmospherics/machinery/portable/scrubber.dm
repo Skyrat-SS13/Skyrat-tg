@@ -12,7 +12,7 @@
 	///Is the machine on?
 	var/on = FALSE
 	///the rate the machine will scrub air
-	var/volume_rate = 1000
+	var/volume_rate = 2000 //SKYRAT CHANGE: DOUBLES VOLUME RATE.
 	///Multiplier with ONE_ATMOSPHERE, if the enviroment pressure is higher than that, the scrubber won't work
 	var/overpressure_m = 80
 	///Should the machine use overlay in update_overlays() when open/close?
@@ -177,7 +177,7 @@
 	idle_power_usage = 10
 
 	overpressure_m = 200
-	volume_rate = 1500
+	volume_rate = 3000 //SKYRAT CHANGE: DOUBLES VOLUME RATE.
 	volume = 50000
 
 	var/movable = FALSE
