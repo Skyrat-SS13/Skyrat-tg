@@ -36,23 +36,20 @@
 	var/show_flavour = TRUE
 	var/banType = ROLE_LAVALAND
 	var/ghost_usable = TRUE
-<<<<<<< HEAD
 	var/list/excluded_gamemodes
-=======
 	// If the spawner is ready to function at the moment
 	var/ready = TRUE
 	/// If the spawner uses radials
 	var/radial_based = FALSE
->>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/effect/mob_spawn/attack_ghost(mob/user)
 	if(!SSticker.HasRoundStarted() || !loc || !ghost_usable)
 		return
-<<<<<<< HEAD
-	var/ghost_role = tgui_alert(usr,"Become [mob_name]? (Warning, You can no longer be revived!)",,list("Yes","No"))
-	if(ghost_role == "No" || !loc || QDELETED(user))
-		return
+	if(!radial_based)
+		var/ghost_role = tgui_alert(usr, "Become [mob_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
+		if(ghost_role == "No" || !loc || QDELETED(user))
+			return
 	//SKYRAT EDIT ADDITION BEGIN
 	if(!extra_prompts(user))
 		return
@@ -66,12 +63,6 @@
 		return
 	//SKYRAT EDIT ADDITION END
 
-=======
-	if(!radial_based)
-		var/ghost_role = tgui_alert(usr, "Become [mob_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
-		if(ghost_role == "No" || !loc || QDELETED(user))
-			return
->>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
 		to_chat(user, span_warning("An admin has temporarily disabled non-admin ghost roles!"))
 		return
@@ -86,12 +77,8 @@
 	if(QDELETED(src) || QDELETED(user))
 		return
 	log_game("[key_name(user)] became [mob_name]")
-<<<<<<< HEAD
 	//create(ckey = user.ckey) //ORIGINAL
 	create(user.ckey, null, user) //SKYRAT EDIT CHANGE
-=======
-	create(user)
->>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 
 /obj/effect/mob_spawn/Initialize(mapload)
 	. = ..()
@@ -136,17 +123,12 @@
 /obj/effect/mob_spawn/proc/equip(mob/M)
 	return
 
-<<<<<<< HEAD
-///obj/effect/mob_spawn/proc/create(ckey, newname) //ORIGINAL
+///obj/effect/mob_spawn/proc/create(mob/user, newname) //ORIGINAL
 /obj/effect/mob_spawn/proc/create(ckey, newname, mob/user) //SKYRAT EDIT CHANGE
 	//SKYRAT EDIT CHANGE BEGIN
 	//var/mob/living/M = new mob_type(get_turf(src)) //ORIGINAL
 	var/mob/living/M = create_mob(user, newname)
 	/*
-=======
-/obj/effect/mob_spawn/proc/create(mob/user, newname)
-	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
->>>>>>> 0b6bcbe711b (Integrates spider eggs into the mob spawners (#59727))
 	if(!random || newname)
 		if(newname)
 			M.real_name = newname
