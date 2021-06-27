@@ -20,7 +20,7 @@
 		return ..()
 
 /datum/action/item_action/dispatch_management/Trigger()
-	var/mob/user = get_mob_by_ckey(usr.ckey)
+	var/mob/user = usr
 	if(!istype(user))
 		return
 	if(!SSdispatch.ui_data_by_mob[user] || !SSdispatch.ui_data_by_mob[user]["mdata"]["holderActive"])
@@ -130,6 +130,12 @@
 	. = list()
 	for(var/datum/dispatch_ticket/ticket as anything in ui_data_tickets())
 		.[ticket.key] = "[ticket.title]"
+
+/datum/action/item_action/dispatch_management/ui_status(mob/user, datum/ui_state/state)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/user_h = user
+	return istype(user_h.ears, /obj/item/radio/headset) ? UI_INTERACTIVE : UI_CLOSE
 
 /datum/action/item_action/dispatch_management/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
