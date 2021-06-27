@@ -722,7 +722,6 @@
 	burst_size = 3
 	can_bayonet = FALSE
 	mag_display = TRUE
-	mag_display_ammo = TRUE
 	realistic = TRUE
 	fire_sound_volume = 60
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sniper_fire.ogg'
