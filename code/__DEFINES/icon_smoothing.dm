@@ -170,5 +170,11 @@ DEFINE_BITFIELD(smoothing_flags, list(
 
 #define SMOOTH_GROUP_WATER S_OBJ(72)			///obj/effect/abstract/liquid_turf
 
+<<<<<<< HEAD
 #define MAX_S_OBJ SMOOTH_GROUP_WATER //Always match this value with the one above it.
 //SKYRAT EDIT END
+=======
+#define SMOOTH_GROUP_GAS_TANK S_OBJ(71)
+
+#define MAX_S_OBJ SMOOTH_GROUP_GAS_TANK //Always match this value with the one above it.
+>>>>>>> 67c89fa1ab6 (Greyscale Mat Datum Stationary Smooth Tanks (#59556))
