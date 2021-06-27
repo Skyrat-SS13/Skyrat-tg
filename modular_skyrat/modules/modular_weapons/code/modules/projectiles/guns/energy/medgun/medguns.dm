@@ -156,7 +156,10 @@
 /obj/item/gun/energy/medigun/RightClick(mob/user)
 	if(cellcount >= 1)
 		to_chat(user, span_notice("You remove a cell"))
-		installedcells[installedcells.len].forceMove(drop_location())
+		var/obj/item/last_cell = installedcells[installedcells.len]
+		if(last_cell)
+			last_cell.forceMove(drop_location())
+		installedcells -= last_cell
 		installedcells.len--
 		ammo_type.len--
 		cellcount -= 1
