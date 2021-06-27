@@ -52,12 +52,13 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDECAY had no possible turfs to use!")
 
-	severity_modifier = rand(0, 4)
+	if(prob(50))
+		message_admins("SSDecay will not interact with this round.")
+		return
+
+	severity_modifier = rand(1, 4)
 
 	message_admins("SSDecay severity modifier set to [severity_modifier]")
-
-	if(!severity_modifier)
-		return
 
 	do_common()
 
