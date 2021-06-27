@@ -12,6 +12,7 @@
 		to_chat(user, span_warning("You are not authorized to access the Dispatch Browser."))
 		return
 	SSdispatch.ui_interact(user, null, "ticket-manage")
+	return COMPONENT_CANCEL_CLICK_RIGHT
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
