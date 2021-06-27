@@ -9,7 +9,7 @@
 	maxcharge = 1500
 	chargerate = 160
 
-obj/item/stock_parts/cell/medigun/experimental //This cell type is meant to be used in self charging mediguns like CMO and ERT one.//
+/obj/item/stock_parts/cell/medigun/experimental //This cell type is meant to be used in self charging mediguns like CMO and ERT one.//
 	name = "Experiemental Medigun Cell"
 	maxcharge = 1800
 	chargerate = 100
