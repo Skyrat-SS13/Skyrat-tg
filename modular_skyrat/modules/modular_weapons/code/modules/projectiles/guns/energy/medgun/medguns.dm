@@ -21,9 +21,9 @@
 	if(maxcells)
 		. += "<b>[cellcount]</b> out of <b>[maxcells]</b> cell slots are filled."
 		. += span_info("You can use right click to remove the most recently inserted Medicell from the chamber.")
-		for(var/A in installedcells)
-			var/obj/item/medicell/M = A
-			. += span_notice("There is \a [M] in the chamber.")
+		for(var/cell in installedcells)
+			var/obj/item/medicell/medicell = cell
+			. += span_notice("There is \a [medicell] in the chamber.")
 
 //standard MediGun// This is what you will get from Cargo, most likely.
 /obj/item/gun/energy/medigun/standard
@@ -143,11 +143,11 @@
 //Medigun Upgrade//
 /obj/item/gun/energy/medigun/attackby(obj/item/medicell/M, mob/user)
 	if(cellcount >= maxcells)
-		to_chat(usr, span_notice("The Medigun is full, take a cell out to make room"))
+		to_chat(user, span_notice("The Medigun is full, take a cell out to make room"))
 	else
 		if(!user.transferItemToLoc(M, src))
 			return
-		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+		playsound(loc, 'sound/machines/click.ogg', 50, 1)
 		to_chat(user, span_notice("You install the medicell."))
 		ammo_type += new M.ammo_type(src)
 		installedcells += M
@@ -155,12 +155,12 @@
 
 /obj/item/gun/energy/medigun/RightClick(mob/user)
 	if(cellcount >= 1)
-		to_chat(usr, span_notice("You remove a cell"))
+		to_chat(user, span_notice("You remove a cell"))
 		installedcells[installedcells.len].forceMove(drop_location())
 		installedcells.len--
 		ammo_type.len--
 		cellcount -= 1
 	else
-		to_chat(usr, span_notice("The Medigun has no cells inside"))
+		to_chat(user, span_notice("The Medigun has no cells inside"))
 		return ..()
 //Procs//
