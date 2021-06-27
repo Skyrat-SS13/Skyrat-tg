@@ -40,6 +40,8 @@ SUBSYSTEM_DEF(decay)
 	for(var/turf/iterating_turf in world)
 		if(!is_station_level(iterating_turf.z))
 			continue
+		if(istype(iterating_turf, /turf/open/floor/plating/asteroid/snow))
+			continue
 		possible_turfs += iterating_turf
 
 	for(var/area/iterating_area in world)
