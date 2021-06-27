@@ -50,7 +50,7 @@ SUBSYSTEM_DEF(decay)
 		possible_areas += iterating_area
 
 	if(!possible_turfs)
-		CRASH("SSDECAY had no possible turfs to use!")
+		CRASH("SSDecay had no possible turfs to use!")
 
 	if(prob(50))
 		message_admins("SSDecay will not interact with this round.")

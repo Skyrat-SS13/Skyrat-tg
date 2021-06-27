@@ -173,10 +173,13 @@
 	desc = "These pulsating eggs are oozing out a puss like substance..."
 	icon_state = "nest_eggs"
 	light_color = LIGHT_COLOR_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/headcrab)
+	monster_types = list(/mob/living/simple_animal/hostile/headcrab/innate)
 	max_mobs = 6
 	spawn_cooldown = 5 SECONDS
 	loot = list(/obj/item/fish = 5)
+
+/mob/living/simple_animal/hostile/headcrab/innate/Infect(mob/living/carbon/victim)
+	return
 
 /obj/structure/mob_spawner/rats
 	name = "nasty nest"
