@@ -1,5 +1,5 @@
 //Medigun Cells/
-obj/item/stock_parts/cell/medigun/ //This is the cell that mediguns from cargo will come with//
+/obj/item/stock_parts/cell/medigun/ //This is the cell that mediguns from cargo will come with//
 	name = "Basic Medigun Cell"
 	maxcharge = 1200
 	chargerate = 80
