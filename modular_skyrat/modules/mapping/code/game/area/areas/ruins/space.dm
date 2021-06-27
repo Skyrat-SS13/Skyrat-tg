@@ -36,3 +36,5 @@
 
 /area/ruin/space/has_grav/shuttle8532bridge
 	name = "Shuttle 8532 Bridge"
+/area/ruin/space/has_grav/vaulttango
+	name = "ARBORLINK Vault Tango"
