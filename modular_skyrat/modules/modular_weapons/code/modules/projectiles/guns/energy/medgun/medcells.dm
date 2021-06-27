@@ -4,7 +4,7 @@
 	maxcharge = 1200
 	chargerate = 80
 
-obj/item/stock_parts/cell/medigun/upgraded
+/obj/item/stock_parts/cell/medigun/upgraded
 	name = "Upgraded Medigun Cell"
 	maxcharge = 1500
 	chargerate = 160
