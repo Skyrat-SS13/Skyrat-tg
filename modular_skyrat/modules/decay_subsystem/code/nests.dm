@@ -37,7 +37,8 @@
 		registered_turfs += seen_turf
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
-/obj/structure/mob_spawner/Destroy()
+/obj/structure/mob_spawner/obj_break(damage_flag)
+	. = ..()
 	for(var/path in loot)
 		var/number = loot[path]
 		if(!isnum(number))//Default to 1
@@ -45,6 +46,9 @@
 		for(var/i in 1 to number)
 			new path (loc)
 	playsound(src, 'sound/effects/blobattack.ogg', 100)
+
+
+/obj/structure/mob_spawner/Destroy()
 	for(var/t in registered_turfs)
 		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
 	registered_turfs = null
