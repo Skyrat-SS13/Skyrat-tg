@@ -113,4 +113,3 @@
 	suffix = "vaulttango.dmm"
 	name = "ARBORLINK Vault Tango"
 	description = "Nanotrasen isn't the only corporation experimenting in advanced bluespace technology."
-	always_place = TRUE
