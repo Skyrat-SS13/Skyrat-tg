@@ -322,7 +322,7 @@
 				message_admins(span_big(span_adminhelp("THIS WILL BE AUTO-APPROVED IN FIVE MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT")))
 				for(var/client/I in GLOB.admins)
 					if(I.prefs.toggles & SOUND_ADMINHELP)
-					SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
+						SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
 					window_flash(I, ignorepref = TRUE)
 				auto_approve_timerid = addtimer(CALLBACK(src, .proc/auto_approve), 5 MINUTES)
 			if("spice")
