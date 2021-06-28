@@ -33,7 +33,8 @@ SUBSYSTEM_DEF(decay)
 		/obj/structure/mob_spawner/grapes,
 		/obj/structure/mob_spawner/beehive,
 		/obj/structure/mob_spawner/rats,
-		/obj/structure/mob_spawner/headcrab
+		/obj/structure/mob_spawner/headcrab,
+		/obj/structure/mob_spawner/beehive/toxic
 		)
 
 /datum/controller/subsystem/decay/Initialize()

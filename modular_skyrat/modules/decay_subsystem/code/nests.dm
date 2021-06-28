@@ -166,6 +166,14 @@
 			new /mob/living/simple_animal/hostile/bee (loc)
 		swarmed = TRUE
 
+/obj/structure/mob_spawner/beehive/toxic
+	name = "oozing beehive"
+	desc = "A beehive... it looks off however, it's oozing some kind of green glowing goop."
+	icon_state = "nest_bee_toxic"
+	monster_types = list(/mob/living/simple_animal/hostile/bee/toxin)
+	max_mobs = 10
+	color = LIGHT_COLOR_ELECTRIC_GREEN
+
 /obj/structure/mob_spawner/headcrab
 	name = "disgusting eggs"
 	desc = "These pulsating eggs are oozing out a puss like substance..."
