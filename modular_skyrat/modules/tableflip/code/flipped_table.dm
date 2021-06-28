@@ -48,7 +48,7 @@
 	if(get_dir(leaving.loc, new_location) == dir)
 		return COMPONENT_ATOM_BLOCK_EXIT
 
-/obj/structure/flippedtable/CtrlShiftClick(mob/living/user)
+/obj/structure/flippedtable/CtrlShiftClick(mob/user)
 	. = ..()
 	if(!istype(user) || !user.can_interact_with(src))
 		return FALSE
