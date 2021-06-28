@@ -171,7 +171,7 @@
 	desc = "A beehive... it looks off however, it's oozing some kind of green glowing goop."
 	icon_state = "nest_bee_toxic"
 	monster_types = list(/mob/living/simple_animal/hostile/bee/toxin)
-	max_mobs = 10
+	max_mobs = 6
 	color = LIGHT_COLOR_ELECTRIC_GREEN
 
 /obj/structure/mob_spawner/headcrab
