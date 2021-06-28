@@ -179,9 +179,9 @@
 	content_overlays = FALSE
 	component_type = /datum/component/storage/concrete/peacekeeper
 
-/datum/component/storage/concrete/peacekeeper/on_alt_click(datum/source, mob/user)
+/datum/component/storage/concrete/peacekeeper/open_storage(mob/user)
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
-		return
+		return FALSE
 	if(locked)
 		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
 		return
