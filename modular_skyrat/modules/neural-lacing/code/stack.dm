@@ -1,6 +1,7 @@
 /obj/item/organ/corticalstack
 	name = "Cortical Stack"
 	desc = "A strange, crystalline storage device containing 'DHF', digitised conciousness."
+	icon = 'modular_skyrat/modules/neural-lacing/icons/Neuralstack.dmi'
 	icon_state = "cortical-stack-on"
 	base_icon_state = "cortical-stack"
 	zone = BODY_ZONE_HEAD
@@ -39,12 +40,17 @@
 		else
 			owner.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
 			to_chat(MSTACK, span_notice("You feel a strange, ephermeal sensation come over you, as you re-awaken from your slumber..."))
-			MSTACK.ckey = ownerckey
-			MSTACK.mind = backup
-			MSTACK.SetSleeping(100)
+			if(!backup)
+				MSTACK.ckey = ownerckey
+				MSTACK.SetSleeping(100)
+			else
+				MSTACK.ckey = ownerckey
+				MSTACK.mind = backup
+				MSTACK.SetSleeping(100)
 
 /obj/item/organ/corticalstack/Remove(mob/living/carbon/MSTACK)
 	if(invasive)
 		MSTACK.death()
 		owner.visible_message(span_danger("[MSTACK] violently siezes as their stack is removed!"))
-
+	else
+		owner.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
