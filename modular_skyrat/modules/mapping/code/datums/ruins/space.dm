@@ -10,12 +10,6 @@
 	suffix = "forgottenship_skyrat.dmm"
 	always_place = TRUE
 
-/datum/map_template/ruin/space/skyrat/oldstation
-	id = "oldstation"
-	suffix = "oldstation_skyrat.dmm"
-	name = "Code Charlie Station"
-	description = "Nanotrasen would like to remind all crew - inside our sectors, you are safe. You will be protected. You have nothing to fear."
-
 /datum/map_template/ruin/space/skyrat/derelictferry
 	id = "derelictferry"
 	suffix = "derelictferry.dmm"
@@ -101,3 +95,9 @@
 	suffix = "blackmarket.dmm"
 	name = "Shady Market"
 	description = "Whaddya buyin'?"
+
+/datum/map_template/ruin/space/skyrat/shuttle8532
+	id = "shuttle8532"
+	suffix = "shuttle8532.dmm"
+	name = "Shuttle 8532"
+	description = "While nobody can predict what space has to offer for the sailors that ride its waves, nobody is quite expecting a meteroid half the size of your shuttle to split it in half."

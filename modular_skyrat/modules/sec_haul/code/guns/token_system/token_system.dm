@@ -170,13 +170,17 @@
 	desc = "A holochip used in any armament vendor, this is for energy weapons. Do not bend."
 	icon_state = "token_energy"
 	custom_premium_price = PAYCHECK_HARD * 3
-	minimum_sec_level = SEC_LEVEL_RED
+	minimum_sec_level = SEC_LEVEL_AMBER
 
 /obj/item/armament_token/energy/get_available_gunsets()
 	return list(
 	/obj/item/storage/box/gunset/laser = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "laser"
+		),
+	/obj/item/storage/box/gunset/e_gun = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "blaster"
 		)
 	)
 

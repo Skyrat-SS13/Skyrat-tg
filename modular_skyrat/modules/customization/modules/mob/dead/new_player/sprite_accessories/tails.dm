@@ -73,6 +73,10 @@
 				if(HS.hardsuit_tail_colors)
 					return FALSE
 			return TRUE
+	if(H.owned_turf)  //we do a lil' emoting
+		var/list/used_in_turf = list("tail")
+		if(H.owned_turf.name in used_in_turf)
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/tails/none
