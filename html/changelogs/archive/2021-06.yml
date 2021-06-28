@@ -668,3 +668,63 @@
   - rscadd: Adds 4 new quirks that grant a particular style for the *turf emote.
   unit0016:
   - bugfix: Toxins is no longer a nightmare on NSS Journey.
+2021-06-27:
+  Cheshify:
+  - bugfix: A lockdown button has been added to astrum
+  - balance: Astrum has been minorly rebalanced.
+  SkyratBot:
+  - bugfix: Fixes passive vents on space tiles flooding space with whatever was being
+      vented
+  - bugfix: fixes not being able to upload mutations from disk to dna console
+  - bugfix: Fixes an issue where right clicking on an ID-secured locker would unintentionally
+      trigger twice, locking then unlocking the locker. Right clicking now correctly
+      attempts to lock and unlock a locker only once.
+  SpookyTheFox:
+  - bugfix: fixed multiple implants
+  jaber134:
+  - rscadd: Added two new reagents
+  - imageadd: added drink icons
+  jjpark-kb:
+  - rscadd: added computers (not modular computers) to connect
+  - imageadd: added connected computer images
+  lyricalpaws:
+  - tweak: Removes tacticool armour
+  - bugfix: Gives tacticool sensors
+  - rscadd: New turtleneck sprites
+  unit0016:
+  - rscdel: Oldstation is now the /tg/ variant again, pending a more soulful remap.
+2021-06-28:
+  Arkatos:
+  - bugfix: Spider egg clusters now stop processing when they mature to improve performance.
+  - refactor: Spider egg clusters were integrated into the mob spawner system. This
+      means you will now see grown spider eggs in the ghost spawners interface.
+  - admin: Alien-banned players are no longer allowed to spawn from the spider egg
+      clusters.
+  Bluetshirtguy, RaveRadbury:
+  - imageadd: New emojis for OOC chat and Mime PDAs
+  SkyratBot:
+  - rscadd: Added funtionality so free golems get an alert from policy.json.
+  - rscdel: Deleted a line of text for Free golem's flavor text. Since in my opinion
+      the spawn-in text, with the addition of the policy.json text was a bit too much.
+  - bugfix: 'Reverted the normal blob''s max HP and initial HP values, which were
+      accidentally modified (Old: 30 and 30, New: 25 and 21)'
+  - bugfix: Fixed an issue where certain strains with bonus core regeneration were
+      regenerating faster than intended
+  - code_imp: Used a few unimplemented defines from the PR, like for the Strong and
+      Resource blobs
+  - code_imp: Added an initial HP define that is set as a normal blob's integrity
+      upon Initialize
+  - refactor: 'hunger mechanics are now inherent to stomaches expansion: ethereal
+      charge mechanic is now unique to their stomache and can be transferred freely'
+  - rscadd: Baseball bats can now be used to break kneecaps with their right click
+      attack. This requires the target to be one of either prone, immobilised or buckled
+      to something. If you aim for the legs and right click, you'll wind up a swing
+      for the kneecaps. Research indicates that this isn't good for the target's legs.
+  ninjanomnom & Trina (Sprites):
+  - rscadd: Stationary tanks can now be constructed using most materials. Start the
+      frame with a stack of plasteel.
+  - balance: Stationary tanks are no longer bigger on the inside than the outside.
+  - rscadd: Stationary tanks now merge together when adjacent so you can make large
+      gas storage structures.
+  - balance: Stationary tanks share behavior with canisters and can over-pressurize
+      and explode in the same fashion.
