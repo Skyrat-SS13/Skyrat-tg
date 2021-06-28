@@ -294,6 +294,8 @@
 	///The ability to shoot a mending globule, a sticky projectile that heals over time.
 	var/obj/effect/proc_holder/globules/globules
 
+	ghost_controllable = TRUE //SKYRAT EDIT ADDITION - These guys can be helpful... maybe players will be helpful.
+
 /mob/living/simple_animal/hostile/ooze/grapes/Initialize()
 	. = ..()
 	globules = new

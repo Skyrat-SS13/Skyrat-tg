@@ -27,11 +27,11 @@
 	setPipingLayer(piping_layer)
 
 
-/obj/machinery/atmospherics/components/unary/tank/air
+/obj/machinery/atmospherics/components/tank/air
 	icon_state = "grey"
 	name = "pressure tank (Air)"
 
-/obj/machinery/atmospherics/components/unary/tank/air/New()
+/obj/machinery/atmospherics/components/tank/air/New()
 	..()
 	var/datum/gas_mixture/air_contents = airs[1]
 	air_contents.assert_gases(/datum/gas/oxygen, /datum/gas/nitrogen)

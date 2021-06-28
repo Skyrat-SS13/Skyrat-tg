@@ -129,6 +129,11 @@
 	path = /obj/item/clothing/mask/gas/nightlight
 	ckeywhitelist = list("farsightednightlight")
 
+/datum/loadout_item/mask/donator/kindle_mask
+	name = "Kindle's mask"
+	path = /obj/item/clothing/mask/kindle
+	ckeywhitelist = list("theooz")
+
 /datum/loadout_item/head/donator/drake_skull
 	name = "Skull of an ashdrake"
 	path = /obj/item/clothing/head/drake_skull
