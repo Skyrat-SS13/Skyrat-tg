@@ -162,6 +162,7 @@
 		installedcells -= last_cell
 		ammo_type.len--
 		cellcount -= 1
+		select_fire()
 	else
 		to_chat(user, span_notice("The Medigun has no cells inside"))
 		return ..()

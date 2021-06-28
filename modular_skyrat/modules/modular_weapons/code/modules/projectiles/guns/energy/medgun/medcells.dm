@@ -68,7 +68,8 @@
 
 /obj/projectile/energy/medical/toxin1/on_hit(mob/living/target)
 	.=..()
-	target.adjustToxLoss(-2.5) //Toxin is treatable, but inefficent//
+	target.adjustToxLoss(-2.5)
+	target.radiation = max(target.radiation - 20, 0)//Toxin is treatable, but inefficent//
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
@@ -114,6 +115,7 @@
 /obj/projectile/energy/medical/toxin2/on_hit(mob/living/target)
 	.=..()
 	target.adjustToxLoss(-3.5)
+	target.radiation = max(target.radiation - 40, 0)
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
@@ -159,5 +161,6 @@
 /obj/projectile/energy/medical/toxin3/on_hit(mob/living/target)
 	.=..()
 	target.adjustToxLoss(-5)
+	target.radiation = max(target.radiation - 60, 0)
 
 //End of Basic Tiers of cells.//
