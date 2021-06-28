@@ -605,8 +605,12 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 12, /datum/reagent/consumable/nutriment/vitamin = 6, /datum/reagent/consumable/capsaicin = 3)
 
 /obj/item/food/meat
+<<<<<<< HEAD
 	//custom_materials = list(/datum/material/meat = MINERAL_MATERIAL_AMOUNT * 4) //SKYRAT EDIT REMOVAL
 	material_flags = MATERIAL_NO_EFFECTS
+=======
+	custom_materials = list(/datum/material/meat = MINERAL_MATERIAL_AMOUNT * 4)
+>>>>>>> c3917b8225c (Cooked steaks are once again edible. (#59855))
 	var/subjectname = ""
 	var/subjectjob = null
 	w_class = WEIGHT_CLASS_SMALL
@@ -957,7 +961,6 @@
 	desc = "A piece of hot spicy meat."
 	icon_state = "meatsteak"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/consumable/nutriment/vitamin = 1)
-
 	foodtypes = MEAT
 	tastes = list("meat" = 1)
 	burns_on_grill = TRUE
