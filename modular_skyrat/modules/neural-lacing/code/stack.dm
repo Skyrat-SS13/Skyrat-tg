@@ -2,10 +2,12 @@
 	name = "Cortical Stack"
 	desc = "A strange, crystalline storage device containing 'DHF', digitised conciousness."
 	icon = 'modular_skyrat/modules/neural-lacing/icons/Neuralstack.dmi'
-	icon_state = "cortical-stack-on"
+	icon_state = "cortical-stack"
 	base_icon_state = "cortical-stack"
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_STACK
+	status = ORGAN_ROBOTIC
+	organ_flags = ORGAN_SYNTHETIC
 
 	var/active
 	var/invasive = 1 //WILL THIS KILL THE HOST IF REMOVED?
@@ -33,12 +35,12 @@
 		backup = MSTACK.mind
 		active = TRUE
 		to_chat(MSTACK, span_danger("You feel a sharp sting, and then a cool, almost numbing sensation spread over your form; your cortical stack coming online..."))
-	owner.visible_message(span_notice("[MSTACK] jerks violently as the cortical stack is inserted..."))
+	MSTACK.visible_message(span_notice("[MSTACK] jerks violently as the cortical stack is inserted..."))
 	if(active)
 		if(MSTACK.mind)
-			owner.visible_message(span_warning("..Before ceasing, the stack letting out an alarm; unable to override the conciousness within."))
+			MSTACK.visible_message(span_warning("..Before ceasing, the stack letting out an alarm; unable to override the conciousness within."))
 		else
-			owner.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
+			MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
 			to_chat(MSTACK, span_notice("You feel a strange, ephermeal sensation come over you, as you re-awaken from your slumber..."))
 			if(!backup)
 				MSTACK.ckey = ownerckey
@@ -51,6 +53,8 @@
 /obj/item/organ/corticalstack/Remove(mob/living/carbon/MSTACK)
 	if(invasive)
 		MSTACK.death()
-		owner.visible_message(span_danger("[MSTACK] violently siezes as their stack is removed!"))
+		MSTACK.visible_message(span_danger("[MSTACK] violently siezes as their stack is removed!"))
+
+
 	else
-		owner.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
+		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
