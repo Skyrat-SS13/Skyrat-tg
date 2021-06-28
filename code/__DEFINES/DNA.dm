@@ -140,6 +140,7 @@
 #define ORGAN_SLOT_EARS "ears"
 #define ORGAN_SLOT_EYES "eye_sight"
 #define ORGAN_SLOT_HEART "heart"
+#define ORGAN_SLOT_STACK "stack" //SKYRAT EDIT, STACKS
 #define ORGAN_SLOT_HEART_AID "heartdrive"
 #define ORGAN_SLOT_HUD "eye_hud"
 #define ORGAN_SLOT_LIVER "liver"
