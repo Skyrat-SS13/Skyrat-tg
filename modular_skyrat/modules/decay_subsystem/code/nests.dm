@@ -1,6 +1,3 @@
-/mob/living/simple_animal
-	var/obj/structure/mob_spawner/spawner
-
 /obj/structure/mob_spawner
 	name = "nest"
 	desc = "A nasty looking pile of sticks and debris."
@@ -17,7 +14,7 @@
 	/// What mob to spawn
 	var/list/var/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	/// How many mobs can we spawn?
-	var/max_mobs = 2
+	var/max_mobs = 3
 	var/list/faction = list("nest spawned")
 	var/spawned_mobs = 0
 	/// How long it takes for a new mob to emerge after being triggered.
@@ -147,6 +144,7 @@
 	light_color = LIGHT_COLOR_GREEN
 	monster_types = list(/mob/living/simple_animal/hostile/killertomato)
 	loot = list(/obj/item/seeds/random = 3)
+	max_mobs = 8
 
 /obj/structure/mob_spawner/beehive
 	name = "beehive"
@@ -154,7 +152,7 @@
 	icon_state = "nest_bee"
 	light_color = LIGHT_COLOR_YELLOW
 	monster_types = list(/mob/living/simple_animal/hostile/bee)
-	max_mobs = 10
+	max_mobs = 20
 	spawn_cooldown = 2 SECONDS
 	loot = list(/obj/item/reagent_containers/honeycomb = 5, /obj/item/queen_bee)
 	var/swarmed = FALSE
@@ -174,7 +172,7 @@
 	icon_state = "nest_eggs"
 	light_color = LIGHT_COLOR_YELLOW
 	monster_types = list(/mob/living/simple_animal/hostile/headcrab/innate)
-	max_mobs = 6
+	max_mobs = 10
 	spawn_cooldown = 5 SECONDS
 	loot = list(/obj/item/fish = 5)
 
@@ -186,7 +184,7 @@
 	desc = "A nest crawling with... something!"
 	icon_state = "nest_rats"
 	light_color = LIGHT_COLOR_GREEN
-	max_mobs = 6
+	max_mobs = 8
 	spawn_cooldown = 15 SECONDS
 	monster_types = list(/mob/living/simple_animal/hostile/rat)
 	loot = list(/obj/item/seeds/replicapod = 2)
