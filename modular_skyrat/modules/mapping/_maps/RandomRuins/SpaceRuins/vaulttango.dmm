@@ -171,6 +171,7 @@
 "ec" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "eh" = (
@@ -200,6 +201,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ew" = (
@@ -208,16 +210,19 @@
 /area/ruin/space/has_grav/vaulttango)
 "eC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "eH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "eO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ff" = (
@@ -227,11 +232,13 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "fv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "fE" = (
@@ -240,6 +247,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "gi" = (
@@ -297,6 +305,7 @@
 "hX" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ik" = (
@@ -307,10 +316,21 @@
 /area/ruin/space/has_grav/vaulttango)
 "iR" = (
 /obj/machinery/porta_turret{
-	id_tag = null;
 	lethal_projectile = /obj/projectile/beam/laser;
 	lethal_projectile_sound = 'sound/weapons/laser.ogg';
-	network_id = "vaultturret"
+	mode = 1;
+	network_id = "vaultturret";
+	scan_range = 9;
+	throw_range = 9
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/vaulttango)
+"jc" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/door/poddoor/shutters{
+	id = "portshuttervault";
+	name = "Maintenance Shutter"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
@@ -362,6 +382,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/door/firedoor/heavy,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "kZ" = (
@@ -383,6 +404,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ml" = (
@@ -400,6 +422,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/light/directional/east,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "mV" = (
@@ -444,6 +467,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "nA" = (
@@ -538,17 +562,6 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/vaulttango)
-"ra" = (
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/delivery,
-/obj/structure/mecha_wreckage/ripley/firefighter{
-	desc = "Remains of some unfortunate mecha. Completely irreparable, but perhaps something can be salvaged. This one has a strange logo on it.";
-	name = "\improper ARBORLINK Ripley MK-F wreckage"
-	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "rq" = (
@@ -738,11 +751,13 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Ab" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Ad" = (
@@ -866,7 +881,8 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/machinery/turretid{
-	icon_state = "control_stun";
+	icon_state = "control_kill";
+	lethal = 1;
 	network_id = "vaultturret";
 	pixel_y = 30
 	},
@@ -934,8 +950,8 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
 "Iz" = (
+/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
-/obj/machinery/light/small/directional/north,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
 "IP" = (
@@ -964,7 +980,10 @@
 "JE" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/spawner/lootdrop/maintenance,
+/obj/machinery/door/poddoor/shutters{
+	id = "starboardshuttervault";
+	name = "Maintenance Shutter"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
 "JF" = (
@@ -1008,6 +1027,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
+"Kv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
 "Kz" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 9
@@ -1029,6 +1053,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/effect/turf_decal/delivery/blue,
 /obj/machinery/door/firedoor/heavy,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Lp" = (
@@ -1098,6 +1123,17 @@
 /area/ruin/space/has_grav/vaulttango)
 "MJ" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
+"MN" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/mecha_wreckage/ripley/firefighter{
+	desc = "Remains of some unfortunate mecha. Completely irreparable, but perhaps something can be salvaged. This one has a strange logo on it.";
+	name = "\improper ARBORLINK Ripley MK-F wreckage"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "MW" = (
@@ -1239,6 +1275,7 @@
 /obj/machinery/door/airlock/grunge{
 	name = "Secure Vault Tango"
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Rr" = (
@@ -1440,6 +1477,10 @@
 	dir = 10
 	},
 /obj/structure/cable,
+/obj/machinery/button/door/directional/south{
+	id = "portshuttervault";
+	name = "Shutter Button"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Xy" = (
@@ -1511,6 +1552,10 @@
 	dir = 6
 	},
 /obj/structure/cable,
+/obj/machinery/button/door/directional/south{
+	id = "starboardshuttervault";
+	name = "Shutter Button"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ZR" = (
@@ -1518,6 +1563,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 
@@ -2158,7 +2204,7 @@ PK
 PK
 PK
 ai
-BK
+jc
 ai
 ai
 ai
@@ -2438,8 +2484,8 @@ rI
 WN
 ai
 ai
-vB
-vB
+Iz
+Iz
 ai
 ai
 PK
@@ -2450,12 +2496,12 @@ PK
 PK
 PK
 PK
-nK
-JF
-nK
-nK
-JF
-nK
+PK
+PK
+PK
+PK
+PK
+PK
 PK
 PK
 PK
@@ -2482,7 +2528,7 @@ pe
 rw
 ai
 Kz
-tN
+Tp
 tN
 WN
 ai
@@ -2495,10 +2541,10 @@ PK
 PK
 PK
 PK
-Su
 PK
 PK
-Su
+PK
+PK
 PK
 PK
 PK
@@ -2526,7 +2572,7 @@ ph
 rw
 ai
 nA
-cN
+Ko
 cZ
 rw
 ai
@@ -2540,8 +2586,8 @@ nK
 PK
 ai
 ai
-ai
-ai
+Iz
+Iz
 ai
 ai
 PK
@@ -2955,7 +3001,7 @@ vj
 OJ
 RC
 TW
-ra
+MN
 Jm
 bF
 ai
@@ -3024,8 +3070,8 @@ nK
 PK
 ai
 ai
-ai
-ai
+Iz
+Iz
 ai
 ai
 PK
@@ -3054,7 +3100,7 @@ ph
 Ab
 Ld
 zZ
-di
+Kv
 cJ
 rw
 IP
@@ -3067,10 +3113,10 @@ PK
 PK
 PK
 PK
-Su
 PK
 PK
-Su
+PK
+PK
 PK
 PK
 PK
@@ -3098,7 +3144,7 @@ ph
 rw
 ai
 nA
-cN
+Ko
 cZ
 rw
 ai
@@ -3110,12 +3156,12 @@ PK
 PK
 PK
 PK
-nK
-JF
-nK
-nK
-JF
-nK
+PK
+PK
+PK
+PK
+PK
+PK
 PK
 PK
 PK
@@ -3142,7 +3188,7 @@ pe
 rw
 ai
 Tk
-ws
+RR
 ws
 OL
 ai
@@ -3186,8 +3232,8 @@ LC
 jY
 ai
 ai
-vB
-vB
+Iz
+Iz
 ai
 ai
 PK
@@ -3390,7 +3436,7 @@ PK
 PK
 PK
 ai
-Iz
+Cc
 ai
 Qt
 Sc
