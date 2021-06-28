@@ -79,6 +79,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/preferred_map = null
 	var/pda_style = MONO
 	var/pda_color = "#808000"
+	var/pda_ringer = "*beep*" //text the PDA emits when messaged
 
 	//aphrodisiac preference
 	var/aphrodisiacs_pref = 1
@@ -1039,6 +1040,7 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<br>"
 			dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
 			dat += "<b>PDA Style:</b> <a href='?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
+			dat += "<b>PDA Ringer:</b> <a href='?_src_=prefs;task=input;preference=pda_ringer'>[pda_ringer]</a><br>"
 			dat += "<br>"
 			dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "All Messages":"No Messages"]</a><br>"
@@ -2597,6 +2599,10 @@ GLOBAL_LIST_INIT(food, list(
 					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
 					if(pickedPDAStyle)
 						pda_style = pickedPDAStyle
+				if("pda_ringer")
+					var/pickedPDAMessage = stripped_input(user, "Choose your PDA ringer message. (Max 20 chars)", "Character Preference", pda_ringer, 20)
+					if(pickedPDAMessage)
+						pda_ringer = pickedPDAMessage
 				if("pda_color")
 					var/pickedPDAColor = input(user, "Choose your PDA Interface color.", "Character Preference", pda_color) as color|null
 					if(pickedPDAColor)
