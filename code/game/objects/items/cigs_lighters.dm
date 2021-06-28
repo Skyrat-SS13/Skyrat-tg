@@ -155,15 +155,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/chem_volume = 30
 	/// The reagents that this cigarette starts with.
 	var/list/list_reagents = list(/datum/reagent/drug/nicotine = 15)
-<<<<<<< HEAD
-	//var/lung_harm = 1 //How bad it is for you //ORIGINAL
-	var/lung_harm = 0.5 //How bad it is for you //SKYRAT EDIT CHANGE
-=======
 	/// Should we smoke all of the chems in the cig before it runs out. Splits each puff to take a portion of the overall chems so by the end you'll always have consumed all of the chems inside.
 	var/smoke_all = FALSE
 	/// How much damage this deals to the lungs per drag.
 	var/lung_harm = 1
->>>>>>> a71517ac099 (Cigarettes heat their contents + early returns (#59578))
 
 
 /obj/item/clothing/mask/cigarette/Initialize()
