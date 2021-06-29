@@ -9,7 +9,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-	var/active
+	var/active = FALSE
 	var/invasive = 1 //WILL THIS KILL THE HOST IF REMOVED?
 	var/ownerckey
 	var/datum/mind/backup
@@ -30,6 +30,7 @@
 
 
 /obj/item/organ/corticalstack/Insert(mob/living/carbon/MSTACK)
+	. = ..()
 	if(!active)
 		ownerckey = MSTACK.ckey
 		backup = MSTACK.mind
@@ -37,7 +38,7 @@
 		to_chat(MSTACK, span_danger("You feel a sharp sting, and then a cool, almost numbing sensation spread over your form; your cortical stack coming online..."))
 	MSTACK.visible_message(span_notice("[MSTACK] jerks violently as the cortical stack is inserted..."))
 	if(active)
-		if(MSTACK.mind)
+		if(MSTACK.mind && (backup || ownerckey))
 			MSTACK.visible_message(span_warning("..Before ceasing, the stack letting out an alarm; unable to override the conciousness within."))
 		else
 			MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
@@ -51,6 +52,7 @@
 				MSTACK.SetSleeping(100)
 
 /obj/item/organ/corticalstack/Remove(mob/living/carbon/MSTACK)
+	. = ..()
 	if(invasive)
 		MSTACK.death()
 		MSTACK.visible_message(span_danger("[MSTACK] violently siezes as their stack is removed!"))
