@@ -31,26 +31,23 @@
 
 /obj/item/organ/corticalstack/Insert(mob/living/carbon/MSTACK)
 	. = ..()
+	MSTACK.visible_message(span_notice("[MSTACK] jerks violently as the cortical stack is inserted..."))
 	if(!active)
 		ownerckey = MSTACK.ckey
 		backup = MSTACK.mind
 		active = TRUE
 		to_chat(MSTACK, span_danger("You feel a sharp sting, and then a cool, almost numbing sensation spread over your form; your cortical stack coming online..."))
-	MSTACK.visible_message(span_notice("[MSTACK] jerks violently as the cortical stack is inserted..."))
-	if(active)
+		MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
+	else
 		if(MSTACK.mind && (backup || ownerckey))
 			MSTACK.visible_message(span_warning("..Before ceasing, the stack letting out an alarm; unable to override the conciousness within."))
 		else
 			MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
 			to_chat(MSTACK, span_notice("You feel a strange, ephermeal sensation come over you, as you re-awaken from your slumber..."))
 			REMOVE_TRAIT(MSTACK, TRAIT_DNR, src) //PREVENTS PEOPLE FROM GETTING DNR'D AFTER HAVING THEIR STACK REMOVED AND RELACED
-			if(!backup)
-				MSTACK.ckey = ownerckey
-				MSTACK.SetSleeping(100)
-			else
-				MSTACK.ckey = ownerckey
-				MSTACK.mind = backup
-				MSTACK.SetSleeping(100)
+			MSTACK.ckey = ownerckey
+			MSTACK.mind = backup
+			MSTACK.SetSleeping(100)
 
 /obj/item/organ/corticalstack/Remove(mob/living/carbon/MSTACK)
 	. = ..()
