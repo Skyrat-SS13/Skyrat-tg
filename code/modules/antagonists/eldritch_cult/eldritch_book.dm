@@ -68,7 +68,7 @@
 		if(has_passive_charge)
 			charge++
 			to_chat(user, span_danger("The new rune glows as eldritch knowledge is transfered to your tome!"))
-			addtimer(CALLBACK(src,.proc/alert_passive_charge),20 MINUTES)
+			addtimer(CALLBACK(src,.proc/alert_passive_charge),15 MINUTES)
 			has_passive_charge = FALSE
 		//SKYRAT ADDITION ENDS HERE
 		new /obj/effect/eldritch/big(A)
