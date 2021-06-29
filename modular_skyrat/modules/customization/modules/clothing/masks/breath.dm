@@ -188,6 +188,11 @@
 	var/is_polychromic = TRUE
 	var/poly_colors = list("0BB", "FC0", "FFF")
 
+/obj/item/clothing/mask/gas/polyclown/ComponentInitialize()
+	. = ..()
+	if(is_polychromic)
+		AddElement(/datum/element/polychromic, poly_colors)
+
 /obj/item/clothing/mask/gas/clownbald
 	name = "bald clown mask"
 	desc = "HE'S BALD, HE'S FUCKIN' BALDIN!"
