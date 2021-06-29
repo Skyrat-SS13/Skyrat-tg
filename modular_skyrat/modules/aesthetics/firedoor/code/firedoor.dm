@@ -4,6 +4,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor_glass.dmi'
 	var/door_open_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 	var/door_close_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
+	var/hot_or_cold = FALSE //True for hot, false for cold
 
 /obj/machinery/door/firedoor/heavy
 	name = "Heavy Emergency Shutter"
@@ -19,3 +20,14 @@
 /obj/machinery/door/firedoor/close()
 	playsound(loc, door_close_sound, 90, TRUE)
 	. = ..()
+
+/obj/machinery/door/firedoor/proc/atmos_changed(datum/source, datum/gas_mixture/air, exposed_temperature)
+	if(density)
+		return
+	var/pressure = air.return_pressure()
+	if(exposed_temperature < BODYTEMP_COLD_DAMAGE_LIMIT || pressure < WARNING_LOW_PRESSURE)
+		hot_or_cold = FALSE
+		close()
+	else if(exposed_temperature > BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE)
+		hot_or_cold = TRUE
+		close()

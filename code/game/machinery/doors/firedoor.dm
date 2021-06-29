@@ -44,19 +44,24 @@
 	else
 		. += span_notice("The bolt locks have been <i>unscrewed</i>, but the bolts themselves are still <b>wrenched</b> to the floor.")
 
+/obj/machinery/door/firedoor/proc/CalculateAffectingAreas() //SKYRAT EDIT CHANGE
+	for(var/turf/adjacent_turf in range(1, src))
+		RegisterSignal(adjacent_turf, COMSIG_TURF_EXPOSE, .proc/atmos_changed)
+
+	/* //SKYRAT EDIT ORIGINAL
 /obj/machinery/door/firedoor/proc/CalculateAffectingAreas()
 	remove_from_areas()
 	affecting_areas = get_adjacent_open_areas(src) | get_area(src)
 	for(var/I in affecting_areas)
 		var/area/A = I
 		LAZYADD(A.firedoors, src)
+	*/
 
 /obj/machinery/door/firedoor/closed
 	icon_state = "door_closed"
 	density = TRUE
 
 //see also turf/AfterChange for adjacency shennanigans
-
 /obj/machinery/door/firedoor/proc/remove_from_areas()
 	if(affecting_areas)
 		for(var/I in affecting_areas)
@@ -206,7 +211,10 @@
 
 /obj/machinery/door/firedoor/update_icon_state()
 	. = ..()
-	icon_state = "[base_icon_state]_[density ? "closed" : "open"]"
+	if(density)
+		icon_state = "[base_icon_state]_closed_[hot_or_cold ? "hot" : "cold"]"
+	else
+		icon_state = "[base_icon_state]_open"
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
