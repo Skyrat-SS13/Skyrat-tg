@@ -368,11 +368,3 @@
 	base_icon_state = "sepia"
 	desc = "Well, the flow of time is normal on these tiles, weird."
 	floor_tile = /obj/item/stack/tile/iron/sepia
-
-/turf/open/floor/iron
-	icon_state = "yellowsiding"
-	base_icon_state = "yellowsiding"
-
-/turf/open/floor/iron/corner
-	icon_state = "yellowcornersiding"
-	base_icon_state = "yellowcornersiding"
