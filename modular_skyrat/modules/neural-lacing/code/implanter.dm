@@ -19,7 +19,7 @@
 	item = /obj/item/autosurgeon/organ/syndicate/corticalstack
 	cost = 5 //Support item
 
-/datum/supply_pack/corticalstack
+/datum/supply_pack/goody/corticalstack
 	name = "Cortical Stack Crate"
 	desc = "Important employee's? Unable to afford losing them without the chance of revival? Back them up to these chips that go in the base of the neck. Warranty not included."
 	cost = CARGO_CRATE_VALUE * 6 //Expensive.
