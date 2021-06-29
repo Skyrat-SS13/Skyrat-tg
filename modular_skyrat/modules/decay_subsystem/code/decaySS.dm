@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(decay)
 
 	if(prob(50))
 		message_admins("SSDecay will not interact with this round.")
-		return
+		return ..()
 
 	severity_modifier = rand(1, 4)
 
@@ -68,6 +68,8 @@ SUBSYSTEM_DEF(decay)
 	do_engineering()
 
 	do_medical()
+
+	return ..()
 
 /datum/controller/subsystem/decay/proc/do_common()
 	for(var/turf/open/floor/iterating_floor in possible_turfs)
