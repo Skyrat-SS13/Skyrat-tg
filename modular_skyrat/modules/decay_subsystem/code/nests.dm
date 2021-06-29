@@ -34,7 +34,7 @@
 		registered_turfs += seen_turf
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
-/obj/structure/mob_spawner/obj_break(damage_flag)
+/obj/structure/mob_spawner/obj_destruction(damage_flag)
 	. = ..()
 	for(var/path in loot)
 		var/number = loot[path]
@@ -205,7 +205,7 @@
 	monster_types = list(/mob/living/simple_animal/hostile/ooze/grapes)
 	loot = list(/obj/item/food/grown/berries/glow = 10)
 
-/obj/structure/mob_spawner/grapes/obj_break(damage_flag)
+/obj/structure/mob_spawner/grapes/obj_destruction(damage_flag)
 	. = ..()
 	new /mob/living/simple_animal/hostile/vatbeast(loc)
 
