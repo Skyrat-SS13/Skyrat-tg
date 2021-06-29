@@ -16,7 +16,7 @@
 /datum/uplink_item/device_tools/corticalstack
 	name = "Blood-Red Cortical Stack"
 	desc = " A marvel of modern technology; the cortical stack, For when you really want to avoid that death. This one can be removed without killing the user; allowing 'double-sleeving'."
-	item = /obj/item/autosurgeon/organ/corticalstack/syndicate
+	item = /obj/item/autosurgeon/organ/syndicate/corticalstack
 	cost = 5 //Support item
 
 /datum/supply_pack/corticalstack
