@@ -8,7 +8,6 @@
 	id = "ice-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
 	suffix = "icemoon_underground_syndicate_base1_skyrat.dmm"
-	cost = 20
 	allow_duplicates = FALSE
 	never_spawn_with = list(/datum/map_template/ruin/lavaland/skyrat/syndicate_base)
 	always_place = TRUE
