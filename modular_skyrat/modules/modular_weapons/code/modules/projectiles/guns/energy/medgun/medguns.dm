@@ -148,7 +148,40 @@
 	icon_state = "Oxygen1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III
-//Medigun Upgrade//
+//Medigun Gunsets/
+/obj/item/storage/briefcase/medicalgunset/
+	name = "Medigun Supply Kit"
+	desc = "Medigun Supply Kit"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "medbriefcase"
+	inhand_icon_state = "lockbox"
+	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
+	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
+	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
+
+/obj/item/storage/briefcase/medicalgunset/standard
+	name = "VeyMedical CWM-479 Cell Powered Medigun starter kit"
+	desc = "A stater kit containing the CWM-479 medigun along with a tier I medicells."
+
+/obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
+	new /obj/item/gun/energy/medigun/standard(src)
+	new /obj/item/medicell/brute1(src)
+	new /obj/item/medicell/burn1(src)
+	new /obj/item/medicell/toxin1(src)
+
+/obj/item/storage/briefcase/medicalgunset/cmo
+	name = "VeyMedical CWM-479-CC Cell Powered Medigun case"
+	desc = "Case that includes the Experimental CWM-479-CC Medigun and Tier I medicells"
+
+/obj/item/storage/briefcase/medicalgunset/cmo/PopulateContents()
+	new /obj/item/gun/energy/medigun/cmo(src)
+	new /obj/item/medicell/brute1(src)
+	new /obj/item/medicell/burn1(src)
+	new /obj/item/medicell/toxin1(src)
+
+//Medigun Cell Insertion and Removal//
 /obj/item/gun/energy/medigun/attackby(obj/item/medicell/M, mob/user)
 	if(istype(M, /obj/item/medicell))
 		if(cellcount >= maxcells)
