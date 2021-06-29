@@ -89,6 +89,14 @@
 	contains = list(/obj/item/defibrillator/compact)
 	crate_name = "compact defibrillator crate"
 
+/datum/supply_pack/medical/medigun
+	name = "CWM-479 Medigun Starter Kit"
+	desc = "Contains a single VeyMedical CWM-479 model medical gun with basic cells"
+	cost = CARGO_CRATE_VALUE * 15
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/storage/briefcase/medicalgunset/standard)
+	crate_name = "CWM-479 Medigun Crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -124,7 +132,7 @@
 					/obj/item/ammo_box/magazine/multi_sprite/croon)
 	crate_name = "unmarked weapons crate"
 	dangerous = TRUE
-	
+
 /datum/supply_pack/costumes_toys/randomised/improvised
 	name = "Improvised Weapons Crate"
 	desc = "Really hit rock bottom? Well, we've got a few things laying around from a sting-op on pirates we could lend you. (We'll expect these back.)" //they don't, actually.
