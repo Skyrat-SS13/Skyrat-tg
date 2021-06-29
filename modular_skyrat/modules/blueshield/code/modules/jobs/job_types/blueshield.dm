@@ -30,6 +30,8 @@
 		/obj/item/clothing/head/collectable/captain = 4,
 		/obj/projectile/bullet/b460 = 1
 	)
+	
+	veteran_only = TRUE
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"

@@ -16,6 +16,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	desc = "An interface between crew and the cryogenic storage oversight systems."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: 'icons/obj/machines/cryopod.dmi'
 	icon_state = "cellconsole_1"
+	icon_keyboard = null
 	// circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
@@ -183,7 +184,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 /obj/machinery/cryopod/open_machine()
 	..()
 	icon_state = "cryopod-open"
-	density = TRUE
+	set_density(TRUE)
 	name = initial(name)
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)

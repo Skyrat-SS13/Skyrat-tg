@@ -444,7 +444,7 @@
 
 /datum/spacevine_mutation/miasmagenerating/on_grow(obj/structure/spacevine/holder)
 	var/turf/holder_turf = get_turf(holder)
-	holder_turf.atmos_spawn_air("miasma=100;TEMP=100")
+	holder_turf.atmos_spawn_air("miasma=100;TEMP=293")
 
 /datum/spacevine_mutation/fleshmending
 	name = "flesh-mending"
@@ -474,7 +474,7 @@
 
 /datum/spacevine_mutation/oxygen_producing/on_grow(obj/structure/spacevine/holder)
 	var/turf/holder_turf = get_turf(holder)
-	holder_turf.atmos_spawn_air("o2=100;TEMP=100")
+	holder_turf.atmos_spawn_air("o2=100;TEMP=293")
 
 /datum/spacevine_mutation/nitrogen_producing
 	name = "nitrogen-producing"
@@ -484,7 +484,7 @@
 
 /datum/spacevine_mutation/nitrogen_producing/on_grow(obj/structure/spacevine/holder)
 	var/turf/holder_turf = get_turf(holder)
-	holder_turf.atmos_spawn_air("n2=100;TEMP=100")
+	holder_turf.atmos_spawn_air("n2=100;TEMP=293")
 
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine

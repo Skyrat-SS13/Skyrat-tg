@@ -291,7 +291,7 @@
 
 /datum/spacevine_mutation/woodening/on_grow(obj/structure/spacevine/holder)
 	if(holder.energy)
-		holder.density = TRUE
+		holder.set_density(TRUE)
 	holder.modify_max_integrity(100)
 
 /datum/spacevine_mutation/woodening/on_hit(obj/structure/spacevine/holder, mob/living/hitter, obj/item/I, expected_damage)
@@ -337,7 +337,7 @@
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/connect_loc, loc_connections)
 	AddElement(/datum/element/atmos_sensitive, mapload)
 
 /obj/structure/spacevine/examine(mob/user)
@@ -584,7 +584,7 @@
 			return
 	qdel(src)
 
-/obj/structure/spacevine/CanAllowThrough(atom/movable/mover, turf/target)
+/obj/structure/spacevine/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
 	if(isvineimmune(mover))
 		return TRUE
