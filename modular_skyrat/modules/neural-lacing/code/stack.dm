@@ -43,6 +43,7 @@
 		else
 			MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
 			to_chat(MSTACK, span_notice("You feel a strange, ephermeal sensation come over you, as you re-awaken from your slumber..."))
+			REMOVE_TRAIT(MSTACK, TRAIT_DNR, src) //PREVENTS PEOPLE FROM GETTING DNR'D AFTER HAVING THEIR STACK REMOVED AND RELACED
 			if(!backup)
 				MSTACK.ckey = ownerckey
 				MSTACK.SetSleeping(100)
@@ -56,7 +57,7 @@
 	if(invasive)
 		MSTACK.death()
 		MSTACK.visible_message(span_danger("[MSTACK] violently siezes as their stack is removed!"))
-
+		ADD_TRAIT(MSTACK, TRAIT_DNR, src)
 
 	else
 		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
