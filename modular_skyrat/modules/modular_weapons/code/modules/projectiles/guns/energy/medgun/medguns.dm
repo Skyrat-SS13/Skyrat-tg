@@ -44,6 +44,14 @@
 	maxcells = 6
 	selfcharge = 1
 	can_charge = FALSE
+
+//Upgrade Kit//
+/obj/item/upgradekit/medigun/charge
+	name = "VeyMedical CWM-479 upgrade kit"
+	desc = "Upgardes the internal battery inside of the medigun, allowing for faster charging and a higher cell capacity. Any cells inside of the origingal medigun during the upgrade process will be lost!"
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "plasticbox"
+//
 	//Medigun Cells// Spritework is done by Arctaisia!
 //Default Cell//
 /obj/item/medicell
