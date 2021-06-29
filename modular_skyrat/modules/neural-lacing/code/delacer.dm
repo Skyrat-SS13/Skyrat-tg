@@ -48,7 +48,6 @@
 
 	if(do_after(user,  toolspeed * 5 SECONDS * amputation_speed_mod, target = patient))
 		playsound(get_turf(patient), 'sound/weapons/bladeslice.ogg', 250, TRUE)
-		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN) //OwO
-			CSTACK.Remove(patient)
-			CSTACK.forceMove(get_turf(patient))
+		CSTACK.Remove(patient)
+		CSTACK.forceMove(get_turf(patient))
 		user.visible_message(span_danger("[src] violently spears in, ripping out [patient]'s [CSTACK]."), span_notice("You rip out [patient]'s [CSTACK] with [src]."))
