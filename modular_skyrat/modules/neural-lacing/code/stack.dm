@@ -43,7 +43,7 @@
 			MSTACK.visible_message(span_warning("..Before ceasing, the stack letting out an alarm; unable to override the conciousness within."))
 		else
 			MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
-			to_chat(MSTACK, span_notice("You feel a strange, ephermeal sensation come over you, as you re-awaken from your slumber..."))
+			to_chat(owner, span_notice("You feel a strange, ephermeal sensation come over you, as you re-awaken from your slumber..."))
 			REMOVE_TRAIT(MSTACK, TRAIT_DNR, src) //PREVENTS PEOPLE FROM GETTING DNR'D AFTER HAVING THEIR STACK REMOVED AND RELACED
 			MSTACK.ckey = ownerckey
 			MSTACK.mind = backup
