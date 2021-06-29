@@ -35,14 +35,15 @@
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
 /obj/structure/mob_spawner/obj_destruction(damage_flag)
-	. = ..()
-	for(var/path in loot)
-		var/number = loot[path]
-		if(!isnum(number))//Default to 1
-			number = 1
-		for(var/i in 1 to number)
-			new path (loc)
+	if(loot)
+		for(var/path in loot)
+			var/number = loot[path]
+			if(!isnum(number))//Default to 1
+				number = 1
+			for(var/i in 1 to number)
+				new path (loc)
 	playsound(src, 'sound/effects/blobattack.ogg', 100)
+	return ..()
 
 
 /obj/structure/mob_spawner/Destroy()
@@ -206,8 +207,15 @@
 	loot = list(/obj/item/food/grown/berries/glow = 10)
 
 /obj/structure/mob_spawner/grapes/obj_destruction(damage_flag)
-	. = ..()
+	if(loot)
+		for(var/path in loot)
+			var/number = loot[path]
+			if(!isnum(number))//Default to 1
+				number = 1
+			for(var/i in 1 to number)
+				new path (loc)
+	playsound(src, 'sound/effects/blobattack.ogg', 100)
 	new /mob/living/simple_animal/hostile/vatbeast(loc)
-
+	return ..()
 
 
