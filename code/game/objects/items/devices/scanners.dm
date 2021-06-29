@@ -222,6 +222,7 @@ GENE SCANNER
 //SKYRAT EDIT BEGIN
 		if (the_dude.getorganslot(ORGAN_SLOT_STACK))
 			render_list += "<span class='alert ml-1'>Subject possesses a cortical stack.</span>\n"
+//SKYRAT EDIT END - Neural Laces
 		if (!(NOBLOOD in the_dudes_species.species_traits) && !the_dude.getorganslot(ORGAN_SLOT_HEART))
 			render_list += "<span class='alert ml-1'>Subject lacks a heart.</span>\n"
 		if (!(TRAIT_NOBREATH in the_dudes_species.species_traits) && !the_dude.getorganslot(ORGAN_SLOT_LUNGS))
