@@ -57,4 +57,4 @@
 		ADD_TRAIT(MSTACK, TRAIT_DNR, src)
 
 	else
-		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
+		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort, remaining concious."))
