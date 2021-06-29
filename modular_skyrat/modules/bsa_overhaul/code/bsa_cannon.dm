@@ -193,7 +193,7 @@
 		system_state = SYSTEM_PREFIRE
 		message_admins("[user] has started the fire cycle of [src]!")
 		set_light(5, 5, COLOR_BLUE_LIGHT)
-		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 15 SECONDS)
+		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 19 SECONDS)
 		START_PROCESSING(SSobj, src)
 	return system_state
 
