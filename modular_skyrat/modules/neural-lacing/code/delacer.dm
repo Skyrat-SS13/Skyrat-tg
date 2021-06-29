@@ -20,7 +20,7 @@
 /obj/item/stackremover/syndicate
 	name = "blood-red cortical stack remover"
 	desc = "A pair of tweezer-like knives, used to quickly extract a stack after death. This one is shaped like a double-helix with blood-red blades. Are you a believer?"
-	toolspeed  = 2
+	toolspeed  = 0.5
 	force = 27
 	armour_penetration = 40
 
