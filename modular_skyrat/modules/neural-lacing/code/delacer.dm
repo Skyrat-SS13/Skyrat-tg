@@ -21,12 +21,13 @@
 	name = "blood-red cortical stack remover"
 	desc = "A pair of tweezer-like knives, used to quickly extract a stack after death. This one is shaped like a double-helix; with blood-red blades. Are you a believer?"
 	toolspeed  = 2
+	force = 27
 
 /datum/uplink_item/device_tools/corticalstackremover
 	name = "Blood-Red Cortical Stack Remover"
 	desc = "For those who wont be quiet... Are you a believer?"
 	item = /obj/item/stackremover/syndicate
-	cost = 10 //Support item. Dangerous
+	cost = 15 //Support item. Dangerous
 
 
 /obj/item/stackremover/attack(mob/living/M, mob/living/user)
