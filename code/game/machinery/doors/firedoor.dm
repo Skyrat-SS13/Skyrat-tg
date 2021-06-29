@@ -48,19 +48,20 @@
 	for(var/turf/adjacent_turf in range(1, src))
 		RegisterSignal(adjacent_turf, COMSIG_TURF_EXPOSE, .proc/atmos_changed)
 
-	/* //SKYRAT EDIT ORIGINAL
+/* //SKYRAT EDIT REMOVAL BEGIN
 /obj/machinery/door/firedoor/proc/CalculateAffectingAreas()
 	remove_from_areas()
 	affecting_areas = get_adjacent_open_areas(src) | get_area(src)
 	for(var/I in affecting_areas)
 		var/area/A = I
 		LAZYADD(A.firedoors, src)
-	*/
+*/ //SKYRAT EDIT END
 
 /obj/machinery/door/firedoor/closed
 	icon_state = "door_closed"
 	density = TRUE
 
+/* //SKYRAT EDIT REMOVAL BEGIN
 //see also turf/AfterChange for adjacency shennanigans
 /obj/machinery/door/firedoor/proc/remove_from_areas()
 	if(affecting_areas)
@@ -72,6 +73,7 @@
 	remove_from_areas()
 	affecting_areas.Cut()
 	return ..()
+*/ //SKYRAT EDIT REMOVAL END
 
 /obj/machinery/door/firedoor/Bumped(atom/movable/AM)
 	if(panel_open || operating)
