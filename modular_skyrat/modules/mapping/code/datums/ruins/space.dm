@@ -113,3 +113,9 @@
 	suffix = "salvagepost.dmm"
 	name = "Pre-Bluespace Salvage Post"
 	description = "An extremely old, long forgotten post used to salvage damaged or decommissioned ships before bluespace transportation. Surprising its stayed intact so long."
+
+/datum/map_template/ruin/space/skyrat/vaulttango
+	id = "vaulttango"
+	suffix = "vaulttango.dmm"
+	name = "ARBORLINK Vault Tango"
+	description = "Nanotrasen isn't the only corporation experimenting in advanced bluespace technology."

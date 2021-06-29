@@ -118,14 +118,13 @@
 	cost = CARGO_CRATE_VALUE * 0.06
 	unit_name = "of sheetza"
 	export_types = list(/obj/item/stack/sheet/pizza)
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/export/stack/meat
 	cost = CARGO_CRATE_VALUE * 0.04
 	unit_name = "of meat"
 	export_types = list(/obj/item/stack/sheet/meat)
-*/
-//SKYRAT EDIT REMOVAL END
-
 
 // Weird Stuff
 
