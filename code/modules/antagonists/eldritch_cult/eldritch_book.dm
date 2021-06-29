@@ -1,5 +1,5 @@
 /obj/item/forbidden_book
-	name = "Codex Cicatrix"
+	name = "\improper Codex Cicatrix" //SKYRAT CHANGE
 	desc = "This book describes the secrets of the veil between worlds."
 	icon = 'icons/obj/eldritch.dmi'
 	icon_state = "book"
@@ -8,13 +8,20 @@
 	///Last person that touched this
 	var/mob/living/last_user
 	///how many charges do we have?
-	var/charge = 2 //SKYRAT EDIT - ORIGINAL: 1
+	var/charge = 1
 	///Where we cannot create the rune?
 	var/static/list/blacklisted_turfs = typecacheof(list(/turf/closed,/turf/open/space,/turf/open/lava))
+	var/has_passive_charge = TRUE //SKYRAT ADDITION: PASSIVE CHARGES. GAINED EVERY 15 MINUTES AFTER YOU FIRST DRAW A RUIN.
 
 /obj/item/forbidden_book/Destroy()
 	last_user = null
 	. = ..()
+
+/obj/item/forbidden_book/proc/alert_passive_charge() //SKYRAT ADDITION
+	if(!last_user || !last_user.mind.has_antag_datum(/datum/antagonist/heretic))
+		return
+	to_chat(last_user, span_danger("You feel [src] calling to you... new knowledge has been found! Draw a new rune to transfer this knowledge."))
+	has_passive_charge = TRUE
 
 
 /obj/item/forbidden_book/examine(mob/user)
@@ -25,6 +32,7 @@
 	. += "Use it on the floor to create a transmutation rune, used to perform rituals."
 	. += "Hit an influence in the black part with it to gain a charge."
 	. += "Hit a transmutation rune to destroy it."
+	. += "You can gain a passive charge every 15 minutes after first drawing a rune." //SKYRAT ADDITION.
 
 /obj/item/forbidden_book/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -56,7 +64,13 @@
 	to_chat(user, span_danger("You start drawing a rune..."))
 
 	if(do_after(user,30 SECONDS,A))
-
+		//SKYRAT ADDITION STARTS HERE
+		if(has_passive_charge)
+			charge++
+			to_chat(user, span_danger("The new rune glows as eldritch knowledge is transfered to your tome!"))
+			addtimer(CALLBACK(src,.proc/alert_passive_charge),20 MINUTES)
+			has_passive_charge = FALSE
+		//SKYRAT ADDITION ENDS HERE
 		new /obj/effect/eldritch/big(A)
 
 ///Removes runes from the selected turf
