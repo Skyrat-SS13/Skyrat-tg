@@ -88,6 +88,28 @@
 #define COMP_RADIO_PUBLIC "public"
 #define COMP_RADIO_PRIVATE "private"
 
+<<<<<<< HEAD
+=======
+// Sound component
+#define COMP_SOUND_BUZZ "Buzz"
+#define COMP_SOUND_BUZZ_TWO "Buzz Twice"
+#define COMP_SOUND_CHIME "Chime"
+#define COMP_SOUND_HONK "Honk"
+#define COMP_SOUND_PING "Ping"
+#define COMP_SOUND_SAD "Sad Trombone"
+#define COMP_SOUND_WARN "Warn"
+#define COMP_SOUND_SLOWCLAP "Slow Clap"
+
+// Security Arrest Console
+#define COMP_STATE_ARREST "*Arrest*"
+#define COMP_STATE_PRISONER "Incarcerated"
+#define COMP_STATE_PAROL "Paroled"
+#define COMP_STATE_DISCHARGED "Discharged"
+#define COMP_STATE_NONE "None"
+
+#define COMP_SECURITY_ARREST_AMOUNT_TO_FLAG 10
+
+>>>>>>> 02f0fe75fa4 (Adds the sound emitter circuit component (#59866))
 // Shells
 
 /// Whether a circuit is stuck on a shell and cannot be removed (by a user)
