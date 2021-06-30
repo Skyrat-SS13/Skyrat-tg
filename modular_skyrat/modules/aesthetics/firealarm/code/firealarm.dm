@@ -15,18 +15,22 @@
 		panel_open = TRUE
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
 		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
-	update_appearance()
+
 	RegisterSignal(SSsecurity_level, COMSIG_SECURITY_LEVEL_CHANGED, .proc/check_security_level)
 
 	gather_objects()
 
+	update_appearance()
+
 /obj/machinery/firealarm/proc/gather_objects()
 	var/area/my_area = get_area(src)
+
 	for(var/obj/machinery/light/iterating_light in my_area)
 		lights += iterating_light
 
 	for(var/obj/machinery/door/firedoor/iterating_firedoor in my_area)
 		firedoors += iterating_firedoor
+		iterating_firedoor.firealarms += src
 
 	for(var/obj/machinery/firealarm/iterating_firealarm in my_area)
 		firealarms += iterating_firealarm
@@ -51,29 +55,35 @@
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
 	trigger_effects(manual)
+	update_appearance()
 
 /obj/machinery/firealarm/proc/trigger_effects(manual = TRUE)
 	for(var/obj/machinery/light/iterating_light in lights)
-		iterating_light.emergency_mode = TRUE
+		iterating_light.firealarm = TRUE
 		iterating_light.update()
-	if(manual)
-		for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
-			iterating_firedoor.close()
-	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
-		if(iterating_firealarm.triggered)
-			continue
-		iterating_firealarm.triggered = TRUE
-		iterating_firealarm.update_fire_light(TRUE)
 
-/obj/machinery/firealarm/proc/untrigger_effects()
-	for(var/obj/machinery/light/iterating_light in lights)
-		iterating_light.emergency_mode = FALSE
-		iterating_light.update()
-	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
-		iterating_firedoor.open()
 	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
-		iterating_firealarm.triggered = FALSE
-		iterating_firealarm.update_fire_light(FALSE)
+		if(!iterating_firealarm.triggered)
+			iterating_firealarm.triggered = TRUE
+			iterating_firealarm.update_fire_light(TRUE)
+			iterating_firealarm.update_appearance()
+
+	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
+		iterating_firedoor.close()
+
+/obj/machinery/firealarm/proc/untrigger_effects(manual = TRUE)
+	for(var/obj/machinery/light/iterating_light in lights)
+		iterating_light.firealarm = FALSE
+		iterating_light.update()
+
+	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
+		if(!iterating_firealarm.triggered)
+			iterating_firealarm.triggered = TRUE
+			iterating_firealarm.update_fire_light(TRUE)
+			iterating_firealarm.update_appearance()
+
+	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
+		iterating_firedoor.close()
 
 /obj/machinery/firealarm/proc/reset(mob/user)
 	if(!is_operational)

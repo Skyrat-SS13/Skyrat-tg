@@ -51,3 +51,13 @@
 		icon_state = "[base_icon_state]_closed_[hot_or_cold ? "hot" : "cold"]"
 	else
 		icon_state = "[base_icon_state]_open"
+
+/obj/machinery/door/firedoor/proc/CalculateAffectingAreas()
+	for(var/turf/adjacent_turf in range(1, src))
+		RegisterSignal(adjacent_turf, COMSIG_TURF_EXPOSE, .proc/atmos_changed)
+
+	var/my_area = get_area(src)
+
+	for(var/obj/machinery/firealarm/iterating_alarm in my_area)
+		iterating_alarm.firedoors += src
+		firealarms += iterating_alarm

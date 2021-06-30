@@ -6,6 +6,7 @@
 	var/constant_flickering = FALSE // Are we always flickering?
 	var/flicker_timer = null
 	var/roundstart_flicker = FALSE
+	var/firealarm = FALSE
 
 /obj/machinery/light/proc/turn_on(trigger, play_sound = TRUE)
 	if(QDELETED(src))
@@ -19,7 +20,7 @@
 	if(color)
 		CO = color
 	var/area/A = get_area(src)
-	if (A?.fire)
+	if (firealarm)
 		CO = bulb_emergency_colour
 	else if (nightshift_enabled)
 		BR = nightshift_brightness
@@ -90,3 +91,4 @@
 
 /obj/item/light/tube
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
+

@@ -44,16 +44,6 @@
 	else
 		. += span_notice("The bolt locks have been <i>unscrewed</i>, but the bolts themselves are still <b>wrenched</b> to the floor.")
 
-/obj/machinery/door/firedoor/proc/CalculateAffectingAreas() //SKYRAT EDIT CHANGE
-	for(var/turf/adjacent_turf in range(1, src))
-		RegisterSignal(adjacent_turf, COMSIG_TURF_EXPOSE, .proc/atmos_changed)
-
-	var/my_area = get_area(src)
-
-	for(var/obj/machinery/firealarm/iterating_alarm in my_area)
-		iterating_alarm.firedoors += src
-		firealarms += iterating_alarm
-
 /* //SKYRAT EDIT REMOVAL BEGIN
 /obj/machinery/door/firedoor/proc/CalculateAffectingAreas()
 	remove_from_areas()
