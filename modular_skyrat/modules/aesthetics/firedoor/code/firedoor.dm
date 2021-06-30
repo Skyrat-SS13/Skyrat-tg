@@ -5,6 +5,7 @@
 	var/door_open_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 	var/door_close_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 	var/hot_or_cold = FALSE //True for hot, false for cold
+	var/list/firealarms = list()
 
 /obj/machinery/door/firedoor/heavy
 	name = "Heavy Emergency Shutter"
@@ -31,3 +32,9 @@
 	else if(exposed_temperature > BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE)
 		hot_or_cold = TRUE
 		close()
+
+/obj/machinery/door/firedoor/Destroy()
+	for(var/obj/machinery/firealarm/iterating_alarm in firealarms)
+		iterating_alarm.firedoors -= src
+	firealarms = null
+	return ..()
