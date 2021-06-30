@@ -1,5 +1,3 @@
-#define PORT_INPUT_RECEIVE_DELAY 0.2 SECONDS
-
 /// Helper define that can only be used in /obj/item/circuit_component/input_received()
 #define COMPONENT_TRIGGERED_BY(trigger, port) (trigger.input_value && trigger == port)
 
@@ -21,6 +19,8 @@
 #define PORT_TYPE_SIGNAL "signal"
 /// List datatype
 #define PORT_TYPE_LIST "list"
+/// Table datatype. Derivative of list, contains other lists with matching columns.
+#define PORT_TYPE_TABLE "table"
 
 // Other datatypes
 /// Atom datatype
@@ -88,8 +88,6 @@
 #define COMP_RADIO_PUBLIC "public"
 #define COMP_RADIO_PRIVATE "private"
 
-<<<<<<< HEAD
-=======
 // Sound component
 #define COMP_SOUND_BUZZ "Buzz"
 #define COMP_SOUND_BUZZ_TWO "Buzz Twice"
@@ -109,7 +107,6 @@
 
 #define COMP_SECURITY_ARREST_AMOUNT_TO_FLAG 10
 
->>>>>>> 02f0fe75fa4 (Adds the sound emitter circuit component (#59866))
 // Shells
 
 /// Whether a circuit is stuck on a shell and cannot be removed (by a user)

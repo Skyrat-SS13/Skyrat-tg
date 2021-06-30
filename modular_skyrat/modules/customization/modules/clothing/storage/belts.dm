@@ -89,7 +89,7 @@
 		/obj/item/nullrod/carp,
 		/obj/item/nullrod/chainsaw,
 		/obj/item/nullrod/claymore/bostaff,
-		/obj/item/nullrod/hammmer,
+		/obj/item/nullrod/hammer,
 		/obj/item/nullrod/pitchfork,
 		/obj/item/nullrod/pride_hammer,
 		/obj/item/nullrod/spear,
