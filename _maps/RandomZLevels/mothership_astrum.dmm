@@ -118,7 +118,7 @@
 /area/awaymission/mothership_astrum/halls)
 "bw" = (
 /obj/structure/table/abductor,
-/obj/item/gun/ballistic/automatic/pistol/mk58/nomag,
+/obj/item/gun/ballistic/automatic/mini_uzi,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "bx" = (
@@ -272,6 +272,11 @@
 /obj/structure/alien/resin/wall/creature,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/deck4)
+"eu" = (
+/obj/structure/table/wood,
+/obj/item/ammo_box/c9mm,
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck5)
 "ey" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/sand,
@@ -806,7 +811,7 @@
 /area/awaymission/mothership_astrum/halls)
 "nE" = (
 /obj/structure/table/abductor,
-/obj/item/ammo_box/advanced/b9mm/hp,
+/obj/item/ammo_box/magazine/uzim9mm,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "nH" = (
@@ -827,8 +832,11 @@
 /area/awaymission/mothership_astrum/deck3)
 "nJ" = (
 /obj/structure/table/wood,
-/obj/item/clothing/suit/pirate/captain/armored,
 /obj/item/clothing/head/pirate/armored,
+/obj/item/clothing/suit/pirate/captain/armored{
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 30, "bio" = 30, "rad" = 30, "fire" = 60, "acid" = 75);
+	name = "improved captain coat"
+	},
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
 "nK" = (
@@ -837,8 +845,10 @@
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
 "nL" = (
-/turf/open/chasm,
-/area/awaymission/mothership_astrum/deck3)
+/obj/structure/table/abductor,
+/obj/item/ammo_box/magazine/uzim9mm,
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "nX" = (
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
@@ -970,11 +980,12 @@
 "pC" = (
 /obj/structure/table/wood,
 /obj/item/dnainjector/geladikinesis,
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck3)
 "pI" = (
 /obj/structure/table/wood,
-/obj/item/gun/ballistic/automatic/pistol/mk58/nomag,
+/obj/item/gun_maintenance_supplies,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck3)
 "pJ" = (
@@ -1198,10 +1209,13 @@
 /turf/open/floor/plating/abductor,
 /area/awaymission/mothership_astrum/halls)
 "tm" = (
-/obj/structure/table/abductor,
-/obj/item/ammo_box/magazine/multi_sprite/mk58/hp,
-/turf/open/floor/plating/abductor2,
-/area/awaymission/mothership_astrum/halls)
+/mob/living/simple_animal/hostile/syndicate/ranged/shotgun{
+	faction = list("Abductor")
+	},
+/turf/open/floor/plating/asteroid/snow/ice{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/awaymission/mothership_astrum/deck3)
 "to" = (
 /turf/closed/indestructible/fakeglass,
 /area/awaymission/mothership_astrum/deck5)
@@ -1354,8 +1368,8 @@
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "vR" = (
-/obj/structure/table/optable/abductor,
-/obj/item/storage/fancy/cigarettes/cigpack_syndicate,
+/obj/structure/table/abductor,
+/obj/item/gun_maintenance_supplies,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "vT" = (
@@ -1861,6 +1875,11 @@
 /obj/item/toy/seashell,
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
+"CY" = (
+/obj/structure/closet/abductor,
+/obj/item/stack/sheet/cloth/five,
+/turf/open/floor/plating/abductor,
+/area/awaymission/mothership_astrum/halls)
 "CZ" = (
 /obj/structure/closet/crate/large,
 /turf/open/floor/plating/ironsand,
@@ -1919,6 +1938,11 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
+"DR" = (
+/obj/structure/table,
+/obj/item/ammo_box/magazine/multi_sprite/mk58,
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck2)
 "DU" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/mineral/abductor,
@@ -2130,8 +2154,8 @@
 /obj/structure/window{
 	dir = 8
 	},
-/obj/item/implanter/tracking,
-/obj/item/implanter/tracking,
+/obj/item/implanter/tracking/gps,
+/obj/item/implanter/tracking/gps,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "FL" = (
@@ -2230,6 +2254,14 @@
 	},
 /turf/open/floor/plating/beach/sand,
 /area/awaymission/mothership_astrum/deck5)
+"GK" = (
+/obj/structure/table/abductor,
+/obj/machinery/button/door{
+	id = "finallock";
+	name = "AStrum Bridge Lockdown"
+	},
+/turf/open/floor/plating/abductor,
+/area/awaymission/mothership_astrum/halls)
 "GL" = (
 /obj/machinery/chem_master/condimaster,
 /turf/open/floor/plating/abductor,
@@ -2252,10 +2284,11 @@
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck1)
 "GX" = (
-/obj/machinery/quantumpad,
-/obj/effect/turf_decal/sand,
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/mothership_astrum/deck5)
+/obj/machinery/gateway/away{
+	calibrated = 0
+	},
+/turf/open/floor/mineral/abductor,
+/area/awaymission/mothership_astrum/halls)
 "GY" = (
 /mob/living/simple_animal/hostile/abductor/melee,
 /turf/open/floor/plating/abductor,
@@ -2308,7 +2341,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/gun/ballistic/automatic/pitbull,
+/obj/item/gun/ballistic/automatic/pcr,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Hp" = (
@@ -2889,7 +2922,7 @@
 /obj/structure/window{
 	dir = 8
 	},
-/obj/item/ammo_box/advanced/b9mm/hp,
+/obj/item/ammo_box/c9mm,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Om" = (
@@ -2970,7 +3003,7 @@
 /area/awaymission/mothership_astrum/deck3)
 "OG" = (
 /obj/structure/table/abductor,
-/obj/item/organ/cyberimp/arm/surgery,
+/obj/item/organ/cyberimp/arm/armblade,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "OS" = (
@@ -3019,21 +3052,11 @@
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Pt" = (
-/obj/machinery/porta_turret/syndicate/energy{
-	faction = list("Abductor")
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
+/obj/structure/table/wood,
+/obj/item/ammo_box/magazine/uzim9mm,
+/obj/item/ammo_box/magazine/uzim9mm,
+/turf/open/floor/wood,
+/area/awaymission/mothership_astrum/deck5)
 "Py" = (
 /obj/structure/alien/weeds,
 /obj/effect/mob_spawn/human/abductor,
@@ -3698,12 +3721,6 @@
 "Wj" = (
 /obj/structure/table/abductor,
 /obj/item/shield/riot,
-/turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
-"Wn" = (
-/obj/machinery/gateway{
-	calibrated = 0
-	},
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "Wq" = (
@@ -20086,7 +20103,7 @@ NA
 ES
 Pl
 Jm
-FD
+DR
 Rm
 ED
 RT
@@ -23123,7 +23140,7 @@ Tu
 Tu
 Tu
 Tu
-SV
+ee
 ee
 ee
 bR
@@ -23131,7 +23148,7 @@ bV
 bV
 ee
 ee
-SV
+ee
 Tu
 Tu
 Tu
@@ -23380,7 +23397,7 @@ Tu
 Tu
 Tu
 Tu
-SV
+ee
 ee
 WW
 bV
@@ -23388,7 +23405,7 @@ bE
 bV
 bV
 ee
-SV
+ee
 Tu
 Tu
 Tu
@@ -23637,15 +23654,15 @@ Tu
 Tu
 Tu
 Tu
-SV
 ee
-vR
+ee
+ko
 bV
 Vh
 bV
 bV
 ee
-SV
+ee
 Tu
 Tu
 Tu
@@ -23699,7 +23716,7 @@ ee
 ee
 Ta
 Zp
-Va
+Zp
 Zp
 Zp
 ee
@@ -23894,7 +23911,7 @@ Tu
 Tu
 Tu
 Tu
-SV
+ee
 ee
 OG
 bV
@@ -23902,7 +23919,7 @@ bV
 bV
 bV
 ee
-SV
+ee
 Tu
 Tu
 Tu
@@ -24469,8 +24486,8 @@ ee
 ee
 ee
 ee
-Uv
-Uv
+CY
+CY
 Uv
 ee
 ee
@@ -24967,7 +24984,7 @@ bV
 bV
 bV
 bV
-Pt
+bV
 ee
 ee
 ee
@@ -27258,7 +27275,7 @@ bV
 bV
 Vh
 mv
-zt
+vR
 Jz
 ee
 ee
@@ -27496,7 +27513,7 @@ Vc
 Vc
 Vc
 Vc
-Vc
+mW
 Vc
 nI
 oi
@@ -27753,9 +27770,9 @@ Vc
 Vc
 Vc
 Vc
-Vc
-Vc
-Vc
+tm
+mW
+mW
 Vc
 Vc
 Vc
@@ -27771,7 +27788,7 @@ AZ
 bV
 bV
 Vh
-Vh
+Ma
 bV
 kB
 ee
@@ -28267,7 +28284,7 @@ Vc
 Vc
 Vc
 Vc
-nL
+mW
 Vc
 Vc
 Vc
@@ -28524,8 +28541,8 @@ Vc
 Vc
 Vc
 Vc
-nL
-nL
+mW
+mW
 Vc
 Vc
 Vc
@@ -28782,7 +28799,7 @@ Vc
 mq
 Vc
 Vc
-nL
+mW
 mW
 Vc
 Vc
@@ -29297,7 +29314,7 @@ Vc
 Vc
 Vc
 Vc
-Vc
+mW
 Vc
 Vc
 Vc
@@ -31568,8 +31585,8 @@ ee
 Zp
 Vh
 nE
-aV
-tm
+bw
+Ci
 Vh
 Zp
 ee
@@ -32373,7 +32390,7 @@ Vh
 Vh
 Vh
 Vh
-Vh
+Ma
 ee
 ee
 Tu
@@ -32595,9 +32612,9 @@ ee
 ee
 Zp
 Vh
-bw
+aV
 mv
-tm
+aV
 Vh
 Zp
 Zp
@@ -35689,7 +35706,7 @@ bV
 Vh
 Vh
 Vh
-Vh
+iY
 Vh
 AZ
 Vh
@@ -37484,7 +37501,7 @@ bV
 bV
 Vh
 Vh
-bV
+pz
 bV
 ee
 dj
@@ -37737,7 +37754,7 @@ VJ
 kZ
 qd
 Zp
-bV
+od
 bV
 Vh
 Vh
@@ -38251,7 +38268,7 @@ Vh
 Vh
 Vh
 Zp
-bV
+pz
 bV
 Vh
 Vh
@@ -38509,7 +38526,7 @@ Vh
 Zp
 Zp
 bV
-ad
+bV
 Vh
 Vh
 bV
@@ -38769,7 +38786,7 @@ bV
 bV
 Vh
 Vh
-bV
+od
 bV
 ee
 db
@@ -39633,7 +39650,7 @@ bV
 bV
 ee
 bV
-bV
+IA
 Vh
 ee
 ee
@@ -39893,7 +39910,7 @@ bV
 bV
 bV
 bV
-bV
+IA
 bV
 bV
 bV
@@ -40054,7 +40071,7 @@ bV
 bV
 Vh
 Vh
-bV
+pz
 bV
 ee
 dW
@@ -40157,7 +40174,7 @@ Vh
 Vh
 Vh
 Vb
-VJ
+GK
 Vh
 Vh
 Vh
@@ -40309,7 +40326,7 @@ ee
 ee
 bV
 bV
-Vh
+iY
 Vh
 bV
 bV
@@ -41409,7 +41426,7 @@ OB
 En
 En
 EG
-Mr
+En
 En
 En
 sC
@@ -41665,9 +41682,9 @@ Kd
 nf
 En
 En
-Mr
-GX
-Mr
+En
+En
+En
 tz
 sC
 tw
@@ -41854,7 +41871,7 @@ bV
 Vh
 Vh
 bV
-bV
+od
 ee
 ee
 dj
@@ -41923,7 +41940,7 @@ En
 En
 En
 En
-Mr
+En
 En
 En
 sC
@@ -42174,7 +42191,7 @@ CG
 Kd
 Kd
 vo
-uH
+Pt
 KM
 Xg
 En
@@ -42879,7 +42896,7 @@ ee
 ee
 ee
 bV
-PH
+Vh
 bV
 bV
 Vh
@@ -43414,7 +43431,7 @@ zt
 zt
 ee
 zt
-zt
+nL
 bV
 bV
 bV
@@ -43460,7 +43477,7 @@ Kd
 Kd
 GA
 KM
-uH
+eu
 wM
 En
 En
@@ -44809,16 +44826,16 @@ ee
 ee
 bV
 Vh
-Xh
-Zv
+Vh
+Vh
 bV
 bV
 bV
 Vh
 bV
 bV
-XZ
-Xh
+Vh
+Vh
 Vh
 bV
 ee
@@ -45067,14 +45084,14 @@ ee
 bV
 Vh
 Uy
-Zi
+Vh
 bV
 bV
 Vh
 bV
 bV
 bV
-tK
+Vh
 Uy
 Vh
 bV
@@ -45324,14 +45341,14 @@ ee
 bV
 Vh
 Vh
-Zi
+Vh
 bV
 bV
 bV
 Vh
 bV
 bV
-tK
+Vh
 Vh
 Vh
 bV
@@ -45982,7 +45999,7 @@ zt
 bR
 zt
 zt
-zt
+nL
 zt
 zt
 iA
@@ -46495,7 +46512,7 @@ Xa
 HA
 bV
 bd
-bV
+CL
 bx
 Xa
 VM
@@ -46869,8 +46886,8 @@ bV
 bV
 bV
 bV
-Xh
-Xh
+Vh
+Vh
 bV
 bV
 bV
@@ -47126,8 +47143,8 @@ bV
 bV
 bV
 Vh
-ZP
-ZP
+Vh
+Vh
 Vh
 bV
 bV
@@ -54567,7 +54584,7 @@ Tu
 ee
 ee
 bV
-bV
+GX
 bV
 bV
 bV
@@ -55080,8 +55097,8 @@ Tu
 Tu
 ee
 ee
+zt
 bV
-Wn
 bV
 bV
 bV
@@ -55337,7 +55354,7 @@ Tu
 Tu
 ee
 ee
-bV
+zt
 bV
 bV
 bV
@@ -55595,8 +55612,8 @@ Tu
 ee
 ee
 zt
-zt
-zt
+bV
+bV
 bV
 bV
 bV
@@ -55851,7 +55868,7 @@ Tu
 Tu
 ee
 ee
-Ux
+ee
 bV
 bV
 bV
@@ -56108,7 +56125,7 @@ Tu
 Tu
 ee
 ee
-Ux
+ee
 bV
 bV
 bV

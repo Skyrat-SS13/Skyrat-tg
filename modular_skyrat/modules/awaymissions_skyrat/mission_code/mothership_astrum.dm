@@ -97,8 +97,8 @@
 	speed = 2
 	stat_attack = HARD_CRIT
 	robust_searching = 1
-	maxHealth = 100
-	health = 100
+	maxHealth = 120
+	health = 120
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -207,7 +207,7 @@
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
-	loot = list(/obj/item/storage/firstaid/regular = 45,
+	loot = list(/obj/item/storage/firstaid/regular = 25,
 				/obj/item/reagent_containers/syringe/penacid = 10,
 				/obj/item/reagent_containers/syringe/salacid = 20,
 				/obj/item/reagent_containers/syringe/oxandrolone = 20,
@@ -215,7 +215,7 @@
 				/obj/item/stack/medical/mesh/advanced = 21,
 				/obj/item/clothing/under/chameleon = 20,
 				/obj/item/shield/riot/tele = 27,
-				/obj/item/clothing/shoes/chameleon/noslip = 20)
+				/obj/item/clothing/shoes/chameleon/noslip = 10)
 
 /obj/effect/spawner/lootdrop/astrum/mid
 	name = "astrum mid"
@@ -272,7 +272,7 @@
 	icon_state = "alienpistol"
 	inhand_icon_state = "alienpistol"
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
-	cell = /obj/item/stock_parts/cell/pulse/pistol
+	cell_type = /obj/item/stock_parts/cell/pulse/pistol
 
 /obj/item/clothing/suit/armor/abductor/astrum
 	name = "agent vest"
@@ -317,7 +317,7 @@
 /obj/machinery/scanner_gate/anti_nanite/examine(mob/user)
 	return list("This gate seems to be highly modified with odd markings.")
 
-//Elite Fauna (I AM STEALING SO MUCH CODE FOR THIS I AM SORRY)
+//Boss
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum
 	name = "Abductor Captain"
 	desc = "The one you've come here for, finish this."
