@@ -18,11 +18,7 @@
 						/obj/item/seeds/cannabis/death,
 						/obj/item/seeds/cannabis/white,
 						/obj/item/seeds/cannabis/ultimate)
-<<<<<<< HEAD
-	reagents_add = list(/datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.35) //SKYRAT EDIT - MORENARCOTICS
-=======
 	reagents_add = list(/datum/reagent/drug/cannabis = 0.15)
->>>>>>> d3dd525e08c (Cannabis has more believable effects (#59360))
 
 
 /obj/item/seeds/cannabis/rainbow
@@ -44,11 +40,7 @@
 	plantname = "Deathweed"
 	product = /obj/item/food/grown/cannabis/death
 	mutatelist = list()
-<<<<<<< HEAD
-	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
-=======
 	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/cannabis = 0.15)
->>>>>>> d3dd525e08c (Cannabis has more believable effects (#59360))
 	rarity = 40
 
 /obj/item/seeds/cannabis/white
@@ -60,11 +52,7 @@
 	instability = 30
 	product = /obj/item/food/grown/cannabis/white
 	mutatelist = list()
-<<<<<<< HEAD
-	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
-=======
 	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/cannabis = 0.15)
->>>>>>> d3dd525e08c (Cannabis has more believable effects (#59360))
 	rarity = 40
 
 
@@ -77,11 +65,7 @@
 	product = /obj/item/food/grown/cannabis/ultimate
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/green, /datum/plant_gene/trait/modified_volume/omega_weed)
 	mutatelist = list()
-<<<<<<< HEAD
-	reagents_add = list(/datum/reagent/drug/thc = 0.3, //SKYRAT EDIT - MORENARCOTICS
-=======
 	reagents_add = list(/datum/reagent/drug/cannabis = 0.3,
->>>>>>> d3dd525e08c (Cannabis has more believable effects (#59360))
 						/datum/reagent/toxin/mindbreaker = 0.3,
 						/datum/reagent/mercury = 0.15,
 						/datum/reagent/lithium = 0.15,
