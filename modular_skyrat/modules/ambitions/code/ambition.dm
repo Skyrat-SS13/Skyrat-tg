@@ -307,6 +307,9 @@
 		return TRUE
 
 	if(href_list["pref"])
+		if(admin_review_requested && !admin_approval)
+			to_chat(src, span_adminhelp(span_warning("You are waiting for approval. You cannot edit anything while waiting for approval!")))
+			return
 		switch(href_list["pref"])
 			if("template")
 				ShowTemplatePanel(usr)
@@ -392,7 +395,7 @@
 	changed_after_approval = FALSE
 	last_requested_change = null
 	GLOB.ambitions_to_review -= src
-	submit();
+	submit()
 	log_action("AUTOMATICALLY APPROVED", FALSE)
 
 /datum/ambitions/proc/cancel_auto_approve()
