@@ -78,12 +78,12 @@
 
 	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
 		if(!iterating_firealarm.triggered)
-			iterating_firealarm.triggered = TRUE
-			iterating_firealarm.update_fire_light(TRUE)
+			iterating_firealarm.triggered = FALSE
+			iterating_firealarm.update_fire_light(FALSE)
 			iterating_firealarm.update_appearance()
 
 	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
-		iterating_firedoor.close()
+		iterating_firedoor.open()
 
 /obj/machinery/firealarm/proc/reset(mob/user)
 	if(!is_operational)
