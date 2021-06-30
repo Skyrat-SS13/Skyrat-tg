@@ -3,8 +3,8 @@
 	name = "Cordyceps omniteralis"
 	max_stages = 5
 	spread_text = "Airborne"
-	cure_text = "Spaceacillin & Convermol"
-	cures = list(/datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/c2/convermol)
+	cure_text = "Neurine & Modafinil"
+	cures = list(/datum/reagent/medicine/neurine, /datum/reagent/medicine/modafinil)
 	agent = "Fungal Cordycep bacillus"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	cure_chance = 20

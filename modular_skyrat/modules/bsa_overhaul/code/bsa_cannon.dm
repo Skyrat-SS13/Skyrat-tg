@@ -191,9 +191,9 @@
 		priority_announce("BLUESPACE TARGETING PARAMETERS SET, PREIGNITION STARTING... FIRING IN T-20 SECONDS!", "BLUESPACE ARTILLERY", ANNOUNCER_BLUESPACEARTY)
 		alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_prefire.ogg')
 		system_state = SYSTEM_PREFIRE
-		message_admins("[user] has started the fire cycle of [src]!")
+		message_admins("[user] has started the fire cycle of [src]! Firing at: [ADMIN_VERBOSEJMP(bullseye)]")
 		set_light(5, 5, COLOR_BLUE_LIGHT)
-		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 15 SECONDS)
+		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
 		START_PROCESSING(SSobj, src)
 	return system_state
 

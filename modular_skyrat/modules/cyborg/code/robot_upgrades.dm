@@ -1,5 +1,6 @@
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
+	var/hasAffection = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
@@ -17,6 +18,7 @@
 			to_chat(usr, "<span class='warning'>This unit's chassis cannot be shrunk any further.</span>")
 			return FALSE
 
+		borg.hasShrunk = TRUE
 		borg.notransform = TRUE
 		var/prev_lockcharge = borg.lockcharge
 		borg.SetLockdown(1)
@@ -33,7 +35,6 @@
 		borg.set_anchored(FALSE)
 		borg.notransform = FALSE
 		borg.resize = 0.75
-		borg.hasShrunk = TRUE
 		borg.update_transform()
 
 /obj/item/borg/upgrade/shrink/deactivate(mob/living/silicon/robot/borg, user = usr)
@@ -113,14 +114,23 @@
 	icon_state = "cyborg_upgrade3"
 
 /obj/item/borg/upgrade/affectionmodule/action(mob/living/silicon/robot/borg)
-	. = ..()
-	if(.)
-		var/obj/item/dogborg_tongue/dogtongue = new /obj/item/dogborg_tongue(borg.model)
-		borg.model.basic_modules += dogtongue
-		borg.model.add_module(dogtongue, FALSE, TRUE)
-		var/obj/item/dogborg_nose/dognose = new /obj/item/dogborg_nose(borg.model)
-		borg.model.basic_modules += dognose
-		borg.model.add_module(dognose, FALSE, TRUE)
+    . = ..()
+    if(!.)
+        return
+    if(borg.hasAffection)
+        to_chat(usr, "<span class='warning'>This unit already has a affection module installed!</span>")
+        return FALSE
+    if(!(R_TRAIT_WIDE in borg.model.model_features))
+        to_chat(usr, "<span class='warning'>This unit's chassis does not support this module.</span>")
+        return FALSE
+
+    var/obj/item/dogborg_tongue/dogtongue = new /obj/item/dogborg_tongue(borg.model)
+    borg.model.basic_modules += dogtongue
+    borg.model.add_module(dogtongue, FALSE, TRUE)
+    var/obj/item/dogborg_nose/dognose = new /obj/item/dogborg_nose(borg.model)
+    borg.model.basic_modules += dognose
+    borg.model.add_module(dognose, FALSE, TRUE)
+    borg.hasAffection = TRUE
 
 /obj/item/borg/upgrade/affectionmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
