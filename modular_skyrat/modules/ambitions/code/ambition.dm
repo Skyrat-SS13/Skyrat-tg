@@ -324,7 +324,7 @@
 					if(I.prefs.toggles & SOUND_ADMINHELP)
 						SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
 					window_flash(I, ignorepref = TRUE)
-				auto_approve_timerid = addtimer(CALLBACK(src, .proc/auto_approve), 5 MINUTES)
+				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME)
 			if("spice")
 				var/new_intensity = text2num(href_list["amount"])
 				if(intensity == new_intensity)
@@ -392,7 +392,8 @@
 	changed_after_approval = FALSE
 	last_requested_change = null
 	GLOB.ambitions_to_review -= src
-	log_action("APPROVED", FALSE)
+	submit();
+	log_action("AUTOMATICALLY APPROVED", FALSE)
 
 /datum/ambitions/proc/cancel_auto_approve()
 	if(auto_approve_timerid)
