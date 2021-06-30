@@ -9,8 +9,8 @@
 	invasive = 0
 
 /obj/item/autosurgeon/organ/syndicate/corticalstack
-	desc = "A single use autosurgeon that contains a cortical stack. A screwdriver can be used to remove it, but implants can't be placed back in."
-	uses = 1
+	desc = "A single use autosurgeon that contains a blood-red cortical stack. This implanter is modified to be usable twice."
+	uses = 2
 	starting_organ = /obj/item/organ/corticalstack/syndicate
 
 /datum/uplink_item/device_tools/corticalstack
