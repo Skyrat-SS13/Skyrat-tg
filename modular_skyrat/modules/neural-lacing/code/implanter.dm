@@ -25,3 +25,22 @@
 	cost = CARGO_CRATE_VALUE * 6 //Expensive.
 	contains = list(/obj/item/autosurgeon/organ/corticalstack,/obj/item/autosurgeon/organ/corticalstack,/obj/item/autosurgeon/organ/corticalstack)
 	crate_name = "Cortical Stack Crate"
+
+/obj/item/storage/backpack/duffelbag/syndie/loadout/believer/PopulateContents()
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/clothing/shoes/combat(src)
+	new /obj/item/autosurgeon/organ/syndicate/corticalstack(src)
+	new /obj/item/stackremover/syndicate(src)
+	new /obj/item/book/granter/martial/cqc(src)
+	new /obj/item/clothing/under/syndicate/sniper(src)
+	new /obj/item/implanter/storage(src)
+	new /obj/item/autosurgeon/organ/syndicate/anti_stun(src)
+
+//Badass section down here
+/datum/uplink_item/loadout_skyrat/believer
+	name = "Believer Bundle"
+	desc = "Named after the infamous collector of souls - the believer bundle, a collection of items to ensure you get that payment on time..."
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/believer
+	cost = 25
+
+
