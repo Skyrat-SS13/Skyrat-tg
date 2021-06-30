@@ -550,7 +550,7 @@
 	if (cameras)
 		if (cam?.can_use())
 			queueAlarm("--- [class] alarm detected in [home.name]! (<A HREF=?src=[REF(src)];switchcamera=[REF(cam)]>[cam.c_tag]</A>)", class)
-		else if (our_cams && our_cams.len)
+		else if (our_cams?.len)
 			var/foo = 0
 			var/dat2 = ""
 			for (var/obj/machinery/camera/I in our_cams)
