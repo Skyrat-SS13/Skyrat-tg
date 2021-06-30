@@ -392,7 +392,8 @@
 	changed_after_approval = FALSE
 	last_requested_change = null
 	GLOB.ambitions_to_review -= src
-	log_action("APPROVED", FALSE)
+	submit();
+	log_action("AUTOMATICALLY APPROVED", FALSE)
 
 /datum/ambitions/proc/cancel_auto_approve()
 	if(auto_approve_timerid)
