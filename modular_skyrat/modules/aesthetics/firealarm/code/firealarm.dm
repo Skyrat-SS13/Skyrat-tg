@@ -2,10 +2,6 @@
 	icon = 'modular_skyrat/modules/aesthetics/firealarm/icons/firealarm.dmi'
 	var/alarm_sound = 'modular_skyrat/modules/aesthetics/firealarm/sound/alarm_fire.ogg'
 
-	var/list/firealarms = list()
-	var/list/firedoors  = list()
-	var/list/lights = list()
-
 /obj/machinery/firealarm/Initialize(mapload, dir, building)
 	. = ..()
 	if(dir)
@@ -26,24 +22,32 @@
 	var/area/my_area = get_area(src)
 
 	for(var/obj/machinery/light/iterating_light in my_area)
-		lights += iterating_light
+		iterating_light.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_ON, /obj/machinery/light.proc/firealarm_on)
+		iterating_light.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_OFF, /obj/machinery/light.proc/firealarm_off)
 
 	for(var/obj/machinery/door/firedoor/iterating_firedoor in my_area)
-		firedoors += iterating_firedoor
-		iterating_firedoor.firealarms += src
+		iterating_firedoor.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_ON, /obj/machinery/door/firedoor.proc/firealarm_on)
+		iterating_firedoor.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_OFF, /obj/machinery/door/firedoor.proc/firealarm_off)
 
 	for(var/obj/machinery/firealarm/iterating_firealarm in my_area)
-		firealarms += iterating_firealarm
+		if(iterating_firealarm == src) //Bad infinite loops.
+			continue
+		iterating_firealarm.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_ON, .proc/area_alarm_on)
+		iterating_firealarm.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_OFF, .proc/area_alarm_off)
 
-/obj/machinery/firealarm/Destroy()
-	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
-		iterating_firealarm.firealarms -= src
-	firealarms = null
-	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
-		iterating_firedoor.firealarms -= src
-	firedoors = null
-	lights = null
-	return ..()
+/obj/machinery/firealarm/proc/area_alarm_on()
+	SIGNAL_HANDLER
+
+	triggered = TRUE
+	update_fire_light(TRUE)
+	update_appearance()
+
+/obj/machinery/firealarm/proc/area_alarm_off()
+	SIGNAL_HANDLER
+
+	triggered = FALSE
+	update_fire_light(FALSE)
+	update_appearance()
 
 /obj/machinery/firealarm/proc/alarm(mob/user)
 	if(triggered)
@@ -58,44 +62,12 @@
 	trigger_effects(TRUE)
 	update_appearance()
 
-/obj/machinery/firealarm/proc/auto_trigger()
-	if(triggered)
-		return
-
-	triggered = TRUE
-
-	trigger_effects(FALSE)
-
-	update_appearance()
-
 
 /obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)
-	for(var/obj/machinery/light/iterating_light in lights)
-		iterating_light.firealarm = TRUE
-		iterating_light.update()
-
-	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
-		if(!iterating_firealarm.triggered)
-			iterating_firealarm.triggered = TRUE
-			iterating_firealarm.update_fire_light(TRUE)
-			iterating_firealarm.update_appearance()
-	if(manual)
-		for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
-			iterating_firedoor.close()
+	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_ON, manual)
 
 /obj/machinery/firealarm/proc/untrigger_effects()
-	for(var/obj/machinery/light/iterating_light in lights)
-		iterating_light.firealarm = FALSE
-		iterating_light.update()
-
-	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
-		if(!iterating_firealarm.triggered)
-			iterating_firealarm.triggered = FALSE
-			iterating_firealarm.update_fire_light(FALSE)
-			iterating_firealarm.update_appearance()
-
-	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
-		iterating_firedoor.open()
+	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_OFF)
 
 /obj/machinery/firealarm/proc/reset(mob/user)
 	if(!is_operational)

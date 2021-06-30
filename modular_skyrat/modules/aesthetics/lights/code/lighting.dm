@@ -80,6 +80,18 @@
 
 	flicker_timer = addtimer(CALLBACK(src, .proc/flicker_on), rand(5, 50))
 
+/obj/machinery/light/proc/firealarm_on()
+	SIGNAL_HANDLER
+
+	firealarm = TRUE
+	update()
+
+/obj/machinery/light/proc/firealarm_off()
+	SIGNAL_HANDLER
+
+	firealarm = FALSE
+	update()
+
 /obj/machinery/light/Initialize(mapload = TRUE)
 	. = ..()
 	if(on)

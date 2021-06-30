@@ -5,7 +5,6 @@
 	var/door_open_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 	var/door_close_sound = 'modular_skyrat/modules/aesthetics/firedoor/sound/firedoor_open.ogg'
 	var/hot_or_cold = FALSE //True for hot, false for cold
-	var/list/firealarms = list()
 
 /obj/machinery/door/firedoor/heavy
 	name = "Heavy Emergency Shutter"
@@ -31,26 +30,20 @@
 		close()
 	else if(exposed_temperature > BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE)
 		hot_or_cold = TRUE
-		trigger_alarms()
+		trigger_hot()
 		close()
 
-/obj/machinery/door/firedoor/proc/trigger_alarms()
-	if(firealarms)
-		var/obj/machinery/firealarm/our_alarm = firealarms[1] //Just get the first item in the list, no point in iterating through them all.
-		our_alarm.auto_trigger()
+/obj/machinery/door/firedoor/proc/firealarm_on(datum/source, manual)
+	SIGNAL_HANDLER
+	if(manual)
+		INVOKE_ASYNC(src, .proc/close)
 
-/obj/machinery/door/firedoor/Destroy()
-	for(var/obj/machinery/firealarm/iterating_alarm in firealarms)
-		iterating_alarm.firedoors -= src
-	firealarms = null
-	return ..()
+/obj/machinery/door/firedoor/proc/firealarm_off()
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/open)
 
-/obj/machinery/door/firedoor/update_icon_state()
-	. = ..()
-	if(density)
-		icon_state = "[base_icon_state]_closed_[hot_or_cold ? "hot" : "cold"]"
-	else
-		icon_state = "[base_icon_state]_open"
+/obj/machinery/door/firedoor/proc/trigger_hot()
+	SEND_SIGNAL(src, COMSIG_FIREDOOR_CLOSED_FIRE)
 
 /obj/machinery/door/firedoor/proc/CalculateAffectingAreas()
 	for(var/turf/adjacent_turf in range(1, src))
@@ -59,5 +52,11 @@
 	var/my_area = get_area(src)
 
 	for(var/obj/machinery/firealarm/iterating_alarm in my_area)
-		iterating_alarm.firedoors += src
-		firealarms += iterating_alarm
+		iterating_alarm.RegisterSignal(src, COMSIG_FIREDOOR_CLOSED_FIRE, /obj/machinery/firealarm.proc/trigger_effects, FALSE) //We trigger the alarms automatically.
+
+/obj/machinery/door/firedoor/update_icon_state()
+	. = ..()
+	if(density)
+		icon_state = "[base_icon_state]_closed_[hot_or_cold ? "hot" : "cold"]"
+	else
+		icon_state = "[base_icon_state]_open"
