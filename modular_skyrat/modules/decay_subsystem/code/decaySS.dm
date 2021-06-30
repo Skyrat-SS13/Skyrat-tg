@@ -38,6 +38,8 @@ SUBSYSTEM_DEF(decay)
 		)
 
 /datum/controller/subsystem/decay/Initialize()
+	return //No, for now
+
 	for(var/turf/iterating_turf in world)
 		if(!is_station_level(iterating_turf.z))
 			continue
