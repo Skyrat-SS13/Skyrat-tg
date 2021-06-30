@@ -324,7 +324,7 @@
 					if(I.prefs.toggles & SOUND_ADMINHELP)
 						SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
 					window_flash(I, ignorepref = TRUE)
-				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 5 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME)
+				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME)
 			if("spice")
 				var/new_intensity = text2num(href_list["amount"])
 				if(intensity == new_intensity)
