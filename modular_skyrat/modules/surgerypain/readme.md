@@ -1,4 +1,5 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/5899
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/6604
 
 ## Title: Surgery Pain + morphine anaesthesia.
 
