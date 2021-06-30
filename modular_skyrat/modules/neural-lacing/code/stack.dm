@@ -39,11 +39,11 @@
 		to_chat(MSTACK, span_danger("You feel a sharp sting, and then a cool, almost numbing sensation spread over your form; your cortical stack coming online..."))
 		MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
 	else
-		if(MSTACK.mind && (backup || ownerckey) && !(MSTACK.mind != backup || MSTACK.ckey != ownerckey))
-			MSTACK.visible_message(span_warning("... before ceasing, the stack letting out an alarm — it was unable to override the consciousness within."))
+		if(MSTACK.mind && (backup || ownerckey) && !(MSTACK.mind == backup || MSTACK.ckey != ownerckey))
+			MSTACK.visible_message(span_warning("..Before ceasing, the stack letting out an alarm; unable to override the conciousness within."))
 		else
-			MSTACK.visible_message(span_notice("... before ceasing, the stack letting out a ping — it has succeeded in integrating with their neural systems."))
-			to_chat(owner, span_notice("You feel a strange, ethereal sensation come over you as you re-awaken from your slumber..."))
+			MSTACK.visible_message(span_notice("..Before ceasing, the stack letting out a ping; it has succeeded in integrating with their neural systems."))
+			to_chat(owner, span_notice("You feel a strange, ephermeal sensation come over you, as you re-awaken from your slumber..."))
 			REMOVE_TRAIT(MSTACK, TRAIT_DNR, src) //PREVENTS PEOPLE FROM GETTING DNR'D AFTER HAVING THEIR STACK REMOVED AND RELACED
 			MSTACK.ckey = ownerckey
 			MSTACK.mind = backup
@@ -57,4 +57,4 @@
 		ADD_TRAIT(MSTACK, TRAIT_DNR, src)
 
 	else
-		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort, remaining concious."))
+		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
