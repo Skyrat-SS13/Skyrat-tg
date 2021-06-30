@@ -380,8 +380,8 @@
 			to_chat(exposed_carbon, span_danger("You feel your injuries fade away to nothing!") )
 
 /datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/M)
-	REMOVE_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	L.clear_alert("numbed") // SKYRAT EDIT ADD END
+	REMOVE_TRAIT(M, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	M.clear_alert("numbed") // SKYRAT EDIT ADD END
 	if(iscarbon(M))
 		var/mob/living/carbon/N = M
 		N.hal_screwyhud = SCREWYHUD_NONE
