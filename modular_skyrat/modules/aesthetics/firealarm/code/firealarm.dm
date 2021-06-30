@@ -45,7 +45,7 @@
 	lights = null
 	return ..()
 
-/obj/machinery/firealarm/proc/alarm(mob/user, manual = TRUE)
+/obj/machinery/firealarm/proc/alarm(mob/user, manual = FALSE)
 	if(triggered)
 		return
 	if(!is_operational || !COOLDOWN_FINISHED(src, last_alarm))
@@ -100,7 +100,7 @@
 	if(triggered)
 		reset(user)
 	else
-		alarm(user)
+		alarm(user, TRUE)
 
 /obj/machinery/firealarm/attackby(obj/item/tool, mob/living/user, params)
 	add_fingerprint(user)
