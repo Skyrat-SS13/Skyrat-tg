@@ -271,6 +271,7 @@
 			if("request_changes")
 				cancel_auto_approve()
 				var/changes_wanted = input(usr, "Requested changes:", "Ambitions")  as message|null
+				admin_review_requested = FALSE
 				if(changes_wanted)
 					last_requested_change = changes_wanted
 					log_action("CHANGES REQUESTED: [changes_wanted]")
@@ -307,7 +308,7 @@
 		return TRUE
 
 	if(href_list["pref"])
-		if(admin_review_requested && !admin_approval)
+		if(admin_review_requested && !admin_approval && !last_requested_change)
 			to_chat(src, span_adminhelp(span_warning("You are waiting for approval. You cannot edit anything while waiting for approval!")))
 			return
 		switch(href_list["pref"])
