@@ -203,6 +203,11 @@
 	dir = 1
 	},
 /obj/machinery/firealarm/directional/south,
+/obj/machinery/quantumpad{
+	map_pad_id = "interdyne";
+	map_pad_link_id = "ds2";
+	name = "quantum pad to DS-2"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "ca" = (
@@ -242,12 +247,9 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "cp" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/iron/dark,
-/area/ruin/unpowered/syndicate_lava_base/bar)
+/obj/machinery/smartfridge/chemistry/preloaded,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "cr" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
@@ -626,6 +628,7 @@
 	dir = 4;
 	id = "interdynecargoout"
 	},
+/obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "gR" = (
@@ -881,10 +884,10 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "kq" = (
-/obj/machinery/chem_master,
 /obj/structure/sign/departments/chemistry{
 	pixel_x = 32
 	},
+/obj/structure/table/glass,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "ku" = (
@@ -918,6 +921,12 @@
 	dir = 1
 	},
 /area/ruin/unpowered/syndicate_lava_base/cargo)
+"kD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "kL" = (
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /obj/machinery/door/poddoor{
@@ -955,6 +964,10 @@
 "lE" = (
 /obj/structure/table/reinforced,
 /obj/item/kitchen/rollingpin,
+/obj/item/reagent_containers/food/condiment/saltshaker,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 6
+	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "lF" = (
@@ -990,7 +1003,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/kinetic_crusher,
+/obj/item/fakeartefact{
+	possible = list(/obj/item/kinetic_crusher)
+	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "mb" = (
@@ -1241,6 +1256,7 @@
 /obj/item/plant_analyzer,
 /obj/item/geneshears,
 /obj/item/gun/energy/floragun,
+/obj/item/secateurs,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "oY" = (
@@ -1577,6 +1593,16 @@
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "tI" = (
+/obj/machinery/button/door{
+	id = "interdynecargowest";
+	pixel_x = 32;
+	pixel_y = 8
+	},
+/obj/machinery/button/door{
+	id = "interdynecargoeast";
+	pixel_x = 32;
+	pixel_y = -8
+	},
 /obj/machinery/computer/shuttle{
 	desc = "Occasionally used to call in a resupply shuttle if one is in range.";
 	dir = 8;
@@ -1587,16 +1613,6 @@
 	possible_destinations = "syndielavaland_cargo";
 	req_access_txt = "150";
 	shuttleId = "syndie_cargo"
-	},
-/obj/machinery/button/door{
-	id = "interdynecargowest";
-	pixel_x = 32;
-	pixel_y = 8
-	},
-/obj/machinery/button/door{
-	id = "interdynecargoeast";
-	pixel_x = 32;
-	pixel_y = -8
 	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
@@ -1909,10 +1925,10 @@
 /turf/open/floor/stone,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "xx" = (
-/obj/machinery/seed_extractor,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+/obj/machinery/chem_dispenser/mutagensaltpeter,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "xH" = (
@@ -1920,6 +1936,12 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/bar)
+"xL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/virology)
 "xM" = (
 /obj/structure/chair/office/light{
 	dir = 1
@@ -1985,6 +2007,7 @@
 	dir = 8;
 	id = "interdynecargoin"
 	},
+/obj/structure/plasticflaps,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "yA" = (
@@ -2053,7 +2076,9 @@
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "zt" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/unpowered/syndicate_lava_base/virology)
 "zu" = (
@@ -2410,8 +2435,7 @@
 	},
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "Ct" = (
-/obj/structure/table/glass,
-/obj/machinery/reagentgrinder,
+/obj/machinery/chem_master,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "CB" = (
@@ -2454,7 +2478,9 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/gun/energy/kinetic_accelerator,
+/obj/item/fakeartefact{
+	possible = list(/obj/item/gun/energy/kinetic_accelerator)
+	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "CZ" = (
@@ -2517,6 +2543,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 8
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "DZ" = (
@@ -2598,6 +2625,9 @@
 /obj/effect/turf_decal/siding/brown{
 	dir = 1
 	},
+/obj/item/card/id/advanced/chameleon,
+/obj/item/card/id/advanced/chameleon,
+/obj/item/card/id/advanced/chameleon,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "Fm" = (
@@ -3015,7 +3045,6 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/ruin/unpowered/syndicate_lava_base/bar)
 "Kp" = (
@@ -3519,6 +3548,11 @@
 	},
 /area/ruin/unpowered/syndicate_lava_base/main)
 "PS" = (
+/obj/structure/safe,
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe{
+	desc = "It's a box, for storing things.";
+	name = "chameleon kit"
+	},
 /turf/open/floor/iron/corner{
 	dir = 1
 	},
@@ -3542,10 +3576,10 @@
 /area/ruin/unpowered/syndicate_lava_base/dormitories)
 "Qk" = (
 /obj/structure/table/glass,
+/obj/item/clothing/glasses/science,
 /obj/item/book/manual/wiki/chemistry{
 	pixel_y = 8
 	},
-/obj/item/clothing/glasses/science,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "Qm" = (
@@ -3611,6 +3645,10 @@
 	dir = 4
 	},
 /area/ruin/unpowered/syndicate_lava_base/medbay)
+"QN" = (
+/obj/machinery/smartfridge/drinks,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "QQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3847,6 +3885,12 @@
 "Tx" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/unpowered/syndicate_lava_base/bar)
+"TJ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/medbay)
 "TV" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 4
@@ -3937,6 +3981,10 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
+"Vi" = (
+/obj/machinery/smartfridge/food,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/unpowered/syndicate_lava_base/bar)
 "Vj" = (
 /obj/structure/lattice/catwalk,
 /turf/open/lava/smooth/lava_land_surface,
@@ -4192,6 +4240,7 @@
 /obj/item/storage/box/beakers/bluespace,
 /obj/item/storage/box/beakers/bluespace,
 /obj/machinery/firealarm/directional/west,
+/obj/machinery/reagentgrinder,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "XN" = (
@@ -5816,13 +5865,13 @@ df
 df
 df
 Tx
-WW
+To
 QQ
 wo
 Cd
 Pd
 YN
-Tx
+Vi
 Ko
 Ji
 DQ
@@ -6057,8 +6106,8 @@ QQ
 wo
 Oy
 xH
-cp
-Tx
+YN
+QN
 ej
 WW
 ae
@@ -6679,7 +6728,7 @@ ab
 ab
 ab
 ab
-Sy
+ab
 rq
 Xl
 is
@@ -6738,7 +6787,7 @@ ab
 ab
 ab
 ab
-wn
+ab
 zt
 bu
 PC
@@ -6797,8 +6846,8 @@ ab
 ab
 ab
 ab
-Sy
-rq
+ab
+xL
 rq
 rq
 rq
@@ -6857,7 +6906,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 Wr
 Na
 ZX
@@ -6916,7 +6965,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 oe
 pI
 FO
@@ -6975,7 +7024,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 ZX
 ZX
 ZX
@@ -7034,7 +7083,7 @@ ab
 ab
 ab
 ab
-ZX
+kD
 cy
 pM
 Pk
@@ -7092,8 +7141,8 @@ ab
 ab
 ab
 ab
-ab
-ZX
+Sy
+kD
 RP
 Vt
 Vt
@@ -7151,8 +7200,8 @@ ab
 ab
 ab
 ab
-ab
-ZX
+wn
+TJ
 Sk
 pW
 Wd
@@ -7163,7 +7212,7 @@ Qt
 Vv
 rE
 qL
-VY
+cp
 kq
 Ct
 Ha
@@ -7210,7 +7259,7 @@ ab
 ab
 ab
 ab
-ab
+Sy
 ZX
 ZX
 ZX

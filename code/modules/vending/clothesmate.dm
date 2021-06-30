@@ -162,6 +162,8 @@
 					/obj/item/clothing/shoes/sports = 3,
 					/obj/item/clothing/shoes/wraps/poly = 3,
 					/obj/item/clothing/shoes/jungleboots = 3,
+					/obj/item/clothing/shoes/jackboots/thigh = 3,
+					/obj/item/clothing/shoes/jackboots/knee = 3,
 					/obj/item/clothing/suit/duster/colorable = 3,
 					/obj/item/clothing/suit/toggle/peacoat = 3,
 					/obj/item/clothing/suit/toggle/trackjacket = 3,
