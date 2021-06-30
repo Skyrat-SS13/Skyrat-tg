@@ -45,19 +45,31 @@
 	lights = null
 	return ..()
 
-/obj/machinery/firealarm/proc/alarm(mob/user, manual = FALSE)
+/obj/machinery/firealarm/proc/alarm(mob/user)
 	if(triggered)
 		return
+	triggered = TRUE
 	if(!is_operational || !COOLDOWN_FINISHED(src, last_alarm))
 		return
 	COOLDOWN_START(src, last_alarm, FIREALARM_COOLDOWN)
 	playsound(loc, alarm_sound, 75)
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
-	trigger_effects(manual)
+	trigger_effects(TRUE)
 	update_appearance()
 
-/obj/machinery/firealarm/proc/trigger_effects(manual = TRUE)
+/obj/machinery/firealarm/proc/auto_trigger()
+	if(triggered)
+		return
+
+	triggered = TRUE
+
+	trigger_effects(FALSE)
+
+	update_appearance()
+
+
+/obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)
 	for(var/obj/machinery/light/iterating_light in lights)
 		iterating_light.firealarm = TRUE
 		iterating_light.update()
@@ -67,11 +79,11 @@
 			iterating_firealarm.triggered = TRUE
 			iterating_firealarm.update_fire_light(TRUE)
 			iterating_firealarm.update_appearance()
+	if(manual)
+		for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
+			iterating_firedoor.close()
 
-	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
-		iterating_firedoor.close()
-
-/obj/machinery/firealarm/proc/untrigger_effects(manual = TRUE)
+/obj/machinery/firealarm/proc/untrigger_effects()
 	for(var/obj/machinery/light/iterating_light in lights)
 		iterating_light.firealarm = FALSE
 		iterating_light.update()

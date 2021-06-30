@@ -37,7 +37,7 @@
 /obj/machinery/door/firedoor/proc/trigger_alarms()
 	if(firealarms)
 		var/obj/machinery/firealarm/our_alarm = firealarms[1] //Just get the first item in the list, no point in iterating through them all.
-		our_alarm.alarm(FALSE)
+		our_alarm.auto_trigger()
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/obj/machinery/firealarm/iterating_alarm in firealarms)
