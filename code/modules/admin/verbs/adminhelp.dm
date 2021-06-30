@@ -191,13 +191,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	/// Static counter used for generating each ticket ID
 	var/static/ticket_counter = 0
 
-<<<<<<< HEAD
-//call this on its own to create a ticket, don't manually assign current_ticket
-//msg is the title of the ticket: usually the ahelp text
-//is_bwoink is TRUE if this ticket was started by an admin PM
-///datum/admin_help/New(msg, client/C, is_bwoink) //ORIGINAL
-/datum/admin_help/New(msg, client/C, is_bwoink, client/admin_C) //SKYRAT EDIT CHANGE - ADMIN
-=======
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
  *
@@ -205,8 +198,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
  * * msg - The title of the ticket: usually the ahelp text
  * * is_bwoink - Boolean operator, TRUE if this ticket was started by an admin PM
  */
-/datum/admin_help/New(msg, client/C, is_bwoink)
->>>>>>> 71e2191f5f8 (Add 'other tickets by user' to adminhelp ticket panel (#59882))
+/datum/admin_help/New(msg, client/C, is_bwoink, client/admin_C) //SKYRAT EDIT CHANGE
 	//clean the input msg
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
