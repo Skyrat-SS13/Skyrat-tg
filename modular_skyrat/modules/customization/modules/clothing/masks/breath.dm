@@ -173,3 +173,35 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "ringgag"
 
+
+/obj/item/clothing/mask/gas/polyclown
+	name = "polychromaic clown mask"
+	desc = "The face of pure evil, now multicoloured."
+	clothing_flags = MASKINTERNALS
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	icon_state = "polyclown"
+	inhand_icon_state = "clown_hat"
+	flags_cover = MASKCOVERSEYES
+	resistance_flags = FLAMMABLE
+	species_exception = list(/datum/species/golem/bananium)
+	var/is_polychromic = TRUE
+	var/poly_colors = list("0BB", "FC0", "FFF")
+
+/obj/item/clothing/mask/gas/polyclown/ComponentInitialize()
+	. = ..()
+	if(is_polychromic)
+		AddElement(/datum/element/polychromic, poly_colors)
+
+/obj/item/clothing/mask/gas/clownbald
+	name = "bald clown mask"
+	desc = "HE'S BALD, HE'S FUCKIN' BALDIN!"
+	clothing_flags = MASKINTERNALS
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
+	icon_state = "baldclown"
+	inhand_icon_state = "clown_hat"
+	flags_cover = MASKCOVERSEYES
+	resistance_flags = FLAMMABLE
+	species_exception = list(/datum/species/golem/bananium)
+

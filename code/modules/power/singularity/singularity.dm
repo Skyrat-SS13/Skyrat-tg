@@ -48,7 +48,6 @@
 
 	START_PROCESSING(SSobj, src)
 	AddElement(/datum/element/point_of_interest)
-	GLOB.singularities |= src
 
 	var/datum/component/singularity/new_component = AddComponent(
 		/datum/component/singularity, \
@@ -69,7 +68,6 @@
 
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	GLOB.singularities.Remove(src)
 	return ..()
 
 /obj/singularity/attack_tk(mob/user)
