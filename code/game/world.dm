@@ -271,7 +271,7 @@ GLOBAL_VAR(restart_counter)
 	TgsReboot()
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	..()
-
+/* SKYRAT EDIT CHANGE - MOVED TO MODULAR
 /world/proc/update_status()
 
 	var/list/features = list()
@@ -318,7 +318,7 @@ GLOBAL_VAR(restart_counter)
 		s += ": [jointext(features, ", ")]"
 
 	status = s
-
+*/
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)
 		return
