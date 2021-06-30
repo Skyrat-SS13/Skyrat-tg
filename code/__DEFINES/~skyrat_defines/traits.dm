@@ -26,3 +26,6 @@
 
 /// One can breath under water, you get me?
 #define TRAIT_WATER_BREATHING "water_breathing"
+
+/// Under the effect of a numbling agent, such as morphine, for surgery.
+#define TRAIT_NUMBED "numbed"

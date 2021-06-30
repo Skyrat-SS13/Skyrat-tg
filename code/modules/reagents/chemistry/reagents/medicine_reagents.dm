@@ -591,9 +591,13 @@
 /datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/L)
 	..()
 	L.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	ADD_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END -- i should probably have worked these both into a status effect, maybe
 
 /datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/L)
 	L.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	REMOVE_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	L.clear_alert("numbed")
 	..()
 
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
