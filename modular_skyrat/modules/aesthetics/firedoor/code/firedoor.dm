@@ -31,7 +31,13 @@
 		close()
 	else if(exposed_temperature > BODYTEMP_HEAT_DAMAGE_LIMIT || pressure > WARNING_HIGH_PRESSURE)
 		hot_or_cold = TRUE
+		trigger_alarms()
 		close()
+
+/obj/machinery/door/firedoor/proc/trigger_alarms()
+	if(firealarms)
+		var/obj/machinery/firealarm/our_alarm = firealarms[1] //Just get the first item in the list, no point in iterating through them all.
+		our_alarm.alarm()
 
 /obj/machinery/door/firedoor/Destroy()
 	for(var/obj/machinery/firealarm/iterating_alarm in firealarms)

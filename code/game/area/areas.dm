@@ -452,7 +452,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if (area_flags & NO_ALERTS)
 		return
 	//Trigger alarm effect
-	set_fire_alarm_effect()
+	//set_fire_alarm_effect() SKYRAT EDIT REMOVAL
 	//Lockdown airlocks
 	for(var/obj/machinery/door/DOOR in src)
 		close_and_lock_door(DOOR)

@@ -2,35 +2,6 @@
 	icon = 'modular_skyrat/modules/aesthetics/firealarm/icons/firealarm.dmi'
 	var/alarm_sound = 'modular_skyrat/modules/aesthetics/firealarm/sound/alarm_fire.ogg'
 
-#define FIREALARM_COOLDOWN 80 //SKYRAT EDIT CHANGE - ORIGINAL: 67 - AESTHETIC // Chosen fairly arbitrarily, it is the length of the audio in FireAlarm.ogg. The actual track length is 7 seconds 8ms but but the audio stops at 6s 700ms
-
-/obj/machinery/firealarm
-	name = "fire alarm"
-	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
-	icon = 'icons/obj/monitors.dmi'
-	icon_state = "fire0"
-	max_integrity = 250
-	integrity_failure = 0.4
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
-	use_power = IDLE_POWER_USE
-	idle_power_usage = 2
-	active_power_usage = 6
-	power_channel = AREA_USAGE_ENVIRON
-	resistance_flags = FIRE_PROOF
-
-	light_power = 0
-	light_range = 7
-	light_color = COLOR_VIVID_RED
-
-	//Trick to get the glowing overlay visible from a distance
-	luminosity = 1
-
-	var/detecting = 1
-	var/buildstage = 2 // 2 = complete, 1 = no wires, 0 = circuit gone
-	COOLDOWN_DECLARE(last_alarm)
-	//Has this firealarm been triggered by its enviroment?
-	var/triggered = FALSE
-
 	var/list/firealarms = list()
 	var/list/firedoors  = list()
 	var/list/lights = list()
@@ -52,7 +23,7 @@
 /obj/machinery/firealarm/proc/gather_objects()
 	var/area/my_area = get_area(src)
 	for(var/obj/machinery/light/iterating_light in my_area)
-		firelocks += iterating_light
+		lights += iterating_light
 
 	for(var/obj/machinery/door/firedoor/iterating_firedoor in my_area)
 		firedoors += iterating_firedoor
@@ -71,6 +42,8 @@
 	return ..()
 
 /obj/machinery/firealarm/proc/alarm(mob/user)
+	if(triggered)
+		return
 	if(!is_operational || !COOLDOWN_FINISHED(src, last_alarm))
 		return
 	COOLDOWN_START(src, last_alarm, FIREALARM_COOLDOWN)
@@ -85,7 +58,9 @@
 		iterating_light.update()
 	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
 		iterating_firedoor.close()
-	for(var/obj/machinery/firealarm/iterating_firealarm in firealarm)
+	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
+		if(iterating_firealarm.triggered)
+			continue
 		iterating_firealarm.triggered = TRUE
 		iterating_firealarm.update_fire_light(TRUE)
 
@@ -95,7 +70,7 @@
 		iterating_light.update()
 	for(var/obj/machinery/door/firedoor/iterating_firedoor in firedoors)
 		iterating_firedoor.open()
-	for(var/obj/machinery/firealarm/iterating_firealarm in firealarm)
+	for(var/obj/machinery/firealarm/iterating_firealarm in firealarms)
 		iterating_firealarm.triggered = FALSE
 		iterating_firealarm.update_fire_light(FALSE)
 
@@ -111,7 +86,6 @@
 	if(buildstage != 2)
 		return ..()
 	add_fingerprint(user)
-	var/area/area = get_area(src)
 	if(triggered)
 		reset(user)
 	else
