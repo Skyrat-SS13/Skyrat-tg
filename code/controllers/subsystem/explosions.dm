@@ -373,8 +373,10 @@ SUBSYSTEM_DEF(explosions)
 				SSexplosions.medturf += T
 			if(EXPLODE_LIGHT)
 				SSexplosions.lowturf += T
-
-
+		//SKYRAT EDIT ADDITION
+		for(var/obj/machinery/light/iterating_light in T)
+			iterating_light.start_flickering()
+		//SKYRAT EDIT END
 		if(flame_dist && prob(40) && !isspaceturf(T) && !T.density)
 			flameturf += T
 

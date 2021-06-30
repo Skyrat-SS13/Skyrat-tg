@@ -47,3 +47,8 @@
 	body_parts_covered = CHEST|ARMS|LEGS
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, RAD = 40, FIRE = 80, ACID = 70)
 	mutant_variants = NONE
+
+///////////////////////////////////////////////////////////////////////TURTLENECKS
+/obj/item/clothing/under/syndicate
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'

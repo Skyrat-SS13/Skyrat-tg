@@ -7,6 +7,10 @@
 	body_parts_covered = CHEST|ARMS|GROIN|LEGS
 	can_adjust = FALSE
 
+/obj/item/clothing/under/utility/syndicate
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	has_sensor = NO_SENSORS
+
 /obj/item/clothing/under/utility/eng
 	name = "engineering utility uniform"
 	desc = "A utility uniform worn by Engineering personnel."

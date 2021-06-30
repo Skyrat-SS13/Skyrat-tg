@@ -28,7 +28,7 @@
 	desc = "Used to designate a precise transit location for the affectionately named 'Chevvy'."
 	shuttleId = "blackmarket_chevvy"
 	lock_override = NONE
-	shuttlePortId = "caravansyndicate1_custom"
+	shuttlePortId = "blackmarket_chevvy_custom"
 	jumpto_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
 	view_range = 0
 	x_offset = 2
