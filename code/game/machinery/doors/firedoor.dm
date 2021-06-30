@@ -217,12 +217,11 @@
 		if("closing")
 			flick("door_closing", src)
 
+/*SKYRAT EDIT REMOVAL
 /obj/machinery/door/firedoor/update_icon_state()
 	. = ..()
-	if(density)
-		icon_state = "[base_icon_state]_closed_[hot_or_cold ? "hot" : "cold"]"
-	else
-		icon_state = "[base_icon_state]_open"
+	icon_state = "[base_icon_state]_[density ? "closed" : "open"]"
+*/
 
 /obj/machinery/door/firedoor/update_overlays()
 	. = ..()
