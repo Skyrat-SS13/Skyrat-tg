@@ -2166,6 +2166,11 @@ GLOBAL_LIST_INIT(food, list(
 					features["uses_skintones"] = !features["uses_skintones"]
 
 				if("erp_pref")
+					//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+					// User changed state of ERP pref
+					var/mob/living/carbon/human/M = user
+					var/mob/targetmob = usr
+					//SKYRAT EDIT ADDITION END
 					switch(erp_pref)
 						if("Yes")
 							erp_pref = "Ask"
