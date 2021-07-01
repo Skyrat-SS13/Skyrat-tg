@@ -81,7 +81,7 @@
 	name = "CQC Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
 	item = /obj/item/book/granter/martial/cqc
-	player_minimum = 50
+	player_minimum = 40
 	cost = 23
 	surplus = 17
 
@@ -242,7 +242,7 @@
 	desc = "An upgraded, elite version of the Syndicate hardsuit. It features fireproofing, and also \
 			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
 	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
-	player_minimum = 50
+	player_minimum = 40
 	cost = 10
 
 /datum/uplink_item/suits/standard_armor
@@ -330,14 +330,14 @@
 	name = "Cyborg Ninja bundle"
 	desc = "Become a force of nature with this customized kit featuring next-generation syndicate technology in an efficient package."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/ninja
-	player_minimum = 60
+	player_minimum = 50
 	cost = 20
 
 /datum/uplink_item/loadout_skyrat/darklord
 	name = "Dark Lord bundle"
 	desc = "Wield unlimited power with this extremely effective combative kit, guaranteed to give the user efficient staying potential in any confrontation."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord
-	player_minimum = 60
+	player_minimum = 50
 	cost = 20
 
 /datum/uplink_item/loadout_skyrat/hunter
@@ -368,7 +368,7 @@
 	name = "Laserman Bundle"
 	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
-	player_minimum = 60
+	player_minimum = 50
 	cost = 20
 
 //Badass section down here
@@ -377,7 +377,7 @@
 	desc = "Themed after the infamous terrorist(or not), Johnny Robohand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. \
 			It comes with a robotic replacement arm. Wake the fuck up, samurai."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
-	player_minimum = 70
+	player_minimum = 50
 	cost = 35
 
 /datum/uplink_item/loadout_skyrat/robohand/purchase(mob/user, datum/component/uplink/U)
