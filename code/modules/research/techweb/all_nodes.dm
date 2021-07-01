@@ -162,6 +162,7 @@
 		"bowl",
 		"drinking_glass",
 		"shot_glass",
+		"wirebrush",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
@@ -214,12 +215,15 @@
 		"comp_combiner",
 		"comp_comparison",
 		"comp_concat",
+		"comp_concat_list",
 		"comp_delay",
 		"comp_direction",
+		"comp_get_column",
 		"comp_gps",
 		"comp_health",
 		"comp_hear",
 		"comp_index",
+		"comp_index_table",
 		"comp_length",
 		"comp_light",
 		"comp_logic",
@@ -229,7 +233,9 @@
 		"comp_radio",
 		"comp_ram",
 		"comp_random",
+		"comp_select_query",
 		"comp_self",
+		"comp_soundemitter",
 		"comp_species",
 		"comp_speech",
 		"comp_speech",
@@ -1220,6 +1226,10 @@
 		"light_replacer",
 		"paint_remover",
 		"spraybottle",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"wirebrush_adv",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/janitor_trash = 3000) //75% discount for scanning some trash, seems fair right?

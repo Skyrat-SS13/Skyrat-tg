@@ -1136,7 +1136,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			return
 		source_item?.reagents?.add_reagent(/datum/reagent/blood, 2)
 
-	else if(custom_materials && custom_materials.len) //if we've got materials, lets see whats in it
+	else if(custom_materials?.len) //if we've got materials, lets see whats in it
 		/// How many mats have we found? You can only be affected by two material datums by default
 		var/found_mats = 0
 		/// How much of each material is in it? Used to determine if the glass should break

@@ -96,7 +96,7 @@
 	if(!ismovable(religious_tool))
 		CRASH("[name]'s perform_rite had a movable atom that has somehow turned into a non-movable!")
 	var/atom/movable/movable_reltool = religious_tool
-	if(!(movable_reltool?.buckled_mobs && movable_reltool?.buckled_mobs.len))
+	if(!movable_reltool?.buckled_mobs?.len)
 		return FALSE
 	var/mob/living/carbon/human/human2borg
 	for(var/i in movable_reltool.buckled_mobs)
