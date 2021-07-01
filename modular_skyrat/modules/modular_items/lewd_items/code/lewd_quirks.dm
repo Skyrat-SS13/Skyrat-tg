@@ -18,7 +18,7 @@
 	var/where
 
 //nymphomania players need to satisfy lust, so they need "tools" to "cool" them from time to time. In case if there is NO PLAYERS AROUND.
-/datum/quirk/nymphomania/on_spawn()
+/datum/quirk/nymphomania/add_unique()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/sextoy_type
 	var/obj/item/organ/genital/vagina = quirk_holder.getorganslot(ORGAN_SLOT_VAGINA)
