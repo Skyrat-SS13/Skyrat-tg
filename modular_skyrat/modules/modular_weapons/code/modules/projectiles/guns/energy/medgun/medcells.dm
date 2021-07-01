@@ -28,6 +28,9 @@
 	icon_state = "electro_bolt"
 	damage = 0
 
+/obj/projectile/energy/medical/upgraded
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+
 /obj/item/ammo_casing/energy/medical/default
 	name = "oxygen heal shot"
 
@@ -73,92 +76,93 @@
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
-	projectile_type = /obj/projectile/energy/medical/brute2
+	projectile_type = /obj/projectile/energy/medical/upgraded/brute2
 	select_name = "Brute II"
 
-/obj/projectile/energy/medical/brute2
+/obj/projectile/energy/medical/upgraded/brute2
 	name = "strong brute heal shot"
 
-/obj/projectile/energy/medical/brute2/on_hit(mob/living/target)
+
+/obj/projectile/energy/medical/upgraded/brute2/on_hit(mob/living/target)
 	.=..()
 	target.adjustBruteLoss(-7.5)
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
-	projectile_type = /obj/projectile/energy/medical/burn2
+	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
 	select_name = "Burn II"
 
-/obj/projectile/energy/medical/burn2
+/obj/projectile/energy/medical/upgraded/burn2
 	name = "strong burn heal shot"
 
-/obj/projectile/energy/medical/burn2/on_hit(mob/living/target)
+/obj/projectile/energy/medical/upgraded/burn2/on_hit(mob/living/target)
 	.=..()
 	target.adjustFireLoss(-7.5)
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
-	projectile_type = /obj/projectile/energy/medical/oxy2
+	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
 	select_name = "Oxygen II"
 
-/obj/projectile/energy/medical/oxy2
+/obj/projectile/energy/medical/upgraded/oxy2
 	name = "strong oxygen heal shot"
 
-/obj/projectile/energy/medical/oxy2/on_hit(mob/living/target)
+/obj/projectile/energy/medical/upgraded/oxy2/on_hit(mob/living/target)
 	.=..()
 	target.adjustOxyLoss(-10)
 //Tier II Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin2
-	projectile_type = /obj/projectile/energy/medical/toxin2
+	projectile_type = /obj/projectile/energy/medical/upgraded/toxin2
 	select_name = "Toxin II"
 
-/obj/projectile/energy/medical/toxin2
+/obj/projectile/energy/medical/upgraded/toxin2
 	name = "strong toxin heal shot"
 
-/obj/projectile/energy/medical/toxin2/on_hit(mob/living/target)
+/obj/projectile/energy/medical/upgraded/toxin2/on_hit(mob/living/target)
 	.=..()
 	target.adjustToxLoss(-3.5)
 	target.radiation = max(target.radiation - 40, 0)
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
-	projectile_type = /obj/projectile/energy/medical/brute3
+	projectile_type = /obj/projectile/energy/medical/upgraded/brute3
 	select_name = "Brute III"
 
-/obj/projectile/energy/medical/brute3
+/obj/projectile/energy/medical/upgraded/brute3
 	name = "powerful brute heal shot"
 
-/obj/projectile/energy/medical/brute3/on_hit(mob/living/target)
+/obj/projectile/energy/medical/upgraded/brute3/on_hit(mob/living/target)
 	.=..()
 	target.adjustBruteLoss(-10)
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
-	projectile_type = /obj/projectile/energy/medical/burn3
+	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
 	select_name = "Burn III"
 
-/obj/projectile/energy/medical/burn3
+/obj/projectile/energy/medical/upgraded/burn3
 	name = "powerful burn heal shot"
 
-/obj/projectile/energy/medical/burn3/on_hit(mob/living/target)
+/obj/projectile/energy/medical/upgraded/burn3/on_hit(mob/living/target)
 	.=..()
 	target.adjustFireLoss(-10)
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
-	projectile_type = /obj/projectile/energy/medical/oxy3
+	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
 	select_name = "Oxygen III"
 
-/obj/projectile/energy/medical/oxy3
+/obj/projectile/energy/medical/upgraded/oxy3
 	name = "powerful oxygen heal shot"
 
-/obj/projectile/energy/medical/oxy3/on_hit(mob/living/target)
+/obj/projectile/energy/medical/upgraded/oxy3/on_hit(mob/living/target)
 	.=..()
 	target.adjustOxyLoss(-15)
 //Tier III Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin3
-	projectile_type = /obj/projectile/energy/medical/toxin3
+	projectile_type = /obj/projectile/energy/medical/upgraded/toxin3
 	select_name = "Toxin III"
 
-/obj/projectile/energy/medical/toxin3
+/obj/projectile/energy/medical/upgraded/toxin3
 	name = "powerful toxin heal shot"
 
-/obj/projectile/energy/medical/toxin3/on_hit(mob/living/target)
+/obj/projectile/energy/medical/upgraded/toxin3/on_hit(mob/living/target)
 	.=..()
 	target.adjustToxLoss(-5)
 	target.radiation = max(target.radiation - 60, 0)
