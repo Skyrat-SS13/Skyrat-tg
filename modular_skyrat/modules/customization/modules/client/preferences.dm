@@ -2169,10 +2169,39 @@ GLOBAL_LIST_INIT(food, list(
 					switch(erp_pref)
 						if("Yes")
 							erp_pref = "Ask"
+							//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+							// The user has set the ERP pref to a value other than "Yes", now we drop all items from ERP slots and can't use them
+							if(M.vagina != null)
+								M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
+							if(M.anus != null)
+								M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
+							if(M.nipples != null)
+								M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
+							if(M.penis != null)
+								M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+							// If the user has an inventory of the ERP open, then we will hide it
+							if(usr.hud_used.ERP_inventory_shown && targetmob.hud_used)
+								usr.hud_used.ERP_inventory_shown = FALSE
+								usr.client.screen -= targetmob.hud_used.ERP_toggleable_inventory
+							// Find the ERP button of the inventory and make it invisible so that the user cannot interact with it
+							for(var/atom/movable/screen/human/ERP_toggle/E in targetmob.hud_used.static_inventory)
+								if(istype(E, /atom/movable/screen/human/ERP_toggle))
+									E.invisibility = 100
+							//SKYRAT EDIT ADDITION END
 						if("Ask")
 							erp_pref = "No"
 						if("No")
 							erp_pref = "Yes"
+							//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+							// User set ERP pref to "Yes", make the ERP button of the inventory visible and interactive again
+							for(var/atom/movable/screen/human/ERP_toggle/E in targetmob.hud_used.static_inventory)
+								if(istype(E, /atom/movable/screen/human/ERP_toggle))
+									E.invisibility = 0
+					// Perform standard inventory updates
+					targetmob.hud_used.hidden_inventory_update(usr)
+					user.hud_used.hidden_inventory_update(src)
+					user.hud_used.persistent_inventory_update(usr)
+					//SKYRAT EDIT ADDITION END
 				if("noncon_pref")
 					switch(noncon_pref)
 						if("Yes")

@@ -169,6 +169,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 				screenmob.client.screen += static_inventory
 			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.inventory_shown)
 				screenmob.client.screen += toggleable_inventory
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.erp_pref == "Yes")
+				screenmob.client.screen += ERP_toggleable_inventory
+			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len && !hotkey_ui_hidden)
 				screenmob.client.screen += hotkeybuttons
 			if(infodisplay.len)
@@ -185,6 +189,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.erp_pref == "Yes")
+				screenmob.client.screen -= ERP_toggleable_inventory
+			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)
@@ -205,6 +213,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.erp_pref == "Yes")
+				screenmob.client.screen -= ERP_toggleable_inventory
+			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)

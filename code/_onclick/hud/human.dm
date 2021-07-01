@@ -469,6 +469,40 @@
 		if(H.wear_neck) screenmob.client.screen -= H.wear_neck
 		if(H.head) screenmob.client.screen -= H.head
 
+	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+	if(screenmob.hud_used.ERP_inventory_shown && screenmob.hud_used.hud_shown && H.client.prefs?.erp_pref == "Yes")
+		if(H.vagina)
+			// This shity code need for hanlde an moving UI stuff when default inventory expand/collapse
+			if(screenmob.hud_used.inventory_shown && screenmob.hud_used)
+				H.vagina.screen_loc = ui_vagina
+			else
+				H.vagina.screen_loc = ui_vagina_down
+			screenmob.client.screen += H.vagina
+		if(H.anus)
+			if(screenmob.hud_used.inventory_shown && screenmob.hud_used)
+				H.anus.screen_loc = ui_anus
+			else
+				H.anus.screen_loc = ui_anus_down
+			screenmob.client.screen += H.anus
+		if(H.nipples)
+			if(screenmob.hud_used.inventory_shown && screenmob.hud_used)
+				H.nipples.screen_loc = ui_nipples
+			else
+				H.nipples.screen_loc = ui_nipples_down
+			screenmob.client.screen += H.nipples
+		if(H.penis)
+			if(screenmob.hud_used.inventory_shown && screenmob.hud_used)
+				H.penis.screen_loc = ui_penis
+			else
+				H.penis.screen_loc = ui_penis_down
+			screenmob.client.screen += H.penis
+	else
+		if(H.vagina) screenmob.client.screen -= H.vagina
+		if(H.anus) screenmob.client.screen -= H.anus
+		if(H.nipples) screenmob.client.screen -= H.nipples
+		if(H.penis) screenmob.client.screen -= H.penis
+	//SKYRAT EDIT ADDITION END
+
 
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
@@ -499,6 +533,23 @@
 			if(H.r_store)
 				H.r_store.screen_loc = ui_storage2
 				screenmob.client.screen += H.r_store
+
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(H.client.prefs?.erp_pref == "Yes")
+				if(H.vagina)
+					H.vagina.screen_loc = ui_vagina
+					screenmob.client.screen += H.vagina
+				if(H.anus)
+					H.anus.screen_loc = ui_anus
+					screenmob.client.screen += H.anus
+				if(H.nipples)
+					H.nipples.screen_loc = ui_nipples
+					screenmob.client.screen += H.nipples
+				if(H.penis)
+					H.penis.screen_loc = ui_penis
+					screenmob.client.screen += H.penis
+			//SKYRAT EDIT ADDITION END
+
 		else
 			if(H.s_store)
 				screenmob.client.screen -= H.s_store
@@ -512,6 +563,17 @@
 				screenmob.client.screen -= H.l_store
 			if(H.r_store)
 				screenmob.client.screen -= H.r_store
+
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(H.vagina)
+				screenmob.client.screen -= H.vagina
+			if(H.anus)
+				screenmob.client.screen -= H.anus
+			if(H.nipples)
+				screenmob.client.screen -= H.nipples
+			if(H.penis)
+				screenmob.client.screen -= H.penis
+			//SKYRAT EDIT ADDITION END
 
 	if(hud_version != HUD_STYLE_NOHUD)
 		for(var/obj/item/I in H.held_items)
