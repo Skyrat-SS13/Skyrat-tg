@@ -1179,6 +1179,13 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
+			//erp update prefs here
+			dat += "<b>Be able to become bimboficated:</b> <a href='?_src_=prefs;preference=bimbo_pref'>[(skyrat_toggles & BIMBO_PREF) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Be affected by breast enlargement chemicals:</b> <a href='?_src_=prefs;preference=b_enlargement_pref'>[(skyrat_toggles & BREAST_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Be affected by penis enlargement chemicals:</b> <a href='?_src_=prefs;preference=p_enlargement_pref'>[(skyrat_toggles & PENIS_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Forced masculinity:</b> <a href='?_src_=prefs;preference=forced_m_pref'>[(skyrat_toggles & FORCED_MALE) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Forced femininity:</b> <a href='?_src_=prefs;preference=forced_fem_pref'>[(skyrat_toggles & FORCED_FEM) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<br>"
 
 			if(user.client)
 				if(unlock_content)
@@ -2859,6 +2866,22 @@ GLOBAL_LIST_INIT(food, list(
 				//cumface pref
 				if("cumfaced_pref")
 					skyrat_toggles ^= CUMFACE_PREF
+
+				//erp update prefs coming riiight here
+				if("bimbo_pref")
+					skyrat_toggles ^= BIMBO_PREF
+
+				if("b_enlargement_pref")
+					skyrat_toggles ^= BREAST_ENLARGEMENT
+
+				if("p_enlargement_pref")
+					skyrat_toggles ^= PENIS_ENLARGEMENT
+
+				if("forced_m_pref")
+					skyrat_toggles ^= FORCED_MALE
+
+				if("forced_fem_pref")
+					skyrat_toggles ^= FORCED_FEM
 
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)

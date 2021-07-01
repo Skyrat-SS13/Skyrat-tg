@@ -61,8 +61,22 @@
 /// Legcuff slot (bolas, beartraps)
 #define ITEM_SLOT_LEGCUFFED (1<<19)
 
+//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+/// Vagina slot
+#define ITEM_SLOT_VAGINA (1<<21)
+/// Anus slot
+#define ITEM_SLOT_ANUS (1<<22)
+/// Nipples slot
+#define ITEM_SLOT_NIPPLES (1<<23)
+/// Penis slot
+#define ITEM_SLOT_PENIS (1<<20)
+//SKYRATE EDIT ADDITION END
+
 /// Total amount of slots
-#define SLOTS_AMT 20 // Keep this up to date!
+//SKYRAT EDIT CHANGE BEGIN
+// #define SLOTS_AMT 20 // Keep this up to date! - SKYRAT EDIT - ORIGINAL
+#define SLOTS_AMT 24 // Keep this up to date!
+//SKYRAT EDIT CHANGE END
 
 //SLOT GROUP HELPERS
 #define ITEM_SLOT_POCKETS (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET)
@@ -84,6 +98,8 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
+//for really weird stuff.
+#define HIDESEXTOY (1<<13)
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
