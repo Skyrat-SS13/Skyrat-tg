@@ -1,9 +1,9 @@
 /datum/round_event_control/mold
 	name = "Moldies"
 	typepath = /datum/round_event/mold
-	weight = 5
+	weight = 3
 	max_occurrences = 1
-	min_players = 10
+	min_players = 50
 
 /datum/round_event/mold
 	fakeable = FALSE
@@ -21,7 +21,7 @@
 
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
-	var/molds2spawn 
+	var/molds2spawn
 	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 60)
 		molds2spawn	= 2 //Guaranteedly worse
 	else
