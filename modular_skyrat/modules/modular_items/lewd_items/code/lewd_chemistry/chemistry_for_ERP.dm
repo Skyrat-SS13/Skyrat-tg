@@ -512,7 +512,6 @@ Haha! Kill me please.
 	name = "crocin pill (10u)"
 	desc = "I've fallen, and I can't get it up!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_pills.dmi'
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_pills.dmi'
 	icon_state = "crocin"
 	list_reagents = list(/datum/reagent/drug/crocin = 10)
 

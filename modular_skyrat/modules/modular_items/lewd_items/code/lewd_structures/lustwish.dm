@@ -41,6 +41,10 @@
 					/obj/item/clothing/head/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
+					/obj/item/clothing/mask/muzzle/ring = 4,
+					/obj/item/clothing/head/kitty = 4,
+					/obj/item/clothing/head/rabbitears = 4,
+
 
 					//neck
 					/obj/item/clothing/neck/kink_collar = 8,
@@ -50,9 +54,11 @@
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
 					/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
 					/obj/item/clothing/under/costume/lewdmaid = 5,
+					/obj/item/clothing/under/costume/maid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 3,
 					/obj/item/clothing/under/stripper_outfit = 5,
 					/obj/item/clothing/under/misc/gear_harness = 4,
+					/obj/item/clothing/under/shorts/polychromic/pantsu = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
@@ -63,6 +69,8 @@
 					/obj/item/clothing/shoes/latex_socks = 8,
 					/obj/item/clothing/shoes/latexheels = 4,
 					/obj/item/clothing/shoes/dominaheels = 4,
+					/obj/item/clothing/shoes/jackboots/thigh = 3,
+					/obj/item/clothing/shoes/jackboots/knee = 3,
 
 					//belt
 					/obj/item/clothing/strapon = 6,
@@ -84,6 +92,7 @@
 					/obj/item/bdsm_bed_kit = 3,
 					/obj/item/polepack = 3,
 					/obj/item/x_stand_kit = 3,
+					/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3,
 					/obj/item/milking_machine/constructionkit/teal = 1,
 					/obj/item/milking_machine/constructionkit/pink = 1) //we was too tired to make normal code, fix it plz if you're not lazy
 

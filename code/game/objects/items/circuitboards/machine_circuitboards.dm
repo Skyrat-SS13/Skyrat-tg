@@ -568,7 +568,7 @@
 		/obj/machinery/vending/modularpc = "Deluxe Silicate Selections",
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
-		/obj/machinery/vending/dorms = "KinkVend")	//SKYRAT EDIT ADDITION
+		/obj/machinery/vending/lustwish = "LustWish")	//LAMELLA ERP UPDATE ADDITION
 
 /obj/item/circuitboard/machine/vendor/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)

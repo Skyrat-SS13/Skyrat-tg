@@ -761,7 +761,7 @@
 
 	SEND_SIGNAL(parent, COMSIG_MOB_CUMFACED)
 
-	cumface = mutable_appearance('modular_skyrat/modules/cum/cum.dmi')
+	cumface = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi')
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
@@ -818,7 +818,7 @@
 
 	SEND_SIGNAL(parent, COMSIG_MOB_CUMFACED)
 
-	bigcumface = mutable_appearance('modular_skyrat/modules/cum/cum.dmi')
+	bigcumface = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi')
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
@@ -905,7 +905,7 @@
 		return
 	var/cum_volume = G.genital_size*5+5
 	var/datum/reagents/R = new/datum/reagents(50)
-	R.add_reagent(/datum/reagent/cum, cum_volume)
+	R.add_reagent(/datum/reagent/consumable/cum, cum_volume)
 	if(M==user)
 		user.visible_message("<span class='warning'>[user] starts masturbating onto themself!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
 	else
@@ -944,7 +944,7 @@
 			to_chat(user, "<span class='warning'>[target] is full.</span>")
 			return
 		var/datum/reagents/R = new/datum/reagents(50)
-		R.add_reagent(/datum/reagent/cum, cum_volume)
+		R.add_reagent(/datum/reagent/consumable/cum, cum_volume)
 		user.visible_message("<span class='warning'>[user] starts masturbating into [target]!</span>", "<span class='danger'>You start masturbating into [target]!</span>")
 		if(do_after(user,60))
 			user.visible_message("<span class='warning'>[user] cums into [target]!</span>", "<span class='danger'>You cum into [target]!</span>")
@@ -964,5 +964,5 @@
 				user.emote("moan")
 
 			if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
-				target.icon = 'modular_skyrat/modules/cum/cum.dmi'
+				target.icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
 			qdel(src)
