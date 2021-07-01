@@ -5624,20 +5624,18 @@
 /area/hallway/secondary/entry)
 "azR" = (
 /obj/machinery/firealarm/directional/west,
-/obj/structure/rack,
-/obj/item/storage/briefcase{
-	pixel_x = -3;
-	pixel_y = 2
-	},
-/obj/item/storage/secure/briefcase{
-	pixel_x = 2;
-	pixel_y = -2
+/obj/structure/table/wood,
+/obj/item/flashlight/seclite,
+/obj/item/storage/box/evidence,
+/obj/item/taperecorder{
+	pixel_x = 3
 	},
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "azT" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "azU" = (
@@ -5932,6 +5930,7 @@
 /area/hallway/primary/central)
 "aBl" = (
 /obj/machinery/light_switch/directional/west,
+/obj/effect/landmark/start/detective,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "aBn" = (
@@ -5939,6 +5938,7 @@
 /obj/item/folder/red,
 /obj/item/hand_labeler,
 /obj/item/camera/detective,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aBo" = (
@@ -37966,6 +37966,15 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/command/corporate_showroom)
+"hgn" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/security/detectives_office)
 "hgX" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/telescreen/entertainment/directional/west,
@@ -46624,12 +46633,7 @@
 /turf/open/floor/iron,
 /area/cargo/warehouse)
 "kKH" = (
-/obj/structure/table/wood,
-/obj/item/taperecorder{
-	pixel_x = 3
-	},
-/obj/item/storage/box/evidence,
-/obj/item/flashlight/seclite,
+/obj/structure/closet/secure_closet/detective,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "kKQ" = (
@@ -112934,7 +112938,7 @@ awr
 fgb
 ayH
 aCu
-aCu
+hgn
 aCu
 aDK
 aFa
