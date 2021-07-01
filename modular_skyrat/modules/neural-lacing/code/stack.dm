@@ -58,3 +58,8 @@
 
 	else
 		MSTACK.visible_message(span_danger("[MSTACK] twinges in discomfort; although remains concious."))
+		
+/obj/item/organ/corticalstack/Destroy()
+	. = ..()
+	ownerckey = null
+	backup = null
