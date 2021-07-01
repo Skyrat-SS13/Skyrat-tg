@@ -84,8 +84,8 @@
 //message when unequipping that thing
 /obj/item/clothing/suit/straight_jacket/shackles/dropped(mob/user)
 	. = ..()
-	to_chat(user, "<font color=purple>Shackles no longer restraints your body. It wasn't too hard, huh?.</font>")
-
+	if(src == C.wear_suit)
+		to_chat(user, "<font color=purple>Shackles no longer restraints your body. It wasn't too hard, huh?.</font>")
 
 //reinforcing normal version by using handcuffs on it.
 /obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/I, mob/user, params) //That part allows reinforcing this item with normal straightjacket

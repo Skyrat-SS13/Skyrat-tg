@@ -331,12 +331,10 @@
 	var/mob/living/carbon/human/U = src.loc
 	if(src == U.penis || src == U.vagina || src == U.nipples || src == U.anus)
 		START_PROCESSING(SSobj, src)
-		to_chat(world, "vibrating ON")
 
 /obj/item/clothing/sextoy/signalvib/dropped(mob/user, silent)
 	. = ..()
 	STOP_PROCESSING(SSobj, src)
-	to_chat(world, "vibrating OFF")
 
 /obj/item/clothing/sextoy/signalvib/process(delta_time)
 	var/mob/living/U = loc
