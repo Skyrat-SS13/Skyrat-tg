@@ -33,6 +33,10 @@
 		trigger_hot()
 		close()
 
+/obj/machinery/door/firedoor/proc/firealarm_on()
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/close)
+
 /obj/machinery/door/firedoor/proc/firealarm_off()
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, .proc/open)

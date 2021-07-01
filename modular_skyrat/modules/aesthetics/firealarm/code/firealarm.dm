@@ -64,7 +64,8 @@
 
 
 /obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)
-	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_ON, manual)
+	if(manual)
+		SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_ON)
 
 /obj/machinery/firealarm/proc/untrigger_effects()
 	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_OFF)
