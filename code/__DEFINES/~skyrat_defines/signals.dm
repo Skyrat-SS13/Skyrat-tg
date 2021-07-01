@@ -60,6 +60,7 @@
 // Firealarm signals
 /// /obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)
 #define COMSIG_FIREALARM_TRIGGERED_ON "firealarm_triggered_on"
+#define COMSIG_FIREALARM_TRIGGER_DOORS "firealarm_trigger_doors"
 /// /obj/machinery/firealarm/proc/untrigger_effects()
 #define COMSIG_FIREALARM_TRIGGERED_OFF "firealarm_triggered_off"
 /// /obj/machinery/door/firedoor/proc/trigger_hot()

@@ -26,7 +26,7 @@
 		iterating_light.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_OFF, /obj/machinery/light.proc/firealarm_off)
 
 	for(var/obj/machinery/door/firedoor/iterating_firedoor in my_area)
-		iterating_firedoor.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_ON, /obj/machinery/door/firedoor.proc/firealarm_on)
+		iterating_firedoor.RegisterSignal(src, COMSIG_FIREALARM_TRIGGER_DOORS, /obj/machinery/door/firedoor.proc/firealarm_on)
 		iterating_firedoor.RegisterSignal(src, COMSIG_FIREALARM_TRIGGERED_OFF, /obj/machinery/door/firedoor.proc/firealarm_off)
 
 	for(var/obj/machinery/firealarm/iterating_firealarm in my_area)
@@ -59,13 +59,15 @@
 	playsound(loc, alarm_sound, 75)
 	if(user)
 		log_game("[user] triggered a fire alarm at [COORD(src)]")
-	trigger_effects(TRUE)
+	trigger_effects()
+	trigger_doors()
 	update_appearance()
 
+/obj/machinery/firealarm/proc/trigger_doors()
+	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGER_DOORS)
 
-/obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)
-	if(manual)
-		SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_ON)
+/obj/machinery/firealarm/proc/trigger_effects()
+	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_ON)
 
 /obj/machinery/firealarm/proc/untrigger_effects()
 	SEND_SIGNAL(src, COMSIG_FIREALARM_TRIGGERED_OFF)
