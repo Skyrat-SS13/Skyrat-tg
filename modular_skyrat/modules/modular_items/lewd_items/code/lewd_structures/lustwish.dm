@@ -41,7 +41,6 @@
 					/obj/item/clothing/head/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
-					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/kitty = 4,
 					/obj/item/clothing/head/rabbitears = 4,
 
@@ -92,7 +91,6 @@
 					/obj/item/bdsm_bed_kit = 3,
 					/obj/item/polepack = 3,
 					/obj/item/x_stand_kit = 3,
-					/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3,
 					/obj/item/milking_machine/constructionkit/teal = 1,
 					/obj/item/milking_machine/constructionkit/pink = 1) //we was too tired to make normal code, fix it plz if you're not lazy
 
@@ -109,7 +107,7 @@
 
 	refill_canister = /obj/item/vending_refill/lustwish
 	payment_department = ACCOUNT_SRV
-	default_price = PAYCHECK_ASSISTANT
+	default_price = PAYCHECK_ASSISTANT * 0.5
 	extra_price = PAYCHECK_COMMAND * 0.3
 
 //Secret vending machine skin. Don't touch plz
