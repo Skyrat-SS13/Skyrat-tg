@@ -79,6 +79,7 @@
 		log_game("[user] reset a fire alarm at [COORD(src)]")
 	triggered = FALSE
 	untrigger_effects()
+	update_appearance()
 
 /obj/machinery/firealarm/attack_hand(mob/user, list/modifiers)
 	if(buildstage != 2)
