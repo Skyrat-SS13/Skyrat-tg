@@ -84,6 +84,7 @@
 //message when unequipping that thing
 /obj/item/clothing/suit/straight_jacket/shackles/dropped(mob/user)
 	. = ..()
+	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
 		to_chat(user, "<font color=purple>Shackles no longer restraints your body. It wasn't too hard, huh?.</font>")
 
