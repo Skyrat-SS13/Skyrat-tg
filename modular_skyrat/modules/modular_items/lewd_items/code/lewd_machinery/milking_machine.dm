@@ -270,38 +270,28 @@
 			// Have difficulty unbuckling if overly aroused
 			if(M.arousal >= 60)
 				if(current_mode != mode_list[1])
-					to_chat(M, "You are too horny to try to get out")
-					// // Uncomment/Comment the block if you need to be able/unable to get out with high arousal
-					// if(do_after(user, 120 SECONDS,user))
-					// 	unbuckle_mob(buckled_mobs[1])
-					// 	to_chat(M, "With great difficulty, you were able to get out of milking machine")
-					// 	return
-					// else
-					// 	to_chat(M, "You helplessly try to break free from the grip of the mechanism")
-					// 	return
+					to_chat(M, "<font color=purple>You are too horny to try to get out</font>")
 				else
-					// to_chat(M, "You started trying to escape from milking machine")
-
 					if(do_after(M, 1 MINUTES,M))
 
 						unbuckle_mob(M)
-						to_chat(M, "With great difficulty, you were able to get out of milking machine")
+						to_chat(M, "<span class='notice'>With great difficulty, you were able to get out of milking machine!</span>")
 						return
 					else
 
-						to_chat(M, "You unsuccessfully struggling, chained to the milking machine")
+						to_chat(M, "<span class='warning'>You unsuccessfully struggling, chained to the milking machine</span>")
 						return
 			else
-				to_chat(M, "You helplessly try to break free from the grip of the mechanism")
+				to_chat(M, "<span class='notice'>You helplessly try to break free from the grip of the mechanism</span>")
 
 
 				if(do_after(M, 5 SECONDS,M))
 					unbuckle_mob(M)
-					to_chat(M, "You got out of the mechanism without much difficulty")
+					to_chat(M, "<span class='notice'>You got out of the mechanism without much difficulty</span>")
 					return
 				else
 
-					to_chat(M, "You unsuccessfully struggling, chained to the milking machine")
+					to_chat(M, "<span class='warning'>You unsuccessfully struggling, chained to the milking machine</span>")
 					return
 		else
 			// unbuckle_mob(M)
@@ -404,10 +394,10 @@
 	if(beaker)
 		try_put_in_hand(beaker, user)
 		beaker = null
-		to_chat(user, "You took the beaker out of the machine")
+		to_chat(user, "<span class='notice'>You took the beaker out of the machine</font>")
 	if(new_beaker)
 		beaker = new_beaker
-		to_chat(user, "You put the beaker in the machine")
+		to_chat(user, "<span class='notice'>You put the beaker in the machine</font>")
 	return TRUE
 
 // We will try to take the item in our hand, if it doesn’t work, then drop it into the car tile
@@ -876,7 +866,7 @@
 		return
 	if(action == "ejectCreature")
 		unbuckle_mob(current_mob)
-		to_chat(usr,"You ejected creature from the machine")
+		to_chat(usr,"<span class='notice'>You ejected creature from the machine</font>")
 		return TRUE
 
 	if(action == "ejectBeaker")
@@ -888,28 +878,28 @@
 		current_mode = mode_list[1]
 		pump_state = pump_state_list[1]
 		update_all_visuals()
-		to_chat(usr,"You turn off the machine")
+		to_chat(usr,"<span class='notice'>You turn off the machine</font>")
 		return TRUE
 
 	if(action == "setLowMode")
 		current_mode = mode_list[2]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"You switched the machine in Low mode")
+		to_chat(usr,"<span class='notice'>You switched the machine in Low mode</font>")
 		return TRUE
 
 	if(action == "setMediumMode")
 		current_mode = mode_list[3]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"You switched the machine in Medium mode")
+		to_chat(usr,"<span class='notice'>You switched the machine in Medium mode</font>")
 		return TRUE
 
 	if(action == "setHardMode")
 		current_mode = mode_list[4]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"You switched the machine in Hard mode")
+		to_chat(usr,"<span class='notice'>You switched the machine in Hard mode</font>")
 		return TRUE
 
 	if(action == "unplug")
@@ -918,25 +908,25 @@
 		pump_state = pump_state_list[1]
 		current_selected_organ = null
 		update_all_visuals()
-		to_chat(usr,"You detach liner from organs")
+		to_chat(usr,"<span class='notice'>You detach liner from organs</font>")
 		return TRUE
 
 	if(action == "setBreasts")
 		current_selected_organ = current_breasts
 		update_all_visuals()
-		to_chat(usr,"You attach liner to the breasts")
+		to_chat(usr,"<span class='notice'>You attach liner to the breasts</font>")
 		return TRUE
 
 	if(action == "setVagina")
 		current_selected_organ = current_vagina
 		update_all_visuals()
-		to_chat(usr,"You attach liner to the vagina")
+		to_chat(usr,"<span class='notice'>You attach liner to the vagina</font>")
 		return TRUE
 
 	if(action == "setTesticles")
 		current_selected_organ = current_testicles
 		update_all_visuals()
-		to_chat(usr,"You attach liner to the testicles")
+		to_chat(usr,"<span class='notice'>You attach liner to the testicles</font>")
 		return TRUE
 
 	if(action == "setMilk")
@@ -962,7 +952,7 @@
 		current_vessel.reagents.trans_to(beaker, amount)
 		current_vessel.reagents.reagent_list[1].name
 		update_all_visuals()
-		to_chat(usr,"You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]")
+		to_chat(usr,"<span class='notice'>You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]</font>")
 		return TRUE
 
 // Pink construction kit
