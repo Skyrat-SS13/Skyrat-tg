@@ -15,6 +15,7 @@
 	///the chance that the forges temperature will not lower; max of 100 sinew_lower_chance.
 	//normal forges are 0; to increase value, use watcher sinew to increase by 10, to a max of 100.
 	var/sinew_lower_chance = 0
+	var/current_sinew = 0
 	///the fuel amount (in seconds) that the forge has (wood)
 	var/forge_fuel_weak = 0
 	///the fuel amount (in seconds) that the forge has (stronger than wood)
@@ -64,12 +65,20 @@
 		icon_state = "forge_empty"
 		light_range = 0
 
+/obj/structure/reagent_forge/proc/check_in_use()
+	if(!in_use)
+		return
+	for(var/mob/living/livingMob in range(1,src))
+		if(!livingMob)
+			in_use = FALSE
+
 /obj/structure/reagent_forge/process()
 	if(world_check >= world.time) //to make it not too intensive, every 5 seconds
 		return
 	world_check += 5 SECONDS
 	check_fuel()
 	check_temp()
+	check_in_use() //plenty of weird bugs, this should hopefully fix the in_use bugs
 
 /obj/structure/reagent_forge/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/sheet/mineral/wood)) //used for weak fuel
@@ -121,6 +130,7 @@
 		return
 
 	if(istype(I, /obj/item/forging/billow))
+		var/obj/item/forging/forgeItem = I
 		if(in_use) //no spamming the billows
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -134,7 +144,7 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_warning("You start to pump the billow into the forge..."))
-		if(!do_after(user, 3 SECONDS, target = src)) //3 seconds to increase the temperature
+		if(!do_after(user, forgeItem.work_time, target = src)) //wait 3 seconds to upgrade (6 for primitive)
 			to_chat(user, span_warning("You abandon billowing the forge."))
 			in_use = FALSE
 			return
@@ -164,6 +174,7 @@
 			return
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		sinew_lower_chance += 10
+		current_sinew++
 		in_use = FALSE
 		to_chat(user, span_notice("You successfully line the forge with sinew."))
 		return
@@ -200,6 +211,7 @@
 		return
 
 	if(istype(I, /obj/item/forging/tongs))
+		var/obj/item/forging/forgeItem = I
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -211,7 +223,7 @@
 		var/obj/item/forging/incomplete/searchIncomplete = locate(/obj/item/forging/incomplete) in I.contents
 		if(searchIncomplete)
 			to_chat(user, span_warning("You start to heat up the metal..."))
-			if(!do_after(user, 3 SECONDS, target = src)) //wait 3 seconds to upgrade
+			if(!do_after(user, forgeItem.work_time, target = src)) //wait 3 seconds to upgrade (6 for primitive)
 				to_chat(user, span_warning("You abandon heating up the metal, breaking the metal."))
 				in_use = FALSE
 				return
@@ -221,7 +233,7 @@
 			return
 		var/obj/item/stack/rods/searchRods = locate(/obj/item/stack/rods) in I.contents
 		if(searchRods)
-			var/user_choice = input(user, "What would you like to work on?", "Forge Selection") as null|anything in list("Chain", "Sword", "Staff")
+			var/user_choice = input(user, "What would you like to work on?", "Forge Selection") as null|anything in list("Chain", "Sword", "Staff", "Spear", "Plate")
 			if(!user_choice)
 				to_chat(user, span_warning("You decide against continuing to forge."))
 				in_use = FALSE
@@ -231,7 +243,7 @@
 				in_use = FALSE
 				return
 			to_chat(user, span_warning("You start to heat up the metal..."))
-			if(!do_after(user, 3 SECONDS, target = src)) //wait 3 seconds to upgrade
+			if(!do_after(user, forgeItem.work_time, target = src)) //wait 3 seconds to upgrade (6 for primitive)
 				to_chat(user, span_warning("You abandon heating up the metal, breaking the metal."))
 				in_use = FALSE
 				return
@@ -243,6 +255,10 @@
 					incompleteItem = new /obj/item/forging/incomplete/sword(get_turf(src))
 				if("Staff")
 					incompleteItem = new /obj/item/forging/incomplete/staff(get_turf(src))
+				if("Spear")
+					incompleteItem = new /obj/item/forging/incomplete/spear(get_turf(src))
+				if("Plate")
+					incompleteItem = new /obj/item/forging/incomplete/plate(get_turf(src))
 			incompleteItem.heat_world_compare = world.time + 1 MINUTES
 			in_use = FALSE
 			to_chat(user, span_notice("You successfully heat up the metal, ready to forge a [user_choice]."))
@@ -250,6 +266,10 @@
 
 	if(I.tool_behaviour == TOOL_WRENCH)
 		new /obj/item/stack/sheet/iron/ten(get_turf(src))
+		for(var/i in 1 to current_core)
+			new /obj/item/organ/regenerative_core(get_turf(src))
+		for(var/i in 1 to current_sinew)
+			new /obj/item/stack/sheet/sinew(get_turf(src))
 		qdel(src)
 
 	if(istype(I, /obj/item/forging/reagent_weapon) && reagent_forging)
@@ -258,7 +278,7 @@
 			return
 		in_use = TRUE
 		var/obj/item/forging/reagent_weapon/reagentWeapon = I
-		if(reagentWeapon.imbued_reagent.len > 0)
+		if(reagentWeapon.imbued_reagent.len > 0 || reagentWeapon.has_imbued)
 			to_chat(user, span_warning("This weapon has already been imbued!"))
 			in_use = FALSE
 			return
@@ -273,6 +293,7 @@
 			reagentWeapon.imbued_reagent += weaponReagent.type
 			reagentWeapon.name = "[weaponReagent.name] [reagentWeapon.name]"
 		reagentWeapon.color = mix_color_from_reagents(reagentWeapon.reagents.reagent_list)
+		reagentWeapon.has_imbued = TRUE
 		to_chat(user, span_notice("You finish imbueing the weapon..."))
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		in_use = FALSE
@@ -284,7 +305,7 @@
 			return
 		in_use = TRUE
 		var/obj/item/clothing/suit/armor/reagent_clothing/reagentClothing = I
-		if(reagentClothing.imbued_reagent.len > 0)
+		if(reagentClothing.imbued_reagent.len > 0 || reagentClothing.has_imbued)
 			to_chat(user, span_warning("This clothing has already been imbued!"))
 			in_use = FALSE
 			return
@@ -299,6 +320,7 @@
 			reagentClothing.imbued_reagent += clothingReagent.type
 			reagentClothing.name = "[clothingReagent.name] [reagentClothing.name]"
 		reagentClothing.color = mix_color_from_reagents(reagentClothing.reagents.reagent_list)
+		reagentClothing.has_imbued = TRUE
 		to_chat(user, span_notice("You finish imbueing the clothing..."))
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		in_use = FALSE
@@ -310,7 +332,34 @@
 			return
 		in_use = TRUE
 		var/obj/item/clothing/gloves/reagent_clothing/reagentClothing = I
-		if(reagentClothing.imbued_reagent.len > 0)
+		if(reagentClothing.imbued_reagent.len > 0 || reagentClothing.has_imbued)
+			to_chat(user, span_warning("This clothing has already been imbued!"))
+			in_use = FALSE
+			return
+		to_chat(user, span_warning("You start to imbue the clothing..."))
+		if(!do_after(user, 10 SECONDS, target = src)) //wait 10 seconds to upgrade
+			to_chat(user, span_warning("You abandon imbueing the clothing."))
+			in_use = FALSE
+			return
+		for(var/datum/reagent/clothingReagent in reagentClothing.reagents.reagent_list)
+			if(clothingReagent.volume < 200)
+				continue
+			reagentClothing.imbued_reagent += clothingReagent.type
+			reagentClothing.name = "[clothingReagent.name] [reagentClothing.name]"
+		reagentClothing.color = mix_color_from_reagents(reagentClothing.reagents.reagent_list)
+		reagentClothing.has_imbued = TRUE
+		to_chat(user, span_notice("You finish imbueing the clothing..."))
+		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
+		in_use = FALSE
+		return
+
+	if(istype(I, /obj/item/clothing/head/helmet/reagent_clothing) && reagent_forging)
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		var/obj/item/clothing/head/helmet/reagent_clothing/reagentClothing = I
+		if(reagentClothing.imbued_reagent.len > 0 || reagentClothing.has_imbued)
 			to_chat(user, span_warning("This clothing has already been imbued!"))
 			in_use = FALSE
 			return
@@ -330,8 +379,37 @@
 		in_use = FALSE
 		return
 
+	if(istype(I, /obj/item/forging/reagent_tile) && reagent_forging)
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		var/obj/item/forging/reagent_tile/reagentTile = I
+		if(reagentTile.imbued_reagent.len > 0 || reagentTile.has_imbued)
+			to_chat(user, span_warning("This tiling has already been imbued!"))
+			in_use = FALSE
+			return
+		to_chat(user, span_warning("You start to imbue the tiling..."))
+		if(!do_after(user, 10 SECONDS, target = src)) //wait 10 seconds to upgrade
+			to_chat(user, span_warning("You abandon imbueing the tiling."))
+			in_use = FALSE
+			return
+		for(var/datum/reagent/tileReagent in reagentTile.reagents.reagent_list)
+			if(tileReagent.volume < 200)
+				continue
+			reagentTile.imbued_reagent += tileReagent.type
+			reagentTile.name = "[tileReagent.name] [reagentTile.name]"
+		reagentTile.color = mix_color_from_reagents(reagentTile.reagents.reagent_list)
+		reagentTile.has_imbued = TRUE
+		to_chat(user, span_notice("You finish imbueing the tile..."))
+		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
+		in_use = FALSE
+		return
+
 	return ..()
 
-/obj/structure/reagent_forge/reagent_allow
+/obj/structure/reagent_forge/ready
 	current_core = 3
 	reagent_forging = TRUE
+	sinew_lower_chance = 100
+	forge_temperature = 1000
