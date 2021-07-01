@@ -967,15 +967,15 @@
 
 // Pink construction kit
 /obj/item/milking_machine/constructionkit/pink
-	name = "Pink milker kit"
-	desc = "Construction kit for milking machine"
+	name = "pink milker kit"
+	desc = "Construction kit for milking machine. Requires wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
 	icon_state = "milking_pink_build"
 
 // Teal construction kit
 /obj/item/milking_machine/constructionkit/teal
-	name = "Teal milker kit"
-	desc = "Construction kit for milking machine"
+	name = "teal milker kit"
+	desc = "Construction kit for milking machine. Requires wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
 	icon_state = "milking_teal_build"
 

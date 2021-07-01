@@ -327,7 +327,7 @@
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "nipples"
 	inv_box.icon = ui_style
-	inv_box.icon_state = "template"
+	inv_box.icon_state = "nipples"
 	inv_box.screen_loc = ui_nipples_down
 	inv_box.slot_id = ITEM_SLOT_NIPPLES
 	inv_box.hud = src

@@ -14,9 +14,9 @@
 	//STUFF SOLD HERE//
 	products = list(//Sex toys
 					/obj/item/clothing/sextoy/signalvib = 8,
+					/obj/item/clothing/sextoy/eggvib = 8,
 					/obj/item/clothing/sextoy/buttplug = 6,
 					/obj/item/clothing/sextoy/nipple_clamps = 4,
-					/obj/item/clothing/sextoy/eggvib = 8,
 					/obj/item/clothing/sextoy/double_dildo = 3,
 					/obj/item/clothing/sextoy/vibroring = 6,
 					/obj/item/condom_pack = 20,
