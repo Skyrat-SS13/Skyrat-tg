@@ -359,6 +359,12 @@
 	. = ..()
 	new /obj/item/gun/energy/laser(src)
 
+/obj/item/storage/box/gunset/e_gun
+
+/obj/item/storage/box/gunset/e_gun/PopulateContents()
+	. = ..()
+	new /obj/item/gun/energy/e_gun(src)
+
 //PEPPERBALLS
 /obj/item/storage/box/gunset/pepperball
 	name = "pepperball supply box"
