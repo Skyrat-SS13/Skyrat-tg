@@ -145,7 +145,7 @@
 /obj/structure/holosign/barrier/medical/examine(mob/user)
 	. = ..()
 	. += span_notice("The biometric scanners are <b>[force_allaccess ? "off" : "on"]</b>.")
-
+/* SKYRAT EDIT ADDITION: Directional Barrier
 /obj/structure/holosign/barrier/medical/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
 	if(force_allaccess)
@@ -173,7 +173,7 @@
 	if(get_disease_severity_value(threat) > get_disease_severity_value(DISEASE_SEVERITY_MINOR))
 		return FALSE
 	return TRUE
-
+SKYRAT EDIT ADDITION END*/
 /obj/structure/holosign/barrier/medical/attack_hand(mob/living/user, list/modifiers)
 	if(!user.combat_mode && CanPass(user, get_dir(src, user)))
 		force_allaccess = !force_allaccess
