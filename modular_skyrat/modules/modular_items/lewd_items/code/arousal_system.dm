@@ -430,7 +430,7 @@
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
 				visible_message("<font color=purple>[src] twitches in orgasm!</font>", \
-								"<font color=purple>You are cumming! Eww.</font>")
+								"<font color=purple>You cum in your underwear! Eww.</font>")
 
 		else
 			visible_message("<font color=purple>[src] twitches, trying to cum, but with no result.</font>", \
