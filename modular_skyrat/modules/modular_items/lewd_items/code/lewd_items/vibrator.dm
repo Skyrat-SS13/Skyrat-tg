@@ -20,11 +20,11 @@
 //create radial menu
 /obj/item/clothing/sextoy/vibrator/proc/populate_vibrator_designs()
 	vibrator_designs = list(
-		"pink" = image (icon = src.icon, icon_state = "vibrator_pink_low_on"),
-		"teal" = image(icon = src.icon, icon_state = "vibrator_teal_low_on"),
-		"red" = image(icon = src.icon, icon_state = "vibrator_red_low_on"),
-		"yellow" = image(icon = src.icon, icon_state = "vibrator_yellow_low_on"),
-		"green" = image(icon = src.icon, icon_state = "vibrator_green_low_on"))
+		"pink" = image (icon = src.icon, icon_state = "vibrator_pink_low"),
+		"teal" = image(icon = src.icon, icon_state = "vibrator_teal_low"),
+		"red" = image(icon = src.icon, icon_state = "vibrator_red_low"),
+		"yellow" = image(icon = src.icon, icon_state = "vibrator_yellow_low"),
+		"green" = image(icon = src.icon, icon_state = "vibrator_green_low"))
 
 /obj/item/clothing/sextoy/vibrator/AltClick(mob/user, obj/item/I)
 	if(color_changed == FALSE)

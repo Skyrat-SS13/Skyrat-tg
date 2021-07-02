@@ -23,21 +23,10 @@
 //create radial menu
 /obj/item/clothing/sextoy/eggvib/proc/populate_eggvib_designs()
 	eggvib_designs = list(
-		"pink" = image(icon = src.icon, icon_state = "eggvib_pink_low_on"),
-		"teal" = image(icon = src.icon, icon_state = "eggvib_teal_low_on"))
+		"pink" = image(icon = src.icon, icon_state = "eggvib_pink_low"),
+		"teal" = image(icon = src.icon, icon_state = "eggvib_teal_low"))
 
 /obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/I)
-
-	var/mob/living/carbon/human/H = user
-	if(color_changed == TRUE)
-		toy_on = !toy_on
-		to_chat(user, "<span class='notice'>You switched remote controller [toy_on? "on. Brrrr..." : "off."]</span>")
-		playsound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
-		update_icon_state()
-		update_icon()
-		if(src == H.vagina || src == H.penis || src == H.anus || src == H.nipples)
-			START_PROCESSING(SSobj, src)
-
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
@@ -80,7 +69,7 @@
 	if(vibration_mode == "hard")
 		to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
 	if(vibration_mode == "off")
-		to_chat(user, "<span class='notice'>Hitachi magic wand turned off. Fun is over?</span>")
+		to_chat(user, "<span class='notice'>Vibrating egg turned off. Fun is over?</span>")
 	update_icon()
 	update_icon_state()
 
