@@ -127,7 +127,7 @@
 				default_price = 0
 				extra_price = 0
 			if(FALSE)
-				default_price = PAYCHECK_ASSISTANT
+				default_price = PAYCHECK_ASSISTANT * 0.5
 				extra_price = PAYCHECK_COMMAND * 0.3
 	else
 		return
