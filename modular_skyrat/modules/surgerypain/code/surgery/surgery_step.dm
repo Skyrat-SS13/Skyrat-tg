@@ -1,4 +1,6 @@
 /datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical = FALSE)
+	if(HAS_TRAIT(target, TRAIT_NUMBED))
+		return
 	if(target.stat < UNCONSCIOUS && !isrobotic(target) || (isrobotic(target) && mechanical))
 		to_chat(target, pain_message)
 		if(prob(30) && !mechanical)
