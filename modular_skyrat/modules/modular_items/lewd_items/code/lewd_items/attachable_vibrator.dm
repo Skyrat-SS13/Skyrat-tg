@@ -189,6 +189,16 @@
 	update_icon_state()
 	update_icon()
 
+	var/mob/living/carbon/human/U = loc
+	switch(toy_on)
+		if(TRUE)
+			if(src != U.nipples)
+				to_chat(U, "<font color=purple>You feel pleasant vibrations deep below...</font>")
+			else
+				to_chat(U, "<font color=purple>You feel pleasant stimulation in your nipples</font>")
+		if(FALSE)
+			to_chat(U, "<font color=purple>Vibrating toy does not drive you mad anymore</font>")
+
 	if(master)
 		if(isassembly(master))
 			var/obj/item/assembly/master_as_assembly = master
