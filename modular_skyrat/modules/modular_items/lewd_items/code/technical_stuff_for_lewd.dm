@@ -16,6 +16,32 @@
 	var/has_breasts = FALSE
 	var/anus_exposed = FALSE
 
+/////////////////////////////////////
+//Looping sound for vibrating stuff//
+/////////////////////////////////////
+
+/datum/looping_sound/vibrator_low
+	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
+	start_length = 1
+	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
+	mid_length = 1
+	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
+	volume = 80
+/datum/looping_sound/vibrator_medium
+	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
+	start_length = 1
+	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
+	mid_length = 1
+	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
+	volume = 90
+/datum/looping_sound/vibrator_hard
+	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
+	start_length = 1
+	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
+	mid_length = 1
+	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
+	volume = 100
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"/////////////
 //If you are nice person you can transfer this part of code to it, but i didn't for modularisation reasons//

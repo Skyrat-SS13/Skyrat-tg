@@ -16,6 +16,9 @@
 	var/color_changed = FALSE
 	var/vibration_mode = "off"
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
+	var/datum/looping_sound/vibrator_low/soundloop1
+	var/datum/looping_sound/vibrator_medium/soundloop2
+	var/datum/looping_sound/vibrator_hard/soundloop3
 	var/mode = "off"
 	var/static/list/eggvib_designs
 	w_class = WEIGHT_CLASS_TINY
@@ -54,6 +57,16 @@
 	update_icon()
 	if(!length(eggvib_designs))
 		populate_eggvib_designs()
+	//soundloop
+	soundloop1 = new(src, FALSE)
+	soundloop2 = new(src, FALSE)
+	soundloop3 = new(src, FALSE)
+
+/obj/item/clothing/sextoy/eggvib/Destroy()
+	QDEL_NULL(soundloop1)
+	QDEL_NULL(soundloop2)
+	QDEL_NULL(soundloop3)
+	return ..()
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
 	. = ..()
@@ -80,18 +93,24 @@
 			toy_on = TRUE
 			vibration_mode = "low"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop1.start()
 		if("medium")
 			toy_on = TRUE
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop1.stop()
+			soundloop2.start()
 		if("hard")
 			toy_on = TRUE
 			vibration_mode = "hard"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop2.stop()
+			soundloop3.start()
 		if("off")
 			toy_on = FALSE
 			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
+			soundloop3.stop()
 
 /obj/item/clothing/sextoy/eggvib/equipped(mob/user, slot, initial)
 	. = ..()
@@ -134,6 +153,9 @@
 	var/vibration_mode = "low"
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "low")
 	var/mode = "low"
+	var/datum/looping_sound/vibrator_low/soundloop1
+	var/datum/looping_sound/vibrator_medium/soundloop2
+	var/datum/looping_sound/vibrator_hard/soundloop3
 	var/static/list/signalvib_designs
 	w_class = WEIGHT_CLASS_TINY
 
@@ -149,6 +171,9 @@
 
 /obj/item/clothing/sextoy/signalvib/Destroy()
 	SSradio.remove_object(src, frequency)
+	QDEL_NULL(soundloop1)
+	QDEL_NULL(soundloop2)
+	QDEL_NULL(soundloop3)
 	return ..()
 
 /obj/item/clothing/sextoy/signalvib/attackby(obj/item/W, mob/user, params)
@@ -227,10 +252,15 @@
 			toggle_mode()
 			if(vibration_mode == "low")
 				to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
+				soundloop1.start()
 			if(vibration_mode == "medium")
 				to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
+				soundloop1.stop()
+				soundloop2.start()
 			if(vibration_mode == "hard")
 				to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
+				soundloop3.start()
+				soundloop2.stop()
 			update_icon()
 			update_icon_state()
 		else
@@ -253,6 +283,10 @@
 	update_icon()
 	if(!length(signalvib_designs))
 		populate_signalvib_designs()
+	//soundloop
+	soundloop1 = new(src, FALSE)
+	soundloop2 = new(src, FALSE)
+	soundloop3 = new(src, FALSE)
 
 	if(random)
 		code = rand(1,100)
@@ -291,6 +325,21 @@
 			toy_on = !toy_on
 			update_icon_state()
 			update_icon()
+			if(toy_on == TRUE)
+				if(vibration_mode == "low")
+					soundloop1.start()
+				if(vibration_mode == "medium")
+					soundloop2.start()
+				if(vibration_mode == "hard")
+					soundloop3.start()
+
+			if(toy_on == FALSE)
+				if(vibration_mode == "low")
+					soundloop1.stop()
+				if(vibration_mode == "medium")
+					soundloop2.stop()
+				if(vibration_mode == "hard")
+					soundloop3.stop()
 			. = TRUE
 		if("freq")
 			var/value = unformat_frequency(params["freq"])

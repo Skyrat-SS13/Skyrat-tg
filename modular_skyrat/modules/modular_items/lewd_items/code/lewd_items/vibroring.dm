@@ -11,6 +11,7 @@
 	var/current_color = "pink"
 	var/color_changed = FALSE
 	var/static/list/vibroring_designs
+	var/datum/looping_sound/vibrator_medium/soundloop2
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_PENIS
 
@@ -20,6 +21,11 @@
 	playsound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_icon()
+	switch(toy_on)
+		if(TRUE)
+			soundloop2.start()
+		if(FALSE)
+			soundloop2.stop()
 
 //create radial menu
 /obj/item/clothing/sextoy/vibroring/proc/populate_vibroring_designs()
@@ -55,6 +61,13 @@
 	update_icon()
 	if(!length(vibroring_designs))
 		populate_vibroring_designs()
+
+	//soundloop
+	soundloop2 = new(src, FALSE)
+
+/obj/item/clothing/sextoy/vibroring/Destroy()
+	QDEL_NULL(soundloop2)
+	return ..()
 
 /obj/item/clothing/sextoy/vibroring/update_icon_state()
 	. = ..()

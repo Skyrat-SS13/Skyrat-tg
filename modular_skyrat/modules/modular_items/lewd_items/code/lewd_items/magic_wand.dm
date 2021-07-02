@@ -11,6 +11,9 @@
 	var/toy_on = FALSE
 	var/vibration_mode = "off"
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
+	var/datum/looping_sound/vibrator_low/soundloop1
+	var/datum/looping_sound/vibrator_medium/soundloop2
+	var/datum/looping_sound/vibrator_hard/soundloop3
 	var/mode = "off"
 	var/mutable_appearance/magicwand_overlay
 	w_class = WEIGHT_CLASS_TINY
@@ -31,6 +34,17 @@
 	update_icon_state()
 	update_icon()
 	update_appearance()
+
+	//soundloop
+	soundloop1 = new(src, FALSE)
+	soundloop2 = new(src, FALSE)
+	soundloop3 = new(src, FALSE)
+
+/obj/item/clothing/sextoy/magic_wand/Destroy()
+	QDEL_NULL(soundloop1)
+	QDEL_NULL(soundloop2)
+	QDEL_NULL(soundloop3)
+	return ..()
 
 /obj/item/clothing/sextoy/magic_wand/update_icon_state()
 	. = ..()
@@ -356,15 +370,21 @@
 			toy_on = TRUE
 			vibration_mode = "low"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop1.start()
 		if("medium")
 			toy_on = TRUE
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop1.stop()
+			soundloop2.start()
 		if("hard")
 			toy_on = TRUE
 			vibration_mode = "hard"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop2.stop()
+			soundloop3.start()
 		if("off")
 			toy_on = FALSE
 			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
+			soundloop3.stop()
