@@ -1224,37 +1224,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(ITEM_SLOT_VAGINA)
 			if(H.is_bottomless())
 				if(H.getorganslot(ORGAN_SLOT_VAGINA))
-					for(var/L in GLOB.vagina_items_allowed)
-						if(istype(I,L))
-							return equip_delay_self_check(I, H, bypass_equip_delay_self)
-						continue
-					return FALSE
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
 				return FALSE
 			return FALSE
 		if(ITEM_SLOT_ANUS)
 			if(H.is_bottomless())
-				for(var/L in GLOB.anus_items_allowed)
-					if(istype(I,L))
-						return equip_delay_self_check(I, H, bypass_equip_delay_self)
-					continue
-				return FALSE
+				return equip_delay_self_check(I, H, bypass_equip_delay_self)
 			return FALSE
 		if(ITEM_SLOT_NIPPLES)
 			if(H.is_topless())
-				for(var/L in GLOB.nipples_items_allowed)
-					if(istype(I,L))
-						return equip_delay_self_check(I, H, bypass_equip_delay_self)
-					continue
-				return FALSE
+				return equip_delay_self_check(I, H, bypass_equip_delay_self)
 			return FALSE
 		if(ITEM_SLOT_PENIS)
 			if(H.is_bottomless())
 				if(H.getorganslot(ORGAN_SLOT_PENIS))
-					for(var/L in GLOB.peins_items_allowed)
-						if(istype(I,L))
-							return equip_delay_self_check(I, H, bypass_equip_delay_self)
-						continue
-					return FALSE
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
 				return FALSE
 			return FALSE
 		//SKYRAT EDIT ADDITION END

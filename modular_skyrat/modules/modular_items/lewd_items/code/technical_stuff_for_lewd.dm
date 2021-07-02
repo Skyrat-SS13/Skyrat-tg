@@ -529,49 +529,6 @@
 #define ITEM_SLOT_ERP_INSERTABLE (ITEM_SLOT_VAGINA|ITEM_SLOT_ANUS)
 #define ITEM_SLOT_ERP_ATTACHABLE (ITEM_SLOT_NIPPLES|ITEM_SLOT_PENIS)
 
-////////////////////////////////////////////
-// Define some GLOBAL_LISTS for ERP stuff //
-////////////////////////////////////////////
-
-// Allowed items for vagina slot
-GLOBAL_LIST_INIT(vagina_items_allowed, typecacheof(list(
-	/obj/item/clothing/sextoy/eggvib,
-	/obj/item/clothing/sextoy/signalvib,
-	/obj/item/clothing/sextoy/vibrator,
-	/obj/item/clothing/sextoy/dildo,
-	/obj/item/clothing/sextoy/buttplug,
-	/obj/item/clothing/sextoy/custom_dildo,
-	/obj/item/clothing/sextoy/double_dildo,
-	/obj/item/clothing/sextoy/magic_wand
-	)))
-
-// Allowed items for anus slot
-GLOBAL_LIST_INIT(anus_items_allowed, typecacheof(list(
-	/obj/item/clothing/sextoy/eggvib,
-	/obj/item/clothing/sextoy/signalvib,
-	/obj/item/clothing/sextoy/vibrator,
-	/obj/item/clothing/sextoy/buttplug,
-	/obj/item/clothing/sextoy/dildo,
-	/obj/item/clothing/sextoy/custom_dildo,
-	/obj/item/clothing/sextoy/double_dildo
-	)))
-
-// Allowed items for nipples slot
-GLOBAL_LIST_INIT(nipples_items_allowed, typecacheof(list(
-	/obj/item/clothing/sextoy/eggvib,
-	/obj/item/clothing/sextoy/signalvib,
-	/obj/item/clothing/sextoy/nipple_clamps
-	)))
-
-// Allowed items for penis slot
-GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
-	/obj/item/clothing/sextoy/eggvib,
-	/obj/item/clothing/sextoy/signalvib,
-	/obj/item/clothing/sextoy/condom,
-	/obj/item/clothing/sextoy/magic_wand,
-	/obj/item/clothing/sextoy/vibroring
-	)))
-
 // Strippable Defines
 #define ERP_SLOT_EQUIP_DELAY (5 SECONDS) // Lamella TODO: delay need to be balanced
 
