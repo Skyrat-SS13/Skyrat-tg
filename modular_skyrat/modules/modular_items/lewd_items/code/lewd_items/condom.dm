@@ -12,7 +12,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/current_color = "pink"
 	var/color_changed = FALSE
-	var/static/list/condom_colors
 
 /obj/item/condom_pack/Initialize()
 	. = ..()

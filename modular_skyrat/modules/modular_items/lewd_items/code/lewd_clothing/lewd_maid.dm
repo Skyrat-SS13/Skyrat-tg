@@ -86,7 +86,7 @@
 /obj/item/clothing/under/costume/lewdmaid/attach_accessory(obj/item/I)
 	..()
 	var/accessory_color = attached_accessory.icon_state
-	accessory_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "[accessory_color]")
+	accessory_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi', "[accessory_color]", ABOVE_MOB_LAYER + 0.1)
 	accessory_overlay.alpha = attached_accessory.alpha
 	accessory_overlay.color = attached_accessory.color
 	if(ishuman(loc))
@@ -94,5 +94,4 @@
 		H.update_inv_w_uniform()
 		H.update_inv_wear_suit()
 		H.fan_hud_set_fandom()
-
 	return TRUE

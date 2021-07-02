@@ -180,7 +180,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "dildo"
 	inhand_icon_state = "nothing"
-	force = 1 //I mean like... You can beat someone with dildo in saints row, ok? 1 is enough, don't touch it plz.
+	force = 0
 	throwforce = 0
 	item_flags = ABSTRACT | HAND_ITEM
 	var/strapon_type = "human" //Default var, but we always getting var from strapon_type from item on top

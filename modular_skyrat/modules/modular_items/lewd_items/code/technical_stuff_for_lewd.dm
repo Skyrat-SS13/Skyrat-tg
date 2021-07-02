@@ -42,6 +42,59 @@
 	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
 	volume = 100
 
+////////////////////////////////////////////////////////////////////////////////
+//Boxes for vending machine, to spawn stuff with important cheap tools in pack//
+////////////////////////////////////////////////////////////////////////////////
+
+//milking machine
+/obj/item/storage/box/milking_kit
+	name = "DIY Milking machine kit"
+	desc = "Contains everything you need to build your own milking machine!"
+
+/obj/item/storage/box/milking_kit/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/milking_machine/constructionkit = 1,
+		/obj/item/reagent_containers/glass/beaker = 1,
+		/obj/item/stock_parts/cell = 1,
+		/obj/item/screwdriver = 1,
+		/obj/item/multitool = 1,
+		/obj/item/wrench = 1)
+	generate_items_inside(items_inside,src)
+
+//X-Stand
+/obj/item/storage/box/xstand_kit
+	name = "DIY X-Stand kit"
+	desc = "Contains everything you need to build your own X-stand!"
+
+/obj/item/storage/box/xstand_kit/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/x_stand_kit = 1,
+		/obj/item/wrench = 1)
+	generate_items_inside(items_inside,src)
+
+//BDSM bed
+/obj/item/storage/box/bdsmbed_kit
+	name = "DIY BDSM bed kit"
+	desc = "Contains everything you need to build your own BDSM bed!"
+
+/obj/item/storage/box/bdsmbed_kit/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/bdsm_bed_kit = 1,
+		/obj/item/wrench = 1)
+	generate_items_inside(items_inside,src)
+
+//Striptease pole
+/obj/item/storage/box/strippole_kit
+	name = "DIY stripper pole kit"
+	desc = "Contains everything you need to build your own stripper pole!"
+
+/obj/item/storage/box/strippole_kit/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/polepack = 1,
+		/obj/item/multitool = 1,
+		/obj/item/wrench = 1)
+	generate_items_inside(items_inside,src)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"/////////////
 //If you are nice person you can transfer this part of code to it, but i didn't for modularisation reasons//

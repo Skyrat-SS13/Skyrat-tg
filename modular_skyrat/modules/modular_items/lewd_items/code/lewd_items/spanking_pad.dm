@@ -18,6 +18,10 @@
 		"pink" = image (icon = src.icon, icon_state = "spankpad_pink"),
 		"teal" = image(icon = src.icon, icon_state = "spankpad_teal"))
 
+/obj/item/spanking_pad/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
+
 /obj/item/spanking_pad/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE

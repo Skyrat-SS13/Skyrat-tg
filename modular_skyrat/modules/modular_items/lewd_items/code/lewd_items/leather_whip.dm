@@ -159,33 +159,59 @@
 //and there is code for successful check, so we are whipping someone
 	if(M.client?.prefs.erp_pref == "Yes")
 		switch(user.zone_selected) //to let code know what part of body we gonna whip
-			if(BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
+			if(BODY_ZONE_L_LEG)
 				if(M.has_feet())
-					if(M.is_barefoot())
-						if(current_whip_type == "hard")
-							message = (user == M) ? pick("Knocks themselves down with [src]", "Uses [src] to knock themselves on the ground") : pick("Hardly drops [M] on the ground with [src]", "Uses [src] to put [M] on the knees")
-							if(prob(60))
-								M.emote(pick("gasp","shiver"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-							M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for boots YOU CAN'T ABUSE THIS ITEM
-							M.adjustPain(5)
-							user.visible_message("<font color=purple>[user] [message].</font>")
-							playsound(loc, 'sound/weapons/whip.ogg', 100)
+					if(current_whip_type == "hard")
+						message = (user == M) ? pick("Knocks themselves down with [src]", "Uses [src] to knock themselves on the ground") : pick("Hardly drops [M] on the ground with [src]", "Uses [src] to put [M] on the knees")
+						if(prob(60))
+							M.emote(pick("gasp","shiver"))
+						if(prob(10))
+							M.apply_status_effect(/datum/status_effect/subspace)
+						M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
+						M.adjustPain(5)
+						user.visible_message("<font color=purple>[user] [message].</font>")
+						playsound(loc, 'sound/weapons/whip.ogg', 100)
 
-						if(current_whip_type == "weak")
-							message = (user == M) ? pick("Knocks themselves down with [src]", "Gently uses [src] to knock themselves on the ground") : pick("Gently drops [M] on the ground with [src]", "Uses [src] to slowly put [M] on the knees")
-							if(prob(30))
-								M.emote(pick("gasp","shiver"))
-							if(prob(10))
-								M.apply_status_effect(/datum/status_effect/subspace)
-							M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for boots YOU CAN'T ABUSE THIS ITEM
-							M.adjustPain(3)
-							user.visible_message("<font color=purple>[user] [message].</font>")
-							playsound(loc, 'sound/weapons/whip.ogg', 60)
-					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s legs is covered!</span>")
-						return
+					if(current_whip_type == "weak")
+						message = (user == M) ? pick("Knocks themselves down with [src]", "Gently uses [src] to knock themselves on the ground") : pick("Gently drops [M] on the ground with [src]", "Uses [src] to slowly put [M] on the knees")
+						if(prob(30))
+							M.emote(pick("gasp","shiver"))
+						if(prob(10))
+							M.apply_status_effect(/datum/status_effect/subspace)
+						M.Paralyze(1)
+						M.adjustPain(3)
+						user.visible_message("<font color=purple>[user] [message].</font>")
+						playsound(loc, 'sound/weapons/whip.ogg', 60)
+				else
+					to_chat(user, "<span class='danger'>Looks like [M] is missing their left leg!</span>")
+					return
+
+			if(BODY_ZONE_R_LEG)
+				if(M.has_feet())
+					if(current_whip_type == "hard")
+						message = (user == M) ? pick("Knocks themselves down with [src]", "Uses [src] to knock themselves on the ground") : pick("Hardly drops [M] on the ground with [src]", "Uses [src] to put [M] on the knees")
+						if(prob(60))
+							M.emote(pick("gasp","shiver"))
+						if(prob(10))
+							M.apply_status_effect(/datum/status_effect/subspace)
+						M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
+						M.adjustPain(5)
+						user.visible_message("<font color=purple>[user] [message].</font>")
+						playsound(loc, 'sound/weapons/whip.ogg', 100)
+
+					if(current_whip_type == "weak")
+						message = (user == M) ? pick("Knocks themselves down with [src]", "Gently uses [src] to knock themselves on the ground") : pick("Gently drops [M] on the ground with [src]", "Uses [src] to slowly put [M] on the knees")
+						if(prob(30))
+							M.emote(pick("gasp","shiver"))
+						if(prob(10))
+							M.apply_status_effect(/datum/status_effect/subspace)
+						M.Paralyze(1)
+						M.adjustPain(3)
+						user.visible_message("<font color=purple>[user] [message].</font>")
+						playsound(loc, 'sound/weapons/whip.ogg', 60)
+				else
+					to_chat(user, "<span class='danger'>Looks like [M] is missing their right leg!</span>")
+					return
 
 			if(BODY_ZONE_HEAD)
 				message = (user == M) ? pick("Chokes themselves with [src]", "Uses [src] to choke themselves") : pick("Chokes [M] with [src]", "Twines a [src] around [M]'s neck!")

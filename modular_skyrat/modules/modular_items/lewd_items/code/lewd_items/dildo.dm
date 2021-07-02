@@ -598,7 +598,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi'
 	icon_state = "dildo_side"
 	inhand_icon_state = "nothing"
-	force = 1 //I mean like... You can beat someone with dildo in saints row, ok? 1 is enough, don't touch it plz.
+	force = 0
 	throwforce = 0
 	item_flags = ABSTRACT | HAND_ITEM
 

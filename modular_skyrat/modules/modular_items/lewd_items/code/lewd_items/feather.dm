@@ -109,7 +109,7 @@
        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
 
 			else
-				to_chat(user, "<span class='danger'>Looks like [M]'s toes is covered!</span>")
+				to_chat(user, "<span class='danger'>Looks like [M]'s armpits is covered!</span>")
 				return
 
 		if(BODY_ZONE_L_ARM)
@@ -127,7 +127,7 @@
        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
 
 			else
-				to_chat(user, "<span class='danger'>Looks like [M]'s toes is covered!</span>")
+				to_chat(user, "<span class='danger'>Looks like [M]'s armpits is covered!</span>")
 				return
 
 //Mood boost

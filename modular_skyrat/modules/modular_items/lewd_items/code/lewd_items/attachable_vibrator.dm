@@ -214,15 +214,31 @@
 	update_icon_state()
 	update_icon()
 
+	//adding messages to chat if vibrator enabled while
 	var/mob/living/carbon/human/U = loc
-	switch(toy_on)
-		if(TRUE)
-			if(src != U.nipples)
-				to_chat(U, "<font color=purple>You feel pleasant vibrations deep below...</font>")
-			else
-				to_chat(U, "<font color=purple>You feel pleasant stimulation in your nipples</font>")
-		if(FALSE)
-			to_chat(U, "<font color=purple>Vibrating toy does not drive you mad anymore</font>")
+	if(toy_on == TRUE)
+		if(src == U.penis || U.vagina || U.anus)
+			to_chat(U, "<font color=purple>You feel pleasant vibrations deep below...</font>")
+		if(src == U.nipples)
+			to_chat(U, "<font color=purple>You feel pleasant stimulation in your nipples</font>")
+	if(toy_on == FALSE && (src == U.penis || src == U.vagina || src == U.anus || src == U.nipples))
+		to_chat(U, "<font color=purple>Vibrating toy does not drive you mad anymore</font>")
+
+	if(toy_on == TRUE)
+		if(vibration_mode == "low")
+			soundloop1.start()
+		if(vibration_mode == "medium")
+			soundloop2.start()
+		if(vibration_mode == "hard")
+			soundloop3.start()
+
+	if(toy_on == FALSE)
+		if(vibration_mode == "low")
+			soundloop1.stop()
+		if(vibration_mode == "medium")
+			soundloop2.stop()
+		if(vibration_mode == "hard")
+			soundloop3.stop()
 
 	if(master)
 		if(isassembly(master))
