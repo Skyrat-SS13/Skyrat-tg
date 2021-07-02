@@ -14,9 +14,9 @@
 	var/toy_on = FALSE
 	var/current_color = "pink"
 	var/color_changed = FALSE
-	var/vibration_mode = "low"
-	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "low")
-	var/mode = "low"
+	var/vibration_mode = "off"
+	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
+	var/mode = "off"
 	var/static/list/eggvib_designs
 	w_class = WEIGHT_CLASS_TINY
 
@@ -27,6 +27,7 @@
 		"teal" = image(icon = src.icon, icon_state = "eggvib_teal_low_on"))
 
 /obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/I)
+
 	var/mob/living/carbon/human/H = user
 	if(color_changed == TRUE)
 		toy_on = !toy_on
@@ -67,36 +68,41 @@
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode]_[toy_on? "on" : "off"]"
+	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/clothing/sextoy/eggvib/attack_self(mob/user, obj/item/I)
-	if(toy_on == TRUE)
-		toggle_mode()
-		if(vibration_mode == "low")
-			to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
-		if(vibration_mode == "medium")
-			to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
-		if(vibration_mode == "hard")
-			to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
-		update_icon()
-		update_icon_state()
-	else
-		to_chat(usr, "<span class ='notice'> You cannot switch modes while the vibrating egg is... Not vibrating!</span>")
-		return
+	toggle_mode()
+	if(vibration_mode == "low")
+		to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
+	if(vibration_mode == "medium")
+		to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
+	if(vibration_mode == "hard")
+		to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
+	if(vibration_mode == "off")
+		to_chat(user, "<span class='notice'>Hitachi magic wand turned off. Fun is over?</span>")
+	update_icon()
+	update_icon_state()
 
 /obj/item/clothing/sextoy/eggvib/proc/toggle_mode()
 	mode = modes[mode]
 	switch(mode)
 		if("low")
+			toy_on = TRUE
 			vibration_mode = "low"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 		if("medium")
+			toy_on = TRUE
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 		if("hard")
+			toy_on = TRUE
 			vibration_mode = "hard"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+		if("off")
+			toy_on = FALSE
+			vibration_mode = "off"
+			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 
 /obj/item/clothing/sextoy/eggvib/equipped(mob/user, slot, initial)
 	. = ..()

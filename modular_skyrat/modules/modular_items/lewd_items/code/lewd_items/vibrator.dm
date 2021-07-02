@@ -11,9 +11,9 @@
 	var/toy_on = FALSE
 	var/current_color = "pink"
 	var/color_changed = FALSE
-	var/vibration_mode = "low"
-	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "low")
-	var/mode = "low"
+	var/vibration_mode = "off"
+	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
+	var/mode = "off"
 	var/static/list/vibrator_designs
 	w_class = WEIGHT_CLASS_TINY
 
@@ -27,12 +27,6 @@
 		"green" = image(icon = src.icon, icon_state = "vibrator_green_low_on"))
 
 /obj/item/clothing/sextoy/vibrator/AltClick(mob/user, obj/item/I)
-	if(color_changed == TRUE)
-		toy_on = !toy_on
-		to_chat(user, "<span class='notice'>You turn the vibrator [toy_on? "on. Brrrr..." : "off."]</span>")
-		playsound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
-		update_icon_state()
-		update_icon()
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
@@ -64,7 +58,7 @@
 
 /obj/item/clothing/sextoy/vibrator/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode]_[toy_on? "on" : "off"]"
+	icon_state = "[initial(icon_state)]_[current_color]_[vibration_mode]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/clothing/sextoy/vibrator/equipped(mob/user, slot)
@@ -366,29 +360,34 @@
 		return
 
 /obj/item/clothing/sextoy/vibrator/attack_self(mob/user, obj/item/I)
-	if(toy_on == TRUE)
-		toggle_mode()
-		if(vibration_mode == "low")
-			to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
-		if(vibration_mode == "medium")
-			to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
-		if(vibration_mode == "hard")
-			to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
-		update_icon()
-		update_icon_state()
-	else
-		to_chat(usr, "<span class ='notice'> You cannot switch modes while the vibrator is turned off.</span>")
-		return
+	toggle_mode()
+	if(vibration_mode == "low")
+		to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
+	if(vibration_mode == "medium")
+		to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
+	if(vibration_mode == "hard")
+		to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
+	if(vibration_mode == "off")
+		to_chat(user, "<span class='notice'>Vibrator turned off. Fun is over?</span>")
+	update_icon()
+	update_icon_state()
 
 /obj/item/clothing/sextoy/vibrator/proc/toggle_mode()
 	mode = modes[mode]
 	switch(mode)
 		if("low")
+			toy_on = TRUE
 			vibration_mode = "low"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 		if("medium")
+			toy_on = TRUE
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 		if("hard")
+			toy_on = TRUE
 			vibration_mode = "hard"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+		if("off")
+			toy_on = FALSE
+			vibration_mode = "off"
+			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
