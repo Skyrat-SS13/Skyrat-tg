@@ -18,8 +18,16 @@ GLOBAL_LIST_EMPTY(hell) //captured people go here (ninja energy net)
 		if(iterating_player.ckey && is_banned_from(iterating_player.ckey, BAN_EORG))
 			var/turf/picked_turf = pick(GLOB.hell)
 			new /obj/effect/particle_effect/sparks/quantum (iterating_player.loc)
+			if(ishuman(iterating_player))
+				var/mob/living/carbon/human/our_human = iterating_player
+				our_human.equipOutfit(/datum/outfit/chicken)
 			iterating_player.visible_message(span_notice("[iterating_player] is teleported back home, hopefully to an everloving family!"), span_userdanger("As you are EORG banned, you will now be sent to hell."))
 			iterating_player.forceMove(picked_turf)
+
+/datum/outfit/chicken
+	name = "Chicken"
+	suit = /obj/item/clothing/suit/chickensuit
+	head = /obj/item/clothing/head/chicken
 
 /obj/effect/landmark/hell
 	name = "Hell"
