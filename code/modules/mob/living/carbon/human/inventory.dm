@@ -249,6 +249,11 @@
 		if(!QDELETED(src)) //no need to update we're getting deleted anyway
 			if(I.flags_inv & HIDEJUMPSUIT)
 				update_inv_w_uniform()
+			if(I.flags_inv & HIDESEXTOY)
+				update_inv_anus()
+				update_inv_vagina()
+				update_inv_penis()
+				update_inv_nipples()
 			update_inv_wear_suit()
 	else if(I == w_uniform)
 		if(invdrop)
@@ -311,6 +316,26 @@
 		s_store = null
 		if(!QDELETED(src))
 			update_inv_s_store()
+
+	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+	else if(I == vagina)
+		vagina = null
+		if(!QDELETED(src))
+			update_inv_vagina()
+	else if(I == anus)
+		anus = null
+		if(!QDELETED(src))
+			update_inv_anus()
+	else if(I == nipples)
+		nipples = null
+		if(!QDELETED(src))
+			update_inv_nipples()
+	else if(I == penis)
+		penis = null
+		if(!QDELETED(src))
+			update_inv_penis()
+	//SKYRAT EDIT ADDITION END
+
 	update_equipment_speed_mods()
 
 	// Send a signal for when we unequip an item that used to cover our feet/shoes. Used for bloody feet

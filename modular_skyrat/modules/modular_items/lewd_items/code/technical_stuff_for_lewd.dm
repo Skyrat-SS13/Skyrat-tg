@@ -706,21 +706,21 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 
 // Updating vagina slot
 /mob/living/carbon/human/update_inv_vagina()
-	//ui stuff
-	var/datum/hud/human/H = src.hud_used
-	if(vagina)
-		if(client && H && client.prefs.erp_pref == "Yes")
-			var/atom/movable/screen/inventory/inv = H.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1]
-			inv.update_appearance()
+	if(client?.prefs?.erp_pref == "Yes")
+		if(client && hud_used)
+			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1]
+			inv.update_icon()
 
-			if(usr?.hud_used.inventory_shown && src.hud_used)
+		if(vagina)
+			if(hud_used.inventory_shown && hud_used)
 				vagina?.screen_loc = ui_vagina
 			else
 				vagina?.screen_loc = ui_vagina_down
-			if(H.hud_shown)
+			if(hud_used.hud_shown)
 				client.screen += vagina
 			update_observer_view(vagina)
-			src.hud_used.hidden_inventory_update(src)
+			hud_used.hidden_inventory_update(src)
+
 	//on_mob stuff
 	remove_overlay(VAGINA_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
 
@@ -745,20 +745,20 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 
 // Updating anus slot
 /mob/living/carbon/human/update_inv_anus()
-	var/datum/hud/human/H = src.hud_used
-	if(anus)
-		if(client && H && client.prefs.erp_pref == "Yes")
-			var/atom/movable/screen/inventory/inv = H.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1]
-			inv.update_appearance()
-			// if(anus)
-			if(usr.hud_used.inventory_shown && src.hud_used)
+	if(client?.prefs?.erp_pref == "Yes")
+		if(client && hud_used)
+			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1]
+			inv.update_icon()
+
+		if(anus)
+			if(hud_used.inventory_shown && hud_used)
 				anus?.screen_loc = ui_anus
 			else
 				anus?.screen_loc = ui_anus_down
-			if(H.hud_shown)
+			if(hud_used.hud_shown)
 				client.screen += anus
 			update_observer_view(anus)
-			src.hud_used.hidden_inventory_update(src)
+			hud_used.hidden_inventory_update(src)
 
 	//on_mob stuff
 	remove_overlay(ANUS_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
@@ -784,20 +784,20 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 
 // Updating nipples slot
 /mob/living/carbon/human/update_inv_nipples()
-	var/datum/hud/human/H = src.hud_used
-	if(nipples)
-		if(client && H && client.prefs.erp_pref == "Yes")
-			var/atom/movable/screen/inventory/inv = H.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1]
-			inv.update_appearance()
-			// if(nipples)
-			if(usr.hud_used.inventory_shown && src.hud_used)
+	if(client?.prefs?.erp_pref == "Yes")
+		if(client && hud_used)
+			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1]
+			inv.update_icon()
+
+		if(nipples)
+			if(hud_used.inventory_shown && hud_used)
 				nipples?.screen_loc = ui_nipples
 			else
 				nipples?.screen_loc = ui_nipples_down
-			if(H.hud_shown)
+			if(hud_used.hud_shown)
 				client.screen += nipples
 			update_observer_view(nipples)
-			src.hud_used.hidden_inventory_update(src)
+			hud_used.hidden_inventory_update(src)
 
 	//on_mob stuff
 	remove_overlay(NIPPLES_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
@@ -823,20 +823,20 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 
 // Updating penis slot
 /mob/living/carbon/human/update_inv_penis()
-	var/datum/hud/human/H = src.hud_used
-	if(penis)
-		if(client && H && client.prefs.erp_pref == "Yes")
-			var/atom/movable/screen/inventory/inv = H.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1]
-			inv.update_appearance()
-			// if(penis)
-			if(usr.hud_used.inventory_shown && src.hud_used)
+	if(client?.prefs?.erp_pref == "Yes")
+		if(client && hud_used)
+			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1]
+			inv.update_icon()
+
+		if(penis)
+			if(hud_used.inventory_shown && hud_used)
 				penis?.screen_loc = ui_penis
 			else
 				penis?.screen_loc = ui_penis_down
-			if(src.hud_used.hud_shown)
+			if(hud_used.hud_shown)
 				client.screen += penis
 			update_observer_view(penis)
-			src.hud_used.hidden_inventory_update(src)
+			hud_used.hidden_inventory_update(src)
 
 	//on_mob stuff
 	remove_overlay(PENIS_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
