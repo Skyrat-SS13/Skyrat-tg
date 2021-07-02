@@ -1,7 +1,7 @@
 /datum/round_event_control/mold
 	name = "Moldies"
 	typepath = /datum/round_event/mold
-	weight = 3
+	weight = 5
 	max_occurrences = 1
 	min_players = 50
 
