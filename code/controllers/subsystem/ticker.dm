@@ -330,7 +330,8 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	else
 		LAZYADD(round_end_events, cb)
-	process_eorg_bans() //SKYRAT EDIT ADDITION
+
+	INVOKE_ASYNC(src, .proc/process_eorg_bans) //SKYRAT EDIT ADDITION
 
 /datum/controller/subsystem/ticker/proc/station_explosion_detonation(atom/bomb)
 	if(bomb) //BOOM

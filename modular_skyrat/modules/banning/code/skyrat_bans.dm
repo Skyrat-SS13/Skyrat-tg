@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(hell) //captured people go here (ninja energy net)
+
 /mob/living/Login()
 	. = ..()
 	if(ckey)
@@ -14,6 +16,17 @@
 /datum/controller/subsystem/ticker/proc/process_eorg_bans()
 	for(var/mob/iterating_player in GLOB.mob_list)
 		if(iterating_player.ckey && is_banned_from(iterating_player.ckey, BAN_EORG))
+			var/turf/picked_turf = pick(GLOB.hell)
 			new /obj/effect/particle_effect/sparks/quantum (iterating_player.loc)
-			iterating_player.visible_message(span_notice("[iterating_player] is teleported back home, hopefully to an everloving family!"), span_userdanger("As you are EORG banned, you will now be deleted."))
-			qdel(iterating_player)
+			iterating_player.visible_message(span_notice("[iterating_player] is teleported back home, hopefully to an everloving family!"), span_userdanger("As you are EORG banned, you will now be sent to hell."))
+			iterating_player.forceMove(picked_turf)
+
+/obj/effect/landmark/hell
+	name = "Hell"
+	icon_state = "portal_exit"
+
+/obj/effect/landmark/hell/Initialize(mapload)
+	..()
+	GLOB.hell += loc
+	return INITIALIZE_HINT_QDEL
+/obj/effect/landmark/holding_facility
