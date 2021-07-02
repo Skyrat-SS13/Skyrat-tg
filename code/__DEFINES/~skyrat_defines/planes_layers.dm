@@ -1,1 +1,0 @@
-#define CATWALK_LAYER 2.465
