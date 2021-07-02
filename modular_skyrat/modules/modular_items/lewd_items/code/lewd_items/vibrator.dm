@@ -89,6 +89,9 @@
 		if(vibration_mode == "hard") //no mercy
 			U.adjustArousal(1.5 * delta_time)
 			U.adjustPleasure(1.5 * delta_time)
+	if(toy_on == FALSE && U.arousal < 30)
+		U.adjustArousal(0.5 * delta_time)
+		U.adjustPleasure(0.5 * delta_time)
 
 //SHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODE
 /obj/item/clothing/sextoy/vibrator/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
