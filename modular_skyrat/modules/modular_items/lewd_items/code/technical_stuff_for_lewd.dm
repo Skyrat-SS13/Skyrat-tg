@@ -707,7 +707,7 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 // Updating vagina slot
 /mob/living/carbon/human/update_inv_vagina()
 	if(client?.prefs?.erp_pref == "Yes")
-		if(client && hud_used)
+		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1]
 			inv.update_icon()
 
@@ -746,7 +746,7 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 // Updating anus slot
 /mob/living/carbon/human/update_inv_anus()
 	if(client?.prefs?.erp_pref == "Yes")
-		if(client && hud_used)
+		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1]
 			inv.update_icon()
 
@@ -785,7 +785,7 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 // Updating nipples slot
 /mob/living/carbon/human/update_inv_nipples()
 	if(client?.prefs?.erp_pref == "Yes")
-		if(client && hud_used)
+		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1]
 			inv.update_icon()
 
@@ -824,7 +824,7 @@ GLOBAL_LIST_INIT(peins_items_allowed, typecacheof(list(
 // Updating penis slot
 /mob/living/carbon/human/update_inv_penis()
 	if(client?.prefs?.erp_pref == "Yes")
-		if(client && hud_used)
+		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1]
 			inv.update_icon()
 
