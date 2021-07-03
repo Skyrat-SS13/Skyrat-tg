@@ -3042,11 +3042,11 @@
 /area/maintenance/port/fore)
 "aky" = (
 /turf/closed/wall,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "akz" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "akA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -3062,10 +3062,6 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/starboard/fore)
 "akB" = (
-/obj/machinery/door/airlock{
-	name = "Auxiliary Office"
-	},
-/obj/effect/mapping_helpers/airlock/abandoned,
 /obj/effect/landmark/event_spawn,
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -3073,8 +3069,12 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/command{
+	name = "Representative's Office";
+	req_access_txt = "101"
+	},
 /turf/open/floor/iron,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "akD" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Maintenance Hatch";
@@ -3222,67 +3222,70 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "alj" = (
-/obj/structure/table/wood,
-/obj/item/folder,
-/obj/item/pen,
+/obj/structure/closet/secure_closet/nanotrasen_representative{
+	icon_state = "cabinet";
+	name = "\proper NT Rep's locker"
+	},
+/obj/item/reagent_containers/food/drinks/bottle/champagne,
+/obj/item/bedsheet/centcom,
+/obj/item/clothing/head/centcom_cap,
+/obj/item/clothing/head/centhat,
+/obj/item/clothing/suit/armor/vest/centcom_formal,
+/obj/item/clothing/suit/hooded/wintercoat/centcom,
+/obj/item/clothing/under/rank/centcom/commander,
+/obj/item/clothing/under/rank/centcom/centcom_skirt,
+/obj/item/banner,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "alk" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "all" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/photocopier,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "alm" = (
 /obj/structure/table/wood,
 /obj/item/stack/package_wrap,
 /obj/item/hand_labeler,
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aln" = (
 /obj/structure/table/wood,
-/obj/item/storage/briefcase,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "alo" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
-"alp" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "alq" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "alr" = (
 /obj/structure/table/wood,
 /obj/item/taperecorder,
 /obj/machinery/light/small/directional/north,
 /obj/machinery/status_display/evac/directional/north,
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "als" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin,
-/obj/item/pen,
 /obj/structure/sign/poster/official/report_crimes{
 	pixel_y = 32
 	},
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/obj/item/paper_bin/carbon,
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "alt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -3431,42 +3434,42 @@
 	},
 /area/maintenance/port/fore)
 "alZ" = (
-/obj/structure/chair/office{
-	dir = 1
-	},
 /obj/structure/sign/poster/official/do_not_question{
 	pixel_x = -32
 	},
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "ama" = (
-/turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "amb" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "amc" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "amd" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "ame" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "amf" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue{
@@ -3475,19 +3478,26 @@
 	},
 /obj/item/folder/yellow,
 /obj/item/pen,
+/obj/item/stamp/centcom,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "amg" = (
-/obj/structure/chair/office{
-	dir = 8
+/obj/effect/landmark/start/nanotrasen_representative,
+/obj/structure/chair/comfy/brown{
+	color = "#c45c57";
+	desc = "Remarkably soft, with plush cozy cushions, premium memory-foam and covered in stain-resistant fabric. Made by Kat-Kea???!";
+	dir = 8;
+	name = "Premium Cozy Chair"
 	},
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "amh" = (
 /obj/machinery/status_display/ai/directional/east,
-/obj/structure/frame/computer,
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/obj/machinery/modular_computer/console/preset/command{
+	dir = 8
+	},
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "ami" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3778,41 +3788,54 @@
 "amZ" = (
 /obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "ana" = (
 /obj/structure/chair/office{
 	dir = 4
 	},
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "anb" = (
 /obj/structure/table/wood,
 /obj/item/folder,
 /obj/item/pen,
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "anc" = (
-/turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/obj/structure/table/wood,
+/obj/item/folder,
+/obj/item/pen,
+/turf/open/floor/iron/grimy,
+/area/command/heads_quarters/captain)
 "and" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/mob/living/simple_animal/hostile/cockroach,
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "ane" = (
 /obj/structure/table/wood,
-/obj/item/paicard,
-/turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/obj/item/stamp/denied{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/stamp{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/phone{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/pen/fourcolor,
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "anf" = (
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "ang" = (
 /obj/machinery/status_display/evac/directional/east,
-/obj/structure/frame/computer,
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "anh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -4092,16 +4115,16 @@
 "anZ" = (
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aoa" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
-/turf/open/floor/carpet,
-/area/commons/vacant_room/office)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain)
 "aob" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aoc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -4111,7 +4134,7 @@
 	dir = 5
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aod" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -4121,7 +4144,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aoe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -4132,13 +4155,8 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aof" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Office Maintenance";
-	req_access_txt = "32"
-	},
-/obj/effect/mapping_helpers/airlock/abandoned,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
@@ -4153,8 +4171,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
+/obj/machinery/door/airlock/maintenance{
+	name = "NT Rep's Office Maintenance";
+	req_access_txt = "101"
+	},
 /turf/open/floor/iron,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aog" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/delivery,
@@ -4515,18 +4537,14 @@
 "aoZ" = (
 /obj/structure/chair/office,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
-"apa" = (
-/mob/living/simple_animal/hostile/cockroach,
-/turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "apb" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "apc" = (
 /obj/structure/table/wood,
 /obj/item/camera_film{
@@ -4536,7 +4554,7 @@
 /obj/item/camera_film,
 /obj/machinery/light_switch/directional/east,
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "apd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -4837,29 +4855,24 @@
 /area/maintenance/port/fore)
 "aqb" = (
 /obj/structure/table/wood,
-/obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/machinery/newscaster/directional/south,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aqc" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/light/small/directional/south,
 /obj/structure/sign/poster/official/work_for_a_future{
 	pixel_y = -32
 	},
+/obj/structure/filingcabinet/employment,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aqd" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/machinery/newscaster/directional/south,
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aqe" = (
 /obj/structure/table/wood,
 /obj/item/clipboard,
@@ -4868,17 +4881,13 @@
 	dir = 1
 	},
 /turf/open/floor/iron/grimy,
-/area/commons/vacant_room/office)
-"aqf" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aqg" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aqh" = (
 /obj/structure/table/wood,
 /obj/item/camera,
@@ -4887,7 +4896,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aqi" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
@@ -4895,7 +4904,7 @@
 	pixel_x = 32
 	},
 /turf/open/floor/wood,
-/area/commons/vacant_room/office)
+/area/command/heads_quarters/captain)
 "aqj" = (
 /obj/structure/closet/secure_closet/contraband/heads,
 /obj/item/storage/secure/briefcase,
@@ -147578,7 +147587,7 @@ alZ
 amZ
 anZ
 aoZ
-alj
+anc
 aky
 alg
 aIK
@@ -147831,10 +147840,10 @@ ajD
 ggs
 aky
 alk
-ama
+bUO
 ana
 anf
-ama
+bUO
 aqb
 aky
 arC
@@ -148091,7 +148100,7 @@ all
 amb
 anb
 aoa
-apa
+bUO
 aqc
 aky
 arC
@@ -148346,9 +148355,9 @@ ajV
 aky
 alm
 amc
-amg
-amg
 ama
+ama
+bUO
 aqd
 aky
 arE
@@ -148603,8 +148612,8 @@ hxG
 aky
 aln
 amc
-ama
-ama
+bUO
+bUO
 aoZ
 aqe
 aky
@@ -148860,10 +148869,10 @@ akc
 aky
 alo
 amd
-anc
+bMK
 aob
-anc
-aqf
+bMK
+bKT
 aky
 arC
 asV
@@ -149115,7 +149124,7 @@ tge
 ajz
 ajU
 akB
-alp
+and
 ame
 and
 aoc
@@ -149377,7 +149386,7 @@ amf
 ane
 aod
 aob
-aqf
+bKT
 aky
 arC
 asX
@@ -149633,7 +149642,7 @@ alr
 amg
 anf
 aod
-anc
+bMK
 aqh
 aky
 arC
