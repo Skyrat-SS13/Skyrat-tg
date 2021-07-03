@@ -59,3 +59,14 @@
 		icon_state = "[base_icon_state]_closed_[hot_or_cold ? "hot" : "cold"]"
 	else
 		icon_state = "[base_icon_state]_open"
+
+/obj/machinery/door/firedoor/onetile/CalculateAffectingAreas()
+	RegisterSignal(loc, COMSIG_TURF_EXPOSE, .proc/atmos_changed)
+
+	var/my_area = get_area(src)
+
+	for(var/obj/machinery/firealarm/iterating_alarm in my_area)
+		iterating_alarm.RegisterSignal(src, COMSIG_FIREDOOR_CLOSED_FIRE, /obj/machinery/firealarm.proc/trigger_effects, FALSE) //We trigger the alarms automatically.
+
+/obj/effect/spawner/structure/window/reinforced/no_firelock
+	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
