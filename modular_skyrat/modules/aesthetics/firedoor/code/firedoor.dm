@@ -1,3 +1,5 @@
+#define FIREDOOR_CLOSE_OVERRIDE_RESET_TIME 3 MINUTES
+
 /obj/machinery/door/firedoor
 	name = "Emergency Shutter"
 	desc = "Emergency air-tight shutter, capable of sealing off breached areas. This one has a glass panel. It has a mechanism to open it with just your hands."
@@ -79,9 +81,22 @@
 /obj/machinery/door/firedoor/attackby(obj/item/C, mob/user, params)
 	if(C.GetID())
 		if(allowed(user))
-			stay_open = !stay_open
-			balloon_alert(user, "close override [stay_open ? "engaged" : "disengaged"]")
+			toggle_close_override(user)
 	return ..()
+
+
+/obj/machinery/door/firedoor/CtrlClick(mob/user)
+	if(!user.canUseTopic(src, !issilicon(user)))
+		return
+	toggle_close_override()
+
+/obj/machinery/door/firedoor/proc/toggle_close_override(mob/user)
+	stay_open = !stay_open
+	balloon_alert(user, "close override [stay_open ? "engaged" : "disengaged"]")
+	addtimer(CALLBACK(src, .proc/close_override_reset), FIREDOOR_CLOSE_OVERRIDE_RESET_TIME)
+
+/obj/machinery/door/firedoor/proc/close_override_reset()
+	stay_open = FALSE
 
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..()
@@ -90,3 +105,4 @@
 /obj/effect/spawner/structure/window/reinforced/no_firelock
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
 
+#undef FIREDOOR_CLOSE_OVERRIDE_RESET_TIME
