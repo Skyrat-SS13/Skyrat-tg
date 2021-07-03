@@ -173,7 +173,7 @@
 	var/mob/living/carbon/human/user = locate(params["self_ref"])
 	var/mob/living/carbon/human/holder = params["holder_ref"] ? locate(params["holder_ref"]) : null
 	if(!istype(user))
-		CRASH("invalid self_ref. must be a human reference")
+		CRASH("invalid self_ref. Must be a human reference")
 
 	switch(action)
 		if("refresh")
