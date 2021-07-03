@@ -331,8 +331,6 @@ SUBSYSTEM_DEF(ticker)
 	else
 		LAZYADD(round_end_events, cb)
 
-	INVOKE_ASYNC(src, .proc/process_eorg_bans) //SKYRAT EDIT ADDITION
-
 /datum/controller/subsystem/ticker/proc/station_explosion_detonation(atom/bomb)
 	if(bomb) //BOOM
 		qdel(bomb)
