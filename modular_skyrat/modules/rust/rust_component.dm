@@ -29,7 +29,12 @@
 	RegisterSignal(parent_atom, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER), .proc/secondary_tool_act)
 	RegisterSignal(parent_atom, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_RUSTSCRAPER), .proc/secondary_tool_act)
 	RegisterSignal(parent_atom, COMSIG_PARENT_PREQDELETED, .proc/parent_del)
+	RegisterSignal(parent_atom, COMSIG_PARENT_EXAMINE, .proc/handle_examine)
 	parent_atom.update_appearance()
+
+/datum/component/rust/proc/handle_examine(datum/source, mob/user, list/examine_text)
+	SIGNAL_HANDLER
+	examine_text += "It's very rusty... Maybe you could <b><u>burn or scrape</u></b> it clean?"
 
 /datum/component/rust/proc/apply_rust_overlay(list/ret)
 	SIGNAL_HANDLER
