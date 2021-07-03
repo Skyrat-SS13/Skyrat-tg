@@ -37,4 +37,4 @@ GLOBAL_LIST_EMPTY(hell) //captured people go here (ninja energy net)
 	..()
 	GLOB.hell += loc
 	return INITIALIZE_HINT_QDEL
-/obj/effect/landmark/holding_facility
+
