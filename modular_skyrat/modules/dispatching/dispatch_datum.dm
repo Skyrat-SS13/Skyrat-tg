@@ -47,5 +47,5 @@
 		message_creator("Your ticket is being handled by [handler]")
 
 /datum/dispatch_ticket/proc/message_creator(message)
-	to_chat(origin, "<span class='boldnotice'>Ticket Message: [message]</span>")
+	to_chat(origin, span_boldnotice("Ticket Message: [message]"))
 	origin.balloon_alert(origin, message)
