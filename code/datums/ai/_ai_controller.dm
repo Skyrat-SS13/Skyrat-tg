@@ -99,9 +99,9 @@ have ways of interacting with a specific atom and control it. They posses a blac
 		walk(pawn, 0) //stop moving
 		return //this should remove them from processing in the future through event-based stuff.
 
-	if(!current_behaviors && current_behaviors.len)
+	if(!current_behaviors?.len)
 		SelectBehaviors(delta_time)
-		if(!(current_behaviors && current_behaviors.len))
+		if(!current_behaviors?.len)
 			PerformIdleBehavior(delta_time) //Do some stupid shit while we have nothing to do
 			return
 

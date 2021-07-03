@@ -381,8 +381,8 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-			var/area/A = get_area(src)
-			if(emergency_mode || (A?.fire))
+			//var/area/A = get_area(src) //SKYRAT EDIT REMOVAL
+			if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
@@ -399,8 +399,8 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	var/area/A = get_area(src)
-	if(emergency_mode || (A?.fire))
+	// var/area/A = get_area(src) SKYRAT EDIT REMOVAL
+	if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
 		. += mutable_appearance(overlayicon, "[base_state]_emergency", layer, plane)
 		return
 	if(nightshift_enabled)

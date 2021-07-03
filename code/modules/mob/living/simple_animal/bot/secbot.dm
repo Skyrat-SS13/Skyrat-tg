@@ -300,13 +300,11 @@ Auto Patrol: []"},
 		weapon.attack(C, src)
 	if(ishuman(C))
 		C.stuttering = 5
-		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
-		C.StaminaKnockdown(60,TRUE)
+		C.Paralyze(100)
 		var/mob/living/carbon/human/H = C
 		threat = H.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
 	else
-		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
-		C.StaminaKnockdown(60,TRUE)
+		C.Paralyze(100)
 		C.stuttering = 5
 		threat = C.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
 
@@ -345,10 +343,9 @@ Auto Patrol: []"},
 					else
 						stun_attack(target)
 
+					mode = BOT_PREP_ARREST
+					set_anchored(TRUE)
 					target_lastloc = target.loc
-					if(target.incapacitated()) //SKYRAT EDIT ADDITION
-						mode = BOT_PREP_ARREST
-						set_anchored(TRUE)
 					return
 
 				else // not next to perp
@@ -364,7 +361,7 @@ Auto Patrol: []"},
 		if(BOT_PREP_ARREST) // preparing to arrest target
 
 			// see if he got away. If he's no no longer adjacent or inside a closet or about to get up, we hunt again.
-			if( !Adjacent(target) || !isturf(target.loc) ||  (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
+			if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
 				back_to_hunt()
 				return
 
@@ -473,9 +470,9 @@ Auto Patrol: []"},
 		Sa.add_overlay("hs_hole")
 		Sa.created_name = name
 		new /obj/item/assembly/prox_sensor(Tsec)
-		/* var/obj/item/gun/energy/disabler/G = new (Tsec) - SKYRAT EDIT REMOVAL START
+		var/obj/item/gun/energy/disabler/G = new (Tsec)
 		G.cell.charge = 0
-		G.update_appearance() */ // SKYRAT EDIT REMOVAL END - no more disabler farms
+		G.update_appearance()
 		if(prob(50))
 			new /obj/item/bodypart/l_leg/robot(Tsec)
 			if(prob(25))
@@ -491,7 +488,7 @@ Auto Patrol: []"},
 		Sa.add_overlay("hs_hole")
 		Sa.created_name = name
 		new /obj/item/assembly/prox_sensor(Tsec)
-		// drop_part(baton_type, Tsec) - SKYRAT EDIT REMOVAL - no more baton farms
+		drop_part(baton_type, Tsec)
 
 		if(prob(50))
 			drop_part(robot_arm, Tsec)
