@@ -42,7 +42,7 @@
 
 	box = /obj/item/storage/box/survival/expeditionary_corps
 
-	backpack_contents = list(/obj/item/exp_corps_equip)
+	backpack_contents = list(/obj/item/choice_beacon/exp_corps_equip)
 
 	id = /obj/item/card/id/advanced/silver/exp_corps
 	id_trim = /datum/id_trim/job/expeditionary_trooper
@@ -84,6 +84,12 @@
 	req_access = list(ACCESS_GATEWAY, ACCESS_CENT_GENERAL)
 	max_integrity = 5000
 
+/obj/structure/closet/crate/secure/exp_corps/testa
+	name = "Test1"
+
+/obj/structure/closet/crate/secure/exp_corps/testb
+	name = "Test2"
+
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
@@ -96,21 +102,31 @@
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
-/obj/item/exp_corps_equip
-	name = "Expeditionary Corps Supply Beacon"
+/obj/item/choice_beacon/exp_corps_equip
+	name = "Vanguard Operatives Supply Beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-red"
 	inhand_icon_state = "radio"
-	var/item2spawn = /obj/structure/closet/crate/secure/exp_corps
+	var/static/list/exp_item_list
+	var/choice
 
-/obj/item/exp_corps_equip/attack_self(mob/user, modifiers)
+/obj/item/choice_beacon/exp_corps_equip/generate_display_names()
+	if(!exp_item_list)
+		exp_item_list = list()
+		var/list/templist = typesof(/obj/structure/closet/crate/secure/exp_corps)
+		for(var/V in templist)
+			var/atom/A = V
+			exp_item_list[initial(A.name)] = A
+	return exp_item_list
+
+/obj/item/choice_beacon/exp_corps_equip/attack_self(mob/user, modifiers)
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	podspawn(list(
 		"target" = get_turf(src),
 		"style" = STYLE_CENTCOM,
-		"spawn" = item2spawn,
+		"spawn" = choice,
 	))
 	to_chat(user, "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>")
 	qdel(src)
