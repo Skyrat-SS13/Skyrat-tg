@@ -58,7 +58,7 @@
 	if(istype(O, /obj/item/wirebrush))
 		var/obj/item/wirebrush/usedObj = O
 		user.visible_message(span_notice("[user] starts to clean \the [src]."), span_notice("You start to clean \the [src]..."))
-		if(do_after(user, usedObj.clean_speed, target = src))
+		if(do_after(user, 2 SECONDS * usedObj.toolspeed, target = src))
 			user.visible_message(span_notice("[user] cleans \the [src]."), span_notice("You clean \the [src]."))
 			dirty = 0
 			update_appearance()
