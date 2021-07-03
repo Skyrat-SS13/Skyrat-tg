@@ -551,7 +551,7 @@
 
 				dock_id(destination_dock)
 				unbolt_all_doors() //SKYRAT EDIT ADDITION
-				INVOKE_ASYNC(src, .proc/process_eorg_bans) //SKYRAT EDIT ADDITION
+				INVOKE_ASYNC(GLOBAL_PROC, .proc/process_eorg_bans) //SKYRAT EDIT ADDITION
 				mode = SHUTTLE_ENDGAME
 				timer = 0
 
