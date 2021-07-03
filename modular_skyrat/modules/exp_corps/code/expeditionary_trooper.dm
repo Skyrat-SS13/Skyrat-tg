@@ -83,7 +83,7 @@
 	icon_state = "gangtool-red"
 	inhand_icon_state = "radio"
 	var/static/list/exp_item_list
-	var/list/loadout = list(3)
+	var/list/loadout = list()
 
 /obj/item/choice_beacon/exp_corps_equip/generate_display_names()
 	for(var/iterating_crate in subtypesof(/obj/structure/closet/crate/secure/exp_corps))
