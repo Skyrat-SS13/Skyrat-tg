@@ -1,5 +1,5 @@
 /datum/sprite_accessory/taur
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/taur.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/taur.dmi'
 	key = "taur"
 	generic = "Taur Type"
 	color_src = USE_MATRIXED_COLORS
@@ -14,6 +14,10 @@
 /datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 		return TRUE
+	if(H.owned_turf)
+		var/list/used_in_turf = list("tail")
+		if(H.owned_turf.name in used_in_turf)
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/taur/none

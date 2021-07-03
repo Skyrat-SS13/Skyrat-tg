@@ -26,6 +26,14 @@
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
+	mail_goodies = list(
+		/obj/item/food/donut/caramel = 10,
+		/obj/item/food/donut/matcha = 10,
+		/obj/item/food/donut/blumpkin = 5,
+		/obj/item/clothing/mask/whistle = 5,
+		/obj/item/melee/baton/boomerang/loaded = 1
+	)
+
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 
 /**
@@ -94,6 +102,13 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		var/obj/item/card/id/worn_id = H.wear_id
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
 		H.sec_hud_set_ID()
+		//SKYRAT EDIT ADD - ALT TITLES
+		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
+			worn_id.assignment = H.client.prefs.alt_titles_preferences[title]
+			worn_id.update_label()
+		else if (alt_title_pref)
+			worn_id.assignment = alt_title_pref
+			worn_id.update_label()
 
 	var/teleport = 0
 	if(!CONFIG_GET(flag/sec_start_brig))
@@ -181,7 +196,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	//suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT REMOVAL - SEC_HAU&L
+	suit_store = /obj/item/gun/energy/taser/armadyne //SKYRAT EDIT CHANGE - SEC_HAUL
 	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/armament_token/sidearm) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security

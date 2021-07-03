@@ -23,9 +23,6 @@
 	//if(sleeper_r && model.sleeper_overlay)
 	//	add_overlay("[model.sleeper_overlay]_r[sleeper_nv ? "_nv" : ""]")
 
-	if(stat == DEAD && model.has_snowflake_deadsprite)
-		icon_state = "[model.cyborg_base_icon]-wreck"
-
 	if(model.cyborg_pixel_offset != null)
 		pixel_x = model.cyborg_pixel_offset
 
@@ -34,7 +31,7 @@
 		pixel_x = initial(pixel_x)
 
 	if(robot_resting)
-		if(stat != DEAD && model.dogborg)
+		if(stat != DEAD && is_dogborg())
 			switch(robot_resting)
 				if(ROBOT_REST_NORMAL)
 					icon_state = "[model.cyborg_base_icon]-rest"
@@ -47,4 +44,8 @@
 			cut_overlays()
 	else
 		icon_state = "[model.cyborg_base_icon]"
+
+	if(stat == DEAD && (R_TRAIT_UNIQUEWRECK in model.model_features))
+		icon_state = "[model.cyborg_base_icon]-wreck"
+
 	update_fire()

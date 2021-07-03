@@ -9,7 +9,7 @@
 		set_typing_indicator(FALSE)
 	//SKYRAT EDIT ADDITION END
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	if(message)
 		say(message)
@@ -19,7 +19,7 @@
 	set name = "Whisper"
 	set category = "IC"
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	whisper(message)
 
@@ -40,7 +40,7 @@
 	//SKYRAT EDIT ADDITION END
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
 	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -53,22 +53,28 @@
 	var/alt_name = ""
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
+
+	//SKYRAT EDIT ADDITION
+	if(!GLOB.dchat_allowed && !check_rights(R_ADMIN, FALSE))
+		to_chat(src, "<span class='danger'>Dead chat is currently muted.</span>")
+		return
+	//SKYRAT EDIT END
 
 	var/jb = is_banned_from(ckey, "Deadchat")
 	if(QDELETED(src))
 		return
 
 	if(jb)
-		to_chat(src, "<span class='danger'>You have been banned from deadchat.</span>")
+		to_chat(src, span_danger("You have been banned from deadchat."))
 		return
 
 
 
 	if (src.client)
 		if(src.client.prefs.muted & MUTE_DEADCHAT)
-			to_chat(src, "<span class='danger'>You cannot talk in deadchat (muted).</span>")
+			to_chat(src, span_danger("You cannot talk in deadchat (muted)."))
 			return
 
 		if(src.client.handle_spam_prevention(message,MUTE_DEADCHAT))

@@ -2,10 +2,11 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = "vox"
-	eyes_icon = 'modular_skyrat/modules/customization/icons/mob/species/vox_eyes.dmi'
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/vox_parts_greyscale.dmi'
+	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/vox_parts_greyscale.dmi'
 	say_mod = "shrieks"
 	default_color = "00FF00"
+	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -35,6 +36,7 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = MEAT | FRIED
+	payday_modifier = 0.75
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

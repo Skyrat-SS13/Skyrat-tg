@@ -17,8 +17,9 @@
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP
 	)
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/moth_parts_greyscale.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/moth_parts_greyscale.dmi'
 	learnable_languages = list(/datum/language/common, /datum/language/moffic)
+	payday_modifier = 0.75
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"

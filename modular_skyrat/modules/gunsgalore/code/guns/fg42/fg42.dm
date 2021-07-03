@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/battle_rifle/fg42
 	name = "\improper Fallschirmjägergewehr 42"
-	desc = "The FG 42 (German: Fallschirmjägergewehr 42, paratrooper rifle 42) is a selective-fire 7.92×57mm Mauser automatic rifle produced in Nazi Germany during World War II. The weapon was developed specifically for the use of the Fallschirmjäger airborne infantry in 1942 and was used in very limited numbers until the end of the war."
+	desc = "A German paratrooper rifle designed to be used at the very least, five-hundred and fifty years ago. It's most likely reproduction, and you should be concerned more than excited to have this in your hands."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42.dmi'
 	icon_state = "fg42"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/fg42/fg42_lefthand.dmi'
@@ -29,8 +29,8 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern
-	name = "\improper Mil Spec Fallschirmjägergewehr 42"
-	desc = "The FG 42 (German: Fallschirmjägergewehr 42, paratrooper rifle 42) is a selective-fire 7.92×57mm Mauser automatic rifle produced in Nazi Germany during World War II. The weapon was developed specifically for the use of the Fallschirmjäger airborne infantry in 1942 and was used in very limited numbers until the end of the war. This is the 25th century version."
+	name = "\improper Fallschirmjägergewehr 42 MK. VII"
+	desc = "An absolute disgrace to any sane person's eyes, this is a cheap reproduction of an extremely old German paratrooper rifle filled to the brim with aftermarket parts, some of them shouldn't even be in there. Louis Stange is rolling in their grave."
 	icon_state = "fg42_modern"
 	inhand_icon_state = "fg42"
 	worn_icon_state = "fg42"

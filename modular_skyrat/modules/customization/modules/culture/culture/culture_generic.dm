@@ -124,3 +124,12 @@
 	being considered some of the best qualified technical specialists in humanity. Recently there has been a rising transhumanist element in Ceti society resulting in a large \
 	cybernetics culture; it is not uncommon to see many Cetites sporting some chrome."
 	economic_power = 1.1
+
+/datum/cultural_info/culture/zolmalchi
+	name = "Zolmalchi"
+	description =  "You are from any number of shadowy fleets, tumultuous colonies, or starless pocket dimensions alien beings called 'Demons' typically reside in. \
+	These places tend to enjoy high levels of technology and denizens of quick wit, but often get stuck in battling with deeply ingrained archaic customs and obscure norms. \
+	Many of these cultures have strict interpersonal hierarchies, though their dwellers are no stranger to betrayal and climbing up the social ladder with blood-stained hands is often the way to go. \
+	A common philosophy in these oft-clashing places is the simple phrase, 'Do as thou wilt'."
+	economic_power = 1
+	additional_langs = list(/datum/language/zolmach)

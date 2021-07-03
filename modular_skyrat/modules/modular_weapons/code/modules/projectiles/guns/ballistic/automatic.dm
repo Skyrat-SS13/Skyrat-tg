@@ -4,46 +4,45 @@
 
 // Magazines
 
-/obj/item/ammo_box/magazine/smg32
-	name = "smg magazine (.32)"
-	desc = "A .32 magazine with a 30-rnd capacity. An economically friendly but low damage calibre, even low-end autolathes can print .32 bullets."
+/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
+	name = "CFA Wildcat Magazine (.32)"
+	desc = "Magazines taking .32 ammunition; it fits in the CFA Wildcat. Alt+click to reskin it."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "smg32"
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_INCENDIARY)
 	ammo_type = /obj/item/ammo_casing/c32
 	caliber = "c32acp"
 	max_ammo = 30
-	multiple_sprites = 2
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
-/obj/item/ammo_box/magazine/smg32/rubber
-	name = "smg magazine (.32 rubber)"
-	icon_state = "smg32"
-	ammo_type = /obj/item/ammo_casing/c32_rubber
+/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/ap
+	ammo_type = /obj/item/ammo_casing/c32/ap
+	round_type = AMMO_TYPE_AP
 
-/obj/item/ammo_box/magazine/smg32/ap
-	name = "smg magazine (.32 armor-piercing)"
-	icon_state = "smg32"
-	ammo_type = /obj/item/ammo_casing/c32_ap
+/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/rubber
+	ammo_type = /obj/item/ammo_casing/c32/rubber
+	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/ammo_box/magazine/smg32/incendiary
-	name = "smg magazine (.32 incendiary)"
-	icon_state = "smg32"
+/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/incendiary
 	ammo_type = /obj/item/ammo_casing/c32_incendiary
+	round_type = AMMO_TYPE_INCENDIARY
 
-/obj/item/ammo_box/magazine/smg32/empty
+/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/empty
 	start_empty = 1
 
-///////////
-//  SMG  //
-///////////
-
+///////////////
+//  Wildcat  //
+///////////////
+// 3rnd burst .32 calibre, 15 damage.
+// Fills the role of a low damage, high magazine capacity secondary.
 /obj/item/gun/ballistic/automatic/cfa_wildcat
 	name = "\improper CFA Wildcat"
-	desc = "An old SMG, this one is chambered in .32, a very common and dirt-cheap cartridge."
+	desc = "An old SMG, this one is chambered in .32, a very common and dirt-cheap cartridge. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched above the magazine well."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "mp5"
 	inhand_icon_state = "arg"
 	selector_switch_icon = TRUE
-	mag_type = /obj/item/ammo_box/magazine/smg32
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
 	can_suppress = FALSE
 	burst_size = 3
 	fire_delay = 1.25
@@ -57,3 +56,55 @@
 
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
+
+///////////////
+//    MP7    //
+///////////////
+
+/obj/item/gun/ballistic/automatic/cfa_lynx
+	name = "\improper CFA Lynx"
+	desc = "A carbine with a high magazine capacity. Chambered in 4.6x30mm. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched above the magazine well."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
+	icon_state = "cfa-lynx"
+	inhand_icon_state = "arg"
+	selector_switch_icon = FALSE
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	can_suppress = FALSE
+	burst_size = 3
+	fire_delay = 0.5
+	spread = 2
+	mag_display = TRUE
+	empty_indicator = FALSE
+	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
+	weapon_weight = WEAPON_MEDIUM
+	has_gun_safety = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/gun/ballistic/automatic/cfa_lynx/no_mag
+	spawnwithmagazine = FALSE
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
+	name = "CFA Lynx Magazine (4.6x30mm)"
+	desc = "A magazine for the CFA Lynx. It has a small inscription on the base, '4.6x30mm'. Alt+click to reskin it."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'	
+	icon_state = "lynx"
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_INCENDIARY)
+	ammo_type = /obj/item/ammo_casing/c46x30mm
+	caliber = CALIBER_46X30MM
+	max_ammo = 40
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/ap
+	ammo_type = /obj/item/ammo_casing/c46x30mm/ap
+	round_type = AMMO_TYPE_AP
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/rubber
+	ammo_type = /obj/item/ammo_casing/c46x30mm/rubber
+	round_type = AMMO_TYPE_RUBBER
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/incendiary
+	ammo_type = /obj/item/ammo_casing/c46x30mm/inc
+	round_type = AMMO_TYPE_INCENDIARY
+
+/obj/item/ammo_box/magazine/multi_sprite/cfa_lynx/empty
+	start_empty = TRUE

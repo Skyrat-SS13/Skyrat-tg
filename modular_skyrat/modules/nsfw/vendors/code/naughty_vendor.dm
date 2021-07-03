@@ -8,17 +8,28 @@
 	light_mask = "kink-light-mask"
 
 	products = list( //Relatively normal to have, I GUESS
-		/obj/item/clothing/under/misc/stripper/mankini = 4,
 		/obj/item/clothing/under/costume/maid = 8,
 		/obj/item/clothing/under/rank/civilian/janitor/maid = 8,
+		/obj/item/clothing/under/misc/gear_harness = 6,
+		/obj/item/clothing/under/costume/loincloth = 4,
 		/obj/item/clothing/under/misc/stripper = 4,
 		/obj/item/clothing/under/misc/stripper/green = 4,
-		/obj/item/clothing/under/misc/gear_harness = 4,
+		/obj/item/clothing/under/misc/stripper/mankini = 4,
+		/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
+		/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
 		/obj/item/clothing/under/shorts/polychromic/pantsu = 4,
 		/obj/item/clothing/under/misc/poly_bottomless = 4,
 		/obj/item/clothing/under/misc/poly_tanktop = 4,
 		/obj/item/clothing/under/misc/poly_tanktop/female = 4,
-		/obj/item/clothing/neck/human_petcollar= 8,
+		/obj/item/clothing/mask/muzzle/ring = 4,
+		/obj/item/clothing/mask/muzzle/ball = 4,
+		/obj/item/clothing/shoes/jackboots/thigh = 3, //bdsm lookin ass....
+		/obj/item/clothing/shoes/jackboots/knee = 3,
+		/obj/item/clothing/neck/human_petcollar = 8,
+		/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 3,
+		/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 5,
+		/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 3,
+		/obj/item/clothing/neck/human_petcollar/locked/cross = 3,
 		/obj/item/clothing/neck/human_petcollar/choker = 4,
 		/obj/item/restraints/handcuffs/fake = 8,
 		/obj/item/clothing/glasses/blindfold = 8,
@@ -40,7 +51,8 @@
 	premium = list(
 		/obj/item/clothing/under/dress/corset = 4,
 		/obj/item/clothing/under/pants/chaps = 4,
-		/obj/item/clothing/accessory/skullcodpiece/fake = 4
+		/obj/item/clothing/accessory/skullcodpiece/fake = 4,
+		/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3
 	)
 
 	refill_canister = /obj/item/vending_refill/kink

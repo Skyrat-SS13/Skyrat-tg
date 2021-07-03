@@ -4,6 +4,7 @@
 	icon_state = "monkeymind"
 	inhand_icon_state = "monkeymind"
 	strip_delay = 100
+	armor = list(MELEE = 5, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 0)
 	var/mob/living/carbon/human/magnification = null ///if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
 	var/polling = FALSE///if the helmet is currently polling for targets (special code for removal)
 	var/light_colors = 1 ///which icon state color this is (red, blue, yellow)
@@ -104,6 +105,7 @@
 	disconnect()
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/make_fall_off()
+	SIGNAL_HANDLER
 	if(magnification)
 		visible_message("<span class='warning'>[src] falls off of [magnification]'s head as it changes shape!</span>")
 		magnification.dropItemToGround(src)

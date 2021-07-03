@@ -76,13 +76,14 @@
 	addtimer(CALLBACK(src, .proc/LockOn), 7)
 
 /datum/gunpoint/proc/MeleeAttackReact(datum/source_datum, atom/target)
+	SIGNAL_HANDLER
 	if(!CheckContinuity())
 		qdel(src)
 		return
 	if(!allow_use && CanReact())
 		source.log_message("[source] shot [target] because they attacked/disarmed/pulled", LOG_ATTACK)
 		to_chat(source, "<span class='warning'>You pull the trigger instinctively to [target.name] actions!</span>")
-		ShootTarget()
+		INVOKE_ASYNC(src, .proc/ShootTarget)
 
 /datum/gunpoint/proc/LockOn()
 	if(src) //if we're not present then locking on failed and this datum is deleted
@@ -92,8 +93,8 @@
 		locked = TRUE
 		log_combat(target, source, "locked onto with aiming")
 		playsound(get_turf(source), 'modular_skyrat/modules/gunpoint/sound/targeton.ogg', 50,1)
-		to_chat(source, "<span class='boldnotice'>You lock onto [target.name]!</span>")
-		target.visible_message("<span class='boldwarning'>[source.name] holds [target.name] at gunpoint with the [aimed_gun.name]!</span>", "<span class='userdanger'>[source.name] holds you at gunpoint with the [aimed_gun.name]!</span>")
+		to_chat(source, "<span class='notice'><b>You lock onto [target.name]!</b></span>")
+		target.visible_message("<span class='warning'><b>[source.name] holds [target.name] at gunpoint with the [aimed_gun.name]!</b></span>", "<span class='userdanger'>[source.name] holds you at gunpoint with the [aimed_gun.name]!</span>")
 		if(target.gunpointed.len == 1)//First case
 			to_chat(target, "<span class='danger'>You'll <b>get shot</b> if you <b>use radio</b>, <b>move</b> or <b>interact with items</b>!</span>")
 			to_chat(target, "<span class='notice'>You can however take items out, toss harmless items or drop them.</span>")
@@ -131,18 +132,20 @@
 	source.gunpointing = null
 	if(locked)
 		QDEL_NULL(gunpoint_gui)
-		target.visible_message("<span class='notice'>[source.name] no longer holds [target.name] at gunpoint.</span>", "<span class='boldnotice'>[source.name] no longer holds you at gunpoint.</span>")
+		target.visible_message("<span class='notice'>[source.name] no longer holds [target.name] at gunpoint.</span>", "<span class='notice'><b>[source.name] no longer holds you at gunpoint.</b></span>")
 	source = null
 	target = null
 	aimed_gun = null
 	return ..()
 
 /datum/gunpoint/proc/ClickDestroy()
+	SIGNAL_HANDLER
 	if(locked)
 		playsound(get_turf(source), 'modular_skyrat/modules/gunpoint/sound/targetoff.ogg', 50,1)
 	qdel(src)
 
 /datum/gunpoint/proc/SourceCC(datum/source, amount, update, ignore)
+	SIGNAL_HANDLER
 	if(amount && !ignore)
 		qdel(src)
 
@@ -152,18 +155,20 @@
 	aimed_gun.afterattack(target, source)
 
 /datum/gunpoint/proc/RadioReact(datum/datum_source, obj/item/radio/radio, message, channel, list/spans, datum/language/language, direct)
+	SIGNAL_HANDLER
 	if(!allow_radio && CanReact())
 		if(direct)
 			source.log_message("[source] shot [target] because they spoke on radio", LOG_ATTACK)
 			to_chat(source, "<span class='warning'>You pull the trigger instinctively as [target.name] speaks on the radio!</span>")
-			ShootTarget()
+			INVOKE_ASYNC(src, .proc/ShootTarget)
 
 /datum/gunpoint/proc/MovedReact(datum/datum_source, atom/moved, direction, forced)
+	SIGNAL_HANDLER
 	if(!CheckContinuity())
 		qdel(src)
 		return
 	if(!allow_move && CanReact() && !(target.pulledby && target.pulledby == source)) //Don't shoot him if we're pulling them
-		MovedShootProc()
+		INVOKE_ASYNC(src, .proc/MovedShootProc)
 
 /datum/gunpoint/proc/MovedShootProc() //This exists in case of someone moving several tiles in one tick, such as dashes or diagonal movement
 	moved_counter += 1
@@ -183,6 +188,7 @@
 		ShootTarget()
 
 /datum/gunpoint/proc/SourceMoved(datum/datum_source)
+	SIGNAL_HANDLER
 	if(!CheckContinuity())
 		qdel(src)
 

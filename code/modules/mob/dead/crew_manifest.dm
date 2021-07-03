@@ -13,11 +13,13 @@
 		ui.open()
 
 /datum/crew_manifest/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	if (..())
+	. = ..()
+	if(.)
 		return
 
 /datum/crew_manifest/ui_data(mob/user)
 	var/list/positions = list(
+		"Central Command" = list("exceptions" = list(), "open" = 0), //SKYRAT EDIT ADDITION
 		"Command" = list("exceptions" = list(), "open" = 0),
 		"Security" = list("exceptions" = list(), "open" = 0),
 		"Engineering" = list("exceptions" = list(), "open" = 0),
@@ -29,6 +31,7 @@
 		"Silicon" = list("exceptions" = list(), "open" = 0)
 	)
 	var/list/departments = list(
+		list("flag" = DEPARTMENT_CENTRAL_COMMAND, "name" = "Central Command"), //SKYRAT EDIT CHANGE
 		list("flag" = DEPARTMENT_COMMAND, "name" = "Command"),
 		list("flag" = DEPARTMENT_SECURITY, "name" = "Security"),
 		list("flag" = DEPARTMENT_ENGINEERING, "name" = "Engineering"),

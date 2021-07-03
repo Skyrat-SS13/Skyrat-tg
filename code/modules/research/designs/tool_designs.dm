@@ -23,7 +23,7 @@
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
-/* SKYRAT EDIT MOVAL - MOVED TO MODULAR
+/*	SKYRAT EDIT - MOVED TO modular_skyrat/modules/electric_welder/code/electric_welder.dm
 /datum/design/exwelder
 	name = "Experimental Welding Tool"
 	desc = "An experimental welder capable of self-fuel generation."
@@ -54,6 +54,17 @@
 	category = list("Tool Designs")
 	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
 
+//SKYRAT EDIT ADDITION//
+/datum/design/engi_plumbing
+	name = "Engineering Plumbing Constructor"
+	desc = "A tool that can construct several plumbing devices, useful for liquid management."
+	id = "engi_plumbing"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 60000, /datum/material/glass = 5000)  // Costs the same as an RCD.
+	build_path = /obj/item/construction/plumbing/engineering
+	category = list("Tool Designs")
+	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+//SKYRAT EDIT END//
 
 /datum/design/rcd_upgrade/frames
 	name = "RCD frames designs upgrade"
@@ -124,16 +135,6 @@
 	materials = list(/datum/material/iron=4000, /datum/material/uranium=1500, /datum/material/silver=500)
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/crystal_stabilizer
-	name = "Supermatter Matrix Stabilizer"
-	desc = "A tool that is used to restore the stability of the Crystal Matrix by injecting it with the anomaly liquid"
-	id = "crystal_stabilizer"
-	build_path = /obj/item/crystal_stabilizer
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 3000, /datum/material/glass = 4500, /datum/material/silver = 2500)
-	category = list("Tool Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 
 /datum/design/plumbing_rcd_sci
 	name = "Research Plumbing Constructor"

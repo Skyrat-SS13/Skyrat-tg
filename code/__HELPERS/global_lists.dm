@@ -45,6 +45,36 @@
 		var/datum/scream_type/S = new spath()
 		GLOB.scream_types[S.name] = spath
 	sortList(GLOB.scream_types, /proc/cmp_typepaths_asc)
+
+	//Laugh types
+	for(var/spath in subtypesof(/datum/laugh_type))
+		var/datum/laugh_type/L = new spath()
+		GLOB.laugh_types[L.name] = spath
+	sortList(GLOB.laugh_types, /proc/cmp_typepaths_asc)
+
+	//For alt titles.
+	for(var/spath in subtypesof(/datum/job))
+		var/datum/job/J = new spath()
+		if(istype(J, /datum/job/captain))
+			GLOB.captain_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_CENTRAL_COMMAND))
+			GLOB.central_command_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_COMMAND))
+			GLOB.command_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SECURITY))
+			GLOB.security_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_CARGO))
+			GLOB.supply_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SERVICE))
+			GLOB.service_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_MEDICAL))
+			GLOB.medical_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SCIENCE))
+			GLOB.science_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_ENGINEERING))
+			GLOB.engineering_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SILICON))
+			GLOB.nonhuman_alttitles += J.alt_titles
 	//SKYRAT EDIT END
 
 	//Species
@@ -57,6 +87,11 @@
 	for(var/path in subtypesof(/datum/surgery))
 		GLOB.surgeries_list += new path()
 	sortList(GLOB.surgeries_list, /proc/cmp_typepaths_asc)
+
+	// Hair Gradients - Initialise all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
+	for(var/path in subtypesof(/datum/sprite_accessory/hair_gradient))
+		var/datum/sprite_accessory/hair_gradient/H = new path()
+		GLOB.hair_gradients_list[H.name] = H
 
 	// Keybindings
 	init_keybindings()

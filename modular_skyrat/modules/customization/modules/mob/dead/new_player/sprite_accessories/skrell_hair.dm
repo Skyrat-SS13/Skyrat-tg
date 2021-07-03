@@ -1,5 +1,5 @@
 /datum/sprite_accessory/skrell_hair
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/skrell_hair.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/skrell_hair.dmi'
 	generic = "Skrell Headtails"
 	key = "skrell_hair"
 	color_src = USE_ONE_COLOR

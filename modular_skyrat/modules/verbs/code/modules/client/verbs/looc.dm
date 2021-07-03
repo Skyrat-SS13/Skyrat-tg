@@ -21,8 +21,11 @@
 		if(handle_spam_prevention(msg,MUTE_OOC))
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			to_chat(src, "<span class='boldannounce'><B>Advertising other servers is not allowed.</B></span>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
+			return
+		if(prefs.muted & MUTE_LOOC)
+			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
 			return
 		if(mob.stat)
 			to_chat(src, "<span class='danger'>You cannot use LOOC while unconscious or dead.</span>")  //Skyrat change
@@ -65,5 +68,5 @@
 		return
 	prefs.skyrat_toggles ^= CHAT_LOOC_ADMIN
 	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.skyrat_toggles & CHAT_LOOC_ADMIN) ? "now" : "no longer"] hear LOOC globally.")
+	to_chat(usr, "<span class='infoplain'>You will [(prefs.skyrat_toggles & CHAT_LOOC_ADMIN) ? "now" : "no longer"] hear LOOC globally.</span>")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Togle Admin LOOC", "[usr.client.prefs.skyrat_toggles & CHAT_LOOC_ADMIN ? "Enabled" : "Disabled"]"))

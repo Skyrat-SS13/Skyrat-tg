@@ -22,8 +22,6 @@
 	attack_sound = 'sound/weapons/punch3.ogg'
 	attack_verb_continuous = "slaps"
 	attack_verb_simple = "slap"
-	food_type = list(/obj/item/food/fries, /obj/item/food/cheesyfries, /obj/item/food/cornchips, /obj/item/food/carrotfries)
-	tame_chance = 30
 
 	var/obj/effect/proc_holder/tentacle_slap/tentacle_slap
 
@@ -32,13 +30,13 @@
 	tentacle_slap = new(src)
 	AddAbility(tentacle_slap)
 	add_cell_sample()
+	AddComponent(/datum/component/tameable, list(/obj/item/food/fries, /obj/item/food/cheesyfries, /obj/item/food/cornchips, /obj/item/food/carrotfries), tame_chance = 30, bonus_tame_chance = 0, after_tame = CALLBACK(src, .proc/tamed))
 
 /mob/living/simple_animal/hostile/vatbeast/Destroy()
 	. = ..()
 	QDEL_NULL(tentacle_slap)
 
-/mob/living/simple_animal/hostile/vatbeast/tamed()
-	. = ..()
+/mob/living/simple_animal/hostile/vatbeast/proc/tamed(mob/living/tamer)
 	can_buckle = TRUE
 	buckle_lying = 0
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/vatbeast)
@@ -67,19 +65,21 @@
 
 /obj/effect/proc_holder/tentacle_slap/fire(mob/living/carbon/user)
 	if(current_cooldown > world.time)
-		to_chat(user, "<span class='notice'>This ability is still on cooldown.</span>")
+		to_chat(user, span_notice("This ability is still on cooldown."))
 		return
 	if(active)
-		remove_ranged_ability("<span class='notice'>You stop preparing to tentacle slap.</span>")
+		remove_ranged_ability(span_notice("You stop preparing to tentacle slap."))
 	else
-		add_ranged_ability(user, "<span class='notice'>You prepare your pimp-tentacle. <B>Left-click to slap a target!</B></span>", TRUE)
+		add_ranged_ability(user, span_notice("You prepare your pimp-tentacle. <B>Left-click to slap a target!</B>"), TRUE)
 
 /obj/effect/proc_holder/tentacle_slap/InterceptClickOn(mob/living/caller, params, atom/target)
 	. = ..()
 	if(.)
 		return
 
-	if(owner.stat)
+	var/mob/living/user = usr //SKYRAT EDIT CHANGE
+
+	if(user.stat) //SKYRAT EDIT CHANGE
 		remove_ranged_ability()
 		return
 
@@ -91,10 +91,10 @@
 
 	var/mob/living/living_target = target
 
-	owner.visible_message("<span class='warning>[owner] slaps [living_target] with its tentacle!</span>", "<span class='notice'>You slap [living_target] with your tentacle.</span>")
-	playsound(owner, 'sound/effects/assslap.ogg', 90)
+	user.visible_message("<span class='warning>[user] slaps [living_target] with its tentacle!</span>", span_notice("You slap [living_target] with your tentacle.")) //SKYRAT EDIT CHANGE
+	playsound(user, 'sound/effects/assslap.ogg', 90)//SKYRAT EDIT CHANGE
 	var/atom/throw_target = get_edge_target_turf(target, ranged_ability_user.dir)
-	living_target.throw_at(throw_target, 6, 4, owner)
+	living_target.throw_at(throw_target, 6, 4, user) //SKYRAT EDIT CHANGE
 	living_target.apply_damage(30)
 	current_cooldown = world.time + cooldown
 	remove_ranged_ability()

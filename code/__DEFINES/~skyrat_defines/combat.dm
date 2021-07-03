@@ -9,7 +9,7 @@
 #define SIMPLE_MOB_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.7 //Fights with simple mobs are usually more sustained, so apply a bit less
 #define BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.8 //Brute that isnt sharp, knocks the wind outta you real good
 #define OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.5 //Burns, sharp implements
-#define PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1.6
+#define PROJECTILE_TISSUE_DAMAGE_STAMINA_MULTIPLIER 1
 
 //Glancing attacks happen when someone uses disarm intent with melee weaponry, aiming to disable a person instead
 #define TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER 0.5

@@ -25,9 +25,19 @@
 	name = "Flat cap"
 	path = /obj/item/clothing/head/flatcap
 
+/datum/loadout_item/head/pflatcap
+	name = "Poly Flat cap"
+	path = /obj/item/clothing/head/polyflatc
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/head/pirate
 	name = "Pirate hat"
 	path = /obj/item/clothing/head/pirate
+
+/datum/loadout_item/head/flowerpin
+	name = "Flower Pin"
+	path = /obj/item/clothing/head/flowerpin
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/head/rice_hat
 	name = "Rice hat"
@@ -36,6 +46,18 @@
 /datum/loadout_item/head/ushanka
 	name = "Ushanka"
 	path = /obj/item/clothing/head/ushanka
+
+/datum/loadout_item/head/wrussian
+	name = "Black Papakha"
+	path = /obj/item/clothing/head/whiterussian
+
+/datum/loadout_item/head/wrussianw
+	name = "White Papakha"
+	path = /obj/item/clothing/head/whiterussian/white
+
+/datum/loadout_item/head/wrussianb
+	name = "Black and Red Papakha"
+	path = /obj/item/clothing/head/whiterussian/black
 
 /datum/loadout_item/head/slime
 	name = "Slime hat"
@@ -69,6 +91,21 @@
 /datum/loadout_item/head/whitekepiold
 	name = "White Kepi, Old"
 	path = /obj/item/clothing/head/kepi/old
+
+/datum/loadout_item/head/hijab
+	name = "Hijab"
+	path = /obj/item/clothing/head/hijab
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/head/turban
+	name = "Turban"
+	path = /obj/item/clothing/head/turb
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/head/keff
+	name = "Keffiyeh"
+	path = /obj/item/clothing/head/keffiyeh
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/head/maidhead
 	name = "Maid Headband"
@@ -165,6 +202,21 @@
 /datum/loadout_item/head/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+/datum/loadout_item/head/job/captain/imperial
+	name = "Captain's Naval Cap"
+	path = /obj/item/clothing/head/imperial/cap
+	restricted_roles = list("Captain", "Nanotrasen Representative")
+
+/datum/loadout_item/head/job/hop/imperial
+	name = "Head of Personnel's Naval Cap"
+	path = /obj/item/clothing/head/imperial/hop
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
+
+/datum/loadout_item/head/job/ce/imperial
+	name = "Chief Engineer's blast helmet."
+	path = /obj/item/clothing/head/imperial/ce
+	restricted_roles = list("Chief Engineer")
+
 /datum/loadout_item/head/job/cowboyhat/sec
 	name = "Cowboy Hat, Security"
 	path = /obj/item/clothing/head/cowboyhat/sec
@@ -177,15 +229,47 @@
 	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security")
 
-/datum/loadout_item/head/job/navybluehosberet
+/datum/loadout_item/head/job/sec/ushanka
+	name = "Security Ushanka"
+	path = /obj/item/clothing/head/ushankasec
+	restricted_desc = "Security"
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer")
+
+/datum/loadout_item/head/job/blasthelmet
+	name = "General's Helmet"
+	path = /obj/item/clothing/head/imperialhelmet
+	restricted_desc = "Security and Command"
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Civil Disputes Officer","Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+
+/datum/loadout_item/head/job/hos/imperial
 	name = "Head of security's navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyhos
+	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/head/job/navybluehosberet
+	name = "Head of Security's Naval Cap"
+	path = /obj/item/clothing/head/imperial/hos
+	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/head/job/solhoscap
+	name = "Head of security's Sol Cap"
+	path = /obj/item/clothing/head/hos/beret/peacekeeper/sol
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/job/navyblueofficerberet
 	name = "Security officer's Navyblue beret"
 	path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
+
+/datum/loadout_item/head/job/solofficercap
+	name = "Security officer's Sol Cap"
+	path = /obj/item/clothing/head/beret/sec/peacekeeper/sol
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
+
+/datum/loadout_item/head/job/soltrafficoff
+	name = "Traffic Officer Cap"
+	path = /obj/item/clothing/head/soltraffic
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Civil Disputes Officer")
 
 /datum/loadout_item/head/job/navybluewardenberet
 	name = "Warden's navyblue beret"
@@ -203,6 +287,24 @@
 	path = /obj/item/clothing/head/nursehat
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist","Security Medic")
 	restricted_desc = "Medical"
+
+/datum/loadout_item/head/job/imperial
+	name = "Naval Officer Cap"
+	path = /obj/item/clothing/head/imperial
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/head/job/impgrey
+	name = "Grey Naval Officer Cap"
+	path = /obj/item/clothing/head/imperial/grey
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/head/job/impred
+	name = "Red Naval Officer Cap"
+	path = /obj/item/clothing/head/imperial/red
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_desc = "Command Staff"
 
 // JOB - Berets
 /datum/loadout_item/head/job/atmos_beret

@@ -12,7 +12,8 @@
 #define CULTURES_EXOTIC	/datum/cultural_info/culture/generic, \
 						/datum/cultural_info/culture/vatgrown, \
 						/datum/cultural_info/culture/spacer_core, \
-						/datum/cultural_info/culture/spacer_frontier
+						/datum/cultural_info/culture/spacer_frontier, \
+						/datum/cultural_info/culture/zolmalchi
 
 #define CULTURES_LIZARD /datum/cultural_info/culture/lavaland
 

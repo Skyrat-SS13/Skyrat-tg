@@ -18,9 +18,9 @@
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/double
 
 /obj/item/storage/backpack/ert/odst
-	icon = 'modular_skyrat/modules/additionalert/odst/icons/obj/clothing/back.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	icon_state = "ert_odst"
-	worn_icon = 'modular_skyrat/modules/additionalert/odst/icons/mob/clothing/back.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
 	worn_icon_state = "ert_odst"
 	name = "odst backpack"
 	desc = "A modified backpack, that attaches via magnetic harness onto the ODST hardsuit, removing the need for straps."
@@ -28,8 +28,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/storage/belt/military/odst
-	icon = 'modular_skyrat/modules/additionalert/odst/icons/obj/clothing/belt.dmi'
-	worn_icon = 'modular_skyrat/modules/additionalert/odst/icons/mob/clothing/belts.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "commando chest rig"
 	desc = "A tactical plate carrier, modularized for use with the ODST hardsuit."
 	icon_state = "ert_odst"

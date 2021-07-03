@@ -15,21 +15,29 @@
 			var/turf/T = object
 			T.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 		else if(isatom(object))
+			// SKYRAT EDIT -- BS delete sparks. Original was just qdel(object)
+			var/turf/T = get_turf(object)
 			qdel(object)
+			if(T && c.prefs.skyrat_toggles & ADMINDEL_ZAP_PREF)
+				playsound(T, 'sound/magic/Repulse.ogg', 100, 1)
+				var/datum/effect_system/spark_spread/quantum/sparks = new
+				sparks.set_up(10, 1, T)
+				sparks.attach(T)
+				sparks.start()
 
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(check_rights(R_DEBUG|R_SERVER)) //Prevents buildmoded non-admins from breaking everything.
 			if(isturf(object))
 				return
 			var/atom/deleting = object
-			var/action_type = alert("Strict type ([deleting.type]) or type and all subtypes?",,"Strict type","Type and subtypes","Cancel")
+			var/action_type = tgui_alert(usr,"Strict type ([deleting.type]) or type and all subtypes?",,list("Strict type","Type and subtypes","Cancel"))
 			if(action_type == "Cancel" || !action_type)
 				return
 
-			if(alert("Are you really sure you want to delete all instances of type [deleting.type]?",,"Yes","No") != "Yes")
+			if(tgui_alert(usr,"Are you really sure you want to delete all instances of type [deleting.type]?",,list("Yes","No")) != "Yes")
 				return
 
-			if(alert("Second confirmation required. Delete?",,"Yes","No") != "Yes")
+			if(tgui_alert(usr,"Second confirmation required. Delete?",,list("Yes","No")) != "Yes")
 				return
 
 			var/O_type = deleting.type
@@ -45,7 +53,7 @@
 						to_chat(usr, "No instances of this type exist")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type [O_type] ([i] instances deleted) ")
-					message_admins("<span class='notice'>[key_name(usr)] deleted all instances of type [O_type] ([i] instances deleted) </span>")
+					message_admins(span_notice("[key_name(usr)] deleted all instances of type [O_type] ([i] instances deleted) "))
 				if("Type and subtypes")
 					var/i = 0
 					for(var/Obj in world)
@@ -57,4 +65,4 @@
 						to_chat(usr, "No instances of this type exist")
 						return
 					log_admin("[key_name(usr)] deleted all instances of type or subtype of [O_type] ([i] instances deleted) ")
-					message_admins("<span class='notice'>[key_name(usr)] deleted all instances of type or subtype of [O_type] ([i] instances deleted) </span>")
+					message_admins(span_notice("[key_name(usr)] deleted all instances of type or subtype of [O_type] ([i] instances deleted) "))

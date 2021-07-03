@@ -1,6 +1,6 @@
 /obj/item/storage/belt/crusader	//Belt + sheath combination - still only holds one sword at a time though
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/storage.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/storage.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "crusader belt"
 	desc = "Holds an assortment of equipment for whatever situation an adventurer may encounter, as well as having an attached sheath."
 	icon_state = "crusader_belt"
@@ -89,12 +89,12 @@
 		/obj/item/nullrod/carp,
 		/obj/item/nullrod/chainsaw,
 		/obj/item/nullrod/claymore/bostaff,
-		/obj/item/nullrod/hammmer,
+		/obj/item/nullrod/hammer,
 		/obj/item/nullrod/pitchfork,
 		/obj/item/nullrod/pride_hammer,
 		/obj/item/nullrod/spear,
 		/obj/item/nullrod/staff,
-		/obj/item/nullrod/fedora, 
+		/obj/item/nullrod/fedora,
 		/obj/item/nullrod/godhand,
 		/obj/item/nullrod/staff,
 		/obj/item/nullrod/whip
@@ -105,8 +105,8 @@
 	new /obj/item/storage/belt/storage_pouch(src)
 
 /obj/item/storage/belt/storage_pouch	//seperate mini-storage inside the belt, leaving room for only one sword. Inspired by a (very poorly implemented) belt on Desert Rose
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/storage.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/storage.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "storage pouch"
 	desc = "<span class='notice'>Click on this to open your belt's inventory!</span>"
 	icon_state = "storage_pouch_icon"

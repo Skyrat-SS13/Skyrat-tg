@@ -101,7 +101,7 @@
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"
-	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list("lizard", "unathi", "ashlizard", "silverlizard")
@@ -134,7 +134,7 @@
 	color_src = null
 
 /datum/sprite_accessory/socks
-	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 
 /datum/sprite_accessory/socks/socks_knee
@@ -229,7 +229,7 @@
 	use_static = null
 
 /datum/sprite_accessory/underwear
-	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
 
@@ -391,7 +391,7 @@
 
 
 /datum/sprite_accessory/undershirt
-	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/tanktop_alt
@@ -582,3 +582,9 @@
 	icon_state = "shibari_sleeves"
 	gender = FEMALE
 	use_static = null
+
+/datum/sprite_accessory/undershirt/bulletclub //4 life
+	name = "Shirt - Black Skull"
+	icon_state = "shirt_bc"
+	gender = NEUTER
+

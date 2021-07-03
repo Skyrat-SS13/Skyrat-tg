@@ -2,6 +2,11 @@
 	category = LOADOUT_CATEGORY_UNIFORM
 
 //MISC
+/datum/loadout_item/uniform/gandalf
+	name = "Nostalgic Costume"
+	path = /obj/item/clothing/under/nostalgiacritic
+	ckeywhitelist = list("gandalf2k15")
+
 /datum/loadout_item/uniform/assistantformal
 	name = "Assistant's formal uniform"
 	path = /obj/item/clothing/under/misc/assistantformal
@@ -71,6 +76,7 @@
 /datum/loadout_item/uniform/loincloth/cloth	//Sensor version for station crew
 	name = "Cloth Loincloth"
 	path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
+	extra_info = LOADOUT_INFO_ONE_COLOR
 
 /datum/loadout_item/uniform/pinkstripper
 	name = "Pink stripper outfit"
@@ -80,6 +86,16 @@
 /datum/loadout_item/uniform/greenstripper
 	name = "Green stripper outfit"
 	path = /obj/item/clothing/under/misc/stripper/green
+	cost = 3
+
+/datum/loadout_item/uniform/bunnysuit
+	name = "Bunny suit"
+	path = /obj/item/clothing/under/misc/stripper/bunnysuit
+	cost = 3
+
+/datum/loadout_item/uniform/bunnysuit/white
+	name = "Bunny suit, white"
+	path = /obj/item/clothing/under/misc/stripper/bunnysuit/white
 	cost = 3
 
 /datum/loadout_item/uniform/qipao
@@ -147,6 +163,18 @@
 	path = /obj/item/clothing/under/pants/chaps
 	cost = 1
 
+/datum/loadout_item/uniform/taccas
+	name = "Tacticasual Uniform"
+	path = /obj/item/clothing/under/misc/taccas
+	cost = 1
+
+/datum/loadout_item/uniform/tracky
+	name = "Blue Tracksuit"
+	path = /obj/item/clothing/under/misc/bluetracksuit
+	cost = 1
+
+
+
 //SUITS
 /datum/loadout_item/uniform/suit
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SUITS
@@ -183,13 +211,53 @@
 	name = "White suit"
 	path = /obj/item/clothing/under/suit/white
 
+/datum/loadout_item/uniform/suit/scarface
+	name = "Cuban suit"
+	path = /obj/item/clothing/under/suit/white/scarface
+
 /datum/loadout_item/uniform/suit/vice
 	name = "Grey and Black suit"
 	path = /obj/item/clothing/under/misc/vice_officer
 
+/datum/loadout_item/uniform/suit/greyskirty
+	name = "Grey Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby
+
+/datum/loadout_item/uniform/suit/blackskirty
+	name = "Black Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby
+
+/datum/loadout_item/uniform/suit/gentleskirty
+	name = "Gentle Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+
+/datum/loadout_item/uniform/suit/gentleskirty
+	name = "Gentle Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+
+/datum/loadout_item/uniform/suit/burgskirty
+	name = "Burgundy Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby
+
+/datum/loadout_item/uniform/suit/tanskirty
+	name = "Tan Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby
+
+/datum/loadout_item/uniform/suit/blueskirty
+	name = "Blue Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby
+
+/datum/loadout_item/uniform/suit/greenskirty
+	name = "Green Suit Skirt"
+	path = /obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby
+
 /datum/loadout_item/uniform/suit/femblack
 	name = "Feminine Suit"
 	path = /obj/item/clothing/under/suit/black/female
+
+/datum/loadout_item/uniform/suit/femblacksk
+	name = "Feminine Skirt Suit"
+	path = /obj/item/clothing/under/suit/black/female/skirt
 
 /datum/loadout_item/uniform/suit/femblackskirt
 	name = "Executive Skirt"
@@ -223,6 +291,11 @@
 	path = /obj/item/clothing/under/costume/vic_vest/red_alt
 	cost = 1
 
+/datum/loadout_item/uniform/suit/peaky
+	name = "Birmingham Bling"
+	path = /obj/item/clothing/under/misc/peakyblinder
+	cost = 1
+
 /datum/loadout_item/uniform/suit/dutch
 	name = "Dutch Suit"
 	path = /obj/item/clothing/under/costume/dutch
@@ -233,6 +306,36 @@
 	path = /obj/item/clothing/under/costume/arthur
 	cost = 2
 
+/datum/loadout_item/uniform/suit/rancher
+	name = "Rancher Suit"
+	path = /obj/item/clothing/under/rancher
+
+/datum/loadout_item/uniform/suit/pioneer
+	name = "Pioneer Suit"
+	path = /obj/item/clothing/under/rancher/pioneer
+
+/datum/loadout_item/uniform/suit/worker
+	name = "Western Worker Suit"
+	path = /obj/item/clothing/under/rancher/worker
+
+/datum/loadout_item/uniform/suit/cowboywhatever
+	name = "Cowboy Suit"
+	path = /obj/item/clothing/under/rancher/cowboy
+
+/datum/loadout_item/uniform/suit/checkered
+	name = "Checkered Shirt"
+	path = /obj/item/clothing/under/rancher/checkered
+
+/datum/loadout_item/uniform/suit/whiterussian
+	name = "Russian Baron Suit"
+	path = /obj/item/clothing/under/whiterussian
+	cost = 4
+
+/datum/loadout_item/uniform/suit/beige
+	name = "Beige Suit"
+	path = /obj/item/clothing/under/suit/beige
+
+
 //SKIRTS
 /datum/loadout_item/uniform/skirt
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_SKIRTS
@@ -241,6 +344,10 @@
 	name = "Black skirt"
 	path = /obj/item/clothing/under/dress/skirt
 
+/datum/loadout_item/uniform/skirt/suitskirtblack
+	name = "Black Suitskirt"
+	path = /obj/item/clothing/under/suit/black/skirt
+
 /datum/loadout_item/uniform/skirt/skirtblue
 	name = "Blue skirt"
 	path = /obj/item/clothing/under/dress/skirt/blue
@@ -248,6 +355,10 @@
 /datum/loadout_item/uniform/skirt/skirtred
 	name = "Red skirt"
 	path = /obj/item/clothing/under/dress/skirt/red
+
+/datum/loadout_item/uniform/skirt/curatorthing
+	name = "Sensible Suitskirt"
+	path = /obj/item/clothing/under/rank/civilian/curator/skirt
 
 /datum/loadout_item/uniform/skirt/skirtpurple
 	name = "Purple skirt"
@@ -329,6 +440,16 @@
 	name = "Flower Dress"
 	path = /obj/item/clothing/under/dress/flower
 
+/datum/loadout_item/uniform/dress/countess
+	name = "Countess Dress"
+	path = /obj/item/clothing/under/misc/countess
+	cost = 3
+
+/datum/loadout_item/uniform/dress/formal
+	name = "Formal Red Dress"
+	path = /obj/item/clothing/under/misc/formaldressred
+	cost = 2
+
 /datum/loadout_item/uniform/dress/victorian
 	name = "Victorian Vest, Black"
 	path = /obj/item/clothing/under/costume/vic_dress
@@ -348,6 +469,10 @@
 /datum/loadout_item/uniform/pants/bjeans
 	name = "Black Jeans"
 	path = /obj/item/clothing/under/pants/blackjeans
+
+/datum/loadout_item/uniform/pants/bpants
+	name = "Black Pants"
+	path = /obj/item/clothing/under/pants/black
 
 /datum/loadout_item/uniform/pants/cjeans
 	name = "Classic Jeans"
@@ -414,15 +539,19 @@
 
 /datum/loadout_item/uniform/sweater/turtleneck
 	name = "Tactitool Turtleneck"
-	path = /obj/item/clothing/under/syndicate/tacticool
+	path = /obj/item/clothing/under/syndicate/tacticool/sensors
 
 /datum/loadout_item/uniform/sweater/tactical1
 	name = "Irish Tactical Sweater"
 	path = /obj/item/clothing/under/misc/tactical1
 
+/datum/loadout_item/uniform/sweater/tactical2
+	name = "British Tactical Sweater"
+	path = /obj/item/clothing/under/uvf
+
 /datum/loadout_item/uniform/sweater/turtleneck/skirt
 	name = "Tactitool Skirtleneck"
-	path = /obj/item/clothing/under/syndicate/tacticool/skirt
+	path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
 
 /datum/loadout_item/uniform/sweater/creamsweater
 	name = "Cream Commando Sweater"
@@ -462,9 +591,91 @@
 /datum/loadout_item/uniform/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+/datum/loadout_item/uniform/job/humblecaptain
+	name = "Humble Captain Jumpsuit"
+	path = /obj/item/clothing/under/rank/captain/humble
+	restricted_roles = list("Captain")
+
+/datum/loadout_item/uniform/job/captaindress
+	name = "Captain's Dress"
+	path = /obj/item/clothing/under/rank/captain/dress
+	restricted_roles = list("Captain")
+
+/datum/loadout_item/uniform/job/impcap
+	name = "Captain's Naval Jumpsuit"
+	path = /obj/item/clothing/under/rank/captain/imperial
+	restricted_roles = list("Captain", "Nanotrasen Representative")
+
+/datum/loadout_item/uniform/job/imphop
+	name = "Head of Personnel's Naval Jumpsuit"
+	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
+
+/datum/loadout_item/uniform/job/lowprison
+ 	name = "Low Security Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/prisoner/lowsec
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/lowprisons
+ 	name = "Low Security Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/prisoner/lowsec/skirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprison
+ 	name = "Protective Custody Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/prisoner/protcust
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/procusprisons
+ 	name = "Protective Custody Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/prisoner/protcust/skirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprison
+ 	name = "Supermax Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/prisoner/supermax
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "Supermax Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/prisoner/supermax/skirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/highprison
+ 	name = "High Risk Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/prisoner/highsec
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/supmaxprisons
+ 	name = "High Risk Prisoner Jumpskirt"
+ 	path = /obj/item/clothing/under/rank/prisoner/highsec/skirt
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/blacknwhite
+ 	name = "Classic Prisoner Jumpsuit"
+ 	path = /obj/item/clothing/under/rank/prisoner/classic
+ 	restricted_roles = list("Prisoner")
+
+/datum/loadout_item/uniform/job/priestrobe
+	name = "Priestess Robe"
+	path = /obj/item/clothing/under/rank/pmarsrobe
+	cost = 2
+	restricted_roles = list("Chaplain")
+
+
 /datum/loadout_item/uniform/job/navyblueuniformhos
  	name = "Head of Security navyblue uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/formal
+ 	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/uniform/job/imphos
+ 	name = "Head of Security's Naval Uniform"
+ 	path = /obj/item/clothing/under/rank/security/head_of_security/imperial
+ 	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/uniform/job/solhos
+ 	name = "Head of Security Sol uniform"
+ 	path = /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
  	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/uniform/job/navyblueuniformofficer
@@ -477,10 +688,55 @@
 	path = /obj/item/clothing/under/rank/security/warden/formal
 	restricted_roles = list("Warden")
 
+/datum/loadout_item/uniform/job/solwarden
+	name = "Sol Warden Uniform"
+	path = /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
+	restricted_roles = list("Warden")
+
+/datum/loadout_item/uniform/job/coroffw
+	name = "Corrections Officer Sweater (skirt)"
+	path = /obj/item/clothing/under/rank/security/brigguard/sweater/women
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshir
+	name = "Corrections Officer Shirt"
+	path = /obj/item/clothing/under/rank/security/brigguard
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/coroffshirw
+	name = "Corrections Officer Skirt"
+	path = /obj/item/clothing/under/rank/security/brigguard/women
+	restricted_roles = list("Corrections Officer","Warden")
+
+/datum/loadout_item/uniform/job/peacetrouse
+	name = "Peacekeeper Trousers"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/trousers
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
+
+/datum/loadout_item/uniform/job/peacetrouse
+	name = "Security Trousers"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
+
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
 	path = /obj/item/clothing/under/rank/security/officer/skirt
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant") //i want a femboy sergeant to shove a baton up my ass
+
+/datum/loadout_item/uniform/job/seccadett
+	name = "Sol Cadet Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
+/datum/loadout_item/uniform/job/sectrafficop
+	name = "Sol Traffic Cop Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+
+/datum/loadout_item/uniform/job/solofficerthing
+	name = "Sol Officer Uniform"
+	path = /obj/item/clothing/under/rank/security/peacekeeper/sol
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
 
 /datum/loadout_item/uniform/job/hosskirt
 	name = "Head of security's skirt"
@@ -493,11 +749,22 @@
 	restricted_roles = list("Detective")
 	restricted_desc = "Superstar Detectives"
 
-
 /datum/loadout_item/uniform/job/seckilt
 	name = "Security Kilt"
 	path = /obj/item/clothing/under/rank/security/blackwatch
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
+
+/datum/loadout_item/uniform/job/medrscrubs
+	name = "Red Scrubs (security)"
+	path = /obj/item/clothing/under/rank/medical/doctor/red
+	restricted_roles = list("Security Medic")
+	restricted_desc = "Security Medic"
+
+/datum/loadout_item/uniform/job/redscrubs
+	name = "Red Scrubs"
+	path = /obj/item/clothing/under/rank/medical/doctor/red/unarm
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
 
 /datum/loadout_item/uniform/job/bluescrubs
 	name = "Blue Scrubs"
@@ -517,11 +784,59 @@
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
 
+/datum/loadout_item/uniform/job/whitescrubs
+	name = "White Scrubs"
+	path = /obj/item/clothing/under/rank/medical/doctor/white
+	extra_info = LOADOUT_INFO_ONE_COLOR
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
 /datum/loadout_item/uniform/job/nursesuit
 	name = "Nurse Suit"
 	path = /obj/item/clothing/under/rank/medical/doctor/nurse
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
 	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/formalmed
+	name = "Formal Medical Suit"
+	path = /obj/item/clothing/under/rank/medical/doctor/formal
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/formalmedskirt
+	name = "Formal Medical Skirt"
+	path = /obj/item/clothing/under/rank/medical/doctor/formal/skirt
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic")
+	restricted_desc = "Medical"
+
+/datum/loadout_item/uniform/job/formalvir
+	name = "Formal Virologist Suit"
+	path = /obj/item/clothing/under/rank/medical/virologist/formal
+	restricted_roles = list("Chief Medical Officer", "Virologist")
+	restricted_desc = "Virologists"
+
+/datum/loadout_item/uniform/job/formalvirskirt
+	name = "Formal Virologist Skirt"
+	path = /obj/item/clothing/under/rank/medical/virologist/formal/skirt
+	restricted_roles = list("Chief Medical Officer", "Virologist")
+	restricted_desc = "Virology"
+
+/datum/loadout_item/uniform/job/formalchem
+	name = "Formal Chemist Suit"
+	path = /obj/item/clothing/under/rank/medical/chemist/formal
+	restricted_roles = list("Chief Medical Officer", "Chemist")
+	restricted_desc = "Chemistry"
+
+/datum/loadout_item/uniform/job/formalchemskirt
+	name = "Formal Chemist Skirt"
+	path = /obj/item/clothing/under/rank/medical/chemist/formal/skirt
+	restricted_roles = list("Chief Medical Officer", "Chemist")
+	restricted_desc = "Chemistry"
+
+/datum/loadout_item/uniform/job/impcmo
+	name = "Chief Medical Officer's Naval Uniform"
+	path = /obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
+	restricted_roles = list("Chief Medical Officer")
 
 /datum/loadout_item/uniform/job/gorka_cargo
 	name = "Supply Gorka"
@@ -535,6 +850,12 @@
 	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
 	restricted_desc = "All Cargo Personnel"
 
+/datum/loadout_item/uniform/job/casualcargothing
+	name = "Casual Cargo Gear"
+	path = /obj/item/clothing/under/rank/cargo/casualman
+	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
+	restricted_desc = "All Cargo Personnel"
+
 /datum/loadout_item/uniform/job/gorka_qm
 	name = "Quartermaster's Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka/head
@@ -544,6 +865,51 @@
 	name = "Quartermaster's Turtleneck"
 	path = /obj/item/clothing/under/utility/cargo/turtleneck/head
 	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmformal
+	name = "Quartermaster's Formal Suit"
+	path = /obj/item/clothing/under/rank/cargo/qm/formal
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmformalskirt
+	name = "Quartermaster's Formal Skirt"
+	path = /obj/item/clothing/under/rank/cargo/qm/formal/skirt
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/qmcasual
+	name = "Quartermaster's Casual Suit"
+	path = /obj/item/clothing/under/rank/cargo/qm/casual
+	restricted_roles = list("Quartermaster")
+
+/datum/loadout_item/uniform/job/engtrous
+	name = "Engineering Trousers"
+	path = /obj/item/clothing/under/rank/engineering/engineer/trouser
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
+/datum/loadout_item/uniform/job/engformal
+	name = "Engineering Formal Suit"
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
+/datum/loadout_item/uniform/job/engformalskirt
+	name = "Engineering Formal Skirt"
+	path = /obj/item/clothing/under/rank/engineering/engineer/formal/skirt
+	restricted_roles = list("Station Engineer","Atmospheric Technician", "Chief Engineer")
+	restricted_desc = "Engineering"
+
+/datum/loadout_item/uniform/job/impce
+	name = "Chief Engineer's Naval Uniform"
+	path = /obj/item/clothing/under/rank/engineering/chief_engineer/imperial
+	restricted_roles = list("Chief Engineer")
+
+/datum/loadout_item/uniform/job/imprd
+	name = "Research Director's Naval Uniform"
+	path = /obj/item/clothing/under/rank/rnd/research_director/imperial
+	restricted_roles = list("Research Director")
+
+
 
 //JOB - UTILITY
 /datum/loadout_item/uniform/job/utility
@@ -569,6 +935,12 @@
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
 	restricted_desc = "Science"
 
+/datum/loadout_item/uniform/job/hlscientist
+	name = "Ridiculous Scientist Outfit"
+	path = /obj/item/clothing/under/misc/hlscience
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
+	restricted_desc = "Science"
+
 /datum/loadout_item/uniform/job/utility_cargo
 	name = "Supply Utility Uniform"
 	path = /obj/item/clothing/under/utility/cargo
@@ -585,6 +957,30 @@
 	name = "Command Utility Uniform"
 	path = /obj/item/clothing/under/utility/com
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcommand
+	name = "Light Grey Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcom
+	name = "Grey Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial/grey
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impred
+	name = "Red Officer's Naval Jumpsuit"
+	path = /obj/item/clothing/under/imperial/red
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")	//NT Reps would never wear red, it's unbefitting
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/uniform/job/impcomtrous
+	name = "Grey Officer's Naval Jumpsuit (Trousers)"
+	path = /obj/item/clothing/under/imperial/grey/trouser
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
 	restricted_desc = "Command Staff"
 
 /datum/loadout_item/uniform/job/robosleek
@@ -741,6 +1137,34 @@
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv
 	restricted_roles = list("Assistant")
 
+/datum/loadout_item/uniform/tactical_hawaiian_orange
+	name = "Tactical Hawaiian Outfit - Orange"
+	path = /obj/item/clothing/under/tachawaiian
+
+/datum/loadout_item/uniform/tactical_hawaiian_blue
+	name = "Tactical Hawaiian Outfit - Blue"
+	path = /obj/item/clothing/under/tachawaiian/blue
+
+/datum/loadout_item/uniform/tactical_hawaiian_purple
+	name = "Tactical Hawaiian Outfit - Purple"
+	path = /obj/item/clothing/under/tachawaiian/purple
+
+/datum/loadout_item/uniform/tactical_hawaiian_green
+	name = "Tactical Hawaiian Outfit - Green"
+	path = /obj/item/clothing/under/tachawaiian/green
+
+/datum/loadout_item/uniform/texas
+	name = "Texan Suit"
+	path = /obj/item/clothing/under/texas
+
+/datum/loadout_item/uniform/dimmadome
+	name = "Doug Dimmadome Suit"
+	path = /obj/item/clothing/under/doug_dimmadome
+
+/datum/loadout_item/uniform/westender
+	name = "Westender Suit"
+	path = /obj/item/clothing/under/westender
+
 //TheMotionPicture
 /*/datum/loadout_item/trekfedutil
 	name = "TMP uniform"
@@ -784,4 +1208,3 @@
 	name = "Green Feminine Christmas Suit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/costume/christmas/croptop/green*/
-

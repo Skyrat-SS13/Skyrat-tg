@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/assault_rifle/stg
-	name = "\improper Sturmgewehr 44"
-	desc = "The StG 44 (abbreviation of Sturmgewehr 44) is a German selective-fire assault rifle developed during World War II by Hugo Schmeisser."
+	name = "\improper StG-44"
+	desc = "A reproduction of a German infantry rifle chambered in 7.92mm. An attempt to put rifle-cartridge automatic weapons outside the hands of machine gunners, it was almost the first select-fire rifle. Almost."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/stg/stg.dmi'
 	icon_state = "stg"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/stg/stg_lefthand.dmi'
@@ -30,8 +30,8 @@
 
 
 /obj/item/gun/ballistic/automatic/assault_rifle/stg/modern
-	name = "\improper Mil Spec Sturmgewehr 44"
-	desc = "The StG 44 (abbreviation of Sturmgewehr 44) is a German selective-fire assault rifle developed during World War II by Hugo Schmeisser. This is the 25th century version."
+	name = "\improper StG-560"
+	desc = "A modernized reproduction of the StG-44, full of aftermarket parts that barely make it perform any better. Looks like it's out of the videogame Return to Fortress Dogenstein."
 	icon_state = "stg_modern"
 	inhand_icon_state = "stg"
 	worn_icon_state = "stg"

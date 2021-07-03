@@ -15,7 +15,7 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/ears/mutant
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/ears.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears.dmi'
 	organ_type = /obj/item/organ/ears/mutant
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list("synthmammal", "mammal", "human", "synthhuman", "felinid", "humanoid")
@@ -101,7 +101,6 @@
 /datum/sprite_accessory/ears/mutant/eevee
 	name = "Eevee"
 	icon_state = "eevee"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/eevee_alt
 	name = "Eevee ALT"

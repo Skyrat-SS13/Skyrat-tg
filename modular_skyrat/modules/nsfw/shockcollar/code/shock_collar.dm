@@ -2,7 +2,7 @@
 	name = "shock collar"
 	desc = "A reinforced metal collar. It seems to have some form of wiring near the front. Strange.."
 	icon = 'modular_skyrat/modules/nsfw/shockcollar/icons/collar.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "shock_collar"
 	worn_icon_state = "shock_collar"
 	body_parts_covered = NECK

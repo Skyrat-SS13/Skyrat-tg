@@ -8,7 +8,7 @@
 	///Last person that touched this
 	var/mob/living/last_user
 	///how many charges do we have?
-	var/charge = 1
+	var/charge = 2 //SKYRAT EDIT - ORIGINAL: 1
 	///Where we cannot create the rune?
 	var/static/list/blacklisted_turfs = typecacheof(list(/turf/closed,/turf/open/space,/turf/open/lava))
 
@@ -40,7 +40,7 @@
 ///Gives you a charge and destroys a corresponding influence
 /obj/item/forbidden_book/proc/get_power_from_influence(atom/target, mob/user)
 	var/obj/effect/reality_smash/RS = target
-	to_chat(user, "<span class='danger'>You start drawing power from influence...</span>")
+	to_chat(user, span_danger("You start drawing power from influence..."))
 	if(do_after(user, 10 SECONDS, RS))
 		qdel(RS)
 		charge += 1
@@ -50,10 +50,10 @@
 
 	for(var/turf/T as anything in RANGE_TURFS(1,target))
 		if(is_type_in_typecache(T, blacklisted_turfs))
-			to_chat(user, "<span class='warning'>The terrain doesn't support runes!</span>")
+			to_chat(user, span_warning("The terrain doesn't support runes!"))
 			return
 	var/A = get_turf(target)
-	to_chat(user, "<span class='danger'>You start drawing a rune...</span>")
+	to_chat(user, span_danger("You start drawing a rune..."))
 
 	if(do_after(user,30 SECONDS,A))
 
@@ -62,7 +62,7 @@
 ///Removes runes from the selected turf
 /obj/item/forbidden_book/proc/remove_rune(atom/target,mob/user)
 
-	to_chat(user, "<span class='danger'>You start removing a rune...</span>")
+	to_chat(user, span_danger("You start removing a rune..."))
 	if(do_after(user,2 SECONDS,user))
 		qdel(target)
 
@@ -144,3 +144,6 @@
 
 /obj/item/forbidden_book/debug
 	charge = 100
+
+/obj/item/forbidden_book/ritual
+	charge = 0

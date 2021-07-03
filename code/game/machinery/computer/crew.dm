@@ -57,6 +57,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		"Scientist" = 31,
 		"Roboticist" = 32,
 		"Geneticist" = 33,
+		"Vanguard Operative" = 34, //SKYRAT EDIT ADDITION
 		// 40-49: Engineering
 		"Chief Engineer" = 40,
 		"Station Engineer" = 41,
@@ -177,7 +178,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if (id_card)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
-			entry["ijob"] = jobs[id_card.assignment]
+			entry["ijob"] = jobs[id_card.real_title] //SKYRAT EDIT - ALTERNATE JOB TITLES, original = entry["ijob"] = jobs[id_card.assignment]
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)

@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34
-	name = "\improper Maschinengewehr 34"
-	desc = "The Maschinengewehr 34, or MG 34, is a German recoil-operated air-cooled machine gun, first tested in 1929, introduced in 1934, and issued to units in 1936. It introduced an entirely new concept in automatic firepower – the Einheitsmaschinengewehr (Universal machine gun) – and is generally considered the world's first general-purpose machine gun (GPMG)."
+	name = "\improper MG-9 GPMG"
+	desc = "A reproduction of the German MG-3 general purpose machine gun, this one is a revision from the 2200's and was one of several thousand distributed to SolFed expedition teams. It has been rechambered to fire 7.92mm Mauser instead of 7.62mm NATO."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34.dmi'
 	icon_state = "mg34"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34_lefthand.dmi'
@@ -22,7 +22,7 @@
 	dirt_modifier = 0.1
 
 /obj/item/ammo_box/magazine/mg34
-	name = "mg34 drum mag (7.92×57mm)"
+	name = "mg9 drum (7.92×57mm)"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/mg34/mg34.dmi'
 	icon_state = "mg34_drum"
 	ammo_type = /obj/item/ammo_casing/realistic/a792x57

@@ -38,6 +38,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Clown", //SKYRAT EDIT: Host request
 		"Security Sergeant", //SKYRAT EDIT ADDITION - SEC_HAUL
 		"Blueshield",	//SKYRAT EDIT: Blueshield slots should never be above 1.
+		"Nanotrasen Representative", //SKYRAT EDIT ADDITION
 		"Prisoner")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
@@ -112,7 +113,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 //Logic check for Topic() if you can open the job
 /obj/machinery/computer/card/proc/can_open_job(datum/job/job)
 	if(job)
-		if(!job_blacklisted(job.title))
+		if(!job_blacklisted(job.title) && !job.veteran_only) //SKYRAT EDIT CHANGE
 			if((job.total_positions <= GLOB.player_list.len * (max_relative_positions / 100)))
 				var/delta = (world.time / 10) - GLOB.time_last_changed_position
 				if((change_position_cooldown < delta) || (opened_positions[job.title] < 0))
@@ -124,7 +125,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 //Logic check for Topic() if you can close the job
 /obj/machinery/computer/card/proc/can_close_job(datum/job/job)
 	if(job)
-		if(!job_blacklisted(job.title))
+		if(!job_blacklisted(job.title) && !job.veteran_only) //SKYRAT EDIT CHANGE
 			if(job.total_positions > job.current_positions)
 				var/delta = (world.time / 10) - GLOB.time_last_changed_position
 				if((change_position_cooldown < delta) || (opened_positions[job.title] > 0))

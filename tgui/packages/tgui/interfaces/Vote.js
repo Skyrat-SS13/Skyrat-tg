@@ -37,7 +37,6 @@ export const Vote = (props, context) => {
 const VoteOptions = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    allow_vote_mode,
     allow_vote_restart,
     allow_vote_map,
     lower_admin,
@@ -68,39 +67,6 @@ const VoteOptions = (props, context) => {
               <Stack.Item>
                 {!!lower_admin && (
                   <Button.Checkbox
-                    mr={!allow_vote_map ? 1 : 1.6}
-                    color="red"
-                    checked={!!allow_vote_map}
-                    onClick={() => act("toggle_map")}>
-                    {allow_vote_map ? "Enabled" : "Disabled"}
-                  </Button.Checkbox>
-                )}
-                <Button
-                  disabled={!upper_admin || !allow_vote_map}
-                  onClick={() => act("mining_map")}>
-                  Mining Map
-                </Button>
-              </Stack.Item>
-              <Stack.Item>
-                {!!upper_admin && (
-                  <Button.Checkbox
-                    mr={!allow_vote_restart ? 1 : 1.6}
-                    color="red"
-                    checked={!!allow_vote_restart}
-                    disabled={!upper_admin}
-                    onClick={() => act('toggle_restart')}>
-                    {allow_vote_restart ? 'Enabled' : 'Disabled'}
-                  </Button.Checkbox>
-                )}
-                <Button
-                  disabled={!allow_vote_restart}
-                  onClick={() => act('restart')}>
-                  Restart
-                </Button>
-              </Stack.Item>
-              <Stack.Item>
-                {!!lower_admin && (
-                  <Button.Checkbox
                     mr={!allow_vote_restart ? 1 : 1.6}
                     color="red"
                     checked={!!allow_vote_restart}
@@ -115,20 +81,20 @@ const VoteOptions = (props, context) => {
                 </Button>
               </Stack.Item>
               <Stack.Item>
-                {!!upper_admin && (
+                {!!lower_admin && (
                   <Button.Checkbox
-                    mr={!allow_vote_mode ? 1 : 1.6}
+                    mr={!allow_vote_restart ? 1 : 1.6}
                     color="red"
-                    checked={!!allow_vote_mode}
+                    checked={!!allow_vote_restart}
                     disabled={!upper_admin}
-                    onClick={() => act('toggle_gamemode')}>
-                    {allow_vote_mode ? 'Enabled' : 'Disabled'}
+                    onClick={() => act('toggle_restart')}>
+                    {allow_vote_restart ? 'Enabled' : 'Disabled'}
                   </Button.Checkbox>
                 )}
                 <Button
-                  disabled={!allow_vote_mode}
-                  onClick={() => act('gamemode')}>
-                  Gamemode
+                  disabled={!allow_vote_restart}
+                  onClick={() => act('restart')}>
+                  Restart
                 </Button>
               </Stack.Item>
             </Stack>

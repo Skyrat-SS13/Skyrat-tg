@@ -1,7 +1,7 @@
 
 GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 	list( //Tiles
-		/obj/item/stack/tile/bronze/thirty = 25,
+		/obj/item/stack/sheet/bronze/thirty,
 		/obj/item/stack/tile/carpet/black/fifty = 25,
 		/obj/item/stack/tile/carpet/blue/fifty = 25,
 		/obj/item/stack/tile/carpet/cyan/fifty = 25,
@@ -212,9 +212,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/gun/ballistic/shotgun/toy/unrestricted = 25,
 		/obj/item/gun/ballistic/shotgun/toy/crossbow = 25,
 		/obj/item/hot_potato/harmless/toy = 25,
-		/obj/item/instrument/saxophone/spectral = 5,
-		/obj/item/instrument/trombone/spectral =5,
-		/obj/item/instrument/trumpet/spectral = 5,
 		/obj/item/laser_pointer = 25,
 		/obj/item/latexballon = 25,
 		/obj/item/megaphone = 25,
@@ -257,7 +254,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/toy/plush/bubbleplush = 5,
 		/obj/item/toy/plush/carpplushie = 5,
 		/obj/item/toy/plush/goatplushie = 5,
-		/obj/item/toy/plush/lizardplushie = 5,
+		/obj/item/toy/plush/lizard_plushie/green = 5,
 		/obj/item/toy/plush/moth = 5,
 		/obj/item/toy/plush/narplush = 5,
 		/obj/item/toy/plush/nukeplushie = 5,

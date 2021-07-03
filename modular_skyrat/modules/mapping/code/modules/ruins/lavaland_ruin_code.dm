@@ -9,20 +9,20 @@
 
 //OUTFITS//
 /datum/outfit/lavaland_syndicate
-	id = /obj/item/card/id/advanced/chameleon
+	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/comms
-	id = /obj/item/card/id/advanced/chameleon
+	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
 	ears = /obj/item/radio/headset/interdyne/comms
 
 /datum/outfit/lavaland_syndicate/comms/space
-	id = /obj/item/card/id/advanced/chameleon
 	ears = /obj/item/radio/headset/syndicate/alt
 
 /datum/outfit/lavaland_syndicate/shaftminer
 	name = "Lavaland Syndicate Shaft Miner"
-	id = /obj/item/card/id/advanced/chameleon
+	uniform = /obj/item/clothing/under/utility/cargo/syndicate
+	suit = null //Subtype moment
 	r_pocket = /obj/item/storage/bag/ore
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
@@ -33,16 +33,32 @@
 		/obj/item/stack/marker_beacon/ten=1)
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
-	id = /obj/item/card/id/advanced/chameleon
+	name = "Lavaland Syndicate Deck Officer"
+	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
+	neck = /obj/item/clothing/neck/cloak/qm/syndie
+	ears = /obj/item/radio/headset/interdyne/command
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer
 	name = "Syndicate Deck Officer"
 	short_desc = "You are a syndicate Deck Officer, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 
+/obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer/Destroy()
+	new/obj/structure/fluff/empty_sleeper/syndicate/captain(get_turf(src))
+	return ..()
+
 //ITEMS
 
 /obj/item/radio/headset/interdyne
+	keyslot = new /obj/item/encryptionkey/headset_interdyne
+
+/obj/item/radio/headset/interdyne/command
+	name = "command radio headset"
+	desc = "A headset with a commanding channel."
+	icon_state = "com_headset"
+	command = TRUE
+
+/obj/item/radio/headset/headset_sec/alt/interdyne
 	keyslot = new /obj/item/encryptionkey/headset_interdyne
 
 /obj/item/radio/headset/interdyne/comms

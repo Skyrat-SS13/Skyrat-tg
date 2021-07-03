@@ -342,8 +342,6 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/stock_parts/cell/crap = 25,
 		/obj/item/stock_parts/cell/potato = 25,
 		/obj/item/stock_parts/cell/upgraded = 25,
-		/obj/item/stock_parts/electrolite = 50,
-		/obj/item/stock_parts/electrolite/adv = 25,
 		/obj/item/stock_parts/manipulator = 100,
 		/obj/item/stock_parts/manipulator/nano = 50,
 		/obj/item/stock_parts/matter_bin = 100,

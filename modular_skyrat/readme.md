@@ -42,7 +42,11 @@ but then our upstream introduces a change in their codebase, changing it from 1 
 As easy of an example as it is, it results in a relatively simple conflict, in the form of
 
 ```byond
+<<<<<<< HEAD
+var/something = 2 //SKYRAT EDIT
+=======
 var/something = 4
+>>>>>>> upstream-mirror-123132
 ```
 
 where we pick the preferable option manually.
@@ -97,6 +101,8 @@ All assets added by us should be placed into the same modular folder as your cod
   This ensures your code is fully modular and will make it easier for future edits.
 
 - Other assets, binaries and tools, should usually be handled likewise, depending on the case-by-case context. When in doubt, ask a maintainer or other contributors for tips and suggestions.
+
+- Any additional clothing icon files you add MUST go into the existing files in master_files clothing section.
 
 ### Fully modular portions of your code
 

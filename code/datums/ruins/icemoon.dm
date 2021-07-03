@@ -39,7 +39,7 @@
 	suffix = "fountain_hall.dmm"
 
 // above and below ground together
-
+/* SKYRAT EDIT REMOVAL - Mapping
 /datum/map_template/ruin/icemoon/mining_site
 	name = "Mining Site"
 	id = "miningsite"
@@ -54,7 +54,7 @@
 	description = "Who knew ladders could be so useful?"
 	suffix = "icemoon_underground_mining_site.dmm"
 	unpickable = TRUE
-
+*/ // SKYRAT EDIT REMOVAL End
 // below ground only
 
 /datum/map_template/ruin/icemoon/underground

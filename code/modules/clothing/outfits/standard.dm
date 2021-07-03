@@ -73,7 +73,7 @@
 	suit = null
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
-		/obj/item/stack/tile/iron = 6,
+		/obj/item/stack/tile/iron/base = 6,
 )
 	head = null
 	r_pocket = /obj/item/grenade/chem_grenade/cleaner
@@ -116,12 +116,17 @@
 /datum/outfit/pirate
 	name = "Space Pirate"
 
+	id = /obj/item/card/id/advanced
+	id_trim = /datum/id_trim/pirate
 	uniform = /obj/item/clothing/under/costume/pirate
 	suit = /obj/item/clothing/suit/pirate/armored
 	ears = /obj/item/radio/headset/syndicate
 	glasses = /obj/item/clothing/glasses/eyepatch
 	head = /obj/item/clothing/head/bandana/armored
 	shoes = /obj/item/clothing/shoes/sneakers/brown
+
+	back = /obj/item/storage/backpack/satchel/leather //SKYRAT EDIT ADDITION
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/m1911, /obj/item/ammo_box/magazine/m45 = 3) //SKYRAT EDIT ADDITION
 
 /datum/outfit/pirate/post_equip(mob/living/carbon/human/equipped)
 	equipped.faction |= "pirate"
@@ -140,16 +145,19 @@
 /datum/outfit/pirate/captain
 	name = "Space Pirate Captain"
 
+	id_trim = /datum/id_trim/pirate/captain
 	head = /obj/item/clothing/head/pirate/armored
 
 /datum/outfit/pirate/space
 	name = "Space Pirate (EVA)"
 
-	id = /obj/item/card/id/advanced
 	suit = /obj/item/clothing/suit/space/pirate
 	suit_store = /obj/item/tank/internals/oxygen
 	head = /obj/item/clothing/head/helmet/space/pirate/bandana
 	mask = /obj/item/clothing/mask/breath
+
+	back = /obj/item/storage/backpack/satchel/leather //SKYRAT EDIT ADDITION
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/m1911, /obj/item/ammo_box/magazine/m45 = 3) //SKYRAT EDIT ADDITION
 
 /datum/outfit/pirate/space/captain
 	name = "Space Pirate Captain (EVA)"
@@ -168,10 +176,13 @@
 	head = /obj/item/clothing/head/collectable/tophat
 	shoes = /obj/item/clothing/shoes/laceup
 
+	back = /obj/item/storage/backpack/satchel/leather //SKYRAT EDIT ADDITION
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/m1911, /obj/item/ammo_box/magazine/m45 = 3) //SKYRAT EDIT ADDITION
+
 /datum/outfit/pirate/silverscale/captain
 	name = "Silver Scale Captain"
 
-	id_trim = /datum/id_trim/pirate/silverscale/captain
+	id_trim = /datum/id_trim/pirate/captain/silverscale
 	head = /obj/item/clothing/head/crown
 	mask = /obj/item/clothing/mask/cigarette/cigar/havana
 	l_pocket = /obj/item/lighter
@@ -343,7 +354,7 @@
 
 	suit = /obj/item/clothing/suit/wizrobe/marisa
 	head = /obj/item/clothing/head/wizard/marisa
-	shoes = /obj/item/clothing/shoes/sandal/marisa
+	shoes = /obj/item/clothing/shoes/sneakers/marisa
 
 /datum/outfit/centcom/soviet
 	name = "Soviet Admiral"

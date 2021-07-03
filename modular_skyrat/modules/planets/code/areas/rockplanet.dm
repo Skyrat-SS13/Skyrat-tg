@@ -84,12 +84,6 @@
 	birth_limit = 4
 	death_limit = 3
 
-/area/mine/rockplanet
-	name = "Abandoned Syndicate Mining Facility"
-
-/area/mine/rockplanet_nanotrasen
-	name = "Abandoned Mining Facility"
-
 /turf/closed/mineral/random/stationside/asteroid/rockplanet
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	turf_type = /turf/open/floor/plating/asteroid

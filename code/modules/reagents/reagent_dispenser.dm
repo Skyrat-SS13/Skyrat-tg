@@ -19,13 +19,16 @@
 /obj/structure/reagent_dispensers/examine(mob/user)
 	. = ..()
 	if(can_be_tanked)
-		. += "<span class='notice'>Use a sheet of iron to convert this into a plumbing-compatible tank.</span>"
+		. += span_notice("Use a sheet of iron to convert this into a plumbing-compatible tank.")
 
 /obj/structure/reagent_dispensers/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
 	. = ..()
 	if(. && obj_integrity > 0)
 		if(tank_volume && (damage_flag == BULLET || damage_flag == LASER))
-			boom()
+			//SKYRAT EDIT CHANGE
+			var/guaranteed_violent = (damage_flag == BULLET || damage_flag == LASER)
+			boom(damage_type, guaranteed_violent)
+			//SKYRAT EDIT END
 
 /obj/structure/reagent_dispensers/attackby(obj/item/W, mob/user, params)
 	if(W.is_refillable())
@@ -38,7 +41,7 @@
 		reagents.trans_to(new_tank, reagents.total_volume)
 		new_tank.name = "stationary [name]"
 		new_tank.update_appearance(UPDATE_OVERLAYS)
-		new_tank.anchored = anchored
+		new_tank.set_anchored(anchored)
 		qdel(src)
 		return FALSE
 	else
@@ -50,7 +53,7 @@
 		reagents.add_reagent(reagent_id, tank_volume)
 	. = ..()
 
-/obj/structure/reagent_dispensers/proc/boom()
+/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	visible_message("<span class='danger'>\The [src] ruptures!</span>")
 	chem_splash(loc, 5, list(reagents))
 	qdel(src)
@@ -71,7 +74,7 @@
 	name = "high-capacity water tank"
 	desc = "A highly pressurized water tank made to hold gargantuan amounts of water."
 	icon_state = "water_high" //I was gonna clean my room...
-	tank_volume = 100000
+	tank_volume = 3000
 
 /obj/structure/reagent_dispensers/foamtank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "firefighting foam tank"
@@ -86,49 +89,53 @@
 	icon_state = "fuel"
 	reagent_id = /datum/reagent/fuel
 
-/obj/structure/reagent_dispensers/fueltank/boom()
-	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
-	qdel(src)
+/obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
+	if(damage_type == BURN || guaranteed_violent)
+		explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
+		qdel(src)
+	else
+		. = ..()
+	//SKYRAT EDIT END
 
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
-	boom()
+	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom()
+	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom()
+	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/zap_act(power, zap_flags)
 	. = ..() //extend the zap
 	if(ZAP_OBJ_DAMAGE & zap_flags)
-		boom()
+		boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/bullet_act(obj/projectile/P)
 	. = ..()
 	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
 		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
 			log_bomber(P.firer, "detonated a", src, "via projectile")
-			boom()
+			boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
 		if(!reagents.has_reagent(/datum/reagent/fuel))
-			to_chat(user, "<span class='warning'>[src] is out of fuel!</span>")
+			to_chat(user, span_warning("[src] is out of fuel!"))
 			return
 		var/obj/item/weldingtool/W = I
 		if(istype(W) && !W.welding)
 			if(W.reagents.has_reagent(/datum/reagent/fuel, W.max_fuel))
-				to_chat(user, "<span class='warning'>Your [W.name] is already full!</span>")
+				to_chat(user, span_warning("Your [W.name] is already full!"))
 				return
 			reagents.trans_to(W, W.max_fuel, transfered_by = user)
-			user.visible_message("<span class='notice'>[user] refills [user.p_their()] [W.name].</span>", "<span class='notice'>You refill [W].</span>")
+			user.visible_message(span_notice("[user] refills [user.p_their()] [W.name]."), span_notice("You refill [W]."))
 			playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 			W.update_appearance()
 		else
-			user.visible_message("<span class='danger'>[user] catastrophically fails at refilling [user.p_their()] [I.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
+			user.visible_message(span_danger("[user] catastrophically fails at refilling [user.p_their()] [I.name]!"), span_userdanger("That was stupid of you."))
 			log_bomber(user, "detonated a", src, "via welding tool")
-			boom()
+			boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 		return
 	return ..()
 
@@ -138,9 +145,13 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-/obj/structure/reagent_dispensers/fueltank/large/boom()
-	explosion(get_turf(src), 1, 2, 7, flame_range = 12)
-	qdel(src)
+/obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
+	if(damage_type == BURN || guaranteed_violent)
+		explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12)
+		qdel(src)
+	else
+		. = ..()
+	//SKYRAT EDIT END
 
 /obj/structure/reagent_dispensers/peppertank
 	name = "pepper spray refiller"
@@ -150,11 +161,26 @@
 	density = FALSE
 	reagent_id = /datum/reagent/consumable/condensedcapsaicin
 
+/obj/structure/reagent_dispensers/peppertank/directional/north
+	dir = SOUTH
+	pixel_y = 30
+
+/obj/structure/reagent_dispensers/peppertank/directional/south
+	dir = NORTH
+	pixel_y = -30
+
+/obj/structure/reagent_dispensers/peppertank/directional/east
+	dir = WEST
+	pixel_x = 30
+
+/obj/structure/reagent_dispensers/peppertank/directional/west
+	dir = EAST
+	pixel_x = -30
+
 /obj/structure/reagent_dispensers/peppertank/Initialize()
 	. = ..()
 	if(prob(1))
 		desc = "IT'S PEPPER TIME, BITCH!"
-
 
 /obj/structure/reagent_dispensers/water_cooler//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "liquid cooler"
@@ -179,9 +205,9 @@
 	if(.)
 		return
 	if(!paper_cups)
-		to_chat(user, "<span class='warning'>There aren't any cups left!</span>")
+		to_chat(user, span_warning("There aren't any cups left!"))
 		return
-	user.visible_message("<span class='notice'>[user] takes a cup from [src].</span>", "<span class='notice'>You take a paper cup from [src].</span>")
+	user.visible_message(span_notice("[user] takes a cup from [src]."), span_notice("You take a paper cup from [src]."))
 	var/obj/item/reagent_containers/food/drinks/sillycup/S = new(get_turf(src))
 	user.put_in_hands(S)
 	paper_cups--
@@ -193,7 +219,7 @@
 	reagent_id = /datum/reagent/consumable/ethanol/beer
 
 /obj/structure/reagent_dispensers/beerkeg/blob_act(obj/structure/blob/B)
-	explosion(src.loc,0,3,5,7,10)
+	explosion(src, heavy_impact_range = 3, light_impact_range = 5, flame_range = 10, flash_range = 7)
 	if(!QDELETED(src))
 		qdel(src)
 
@@ -206,6 +232,21 @@
 	density = FALSE
 	reagent_id = /datum/reagent/consumable/virus_food
 
+/obj/structure/reagent_dispensers/virusfood/directional/north
+	dir = SOUTH
+	pixel_y = 30
+
+/obj/structure/reagent_dispensers/virusfood/directional/south
+	dir = NORTH
+	pixel_y = -30
+
+/obj/structure/reagent_dispensers/virusfood/directional/east
+	dir = WEST
+	pixel_x = 30
+
+/obj/structure/reagent_dispensers/virusfood/directional/west
+	dir = EAST
+	pixel_x = -30
 
 /obj/structure/reagent_dispensers/cooking_oil
 	name = "vat of cooking oil"
@@ -260,7 +301,7 @@
 
 /obj/structure/reagent_dispensers/plumbed/storage/proc/can_be_rotated(mob/user, rotation_type)
 	if(anchored)
-		to_chat(user, "<span class='warning'>It is fastened to the floor!</span>")
+		to_chat(user, span_warning("It is fastened to the floor!"))
 	return !anchored
 
 /obj/structure/reagent_dispensers/plumbed/fuel

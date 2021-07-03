@@ -4,13 +4,7 @@
 /obj/item/analyzer
 	icon = 'modular_skyrat/modules/aesthetics/device/device.dmi'
 
-/obj/item/sequence_scanner
-	icon = 'modular_skyrat/modules/aesthetics/device/device.dmi'
-
 /obj/item/mining_scanner
-	icon = 'modular_skyrat/modules/aesthetics/device/device.dmi'
-
-/obj/item/plant_analyzer
 	icon = 'modular_skyrat/modules/aesthetics/device/device.dmi'
 
 /obj/item/grenade/empgrenade

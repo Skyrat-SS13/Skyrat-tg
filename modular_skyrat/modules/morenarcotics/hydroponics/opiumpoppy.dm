@@ -10,6 +10,7 @@
 	plantname = "Opium Poppy Plants"
 	product = /obj/item/food/grown/poppy/opiumpoppy
 	reagents_add = list(/datum/reagent/drug/opium = 0.3, /datum/reagent/toxin/fentanyl = 0.075, /datum/reagent/consumable/nutriment = 0.05)
+	slot_flags = null
 
 /obj/item/food/grown/poppy/opiumpoppy
 	seed = /obj/item/seeds/poppy/opiumpoppy
@@ -17,3 +18,6 @@
 	desc = "The seedpod of the opium poppy plant, which contain opium latex."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "opiumpoppy"
+	greyscale_config = null
+	greyscale_config_worn = null
+	greyscale_colors = null
