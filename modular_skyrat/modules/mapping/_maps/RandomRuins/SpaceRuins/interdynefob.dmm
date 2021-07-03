@@ -616,9 +616,7 @@
 "cw" = (
 /obj/item/stack/cable_coil/cut,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron{
-	icon_state = "platingdmg2"
-	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "cy" = (
 /obj/machinery/atmospherics/components/binary/pump{
@@ -1609,6 +1607,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken/directional/west,
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},
@@ -8110,7 +8109,10 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Dv" = (
-/obj/structure/chair/sofa/bench/left,
+/obj/machinery/vending/drugs{
+	name = "\improper SyndiDrug Plus";
+	onstation = 0
+	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Dw" = (
@@ -9588,8 +9590,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Jd" = (
-/obj/structure/chair/sofa/bench/right,
 /obj/machinery/light/directional/north,
+/obj/machinery/vending/medical/syndicate_access{
+	onstation = 0
+	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Jf" = (
@@ -10645,12 +10649,6 @@
 	dir = 1
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
-"MP" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron{
-	icon_state = "panelscorched"
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "MQ" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/trimline/yellow/line,
@@ -10922,12 +10920,6 @@
 	},
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
-"NP" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron{
-	icon_state = "platingdmg3"
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "NQ" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Long-Term Brig";
@@ -14260,12 +14252,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/mining_equipment)
-"ZF" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron{
-	icon_state = "platingdmg1"
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "ZG" = (
 /obj/effect/turf_decal/siding/wideplating,
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -15928,7 +15914,7 @@ Fn
 gg
 as
 cw
-MP
+CD
 cS
 nX
 wu
@@ -16014,8 +16000,8 @@ nX
 Ks
 Ts
 kh
-NP
-ZF
+CD
+CD
 NG
 Bz
 nX
