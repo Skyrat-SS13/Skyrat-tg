@@ -1259,7 +1259,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "ahP" = (
 /turf/open/floor/iron/white,
 /area/security/brig)
@@ -1669,7 +1669,7 @@
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "akr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 4
@@ -1685,8 +1685,9 @@
 /area/cargo/storage)
 "akw" = (
 /obj/effect/turf_decal/siding/wood,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "akB" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -1943,7 +1944,7 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "aml" = (
 /obj/machinery/button/door{
 	desc = "A remote control switch for the brig exterior doors.";
@@ -2793,7 +2794,7 @@
 /obj/machinery/firealarm/directional/east,
 /obj/structure/awaymissions/wildwest/masterclock,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "aqc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3047,8 +3048,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "ard" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -3255,7 +3257,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "arW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 10
@@ -3294,8 +3296,8 @@
 	pixel_x = 7;
 	pixel_y = -2
 	},
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "asb" = (
 /obj/structure/trash_pile,
 /turf/open/floor/plating,
@@ -3572,12 +3574,15 @@
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "atc" = (
+/obj/effect/landmark/start/nanotrasen_representative,
 /obj/structure/chair/comfy/brown{
-	dir = 1
+	color = "#c45c57";
+	desc = "Remarkably soft, with plush cozy cushions, premium memory-foam and covered in stain-resistant fabric. Made by Kat-Kea???!";
+	dir = 1;
+	name = "Premium Cozy Chair"
 	},
-/obj/effect/landmark/start/blueshield,
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "ate" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -3952,9 +3957,9 @@
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aui" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/obj/machinery/photocopier,
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "auj" = (
 /obj/effect/turf_decal/vg_decals/atmos/mix{
 	dir = 8
@@ -10922,7 +10927,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "aRw" = (
 /obj/structure/chair/comfy/brown{
 	dir = 1
@@ -14094,11 +14099,11 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/command{
-	name = "Blueshield's Office";
-	req_access_txt = "20"
+	name = "Representative's Office";
+	req_access_txt = "101"
 	},
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "baW" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/effect/turf_decal/stripes/line{
@@ -14527,9 +14532,18 @@
 /turf/open/floor/carpet/blue,
 /area/command/heads_quarters/captain)
 "bcn" = (
-/obj/structure/displaycase/captain,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
+/obj/structure/table/wood,
+/obj/item/coin/antagtoken,
+/obj/item/toy/figure/captain{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/toy/balloon/arrest{
+	pixel_x = -9
+	},
+/obj/item/pen/fountain,
+/turf/open/floor/carpet/executive,
+/area/blueshield)
 "bcp" = (
 /obj/structure/sign/directions/security{
 	dir = 1;
@@ -16023,13 +16037,6 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
-"bgY" = (
-/obj/structure/sign/painting/meat{
-	pixel_y = 32
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/wood,
-/area/blueshield)
 "bhb" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -27018,7 +27025,7 @@
 "bON" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "bOP" = (
 /obj/structure/table/glass,
 /obj/item/book/manual/wiki/infections{
@@ -37715,21 +37722,20 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "dyN" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
+/obj/structure/closet/secure_closet/nanotrasen_representative{
+	icon_state = "cabinet";
+	name = "\proper NT Rep's locker"
 	},
-/obj/structure/closet/secure_closet/blueshield,
-/obj/item/clothing/under/rank/centcom/officer/replica{
-	desc = "A cheaper, unarmored CentCom turtleneck meant for everyday wear. Somewhat of a status symbol.";
-	name = "\improper Civilian CentCom turtleneck"
-	},
-/obj/item/clothing/under/rank/centcom/officer_skirt/replica{
-	desc = "A cheaper, unarmored CentCom skirtleneck meant for everyday wear. Somewhat of a status symbol.";
-	name = "\improper Civilian CentCom skirtleneck"
-	},
+/obj/item/reagent_containers/food/drinks/bottle/champagne,
 /obj/item/bedsheet/centcom,
-/turf/open/floor/iron/dark,
-/area/blueshield)
+/obj/item/clothing/head/centcom_cap,
+/obj/item/clothing/head/centhat,
+/obj/item/clothing/suit/armor/vest/centcom_formal,
+/obj/item/clothing/suit/hooded/wintercoat/centcom,
+/obj/item/clothing/under/rank/centcom/commander,
+/obj/item/clothing/under/rank/centcom/centcom_skirt,
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain/private)
 "dAm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -37760,9 +37766,18 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "dCn" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
+/obj/structure/closet/secure_closet/blueshield,
+/obj/item/bedsheet/centcom,
+/obj/item/clothing/under/rank/centcom/officer_skirt/replica{
+	desc = "A cheaper, unarmored CentCom skirtleneck meant for everyday wear. Somewhat of a status symbol.";
+	name = "\improper Civilian CentCom skirtleneck"
+	},
+/obj/item/clothing/under/rank/centcom/officer/replica{
+	desc = "A cheaper, unarmored CentCom turtleneck meant for everyday wear. Somewhat of a status symbol.";
+	name = "\improper Civilian CentCom turtleneck"
+	},
+/turf/open/floor/carpet/executive,
+/area/blueshield)
 "dCG" = (
 /obj/item/bedsheet/purple,
 /obj/structure/bed,
@@ -40432,7 +40447,7 @@
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "guz" = (
-/obj/structure/dresser,
+/obj/structure/displaycase/captain,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain)
 "guI" = (
@@ -40853,13 +40868,21 @@
 /area/science/robotics/lab)
 "gTC" = (
 /obj/structure/table/wood,
-/obj/item/toy/figure/captain{
-	pixel_x = 5;
+/obj/item/stamp/centcom,
+/obj/item/coin/gold{
+	pixel_x = -7;
 	pixel_y = 8
 	},
-/obj/item/coin/antagtoken,
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/obj/item/paper/fluff/gateway{
+	pixel_x = 10;
+	pixel_y = 8
+	},
+/obj/item/phone{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "gUD" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -41205,6 +41228,11 @@
 /obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/fore/secondary)
+"hmr" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/turf/open/floor/carpet/executive,
+/area/blueshield)
 "hmF" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
@@ -42694,7 +42722,7 @@
 /area/maintenance/department/medical/morgue)
 "iIX" = (
 /turf/closed/wall,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "iIZ" = (
 /obj/machinery/power/apc/auto_name/east,
 /obj/structure/cable,
@@ -44068,9 +44096,9 @@
 /area/security/checkpoint/engineering)
 "jYO" = (
 /obj/effect/turf_decal/siding/wood,
-/obj/machinery/photocopier,
+/obj/structure/filingcabinet/medical,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "kbk" = (
 /obj/machinery/computer/exoscanner_control{
 	dir = 4
@@ -44327,8 +44355,8 @@
 /area/hallway/primary/starboard)
 "klg" = (
 /obj/machinery/light/directional/south,
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "klp" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -45028,8 +45056,8 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "kNm" = (
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "kNq" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/green/line,
@@ -45609,8 +45637,10 @@
 "lwp" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable,
-/turf/open/floor/wood,
-/area/command/heads_quarters/captain)
+/obj/structure/chair/office,
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/carpet/executive,
+/area/blueshield)
 "lxl" = (
 /obj/effect/turf_decal/trimline/green/filled/end{
 	dir = 4
@@ -46642,6 +46672,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
+"mwv" = (
+/obj/structure/sign/painting/meat,
+/turf/closed/wall,
+/area/command/heads_quarters/captain/private)
 "mwM" = (
 /obj/structure/bookcase/random/reference,
 /turf/open/floor/wood,
@@ -46859,11 +46893,11 @@
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "mIg" = (
-/obj/machinery/computer/med_data{
+/obj/machinery/modular_computer/console/preset/command{
 	dir = 8
 	},
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "mIq" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -47097,7 +47131,7 @@
 "mSf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
-/area/blueshield)
+/area/command/heads_quarters/captain/private)
 "mSu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -49375,8 +49409,8 @@
 /area/security/prison)
 "pgP" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Blueshield's Office Maintenance";
-	req_access_txt = "20"
+	name = "NT Rep's Office Maintenance";
+	req_access_txt = "101"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -49706,13 +49740,18 @@
 /area/medical/chemistry)
 "pvj" = (
 /obj/structure/table/wood,
-/obj/item/lighter{
-	pixel_x = 15
-	},
 /obj/item/paper,
 /obj/item/pen/fountain,
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/obj/item/stamp/denied{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/stamp{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "pvk" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock{
@@ -51027,12 +51066,11 @@
 /area/science/nanite)
 "qGZ" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin,
-/obj/item/toy/balloon/arrest{
-	pixel_x = -9
-	},
-/turf/open/floor/carpet/executive,
-/area/blueshield)
+/obj/item/paper_bin/carbon,
+/obj/item/storage/secure/briefcase,
+/obj/item/pen/fourcolor,
+/turf/open/floor/carpet/green,
+/area/command/heads_quarters/captain/private)
 "qHq" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/trash_pile,
@@ -52886,6 +52924,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/security/prison)
+"sEL" = (
+/obj/machinery/newscaster/security_unit,
+/turf/closed/wall,
+/area/command/heads_quarters/captain/private)
 "sFb" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible{
 	dir = 9
@@ -54512,6 +54554,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
+"uaX" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall,
+/area/command/heads_quarters/captain/private)
 "ubj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -57725,15 +57771,11 @@
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "wUs" = (
-/obj/machinery/computer/security{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
 /obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark,
-/area/blueshield)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/filingcabinet/security,
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain/private)
 "wUD" = (
 /obj/structure/filingcabinet,
 /obj/effect/turf_decal/tile/red{
@@ -58938,14 +58980,10 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "yay" = (
-/obj/machinery/computer/secure_data{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/blueshield)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/filingcabinet/employment,
+/turf/open/floor/wood,
+/area/command/heads_quarters/captain/private)
 "yaH" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -86570,8 +86608,8 @@ amQ
 tOF
 xus
 jmA
-iIX
-bgY
+uaX
+mSf
 akl
 arV
 amd
@@ -86833,7 +86871,7 @@ akw
 qGZ
 gTC
 klg
-iIX
+sEL
 axt
 ayL
 ayT
@@ -87090,7 +87128,7 @@ arb
 pvj
 atc
 kNm
-iIX
+mwv
 axt
 ayL
 azW
@@ -87598,7 +87636,7 @@ amQ
 tOF
 hTf
 jmA
-iIX
+uaX
 iIX
 bON
 bON
@@ -91227,7 +91265,7 @@ aXd
 aYE
 aZV
 lwp
-bbw
+hmr
 bbw
 bbw
 bbw
