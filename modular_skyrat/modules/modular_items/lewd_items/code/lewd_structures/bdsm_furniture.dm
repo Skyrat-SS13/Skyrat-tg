@@ -83,7 +83,13 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/bed/x_stand/Destroy()
+	if(LAZYLEN(buckled_mobs))
+		var/mob/living/M = buckled_mobs[1]
+		M.client.movement_keys = lastsaved_keybindings
+		var/mob/living/carbon/N = M
+		N.set_usable_hands(2)
 	unbuckle_all_mobs(TRUE)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/structure/bed/x_stand/update_icon_state()
