@@ -96,7 +96,7 @@ SUBSYSTEM_DEF(dispatch)
 /datum/controller/subsystem/dispatch/proc/ticket_create(mob/user, list/tdata)
 	holder_update()
 	var/datum/dispatch_ticket/ticket = new(user, tdata)
-	user.visible_message("[user] makes a loud chime!")
+	user.visible_message("[user] makes a loud chime - ticket created successfully!")
 	for(var/mob/mob in viewers(world.view, user))
 		SEND_SOUND(mob, 'sound/machines/terminal_success.ogg')
 	var/key = "[ticket.title]-[ticket.creator]-[uppertext(random_string(4, GLOB.hex_characters))]"
