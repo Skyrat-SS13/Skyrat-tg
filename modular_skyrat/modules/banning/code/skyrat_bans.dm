@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(hell) //captured people go here (ninja energy net)
+GLOBAL_LIST_EMPTY(hell) //eorg banned players go here
 
 /mob/living/Login()
 	. = ..()
