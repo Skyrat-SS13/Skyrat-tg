@@ -42,7 +42,7 @@
 
 	box = /obj/item/storage/box/survival/expeditionary_corps
 
-	backpack_contents = list(/obj/item/choice_beacon/exp_corps_equip)
+	backpack_contents = list(/obj/item/advanced_choice_beacon/exp_corps)
 
 	id = /obj/item/card/id/advanced/silver/exp_corps
 	id_trim = /datum/id_trim/job/expeditionary_trooper
@@ -76,27 +76,6 @@
 	new /obj/item/reagent_containers/syringe(src)
 	new /obj/item/storage/pill_bottle/multiver(src)
 
-/obj/item/choice_beacon/exp_corps_equip
-	name = "Vanguard Operatives Supply Beacon"
-	desc = "Used to request your job supplies, use in hand to do so!"
-	icon = 'icons/obj/device.dmi'
-	icon_state = "gangtool-red"
-	inhand_icon_state = "radio"
-<<<<<<< Updated upstream
-=======
-	var/list/loadout = list()
->>>>>>> Stashed changes
-
-/obj/item/choice_beacon/exp_corps_equip/generate_display_names()
-	var/static/list/exp_crates
-	if(!exp_crates)
-		exp_crates = list()
-		var/list/templist = typesof(/obj/structure/closet/crate/secure/exp_corps)
-		for(var/iterating_crate in templist)
-			var/obj/structure/closet/crate/secure/exp_corps/our_crate = iterating_crate
-			exp_crates[initial(our_crate.name)] = our_crate
-	return exp_crates
-
 /obj/item/card/id/advanced/silver/exp_corps
 	wildcard_slots = WILDCARD_LIMIT_CENTCOM
 
@@ -107,16 +86,15 @@
 	icon = 'modular_skyrat/modules/exp_corps/icons/exp_crate.dmi'
 	req_access = list(ACCESS_GATEWAY, ACCESS_CENT_GENERAL)
 	max_integrity = 5000
-	var/loadout_name = "Standard"
-
+	var/loadout_desc = "Standard"
 
 /obj/structure/closet/crate/secure/exp_corps/testa
 	name = "Test1"
-	loadout_name = "Standard 1"
+	loadout_desc = "Standard 1"
 
 /obj/structure/closet/crate/secure/exp_corps/testb
 	name = "Test2"
-	loadout_name = "Standard 2"
+	loadout_desc = "Standard 2"
 
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
@@ -129,3 +107,4 @@
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+
