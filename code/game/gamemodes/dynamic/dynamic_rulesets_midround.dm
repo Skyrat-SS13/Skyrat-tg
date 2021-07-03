@@ -444,7 +444,6 @@
 	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 2
 	cost = 10
 	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
@@ -586,7 +585,7 @@
 //                                          //
 //////////////////////////////////////////////
 
-/datum/dynamic_ruleset/midround/from_ghosts/space_dragon
+/*/datum/dynamic_ruleset/midround/from_ghosts/space_dragon
 	name = "Space Dragon"
 	antag_datum = /datum/antagonist/space_dragon
 	antag_flag = "Space Dragon"
@@ -623,6 +622,8 @@
 	log_game("DYNAMIC: [key_name(S)] was spawned as a Space Dragon by the midround ruleset.")
 	priority_announce("A large organic energy flux has been recorded near of [station_name()], please stand-by.", "Lifesign Alert")
 	return S
+*/
+//	SKYRAT EDIT - EVENT CULLING OF SPESS DRAGON
 
 //////////////////////////////////////////////
 //                                          //
