@@ -1,5 +1,3 @@
-#define TOOL_RUSTSCRAPER "RUST_SCRAPER"
-
 /datum/component/rust
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	var/atom/parent_atom
