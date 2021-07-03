@@ -82,25 +82,16 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-red"
 	inhand_icon_state = "radio"
-	var/static/list/exp_item_list
-	var/list/loadout = list()
 
 /obj/item/choice_beacon/exp_corps_equip/generate_display_names()
-	for(var/iterating_crate in subtypesof(/obj/structure/closet/crate/secure/exp_corps))
-		var/obj/structure/closet/crate/secure/exp_corps/our_crate = iterating_crate
-		loadout[initial(our_crate.loadout_name)] = our_crate
-	return loadout
-
-/obj/item/choice_beacon/exp_corps_equip/attack_self(mob/user, modifiers)
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
-	podspawn(list(
-		"target" = get_turf(src),
-		"style" = STYLE_CENTCOM,
-		"spawn" = loadout,
-	))
-	to_chat(user, "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>")
-	qdel(src)
+	var/static/list/exp_crates
+	if(!exp_crates)
+		exp_crates = list()
+		var/list/templist = typesof(/obj/structure/closet/crate/secure/exp_corps)
+		for(var/iterating_crate in templist)
+			var/obj/structure/closet/crate/secure/exp_corps/our_crate = iterating_crate
+			exp_crates[initial(our_crate.name)] = our_crate
+	return exp_crates
 
 /obj/item/card/id/advanced/silver/exp_corps
 	wildcard_slots = WILDCARD_LIMIT_CENTCOM
