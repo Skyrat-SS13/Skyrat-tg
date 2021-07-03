@@ -5,7 +5,7 @@
 	var/static/list/typecache_of_valid_types = list(
 		/turf/closed/wall,
 		/turf/closed/wall/r_wall,
-		/obj/machinery/door,
+		/turf/open/floor/plating,
 	)
 
 /turf/closed/wall/rust/Initialize()
@@ -14,6 +14,10 @@
 
 /turf/closed/wall/r_wall/rust/Initialize()
 	var/atom/T = ChangeTurf(/turf/closed/wall/r_wall)
+	T._AddComponent(list(/datum/component/rust))
+
+/turf/open/floor/plating/rust/Initialize(mapload)
+	var/atom/T = ChangeTurf(/turf/open/floor/plating)
 	T._AddComponent(list(/datum/component/rust))
 
 /datum/component/rust/Initialize(...)
@@ -36,9 +40,9 @@
 	SIGNAL_HANDLER
 	examine_text += "It's very rusty... Maybe you could <b><u>burn or scrape</u></b> it clean?"
 
-/datum/component/rust/proc/apply_rust_overlay(list/ret)
+/datum/component/rust/proc/apply_rust_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
-	ret += rust_overlay
+	overlays += rust_overlay
 
 /datum/component/rust/proc/parent_del()
 	qdel(src)
