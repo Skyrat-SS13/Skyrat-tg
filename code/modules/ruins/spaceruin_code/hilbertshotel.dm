@@ -262,7 +262,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	icon_state = base_icon_state
 	return ..()
 
-/turf/open/space/bluespace/Entered(atom/movable/arrived, direction)
+/turf/open/space/bluespace/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	if(parentSphere && arrived.forceMove(get_turf(parentSphere)))
 		do_sparks(3, FALSE, get_turf(arrived))
@@ -359,7 +359,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	var/datum/turf_reservation/reservation
 	var/turf/storageTurf
 
-/area/hilbertshotel/Entered(atom/movable/arrived, direction)
+/area/hilbertshotel/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	if(istype(arrived, /obj/item/hilbertshotel))
 		relocate(arrived)
@@ -447,7 +447,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	var/roomNumber
 	var/obj/item/hilbertshotel/parentSphere
 
-/obj/item/abstracthotelstorage/Entered(atom/movable/arrived, direction)
+/obj/item/abstracthotelstorage/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	if(ismob(arrived))
 		var/mob/M = arrived
