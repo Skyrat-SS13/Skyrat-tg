@@ -214,16 +214,6 @@
 	update_icon_state()
 	update_icon()
 
-	//adding messages to chat if vibrator enabled while
-	var/mob/living/carbon/human/U = loc
-	if(toy_on == TRUE)
-		if(src == U.penis || U.vagina || U.anus)
-			to_chat(U, "<font color=purple>You feel pleasant vibrations deep below...</font>")
-		if(src == U.nipples)
-			to_chat(U, "<font color=purple>You feel pleasant stimulation in your nipples</font>")
-	if(toy_on == FALSE && (src == U.penis || src == U.vagina || src == U.anus || src == U.nipples))
-		to_chat(U, "<font color=purple>Vibrating toy does not drive you mad anymore</font>")
-
 	if(toy_on == TRUE)
 		if(vibration_mode == "low")
 			soundloop1.start()
@@ -239,6 +229,16 @@
 			soundloop2.stop()
 		if(vibration_mode == "hard")
 			soundloop3.stop()
+
+	//adding messages to chat if vibrator enabled while
+	var/mob/living/carbon/human/U = loc
+	if(toy_on == TRUE)
+		if(src == U.penis || U.vagina || U.anus)
+			to_chat(U, "<font color=purple>You feel pleasant vibrations deep below...</font>")
+		if(src == U.nipples)
+			to_chat(U, "<font color=purple>You feel pleasant stimulation in your nipples</font>")
+	if(toy_on == FALSE && (src == U.penis || src == U.vagina || src == U.anus || src == U.nipples))
+		to_chat(U, "<font color=purple>Vibrating toy does not drive you mad anymore</font>")
 
 	if(master)
 		if(isassembly(master))
@@ -268,6 +268,7 @@
 			toggle_mode()
 			if(vibration_mode == "low")
 				to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
+				soundloop3.stop()
 				soundloop1.start()
 			if(vibration_mode == "medium")
 				to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
@@ -275,8 +276,8 @@
 				soundloop2.start()
 			if(vibration_mode == "hard")
 				to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
-				soundloop3.start()
 				soundloop2.stop()
+				soundloop3.start()
 			update_icon()
 			update_icon_state()
 		else
@@ -294,7 +295,6 @@
 	return TRUE
 
 /obj/item/clothing/sextoy/signalvib/Initialize()
-	set_frequency(frequency)
 	update_icon_state()
 	update_icon()
 	if(!length(signalvib_designs))
@@ -311,6 +311,7 @@
 			frequency++
 	if(freq_in_name)
 		name = initial(name) + " - freq: [frequency/10] code: [code]"
+	set_frequency(frequency)
 	.=..()
 
 /obj/item/clothing/sextoy/signalvib/ui_state(mob/user)

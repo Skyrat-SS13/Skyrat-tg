@@ -33,6 +33,7 @@
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/pillow = 6,
+					/obj/item/assembly/signaler = 8,
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
@@ -95,7 +96,6 @@
 
 	contraband = list(/obj/item/clothing/glasses/hypno = 4,
 					/obj/item/electropack/shockcollar = 4,
-					/obj/item/assembly/signaler = 4,
 					/obj/item/clothing/neck/kink_collar/locked = 4,
 					/obj/item/clothing/neck/mind_collar = 2,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
@@ -106,8 +106,8 @@
 
 	refill_canister = /obj/item/vending_refill/lustwish
 	payment_department = ACCOUNT_SRV
-	default_price = PAYCHECK_ASSISTANT * 0.5
-	extra_price = PAYCHECK_COMMAND * 0.3
+	default_price = 60
+	extra_price = 250
 
 //Secret vending machine skin. Don't touch plz
 /obj/machinery/vending/lustwish/proc/populate_vend_designs()
@@ -126,8 +126,8 @@
 				default_price = 0
 				extra_price = 0
 			if(FALSE)
-				default_price = PAYCHECK_ASSISTANT * 0.5
-				extra_price = PAYCHECK_COMMAND * 0.3
+				default_price = 60
+				extra_price = 250
 	else
 		return
 

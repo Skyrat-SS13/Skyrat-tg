@@ -53,7 +53,7 @@
 			to_chat(M, "<font color=purple>[aroused_message]</font>")
 		if(ishuman(M))
 			M.adjustArousal(2)
-			M.adjustPleasure(1)
+			M.adjustPleasure(1.5)
 			M.adjustPain(0.2)
 			for(var/obj/item/organ/genital/G)
 				if(!G.aroused == AROUSAL_CANT)
@@ -66,7 +66,7 @@
 	var/mob/living/carbon/human/H = M
 	if(M.client && (M.client.prefs.skyrat_toggles & BIMBO_PREF))
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
-			to_chat(M, "<font color=purple>Your libido is going haywire!</font>")
+			to_chat(M, "<font color=purple>Your libido is going haywire! Speaking gets much harder...</font>")
 			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_LOBOTOMY) //what am i doing with my life.
 			ADD_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
 	..()
@@ -145,7 +145,7 @@
 	reagent_state = SOLID
 	overdose_threshold = 20
 
-/datum/reagent/drug/camphor/on_mob_life(mob/living/M)
+/datum/reagent/drug/pentacamphor/on_mob_life(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
@@ -153,6 +153,11 @@
 			M.adjustPleasure(-3)
 			if(M.arousal <= 0 && old_arousal > 0)
 				to_chat(M, "<span class='notice'>You no longer feel aroused.</span>")
+
+		if(M.reagents.has_reagent(/datum/reagent/drug/crocin))
+			M.reagents.remove_reagent(/datum/reagent/drug/crocin, 20)
+		if(M.reagents.has_reagent(/datum/reagent/drug/hexacrocin))
+			M.reagents.remove_reagent(/datum/reagent/drug/hexacrocin, 20)
 	..()
 
 /datum/reagent/drug/pentacamphor/overdose_process(mob/living/M)
@@ -495,7 +500,7 @@ Haha! Kill me please.
 	list_reagents = list(/datum/reagent/drug/camphor = 30)
 
 /obj/item/reagent_containers/glass/bottle/pentacamphor
-	name = "Hexacamphor bottle"
+	name = "Pentacamphor bottle"
 	desc = "A bottle of strong anaphrodisiac. Reduces libido."
 	list_reagents = list(/datum/reagent/drug/pentacamphor = 30)
 
