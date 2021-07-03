@@ -9,12 +9,6 @@
 		/obj/machinery/door,
 	)
 
-/client/verb/MakeRusty(atom/A as turf in view(2))
-	set name = "Rustify"
-	set category = "OOC"
-	stack_trace("I work!")
-	A.AddComponent(/datum/component/rust)
-
 /turf/closed/wall/rust/Initialize()
 	var/atom/nwall = new /turf/closed/wall(loc)
 	nwall._AddComponent(list(/datum/component/rust))
