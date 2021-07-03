@@ -50577,6 +50577,7 @@
 	name = "security maintenance";
 	req_access_txt = "4"
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/maintenance/port/aft)
 "bNG" = (
@@ -55260,29 +55261,10 @@
 "bWR" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet{
-	name = "detective closet"
-	},
-/obj/item/clothing/suit/jacket{
-	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "greydet";
-	name = "trenchcoat";
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/clothing/suit/jacket{
-	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "detective";
-	name = "trenchcoat"
-	},
-/obj/item/clothing/head/fedora{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/clothing/head/fedora{
-	icon_state = "detective"
-	},
-/turf/open/floor/plating,
+/obj/structure/closet/secure_closet/detective,
+/obj/item/book/manual/wiki/detective,
+/obj/item/clothing/accessory/badge/holo/detective,
+/turf/open/floor/carpet/green,
 /area/maintenance/port/aft)
 "bWS" = (
 /obj/machinery/door/airlock/external{
@@ -58768,6 +58750,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
+/obj/effect/spawner/lootdrop/glowstick,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -68274,8 +68257,11 @@
 /area/command/heads_quarters/hos)
 "czW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/lootdrop/glowstick,
-/obj/structure/grille/broken,
+/obj/machinery/door/airlock/maintenance{
+	name = "security maintenance";
+	req_access_txt = "4"
+	},
+/obj/structure/cable,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -74700,6 +74686,7 @@
 /obj/item/clipboard,
 /obj/item/folder/red,
 /obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet/green,
 /area/security/detectives_office)
 "cNB" = (
@@ -76347,6 +76334,11 @@
 "eBo" = (
 /turf/closed/wall,
 /area/science/test_area)
+"eBS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/carpet/green,
+/area/maintenance/port/aft)
 "eCH" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -115061,7 +115053,7 @@ bOR
 bGg
 ajd
 bWR
-bMR
+eBS
 aaY
 aaY
 ald
