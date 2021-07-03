@@ -64,6 +64,12 @@
 		return TRUE
 	return authenticated
 
+/// Skyrat Edit Start - Are we the AI?
+/obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
+	if (isAI(user))
+		return TRUE
+	return ACCESS_CAPTAIN in authorize_access //Skyrat Edit End
+
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/card/id))
 		attack_hand(user)
@@ -167,7 +173,7 @@
 				return
 			make_announcement(usr)
 		if ("messageAssociates")
-			if (!authenticated_as_non_silicon_captain(usr))
+			if (!authenticated_as_ai_or_captain(usr)) //Skyrat edit | Allows AI and Captain to send messages
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
@@ -434,6 +440,9 @@
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
+
+				if (authenticated_as_ai_or_captain(user))
+					data["canMessageAssociates"] = TRUE //Skyrat Edit | Allows AI to report to CC in the event of there being no command alive/to begin with
 
 				if (SSshuttle.emergency.mode != SHUTTLE_IDLE && SSshuttle.emergency.mode != SHUTTLE_RECALL)
 					data["shuttleCalled"] = TRUE
