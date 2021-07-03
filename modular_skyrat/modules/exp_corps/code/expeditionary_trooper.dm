@@ -87,7 +87,7 @@
 
 /obj/item/choice_beacon/exp_corps_equip/generate_display_names()
 	for(var/iterating_crate in subtypesof(/obj/structure/closet/crate/secure/exp_corps))
-		/obj/structure/closet/crate/secure/exp_corps/our_crate = iterating_crate
+		var/obj/structure/closet/crate/secure/exp_corps/our_crate = iterating_crate
 		loadout[initial(our_crate.loadout_name)] = our_crate
 	return loadout
 
