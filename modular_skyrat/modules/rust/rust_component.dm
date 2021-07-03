@@ -42,7 +42,7 @@
 
 /datum/component/rust/proc/apply_rust_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
-	overlays += rust_overlay
+	overlays |= rust_overlay
 
 /datum/component/rust/proc/parent_del()
 	qdel(src)
