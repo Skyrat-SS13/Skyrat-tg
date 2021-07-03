@@ -30,18 +30,18 @@
 		if(human_target.is_mouth_covered(head_only = 1))
 			to_chat(usr, span_warning("You can't brush [human_target]'s hair while [human_target.p_their()] head is covered!"))
 			return
-		if(!do_after(usr, brush_speed, target))
+		if(!do_after(usr, brush_speed, human_target))
 			return
 
 		// Do 1 brute to their head if they're bald. Should've been more careful.
 		if(human_target.hairstyle == "Bald")
-			target.visible_message(span_warning("[usr] scrapes the bristles uncomfortably over [human_target]'s scalp."), span_warning("You scrape the bristles uncomfortably over [target]'s scalp."))
+			human_target.visible_message(span_warning("[usr] scrapes the bristles uncomfortably over [human_target]'s scalp."), span_warning("You scrape the bristles uncomfortably over [human_target]'s scalp."))
 			head.receive_damage(1)
 			return
 
 		// Brush their hair
 		if(human_target == usr)
-			target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("You brush your hair."))
+			human_target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("You brush your hair."))
 			SEND_SIGNAL(usr, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/self)
 		else
 			human_target.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."))
