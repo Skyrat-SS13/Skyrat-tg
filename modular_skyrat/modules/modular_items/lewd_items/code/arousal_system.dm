@@ -663,9 +663,9 @@
 	var/atom/movable/screen/alert/aroused_X/I = H.alerts["aroused"]
 	if(H.client?.prefs.erp_pref == "Yes")
 		switch(H.arousal)
-			if(-100 to 10)
+			if(-100 to 1)
 				H.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
-			if(10 to 25)
+			if(1 to 25)
 				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
 				I?.icon_state = "arousal_small"
 				I?.update_icon()
@@ -682,11 +682,11 @@
 				I?.icon_state = "arousal_max"
 				I?.update_icon()
 
-		if(H.arousal > 10)
+		if(H.arousal > 1)
 			switch(H.pain)
-				if(-100 to 5) //to prevent same thing with pain
+				if(-100 to 1) //to prevent same thing with pain
 					I?.cut_overlay(I.pain_overlay)
-				if(5 to 25)
+				if(1 to 25)
 					I?.cut_overlay(I.pain_overlay)
 					I?.pain_level = "small"
 					I?.pain_overlay = I.update_pain()
@@ -711,11 +711,11 @@
 					I?.add_overlay(I.pain_overlay)
 					I?.update_overlays()
 
-		if(H.arousal > 10)
+		if(H.arousal > 1)
 			switch(H.pleasure)
-				if(-100 to 5) //to prevent same thing with pleasure
+				if(-100 to 1) //to prevent same thing with pleasure
 					I?.cut_overlay(I.pleasure_overlay)
-				if(5 to 25)
+				if(1 to 25)
 					I?.cut_overlay(I.pleasure_overlay)
 					I?.pleasure_level = "small"
 					I?.pleasure_overlay = I.update_pleasure()
