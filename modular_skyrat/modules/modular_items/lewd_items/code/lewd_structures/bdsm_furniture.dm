@@ -46,6 +46,11 @@
 	//Set them back down to the normal lying position
 	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
 
+/obj/structure/bed/bdsm_bed/deconstruct()
+	unbuckle_all_mobs()
+	qdel(src)
+	return TRUE
+
 /////////////////////
 //X-Stand code here//
 /////////////////////
@@ -63,11 +68,16 @@
 	var/static/mutable_appearance/xstand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi', "xstand_overlay", LYING_MOB_LAYER)
 	buckle_lying = NO_BUCKLE_LYING //We no need mob lying
 
+	// Variables to block the rotation of the mob in the machine
+	var/lastsaved_keybindings // Memory of the last saved binding list
+	var/current_keybindings // Memory of the current binding list
+
 //to make it have model when we constructing the thingy
 /obj/structure/bed/x_stand/Initialize()
 	. = ..()
 	update_icon_state()
 	update_icon()
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/bed/x_stand/update_icon_state()
     . = ..()
@@ -191,17 +201,57 @@
 	update_icon()
 	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
+// Mob player control handler
+/obj/structure/bed/x_stand/proc/mob_control_handler()
+
+	if(LAZYLEN(buckled_mobs))
+		var/mob/living/M = buckled_mobs[1]
+		current_keybindings = M.client.movement_keys
+		if(current_keybindings == null)
+			return
+		else
+			lastsaved_keybindings = current_keybindings
+			M.client.movement_keys = null
+			return
+
+//weird way to prevent rotating in this thing. Yes, this processing added only for that. Make it better if you can, please.
+
+/obj/structure/bed/x_stand/process(delta_time)
+	mob_control_handler()
+
+// Machine deconstruction process handler
+/obj/structure/bed/x_stand/deconstruct()
+	if(LAZYLEN(buckled_mobs))
+		var/mob/living/M = buckled_mobs[1]
+		M.client.movement_keys = lastsaved_keybindings
+		var/mob/living/carbon/N = M
+		N.set_usable_hands(2)
+	unbuckle_all_mobs()
+	STOP_PROCESSING(SSobj, src)
+	qdel(src)
+	return TRUE
+
 //Place the mob in the desired position after buckling
 /obj/structure/bed/x_stand/post_buckle_mob(mob/living/M)
 	M.pixel_y = M.base_pixel_y
 	M.pixel_x = M.base_pixel_x
 	M.layer = BELOW_MOB_LAYER
 
+	//weird way to prevent moving in that thing. This is very important.
+	lastsaved_keybindings = M.client.movement_keys
+	M.client.movement_keys = null
+	var/mob/living/carbon/N = M
+	N.set_usable_hands(0)
+
 //Restore the position of the mob after unbuckling.
 /obj/structure/bed/x_stand/post_unbuckle_mob(mob/living/M)
 	M.pixel_x = M.base_pixel_x + M.body_position_pixel_x_offset
 	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
 	M.layer = initial(M.layer)
+
+	M.client.movement_keys = lastsaved_keybindings
+	current_keybindings = null
+	lastsaved_keybindings = null
 
 ///////////////////////////
 //xstand construction kit//

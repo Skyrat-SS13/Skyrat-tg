@@ -11,7 +11,7 @@
 	color = "#FFADFF"//PINK, rgb(255, 173, 255)
 	//can_synth = FALSE
 
-/datum/reagent/drug/crocin/on_mob_metabolize(mob/living/M)
+/datum/reagent/drug/crocin/on_mob_life(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if((prob(min(current_cycle/2,5))))
 			M.emote(pick("moan","blush"))
@@ -37,7 +37,7 @@
 	color = "#FF2BFF"//dark pink
 	overdose_threshold = 25 //Heavy consequences. Supposed to be big value.
 
-/datum/reagent/drug/hexacrocin/on_mob_metabolize(mob/living/M)
+/datum/reagent/drug/hexacrocin/on_mob_life(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(prob(5))
 			if(prob(current_cycle))
@@ -67,7 +67,8 @@
 	if(M.client && (M.client.prefs.skyrat_toggles & BIMBO_PREF))
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
 			to_chat(M, "<font color=purple>Your libido is going haywire!</font>")
-			H.gain_trauma(pick(/datum/brain_trauma/special/bimbo, /datum/brain_trauma/special/nymphomania), TRAUMA_RESILIENCE_LOBOTOMY) //what am i doing with my life.
+			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_LOBOTOMY) //what am i doing with my life.
+			ADD_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
 	..()
 
 //Dopamine. Generates in character after orgasm.
@@ -124,7 +125,7 @@
 	color = "#D9D9D9"//rgb(157, 157, 157)
 	reagent_state = SOLID
 
-/datum/reagent/drug/camphor/on_mob_metabolize(mob/living/M)
+/datum/reagent/drug/camphor/on_mob_life(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
@@ -144,7 +145,7 @@
 	reagent_state = SOLID
 	overdose_threshold = 20
 
-/datum/reagent/drug/camphor/on_mob_metabolize(mob/living/M)
+/datum/reagent/drug/camphor/on_mob_life(mob/living/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
@@ -166,11 +167,13 @@
 			if(prob(30))
 				H.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_LOBOTOMY)
 				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
+				REMOVE_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
 
 		if(HAS_TRAIT(M, TRAIT_NYMPHOMANIA))
 			if(prob(30))
 				H.cure_trauma_type(/datum/brain_trauma/special/nymphomania, TRAUMA_RESILIENCE_LOBOTOMY)
 				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
+				REMOVE_TRAIT(M, TRAIT_NYMPHOMANIA, APHRO_TRAIT)
 	..()
 
 ///////////////////////////////////

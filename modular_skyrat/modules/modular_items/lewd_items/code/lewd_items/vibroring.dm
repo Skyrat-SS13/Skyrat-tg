@@ -11,8 +11,21 @@
 	var/current_color = "pink"
 	var/color_changed = FALSE
 	var/static/list/vibroring_designs
+	var/datum/looping_sound/vibrator_medium/soundloop2
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_PENIS
+
+/obj/item/clothing/sextoy/vibroring/attack_self(mob/user)
+	toy_on = !toy_on
+	to_chat(user, "<span class='notice'>You turned vibroring [toy_on? "on. Brrrr..." : "off."]</span>")
+	playsound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+	update_icon_state()
+	update_icon()
+	switch(toy_on)
+		if(TRUE)
+			soundloop2.start()
+		if(FALSE)
+			soundloop2.stop()
 
 //create radial menu
 /obj/item/clothing/sextoy/vibroring/proc/populate_vibroring_designs()
@@ -21,16 +34,6 @@
 		"teal" = image(icon = src.icon, icon_state = "vibroring_teal_off"))
 
 /obj/item/clothing/sextoy/vibroring/AltClick(mob/user, obj/item/I)
-	var/mob/living/carbon/human/H = user
-	if(color_changed == TRUE)
-		toy_on = !toy_on
-		to_chat(user, "<span class='notice'>You turned vibroring [toy_on? "on. Brrrr..." : "off."]</span>")
-		playsound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
-		update_icon_state()
-		update_icon()
-		if(src == H.penis)
-			START_PROCESSING(SSobj, src)
-
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
@@ -58,6 +61,13 @@
 	update_icon()
 	if(!length(vibroring_designs))
 		populate_vibroring_designs()
+
+	//soundloop
+	soundloop2 = new(src, FALSE)
+
+/obj/item/clothing/sextoy/vibroring/Destroy()
+	QDEL_NULL(soundloop2)
+	return ..()
 
 /obj/item/clothing/sextoy/vibroring/update_icon_state()
 	. = ..()

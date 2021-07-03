@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/shocker_on = FALSE
 
-/obj/item/kinky_shocker/AltClick(mob/user, obj/item/I)
+/obj/item/kinky_shocker/attack_self(mob/user)
 	shocker_on = !shocker_on
 	to_chat(user, "<span class='notice'>You turn the shocker [shocker_on? "on. Buzz!" : "off."]</span>")
 	playsound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)

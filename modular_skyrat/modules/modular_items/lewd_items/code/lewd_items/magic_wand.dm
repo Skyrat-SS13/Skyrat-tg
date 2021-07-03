@@ -1,5 +1,3 @@
-//MAKE IT WORK
-
 /obj/item/clothing/sextoy/magic_wand
 	name = "magic wand"
 	desc = "Not sure where is magic in this thing, but if you press button - it makes funny vibrations"
@@ -10,10 +8,13 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	var/wand_on = FALSE
-	var/vibration_mode = "low"
-	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "low")
-	var/mode = "low"
+	var/toy_on = FALSE
+	var/vibration_mode = "off"
+	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
+	var/datum/looping_sound/vibrator_low/soundloop1
+	var/datum/looping_sound/vibrator_medium/soundloop2
+	var/datum/looping_sound/vibrator_hard/soundloop3
+	var/mode = "off"
 	var/mutable_appearance/magicwand_overlay
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_VAGINA|ITEM_SLOT_PENIS
@@ -25,13 +26,6 @@
 	if(!isinhands)
 		. += magicwand_overlay
 
-/obj/item/clothing/sextoy/magic_wand/AltClick(mob/user)
-    wand_on = !wand_on
-    to_chat(user, "<span class='notice'>You turn the vibrator [wand_on? "on. Brrrr..." : "off."]</span>")
-    playsound(user, wand_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
-    update_icon_state()
-    update_icon()
-
 /obj/item/clothing/sextoy/magic_wand/Initialize()
 	. = ..()
 
@@ -41,14 +35,25 @@
 	update_icon()
 	update_appearance()
 
+	//soundloop
+	soundloop1 = new(src, FALSE)
+	soundloop2 = new(src, FALSE)
+	soundloop3 = new(src, FALSE)
+
+/obj/item/clothing/sextoy/magic_wand/Destroy()
+	QDEL_NULL(soundloop1)
+	QDEL_NULL(soundloop2)
+	QDEL_NULL(soundloop3)
+	return ..()
+
 /obj/item/clothing/sextoy/magic_wand/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[vibration_mode]_[wand_on? "on" : "off"]"
+	icon_state = "[initial(icon_state)]_[vibration_mode]"
 
 /obj/item/clothing/sextoy/magic_wand/equipped(mob/user, slot)
 	.=..()
 	var/mob/living/carbon/human/H = user
-	if(wand_on == TRUE)
+	if(toy_on == TRUE)
 		if(src == H.penis || src == H.vagina)
 			START_PROCESSING(SSobj, src)
 
@@ -75,7 +80,7 @@
 		return
 
 	var/message = ""
-	if(wand_on == TRUE)
+	if(toy_on == TRUE)
 		if(M.client?.prefs.erp_pref == "Yes")
 			switch(user.zone_selected) //to let code know what part of body we gonna... Yeah.
 				if(BODY_ZONE_PRECISE_GROIN)
@@ -346,29 +351,40 @@
 		return
 
 /obj/item/clothing/sextoy/magic_wand/attack_self(mob/user, obj/item/I)
-	if(wand_on == TRUE)
-		toggle_mode()
-		if(vibration_mode == "low")
-			to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
-		if(vibration_mode == "medium")
-			to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
-		if(vibration_mode == "hard")
-			to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
-		update_icon()
-		update_icon_state()
-	else
-		to_chat(usr, "<span class ='notice'> You cannot switch modes while the vibrator is turned off.</span>")
-		return
+	toggle_mode()
+	if(vibration_mode == "low")
+		to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
+	if(vibration_mode == "medium")
+		to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
+	if(vibration_mode == "hard")
+		to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
+	if(vibration_mode == "off")
+		to_chat(user, "<span class='notice'>Hitachi magic wand turned off. Fun is over?</span>")
+	update_icon()
+	update_icon_state()
 
 /obj/item/clothing/sextoy/magic_wand/proc/toggle_mode()
 	mode = modes[mode]
 	switch(mode)
 		if("low")
+			toy_on = TRUE
 			vibration_mode = "low"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop1.start()
 		if("medium")
+			toy_on = TRUE
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop1.stop()
+			soundloop2.start()
 		if("hard")
+			toy_on = TRUE
 			vibration_mode = "hard"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			soundloop2.stop()
+			soundloop3.start()
+		if("off")
+			toy_on = FALSE
+			vibration_mode = "off"
+			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
+			soundloop3.stop()

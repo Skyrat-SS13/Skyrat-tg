@@ -116,26 +116,26 @@
 
 		if(BODY_ZONE_HEAD)
 			var/message = ""
-			message = (user == M) ? pick("Hits themselves with a [src]", "Hits their head with a pillow ") : pick("Hits [M] with a [src]", "Hits [M]'s head with a pillow! Lucky the pillow is soft.")
+			message = (user == M) ? pick("hits themselves with a [src]", "hits their head with a pillow ") : pick("hits [M] with a [src]", "hits [M]'s head with a pillow! Lucky the pillow is soft.")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<font>[user] [message].</font>")
+			user.visible_message("<span class='notice'>[user] [message]</font>")
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 		if(BODY_ZONE_CHEST)
 			var/message = ""
-			message = (user == M) ? pick("Challenges the pillow battle, hitting themselves with [src].","Hits themselves with a [src]") : pick("Hits [M]'s chest with a [src]!", "Playfully hits [M]'s chest with a [src].","Hits [M]'s chest with a pillow.")
+			message = (user == M) ? pick("challenges the pillow battle, hitting themselves with [src].","hits themselves with a [src]") : pick("hits [M]'s chest with a [src]!", "Playfully hits [M]'s chest with a [src].","hits [M]'s chest with a pillow.")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<font>[user] [message].</font>")
+			user.visible_message("<span class='notice'>[user] [message]</font>")
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 		else
 			var/message = ""
-			message = (user == M) ? pick("Hits themselves with [src].","Playfully hits themselves with a [src]", "Grabs a pillow, then hitting themselves with it.") : pick("Hits [M] with a [src]!", "Playfully hits [M] with a [src].","Hits [M] with a pillow. They having fun!")
+			message = (user == M) ? pick("hits themselves with [src].","Playfully hits themselves with a [src]", "grabs a pillow, then hitting themselves with it.") : pick("hits [M] with a [src]!", "Playfully hits [M] with a [src].","hits [M] with a pillow. They having fun!")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<font>[user] [message].</font>")
+			user.visible_message("<span class='notice'>[user] [message]</font>")
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 //spawning pillow on the ground when clicking on pillow	by LBM

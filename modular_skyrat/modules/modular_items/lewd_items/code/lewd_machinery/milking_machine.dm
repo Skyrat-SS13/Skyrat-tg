@@ -212,6 +212,7 @@
 	locks_overlay.layer = ABOVE_MOB_LAYER
 	add_overlay(locks_overlay)
 
+	//weird way to prevent moving in that thing. This is very important.
 	lastsaved_keybindings = M.client.movement_keys
 	M.client.movement_keys = null
 	var/mob/living/carbon/N = M
@@ -622,12 +623,17 @@
 		update_all_visuals()
 
 	if(machine_color == machine_color_list[1])
-		var/P = /obj/item/milking_machine/constructionkit/pink
-		new P(src.loc)
+		var/obj/item/milking_machine/constructionkit/P = new(src.loc)
+		P.current_color = "pink"
+		P.update_icon_state()
+		P.update_icon()
 
 	if(machine_color == machine_color_list[2])
-		var/P = /obj/item/milking_machine/constructionkit/teal
-		new P(src.loc)
+		var/obj/item/milking_machine/constructionkit/P = new(src.loc)
+		P.current_color = "teal"
+		P.update_icon_state()
+		P.update_icon()
+		
 	qdel(src)
 	return TRUE
 
@@ -955,23 +961,23 @@
 		to_chat(usr,"<span class='notice'>You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]</font>")
 		return TRUE
 
-// Pink construction kit
-/obj/item/milking_machine/constructionkit/pink
-	name = "pink milker kit"
-	desc = "Construction kit for milking machine. Requires wrench."
+// Milking machine construction kit
+/obj/item/milking_machine/constructionkit
+	name = "milking machine construction parts"
+	desc = "Construction parts for milking machine. Requires wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
-	icon_state = "milking_pink_build"
-
-// Teal construction kit
-/obj/item/milking_machine/constructionkit/teal
-	name = "teal milker kit"
-	desc = "Construction kit for milking machine. Requires wrench."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
-	icon_state = "milking_teal_build"
+	icon_state = "milkbuild"
+	var/current_color = "pink"
 
 // Default initialization
 /obj/item/milking_machine/constructionkit/Initialize()
 	. = ..()
+	update_icon_state()
+	update_icon()
+
+/obj/item/milking_machine/constructionkit/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[current_color]"
 
 // Processor of the process of assembling a kit into a machine
 /obj/item/milking_machine/constructionkit/attackby(obj/item/I, mob/living/carbon/user, params)
@@ -983,11 +989,12 @@
 			return
 		else
 			var/obj/structure/chair/milking_machine/N = new M(src.loc)
-			if(istype(src, /obj/item/milking_machine/constructionkit/pink))
-				N.machine_color = N.machine_color_list[1]
-				N.icon_state = "milking_pink_off"
-			if(istype(src, /obj/item/milking_machine/constructionkit/teal))
-				N.machine_color = N.machine_color_list[2]
-				N.icon_state = "milking_teal_off"
+			if(istype(src, /obj/item/milking_machine/constructionkit))
+				if(current_color == "pink")
+					N.machine_color = N.machine_color_list[1]
+					N.icon_state = "milking_pink_off"
+				if(current_color == "teal")
+					N.machine_color = N.machine_color_list[2]
+					N.icon_state = "milking_teal_off"
 			qdel(src)
 			return

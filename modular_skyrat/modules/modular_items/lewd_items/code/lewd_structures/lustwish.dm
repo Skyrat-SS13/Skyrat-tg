@@ -88,11 +88,10 @@
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
 					/obj/item/reagent_containers/glass/lewd_filter = 5,
 					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
-					/obj/item/bdsm_bed_kit = 3,
-					/obj/item/polepack = 3,
-					/obj/item/x_stand_kit = 3,
-					/obj/item/milking_machine/constructionkit/teal = 1,
-					/obj/item/milking_machine/constructionkit/pink = 1) //we was too tired to make normal code, fix it plz if you're not lazy
+					/obj/item/storage/box/bdsmbed_kit = 3,
+					/obj/item/storage/box/strippole_kit = 3,
+					/obj/item/storage/box/xstand_kit = 3,
+					/obj/item/storage/box/milking_kit = 2)
 
 	contraband = list(/obj/item/clothing/glasses/hypno = 4,
 					/obj/item/electropack/shockcollar = 4,
