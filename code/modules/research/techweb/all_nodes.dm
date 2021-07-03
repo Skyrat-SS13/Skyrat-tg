@@ -1222,6 +1222,7 @@
 		"beartrap",
 		"blutrash",
 		"buffer",
+		"vacuum",
 		"holobarrier_jani",
 		"light_replacer",
 		"paint_remover",
