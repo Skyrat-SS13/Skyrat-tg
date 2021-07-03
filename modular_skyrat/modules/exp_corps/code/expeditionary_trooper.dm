@@ -86,9 +86,9 @@
 	var/list/loadout = list(3)
 
 /obj/item/choice_beacon/exp_corps_equip/generate_display_names()
-	for(var/V in subtypesof(/obj/structure/closet/crate/secure/exp_corps))
-		var/obj/item/storage/box/loadout/A = V
-		loadout[initial(A.loadout_name)] = A
+	for(var/iterating_crate in subtypesof(/obj/structure/closet/crate/secure/exp_corps))
+		/obj/structure/closet/crate/secure/exp_corps/our_crate = iterating_crate
+		loadout[initial(our_crate.loadout_name)] = our_crate
 	return loadout
 
 /obj/item/choice_beacon/exp_corps_equip/attack_self(mob/user, modifiers)
@@ -112,15 +112,16 @@
 	icon = 'modular_skyrat/modules/exp_corps/icons/exp_crate.dmi'
 	req_access = list(ACCESS_GATEWAY, ACCESS_CENT_GENERAL)
 	max_integrity = 5000
+	var/loadout_name = "Standard"
 
 
 /obj/structure/closet/crate/secure/exp_corps/testa
 	name = "Test1"
-	loadout_name = "Test1"
+	loadout_name = "Standard 1"
 
 /obj/structure/closet/crate/secure/exp_corps/testb
 	name = "Test2"
-	loadout_name = "Test2"
+	loadout_name = "Standard 2"
 
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
