@@ -76,6 +76,35 @@
 	new /obj/item/reagent_containers/syringe(src)
 	new /obj/item/storage/pill_bottle/multiver(src)
 
+/obj/item/choice_beacon/exp_corps_equip
+	name = "Vanguard Operatives Supply Beacon"
+	desc = "Used to request your job supplies, use in hand to do so!"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "gangtool-red"
+	inhand_icon_state = "radio"
+	var/static/list/exp_item_list
+	var/list/loadout = list(3)
+
+/obj/item/choice_beacon/exp_corps_equip/generate_display_names()
+	for(var/V in subtypesof(/obj/structure/closet/crate/secure/exp_corps))
+		var/obj/item/storage/box/loadout/A = V
+		loadout[initial(A.loadout_name)] = A
+	return loadout
+
+/obj/item/choice_beacon/exp_corps_equip/attack_self(mob/user, modifiers)
+	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	podspawn(list(
+		"target" = get_turf(src),
+		"style" = STYLE_CENTCOM,
+		"spawn" = loadout,
+	))
+	to_chat(user, "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>")
+	qdel(src)
+
+/obj/item/card/id/advanced/silver/exp_corps
+	wildcard_slots = WILDCARD_LIMIT_CENTCOM
+
 /obj/structure/closet/crate/secure/exp_corps
 	name = "expeditionary gear crate"
 	desc = "A secure crate, for Expeditionary Corps only!"
@@ -84,11 +113,14 @@
 	req_access = list(ACCESS_GATEWAY, ACCESS_CENT_GENERAL)
 	max_integrity = 5000
 
+
 /obj/structure/closet/crate/secure/exp_corps/testa
 	name = "Test1"
+	loadout_name = "Test1"
 
 /obj/structure/closet/crate/secure/exp_corps/testb
 	name = "Test2"
+	loadout_name = "Test2"
 
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
@@ -101,35 +133,3 @@
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
-
-/obj/item/choice_beacon/exp_corps_equip
-	name = "Vanguard Operatives Supply Beacon"
-	desc = "Used to request your job supplies, use in hand to do so!"
-	icon = 'icons/obj/device.dmi'
-	icon_state = "gangtool-red"
-	inhand_icon_state = "radio"
-	var/static/list/exp_item_list
-	var/choice
-
-/obj/item/choice_beacon/exp_corps_equip/generate_display_names()
-	if(!exp_item_list)
-		exp_item_list = list()
-		var/list/templist = typesof(/obj/structure/closet/crate/secure/exp_corps)
-		for(var/V in templist)
-			var/atom/A = V
-			exp_item_list[initial(A.name)] = A
-	return exp_item_list
-
-/obj/item/choice_beacon/exp_corps_equip/attack_self(mob/user, modifiers)
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
-	podspawn(list(
-		"target" = get_turf(src),
-		"style" = STYLE_CENTCOM,
-		"spawn" = choice,
-	))
-	to_chat(user, "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>")
-	qdel(src)
-
-/obj/item/card/id/advanced/silver/exp_corps
-	wildcard_slots = WILDCARD_LIMIT_CENTCOM
