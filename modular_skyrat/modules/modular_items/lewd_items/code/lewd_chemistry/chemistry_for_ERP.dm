@@ -66,7 +66,7 @@
 	var/mob/living/carbon/human/H = M
 	if(M.client && (M.client.prefs.skyrat_toggles & BIMBO_PREF))
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
-			to_chat(M, "<font color=purple>Your libido is going haywire!</font>")
+			to_chat(M, "<font color=purple>Your libido is going haywire! Speaking gets much harder...</font>")
 			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_LOBOTOMY) //what am i doing with my life.
 			ADD_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
 	..()
