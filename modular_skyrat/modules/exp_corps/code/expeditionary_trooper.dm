@@ -82,6 +82,10 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-red"
 	inhand_icon_state = "radio"
+<<<<<<< Updated upstream
+=======
+	var/list/loadout = list()
+>>>>>>> Stashed changes
 
 /obj/item/choice_beacon/exp_corps_equip/generate_display_names()
 	var/static/list/exp_crates
