@@ -33,6 +33,7 @@
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
 					/obj/item/pillow = 6,
+					/obj/item/assembly/signaler = 8,
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
@@ -95,7 +96,6 @@
 
 	contraband = list(/obj/item/clothing/glasses/hypno = 4,
 					/obj/item/electropack/shockcollar = 4,
-					/obj/item/assembly/signaler = 4,
 					/obj/item/clothing/neck/kink_collar/locked = 4,
 					/obj/item/clothing/neck/mind_collar = 2,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
