@@ -1,5 +1,5 @@
 /datum/component/rust
-	dupe_mode = COMPONENT_DUPE_UNIQUE
+	dupe_mode = COMPONENT_DUPE_HIGHLANDER
 	var/atom/parent_atom
 	var/mutable_appearance/rust_overlay
 	var/static/list/typecache_of_valid_types = list(
@@ -8,16 +8,16 @@
 		/turf/open/floor/plating,
 	)
 
-/turf/closed/wall/rust/Initialize()
-	var/atom/T = ChangeTurf(/turf/closed/wall)
+/turf/closed/wall/rust/New()
+	var/atom/T = new /turf/closed/wall(src)
 	T._AddComponent(list(/datum/component/rust))
 
-/turf/closed/wall/r_wall/rust/Initialize()
-	var/atom/T = ChangeTurf(/turf/closed/wall/r_wall)
+/turf/closed/wall/r_wall/rust/New()
+	var/atom/T = new /turf/closed/wall/r_wall(src)
 	T._AddComponent(list(/datum/component/rust))
 
-/turf/open/floor/plating/rust/Initialize(mapload)
-	var/atom/T = ChangeTurf(/turf/open/floor/plating)
+/turf/open/floor/plating/rust/New()
+	var/atom/T = new /turf/open/floor/plating(src)
 	T._AddComponent(list(/datum/component/rust))
 
 /datum/component/rust/Initialize(...)
@@ -34,15 +34,14 @@
 	RegisterSignal(parent_atom, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_RUSTSCRAPER), .proc/secondary_tool_act)
 	RegisterSignal(parent_atom, COMSIG_PARENT_PREQDELETED, .proc/parent_del)
 	RegisterSignal(parent_atom, COMSIG_PARENT_EXAMINE, .proc/handle_examine)
-	parent_atom.update_appearance()
 
 /datum/component/rust/proc/handle_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 	examine_text += "It's very rusty... Maybe you could <b><u>burn or scrape</u></b> it clean?"
 
-/datum/component/rust/proc/apply_rust_overlay(atom/parent_atom, list/overlays)
+/datum/component/rust/proc/apply_rust_overlay(atom/parent_atom, list/ret)
 	SIGNAL_HANDLER
-	overlays |= rust_overlay
+	ret |= rust_overlay
 
 /datum/component/rust/proc/parent_del()
 	qdel(src)
@@ -53,7 +52,7 @@
 		UnregisterSignal(parent_atom, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_WELDER))
 		UnregisterSignal(parent_atom, COMSIG_ATOM_SECONDARY_TOOL_ACT(TOOL_RUSTSCRAPER))
 		UnregisterSignal(parent_atom, COMSIG_PARENT_PREQDELETED)
-		parent_atom.update_appearance()
+		parent_atom.update_icon(UPDATE_OVERLAYS)
 		rust_overlay = null
 		parent_atom = null
 	return ..()
