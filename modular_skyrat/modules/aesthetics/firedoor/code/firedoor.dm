@@ -61,7 +61,7 @@
 	var/my_area = get_area(src)
 
 	for(var/obj/machinery/firealarm/iterating_alarm in my_area)
-		iterating_alarm.RegisterSignal(src, COMSIG_FIREDOOR_CLOSED_FIRE, /obj/machinery/firealarm.proc/trigger_effects, FALSE) //We trigger the alarms automatically.
+		iterating_alarm.RegisterSignal(src, COMSIG_FIREDOOR_CLOSED_FIRE, /obj/machinery/firealarm.proc/trigger_effects, override = TRUE) //We trigger the alarms automatically.
 
 /obj/machinery/door/firedoor/update_icon_state()
 	. = ..()
@@ -71,12 +71,12 @@
 		icon_state = "[base_icon_state]_open"
 
 /obj/machinery/door/firedoor/onetile/CalculateAffectingAreas()
-	RegisterSignal(loc, COMSIG_TURF_EXPOSE, .proc/atmos_changed)
+	RegisterSignal(loc, COMSIG_TURF_EXPOSE, .proc/atmos_changed, override = TRUE)
 
 	var/my_area = get_area(src)
 
 	for(var/obj/machinery/firealarm/iterating_alarm in my_area)
-		iterating_alarm.RegisterSignal(src, COMSIG_FIREDOOR_CLOSED_FIRE, /obj/machinery/firealarm.proc/trigger_effects, FALSE, override = TRUE) //We trigger the alarms automatically.
+		iterating_alarm.RegisterSignal(src, COMSIG_FIREDOOR_CLOSED_FIRE, /obj/machinery/firealarm.proc/trigger_effects, override = TRUE) //We trigger the alarms automatically.
 
 /obj/machinery/door/firedoor/attackby(obj/item/C, mob/user, params)
 	if(C.GetID())
@@ -88,7 +88,7 @@
 /obj/machinery/door/firedoor/CtrlClick(mob/user)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
-	toggle_close_override()
+	toggle_close_override(user)
 
 /obj/machinery/door/firedoor/proc/toggle_close_override(mob/user)
 	stay_open = !stay_open
