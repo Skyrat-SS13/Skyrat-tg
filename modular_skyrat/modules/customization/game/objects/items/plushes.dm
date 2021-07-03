@@ -136,6 +136,39 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 	gender = MALE
 
+/obj/item/toy/plush/sharknet
+	name = "Gluttonous Shark plushie"
+	desc = "A heavy plushie of a rather large and hungry shark"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_sharknet"
+	inhand_icon_state = "plushie_sharknet"
+	attack_verb_continuous = list("cuddles", "squishes", "wehs")
+	attack_verb_simple = list("cuddle", "squish", "weh")
+	w_class = WEIGHT_CLASS_NORMAL
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
+	young = 1 //No.
+//Storage component for Sharknet Plushie//
+/obj/item/toy/plush/sharknet/ComponentInitialize()
+	var/datum/component/storage/concrete/storage = AddComponent(/datum/component/storage/concrete)
+	storage.max_items = 2
+	storage.max_w_class = WEIGHT_CLASS_SMALL
+	storage.set_holdable(list(
+		/obj/item/toy/plush/pintaplush,
+		/obj/item/toy/plush/arcplush
+		))
+//End of storage component//
+
+/obj/item/toy/plush/pintaplush
+	name = "Smaller Deer plushie"
+	desc = "A pint-sized cervine with a vacant look."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_pinta"
+	inhand_icon_state = "plushie_pinta"
+	attack_verb_continuous = list("bonks", "snugs")
+	attack_verb_simple = list("bonk", "snug")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
+	young = 1 //No.
+
 /obj/item/toy/plush/arcplush
 	name = "Familiar lizard plushie"
 	desc = "A small plushie that resembles a lizard-- Or, not a lizard, it's mouth seems to go horizontally too.. Are those limbs in it's maw?"
@@ -228,4 +261,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "whitecat"
 	inhand_icon_state = "whitecat"
-
