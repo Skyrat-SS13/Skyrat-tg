@@ -62,7 +62,7 @@
 			return
 	if(item.tool_behaviour == TOOL_RUSTSCRAPER)
 		to_chat(user, span_notice("You begin to scrape the rust off of [parent_atom]."))
-		if(!do_after(user, 2 SECONDS, parent_atom))
+		if(!do_after(user, 2 SECONDS * item.toolspeed, parent_atom))
 			to_chat(user, span_notice("You change your mind."))
 			return
 		to_chat(user, span_notice("You scrape the rust off of [parent_atom]."))
