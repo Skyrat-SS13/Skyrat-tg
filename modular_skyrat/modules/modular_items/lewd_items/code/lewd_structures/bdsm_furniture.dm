@@ -22,19 +22,16 @@
 				to_chat(user, "<span class='notice'>You construct the bdsm bed!</span>")
 				var/obj/structure/bed/bdsm_bed/C = new
 				C.loc = loc
-				del(src)
+				qdel(src)
 			return
 
-/obj/structure/bed/bdsm_bed/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
-	add_fingerprint(user)
-	if(istype(P, /obj/item/wrench))
-		to_chat(user, "<span class='notice'>You start to unfastening the frame of bed...</span>")
-		if(P.use_tool(src, user, 8 SECONDS, volume=50))
-			to_chat(user, "<span class='notice'>You take down the bdsm bed!</span>")
-			var/obj/item/bdsm_bed_kit/C = new
-			C.loc = loc
-			del(src)
-		return
+/obj/structure/bed/bdsm_bed/attackby(obj/item/W, mob/user, params)
+	if(W.tool_behaviour == TOOL_WRENCH && !(flags_1&NODECONSTRUCT_1))
+		if(W.use_tool(src, user, 8 SECONDS))
+			W.play_tool_sound(src)
+			deconstruct(TRUE)
+	else
+		return ..()
 
 /obj/structure/bed/bdsm_bed/post_buckle_mob(mob/living/M)
 	density = TRUE
@@ -49,7 +46,13 @@
 /obj/structure/bed/bdsm_bed/deconstruct()
 	unbuckle_all_mobs()
 	qdel(src)
+	var/obj/item/bdsm_bed_kit/C = new
+	C.loc = loc
 	return TRUE
+
+/obj/structure/bed/bdsm_bed/Destroy()
+	unbuckle_all_mobs(TRUE)
+	. = ..()
 
 /////////////////////
 //X-Stand code here//
@@ -78,6 +81,10 @@
 	update_icon_state()
 	update_icon()
 	START_PROCESSING(SSobj, src)
+
+/obj/structure/bed/x_stand/Destroy()
+	unbuckle_all_mobs(TRUE)
+	. = ..()
 
 /obj/structure/bed/x_stand/update_icon_state()
     . = ..()
