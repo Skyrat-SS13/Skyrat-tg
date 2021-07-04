@@ -101,10 +101,10 @@
 	their duty. This comes at the cost of any engineering equipment."
 
 /obj/structure/closet/crate/secure/exp_corps/combat_tech
-	name = "Field Medic Crate"
-	loadout_desc = "The Field Medic's role is to ensure that the expidition returns at all. \
-	Their role as a supportive unit is vital, and they are outfitted with the tools required of \
-	their duty. This comes at the cost of any engineering equipment."
+	name = "Combat Tech Crate"
+	loadout_desc = "A Combat Tech is always good for an expedition. Having someone with \
+	mechanical know-how can mean life or death. A good role to bring along to any expedition. \
+	Sadly, this kit is lacking when it comes to medical equipment."
 
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
@@ -142,8 +142,8 @@
 	new /obj/item/storage/belt/military/expeditionary_corps/field_medic(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
-/obj/structure/closet/crate/secure/exp_corps/field_medic/PopulateContents()
-	new /obj/item/storage/firstaid/regular(src)
+/obj/structure/closet/crate/secure/exp_corps/combat_tech/PopulateContents()
+	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
 	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
