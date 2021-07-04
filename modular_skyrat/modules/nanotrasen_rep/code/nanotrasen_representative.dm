@@ -126,7 +126,8 @@
 /obj/structure/closet/secure_closet/nanotrasen_representative/station
 	name = "\proper nanotrasen representative's locker"
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
-	icon_state = "cabinet"
+	icon_state = "cc"
+	icon = 'modular_skyrat/modules/aesthetics/closet/closet.dmi'
 
 /obj/structure/closet/secure_closet/nanotrasen_representative/station/PopulateContents()
 	..()
