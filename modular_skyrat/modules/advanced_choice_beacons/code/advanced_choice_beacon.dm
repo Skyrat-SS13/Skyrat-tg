@@ -53,6 +53,7 @@
 	sortList(options)
 
 	return options
+
 /obj/item/advanced_choice_beacon/exp_corps
 	name = "Vanguard Operatives Supply Beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
