@@ -99,6 +99,16 @@
 	ckeywhitelist = list("candlejax")
 	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
+/datum/loadout_item/head/donator/emissiontest
+	name = "Emission's Helmet"
+	path = /obj/item/clothing/head/helmet/space/plasmaman
+	ckeywhitelist = list("candlejax")
+
+/datum/loadout_item/uniform/donator/emissionsuit
+	name = "Emission's Suit"
+	path = /obj/item/clothing/under/plasmaman
+	ckeywhitelist = list("candlejax")
+
 /datum/loadout_item/head/donator/avipilot
 	name = "Smuggler's Flying Cap"
 	path = /obj/item/clothing/head/avipilot
