@@ -149,7 +149,7 @@
 
 
 /obj/structure/closet/secure_closet/nanotrasen_representative/station
-	name = "\proper nanotran representative's locker"
+	name = "\proper nanotrasen representative's locker"
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	icon_state = "cabinet"
 
