@@ -46,7 +46,7 @@
 	new /obj/item/pointman_broken((get_turf(src)))
 
 /obj/item/shield/riot/pointman/attackby(obj/item/W, mob/user, params)
-	if(!istype(W, repairable_by))
+	if(istype(W, repairable_by))
 		var/obj/item/stack/sheet/plasteel_repair = W
 		plasteel_repair.use(1)
 		repair(user, params)
