@@ -164,9 +164,6 @@
 	. = ..()
 	icon_state = "wallet"
 
-<<<<<<< HEAD
-=======
 /obj/item/storage/wallet/random/PopulateContents()
 	new /obj/item/holochip(src, rand(5, 30))
 	new /obj/effect/spawner/lootdrop/wallet_loot(src)
->>>>>>> e4d8795e9c4 (Add new Wallets! station trait (#59877))
