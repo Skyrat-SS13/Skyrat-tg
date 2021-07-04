@@ -106,7 +106,7 @@
 
 /datum/loadout_item/uniform/donator/emissionsuit
 	name = "Emission's Suit"
-	path = /obj/item/clothing/under/plasmaman
+	path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/head/donator/avipilot
