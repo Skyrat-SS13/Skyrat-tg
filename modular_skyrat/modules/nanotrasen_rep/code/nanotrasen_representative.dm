@@ -153,3 +153,5 @@
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom(src)
 	new /obj/item/clothing/head/centhat(src)
 	new /obj/item/clothing/head/centcom_cap(src)
+
+
