@@ -101,32 +101,6 @@
 	gloves = /obj/item/clothing/gloves/color/captain //Too iconic to be replaced with a plasma version
 	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_official
 
-/obj/structure/closet/secure_closet/nanotrasen_representative
-	name = "\proper captain's locker"
-	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
-	icon_state = "cap"
-
-/obj/structure/closet/secure_closet/nanotrasen_representative/PopulateContents()
-	..()
-	new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
-	new /obj/item/storage/backpack/satchel/leather(src)
-	new /obj/item/clothing/neck/petcollar(src)
-	new /obj/item/pet_carrier(src)
-	new /obj/item/clothing/shoes/sneakers/brown(src)
-	new /obj/item/clothing/under/rank/nanotrasen_representative(src)
-	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
-	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/clothing/head/nanotrasen_representative(src)
-	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
-	new /obj/item/cartridge/captain(src)
-	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
-	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
-	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
-	new /obj/item/clothing/gloves/combat(src)
-	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
-	new /obj/item/storage/photo_album/personal(src)
-	new /obj/item/stamp/centcom(src)
-
 /obj/item/pda/nanotrasen_representative
 	name = "nanotrasen representatives PDA"
 	default_cartridge = /obj/item/cartridge/captain
@@ -147,3 +121,37 @@
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
+
+
+/obj/structure/closet/secure_closet/nanotrasen_representative/station
+	name = "\proper nanotrasen representative's locker"
+	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+	icon_state = "cc"
+	icon = 'modular_skyrat/modules/aesthetics/closet/closet.dmi'
+
+/obj/structure/closet/secure_closet/nanotrasen_representative/station/PopulateContents()
+	..()
+	new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
+	new /obj/item/storage/backpack/satchel/leather(src)
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/pet_carrier(src)
+	new /obj/item/clothing/shoes/sneakers/brown(src)
+	new /obj/item/clothing/under/rank/nanotrasen_representative(src)
+	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
+	new /obj/item/clothing/suit/armor/vest(src)
+	new /obj/item/clothing/head/nanotrasen_representative(src)
+	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
+	new /obj/item/cartridge/captain(src)
+	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
+	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
+	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
+	new /obj/item/storage/photo_album/personal(src)
+	new /obj/item/bedsheet/centcom(src)
+	new /obj/item/clothing/suit/armor/vest/centcom_formal(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/centcom(src)
+	new /obj/item/clothing/head/centhat(src)
+	new /obj/item/clothing/head/centcom_cap(src)
+
+
