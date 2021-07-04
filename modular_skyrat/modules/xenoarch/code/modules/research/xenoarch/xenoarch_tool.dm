@@ -14,7 +14,7 @@
 	. = ..()
 	if(advanced)
 		. += span_notice("This is an advanced hammer. It can change its digging depth from 1 to 30. Click to change depth.")
-	. += span_notice("Current Digging Depth: [dig_amount]")
+	. += span_notice("Current Digging Depth: [dig_amount]cm")
 
 /obj/item/xenoarch/hammer/attack_self(mob/user, modifiers)
 	. = ..()
@@ -37,38 +37,38 @@
 		return
 	dig_amount = round_dig
 	dig_speed = round_dig
-	to_chat(user, span_notice("You change the hammer's digging depth to [round_dig] cm."))
+	to_chat(user, span_notice("You change the hammer's digging depth to [round_dig]cm."))
 
 /obj/item/xenoarch/hammer/cm1
-	name = "Hammer (1 cm)"
+	name = "Hammer (1cm)"
 	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer1"
 	dig_amount = 1
 	dig_speed = 1 SECONDS
 
 /obj/item/xenoarch/hammer/cm2
-	name = "Hammer (2 cm)"
+	name = "Hammer (2cm)"
 	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer2"
 	dig_amount = 2
 	dig_speed = 2 SECONDS
 
 /obj/item/xenoarch/hammer/cm3
-	name = "Hammer (3 cm)"
+	name = "Hammer (3cm)"
 	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer3"
 	dig_amount = 3
 	dig_speed = 3 SECONDS
 
 /obj/item/xenoarch/hammer/cm5
-	name = "Hammer (5 cm)"
+	name = "Hammer (5cm)"
 	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer5"
 	dig_amount = 5
 	dig_speed = 5 SECONDS
 
 /obj/item/xenoarch/hammer/cm10
-	name = "Hammer (10 cm)"
+	name = "Hammer (10cm)"
 	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer10"
 	dig_amount = 10
@@ -152,7 +152,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/Pickup_rocks)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/pickup_rocks)
 	listeningTo = user
 
 /obj/item/storage/bag/xenoarch/dropped(mob/user)
@@ -161,7 +161,7 @@
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
 	listeningTo = null
 
-/obj/item/storage/bag/xenoarch/proc/Pickup_rocks(mob/living/user)
+/obj/item/storage/bag/xenoarch/proc/pickup_rocks(mob/living/user)
 	var/show_message = FALSE
 	var/turf/tile = user.loc
 	if (!isturf(tile))

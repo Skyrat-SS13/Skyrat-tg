@@ -1,18 +1,31 @@
+#define DIG_UNDEFINED 	(1<<0) //when the strange rock is dug by an item with no dig depth.
+#define DIG_DELETE 		(1<<1) //when the strange rock is dug too deep and gets destroyed in the process.
+#define DIG_ROCK		(1<<2) //when the strange rock is just dug, with no additional effects.
+
+#define BRUSH_DELETE	(2<<0) //when the strange rock is brushed and the strange rock gets destroyed.
+#define BRUSH_UNCOVER	(2<<1) //when the strange rock is brushed and the strange rock reveals what it held.
+#define BRUSH_NONE		(2<<2) //when the strange rock is brushed, with no additional effects.
+
 /obj/item/xenoarch/strange_rock
 	name = "strange rock"
 	desc = "A mysterious, strange rock that has the potential to have a wonderful item. Also possible for it to have our disposed garbage."
 	icon_state = "rock"
 
-	var/max_depth //the max depth
-	var/safe_depth //the depth away from the max depth
-	var/item_depth //the depth between the max and the safe, containing the item
-	var/dug_depth = 0 //the depth that has been currently dug
-
-	var/hidden_item //the item that is held
-
-	var/measured = FALSE //if the item has been tape-measured
-	var/scanned = FALSE //if the item has been scanned
-
+	///The max depth a strange rock can be
+	var/max_depth
+	///The depth away/subtracted from the max_depth
+	var/safe_depth
+	//The depth chosen between the max and the max - safe depth
+	var/item_depth
+	//The depth that has been currently dug
+	var/dug_depth = 0
+	//The item that is hidden within the strange rock
+	var/hidden_item
+	///Whether the item has been measured, revealing the dug depth
+	var/measured = FALSE
+	///Whether the ite has been scanned, revealing the max and safe depth
+	var/scanned = FALSE
+	///The scan state for when encountering the strange rock ore in mining.
 	var/scan_state = "rock_Strange"
 
 /obj/item/xenoarch/strange_rock/Initialize()
@@ -43,71 +56,73 @@
 	item_depth = rand((max_depth - safe_depth), max_depth)
 	dug_depth = rand(0, 10)
 
-/obj/item/xenoarch/strange_rock/proc/get_measured() //returns true if successful measure
+//returns true if the strange rock is measured
+/obj/item/xenoarch/strange_rock/proc/get_measured()
 	if(measured)
 		return FALSE
 	measured = TRUE
 	return TRUE
 
-/obj/item/xenoarch/strange_rock/proc/get_scanned() //returns true if successful scan
+//returns true if the strange rock is scanned
+/obj/item/xenoarch/strange_rock/proc/get_scanned()
 	if(scanned)
 		return FALSE
 	scanned = TRUE
 	return TRUE
 
-/obj/item/xenoarch/strange_rock/proc/try_dig(var/dig_amount) //1: no dig amount 2: above dig depth 3: successful dig
+/obj/item/xenoarch/strange_rock/proc/try_dig(var/dig_amount)
 	if(!dig_amount)
-		return 1
+		return DIG_UNDEFINED
 	dug_depth += dig_amount
 	if(dug_depth > item_depth)
 		qdel(src)
-		return 2
-	return 3
+		return DIG_DELETE
+	return DIG_ROCK
 
-/obj/item/xenoarch/strange_rock/proc/try_uncover() //1: brush too above item 2: brush successful 3: brush unsuccesful but fine
+/obj/item/xenoarch/strange_rock/proc/try_uncover()
 	if(dug_depth > item_depth)
 		qdel(src)
-		return 1
+		return BRUSH_DELETE
 	if(dug_depth == item_depth)
 		new hidden_item(get_turf(src))
 		qdel(src)
-		return 2
-	return 3
+		return BRUSH_UNCOVER
+	return BRUSH_NONE
 
 /obj/item/xenoarch/strange_rock/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/xenoarch/hammer))
-		var/obj/item/xenoarch/hammer/xenoHammer = I
+		var/obj/item/xenoarch/hammer/xeno_hammer = I
 		to_chat(user, span_notice("You begin carefully using your hammer."))
-		if(!do_after(user, xenoHammer.dig_speed, target = src))
+		if(!do_after(user, xeno_hammer.dig_speed, target = src))
 			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
 			dug_depth += rand(1,5)
 			return
-		switch(try_dig(xenoHammer.dig_amount))
-			if(1)
-				message_admins("Tell Jake something broke with hammers and dig amount.")
+		switch(try_dig(xeno_hammer.dig_amount))
+			if(DIG_UNDEFINED)
+				message_admins("Tell coders something broke with xenoarch hammers and dig amount.")
 				return
-			if(2)
+			if(DIG_DELETE)
 				to_chat(user, span_warning("The rock crumbles, leaving nothing behind."))
 				return
-			if(3)
+			if(DIG_ROCK)
 				to_chat(user, span_notice("You successfully dig around the item."))
 
 	if(istype(I, /obj/item/xenoarch/brush))
-		var/obj/item/xenoarch/brush/xenoBrush = I
+		var/obj/item/xenoarch/brush/xeno_brush = I
 		to_chat(user, span_notice("You begin carefully using your brush."))
-		if(!do_after(user, xenoBrush.dig_speed, target = src))
+		if(!do_after(user, xeno_brush.dig_speed, target = src))
 			to_chat(user, span_warning("You interrupt your careful planning, damaging the rock in the process!"))
 			dug_depth += rand(1,5)
 			return
 		switch(try_uncover())
-			if(1)
+			if(BRUSH_DELETE)
 				to_chat(user, span_warning("The rock crumbles, leaving nothing behind."))
 				return
-			if(2)
+			if(BRUSH_UNCOVER)
 				to_chat(user, span_notice("You successfully brush around the item, fully revealing the item!"))
 				return
-			if(3)
+			if(BRUSH_NONE)
 				to_chat(user, span_notice("You brush around the item, but it wasn't revealed... hammer some more."))
 
 	if(istype(I, /obj/item/xenoarch/tape_measure))
@@ -210,3 +225,11 @@
 		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /obj/item/stack/ore/titanium = 11,
 		/turf/closed/mineral/gibtonite/asteroid = 4, /obj/item/stack/ore/bluespace_crystal = 1, /turf/closed/mineral/strange_rock/asteroid = 10)
 	mineralChance = 30
+
+#undef DIG_UNDEFINED
+#undef DIG_DELETE
+#undef DIG_ROCK
+
+#undef BRUSH_DELETE
+#undef BRUSH_UNCOVER
+#undef BRUSH_NONE

@@ -12,8 +12,6 @@
 	unit_name = "useless relic"
 	export_types = list(/obj/item/xenoarch/useless_relic)
 
-	//SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = 500))
-
 //broken items
 /obj/item/xenoarch/broken_item
 	name = "parent dev item"
