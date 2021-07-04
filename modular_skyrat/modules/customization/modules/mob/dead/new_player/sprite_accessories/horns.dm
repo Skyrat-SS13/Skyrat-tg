@@ -28,3 +28,7 @@
 /datum/sprite_accessory/horns/knight
 	name = "Knight"
 	icon_state = "knight"
+
+/datum/sprite_accessory/horns/uni
+	name = "Uni"
+	icon_state = "uni"
