@@ -40,9 +40,9 @@
 
 /obj/item/shield/pointman/proc/shatter(mob/living/carbon/human/owner)
 	playsound(owner, 'sound/effects/glassbr3.ogg', 100)
-	new /obj/item/brokenpointman((get_turf(src)))
+	new /obj/item/pointman_broken((get_turf(src)))
 
-/obj/item/brokenpointman
+/obj/item/pointman_broken
 	name = "broken pointman shield"
 	desc = "Might be able to be repaired with plasteel."
 	icon_state = "riot_broken"
