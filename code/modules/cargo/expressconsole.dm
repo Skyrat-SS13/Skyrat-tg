@@ -43,11 +43,11 @@
 /obj/machinery/computer/cargo/express/attackby(obj/item/W, mob/living/user, params)
 	if(W.GetID() && allowed(user))
 		locked = !locked
-		to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] the interface.</span>")
+		to_chat(user, span_notice("You [locked ? "lock" : "unlock"] the interface."))
 		return
 	else if(istype(W, /obj/item/disk/cargo/bluespace_pod))
 		podType = /obj/structure/closet/supplypod/bluespacepod//doesnt effect circuit board, making reversal possible
-		to_chat(user, "<span class='notice'>You insert the disk into [src], allowing for advanced supply delivery vehicles.</span>")
+		to_chat(user, span_notice("You insert the disk into [src], allowing for advanced supply delivery vehicles."))
 		qdel(W)
 		return TRUE
 	else if(istype(W, /obj/item/supplypod_beacon))
@@ -56,15 +56,15 @@
 			sb.link_console(src, user)
 			return TRUE
 		else
-			to_chat(user, "<span class='alert'>[src] is already linked to [sb].</span>")
+			to_chat(user, span_alert("[src] is already linked to [sb]."))
 	..()
 
 /obj/machinery/computer/cargo/express/emag_act(mob/living/user)
 	if(obj_flags & EMAGGED)
 		return
 	if(user)
-		user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!</span>",
-		"<span class='notice'>You change the routing protocols, allowing the Supply Pod to land anywhere on the station.</span>")
+		user.visible_message(span_warning("[user] swipes a suspicious card through [src]!"),
+		span_notice("You change the routing protocols, allowing the Supply Pod to land anywhere on the station."))
 	obj_flags |= EMAGGED
 	contraband = TRUE
 	// This also sets this on the circuit board
@@ -201,7 +201,7 @@
 								continue
 							LAZYADD(empty_turfs, T)
 							CHECK_TICK
-						if(empty_turfs && empty_turfs.len)
+						if(empty_turfs?.len)
 							LZ = pick(empty_turfs)
 					if (SO.pack.get_cost() <= points_to_check && LZ)//we need to call the cost check again because of the CHECK_TICK call
 						TIMER_COOLDOWN_START(src, COOLDOWN_EXPRESSPOD_CONSOLE, 5 SECONDS)
@@ -220,7 +220,7 @@
 							continue
 						LAZYADD(empty_turfs, T)
 						CHECK_TICK
-					if(empty_turfs && empty_turfs.len)
+					if(empty_turfs?.len)
 						TIMER_COOLDOWN_START(src, COOLDOWN_EXPRESSPOD_CONSOLE, 10 SECONDS)
 						D.adjust_money(-(SO.pack.get_cost() * (0.72*MAX_EMAG_ROCKETS)))
 

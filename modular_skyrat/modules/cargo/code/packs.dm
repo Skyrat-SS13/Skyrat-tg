@@ -89,14 +89,6 @@
 	contains = list(/obj/item/defibrillator/compact)
 	crate_name = "compact defibrillator crate"
 
-/datum/supply_pack/medical/medigun
-	name = "Experimental Medical Beam Crate"
-	desc = "Contains a single experimental NT-tech Medical Beam Gun, a highly experimental device capable of sending temporary healing nanites across a short distance."
-	cost = CARGO_CRATE_VALUE * 75
-	access = ACCESS_CMO
-	contains = list(/obj/item/gun/medbeam)
-	crate_name = "medical beam gun crate"
-
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

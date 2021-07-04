@@ -1,5 +1,5 @@
 //////////////////Imp
-//FILE WAS SKYRAT EDITED TO PREVENT ROUND REMOVAL 
+
 /mob/living/simple_animal/hostile/imp
 	name = "imp"
 	real_name = "imp"
@@ -84,19 +84,6 @@
 	var/wound_bonus_per_hit = 5
 	/// How much our wound_bonus hitstreak bonus caps at (peak demonry)
 	var/wound_bonus_hitstreak_max = 12
-	var/list/consumed_mobs = list() //Skyrat edit, prevent round removal
-
-/mob/living/simple_animal/hostile/imp/slaughter/proc/on_victim_statchange(mob/living/victim, new_stat)
-	SIGNAL_HANDLER
-
-	if(new_stat == DEAD)
-		return
-	// Someone we've eaten has spontaneously revived; maybe nanites, maybe a changeling
-	victim.forceMove(get_turf(src))
-	victim.exit_blood_effect()
-	victim.visible_message("<span class='warning'>[victim] falls out of the air, covered in blood, with a confused look on their face.</span>")
-	consumed_mobs -= victim
-	UnregisterSignal(victim, COMSIG_MOB_STATCHANGE)
 
 /mob/living/simple_animal/hostile/imp/slaughter/Initialize(mapload, obj/effect/dummy/phased_mob/bloodpool)//Bloodpool is the blood pool we spawn in
 	. = ..()
@@ -108,39 +95,39 @@
 	if(bloodpool)
 		bloodpool.RegisterSignal(src, list(COMSIG_LIVING_AFTERPHASEIN,COMSIG_PARENT_QDELETING), /obj/effect/dummy/phased_mob/.proc/deleteself)
 
-/mob/living/simple_animal/hostile/imp/slaughter/RightClickOn(atom/A)
-	if(!isliving(A))
-		return ..()
+/// Performs the classic slaughter demon bodyslam on the attack_target. Yeets them a screen away.
+/mob/living/simple_animal/hostile/imp/slaughter/proc/bodyslam(atom/attack_target)
+	if(!isliving(attack_target))
+		return
 
-	if(!Adjacent(A))
-		to_chat(src, "<span class='warning'>You are too far away to use your slam attack on [A]!</span>")
+	if(!Adjacent(attack_target))
+		to_chat(src, span_warning("You are too far away to use your slam attack on [attack_target]!"))
 		return
 
 	if(slam_cooldown + slam_cooldown_time > world.time)
-		to_chat(src, "<span class='warning'>Your slam ability is still on cooldown!</span>")
+		to_chat(src, span_warning("Your slam ability is still on cooldown!"))
 		return
 
-	face_atom(A)
-	var/mob/living/victim = A
+	face_atom(attack_target)
+	var/mob/living/victim = attack_target
 	victim.take_bodypart_damage(brute=20, wound_bonus=wound_bonus) // don't worry, there's more punishment when they hit something
-	visible_message("<span class='danger'>[src] slams into [victim] with monstrous strength!</span>", "<span class='danger'>You slam into [victim] with monstrous strength!</span>", ignored_mobs=victim)
-	to_chat(victim, "<span class='userdanger'>[src] slams into you with monstrous strength, sending you flying like a ragdoll!</span>")
+	visible_message(span_danger("[src] slams into [victim] with monstrous strength!"), span_danger("You slam into [victim] with monstrous strength!"), ignored_mobs=victim)
+	to_chat(victim, span_userdanger("[src] slams into you with monstrous strength, sending you flying like a ragdoll!"))
 	var/turf/yeet_target = get_edge_target_turf(victim, dir)
 	victim.throw_at(yeet_target, 10, 5, src)
 	slam_cooldown = world.time
 	log_combat(src, victim, "slaughter slammed")
 
-/mob/living/simple_animal/hostile/imp/slaughter/bloodcrawl_swallow(mob/living/victim)
-	// Keep their corpse so rescue is possible
-	consumed_mobs += victim
-	RegisterSignal(victim, COMSIG_MOB_STATCHANGE, .proc/on_victim_statchange)
+/mob/living/simple_animal/hostile/imp/slaughter/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		bodyslam(attack_target)
+		return
 
-
-/mob/living/simple_animal/hostile/imp/slaughter/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		return
-	if(iscarbon(A))
-		var/mob/living/carbon/target = A
+
+	if(iscarbon(attack_target))
+		var/mob/living/carbon/target = attack_target
 		if(target.stat != DEAD && target.mind && current_hitstreak < wound_bonus_hitstreak_max)
 			current_hitstreak++
 			wound_bonus += wound_bonus_per_hit
@@ -176,16 +163,16 @@
 /obj/item/organ/heart/demon/attack(mob/M, mob/living/carbon/user, obj/target)
 	if(M != user)
 		return ..()
-	user.visible_message("<span class='warning'>[user] raises [src] to [user.p_their()] mouth and tears into it with [user.p_their()] teeth!</span>", \
-		"<span class='danger'>An unnatural hunger consumes you. You raise [src] your mouth and devour it!</span>")
+	user.visible_message(span_warning("[user] raises [src] to [user.p_their()] mouth and tears into it with [user.p_their()] teeth!"), \
+		span_danger("An unnatural hunger consumes you. You raise [src] your mouth and devour it!"))
 	playsound(user, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	for(var/obj/effect/proc_holder/spell/knownspell in user.mind.spell_list)
 		if(knownspell.type == /obj/effect/proc_holder/spell/bloodcrawl)
-			to_chat(user, "<span class='warning'>...and you don't feel any different.</span>")
+			to_chat(user, span_warning("...and you don't feel any different."))
 			qdel(src)
 			return
-	user.visible_message("<span class='warning'>[user]'s eyes flare a deep crimson!</span>", \
-		"<span class='userdanger'>You feel a strange power seep into your body... you have absorbed the demon's blood-travelling powers!</span>")
+	user.visible_message(span_warning("[user]'s eyes flare a deep crimson!"), \
+		span_userdanger("You feel a strange power seep into your body... you have absorbed the demon's blood-travelling powers!"))
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
 	src.Insert(user) //Consuming the heart literally replaces your heart with a demon heart. H A R D C O R E
 
@@ -201,26 +188,6 @@
 
 /obj/item/organ/heart/demon/Stop()
 	return 0 // Always beating.
-
-
-/mob/living/simple_animal/hostile/imp/slaughter/proc/release_victims()
-	if(!consumed_mobs)
-		return
-
-	var/turf/T = get_turf(src)
-
-	for(var/mob/living/M in consumed_mobs)
-		if(!M)
-			continue
-
-		// Unregister the signal first, otherwise it'll trigger the "ling revived inside us" code
-		UnregisterSignal(M, COMSIG_MOB_STATCHANGE)
-
-		M.forceMove(T)
-		
-/mob/living/simple_animal/hostile/imp/slaughter/Destroy()
-	release_victims()
-	. = ..()
 
 /mob/living/simple_animal/hostile/imp/slaughter/laughter
 	// The laughter demon! It's everyone's best friend! It just wants to hug
@@ -246,6 +213,7 @@
 	loot = list(/mob/living/simple_animal/pet/cat/kitten{name = "Laughter"})
 
 	// Keep the people we hug!
+	var/list/consumed_mobs = list()
 
 	playstyle_string = "<span class='big bold'>You are a laughter \
 	demon,</span><B> a wonderful creature from another realm. You have a single \
@@ -296,7 +264,7 @@
 		if(M.revive(full_heal = TRUE, admin_revive = TRUE))
 			M.grab_ghost(force = TRUE)
 			playsound(T, feast_sound, 50, TRUE, -1)
-			to_chat(M, "<span class='clown'>You leave [src]'s warm embrace, and feel ready to take on the world.</span>")
+			to_chat(M, span_clown("You leave [src]'s warm embrace, and feel ready to take on the world."))
 
 /mob/living/simple_animal/hostile/imp/slaughter/laughter/bloodcrawl_swallow(mob/living/victim)
 	// Keep their corpse so rescue is possible
@@ -309,6 +277,17 @@
  * changed stat. If they're no longer dead (because they were dead when
  * swallowed), eject them so they can't rip their way out from the inside.
  */
+/mob/living/simple_animal/hostile/imp/slaughter/laughter/proc/on_victim_statchange(mob/living/victim, new_stat)
+	SIGNAL_HANDLER
+
+	if(new_stat == DEAD)
+		return
+	// Someone we've eaten has spontaneously revived; maybe nanites, maybe a changeling
+	victim.forceMove(get_turf(src))
+	victim.exit_blood_effect()
+	victim.visible_message(span_warning("[victim] falls out of the air, covered in blood, with a confused look on their face."))
+	consumed_mobs -= victim
+	UnregisterSignal(victim, COMSIG_MOB_STATCHANGE)
 
 /mob/living/simple_animal/hostile/imp/slaughter/engine_demon
 	name = "engine demon"

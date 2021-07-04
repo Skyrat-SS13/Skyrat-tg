@@ -41,7 +41,7 @@
 	if(!megafauna_spawn_list)
 		megafauna_spawn_list = GLOB.megafauna_spawn_list
 	if(!flora_spawn_list)
-		flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2)
+		flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2, /obj/structure/flora/ash/seraka = 2)
 	if(!feature_spawn_list)
 		feature_spawn_list = list(/obj/structure/geyser/random = 1)
 
@@ -118,7 +118,7 @@
 				var/atom/picked_mob = pickweight(mob_spawn_list)
 
 				if(picked_mob == SPAWN_MEGAFAUNA) //
-					if((A.area_flags & MEGAFAUNA_SPAWN_ALLOWED) && megafauna_spawn_list && megafauna_spawn_list.len) //this is danger. it's boss time.
+					if((A.area_flags & MEGAFAUNA_SPAWN_ALLOWED) && megafauna_spawn_list?.len) //this is danger. it's boss time.
 						picked_mob = pickweight(megafauna_spawn_list)
 					else //this is not danger, don't spawn a boss, spawn something else
 						picked_mob = pickweight(mob_spawn_list - SPAWN_MEGAFAUNA) //What if we used 100% of the brain...and did something (slightly) less shit than a while loop?
@@ -144,6 +144,6 @@
 		CHECK_TICK
 
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
-	//to_chat(world, "<span class='boldannounce'>[message]</span>")
+	//to_chat(world, span_boldannounce("[message]"))
 	add_startupmessage(message) //SKYRAT EDIT CHANGE
 	log_world(message)

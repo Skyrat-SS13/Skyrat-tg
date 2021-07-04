@@ -17,8 +17,10 @@
 
 	///Do we have an active fire alarm?
 	var/fire = FALSE
+	/* SKYRAT EDIT REMOVAL
 	///How many fire alarm sources do we have?
 	var/triggered_firealarms = 0
+	*/
 	///Whether there is an atmos alarm in this area
 	var/atmosalm = FALSE
 	var/poweralm = FALSE
@@ -63,7 +65,7 @@
 
 	var/list/firedoors
 	var/list/cameras
-	var/list/firealarms
+	//var/list/firealarms SKYRAT EDIT REMOVAL
 	var/firedoors_last_closed_on = 0
 
 	///Typepath to limit the areas (subtypes included) that atoms in this area can smooth with. Used for shuttles.
@@ -313,7 +315,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		atmosalm = isdangerous
 		return TRUE
 	return FALSE
-
+/* SKYRAT EDIT REMOVAL
 /**
  * Try to close all the firedoors in the area
  */
@@ -388,7 +390,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	if (should_reset_alarms) // if there's a source, make sure there's no fire alarms left
 		unset_fire_alarm_effects()
-		ModifyFiredoors(TRUE)
+		//ModifyFiredoors(TRUE) SKYRAT EDIT CHANGE
 		for(var/item in firealarms)
 			var/obj/machinery/firealarm/F = item
 			F.update_appearance()
@@ -406,7 +408,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			var/datum/computer_file/program/alarm_monitor/p = item
 			p.cancelAlarm("Fire", src, source)
 	STOP_PROCESSING(SSobj, src)
-
+*/ //SKYRAT EDIT END
 ///Get rid of any dangling camera refs
 /area/proc/clear_camera(obj/machinery/camera/cam)
 	LAZYREMOVE(cameras, cam)
@@ -418,7 +420,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		drone_on.freeCamera(src, cam)
 	for(var/datum/computer_file/program/alarm_monitor/monitor as anything in GLOB.alarmdisplay)
 		monitor.freeCamera(src, cam)
-
+/* SKYRAT EDIT REMOVAL
 /**
  * If 100 ticks has elapsed, toggle all the firedoors closed again
  */
@@ -427,7 +429,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		firereset() //If there are no breaches or fires, and this alert was caused by a breach or fire, die
 	if(firedoors_last_closed_on + 100 < world.time) //every 10 seconds
 		ModifyFiredoors(FALSE)
-
+*/ //SKYRAT EDIT END
 /**
  * Close and lock a door passed into this proc
  *
@@ -450,7 +452,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if (area_flags & NO_ALERTS)
 		return
 	//Trigger alarm effect
-	set_fire_alarm_effect()
+	//set_fire_alarm_effect() SKYRAT EDIT REMOVAL
 	//Lockdown airlocks
 	for(var/obj/machinery/door/DOOR in src)
 		close_and_lock_door(DOOR)
@@ -460,7 +462,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		if(SILICON.triggerAlarm("Burglar", src, cameras, trigger))
 			//Cancel silicon alert after 1 minute
 			addtimer(CALLBACK(SILICON, /mob/living/silicon.proc/cancelAlarm,"Burglar",src,trigger), 600)
-
+/* SKYRAT EDIT REMOVAL
 /**
  * Trigger the fire alarm visual affects in an area
  *
@@ -492,6 +494,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		F.triggered = FALSE
 	for(var/obj/machinery/light/L in src)
 		L.update()
+*/
 
 /**
  * Update the icon state of the area
@@ -596,15 +599,15 @@ GLOBAL_LIST_EMPTY(teleportlocs)
  *
  * If the area has ambience, then it plays some ambience music to the ambience channel
  */
-/area/Entered(atom/movable/M)
+/area/Entered(atom/movable/arrived, area/old_area)
 	set waitfor = FALSE
-	SEND_SIGNAL(src, COMSIG_AREA_ENTERED, M)
-	for(var/atom/movable/recipient as anything in M.area_sensitive_contents)
+	SEND_SIGNAL(src, COMSIG_AREA_ENTERED, arrived, old_area)
+	for(var/atom/movable/recipient as anything in arrived.area_sensitive_contents)
 		SEND_SIGNAL(recipient, COMSIG_ENTER_AREA, src)
-	if(!isliving(M))
+	if(!isliving(arrived))
 		return
 
-	var/mob/living/L = M
+	var/mob/living/L = arrived
 	if(!L.ckey)
 		return
 
@@ -628,9 +631,9 @@ GLOBAL_LIST_EMPTY(teleportlocs)
  *
  * Sends signals COMSIG_AREA_EXITED and COMSIG_EXIT_AREA (to a list of atoms)
  */
-/area/Exited(atom/movable/M)
-	SEND_SIGNAL(src, COMSIG_AREA_EXITED, M)
-	for(var/atom/movable/recipient as anything in M.area_sensitive_contents)
+/area/Exited(atom/movable/gone, direction)
+	SEND_SIGNAL(src, COMSIG_AREA_EXITED, gone, direction)
+	for(var/atom/movable/recipient as anything in gone.area_sensitive_contents)
 		SEND_SIGNAL(recipient, COMSIG_EXIT_AREA, src)
 
 

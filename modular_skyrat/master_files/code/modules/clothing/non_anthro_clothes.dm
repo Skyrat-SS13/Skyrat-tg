@@ -151,6 +151,11 @@
 /obj/item/clothing/head/hooded/cloakhood/goliath
 	mutant_variants = NONE
 
+/obj/item/clothing/head/nun_hood
+	mutant_variants = NONE
+
+/obj/item/clothing/head/helmet/knight/greyscale
+	mutant_variants = NONE
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -296,4 +301,12 @@
 /obj/item/clothing/suit/curator
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/hooded/chaplainsuit
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/chaplainsuit
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/armor/riot/knight/greyscale
+	mutant_variants = NONE
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

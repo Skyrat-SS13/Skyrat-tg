@@ -55,18 +55,6 @@
 		"space_heater",
 		"tech_disk",
 		"titaniumglass",
-
-		//SKYRAT EDIT - RESEARCH DESIGNS
-		"b6mm",
-		"b6mm_rubber",
-		"b9mm",
-		"b9mm_rubber",
-		"b10mm",
-		"b10mm_rubber",
-		"b12mm",
-		"b12mm_rubber",
-		"pepperballs",
-		//SKYRAT EDIT ADDITION - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/mmi
@@ -97,6 +85,10 @@
 		"cyborgrecharger",
 		"robocontrol",
 		"sflash",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"affection_module",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
 /datum/techweb_node/mech
@@ -170,6 +162,7 @@
 		"bowl",
 		"drinking_glass",
 		"shot_glass",
+		"wirebrush",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
@@ -222,20 +215,27 @@
 		"comp_combiner",
 		"comp_comparison",
 		"comp_concat",
+		"comp_concat_list",
 		"comp_delay",
 		"comp_direction",
+		"comp_get_column",
 		"comp_gps",
 		"comp_health",
 		"comp_hear",
 		"comp_index",
+		"comp_index_table",
 		"comp_length",
 		"comp_light",
 		"comp_logic",
+		"comp_mmi",
+		"comp_multiplexer",
 		"comp_not",
 		"comp_radio",
 		"comp_ram",
 		"comp_random",
+		"comp_select_query",
 		"comp_self",
+		"comp_soundemitter",
 		"comp_species",
 		"comp_speech",
 		"comp_speech",
@@ -246,6 +246,7 @@
 		"compact_remote_shell",
 		"component_printer",
 		"integrated_circuit",
+		"usb_cable",
 	)
 
 /////////////////////////Biotech/////////////////////////
@@ -679,6 +680,7 @@
 	prereq_ids = list("basic_circuitry", "engineering")
 	design_ids = list(
 		"bot_shell",
+		"door_shell",
 		"controller_shell",
 		"money_bot_shell",
 	)
@@ -1220,10 +1222,15 @@
 		"beartrap",
 		"blutrash",
 		"buffer",
+		"vacuum",
 		"holobarrier_jani",
 		"light_replacer",
 		"paint_remover",
 		"spraybottle",
+
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"wirebrush_adv",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/janitor_trash = 3000) //75% discount for scanning some trash, seems fair right?
@@ -1308,6 +1315,7 @@
 	design_ids = list(
 		"pin_testing",
 		"tele_shield",
+		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/explosion/calibration)
@@ -1319,6 +1327,7 @@
 	prereq_ids = list("adv_engi", "weaponry")
 	design_ids = list(
 		"pin_loyalty",
+		"ammo_workbench", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/explosion/medium)

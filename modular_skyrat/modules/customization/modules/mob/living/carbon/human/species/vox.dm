@@ -6,6 +6,7 @@
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/vox_parts_greyscale.dmi'
 	say_mod = "shrieks"
 	default_color = "00FF00"
+	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,

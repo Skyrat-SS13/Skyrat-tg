@@ -16,7 +16,7 @@
 		COMSIG_ATOM_EXIT = .proc/on_exit,
 	)
 
-	AddElement(/datum/element/connect_loc, loc_connections)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
 
 /obj/structure/flippedtable/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
@@ -64,7 +64,7 @@
 
 /obj/structure/table/CtrlShiftClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src))
+	if(!istype(user) || !user.can_interact_with(src) || isobserver(user))
 		return
 	if(can_flip)
 		user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
