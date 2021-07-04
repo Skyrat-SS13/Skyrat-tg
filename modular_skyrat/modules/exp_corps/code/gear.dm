@@ -16,6 +16,6 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/defibrillator/compact/combat/loaded/nanotrasen(src)
 	new /obj/item/reagent_containers/hypospray/combat(src)
-    new /obj/item/stack/medical/mesh/advanced(src)
-    new /obj/item/stack/medical/suture/medicated(src)
+	new /obj/item/stack/medical/mesh/advanced(src)
+	new /obj/item/stack/medical/suture/medicated(src)
 	new /obj/item/clothing/glasses/hud/health/night(src)
