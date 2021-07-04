@@ -6,13 +6,14 @@
 	if(!ishuman(usr)) return
 	SSdispatch.ui_interact(usr, null, "ticket-new")
 
-/obj/item/radio/headset/AltClick(mob/living/user)
+/obj/item/radio/headset/CtrlShiftClick(mob/living/user)
+	if(!istype(user))
+		return ..()
 	var/list/holder_roles = SSdispatch.get_holder_roles(user)
 	if(!holder_roles.len)
 		to_chat(user, span_warning("You are not authorized to access the Dispatch Browser."))
 		return
 	SSdispatch.ui_interact(user, null, "ticket-manage")
-	return COMPONENT_SECONDARY_CANCEL_ATTACK_CHAIN
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
