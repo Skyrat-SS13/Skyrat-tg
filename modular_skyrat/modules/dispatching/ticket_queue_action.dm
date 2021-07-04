@@ -21,4 +21,4 @@
 
 /obj/item/radio/headset/examine(mob/user)
 	. = ..()
-	. += "<b><u>Alt Click</b></u> to access the Dispatch Browser"
+	. += "<b><u>Ctrl Shift Click</b></u> to access the Dispatch Browser"
