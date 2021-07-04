@@ -41,8 +41,18 @@
 	qdel(src)
 
 /obj/item/advanced_choice_beacon/proc/get_available_options()
-	return list()
+	var/list/options = list()
+	for(var/iterating_choice in possible_choices)
+		var/obj/our_object = iterating_choice
+		var/datum/radial_menu_choice/option = new
+		option.image = image(icon = initial(our_object.icon), icon_state = initial(our_object.icon_state))
+		option.info = span_boldnotice("[initial(our_object.desc)]")
 
+		options[our_object] = option
+
+	sortList(options)
+
+	return options
 /obj/item/advanced_choice_beacon/exp_corps
 	name = "Vanguard Operatives Supply Beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
