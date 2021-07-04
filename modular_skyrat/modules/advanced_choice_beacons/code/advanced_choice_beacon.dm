@@ -60,8 +60,9 @@
 
 	possible_choices = list(
 		/obj/structure/closet/crate/secure/exp_corps,
-		/obj/structure/closet/crate/secure/exp_corps/testa,
-		/obj/structure/closet/crate/secure/exp_corps/testb
+		/obj/structure/closet/crate/secure/exp_corps/pointman,
+		/obj/structure/closet/crate/secure/exp_corps/field_medic,
+		/obj/structure/closet/crate/secure/exp_corps/combat_tech
 	)
 
 /obj/item/advanced_choice_beacon/exp_corps/get_available_options()

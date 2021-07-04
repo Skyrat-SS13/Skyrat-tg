@@ -80,21 +80,31 @@
 	wildcard_slots = WILDCARD_LIMIT_CENTCOM
 
 /obj/structure/closet/crate/secure/exp_corps
-	name = "expeditionary gear crate"
+	name = "Expedition Crate"
 	desc = "A secure crate, for Expeditionary Corps only!"
 	icon_state = "expcrate"
 	icon = 'modular_skyrat/modules/exp_corps/icons/exp_crate.dmi'
 	req_access = list(ACCESS_GATEWAY, ACCESS_CENT_GENERAL)
 	max_integrity = 5000
-	var/loadout_desc = "Standard"
+	var/loadout_desc = "Whoever picks this is an incredibly boring generalist."
 
-/obj/structure/closet/crate/secure/exp_corps/testa
-	name = "Test1"
-	loadout_desc = "Standard 1"
+/obj/structure/closet/crate/secure/exp_corps/pointman
+	name = "Pointman Crate"
+	loadout_desc = "The Pointman's role is to lead the expedition team from the front \
+	lines, and has been outfitted with a Shield. Due to the manufacturing costs involved \
+	the Pointman kit lacks when it comes to engineering and medical tools."
 
-/obj/structure/closet/crate/secure/exp_corps/testb
-	name = "Test2"
-	loadout_desc = "Standard 2"
+/obj/structure/closet/crate/secure/exp_corps/field_medic
+	name = "Field Medic Crate"
+	loadout_desc = "The Field Medic's role is to ensure that the expidition returns at all. \
+	Their role as a supportive unit is vital, and they are outfitted with the tools required of \
+	their duty. This comes at the cost of any engineering equipment."
+
+/obj/structure/closet/crate/secure/exp_corps/combat_tech
+	name = "Field Medic Crate"
+	loadout_desc = "The Field Medic's role is to ensure that the expidition returns at all. \
+	Their role as a supportive unit is vital, and they are outfitted with the tools required of \
+	their duty. This comes at the cost of any engineering equipment."
 
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
@@ -102,9 +112,44 @@
 	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/melee/tomahawk(src)
-	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
+	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
+/obj/structure/closet/crate/secure/exp_corps/pointman/PopulateContents()
+	new /obj/item/storage/firstaid/tactical(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/melee/tomahawk(src)
+	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+
+/obj/structure/closet/crate/secure/exp_corps/field_medic/PopulateContents()
+	new /obj/item/storage/firstaid/expeditionary(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/melee/tomahawk(src)
+	new /obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/field_medic(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+
+/obj/structure/closet/crate/secure/exp_corps/field_medic/PopulateContents()
+	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/melee/tomahawk(src)
+	new /obj/item/clothing/gloves/color/chief_engineer/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/combat_tech(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
