@@ -125,7 +125,6 @@
 	new /obj/item/clothing/gloves/combat(src)
 	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
 	new /obj/item/storage/photo_album/personal(src)
-	new /obj/item/stamp/centcom(src)
 
 /obj/item/pda/nanotrasen_representative
 	name = "nanotrasen representatives PDA"
@@ -147,3 +146,28 @@
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
+
+
+/obj/structure/closet/secure_closet/nanotrasen_representative/station
+	name = "\proper nanotran representative's locker"
+	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+	icon_state = "cabinet"
+
+/obj/structure/closet/secure_closet/nanotrasen_representative/station/PopulateContents()
+	..()
+	new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/clothing/shoes/sneakers/brown(src)
+	new /obj/item/clothing/under/rank/nanotrasen_representative(src)
+	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
+	new /obj/item/clothing/suit/armor/vest(src)
+	new /obj/item/clothing/head/nanotrasen_representative(src)
+	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
+	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/storage/photo_album/personal(src)
+	new /obj/item/bedsheet/centcom(src)
+	new /obj/item/clothing/suit/armor/vest/centcom_formal(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/centcom(src)
+	new /obj/item/clothing/head/centhat(src)
+	new /obj/item/clothing/head/centcom_cap(src)
