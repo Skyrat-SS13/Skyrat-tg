@@ -101,7 +101,7 @@
 
 /datum/loadout_item/head/donator/emissiontest
 	name = "Emission's Helmet"
-	path = /obj/item/clothing/head/helmet/space/plasmaman
+	path = /obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/uniform/donator/emissionsuit
