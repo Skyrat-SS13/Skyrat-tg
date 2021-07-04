@@ -6,7 +6,12 @@
 	if(!ishuman(usr)) return
 	SSdispatch.ui_interact(usr, null, "ticket-new")
 
-/obj/item/radio/headset/pre_attack_secondary(atom/target, mob/user, params)
+/obj/item/radio/headset/Click(location, control, params)
+	if(!(RIGHT_CLICK in params))
+		return ..()
+	if(!ishuman(usr))
+		return ..()
+	var/mob/living/user = usr
 	var/list/holder_roles = SSdispatch.get_holder_roles(user)
 	if(!holder_roles.len)
 		to_chat(user, span_warning("You are not authorized to access the Dispatch Browser."))
