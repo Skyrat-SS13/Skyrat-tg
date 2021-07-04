@@ -848,7 +848,7 @@
 	worn_icon_state = "hepbelt"
 
 // Donation reward for CandleJax
-/obj/item/clothing/head/helmet/space/plasmaman
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	name = "Emission's Helmet"
 	desc = "A special containment helmet designed for heavy usage Multiple dings and notches are on this one."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
