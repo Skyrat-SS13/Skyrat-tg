@@ -480,37 +480,37 @@ Haha! Kill me please.
 //bottles
 
 /obj/item/reagent_containers/glass/bottle/crocin
-	name = "Crocin bottle"
+	name = "crocin bottle"
 	desc = "A bottle of mild aphrodisiac. Increases libido."
 	list_reagents = list(/datum/reagent/drug/crocin = 30)
 
 /obj/item/reagent_containers/glass/bottle/hexacrocin
-	name = "Hexacrocin bottle"
+	name = "hexacrocin bottle"
 	desc = "A bottle of strong aphrodisiac. Increases libido. Potentially  dangerous."
 	list_reagents = list(/datum/reagent/drug/hexacrocin = 30)
 
 /obj/item/reagent_containers/glass/bottle/dopamine //this one is hard to obtain.
-	name = "Hexacrocin bottle"
+	name = "hexacrocin bottle"
 	desc = "Pure pleasure and happines in a bottle."
 	list_reagents = list(/datum/reagent/drug/dopamine = 30)
 
 /obj/item/reagent_containers/glass/bottle/camphor
-	name = "Camphor bottle"
+	name = "camphor bottle"
 	desc = "A bottle of mild anaphrodisiac. Reduces libido."
 	list_reagents = list(/datum/reagent/drug/camphor = 30)
 
 /obj/item/reagent_containers/glass/bottle/pentacamphor
-	name = "Pentacamphor bottle"
+	name = "pentacamphor bottle"
 	desc = "A bottle of strong anaphrodisiac. Reduces libido."
 	list_reagents = list(/datum/reagent/drug/pentacamphor = 30)
 
 /obj/item/reagent_containers/glass/bottle/breast_enlarger
-	name = "Succubus milk bottle"
+	name = "succubus milk bottle"
 	desc = "A bottle of strong breast enlargement reagent."
 	list_reagents = list(/datum/reagent/breast_enlarger = 30)
 
 /obj/item/reagent_containers/glass/bottle/penis_enlarger
-	name = "Incubus draft bottle"
+	name = "incubus draft bottle"
 	desc = "A bottle of strong penis enlargement reagent."
 	list_reagents = list(/datum/reagent/penis_enlarger = 30)
 
