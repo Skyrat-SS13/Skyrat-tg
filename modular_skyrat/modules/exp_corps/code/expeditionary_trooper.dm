@@ -106,6 +106,13 @@
 	mechanical know-how can mean life or death. A good role to bring along to any expedition. \
 	Sadly, this kit is lacking when it comes to medical equipment."
 
+/obj/structure/closet/crate/secure/exp_corps/marksman
+	name = "Marksman Crate"
+	loadout_desc = "A Combat Tech is always good for an expedition. Having someone with \
+	mechanical know-how can mean life or death. A good role to bring along to any expedition. \
+	Sadly, this kit is lacking when it comes to medical equipment."
+
+//base, don't use this, but leaving it for admin spawns is probably a good call?
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
@@ -118,8 +125,9 @@
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
+//shield guy
 /obj/structure/closet/crate/secure/exp_corps/pointman/PopulateContents()
-	new /obj/item/storage/firstaid/tactical(src)
+	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
 	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
@@ -127,9 +135,11 @@
 	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
-	new /obj/item/storage/belt/military/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/pointman(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+	new /obj/item/shield/riot/pointman(src)
 
+//medic
 /obj/structure/closet/crate/secure/exp_corps/field_medic/PopulateContents()
 	new /obj/item/storage/firstaid/expeditionary(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
@@ -142,6 +152,7 @@
 	new /obj/item/storage/belt/military/expeditionary_corps/field_medic(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
+//engineering
 /obj/structure/closet/crate/secure/exp_corps/combat_tech/PopulateContents()
 	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
@@ -152,4 +163,17 @@
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps/combat_tech(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+
+//edgy loner with knives
+/obj/structure/closet/crate/secure/exp_corps/marksman/PopulateContents()
+	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/storage/bag/ammo/marksman(src)
+	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/marksman(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)

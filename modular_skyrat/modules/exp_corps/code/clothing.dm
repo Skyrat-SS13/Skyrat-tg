@@ -41,6 +41,23 @@
 	new /obj/item/surgical_drapes(src)
 	new /obj/item/bonesetter(src)
 
+/obj/item/storage/belt/military/expeditionary_corps/pointman
+	name = "pointman's chest rig"
+
+/obj/item/storage/belt/military/expeditionary_corps/pointman/PopulateContents()
+	new /obj/item/reagent_containers/food/drinks/bottle/whiskey(src)
+	new /obj/item/stack/sheet/plasteel(src,5)
+	new /obj/item/reagent_containers/glass/bottle/morphine(src)
+
+/obj/item/storage/belt/military/expeditionary_corps/marksman
+	name = "marksman's chest rig"
+
+/obj/item/storage/belt/military/expeditionary_corps/marksman/PopulateContents()
+	new /obj/item/binoculars(src)
+	new /obj/item/storage/fancy/cigarettes/cigpack_robust(src)
+	new /obj/item/lighter(src)
+	new /obj/item/clothing/mask/bandana/skull(src)
+
 /obj/item/clothing/shoes/combat/expeditionary_corps
 	name = "expeditionary corps boots"
 	desc = "High speed, low drag combat boots."

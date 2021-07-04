@@ -579,7 +579,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/assault_rifle/m16, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/tactical)
+	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/assault_rifle/m16, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 
