@@ -22,7 +22,7 @@
 	var/static/list/bag_colors
 	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY
 	strip_delay = 300
-	breakouttime = 3000 //do not touch. First - It's contraband item, Second - It's damn expensive, Third - it's ERP item, so you can't legally use it on characters without enabled non-con.
+	breakouttime = 3000 //do not touch. First - It's contraband item, Second - It's damn expensive, Third - it's ERP item, so you can't legally use it on characters without enabled non-con or erp pref.
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
@@ -37,6 +37,7 @@
 	clothing_flags = LARGE_WORN_ICON
 	slot_flags = NONE
 	species_exception = list(/datum/species/plasmaman)
+	custom_price = 600
 
 //create radial menu
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/populate_bag_colors()
@@ -171,7 +172,6 @@
 			REMOVE_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
 			to_chat(user,"<font color=purple>You are finally free! The tight bag no longer constricts your movements.</font>")
 
-
 			H.add_overlay(H.overlays_standing[SHOES_LAYER])
 			H.update_inv_shoes()
 			H.add_overlay(H.overlays_standing[BELT_LAYER])
@@ -191,13 +191,14 @@
 	if(time_to_sound_left <= 0)
 		if(tt <= 0)
 			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 100, TRUE)
-			tt = rand(15,35) //to do random funny sounds when character inside that thing. haha.
+			tt = rand(15,35) //to do random funny sounds when character inside that thing.
 		else
 			tt -= delta_time
 	else
 		time_to_sound_left -= delta_time
 
-//
-// /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/doStrip(mob/stripper, mob/owner)
-//	. = ..()
-//	owner.update_inv_hands()
+
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/doStrip(mob/stripper, mob/owner)
+	. = ..()
+	owner.update_inv_hands()
+	stripper.update_inv_hands()
