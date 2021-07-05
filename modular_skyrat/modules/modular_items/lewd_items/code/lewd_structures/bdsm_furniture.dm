@@ -25,14 +25,6 @@
 				qdel(src)
 			return
 
-/obj/structure/bed/bdsm_bed/attackby(obj/item/W, mob/user, params)
-	if(W.tool_behaviour == TOOL_WRENCH && !(flags_1&NODECONSTRUCT_1))
-		if(W.use_tool(src, user, 8 SECONDS))
-			W.play_tool_sound(src)
-			deconstruct(TRUE)
-	else
-		return ..()
-
 /obj/structure/bed/bdsm_bed/post_buckle_mob(mob/living/M)
 	density = TRUE
 	//Push them up from the normal lying position
@@ -43,12 +35,17 @@
 	//Set them back down to the normal lying position
 	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
 
-/obj/structure/bed/bdsm_bed/deconstruct()
-	unbuckle_all_mobs()
-	qdel(src)
-	var/obj/item/bdsm_bed_kit/C = new
-	C.loc = loc
-	return TRUE
+/obj/structure/bed/bdsm_bed/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
+	add_fingerprint(user)
+	if(istype(P, /obj/item/wrench))
+		to_chat(user, "<span class='notice'>You start to unfastening the frame of bdsm bed...</span>")
+		if(P.use_tool(src, user, 8 SECONDS, volume=50))
+			to_chat(user, "<span class='notice'>You take down the BDSM bed!</span>")
+			var/obj/item/bdsm_bed_kit/C = new
+			C.loc = loc
+			unbuckle_all_mobs()
+			del(src)
+		return
 
 /obj/structure/bed/bdsm_bed/Destroy()
 	unbuckle_all_mobs(TRUE)
@@ -299,5 +296,6 @@
 			to_chat(user, "<span class='notice'>You take down the x-stand!</span>")
 			var/obj/item/x_stand_kit/C = new
 			C.loc = loc
+			unbuckle_all_mobs()
 			del(src)
 		return

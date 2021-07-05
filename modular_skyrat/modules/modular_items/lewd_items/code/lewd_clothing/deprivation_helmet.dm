@@ -87,7 +87,7 @@
 			to_chat(usr,"Speech switch off")
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
-				to_chat(usr,"<font color=purple>Your mouth is free. you breathe out with relief.</font>")
+//				to_chat(U,"<font color=purple>Your mouth is free. you breathe out with relief.</font>")
 		else
 			muzzle = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
@@ -103,7 +103,7 @@
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
 				Toggle_Sounds()
-				to_chat(usr,"<font color=purple>Finally you can hear the world around again.</font>")
+//				to_chat(U,"<font color=purple>Finally you can hear the world around again.</font>")
 		else
 			earmuffs = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
@@ -121,7 +121,7 @@
 			to_chat(usr,"Vision switch off")
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.cure_blind("deprivation_helmet_[REF(src)]")
-				to_chat(usr,"<font color=purple>Helmet no longer restricts your vision.</font>")
+//				to_chat(U,"<font color=purple>Helmet no longer restricts your vision.</font>")
 		else
 			prevent_vision = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
@@ -184,9 +184,9 @@
 	usr.client.prefs.toggles ^= SOUND_AMBIENCE
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_AMBIENCE)
-		to_chat(usr, "You will now hear ambient sounds.")
+//		to_chat(usr, "You will now hear ambient sounds.")
 	else
-		to_chat(usr, "You will no longer hear ambient sounds.")
+//		to_chat(usr, "You will no longer hear ambient sounds.")
 		usr.stop_sound_channel(CHANNEL_AMBIENCE)
 		usr.stop_sound_channel(CHANNEL_BUZZ)
 	usr.client.update_ambience_pref()
@@ -200,9 +200,9 @@
 	usr.client.prefs.toggles ^= SOUND_INSTRUMENTS
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_INSTRUMENTS)
-		to_chat(usr, "You will now hear people playing musical instruments.")
+//		to_chat(usr, "You will now hear people playing musical instruments.")
 	else
-		to_chat(usr, "You will no longer hear musical instruments.")
+//		to_chat(usr, "You will no longer hear musical instruments.")
 
 //Instruments sound check status
 /obj/item/clothing/head/helmet/space/deprivation_helmet/proc/Toggle_Instruments_Get_checked(client/C)
@@ -213,9 +213,9 @@
 	usr.client.prefs.toggles ^= SOUND_COMBATMODE
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_COMBATMODE)
-		to_chat(usr, "You will now hear a sound when combat mode is turned on.")
+//		to_chat(usr, "You will now hear a sound when combat mode is turned on.")
 	else
-		to_chat(usr, "You will no longer hear a sound when combat mode is turned on.")
+//		to_chat(usr, "You will no longer hear a sound when combat mode is turned on.")
 
 //Combat sound check status function
 /obj/item/clothing/head/helmet/space/deprivation_helmet/proc/Toggle_Combatmode_Sound_Get_checked(client/C)
@@ -226,9 +226,9 @@
 	usr.client.prefs.toggles ^= SOUND_MIDI
 	usr.client.prefs.save_preferences()
 	if(usr.client.prefs.toggles & SOUND_MIDI)
-		to_chat(usr, "You will now hear any sounds uploaded by admins.")
+//		to_chat(usr, "You will now hear any sounds uploaded by admins.")
 	else
-		to_chat(usr, "You will no longer hear sounds uploaded by admins")
+//		to_chat(usr, "You will no longer hear sounds uploaded by admins")
 		usr.stop_sound_channel(CHANNEL_ADMIN)
 		var/client/C = usr.client
 		C?.tgui_panel?.stop_music()
@@ -243,7 +243,7 @@
 	set category = "Preferences"
 	set desc = "Hear Announcement Sound"
 	usr.client.prefs.toggles ^= SOUND_ANNOUNCEMENTS
-	to_chat(usr, "You will now [(usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS) ? "hear announcement sounds" : "no longer hear announcements"].")
+//	to_chat(usr, "You will now [(usr.client.prefs.toggles & SOUND_ANNOUNCEMENTS) ? "hear announcement sounds" : "no longer hear announcements"].")
 	usr.client.prefs.save_preferences()
 
 //Anounce sound check status function
@@ -375,9 +375,18 @@
 		earmuffs = FALSE
 		REMOVE_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
 		Toggle_Sounds()
-		earmuffs=  TRUE
+		earmuffs = TRUE
 	if(prevent_vision == TRUE)
 		user.cure_blind("deprivation_helmet_[REF(src)]")
+
+	//some stuff for unequip messages
+	if(src == user.head)
+		if(muzzle == TRUE)
+			to_chat(user,"<font color=purple>Your mouth is free. you breathe out with relief.</font>")
+		if(earmuffs == TRUE)
+			to_chat(user,"<font color=purple>Finally you can hear the world around again.</font>")
+		if(prevent_vision == TRUE)
+			to_chat(user,"<font color=purple>Helmet no longer restricts your vision.</font>")
 
 	//Let's drop sound states
 	ambience_sound_state = null

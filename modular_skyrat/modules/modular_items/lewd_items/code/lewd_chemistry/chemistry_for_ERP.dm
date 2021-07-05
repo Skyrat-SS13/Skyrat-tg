@@ -173,12 +173,6 @@
 				H.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_LOBOTOMY)
 				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
 				REMOVE_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
-
-		if(HAS_TRAIT(M, TRAIT_NYMPHOMANIA))
-			if(prob(30))
-				H.cure_trauma_type(/datum/brain_trauma/special/nymphomania, TRAUMA_RESILIENCE_LOBOTOMY)
-				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
-				REMOVE_TRAIT(M, TRAIT_NYMPHOMANIA, APHRO_TRAIT)
 	..()
 
 ///////////////////////////////////

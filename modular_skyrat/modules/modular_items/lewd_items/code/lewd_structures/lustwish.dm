@@ -8,7 +8,7 @@
 	var/card_used = FALSE
 	var/current_color = "pink"
 	var/static/list/vend_designs
-	product_ads = "Try me!;Kinky!;Lewd, but fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!"
+	product_ads = "Try me!;Kinky!;Lewd and fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!;You might want to buy a protection"
 	vend_reply = "Enjoy!;We glad to satisfly your desires!"
 
 	//STUFF SOLD HERE//
@@ -39,9 +39,13 @@
 					/obj/item/clothing/mask/ballgag = 8,
 					/obj/item/clothing/mask/ballgag_phallic = 8,
 					/obj/item/clothing/head/domina_cap = 5,
+					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
 					/obj/item/clothing/head/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
+					/obj/item/clothing/mask/gas/bdsm_mask = 5,
+					/obj/item/reagent_containers/glass/lewd_filter = 5,
+					/obj/item/clothing/glasses/hypno = 4,
 					/obj/item/clothing/head/kitty = 4,
 					/obj/item/clothing/head/rabbitears = 4,
 
@@ -52,6 +56,7 @@
 					//torso clothing
 					/obj/item/clothing/suit/corset = 8,
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
+					/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
 					/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
 					/obj/item/clothing/under/costume/lewdmaid = 5,
 					/obj/item/clothing/under/costume/maid = 5,
@@ -83,18 +88,15 @@
 					/obj/item/reagent_containers/glass/bottle/penis_enlarger = 6,
 
 					//special
-					/obj/item/clothing/glasses/nice_goggles = 1) //easter egg, don't touch plz)
+					/obj/item/clothing/glasses/nice_goggles = 1, //easter egg, don't touch plz)
 
-	premium = list(	/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
-					/obj/item/clothing/mask/gas/bdsm_mask = 5,
-					/obj/item/reagent_containers/glass/lewd_filter = 5,
-					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
-					/obj/item/storage/box/bdsmbed_kit = 3,
+					//fur niture //haha you got it
+					/obj/item/storage/box/bdsmbed_kit = 5,
 					/obj/item/storage/box/strippole_kit = 3,
-					/obj/item/storage/box/xstand_kit = 3,
+					/obj/item/storage/box/xstand_kit = 4,
 					/obj/item/storage/box/milking_kit = 2)
 
-	contraband = list(/obj/item/clothing/glasses/hypno = 4,
+	contraband = list(
 					/obj/item/electropack/shockcollar = 4,
 					/obj/item/clothing/neck/kink_collar/locked = 4,
 					/obj/item/clothing/neck/mind_collar = 2,
