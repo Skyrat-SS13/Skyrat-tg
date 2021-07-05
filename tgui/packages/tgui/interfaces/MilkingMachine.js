@@ -1,18 +1,20 @@
 import { useBackend } from '../backend';
-import { Box, Button, Section, Stack} from '../components';
+import { Box, Button, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
-var palette;
+let palette;
 
 export const MilkingMachine = (props, context) => {
   const { data } = useBackend(context);
-  const {machine_color} = data;
+  const { machine_color } = data;
 
- colorChange(machine_color);
+  colorChange(machine_color);
 
   return (
     <Window resizable width={570} height={375}>
-      <Window.Content fontSize="14px" backgroundColor={palette.WindowBackgroundColor}>
+      <Window.Content
+        fontSize="14px"
+        backgroundColor={palette.WindowBackgroundColor}>
         <MilkingMachineContent />
       </Window.Content>
     </Window>
@@ -49,27 +51,29 @@ const MilkingMachineContent = (props, context) => {
 
   return (
     <Stack vertical textColor={palette.TextColor}>
-      <Stack.Item >
+      <Stack.Item>
         <Stack>
           <Stack.Item grow textAlign="center">
             {!data.mobName && (
               <Section backgroundColor={palette.SectionBackgroundColor}>
-                  No creature in machine loaded
+                No creature in machine loaded
               </Section>
             )}
             {data.mobName && (
               <Section backgroundColor={palette.SectionBackgroundColor}>
-                  Name:{" "}{mobName}
+                Name: {mobName}
               </Section>
             )}
           </Stack.Item>
           <Stack.Item align="center">
             {mobName && (
-              <Button icon="eject"
+              <Button
+                icon="eject"
                 content="Eject creature"
                 textAlign="center"
                 backgroundColor={palette.ButtonBackGroundColor}
-                onClick={() => act('ejectCreature')} />
+                onClick={() => act('ejectCreature')}
+              />
             )}
             {!mobName && (
               <Button
@@ -77,7 +81,8 @@ const MilkingMachineContent = (props, context) => {
                 content="Eject creature"
                 textAlign="center"
                 backgroundColor={palette.ButtonBackGroundColor}
-                disabled/>
+                disabled
+              />
             )}
           </Stack.Item>
         </Stack>
@@ -88,47 +93,56 @@ const MilkingMachineContent = (props, context) => {
             <Stack vertical>
               <Stack.Item>
                 {cellName && (
-                  <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                  <Section
+                    backgroundColor={palette.SectionBackgroundColor}
+                    textAlign="center">
                     Cell: {cellName}
                   </Section>
                 )}
                 {!cellName && (
-                  <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                  <Section
+                    backgroundColor={palette.SectionBackgroundColor}
+                    textAlign="center">
                     No power source
                   </Section>
                 )}
               </Stack.Item>
               <Stack.Item grow={1}>
-                <Section bold backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                <Section
+                  bold
+                  backgroundColor={palette.SectionBackgroundColor}
+                  textAlign="center">
                   Machine control
                 </Section>
-                </Stack.Item>
+              </Stack.Item>
               <Stack.Item>
                 <Stack>
                   <Stack.Item grow={1}>
                     <Stack vertical>
                       <Stack.Item>
-                      {modeButtonStates("Off", data, palette, context)}
+                        {modeButtonStates('Off', data, palette, context)}
                       </Stack.Item>
                       <Stack.Item>
-                      {modeButtonStates("Low", data, palette, context)}
+                        {modeButtonStates('Low', data, palette, context)}
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
                   <Stack.Item grow={2}>
                     <Stack vertical>
                       <Stack.Item>
-                        <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                        <Section
+                          backgroundColor={palette.SectionBackgroundColor}
+                          textAlign="center">
                           State: {mode}
                         </Section>
                       </Stack.Item>
                       <Stack.Item>
                         <Stack>
                           <Stack.Item grow>
-                          {modeButtonStates("Medium", data, palette, context)}
+                            {modeButtonStates('Medium', data, palette, context)}
                           </Stack.Item>
                           <Stack.Item grow>
-                          {modeButtonStates("Hard", data, palette, context)}
+                            {modeButtonStates('Hard', data, palette, context)}
                           </Stack.Item>
                         </Stack>
                       </Stack.Item>
@@ -137,7 +151,10 @@ const MilkingMachineContent = (props, context) => {
                 </Stack>
               </Stack.Item>
               <Stack.Item grow={1}>
-                <Section bold backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                <Section
+                  bold
+                  backgroundColor={palette.SectionBackgroundColor}
+                  textAlign="center">
                   Organ control
                 </Section>
               </Stack.Item>
@@ -155,8 +172,9 @@ const MilkingMachineContent = (props, context) => {
                               backgroundColor={palette.ControlButtonOff}
                               textColor={palette.ControlButtonOffText}
                               bold
-                              onClick={() => act('unplug')} />
-                            </Box>
+                              onClick={() => act('unplug')}
+                            />
+                          </Box>
                         )}
                         {current_selected_organ === null && (
                           <Box as="div" m={1}>
@@ -166,12 +184,13 @@ const MilkingMachineContent = (props, context) => {
                               width="100%"
                               backgroundColor={palette.ControlButtonOn}
                               textColor={palette.ControlButtonOnText}
-                              bold/>
+                              bold
+                            />
                           </Box>
                         )}
                       </Stack.Item>
                       <Stack.Item textAlign="center">
-                      {organButtonStates("Breasts", data, palette, context)}
+                        {organButtonStates('Breasts', data, palette, context)}
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -179,12 +198,16 @@ const MilkingMachineContent = (props, context) => {
                     <Stack vertical>
                       <Stack.Item>
                         {current_selected_organ === null && (
-                        <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
-                          Organ: none
-                        </Section>
+                          <Section
+                            backgroundColor={palette.SectionBackgroundColor}
+                            textAlign="center">
+                            Organ: none
+                          </Section>
                         )}
                         {current_selected_organ !== null && (
-                          <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                          <Section
+                            backgroundColor={palette.SectionBackgroundColor}
+                            textAlign="center">
                             Organ: {current_selected_organ}
                           </Section>
                         )}
@@ -192,7 +215,8 @@ const MilkingMachineContent = (props, context) => {
                       <Stack.Item>
                         <Stack>
                           <Stack.Item grow>
-                            {current_selected_organ !== "the vagina" && current_vagina !== null && (
+                            {current_selected_organ !== 'the vagina'
+                              && current_vagina !== null && (
                               <Box as="div" m={1}>
                                 <Button
                                   content="Vagina"
@@ -201,35 +225,39 @@ const MilkingMachineContent = (props, context) => {
                                   backgroundColor={palette.ControlButtonOff}
                                   textColor={palette.ControlButtonOffText}
                                   bold
-                                  onClick={() => act('setVagina')} />
+                                  onClick={() => act('setVagina')}
+                                />
                               </Box>
                             )}
-                            {current_selected_organ === "the vagina" && (
+                            {current_selected_organ === 'the vagina' && (
                               <Box as="div" m={1}>
                                 <Button
-                                content="Vagina"
-                                textAlign="center"
-                                width="100%"
-                                backgroundColor={palette.ControlButtonOn}
-                                textColor={palette.ControlButtonOnText}
-                                bold/>
+                                  content="Vagina"
+                                  textAlign="center"
+                                  width="100%"
+                                  backgroundColor={palette.ControlButtonOn}
+                                  textColor={palette.ControlButtonOnText}
+                                  bold
+                                />
                               </Box>
                             )}
                             {current_vagina === null && (
                               <Box as="div" m={1}>
                                 <Button
-                                content="Vagina"
-                                textAlign="center"
-                                width="100%"
-                                backgroundColor={palette.ControlButtonOn}
-                                textColor={palette.ControlButtonOnText}
-                                bold
-                                disabled/>
+                                  content="Vagina"
+                                  textAlign="center"
+                                  width="100%"
+                                  backgroundColor={palette.ControlButtonOn}
+                                  textColor={palette.ControlButtonOnText}
+                                  bold
+                                  disabled
+                                />
                               </Box>
                             )}
                           </Stack.Item>
                           <Stack.Item grow>
-                            {current_selected_organ !== "the testicles" && current_testicles !== null && (
+                            {current_selected_organ !== 'the testicles'
+                              && current_testicles !== null && (
                               <Box as="div" m={1}>
                                 <Button
                                   content="Testicles"
@@ -238,10 +266,11 @@ const MilkingMachineContent = (props, context) => {
                                   backgroundColor={palette.ControlButtonOff}
                                   textColor={palette.ControlButtonOffText}
                                   bold
-                                  onClick={() => act('setTesticles')} />
+                                  onClick={() => act('setTesticles')}
+                                />
                               </Box>
                             )}
-                            {current_selected_organ === "the testicles" && (
+                            {current_selected_organ === 'the testicles' && (
                               <Box as="div" m={1}>
                                 <Button
                                   content="Testicles"
@@ -249,7 +278,8 @@ const MilkingMachineContent = (props, context) => {
                                   width="100%"
                                   backgroundColor={palette.ControlButtonOn}
                                   textColor={palette.ControlButtonOnText}
-                                  bold/>
+                                  bold
+                                />
                               </Box>
                             )}
                             {current_testicles === null && (
@@ -261,7 +291,8 @@ const MilkingMachineContent = (props, context) => {
                                   backgroundColor={palette.ControlButtonOn}
                                   textColor={palette.ControlButtonOnText}
                                   bold
-                                  disabled/>
+                                  disabled
+                                />
                               </Box>
                             )}
                           </Stack.Item>
@@ -278,40 +309,56 @@ const MilkingMachineContent = (props, context) => {
               <Stack>
                 <Stack.Item grow>
                   {cellCurrentCharge !== null && cellMaxCharge !== null && (
-                    <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center" >
-                    Capacity: {Math.round(cellCurrentCharge)} {' / '} {Math.round(cellMaxCharge)}
+                    <Section
+                      backgroundColor={palette.SectionBackgroundColor}
+                      textAlign="center">
+                      Capacity: {Math.round(cellCurrentCharge)} {' / '}{' '}
+                      {Math.round(cellMaxCharge)}
                     </Section>
                   )}
                   {cellCurrentCharge === null && cellMaxCharge === null && (
-                    <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center" >
-                    Capacity: n/a
+                    <Section
+                      backgroundColor={palette.SectionBackgroundColor}
+                      textAlign="center">
+                      Capacity: n/a
                     </Section>
                   )}
                 </Stack.Item>
               </Stack>
               <Stack.Item grow>
                 {beaker !== null && (
-                  <Section bold backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                  <Section
+                    bold
+                    backgroundColor={palette.SectionBackgroundColor}
+                    textAlign="center">
                     Beaker: {BeakerName}
                   </Section>
                 )}
                 {beaker === null && (
-                  <Section bold backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                  <Section
+                    bold
+                    backgroundColor={palette.SectionBackgroundColor}
+                    textAlign="center">
                     Beaker: none
                   </Section>
                 )}
               </Stack.Item>
-                <Stack.Item>
+              <Stack.Item>
                 <Stack>
                   <Stack.Item grow>
                     {beaker !== null && (
-                      <Section backgroundColor={palette.SectionBackgroundColor} textAlign = "center">
-                      Volume: {Math.round(beakerCurrentVolume)} / {Math.round(beakerMaxVolume)}
+                      <Section
+                        backgroundColor={palette.SectionBackgroundColor}
+                        textAlign="center">
+                        Volume: {Math.round(beakerCurrentVolume)} /{' '}
+                        {Math.round(beakerMaxVolume)}
                       </Section>
                     )}
                     {beaker === null && (
-                      <Section backgroundColor={palette.SectionBackgroundColor} textAlign = "center">
-                      Volume: n/a
+                      <Section
+                        backgroundColor={palette.SectionBackgroundColor}
+                        textAlign="center">
+                        Volume: n/a
                       </Section>
                     )}
                   </Stack.Item>
@@ -322,7 +369,8 @@ const MilkingMachineContent = (props, context) => {
                         content="Eject Beaker"
                         textAlign="center"
                         backgroundColor={palette.ButtonBackGroundColor}
-                        onClick={() => act('ejectBeaker')}/>
+                        onClick={() => act('ejectBeaker')}
+                      />
                     )}
                     {beaker === null && (
                       <Button
@@ -330,13 +378,17 @@ const MilkingMachineContent = (props, context) => {
                         content="Eject Beaker"
                         textAlign="center"
                         backgroundColor={palette.ButtonBackGroundColor}
-                        disabled/>
+                        disabled
+                      />
                     )}
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
               <Stack.Item>
-                <Section bold backgroundColor={palette.SectionBackgroundColor} textAlign="center">
+                <Section
+                  bold
+                  backgroundColor={palette.SectionBackgroundColor}
+                  textAlign="center">
                   Tanks status
                 </Section>
               </Stack.Item>
@@ -345,7 +397,7 @@ const MilkingMachineContent = (props, context) => {
                   <Stack.Item>
                     <Stack>
                       <Stack.Item grow basis="1rem">
-                      {current_vessel === "MilkContainer" && (
+                        {current_vessel === 'MilkContainer' && (
                           <Box as="div" m={1}>
                             <Button
                               content="Milk"
@@ -353,10 +405,11 @@ const MilkingMachineContent = (props, context) => {
                               width="100%"
                               backgroundColor={palette.ControlButtonOn}
                               textColor={palette.ControlButtonOnText}
-                              bold/>
+                              bold
+                            />
                           </Box>
                         )}
-                      {current_vessel !== "MilkContainer" && (
+                        {current_vessel !== 'MilkContainer' && (
                           <Box as="div" m={1}>
                             <Button
                               content="Milk"
@@ -365,28 +418,34 @@ const MilkingMachineContent = (props, context) => {
                               backgroundColor={palette.ControlButtonOff}
                               textColor={palette.ControlButtonOffText}
                               bold
-                              onClick={() => act('setMilk')} />
+                              onClick={() => act('setMilk')}
+                            />
                           </Box>
                         )}
                       </Stack.Item>
                       <Stack.Item grow basis="1rem">
-                        <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
-                          {Math.round(milkTankCurrentVolume)} / {Math.round(milkTankMaxVolume)}
+                        <Section
+                          backgroundColor={palette.SectionBackgroundColor}
+                          textAlign="center">
+                          {Math.round(milkTankCurrentVolume)} /{' '}
+                          {Math.round(milkTankMaxVolume)}
                         </Section>
                       </Stack.Item>
                       <Stack.Item align="center">
-                        <Button content="50"
-                                minWidth="30pt"
-                                textAlign="center"
-                                backgroundColor={palette.ButtonBackGroundColor}
-                                onClick={() => act('transfer', {amount: 50,})}/>
+                        <Button
+                          content="50"
+                          minWidth="30pt"
+                          textAlign="center"
+                          backgroundColor={palette.ButtonBackGroundColor}
+                          onClick={() => act('transfer', { amount: 50 })}
+                        />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
                   <Stack.Item>
                     <Stack>
                       <Stack.Item grow basis="1rem">
-                      {current_vessel === "GirlcumContainer" && (
+                        {current_vessel === 'GirlcumContainer' && (
                           <Box as="div" m={1}>
                             <Button
                               content="Girlcum"
@@ -394,10 +453,11 @@ const MilkingMachineContent = (props, context) => {
                               width="100%"
                               backgroundColor={palette.ControlButtonOn}
                               textColor={palette.ControlButtonOnText}
-                              bold/>
+                              bold
+                            />
                           </Box>
                         )}
-                      {current_vessel !== "GirlcumContainer" && (
+                        {current_vessel !== 'GirlcumContainer' && (
                           <Box as="div" m={1}>
                             <Button
                               content="Girlcum"
@@ -406,28 +466,34 @@ const MilkingMachineContent = (props, context) => {
                               backgroundColor={palette.ControlButtonOff}
                               textColor={palette.ControlButtonOffText}
                               bold
-                              onClick={() => act('setGirlcum')} />
+                              onClick={() => act('setGirlcum')}
+                            />
                           </Box>
                         )}
                       </Stack.Item>
                       <Stack.Item grow basis="1rem">
-                        <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
-                          {Math.round(girlcumTankCurrentVolume)} / {Math.round(girlcumTankMaxVolume)}
+                        <Section
+                          backgroundColor={palette.SectionBackgroundColor}
+                          textAlign="center">
+                          {Math.round(girlcumTankCurrentVolume)} /{' '}
+                          {Math.round(girlcumTankMaxVolume)}
                         </Section>
                       </Stack.Item>
                       <Stack.Item align="center">
-                          <Button content="100"
-                                  minWidth="30pt"
-                                  textAlign="center"
-                                  backgroundColor={palette.ButtonBackGroundColor}
-                                  onClick={() => act('transfer', {amount: 100,})}/>
+                        <Button
+                          content="100"
+                          minWidth="30pt"
+                          textAlign="center"
+                          backgroundColor={palette.ButtonBackGroundColor}
+                          onClick={() => act('transfer', { amount: 100 })}
+                        />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
-                    <Stack.Item >
-                      <Stack>
-                        <Stack.Item grow basis="1rem">
-                        {current_vessel === "SemenContainer" && (
+                  <Stack.Item>
+                    <Stack>
+                      <Stack.Item grow basis="1rem">
+                        {current_vessel === 'SemenContainer' && (
                           <Box as="div" m={1}>
                             <Button
                               content="Semen"
@@ -435,10 +501,11 @@ const MilkingMachineContent = (props, context) => {
                               width="100%"
                               backgroundColor={palette.ControlButtonOn}
                               textColor={palette.ControlButtonOnText}
-                              bold/>
+                              bold
+                            />
                           </Box>
                         )}
-                      {current_vessel !== "SemenContainer" && (
+                        {current_vessel !== 'SemenContainer' && (
                           <Box as="div" m={1}>
                             <Button
                               content="Semen"
@@ -447,21 +514,27 @@ const MilkingMachineContent = (props, context) => {
                               backgroundColor={palette.ControlButtonOff}
                               textColor={palette.ControlButtonOffText}
                               bold
-                              onClick={() => act('setSemen')} />
+                              onClick={() => act('setSemen')}
+                            />
                           </Box>
                         )}
-                        </Stack.Item>
+                      </Stack.Item>
                       <Stack.Item grow basis="1rem">
-                        <Section backgroundColor={palette.SectionBackgroundColor} textAlign="center">
-                            {Math.round(semenTankCurrentVolume)} / {Math.round(semenTankMaxVolume)}
+                        <Section
+                          backgroundColor={palette.SectionBackgroundColor}
+                          textAlign="center">
+                          {Math.round(semenTankCurrentVolume)} /{' '}
+                          {Math.round(semenTankMaxVolume)}
                         </Section>
                       </Stack.Item>
                       <Stack.Item align="center">
-                        <Button content="All"
-                                minWidth="30pt"
-                                textAlign="center"
-                                backgroundColor={palette.ButtonBackGroundColor}
-                                onClick={() => act('transfer', {amount: 1000,})}/>
+                        <Button
+                          content="All"
+                          minWidth="30pt"
+                          textAlign="center"
+                          backgroundColor={palette.ButtonBackGroundColor}
+                          onClick={() => act('transfer', { amount: 1000 })}
+                        />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -480,8 +553,13 @@ const modeButtonStates = (Name, data, palette, context) => {
   let ModeNameCapital = capitalize(data.mode);
   let action = 'set' + Name + 'Mode';
 
-  if(data.mobName !== null && ModeNameCapital !== Name && data.cellName !== null && data.current_selected_organ !== null){
-    return(
+  if (
+    data.mobName !== null
+    && ModeNameCapital !== Name
+    && data.cellName !== null
+    && data.current_selected_organ !== null
+  ) {
+    return (
       <Box as="div" m={1}>
         <Button
           content={Name}
@@ -494,24 +572,12 @@ const modeButtonStates = (Name, data, palette, context) => {
         />
       </Box>
     );
-  }
-
-  else if(data.mobName !== null && ModeNameCapital === Name && (data.cellName !== null || data.current_selected_organ !== null)) {
-    return(
-      <Box as="div" m={1}>
-        <Button
-          content={Name}
-          textAlign="center"
-          width="100%"
-          backgroundColor={palette.ControlButtonOn}
-          textColor={palette.ControlButtonOnText}
-          bold/>
-      </Box>
-    );
-  }
-
-  else if(ModeNameCapital !== Name && (data.current_selected_organ === null || data.cellName === null) === true) {
-    return(
+  } else if (
+    data.mobName !== null
+    && ModeNameCapital === Name
+    && (data.cellName !== null || data.current_selected_organ !== null)
+  ) {
+    return (
       <Box as="div" m={1}>
         <Button
           content={Name}
@@ -520,13 +586,14 @@ const modeButtonStates = (Name, data, palette, context) => {
           backgroundColor={palette.ControlButtonOn}
           textColor={palette.ControlButtonOnText}
           bold
-          disabled/>
+        />
       </Box>
     );
-  }
-
-  else if(ModeNameCapital === Name && (data.cellName === null || data.current_selected_organ === null)) {
-    return(
+  } else if (
+    ModeNameCapital !== Name
+    && (data.current_selected_organ === null || data.cellName === null) === true
+  ) {
+    return (
       <Box as="div" m={1}>
         <Button
           content={Name}
@@ -534,22 +601,45 @@ const modeButtonStates = (Name, data, palette, context) => {
           width="100%"
           backgroundColor={palette.ControlButtonOn}
           textColor={palette.ControlButtonOnText}
-          bold/>
+          bold
+          disabled
+        />
+      </Box>
+    );
+  } else if (
+    ModeNameCapital === Name
+    && (data.cellName === null || data.current_selected_organ === null)
+  ) {
+    return (
+      <Box as="div" m={1}>
+        <Button
+          content={Name}
+          textAlign="center"
+          width="100%"
+          backgroundColor={palette.ControlButtonOn}
+          textColor={palette.ControlButtonOnText}
+          bold
+        />
       </Box>
     );
   }
-}
+};
 
 const organButtonStates = (Name, data, palette, context) => {
   const { act } = useBackend(context);
-  let OrganNameCapital
-  if(data.current_selected_organ_name !== null){
+  let OrganNameCapital;
+  if (data.current_selected_organ_name !== null) {
     OrganNameCapital = capitalize(data.current_selected_organ_name);
+  } else {
+    OrganNameCapital = '';
   }
-  else{OrganNameCapital =''}
   let action = 'set' + Name;
 
-  if (OrganNameCapital !== Name && data.current_breasts !== null && data.mobCanLactate == true) {
+  if (
+    OrganNameCapital !== Name
+    && data.current_breasts !== null
+    && data.mobCanLactate == true
+  ) {
     return (
       <Box as="div" m={1}>
         <Button
@@ -559,12 +649,11 @@ const organButtonStates = (Name, data, palette, context) => {
           backgroundColor={palette.ControlButtonOff}
           textColor={palette.ControlButtonOffText}
           bold
-          onClick={() => act(action)} />
+          onClick={() => act(action)}
+        />
       </Box>
     );
-  }
-
-  else if (OrganNameCapital === Name) {
+  } else if (OrganNameCapital === Name) {
     return (
       <Box as="div" m={1}>
         <Button
@@ -573,13 +662,15 @@ const organButtonStates = (Name, data, palette, context) => {
           width="100%"
           backgroundColor={palette.ControlButtonOn}
           textColor={palette.ControlButtonOnText}
-          bold/>
+          bold
+        />
       </Box>
     );
-  }
-
-  else if (data.current_selected_organ_name === null || (OrganNameCapital !== Name && data.mobCanLactate == false)){
-    return(
+  } else if (
+    data.current_selected_organ_name === null
+    || (OrganNameCapital !== Name && data.mobCanLactate == false)
+  ) {
+    return (
       <Box as="div" m={1}>
         <Button
           content={Name}
@@ -588,43 +679,42 @@ const organButtonStates = (Name, data, palette, context) => {
           backgroundColor={palette.ControlButtonOn}
           textColor={palette.ControlButtonOnText}
           bold
-          disabled/>
+          disabled
+        />
       </Box>
     );
   }
-}
+};
 
 const capitalize = (g) => {
-  if (typeof g !== 'string') return ''
-  return g.charAt(0).toUpperCase() + g.slice(1)
-}
+  if (typeof g !== 'string') return '';
+  return g.charAt(0).toUpperCase() + g.slice(1);
+};
 
 const colorChange = (g) => {
-  if (g === "pink") {
-    palette  = {
-      WindowBackgroundColor : "#403840",
-      SectionBackgroundColor : "#1f071f",
-      ButtonBackGroundColor : "#6067C4",
-      TextColor : "#f5e8fa",
-      ControlButtonOffText : "#00b050",
-      ControlButtonOff : "#003020",
-      ControlButtonOnText : "#ffffff",
-      ControlButtonOn : "#00b050",
+  if (g === 'pink') {
+    palette = {
+      WindowBackgroundColor: '#403840',
+      SectionBackgroundColor: '#1f071f',
+      ButtonBackGroundColor: '#6067C4',
+      TextColor: '#f5e8fa',
+      ControlButtonOffText: '#00b050',
+      ControlButtonOff: '#003020',
+      ControlButtonOnText: '#ffffff',
+      ControlButtonOn: '#00b050',
     };
-    return
-  }
-  else if (g === "teal"){
-    palette  = {
-      WindowBackgroundColor : "#002b34",
-      SectionBackgroundColor : "#000b14",
-      ButtonBackGroundColor : "#6067C4",
-      TextColor : "#cef7ff",
-      ControlButtonOffText : "#0096b3",
-      ControlButtonOff : "#00404d",
-      ControlButtonOnText : "#e2faff",
-      ControlButtonOn : "#00abcd",
+    return;
+  } else if (g === 'teal') {
+    palette = {
+      WindowBackgroundColor: '#002b34',
+      SectionBackgroundColor: '#000b14',
+      ButtonBackGroundColor: '#6067C4',
+      TextColor: '#cef7ff',
+      ControlButtonOffText: '#0096b3',
+      ControlButtonOff: '#00404d',
+      ControlButtonOnText: '#e2faff',
+      ControlButtonOn: '#00abcd',
     };
-    return
+    return;
   }
-}
-
+};
