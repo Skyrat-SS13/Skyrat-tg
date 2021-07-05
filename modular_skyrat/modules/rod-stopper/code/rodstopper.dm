@@ -26,7 +26,7 @@
 		we_are_active = FALSE
 		audible_message(span_notice("Automated Singularity Systems: POWER FAILURE"))
 		name = initial(name)
-		pdate_appearance(UPDATE_OVERLAYS)
+		update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/rodstopper/attackby(obj/item/weapon, mob/user, params)
 	if(!isidcard(weapon) || !powered())
