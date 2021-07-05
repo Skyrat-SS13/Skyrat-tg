@@ -38,8 +38,3 @@
 	name = "Chevvy Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 /*----- End of Black Market Shuttle Code -----*/
-
-/datum/map_template/shuttle/prison_transport
-	port_id = "prison_transport"
-	suffix = "skyrat"
-	name = "Prison Transporter NSS-74"
