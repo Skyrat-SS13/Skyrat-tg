@@ -11,6 +11,7 @@
 	force = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	cooldown = 1.5 SECONDS
+	stamina_damage = 25 // its normally 55, this is less than half
 
 /obj/item/melee/baton/peacekeeper
 	name = "stunstick"

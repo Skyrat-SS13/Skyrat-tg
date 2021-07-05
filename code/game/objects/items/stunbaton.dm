@@ -237,7 +237,7 @@
 	L.Jitter(20)
 	//L.set_confusion(max(confusion_amt, L.get_confusion())) //SKYRAT EDIT REMOVAL
 	L.stuttering = max(8, L.stuttering)
-	//L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST) - SKYRAT EDIT REMOVAL
+	L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST)
 	//SKYRAT EDIT CHANGE BEGIN
 	if(harmy) //Less extra stamina damage for harm batons
 		L.StaminaKnockdown(5)
