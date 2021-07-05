@@ -77,8 +77,6 @@ GLOBAL_LIST_INIT(food, list(
 	var/inquisitive_ghost = 1
 	var/allow_midround_antag = 1
 	var/preferred_map = null
-	var/pda_style = MONO
-	var/pda_color = "#808000"
 
 	//aphrodisiac preference
 	var/aphrodisiacs_pref = 0
@@ -116,6 +114,10 @@ GLOBAL_LIST_INIT(food, list(
 	var/list/fooddislikes = list()
 	var/maxlikes = 4
 	var/maxdislikes = 6
+
+	var/pda_style = MONO
+	var/pda_color = "#808000"
+	var/pda_ringer = "beep" //text the PDA emits when messaged
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -447,7 +449,12 @@ GLOBAL_LIST_INIT(food, list(
 
 					dat += "<b>Custom Job Preferences:</b><BR>"
 					dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
-					dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR></td>"
+					dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR>"
+
+					dat += "<br>"
+					dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
+					dat += "<b>PDA Style:</b> <a href='?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
+					dat += "<b>PDA Ringer:</b> <a href='?_src_=prefs;task=input;preference=pda_ringer'>[pda_ringer]</a><br></td>"
 
 					dat += "</tr></table>"
 
@@ -562,8 +569,8 @@ GLOBAL_LIST_INIT(food, list(
 
 						dat += "<h3>Hairstyle</h3>"
 
+						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a><br>"
 						dat += "<a href='?_src_=prefs;preference=hairstyle;task=input'>[hairstyle]</a>"
-						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
 						dat += "<br> <a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
@@ -571,8 +578,8 @@ GLOBAL_LIST_INIT(food, list(
 
 						dat += "<BR><h3>Facial Hairstyle</h3>"
 
+						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a><br>"
 						dat += "<a href='?_src_=prefs;preference=facial_hairstyle;task=input'>[facial_hairstyle]</a>"
-						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIRSTYLE]'>[(randomise[RANDOM_FACIAL_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
 						dat += "<br> <a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
@@ -1036,9 +1043,6 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<br>"
 			dat += "<b>Action Buttons:</b> <a href='?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
 			dat += "<b>Hotkey mode:</b> <a href='?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys" : "Default"]</a><br>"
-			dat += "<br>"
-			dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
-			dat += "<b>PDA Style:</b> <a href='?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
 			dat += "<br>"
 			dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "All Messages":"No Messages"]</a><br>"
@@ -2234,6 +2238,7 @@ GLOBAL_LIST_INIT(food, list(
 					facial_hairstyle = previous_list_item(facial_hairstyle, GLOB.facial_hairstyles_list)
 
 				if("underwear")
+					needs_update = TRUE
 					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_list
 					if(new_underwear)
 						underwear = new_underwear
@@ -2597,6 +2602,10 @@ GLOBAL_LIST_INIT(food, list(
 					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
 					if(pickedPDAStyle)
 						pda_style = pickedPDAStyle
+				if("pda_ringer")
+					var/pickedPDAMessage = stripped_input(user, "Choose your PDA ringer message. (Max 20 chars)", "Character Preference", pda_ringer, 20)
+					if(pickedPDAMessage)
+						pda_ringer = pickedPDAMessage
 				if("pda_color")
 					var/pickedPDAColor = input(user, "Choose your PDA Interface color.", "Character Preference", pda_color) as color|null
 					if(pickedPDAColor)
