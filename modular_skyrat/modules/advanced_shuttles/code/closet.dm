@@ -79,3 +79,16 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
 	icon_state = "emergency_wall"
 
+/obj/structure/closet/secure_closet/wall
+	wall_mounted = TRUE
+	anchored = TRUE
+	density = TRUE
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
+	icon_state = "closet_wall"
+
+/obj/structure/closet/secure_closet/personal/wall
+	wall_mounted = TRUE
+	anchored = TRUE
+	density = TRUE
+	icon = 'modular_skyrat/modules/advanced_shuttles/icons/closet.dmi'
+	icon_state = "closet_wall"
