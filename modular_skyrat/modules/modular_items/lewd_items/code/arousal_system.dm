@@ -91,7 +91,7 @@
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 	return
 
-/datum/reagent/drug/dopamine/overdose_process(mob/living/M)
+/datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/M)
 	M.adjustArousal(0.5)
 	M.adjustPleasure(0.3)
 	M.adjustPain(-0.5)
@@ -134,7 +134,7 @@
 	. = ..()
 	internal_fluids = new /datum/reagents(10)
 
-/mob/living
+/mob/living/carbon/human
 	var/arousal = 0
 	var/pleasure = 0
 	var/pain = 0
@@ -161,7 +161,7 @@
 	set category = "IC"
 	climax(TRUE)
 
-/mob/living/proc/set_masochism(status) //TRUE or FALSE
+/mob/living/carbon/human/proc/set_masochism(status) //TRUE or FALSE
 	if(status == TRUE)
 		masochism = status
 		pain_limit = 80
@@ -169,13 +169,13 @@
 		masochism = status
 		pain_limit = 20
 
-/mob/living/proc/set_nymphomania(status) //TRUE or FALSE
+/mob/living/carbon/human/proc/set_nymphomania(status) //TRUE or FALSE
 	if(status == TRUE)
 		nymphomania = TRUE
 	if(status == FALSE)
 		nymphomania = FALSE
 
-/mob/living/proc/set_neverboner(status) //TRUE or FALSE
+/mob/living/carbon/human/proc/set_neverboner(status) //TRUE or FALSE
 	if(status == TRUE)
 		neverboner = TRUE
 	if(status == FALSE)
@@ -200,8 +200,8 @@
 
 		var/interval = 5
 		if(balls)
-			if(owner.arousal >= AROUS_SYS_LITTLE)
-				var/regen = (owner.arousal/100) * (balls.internal_fluids.maximum_volume/235) * interval
+			if(H.arousal >= AROUS_SYS_LITTLE)
+				var/regen = (H.arousal/100) * (balls.internal_fluids.maximum_volume/235) * interval
 				balls.internal_fluids.add_reagent(/datum/reagent/consumable/cum, regen)
 
 		if(breasts)
@@ -214,8 +214,8 @@
 					regen = regen
 
 		if(vagina)
-			if(owner.arousal >= AROUS_SYS_LITTLE)
-				var/regen = (owner.arousal/100) * (vagina.internal_fluids.maximum_volume/250) * interval
+			if(H.arousal >= AROUS_SYS_LITTLE)
+				var/regen = (H.arousal/100) * (vagina.internal_fluids.maximum_volume/250) * interval
 				vagina.internal_fluids.add_reagent(/datum/reagent/consumable/girlcum, regen)
 				if(vagina.internal_fluids.holder_full() && regen >= 0.15)
 					regen = regen
@@ -225,10 +225,10 @@
 /////////////
 ///AROUSAL///
 /////////////
-/mob/living/proc/get_arousal()
+/mob/living/carbon/human/proc/get_arousal()
 	return arousal
 
-/mob/living/proc/adjustArousal(arous = 0)
+/mob/living/carbon/human/proc/adjustArousal(arous = 0)
 	if(stat != DEAD && client?.prefs.erp_pref == "Yes")
 		arousal += arous
 
@@ -264,46 +264,47 @@
 	alert_type = null
 
 /datum/status_effect/aroused/tick()
+	var/mob/living/carbon/human/H = owner
 	var/temp_arousal = -0.1
 	var/temp_pleasure = -0.5
 	var/temp_pain = -0.5
-	if(owner.stat != DEAD)
+	if(H.stat != DEAD)
 
-		var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
+		var/obj/item/organ/genital/testicles/balls = H.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(balls)
 			if(balls.internal_fluids.holder_full())
 				temp_arousal += 0.08
 
-		if(owner.masochism)
+		if(H.masochism)
 			temp_pain -= 0.5
-		if(owner.nymphomania)
+		if(H.nymphomania)
 			temp_pleasure += 0.25
 			temp_arousal += 0.05
-		if(owner.neverboner)
+		if(H.neverboner)
 			temp_pleasure -= 50
 			temp_arousal -= 50
 
-		if(owner.pain > owner.pain_limit)
+		if(H.pain > H.pain_limit)
 			temp_arousal -= 0.1
-		if(owner.arousal >= AROUS_SYS_STRONG)
+		if(H.arousal >= AROUS_SYS_STRONG)
 			if(prob(3))
-				owner.emote(pick("moan","blush"))
+				H.emote(pick("moan","blush"))
 			temp_pleasure += 0.1
 			//moan
-		if(owner.pleasure >= PLEAS_SYS_EDGE)
+		if(H.pleasure >= PLEAS_SYS_EDGE)
 			if(prob(3))
-				owner.emote(pick("moan","twitch_s"))
+				H.emote(pick("moan","twitch_s"))
 			//moan x2
 
-	owner.adjustArousal(temp_arousal)
-	owner.adjustPleasure(temp_pleasure)
-	owner.adjustPain(temp_pain)
+	H.adjustArousal(temp_arousal)
+	H.adjustPleasure(temp_pleasure)
+	H.adjustPain(temp_pain)
 
 ////Pain////
-/mob/living/proc/get_pain()
+/mob/living/carbon/human/proc/get_pain()
 	return pain
 
-/mob/living/proc/adjustPain(pn = 0)
+/mob/living/carbon/human/proc/adjustPain(pn = 0)
 	if(stat != DEAD && client?.prefs.erp_pref == "Yes")
 		if(pain > pain_limit || pn > pain_limit / 10) // pain system
 			if(masochism == TRUE)
@@ -327,10 +328,10 @@
 	pain = min(max(pain,0),100)
 
 ////Pleasure////
-/mob/living/proc/get_pleasure()
+/mob/living/carbon/human/proc/get_pleasure()
 	return pleasure
 
-/mob/living/proc/adjustPleasure(pleas = 0)
+/mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
 	if(stat != DEAD && client?.prefs.erp_pref == "Yes")
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
@@ -371,7 +372,7 @@
 	mood_change = -6
 	timeout = 10 MINUTES
 
-/mob/living/proc/climax(manual = TRUE)
+/mob/living/carbon/human/proc/climax(manual = TRUE)
 	var/obj/item/organ/genital/penis = getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/vagina = getorganslot(ORGAN_SLOT_VAGINA)
 	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs.erp_pref == "Yes")
@@ -503,8 +504,8 @@
 
 		owner.reagents.add_reagent(/datum/reagent/drug/dopamine, 0.3)
 		owner.adjustStaminaLoss(temp_stamina)
-		owner.adjustArousal(temp_arousal)
-		owner.adjustPleasure(temp_pleasure)
+		H.adjustArousal(temp_arousal)
+		H.adjustPleasure(temp_pleasure)
 
 /datum/status_effect/climax
 	id = "climax"
@@ -521,8 +522,8 @@
 
 		owner.reagents.add_reagent(/datum/reagent/drug/dopamine, 0.5)
 		owner.adjustStaminaLoss(temp_stamina)
-		owner.adjustArousal(temp_arousal)
-		owner.adjustPleasure(temp_pleasure)
+		H.adjustArousal(temp_arousal)
+		H.adjustPleasure(temp_pleasure)
 
 /datum/status_effect/climax/on_apply(obj/target)
 	var/mob/living/carbon/human/H = owner
@@ -596,15 +597,15 @@
 /datum/status_effect/subspace/on_apply()
 	. = ..()
 	var/mob/living/carbon/human/M = owner
-	if(owner.masochism == FALSE)
-		owner.set_masochism(TRUE)
+	if(M.masochism == FALSE)
+		M.set_masochism(TRUE)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
 
 /datum/status_effect/subspace/on_remove()
 	. = ..()
 	var/mob/living/carbon/human/M = owner
-	if(owner.masochism == TRUE && !HAS_TRAIT(owner, TRAIT_MASOCHISM))
-		owner.set_masochism(FALSE)
+	if(M.masochism == TRUE && !HAS_TRAIT(owner, TRAIT_MASOCHISM))
+		M.set_masochism(FALSE)
 	SEND_SIGNAL(M, COMSIG_CLEAR_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
 
 /datum/mood_event/subspace

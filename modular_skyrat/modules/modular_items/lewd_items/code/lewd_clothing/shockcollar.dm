@@ -34,7 +34,7 @@
 		return
 
 	if(isliving(loc) && on) //the "on" arg is currently useless
-		var/mob/living/L = loc
+		var/mob/living/carbon/human/L = loc
 		if(!L.get_item_by_slot(ITEM_SLOT_NECK)) //**properly** stops pocket shockers
 			return
 		if(shock_cooldown == TRUE)

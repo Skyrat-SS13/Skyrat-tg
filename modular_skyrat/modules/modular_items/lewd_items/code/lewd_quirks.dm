@@ -61,10 +61,12 @@
 	var/stress = 0
 
 /datum/brain_trauma/special/nymphomania/on_gain()
-	owner.set_nymphomania(TRUE)
+	var/mob/living/carbon/human/H = owner
+	H.set_nymphomania(TRUE)
 
 /datum/brain_trauma/special/nymphomania/on_lose()
-	owner.set_nymphomania(FALSE)
+	var/mob/living/carbon/human/H = owner
+	H.set_nymphomania(FALSE)
 
 /datum/brain_trauma/special/nymphomania/on_life(delta_time, times_fired)
 	if(owner.stat != CONSCIOUS)
@@ -209,6 +211,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	REMOVE_TRAIT(owner,TRAIT_SOBSESSED,APHRO_TRAIT)
 
 /datum/brain_trauma/special/sexual_obsession/on_life(delta_time, times_fired)
+	var/mob/living/carbon/human/H = owner
 	if(satisfaction <= 0)
 		if(stress <= 100)
 			stress +=1
@@ -277,7 +280,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	else
 		viewing = FALSE
 	if(viewing)
-		owner.adjustArousal(3) //Nymph looking at their target and get aroused. Everything logical.
+		H.adjustArousal(3) //Nymph looking at their target and get aroused. Everything logical.
 
 /datum/brain_trauma/special/sexual_obsession/proc/stare(datum/source, mob/living/examining_mob, triggering_examiner)
 	SIGNAL_HANDLER
@@ -327,11 +330,12 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	var/stress = 0
 
 /datum/brain_trauma/special/bimbo/on_life()
+	var/mob/living/carbon/human/H = owner
 	if(satisfaction > 0.1)
 		satisfaction -=0.1
-	owner.adjustArousal(10)
-	if(owner.pleasure < 70)
-		owner.adjustPleasure(5)
+	H.adjustArousal(10)
+	if(H.pleasure < 70)
+		H.adjustPleasure(5)
 	if(satisfaction <= 0.1)
 		if(stress <= 100)
 			stress +=1
@@ -389,18 +393,20 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 		speech_args[SPEECH_MESSAGE] = message
 
 /datum/brain_trauma/special/bimbo/on_gain()
+	var/mob/living/carbon/human/H = owner
 	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	ADD_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
 	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
-	owner.set_masochism(TRUE)
-	owner.set_nymphomania(TRUE)
+	H.set_masochism(TRUE)
+	H.set_nymphomania(TRUE)
 
 /datum/brain_trauma/special/bimbo/on_lose()
+	var/mob/living/carbon/human/H = owner
 	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	REMOVE_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
-	owner.set_masochism(FALSE)
-	owner.set_nymphomania(FALSE)
+	H.set_masochism(FALSE)
+	H.set_nymphomania(FALSE)
 
 //Mood boost
 /datum/mood_event/bimbo
@@ -444,10 +450,12 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
 /datum/brain_trauma/special/neverboner/on_gain()
-	owner.set_neverboner(TRUE)
+	var/mob/living/carbon/human/H = owner
+	H.set_neverboner(TRUE)
 
 /datum/brain_trauma/special/neverboner/on_lose()
-	owner.set_neverboner(FALSE)
+	var/mob/living/carbon/human/H = owner
+	H.set_neverboner(FALSE)
 
 ////////////
 ///SADISM///
@@ -485,7 +493,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 /datum/brain_trauma/special/sadism/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/H = owner
 	if(someone_suffering() && H.client?.prefs.erp_pref == "Yes")
-		owner.adjustArousal(2)
+		H.adjustArousal(2)
 		SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
 	else
 		SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)

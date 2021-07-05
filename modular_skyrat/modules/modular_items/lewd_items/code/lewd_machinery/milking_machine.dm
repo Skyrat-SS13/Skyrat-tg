@@ -264,7 +264,7 @@
 	update_all_visuals()
 	return
 
-/obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/M, mob/user, check_loc = TRUE)
+/obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/M, mob/user, check_loc = TRUE)
 
 	if(M)
 		if(M == user)
@@ -633,7 +633,7 @@
 		P.current_color = "teal"
 		P.update_icon_state()
 		P.update_icon()
-		
+
 	qdel(src)
 	return TRUE
 

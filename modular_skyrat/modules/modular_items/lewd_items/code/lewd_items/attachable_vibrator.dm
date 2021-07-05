@@ -123,7 +123,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/eggvib/process(delta_time)
-	var/mob/living/U = loc
+	var/mob/living/carbon/human/U = loc
 	if(toy_on == TRUE)
 		if(vibration_mode == "low")
 			U.adjustArousal(0.5 * delta_time)
@@ -408,7 +408,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/signalvib/process(delta_time)
-	var/mob/living/U = loc
+	var/mob/living/carbon/human/U = loc
 	if(toy_on == TRUE)
 		if(vibration_mode == "low")
 			U.adjustArousal(0.5 * delta_time)

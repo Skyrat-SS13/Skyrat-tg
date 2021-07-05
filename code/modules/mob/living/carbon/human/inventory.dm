@@ -145,11 +145,13 @@
 
 			if(I.flags_inv & HIDEJUMPSUIT)
 				update_inv_w_uniform()
+			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
 				update_inv_vagina()
 				update_inv_penis()
 				update_inv_nipples()
+			//SKYRAT EDIT ADDITION END
 			if(wear_suit.breakouttime) //when equipping a straightjacket
 				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 				stop_pulling() //can't pull if restrained

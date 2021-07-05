@@ -11,7 +11,7 @@
 	color = "#FFADFF"//PINK, rgb(255, 173, 255)
 	//can_synth = FALSE
 
-/datum/reagent/drug/crocin/on_mob_life(mob/living/M)
+/datum/reagent/drug/crocin/on_mob_life(mob/living/carbon/human/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if((prob(min(current_cycle/2,5))))
 			M.emote(pick("moan","blush"))
@@ -37,7 +37,7 @@
 	color = "#FF2BFF"//dark pink
 	overdose_threshold = 25 //Heavy consequences. Supposed to be big value.
 
-/datum/reagent/drug/hexacrocin/on_mob_life(mob/living/M)
+/datum/reagent/drug/hexacrocin/on_mob_life(mob/living/carbon/human/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(prob(5))
 			if(prob(current_cycle))
@@ -62,7 +62,7 @@
 			M.update_body()
 	..()
 
-/datum/reagent/drug/hexacrocin/overdose_process(mob/living/M)
+/datum/reagent/drug/hexacrocin/overdose_process(mob/living/carbon/human/M)
 	var/mob/living/carbon/human/H = M
 	if(M.client && (M.client.prefs.skyrat_toggles & BIMBO_PREF))
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
@@ -85,22 +85,22 @@
 	overdosed = TRUE
 	trippy = TRUE
 
-/datum/reagent/drug/dopamine/on_mob_add(mob/living/M)
+/datum/reagent/drug/dopamine/on_mob_add(mob/living/carbon/human/M)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
-/datum/reagent/drug/dopamine/on_mob_life(mob/living/M)
+/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/human/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		M.set_drugginess(5)
 		if(prob(7))
 			M.emote(pick("twitch","drool","moan","giggle","shaking"))
 	..()
 
-/datum/reagent/drug/dopamine/overdose_start(mob/living/M)
+/datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
 	to_chat(M, "<font color=purple>You feel so happy!</font>")
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 
-/datum/reagent/drug/dopamine/overdose_process(mob/living/M)
+/datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/M)
 	if(M.hallucination < volume && prob(20))
 		M.hallucination += 5
 		M.adjustArousal(0.5)
@@ -125,7 +125,7 @@
 	color = "#D9D9D9"//rgb(157, 157, 157)
 	reagent_state = SOLID
 
-/datum/reagent/drug/camphor/on_mob_life(mob/living/M)
+/datum/reagent/drug/camphor/on_mob_life(mob/living/carbon/human/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
@@ -145,7 +145,7 @@
 	reagent_state = SOLID
 	overdose_threshold = 20
 
-/datum/reagent/drug/pentacamphor/on_mob_life(mob/living/M)
+/datum/reagent/drug/pentacamphor/on_mob_life(mob/living/carbon/human/M)
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
@@ -160,7 +160,7 @@
 			M.reagents.remove_reagent(/datum/reagent/drug/hexacrocin, 20)
 	..()
 
-/datum/reagent/drug/pentacamphor/overdose_process(mob/living/M)
+/datum/reagent/drug/pentacamphor/overdose_process(mob/living/carbon/human/M)
 	var/mob/living/carbon/human/H = M
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(!HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_NEVERBONER))

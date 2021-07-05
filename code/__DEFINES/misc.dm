@@ -21,10 +21,12 @@
 #define FRONT_MUTATIONS_LAYER 29 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
 #define DAMAGE_LAYER 28 //damage indicators (cuts and burns)
 #define UNIFORM_LAYER 27
+//SKYRAT EDIT ADDITION BEGIN
 #define ANUS_LAYER 26
 #define VAGINA_LAYER 25
 #define PENIS_LAYER 24
 #define NIPPLES_LAYER 23
+//SKYRAT EDIT ADDITION END
 #define BANDAGE_LAYER 22 //Overlays related to wounds, bandages and splints too //SKYRAT EDIT ADDITION - MEDICAL
 #define ID_LAYER 21
 #define ID_CARD_LAYER 20
@@ -47,7 +49,7 @@
 #define BODY_FRONT_LAYER 3
 #define HALO_LAYER 2 //blood cult ascended halo, because there's currently no better solution for adding/removing
 #define FIRE_LAYER 1 //If you're on fire
-#define TOTAL_LAYERS 34	//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; //SKYRAT EDIT CHANGE - 30 from 29. Added BANDAGE_LAYER //Lamella edit change. 34 from 30. Added layers for toys. Yes, we needed special layers for that, sry.
+#define TOTAL_LAYERS 34	//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; //SKYRAT EDIT CHANGE - 30 from 29. Added BANDAGE_LAYER //SKYRAT EDIT CHANGE. 34 from 30. Added layers for ERP items.
 
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
