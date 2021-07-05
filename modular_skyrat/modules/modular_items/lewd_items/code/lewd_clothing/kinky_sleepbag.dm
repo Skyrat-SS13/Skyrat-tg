@@ -82,7 +82,7 @@
 				update_icon()
 				update_icon_state()
 			else
-				to_chat(user, "<span class='notice'>You can't inflate bag while it's folded")
+				to_chat(user, "<span class='notice'>You can't fold bag while it's infalted")
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/check_menu(mob/living/user)
 	if(!istype(user))
@@ -106,7 +106,6 @@
 	inhand_icon_state = "[initial(icon_state)]_[bag_color]_[bag_state]_[bag_fold? "folded" : "unfolded"]"
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/equipped(mob/user, slot)
-	. = ..()
 	var/mob/living/carbon/human/H = user
 	if(ishuman(user) && slot == ITEM_SLOT_OCLOTHING)
 		ADD_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
@@ -126,6 +125,7 @@
 			H.cut_overlay(H.overlays_standing[HAIR_LAYER])
 		if(bag_state == "deflated")
 			to_chat(H,"<font color=purple>You realize that moving now is much harder. You are fully restrainted, all struggles are useless.</font>")
+	. = ..()
 
 //to inflate/deflate that thing
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/attack_self(mob/user, obj/item/I)
