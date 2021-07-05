@@ -548,6 +548,7 @@
 	if(istype(W, /obj/item/lightreplacer))
 		var/obj/item/lightreplacer/LR = W
 		LR.ReplaceLight(src, user)
+		return //SKYRAT EDIT ADDITION - Fix Light Replacer
 
 	//SKYRAT EDIT ADDITION
 	if(istype(W, /obj/item/multitool) && constant_flickering)
@@ -555,6 +556,8 @@
 		if(do_after(user, 2 SECONDS, src))
 			stop_flickering()
 			to_chat(user, span_notice("You repair the ballast of [src]!"))
+		return
+
 	//SKYRAT EDTI END
 
 	// attempt to insert light

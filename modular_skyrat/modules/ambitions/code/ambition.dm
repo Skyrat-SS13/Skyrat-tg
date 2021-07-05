@@ -25,6 +25,8 @@
 	var/last_requested_change
 	///Callback for auto approval
 	var/auto_approve_timerid
+	///Have we already honked for auto approval?
+	var/auto_approve_honked
 
 /datum/ambitions/New(datum/mind/M)
 	my_mind = M
@@ -324,11 +326,13 @@
 				log_action("--Requested an admin review--", FALSE)
 				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
 				message_admins(span_big(span_adminhelp("THIS WILL BE AUTO-APPROVED IN FIVE MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT")))
-				for(var/client/I in GLOB.admins)
-					if(I.prefs.toggles & SOUND_ADMINHELP)
-						SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
-					window_flash(I, ignorepref = TRUE)
-				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME)
+				if(!auto_approve_honked)
+					auto_approve_honked = TRUE
+					for(var/client/I in GLOB.admins)
+						if(I.prefs.toggles & SOUND_ADMINHELP)
+							SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
+						window_flash(I, ignorepref = TRUE)
+				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME|TIMER_STOPPABLE)
 			if("spice")
 				var/new_intensity = text2num(href_list["amount"])
 				if(intensity == new_intensity)
