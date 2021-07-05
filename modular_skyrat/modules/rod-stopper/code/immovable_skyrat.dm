@@ -32,6 +32,8 @@
 	pixel_y = -32
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
+	/// Do we automatically qdel ourselves?
+	var/qdel_self = ROD_RIFT_AUTO_QDEL
 
 /obj/rod_rift/examine(mob/living/user)
 	. = ..()
@@ -57,7 +59,7 @@
 /obj/rod_rift/Initialize()
 	. = ..()
 
-	if(ROD_RIFT_AUTO_QDEL)
+	if(qdel_self )
 		QDEL_IN(src, ROD_RIFT_LIFESPAN)
 
 	AddComponent(
