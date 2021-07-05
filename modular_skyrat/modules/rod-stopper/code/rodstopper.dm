@@ -44,7 +44,8 @@
 
 /obj/machinery/rodstopper/update_overlays()
 	. = ..()
-	overlays += mutable_appearance(icon, "[ initial(icon_state) ]-[ we_are_active ? "act" : "off" ]")
+	if(powered())
+		. += mutable_appearance(icon, "[ initial(icon_state) ]-[ we_are_active ? "act" : "off" ]")
 
 /obj/machinery/rodstopper/examine(mob/user)
 	. = ..()
