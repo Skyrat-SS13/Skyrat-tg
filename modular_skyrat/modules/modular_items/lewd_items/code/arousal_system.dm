@@ -75,7 +75,7 @@
 	reagent_state = LIQUID
 	overdose_threshold = 10
 
-/datum/reagent/drug/dopamine/on_mob_add(mob/living/M)
+/datum/reagent/drug/dopamine/on_mob_add(mob/living/carbon/human/M)
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
@@ -85,7 +85,7 @@
 		M.emote(pick("shaking","moan"))
 	..()
 
-/datum/reagent/drug/dopamine/overdose_start(mob/living/M)
+/datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
 	if(!HAS_TRAIT(M, TRAIT_NYMPHOMANIA) || !HAS_TRAIT(M, TRAIT_BIMBO))
 		to_chat(M, "<span class='userdanger'>You don't want to cum anymore!</span>")
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
@@ -570,13 +570,12 @@
 
 /mob/living/carbon/human/examine(mob/user)
 	.=..()
-	var/t_his = p_their()
 	var/mob/living/U = user
 
 	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != U)
 		if(src != user)
 			if(has_status_effect(/datum/status_effect/spanked) && is_bottomless())
-				. += "<font color=purple>[t_his] thighs turned red.</font>\n"
+				. += "<font color=purple>[user.p_their(TRUE)] butt has a red tint to it.</font>\n"
 
 //Mood boost for masochist
 /datum/mood_event/perv_spanked
@@ -596,20 +595,20 @@
 
 /datum/status_effect/subspace/on_apply()
 	. = ..()
-	var/mob/living/carbon/human/M = owner
-	if(M.masochism == FALSE)
-		M.set_masochism(TRUE)
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
+	var/mob/living/carbon/human/target = owner
+	if(target.masochism == FALSE)
+		target.set_masochism(TRUE)
+	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
 
 /datum/status_effect/subspace/on_remove()
 	. = ..()
-	var/mob/living/carbon/human/M = owner
-	if(M.masochism == TRUE && !HAS_TRAIT(owner, TRAIT_MASOCHISM))
-		M.set_masochism(FALSE)
-	SEND_SIGNAL(M, COMSIG_CLEAR_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
+	var/mob/living/carbon/human/target = owner
+	if(target.masochism == TRUE && !HAS_TRAIT(target, TRAIT_MASOCHISM))
+		target.set_masochism(FALSE)
+	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
 
 /datum/mood_event/subspace
-	description = "<font color=purple>Everything so woozy... Pain feels so... Awesome.</font>\n"
+	description = "<font color=purple>Everything is so woozy... Pain feels so... Awesome.</font>\n"
 	mood_change = 4
 
 ///////////////////////
@@ -618,10 +617,10 @@
 
 /obj/item/organ/brain/on_life(delta_time, times_fired) //All your horny is here *points to the head*
 	. = ..()
-	var/mob/living/carbon/human/H = owner
-	if(istype(owner, /mob/living/carbon/human) && H.client?.prefs.erp_pref == "Yes")
+	var/mob/living/carbon/human/brain_owner = owner
+	if(istype(brain_owner, /mob/living/carbon/human) && brain_owner.client?.prefs.erp_pref == "Yes")
 		if(!(organ_flags & ORGAN_FAILING))
-			H.dna.species.handle_arousal(H, delta_time, times_fired)
+			brain_owner.dna.species.handle_arousal(brain_owner, delta_time, times_fired)
 
 //screen alert
 
