@@ -28,16 +28,16 @@
 #define STAMINALOSS_REGEN_COEFF 50
 
 //Thresholds for detrimental effects from stamina
-#define STAMINA_THRESHOLD_WEAK 60
+#define STAMINA_THRESHOLD_WEAK 25
 
-#define STAMINA_THRESHOLD_KNOCKDOWN 120
+#define STAMINA_THRESHOLD_KNOCKDOWN 50
 
-#define STAMINA_THRESHOLD_SOFTCRIT 150
+#define STAMINA_THRESHOLD_SOFTCRIT 75
 
-#define STAMINA_THRESHOLD_HARDCRIT 150
+#define STAMINA_THRESHOLD_HARDCRIT 100
 
 //Stamina threshold from which resisting a grab becomes hard
-#define STAMINA_THRESHOLD_HARD_RESIST 80
+#define STAMINA_THRESHOLD_HARD_RESIST 30
 
 //A coefficient for doing the change of random CC's on a person (staminaloss/THIS)
 #define STAMINA_CROWD_CONTROL_COEFF 200
