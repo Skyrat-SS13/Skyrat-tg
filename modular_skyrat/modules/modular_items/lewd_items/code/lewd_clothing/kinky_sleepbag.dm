@@ -164,7 +164,6 @@
 	// appearance_update()
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/dropped(mob/user)
-	. = ..()
 	var/mob/living/carbon/human/H = user
 
 	if(ishuman(user))
@@ -186,6 +185,7 @@
 			H.update_inv_shoes()
 			H.regenerate_icons()
 	STOP_PROCESSING(SSobj, src)
+	. = ..()
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/process(delta_time)
 	if(time_to_sound_left <= 0)
