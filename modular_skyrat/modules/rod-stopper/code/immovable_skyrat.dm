@@ -1,11 +1,13 @@
+#define ROD_RIFT_AUTO_QDEL FALSE
 #define ROD_RIFT_LIFESPAN 2 SECONDS
-#define ROD_RIFT_RADIUS_CONSUME 2
-#define ROD_RIFT_RADIUS_PULL 4
+#define ROD_RIFT_RADIUS_CONSUME 1
+#define ROD_RIFT_RADIUS_PULL 20
 
 /obj/effect/immovablerod/Bump(atom/clong)
 	var/should_self_destroy = FALSE
-	if(istype(clong, /obj/machinery/rodstopper))
-		should_self_destroy = TRUE
+	var/obj/machinery/rodstopper/rodstop = clong
+	if(istype(rodstop))
+		should_self_destroy = rodstop.we_are_active
 	. = ..()
 	if(should_self_destroy)
 		visible_message("<span class='boldwarning'>The rod tears into the rodstopper with a reality-rending screech!</span>")
@@ -40,11 +42,13 @@
 
 /obj/rod_rift/proc/punish_examiner(mob/living/user)
 	to_chat(user, span_userdanger("You suddenly collapse over in pain as you hallucinate a rod going right through you!"))
+	user.visible_message(span_danger("[user] suddenly collapses and strange scars appear on them!"),
+					span_userdanger("You suddenly collapse over in pain as you hallucinate a rod going right through you!"))
 	user.emote("scream")
 	user.Paralyze(3 SECONDS, TRUE)
+	user.adjustBruteLoss(70)
 
 /obj/rod_rift/proc/punish_dumbass(mob/living/dumbass)
-	to_chat(dumbass, span_userdanger("Your last thought before fading out of existance: 'That was a terrible idea.'"))
 	dumbass.visible_message(span_danger("Flashes brightly before dissapearing from reality... did they ever exist to begin with?"), \
 						span_userdanger("Your last thought before you flash out of reality: 'That was a terrible idea.'"))
 	dumbass.ghostize()
@@ -52,7 +56,9 @@
 
 /obj/rod_rift/Initialize()
 	. = ..()
-	QDEL_IN(src, ROD_RIFT_LIFESPAN)
+
+	if(ROD_RIFT_AUTO_QDEL)
+		QDEL_IN(src, ROD_RIFT_LIFESPAN)
 
 	AddComponent(
 		/datum/component/singularity, \
