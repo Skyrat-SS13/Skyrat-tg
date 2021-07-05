@@ -14,12 +14,25 @@
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/machine/rodstopper
 	layer = BELOW_OBJ_LAYER
+	/// Are we actually going to delete the rod and spawn a singularity
+	var/we_are_active
 
-/obj/machinery/attackby(obj/item/weapon, mob/user, params)
-	if(!isidcard(weapon))
+/obj/machinery/rodstopper/Initialize()
+	. = ..()
+	begin_processing()
+
+/obj/machinery/rodstopper/process()
+	if(!powered())
+		we_are_active = FALSE
+		audible_message(span_notice("Automated Singularity Systems: POWER FAILURE"))
+		name = initial(name)
+		pdate_appearance(UPDATE_OVERLAYS)
+
+/obj/machinery/rodstopper/attackby(obj/item/weapon, mob/user, params)
+	if(!isidcard(weapon) || !powered())
 		return ..()
-	var/obj/item/card/id/idcard = weapon
 
+	var/obj/item/card/id/idcard = weapon
 	if(!(ACCESS_HEADS in idcard.access))
 		audible_message(span_warning("INVALID ACCESS"))
 		return
@@ -27,8 +40,11 @@
 	we_are_active = !we_are_active
 	audible_message(we_are_active ? span_danger("Automated Singularity Systems: ONLINE") : span_notice("Automated Singularity Systems: OFFLINE"))
 	name = we_are_active ? "active [ initial(name) ]" : initial(name)
-	icon_state = "[ initial(icon_state) ]-[ we_are_active ? "act" : "off" ]"
-	update_icon_state()
+	update_appearance(UPDATE_OVERLAYS)
+
+/obj/machinery/rodstopper/update_overlays()
+	. = ..()
+	overlays += mutable_appearance(icon, "[ initial(icon_state) ]-[ we_are_active ? "act" : "off" ]")
 
 /obj/machinery/rodstopper/examine(mob/user)
 	. = ..()
