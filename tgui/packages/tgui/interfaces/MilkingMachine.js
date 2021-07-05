@@ -638,7 +638,7 @@ const organButtonStates = (Name, data, palette, context) => {
   if (
     OrganNameCapital !== Name
     && data.current_breasts !== null
-    && data.mobCanLactate == true
+    && data.mobCanLactate === true
   ) {
     return (
       <Box as="div" m={1}>
@@ -668,7 +668,7 @@ const organButtonStates = (Name, data, palette, context) => {
     );
   } else if (
     data.current_selected_organ_name === null
-    || (OrganNameCapital !== Name && data.mobCanLactate == false)
+    || (OrganNameCapital !== Name && data.mobCanLactate === false)
   ) {
     return (
       <Box as="div" m={1}>
