@@ -30,7 +30,7 @@
 /datum/quirk/drunkhealing
 	name = "Drunken Resilience"
 	desc = "Nothing like a good drink to make you feel on top of the world. Whenever you're drunk, you slowly recover from injuries."
-	value = 6
+	value = 6 /// SKYRAT EDIT - Quirk Rebalance - Original: value = 8
 	mob_trait = TRAIT_DRUNK_HEALING
 	gain_text = "<span class='notice'>You feel like a drink would do you good.</span>"
 	lose_text = "<span class='danger'>You no longer feel like drinking would ease your pain.</span>"
