@@ -1,6 +1,6 @@
 /obj/item/clothing/strapon
 	name = "strapon"
-	desc = "Sometimes you need special way to humiliate someone."
+	desc = "Sometimes you need a special way to humiliate someone."
 	icon_state = "strapon"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
@@ -115,7 +115,7 @@
 //button stuff
 /datum/action/item_action/take_strapon
     name = "Take strapon dildo in hand"
-    desc = "You need to take this thing in your hand to use it properly"
+    desc = "You need to take this thing in your hand to use it properly."
 
 /datum/action/item_action/take_strapon/Trigger()
 	var/obj/item/clothing/strapon/H = target
@@ -138,13 +138,13 @@
 	if(in_hands == TRUE)
 		if(held?.name == "strapon" && held?.item_flags == ABSTRACT | HAND_ITEM)
 			qdel(held)
-			C.visible_message("<span class='notice'>[user] put strapon back</span>")
+			C.visible_message("<span class='notice'>[user] puts strapon back</span>")
 			in_hands = FALSE
 			return
 
 		else if(unheld?.name == "strapon" && unheld?.item_flags == ABSTRACT | HAND_ITEM)
 			qdel(unheld)
-			C.visible_message("<span class='notice'>[user] put strapon back</span>")
+			C.visible_message("<span class='notice'>[user] puts strapon back</span>")
 			in_hands = FALSE
 			return
 
@@ -158,7 +158,7 @@
 					W.strapon_type = strapon_type
 					W.update_icon_state()
 					W.update_icon()
-					C.visible_message("<span class='notice'>[user] takes a strapon in their hand. Looks menacingly</span>")
+					C.visible_message("<span class='notice'>[user] takes a strapon in their hand. They look menacingly</span>")
 					in_hands = TRUE
 					return
 		else
@@ -170,7 +170,7 @@
 		W.strapon_type = strapon_type
 		W.update_icon_state()
 		W.update_icon()
-		C.visible_message("<span class='notice'>[user] takes a strapon in their hand. Looks menacingly</span>")
+		C.visible_message("<span class='notice'>[user] takes a strapon in their hand. They look menacingly</span>")
 		in_hands = TRUE
 		return
 
@@ -209,7 +209,7 @@
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
 					if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-						message = pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "teasing [M]'s pussy with a [src]")
+						message = pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "is teasing [M]'s pussy with a [src]")
 						M.adjustArousal(6)
 						M.adjustPleasure(8)
 						if(prob(40))
@@ -230,7 +230,7 @@
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!M.is_mouth_covered())
-					message = pick("fucks [M]'s mouth with [src]", "choking [M] by inserting [src] into [M]'s throat", "forcing [M] to suck a [src]", "inserts [src] into [M]'s throat")
+					message = pick("fucks [M]'s mouth with [src]", "choking [M] by inserting [src] into [M]'s throat", "is forcing [M] to suck a [src]", "inserts [src] into [M]'s throat")
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
@@ -250,7 +250,7 @@
 
 			else
 				if(M.is_bottomless())
-					message = pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
+					message = pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making them roll eyes up")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
 					if(prob(60))
@@ -267,5 +267,5 @@
 					to_chat(user, "<span class='danger'>Looks like [M]'s anus is covered!</span>")
 					return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+		to_chat(user, "<span class='danger'>Looks like [M] doesn't want you to do that.</span>")
 		return

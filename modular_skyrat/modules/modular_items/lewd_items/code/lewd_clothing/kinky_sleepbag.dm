@@ -82,7 +82,7 @@
 				update_icon()
 				update_icon_state()
 			else
-				to_chat(user, "<span class='notice'>You can't fold bag while it's infalted")
+				to_chat(user, "<span class='notice'>You can't fold the bag while it's infalted")
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/check_menu(mob/living/user)
 	if(!istype(user))
@@ -124,7 +124,7 @@
 			H.cut_overlay(H.overlays_standing[HEAD_LAYER])
 			H.cut_overlay(H.overlays_standing[HAIR_LAYER])
 		if(bag_state == "deflated")
-			to_chat(H,"<font color=purple>You realize that moving now is much harder. You are fully restrainted, all struggles are useless.</font>")
+			to_chat(H,"<font color=purple>You realize that moving now is much harder. You are fully restrained, any struggling is useless.</font>")
 	. = ..()
 
 //to inflate/deflate that thing
@@ -169,7 +169,7 @@
 	if(ishuman(user))
 		if(src == H.wear_suit)
 			REMOVE_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
-			to_chat(user,"<font color=purple>You are finally free! The tight bag no longer constricts your movements.</font>")
+			to_chat(user,"<font color=purple>You are finally free! The tight bag is no longer constricting your movements.</font>")
 
 			H.add_overlay(H.overlays_standing[SHOES_LAYER])
 			H.update_inv_shoes()

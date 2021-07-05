@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/straight_jacket/latex_straight_jacket
 	name = "latex straight jacket"
-	desc = "Toy, that actually can't restraint anyone. But it's fun to wear."
+	desc = "Toy, that actually can't restrain anyone. But it's fun to wear."
 	inhand_icon_state = "latex_straight_jacket"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
@@ -23,14 +23,14 @@
         var/obj/item/clothing/suit/straight_jacket/latex_straight_jacket/reinforced/W = new /obj/item/clothing/suit/straight_jacket/latex_straight_jacket/reinforced
         remove_item_from_storage(user)
         user.put_in_hands(W)
-        to_chat(user, "<span class='notice'>You reinforce belts with using [src] on [I].</span>")
+        to_chat(user, "<span class='notice'>You reinforce the belts by using [src] on [I].</span>")
         qdel(I)
         qdel(src)
         return
     . = ..()
 
 /obj/item/clothing/suit/straight_jacket/latex_straight_jacket/reinforced
-	name = "Latex straight jacket"
+	name = "latex straight jacket"
 	desc = "A suit that completely restrains the wearer, but in fetish way."
 	icon_state = "latex_straight_jacket"
 	inhand_icon_state = "latex_straight_jacket"

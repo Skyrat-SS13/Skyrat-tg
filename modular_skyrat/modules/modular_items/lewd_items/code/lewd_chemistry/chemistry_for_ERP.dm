@@ -31,8 +31,8 @@
 
 /datum/reagent/drug/hexacrocin
 	name = "Hexacrocin"
-	description = "Chemically condensed form of basic crocin. This aphrodisiac is extremely powerful and addictive in most animals.\
-					Addiction withdrawals can cause brain damage and shortness of breath. Overdosage can lead to brain traumas."
+	description = "Chemically condensed form of basic crocin. This aphrodisiac is extremely powerful and addictive for most animals.\
+					Addiction withdrawals can cause brain damage and shortness of breath. Overdose can lead to brain traumas."
 	taste_description = "liquid desire"
 	color = "#FF2BFF"//dark pink
 	overdose_threshold = 25 //Heavy consequences. Supposed to be big value.
@@ -97,7 +97,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/M)
-	to_chat(M, "<font color=purple>You feel yourself so happy!</font>")
+	to_chat(M, "<font color=purple>You feel so happy!</font>")
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/dopamine/overdose_process(mob/living/M)
@@ -118,8 +118,8 @@
 
 /datum/reagent/drug/camphor
 	name = "Camphor"
-	description = "Naturally found in some species of evergreen trees, camphor is a waxy substance. When injested by most animals, it acts as an anaphrodisiac\
-					, reducing libido and calming them. Non-habit forming and not addictive."
+	description = "Naturally found in some species of evergreen trees, camphor is a waxy substance. When ingested by most animals, it acts as an anaphrodisiac\
+					, reducing libido and calming them. Non-habit forming and non-addictive."
 	taste_description = "dull bitterness"
 	taste_mult = 2
 	color = "#D9D9D9"//rgb(157, 157, 157)
@@ -484,7 +484,7 @@ Haha! Kill me please.
 	list_reagents = list(/datum/reagent/drug/hexacrocin = 30)
 
 /obj/item/reagent_containers/glass/bottle/dopamine //this one is hard to obtain.
-	name = "hexacrocin bottle"
+	name = "dopamine bottle"
 	desc = "Pure pleasure and happines in a bottle."
 	list_reagents = list(/datum/reagent/drug/dopamine = 30)
 
@@ -526,7 +526,7 @@ Haha! Kill me please.
 
 /obj/item/reagent_containers/pill/dopamine
 	name = "dopamine pill (5u)"
-	desc = "Feelings from orgasm, contained in a pill... Weird."
+	desc = "Feelings of orgasm, contained in a pill... Weird."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_pills.dmi'
 	icon_state = "dopamine"
 	list_reagents = list(/datum/reagent/drug/dopamine = 5)

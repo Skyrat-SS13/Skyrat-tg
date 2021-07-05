@@ -77,7 +77,7 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>Shackles restrainting your body! But locks look like... Plastic?</font>")
+		to_chat(user, "<font color=purple>The shackles are restraining your body! But locks look like... Plastic?</font>")
 	else
 		return
 
@@ -86,7 +86,7 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>Shackles no longer restraints your body. It wasn't too hard, huh?.</font>")
+		to_chat(user, "<font color=purple>The shackles are no longer restraining your body. It wasn't too hard, huh?.</font>")
 
 //reinforcing normal version by using handcuffs on it.
 /obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/I, mob/user, params) //That part allows reinforcing this item with normal straightjacket
@@ -125,7 +125,7 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>Shackles restrainting your body!</font>")
+		to_chat(user, "<font color=purple>The shackles are restraining your body!</font>")
 	else
 		return
 
@@ -134,4 +134,4 @@
 	var/mob/living/carbon/human/C = user
 	. = ..()
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>Shackles no longer restraints your body. You are free!</font>")
+		to_chat(user, "<font color=purple>The shackles are no longer restraining your body. You are free!</font>")
