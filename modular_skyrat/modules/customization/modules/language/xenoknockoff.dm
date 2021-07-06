@@ -1,7 +1,7 @@
 /datum/language/xenoknockoff
 	name = "Xeno Uncommon"
 	desc = "The common tongue of Xenomorph hybrids and cultural attaches."
-	key = "4"
+	key = "x"
 	syllables = list("sss","sSs","SSS")
 	default_priority = 50
 
