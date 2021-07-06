@@ -1,4 +1,4 @@
-//Demonic Watcher
+//////////////////////////Demonic Watcher - Start//////////////////////////
 /obj/item/crusher_trophy/demon_core
 	name = "demonic core"
 	desc = "The chipped core of a demonic watcher, it gently hums with weak bluespace energy."
@@ -17,4 +17,9 @@
 	..()
 
 /mob/living/simple_animal/hostile/asteroid/ice_demon
-	crusher_loot = /obj/item/crusher_trophy/demon_core
+	crusher_loot = list(/obj/item/crusher_trophy/demon_core = 1)
+
+/mob/living/simple_animal/hostile/asteroid/ice_demon/spawn_crusher_loot()
+	for(var/item_path in crusher_loot)
+		new item_path(loc)
+//////////////////////////Demonic Watcher - End//////////////////////////
