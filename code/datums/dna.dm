@@ -132,6 +132,8 @@
 			. += random_string(DNA_BLOCK_SIZE,GLOB.hex_characters)
 	return .
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/code/datums/dna.dm)
+/*
 /datum/dna/proc/generate_unique_features()
 	var/list/data = list()
 
@@ -172,6 +174,8 @@
 		data += (L[i] || random_string(DNA_BLOCK_SIZE,GLOB.hex_characters))
 
 	return data.Join()
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/dna/proc/generate_dna_blocks()
 	var/bonus
@@ -253,6 +257,8 @@
 		if(DNA_HAIRSTYLE_BLOCK)
 			setblock(unique_identity, blocknumber, construct_block(GLOB.hairstyles_list.Find(H.hairstyle), GLOB.hairstyles_list.len))
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/code/datums/dna.dm)
+/*
 /datum/dna/proc/update_uf_block(blocknumber)
 	if(!blocknumber)
 		CRASH("UF block index is null")
@@ -289,6 +295,8 @@
 			setblock(unique_features, blocknumber, construct_block(GLOB.caps_list.Find(features["caps"]), GLOB.caps_list.len))
 		if(DNA_MONKEY_TAIL_BLOCK)
 			setblock(unique_features, blocknumber, construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len))
+*/
+//SKYRAT EDIT REMOVAL END
 
 //Please use add_mutation or activate_mutation instead
 /datum/dna/proc/force_give(datum/mutation/human/HM)
@@ -396,7 +404,7 @@
 			stored_dna.species = mrace //not calling any species update procs since we're a brain, not a monkey/human
 
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/code/datums/dna.dm)
 /*
 /mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	if(QDELETED(src))
@@ -499,6 +507,8 @@
 		else
 			gender = PLURAL
 
+//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular_skyrat/modules/customization/code/datums/dna.dm)
+/*
 /mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)
 	..()
 	var/structure = dna.unique_identity
@@ -553,7 +563,8 @@
 			update_body_parts()
 		if(mutations_overlay_update)
 			update_mutations_overlay()
-
+*/
+//SKYRAT EDIT REMOVAL END
 
 /mob/proc/domutcheck()
 	return
