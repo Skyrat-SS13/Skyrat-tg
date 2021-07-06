@@ -848,6 +848,26 @@
 	worn_icon_state = "hepbelt"
 
 // Donation reward for CandleJax
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax
+	name = "Emission's Helmet"
+	desc = "A special containment helmet designed for heavy usage Multiple dings and notches are on this one."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "emissionhelm"
+	inhand_icon_state = "emissionhelm"
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, RAD = 0, FIRE = 100, ACID = 75, WOUND = 10)
+
+// Donation reward for CandleJax
+/obj/item/clothing/under/plasmaman/candlejax
+	name = "Emission's Containment Suit"
+	desc = "A special containment envirosuit designed for abnormally heated plasmafires This one seems highly customized."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "emissionsuit"
+	inhand_icon_state = "emissionsuit"
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, RAD = 0, FIRE = 100, ACID = 75, WOUND = 10)
+
+// Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax
 	name = "HepUnit Standard Helmet"
 	desc = "A concealing riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
