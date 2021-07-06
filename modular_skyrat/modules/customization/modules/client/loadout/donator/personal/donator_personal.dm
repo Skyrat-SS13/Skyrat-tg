@@ -107,7 +107,7 @@
 
 /datum/loadout_item/uniform/donator/emissionsuit
 	name = "Emission's Suit"
-	path = /obj/item/clothing/under/plasmaman/candlejax
+	path = /obj/item/clothing/under/plasmaman/security/candlejax
 	ckeywhitelist = list("candlejax")
 	restricted_roles = list("Vanguard Operative","Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
