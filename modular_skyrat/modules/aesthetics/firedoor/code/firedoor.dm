@@ -100,7 +100,11 @@
 
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..()
-	. += span_notice("It's close override mechanism is [stay_open ? "engaged" : "disengaged"].______qdel_list_wrapper")
+	if(issilicon(user))
+		. += span_notice("You can override the closing mechanism by Ctrl+Clicking on the firelock.")
+	else
+		. += span_notice("You can override the closing mechanism by swiping your ID on it, providing it has Atmospherics Access.")
+	. += span_notice("It's close override mechanism is [stay_open ? "engaged" : "disengaged"].")
 
 /obj/effect/spawner/structure/window/reinforced/no_firelock
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
