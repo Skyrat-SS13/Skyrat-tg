@@ -3,15 +3,7 @@
 /obj/structure/shuttle/engine/propulsion/left,
 /obj/effect/turf_decal/stripes/full,
 /turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
-"ao" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell3";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ay" = (
 /turf/template_noop,
 /area/template_noop)
@@ -21,21 +13,16 @@
 	},
 /obj/effect/turf_decal/vg_decals/numbers/one,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
-"bD" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell9";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "bR" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "dx" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell11";
@@ -45,23 +32,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
-"dW" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell10";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
-"ey" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell2";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "fA" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell1";
@@ -71,54 +42,50 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "fE" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
+/obj/machinery/button/door/directional/west{
 	id = "prisontransportcell6";
-	name = "Cell Lockdown";
-	pixel_x = -22
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "fR" = (
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "gp" = (
 /obj/structure/bed/maint,
 /obj/machinery/light/cold/no_nightlight/directional/north,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "gS" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
-	id = "prisontransportcell13";
-	name = "Cell Lockdown";
-	pixel_x = 22
-	},
 /obj/machinery/light/cold/no_nightlight/directional/east,
+/obj/machinery/button/door/directional/east{
+	id = "prisontransportcell13";
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "hD" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/nine,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "hE" = (
 /turf/open/floor/iron/dark/blue,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ik" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell13";
@@ -128,7 +95,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "iw" = (
 /obj/structure/mirror/directional/south,
 /obj/machinery/shower{
@@ -138,21 +105,24 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "iX" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/three,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "jn" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/seven,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "jR" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/window/preopen{
@@ -160,13 +130,13 @@
 	name = "Lockdown"
 	},
 /turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "lD" = (
 /obj/machinery/computer/shuttle/white_ship/bridge{
 	name = "Flight Control"
 	},
 /turf/open/floor/iron/dark/blue/side,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "mO" = (
 /obj/structure/toilet{
 	dir = 4
@@ -177,18 +147,10 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
-"mY" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell11";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "nq" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "nF" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell2";
@@ -198,7 +160,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "nS" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/shutters/window/preopen{
@@ -206,31 +168,31 @@
 	name = "Lockdown"
 	},
 /turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ok" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
-	id = "prisontransportcell3";
-	name = "Cell Lockdown";
-	pixel_x = -22
-	},
 /obj/machinery/light/cold/no_nightlight/directional/west,
+/obj/machinery/button/door/directional/west{
+	id = "prisontransportcell3";
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ol" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
 /turf/open/floor/iron/dark/blue,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "oA" = (
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	req_access_txt = "101"
+	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "pc" = (
 /obj/machinery/light/cold/no_nightlight/directional/west,
 /obj/structure/rack/shelf,
@@ -243,7 +205,7 @@
 /obj/item/melee/classic_baton/peacekeeper,
 /obj/item/melee/classic_baton/peacekeeper,
 /turf/open/floor/iron/dark,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "pi" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell3";
@@ -253,11 +215,11 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "pp" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "py" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell5";
@@ -267,20 +229,21 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
+"qa" = (
+/turf/open/floor/iron/smooth,
+/area/shuttle/prison_transport)
 "qf" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
+/obj/machinery/button/door/directional/east{
 	id = "prisontransportcell12";
-	name = "Cell Lockdown";
-	pixel_x = 22
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ru" = (
 /obj/structure/fence/door/opened{
 	dir = 8
@@ -288,31 +251,32 @@
 /turf/open/floor/iron/dark/blue/side{
 	dir = 4
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "rJ" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "rK" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/eight,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "sf" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
+/obj/machinery/button/door/directional/west{
 	id = "prisontransportcell2";
-	name = "Cell Lockdown";
-	pixel_x = -22
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "sG" = (
 /obj/structure/chair/greyscale,
 /obj/effect/turf_decal/weather/dirt{
@@ -324,28 +288,26 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "sQ" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/five,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "tl" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
-	id = "prisontransportcell7";
-	name = "Cell Lockdown";
-	pixel_x = -22
-	},
 /obj/machinery/light/cold/no_nightlight/directional/west,
+/obj/machinery/button/door/directional/west{
+	id = "prisontransportcell7";
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "tp" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell14";
@@ -355,7 +317,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "tC" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/carbon,
@@ -366,12 +328,12 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "tY" = (
 /obj/machinery/light/red/directional/west,
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ua" = (
 /obj/structure/chair/greyscale,
 /obj/effect/turf_decal/weather/dirt{
@@ -380,112 +342,92 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ub" = (
 /obj/machinery/door/airlock/command{
 	name = "Cockpit";
 	req_access_txt = "101"
 	},
 /turf/open/floor/iron/dark/blue,
-/area/shuttle/syndicate/slaver)
-"ul" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell4";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "vf" = (
 /obj/machinery/light/cold/no_nightlight/directional/east,
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/iron/dark/blue/side{
 	dir = 8
 	},
-/area/shuttle/syndicate/slaver)
-"vl" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell12";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "vP" = (
 /obj/machinery/door/airlock/command{
 	name = "Flight Deck";
 	req_access_txt = "101"
 	},
 /turf/open/floor/iron/dark/blue,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "wP" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
+/obj/machinery/button/door/directional/west{
 	id = "prisontransportcell4";
-	name = "Cell Lockdown";
-	pixel_x = -22
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "xc" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/button{
-	id = "prisontransportcell1";
-	name = "Cell Lockdown";
-	pixel_x = -22
-	},
 /obj/machinery/light/cold/no_nightlight/directional/west,
+/obj/machinery/button/door/directional/west{
+	id = "prisontransportcell1";
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "xG" = (
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "xV" = (
 /obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell7";
-	name = "Lockdown"
-	},
 /turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "yi" = (
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/iron/dark/blue/side{
 	dir = 8
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "yU" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
+/obj/machinery/button/door/directional/east{
 	id = "prisontransportcell10";
-	name = "Cell Lockdown";
-	pixel_x = 22
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "yX" = (
 /obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "zq" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/button{
+/obj/machinery/button/door/directional/east{
 	id = "prisontransportcell14";
-	name = "Cell Lockdown";
-	pixel_x = 22
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "zF" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell9";
@@ -495,14 +437,14 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Ab" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/four,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Am" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell7";
@@ -512,19 +454,11 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "AS" = (
 /obj/structure/sign/warning/vacuum,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/syndicate/slaver)
-"BN" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell8";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Ce" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell10";
@@ -534,22 +468,14 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
-"Cg" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell6";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "CM" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/two,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "DS" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light/cold/no_nightlight/directional/north,
@@ -557,51 +483,56 @@
 /turf/open/floor/iron/dark/blue/side{
 	dir = 8
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "EN" = (
 /obj/effect/turf_decal/stripes/full,
 /obj/structure/shuttle/engine/propulsion/left,
 /turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "EY" = (
 /obj/structure/table/reinforced,
-/obj/machinery/button{
+/obj/machinery/button/door{
 	id = "prisontransportlockdown";
 	name = "Interior Lockdown Shutters";
 	pixel_x = -8;
 	pixel_y = 8
 	},
-/obj/machinery/button{
+/obj/machinery/button/door{
 	id = "prisontransportouter";
 	name = "Exterior Blast Doors";
-	pixel_x = 7;
+	pixel_x = 8;
 	pixel_y = 8
 	},
 /turf/open/floor/iron/dark/blue/side,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "EZ" = (
 /obj/effect/turf_decal/trimline/brown/warning,
 /obj/effect/turf_decal/skyrat_decals/departments/bridge,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Fh" = (
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	req_access_txt = "101"
+	},
 /obj/machinery/door/poddoor/preopen{
 	id = "prisontransportouter"
 	},
 /obj/docking_port/mobile{
 	callTime = 250;
-	dwidth = 11;
-	height = 17;
+	dwidth = 10;
+	height = 10;
 	id = "prison_transport";
 	launch_status = 0;
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
 	name = "Prison Transporter NSS-74";
 	preferred_direction = 2;
-	width = 34
+	width = 10
 	},
 /turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Fj" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/carbon,
@@ -612,38 +543,33 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
-"Fz" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell5";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "FU" = (
 /obj/effect/turf_decal/caution,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Gg" = (
 /obj/machinery/light/red/directional/east,
 /obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Gp" = (
 /obj/effect/spawner/structure/window/shuttle,
 /obj/machinery/door/poddoor/preopen{
 	id = "prisontransportouter"
 	},
 /turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "GF" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/six,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Ho" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell6";
@@ -653,7 +579,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Hz" = (
 /obj/structure/toilet{
 	dir = 8
@@ -664,21 +590,27 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
+"HK" = (
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth_half,
+/area/shuttle/prison_transport)
 "IO" = (
 /obj/effect/turf_decal/caution/stand_clear/red{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Ke" = (
 /obj/effect/turf_decal/caution/stand_clear/red{
 	dir = 8
 	},
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "KJ" = (
 /obj/structure/chair/greyscale,
 /obj/effect/turf_decal/weather/dirt{
@@ -690,42 +622,38 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ME" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
-	id = "prisontransportcell5";
-	name = "Cell Lockdown";
-	pixel_x = -22
-	},
 /obj/machinery/light/cold/no_nightlight/directional/west,
+/obj/machinery/button/door/directional/west{
+	id = "prisontransportcell5";
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Nk" = (
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 1
 	},
 /obj/effect/turf_decal/vg_decals/numbers/zero,
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "NO" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
-	id = "prisontransportcell9";
-	name = "Cell Lockdown";
-	pixel_x = 22
-	},
 /obj/machinery/light/cold/no_nightlight/directional/east,
+/obj/machinery/button/door/directional/east{
+	id = "prisontransportcell9";
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Or" = (
 /obj/structure/rack/shelf,
 /obj/item/clothing/suit/armor/riot,
@@ -737,21 +665,13 @@
 /obj/item/clothing/head/helmet/riot,
 /obj/item/clothing/head/helmet/riot,
 /turf/open/floor/iron/dark,
-/area/shuttle/syndicate/slaver)
-"Qw" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportcell13";
-	name = "Lockdown"
-	},
-/turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Rb" = (
 /obj/effect/turf_decal/caution{
 	dir = 1
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Ri" = (
 /obj/structure/chair/greyscale,
 /obj/effect/turf_decal/weather/dirt{
@@ -760,21 +680,17 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
-"RA" = (
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Sa" = (
 /obj/structure/sign/poster/official/report_crimes,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "St" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Su" = (
 /obj/machinery/light/cold/no_nightlight/directional/north,
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag,
@@ -785,11 +701,11 @@
 /turf/open/floor/iron/dark/blue/side{
 	dir = 4
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "SQ" = (
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/iron/dark/blue,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Tb" = (
 /obj/machinery/shower{
 	dir = 1
@@ -799,7 +715,7 @@
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Tj" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell12";
@@ -809,40 +725,36 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Tr" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
 	name = "Navigations"
 	},
 /turf/open/floor/iron/dark/blue/side,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "UG" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
+/obj/machinery/button/door/directional/east{
 	id = "prisontransportcell8";
-	name = "Cell Lockdown";
-	pixel_x = 22
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Ws" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
-	},
-/obj/machinery/button{
-	id = "prisontransportcell11";
-	name = "Cell Lockdown";
-	pixel_x = 22
-	},
 /obj/machinery/light/cold/no_nightlight/directional/east,
+/obj/machinery/button/door/directional/east{
+	id = "prisontransportcell11";
+	name = "Cell Lockdown"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
+	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "WL" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell4";
@@ -852,15 +764,14 @@
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Xu" = (
 /obj/effect/turf_decal/trimline/brown/warning,
-/obj/machinery/door/poddoor/shutters/window/preopen{
-	id = "prisontransportlockdown";
-	name = "Lockdown"
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "prisontransportlockdown"
 	},
 /turf/open/floor/iron/smooth_half,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "XB" = (
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "prisontransportcell8";
@@ -870,22 +781,22 @@
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Yw" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "Zi" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "prisontransportouter"
 	},
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 "ZF" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/smooth,
-/area/shuttle/syndicate/slaver)
+/area/shuttle/prison_transport)
 
 (1,1,1) = {"
 ay
@@ -1040,19 +951,19 @@ fA
 jR
 nq
 nF
-ey
+xV
 nq
 pi
-ao
+xV
 nq
 WL
-ul
+xV
 nq
 py
-Fz
+xV
 nq
 Ho
-Cg
+xV
 nq
 Am
 xV
@@ -1106,25 +1017,25 @@ ru
 ru
 fR
 EZ
-St
-bR
+qa
+HK
 Xu
-St
-bR
+qa
+HK
 Xu
-St
-bR
+qa
+HK
 Xu
-St
-bR
+qa
+HK
 Xu
-St
-bR
+qa
+HK
 Xu
-St
-bR
+qa
+HK
 Xu
-St
+qa
 bR
 Sa
 ZF
@@ -1141,29 +1052,29 @@ hE
 hE
 vP
 St
+qa
+qa
 St
+qa
+qa
 St
-RA
+qa
+qa
 St
+qa
+qa
 St
-RA
+qa
+qa
 St
+qa
+qa
 St
-RA
-St
-St
-RA
-St
-St
-RA
-St
-St
-RA
-St
+qa
 FU
 oA
 Rb
-St
+qa
 FU
 Fh
 "}
@@ -1176,25 +1087,25 @@ SQ
 SQ
 fR
 EZ
-St
+qa
 aH
 Xu
-St
+qa
 aH
 Xu
-St
+qa
 aH
 Xu
-St
+qa
 aH
 Xu
-St
+qa
 aH
 Xu
-St
-bR
+qa
+HK
 Xu
-St
+qa
 bR
 Sa
 ZF
@@ -1250,22 +1161,22 @@ tp
 nS
 nq
 ik
-Qw
+xV
 nq
 Tj
-vl
+xV
 nq
 dx
-mY
+xV
 nq
 Ce
-dW
+xV
 nq
 zF
-bD
+xV
 nq
 XB
-BN
+xV
 nq
 fR
 fR
