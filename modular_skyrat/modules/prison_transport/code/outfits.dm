@@ -6,7 +6,7 @@
 	name = "Prisoner Transport Officer"
 
 	ears = /obj/item/radio/headset/headset_cent/alt/with_key
-	eyes = /obj/item/clothing/glasses/sunglasses/big
+	glasses = /obj/item/clothing/glasses/sunglasses/big
 
 	uniform = /obj/item/clothing/under/rank/security/officer
 
