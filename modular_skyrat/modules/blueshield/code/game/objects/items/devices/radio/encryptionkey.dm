@@ -2,4 +2,4 @@
 	name = "\proper the blueshield's encryption key"
 	icon = 'modular_skyrat/modules/blueshield/icons/obj/radio.dmi'
 	icon_state = "bshield_cypherkey"
-	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_SECURITY = 1)
+	channels = list(RADIO_CHANNEL_COMMAND = 1, RADIO_CHANNEL_SECURITY = 1, RADIO_CHANNEL_CENTCOM = 1)
