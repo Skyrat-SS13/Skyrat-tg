@@ -1,4 +1,4 @@
-/obj/machinery/vending/lustwish
+/obj/machinery/vending/dorms
 	name = "LustWish"
 	desc = "A vending machine with various toys from light erotic to BDSM"
 	icon_state = "lustwish"
@@ -112,13 +112,13 @@
 	extra_price = 250
 
 //Secret vending machine skin. Don't touch plz
-/obj/machinery/vending/lustwish/proc/populate_vend_designs()
+/obj/machinery/vending/dorms/proc/populate_vend_designs()
     vend_designs = list(
         "pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
         "teal" = image(icon = src.icon, icon_state = "lustwish_teal"))
 
 //Changing special secret var
-/obj/machinery/vending/lustwish/attackby(obj/item/I, mob/living/user, params)
+/obj/machinery/vending/dorms/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/lustwish_discount))
 		user.visible_message("<span class='boldnotice'>After clicking something changes in the LustWish vending machine</span>")
@@ -134,7 +134,7 @@
 		return
 
 //using multitool on pole
-/obj/machinery/vending/lustwish/multitool_act(mob/living/user, obj/item/I)
+/obj/machinery/vending/dorms/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(.)
 		return
@@ -147,7 +147,7 @@
 	else
 		return
 
-/obj/machinery/vending/lustwish/proc/check_menu(mob/living/user, obj/item/multitool)
+/obj/machinery/vending/dorms/proc/check_menu(mob/living/user, obj/item/multitool)
 	if(!istype(user))
 		return FALSE
 	if(user.incapacitated())
@@ -156,14 +156,14 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/vending/lustwish/Initialize()
+/obj/machinery/vending/dorms/Initialize()
 	. = ..()
 	update_icon_state()
 	update_icon()
 	if(!length(vend_designs))
 		populate_vend_designs()
 
-/obj/machinery/vending/lustwish/update_icon_state()
+/obj/machinery/vending/dorms/update_icon_state()
 	..()
 	if(machine_stat & BROKEN)
 		icon_state = "[initial(icon_state)]_[current_color]-broken"
