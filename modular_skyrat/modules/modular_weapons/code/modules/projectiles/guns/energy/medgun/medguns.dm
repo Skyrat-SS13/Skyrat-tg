@@ -4,7 +4,7 @@
 	desc = "This is my smart gun, it won't hurt anyone friendly, infact it will make them heal! Please tell github if you somehow manage to get this gun."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
-	inhand_icon_state = null
+	inhand_icon_state = "chronogun" //Fits best with how the medigun looks, might be changed in the future
 	ammo_type = list(/obj/item/ammo_casing/energy/medical) //The default option that heals Oxygen//
 	ammo_x_offset = 2
 	w_class = WEIGHT_CLASS_NORMAL
