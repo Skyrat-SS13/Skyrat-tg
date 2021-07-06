@@ -33,8 +33,8 @@
 	name = "field medic's chest rig"
 
 /obj/item/storage/belt/military/expeditionary_corps/field_medic/PopulateContents()
-	new /obj/item/healthanalyzer/advanced(src)
-	new /obj/item/scalpel/advanced(src)
+	new /obj/item/scalpel(src)
+	new /obj/item/circular_saw/field_medic(src)
 	new /obj/item/hemostat(src)
 	new /obj/item/retractor(src)
 	new /obj/item/cautery(src)

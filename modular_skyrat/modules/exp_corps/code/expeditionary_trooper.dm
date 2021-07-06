@@ -145,12 +145,12 @@
 	new /obj/item/storage/box/expeditionary_survival(src)
 	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
-	new /obj/item/melee/tomahawk(src)
 	new /obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps/field_medic(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+	new /obj/item/healthanalyzer(src)
 
 //engineer gaming
 /obj/structure/closet/crate/secure/exp_corps/combat_tech/PopulateContents()

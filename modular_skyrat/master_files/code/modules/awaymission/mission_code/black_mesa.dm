@@ -322,6 +322,23 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab = 30
 	)
 
+///////////////////HECU SPAWNERS
+/obj/effect/spawner/lootdrop/hecu_smg
+	name = "HECU SMG drops"
+	loot = list(/obj/item/gun/ballistic/automatic/c20r/unrestricted = 30,
+				/obj/item/clothing/mask/gas/hecu2 = 20,
+				/obj/item/clothing/head/helmet = 20,
+				/obj/item/clothing/suit/armor/vest = 15,
+				/obj/item/clothing/shoes/combat = 15)
+
+/obj/effect/spawner/lootdrop/hecu_deagle
+	name = "HECU Deagle drops"
+	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 30,
+				/obj/item/clothing/mask/gas/hecu2 = 20,
+				/obj/item/clothing/head/helmet = 20,
+				/obj/item/clothing/suit/armor/vest = 15,
+				/obj/item/clothing/shoes/combat = 15)
+
 ///////////////////HECU
 /mob/living/simple_animal/hostile/blackmesa/hecu
 	name = "HECU Grunt"
@@ -378,7 +395,7 @@
 	icon_living = "hecu_ranged"
 	casingtype = /obj/item/ammo_casing/a50ae
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/item/gun/ballistic/automatic/pistol/deagle)
+	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/lootdrop/hecu_deagle)
 	dodging = TRUE
 	rapid_melee = 1
 
@@ -388,7 +405,7 @@
 	icon_living = "hecu_ranged_smg"
 	casingtype = /obj/item/ammo_casing/c45
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/item/gun/ballistic/automatic/c20r/unrestricted)
+	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/lootdrop/hecu_smg)
 
 /mob/living/simple_animal/hostile/blackmesa/sec
 	name = "Security Guard"

@@ -21,6 +21,19 @@
 	new /obj/item/stack/medical/suture/medicated(src)
 	new /obj/item/clothing/glasses/hud/health/night(src)
 
+//Field Medic's weapon, no more tomahawk!
+/obj/item/circular_saw/field_medic
+	name = "bone saw"
+	desc = "Did that sting? SAW-ry!"
+	force = 20
+	icon_state = "bonesaw"
+	icon = 'modular_skyrat/modules/exp_corps/icons/bonesaw.dmi'
+	lefthand_file = 'modular_skyrat/modules/exp_corps/icons/bonesaw_l.dmi'
+	righthand_file = 'modular_skyrat/modules/exp_corps/icons/bonesaw_r.dmi'
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	toolspeed = 0.2
+	throw_range = 3
+
 //Pointman's riot shield. Fixable with 1 plasteel, crafting recipe for broken shield
 /obj/item/shield/riot/pointman
 	name = "pointman shield"
