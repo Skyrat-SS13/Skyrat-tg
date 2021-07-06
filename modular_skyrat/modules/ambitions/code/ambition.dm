@@ -331,7 +331,7 @@
 					for(var/client/staff as anything in GLOB.admins)
 						if(staff.prefs.toggles & SOUND_ADMINHELP)
 							SEND_SOUND(staff, sound('sound/effects/hygienebot_happy.ogg'))
-						window_flash(I, ignorepref = TRUE)
+						window_flash(staff, ignorepref = TRUE)
 				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME|TIMER_STOPPABLE)
 			if("spice")
 				var/new_intensity = text2num(href_list["amount"])
