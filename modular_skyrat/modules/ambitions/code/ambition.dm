@@ -328,8 +328,8 @@
 				message_admins(span_adminhelp("THIS WILL BE AUTO-APPROVED IN FIVE MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT"))
 				if(!auto_approve_honked)
 					auto_approve_honked = TRUE
-					for(var/client/I in GLOB.admins)
-						if(I.prefs.toggles & SOUND_ADMINHELP)
+					for(var/client/staff as anything in GLOB.admins)
+						if(staff.prefs.toggles & SOUND_ADMINHELP)
 							SEND_SOUND(staff, sound('sound/effects/hygienebot_happy.ogg'))
 						window_flash(I, ignorepref = TRUE)
 				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME|TIMER_STOPPABLE)
