@@ -1,30 +1,31 @@
 //skyrat-tg got the BEST dancing pole in whole SS13. Be jealous of us!
 
 /obj/structure/pole
-    name = "stripper pole"
-    desc = "A pole fastened to the ceiling and floor, used to show of ones goods to company."
-    icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
-    icon_state = "pole"
-    density = TRUE
-    anchored = TRUE
-    var/icon_state_inuse
-    layer = 4 //make it the same layer as players.
-    pseudo_z_axis = 9 //stepping onto the pole makes you raise upwards!
-    density = 0 //easy to step up on
-    var/pole_on = FALSE //lights model turned off
-    light_system = STATIC_LIGHT
-    light_range = 3
-    light_power = 1
-    light_color = COLOR_LIGHT_PINK
-    light_on = FALSE
-    var/current_pole_color = "purple"
-    var/static/list/pole_designs
-    var/static/list/polelights = list(
-                                "purple" = COLOR_LIGHT_PINK,
-                                "cyan" = COLOR_CYAN,
-                                "red" = COLOR_RED,
-                                "green" = COLOR_GREEN,
-                                "white" = COLOR_WHITE)//list of colors to choose
+	name = "stripper pole"
+	desc = "A pole fastened to the ceiling and floor, used to show of ones goods to company."
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
+	icon_state = "pole"
+	density = TRUE
+	anchored = TRUE
+	max_integrity = 75
+	var/icon_state_inuse
+	layer = 4 //make it the same layer as players.
+	pseudo_z_axis = 9 //stepping onto the pole makes you raise upwards!
+	density = 0 //easy to step up on
+	var/pole_on = FALSE //lights model turned off
+	light_system = STATIC_LIGHT
+	light_range = 3
+	light_power = 1
+	light_color = COLOR_LIGHT_PINK
+	light_on = FALSE
+	var/current_pole_color = "purple"
+	var/static/list/pole_designs
+	var/static/list/polelights = list(
+								"purple" = COLOR_LIGHT_PINK,
+								"cyan" = COLOR_CYAN,
+								"red" = COLOR_RED,
+								"green" = COLOR_GREEN,
+								"white" = COLOR_WHITE)//list of colors to choose
 
 //to change color of pole by using multitool
 //create radial menu

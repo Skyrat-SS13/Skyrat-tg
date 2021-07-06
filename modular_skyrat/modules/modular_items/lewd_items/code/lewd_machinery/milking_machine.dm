@@ -6,6 +6,7 @@
 	max_buckled_mobs = 1
 	item_chair = null
 	flags_1 = NODECONSTRUCT_1
+	max_integrity = 75
 	var/color_changed = FALSE // Variable to track the color change of the machine by the user. So that you can change it once.
 	var/static/list/milkingmachine_designs
 	//////////////////////

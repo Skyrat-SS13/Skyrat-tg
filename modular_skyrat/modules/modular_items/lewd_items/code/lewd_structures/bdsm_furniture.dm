@@ -3,6 +3,7 @@
 	desc = "This is a latex bed with D-rings on sides. Looks comfortable."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
+	max_integrity = 50
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
@@ -61,6 +62,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "xstand"
 	max_buckled_mobs = 1
+	max_integrity = 75
 	var/stand_state = "open"
 	var/stand_open = FALSE
 	var/list/stand_states = list("open" = "close", "close" = "open")
@@ -132,7 +134,7 @@
 				"<span class='hear'>You hear metal clanking.</span>")
 			// Description of a successful mob attempt to unbuckle one mob with another mob
 		else
-			if(!do_after(user, 2 MINUTES, M)) // Timer to unbuckle the mob by itself
+			if(!do_after(user, 1 MINUTES, M)) // Timer to unbuckle the mob by itself
 				// Place to describe failed attempt
 				return FALSE
 			// Description of a successful mob attempt to unbuckle itself
@@ -262,6 +264,7 @@
 	M.client.movement_keys = lastsaved_keybindings
 	current_keybindings = null
 	lastsaved_keybindings = null
+	M.set_usable_hands(2)
 
 ///////////////////////////
 //xstand construction kit//
