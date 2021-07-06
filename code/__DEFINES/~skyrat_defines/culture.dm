@@ -13,7 +13,8 @@
 						/datum/cultural_info/culture/vatgrown, \
 						/datum/cultural_info/culture/spacer_core, \
 						/datum/cultural_info/culture/spacer_frontier, \
-						/datum/cultural_info/culture/zolmalchi
+						/datum/cultural_info/culture/zolmalchi, \
+						/datum/cultural_info/culture/xenoknockoff
 
 #define CULTURES_LIZARD /datum/cultural_info/culture/lavaland
 
