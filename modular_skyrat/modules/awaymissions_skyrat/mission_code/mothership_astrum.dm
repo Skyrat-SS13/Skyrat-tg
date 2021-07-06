@@ -122,7 +122,7 @@
 	melee_damage_upper = 20
 	icon_state = "abductor_scientist_melee"
 	icon_living = "abductor_scientist_melee"
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -144,8 +144,8 @@
 /mob/living/simple_animal/hostile/abductor/ranged
 	name = "Abductor Scientist"
 	ranged = 1
-	retreat_distance = 5
-	minimum_distance = 5
+	retreat_distance = 3
+	minimum_distance = 3
 	icon_state = "abductor_scientist_gun"
 	icon_living = "abductor_scientist_gun"
 	maxHealth = 120
@@ -207,14 +207,14 @@
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
-	loot = list(/obj/item/storage/firstaid/regular = 25,
-				/obj/item/reagent_containers/syringe/penacid = 10,
+	loot = list(/obj/item/storage/firstaid/regular = 10,
+				/obj/item/reagent_containers/syringe/penacid = 5,
 				/obj/item/reagent_containers/syringe/salacid = 20,
 				/obj/item/reagent_containers/syringe/oxandrolone = 20,
 				/obj/item/stack/medical/suture/medicated = 21,
 				/obj/item/stack/medical/mesh/advanced = 21,
 				/obj/item/clothing/under/chameleon = 20,
-				/obj/item/shield/riot/tele = 27,
+				/obj/item/shield/riot/tele = 12,
 				/obj/item/clothing/shoes/chameleon/noslip = 10)
 
 /obj/effect/spawner/lootdrop/astrum/mid
@@ -241,7 +241,7 @@
 				/obj/item/wirecutters/abductor = 10,
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
-				/obj/effect/gibspawner/generic = 15)
+				/obj/effect/gibspawner/generic = 30)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
@@ -337,8 +337,8 @@
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
 	icon_gib = "syndicate_gib"
-	health = 1500
-	maxHealth = 1500
+	health = 1750
+	maxHealth = 1750
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
