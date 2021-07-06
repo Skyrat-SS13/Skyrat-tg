@@ -152,7 +152,7 @@
 	new /obj/item/storage/belt/military/expeditionary_corps/field_medic(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
-//engineering
+//engineer gaming
 /obj/structure/closet/crate/secure/exp_corps/combat_tech/PopulateContents()
 	new /obj/item/storage/firstaid/emergency(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
@@ -164,6 +164,8 @@
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps/combat_tech(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+	new /obj/item/skillchip/job/engineer(src)
+	new /obj/item/storage/bag/material(src)
 
 //edgy loner with knives
 /obj/structure/closet/crate/secure/exp_corps/marksman/PopulateContents()

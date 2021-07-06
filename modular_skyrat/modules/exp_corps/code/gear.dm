@@ -87,19 +87,35 @@
 
 /obj/item/storage/bag/ammo/marksman
 	name = "marksman's knife pouch"
+	component_type = /datum/component/storage/concrete/marksman
 
 /obj/item/storage/bag/ammo/marksman/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 60
-	STR.max_items = 8
+	STR.max_items = 10
 	STR.display_numerical_stacking = TRUE
 	STR.can_hold = typecacheof(list(/obj/item/kitchen/knife/combat))
 
-/obj/item/storage/bag/ammo/marksman/PopulateContents()
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
+/datum/component/storage/concrete/marksman/open_storage(mob/user)
+	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
+		return FALSE
+	if(locked)
+		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		return
 
+	var/obj/item/kitchen/knife/combat/knife_to_draw = locate() in real_location()
+	if(!knife_to_draw)
+		return ..()
+	remove_from_storage(knife_to_draw, get_turf(user))
+	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
+	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, knife_to_draw)
+	user.visible_message("<span class='warning'>[user] draws [knife_to_draw] from [parent]!</span>", "<span class='notice'>You draw [knife_to_draw] from [parent].</span>")
+
+/obj/item/storage/bag/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
+	new /obj/item/kitchen/knife/combat/marksman(src)
+	new /obj/item/kitchen/knife/combat/marksman(src)
+	new /obj/item/kitchen/knife/combat/marksman(src)
+	new /obj/item/kitchen/knife/combat/marksman(src)
+	new /obj/item/kitchen/knife/combat/marksman(src)
