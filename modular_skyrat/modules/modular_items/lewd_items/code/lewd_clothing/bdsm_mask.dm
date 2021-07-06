@@ -114,8 +114,11 @@
 		if(mask_on == TRUE)
 			var/mob/living/carbon/C = user
 			if(C.wear_mask == src)
-				to_chat(user, "<span class='warning'>You need help taking this off!</span>")
-				return
+				if(!do_after(C, 600, target = src))
+					to_chat(C, "<span class='warning'>You failed to take the gas mask off!</span>")
+					return
+				else
+					to_chat(C, "<span class ='notice'>You took the gas mask off.</span>")
 	add_fingerprint(usr)
 	. = ..()
 
@@ -132,8 +135,11 @@
 				if(iscarbon(usr))
 					if(mask_on == TRUE)
 						if(src == C.wear_mask || . == C.wear_mask)
-							to_chat(usr, "<span class='warning'>You need help taking this off!</span>")
-							return
+							if(!do_after(C, 600, target = src))
+								to_chat(M, "<span class='warning'>You failed to take the gas mask off!</span>")
+								return
+							else
+								to_chat(M, "<span class ='notice'>You took the gas mask off.</span>")
 				if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 					add_fingerprint(usr)
 				. = ..()
