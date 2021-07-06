@@ -1,6 +1,6 @@
 #define LOCKER_FULL -1
 
-/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY CLOSETS.DM IN ANIMATED DOORS
 	name = "closet"
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/closet.dmi'
@@ -90,7 +90,7 @@
 
 /obj/structure/closet/proc/closet_update_overlays(list/new_overlays)
 	. = new_overlays
-	if(enable_door_overlay)
+	if(enable_door_overlay && !is_animating_door) //SKYRAT EDIT CHANGE
 		if(opened && has_opened_overlay)
 			. += "[icon_door_override ? icon_door : icon_state]_open"
 			var/mutable_appearance/door_blocker = mutable_appearance(icon, "[icon_door || icon_state]_open", plane = EMISSIVE_PLANE)
@@ -188,6 +188,7 @@
 	if(!dense_when_open)
 		set_density(FALSE)
 	dump_contents()
+	animate_door(FALSE) //SKYRAT EDIT ADDITION
 	update_appearance()
 	after_open(user, force)
 	return TRUE
@@ -245,6 +246,7 @@
 	playsound(loc, close_sound, close_sound_volume, TRUE, -3)
 	opened = FALSE
 	set_density(TRUE)
+	animate_door(TRUE) //SKYRAT EDIT ADDITION
 	update_appearance()
 	after_close(user)
 	return TRUE
