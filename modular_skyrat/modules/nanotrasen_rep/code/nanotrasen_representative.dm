@@ -127,7 +127,8 @@
 	name = "\proper nanotrasen representative's locker"
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	icon_state = "cc"
-	icon = 'modular_skyrat/modules/aesthetics/closet/closet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
+	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
 
 /obj/structure/closet/secure_closet/nanotrasen_representative/station/PopulateContents()
 	..()
@@ -149,8 +150,8 @@
 	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
-	new /obj/item/clothing/suit/armor/vest/centcom_formal(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/centcom(src)
+	new /obj/item/clothing/suit/armor/vest/centcom_formal/ntrep(src)
+	new /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep(src)
 	new /obj/item/clothing/head/centhat(src)
 	new /obj/item/clothing/head/centcom_cap(src)
 
