@@ -97,7 +97,7 @@
 	icon = 'modular_skyrat/modules/exp_corps/icons/throwing.dmi'
 	icon_state = "throwing"
 	force = 12
-	throwforce = 24
+	throwforce = 30
 
 /obj/item/storage/bag/ammo/marksman
 	name = "marksman's knife pouch"
