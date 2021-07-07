@@ -367,7 +367,8 @@
 				BAN_RESPAWN,
 				BAN_MOB_CONTROL,
 				BAN_GHOST_ROLE_SPAWNER,
-				BAN_GHOST_TAKEOVER
+				BAN_GHOST_TAKEOVER,
+				BAN_EORG
 			),//SKYRAT EDIT ADDITION - EXTRA_BANS
 		)
 		for(var/department in long_job_lists)
