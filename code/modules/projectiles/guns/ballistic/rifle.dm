@@ -17,10 +17,6 @@
 	bolt_drop_sound = 'sound/weapons/gun/rifle/bolt_in.ogg'
 	tac_reloads = FALSE
 
-/obj/item/gun/ballistic/rifle/update_overlays()
-	. = ..()
-	. += "[icon_state]_bolt[bolt_locked ? "_locked" : ""]"
-
 /obj/item/gun/ballistic/rifle/rack(mob/user = null)
 	if (bolt_locked == FALSE)
 		to_chat(user, span_notice("You open the bolt of \the [src]."))
@@ -190,7 +186,11 @@
 	item_flags = NEEDS_PERMIT | DROPDEL | ABSTRACT | NOBLUDGEON
 	flags_1 = NONE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+<<<<<<< HEAD
 	realistic = FALSE
+=======
+	show_bolt_icon = FALSE //It's a magic hand, not a rifle
+>>>>>>> 0654cde0935 (Fixes a good few improper overlay icon_states, fuck gun code edition (#59580))
 
 	mag_type = /obj/item/ammo_box/magazine/internal/arcane_barrage
 
