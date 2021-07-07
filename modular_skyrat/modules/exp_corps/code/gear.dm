@@ -33,6 +33,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	toolspeed = 0.2
 	throw_range = 3
+	w_class = WEIGHT_CLASS_SMALL 
 
 //Pointman's riot shield. Fixable with 1 plasteel, crafting recipe for broken shield
 /obj/item/shield/riot/pointman
