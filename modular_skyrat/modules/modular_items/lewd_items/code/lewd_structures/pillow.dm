@@ -150,7 +150,7 @@
 		C.form_changed = form_changed
 		C.update_icon_state()
 		C.update_icon()
-		del(src)
+		qdel(src)
 	return
 
 ////////////////////////////////////
@@ -191,7 +191,7 @@
 
 	W.update_icon_state()
 	W.update_icon()
-	del(src)
+	qdel(src)
 
 //when we lay on it
 
@@ -324,7 +324,7 @@
 	W.update_icon()
 	C.update_icon_state()
 	C.update_icon()
-	del(src)
+	qdel(src)
 
 //Upgrading pillow pile to a PILLOW PILE!
 /obj/structure/chair/pillow_small/attackby(obj/item/I, mob/living/user, params)

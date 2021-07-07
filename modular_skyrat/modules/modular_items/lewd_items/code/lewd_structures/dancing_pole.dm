@@ -18,6 +18,7 @@
 	light_power = 1
 	light_color = COLOR_LIGHT_PINK
 	light_on = FALSE
+	var/mob/living/actual_user = null
 	var/current_pole_color = "purple"
 	var/static/list/pole_designs
 	var/static/list/polelights = list(
@@ -98,6 +99,7 @@
 		return
 	else
 		obj_flags |= IN_USE
+		actual_user = user
 		user.setDir(SOUTH)
 		user.Stun(100)
 		user.forceMove(src.loc)
@@ -107,35 +109,46 @@
 		obj_flags &= ~IN_USE
 		user.pixel_y = 0
 		user.pixel_z = pseudo_z_axis //incase we are off it when we jump on!
+		actual_user = null
 		icon_state = "[initial(icon_state)]_[current_pole_color]_[pole_on? "on" : "off"]"
 
 /obj/structure/pole/proc/animatepole(mob/living/user)
-	return
-
-/obj/structure/pole/animatepole(mob/living/user)
 
 	if (user.loc != src.loc)
 		return
-	animate(user,pixel_x = -6, pixel_y = 0, time = 10)
-	sleep(20)
-	user.dir = 4
-	animate(user,pixel_x = -6,pixel_y = 24, time = 10)
-	sleep(12)
-	src.layer = 4.01 //move the pole infront for now. better to move the pole, because the character moved behind people sitting above otherwise
-	animate(user,pixel_x = 6,pixel_y = 12, time = 5)
-	user.dir = 8
-	sleep(6)
-	animate(user,pixel_x = -6,pixel_y = 4, time = 5)
-	user.dir = 4
-	src.layer = 4 // move it back.
-	sleep(6)
-	user.dir = 1
-	animate(user,pixel_x = 0, pixel_y = 0, time = 3)
-	sleep(6)
-	user.do_jitter_animation()
-	sleep(6)
-	user.dir = 2
+	if(!QDELETED(src))
+		animate(user,pixel_x = -6, pixel_y = 0, time = 10)
+		sleep(20)
+		user.dir = 4
+	if(!QDELETED(src))
+		animate(user,pixel_x = -6,pixel_y = 24, time = 10)
+		sleep(12)
+		src.layer = 4.01 //move the pole infront for now. better to move the pole, because the character moved behind people sitting above otherwise
+	if(!QDELETED(src))
+		animate(user,pixel_x = 6,pixel_y = 12, time = 5)
+		user.dir = 8
+		sleep(6)
+	if(!QDELETED(src))
+		animate(user,pixel_x = -6,pixel_y = 4, time = 5)
+		user.dir = 4
+		src.layer = 4 // move it back.
+		sleep(6)
+	if(!QDELETED(src))
+		user.dir = 1
+		animate(user,pixel_x = 0, pixel_y = 0, time = 3)
+		sleep(6)
+	if(!QDELETED(src))
+		user.do_jitter_animation()
+		sleep(6)
+		user.dir = 2
 
+/obj/structure/pole/Destroy()
+	. = ..()
+	actual_user.SetStun(0)
+	actual_user.pixel_y = 0
+	actual_user.pixel_z = pseudo_z_axis
+	actual_user.layer = layer
+	actual_user.forceMove(get_turf(src))
 
 /obj/item/polepack
 	name 				= "pink stripper pole flatpack"

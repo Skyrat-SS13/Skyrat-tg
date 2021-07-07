@@ -292,7 +292,7 @@
 				to_chat(user, "<span class='notice'>You construct the x-stand!</span>")
 				var/obj/structure/bed/x_stand/C = new
 				C.loc = loc
-				del(src)
+				qdel(src)
 			return
 	else
 		return ..()
@@ -306,7 +306,7 @@
 			var/obj/item/x_stand_kit/C = new
 			C.loc = loc
 			unbuckle_all_mobs()
-			del(src)
+			qdel(src)
 		return
 	else
 		return ..()
