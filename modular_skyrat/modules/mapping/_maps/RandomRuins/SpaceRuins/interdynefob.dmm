@@ -357,15 +357,20 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
 	},
 /obj/structure/window/reinforced/survival_pod,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 6
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "ds2garbage";
+	name = "disposal conveyor"
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
@@ -3753,11 +3758,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "mW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/conveyor_switch/oneway{
-	dir = 8;
-	id = "ds2garbage";
-	name = "disposal conveyor"
-	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "mX" = (
@@ -4712,7 +4713,10 @@
 	dir = 4;
 	id = "ds2garbage"
 	},
-/obj/machinery/door/window/westright,
+/obj/machinery/door/window/survival_pod{
+	dir = 8;
+	req_access_txt = "150"
+	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "qd" = (
@@ -8780,7 +8784,7 @@
 /obj/machinery/door/airlock/public/glass{
 	name = "Pool"
 	},
-/turf/open/floor/iron/dark/textured_large,
+/turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "Dj" = (
 /obj/structure/lattice/catwalk,
@@ -9070,7 +9074,6 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "Eg" = (
-/obj/machinery/door/window/southleft,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -9078,6 +9081,9 @@
 /obj/machinery/mass_driver{
 	dir = 4;
 	id = "ds2disposals"
+	},
+/obj/machinery/door/window/survival_pod{
+	req_access_txt = "150"
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
@@ -10832,6 +10838,7 @@
 "JT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/window/reinforced/survival_pod,
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "JV" = (
@@ -13748,6 +13755,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/chapel)
 "Tb" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/tile/iron,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "Tc" = (
@@ -22556,7 +22564,7 @@ xE
 TA
 Tb
 wg
-mW
+wX
 xE
 mc
 mc
@@ -22643,7 +22651,7 @@ UG
 xE
 eU
 hg
-Tb
+mW
 AW
 xE
 mc
@@ -22818,7 +22826,7 @@ UG
 UG
 xE
 tc
-wX
+AW
 bt
 rb
 xE
