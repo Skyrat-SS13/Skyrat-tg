@@ -25,6 +25,8 @@
 				C.loc = loc
 				qdel(src)
 			return
+	else
+		return ..()
 
 /obj/structure/bed/bdsm_bed/post_buckle_mob(mob/living/M)
 	density = TRUE
@@ -45,8 +47,10 @@
 			var/obj/item/bdsm_bed_kit/C = new
 			C.loc = loc
 			unbuckle_all_mobs()
-			del(src)
+			qdel(src)
 		return
+	else
+		return ..()
 
 /obj/structure/bed/bdsm_bed/Destroy()
 	unbuckle_all_mobs(TRUE)
@@ -290,6 +294,8 @@
 				C.loc = loc
 				del(src)
 			return
+	else
+		return ..()
 
 /obj/structure/bed/x_stand/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
 	add_fingerprint(user)
@@ -302,3 +308,5 @@
 			unbuckle_all_mobs()
 			del(src)
 		return
+	else
+		return ..()

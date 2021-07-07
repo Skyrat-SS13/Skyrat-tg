@@ -119,7 +119,6 @@
 
 //Changing special secret var
 /obj/machinery/vending/dorms/attackby(obj/item/I, mob/living/user, params)
-	. = ..()
 	if(istype(I, /obj/item/lustwish_discount))
 		user.visible_message("<span class='boldnotice'>After clicking something changes in the LustWish vending machine</span>")
 		card_used = !card_used
@@ -131,7 +130,7 @@
 				default_price = 60
 				extra_price = 250
 	else
-		return
+		return ..()
 
 //using multitool on pole
 /obj/machinery/vending/dorms/multitool_act(mob/living/user, obj/item/I)

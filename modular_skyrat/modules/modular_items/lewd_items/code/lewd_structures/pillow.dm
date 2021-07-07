@@ -209,7 +209,6 @@
 
 //"Upgrading" pillow
 /obj/structure/bed/pillow_tiny/attackby(obj/item/I, mob/living/user, params)
-	.=..()
 	if(istype(I, /obj/item/pillow))
 		var/obj/item/pillow/P = I
 		var/obj/structure/chair/pillow_small/C
@@ -235,7 +234,7 @@
 			to_chat(user, "<span class='notice'>You feel like you don't want to combine pillows of different colors.</span>") //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
-		return
+		return ..()
 
 /////////////////////////////////////
 ///CODE FOR SMALL PILLOW FURNITURE///
@@ -329,7 +328,6 @@
 
 //Upgrading pillow pile to a PILLOW PILE!
 /obj/structure/chair/pillow_small/attackby(obj/item/I, mob/living/user, params)
-	.=..()
 	if(istype(I, /obj/item/pillow))
 		var/obj/item/pillow/P = I
 		var/obj/structure/bed/pillow_large/C
@@ -359,7 +357,7 @@
 			to_chat(user, "<span class='notice'>You feel like you don't want to combine pillows of different colors.</span>") //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
-		return
+		return ..()
 
 /////////////////////////
 ///CODE FOR PILLOW BED///
