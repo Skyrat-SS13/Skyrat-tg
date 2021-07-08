@@ -163,7 +163,6 @@
 		"bowl",
 		"drinking_glass",
 		"shot_glass",
-		"wirebrush",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
@@ -1231,10 +1230,6 @@
 		"light_replacer",
 		"paint_remover",
 		"spraybottle",
-
-		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"wirebrush_adv",
-		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/janitor_trash = 3000) //75% discount for scanning some trash, seems fair right?
