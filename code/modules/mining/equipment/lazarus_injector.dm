@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/**********************Lazarus Injector**********************/
-/obj/item/lazarus_injector//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
 /**
  * Players can revive simplemobs with this.
  *
@@ -10,8 +6,7 @@
  * Becomes malfunctioning when EMP'd.
  * If a hostile mob is revived with a malfunctioning injector, it will be hostile to everyone except whoever revived it and gets robust searching enabled.
  */
-/obj/item/lazarus_injector
->>>>>>> 31942bda5bd (Cleans up and DMdoc's lazarus_injector.dm. (#59937))
+/obj/item/lazarus_injector //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "lazarus injector"
 	desc = "An injector with a cocktail of nanomachines and chemicals, this device can seemingly raise animals from the dead, making them become friendly to the user. Unfortunately, the process is useless on higher forms of life and incredibly costly, so these were hidden in storage until an executive thought they'd be great motivation for some of their employees."
 	icon = 'icons/obj/syringe.dmi'
