@@ -100,14 +100,20 @@
 	var/mutable_appearance/organ_overlay
 	var/organ_overlay_new_icon_state = "" // Organ overlay update optimization
 
-	// Variables to block the rotation of the mob in the machine
-	var/lastsaved_keybindings // Memory of the last saved binding list
-	var/current_keybindings // Memory of the current binding list
-
 // Additional examine text
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
 	. +="<span class='notice'>Why are these metal mounts on the armrests?</span>"
+
+/obj/structure/chair/milking_machine/Destroy()
+	. = ..()
+
+	current_mob.handcuffed.dropped(current_mob)
+	current_mob.set_handcuffed(null)
+	current_mob.update_abstract_handcuffed()
+	current_mob.layer = initial(current_mob.layer)
+	STOP_PROCESSING(SSobj, src)
+	unbuckle_all_mobs()
 
 // Object initialization
 /obj/structure/chair/milking_machine/Initialize()
@@ -212,12 +218,15 @@
 	locks_overlay.icon_state = "locks_closed"
 	locks_overlay.layer = ABOVE_MOB_LAYER
 	add_overlay(locks_overlay)
-
-	//weird way to prevent moving in that thing. This is very important.
-	lastsaved_keybindings = M.client.movement_keys
-	M.client.movement_keys = null
-	var/mob/living/carbon/N = M
-	N.set_usable_hands(0)
+	if(ishuman(current_mob))
+		var/mob/living/carbon/human/victim = current_mob
+		if(current_mob.handcuffed)
+			current_mob.handcuffed.forceMove(loc)
+			current_mob.handcuffed.dropped(current_mob)
+			current_mob.set_handcuffed(null)
+			current_mob.update_handcuffed()
+		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker(victim))
+		current_mob.update_abstract_handcuffed()
 
 	update_overlays()
 	M.layer = BELOW_MOB_LAYER
@@ -230,18 +239,6 @@
 
 // Clear the cache of the organs of the mob and update the state of the machine
 /obj/structure/chair/milking_machine/post_unbuckle_mob(mob/living/M)
-
-	current_mob = null
-	current_selected_organ = null
-	current_breasts = null
-	current_testicles = null
-	current_vagina = null
-
-	breasts_size = null
-	breasts_count = null
-	vagina_size = null
-	testicles_size = null
-
 	cut_overlay(organ_overlay)
 	organ_overlay.icon_state = "none"
 
@@ -253,17 +250,47 @@
 	current_mode = mode_list[1]
 	pump_state = pump_state_list[1]
 
-	M.client.movement_keys = lastsaved_keybindings
-	current_keybindings = null
-	lastsaved_keybindings = null
-
-	var/mob/living/carbon/N = M
-
-	N.set_usable_hands(2)
-
-	M.layer = initial(M.layer)
+	current_mob.layer = initial(current_mob.layer)
 	update_all_visuals()
+
+	current_mob.handcuffed.dropped(current_mob)
+	current_mob.set_handcuffed(null)
+	current_mob.update_abstract_handcuffed()
+
+	current_mob = null
+	current_selected_organ = null
+	current_breasts = null
+	current_testicles = null
+	current_vagina = null
+
+	breasts_size = null
+	breasts_count = null
+	vagina_size = null
+	testicles_size = null
 	return
+
+//for chair handcuffs, no alerts
+/mob/living/carbon/proc/update_abstract_handcuffed()
+	if(handcuffed)
+		drop_all_held_items()
+		stop_pulling()
+		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "handcuffed", /datum/mood_event/handcuffed)
+	else
+		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "handcuffed")
+	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
+	update_inv_handcuffed()
+	update_hud_handcuffed()
+
+/obj/item/restraints/handcuffs/milker
+	name = "chair cuffs"
+	desc = "A thick metal cuff for restraining hands."
+	icon_state = null
+	worn_icon_state = null
+	lefthand_file = null
+	righthand_file = null
+	breakouttime = 45 SECONDS
+	flags_1 = NONE
+	item_flags = DROPDEL | ABSTRACT
 
 /obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/M, mob/user, check_loc = TRUE)
 
@@ -273,32 +300,16 @@
 			if(M.arousal >= 60)
 				if(current_mode != mode_list[1])
 					to_chat(M, "<font color=purple>You are too horny to try to get out</font>")
+					return
 				else
-					if(do_after(M, 1 MINUTES,M))
-
+					if(do_after(src, 15 SECONDS, target = src, timed_action_flags = IGNORE_HELD_ITEM))
 						unbuckle_mob(M)
-						to_chat(M, "<span class='notice'>With great difficulty, you were able to get out of milking machine!</span>")
-						return
-					else
-
-						to_chat(M, "<span class='warning'>You unsuccessfully struggling, chained to the milking machine</span>")
-						return
+					return
 			else
-				to_chat(M, "<span class='notice'>You helplessly try to break free from the grip of the mechanism</span>")
-
-
-				if(do_after(M, 5 SECONDS,M))
-					unbuckle_mob(M)
-					to_chat(M, "<span class='notice'>You got out of the mechanism without much difficulty</span>")
-					return
-				else
-
-					to_chat(M, "<span class='warning'>You unsuccessfully struggling, chained to the milking machine</span>")
-					return
-		else
-			// unbuckle_mob(M)
+				unbuckle_mob(M)
+				return
 	else
-		.=..()
+		. = ..()
 		return
 
 //////////////////////////////////////
@@ -457,9 +468,6 @@
 // Machine Workflow Processor
 /obj/structure/chair/milking_machine/process(delta_time)
 
-	// We take away from the player the ability to move and rotate the mob
-	mob_control_handler()
-
 	// Battery self-charging process processing
 	if (cell == null)
 		current_mode = mode_list[1]
@@ -509,19 +517,6 @@
 		current_mode = mode_list[1]
 		pump_state = pump_state_list[1]
 	update_all_visuals()
-
-// Mob player control handler
-/obj/structure/chair/milking_machine/proc/mob_control_handler()
-
-	if(LAZYLEN(buckled_mobs))
-		var/mob/living/M = buckled_mobs[1]
-		current_keybindings = M.client.movement_keys
-		if(current_keybindings == null)
-			return
-		else
-			lastsaved_keybindings = current_keybindings
-			M.client.movement_keys = null
-			return
 
 // Liquid intake handler
 /obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(delta_time)
@@ -604,12 +599,13 @@
 
 // Machine deconstruction process handler
 /obj/structure/chair/milking_machine/deconstruct()
-	if(LAZYLEN(buckled_mobs))
-		var/mob/living/M = buckled_mobs[1]
-		M.client.movement_keys = lastsaved_keybindings
-		var/mob/living/carbon/N = M
-		N.set_usable_hands(2)
 	STOP_PROCESSING(SSobj, src)
+
+	current_mob.handcuffed.dropped(current_mob)
+	current_mob.set_handcuffed(null)
+	current_mob.update_abstract_handcuffed()
+	current_mob.layer = initial(current_mob.layer)
+	unbuckle_all_mobs()
 
 	if(beaker)
 		beaker.forceMove(drop_location())

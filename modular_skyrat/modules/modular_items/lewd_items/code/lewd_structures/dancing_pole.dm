@@ -144,11 +144,12 @@
 
 /obj/structure/pole/Destroy()
 	. = ..()
-	actual_user.SetStun(0)
-	actual_user.pixel_y = 0
-	actual_user.pixel_z = pseudo_z_axis
-	actual_user.layer = layer
-	actual_user.forceMove(get_turf(src))
+	if(actual_user)
+		actual_user.SetStun(0)
+		actual_user.pixel_y = 0
+		actual_user.pixel_z = pseudo_z_axis
+		actual_user.layer = layer
+		actual_user.forceMove(get_turf(src))
 
 /obj/item/polepack
 	name 				= "pink stripper pole flatpack"
