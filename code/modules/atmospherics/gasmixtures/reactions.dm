@@ -618,7 +618,7 @@
 /datum/gas_reaction/miaster/init_reqs()
 	requirements = list(
 		/datum/gas/miasma = MINIMUM_MOLE_COUNT,
-		"MIN_TEMP" = FIRE_MINIMUM_TEMPERATURE_TO_EXIST //SKYRAT CHANGE, EASIER TO CLEAN MIASMA.
+		"MIN_TEMP" = 366 //SKYRAT CHANGE, EASIER TO CLEAN MIASMA. THIS IS THE TEMEPRATURE AT WHICH THIS WILL KILL MOST BACTERIA, AND THEN SOME.
 		)
 
 /datum/gas_reaction/miaster/react(datum/gas_mixture/air, datum/holder)
