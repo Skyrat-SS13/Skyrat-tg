@@ -351,7 +351,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/book/granter/spell/summonitem,
+/obj/item/melee/baseball_bat/ablative,
 /turf/open/floor/mineral/abductor,
 /area/awaymission/mothership_astrum/halls)
 "fF" = (
@@ -1087,7 +1087,16 @@
 /area/awaymission/mothership_astrum/halls)
 "rG" = (
 /obj/structure/table/abductor,
-/obj/item/gun/energy/alien/astrum,
+/obj/structure/window{
+	dir = 1
+	},
+/obj/structure/window{
+	dir = 4
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/obj/item/organ/cyberimp/arm/medibeam,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "rI" = (
@@ -1464,7 +1473,6 @@
 /area/awaymission/mothership_astrum/deck5)
 "wM" = (
 /obj/structure/table/wood,
-/obj/item/organ/cyberimp/arm/medibeam,
 /turf/open/floor/wood,
 /area/awaymission/mothership_astrum/deck5)
 "wN" = (
@@ -1632,17 +1640,7 @@
 /area/awaymission/mothership_astrum/deck2)
 "zX" = (
 /obj/structure/table/abductor,
-/obj/structure/window,
-/obj/structure/window{
-	dir = 4
-	},
-/obj/structure/window{
-	dir = 8
-	},
-/obj/item/storage/firstaid/regular{
-	pixel_x = 2;
-	pixel_y = 3
-	},
+/obj/item/gun/energy/alien/astrum,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "Ar" = (
@@ -2134,15 +2132,6 @@
 	},
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
-"Fx" = (
-/obj/structure/table/abductor,
-/obj/item/melee/baseball_bat/ablative{
-	desc = "I think this has a cork core, this can't be game-legal, right?";
-	force = 18;
-	name = "solid metal bat"
-	},
-/turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
 "Fy" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/item/ammo_casing/a357,
@@ -2176,8 +2165,7 @@
 /obj/structure/window{
 	dir = 8
 	},
-/obj/item/implanter/tracking/gps,
-/obj/item/implanter/tracking/gps,
+/obj/item/implanter/sad_trombone,
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/halls)
 "FL" = (
@@ -2683,10 +2671,6 @@
 /obj/structure/alien/weeds,
 /obj/item/stack/sheet/iron,
 /turf/open/floor/mineral/abductor,
-/area/awaymission/mothership_astrum/halls)
-"Lt" = (
-/obj/item/organ/heart/cybernetic/tier3,
-/turf/closed/indestructible/alien,
 /area/awaymission/mothership_astrum/halls)
 "LE" = (
 /obj/effect/decal/cleanable/blood/tracks{
@@ -3333,7 +3317,9 @@
 /area/awaymission/mothership_astrum/deck2)
 "RJ" = (
 /obj/structure/alien/weeds/creature,
-/mob/living/simple_animal/hostile/alien/queen/large,
+/mob/living/simple_animal/hostile/alien/queen/large{
+	faction = list("Abductor")
+	},
 /turf/open/floor/plating/abductor2,
 /area/awaymission/mothership_astrum/deck4)
 "RQ" = (
@@ -22995,7 +22981,7 @@ bV
 bV
 bV
 Vh
-rG
+aV
 bV
 bV
 ee
@@ -24003,7 +23989,7 @@ Vh
 ee
 Vh
 aV
-aV
+zX
 Vh
 Vh
 Vh
@@ -24260,7 +24246,7 @@ bV
 ee
 bV
 bV
-Fx
+zt
 bV
 bV
 bV
@@ -28291,7 +28277,7 @@ Yc
 uz
 Zp
 SY
-zX
+uz
 Zp
 MQ
 ee
@@ -31365,7 +31351,7 @@ Zp
 sB
 vs
 Zp
-SY
+rG
 Wf
 Zp
 hh
@@ -38103,7 +38089,7 @@ Vh
 Vh
 bV
 bV
-Lt
+ee
 ee
 ee
 ee
