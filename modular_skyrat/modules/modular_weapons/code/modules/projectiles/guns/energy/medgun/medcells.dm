@@ -18,7 +18,7 @@
 /obj/item/ammo_casing/energy/medical
 	projectile_type = /obj/projectile/energy/medical/default
 	select_name = "Default"
-	fire_sound = 'sound/weapons/taser.ogg'
+	fire_sound = 'sound/effects/stealthoff.ogg'
 	e_cost = 60
 	harmful = FALSE
 
