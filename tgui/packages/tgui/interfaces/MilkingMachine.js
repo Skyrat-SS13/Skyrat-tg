@@ -122,9 +122,6 @@ const MilkingMachineContent = (props, context) => {
                       <Stack.Item>
                         {modeButtonStates('Off', data, palette, context)}
                       </Stack.Item>
-                      <Stack.Item>
-                        {modeButtonStates('Low', data, palette, context)}
-                      </Stack.Item>
                     </Stack>
                   </Stack.Item>
                   <Stack.Item grow={2}>
@@ -136,17 +133,18 @@ const MilkingMachineContent = (props, context) => {
                           State: {mode}
                         </Section>
                       </Stack.Item>
-                      <Stack.Item>
-                        <Stack>
-                          <Stack.Item grow>
-                            {modeButtonStates('Medium', data, palette, context)}
-                          </Stack.Item>
-                          <Stack.Item grow>
-                            {modeButtonStates('Hard', data, palette, context)}
-                          </Stack.Item>
-                        </Stack>
-                      </Stack.Item>
                     </Stack>
+                  </Stack.Item>
+                </Stack>
+                <Stack>
+                  <Stack.Item grow>
+                    {modeButtonStates('Low', data, palette, context)}
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    {modeButtonStates('Medium', data, palette, context)}
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    {modeButtonStates('Hard', data, palette, context)}
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -160,144 +158,138 @@ const MilkingMachineContent = (props, context) => {
               </Stack.Item>
               <Stack.Item>
                 <Stack>
-                  <Stack.Item grow={1}>
-                    <Stack vertical>
-                      <Stack.Item>
-                        {current_selected_organ !== null && (
-                          <Box as="div" m={1}>
-                            <Button
-                              content="Unplug"
-                              textAlign="center"
-                              width="100%"
-                              backgroundColor={palette.ControlButtonOff}
-                              textColor={palette.ControlButtonOffText}
-                              bold
-                              onClick={() => act('unplug')}
-                            />
-                          </Box>
-                        )}
-                        {current_selected_organ === null && (
-                          <Box as="div" m={1}>
-                            <Button
-                              content="Unplug"
-                              textAlign="center"
-                              width="100%"
-                              backgroundColor={palette.ControlButtonOn}
-                              textColor={palette.ControlButtonOnText}
-                              bold
-                            />
-                          </Box>
-                        )}
-                      </Stack.Item>
-                      <Stack.Item textAlign="center">
-                        {organButtonStates('Breasts', data, palette, context)}
-                      </Stack.Item>
-                    </Stack>
-                  </Stack.Item>
                   <Stack.Item grow={2}>
                     <Stack vertical>
-                      <Stack.Item>
-                        {current_selected_organ === null && (
-                          <Section
-                            backgroundColor={palette.SectionBackgroundColor}
-                            textAlign="center">
-                            Organ: none
-                          </Section>
-                        )}
-                        {current_selected_organ !== null && (
-                          <Section
-                            backgroundColor={palette.SectionBackgroundColor}
-                            textAlign="center">
-                            Organ: {current_selected_organ}
-                          </Section>
-                        )}
-                      </Stack.Item>
-                      <Stack.Item>
-                        <Stack>
-                          <Stack.Item grow>
-                            {current_selected_organ !== 'the vagina'
-                              && current_vagina !== null && (
-                              <Box as="div" m={1}>
-                                <Button
-                                  content="Vagina"
-                                  textAlign="center"
-                                  width="100%"
-                                  backgroundColor={palette.ControlButtonOff}
-                                  textColor={palette.ControlButtonOffText}
-                                  bold
-                                  onClick={() => act('setVagina')}
-                                />
-                              </Box>
-                            )}
-                            {current_selected_organ === 'the vagina' && (
-                              <Box as="div" m={1}>
-                                <Button
-                                  content="Vagina"
-                                  textAlign="center"
-                                  width="100%"
-                                  backgroundColor={palette.ControlButtonOn}
-                                  textColor={palette.ControlButtonOnText}
-                                  bold
-                                />
-                              </Box>
-                            )}
-                            {current_vagina === null && (
-                              <Box as="div" m={1}>
-                                <Button
-                                  content="Vagina"
-                                  textAlign="center"
-                                  width="100%"
-                                  backgroundColor={palette.ControlButtonOn}
-                                  textColor={palette.ControlButtonOnText}
-                                  bold
-                                  disabled
-                                />
-                              </Box>
-                            )}
-                          </Stack.Item>
-                          <Stack.Item grow>
-                            {current_selected_organ !== 'the testicles'
-                              && current_testicles !== null && (
-                              <Box as="div" m={1}>
-                                <Button
-                                  content="Testicles"
-                                  textAlign="center"
-                                  width="100%"
-                                  backgroundColor={palette.ControlButtonOff}
-                                  textColor={palette.ControlButtonOffText}
-                                  bold
-                                  onClick={() => act('setTesticles')}
-                                />
-                              </Box>
-                            )}
-                            {current_selected_organ === 'the testicles' && (
-                              <Box as="div" m={1}>
-                                <Button
-                                  content="Testicles"
-                                  textAlign="center"
-                                  width="100%"
-                                  backgroundColor={palette.ControlButtonOn}
-                                  textColor={palette.ControlButtonOnText}
-                                  bold
-                                />
-                              </Box>
-                            )}
-                            {current_testicles === null && (
-                              <Box as="div" m={1}>
-                                <Button
-                                  content="Testicles"
-                                  textAlign="center"
-                                  width="100%"
-                                  backgroundColor={palette.ControlButtonOn}
-                                  textColor={palette.ControlButtonOnText}
-                                  bold
-                                  disabled
-                                />
-                              </Box>
-                            )}
-                          </Stack.Item>
-                        </Stack>
-                      </Stack.Item>
+                      <Stack>
+                        <Stack.Item grow>
+                          {current_selected_organ !== null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Unplug"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOff}
+                                textColor={palette.ControlButtonOffText}
+                                bold
+                                onClick={() => act('unplug')}
+                              />
+                            </Box>
+                          )}
+                          {current_selected_organ === null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Unplug"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOn}
+                                textColor={palette.ControlButtonOnText}
+                                bold
+                              />
+                            </Box>
+                          )}
+                        </Stack.Item>
+                        <Stack.Item grow>
+                          {current_selected_organ === null && (
+                            <Section
+                              backgroundColor={palette.SectionBackgroundColor}
+                              textAlign="center">
+                              Organ: none
+                            </Section>
+                          )}
+                          {current_selected_organ !== null && (
+                            <Section
+                              backgroundColor={palette.SectionBackgroundColor}
+                              textAlign="center">
+                              Organ: {current_selected_organ}
+                            </Section>
+                          )}
+                        </Stack.Item>
+                      </Stack>
+                      <Stack>
+                        <Stack.Item textAlign="center">
+                          {organButtonStates('Breasts', data, palette, context)}
+                        </Stack.Item>
+                        <Stack.Item grow>
+                          {current_selected_organ !== 'the vagina' && current_vagina !== null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Vagina"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOff}
+                                textColor={palette.ControlButtonOffText}
+                                bold
+                                onClick={() => act('setVagina')}
+                              />
+                            </Box>
+                          )}
+                          {current_selected_organ === 'the vagina' && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Vagina"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOn}
+                                textColor={palette.ControlButtonOnText}
+                                bold
+                              />
+                            </Box>
+                          )}
+                          {current_vagina === null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Vagina"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOn}
+                                textColor={palette.ControlButtonOnText}
+                                bold
+                                disabled
+                              />
+                            </Box>
+                          )}
+                        </Stack.Item>
+                        <Stack.Item grow>
+                          {current_selected_organ !== 'the testicles' && current_testicles !== null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Testicles"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOff}
+                                textColor={palette.ControlButtonOffText}
+                                bold
+                                onClick={() => act('setTesticles')}
+                              />
+                            </Box>
+                          )}
+                          {current_selected_organ === 'the testicles' && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Testicles"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOn}
+                                textColor={palette.ControlButtonOnText}
+                                bold
+                              />
+                            </Box>
+                          )}
+                          {current_testicles === null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Testicles"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOn}
+                                textColor={palette.ControlButtonOnText}
+                                bold
+                                disabled
+                              />
+                            </Box>
+                          )}
+                        </Stack.Item>
+                      </Stack>
                     </Stack>
                   </Stack.Item>
                 </Stack>
