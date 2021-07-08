@@ -229,7 +229,7 @@
 	M.pixel_x = M.base_pixel_x
 	M.layer = BELOW_MOB_LAYER
 
-	if(LAZYLEN(buckled_mobs[1]))
+	if(LAZYLEN(buckled_mobs))
 		if(ishuman(buckled_mobs[1]))
 			current_mob = buckled_mobs[1]
 
