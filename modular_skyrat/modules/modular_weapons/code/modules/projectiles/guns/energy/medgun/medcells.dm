@@ -24,8 +24,7 @@
 
 /obj/projectile/energy/medical
 	name = "medical heal shot"
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/projectiles.dmi'
-	icon_state = "electro_bolt"
+	icon_state = "blue_laser"
 	damage = 0
 
 /obj/projectile/energy/medical/upgraded
@@ -46,6 +45,7 @@
 
 /obj/projectile/energy/medical/brute1
 	name = "brute heal shot"
+	icon_state = "red_laser"
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
 	.=..()
@@ -57,6 +57,7 @@
 
 /obj/projectile/energy/medical/burn1
 	name = "burn heal shot"
+	icon_state = "yellow_laser"
 
 /obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
 	.=..()
@@ -68,6 +69,7 @@
 
 /obj/projectile/energy/medical/toxin1
 	name = "toxin heal shot"
+	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/toxin1/on_hit(mob/living/target)
 	.=..()
@@ -81,6 +83,7 @@
 
 /obj/projectile/energy/medical/upgraded/brute2
 	name = "strong brute heal shot"
+	icon_state = "red_laser"
 
 
 /obj/projectile/energy/medical/upgraded/brute2/on_hit(mob/living/target)
@@ -93,6 +96,7 @@
 
 /obj/projectile/energy/medical/upgraded/burn2
 	name = "strong burn heal shot"
+	icon_state = "yellow_laser"
 
 /obj/projectile/energy/medical/upgraded/burn2/on_hit(mob/living/target)
 	.=..()
@@ -115,6 +119,7 @@
 
 /obj/projectile/energy/medical/upgraded/toxin2
 	name = "strong toxin heal shot"
+	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/upgraded/toxin2/on_hit(mob/living/target)
 	.=..()
@@ -128,6 +133,7 @@
 
 /obj/projectile/energy/medical/upgraded/brute3
 	name = "powerful brute heal shot"
+	icon_state = "red_laser"
 
 /obj/projectile/energy/medical/upgraded/brute3/on_hit(mob/living/target)
 	.=..()
@@ -139,6 +145,7 @@
 
 /obj/projectile/energy/medical/upgraded/burn3
 	name = "powerful burn heal shot"
+	icon_state = "yellow_laser"
 
 /obj/projectile/energy/medical/upgraded/burn3/on_hit(mob/living/target)
 	.=..()
@@ -161,6 +168,7 @@
 
 /obj/projectile/energy/medical/upgraded/toxin3
 	name = "powerful toxin heal shot"
+	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/upgraded/toxin3/on_hit(mob/living/target)
 	.=..()
