@@ -82,11 +82,8 @@
 	shaded_charge = 0
 	pin = /obj/item/firing_pin/implant/mindshield
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter/disabler, /obj/item/ammo_casing/energy/electrode)
-<<<<<<< HEAD
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
-=======
 	automatic_charge_overlays = FALSE
->>>>>>> 0654cde0935 (Fixes a good few improper overlay icon_states, fuck gun code edition (#59580))
+	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 
 ///Laser Cannon
 
