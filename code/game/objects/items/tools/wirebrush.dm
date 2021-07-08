@@ -24,7 +24,7 @@
 	var/radiation_on_use = 20
 
 	/// How likely is a critical fail?
-	var/crit_fail_prob = 1
+	var/crit_fail_prob = 0 // SKYRAT EDIT CHANGE -- ORIGINALLY var/crit_fail_prob = 1
 
 	/// The amount of radiation to give to the user if they roll the worst effects. Negative numbers will heal radiation instead!
 	var/crit_fail_rads = 50
