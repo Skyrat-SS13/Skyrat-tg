@@ -107,8 +107,8 @@
 
 /obj/structure/chair/milking_machine/Destroy()
 	. = ..()
-
-	current_mob.handcuffed.dropped(current_mob)
+	if(current_mob.handcuffed)
+		current_mob.handcuffed.dropped(current_mob)
 	current_mob.set_handcuffed(null)
 	current_mob.update_abstract_handcuffed()
 	current_mob.layer = initial(current_mob.layer)
@@ -226,6 +226,7 @@
 			current_mob.set_handcuffed(null)
 			current_mob.update_handcuffed()
 		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker(victim))
+		current_mob.handcuffed.parented_struct = src
 		current_mob.update_abstract_handcuffed()
 
 	update_overlays()
@@ -253,9 +254,10 @@
 	current_mob.layer = initial(current_mob.layer)
 	update_all_visuals()
 
-	current_mob.handcuffed.dropped(current_mob)
-	current_mob.set_handcuffed(null)
-	current_mob.update_abstract_handcuffed()
+	if(current_mob.handcuffed)
+		current_mob.handcuffed.dropped(current_mob)
+		current_mob.set_handcuffed(null)
+		current_mob.update_abstract_handcuffed()
 
 	current_mob = null
 	current_selected_organ = null
@@ -281,6 +283,9 @@
 	update_inv_handcuffed()
 	update_hud_handcuffed()
 
+/obj/item
+	var/obj/structure/parented_struct = null
+
 /obj/item/restraints/handcuffs/milker
 	name = "chair cuffs"
 	desc = "A thick metal cuff for restraining hands."
@@ -291,6 +296,15 @@
 	breakouttime = 45 SECONDS
 	flags_1 = NONE
 	item_flags = DROPDEL | ABSTRACT
+
+/obj/item/restraints/handcuffs/milker/Destroy()
+	. = ..()
+	unbuckle_parent()
+	parented_struct = null
+
+/obj/item/restraints/handcuffs/milker/proc/unbuckle_parent()
+	if(parented_struct)
+		parented_struct.unbuckle_all_mobs()
 
 /obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/M, mob/user, check_loc = TRUE)
 
@@ -601,7 +615,8 @@
 /obj/structure/chair/milking_machine/deconstruct()
 	STOP_PROCESSING(SSobj, src)
 
-	current_mob.handcuffed.dropped(current_mob)
+	if(current_mob.handcuffed)
+		current_mob.handcuffed.dropped(current_mob)
 	current_mob.set_handcuffed(null)
 	current_mob.update_abstract_handcuffed()
 	current_mob.layer = initial(current_mob.layer)

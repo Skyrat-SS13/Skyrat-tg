@@ -73,10 +73,7 @@
 	var/state_thing = "open"
 	var/static/mutable_appearance/xstand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi', "xstand_overlay", LYING_MOB_LAYER)
 	buckle_lying = NO_BUCKLE_LYING //We no need mob lying
-
-	// Variables to block the rotation of the mob in the machine
-	var/lastsaved_keybindings // Memory of the last saved binding list
-	var/current_keybindings // Memory of the current binding list
+	var/mob/living/carbon/human/current_mob = null
 
 //to make it have model when we constructing the thingy
 /obj/structure/bed/x_stand/Initialize()
@@ -86,14 +83,14 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/structure/bed/x_stand/Destroy()
-	if(LAZYLEN(buckled_mobs))
-		var/mob/living/M = buckled_mobs[1]
-		M.client.movement_keys = lastsaved_keybindings
-		var/mob/living/carbon/N = M
-		N.set_usable_hands(2)
+	. = ..()
+	if(current_mob)
+		if(current_mob.handcuffed)
+			current_mob.handcuffed.dropped(current_mob)
+		current_mob.set_handcuffed(null)
+		current_mob.update_abstract_handcuffed()
 	unbuckle_all_mobs(TRUE)
 	STOP_PROCESSING(SSobj, src)
-	. = ..()
 
 /obj/structure/bed/x_stand/update_icon_state()
     . = ..()
@@ -138,9 +135,6 @@
 				"<span class='hear'>You hear metal clanking.</span>")
 			// Description of a successful mob attempt to unbuckle one mob with another mob
 		else
-			if(!do_after(user, 1 MINUTES, M)) // Timer to unbuckle the mob by itself
-				// Place to describe failed attempt
-				return FALSE
 			// Description of a successful mob attempt to unbuckle itself
 			user.visible_message("<span class='notice'>You unbuckle yourself from [src].</span>",\
 				"<span class='hear'>You hear metal clanking.</span>")
@@ -217,31 +211,13 @@
 	update_icon()
 	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
-// Mob player control handler
-/obj/structure/bed/x_stand/proc/mob_control_handler()
-
-	if(LAZYLEN(buckled_mobs))
-		var/mob/living/M = buckled_mobs[1]
-		current_keybindings = M.client.movement_keys
-		if(current_keybindings == null)
-			return
-		else
-			lastsaved_keybindings = current_keybindings
-			M.client.movement_keys = null
-			return
-
-//weird way to prevent rotating in this thing. Yes, this processing added only for that. Make it better if you can, please.
-
-/obj/structure/bed/x_stand/process(delta_time)
-	mob_control_handler()
-
 // Machine deconstruction process handler
 /obj/structure/bed/x_stand/deconstruct()
-	if(LAZYLEN(buckled_mobs))
-		var/mob/living/M = buckled_mobs[1]
-		M.client.movement_keys = lastsaved_keybindings
-		var/mob/living/carbon/N = M
-		N.set_usable_hands(2)
+	if(current_mob)
+		if(current_mob.handcuffed)
+			current_mob.handcuffed.dropped(current_mob)
+		current_mob.set_handcuffed(null)
+		current_mob.update_abstract_handcuffed()
 	unbuckle_all_mobs()
 	STOP_PROCESSING(SSobj, src)
 	qdel(src)
@@ -253,11 +229,19 @@
 	M.pixel_x = M.base_pixel_x
 	M.layer = BELOW_MOB_LAYER
 
-	//weird way to prevent moving in that thing. This is very important.
-	lastsaved_keybindings = M.client.movement_keys
-	M.client.movement_keys = null
-	var/mob/living/carbon/N = M
-	N.set_usable_hands(0)
+	if(LAZYLEN(buckled_mobs[1]))
+		if(ishuman(buckled_mobs[1]))
+			current_mob = buckled_mobs[1]
+
+	if(current_mob)
+		if(current_mob.handcuffed)
+			current_mob.handcuffed.forceMove(loc)
+			current_mob.handcuffed.dropped(current_mob)
+			current_mob.set_handcuffed(null)
+			current_mob.update_handcuffed()
+		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker(current_mob))
+		current_mob.handcuffed.parented_struct = src
+		current_mob.update_abstract_handcuffed()
 
 //Restore the position of the mob after unbuckling.
 /obj/structure/bed/x_stand/post_unbuckle_mob(mob/living/M)
@@ -265,10 +249,12 @@
 	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
 	M.layer = initial(M.layer)
 
-	M.client.movement_keys = lastsaved_keybindings
-	current_keybindings = null
-	lastsaved_keybindings = null
-	M.set_usable_hands(2)
+	if(current_mob)
+		if(current_mob.handcuffed)
+			current_mob.handcuffed.dropped(current_mob)
+		current_mob.set_handcuffed(null)
+		current_mob.update_abstract_handcuffed()
+	current_mob = null
 
 ///////////////////////////
 //xstand construction kit//
