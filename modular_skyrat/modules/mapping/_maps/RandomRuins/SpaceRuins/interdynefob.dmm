@@ -896,6 +896,15 @@
 "dG" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
+/obj/structure/table,
+/obj/item/storage/box/pillbottles{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/obj/item/storage/box/gloves{
+	pixel_x = 1;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "dH" = (
@@ -1892,6 +1901,18 @@
 	},
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
+"hq" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 8
+	},
+/obj/machinery/button/door/directional/south{
+	id = "tiderrepellenteast"
+	},
+/turf/open/floor/iron/smooth_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "hr" = (
 /obj/effect/turf_decal/skyrat_decals/departments/bridge{
 	dir = 8
@@ -4808,6 +4829,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/visible{
 	dir = 5
 	},
+/obj/item/wrench,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "sd" = (
@@ -5005,6 +5027,17 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
+"sM" = (
+/obj/structure/table,
+/obj/item/storage/box/medipens{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/storage/box/rxglasses{
+	pixel_y = 3
+	},
+/turf/open/floor/iron/white,
+/area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "sN" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/telescreen/entertainment/directional/west,
@@ -5253,6 +5286,14 @@
 /obj/item/clothing/glasses/trickblindfold/hamburg,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+"tJ" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/fans/tiny/forcefield,
+/obj/machinery/door/poddoor{
+	id = "tiderrepellenteast"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "tK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
 	dir = 8
@@ -6599,6 +6640,9 @@
 "yu" = (
 /obj/structure/fans/tiny/forcefield,
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/poddoor{
+	id = "tiderrepellentwest"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "yv" = (
@@ -9573,9 +9617,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Ji" = (
 /obj/structure/safe,
-/obj/item/storage/book/bible/syndicate,
 /obj/item/gun/ballistic/automatic/c20r/toy/unrestricted/riot,
 /obj/item/card/emagfake,
+/obj/item/paper{
+	info = "IOU - One 'gamer loot'"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "Jj" = (
@@ -9969,6 +10015,9 @@
 "KF" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/fans/tiny/forcefield,
+/obj/machinery/door/poddoor{
+	id = "tiderrepellentwest"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "KG" = (
@@ -10312,6 +10361,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/northeast)
+"LM" = (
+/obj/structure/fans/tiny/forcefield,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/poddoor{
+	id = "tiderrepellenteast"
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "LN" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
@@ -12541,6 +12598,8 @@
 	req_access = null;
 	req_access_txt = "150"
 	},
+/obj/item/storage/bag/chemistry,
+/obj/item/storage/bag/chemistry,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
 "TE" = (
@@ -12747,6 +12806,18 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
+"Us" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
+/obj/machinery/button/door/directional/south{
+	id = "tiderrepellentwest"
+	},
+/turf/open/floor/iron/smooth_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Ut" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white/side{
@@ -13944,7 +14015,9 @@
 /turf/open/floor/plating/catwalk_floor/plated/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "YL" = (
-/obj/machinery/vending/wardrobe/chap_wardrobe,
+/obj/structure/closet/wardrobe/chaplain_black{
+	desc = "It's a storage unit for Interdyne-approved religious attire."
+	},
 /turf/open/floor/iron/grimy,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/chapel)
 "YM" = (
@@ -17724,7 +17797,7 @@ Ws
 Ws
 Zl
 Ws
-Ws
+Us
 pZ
 Vt
 mc
@@ -18693,7 +18766,7 @@ Kt
 Kt
 rE
 Js
-KF
+tJ
 mc
 mc
 Vt
@@ -18781,7 +18854,7 @@ tt
 Kt
 Kt
 rE
-yu
+LM
 mc
 mc
 Vt
@@ -18869,7 +18942,7 @@ ai
 lA
 xO
 Ld
-yu
+LM
 mc
 mc
 Vt
@@ -18957,7 +19030,7 @@ cG
 Xx
 xO
 qo
-yu
+LM
 Vt
 Vt
 Vt
@@ -19045,7 +19118,7 @@ xs
 fY
 xO
 Ns
-yu
+LM
 mc
 mc
 Vt
@@ -19133,7 +19206,7 @@ tt
 Kt
 Kt
 rE
-yu
+LM
 mc
 mc
 Vt
@@ -19221,7 +19294,7 @@ Kt
 Kt
 rE
 Mf
-KF
+tJ
 mc
 mc
 Vt
@@ -19308,7 +19381,7 @@ Sq
 Sq
 DY
 Sq
-Sq
+hq
 pZ
 Vt
 mc
@@ -21305,7 +21378,7 @@ ig
 TD
 wz
 fP
-MB
+sM
 GK
 vg
 kw
