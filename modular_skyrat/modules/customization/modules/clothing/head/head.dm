@@ -293,6 +293,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "flowerpin"
+	w_class = WEIGHT_CLASS_SMALL
 	mutant_variants = NONE
 	var/list/poly_colors = list("FFF", "FFF", "FFF")
 
