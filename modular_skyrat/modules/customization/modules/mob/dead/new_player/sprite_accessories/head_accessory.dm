@@ -3,6 +3,7 @@
 	key = "head_acc"
 	generic = "Head Accessory"
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/head_accessory/none
 	name = "None"
