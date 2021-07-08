@@ -155,11 +155,11 @@
 	switch(state_thing)
 		if("deflated")
 			bag_state = "deflated"
-			breakouttime = 3000
+			breakouttime = 2 MINUTES
 			slowdown = 4 //moving like a caterpillar now
 		if("inflated")
 			bag_state = "inflated"
-			breakouttime = 6000 //do not touch
+			breakouttime = 5 MINUTES //do not touch
 			slowdown = 14 //it should be almost impossible to move in that thing, so this big slowdown have reasons.
 	// appearance_update()
 
