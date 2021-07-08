@@ -206,7 +206,7 @@ const MilkingMachineContent = (props, context) => {
                         </Stack.Item>
                       </Stack>
                       <Stack>
-                        <Stack.Item textAlign="center">
+                        <Stack.Item grow>
                           {organButtonStates('Breasts', data, palette, context)}
                         </Stack.Item>
                         <Stack.Item grow>
