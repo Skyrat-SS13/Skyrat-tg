@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	specific_heat = 20
 	name = "Miasma"
 	gas_overlay = "miasma"
-	moles_visible = MOLES_GAS_VISIBLE * 60
+	moles_visible = MOLES_GAS_VISIBLE * 10 //SKYRAT CHANGE, 60 TO 10.
 	rarity = 250
 	base_value = 2
 

@@ -309,7 +309,7 @@
 	if(breath_gases[/datum/gas/miasma])
 		var/miasma_partialpressure = (breath_gases[/datum/gas/miasma][MOLES]/breath.total_moles())*breath_pressure
 
-		if(prob(1 * miasma_partialpressure))
+		if(miasma_partialpressure >= 5 && prob(1 * miasma_partialpressure)) //SKYRAT CHANGE: MIASMA CHANCE TWEAKS
 			var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(2,3)
 			miasma_disease.name = "Unknown"
 			ForceContractDisease(miasma_disease, TRUE, TRUE)
