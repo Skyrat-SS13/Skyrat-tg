@@ -43,7 +43,6 @@ SUBSYSTEM_DEF(ticker)
 
 	var/news_report
 
-	var/late_join_disabled
 
 	var/roundend_check_paused = FALSE
 
@@ -64,6 +63,7 @@ SUBSYSTEM_DEF(ticker)
 	var/discord_alerted = FALSE //SKYRAT EDIT - DISCORD PING SPAM PREVENTION
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
+	load_mentors() // SKYRAT EDIT ADDITION - MENTORS STOPPED LOADING AUTOMATICALLY DUE TO RECENT TG CHANGES
 	var/list/byond_sound_formats = list(
 		"mid"  = TRUE,
 		"midi" = TRUE,
