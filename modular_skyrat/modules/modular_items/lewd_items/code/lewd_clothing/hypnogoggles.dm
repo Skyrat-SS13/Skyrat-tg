@@ -21,16 +21,22 @@
 		return
 	if(iscarbon(victim) && victim.client?.prefs.erp_pref == "Yes")
 		if(codephrase != "")
-			victim.gain_trauma(new /datum/brain_trauma/hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
+			victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
 		else
 			codephrase = "Obey"
-			victim.gain_trauma(new /datum/brain_trauma/hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
+			victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
 
 /obj/item/clothing/glasses/hypno/dropped(mob/user)//Removing hypnosis on unequip
 	. = ..()
 	if(victim.glasses == src)
-		victim.cure_trauma_type(/datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_BASIC)
+		victim.cure_trauma_type(/datum/brain_trauma/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
 		victim = null
+
+/obj/item/clothing/glasses/hypno/Destroy()
+	. = ..()
+	if(victim)
+		if(victim.glasses == src)
+			victim.cure_trauma_type(/datum/brain_trauma/induced_hypnosis, TRAUMA_RESILIENCE_BASIC)
 
 /obj/item/clothing/glasses/hypno/attack_self(mob/user)//Setting up hypnotising phrase
 	. = ..()
@@ -81,3 +87,57 @@
 	. = ..()
 	icon_state = icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
+
+/datum/brain_trauma/induced_hypnosis
+	name = "Hypnosis"
+	desc = "Patient's unconscious is completely enthralled by a word or sentence, focusing their thoughts and actions on it, appears to be induced by something they're wearing."
+	scan_desc = "epileptic induced looping thought pattern"
+	gain_text = ""
+	lose_text = ""
+	resilience = TRAUMA_RESILIENCE_BASIC
+
+	var/hypnotic_phrase = ""
+	var/regex/target_phrase
+
+/datum/brain_trauma/induced_hypnosis/New(phrase)
+	if(!phrase)
+		qdel(src)
+	hypnotic_phrase = phrase
+	try
+		target_phrase = new("(\\b[REGEX_QUOTE(hypnotic_phrase)]\\b)","ig")
+	catch(var/exception/e)
+		stack_trace("[e] on [e.file]:[e.line]")
+		qdel(src)
+	..()
+
+/datum/brain_trauma/induced_hypnosis/on_gain()
+	log_game("[key_name(owner)] was hypnogoggled'.")
+	to_chat(owner, "<span class='reallybig hypnophrase'>[hypnotic_phrase]</span>")
+	to_chat(owner, "<span class='notice'>[pick("You feel your thoughts focusing on this phrase... you can't seem to get it out of your head.",\
+												"Your head hurts, but this is all you can think of. It must be vitally important.",\
+												"You feel a part of your mind repeating this over and over. You need to follow these words.",\
+												"Something about this sounds... right, for some reason. You feel like you should follow these words.",\
+												"These words keep echoing in your mind. You find yourself completely fascinated by them.")]</span>")
+	to_chat(owner, "<span class='boldwarning'>You've been hypnotized by this sentence. You must follow these words. If it isn't a clear order, you can freely interpret how to do so,\
+										as long as you act like the words are your highest priority.</span>")
+	var/atom/movable/screen/alert/hypnosis/hypno_alert = owner.throw_alert("hypnosis", /atom/movable/screen/alert/hypnosis)
+	hypno_alert.desc = "\"[hypnotic_phrase]\"... your mind seems to be fixated on this concept."
+	..()
+
+/datum/brain_trauma/induced_hypnosis/on_lose()
+	log_game("[key_name(owner)] is no longer hypnogoggled.")
+	to_chat(owner, span_userdanger("You suddenly snap out of your hypnosis. The phrase '[hypnotic_phrase]' no longer feels important to you."))
+	owner.clear_alert("hypnosis")
+	..()
+
+/datum/brain_trauma/induced_hypnosis/on_life(delta_time, times_fired)
+	..()
+	if(DT_PROB(1, delta_time))
+		switch(rand(1,2))
+			if(1)
+				to_chat(owner, span_hypnophrase("<i>...[lowertext(hypnotic_phrase)]...</i>"))
+			if(2)
+				new /datum/hallucination/chat(owner, TRUE, FALSE, span_hypnophrase("[hypnotic_phrase]"))
+
+/datum/brain_trauma/induced_hypnosis/handle_hearing(datum/source, list/hearing_args)
+	hearing_args[HEARING_RAW_MESSAGE] = target_phrase.Replace(hearing_args[HEARING_RAW_MESSAGE], span_hypnophrase("$1"))
