@@ -164,7 +164,7 @@
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
-	actions += new /datum/action/item_action/dispatch_ticket_new(src)
+	new /datum/action/item_action/dispatch_ticket_new(src)
 
 /obj/item/radio/headset/examine(mob/user)
 	. = ..()
