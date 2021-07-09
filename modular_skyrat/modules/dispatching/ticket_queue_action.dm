@@ -1,10 +1,20 @@
 /datum/action/item_action/dispatch_ticket_new
 	name = "Report Incident/Issue"
 	button_icon_state = "vote"
+	var/datum/tgui/ui_cache
 
 /datum/action/item_action/dispatch_ticket_new/Trigger()
 	if(!ishuman(usr)) return
-	SSdispatch.ui_interact(usr, null, "ticket-new")
+	if(ui_cache) SStgui.close_uis(src)
+	ui_cache = ui_interact(usr, ui_cache)
+
+/datum/action/item_action/dispatch_ticket_new/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DispatchTicket")
+		ui.open()
+
+/obj/item/radio/headset/var/datum/tgui/ui_cache
 
 /obj/item/radio/headset/CtrlShiftClick(mob/living/user)
 	if(!istype(user))
@@ -13,7 +23,7 @@
 	if(!holder_roles.len)
 		to_chat(user, span_warning("You are not authorized to access the Dispatch Browser."))
 		return
-	SSdispatch.ui_interact(user, null, "ticket-manage")
+	ui_cache = SSdispatch.ui_interact(user, ui_cache)
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
