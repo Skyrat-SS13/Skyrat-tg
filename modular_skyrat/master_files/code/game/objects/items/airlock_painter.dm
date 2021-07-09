@@ -30,7 +30,10 @@
 		"External" = /obj/machinery/door/airlock/external,
 		"External Maintenance"= /obj/machinery/door/airlock/maintenance/external,
 		"Virology" = /obj/machinery/door/airlock/virology,
-		"Standard" = /obj/machinery/door/airlock
+//SKYRAT EDIT ADDITION//
+		"Standard" = /obj/machinery/door/airlock,
+		"Corporate" = /obj/machinery/door/airlock/corporate
+//SKYRAT EDIT ADDITION END
 	)
 
 	power_use_amount = POWER_CELL_USE_HIGH
