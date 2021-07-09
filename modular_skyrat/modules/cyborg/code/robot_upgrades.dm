@@ -189,9 +189,9 @@
 		return
 	for(var/obj/item/stack/sheet/plasteel/cyborg/plasteel_holder in borgo.model.modules)
 		borgo.model.remove_module(plasteel_holder, TRUE)
-	for(var/obj/item/stack/sheet/titanium/cyborg/titanium_holder in borgo.model.modules)
+	for(var/obj/item/stack/sheet/titaniumglass/cyborg/titanium_holder in borgo.model.modules)
 		borgo.model.remove_module(titanium_holder, TRUE)
 	for(var/datum/robot_energy_storage/plasteel/plasteel_energy in borgo.model.storages)
 		qdel(plasteel_energy)
-	for(var/datum/robot_energy_storage/titaniumglass/titanium_energy in borgo.model.storages)
+	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
 		qdel(titanium_energy)
