@@ -1,3 +1,5 @@
+#define MAX_DETAIL_LENGTH 128
+
 /datum/dispatch_ticket
 	var/creator
 	var/creator_spoofed
@@ -22,20 +24,20 @@
 /datum/dispatch_ticket/New(mob/user, list/tdata)
 	origin = user
 	if(tdata["creator-spoofed"])
-		creator = tdata["creator"]
+		creator = truncate(sanitize(tdata["creator"]), MAX_DETAIL_LENGTH)
 	else creator = "[user]"
 	if(tdata["location-spoofed"])
-		location = tdata["location"]
+		location = truncate(sanitize(tdata["location"]), MAX_DETAIL_LENGTH)
 	else location = "[get_area(user)]"
-	priority = tdata["priority"]
-	ticket_type = tdata["type"]
-	title = tdata["title"]
-	extra = tdata["extra"]
-	has_image = tdata["imageAttached"]
-	image = tdata["image"]
-	suspect = tdata["suspect"]
-	suspect_name = tdata["suspectName"]
-	suspect_desc = tdata["suspectDesc"]
+	priority = truncate(sanitize(tdata["priority"]), MAX_DETAIL_LENGTH)
+	ticket_type = truncate(sanitize(tdata["type"]), MAX_DETAIL_LENGTH)
+	title = truncate(sanitize(tdata["title"]), MAX_DETAIL_LENGTH)
+	extra = truncate(sanitize(tdata["extra"]), MAX_DETAIL_LENGTH)
+	has_image = truncate(sanitize(tdata["imageAttached"]), MAX_DETAIL_LENGTH)
+	image = truncate(sanitize(tdata["image"]), MAX_DETAIL_LENGTH)
+	suspect = truncate(sanitize(tdata["suspect"]), MAX_DETAIL_LENGTH)
+	suspect_name = truncate(sanitize(tdata["suspectName"]), MAX_DETAIL_LENGTH)
+	suspect_desc = truncate(sanitize(tdata["suspectDesc"]), MAX_DETAIL_LENGTH)
 	status = SSDISPATCH_TICKET_STATUS_OPEN
 
 /datum/dispatch_ticket/proc/handle(mob/user, alert = TRUE)
