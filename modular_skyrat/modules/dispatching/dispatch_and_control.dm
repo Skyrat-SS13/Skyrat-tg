@@ -6,18 +6,7 @@
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
-	actions += new /datum/action/item_action/dispatch_management(src)
-
-/// Yes I know this is ugly. I dont care. ~ZephyrTFA
-/datum/action/item_action/dispatch_management/Grant(mob/action_owner)
-	if(!ishuman(action_owner))
-		return
-	var/mob/living/carbon/human/user = action_owner
-	var/obj/item/radio/headset = user.ears
-	if(!istype(headset))
-		return
-	if(RADIO_CHANNEL_COMMAND in headset.channels)
-		return ..()
+	new /datum/action/item_action/dispatch_management(src)
 
 /datum/action/item_action/dispatch_management/Trigger()
 	var/mob/user = usr
