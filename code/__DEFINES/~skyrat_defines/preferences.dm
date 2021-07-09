@@ -12,6 +12,6 @@
 #define BREAST_ENLARGEMENT (2<<4)
 #define PENIS_ENLARGEMENT (2<<5)
 #define FORCED_FEM (2<<6)
-#define	FORCED_MALE (2<<7)
+#define FORCED_MALE (2<<7)
 #define BIMBO_PREF (2<<8)
 //SKYRAT ADDITION END
