@@ -239,7 +239,7 @@
 	using.screen_loc = ui_erp_inventory
 	using.hud = src
 	// When creating a character, we will check if the ERP is enabled on the client, if not, then the ERP button is immediately invisible
-	if(owner.client?.prefs.erp_pref != "Yes")
+	if(owner.client?.prefs.skyrat_toggles & SEXTOYS_PREF)
 		using.invisibility = 100
 	static_inventory += using
 	//SKYRAT EDIT ADDITION END
@@ -470,7 +470,7 @@
 		if(H.head) screenmob.client.screen -= H.head
 
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-	if(screenmob.hud_used.ERP_inventory_shown && screenmob.hud_used.hud_shown && H.client.prefs?.erp_pref == "Yes")
+	if(screenmob.hud_used.ERP_inventory_shown && screenmob.hud_used.hud_shown && H.client?.prefs.skyrat_toggles & SEXTOYS_PREF)
 		if(H.vagina)
 			// This shity code need for hanlde an moving UI stuff when default inventory expand/collapse
 			if(screenmob.hud_used.inventory_shown && screenmob.hud_used)
@@ -535,7 +535,7 @@
 				screenmob.client.screen += H.r_store
 
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(H.client.prefs?.erp_pref == "Yes")
+			if(H.client?.prefs.skyrat_toggles & SEXTOYS_PREF)
 				if(H.vagina)
 					H.vagina.screen_loc = ui_vagina
 					screenmob.client.screen += H.vagina
