@@ -2,8 +2,14 @@
 	name = "Report Incident/Issue"
 	button_icon_state = "vote"
 	var/datum/tgui/ui_cache
+	var/last_trigger
+	var/time_per_trigger = 2 SECONDS
+
+/datum/action/item_action/dispatch_ticket_new/IsAvailable()
+	return world.time > last_trigger + time_per_trigger
 
 /datum/action/item_action/dispatch_ticket_new/Trigger()
+	last_trigger = world.time
 	if(!ishuman(usr)) return
 	if(ui_cache) SStgui.close_uis(src)
 	ui_cache = ui_interact(usr, ui_cache)

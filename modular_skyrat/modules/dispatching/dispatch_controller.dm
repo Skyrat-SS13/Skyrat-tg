@@ -12,15 +12,12 @@ SUBSYSTEM_DEF(dispatch)
 
 	var/list/ui_data_by_mob
 
-	var/list/datum/action/item_action/dispatch_management/dispatch_online
-
 /datum/controller/subsystem/dispatch/Initialize()
 	. = ..()
 	load_job_cache()
 	holder_update()
 	tickets = list()
 	ui_data_by_mob = list()
-	dispatch_online = list()
 	templates = load_template_instances()
 
 ///Creates and stores an instance of every template type; given its not abstract

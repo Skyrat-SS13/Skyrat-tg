@@ -3,12 +3,19 @@
 	button_icon_state = "round_end"
 	var/dispatch_type
 	var/current_filter = "Nothing"
+	var/last_trigger
+	var/time_per_trigger = 2 SECONDS
+
+/datum/action/item_action/dispatch_management/IsAvailable()
+	return world.time > last_trigger + time_per_trigger
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
 	new /datum/action/item_action/dispatch_management(src)
 
+
 /datum/action/item_action/dispatch_management/Trigger()
+	last_trigger = world.time
 	var/mob/user = usr
 	if(!istype(user))
 		return
@@ -16,10 +23,6 @@
 		to_chat(user, span_boldwarning("You must be Active to sign into Dispatch and Control!"))
 		return
 	dispatch_type = SSdispatch.ui_data_by_mob[user]["mdata"]["holderActiveType"]
-	if(SSdispatch.dispatch_online[dispatch_type] && SSdispatch.dispatch_online[dispatch_type] != src)
-		to_chat(user, span_boldwarning("Dispatch for '[dispatch_type]' already active!"))
-		return
-	SSdispatch.dispatch_online[dispatch_type] = src
 	ui_interact(user)
 
 /datum/action/item_action/dispatch_management/proc/get_all_holder_statuses()
