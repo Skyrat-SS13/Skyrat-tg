@@ -233,17 +233,6 @@
 /obj/machinery/door/airlock/virology
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/virology.dmi'
 
-//STATION CUSTOM ARILOCKS
-/obj/machinery/door/airlock/corporate
-	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/corporate.dmi'
-	assemblytype = /obj/structure/door_assembly/door_assembly_corporate
-	normal_integrity = 450
-
-/obj/machinery/door/airlock/corporate/glass
-	opacity = FALSE
-	glass = TRUE
-	normal_integrity = 400
-
 //STATION MINERAL AIRLOCKS
 /obj/machinery/door/airlock/gold
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/gold.dmi'
@@ -412,12 +401,6 @@
 
 /obj/structure/door_assembly/door_assembly_wood
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/wood.dmi'
-
-/obj/structure/door_assembly/door_assembly_corporate
-	name = "corporate airlock assembly"
-	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/corporate.dmi'
-	glass_type = /obj/machinery/door/airlock/corporate/glass
-	airlock_type = /obj/machinery/door/airlock/corporate
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef AIRLOCK_LIGHT_POWER

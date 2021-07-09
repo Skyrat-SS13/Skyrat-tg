@@ -470,10 +470,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"External" = get_airlock_image(/obj/machinery/door/airlock/external),
 		"External Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/external),
 		"Airtight Hatch" = get_airlock_image(/obj/machinery/door/airlock/hatch),
-//SKYRAT EDIT BEGIN//
-		"Maintenance Hatch" = get_airlock_image(/obj/machinery/door/airlock/maintenance_hatch),
-		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate)
-//SKYRAT EDIT END//
+		"Maintenance Hatch" = get_airlock_image(/obj/machinery/door/airlock/maintenance_hatch)
 	)
 
 	var/list/glass_choices = list(
@@ -489,10 +486,7 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Mining" = get_airlock_image(/obj/machinery/door/airlock/mining/glass),
 		"Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/glass),
 		"External" = get_airlock_image(/obj/machinery/door/airlock/external/glass),
-//SKYRAT EDIT BEGIN//
-		"External Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/external/glass),
-		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate/glass)
-//SKYRAT EDIT END//
+		"External Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/external/glass)
 	)
 
 	var/airlockcat = show_radial_menu(user, remote_anchor || src, solid_or_glass_choices, custom_check = CALLBACK(src, .proc/check_menu, user, remote_anchor), require_near = remote_anchor ? FALSE : TRUE, tooltips = TRUE)
@@ -533,10 +527,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 						airlock_type = /obj/machinery/door/airlock/hatch
 					if("Maintenance Hatch")
 						airlock_type = /obj/machinery/door/airlock/maintenance_hatch
-//SKYRAT EDIT BEGIN//
-					if("Corporate")
-						airlock_type = /obj/machinery/door/airlock/corporate
-//SKYRAT EDIT END//
 				airlock_glass = FALSE
 			else
 				airlock_type = /obj/machinery/door/airlock
@@ -572,10 +562,6 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 						airlock_type = /obj/machinery/door/airlock/external/glass
 					if("External Maintenance")
 						airlock_type = /obj/machinery/door/airlock/maintenance/external/glass
-//SKYRAT EDIT BEGIN//
-					if("Corporate")
-						airlock_type = /obj/machinery/door/airlock/corporate/glass
-//SKYRAT EDIT END//
 				airlock_glass = TRUE
 			else
 				airlock_type = /obj/machinery/door/airlock/glass
