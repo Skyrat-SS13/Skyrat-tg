@@ -114,7 +114,7 @@
 
 /mob/living/carbon/human/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = TRUE, silent = FALSE)
 	. = ..() //See mob.dm for an explanation on this and some rage about people copypasting instead of calling ..() like they should.
-	if(I == gloves)
+	if((I == gloves) && (I != null))
 		if(I.breakouttime) //when unequipping a ball mittens
 			REMOVE_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 			drop_all_held_items()
