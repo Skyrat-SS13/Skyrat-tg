@@ -107,11 +107,12 @@
 
 /obj/structure/chair/milking_machine/Destroy()
 	. = ..()
-	if(current_mob.handcuffed)
-		current_mob.handcuffed.dropped(current_mob)
-	current_mob.set_handcuffed(null)
-	current_mob.update_abstract_handcuffed()
-	current_mob.layer = initial(current_mob.layer)
+	if(current_mob)
+		if(current_mob.handcuffed)
+			current_mob.handcuffed.dropped(current_mob)
+		current_mob.set_handcuffed(null)
+		current_mob.update_abstract_handcuffed()
+		current_mob.layer = initial(current_mob.layer)
 	STOP_PROCESSING(SSobj, src)
 	unbuckle_all_mobs()
 
@@ -289,8 +290,6 @@
 /obj/item/restraints/handcuffs/milker
 	name = "chair cuffs"
 	desc = "A thick metal cuff for restraining hands."
-	icon_state = null
-	worn_icon_state = null
 	lefthand_file = null
 	righthand_file = null
 	breakouttime = 45 SECONDS
@@ -613,14 +612,6 @@
 
 // Machine deconstruction process handler
 /obj/structure/chair/milking_machine/deconstruct()
-	STOP_PROCESSING(SSobj, src)
-
-	if(current_mob.handcuffed)
-		current_mob.handcuffed.dropped(current_mob)
-	current_mob.set_handcuffed(null)
-	current_mob.update_abstract_handcuffed()
-	current_mob.layer = initial(current_mob.layer)
-	unbuckle_all_mobs()
 
 	if(beaker)
 		beaker.forceMove(drop_location())

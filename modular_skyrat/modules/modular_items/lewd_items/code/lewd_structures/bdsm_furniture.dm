@@ -53,8 +53,8 @@
 		return ..()
 
 /obj/structure/bed/bdsm_bed/Destroy()
-	unbuckle_all_mobs(TRUE)
 	. = ..()
+	unbuckle_all_mobs(TRUE)
 
 /////////////////////
 //X-Stand code here//
@@ -213,13 +213,6 @@
 
 // Machine deconstruction process handler
 /obj/structure/bed/x_stand/deconstruct()
-	if(current_mob)
-		if(current_mob.handcuffed)
-			current_mob.handcuffed.dropped(current_mob)
-		current_mob.set_handcuffed(null)
-		current_mob.update_abstract_handcuffed()
-	unbuckle_all_mobs()
-	STOP_PROCESSING(SSobj, src)
 	qdel(src)
 	return TRUE
 

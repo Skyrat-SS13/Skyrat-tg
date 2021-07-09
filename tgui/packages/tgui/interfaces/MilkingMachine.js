@@ -207,7 +207,44 @@ const MilkingMachineContent = (props, context) => {
                       </Stack>
                       <Stack>
                         <Stack.Item grow>
-                          {organButtonStates('Breasts', data, palette, context)}
+                          {current_selected_organ !== 'the breasts' && current_breasts !== null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Breasts"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOff}
+                                textColor={palette.ControlButtonOffText}
+                                bold
+                                onClick={() => act('setBreasts')}
+                              />
+                            </Box>
+                          )}
+                          {current_selected_organ === 'the breasts' && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Breasts"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOn}
+                                textColor={palette.ControlButtonOnText}
+                                bold
+                              />
+                            </Box>
+                          )}
+                          {current_vagina === null && (
+                            <Box as="div" m={1}>
+                              <Button
+                                content="Breasts"
+                                textAlign="center"
+                                width="100%"
+                                backgroundColor={palette.ControlButtonOn}
+                                textColor={palette.ControlButtonOnText}
+                                bold
+                                disabled
+                              />
+                            </Box>
+                          )}
                         </Stack.Item>
                         <Stack.Item grow>
                           {current_selected_organ !== 'the vagina' && current_vagina !== null && (

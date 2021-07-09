@@ -103,7 +103,7 @@
 
 /mob/living/carbon/human/equip_to_slot(obj/item/I, slot, initial = FALSE, redraw_mob = FALSE)
 	. = ..()
-	if(ITEM_SLOT_GLOVES)
+	if(slot == ITEM_SLOT_GLOVES)
 		if(I)
 			if(I.breakouttime) //when equipping a ball mittens
 				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
@@ -114,7 +114,7 @@
 
 /mob/living/carbon/human/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = TRUE, silent = FALSE)
 	. = ..() //See mob.dm for an explanation on this and some rage about people copypasting instead of calling ..() like they should.
-	if(I)
+	if(I == gloves)
 		if(I.breakouttime) //when unequipping a ball mittens
 			REMOVE_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 			drop_all_held_items()
@@ -126,7 +126,7 @@
 /mob/living/carbon/human/resist_restraints()
 	var/obj/item/clothing/gloves/G = usr.get_item_by_slot(ITEM_SLOT_GLOVES)
 	if(G != null)
-		if(istype(G, /obj/item/clothing/gloves/))
+		if(istype(G, /obj/item/clothing/gloves))
 			if(G.breakouttime)
 				to_chat(usr, "You try to unequip [G].")
 				if(do_after(usr,G.breakouttime, usr))
