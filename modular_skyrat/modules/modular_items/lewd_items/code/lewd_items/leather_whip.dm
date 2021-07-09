@@ -157,7 +157,7 @@
 
 	var/message = ""
 //and there is code for successful check, so we are whipping someone
-	if(M.client?.prefs.erp_pref == "Yes")
+	if(M.client && (M.client.prefs.skyrat_toggles & SEXTOYS_PREF))
 		switch(user.zone_selected) //to let code know what part of body we gonna whip
 			if(BODY_ZONE_L_LEG)
 				if(M.has_feet())

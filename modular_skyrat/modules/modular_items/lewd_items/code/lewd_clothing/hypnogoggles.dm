@@ -19,7 +19,7 @@
 	victim = user
 	if(slot != ITEM_SLOT_EYES)
 		return
-	if(iscarbon(victim) && victim.client?.prefs.erp_pref == "Yes")
+	if(iscarbon(victim) && (victim.client && (victim.client.prefs.skyrat_toggles & SEXTOYS_PREF)))
 		if(codephrase != "")
 			victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
 		else
