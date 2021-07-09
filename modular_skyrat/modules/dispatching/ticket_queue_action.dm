@@ -145,9 +145,11 @@
 			SSdispatch.ui_data_by_mob[user]["should_close"] = TRUE
 			return TRUE
 
-		stack_trace("Action [action] did not return at end of statement")
-		return TRUE
-	CRASH("Unknown action [action]")
+		else
+			CRASH("Unknown action [action]")
+	stack_trace("Action [action] did not return at end of statement")
+	return TRUE
+
 
 /obj/item/radio/headset/var/datum/tgui/ui_cache
 
