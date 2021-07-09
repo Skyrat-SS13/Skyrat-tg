@@ -8,10 +8,18 @@
 #define TOGGLES_DEFAULT_SKYRAT (CHAT_LOOC_ADMIN|APHRO_PREF|CUMFACE_PREF)
 
 //SKYRAT ADDITION - ERP UPDATE
+<<<<<<< HEAD
 #define SEXTOYS_PREF (2<<3)
 #define BREAST_ENLARGEMENT (2<<4)
 #define PENIS_ENLARGEMENT (2<<5)
 #define FORCED_FEM (2<<6)
 #define FORCED_MALE (2<<7)
 #define BIMBO_PREF (2<<8)
+=======
+#define BREAST_ENLARGEMENT (2<<3)
+#define PENIS_ENLARGEMENT (2<<4)
+#define FORCED_FEM (2<<5)
+#define	FORCED_MALE (2<<6)
+#define BIMBO_PREF (2<<7)
+>>>>>>> parent of 6db715afa9 (pref for toys)
 //SKYRAT ADDITION END
