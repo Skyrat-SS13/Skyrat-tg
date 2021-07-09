@@ -40,6 +40,11 @@
 	suspect_desc = truncate(sanitize(tdata["suspectDesc"]), MAX_DETAIL_LENGTH)
 	status = SSDISPATCH_TICKET_STATUS_OPEN
 
+/obj/item/radio/headset/emag_act(mob/user, obj/item/card/emag/E)
+	. = ..()
+	obj_flags |= EMAGGED
+	to_chat(user, "<span class='warning'>You short out the automatic sensor array!</span>")
+
 /datum/dispatch_ticket/proc/handle(mob/user, alert = TRUE)
 	status = SSDISPATCH_TICKET_STATUS_ACTIVE
 	if(handler)

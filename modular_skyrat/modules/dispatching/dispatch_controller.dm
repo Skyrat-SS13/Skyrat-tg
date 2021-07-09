@@ -184,19 +184,11 @@ SUBSYSTEM_DEF(dispatch)
 	return hastype && hasprio && hasname && hasdesc
 
 /datum/controller/subsystem/dispatch/ui_data(mob/user)
-	var/list/data = list(
-		"priorities" = SSDISPATCH_TICKET_PRIORITIES,
-		"types" = SSDISPATCH_TICKET_TYPES,
-		"self_ref" = REF(user),
-		"submit_allow" = verify_ticket_data(user),
-		"tdata" = ui_data_by_mob[user]["tdata"],
-		"mdata" = ui_data_by_mob[user]["mdata"],
-		"emagged" = FALSE,
-	)
-	if(ishuman(user))
-		var/mob/living/carbon/human/user_h = user
-		data["emagged"] = user_h.ears.obj_flags & EMAGGED
-	return data
+	. = list()
+	.["priorities"] = SSDISPATCH_TICKET_PRIORITIES
+	.["types"] = SSDISPATCH_TICKET_TYPES
+	.["self_ref"] = REF(user)
+	.["mdata"] = ui_data_by_mob[user]["mdata"]
 
 ///Grabs ALL roles that a Holder has authorization for
 /datum/controller/subsystem/dispatch/proc/get_holder_roles(mob/user)
@@ -264,131 +256,16 @@ SUBSYSTEM_DEF(dispatch)
 	ui_data_by_mob[user]["mdata"]["ticketData"]["suspectDesc"] = ticket.suspect_desc
 	ui_data_by_mob[user]["mdata"]["ticketData"]["handler"] = ticket.handler ? "[ticket.handler]" : "None"
 
-/obj/item/radio/headset/emag_act(mob/user, obj/item/card/emag/E)
-	. = ..()
-	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>You short out the automatic sensor array!</span>")
-
 /datum/controller/subsystem/dispatch/ui_act(action, list/params)
 	. = ..()
-	if(.) // ABORT ABORT ABORT
+	if(.)
 		return
-
-	if(!params["failCount"])
-		params["failCount"] = 0
 
 	var/mob/user = locate(params["self_ref"])
 	if(!user)
 		CRASH("ui_act called without valid self_ref")
 
 	switch(action)
-		///*** TICKET CREATION ACTIONS ***///
-		if("ticket-suspect-toggle")
-			ui_data_by_mob[user]["tdata"]["suspect"] = !ui_data_by_mob[user]["tdata"]["suspect"]
-			if(!ui_data_by_mob[user]["tdata"]["suspect"])
-				ui_data_by_mob[user]["tdata"]["suspectName"] = ""
-				ui_data_by_mob[user]["tdata"]["suspectDesc"] = ""
-			return TRUE
-
-		if("ticket-suspect-name")
-			ui_data_by_mob[user]["tdata"]["suspectName"] = params["suspectName"]
-			return TRUE
-
-		if("ticket-suspect-desc")
-			ui_data_by_mob[user]["tdata"]["suspectDesc"] = params["suspectDesc"]
-			return TRUE
-
-		if("image-attach")
-			if(ui_data_by_mob[user]["tdata"]["imageAttached"])
-				ui_data_by_mob[user]["tdata"]["imageAttached"] = FALSE
-				user.balloon_alert(user, "Image Discarded!")
-				return TRUE
-
-			var/obj/item/photo/photo = user.is_holding_item_of_type(/obj/item/photo)
-			if(!photo)
-				if(params["failCount"] > 3) // Fail count prevents a runtime from proc overloading
-					return TRUE
-				if(tgui_alert(user, "Image not found; please **hold** your image to the scanner.", "Image Detection", list("Try Again", "Cancel")) != "Try Again")
-					return TRUE
-				params["failCount"] += 1
-				return ui_act(action, params)
-			ui_data_by_mob[user]["tdata"]["image"] = photo.picture.picture_image
-			ui_data_by_mob[user]["tdata"]["imageAttached"] = TRUE
-			user.balloon_alert(user, "Image Attached!")
-			return TRUE
-
-		if("image-view")
-			if(!ui_data_by_mob[user]["tdata"]["imageAttached"])
-				CRASH("image-view called while imageAttached is FALSE")
-			var/icon/image = ui_data_by_mob[user]["tdata"]["image"]
-			user << browse_rsc(image, "tmp_photo.png")
-			user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Attached Image</title></head>" \
-							+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
-							+ "<img src='tmp_photo.png' width='480' style='-ms-interpolation-mode:nearest-neighbor' />" \
-							+ "</body></html>", "window=photo_showing;size=480x608")
-			return TRUE
-
-		if("set-ticket-type")
-			ui_data_by_mob[user]["tdata"]["type"] = params["type"]
-			return TRUE
-
-		if("set-ticket-priority")
-			ui_data_by_mob[user]["tdata"]["priority"] = params["priority"]
-			return TRUE
-
-		if("toggle-template-use")
-			ui_data_by_mob[user]["tdata"]["templateUse"] = !ui_data_by_mob[user]["tdata"]["templateUse"]
-			if(!ui_data_by_mob[user]["tdata"]["templateUse"])
-				ui_data_by_mob[user]["tdata"]["templateName"] = "None"
-				return TRUE
-			var/resp = tgui_input_list(user, "Select Template", "Template", templates)
-			if(!resp)
-				ui_data_by_mob[user]["tdata"]["templateUse"] = FALSE
-				return TRUE
-			apply_template(user, templates[resp])
-			return TRUE
-
-		if("template-set")
-			var/resp = tgui_input_list(user, "Select Template", "Template", templates)
-			if(!resp)
-				return TRUE
-			apply_template(user, templates[resp])
-
-		if("spoof-location") // Comms Agents
-			if(!ishuman(user))
-				return FALSE
-			var/mob/living/carbon/human/user_human = user
-			if(!(user_human.ears.obj_flags & EMAGGED))
-				return FALSE
-			ui_data_by_mob[user]["tdata"]["location"] = "[input(user, "Enter Fake Location", "Location Spoof", "")]"
-			ui_data_by_mob[user]["tdata"]["location-spoofed"] = TRUE
-			return TRUE
-
-		if("spoof-creator") // Comms Agents
-			if(!ishuman(user))
-				return FALSE
-			var/mob/living/carbon/human/user_human = user
-			if(!(user_human.ears.obj_flags & EMAGGED))
-				return FALSE
-			ui_data_by_mob[user]["tdata"]["creator"] = "[input(user, "Enter Fake Creator", "Creator Spoof", "")]"
-			ui_data_by_mob[user]["tdata"]["creator-spoofed"] = TRUE
-			return TRUE
-
-		if("set-ticket-title")
-			ui_data_by_mob[user]["tdata"]["title"] = params["title"]
-			return TRUE
-
-		if("set-ticket-extra")
-			ui_data_by_mob[user]["tdata"]["extra"] = params["extra"]
-			return TRUE
-
-		if("ticket-submit")
-			ticket_create(user, ui_data_by_mob[user]["tdata"])
-			ui_data_by_mob[user]["tdata"]["should_clear"] = TRUE
-			ui_data_by_mob[user]["should_close"] = TRUE
-			return TRUE
-
-		 /*** TICKET MANAGER ACTIONS ***/
 		if("image-view-holder")
 			if(!ui_data_by_mob[user]["mdata"]["ticketData"]["imageAttached"])
 				CRASH("image-view called while imageAttached is FALSE")
