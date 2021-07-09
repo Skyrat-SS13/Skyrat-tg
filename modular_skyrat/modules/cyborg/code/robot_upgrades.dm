@@ -68,6 +68,8 @@
 			borg.model.remove_module(SP, TRUE)
 		for(var/obj/item/circular_saw/CS in borg.model.modules)
 			borg.model.remove_module(CS, TRUE)
+		for(var/obj/item/healthanalyzer/HA in borg.model.modules)
+			borg.model.remove_module(HA, TRUE)
 
 		var/obj/item/scalpel/advanced/AS = new /obj/item/scalpel/advanced(borg.model)
 		borg.model.basic_modules += AS
@@ -78,6 +80,9 @@
 		var/obj/item/cautery/advanced/AC = new /obj/item/cautery/advanced(borg.model)
 		borg.model.basic_modules += AC
 		borg.model.add_module(AC, FALSE, TRUE)
+		var/obj/item/healthanalyzer/advanced/AHA = new /obj/item/healthanalyzer/advanced(borg.model)
+		borg.model.basic_modules += AHA
+		borg.model.add_module(AHA, FALSE, TRUE)
 
 /obj/item/borg/upgrade/surgerytools/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
@@ -88,6 +93,8 @@
 			borg.model.remove_module(AR, TRUE)
 		for(var/obj/item/cautery/advanced/AC in borg.model.modules)
 			borg.model.remove_module(AC, TRUE)
+		for(var/obj/item/healthanalyzer/advanced/AHA in borg.model.modules)
+			borg.model.remove_module(AHA, TRUE)
 
 		var/obj/item/retractor/RT = new (borg.model)
 		borg.model.basic_modules += RT
@@ -107,6 +114,9 @@
 		var/obj/item/circular_saw/CS = new (borg.model)
 		borg.model.basic_modules += CS
 		borg.model.add_module(CS, FALSE, TRUE)
+		var/obj/item/healthanalyzer/HA = new (borg.model)
+		borg.model.basic_modules += HA
+		borg.model.add_module(HA, FALSE, TRUE)
 
 /obj/item/borg/upgrade/affectionmodule
 	name = "borg affection module"
