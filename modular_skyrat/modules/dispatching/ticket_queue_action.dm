@@ -14,6 +14,10 @@
 		ui = new(user, src, "DispatchTicket")
 		ui.open()
 
+/datum/action/item_action/dispatch_ticket_new/ui_status(mob/living/carbon/user)
+	if(!istype(user)) return UI_CLOSE
+	return user.ears == target ? UI_INTERACTIVE : UI_CLOSE
+
 /obj/item/radio/headset/var/datum/tgui/ui_cache
 
 /obj/item/radio/headset/CtrlShiftClick(mob/living/user)
