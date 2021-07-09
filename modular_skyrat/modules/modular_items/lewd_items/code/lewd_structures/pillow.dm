@@ -283,7 +283,7 @@
 	update_armrest()
 	density = TRUE
 	//Push them up from the normal lying position
-	M.pixel_y = M.base_pixel_y + 0.5
+	M.pixel_y = M.base_pixel_y + 3
 
 /obj/structure/chair/pillow_small/proc/update_armrest()
 	if(has_buckled_mobs())
