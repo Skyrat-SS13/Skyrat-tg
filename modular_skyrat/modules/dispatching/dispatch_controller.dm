@@ -130,16 +130,9 @@ SUBSYSTEM_DEF(dispatch)
 		return UI_INTERACTIVE
 	return UI_DISABLED
 
-/datum/controller/subsystem/dispatch/ui_interact(mob/user, datum/tgui/ui_o, type)
+/datum/controller/subsystem/dispatch/proc/sanitize_user_data(mob/user)
 	if(!ui_data_by_mob[user])
-		ui_data_by_mob[user] = list(
-			"ui-tnew" = null,
-			"ui-tmanage" = null,
-			"should_close" = FALSE,
-			"tdata" = list("should_clear" = TRUE), // Set to TRUE to force initilization of tdata; this is hacky TODO MAKE THIS A PROC
-			"mdata" = list("should_clear" = TRUE),
-		)
-
+		ui_data_by_mob[user] = list("should_close" = FALSE,	"tdata" = list("should_clear" = TRUE), "mdata" = list("should_clear" = TRUE))
 	if(ui_data_by_mob[user]["tdata"]["should_clear"])
 		ui_data_by_mob[user]["tdata"] = list(
 			"creator" = "",
@@ -159,7 +152,6 @@ SUBSYSTEM_DEF(dispatch)
 			"suspectDesc" = "",
 			"should_clear" = FALSE
 		)
-
 	if(ui_data_by_mob[user]["mdata"]["should_clear"])
 		if(!ui_data_by_mob[user]["ticket"])
 			ui_data_by_mob[user]["mdata"] = list(
@@ -173,27 +165,16 @@ SUBSYSTEM_DEF(dispatch)
 			)
 		else load_ticket_data_into_mdata(user, tickets[ui_data_by_mob[user]["ticket"]])
 
-	if(!type && ui_o)
-		SStgui.try_update_ui(user, src, ui_o)
-		return
+/datum/controller/subsystem/dispatch/ui_interact(mob/user, datum/tgui/ui_o, type)
 
-	if(type == "ticket-new")
-		var/datum/tgui/ui = SStgui.try_update_ui(user, src, ui_data_by_mob["ui-tnew"])
-		if(!ui)
-			ui = new(user, src, "DispatchTicket")
-			ui.autoupdate = FALSE
-			ui.open()
-		ui_data_by_mob[user]["ui-tnew"] = ui
-		return
+	sanitize_user_data(user)
 
-	if(type == "ticket-manage")
-		var/datum/tgui/ui = SStgui.try_update_ui(user, src, ui_data_by_mob["ui-tmanage"])
-		if(!ui)
-			ui = new(user, src, "TicketBrowser")
-			ui.autoupdate = FALSE
-			ui.open()
-		ui_data_by_mob[user]["ui-tmanage"] = ui
-		return
+	var/datum/tgui/ui = SStgui.try_update_ui(user, src, ui_data_by_mob["uicache"])
+	if(!ui)
+		ui = new(user, src, "TicketBrowser")
+		ui.open()
+		ui_data_by_mob["uicache"] = ui
+	return
 
 /datum/controller/subsystem/dispatch/proc/verify_ticket_data(mob/user)
 	var/hastype = ui_data_by_mob[user]["tdata"]["type"] != ""
@@ -405,7 +386,6 @@ SUBSYSTEM_DEF(dispatch)
 			ticket_create(user, ui_data_by_mob[user]["tdata"])
 			ui_data_by_mob[user]["tdata"]["should_clear"] = TRUE
 			ui_data_by_mob[user]["should_close"] = TRUE
-			qdel(ui_data_by_mob[user]["tdata"]["ui-tnew"])
 			return TRUE
 
 		 /*** TICKET MANAGER ACTIONS ***/
