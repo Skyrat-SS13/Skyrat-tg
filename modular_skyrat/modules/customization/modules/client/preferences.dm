@@ -1178,6 +1178,7 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<br>"
 
 			//aphrodisiac pref
+			dat += "<b>Allow sex toys to be used on character:</b> <a href='?_src_=prefs;preference=sextoy_pref'>[(skyrat_toggles & SEXTOYS_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Be Affected by Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphrodisiacs_pref'>[(skyrat_toggles & APHRO_PREF) ? "Enabled":"Disabled"]</a><br>"
 			//cumface pref
 			dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
@@ -2925,6 +2926,9 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("forced_fem_pref")
 					skyrat_toggles ^= FORCED_FEM
+
+				if("sextoy_pref")
+					skyrat_toggles ^= SEXTOYS_PREF
 
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
