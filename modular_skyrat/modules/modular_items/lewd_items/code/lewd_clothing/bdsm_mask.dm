@@ -224,7 +224,7 @@
 	update_icon()
 	var/mob/living/carbon/human/C = usr
 	if(mask_on)
-		if(src == C.wear_mask && (C.client && (C.client.prefs.skyrat_toggles & SEXTOYS_PREF)))
+		if(src == C.wear_mask && C.client?.prefs.erp_pref == "Yes")
 			START_PROCESSING(SSobj, src)
 			time_to_choke_left = time_to_choke
 	else

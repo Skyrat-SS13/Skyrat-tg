@@ -193,7 +193,7 @@
 
 /datum/status_effect/body_fluid_regen/tick()
 	var/mob/living/carbon/human/H = owner
-	if(owner.stat != DEAD && H.client && (H.client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(owner.stat != DEAD && H.client?.prefs.erp_pref == "Yes")
 		var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 		var/obj/item/organ/genital/breasts/breasts = owner.getorganslot(ORGAN_SLOT_BREASTS)
 		var/obj/item/organ/genital/vagina/vagina = owner.getorganslot(ORGAN_SLOT_VAGINA)
@@ -229,7 +229,7 @@
 	return arousal
 
 /mob/living/carbon/human/proc/adjustArousal(arous = 0)
-	if(stat != DEAD && client && (client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(stat != DEAD && client?.prefs.erp_pref == "Yes")
 		arousal += arous
 
 		var/arousal_flag = AROUSAL_NONE
@@ -305,7 +305,7 @@
 	return pain
 
 /mob/living/carbon/human/proc/adjustPain(pn = 0)
-	if(stat != DEAD && client && (client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(stat != DEAD && client?.prefs.erp_pref == "Yes")
 		if(pain > pain_limit || pn > pain_limit / 10) // pain system
 			if(masochism == TRUE)
 				var/p = pn - (pain_limit / 10)
@@ -332,7 +332,7 @@
 	return pleasure
 
 /mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
-	if(stat != DEAD && client && (client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(stat != DEAD && client?.prefs.erp_pref == "Yes")
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
 			climax(FALSE)
@@ -375,7 +375,7 @@
 /mob/living/carbon/human/proc/climax(manual = TRUE)
 	var/obj/item/organ/genital/penis = getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/vagina = getorganslot(ORGAN_SLOT_VAGINA)
-	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client && (client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs.erp_pref == "Yes")
 		if(neverboner == FALSE && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
@@ -438,7 +438,7 @@
 							"<font color=purple>You can't have an orgasm!</font>")
 		return TRUE
 
-	else if(manual == FALSE && client && (client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	else if(manual == FALSE && client?.prefs.erp_pref == "Yes")
 		if(neverboner == FALSE && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
@@ -497,7 +497,7 @@
 
 /datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming on somebody's face or in beaker.
 	var/mob/living/carbon/human/H = owner
-	if(H.client && (H.client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(H.client?.prefs.erp_pref == "Yes")
 		var/temp_arousal = -12
 		var/temp_pleasure = -12
 		var/temp_stamina = 8
@@ -515,7 +515,7 @@
 
 /datum/status_effect/climax/tick()
 	var/mob/living/carbon/human/H = owner
-	if(H.client && (H.client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(H.client?.prefs.erp_pref == "Yes")
 		var/temp_arousal = -12
 		var/temp_pleasure = -12
 		var/temp_stamina = 15
@@ -531,7 +531,7 @@
 	var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/testicles/penis = owner.getorganslot(ORGAN_SLOT_PENIS)
 
-	if(H.client && (H.client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(H.client?.prefs.erp_pref == "Yes")
 		if(penis && balls && H.wear_condom())
 			if(prob(40))
 				H.emote("moan")
@@ -618,7 +618,7 @@
 /obj/item/organ/brain/on_life(delta_time, times_fired) //All your horny is here *points to the head*
 	. = ..()
 	var/mob/living/carbon/human/brain_owner = owner
-	if(istype(brain_owner, /mob/living/carbon/human) && (brain_owner.client && (brain_owner.client.prefs.skyrat_toggles & SEXTOYS_PREF)))
+	if(istype(brain_owner, /mob/living/carbon/human) && brain_owner.client?.prefs.erp_pref == "Yes")
 		if(!(organ_flags & ORGAN_FAILING))
 			brain_owner.dna.species.handle_arousal(brain_owner, delta_time, times_fired)
 
@@ -661,7 +661,7 @@
 
 /datum/species/proc/handle_arousal(mob/living/carbon/human/H, atom/movable/screen/alert/aroused_X)
 	var/atom/movable/screen/alert/aroused_X/I = H.alerts["aroused"]
-	if(H.client && (H.client.prefs.skyrat_toggles & SEXTOYS_PREF))
+	if(H.client?.prefs.erp_pref == "Yes")
 		switch(H.arousal)
 			if(-100 to 1)
 				H.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
