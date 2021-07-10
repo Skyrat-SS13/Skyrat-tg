@@ -169,6 +169,12 @@
 		return
 	ui_cache = SSdispatch.ui_interact(user, ui_cache)
 
+/obj/item/radio/headset/Click(location, control, params)
+	. = ..()
+	var/mob/living/carbon/user = loc
+	if(!istype(loc) || loc.ears != src)
+		SStgui.close_uis(src)
+
 /obj/item/radio/headset/Initialize()
 	. = ..()
 	new /datum/action/item_action/dispatch_ticket_new(src)
