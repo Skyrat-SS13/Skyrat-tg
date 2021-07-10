@@ -11,7 +11,6 @@ SUBSYSTEM_DEF(dispatch)
 	var/list/datum/dispatch_ticket_template/templates
 
 	var/list/ui_data_by_mob
-	var/list/ui_cache_by_mob
 
 /datum/controller/subsystem/dispatch/Initialize()
 	. = ..()
@@ -19,7 +18,6 @@ SUBSYSTEM_DEF(dispatch)
 	holder_update()
 	tickets = list()
 	ui_data_by_mob = list()
-	ui_cache_by_mob = list()
 	templates = load_template_instances()
 
 ///Creates and stores an instance of every template type; given its not abstract
@@ -168,11 +166,10 @@ SUBSYSTEM_DEF(dispatch)
 
 	sanitize_user_data(user)
 
-	var/datum/tgui/ui = SStgui.try_update_ui(user, src, ui_cache_by_mob[user])
+	var/datum/tgui/ui = SStgui.try_update_ui(user, src, ui_o)
 	if(!ui)
 		ui = new(user, src, "TicketBrowser")
 		ui.open()
-		ui_cache_by_mob[user] = ui
 	return
 
 /datum/controller/subsystem/dispatch/proc/verify_ticket_data(mob/user)
