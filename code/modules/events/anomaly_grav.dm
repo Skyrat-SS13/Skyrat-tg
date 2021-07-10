@@ -1,3 +1,6 @@
+
+/* SKYRAT EDIT - DISABLES GRAV ANOMALIES UNTIL THEY'RE FIXED UPSTREAM
+
 /datum/round_event_control/anomaly/anomaly_grav
 	name = "Anomaly: Gravitational"
 	typepath = /datum/round_event/anomaly/anomaly_grav
@@ -24,3 +27,7 @@
 
 /datum/round_event/anomaly/anomaly_grav/announce(fake)
 	priority_announce("Gravitational anomaly detected on long range scanners. Expected location: [impact_area.name].", "Anomaly Alert", ANNOUNCER_GRAVANOMALIES) //SKYRAT EDIT CHANGE
+
+SKYRAT EDIT END
+*/
+
