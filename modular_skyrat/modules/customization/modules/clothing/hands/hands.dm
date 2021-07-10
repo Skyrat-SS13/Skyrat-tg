@@ -38,3 +38,4 @@
 	name = "ash coated bronze gloves"
 	desc = "Some sort of thin material with the backing of bronze plates."
 	icon_state = "legionlegate"
+
