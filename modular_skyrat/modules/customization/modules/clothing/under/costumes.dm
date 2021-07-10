@@ -185,3 +185,4 @@
 	name = "white ash walker rags"
 	desc = "A poorly sewn dress made of white materials."
 	icon_state = "lizcheo"
+
