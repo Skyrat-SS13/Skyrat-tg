@@ -39,5 +39,10 @@
 			human_target.dna.features["moth_wings"] = human_target.dna.features["original_moth_wings"]
 		else
 			human_target.dna.features["moth_wings"] = "Plain"
+			//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+			/*
+			human_target.dna.update_uf_block(DNA_MOTH_WINGS_BLOCK)
+			*/
+			//SKYRAT EDIT REMOVAL END
 		human_target.update_mutant_bodyparts()
 	return ..()
