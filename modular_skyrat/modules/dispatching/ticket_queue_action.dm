@@ -172,7 +172,7 @@
 /obj/item/radio/headset/Click(location, control, params)
 	. = ..()
 	var/mob/living/carbon/user = loc
-	if(!istype(loc) || loc.ears != src)
+	if(!istype(loc) || user.ears != src)
 		SStgui.close_uis(src)
 
 /obj/item/radio/headset/Initialize()
