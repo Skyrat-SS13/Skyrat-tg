@@ -26,6 +26,7 @@
 
 /datum/action/item_action/dispatch_ticket_new/ui_data(mob/living/carbon/user)
 	. = list()
+	SSdispatch.sanitize_user_data(user)
 	.["tdata"] = SSdispatch.ui_data_by_mob[user]["tdata"]
 	.["submit_allow"] = SSdispatch.verify_ticket_data(user)
 	.["priorities"] = SSDISPATCH_TICKET_PRIORITIES
