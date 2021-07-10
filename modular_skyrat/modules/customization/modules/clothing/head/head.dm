@@ -397,3 +397,4 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "shamskull"
 	mutant_variants = NONE
+
