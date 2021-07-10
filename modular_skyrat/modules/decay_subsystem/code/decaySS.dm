@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
 
-	if(prob(50))
+	if(prob(100))
 		message_admins("SSDecay will not interact with this round.")
 		return ..()
 
