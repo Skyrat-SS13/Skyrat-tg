@@ -284,16 +284,11 @@ structure_check() searches for nearby cultist structures required for the invoca
 	if(!C)
 		return
 
-	if(ispAI(sacrificial))
-		for(var/M in invokers)
-			to_chat(M, span_cultitalic("You don't think this is what Nar'Sie had in mind when She asked for blood sacrifices..."))
-		log_game("Offer rune failed - tried sacrificing pAI")
-		return FALSE
 
 	var/big_sac = FALSE
 	if((((ishuman(sacrificial) || iscyborg(sacrificial)) && sacrificial.stat != DEAD) || C.cult_team.is_sacrifice_target(sacrificial.mind)) && invokers.len < 3)
 		for(var/M in invokers)
-			to_chat(M, span_cultitalic("[sacrificial] is too greatly linked to the world! You need three acolytes!"))
+			to_chat(M, "<span class='cult italic'>[sacrificial] is too greatly linked to the world! You need three acolytes!</span>")
 		log_game("Offer rune failed - not enough acolytes and target is living or sac target")
 		return FALSE
 	if(sacrificial.mind)
@@ -315,7 +310,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 				to_chat(M, span_cultlarge("\"I accept this sacrifice.\""))
 			else
 				to_chat(M, span_cultlarge("\"I accept this meager sacrifice.\""))
-	
+
 	if(iscyborg(sacrificial))
 		var/construct_class = show_radial_menu(first_invoker, sacrificial, GLOB.construct_radial_images, require_near = TRUE, tooltips = TRUE)
 		if(QDELETED(sacrificial))
@@ -427,7 +422,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 			continue
 		if(!A.anchored)
 			movedsomething = TRUE
-			if(do_teleport(A, target, channel = TELEPORT_CHANNEL_CULT))
+			if(do_teleport(A, target, forceMove = TRUE, channel = TELEPORT_CHANNEL_CULT))
 				movesuccess = TRUE
 	if(movedsomething)
 		..()
@@ -985,7 +980,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 				SI.runEvent()
 			if(61 to 70)
 				var/datum/round_event_control/anomaly/anomaly_flux/AF
-				var/datum/round_event_control/anomaly/anomaly_grav/AG
+				//var/datum/round_event_control/anomaly/anomaly_grav/AG
 				var/datum/round_event_control/anomaly/anomaly_pyro/AP
 				var/datum/round_event_control/anomaly/anomaly_vortex/AV
 				AF.runEvent()
