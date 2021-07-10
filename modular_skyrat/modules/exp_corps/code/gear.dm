@@ -19,7 +19,7 @@
 	new /obj/item/reagent_containers/hypospray/combat(src)
 	new /obj/item/stack/medical/mesh/advanced(src)
 	new /obj/item/stack/medical/suture/medicated(src)
-	new /obj/item/clothing/glasses/hud/health/night(src)
+	new /obj/item/clothing/glasses/hud/health(src)
 
 //Field Medic's weapon, no more tomahawk!
 /obj/item/circular_saw/field_medic
