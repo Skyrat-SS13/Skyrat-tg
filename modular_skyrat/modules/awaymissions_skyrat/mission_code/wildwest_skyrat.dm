@@ -34,3 +34,6 @@
 	id = /obj/item/card/id/advanced/black
 	implants = list(/obj/item/implant/weapons_auth)
 	r_pocket = /obj/item/radio
+
+/turf/closed/mineral/wildwest
+	baseturfs = /turf/open/floor/plating/ironsand
