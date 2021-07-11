@@ -14,12 +14,20 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 
 /mob/living/simple_animal/pet/dog/markus/treat_message(message)
-	return client ? pick(speak) : message //cheems only talks business
+	return client ? pick(speak) : message //markus only talks business
 
 /datum/chemical_reaction/mark_reaction
-	results = list(/datum/reagent/ash = 1)
-	required_reagents = list(/datum/reagent/medicine/insulin = 20, /datum/reagent/medicine/omnizine = 20, /datum/reagent/blood = 20, /datum/reagent/medicine/c2/synthflesh = 20, /datum/reagent/colorful_reagent/powder/yellow/crayon = 10, /datum/reagent/consumable/nutriment/protein = 10)
-	required_temp = 420
+	results = list(/datum/reagent/liquidgibs = 15)
+	required_reagents = list(/datum/reagent/medicine/omnizine = 20,
+	/datum/reagent/blood = 20,
+	/datum/reagent/medicine/c2/synthflesh = 20,
+	/datum/reagent/consumable/nutriment/protein = 10,
+	/datum/reagent/consumable/nutriment = 10,
+	/datum/reagent/colorful_reagent/powder/yellow/crayon = 5,
+	/datum/reagent/consumable/ketchup = 5,
+	/datum/reagent/consumable/mayonnaise = 5)
+	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
+	required_temp = 480
 
 /datum/chemical_reaction/mark_reaction/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
 	. = ..()
