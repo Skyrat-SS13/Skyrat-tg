@@ -14,7 +14,7 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 
 /mob/living/simple_animal/pet/dog/cheems/treat_message(message)
-	return client ? pick(speak) : message
+	return client ? pick(speak) : message //cheems only talks business
 
 /datum/chemical_reaction/cheem_reaction
 	results = list(/datum/reagent/ash = 1)
