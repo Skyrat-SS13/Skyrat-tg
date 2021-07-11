@@ -7,7 +7,7 @@
 	icon_state = "cheems"
 	icon_dead = "cheems_dead"
 	icon_living = "cheems"
-	speak = list("Borf!", "Boof!", "Bork!", "Bowwow!", "Burbger...", "Pizza cramte.", "No horny.")
+	speak = list("Borf!", "Boof!", "Bork!", "Bowwow!")
 	butcher_results = list(/obj/item/food/burger/cheese = 1, /obj/item/food/meat/slab = 2, /obj/item/trash/syndi_cakes = 1)
 	animal_species = /mob/living/simple_animal/pet/dog
 	can_be_held = FALSE
@@ -15,8 +15,7 @@
 
 /mob/living/simple_animal/pet/dog/cheems/treat_message(message)
 	if(client) //cheems only thinks of necessities
-		message = pick("Borf!", "Boof!", "Bork!", "Bowwow!", "Burbger...", "Pizza cramte.", "No horny.")
-
+		message = pick("Borf!", "Boof!", "Bork!", "Bowwow!")
 	return message
 
 /datum/chemical_reaction/cheem_reaction

@@ -27,11 +27,28 @@
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	gold_core_spawnable = FRIENDLY_SPAWN
+	light_system = MOVABLE_LIGHT_DIRECTIONAL
+	light_color = LIGHT_COLOR_YELLOW
+	light_range = 2
+	light_power = 0.8
+	light_on = TRUE
 
 /mob/living/simple_animal/pet/poppy/Initialize()
 	. = ..()
 	add_verb(src, /mob/living/proc/toggle_resting)
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+
+	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
+	var/obj/effect/overlay/light_cone/cone = lighting_object.cone
+	cone.transform = cone.transform.Translate(0, -12) //adjust the little headlamp
+
+/mob/living/simple_animal/pet/poppy/death()
+	. = ..()
+	set_light_on(FALSE)
+
+/mob/living/simple_animal/pet/poppy/revive(full_heal = FALSE, admin_revive = FALSE)
+	. = ..()
+	set_light_on(TRUE)
 
 /mob/living/simple_animal/pet/poppy/update_resting()
 	. = ..()
@@ -39,8 +56,10 @@
 		return
 	if (resting)
 		icon_state = "[icon_living]_rest"
+		set_light_on(FALSE)
 	else
 		icon_state = "[icon_living]"
+		set_light_on(TRUE)
 	regenerate_icons()
 
 /mob/living/simple_animal/pet/poppy/handle_automated_movement()
