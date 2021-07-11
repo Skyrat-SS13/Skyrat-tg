@@ -201,7 +201,7 @@
 		var/interval = 5
 		if(balls)
 			if(H.arousal >= AROUS_SYS_LITTLE)
-				var/regen = (H.arousal/100) * (balls.internal_fluids.maximum_volume/235) * interval
+				var/regen = (H.arousal/25) * (balls.internal_fluids.maximum_volume/235) * interval
 				balls.internal_fluids.add_reagent(/datum/reagent/consumable/cum, regen)
 
 		if(breasts)
@@ -215,7 +215,7 @@
 
 		if(vagina)
 			if(H.arousal >= AROUS_SYS_LITTLE)
-				var/regen = (H.arousal/100) * (vagina.internal_fluids.maximum_volume/250) * interval
+				var/regen = (H.arousal/25) * (vagina.internal_fluids.maximum_volume/250) * interval
 				vagina.internal_fluids.add_reagent(/datum/reagent/consumable/girlcum, regen)
 				if(vagina.internal_fluids.holder_full() && regen >= 0.15)
 					regen = regen
