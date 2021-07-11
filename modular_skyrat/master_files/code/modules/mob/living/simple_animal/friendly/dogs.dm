@@ -59,7 +59,6 @@
 	//Defense protocol
 	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
 	RegisterSignal(src, COMSIG_ATOM_HITBY, .proc/on_hitby)
-	RegisterSignal(src, COMSIG_ATOM_BULLET_ACT, .proc/on_bullet_act)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/user)
 	if(user.combat_mode)
@@ -73,11 +72,15 @@
 			var/mob/living/carbon/human/target = thrown_by
 			shootAt(target)
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_bullet_act(datum/source, obj/projectile/Proj)
-	if(istype(Proj, /obj/projectile/beam)||istype(Proj, /obj/projectile/bullet))
-		if((Proj.damage_type == BURN) || (Proj.damage_type == BRUTE))
-			if(!Proj.nodamage && isliving(Proj.firer))
-				shootAt(Proj.firer)
+/mob/living/simple_animal/pet/dog/corgi/borgi/bullet_act(obj/projectile/proj)
+	if(istype(proj, /obj/projectile/beam) || istype(proj, /obj/projectile/bullet))
+		var/mob/living/carbon/human/target = proj.firer
+		if(isliving(target))
+			if(!proj.nodamage && proj.damage > 10)
+				shootAt(target)
+			else
+				shootToyAt(target)
+	return BULLET_ACT_HIT
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
 	if(!emagged)
@@ -103,6 +106,20 @@
 	laser.firer = src
 	laser.fired_from = src
 	laser.fire()
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/shootToyAt(atom/movable/target)
+	var/turf/T = get_turf(src)
+	var/turf/U = get_turf(target)
+	if(!T || !U)
+		return
+	var/obj/projectile/bullet/reusable/foam_dart/FD = new /obj/projectile/bullet/reusable/foam_dart(loc)
+	FD.icon = 'icons/obj/guns/toy.dmi'
+	FD.icon_state = "foamdart_proj"
+	playsound(src.loc, 'sound/items/syringeproj.ogg', 75, 1)
+	FD.preparePixelProjectile(target, T)
+	FD.firer = src
+	FD.fired_from = src
+	FD.fire()
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/Life(seconds, times_fired)
 	..()
