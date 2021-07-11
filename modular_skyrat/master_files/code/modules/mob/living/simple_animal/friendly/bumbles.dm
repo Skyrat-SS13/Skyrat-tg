@@ -6,6 +6,8 @@
 	icon_living = "bumbles"
 	icon_dead = "bumbles_dead"
 	turns_per_move = 1
+	maxHealth = 15
+	health = 15
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "brushes aside"
@@ -15,6 +17,7 @@
 	speak_emote = list("buzzes")
 	friendly_verb_continuous = "bzzs"
 	friendly_verb_simple = "bzz"
+	butcher_results = list(/obj/item/reagent_containers/honeycomb = 1)
 	density = FALSE
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
@@ -33,8 +36,6 @@
 	. = ..()
 	AddElement(/datum/element/simple_flying)
 	add_verb(src, /mob/living/proc/toggle_resting)
-	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-
 
 /mob/living/simple_animal/pet/bumbles/update_resting()
 	. = ..()
