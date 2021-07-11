@@ -43,8 +43,8 @@
 	icon_state = "borgi"
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
-	maxHealth = 50
-	health = 50
+	maxHealth = 80
+	health = 80
 	var/emagged = 0
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -59,6 +59,7 @@
 	//Defense protocol
 	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
 	RegisterSignal(src, COMSIG_ATOM_HITBY, .proc/on_hitby)
+	RegisterSignal(src, COMSIG_ATOM_BULLET_ACT, .proc/on_bullet_act)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/user)
 	if(user.combat_mode)
@@ -66,9 +67,17 @@
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_hitby(datum/source, atom/movable/AM)
 	if(istype(AM, /obj/item))
-		var/mob/living/carbon/target = locate() in view(10, src)
-		if(target)
+		var/obj/item/I = AM
+		var/mob/thrown_by = I.thrownby?.resolve()
+		if(I.throwforce > 5 && ishuman(thrown_by))
+			var/mob/living/carbon/human/target = thrown_by
 			shootAt(target)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_bullet_act(datum/source, obj/projectile/Proj)
+	if(istype(Proj , /obj/projectile/beam)||istype(Proj, /obj/projectile/bullet))
+		if((Proj.damage_type == BURN) || (Proj.damage_type == BRUTE))
+			if(!Proj.nodamage && isliving(Proj.firer))
+				shootAt(Proj.firer)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
 	if(!emagged)
@@ -78,7 +87,7 @@
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
 	visible_message("<span class='warning'>[src] makes an odd whining noise.</span>")
-	explosion(get_turf(src), 0, 1, 4, 7)
+	explosion(get_turf(src), 0, 2, 6, 9, 4, TRUE)
 	death()
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/shootAt(atom/movable/target)
