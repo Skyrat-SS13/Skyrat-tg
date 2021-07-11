@@ -16,7 +16,7 @@
 	var/charge_rate = 200 // Power charge per tick devided by delta_time (always about ~2)
 	var/power_draw_rate = 65 // Power draw per tick multiplied by delta_time (always about ~2)
 	// Additional power consumption multiplier for different operating modes. Fractional value to reduce consumption
-	var/power_draw_multiplier_list = list("off" = 0, "low" = 0.5, "medium" = 1, "hard" = 2)
+	var/power_draw_multiplier_list = list("off" = 0, "low" = 0.05, "medium" = 0.25, "hard" = 0.5)
 	var/panel_open = FALSE // Сurrent maintenace panel state
 
 	/////////////////////////////
@@ -487,8 +487,8 @@
 		pump_state = pump_state_list[1]
 		update_all_visuals()
 		return
-	if(current_mode == mode_list[1] && pump_state == pump_state_list[1])
-		cell.give(charge_rate * delta_time)
+//	if(current_mode == mode_list[1] && pump_state == pump_state_list[1])
+//		cell.give(charge_rate * delta_time)
 
 	// Check if the machine should work
 	if(!current_mob)
@@ -571,7 +571,7 @@
 		pump_state = pump_state_list[1]
 		return
 
-	var/amount_power_draw =  power_draw_rate * delta_time * power_draw_multiplier_list[current_mode]
+	var/amount_power_draw = power_draw_rate * delta_time * power_draw_multiplier_list[current_mode]
 	if (cell.charge > amount_power_draw) // There is enough charge
 		cell.use(amount_power_draw) // Power consumption
 		return
@@ -606,8 +606,10 @@
 
 /obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/I)
 	if((flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_WRENCH)
-		I.play_tool_sound(src, 50)
-		deconstruct(TRUE)
+		if(I.use_tool(src, user, 8 SECONDS, volume=50))
+			I.play_tool_sound(src, 50)
+			deconstruct(TRUE)
+		return TRUE
 	return TRUE
 
 // Machine deconstruction process handler
@@ -990,7 +992,7 @@
 			return
 		if(get_turf(user) == get_turf(src))
 			return
-		else
+		else if(I.use_tool(src, user, 8 SECONDS, volume=50))
 			var/obj/structure/chair/milking_machine/N = new M(src.loc)
 			if(istype(src, /obj/item/milking_machine/constructionkit))
 				if(current_color == "pink")
