@@ -7,6 +7,7 @@
 	special_icon_case = TRUE
 	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 	/// A generalisation of the tail-type, e.g. lizard or feline, for hardsuit or other sprites
 	var/general_type
 
