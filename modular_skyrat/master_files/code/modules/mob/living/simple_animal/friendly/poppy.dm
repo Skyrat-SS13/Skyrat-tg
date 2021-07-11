@@ -13,7 +13,7 @@
 	emote_see = list("runs in a circle.", "shakes.")
 	speak_chance = 2
 	turns_per_move = 3
-	see_in_dark = 5
+	can_be_held = TRUE
 	butcher_results = list(/obj/item/food/meat/slab = 1, /obj/item/clothing/head/hardhat = 1)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
@@ -69,6 +69,6 @@
 		manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))
 		set_resting(TRUE)
 		return ..()
-	manual_emote(pick("stretches her claws, rising!", "diligently gets up, ready to inspect!", "stops resting..."))
+	manual_emote(pick("stretches her claws, rising...", "diligently gets up, ready to inspect!", "stops her resting."))
 	set_resting(FALSE)
 	return ..()
