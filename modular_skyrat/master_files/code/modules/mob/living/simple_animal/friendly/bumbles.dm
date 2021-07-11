@@ -5,7 +5,6 @@
 	icon_state = "bumbles"
 	icon_living = "bumbles"
 	icon_dead = "bumbles_dead"
-	turns_per_move = 1
 	maxHealth = 15
 	health = 15
 	response_help_continuous = "pets"
