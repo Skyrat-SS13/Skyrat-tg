@@ -126,11 +126,6 @@
 	//spark for no reason
 	if(prob(5))
 		do_sparks(3, 1, src)
-	//dart for no reason
-	if(prob(0.01))
-		var/mob/living/carbon/target = locate() in view(10, src)
-		if(target)
-			shootToyAt(target)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/handle_automated_action()
 	if(emagged && prob(25))
