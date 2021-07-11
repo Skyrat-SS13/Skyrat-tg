@@ -37,11 +37,14 @@
 
 /mob/living/simple_animal/pet/dog/corgi/borgi
 	name = "E-N"
-	real_name = "E-N"	//Intended to hold the name without altering it.
+	real_name = "E-N" //Intended to hold the name without altering it.
 	desc = "It's a borgi."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "borgi"
 	icon_living = "borgi"
+	icon_dead = "borgi_dead"
+	maxHealth = 50
+	health = 50
 	var/emagged = 0
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -50,6 +53,22 @@
 	deathmessage = "its mechanics hiss before seizing."
 	animal_species = /mob/living/simple_animal/pet/dog/corgi/borgi
 	nofur = TRUE
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/Initialize()
+	. = ..()
+	//Defense protocol
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
+	RegisterSignal(src, COMSIG_ATOM_HITBY, .proc/on_hitby)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/user)
+	if(user.combat_mode)
+		shootAt(user)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_hitby(datum/source, atom/movable/AM)
+	if(istype(AM, /obj/item))
+		var/mob/living/carbon/target = locate() in view(10, src)
+		if(target)
+			shootAt(target)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
 	if(!emagged)
