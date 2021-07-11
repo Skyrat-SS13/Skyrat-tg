@@ -23,7 +23,7 @@
 		. += span_info("You can use right click with an empty hand to remove the most recently inserted Medicell from the chamber.")
 		for(var/cell in installedcells)
 			var/obj/item/medicell/medicell = cell
-			. += span_notice("There is \a [medicell] in the chamber.")
+			. += span_notice("There is \a [medicell] loaded in the chamber.")
 
 //standard MediGun// This is what you will get from Cargo, most likely.
 /obj/item/gun/energy/medigun/standard
