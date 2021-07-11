@@ -18,14 +18,14 @@
 
 /datum/chemical_reaction/mark_reaction
 	results = list(/datum/reagent/liquidgibs = 15)
-	required_reagents = list(/datum/reagent/medicine/omnizine = 20,
-	/datum/reagent/blood = 20,
+	required_reagents = list(/datum/reagent/blood = 20,
+	/datum/reagent/medicine/omnizine = 20,
 	/datum/reagent/medicine/c2/synthflesh = 20,
 	/datum/reagent/consumable/nutriment/protein = 10,
 	/datum/reagent/consumable/nutriment = 10,
-	/datum/reagent/colorful_reagent/powder/yellow/crayon = 5,
 	/datum/reagent/consumable/ketchup = 5,
-	/datum/reagent/consumable/mayonnaise = 5)
+	/datum/reagent/consumable/mayonnaise = 5,
+	/datum/reagent/colorful_reagent/powder/yellow/crayon = 5)
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 	required_temp = 480
 
@@ -34,3 +34,63 @@
 	var/location = get_turf(holder.my_atom)
 	new /mob/living/simple_animal/pet/dog/markus(location)
 	playsound(location, 'modular_skyrat/master_files/sound/effects/dorime.ogg', 100, 0, 7)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi
+	name = "E-N"
+	real_name = "E-N"	//Intended to hold the name without altering it.
+	desc = "It's a borgi."
+	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
+	icon_state = "borgi"
+	icon_living = "borgi"
+	var/emagged = 0
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	loot = list(/obj/effect/decal/cleanable/oil/slippery)
+	butcher_results = list(/obj/item/clothing/head/corgi/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
+	deathmessage = "its mechanics hiss before seizing."
+	animal_species = /mob/living/simple_animal/pet/dog/corgi/borgi
+	nofur = TRUE
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
+	if(!emagged)
+		emagged = 1
+		visible_message("<span class='warning'>[user] swipes a card through [src].</span>", "<span class='notice'>You overload [src]s internal reactor.</span>")
+		addtimer(CALLBACK(src, .proc/explode), 1000)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
+	visible_message("<span class='warning'>[src] makes an odd whining noise.</span>")
+	explosion(get_turf(src), 0, 1, 4, 7)
+	death()
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/shootAt(atom/movable/target)
+	var/turf/T = get_turf(src)
+	var/turf/U = get_turf(target)
+	if(!T || !U)
+		return
+	var/obj/projectile/beam/laser = new /obj/projectile/beam(loc)
+	laser.icon = 'icons/effects/genetics.dmi'
+	laser.icon_state = "eyelasers"
+	playsound(src.loc, 'sound/weapons/taser.ogg', 75, 1)
+	laser.preparePixelProjectile(target, T)
+	laser.firer = src
+	laser.fired_from = src
+	laser.fire()
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/Life(seconds, times_fired)
+	..()
+	//spark for no reason
+	if(prob(5))
+		do_sparks(3, 1, src)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/handle_automated_action()
+	if(emagged && prob(25))
+		var/mob/living/carbon/target = locate() in view(10, src)
+		if(target)
+			shootAt(target)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/death(gibbed)
+	// Only execute the below if we successfully died
+	. = ..(gibbed)
+	if(!.)
+		return FALSE
+	do_sparks(3, 1, src)
