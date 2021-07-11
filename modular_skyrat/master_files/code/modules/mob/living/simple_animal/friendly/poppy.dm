@@ -40,7 +40,7 @@
 
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
 	var/obj/effect/overlay/light_cone/cone = lighting_object.cone
-	cone.transform = cone.transform.Translate(0, -12) //adjust the little headlamp
+	cone.transform = cone.transform.Translate(0, -8) //adjust the little headlamp
 
 /mob/living/simple_animal/pet/poppy/death()
 	. = ..()
@@ -62,17 +62,13 @@
 		set_light_on(TRUE)
 	regenerate_icons()
 
-/mob/living/simple_animal/pet/poppy/handle_automated_movement()
-	. = ..()
-
 /mob/living/simple_animal/pet/poppy/Life(delta_time = SSMOBS_DT, times_fired)
-	if(!stat && !buckled && !client)
-		if(DT_PROB(0.5, delta_time))
-			manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))
-			set_resting(TRUE)
-		else if(DT_PROB(0.5, delta_time))
-			if (resting)
-				manual_emote(pick("stretches her claws, rising!", "diligently gets up, ready to inspect!", "stops resting..."))
-			else
-				manual_emote(pick("hisses!"))
-	..()
+	if(buckled || client || !DT_PROB(0.5, delta_time))
+		return ..()
+	if(resting)
+		manual_emote(pick("lets out a hiss before resting.", "catches a break.", "gives a simmering hiss before lounging.", "exams her surroundings before relaxing."))
+		set_resting(TRUE)
+		return ..()
+	manual_emote(pick("stretches her claws, rising!", "diligently gets up, ready to inspect!", "stops resting..."))
+	set_resting(FALSE)
+	return ..()

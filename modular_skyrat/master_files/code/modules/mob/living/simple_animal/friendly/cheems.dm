@@ -1,7 +1,7 @@
 /mob/living/simple_animal/pet/dog/cheems
 	name = "\proper Cheems"
 	real_name = "Cheems"
-	gender = MALE
+	gender = FEMALE
 	desc = "It's the Cargo's overfed, yet still beloved dog."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "cheems"
@@ -14,9 +14,7 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 
 /mob/living/simple_animal/pet/dog/cheems/treat_message(message)
-	if(client) //cheems only thinks of necessities
-		message = pick("Borf!", "Boof!", "Bork!", "Bowwow!")
-	return message
+	return client ? pick(speak) : message
 
 /datum/chemical_reaction/cheem_reaction
 	results = list(/datum/reagent/ash = 1)
