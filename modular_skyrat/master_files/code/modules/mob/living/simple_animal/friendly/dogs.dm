@@ -74,7 +74,7 @@
 			shootAt(target)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_bullet_act(datum/source, obj/projectile/Proj)
-	if(istype(Proj , /obj/projectile/beam)||istype(Proj, /obj/projectile/bullet))
+	if(istype(Proj, /obj/projectile/beam)||istype(Proj, /obj/projectile/bullet))
 		if((Proj.damage_type == BURN) || (Proj.damage_type == BRUTE))
 			if(!Proj.nodamage && isliving(Proj.firer))
 				shootAt(Proj.firer)
