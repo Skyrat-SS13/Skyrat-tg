@@ -45,6 +45,14 @@
 #define FIRE_LAYER 1 //If you're on fire
 #define TOTAL_LAYERS 30	//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; //SKYRAT EDIT CHANGE - 30 from 29. Added BANDAGE_LAYER
 
+<<<<<<< HEAD
+=======
+//Bitflags for the layers an external organ can draw on
+#define EXTERNAL_FRONT (1 << 1)
+#define EXTERNAL_ADJACENT (1 << 2)
+#define EXTERNAL_BEHIND (1 << 3)
+#define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
+>>>>>>> 5b3ce87c5e9 (Fixes layers being wonky (#60106))
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"
