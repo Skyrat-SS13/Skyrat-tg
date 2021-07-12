@@ -34,7 +34,7 @@
 	attack_sound = 'sound/effects/meatslap.ogg'
 	grab_sound = 'sound/effects/meatslap.ogg' //Special sound for grabbing
 	bodytemp_normal = T20C
-	limbs_icon = 'modular_skyrat/modules/beefmen/icons/beefman_bodyparts.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
 
 	var/dehydrate = 0
 
