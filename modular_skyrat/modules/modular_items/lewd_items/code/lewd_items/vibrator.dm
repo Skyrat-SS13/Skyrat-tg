@@ -329,7 +329,7 @@
 
 						if(vibration_mode == "medium")
 							if(breasts)
-								message = (user == M) ? pick("massages their breasts with the [src]","gently their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s tits", "uses [src] to tease [M]'s nipples")
+								message = (user == M) ? pick("massages their breasts with the [src]","gently teases their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s tits", "uses [src] to tease [M]'s nipples")
 								M.adjustArousal(5)
 								M.adjustPleasure(4)
 								if(prob(30) && (M.stat != DEAD))
@@ -337,7 +337,7 @@
 								user.visible_message("<font color=purple>[user] [message].</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 							else
-								message = (user == M) ? pick("massages their nipples with the [src]","gently their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s nipples", "uses [src] to tease [M]'s nipples")
+								message = (user == M) ? pick("massages their nipples with the [src]","gently teases their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s nipples", "uses [src] to tease [M]'s nipples")
 								M.adjustArousal(3)
 								M.adjustPleasure(1)
 								if(prob(30) && (M.stat != DEAD))
