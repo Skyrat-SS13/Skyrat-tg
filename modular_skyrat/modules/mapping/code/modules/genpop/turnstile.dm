@@ -10,12 +10,15 @@
 	idle_power_usage = 2
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = OPEN_DOOR_LAYER
+	var/last_bumped = 0
+
 
 /obj/machinery/turnstile/Initialize()
 	. = ..()
 	icon_state = "turnstile"
 
 	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
 		COMSIG_ATOM_EXIT = .proc/on_exit,
 	)
 
@@ -33,6 +36,7 @@
 	else
 		return allowed(bumper)
 
+
 /obj/machinery/turnstile/CanPass(atom/movable/mover, border_dir)
 	if(isliving(mover))
 		var/mob/living/living_mover = mover
@@ -47,20 +51,28 @@
 		if(living_mover in behind.contents)
 			allowed_access = allowed_access(living_mover)
 		else
-			to_chat(usr, span_notice("[src] resists your efforts."))
 			return FALSE
 
 		if(allowed_access)
-			flick("operate", src)
-			playsound(src,'sound/items/ratchet.ogg',50,0,3)
 			return TRUE
 		else
-			flick("deny", src)
-			playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
 			return FALSE
-	return..()
+	return ..()
 
-/obj/machinery/turnstile/Bump
+
+/obj/machinery/turnstile/Bumped(atom/movable/AM)
+	if(world.time - last_bumped > 5)
+		to_chat(usr, span_notice("[src] resists your efforts."))
+		flick("deny", src)
+		playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
+		last_bumped = world.time
+
+
+/obj/machinery/turnstile/proc/on_entered(datum/source, atom/movable/entering)
+	SIGNAL_HANDLER
+
+	flick("operate", src)
+	playsound(src, 'sound/items/ratchet.ogg', 50, 0, 3)
 
 
 /obj/machinery/turnstile/proc/on_exit(datum/source, atom/movable/leaving)
@@ -75,7 +87,7 @@
 		var/canexit = !outturf.is_blocked_turf()
 
 		if(!canexit && world.time - skedaddling.last_bumped <= 5)
-			to_chat(usr, span_notice("[src] resists your efforts. Hahaha gottem"))
+			to_chat(usr, span_notice("[src] resists your efforts."))
 		skedaddling.last_bumped = world.time
 
 		if(!canexit)
