@@ -38,14 +38,6 @@
 
 	var/dehydrate = 0
 
-	bodypart_overides = list(
-	BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/beef,\
-	BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/beef,\
-	BODY_ZONE_HEAD = /obj/item/bodypart/head/beef,\
-	BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/beef,\
-	BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/beef,\
-	BODY_ZONE_CHEST = /obj/item/bodypart/chest/beef)
-
 /proc/proof_beefman_features(list/inFeatures)
 	// Missing Defaults in DNA? Randomize!
 	if(inFeatures["beefcolor"] == null || inFeatures["beefcolor"] == "")
@@ -66,15 +58,6 @@
 
 		set_beef_color(H)
 
-		// 2) BODYPARTS
-		C.part_default_head = /obj/item/bodypart/head/beef
-		C.part_default_chest = /obj/item/bodypart/chest/beef
-		C.part_default_l_arm = /obj/item/bodypart/l_arm/beef
-		C.part_default_r_arm = /obj/item/bodypart/r_arm/beef
-		C.part_default_l_leg = /obj/item/bodypart/l_leg/beef
-		C.part_default_r_leg = /obj/item/bodypart/r_leg/beef
-		C.ReassignForeignBodyparts()
-
 /datum/species/proc/set_beef_color(mob/living/carbon/human/H)
 	return // Do Nothing
 
@@ -82,52 +65,6 @@
 	// Called on Assign, or on Color Change (or any time proof_beefman_features() is used)
 	fixed_mut_color = H.dna.features["beefcolor"]
 	default_color = fixed_mut_color
-
-/mob/living/carbon/proc/ReassignForeignBodyparts()
-	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
-	if (head?.type != part_default_head)
-		qdel(head)
-		var/obj/item/bodypart/limb = new part_default_head
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/chest = get_bodypart(BODY_ZONE_CHEST)
-	if (chest?.type != part_default_chest)
-		qdel(chest)
-		var/obj/item/bodypart/limb = new part_default_chest
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/l_arm = get_bodypart(BODY_ZONE_L_ARM)
-	if (l_arm?.type != part_default_l_arm)
-		qdel(l_arm)
-		var/obj/item/bodypart/limb = new part_default_l_arm
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/r_arm = get_bodypart(BODY_ZONE_R_ARM)
-	if (r_arm?.type != part_default_r_arm)
-		qdel(r_arm)
-		var/obj/item/bodypart/limb = new part_default_r_arm
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/l_leg = get_bodypart(BODY_ZONE_L_LEG)
-	if (l_leg?.type != part_default_l_leg)
-		qdel(l_leg)
-		var/obj/item/bodypart/limb = new part_default_l_leg
-		limb.replace_limb(src,TRUE)
-	var/obj/item/bodypart/r_leg = get_bodypart(BODY_ZONE_R_LEG)
-	if (r_leg?.type != part_default_r_leg)
-		qdel(r_leg)
-		var/obj/item/bodypart/limb = new part_default_r_leg
-		limb.replace_limb(src,TRUE)
-
-
-/datum/species/beefman/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
-	..()
-
-	// 2) BODYPARTS
-	C.part_default_head = /obj/item/bodypart/head
-	C.part_default_chest = /obj/item/bodypart/chest
-	C.part_default_l_arm = /obj/item/bodypart/l_arm
-	C.part_default_r_arm = /obj/item/bodypart/r_arm
-	C.part_default_l_leg = /obj/item/bodypart/l_leg
-	C.part_default_r_leg = /obj/item/bodypart/r_leg
-	C.ReassignForeignBodyparts()
-
 
 /datum/species/beefman/spec_life(mob/living/carbon/human/H)	// This is your life ticker.
 	..()
@@ -183,79 +120,11 @@
 		target.add_mob_blood(user) //  from atoms.dm, this is how you bloody something!
 	return ..()
 
-/datum/species/beefman/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
-	// Targeting Self? With "DISARM"
-	if (user == target)
-		var/target_zone = user.zone_selected
-		var/list/allowedList = list ( BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG )
-		var/obj/item/bodypart/affecting = user.get_bodypart(check_zone(user.zone_selected)) //stabbing yourself always hits the right target
-
-		if ((target_zone in allowedList) && affecting)
-
-			if (user.handcuffed)
-				to_chat(user, span_alert("You can't get a good enough grip with your hands bound."))
-				return FALSE
-
-			// Robot Arms Fail
-			if (affecting.status != BODYPART_ORGANIC)
-				to_chat(user, "That thing is on there good. It's not coming off with a gentle tug.")
-				return FALSE
-
-			// Pry it off...
-			user.visible_message("[user] grabs onto [p_their()] own [affecting.name] and pulls.", span_notice("You grab hold of your [affecting.name] and yank hard."))
-			if (!do_mob(user,target))
-				return TRUE
-
-			user.visible_message("[user]'s [affecting.name] comes right off in their hand.", span_notice("Your [affecting.name] pops right off."))
-			playsound(get_turf(user), 'sound/effects/meatslap.ogg', 40, 1)
-
-			// Destroy Limb, Drop Meat, Pick Up
-			var/obj/item/I = affecting.drop_limb() //  <--- This will return a meat vis drop_meat(), even if only Beefman limbs return anything. If this was another species' limb, it just comes off.
-			if (istype(I, /obj/item/food/meat/slab))
-				user.put_in_hands(I)
-
-			return TRUE
-	return ..()
-
 /datum/species/beefman/spec_unarmedattacked(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	// Bleed On
 	if (user != target && user.is_bleeding())
 		target.add_mob_blood(user) //  from atoms.dm, this is how you bloody something!s
 	return ..()
-
-/datum/species/beefman/proc/handle_limb_mashing()
-	SIGNAL_HANDLER
-
-/datum/species/beefman/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H, modifiers)
-	handle_limb_mashing()
-	// MEAT LIMBS: If our limb is missing, and we're using meat, stick it in!
-	if(LAZYACCESS(modifiers, RIGHT_CLICK))
-		return
-	if(H.stat < DEAD && !affecting && istype(I, /obj/item/food/meat/slab))
-		var/target_zone = user.zone_selected
-		var/list/limbs = list(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-
-		if((target_zone in limbs))
-			if(user == H)
-				user.visible_message("[user] begins mashing [I] into [H]'s torso.", span_notice("You begin mashing [I] into your torso."))
-			else
-				user.visible_message("[user] begins mashing [I] into [H]'s torso.", span_notice("You begin mashing [I] into [H]'s torso."))
-
-			// Leave Melee Chain (so deleting the meat doesn't throw an error) <--- aka, deleting the meat that called this very proc.
-			spawn(1)
-				if(do_mob(user,H))
-					// Attach the part!
-					var/obj/item/bodypart/newBP = H.newBodyPart(target_zone, FALSE)
-					H.visible_message("The meat sprouts digits and becomes [H]'s new [newBP.name]!", span_notice("The meat sprouts digits and becomes your new [newBP.name]!"))
-					newBP.attach_limb(H)
-					if(I.reagents && I.reagents.total_volume)
-						I.reagents.trans_to(user, I.reagents.total_volume)	//transfer reagents to player
-					qdel(I)
-					playsound(get_turf(H), 'sound/effects/meatslap.ogg', 50, 1)
-
-			return TRUE // True CANCELS the sequence.
-
-	return ..() // TRUE FALSE
 
 /datum/species/beefman/before_equip_job(datum/job/playerJob, mob/living/carbon/human/H)
 
@@ -362,93 +231,6 @@
 /datum/species/beefman/after_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
 	to_chat(H, "<span class='danger'>Meatmen come from Fulpstation, a server with a looser ruleset than ours. This is NOT a pass to grief. Policy still applies!</span>")
 
-//
-//LIMBS
-//
-
-/obj/item/bodypart/head/beef
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
-
-/obj/item/bodypart/chest/beef
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
-
-/obj/item/bodypart/r_arm/beef
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
-
-/obj/item/bodypart/l_arm/beef
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
-
-/obj/item/bodypart/r_leg/beef
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
-
-/obj/item/bodypart/l_leg/beef
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
-
-/obj/item/bodypart/chest/beef/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/r_arm/beef/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/l_arm/beef/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/r_leg/beef/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/l_leg/beef/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
 // SPRITE PARTS //
 /datum/sprite_accessory/beef
 	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
@@ -505,13 +287,3 @@
 /datum/sprite_accessory/beef/mouth/smile2
 	name = "Smile2"
 	icon_state = "smile2"
-
-
-/mob/living/carbon
-	// Type References for Bodyparts
-	var/obj/item/bodypart/head/part_default_head = /obj/item/bodypart/head
-	var/obj/item/bodypart/chest/part_default_chest = /obj/item/bodypart/chest
-	var/obj/item/bodypart/l_arm/part_default_l_arm = /obj/item/bodypart/l_arm
-	var/obj/item/bodypart/r_arm/part_default_r_arm = /obj/item/bodypart/r_arm
-	var/obj/item/bodypart/l_leg/part_default_l_leg = /obj/item/bodypart/l_leg
-	var/obj/item/bodypart/r_leg/part_default_r_leg = /obj/item/bodypart/r_leg
