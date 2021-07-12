@@ -32,6 +32,7 @@
 	var/list/moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...") // Phrases to be said when the player attempts to talk when speech modification / voicebox is enabled.
 	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "GMmmhp!") // Power probability phrases to be said when talking.
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
+	var/temp_check = TRUE //Used to check if user unconsious to prevent choking him until he wakes up
 
 // We can only moan with that thing on
 /obj/item/clothing/mask/gas/bdsm_mask
@@ -205,6 +206,7 @@
 	. = ..()
 	if(mask_on == TRUE)
 		STOP_PROCESSING(SSobj, src)
+		temp_check = TRUE
 
 // To check if player already have this mask on and trying to change mode
 /obj/item/clothing/mask/gas/bdsm_mask/proc/check()
@@ -234,16 +236,29 @@
 /obj/item/clothing/mask/gas/bdsm_mask/process(delta_time)
 	var/mob/living/U = loc
 	if(time_to_choke_left < time_to_choke/2 && breath_status == TRUE)
-		U.emote("exhale")
-		breath_status = FALSE
-		if(rand(0,3) == 0)
-			U.emote("moan")
+		if(temp_check == FALSE && U.stat == CONSCIOUS) //If user passed out while wearing this we should continue when he wakes up
+			breath_status = FALSE
+			time_to_choke_left = time_to_choke
+			temp_check = TRUE
+
+		if(U.stat == CONSCIOUS)
+			U.emote("exhale")
+			breath_status = FALSE
+			if(rand(0,3) == 0)
+				U.emote("moan")
+		else
+			breath_status = TRUE
+			temp_check = FALSE
 
 	if(time_to_choke_left <= 0)
 		if(tt <= 0)
-			U.adjustOxyLoss(rand(4,8)) // Oxy dmg
-			U.emote(pick("gasp","choke","moan"))
-			tt = time
+			if(U.stat == CONSCIOUS)
+				U.adjustOxyLoss(rand(4,8)) // Oxy dmg
+				U.emote(pick("gasp","choke","moan"))
+				tt = time
+			else
+				breath_status = TRUE
+				temp_check = FALSE
 		else
 			tt -= delta_time
 	else
