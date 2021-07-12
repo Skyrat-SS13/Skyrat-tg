@@ -44,8 +44,8 @@
 	icon_state = "borgi"
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
-	maxHealth = 30
-	health = 30
+	maxHealth = 60
+	health = 60
 	var/emagged = 0
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -63,19 +63,19 @@
 	RegisterSignal(src, COMSIG_ATOM_HITBY, .proc/on_hitby)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
-	if(target.combat_mode && src.health > 0)
+	if(target.combat_mode && health > 0)
 		shootAt(target)
-		var/datum/ai_controller/dog/EN = src.ai_controller
-		if(src.health < 15 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
+		var/datum/ai_controller/dog/EN = ai_controller
+		if(health <= 30 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
 			EN.current_movement_target = target
 			EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
 			EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attackby(datum/source, obj/item/I, mob/living/target)
-	if(I.force && I.damtype != STAMINA && src.health > 0)
+	if(I.force && I.damtype != STAMINA && health > 0)
 		shootAt(target)
-		var/datum/ai_controller/dog/EN = src.ai_controller
-		if(src.health < 15 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
+		var/datum/ai_controller/dog/EN = ai_controller
+		if(health <= 30 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
 			EN.current_movement_target = target
 			EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
 			EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
@@ -84,12 +84,12 @@
 	if(istype(AM, /obj/item))
 		var/obj/item/I = AM
 		var/mob/thrown_by = I.thrownby?.resolve()
-		if(I.throwforce > 5 && ishuman(thrown_by) && src.health > 0)
+		if(I.throwforce >= 5 && ishuman(thrown_by) && health > 0)
 			var/mob/living/carbon/human/target = thrown_by
-			var/datum/ai_controller/dog/EN = src.ai_controller
+			var/datum/ai_controller/dog/EN = ai_controller
 			if(!(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
 				shootAt(target)
-			if(src.health < 15)
+			if(health <= 30)
 				EN.current_movement_target = target
 				EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
 				EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
@@ -97,27 +97,18 @@
 /mob/living/simple_animal/pet/dog/corgi/borgi/bullet_act(obj/projectile/proj)
 	if(istype(proj, /obj/projectile/beam) || istype(proj, /obj/projectile/bullet))
 		var/mob/living/carbon/human/target = proj.firer
-		if(isliving(target) && src.health > 0)
-			if(!proj.nodamage && proj.damage > 10)
-				shootAt(target)
-				var/datum/ai_controller/dog/EN = src.ai_controller
-				EN.current_movement_target = target
-				EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
-				EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
-			else
-				shootToyAt(target)
+		if(!proj.nodamage && proj.damage >= 10)
+			if((proj.damage_type == BRUTE || proj.damage_type == BURN))
+				adjustBruteLoss(proj.damage)
+				if(isliving(target) && health > 0)
+					shootAt(target)
+					var/datum/ai_controller/dog/EN = ai_controller
+					EN.current_movement_target = target
+					EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
+					EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
+		else
+			shootToyAt(target)
 	return BULLET_ACT_HIT
-
-/mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
-	if(!emagged)
-		emagged = 1
-		visible_message(span_warning("[user] swipes a card through [src].</span>"),span_notice("You overload [src]s internal reactor.</span>"))
-		addtimer(CALLBACK(src, .proc/explode), 60 SECONDS)
-
-/mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
-	visible_message(span_warning("[src] makes an odd whining noise.</span>"))
-	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE)
-	death()
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/shootAt(atom/movable/target)
 	var/turf/T = get_turf(src)
@@ -127,7 +118,7 @@
 	var/obj/projectile/beam/laser = new /obj/projectile/beam(loc)
 	laser.icon = 'icons/effects/genetics.dmi'
 	laser.icon_state = "eyelasers"
-	playsound(src.loc, 'sound/weapons/taser.ogg', 75, 1)
+	playsound(loc, 'sound/weapons/taser.ogg', 75, 1)
 	laser.preparePixelProjectile(target, T)
 	laser.firer = src
 	laser.fired_from = src
@@ -141,7 +132,7 @@
 	var/obj/projectile/bullet/reusable/foam_dart/FD = new /obj/projectile/bullet/reusable/foam_dart(loc)
 	FD.icon = 'icons/obj/guns/toy.dmi'
 	FD.icon_state = "foamdart_proj"
-	playsound(src.loc, 'sound/items/syringeproj.ogg', 75, 1)
+	playsound(loc, 'sound/items/syringeproj.ogg', 75, 1)
 	FD.preparePixelProjectile(target, T)
 	FD.firer = src
 	FD.fired_from = src
@@ -165,5 +156,16 @@
 	if(!.)
 		return FALSE
 	do_sparks(3, 1, src)
-	var/datum/ai_controller/dog/EN = src.ai_controller
+	var/datum/ai_controller/dog/EN = ai_controller
 	LAZYCLEARLIST(EN.current_behaviors)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
+	if(!emagged)
+		emagged = 1
+		visible_message(span_warning("[user] swipes a card through [src].</span>"),span_notice("You overload [src]s internal reactor.</span>"))
+		addtimer(CALLBACK(src, .proc/explode), 60 SECONDS)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
+	visible_message(span_warning("[src] makes an odd whining noise.</span>"))
+	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE)
+	death()
