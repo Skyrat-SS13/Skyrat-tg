@@ -11,6 +11,7 @@
 	exp_type = EXP_TYPE_SCIENCE
 
 	outfit = /datum/outfit/job/expeditionary_trooper
+	plasmaman_outfit = /datum/outfit/plasmaman/mining
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SCI
