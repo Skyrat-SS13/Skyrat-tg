@@ -154,12 +154,12 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 /proc/delta_alarm() //Delta alarm sounds every so often
 	if(SSsecurity_level.current_level == SEC_LEVEL_DELTA)
 		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alarm_delta.ogg')
-		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm), DELTA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE)
+		GLOB.delta_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/delta_alarm), DELTA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE | TIMER_CLIENT_TIME)
 
 /proc/gamma_loop() //Loops gamma sound
 	if(SSsecurity_level.current_level == SEC_LEVEL_GAMMA)
 		alert_sound_to_playing('modular_skyrat/modules/alerts/sound/misc/gamma_alert.ogg')
-		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE)
+		GLOB.gamma_timer_id = addtimer(CALLBACK(GLOBAL_PROC, .proc/gamma_loop), GAMMA_LOOP_LENGTH, TIMER_UNIQUE | TIMER_STOPPABLE | TIMER_CLIENT_TIME)
 
 ///This is quite franlky the most important proc relating to global sounds, it uses area definition to play sounds depending on your location, and respects the players announcement volume. Generally if you're sending an announcement you want to use priority_announce.
 /proc/alert_sound_to_playing(soundin, vary = FALSE, frequency = 0, falloff = FALSE, channel = 0, pressure_affected = FALSE, sound/S)
