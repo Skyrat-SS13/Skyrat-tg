@@ -86,6 +86,8 @@
 
 /obj/item/clothing/sextoy/vibroring/process(delta_time)
 	var/mob/living/carbon/human/U = loc
+	if(!U)
+		return PROCESS_KILL
 	var/obj/item/organ/genital/testicles/P = U.getorganslot(ORGAN_SLOT_PENIS)
 	if(toy_on == TRUE)
 		U.adjustArousal(1 * delta_time)

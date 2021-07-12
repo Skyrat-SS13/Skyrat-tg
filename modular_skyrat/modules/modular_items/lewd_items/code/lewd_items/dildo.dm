@@ -91,7 +91,7 @@
 						message = (user == M) ? pick("rubs their vagina with the [src]","gently jams their pussy with [src]","fucks their vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "teasing [M]'s pussy with a [src]")
 						M.adjustArousal(6)
 						M.adjustPleasure(8)
-						if(prob(40))
+						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
 						user.visible_message("<font color=purple>[user] [message].</font>")
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -113,7 +113,7 @@
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
-					if(prob(70))
+					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -132,7 +132,7 @@
 					message = (user == M) ? pick("puts [src] into their anus","slowly inserts [src] into their ass") : pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
-					if(prob(60))
+					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -295,18 +295,18 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 						if(poly_size == "small")
 							M.adjustArousal(4)
 							M.adjustPleasure(5)
-							if(prob(20))
+							if(prob(20) && (M.stat != DEAD))
 								M.emote("moan")
 						if(poly_size == "medium")
 							M.adjustArousal(6)
 							M.adjustPleasure(8)
-							if(prob(40))
+							if(prob(40) && (M.stat != DEAD))
 								M.emote(pick("twitch_s","moan"))
 						if(poly_size == "big")
 							M.adjustArousal(8)
 							M.adjustPleasure(10)
 							M.adjustPain(2)
-							if(prob(60))
+							if(prob(60) && (M.stat != DEAD))
 								M.emote(pick("twitch_s","moan","gasp"))
 
 						user.visible_message("<font color=purple>[user] [message].</font>")
@@ -329,7 +329,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
-					if(prob(70))
+					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -348,7 +348,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					message = (user == M) ? pick("puts [src] into their anus","slowly inserts [src] into their ass") : pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
-					if(prob(60))
+					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -534,7 +534,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 						message = (user == M) ? pick("rubs their vagina with the [src]","gently jams their pussy with [src]","fucks their vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "teasing [M]'s pussy with a [src]")
 						M.adjustArousal(6)
 						M.adjustPleasure(8)
-						if(prob(40))
+						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
 						user.visible_message("<font color=purple>[user] [message].</font>")
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -556,7 +556,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
-					if(prob(70))
+					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -575,7 +575,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					message = (user == M) ? pick("puts [src] into their anus","slowly inserts [src] into their ass") : pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
-					if(prob(60))
+					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -623,7 +623,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 						M.adjustPleasure(8)
 						user.adjustArousal(6)
 						user.adjustPleasure(8)
-						if(prob(40))
+						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
 						user.visible_message("<font color=purple>[user] [message].</font>")
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -647,7 +647,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustOxyLoss(1.5)
 					user.adjustArousal(6)
 					user.adjustPleasure(8)
-					if(prob(70))
+					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
@@ -668,7 +668,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustPleasure(5)
 					user.adjustArousal(6)
 					user.adjustPleasure(8)
-					if(prob(60))
+					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',

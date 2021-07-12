@@ -531,7 +531,7 @@
 	var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/testicles/penis = owner.getorganslot(ORGAN_SLOT_PENIS)
 
-	if(H.client?.prefs.erp_pref == "Yes")
+	if((H.client?.prefs.erp_pref == "Yes") && (H.stat != DEAD))
 		if(penis && balls && H.wear_condom())
 			if(prob(40))
 				H.emote("moan")
@@ -886,6 +886,8 @@
 		return
 	if(!ishuman(M))
 		return
+	if(user.stat == DEAD)
+		return
 	var/mob/living/carbon/human/human_cumvictim = M
 	if(!human_cumvictim.client)
 		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
@@ -927,6 +929,8 @@
 	if(!proximity)
 		return
 	if(ishuman(target))
+		return
+	if(user.stat == DEAD)
 		return
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
