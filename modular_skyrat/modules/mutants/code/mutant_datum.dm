@@ -1,9 +1,9 @@
 GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organs, for any mass "animation"
 
 #define CURE_TIME 10 SECONDS
-#define REVIVE_TIME_LOWER 2 MINUTES
-#define REVIVE_TIME_UPPER 3 MINUTES
-#define IMMUNITY_LOWER 1 MINUTES
+#define REVIVE_TIME_LOWER 3 MINUTES
+#define REVIVE_TIME_UPPER 5 MINUTES
+#define IMMUNITY_LOWER 2 MINUTES
 #define IMMUNITY_UPPER 3 MINUTES
 #define RNA_REFRESH_TIME 2 MINUTES //How soon can we extract more RNA?
 
