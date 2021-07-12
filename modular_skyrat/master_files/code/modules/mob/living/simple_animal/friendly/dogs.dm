@@ -63,7 +63,7 @@
 	RegisterSignal(src, COMSIG_ATOM_HITBY, .proc/on_hitby)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
-	if(target.combat_mode && !isdead(source))
+	if(target.combat_mode && src.health > 0)
 		shootAt(target)
 		var/datum/ai_controller/dog/EN = src.ai_controller
 		if(src.health < 15 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
@@ -72,7 +72,7 @@
 			EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attackby(datum/source, obj/item/I, mob/living/target)
-	if(I.force && I.damtype != STAMINA && isliving(source))
+	if(I.force && I.damtype != STAMINA && src.health > 0)
 		shootAt(target)
 		var/datum/ai_controller/dog/EN = src.ai_controller
 		if(src.health < 15 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
@@ -84,7 +84,7 @@
 	if(istype(AM, /obj/item))
 		var/obj/item/I = AM
 		var/mob/thrown_by = I.thrownby?.resolve()
-		if(I.throwforce > 5 && ishuman(thrown_by) && isliving(source))
+		if(I.throwforce > 5 && ishuman(thrown_by) && src.health > 0)
 			var/mob/living/carbon/human/target = thrown_by
 			var/datum/ai_controller/dog/EN = src.ai_controller
 			if(!(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
@@ -97,7 +97,7 @@
 /mob/living/simple_animal/pet/dog/corgi/borgi/bullet_act(obj/projectile/proj)
 	if(istype(proj, /obj/projectile/beam) || istype(proj, /obj/projectile/bullet))
 		var/mob/living/carbon/human/target = proj.firer
-		if(isliving(target) && isliving(src))
+		if(isliving(target) && src.health > 0)
 			if(!proj.nodamage && proj.damage > 10)
 				shootAt(target)
 				var/datum/ai_controller/dog/EN = src.ai_controller
