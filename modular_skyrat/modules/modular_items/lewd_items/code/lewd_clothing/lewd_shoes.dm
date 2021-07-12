@@ -33,6 +33,7 @@
 		START_PROCESSING(SSobj, src)
 	C.update_inv_shoes()
 	C.hud_used.hidden_inventory_update()
+	message_sent = FALSE
 
 //stop processing
 /obj/item/clothing/shoes/latexheels/dropped(mob/user)
