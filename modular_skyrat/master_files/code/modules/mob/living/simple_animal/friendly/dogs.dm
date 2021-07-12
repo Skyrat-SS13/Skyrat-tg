@@ -38,19 +38,20 @@
 /mob/living/simple_animal/pet/dog/corgi/borgi
 	name = "E-N"
 	real_name = "E-N" //Intended to hold the name without altering it.
+	gender = NEUTER
 	desc = "It's a borgi."
 	icon = 'modular_skyrat/master_files/icons/mob/pets.dmi'
 	icon_state = "borgi"
 	icon_living = "borgi"
 	icon_dead = "borgi_dead"
-	maxHealth = 80
-	health = 80
+	maxHealth = 30
+	health = 30
 	var/emagged = 0
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	loot = list(/obj/effect/decal/cleanable/oil/slippery)
 	butcher_results = list(/obj/item/clothing/head/corgi/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
-	deathmessage = "its mechanics hiss before seizing."
+	deathmessage = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	animal_species = /mob/living/simple_animal/pet/dog/corgi/borgi
 	nofur = TRUE
 
@@ -58,11 +59,26 @@
 	. = ..()
 	//Defense protocol
 	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
+	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
 	RegisterSignal(src, COMSIG_ATOM_HITBY, .proc/on_hitby)
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/user)
-	if(user.combat_mode)
-		shootAt(user)
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attack_hand(datum/source, mob/living/target)
+	if(target.combat_mode)
+		shootAt(target)
+		var/datum/ai_controller/dog/EN = src.ai_controller
+		if(src.health < 15 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
+			EN.current_movement_target = target
+			EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
+			EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
+
+/mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_attackby(datum/source, obj/item/I, mob/living/target)
+	if(I.force && I.damtype != STAMINA)
+		shootAt(target)
+		var/datum/ai_controller/dog/EN = src.ai_controller
+		if(src.health < 15 && !(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
+			EN.current_movement_target = target
+			EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
+			EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/on_hitby(datum/source, atom/movable/AM)
 	if(istype(AM, /obj/item))
@@ -70,7 +86,13 @@
 		var/mob/thrown_by = I.thrownby?.resolve()
 		if(I.throwforce > 5 && ishuman(thrown_by))
 			var/mob/living/carbon/human/target = thrown_by
-			shootAt(target)
+			var/datum/ai_controller/dog/EN = src.ai_controller
+			if(!(WEAKREF(target) in EN.blackboard[BB_DOG_FRIENDS]))
+				shootAt(target)
+			if(src.health < 15)
+				EN.current_movement_target = target
+				EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
+				EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/bullet_act(obj/projectile/proj)
 	if(istype(proj, /obj/projectile/beam) || istype(proj, /obj/projectile/bullet))
@@ -78,6 +100,10 @@
 		if(isliving(target))
 			if(!proj.nodamage && proj.damage > 10)
 				shootAt(target)
+				var/datum/ai_controller/dog/EN = src.ai_controller
+				EN.current_movement_target = target
+				EN.blackboard[BB_DOG_HARASS_TARGET] = WEAKREF(target)
+				EN.current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/harass)
 			else
 				shootToyAt(target)
 	return BULLET_ACT_HIT
@@ -85,12 +111,12 @@
 /mob/living/simple_animal/pet/dog/corgi/borgi/emag_act(user as mob)
 	if(!emagged)
 		emagged = 1
-		visible_message("<span class='warning'>[user] swipes a card through [src].</span>", "<span class='notice'>You overload [src]s internal reactor.</span>")
-		addtimer(CALLBACK(src, .proc/explode), 10 SECONDS)
+		visible_message(span_warning("[user] swipes a card through [src].</span>"),span_notice("You overload [src]s internal reactor.</span>"))
+		addtimer(CALLBACK(src, .proc/explode), 60 SECONDS)
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/explode()
-	visible_message("<span class='warning'>[src] makes an odd whining noise.</span>")
-	explosion(get_turf(src), 0, 2, 6, 9, 4, TRUE)
+	visible_message(span_warning("[src] makes an odd whining noise.</span>"))
+	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE)
 	death()
 
 /mob/living/simple_animal/pet/dog/corgi/borgi/proc/shootAt(atom/movable/target)
@@ -139,3 +165,5 @@
 	if(!.)
 		return FALSE
 	do_sparks(3, 1, src)
+	var/datum/ai_controller/dog/EN = src.ai_controller
+	LAZYCLEARLIST(EN.current_behaviors)
