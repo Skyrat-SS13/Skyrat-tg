@@ -30,7 +30,7 @@
 /obj/machinery/turnstile/bullet_act(obj/projectile/P, def_zone)
 	return //Pass through!
 
-/obj/machinery/turnstile/proc/allowed_access(var/mob/bumper)
+/obj/machinery/turnstile/proc/allowed_access(mob/bumper)
 	if(bumper.pulledby && ismob(bumper.pulledby))
 		return allowed(bumper.pulledby) | allowed(bumper)
 	else
