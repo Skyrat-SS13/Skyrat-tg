@@ -392,11 +392,6 @@
 	color = "#FF8888"
 	},
 /area/ruin/space/derelict/bridge/ai_upload)
-"bX" = (
-/obj/structure/rack,
-/obj/item/circuitboard/machine/generator,
-/turf/open/floor/iron,
-/area/ruin/space/derelict/bridge/ai_upload)
 "bY" = (
 /obj/structure/frame/computer{
 	dir = 1
@@ -980,10 +975,6 @@
 "eC" = (
 /obj/structure/table,
 /obj/item/paicard,
-/turf/open/floor/iron,
-/area/ruin/space/derelict/bridge)
-"eD" = (
-/obj/structure/chair/stool,
 /turf/open/floor/iron,
 /area/ruin/space/derelict/bridge)
 "eE" = (
@@ -2607,10 +2598,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/hallway/primary)
-"lg" = (
-/obj/structure/chair/stool,
-/turf/open/floor/iron/airless,
-/area/ruin/space/derelict/hallway/primary)
 "lh" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Atmospherics Access";
@@ -2665,12 +2652,6 @@
 	name = "3maintenance loot spawner"
 	},
 /turf/open/floor/plating/airless,
-/area/ruin/space/derelict/hallway/primary)
-"lp" = (
-/obj/structure/chair/stool,
-/obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/iron/airless,
 /area/ruin/space/derelict/hallway/primary)
 "lq" = (
 /obj/structure/table,
@@ -3425,6 +3406,10 @@
 	icon_state = "platingdmg2"
 	},
 /area/solars/derelict_aft)
+"or" = (
+/obj/structure/chair/stool/directional/west,
+/turf/open/floor/iron,
+/area/ruin/space/derelict/bridge)
 "oy" = (
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg1"
@@ -3466,9 +3451,20 @@
 /obj/item/wallframe/airalarm,
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/atmospherics)
+"tO" = (
+/obj/structure/rack,
+/obj/item/circuitboard/machine/power_compressor,
+/turf/open/floor/iron,
+/area/ruin/space/derelict/bridge/ai_upload)
 "tS" = (
 /turf/template_noop,
 /area/ruin/unpowered/no_grav)
+"ud" = (
+/obj/structure/chair/stool/directional/west,
+/obj/effect/decal/remains/human,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/airless,
+/area/ruin/space/derelict/hallway/primary)
 "vf" = (
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
@@ -3622,6 +3618,11 @@
 /obj/item/language_manual/dronespeak_manual,
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/bridge/ai_upload)
+"KR" = (
+/obj/structure/rack,
+/obj/item/circuitboard/computer/turbine_computer,
+/turf/open/floor/iron,
+/area/ruin/space/derelict/bridge/ai_upload)
 "KS" = (
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/iron/airless,
@@ -3655,6 +3656,11 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
+/area/ruin/space/derelict/bridge/ai_upload)
+"Mc" = (
+/obj/structure/rack,
+/obj/item/circuitboard/machine/power_turbine,
+/turf/open/floor/iron,
 /area/ruin/space/derelict/bridge/ai_upload)
 "Mi" = (
 /obj/machinery/pipedispenser,
@@ -3718,6 +3724,10 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/iron,
 /area/ruin/space/derelict/gravity_generator)
+"RO" = (
+/obj/structure/chair/stool/directional/east,
+/turf/open/floor/iron/airless,
+/area/ruin/space/derelict/hallway/primary)
 "Tm" = (
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/hallway/primary/port)
@@ -3749,6 +3759,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/atmospherics)
+"WC" = (
+/obj/structure/chair/stool/directional/north,
+/turf/open/floor/iron/airless,
+/area/ruin/space/derelict/hallway/primary)
 "Xq" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/iron/airless{
@@ -3769,6 +3783,10 @@
 /obj/item/stack/sheet/iron/fifty,
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/bridge/ai_upload)
+"YM" = (
+/obj/structure/chair/stool/directional/south,
+/turf/open/floor/iron/airless,
+/area/ruin/space/derelict/hallway/primary)
 "YQ" = (
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
@@ -6917,7 +6935,7 @@ go
 kO
 kZ
 le
-lp
+ud
 lH
 go
 go
@@ -7033,7 +7051,7 @@ lf
 lq
 lI
 lr
-lg
+YM
 go
 fZ
 hD
@@ -7142,11 +7160,11 @@ go
 gc
 kP
 go
-lg
+WC
 lr
 lr
 lr
-lg
+YM
 go
 fZ
 gn
@@ -7256,7 +7274,7 @@ gc
 kD
 go
 go
-lg
+RO
 go
 go
 go
@@ -8443,7 +8461,7 @@ ax
 ax
 ax
 aR
-aR
+by
 bw
 by
 aR
@@ -8895,9 +8913,9 @@ ax
 ax
 ax
 bo
-aR
-by
-bX
+tO
+Mc
+KR
 bg
 ax
 bV
@@ -12081,7 +12099,7 @@ cs
 dM
 ec
 ea
-eD
+or
 ea
 eT
 eQ

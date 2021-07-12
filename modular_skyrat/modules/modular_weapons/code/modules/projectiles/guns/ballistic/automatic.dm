@@ -8,7 +8,7 @@
 	name = "CFA Wildcat Magazine (.32)"
 	desc = "Magazines taking .32 ammunition; it fits in the CFA Wildcat. Alt+click to reskin it."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
-	icon_state = "smg32-full"
+	icon_state = "smg32"
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_INCENDIARY)
 	ammo_type = /obj/item/ammo_casing/c32
 	caliber = "c32acp"
@@ -65,7 +65,7 @@
 	name = "\improper CFA Lynx"
 	desc = "A carbine with a high magazine capacity. Chambered in 4.6x30mm. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched above the magazine well."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
-	icon_state = "mp7"
+	icon_state = "cfa-lynx"
 	inhand_icon_state = "arg"
 	selector_switch_icon = FALSE
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx

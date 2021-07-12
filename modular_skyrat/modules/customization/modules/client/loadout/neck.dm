@@ -24,10 +24,12 @@
 /datum/loadout_item/neck/cbellcollar
 	name = "Cowbell collar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/cowcollar
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/neck/bellcollar
 	name = "Bell collar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/bellcollar
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/neck/spikecollar
 	name = "Spike collar"
@@ -40,6 +42,7 @@
 /datum/loadout_item/neck/crosscollar
 	name = "Cross collar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/cross
+	extra_info = LOADOUT_INFO_THREE_COLORS
 
 /datum/loadout_item/neck/poly_cloak
 	name = "Polychromic Cloak"

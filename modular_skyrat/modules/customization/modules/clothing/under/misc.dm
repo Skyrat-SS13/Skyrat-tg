@@ -105,6 +105,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "countess_s"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	flags_inv = HIDESHOES
 
 /obj/item/clothing/under/misc/formaldressred
 	name = "formal red dress"
@@ -112,6 +114,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "formalred_s"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	flags_inv = HIDESHOES
 
 /obj/item/clothing/under/misc/peakyblinder
 	name = "birmingham bling"
@@ -158,7 +162,6 @@
 	icon_state = "enclave"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
 
 /obj/item/clothing/under/enclaveo/real
 	name = "neo american officer uniform"
@@ -229,6 +232,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	flags_inv = HIDESHOES
 
 ///COWBOY
 /obj/item/clothing/under/rancher
@@ -363,7 +367,7 @@
 	desc = "A Cargonium brown with matching trousers. It's adjusted for pushing crates."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cargocas"
+	icon_state = "cargotechjean"
 	inhand_icon_state = "lb_suit"
 
 /obj/item/clothing/under/rank/cargo/qm/syndie
@@ -372,6 +376,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "qmsynd"
+	has_sensor = NO_SENSORS
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 40)
+	can_adjust = FALSE
 
 /obj/item/clothing/under/uvf
 	name = "british combat sweater"
@@ -408,5 +415,203 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "scrubsred"
 
+/obj/item/clothing/under/suit/white/scarface
+	name = "cuban suit"
+	desc = "A yayo coloured silk suit with a crimson shirt. You just know how to hide, how to lie. Me, I don't have that problem. Me, I always tell the truth. Even when I lie."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "scarface"
+
+/obj/item/clothing/under/misc/gear_harness/eve
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "collection of leaves"
+	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
+	icon_state = "eve"
+
+/obj/item/clothing/under/costume/loincloth/sensor/adam
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "leaf"
+	desc = "A single leaf, designed to cover the genitalia of the wearer. Seek not temptation."
+	icon_state = "adam"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/misc/evilcargo
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	name = "black cargo uniform"
+	desc = "Yep, here’s your problem. Someone set this thing to evil."
+	icon_state = "qmsynd"
+	can_adjust = FALSE
+
+
+/obj/item/clothing/under/rank/medical/doctor/white
+	name = "white scrubs"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "scrubswhite"
+
+/obj/item/clothing/under/rank/engineering/engineer/trouser
+	desc = "A yellow set of trousers that somehow protect against radiation."
+	name = "engineer's trousers"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_orange"
+	body_parts_covered = GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/civilian/hydroponics/trouser
+	desc = "A green set of trousers, perfect for making pigs smoke."
+	name = "farmer's trousers"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_green"
+	body_parts_covered = GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/security/peacekeeper/trousers
+	name = "peacekeeper's trousers"
+	desc = "Some light blue combat trousers, however you get protected by these, I have no idea."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_blue"
+	body_parts_covered = GROIN
+	can_adjust = FALSE
+	mutant_variants = NONE
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/security/peacekeeper/trousers/red
+	name = "security officer's trousers"
+	desc = "Some red combat trousers, however you get protected by these, I have no idea."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "workpants_red"
+
+
+/obj/item/clothing/under/rank/captain/imperial
+	desc = "A white jumpsuit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
+	name = "captain's naval jumpsuit"
+	icon_state = "impcap"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
+	desc = "A olive green navel suit and a rank badge denoting the Personnel Officer. Target, maximum firepower."
+	name = "head of personnel's naval jumpsuit"
+	icon_state = "imphop"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/security/head_of_security/imperial
+	desc = "A tar black navel jumpsuit and a rank badge denoting the Officer of The Internal Security Division. Be careful your underlings don't bump their head on a door."
+	name = "head of security's naval jumpsuit"
+	icon_state = "imphos"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/rnd/research_director/imperial
+	desc = "A grey, sterile jumpsuit with a rank badge denoting the Officer of the Internal Science Division. It's a peaceful life."
+	name = "research director's naval jumpsuit"
+	icon_state = "imprd"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/engineering/chief_engineer/imperial
+	desc = "A black, lead lined jumpsuit with a rank badge denoting the Officer of the Internal Engineering Division. Doesn't come with a death machine building guide."
+	name = "chief engineer's naval jumpsuit"
+	icon_state = "impce"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
+	desc = "A teal, sterile jumpsuit with a rank badge denoting the Officer of the Medical Corps. Doesn't protect against blaster fire."
+	name = "chief medical officer's naval jumpsuit"
+	icon_state = "impcmo"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/imperial
+	desc = "A light grey jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "light grey officer's naval jumpsuit"
+	icon_state = "impcom"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/imperial/grey
+	desc = "A grey jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "grey officer's naval jumpsuit"
+	icon_state = "impcommand"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/imperial/grey/trouser
+	desc = "A grey jumpsuit with a rank badge denoting an Officer. This one has grey trousers."
+	name = "grey officer's naval jumpsuit"
+	icon_state = "admiral_uniform"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/imperial/red
+	desc = "A red jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "red officer's naval jumpsuit"
+	icon_state = "impred_uniform"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby
+	desc = "A white shirt with a grey pancilskirt."
+	name = "grey suit skirt"
+	icon_state = "detective_skirty"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+
+/obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby
+	desc = "A white shirt with a dark pancilskirt."
+	name = "black suit skirt"
+	icon_state = "internalaffairs_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
+	desc = "A black shirt with a grey pancilskirt."
+	name = "gentle suit skirt"
+	icon_state = "gentlesuit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby
+	desc = "A satin white shirt with a dark red pancilskirt."
+	name = "burgundy suit skirt"
+	icon_state = "burgundy_suit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby
+	desc = "A satin white shirt with a tan pancilskirt."
+	name = "tan suit skirt"
+	icon_state = "tan_suit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby
+	desc = "A satin white shirt with a light blue pancilskirt."
+	name = "blue suit skirt"
+	icon_state = "bluesuit_suit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby
+	desc = "A satin white shirt with a light green pancilskirt."
+	name = "green suit skirt"
+	icon_state = "greensuit_skirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 

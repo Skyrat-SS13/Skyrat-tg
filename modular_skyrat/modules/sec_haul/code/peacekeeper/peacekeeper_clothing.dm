@@ -63,7 +63,6 @@
 /obj/item/clothing/under/rank/security/peacekeeper/blue
 	name = "blue peacekeeper uniform"
 	icon_state = "bsecurity"
-	worn_icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
@@ -180,27 +179,23 @@
 	content_overlays = FALSE
 	component_type = /datum/component/storage/concrete/peacekeeper
 
-/datum/component/storage/concrete/peacekeeper/on_alt_click(datum/source, mob/user)
-	SIGNAL_HANDLER_DOES_SLEEP
-
+/datum/component/storage/concrete/peacekeeper/open_storage(mob/user)
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
-		return
+		return FALSE
 	if(locked)
 		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
 		return
 
 	var/atom/A = parent
 
-	var/obj/item/gun/ballistic/automatic/pistol/P = locate() in real_location()
-	if(!P)
-		return
+	var/obj/item/gun/ballistic/automatic/pistol/gun_to_draw = locate() in real_location()
+	if(!gun_to_draw)
+		return ..()
 	A.add_fingerprint(user)
-	remove_from_storage(P, get_turf(user))
+	remove_from_storage(gun_to_draw, get_turf(user))
 	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	if(!user.put_in_hands(P))
-		to_chat(user, "<span class='notice'>You fumble for [P] and it falls on the floor.</span>")
-		return
-	user.visible_message("<span class='warning'>[user] draws [P] from [parent]!</span>", "<span class='notice'>You draw [P] from [parent].</span>")
+	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
+	user.visible_message("<span class='warning'>[user] draws [gun_to_draw] from [parent]!</span>", "<span class='notice'>You draw [gun_to_draw] from [parent].</span>")
 
 
 /datum/component/storage/concrete/peacekeeper/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
@@ -300,6 +295,7 @@
 	icon_state = "peacekeeper_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"
+	armor = list(MELEE = 15, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 10, RAD = 0, FIRE = 60, ACID = 35)
 
 /obj/item/clothing/shoes/combat/peacekeeper/ComponentInitialize()
 	. = ..()
@@ -315,9 +311,8 @@
 /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
 	name = "Armadyne SS-01 Voidsuit Helmet"
 	desc = "An Armadyne brand voidsuit helmet, with a decent layer of armor, this one comes in the peacekeeper colors."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-peacekeeper"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "peacekeeper"

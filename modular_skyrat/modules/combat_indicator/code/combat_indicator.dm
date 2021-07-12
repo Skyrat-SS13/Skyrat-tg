@@ -11,6 +11,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	var/nextcombatpopup = 0
 
 /mob/living/proc/combat_indicator_unconscious_signal()
+	SIGNAL_HANDLER
 	set_combat_indicator(FALSE)
 
 /mob/living/proc/set_combat_indicator(state)

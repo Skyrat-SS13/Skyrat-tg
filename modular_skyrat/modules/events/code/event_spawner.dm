@@ -17,7 +17,7 @@
 	var/used = FALSE
 
 /obj/character_event_spawner/attack_ghost(mob/user)
-	TrySpawn(user)	
+	TrySpawn(user)
 
 /obj/character_event_spawner/proc/TrySpawn(mob/dead/observer/user)
 	if(!user || !user.client)
@@ -26,6 +26,9 @@
 		return
 	if(ckey_whitelist && !(lowertext(user.ckey) in ckey_whitelist))
 		alert(user, "Sorry, This spawner is not for you!", "", "Ok")
+		return
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER))
+		to_chat(user, "Error, you are banned from playing ghost roles!")
 		return
 	var/species_string
 	if(species_whitelist)
@@ -50,7 +53,7 @@
 		warning_string += "\nThis role is restricted to those species: [species_string]"
 	if(gender_string)
 		warning_string += "\nThis role is restricted to those genders: [gender_string]"
-	var/action = alert(user, warning_string, "", "Yes", "Yes with Alias", "No")
+	var/action = tgui_alert(user, warning_string, "", list("Yes", "Yes with Alias", "No"))
 	if(!action || action == "No")
 		return
 	var/alias

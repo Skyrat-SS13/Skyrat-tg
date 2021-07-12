@@ -16,7 +16,8 @@
 	layer = EDGED_TURF_LAYER
 	base_icon_state = "smoothrocks"
 	temperature = TCMB
-	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
+	color = "#677" //SKYRAT EDIT ADDITION
+	var/smooth_icon = 'modular_skyrat/modules/liquids/icons/turf/smoothrocks.dmi' //SKYRAT EDIT CHANGE
 	var/environment_type = "asteroid"
 	var/turf/open/floor/plating/turf_type = /turf/open/floor/plating/asteroid/airless
 	var/obj/item/stack/ore/mineralType = null
@@ -63,7 +64,7 @@
 
 /turf/closed/mineral/attackby(obj/item/I, mob/user, params)
 	if (!ISADVANCEDTOOLUSER(user))
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(usr, span_warning("You don't have the dexterity to do this!"))
 		return
 
 	if(I.tool_behaviour == TOOL_MINING)
@@ -74,11 +75,11 @@
 		if(last_act + (40 * I.toolspeed) > world.time)//prevents message spam
 			return
 		last_act = world.time
-		to_chat(user, "<span class='notice'>You start picking...</span>")
+		to_chat(user, span_notice("You start picking..."))
 
 		if(I.use_tool(src, user, 40, volume=50))
 			if(ismineralturf(src))
-				to_chat(user, "<span class='notice'>You finish cutting into the rock.</span>")
+				to_chat(user, span_notice("You finish cutting into the rock."))
 				gets_drilled(user, TRUE)
 				SSblackbox.record_feedback("tally", "pick_used_mining", 1, I.type)
 	else
@@ -93,11 +94,11 @@
 	if(last_act + MINING_MESSAGE_COOLDOWN > world.time)//prevents message spam
 		return
 	last_act = world.time
-	to_chat(user, "<span class='notice'>You start pulling out pieces of [src] with your hands...</span>")
+	to_chat(user, span_notice("You start pulling out pieces of [src] with your hands..."))
 	if(!do_after(user, 15 SECONDS, target = src))
 		return
 	if(ismineralturf(src))
-		to_chat(user, "<span class='notice'>You finish pulling apart [src].</span>")
+		to_chat(user, span_notice("You finish pulling apart [src]."))
 		gets_drilled(user)
 
 /turf/closed/mineral/proc/gets_drilled(user, give_exp = FALSE)
@@ -129,10 +130,10 @@
 	..()
 
 /turf/closed/mineral/attack_alien(mob/living/carbon/alien/user, list/modifiers)
-	to_chat(user, "<span class='notice'>You start digging into the rock...</span>")
+	to_chat(user, span_notice("You start digging into the rock..."))
 	playsound(src, 'sound/effects/break_stone.ogg', 50, TRUE)
 	if(do_after(user, 4 SECONDS, target = src))
-		to_chat(user, "<span class='notice'>You tunnel into the rock.</span>")
+		to_chat(user, span_notice("You tunnel into the rock."))
 		gets_drilled(user)
 
 /turf/closed/mineral/attack_hulk(mob/living/carbon/human/H)
@@ -193,12 +194,14 @@
 		var/path = pickweight(mineralSpawnChanceList)
 		if(ispath(path, /turf))
 			var/stored_flags = 0
+			var/stored_color = color //SKYRAT EDIT ADDITION
 			if(turf_flags & NO_RUINS)
 				stored_flags |= NO_RUINS
 			var/turf/T = ChangeTurf(path,null,CHANGETURF_IGNORE_AIR)
 			T.flags_1 |= stored_flags
 
 			T.baseturfs = src.baseturfs
+			T.color = stored_color //SKYRAT EDIT ADDITION
 			if(ismineralturf(T))
 				var/turf/closed/mineral/M = T
 				M.turf_type = src.turf_type
@@ -534,7 +537,7 @@
 
 /turf/closed/mineral/gibtonite/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/mining_scanner) || istype(I, /obj/item/t_scanner/adv_mining_scanner) && stage == 1)
-		user.visible_message("<span class='notice'>[user] holds [I] to [src]...</span>", "<span class='notice'>You use [I] to locate where to cut off the chain reaction and attempt to stop it...</span>")
+		user.visible_message(span_notice("[user] holds [I] to [src]..."), span_notice("You use [I] to locate where to cut off the chain reaction and attempt to stop it..."))
 		defuse()
 	..()
 
@@ -545,7 +548,7 @@
 		name = "gibtonite deposit"
 		desc = "An active gibtonite reserve. Run!"
 		stage = GIBTONITE_ACTIVE
-		visible_message("<span class='danger'>There's gibtonite inside! It's going to explode!</span>")
+		visible_message(span_danger("There's gibtonite inside! It's going to explode!"))
 
 		var/notify_admins = !is_mining_level(z)
 
@@ -578,7 +581,7 @@
 		stage = GIBTONITE_STABLE
 		if(det_time < 0)
 			det_time = 0
-		visible_message("<span class='notice'>The chain reaction stopped! The gibtonite had [det_time] reactions left till the explosion!</span>")
+		visible_message(span_notice("The chain reaction stopped! The gibtonite had [det_time] reactions left till the explosion!"))
 
 /turf/closed/mineral/gibtonite/gets_drilled(mob/user, triggered_by_explosion = FALSE)
 	if(stage == GIBTONITE_UNSTRUCK && mineralAmt >= 1) //Gibtonite deposit is activated
@@ -644,12 +647,12 @@
 
 /turf/closed/mineral/strong/attackby(obj/item/I, mob/user, params)
 	if(!ishuman(user))
-		to_chat(usr, "<span class='warning'>Only a more advanced species could break a rock such as this one!</span>")
+		to_chat(usr, span_warning("Only a more advanced species could break a rock such as this one!"))
 		return FALSE
 	if(user.mind?.get_skill_level(/datum/skill/mining) >= SKILL_LEVEL_MASTER)
 		. = ..()
 	else
-		to_chat(usr, "<span class='warning'>The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner.</span>")
+		to_chat(usr, span_warning("The rock seems to be too strong to destroy. Maybe I can break it once I become a master miner."))
 
 
 /turf/closed/mineral/strong/gets_drilled(mob/user)

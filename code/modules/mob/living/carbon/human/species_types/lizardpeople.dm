@@ -124,11 +124,11 @@ Lizard subspecies: ASHWALKERS
 	id = "ashlizard"
 	limbs_id = "lizard"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE)
+	mutantlungs = /obj/item/organ/lungs/ashwalker
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
-		TRAIT_NOBREATH,
 		TRAIT_VIRUSIMMUNE,
 	)
 	species_language_holder = /datum/language_holder/lizard/ash
@@ -149,8 +149,8 @@ Lizard subspecies: SILVER SCALED
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_WINE_TASTER,
 	)
-	species_language_holder = /datum/language_holder/lizard/silver
-	mutanttongue = /obj/item/organ/tongue/lizard/silver
+	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE
+	mutanttongue = /obj/item/organ/tongue/lizard //SKYRAT EDIT CHANGE
 	armor = 10 //very light silvery scales soften blows
 	changesource_flags = MIRROR_BADMIN | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	///stored mutcolor for when we turn back off of a silverscale.

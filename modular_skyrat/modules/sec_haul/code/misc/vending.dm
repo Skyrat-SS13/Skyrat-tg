@@ -14,7 +14,9 @@
 		/obj/item/assembly/flash/handheld = 5,
 		/obj/item/food/donut = 12,
 		/obj/item/storage/box/evidence = 6,
-		/obj/item/flashlight/seclite = 4
+		/obj/item/flashlight/seclite = 4,
+    	/obj/item/gun_maintenance_supplies = 40,
+		/obj/item/taperoll/police = 4
 	)
 	contraband = list(
 		/obj/item/clothing/glasses/sunglasses = 2,
@@ -59,20 +61,34 @@
 		/obj/item/clothing/under/rank/security/peacekeeper = 3,
 		/obj/item/clothing/under/rank/security/peacekeeper/blue = 3,
 		/obj/item/clothing/under/rank/security/peacekeeper/tactical = 3,
+		/obj/item/clothing/under/rank/security/peacekeeper/junior/sol = 2,
+		/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic = 2,
+		/obj/item/clothing/under/rank/security/peacekeeper/sol = 7,
 		/obj/item/clothing/shoes/combat/peacekeeper = 3,
 		/obj/item/clothing/head/beret/sec/peacekeeper = 3,
 		/obj/item/clothing/head/soft/sec = 3,
+		/obj/item/clothing/head/beret/sec/peacekeeper/sol = 3,
+		/obj/item/clothing/head/soltraffic = 3,
 		/obj/item/clothing/mask/bandana/black = 3,
 		/obj/item/clothing/gloves/combat/peacekeeper = 3,
+		/obj/item/clothing/suit/toggle/brit/sec = 7,
 		/obj/item/clothing/under/pants/khaki = 3,
 		/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
-		/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat = 4
+		/obj/item/clothing/under/rank/security/peacekeeper/trousers = 3,
+		/obj/item/clothing/under/rank/security/peacekeeper/trousers/red = 3,
+		/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat = 4,
+		/obj/item/clothing/head/ushankasec = 5,
+		/obj/item/clothing/head/ushankasec/blue = 5
 	)
 	contraband = list(
 		/obj/item/clothing/suit/armor/stormtrooper = 1,
 		/obj/item/clothing/head/helmet/stormtrooper = 1,
 		/obj/item/clothing/shoes/combat/stormtrooper = 1,
-		/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 1
+		/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 1,
+		/obj/item/clothing/head/cowboyhat/widesec = 1,
+		/obj/item/clothing/under/rank/security/blackwatch = 1,
+		/obj/item/clothing/suit/cossack/sec = 2,
+		/obj/item/clothing/mask/gas/german = 3
 	)
 	premium = list(
 		/obj/item/clothing/under/rank/security/officer/formal = 3,
@@ -85,30 +101,3 @@
 
 /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	machine_name = "Peacekeeper Outfitting Station"
-
-
-/obj/machinery/vending/security_ammo
-	name = "\improper Armadyne Ammunition Station"
-	desc = "An Armadyne brand ammunition station."
-	product_ads = "Crack capitalist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
-	icon = 'modular_skyrat/modules/sec_haul/icons/vending/vending.dmi'
-	icon_state = "ammo"
-	icon_deny = "ammo-deny"
-	light_mask = "ammo-light-mask"
-	req_access = list(ACCESS_SECURITY)
-	products = list(/obj/item/ammo_box/advanced/b6mm/rubber = 10,
-					/obj/item/ammo_box/advanced/b9mm/rubber = 10,
-					/obj/item/ammo_box/advanced/b10mm/rubber = 10,
-					/obj/item/ammo_box/advanced/pepperballs = 10,
-					/obj/item/storage/bag/ammo = 3,
-					/obj/item/gun_maintenance_supplies = 10
-					)
-	premium = list(/obj/item/ammo_box/advanced/b6mm/ihdf = 2,
-					/obj/item/ammo_box/advanced/b9mm/ihdf = 2,
-					/obj/item/ammo_box/advanced/b10mm/ihdf = 2)
-	refill_canister = /obj/item/vending_refill/security_ammo
-	default_price = PAYCHECK_MEDIUM
-	extra_price = PAYCHECK_HARD * 2
-	payment_department = ACCOUNT_SEC
-/obj/item/vending_refill/security_ammo
-	icon_state = "refill_sec"

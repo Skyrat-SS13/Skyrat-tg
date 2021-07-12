@@ -133,3 +133,4 @@
 	A common philosophy in these oft-clashing places is the simple phrase, 'Do as thou wilt'."
 	economic_power = 1
 	additional_langs = list(/datum/language/zolmach)
+

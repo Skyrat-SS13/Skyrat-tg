@@ -97,7 +97,6 @@
 	name = "cowbell collar"
 	desc = "Don't fear the reaper, now your pet doesn't have to."
 	icon_state = "collar_cowbell"
-	is_polychromic = FALSE
 
 /obj/item/clothing/neck/human_petcollar/locked/bellcollar
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
@@ -105,7 +104,7 @@
 	name = "bell collar"
 	desc = "A loud and annoying collar for your little kittens!"
 	icon_state = "collar_bell"
-	is_polychromic = FALSE
+
 
 /obj/item/clothing/neck/human_petcollar/locked/spikecollar
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
@@ -129,7 +128,6 @@
 	name = "cross collar"
 	desc = "A religious punishment, probably."
 	icon_state = "collar_blk"
-	is_polychromic = FALSE
 
 
 

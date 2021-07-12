@@ -2699,6 +2699,9 @@
 	pixel_x = 32
 	},
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aju" = (
@@ -4680,7 +4683,7 @@
 	},
 /area/service/chapel)
 "apy" = (
-/obj/structure/bed,
+/obj/structure/bed/pod,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
 	},
@@ -6812,6 +6815,7 @@
 /obj/structure/table/wood,
 /obj/item/folder/red,
 /obj/item/stamp/hos,
+/obj/item/clothing/accessory/badge/holo/hos,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "avj" = (
@@ -8422,6 +8426,7 @@
 /obj/item/reagent_containers/glass/bottle/epinephrine,
 /obj/item/reagent_containers/syringe,
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/item/bodybag/stasis,
 /turf/open/floor/iron/white,
 /area/security/brig)
 "aAn" = (
@@ -12942,6 +12947,7 @@
 	pixel_x = 3
 	},
 /obj/item/lighter,
+/obj/item/clothing/accessory/badge/holo/detective,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "aUb" = (
@@ -18016,6 +18022,10 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
+"cDM" = (
+/obj/effect/landmark/start/medical_doctor,
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "cEd" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
@@ -20416,7 +20426,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
 "dzX" = (
-/obj/structure/bed,
+/obj/structure/bed/pod,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
@@ -23747,6 +23757,9 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/turf_decal/vg_decals/atmos/plasma{
+	dir = 8
+	},
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "eSp" = (
@@ -25385,6 +25398,7 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
+/obj/item/storage/box/holobadge/hos,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "fAU" = (
@@ -27713,12 +27727,15 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "gvN" = (
-/obj/machinery/stasis,
 /obj/machinery/defibrillator_mount{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
+	},
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
 	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
@@ -29049,10 +29066,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
-"gWm" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/engine/air,
-/area/engineering/atmos)
 "gWt" = (
 /obj/machinery/door/airlock/security{
 	name = "Permanent Cell 3"
@@ -32404,6 +32417,7 @@
 /area/science/lab)
 "inb" = (
 /obj/structure/chair/comfy/black,
+/obj/effect/landmark/start/head_of_security,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "inn" = (
@@ -37116,6 +37130,7 @@
 	pixel_x = -5;
 	pixel_y = 12
 	},
+/obj/item/storage/box/holobadge,
 /turf/open/floor/iron/dark,
 /area/security/office)
 "ker" = (
@@ -39386,6 +39401,19 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"kWo" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "kWz" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 10
@@ -40488,7 +40516,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "lpr" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "lpU" = (
@@ -42094,7 +42122,10 @@
 /turf/open/floor/iron/dark,
 /area/science/genetics)
 "lWG" = (
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount{
 	pixel_y = 32
 	},
@@ -47485,7 +47516,7 @@
 /turf/open/floor/iron/white,
 /area/medical/virology)
 "olj" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "olm" = (
@@ -47935,6 +47966,7 @@
 /area/maintenance/tram/left)
 "ouE" = (
 /obj/structure/table,
+/obj/item/clothing/accessory/badge/holo/warden,
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "ouP" = (
@@ -48103,6 +48135,9 @@
 /area/maintenance/port/fore)
 "oxX" = (
 /obj/machinery/light/small,
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 1
+	},
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "oyh" = (
@@ -53530,7 +53565,7 @@
 /turf/open/floor/grass,
 /area/medical/virology)
 "qEi" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "qEz" = (
@@ -55860,6 +55895,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
+/obj/item/clothing/accessory/badge/sheriff,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "rzt" = (
@@ -56482,6 +56518,9 @@
 /area/hallway/primary/tram/right)
 "rLX" = (
 /obj/machinery/light/small,
+/obj/effect/turf_decal/vg_decals/atmos/oxygen{
+	dir = 1
+	},
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "rMa" = (
@@ -58381,6 +58420,9 @@
 "sxN" = (
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide{
+	dir = 8
 	},
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
@@ -61851,7 +61893,7 @@
 /turf/open/floor/plating,
 /area/maintenance/central/secondary)
 "tMg" = (
-/obj/machinery/atmospherics/components/unary/tank/air{
+/obj/machinery/atmospherics/components/tank/air{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -61976,8 +62018,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/landmark/start/medical_doctor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/stasissleeper{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/medical/treatment_center)
 "tOs" = (
@@ -63697,6 +63741,9 @@
 /area/security/interrogation)
 "usv" = (
 /obj/machinery/light/small,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 1
+	},
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "usA" = (
@@ -63979,6 +64026,9 @@
 "uAn" = (
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/effect/turf_decal/vg_decals/atmos/mix{
+	dir = 8
 	},
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
@@ -70843,8 +70893,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/landmark/start/medical_doctor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/medical/treatment_center)
 "xdF" = (
@@ -70899,6 +70951,9 @@
 "xev" = (
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide{
+	dir = 8
 	},
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
@@ -71396,7 +71451,7 @@
 	},
 /area/service/chapel)
 "xnt" = (
-/obj/machinery/vending/security_ammo,
+/obj/machinery/ammo_workbench,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/showroomfloor,
 /area/security/office)
@@ -72267,7 +72322,7 @@
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "xFX" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "xGb" = (
@@ -72869,7 +72924,7 @@
 /turf/open/floor/iron,
 /area/security/prison)
 "xPD" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "xPP" = (
@@ -109700,7 +109755,7 @@ tOl
 jwD
 ntZ
 tyN
-gWm
+che
 oxX
 iCR
 ajc
@@ -158234,7 +158289,7 @@ awF
 anG
 anG
 anG
-kdR
+kWo
 hCH
 asB
 akE
@@ -170841,7 +170896,7 @@ gvN
 xDu
 gKY
 gKY
-gKY
+cDM
 gKY
 gKY
 skf
@@ -172383,7 +172438,7 @@ lWG
 jtI
 sLq
 gKY
-gKY
+cDM
 gKY
 hek
 oIr

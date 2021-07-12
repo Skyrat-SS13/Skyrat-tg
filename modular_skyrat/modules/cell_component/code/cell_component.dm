@@ -135,6 +135,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 /// Handling of cell removal.
 /datum/component/cell/proc/remove_cell(datum/source, mob/user)
+	SIGNAL_HANDLER
 	if(!equipment.can_interact(user))
 		return
 
@@ -142,6 +143,9 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		return
 
 	if(!cell_can_be_removed)
+		return
+
+	if(!isliving(user))
 		return
 
 	if(inserted_cell)
@@ -158,6 +162,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 /// Handling of cell insertion.
 /datum/component/cell/proc/insert_cell(datum/source, obj/item/inserting_item, mob/living/user, params)
+	SIGNAL_HANDLER
 	if(!equipment.can_interact(user))
 		return
 

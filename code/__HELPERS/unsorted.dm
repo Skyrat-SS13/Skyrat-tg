@@ -427,12 +427,13 @@ Turf and target are separate in case you want to teleport some distance from a t
 
 
 ///Returns the src and all recursive contents as a list.
-/atom/proc/GetAllContents()
+/atom/proc/GetAllContents(ignore_flag_1)
 	. = list(src)
 	var/i = 0
 	while(i < length(.))
 		var/atom/A = .[++i]
-		. += A.contents
+		if (!(A.flags_1 & ignore_flag_1))
+			. += A.contents
 
 ///identical to getallcontents but returns a list of atoms of the type passed in the argument.
 /atom/proc/get_all_contents_type(type)
@@ -510,15 +511,13 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/areas = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/V in GLOB.sortedAreas)
-			var/area/A = V
-			if(cache[A.type])
-				areas += V
+		for(var/area/area_to_check as anything in GLOB.sortedAreas)
+			if(cache[area_to_check.type])
+				areas += area_to_check
 	else
-		for(var/V in GLOB.sortedAreas)
-			var/area/A = V
-			if(A.type == areatype)
-				areas += V
+		for(var/area/area_to_check as anything in GLOB.sortedAreas)
+			if(area_to_check.type == areatype)
+				areas += area_to_check
 	return areas
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -535,21 +534,19 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/turfs = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/V in GLOB.sortedAreas)
-			var/area/A = V
-			if(!cache[A.type])
+		for(var/area/area_to_check as anything in GLOB.sortedAreas)
+			if(!cache[area_to_check.type])
 				continue
-			for(var/turf/T in A)
-				if(target_z == 0 || target_z == T.z)
-					turfs += T
+			for(var/turf/turf_in_area in area_to_check)
+				if(target_z == 0 || target_z == turf_in_area.z)
+					turfs += turf_in_area
 	else
-		for(var/V in GLOB.sortedAreas)
-			var/area/A = V
-			if(A.type != areatype)
+		for(var/area/area_to_check as anything in GLOB.sortedAreas)
+			if(area_to_check.type != areatype)
 				continue
-			for(var/turf/T in A)
-				if(target_z == 0 || target_z == T.z)
-					turfs += T
+			for(var/turf/turf_in_area in area_to_check)
+				if(target_z == 0 || target_z == turf_in_area.z)
+					turfs += turf_in_area
 	return turfs
 
 /proc/get_cardinal_dir(atom/A, atom/B)
@@ -1507,10 +1504,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		path = new path(pod)
 
 	//remove non var edits from specifications
-	specifications -= landing_location
-	specifications -= style
-	specifications -= spawn_type
-	specifications -= "paths_to_spawn" //list, we remove the key
+	specifications -= "target"
+	specifications -= "style"
+	specifications -= "path"
+	specifications -= "spawn" //list, we remove the key
 
 	//rest of specificiations are edits on the pod
 	for(var/variable_name in specifications)

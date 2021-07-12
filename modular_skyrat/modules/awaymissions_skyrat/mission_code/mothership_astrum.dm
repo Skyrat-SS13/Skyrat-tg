@@ -1,5 +1,4 @@
 ///// AREAS, None of these should need power or lighting. I'd sooner die than hand-light this entire map
-
 /area/awaymission/mothership_astrum/halls
 	name = "Mothership Astrum Hallways"
 	icon_state = "away1"
@@ -23,6 +22,7 @@
 /area/awaymission/mothership_astrum/deck4
 	name = "Mothership Astrum Xeno Studies Holodeck"
 	icon_state = "away4"
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = FALSE
 
 /area/awaymission/mothership_astrum/deck5
@@ -32,7 +32,6 @@
 	dynamic_lighting = FALSE
 
 //Fluff Notes
-
 /obj/item/paper/fluff/awaymissions/astrum1
 	name = "Report: Combat Holodeck"
 	icon_state = "alienpaper_words"
@@ -98,8 +97,8 @@
 	speed = 2
 	stat_attack = HARD_CRIT
 	robust_searching = 1
-	maxHealth = 100
-	health = 100
+	maxHealth = 120
+	health = 120
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -107,7 +106,7 @@
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot, /obj/effect/spawner/lootdrop/astrum/sciloot)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(ROLE_ABDUCTOR)
@@ -118,9 +117,9 @@
 	rapid_melee = 2
 	footstep_type = FOOTSTEP_MOB_SHOE
 
-/mob/living/simple_animal/hostile/abductor/melee //dude with a melee weapon
-	melee_damage_lower = 5
-	melee_damage_upper = 15
+/mob/living/simple_animal/hostile/abductor/melee
+	melee_damage_lower = 10
+	melee_damage_upper = 20
 	icon_state = "abductor_scientist_melee"
 	icon_living = "abductor_scientist_melee"
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
@@ -133,25 +132,24 @@
 
 /mob/living/simple_animal/hostile/abductor/agent
 	name = "Abductor Agent"
-	melee_damage_lower = 10
-	melee_damage_upper = 30
+	melee_damage_lower = 15
+	melee_damage_upper = 22
 	icon_state = "abductor_agent"
 	icon_living = "abductor_agent"
-	maxHealth = 200
-	health = 200
+	maxHealth = 160
+	health = 160
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
 
 //RANGED
-
 /mob/living/simple_animal/hostile/abductor/ranged
 	name = "Abductor Scientist"
 	ranged = 1
-	retreat_distance = 5
-	minimum_distance = 5
+	retreat_distance = 3
+	minimum_distance = 3
 	icon_state = "abductor_scientist_gun"
 	icon_living = "abductor_scientist_gun"
-	maxHealth = 100
-	health = 100
+	maxHealth = 120
+	health = 120
 	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
@@ -160,12 +158,11 @@
 	name = "Abductor Combat Specialist"
 	icon_state = "abductor_agent_combat_gun"
 	icon_living = "abductor_agent_combat_gun"
-	maxHealth = 170
-	health = 170
+	maxHealth = 140
+	health = 140
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
 
-//GHOSTROLE TIME
-
+//GHOSTROLES
 /obj/effect/mob_spawn/human/lobotomite
 	name = "lobotomite containment tube"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
@@ -178,9 +175,14 @@
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/lobotomite
 	short_desc = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
-	flavour_text = "Your head hurts, something feels different, you want to go home. \
-	Thinking about home, you can't remember where that is, or if it even existed. \
-	Your goal is to find out who you are, and escape from this place, work with anyone friendly you can find."
+	flavour_text = "You are the Lobotomite. \
+	Do not explore the gateway. \
+	Do not touch anything in the gateway. \
+	Do not use anything in the gateway.\
+	This is not meant to be a protagonist or an antagonist.\
+	You are meant to work with the exploration team.\
+	Do not attack anything in the gateway except in self-defense.\
+	DO NOT TOUCH ANYTHING IN THE GATEWAY."
 	assignedrole = "Lobotomite"
 
 /datum/outfit/lobotomite
@@ -190,41 +192,40 @@
 	back = /obj/item/tank/internals/anesthetic
 
 //LOOT
-
 /obj/item/crowbar/freeman
 	name = "blood soaked crowbar"
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
 	icon_state = "crowbar"
-	force = 40
+	force = 35
 	throwforce = 45
-	toolspeed = 0
-	wound_bonus = 30
+	toolspeed = 0.1
+	wound_bonus = 10
 	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	force_opens = TRUE
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
-	loot = list(/obj/item/storage/firstaid/regular = 45,
-				/obj/item/storage/firstaid/toxin = 35,
-				/obj/item/dnainjector/thermal = 5,
-				/obj/item/storage/firstaid/brute = 27,
-				/obj/item/storage/firstaid/fire = 27,
-				/obj/item/storage/toolbox/syndicate = 12,
-				/obj/item/clothing/under/chameleon = 13,
+	loot = list(/obj/item/storage/firstaid/regular = 10,
+				/obj/item/reagent_containers/syringe/penacid = 5,
+				/obj/item/reagent_containers/syringe/salacid = 20,
+				/obj/item/reagent_containers/syringe/oxandrolone = 20,
+				/obj/item/stack/medical/suture/medicated = 21,
+				/obj/item/stack/medical/mesh/advanced = 21,
+				/obj/item/clothing/under/chameleon = 20,
+				/obj/item/shield/riot/tele = 12,
 				/obj/item/clothing/shoes/chameleon/noslip = 10)
 
 /obj/effect/spawner/lootdrop/astrum/mid
 	name = "astrum mid"
-	loot = list(/obj/item/storage/firstaid/tactical = 20,
+	loot = list(/obj/item/storage/firstaid/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
-				/obj/item/pneumatic_cannon = 15,
-				/obj/item/melee/transforming/energy/sword = 7,
 				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
-				/obj/item/melee/classic_baton/telescopic = 12,)
+				/obj/item/dnainjector/thermal = 5,
+				/obj/item/melee/classic_baton/telescopic = 12)
 
 /obj/effect/spawner/lootdrop/astrum/sciloot
 	name = "abductor scientist loot"
@@ -240,22 +241,17 @@
 				/obj/item/wirecutters/abductor = 10,
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
-				/obj/effect/gibspawner/generic = 20,
-				/obj/item/reagent_containers/blood/universal = 15)
+				/obj/effect/gibspawner/generic = 30)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
-	loot = list(/obj/item/gun/energy/alien/astrum = 10,
-				/obj/item/clothing/suit/armor/abductor/astrum = 5,
-				/obj/item/clothing/head/helmet/abductor = 5,
-				/obj/item/organ/cyberimp/arm/armblade = 1,
-				/obj/effect/gibspawner/generic = 20)
-
-/obj/item/gun/energy/alien/astrum
-	name = "alien energy pistol"
-	desc = "A seemingly complicated gun, that isn't so complicated after all."
-	ammo_type = list(/obj/item/ammo_casing/energy/laser)
-	pin = /obj/item/firing_pin
+	loot = list(/obj/item/organ/heart/cybernetic/tier3 = 10,
+				/obj/item/clothing/suit/armor/abductor/astrum = 10,
+				/obj/item/clothing/head/helmet/astrum = 10,
+				/obj/item/organ/cyberimp/arm/armblade = 5,
+				/obj/effect/gibspawner/generic = 10,
+				/obj/item/organ/eyes/night_vision/alien = 5
+				)
 
 /obj/item/gun/energy/alien/zeta
 	name = "Zeta Blaster"
@@ -276,25 +272,41 @@
 	icon_state = "alienpistol"
 	inhand_icon_state = "alienpistol"
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+	cell_type = /obj/item/stock_parts/cell/pulse/pistol
 
 /obj/item/clothing/suit/armor/abductor/astrum
 	name = "agent vest"
-	desc = "You feel like you're wearing the suit wrong, but you have no idea how to operate it's systems."
+	desc = "You feel like you're wearing the suit wrong, and you have no idea how to operate it's systems."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "vest_combat"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
-	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 50, RAD = 50, FIRE = 90, ACID = 90)
+	armor = list(MELEE = 40, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 20, BIO = 50, RAD = 30, FIRE = 90, ACID = 90)
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	allowed = list(
+		/obj/item/melee,
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/flashlight,
+		/obj/item/gun,
+		/obj/item/kitchen/knife,
+		/obj/item/reagent_containers,
+		/obj/item/restraints/handcuffs,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman
+		)
 
-/obj/item/clothing/head/helmet/abductor
+/obj/item/clothing/head/helmet/astrum
 	name = "agent headgear"
-	desc = "Prevents digital tracking, probably? You're not sure if you're using it right."
+	desc = "An exceptionally robust helmet. For alien standards, that is."
 	icon_state = "alienhelmet"
 	inhand_icon_state = "alienhelmet"
 	blockTracking = TRUE
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, RAD = 20, FIRE = 100, ACID = 100, WOUND = 15)
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-// FUCK NANITES
+// Machine that removes nanites
 /obj/machinery/scanner_gate/anti_nanite
 	name = "Advanced Scanner Gate"
 	desc = "This gate seems to be highly modified with odd markings."
@@ -317,39 +329,32 @@
 /obj/machinery/scanner_gate/anti_nanite/examine(mob/user)
 	return list("This gate seems to be highly modified with odd markings.")
 
-//Elite Fauna (I AM STEALING SO MUCH CODE FOR THIS I AM SORRY)
-
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor
+//Boss
+/mob/living/simple_animal/hostile/megafauna/hierophant/astrum
 	name = "Abductor Captain"
 	desc = "The one you've come here for, finish this."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/abductors.dmi'
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
-	icon_aggro = "abductor_agent_combat"
-	icon_dead = "pandora_dead"
 	icon_gib = "syndicate_gib"
+	health = 1750
+	maxHealth = 1750
 	health_doll_icon = "pandora"
-	maxHealth = 1500
-	health = 1500
-	melee_damage_lower = 25
-	melee_damage_upper = 25
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
-	throw_message = "doesn't do anything to"
-	speed = 4
-	move_to_delay = 8
 	mouse_opacity = MOUSE_OPACITY_ICON
 	deathsound = 'sound/magic/repulse.ogg'
 	deathmessage = "falls to their knees, before exploding into a ball of gore."
+	gps_name = "Captain's Signal"
 
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/bullet_act(obj/projectile/P)
+/mob/living/simple_animal/hostile/megafauna/hierophant/astrum/bullet_act(obj/projectile/P)
 	apply_damage(P.damage, P.damage_type)
 	return // no more reduction
 
-/mob/living/simple_animal/hostile/asteroid/elite/pandora/abductor/death(gibbed)
+/mob/living/simple_animal/hostile/megafauna/hierophant/astrum/death(gibbed)
 	spawn_gibs()
 	spawn_gibs()
-	new /obj/item/key/gateway/home(src.loc)
+	new /obj/item/key/gateway(src.loc)
 	new/obj/item/gun/energy/alien/zeta(src.loc)
 	qdel(src)
