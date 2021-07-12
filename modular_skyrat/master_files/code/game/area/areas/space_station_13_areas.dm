@@ -84,6 +84,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //Research Outpost
 
+/area/science/research_outpost
+	has_gravity = STANDARD_GRAVITY
+
 /area/science/research_outpost/hallway
 	name = "Research Outpost Hallway"
 	icon_state = "hallC"
@@ -163,6 +166,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //External Hull Access
 
 //Trade Outpost
+
+/area/trade
+	has_gravity = STANDARD_GRAVITY
 
 /area/trade/tradepost
 	name = "Trade Post Processing"

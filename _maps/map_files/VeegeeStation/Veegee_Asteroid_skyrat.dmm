@@ -17,6 +17,9 @@
 /area/science/research_outpost/med)
 "ab" = (
 /obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/mine/abandoned)
 "ac" = (
@@ -428,6 +431,10 @@
 	},
 /turf/open/space/basic,
 /area/mine/explored)
+"bE" = (
+/obj/machinery/holopad,
+/turf/open/floor/wood,
+/area/science/research_outpost/hallway)
 "bF" = (
 /obj/machinery/computer/atmos_alert{
 	dir = 8
@@ -464,8 +471,8 @@
 /area/science/research_outpost/atmos)
 "bL" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/transit_tube,
 /obj/structure/cable,
+/obj/structure/transit_tube/crossing,
 /turf/open/space/basic,
 /area/space)
 "bM" = (
@@ -1044,17 +1051,15 @@
 /turf/open/floor/iron,
 /area/science/research_outpost/storage)
 "dG" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/simple/green/hidden{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/jobtape/police,
-/turf/open/floor/plating,
-/area/mine/production)
+/turf/open/floor/iron/dark,
+/area/trade/tradepost)
 "dH" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/machinery/atmospherics/pipe/smart/manifold/orange/hidden{
@@ -1090,6 +1095,7 @@
 /obj/machinery/microwave{
 	pixel_y = 4
 	},
+/obj/effect/spawner/lootdrop/donkpockets,
 /turf/open/floor/iron,
 /area/science/research_outpost/hallway)
 "dN" = (
@@ -1186,7 +1192,7 @@
 "eb" = (
 /obj/machinery/camera/autoname{
 	dir = 8;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /obj/machinery/light{
 	dir = 4
@@ -1689,8 +1695,7 @@
 	dwidth = 3;
 	height = 5;
 	id = "research_outpost";
-	name = "research shuttle bay";
-	roundstart_template = /datum/map_template/shuttle/research/box;
+	name = "Research Outpost";
 	width = 7
 	},
 /turf/open/space/basic,
@@ -1933,10 +1938,10 @@
 /turf/open/floor/plating,
 /area/science/research_outpost/atmos)
 "gv" = (
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
-	},
 /obj/structure/closet/secure_closet/personal,
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
+	},
 /turf/open/floor/wood{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -1995,7 +2000,7 @@
 /obj/machinery/embedded_controller/radio/airlock_controller{
 	airpump_tag = "vox_eva_airlock_pump";
 	exterior_door_tag = "vox_eva_airlock_exterior";
-	frequency = 1414;
+	frequency = 1411;
 	id_tag = "vox_eva_airlock_controller";
 	interior_door_tag = "vox_eva_airlock_interior";
 	pixel_y = 24;
@@ -2040,8 +2045,10 @@
 /area/science/research_outpost/gearstorage)
 "gK" = (
 /obj/effect/turf_decal/delivery,
-/obj/structure/transit_tube/horizontal,
 /obj/structure/cable,
+/obj/structure/transit_tube/crossing{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/science/research_outpost/hallway)
 "gL" = (
@@ -2154,7 +2161,7 @@
 /obj/machinery/light,
 /obj/machinery/camera/autoname{
 	dir = 1;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /turf/open/floor/iron/white,
 /area/mine/living_quarters)
@@ -2255,7 +2262,9 @@
 /area/mine/production)
 "hx" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/door/window/southleft,
+/obj/machinery/door/window/southleft{
+	use_power = 0
+	},
 /turf/open/floor/plating/airless,
 /area/mine/explored)
 "hy" = (
@@ -2421,7 +2430,7 @@
 	dwidth = 3;
 	height = 10;
 	id = "asteroid_mine";
-	name = "asteroid mine";
+	name = "Research Asteroid Mine";
 	width = 7
 	},
 /turf/open/space/basic,
@@ -2660,11 +2669,11 @@
 /turf/closed/wall/r_wall,
 /area/science/research_outpost/harvesting)
 "jd" = (
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
-	},
 /obj/structure/table/wood,
 /obj/item/poster/random_contraband,
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
+	},
 /turf/open/floor/wood{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -2790,6 +2799,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/hidden{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/trade/tradepost)
 "jA" = (
@@ -2844,6 +2856,9 @@
 /obj/structure/table,
 /obj/machinery/camera/autoname{
 	dir = 1
+	},
+/obj/item/folder{
+	pixel_x = 3
 	},
 /turf/open/floor/wood,
 /area/science/research_outpost/hallway)
@@ -3042,8 +3057,8 @@
 /area/science/test_area)
 "kq" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -3178,9 +3193,8 @@
 /obj/machinery/computer/monitor{
 	dir = 4
 	},
-/obj/machinery/computer/pod/old/mass_driver_controller{
+/obj/machinery/button/massdriver{
 	id = "rdtrashgun";
-	name = "Trash Ejection";
 	pixel_x = -24
 	},
 /turf/open/floor/plating,
@@ -3375,7 +3389,9 @@
 /area/science/research_outpost/toxins)
 "lx" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/door/window/westleft,
+/obj/machinery/door/window/westleft{
+	use_power = 0
+	},
 /turf/open/floor/plating/airless,
 /area/mine/explored)
 "ly" = (
@@ -3612,6 +3628,10 @@
 	},
 /turf/open/floor/iron,
 /area/mine/eva)
+"mz" = (
+/obj/docking_port/stationary/picked/tradership,
+/turf/open/space/basic,
+/area/space)
 "mC" = (
 /obj/effect/turf_decal/sand,
 /obj/effect/turf_decal/stripes/asteroid/line{
@@ -3644,7 +3664,6 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/effect/spawner/lootdrop/donkpockets,
 /obj/structure/closet/emcloset/wall{
 	pixel_y = 28
 	},
@@ -3892,6 +3911,7 @@
 /area/trade/tradepost)
 "nJ" = (
 /obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -3964,14 +3984,17 @@
 "nZ" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/mine/living_quarters)
 "oc" = (
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
-	},
 /obj/machinery/atmospherics/components/unary/portables_connector,
 /obj/machinery/hydroponics/constructable,
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
+	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -4404,7 +4427,8 @@
 /obj/effect/turf_decal/sand,
 /obj/machinery/door/airlock/external{
 	name = "Mining Bridge";
-	req_one_access_txt = "47;54"
+	req_one_access_txt = "47;54";
+	use_power = 0
 	},
 /turf/open/floor/iron/airless,
 /area/mine/explored)
@@ -4832,9 +4856,11 @@
 /area/mine/living_quarters)
 "rp" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/door/window/westleft,
 /obj/structure/sign/warning/vacuum{
 	pixel_y = -32
+	},
+/obj/machinery/door/window/westleft{
+	use_power = 0
 	},
 /turf/open/floor/plating/airless,
 /area/mine/explored)
@@ -6028,7 +6054,7 @@
 "vw" = (
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume{
 	dir = 4;
-	frequency = 1414;
+	frequency = 1411;
 	id = "vox_eva_airlock_pump"
 	},
 /turf/open/floor/engine/n2,
@@ -6080,13 +6106,19 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/mine/abandoned)
 "vC" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/computer/shuttle{
 	dir = 4;
-	name = "Research Shuttle Console"
+	name = "Research Shuttle Console";
+	possible_destinations = "research_home;research_outpost;landing_zone_dock;mining_public";
+	req_access_txt = "47";
+	shuttleId = "research_veegee"
 	},
 /turf/open/floor/iron,
 /area/science/research_outpost/entry)
@@ -6378,7 +6410,7 @@
 	},
 /obj/machinery/camera/autoname{
 	dir = 1;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /turf/open/floor/iron,
 /area/mine/living_quarters)
@@ -6510,7 +6542,7 @@
 "xe" = (
 /obj/machinery/camera/autoname{
 	dir = 1;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /turf/open/floor/iron,
 /area/mine/living_quarters)
@@ -6674,7 +6706,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/camera/autoname{
 	dir = 8;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /turf/open/floor/iron,
 /area/mine/production)
@@ -6830,8 +6862,8 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -6924,7 +6956,9 @@
 /turf/closed/wall,
 /area/science/test_area)
 "yB" = (
-/obj/machinery/door/airlock/external,
+/obj/machinery/door/airlock/external{
+	safety_mode = 1
+	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -7050,7 +7084,7 @@
 /area/science/research_outpost/hallway)
 "yY" = (
 /obj/effect/turf_decal/delivery,
-/obj/structure/transit_tube,
+/obj/structure/transit_tube/crossing,
 /turf/open/floor/iron,
 /area/science/research_outpost/toxins)
 "yZ" = (
@@ -7119,7 +7153,7 @@
 /area/science/research_outpost/power)
 "zg" = (
 /obj/machinery/airlock_sensor{
-	frequency = 1414;
+	frequency = 1411;
 	id_tag = "vox_eva_airlock_sensor";
 	pixel_y = -24
 	},
@@ -7245,13 +7279,13 @@
 /area/mine/abandoned)
 "zD" = (
 /obj/effect/turf_decal/delivery,
-/obj/structure/transit_tube,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/transit_tube/crossing,
 /turf/open/floor/iron,
 /area/science/research_outpost/toxins)
 "zF" = (
@@ -7266,11 +7300,11 @@
 /area/science/research_outpost/toxins)
 "zI" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
-	},
 /obj/machinery/vending/security{
 	req_access_txt = null
+	},
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -7294,9 +7328,8 @@
 /area/science/research_outpost/tempstorage)
 "zL" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8;
-	filter_types = list("/datum/gas/carbon_dioxide";"/datum/gas/oxygen")
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 8
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -7333,6 +7366,9 @@
 "zS" = (
 /obj/machinery/door/airlock/external,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -7525,8 +7561,8 @@
 "AI" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/cable,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -7726,7 +7762,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/structure/jobtape/engi,
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -8138,9 +8173,8 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
-/obj/machinery/computer/pod/old/mass_driver_controller{
+/obj/machinery/button/massdriver{
 	id = "rdtrashgun";
-	name = "Trash Ejection";
 	pixel_x = 24
 	},
 /turf/open/floor/iron/white,
@@ -8611,8 +8645,8 @@
 /area/science/research_outpost/atmos)
 "Ey" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -8702,6 +8736,9 @@
 /area/science/research_outpost/hallway)
 "EL" = (
 /obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/mine/eva)
 "EN" = (
@@ -8822,7 +8859,7 @@
 "Fg" = (
 /obj/machinery/camera/autoname{
 	dir = 8;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /turf/open/floor/iron,
 /area/mine/production)
@@ -9493,7 +9530,7 @@
 "Ib" = (
 /obj/machinery/camera/autoname{
 	dir = 4;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /turf/open/floor/iron,
 /area/mine/eva)
@@ -9545,7 +9582,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/machinery/airlock_sensor{
-	frequency = 1414;
+	frequency = 1411;
 	id_tag = "vox_eva_airlock_sensor";
 	pixel_x = 24
 	},
@@ -9651,10 +9688,9 @@
 /area/trade/hallway)
 "IB" = (
 /obj/machinery/door/airlock/external{
-	frequency = 1414;
+	frequency = 1411;
 	id_tag = "vox_eva_airlock_exterior"
 	},
-/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -10197,7 +10233,6 @@
 	frequency = 1414;
 	id_tag = "vox_eva_airlock_interior"
 	},
-/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -10213,7 +10248,7 @@
 "KU" = (
 /obj/machinery/camera/autoname{
 	dir = 4;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /obj/machinery/light/small{
 	dir = 8
@@ -10861,6 +10896,10 @@
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
 /area/trade/atmos)
+"Nr" = (
+/obj/structure/bookcase/manuals/research_and_development,
+/turf/open/floor/wood,
+/area/science/research_outpost/hallway)
 "Ns" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10899,7 +10938,7 @@
 /obj/structure/cable,
 /obj/machinery/camera/autoname{
 	dir = 1;
-	network = list("ss13";"mine")
+	network = list("ss13";"asteroid")
 	},
 /turf/open/floor/iron,
 /area/mine/abandoned)
@@ -10998,17 +11037,14 @@
 	},
 /area/trade/vault)
 "NJ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4
+/turf/open/floor/plating{
+	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
-/obj/structure/window/reinforced,
-/obj/structure/jobtape/police,
-/turf/open/floor/plating,
-/area/mine/production)
+/area/trade/docks)
 "NK" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/cable,
@@ -11246,7 +11282,6 @@
 	name = "Toxins Launcher";
 	req_access_txt = "8"
 	},
-/obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/science/research_outpost/toxins)
 "OM" = (
@@ -11514,6 +11549,8 @@
 /obj/machinery/airalarm/directional/south,
 /obj/structure/table,
 /obj/machinery/light,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/open/floor/wood,
 /area/science/research_outpost/hallway)
 "PN" = (
@@ -11655,6 +11692,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/airalarm/vox{
+	pixel_x = 24
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -11693,10 +11733,10 @@
 /area/trade/atmos)
 "Qo" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -11834,11 +11874,11 @@
 /turf/open/floor/iron,
 /area/mine/abandoned)
 "QR" = (
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
-	},
 /obj/structure/glowshroom,
 /obj/item/soap/deluxe,
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
+	},
 /turf/open/floor/iron/showroomfloor{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -12201,7 +12241,6 @@
 	name = "Mint";
 	req_access_txt = "48"
 	},
-/obj/structure/jobtape/police,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/mine/production)
@@ -12342,6 +12381,7 @@
 /obj/machinery/door/airlock/external,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/mine/living_quarters)
 "SI" = (
@@ -12971,9 +13011,11 @@
 /area/trade/dorms)
 "Vf" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/door/window/westleft,
 /obj/structure/sign/warning/vacuum{
 	pixel_y = 32
+	},
+/obj/machinery/door/window/westleft{
+	use_power = 0
 	},
 /turf/open/floor/plating/airless,
 /area/mine/explored)
@@ -13167,8 +13209,8 @@
 /turf/open/floor/iron,
 /area/science/research_outpost/harvesting)
 "VQ" = (
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
 	},
 /turf/open/floor/iron/kitchen{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
@@ -13452,7 +13494,7 @@
 	locked = 0
 	},
 /obj/machinery/airlock_sensor{
-	frequency = 1414;
+	frequency = 1411;
 	id_tag = "vox_eva_airlock_sensor";
 	pixel_y = 24
 	},
@@ -13523,10 +13565,6 @@
 	dir = 6
 	},
 /obj/structure/cable,
-/turf/open/floor/iron,
-/area/mine/production)
-"Xd" = (
-/obj/effect/landmark/start/captain,
 /turf/open/floor/iron,
 /area/mine/production)
 "Xe" = (
@@ -13616,6 +13654,18 @@
 /obj/item/clothing/glasses/science,
 /turf/open/floor/iron,
 /area/science/research_outpost/hallway)
+"Xz" = (
+/obj/docking_port/stationary{
+	dir = 2;
+	dwidth = 3;
+	height = 8;
+	id = "tradership_home";
+	name = "Tradeship Tradepost Dock";
+	roundstart_template = /datum/map_template/shuttle/trade/veegee;
+	width = 11
+	},
+/turf/open/space/basic,
+/area/space)
 "XB" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
 	dir = 6
@@ -13640,6 +13690,12 @@
 	},
 /turf/open/floor/engine/n2,
 /area/trade/eva)
+"XG" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/science/research_outpost/hallway)
 "XI" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_toxmix,
@@ -14205,10 +14261,10 @@
 /area/mine/production)
 "Zy" = (
 /obj/effect/turf_decal/sand/plating,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(273.15, 283.15, 313.15, 339.15), /datum/gas/oxygen = new /datum/tlv/dangerous, /datum/gas/nitrogen = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/stimulum = new /datum/tlv/dangerous, /datum/gas/nitryl = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/vox{
+	pixel_y = 24
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=103.934;TEMP=293.15"
 	},
@@ -26368,7 +26424,7 @@ Ki
 Ki
 qW
 qW
-qW
+mz
 qW
 qW
 qW
@@ -27553,8 +27609,8 @@ xt
 nJ
 zL
 zL
-nJ
-qW
+NJ
+Xz
 qW
 qW
 qW
@@ -27810,7 +27866,7 @@ xt
 nJ
 Eb
 nb
-nJ
+NJ
 qW
 qW
 qW
@@ -37047,7 +37103,7 @@ Im
 dr
 HY
 nc
-jz
+dG
 HY
 nc
 dr
@@ -51162,8 +51218,8 @@ aw
 aw
 aw
 rF
-Rp
-Rp
+bE
+XG
 PK
 LU
 ci
@@ -51678,7 +51734,7 @@ Rb
 rF
 Rp
 Rp
-Rp
+Nr
 LU
 Ff
 Ff
@@ -54635,12 +54691,12 @@ Hc
 Hc
 GI
 Hc
-Xd
 Hc
 Hc
 Hc
 Hc
-dG
+Hc
+zu
 KE
 KE
 Zi
@@ -54897,7 +54953,7 @@ Ez
 Ez
 aP
 Bs
-NJ
+wf
 KE
 ZV
 Zi
@@ -69931,9 +69987,9 @@ Cj
 Cj
 Cj
 Cj
-Cj
 qW
-Cj
+qW
+qW
 Cj
 Cj
 Cj

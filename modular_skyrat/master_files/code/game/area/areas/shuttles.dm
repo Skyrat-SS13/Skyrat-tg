@@ -1,0 +1,9 @@
+////////////////////////////Multi-area shuttles////////////////////////////
+
+
+
+////////////////////////////Single-area shuttles////////////////////////////
+
+/area/shuttle/research
+	name = "Research Shuttle"
+	area_flags = NONE //Set this so it doesn't inherit NO_ALERTS
