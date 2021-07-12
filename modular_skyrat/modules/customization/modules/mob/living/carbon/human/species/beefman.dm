@@ -362,7 +362,7 @@
 	return ..()
 
 /datum/species/beefman/after_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
-	to_chat(H, "<span class='danger'>Just because meatmen are from Fulpstation, which is more loose rule-wise than Skyrat, DOES NOT MEAN YOU ARE MAGICALLY ALLOWED TO BE LRP. ROLEPLAYING STANDARDS STILL APPLY.</span>")
+	to_chat(H, "<span class='danger'>Meatmen come from Fulpstation, a server with a looser ruleset than ours. This is NOT a pass to grief. Policy still applies!</span>")
 
 //
 //LIMBS
