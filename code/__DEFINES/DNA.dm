@@ -172,6 +172,7 @@
 #define ORGAN_SLOT_EARS "ears"
 #define ORGAN_SLOT_EYES "eye_sight"
 #define ORGAN_SLOT_HEART "heart"
+#define ORGAN_SLOT_STACK "stack" //SKYRAT EDIT, STACKS
 #define ORGAN_SLOT_HEART_AID "heartdrive"
 #define ORGAN_SLOT_HUD "eye_hud"
 #define ORGAN_SLOT_LIVER "liver"
@@ -226,6 +227,7 @@ GLOBAL_LIST_INIT(organ_process_order, list(
 	ORGAN_SLOT_LUNGS,
 	ORGAN_SLOT_HEART,
 	ORGAN_SLOT_ZOMBIE,
+	ORGAN_SLOT_STACK, //SKYRAT EDIT
 	ORGAN_SLOT_THRUSTERS,
 	ORGAN_SLOT_HUD,
 	ORGAN_SLOT_LIVER,
