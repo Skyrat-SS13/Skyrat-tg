@@ -2210,15 +2210,16 @@ GLOBAL_LIST_INIT(food, list(
 						// Perform standard inventory updates
 						if("Yes")
 							sextoys_pref = "No"
-							// The user has set the ERP pref to a value other than "Yes", now we drop all items from ERP slots and can't use them
-							if(M.vagina != null)
-								M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
-							if(M.anus != null)
-								M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
-							if(M.nipples != null)
-								M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
-							if(M.penis != null)
-								M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+							if(ishuman(user))
+								// The user has set the ERP pref to a value other than "Yes", now we drop all items from ERP slots and can't use them
+								if(M.vagina != null)
+									M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
+								if(M.anus != null)
+									M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
+								if(M.nipples != null)
+									M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
+								if(M.penis != null)
+									M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
 							// If the user has an inventory of the ERP open, then we will hide it
 							if(usr.hud_used.ERP_inventory_shown && targetmob.hud_used)
 								usr.hud_used.ERP_inventory_shown = FALSE
@@ -2227,7 +2228,6 @@ GLOBAL_LIST_INIT(food, list(
 							for(var/atom/movable/screen/human/ERP_toggle/E in targetmob.hud_used.static_inventory)
 								if(istype(E, /atom/movable/screen/human/ERP_toggle))
 									E.invisibility = 100
-
 					targetmob.hud_used.hidden_inventory_update(usr)
 					user.hud_used.hidden_inventory_update(src)
 					user.hud_used.persistent_inventory_update(usr)
