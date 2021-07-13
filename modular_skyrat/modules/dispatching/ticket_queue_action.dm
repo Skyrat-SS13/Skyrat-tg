@@ -93,7 +93,7 @@
 			return TRUE
 
 		if("set-ticket-type")
-			SSdispatch.ui_data_by_mob[user]["tdata"]["type"] = params["type"]
+			SSdispatch.ui_data_by_mob[user]["tdata"]["ticket_type"] = params["ticket_type"]
 			return TRUE
 
 		if("set-ticket-priority")

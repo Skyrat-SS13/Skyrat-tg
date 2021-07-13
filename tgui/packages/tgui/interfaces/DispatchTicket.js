@@ -67,7 +67,7 @@ export const DispatchTicket = (props, context) => {
 const TicketTypes = (props, context) => {
   const { data, act } = useBackend(context);
   const { tdata, types, self_ref } = data;
-  const { type } = tdata;
+  const { ticket_type } = tdata;
 
   return (
     <Section title="Type" buttons={
@@ -76,8 +76,8 @@ const TicketTypes = (props, context) => {
           <Button
             key={t}
             content={t}
-            color={t === type ? "green" : "blue"}
-            onClick={() => act("set-ticket-type", { self_ref: self_ref, type: t })}
+            color={t === ticket_type ? "green" : "blue"}
+            onClick={() => act("set-ticket-type", { self_ref: self_ref, ticket_type: t })}
           />
         ))}
       </>

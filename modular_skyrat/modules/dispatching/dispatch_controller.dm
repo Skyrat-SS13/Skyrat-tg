@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(dispatch)
 /datum/controller/subsystem/dispatch/proc/apply_template(mob/user, datum/dispatch_ticket_template/template)
 	ui_data_by_mob[user]["tdata"]["title"] = template.title
 	ui_data_by_mob[user]["tdata"]["extra"] = template.extra
-	ui_data_by_mob[user]["tdata"]["type"] = template.template_type
+	ui_data_by_mob[user]["tdata"]["ticket_type"] = template.template_type
 	ui_data_by_mob[user]["tdata"]["priority"] = template.template_priority_default
 	ui_data_by_mob[user]["tdata"]["templateName"] = template.name
 
@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(dispatch)
 			"creator" = "",
 			"creator-spoofed" = FALSE,
 			"priority" = "",
-			"type" = "",
+			"ticket_type" = "",
 			"location" = "",
 			"location-spoofed" = FALSE,
 			"templateName" = "None",
@@ -173,7 +173,7 @@ SUBSYSTEM_DEF(dispatch)
 	return
 
 /datum/controller/subsystem/dispatch/proc/verify_ticket_data(mob/user)
-	var/hastype = ui_data_by_mob[user]["tdata"]["type"] != ""
+	var/hastype = ui_data_by_mob[user]["tdata"]["ticket_type"] != ""
 	var/hasprio = ui_data_by_mob[user]["tdata"]["priority"] != ""
 	var/hasname = ui_data_by_mob[user]["tdata"]["title"] != ""
 	var/hasdesc = ui_data_by_mob[user]["tdata"]["extra"] != ""
@@ -196,10 +196,10 @@ SUBSYSTEM_DEF(dispatch)
 	return ret
 
 ///Constructs a priority sorted list of all tickets filtered on type and, if only_open is TRUE, status
-/datum/controller/subsystem/dispatch/proc/get_ticket_list_for_type(type, only_open=TRUE)
+/datum/controller/subsystem/dispatch/proc/get_ticket_list_for_type(ticket_type, only_open=TRUE)
 	var/list/ret = list()
 	for(var/ticket in tickets)
-		if(tickets[ticket].ticket_type == type)
+		if(tickets[ticket].ticket_type == ticket_type)
 			if(only_open && tickets[ticket].status != SSDISPATCH_TICKET_STATUS_OPEN)
 				continue
 			ret += tickets[ticket]
@@ -242,7 +242,7 @@ SUBSYSTEM_DEF(dispatch)
 	ui_data_by_mob[user]["mdata"]["ticketData"]["location"] = ticket.location
 	ui_data_by_mob[user]["mdata"]["ticketData"]["status"] = ticket.status
 	ui_data_by_mob[user]["mdata"]["ticketData"]["priority"] = ticket.priority
-	ui_data_by_mob[user]["mdata"]["ticketData"]["type"] = ticket.ticket_type
+	ui_data_by_mob[user]["mdata"]["ticketData"]["ticket_type"] = ticket.ticket_type
 	ui_data_by_mob[user]["mdata"]["ticketData"]["title"] = ticket.title
 	ui_data_by_mob[user]["mdata"]["ticketData"]["extra"] = ticket.extra
 	ui_data_by_mob[user]["mdata"]["ticketData"]["imageAttached"] = ticket.has_image

@@ -30,7 +30,7 @@
 		location = truncate(sanitize(tdata["location"]), MAX_DETAIL_LENGTH)
 	else location = "[get_area(user)]"
 	priority = truncate(sanitize(tdata["priority"]), MAX_DETAIL_LENGTH)
-	ticket_type = truncate(sanitize(tdata["type"]), MAX_DETAIL_LENGTH)
+	ticket_type = truncate(sanitize(tdata["ticket_type"]), MAX_DETAIL_LENGTH)
 	title = truncate(sanitize(tdata["title"]), MAX_DETAIL_LENGTH)
 	extra = truncate(sanitize(tdata["extra"]), MAX_DETAIL_LENGTH)
 	has_image = truncate(sanitize(tdata["imageAttached"]), MAX_DETAIL_LENGTH)
