@@ -289,7 +289,7 @@
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)
-	new /obj/item/stack/medical/splint //SKYRAT EDIT ADDITION - MEDICAL
+	new /obj/item/stack/medical/splint(src) //SKYRAT EDIT ADDITION - MEDICAL
 	new /obj/item/defibrillator/compact/combat/loaded(src)
 	new /obj/item/reagent_containers/hypospray/combat(src)
 	new /obj/item/reagent_containers/pill/patch/libital(src)

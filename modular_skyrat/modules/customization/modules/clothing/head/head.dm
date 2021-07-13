@@ -390,3 +390,10 @@
 
 /obj/item/clothing/head/imperialhelmet/attack_self(mob/living/carbon/user)
 	adjust_goggles(user)
+
+/obj/item/clothing/head/corgi/en
+	name = "E-N suit head"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "enhead"
+	mutant_variants = NONE
