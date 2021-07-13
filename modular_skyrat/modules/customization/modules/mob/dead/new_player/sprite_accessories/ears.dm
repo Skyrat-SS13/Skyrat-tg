@@ -94,7 +94,7 @@
 	default_color = DEFAULT_TERTIARY
 
 /datum/sprite_accessory/ears/mutant/deer
-	name = "Deer"
+	name = "Deer (Antler)"
 	icon_state = "deer"
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_TERTIARY
@@ -225,3 +225,15 @@
 /datum/sprite_accessory/ears/mutant/miqote
 	name = "Miqo'te"
 	icon_state = "miqote"
+
+/datum/sprite_accessory/ears/mutant/hare
+	name = "Hare"
+	icon_state = "rabbitalt"
+
+/datum/sprite_accessory/ears/mutant/bunnyalt
+	name = "Curved Rabbit Ears"
+	icon_state = "bunnyalt"
+
+/datum/sprite_accessory/ears/mutant/deerear
+	name = "Deer (ear)"
+	icon_state = "deerear"
