@@ -305,20 +305,25 @@
 	if(parented_struct)
 		parented_struct.unbuckle_all_mobs()
 
-/obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/M, mob/user, check_loc = TRUE)
+/obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/M, mob/user)
 
 	if(M)
 		if(M == user)
 			// Have difficulty unbuckling if overly aroused
 			if(M.arousal >= 60)
 				if(current_mode != mode_list[1])
-					to_chat(M, "<font color=purple>You are too horny to try to get out</font>")
+					to_chat(M, "<font color=purple>You are too horny to try to get out!</font>")
 					return
 				else
-					if(do_after(src, 15 SECONDS, target = src, timed_action_flags = IGNORE_HELD_ITEM))
-						unbuckle_mob(M)
+					M.visible_message(span_notice("[M] unbuckles [M.p_them()]self from [src]."),\
+						span_notice("You unbuckle yourself from [src]."),\
+						span_hear("You hear metal clanking."))
+					unbuckle_mob(M)
 					return
 			else
+				M.visible_message(span_notice("[M] unbuckles [M.p_them()]self from [src]."),\
+					span_notice("You unbuckle yourself from [src]."),\
+					span_hear("You hear metal clanking."))
 				unbuckle_mob(M)
 				return
 	else
