@@ -61,7 +61,7 @@
 		return
 
 	var/message = ""
-	if(M.client?.prefs.erp_pref == "Yes")
+	if(M.client?.prefs.sextoys_pref == "Yes")
 		switch(user.zone_selected) //to let code know what part of body we gonna... Uhh... You get the point.
 			if(BODY_ZONE_PRECISE_GROIN)
 				var/obj/item/organ/genital/penis = M.getorganslot(ORGAN_SLOT_PENIS)

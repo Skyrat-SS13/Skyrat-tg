@@ -207,6 +207,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/erp_pref = "Ask"
 	var/noncon_pref = "Ask"
 	var/vore_pref = "Ask"
+	var/sextoys_pref = "No"
 
 	//BACKGROUND STUFF
 	var/general_record = ""
@@ -503,6 +504,7 @@ GLOBAL_LIST_INIT(food, list(
 					dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
 					dat += 	"<b>Non-Con:</b><a href='?_src_=prefs;preference=noncon_pref;task=input'>[noncon_pref]</a> "
 					dat += 	"<b>Vore:</b><a href='?_src_=prefs;preference=vore_pref;task=input'>[vore_pref]</a><br>"
+					dat += 	"<b>Sex toys usage:</b><a href='?_src_=prefs;preference=sextoys_pref;task=input'>[sextoys_pref]</a><br>"
 					dat += "<a href='?_src_=prefs;preference=ooc_prefs;task=input'><b>Set OOC prefs</b></a><br>"
 					if(length(ooc_prefs) <= 40)
 						if(!length(ooc_prefs))
@@ -2170,15 +2172,44 @@ GLOBAL_LIST_INIT(food, list(
 					features["uses_skintones"] = !features["uses_skintones"]
 
 				if("erp_pref")
-					//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-					// User changed state of ERP pref
-					var/mob/living/carbon/human/M = user
-					var/mob/targetmob = usr
-					//SKYRAT EDIT ADDITION END
 					switch(erp_pref)
 						if("Yes")
 							erp_pref = "Ask"
-							//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+						if("Ask")
+							erp_pref = "No"
+						if("No")
+							erp_pref = "Yes"
+				if("noncon_pref")
+					switch(noncon_pref)
+						if("Yes")
+							noncon_pref = "Ask"
+						if("Ask")
+							noncon_pref = "No"
+						if("No")
+							noncon_pref = "Yes"
+				if("vore_pref")
+					switch(vore_pref)
+						if("Yes")
+							vore_pref = "Ask"
+						if("Ask")
+							vore_pref = "No"
+						if("No")
+							vore_pref = "Yes"
+				//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+				if("sextoys_pref")
+					// User changed state of ERP pref
+					var/mob/living/carbon/human/M = user
+					var/mob/targetmob = usr
+					switch(sextoys_pref)
+						if("No")
+							sextoys_pref = "Yes"
+							// User set ERP pref to "Yes", make the ERP button of the inventory visible and interactive again
+							for(var/atom/movable/screen/human/ERP_toggle/E in targetmob.hud_used.static_inventory)
+								if(istype(E, /atom/movable/screen/human/ERP_toggle))
+									E.invisibility = 0
+						// Perform standard inventory updates
+						if("Yes")
+							sextoys_pref = "No"
 							// The user has set the ERP pref to a value other than "Yes", now we drop all items from ERP slots and can't use them
 							if(M.vagina != null)
 								M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
@@ -2196,37 +2227,11 @@ GLOBAL_LIST_INIT(food, list(
 							for(var/atom/movable/screen/human/ERP_toggle/E in targetmob.hud_used.static_inventory)
 								if(istype(E, /atom/movable/screen/human/ERP_toggle))
 									E.invisibility = 100
-							//SKYRAT EDIT ADDITION END
-						if("Ask")
-							erp_pref = "No"
-						if("No")
-							erp_pref = "Yes"
-							//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-							// User set ERP pref to "Yes", make the ERP button of the inventory visible and interactive again
-							for(var/atom/movable/screen/human/ERP_toggle/E in targetmob.hud_used.static_inventory)
-								if(istype(E, /atom/movable/screen/human/ERP_toggle))
-									E.invisibility = 0
-					// Perform standard inventory updates
+
 					targetmob.hud_used.hidden_inventory_update(usr)
 					user.hud_used.hidden_inventory_update(src)
 					user.hud_used.persistent_inventory_update(usr)
-					//SKYRAT EDIT ADDITION END
-				if("noncon_pref")
-					switch(noncon_pref)
-						if("Yes")
-							noncon_pref = "Ask"
-						if("Ask")
-							noncon_pref = "No"
-						if("No")
-							noncon_pref = "Yes"
-				if("vore_pref")
-					switch(vore_pref)
-						if("Yes")
-							vore_pref = "Ask"
-						if("Ask")
-							vore_pref = "No"
-						if("No")
-							vore_pref = "Yes"
+				//SKYRAT EDIT ADDITION END
 
 				if("change_arousal_preview")
 					var/list/gen_arous_trans = list("Not aroused" = AROUSAL_NONE,

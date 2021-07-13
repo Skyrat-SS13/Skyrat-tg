@@ -104,7 +104,7 @@
 
 	if(shocker_on == TRUE)
 		var/message = ""
-		if(M.client?.prefs.erp_pref == "Yes")
+		if(M.client?.prefs.sextoys_pref == "Yes")
 			deductcharge(cell_hit_cost)
 			playsound(loc, 'sound/weapons/taserhit.ogg', 70, 1, -1)
 			switch(user.zone_selected) //to let code know what part of body we gonna tickle
