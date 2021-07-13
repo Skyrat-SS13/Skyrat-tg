@@ -43,7 +43,7 @@
 
 	box = /obj/item/storage/box/survival/expeditionary_corps
 
-	backpack_contents = list(/obj/item/exp_corps_equip)
+	backpack_contents = list(/obj/item/advanced_choice_beacon/exp_corps)
 
 	id = /obj/item/card/id/advanced/silver/exp_corps
 	id_trim = /datum/id_trim/job/expeditionary_trooper
@@ -77,44 +77,106 @@
 	new /obj/item/reagent_containers/syringe(src)
 	new /obj/item/storage/pill_bottle/multiver(src)
 
+/obj/item/card/id/advanced/silver/exp_corps
+	wildcard_slots = WILDCARD_LIMIT_CENTCOM
+
 /obj/structure/closet/crate/secure/exp_corps
-	name = "expeditionary gear crate"
+	name = "Expedition Crate"
 	desc = "A secure crate, for Expeditionary Corps only!"
 	icon_state = "expcrate"
 	icon = 'modular_skyrat/modules/exp_corps/icons/exp_crate.dmi'
 	req_access = list(ACCESS_GATEWAY, ACCESS_CENT_GENERAL)
 	max_integrity = 5000
+	var/loadout_desc = "Whoever picks this is an incredibly boring generalist."
 
+/obj/structure/closet/crate/secure/exp_corps/pointman
+	name = "Pointman Crate"
+	loadout_desc = "The Pointman's role is to lead the expedition team from the front \
+	lines, and has been outfitted with a Shield. Due to the manufacturing costs involved \
+	the Pointman kit lacks when it comes to engineering and medical tools."
+
+/obj/structure/closet/crate/secure/exp_corps/field_medic
+	name = "Field Medic Crate"
+	loadout_desc = "The Field Medic's role is to ensure that the expidition returns at all. \
+	Their role as a supportive unit is vital, and they are outfitted with the tools required of \
+	their duty. This comes at the cost of any engineering equipment."
+
+/obj/structure/closet/crate/secure/exp_corps/combat_tech
+	name = "Combat Tech Crate"
+	loadout_desc = "A Combat Tech is always good for an expedition. Having someone with \
+	mechanical know-how can mean life or death. A good role to bring along to any expedition. \
+	Sadly, this kit is lacking when it comes to medical equipment."
+
+/obj/structure/closet/crate/secure/exp_corps/marksman
+	name = "Marksman Crate"
+	loadout_desc = "A Combat Tech is always good for an expedition. Having someone with \
+	mechanical know-how can mean life or death. A good role to bring along to any expedition. \
+	Sadly, this kit is lacking when it comes to medical equipment."
+
+//base, don't use this, but leaving it for admin spawns is probably a good call?
 /obj/structure/closet/crate/secure/exp_corps/PopulateContents()
 	new /obj/item/storage/firstaid/tactical(src)
 	new /obj/item/storage/box/expeditionary_survival(src)
 	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
 	new /obj/item/radio(src)
 	new /obj/item/melee/tomahawk(src)
-	new /obj/item/clothing/gloves/combat/expeditionary_corps(src)
+	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
 	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
 	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
 	new /obj/item/storage/belt/military/expeditionary_corps(src)
 	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
 
-/obj/item/exp_corps_equip
-	name = "Expeditionary Corps Supply Beacon"
-	desc = "Used to request your job supplies, use in hand to do so!"
-	icon = 'icons/obj/device.dmi'
-	icon_state = "gangtool-red"
-	inhand_icon_state = "radio"
-	var/item2spawn = /obj/structure/closet/crate/secure/exp_corps
+//shield guy
+/obj/structure/closet/crate/secure/exp_corps/pointman/PopulateContents()
+	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/melee/tomahawk(src)
+	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/pointman(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+	new /obj/item/shield/riot/pointman(src)
 
-/obj/item/exp_corps_equip/attack_self(mob/user, modifiers)
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
-	podspawn(list(
-		"target" = get_turf(src),
-		"style" = STYLE_CENTCOM,
-		"spawn" = item2spawn,
-	))
-	to_chat(user, "<span class=danger>After making your selection, you notice a strange target on the ground. It might be best to step back!</span>")
-	qdel(src)
+//medic
+/obj/structure/closet/crate/secure/exp_corps/field_medic/PopulateContents()
+	new /obj/item/storage/firstaid/expeditionary(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/field_medic(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+	new /obj/item/healthanalyzer(src)
 
-/obj/item/card/id/advanced/silver/exp_corps
-	wildcard_slots = WILDCARD_LIMIT_CENTCOM
+//engineer gaming
+/obj/structure/closet/crate/secure/exp_corps/combat_tech/PopulateContents()
+	new /obj/item/storage/firstaid/emergency(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/melee/tomahawk(src)
+	new /obj/item/clothing/gloves/color/chief_engineer/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/combat_tech(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
+	new /obj/item/skillchip/job/engineer(src)
+	new /obj/item/storage/bag/material(src)
+
+//edgy loner with knives
+/obj/structure/closet/crate/secure/exp_corps/marksman/PopulateContents()
+	new /obj/item/storage/firstaid/regular(src)
+	new /obj/item/storage/box/expeditionary_survival(src)
+	new /obj/item/clothing/suit/space/hardsuit/expeditionary_corps(src)
+	new /obj/item/radio(src)
+	new /obj/item/storage/bag/ammo/marksman(src)
+	new /obj/item/clothing/gloves/color/black/expeditionary_corps(src)
+	new /obj/item/clothing/head/helmet/expeditionary_corps(src)
+	new /obj/item/clothing/suit/armor/vest/expeditionary_corps(src)
+	new /obj/item/storage/belt/military/expeditionary_corps/marksman(src)
+	new /obj/item/storage/backpack/duffelbag/expeditionary_corps(src)
