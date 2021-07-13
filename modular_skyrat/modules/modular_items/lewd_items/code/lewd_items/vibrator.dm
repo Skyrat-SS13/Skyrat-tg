@@ -117,7 +117,7 @@
 					if(vibration_mode == "low")
 						if(vagina && penis)
 							if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW && penis.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their vagina with the [src]","gently their pussy with [src]","massages their penis with the [src]","gently teases their penis with [src]") : pick("delicately massages [M]'s vagina with [src]", "uses [src] to gently massage [M]'s crotch","leans the massager against [M]'s pussy","delicately massages [M]'s penis with [src]", "uses [src] to gently massage [M]'s penis","leans the massager against [M]'s penis")
+								message = (user == M) ? pick("massages their vagina with the [src]","gently teases their pussy with [src]","massages their penis with the [src]","gently teases their penis with [src]") : pick("delicately massages [M]'s vagina with [src]", "uses [src] to gently massage [M]'s crotch","leans the massager against [M]'s pussy","delicately massages [M]'s penis with [src]", "uses [src] to gently massage [M]'s penis","leans the massager against [M]'s penis")
 								M.adjustArousal(4)
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
@@ -126,7 +126,7 @@
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their vagina with the [src]","gently their pussy with [src]") : pick("delicately massages [M]'s vagina with [src]", "uses [src] to gently massage [M]'s crotch","leans the massager against [M]'s pussy")
+								message = (user == M) ? pick("massages their vagina with the [src]","gently teases their pussy with [src]") : pick("delicately massages [M]'s vagina with [src]", "uses [src] to gently massage [M]'s crotch","leans the massager against [M]'s pussy")
 								M.adjustArousal(4)
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
@@ -161,7 +161,7 @@
 
 						else if(vagina)
 							if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their vagina with the [src]","gently their pussy with [src]") : pick("delicately massages [M]'s vagina with [src]", "uses [src] to gently massage [M]'s crotch","leans the massager against [M]'s pussy")
+								message = (user == M) ? pick("massages their vagina with the [src]","gently teases their pussy with [src]") : pick("delicately massages [M]'s vagina with [src]", "uses [src] to gently massage [M]'s crotch","leans the massager against [M]'s pussy")
 								M.adjustArousal(4)
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
@@ -178,7 +178,7 @@
 					if(vibration_mode == "medium")
 						if(vagina && penis)
 							if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW && penis.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their penis with the [src]","teases teases their penis with [src]","massages their vagina with the [src]","teases teases their pussy with [src]") : pick("massages [M]'s penis with [src]", "uses [src] to massage [M]'s penis","leans the massager against [M]'s penis","massages [M]'s vagina with [src]", "uses [src] to massage [M]'s crotch","leans the massager against [M]'s pussy")
+								message = (user == M) ? pick("massages their penis with the [src]","gently teases their penis with [src]","massages their vagina with the [src]","teases teases their pussy with [src]") : pick("massages [M]'s penis with [src]", "uses [src] to massage [M]'s penis","leans the massager against [M]'s penis","massages [M]'s vagina with [src]", "uses [src] to massage [M]'s crotch","leans the massager against [M]'s pussy")
 								M.adjustArousal(5)
 								M.adjustPleasure(5)
 								if(prob(50) && (M.stat != DEAD))
@@ -187,7 +187,7 @@
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 
 							else if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their vagina with the [src]","teases teases their pussy with [src]") : pick("massages [M]'s vagina with [src]", "uses [src] to massage [M]'s crotch","leans the massager against [M]'s pussy")
+								message = (user == M) ? pick("massages their vagina with the [src]","gently teases their pussy with [src]") : pick("massages [M]'s vagina with [src]", "uses [src] to massage [M]'s crotch","leans the massager against [M]'s pussy")
 								M.adjustArousal(4)
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
@@ -196,7 +196,7 @@
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else if(penis.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their penis with the [src]","teases teases their penis with [src]") : pick("massages [M]'s penis with [src]", "uses [src] to massage [M]'s penis","leans the massager against [M]'s penis")
+								message = (user == M) ? pick("massages their penis with the [src]","gently teases their penis with [src]") : pick("massages [M]'s penis with [src]", "uses [src] to massage [M]'s penis","leans the massager against [M]'s penis")
 								M.adjustArousal(4)
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
@@ -210,7 +210,7 @@
 
 						else if(penis)
 							if(penis.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their penis with the [src]","teases teases their penis with [src]") : pick("massages [M]'s penis with [src]", "uses [src] to massage [M]'s penis","leans the massager against [M]'s penis")
+								message = (user == M) ? pick("massages their penis with the [src]","gently teases their penis with [src]") : pick("massages [M]'s penis with [src]", "uses [src] to massage [M]'s penis","leans the massager against [M]'s penis")
 								M.adjustArousal(5)
 								M.adjustPleasure(5)
 								if(prob(50) && (M.stat != DEAD))
@@ -224,7 +224,7 @@
 
 						else if(vagina)
 							if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
-								message = (user == M) ? pick("massages their vagina with the [src]","teases teases their pussy with [src]") : pick("massages [M]'s vagina with [src]", "uses [src] to massage [M]'s crotch","leans the massager against [M]'s pussy")
+								message = (user == M) ? pick("massages their vagina with the [src]","gently teases their pussy with [src]") : pick("massages [M]'s vagina with [src]", "uses [src] to massage [M]'s crotch","leans the massager against [M]'s pussy")
 								M.adjustArousal(5)
 								M.adjustPleasure(5)
 								if(prob(50) && (M.stat != DEAD))
@@ -329,7 +329,7 @@
 
 						if(vibration_mode == "medium")
 							if(breasts)
-								message = (user == M) ? pick("massages their breasts with the [src]","teases their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s tits", "uses [src] to tease [M]'s nipples")
+								message = (user == M) ? pick("massages their breasts with the [src]","gently teases their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s tits", "uses [src] to tease [M]'s nipples")
 								M.adjustArousal(5)
 								M.adjustPleasure(4)
 								if(prob(30) && (M.stat != DEAD))
@@ -337,7 +337,7 @@
 								user.visible_message("<font color=purple>[user] [message].</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 							else
-								message = (user == M) ? pick("massages their nipples with the [src]","teases their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s nipples", "uses [src] to tease [M]'s nipples")
+								message = (user == M) ? pick("massages their nipples with the [src]","gently teases their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s nipples", "uses [src] to tease [M]'s nipples")
 								M.adjustArousal(3)
 								M.adjustPleasure(1)
 								if(prob(30) && (M.stat != DEAD))

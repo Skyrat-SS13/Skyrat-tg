@@ -22,7 +22,7 @@
 	var/static/list/bag_colors
 	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY
 	strip_delay = 300
-	breakouttime = 3000 //do not touch. First - It's contraband item, Second - It's damn expensive, Third - it's ERP item, so you can't legally use it on characters without enabled non-con or erp pref.
+	breakouttime = 1200 //do not touch. First - It's contraband item, Second - It's damn expensive, Third - it's ERP item, so you can't legally use it on characters without enabled non-con or erp pref.
 	var/static/list/bag_inf_states
 	var/list/bag_states = list("deflated" = "inflated", "inflated" = "deflated")
 	var/state_thing = "deflated"
@@ -155,11 +155,11 @@
 	switch(state_thing)
 		if("deflated")
 			bag_state = "deflated"
-			breakouttime = 2 MINUTES
+			breakouttime = 1 MINUTES
 			slowdown = 4 //moving like a caterpillar now
 		if("inflated")
 			bag_state = "inflated"
-			breakouttime = 5 MINUTES //do not touch
+			breakouttime = 2 MINUTES //do not touch
 			slowdown = 14 //it should be almost impossible to move in that thing, so this big slowdown have reasons.
 	// appearance_update()
 
