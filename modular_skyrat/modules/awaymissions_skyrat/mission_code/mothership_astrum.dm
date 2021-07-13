@@ -122,7 +122,7 @@
 	melee_damage_upper = 20
 	icon_state = "abductor_scientist_melee"
 	icon_living = "abductor_scientist_melee"
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -144,8 +144,8 @@
 /mob/living/simple_animal/hostile/abductor/ranged
 	name = "Abductor Scientist"
 	ranged = 1
-	retreat_distance = 5
-	minimum_distance = 5
+	retreat_distance = 3
+	minimum_distance = 3
 	icon_state = "abductor_scientist_gun"
 	icon_living = "abductor_scientist_gun"
 	maxHealth = 120
@@ -207,19 +207,19 @@
 
 /obj/effect/spawner/lootdrop/astrum
 	name = "astrum low"
-	loot = list(/obj/item/storage/firstaid/regular = 25,
-				/obj/item/reagent_containers/syringe/penacid = 10,
+	loot = list(/obj/item/storage/firstaid/regular = 10,
+				/obj/item/reagent_containers/syringe/penacid = 5,
 				/obj/item/reagent_containers/syringe/salacid = 20,
 				/obj/item/reagent_containers/syringe/oxandrolone = 20,
 				/obj/item/stack/medical/suture/medicated = 21,
 				/obj/item/stack/medical/mesh/advanced = 21,
 				/obj/item/clothing/under/chameleon = 20,
-				/obj/item/shield/riot/tele = 27,
+				/obj/item/shield/riot/tele = 12,
 				/obj/item/clothing/shoes/chameleon/noslip = 10)
 
 /obj/effect/spawner/lootdrop/astrum/mid
 	name = "astrum mid"
-	loot = list(/obj/item/storage/firstaid/tactical = 20,
+	loot = list(/obj/item/storage/firstaid/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
 				/obj/item/book/granter/spell/summonitem = 20,
@@ -241,7 +241,7 @@
 				/obj/item/wirecutters/abductor = 10,
 				/obj/item/multitool/abductor = 10,
 				/obj/item/stack/cable_coil = 10,
-				/obj/effect/gibspawner/generic = 15)
+				/obj/effect/gibspawner/generic = 30)
 
 /obj/effect/spawner/lootdrop/astrum/agentloot
 	name = "abductor agent loot"
@@ -276,13 +276,25 @@
 
 /obj/item/clothing/suit/armor/abductor/astrum
 	name = "agent vest"
-	desc = "You feel like you're wearing the suit wrong, but you have no idea how to operate it's systems."
+	desc = "You feel like you're wearing the suit wrong, and you have no idea how to operate it's systems."
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "vest_combat"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	armor = list(MELEE = 40, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 20, BIO = 50, RAD = 30, FIRE = 90, ACID = 90)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	allowed = list(
+		/obj/item/melee,
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/flashlight,
+		/obj/item/gun,
+		/obj/item/kitchen/knife,
+		/obj/item/reagent_containers,
+		/obj/item/restraints/handcuffs,
+		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/tank/internals/plasmaman
+		)
 
 /obj/item/clothing/head/helmet/astrum
 	name = "agent headgear"
@@ -325,8 +337,8 @@
 	icon_state = "abductor_agent_combat"
 	icon_living = "abductor_agent_combat"
 	icon_gib = "syndicate_gib"
-	health = 1500
-	maxHealth = 1500
+	health = 1750
+	maxHealth = 1750
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
