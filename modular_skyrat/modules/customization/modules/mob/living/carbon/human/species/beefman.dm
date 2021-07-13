@@ -26,8 +26,9 @@
 	liked_food = RAW | MEAT
 	attack_verb = "meat"
 	payday_modifier = 0.75 //-- "Equality"
-	speedmod = -0.2 // this affects the race's speed. positive numbers make it move slower, negative numbers make it move faster
-	armor = -2 // overall defense for the race... or less defense, if it's negative.
+	speedmod = -0.3 // this affects the race's speed. positive numbers make it move slower, negative numbers make it move faster
+	armor = -25 // overall defense for the race... or less defense, if it's negative.
+	stunmod = 1.25 //multiplier for stun durations
 	punchdamagelow = 1 //lowest possible punch damage. if this is set to 0, punches will always miss
 	punchdamagehigh = 5 // 10 //highest possible punch damage
 	siemens_coeff = 0.7 // Due to lack of density.   //base electrocution coefficient
@@ -216,12 +217,31 @@
 		if("Psychologist")
 			newSash = new /obj/item/clothing/under/bodysash/psychologist()
 
+		//skyrat exclusive jobs
+		//cc rep
+		if("Nanotrasen Representative")
+			newSash = new /obj/item/clothing/under/bodysash/centcom()
+		//cdo
+		if("Civil Disputes Officer")
+			newSash = new /obj/item/clothing/under/bodysash/cdo()
+		//sec sergeant
+		if("Security Sergeant")
+			newSash = new /obj/item/clothing/under/bodysash/deputy()
+		//sec medic
+		if("Security Medic")
+			newSash = new /obj/item/clothing/under/bodysash/security()
+		//sec medic
+		if("Blueshield")
+			newSash = new /obj/item/clothing/under/bodysash/blueshield()
+		//expeditionary trooper
+		if("Vanguard Operative")
+			newSash = new /obj/item/clothing/under/bodysash/expcorp()
+
 		// Civilian
 		else
 			newSash = new /obj/item/clothing/under/bodysash/civilian()
 
-		// Destroy Original Uniform (there probably isn't one though)
-
+	// Destroy Original Uniform
 	if (H.w_uniform)
 		qdel(H.w_uniform)
 	// Equip New

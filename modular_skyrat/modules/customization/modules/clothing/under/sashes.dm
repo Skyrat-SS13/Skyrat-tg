@@ -51,7 +51,7 @@
 	random_sensor = FALSE
 
 /obj/item/clothing/under/bodysash/deputy
-	name = "deputy's sash"
+	name = "security sergeant's sash"
 	icon_state = "deputy"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -184,6 +184,24 @@
 /obj/item/clothing/under/bodysash/civilian
 	name = "civilian's sash"
 	icon_state = "civilian"
+
+/obj/item/clothing/under/bodysash/expcorp
+	name = "expeditioner's sash"
+	icon_state = "exp_corps"
+	sensor_mode = SENSOR_COORDS
+	random_sensor = FALSE
+
+/obj/item/clothing/under/bodysash/blueshield
+	name = "blueshield's sash"
+	icon_state = "blueshield"
+	sensor_mode = SENSOR_COORDS
+	random_sensor = FALSE
+
+/obj/item/clothing/under/bodysash/cdo
+	name = "civil dispute officer's sash"
+	icon_state = "cdo"
+	sensor_mode = SENSOR_COORDS
+	random_sensor = FALSE
 
 ///Misc
 
