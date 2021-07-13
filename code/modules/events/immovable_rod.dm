@@ -72,6 +72,10 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	var/dnd_style_level_up = TRUE
 	/// Whether the rod can loop across other z-levels. The rod will still loop when the z-level is self-looping even if this is FALSE.
 	var/loopy_rod = FALSE
+	//SKYRAT ADDITION - RODS DEAL LESS DAMAGE TO MOBS LAYING DOWN
+	/// The percentage of maxhp to apply as damage to a mob laying down on Bump
+	var/maxhp_damage_resting = 0.80
+	//SKYRAT ADDITION - END
 
 /obj/effect/immovablerod/New(atom/start, atom/end, aimed_at, force_looping)
 	. = ..()
@@ -253,6 +257,17 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 	if(iscarbon(smeared_mob))
 		var/mob/living/carbon/smeared_carbon = smeared_mob
+		//SKYRAT ADDITION - RODS DEAL LESS DAMAGE TO MOBS LAYING DOWN
+		if(smeared_carbon.resting)
+			var/cur_damage = smeared_carbon.getBruteLoss() + smeared_carbon.getFireLoss()
+			var/damage = (smeared_carbon.maxHealth * maxhp_damage_resting) - cur_damage
+			if(damage > 0)
+				smeared_carbon.adjustBruteLoss(damage)
+			// This copies functionality from below, essentially a 10% chance you just get fucked big time
+			if(smeared_mob.density || prob(10))
+				smeared_mob.ex_act(EXPLODE_HEAVY)
+			return
+		//SKYRAT ADDITION - END
 		smeared_carbon.adjustBruteLoss(100)
 		var/obj/item/bodypart/penetrated_chest = smeared_carbon.get_bodypart(BODY_ZONE_CHEST)
 		penetrated_chest?.receive_damage(60, wound_bonus = 20, sharpness=SHARP_POINTY)
