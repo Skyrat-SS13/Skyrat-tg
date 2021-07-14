@@ -25,7 +25,12 @@
 					/obj/item/pinpointer/crew = 2,
 					/obj/item/storage/firstaid/advanced = 2,
 					/obj/item/shears = 1,
-					/obj/item/storage/organbox = 1)
+					/obj/item/storage/organbox = 1,
+					//SKYRAT EDIT BEGIN - ADDS CORTICAL STACKS AND REMOVERS TO NANOMEDS
+					/obj/item/autosurgeon/organ/corticalstack = 3,
+					/obj/item/stackremover = 5
+					//SKYRAT EDIT END
+					)
 	refill_canister = /obj/item/vending_refill/medical
 	default_price = PAYCHECK_EASY
 	extra_price = PAYCHECK_COMMAND
@@ -39,6 +44,11 @@
 /obj/machinery/vending/medical/syndicate_access
 	name = "\improper SyndiMed Plus"
 	req_access = list(ACCESS_SYNDICATE)
+//SKYRAT EDIT - ADDS DELACERS AND AUTOSURGEONS TO SYNDIES
+	premium = list(/obj/item/autosurgeon/organ/syndicate/corticalstack = 20,
+	/obj/item/stackremover/syndicate = 20,
+	/obj/item/organ/corticalstack/syndicate = 40)
+//SKYRAT EDIT END
 
 //Created out of a necessity to get these dumb chems out of the medical tools vendor.
 /obj/machinery/vending/drugs
