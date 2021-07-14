@@ -604,7 +604,7 @@
 
 /////////////////////NORWIND
 /obj/item/gun/ballistic/automatic/norwind            //PRIMARY CHOICE #4
-	name = "\improper Armadyne M112 'Norwind'"      
+	name = "\improper M112 'Norwind'"      
 	desc = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
