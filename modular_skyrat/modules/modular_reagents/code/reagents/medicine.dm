@@ -22,8 +22,7 @@
 	..()
 
 /datum/reagent/medicine/lidocaine/overdose_process(mob/living/M, delta_time, times_fired)
-	var/obj/item/organ/heart/our_heart = M.getorganslot(ORGAN_SLOT_HEART)
-	our_heart.applyOrganDamage(3 * REM * delta_time, 0)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * delta_time, 80)
 	..()
 
 //Inverse Medicines//
@@ -40,8 +39,7 @@
 /datum/reagent/inverse/lidocaine/on_mob_life(mob/living/carbon/owner, delta_time, times_fired)
 	..()
 	to_chat(owner, "<span class='userdanger'>Your body aches with unimaginable pain!</span>")
-	var/obj/item/organ/heart/our_heart = owner.getorganslot(ORGAN_SLOT_HEART)
-	our_heart.applyOrganDamage(3 * REM * delta_time, 0)
-	owner.adjustStaminaLoss(7.5 * REM * delta_time, 0)
+	owner.adjustOrganLoss(ORGAN_SLOT_HEART,3 * REM * delta_time, 85)
+	owner.adjustStaminaLoss(5 * REM * delta_time, 0)
 	if(prob(30))
 		INVOKE_ASYNC(owner, /mob.proc/emote, "scream")
