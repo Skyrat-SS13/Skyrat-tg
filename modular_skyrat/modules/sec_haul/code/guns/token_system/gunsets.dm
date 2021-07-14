@@ -68,7 +68,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
 
 // MK-58
-/obj/item/storage/box/gunset/ladon
+/obj/item/storage/box/gunset/mk58
 	name = "mk-58 supply box"
 
 /obj/item/gun/ballistic/automatic/pistol/mk58/nomag
