@@ -44,7 +44,7 @@
 			human_target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("You brush your hair."))
 			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/self)
 		else
-			user.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."))
+			user.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."), ignored_mobs=list(human_target))
 			human_target.show_message(span_notice("[usr] brushes your hair!"), MSG_VISUAL)
 			SEND_SIGNAL(human_target, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed, user)
 
