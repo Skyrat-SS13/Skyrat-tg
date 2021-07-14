@@ -19,7 +19,7 @@
 		. +=  "It has an <p style='color:red'>Armadyne</p> embroidery on the grip."
 
 //////////////////GLOCK
-/obj/item/gun/ballistic/automatic/pistol/g17
+/obj/item/gun/ballistic/automatic/pistol/g17       //UNUSED
 	name = "\improper Glock-17"
 	desc = "A weapon from bygone times, this has been made to feel and look exactly like the 21st century version. Let's hope it's more reliable. Chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
@@ -213,7 +213,7 @@
 	round_type = AMMO_TYPE_RUBBER
 
 ///////////////////////LADON 40x32
-/obj/item/gun/ballistic/automatic/pistol/ladon
+/obj/item/gun/ballistic/automatic/pistol/ladon       //UNUSED
 	name = "\improper P-3 'Ladon'"
 	desc = "A modern ballistic sidearm based off the PDH models, chambered in 10mm and quite recent on the market. It has an <p style='color:red'>Armadyne</p> embroidery on the grip."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
@@ -350,7 +350,7 @@
 	armadyne = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly
-	name = "firefly handgun magazine (9mm)"
+	name = "9x19mm special pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -404,7 +404,7 @@
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MM
-	max_ammo = 30
+	max_ammo = 32
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr/hp
@@ -451,7 +451,7 @@
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b10mm
 	caliber = CALIBER_10MM
-	max_ammo = 25
+	max_ammo = 24
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull/hp
@@ -557,7 +557,7 @@
 	round_type = AMMO_TYPE_IHDF
 
 ///////////////////////////Dozer
-/obj/item/gun/ballistic/automatic/dozer
+/obj/item/gun/ballistic/automatic/dozer       //UNUSED
 	name = "\improper DZR-10 'Dozer'"
 	desc = "The DZR-10, a notorious 10mm PDW that lives up to its nickname. For safety concerns, this peacekeeping model has been locked to semi-automatic."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'
@@ -655,7 +655,7 @@
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/gun/ballistic/automatic/vintorez
+/obj/item/gun/ballistic/automatic/vintorez       //UNUSED
 	name = "\improper VKC 'Vintorez'"
 	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9mm for peacekeeping work."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/vintorez.dmi'
@@ -766,7 +766,7 @@
 	start_empty = TRUE
 
 /////////////////////////////////////////////////////////REVOLUTION
-/obj/item/gun/ballistic/revolver/revolution
+/obj/item/gun/ballistic/revolver/revolution       //UNUSED
 	name = "\improper Revolution-8 'Spurmaster'"
 	desc = "The Zeta 6's distant cousin, sporting an eight-round competition grade cylinder chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
