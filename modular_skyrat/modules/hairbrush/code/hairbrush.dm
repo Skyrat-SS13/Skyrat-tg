@@ -10,27 +10,27 @@
 	righthand_file = 'modular_skyrat/modules/hairbrush/icons/mob/inhand_right.dmi'
 	var/brush_speed = 3 SECONDS
 
-/obj/item/hairbrush/attack(mob/target)
+/obj/item/hairbrush/attack(mob/target, mob/user)
 	if(target.stat == DEAD)
 		to_chat(usr, span_warning("There isn't much point brushing someone who can't appreciate it!"))
 		return
-	brush(target)
+	brush(target, user)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 // Brushes someone, giving them a small mood boost
-/obj/item/hairbrush/proc/brush(mob/living/target)
+/obj/item/hairbrush/proc/brush(mob/living/target, mob/user)
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		var/obj/item/bodypart/head = human_target.get_bodypart(BODY_ZONE_HEAD)
 
 		// Don't brush if you can't reach their head or cancel the action
 		if(!head)
-			to_chat(usr, span_warning("[human_target] has no head!"))
+			to_chat(user, span_warning("[human_target] has no head!"))
 			return
 		if(human_target.is_mouth_covered(head_only = 1))
-			to_chat(usr, span_warning("You can't brush [human_target]'s hair while [human_target.p_their()] head is covered!"))
+			to_chat(user, span_warning("You can't brush [human_target]'s hair while [human_target.p_their()] head is covered!"))
 			return
-		if(!do_after(usr, brush_speed, human_target))
+		if(!do_after(user, brush_speed, human_target))
 			return
 
 		// Do 1 brute to their head if they're bald. Should've been more careful.
@@ -40,16 +40,16 @@
 			return
 
 		// Brush their hair
-		if(human_target == usr)
+		if(human_target == user)
 			human_target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("You brush your hair."))
-			SEND_SIGNAL(usr, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/self)
+			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/self)
 		else
-			usr.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."))
+			user.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."))
 			human_target.show_message(span_notice("[usr] brushes your hair!"), MSG_VISUAL)
-			SEND_SIGNAL(human_target, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed, usr)
+			SEND_SIGNAL(human_target, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed, user)
 
 	else if(istype(target, /mob/living/simple_animal/pet))
 		if(!do_after(usr, brush_speed, target))
 			return
-		to_chat(usr, span_notice("[target] closes [target.p_their()] eyes as you brush [target.p_them()]!"))
-		SEND_SIGNAL(usr, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/pet, target)
+		to_chat(user, span_notice("[target] closes [target.p_their()] eyes as you brush [target.p_them()]!"))
+		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/pet, target)
