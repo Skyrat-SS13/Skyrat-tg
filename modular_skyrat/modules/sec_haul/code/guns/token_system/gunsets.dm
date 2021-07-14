@@ -132,7 +132,7 @@
 	name = "disabler supply box"
 	desc = "Ideally contains an energy-based disabler for those who know what to do with it."
 
-/obj/item/storage/box/gunset/pdh_peacekeeper/PopulateContents()
+/obj/item/storage/box/gunset/proplayer/PopulateContents()
 	. = ..()
 	new /obj/item/gun/energy/disabler(src)
 	new /obj/item/clothing/glasses/sunglasses/garb(src)  //Useless gimmick item for people who want to look like dickheads
