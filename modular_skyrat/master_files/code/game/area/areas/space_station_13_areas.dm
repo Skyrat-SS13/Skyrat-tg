@@ -30,6 +30,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //AI - Turret_protected
 
 //Maintenance
+/area/service/abandoned_gambling_den/secondary/morgue
+	name = "Abandoned Morge"
+
+/area/maintenance/fore/cyborg
+	name = "Aux Cyborg Recharge"
 
 //Maintenance - Departmental
 
