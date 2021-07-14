@@ -17698,6 +17698,7 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 8
 	},
+/mob/living/simple_animal/pet/dog/corgi/borgi,
 /turf/open/floor/iron/showroomfloor,
 /area/science/robotics/lab)
 "aHP" = (
@@ -35829,6 +35830,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
+/mob/living/simple_animal/pet/dog/markus,
 /turf/open/floor/iron,
 /area/cargo/storage)
 "blD" = (
@@ -50638,9 +50640,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/command/bridge)
-"bNK" = (
-/turf/closed/wall,
-/area/command/heads_quarters/captain/private)
 "bNL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -50660,7 +50659,7 @@
 /area/service/janitor)
 "bNN" = (
 /turf/open/floor/iron/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bNO" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -50680,8 +50679,8 @@
 /area/hallway/primary/starboard)
 "bNP" = (
 /obj/structure/sign/nanotrasen,
-/turf/closed/wall/rust,
-/area/command/heads_quarters/captain/private)
+/turf/closed/wall/r_wall,
+/area/command/heads_quarters/captain/private/NTREP)
 "bNQ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/purple/visible{
@@ -50697,12 +50696,12 @@
 "bNR" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bNS" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/filingcabinet,
 /turf/open/floor/iron/dark,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bNU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue,
@@ -50724,20 +50723,10 @@
 /turf/open/floor/iron,
 /area/command/teleporter)
 "bNV" = (
-/obj/structure/closet/secure_closet/nanotrasen_representative{
-	icon_state = "cabinet";
-	name = "\proper NT Rep's locker"
-	},
-/obj/item/reagent_containers/food/drinks/bottle/champagne,
-/obj/item/bedsheet/centcom,
-/obj/item/clothing/head/centcom_cap,
-/obj/item/clothing/head/centhat,
-/obj/item/clothing/suit/armor/vest/centcom_formal,
-/obj/item/clothing/suit/hooded/wintercoat/centcom,
-/obj/item/clothing/under/rank/centcom/commander,
-/obj/item/clothing/under/rank/centcom/centcom_skirt,
+/obj/structure/closet/secure_closet/nanotrasen_representative/station,
+/obj/item/clothing/under/rank/centcom/intern,
 /turf/open/floor/iron/dark,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bNW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
@@ -50756,7 +50745,7 @@
 	dir = 4
 	},
 /turf/open/floor/carpet/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bNY" = (
 /obj/machinery/light_switch/directional/south,
 /obj/structure/chair/comfy/brown{
@@ -50767,7 +50756,7 @@
 	},
 /obj/effect/landmark/start/nanotrasen_representative,
 /turf/open/floor/carpet/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bOa" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
@@ -50782,8 +50771,13 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
+/obj/item/pen/fourcolor,
+/obj/item/paper{
+	info = "We're sorry about having to stuff you into this Broom Closet Representative, we didn't want to work here either.";
+	name = "Sorry"
+	},
 /turf/open/floor/carpet/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bOb" = (
 /obj/structure/girder,
 /obj/effect/decal/cleanable/dirt,
@@ -50814,8 +50808,8 @@
 /turf/open/floor/iron,
 /area/service/hydroponics)
 "bOf" = (
-/turf/closed/wall/rust,
-/area/command/heads_quarters/captain/private)
+/turf/closed/wall/r_wall,
+/area/command/heads_quarters/captain/private/NTREP)
 "bOg" = (
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
@@ -51036,7 +51030,7 @@
 	},
 /obj/structure/filingcabinet/security,
 /turf/open/floor/iron/dark,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bOB" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -53722,7 +53716,7 @@
 /obj/structure/table/wood,
 /obj/item/paper_bin/carbon,
 /turf/open/floor/carpet/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "bTG" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -58290,7 +58284,7 @@
 /turf/open/floor/iron/green/side{
 	dir = 1
 	},
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "cdi" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -59073,7 +59067,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "ceW" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
@@ -59131,7 +59125,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/iron/dark,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "cfg" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/open/floor/circuit/green/telecomms/mainframe,
@@ -59693,7 +59687,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /turf/open/floor/iron/green,
-/area/command/heads_quarters/captain/private)
+/area/command/heads_quarters/captain/private/NTREP)
 "cgt" = (
 /obj/machinery/airalarm/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -64722,6 +64716,7 @@
 /obj/effect/turf_decal/siding/yellow/corner{
 	dir = 1
 	},
+/mob/living/simple_animal/pet/poppy,
 /turf/open/floor/iron,
 /area/engineering/break_room)
 "csB" = (
@@ -77335,6 +77330,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/chemistry)
+"glX" = (
+/mob/living/simple_animal/pet/bumbles,
+/turf/open/floor/iron,
+/area/service/hydroponics)
 "gmL" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -77736,6 +77735,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/bar)
+"gYh" = (
+/turf/closed/wall/r_wall,
+/area/commons/storage/primary)
 "gZw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -78094,6 +78096,9 @@
 	},
 /turf/open/floor/iron,
 /area/security/office)
+"hCG" = (
+/turf/closed/wall/r_wall,
+/area/service/janitor)
 "hDd" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 5
@@ -124419,7 +124424,7 @@ bnJ
 bGV
 bod
 bMt
-bzC
+glX
 bAs
 bBQ
 boq
@@ -125202,11 +125207,11 @@ car
 vMa
 bYV
 aJZ
-auE
-auE
-auE
-auE
-aJZ
+gYh
+gYh
+gYh
+gYh
+gYh
 auE
 axF
 cky
@@ -125459,11 +125464,11 @@ bIO
 bGx
 bYX
 cBF
-bNK
+bOf
 bNS
 bTF
 bNX
-bNK
+bOf
 coX
 ciU
 ckB
@@ -125720,7 +125725,7 @@ cdg
 bNN
 bOa
 bNY
-bNK
+bOf
 coZ
 ciV
 awX
@@ -126234,7 +126239,7 @@ bOf
 bNV
 cff
 bOA
-bNK
+bOf
 bGH
 cjd
 awV
@@ -126487,10 +126492,10 @@ ayO
 bZN
 bNA
 bNM
-bNM
-bNM
-bNM
-bOd
+hCG
+hCG
+hCG
+hCG
 bNM
 bNM
 bFk

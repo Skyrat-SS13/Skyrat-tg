@@ -144,6 +144,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					font_index = MODE_MONO
 					font_mode = FONT_MONO
+			//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+			ttone = user.client.prefs.pda_ringer
+			//SKYRAT EDIT ADDITION END
 			equipped = TRUE
 
 /obj/item/pda/proc/update_label()
@@ -259,7 +262,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 				dat += text("<br><a href='?src=[REF(src)];choice=UpdateInfo'>[id ? "Update PDA Info" : ""]</A><br><br>")
 
 				dat += "[station_time_timestamp()]<br>" //:[world.time / 100 % 6][world.time / 100 % 10]"
-				dat += "[time2text(world.realtime, "MMM DD")] [GLOB.year_integer+540]"
+				dat += "[time2text(world.realtime, "MMM DD")] [GLOB.year_integer+540]<br>"
+				dat += "It has been [ROUND_TIME] since the emergency shuttle was last called."
+				
 
 				dat += "<br><br>"
 
