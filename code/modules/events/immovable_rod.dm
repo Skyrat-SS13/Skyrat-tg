@@ -7,6 +7,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 --NEOFite
 */
 
+#define MAXHP_RESTING 0.80 // SKYRAT ADDITION - SEE BELOW
 /datum/round_event_control/immovable_rod
 	name = "Immovable Rod"
 	typepath = /datum/round_event/immovable_rod
@@ -74,7 +75,9 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	var/loopy_rod = FALSE
 	//SKYRAT ADDITION - RODS DEAL LESS DAMAGE TO MOBS LAYING DOWN
 	/// The percentage of maxhp to apply as damage to a mob laying down on Bump
-	var/maxhp_damage_resting = 0.80
+	var/maxhp_damage_resting = MAXHP_RESTING
+	///Who have we already hit so far
+	var/list/client/already_hit = list()
 	//SKYRAT ADDITION - END
 
 /obj/effect/immovablerod/New(atom/start, atom/end, aimed_at, force_looping)
@@ -258,7 +261,14 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	if(iscarbon(smeared_mob))
 		var/mob/living/carbon/smeared_carbon = smeared_mob
 		//SKYRAT ADDITION - RODS DEAL LESS DAMAGE TO MOBS LAYING DOWN
-		if(smeared_carbon.resting)
+		var/first_time_around = TRUE
+		if(smeared_carbon.client)
+			var/client/cli = smeared_carbon.client
+			if(cli in already_hit)
+				first_time_around = FALSE
+			else
+				already_hit |= cli
+		if(smeared_carbon.resting && first_time_around)
 			var/cur_damage = smeared_carbon.getBruteLoss() + smeared_carbon.getFireLoss()
 			var/damage = (smeared_carbon.maxHealth * maxhp_damage_resting) - cur_damage
 			if(damage > 0)
@@ -340,3 +350,5 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 /obj/effect/immovablerod/proc/walk_in_direction(direction)
 	destination = get_edge_target_turf(src, direction)
 	walk_towards(src, destination, 1)
+
+#undef MAXHP_RESTING //SKYRAT ADDITION - SEE ABOVE
