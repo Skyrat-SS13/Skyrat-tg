@@ -18,6 +18,8 @@
 	. = ..()
 	var/infectees = 0
 	for(var/mob/living/carbon/human/H in shuffle(GLOB.player_list))
+		if(!is_station_level(H.z))
+			continue
 		if(infectees >= infected)
 			break
 		if(try_to_mutant_infect(H, TRUE))
