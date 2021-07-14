@@ -289,9 +289,21 @@
 
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
+/obj/item/clothing/suit/ashwalkermantle
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "ensuit"
+	name = "tanned hide"
+	desc = "The tanned hide of some brown furred creature."
+	icon_state = "mantle_liz"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/ashwalkermantle/cape
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "brown leather cape"
+	desc = "An ash coated cloak."
+	icon_state = "desertcloak"
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/corgisuit/en/New()

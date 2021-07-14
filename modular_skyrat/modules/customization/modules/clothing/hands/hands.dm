@@ -31,3 +31,12 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
+
+/obj/item/clothing/gloves/military/ashwalk
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	name = "ash coated bronze gloves"
+	desc = "Some sort of thin material with the backing of bronze plates."
+	icon_state = "legionlegate"
+
+
