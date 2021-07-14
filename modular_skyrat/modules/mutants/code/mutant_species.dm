@@ -33,6 +33,7 @@
 	name = "Mutated Abomination"
 	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
+	armor = 10
 	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	/// The rate the mutants regenerate at
@@ -46,7 +47,7 @@
 	armor = 0
 	/// The rate the mutants regenerate at
 	heal_rate = 0.5
-	/// The cooldown before the mutant can start regenerating
+	speedmod = 0.5
 
 /datum/species/mutant/infectious/slow
 	name = "Slow Mutated Abomination"
@@ -54,7 +55,8 @@
 	speedmod = 1.5
 	/// The rate the mutants regenerate at
 	heal_rate = 1.5
-	/// The cooldown before the mutant can start regenerating
+	armor = 30
+	speedmod = 2
 
 /// mutants do not stabilize body temperature they are the walking dead and are cold blooded
 /datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, delta_time, times_fired)
@@ -112,7 +114,7 @@
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 	hitsound = 'sound/hallucinations/growl1.ogg'
-	force = 25
+	force = 30
 	sharpness = SHARP_EDGED
 	wound_bonus = -20
 	damtype = BRUTE
