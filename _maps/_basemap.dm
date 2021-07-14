@@ -18,9 +18,6 @@
 		#include "map_files\tramstation\tramstation.dmm"
 		#include "map_files\NSSJourney\NSSJourney.dmm" //SKYRAT EDIT ADDITON
 		#include "map_files\VeegeeStation\Veegee_skyrat.dmm"
-		#include "map_files\Mining\TidalLock.dmm"
-		#include "map_files\Mining\Rockplanet.dmm"
-
 		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif
