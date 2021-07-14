@@ -284,6 +284,10 @@
 	speed = 1
 	health = 200
 	maxHealth = 200
+	//Skyrat add
+	loot = list(/obj/effect/decal/cleanable/greenglow, /obj/item/food/grown/grapes/ooze = 2)
+	del_on_death = 1
+	//
 	damage_coeff = list(BRUTE = 1, BURN = 0.8, TOX = 0.5, CLONE = 1.5, STAMINA = 0, OXY = 1)
 	melee_damage_lower = 12
 	melee_damage_upper = 12
