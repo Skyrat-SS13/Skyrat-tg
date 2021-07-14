@@ -293,7 +293,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "flowerpin"
-	w_class = WEIGHT_CLASS_SMALL
 	mutant_variants = NONE
 	var/list/poly_colors = list("FFF", "FFF", "FFF")
 
@@ -391,14 +390,10 @@
 /obj/item/clothing/head/imperialhelmet/attack_self(mob/living/carbon/user)
 	adjust_goggles(user)
 
-/obj/item/clothing/head/corgi/en
-	name = "E-N suit head"
 /obj/item/clothing/head/shamanash
 	name = "shaman skull"
 	desc = "The skull of a long dead animal bolted to the front of a repurposed pan."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "enhead"
-	mutant_variants = NONE
 	icon_state = "shamskull"
 	mutant_variants = NONE
