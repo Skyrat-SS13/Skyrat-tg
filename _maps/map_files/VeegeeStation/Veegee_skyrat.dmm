@@ -4668,6 +4668,17 @@
 	},
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/rd)
+"chF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/security/prison/perma)
 "chG" = (
 /obj/structure/sink{
 	dir = 8;
@@ -10998,12 +11009,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/rack,
-/obj/item/gun/ballistic/automatic/ar,
-/obj/item/gun/ballistic/automatic/ar{
-	pixel_x = 3;
-	pixel_y = -3
-	},
+/obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "fgy" = (
@@ -11058,22 +11064,20 @@
 /turf/open/floor/iron,
 /area/commons/storage/primary)
 "fiG" = (
-/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/bot,
 /obj/structure/window/reinforced{
-	dir = 1
+	dir = 1;
+	layer = 2.9
 	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
 /obj/structure/rack,
-/obj/item/gun/energy/laser{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/item/storage/box/armament_tokens_sidearm{
+	pixel_x = 7
 	},
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser{
-	pixel_x = 3;
-	pixel_y = -3
+/obj/item/storage/box/armament_tokens_primary{
+	pixel_x = -8
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -29338,22 +29342,14 @@
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
 "ofq" = (
-/obj/effect/turf_decal/bot_white,
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/structure/closet/secure_closet/smartgun,
+/obj/effect/turf_decal/delivery/blue,
 /obj/structure/window/reinforced{
 	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/rack,
-/obj/item/gun/energy/e_gun{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/e_gun,
-/obj/item/gun/energy/e_gun{
-	pixel_x = 3;
-	pixel_y = -3
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
@@ -31457,7 +31453,7 @@
 	dir = 4
 	},
 /obj/structure/noticeboard/directional/north,
-/obj/machinery/rnd/production/techfab/department/security,
+/obj/structure/table,
 /turf/open/floor/iron,
 /area/security/office)
 "pcm" = (
@@ -33478,20 +33474,13 @@
 /turf/open/floor/iron/white,
 /area/security/interrogation/recording)
 "qey" = (
-/obj/effect/turf_decal/bot_white,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/structure/rack,
-/obj/item/gun/energy/ionrifle{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
 	},
-/obj/item/gun/energy/ionrifle,
-/obj/item/gun/energy/ionrifle{
-	pixel_x = 3;
-	pixel_y = -3
-	},
+/obj/item/storage/box/armament_tokens_energy,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "qeJ" = (
@@ -37605,6 +37594,14 @@
 	},
 /turf/open/floor/iron,
 /area/science/robotics/mechbay)
+"seC" = (
+/obj/machinery/door/airlock/external{
+	name = "Security Escape Pod";
+	req_access_txt = "1";
+	safety_mode = 1
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "seD" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark,
@@ -79612,7 +79609,7 @@ rQm
 dYe
 ggd
 syz
-mUZ
+chF
 kDX
 fIn
 beM
@@ -87343,9 +87340,9 @@ raB
 bsD
 ylX
 adj
-yfT
-aWL
-yfT
+lyP
+seC
+lyP
 lyP
 qtl
 aIM
@@ -87600,9 +87597,9 @@ qAF
 bsD
 pSR
 adj
-pia
-pia
-pia
+yfT
+aWL
+yfT
 lyP
 lSc
 jEX
