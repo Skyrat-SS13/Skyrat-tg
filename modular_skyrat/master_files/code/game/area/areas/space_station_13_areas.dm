@@ -67,6 +67,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Security Dormitories"
 	icon_state = "dorms"
 
+/area/security/medical
+	name = "Security Medbay"
+	icon_state = "security"
+
 /area/security/eva
 	name = "Security E.V.A."
 	icon_state = "security"
@@ -75,6 +79,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Brig Recording Room"
 	icon_state = "interrogation"
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+
+/area/security/prison/perma
+	name = "Permanent Confinement"
+	icon_state = "sec_prison"
 
 //Security - AI Monitored
 
