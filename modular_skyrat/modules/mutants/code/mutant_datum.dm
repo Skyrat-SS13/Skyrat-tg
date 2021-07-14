@@ -70,8 +70,12 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 
 /datum/component/mutant_infection/process(delta_time)
 	if(!ismutant(host) && host.stat != DEAD)
-		if(host.getToxLoss() < 50)
+		var/toxloss = host.getToxLoss()
+		if(toxloss < 50)
 			host.adjustToxLoss(tox_loss_mod * delta_time)
+			if(DT_PROB(5, delta_time))
+				to_chat(host, span_userdanger("You feel your motor controls seize up for a moment!"))
+				host.Paralyze(10)
 		else
 			host.adjustToxLoss((tox_loss_mod * 2) * delta_time)
 			if(DT_PROB(10, delta_time))
