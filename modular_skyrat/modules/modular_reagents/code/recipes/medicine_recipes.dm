@@ -7,13 +7,13 @@
 	overheat_temp = 600
 	optimal_ph_min = 6
 	optimal_ph_max = 9
-	determin_ph_range = 3
+	determin_ph_range = 2
 	temp_exponent_factor = 0.8
 	ph_exponent_factor = 2
 	thermic_constant = 87
 	H_ion_release = -0.05
 	rate_up_lim = 15
-	purity_min = 0.55
+	purity_min = 0.1
 
 /datum/chemical_reaction/medicine/lidocaine/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, vol_added)
 	if(off_cooldown(holder, equilibrium, 10, "lidocaine"))

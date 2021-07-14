@@ -23,24 +23,25 @@
 
 /datum/reagent/medicine/lidocaine/overdose_process(mob/living/M, delta_time, times_fired)
 	var/obj/item/organ/heart/our_heart = M.getorganslot(ORGAN_SLOT_HEART)
-	our_heart.applyOrganDamage(3)
+	our_heart.applyOrganDamage(3 * REM * delta_time, 0)
 	..()
 
 //Inverse Medicines//
 
 /datum/reagent/inverse/lidocaine
 	name = "Lidopaine"
-	description = "A paining agent used often for... being a jerk, metabolizes very slowly."
+	description = "A paining agent used often for... being a jerk, metabolizes faster than lidocaine."
 	reagent_state = LIQUID
 	color = "#85111f" // 133, 17, 31
-	metabolization_rate = 0.1 * REAGENTS_METABOLISM
+	metabolization_rate = 0.4 * REAGENTS_METABOLISM
 	ph = 6.09
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	addiction_types = list(/datum/addiction/medicine = 8)
+	tox_damage = 0
 
 /datum/reagent/inverse/lidocaine/on_mob_life(mob/living/carbon/owner, delta_time, times_fired)
 	..()
 	to_chat(owner, "<span class='userdanger'>Your body aches with unimaginable pain!</span>")
 	var/obj/item/organ/heart/our_heart = owner.getorganslot(ORGAN_SLOT_HEART)
-	our_heart.applyOrganDamage(2)
-	owner.adjustStaminaLoss(3 * REM * delta_time, 0)
+	our_heart.applyOrganDamage(3 * REM * delta_time, 0)
+	owner.adjustStaminaLoss(7.5 * REM * delta_time, 0)
+	if(prob(30))
+		INVOKE_ASYNC(owner, /mob.proc/emote, "scream")
