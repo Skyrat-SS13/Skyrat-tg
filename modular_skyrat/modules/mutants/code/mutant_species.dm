@@ -51,12 +51,10 @@
 
 /datum/species/mutant/infectious/slow
 	name = "Slow Mutated Abomination"
-	armor = 10
+	armor = 15
 	speedmod = 1.5
 	/// The rate the mutants regenerate at
 	heal_rate = 1.5
-	armor = 30
-	speedmod = 2
 
 /// mutants do not stabilize body temperature they are the walking dead and are cold blooded
 /datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, delta_time, times_fired)
@@ -114,7 +112,7 @@
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 	hitsound = 'sound/hallucinations/growl1.ogg'
-	force = 30
+	force = 26
 	sharpness = SHARP_EDGED
 	wound_bonus = -20
 	damtype = BRUTE
@@ -148,7 +146,7 @@
 		else
 			check_feast(target, user)
 
-#define INFECT_CHANCE 50
+#define INFECT_CHANCE 70
 
 /proc/try_to_mutant_infect(mob/living/carbon/human/target, forced = FALSE, mob/user)
 	CHECK_DNA_AND_SPECIES(target)
