@@ -101,7 +101,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	UnregisterSignal(src, COMSIG_ATOM_ENTERING)
 	RemoveElement(/datum/element/point_of_interest)
 	SSaugury.unregister_doom(src)
-
+	already_hit = null
 	return ..()
 
 /obj/effect/immovablerod/examine(mob/user)
