@@ -23,6 +23,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //AI
 
+/area/ai_monitored/ai_sat/mommi
+	name = "MoMMI Nest"
+	icon_state = "ai"
+
 //AI - Turret_protected
 
 //Maintenance
