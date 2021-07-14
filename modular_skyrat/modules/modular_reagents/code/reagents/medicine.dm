@@ -8,7 +8,7 @@
 	ph = 6.09
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/opiods = 20)
-	inverse_chem_val = 0.4
+	inverse_chem_val = 0.55
 	inverse_chem = /datum/reagent/inverse/lidocaine
 
 /datum/reagent/medicine/lidocaine/on_mob_metabolize(mob/living/L)
@@ -33,7 +33,7 @@
 	description = "A paining agent used often for... being a jerk, metabolizes very slowly."
 	reagent_state = LIQUID
 	color = "#85111f" // 133, 17, 31
-	metabolization_rate = 0.05 * REAGENTS_METABOLISM
+	metabolization_rate = 0.1 * REAGENTS_METABOLISM
 	ph = 6.09
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/medicine = 8)
