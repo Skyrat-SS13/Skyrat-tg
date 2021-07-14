@@ -12,7 +12,7 @@
 
 /datum/round_event/mutant_infestation/setup()
 	. = ..()
-	infected = rand(1, 2)
+	infected = rand(2, 3)
 
 /datum/round_event/mutant_infestation/start()
 	. = ..()
