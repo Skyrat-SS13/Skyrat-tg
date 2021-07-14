@@ -44,7 +44,8 @@
 			human_target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("You brush your hair."))
 			SEND_SIGNAL(usr, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/self)
 		else
-			human_target.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."))
+			usr.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."))
+			human_target.show_message(span_notice("[usr] brushes your hair!"), MSG_VISUAL)
 			SEND_SIGNAL(human_target, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed, usr)
 
 	else if(istype(target, /mob/living/simple_animal/pet))
