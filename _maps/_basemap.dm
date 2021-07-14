@@ -4,8 +4,6 @@
 
 #include "map_files\generic\CentCom_skyrat_z2.dmm" //SKYRAT EDIT ADDITION - SMMS
 
-#include "map_files\VeegeeStation\Veegee_skyrat.dmm" //SKYRAT EDIT ADDITION - SMMS
-
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
 		#include "map_files\Mining\Icemoon.dmm"
