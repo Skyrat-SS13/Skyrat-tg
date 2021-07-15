@@ -64,8 +64,9 @@ GLOBAL_LIST_INIT(robotic_styles_list, list("None" = "None",
 										))
 
 //ghoul colors
-GLOBAL_LIST_INIT(color_list_ghoul, list("Necrotic Green" = "bfc474",
-										"Rotting Tan" = "c4af7c",
-										"Plutonium Blue" = "a5cfcc",
-										"Marked Red" = "f05b68"
-										))
+GLOBAL_LIST_INIT(color_list_ghoul, list( \
+	"Necrotic Green" = "bfc474", \
+	"Rotting Tan" = "c4af7c", \
+	"Plutonium Blue" = "a5cfcc", \
+	"Marked Red" = "f05b68" \
+))
