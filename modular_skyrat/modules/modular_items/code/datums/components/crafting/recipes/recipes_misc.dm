@@ -60,3 +60,11 @@
 				/obj/item/stack/sheet/cloth = 2)
 	time = 80
 	category = CAT_MISC
+
+//Ashwalker Necklace//
+/datum/crafting_recipe/ashnecklace
+	name = "Draconic Necklace"
+	result = /obj/item/clothing/neck/necklace/ashwalker
+	reqs = list(/obj/item/stack/sheet/bone = 1, /obj/item/stack/sheet/sinew = 2, /obj/item/organ/regenerative_core = 1)
+	time = 30
+	category = CAT_PRIMAL
