@@ -14,6 +14,13 @@
 /obj/item/storage/box/stockparts/deluxe,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
+"ar" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
 "aM" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
@@ -336,6 +343,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/structure/rack/shelf,
 /obj/effect/spawner/lootdrop/donkpockets,
+/obj/item/ammo_box/magazine/m9mm,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "jB" = (
@@ -506,11 +514,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ph" = (
-/obj/structure/lattice/catwalk/plated/dark,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/plating,
+/turf/open/floor/iron/dark/textured_half,
 /area/ruin/space/has_grav/vaulttango)
 "pk" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -654,17 +661,6 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/vaulttango)
-"vQ" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 1
-	},
-/obj/machinery/firealarm/directional/north,
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	desc = "An armed agent, provided by the Syndicate.";
-	name = "ARBORLINK Operative"
-	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ws" = (
@@ -819,6 +815,11 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
+"BY" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
 "Cc" = (
 /obj/structure/cable,
 /obj/machinery/light/small/directional/north,
@@ -851,12 +852,13 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "CG" = (
-/obj/structure/lattice/catwalk/plated/dark,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/door/firedoor/heavy,
-/turf/open/floor/plating,
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
 /area/ruin/space/has_grav/vaulttango)
 "Dt" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
@@ -947,6 +949,13 @@
 	},
 /obj/machinery/door/firedoor/heavy,
 /obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
+"Ik" = (
+/obj/structure/rack/shelf,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Im" = (
@@ -1231,6 +1240,7 @@
 	},
 /obj/machinery/firealarm/directional/north,
 /obj/effect/decal/cleanable/cobweb,
+/obj/item/ammo_box/magazine/m9mm,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Qg" = (
@@ -1274,6 +1284,10 @@
 	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt/dust,
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "An armed agent, provided by the Syndicate.";
+	name = "ARBORLINK Operative"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Rb" = (
@@ -1349,13 +1363,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
-"SO" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 1
-	},
-/mob/living/simple_animal/hostile/syndicate/melee,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/vaulttango)
 "SY" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -1419,12 +1426,9 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "TY" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
-	},
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	desc = "An armed agent, provided by the Syndicate.";
-	name = "ARBORLINK Operative"
+/mob/living/simple_animal/hostile/syndicate/ranged/smg/space{
+	desc = "Be scared.";
+	name = "ARBORLINK Vault Guard"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
@@ -1433,7 +1437,10 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
 "Uw" = (
-/obj/effect/turf_decal/bot_blue,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/north,
 /mob/living/simple_animal/hostile/syndicate/ranged{
 	desc = "An armed agent, provided by the Syndicate.";
 	name = "ARBORLINK Operative"
@@ -1445,20 +1452,11 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/vaulttango)
-"Vc" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/smg/space{
-	desc = "Be scared.";
-	name = "ARBORLINK Vault Guard"
-	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "VX" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/turf_decal/delivery/blue,
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/door/airlock/grunge{
@@ -1467,12 +1465,12 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Wm" = (
-/obj/effect/turf_decal/trimline/neutral/filled/line{
-	dir = 8
-	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/textured_half{
+	dir = 1
+	},
 /area/ruin/space/has_grav/vaulttango)
 "WB" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -1585,7 +1583,6 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 10
 	},
-/obj/machinery/atmospherics/components/unary/tank/air,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "ZM" = (
@@ -2464,7 +2461,7 @@ oj
 qb
 tN
 cM
-TY
+tN
 CE
 tN
 Mk
@@ -2506,20 +2503,20 @@ ai
 mV
 oF
 pe
-ph
-ph
-ph
+Wm
+Wm
+Wm
 CG
-ph
-ph
-ph
-ph
-ph
-ph
+Wm
+Wm
+Wm
+Wm
+Wm
+Wm
 CG
-ph
-ph
-ph
+Wm
+Wm
+Wm
 pe
 rI
 WN
@@ -2612,7 +2609,7 @@ nn
 ph
 rw
 ai
-nA
+Ik
 Ko
 cZ
 rw
@@ -2652,7 +2649,7 @@ xI
 xE
 Uc
 ai
-vQ
+Uw
 ph
 ec
 Rb
@@ -2820,7 +2817,7 @@ tZ
 FZ
 Ko
 Nz
-Uw
+NK
 NK
 YF
 cN
@@ -2876,7 +2873,7 @@ nm
 ph
 rw
 ai
-SO
+ar
 AT
 cN
 rw
@@ -2909,7 +2906,7 @@ GS
 cN
 NK
 cN
-Vc
+TY
 NK
 Ko
 Kd
@@ -2921,7 +2918,7 @@ ph
 rw
 ai
 nm
-AT
+BY
 cN
 rw
 vB
@@ -3254,20 +3251,20 @@ ai
 nO
 pD
 pe
-ph
-ph
-ph
+Wm
+Wm
+Wm
 CG
-ph
-ph
-ph
-ph
-ph
-ph
+Wm
+Wm
+Wm
+Wm
+Wm
+Wm
 CG
-ph
-ph
-ph
+Wm
+Wm
+Wm
 pe
 LC
 jY
@@ -3393,7 +3390,7 @@ ai
 ai
 PS
 cM
-Wm
+Tp
 Zl
 ai
 PK
