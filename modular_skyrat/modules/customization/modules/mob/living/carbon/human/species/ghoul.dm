@@ -12,25 +12,22 @@
 		TRAIT_RADIMMUNE,
 		TRAIT_CAN_STRIP,
 		TRAIT_EASYDISMEMBER,
+		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
 	)
 	offset_features = list(OFFSET_UNIFORM = list(0,0), OFFSET_ID = list(0,0), OFFSET_GLOVES = list(0,0), OFFSET_GLASSES = list(0,1), OFFSET_EARS = list(0,1), OFFSET_SHOES = list(0,0), \
 						   OFFSET_S_STORE = list(0,0), OFFSET_FACEMASK = list(0,1), OFFSET_HEAD = list(0,1), OFFSET_FACE = list(0,1), OFFSET_BELT = list(0,0), OFFSET_BACK = list(0,0), \
 						   OFFSET_SUIT = list(0,0), OFFSET_NECK = list(0,1))
-	toxic_food = DAIRY | PINEAPPLE
-	disliked_food = VEGETABLES | FRUIT | CLOTH
-	liked_food = RAW | MEAT
 	payday_modifier = 0.75 //-- "Equality"
-	speedmod = -0.35 //speedy mfer
-	armor = -100 //2x more damage
+	speedmod = -0.15 //speedy mfer
+	//armor = -100 //2x more damage
+	brutemod = 2
+	burnmod = 2
 	stunmod = 1.25 //multiplier for stun durations
 	punchdamagelow = 1 //lowest possible punch damage. if this is set to 0, punches will always miss
 	punchdamagehigh = 5 //highest possible punch damage
-	siemens_coeff = 0.7 //base electrocution coefficient
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-	var/dehydrate = 0
 
 	bodypart_overides = list(
 	BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/ghoul,\
@@ -151,6 +148,10 @@
 			var/obj/item/I = affecting.drop_limb()
 			if (istype(I, /obj/item/food/meat/slab))
 				user.put_in_hands(I)
+
+			new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.loc, target.dir)
+			target.add_splatter_floor(target.loc)
+			target.bleed(60)
 
 			return TRUE
 	return ..()
