@@ -125,7 +125,7 @@
 	crate_name = "unmarked weapons crate"
 	dangerous = TRUE
 	
-	/datum/supply_pack/security/wildcat
+/datum/supply_pack/security/wildcat
 	name = "CFA Wildcat Supply Crate"
 	desc = "Local police running low on equipment? Neighbor particularly loud in the early morning? This should help out. (Does not include weapons permits.)"
 	cost = CARGO_CRATE_VALUE * 55 // Bit cheaper then the next up, because it's not to good.
