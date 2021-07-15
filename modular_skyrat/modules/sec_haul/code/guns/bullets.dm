@@ -72,7 +72,7 @@
 
 /obj/projectile/bullet/advanced/b9mm
 	name = "9x19mm FMJ bullet"
-	damage = 20
+	damage = 25
 	speed = 0.8
 
 /obj/item/ammo_casing/b9mm/hp
@@ -86,7 +86,7 @@
 /obj/projectile/bullet/advanced/b9mm/hp
 	name = "9x19mm JHP bullet"
 	icon_state = "bullet_h"
-	damage = 20
+	damage = 25
 	wound_bonus = 35
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
