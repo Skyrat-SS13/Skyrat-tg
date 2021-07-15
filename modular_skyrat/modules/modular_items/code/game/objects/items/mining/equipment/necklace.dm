@@ -7,7 +7,6 @@
 	icon_state = "ashnecklace"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "ashnecklace"
-	var/innate = FALSE
 	w_class = WEIGHT_CLASS_SMALL //allows this to fit inside of pockets.
 
 //uses code from the pirate hat.
