@@ -67,7 +67,7 @@
 	if(M.client && (M.client.prefs.skyrat_toggles & BIMBO_PREF))
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
 			to_chat(M, "<font color=purple>Your libido is going haywire! Speaking gets much harder...</font>")
-			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_LOBOTOMY) //what am i doing with my life.
+			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC) //what am i doing with my life.
 			ADD_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
 	..()
 
@@ -102,7 +102,6 @@
 
 /datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/M)
 	if(M.hallucination < volume && prob(20))
-		M.hallucination += 5
 		M.adjustArousal(0.5)
 		M.adjustPleasure(0.3)
 		M.adjustPain(-0.5)
@@ -170,7 +169,7 @@
 
 		if(HAS_TRAIT(M, TRAIT_BIMBO))
 			if(prob(30))
-				H.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_LOBOTOMY)
+				H.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
 				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
 				REMOVE_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
 	..()
