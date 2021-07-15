@@ -967,6 +967,11 @@
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 6
 
+/obj/item/gun/ballistic/shotgun/riot/mtac
+	name = "MTAC Autoshotgun"
+
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2
+
 /obj/item/gun/ballistic/shotgun/sas14
 	name = "\improper SAS14"
 	desc = "A revolving automatic shotgun with a six round box magazine."
