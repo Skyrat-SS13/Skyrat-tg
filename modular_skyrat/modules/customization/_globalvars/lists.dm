@@ -62,3 +62,10 @@ GLOBAL_LIST_INIT(robotic_styles_list, list("None" = "None",
 										"Xion Manufacturing Group 2.0" = 'modular_skyrat/master_files/icons/mob/augmentation/xm2ipc.dmi',
 										"Zeng-Hu Pharmaceuticals" = 'modular_skyrat/master_files/icons/mob/augmentation/zhpipc.dmi'
 										))
+
+//ghoul colors
+GLOBAL_LIST_INIT(color_list_ghoul, list("Necrotic Green" = "bfc474",
+										"Rotting Tan" = "c4af7c",
+										"Plutonium Blue" = "a5cfcc",
+										"Marked Red" = "f05b68"
+										))

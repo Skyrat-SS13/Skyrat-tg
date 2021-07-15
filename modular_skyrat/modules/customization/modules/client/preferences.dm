@@ -549,6 +549,12 @@ GLOBAL_LIST_INIT(food, list(
 
 						dat += "<a href='?_src_=prefs;preference=color_ethereal;task=input'><span class='color_holder_box' style='background-color:#[features["ethcolor"]]'></span></a><BR>"
 
+					if(istype(pref_species, /datum/species/ghoul)) //ghouls
+						if(!use_skintones)
+							dat += APPEARANCE_CATEGORY_COLUMN
+						dat += "<h3>Ghoul Color</h3>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["ghoulcolor"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=color_ghoul;task=input'>Change</a><BR>"
+
 
 					if((EYECOLOR in pref_species.species_traits) && !(NOEYESPRITES in pref_species.species_traits))
 
@@ -2375,6 +2381,11 @@ GLOBAL_LIST_INIT(food, list(
 					var/new_etherealcolor = input(user, "Choose your ethereal color", "Character Preference") as null|anything in GLOB.color_list_ethereal
 					if(new_etherealcolor)
 						features["ethcolor"] = GLOB.color_list_ethereal[new_etherealcolor]
+
+				if("color_ghoul") // ghoul color
+					var/new_ghoulcolor = input(user, "Select your color:", "Character Preference") as null|anything in GLOB.color_list_ghoul
+					if(new_ghoulcolor)
+						features["ghoulcolor"] = GLOB.color_list_ghoul[new_ghoulcolor]
 
 				if("cultural_info_change")
 					var/thing = href_list["info"]
