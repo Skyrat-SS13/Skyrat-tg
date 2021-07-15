@@ -315,15 +315,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "iR" = (
-/obj/machinery/porta_turret{
-	lethal_projectile = /obj/projectile/beam/laser;
-	lethal_projectile_sound = 'sound/weapons/laser.ogg';
-	mode = 1;
-	network_id = "vaultturret";
-	scan_range = 8;
-	throw_range = 8
-	},
-/turf/open/floor/plating,
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "jc" = (
 /obj/structure/cable,
@@ -663,6 +656,17 @@
 /obj/item/pen,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
+"vQ" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/north,
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "An armed agent, provided by the Syndicate.";
+	name = "ARBORLINK Operative"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
 "ws" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -880,12 +884,6 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/north,
-/obj/machinery/turretid{
-	icon_state = "control_kill";
-	lethal = 1;
-	network_id = "vaultturret";
-	pixel_y = 30
-	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "FZ" = (
@@ -923,9 +921,14 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "HI" = (
-/obj/structure/marker_beacon/burgundy,
-/obj/effect/spawner/structure/window/hollow/reinforced,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "An armed agent, provided by the Syndicate.";
+	name = "ARBORLINK Operative"
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "HM" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -1346,6 +1349,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
+"SO" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
 "SY" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -1409,25 +1419,26 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "TY" = (
-/obj/effect/spawner/structure/window/hollow/reinforced,
-/obj/structure/marker_beacon/burgundy,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 8
+	},
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "An armed agent, provided by the Syndicate.";
+	name = "ARBORLINK Operative"
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Uc" = (
 /obj/structure/marker_beacon/burgundy,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/vaulttango)
 "Uw" = (
-/obj/machinery/porta_turret{
-	lethal_projectile = /obj/projectile/beam/laser;
-	lethal_projectile_sound = 'sound/weapons/laser.ogg';
-	mode = 1;
-	network_id = "vaultturret";
-	scan_range = 8;
-	throw_range = 8
+/obj/effect/turf_decal/bot_blue,
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "An armed agent, provided by the Syndicate.";
+	name = "ARBORLINK Operative"
 	},
-/obj/structure/marker_beacon/burgundy,
-/turf/open/floor/plating,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "UG" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
@@ -1436,6 +1447,13 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/vaulttango)
+"Vc" = (
+/mob/living/simple_animal/hostile/syndicate/ranged/smg/space{
+	desc = "Be scared.";
+	name = "ARBORLINK Vault Guard"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "VX" = (
@@ -1557,6 +1575,10 @@
 	dir = 4
 	},
 /obj/machinery/light/small/directional/east,
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "An armed agent, provided by the Syndicate.";
+	name = "ARBORLINK Operative"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/vaulttango)
 "Zl" = (
@@ -2380,7 +2402,6 @@ PK
 "}
 (19,1,1) = {"
 PK
-HI
 PK
 PK
 PK
@@ -2391,8 +2412,9 @@ PK
 PK
 PK
 PK
+nK
 PK
-Uw
+Uc
 ai
 ai
 ai
@@ -2413,7 +2435,7 @@ ai
 ai
 ai
 ai
-Uw
+Uc
 PK
 PK
 PK
@@ -2423,18 +2445,18 @@ PK
 PK
 "}
 (20,1,1) = {"
-TY
-iR
-TY
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+nK
 Su
 ai
 ai
@@ -2442,7 +2464,7 @@ oj
 qb
 tN
 cM
-tN
+TY
 CE
 tN
 Mk
@@ -2468,7 +2490,6 @@ PK
 "}
 (21,1,1) = {"
 PK
-HI
 PK
 PK
 PK
@@ -2479,6 +2500,7 @@ PK
 PK
 PK
 PK
+nK
 PK
 ai
 mV
@@ -2522,7 +2544,7 @@ PK
 PK
 PK
 PK
-PK
+nK
 PK
 ai
 bZ
@@ -2566,8 +2588,8 @@ PK
 PK
 PK
 PK
-PK
-PK
+nK
+Su
 ai
 nm
 ph
@@ -2610,14 +2632,14 @@ Iz
 ai
 ai
 PK
-PK
+nK
 PK
 ai
 nn
 ph
 rw
 ai
-Uw
+Uc
 xE
 xI
 xE
@@ -2628,9 +2650,9 @@ xE
 xE
 xI
 xE
-Uw
+Uc
 ai
-bZ
+vQ
 ph
 ec
 Rb
@@ -2693,7 +2715,7 @@ nK
 PK
 ai
 aM
-cN
+iR
 eC
 gK
 ai
@@ -2798,7 +2820,7 @@ tZ
 FZ
 Ko
 Nz
-NK
+Uw
 NK
 YF
 cN
@@ -2854,7 +2876,7 @@ nm
 ph
 rw
 ai
-nm
+SO
 AT
 cN
 rw
@@ -2887,7 +2909,7 @@ GS
 cN
 NK
 cN
-cN
+Vc
 NK
 Ko
 Kd
@@ -3053,7 +3075,7 @@ PK
 PK
 PK
 ai
-nm
+HI
 ph
 rw
 ai
@@ -3094,14 +3116,14 @@ Iz
 ai
 ai
 PK
-PK
+nK
 PK
 ai
 nm
 ph
 rw
 ai
-Uw
+Uc
 xE
 xI
 xE
@@ -3112,7 +3134,7 @@ xE
 xE
 xI
 xE
-Uw
+Uc
 ai
 bZ
 ph
@@ -3138,8 +3160,8 @@ PK
 PK
 PK
 PK
-PK
-PK
+nK
+Su
 ai
 nn
 ph
@@ -3182,7 +3204,7 @@ PK
 PK
 PK
 PK
-PK
+nK
 PK
 ai
 bZ
@@ -3216,7 +3238,6 @@ PK
 "}
 (38,1,1) = {"
 PK
-HI
 PK
 PK
 PK
@@ -3227,6 +3248,7 @@ PK
 PK
 PK
 PK
+nK
 PK
 ai
 nO
@@ -3259,18 +3281,18 @@ PK
 PK
 "}
 (39,1,1) = {"
-TY
-iR
-TY
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
-Su
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+nK
 Su
 ai
 ai
@@ -3304,7 +3326,6 @@ PK
 "}
 (40,1,1) = {"
 PK
-HI
 PK
 PK
 PK
@@ -3315,8 +3336,9 @@ PK
 PK
 PK
 PK
+nK
 PK
-Uw
+Uc
 ai
 ai
 ai
@@ -3337,7 +3359,7 @@ ai
 ai
 ai
 ai
-Uw
+Uc
 PK
 PK
 PK
