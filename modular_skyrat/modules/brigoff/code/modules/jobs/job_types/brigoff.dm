@@ -45,6 +45,9 @@
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
 	head = /obj/item/clothing/head/brigoff
+
+	suit_store = /obj/item/gun/energy/taser/armadyne
+
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/pda/security
 
