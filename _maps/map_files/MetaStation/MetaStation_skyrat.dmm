@@ -1026,8 +1026,10 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/security/armory)
 "aer" = (
-/obj/machinery/suit_storage_unit/security_peacekeeper,
-/turf/open/floor/iron/dark,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/shotguns,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "aes" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1826,13 +1828,10 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "aiA" = (
-/obj/item/storage/secure/safe{
-	name = "armory safe A";
-	pixel_x = 6;
-	pixel_y = 28
-	},
-/obj/machinery/suit_storage_unit/security_peacekeeper,
-/turf/open/floor/iron/dark,
+/obj/structure/closet/ammunitionlocker/useful,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "aiB" = (
 /obj/structure/disposalpipe/segment{
@@ -2504,17 +2503,16 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/structure/rack,
-/obj/item/storage/box/armament_tokens_primary{
-	pixel_x = -8
-	},
-/obj/item/storage/box/armament_tokens_sidearm{
-	pixel_x = 7
-	},
-/obj/item/storage/box/armament_tokens_energy,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet{
+	name = "contraband locker";
+	req_access_txt = "3"
+	},
+/obj/effect/spawner/lootdrop/armory_contraband/metastation,
+/obj/effect/spawner/lootdrop/maintenance/three,
+/obj/item/gun/ballistic/rifle/boltaction,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "alW" = (
@@ -15818,17 +15816,10 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/service)
 "bLT" = (
-/obj/structure/closet/secure_closet{
-	name = "contraband locker";
-	req_access_txt = "3"
-	},
-/obj/effect/spawner/lootdrop/maintenance/three,
-/obj/effect/spawner/lootdrop/armory_contraband/metastation,
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/item/gun/ballistic/rifle/boltaction,
-/turf/open/floor/iron/dark,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/pistols,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "bLW" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -81117,11 +81108,11 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "xVU" = (
-/obj/item/radio/intercom{
-	pixel_y = 25
-	},
-/obj/machinery/suit_storage_unit/security_peacekeeper,
-/turf/open/floor/iron/dark,
+/obj/machinery/airalarm/directional/north,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/rifles,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "xVX" = (
 /turf/open/floor/plating/airless,
