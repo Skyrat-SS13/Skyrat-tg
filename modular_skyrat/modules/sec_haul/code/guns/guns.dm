@@ -36,6 +36,7 @@
 	dirt_modifier = 1
 	emp_damageable = TRUE
 	armadyne = TRUE
+	fire_delay = 3
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
 	name = "g17 handgun magazine (9mm)"
@@ -213,7 +214,7 @@
 	round_type = AMMO_TYPE_RUBBER
 
 ///////////////////////LADON 40x32
-/obj/item/gun/ballistic/automatic/pistol/ladon       //UNUSED
+/obj/item/gun/ballistic/automatic/pistol/ladon
 	name = "\improper P-3 'Ladon'"
 	desc = "A modern ballistic sidearm based off the PDH models, chambered in 10mm and quite recent on the market. It has an <p style='color:red'>Armadyne</p> embroidery on the grip."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
@@ -233,6 +234,7 @@
 	dirt_modifier = 0.8
 	emp_damageable = TRUE
 	armadyne = TRUE
+	fire_delay = 4.20
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon
 	name = "ladon handgun magazine (10mm)"
@@ -570,9 +572,9 @@
 	can_suppress = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	burst_size = 1
-	fire_delay = 0
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	burst_size = 2
+	fire_delay = 1.50
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
@@ -582,24 +584,24 @@
 	armadyne = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
-	name = "dozer pdw magazine (10mm)"
+	name = "dozer pdw magazine (9mm)"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
-	ammo_type = /obj/item/ammo_casing/b10mm
+	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_10MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
+	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /////////////////////NORWIND
@@ -939,7 +941,7 @@
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
 	ammo_type = /obj/item/ammo_casing/s14gauge
-	max_ammo = 8
+	max_ammo = 6
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
 	name = "\improper M2 Autoshotgun"
@@ -965,7 +967,7 @@
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
 	ammo_type = /obj/item/ammo_casing/s14gauge
-	max_ammo = 6
+	max_ammo = 4
 
 /obj/item/gun/ballistic/shotgun/sas14
 	name = "\improper SAS14"
@@ -995,6 +997,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "sas14"
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	caliber = CALIBER_14GAUGE
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 5
 
