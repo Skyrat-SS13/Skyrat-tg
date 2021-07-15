@@ -25,6 +25,6 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(ITEM_SLOT_NECK) == src && !QDELETED(src)) //This can be called as a part of destroy
 		user.remove_language(/datum/language/draconic/, TRUE, TRUE, LANGUAGE_TRANSLATOR)
-		to_chat(user, span_boldnotice("You find your newly gained knowledge of Draconic fades away as your remove the necklace."))
+		to_chat(user, span_boldnotice("Your newly gained knowledge of Draconic fades away as you remove the necklace."))
 
 //ASHWALKER TRANSLATOR NECKLACE END//
