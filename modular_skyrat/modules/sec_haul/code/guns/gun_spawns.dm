@@ -80,6 +80,7 @@
 	icon_state = "boxhrifle"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	illustration = null
+	layer = 2.9
 
 /obj/item/storage/box/ammo_box/PopulateContents()
 	new /obj/item/storage/bag/ammo(src)
