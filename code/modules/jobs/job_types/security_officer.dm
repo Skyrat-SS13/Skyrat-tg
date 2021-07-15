@@ -196,8 +196,8 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/gun/energy/taser/armadyne //SKYRAT EDIT CHANGE - SEC_HAUL
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
+	suit_store = /obj/item/gun/energy/disabler
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/armament_token/sidearm) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL

@@ -51,6 +51,51 @@
 //SIDEARM TOKEN GUNSETS
 ////////////////
 
+//G-17
+/obj/item/storage/box/gunset/glock17
+	name = "glock-17 supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/g17/nomag
+	spawnwithmagazine = FALSE
+
+
+/obj/item/storage/box/gunset/glock17/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/g17/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
+
+//LADON
+/obj/item/storage/box/gunset/ladon
+	name = "p-3 ladon supply box"
+
+/obj/item/gun/ballistic/automatic/pistol/ladon/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/ladon/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/ladon/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
+
+//DOZER
+/obj/item/storage/box/gunset/dozer
+	name = "dozer supply box"
+
+/obj/item/gun/ballistic/automatic/dozer/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/dozer/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/dozer/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
+
 //PDH
 /obj/item/storage/box/gunset/pdh_peacekeeper
 	name = "9x19mm handgun supply box"
@@ -126,17 +171,18 @@
 	new /obj/item/ammo_box/revolver/zeta(src)
 	new /obj/item/ammo_box/revolver/zeta(src)
 	new /obj/item/ammo_box/advanced/b10mm(src)
-	
-//DISABLER
-/obj/item/storage/box/gunset/proplayer
-	name = "disabler supply box"
-	desc = "Ideally contains an energy-based disabler for those who know what to do with it."
 
-/obj/item/storage/box/gunset/proplayer/PopulateContents()
+//REVOLUTION
+/obj/item/storage/box/gunset/revolution
+	name = "revolution supply box"
+
+/obj/item/storage/box/gunset/revolution/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/disabler(src)
-	new /obj/item/clothing/glasses/sunglasses/garb(src)  //Useless gimmick item for people who want to look like dickheads
-
+	new /obj/item/gun/ballistic/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/revolver/revolution(src)
+	new /obj/item/ammo_box/advanced/b9mm(src)
 
 /////////////////
 //PRIMARY TOKEN GUNSETS

@@ -38,8 +38,10 @@
 				if(istype(spawned_gun, /obj/item/gun/ballistic))
 					var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
 					if(spawned_ballistic_gun.magazine && !istype(spawned_ballistic_gun.magazine, /obj/item/ammo_box/magazine/internal))
+						var/obj/item/storage/box/ammo_box/spawned_box = new(loc)
+						spawned_box.name = "ammo box - [spawned_ballistic_gun]"
 						for(var/i in 1 to mags_to_spawn)
-							new spawned_ballistic_gun.mag_type (loc)
+							new spawned_ballistic_gun.mag_type (spawned_box)
 
 			guns_spawned++
 	return INITIALIZE_HINT_QDEL
@@ -56,16 +58,6 @@
 		/obj/item/gun/ballistic/automatic/vintorez,
 	)
 
-/obj/effect/spawner/armory_spawn/pistols
-	icon_state = "random_pistol"
-	gun_count = 10
-	guns = list(
-		/obj/item/gun/ballistic/automatic/pistol/g17,
-		/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper,
-		/obj/item/gun/ballistic/automatic/pistol/ladon,
-		/obj/item/gun/ballistic/automatic/pistol/mk58,
-	)
-
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"
 	gun_count = 4
@@ -80,3 +72,15 @@
 	new /obj/item/storage/box/rubbershot_14gauge(src)
 	new /obj/item/storage/box/lethalshot_14gauge(src)
 	new /obj/item/storage/box/lethalshot_14gauge(src)
+
+//////////////////////////AMMO BOXES
+/obj/item/storage/box/ammo_box
+	name = "ammo box"
+	desc = "A box filled with ammunition."
+	icon_state = "boxhrifle"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	illustration = null
+
+/obj/item/storage/box/ammo_box/PopulateContents()
+	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/gun_maintenance_supplies(src)
