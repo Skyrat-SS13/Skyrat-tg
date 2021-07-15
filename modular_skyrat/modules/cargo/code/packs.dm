@@ -138,7 +138,7 @@
 	crate_name = "CFA sponsored weapons crate"
 	dangerous = TRUE
 
-/datum/supply_pack/security/lasergunm
+/datum/supply_pack/security/lasergunM // not to be confused with the normal laser gun crate
 	name = "Lasergun Supply Crate"
 	desc = "Really annoying guy hiding behind a window? Janitors refusing to clean up your bullet casings after the sixth 'self defense case' this week? This should help out, and leaves no evidence. (Comes with it's own recharger!)"
 	cost = CARGO_CRATE_VALUE * 75 //give or take 15,000 just to make it harder for a private lone officer purchase.
