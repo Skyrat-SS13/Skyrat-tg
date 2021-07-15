@@ -33,7 +33,7 @@
 
 				if(vertial_guns)
 					spawned_gun.place_on_rack()
-					spawned_gun.pixel_x = ((!(guns_spawned%2)*guns_spawned/2)*-1)+((guns_spawned%2)*(guns_spawned+1)/2*1)
+					spawned_gun.pixel_x = clamp((-13 + (3 * guns_spawned)), -10, 10)
 
 				if(istype(spawned_gun, /obj/item/gun/ballistic))
 					var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
