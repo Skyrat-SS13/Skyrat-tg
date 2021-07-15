@@ -39,18 +39,14 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	ears = /obj/item/radio/headset/headset_sec
 	glasses = /obj/item/clothing/glasses/sunglasses
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/restraints/handcuffs = 2)
+	backpack_contents = list(/obj/item/gun/energy/taser/armadyne, /obj/item/melee/classic_baton/peacekeeper, /obj/item/restraints/handcuffs = 2)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
 	head = /obj/item/clothing/head/brigoff
-
-	suit_store = /obj/item/gun/energy/taser/armadyne
-
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/pda/security
-
 	id_trim = /datum/id_trim/job/brigoff
 
 
