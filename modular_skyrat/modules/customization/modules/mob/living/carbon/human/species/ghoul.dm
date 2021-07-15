@@ -28,7 +28,7 @@
 	punchdamagehigh = 5 //highest possible punch damage
 	siemens_coeff = 0.7 //base electrocution coefficient
 	bodytemp_normal = T20C
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 	var/dehydrate = 0
 
@@ -69,7 +69,7 @@
 	return // Do Nothing
 
 /datum/species/ghoul/set_ghoul_color(mob/living/carbon/human/H)
-	// Called on Assign, or on Color Change (or any time proof_beefman_features() is used)
+	// Called on Assign, or on Color Change (or any time proof_ghoul_features() is used)
 	fixed_mut_color = H.dna.features["ghoulcolor"]
 	default_color = fixed_mut_color
 
@@ -117,32 +117,6 @@
 	C.part_default_r_leg = /obj/item/bodypart/r_leg
 	C.ReassignForeignBodyparts()
 
-/*
-/datum/species/ghoul/spec_life(mob/living/carbon/human/H)	// This is your life ticker.
-	..()
-	// 		** BLEED YOUR JUICES **         //-- BODYTEMP_NORMAL = 293.15
-
-	// Step 1) Being burned keeps the juices in.
-	var/searJuices = H.getFireLoss() / 30 //-- Now that is a lot of damage
-
-	// Step 2) Bleed out those juices by warmth, minus burn damage. If we are salted - bleed more
-	if (dehydrate > 0)
-		if(!H.blood_volume)
-			return
-		H.bleed(clamp((H.bodytemperature - 297.15) / 20 - searJuices, 2, 10))
-		dehydrate -= 0.5
-	else
-		H.bleed(clamp((H.bodytemperature - 297.15) / 20 - searJuices, 0, 5))
-
-	// Replenish Blood Faster! (But only if you actually make blood)
-	var/bleed_rate = 0
-	for(var/i in H.bodyparts)
-		var/obj/item/bodypart/BP = i
-		bleed_rate += BP.generic_bleedstacks
-*/
-///datum/species/beefman/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
-//	. = ..() // Let species run its thing by default
-
 //////////////////
 // ATTACK PROCS //
 //////////////////
@@ -174,7 +148,7 @@
 			playsound(get_turf(user), 'sound/effects/meatslap.ogg', 40, 1)
 
 			// Destroy Limb, Drop Meat, Pick Up
-			var/obj/item/I = affecting.drop_limb() //  <--- This will return a meat vis drop_meat(), even if only Beefman limbs return anything. If this was another species' limb, it just comes off.
+			var/obj/item/I = affecting.drop_limb()
 			if (istype(I, /obj/item/food/meat/slab))
 				user.put_in_hands(I)
 
@@ -216,22 +190,22 @@
 //LIMBS
 
 /obj/item/bodypart/head/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 /obj/item/bodypart/chest/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 /obj/item/bodypart/r_arm/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 /obj/item/bodypart/l_arm/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 /obj/item/bodypart/r_leg/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 /obj/item/bodypart/l_leg/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/beefman_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 /obj/item/bodypart/chest/ghoul/drop_limb(special)
 	//amCondemned = TRUE
