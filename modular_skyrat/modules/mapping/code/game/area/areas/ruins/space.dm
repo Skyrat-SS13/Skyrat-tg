@@ -115,6 +115,10 @@
 	name = "DS-2 Hydroponics"
 	icon_state = "garden"
 
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor
+	name = "DS-2 Custodial"
+	icon_state = "janitor"
+
 //Hallways
 /area/ruin/space/has_grav/skyrat/interdynefob/halls
 	name = "DS-2 Central Halls"

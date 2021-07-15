@@ -2311,6 +2311,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet/donk,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
+"iE" = (
+/obj/structure/table,
+/obj/item/mop,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/storage/bag/trash,
+/obj/item/storage/belt/janitor,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor)
 "iF" = (
 /turf/open/floor/iron/dark/textured_corner,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/mining_equipment)
@@ -2627,10 +2635,10 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "jL" = (
-/obj/structure/trash_pile,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/structure/janitorialcart,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor)
 "jM" = (
 /obj/structure/drain/big,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -4417,6 +4425,7 @@
 	dir = 6
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/door/airlock/grunge,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "qq" = (
@@ -4974,6 +4983,10 @@
 	dir = 5
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
+"sl" = (
+/obj/machinery/vending/wardrobe/jani_wardrobe,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor)
 "sm" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 6
@@ -6352,12 +6365,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "wY" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Security Maintenance";
-	req_access_txt = "151"
-	},
-/obj/effect/turf_decal/siding/wideplating,
-/turf/open/floor/iron/dark/textured_large,
+/obj/machinery/vending/wardrobe/jani_wardrobe,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "wZ" = (
 /obj/structure/holohoop{
@@ -7238,6 +7247,9 @@
 	},
 /turf/open/floor/iron/dark/blue/side,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
+"At" = (
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor)
 "Au" = (
 /obj/effect/turf_decal/siding/thinplating/corner{
 	dir = 4
@@ -11452,14 +11464,11 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Pc" = (
-/obj/effect/turf_decal/siding/wideplating{
-	dir = 8
-	},
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_access_txt = "150"
+/obj/machinery/door/airlock/grunge{
+	name = "Custodial Closet"
 	},
 /turf/open/floor/iron/dark/textured_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor)
 "Pd" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -11740,6 +11749,7 @@
 	dir = 8
 	},
 /obj/structure/curtain,
+/obj/item/soap/syndie,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Qf" = (
@@ -12189,6 +12199,12 @@
 "Rz" = (
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/northwest)
+"RA" = (
+/obj/structure/table,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/soap/syndie,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor)
 "RB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
@@ -14461,6 +14477,9 @@
 	dir = 5
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
+"ZI" = (
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/janitor)
 "ZJ" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark,
@@ -16616,7 +16635,7 @@ nX
 nX
 nX
 nX
-nX
+wY
 nX
 nX
 jQ
@@ -18027,10 +18046,10 @@ mU
 ce
 FM
 jt
-wY
-Oe
-Zv
-Oe
+sA
+sl
+iE
+RA
 HR
 UI
 YQ
@@ -18117,8 +18136,8 @@ yb
 KT
 sA
 jL
-Zv
-Oe
+ZI
+ZI
 HR
 TF
 YJ
@@ -18204,8 +18223,8 @@ sA
 sA
 sA
 sA
-nX
-nX
+At
+At
 Pc
 HR
 gl
