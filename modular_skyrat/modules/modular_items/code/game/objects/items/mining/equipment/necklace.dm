@@ -16,7 +16,7 @@
 		return
 	if(slot == ITEM_SLOT_NECK)
 		user.grant_language(/datum/language/draconic/, TRUE, TRUE, LANGUAGE_TRANSLATOR)
-		to_chat(user, span_boldnotice("Knowledge of the Draconic language floods through your mind"))
+		to_chat(user, span_boldnotice("Slipping the necklace on, you find yourself able to understand Draconic."))
 
 /obj/item/clothing/neck/necklace/ashwalker/dropped(mob/user)
 	. = ..()
@@ -25,6 +25,6 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(ITEM_SLOT_NECK) == src && !QDELETED(src)) //This can be called as a part of destroy
 		user.remove_language(/datum/language/draconic/, TRUE, TRUE, LANGUAGE_TRANSLATOR)
-		to_chat(user, span_boldnotice("You find your newly gained knowledge of Draconic tongue gone."))
+		to_chat(user, span_boldnotice("You find your newly gained knowledge of Draconic fades away as your remove the necklace."))
 
 //ASHWALKER TRANSLATOR NECKLACE END//
