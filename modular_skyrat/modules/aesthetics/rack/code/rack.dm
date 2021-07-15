@@ -45,5 +45,3 @@
 			var/obj/item/gun/our_gun = W
 			our_gun.place_on_rack()
 			return TRUE
-
-

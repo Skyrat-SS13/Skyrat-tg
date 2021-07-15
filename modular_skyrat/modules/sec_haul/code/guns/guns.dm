@@ -33,7 +33,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	can_flashlight = TRUE
-	dirt_modifier = 1.7
+	dirt_modifier = 1
 	emp_damageable = TRUE
 	armadyne = TRUE
 
