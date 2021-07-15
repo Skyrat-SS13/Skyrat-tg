@@ -267,7 +267,7 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/gun/ballistic/revolver
+		/obj/item/gun/ballistic/revolver,
 		/obj/item/melee/baton,
 		/obj/item/melee/classic_baton,
 		/obj/item/grenade,
