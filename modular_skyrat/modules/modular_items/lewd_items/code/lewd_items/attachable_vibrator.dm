@@ -88,6 +88,9 @@
 
 /obj/item/clothing/sextoy/eggvib/proc/toggle_mode()
 	mode = modes[mode]
+	soundloop1.stop()
+	soundloop2.stop()
+	soundloop3.stop()
 	switch(mode)
 		if("low")
 			toy_on = TRUE
@@ -98,19 +101,16 @@
 			toy_on = TRUE
 			vibration_mode = "medium"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
-			soundloop1.stop()
 			soundloop2.start()
 		if("hard")
 			toy_on = TRUE
 			vibration_mode = "hard"
 			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
-			soundloop2.stop()
 			soundloop3.start()
 		if("off")
 			toy_on = FALSE
 			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
-			soundloop3.stop()
 
 /obj/item/clothing/sextoy/eggvib/equipped(mob/user, slot, initial)
 	. = ..()
@@ -215,6 +215,9 @@
 	update_icon()
 
 	if(toy_on == TRUE)
+		soundloop1.stop()
+		soundloop2.stop()
+		soundloop3.stop()
 		if(vibration_mode == "low")
 			soundloop1.start()
 		if(vibration_mode == "medium")
@@ -223,12 +226,9 @@
 			soundloop3.start()
 
 	if(toy_on == FALSE)
-		if(vibration_mode == "low")
-			soundloop1.stop()
-		if(vibration_mode == "medium")
-			soundloop2.stop()
-		if(vibration_mode == "hard")
-			soundloop3.stop()
+		soundloop1.stop()
+		soundloop2.stop()
+		soundloop3.stop()
 
 	//adding messages to chat if vibrator enabled while
 	var/mob/living/carbon/human/U = loc
@@ -266,17 +266,17 @@
 	if(color_changed == TRUE)
 		if(toy_on == TRUE)
 			toggle_mode()
+			soundloop1.stop()
+			soundloop2.stop()
+			soundloop3.stop()
 			if(vibration_mode == "low")
 				to_chat(user, "<span class='notice'>Vibration mode now is low. Bzzz...</span>")
-				soundloop3.stop()
 				soundloop1.start()
 			if(vibration_mode == "medium")
 				to_chat(user, "<span class='notice'>Vibration mode now is medium. Bzzzz!</span>")
-				soundloop1.stop()
 				soundloop2.start()
 			if(vibration_mode == "hard")
 				to_chat(user, "<span class='notice'>Vibration mode now is hard. Careful with that thing.</span>")
-				soundloop2.stop()
 				soundloop3.start()
 			update_icon()
 			update_icon_state()
@@ -342,6 +342,9 @@
 			toy_on = !toy_on
 			update_icon_state()
 			update_icon()
+			soundloop1.stop()
+			soundloop2.stop()
+			soundloop3.stop()
 			if(toy_on == TRUE)
 				if(vibration_mode == "low")
 					soundloop1.start()
@@ -351,12 +354,9 @@
 					soundloop3.start()
 
 			if(toy_on == FALSE)
-				if(vibration_mode == "low")
-					soundloop1.stop()
-				if(vibration_mode == "medium")
-					soundloop2.stop()
-				if(vibration_mode == "hard")
-					soundloop3.stop()
+				soundloop1.stop()
+				soundloop2.stop()
+				soundloop3.stop()
 			. = TRUE
 		if("freq")
 			var/value = unformat_frequency(params["freq"])
