@@ -1,4 +1,4 @@
-/datum/species/ghoul //beefme- i-i mean ghouls
+/datum/species/ghoul
 	name = "Ghoul"
 	id = "ghoul"
 	limbs_id = "ghoul"
@@ -8,7 +8,6 @@
 	species_traits = list(NOEYESPRITES, DYNCOLORS, AGENDER, HAS_FLESH, HAS_BONE)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
-	//default_mutant_bodyparts = list()
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
 		TRAIT_CAN_STRIP,
