@@ -47,7 +47,7 @@
 //////////////RIFLE SPAWNER
 /obj/effect/spawner/armory_spawn/rifles
 	icon_state = "random_rifle"
-	gun_count = 3
+	gun_count = 4
 	guns = list(
 		/obj/item/gun/ballistic/automatic/pcr,
 		/obj/item/gun/ballistic/automatic/pitbull,
@@ -58,7 +58,7 @@
 
 /obj/effect/spawner/armory_spawn/pistols
 	icon_state = "random_pistol"
-	gun_count = 6
+	gun_count = 10
 	guns = list(
 		/obj/item/gun/ballistic/automatic/pistol/g17,
 		/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper,
@@ -68,7 +68,7 @@
 
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"
-	gun_count = 3
+	gun_count = 4
 	guns = list(
 		/obj/item/gun/ballistic/shotgun/riot,
 		/obj/item/gun/ballistic/shotgun/m23,
