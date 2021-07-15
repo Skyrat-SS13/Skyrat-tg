@@ -66,5 +66,6 @@
 	name = "Draconic Necklace"
 	result = /obj/item/clothing/neck/necklace/ashwalker
 	reqs = list(/obj/item/stack/sheet/bone = 1, /obj/item/stack/sheet/sinew = 2, /obj/item/organ/regenerative_core = 1)
+	always_available = FALSE
 	time = 30
 	category = CAT_PRIMAL
