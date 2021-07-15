@@ -19,7 +19,6 @@
 /obj/item/gun/proc/remove_from_rack()
 	if(on_rack)
 		var/matrix/M = matrix()
-		M.Turn(90)
 		transform = M
 		on_rack = FALSE
 
@@ -44,4 +43,7 @@
 		if(user.transferItemToLoc(W, drop_location()))
 			var/obj/item/gun/our_gun = W
 			our_gun.place_on_rack()
+			our_gun.pixel_x = rand(-10, 10)
 			return TRUE
+	else
+		to_chat(user, span_notice("You can only place guns on a rack!"))

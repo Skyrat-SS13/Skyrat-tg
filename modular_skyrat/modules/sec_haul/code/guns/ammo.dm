@@ -219,7 +219,7 @@
 	custom_materials = list(/datum/material/iron=2000)
 	projectile_type = /obj/projectile/bullet/s14gauge_slug
 
-/obj/item/ammo_casing/s14gauge/rubber
+/obj/item/ammo_casing/s14gauge/beanbag
 	name = "14 gauge beanbag slug"
 	desc = "A weak beanbag slug for riot control."
 	icon_state = "bshell"
@@ -252,3 +252,33 @@
 	projectile_type = /obj/projectile/bullet/s14gauge_stunslug
 	custom_materials = list(/datum/material/iron=500,/datum/material/gold=100)
 	harmful = FALSE
+
+/obj/item/storage/box/rubbershot_14gauge
+	name = "box of 14 gauge rubber shots"
+	desc = "A box full of rubber shots, designed for riot shotguns."
+	icon_state = "rubbershot_box"
+	illustration = null
+
+/obj/item/storage/box/rubbershot_14gauge/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/ammo_casing/s14gauge/rubbershot(src)
+
+/obj/item/storage/box/lethalshot_14gauge
+	name = "box of lethal 14 gauge shotgun shots"
+	desc = "A box full of lethal shots, designed for riot shotguns."
+	icon_state = "lethalshot_box"
+	illustration = null
+
+/obj/item/storage/box/lethalshot_14gauge/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/ammo_casing/s14gauge/buckshot(src)
+
+/obj/item/storage/box/beanbag_14gauge
+	name = "box of 14 gauge beanbags"
+	desc = "A box full of beanbag shells."
+	icon_state = "rubbershot_box"
+	illustration = null
+
+/obj/item/storage/box/beanbag_14gauge/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/ammo_casing/s14gauge/beanbag(src)

@@ -30,14 +30,10 @@
 
 			if(gunspawn)
 				var/obj/item/gun/spawned_gun = new gunspawn(loc)
-				if (!fan_out_items)
-					if (pixel_x != 0)
-						spawned_gun.pixel_x = pixel_x
-					if (pixel_y != 0)
-						spawned_gun.pixel_y = pixel_y
-				else
-					if (guns_spawned)
-						spawned_gun.pixel_x = spawned_gun.pixel_y = ((!(guns_spawned%2)*guns_spawned/2)*-1)+((guns_spawned%2)*(guns_spawned+1)/2*1)
+
+				if(vertial_guns)
+					spawned_gun.place_on_rack()
+					spawned_gun.pixel_x = ((!(guns_spawned%2)*guns_spawned/2)*-1)+((guns_spawned%2)*(guns_spawned+1)/2*1)
 
 				if(istype(spawned_gun, /obj/item/gun/ballistic))
 					var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
@@ -45,8 +41,6 @@
 						for(var/i in 1 to mags_to_spawn)
 							new spawned_ballistic_gun.mag_type (loc)
 
-				if(vertial_guns)
-					spawned_gun.place_on_rack()
 			guns_spawned++
 	return INITIALIZE_HINT_QDEL
 
@@ -79,4 +73,9 @@
 		/obj/item/gun/ballistic/shotgun/sas14,
 	)
 
-/obj/structure/fence/door
+/obj/structure/closet/ammunitionlocker/useful/PopulateContents()
+	..()
+	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/lethalshot_14gauge(src)
+	new /obj/item/storage/box/lethalshot_14gauge(src)

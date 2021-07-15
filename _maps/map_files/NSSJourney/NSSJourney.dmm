@@ -31693,8 +31693,10 @@
 /area/hallway/primary/aft)
 "clt" = (
 /obj/machinery/firealarm/directional/north,
-/obj/structure/fence,
-/turf/open/floor/iron/smooth,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "clv" = (
 /obj/structure/cable,
@@ -37397,9 +37399,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 4
-	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
 "dRT" = (
@@ -37615,12 +37614,12 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/cargo/storage)
 "dZT" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/machinery/airalarm/directional/north,
+/obj/structure/rack/gunrack,
+/obj/effect/spawner/armory_spawn/rifles,
+/obj/effect/spawner/armory_spawn/rifles,
+/obj/effect/spawner/armory_spawn/rifles,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "eaa" = (
@@ -40310,15 +40309,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/nanite)
-"gLh" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ai_monitored/security/armory)
 "gLH" = (
 /obj/machinery/door/airlock/external{
 	name = "External Access";
@@ -44456,6 +44446,12 @@
 	},
 /turf/open/floor/circuit,
 /area/ai_monitored/command/nuke_storage)
+"kAA" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ai_monitored/security/armory)
 "kAE" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -51115,11 +51111,7 @@
 /turf/open/floor/iron,
 /area/service/hydroponics)
 "qXa" = (
-/obj/machinery/airalarm/directional/north,
-/obj/structure/rack/gunrack,
-/obj/effect/spawner/armory_spawn/rifles,
-/obj/effect/spawner/armory_spawn/rifles,
-/obj/effect/spawner/armory_spawn/rifles,
+/obj/structure/closet/ammunitionlocker/useful,
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
 "qXk" = (
@@ -51589,15 +51581,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/qm)
-"rtz" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/ai_monitored/security/armory)
 "rut" = (
 /obj/structure/table,
 /obj/item/clothing/suit/apron/chef,
@@ -56255,6 +56238,12 @@
 /obj/structure/flora/ausbushes/leafybush,
 /turf/open/floor/grass,
 /area/service/hydroponics)
+"vLW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ai_monitored/security/armory)
 "vLX" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
@@ -87738,10 +87727,10 @@ aaJ
 pUm
 aaJ
 aaZ
-gLh
-gLh
-gLh
-rtz
+dRi
+dRi
+dRi
+dRi
 dRi
 otg
 adi
@@ -87996,10 +87985,10 @@ xzh
 bBM
 aaZ
 clt
-abn
-abn
-oEV
-xoJ
+vLW
+vLW
+vLW
+kAA
 obK
 cRD
 avB
@@ -88252,10 +88241,10 @@ xzh
 xzh
 hEU
 aaZ
-fdm
-jgL
-jgL
-wTo
+abn
+abn
+abn
+oEV
 xoJ
 nNO
 ugN
@@ -88509,10 +88498,10 @@ xzh
 xzh
 bBM
 aaZ
-dZT
+fdm
 jgL
 jgL
-vLz
+wTo
 xoJ
 gLJ
 qNz

@@ -58,9 +58,6 @@
 	bare_wound_bonus = 50
 	embedding = list(embed_chance=60, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
-	armour_penetration = -60
-	
-	
 
 ///////////9x19mm/////////////////
 //FMJ | JHP | IHDF | RUBBER//
@@ -75,9 +72,8 @@
 
 /obj/projectile/bullet/advanced/b9mm
 	name = "9x19mm FMJ bullet"
-	damage = 15
+	damage = 20
 	speed = 0.8
-	armour_penetration = -30
 
 /obj/item/ammo_casing/b9mm/hp
 	name = "9x19mm JHP bullet casing"
@@ -92,7 +88,6 @@
 	icon_state = "bullet_h"
 	damage = 20
 	wound_bonus = 35
-	armour_penetration = -60
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
@@ -147,7 +142,7 @@
 
 /obj/projectile/bullet/advanced/b10mm
 	name = "10mm Auto bullet"
-	damage = 27
+	damage = 30
 	speed = 1
 	wound_bonus = 5
 
@@ -257,7 +252,6 @@
 	icon_state = "bullet_h"
 	damage = 47
 	wound_bonus = 40
-	armour_penetration = -20
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 

@@ -980,7 +980,7 @@
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
 	suppressed_volume = 100
 	vary_fire_sound = TRUE
-	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/shotgun_light.ogg'
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
 	fire_delay = 5
 	mag_type = /obj/item/ammo_box/magazine/sas14
 	w_class = WEIGHT_CLASS_BULKY
@@ -991,6 +991,7 @@
 	mag_display = FALSE
 	semi_auto = TRUE
 	internal_magazine = FALSE
+	armadyne = TRUE
 
 /obj/item/ammo_box/magazine/sas14
 	name = "14 gauge box magazine"
