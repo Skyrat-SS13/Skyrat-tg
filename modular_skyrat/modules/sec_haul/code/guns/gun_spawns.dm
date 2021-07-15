@@ -33,7 +33,7 @@
 
 				if(vertial_guns)
 					spawned_gun.place_on_rack()
-					spawned_gun.pixel_x = clamp((-13 + (3 * guns_spawned)), -10, 10)
+					spawned_gun.pixel_x = rand(-10,10)
 
 				if(istype(spawned_gun, /obj/item/gun/ballistic))
 					var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
@@ -58,7 +58,7 @@
 
 /obj/effect/spawner/armory_spawn/pistols
 	icon_state = "random_pistol"
-	gun_count = 5
+	gun_count = 6
 	guns = list(
 		/obj/item/gun/ballistic/automatic/pistol/g17,
 		/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper,
