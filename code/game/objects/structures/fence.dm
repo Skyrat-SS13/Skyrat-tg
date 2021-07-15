@@ -114,8 +114,8 @@
 
 /obj/structure/fence/door/Initialize()
 	. = ..()
-
-	update_door_status()
+	if(open) //SKYRAT EDIT CHANGE
+		update_door_status()
 
 /obj/structure/fence/door/opened
 	icon_state = "door_opened"

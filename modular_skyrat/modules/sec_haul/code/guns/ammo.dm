@@ -205,3 +205,50 @@
 	. = ..()
 	if(stored_ammo.len)
 		. += "[initial(icon_state)]_[round_type]"
+
+////////////////////////////
+///////////14 GAUGE/////////
+////////////////////////////
+
+/obj/item/ammo_casing/s14gauge
+	name = "14 gauge shotgun slug"
+	desc = "A 14 gauge lead slug."
+	icon_state = "blshell"
+	worn_icon_state = "shell"
+	caliber = CALIBER_14GAUGE
+	custom_materials = list(/datum/material/iron=2000)
+	projectile_type = /obj/projectile/bullet/s14gauge_slug
+
+/obj/item/ammo_casing/s14gauge/rubber
+	name = "14 gauge beanbag slug"
+	desc = "A weak beanbag slug for riot control."
+	icon_state = "bshell"
+	custom_materials = list(/datum/material/iron=250)
+	projectile_type = /obj/projectile/bullet/s14gauge_beanbag
+	harmful = FALSE
+
+/obj/item/ammo_casing/s14gauge/buckshot
+	name = "14 gauge buckshot shell"
+	desc = "A 14 gauge  buckshot shell."
+	icon_state = "gshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge_buckshot
+	pellets = 5
+	variance = 25
+
+/obj/item/ammo_casing/s14gauge/rubbershot
+	name = "14 gauge rubber shot"
+	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
+	icon_state = "bshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge_rubbershot
+	pellets = 5
+	variance = 25
+	custom_materials = list(/datum/material/iron=4000)
+	harmful = FALSE //SKYRAT EDIT ADDITION
+
+/obj/item/ammo_casing/s14gauge/stunslug
+	name = "14 gauge taser slug"
+	desc = "A stunning taser slug."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/s14gauge_stunslug
+	custom_materials = list(/datum/material/iron=500,/datum/material/gold=100)
+	harmful = FALSE
