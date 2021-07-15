@@ -249,6 +249,14 @@
 					/obj/item/stack/sheet/cloth/ten,
 					/obj/item/stack/sheet/cloth/ten)
 	crate_name = "advanced art supplies"
+	
+/datum/supply_pack/misc/bicycle // overwritten
+	name = "Medical Beam Gun"
+	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
+	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
+	contains = list(/obj/item/gun/medbeam)
+	crate_name = "Medical Beamgun Crate"
+
 
 /datum/supply_pack/service/paintcan
 	name = "Adaptive Paintcan"
