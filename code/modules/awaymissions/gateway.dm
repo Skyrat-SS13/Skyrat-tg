@@ -25,6 +25,8 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		. = "Connection desynchronized. Recalibration in progress."
 
 /* Check if the movable is allowed to arrive at this destination (exile implants mostly) */
+/datum/gateway_destination/proc/incoming_pass_check(atom/movable/AM)
+	return TRUE
 /** SKYRAT EDIT - CYBORGS CANT USE GETWAY
 /datum/gateway_destination/proc/incoming_pass_check(atom/movable/AM)
 	return TRUE
