@@ -27,6 +27,7 @@
 	punchdamagehigh = 5 //highest possible punch damage
 	siemens_coeff = 0.7 //base electrocution coefficient
 	bodytemp_normal = T20C
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
 	var/dehydrate = 0
@@ -144,7 +145,7 @@
 				return TRUE
 
 			user.visible_message("[user]'s [affecting.name] comes right off in their hand.", span_notice("Your [affecting.name] pops right off."))
-			playsound(get_turf(user), 'sound/effects/meatslap.ogg', 40, 1)
+			playsound(get_turf(user), 'sound/effects/meatslap.ogg', 40, 1) //ill change these sounds later
 
 			// Destroy Limb, Drop Meat, Pick Up
 			var/obj/item/I = affecting.drop_limb()
