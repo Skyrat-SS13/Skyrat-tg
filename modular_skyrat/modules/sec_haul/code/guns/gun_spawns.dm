@@ -33,7 +33,8 @@
 
 				if(vertial_guns)
 					spawned_gun.place_on_rack()
-					spawned_gun.pixel_x = clamp((-13 + (3 * guns_spawned)), -10, 10)
+					var/calculated_pixel_scale = 4 * guns_spawned
+					spawned_gun.pixel_x = calculated_pixel_scale - 13
 
 				if(istype(spawned_gun, /obj/item/gun/ballistic))
 					var/obj/item/gun/ballistic/spawned_ballistic_gun = spawned_gun
@@ -74,7 +75,6 @@
 	)
 
 /obj/structure/closet/ammunitionlocker/useful/PopulateContents()
-	..()
 	new /obj/item/storage/box/rubbershot_14gauge(src)
 	new /obj/item/storage/box/rubbershot_14gauge(src)
 	new /obj/item/storage/box/lethalshot_14gauge(src)

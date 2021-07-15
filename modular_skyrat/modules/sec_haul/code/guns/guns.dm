@@ -974,8 +974,6 @@
 	icon_state = "sas14"
 	inhand_icon_state = "shotgun"
 	worn_icon_state = "shotgun"
-	inhand_x_dimension = 32
-	inhand_y_dimension = 32
 	can_suppress = TRUE
 	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
 	suppressed_volume = 100
@@ -988,8 +986,7 @@
 	weapon_weight = WEAPON_MEDIUM
 	burst_size = 1
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
-	mag_display = FALSE
-	semi_auto = TRUE
+	semi_auto = FALSE
 	internal_magazine = FALSE
 	armadyne = TRUE
 
