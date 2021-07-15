@@ -70,7 +70,6 @@
 	icon_state = "random_shotgun"
 	gun_count = 4
 	guns = list(
-		/obj/item/gun/ballistic/shotgun/riot,
 		/obj/item/gun/ballistic/shotgun/m23,
 		/obj/item/gun/ballistic/shotgun/automatic/as2,
 		/obj/item/gun/ballistic/shotgun/sas14,
