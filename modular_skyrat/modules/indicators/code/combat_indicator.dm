@@ -34,11 +34,13 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			visible_message("<span class='warning'><b>[src] gets ready for combat!</b></span>")
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = TRUE
+		src.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
 		src.log_message("<font color='red'>has turned ON the combat indicator!</font>", INDIVIDUAL_ATTACK_LOG)
 		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/combat_indicator_unconscious_signal)
 	else
 		cut_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = FALSE
+		src.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
 		src.log_message("<font color='blue'>has turned OFF the combat indicator!</font>", INDIVIDUAL_ATTACK_LOG)
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS)
 
@@ -64,3 +66,24 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	L.user_toggle_combat_indicator()
 
 /datum/config_entry/flag/combat_indicator
+
+// Surrender shit
+/atom/movable/screen/alert/status_effect/surrender/
+	desc = "You're either in combat or being held up. Click here to surrender and show that you don't wish to fight (WARNING: You will be incapacitated)."
+
+/datum/emote/living/surrender
+	message = "drops to the floor and raises their hands defensively! They surrender%s!"
+
+/atom/movable/screen/alert/status_effect/surrender/Click(location, control, params)
+	. = ..()
+	if(!.)
+		return
+	owner.emote("surrender")
+
+/datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(. && isliving(user))
+		var/mob/living/living_user = user
+		living_user.Paralyze(200)
+		living_user.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
+		living_user.set_combat_indicator(FALSE)

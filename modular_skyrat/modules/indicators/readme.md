@@ -4,11 +4,10 @@ MODULE ID: INDICATORS
 
 ### Description:
 
-The compilation of all player indicators (CI, Sentience, SSD, Typing)
+The compilation of all player indicators (CI, SSD, Typing)
 Combat Indicator - Toggleable by players, declares intent to engage in combat
 SSD Indicator - Automatically shows when a player has disconnected
 Typing Indicator - Shows when a player is typing
-Sentience Indicator - Shows on simplemobs when player controlled, to facilitate simplemob RP
 
 ### TG Proc Changes:
 Combat Indicator
@@ -23,8 +22,6 @@ Typing Indicator
 SSD Indicator
  ./code/modules/mob/living/carbon/human/examine.dm > /mob/living/carbon/human/examine()
  - ADDITION: code/modules/mob/living/death.dm > /mob/living/death()
-Sentience Indicator
- - ADDITION: code/modules/mob/living/death.dm > /mob/living/death()
 
 ### Defines:
 
@@ -37,4 +34,4 @@ N/A
 ### Credits:
 
 Azarak - Porting and OG code for Combat Indicator, Typing Indicator, SSD Indicator
-FlamingLily - Consolidation and Sentience Indicator
+FlamingLily - Consolidation, surrender alert

@@ -321,12 +321,13 @@
 	desc = "Looks like you're in trouble now, bud. Click here to surrender. (Warning: You will be incapacitated.)"
 	icon_state = "surrender"
 
-/atom/movable/screen/alert/status_effect/surrender/Click(location, control, params)
+// SKYRAT EDIT MOVAL - MOVED TO combat_indicator.dm IN INDICATORS MODULE
+/* /atom/movable/screen/alert/status_effect/surrender/Click(location, control, params)
 	. = ..()
 	if(!.)
 		return
 
-	owner.emote("surrender")
+	owner.emote("surrender") */
 
 /*
  * A status effect used for preventing caltrop message spam
