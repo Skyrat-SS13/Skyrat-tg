@@ -1,5 +1,5 @@
 /obj/machinery/turnstile
-	name = "turnstile"
+	name = "\improper turnstile"
 	desc = "A mechanical door that permits one-way access and prevents tailgating."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/turnstile.dmi'
 	icon_state = "turnstile_map"
@@ -10,12 +10,15 @@
 	idle_power_usage = 2
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = OPEN_DOOR_LAYER
+	var/last_bumped = 0
+
 
 /obj/machinery/turnstile/Initialize()
 	. = ..()
 	icon_state = "turnstile"
 
 	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
 		COMSIG_ATOM_EXIT = .proc/on_exit,
 	)
 
@@ -25,57 +28,67 @@
 	return TRUE
 
 /obj/machinery/turnstile/bullet_act(obj/projectile/P, def_zone)
-	return -1 //Pass through!
+	return //Pass through!
 
-/obj/machinery/turnstile/proc/allowed_access(var/mob/B)
-	if(B.pulledby && ismob(B.pulledby))
-		return allowed(B.pulledby) | allowed(B)
+/obj/machinery/turnstile/proc/allowed_access(mob/bumper)
+	if(bumper.pulledby && ismob(bumper.pulledby))
+		return allowed(bumper.pulledby) | allowed(bumper)
 	else
-		return allowed(B)
+		return allowed(bumper)
 
-/obj/machinery/turnstile/Cross(atom/movable/AM, turf/T)
-	if(ismob(AM))
-		var/mob/B = AM
-		if(isliving(AM))
-			var/mob/living/M = AM
 
-			if(world.time - M.last_bumped <= 5)
-				return FALSE
-			M.last_bumped = world.time
+/obj/machinery/turnstile/CanPass(atom/movable/mover, border_dir)
+	if(isliving(mover))
+		var/mob/living/living_mover = mover
 
-			var/allowed_access = FALSE
-			var/turf/behind = get_step(src, dir)
+		if(world.time - living_mover.last_bumped <= 5)
+			return FALSE
+		living_mover.last_bumped = world.time
 
-			if(B in behind.contents)
-				allowed_access = allowed_access(B)
-			else
-				to_chat(usr, "<span class='notice'>\the [src] resists your efforts.</span>")
-				return FALSE
+		var/allowed_access = FALSE
+		var/turf/behind = get_step(src, dir)
 
-			if(allowed_access)
-				flick("operate", src)
-				playsound(src,'sound/items/ratchet.ogg',50,0,3)
-				return TRUE
-			else
-				flick("deny", src)
-				playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
-				return FALSE
-	return..()
+		if(living_mover in behind.contents)
+			allowed_access = allowed_access(living_mover)
+		else
+			return FALSE
 
-/obj/machinery/turnstile/proc/on_exit(datum/source, atom/movable/leaving, atom/new_location)
+		if(allowed_access)
+			return TRUE
+		else
+			return FALSE
+	return ..()
+
+
+/obj/machinery/turnstile/Bumped(atom/movable/AM)
+	if(ismob(AM) && world.time - last_bumped > 5)
+		to_chat(usr, span_notice("[src] resists your efforts."))
+		flick("deny", src)
+		playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
+		last_bumped = world.time
+
+
+/obj/machinery/turnstile/proc/on_entered(datum/source, atom/movable/entering)
+	SIGNAL_HANDLER
+
+	flick("operate", src)
+	playsound(src, 'sound/items/ratchet.ogg', 50, 0, 3)
+
+
+/obj/machinery/turnstile/proc/on_exit(datum/source, atom/movable/leaving)
 	SIGNAL_HANDLER
 
 	if(isliving(leaving))
-		var/mob/living/M = leaving
+		var/mob/living/skedaddling = leaving
 		var/outdir = dir
-		if(allowed_access(M))
+		if(allowed_access(skedaddling))
 			outdir = REVERSE_DIR(dir)
 		var/turf/outturf = get_step(src, outdir)
-		var/canexit = (new_location == src.loc) | (new_location == outturf)
+		var/canexit = !outturf.is_blocked_turf()
 
-		if(!canexit && world.time - M.last_bumped <= 5)
-			to_chat(usr, "<span class='notice'>\the [src] resists your efforts.</span>")
-		M.last_bumped = world.time
+		if(!canexit && world.time - skedaddling.last_bumped <= 5)
+			to_chat(usr, span_notice("[src] resists your efforts."))
+		skedaddling.last_bumped = world.time
 
 		if(!canexit)
 			return COMPONENT_ATOM_BLOCK_EXIT
