@@ -470,3 +470,5 @@
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)
+
+	/datum/component/spawner

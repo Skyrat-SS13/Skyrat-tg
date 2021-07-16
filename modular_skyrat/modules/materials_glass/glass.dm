@@ -7,7 +7,8 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	))
 GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 	new/datum/stack_recipe("shuttle window", /obj/structure/window/shuttle/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
+	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE), \
+	new/datum/stack_recipe("spaceship window plate", /obj/item/stack/sheet/spaceshipglass, 1, time = 5), \
 	))
 GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/plasma/reinforced/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
@@ -279,7 +280,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/shard/Destroy()
 	. = ..()

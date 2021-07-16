@@ -353,7 +353,8 @@
 
 /mob/living/simple_animal/hostile/proc/AttackingTarget(atom/attacked_target)
 	in_melee = TRUE
-	SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target)
+	if(SEND_SIGNAL(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, target) & COMPONENT_HOSTILE_NO_ATTACK)
+		return FALSE //but more importantly return before attack_animal called
 	var/result = target.attack_animal(src)
 	SEND_SIGNAL(src, COMSIG_HOSTILE_POST_ATTACKINGTARGET, target, result)
 	return result
@@ -650,7 +651,7 @@
 			else
 				Stun((knockdown_time * 2), ignore_canstun = TRUE)
 			charge_end()
-		else if(hit_atom.density && !hit_atom.CanPass(src))
+		else if(hit_atom.density && !hit_atom.CanPass(src, get_dir(hit_atom, src)))
 			visible_message(span_danger("[src] smashes into [hit_atom]!"))
 			Stun((knockdown_time * 2), ignore_canstun = TRUE)
 

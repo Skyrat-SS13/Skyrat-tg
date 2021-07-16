@@ -129,6 +129,9 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define SMOOTH_GROUP_PLASTITANIUM_WALLS S_OBJ(13) ///turf/closed/wall/mineral/plastitanium, /obj/structure/falsewall/plastitanium
 #define SMOOTH_GROUP_SURVIVAL_TIANIUM_POD S_OBJ(14) ///turf/closed/wall/mineral/titanium/survival/pod, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod
 #define SMOOTH_GROUP_HIERO_WALL S_OBJ(15) ///obj/effect/temp_visual/elite_tumor_wall, /obj/effect/temp_visual/hierophant/wall
+//SKYRAT EDIT ADDITION
+#define SMOOTH_GROUP_SHIPWALLS S_OBJ(17)	///turf/closed/wall/mineral/titanium/spaceship
+//SKYRAT EDIT END
 
 #define SMOOTH_GROUP_STONE_WALLS S_OBJ(19) ///turf/closed/wall/mineral/stone, /obj/structure/falsewall/stone	// SKYRAT EDIT: Adds stone
 #define SMOOTH_GROUP_PAPERFRAME S_OBJ(20) ///obj/structure/window/paperframe, /obj/structure/mineral_door/paperframe
@@ -165,10 +168,13 @@ DEFINE_BITFIELD(smoothing_flags, list(
 #define SMOOTH_GROUP_CLEANABLE_DIRT S_OBJ(67) ///obj/effect/decal/cleanable/dirt
 
 #define SMOOTH_GROUP_INDUSTRIAL_LIFT S_OBJ(70) ///obj/structure/industrial_lift
-//SKYRAT EDIT ADDITION
-#define SMOOTH_GROUP_SHUTTERS S_OBJ(71)
 
-#define SMOOTH_GROUP_WATER S_OBJ(72)			///obj/effect/abstract/liquid_turf
+#define SMOOTH_GROUP_GAS_TANK S_OBJ(71)
+
+//SKYRAT EDIT ADDITION
+#define SMOOTH_GROUP_SHUTTERS S_OBJ(72)
+
+#define SMOOTH_GROUP_WATER S_OBJ(73) ///obj/effect/abstract/liquid_turf
 
 #define MAX_S_OBJ SMOOTH_GROUP_WATER //Always match this value with the one above it.
 //SKYRAT EDIT END

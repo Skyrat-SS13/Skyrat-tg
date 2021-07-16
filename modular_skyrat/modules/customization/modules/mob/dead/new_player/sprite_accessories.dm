@@ -39,6 +39,8 @@
 	var/extra2_color_src
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
 	var/list/ckey_whitelist
+	///Whether this feature is genetic, and thus modifiable by DNA consoles
+	var/genetic = FALSE
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -106,6 +108,7 @@
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list("lizard", "unathi", "ashlizard", "silverlizard")
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
@@ -132,6 +135,7 @@
 	key = "legs"
 	generic = "Leg Type"
 	color_src = null
+	genetic = TRUE
 
 /datum/sprite_accessory/socks
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
@@ -582,3 +586,9 @@
 	icon_state = "shibari_sleeves"
 	gender = FEMALE
 	use_static = null
+
+/datum/sprite_accessory/undershirt/bulletclub //4 life
+	name = "Shirt - Black Skull"
+	icon_state = "shirt_bc"
+	gender = NEUTER
+

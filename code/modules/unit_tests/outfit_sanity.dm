@@ -34,9 +34,7 @@
 		CHECK_OUTFIT_SLOT(r_pocket, ITEM_SLOT_RPOCKET)
 
 		if (outfit.backpack_contents || outfit.box)
-			var/list/backpack_contents = null
-			if(outfit.backpack_contents)
-				backpack_contents = outfit.backpack_contents.Copy()
+			var/list/backpack_contents = outfit.backpack_contents?.Copy()
 			if (outfit.box)
 				if (!backpack_contents)
 					backpack_contents = list()

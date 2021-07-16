@@ -63,11 +63,19 @@
 	if(target == user)
 		snort(user)
 
-/obj/item/reagent_containers/cocaine/RightClick(mob/user)
+/obj/item/reagent_containers/cocaine/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 	if(!in_range(user, src) || user.get_active_held_item())
 		return
+
 	snort(user)
+
+	return
 
 /obj/item/reagent_containers/cocainebrick
 	name = "cocaine brick"

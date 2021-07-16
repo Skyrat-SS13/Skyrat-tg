@@ -209,6 +209,11 @@ SUBSYSTEM_DEF(job)
 		if(job.title in GLOB.command_positions) //If you want a command position, select it!
 			continue
 
+		//SKYRAT EDIT ADDITION
+		if(job.title in GLOB.central_command_positions) //If you want a CC position, select it!
+			continue
+		//SKYRAT EDIT END
+
 		if(is_banned_from(player.ckey, job.title) || QDELETED(player))
 			if(QDELETED(player))
 				JobDebug("GRJ isbanned failed, Player deleted")
@@ -546,7 +551,7 @@ SUBSYSTEM_DEF(job)
 		if (M.client && job.no_dresscode && job.loadout)
 			packed_items = M.client.prefs.equip_preference_loadout(living_mob,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
 		//SKYRAT EDIT ADDITION END
-		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client, is_captain)//silicons override this proc to return a mob
+		var/new_mob = job.equip(living_mob, null, null, joined_late, null, M.client, is_captain)//silicons override this proc to return a mob
 		if(ismob(new_mob))
 			living_mob = new_mob
 			if(!joined_late)
@@ -635,7 +640,12 @@ SUBSYSTEM_DEF(job)
 	var/jobstext = file2text("[global.config.directory]/jobs.txt")
 	for(var/datum/job/J in occupations)
 		var/regex/jobs = new("[J.title]=(-1|\\d+),(-1|\\d+)")
-		jobs.Find(jobstext)
+		// Skyrat Edit - SSjobs no longer runtimes if it cant find a job
+		// original: jobs.Find(jobstext)
+		if(!jobs.Find(jobstext))
+			log_runtime("RUNTIME: UNABLE TO FIND '[J.title]' INSIDE OF '[global.config.directory]/jobs.txt'")
+			continue
+		// Skyrat Edit End
 		J.total_positions = text2num(jobs.group[1])
 		J.spawn_positions = text2num(jobs.group[2])
 

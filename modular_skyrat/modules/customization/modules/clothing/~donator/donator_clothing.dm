@@ -416,6 +416,58 @@
 /obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
 	adjustmask(user)
 
+//Donation reward for TheOOZ
+/obj/item/clothing/mask/kindle
+	name = "mask of Kindle"
+	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material feels like it's made entirely out of inexpensive plastic."
+	actions_types = list(/datum/action/item_action/adjust)
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	icon_state = "kindle"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	inhand_icon_state = "kindle"
+	mutant_variants = NONE
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
+	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/clothing/mask/kindle/ui_action_click(mob/user, action)
+	adjustmask(user)
+
+/obj/item/clothing/mask/kindle/Initialize()
+	. = ..()
+	AddComponent(/datum/component/knockoff,50,list(BODY_ZONE_HEAD),list(ITEM_SLOT_MASK))
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/item/clothing/mask/kindle/proc/on_entered(datum/source, atom/movable/movable)
+	SIGNAL_HANDLER
+	if(damaged_clothes == CLOTHING_SHREDDED)
+		return
+	if(isliving(movable))
+		var/mob/living/crusher = movable
+		if(crusher.m_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & (FLYING|FLOATING)) || crusher.buckled))
+			playsound(src, 'modular_skyrat/master_files/sound/effects/plastic_crush.ogg', 75)
+			visible_message(span_warning("[crusher] steps on the [src], crushing it with ease."))
+			take_damage(200, sound_effect = FALSE)
+
+/obj/item/clothing/mask/kindle/obj_destruction(damage_flag)
+	. = ..()
+	name = "broken mask of Kindle"
+	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
+	icon_state = "kindle_broken"
+	inhand_icon_state = "kindle_broken"
+
+/obj/item/clothing/mask/kindle/repair()
+	. = ..()
+	name = "mended mask of Kindle"
+	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material seems extra flimsy, like it has recently been repaired in a hurry."
+	icon_state = "kindle"
+	inhand_icon_state = "kindle"
+
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
 	name = "skull of an ashdrake"
@@ -794,6 +846,25 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "hepbelt"
 	worn_icon_state = "hepbelt"
+
+// Donation reward for CandleJax
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax
+	name = "Emission's Helmet"
+	desc = "A special containment helmet designed for heavy usage Multiple dings and notches are on this one."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "emissionhelm"
+	inhand_icon_state = "emissionhelm"
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, RAD = 0, FIRE = 100, ACID = 75, WOUND = 10)
+
+// Donation reward for CandleJax
+/obj/item/clothing/under/plasmaman/security/candlejax
+	name = "Emission's Containment Suit"
+	desc = "A special containment envirosuit designed for abnormally heated plasmafires This one seems highly customized."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "emissionsuit"
+	inhand_icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax

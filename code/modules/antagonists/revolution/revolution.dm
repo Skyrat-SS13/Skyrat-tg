@@ -11,6 +11,7 @@
 	antag_moodlet = /datum/mood_event/revolution
 	antag_hud_type = ANTAG_HUD_REV
 	antag_hud_name = "rev"
+	suicide_cry = "VIVA LA REVOLUTION!!"
 	var/datum/team/revolution/rev_team
 	///when this antagonist is being de-antagged, this is why
 	var/deconversion_reason
@@ -23,6 +24,10 @@
 	if(.)
 		if(new_owner.assigned_role in GLOB.command_positions)
 			return FALSE
+		//SKYRAT EDIT ADDITION
+		if(new_owner.assigned_role in GLOB.central_command_positions)
+			return FALSE
+		//SKYRAT EDIT ADDITION
 		if(new_owner.unconvertable)
 			return FALSE
 		if(new_owner.current && HAS_TRAIT(new_owner.current, TRAIT_MINDSHIELD))
@@ -416,7 +421,7 @@
 			if (isnull(mind))
 				continue
 
-			if (!(mind.assigned_role in GLOB.command_positions + GLOB.security_positions))
+			if (!(mind.assigned_role in GLOB.command_positions + GLOB.security_positions + GLOB.central_command_positions)) //SKYRAT EDIT CHANGE
 				continue
 
 			if (mind in ex_revs + ex_headrevs)
@@ -434,7 +439,7 @@
 			else
 				mind.announce_objectives()
 
-		for (var/job_name in GLOB.command_positions + GLOB.security_positions)
+		for (var/job_name in GLOB.command_positions + GLOB.security_positions + GLOB.central_command_positions) //SKYRAT EDIT CHANGE
 			var/datum/job/job = SSjob.GetJob(job_name)
 			job.allow_bureaucratic_error = FALSE
 			job.total_positions = 0
