@@ -286,6 +286,11 @@
 	var/color = input(owner, "Select Color", "Select color", "#ffffff") as color|null
 	if(!color || QDELETED(src) || QDELETED(user) || QDELETED(owner) || owner != user)
 		return
+	//121
+	if(color_hex2num(color) < 200) //Colors too dark are rejected
+		to_chat(user, span_warning("That color is too dark! Choose a lighter one."))
+		color = null
+
 	var/range = input(user, "Enter range (0 - [max_light_beam_distance])", "Range Select", 0) as null|num
 	var/old_active = active // Get old active because set_distance() -> clear_visuals()  will set it to FALSE.
 	set_distance(clamp(range, 0, max_light_beam_distance))
