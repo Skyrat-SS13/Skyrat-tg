@@ -1,3 +1,5 @@
+#define NEST_FACTION "nest spawned"
+
 /obj/structure/mob_spawner
 	name = "nest"
 	desc = "A nasty looking pile of sticks and debris."
@@ -15,22 +17,22 @@
 	var/list/var/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	/// How many mobs can we spawn?
 	var/max_mobs = 3
-	var/list/faction = list("nest spawned")
+	var/list/faction = list(NEST_FACTION)
 	var/spawned_mobs = 0
 	/// How long it takes for a new mob to emerge after being triggered.
 	var/spawn_cooldown = 30 SECONDS
 	/// How long it takes to regenerate mobs to spawn again
-	var/regenerate_time = 15 MINUTES
+	var/regenerate_time = 20 MINUTES
 	var/retaliated = FALSE
 	/// How long it takes for us to retaliate again.
-	var/retaliate_cooldown = 15 SECONDS
+	var/retaliate_cooldown = 20 SECONDS
 	var/list/registered_turfs = list()
 	/// What loot do we spawn upon death?
 	var/list/loot = list()
 
 /obj/structure/mob_spawner/Initialize()
 	. = ..()
-	for(var/turf/open/seen_turf in view(7, src))
+	for(var/turf/open/seen_turf in view(5, src))
 		registered_turfs += seen_turf
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
@@ -65,7 +67,7 @@
 
 	var/mob/living/entered_mob = AM
 
-	if(entered_mob.faction in faction)
+	if((NEST_FACTION in entered_mob.faction))
 		return
 
 	var/sound/sound_to_play = pick('modular_skyrat/master_files/sound/effects/rustle1.ogg', 'modular_skyrat/master_files/sound/effects/rustle2.ogg')
@@ -74,15 +76,18 @@
 
 	do_squish(0.8, 1.2)
 
+	spawned_mobs++
+
 	var/chosen_mob_type = pick(monster_types)
 	var/mob/living/simple_animal/L = new chosen_mob_type(loc)
 	L.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
-	spawned_mobs++
+
 	L.faction = faction
 
 	visible_message(span_danger("[L] emerges from [src]."))
 
-	addtimer(CALLBACK(src, .proc/regenerate_mobs), regenerate_time)
+	if(spawned_mobs >= max_mobs)
+		addtimer(CALLBACK(src, .proc/regenerate_mobs), regenerate_time)
 
 /obj/structure/mob_spawner/proc/regenerate_mobs()
 	visible_message(span_danger("[src] contorts and wriggles!"))
@@ -104,16 +109,6 @@
 	visible_message(span_danger("[src] calms down."))
 
 ///////////// CUSTOM SPAWNERS
-/obj/structure/mob_spawner/swarmers
-	name = "broken metal heap"
-	desc = "A heap of broken metal... it's moving."
-	icon_state = "nest_swarmer"
-	light_color = LIGHT_COLOR_BLUE
-	monster_types = list(/mob/living/simple_animal/hostile/swarmer/ai/resource)
-	loot = list(/obj/item/stack/sheet/bluespace_crystal/five, /obj/item/stack/sheet/mineral/diamond)
-
-/obj/item/stack/sheet/bluespace_crystal/five
-	amount = 5
 
 /obj/structure/mob_spawner/spiders
 	name = "sticky cobwebs"
@@ -145,7 +140,7 @@
 	light_color = LIGHT_COLOR_GREEN
 	monster_types = list(/mob/living/simple_animal/hostile/killertomato)
 	loot = list(/obj/item/seeds/random = 3)
-	max_mobs = 8
+	max_mobs = 6
 
 /obj/structure/mob_spawner/beehive
 	name = "beehive"
@@ -153,8 +148,8 @@
 	icon_state = "nest_bee"
 	light_color = LIGHT_COLOR_YELLOW
 	monster_types = list(/mob/living/simple_animal/hostile/bee)
-	max_mobs = 20
-	spawn_cooldown = 2 SECONDS
+	max_mobs = 15
+	spawn_cooldown = 5 SECONDS
 	loot = list(/obj/item/reagent_containers/honeycomb = 5, /obj/item/queen_bee)
 	var/swarmed = FALSE
 
@@ -175,18 +170,14 @@
 	max_mobs = 6
 	color = LIGHT_COLOR_ELECTRIC_GREEN
 
-/obj/structure/mob_spawner/headcrab
+/obj/structure/mob_spawner/snake
 	name = "disgusting eggs"
 	desc = "These pulsating eggs are oozing out a puss like substance..."
 	icon_state = "nest_eggs"
 	light_color = LIGHT_COLOR_YELLOW
-	monster_types = list(/mob/living/simple_animal/hostile/headcrab/innate)
-	max_mobs = 10
+	monster_types = list(/mob/living/simple_animal/hostile/retaliate/snake)
+	max_mobs = 8
 	spawn_cooldown = 5 SECONDS
-	loot = list(/obj/item/fish = 5)
-
-/mob/living/simple_animal/hostile/headcrab/innate/Infect(mob/living/carbon/victim)
-	return
 
 /obj/structure/mob_spawner/rats
 	name = "nasty nest"
@@ -204,7 +195,7 @@
 	icon_state = "nest_grapes"
 	light_color = LIGHT_COLOR_PURPLE
 	monster_types = list(/mob/living/simple_animal/hostile/ooze/grapes)
-	loot = list(/obj/item/food/grown/berries/glow = 10)
+	loot = list(/obj/item/resurrection_crystal)
 
 /obj/structure/mob_spawner/grapes/obj_destruction(damage_flag)
 	if(loot)

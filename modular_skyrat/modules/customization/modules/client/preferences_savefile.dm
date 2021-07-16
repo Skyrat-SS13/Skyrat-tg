@@ -206,8 +206,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["menuoptions"], menuoptions)
 	READ_FILE(S["enable_tips"], enable_tips)
 	READ_FILE(S["tip_delay"], tip_delay)
-	READ_FILE(S["pda_style"], pda_style)
-	READ_FILE(S["pda_color"], pda_color)
 
 	// Custom hotkeys
 	READ_FILE(S["key_bindings"], key_bindings)
@@ -271,8 +269,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	menuoptions = SANITIZE_LIST(menuoptions)
 	be_special = SANITIZE_LIST(be_special)
 	brief_outfit = sanitize_inlist(brief_outfit, subtypesof(/datum/outfit), null)
-	pda_style = sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
-	pda_color = sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
 	announcement_volume = sanitize_integer(announcement_volume, 1, 100, initial(announcement_volume))
@@ -351,8 +347,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["menuoptions"], menuoptions)
 	WRITE_FILE(S["enable_tips"], enable_tips)
 	WRITE_FILE(S["tip_delay"], tip_delay)
-	WRITE_FILE(S["pda_style"], pda_style)
-	WRITE_FILE(S["pda_color"], pda_color)
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["hearted_until"], (hearted_until > world.realtime ? hearted_until : null))
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
@@ -439,6 +433,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["playtime_reward_cloak"], playtime_reward_cloak)
 	READ_FILE(S["phobia"], phobia)
 	READ_FILE(S["randomise"],  randomise)
+	READ_FILE(S["pda_style"], pda_style)
+	READ_FILE(S["pda_ringer"], pda_ringer)
+	READ_FILE(S["pda_color"], pda_color)
 	/*READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
 	READ_FILE(S["feature_lizard_tail"], features["tail_lizard"])
@@ -524,6 +521,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	jumpsuit_style = sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	playtime_reward_cloak = sanitize_integer(playtime_reward_cloak)
+	pda_style = sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
+	pda_ringer = sanitize_text(pda_ringer, initial(pda_ringer))
+	pda_color = sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	/*features["mcolor"] = sanitize_hexcolor(features["mcolor"], 3, 0) SKYRAT EDIT
 	features["ethcolor"] = copytext_char(features["ethcolor"], 1, 7)
 	features["tail_lizard"] = sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
@@ -766,6 +766,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["undershirt_color"], undershirt_color)
 	WRITE_FILE(S["socks_color"], socks_color)
+
+	WRITE_FILE(S["pda_style"], pda_style)
+	WRITE_FILE(S["pda_ringer"], pda_ringer)
+	WRITE_FILE(S["pda_color"], pda_color)
 
 	WRITE_FILE(S["pref_culture"] , pref_culture)
 	WRITE_FILE(S["pref_location"] , pref_location)

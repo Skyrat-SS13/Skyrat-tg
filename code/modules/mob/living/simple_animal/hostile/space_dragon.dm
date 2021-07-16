@@ -33,6 +33,7 @@
 	health = 550 //SKYRAT EDIT ORIGINAL VAL (400) - Space dragon rebalance
 	combat_mode = TRUE
 	speed = 0
+	movement_type = FLYING
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomp"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
@@ -674,6 +675,7 @@
 		return FALSE
 	var/mob/living/simple_animal/hostile/carp/newcarp = new /mob/living/simple_animal/hostile/carp(loc)
 	newcarp.key = user.key
+	newcarp.set_name()
 	var/datum/antagonist/space_dragon/S = dragon.mind.has_antag_datum(/datum/antagonist/space_dragon)
 	if(S)
 		S.carp += newcarp.mind

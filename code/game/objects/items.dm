@@ -241,10 +241,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		qdel(X)
 	return ..()
 
-/*
- * Adds the weapon_description element, which shows the warning label for especially dangerous objects.
- * Made to be overridden by item subtypes that require specific notes outside of the scope of offensive_notes
- */
+/// Adds the weapon_description element, which shows the 'warning label' for especially dangerous objects. Override this for item types with special notes.
 /obj/item/proc/add_weapon_description()
 	AddElement(/datum/element/weapon_description)
 
@@ -1125,7 +1122,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			return
 		source_item?.reagents?.add_reagent(/datum/reagent/blood, 2)
 
-	else if(custom_materials && custom_materials.len) //if we've got materials, lets see whats in it
+	else if(custom_materials?.len) //if we've got materials, lets see whats in it
 		/// How many mats have we found? You can only be affected by two material datums by default
 		var/found_mats = 0
 		/// How much of each material is in it? Used to determine if the glass should break

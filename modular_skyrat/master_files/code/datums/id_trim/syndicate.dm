@@ -77,6 +77,7 @@
 /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
 	assignment = "Deck Officer"
 	trim_state = "trim_deckofficer"
+	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
 
 ///Misc
 

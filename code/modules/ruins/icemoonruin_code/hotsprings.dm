@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(cursed_minds)
 	planetary_atmos = TRUE
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
-/turf/open/water/cursed_spring/Entered(atom/movable/arrived, direction)
+/turf/open/water/cursed_spring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
 	if(!isliving(arrived))
 		return
@@ -42,7 +42,7 @@ GLOBAL_LIST_EMPTY(cursed_minds)
 					all_species += stype
 			var/random_race = pick(all_species)
 			H.set_species(random_race)
-			H.dna.unique_enzymes = H.dna.generate_unique_enzymes()
+			H.dna.update_dna_identity()
 			L = H
 	var/turf/T = find_safe_turf()
 	L.forceMove(T)

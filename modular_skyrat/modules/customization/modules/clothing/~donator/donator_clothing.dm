@@ -737,6 +737,14 @@
 	flags_inv = null
 	mutant_variants = NONE
 
+//Donation reward for Lyricalpaws
+/obj/item/clothing/neck/cloak/healercloak
+	name = "legendary healer's cloak"
+	desc = "Worn by the most skilled professional medics on the station, this legendary cloak is only attainable by becoming the pinnacle of healing. This status symbol represents the wearer has spent countless years perfecting their craft of helping the sick and wounded."
+	icon_state = "healercloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+
 //Donation reward for Kathrin Bailey / Floof Ball
 /obj/item/clothing/under/custom/lannese
 	name = "Lannese Dress"
@@ -846,6 +854,25 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "hepbelt"
 	worn_icon_state = "hepbelt"
+
+// Donation reward for CandleJax
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax
+	name = "Emission's Helmet"
+	desc = "A special containment helmet designed for heavy usage Multiple dings and notches are on this one."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "emissionhelm"
+	inhand_icon_state = "emissionhelm"
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, RAD = 0, FIRE = 100, ACID = 75, WOUND = 10)
+
+// Donation reward for CandleJax
+/obj/item/clothing/under/plasmaman/security/candlejax
+	name = "Emission's Containment Suit"
+	desc = "A special containment envirosuit designed for abnormally heated plasmafires This one seems highly customized."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "emissionsuit"
+	inhand_icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax
