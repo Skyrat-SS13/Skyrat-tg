@@ -33,17 +33,33 @@ All ShuttleMove procs go here
 				M.stop_pulling()
 				M.visible_message(span_warning("[shuttle] slams into [M]!"))
 				SSblackbox.record_feedback("tally", "shuttle_gib", 1, M.type)
-				log_attack("[key_name(M)] was shuttle gibbed by [shuttle].")
-				M.gib()
+				log_attack("[key_name(M)] was brutally shunted by [shuttle].") //SKYRAT EDIT CHANGE
+				//SKYRAT EDIT ADDITION BEGIN
+				var/mob/living/collided = M
+				to_chat(collided, "<span class='userdanger'>[shuttle] collides into you!</span>")
+				playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
+				var/damage = rand(5,10)
+				collided.apply_damage(2*damage, BRUTE, BODY_ZONE_HEAD)
+				collided.apply_damage(2*damage, BRUTE, BODY_ZONE_CHEST)
+				collided.apply_damage(0.5*damage, BRUTE, BODY_ZONE_L_LEG)
+				collided.apply_damage(0.5*damage, BRUTE, BODY_ZONE_R_LEG)
+				collided.apply_damage(0.5*damage, BRUTE, BODY_ZONE_L_ARM)
+				collided.apply_damage(0.5*damage, BRUTE, BODY_ZONE_R_ARM)
 
+				if(QDELETED(collided)) //in case it was a mob that dels on death
+					continue
 
-		else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
-			if(istype(thing, /obj/singularity) || istype(thing, /obj/energy_ball))
-				continue
-			if(!thing.anchored)
-				step(thing, shuttle_dir)
-			else
-				qdel(thing)
+				collided.throw_at()
+				var/atom/throw_target = get_edge_target_turf(collided, turn(shuttle_dir, pick(45, -45)))
+				collided.throw_at(throw_target, 200, 4)
+				//SKYRAT EDIT END
+			else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
+				if(istype(thing, /obj/singularity) || istype(thing, /obj/energy_ball))
+					continue
+				if(!thing.anchored)
+					step(thing, shuttle_dir)
+				else
+					qdel(thing)
 
 // Called on the old turf to move the turf data
 /turf/proc/onShuttleMove(turf/newT, list/movement_force, move_dir)

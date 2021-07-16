@@ -258,6 +258,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 		return
 
 	else
+	/* SKYRAT EDIT CHANGE
 		audible_message(span_hear("You hear a roar as the crematorium activates."))
 
 		locked = TRUE
@@ -288,6 +289,8 @@ GLOBAL_LIST_EMPTY(crematoriums)
 			locked = FALSE
 			update_appearance()
 			playsound(src.loc, 'sound/machines/ding.ogg', 50, TRUE) //you horrible people
+		*/
+		start_cremation() //SKYRAT EDIT CHANGE
 
 /obj/structure/bodycontainer/crematorium/creamatorium
 	name = "creamatorium"
