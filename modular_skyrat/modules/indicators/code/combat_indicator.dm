@@ -74,12 +74,6 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 /datum/emote/living/surrender
 	message = "drops to the floor and raises their hands defensively! They surrender%s!"
 
-/atom/movable/screen/alert/status_effect/surrender/Click(location, control, params)
-	. = ..()
-	if(!.)
-		return
-	owner.emote("surrender")
-
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && isliving(user))
