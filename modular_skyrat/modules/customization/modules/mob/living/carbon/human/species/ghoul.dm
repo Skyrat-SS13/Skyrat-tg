@@ -2,7 +2,7 @@
 	name = "Ghoul"
 	id = "ghoul"
 	limbs_id = "ghoul"
-	say_mod = "gurgles"
+	say_mod = "rasps"
 	sexes = FALSE
 	default_color = "c4af7c"
 	species_traits = list(NOEYESPRITES, DYNCOLORS, AGENDER, HAS_FLESH, HAS_BONE)
