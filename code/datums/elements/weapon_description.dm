@@ -82,12 +82,12 @@
 	if(!source.override_notes)
 		// Make sure not to divide by 0 on accident
 		if(source.force > 0)
-			readout += "Our extensive research has shown that it takes a mere [span_warning("[round((100 / source.force), 0.1)]")] hit\s to beat down [victims[rand(1, victims.len)]] with no armor."
+			readout += "Our extensive research has shown that it takes a mere [span_warning("[round((130 / source.force), 0.1)]")] hit\s to beat down [victims[rand(1, victims.len)]] with no armor." //Skyrat Edit. Fixes examine.
 		else
 			readout += "Our extensive research found that you couldn't beat anyone to death with this if you tried."
 
 		if(source.throwforce > 0)
-			readout += "If you decide to throw this object instead, one will take [span_warning("[round((100 / source.throwforce), 0.1)]")] hit\s before collapsing."
+			readout += "If you decide to throw this object instead, one will take [span_warning("[round((130 / source.throwforce), 0.1)]")] hit\s before collapsing." //Skyrat edit - Fixes examine
 		else
 			readout += "If you decide to throw this object instead, then you will have trouble damaging anything."
 		if(source.armour_penetration > 0 || source.block_chance > 0)

@@ -73,9 +73,9 @@
 		var/list/readout = list("")
 		// No dividing by 0
 		if(loaded_projectile.damage > 0)
-			readout += "Most monkeys our legal team subjected to these rounds succumbed to their wounds after [span_warning("[round(100 / (loaded_projectile.damage * pellets), 0.1)]")] discharge\s at point-blank, taking [span_warning("[pellets]")] shot\s per round"
+			readout += "Most monkeys our legal team subjected to these rounds succumbed to their wounds after [span_warning("[round(130 / (loaded_projectile.damage * pellets), 0.1)]")] discharge\s at point-blank, taking [span_warning("[pellets]")] shot\s per round" //Skyrat Edit
 		if(loaded_projectile.stamina > 0)
-			readout += "[loaded_projectile.damage == 0 ? "Most Monkeys" : "More Fortunate Monkeys" ] collapsed from exhaustion after [span_warning("[round(100 / ((loaded_projectile.damage + loaded_projectile.stamina) * pellets), 0.1)]")] of these rounds"
+			readout += "[loaded_projectile.damage == 0 ? "Most Monkeys" : "More Fortunate Monkeys" ] collapsed from exhaustion after [span_warning("[round(130 / ((loaded_projectile.damage + loaded_projectile.stamina) * pellets), 0.1)]")] of these rounds" //Skyrat Edit
 		if(loaded_projectile.damage == 0 && loaded_projectile.stamina == 0)
 			return "Our legal team has determined the offensive nature of these rounds to be esoteric"
 		return readout.Join("\n") // Sending over a single string, rather than the whole list
