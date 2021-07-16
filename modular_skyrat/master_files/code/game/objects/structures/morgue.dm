@@ -33,6 +33,9 @@
 	var/alive_mobs = 0
 	for(var/mob/living/M in conts)
 		if(M.stat == DEAD)
+			if(ishuman(M))
+				var/mob/living/carbon/human/departed_soul = M
+				departed_soul.become_husk(src)
 			continue
 		alive_mobs++
 		if(ishuman(M))
@@ -47,8 +50,8 @@
 				qdel(bodypart)
 				return
 			bodypart.receive_damage(burn = 30)
-			burning_soul.update_body_parts()
-			to_chat(burning_soul, span_userdanger("Your body charred by the raging inferno!"))
+			burning_soul.update_damage_overlays()
+			to_chat(burning_soul, span_userdanger("Your body is charred by the raging inferno!"))
 		else
 			M.adjustFireLoss(30)
 		M.emote("scream")
