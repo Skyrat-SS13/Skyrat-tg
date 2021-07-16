@@ -60,7 +60,7 @@
 //X-Stand code here//
 /////////////////////
 
-/obj/structure/bed/x_stand
+/obj/structure/chair/x_stand
 	name = "x stand"
 	desc = "Why you even call it X stand? It doesn't even in X form. Anyway you can buckle someone to it"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
@@ -72,17 +72,15 @@
 	var/list/stand_states = list("open" = "close", "close" = "open")
 	var/state_thing = "open"
 	var/static/mutable_appearance/xstand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi', "xstand_overlay", LYING_MOB_LAYER)
-	buckle_lying = NO_BUCKLE_LYING //We no need mob lying
 	var/mob/living/carbon/human/current_mob = null
 
 //to make it have model when we constructing the thingy
-/obj/structure/bed/x_stand/Initialize()
+/obj/structure/chair/x_stand/Initialize()
 	. = ..()
 	update_icon_state()
 	update_icon()
-	START_PROCESSING(SSobj, src)
 
-/obj/structure/bed/x_stand/Destroy()
+/obj/structure/chair/x_stand/Destroy()
 	. = ..()
 	if(current_mob)
 		if(current_mob.handcuffed)
@@ -90,14 +88,13 @@
 		current_mob.set_handcuffed(null)
 		current_mob.update_abstract_handcuffed()
 	unbuckle_all_mobs(TRUE)
-	STOP_PROCESSING(SSobj, src)
 
-/obj/structure/bed/x_stand/update_icon_state()
+/obj/structure/chair/x_stand/update_icon_state()
     . = ..()
     icon_state = "[initial(icon_state)]_[stand_state? "open" : "close"]"
 
 //X-Stand LBM interaction handler
-/obj/structure/bed/x_stand/attack_hand(mob/living/user)
+/obj/structure/chair/x_stand/attack_hand(mob/living/user)
 	var/mob/living/M = locate() in src.loc
 	// X-Stand is empty?
 	if(!has_buckled_mobs())
@@ -118,12 +115,22 @@
 		user_unbuckle_mob(buckled_mob, user)
 
 
+// Object cannot rotate
+/obj/structure/chair/x_stand/can_be_rotated(mob/user)
+	return FALSE
+// User cannot rotate the object
+/obj/structure/chair/x_stand/can_user_rotate(mob/user)
+	return FALSE
+// Another plug to disable rotation
+/obj/structure/chair/x_stand/milking_machine/attack_tk(mob/user)
+	return FALSE
+
 // Handler for attempting to unbukle a mob from a X-Stand
-/obj/structure/bed/x_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
+/obj/structure/chair/x_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	// Let's make sure that the X-Stand is in the correct state
 	if(stand_state == "open")
 		toggle_mode(user)
-	var/mob/living/M = buckled_mob
+	var/mob/living/M = unbuckle_mob(buckled_mob)
 	if(M)
 		if(M != user)
 			if(!do_after(user, 5 SECONDS, M)) // Timer for unbuckling one mob with another mob
@@ -142,12 +149,11 @@
 		if(isliving(M.pulledby))
 			var/mob/living/L = M.pulledby
 			L.set_pull_offsets(M, L.grab_state)
-		unbuckle_mob(buckled_mob)
 		toggle_mode(user)
 	return M
 
 // Handler for attempting to buckle a mob into a X-Stand
-/obj/structure/bed/x_stand/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
+/obj/structure/chair/x_stand/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	// Let's make sure that the X-Stand is in the correct state
 	if(stand_state == "close")
 		toggle_mode(user)
@@ -162,6 +168,9 @@
 	// we'll try it with a 2 second do_after delay.
 	if(M != user)
 		// Place to describe an attempt to buckle a mob
+		M.visible_message(span_warning("[user] starts buckling [M] to [src]!"),\
+			span_userdanger("[user] starts buckling you to [src]!"),\
+			span_hear("You hear metal clanking."))
 		if(!do_after(user, 5 SECONDS, M)) // Timer to buckle one mob by another
 			// Place to describe a failed buckling attempt
 			return FALSE
@@ -172,12 +181,13 @@
 			// A place to report the inability to buckle a mob
 			return FALSE
 
-		// Description of a successful attempt to buckle a mob by another mob
-		M.visible_message("<span class='warning'>[user] starts buckling [M] to [src]!</span>",\
-			"<span class='userdanger'>[user] starts buckling you to [src]!</span>",\
-			"<span class='hear'>You hear metal clanking.</span>")
+
 		// Place to insert a description of a successful attempt for a user mob
-		buckle_mob(M, check_loc = check_loc)
+		if(buckle_mob(M, check_loc = check_loc))
+			// Description of a successful attempt to buckle a mob by another mob
+			M.visible_message("<span class='warning'>[user] starts buckling [M] to [src]!</span>",\
+				"<span class='userdanger'>[user] starts buckling you to [src]!</span>",\
+				"<span class='hear'>You hear metal clanking.</span>")
 		toggle_mode(user)
 
 	else
@@ -191,13 +201,13 @@
 			// Place to report the inability to buckle
 			return FALSE
 
-		user.visible_message("<span class='warning'>You buckles yourself to [src]!</span>",\
-			"<span class='hear'>You hear metal clanking.</span>")
-		buckle_mob(M, check_loc = check_loc)
+		if(buckle_mob(M, check_loc = check_loc))
+			user.visible_message("<span class='warning'>You buckles yourself to [src]!</span>",\
+				"<span class='hear'>You hear metal clanking.</span>")
 		toggle_mode(user)
 
 // X-Stand state switch processing
-/obj/structure/bed/x_stand/proc/toggle_mode(mob/user)
+/obj/structure/chair/x_stand/proc/toggle_mode(mob/user)
 	state_thing = stand_states[state_thing]
 	switch(state_thing)
 		if("open")
@@ -212,12 +222,12 @@
 	playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
 
 // Machine deconstruction process handler
-/obj/structure/bed/x_stand/deconstruct()
+/obj/structure/chair/x_stand/deconstruct()
 	qdel(src)
 	return TRUE
 
 //Place the mob in the desired position after buckling
-/obj/structure/bed/x_stand/post_buckle_mob(mob/living/M)
+/obj/structure/chair/x_stand/post_buckle_mob(mob/living/M)
 	M.pixel_y = M.base_pixel_y
 	M.pixel_x = M.base_pixel_x
 	M.layer = BELOW_MOB_LAYER
@@ -237,7 +247,7 @@
 		current_mob.update_abstract_handcuffed()
 
 //Restore the position of the mob after unbuckling.
-/obj/structure/bed/x_stand/post_unbuckle_mob(mob/living/M)
+/obj/structure/chair/x_stand/post_unbuckle_mob(mob/living/M)
 	M.pixel_x = M.base_pixel_x + M.body_position_pixel_x_offset
 	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
 	M.layer = initial(M.layer)
@@ -269,14 +279,14 @@
 			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor.</span>")
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
 				to_chat(user, "<span class='notice'>You construct the x-stand!</span>")
-				var/obj/structure/bed/x_stand/C = new
+				var/obj/structure/chair/x_stand/C = new
 				C.loc = loc
 				qdel(src)
 			return
 	else
 		return ..()
 
-/obj/structure/bed/x_stand/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
+/obj/structure/chair/x_stand/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		to_chat(user, "<span class='notice'>You start to unfastening the frame of x-stand...</span>")
