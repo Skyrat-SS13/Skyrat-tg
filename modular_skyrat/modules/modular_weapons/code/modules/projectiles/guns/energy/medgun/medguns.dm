@@ -20,7 +20,7 @@
 	. = ..()
 	if(maxcells)
 		. += "<b>[cellcount]</b> out of <b>[maxcells]</b> cell slots are filled."
-		. += span_info("You can use right click with an empty hand to remove the most recently inserted Medicell from the chamber.")
+		. += span_info("You can use AltClick with an empty hand to remove the most recently inserted Medicell from the chamber.")
 		for(var/cell in installedcells)
 			var/obj/item/medicell/medicell = cell
 			. += span_notice("There is \a [medicell] loaded in the chamber.")
@@ -197,7 +197,7 @@
 	else
 		..()
 
-/obj/item/gun/energy/medigun/attack_hand_secondary(mob/user, modifiers)
+/obj/item/gun/energy/medigun/AltClick(mob/user, modifiers)
 	if(cellcount >= 1)
 		to_chat(user, span_notice("You remove a cell"))
 		var/obj/item/last_cell = installedcells[installedcells.len]
