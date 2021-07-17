@@ -21,6 +21,11 @@
 	on_toggle(user, toggle_active)
 	update_appearance()
 
+/obj/item/clothing/toggle/Initialize()
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	InitializeActions()
+
 /obj/item/clothing/toggle/Destroy()
 	toggle_active = FALSE
 	if(ismob(loc))
