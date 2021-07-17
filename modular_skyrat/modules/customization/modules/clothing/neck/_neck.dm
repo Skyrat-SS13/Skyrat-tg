@@ -6,7 +6,7 @@
 	desc = "The necktie is adorned with a garish pattern. It's disturbingly vivid. Somehow you feel as if it would be wrong to ever take it off. It's your friend now. You will betray it if you change it for some boring scarf."
 
 togglename = null
-var/src.necktoggled
+var/necktoggled
 
 
 /obj/item/clothing/neck/toggle/AltClick(mob/user)
@@ -26,12 +26,12 @@ var/src.necktoggled
 		return 0
 
 	to_chat(usr, span_notice("You toggle [src]'s [togglename]."))
-	if(src.necktoggled)
+	if(necktoggled)
 		src.icon_state = "[initial(icon_state)]"
-		src.necktoggled = FALSE
-	else if(!src.necktoggled)
+		necktoggled = FALSE
+	else if(!necktoggled)
 		src.icon_state = "[initial(icon_state)]_t"
-		src.necktoggled = TRUE
+		necktoggled = TRUE
 	usr.update_inv_wear_neck()
 	for(var/X in actions)
 		var/datum/action/A = X
