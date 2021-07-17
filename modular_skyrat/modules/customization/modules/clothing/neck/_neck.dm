@@ -31,7 +31,7 @@ var/necktoggled
 		necktoggled = FALSE
 	else if(!necktoggled)
 		src.icon_state = "[initial(icon_state)]_t"
-		src.necktoggled = TRUE
+		necktoggled = TRUE
 	usr.update_inv_wear_neck()
 	for(var/X in actions)
 		var/datum/action/A = X
