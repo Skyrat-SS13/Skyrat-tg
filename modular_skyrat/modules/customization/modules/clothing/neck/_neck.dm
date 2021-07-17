@@ -5,9 +5,8 @@
 	icon_state = "eldritch_tie"
 	desc = "The necktie is adorned with a garish pattern. It's disturbingly vivid. Somehow you feel as if it would be wrong to ever take it off. It's your friend now. You will betray it if you change it for some boring scarf."
 
-var/togglename
+togglename
 var/necktoggled
-var/mob/living/carbon/piss = usr
 
 
 /obj/item/clothing/neck/toggle/AltClick(mob/user)
@@ -33,7 +32,7 @@ var/mob/living/carbon/piss = usr
 	else if(!necktoggled)
 		src.icon_state = "[initial(icon_state)]_t"
 		necktoggled = TRUE
-	piss.update_inv_wear_neck()
+	usr.update_inv_wear_neck()
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
