@@ -29,7 +29,7 @@ var/necktoggled
 	if(necktoggled)
 		src.icon_state = "[initial(icon_state)]"
 		src.necktoggled = FALSE
-	else if(!src.necktoggled)
+	else if(!necktoggled)
 		src.icon_state = "[initial(icon_state)]_t"
 		src.necktoggled = TRUE
 	usr.update_inv_wear_neck()
