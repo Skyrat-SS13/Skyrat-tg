@@ -41,7 +41,7 @@
 
 /datum/loadout_item/neck/poncxhocowbot
 	name = "Green cowboy poncho"
-	path =/obj/item/clothing/neck/toggle/cowboylea
+	path =/obj/item/clothing/toggle/cowboylea
 
 /datum/loadout_item/neck/crosscollar
 	name = "Cross collar"
