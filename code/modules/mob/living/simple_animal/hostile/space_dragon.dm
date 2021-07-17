@@ -33,6 +33,7 @@
 	health = 550 //SKYRAT EDIT ORIGINAL VAL (400) - Space dragon rebalance
 	combat_mode = TRUE
 	speed = 0
+	movement_type = FLYING
 	attack_verb_continuous = "chomps"
 	attack_verb_simple = "chomp"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
