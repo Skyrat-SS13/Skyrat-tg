@@ -7,6 +7,7 @@
 
 var/togglename
 var/necktoggled
+var/mob/living/carbon/piss = usr
 
 
 /obj/item/clothing/neck/toggle/AltClick(mob/user)
@@ -32,7 +33,7 @@ var/necktoggled
 	else if(!necktoggled)
 		src.icon_state = "[initial(icon_state)]_t"
 		necktoggled = TRUE
-	usr.update_inv_wear_neck()
+	piss.update_inv_wear_neck()
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
