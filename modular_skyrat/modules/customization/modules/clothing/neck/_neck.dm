@@ -32,7 +32,7 @@
 	else if(!necktoggled)
 		src.icon_state = "[initial(icon_state)]_t"
 		necktoggled = TRUE
-	usr.update_inv_wear_neck()
+	usr.update_inv_neck()
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.UpdateButtonIcon()

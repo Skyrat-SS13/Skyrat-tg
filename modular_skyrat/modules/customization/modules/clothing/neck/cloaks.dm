@@ -22,3 +22,4 @@
 	mutant_variants = NONE
 	heat_protection = CHEST
 	togglename = "cloak"
+
