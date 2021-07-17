@@ -1,8 +1,8 @@
 //"Don't leave food on the floor, that's how we get ants"
 
-#define DECOMPOSITION_TIME 10 MINUTES
-#define DECOMPOSITION_TIME_RAW 5 MINUTES
-#define DECOMPOSITION_TIME_GROSS 7 MINUTES
+#define DECOMPOSITION_TIME 30 MINUTES //SKYRAT CHANGE, INCREASED TIME
+#define DECOMPOSITION_TIME_RAW 15 MINUTES //SKYRAT CHANGE, INCREASED TIME
+#define DECOMPOSITION_TIME_GROSS 10 MINUTES //SKYRAT CHANGE, INCREASED TIME
 
 #define DECOMP_EXAM_NORMAL 0
 #define DECOMP_EXAM_GROSS 1
@@ -73,6 +73,11 @@
 	if(locate(/obj/machinery/conveyor) in get_turf(food)) // Makes sure no decals spawn on disposals conveyors
 		remove_timer()
 		return
+	//SKYRAT CHANGE, ADDS CRATES/LOCKERS/CLOSETS
+	if(locate(/obj/structure/closet) in get_turf(food))
+		remove_timer()
+		return
+	//SKYRAT CHANGE END.
 	// If all other checks fail, then begin decomposition.
 	timerid = addtimer(CALLBACK(src, .proc/decompose), time_remaining, TIMER_STOPPABLE | TIMER_UNIQUE)
 
@@ -101,7 +106,7 @@
 	var/obj/decomp = parent //Lets us spawn things at decomp
 	new /obj/effect/decal/cleanable/ants(decomp.loc)
 	new /obj/item/food/badrecipe/moldy(decomp.loc)
-	decomp.visible_message("<span class='notice'>[decomp] gets overtaken by mold and ants! Gross!</span>")
+	decomp.visible_message("<span class='warning'>[decomp] gets overtaken by mold and ants! Gross!</span>") //SKYRAT CHANGE, NOTICE TO WARNING
 	qdel(decomp)
 	return
 
