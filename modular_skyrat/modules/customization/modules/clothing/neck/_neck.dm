@@ -28,7 +28,7 @@ var/necktoggled
 	to_chat(usr, span_notice("You toggle [src]'s [togglename]."))
 	if(necktoggled)
 		src.icon_state = "[initial(icon_state)]"
-		src.necktoggled = FALSE
+		necktoggled = FALSE
 	else if(!necktoggled)
 		src.icon_state = "[initial(icon_state)]_t"
 		src.necktoggled = TRUE
