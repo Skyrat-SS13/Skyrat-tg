@@ -30,3 +30,8 @@
 	name = "DANCE"
 	desc = "This poster depicts a 'HONK' class mech ontop of a stage, next to a pole."
 	icon_state = "poster53"
+
+/obj/structure/sign/poster/contraband/operative_duffy
+	name = "CASH REWARD"
+	desc = "This poster depicts a gas mask, with details on how to 'forward information' on the whereabouts of whoever it means... though it doesn't specify to who."
+	icon_state = "poster54"
