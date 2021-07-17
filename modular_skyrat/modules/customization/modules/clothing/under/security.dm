@@ -54,6 +54,32 @@
 	mutant_variants = NONE
 	heat_protection = CHEST|ARMS
 
+/obj/item/clothing/under/rank/security/detective/cowboy
+	name = "blond cowboy uniform"
+	desc = "A blue shirt with some cool Cowboy socks. You dig."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "cowboy_uniform"
+	mutant_variants = NONE
+	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/security/detective/cowboy/armorless
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/suit/cowboyvest
+	name = "blonde cowboy vest"
+	desc = "A white cream vest lined with...fur, of all things, for desert weather. There's a small Deer head logo sewn in to the vest."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "cowboy_vest"
+	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
+	mutant_variants = NONE
+	heat_protection = CHEST|ARMS
+
+/obj/item/clothing/suit/cowboyvest/det
+	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 45)
+
 // SEC GENERAL
 
 // PRISONER

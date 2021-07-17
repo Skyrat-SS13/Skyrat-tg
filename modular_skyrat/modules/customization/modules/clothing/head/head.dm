@@ -362,6 +362,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "impcap_red"
+
 /obj/item/clothing/head/imperialhelmet
 	name = "blast helmet"
 	desc = "A sharp helmet with some goggles on the top"
@@ -397,3 +398,30 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "enhead"
 	mutant_variants = NONE
+
+/obj/item/clothing/head/cowboyhat/sherrif
+	name = "winter cowboy hat"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "sheriff_hat"
+	mutant_variants = NONE
+	desc = "A dark hat from the cold wastes of the Frosthill mountains. So it was done, all according to the law. There's a small set of antlers embroidered on the inside."
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+	flags_inv = HIDEHAIR
+
+/obj/item/clothing/head/cowboyhat/sherrif/alt
+	name = "sherrif hat"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "sheriff_hat_alt"
+	mutant_variants = NONE
+	desc = "A dark brown hat with a smell of whiskey. There's a small set of antlers embroidered on the inside."
+
+/obj/item/clothing/head/cowboyhat/deputy
+	name = "deputy hat"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "deputy_hat"
+	mutant_variants = NONE
+	desc = "A light brown hat with a smell of iron. There's a small set of antlers embroidered on the inside."

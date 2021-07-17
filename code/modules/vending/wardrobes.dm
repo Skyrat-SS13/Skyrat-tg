@@ -559,7 +559,10 @@
 					/obj/item/clothing/under/misc/kimunder = 2,
 					/obj/item/clothing/shoes/kimshoes = 2,
 					/obj/item/clothing/glasses/kim = 2,
-					/obj/item/clothing/gloves/kim = 2,	//SKYRAT EDIT ADD END
+					/obj/item/clothing/gloves/kim = 2,
+					/obj/item/storage/belt/holster/cowboy = 2,
+					/obj/item/clothing/under/rank/security/detective/cowboy = 2,
+					/obj/item/clothing/suit/cowboyvest/det = 2,	//SKYRAT EDIT ADD END
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,
 					/obj/item/reagent_containers/food/drinks/flask/det = 2,
