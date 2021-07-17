@@ -14,7 +14,7 @@
 
 /obj/item/clothing/toggle/examine(mob/user)
 	. = ..()
-		. += span_notice("<u>Alt Click</u> to toggle [src]\s [ toggle_name ] [ toggle_active ? "off" : "on" ]")
+	. += span_notice("<u>Alt Click</u> to toggle [src]\s [ toggle_name ] [ toggle_active ? "off" : "on" ]")
 
 /obj/item/clothing/toggle/AltClick(mob/user)
 	toggle_active = !toggle_active
