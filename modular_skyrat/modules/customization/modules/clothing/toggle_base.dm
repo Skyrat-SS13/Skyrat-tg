@@ -54,6 +54,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!silent)
 		to_chat(user, span_notice("You toggle [src]\s [ toggle_name ] [ toggle_state ? "active" : "inactive" ]."))
+	update_actions(user)
 
 /obj/item/clothing/toggle/equipped(mob/user, slot)
 	SHOULD_CALL_PARENT(TRUE)
