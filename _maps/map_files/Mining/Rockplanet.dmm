@@ -2641,15 +2641,6 @@
 	dir = 8
 	},
 /area/mine/living_quarters)
-"Gn" = (
-/obj/machinery/atmospherics/components/tank/air{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/mine/living_quarters)
 "zs" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -3589,6 +3580,15 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/mine/laborcamp)
+"Gn" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/security/old/glass{
+	name = "Landing Zone Security Post"
+	},
+/turf/open/floor/iron/red,
+/area/security/checkpoint/auxiliary)
 "Gs" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/white,
@@ -4881,10 +4881,8 @@
 	},
 /area/security/checkpoint/auxiliary)
 "Rw" = (
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 8
-	},
 /obj/effect/turf_decal/bot_blue,
+/obj/machinery/atmospherics/components/tank/oxygen,
 /turf/open/floor/plating,
 /area/mine/maintenance)
 "Rx" = (
@@ -5099,7 +5097,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/fans/tiny/invisible,
 /turf/open/floor/iron/red,
 /area/security/checkpoint/auxiliary)
 "SP" = (
@@ -5881,11 +5878,12 @@
 	},
 /area/mine/living_quarters)
 "ZI" = (
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/mine/laborcamp)
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/fans/tiny/invisible,
+/turf/open/floor/iron/red,
+/area/security/checkpoint/auxiliary)
 "ZL" = (
 /obj/structure/sign/poster/official/twelve_gauge{
 	pixel_y = 32
@@ -12530,8 +12528,8 @@ JW
 JR
 Tw
 No
-ZI
-ZI
+Ik
+Ik
 Io
 co
 Nc
@@ -16969,9 +16967,9 @@ bt
 bt
 bt
 bt
-bt
+qE
 sH
-bt
+qE
 bt
 bt
 bt
@@ -17226,9 +17224,9 @@ bt
 bt
 bt
 bt
-bt
-sH
-bt
+Ge
+Gn
+Ge
 bt
 bt
 bt
@@ -17483,9 +17481,9 @@ bt
 bt
 bt
 bt
-bt
-sH
-qE
+GN
+ZI
+Ge
 vY
 vY
 vY
