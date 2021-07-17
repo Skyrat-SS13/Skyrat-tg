@@ -69,7 +69,7 @@
 
 	triggering = TRUE
 	if (alert_observers)
-		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME SECONDS)
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!canSpawnEvent(players_amt))
@@ -85,12 +85,22 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, "<span class='admin'>You are too late to cancel that event</span>")
+			to_chat(usr, span_admin("You are too late to cancel that event"))
 			return
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
 		log_admin_private("[key_name(usr)] cancelled event [name].")
 		SSblackbox.record_feedback("tally", "event_admin_cancelled", 1, typepath)
+	//SKYRAT EDIT ADDITION
+	if(href_list["something_else"])
+		if(!triggering)
+			to_chat(usr, span_admin("Too late!"))
+			return
+		triggering = FALSE
+		SSevents.spawnEvent()
+		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
+		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
+	//SKYRAT EDIT END
 
 /datum/round_event_control/proc/runEvent(random = FALSE)
 	var/datum/round_event/E = new typepath()

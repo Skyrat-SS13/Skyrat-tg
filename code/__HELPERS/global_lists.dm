@@ -48,9 +48,33 @@
 
 	//Laugh types
 	for(var/spath in subtypesof(/datum/laugh_type))
-		var/datum/scream_type/S = new spath()
-		GLOB.laugh_types[S.name] = spath
+		var/datum/laugh_type/L = new spath()
+		GLOB.laugh_types[L.name] = spath
 	sortList(GLOB.laugh_types, /proc/cmp_typepaths_asc)
+
+	//For alt titles.
+	for(var/spath in subtypesof(/datum/job))
+		var/datum/job/J = new spath()
+		if(istype(J, /datum/job/captain))
+			GLOB.captain_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_CENTRAL_COMMAND))
+			GLOB.central_command_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_COMMAND))
+			GLOB.command_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SECURITY))
+			GLOB.security_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_CARGO))
+			GLOB.supply_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SERVICE))
+			GLOB.service_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_MEDICAL))
+			GLOB.medical_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SCIENCE))
+			GLOB.science_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_ENGINEERING))
+			GLOB.engineering_alttitles += J.alt_titles
+		if((J.departments & DEPARTMENT_SILICON))
+			GLOB.nonhuman_alttitles += J.alt_titles
 	//SKYRAT EDIT END
 
 	//Species
@@ -76,6 +100,8 @@
 
 	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	init_crafting_recipes(GLOB.crafting_recipes)
+
+	init_subtypes_w_path_keys(/obj/projectile, GLOB.proj_by_path_key)
 
 /// Inits the crafting recipe list, sorting crafting recipe requirements in the process.
 /proc/init_crafting_recipes(list/crafting_recipes)
@@ -103,3 +129,10 @@
 			L+= path
 		return L
 
+/// Functions like init_subtypes, but uses the subtype's path as a key for easy access
+/proc/init_subtypes_w_path_keys(prototype, list/L)
+	if(!istype(L))
+		L = list()
+	for(var/path as anything in subtypesof(prototype))
+		L[path] = new path()
+	return L

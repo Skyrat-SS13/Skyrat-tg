@@ -30,7 +30,7 @@
 	var/atom/Tsec = drop_location()
 	for(var/mob/M in src)
 		M.forceMove(Tsec)
-		visible_message("<span class='danger'>[M] bursts out of [src]!</span>")
+		visible_message(span_danger("[M] bursts out of [src]!"))
 	. = ..()
 
 /mob/living/carbon/spill_organs(no_brain, no_organs, no_bodyparts)
@@ -57,7 +57,7 @@
 			if(no_brain && istype(I, /obj/item/organ/brain))
 				qdel(I)
 				continue
-			if(no_organs && !istype(I, /obj/item/organ/brain))
+			if(no_organs && !istype(I, (/obj/item/organ/brain || /obj/item/organ/corticalstack))) //Skyrat edit - Neural Laces -  babyproofed
 				qdel(I)
 				continue
 			I.Remove(src)

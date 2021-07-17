@@ -12,6 +12,10 @@
 	max_integrity = 2000
 	density = TRUE
 
+/obj/structure/gun_vendor/wrench_act(mob/living/user, obj/item/item)
+	default_unfasten_wrench(user, item, 120)
+	return TRUE
+
 /obj/machinery/gun_vendor/attacked_by(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/armament_token))
 		RedeemToken(I, user)
@@ -60,6 +64,7 @@
 	name = "sidearm armament holochip"
 	desc = "A holochip used in any armament vendor, this is for sidearms. Do not bend."
 	icon_state = "token_sidearm"
+	minimum_sec_level = SEC_LEVEL_BLUE
 
 /obj/item/armament_token/sidearm/get_available_gunsets()
 	return list(
@@ -67,26 +72,14 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pdh_peacekeeper"
 		),
-	/obj/item/storage/box/gunset/glock17 = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "g17"
-		),
-	/obj/item/storage/box/gunset/ladon = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "ladon"
-		),
-	/obj/item/storage/box/gunset/dozer = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "dozer"
+	/obj/item/storage/box/gunset/proplayer= image(
+		icon = 'icons/obj/guns/energy.dmi',
+		icon_state = "disabler"
 		),
 	/obj/item/storage/box/gunset/zeta = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "zeta"
-		),
-	/obj/item/storage/box/gunset/revolution = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "revolution"
-	)
+		)
 	)
 
 //BAD BOY!
@@ -126,17 +119,36 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pcr"
 		),
+	/obj/item/storage/box/gunset/norwind = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "norwind"
+		),
 	/obj/item/storage/box/gunset/ostwind = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "ostwind"
 		),
-	/obj/item/storage/box/gunset/vintorez = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "vintorez"
-		),
-		/obj/item/storage/box/gunset/pitbull = image(
+	/obj/item/storage/box/gunset/pitbull = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pitbull"
+		)
+	)
+
+
+//Primary
+/obj/item/armament_token/shotgun
+	name = "shotgun armament holochip"
+	desc = "A holochip used in any armament vendor, this is for shotguns. Do not bend."
+	icon_state = "token_shotgun"
+
+/obj/item/armament_token/shotgun/get_available_gunsets()
+	return list(
+	/obj/item/storage/box/gunset/m23 = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "m23"
+		),
+	/obj/item/storage/box/gunset/as2 = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "as2"
 		)
 	)
 
@@ -146,13 +158,17 @@
 	desc = "A holochip used in any armament vendor, this is for energy weapons. Do not bend."
 	icon_state = "token_energy"
 	custom_premium_price = PAYCHECK_HARD * 3
-	minimum_sec_level = SEC_LEVEL_RED
+	minimum_sec_level = SEC_LEVEL_AMBER
 
 /obj/item/armament_token/energy/get_available_gunsets()
 	return list(
 	/obj/item/storage/box/gunset/laser = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "laser"
+		),
+	/obj/item/storage/box/gunset/e_gun = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "blaster"
 		)
 	)
 

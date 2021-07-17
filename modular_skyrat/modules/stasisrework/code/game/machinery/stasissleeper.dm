@@ -28,18 +28,19 @@
 	if(!state_open && !panel_open)
 		if(occupant)
 			thaw_them(occupant)
+			play_power_sound()
 		playsound(src, 'sound/machines/click.ogg', 60, TRUE)
-		play_power_sound()
 		flick("[initial(icon_state)]-anim", src)
 		..()
 
 /obj/machinery/stasissleeper/close_machine(mob/user)
 	if((isnull(user) || istype(user)) && state_open && !panel_open)
-		play_power_sound()
 		playsound(src, 'sound/machines/click.ogg', 60, TRUE)
 		flick("[initial(icon_state)]-anim", src)
 		..(user)
 		var/mob/living/mob_occupant = occupant
+		if(occupant)
+			play_power_sound()
 		if(mob_occupant && mob_occupant.stat != DEAD)
 			to_chat(mob_occupant, "[enter_message]")
 

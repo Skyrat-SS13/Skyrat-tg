@@ -25,9 +25,14 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		. = "Connection desynchronized. Recalibration in progress."
 
 /* Check if the movable is allowed to arrive at this destination (exile implants mostly) */
+/** SKYRAT EDIT - CYBORGS CANT USE GETWAY
 /datum/gateway_destination/proc/incoming_pass_check(atom/movable/AM)
 	return TRUE
-
+**/
+// Just a reminder that the home gateway overrides this proc so if a borg someone finds themself in an away mission they can still leave
+/datum/gateway_destination/proc/incoming_pass_check(atom/movable/AM)
+	return !iscyborg(AM)
+// SKYRAT EDIT - END
 /* Get the actual turf we'll arrive at */
 /datum/gateway_destination/proc/get_target_turf()
 	CRASH("get target turf not implemented for this destination type")
@@ -112,7 +117,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /datum/gateway_destination/gateway/home/proc/check_exile_implant(mob/living/L)
 	for(var/obj/item/implant/exile/E in L.implants)//Checking that there is an exile implant
-		to_chat(L, "<span class='userdanger'>The station gate has detected your exile implant and is blocking your entry.</span>")
+		to_chat(L, span_userdanger("The station gate has detected your exile implant and is blocking your entry."))
 		return TRUE
 	return FALSE
 
@@ -174,11 +179,30 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	/// Visual object for handling the viscontents
 	var/obj/effect/gateway_portal_effect/portal_visuals
 
+	//SKYRAT EDIT ADDITION
+	var/requires_key = FALSE
+	var/key_used = FALSE
+
+/obj/machinery/gateway/attacked_by(obj/item/I, mob/living/user)
+	. = ..()
+	if(istype(I, /obj/item/key/gateway) && requires_key)
+		to_chat(user, "<span class='notice'>You insert [src] into the keyway, unlocking the gateway!</span>")
+		key_used = TRUE
+		qdel(I)
+		return
+	//SKYRAT EDIT END
+
 /obj/machinery/gateway/Initialize()
 	generate_destination()
 	update_appearance()
 	portal_visuals = new
 	vis_contents += portal_visuals
+	return ..()
+
+/obj/machinery/gateway/Destroy()
+	destination.target_gateway = null
+	GLOB.gateway_destinations -= destination
+	destination = null
 	return ..()
 
 /obj/machinery/gateway/proc/generate_destination()
@@ -212,6 +236,10 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /obj/machinery/gateway/proc/activate(datum/gateway_destination/D)
 	if(!powered() || target)
 		return
+	//SKYRAT EDIT ADDITION
+	if(requires_key && !key_used)
+		return
+	//SKYRAT EDIT END
 	target = D
 	target.activate(destination)
 	portal_visuals.setup_visuals(target)
@@ -242,9 +270,9 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /obj/machinery/gateway/multitool_act(mob/living/user, obj/item/I)
 	if(calibrated)
-		to_chat(user, "<span class='alert'>The gate is already calibrated, there is no work for you to do here.</span>")
+		to_chat(user, span_alert("The gate is already calibrated, there is no work for you to do here."))
 	else
-		to_chat(user, "<span class='boldnotice'>Recalibration successful!</span>: \black This gate's systems have been fine tuned. Travel to this gate will now be on target.")
+		to_chat(user, "[span_boldnotice("Recalibration successful!")]: \black This gate's systems have been fine tuned. Travel to this gate will now be on target.")
 		calibrated = TRUE
 	return TRUE
 
@@ -255,9 +283,13 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 
 /obj/machinery/gateway/away/interact(mob/user, special_state)
 	. = ..()
+	//SKYRAT EDIT ADDITION
+	if(!ishuman(user))
+		return
+	//SKYRAT EDIT END
 	if(!target)
 		if(!GLOB.the_gateway)
-			to_chat(user,"<span class='warning'>Home gateway is not responding!</span>")
+			to_chat(user,span_warning("Home gateway is not responding!"))
 		if(GLOB.the_gateway.target)
 			GLOB.the_gateway.deactivate() //this will turn the home gateway off so that it's free for us to connect to
 		activate(GLOB.the_gateway.destination)
@@ -357,7 +389,6 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	if(!our_destination)
 		return
 
-
 	add_filter("portal_alpha", 1, list("type" = "alpha", "icon" = icon(alpha_icon, alpha_icon_state), "x" = 32, "y" = 32))
 	add_filter("portal_blur", 1, list("type" = "blur", "size" = 0.5))
 	add_filter("portal_ripple", 1, list("type" = "ripple", "size" = 2, "radius" = 1, "falloff" = 1, "y" = 7))
@@ -365,5 +396,4 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	animate(get_filter("portal_ripple"), time = 1.3 SECONDS, loop = -1, easing = LINEAR_EASING, radius = 32)
 
 	var/turf/center_turf = our_destination.get_target_turf()
-
 	vis_contents += block(locate(center_turf.x - 1, center_turf.y - 1, center_turf.z), locate(center_turf.x + 1, center_turf.y + 1, center_turf.z))
