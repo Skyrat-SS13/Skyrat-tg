@@ -34919,7 +34919,7 @@
 /obj/structure/fans/tiny/invisible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plating/catwalk_floor/plated/dark,
 /area/science/research/abandoned)
 "dUe" = (
@@ -37960,7 +37960,11 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "hqc" = (
-/obj/structure/frame/computer,
+/obj/structure/frame/computer{
+	anchored = 1;
+	broken = 1;
+	can_be_unanchored = 1
+	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark,
 /area/science/research/abandoned)
@@ -47220,7 +47224,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron/dark/purple,
 /area/science/research/abandoned)
 "rfL" = (
@@ -52004,7 +52008,7 @@
 	name = "Abandoned Warp Stone Lab"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron/dark/purple,
 /area/science/research/abandoned)
 "vVc" = (
