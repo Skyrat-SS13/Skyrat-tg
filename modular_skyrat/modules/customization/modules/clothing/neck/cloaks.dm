@@ -21,5 +21,4 @@
 	icon_state = "cowboy_poncho"
 	mutant_variants = NONE
 	heat_protection = CHEST
-	blood_overlay_type = "suit"
 	togglename = "cloak"
