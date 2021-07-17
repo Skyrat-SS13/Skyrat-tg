@@ -35,3 +35,13 @@
 	name = "CASH REWARD"
 	desc = "This poster depicts a gas mask, with details on how to 'forward information' on the whereabouts of whoever it means... though it doesn't specify to who."
 	icon_state = "poster54"
+
+/obj/structure/sign/poster/contraband/ultra
+	name = "ULTRA"
+	desc = "This poster has one word on it, 'ULTRA'; it depicts a smiling pill next to a beaker. Ominous."
+	icon_state = "poster55"
+
+/obj/structure/sign/poster/contraband/secborg_vale
+	name = "Defaced Valeborg Advertisement"
+	desc = "This poster originally sought to advertise the sleek utility of the valeborg - but it seems to have been long since defaced. One word lies on top; 'RUN.' - Perhaps fitting, considering the security model shown."
+	icon_state = "poster56"
