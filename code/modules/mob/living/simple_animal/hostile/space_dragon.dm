@@ -46,8 +46,13 @@
 	health_doll_icon = "spacedragon"
 	obj_damage = 50
 	environment_smash = ENVIRONMENT_SMASH_NONE
+<<<<<<< HEAD
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1 | HEAR_1
 	melee_damage_upper = 40 //SKYRAT EDIT ORIGINAL VAL (30) - Space dragon rebalance
+=======
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	melee_damage_upper = 35
+>>>>>>> 44779b794c8 (makes get_hearers_in_view() faster AGAIN, fixes issue with previous optimization (#60219))
 	melee_damage_lower = 35
 	mob_size = MOB_SIZE_LARGE
 	armour_penetration = 34 //SKYRAT EDIT ORIGINAL VAL (30) - Space dragon rebalance
