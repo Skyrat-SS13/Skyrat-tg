@@ -33695,15 +33695,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/service/chapel/main/monastery)
-"ceS" = (
-/obj/effect/turf_decal/siding/purple{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron/white,
-/area/science/research)
 "ceT" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/closet/emcloset,
@@ -40444,8 +40435,9 @@
 /turf/open/floor/iron/dark,
 /area/science/xenobiology)
 "eIZ" = (
-/obj/machinery/door/poddoor/massdriver_toxins,
-/obj/structure/fans/tiny,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = -32
+	},
 /turf/open/floor/plating,
 /area/science/mixing)
 "eJf" = (
@@ -46036,9 +46028,6 @@
 	},
 /area/maintenance/department/science)
 "jAs" = (
-/obj/machinery/mass_driver/toxins{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/science/mixing)
 "jAy" = (
@@ -49456,7 +49445,6 @@
 /turf/closed/wall,
 /area/maintenance/department/engine)
 "mAh" = (
-/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/iron,
 /area/science/mixing)
 "mAi" = (
@@ -50262,6 +50250,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"nkG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/science/mixing)
 "nlh" = (
 /obj/item/wheelchair,
 /turf/open/floor/plating,
@@ -50421,11 +50415,14 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "nuP" = (
-/obj/structure/sign/warning/vacuum/external{
-	pixel_y = -32
+/obj/effect/turf_decal/siding/purple{
+	dir = 8
 	},
-/turf/open/floor/plating,
-/area/science/mixing)
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/science/research)
 "nvt" = (
 /obj/effect/turf_decal/trimline/yellow/corner{
 	dir = 4
@@ -50596,6 +50593,15 @@
 /obj/structure/bed,
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"nDw" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	req_access_txt = "13;9"
+	},
+/turf/open/floor/plating,
+/area/science/mixing)
 "nDx" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -52553,9 +52559,6 @@
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
 "pcL" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -55695,7 +55698,7 @@
 	},
 /area/maintenance/department/crew_quarters/dorms)
 "rJM" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/machinery/mass_driver/toxins{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -55879,6 +55882,11 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"rQA" = (
+/obj/machinery/door/poddoor/massdriver_toxins,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/science/mixing)
 "rRA" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -56148,15 +56156,11 @@
 /turf/open/floor/iron/white,
 /area/medical/psychology)
 "sek" = (
-/obj/machinery/door/window/southleft{
-	name = "Mass Driver Door";
-	req_access_txt = "8"
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	req_access_txt = "13;9"
 	},
-/obj/effect/turf_decal/loading_area,
-/obj/machinery/computer/pod/old/mass_driver_controller/toxinsdriver{
-	pixel_x = -24
-	},
-/turf/open/floor/iron,
+/turf/open/floor/plating,
 /area/science/mixing)
 "seG" = (
 /obj/effect/landmark/start/assistant,
@@ -62578,8 +62582,15 @@
 /turf/open/floor/plating,
 /area/security/execution/education)
 "xxM" = (
-/obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
+/obj/machinery/door/window/southleft{
+	name = "Mass Driver Door";
+	req_access_txt = "8"
+	},
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/computer/pod/old/mass_driver_controller/toxinsdriver{
+	pixel_x = -24
+	},
+/turf/open/floor/iron,
 /area/science/mixing)
 "xxO" = (
 /obj/machinery/door/poddoor/preopen{
@@ -106310,7 +106321,7 @@ bJS
 bJS
 bJS
 bJS
-ceS
+nuP
 bJS
 bJS
 bJS
@@ -109920,7 +109931,7 @@ qtf
 dmR
 sek
 jAs
-ndI
+nDw
 aht
 aaa
 aaa
@@ -110175,8 +110186,8 @@ ndI
 vkY
 hEW
 mAh
-xxM
-nuP
+ndI
+ndI
 ndI
 aht
 aaa
@@ -110689,7 +110700,7 @@ ndI
 cVH
 cVH
 cVH
-ndI
+cVH
 eIZ
 ndI
 aht
@@ -110946,9 +110957,9 @@ aht
 aaa
 aaa
 aht
-cdm
-cdm
-cdm
+cVH
+nkG
+ndI
 aht
 aaa
 aaa
@@ -111203,9 +111214,9 @@ pDW
 aaa
 aaa
 aht
-aht
-aht
-aht
+ndI
+rQA
+ndI
 aht
 aaa
 aaa
@@ -111459,11 +111470,11 @@ aht
 pDW
 aaa
 aaa
-aaa
 aht
-aaa
+cdm
+cdm
+cdm
 aht
-aaa
 aaa
 aaa
 aaa
