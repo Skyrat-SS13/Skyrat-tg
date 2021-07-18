@@ -1,7 +1,7 @@
 /datum/job/clown
 	title = "Clown"
 	department_head = list("Head of Personnel")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of personnel"
@@ -28,11 +28,21 @@
 
 	family_heirlooms = list(/obj/item/bikehorn/golden)
 
+<<<<<<< HEAD
 	veteran_only = TRUE // SKYRAT EDIT ADDITION
 
 /datum/job/clown/after_spawn(mob/living/carbon/human/H, mob/M)
+=======
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+
+
+/datum/job/clown/after_spawn(mob/living/spawned, client/player_client)
+>>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	. = ..()
-	H.apply_pref_name("clown", M.client)
+	if(!ishuman(spawned))
+		return
+	spawned.apply_pref_name("clown", player_client)
+
 
 /datum/outfit/job/clown
 	name = "Clown"

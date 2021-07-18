@@ -475,6 +475,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 
 /obj/machinery/anomalous_crystal/honk/ActivationReaction(mob/user)
 	if(..() && ishuman(user) && !(user in affected_targets))
+<<<<<<< HEAD
 		var/mob/living/carbon/human/H = user
 		for(var/obj/item/W in H)
 			H.dropItemToGround(W)
@@ -483,6 +484,14 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 		qdel(C)
 		affected_targets.Add(H)
 SKYRAT EDIT REMOVAL END*/
+=======
+		var/mob/living/carbon/human/new_clown = user
+		for(var/obj/item/to_strip in new_clown)
+			new_clown.dropItemToGround(to_strip)
+		new_clown.dress_up_as_job(SSjob.GetJobType(/datum/job/clown))
+		affected_targets.Add(new_clown)
+
+>>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 
 /obj/machinery/anomalous_crystal/theme_warp //Warps the area you're in to look like a new one
 	observer_desc = "This crystal warps the area around it to a theme."

@@ -1,8 +1,13 @@
 /datum/job/cargo_technician
 	title = "Cargo Technician"
+<<<<<<< HEAD
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Quartermaster") //SKYRAT EDIT CHANGE
 	faction = "Station"
+=======
+	department_head = list("Head of Personnel")
+	faction = FACTION_STATION
+>>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	total_positions = 3
 	spawn_positions = 2
 	//supervisors = "the quartermaster and the head of personnel" //ORIGINAL
@@ -27,6 +32,9 @@
 		/obj/item/stack/sheet/mineral/diamond = 3,
 		/obj/item/gun/ballistic/rifle/boltaction = 1
 	)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"

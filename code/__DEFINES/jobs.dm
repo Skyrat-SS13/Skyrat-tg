@@ -63,5 +63,23 @@
 #define DEPARTMENT_SCIENCE (1<<5)
 #define DEPARTMENT_MEDICAL (1<<6)
 #define DEPARTMENT_SILICON (1<<7)
+<<<<<<< HEAD
 #define DEPARTMENT_CENTRAL_COMMAND (1<<8)
 
+=======
+
+/* Job datum job_flags */
+/// Whether the mob is announced on arrival.
+#define JOB_ANNOUNCE_ARRIVAL (1<<0)
+/// Whether the mob is added to the crew manifest.
+#define JOB_CREW_MANIFEST (1<<1)
+/// Whether the mob is equipped through SSjob.EquipRank() on spawn.
+#define JOB_EQUIP_RANK (1<<2)
+/// Whether the job is considered a regular crew member of the station. Equipment such as AI and cyborgs not included.
+#define JOB_CREW_MEMBER (1<<3)
+/// Whether this job can be joined through the new_player menu.
+#define JOB_NEW_PLAYER_JOINABLE (1<<4)
+
+#define FACTION_NONE "None"
+#define FACTION_STATION "Station"
+>>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))

@@ -1,9 +1,15 @@
 /datum/job/shaft_miner
 	title = "Shaft Miner"
 	department_head = list("Head of Personnel")
+<<<<<<< HEAD
 	faction = "Station"
 	total_positions = 5		//SKYRAT EDIT: Original value (3)
 	spawn_positions = 5		//SKYRAT EDIT: Original value (3)
+=======
+	faction = FACTION_STATION
+	total_positions = 3
+	spawn_positions = 3
+>>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
 
@@ -18,6 +24,9 @@
 	departments = DEPARTMENT_CARGO
 
 	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"
