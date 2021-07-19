@@ -561,7 +561,7 @@
 					/obj/item/clothing/glasses/kim = 2,
 					/obj/item/clothing/gloves/kim = 2,
 					/obj/item/clothing/under/rank/security/detective/cowboy = 2,
-					/obj/item/clothing/suit/cowboyvest/det = 2,	//SKYRAT EDIT ADD END
+					/obj/item/clothing/suit/det_suit/cowboyvest = 2,	//SKYRAT EDIT ADD END
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/gloves/color/latex = 2,
 					/obj/item/reagent_containers/food/drinks/flask/det = 2,

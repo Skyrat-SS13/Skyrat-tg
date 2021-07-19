@@ -77,11 +77,18 @@
 	mutant_variants = NONE
 	heat_protection = CHEST|ARMS
 
-/obj/item/clothing/suit/cowboyvest/det
+/obj/item/clothing/suit/det_suit/cowboyvest
+	name = "blonde cowboy vest"
+	desc = "A white cream vest lined with...fur, of all things, for desert weather. There's a small Deer head logo sewn in to the vest."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "cowboy_vest"
+	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
+	mutant_variants = NONE
+	heat_protection = CHEST|ARMS
 
-/obj/item/clothing/suit/cowboyvest/det/Initialize()
-	. = ..()
-	armor = initial(/obj/item/clothing/suit/armor/vest/det_suit.armor)
+
 // SEC GENERAL
 
 // PRISONER
