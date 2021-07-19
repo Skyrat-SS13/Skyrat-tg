@@ -127,6 +127,18 @@
 		if(ghost.stat == DEAD && ghost.client && user.client && (ghost.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers(user_turf, null)))
 			ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
 
+	//SKYRAT EDIT BEGIN - AI QoL
+	for(var/mob/ai in GLOB.ai_list)
+		//ai.show_message("<span class='emote'>[!(ai.stat == DEAD)]</span>")
+		var/aiEye_turf
+		for(var/mob/camera/ai_eye/AI_eye as anything in GLOB.aiEyes)
+			aiEye_turf = get_turf(AI_eye)
+		if(!ai.client)
+			continue
+		if(!(ai.stat == DEAD) && ai.client && (get_dist(user_turf, aiEye_turf)<8))
+			ai.show_message("<span class='emote'>[dchatmsg]</span>")
+	//SKYRAT EDIT END - AI QoL
+
 	if(emote_type == EMOTE_AUDIBLE)
 		user.audible_message(msg, deaf_message = "<span class='emote'>You see how <b>[user]</b> [msg]</span>", audible_message_flags = EMOTE_MESSAGE)
 	else
