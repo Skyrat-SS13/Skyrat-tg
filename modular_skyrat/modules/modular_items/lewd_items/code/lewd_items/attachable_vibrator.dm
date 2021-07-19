@@ -66,6 +66,7 @@
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
 	QDEL_NULL(soundloop3)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/clothing/sextoy/eggvib/update_icon_state()
@@ -174,6 +175,7 @@
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
 	QDEL_NULL(soundloop3)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/clothing/sextoy/signalvib/attackby(obj/item/W, mob/user, params)
