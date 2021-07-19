@@ -343,6 +343,10 @@
 // get damage for pain system
 /datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/H, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness)
 	. = ..()
+	if(!.)
+		return
+	if(H.client?.prefs.sextoys_pref == "No")
+		return
 	var/hit_percent = (100-(blocked+armor))/100
 	hit_percent = (hit_percent * (100-H.physiology.damage_resistance))/100
 	switch(damagetype)
