@@ -80,12 +80,6 @@
 					var/mob/living/carbon/human/human = M
 					/* - SKRYAT EDIT CHANGE ORIGINAL
 					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
-<<<<<<< HEAD
-						if(human.dna && human.dna.species.id != "fly")
-							to_chat(M, span_hear("You hear a buzzing in your ears."))
-							human.set_species(/datum/species/fly)
-							log_game("[human] ([key_name(human)]) was turned into a fly person")
-=======
 						var/datum/species/species_to_transform = /datum/species/fly
 						if(SSevents.holidays && SSevents.holidays[MOTH_WEEK])
 							species_to_transform = /datum/species/moth
@@ -94,7 +88,6 @@
 							human.set_species(species_to_transform)
 							log_game("[human] ([key_name(human)]) was turned into a [initial(species_to_transform.name)] through [src].")
 
->>>>>>> e0699c1940a (Add to moth week holiday: teleporter accidents make you moths (#60284))
 					human.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0)
 					*/ //SKYRAT EDIT REMOVAL END
 					//SKRYAT EDIT CHANGE BEGIN
