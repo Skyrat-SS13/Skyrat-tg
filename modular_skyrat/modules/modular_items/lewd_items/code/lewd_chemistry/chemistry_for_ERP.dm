@@ -20,7 +20,7 @@
 			to_chat(M, "<span class='notice'>[aroused_message]</span>")
 		if(ishuman(M))
 			M.adjustArousal(1)
-			for(var/obj/item/organ/genital/G)
+			for(var/obj/item/organ/genital/G in M.internal_organs)
 				if(!G.aroused == AROUSAL_CANT)
 					G.aroused = AROUSAL_FULL
 					G.update_sprite_suffix()
@@ -55,7 +55,7 @@
 			M.adjustArousal(2)
 			M.adjustPleasure(1.5)
 			M.adjustPain(0.2)
-			for(var/obj/item/organ/genital/G)
+			for(var/obj/item/organ/genital/G in M.internal_organs)
 				if(!G.aroused == AROUSAL_CANT)
 					G.aroused = AROUSAL_FULL
 					G.update_sprite_suffix()
