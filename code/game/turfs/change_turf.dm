@@ -84,15 +84,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lighting_corner_SW = lighting_corner_SW
 	var/old_lighting_corner_NW = lighting_corner_NW
 	var/old_directional_opacity = directional_opacity
-<<<<<<< HEAD
+	var/old_dynamic_lumcount = dynamic_lumcount
 	//SKYRAT EDIT CHANGE
 	var/obj/effect/abstract/liquid_turf/old_liquids = liquids
 	if(lgroup)
 		lgroup.remove_from_group(src)
 	//SKYRAT EDIT END
-=======
-	var/old_dynamic_lumcount = dynamic_lumcount
->>>>>>> 2f8c4620a44 (Fixes losing dynamic luminosity on ChangeTurf() (#60218))
 	var/old_rcd_memory = rcd_memory
 
 	var/old_bp = blueprint_data
