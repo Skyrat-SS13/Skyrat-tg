@@ -78,8 +78,10 @@
 	heat_protection = CHEST|ARMS
 
 /obj/item/clothing/suit/cowboyvest/det
-	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 45)
 
+/obj/item/clothing/suit/cowboyvest/det/Initialize()
+	. = ..()
+	armor = initial(/obj/item/clothing/suit/armor/vest/det_suit.armor)
 // SEC GENERAL
 
 // PRISONER
