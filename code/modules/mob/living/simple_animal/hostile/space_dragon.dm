@@ -29,14 +29,9 @@
 /mob/living/simple_animal/hostile/space_dragon
 	name = "Space Dragon"
 	desc = "A vile, leviathan-esque creature that flies in the most unnatural way.  Looks slightly similar to a space carp."
-<<<<<<< HEAD
-	maxHealth = 550 //SKYRAT EDIT ORIGINAL VAL (400) - Space dragon rebalance
-	health = 550 //SKYRAT EDIT ORIGINAL VAL (400) - Space dragon rebalance
-=======
-	maxHealth = 320
-	health = 320
+	maxHealth = 500 //SKYRAT EDIT ORIGINAL VAL (320) - Space dragon rebalance
+	health = 500 //SKYRAT EDIT ORIGINAL VAL (320) - Space dragon rebalance
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0.5, OXY = 1)
->>>>>>> 7ba84920e84 (Space Dragon Nerfs and Adjustments (#60259))
 	combat_mode = TRUE
 	speed = 0
 	movement_type = FLYING
