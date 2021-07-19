@@ -14,7 +14,7 @@
 		/mob/living/simple_animal/hostile/asteroid/basilisk = 40,
 		/mob/living/simple_animal/hostile/asteroid/hivelord = 20,
 		/mob/living/simple_animal/hostile/netherworld/migo/mine_mob = 10,
-		/mob/living/simple_animal/hostile/lost_husk = 50,
+		/*/mob/living/simple_animal/hostile/lost_husk = 50,*/
 		SPAWN_MEGAFAUNA = 3,
 		/mob/living/simple_animal/hostile/asteroid/goldgrub = 10
 		)
