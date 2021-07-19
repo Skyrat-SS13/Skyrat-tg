@@ -73,49 +73,56 @@
 		return
 
 	if(satisfaction <= 0)
-		switch(rand(1,6))
-			if(1)
-				if(stress >= 100)
-					to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
-				else
-					to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
-					owner.emote("moan")
-			if(2)
-				if(stress >= 100)
-					to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
-					owner.do_jitter_animation(20)
-				else
-					to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
-					owner.dizziness += 20
-					owner.add_confusion(20)
-					owner.Jitter(20)
-					owner.do_jitter_animation(20)
-					owner.adjustStaminaLoss(50)
-			if(3, 4)
-				if(stress >= 100)
-					to_chat(owner, "<font color=purple>You bring your hips together in lust.</font>")
-				else
-					to_chat(owner, "<font color=purple>Desire driving you mad!</font>")
-					owner.hallucination += 30
-			if(5)
-				if(stress >= 100)
-					to_chat(owner, "<font color=purple>You feel like your genitalias are burning...</font>")
-					owner.adjustOxyLoss(8)
-					owner.blur_eyes(10)
-				else
-					to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
-					owner.adjustOxyLoss(16)
-					owner.blur_eyes(15)
-					owner.visible_message(pick("<font color=purple>[owner] seductively wags the hips.</font>\n",
-										"<font color=purple>[owner] moans in lust!</font>\n",
-										"<font color=purple>[owner] touches themselves in intimate places...</font>\n",
-										"<font color=purple>[owner] trembling longingly.</font>\n",
-										"<font color=purple>[owner] moans indecently!</font>\n"))
+		if(prob(10))
+			switch(rand(1,6))
+				if(1)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
+					else
+						to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
+						owner.emote("moan")
+				if(2)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
+						owner.do_jitter_animation(20)
+					else
+						to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
+						owner.dizziness += 20
+						owner.add_confusion(20)
+						owner.Jitter(20)
+						owner.do_jitter_animation(20)
+						owner.adjustStaminaLoss(50)
+				if(3, 4)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You bring your hips together in lust.</font>")
+					else
+						to_chat(owner, "<font color=purple>Desire driving you mad!</font>")
+						owner.hallucination += 30
+				if(5)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You feel like your genitalias are burning...</font>")
+						owner.adjustOxyLoss(8)
+						owner.blur_eyes(10)
+					else
+						to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
+						owner.adjustOxyLoss(16)
+						owner.blur_eyes(15)
+						owner.visible_message(pick("<font color=purple>[owner] seductively wags the hips.</font>\n",
+											"<font color=purple>[owner] moans in lust!</font>\n",
+											"<font color=purple>[owner] touches themselves in intimate places...</font>\n",
+											"<font color=purple>[owner] trembling longingly.</font>\n",
+											"<font color=purple>[owner] moans indecently!</font>\n"))
 
-	if(in_company() && satisfaction >= 0.15)
-		satisfaction -= 0.15
+	if(in_company() && satisfaction >= 0.1)
+		satisfaction -= 0.1
 
-	if(in_company() && satisfaction <= 0.15)
+	if(in_company() && (satisfaction > 30 && satisfaction < 31))
+		to_chat(owner, "<font color=purple>Your thoughts are slightly confused...</font>")
+
+	if(in_company() && (satisfaction > 15 && satisfaction < 16))
+		to_chat(owner, "<font color=purple>You feel so hot...</font>")
+
+	if(in_company() && satisfaction <= 0.1)
 		if(stress <= 100)
 			stress +=1
 
@@ -136,48 +143,10 @@
 //////////////////////
 ///SEXUAL OBSESSION///
 //////////////////////
+
 /*
-/datum/quirk/sexual_obsession
-	name = "Sexual obsession"
-	desc = "You have an overwhelming urge to have sex with random people. Constantly."
-	value = -6 //This gives you uncomfortable stuff. But you can change it to 0. Don't change to positive values, it will be dumb.
-	mob_trait = TRAIT_SOBSESSED
-	gain_text = "<font color=purple>You feel yourself much more hornier than before...</font>"
-	lose_text = "<span class='notice'>A pleasant coolness spreads through the body. You are in control of your sexual desires again.</font>"
-	medical_record_text = "Subject has sexual obsession."
-	var/obj/item/sextoy
-	var/where
-
-//nymphomania players need to satisfy lust, so they need "tools" to "cool" them from time to time. In case if there is NO PLAYERS AROUND.
-/datum/quirk/sexual_obsession/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/sextoy_type
-	var/obj/item/organ/genital/vagina = quirk_holder.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/genital/penis = quirk_holder.getorganslot(ORGAN_SLOT_PENIS)
-	if(vagina && penis)
-		sextoy_type = /obj/item/magic_wand
-	else if(penis)
-		sextoy_type = /obj/item/fleshlight
-	else if(vagina)
-		sextoy_type = /obj/item/dildo
-	else
-		sextoy_type = /obj/item/magic_wand
-
-	sextoy = new sextoy_type(get_turf(quirk_holder))
-	H.put_in_hands(sextoy)
-
-/datum/quirk/sexual_obsession/post_add()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H.gain_trauma(/datum/brain_trauma/special/sexual_obsession, TRAUMA_RESILIENCE_ABSOLUTE)
-
-/datum/quirk/sexual_obsession/remove()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H?.cure_trauma_type(/datum/brain_trauma/special/sexual_obsession, TRAUMA_RESILIENCE_ABSOLUTE)
-
 Removed it as quirk because it can cause huge disaster and furry massacre.
-I already saw enough in "Long digger" video
+I already saw enough in "Lone digger" video
 
 But i keeped it as unobtainable breain trauma, so admins can add it through VV *IN VERY SPECIFIC SITUATIONS*. If you're not lazy you can add it as smite, but i wouldn't recommend it.
 */
@@ -255,10 +224,10 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 										"<font color=purple>[owner] touches themselves in intimate places...</font>\n",
 										"<font color=purple>[owner] trembling longingly.</font>\n",
 										"<font color=purple>[owner] moans indecently!</font>\n"))
-	if(satisfaction >= 0.15)
-		satisfaction -= 0.15
+	if(satisfaction >= 0.20)
+		satisfaction -= 0.20
 
-	if(satisfaction <= 0.15)
+	if(satisfaction <= 0.20)
 		if(stress <= 100)
 			stress +=1
 
