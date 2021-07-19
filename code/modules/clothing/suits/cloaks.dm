@@ -239,6 +239,7 @@
 	name = "distinguished conduct cloak" //Skyrat Edit - This ended up being pretty LRP when examined.
 	desc = "Worn by the some of the wisest veteran employees, this legendary cloak is only attainable by maintaining a living employment agreement with Nanotrasen and its Business Partners for over <b>two thousand hours</b>. This status symbol represents a long-winding path; one that should not be done lightly."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi' //Skyrat edit. Makes this not blow your eyeballs out
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "vetcloak" // Skyrat Edit - Removes the seizure effect, replaces it with a lovely unused sprite.
 
 /obj/item/clothing/neck/cloak/skill_reward/playing/check_wearable(mob/user)
