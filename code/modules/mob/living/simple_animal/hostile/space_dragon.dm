@@ -46,8 +46,8 @@
 	health_doll_icon = "spacedragon"
 	obj_damage = 50
 	environment_smash = ENVIRONMENT_SMASH_NONE
-	flags_1 = PREVENT_CONTENTS_EXPLOSION_1 | HEAR_1
-	melee_damage_upper = 40 //SKYRAT EDIT ORIGINAL VAL (30) - Space dragon rebalance
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	melee_damage_upper = 40 //SKYRAT EDIT ORIGINAL VAL (35) - Space dragon rebalance
 	melee_damage_lower = 35
 	mob_size = MOB_SIZE_LARGE
 	armour_penetration = 34 //SKYRAT EDIT ORIGINAL VAL (30) - Space dragon rebalance
