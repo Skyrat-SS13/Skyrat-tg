@@ -93,4 +93,3 @@
 /datum/augment_item/organ/tongue/stump
 	name = "Tongue stump"
 	path = /obj/item/organ/tongue/stump
-	cost = -2
