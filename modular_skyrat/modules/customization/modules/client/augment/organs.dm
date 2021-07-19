@@ -89,3 +89,8 @@
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"
 	path = /obj/item/organ/tongue/lizard
+
+/datum/augment_item/organ/tongue/stump
+	name = "Tongue stump"
+	path = /obj/item/organ/tongue/stump
+	cost = -2
