@@ -526,7 +526,8 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 
 // Play time / EXP
 #define PLAYTIME_HARDCORE_RANDOM 120
-#define PLAYTIME_VETERAN 300000 //Playtime is tracked in minutes. 300,000 minutes = 5,000 hours
+#define PLAYTIME_VETERAN 120000 // SKYRAT EDIT - Playtime is tracked in minutes. 120,000 minutes = 2000 hours //Almost nobody has this, and with us adding new jobs and changing new ones, this number fluctuates. Alot.
+
 
 // The alpha we give to stuff under tiles, if they want it
 #define ALPHA_UNDERTILE 128

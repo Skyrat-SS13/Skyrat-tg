@@ -236,9 +236,15 @@
 	associated_skill_path = /datum/skill/mining
 
 /obj/item/clothing/neck/cloak/skill_reward/playing
-	name = "legendary veteran's cloak"
-	desc = "Worn by the wisest of veteran employees, this legendary cloak is only attainable by maintaining a living employment agreement with Nanotrasen for over <b>five thousand hours</b>. This status symbol represents a being is better than you in nearly every quantifiable way, simple as that."
-	icon_state = "playercloak"
+	name = "distinguished conduct cloak" //Skyrat Edit - This ended up being pretty LRP when examined.
+	desc = "Worn by the some of the wisest veteran employees, this legendary cloak is only attainable by maintaining a living employment agreement with Nanotrasen and its Business Partners for over <b>two thousand hours</b>. This status symbol represents a long-winding path; one that should not be done lightly."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi' //Skyrat edit. Makes this not blow your eyeballs out
+	icon_state = "vetcloak" // Skyrat Edit - Removes the seizure effect, replaces it with a lovely unused sprite.
 
 /obj/item/clothing/neck/cloak/skill_reward/playing/check_wearable(mob/user)
-	return user.client?.get_exp_living(TRUE) >= PLAYTIME_VETERAN
+//SKYRAT EDIT BEGIN - THIS CHECK BROKE, AND ALLOWED MOBS WITHOUT CLIENTS (meaning anyone who was disconnected) to wear the cloak. This means you could DC and bypass the check.
+	if(user.client && user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN)
+		return TRUE
+	else
+		return FALSE
+//SKYRAT EDIT END

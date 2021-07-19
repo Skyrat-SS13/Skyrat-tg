@@ -639,7 +639,7 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<a href='?_src_=prefs;preference=clear_scars'>Clear scar slots</A>"
 
 					dat += "<br><b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
-					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN)
+					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN || check_rights(R_ADMIN, FALSE)) //Skyrat edit. Allows admins to bypass the 2000 hour playtime.
 						dat += "<br><b>Don The Ultimate Gamer Cloak?:</b><BR><a href ='?_src_=prefs;preference=playtime_reward_cloak'>[(playtime_reward_cloak) ? "Enabled" : "Disabled"]</a><BR></td>"
 
 
@@ -2556,7 +2556,7 @@ GLOBAL_LIST_INIT(food, list(
 						uplink_spawn_loc = new_loc
 
 				if("playtime_reward_cloak")
-					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN)
+					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN || check_rights(R_ADMIN, FALSE)) //Skyrat edit. Allows admins to bypass 2000 hour requirement
 						playtime_reward_cloak = !playtime_reward_cloak
 
 				if("ai_core_icon")
