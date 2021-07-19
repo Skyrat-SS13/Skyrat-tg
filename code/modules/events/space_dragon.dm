@@ -1,14 +1,9 @@
 /datum/round_event_control/space_dragon
 	name = "Spawn Space Dragon"
 	typepath = /datum/round_event/ghost_role/space_dragon
-<<<<<<< HEAD
+	weight = 7
 	//max_occurrences = 1 //ORIGINAL
 	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
-	weight = 10
-=======
-	weight = 7
->>>>>>> 8dfbf72df8b (Lowers the chances of the space dragon showing up (#60188))
-	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
 
