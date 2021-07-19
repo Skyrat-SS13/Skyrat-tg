@@ -47,6 +47,7 @@
 	head = /obj/item/clothing/head/brigoff
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/pda/security
+	suit_store = /obj/item/gun/energy/taser/armadyne
 
 	id_trim = /datum/id_trim/job/brigoff
 
