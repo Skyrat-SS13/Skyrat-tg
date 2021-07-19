@@ -75,6 +75,9 @@
 /obj/machinery/shower/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_ANALYZER)
 		to_chat(user, span_notice("The water temperature seems to be [current_temperature]."))
+	else if(istype(I, /obj/item/plunger) && do_after(user, 3 SECONDS, src))
+		reagents.remove_any(reagents.total_volume)
+		balloon_alert(user, "Water emptied from reservoir")
 	else
 		return ..()
 
