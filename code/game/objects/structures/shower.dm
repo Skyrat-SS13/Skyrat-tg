@@ -75,13 +75,15 @@
 /obj/machinery/shower/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_ANALYZER)
 		to_chat(user, span_notice("The water temperature seems to be [current_temperature]."))
-	//SKYRAT EDIT ADDITION
-	else if(istype(I, /obj/item/plunger) && do_after(user, 3 SECONDS, src))
-		reagents.remove_any(reagents.total_volume)
-		balloon_alert(user, "Water emptied from reservoir")
-	//SKYRAT EDIT END
 	else
 		return ..()
+
+//SKYRAT EDIT ADDITION
+/obj/machinery/shower/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	if(do_after(user, 3 SECONDS, src))
+		reagents.remove_any(reagents.total_volume)
+		balloon_alert(user, "reservoir emptied")
+//SKYRAT EDIT END
 
 /obj/machinery/shower/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
