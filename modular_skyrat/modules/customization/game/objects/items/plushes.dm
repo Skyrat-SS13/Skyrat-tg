@@ -261,3 +261,13 @@
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "whitecat"
 	inhand_icon_state = "whitecat"
+
+/obj/item/toy/plush/seaduplush
+	name = "Sneed plushie"
+	desc = "A plushie of a particular, bundled up IPC. Underneath the cloak, you can see a plush recreation of the captain's sabre."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_seadu"
+	inhand_icon_state = "plushie_seadu"
+	attack_verb_continuous = list("beeps","sneeds","swords")
+	attack_verb_simple = list("beep","sneed","sword")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg' = 1)

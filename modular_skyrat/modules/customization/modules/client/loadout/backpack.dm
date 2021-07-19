@@ -342,3 +342,7 @@
 /datum/loadout_item/backpack/plushies/rouny
 	name = "Runner Plushie"
 	path = /obj/item/toy/plush/rouny
+
+/datum/loadout_item/backpack/plushies/seaduplush
+	name = "Sneed plushie"
+	path = /obj/item/toy/plush/seaduplush
