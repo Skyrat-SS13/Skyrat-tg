@@ -161,22 +161,13 @@
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
 		tool_behaviour = TOOL_WRENCH
-<<<<<<< HEAD
-		to_chat(user, "<span class='notice'>You attach the bolt bit to [src].</span>")
-		//___callbacknewicon_state = "drill_bolt"
-	else
-		tool_behaviour = TOOL_SCREWDRIVER
-		to_chat(user, "<span class='notice'>You attach the screw bit to [src].</span>")
-		//icon_state = "drill_screw"
-	update_appearance() //SKYRAT EDIT ADDITION
-=======
 		balloon_alert(user, "attached bolt bit")
-		icon_state = "drill_bolt"
+		//icon_state = "drill_bolt"
 	else
 		tool_behaviour = TOOL_SCREWDRIVER
 		balloon_alert(user, "attached screw bit")
-		icon_state = "drill_screw"
->>>>>>> 31c2c4a8626 (convert some adv tool actions into balloon alerts (#60278))
+		//icon_state = "drill_screw"
+	update_appearance() //SKYRAT EDIT ADDITION
 
 /obj/item/screwdriver/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "automated screwdriver"
