@@ -106,8 +106,7 @@
 
 //Functionality stuff
 /obj/item/clothing/strapon/proc/update_action_buttons_icons()
-	var/datum/action/item_action/M
-	if(istype(M, /datum/action/item_action/take_strapon))
+	for(var/datum/action/item_action/take_strapon/M in actions_types)
 		M.button_icon_state = "dildo_[strapon_type]"
 		M.icon_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	update_icon()
@@ -136,13 +135,13 @@
 	var/obj/item/unheld = C.get_inactive_held_item()
 
 	if(in_hands == TRUE)
-		if(held?.name == "strapon" && held?.item_flags == ABSTRACT | HAND_ITEM)
+		if(istype(held, /obj/item/strapon_dildo))
 			qdel(held)
 			C.visible_message("<span class='notice'>[user] puts strapon back</span>")
 			in_hands = FALSE
 			return
 
-		else if(unheld?.name == "strapon" && unheld?.item_flags == ABSTRACT | HAND_ITEM)
+		else if(istype(unheld, /obj/item/strapon_dildo))
 			qdel(unheld)
 			C.visible_message("<span class='notice'>[user] puts strapon back</span>")
 			in_hands = FALSE
@@ -182,7 +181,7 @@
 	inhand_icon_state = "nothing"
 	force = 0
 	throwforce = 0
-	item_flags = ABSTRACT | HAND_ITEM
+	item_flags = ABSTRACT | HAND_ITEM | DROPDEL
 	var/strapon_type = "human" //Default var, but we always getting var from strapon_type from item on top
 
 /obj/item/strapon_dildo/Initialize()
