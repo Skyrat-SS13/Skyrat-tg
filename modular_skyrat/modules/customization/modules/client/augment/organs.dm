@@ -90,6 +90,25 @@
 	name = "Forked tongue"
 	path = /obj/item/organ/tongue/lizard
 
+/* Code for the tongue, no better place to put it!*/
+
+/obj/item/organ/tongue/stump
+	name = "Tongue stump"
+	desc = "What remains of a tongue."
+	icon_state = "tonguenormal"
+	sense_of_taste = FALSE
+	attack_verb_continuous = list("drools", "spits", "gurgles")
+	attack_verb_simple = list("drool", "spit", "gurgle")
+	modifies_speech = FALSE
+
+/obj/item/organ/tongue/stump/Insert(mob/living/carbon/tongue_owner, special = 0)
+	. = ..()
+	ADD_TRAIT(tongue_owner, TRAIT_MUTE, ORGAN_TRAIT)
+
+/obj/item/organ/tongue/stump/Remove(mob/living/carbon/tongue_owner, special = 0)
+	..()
+	REMOVE_TRAIT(tongue_owner, TRAIT_MUTE, ORGAN_TRAIT)
+
 /datum/augment_item/organ/tongue/stump
 	name = "Tongue stump"
 	path = /obj/item/organ/tongue/stump

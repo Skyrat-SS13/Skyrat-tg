@@ -485,20 +485,3 @@
 		signer.visible_message(span_notice("[signer] raises [signer.p_their()] eyebrows."))
 	else if(question_found)
 		signer.visible_message(span_notice("[signer] lowers [signer.p_their()] eyebrows."))
-
-/obj/item/organ/tongue/stump
-	name = "Tongue stump"
-	desc = "What remains of a tongue."
-	icon_state = "tonguenormal"
-	sense_of_taste = FALSE
-	attack_verb_continuous = list("drools", "spits", "gurgles")
-	attack_verb_simple = list("drool", "spit", "gurgle")
-	modifies_speech = FALSE
-
-/obj/item/organ/tongue/stump/Insert(mob/living/carbon/tongue_owner, special = 0)
-	. = ..()
-	ADD_TRAIT(tongue_owner, TRAIT_MUTE, ORGAN_TRAIT)
-
-/obj/item/organ/tongue/stump/Remove(mob/living/carbon/tongue_owner, special = 0)
-	..()
-	REMOVE_TRAIT(tongue_owner, TRAIT_MUTE, ORGAN_TRAIT)
