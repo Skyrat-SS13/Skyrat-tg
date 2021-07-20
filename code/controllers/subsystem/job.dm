@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(job)
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list() //Don't read this list, use GetLateJoinTurfs() instead
 
-	var/overflow_role = "Assistant"
+	var/overflow_role = "Operative"
 
 	var/list/level_order = list(JP_HIGH,JP_MEDIUM,JP_LOW)
 
@@ -36,13 +36,13 @@ SUBSYSTEM_DEF(job)
 	 * See [/datum/controller/subsystem/ticker/proc/equip_characters]
 	 */
 	var/list/chain_of_command = list(
-		"Captain" = 1,
-		"Head of Personnel" = 2,
-		"Research Director" = 3,
-		"Chief Engineer" = 4,
+		"Station Admiral" = 1,
+		"Corporate Liasion" = 2,
+		"Chief Research Officer" = 3,
+		"Chief Engineering Officer" = 4,
 		"Chief Medical Officer" = 5,
-		"Head of Security" = 6,
-		"Quartermaster" = 7)
+		"Chief Master At Arms" = 6,
+		"Deck Officer" = 7)
 
 	/// If TRUE, some player has been assigned Captaincy or Acting Captaincy at some point during the shift and has been given the spare ID safe code.
 	var/assigned_captain = FALSE
