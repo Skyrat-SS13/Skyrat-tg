@@ -112,10 +112,10 @@
 	//humans
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		if(dna[H.dna.uni_identity])
+		if(dna[H.dna.unique_identity])
 			to_chat(user, span_notice("Humanoid data already present in local storage."))
 			return
-		dna[H.dna.uni_identity] = 1
+		dna[H.dna.unique_identity] = 1
 		to_chat(user, span_notice("Humanoid data added to local storage."))
 
 /obj/machinery/dna_vault
@@ -203,7 +203,7 @@
 	data["choiceB"] = ""
 	if(user && completed)
 		var/list/L = power_lottery[user]
-		if(L && L.len)
+		if(L?.len)
 			data["used"] = FALSE
 			data["choiceA"] = L[1]
 			data["choiceB"] = L[2]

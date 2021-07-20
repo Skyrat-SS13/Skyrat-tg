@@ -8,6 +8,7 @@
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	hijack_speed = 2 //If you can't take out the station, take the shuttle instead.
+	suicide_cry = "FOR THE SYNDICATE!!"
 	var/datum/team/nuclear/nuke_team
 	var/always_new_team = FALSE //If not assigned a team by default ops will try to join existing ones, set this to TRUE to always create new team.
 	var/send_to_spawnpoint = TRUE //Should the user be moved to default spawnpoint.
@@ -186,7 +187,7 @@
 			dukinuki.forceMove(H.drop_location())
 		else
 			H.put_in_hands(dukinuki, TRUE)
-		nuke_team.war_button = dukinuki
+		nuke_team.war_button_ref = WEAKREF(dukinuki)
 	owner.announce_objectives()
 	addtimer(CALLBACK(src, .proc/nuketeam_name_assign), 1)
 
@@ -250,7 +251,7 @@
 	var/core_objective = /datum/objective/nuclear
 	var/memorized_code
 	var/list/team_discounts
-	var/obj/item/nuclear_challenge/war_button
+	var/datum/weakref/war_button_ref
 
 /datum/team/nuclear/New()
 	..()
@@ -393,7 +394,8 @@
 	disk_report += "</table>"
 	var/common_part = ..()
 	var/challenge_report
-	if(!QDELETED(war_button))
+	var/obj/item/nuclear_challenge/war_button = war_button_ref?.resolve()
+	if(war_button)
 		challenge_report += "<b>War not declared.</b> <a href='?_src_=holder;[HrefToken()];force_war=[REF(war_button)]'>\[Force war\]</a>"
 	return common_part + disk_report + challenge_report
 

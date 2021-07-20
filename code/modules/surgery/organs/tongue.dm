@@ -38,7 +38,8 @@
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/zolmach // SKYRAT EDIT - customization - extra languages
+		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
+		/datum/language/xenoknockoff // SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -176,6 +177,8 @@
 	UnregisterSignal(mover, COMSIG_MOVABLE_MOVED)
 
 /datum/action/item_action/organ_action/statue/proc/statue_destroyed(datum/source)
+	SIGNAL_HANDLER
+
 	to_chat(owner, span_userdanger("Your existence as a living creature snaps as your statue form crumbles!"))
 	if(iscarbon(owner))
 		//drop everything, just in case

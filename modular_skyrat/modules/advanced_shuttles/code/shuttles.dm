@@ -34,6 +34,8 @@
 	light_color = COLOR_ORANGE_BROWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
+	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
+
 /obj/machinery/computer/shuttle/arrivals/recall
 	name = "arrivals shuttle recall terminal"
 	desc = "Use this if your friends left you behind."

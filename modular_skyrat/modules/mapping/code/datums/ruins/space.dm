@@ -10,11 +10,12 @@
 	suffix = "forgottenship_skyrat.dmm"
 	always_place = TRUE
 
-/datum/map_template/ruin/space/skyrat/oldstation
-	id = "oldstation"
-	suffix = "oldstation_skyrat.dmm"
-	name = "Code Charlie Station"
-	description = "Nanotrasen would like to remind all crew - inside our sectors, you are safe. You will be protected. You have nothing to fear."
+/datum/map_template/ruin/space/skyrat/interdynefob
+	name = "DS-2"
+	id = "interdynefob"
+	description = "If DS-1 was so good..."
+	suffix = "interdynefob.dmm"
+	always_place = TRUE
 
 /datum/map_template/ruin/space/skyrat/derelictferry
 	id = "derelictferry"
@@ -107,3 +108,33 @@
 	suffix = "shuttle8532.dmm"
 	name = "Shuttle 8532"
 	description = "While nobody can predict what space has to offer for the sailors that ride its waves, nobody is quite expecting a meteroid half the size of your shuttle to split it in half."
+
+/datum/map_template/ruin/space/skyrat/ghostship
+	id = "ghostship"
+	suffix = "ghostship.dmm"
+	name = "Ghost Ship"
+	description = "An ancient ship, seemingly pre-bluespace in design yet retrofitted with newer systems. Seemingly just up-and-abandoned in the middle of space..."
+
+/datum/map_template/ruin/space/skyrat/salvagepost
+	id = "salvagepost"
+	suffix = "salvagepost.dmm"
+	name = "Pre-Bluespace Salvage Post"
+	description = "An extremely old, long forgotten post used to salvage damaged or decommissioned ships before bluespace transportation. Surprising its stayed intact so long."
+
+/datum/map_template/ruin/space/skyrat/vaulttango
+	id = "vaulttango"
+	suffix = "vaulttango.dmm"
+	name = "ARBORLINK Vault Tango"
+	description = "Nanotrasen isn't the only corporation experimenting in advanced bluespace technology."
+
+/datum/map_template/ruin/space/skyrat/friendship
+	id = "friendship"
+	suffix = "wreckedfriendship.dmm"
+	name = "NTSS Friendship"
+	description = "120 people.. one ship. It's unsurprising."
+
+/datum/map_template/ruin/space/skyrat/homestead
+	id = "homestead"
+	suffix = "wreckedhomestead.dmm"
+	name = "NTSS Homestead"
+	description = "A wrecked ship."

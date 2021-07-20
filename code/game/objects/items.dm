@@ -241,10 +241,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		qdel(X)
 	return ..()
 
-/*
- * Adds the weapon_description element, which shows the warning label for especially dangerous objects.
- * Made to be overridden by item subtypes that require specific notes outside of the scope of offensive_notes
- */
+/// Adds the weapon_description element, which shows the 'warning label' for especially dangerous objects. Override this for item types with special notes.
 /obj/item/proc/add_weapon_description()
 	AddElement(/datum/element/weapon_description)
 
@@ -1125,7 +1122,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 			return
 		source_item?.reagents?.add_reagent(/datum/reagent/blood, 2)
 
-	else if(custom_materials && custom_materials.len) //if we've got materials, lets see whats in it
+	else if(custom_materials?.len) //if we've got materials, lets see whats in it
 		/// How many mats have we found? You can only be affected by two material datums by default
 		var/found_mats = 0
 		/// How much of each material is in it? Used to determine if the glass should break
@@ -1179,6 +1176,17 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	return discover_after
 
 #undef MAX_MATS_PER_BITE
+
+/**
+ * Updates all action buttons associated with this item
+ *
+ * Arguments:
+ * * status_only - Update only current availability status of the buttons to show if they are ready or not to use
+ * * force - Force buttons update even if the given button icon state has not changed
+ */
+/obj/item/proc/update_action_buttons(status_only = FALSE, force = FALSE)
+	for(var/datum/action/current_action as anything in actions)
+		current_action.UpdateButtonIcon(status_only, force)
 
 // Update icons if this is being carried by a mob
 /obj/item/wash(clean_types)

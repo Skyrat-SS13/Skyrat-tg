@@ -7,6 +7,7 @@
 	special_icon_case = TRUE
 	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 	/// A generalisation of the tail-type, e.g. lizard or feline, for hardsuit or other sprites
 	var/general_type
 
@@ -72,6 +73,10 @@
 				var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
 				if(HS.hardsuit_tail_colors)
 					return FALSE
+			return TRUE
+	if(H.owned_turf)  //we do a lil' emoting
+		var/list/used_in_turf = list("tail")
+		if(H.owned_turf.name in used_in_turf)
 			return TRUE
 	return FALSE
 

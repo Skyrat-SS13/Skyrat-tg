@@ -29,7 +29,7 @@
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /mob/living/carbon/human/proc/setup_human_dna()
 	//initialize dna. for spawned humans; overwritten by other code
@@ -944,14 +944,7 @@
 		visible_message(span_warning("[src] fails to fireman carry [target]!"))
 		return
 
-	if(target.loc != loc)
-		var/old_density = density
-		density = FALSE // Hacky and doesn't use set_density()
-		step_towards(target, loc)
-		density = old_density // Avoid changing density directly in normal circumstances, without the setter.
-
-	if(target.loc == loc)
-		return buckle_mob(target, TRUE, TRUE, CARRIER_NEEDS_ARM)
+	return buckle_mob(target, TRUE, TRUE, CARRIER_NEEDS_ARM)
 
 /mob/living/carbon/human/proc/piggyback(mob/living/carbon/target)
 	if(!can_piggyback(target))

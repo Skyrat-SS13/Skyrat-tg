@@ -282,7 +282,7 @@
 
 	for(var/obj/item/card/id/ID in src)
 		qdel(ID)
-	if(authorized && authorized.len)
+	if(authorized?.len)
 		authorized.Cut()
 	authorized = null
 
@@ -551,6 +551,7 @@
 
 				dock_id(destination_dock)
 				unbolt_all_doors() //SKYRAT EDIT ADDITION
+				INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_bans) //SKYRAT EDIT ADDITION
 				mode = SHUTTLE_ENDGAME
 				timer = 0
 
@@ -702,6 +703,8 @@
 	new /obj/item/pickaxe/emergency(src)
 	new /obj/item/survivalcapsule(src)
 	new /obj/item/storage/toolbox/emergency(src)
+	new /obj/item/bodybag/environmental(src)
+	new /obj/item/bodybag/environmental(src)
 
 /obj/item/storage/pod/attackby(obj/item/W, mob/user, params)
 	if (can_interact(user))

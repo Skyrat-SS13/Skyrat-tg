@@ -6,6 +6,7 @@
 	dimension_x = 64
 	center = TRUE
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 	var/taur_mode = NONE //Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
 	var/alt_taur_mode = NONE //Same as above.
 	var/hide_legs = TRUE
@@ -14,6 +15,10 @@
 /datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
 		return TRUE
+	if(H.owned_turf)
+		var/list/used_in_turf = list("tail")
+		if(H.owned_turf.name in used_in_turf)
+			return TRUE
 	return FALSE
 
 /datum/sprite_accessory/taur/none

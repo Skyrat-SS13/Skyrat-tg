@@ -1,252 +1,143 @@
 {
-    "Dynamic": {
-        "threat_curve_centre": -3,
-        "threat_curve_width": 1.4,
-        "roundstart_split_curve_centre": 3,
-        "roundstart_split_curve_width": 1.2,
-        "midround_delay_min": 18000,
-        "midround_delay_max": 30000,
-        "latejoin_delay_min": 6000,
-        "latejoin_delay_max": 15000
-    },
-    "Roundstart": {
-        "Traitors": {
-            "antag_cap": {
-                "denominator": 40
-            },
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        },
-        "Blood Brothers": {
-            "weight": 0
-        },
-        "Changelings": {
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        },
-        "Heretics": {
-            "weight": 2,
-            "scaling_cost": 12,
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        },
-        "Wizard": {
-            "weight": 1,
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        },
-        "Blood Cult": {
-            "weight": 0
-        },
-        "Clockwork Cult": {
-            "weight": 0
-        },
-        "Nuclear Emergency": {
-            "weight": 0
-        },
-        "Revolution": {
-            "weight": 0
-        },
-        "Families": {
-            "weight": 0
-        }
-    },
-    "Midround": {
-        "Syndicate Sleeper Agent": {
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        },
-        "Family Head Aspirants": {
-            "weight": 0
-        },
-        "Nuclear Assault": {
-            "weight": 0
-        },
-        "Space Dragon": {
-            "weight": 1
-        },
-        "Blob": {
-            "weight": 1
-        },
-        "Spiders": {
-            "weight": 1
-        },
-        "Alien Infestation": {
-            "weight": 1
-        }
-    },
-    "Latejoin": {
-        "Syndicate Infiltrator": {
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        },
-        "Provocateur": {
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        },
-        "Heretic Smuggler": {
-            "protected_roles": [
-                "Prisoner",
-				"Vanguard Operative",
-                "Civil Disputes Officer",
-                "Security Medic",
-                "Security Sergeant",
-                "Security Officer",
-                "Corrections Officer",
-                "Warden",
-                "Detective",
-                "Head of Security",
-                "Blueshield",
-                "Head of Personnel",
-                "Quartermaster",
-                "Chief Engineer",
-                "Chief Medical Officer",
-                "Research Director",
-                "Captain"
-            ],
-            "restricted_roles": [
-                "Cyborg"
-            ]
-        }
-    }
+	"Dynamic": {},
+	"Roundstart": {
+		"Traitors": {
+			"cost": 8,
+			"scaling_cost": 9,
+			"weight": 0,
+			"required_candidates": 1,
+			"minimum_required_age": 0,
+			"requirements": [
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10,
+				10
+			],
+			"antag_cap": {
+				"denominator": 24
+			},
+			"protected_roles": [
+				"Prisoner",
+				"Security Officer",
+				"Warden",
+				"Detective",
+				"Head of Security",
+				"Captain",
+				"Vanguard Operative"
+			],
+			"restricted_roles": [
+				"Cyborg"
+			]
+		},
+
+		"Blood Brothers": {
+			"weight": 0
+		},
+
+		"Changelings": {
+			"weight": 0
+		},
+
+		"Heretics": {
+			"weight": 0
+		},
+
+		"Wizard": {
+			"weight": 0
+		},
+
+		"Blood Cult": {
+			"weight": 0
+		},
+
+		"Nuclear Emergency": {
+			"weight": 0
+		},
+
+		"Revolution": {
+			"weight": 0
+		},
+
+		"Families": {
+			"weight": 0
+		}
+	},
+
+	"Midround": {
+		"Syndicate Sleeper Agent": {
+			"weight": 0
+		},
+
+		"Family Head Aspirants": {
+			"weight": 0
+		},
+
+		"Malfunctioning AI": {
+			"weight": 0
+		},
+
+		"Wizard": {
+			"weight": 0
+		},
+
+		"Nuclear Assault": {
+			"weight": 0
+		},
+
+		"Blob": {
+			"weight": 0
+		},
+
+		"Blob Infection": {
+			"weight": 0
+		},
+
+		"Alien Infestation": {
+			"weight": 0
+		},
+
+		"Nightmare": {
+			"weight": 0
+		},
+
+		"Space Dragon": {
+			"weight": 0
+		},
+
+		"Abductors": {
+			"weight": 0
+		},
+
+		"Swarmers": {
+			"weight": 0
+		},
+
+		"Space Ninja": {
+			"weight": 0
+		},
+
+		"Spiders": {
+			"weight": 0
+		}
+	},
+
+	"Latejoin": {
+		"Syndicate Infiltrator": {
+			"weight": 0
+		},
+
+		"Provocateur": {
+			"weight": 0
+		},
+
+		"Heretic Smuggler": {
+			"weight": 0
+		}
+	}
 }

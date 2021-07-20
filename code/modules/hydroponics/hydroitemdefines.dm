@@ -218,7 +218,7 @@
 
 	if(scanned_object.reagents) //we have reagents contents
 		returned_message += get_analyzer_text_chem_contents(scanned_object)
-	else if (our_seed.reagents_add && our_seed.reagents_add.len) //we have a seed with reagent genes
+	else if (our_seed.reagents_add?.len) //we have a seed with reagent genes
 		returned_message += get_analyzer_text_chem_genes(our_seed)
 	else
 		returned_message += "*---------*\nNo reagents found.\n*---------*"
@@ -421,7 +421,7 @@
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/cultivator/rake/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER

@@ -5,6 +5,7 @@
 	var/use_muzzled_sprites = TRUE
 	recommended_species = list("synthmammal", "mammal", "lizard", "unathi", "ashlizard", "silverlizard")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD)

@@ -90,7 +90,7 @@
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /mob/living/simple_animal/bot/secbot/Destroy()
 	QDEL_NULL(weapon)
@@ -345,6 +345,8 @@ Auto Patrol: []"},
 					else
 						stun_attack(target)
 
+					//mode = BOT_PREP_ARREST SKYRAT EDIT CHANGE BELOW
+					//set_anchored(TRUE)
 					target_lastloc = target.loc
 					if(target.incapacitated()) //SKYRAT EDIT ADDITION
 						mode = BOT_PREP_ARREST

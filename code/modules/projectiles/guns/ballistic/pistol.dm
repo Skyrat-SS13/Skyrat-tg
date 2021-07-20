@@ -70,6 +70,9 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .50 AE ammo."
 	icon_state = "deaglecamo"
 	inhand_icon_state = "deagleg"
+	// SKYRAT EDIT - We don't actually have the right icons for this. When you add the icons you can remove this line!
+	show_bolt_icon = FALSE
+	// SKYRAT EDIT END
 
 /obj/item/gun/ballistic/automatic/pistol/aps
 	name = "stechkin APS machine pistol"
@@ -88,6 +91,8 @@
 	name = "flat gun"
 	desc = "A 2 dimensional gun.. what?"
 	icon_state = "flatgun"
+	mag_display = FALSE
+	show_bolt_icon = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/stickman/pickup(mob/living/user)
 	SHOULD_CALL_PARENT(FALSE)
