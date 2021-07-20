@@ -244,7 +244,7 @@
 
 /obj/item/clothing/neck/cloak/skill_reward/playing/check_wearable(mob/user)
 //SKYRAT EDIT BEGIN - THIS CHECK BROKE, AND ALLOWED MOBS WITHOUT CLIENTS (meaning anyone who was disconnected) to wear the cloak. This means you could DC and bypass the check.
-	if(user.client && user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN)
+	if(user.client && user.client.get_exp_living(TRUE) < PLAYTIME_VETERAN)
 		return TRUE
 	else
 		return FALSE
