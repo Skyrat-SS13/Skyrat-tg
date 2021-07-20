@@ -49,6 +49,11 @@
 	path = /obj/item/clothing/neck/cloak/polychromic
 	extra_info = LOADOUT_INFO_THREE_COLORS
 
+/datum/loadout_item/neck/player_cloak
+	name = "Distinguished Conduct Cloak"
+	path = /obj/item/clothing/neck/cloak/skill_reward/playing
+	playtimerequired = PLAYTIME_VETERAN
+
 /datum/loadout_item/neck/poly_veil
 	name = "Polychromic Veil"
 	path = /obj/item/clothing/neck/cloak/polychromic/veil

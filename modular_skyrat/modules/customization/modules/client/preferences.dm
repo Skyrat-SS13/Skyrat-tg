@@ -639,9 +639,9 @@ GLOBAL_LIST_INIT(food, list(
 						dat += "<a href='?_src_=prefs;preference=clear_scars'>Clear scar slots</A>"
 
 					dat += "<br><b>Uplink Spawn Location:</b><BR><a href ='?_src_=prefs;preference=uplink_loc;task=input'>[uplink_spawn_loc]</a><BR></td>"
-					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN || check_rights(R_ADMIN, FALSE)) //Skyrat edit. Allows admins to bypass the 2000 hour playtime.
+					/*if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN || check_rights(R_ADMIN, FALSE)) //Skyrat edit. Allows admins to bypass the 2000 hour playtime.
 						dat += "<br><b>Veteran Playtime Cloak?:</b><BR><a href ='?_src_=prefs;preference=playtime_reward_cloak'>[(playtime_reward_cloak) ? "Enabled" : "Disabled"]</a><BR></td>"
-
+					*/
 
 					if(pref_species.can_have_genitals)
 						dat += APPEARANCE_CATEGORY_COLUMN
@@ -907,6 +907,8 @@ GLOBAL_LIST_INIT(food, list(
 							for(var/path in item_names)
 								var/datum/loadout_item/LI = GLOB.loadout_items[path]
 								if(LI.ckeywhitelist && !(user.ckey in LI.ckeywhitelist))
+									continue
+								if((LI.playtimerequired && !(user.client.get_exp_living(TRUE) < LI.playtimerequired)) || !check_rights_for(user.client, R_ADMIN))
 									continue
 								var/background_cl = "#23273C"
 								if(even)
@@ -2555,9 +2557,9 @@ GLOBAL_LIST_INIT(food, list(
 					if(new_loc)
 						uplink_spawn_loc = new_loc
 
-				if("playtime_reward_cloak")
+				/* if("playtime_reward_cloak")
 					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN || check_rights(R_ADMIN, FALSE)) //Skyrat edit. Allows admins to bypass 2000 hour requirement
-						playtime_reward_cloak = !playtime_reward_cloak
+						playtime_reward_cloak = !playtime_reward_cloak */
 
 				if("ai_core_icon")
 					var/ai_core_icon = input(user, "Choose your preferred AI core display screen:", "AI Core Display Screen Selection") as null|anything in GLOB.ai_core_display_screens - "Portrait"

@@ -12,6 +12,8 @@
 	var/cost = 1
 	///If set, it's a list containing ckeys which only can get the item
 	var/list/ckeywhitelist
+	//If set, requires a certain amount of playtime.
+	var/playtimerequired
 	///If set, is a list of job names of which can get the loadout item
 	var/list/restricted_roles
 	///Descriptive explanation of the restricted roles, if empty will automatically generate on New() if nessecary
