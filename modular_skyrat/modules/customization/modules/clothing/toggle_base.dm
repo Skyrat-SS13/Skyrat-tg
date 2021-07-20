@@ -1,6 +1,3 @@
-var/toggle_name
-
-
 /datum/component/toggle_clothes
 	var/toggled = FALSE
 	var/toggled_icon_state
