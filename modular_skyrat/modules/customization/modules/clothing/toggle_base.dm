@@ -14,16 +14,16 @@ var/toggle_name
 
 	src.toggled_icon_state = toggled_icon_state
 
-	RegisterSignal(parent, COMSIG_CLICK_ALT, proc/toggle_clothes)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, proc/on_examine)
+	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/toggle_clothes)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 
-/datum/component/toggle_clothes/proc/toggle_clothes(objitem/clothing/source, mob/living/clicker)
+/datum/component/toggle_clothes/proc/toggle_clothes(obj/item/clothing/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
   toggled = !toggled
   source.icon_state = (toggled ? toggled_icon_state : initial(source.icon_state))
 
-/datum/element/toggle_clothes/proc/on_examine(objitem/clothing/source, mob/living/clicker)
+/datum/element/toggle_clothes/proc/on_examine(obj/item/clothing/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
 	examine_list += span_boldnotice("This item is toggleable!")
