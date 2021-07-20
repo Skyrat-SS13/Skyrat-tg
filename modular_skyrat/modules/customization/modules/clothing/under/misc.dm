@@ -614,4 +614,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
+/obj/item/clothing/under/rank/civilian/head_of_personnel/parade
+	name = "head of personnel's male parade uniform"
+	desc = "A luxurious uniform for the head of personnel, woven in a deep blue. On the lapel is a small pin in the shape of a corgi's head."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "hop_parade_male"
+	inhand_icon_state = "hop_parade_male"
+	can_adjust = FALSE
 
+/obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female
+	name = "head of personnel's female parade uniform"
+	icon_state = "hop_parade_female"
