@@ -21,7 +21,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "cowboy_poncho"
-	toggle_name = "cloak"
 	mutant_variants = NONE
 	heat_protection = CHEST
 
