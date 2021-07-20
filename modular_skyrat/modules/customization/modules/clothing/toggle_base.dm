@@ -1,68 +1,30 @@
-/**
- * The basetype for subsets of clothing that can have two different distinct states.
- * The active state can also have a list of actions to give to the user.
- */
-/obj/item/clothing/toggle
-	/// Stores whether we are currently toggled or not
-	var/toggle_active = FALSE
-	/// The icon_state to swap to when we toggle
-	var/toggle_icon_state
-	/// The name of what actually toggles
-	var/toggle_name
-	/// List of action buttons to give when we are toggled active
-	var/list/datum/action/toggle_actions
+var/toggle_name
 
-/obj/item/clothing/toggle/examine(mob/user)
-	. = ..()
-	. += span_notice("<u>Alt Click</u> to toggle [src]\s [ toggle_name ] [ toggle_active ? "off" : "on" ]")
 
-/obj/item/clothing/toggle/AltClick(mob/user)
-	toggle_active = !toggle_active
-	on_toggle(user, toggle_active)
-	update_appearance()
+/datum/component/toggle_clothes
+	var/toggled = FALSE
+	var/toggled_icon_state
 
-/obj/item/clothing/toggle/Initialize()
-	SHOULD_CALL_PARENT(TRUE)
-	. = ..()
-	InitializeActions()
+/datum/component/toggle_clothes/Initialize(toggled_icon_state)
+	if(!isclothing(parent))
+		return COMPONENT_INCOMPATIBLE
 
-/obj/item/clothing/toggle/Destroy()
-	toggle_active = FALSE
-	if(ismob(loc))
-		update_actions(loc)
-	QDEL_LIST(toggle_actions)
-	toggle_actions = null
-	return ..()
+	if(!toggled_icon_state)
+		return COMPONENT_INCOMPATIBLE
 
-/// Here is where you should be creating the actions you want given to the user on toggle/equip
-/obj/item/clothing/toggle/proc/InitializeActions()
-	return
+	src.toggled_icon_state = toggled_icon_state
 
-/obj/item/clothing/toggle/update_icon_state()
-	. = ..()
-	icon_state = toggle_active ? toggle_icon_state : initial(icon_state)
+	RegisterSignal(parent, COMSIG_CLICK_ALT, proc/toggle_clothes)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, proc/on_examine)
 
-/obj/item/clothing/toggle/proc/update_actions(mob/user)
-	for(var/datum/action/action as anything in toggle_actions)
-		if(toggle_active)
-			user.actions |= action
-		else
-			user.actions -= action
-	user.update_action_buttons(TRUE)
+/datum/component/toggle_clothes/proc/toggle_clothes(objitem/clothing/source, mob/living/clicker)
+	SIGNAL_HANDLER
 
-/obj/item/clothing/toggle/proc/on_toggle(mob/user, toggle_state, silent=FALSE)
-	SHOULD_CALL_PARENT(TRUE)
-	if(!silent)
-		to_chat(user, span_notice("You toggle [src]\s [ toggle_name ] [ toggle_state ? "active" : "inactive" ]."))
-	update_actions(user)
+  toggled = !toggled
+  source.icon_state = (toggled ? toggled_icon_state : initial(source.icon_state))
 
-/obj/item/clothing/toggle/equipped(mob/user, slot)
-	SHOULD_CALL_PARENT(TRUE)
-	. = ..()
-	update_actions(user)
+/datum/element/toggle_clothes/proc/on_examine(objitem/clothing/source, mob/living/clicker)
+	SIGNAL_HANDLER
 
-/obj/item/clothing/toggle/dropped(mob/user)
-	SHOULD_CALL_PARENT(TRUE)
-	toggle_active = FALSE
-	update_actions(user)
-	return ..()
+	examine_list += span_boldnotice("This item is toggleable!")
+	examine_list += span_notice("Alt click to toggle!.")
