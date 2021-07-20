@@ -2,8 +2,8 @@
 #define DEFAULT_ANNOUNCEMENT_SOUND "default_announcement"
 
 /// Preset central command names to chose from for centcom reports.
-#define CENTCOM_PRESET "Central Command"
-#define SYNDICATE_PRESET "The Syndicate"
+#define CENTCOM_PRESET "High Command"
+#define SYNDICATE_PRESET "Nanotrasen" //Honk
 #define WIZARD_PRESET "The Wizard Federation"
 #define CUSTOM_PRESET "Custom Command Name"
 
