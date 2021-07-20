@@ -156,6 +156,9 @@
 					/obj/item/clothing/suit/dutchjacketsr = 1,
 					/obj/item/clothing/mask/gas/polyclown = 1,
 					/obj/item/clothing/mask/gas/clownbald = 1,
+					/obj/item/clothing/head/cowboyhat/sherrif = 1,
+					/obj/item/clothing/head/cowboyhat/sherrif/alt = 1,
+					/obj/item/clothing/head/cowboyhat/deputy = 1,
 					/obj/item/clothing/under/costume/loincloth/sensor = 1,
 					/obj/item/clothing/under/costume/loincloth/cloth/sensor = 1)	//SKYRAT EDIT ADDITION END
 
