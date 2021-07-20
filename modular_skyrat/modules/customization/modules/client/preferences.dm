@@ -908,7 +908,7 @@ GLOBAL_LIST_INIT(food, list(
 								var/datum/loadout_item/LI = GLOB.loadout_items[path]
 								if(LI.ckeywhitelist && !(user.ckey in LI.ckeywhitelist))
 									continue
-								if((LI.playtimerequired && !(user.client.get_exp_living(TRUE) < LI.playtimerequired)) || !check_rights_for(user.client, R_ADMIN))
+								if((LI.playtimerequired && !(user.client.get_exp_living(TRUE) < LI.playtimerequired))
 									continue
 								var/background_cl = "#23273C"
 								if(even)
