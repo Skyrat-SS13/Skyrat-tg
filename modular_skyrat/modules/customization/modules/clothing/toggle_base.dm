@@ -22,6 +22,4 @@
 
 /datum/element/toggle_clothes/proc/on_examine(obj/item/clothing/source, mob/living/clicker)
 	SIGNAL_HANDLER
-
-	examine_list += span_boldnotice("This item is toggleable!")
-	examine_list += span_notice("Alt click to toggle!.")
+	to_chat(user, "This item is toggleable! Alt Click to toggle!")
