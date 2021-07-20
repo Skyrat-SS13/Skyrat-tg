@@ -161,11 +161,11 @@
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
 		tool_behaviour = TOOL_WRENCH
-		to_chat(user, "<span class='notice'>You attach the bolt bit to [src].</span>")
-		//___callbacknewicon_state = "drill_bolt"
+		balloon_alert(user, "attached bolt bit")
+		//icon_state = "drill_bolt"
 	else
 		tool_behaviour = TOOL_SCREWDRIVER
-		to_chat(user, "<span class='notice'>You attach the screw bit to [src].</span>")
+		balloon_alert(user, "attached screw bit")
 		//icon_state = "drill_screw"
 	update_appearance() //SKYRAT EDIT ADDITION
 
