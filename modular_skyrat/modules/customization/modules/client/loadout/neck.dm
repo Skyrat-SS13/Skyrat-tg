@@ -39,7 +39,7 @@
 	name = "Holocollar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/holocollar
 
-/datum/loadout_item/neck/poncxhocowbot
+/datum/loadout_item/neck/ponchocowboy
 	name = "Green cowboy poncho"
 	path =/obj/item/clothing/toggle/cowboylea
 
