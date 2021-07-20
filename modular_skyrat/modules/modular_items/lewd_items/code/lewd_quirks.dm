@@ -116,10 +116,10 @@
 	if(in_company() && satisfaction >= 0.1)
 		satisfaction -= 0.1
 
-	if(in_company() && (satisfaction > 30 && satisfaction < 31))
+	if(in_company() && (satisfaction > 30 && satisfaction < 31) && prob(10))
 		to_chat(owner, "<font color=purple>Your thoughts are slightly confused...</font>")
 
-	if(in_company() && (satisfaction > 15 && satisfaction < 16))
+	if(in_company() && (satisfaction > 15 && satisfaction < 16) && prob(10))
 		to_chat(owner, "<font color=purple>You feel so hot...</font>")
 
 	if(in_company() && satisfaction <= 0.1)
