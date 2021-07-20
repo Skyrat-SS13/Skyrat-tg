@@ -105,6 +105,15 @@
 	icon = 'icons/obj/lavaland/survival_pod.dmi'
 	icon_state = "pwindow"
 
+/obj/structure/window/reinforced/survival_pod/spawner/north
+	dir = NORTH
+
+/obj/structure/window/reinforced/survival_pod/spawner/east
+	dir = EAST
+
+/obj/structure/window/reinforced/survival_pod/spawner/west
+	dir = WEST
+
 //Door
 /obj/machinery/door/airlock/survival_pod
 	name = "airlock"
@@ -129,6 +138,31 @@
 	icon = 'icons/obj/lavaland/survival_pod.dmi'
 	icon_state = "windoor"
 	base_state = "windoor"
+
+/obj/machinery/door/window/survival_pod/southleft //Only included to make my batch edits easier.
+	desc = "A mechanical window door. This one seems incredibly stupid for some reason."
+
+/obj/machinery/door/window/survival_pod/southright //Ditto.
+	desc = "A mechanical window door. This one seems incredibly stupid for some reason."
+
+/obj/machinery/door/window/survival_pod/northleft
+	dir = NORTH
+
+/obj/machinery/door/window/survival_pod/northright
+	dir = NORTH
+
+/obj/machinery/door/window/survival_pod/eastleft
+	dir = EAST
+
+/obj/machinery/door/window/survival_pod/eastright
+	dir = EAST
+
+/obj/machinery/door/window/survival_pod/westleft
+	dir = WEST
+
+/obj/machinery/door/window/survival_pod/westright
+	dir = WEST
+
 
 //Table
 /obj/structure/table/survival_pod

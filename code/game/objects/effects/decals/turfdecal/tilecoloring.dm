@@ -79,7 +79,7 @@
 
 /obj/effect/turf_decal/tile/red
 	name = "red corner"
-	color = "#486091" //SKYRAT EDIT CHANGE
+	color = "#ff0000" //Totally normal pubby change here, move along
 
 /obj/effect/turf_decal/tile/red/half
 	icon_state = "tile_half"
@@ -279,7 +279,7 @@
 /// Red trimlines
 
 /obj/effect/turf_decal/trimline/red
-	color = "#486091" //SKYRAT EDIT CHANGE
+	color = "#ff0000" //SKYRAT EDIT CHANGE
 
 /obj/effect/turf_decal/trimline/red/line
 	icon_state = "trimline"
