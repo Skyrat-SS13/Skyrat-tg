@@ -1,7 +1,7 @@
 
 
 /obj/item/clothing/suit/armor/vest/nanotrasen_representative
-	name = "nanotrasen officers coat"
+	name = "highcomm officers coat"
 	desc = "A premium black coat with real fur round the neck, it seems to have some armor padding inside as well."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -17,8 +17,8 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/nanotrasen_representative
-	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"Nanotrasen Representative\"."
-	name = "nanotrasen representative's jumpsuit"
+	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"HighComm Representative\"."
+	name = "highcomm representative's jumpsuit"
 	icon_state = "ntrep"
 	inhand_icon_state = "b_suit"
 	sensor_mode = SENSOR_COORDS
@@ -27,8 +27,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/nanotrasen_representative/skirt
-	name = "nanotrasen representative's jumpskirt"
-	desc = "It's a green jumpskirt with some gold markings denoting the rank of \"Nanotrasen Representative\"."
+	name = "highcomm representative's jumpskirt"
+	desc = "It's a green jumpskirt with some gold markings denoting the rank of \"HighComm Representative\"."
 	icon_state = "ntrep_skirt"
 	inhand_icon_state = "b_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -36,8 +36,8 @@
 	fitted = FEMALE_UNIFORM_TOP
 
 /obj/item/clothing/head/beret/nanotrasen_representative
-	name = "nanotrasen representative's beret"
-	desc =  "A beret made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
+	name = "highcomm representative's beret"
+	desc =  "A beret made from durathread, it has an insignia on the front denoting the rank of a HighComm Representative."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ntrep_beret"
@@ -45,8 +45,8 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/head/nanotrasen_representative
-	name = "nanotrasen representative's hat"
-	desc = "A cap made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
+	name = "highcomm representative's hat"
+	desc = "A cap made from durathread, it has an insignia on the front denoting the rank of a HighComm Representative."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ntrep_cap"

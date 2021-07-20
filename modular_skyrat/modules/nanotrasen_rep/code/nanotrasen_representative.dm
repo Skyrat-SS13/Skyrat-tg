@@ -69,14 +69,14 @@
 	id_trim = /datum/id_trim/job/nanotrasen_representative
 
 /obj/item/radio/headset/heads/nanotrasen_representative
-	name = "\proper the nanotrasen representative's headset"
+	name = "\proper the highcomm representative's headset"
 	desc = "An official High Command headset."
 	icon_state = "cent_headset"
 	keyslot = new /obj/item/encryptionkey/headset_com
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
 
 /obj/item/radio/headset/heads/nanotrasen_representative/alt
-	name = "\proper the nanotrasen representative's bowman headset"
+	name = "\proper the highcomm representative's bowman headset"
 	desc = "An official High Command headset. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
 	inhand_icon_state = "cent_headset_alt"
@@ -105,7 +105,7 @@
 	name = "nanotrasen representatives PDA"
 	default_cartridge = /obj/item/cartridge/captain
 	inserted_item = /obj/item/pen/fountain/captain
-	greyscale_colors = "#017941#0060b8"
+	greyscale_colors = "#790101#4d4d4d"
 
 /obj/item/storage/box/gunset/nanotrasen_representative
 	name = "M45A5 Gunset"

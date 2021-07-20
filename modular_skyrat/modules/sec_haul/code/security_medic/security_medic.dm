@@ -36,7 +36,7 @@
 
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
+	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
@@ -46,9 +46,9 @@
 
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/security_medic)
 
-	backpack = /obj/item/storage/backpack/security/peacekeeper
-	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
 	box = /obj/item/storage/box/survival/security
 

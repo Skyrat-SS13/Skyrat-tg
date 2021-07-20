@@ -31,20 +31,20 @@
 
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/sergeant
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper
-	shoes = /obj/item/clothing/shoes/combat/peacekeeper
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
-	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
-	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
+	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/combat
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	suit = /obj/item/clothing/suit/armor/vest
+	head = /obj/item/clothing/head/beret/sec
 
-	suit_store = /obj/item/gun/energy/taser/armadyne //SKYRAT EDIT CHANGE - SEC_HAUL
+	suit_store = /obj/item/gun/energy/disabler
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm, /obj/item/armament_token/primary)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
-	backpack = /obj/item/storage/backpack/security/peacekeeper
-	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
 	l_pocket = /obj/item/megaphone/sec
 

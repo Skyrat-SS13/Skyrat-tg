@@ -39,22 +39,22 @@
 
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/junior
+	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	head = /obj/item/clothing/head/soft/black/junior_officer
 
 	suit = /obj/item/clothing/suit/toggle/labcoat/junior_officer
 
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/storage/box/gunset/pepperball, /obj/item/restraints/handcuffs/cable=2, /obj/item/storage/belt/security/peacekeeper)
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/storage/box/gunset/pepperball, /obj/item/restraints/handcuffs/cable=2, /obj/item/storage/belt/security)
 
 	l_pocket = /obj/item/flashlight
 
 	r_pocket = /obj/item/assembly/flash/handheld
 
-	backpack = /obj/item/storage/backpack/security/peacekeeper
-	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
 	box = /obj/item/storage/box/survival/security
 

@@ -1,6 +1,6 @@
 /obj/item/clothing/head/helmet/space/plasmaman/blueshield
-	name = "blueshield envirosuit helmet"
-	desc = "A plasmaman envirohelm designed for the blueshield."
+	name = "redshield envirosuit helmet"
+	desc = "A plasmaman envirohelm designed for the redshield."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "bs_envirohelm"

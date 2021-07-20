@@ -1,7 +1,7 @@
 //Blueshield
 /obj/item/clothing/under/rank/security/blueshield
 	desc = "Expensive designer shirt with snazzy suit pants, complete with a blue tie."
-	name = "Blueshield's suit"
+	name = "Redshield's suit"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
@@ -12,8 +12,8 @@
 	random_sensor = FALSE
 
 /obj/item/clothing/under/rank/security/blueshieldturtleneck
-	name = "Blueshield's turtleneck"
-	desc = "A cozier alternative to the normal Blueshield's Suit, the wool is still expensive."
+	name = "Redshield's turtleneck"
+	desc = "A cozier alternative to the normal Redshield's Suit, the wool is still expensive."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
