@@ -1,10 +1,10 @@
 /datum/job/janitor
 	title = "Janitor"
-	department_head = list("Head of Personnel")
+	department_head = list("Corporate Liasion")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the corporate liasion"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/janitor
@@ -30,7 +30,7 @@
 
 	belt = /obj/item/pda/janitor
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/rank/civilian/janitor
+	uniform = /obj/item/clothing/under/utility/syndicate
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/advanced=1)
 
 	id_trim = /datum/id_trim/job/janitor

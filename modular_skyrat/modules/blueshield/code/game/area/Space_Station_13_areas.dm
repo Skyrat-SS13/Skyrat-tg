@@ -1,3 +1,3 @@
 /area/blueshield
-	name = "Blueshield's Office"
+	name = "Redshield's Office"
 	icon_state = "bluenew"

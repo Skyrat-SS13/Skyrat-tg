@@ -1,10 +1,10 @@
 /datum/job/nanotrasen_representative
-	title = "Nanotrasen Representative"
-	department_head = list("Central Command")
+	title = "HighComm Representative"
+	department_head = list("High Command")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Central Command"
+	supervisors = "High Command"
 	selection_color = "#c6ffe0"
 	minimal_player_age = 14
 	exp_requirements = 600
@@ -32,7 +32,7 @@
 
 	veteran_only = TRUE
 
-	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
+	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative") //I forsee only fights from people with alt-titles, but to not break things...
 
 /datum/job/nanotrasen_representative/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
@@ -70,14 +70,14 @@
 
 /obj/item/radio/headset/heads/nanotrasen_representative
 	name = "\proper the nanotrasen representative's headset"
-	desc = "An official Central Command headset."
+	desc = "An official High Command headset."
 	icon_state = "cent_headset"
 	keyslot = new /obj/item/encryptionkey/headset_com
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
 
 /obj/item/radio/headset/heads/nanotrasen_representative/alt
 	name = "\proper the nanotrasen representative's bowman headset"
-	desc = "An official Central Command headset. Protects ears from flashbangs."
+	desc = "An official High Command headset. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
 	inhand_icon_state = "cent_headset_alt"
 
@@ -91,7 +91,7 @@
 
 /obj/item/clothing/accessory/medal/gold/nanotrasen_representative
 	name = "medal of diplomacy"
-	desc = "A golden medal awarded exclusively to those promoted to the rank of Nanotrasen Representative. It signifies the diplomatic abilities of said individual and their sheer dedication to Nanotrasen."
+	desc = "A golden medal awarded exclusively to those promoted to the rank of HighComm Representative. It signifies the diplomatic abilities of said individual and their sheer dedication to 'the cause'."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 /datum/outfit/plasmaman/nanotrasen_representative
@@ -124,7 +124,7 @@
 
 
 /obj/structure/closet/secure_closet/nanotrasen_representative/station
-	name = "\proper nanotrasen representative's locker"
+	name = "\proper highcomm representative's locker"
 	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
 	icon_state = "cc"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'

@@ -1,10 +1,10 @@
 /datum/job/chaplain
-	title = "Chaplain"
-	department_head = list("Head of Personnel")
+	title = "Counsel"
+	department_head = list("Corporate Liasion")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the corporate liasion"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/chaplain
@@ -41,7 +41,7 @@
 			B.icon_state = GLOB.bible_icon_state
 		if(GLOB.bible_inhand_icon_state)
 			B.inhand_icon_state = GLOB.bible_inhand_icon_state
-		to_chat(H, span_boldnotice("There is already an established religion onboard the station. You are an acolyte of [GLOB.deity]. Defer to the Chaplain."))
+		to_chat(H, span_boldnotice("There is already an established religion onboard the station. You are an acolyte of [GLOB.deity]. Defer to the Counsel."))
 		H.equip_to_slot_or_del(B, ITEM_SLOT_BACKPACK)
 		var/nrt = GLOB.holy_weapon_type || /obj/item/nullrod
 		var/obj/item/nullrod/N = new nrt(H)
@@ -140,7 +140,7 @@
 
 	belt = /obj/item/pda/chaplain
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/rank/civilian/chaplain
+	uniform = /obj/item/clothing/under/utility/syndicate
 	backpack_contents = list(
 		/obj/item/stamp/chap = 1,
 		/obj/item/camera/spooky = 1

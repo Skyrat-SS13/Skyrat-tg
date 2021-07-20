@@ -1,10 +1,10 @@
 /datum/job/roboticist
 	title = "Roboticist"
-	department_head = list("Research Director")
+	department_head = list("Chief Research Officer")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the research director"
+	supervisors = "the chief research officer"
 	selection_color = "#ffeeff"
 	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW
@@ -38,7 +38,7 @@
 	belt = /obj/item/storage/belt/utility/full
 	l_pocket = /obj/item/pda/roboticist
 	ears = /obj/item/radio/headset/headset_sci
-	uniform = /obj/item/clothing/under/rank/rnd/roboticist
+	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	suit = /obj/item/clothing/suit/toggle/labcoat/roboticist
 
 	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)

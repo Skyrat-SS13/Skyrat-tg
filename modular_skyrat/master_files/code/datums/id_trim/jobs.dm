@@ -1,14 +1,5 @@
 //MODULAR ID TRIM ACCESS OVERRIDES GO HERE!!
 
-/datum/id_trim/job/head_of_security
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-
-/datum/id_trim/job/warden
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-
-/datum/id_trim/job/security_officer
-	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-
 /datum/id_trim/job/head_of_security/New()
 	. = ..()
 
@@ -54,7 +45,7 @@
 				ACCESS_MINERAL_STOREROOM, ACCESS_VAULT, ACCESS_AUX_BASE, ACCESS_KEYCARD_AUTH, ACCESS_RC_ANNOUNCE, ACCESS_SEC_DOORS, ACCESS_HEADS)
 
 /datum/id_trim/job/blueshield
-	assignment = "Blueshield"
+	assignment = "Redshield" //honk
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_blueshield"
 	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_FORENSICS_LOCKERS, \
@@ -72,7 +63,7 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/nanotrasen_representative
-	assignment = "Nanotrasen Representative"
+	assignment = "HighComm Representative"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nanotrasenrepresentative"
 	full_access = list(ACCESS_COURT, ACCESS_WEAPONS,

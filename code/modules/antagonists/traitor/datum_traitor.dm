@@ -24,8 +24,8 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "traitor"
 	hijack_speed = 0.5 //10 seconds per hijack stage by default
-	suicide_cry = "FOR THE SYNDICATE!!"
-	var/employer = "The Syndicate"
+	suicide_cry = "FOR NANOTRASEN!!"
+	var/employer = "Nanotrasen"
 	var/give_objectives = TRUE
 	var/should_give_codewords = TRUE
 	var/should_equip = TRUE
@@ -178,7 +178,7 @@
 	var/phrases = jointext(GLOB.syndicate_code_phrase, ", ")
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
-	to_chat(traitor_mob, "<U><B>The Syndicate have provided you with the following codewords to identify fellow agents:</B></U>")
+	to_chat(traitor_mob, "<U><B>Nanotrasen have provided you with the following codewords to identify fellow agents:</B></U>")
 	to_chat(traitor_mob, "<B>Code Phrase</B>: [span_blue("[phrases]")]")
 	to_chat(traitor_mob, "<B>Code Response</B>: [span_red("[responses]")]")
 

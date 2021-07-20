@@ -1,10 +1,10 @@
 /datum/job/cook
 	title = "Cook"
-	department_head = list("Head of Personnel")
+	department_head = list("Corporate Liasion")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the corporate liasion"
 	selection_color = "#bbe291"
 	var/cooks = 0 //Counts cooks amount
 	/// List of areas that are counted as the kitchen for the purposes of CQC. Defaults to just the kitchen. Mapping configs can and should override this.
@@ -70,7 +70,7 @@
 
 	belt = /obj/item/pda/cook
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/rank/civilian/chef
+	uniform = /obj/item/clothing/under/utility/syndicate
 	suit = /obj/item/clothing/suit/toggle/chef
 	head = /obj/item/clothing/head/chefhat
 	mask = /obj/item/clothing/mask/fakemoustache/italian

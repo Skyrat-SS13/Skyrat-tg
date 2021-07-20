@@ -1,10 +1,10 @@
 /datum/job/curator
 	title = "Curator"
-	department_head = list("Head of Personnel")
+	department_head = list("Corporate Liasion")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the corporate liasion"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/curator
@@ -25,7 +25,7 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	belt = /obj/item/pda/curator
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/rank/civilian/curator
+	uniform = /obj/item/clothing/under/utility/syndicate
 	l_hand = /obj/item/storage/bag/books
 	r_pocket = /obj/item/key/displaycase
 	l_pocket = /obj/item/laser_pointer

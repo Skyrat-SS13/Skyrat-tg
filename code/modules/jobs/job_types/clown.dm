@@ -1,10 +1,10 @@
 /datum/job/clown
 	title = "Clown"
-	department_head = list("Head of Personnel")
+	department_head = list("Corporate Liasion")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the corporate liasion"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/clown
@@ -49,7 +49,8 @@
 		/obj/item/reagent_containers/spray/waterflower = 1,
 		/obj/item/food/grown/banana = 1,
 		/obj/item/instrument/bikehorn = 1,
-		)
+		/obj/item/uplink = 1,
+		) //I am fucking deranged
 
 	implants = list(/obj/item/implant/sad_trombone)
 

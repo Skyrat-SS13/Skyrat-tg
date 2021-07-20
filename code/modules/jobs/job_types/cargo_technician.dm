@@ -1,12 +1,12 @@
 /datum/job/cargo_technician
-	title = "Cargo Technician"
+	title = "Deck Crewman"
 	//department_head = list("Head of Personnel") //ORIGINAL
-	department_head = list("Quartermaster") //SKYRAT EDIT CHANGE
+	department_head = list("Deck Officer") //SKYRAT EDIT CHANGE
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
 	//supervisors = "the quartermaster and the head of personnel" //ORIGINAL
-	supervisors = "the quartermaster" //SKYRAT EDIT CHANGE
+	supervisors = "the deck officer" //SKYRAT EDIT CHANGE
 	selection_color = "#dcba97"
 
 	outfit = /datum/outfit/job/cargo_tech
@@ -34,7 +34,7 @@
 
 	belt = /obj/item/pda/cargo
 	ears = /obj/item/radio/headset/headset_cargo
-	uniform = /obj/item/clothing/under/rank/cargo/tech
+	uniform = /obj/item/clothing/under/utility/cargo/syndicate
 	l_hand = /obj/item/export_scanner
 	backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo = 1)
 	id_trim = /datum/id_trim/job/cargo_technician

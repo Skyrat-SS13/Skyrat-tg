@@ -1,11 +1,11 @@
 /datum/job/blueshield
-	title = "Blueshield"
+	title = "Redshield"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Nanotrasen Representative")
+	department_head = list("HighComm Representative")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Central Command and the Nanotrasen Representative"
+	supervisors = "High Command and the HighComm Representative"
 	selection_color = "#c6ffe0"
 	minimal_player_age = 7
 	exp_requirements = 2400
@@ -30,7 +30,7 @@
 		/obj/item/clothing/head/collectable/captain = 4,
 		/obj/projectile/bullet/b460 = 1
 	)
-	
+
 	veteran_only = TRUE
 
 /datum/outfit/job/blueshield

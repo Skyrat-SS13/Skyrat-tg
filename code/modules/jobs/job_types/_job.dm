@@ -226,11 +226,11 @@
 	var/jobtype = null
 
 	uniform = /obj/item/clothing/under/color/grey
-	id = /obj/item/card/id/advanced
+	id = /obj/item/card/id/advanced/black
 	ears = /obj/item/radio/headset
 	belt = /obj/item/pda
 	back = /obj/item/storage/backpack
-	shoes = /obj/item/clothing/shoes/sneakers/black
+	shoes = /obj/item/clothing/shoes/combat
 	box = /obj/item/storage/box/survival
 
 	var/backpack = /obj/item/storage/backpack

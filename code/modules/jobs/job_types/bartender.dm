@@ -1,10 +1,10 @@
 /datum/job/bartender
 	title = "Bartender"
-	department_head = list("Head of Personnel")
+	department_head = list("Corporate Liasion")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the corporate liasion"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/bartender
@@ -32,7 +32,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
 	belt = /obj/item/pda/bar
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/rank/civilian/bartender
+	uniform = /obj/item/clothing/under/utility/syndicate
 	suit = /obj/item/clothing/suit/armor/vest
 	backpack_contents = list(/obj/item/storage/box/beanbag=1)
 	shoes = /obj/item/clothing/shoes/laceup

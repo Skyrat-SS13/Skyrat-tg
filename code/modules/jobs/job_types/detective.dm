@@ -1,11 +1,11 @@
 /datum/job/detective
-	title = "Detective"
+	title = "Investigative Officer"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Head of Security")
+	department_head = list("Chief Master At Arms")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of security"
+	supervisors = "the chief master at arms"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 300
@@ -42,7 +42,7 @@
 
 	belt = /obj/item/pda/detective
 	ears = /obj/item/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/security/detective
+	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
 	neck = /obj/item/clothing/neck/tie/detective
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	suit = /obj/item/clothing/suit/det_suit

@@ -1,13 +1,13 @@
 /datum/job/head_of_personnel
-	title = "Head of Personnel"
+	title = "Corporate Liasion"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
-	department_head = list("Captain")
+	department_head = list("Station Admiral")
 	//head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE) //ORIGINAL
 	head_announce = list(RADIO_CHANNEL_SERVICE) //SKYRAT EDIT CHANGE
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "the station admiral"
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 10
@@ -37,16 +37,16 @@
 /datum/job/head_of_personnel/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
 	..()
 	if(announce_captaincy)
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Admiral [H.real_name] on deck!"))
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"
 	jobtype = /datum/job/head_of_personnel
 
-	id = /obj/item/card/id/advanced/silver
+	id = /obj/item/card/id/advanced/silver/generic
 	belt = /obj/item/pda/heads/hop
 	ears = /obj/item/radio/headset/heads/hop
-	uniform = /obj/item/clothing/under/rank/civilian/head_of_personnel
+	uniform = /obj/item/clothing/under/utility/com/syndicate
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	head = /obj/item/clothing/head/hopcap
 	backpack_contents = list(/obj/item/storage/box/ids=1,\

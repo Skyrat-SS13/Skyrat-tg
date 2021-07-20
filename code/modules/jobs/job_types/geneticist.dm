@@ -1,10 +1,10 @@
 /datum/job/geneticist
 	title = "Geneticist"
-	department_head = list("Research Director")
+	department_head = list("Chief Research Officer")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the research director"
+	supervisors = "the chief research officer"
 	selection_color = "#ffeeff"
 	exp_type = EXP_TYPE_CREW
 	exp_requirements = 60
@@ -31,7 +31,7 @@
 
 	belt = /obj/item/pda/geneticist
 	ears = /obj/item/radio/headset/headset_sci
-	uniform = /obj/item/clothing/under/rank/rnd/geneticist
+	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/genetics
 	suit_store =  /obj/item/flashlight/pen

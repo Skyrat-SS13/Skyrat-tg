@@ -1,10 +1,10 @@
 /datum/job/lawyer
-	title = "Lawyer"
-	department_head = list("Head of Personnel")
+	title = "Corporate Lawyer"
+	department_head = list("Corporate Liasion")
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "the corporate liasion"
 	selection_color = "#bbe291"
 	var/lawyers = 0 //Counts lawyer amount
 

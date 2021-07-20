@@ -1,10 +1,10 @@
 /datum/job/station_engineer
-	title = "Station Engineer"
-	department_head = list("Chief Engineer")
+	title = "Engine Technician"
+	department_head = list("Chief Engineering Officer")
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "the chief engineer"
+	supervisors = "the chief engineering officer"
 	selection_color = "#fff5cc"
 	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW
@@ -37,7 +37,7 @@
 	belt = /obj/item/storage/belt/utility/full/engi
 	l_pocket = /obj/item/pda/engineering
 	ears = /obj/item/radio/headset/headset_eng
-	uniform = /obj/item/clothing/under/rank/engineering/engineer
+	uniform = /obj/item/clothing/under/utility/eng/syndicate
 	shoes = /obj/item/clothing/shoes/workboots
 	head = /obj/item/clothing/head/hardhat
 	r_pocket = /obj/item/t_scanner

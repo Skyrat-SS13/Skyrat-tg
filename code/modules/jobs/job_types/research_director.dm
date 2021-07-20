@@ -1,12 +1,12 @@
 /datum/job/research_director
-	title = "Research Director"
+	title = "Chief Research Officer"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
-	department_head = list("Captain")
+	department_head = list("Station Admiral")
 	head_announce = list("Science")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = "the station admiral"
 	selection_color = "#ffddff"
 	req_admin_notify = 1
 	minimal_player_age = 7
@@ -37,7 +37,7 @@
 /datum/job/research_director/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
 	..()
 	if(announce_captaincy)
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Admiral [H.real_name] on deck!"))
 
 /datum/outfit/job/rd
 	name = "Research Director"
@@ -46,7 +46,7 @@
 	id = /obj/item/card/id/advanced/silver
 	belt = /obj/item/pda/heads/rd
 	ears = /obj/item/radio/headset/heads/rd
-	uniform = /obj/item/clothing/under/rank/rnd/research_director
+	uniform = /obj/item/clothing/under/utility/com/syndicate
 	shoes = /obj/item/clothing/shoes/jackboots //SKYRAT EDIT CHANGE
 	suit = /obj/item/clothing/suit/toggle/labcoat/rd //SKYRAT EDIT CHANGE
 	l_hand = /obj/item/clipboard

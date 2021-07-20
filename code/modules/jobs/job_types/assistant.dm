@@ -2,7 +2,7 @@
 Assistant
 */
 /datum/job/assistant
-	title = "Assistant"
+	title = "Operative"
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
@@ -43,6 +43,6 @@ Assistant
 			uniform = /obj/item/clothing/under/color/jumpskirt/grey
 	else
 		if(H.jumpsuit_style == PREF_SUIT)
-			uniform = /obj/item/clothing/under/color/random
+			uniform = /obj/item/clothing/under/syndicate
 		else
-			uniform = /obj/item/clothing/under/color/jumpskirt/random
+			uniform = /obj/item/clothing/under/syndicate/skirt

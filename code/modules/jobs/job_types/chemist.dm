@@ -1,5 +1,5 @@
 /datum/job/chemist
-	title = "Chemist"
+	title = "Bioweapons Technician"
 	department_head = list("Chief Medical Officer")
 	faction = "Station"
 	total_positions = 2
@@ -39,7 +39,7 @@
 	l_pocket = /obj/item/reagent_containers/glass/bottle/random_buffer
 	r_pocket = /obj/item/reagent_containers/dropper
 	ears = /obj/item/radio/headset/headset_med
-	uniform = /obj/item/clothing/under/rank/medical/chemist
+	uniform = /obj/item/clothing/under/utility/med/syndicate
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/chemist
 	backpack = /obj/item/storage/backpack/chemistry
