@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/scaling_method = SCALING_METHOD_DISTORT
 	var/uplink_spawn_loc = UPLINK_PDA
 	///The playtime_reward_cloak variable can be set to TRUE from the prefs menu only once the user has gained over 2K playtime hours. If true, it allows the user to get a cool looking roundstart cloak.
-	var/playtime_reward_cloak = 0
+	var/playtime_reward_cloak = FALSE
 
 	var/list/exp = list()
 	var/list/menuoptions
@@ -2557,10 +2557,7 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("playtime_reward_cloak")
 					if (user.client.get_exp_living(TRUE) >= PLAYTIME_VETERAN || check_rights(R_ADMIN, FALSE)) //Skyrat edit. Allows admins to bypass 2000 hour requirement
-						if(playtime_reward_cloak == 0)
-							playtime_reward_cloak = 1
-						else //Shitty but this bugged out
-							playtime_reward_cloak = 0
+						playtime_reward_cloak = !playtime_reward_cloak
 
 				if("ai_core_icon")
 					var/ai_core_icon = input(user, "Choose your preferred AI core display screen:", "AI Core Display Screen Selection") as null|anything in GLOB.ai_core_display_screens - "Portrait"
