@@ -2,23 +2,23 @@
 
 //SKYRAT EDIT ADDITION
 GLOBAL_LIST_INIT(central_command_positions, list(
-	"Nanotrasen Representative",
-	"Blueshield"))
+	"HighComm Representative",
+	"Redshield"))
 //SKYRAT EDIT END
 
 GLOBAL_LIST_INIT(command_positions, list(
-	"Captain",
-	"Head of Personnel",
-	"Head of Security",
-	"Chief Engineer",
-	"Research Director",
-	"Quartermaster", //SKYRAT EDIT ADDITION
+	"Station Admiral",
+	"Corporate Liasion",
+	"Chief Master At Arms",
+	"Chief Engineering Officer",
+	"Chief Research Officer",
+	"Deck Officer",
 	"Chief Medical Officer"))
 
 
 GLOBAL_LIST_INIT(engineering_positions, list(
-	"Chief Engineer",
-	"Station Engineer",
+	"Chief Engineering Officer",
+	"Engine Technician",
 	"Atmospheric Technician"))
 
 
@@ -27,11 +27,11 @@ GLOBAL_LIST_INIT(medical_positions, list(
 	"Medical Doctor",
 	"Paramedic",
 	"Virologist",
-	"Chemist"))
+	"Bioweapons Technician"))
 
 
 GLOBAL_LIST_INIT(science_positions, list(
-	"Research Director",
+	"Chief Research Officer",
 	"Scientist",
 	"Geneticist",
 	"Roboticist",
@@ -39,25 +39,25 @@ GLOBAL_LIST_INIT(science_positions, list(
 
 
 GLOBAL_LIST_INIT(supply_positions, list(
-	"Quartermaster",
-	"Cargo Technician",
+	"Deck Officer",
+	"Deck Crewman",
 	"Shaft Miner"))
 
 
 GLOBAL_LIST_INIT(service_positions, list(
-	"Head of Personnel",
+	"Corporate Liasion",
 	"Bartender",
 	"Botanist",
 	"Cook",
 	"Janitor",
 	"Curator",
 	"Psychologist",
-	"Lawyer",
-	"Chaplain",
+	"Corporate Lawyer",
+	"Counsel",
 	"Clown",
 	"Mime",
 	"Prisoner",
-	"Assistant"))
+	"Operative"))
 
 //we really need to split service into civillian positions officially, until then this is my solution
 GLOBAL_LIST_INIT(service_food_positions, list(
@@ -66,9 +66,9 @@ GLOBAL_LIST_INIT(service_food_positions, list(
 	"Cook"))
 
 GLOBAL_LIST_INIT(security_positions, list(
-	"Head of Security",
-	"Warden",
-	"Detective",
+	"Chief Master At Arms",
+	"Master At Arms",
+	"Investigative Officer",
 	"Security Officer",
 	"Security Medic",
 	"Security Sergeant",
