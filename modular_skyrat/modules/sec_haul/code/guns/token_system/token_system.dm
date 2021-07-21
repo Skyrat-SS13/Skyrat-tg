@@ -72,25 +72,13 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pdh_peacekeeper"
 		),
-	/obj/item/storage/box/gunset/glock17 = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "g17"
-		),
-	/obj/item/storage/box/gunset/ladon = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "ladon"
-		),
-	/obj/item/storage/box/gunset/dozer = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "dozer"
+	/obj/item/storage/box/gunset/proplayer= image(
+		icon = 'icons/obj/guns/energy.dmi',
+		icon_state = "disabler"
 		),
 	/obj/item/storage/box/gunset/zeta = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "zeta"
-		),
-	/obj/item/storage/box/gunset/revolution = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "revolution"
 		)
 	)
 
@@ -131,13 +119,13 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pcr"
 		),
+	/obj/item/storage/box/gunset/norwind = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "norwind"
+		),
 	/obj/item/storage/box/gunset/ostwind = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "ostwind"
-		),
-	/obj/item/storage/box/gunset/vintorez = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "vintorez"
 		),
 	/obj/item/storage/box/gunset/pitbull = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',

@@ -61,7 +61,7 @@
 
 
 /obj/machinery/turnstile/Bumped(atom/movable/AM)
-	if(world.time - last_bumped > 5)
+	if(ismob(AM) && world.time - last_bumped > 5)
 		to_chat(usr, span_notice("[src] resists your efforts."))
 		flick("deny", src)
 		playsound(src,'sound/machines/deniedbeep.ogg',50,0,3)
