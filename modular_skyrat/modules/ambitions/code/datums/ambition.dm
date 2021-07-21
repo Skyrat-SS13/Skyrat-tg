@@ -18,7 +18,9 @@
 			return
 		to_chat(src, span_adminhelp("You cannot have ambitions however you are bypassing this with admin powers."))
 		if(!mind.ambitions)
-			var/datum/antagonist/custom/amb = new("Setup Your Ambitions")
+			var/datum/antagonist/custom/amb = new
+			amb.name = "Setup Your Ambitions"
+			amb.ambitions_uses = TRUE
 			mind.add_antag_datum(amb)
 
 	mind.ambitions.ui_interact(usr)
