@@ -31,7 +31,7 @@
 		"Silicon" = list("exceptions" = list(), "open" = 0)
 	)
 	var/list/departments = list(
-		list("flag" = DEPARTMENT_CENTRAL_COMMAND, "name" = "Central Command"), //SKYRAT EDIT CHANGE
+		list("flag" = DEPARTMENT_CENTRAL_COMMAND, "name" = "Central Command"), //SKYRAT EDIT CHANGE //To be honest I wanted to change this but decided it'd be too much hassle
 		list("flag" = DEPARTMENT_COMMAND, "name" = "Command"),
 		list("flag" = DEPARTMENT_SECURITY, "name" = "Security"),
 		list("flag" = DEPARTMENT_ENGINEERING, "name" = "Engineering"),
