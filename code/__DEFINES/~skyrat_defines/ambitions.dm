@@ -13,3 +13,11 @@ GLOBAL_PROTECT(ambitions)
 	INTENSITY_HEAVY,\
 	INTENSITY_EXTREME,\
 )
+
+GLOBAL_LIST_INIT_TYPED(ambition_templates, /datum/ambition_template, setup_ambition_templates())
+GLOBAL_PROTECT(ambition_templates)
+
+/proc/setup_ambition_templates()
+	. = list()
+	for(var/stype in subtypesof(/datum/ambition_template))
+		. += new stype()
