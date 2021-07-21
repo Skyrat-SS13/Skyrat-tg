@@ -18,12 +18,8 @@
 	show_to_ghosts = TRUE
 
 /datum/antagonist/wizard/on_gain()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	register()
 	equip_wizard()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		create_objectives()
 	if(move_to_lair)
@@ -109,12 +105,8 @@
 				objectives += hijack_objective
 
 /datum/antagonist/wizard/on_removal()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	unregister()
 	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
-	*/
-	//SKYRAT EDIT REMOVAL END
 	return ..()
 
 /datum/antagonist/wizard/proc/equip_wizard()
