@@ -1,62 +1,13 @@
 #define AMBITION_AUTOAPPROVE_TIMER 20 MINUTES
 
-/datum/mind/var/datum/ambitions/ambitions
+/// Does this antagonist use ambitions
 /datum/antagonist/var/ambitions_uses = FALSE
+
+/// This var simply stores whether or not this ambition was approved already.
+/// This ensures we dont equip traitors twice for example.
 /datum/antagonist/var/ambitions_approved = FALSE
 
-GLOBAL_LIST_EMPTY_TYPED(ambitions, /datum/ambitions)
-GLOBAL_PROTECT(ambitions)
-
-#define INTENSITY_STEALTH "Stealth"
-#define INTENSITY_MINOR "Minor"
-#define INTENSITY_MAJOR "Major"
-#define INTENSITY_HEAVY "Heavy"
-#define INTENSITY_EXTREME "Extreme"
-#define INTENSITY_ALL list(\
-	INTENSITY_STEALTH,\
-	INTENSITY_MINOR,\
-	INTENSITY_MAJOR,\
-	INTENSITY_HEAVY,\
-	INTENSITY_EXTREME,\
-)
-
-/datum/mind/Destroy()
-	ambitions?.disconnect()
-	return ..()
-
-/datum/mind/New()
-	if(GLOB.ambitions[key])
-		GLOB.ambitions[key].connect(src)
-	return ..()
-
-/datum/mind/proc/init_ambition(datum/antagonist/antag)
-	if(!ambitions)
-		ambitions = new(src)
-	ambitions.owner_antags |= antag
-	to_chat(src, span_adminhelp("You are now \a [antag]! Please adjust your ambitions accordingly."))
-	if(ambitions.approved)
-		message_admins(span_adminhelp("[src] is now \a [antag] after their previous ambitions were approved. Their ambitions have been automatically un-approved however they may still their old equipment/powers."))
-		ambitions.approved = FALSE
-		ambitions.handling = null
-	ambitions._log("ANTAG+= [antag]")
-
-/datum/mind/proc/dest_ambition(datum/antagonist/antag)
-	if(!ambitions)
-		CRASH("Attempted to remove antag from a non-extistant ambitions holder")
-	ambitions.owner_antags -= antag
-
-	if(length(ambitions.owner_antags) > 0)
-		to_chat(src, span_adminhelp("You are no longer \a [antag]! Please adjust your ambitions accordingly."))
-		if(ambitions.approved)
-			message_admins(span_adminhelp("[src] is now \a [antag] after their previous ambitions were approved. Their ambitions have been automatically un-approved however they may still their old equipment/powers."))
-			ambitions.approved = FALSE
-			ambitions.handling = null
-		return
-
-	to_chat(src, span_adminhelp("You are no longer an antag and your ambitions will now be removed."))
-	message_admins(span_adminhelp("[src] is no longer an antag."))
-	qdel(src)
-
+/// This is a verb which allows a mob to view their mind's ambitions.
 /mob/verb/cmd_view_ambitions()
 	set name = "View Ambitions"
 	set category = "IC"

@@ -1,0 +1,15 @@
+GLOBAL_LIST_EMPTY_TYPED(ambitions, /datum/ambitions)
+GLOBAL_PROTECT(ambitions)
+
+#define INTENSITY_STEALTH "Stealth"
+#define INTENSITY_MINOR "Minor"
+#define INTENSITY_MAJOR "Major"
+#define INTENSITY_HEAVY "Heavy"
+#define INTENSITY_EXTREME "Extreme"
+#define INTENSITY_ALL list(\
+	INTENSITY_STEALTH,\
+	INTENSITY_MINOR,\
+	INTENSITY_MAJOR,\
+	INTENSITY_HEAVY,\
+	INTENSITY_EXTREME,\
+)
