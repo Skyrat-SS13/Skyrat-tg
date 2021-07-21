@@ -82,7 +82,7 @@
 
 //Detective
 /obj/item/clothing/head/fedora/det_hat
-	name = "detective's fedora"
+	name = "investigative officer's fedora"
 	desc = "There's only one man who can sniff out the dirty stench of crime, and he's likely wearing this hat."
 	armor = list(MELEE = 25, BULLET = 5, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 50, WOUND = 5)
 	icon_state = "detective"
@@ -153,8 +153,8 @@
 //Security
 
 /obj/item/clothing/head/hos
-	name = "head of security cap"
-	desc = "The robust standard-issue cap of the Head of Security. For showing the officers who's in charge."
+	name = "chief master at arms cap"
+	desc = "The robust standard-issue cap of the Chief Master At Arms. For showing the officers who's in charge."
 	icon_state = "hoscap"
 	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, RAD = 0, FIRE = 50, ACID = 60, WOUND = 10)
 	strip_delay = 80
@@ -165,8 +165,8 @@
 	desc = "A black cap fit for a high ranking syndicate officer."
 
 /obj/item/clothing/head/hos/beret
-	name = "head of security beret"
-	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
+	name = "chief master at arms beret"
+	desc = "A robust beret for the Chief Master At Arms, for looking stylish while not sacrificing protection."
 	icon_state = "hosberetblack"
 
 /obj/item/clothing/head/hos/beret/syndicate

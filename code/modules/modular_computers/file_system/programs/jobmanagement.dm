@@ -17,20 +17,20 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	//Jobs you cannot open new positions for
 	var/list/blacklisted = list(
 		"AI",
-		"Assistant",
+		"Operative",
 		"Cyborg",
-		"Captain",
-		"Head of Personnel",
-		"Head of Security",
-		"Chief Engineer",
-		"Research Director",
+		"Station Admiral",
+		"Corporate Liasion",
+		"Chief Master At Arms",
+		"Chief Engineering Officer",
+		"Chief Research Officer",
 		"Security Sergeant", //SKYRAT EDIT CHANGE START
 		"Security Medic",
 		"Clown",
-		"Blueshield",
-		"Nanotrasen Representative",//SKYRAT EDIT END
+		"Redshield",
+		"HighComm Representative",//SKYRAT EDIT END
 		"Chief Medical Officer",
-		"Quartermaster",
+		"Deck Officer",
 		"Shuttle Pilot")
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
