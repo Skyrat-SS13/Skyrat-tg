@@ -104,8 +104,11 @@
 	.["intensities"] = INTENSITY_ALL
 
 	.["obj_keys"] = list()
-	for(var/datum/ambition_objective/objective as anything in objectives)
-		.["obj_keys"] += objective.key
+	.["antag_types"] = list()
+	for(var/antag in objectives)
+		.["antag_types"] += antag
+		for(var/datum/ambition_objective/objective as anything in objectives[antag])
+			.["obj_keys"] += objective.key
 
 	.["is_antag"] = LAZYLEN(owner_antags)
 	.["antags"] = list()
@@ -185,17 +188,23 @@
 
 /datum/ambitions/proc/autoapprove_approve()
 	_log("AUTOAPPROVE=APPROVE")
-	handling = "autoapprove"
+	handling = "Auto-Approve"
 	approve()
 	return
 
 /datum/ambitions/proc/approve()
 	_log("APPROVED")
 	approved = TRUE
-	to_chat(owner.current, span_adminhelp("Your ambitions have been approved."))
+	to_chat(owner.current, span_adminhelp("Your ambitions have been approved and you have receieved any applicable gear. Check your Memory."))
 	message_admins(span_adminhelp("[owner_ckey]'s ambitions have been approved by [handling]."))
 	for(var/datum/antagonist/antag as anything in owner_antags)
+		antag.objectives.Cut()
+		for(var/datum/ambition_objective/ambition as anything in (objectives[antag]))
+			var/datum/objective/_obj = new /datum/objective(ambition.desc)
+			_obj.name = ambition.name
+			antag.objectives += _obj
 		if(!antag.ambitions_approved)
+			antag.silent = TRUE
 			antag.on_gain()
 			antag.ambitions_approved = TRUE
 
