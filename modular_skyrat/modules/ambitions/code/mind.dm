@@ -21,6 +21,7 @@
 		ambitions.approved = FALSE
 		ambitions.handling = null
 	ambitions._log("ANTAG+= [antag]")
+	antag.vars["give_objectives"] = FALSE // Ambitions should only ever contain antags that can have objectives
 
 /// Remove an antag datum from our ambitions holder
 /datum/mind/proc/dest_ambition(datum/antagonist/antag)
