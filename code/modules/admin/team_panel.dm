@@ -168,7 +168,7 @@
 
 //This is here if you want admin created teams to tell each other apart easily.
 /datum/team/custom/proc/admin_force_hud(mob/user)
-	var/list/possible_icons = icon_states('icons/mob/hud.dmi')
+	var/list/possible_icons = icon_states('modular_skyrat/master_files/icons/mob/hud.dmi') //Skyrat Edit
 	var/new_hud_state = input(user,"Choose hud icon state","Custom HUD","traitor") as null|anything in sortList(possible_icons)
 	if(!new_hud_state)
 		return
