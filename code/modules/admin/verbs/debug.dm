@@ -683,8 +683,8 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	for(var/name in SSmapping.ice_ruins_underground_templates)
 		names[name] = list(SSmapping.ice_ruins_underground_templates[name], ZTRAIT_ICE_RUINS_UNDERGROUND, list(/area/icemoon/underground/unexplored))
 //SKYRAT EDIT START//
-	for(var/name in SSmapping.asteroid_ruins_templates)
-		names[name] = list(SSmapping.asteroid_ruins_templates[name], ZTRAIT_ASTEROID_RUINS, list(/area/rockplanet/surface/outdoors/unexplored))
+	for(var/name in SSmapping.rockplanet_ruins_templates)
+		names[name] = list(SSmapping.rockplanet_ruins_templates[name], ZTRAIT_ROCKPLANET_RUINS, list(/area/rockplanet/surface/outdoors/unexplored))
 //SKYRAT EDIT END//
 
 	var/ruinname = input("Select ruin", "Spawn Ruin") as null|anything in sortList(names)
