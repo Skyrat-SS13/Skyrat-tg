@@ -1,40 +1,92 @@
-/client/var/datum/ambitions/ambitions
+#define AMBITION_AUTOAPPROVE_TIMER 20 MINUTES
 
-GLOBAL_LIST_EMPTY(ambitions)
+/datum/mind/var/datum/ambitions/ambitions
+/datum/antagonist/var/ambitions_uses = FALSE
+/datum/antagonist/var/ambitions_approved = FALSE
+
+GLOBAL_LIST_EMPTY_TYPED(ambitions, /datum/ambitions)
 GLOBAL_PROTECT(ambitions)
 
-/client/Destroy()
-	if(ambitions)
-		ambitions._log("DISCONNECTED")
-		ambitions.owner = null
-		ambitions = null
+#define INTENSITY_STEALTH "Stealth"
+#define INTENSITY_MINOR "Minor"
+#define INTENSITY_MAJOR "Major"
+#define INTENSITY_HEAVY "Heavy"
+#define INTENSITY_EXTREME "Extreme"
+#define INTENSITY_ALL list(\
+	INTENSITY_STEALTH,\
+	INTENSITY_MINOR,\
+	INTENSITY_MAJOR,\
+	INTENSITY_HEAVY,\
+	INTENSITY_EXTREME,\
+)
+
+/datum/mind/Destroy()
+	ambitions?.disconnect()
 	return ..()
 
-/client/New()
-	if(GLOB.ambitions[ckey])
-		ambitions = GLOB.ambitions[ckey]
-		ambitions.owner = src
+/datum/mind/New()
+	if(GLOB.ambitions[key])
+		GLOB.ambitions[key].connect(src)
 	return ..()
+
+/datum/mind/proc/init_ambition(datum/antagonist/antag)
+	if(!ambitions)
+		ambitions = new(src)
+	ambitions.owner_antags |= antag
+	to_chat(src, span_adminhelp("You are now \a [antag]! Please adjust your ambitions accordingly."))
+	if(ambitions.approved)
+		message_admins(span_adminhelp("[src] is now \a [antag] after their previous ambitions were approved. Their ambitions have been automatically un-approved however they may still their old equipment/powers."))
+		ambitions.approved = FALSE
+		ambitions.handling = null
+	ambitions._log("ANTAG+= [antag]")
+
+/datum/mind/proc/dest_ambition(datum/antagonist/antag)
+	if(!ambitions)
+		CRASH("Attempted to remove antag from a non-extistant ambitions holder")
+	ambitions.owner_antags -= antag
+
+	if(length(ambitions.owner_antags) > 0)
+		to_chat(src, span_adminhelp("You are no longer \a [antag]! Please adjust your ambitions accordingly."))
+		if(ambitions.approved)
+			message_admins(span_adminhelp("[src] is now \a [antag] after their previous ambitions were approved. Their ambitions have been automatically un-approved however they may still their old equipment/powers."))
+			ambitions.approved = FALSE
+			ambitions.handling = null
+		return
+
+	to_chat(src, span_adminhelp("You are no longer an antag and your ambitions will now be removed."))
+	message_admins(span_adminhelp("[src] is no longer an antag."))
+	qdel(src)
+
+/mob/verb/cmd_view_ambitions()
+	set name = "View Ambitions"
+	set category = "IC"
+
+	if(!mind || !length(mind.antag_datums))
+		to_chat(src, span_adminhelp("You cannot have ambitions."))
+		return
+
+	mind.ambitions.ui_interact(usr)
 
 /datum/ambitions
 	// OWNER INFO //
-	var/client/owner
+	var/datum/mind/owner
 	var/owner_ckey
+	var/list/datum/antagonist/owner_antags = list()
 
 	// STORY MAKING //
 	var/name
 	var/employer
 	var/backstory
 	var/intensity
-	var/list/datum/ambition_objective/objectives
+	var/list/datum/ambition_objective/objectives = list()
 
 	// RECORD KEEPING //
-	var/list/amb_history
-	var/list/amb_touches
+	var/list/amb_history = list()
+	var/list/amb_touches = list()
 
 	// ADMINISTRATION //
 	var/submitted
-	var/list/changes_requested
+	var/list/changes_requested = list()
 	var/approved
 	var/handling
 
@@ -43,21 +95,32 @@ GLOBAL_PROTECT(ambitions)
 	var/aa_active
 	var/aa_honked
 
+/datum/ambitions/proc/connect(datum/mind/owner)
+	src.owner = owner
+	owner_ckey = owner.key
+	owner.ambitions = src
+	// add_verb(owner.current, /mob/proc/cmd_view_ambitions)
+	_log("CONNECTED [owner_ckey]")
+	greet()
+
+/datum/ambitions/proc/disconnect()
+	if(owner)
+		// remove_verb(owner.current, /mob/proc/cmd_view_ambitions)
+		owner.ambitions = null
+		owner = null
+	_log("DISCONNECTED [owner_ckey]")
+
 /datum/ambitions/proc/_touched()
 	amb_touches += "\[[time_stamp()]\]\[[usr.ckey]\]"
 
 /datum/ambitions/proc/_log(log)
 	amb_history += "\[[time_stamp()]\] [log]"
 
-/datum/ambitions/New(client/owner)
-	_log("Created")
+/datum/ambitions/New(datum/mind/owner)
 	if(!owner)
 		CRASH("No owner for new ambitions")
-	owner_ckey = owner.ckey
-	src.owner = owner
-	objectives = list()
-	amb_history = list()
-	amb_touches = list()
+	_log("Created")
+	connect(owner)
 
 /datum/ambitions/Destroy()
 	QDEL_LIST(objectives)
@@ -69,11 +132,12 @@ GLOBAL_PROTECT(ambitions)
 	return ..()
 
 /datum/ambitions/ui_status(mob/user)
-	if(user.client == parent || check_rights_for(user.client, R_ADMIN))
+	if(user.mind == owner || check_rights_for(user.client, R_ADMIN))
 		return UI_INTERACTIVE
 	return UI_CLOSE
 
 /datum/ambitions/ui_interact(mob/user, datum/tgui/ui)
+	_log("UI INTERACT")
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Ambitions")
@@ -85,11 +149,28 @@ GLOBAL_PROTECT(ambitions)
 	.["backstory"] = backstory
 	.["employer"] = employer
 	.["objectives"] = objectives
-	.["objective_keys"] = list()
+	.["intensity"] = intensity
+	.["intensities"] = INTENSITY_ALL
+
+	.["obj_keys"] = list()
 	for(var/datum/ambition_objective/objective as anything in objectives)
 		.["obj_keys"] += objective.key
 
+	.["is_antag"] = LAZYLEN(owner_antags)
+	.["antags"] = list()
+	for(var/datum/antagonist/antag as anything in owner_antags)
+		.["antags"] += antag.name
+
+	.["admin"] = list(
+		"is_admin" = check_rights_for(user.client, R_ADMIN),
+		"handling" = handling,
+		"submitted" = submitted,
+		"approved" = approved,
+		"changes_requested" = changes_requested,
+	)
+
 /datum/ambitions/ui_act(action, list/params)
+	_log("UIACT=[action]")
 	. = ..()
 	if(.)
 		return
@@ -110,24 +191,67 @@ GLOBAL_PROTECT(ambitions)
 		if("intensity")
 			intensity = params["intensity"]
 			return TRUE
-	return FALSE
+
+		else
+			stack_trace("Unhandled Ambition Act [action]")
+			return TRUE
 
 /datum/ambitions/proc/greet()
+	_log("GREETED")
 	//TODO
 	return
 
-/datum/ambitions/proc/apply_template(template_ref)
+/datum/ambitions/proc/apply_template(datum/ambition_template/template_ref)
+	_log("TEMPLATE=[template_ref.name]")
 	//TODO
 	return
 
 /datum/ambitions/proc/autoapprove_start()
-	//TODO
+	_log("AUTOAPPROVE=START")
+	if(handling)
+		CRASH("Call to autoapprove_start despite having a handler")
+
+	if(!aa_honked)
+		aa_honked = TRUE
+		for(var/client/admin as anything in GLOB.admins)
+			window_flash(admin, TRUE)
+			if(!(admin.prefs.toggles & SOUND_ADMINHELP))
+				continue
+			SEND_SOUND(admin, sound('sound/effects/hygienebot_happy.ogg'))
+
+	aa_timerid = addtimer(CALLBACK(src, .proc/autoapprove_approve), AMBITION_AUTOAPPROVE_TIMER, TIMER_STOPPABLE|TIMER_CLIENT_TIME|TIMER_UNIQUE)
+	aa_active = TRUE
+	message_admins(span_adminhelp("Ambition Auto-Approval for [owner_ckey] has begun and will finish in [DisplayTimeText(AMBITION_AUTOAPPROVE_TIMER)]. Cancel it by opening the AmbitionUI and <b>Handling</b> it."))
 	return
 
 /datum/ambitions/proc/autoapprove_stop()
-	//TODO
+	_log("AUTOAPPROVE=STOP")
+	message_admins(span_adminhelp("Ambition Auto-Approval for [owner_ckey] has been stopped."))
+	deltimer(aa_timerid)
+	aa_timerid = 0
+	aa_active = FALSE
 	return
 
 /datum/ambitions/proc/autoapprove_approve()
-	//TODO
+	_log("AUTOAPPROVE=APPROVE")
+	handling = "autoapprove"
+	approve()
 	return
+
+/datum/ambitions/proc/approve()
+	_log("APPROVED")
+	approved = TRUE
+	to_chat(owner.current, span_adminhelp("Your ambitions have been approved."))
+	message_admins(span_adminhelp("[owner_ckey]'s ambitions have been approved by [handling]."))
+	for(var/datum/antagonist/antag as anything in owner_antags)
+		if(!antag.ambitions_approved)
+			antag.on_gain()
+			antag.ambitions_approved = TRUE
+
+/datum/ambitions/proc/handle(client/handler)
+	_log("HANDLED")
+	handling = handler.ckey
+	if(aa_active)
+		autoapprove_stop()
+	message_admins("[owner_ckey]'s ambitions are being handled by [handling]")
+	to_chat(owner.current, span_adminhelp("Your ambitions are now being handled by an admin."))

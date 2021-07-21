@@ -222,6 +222,8 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 					var/datum/antagonist/cult/cultist = EX.mind.has_antag_datum(/datum/antagonist/cult)
 					if (cultist)
 						cultist.silent = TRUE
+						if(cultist.ambitions_uses) // SKYRAT ADDITION - AMBITIONS
+							cultist.owner.dest_ambition(cultist) // SKYRAT ADDITION - AMBITIONS
 						cultist.on_removal()
 
 					EX.icon_state = "shade_holy"

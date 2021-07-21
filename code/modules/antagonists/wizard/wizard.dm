@@ -63,9 +63,6 @@
 	owner.current.forceMove(pick(GLOB.wizardstart))
 
 /datum/antagonist/wizard/proc/create_objectives()
-	objectives += new /datum/objective/ambitions() //SKYRAT EDIT ADDITION - WIZARD CHANGES
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	switch(rand(1,100))
 		if(1 to 30)
 			var/datum/objective/assassinate/kill_objective = new
@@ -110,8 +107,6 @@
 				var/datum/objective/hijack/hijack_objective = new
 				hijack_objective.owner = owner
 				objectives += hijack_objective
-	*/
-	//SKYRAT EDIT REMOVAL END
 
 /datum/antagonist/wizard/on_removal()
 	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES

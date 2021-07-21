@@ -138,11 +138,6 @@
 	var/mob/living/old_current = current
 	if(current)
 		current.transfer_observers_to(new_character) //transfer anyone observing the old character to the new one
-	//SKYRAT CHANGE ADDITION BEGIN - AMBITIONS
-	if(my_ambitions)
-		remove_verb(current, /mob/proc/view_ambitions)
-		add_verb(new_character, /mob/proc/view_ambitions)
-	//SKYRAT CHANGE ADDITION END
 	set_current(new_character) //associate ourself with our new body
 	new_character.mind = src //and associate our new body with ourself
 	for(var/a in antag_datums) //Makes sure all antag datums effects are applied in the new body
@@ -286,17 +281,13 @@
 	var/datum/team/antag_team = A.get_team()
 	if(antag_team)
 		antag_team.add_member(src)
-	INVOKE_ASYNC(A, /datum/antagonist.proc/on_gain)
+	// SKYRAT EDIT - AMBITIONS
+	if(!A.ambitions_uses)
+		INVOKE_ASYNC(A, /datum/antagonist.proc/on_gain) // ORIGINAL <<----
+	else
+		init_ambition(A)
+	// SKYRAT EDIT - END
 	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
-	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
-	if(A.uses_ambitions)
-		if(!my_ambitions)
-			my_ambitions = new(src)
-			add_verb(current, /mob/proc/view_ambitions)
-		//If we already have ambitions done, call the add proc to give us the proper powers/uplinks
-		if(my_ambitions.submitted)
-			A.ambitions_add()
-	//SKYRAT EDIT ADDITION END
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -305,10 +296,8 @@
 	var/datum/antagonist/A = has_antag_datum(datum_type)
 	if(A)
 		A.on_removal()
-		//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
-		if(A.uses_ambitions && my_ambitions.submitted)
-			A.ambitions_removal()
-		//SKYRAT EDIT ADDITION END
+		if(A.ambitions_uses) // SKYRAT ADDITION - AMBITIONS
+			dest_ambition(A) // SKYRAT ADDITION - AMBITIONS
 		return TRUE
 
 
@@ -316,6 +305,8 @@
 	for(var/a in antag_datums)
 		var/datum/antagonist/A = a
 		A.on_removal()
+		if(A.ambitions_uses) // SKYRAT ADDITION - AMBITIONS
+			dest_ambition(A) // SKYRAT ADDITION - AMBITIONS
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
@@ -670,13 +661,6 @@
 
 	else if (href_list["obj_announce"])
 		announce_objectives()
-	//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
-	if (href_list["ambitions"])
-		if(!my_ambitions)
-			return
-		//It's admin viewing the user's ambitions. The user can view them through a verb.
-		my_ambitions.ShowPanel(usr, TRUE)
-	//SKYRAT EDIT ADDITION END
 
 	//Something in here might have changed your mob
 	if(self_antagging && (!usr || !usr.client) && current.client)

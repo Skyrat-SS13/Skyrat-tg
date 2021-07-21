@@ -60,10 +60,6 @@
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
 
-	//SKYRAT EDIT ADDITION
-	var/datum/objective/ambitions/objective = new
-	objectives += objective
-	/* SKYRAT EDIT REMOVAL
 	var/is_hijacker = FALSE
 	var/objective_count = 0
 
@@ -85,7 +81,6 @@
 		return
 
 	forge_escape_objective()
-	*/
 
 /// Forges a single escape objective and adds it to this datum's objective list.
 /datum/antagonist/traitor/proc/forge_escape_objective()

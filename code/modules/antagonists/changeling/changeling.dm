@@ -83,17 +83,13 @@
 	if(!cellular_emporium) // SKYRAT EDIT START- PREVENTS DUPLICATION ON AMBITION SUBMIT
 		cellular_emporium = new(src)
 	if(!emporium_action)
-		emporium_action = new(cellular_emporium) // SKYRAT EDIT END 
+		emporium_action = new(cellular_emporium) // SKYRAT EDIT END
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()
-	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-	/*
 	create_actions()
 	reset_powers()
 	create_initial_profile()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		forge_objectives()
 	owner.current.grant_all_languages(FALSE, FALSE, TRUE) //Grants omnitongue. We are able to transform our body after all.
@@ -419,10 +415,6 @@
 	//No escape alone because changelings aren't suited for it and it'd probably just lead to rampant robusting
 	//If it seems like they'd be able to do it in play, add a 10% chance to have to escape alone
 
-
-	objectives += new /datum/objective/ambitions() //SKYRAT EDIT ADDITION - AMBITIONS
-	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-	/*
 	var/escape_objective_possible = TRUE
 
 	switch(competitive_objectives ? rand(1,3) : 1)
@@ -489,9 +481,6 @@
 			identity_theft.find_target()
 			objectives += identity_theft
 		escape_objective_possible = FALSE
-	*/
-	//SKYRAT EDIT REMOVAL END
-
 
 /datum/antagonist/changeling/admin_add(datum/mind/new_owner,mob/admin)
 	. = ..()

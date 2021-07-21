@@ -132,6 +132,8 @@
 	var/datum/antagonist/cult/cultist = Nominee.mind.has_antag_datum(/datum/antagonist/cult)
 	if (cultist)
 		cultist.silent = TRUE
+		if(cultist.ambitions_uses) // SKYRAT ADDITION - AMBITIONS
+			cultist.owner.dest_ambition(cultist) // SKYRAT ADDITION - AMBITIONS
 		cultist.on_removal()
 	Nominee.mind.add_antag_datum(/datum/antagonist/cult/master)
 	for(var/datum/mind/B in team.members)
