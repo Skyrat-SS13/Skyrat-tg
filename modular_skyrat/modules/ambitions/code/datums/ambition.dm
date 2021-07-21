@@ -13,8 +13,13 @@
 	set category = "IC"
 
 	if(!mind || !length(mind.antag_datums))
-		to_chat(src, span_adminhelp("You cannot have ambitions."))
-		return
+		if(!check_rights_for(client, R_ADMIN))
+			to_chat(src, span_adminhelp("You cannot have ambitions."))
+			return
+		to_chat(src, span_adminhelp("You cannot have ambitions however you are bypassing this with admin powers."))
+		if(!mind.ambitions)
+			var/datum/antagonist/custom/amb = new("Setup Your Ambitions")
+			mind.add_antag_datum(amb)
 
 	mind.ambitions.ui_interact(usr)
 
