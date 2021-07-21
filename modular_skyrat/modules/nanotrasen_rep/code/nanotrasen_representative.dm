@@ -86,7 +86,7 @@
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/effect/landmark/start/nanotrasen_representative
-	name = "Nanotrasen Representative"
+	name = "HighComm Representative"
 	icon_state = "Captain"
 
 /obj/item/clothing/accessory/medal/gold/nanotrasen_representative
