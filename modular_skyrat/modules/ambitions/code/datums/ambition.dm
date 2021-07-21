@@ -29,7 +29,8 @@
 	var/employer
 	var/backstory
 	var/intensity
-	var/list/datum/ambition_objective/objectives = list()
+	/// Assosciate list of objectives, key is the antag reference sue me
+	var/list/objectives = list()
 
 	// RECORD KEEPING //
 	var/list/amb_history = list()
