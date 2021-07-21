@@ -66,7 +66,7 @@
 	if(!istype(open_turf)) //Are we actually in an open turf?
 		remove_timer()
 		return
-  
+ 
 	for(var/atom/movable/content as anything in open_turf.contents)
 		if(GLOB.typecache_elevated_structures[content.type])
 			remove_timer()
