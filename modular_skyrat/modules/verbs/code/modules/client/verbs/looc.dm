@@ -39,6 +39,24 @@
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
 
 	var/list/heard = get_hearers_in_view(7, get_top_level_mob(src.mob))
+
+	//SKYRAT EDIT ADDITION BEGIN - AI QoL
+	var/aiAlreadyHeardIt = FALSE
+	//so the ai can post looc text
+	if(istype(src.mob,/mob/living/silicon/ai))
+		for(var/mob/camera/ai_eye/AI_eye as anything in GLOB.aiEyes)
+			heard = get_hearers_in_view(7, AI_eye)
+	//so the ai can see looc text
+	for(var/mob/camera/ai_eye/AI_eye as anything in GLOB.aiEyes)
+		for(var/mob/creature in heard) //checks if an ai has already heard it
+			if(istype(creature,/mob/living/silicon/ai))
+				aiAlreadyHeardIt = TRUE
+		if(aiAlreadyHeardIt == FALSE) //i dont wanna run an entire fuckin for loop if it turns out the ai can already see the text
+			for(var/mob/creature in heard)
+				if(creature==AI_eye)
+					heard += get_top_level_mob(src.mob)
+	//SKYRAT EDIT ADDITION END - AI QoL
+
 	var/list/admin_seen = list()
 	for(var/mob/M in heard)
 		if(!M.client)

@@ -201,6 +201,38 @@ Possible to do for anyone motivated enough:
 	else if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Current projection range: <b>[holo_range]</b> units.")
 
+	//SKYRAT EDIT ADDITION BEGIN - AI QoL
+	var/obj/effect/overlay/holo_pad_hologram/holo
+	var/line
+	var/mob/living/silicon/ai/aiPlayer
+	for(var/mob/living/silicon/ai/master in masters)
+		if(masters[master])
+			holo = masters[master]
+	if(LAZYLEN(masters))
+		for(var/I in masters)
+			var/mob/living/master = I
+			var/mob/living/silicon/ai/AI = master
+			if(!istype(AI))
+				AI = null
+			else
+				aiPlayer = AI
+	if(aiPlayer)
+		if(aiPlayer.client)
+			if(length(aiPlayer.client.prefs.features["silicon_flavor_text"]))
+				var/message = aiPlayer.client.prefs.features["silicon_flavor_text"]
+				if(length_char(message) <= 40)
+					line = "<span class='notice'>[message]</span>"
+				else
+					line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(aiPlayer)];lookup_info=silicon_flavor_text'>More...</a></span>"
+			line += " <span class='notice'><a href='?src=[REF(aiPlayer)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+	if(LAZYLEN(masters))
+		if(holo.Impersonation)
+			. += holo.Impersonation.examine(user)
+		else
+			. += "<span class='info'>*---------*\nThis is <EM>[aiPlayer.name].</EM>\n*---------*</span>"
+			. += line
+	//SKYRAT EDIT ADDITION END - AI QoL
+
 /obj/machinery/holopad/attackby(obj/item/P, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "holopad_open", "holopad0", P))
 		return
