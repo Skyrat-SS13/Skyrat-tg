@@ -72,8 +72,10 @@
 			remove_timer()
 			return
 
+	/* SKYRAT EDIT REMOVAL BEGINS - Temporary disabling rot
 	// If all other checks fail, then begin decomposition.
 	timerid = addtimer(CALLBACK(src, .proc/decompose), time_remaining, TIMER_STOPPABLE | TIMER_UNIQUE)
+	*/ /// SKYRAT EDIT REMOVAL ENDS
 
 /datum/component/decomposition/Destroy()
 	remove_timer()
