@@ -66,12 +66,6 @@
 	if(!istype(open_turf)) //Are we actually in an open turf?
 		remove_timer()
 		return
-    
-	//SKYRAT CHANGE, ADDS CRATES/LOCKERS/CLOSETS
-	if(locate(/obj/structure/closet) in get_turf(food))
-		remove_timer()
-		return
-	//SKYRAT CHANGE END.
   
 	for(var/atom/movable/content as anything in open_turf.contents)
 		if(GLOB.typecache_elevated_structures[content.type])
