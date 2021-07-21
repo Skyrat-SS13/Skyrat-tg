@@ -101,8 +101,8 @@
 	attack_verb_simple = list("drool", "spit", "gurgle")
 	modifies_speech = FALSE
 
-/obj/item/organ/tongue/stump/Insert(mob/living/carbon/tongue_owner, special = 0)
-	. = ..()
+/obj/item/organ/tongue/stump/Insert(mob/living/carbon/tongue_owner)
+	..()
 	ADD_TRAIT(tongue_owner, TRAIT_MUTE, ORGAN_TRAIT)
 
 /obj/item/organ/tongue/stump/Remove(mob/living/carbon/tongue_owner, special = 0)
