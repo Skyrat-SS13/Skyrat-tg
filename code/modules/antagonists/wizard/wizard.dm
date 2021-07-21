@@ -18,7 +18,6 @@
 	show_to_ghosts = TRUE
 
 /datum/antagonist/wizard/on_gain()
-	register()
 	equip_wizard()
 	if(give_objectives)
 		create_objectives()
@@ -105,7 +104,6 @@
 				objectives += hijack_objective
 
 /datum/antagonist/wizard/on_removal()
-	unregister()
 	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
 	return ..()
 
