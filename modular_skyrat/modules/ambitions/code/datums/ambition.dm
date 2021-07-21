@@ -42,6 +42,9 @@
 	var/approved
 	var/handling
 
+	// UI DATA //
+	var/ui_page = 0
+
 	// AUTO APPROVAL //
 	var/aa_timerid
 	var/aa_active
@@ -103,9 +106,10 @@
 	.["objectives"] = objectives
 	.["intensity"] = intensity
 	.["intensities"] = INTENSITY_ALL
-
+	.["is_malf"] = !!owner.has_antag_datum(/datum/antagonist/malf_ai)
 	.["obj_keys"] = list()
 	.["antag_types"] = list()
+	.["page"] = ui_page
 	for(var/antag in objectives)
 		.["antag_types"] += antag
 		for(var/datum/ambition_objective/objective as anything in objectives[antag])
