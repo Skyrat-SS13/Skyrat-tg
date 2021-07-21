@@ -143,7 +143,6 @@
 	owner.announce_objectives()
 	if(should_give_codewords)
 		give_codewords()
-	..() //SKYRAT EDIT ADDITION - AMBITIONS
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()

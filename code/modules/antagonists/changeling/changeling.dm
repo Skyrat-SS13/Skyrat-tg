@@ -103,11 +103,7 @@
 		if(B && (B.decoy_override != initial(B.decoy_override)))
 			B.organ_flags |= ORGAN_VITAL
 			B.decoy_override = FALSE
-	//SKYRAT EDIT REMOVAL BEGIN - AMBITIONS
-	/*
 	remove_changeling_powers()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	. = ..()
 
 /datum/antagonist/changeling/proc/reset_properties()
