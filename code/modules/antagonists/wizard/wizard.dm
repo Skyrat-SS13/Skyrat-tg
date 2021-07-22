@@ -7,6 +7,7 @@
 	antag_hud_name = "wizard"
 	antag_moodlet = /datum/mood_event/focused
 	hijack_speed = 0.5
+	ui_name = "AntagInfoWizard"
 	suicide_cry = "FOR THE FEDERATION!!"
 	var/give_objectives = TRUE
 	var/strip = TRUE //strip before equipping
@@ -140,6 +141,7 @@
 		H.age = wiz_age
 	H.equipOutfit(outfit_type)
 
+<<<<<<< HEAD
 /datum/antagonist/wizard/greet()
 	to_chat(owner, "<span class='warningplain'><font color=red><B>You are the Space Wizard!</B></font></span>")
 	to_chat(owner, "<span class='warningplain'><B>The Space Wizards Federation has given you the following tasks:</B></span>")
@@ -151,6 +153,13 @@
 	message += "<BR><B>Remember:</B> Do not forget to prepare your spells.</span>"
 	to_chat(owner, message)
 	..()
+=======
+/datum/antagonist/wizard/ui_static_data(mob/user)
+	. = ..()
+	var/list/data = list()
+	data["objectives"] = get_objectives()
+	return data
+>>>>>>> 6647f0d6aa9 (Dissecting Biddle Traitors: Toned down traitor flavor + antag info tgui (#60311))
 
 /datum/antagonist/wizard/farewell()
 	to_chat(owner, span_userdanger("You have been brainwashed! You are no longer a wizard!"))

@@ -412,8 +412,13 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//Now for special roles and equipment.
 	var/datum/antagonist/traitor/traitordatum = new_character.mind.has_antag_datum(/datum/antagonist/traitor)
 	if(traitordatum)
+<<<<<<< HEAD
 		SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)
 		traitordatum.equip()
+=======
+		SSjob.EquipRank(new_character, new_character.mind.assigned_role, new_character.client)
+		new_character.mind.give_uplink(silent = TRUE, antag_datum = traitordatum)
+>>>>>>> 6647f0d6aa9 (Dissecting Biddle Traitors: Toned down traitor flavor + antag info tgui (#60311))
 
 
 	switch(new_character.mind.special_role)
