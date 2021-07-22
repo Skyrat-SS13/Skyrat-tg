@@ -27,7 +27,7 @@
 
 /mob/living/simple_animal/hostile/vatbeast/Initialize()
 	. = ..()
-	tentacle_slap = new(src)
+	tentacle_slap = new(src, src)
 	AddAbility(tentacle_slap)
 	add_cell_sample()
 	AddComponent(/datum/component/tameable, list(/obj/item/food/fries, /obj/item/food/cheesyfries, /obj/item/food/cornchips, /obj/item/food/carrotfries), tame_chance = 30, bonus_tame_chance = 0, after_tame = CALLBACK(src, .proc/tamed))
@@ -77,9 +77,18 @@
 	if(.)
 		return
 
+<<<<<<< HEAD
 	var/mob/living/user = usr //SKYRAT EDIT CHANGE
 
 	if(user.stat) //SKYRAT EDIT CHANGE
+=======
+	var/mob/living/beast_owner = owner.resolve()
+
+	if(!beast_owner)
+		return
+
+	if(beast_owner.stat)
+>>>>>>> b5480b09245 (Fix vatbeast slapping  (#60206))
 		remove_ranged_ability()
 		return
 
@@ -91,10 +100,17 @@
 
 	var/mob/living/living_target = target
 
+<<<<<<< HEAD
 	user.visible_message("<span class='warning>[user] slaps [living_target] with its tentacle!</span>", span_notice("You slap [living_target] with your tentacle.")) //SKYRAT EDIT CHANGE
 	playsound(user, 'sound/effects/assslap.ogg', 90)//SKYRAT EDIT CHANGE
 	var/atom/throw_target = get_edge_target_turf(target, ranged_ability_user.dir)
 	living_target.throw_at(throw_target, 6, 4, user) //SKYRAT EDIT CHANGE
+=======
+	beast_owner.visible_message("<span class='warning>[beast_owner] slaps [living_target] with its tentacle!</span>", span_notice("You slap [living_target] with your tentacle."))
+	playsound(beast_owner, 'sound/effects/assslap.ogg', 90)
+	var/atom/throw_target = get_edge_target_turf(target, ranged_ability_user.dir)
+	living_target.throw_at(throw_target, 6, 4, beast_owner)
+>>>>>>> b5480b09245 (Fix vatbeast slapping  (#60206))
 	living_target.apply_damage(30)
 	current_cooldown = world.time + cooldown
 	remove_ranged_ability()
