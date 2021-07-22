@@ -12779,7 +12779,7 @@
 	},
 /area/hallway/secondary/exit)
 "aXE" = (
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/directional/north,
 /turf/open/floor/iron,
 /area/science/mixing)
 "aXG" = (
@@ -13062,10 +13062,7 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/portable_atmospherics/canister/tier_1,
-/obj/structure/extinguisher_cabinet{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron,
 /area/science/storage)
 "aYy" = (
@@ -13084,10 +13081,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
-	},
-/obj/machinery/light_switch{
-	pixel_x = 26;
-	pixel_y = -26
 	},
 /turf/open/floor/iron,
 /area/science/storage)
@@ -21776,10 +21769,6 @@
 /turf/open/floor/iron/white,
 /area/medical/cryo)
 "bxP" = (
-/obj/machinery/light_switch{
-	pixel_x = -26;
-	pixel_y = -26
-	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -22835,9 +22824,7 @@
 /turf/open/floor/iron/cafeteria,
 /area/command/heads_quarters/rd)
 "bCk" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /obj/machinery/vending/wardrobe/science_wardrobe,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
@@ -23761,10 +23748,6 @@
 	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_switch{
-	pixel_x = 26;
-	pixel_y = -26
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -24281,10 +24264,10 @@
 /area/engineering/storage/tech)
 "bGA" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/directional/south,
 /obj/machinery/computer/atmos_control/toxinsmix{
 	dir = 1
 	},
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron/white,
 /area/science/mixing)
 "bGB" = (
@@ -24319,11 +24302,11 @@
 /turf/open/floor/iron,
 /area/service/janitor)
 "bGF" = (
+/obj/machinery/airalarm/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/white,
 /area/science/mixing)
 "bGG" = (
@@ -24552,6 +24535,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
+/obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron,
 /area/science/storage)
 "bHo" = (
@@ -24986,6 +24970,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/purple/filled/line,
+/obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron/white,
 /area/science/mixing)
 "bIC" = (
@@ -26078,14 +26063,13 @@
 	},
 /obj/item/analyzer,
 /obj/item/pipe_dispenser,
-/obj/machinery/requests_console{
-	department = "Science";
+/obj/machinery/light/directional/south,
+/obj/machinery/requests_console/directional/south{
+	department = "Toxins Lab";
 	departmentType = 2;
-	name = "Science Requests Console";
-	pixel_y = -30;
+	name = "Toxins Lab Requests Console";
 	receive_ore_updates = 1
 	},
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/science/mixing)
 "bMy" = (
@@ -26358,11 +26342,11 @@
 "bNt" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/effect/turf_decal/bot,
+/obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = 32
 	},
-/obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/science/storage)
 "bNv" = (
@@ -26399,7 +26383,7 @@
 	pixel_x = 8;
 	pixel_y = -24
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/machinery/meter,
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/decal/cleanable/dirt,
@@ -26682,10 +26666,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/mixing)
-"bOI" = (
-/obj/machinery/atmospherics/pipe/color_adapter,
-/turf/closed/wall/r_wall,
-/area/science/mixing/chamber)
 "bOJ" = (
 /obj/item/target,
 /obj/structure/window/reinforced{
@@ -30528,9 +30508,7 @@
 "ceD" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
 /obj/effect/turf_decal/bot,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
@@ -37121,10 +37099,7 @@
 /turf/open/floor/iron/dark,
 /area/security/office)
 "dvO" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden{
 	dir = 4
 	},
@@ -37371,9 +37346,6 @@
 /area/commons/dorms)
 "dMZ" = (
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
-	dir = 4
-	},
 /obj/machinery/door/airlock/research/glass/incinerator/toxmix_exterior,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -43375,12 +43347,9 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "jJB" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/science/mixing)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/turf/closed/wall/r_wall,
+/area/science/mixing/chamber)
 "jKe" = (
 /obj/structure/table/reinforced,
 /obj/item/assembly/prox_sensor{
@@ -43405,10 +43374,10 @@
 /obj/item/raw_anomaly_core/random{
 	pixel_y = -2
 	},
+/obj/machinery/light/directional/south,
 /obj/structure/sign/warning/nosmoking{
 	pixel_x = -25
 	},
-/obj/machinery/light/directional/south,
 /obj/structure/noticeboard/directional/south,
 /turf/open/floor/iron,
 /area/science/mixing)
@@ -44053,12 +44022,6 @@
 /obj/machinery/smartfridge/organ,
 /turf/closed/wall,
 /area/medical/surgery/room_b)
-"kma" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
-	dir = 9
-	},
-/turf/closed/wall/r_wall,
-/area/science/mixing/chamber)
 "kmD" = (
 /obj/structure/chair/stool/bar{
 	dir = 4
@@ -44761,12 +44724,6 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/plating,
 /area/maintenance/fore)
-"kOw" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
-/area/science/mixing/chamber)
 "kOB" = (
 /obj/machinery/vending/dorms,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -45633,6 +45590,7 @@
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
 	},
+/obj/machinery/light_switch/directional/east,
 /turf/open/floor/iron/white,
 /area/science/mixing)
 "lJI" = (
@@ -47431,8 +47389,8 @@
 "nxR" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm/directional/west,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
 "nyk" = (
@@ -47620,6 +47578,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner,
+/obj/machinery/light_switch/directional/east,
 /turf/open/floor/iron,
 /area/science/storage)
 "nFa" = (
@@ -49082,10 +49041,6 @@
 "pdW" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light_switch{
-	pixel_x = -26;
-	pixel_y = -26
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -49219,10 +49174,10 @@
 /turf/open/floor/plating,
 /area/security/prison/safe)
 "piD" = (
+/obj/machinery/light/directional/west,
 /obj/machinery/portable_atmospherics/pump,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/science/mixing)
 "pjk" = (
@@ -50556,12 +50511,12 @@
 /area/science/genetics)
 "qre" = (
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/directional/north,
 /obj/machinery/camera{
 	c_tag = "Toxins Lab Burn Chamber";
 	network = list("ss13","rd")
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/science/mixing)
 "qrt" = (
@@ -52332,10 +52287,7 @@
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)
 "siK" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
@@ -52819,7 +52771,7 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/starboard/aft)
 "sIm" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /obj/machinery/meter,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -53407,10 +53359,6 @@
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/light_switch{
-	pixel_x = -26;
-	pixel_y = 26
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -53535,10 +53483,7 @@
 /turf/closed/wall,
 /area/medical/surgery/room_b)
 "tnP" = (
-/obj/machinery/atmospherics/pipe/color_adapter,
-/obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/closed/wall/r_wall,
 /area/science/mixing/chamber)
 "toF" = (
@@ -55086,8 +55031,8 @@
 /obj/structure/sign/warning/fire{
 	pixel_y = -32
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/west,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "uFA" = (
@@ -55514,7 +55459,7 @@
 /turf/open/floor/iron,
 /area/cargo/miningdock)
 "uYS" = (
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/directional/north,
 /obj/effect/landmark/start/scientist,
 /turf/open/floor/iron,
 /area/science/mixing)
@@ -56081,8 +56026,8 @@
 "vDl" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
 /obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
 "vDt" = (
@@ -107949,7 +107894,7 @@ bMz
 bNy
 bOH
 dvO
-jJB
+eZk
 vzp
 xCG
 xCG
@@ -108206,7 +108151,7 @@ bMy
 bNx
 bOG
 vmV
-kOw
+dGF
 dGF
 dGF
 dGF
@@ -108461,7 +108406,7 @@ bEs
 deK
 bMA
 bNz
-bOI
+tnP
 uES
 tnP
 lNB
@@ -108975,9 +108920,9 @@ bEs
 dkH
 ebu
 sIm
-bOI
+jJB
 iWA
-tnP
+jJB
 flc
 vPE
 bMu
@@ -109234,7 +109179,7 @@ bEC
 bEC
 dGF
 rNG
-kma
+dGF
 dGF
 dGF
 dGF
