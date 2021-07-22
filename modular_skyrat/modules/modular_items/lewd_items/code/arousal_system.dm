@@ -159,7 +159,12 @@
 /mob/living/carbon/human/verb/arousal_panel()
 	set name = "Climax"
 	set category = "IC"
-	climax(TRUE)
+
+	if(stat != CONSCIOUS)
+		to_chat(usr, "<span class='warning'>You can't climax right now...</span>")
+		return
+	else
+		climax(TRUE)
 
 /mob/living/carbon/human/proc/set_masochism(status) //TRUE or FALSE
 	if(status == TRUE)
