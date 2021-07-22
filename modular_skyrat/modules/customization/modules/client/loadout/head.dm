@@ -160,11 +160,11 @@
 
 /datum/loadout_item/head/cowboyhat/winter
 	name = "Winter Cowboy Hat"
-	path = /obj/item/clothing/head/cowboyhat/sherrif
+	path = /obj/item/clothing/head/cowboyhat/sheriff
 
-/datum/loadout_item/head/cowboyhat/sherrif
-	name = "Sherrif Hat"
-	path = /obj/item/clothing/head/cowboyhat/sherrif/alt
+/datum/loadout_item/head/cowboyhat/sheriff
+	name = "Sheriff Hat"
+	path = /obj/item/clothing/head/cowboyhat/sheriff/alt
 
 /datum/loadout_item/head/cowboyhat/deputy
 	name = "Deputy Hat"

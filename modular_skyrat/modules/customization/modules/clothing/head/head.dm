@@ -112,7 +112,7 @@
 
 /obj/item/clothing/head/cowboyhat/widesec
 	name = "wide brimmed security cowboy hat"
-	desc = "A bandit turned Sheriff, his enforcement is brutal but effective, if out of fear or respect, not many bodies hang high. A peaceful land, a quiet people."
+	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "cowboy_black_sec"
@@ -399,7 +399,7 @@
 	icon_state = "enhead"
 	mutant_variants = NONE
 
-/obj/item/clothing/head/cowboyhat/sherrif
+/obj/item/clothing/head/cowboyhat/sheriff
 	name = "winter cowboy hat"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
@@ -410,7 +410,7 @@
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR
 
-/obj/item/clothing/head/cowboyhat/sherrif/alt
+/obj/item/clothing/head/cowboyhat/sheriff/alt
 	name = "sheriff hat"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
