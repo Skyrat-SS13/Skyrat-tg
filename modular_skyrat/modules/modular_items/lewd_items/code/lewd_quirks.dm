@@ -57,7 +57,7 @@
 	can_gain = TRUE
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
-	var/satisfaction = 100
+	var/satisfaction = 1000
 	var/stress = 0
 
 /datum/brain_trauma/special/nymphomania/on_gain()
@@ -113,22 +113,22 @@
 											"<font color=purple>[owner] trembling longingly.</font>\n",
 											"<font color=purple>[owner] moans indecently!</font>\n"))
 
-	if(in_company() && satisfaction >= 0.1)
-		satisfaction -= 0.1
+	if(in_company() && satisfaction >= 0)
+		satisfaction -= 1
 
-	if(in_company() && (satisfaction > 30 && satisfaction < 31) && prob(10))
+	if(in_company() && satisfaction == 300)
 		to_chat(owner, "<font color=purple>Your thoughts are slightly confused...</font>")
 
-	if(in_company() && (satisfaction > 15 && satisfaction < 16) && prob(10))
+	if(in_company() && satisfaction == 150)
 		to_chat(owner, "<font color=purple>You feel so hot...</font>")
 
-	if(in_company() && satisfaction <= 0.1)
-		if(stress <= 100)
+	if(in_company() && satisfaction <= 0)
+		if(stress <= 1000)
 			stress +=1
 
 	if(in_company() && owner.has_status_effect(/datum/status_effect/climax))
 		stress = 0
-		satisfaction = 100
+		satisfaction = 1000
 
 /datum/brain_trauma/special/nymphomania/proc/in_company()
 	if(HAS_TRAIT(owner, TRAIT_BLIND))

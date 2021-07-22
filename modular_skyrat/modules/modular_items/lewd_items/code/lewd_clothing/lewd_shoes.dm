@@ -13,6 +13,7 @@
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	var/discomfort = 0
 	var/message_sent = FALSE
+	can_be_tied = FALSE
 	strip_delay = 120
 	slowdown = 4
 
