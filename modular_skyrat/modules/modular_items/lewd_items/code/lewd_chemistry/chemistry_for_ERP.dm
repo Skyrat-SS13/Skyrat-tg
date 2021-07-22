@@ -228,40 +228,42 @@
 		return
 
 /datum/reagent/breast_enlarger/on_mob_life(mob/living/carbon/human/M) //Increases breast size
+	var/mob/living/carbon/human/H = M
+	var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
 	if(!ishuman(M))//Just in case
 		return..()
 
-	var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
-	if(M.breast_enlarger_amount >= 100)
-		if(B?.genital_size < 10) //i changed it's maximum to 10 because bigger stuff looking REALLY terrible. Please remove my eyes.
-			B.genital_size += 1
-		else
-			return
-		B.update_sprite_suffix()
-		M.update_body()
-		M.breast_enlarger_amount = 0
-	M.breast_enlarger_amount += 5
+	if(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT)
+		if(M.breast_enlarger_amount >= 100)
+			if(B?.genital_size < 16)
+				B.genital_size += 1
+				B.update_sprite_suffix()
+				M.update_body()
+				M.breast_enlarger_amount = 0
+			else
+				return
 
-	var/mob/living/carbon/human/H = M
-	//If they've opted out, then route processing though liver.
-	if(!(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT))
-		var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
-		if(L)
-			L.applyOrganDamage(0.25)
-		else
-			H.adjustToxLoss(1)
-		return..()
+		M.breast_enlarger_amount += 5
 
-	//otherwise proceed as normal
+		//If they've opted out, then route processing though liver.
+		if(!(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT))
+			var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
+			if(L)
+				L.applyOrganDamage(0.25)
+			else
+				H.adjustToxLoss(1)
+			return..()
 
-	if(ISINRANGE_EX(B?.genital_size, 8.5, 9) && (H.w_uniform || H.wear_suit))
-		var/target = H.get_bodypart(BODY_ZONE_CHEST)
-		if(!message_spam)
-			to_chat(H, "<span class='danger'>Your breasts begin to strain against your clothes tightly!</b></span>")
-			message_spam = TRUE
-		H.adjustOxyLoss(5, 0)
-		H.apply_damage(1, BRUTE, target)
-	return ..()
+		//otherwise proceed as normal
+
+		if(ISINRANGE_EX(B?.genital_size, 14, 16) && (H.w_uniform || H.wear_suit))
+			var/target = H.get_bodypart(BODY_ZONE_CHEST)
+			if(!message_spam)
+				to_chat(H, "<span class='danger'>Your breasts begin to strain against your clothes tightly!</b></span>")
+				message_spam = TRUE
+			H.adjustOxyLoss(5, 0)
+			H.apply_damage(1, BRUTE, target)
+		return ..()
 
 /datum/reagent/breast_enlarger/overdose_process(mob/living/carbon/human/M) //Turns you into a female if character is male. Also supposed to add breasts but i'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/P = M.getorganslot(ORGAN_SLOT_PENIS)
@@ -363,22 +365,25 @@ Haha! Kill me please.
 		return
 
 /datum/reagent/penis_enlarger/on_mob_life(mob/living/carbon/human/M) //Increases penis size, 5u = +1 inch.
+	var/mob/living/carbon/human/H = M
+	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	if(!ishuman(M))
 		return ..()
 
-	var/mob/living/carbon/human/H = M
-	if(!(H.client?.prefs.skyrat_toggles && PENIS_ENLARGEMENT))
-		return ..()
-	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
-	if(M.penis_enlarger_amount >= 100)
-		if(P?.genital_size < 10) //i changed it's maximum to 10 because bigger stuff looking REALLY terrible. Please remove my eyes.
-			P.genital_size += 1
-		else
-			return
-		P.update_sprite_suffix()
-		M.update_body()
-		M.penis_enlarger_amount = 0
-	M.penis_enlarger_amount += 5
+	if(H.client?.prefs.skyrat_toggles && PENIS_ENLARGEMENT)
+		if(M.penis_enlarger_amount >= 100)
+			if(P?.genital_size < 20)
+				P.genital_size += 1
+				if(prob(20) && P.girth < 20)
+					P.girth +=1
+				P.update_sprite_suffix()
+				M.update_body()
+				M.penis_enlarger_amount = 0
+
+			else
+				return
+
+		M.penis_enlarger_amount += 5
 
 	//If they've opted out, then route processing though liver.
 	if(!(H.client?.prefs.skyrat_toggles && PENIS_ENLARGEMENT))
@@ -388,6 +393,14 @@ Haha! Kill me please.
 		else
 			H.adjustToxLoss(1)
 		return..()
+
+	if(ISINRANGE_EX(P?.genital_size, 18, 20) && (H.w_uniform || H.wear_suit))
+		var/target = H.get_bodypart(BODY_ZONE_PRECISE_GROIN)
+		if(!message_spam)
+			to_chat(H, "<span class='danger'>You feel tight in pants!</b></span>")
+			message_spam = TRUE
+		H.apply_damage(1, BRUTE, target)
+	return ..()
 
 /datum/reagent/penis_enlarger/overdose_process(mob/living/carbon/human/M) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.
 	if(!istype(M))
