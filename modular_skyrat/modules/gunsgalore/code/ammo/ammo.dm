@@ -14,7 +14,7 @@
 /obj/projectile/bullet/a792x33
 	name = "7.92x33 bullet"
 	damage = 40
-	wound_bonus = -40
+	wound_bonus = 10
 	wound_falloff_tile = 0
 //
 
@@ -30,7 +30,7 @@
 	name = "7.92x57 bullet"
 	damage = 45
 	armour_penetration = 5
-	wound_bonus = -45
+	wound_bonus = 15
 	wound_falloff_tile = 0
 //
 
@@ -45,8 +45,9 @@
 
 /obj/projectile/bullet/a762x25
 	name = "7.62x25 bullet"
-	damage = 25
-	wound_bonus = -35
+	damage = 22
+	wound_bonus = 30
+	armour_penetration = 8
 	wound_falloff_tile = 0
 //
 
@@ -60,6 +61,7 @@
 
 /obj/projectile/bullet/a762x39
 	name = "7.62x25 bullet"
-	damage = 35
-	wound_bonus = -35
+	damage = 38
+	wound_bonus = 35
+	armour_penetration = 40
 	wound_falloff_tile = 0
