@@ -312,3 +312,158 @@
 /// An overridable getter for more dynamic goodies.
 /datum/job/proc/get_mail_goodies(mob/recipient)
 	return mail_goodies
+<<<<<<< HEAD
+=======
+
+
+/datum/job/proc/award_service(client/winner, award)
+	return
+
+
+/datum/job/proc/get_captaincy_announcement(mob/living/captain)
+	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+
+
+/// Returns an atom where the mob should spawn in.
+/datum/job/proc/get_roundstart_spawn_point()
+	if(random_spawns_possible)
+		if(HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS))
+			return get_latejoin_spawn_point()
+		if(HAS_TRAIT(SSstation, STATION_TRAIT_RANDOM_ARRIVALS))
+			return get_safe_random_station_turf(typesof(/area/hallway)) || get_latejoin_spawn_point()
+		if(HAS_TRAIT(SSstation, STATION_TRAIT_HANGOVER))
+			var/obj/effect/landmark/start/hangover_spawn_point
+			for(var/obj/effect/landmark/start/hangover/hangover_landmark in GLOB.start_landmarks_list)
+				hangover_spawn_point = hangover_landmark
+				if(hangover_landmark.used) //so we can revert to spawning them on top of eachother if something goes wrong
+					continue
+				hangover_landmark.used = TRUE
+				break
+			return hangover_spawn_point || get_latejoin_spawn_point()
+	if(length(GLOB.jobspawn_overrides[title]))
+		return pick(GLOB.jobspawn_overrides[title])
+	var/obj/effect/landmark/start/spawn_point = get_default_roundstart_spawn_point()
+	if(!spawn_point) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
+		return get_latejoin_spawn_point()
+	return spawn_point
+
+
+/// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
+/datum/job/proc/get_default_roundstart_spawn_point()
+	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
+		if(spawn_point.name != title)
+			continue
+		. = spawn_point
+		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
+			continue
+		spawn_point.used = TRUE
+		break
+	if(!.)
+		log_world("Couldn't find a round start spawn point for [title]")
+
+
+/// Finds a valid latejoin spawn point, checking for events and special conditions.
+/datum/job/proc/get_latejoin_spawn_point()
+	if(length(GLOB.jobspawn_overrides[title])) //We're doing something special today.
+		return pick(GLOB.jobspawn_overrides[title])
+	if(length(SSjob.latejoin_trackers))
+		return pick(SSjob.latejoin_trackers)
+	return SSjob.get_last_resort_spawn_points()
+
+
+/// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
+/datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)
+	var/mob/living/spawn_instance
+	if(ispath(spawn_type, /mob/living/silicon/ai))
+		// This is unfortunately necessary because of snowflake AI init code. To be refactored.
+		spawn_instance = new spawn_type(get_turf(spawn_point), null, player_client.mob)
+	else
+		spawn_instance = new spawn_type(player_client.mob.loc)
+		spawn_point.JoinPlayerHere(spawn_instance, TRUE)
+	spawn_instance.apply_prefs_job(player_client, src)
+	if(!player_client)
+		qdel(spawn_instance)
+		return // Disconnected while checking for the appearance ban.
+	return spawn_instance
+
+
+/// Applies the preference options to the spawning mob, taking the job into account. Assumes the client has the proper mind.
+/mob/living/proc/apply_prefs_job(client/player_client, datum/job/job)
+
+
+/mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
+	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
+	if(!player_client)
+		return // Disconnected while checking for the appearance ban.
+	if(fully_randomize)
+		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments & DEPARTMENT_COMMAND))
+			if(player_client.prefs.pref_species.id != SPECIES_HUMAN)
+				player_client.prefs.pref_species = new /datum/species/human
+			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
+		else
+			player_client.prefs.randomise_appearance_prefs()
+		player_client.prefs.apply_prefs_to(src)
+		if(GLOB.current_anonymous_theme)
+			fully_replace_character_name(null, GLOB.current_anonymous_theme.anonymous_name(src))
+	else
+		var/is_antag = (player_client.mob.mind in GLOB.pre_setup_antags)
+		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments & DEPARTMENT_COMMAND))
+			player_client.prefs.randomise[RANDOM_SPECIES] = FALSE
+			if(player_client.prefs.pref_species.id != SPECIES_HUMAN)
+				player_client.prefs.pref_species = new /datum/species/human
+		player_client.prefs.safe_transfer_prefs_to(src, TRUE, is_antag)
+		if(CONFIG_GET(flag/force_random_names))
+			player_client.prefs.real_name = player_client.prefs.pref_species.random_name(player_client.prefs.gender, TRUE)
+	dna.update_dna_identity()
+
+
+/mob/living/silicon/ai/apply_prefs_job(client/player_client, datum/job/job)
+	if(GLOB.current_anonymous_theme)
+		fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
+		return
+	apply_pref_name("ai", player_client) // This proc already checks if the player is appearance banned.
+	set_core_display_icon(null, player_client)
+
+
+/mob/living/silicon/robot/apply_prefs_job(client/player_client, datum/job/job)
+	if(mmi)
+		var/organic_name 
+		if(GLOB.current_anonymous_theme)
+			organic_name = GLOB.current_anonymous_theme.anonymous_name(src)
+		else if(player_client.prefs.randomise[RANDOM_NAME] || CONFIG_GET(flag/force_random_names) || is_banned_from(player_client.ckey, "Appearance"))
+			if(!player_client)
+				return // Disconnected while checking the appearance ban.
+			organic_name = player_client.prefs.pref_species.random_name(player_client.prefs.gender, TRUE)
+		else
+			if(!player_client)
+				return // Disconnected while checking the appearance ban.
+			organic_name = player_client.prefs.real_name
+
+		mmi.name = "[initial(mmi.name)]: [organic_name]"
+		if(mmi.brain)
+			mmi.brain.name = "[organic_name]'s brain"
+		if(mmi.brainmob)
+			mmi.brainmob.real_name = organic_name //the name of the brain inside the cyborg is the robotized human's name.
+			mmi.brainmob.name = organic_name
+	// If this checks fails, then the name will have been handled during initialization.
+	if(!GLOB.current_anonymous_theme && player_client.prefs.custom_names["cyborg"] != DEFAULT_CYBORG_NAME)
+		apply_pref_name("cyborg", player_client)
+
+/**
+ * Called after a successful roundstart spawn.
+ * Client is not yet in the mob.
+ * This happens after after_spawn()
+ */
+/datum/job/proc/after_roundstart_spawn(mob/living/spawning, client/player_client)
+	SHOULD_CALL_PARENT(TRUE)
+
+
+/**
+ * Called after a successful latejoin spawn.
+ * Client is in the mob.
+ * This happens after after_spawn()
+ */
+/datum/job/proc/after_latejoin_spawn(mob/living/spawning)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)
+>>>>>>> 6c8c797cdcc (Fixes security not getting assigned to departments (#60349))

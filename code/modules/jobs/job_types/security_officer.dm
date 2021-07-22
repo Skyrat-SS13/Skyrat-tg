@@ -44,7 +44,18 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
  */
 GLOBAL_LIST_EMPTY(security_officer_distribution)
 
+<<<<<<< HEAD
 /datum/job/security_officer/after_spawn(mob/living/carbon/human/H, mob/M, latejoin = FALSE)
+=======
+
+/datum/job/security_officer/after_roundstart_spawn(mob/living/spawning, client/player_client)
+	. = ..()
+	if(ishuman(spawning))
+		setup_department(spawning, player_client)
+
+
+/datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
+>>>>>>> 6c8c797cdcc (Fixes security not getting assigned to departments (#60349))
 	. = ..()
 
 	var/department

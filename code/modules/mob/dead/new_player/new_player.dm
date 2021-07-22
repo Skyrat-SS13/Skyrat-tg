@@ -326,9 +326,14 @@
 	else if(SSjob.always_promote_captain_job && (rank == "Captain"))
 		is_captain = TRUE
 
+<<<<<<< HEAD
 	var/equip = SSjob.EquipRank(character, rank, TRUE, is_captain)
 	if(isliving(equip)) //Borgs get borged in the equip, so we need to make sure we handle the new mob.
 		character = equip
+=======
+	SSjob.EquipRank(character, job, character.client)
+	job.after_latejoin_spawn(character)
+>>>>>>> 6c8c797cdcc (Fixes security not getting assigned to departments (#60349))
 
 	var/datum/job/job = SSjob.GetJob(rank)
 
