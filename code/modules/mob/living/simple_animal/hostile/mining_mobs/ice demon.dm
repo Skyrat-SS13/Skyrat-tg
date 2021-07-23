@@ -9,8 +9,8 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	mouse_opacity = MOUSE_OPACITY_ICON
 	speak_emote = list("telepathically cries")
-	speed = 2
-	move_to_delay = 2
+	speed = 5 //SKYRAT CHANGE, SLOW AS WOLVES.
+	move_to_delay = 5 //SKYRAT CHANGE, SLOW AS WOLVES.
 	projectiletype = /obj/projectile/temp/basilisk/ice
 	projectilesound = 'sound/weapons/pierce.ogg'
 	ranged = TRUE
@@ -96,4 +96,6 @@
 	minimum_distance = 1 //This is the standard minimum distance
 	retreat_distance = null
 	teleport_distance = 6 //Farther distance; more time to react.
+	speed = 4
+	move_to_delay = 4
 //END OF SKYRAT CHANGE
