@@ -212,7 +212,8 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/toolbox/emergency/old = 25,
 		/obj/item/storage/toolbox/mechanical/old = 25,
 		/obj/item/tailclub = 25,
-		/obj/item/taster = 25
+		/obj/item/taster = 25,
+		/obj/item/disk/holodisk/woospider = 25
 	) = 50,
 	list( //Meme-level injectors
 		/obj/item/dnainjector/chavmut = 1,

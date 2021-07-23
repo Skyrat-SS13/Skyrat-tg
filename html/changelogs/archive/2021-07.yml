@@ -542,3 +542,150 @@
   lyricalpaws:
   - bugfix: Stops vanguards rolling antags
   - server: dynamic.json edited, mirror required
+2021-07-17:
+  GoldenAlpharex:
+  - bugfix: Turnstiles are no longer scared of flashlights
+  SkyratBot:
+  - bugfix: You can now put people in coffins again after fireman carrying them.
+  - bugfix: slippery things, among others will no longer stop working forever after
+      throwing them into hyperspace
+  - bugfix: grav anomalies will no longer permanently make you unclickable
+  - bugfix: Fixed HTML encoding of automatic evac news alerts emergency_reason.
+  - rscdel: deletes a door from deltastation mining shuttle
+  Wallem:
+  - rscadd: Due to a leak in Nanotrasen Brand Ant Farms during shipping, a large influx
+      of space-ants have been inadvertently dumped onto every Nanotrasen station.
+      Don't go leaving food around too long, and please be sure to watch your step,
+      we're pretty sure they bite...
+  - imageadd: New giant ant sprite by Doshmobile
+  Yawet330:
+  - bugfix: Math fixed
+  coiax:
+  - bugfix: Ethereal players cannot erroneously revive during mafia games.
+2021-07-20:
+  Arkatos:
+  - bugfix: Fixed a case where a PDA's action button icon did not properly update
+      upon light toggle.
+  Cheshify:
+  - rscadd: Borgs have access to Lidocaine, a numbing agent for surgeries!
+  Gandalf2k15:
+  - rscadd: You can now empty showers using a plunger!
+  - bugfix: Showers no longer defy the laws of physics and once again require plumbing.
+  Nari Harimoto:
+  - rscadd: AI's right clicking any holopad while projected via the "Project Hologram?"
+      button when presence is requested, will cancel the projection and put their
+      camera back to where they started (moving far away from the pad will not do
+      this, nor would ctrl-clicking the pad)
+  - rscadd: when an AI's presence is requested to a holopad they get a chat message
+      that has two options, jump to the location, works as it does currently, and
+      "Project Hologram" which will immediately project a hologram there, right clicking
+      the pad will move you back to where you were
+  - rscadd: 'Ctrl+leftclicking on the holopad will end the holopad call directly without
+      jumping you back to your last location (it does nothing if you are not already
+      a hologram) qol: AI''s can now examine a holopad to see the AI specific controls
+      for the pads (need to shift+right click and examine from the menu, cant shift-click
+      examine, issue with how the AI itself functions.) qol: when you jump to someone
+      from their name in chat, or a location from chat such as when presence is requested,
+      you can hit "~" or "0" to jump back qol: when you jump back to your previous
+      location with the "Jump Back" key or to a saved location with "1-9" it stops
+      all following, so you can jump back or jump to a location and you wont jump
+      back to the person you tracked'
+  PositiveEntropy, Meyhazah:
+  - imageadd: Adds new fire extinguisher sprites based on Tau Ceti's!
+  SkyratBot:
+  - imageadd: Replaces the old aquarium sprites
+  - bugfix: The implant pad will no longer incorrectly describe TRAC implants as being
+      usable as teleporter beacons.
+  - balance: Wizard gets bonus points for choosing the randomized options in their
+      spellbook. They will get 15 points worth of spells if they choose "Full random"
+      and they will get 12 points worth of spells if they choose "Semi random".
+  - bugfix: Fixed the duffelbag curse and curse of hunger code in general.
+  - bugfix: Fixed carrying being broken.
+  - bugfix: NanoTrasen has pushed a fix for nonexistent ghost ears, allowing them
+      to theoretically hear nearby sounds again if they existed, which they don't.
+  - refactor: Directional lights might seem more smooth now
+  - bugfix: Flight potions now work on fly people, androids and skeletons
+  - bugfix: NanoTrasen has realized that its previous theoretical fix for ghost ears
+      didn't work, not that that's a problem since ghosts don't exist but NanoTrasen
+      has fixed its mistake.
+  - bugfix: fixed up some issues with the ski shoes vehicle description
+  - bugfix: One standard moth plushie has been issued to the tramstation psychologist's
+      office.
+  - bugfix: fixed sentient diseases reinfecting when dead
+  - balance: space dragons are rarer
+  - bugfix: Fixed a Holodisk replay Hologram bug, and Hologram Rays not updating when
+      the pad is moved.
+  - bugfix: A Charlie station fluff paper about the Supermatter is no longer misnamed
+      "singularity generator". THERE WAS NEVER SUCH A THING AS A SINGULARITY GENERATOR.
+      OCEANIA HAD ALWAYS BEEN AT WAR WITH EASTASIA.
+  - bugfix: Fixed carps losing track of who they're following if they take a path
+      that obstructs their vision
+  - balance: Space Dragon has received some nerfs to make fighting it and its carps
+      fairer to the crew.
+  - bugfix: Fixed a bug where carp rifts without an owner could spawn infinite carp.
+  - bugfix: Fixed light explosions having 0 chance to delimb someone if they have
+      no bomb resist.
+  - balance: Elder Atmosian armor now takes less metallic hydrogen to craft and is
+      better armored.
+  - bugfix: A rogue decal has been purged from Deltastation
+  - bugfix: The toxins airlocks on Delta, Tram, Meta and Kilo can now be opened from
+      inside the airlock
+  Wallem:
+  - bugfix: Lets people wash the ant debuff off of themselves, as intended.
+  unit0016:
+  - rscadd: 'Posters! Several posters referencing more ''historic'' events of the
+      frontier. There may also be a holodisk somewhere in the depths of maintenance...
+      expansion: Two new space ruins are on the prowl. One may look familiar...'
+2021-07-21:
+  BurgerBB:
+  - bugfix: Fixes closets/lockers/crates/ect being subject to ant decompisition.
+  FlamingLily:
+  - code_imp: All indicators are now within a single indicators module
+  - rscadd: Surrender button when in CI
+  Nari Harimoto:
+  - bugfix: Fixes a bug where emotes such as a carp gnash will mess up a name if the
+      name contains a pronoun within it
+  - bugfix: Fixed an incorrect variable in a var that manages pronouns
+  - spellcheck: Updated some Simple Mob examines and emotes to default to plural (they)
+      rather than object (it)
+  - spellcheck: two clown mobs (Clown Hulk, and Clown Chad) are now explicitly male.
+      one Corgi type (Void) is neuter (it)
+  - spellcheck: many animals like cows and chickens are hardcoded female, but uses
+      neutral pronouns in examines and emotes, updated that to be explicitly she pronouns
+  Ryll/Shaps:
+  - bugfix: You should no longer lose deathnettle durability when clicking on floors
+      or walls
+  SkyratBot:
+  - bugfix: Deltastation's HoP line now has a flasher.
+  - bugfix: Deltastation's Atmos waste now sends external connectors to waste, rather
+      than the other way around.
+  - bugfix: cutting open heads wont drop horns, frills etc on the ground (you could
+      literally stick it into a human to give them frills but nooooooo you wanted
+      to report the bug)
+  - bugfix: Hulks and larvas can no longer just punch the SM with no consequences
+  - bugfix: Fixed weather being opaque
+  Wallem:
+  - bugfix: ants have a higher tolerance to extreme ph levels when breeding. New ant
+      desc.
+2021-07-22:
+  OrionTheFox:
+  - balance: Long-term terraforming projects have proven partially successful, as
+      miners no longer report the cold rocks of LV-669 as airless voids! Safety regulations
+      have dropped to allow for low-pressure suits instead of full EVA gear.
+  - rscadd: With this new information, Nanotrasen has officially re-vamped their efforts
+      to mine the plentiful ores, re-locating their mining station to what was once
+      a populated area of the planet. Aside from the newly modeled station, expect
+      to find some old run-down ruins.
+2021-07-23:
+  OrionTheFox:
+  - rscadd: Added the HoP's Parade Uniform and Jacket, both male and female versions!
+  ZephyrTFA:
+  - balance: Immovable rods are nicer to people who are resting.
+  tf-4:
+  - spellcheck: Cowboy clothing now speaks proper-like
+  thestubborn:
+  - bugfix: fixed area error with the delta det office
+  unit0016:
+  - bugfix: Xenobio on NSS Journey now no longer has a horribly accursed scrubber
+      line (And the 'storage room' has been repurposed to not just be a "Throw bodies
+      here" room)

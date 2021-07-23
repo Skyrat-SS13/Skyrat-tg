@@ -26,6 +26,7 @@
 	icon_state = "secmed_armor"
 	worn_icon_state = "secmed_armor"
 	mutant_variants = NONE
+	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/classic_baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/firstaid)
 
 /obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	name = "security medics's uniform"
