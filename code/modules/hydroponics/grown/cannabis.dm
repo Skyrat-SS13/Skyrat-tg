@@ -18,7 +18,7 @@
 						/obj/item/seeds/cannabis/death,
 						/obj/item/seeds/cannabis/white,
 						/obj/item/seeds/cannabis/ultimate)
-	reagents_add = list(/datum/reagent/drug/cannabis = 0.15)
+	reagents_add = list(/datum/reagent/drug/thc = 0.15)
 
 
 /obj/item/seeds/cannabis/rainbow
