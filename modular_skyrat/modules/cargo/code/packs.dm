@@ -72,7 +72,7 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
-/datum/supply_pack/medical/bicycle // overwritten
+/datum/supply_pack/medical/medibeam
 	name = "Medical Beam Gun"
 	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
 	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
