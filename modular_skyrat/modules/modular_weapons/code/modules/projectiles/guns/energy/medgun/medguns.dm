@@ -6,10 +6,10 @@
 	icon_state = "medigun"
 	inhand_icon_state = "chronogun" //Fits best with how the medigun looks, might be changed in the future
 	ammo_type = list(/obj/item/ammo_casing/energy/medical) //The default option that heals Oxygen//
-	ammo_x_offset = 2
 	w_class = WEIGHT_CLASS_NORMAL
 	cell_type = /obj/item/stock_parts/cell/medigun/
-	ammo_x_offset = 2
+	modifystate = 1
+	ammo_x_offset = 3
 	charge_sections = 3
 	has_gun_safety = TRUE
 	var/maxcells = 3
