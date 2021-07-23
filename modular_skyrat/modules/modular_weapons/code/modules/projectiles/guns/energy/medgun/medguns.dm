@@ -36,6 +36,11 @@
 	desc = "This is the upgraded version of the standard CWM-497 Medigun, the battery inside is upgraded to better work with chargers along with having more capacity."
 	cell_type = /obj/item/stock_parts/cell/medigun/upgraded
 
+/obj/item/gun/energy/medigun/upgraded/Initialize()
+	..()
+	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi', "medigun_fastcharge")
+	add_overlay(fastcharge_medigun)
+
 //CMO and CC MediGun
 /obj/item/gun/energy/medigun/cmo
 	name = "VeyMedical CWM-479-CC Cell Powered Medigun"
@@ -44,6 +49,11 @@
 	maxcells = 6
 	selfcharge = 1
 	can_charge = FALSE
+
+/obj/item/gun/energy/medigun/cmo/Initialize()
+	..()
+	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi', "medigun_cmo")
+	add_overlay(cmo_medigun)
 
 //Upgrade Kit//
 /obj/item/upgradekit/medigun/charge
