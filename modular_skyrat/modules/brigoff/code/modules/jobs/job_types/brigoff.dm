@@ -19,6 +19,7 @@
 	display_order = JOB_DISPLAY_ORDER_BRIGOFF
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+	departments = DEPARTMENT_SECURITY
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 

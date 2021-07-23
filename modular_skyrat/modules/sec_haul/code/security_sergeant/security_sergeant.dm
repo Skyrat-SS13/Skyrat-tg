@@ -19,6 +19,7 @@
 
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+	departments = DEPARTMENT_SECURITY
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_SERGEANT
 	bounty_types = CIV_JOB_SEC
