@@ -62,11 +62,11 @@
 
 /datum/brain_trauma/special/nymphomania/on_gain()
 	var/mob/living/carbon/human/H = owner
-	H.set_nymphomania(TRUE)
+	ADD_TRAIT(H, TRAIT_NYMPHOMANIA, APHRO_TRAIT)
 
 /datum/brain_trauma/special/nymphomania/on_lose()
 	var/mob/living/carbon/human/H = owner
-	H.set_nymphomania(FALSE)
+	REMOVE_TRAIT(H, TRAIT_NYMPHOMANIA, APHRO_TRAIT)
 
 /datum/brain_trauma/special/nymphomania/on_life(delta_time, times_fired)
 	if(owner.stat != CONSCIOUS)
@@ -116,10 +116,10 @@
 	if(in_company() && satisfaction >= 0)
 		satisfaction -= 1
 
-	if(in_company() && satisfaction == 300)
+	if(in_company() && satisfaction == 300 && prob(10))
 		to_chat(owner, "<font color=purple>Your thoughts are slightly confused...</font>")
 
-	if(in_company() && satisfaction == 150)
+	if(in_company() && satisfaction == 150 && prob(10))
 		to_chat(owner, "<font color=purple>You feel so hot...</font>")
 
 	if(in_company() && satisfaction <= 0)
@@ -174,10 +174,10 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 			qdel(src)
 			return
 	gain_text = "<font color=purple>You feel indescribable needing to have a sex with someone...</font>"
-	ADD_TRAIT(owner,TRAIT_SOBSESSED,APHRO_TRAIT)
+	ADD_TRAIT(owner, TRAIT_SOBSESSED, APHRO_TRAIT)
 
 /datum/brain_trauma/special/sexual_obsession/on_lose()
-	REMOVE_TRAIT(owner,TRAIT_SOBSESSED,APHRO_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_SOBSESSED, APHRO_TRAIT)
 
 /datum/brain_trauma/special/sexual_obsession/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/H = owner
@@ -366,16 +366,14 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	ADD_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
 	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
-	H.set_masochism(TRUE)
-	H.set_nymphomania(TRUE)
+	ADD_TRAIT(owner,TRAIT_MASOCHISM, APHRO_TRAIT)
 
 /datum/brain_trauma/special/bimbo/on_lose()
 	var/mob/living/carbon/human/H = owner
 	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	REMOVE_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
-	H.set_masochism(FALSE)
-	H.set_nymphomania(FALSE)
+	REMOVE_TRAIT(owner,TRAIT_MASOCHISM, APHRO_TRAIT)
 
 //Mood boost
 /datum/mood_event/bimbo
@@ -398,12 +396,12 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 /datum/quirk/masochism/post_add()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.set_masochism(TRUE)
+	ADD_TRAIT(H,TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
 
 /datum/quirk/masochism/remove()
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.set_masochism(FALSE)
+	REMOVE_TRAIT(H,TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
 
 ////////////////
 ///NEVERBONER///
@@ -420,11 +418,11 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 /datum/brain_trauma/special/neverboner/on_gain()
 	var/mob/living/carbon/human/H = owner
-	H.set_neverboner(TRUE)
+	ADD_TRAIT(H,TRAIT_NEVERBONER, APHRO_TRAIT)
 
 /datum/brain_trauma/special/neverboner/on_lose()
 	var/mob/living/carbon/human/H = owner
-	H.set_neverboner(FALSE)
+	REMOVE_TRAIT(H,TRAIT_NEVERBONER, APHRO_TRAIT)
 
 ////////////
 ///SADISM///

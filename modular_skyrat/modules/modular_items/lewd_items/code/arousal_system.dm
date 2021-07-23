@@ -14,7 +14,9 @@
 #define TRAIT_BIMBO 		"bimbo"
 #define TRAIT_NEVERBONER	"neverboner"
 #define TRAIT_SOBSESSED		"sexual obsession"
-#define APHRO_TRAIT			"aphro"
+#define APHRO_TRAIT			"aphro"				///traits gained by brain traumas, can be removed if the brain trauma is gone
+#define LEWDQUIRK_TRAIT		"lewdquirks"		///traits gained by quirks, cannot be removed unless the quirk itself is gone
+#define LEWDCHEM_TRAIT		"lewdchem"			///traits gained by chemicals, you get the idea
 
 #define STRAPON_TRAIT 		"strapon"
 
@@ -139,19 +141,12 @@
 	var/pleasure = 0
 	var/pain = 0
 
-	var/masochism = FALSE
-	var/nymphomania = FALSE
-	var/neverboner = FALSE
-
-	var/pain_limit = 0
+	var/pain_limit = 10
 	var/arousal_status = AROUSAL_NONE
 
 /mob/living/carbon/human/Initialize()
 	. = ..()
 	if(!istype(src,/mob/living/carbon/human/species/monkey))
-		set_masochism(FALSE)
-		set_neverboner(FALSE)
-		set_nymphomania(FALSE)
 		apply_status_effect(/datum/status_effect/aroused)
 		apply_status_effect(/datum/status_effect/body_fluid_regen)
 
@@ -165,26 +160,6 @@
 		return
 	else
 		climax(TRUE)
-
-/mob/living/carbon/human/proc/set_masochism(status) //TRUE or FALSE
-	if(status == TRUE)
-		masochism = status
-		pain_limit = 80
-	if(status == FALSE)
-		masochism = status
-		pain_limit = 20
-
-/mob/living/carbon/human/proc/set_nymphomania(status) //TRUE or FALSE
-	if(status == TRUE)
-		nymphomania = TRUE
-	if(status == FALSE)
-		nymphomania = FALSE
-
-/mob/living/carbon/human/proc/set_neverboner(status) //TRUE or FALSE
-	if(status == TRUE)
-		neverboner = TRUE
-	if(status == FALSE)
-		neverboner = FALSE
 
 ////////////
 ///FLUIDS///
@@ -257,7 +232,7 @@
 	else
 		arousal -= abs(arous)
 
-	if(nymphomania == TRUE)
+	if(HAS_TRAIT(src, TRAIT_NYMPHOMANIA))
 		arousal = min(max(arousal,20),100)
 	else
 		arousal = min(max(arousal,0),100)
@@ -280,12 +255,12 @@
 			if(balls.internal_fluids.holder_full())
 				temp_arousal += 0.08
 
-		if(H.masochism)
+		if(HAS_TRAIT(H, TRAIT_MASOCHISM))
 			temp_pain -= 0.5
-		if(H.nymphomania)
+		if(HAS_TRAIT(H, TRAIT_NYMPHOMANIA))
 			temp_pleasure += 0.25
 			temp_arousal += 0.05
-		if(H.neverboner)
+		if(HAS_TRAIT(H, TRAIT_NEVERBONER))
 			temp_pleasure -= 50
 			temp_arousal -= 50
 
@@ -312,7 +287,7 @@
 /mob/living/carbon/human/proc/adjustPain(pn = 0)
 	if(stat != DEAD && client?.prefs.sextoys_pref == "Yes")
 		if(pain > pain_limit || pn > pain_limit / 10) // pain system
-			if(masochism == TRUE)
+			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
 				var/p = pn - (pain_limit / 10)
 				if(p > 0)
 					adjustArousal(-p)
@@ -324,7 +299,7 @@
 		else
 			if(pn > 0)
 				adjustArousal(pn)
-			if(masochism == TRUE)
+			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
 				var/p = pn / 2
 				adjustPleasure(p)
 		pain += pn
@@ -385,7 +360,7 @@
 	var/obj/item/organ/genital/penis = getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/vagina = getorganslot(ORGAN_SLOT_VAGINA)
 	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs.sextoys_pref == "Yes")
-		if(neverboner == FALSE && !has_status_effect(/datum/status_effect/climax_cooldown))
+		if(!HAS_TRAIT(src, TRAIT_NEVERBONER) && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
 					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
@@ -448,7 +423,7 @@
 		return TRUE
 
 	else if(manual == FALSE && client?.prefs.sextoys_pref == "Yes")
-		if(neverboner == FALSE && !has_status_effect(/datum/status_effect/climax_cooldown))
+		if(!HAS_TRAIT(src, TRAIT_NEVERBONER) && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
 					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
@@ -605,15 +580,11 @@
 /datum/status_effect/subspace/on_apply()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	if(target.masochism == FALSE)
-		target.set_masochism(TRUE)
 	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
 
 /datum/status_effect/subspace/on_remove()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	if(target.masochism == TRUE && !HAS_TRAIT(target, TRAIT_MASOCHISM))
-		target.set_masochism(FALSE)
 	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
 
 /datum/mood_event/subspace

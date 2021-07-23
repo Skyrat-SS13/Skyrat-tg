@@ -68,7 +68,7 @@
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
 			to_chat(M, "<font color=purple>Your libido is going haywire! Speaking gets much harder...</font>")
 			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC) //what am i doing with my life.
-			ADD_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
+			ADD_TRAIT(M, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	..()
 
 //Dopamine. Generates in character after orgasm.
@@ -164,14 +164,13 @@
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(!HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_NEVERBONER))
 			to_chat(M, "<span class='notice'>You feel like you'll never feel aroused again...</span>") //Go to horny jail *bonk*
-			ADD_TRAIT(M,TRAIT_NEVERBONER, APHRO_TRAIT)
-			M.set_neverboner(TRUE)
+			ADD_TRAIT(M,TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
 
 		if(HAS_TRAIT(M, TRAIT_BIMBO))
 			if(prob(30))
 				H.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
 				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
-				REMOVE_TRAIT(M, TRAIT_BIMBO, APHRO_TRAIT)
+				REMOVE_TRAIT(M, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	..()
 
 ///////////////////////////////////
