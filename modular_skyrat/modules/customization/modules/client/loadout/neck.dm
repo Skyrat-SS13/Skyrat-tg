@@ -39,6 +39,10 @@
 	name = "Holocollar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/holocollar
 
+/datum/loadout_item/neck/ponchocowboy
+	name = "Green cowboy poncho"
+	path = /obj/item/clothing/toggle/cowboylea
+
 /datum/loadout_item/neck/crosscollar
 	name = "Cross collar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/cross
@@ -147,4 +151,3 @@
 	path = /obj/item/clothing/neck/tie/disco
 	restricted_roles = list("Detective")
 	restricted_desc = "Superstar Detectives"
-

@@ -158,6 +158,18 @@
 	name = "Cowboy Hat, Pink"
 	path = /obj/item/clothing/head/cowboyhat/pink
 
+/datum/loadout_item/head/cowboyhat/winter
+	name = "Winter Cowboy Hat"
+	path = /obj/item/clothing/head/cowboyhat/sheriff
+
+/datum/loadout_item/head/cowboyhat/sheriff
+	name = "Sheriff Hat"
+	path = /obj/item/clothing/head/cowboyhat/sheriff/alt
+
+/datum/loadout_item/head/cowboyhat/deputy
+	name = "Deputy Hat"
+	path = /obj/item/clothing/head/cowboyhat/deputy
+
 //trek fancy Hats!
 /datum/loadout_item/head/trek/trekcap
 	name = "Federation Officer's Cap (White)"

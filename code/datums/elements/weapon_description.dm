@@ -1,4 +1,4 @@
-#define HITS_TO_CRIT(damage) round(100 / damage, 0.1)
+#define HITS_TO_CRIT(damage) round(130 / damage, 0.1) //Skyrat Edit
 /**
  *
  * The purpose of this element is to widely provide the ability to examine an object and determine its stats, with the ability to add

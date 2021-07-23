@@ -11,7 +11,7 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
-	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Vanguard Operative")
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
 	weight = 5
@@ -95,7 +95,7 @@
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother/
-	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer")
+	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("Cyborg", "AI")
 	required_candidates = 2
 	weight = 4
@@ -144,7 +144,7 @@
 	name = "Changelings"
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
-	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer")
+	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
 	weight = 3
@@ -181,7 +181,7 @@
 	name = "Heretics"
 	antag_flag = ROLE_HERETIC
 	antag_datum = /datum/antagonist/heretic
-	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer")
+	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
 	weight = 3
@@ -496,7 +496,7 @@
 	persistent = TRUE
 	antag_flag = ROLE_FAMILIES
 	protected_roles = list("Prisoner", "Head of Personnel")
-	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer")
+	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	required_candidates = 6 // gotta have 'em ALL
 	weight = 2
 	cost = 30
