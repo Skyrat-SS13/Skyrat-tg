@@ -8,7 +8,7 @@
 	density = FALSE
 	anchored = TRUE
 	layer = TABLE_LAYER
-	max_integrity = 150
+	max_integrity = 100
 	light_range = 2
 	light_power = 1
 	light_color = LIGHT_COLOR_LAVA
