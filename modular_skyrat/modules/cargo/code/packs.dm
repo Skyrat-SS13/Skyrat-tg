@@ -72,6 +72,13 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
+/datum/supply_pack/medical/bicycle // overwritten
+	name = "Medical Beam Gun"
+	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
+	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
+	contains = list(/obj/item/gun/medbeam)
+	crate_name = "Medical Beamgun Crate"
+
 /datum/supply_pack/medical/hardsuit_medical
 	name = "Medical Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard medical specifications."
@@ -250,14 +257,6 @@
 					/obj/item/stack/sheet/cloth/ten)
 	crate_name = "advanced art supplies"
 	
-/datum/supply_pack/misc/bicycle // overwritten
-	name = "Medical Beam Gun"
-	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
-	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
-	contains = list(/obj/item/gun/medbeam)
-	crate_name = "Medical Beamgun Crate"
-
-
 /datum/supply_pack/service/paintcan
 	name = "Adaptive Paintcan"
 	desc = "Give things a splash of color with this experimental color-changing can of paint! Sellers note: We are not responsible for lynchings carried out by angry janitors, security officers, or any other crewmembers as a result of you using this."
