@@ -97,6 +97,17 @@
 	contains = list(/obj/item/storage/briefcase/medicalgunset/standard)
 	crate_name = "CWM-479 Medigun Crate"
 
+/datum/supply_pack/medical/medicells
+	name = "Medicell Replacement Crate"
+	desc = "Contains a single replacement cell for each of the basic Medigun cells."
+	cost = CARGO_CRATE_VALUE * 5
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/medicell/brute1,
+					/obj/item/medicell/burn1,
+					/obj/item/medicell/toxin1,
+					/obj/item/medicell)
+	crate_name = "Medicell Replacemnt Crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

@@ -66,7 +66,7 @@
 //Default Cell//
 /obj/item/medicell
 	name = "Default Medicell"
-	desc = "The standard MediCell"
+	desc = "The standard oxygen cell, most guns come with this already installed."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
 	icon_state = "Oxy1"
 	w_class = WEIGHT_CLASS_SMALL
