@@ -17,7 +17,7 @@
 
 /obj/item/ammo_casing/energy/medical
 	projectile_type = /obj/projectile/energy/medical/default
-	select_name = "Default"
+	select_name = "oxygen"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	e_cost = 60
 	harmful = FALSE
@@ -41,7 +41,7 @@
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
 	projectile_type = /obj/projectile/energy/medical/brute1
-	select_name = "Brute I"
+	select_name = "brute"
 
 /obj/projectile/energy/medical/brute1
 	name = "brute heal shot"
@@ -53,7 +53,7 @@
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
-	select_name = "Burn I"
+	select_name = "burn"
 
 /obj/projectile/energy/medical/burn1
 	name = "burn heal shot"
@@ -65,7 +65,7 @@
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin1
-	select_name = "Toxin I"
+	select_name = "toxin"
 
 /obj/projectile/energy/medical/toxin1
 	name = "toxin heal shot"

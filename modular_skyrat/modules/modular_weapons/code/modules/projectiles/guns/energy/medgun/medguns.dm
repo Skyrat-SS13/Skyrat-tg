@@ -3,7 +3,7 @@
 	name = "MediGun"
 	desc = "This is my smart gun, it won't hurt anyone friendly, infact it will make them heal! Please tell github if you somehow manage to get this gun."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
-	icon_state = "cfa-disabler"
+	icon_state = "medigun"
 	inhand_icon_state = "chronogun" //Fits best with how the medigun looks, might be changed in the future
 	ammo_type = list(/obj/item/ammo_casing/energy/medical) //The default option that heals Oxygen//
 	ammo_x_offset = 2
@@ -58,7 +58,7 @@
 	name = "Default Medicell"
 	desc = "The standard MediCell"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
-	icon_state = "Oxygen1"
+	icon_state = "Oxy1"
 	w_class = WEIGHT_CLASS_SMALL
 	var/ammo_type = /obj/item/ammo_casing/energy/medical //This is the ammo type that all mediguns come with.
 
@@ -94,28 +94,28 @@
 	name = "Brute II Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Brute1"
+	icon_state = "Brute2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute2
 //Burn II//
 /obj/item/medicell/burn2
 	name = "Burn II Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Burn1"
+	icon_state = "Burn2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn2
 //Toxin II//
 /obj/item/medicell/toxin2
 	name = "Toxin II Medicell"
 	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Toxin1"
+	icon_state = "Toxin2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin2
 //Oxygen II//
 /obj/item/medicell/oxy2
 	name = "Oxygen II Medicell"
 	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Oxygen1"
+	icon_state = "Oxy2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy2
 //End of Tier II
 //Tier III Cells/
@@ -124,28 +124,28 @@
 	name = "Brute III Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Brute1"
+	icon_state = "Brute3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute3
 //Burn III//
 /obj/item/medicell/burn3
 	name = "Burn III Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Burn1"
+	icon_state = "Burn3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn3
 //Toxin III//
 /obj/item/medicell/toxin3
 	name = "Toxin III Medicell"
 	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Toxin1"
+	icon_state = "Toxin3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin3
 //Oxygen III//
 /obj/item/medicell/oxy3
 	name = "Oxygen III Medicell"
 	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "Oxygen1"
+	icon_state = "Oxy3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III
 //Medigun Gunsets/
