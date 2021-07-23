@@ -90,6 +90,7 @@
 //SKYRAT CHANGE, NERFED ICE DEMON FOR MINING
 /mob/living/simple_animal/hostile/asteroid/ice_demon/mining
 	name = "lesser demonic watcher"
+	icon_state = "ice_demon_lesser"
 	desc = "A creature formed entirely out of ice, bluespace energy emanates from inside of it. This lesser variant seems to rely entirely on beating the shit out of you by coming closer."
 	ranged = FALSE
 	minimum_distance = 1 //This is the standard minimum distance
