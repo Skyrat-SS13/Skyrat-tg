@@ -2,7 +2,7 @@
 /obj/item/gun/energy/medigun
 	name = "MediGun"
 	desc = "This is my smart gun, it won't hurt anyone friendly, infact it will make them heal! Please tell github if you somehow manage to get this gun."
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi'
 	icon_state = "medigun"
 	inhand_icon_state = "chronogun" //Fits best with how the medigun looks, might be changed in the future
 	ammo_type = list(/obj/item/ammo_casing/energy/medical) //The default option that heals Oxygen//
@@ -38,7 +38,7 @@
 
 /obj/item/gun/energy/medigun/upgraded/Initialize()
 	..()
-	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi', "medigun_fastcharge")
+	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi', "medigun_fastcharge")
 	add_overlay(fastcharge_medigun)
 
 //CMO and CC MediGun
@@ -52,7 +52,7 @@
 
 /obj/item/gun/energy/medigun/cmo/Initialize()
 	..()
-	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi', "medigun_cmo")
+	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi', "medigun_cmo")
 	add_overlay(cmo_medigun)
 
 //Upgrade Kit//
