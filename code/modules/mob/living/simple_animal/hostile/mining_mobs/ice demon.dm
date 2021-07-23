@@ -85,3 +85,14 @@
 	if(prob(5))
 		new /obj/item/raw_anomaly_core/bluespace(loc)
 	return ..()
+
+
+//SKYRAT CHANGE, NERFED ICE DEMON FOR MINING
+/mob/living/simple_animal/hostile/asteroid/ice_demon/mining
+	name = "lesser demonic watcher"
+	desc = "A creature formed entirely out of ice, bluespace energy emanates from inside of it. This lesser variant seems to rely entirely on beating the shit out of you by coming closer."
+	ranged = FALSE
+	minimum_distance = 1 //This is the standard minimum distance
+	retreat_distance = null
+	teleport_distance = 6 //Farther distance; more time to react.
+//END OF SKYRAT CHANGE

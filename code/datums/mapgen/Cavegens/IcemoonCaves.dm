@@ -21,7 +21,7 @@
 
 /datum/map_generator/cave_generator/icemoon/deep
 	closed_turf_types = list(/turf/closed/mineral/random/snow/underground = 1)
-	mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/ice_demon = 50, /obj/structure/spawner/ice_moon/demonic_portal = 3, \
+	mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/ice_demon/lesser = 50, /obj/structure/spawner/ice_moon/demonic_portal = 1, \ //SKYRAT CHANGE, ICE DEMON IS NOW LESSER, NERFED DEMONIC PORTAL CHANCES FROM 3 TO 1.
 						  /mob/living/simple_animal/hostile/asteroid/ice_whelp = 30, /obj/structure/spawner/ice_moon/demonic_portal/ice_whelp = 3, \
 						  /mob/living/simple_animal/hostile/asteroid/hivelord/legion/snow = 50, /obj/structure/spawner/ice_moon/demonic_portal/snowlegion = 3, \
 						  SPAWN_MEGAFAUNA = 2)
