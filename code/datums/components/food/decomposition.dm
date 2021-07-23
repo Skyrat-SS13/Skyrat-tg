@@ -1,8 +1,8 @@
 //"Don't leave food on the floor, that's how we get ants"
 
-#define DECOMPOSITION_TIME 10 MINUTES
-#define DECOMPOSITION_TIME_RAW 5 MINUTES
-#define DECOMPOSITION_TIME_GROSS 7 MINUTES
+#define DECOMPOSITION_TIME 20 MINUTES //SKYRAT CHANGE, INCREASED TIME
+#define DECOMPOSITION_TIME_RAW 15 MINUTES //SKYRAT CHANGE, INCREASED TIME
+#define DECOMPOSITION_TIME_GROSS 10 MINUTES //SKYRAT CHANGE, INCREASED TIME
 
 #define DECOMP_EXAM_NORMAL 0
 #define DECOMP_EXAM_GROSS 1
@@ -66,7 +66,7 @@
 	if(!istype(open_turf)) //Are we actually in an open turf?
 		remove_timer()
 		return
-
+ 
 	for(var/atom/movable/content as anything in open_turf.contents)
 		if(GLOB.typecache_elevated_structures[content.type])
 			remove_timer()
@@ -100,7 +100,7 @@
 	var/obj/decomp = parent //Lets us spawn things at decomp
 	new /obj/effect/decal/cleanable/ants(decomp.loc)
 	new /obj/item/food/badrecipe/moldy(decomp.loc)
-	decomp.visible_message("<span class='notice'>[decomp] gets overtaken by mold and ants! Gross!</span>")
+	decomp.visible_message("<span class='warning'>[decomp] gets overtaken by mold and ants! Gross!</span>") //SKYRAT CHANGE, NOTICE TO WARNING
 	qdel(decomp)
 	return
 
