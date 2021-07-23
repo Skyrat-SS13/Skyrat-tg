@@ -2496,7 +2496,7 @@
 	contains = list(/obj/item/storage/fish_case/random,
 					/obj/item/storage/fish_case/random)
 	crate_name = "aquarium fish crate"
-
+/* - SKYRAT EDIT: rest tight bikey
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
@@ -2504,7 +2504,7 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
-
+*/
 /datum/supply_pack/misc/bigband
 	name = "Big Band Instrument Collection"
 	desc = "Get your sad station movin' and groovin' with this fine collection! Contains nine different instruments!"
