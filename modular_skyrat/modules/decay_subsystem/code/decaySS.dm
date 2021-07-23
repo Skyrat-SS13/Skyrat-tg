@@ -29,11 +29,8 @@ SUBSYSTEM_DEF(decay)
 	var/list/possible_nests = list(
 		/obj/structure/mob_spawner/spiders,
 		/obj/structure/mob_spawner/bush,
-		/obj/structure/mob_spawner/grapes,
 		/obj/structure/mob_spawner/beehive,
-		/obj/structure/mob_spawner/rats,
-		/obj/structure/mob_spawner/snake,
-		/obj/structure/mob_spawner/beehive/toxic
+		/obj/structure/mob_spawner/rats
 		)
 
 /datum/controller/subsystem/decay/Initialize()
