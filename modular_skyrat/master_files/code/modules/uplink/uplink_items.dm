@@ -129,6 +129,7 @@
 	to tell these are the real deal. Box of 7."
 	item = /obj/item/storage/box/syndieshotglasses
 	cost = 2 //These are taken nearly exactly from Goon, very fun tool.
+	restricted_roles = list("Bartender")
 
 //EXPLOSIVES
 /datum/uplink_item/explosives/buzzkill_traitor
