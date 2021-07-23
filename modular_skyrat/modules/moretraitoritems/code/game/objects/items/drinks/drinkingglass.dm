@@ -7,6 +7,7 @@
 	amount_per_transfer_from_this = 50
 	possible_transfer_amounts = list(50)
 	volume = 50
+	reagent_flags = REFILLABLE | DRAINABLE
 
 /obj/item/storage/box/syndieshotglasses
 	name = "box of shot glasses"
