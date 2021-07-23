@@ -8,13 +8,10 @@
 
 	mob_spawn_list = list(
 		/mob/living/simple_animal/hostile/asteroid/goliath = 20,
-		/mob/living/simple_animal/hostile/netherworld/mine_mob = 10,
-		/mob/living/simple_animal/hostile/ooze/grapes/mine_mob = 20,
 		/mob/living/simple_animal/hostile/asteroid/fugu = 30,
 		/mob/living/simple_animal/hostile/asteroid/basilisk = 40,
 		/mob/living/simple_animal/hostile/asteroid/hivelord = 20,
-		/mob/living/simple_animal/hostile/netherworld/migo/mine_mob = 10,
-		/*/mob/living/simple_animal/hostile/lost_husk = 50,*/
+		/*/mob/living/simple_animal/hostile/lost_husk = 50, ----- NYI*/
 		SPAWN_MEGAFAUNA = 3,
 		/mob/living/simple_animal/hostile/asteroid/goldgrub = 10
 		)
@@ -27,7 +24,14 @@
 		/obj/structure/flora/ash/cacti = 1,
 		/obj/structure/flora/ash/tall_shroom = 2
 		)
-	feature_spawn_list = list(/obj/structure/geyser/random = 1, /obj/effect/mine/shrapnel/human_only = 1)
+	feature_spawn_list = list(
+		/obj/structure/geyser/wittel = 8,
+		/obj/structure/geyser/random = 3,
+		/obj/structure/geyser/plasma_oxide = 10,
+		/obj/structure/geyser/protozine = 10,
+		/obj/structure/geyser/hollowwater = 10,
+		/obj/effect/mine/shrapnel/human_only = 2
+		)
 
 	initial_closed_chance = 45
 	smoothing_iterations = 50
