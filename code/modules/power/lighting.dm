@@ -381,8 +381,8 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-			var/area/A = get_area(src)
-			if(emergency_mode || (A?.fire))
+			//var/area/A = get_area(src) //SKYRAT EDIT REMOVAL
+			if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
@@ -399,8 +399,8 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	var/area/A = get_area(src)
-	if(emergency_mode || (A?.fire))
+	// var/area/A = get_area(src) SKYRAT EDIT REMOVAL
+	if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
 		. += mutable_appearance(overlayicon, "[base_state]_emergency", layer, plane)
 		return
 	if(nightshift_enabled)
@@ -414,7 +414,7 @@
 //SKYRAT EDIT END
 
 // update the icon_state and luminosity of the light depending on its state
-/obj/machinery/light/proc/update(trigger = TRUE)
+/obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) //SKYRAT EDIT CHANGE
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE
@@ -440,7 +440,7 @@
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
 					explode()
-			else if( prob( min(60, (switchcount^2)*0.01) ) )
+			else if( prob( min(60, (switchcount**2)*0.01) ) )
 				if(trigger)
 					burn_out()
 			else
@@ -448,12 +448,14 @@
 				set_light(BR, PO, CO)
 		*/
 		//SKYRAT EDIT CHANGE BEGIN - AESTHETICS
-		if(maploaded)
-			turn_on(trigger)
+		if(instant)
+			turn_on(trigger, play_sound)
+		else if(maploaded)
+			turn_on(trigger, play_sound)
 			maploaded = FALSE
 		else if(!turning_on)
 			turning_on = TRUE
-			addtimer(CALLBACK(src, .proc/turn_on, trigger), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
+			addtimer(CALLBACK(src, .proc/turn_on, trigger, play_sound), rand(LIGHT_ON_DELAY_LOWER, LIGHT_ON_DELAY_UPPER))
 		//SKYRAT EDIT END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
@@ -532,6 +534,10 @@
 	if(cell)
 		. += "Its backup power charge meter reads [round((cell.charge / cell.maxcharge) * 100, 0.1)]%."
 
+	//SKYRAT EDIT ADDITION
+	if(constant_flickering)
+		. += span_danger("The lighting ballast appears to be damaged, this could be fixed with a multitool.")
+	//SKYRAT EDIT END
 
 
 // attack with item - insert light (if right type), otherwise try to break the light
@@ -542,6 +548,17 @@
 	if(istype(W, /obj/item/lightreplacer))
 		var/obj/item/lightreplacer/LR = W
 		LR.ReplaceLight(src, user)
+		return //SKYRAT EDIT ADDITION - Fix Light Replacer
+
+	//SKYRAT EDIT ADDITION
+	if(istype(W, /obj/item/multitool) && constant_flickering)
+		to_chat(user, span_notice("You start repairing the ballast of [src] with [W]."))
+		if(do_after(user, 2 SECONDS, src))
+			stop_flickering()
+			to_chat(user, span_notice("You repair the ballast of [src]!"))
+		return
+
+	//SKYRAT EDTI END
 
 	// attempt to insert light
 	else if(istype(W, /obj/item/light))
@@ -650,7 +667,7 @@
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
 	var/area/A = get_area(src)
-	return !A.lightswitch && A.power_light || flickering
+	return !A.lightswitch && A.power_light || flickering || constant_flickering //SKYRAT EDIT CHANGE
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
@@ -693,10 +710,10 @@
 			if(status != LIGHT_OK)
 				break
 			on = !on
-			update(0)
+			update(FALSE, TRUE) //SKYRAT EDIT CHANGE
 			sleep(rand(5, 15))
 		on = (status == LIGHT_OK)
-		update(0)
+		update(FALSE, TRUE) //SKYRAT EDIT CHANGE
 	flickering = FALSE
 
 // ai attack - make lights flicker, because why not

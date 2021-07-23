@@ -53,7 +53,7 @@
 	name = "Syndicate Infiltrator"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_TRAITOR
-	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain", "Corrections Officer")
+	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
 	weight = 7
@@ -73,7 +73,7 @@
 	antag_datum = /datum/antagonist/rev/head
 	antag_flag = ROLE_REV_HEAD
 	antag_flag_override = ROLE_REV
-	restricted_roles = list("AI", "Cyborg", "Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Corrections Officer", "Chief Medical Officer", "Research Director")
+	restricted_roles = list("AI", "Cyborg", "Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Corrections Officer", "Chief Medical Officer", "Research Director", "Vanguard Operative")
 	enemy_roles = list("AI", "Cyborg", "Security Officer","Detective","Head of Security", "Captain", "Warden")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
@@ -131,7 +131,7 @@
 /// Checks for revhead loss conditions and other antag datums.
 /datum/dynamic_ruleset/latejoin/provocateur/proc/check_eligible(datum/mind/M)
 	var/turf/T = get_turf(M.current)
-	if(!considered_afk(M) && considered_alive(M) && is_station_level(T.z) && !(M.antag_datums && M.antag_datums.len) && !HAS_TRAIT(M, TRAIT_MINDSHIELD))
+	if(!considered_afk(M) && considered_alive(M) && is_station_level(T.z) && !M.antag_datums?.len && !HAS_TRAIT(M, TRAIT_MINDSHIELD))
 		return TRUE
 	return FALSE
 
@@ -148,7 +148,7 @@
 	name = "Heretic Smuggler"
 	antag_datum = /datum/antagonist/heretic
 	antag_flag = ROLE_HERETIC
-	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain","Prisoner")
+	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain", "Prisoner", "Vanguard Operative")
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
 	weight = 4

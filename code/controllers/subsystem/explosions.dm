@@ -373,8 +373,10 @@ SUBSYSTEM_DEF(explosions)
 				SSexplosions.medturf += T
 			if(EXPLODE_LIGHT)
 				SSexplosions.lowturf += T
-
-
+		//SKYRAT EDIT ADDITION
+		for(var/obj/machinery/light/iterating_light in T)
+			iterating_light.start_flickering()
+		//SKYRAT EDIT END
 		if(flame_dist && prob(40) && !isspaceturf(T) && !T.density)
 			flameturf += T
 
@@ -414,11 +416,11 @@ SUBSYSTEM_DEF(explosions)
 /// The probability that a distant explosion SFX will be a far explosion sound rather than an echo. (0-100)
 #define FAR_SOUND_PROB 75
 /// The upper limit on screenshake amplitude for nearby explosions.
-#define NEAR_SHAKE_CAP 10
+#define NEAR_SHAKE_CAP 7
 /// The upper limit on screenshake amplifude for distant explosions.
-#define FAR_SHAKE_CAP 2.5
+#define FAR_SHAKE_CAP 1.5
 /// The duration of the screenshake for nearby explosions.
-#define NEAR_SHAKE_DURATION (2.5 SECONDS)
+#define NEAR_SHAKE_DURATION (1.5 SECONDS)
 /// The duration of the screenshake for distant explosions.
 #define FAR_SHAKE_DURATION (1 SECONDS)
 /// The lower limit for the randomly selected hull creaking frequency.

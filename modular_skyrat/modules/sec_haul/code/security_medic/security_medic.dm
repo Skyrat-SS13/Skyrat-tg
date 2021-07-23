@@ -22,6 +22,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_MEDIC
 	bounty_types = CIV_JOB_SEC
+	departments = DEPARTMENT_SECURITY
 
 	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
 
@@ -74,8 +75,7 @@
 /obj/structure/closet/secure_closet/security_medic
 	name = "security medics's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
-	icon_state = "secmed"
+	icon_state = "brig_phys"
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()

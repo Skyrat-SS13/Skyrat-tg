@@ -15,9 +15,11 @@
 	paycheck_department = ACCOUNT_SEC
 
 	outfit = /datum/outfit/job/brigoff
+	plasmaman_outfit = /datum/outfit/plasmaman/security
 	display_order = JOB_DISPLAY_ORDER_BRIGOFF
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+	departments = DEPARTMENT_SECURITY
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
@@ -38,7 +40,7 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	ears = /obj/item/radio/headset/headset_sec
 	glasses = /obj/item/clothing/glasses/sunglasses
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/restraints/handcuffs = 2)
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/restraints/handcuffs = 2, /obj/item/gun/energy/taser/armadyne)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

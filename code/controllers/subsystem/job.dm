@@ -504,7 +504,7 @@ SUBSYSTEM_DEF(job)
 		var/spawning_handled = FALSE
 		var/obj/S = null
 		if(HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && job.random_spawns_possible)
-			SendToLateJoin(living_mob)
+			SendToLateJoin(living_mob, buckle = TRUE, search_empty_chair = FALSE)
 			spawning_handled = TRUE
 		else if(HAS_TRAIT(SSstation, STATION_TRAIT_RANDOM_ARRIVALS) && job.random_spawns_possible)
 			DropLandAtRandomHallwayPoint(living_mob)
@@ -732,7 +732,7 @@ SUBSYSTEM_DEF(job)
 		return
 	..()
 
-/datum/controller/subsystem/job/proc/SendToLateJoin(mob/M, buckle = TRUE)
+/datum/controller/subsystem/job/proc/SendToLateJoin(mob/M, buckle = TRUE, search_empty_chair = TRUE)
 	var/atom/destination
 	if(M.mind && M.mind.assigned_role && length(GLOB.jobspawn_overrides[M.mind.assigned_role])) //We're doing something special today.
 		destination = pick(GLOB.jobspawn_overrides[M.mind.assigned_role])
@@ -751,17 +751,26 @@ SUBSYSTEM_DEF(job)
 		return TRUE
 
 	//bad mojo
-	var/area/shuttle/arrival/A = GLOB.areas_by_type[/area/shuttle/arrival]
-	if(A)
-		//first check if we can find a chair
-		var/obj/structure/chair/C = locate() in A
-		if(C)
-			C.JoinPlayerHere(M, buckle)
+	var/area/shuttle/arrival/spawnarea = GLOB.areas_by_type[/area/shuttle/arrival]
+	if(spawnarea)
+		if(search_empty_chair) // search carefully for an unoccupied chair for the character can buckle to.
+			var/list/chairs = list()
+			for(var/obj/structure/chair/chair in spawnarea)
+				chairs += chair
+			while(chairs.len)
+				var/obj/structure/chair/chosen_chair = pick_n_take(chairs)
+				if(!chosen_chair.has_buckled_mobs())
+					chosen_chair.JoinPlayerHere(M, buckle)
+					return TRUE
+		//we either couldn't find a free chair or couldn't be bothered to.
+		var/obj/structure/chair/chair = locate() in spawnarea
+		if(chair)
+			chair.JoinPlayerHere(M, buckle)
 			return TRUE
 
 		//last hurrah
 		var/list/avail = list()
-		for(var/turf/T in A)
+		for(var/turf/T in spawnarea)
 			if(!T.is_blocked_turf(TRUE))
 				avail += T
 		if(avail.len)
@@ -851,7 +860,8 @@ SUBSYSTEM_DEF(job)
 
 	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
 		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
-		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)")
+		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot",\
+		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative")
 
 	centcom_jobs = list("Central Command","VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Research Officer", \
 		"Special Ops Officer","Admiral","CentCom Commander","CentCom Bartender","Private Security Force")

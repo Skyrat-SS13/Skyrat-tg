@@ -20,9 +20,13 @@
 #define TRAIT_WEBBING_ASPECT "webbing_aspect"
 #define TRAIT_FLORAL_ASPECT "floral_aspect"
 #define TRAIT_ASH_ASPECT "ash_aspect"
+#define TRAIT_SPARKLE_ASPECT "sparkle_aspect"
 
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits
 
 /// One can breath under water, you get me?
 #define TRAIT_WATER_BREATHING "water_breathing"
+
+/// Under the effect of a numbling agent, such as morphine, for surgery.
+#define TRAIT_NUMBED "numbed"

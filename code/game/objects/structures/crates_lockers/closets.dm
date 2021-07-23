@@ -1,6 +1,6 @@
 #define LOCKER_FULL -1
 
-/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY CLOSETS.DM IN ANIMATED DOORS
 	name = "closet"
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/closet.dmi'
@@ -44,6 +44,12 @@
 	var/delivery_icon = "deliverycloset" //which icon to use when packagewrapped. null to be unwrappable.
 	var/anchorable = TRUE
 	var/icon_welded = "welded"
+	/// Protection against weather that being inside of it provides.
+	var/list/weather_protection = null
+	/// How close being inside of the thing provides complete pressure safety. Must be between 0 and 1!
+	contents_pressure_protection = 0
+	/// How insulated the thing is, for the purposes of calculating body temperature. Must be between 0 and 1!
+	contents_thermal_insulation = 0
 	/// Whether a skittish person can dive inside this closet. Disable if opening the closet causes "bad things" to happen or that it leads to a logical inconsistency.
 	var/divable = TRUE
 	/// true whenever someone with the strong pull component is dragging this, preventing opening
@@ -84,7 +90,7 @@
 
 /obj/structure/closet/proc/closet_update_overlays(list/new_overlays)
 	. = new_overlays
-	if(enable_door_overlay)
+	if(enable_door_overlay && !is_animating_door) //SKYRAT EDIT CHANGE
 		if(opened && has_opened_overlay)
 			. += "[icon_door_override ? icon_door : icon_state]_open"
 			var/mutable_appearance/door_blocker = mutable_appearance(icon, "[icon_door || icon_state]_open", plane = EMISSIVE_PLANE)
@@ -163,6 +169,8 @@
 
 /obj/structure/closet/proc/take_contents()
 	var/atom/L = drop_location()
+	if(!L)
+		return
 	for(var/atom/movable/AM in L)
 		if(AM != src && insert(AM) == LOCKER_FULL) // limit reached
 			break
@@ -182,6 +190,7 @@
 	if(!dense_when_open)
 		set_density(FALSE)
 	dump_contents()
+	animate_door(FALSE) //SKYRAT EDIT ADDITION
 	update_appearance()
 	after_open(user, force)
 	return TRUE
@@ -239,6 +248,7 @@
 	playsound(loc, close_sound, close_sound_volume, TRUE, -3)
 	opened = FALSE
 	set_density(TRUE)
+	animate_door(TRUE) //SKYRAT EDIT ADDITION
 	update_appearance()
 	after_close(user)
 	return TRUE
@@ -402,6 +412,12 @@
 	if(user.Adjacent(src))
 		return attack_hand(user)
 
+/obj/structure/closet/attack_robot_secondary(mob/user, list/modifiers)
+	if(!user.Adjacent(src))
+		return SECONDARY_ATTACK_CONTINUE_CHAIN
+	togglelock(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 // tk grab then use on self
 /obj/structure/closet/attack_self_tk(mob/user)
 	if(attack_hand(user))
@@ -467,12 +483,13 @@
 	open()
 
 /obj/structure/closet/attack_hand_secondary(mob/user, modifiers)
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 	if(!user.canUseTopic(src, BE_CLOSE) || !isturf(loc))
 		return
 
 	if(!opened && secure)
 		togglelock(user)
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/closet/proc/togglelock(mob/living/user, silent)
 	if(secure && !broken)

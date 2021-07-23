@@ -172,7 +172,7 @@
 	return ..()
 
 /obj/machinery/mineral/equipment_vendor/proc/RedeemVoucher(obj/item/mining_voucher/voucher, mob/redeemer)
-	var/items = list("Survival Capsule and Explorer's Webbing", "Resonator Kit", "Minebot Kit", "Extraction and Rescue Kit", "Crusher Kit", "Mining Conscription Kit")
+	var/items = list("Survival Capsule and Explorer's Webbing", "Resonator Kit", "Minebot Kit", "Extraction and Rescue Kit", "Crusher Kit", "Mining Conscription Kit", "Neural Lace Kit") //SKYRAT EDIT - Neural Laces
 
 	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in sortList(items)
 	if(!selection || !Adjacent(redeemer) || QDELETED(voucher) || voucher.loc != redeemer)
@@ -184,6 +184,8 @@
 		if("Resonator Kit")
 			new /obj/item/extinguisher/mini(drop_location)
 			new /obj/item/resonator(drop_location)
+		if("Neural Lace Kit") // Skyrat edit
+			new /obj/item/autosurgeon/organ/corticalstack(drop_location)
 		if("Minebot Kit")
 			new /mob/living/simple_animal/hostile/mining_drone(drop_location)
 			new /obj/item/weldingtool/hugetank(drop_location)
@@ -258,8 +260,8 @@
 	..()
 
 /obj/item/card/mining_point_card/examine(mob/user)
-	..()
-	to_chat(user, span_alert("There's [points] point\s on the card."))
+	. = ..()
+	. += span_alert("There's [points] point\s on the card.")
 
 /obj/item/storage/backpack/duffelbag/mining_conscript
 	name = "mining conscription kit"

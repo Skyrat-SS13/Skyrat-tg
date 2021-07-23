@@ -455,7 +455,6 @@
 
 ///Take air from the passed in gas mixture datum
 /atom/proc/assume_air(datum/gas_mixture/giver)
-	qdel(giver)
 	return null
 
 ///Remove air from this atom
@@ -1319,9 +1318,9 @@
  *
  * Default behaviour is to send the [COMSIG_ATOM_ENTERED]
  */
-/atom/Entered(atom/movable/arrived, direction)
-	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, arrived, direction)
-	SEND_SIGNAL(arrived, COMSIG_ATOM_ENTERING, src, direction)
+/atom/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, arrived, old_loc, old_locs)
+	SEND_SIGNAL(arrived, COMSIG_ATOM_ENTERING, src, old_loc, old_locs)
 
 /**
  * An atom is attempting to exit this atom's contents
@@ -1725,9 +1724,7 @@
 
 /obj/item/update_filters()
 	. = ..()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
+	update_action_buttons()
 
 /atom/proc/get_filter(name)
 	if(filter_data && filter_data[name])
@@ -1956,7 +1953,7 @@
  * Override this if you want custom behaviour in whatever gets hit by the rust
  */
 /atom/proc/rust_heretic_act()
-	return
+	AddComponent(/datum/component/rust)
 
 /**
  * Used to set something as 'open' if it's being used as a supplypod
