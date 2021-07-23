@@ -1,6 +1,6 @@
 /datum/language/japanese
-	name = "Japanese"
-	desc = "An old language from Earth, named after the country it originated from: Japan. While not as prevalent as Common, and having taken on a wealth of loanwords, its managed to hold on both in its country of origin and across space."
+	name = "Yangyu"
+	desc = "An old language from Earth, originally from the country of Japan. While not as prevalent as Common, and having taken on a wealth of loanwords, its managed to hold on both in its country of origin and across space."
 	key = "J"
 	flags = TONGUELESS_SPEECH
 	syllables = list (
