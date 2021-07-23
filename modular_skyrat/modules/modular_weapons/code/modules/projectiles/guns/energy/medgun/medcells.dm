@@ -79,7 +79,7 @@
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
 	projectile_type = /obj/projectile/energy/medical/upgraded/brute2
-	select_name = "Brute II"
+	select_name = "brute II"
 
 /obj/projectile/energy/medical/upgraded/brute2
 	name = "strong brute heal shot"
@@ -92,7 +92,7 @@
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
-	select_name = "Burn II"
+	select_name = "burn II"
 
 /obj/projectile/energy/medical/upgraded/burn2
 	name = "strong burn heal shot"
@@ -104,7 +104,7 @@
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
-	select_name = "Oxygen II"
+	select_name = "oxygen II"
 
 /obj/projectile/energy/medical/upgraded/oxy2
 	name = "strong oxygen heal shot"
@@ -115,7 +115,7 @@
 //Tier II Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin2
-	select_name = "Toxin II"
+	select_name = "toxin II"
 
 /obj/projectile/energy/medical/upgraded/toxin2
 	name = "strong toxin heal shot"
@@ -129,7 +129,7 @@
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
 	projectile_type = /obj/projectile/energy/medical/upgraded/brute3
-	select_name = "Brute III"
+	select_name = "brute III"
 
 /obj/projectile/energy/medical/upgraded/brute3
 	name = "powerful brute heal shot"
@@ -141,7 +141,7 @@
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
-	select_name = "Burn III"
+	select_name = "burn III"
 
 /obj/projectile/energy/medical/upgraded/burn3
 	name = "powerful burn heal shot"
@@ -153,7 +153,7 @@
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
-	select_name = "Oxygen III"
+	select_name = "oxygen III"
 
 /obj/projectile/energy/medical/upgraded/oxy3
 	name = "powerful oxygen heal shot"
@@ -164,7 +164,7 @@
 //Tier III Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin3
-	select_name = "Toxin III"
+	select_name = "toxin III"
 
 /obj/projectile/energy/medical/upgraded/toxin3
 	name = "powerful toxin heal shot"
