@@ -116,11 +116,20 @@
 	if(in_company() && satisfaction >= 0)
 		satisfaction -= 1
 
-	if(in_company() && satisfaction == 300 && prob(10))
-		to_chat(owner, "<font color=purple>Your thoughts are slightly confused...</font>")
+	if(in_company() && satisfaction == 300)
+		to_chat(owner, "<font color=purple>Jeez it's hot in here..</font>")
 
-	if(in_company() && satisfaction == 150 && prob(10))
-		to_chat(owner, "<font color=purple>You feel so hot...</font>")
+	if(in_company() && satisfaction == 250)
+		to_chat(owner, "<font color=purple>Desire fogs your decisions.</font>")
+
+	if(in_company() && satisfaction == 200)
+		to_chat(owner, "<font color=purple>Your clothes grow uncomfortable.</font>")
+
+	if(in_company() && satisfaction == 150)
+		to_chat(owner, "<font color=purple>You'd hit that. Yeah. That's at least a six.</font>")
+
+	if(in_company() && satisfaction == 100)
+		to_chat(owner, "<font color=purple>You can't STAND it, you need a partner NOW!</font>"	)
 
 	if(in_company() && satisfaction <= 0)
 		if(stress <= 1000)
@@ -129,6 +138,10 @@
 	if(in_company() && owner.has_status_effect(/datum/status_effect/climax))
 		stress = 0
 		satisfaction = 1000
+
+	if(!(in_company()) && owner.has_status_effect(/datum/status_effect/climax) && satisfaction >= 500)
+		stress = 0
+		satisfaction = 500
 
 /datum/brain_trauma/special/nymphomania/proc/in_company()
 	if(HAS_TRAIT(owner, TRAIT_BLIND))
@@ -362,14 +375,12 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 		speech_args[SPEECH_MESSAGE] = message
 
 /datum/brain_trauma/special/bimbo/on_gain()
-	var/mob/living/carbon/human/H = owner
 	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	ADD_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
 	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
 	ADD_TRAIT(owner,TRAIT_MASOCHISM, APHRO_TRAIT)
 
 /datum/brain_trauma/special/bimbo/on_lose()
-	var/mob/living/carbon/human/H = owner
 	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	REMOVE_TRAIT(owner,TRAIT_BIMBO, APHRO_TRAIT)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
