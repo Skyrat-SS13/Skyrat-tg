@@ -425,3 +425,11 @@
 	icon_state = "deputy_hat"
 	mutant_variants = NONE
 	desc = "A light brown hat with a smell of iron. There's a small set of antlers embroidered on the inside."
+
+/obj/item/clothing/head/shamanash
+	name = "shaman skull"
+	desc = "The skull of a long dead animal bolted to the front of a repurposed pan."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "shamskull"
+	mutant_variants = NONE
