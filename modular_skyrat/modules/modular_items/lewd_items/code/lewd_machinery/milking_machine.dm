@@ -177,6 +177,7 @@
 	machine_color = choice
 	update_icon()
 	color_changed = TRUE
+	to_chat(user, "<span class='notice'>You have changed the color of the milking machine!</span>")
 	return TRUE
 
 // Checking if we can use the menu
@@ -611,9 +612,11 @@
 
 /obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/I)
 	if((flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_WRENCH)
+		to_chat(user, "<span class='notice'>You start to deconstructing the milking machine...</span>")
 		if(I.use_tool(src, user, 8 SECONDS, volume=50))
 			I.play_tool_sound(src, 50)
 			deconstruct(TRUE)
+			to_chat(user, "<span class='notice'>You have disassembled the milking machine!</span>")
 		return TRUE
 	return TRUE
 
@@ -1007,4 +1010,5 @@
 					N.machine_color = N.machine_color_list[2]
 					N.icon_state = "milking_teal_off"
 			qdel(src)
+			to_chat(user, "<span class='notice'>You have assembled the milking machine!</span>")
 			return
