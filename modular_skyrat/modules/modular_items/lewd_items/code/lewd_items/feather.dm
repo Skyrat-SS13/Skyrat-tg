@@ -141,3 +141,7 @@
 	description = "<span class='nicegreen'>Wooh... I was tickled. It was... Funny!</span>\n"
 	mood_change = 4
 	timeout = 2 MINUTES
+
+//prevent moths eating those
+/obj/item/clothing/sextoy/tickle_feather/attack(mob/living/M, mob/living/user, params)
+	return

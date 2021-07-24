@@ -149,6 +149,10 @@
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
 
+//prevent moths eating those
+/obj/item/clothing/sextoy/dildo/attack(mob/living/M, mob/living/user, params)
+	return
+
 ///////////////////////
 ///POLYCHROMIC DILDO///
 ///////////////////////
@@ -364,6 +368,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
+
+//prevent moths eating those
+/obj/item/clothing/sextoy/custom_dildo/attack(mob/living/M, mob/living/user, params)
+	return
 
 //////////////////
 ///DOUBLE DILDO///
@@ -592,6 +600,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
 
+//prevent moths eating those
+/obj/item/clothing/sextoy/double_dildo/attack(mob/living/M, mob/living/user, params)
+	return
 /obj/item/clothing/sextoy/dildo_side
 	name = "dildo side"
 	desc = "You looking so hot!"
@@ -684,3 +695,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
+
+//prevent moths eating those
+/obj/item/clothing/sextoy/dildo_side/attack(mob/living/M, mob/living/user, params)
+	return

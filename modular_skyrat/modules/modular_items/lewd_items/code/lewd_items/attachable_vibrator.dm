@@ -136,6 +136,10 @@
 			U.adjustArousal(0.7 * delta_time)
 			U.adjustPleasure(0.7 * delta_time)
 
+//prevent moths eating those
+/obj/item/clothing/sextoy/eggvib/attack(mob/living/M, mob/living/user, params)
+	return
+
 //////////////////////////
 ///Signal vibrating egg///
 //////////////////////////
@@ -421,3 +425,7 @@
 		if(vibration_mode == "hard")
 			U.adjustArousal(0.7 * delta_time)
 			U.adjustPleasure(0.7 * delta_time)
+
+//prevent moths eating those
+/obj/item/clothing/sextoy/signalvib/attack(mob/living/M, mob/living/user, params)
+	return

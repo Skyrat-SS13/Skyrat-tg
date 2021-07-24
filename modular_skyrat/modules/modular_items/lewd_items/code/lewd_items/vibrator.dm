@@ -101,6 +101,10 @@
 		U.adjustArousal(0.5 * delta_time)
 		U.adjustPleasure(0.5 * delta_time)
 
+//to prevent item being eated by moths. Fucking moths chomphing vibrators.
+/obj/item/clothing/sextoy/vibrator/attack(mob/living/M, mob/living/user, params)
+	return
+
 //SHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODESHITCODE
 /obj/item/clothing/sextoy/vibrator/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
 	. = ..()

@@ -81,3 +81,7 @@
 
 	if(B.aroused != AROUSAL_CANT)
 		B.aroused = AROUSAL_FULL //Clamps keeping nipples aroused
+
+//prevent moths eating those
+/obj/item/clothing/sextoy/nipple_clamps/attack(mob/living/M, mob/living/user, params)
+	return

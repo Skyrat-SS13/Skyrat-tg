@@ -90,3 +90,7 @@
 		condom_state = "used"
 		update_icon_state()
 		update_icon()
+
+//prevent moths eating those
+/obj/item/clothing/sextoy/condom/attack(mob/living/M, mob/living/user, params)
+	return

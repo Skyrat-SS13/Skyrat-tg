@@ -313,3 +313,7 @@
 			current_whip_type = "hard"
 		if("weak")
 			current_whip_type = "weak"
+
+//prevent moths eating those
+/obj/item/clothing/mask/leatherwhip/attack(mob/living/M, mob/living/user, params)
+	return
