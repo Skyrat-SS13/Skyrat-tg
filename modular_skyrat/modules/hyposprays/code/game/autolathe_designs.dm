@@ -16,7 +16,7 @@
 	category = list("initial","Medical","Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-/datum/design/camera
+/datum/design/pen
 	name = "Pen"
 	id = "pen"
 	build_type = AUTOLATHE
