@@ -155,11 +155,15 @@
 	set name = "Climax"
 	set category = "IC"
 
-	if(stat != CONSCIOUS)
-		to_chat(usr, "<span class='warning'>You can't climax right now...</span>")
-		return
+	if(!has_status_effect(/datum/status_effect/climax_cooldown))
+		if(tgui_alert(usr, "You sure you want to cum?", "Climax", list("Yes", "No")) == "Yes")
+			if(stat != CONSCIOUS)
+				to_chat(usr, "<span class='warning'>You can't climax right now...</span>")
+				return
+			else
+				climax(TRUE)
 	else
-		climax(TRUE)
+		to_chat(src, span_warning("You can't cum right now!"))
 
 ////////////
 ///FLUIDS///
@@ -387,7 +391,7 @@
 								"<font color=purple>You cum in your underwear! Eww.</font>")
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
-			if(vagina)
+			else if(vagina)
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
@@ -399,7 +403,7 @@
 								"<font color=purple>You cum in your underwear! Eww.</font>")
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
-			if(penis)
+			else if(penis)
 				if(is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
