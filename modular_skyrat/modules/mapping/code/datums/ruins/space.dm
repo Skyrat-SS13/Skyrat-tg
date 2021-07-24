@@ -126,3 +126,15 @@
 	suffix = "vaulttango.dmm"
 	name = "ARBORLINK Vault Tango"
 	description = "Nanotrasen isn't the only corporation experimenting in advanced bluespace technology."
+
+/datum/map_template/ruin/space/skyrat/friendship
+	id = "friendship"
+	suffix = "wreckedfriendship.dmm"
+	name = "NTSS Friendship"
+	description = "120 people.. one ship. It's unsurprising."
+
+/datum/map_template/ruin/space/skyrat/homestead
+	id = "homestead"
+	suffix = "wreckedhomestead.dmm"
+	name = "NTSS Homestead"
+	description = "A wrecked ship."

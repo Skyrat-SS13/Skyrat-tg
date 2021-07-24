@@ -221,6 +221,11 @@
 	path = /obj/item/clothing/suit/hooded/cloak/zuliecloak
 	ckeywhitelist = list("asky")
 
+/datum/loadout_item/neck/donator/healercloak
+	name = "Legendary Healer's Cloak"
+	path = /obj/item/clothing/neck/cloak/healercloak
+	ckeywhitelist = list("lyricalpaws")
+
 /datum/loadout_item/uniform/donator/lannese
 	name = "Lannese Dress"
 	path = /obj/item/clothing/under/custom/lannese

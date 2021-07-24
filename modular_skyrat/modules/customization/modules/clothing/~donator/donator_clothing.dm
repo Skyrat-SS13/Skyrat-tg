@@ -737,6 +737,14 @@
 	flags_inv = null
 	mutant_variants = NONE
 
+//Donation reward for Lyricalpaws
+/obj/item/clothing/neck/cloak/healercloak
+	name = "legendary healer's cloak"
+	desc = "Worn by the most skilled professional medics on the station, this legendary cloak is only attainable by becoming the pinnacle of healing. This status symbol represents the wearer has spent countless years perfecting their craft of helping the sick and wounded."
+	icon_state = "healercloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+
 //Donation reward for Kathrin Bailey / Floof Ball
 /obj/item/clothing/under/custom/lannese
 	name = "Lannese Dress"
