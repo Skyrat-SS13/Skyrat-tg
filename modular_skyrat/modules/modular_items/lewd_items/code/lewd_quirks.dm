@@ -132,7 +132,7 @@
 		to_chat(owner, "<font color=purple>You can't STAND it, you need a partner NOW!</font>"	)
 
 	if(in_company() && satisfaction <= 0)
-		if(stress <= 1000)
+		if(stress <= 100)
 			stress +=1
 
 	if(in_company() && owner.has_status_effect(/datum/status_effect/climax))
@@ -308,59 +308,99 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	can_gain = TRUE
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_LOBOTOMY
-	var/satisfaction = 100
+	var/satisfaction = 1000
 	var/stress = 0
 
 /datum/brain_trauma/special/bimbo/on_life()
 	var/mob/living/carbon/human/H = owner
-	if(satisfaction > 0.1)
-		satisfaction -=0.1
+	if(satisfaction > 1)
+		satisfaction -=1
+
 	H.adjustArousal(10)
-	if(H.pleasure < 70)
+
+	if(H.pleasure < 80)
 		H.adjustPleasure(5)
-	if(satisfaction <= 0.1)
+
+	if(satisfaction <= 0)
+		if(prob(10))
+			switch(rand(1,6))
+				if(1)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
+					else
+						to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
+						owner.emote("moan")
+				if(2)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
+						owner.do_jitter_animation(20)
+					else
+						to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
+						owner.dizziness += 20
+						owner.add_confusion(20)
+						owner.Jitter(20)
+						owner.do_jitter_animation(20)
+						owner.adjustStaminaLoss(50)
+				if(3, 4)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You bring your hips together in lust.</font>")
+					else
+						to_chat(owner, "<font color=purple>Desire driving you mad!</font>")
+						owner.hallucination += 30
+				if(5)
+					if(stress >= 100)
+						to_chat(owner, "<font color=purple>You feel like your genitalias are burning...</font>")
+						owner.adjustOxyLoss(8)
+						owner.blur_eyes(10)
+					else
+						to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
+						owner.adjustOxyLoss(16)
+						owner.blur_eyes(15)
+						owner.visible_message(pick("<font color=purple>[owner] seductively wags the hips.</font>\n",
+											"<font color=purple>[owner] moans in lust!</font>\n",
+											"<font color=purple>[owner] touches themselves in intimate places...</font>\n",
+											"<font color=purple>[owner] trembling longingly.</font>\n",
+											"<font color=purple>[owner] moans indecently!</font>\n"))
+
+	if(in_company() && satisfaction >= 0)
+		satisfaction -= 1
+
+	if(in_company() && satisfaction == 300)
+		to_chat(owner, "<font color=purple>Jeez it's hot in here..</font>")
+
+	if(in_company() && satisfaction == 250)
+		to_chat(owner, "<font color=purple>Desire fogs your decisions.</font>")
+
+	if(in_company() && satisfaction == 200)
+		to_chat(owner, "<font color=purple>Your clothes grow uncomfortable.</font>")
+
+	if(in_company() && satisfaction == 150)
+		to_chat(owner, "<font color=purple>You'd hit that. Yeah. That's at least a six.</font>")
+
+	if(in_company() && satisfaction == 100)
+		to_chat(owner, "<font color=purple>You can't STAND it, you need a partner NOW!</font>"	)
+
+	if(in_company() && satisfaction <= 0)
 		if(stress <= 100)
 			stress +=1
-		switch(rand(1,6))
-			if(1)
-				if(stress < 95)
-					to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
-				else
-					to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
-					owner.emote("moan")
-			if(2)
-				if(stress < 95)
-					to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
-					owner.do_jitter_animation(20)
-				else
-					to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
-					owner.dizziness += 20
-					owner.add_confusion(20)
-					owner.Jitter(20)
-					owner.do_jitter_animation(20)
-					owner.adjustStaminaLoss(50)
 
-			if(3, 4)
-				if(stress < 95)
-					to_chat(owner, "<font color=purple>You bring your hips together in lust.</font>")
-				else
-					to_chat(owner, "<font color=purple>Desire driving you mad!</font>")
-					owner.hallucination += 30
+	if(in_company() && owner.has_status_effect(/datum/status_effect/climax))
+		stress = 0
+		satisfaction = 1000
 
-			if(5)
-				if(stress < 95)
-					to_chat(owner, "<font color=purple>You feel like your genitalias are burning...</font>")
-					owner.adjustOxyLoss(8)
-					owner.blur_eyes(10)
-				else
-					to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
-					owner.adjustOxyLoss(16)
-					owner.blur_eyes(10)
-					owner.visible_message(pick("<font color=purple>[owner] seductively wags the hips.</font>\n",
-										"<font color=purple>[owner] moans in lust!</font>\n",
-										"<font color=purple>[owner] touches themselves in intimate places...</font>\n",
-										"<font color=purple>[owner] trembling longingly.</font>\n",
-										"<font color=purple>[owner] moans indecently!</font>\n"))
+	if(!(in_company()) && owner.has_status_effect(/datum/status_effect/climax) && satisfaction <= 500)
+		stress = 0
+		satisfaction = 500
+
+/datum/brain_trauma/special/bimbo/proc/in_company()
+	if(HAS_TRAIT(owner, TRAIT_BLIND))
+		return FALSE
+	for(var/mob/living/carbon/human/M in oview(owner, 4))
+		if(!isliving(M)) //ghosts ain't people
+			continue
+		if(istype(M))
+			return TRUE
+	return FALSE
 
 /datum/brain_trauma/special/bimbo/handle_speech(datum/source, list/speech_args)
 	if(HAS_TRAIT(owner, TRAIT_BIMBO))

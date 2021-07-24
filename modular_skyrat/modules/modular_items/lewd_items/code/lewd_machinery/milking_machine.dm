@@ -16,7 +16,7 @@
 	var/charge_rate = 200 // Power charge per tick devided by delta_time (always about ~2)
 	var/power_draw_rate = 65 // Power draw per tick multiplied by delta_time (always about ~2)
 	// Additional power consumption multiplier for different operating modes. Fractional value to reduce consumption
-	var/power_draw_multiplier_list = list("off" = 0, "low" = 0.05, "medium" = 0.25, "hard" = 0.5)
+	var/power_draw_multiplier_list = list("off" = 0, "low" = 0.025, "medium" = 0.25, "hard" = 0.5)
 	var/panel_open = FALSE // Сurrent maintenace panel state
 
 	/////////////////////////////
@@ -311,7 +311,7 @@
 		if(M == user)
 			// Have difficulty unbuckling if overly aroused
 			if(M.arousal >= 60)
-				if(current_mode != mode_list[1])
+				if((current_mode != mode_list[1]) && (current_mode != mode_list[2]))
 					to_chat(M, "<font color=purple>You are too horny to try to get out!</font>")
 					return
 				else
