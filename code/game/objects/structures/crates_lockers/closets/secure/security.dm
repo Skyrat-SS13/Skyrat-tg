@@ -46,6 +46,10 @@
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel(src)
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt(src)
 	new /obj/item/clothing/head/hopcap(src)
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade(src) //SKYRAT EDIT ADDITION START - HOP PARADE UNIFORMS
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female(src)
+	new /obj/item/clothing/suit/armor/hop_parade(src)
+	new /obj/item/clothing/suit/armor/hop_parade/female(src)	//SKYRAT EDIT ADDITION END
 	new /obj/item/cartridge/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
