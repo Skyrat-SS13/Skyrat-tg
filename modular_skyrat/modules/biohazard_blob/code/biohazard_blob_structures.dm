@@ -177,7 +177,7 @@
 			desc += " It feels damp and smells of rat poison."
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			desc += " It glows softly."
-	AddComponent(/datum/component/slippery, 80)
+	// AddComponent(/datum/component/slippery, 80) Adios
 
 /obj/structure/biohazard_blob/resin/update_overlays()
 	. = ..()
