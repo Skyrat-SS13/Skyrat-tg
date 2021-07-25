@@ -117,4 +117,10 @@
 	icon_state = "labcoat_pmedred"
 	mutant_variants = NONE
 
+/obj/item/clothing/suit/toggle/labcoat/para_red/Initialize()
+	. = ..()
+	allowed += list(
+		/obj/item/storage/firstaid,
+	)
+
 //Costume-suits are located under other_port.dm, to keep them with their costume sets
