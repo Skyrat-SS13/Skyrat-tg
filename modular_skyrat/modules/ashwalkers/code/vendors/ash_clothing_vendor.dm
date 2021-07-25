@@ -23,3 +23,4 @@
 		/obj/item/clothing/gloves/military/claw = 5,
 		/obj/item/clothing/gloves/military/ashwalk = 10
 	)
+
