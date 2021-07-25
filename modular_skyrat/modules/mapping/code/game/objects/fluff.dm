@@ -80,6 +80,34 @@
 		8 = 380
 	)
 
+//Fake holopads for the Rockplanet Cantina (because holodisks wouldnt show instruments, nor randomly post emotes)
+/obj/structure/decorative/fluff/holo_band	//This is the stand, its a functionless holopad
+	name = "hard-coded holopad"
+	desc = "This is set on a hard loop it looks like. No chance of using this for anything else."
+	anchored = TRUE
+	can_be_unanchored = FALSE
+	icon = 'modular_skyrat/modules/aesthetics/stationobjs/stationobjs.dmi'
+	icon_state = "holopad1"
+
+/obj/structure/decorative/fluff/holo_band/member
+	name = "holographic musician"
+	desc = "Woah, they're jammin!"
+	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
+
+/obj/structure/decorative/fluff/holo_band/member/Initialize()	//This is the same method used to hologram-ify holocallers. Makes spriting easier on my part.
+	. = ..()
+	alpha = 200
+	add_atom_colour("#77abff", FIXED_COLOUR_PRIORITY)
+
+/obj/structure/decorative/fluff/holo_band/member/a
+	icon_state = "holo_band_a"
+
+/obj/structure/decorative/fluff/holo_band/member/b
+	icon_state = "holo_band_b"
+
+/obj/structure/decorative/fluff/holo_band/member/c
+	icon_state = "holo_band_c"
+
 /* ----------------- Fluff/Decor ----------------- */
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'

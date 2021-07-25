@@ -16,3 +16,8 @@
 /area/ruin/powered/biodome
 	name = "Jungle Biodome"
 	icon_state = "dk_yellow"
+
+/area/ruin/powered/cantina
+	name = "Cantina"
+	icon_state = "dk_yellow"
+	ambientsounds = list('sound/ambience/voidsembrace.ogg')	//Placeholder until we get more jazz
