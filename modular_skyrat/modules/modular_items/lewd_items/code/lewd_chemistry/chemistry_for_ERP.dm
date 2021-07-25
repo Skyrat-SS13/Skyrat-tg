@@ -233,28 +233,21 @@
 		return..()
 
 	if(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT)
+		M.breast_enlarger_amount += 5
 		if(M.breast_enlarger_amount >= 100)
 			if(B?.genital_size < 16)
 				B.genital_size += 1
 				B.update_sprite_suffix()
 				M.update_body()
 				M.breast_enlarger_amount = 0
+
+				if(M.reagents.has_reagent(/datum/reagent/breast_enlarger))
+					M.reagents.remove_reagent(/datum/reagent/penis_enlarger, 20)
+
 			else
 				return
 
-		M.breast_enlarger_amount += 5
-
-		//If they've opted out, then route processing though liver.
-		if(!(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT))
-			var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
-			if(L)
-				L.applyOrganDamage(0.25)
-			else
-				H.adjustToxLoss(1)
-			return..()
-
 		//otherwise proceed as normal
-
 		if(ISINRANGE_EX(B?.genital_size, 14, 16) && (H.w_uniform || H.wear_suit))
 			var/target = H.get_bodypart(BODY_ZONE_CHEST)
 			if(!message_spam)
@@ -262,7 +255,16 @@
 				message_spam = TRUE
 			H.adjustOxyLoss(5, 0)
 			H.apply_damage(1, BRUTE, target)
-		return ..()
+
+	//If they've opted out, then route processing though liver.
+	if(!(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT))
+		var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
+		if(L)
+			L.applyOrganDamage(0.25)
+		else
+			H.adjustToxLoss(1)
+		return..()
+	return ..()
 
 /datum/reagent/breast_enlarger/overdose_process(mob/living/carbon/human/M) //Turns you into a female if character is male. Also supposed to add breasts but i'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/P = M.getorganslot(ORGAN_SLOT_PENIS)
@@ -279,7 +281,7 @@
 		M.update_body()
 		M.update_mutations_overlay()
 
-//some trap/futa stuff or something, idk. Useroth asked me to keep these organs
+	//some trap/futa stuff or something, idk. Useroth asked me to keep these organs
 	if(P)
 		if(P.genital_size >=3)
 			return
@@ -287,6 +289,8 @@
 			(P.genital_size -=2)
 	if(T)
 		(T.genital_size = 1)
+
+	return ..()
 /*
 Dear skyrat! I want someone to suffer, because for some reason genitals can't be added same as other organs. We tested on autosurgeon - it broken, we tired of trying making this thing work and if you finish it for us we will appreciate it. Thank you!
 Otherway you can just cut it. Cutting is fun!
@@ -370,6 +374,7 @@ Haha! Kill me please.
 		return ..()
 
 	if(H.client?.prefs.skyrat_toggles && PENIS_ENLARGEMENT)
+		M.penis_enlarger_amount += 5
 		if(M.penis_enlarger_amount >= 100)
 			if(P?.genital_size < 20)
 				P.genital_size += 1
@@ -379,10 +384,18 @@ Haha! Kill me please.
 				M.update_body()
 				M.penis_enlarger_amount = 0
 
+				if(M.reagents.has_reagent(/datum/reagent/penis_enlarger))
+					M.reagents.remove_reagent(/datum/reagent/breast_enlarger, 20)
+
 			else
 				return
 
-		M.penis_enlarger_amount += 5
+		if(ISINRANGE_EX(P?.genital_size, 18, 20) && (H.w_uniform || H.wear_suit))
+			var/target = H.get_bodypart(BODY_ZONE_PRECISE_GROIN)
+			if(!message_spam)
+				to_chat(H, "<span class='danger'>You feel tight in pants!</b></span>")
+				message_spam = TRUE
+			H.apply_damage(1, BRUTE, target)
 
 	//If they've opted out, then route processing though liver.
 	if(!(H.client?.prefs.skyrat_toggles && PENIS_ENLARGEMENT))
@@ -392,13 +405,6 @@ Haha! Kill me please.
 		else
 			H.adjustToxLoss(1)
 		return..()
-
-	if(ISINRANGE_EX(P?.genital_size, 18, 20) && (H.w_uniform || H.wear_suit))
-		var/target = H.get_bodypart(BODY_ZONE_PRECISE_GROIN)
-		if(!message_spam)
-			to_chat(H, "<span class='danger'>You feel tight in pants!</b></span>")
-			message_spam = TRUE
-		H.apply_damage(1, BRUTE, target)
 	return ..()
 
 /datum/reagent/penis_enlarger/overdose_process(mob/living/carbon/human/M) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.

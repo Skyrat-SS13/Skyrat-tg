@@ -164,7 +164,6 @@ I already saw enough in "Lone digger" video
 But i keeped it as unobtainable breain trauma, so admins can add it through VV *IN VERY SPECIFIC SITUATIONS*. If you're not lazy you can add it as smite, but i wouldn't recommend it.
 */
 
-
 /datum/brain_trauma/special/sexual_obsession
 	name = "Sexual obsession"
 	desc = "The patient obsessed with having sex with random people."
