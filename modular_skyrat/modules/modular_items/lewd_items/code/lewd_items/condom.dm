@@ -5,7 +5,7 @@
 //Packaged condom
 
 /obj/item/condom_pack
-	name = "condom_pack"
+	name = "condom pack"
 	desc = "Don't worry, i have protection."
 	icon_state = "condom_pack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
