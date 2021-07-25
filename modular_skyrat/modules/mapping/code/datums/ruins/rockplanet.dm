@@ -29,7 +29,6 @@
 	suffix = "biodome.dmm"
 //Above this line are the original ruins, from when every file relating to Rockplanet was called 'Asteroid'. That was changed because having asteroid(planet) and asteroid(space object) made files and whatnot confusing
 
-
 /datum/map_template/ruin/rockplanet/xenohive
 	name = "Xenomorph Hive"
 	id = "rockplanet_xenohive"
@@ -42,6 +41,13 @@
 	id = "rockplanet_factory"
 	description = "A long-dormant factory, overtaken by rust and dust. Whatever it was making is lost to time."
 	suffix = "factory.dmm"
+	cost = 5
+
+/datum/map_template/ruin/rockplanet/cantina	//Yeah, its a really blatant reference, but so what? It looks cool as hell, and if the station and mining really want they can get the qpad working
+	name = "Chalmun's Cantina"
+	id = "rockplanetcantina"
+	description = "You will never find a more wretched hive of scum and villainy..."
+	suffix = "cantina.dmm"
 	cost = 5
 
 /datum/map_template/ruin/rockplanet/syndicate_base
