@@ -7,13 +7,11 @@
 	icon_deny = "necrocrate"
 
 	products = list( //Relatively normal to have, I GUESS
-		/obj/item/clothing/under/costume/gladiator/ash_walker/white = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/tribal = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/robe = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/shaman = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/chiefrags = 15,
 		/obj/item/clothing/under/costume/gladiator/ash_walker/yellow = 15,
-		/obj/item/clothing/under/costume/gladiator/ash_walker/greentrib = 15,
 		/obj/item/clothing/suit/ashwalkermantle = 12,
 		/obj/item/clothing/suit/ashwalkermantle/cape = 12,
 		/obj/item/clothing/shoes/jackboots/ashwalker = 12,
