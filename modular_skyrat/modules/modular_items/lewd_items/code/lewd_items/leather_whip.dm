@@ -13,6 +13,7 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/whip.ogg'
+	moth_edible = FALSE
 	//Customization
 	var/color_changed = FALSE
 	var/form_changed = FALSE

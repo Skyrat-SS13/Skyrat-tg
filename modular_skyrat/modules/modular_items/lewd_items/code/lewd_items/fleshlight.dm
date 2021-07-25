@@ -11,6 +11,7 @@
 	var/color_changed = FALSE
 	var/static/list/fleshlight_designs
 	slot_flags = NONE
+	moth_edible = FALSE
 
 //to change color of fleshlight
 //create radial menu

@@ -14,6 +14,7 @@
 	var/datum/looping_sound/vibrator_medium/soundloop2
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_PENIS
+	moth_edible = FALSE
 
 /obj/item/clothing/sextoy/vibroring/attack_self(mob/user)
 	toy_on = !toy_on

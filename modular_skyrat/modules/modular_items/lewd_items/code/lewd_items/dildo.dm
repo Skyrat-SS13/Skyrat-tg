@@ -15,6 +15,7 @@
 	var/static/list/dildo_designs
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	moth_edible = FALSE
 
 //create radial menu
 /obj/item/clothing/sextoy/dildo/proc/populate_dildo_designs()
@@ -183,6 +184,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/static/list/dildo_sizes
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	moth_edible = FALSE
 
 //radial menu for sizes
 /obj/item/clothing/sextoy/custom_dildo/proc/populate_dildo_sizes()
@@ -384,6 +386,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	actions_types = list(/datum/action/item_action/take_dildo)
 	var/in_hands = FALSE
 	var/obj/item/clothing/sextoy/dildo_side/W
+	moth_edible = FALSE
 
 /obj/item/clothing/sextoy/double_dildo/Initialize()
 	. = ..()
@@ -601,7 +604,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	force = 0
 	throwforce = 0
 	item_flags = ABSTRACT | HAND_ITEM
-
+	moth_edible = FALSE
+	
 /obj/item/clothing/sextoy/dildo_side/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)

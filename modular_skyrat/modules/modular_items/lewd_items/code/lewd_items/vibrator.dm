@@ -19,6 +19,7 @@
 	var/mode = "off"
 	var/static/list/vibrator_designs
 	w_class = WEIGHT_CLASS_TINY
+	moth_edible = FALSE
 
 //create radial menu
 /obj/item/clothing/sextoy/vibrator/proc/populate_vibrator_designs()
