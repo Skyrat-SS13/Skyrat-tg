@@ -14,7 +14,6 @@
 	equip_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg'
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	flags_inv = HIDEJUMPSUIT
 	strip_delay = 80
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	var/mutable_appearance/breasts_overlay
