@@ -388,7 +388,3 @@
 			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
-
-//prevent moths eating those
-/obj/item/clothing/sextoy/magic_wand/attack(mob/living/M, mob/living/user, params)
-	return

@@ -120,7 +120,3 @@
 		U.adjustPleasure(1 * delta_time)
 	if(current_size == "big" && U.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
 		U.adjustPain (1*delta_time)
-
-//prevent moths eating those
-/obj/item/clothing/sextoy/buttplug/attack(mob/living/M, mob/living/user, params)
-	return

@@ -118,7 +118,3 @@
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
-
-//prevent moths eating those
-/obj/item/clothing/sextoy/fleshlight/attack(mob/living/M, mob/living/user, params)
-	return
