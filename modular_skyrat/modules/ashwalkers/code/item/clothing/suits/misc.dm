@@ -13,3 +13,4 @@
 	desc = "An ash coated cloak."
 	icon_state = "desertcloak"
 	mutant_variants = NONE
+
