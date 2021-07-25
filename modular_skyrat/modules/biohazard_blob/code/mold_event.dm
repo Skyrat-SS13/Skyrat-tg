@@ -16,7 +16,7 @@
 		/obj/structure/biohazard_blob/structure/core/toxic,
 		/obj/structure/biohazard_blob/structure/core/radioactive,
 		/obj/structure/biohazard_blob/structure/core/emp,
-		/obj/structure/biohazard_blob/structure/core/fungus
+	//	/obj/structure/biohazard_blob/structure/core/fungus
 	)
 
 /datum/round_event/mold/start()
