@@ -174,7 +174,7 @@
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/grenade/clusterbuster/spawner_spesscarp(src)
 	new /obj/item/pen/edagger(src)
-	new /datum/loadout_item/mask/job/surgical(src)
+	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/pen/sleepy(src)
 	new /obj/item/clothing/glasses/hud/eyepatch/sci(src)
 	new /obj/item/megaphone(src)
