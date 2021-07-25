@@ -1,4 +1,3 @@
-
 ////////////////////////////////
 /proc/message_admins(msg)
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message linkify\">[msg]</span></span>"
@@ -14,9 +13,9 @@
 		html = msg,
 		confidential = TRUE)
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 
+<<<<<<< HEAD
 /datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set category = "Admin.Game"
 	set name = "Show Player Panel"
@@ -408,6 +407,8 @@
 	onclose(usr, "admincaster_main")
 
 
+=======
+>>>>>>> 02102d34d76 (Splits 'random verbs' into several other verb files (#60403))
 /datum/admins/proc/Game()
 	if(!check_rights(0))
 		return
@@ -436,227 +437,6 @@
 
 	usr << browse(dat, "window=admin2;size=240x280")
 	return
-
-/////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge
-//i.e. buttons/verbs
-
-
-/datum/admins/proc/restart()
-	set category = "Server"
-	set name = "Reboot World"
-	set desc="Restarts the world immediately"
-	if (!usr.client.holder)
-		return
-
-	var/localhost_addresses = list("127.0.0.1", "::1")
-	var/list/options = list("Regular Restart", "Regular Restart (with delay)", "Hard Restart (No Delay/Feeback Reason)", "Hardest Restart (No actions, just reboot)")
-	if(world.TgsAvailable())
-		options += "Server Restart (Kill and restart DD)";
-
-	if(SSticker.admin_delay_notice)
-		if(tgui_alert(usr, "Are you sure? An admin has already delayed the round end for the following reason: [SSticker.admin_delay_notice]", "Confirmation", list("Yes", "No")) != "Yes")
-			return FALSE
-
-	var/result = input(usr, "Select reboot method", "World Reboot", options[1]) as null|anything in options
-	if(result)
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Reboot World") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		var/init_by = "Initiated by [usr.client.holder.fakekey ? "Admin" : usr.key]."
-		switch(result)
-			if("Regular Restart")
-				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
-					if(tgui_alert(usr, "Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
-						return FALSE
-				SSticker.Reboot(init_by, "admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]", 10)
-			if("Regular Restart (with delay)")
-				var/delay = input("What delay should the restart have (in seconds)?", "Restart Delay", 5) as num|null
-				if(!delay)
-					return FALSE
-				if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
-					if(tgui_alert(usr,"Are you sure you want to restart the server?","This server is live",list("Restart","Cancel")) != "Restart")
-						return FALSE
-				SSticker.Reboot(init_by, "admin reboot - by [usr.key] [usr.client.holder.fakekey ? "(stealth)" : ""]", delay * 10)
-			if("Hard Restart (No Delay, No Feeback Reason)")
-				to_chat(world, "World reboot - [init_by]")
-				world.Reboot()
-			if("Hardest Restart (No actions, just reboot)")
-				to_chat(world, "Hard world reboot - [init_by]")
-				world.Reboot(fast_track = TRUE)
-			if("Server Restart (Kill and restart DD)")
-				to_chat(world, "Server restart - [init_by]")
-				world.TgsEndProcess()
-
-/datum/admins/proc/end_round()
-	set category = "Server"
-	set name = "End Round"
-	set desc = "Attempts to produce a round end report and then restart the server organically."
-
-	if (!usr.client.holder)
-		return
-	var/confirm = tgui_alert(usr, "End the round and  restart the game world?", "End Round", list("Yes", "Cancel"))
-	if(confirm == "Cancel")
-		return
-	if(confirm == "Yes")
-		SSticker.force_ending = 1
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "End Round") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-
-/datum/admins/proc/announce()
-	set category = "Admin"
-	set name = "Announce"
-	set desc="Announce your desires to the world"
-	if(!check_rights(0))
-		return
-
-	var/message = input("Global message to send:", "Admin Announce", null, null)  as message
-	if(message)
-		if(!check_rights(R_SERVER,0))
-			message = adminscrub(message,500)
-		to_chat(world, "[span_adminnotice("<b>[usr.client.holder.fakekey ? "Administrator" : usr.key] Announces:</b>")]\n \t [message]", confidential = TRUE)
-		log_admin("Announce: [key_name(usr)] : [message]")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Announce") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/set_admin_notice()
-	set category = "Server"
-	set name = "Set Admin Notice"
-	set desc ="Set an announcement that appears to everyone who joins the server. Only lasts this round"
-	if(!check_rights(0))
-		return
-
-	var/new_admin_notice = input(src,"Set a public notice for this round. Everyone who joins the server will see it.\n(Leaving it blank will delete the current notice):","Set Notice",GLOB.admin_notice) as message|null
-	if(new_admin_notice == null)
-		return
-	if(new_admin_notice == GLOB.admin_notice)
-		return
-	if(new_admin_notice == "")
-		message_admins("[key_name(usr)] removed the admin notice.")
-		log_admin("[key_name(usr)] removed the admin notice:\n[GLOB.admin_notice]")
-	else
-		message_admins("[key_name(usr)] set the admin notice.")
-		log_admin("[key_name(usr)] set the admin notice:\n[new_admin_notice]")
-		to_chat(world, span_adminnotice("<b>Admin Notice:</b>\n \t [new_admin_notice]"), confidential = TRUE)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Admin Notice") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	GLOB.admin_notice = new_admin_notice
-	return
-
-/datum/admins/proc/toggleooc()
-	set category = "Server"
-	set desc="Toggle dis bitch"
-	set name="Toggle OOC"
-	toggle_ooc()
-	log_admin("[key_name(usr)] toggled OOC.")
-	message_admins("[key_name_admin(usr)] toggled OOC.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle OOC", "[GLOB.ooc_allowed ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleoocdead()
-	set category = "Server"
-	set desc="Toggle dis bitch"
-	set name="Toggle Dead OOC"
-	toggle_dooc()
-
-	log_admin("[key_name(usr)] toggled OOC.")
-	message_admins("[key_name_admin(usr)] toggled Dead OOC.")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Dead OOC", "[GLOB.dooc_allowed ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/startnow()
-	set category = "Server"
-	set desc="Start the round RIGHT NOW"
-	set name="Start Now"
-	if(SSticker.current_state == GAME_STATE_PREGAME || SSticker.current_state == GAME_STATE_STARTUP)
-		if(!SSticker.start_immediately)
-			var/localhost_addresses = list("127.0.0.1", "::1")
-			if(!(isnull(usr.client.address) || (usr.client.address in localhost_addresses)))
-				if(tgui_alert(usr, "Are you sure you want to start the round?","Start Now",list("Start Now","Cancel")) != "Start Now")
-					return FALSE
-			SSticker.start_immediately = TRUE
-			log_admin("[usr.key] has started the game.")
-			var/msg = ""
-			if(SSticker.current_state == GAME_STATE_STARTUP)
-				msg = " (The server is still setting up, but the round will be \
-					started as soon as possible.)"
-			message_admins("<font color='blue'>[usr.key] has started the game.[msg]</font>")
-			SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Now") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-			return TRUE
-		SSticker.start_immediately = FALSE
-		SSticker.SetTimeLeft(1800)
-		to_chat(world, "<span class='infoplain'><b>The game will start in 180 seconds.</b></span>")
-		SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
-		message_admins("<font color='blue'>[usr.key] has cancelled immediate game start. Game will start in 180 seconds.</font>")
-		log_admin("[usr.key] has cancelled immediate game start.")
-	else
-		to_chat(usr, "<span class='warningplain'><font color='red'>Error: Start Now: Game has already started.</font></span>")
-	return FALSE
-
-/datum/admins/proc/toggleenter()
-	set category = "Server"
-	set desc="People can't enter"
-	set name="Toggle Entering"
-	if(!SSlag_switch.initialized)
-		return
-	SSlag_switch.set_measure(DISABLE_NON_OBSJOBS, !SSlag_switch.measures[DISABLE_NON_OBSJOBS])
-	log_admin("[key_name(usr)] toggled new player game entering. Lag Switch at index ([DISABLE_NON_OBSJOBS])")
-	message_admins("[key_name_admin(usr)] toggled new player game entering [SSlag_switch.measures[DISABLE_NON_OBSJOBS] ? "OFF" : "ON"].")
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Entering", "[!SSlag_switch.measures[DISABLE_NON_OBSJOBS] ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleAI()
-	set category = "Server"
-	set desc="People can't be AI"
-	set name="Toggle AI"
-	var/alai = CONFIG_GET(flag/allow_ai)
-	CONFIG_SET(flag/allow_ai, !alai)
-	if (alai)
-		to_chat(world, "<B>The AI job is no longer chooseable.</B>", confidential = TRUE)
-	else
-		to_chat(world, "<B>The AI job is chooseable now.</B>", confidential = TRUE)
-	log_admin("[key_name(usr)] toggled AI allowed.")
-	world.update_status()
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle AI", "[!alai ? "Disabled" : "Enabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleaban()
-	set category = "Server"
-	set desc="Respawn basically"
-	set name="Toggle Respawn"
-	var/new_nores = !CONFIG_GET(flag/norespawn)
-	CONFIG_SET(flag/norespawn, new_nores)
-	if (!new_nores)
-		to_chat(world, "<B>You may now respawn.</B>", confidential = TRUE)
-	else
-		to_chat(world, "<B>You may no longer respawn :(</B>", confidential = TRUE)
-	message_admins(span_adminnotice("[key_name_admin(usr)] toggled respawn to [!new_nores ? "On" : "Off"]."))
-	log_admin("[key_name(usr)] toggled respawn to [!new_nores ? "On" : "Off"].")
-	world.update_status()
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Respawn", "[!new_nores ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/delay()
-	set category = "Server"
-	set desc="Delay the game start"
-	set name="Delay Pre-Game"
-
-	var/newtime = input("Set a new time in seconds. Set -1 for indefinite delay.","Set Delay",round(SSticker.GetTimeLeft()/10)) as num|null
-	if(SSticker.current_state > GAME_STATE_PREGAME)
-		return tgui_alert(usr, "Too late... The game has already started!")
-	if(newtime)
-		newtime = newtime*10
-		SSticker.SetTimeLeft(newtime)
-		SSticker.start_immediately = FALSE
-		if(newtime < 0)
-			to_chat(world, "<span class='infoplain'><b>The game start has been delayed.</b></span>", confidential = TRUE)
-			log_admin("[key_name(usr)] delayed the round start.")
-		else
-			to_chat(world, "<span class='infoplain'><b>The game will start in [DisplayTimeText(newtime)].</b></span>", confidential = TRUE)
-			SEND_SOUND(world, sound('sound/ai/default/attention.ogg'))
-			log_admin("[key_name(usr)] set the pre-game delay to [DisplayTimeText(newtime)].")
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delay Game Start") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/unprison(mob/M in GLOB.mob_list)
-	set category = "Admin"
-	set name = "Unprison"
-	if (is_centcom_level(M.z))
-		SSjob.SendToLateJoin(M)
-		message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]")
-		log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
-	else
-		tgui_alert(usr,"[M.name] is not prisoned.")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Unprison") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 ////////////////////////////////////////////////////////////////////////////////////////////////ADMIN HELPER PROCS
 
@@ -734,36 +514,6 @@
 	log_admin("[key_name(usr)] spawned cargo pack [chosen] at [AREACOORD(usr)]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Spawn Cargo") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/datum/admins/proc/show_traitor_panel(mob/target_mob in GLOB.mob_list)
-	set category = "Admin.Game"
-	set desc = "Edit mobs's memory and role"
-	set name = "Show Traitor Panel"
-	var/datum/mind/target_mind = target_mob.mind
-	if(!target_mind)
-		to_chat(usr, "This mob has no mind!", confidential = TRUE)
-		return
-	if(!istype(target_mob) && !istype(target_mind))
-		to_chat(usr, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
-		return
-	target_mind.traitor_panel()
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Traitor Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/show_skill_panel(target)
-	set category = "Admin.Game"
-	set desc = "Edit mobs's experience and skill levels"
-	set name = "Show Skill Panel"
-	var/datum/mind/target_mind
-	if(ismob(target))
-		var/mob/target_mob = target
-		target_mind = target_mob.mind
-	else if (istype(target, /datum/mind))
-		target_mind = target
-	else
-		to_chat(usr, "This can only be used on instances of type /mob and /mind", confidential = TRUE)
-		return
-	var/datum/skill_panel/SP  = new(usr, target_mind)
-	SP.ui_interact(usr)
-
 /datum/admins/proc/toggletintedweldhelmets()
 	set category = "Debug"
 	set desc="Reduces view range when wearing welding helmets"
@@ -776,20 +526,6 @@
 	log_admin("[key_name(usr)] toggled tinted_weldhelh.")
 	message_admins("[key_name_admin(usr)] toggled tinted_weldhelh.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Tinted Welding Helmets", "[GLOB.tinted_weldhelh ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/datum/admins/proc/toggleguests()
-	set category = "Server"
-	set desc="Guests can't enter"
-	set name="Toggle guests"
-	var/new_guest_ban = !CONFIG_GET(flag/guest_ban)
-	CONFIG_SET(flag/guest_ban, new_guest_ban)
-	if (new_guest_ban)
-		to_chat(world, "<B>Guests may no longer enter the game.</B>", confidential = TRUE)
-	else
-		to_chat(world, "<B>Guests may now enter the game.</B>", confidential = TRUE)
-	log_admin("[key_name(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed.")
-	message_admins(span_adminnotice("[key_name_admin(usr)] toggled guests game entering [!new_guest_ban ? "" : "dis"]allowed."))
-	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle Guests", "[!new_guest_ban ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()
 	var/ai_number = 0
@@ -813,6 +549,7 @@
 	if(!ai_number)
 		to_chat(usr, "<b>No AIs located</b>" , confidential = TRUE)
 
+<<<<<<< HEAD
 
 /datum/admins/proc/manage_free_slots()
 	if(!check_rights())
@@ -855,6 +592,8 @@
 	browser.set_content(dat.Join())
 	browser.open()
 
+=======
+>>>>>>> 02102d34d76 (Splits 'random verbs' into several other verb files (#60403))
 /datum/admins/proc/dynamic_mode_options(mob/user)
 	var/dat = {"
 		<center><B><h2>Dynamic Mode Options</h2></B></center><hr>
@@ -882,16 +621,6 @@
 	set category = "Debug"
 	set name = "Create or modify area"
 	create_area(usr)
-
-//
-//
-//ALL DONE
-//*********************************************************************************************************
-//TO-DO:
-//
-//
-
-//RIP ferry snowflakes
 
 //Kicks all the clients currently in the lobby. The second parameter (kick_only_afk) determins if an is_afk() check is ran, or if all clients are kicked
 //defaults to kicking everyone (afk + non afk clients in the lobby)
@@ -960,31 +689,3 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
-
-/datum/admins/proc/show_lag_switch_panel()
-	set category = "Admin.Game"
-	set name = "Show Lag Switches"
-	set desc="Display the controls for drastic lag mitigation measures."
-
-	if(!SSlag_switch.initialized)
-		to_chat(usr, span_notice("The Lag Switch subsystem has not yet been initialized."))
-		return
-	if(!check_rights())
-		return
-
-	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Lag Switches</title></head><body><h2><B>Lag (Reduction) Switches</B></h2>")
-	dat += "Automatic Trigger: <a href='?_src_=holder;[HrefToken()];change_lag_switch_option=TOGGLE_AUTO'><b>[SSlag_switch.auto_switch ? "On" : "Off"]</b></a><br/>"
-	dat += "Population Threshold: <a href='?_src_=holder;[HrefToken()];change_lag_switch_option=NUM'><b>[SSlag_switch.trigger_pop]</b></a><br/>"
-	dat += "Slowmode Cooldown (toggle On/Off below): <a href='?_src_=holder;[HrefToken()];change_lag_switch_option=SLOWCOOL'><b>[SSlag_switch.slowmode_cooldown/10] seconds</b></a><br/>"
-	dat += "<br/><b>SET ALL MEASURES: <a href='?_src_=holder;[HrefToken()];change_lag_switch=ALL_ON'>ON</a> | <a href='?_src_=holder;[HrefToken()];change_lag_switch=ALL_OFF'>OFF</a></b><br/>"
-	dat += "<br/>Disable ghosts zoom and t-ray verbs (except staff): <a href='?_src_=holder;[HrefToken()];change_lag_switch=[DISABLE_GHOST_ZOOM_TRAY]'><b>[SSlag_switch.measures[DISABLE_GHOST_ZOOM_TRAY] ? "On" : "Off"]</b></a><br/>"
-	dat += "Disable late joining: <a href='?_src_=holder;[HrefToken()];change_lag_switch=[DISABLE_NON_OBSJOBS]'><b>[SSlag_switch.measures[DISABLE_NON_OBSJOBS] ? "On" : "Off"]</b></a><br/>"
-	dat += "<br/>============! MAD GHOSTS ZONE !============<br/>"
-	dat += "Disable deadmob keyLoop (except staff, informs dchat): <a href='?_src_=holder;[HrefToken()];change_lag_switch=[DISABLE_DEAD_KEYLOOP]'><b>[SSlag_switch.measures[DISABLE_DEAD_KEYLOOP] ? "On" : "Off"]</b></a><br/>"
-	dat += "==========================================<br/>"
-	dat += "<br/><b>Measures below can be bypassed with a <abbr title='TRAIT_BYPASS_MEASURES'><u>special trait</u></abbr></b><br/>"
-	dat += "Slowmode say verb (informs world): <a href='?_src_=holder;[HrefToken()];change_lag_switch=[SLOWMODE_SAY]'><b>[SSlag_switch.measures[SLOWMODE_SAY] ? "On" : "Off"]</b></a><br/>"
-	dat += "Disable runechat: <a href='?_src_=holder;[HrefToken()];change_lag_switch=[DISABLE_RUNECHAT]'><b>[SSlag_switch.measures[DISABLE_RUNECHAT] ? "On" : "Off"]</b></a> - <span style='font-size:80%'>trait applies to speaker</span><br/>"
-	dat += "Disable examine icons: <a href='?_src_=holder;[HrefToken()];change_lag_switch=[DISABLE_USR_ICON2HTML]'><b>[SSlag_switch.measures[DISABLE_USR_ICON2HTML] ? "On" : "Off"]</b></a> - <span style='font-size:80%'>trait applies to examiner</span><br/>"
-	dat += "</body></html>"
-	usr << browse(dat.Join(), "window=lag_switch_panel;size=420x420")
