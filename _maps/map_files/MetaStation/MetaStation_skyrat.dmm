@@ -1833,22 +1833,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
-"aiG" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/airalarm/directional/south,
-/turf/open/floor/iron,
-/area/hallway/primary/central)
 "aiH" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/closed/wall,
@@ -8033,29 +8017,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/science/nanite)
-"aQp" = (
-/obj/structure/plasticflaps/opaque,
-/obj/machinery/door/window/northleft{
-	dir = 8;
-	name = "MuleBot Access";
-	req_access_txt = "50"
-	},
-/obj/machinery/navbeacon{
-	codes_txt = "delivery;dir=4";
-	dir = 4;
-	freq = 1400;
-	location = "Medbay"
-	},
-/obj/effect/turf_decal/delivery/white{
-	color = "#52B4E9"
-	},
-/obj/machinery/door/window/southright{
-	dir = 4;
-	name = "Medical Deliveries";
-	req_access_txt = "5"
-	},
-/turf/open/floor/plating,
-/area/medical/storage)
 "aQu" = (
 /obj/structure/cable,
 /obj/machinery/status_display/evac/directional/west,
@@ -17427,7 +17388,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "bWn" = (
@@ -22500,6 +22460,16 @@
 	pixel_y = 2
 	},
 /obj/item/storage/belt/medical,
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 6
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 4
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_y = 2
+	},
+/obj/item/clothing/glasses/hud/health,
 /turf/open/floor/iron/dark,
 /area/medical/storage)
 "cwv" = (
@@ -28108,7 +28078,6 @@
 "dyj" = (
 /obj/machinery/rnd/production/techfab/department/medical,
 /obj/machinery/airalarm/directional/west,
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/medical/storage)
 "dyH" = (
@@ -47574,6 +47543,22 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/cargo/warehouse)
+"loL" = (
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/hallway/primary/central)
 "loM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -49147,20 +49132,12 @@
 /area/engineering/atmos)
 "lXj" = (
 /obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
 /obj/machinery/firealarm/directional/north,
-/obj/item/radio/intercom/directional/west,
-/obj/machinery/power/apc/auto_name/west,
-/obj/structure/cable,
-/obj/item/clothing/glasses/hud/health{
-	pixel_y = 6
-	},
-/obj/item/clothing/glasses/hud/health{
-	pixel_y = 4
-	},
-/obj/item/clothing/glasses/hud/health{
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -3;
 	pixel_y = 2
 	},
-/obj/item/clothing/glasses/hud/health,
 /turf/open/floor/iron/dark,
 /area/medical/storage)
 "lXo" = (
@@ -53113,8 +53090,17 @@
 /turf/closed/wall,
 /area/commons/storage/art)
 "nuZ" = (
-/obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
+/obj/machinery/door/window/southright{
+	dir = 1;
+	name = "Medical Deliveries";
+	req_access_txt = "5"
+	},
+/obj/effect/turf_decal/delivery/white{
+	color = "#52B4E9"
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/medical/storage)
 "nvi" = (
@@ -61926,6 +61912,22 @@
 	},
 /turf/open/floor/iron/dark,
 /area/commons/fitness/recreation)
+"qNa" = (
+/obj/machinery/airalarm/directional/south,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/hallway/primary/central)
 "qNh" = (
 /obj/effect/turf_decal/siding/thinplating,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -73887,6 +73889,12 @@
 "vjs" = (
 /turf/open/floor/carpet,
 /area/command/bridge)
+"vjv" = (
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable,
+/obj/item/radio/intercom/directional/west,
+/turf/open/floor/iron/dark,
+/area/medical/storage)
 "vjI" = (
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg1"
@@ -75708,6 +75716,21 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"vUd" = (
+/obj/structure/plasticflaps/opaque,
+/obj/machinery/door/window/northleft{
+	dir = 8;
+	name = "MuleBot Access";
+	req_access_txt = "50"
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "delivery;dir=4";
+	dir = 4;
+	freq = 1400;
+	location = "Medbay"
+	},
+/turf/open/floor/plating,
+/area/medical/storage)
 "vUg" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
@@ -101657,8 +101680,8 @@ bXK
 bXK
 bXK
 tJc
-aQp
 bXK
+vUd
 bXK
 kPy
 vnZ
@@ -101914,7 +101937,7 @@ bXK
 lXj
 dyj
 dyL
-oZQ
+vjv
 nuZ
 bXK
 aUh
@@ -104976,7 +104999,7 @@ tOh
 tOh
 bTG
 dCE
-eoc
+loL
 fBK
 bYV
 apG
@@ -105233,7 +105256,7 @@ stp
 tOh
 bTH
 aWf
-eoc
+qNa
 xtX
 ifK
 cac
@@ -105747,7 +105770,7 @@ ukk
 rGm
 mIU
 aWf
-aiG
+eoc
 bXL
 fPw
 cae
