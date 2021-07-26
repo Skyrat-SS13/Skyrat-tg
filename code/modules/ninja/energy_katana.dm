@@ -116,5 +116,5 @@
 /datum/action/innate/dash/ninja
 	current_charges = 3
 	max_charges = 3
-	charge_rate = 200
+	charge_rate = 350 // Skyrat Edit - original 200 
 	recharge_sound = null
