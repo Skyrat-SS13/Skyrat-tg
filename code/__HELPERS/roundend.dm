@@ -693,18 +693,12 @@
 
 /proc/printplayer(datum/mind/ply, fleecheck)
 	var/jobtext = ""
-<<<<<<< HEAD
-	if(ply.assigned_role)
-		jobtext = " the <b>[ply.assigned_role]</b>"
-	//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
+	if(!is_unassigned_job(ply.assigned_role))
+		jobtext = " the <b>[ply.assigned_role.title]</b>"
+		//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
 	//var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and" - SKYRAT EDIT - ORIGINAL
 	var/text = "<b>[ply.name]</b>[jobtext]"
 	//SKYRAT EDIT CHANGE END
-=======
-	if(!is_unassigned_job(ply.assigned_role))
-		jobtext = " the <b>[ply.assigned_role.title]</b>"
-	var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and"
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	if(ply.current)
 		if(ply.current.stat == DEAD)
 			text += " [span_redtext("died")]"

@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(job)
 	flags = SS_NO_FIRE
 
 	/// List of all jobs.
-	var/list/all_occupations = list() 
+	var/list/all_occupations = list()
 	/// List of jobs that can be joined through the starting menu.
 	var/list/joinable_occupations = list()
 	var/list/datum/job/name_occupations = list() //Dict of all jobs, keys are titles
@@ -123,40 +123,6 @@ SUBSYSTEM_DEF(job)
 		SetupOccupations()
 	return type_occupations[jobtype]
 
-<<<<<<< HEAD
-/datum/controller/subsystem/job/proc/AssignRole(mob/dead/new_player/player, rank, latejoin = FALSE)
-	JobDebug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
-	if(player?.mind && rank)
-		var/datum/job/job = GetJob(rank)
-		if(!job)
-			return FALSE
-		if(is_banned_from(player.ckey, rank) || QDELETED(player))
-			return FALSE
-		if(!job.player_old_enough(player.client))
-			return FALSE
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(job.has_banned_quirk(player.client.prefs))
-			return FALSE
-		if(job.has_banned_species(player.client.prefs))
-			return FALSE
-		if(!job.has_required_languages(player.client.prefs))
-			return FALSE
-		if(job.veteran_only && !is_veteran_player(player.client))
-			return FALSE
-		//SKYRAT EDIT END
-		if(job.required_playtime_remaining(player.client))
-			return FALSE
-		var/position_limit = job.total_positions
-		if(!latejoin)
-			position_limit = job.spawn_positions
-		JobDebug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
-		player.mind.assigned_role = rank
-		unassigned -= player
-		job.current_positions++
-		return TRUE
-	JobDebug("AR has failed, Player: [player], Rank: [rank]")
-	return FALSE
-=======
 
 /datum/controller/subsystem/job/proc/AssignRole(mob/dead/new_player/player, datum/job/job, latejoin = FALSE)
 	JobDebug("Running AR, Player: [player], Rank: [isnull(job) ? "null" : job.type], LJ: [latejoin]")
@@ -169,6 +135,16 @@ SUBSYSTEM_DEF(job)
 		return FALSE
 	if(job.required_playtime_remaining(player.client))
 		return FALSE
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(job.has_banned_quirk(player.client.prefs))
+		return FALSE
+	if(job.has_banned_species(player.client.prefs))
+		return FALSE
+	if(!job.has_required_languages(player.client.prefs))
+		return FALSE
+	if(job.veteran_only && !is_veteran_player(player.client))
+		return FALSE
+	//SKYRAT EDIT END
 	var/position_limit = job.total_positions
 	if(!latejoin)
 		position_limit = job.spawn_positions
@@ -178,7 +154,6 @@ SUBSYSTEM_DEF(job)
 	job.current_positions++
 	return TRUE
 
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 
 /datum/controller/subsystem/job/proc/FreeRole(rank)
 	if(!rank)

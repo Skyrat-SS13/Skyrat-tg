@@ -63,10 +63,8 @@
 #define DEPARTMENT_SCIENCE (1<<5)
 #define DEPARTMENT_MEDICAL (1<<6)
 #define DEPARTMENT_SILICON (1<<7)
-<<<<<<< HEAD
-#define DEPARTMENT_CENTRAL_COMMAND (1<<8)
+#define DEPARTMENT_CENTRAL_COMMAND (1<<8) //SKYRAT EDIT CHANGE
 
-=======
 
 /* Job datum job_flags */
 /// Whether the mob is announced on arrival.
@@ -82,4 +80,3 @@
 
 #define FACTION_NONE "None"
 #define FACTION_STATION "Station"
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
