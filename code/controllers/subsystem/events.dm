@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(events)
 	//var/frequency_lower = 1800 //3 minutes lower bound. //ORIGINAL
 	var/frequency_lower = 10 MINUTES //SKYRAT EDIT CHANGE - EVENTS LESS OFTEN
 	//var/frequency_upper = 6000 //10 minutes upper bound. Basically an event will happen every 3 to 10 minutes. //ORIGINAL
-	var/frequency_upper = 20 MINUTES //SKYRAT EDIT CHANGE - EVENTS LESS OFTEN
+	var/frequency_upper = 15 MINUTES //SKYRAT EDIT CHANGE - EVENTS LESS OFTEN
 
 	var/list/holidays //List of all holidays occuring today or null if no holidays
 	var/wizardmode = FALSE
