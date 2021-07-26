@@ -1,11 +1,11 @@
-///This file houses the antigravity boots item and research node/design, for complete modularity.
+///This file houses the antigravity boots item and research node/design, for ease of access
 /obj/item/clothing/shoes/antigrav_boots
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	desc = "Anti-gravity boots, for those who want to live weightlessly."
 	name = "anti-gravity boots"
 	icon_state = "walkboots" //Haha funny reused sprite
-	var/enabled_antigravity = TRUE
+	var/enabled_antigravity = FALSE
 
 /obj/item/clothing/shoes/antigrav_boots/equipped(mob/user, slot)
 	. = ..()
@@ -23,12 +23,12 @@
 	if(user.get_active_held_item() != src)
 		to_chat(user, "<span class='warning'>You must hold the [src] in your hand to do this!</span>")
 		return
-	if (!enabled_antigravity)
+	if (enabled_antigravity)
 		to_chat(user, "<span class='notice'>You switch off the antigravity!</span>")
-		enabled_antigravity = TRUE
+		enabled_antigravity = FALSE
 	else
 		to_chat(user, "<span class='notice'>You switch on the antigravity!</span>")
-		enabled_antigravity = FALSE
+		enabled_antigravity = TRUE
 
 ///Techweb Node///
 /datum/techweb_node/adv_cargo
