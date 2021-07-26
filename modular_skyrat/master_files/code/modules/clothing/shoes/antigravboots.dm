@@ -2,7 +2,7 @@
 /obj/item/clothing/shoes/antigrav_boots
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	desc = "Anti-gravity boots, for those who want to live weightlessly."
+	desc = "Anti-gravity boots, for those who want to live weightlessly. Control Click to toggle anti-gravity functions."
 	name = "anti-gravity boots"
 	icon_state = "walkboots" //Haha funny reused sprite
 	var/enabled_antigravity = FALSE
