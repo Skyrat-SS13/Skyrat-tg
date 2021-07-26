@@ -39,9 +39,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
 
-	suit_store = /obj/item/gun/energy/taser/armadyne //SKYRAT EDIT CHANGE - SEC_HAUL
+	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm, /obj/item/armament_token/primary)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
