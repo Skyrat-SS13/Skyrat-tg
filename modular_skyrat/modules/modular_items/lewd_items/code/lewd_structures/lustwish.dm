@@ -83,7 +83,9 @@
 
 					//chems
 					/obj/item/reagent_containers/pill/crocin = 20,
+					/obj/item/reagent_containers/glass/bottle/crocin = 6,
 					/obj/item/reagent_containers/pill/camphor = 10,
+					/obj/item/reagent_containers/glass/bottle/camphor = 3,
 					/obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, //Those are legal 'cause you can just turn off prefs in round in "CLOWN SMOKE MACHINE+PENIS ENLARGEMENT CHEMICAL CASE". Yes, i have special code-phrase for this. I've seen some shit.
 					/obj/item/reagent_containers/glass/bottle/penis_enlarger = 6,
 
@@ -103,12 +105,12 @@
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
-					/obj/item/reagent_containers/glass/bottle/hexacrocin = 2,
+					/obj/item/reagent_containers/glass/bottle/hexacrocin = 4,
 					/obj/item/reagent_containers/glass/bottle/pentacamphor = 2)
 
 	refill_canister = /obj/item/vending_refill/lustwish
 	payment_department = ACCOUNT_SRV
-	default_price = 60
+	default_price = 30
 	extra_price = 250
 
 //Secret vending machine skin. Don't touch plz
@@ -127,7 +129,7 @@
 				default_price = 0
 				extra_price = 0
 			if(FALSE)
-				default_price = 60
+				default_price = 30
 				extra_price = 250
 	else
 		return ..()
