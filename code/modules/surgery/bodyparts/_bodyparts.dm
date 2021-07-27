@@ -977,10 +977,6 @@
 			aux_em_block.dir = image_dir
 			aux_em_block.color = GLOB.em_block_color
 			aux.overlays += aux_em_block
-*/
-//SKYRAT EDIT REMOVAL END
-
-
 
 	//Draw external organs like horns and frills
 	for(var/obj/item/organ/external/external_organ in external_organs)
@@ -990,6 +986,8 @@
 		for(var/external_layer in external_organ.all_layers)
 			if(external_organ.layers & external_layer)
 				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), icon_gender, "#[draw_color]")
+*/
+//SKYRAT EDIT REMOVAL END
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()
