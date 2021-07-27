@@ -9,3 +9,6 @@
 
 /// The caliber used by the M45A5
 #define CALIBER_460 ".460 RM JHP"
+
+/// The caliber used by Armadyne shotguns.
+#define CALIBER_14GAUGE "14 Gauge"
