@@ -21,7 +21,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER
 	bounty_types = CIV_JOB_RANDOM
-	departments = DEPARTMENT_CARGO
+	departments = DEPARTMENT_CARGO | DEPARTMENT_COMMAND // SKYRAT EDIT
 	family_heirlooms = list(/obj/item/stamp, /obj/item/stamp/denied)
 	mail_goodies = list(
 		/obj/item/circuitboard/machine/emitter = 3
