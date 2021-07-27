@@ -56,8 +56,8 @@
 	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
-	weight = 7
-	cost = 5
+	weight = 4 //SKYRAT EDIT - Dynamic Consistency, reduces chance of traitors but encourages more varied antagonists. 5 to 4
+	cost = 8 //SKYRAT EDIT, READ ABOVE - 5 TO 8
 	requirements = list(40,30,20,10,10,10,10,10,10,10)
 	repeatable = TRUE
 
@@ -151,7 +151,7 @@
 	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain", "Prisoner", "Vanguard Operative")
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
-	weight = 4
-	cost = 10
+	weight = 5 // SKYRAT EDIT - Bumped to 5 from 4
+	cost = 12 //SKYRAT EDIT - Bumped from 10 to 12; why was it cheaper to spawn heretics midround?
 	requirements = list(101,101,101,10,10,10,10,10,10,10)
 	repeatable = TRUE
