@@ -9,9 +9,10 @@
 
 /obj/item/clothing/shoes/antigrav_boots/equipped(mob/user, slot)
 	. = ..()
-	if(slot == ITEM_SLOT_FEET)
-		if(enabled_antigravity)
-			user.AddElement(/datum/element/forced_gravity, 0)
+	if(!slot == ITEM_SLOT_FEET)
+		return
+	if(enabled_antigravity)
+		user.AddElement(/datum/element/forced_gravity, 0)
 
 /obj/item/clothing/shoes/antigrav_boots/dropped(mob/user)
 	. = ..()
