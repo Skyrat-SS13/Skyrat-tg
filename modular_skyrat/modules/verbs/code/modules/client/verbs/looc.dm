@@ -41,19 +41,19 @@
 	var/list/heard = get_hearers_in_view(7, get_top_level_mob(src.mob))
 
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
-	var/aiAlreadyHeardIt = FALSE
+	var/ai_heard_it = FALSE
 	//so the ai can post looc text
-	if(istype(src.mob,/mob/living/silicon/ai))
-		for(var/mob/camera/ai_eye/AI_eye as anything in GLOB.aiEyes)
-			heard = get_hearers_in_view(7, AI_eye)
+	if(istype(mob,/mob/living/silicon/ai))
+		for(var/mob/camera/ai_eye/eye_of_ai as anything in GLOB.aiEyes)
+			heard = get_hearers_in_view(7, eye_of_ai)
 	//so the ai can see looc text
-	for(var/mob/camera/ai_eye/AI_eye as anything in GLOB.aiEyes)
+	for(var/mob/camera/ai_eye/eye_of_ai as anything in GLOB.aiEyes)
 		for(var/mob/creature in heard) //checks if an ai has already heard it
-			if(istype(creature,/mob/living/silicon/ai))
-				aiAlreadyHeardIt = TRUE
-		if(aiAlreadyHeardIt == FALSE) //i dont wanna run an entire fuckin for loop if it turns out the ai can already see the text
+			if(istype(creature, /mob/living/silicon/ai))
+				ai_heard_it = TRUE
+		if(ai_heard_it == FALSE) //i dont wanna run an entire fuckin for loop if it turns out the ai can already see the text
 			for(var/mob/creature in heard)
-				if(creature==AI_eye)
+				if(creature == eye_of_ai)
 					heard += get_top_level_mob(src.mob)
 	//SKYRAT EDIT ADDITION END - AI QoL
 
