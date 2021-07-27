@@ -188,8 +188,8 @@
 	protected_roles = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
 	required_candidates = 1
-	weight = 7
-	cost = 10
+	weight = 5 //SKYRAT EDIT - Decreases this from 7 to 5...
+	cost = 11 //SKYRAT EDIT - Decreases this to 14 from 11
 	requirements = list(50,40,30,20,10,10,10,10,10,10)
 	repeatable = TRUE
 
