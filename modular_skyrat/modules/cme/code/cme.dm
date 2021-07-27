@@ -17,7 +17,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	typepath = /datum/round_event/cme
 	weight = 10
 	min_players = 30
-	max_occurrences = 3
+	max_occurrences = 1 // Why was this allowed to roll three times bruh
 	earliest_start = 25 MINUTES
 
 /datum/round_event/cme
