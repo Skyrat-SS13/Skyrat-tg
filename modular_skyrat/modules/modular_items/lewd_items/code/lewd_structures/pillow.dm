@@ -168,6 +168,8 @@
 	var/color_changed = FALSE
 	var/form_changed = FALSE
 
+	buildstacktype = /obj/item/stack/sheet/cloth
+
 /obj/structure/bed/pillow_tiny/Initialize()
 	.=..()
 	update_icon_state()
@@ -260,6 +262,8 @@
 
 	var/pillow1_form_changed = FALSE
 	var/pillow2_form_changed = FALSE
+
+	buildstacktype = /obj/item/stack/sheet/cloth
 
 /obj/structure/chair/pillow_small/Initialize()
 	update_icon_state()
@@ -386,6 +390,8 @@
 	var/pillow1_form_changed = FALSE
 	var/pillow2_form_changed = FALSE
 	var/pillow3_form_changed = FALSE
+
+	buildstacktype = /obj/item/stack/sheet/cloth
 
 /obj/structure/bed/pillow_large/Initialize()
 	update_icon_state()
