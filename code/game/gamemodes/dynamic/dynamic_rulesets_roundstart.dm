@@ -147,8 +147,8 @@
 	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
-	weight = 3
-	cost = 16
+	weight = 4 //SKYRAT EDIT - ORIGINALLY 3 - FAR TOO LOW
+	cost = 10 //SKYRAT EDIT - ORIGINALLY 16 - FAR TOO HIGH
 	scaling_cost = 10
 	requirements = list(70,70,60,50,40,20,20,10,10,10)
 	antag_cap = list("denominator" = 29)
@@ -184,8 +184,8 @@
 	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative")
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
-	weight = 3
-	cost = 15
+	weight = 4 //SKYRAT EDIT - ORIGINALLY 3 - FAR TOO LOW
+	cost = 13 //SKYRAT EDIT - ORIGINALLY 15 - FAR TOO HIGH
 	scaling_cost = 9
 	requirements = list(101,101,101,40,35,20,20,15,10,10)
 	antag_cap = list("denominator" = 24)
