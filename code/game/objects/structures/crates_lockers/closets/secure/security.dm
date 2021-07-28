@@ -18,12 +18,8 @@
 	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
 	new /obj/item/clothing/head/caphat(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
-<<<<<<< HEAD
-	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
-	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
-=======
 	new /obj/item/clothing/suit/toggle/captains_parade(src)
->>>>>>> 30892aa892a (Ports/Adds new outfits for command and centcom staff! (#60414))
+	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
 	new /obj/item/clothing/head/caphat/parade(src)
 	new /obj/item/clothing/suit/captunic(src)
 	new /obj/item/clothing/head/crown/fancy(src)
