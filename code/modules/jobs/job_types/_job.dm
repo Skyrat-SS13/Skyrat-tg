@@ -96,6 +96,10 @@
 	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
 	var/policy_index = ""
 
+	//SKYRAT EDIT ADDITION
+	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
+	var/veteran_only = FALSE
+
 
 /datum/job/New()
 	. = ..()
@@ -390,7 +394,7 @@
 		return // Disconnected while checking for the appearance ban.
 	if(fully_randomize)
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments & DEPARTMENT_COMMAND))
-			if(player_client.prefs.pref_species.id != SPECIES_HUMAN)
+			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
 			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
 		else
@@ -402,7 +406,7 @@
 		var/is_antag = (player_client.mob.mind in GLOB.pre_setup_antags)
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments & DEPARTMENT_COMMAND))
 			player_client.prefs.randomise[RANDOM_SPECIES] = FALSE
-			if(player_client.prefs.pref_species.id != SPECIES_HUMAN)
+			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
 		player_client.prefs.safe_transfer_prefs_to(src, TRUE, is_antag)
 		if(CONFIG_GET(flag/force_random_names))
