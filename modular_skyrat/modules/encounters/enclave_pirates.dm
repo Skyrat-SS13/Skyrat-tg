@@ -61,8 +61,13 @@
 	rank = "Imperial Enclave Trooper"
 	short_desc = "You are an Imperial Enclave outfit."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by ransoming crew and stealing credits."
-	assignedrole = "Imperial Enclave Enforcer"
+	spawner_job_path = /datum/job/space_pirate
 	spawn_oldpod = FALSE
+
+/datum/job/fugitive_hunter
+	title = ROLE_FUGITIVE_HUNTER
+	policy_index = ROLE_FUGITIVE_HUNTER
+
 
 /obj/effect/mob_spawn/human/pirate/enclave/generate_pirate_name(spawn_gender)
 	var/first_name = pick(GLOB.commando_names)
