@@ -112,6 +112,14 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		var/obj/item/card/id/worn_id = spawning.wear_id
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
 		spawning.sec_hud_set_ID()
+		//SKYRAT EDIT ADDITION
+		if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[title])
+			worn_id.assignment = player_client.prefs.alt_titles_preferences[title]
+			worn_id.update_label()
+		else if (alt_title_pref)
+			worn_id.assignment = alt_title_pref
+			worn_id.update_label()
+		//SKYRAT EDIT END
 
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 
