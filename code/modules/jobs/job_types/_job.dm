@@ -99,7 +99,7 @@
 	//SKYRAT EDIT ADDITION
 	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
 	var/veteran_only = FALSE
-	//SKYRAT EDIT END
+
 
 /datum/job/New()
 	. = ..()
@@ -164,6 +164,7 @@
 /datum/job/proc/special_check_latejoin(client/C)
 	return TRUE
 
+
 /mob/living/proc/on_job_equipping(datum/job/equipping)
 	return
 
@@ -171,8 +172,6 @@
 	var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
 	bank_account.payday(STARTING_PAYCHECKS, TRUE)
 	account_id = bank_account.account_id
-
-	equipping.get_alt_title_pref(client) //SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
 
 	dress_up_as_job(equipping)
 
@@ -184,6 +183,7 @@
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equipOutfit(equipping.outfit, visual_only)
 
+
 /* SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
 
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
@@ -191,6 +191,7 @@
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 */
+
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
 	if(available_in_days(C) == 0)
@@ -282,9 +283,7 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-			J.get_id_titles(H, C) // SKYRAT EDIT ADD - ALT TITLES
-			// C.assignment = J.title - SKYRAT EDIT - OVERWRITTEN IN ALT TITLES
-
+		J.get_id_titles(H, C) // SKYRAT EDIT ADD - ALT TITLES
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -302,6 +301,7 @@
 
 	if(H.client?.prefs.playtime_reward_cloak)
 		neck = /obj/item/clothing/neck/cloak/skill_reward/playing
+
 
 /datum/outfit/job/get_chameleon_disguise_info()
 	var/list/types = ..()
@@ -369,12 +369,6 @@
 	if(length(SSjob.latejoin_trackers))
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
-
-
-/// Called after a successful latejoin spawn.
-/datum/job/proc/after_latejoin_spawn(mob/living/spawning)
-	SHOULD_CALL_PARENT(TRUE)
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)
 
 
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
@@ -454,3 +448,21 @@
 	// If this checks fails, then the name will have been handled during initialization.
 	if(!GLOB.current_anonymous_theme && player_client.prefs.custom_names["cyborg"] != DEFAULT_CYBORG_NAME)
 		apply_pref_name("cyborg", player_client)
+
+/**
+ * Called after a successful roundstart spawn.
+ * Client is not yet in the mob.
+ * This happens after after_spawn()
+ */
+/datum/job/proc/after_roundstart_spawn(mob/living/spawning, client/player_client)
+	SHOULD_CALL_PARENT(TRUE)
+
+
+/**
+ * Called after a successful latejoin spawn.
+ * Client is in the mob.
+ * This happens after after_spawn()
+ */
+/datum/job/proc/after_latejoin_spawn(mob/living/spawning)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)

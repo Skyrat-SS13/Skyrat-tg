@@ -48,6 +48,12 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 
+/datum/job/security_officer/after_roundstart_spawn(mob/living/spawning, client/player_client)
+	. = ..()
+	if(ishuman(spawning))
+		setup_department(spawning, player_client)
+
+
 /datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
 	. = ..()
 	if(ishuman(spawning))
@@ -114,6 +120,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 			worn_id.assignment = alt_title_pref
 			worn_id.update_label()
 		//SKYRAT EDIT END
+
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 
 	if(!CONFIG_GET(flag/sec_start_brig) && (destination || spawn_point))
@@ -201,8 +208,9 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/gun/energy/disabler
+	suit_store = /obj/item/gun/energy/taser/armadyne //SKYRAT EDIT CHANGE - SEC_HAUL
 	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/armament_token/sidearm) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/melee/baton/loaded=1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
