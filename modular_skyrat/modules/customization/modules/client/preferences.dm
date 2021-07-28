@@ -3058,10 +3058,15 @@ GLOBAL_LIST_INIT(food, list(
 
 	character.selected_laugh = pref_laugh
 
+	var/datum/species/chosen_species
+	chosen_species = pref_species.type
+
 	if(!(pref_species.id in GLOB.customizable_races))
+		chosen_species = /datum/species/human
 		set_new_species(/datum/species/human)
 		save_character()
 
+	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 	if(show_body_size)
 		character.dna.update_body_size()
 	else //We need to update it to 100% in case they switch back
