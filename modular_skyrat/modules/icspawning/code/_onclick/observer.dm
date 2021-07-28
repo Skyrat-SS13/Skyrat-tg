@@ -45,7 +45,7 @@
 			spawned_player.real_name = user.real_name
 
 			var/mob/living/carbon/human/H = spawned_player
-			user.client?.prefs.copy_to(H)
+			user.client?.prefs.safe_transfer_prefs_to(H)
 			H.dna.update_dna_identity()
 
 		QDEL_IN(user, 1)
