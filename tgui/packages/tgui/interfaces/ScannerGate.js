@@ -174,6 +174,7 @@ const SCANNER_GATE_ROUTES = {
     title: 'Scanner Mode: Nutrition',
     component: () => ScannerGateNutrition,
   },
+<<<<<<< HEAD
   //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
   Gender: {
     title: 'Scanner Mode: Gender',
@@ -184,6 +185,8 @@ const SCANNER_GATE_ROUTES = {
     title: 'Scanner Mode: Nanites',
     component: () => ScannerGateNanites,
   },
+=======
+>>>>>>> bd6873fd4dd (Remove nanites (#60473))
 };
 
 const ScannerGateControl = (props, context) => {
@@ -236,9 +239,6 @@ const ScannerGateOff = (props, context) => {
         <Button
           content="Nutrition"
           onClick={() => act('set_mode', { new_mode: 'Nutrition' })} />
-        <Button
-          content="Nanites"
-          onClick={() => act('set_mode', { new_mode: 'Nanites' })} />
       </Box>
     </>
   );
@@ -370,6 +370,7 @@ const ScannerGateNutrition = (props, context) => {
   );
 };
 
+<<<<<<< HEAD
 //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
 const ScannerGateGender = (props, context) => {
   const { act, data } = useBackend(context);
@@ -429,6 +430,8 @@ const ScannerGateNanites = (props, context) => {
   );
 };
 
+=======
+>>>>>>> bd6873fd4dd (Remove nanites (#60473))
 const ScannerGateMode = (props, context) => {
   const { act, data } = useBackend(context);
   const { reverse } = data;

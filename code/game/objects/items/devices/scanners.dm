@@ -6,7 +6,6 @@ T-RAY
 HEALTH ANALYZER
 GAS ANALYZER
 SLIME SCANNER
-NANITE SCANNER
 GENE SCANNER
 
 */
@@ -430,7 +429,6 @@ GENE SCANNER
 			render_list += "<span class='notice ml-1'>Detected cybernetic modifications:</span>\n"
 			render_list += "<span class='notice ml-2'>[cyberimp_detect]</span>\n"
 
-	SEND_SIGNAL(M, COMSIG_NANITE_SCAN, user, FALSE)
 	to_chat(user, jointext(render_list, ""), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding
 
 /proc/chemscan(mob/living/user, mob/living/M)
@@ -824,6 +822,7 @@ GENE SCANNER
 					  \n[span_notice("Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]")]"
 	to_chat(user, to_render + "\n========================")
 
+<<<<<<< HEAD
 
 /obj/item/nanite_scanner
 	name = "nanite scanner"
@@ -866,6 +865,9 @@ GENE SCANNER
 		to_chat(user, span_info("No nanites detected in the subject."))
 
 /obj/item/sequence_scanner//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+=======
+/obj/item/sequence_scanner
+>>>>>>> bd6873fd4dd (Remove nanites (#60473))
 	name = "genetic sequence scanner"
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gene"
