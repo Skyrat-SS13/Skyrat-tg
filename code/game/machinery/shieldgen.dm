@@ -463,7 +463,18 @@
 		setDir(get_dir(gen_primary, gen_secondary))
 	for(var/mob/living/L in get_turf(src))
 		visible_message(span_danger("\The [src] is suddenly occupying the same space as \the [L]!"))
-		L.gib()
+		//SKYRAT EDIT CHANGE BEGIN
+		if(ishuman(L))
+			var/mob/living/carbon/human/human_to_die = L
+			var/obj/item/bodypart/head/lost_head = human_to_die.get_bodypart(BODY_ZONE_HEAD)
+			if(lost_head)
+				visible_message(span_danger("[human_to_die]'s head is instantly decapitated as the shield generator slices through [p_their()] neck!"))
+				lost_head.dismember(silent=FALSE)
+			else
+				human_to_die.adjustBruteLoss(500)
+		else
+			L.gib()
+		//SKYRAT EDIT CHANGE END
 	RegisterSignal(src, COMSIG_ATOM_SINGULARITY_TRY_MOVE, .proc/block_singularity)
 
 /obj/machinery/shieldwall/Destroy()
