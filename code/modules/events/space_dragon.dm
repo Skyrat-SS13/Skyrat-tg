@@ -1,10 +1,9 @@
 /datum/round_event_control/space_dragon
 	name = "Spawn Space Dragon"
 	typepath = /datum/round_event/ghost_role/space_dragon
+	weight = 7
 	//max_occurrences = 1 //ORIGINAL
 	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
-	weight = 10
-	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
 
