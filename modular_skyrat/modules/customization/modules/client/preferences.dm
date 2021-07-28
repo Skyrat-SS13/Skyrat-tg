@@ -3058,9 +3058,7 @@ GLOBAL_LIST_INIT(food, list(
 
 	character.selected_laugh = pref_laugh
 
-	chosen_species = pref_species.type
 	if(!(pref_species.id in GLOB.customizable_races))
-		chosen_species = /datum/species/human
 		set_new_species(/datum/species/human)
 		save_character()
 
