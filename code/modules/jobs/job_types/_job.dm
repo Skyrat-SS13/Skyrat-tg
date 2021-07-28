@@ -1,5 +1,5 @@
 /datum/job
-	//The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
+	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a skeleton crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
@@ -7,38 +7,40 @@
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a full crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
 	var/list/minimal_skills
 
-	//Determines who can demote this position
+	/// Determines who can demote this position
 	var/department_head = list()
 
-	//Tells the given channels that the given mob is the new department head. See communications.dm for valid channels.
+	/// Tells the given channels that the given mob is the new department head. See communications.dm for valid channels.
 	var/list/head_announce = null
 
-	//Bitflags for the job
+	/// Bitflags for the job
 	var/auto_deadmin_role_flags = NONE
 
-	//Players will be allowed to spawn in as jobs that are set to "Station"
-	var/faction = "None"
+	/// Players will be allowed to spawn in as jobs that are set to "Station"
+	var/faction = FACTION_NONE
 
-	//How many players can be this job
+	/// How many players can be this job
 	var/total_positions = 0
 
-	//How many players can spawn in as this job
+	/// How many players can spawn in as this job
 	var/spawn_positions = 0
 
-	//How many players have this job
+	/// How many players have this job
 	var/current_positions = 0
 
-	//Supervisors, who this person answers to directly
+	/// Supervisors, who this person answers to directly
 	var/supervisors = ""
 
-	//Sellection screen color
+	/// Selection screen color
 	var/selection_color = "#ffffff"
 
+	/// What kind of mob type joining players with this job as their assigned role are spawned as.
+	var/spawn_type = /mob/living/carbon/human
 
-	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
+	/// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 
-	//If you have the use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
+	/// If you have the use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
 	var/minimal_player_age = 0
 
 	var/outfit = null
@@ -83,10 +85,17 @@
 	/// List of family heirlooms this job can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms
 
-	//SKYRAT EDIT ADDITION
-	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
-	var/veteran_only = FALSE
-	//SKYRAT EDIT END
+	/// All values = (JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK)
+	var/job_flags = NONE
+
+	/// Multiplier for general usage of the voice of god.
+	var/voice_of_god_power = 1
+	/// Multiplier for the silence command of the voice of god.
+	var/voice_of_god_silence_power = 1
+
+	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
+	var/policy_index = ""
+
 
 /datum/job/New()
 	. = ..()
@@ -110,25 +119,23 @@
 
 	return job_changes[endpart]
 
-//Only override this proc
-//H is usually a human unless an /equip override transformed it
-/datum/job/proc/after_spawn(mob/living/H, mob/M, latejoin = FALSE)
-	//do actions on H but send messages to M as the key may not have been transferred_yet
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, H, M, latejoin)
-	if(mind_traits)
-		for(var/t in mind_traits)
-			ADD_TRAIT(H.mind, t, JOB_TRAIT)
 
-	var/obj/item/organ/liver/liver = H.getorganslot(ORGAN_SLOT_LIVER)
+/// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
+/datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
+	for(var/trait in mind_traits)
+		ADD_TRAIT(spawned.mind, trait, JOB_TRAIT)
 
+	var/obj/item/organ/liver/liver = spawned.getorganslot(ORGAN_SLOT_LIVER)
 	if(liver)
-		for(var/t in liver_traits)
-			ADD_TRAIT(liver, t, JOB_TRAIT)
+		for(var/trait in liver_traits)
+			ADD_TRAIT(liver, trait, JOB_TRAIT)
+
+	if(!ishuman(spawned))
+		return
 
 	var/list/roundstart_experience
-
-	if(!ishuman(H))
-		return
 
 	if(!config) //Needed for robots.
 		roundstart_experience = minimal_skills
@@ -139,56 +146,45 @@
 		roundstart_experience = skills
 
 	if(roundstart_experience)
-		var/mob/living/carbon/human/experiencer = H
+		var/mob/living/carbon/human/experiencer = spawned
 		for(var/i in roundstart_experience)
 			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
-/datum/job/proc/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
-	if(head_announce)
-		announce_head(H, head_announce)
 
-/datum/job/proc/override_latejoin_spawn(mob/living/carbon/human/H) //Return TRUE to force latejoining to not automatically place the person in latejoin shuttle/whatever.
-	return FALSE
+/datum/job/proc/announce_job(mob/living/joining_mob)
+	if(head_announce)
+		announce_head(joining_mob, head_announce)
+
 
 //Used for a special check of whether to allow a client to latejoin as this job.
 /datum/job/proc/special_check_latejoin(client/C)
 	return TRUE
 
-//Don't override this unless the job transforms into a non-human (Silicons do this for example)
-/datum/job/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE, announce = TRUE, latejoin = FALSE, datum/outfit/outfit_override = null, client/preference_source, is_captain = FALSE)
-	if(!H)
-		return FALSE
-	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
-		if(H.dna.species.id != "human")
-			H.set_species(/datum/species/human)
-			H.apply_pref_name("human", preference_source)
-	if(!visualsOnly)
-		var/datum/bank_account/bank_account = new(H.real_name, src, H.dna.species.payday_modifier)
-		bank_account.payday(STARTING_PAYCHECKS, TRUE)
-		H.account_id = bank_account.account_id
-	get_alt_title_pref(preference_source) //SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
+
+/mob/living/proc/on_job_equipping(datum/job/equipping)
+	return
+
+/mob/living/carbon/human/on_job_equipping(datum/job/equipping)
+	var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
+	bank_account.payday(STARTING_PAYCHECKS, TRUE)
+	account_id = bank_account.account_id
+
+	dress_up_as_job(equipping)
 
 
-	//Equip the rest of the gear
-	H.dna.species.before_equip_job(src, H, visualsOnly)
+/mob/living/proc/dress_up_as_job(datum/job/equipping, visual_only = FALSE)
+	return
 
-	if(outfit_override || outfit)
-		H.equipOutfit(outfit_override ? outfit_override : outfit, visualsOnly)
+/mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE)
+	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
+	equipOutfit(equipping.outfit, visual_only)
 
-	if(!visualsOnly && is_captain)
-		var/is_acting_captain = (title != "Captain")
-		SSjob.promote_to_captain(H, is_acting_captain)
 
-	H.dna.species.after_equip_job(src, H, visualsOnly)
-
-	if(!visualsOnly && announce)
-		announce(H, is_captain)
-/* SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
-*/
+
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
 	if(available_in_days(C) == 0)
@@ -280,9 +276,7 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-			J.get_id_titles(H, C) // SKYRAT EDIT ADD - ALT TITLES
-			// C.assignment = J.title - SKYRAT EDIT - OVERWRITTEN IN ALT TITLES
-
+		J.get_id_titles(H, C) // SKYRAT EDIT ADD - ALT TITLES
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -300,6 +294,7 @@
 
 	if(H.client?.prefs.playtime_reward_cloak)
 		neck = /obj/item/clothing/neck/cloak/skill_reward/playing
+
 
 /datum/outfit/job/get_chameleon_disguise_info()
 	var/list/types = ..()

@@ -340,9 +340,13 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/dead/new_player/player = i
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind)
 			GLOB.joined_player_list += player.ckey
-			player.create_character(FALSE)
+			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
+			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
+				player.show_titlescreen() //SKYRAT EDIT CHANGE
+				continue
+			player.create_character(destination)
 		else
-			player.show_titlescreen()
+			player.show_titlescreen() //SKYRAT EDIT ADDITION
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
@@ -370,25 +374,31 @@ SUBSYSTEM_DEF(ticker)
 		if(is_banned_from(new_player_mob.ckey, list("Captain")))
 			CHECK_TICK
 			continue
+		if(!ishuman(new_player_mob.new_character))
+			continue
 		var/mob/living/carbon/human/new_player_human = new_player_mob.new_character
-		if(istype(new_player_human) && new_player_human.mind?.assigned_role)
-			// Keep a rolling tally of who'll get the cap's spare ID vault code.
-			// Check assigned_role's priority and curate the candidate list appropriately.
-			var/player_assigned_role = new_player_human.mind.assigned_role
-			var/spare_id_priority = SSjob.chain_of_command[player_assigned_role]
-			if(spare_id_priority)
-				if(spare_id_priority < highest_rank)
-					spare_id_candidates.Cut()
-					spare_id_candidates += new_player_mob
-					highest_rank = spare_id_priority
-				else if(spare_id_priority == highest_rank)
-					spare_id_candidates += new_player_mob
-			CHECK_TICK
+		if(!new_player_human.mind || is_unassigned_job(new_player_human.mind.assigned_role))
+			continue
+		// Keep a rolling tally of who'll get the cap's spare ID vault code.
+		// Check assigned_role's priority and curate the candidate list appropriately.
+		var/player_assigned_role = new_player_human.mind.assigned_role.title
+		var/spare_id_priority = SSjob.chain_of_command[player_assigned_role]
+		if(spare_id_priority)
+			if(spare_id_priority < highest_rank)
+				spare_id_candidates.Cut()
+				spare_id_candidates += new_player_mob
+				highest_rank = spare_id_priority
+			else if(spare_id_priority == highest_rank)
+				spare_id_candidates += new_player_mob
+		CHECK_TICK
 
 	if(length(spare_id_candidates))
 		picked_spare_id_candidate = pick(spare_id_candidates)
 
 	for(var/mob/dead/new_player/new_player_mob as anything in GLOB.new_player_list)
+		if(QDELETED(new_player_mob) || !isliving(new_player_mob.new_character))
+			CHECK_TICK
+			continue
 		var/mob/living/new_player_living = new_player_mob.new_character
 		if(!new_player_living.mind || is_unassigned_job(new_player_living.mind.assigned_role))
 			CHECK_TICK
@@ -415,6 +425,7 @@ SUBSYSTEM_DEF(ticker)
 				to_chat(new_player_mob, span_notice("Captainship not forced on anyone."))
 			CHECK_TICK
 
+
 /datum/controller/subsystem/ticker/proc/decide_security_officer_departments(
 	list/new_players,
 	list/departments,
@@ -424,7 +435,7 @@ SUBSYSTEM_DEF(ticker)
 
 	for (var/mob/dead/new_player/new_player_mob as anything in new_players)
 		var/mob/living/carbon/human/character = new_player_mob.new_character
-		if (istype(character) && character.mind?.assigned_role == "Security Officer")
+		if (istype(character) && is_security_officer_job(character.mind?.assigned_role))
 			officer_mobs += character
 
 			var/datum/client_interface/client = GET_CLIENT(new_player_mob)
