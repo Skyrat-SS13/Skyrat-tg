@@ -172,13 +172,13 @@
 			return
 		var/update = FALSE
 		for(var/obj/item/bodypart/L in parts)
-			if(L.heal_damage(2/parts.len, 2/parts.len, null, BODYPART_ORGANIC))
+			if(L.heal_damage(1/parts.len, 1/parts.len, null, BODYPART_ORGANIC)) // SKYRAT EDIT - ORIGINAL: 2/parts.len, 2/parts.len
 				update = TRUE
 		if(update)
 			host_mob.update_damage_overlays()
 	else
-		host_mob.adjustBruteLoss(-2, TRUE)
-		host_mob.adjustFireLoss(-2, TRUE)
+		host_mob.adjustBruteLoss(-1, TRUE) // SKYRAT EDIT - ORIGINAL: -2
+		host_mob.adjustFireLoss(-1, TRUE) // SKYRAT EDIT - ORIGINAL: -2
 
 /datum/nanite_program/brain_heal_advanced
 	name = "Neural Reimaging"
