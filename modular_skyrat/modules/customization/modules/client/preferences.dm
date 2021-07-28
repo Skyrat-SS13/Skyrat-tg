@@ -3062,7 +3062,6 @@ GLOBAL_LIST_INIT(food, list(
 		set_new_species(/datum/species/human)
 		save_character()
 
-	character.set_species(pref_species.type, icon_update = FALSE, pref_load = TRUE)
 	if(show_body_size)
 		character.dna.update_body_size()
 	else //We need to update it to 100% in case they switch back
@@ -3078,7 +3077,7 @@ GLOBAL_LIST_INIT(food, list(
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, src)
+			aug.apply(character, TRUE, src)
 
 	if(icon_updates)
 		character.update_body()
