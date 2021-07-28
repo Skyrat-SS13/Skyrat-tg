@@ -50,5 +50,5 @@
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | NO_ALERTS
 
 /area/security/checkpoint/auxiliary/has_gravity
-	name = "Security Checkpoint"	//Why did it struggle to inherit this??
+	name = "Security Checkpoint - Rockplanet"	//Duplicate name bad
 	has_gravity = TRUE //The fact I need to force this is stupid as hell

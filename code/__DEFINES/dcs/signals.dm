@@ -25,6 +25,8 @@
 #define COMSIG_GLOB_BUTTON_PRESSED "!button_pressed"
 /// job subsystem has spawned and equipped a new mob
 #define COMSIG_GLOB_JOB_AFTER_SPAWN "!job_after_spawn"
+/// job datum has been called to deal with the aftermath of a latejoin spawn
+#define COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN "!job_after_latejoin_spawn"
 /// crewmember joined the game (mob/living, rank)
 #define COMSIG_GLOB_CREWMEMBER_JOINED "!crewmember_joined"
 /// Random event is trying to roll. (/datum/round_event_control/random_event)
@@ -1366,6 +1368,12 @@
 
 	/// Cancels the attack chain, but without performing any other action.
 	#define COMSIG_CANCEL_USB_CABLE_ATTACK (1<<2)
+
+/// Called when the circuit component is saved.
+#define COMSIG_CIRCUIT_COMPONENT_SAVE "circuit_component_save"
+
+/// Called when an external object is loaded.
+#define COMSIG_MOVABLE_CIRCUIT_LOADED "movable_circuit_loaded"
 
 /// Sent from /obj/structure/industrial_lift/tram when its travelling status updates. (travelling)
 #define COMSIG_TRAM_SET_TRAVELLING "tram_set_travelling"

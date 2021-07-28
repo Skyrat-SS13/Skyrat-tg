@@ -274,6 +274,7 @@
 	new /obj/item/kitchen/knife/hunting(src)
 	new /obj/item/storage/box/papersack/meat(src)
 
+
 /obj/item/choice_beacon/augments
 	name = "augment beacon"
 	desc = "Summons augmentations. Can be used 3 times!"
