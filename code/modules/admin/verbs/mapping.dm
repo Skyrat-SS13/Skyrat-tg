@@ -54,19 +54,6 @@ GLOBAL_LIST_INIT(admin_verbs_debug_mapping, list(
 ))
 GLOBAL_PROTECT(admin_verbs_debug_mapping)
 
-/obj/effect/debugging/mapfix_marker
-	name = "map fix marker"
-	icon = 'icons/hud/screen_gen.dmi'
-	icon_state = "mapfixmarker"
-	desc = "I am a mappers mistake."
-
-/obj/effect/debugging/marker
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "yellow"
-
-/obj/effect/debugging/marker/Move()
-	return FALSE
-
 /client/proc/camera_view()
 	set category = "Mapping"
 	set name = "Camera Range Display"
@@ -149,10 +136,10 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 	set name = "Intercom Range Display"
 
 	var/static/intercom_range_display_status = FALSE
-	intercom_range_display_status = !intercom_range_display_status //blame cyberboss if this breaks something
+	intercom_range_display_status = !intercom_range_display_status //blame cyberboss if this breaks something //blamed
 
-	for(var/obj/effect/debugging/marker/M in world)
-		qdel(M)
+	for(var/obj/effect/abstract/marker/intercom/marker in GLOB.all_abstract_markers)
+		qdel(marker)
 
 	if(intercom_range_display_status)
 		for(var/frequency in GLOB.all_radios)
