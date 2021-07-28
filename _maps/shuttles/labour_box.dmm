@@ -3,7 +3,8 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/labor)
 "b" = (
-/obj/effect/spawner/structure/window/shuttle,
+/obj/structure/window/shuttle/spaceship,
+/obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/labor)
 "c" = (
@@ -47,8 +48,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/labor)
 "i" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Labor Shuttle Airlock";
+/obj/machinery/door/airlock/survival_pod{
 	req_access_txt = "2"
 	},
 /turf/open/floor/plating,
@@ -68,18 +68,18 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/labor)
 "l" = (
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/labor)
 "m" = (
 /obj/machinery/light/directional/north,
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/labor)
 "n" = (
 /obj/machinery/mineral/labor_claim_console{
 	machinedir = 1;
 	pixel_x = 30
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/labor)
 "o" = (
 /obj/structure/chair/comfy/shuttle{
@@ -88,17 +88,13 @@
 /obj/machinery/flasher/directional/east{
 	id = "gulagshuttleflasher"
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/labor)
 "p" = (
 /obj/structure/closet/crate,
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/mineral/plastitanium,
 /area/shuttle/labor)
 "q" = (
-/obj/machinery/door/airlock/titanium{
-	id_tag = "prisonshuttle";
-	name = "Labor Shuttle Airlock"
-	},
 /obj/docking_port/mobile{
 	dir = 8;
 	dwidth = 2;
@@ -107,6 +103,9 @@
 	name = "labor camp shuttle";
 	port_direction = 4;
 	width = 9
+	},
+/obj/machinery/door/airlock/survival_pod{
+	id_tag = "prisonshuttle"
 	},
 /turf/open/floor/plating,
 /area/shuttle/labor)
@@ -122,17 +121,20 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/floor/plating/airless,
 /area/shuttle/labor)
+"B" = (
+/turf/closed/wall/mineral/titanium/spaceship,
+/area/shuttle/labor)
 
 (1,1,1) = {"
-a
-a
+B
+B
 b
-a
-a
+B
+B
 b
-a
-a
-a
+B
+B
+B
 "}
 (2,1,1) = {"
 b
@@ -168,13 +170,13 @@ r
 s
 "}
 (5,1,1) = {"
-a
-a
+B
+B
 i
-a
-a
-a
+B
+B
+B
 q
-a
-a
+B
+B
 "}
