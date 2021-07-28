@@ -183,7 +183,6 @@
 	You are meant to work with the exploration team.\
 	Do not attack anything in the gateway except in self-defense.\
 	DO NOT TOUCH ANYTHING IN THE GATEWAY."
-	assignedrole = "Lobotomite"
 
 /datum/outfit/lobotomite
 	name = "Abductor lobotomite"
