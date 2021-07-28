@@ -1299,11 +1299,7 @@
 
 	if(cell && !shorted)
 		// draw power from cell as before to power the area
-<<<<<<< HEAD
-		var/cellused = min(cell.charge, GLOB.CELLRATE * lastused_total) // clamp deduction to a max, amount left in cell
-=======
 		var/cellused = min(cell.charge, lastused_total JOULES) // clamp deduction to a max, amount left in cell
->>>>>>> c44d61c25bf (Fix APC power usage (#60472))
 		cell.use(cellused)
 
 		if(excess > lastused_total) // if power excess recharge the cell
