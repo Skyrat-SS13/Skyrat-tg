@@ -4,11 +4,8 @@
 	greyscale_colors = "#545454#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers
 	greyscale_config_worn = /datum/greyscale_config/sneakers_worn
-<<<<<<< HEAD
-	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_worn_digi
-=======
+	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_worn_digi //SKYRAT EDIT ADDITION
 	flags_1 = IS_PLAYER_COLORABLE_1
->>>>>>> ced603614d7 (That's it. *GAGS'ifies your berets* (#59536))
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
@@ -70,11 +67,8 @@
 	greyscale_colors = "#eb7016#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers_orange
 	greyscale_config_worn = /datum/greyscale_config/sneakers_orange_worn
-<<<<<<< HEAD
-	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn_digi
-=======
+	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn_digi //SKYRAT EDIT ADDITION
 	flags_1 = NONE
->>>>>>> ced603614d7 (That's it. *GAGS'ifies your berets* (#59536))
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
 	if (chained)

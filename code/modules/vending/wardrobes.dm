@@ -111,11 +111,7 @@
 					/obj/item/clothing/under/utility/haz_green = 3,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/shoes/workboots = 3,
-<<<<<<< HEAD
-					/obj/item/clothing/head/beret/job/engi = 3,	//SKYRAT EDIT ADDITION
-=======
 					/obj/item/clothing/head/beret/engi = 3,
->>>>>>> ced603614d7 (That's it. *GAGS'ifies your berets* (#59536))
 					/obj/item/clothing/head/hardhat = 3,
 					/obj/item/clothing/head/hardhat/weldhat = 3,
 					/obj/item/clothing/head/hardhat/orange = 3,	//SKYRAT EDIT ADDITION START
@@ -144,13 +140,7 @@
 					/obj/item/clothing/suit/hooded/wintercoat/engineering/atmos = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician = 3,
 					/obj/item/clothing/under/rank/engineering/atmospheric_technician/skirt = 3,
-<<<<<<< HEAD
-					/obj/item/clothing/under/utility/eng = 3,	//SKYRAT EDIT ADDITION
-					/obj/item/clothing/shoes/sneakers/black = 3,
-					/obj/item/clothing/head/beret/job/atmos = 3,	//SKYRAT EDIT ADDITION
-=======
 					/obj/item/clothing/head/beret/atmos = 3,
->>>>>>> ced603614d7 (That's it. *GAGS'ifies your berets* (#59536))
 					/obj/item/clothing/shoes/sneakers/black = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/atmos_wardrobe
 	payment_department = ACCOUNT_ENG
@@ -232,11 +222,7 @@
 					/obj/item/storage/backpack/satchel/tox = 3,
 					/obj/item/storage/backpack/duffelbag/toxins = 3,
 					/obj/item/clothing/head/beret/science = 3,
-<<<<<<< HEAD
-					/obj/item/clothing/head/beret/job/sci = 3,	//SKYRAT EDIT ADDITION (alt-sprite)
-=======
 					/obj/item/clothing/head/beret/science/fancy = 3,
->>>>>>> ced603614d7 (That's it. *GAGS'ifies your berets* (#59536))
 					/obj/item/clothing/suit/hooded/wintercoat/science = 3,
 					/obj/item/clothing/under/rank/rnd/scientist = 3,
 					/obj/item/clothing/under/rank/rnd/scientist/skirt = 3,
