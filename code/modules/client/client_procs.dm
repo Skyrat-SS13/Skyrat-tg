@@ -554,7 +554,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		qdel(query_client_in_db)
 		return
 /*
-	var/client_is_in_db = query_client_in_db.NextRow()
 	//If we aren't an admin, and the flag is set
 	if(CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
 		var/living_recs = CONFIG_GET(number/panic_bunker_living)
@@ -579,6 +578,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(src)
 			return
 */
+	var/client_is_in_db = query_client_in_db.NextRow()
 	if(!client_is_in_db)
 		//SKYRAT EDIT ADDITION BEGIN - PANICBUNKER
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
