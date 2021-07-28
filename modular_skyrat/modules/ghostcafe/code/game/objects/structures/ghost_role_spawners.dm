@@ -1,6 +1,5 @@
 /obj/effect/mob_spawn/robot
 	mob_type = /mob/living/silicon/robot
-	assignedrole = "Ghost Role"
 
 /obj/effect/mob_spawn/robot/Initialize()
 	. = ..()
@@ -18,7 +17,6 @@
 	anchored = TRUE
 	density = FALSE
 	death = FALSE
-	assignedrole = "Cafe Robot"
 	short_desc = "You are a Cafe Robot!"
 	flavour_text = "Who could have thought? This awesome local cafe accepts cyborgs too!"
 	mob_type = /mob/living/silicon/robot/model/roleplay
@@ -50,13 +48,12 @@
 	death = FALSE
 	any_station_species = TRUE
 	outfit = /datum/outfit/ghostcafe
-	assignedrole = "Cafe Visitor"
 	short_desc = "You are a Cafe Visitor!"
 	flavour_text = "You are off-duty and have decided to visit your favourite cafe. Enjoy yourself."
 
 /obj/effect/mob_spawn/human/ghostcafe/special(mob/living/carbon/human/new_spawn)
 	if(new_spawn.client)
-		new_spawn.client.prefs.copy_to(new_spawn)
+		new_spawn.client.prefs.safe_transfer_prefs_to(new_spawn)
 		var/area/A = get_area(src)
 		//new_spawn.AddElement(/datum/element/ghost_role_eligibility, free_ghosting = TRUE)
 		new_spawn.AddElement(/datum/element/dusts_on_catatonia)
