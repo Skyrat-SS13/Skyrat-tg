@@ -105,53 +105,53 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	var/list/jobs = list(
 		// Note that jobs divisible by 10 are considered heads of staff, and bolded
 		// 00: Captain
-		"Captain" = 00,
-		"Blueshield" = 01, //SKRYAT EDIT ADDITION
+		"Station Admiral" = 00,
+		"Redshield" = 01, //SKRYAT EDIT ADDITION
 		// 10-19: Security
-		"Head of Security" = 10,
-		"Warden" = 11,
+		"Chief Master At Arms" = 10,
+		"Master At Arms" = 11,
 		"Security Officer" = 12,
 		"Security Officer (Medical)" = 13,
 		"Security Officer (Engineering)" = 14,
 		"Security Officer (Science)" = 15,
 		"Security Officer (Cargo)" = 16,
-		"Detective" = 17,
+		"Investigative Officer" = 17,
 		"Security Medic" = 18, //SKYRAT EDIT ADDITION - SEC_HAUL
 		"Security Sergeant" = 19, //SKYRAT EDIT ADDITION - SEC_HAUL
 		// 20-29: Medbay
 		"Chief Medical Officer" = 20,
-		"Chemist" = 21,
+		"Bioweapons Technician" = 21,
 		"Virologist" = 22,
 		"Medical Doctor" = 23,
 		"Paramedic" = 24,
 		// 30-39: Science
-		"Research Director" = 30,
+		"Chief Research Officer" = 30,
 		"Scientist" = 31,
 		"Roboticist" = 32,
 		"Geneticist" = 33,
 		"Vanguard Operative" = 34, //SKYRAT EDIT ADDITION
 		// 40-49: Engineering
-		"Chief Engineer" = 40,
-		"Station Engineer" = 41,
+		"Chief Engineering Officer" = 40,
+		"Engine Technician" = 41,
 		"Atmospheric Technician" = 42,
 		// 50-59: Cargo
-		"Head of Personnel" = 50,
-		"Quartermaster" = 51,
+		"Corporate Liasion" = 50,
+		"Deck Officer" = 51,
 		"Shaft Miner" = 52,
-		"Cargo Technician" = 53,
+		"Deck Crewman" = 53,
 		// 60+: Civilian/other
 		"Bartender" = 61,
 		"Cook" = 62,
 		"Botanist" = 63,
 		"Curator" = 64,
-		"Chaplain" = 65,
+		"Counsel" = 65,
 		"Clown" = 66,
 		"Mime" = 67,
 		"Janitor" = 68,
 		"Lawyer" = 69,
 		"Psychologist" = 71,
 		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before assistants
-		"Assistant" = 999,
+		"Operative" = 999,
 
 		// 200-229: Centcom
 		"Admiral" = 200,
