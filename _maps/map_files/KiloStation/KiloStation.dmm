@@ -511,6 +511,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/warden)
+"abP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/purple/filled/line,
+/turf/open/floor/plating/plasma/rust,
+/area/maintenance/space_hut/plasmaman)
 "abS" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/north,
@@ -44918,25 +44923,6 @@
 	},
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
-"eOC" = (
-/obj/machinery/power/solar_control{
-	dir = 4;
-	id = "aftport";
-	name = "Port Quarter Solar Control"
-	},
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/structure/sign/warning/vacuum/external{
-	pixel_x = -32
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
-/area/maintenance/solars/port/aft)
 "eOQ" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1
@@ -45340,23 +45326,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"eVK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/rebels_unite{
-	pixel_x = 32;
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/trimline/purple/filled/corner{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/purple/filled/corner{
-	dir = 4
-	},
-/obj/item/toy/plush/plasmamanplushie{
-	name = "Lithium II"
-	},
-/turf/open/floor/plating/plasma/rust,
-/area/maintenance/space_hut/plasmaman)
 "eVL" = (
 /obj/structure/chair/sofa/right{
 	color = "#c45c57"
@@ -45427,6 +45396,11 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/open/floor/grass,
 /area/service/chapel/main)
+"eXi" = (
+/obj/effect/turf_decal/box,
+/obj/structure/cable,
+/turf/open/floor/iron/solarpanel/airless,
+/area/solars/starboard/aft)
 "eXm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -46437,6 +46411,14 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/sorting)
+"fxc" = (
+/mob/living/simple_animal/hostile/carp{
+	environment_smash = 0;
+	name = "Tuna";
+	real_name = "Tuna"
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/space/nearstation)
 "fxf" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -47554,6 +47536,18 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
+"fSM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/rebels_unite{
+	pixel_x = -32;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner,
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/plating/plasma/rust,
+/area/maintenance/space_hut/plasmaman)
 "fSZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -49368,18 +49362,26 @@
 /obj/item/cartridge/quartermaster,
 /turf/open/floor/iron,
 /area/cargo/qm)
-"gQC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/rebels_unite{
-	pixel_x = -32;
-	pixel_y = 32
+"gQJ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
 	},
-/obj/effect/turf_decal/trimline/purple/filled/corner,
-/obj/effect/turf_decal/trimline/purple/filled/corner{
+/obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/turf/open/floor/plating/plasma/rust,
-/area/maintenance/space_hut/plasmaman)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/machinery/computer/shuttle/mining/common,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/commons/fitness/recreation)
 "gQN" = (
 /obj/machinery/suit_storage_unit/security,
 /obj/effect/turf_decal/tile/neutral{
@@ -49404,21 +49406,6 @@
 /obj/item/disk/nuclear/fake,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/captain)
-"gRf" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/machinery/light/small/directional/north,
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/warning/xeno_mining{
-	pixel_x = 32
-	},
-/obj/structure/cable,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/maintenance/solars/starboard/aft)
 "gRl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -49741,6 +49728,11 @@
 "gYM" = (
 /turf/open/floor/engine,
 /area/engineering/supermatter)
+"gZm" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/item/stack/sheet/glass,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "gZo" = (
 /obj/item/radio/intercom/directional/west{
 	freerange = 1;
@@ -50891,6 +50883,24 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
+"hzl" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/structure/frame/computer{
+	anchored = 1;
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/solars/port/aft)
 "hzm" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -55827,6 +55837,23 @@
 "jHS" = (
 /turf/closed/wall/r_wall/rust,
 /area/engineering/break_room)
+"jIa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/rebels_unite{
+	pixel_x = 32;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 4
+	},
+/obj/item/toy/plush/plasmamanplushie{
+	name = "Lithium II"
+	},
+/turf/open/floor/plating/plasma/rust,
+/area/maintenance/space_hut/plasmaman)
 "jId" = (
 /obj/structure/easel,
 /obj/effect/turf_decal/bot,
@@ -58215,6 +58242,37 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
+"kBq" = (
+/obj/structure/cable,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/stack/sheet/glass/fifty,
+/obj/structure/closet/crate/engineering/electrical,
+/obj/structure/sign/warning/xeno_mining{
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/plating,
+/area/maintenance/solars/starboard/aft)
 "kBH" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -58806,6 +58864,23 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/office)
+"kMg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/contraband/rebels_unite{
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 8
+	},
+/obj/item/toy/plush/plasmamanplushie{
+	name = "Dianion XV"
+	},
+/turf/open/floor/plating/plasma/rust,
+/area/maintenance/space_hut/plasmaman)
 "kNl" = (
 /obj/structure/sign/warning/fire,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
@@ -58935,26 +59010,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/security/courtroom)
-"kQe" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/obj/machinery/computer/shuttle/mining/common,
-/turf/open/floor/iron,
-/area/commons/fitness/recreation)
 "kQl" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/yellow,
@@ -65395,6 +65450,11 @@
 /mob/living/simple_animal/hostile/giant_spider/hunter/scrawny,
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
+"nNC" = (
+/obj/structure/lattice/catwalk,
+/obj/item/stack/sheet/glass,
+/turf/open/space/basic,
+/area/solars/port/aft)
 "nNZ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -70912,11 +70972,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/miningoffice)
-"pZk" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/electrolyzer,
-/turf/open/floor/iron/dark,
-/area/maintenance/disposal/incinerator)
 "pZn" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -72470,6 +72525,13 @@
 	},
 /turf/open/floor/plating,
 /area/service/lawoffice)
+"qKX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plating/plasma/rust,
+/area/maintenance/space_hut/plasmaman)
 "qLt" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-05"
@@ -73127,6 +73189,11 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"qZP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/electrolyzer,
+/turf/open/floor/iron/dark,
+/area/maintenance/disposal/incinerator)
 "qZU" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
@@ -73207,6 +73274,10 @@
 /obj/machinery/rnd/bepis,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"rcl" = (
+/obj/item/circuitboard/computer/solar_control,
+/turf/open/floor/plating/asteroid/airless,
+/area/space/nearstation)
 "rcA" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -73711,13 +73782,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/engineering/break_room)
-"rkO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 1
-	},
-/turf/open/floor/plating/plasma/rust,
-/area/maintenance/space_hut/plasmaman)
 "rkS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -74922,23 +74986,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/command/storage/satellite)
-"rLX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/rebels_unite{
-	pixel_x = -32;
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/trimline/purple/filled/corner{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/purple/filled/corner{
-	dir = 8
-	},
-/obj/item/toy/plush/plasmamanplushie{
-	name = "Dianion XV"
-	},
-/turf/open/floor/plating/plasma/rust,
-/area/maintenance/space_hut/plasmaman)
 "rMn" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -80366,6 +80413,21 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/warehouse)
+"ugg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tank/internals/plasmaman/belt/full,
+/obj/structure/table,
+/obj/structure/sign/poster/contraband/rebels_unite{
+	pixel_x = 32;
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/purple/filled/corner,
+/obj/item/flashlight/lamp,
+/turf/open/floor/plating/plasma/rust,
+/area/maintenance/space_hut/plasmaman)
 "ugj" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -80550,21 +80612,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
-"uiO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/tank/internals/plasmaman/belt/full,
-/obj/structure/table,
-/obj/structure/sign/poster/contraband/rebels_unite{
-	pixel_x = 32;
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/trimline/purple/filled/corner{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/purple/filled/corner,
-/obj/item/flashlight/lamp,
-/turf/open/floor/plating/plasma/rust,
-/area/maintenance/space_hut/plasmaman)
 "uiQ" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -84007,11 +84054,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison)
-"vGO" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/purple/filled/line,
-/turf/open/floor/plating/plasma/rust,
-/area/maintenance/space_hut/plasmaman)
 "vHh" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -102324,7 +102366,7 @@ tnI
 oUy
 aau
 aeU
-cmU
+gZm
 jOe
 jOe
 jOe
@@ -102840,7 +102882,7 @@ asO
 cmU
 cmU
 foo
-foo
+nNC
 foo
 foo
 foo
@@ -104315,7 +104357,7 @@ aeu
 aeU
 aeU
 coy
-aeU
+fxc
 aDS
 nBm
 bFI
@@ -104640,7 +104682,7 @@ acK
 cmU
 aeU
 aUz
-aeU
+rcl
 aeU
 cnS
 cuU
@@ -105415,7 +105457,7 @@ vIb
 cnO
 kuW
 cuZ
-eOC
+hzl
 cnN
 aeu
 aeU
@@ -107692,7 +107734,7 @@ wrV
 wrV
 wrV
 ich
-kQe
+gQJ
 ney
 vqR
 qlh
@@ -115714,7 +115756,7 @@ vAc
 dCE
 pwM
 rFl
-pZk
+qZP
 ute
 qeZ
 wvg
@@ -129845,7 +129887,7 @@ erS
 deb
 aeu
 ckU
-gRf
+kBq
 cGv
 cGV
 clb
@@ -131898,10 +131940,10 @@ aeu
 aUz
 cmU
 nRr
-nRr
-nRr
-nRr
-nRr
+eXi
+eXi
+eXi
+eXi
 kuv
 nRr
 nRr
@@ -132413,15 +132455,15 @@ aeU
 cmU
 nRr
 nRr
-nRr
-nRr
-nRr
+eXi
+eXi
+eXi
 kuv
 nRr
 nRr
 nRr
-nRr
-nRr
+eXi
+eXi
 acm
 aeo
 acm
@@ -132926,7 +132968,7 @@ aeU
 cmU
 nRr
 nRr
-nRr
+eXi
 nRr
 nRr
 xOh
@@ -133442,12 +133484,12 @@ nRr
 nRr
 nRr
 nRr
-nRr
+eXi
 xOh
 kuv
 xOh
-nRr
-nRr
+eXi
+eXi
 nRr
 nRr
 nRr
@@ -133959,9 +134001,9 @@ nRr
 nRr
 nRr
 kuv
-nRr
-nRr
-nRr
+eXi
+eXi
+eXi
 nRr
 nRr
 acm
@@ -139809,8 +139851,8 @@ aaa
 aeo
 aaa
 pFC
-gQC
-rLX
+fSM
+kMg
 pFC
 viq
 aaa
@@ -140066,8 +140108,8 @@ aaa
 aaQ
 aaa
 pFC
-vGO
-rkO
+abP
+qKX
 pFC
 viq
 aaa
@@ -140323,8 +140365,8 @@ aaa
 aeo
 aaa
 pFC
-eVK
-uiO
+jIa
+ugg
 pFC
 viq
 aaa
