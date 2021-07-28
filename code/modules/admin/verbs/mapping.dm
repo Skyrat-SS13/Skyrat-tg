@@ -155,18 +155,10 @@ GLOBAL_LIST_EMPTY(dirty_vars)
 		qdel(M)
 
 	if(intercom_range_display_status)
-<<<<<<< HEAD
-		for(var/obj/item/radio/intercom/I in world)
-			for(var/turf/T in orange(7,I))
-				var/obj/effect/debugging/marker/F = new/obj/effect/debugging/marker(T)
-				if (!(F in view(7,I.loc)))
-					qdel(F)
-=======
 		for(var/frequency in GLOB.all_radios)
 			for(var/obj/item/radio/intercom/intercom in GLOB.all_radios[frequency])
 				for(var/turf/turf in view(7,intercom.loc))
 					new /obj/effect/abstract/marker/intercom(turf)
->>>>>>> c204fe8c8be (no more warning :D (#60482))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Intercom Range") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_show_at_list()
