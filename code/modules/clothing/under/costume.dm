@@ -282,9 +282,7 @@
 	icon_state = "SwagOutfit"
 	inhand_icon_state = "SwagOutfit"
 	can_adjust = FALSE
-<<<<<<< HEAD
 	mutant_variants = NONE // SKYRAT EDIT ADD
-=======
 
 /obj/item/clothing/under/costume/referee
 	name = "referee uniform"
@@ -292,4 +290,3 @@
 	icon_state = "referee"
 	inhand_icon_state = "referee"
 	can_adjust = FALSE
->>>>>>> d1c0d5f64d4 (Add Referee costume (#60430))
