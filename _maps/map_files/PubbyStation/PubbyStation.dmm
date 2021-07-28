@@ -12349,7 +12349,9 @@
 /area/commons/storage/emergency/starboard)
 "aEW" = (
 /obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/public/glass{
+	name = "Central Access"
+	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
 "aEY" = (
@@ -12759,16 +12761,13 @@
 /area/security/detectives_office)
 "aGc" = (
 /obj/machinery/door/firedoor,
+/obj/structure/cable,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central Access"
+	name = "Dormitory"
 	},
 /turf/open/floor/iron/dark,
-/area/hallway/primary/fore)
+/area/hallway/primary/central)
 "aGd" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Central Access"
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
@@ -13520,11 +13519,11 @@
 /area/engineering/atmos)
 "aIg" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Dormitory"
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
@@ -13668,14 +13667,6 @@
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Robo";
 	location = "HoP"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/hallway/primary/central)
-"aJf" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Dormitory"
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -14027,18 +14018,8 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/turf/open/floor/iron/dark,
-/area/hallway/primary/central)
-"aKb" = (
-/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
 	name = "Dormitory"
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
@@ -14096,12 +14077,6 @@
 	icon_state = "panelscorched"
 	},
 /area/cargo/warehouse)
-"aKo" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/hallway/primary/central)
 "aKp" = (
 /obj/effect/spawner/lootdrop/grille_or_trash,
 /turf/open/floor/plating,
@@ -15655,13 +15630,6 @@
 /obj/effect/spawner/structure/window/plasma/reinforced/plastitanium,
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)
-"aPv" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Departure Lounge"
-	},
-/turf/open/floor/iron/dark,
-/area/hallway/secondary/exit/departure_lounge)
 "aPx" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -15971,16 +15939,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/construction/mining/aux_base)
-"aQz" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Departure Lounge"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/hallway/secondary/exit/departure_lounge)
 "aQB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -17343,20 +17301,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/exit/departure_lounge)
-"aUI" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Departure Lounge"
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/hallway/secondary/exit/departure_lounge)
 "aUJ" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/red{
@@ -17365,6 +17309,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
@@ -17798,6 +17745,9 @@
 /area/cargo/storage)
 "aVM" = (
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
+	},
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/exit/departure_lounge)
 "aVN" = (
@@ -17834,6 +17784,9 @@
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Dormitory"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
@@ -20752,9 +20705,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/turf/open/floor/iron/white/corner{
-	dir = 1
-	},
+/turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
 "bdd" = (
 /obj/machinery/light{
@@ -20767,13 +20718,6 @@
 	id = "brigentry";
 	pixel_x = -28;
 	pixel_y = 24
-	},
-/turf/open/floor/iron/dark,
-/area/hallway/secondary/entry)
-"bdf" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Central Access"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
@@ -21450,7 +21394,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/turf/open/floor/iron/white/corner,
+/turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
 "bfb" = (
 /obj/structure/sign/nanotrasen,
@@ -21474,10 +21418,6 @@
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
 "bfe" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Central Access"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 8
@@ -21489,6 +21429,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 8
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Central Access"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
@@ -46972,19 +46915,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/engineering/atmos)
-"fBt" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Departure Lounge"
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/hallway/secondary/exit/departure_lounge)
 "fBz" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4
@@ -47243,6 +47173,9 @@
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/exit/departure_lounge)
@@ -52036,6 +51969,9 @@
 /obj/structure/sign/directions/evac{
 	pixel_x = -32
 	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Central Access"
+	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
 "mQm" = (
@@ -52499,6 +52435,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 8
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
@@ -57125,6 +57064,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/public/glass{
+	name = "Central Access"
+	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
 "tIS" = (
@@ -59435,16 +59377,6 @@
 "wDZ" = (
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/cargo/qm)
-"wEn" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public/glass{
-	name = "Departure Lounge"
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/hallway/secondary/exit/departure_lounge)
 "wFT" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/purple{
@@ -60057,6 +59989,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 8
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Departure Lounge"
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/exit/departure_lounge)
@@ -81647,9 +81582,9 @@ aiu
 aiu
 aiu
 aiu
-wEn
-aPv
-fBt
+oLR
+aJE
+aWJ
 aHz
 aYG
 aZA
@@ -83960,16 +83895,16 @@ oEA
 oEA
 oEA
 oEA
-aUI
-aQz
-fBt
+pOr
+dTV
+aWJ
 aXK
 aYK
 aZJ
 baU
 aXK
-bdf
-bdf
+baK
+baK
 bfe
 bjK
 bgY
@@ -84218,15 +84153,15 @@ aLu
 aLu
 aRH
 aUJ
-aVQ
+aIg
 nyB
 aXB
 aXI
 aZK
 aXI
 aXK
-aGV
-aGV
+aEW
+aEW
 bff
 bjK
 bhJ
@@ -84460,7 +84395,7 @@ aEs
 aDu
 aEs
 aFr
-aGc
+axG
 mPh
 aDZ
 aDZ
@@ -84717,8 +84652,8 @@ aCq
 axG
 axG
 axG
-aGc
-aGV
+axG
+aEW
 aHF
 aIL
 aDZ
@@ -96799,7 +96734,7 @@ aFD
 aDa
 aAN
 aVQ
-aIR
+aGc
 aKa
 aAN
 aLe
@@ -97055,9 +96990,9 @@ aAN
 aLe
 aLe
 aAN
-aIg
-aJf
-aKb
+xvO
+aBJ
+bhd
 aAN
 aMd
 aDZ
@@ -99364,7 +99299,7 @@ aDf
 aDf
 con
 cop
-aEW
+aPR
 kIO
 aGC
 aPR
@@ -99621,7 +99556,7 @@ col
 aBR
 coo
 apX
-aGV
+aDZ
 bhd
 aGD
 aDZ
@@ -99878,7 +99813,7 @@ aAP
 avk
 aDg
 aEc
-aKo
+aMA
 cot
 ahA
 aMA
