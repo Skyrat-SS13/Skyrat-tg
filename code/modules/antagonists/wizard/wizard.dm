@@ -141,25 +141,11 @@
 		H.age = wiz_age
 	H.equipOutfit(outfit_type)
 
-<<<<<<< HEAD
-/datum/antagonist/wizard/greet()
-	to_chat(owner, "<span class='warningplain'><font color=red><B>You are the Space Wizard!</B></font></span>")
-	to_chat(owner, "<span class='warningplain'><B>The Space Wizards Federation has given you the following tasks:</B></span>")
-	owner.announce_objectives()
-	var/message = "<span class='warningplain'>"
-	message += "<BR>You will find a list of available spells in your spell book. Choose your magic arsenal carefully."
-	message += "<BR>The spellbook is bound to you, and others cannot use it."
-	message += "<BR>In your pockets you will find a teleport scroll. Use it as needed."
-	message += "<BR><B>Remember:</B> Do not forget to prepare your spells.</span>"
-	to_chat(owner, message)
-	..()
-=======
 /datum/antagonist/wizard/ui_static_data(mob/user)
 	. = ..()
 	var/list/data = list()
 	data["objectives"] = get_objectives()
 	return data
->>>>>>> 6647f0d6aa9 (Dissecting Biddle Traitors: Toned down traitor flavor + antag info tgui (#60311))
 
 /datum/antagonist/wizard/farewell()
 	to_chat(owner, span_userdanger("You have been brainwashed! You are no longer a wizard!"))
