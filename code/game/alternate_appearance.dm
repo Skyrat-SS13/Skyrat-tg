@@ -166,11 +166,7 @@ GLOBAL_LIST_EMPTY(active_alternate_appearances)
 			add_hud_to(mob)
 
 /datum/atom_hud/alternate_appearance/basic/blessed_aware/mobShouldSee(mob/M)
-<<<<<<< HEAD
-	if(M.mind && (M.mind.assigned_role == "Chaplain"))
-=======
 	if(M.mind?.holy_role)
->>>>>>> cf5cae8e7fc (bless aware hud is no longer hardcoded for chaplains (#60420))
 		return TRUE
 	if (istype(M, /mob/living/simple_animal/hostile/construct/wraith))
 		return TRUE
