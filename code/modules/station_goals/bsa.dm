@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR BSA_OVERHAUL
-=======
+
 
 ///BSA unlocked by head ID swipes
 GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 
->>>>>>> 43fd840b2f3 (Kills _globalvars/misc.dm (#60358))
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR BSA_OVERHAUL
 // Crew has to build a bluespace cannon
 // Cargo orders part for high price
 // Requires high amount of power
