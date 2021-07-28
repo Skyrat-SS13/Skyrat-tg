@@ -148,7 +148,7 @@
 		QDEL_NULL(chambered)
 	if(azoom)
 		QDEL_NULL(azoom)
-	if(suppressed)
+	if(isatom(suppressed))
 		QDEL_NULL(suppressed)
 	if(tsafety)
 		QDEL_NULL(tsafety)
