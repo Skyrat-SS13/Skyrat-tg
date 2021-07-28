@@ -253,6 +253,7 @@
 		"compact_remote_shell",
 		"component_printer",
 		"integrated_circuit",
+		"module_duplicator",
 		"usb_cable",
 	)
 
@@ -507,6 +508,9 @@
 		"mesons_prescription",
 		"multi_cell_charger",
 		"tray_goggles_prescription",
+		"plumbing_chem",
+		"plumbing_eng",
+		"plumbing_sci"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
