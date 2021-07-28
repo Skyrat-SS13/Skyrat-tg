@@ -553,12 +553,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!query_client_in_db.Execute())
 		qdel(query_client_in_db)
 		return
-<<<<<<< HEAD
 /*
-=======
-
 	var/client_is_in_db = query_client_in_db.NextRow()
->>>>>>> 80118bccd99 (Fix normal panic bunker rejecting when it shouldnt (#60289))
 	//If we aren't an admin, and the flag is set
 	if(CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey])
 		var/living_recs = CONFIG_GET(number/panic_bunker_living)
@@ -582,9 +578,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(query_client_in_db)
 			qdel(src)
 			return
-<<<<<<< HEAD
 */
-	if(!query_client_in_db.NextRow())
+	if(!client_is_in_db))
 		//SKYRAT EDIT ADDITION BEGIN - PANICBUNKER
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
 			log_access("Failed Login: [key] - [address] - New account attempting to connect during panic bunker")
@@ -601,10 +596,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(src)
 			return
 		//SKYRAT EDIT END
-=======
-
-	if(!client_is_in_db)
->>>>>>> 80118bccd99 (Fix normal panic bunker rejecting when it shouldnt (#60289))
 		new_player = 1
 		account_join_date = findJoinDate()
 		var/datum/db_query/query_add_player = SSdbcore.NewQuery({"
