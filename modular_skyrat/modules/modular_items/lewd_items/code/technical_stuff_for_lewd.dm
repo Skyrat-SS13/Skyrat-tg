@@ -118,6 +118,7 @@
 		cuff_resist(wear_suit)
 	else
 		..()
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ///////i needed this code for ballgag, because it doesn't muzzle, it kinda voxbox///////
 //wearer for moaning. So i really need it, don't touch or whole ballgag will be broken//

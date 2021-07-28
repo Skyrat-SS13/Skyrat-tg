@@ -114,7 +114,7 @@
 
 /obj/structure/pole/proc/animatepole(mob/living/user)
 
-	if (user.loc != src.loc)
+	if(user.loc != src.loc)
 		return
 	if(!QDELETED(src))
 		animate(user,pixel_x = -6, pixel_y = 0, time = 10)
@@ -152,12 +152,12 @@
 		actual_user.forceMove(get_turf(src))
 
 /obj/item/polepack
-	name 				= "pink stripper pole flatpack"
-	desc 				= "A wrench is required to construct."
-	icon 				= 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
-	throwforce			= 0
-	icon_state 			= "pole_base"
-	var/unwrapped			= 0
+	name = "pink stripper pole flatpack"
+	desc = "A wrench is required to construct."
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
+	throwforce = 0
+	icon_state = "pole_base"
+	var/unwrapped = 0
 	w_class = WEIGHT_CLASS_HUGE
 
 /obj/item/polepack/attackby(obj/item/P, mob/user, params) //erecting a pole here.
