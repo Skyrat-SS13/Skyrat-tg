@@ -18,7 +18,6 @@
 	uniform = /obj/item/clothing/under/rank/cargo/tech
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id/away/blackmarket
-	assignedrole = "Black Market Dealer"
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
@@ -49,38 +48,30 @@
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
 	important_info = "You are not an antagonist."
 	outfit = /datum/outfit/ds2/syndicate
-	assignedrole = "DS-2 Operative"
 
 /obj/effect/mob_spawn/human/ds2/syndicate/special(mob/living/new_spawn)
 	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
 
 /obj/effect/mob_spawn/human/ds2/syndicate/service
 	outfit = /datum/outfit/ds2/syndicate/service
-	assignedrole = "DS-2 Service Staff"
 
 /obj/effect/mob_spawn/human/ds2/syndicate/enginetech
 	outfit = /datum/outfit/ds2/syndicate/enginetech
-	assignedrole = "DS-2 Engine Technician"
 
 /obj/effect/mob_spawn/human/ds2/syndicate/researcher
 	outfit = /datum/outfit/ds2/syndicate/researcher
-	assignedrole = "DS-2 Researcher"
 
 /obj/effect/mob_spawn/human/ds2/syndicate/stationmed
 	outfit = /datum/outfit/ds2/syndicate/stationmed
-	assignedrole = "DS-2 Station Medical Officer"
 
 /obj/effect/mob_spawn/human/ds2/syndicate/masteratarms
 	outfit = /datum/outfit/ds2/syndicate/masteratarms
-	assignedrole = "DS-2 Master At Arms"
 
 /obj/effect/mob_spawn/human/ds2/syndicate/brigoff
 	outfit = /datum/outfit/ds2/syndicate/brigoff
-	assignedrole = "DS-2 Brig Officer"
 
 /obj/effect/mob_spawn/human/ds2/syndicate/admiral
 	outfit = /datum/outfit/ds2/syndicate/admiral
-	assignedrole = "DS-2 Station Admiral"
 
 //OUTFITS//
 /datum/outfit/syndicatespace/syndicrew
