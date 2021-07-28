@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-
-	//The mob should have a gender you want before running this proc. Will run fine without H
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-/datum/preferences/proc/random_character(gender_override, antag_override = FALSE)
-=======
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /// Fully randomizes everything in the character.
 /datum/preferences/proc/randomise_appearance_prefs(randomise_flags = ALL)
 	if(randomise_flags & RANDOMIZE_GENDER)
@@ -47,7 +41,7 @@
 		eye_color = random_eye_color()
 	if(randomise_flags & RANDOMIZE_FEATURES)
 		features = random_features()
-
+*/ //SKYRAT EDIT END
 
 /// Randomizes the character according to preferences.
 /datum/preferences/proc/apply_character_randomization_prefs(antag_override = FALSE)
@@ -60,7 +54,6 @@
 				body_type = gender
 			else
 				body_type = pick(MALE, FEMALE)
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	if(randomise[RANDOM_SPECIES])
 		random_species()
 	else if(randomise[RANDOM_NAME] || antag_override && randomise[RANDOM_NAME_ANTAG])
@@ -92,27 +85,14 @@
 	if(randomise[RANDOM_EYE_COLOR])
 		eye_color = random_eye_color()
 	features = random_features()
-<<<<<<< HEAD
-	if(gender in list(MALE, FEMALE))
-		body_type = gender
-	else
-		body_type = pick(MALE, FEMALE)
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
-
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
 	pref_species = new random_species_type
 	if(randomise[RANDOM_NAME])
 		real_name = pref_species.random_name(gender,1)
 */
-//SKYRAT EDIT REMOVAL END
-
 
 ///Setup the random hardcore quirks and give the character the new score prize.
 /datum/preferences/proc/hardcore_random_setup(mob/living/carbon/human/character)
@@ -169,12 +149,7 @@
 		. += available_hardcore_quirks[picked_quirk]
 		available_hardcore_quirks -= picked_quirk
 
-<<<<<<< HEAD
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-=======
-
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/preferences/proc/update_preview_icon()
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	var/datum/job/previewJob
@@ -205,4 +180,3 @@
 	parent.show_character_previews(new /mutable_appearance(mannequin))
 	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
 */
-//SKYRAT EDIT REMOVAL END

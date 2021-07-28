@@ -228,26 +228,14 @@
 /datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C)
 	set waitfor = FALSE
 	var/static/list/show_directions = list(SOUTH, WEST)
-<<<<<<< HEAD
-	if(H.mind && (H.mind.assigned_role != H.mind.special_role))
-		var/assignment
-		if(H.mind.assigned_role)
-			assignment = H.mind.assigned_role
-		else if(H.job)
-			assignment = H.job
-		else
-			assignment = "Unassigned"
+	if(H.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
+		var/assignment = H.mind.assigned_role.title
 		//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
 		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[assignment]) // latejoin
 			assignment = H.client.prefs.alt_titles_preferences[assignment]
 		else if(C && C.prefs && C.prefs.alt_titles_preferences[assignment]) // roundstart - yes both do separate things i don't fucking know why but they do and if they're not both there then they don't fucking work leave me ALONE
 			assignment = C.prefs.alt_titles_preferences[assignment]
 		//SKYRAT EDIT ADD END
-=======
-	if(H.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
-		var/assignment = H.mind.assigned_role.title
-
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 		var/static/record_id_num = 1001
 		var/id = num2hex(record_id_num++,6)
 		if(!C)

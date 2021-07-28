@@ -28,16 +28,12 @@
 
 	family_heirlooms = list(/obj/item/bikehorn/golden)
 
-<<<<<<< HEAD
 	veteran_only = TRUE // SKYRAT EDIT ADDITION
 
-/datum/job/clown/after_spawn(mob/living/carbon/human/H, mob/M)
-=======
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 
 /datum/job/clown/after_spawn(mob/living/spawned, client/player_client)
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	. = ..()
 	if(!ishuman(spawned))
 		return

@@ -510,65 +510,25 @@ SUBSYSTEM_DEF(job)
 		if(CONFIG_GET(flag/auto_deadmin_players) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
 			player_client.holder.auto_deadmin()
 		else
-<<<<<<< HEAD
-			for(var/_sloc in GLOB.start_landmarks_list)
-				var/obj/effect/landmark/start/sloc = _sloc
-				if(sloc.name != rank)
-					continue
-				S = sloc
-				if(locate(/mob/living) in sloc.loc) //so we can revert to spawning them on top of eachother if something goes wrong
-					continue
-				sloc.used = TRUE
-				break
-		if(S)
-			S.JoinPlayerHere(living_mob, FALSE)
-		if(!S && !spawning_handled) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
-			log_world("Couldn't find a round start spawn point for [rank]")
-			if(!SendToLateJoin(living_mob))
-				living_mob.move_to_error_room()
-
-
-	if(living_mob.mind)
-		living_mob.mind.assigned_role = rank
-
-	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
-	var/display_rank = rank
-	if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
-		display_rank = M.client.prefs.alt_titles_preferences[rank]
-	// to_chat(M, "<span class='infoplain'><b>You are the [rank].</b></span>") - ORIGINAL
-	to_chat(M, "<span class='infoplain'><b>You are the [display_rank].</b></span>") // SKYRAT EDIT ADD END
-	var/list/packed_items //SKYRAT CHANGE ADDITION - CUSTOMIZATION
-	if(job)
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if (M.client && job.no_dresscode && job.loadout)
-			packed_items = M.client.prefs.equip_preference_loadout(living_mob,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
-		//SKYRAT EDIT ADDITION END
-		var/new_mob = job.equip(living_mob, null, null, joined_late, null, M.client, is_captain)//silicons override this proc to return a mob
-		if(ismob(new_mob))
-			living_mob = new_mob
-			if(!joined_late)
-				newplayer.new_character = living_mob
-			else
-				M = living_mob
-
-		if(M.client.holder)
-			if(CONFIG_GET(flag/auto_deadmin_players) || (M.client.prefs?.toggles & DEADMIN_ALWAYS))
-				M.client.holder.auto_deadmin()
-			else
-				handle_auto_deadmin_roles(M.client, rank)
-
-		to_chat(M, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [rank]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT - ALTERNATE JOB TITLES
-		job.radio_help_message(M)
-=======
 			handle_auto_deadmin_roles(player_client, job.title)
 
+	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
+	var/display_rank = job.title
+	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
+		display_rank = player_client.prefs.alt_titles_preferences[job.title]
+	to_chat(equipping, "<span class='infoplain'><b>You are the [display_rank].</b></span>") // SKYRAT EDIT ADD END
+	var/list/packed_items
+	if(job)
+		if (player_client && job.no_dresscode && job.loadout)
+			packed_items = player_client.prefs.equip_preference_loadout(equipping,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
+	//SKYRAT EDIT ADDITION END
+
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>")
+		to_chat(player_client, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>") //SKYRAT EDIT CHANGE
 
 	job.radio_help_message(equipping)
 
 	if(player_client)
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 		if(job.req_admin_notify)
 			to_chat(player_client, "<span class='infoplain'><b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b></span>")
 		if(CONFIG_GET(number/minimal_access_threshold))
@@ -578,30 +538,19 @@ SUBSYSTEM_DEF(job)
 		if(related_policy)
 			to_chat(player_client, related_policy)
 
-<<<<<<< HEAD
-	var/related_policy = get_policy(rank)
-	if(related_policy)
-		to_chat(M,related_policy)
-	if(ishuman(living_mob))
-		var/mob/living/carbon/human/wageslave = living_mob
-		living_mob.add_memory("Your account ID is [wageslave.account_id].")
-	if(job && living_mob)
-		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, living_mob might not.
-		//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-		if(!job.no_dresscode && job.loadout)
-			if(M.client)
-				packed_items = M.client.prefs.equip_preference_loadout(living_mob, FALSE, job,initial=TRUE)
-		if(packed_items)
-			M.client.prefs.add_packed_items(living_mob, packed_items)
-		//SKYRAT CHANGE ADDITION END
-=======
 	if(ishuman(equipping))
 		var/mob/living/carbon/human/wageslave = equipping
 		wageslave.add_memory("Your account ID is [wageslave.account_id].")
 
 	job.after_spawn(equipping, player_client)
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 
+	//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
+	if(!job.no_dresscode && job.loadout)
+		if(player_client)
+			packed_items = player_client.prefs.equip_preference_loadout(equipping, FALSE, job,initial=TRUE)
+	if(packed_items)
+		player_client.prefs.add_packed_items(equipping, packed_items)
+	//SKYRAT CHANGE ADDITION END
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
 	if(!C?.holder)
@@ -651,24 +600,11 @@ SUBSYSTEM_DEF(job)
 
 /datum/controller/subsystem/job/proc/LoadJobs()
 	var/jobstext = file2text("[global.config.directory]/jobs.txt")
-<<<<<<< HEAD
-	for(var/datum/job/J in occupations)
-		var/regex/jobs = new("[J.title]=(-1|\\d+),(-1|\\d+)")
-		// Skyrat Edit - SSjobs no longer runtimes if it cant find a job
-		// original: jobs.Find(jobstext)
-		if(!jobs.Find(jobstext))
-			log_runtime("RUNTIME: UNABLE TO FIND '[J.title]' INSIDE OF '[global.config.directory]/jobs.txt'")
-			continue
-		// Skyrat Edit End
-		J.total_positions = text2num(jobs.group[1])
-		J.spawn_positions = text2num(jobs.group[2])
-=======
 	for(var/datum/job/job as anything in joinable_occupations)
 		var/regex/jobs = new("[job.title]=(-1|\\d+),(-1|\\d+)")
 		jobs.Find(jobstext)
 		job.total_positions = text2num(jobs.group[1])
 		job.spawn_positions = text2num(jobs.group[2])
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 
 /datum/controller/subsystem/job/proc/HandleFeedbackGathering()
 	for(var/datum/job/job as anything in joinable_occupations)

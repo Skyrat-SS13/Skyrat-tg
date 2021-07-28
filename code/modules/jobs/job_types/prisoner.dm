@@ -1,13 +1,8 @@
 /datum/job/prisoner
 	title = "Prisoner"
 	department_head = list("The Security Team")
-<<<<<<< HEAD
-	faction = "Station"
-	total_positions = 12		// SKYRAT EDIT: Original value (0)
-=======
 	faction = FACTION_STATION
-	total_positions = 0
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
+	total_positions = 12		// SKYRAT EDIT: Original value (0)
 	spawn_positions = 2
 	supervisors = "the security team"
 	selection_color = "#ffe1c3"

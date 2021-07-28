@@ -22,12 +22,8 @@
 /datum/antagonist/rev/can_be_owned(datum/mind/new_owner)
 	. = ..()
 	if(.)
-		if(new_owner.assigned_role.departments & DEPARTMENT_COMMAND)
+		if(new_owner.assigned_role.departments & (DEPARTMENT_COMMAND|DEPARTMENT_CENTRAL_COMMAND))
 			return FALSE
-		//SKYRAT EDIT ADDITION
-		if(new_owner.assigned_role in GLOB.central_command_positions)
-			return FALSE
-		//SKYRAT EDIT ADDITION
 		if(new_owner.unconvertable)
 			return FALSE
 		if(new_owner.current && HAS_TRAIT(new_owner.current, TRAIT_MINDSHIELD))
@@ -421,11 +417,7 @@
 			if (isnull(mind))
 				continue
 
-<<<<<<< HEAD
-			if (!(mind.assigned_role in GLOB.command_positions + GLOB.security_positions + GLOB.central_command_positions)) //SKYRAT EDIT CHANGE
-=======
-			if (!(mind.assigned_role.departments & (DEPARTMENT_SECURITY|DEPARTMENT_COMMAND)))
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
+			if (!(mind.assigned_role.departments & (DEPARTMENT_SECURITY|DEPARTMENT_COMMAND|DEPARTMENT_CENTRAL_COMMAND))) //SKYRAT EDIT CHANGE
 				continue
 
 			if (mind in ex_revs + ex_headrevs)

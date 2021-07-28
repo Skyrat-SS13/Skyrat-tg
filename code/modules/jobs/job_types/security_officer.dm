@@ -105,29 +105,18 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	if(dep_trim)
 		var/obj/item/card/id/worn_id = spawning.wear_id
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
-<<<<<<< HEAD
-		H.sec_hud_set_ID()
-		//SKYRAT EDIT ADD - ALT TITLES
-		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
-			worn_id.assignment = H.client.prefs.alt_titles_preferences[title]
+		spawning.sec_hud_set_ID()
+		//SKYRAT EDIT ADDITION
+		if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[title])
+			worn_id.assignment = player_client.prefs.alt_titles_preferences[title]
 			worn_id.update_label()
 		else if (alt_title_pref)
 			worn_id.assignment = alt_title_pref
 			worn_id.update_label()
-
-	var/teleport = 0
-	if(!CONFIG_GET(flag/sec_start_brig))
-		if(destination || spawn_point)
-			teleport = 1
-	if(teleport)
-		var/turf/T
-=======
-		spawning.sec_hud_set_ID()
-
+		//SKYRAT EDIT END
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 
 	if(!CONFIG_GET(flag/sec_start_brig) && (destination || spawn_point))
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 		if(spawn_point)
 			spawning.Move(get_turf(spawn_point))
 		else

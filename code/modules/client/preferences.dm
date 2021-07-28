@@ -1908,18 +1908,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	sanitize_chosen_prefs()
 	apply_prefs_to(character, icon_updates)
 
-<<<<<<< HEAD
-	if(roundstart_checks)
-		if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))
-			var/firstspace = findtext(real_name, " ")
-			var/name_length = length(real_name)
-			if(!firstspace) //we need a surname
-				real_name += " [pick(GLOB.last_names)]"
-			else if(firstspace == name_length)
-				real_name += "[pick(GLOB.last_names)]"
-=======
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
-
 /// Applies the given preferences to a human mob.
 /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	character.real_name = real_name

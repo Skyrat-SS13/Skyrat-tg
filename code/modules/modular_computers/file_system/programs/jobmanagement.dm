@@ -46,44 +46,28 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 
 /datum/computer_file/program/job_management/proc/can_edit_job(datum/job/job)
-	if(!job || !(job.job_flags & JOB_CREW_MEMBER) || (job.title in blacklisted))
+	if(!job || !(job.job_flags & JOB_CREW_MEMBER) || (job.title in blacklisted) || job.veteran_only) //SKYRAT EDIT CHAGNE
 		return FALSE
 	return TRUE
 
 
 /datum/computer_file/program/job_management/proc/can_open_job(datum/job/job)
-<<<<<<< HEAD
-	if(!(job?.title in blacklisted) && !job?.veteran_only) //SKRYAT EDIT CHANGE
-		if((job.total_positions <= length(GLOB.player_list) * (max_relative_positions / 100)))
-			var/delta = (world.time / 10) - GLOB.time_last_changed_position
-			if((change_position_cooldown < delta) || (opened_positions[job.title] < 0))
-				return TRUE
-=======
 	if(!can_edit_job(job))
 		return FALSE
 	if((job.total_positions <= length(GLOB.player_list) * (max_relative_positions / 100)))
 		var/delta = (world.time / 10) - GLOB.time_last_changed_position
 		if((change_position_cooldown < delta) || (opened_positions[job.title] < 0))
 			return TRUE
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	return FALSE
 
 
 /datum/computer_file/program/job_management/proc/can_close_job(datum/job/job)
-<<<<<<< HEAD
-	if(!(job?.title in blacklisted) && !job?.veteran_only) //SKRYAT EDIT CHANGE
-		if(job.total_positions > length(GLOB.player_list) * (max_relative_positions / 100))
-			var/delta = (world.time / 10) - GLOB.time_last_changed_position
-			if((change_position_cooldown < delta) || (opened_positions[job.title] > 0))
-				return TRUE
-=======
 	if(!can_edit_job(job))
 		return FALSE
 	if(job.total_positions > length(GLOB.player_list) * (max_relative_positions / 100))
 		var/delta = (world.time / 10) - GLOB.time_last_changed_position
 		if((change_position_cooldown < delta) || (opened_positions[job.title] > 0))
 			return TRUE
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	return FALSE
 
 

@@ -1,13 +1,8 @@
 /datum/job/quartermaster
 	title = "Quartermaster"
-<<<<<<< HEAD
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Captain") //SKYRAT EDIT CHANGE
-	faction = "Station"
-=======
-	department_head = list("Head of Personnel")
 	faction = FACTION_STATION
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	total_positions = 1
 	spawn_positions = 1
 	//supervisors = "the head of personnel" //ORIGINAL

@@ -272,13 +272,13 @@
 /obj/effect/mob_spawn/human/create_mob(mob/user, newname)
 	var/mob/living/carbon/human/H = new mob_type(get_turf(src))
 	if(is_pref_char && user?.client)
-		user.client.prefs.copy_to(H)
+		user.client.prefs.safe_transfer_prefs_to(H)
 		H.dna.update_dna_identity()
 		if(chosen_alias)
 			H.name = chosen_alias
 			H.real_name = chosen_alias
 		//Pre-job equips so Voxes dont die
-		H.dna.species.before_equip_job(null, H)
+		H.dna.species.pre_equip_species_outfit(null, H)
 		H.regenerate_icons()
 		SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
 		user.client.prefs.equip_preference_loadout(H, FALSE, blacklist = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK,ITEM_SLOT_ICLOTHING,ITEM_SLOT_BACK,ITEM_SLOT_OCLOTHING,ITEM_SLOT_GLOVES,ITEM_SLOT_FEET,ITEM_SLOT_HEAD,ITEM_SLOT_MASK,ITEM_SLOT_NECK,ITEM_SLOT_EYES,ITEM_SLOT_SUITSTORE,ITEM_SLOT_LPOCKET,ITEM_SLOT_RPOCKET)) //There has to be a better way to do this, this is utter bloat.

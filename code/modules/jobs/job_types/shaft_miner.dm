@@ -1,15 +1,9 @@
 /datum/job/shaft_miner
 	title = "Shaft Miner"
 	department_head = list("Head of Personnel")
-<<<<<<< HEAD
-	faction = "Station"
-	total_positions = 5		//SKYRAT EDIT: Original value (3)
-	spawn_positions = 5		//SKYRAT EDIT: Original value (3)
-=======
 	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 3
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
 

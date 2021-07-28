@@ -85,12 +85,6 @@
 	/// List of family heirlooms this job can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms
 
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION
-	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
-	var/veteran_only = FALSE
-	//SKYRAT EDIT END
-=======
 	/// All values = (JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK)
 	var/job_flags = NONE
 
@@ -102,7 +96,10 @@
 	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
 	var/policy_index = ""
 
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
+	//SKYRAT EDIT ADDITION
+	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
+	var/veteran_only = FALSE
+	//SKYRAT EDIT END
 
 /datum/job/New()
 	. = ..()
@@ -167,24 +164,6 @@
 /datum/job/proc/special_check_latejoin(client/C)
 	return TRUE
 
-<<<<<<< HEAD
-//Don't override this unless the job transforms into a non-human (Silicons do this for example)
-/datum/job/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE, announce = TRUE, latejoin = FALSE, datum/outfit/outfit_override = null, client/preference_source, is_captain = FALSE)
-	if(!H)
-		return FALSE
-	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
-		if(H.dna.species.id != "human")
-			H.set_species(/datum/species/human)
-			H.apply_pref_name("human", preference_source)
-	if(!visualsOnly)
-		var/datum/bank_account/bank_account = new(H.real_name, src, H.dna.species.payday_modifier)
-		bank_account.payday(STARTING_PAYCHECKS, TRUE)
-		H.account_id = bank_account.account_id
-	get_alt_title_pref(preference_source) //SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
-
-=======
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
-
 /mob/living/proc/on_job_equipping(datum/job/equipping)
 	return
 
@@ -192,6 +171,8 @@
 	var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
 	bank_account.payday(STARTING_PAYCHECKS, TRUE)
 	account_id = bank_account.account_id
+
+	equipping.get_alt_title_pref(client) //SKYRAT EDIT ADD - gets alt titles for round start (yes this is fucking spaghetti it's not my fault you can't access a mob's client before their ID sets the job)
 
 	dress_up_as_job(equipping)
 
@@ -203,13 +184,8 @@
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equipOutfit(equipping.outfit, visual_only)
 
-<<<<<<< HEAD
-	if(!visualsOnly && announce)
-		announce(H, is_captain)
 /* SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
-=======
 
->>>>>>> 4c21166e4ff (Job refactor: strings to references and typepaths (#59841))
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
@@ -427,7 +403,7 @@
 		return // Disconnected while checking for the appearance ban.
 	if(fully_randomize)
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments & DEPARTMENT_COMMAND))
-			if(player_client.prefs.pref_species.id != SPECIES_HUMAN)
+			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
 			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
 		else
@@ -439,7 +415,7 @@
 		var/is_antag = (player_client.mob.mind in GLOB.pre_setup_antags)
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments & DEPARTMENT_COMMAND))
 			player_client.prefs.randomise[RANDOM_SPECIES] = FALSE
-			if(player_client.prefs.pref_species.id != SPECIES_HUMAN)
+			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
 		player_client.prefs.safe_transfer_prefs_to(src, TRUE, is_antag)
 		if(CONFIG_GET(flag/force_random_names))
@@ -457,7 +433,7 @@
 
 /mob/living/silicon/robot/apply_prefs_job(client/player_client, datum/job/job)
 	if(mmi)
-		var/organic_name 
+		var/organic_name
 		if(GLOB.current_anonymous_theme)
 			organic_name = GLOB.current_anonymous_theme.anonymous_name(src)
 		else if(player_client.prefs.randomise[RANDOM_NAME] || CONFIG_GET(flag/force_random_names) || is_banned_from(player_client.ckey, "Appearance"))
