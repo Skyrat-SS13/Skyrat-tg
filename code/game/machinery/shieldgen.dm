@@ -472,6 +472,7 @@
 				lost_head.dismember(silent=FALSE)
 			else
 				human_to_die.adjustBruteLoss(500)
+				playsound(get_turf(human_to_die), 'sound/effects/dismember.ogg', 80, TRUE)
 		else
 			L.gib()
 		//SKYRAT EDIT CHANGE END
