@@ -58,9 +58,6 @@
 	bare_wound_bonus = 50
 	embedding = list(embed_chance=60, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
-	armour_penetration = -60
-	
-	
 
 ///////////9x19mm/////////////////
 //FMJ | JHP | IHDF | RUBBER//
@@ -77,7 +74,6 @@
 	name = "9x19mm FMJ bullet"
 	damage = 15
 	speed = 0.8
-	armour_penetration = -30
 
 /obj/item/ammo_casing/b9mm/hp
 	name = "9x19mm JHP bullet casing"
@@ -92,7 +88,6 @@
 	icon_state = "bullet_h"
 	damage = 20
 	wound_bonus = 35
-	armour_penetration = -60
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
@@ -257,7 +252,6 @@
 	icon_state = "bullet_h"
 	damage = 47
 	wound_bonus = 40
-	armour_penetration = -20
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
@@ -387,3 +381,46 @@
 	damage = 25
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
+
+////////////////////////////
+///////////14 GAUGE/////////
+////////////////////////////
+
+/obj/projectile/bullet/s14gauge_slug
+	name = "12g shotgun slug"
+	damage = 27
+	sharpness = SHARP_POINTY
+	wound_bonus = 0
+
+/obj/projectile/bullet/s14gauge_beanbag
+	name = "beanbag slug"
+	damage = 5
+	stamina = 30
+	wound_bonus = 0
+	sharpness = NONE
+	embedding = null
+
+/obj/projectile/bullet/pellet/s14gauge_buckshot
+	name = "buckshot pellet"
+	damage = 5
+	wound_bonus = 3
+	bare_wound_bonus = 3
+	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
+
+/obj/projectile/bullet/pellet/s14gauge_rubbershot
+	name = "rubbershot pellet"
+	damage = 2
+	stamina = 7
+	sharpness = NONE
+	embedding = null
+
+/obj/projectile/bullet/s14gauge_stunslug
+	name = "stunslug"
+	damage = 5
+	knockdown = 100
+	stutter = 5
+	jitter = 20
+	range = 7
+	icon_state = "spark"
+	color = "#FFFF00"
+	embedding = null
