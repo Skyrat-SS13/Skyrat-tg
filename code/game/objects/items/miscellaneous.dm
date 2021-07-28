@@ -273,17 +273,7 @@
 	new /obj/item/clothing/mask/gas/carp(src)
 	new /obj/item/kitchen/knife/hunting(src)
 	new /obj/item/storage/box/papersack/meat(src)
-	
-	
-/obj/item/storage/box/hero/ronin
-    name = "Sword Saint, Wandering Vagabond - 1600's."
-    desc = "Anyone can give up, it's the easiest thing in the world to do. But to hold it together when everyone else would understand if you fell apart, that's true strength. Become the wandering swordsman you were always meant to be!"
-    
-/obj/item/storage/box/hero/ronin/PopulateContents()
-    new /obj/item/clothing/under/costume/kamishimo
-    new /obj/item/clothing/head/rice_hat
-    new /obj/item/katana/weak/curator
-    new /obj/item/clothing/shoes/sandal(src)
+
 
 /obj/item/choice_beacon/augments
 	name = "augment beacon"

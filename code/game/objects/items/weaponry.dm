@@ -270,12 +270,6 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	user.visible_message(span_suicide("[user] is slitting [user.p_their()] stomach open with [src]! It looks like [user.p_theyre()] trying to commit seppuku!"))
 	return(BRUTELOSS)
 
-/obj/item/katana/weak/curator //This has the same stats as the curator's claymore
-	desc = "An ancient Katana. Forged by... Well, it doesn't really say, but surely it's authentic! And sharp to boot!"
-	force = 15
-	block_chance = 30
-	armour_penetration = 5
-
 /obj/item/katana/cursed
 	slot_flags = null
 	item_flags = DROPDEL
