@@ -77,11 +77,11 @@
 >>>>>>> ced603614d7 (That's it. *GAGS'ifies your berets* (#59536))
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
-	if (src.chained)
-		src.chained = null
-		src.slowdown = SHOES_SLOWDOWN
+	if (chained)
+		chained = FALSE
+		slowdown = SHOES_SLOWDOWN
 		new /obj/item/restraints/handcuffs( user.loc )
-		src.icon_state = ""
+		icon_state = initial(icon_state)
 	return
 
 /obj/item/clothing/shoes/sneakers/orange/attackby(obj/H, loc, params)
@@ -89,9 +89,9 @@
 	// Note: not using istype here because we want to ignore all subtypes
 	if (H.type == /obj/item/restraints/handcuffs && !chained)
 		qdel(H)
-		src.chained = 1
-		src.slowdown = 15
-		src.icon_state = "sneakers_chained"
+		chained = TRUE
+		slowdown = 15
+		icon_state = "sneakers_chained"
 	return
 
 /obj/item/clothing/shoes/sneakers/orange/allow_attack_hand_drop(mob/user)
