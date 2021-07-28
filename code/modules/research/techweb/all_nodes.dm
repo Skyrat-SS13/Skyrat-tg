@@ -312,6 +312,10 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"monkey_helmet",
+		"brute2medicell",
+		"burn2medicell",
+		"toxin2medicell",
+		"oxy2medicell",
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
@@ -1355,6 +1359,7 @@
 		"stunrevolver",
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"medigunspeed",
 		"nightstick_conversion"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
@@ -1976,6 +1981,12 @@
 		"alien_retractor",
 		"alien_saw",
 		"alien_scalpel",
+		//SKYRAT EDIT START - RESEARCH DESIGNS
+		"brute3medicell",
+		"burn3medicell",
+		"oxy3medicell",
+		"toxin3medicell",
+		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
 	boost_item_paths = list(
