@@ -2,7 +2,7 @@
 	title = "Deck Crewman"
 	//department_head = list("Head of Personnel") //ORIGINAL
 	department_head = list("Deck Officer") //SKYRAT EDIT CHANGE
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 2
 	//supervisors = "the quartermaster and the head of personnel" //ORIGINAL
@@ -27,6 +27,9 @@
 		/obj/item/stack/sheet/mineral/diamond = 3,
 		/obj/item/gun/ballistic/rifle/boltaction = 1
 	)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"

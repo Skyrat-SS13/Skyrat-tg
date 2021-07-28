@@ -1,7 +1,7 @@
 /datum/job/geneticist
 	title = "Geneticist"
 	department_head = list("Chief Research Officer")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the chief research officer"
@@ -11,7 +11,7 @@
 
 	outfit = /datum/outfit/job/geneticist
 	plasmaman_outfit = /datum/outfit/plasmaman/genetics
-	departments = DEPARTMENT_MEDICAL
+	departments = DEPARTMENT_MEDICAL //Fukken what
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SCI
@@ -24,6 +24,9 @@
 	)
 
 	family_heirlooms = list(/obj/item/clothing/under/shorts/purple)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"

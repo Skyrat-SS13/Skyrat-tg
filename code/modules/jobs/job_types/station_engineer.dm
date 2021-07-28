@@ -1,7 +1,7 @@
 /datum/job/station_engineer
 	title = "Engine Technician"
 	department_head = list("Chief Engineering Officer")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the chief engineering officer"
@@ -29,6 +29,9 @@
 		/obj/item/holosign_creator/engineering = 8,
 		/obj/item/clothing/head/hardhat/red/upgraded = 1
 	)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+
 
 /datum/outfit/job/engineer
 	name = "Station Engineer"
