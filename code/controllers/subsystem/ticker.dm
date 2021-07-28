@@ -390,17 +390,6 @@ SUBSYSTEM_DEF(ticker)
 
 	for(var/mob/dead/new_player/new_player_mob as anything in GLOB.new_player_list)
 		var/mob/living/new_player_living = new_player_mob.new_character
-<<<<<<< HEAD
-		if(istype(new_player_living) && new_player_living.mind?.assigned_role)
-			var/player_assigned_role = new_player_living.mind.assigned_role
-			var/player_is_captain = (picked_spare_id_candidate == new_player_mob) || (SSjob.always_promote_captain_job && (player_assigned_role == "Captain"))
-			if(player_is_captain)
-				captainless = FALSE
-			if(player_assigned_role != new_player_living.mind.special_role)
-				new_player_living = SSjob.EquipRank(new_player_mob, player_assigned_role, FALSE, player_is_captain)
-				if(CONFIG_GET(flag/roundstart_traits) && ishuman(new_player_living))
-					SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
-=======
 		if(!new_player_living.mind || is_unassigned_job(new_player_living.mind.assigned_role))
 			CHECK_TICK
 			continue
@@ -416,7 +405,6 @@ SUBSYSTEM_DEF(ticker)
 			if(new_player_mob.client?.prefs?.should_be_random_hardcore(player_assigned_role, new_player_living.mind))
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
->>>>>>> 6b07b27189e (Reorder job equip code so quirk equips are last (#60333))
 		CHECK_TICK
 
 	if(captainless)
