@@ -87,6 +87,7 @@
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/healthanalyzer/advanced(src)
 	new /obj/item/assembly/flash/handheld(src)
+	new /obj/item/storage/briefcase/medicalgunset/cmo(src) //SKYRAT ADDITON MEDIGUNS//
 	//new /obj/item/reagent_containers/hypospray/cmo(src) - SKYRAT REMOVAL - New Hyposprays
 	new /obj/item/storage/hypospraykit/cmo(src) //SKYRAT ADDITION - New Hyposprays
 	new /obj/item/autosurgeon/organ/cmo(src)

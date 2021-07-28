@@ -120,8 +120,8 @@
 	var/refill_rate = 0.5
 	var/refill_reagent = /datum/reagent/water //Determins what reagent to use for refilling, just in case someone wanted to make a HOLY MOP OF PURGING
 
-/obj/item/mop/advanced/New()
-	..()
+/obj/item/mop/advanced/Initialize()
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/mop/advanced/attack_self(mob/user)
@@ -143,8 +143,7 @@
 	. += span_notice("The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.")
 
 /obj/item/mop/advanced/Destroy()
-	if(refill_enabled)
-		STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/mop/advanced/cyborg
