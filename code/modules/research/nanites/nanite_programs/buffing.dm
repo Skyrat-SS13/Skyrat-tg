@@ -30,15 +30,15 @@
 	. = ..()
 	if(ishuman(host_mob))
 		var/mob/living/carbon/human/H = host_mob
-		H.physiology.armor.melee += 25
-		H.physiology.armor.bullet += 20
+		H.physiology.armor.melee += 15 // SKYRAT EDIT - ORIGINAL: 25
+		H.physiology.armor.bullet += 10 // SKYRAT EDIT - ORIGINAL: 20
 
 /datum/nanite_program/hardening/disable_passive_effect()
 	. = ..()
 	if(ishuman(host_mob))
 		var/mob/living/carbon/human/H = host_mob
-		H.physiology.armor.melee -= 25
-		H.physiology.armor.bullet -= 20
+		H.physiology.armor.melee -= 15 // SKYRAT EDIT - ORIGINAL: 25
+		H.physiology.armor.bullet -= 10 // SKYRAT EDIT - ORIGINAL: 20
 
 /datum/nanite_program/refractive
 	name = "Dermal Refractive Surface"

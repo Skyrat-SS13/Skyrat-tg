@@ -4,7 +4,8 @@
 	greyscale_colors = "#545454#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers
 	greyscale_config_worn = /datum/greyscale_config/sneakers_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_worn_digi
+	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_worn_digi //SKYRAT EDIT ADDITION
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/sneakers/black
 	name = "black shoes"
@@ -59,13 +60,15 @@
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
+	flags_1 = NONE
 
 /obj/item/clothing/shoes/sneakers/orange
 	name = "orange shoes"
 	greyscale_colors = "#eb7016#ffffff"
 	greyscale_config = /datum/greyscale_config/sneakers_orange
 	greyscale_config_worn = /datum/greyscale_config/sneakers_orange_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn_digi
+	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn_digi //SKYRAT EDIT ADDITION
+	flags_1 = NONE
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
 	if (chained)
