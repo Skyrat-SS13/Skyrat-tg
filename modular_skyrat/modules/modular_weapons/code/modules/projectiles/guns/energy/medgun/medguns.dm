@@ -37,7 +37,7 @@
 	cell_type = /obj/item/stock_parts/cell/medigun/upgraded
 
 /obj/item/gun/energy/medigun/upgraded/Initialize()
-	..()
+	. = ..()
 	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi', "medigun_fastcharge")
 	add_overlay(fastcharge_medigun)
 
@@ -51,7 +51,7 @@
 	can_charge = FALSE
 
 /obj/item/gun/energy/medigun/cmo/Initialize()
-	..()
+	. = ..()
 	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/projectile.dmi', "medigun_cmo")
 	add_overlay(cmo_medigun)
 
