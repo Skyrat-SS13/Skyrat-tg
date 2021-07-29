@@ -35,3 +35,13 @@
 		return
 	do_attack_animation(target, null, src)
 	user.visible_message("<span class='notice'>[user] [pick("nuzzles", "pushes", "boops")] \the [target.name] with their nose!</span>")
+
+/obj/item/gun/energy/plasmacutter/cyborg
+	name = "plasma cutter"
+	desc = "A basic variation of the plasma cutter, compressed into a cyborg chassis."
+	force = 12
+	ammo_type = list(/obj/item/ammo_casing/energy/plasma/cyborg)
+	can_charge = FALSE
+	use_cyborg_cell = TRUE
+	selfcharge = TRUE
+	charge_delay = 35

@@ -205,3 +205,28 @@
 		qdel(plasteel_energy)
 	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
 		qdel(titanium_energy)
+
+////////////////////////////
+/// Cyborg Plasma Cutter ///
+////////////////////////////
+
+obj/item/borg/upgrade/plasmacutter
+	name = "mining cyborg plasma cutter"
+	desc = "The plasma cutter, now borg version!"
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/miner)
+	model_flags = BORG_MODEL_MINER
+
+/obj/item/borg/upgrade/plasmacutter/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+
+		var/obj/item/gun/energy/plasmacutter/PC = locate() in R.model
+		if(PC)
+			to_chat(user, span_warning("This unit already has plasma cutter installed!"))
+			return FALSE;
+
+		PC = new(R.model)
+		R.model.basic_modules += PC
+		R.model.add_module(PC, FALSE, TRUE)
