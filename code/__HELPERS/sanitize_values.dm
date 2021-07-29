@@ -53,6 +53,11 @@
 
 /proc/sanitize_hexcolor(color, desired_format = 3, include_crunch = FALSE, default)
 	var/crunch = include_crunch ? "#" : ""
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(islist(color))
+		var/list/color_list = color
+		color = color_list.Join()
+	//SKYRAT EDIT ADDITION END
 	if(!istext(color))
 		color = ""
 

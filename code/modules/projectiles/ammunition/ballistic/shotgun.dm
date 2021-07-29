@@ -27,6 +27,7 @@
 	icon_state = "bshell"
 	custom_materials = list(/datum/material/iron=250)
 	projectile_type = /obj/projectile/bullet/shotgun_beanbag
+	harmful = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/ammo_casing/shotgun/incendiary
 	name = "incendiary slug"
@@ -85,6 +86,7 @@
 	pellets = 6
 	variance = 25
 	custom_materials = list(/datum/material/iron=4000)
+	harmful = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/ammo_casing/shotgun/incapacitate
 	name = "custom incapacitating shot"

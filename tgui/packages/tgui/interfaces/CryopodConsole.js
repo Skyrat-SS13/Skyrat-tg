@@ -1,27 +1,35 @@
 import { useBackend } from '../backend';
-import { Stack, Button, Section, NoticeBox, LabeledList, Collapsible } from '../components';
+import { Button, Box, LabeledList, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const CryopodConsole = (props, context) => {
   const { data } = useBackend(context);
-  const { account_name, allow_items } = data;
+  const { account_name } = data;
 
   const welcomeTitle = `Hello, ${account_name || '[REDACTED]'}!`;
-
+  // Skyrat Edit Addition - Cryostorage stores items.
+  // Original does not contain <ItemList /> or its containing Stack.Item
   return (
     <Window title="Cryopod Console" width={400} height={480}>
       <Window.Content>
-        <Stack vertical>
-          <Section title={welcomeTitle}>
-            This automated cryogenic freezing unit will safely store your
-            corporeal form until your next assignment.
-          </Section>
-          <CrewList />
-          {!!allow_items && <ItemList />}
+        <Stack vertical fill>
+          <Stack.Item>
+            <Section title={welcomeTitle}>
+              This automated cryogenic freezing unit will safely store your
+              corporeal form until your next assignment.
+            </Section>
+          </Stack.Item>
+          <Stack.Item grow>
+            <CrewList />
+          </Stack.Item>
+          <Stack.Item grow>
+            <ItemList />
+          </Stack.Item>
         </Stack>
       </Window.Content>
     </Window>
   );
+// Skyrat Edit End
 };
 
 const CrewList = (props, context) => {
@@ -29,67 +37,51 @@ const CrewList = (props, context) => {
   const { frozen_crew } = data;
 
   return (
-    <Collapsible title="Stored Crew">
-      {!frozen_crew.length ? (
-        <NoticeBox>No stored crew!</NoticeBox>
-      ) : (
-        <Section height={10} fill scrollable>
-          <LabeledList>
-            {frozen_crew.map((person) => (
-              <LabeledList.Item key={person} label={person.name}>
-                {person.job}
-              </LabeledList.Item>
-            ))}
-          </LabeledList>
-        </Section>
-      )}
-    </Collapsible>
+    frozen_crew.length && (
+      <Section
+        fill
+        scrollable>
+        <LabeledList>
+          {frozen_crew.map((person) => (
+            <LabeledList.Item key={person} label={person.name}>
+              {person.job}
+            </LabeledList.Item>
+          ))}
+        </LabeledList>
+      </Section>
+    ) || (
+      <NoticeBox>No stored crew!</NoticeBox>
+    )
   );
 };
 
+// Skyrat Edit Addition - Cryostorage stores items.
 const ItemList = (props, context) => {
   const { act, data } = useBackend(context);
-  const { frozen_items } = data;
-
-  const replaceItemName = (item) => {
-    let itemName = item.toString();
-    if (itemName.startsWith('the')) {
-      itemName = itemName.slice(4, itemName.length);
-    }
-    return itemName.replace(/^\w/, (c) => c.toUpperCase());
-  };
-
+  const { ref_list, ref_name, ref_allw } = data;
+  if (!ref_allw) {
+    return (
+      <NoticeBox>You are not authorized for item management.</NoticeBox>
+    );
+  }
   return (
-    <Collapsible title="Stored Items">
-      {!frozen_items.length ? (
-        <NoticeBox>No stored items!</NoticeBox>
-      ) : (
-        <>
-          <Section height={12} fill scrollable>
-            <LabeledList>
-              {frozen_items.map((item, index) => (
-                <LabeledList.Item
-                  key={item}
-                  label={replaceItemName(item)}
-                  buttons={
-                    <Button
-                      icon="arrow-down"
-                      content="Drop"
-                      mr={1}
-                      onClick={() => act('one_item', { item: index + 1 })}
-                    />
-                  }
-                />
-              ))}
-            </LabeledList>
-          </Section>
-          <Button
-            content="Drop All Items"
-            color="red"
-            onClick={() => act('all_items')}
-          />
-        </>
-      )}
-    </Collapsible>
+    ref_list.length && (
+      <Section fill scrollable>
+        <LabeledList>
+          {ref_list.map((item) => (
+            <LabeledList.Item key={item} label={ref_name[item]}>
+              <Button
+                icon="exclamation-circle"
+                content="Retrieve"
+                color="bad"
+                onClick={() => act('item_get', { item_get: item })} />
+            </LabeledList.Item>
+          ))}
+        </LabeledList>
+      </Section>
+    ) || (
+      <NoticeBox>No stored items!</NoticeBox>
+    )
   );
 };
+// Skyrat Edit End

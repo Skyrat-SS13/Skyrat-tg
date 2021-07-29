@@ -56,6 +56,21 @@
 ///Amount of successful hits in a row this item has had
 #define BB_HAUNTED_THROW_ATTEMPT_COUNT "BB_haunted_throw_attempt_count"
 
+///Cursed item controller defines
+
+//defines
+///how far a cursed item will still try to chase a target
+#define CURSED_VIEW_RANGE 7
+#define CURSED_ITEM_TELEPORT_CHANCE 4
+//blackboards
+
+///Actual mob the item is haunting at the moment
+#define BB_CURSE_TARGET "BB_haunt_target"
+///Where the item wants to land on
+#define BB_TARGET_SLOT "BB_target_slot"
+///Amount of successful hits in a row this item has had
+#define BB_CURSED_THROW_ATTEMPT_COUNT "BB_cursed_throw_attempt_count"
+
 ///Vending machine AI controller blackboard keys
 #define BB_VENDING_CURRENT_TARGET "BB_vending_current_target"
 #define BB_VENDING_TILT_COOLDOWN "BB_vending_tilt_cooldown"
@@ -74,6 +89,28 @@
 #define BB_CUSTOMER_CURRENT_TARGET "BB_customer_current_target"
 /// Robot customer has said their can't find seat line at least once. Used to rate limit how often they'll complain after the first time.
 #define BB_CUSTOMER_SAID_CANT_FIND_SEAT_LINE "BB_customer_said_cant_find_seat_line"
+
+
+///Hostile AI controller blackboard keys
+#define BB_HOSTILE_ORDER_MODE "BB_HOSTILE_ORDER_MODE"
+#define BB_HOSTILE_FRIEND "BB_HOSTILE_FRIEND"
+#define BB_HOSTILE_ATTACK_WORD "BB_HOSTILE_ATTACK_WORD"
+#define BB_FOLLOW_TARGET "BB_FOLLOW_TARGET"
+#define BB_ATTACK_TARGET "BB_ATTACK_TARGET"
+#define BB_VISION_RANGE "BB_VISION_RANGE"
+
+/// Basically, what is our vision/hearing range.
+#define BB_HOSTILE_VISION_RANGE 10
+/// After either being given a verbal order or a pointing order, ignore further of each for this duration
+#define AI_HOSTILE_COMMAND_COOLDOWN 2 SECONDS
+
+// hostile command modes (what pointing at something/someone does depending on the last order the carp heard)
+/// Don't do anything (will still react to stuff around them though)
+#define HOSTILE_COMMAND_NONE 0
+/// Will attack a target.
+#define HOSTILE_COMMAND_ATTACK 1
+/// Will follow a target.
+#define HOSTILE_COMMAND_FOLLOW 2
 
 ///Dog AI controller blackboard keys
 
@@ -105,9 +142,11 @@
 /// Will get within a few tiles of whatever you point at and continually growl/bark. If the target is a living mob who gets too close, the dog will attack them with bites
 #define DOG_COMMAND_ATTACK 2
 
-//enumerators for parsing dog command speech
+//enumerators for parsing command speech
 #define COMMAND_HEEL "Heel"
 #define COMMAND_FETCH "Fetch"
+#define COMMAND_FOLLOW "Follow"
+#define COMMAND_STOP "Stop"
 #define COMMAND_ATTACK "Attack"
 #define COMMAND_DIE "Play Dead"
 

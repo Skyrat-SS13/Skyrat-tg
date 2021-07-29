@@ -243,6 +243,8 @@
 	desc = "A very... Modernized MN91-30 rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from spaceBay."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "bubba"
+	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
+	worn_icon_state = "bubba"
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 	realistic = TRUE
@@ -254,3 +256,8 @@
 	caliber = CALIBER_A762
 	max_ammo = 8
 	multiload = TRUE
+	
+/obj/item/gun/ballistic/automatic/surplus
+	name = "\improper Type-69 Surplus Rifle"
+	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'

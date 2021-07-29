@@ -10,6 +10,7 @@
 		"Silicon"
 	)
 	var/list/departments = list(
+		"Central Command" = GLOB.central_command_positions + GLOB.central_command_alttitles,
 		"Command" = GLOB.command_positions + GLOB.command_alttitles,
 		"Security" = GLOB.security_positions + GLOB.security_sub_positions + GLOB.security_alttitles,
 		"Engineering" = GLOB.engineering_positions + GLOB.engineering_alttitles,

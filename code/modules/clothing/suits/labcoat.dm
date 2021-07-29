@@ -39,13 +39,22 @@
 	. = ..()
 	allowed += list(
 		/obj/item/melee/classic_baton/telescopic,
-	)	
+		/obj/item/storage/firstaid //SKYRAT EDIT - ADDITION
+	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	name = "paramedic's jacket"
 	desc = "A dark blue jacket for paramedics with reflective stripes."
 	icon_state = "labcoat_paramedic"
 	inhand_icon_state = "labcoat_paramedic"
+
+//START SKYRAT EDIT - ADDITION
+/obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize()
+	. = ..()
+	allowed += list(
+		/obj/item/storage/firstaid,
+	)
+//END SKYRAT EDIT- ADDITION
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	name = "\proper The Mad's labcoat"

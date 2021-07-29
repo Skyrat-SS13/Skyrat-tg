@@ -22,10 +22,10 @@
 	set name = "Switch Rest Style"
 	set category = "Robot Commands"
 	set desc = "Select your resting pose."
-	if(!dogborg)
+	if(!is_dogborg())
 		to_chat(src, "<span class='warning'>You can't do that!</span>")
 		return
-	var/choice = alert(src, "Select resting pose", "", "Resting", "Sitting", "Belly up")
+	var/choice = tgui_alert(src, "Select resting pose", "", list("Resting", "Sitting", "Belly up"))
 	switch(choice)
 		if("Resting")
 			robot_rest_style = ROBOT_REST_NORMAL
@@ -40,7 +40,7 @@
 /mob/living/silicon/robot/proc/robot_lay_down()
 	set name = "Lay down"
 	set category = "Robot Commands"
-	if(!dogborg)
+	if(!is_dogborg())
 		to_chat(src, "<span class='warning'>You can't do that!</span>")
 		return
 	if(stat != CONSCIOUS) //Make sure we don't enable movement when not concious
@@ -58,7 +58,7 @@
 
 /mob/living/silicon/robot/update_resting()
 	. = ..()
-	if(dogborg)
+	if(is_dogborg())
 		robot_resting = FALSE
 		update_icons()
 
@@ -69,12 +69,12 @@
 
 /mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
 	. = ..()
-	if(dogborg)
+	if(is_dogborg())
 		pixel_x = -16
 
 /mob/living/silicon/robot/stop_pulling()
 	. = ..()
-	if(dogborg)
+	if(is_dogborg())
 		pixel_x = -16
 
 /mob/living/silicon/robot/pick_model()
@@ -96,3 +96,12 @@
 	else
 		model.transform_to(skyratmodel[input_model_sk])
 		return
+/**
+ * Safe check of the cyborg's model_features list to see if they're 'wide'/dogborg/drakeborg/etc.
+ *
+ * model_features is defined in modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_model.dm.
+ */
+/mob/living/silicon/robot/proc/is_dogborg()
+	if(model && model.model_features && (R_TRAIT_WIDE in model.model_features))
+		return TRUE
+	return FALSE

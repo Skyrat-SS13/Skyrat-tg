@@ -7,5 +7,6 @@
 		"viepn","e","bag","docu","kar","xlaqf","raa","qwos","nen","ty","von","kytaf","xin","ty","ka","baak","hlaf","pyk","znu","agr","ith","na'ar","uah","plhu","six","fhler","bjel","scee","lleri","dttm","aggr","uujl","hjjifr","wuth","aav","inya","sod","bli","min","fril","bli","'ddn","tun'da","'ad","iir","krei","tii'","ruuk","nei","zirua","surai","lieket","miruk","ettirup","mireez","cqiek","brut","vaahk","nah'za","diierk","piut","vuurk","cs'eer","jeirk","qiruvk","n'wah"
 	)
 	icon_state = "zolmach"
-	icon = 'modular_skyrat/modules/customization/icons/misc/language.dmi'
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
+	space_chance = 50
 	default_priority = 40

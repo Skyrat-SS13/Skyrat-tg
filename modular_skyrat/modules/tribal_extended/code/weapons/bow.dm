@@ -4,7 +4,9 @@
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	lefthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_righthand.dmi'
+	worn_icon = 'modular_skyrat/modules/tribal_extended/icons/back.dmi'
 	icon_state = "bow"
+	worn_icon_state = "bow"
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY //need both hands to fire
 	force = 8
@@ -59,6 +61,7 @@
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "ashenbow"
 	inhand_icon_state = "ashenbow"
+	worn_icon_state = "ashenbow"
 	force = 12
 
 /obj/item/gun/ballistic/tribalbow/pipe
@@ -67,5 +70,6 @@
 	icon = 'modular_skyrat/modules/tribal_extended/icons/projectile.dmi'
 	icon_state = "pipebow"
 	inhand_icon_state = "pipebow"
+	worn_icon_state = "pipebow"
 	force = 3
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE

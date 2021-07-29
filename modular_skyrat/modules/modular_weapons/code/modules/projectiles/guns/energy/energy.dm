@@ -171,7 +171,7 @@
 
 /obj/item/ammo_casing/energy/laser/double
 	projectile_type = /obj/projectile/beam/laser/double
-	e_cost = 150
+	e_cost = 100
 	select_name = "lethal"
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 

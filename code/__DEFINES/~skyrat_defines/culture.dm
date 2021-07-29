@@ -15,6 +15,8 @@
 						/datum/cultural_info/culture/spacer_frontier, \
 						/datum/cultural_info/culture/zolmalchi
 
+#define CULTURES_XENO	/datum/cultural_info/culture/xenoknockoff
+
 #define CULTURES_LIZARD /datum/cultural_info/culture/lavaland
 
 #define CULTURES_HUMAN	/datum/cultural_info/culture/generic_human, \
@@ -50,7 +52,7 @@
 						/datum/cultural_info/location/lordania, \
 						/datum/cultural_info/location/kingston, \
 						/datum/cultural_info/location/gaia, \
-						/datum/cultural_info/location/magnitka, \
+						/datum/cultural_info/location/magnitka
 
 
 #define FACTIONS_GENERIC	/datum/cultural_info/faction/none, \

@@ -20,6 +20,9 @@ have ways of interacting with a specific mob and control it.
 		BB_MONKEY_GUN_WORKED = TRUE,
 		BB_MONKEY_NEXT_HUNGRY = 0
 	)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
 
 /datum/ai_controller/monkey/angry
 
@@ -47,19 +50,26 @@ have ways of interacting with a specific mob and control it.
 	RegisterSignal(new_pawn, COMSIG_CARBON_CUFF_ATTEMPTED, .proc/on_attempt_cuff)
 	RegisterSignal(new_pawn, COMSIG_MOB_MOVESPEED_UPDATED, .proc/update_movespeed)
 	RegisterSignal(new_pawn, COMSIG_FOOD_EATEN, .proc/on_eat)
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
-	)
-	AddElement(/datum/element/connect_loc, new_pawn, loc_connections)
+
+	AddElement(/datum/element/connect_loc_behalf, new_pawn, loc_connections)
 	movement_delay = living_pawn.cached_multiplicative_slowdown
 	return ..() //Run parent at end
 
 /datum/ai_controller/monkey/UnpossessPawn(destroy)
 	UnregisterSignal(pawn, list(COMSIG_PARENT_ATTACKBY, COMSIG_ATOM_ATTACK_HAND, COMSIG_ATOM_ATTACK_PAW, COMSIG_ATOM_BULLET_ACT, COMSIG_ATOM_HITBY, COMSIG_LIVING_START_PULL,\
 	COMSIG_LIVING_TRY_SYRINGE, COMSIG_ATOM_HULK_ATTACK, COMSIG_CARBON_CUFF_ATTEMPTED, COMSIG_MOB_MOVESPEED_UPDATED))
-	pawn.RemoveElement(/datum/element/connect_loc)
+	RemoveElement(/datum/element/connect_loc_behalf, pawn, loc_connections)
 
 	return ..() //Run parent at end
+
+// Stops sentient monkeys from being knocked over like weak dunces.
+/datum/ai_controller/monkey/on_sentience_gained()
+	. = ..()
+	RemoveElement(/datum/element/connect_loc_behalf, pawn, loc_connections)
+
+/datum/ai_controller/monkey/on_sentience_lost()
+	. = ..()
+	AddElement(/datum/element/connect_loc_behalf, pawn, loc_connections)
 
 /datum/ai_controller/monkey/able_to_run()
 	. = ..()
@@ -305,15 +315,16 @@ have ways of interacting with a specific mob and control it.
 	if(istype(AM, /obj/item))
 		var/mob/living/living_pawn = pawn
 		var/obj/item/I = AM
-		if(I.throwforce < living_pawn.health && ishuman(I.thrownby))
-			var/mob/living/carbon/human/H = I.thrownby
+		var/mob/thrown_by = I.thrownby?.resolve()
+		if(I.throwforce < living_pawn.health && ishuman(thrown_by))
+			var/mob/living/carbon/human/H = thrown_by
 			retaliate(H)
 
-/datum/ai_controller/monkey/proc/on_entered(datum/source, atom/movable/AM)
+/datum/ai_controller/monkey/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 	var/mob/living/living_pawn = pawn
-	if(!IS_DEAD_OR_INCAP(living_pawn) && ismob(AM))
-		var/mob/living/in_the_way_mob = AM
+	if(!IS_DEAD_OR_INCAP(living_pawn) && isliving(arrived))
+		var/mob/living/in_the_way_mob = arrived
 		in_the_way_mob.knockOver(living_pawn)
 		return
 

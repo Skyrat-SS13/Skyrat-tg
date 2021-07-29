@@ -6,15 +6,20 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_worn
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_worn_digi
 	icon = 'icons/obj/clothing/under/color.dmi'
 	icon_state = "jumpsuit"
+	inhand_icon_state = "jumpsuit"
+	worn_icon_state = "jumpsuit"
 	worn_icon = 'icons/mob/clothing/under/color.dmi'
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/color/jumpskirt
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
 	icon_state = "jumpskirt"
+	greyscale_config_worn_digi = null
 
 /obj/item/clothing/under/color/random
 	icon_state = "random_jumpsuit"
@@ -201,6 +206,7 @@
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
 	can_adjust = FALSE
+	flags_1 = NONE
 
 /obj/item/clothing/under/color/jumpskirt/rainbow
 	name = "rainbow jumpskirt"
@@ -212,3 +218,4 @@
 	greyscale_config_inhand_right = null
 	greyscale_config_worn = null
 	can_adjust = FALSE
+	flags_1 = NONE

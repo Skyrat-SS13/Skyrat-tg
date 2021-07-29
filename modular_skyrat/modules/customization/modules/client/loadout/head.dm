@@ -34,6 +34,11 @@
 	name = "Pirate hat"
 	path = /obj/item/clothing/head/pirate
 
+/datum/loadout_item/head/flowerpin
+	name = "Flower Pin"
+	path = /obj/item/clothing/head/flowerpin
+	extra_info = LOADOUT_INFO_THREE_COLORS
+
 /datum/loadout_item/head/rice_hat
 	name = "Rice hat"
 	path = /obj/item/clothing/head/rice_hat
@@ -153,6 +158,18 @@
 	name = "Cowboy Hat, Pink"
 	path = /obj/item/clothing/head/cowboyhat/pink
 
+/datum/loadout_item/head/cowboyhat/winter
+	name = "Winter Cowboy Hat"
+	path = /obj/item/clothing/head/cowboyhat/sheriff
+
+/datum/loadout_item/head/cowboyhat/sheriff
+	name = "Sheriff Hat"
+	path = /obj/item/clothing/head/cowboyhat/sheriff/alt
+
+/datum/loadout_item/head/cowboyhat/deputy
+	name = "Deputy Hat"
+	path = /obj/item/clothing/head/cowboyhat/deputy
+
 //trek fancy Hats!
 /datum/loadout_item/head/trek/trekcap
 	name = "Federation Officer's Cap (White)"
@@ -197,6 +214,21 @@
 /datum/loadout_item/head/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+/datum/loadout_item/head/job/captain/imperial
+	name = "Captain's Naval Cap"
+	path = /obj/item/clothing/head/imperial/cap
+	restricted_roles = list("Captain", "Nanotrasen Representative")
+
+/datum/loadout_item/head/job/hop/imperial
+	name = "Head of Personnel's Naval Cap"
+	path = /obj/item/clothing/head/imperial/hop
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
+
+/datum/loadout_item/head/job/ce/imperial
+	name = "Chief Engineer's blast helmet."
+	path = /obj/item/clothing/head/imperial/ce
+	restricted_roles = list("Chief Engineer")
+
 /datum/loadout_item/head/job/cowboyhat/sec
 	name = "Cowboy Hat, Security"
 	path = /obj/item/clothing/head/cowboyhat/sec
@@ -215,9 +247,20 @@
 	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer")
 
-/datum/loadout_item/head/job/navybluehosberet
+/datum/loadout_item/head/job/blasthelmet
+	name = "General's Helmet"
+	path = /obj/item/clothing/head/imperialhelmet
+	restricted_desc = "Security and Command"
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Civil Disputes Officer","Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+
+/datum/loadout_item/head/job/hos/imperial
 	name = "Head of security's navyblue beret"
-	path = /obj/item/clothing/head/beret/sec/navyhos
+	path = /obj/item/clothing/head/hos/beret/navyhos
+	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/head/job/navybluehosberet
+	name = "Head of Security's Naval Cap"
+	path = /obj/item/clothing/head/imperial/hos
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/job/solhoscap
@@ -256,6 +299,24 @@
 	path = /obj/item/clothing/head/nursehat
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist","Security Medic")
 	restricted_desc = "Medical"
+
+/datum/loadout_item/head/job/imperial
+	name = "Naval Officer Cap"
+	path = /obj/item/clothing/head/imperial
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/head/job/impgrey
+	name = "Grey Naval Officer Cap"
+	path = /obj/item/clothing/head/imperial/grey
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
+	restricted_desc = "Command Staff"
+
+/datum/loadout_item/head/job/impred
+	name = "Red Naval Officer Cap"
+	path = /obj/item/clothing/head/imperial/red
+	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_desc = "Command Staff"
 
 // JOB - Berets
 /datum/loadout_item/head/job/atmos_beret

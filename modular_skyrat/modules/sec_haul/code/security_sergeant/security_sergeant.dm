@@ -2,7 +2,7 @@
 	title = "Security Sergeant"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the head of security"
@@ -19,11 +19,14 @@
 
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+	departments = DEPARTMENT_SECURITY
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_SERGEANT
 	bounty_types = CIV_JOB_SEC
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/security_sergeant
 	name = "Security Sergeant"
@@ -38,7 +41,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm, /obj/item/armament_token/primary)
+	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
+
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

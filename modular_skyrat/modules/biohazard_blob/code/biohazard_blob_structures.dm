@@ -267,11 +267,12 @@
 		RegisterSignal(t, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
 /obj/structure/biohazard_blob/structure/bulb/proc/proximity_trigger(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(!isliving(AM))
 		return
 	var/mob/living/L = AM
 	if(!(MOLD_FACTION in L.faction))
-		discharge()
+		INVOKE_ASYNC(src, .proc/discharge)
 
 /obj/structure/biohazard_blob/structure/bulb/proc/make_full()
 	//Called by a timer, check if we exist
@@ -469,3 +470,5 @@
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)
+
+	/datum/component/spawner
