@@ -4,7 +4,7 @@
 /obj/item/borg
 	icon = 'icons/mob/robot_items.dmi'
 
-
+/* SKYRAT EDIT - MOVED TO MODULAR
 /obj/item/borg/stun
 	name = "electrically-charged arm"
 	icon_state = "elecarm"
@@ -22,7 +22,7 @@
 			return
 
 	user.do_attack_animation(M)
-	M.StaminaKnockdown(60, TRUE)
+	M.Paralyze(100)
 	M.apply_effect(EFFECT_STUTTER, 5)
 
 	M.visible_message(span_danger("[user] prods [M] with [src]!"), \
@@ -30,7 +30,7 @@
 
 	playsound(loc, 'sound/weapons/egloves.ogg', 50, TRUE, -1)
 
-	log_combat(user, M, "stunned", src, "(Combat mode: [user.combat_mode ? "On" : "Off"])")
+	log_combat(user, M, "stunned", src, "(Combat mode: [user.combat_mode ? "On" : "Off"])") */
 
 /obj/item/borg/cyborghug
 	name = "hugging module"
