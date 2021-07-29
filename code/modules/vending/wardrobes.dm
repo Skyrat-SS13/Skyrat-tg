@@ -470,10 +470,9 @@
 	vend_reply = "Thank you for using the ChemDrobe!"
 	products = list(/obj/item/clothing/under/rank/medical/chemist = 2,
 					/obj/item/clothing/under/rank/medical/chemist/skirt = 2,
-					/obj/item/clothing/head/beret/medical = 2,
+					/obj/item/clothing/head/beret/medical/chemist = 2, //SKYRAT EDIT - Beret-lliant! - Original:  /obj/item/clothing/head/beret/medical = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
-					/obj/item/clothing/head/beret/job/med/chem = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hooded/wintercoat/medical/chemistry = 2,
 					/obj/item/clothing/under/rank/medical/chemist/formal = 2,	//SKYRAT EDIT ADDITION BEGIN
 					/obj/item/clothing/under/rank/medical/chemist/formal/skirt = 2,	//SKYRAT EDIT ADDITION END
@@ -515,10 +514,9 @@
 	vend_reply = "Thank you for using the ViroDrobe"
 	products = list(/obj/item/clothing/under/rank/medical/virologist = 2,
 					/obj/item/clothing/under/rank/medical/virologist/skirt = 2,
-					/obj/item/clothing/head/beret/medical = 2,
+					/obj/item/clothing/head/beret/medical/virologist = 2, //SKYRAT EDIT - Beret-lliant! - Original: /obj/item/clothing/head/beret/medical = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/virologist = 2,
-					/obj/item/clothing/head/beret/job/med/viro = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 2,
 					/obj/item/clothing/mask/surgical = 2,
 					/obj/item/storage/backpack/virology = 2,

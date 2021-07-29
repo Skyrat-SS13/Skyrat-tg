@@ -66,11 +66,6 @@
 	dynamic_hair_suffix = ""
 	mutant_variants = NONE
 
-/obj/item/clothing/head/beret/white
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	name = "beret"
-	icon_state = "beret_white"
 
 //Cyberpunk PI Costume - Sprites from Eris
 /obj/item/clothing/head/fedora/det_hat/cybergoggles //Subset of detective fedora so that detectives dont have to sacrifice candycorns for style
@@ -206,7 +201,7 @@
 	icon_state = "papakha_kuban"
 	dog_fashion = null
 
-/obj/item/clothing/head/beret/sec/peacekeeper/sol
+/obj/item/clothing/head/sec/peacekeeper/sol
 	name = "sol police cap"
 	desc = "Be a proper boy in blue with this cap, comes with a black visor to block out inconvenient truths."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -214,7 +209,7 @@
 	icon_state = "policeofficercap"
 	mutant_variants = NONE
 
-/obj/item/clothing/head/hos/beret/peacekeeper/sol
+/obj/item/clothing/head/hos/peacekeeper/sol
 	name = "sol police chief cap"
 	desc = "A blue hat adorned with gold, rumoured to be used to distract Agents with its swag."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'

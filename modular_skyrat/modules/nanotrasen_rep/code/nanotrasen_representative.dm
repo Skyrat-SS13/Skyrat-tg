@@ -144,6 +144,7 @@
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/head/nanotrasen_representative(src)
 	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
+	new /obj/item/clothing/head/beret/centcom_formal/ntrep(src)
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
