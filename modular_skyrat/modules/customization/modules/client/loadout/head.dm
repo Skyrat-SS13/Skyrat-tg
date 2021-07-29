@@ -255,7 +255,7 @@
 
 /datum/loadout_item/head/job/hos/imperial
 	name = "Head of security's navyblue beret"
-	path = /obj/item/clothing/head/beret/sec/navyhos
+	path = /obj/item/clothing/head/hos/beret/navyhos
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/job/navybluehosberet

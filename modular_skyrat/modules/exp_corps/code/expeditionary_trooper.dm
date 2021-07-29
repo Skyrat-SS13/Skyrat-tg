@@ -1,7 +1,7 @@
 /datum/job/expeditionary_trooper
 	title = "Vanguard Operative"
 	department_head = list("Captain")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the captain"
@@ -22,6 +22,8 @@
 	family_heirlooms = list(/obj/item/binoculars)
 
 	veteran_only = TRUE
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/job/expeditionary_trooper/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
