@@ -112,10 +112,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /mob/living/carbon/human/resist_restraints()
+	.=..()
 	if(gloves?.breakouttime)
 		changeNext_move(CLICK_CD_BREAKOUT)
 		last_special = world.time + CLICK_CD_BREAKOUT
-		cuff_resist(wear_suit)
+		cuff_resist(gloves)
 	else
 		..()
 
@@ -137,7 +138,7 @@
 	return FALSE
 
 /mob/living/carbon/is_ballgagged()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/mask/ballgag_phallic))
+	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/mask/ballgag_phallic) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
 
 //proc for condoms. Need to prevent cum appearing on the floor.
 /mob/proc/wear_condom()
@@ -738,7 +739,7 @@
 			hud_used.hidden_inventory_update(src)
 
 	//on_mob stuff
-	remove_overlay(VAGINA_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
+	remove_overlay(VAGINA_LAYER)
 
 	var/obj/item/clothing/sextoy/U = vagina
 
@@ -777,7 +778,7 @@
 			hud_used.hidden_inventory_update(src)
 
 	//on_mob stuff
-	remove_overlay(ANUS_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
+	remove_overlay(ANUS_LAYER)
 
 	var/obj/item/clothing/sextoy/U = anus
 
@@ -816,7 +817,7 @@
 			hud_used.hidden_inventory_update(src)
 
 	//on_mob stuff
-	remove_overlay(NIPPLES_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
+	remove_overlay(NIPPLES_LAYER)
 
 	var/obj/item/clothing/sextoy/U = nipples
 
@@ -855,7 +856,7 @@
 			hud_used.hidden_inventory_update(src)
 
 	//on_mob stuff
-	remove_overlay(PENIS_LAYER) //i think it's good to use gloves layer for this. Kinda shitcode, but items like tail buttplug suppose to appear above uniform
+	remove_overlay(PENIS_LAYER)
 
 	var/obj/item/clothing/sextoy/U = penis
 
