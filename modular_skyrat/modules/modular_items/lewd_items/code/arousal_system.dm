@@ -290,7 +290,7 @@
 
 /mob/living/carbon/human/proc/adjustPain(pn = 0)
 	if(stat != DEAD && client?.prefs.sextoys_pref == "Yes")
-		if(pain > pain_limit || pn > pain_limit / 10) // pain system
+		if(pain > pain_limit || pn > pain_limit / 10) // pain system // YOUR SYSTEM IS PAIN, WHY WE'RE GETTING AROUSED BY STEPPING ON ANTS?!
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
 				var/p = pn - (pain_limit / 10)
 				if(p > 0)

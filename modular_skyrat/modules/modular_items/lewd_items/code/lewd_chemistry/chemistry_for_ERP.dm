@@ -128,7 +128,7 @@
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
-			M.adjustArousal(-6)
+			M.adjustArousal(-12)
 			M.adjustPleasure(-3)
 			if(M.arousal <= 0 && old_arousal > 0)
 				to_chat(M, "<span class='notice'>You no longer feel aroused.</span>")
@@ -148,7 +148,7 @@
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
-			M.adjustArousal(-6)
+			M.adjustArousal(-18)
 			M.adjustPleasure(-3)
 			if(M.arousal <= 0 && old_arousal > 0)
 				to_chat(M, "<span class='notice'>You no longer feel aroused.</span>")
