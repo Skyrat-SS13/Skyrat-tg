@@ -360,6 +360,10 @@
 /obj/machinery/power/emitter/proc/integrate(obj/item/gun/energy/energy_gun, mob/user)
 	if(!istype(energy_gun, /obj/item/gun/energy))
 		return
+//SKYRAT EDIT MEDIGUNS
+	if(istype(energy_gun, /obj/item/gun/energy/medigun))
+		return
+ //SKYRAT EDIT END
 	if(!user.transferItemToLoc(energy_gun, src))
 		return
 	gun = energy_gun
@@ -558,4 +562,3 @@
 		delay = world.time + 10
 	else if (emitter.charge < 10)
 		playsound(src,'sound/machines/buzz-sigh.ogg', 50, TRUE)
-

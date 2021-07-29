@@ -98,9 +98,11 @@
 
 		if(PTURRET_INTERNAL_ARMOUR_ON)
 			if(istype(I, /obj/item/gun/energy)) //the gun installation part
+ //SKYRAT EDIT MEDIGUNS//
 				if(istype(I, /obj/item/gun/energy/medigun)) //SKYRAT EDIT MEDIGUNS//
 					to_chat(user, span_notice("The [I] is unable to fit inside of the turret"))
-					return //SKYRAT EDIT MEDIGUN END//
+					return 
+//SKYRAT EDIT MEDIGUN END//
 				var/obj/item/gun/energy/E = I
 				if(!user.transferItemToLoc(E, src))
 					return
