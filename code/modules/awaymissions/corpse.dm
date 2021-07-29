@@ -32,7 +32,8 @@
 	var/burn_damage = 0
 	var/datum/disease/disease = null //Do they start with a pre-spawned disease?
 	var/mob_color //Change the mob's color
-	var/assignedrole
+	/// Typepath indicating the kind of job datum this ert member will have.
+	var/spawner_job_path = /datum/job/ghost_role
 	var/show_flavour = TRUE
 	var/banType = ROLE_LAVALAND
 	var/ghost_usable = TRUE
@@ -41,6 +42,7 @@
 	var/ready = TRUE
 	/// If the spawner uses radials
 	var/radial_based = FALSE
+
 
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/effect/mob_spawn/attack_ghost(mob/user)
@@ -174,8 +176,7 @@
 				var/datum/objective/O = new/datum/objective(objective)
 				O.owner = MM
 				A.objectives += O
-		if(assignedrole)
-			M.mind.assigned_role = assignedrole
+		M.mind.set_assigned_role(SSjob.GetJobType(spawner_job_path))
 		special(M)
 		MM.name = M.real_name
 	if(uses > 0)
@@ -193,7 +194,7 @@
 	var/datum/outfit/outfit = /datum/outfit	//If this is a path, it will be instanced in Initialize()
 	var/disable_pda = TRUE
 	var/disable_sensors = TRUE
-	assignedrole = "Ghost Role"
+	spawner_job_path = /datum/job/ghost_role
 
 	var/husk = null
 	//these vars are for lazy mappers to override parts of the outfit
@@ -271,13 +272,13 @@
 /obj/effect/mob_spawn/human/create_mob(mob/user, newname)
 	var/mob/living/carbon/human/H = new mob_type(get_turf(src))
 	if(is_pref_char && user?.client)
-		user.client.prefs.copy_to(H)
+		user.client.prefs.safe_transfer_prefs_to(H)
 		H.dna.update_dna_identity()
 		if(chosen_alias)
 			H.name = chosen_alias
 			H.real_name = chosen_alias
 		//Pre-job equips so Voxes dont die
-		H.dna.species.before_equip_job(null, H)
+		H.dna.species.pre_equip_species_outfit(null, H)
 		H.regenerate_icons()
 		SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
 		user.client.prefs.equip_preference_loadout(H, FALSE, blacklist = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK,ITEM_SLOT_ICLOTHING,ITEM_SLOT_BACK,ITEM_SLOT_OCLOTHING,ITEM_SLOT_GLOVES,ITEM_SLOT_FEET,ITEM_SLOT_HEAD,ITEM_SLOT_MASK,ITEM_SLOT_NECK,ITEM_SLOT_EYES,ITEM_SLOT_SUITSTORE,ITEM_SLOT_LPOCKET,ITEM_SLOT_RPOCKET)) //There has to be a better way to do this, this is utter bloat.
@@ -587,7 +588,7 @@
 	name = "rotting corpse"
 	mob_name = "zombie"
 	mob_species = /datum/species/zombie
-	assignedrole = "Zombie"
+	spawner_job_path = /datum/job/zombie
 
 /obj/effect/mob_spawn/human/abductor
 	name = "abductor"

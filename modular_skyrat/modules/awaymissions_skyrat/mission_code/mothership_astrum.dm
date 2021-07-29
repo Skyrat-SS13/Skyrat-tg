@@ -167,8 +167,6 @@
 	name = "lobotomite containment tube"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	mob_name = "Lobotomite"
-	icon = 'icons/obj/machines/nanite_chamber.dmi'
-	icon_state = "nanite_chamber_occupied"
 	density = TRUE
 	roundstart = FALSE
 	death = FALSE
@@ -183,7 +181,6 @@
 	You are meant to work with the exploration team.\
 	Do not attack anything in the gateway except in self-defense.\
 	DO NOT TOUCH ANYTHING IN THE GATEWAY."
-	assignedrole = "Lobotomite"
 
 /datum/outfit/lobotomite
 	name = "Abductor lobotomite"
@@ -313,11 +310,6 @@
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
 	flags_1 = NODECONSTRUCT_1
-
-/obj/machinery/scanner_gate/anti_nanite/perform_scan(mob/living/M)
-	if(SEND_SIGNAL(M, COMSIG_HAS_NANITES))
-		SEND_SIGNAL(M, COMSIG_NANITE_DELETE)
-		to_chat(M, "<span class='warning'>You feel an electrical charge run throughout your entire body as your nanites are vaporized!</span>")
 
 /obj/machinery/scanner_gate/anti_nanite/emag_act(mob/user)
 	to_chat(user, "<span class='notice'>This gate has advanced security measures!</span>")
