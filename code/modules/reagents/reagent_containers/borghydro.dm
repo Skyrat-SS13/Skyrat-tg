@@ -164,7 +164,7 @@ Borg Hypospray
 
 /obj/item/reagent_containers/borghypo/hacked
 	icon_state = "borghypo_s"
-	reagent_ids = list (/datum/reagent/toxin/acid/fluacid, /datum/reagent/toxin/mutetoxin, /datum/reagent/toxin/cyanide, /datum/reagent/toxin/fentanyl, /datum/reagent/toxin/heparin, /datum/reagent/toxin/lexorin) // SKYRAT EDIT - ORIGINAL: Chem3: /datum/reagent/toxin/sodium_thiopental
+	reagent_ids = list (/datum/reagent/toxin/acid/fluacid, /datum/reagent/toxin/mutetoxin, /datum/reagent/toxin/cyanide, /datum/reagent/toxin/sodium_thiopental, /datum/reagent/toxin/heparin, /datum/reagent/toxin/lexorin) 
 	accepts_reagent_upgrades = FALSE
 
 /obj/item/reagent_containers/borghypo/clown
