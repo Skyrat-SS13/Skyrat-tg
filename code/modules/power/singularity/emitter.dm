@@ -360,10 +360,8 @@
 /obj/machinery/power/emitter/proc/integrate(obj/item/gun/energy/energy_gun, mob/user)
 	if(!istype(energy_gun, /obj/item/gun/energy))
 		return
-//SKYRAT EDIT MEDIGUNS
-	if(istype(energy_gun, /obj/item/gun/energy/medigun))
-		return
- //SKYRAT EDIT END
+	if(istype(energy_gun, /obj/item/gun/energy/medigun))//SKYRAT EDIT MEDIGUNS
+		return //SKYRAT EDIT END
 	if(!user.transferItemToLoc(energy_gun, src))
 		return
 	gun = energy_gun
