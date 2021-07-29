@@ -84,6 +84,10 @@
 	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/testicles/T = H.getorganslot(ORGAN_SLOT_TESTICLES)
 
+	if(W && !ismob(loc) && in_hands == TRUE && src != H.belt)
+		qdel(W)
+		in_hands = FALSE
+
 	if(src == H.belt)
 		V?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
 		W?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
@@ -96,13 +100,6 @@
 /obj/item/clothing/strapon/update_icon_state()
 	.=..()
 	icon_state = "[initial(icon_state)]_[strapon_type]"
-
-/obj/item/clothing/strapon/dropped(mob/living/user)
-	.=..()
-	var/mob/living/carbon/human/M = user
-	if(W && !ismob(loc) && in_hands == TRUE && src != M.belt)
-		qdel(W)
-		in_hands = FALSE
 
 //Functionality stuff
 /obj/item/clothing/strapon/proc/update_action_buttons_icons()
