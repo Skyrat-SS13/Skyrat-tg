@@ -321,7 +321,7 @@
 /datum/greyscale_config/beret_badge/worn
 	name = "Beret With Badge Worn"
 	json_config = 'code/datums/greyscale/json_configs/beret_badge_worn.json'
-  SKYRAT EDIT END*/
+	SKYRAT EDIT END*/
 
 /datum/greyscale_config/suspenders
 	name = "Suspenders"
