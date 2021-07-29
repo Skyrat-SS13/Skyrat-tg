@@ -178,7 +178,7 @@ Borg Hypospray
 	desc = "Keeps the crew so happy they don't work!"
 	reagent_ids = list(/datum/reagent/consumable/superlaughter)
 	accepts_reagent_upgrades = FALSE
-
+/* SKYRAT EDIT - MOVED TO MODULAR
 /obj/item/reagent_containers/borghypo/syndicate
 	name = "syndicate cyborg hypospray"
 	desc = "An experimental piece of Syndicate technology used to produce powerful restorative nanites used to very quickly restore injuries of all types. Also metabolizes potassium iodide for radiation poisoning, inacusiate for ear damage and morphine for offense."
@@ -186,13 +186,13 @@ Borg Hypospray
 	charge_cost = 20
 	recharge_time = 2
 	reagent_ids = list(
-		/datum/reagent/medicine/lesser_syndicate_nanites, //SKYRAT EDIT - ORIGINAL: /datum/reagent/medicine/syndicate_nanites
+		/datum/reagent/medicine/syndicate_nanites,
 		/datum/reagent/medicine/inacusiate,
 		/datum/reagent/medicine/potass_iodide,
 		/datum/reagent/medicine/morphine,
 	)
 	bypass_protection = TRUE
-	accepts_reagent_upgrades = FALSE
+	accepts_reagent_upgrades = FALSE */
 
 /*
 Borg Shaker
