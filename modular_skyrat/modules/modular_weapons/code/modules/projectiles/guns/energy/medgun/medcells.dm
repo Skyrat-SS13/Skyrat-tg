@@ -2,12 +2,12 @@
 /obj/item/stock_parts/cell/medigun/ //This is the cell that mediguns from cargo will come with//
 	name = "Basic Medigun Cell"
 	maxcharge = 1200
-	chargerate = 80
+	chargerate = 40
 
 /obj/item/stock_parts/cell/medigun/upgraded
 	name = "Upgraded Medigun Cell"
 	maxcharge = 1500
-	chargerate = 160
+	chargerate = 80
 
 /obj/item/stock_parts/cell/medigun/experimental //This cell type is meant to be used in self charging mediguns like CMO and ERT one.//
 	name = "Experiemental Medigun Cell"
