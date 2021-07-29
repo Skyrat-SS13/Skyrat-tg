@@ -139,7 +139,7 @@
 		stress = 0
 		satisfaction = 1000
 
-	if(!(in_company()) && owner.has_status_effect(/datum/status_effect/climax) && satisfaction >= 500)
+	if(!(in_company()) && owner.has_status_effect(/datum/status_effect/climax) && satisfaction <= 500)
 		stress = 0
 		satisfaction = 500
 
