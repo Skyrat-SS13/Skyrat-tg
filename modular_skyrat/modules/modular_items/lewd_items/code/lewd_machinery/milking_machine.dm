@@ -200,6 +200,7 @@
 // Another plug to disable rotation
 /obj/structure/chair/milking_machine/attack_tk(mob/user)
 	return FALSE
+
 // Get the organs of the mob and visualize the change in machine
 /obj/structure/chair/milking_machine/post_buckle_mob(mob/living/M)
 	current_mob = M
