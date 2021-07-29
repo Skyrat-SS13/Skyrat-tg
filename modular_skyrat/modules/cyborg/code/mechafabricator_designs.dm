@@ -24,3 +24,17 @@
 	materials = list(/datum/material/iron=1000, /datum/material/glass=500)
 	construction_time = 40
 	category = list("Cyborg Upgrade Modules")
+
+/datum/design/advanced_materials
+	name = "Cyborg Upgrade (Advanced Materials)"
+	id = "advanced_materials"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/advanced_materials
+	materials = list(
+		/datum/material/titanium=5000,
+		/datum/material/iron=10000,
+		/datum/material/uranium=5000,
+		/datum/material/glass=10000,
+		/datum/material/plasma=7500,
+	)
+	category = list("Cyborg Upgrade Modules")

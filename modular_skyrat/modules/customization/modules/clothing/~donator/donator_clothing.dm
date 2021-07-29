@@ -849,7 +849,7 @@
 // Donation reward for CandleJax
 /obj/item/storage/belt/security/webbing/peacekeeper/jax
 	name = "HepUnit Standard Webbing"
-	desc = "A sturdy, segmented vest that fits over the included uniform. It conceals a number of pockets on the interior, making it ideal for storage across the operating unit's body."
+	desc = "A sturdy, segmented belt which fits over the included uniform. It conceals a number of pockets on the interior, making it ideal for storage across the operating unit's body."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "hepbelt"
@@ -858,7 +858,7 @@
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	name = "Emission's Helmet"
-	desc = "A special containment helmet designed for heavy usage Multiple dings and notches are on this one."
+	desc = "A special containment helmet designed for heavy usage. Multiple dings and notches are on this one."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
@@ -868,7 +868,7 @@
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/security/candlejax
 	name = "Emission's Containment Suit"
-	desc = "A special containment envirosuit designed for abnormally heated plasmafires This one seems highly customized."
+	desc = "A special containment envirosuit designed for abnormally heated plasmafires. This one seems highly customized."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
@@ -877,7 +877,7 @@
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax
 	name = "HepUnit Standard Helmet"
-	desc = "A concealing riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
+	desc = "An adjustable riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 
@@ -885,7 +885,10 @@
 	worn_icon_state = "hephelmet-visor-nolight"
 	actions_types = list(/datum/action/item_action/togglevisor)
 
-	flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
+	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
 	var/visor = TRUE
 
 /datum/action/item_action/togglevisor

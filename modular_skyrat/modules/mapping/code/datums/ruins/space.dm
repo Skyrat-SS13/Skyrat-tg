@@ -2,14 +2,14 @@
 /datum/map_template/ruin/space/skyrat/
 	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
 /*------*/
-
+/* //Disabled due to the existence of DS-2.
 /datum/map_template/ruin/space/skyrat/forgottenship
 	name = "CSBC-12"
 	id = "forgottenship"
 	description = "Cybersun would like to remind it's employees that any battle cruiser will be apropriately maintained, as will it's crew."
 	suffix = "forgottenship_skyrat.dmm"
 	always_place = TRUE
-
+*/
 /datum/map_template/ruin/space/skyrat/interdynefob
 	name = "DS-2"
 	id = "interdynefob"

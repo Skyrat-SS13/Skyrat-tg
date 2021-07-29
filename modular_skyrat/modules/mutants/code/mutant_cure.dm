@@ -38,9 +38,6 @@
 	if(!ismutant(H))
 		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
 		return
-	if(H.stat == DEAD)
-		to_chat(user, "<span class='danger'>[src] only works on living targets!</span>")
-		return
 	var/datum/component/mutant_infection/ZI = H.GetComponent(/datum/component/mutant_infection)
 	if(!ZI)
 		to_chat(user, "<span class='danger'>[H] does not register as infected!</span>")
@@ -140,8 +137,8 @@
 #define STATUS_IDLE "System Idle"
 #define STATUS_RECOMBINATING_VIRUS "System Synthesising Virus"
 #define STATUS_RECOMBINATING_CURE "System Synthesising Cure"
-#define RECOMBINATION_STEP_TIME 20 SECONDS
-#define RECOMBINATION_STEP_AMOUNT 20
+#define RECOMBINATION_STEP_TIME 15 SECONDS
+#define RECOMBINATION_STEP_AMOUNT 25
 
 /obj/machinery/rnd/rna_recombinator
 	name = "RNA Recombinator"
