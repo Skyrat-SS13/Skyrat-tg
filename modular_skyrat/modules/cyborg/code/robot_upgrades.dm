@@ -210,7 +210,7 @@
 /// Cyborg Plasma Cutter ///
 ////////////////////////////
 
-obj/item/borg/upgrade/plasmacutter
+/obj/item/borg/upgrade/plasmacutter
 	name = "mining cyborg plasma cutter"
 	desc = "The plasma cutter, now borg version!"
 	icon_state = "cyborg_upgrade3"
