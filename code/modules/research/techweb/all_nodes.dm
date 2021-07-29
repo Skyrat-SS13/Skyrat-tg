@@ -817,6 +817,7 @@
 		"borg_upgrade_lavaproof",
 		"borg_upgrade_rped",
 		"advanced_materials", // SKYRAT ADDITION - ADVANCED MATERIALS UPGRADE
+		"borgcutter", // SKYRAT ADDITION - PLASMA CUTTER UPGRADE
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 

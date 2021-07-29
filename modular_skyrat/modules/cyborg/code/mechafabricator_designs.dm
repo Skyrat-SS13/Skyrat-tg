@@ -38,3 +38,16 @@
 		/datum/material/plasma=7500,
 	)
 	category = list("Cyborg Upgrade Modules")
+
+/datum/design/plasmacutter
+	name = "Cyborg Upgrade (Plasma Cutter)"
+	id = "borgcutter"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/plasmacutter
+	construction_time = 80
+	materials = list(
+		/datum/material/iron=10000,
+		/datum/material/glass=5000,
+		/datum/material/plasma=5500,
+	)
+	category = list("Cyborg Upgrade Modules")
