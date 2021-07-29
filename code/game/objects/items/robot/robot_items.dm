@@ -22,7 +22,7 @@
 			return
 
 	user.do_attack_animation(M)
-	M.Knockdown(60)
+	M.StaminaKnockdown(60, TRUE)
 	M.apply_effect(EFFECT_STUTTER, 5)
 
 	M.visible_message(span_danger("[user] prods [M] with [src]!"), \
