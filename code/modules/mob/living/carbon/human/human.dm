@@ -20,8 +20,12 @@
 
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, .proc/clean_face)
 	AddComponent(/datum/component/personal_crafting)
+<<<<<<< HEAD
 	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, -6) //ORIGINAL
 	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS 
+=======
+	AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 1, -6)
+>>>>>>> 25a1804e702 (Converts the footstep component into an element. (#60479))
 	AddComponent(/datum/component/bloodysoles/feet)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, /mob/living/carbon/human/.proc/should_strip)
