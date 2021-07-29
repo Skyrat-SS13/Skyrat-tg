@@ -22,7 +22,7 @@
 	var/mob/holder
 
 
-	var/max_mod_capacity = 100
+	var/max_mod_capacity = 80
 	var/list/modkits = list()
 
 	var/recharge_timerid
