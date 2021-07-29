@@ -1,5 +1,5 @@
 /obj/item/clothing/shoes/worn_overlays(isinhands = FALSE,icon_file,mutant_styles=NONE)
-	. = list()
+	. = ..()
 	if(isinhands)
 		return
 	if(damaged_clothes)

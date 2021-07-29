@@ -847,6 +847,7 @@
 "qJ" = (
 /obj/effect/turf_decal/siding/wood/corner,
 /obj/structure/chair/stool/bar{
+	dir = 8;
 	item_chair = null;
 	resistance_flags = 64
 	},
@@ -1040,6 +1041,14 @@
 	resistance_flags = 64
 	},
 /turf/open/floor/iron/dark,
+/area/ctf)
+"vh" = (
+/obj/structure/chair/stool/bar{
+	dir = 4;
+	item_chair = null;
+	resistance_flags = 64
+	},
+/turf/open/floor/wood,
 /area/ctf)
 "vo" = (
 /obj/structure/table/wood{
@@ -1474,10 +1483,9 @@
 /turf/open/floor/iron,
 /area/ctf)
 "BW" = (
-/obj/machinery/button/door{
+/obj/machinery/button/door/directional/north{
 	id = "flag1";
 	name = "Flag Shutters";
-	pixel_y = 28;
 	resistance_flags = 64
 	},
 /obj/effect/turf_decal/tile/red{
@@ -1600,8 +1608,7 @@
 	},
 /obj/effect/turf_decal/tile/bar,
 /obj/structure/chair/stool/bar{
-	item_chair = null;
-	resistance_flags = 64
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/ctf)
@@ -1643,10 +1650,9 @@
 /turf/open/floor/iron,
 /area/ctf)
 "EB" = (
-/obj/machinery/button/door{
+/obj/machinery/button/door/directional/south{
 	id = "flag1";
 	name = "Flag Shutters";
-	pixel_y = -28;
 	resistance_flags = 64
 	},
 /obj/effect/turf_decal/tile/red,
@@ -1817,17 +1823,16 @@
 /turf/open/floor/iron,
 /area/ctf)
 "Il" = (
-/obj/machinery/button/door{
-	id = "flag2";
-	name = "Flag Shutters";
-	pixel_y = 28;
-	resistance_flags = 64
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/blue/line{
 	dir = 1
+	},
+/obj/machinery/button/door/directional/north{
+	id = "flag2";
+	name = "Flag Shutters";
+	resistance_flags = 64
 	},
 /turf/open/floor/iron,
 /area/ctf)
@@ -2065,6 +2070,14 @@
 	icon_state = "bus";
 	name = "bus"
 	},
+/area/ctf)
+"Md" = (
+/obj/structure/chair/stool/bar{
+	dir = 8;
+	item_chair = null;
+	resistance_flags = 64
+	},
+/turf/open/floor/wood,
 /area/ctf)
 "MM" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2669,10 +2682,9 @@
 /turf/open/floor/iron/dark,
 /area/ctf)
 "YL" = (
-/obj/machinery/button/door{
+/obj/machinery/button/door/directional/south{
 	id = "flag2";
 	name = "Flag Shutters";
-	pixel_y = -28;
 	resistance_flags = 64
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -3676,9 +3688,9 @@ xs
 td
 Bh
 ql
-bs
+vh
 ql
-bs
+vh
 QC
 td
 mB
@@ -3751,9 +3763,9 @@ El
 BH
 Lr
 Ug
-bs
+Md
 ql
-bs
+Md
 ql
 QC
 oq
@@ -3828,9 +3840,9 @@ BH
 Lr
 Ug
 ql
-bs
+vh
 ql
-bs
+vh
 QC
 Lr
 Ad
@@ -3903,9 +3915,9 @@ BH
 El
 td
 mP
-bs
+Md
 ql
-bs
+Md
 ql
 QC
 td
@@ -4173,7 +4185,7 @@ dO
 sZ
 Dm
 ql
-bs
+vh
 td
 qT
 yX

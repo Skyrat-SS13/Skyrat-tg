@@ -1,11 +1,12 @@
 //Synth snouts (This is the most important part)
 /datum/sprite_accessory/snouts/synthliz
 	recommended_species = list("synthliz")
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/synthliz_snouts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_snouts.dmi'
 	color_src = USE_ONE_COLOR
 	default_color = null
 	name = "Synthetic Lizard - Snout"
 	icon_state = "synthliz_basic"
+	genetic = FALSE
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_under
 	color_src = USE_MATRIXED_COLORS
@@ -72,16 +73,17 @@
 //Synth tails
 /datum/sprite_accessory/tails/synthliz
 	recommended_species = list("synthliz")
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/synthliz_tails.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_tails.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard"
 	icon_state = "synthliz"
 	general_type = "lizard"
+	genetic = FALSE
 
 //Synth Antennae
 /datum/sprite_accessory/antenna/synthliz
 	recommended_species = list("synthliz")
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/synthliz_antennas.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard - Antennae"
 	icon_state = "synth_antennae"
@@ -143,6 +145,7 @@
 	icon_state = "synthlizard"
 	taur_mode = STYLE_TAUR_PAW
 	recommended_species = list("synthliz")
+	genetic = FALSE
 
 /datum/sprite_accessory/taur/synthliz/inv
 	name = "Cybernetic Lizard (Inverted)"

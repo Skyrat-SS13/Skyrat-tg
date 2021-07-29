@@ -1,10 +1,11 @@
 /datum/sprite_accessory/snouts
 	key = "snout"
 	generic = "Snout"
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/lizard_snouts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/lizard_snouts.dmi'
 	var/use_muzzled_sprites = TRUE
 	recommended_species = list("synthmammal", "mammal", "lizard", "unathi", "ashlizard", "silverlizard")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/snouts/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)) || !HD)
@@ -18,7 +19,7 @@
 	factual = FALSE
 
 /datum/sprite_accessory/snouts/mammal
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/snouts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list("synthmammal", "mammal", "humanoid")
 

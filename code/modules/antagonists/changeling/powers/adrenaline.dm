@@ -11,7 +11,7 @@
 //Recover from stuns.
 /datum/action/changeling/adrenaline/sting_action(mob/living/user)
 	..()
-	to_chat(user, "<span class='notice'>Energy rushes through us.</span>")
+	to_chat(user, span_notice("Energy rushes through us."))
 	user.SetKnockdown(0)
 	user.setStaminaLoss(0) //SKYRAT EDIT ADDITION
 	user.set_resting(FALSE)

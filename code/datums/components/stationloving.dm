@@ -37,7 +37,7 @@
 	var/atom/movable/AM = parent
 	playsound(AM, 'sound/machines/synth_no.ogg', 5, TRUE) //hey dumbass, you failed at your MOST IMPORTANT JOB, maybe you should check your chat log to see what could have caused that strange buzzing noise
 	AM.forceMove(targetturf)
-	to_chat(get(parent, /mob), "<span class='danger'>You can't help but feel that you just lost something back there...</span>")
+	to_chat(get(parent, /mob), span_danger("You can't help but feel that you just lost something back there..."))
 	// move the disc, so ghosts remain orbiting it even if it's "destroyed"
 	return targetturf
 
@@ -64,10 +64,7 @@
 	return COMPONENT_BLOCK_MARK_RETRIEVAL
 
 /datum/component/stationloving/proc/in_bounds()
-	//SKYRAT EDIT CHANGE BEGIN - Mapping
-	//var/static/list/allowed_shuttles = typecacheof(list(/area/shuttle/syndicate, /area/shuttle/escape, /area/shuttle/pod_1, /area/shuttle/pod_2, /area/shuttle/pod_3, /area/shuttle/pod_4)) - SKYRAT EDIT - ORIGINAL
-	var/static/list/allowed_shuttles = typecacheof(list(/area/shuttle/syndicate, /area/shuttle/escape, /area/shuttle/pod_1, /area/shuttle/pod_2, /area/shuttle/pod_3, /area/shuttle/pod_4, /area/shuttle/shipstation))
-	//SKYRAT EDIT CHANGE END
+	var/static/list/allowed_shuttles = typecacheof(list(/area/shuttle/syndicate, /area/shuttle/escape, /area/shuttle/pod_1, /area/shuttle/pod_2, /area/shuttle/pod_3, /area/shuttle/pod_4))
 	var/static/list/disallowed_centcom_areas = typecacheof(list(/area/abductor_ship, /area/awaymission/errorroom))
 	var/turf/T = get_turf(parent)
 	if (!T)

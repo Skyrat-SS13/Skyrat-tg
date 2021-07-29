@@ -17,7 +17,7 @@
 	desc = "An ancient Soviet machine pistol, refurbished for the modern age. Uses 9mm auto rounds in 15-round magazines and is compatible \
 			with suppressors. The gun fires in three round bursts."
 	item = /obj/item/gun/ballistic/automatic/pistol/aps
-	cost = 13
+	cost = 10
 
 /datum/uplink_item/dangerous/foamsmg_traitor
 	name = "Toy Submachine Gun"
@@ -29,7 +29,7 @@
 	name = "Unica Six Revolver"
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	item = /obj/item/gun/ballistic/revolver/mateba
-	cost = 13
+	cost = 11
 	surplus = 50
 
 /datum/uplink_item/dangerous/holocarp
@@ -37,7 +37,7 @@
 	desc = "Fishsticks prepared through ritualistic means in honor of the god Carp-sie, capable of binding a holocarp \
 			to act as a servant and guardian to their host."
 	item = /obj/item/guardiancreator/carp/choose
-	cost = 18
+	cost = 10
 	surplus = 0
 	player_minimum = 25
 	restricted = TRUE
@@ -47,14 +47,14 @@
 	desc = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a \
 			24-round magazine and is compatible with suppressors."
 	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
-	cost = 17
+	cost = 14
 
 /datum/uplink_item/dangerous/shotgun_traitor
 	name = "Bulldog Shotgun"
 	desc = "A fully-loaded semi-automatic drum-fed shotgun. Compatible with all 12g rounds. Designed for close \
 			quarter anti-personnel engagements."
 	item = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
-	cost = 15
+	cost = 13
 
 /datum/uplink_item/dangerous/shield_traitor
 	name = "Energy Shield"
@@ -67,15 +67,21 @@
 	name = "Katana"
 	desc = "An incredibly sharp sword used by Samurais. Woefully underpowered in D20."
 	item = /obj/item/katana
-	cost = 12
+	cost = 7
+
+/datum/uplink_item/dangerous/oddjob
+	name = "Deadly Bowler Hat"
+	desc = "An incredibly sharp edged bowler hat used by an infamously short operative."
+	item = /obj/item/clothing/head/sus_bowler
+	cost = 20
 
 //STEALTHY WEAPONS
 /datum/uplink_item/stealthy_weapons/cqc_traitor
 	name = "CQC Manual"
 	desc = "A manual that teaches a single user tactical Close-Quarters Combat before self-destructing."
 	item = /obj/item/book/granter/martial/cqc
-	cost = 25
-	surplus = 20
+	cost = 23
+	surplus = 17
 // Removed from the uplink for the time being.
 /*datum/uplink_item/stealthy_weapons/cqcplus
 	name = "CQC+ Manual"
@@ -121,7 +127,8 @@
 	desc = "A box with three grenades that release a swarm of angry bees upon activation. These bees indiscriminately attack friend or foe \
 			with random toxins. Courtesy of the BLF and Tiger Cooperative."
 	item = /obj/item/storage/box/syndie_kit/bee_grenades
-	cost = 15
+	cost = 10
+
 
 /datum/uplink_item/explosives/viscerators_traitor
 	name = "Viscerator Delivery Grenade"
@@ -143,7 +150,7 @@
 	desc = "Based on a Nanotrasen model, this powerful tool can be used as both a crowbar and a pair of wirecutters. \
 	In its crowbar configuration, it can be used to force open airlocks. Very useful for entering the station or its departments."
 	item = /obj/item/crowbar/power/syndicate
-	cost = 4
+	cost = 3
 
 /datum/uplink_item/device_tools/medkit_traitor
 	name = "Syndicate Combat Medic Kit"
@@ -179,27 +186,28 @@
 	name = "9mm Stechkin APS Magazine"
 	desc = "An additional 15-round 9mm magazine, compatible with the Stechkin APS machine pistol."
 	item = /obj/item/ammo_box/magazine/m9mm_aps
-	cost = 2
+	cost = 1
 
 /datum/uplink_item/ammo/smg_traitor
 	name = ".45 SMG Magazine"
 	desc = "An additional 24-round .45 magazine suitable for use with the C-20r submachine gun."
 	item = /obj/item/ammo_box/magazine/smgm45
-	cost = 3
+	cost = 2
 
 /datum/uplink_item/ammo/smgap_traitor
 	name = ".45 Armor Piercing SMG Magazine"
 	desc = "An additional 24-round .45 magazine suitable for use with the C-20r submachine gun.\
 			These rounds are less effective at injuring the target but penetrate protective gear."
 	item = /obj/item/ammo_box/magazine/smgm45/ap
-	cost = 5
+	cost = 3
 
 /datum/uplink_item/ammo/smgfire_traitor
 	name = ".45 Incendiary SMG Magazine"
 	desc = "An additional 24-round .45 magazine suitable for use with the C-20r submachine gun.\
 			Loaded with incendiary rounds which inflict little damage, but ignite the target."
 	item = /obj/item/ammo_box/magazine/smgm45/incen
-	cost = 4
+	cost = 2
+
 /datum/uplink_item/ammo/shotgun/buck_traitor
 	name = "12g Buckshot Drum"
 	desc = "An additional 8-round buckshot magazine for use with the Bulldog shotgun. Front towards enemy."
@@ -230,7 +238,8 @@
 	desc = "An upgraded, elite version of the Syndicate hardsuit. It features fireproofing, and also \
 			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
 	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
-	cost = 14
+	cost = 10
+
 /datum/uplink_item/suits/standard_armor
 	name = "Standard Armor Vest"
 	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
@@ -241,22 +250,31 @@
 	name = "Bulletproof Armor Vest"
 	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
 	item = /obj/item/clothing/suit/armor/bulletproof
-	cost = 6
+	cost = 1
 
 //HELMETS
 /datum/uplink_item/suits/hardsuit/swathelmet_traitor
 	name = "Syndicate Helmet"
 	desc = "An extremely robust, space-worthy helmet in a nefarious red and black stripe pattern."
 	item = /obj/item/clothing/head/helmet/swat
-	cost = 4
+	cost = 2
+
 
 //IMPLANTS
 /datum/uplink_item/implants/antistun_traitor
 	name = "CNS Rebooter Implant"
 	desc = "This implant will help you get back up on your feet faster after being stunned. Comes with an autosurgeon."
 	item = /obj/item/autosurgeon/organ/syndicate/anti_stun
-	cost = 12
+	cost = 6
 	surplus = 0
+
+//JOBS ONLY
+/datum/uplink_item/role_restricted/cultkitsr //Ported from beestation
+	name = "Cult Construct Kit"
+	desc = "Recovered from an abandoned Nar'sie cult lair, two construct shells and a stash of empty soulstones was found. These were purified to prevent occult contamination and have been put in a belt so they may be used as an accessible source of disposable minions. The construct shells have been packaged into two beacons for rapid and portable deployment."
+	item = /obj/item/storage/box/syndie_kit/cultkitsr
+	cost = 15 //If used correctly, You actually get several servants or just get fucked over because no ghosts want to be a shade.
+	restricted_roles = list("Chaplain")
 
 //LOADOUTS
 
@@ -269,88 +287,87 @@
 	name = "Reconnaisance bundle"
 	desc = "Get in and get out as quickly as you came with this unique kit of gear specialized in infiltration and observation."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/recon
-	cost = 25 // I don't think this is enough TCs
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/spy
 	name = "Spy bundle"
 	desc = "Blend into the environment or any of crowd with this state-of-the-art stealth kit, perfect for infiltration experts."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/spy
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/stealthop
 	name = "Burglar Bundle"
 	desc = "Not a thing aboard the station is safe from your grubby hands with this specialized set of gear, perfect for the enterprising thief."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/stealthop
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/hacker
 	name = "Hacker bundle"
 	desc = "Subvert everything in sight using some of the most advanced tools available to operatives. If it’s powered, it’s already under your thumb."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/hacker
-	cost = 25
+	cost = 15
 
 /datum/uplink_item/loadout_skyrat/metaops
 	name = "Bulldog Operative bundle"
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops
-	cost = 28
+	cost = 23
 
 /datum/uplink_item/loadout_skyrat/bond
 	name = "Classic Spy bundle"
 	desc = "Play the hero or the villain in a cheesy spy movie with this throwback kit to far less modern syndicate operatives."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/bond
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/ninja
 	name = "Cyborg Ninja bundle"
 	desc = "Become a force of nature with this customized kit featuring next-generation syndicate technology in an efficient package."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/ninja
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/darklord
 	name = "Dark Lord bundle"
 	desc = "Wield unlimited power with this extremely effective combative kit, guaranteed to give the user efficient staying potential in any confrontation."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/hunter
 	name = "Whaler bundle"
 	desc = "There’s no whales in space, but there sure are carp. Blend in with your prey and wield an impossibly effective high-power harpoon gun in this tribute to a tale told long ago."
 	item = /obj/item/storage/box/syndie_kit/loadout/hunter
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/bee
 	name = "Buzzy bundle"
 	desc = "Look bee-utiful in this extra specialized rapid attack kit, featuring unique armaments seen nowhere else and a bumble-y sense of style."
 	item = /obj/item/storage/box/syndie_kit/loadout/bee
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/cryomancer
 	name = "Mister Freeze bundle"
 	desc = "Make everybody chill out at the sight of your power with this absolutely snowy weapons kit. Also happens to be great for ice-related puns."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/cryomancer
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/nt_impostor
 	name = "Corporate Deceit Bundle"
 	desc = "Don the identities of the most powerful men and women in Nanotrasen, and pull strings from the shadows as you please with this specialized kit."
 	item = /obj/item/storage/box/syndie_kit/loadout/nt_impostor
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/lasermanbundle
 	name = "Laserman Bundle"
 	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
-	cost = 25
+	cost = 20
 
 //Badass section down here
-/datum/uplink_item/loadout_skyrat/robohand
-	name = "Robohand Bundle"
-	desc = "Themed after the infamous terrorist(or not), Johnny Robohand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. \
-			It comes with a robotic replacement arm. Wake the fuck up, samurai."
-	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
-	cost = 45
+///datum/uplink_item/loadout_skyrat/robohand
+//	name = "Robohand Bundle"
+//	desc = "Themed after the infamous terrorist(or not), Johnny Robohand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. It comes with a robotic replacement arm. Wake the fuck up, samurai."
+//	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
+//	cost = 35
 
-/datum/uplink_item/loadout_skyrat/robohand/purchase(mob/user, datum/component/uplink/U)
-	. = ..()
-	notify_ghosts(message = "[user] has purchased the Johnny Robohand bundle, watch him be a badass!", ghost_sound = 'modular_skyrat/modules/3516/sound/wakeup.ogg', source = user) //Everyone needs to know he's a badass
+///datum/uplink_item/loadout_skyrat/robohand/purchase(mob/user, datum/component/uplink/U)
+//	. = ..()
+//	notify_ghosts(message = "[user] has purchased the Johnny Robohand bundle, watch him be a badass!", ghost_sound = 'modular_skyrat/modules/3516/sound/wakeup.ogg', source = user) //Everyone needs to know he's a badass

@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/ghost_role/alien_infestation
 	//SKYRAT EDIT CHANGE BEGIN
 	//weight = 5 - SKYRAT EDIT - ORIGINAL
-	weight = 2
+	weight = 0
 	//SKYRAT EDIT CHANGE END
 
 	min_players = 10
@@ -76,6 +76,7 @@
 
 		var/mob/living/carbon/alien/larva/new_xeno = new(vent.loc)
 		new_xeno.key = C.key
+		new_xeno.move_into_vent(vent)
 
 		spawncount--
 		message_admins("[ADMIN_LOOKUPFLW(new_xeno)] has been made into an alien by an event.")

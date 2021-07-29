@@ -11,8 +11,10 @@
 	var/list/species_whitelist
 	//Blacklist of species for this job.
 	var/list/species_blacklist
-	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN 
+	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
 	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
+	//Alt titles
+	var/list/alt_titles = list()
 
 /datum/job/proc/has_banned_quirk(datum/preferences/pref)
 	if(!pref) //No preferences? We'll let you pass, this time (just a precautionary check,you dont wanna mess up gamemode setting logic)
@@ -33,11 +35,16 @@
 		return TRUE
 	return FALSE
 
+// Misc
 /datum/job/assistant
 	no_dresscode = TRUE
 	blacklist_dresscode_slots = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK) //headset, PDA, ID, backpack are important items
 	required_languages = null
 
+/datum/job/prisoner
+	required_languages = null
+
+//Security
 /datum/job/security_officer
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
@@ -49,7 +56,7 @@
 
 /datum/job/security_sergeant
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
-	
+
 /datum/job/security_medic
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
@@ -58,6 +65,13 @@
 
 /datum/job/blueshield
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+
+/datum/job/nanotrasen_representative
+	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+
+// Command
+/datum/job/captain
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 /datum/job/head_of_security
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS, HEAD_RESTRICTED_QUIRKS)
@@ -77,15 +91,14 @@
 /datum/job/quartermaster
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
-/datum/job/captain
-	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
-
+//Silicon
 /datum/job/ai
 	loadout = FALSE
 
 /datum/job/cyborg
 	loadout = FALSE
 
+//Service
 /datum/job/cook
 	required_languages = null
 
@@ -100,6 +113,12 @@
 
 /datum/job/prisoner
 	required_languages = null
+
+/datum/job/station_engineer
+	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
+
+/datum/job/atmospheric_technician
+	banned_quirks = list(TECH_RESTRICTED_QUIRKS)
 
 /datum/job/proc/has_required_languages(datum/preferences/pref)
 	if(!required_languages)

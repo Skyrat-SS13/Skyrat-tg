@@ -17,6 +17,22 @@
 #define SCANGATE_POD "pod"
 #define SCANGATE_GOLEM "golem"
 #define SCANGATE_ZOMBIE "zombie"
+//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
+#define SCANGATE_MAMMAL "mammal"
+#define SCANGATE_VOX "vox"
+#define SCANGATE_AQUATIC "aquatic"
+#define SCANGATE_INSECT "insect"
+#define SCANGATE_XENO "xeno"
+#define SCANGATE_UNATHI "unathi"
+#define SCANGATE_TAJARAN "tajaran"
+#define SCANGATE_VULPKANIN "vulpkanin"
+#define SCANGATE_IPC "ipc"
+#define SCANGATE_SYNTHLIZ "synthliz"
+#define SCANGATE_SYNTHMAMMAL "synthmammal"
+#define SCANGATE_SYNTHHUMAN "synthhuman"
+
+#define SCANGATE_GENDER "Gender"
+//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 
 /obj/machinery/scanner_gate
 	name = "scanner gate"
@@ -50,12 +66,17 @@
 	var/light_fail = FALSE
 	///Does the scanner ignore light_pass and light_fail for sending signals?
 	var/ignore_signals = FALSE
+	var/detect_gender = "male" //SKYRAT EDIT - MORE SCANNER GATE OPTIONS
 
 
 /obj/machinery/scanner_gate/Initialize()
 	. = ..()
 	wires = new /datum/wires/scanner_gate(src)
 	set_scanline("passive")
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/machinery/scanner_gate/Destroy()
 	qdel(wires)
@@ -65,13 +86,13 @@
 /obj/machinery/scanner_gate/examine(mob/user)
 	. = ..()
 	if(locked)
-		. += "<span class='notice'>The control panel is ID-locked. Swipe a valid ID to unlock it.</span>"
+		. += span_notice("The control panel is ID-locked. Swipe a valid ID to unlock it.")
 	else
-		. += "<span class='notice'>The control panel is unlocked. Swipe an ID to lock it.</span>"
+		. += span_notice("The control panel is unlocked. Swipe an ID to lock it.")
 
-/obj/machinery/scanner_gate/Crossed(atom/movable/AM)
-	. = ..()
-	auto_scan(AM)
+/obj/machinery/scanner_gate/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, .proc/auto_scan, AM)
 
 /obj/machinery/scanner_gate/proc/auto_scan(atom/movable/AM)
 	if(!(machine_stat & (BROKEN|NOPOWER)) && isliving(AM) & (!panel_open))
@@ -91,14 +112,14 @@
 			if(allowed(user))
 				locked = FALSE
 				req_access = list()
-				to_chat(user, "<span class='notice'>You unlock [src].</span>")
+				to_chat(user, span_notice("You unlock [src]."))
 		else if(!(obj_flags & EMAGGED))
-			to_chat(user, "<span class='notice'>You lock [src] with [W].</span>")
+			to_chat(user, span_notice("You lock [src] with [W]."))
 			var/list/access = W.GetAccess()
 			req_access = access
 			locked = TRUE
 		else
-			to_chat(user, "<span class='warning'>You try to lock [src] with [W], but nothing happens.</span>")
+			to_chat(user, span_warning("You try to lock [src] with [W], but nothing happens."))
 	else
 		if(!locked && default_deconstruction_screwdriver(user, "scangate_open", "scangate", W))
 			return
@@ -112,7 +133,7 @@
 	locked = FALSE
 	req_access = list()
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You fry the ID checking system.</span>")
+	to_chat(user, span_notice("You fry the ID checking system."))
 
 /obj/machinery/scanner_gate/proc/perform_scan(mob/living/M)
 	var/beep = FALSE
@@ -166,6 +187,32 @@
 						scan_species = /datum/species/golem
 					if(SCANGATE_ZOMBIE)
 						scan_species = /datum/species/zombie
+					//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
+					if(SCANGATE_MAMMAL)
+						scan_species = /datum/species/mammal
+					if(SCANGATE_VOX)
+						scan_species = /datum/species/vox
+					if(SCANGATE_AQUATIC)
+						scan_species = /datum/species/aquatic
+					if(SCANGATE_INSECT)
+						scan_species = /datum/species/insect
+					if(SCANGATE_XENO)
+						scan_species = /datum/species/xeno
+					if(SCANGATE_UNATHI)
+						scan_species = /datum/species/unathi
+					if(SCANGATE_TAJARAN)
+						scan_species = /datum/species/tajaran
+					if(SCANGATE_VULPKANIN)
+						scan_species = /datum/species/vulpkanin
+					if(SCANGATE_IPC)
+						scan_species = /datum/species/robotic/ipc
+					if(SCANGATE_SYNTHLIZ)
+						scan_species = /datum/species/robotic/synthliz
+					if(SCANGATE_SYNTHMAMMAL)
+						scan_species = /datum/species/robotic/synthetic_mammal
+					if(SCANGATE_SYNTHHUMAN)
+						scan_species = /datum/species/robotic/synthetic_human
+					//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 				if(is_species(H, scan_species))
 					beep = TRUE
 				if(detect_species == SCANGATE_ZOMBIE) //Can detect dormant zombies
@@ -183,6 +230,14 @@
 					beep = TRUE
 				if(H.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
+		//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
+		if(SCANGATE_GENDER)
+			if(ishuman(M))
+				var/mob/living/carbon/human/scanned_human = M
+				if((scanned_human.gender in list("male", "female"))) //funny thing: nb people will always get by the scan B)
+					if(scanned_human.gender == detect_gender)
+						beep = TRUE
+		//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 
 	if(reverse)
 		beep = !beep
@@ -227,6 +282,7 @@
 	data["disease_threshold"] = disease_threshold
 	data["target_species"] = detect_species
 	data["target_nutrition"] = detect_nutrition
+	data["target_gender"] = detect_gender //SKYRAT EDIT - MORE SCANNER GATE OPTIONS
 	return data
 
 /obj/machinery/scanner_gate/ui_act(action, params)
@@ -272,6 +328,21 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
+		//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
+		if("set_target_gender")
+			var/new_gender = params["new_gender"]
+			var/gender_list = list(
+				"Male",
+				"Female"
+			)
+			if(new_gender && (new_gender in gender_list))
+				switch(new_gender)
+					if("Male")
+						detect_gender = "male"
+					if("Female")
+						detect_gender = "female"
+			. = TRUE
+		//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 
 #undef SCANGATE_NONE
 #undef SCANGATE_MINDSHIELD
@@ -292,3 +363,19 @@
 #undef SCANGATE_POD
 #undef SCANGATE_GOLEM
 #undef SCANGATE_ZOMBIE
+//SKYRAT EDIT BEGIN - MORE SCANNER GATE OPTIONS
+#undef SCANGATE_MAMMAL
+#undef SCANGATE_VOX
+#undef SCANGATE_AQUATIC
+#undef SCANGATE_INSECT
+#undef SCANGATE_XENO
+#undef SCANGATE_UNATHI
+#undef SCANGATE_TAJARAN
+#undef SCANGATE_VULPKANIN
+#undef SCANGATE_IPC
+#undef SCANGATE_SYNTHLIZ
+#undef SCANGATE_SYNTHMAMMAL
+#undef SCANGATE_SYNTHHUMAN
+
+#undef SCANGATE_GENDER
+//SKYRAT EDIT END - MORE SCANNER GATE OPTIONS

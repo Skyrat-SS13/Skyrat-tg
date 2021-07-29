@@ -12,12 +12,14 @@
 	exp_type = EXP_TYPE_SECURITY
 
 	outfit = /datum/outfit/job/security_sergeant
+	plasmaman_outfit = /datum/outfit/plasmaman/security
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SEC
 
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+	departments = DEPARTMENT_SECURITY
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_SERGEANT
 	bounty_types = CIV_JOB_SEC
@@ -37,7 +39,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm, /obj/item/armament_token/primary)
+	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
+
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

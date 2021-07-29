@@ -20,6 +20,17 @@
 	install_component(new /obj/item/computer_hardware/card_slot)
 	install_component(new /obj/item/computer_hardware/printer/mini)
 
+/obj/item/modular_computer/tablet/preset/science/Initialize()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = new
+	install_component(new /obj/item/computer_hardware/processor_unit/small)
+	install_component(new /obj/item/computer_hardware/battery(src, /obj/item/stock_parts/cell/computer))
+	install_component(hard_drive)
+	install_component(new /obj/item/computer_hardware/card_slot)
+	install_component(new /obj/item/computer_hardware/network_card)
+	install_component(new /obj/item/computer_hardware/radio_card)
+	hard_drive.store_file(new /datum/computer_file/program/signaler)
+
 /obj/item/modular_computer/tablet/preset/cargo/Initialize()
 	. = ..()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = new
@@ -30,6 +41,16 @@
 	install_component(new /obj/item/computer_hardware/network_card)
 	install_component(new /obj/item/computer_hardware/printer/mini)
 	hard_drive.store_file(new /datum/computer_file/program/shipping)
+	var/datum/computer_file/program/chatclient/chatprogram
+	chatprogram = new
+	hard_drive.store_file(chatprogram)
+	chatprogram.username = get_cargochat_username()
+
+/obj/item/modular_computer/tablet/preset/cargo/proc/get_cargochat_username()
+	return "cargonian_[rand(1,999)]"
+
+/obj/item/modular_computer/tablet/preset/cargo/quartermaster/get_cargochat_username()
+	return "quartermaster"
 
 /obj/item/modular_computer/tablet/preset/advanced/atmos/Initialize() //This will be defunct and will be replaced when NtOS PDAs are done
 	. = ..()
@@ -83,7 +104,9 @@
 //Borg Built-in tablet
 /obj/item/modular_computer/tablet/integrated/Initialize()
 	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/integrated/hard_drive = new // SKYRAT EDIT ADD
 	install_component(new /obj/item/computer_hardware/processor_unit/small)
-	install_component(new /obj/item/computer_hardware/hard_drive/small/integrated)
+	install_component(hard_drive) // SKYRAT EDIT -- ORIGINAL install_component(new /obj/item/computer_hardware/hard_drive/small/integrated/)
 	install_component(new /obj/item/computer_hardware/recharger/cyborg)
 	install_component(new /obj/item/computer_hardware/network_card/integrated)
+	hard_drive.store_file(/datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD

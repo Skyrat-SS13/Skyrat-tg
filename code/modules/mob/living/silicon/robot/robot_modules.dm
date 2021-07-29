@@ -135,9 +135,8 @@
 	R.update_module_innate()
 	RM.rebuild_modules()
 	R.radio.recalculateChannels()
-	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS
-	if(RM.dogborg)
-		R.dogborg = TRUE
+	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
+	if(R.is_dogborg()) //Should pass because model was set previously.
 		RM.dogborg_equip()
 	//SKYRAT EDIT ADDITION END
 	INVOKE_ASYNC(RM, .proc/do_transform_animation)
@@ -254,9 +253,9 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/iron,
-		/obj/item/stack/cable_coil,
-		/obj/item/lightreplacer/cyborg) // Skyrat Edit - Surprised Engie borgs don't get these
+		/obj/item/lightreplacer/cyborg, // Skyrat Edit - Surprised Engie borgs don't get these
+		/obj/item/stack/tile/iron/base/cyborg,
+		/obj/item/stack/cable_coil)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(/obj/item/borg/stun)
 	cyborg_base_icon = "engineer"
@@ -271,7 +270,7 @@
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/screwdriver/cyborg,
 		/obj/item/crowbar/cyborg,
-		/obj/item/stack/tile/iron,
+		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/soap/nanotrasen,
 		/obj/item/storage/bag/trash/cyborg,
 		/obj/item/melee/flyswatter,
@@ -562,7 +561,6 @@
 		/obj/item/scalpel,
 		/obj/item/melee/transforming/energy/sword/cyborg/saw,
 		/obj/item/roller/robo,
-		/obj/item/card/emag,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher/mini,
 		/obj/item/pinpointer/syndicate_cyborg,
@@ -590,16 +588,18 @@
 		/obj/item/wrench/cyborg,
 		/obj/item/crowbar/cyborg,
 		/obj/item/wirecutters/cyborg,
+		/obj/item/analyzer,
 		/obj/item/multitool/cyborg,
 		/obj/item/stack/sheet/iron,
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/stack/tile/iron,
+		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/dest_tagger/borg,
 		/obj/item/stack/cable_coil,
 		/obj/item/pinpointer/syndicate_cyborg,
 		/obj/item/borg_chameleon,
+		/obj/item/card/emag,
 		)
 
 	cyborg_base_icon = "synd_engi"

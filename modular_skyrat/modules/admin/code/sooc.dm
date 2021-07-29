@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	if(!mob)
 		return
 
-	var/static/list/job_lookup = list("Security Officer"=TRUE, "Warden"=TRUE, "Detective"=TRUE, "Head of Security"=TRUE, "Captain"=TRUE, "Blueshield"=TRUE, "Security Medic"=TRUE, "Security Sergeant"=TRUE)
+	var/static/list/job_lookup = list("Security Officer"=TRUE, "Warden"=TRUE, "Detective"=TRUE, "Head of Security"=TRUE, "Captain"=TRUE, "Blueshield"=TRUE, "Security Medic"=TRUE, "Security Sergeant"=TRUE, "Civil Disputes Officer"=TRUE)
 	if(!holder)
 		if(!mob.mind || !job_lookup[mob.mind.assigned_role])
 			to_chat(src, "<span class='danger'>You're not a security role!</span>")
@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 		var/mode = listeners[c]
 		var/color = (!anon && CONFIG_GET(flag/allow_admin_ooccolor) && C.prefs.ooccolor) ? C.prefs.ooccolor : GLOB.SOOC_COLOR
 		var/name = (mode == SOOC_LISTEN_ADMIN && anon) ? "([key])[keyname]" : keyname
-		to_chat(C, "<font color='[color]'><b><span class='prefix'>SOOC:</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font>")
+		to_chat(C, "<span class='oocplain'><font color='[color]'><b><span class='prefix'>SOOC:</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font></span>")
 
 #undef SOOC_LISTEN_PLAYER
 #undef SOOC_LISTEN_ADMIN
@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 					listeners[M.client] = TRUE
 	for(var/c in listeners)
 		var/client/C = c
-		to_chat(C, "<B>The SOOC channel has been globally [GLOB.sooc_allowed ? "enabled" : "disabled"].</B>")
+		to_chat(C, "<span class='oocplain'><B>The SOOC channel has been globally [GLOB.sooc_allowed ? "enabled" : "disabled"].</B></span>")
 
 /datum/admins/proc/togglesooc()
 	set category = "Server"

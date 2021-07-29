@@ -45,6 +45,7 @@
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
 	crate_name = "armor crate"
+	
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Science /////////////////////////////////////////
@@ -55,20 +56,20 @@
 /////////////////////////////// Service //////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-//disabled temporarily, expect to be back later.
-/*
-/datum/supply_pack/service/hydrohelper
-	name = "Hydro-Helper Circuit Pack"
-	desc = "Botany being lazy with something? Being refused circuit boards? Wanting to start your own Gaiatic garden? This pack contains 3 Hydroponic tray circuit boards, a biogenerator circuit board, and a seed extractor circuit board! (Parts and matterials not included)"
-	cost = 1500
-	contains = list(/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/biogenerator,
-					/obj/item/circuitboard/machine/seed_extractor)
-	crate_name = "hydro-helper circuit pack"
+/datum/supply_pack/organic/lavalandsamples
+	name = "Planetary Flora Samples"
+	desc = "A box of samples taken from the surface of Lavaland. Requires Hydroponics access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	access_view = ACCESS_HYDROPONICS
+	contains = list(/obj/item/seeds/lavaland/polypore,
+					/obj/item/seeds/lavaland/porcini,
+					/obj/item/seeds/lavaland/inocybe,
+					/obj/item/seeds/lavaland/ember,
+					/obj/item/seeds/lavaland/seraka,
+					/obj/item/seeds/star_cactus,
+					/obj/item/seeds/star_cactus)
+	crate_name = "planetary seeds crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
-*/
 
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////////////// Goodies //////////////////////////////////////

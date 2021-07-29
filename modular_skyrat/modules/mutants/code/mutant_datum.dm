@@ -3,8 +3,8 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 #define CURE_TIME 10 SECONDS
 #define REVIVE_TIME_LOWER 2 MINUTES
 #define REVIVE_TIME_UPPER 3 MINUTES
-#define IMMUNITY_LOWER 1 MINUTES
-#define IMMUNITY_UPPER 3 MINUTES
+#define IMMUNITY_LOWER 2 MINUTES
+#define IMMUNITY_UPPER 4 MINUTES
 #define RNA_REFRESH_TIME 2 MINUTES //How soon can we extract more RNA?
 
 /datum/component/mutant_infection
@@ -70,8 +70,12 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 
 /datum/component/mutant_infection/process(delta_time)
 	if(!ismutant(host) && host.stat != DEAD)
-		if(host.getToxLoss() < 50)
+		var/toxloss = host.getToxLoss()
+		if(toxloss < 50)
 			host.adjustToxLoss(tox_loss_mod * delta_time)
+			if(DT_PROB(5, delta_time))
+				to_chat(host, span_userdanger("You feel your motor controls seize up for a moment!"))
+				host.Paralyze(10)
 		else
 			host.adjustToxLoss((tox_loss_mod * 2) * delta_time)
 			if(DT_PROB(10, delta_time))
@@ -93,6 +97,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	timer_id = addtimer(CALLBACK(src, .proc/transform_host), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/cure_host()
+	SIGNAL_HANDLER
 	if(!host.stat == DEAD)
 		to_chat(host, "<span class='notice'>You start to feel refreshed and invigorated!</span>")
 	STOP_PROCESSING(SSobj, src)
@@ -124,16 +129,12 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/mutant_death)
 
 /datum/component/mutant_infection/proc/mutant_death()
+	SIGNAL_HANDLER
 	var/revive_time = rand(REVIVE_TIME_LOWER, REVIVE_TIME_UPPER)
-	to_chat(host, "<span class='cultlarge'>You can feel your heart stopping, but something isn't right... \
-		life has not abandoned your broken form. You can only feel a deep and immutable hunger that \
-		not even death can stop, you will rise again!</span>")
+	to_chat(host, "<span class='cultlarge'>You can feel your heart stopping, but something isn't right... you will rise again!</span>")
 	timer_id = addtimer(CALLBACK(src, .proc/regenerate), revive_time, TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/regenerate()
-	to_chat(host, "<span class='notice'>You feel an itching, both inside and \
-		outside as your tissues knit and reknit.</span>")
-	playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	if(!host.mind)
 		var/list/candidates = pollCandidatesForMob("Do you want to play as a mutant([host.name])?", M = host)
 		if(!candidates.len)
@@ -142,4 +143,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 		host.key = C.key
 	else
 		host.grab_ghost()
+	to_chat(host, "<span class='notice'>You feel an itching, both inside and \
+		outside as your tissues knit and reknit.</span>")
+	playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	host.revive(TRUE, TRUE)

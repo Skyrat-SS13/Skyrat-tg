@@ -182,7 +182,12 @@
 	else
 		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", INDIVIDUAL_ATTACK_LOG)
 
-	vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this)
+	switch(mode)
+		if(HYPO_INJECT)
+			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this)
+		if(HYPO_SPRAY)
+			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this, methods = PATCH)
+
 	var/long_sound = vial.amount_per_transfer_from_this >= 15
 	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
 	to_chat(user, "<span class='notice'>You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units.</span>")

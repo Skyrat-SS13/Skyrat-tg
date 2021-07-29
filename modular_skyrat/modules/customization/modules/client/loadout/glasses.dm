@@ -64,7 +64,7 @@
 
 /datum/loadout_item/glasses/biker
 	name = "Biker Goggles"
-	path =/obj/item/clothing/glasses/biker
+	path = /obj/item/clothing/glasses/biker
 
 /datum/loadout_item/glasses/medicpatch
 	name = "Medical Eyepatch"

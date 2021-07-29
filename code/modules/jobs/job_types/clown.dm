@@ -28,6 +28,8 @@
 
 	family_heirlooms = list(/obj/item/bikehorn/golden)
 
+	veteran_only = TRUE // SKYRAT EDIT ADDITION
+
 /datum/job/clown/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
 	H.apply_pref_name("clown", M.client)

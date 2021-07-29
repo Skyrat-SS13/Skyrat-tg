@@ -1,10 +1,11 @@
 /datum/sprite_accessory/fluff/moth
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/moth_fluff.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_fluff.dmi'
 	default_color = "FFF"
 	key = "fluff"
 	generic = "Fluff"
 	recommended_species = list("moth", "synthmammal", "mammal", "insect")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/fluff/moth/none
 	name = "None"
