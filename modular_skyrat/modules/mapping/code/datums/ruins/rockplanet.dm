@@ -44,6 +44,15 @@
 	suffix = "factory.dmm"
 	cost = 5
 
+/datum/map_template/ruin/rockplanet/syndicate_base
+	name = "Syndicate Rockplanet Base"
+	id = "rock-base"
+	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
+	suffix = "rockplanet_surface_syndicate_base1_skyrat.dmm"
+	allow_duplicates = FALSE
+	never_spawn_with = list(/datum/map_template/ruin/icemoon/underground/skyrat/syndicate_base, /datum/map_template/ruin/lavaland/skyrat/syndicate_base)
+	always_place = TRUE
+
 //Below here should be ruins that are pretty much entirely fluff - minimal loot or threat, just adds to the aesthetic
 /datum/map_template/ruin/rockplanet/abandoned_a	//Restaraunt
 	name = "Abandoned Structure A"
@@ -69,3 +78,22 @@
 	description = "The remains of some ancient structure."
 	suffix = "abandoned_d.dmm"
 
+// Anywhere ruins that all mining levels should have, minimally modified.
+
+/datum/map_template/ruin/rockplanet/free_golem
+	name = "Free Golem Ship"
+	id = "golem-ship"
+	description = "Lumbering humanoids, made out of precious metals, move inside this ship. They frequently leave to mine more minerals, which they somehow turn into more of them. \
+	Seem very intent on research and individual liberty, and also geology-based naming?"
+	cost = 20
+	prefix = "_maps/RandomRuins/AnywhereRuins/"
+	suffix = "golem_ship.dmm"
+
+/datum/map_template/ruin/rockplanet/fountain
+	name = "Fountain Hall"
+	id = "fountain"
+	description = "The fountain has a warning on the side. DANGER: May have undeclared side effects that only become obvious when implemented."
+	prefix = "_maps/RandomRuins/AnywhereRuins/"
+	suffix = "fountain_hall.dmm"
+	cost = 5
+//	allow_duplicates = TRUE //Re-enable this when more ruins are added! As it is now, Rockplanet will be FLOODED With these.

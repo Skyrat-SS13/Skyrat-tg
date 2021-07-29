@@ -2,7 +2,7 @@
 	title = "Redshield"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("HighComm Representative")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "High Command and the HighComm Representative"
@@ -32,6 +32,8 @@
 	)
 
 	veteran_only = TRUE
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"
