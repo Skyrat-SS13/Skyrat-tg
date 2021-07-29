@@ -258,7 +258,7 @@
 	path = /obj/item/clothing/head/hos/beret/navyhos
 	restricted_roles = list("Head of Security")
 
-/datum/loadout_item/head/job/navybluehosberet
+/datum/loadout_item/head/job/navybluehoscap
 	name = "Head of Security's Naval Cap"
 	path = /obj/item/clothing/head/imperial/hos
 	restricted_roles = list("Head of Security")
@@ -356,25 +356,25 @@
 	restricted_desc = "Paramedic"
 
 /datum/loadout_item/head/job/med_viro
-	name = "Virology Beret"
+	name = "Virologist Beret"
 	path = /obj/item/clothing/head/beret/medical/virologist
 	restricted_roles = list("Virologist", "Chief Medical Officer")
 	restricted_desc = "Virology"
 
 /datum/loadout_item/head/job/med_chem
-	name = "Chemistry Beret"
+	name = "Chemist Beret"
 	path = /obj/item/clothing/head/beret/medical/chemist
 	restricted_roles = list("Chemist", "Chief Medical Officer")
 	restricted_desc = "Chemistry"
 
-/datum/loadout_item/head/job/CMO_beret
-	name = "Chief Medical Officer's Beret"
+/datum/loadout_item/head/job/CMO_beret_alt
+	name = "Chief Medical Officer's Blue Beret"
 	path = /obj/item/clothing/head/beret/medical/cmo
 	restricted_roles = list("Chief Medical Officer")
 	restricted_desc = "Chief Medical Officer"
 
-/datum/loadout_item/head/job/CMO_beret_alt
-	name = "Chief Medical Officer's Blue Beret"
+/datum/loadout_item/head/job/CMO_beret
+	name = "Chief Medical Officer's Beret"
 	path = /obj/item/clothing/head/beret/medical/cmo/alt
 	restricted_roles = list("Chief Medical Officer")
 	restricted_desc = "Chief Medical Officer"
@@ -399,13 +399,19 @@
 
 /datum/loadout_item/head/job/RD_beret_alt
 	name = "Research Director's White Beret"
-	path = /obj/item/clothing/head/beret/science/fancy/rd/alt
+	path = /obj/item/clothing/head/beret/science/fancy/rd
 	restricted_roles = list("Research Director")
 	restricted_desc = "Research Director"
 
 /datum/loadout_item/head/job/QM_beret
 	name = "Quartermaster's Beret"
 	path = /obj/item/clothing/head/beret/cargo/qm
+	restricted_roles = list("Quartermaster")
+	restricted_desc = "Quartermaster"
+
+/datum/loadout_item/head/job/QM_beret
+	name = "Quartermaster's White Beret"
+	path = /obj/item/clothing/head/beret/cargo/qm/alt
 	restricted_roles = list("Quartermaster")
 	restricted_desc = "Quartermaster"
 

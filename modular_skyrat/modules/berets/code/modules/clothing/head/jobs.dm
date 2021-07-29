@@ -106,6 +106,11 @@
 
 /obj/item/clothing/head/beret/science/fancy/rd
 	name = "research director's beret"
+	desc = "A custom-tailored beret for the Research Director. Lamarr thinks it looks great."
+	greyscale_colors = "#8D008F#D8D39C"
+
+/obj/item/clothing/head/beret/science/fancy/rd/alt
+	name = "research director's beret"
 	desc = "A custom-tailored beret for the Research Director. Lamarr thinks it looks great. This one is made out of white fabric. Fancy."
 	greyscale_colors = "#FFFFFF#8D008F"
 

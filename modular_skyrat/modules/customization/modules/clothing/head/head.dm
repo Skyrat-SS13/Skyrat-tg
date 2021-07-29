@@ -79,12 +79,13 @@
 /obj/item/clothing/head/intern/developer
 	name = "\improper Intern beancap"
 
-/obj/item/clothing/head/warden/syndicate
+/obj/item/clothing/head/sec/navywarden/syndicate
 	name = "master at arms' beret"
 	desc = "Surprisingly stylish, if you lived in a silent impressionist film."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "syndwardenberet"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#353535#AAAAAA"
+	icon_state = "beret_badge"
 	dog_fashion = null
 
 

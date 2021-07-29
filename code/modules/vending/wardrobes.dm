@@ -77,7 +77,6 @@
 					/obj/item/clothing/shoes/sneakers/white = 4,
 					/obj/item/clothing/head/beret/medical/paramedic = 4,
 					/obj/item/clothing/head/soft/paramedic = 4,
-					/obj/item/clothing/head/beret/job/med = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/apron/surgical = 4,
 					/obj/item/clothing/mask/surgical = 4,
 					/obj/item/clothing/gloves/color/latex/nitrile = 2, //SKYRAT EDIT ADDITION
@@ -201,7 +200,7 @@
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
-					/obj/item/clothing/head/beret/job/sci/robo = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/head/beret/science/fancy/robo = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/mask/bandana/skull = 2)
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2,
 					/obj/item/organ/tongue/robot = 2)
