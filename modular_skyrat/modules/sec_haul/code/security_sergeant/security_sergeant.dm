@@ -2,7 +2,7 @@
 	title = "Security Sergeant"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the head of security"
@@ -26,6 +26,8 @@
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+
 /datum/outfit/job/security_sergeant
 	name = "Security Sergeant"
 	jobtype = /datum/job/security_sergeant
@@ -39,9 +41,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
 
-	suit_store = /obj/item/gun/energy/taser/armadyne //SKYRAT EDIT CHANGE - SEC_HAUL
+	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm, /obj/item/armament_token/primary)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

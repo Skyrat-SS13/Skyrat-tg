@@ -293,8 +293,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PERMANENTLY_ONFIRE "permanently_onfire"
 /// Galactic Common Sign Language
 #define TRAIT_SIGN_LANG "sign_language"
-/// The mob's nanites are sending a monitoring signal visible on diag HUD
-#define TRAIT_NANITE_MONITORING "nanite_monitoring"
 /// nobody can use martial arts on this mob
 #define TRAIT_MARTIAL_ARTS_IMMUNE "martial_arts_immune"
 /// You've been cursed with a living duffelbag, and can't have more added
@@ -505,6 +503,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait applied when the MMI component is added to an [/obj/item/integrated_circuit]
 #define TRAIT_COMPONENT_MMI "component_mmi"
 
+/// If present on a [/mob/living/carbon], will make them appear to have a medium level disease on health HUDs.
+#define TRAIT_DISEASELIKE_SEVERITY_MEDIUM "diseaselike_severity_medium"
+
 //Medical Categories for quirks
 #define CAT_QUIRK_ALL 0
 #define CAT_QUIRK_NOTES 1
@@ -593,7 +594,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define GENETICS_SPELL "genetics_spell"
 #define EYES_COVERED "eyes_covered"
 #define HYPNOCHAIR_TRAIT "hypnochair"
-#define NANITES_TRAIT "nanites"
 #define FLASHLIGHT_EYES "flashlight_eyes"
 #define IMPURE_OCULINE "impure_oculine"
 #define BLINDFOLD_TRAIT "blindfolded"

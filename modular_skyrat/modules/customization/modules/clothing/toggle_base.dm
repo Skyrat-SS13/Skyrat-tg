@@ -11,15 +11,17 @@
 
 	src.toggled_icon_state = toggled_icon_state
 
-	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/toggle_clothes)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/clothing_toggle)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/handle_examine)
 
-/datum/component/toggle_clothes/proc/toggle_clothes(obj/item/clothing/source, mob/living/clicker)
+/datum/component/toggle_clothes/proc/handle_examine(datum/source, mob/user, list/examine_text)
+	SIGNAL_HANDLER
+	examine_text += span_notice("This item is toggleable! Alt Click to toggle!")
+
+/datum/component/toggle_clothes/proc/clothing_toggle(obj/item/clothing/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
 	toggled = !toggled
 	source.icon_state = (toggled ? toggled_icon_state : initial(source.icon_state))
-
-/datum/component/toggle_clothes/proc/on_examine(obj/item/clothing/source, mob/living/clicker)
-	SIGNAL_HANDLER
-	to_chat(clicker, "This item is toggleable! Alt Click to toggle!")
+	to_chat(clicker, "You toggle \the [source]!")
+	clicker.update_appearance()
