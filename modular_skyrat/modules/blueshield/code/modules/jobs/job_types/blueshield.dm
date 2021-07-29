@@ -2,7 +2,7 @@
 	title = "Blueshield"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Nanotrasen Representative")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command and the Nanotrasen Representative"
@@ -30,8 +30,10 @@
 		/obj/item/clothing/head/collectable/captain = 4,
 		/obj/projectile/bullet/b460 = 1
 	)
-	
+
 	veteran_only = TRUE
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"
