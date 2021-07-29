@@ -98,8 +98,8 @@
 		var/atom/movable/movable_parent = parent
 		orbiter.glide_size = movable_parent.glide_size
 
-	orbiter.abstract_move(get_turf(parent))
-	to_chat(orbiter, span_notice("Now orbiting [parent]."))
+	orbiter.forceMove(get_turf(parent))
+	to_chat(orbiter, "<span class='notice'>Now orbiting [parent].</span>")
 
 /datum/component/orbiter/proc/end_orbit(atom/movable/orbiter, refreshing=FALSE)
 	if(!orbiter_list[orbiter])
@@ -133,10 +133,11 @@
 		qdel(src)
 
 	var/atom/curloc = master.loc
-	for(var/atom/movable/movable_orbiter as anything in orbiter_list)
-		if(QDELETED(movable_orbiter) || movable_orbiter.loc == newturf)
+	for(var/i in orbiter_list)
+		var/atom/movable/thing = i
+		if(QDELETED(thing) || thing.loc == newturf)
 			continue
-		movable_orbiter.abstract_move(newturf)
+		thing.forceMove(newturf)
 		if(CHECK_TICK && master.loc != curloc)
 			// We moved again during the checktick, cancel current operation
 			break
@@ -150,7 +151,6 @@
 	end_orbit(orbiter)
 
 /datum/component/orbiter/proc/orbiter_glide_size_update(datum/source, target)
-	SIGNAL_HANDLER
 	for(var/orbiter in orbiter_list)
 		var/atom/movable/movable_orbiter = orbiter
 		movable_orbiter.glide_size = target

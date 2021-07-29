@@ -29,7 +29,7 @@
 
 /datum/job/roboticist/New()
 	. = ..()
-	family_heirlooms += subtypesof(/obj/item/toy/mecha)
+	family_heirlooms += subtypesof(/obj/item/toy/prize)
 
 /datum/outfit/job/roboticist
 	name = "Roboticist"
@@ -44,7 +44,6 @@
 	backpack = /obj/item/storage/backpack/science/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
 	satchel = /obj/item/storage/backpack/satchel/tox/robo //SKYRAT CHANGE - Roboticist Bags (CHANGE)
 	duffelbag = /obj/item/storage/backpack/duffel/robo //SKYRAT CHANGE - Roboticist Bags (ADDITION)
-	backpack_contents = list(/obj/item/modular_computer/tablet/preset/science=1)
 
 	pda_slot = ITEM_SLOT_LPOCKET
 

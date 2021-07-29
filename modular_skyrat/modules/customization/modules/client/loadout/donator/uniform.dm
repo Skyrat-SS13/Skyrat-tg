@@ -10,7 +10,3 @@
 /datum/loadout_item/uniform/donator/public/fashionableskirt
 	name = "Fashionable Skirt"
 	path = /obj/item/clothing/under/rank/civilian/skirt
-
-/datum/loadout_item/uniform/donator/public/blondie
-	name = "Blonde Cowboy Uniform"
-	path = /obj/item/clothing/under/rank/security/detective/cowboy/armorless

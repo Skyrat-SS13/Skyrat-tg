@@ -151,12 +151,7 @@ const OutfitDisplay = (props, context) => {
           content={entry.name}
           title={entry.path || entry.name}
           selected={getOutfitKey(entry) === current_outfit}
-          onClick={() => act('preview', {
-            path: getOutfitKey(entry),
-          })}
-          onDblClick={() => act('applyoutfit', {
-            path: getOutfitKey(entry),
-          })} />
+          onClick={() => act('preview', { path: getOutfitKey(entry) })} />
       ))}
       {currentTab === "Custom" && (
         <Button

@@ -39,8 +39,6 @@
 	var/extra2_color_src
 	///If defined, the accessory will be only available to ckeys inside the list. ITS ASSOCIATIVE, ie. ("ckey" = TRUE). For speed
 	var/list/ckey_whitelist
-	///Whether this feature is genetic, and thus modifiable by DNA consoles
-	var/genetic = FALSE
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -103,12 +101,11 @@
 /datum/sprite_accessory/spines
 	key = "spines"
 	generic = "Spines"
-	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list("lizard", "unathi", "ashlizard", "silverlizard")
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
-	genetic = TRUE
 
 /datum/sprite_accessory/spines/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
@@ -135,10 +132,9 @@
 	key = "legs"
 	generic = "Leg Type"
 	color_src = null
-	genetic = TRUE
 
 /datum/sprite_accessory/socks
-	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 
 /datum/sprite_accessory/socks/socks_knee
@@ -233,7 +229,7 @@
 	use_static = null
 
 /datum/sprite_accessory/underwear
-	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
 	///Whether the underwear uses a special sprite for digitigrade style (i.e. briefs, not panties). Adds a "_d" suffix to the icon state
 	var/has_digitigrade = FALSE
 
@@ -395,7 +391,7 @@
 
 
 /datum/sprite_accessory/undershirt
-	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
+	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/underwear.dmi'
 	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/tanktop_alt
@@ -586,9 +582,3 @@
 	icon_state = "shibari_sleeves"
 	gender = FEMALE
 	use_static = null
-
-/datum/sprite_accessory/undershirt/bulletclub //4 life
-	name = "Shirt - Black Skull"
-	icon_state = "shirt_bc"
-	gender = NEUTER
-

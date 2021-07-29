@@ -21,4 +21,3 @@
 	icon_state = "cocoleaf"
 	foodtypes = FRUIT //i guess? i mean it grows on trees...
 	tastes = list("leaves" = 1)
-	distill_reagent = /datum/reagent/consumable/ethanol/sins_delight //Cocaine is one hell of a sin.

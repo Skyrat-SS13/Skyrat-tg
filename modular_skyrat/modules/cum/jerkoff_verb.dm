@@ -38,13 +38,7 @@
 /obj/item/coom/attack(mob/living/M, mob/user, proximity)
 	if(!proximity)
 		return
-	if(!ishuman(M))
-		return
-	var/mob/living/carbon/human/human_cumvictim = M
-	if(!human_cumvictim.client)
-		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
-		return
-	if(!(human_cumvictim.client.prefs.skyrat_toggles & CUMFACE_PREF)) //im just paranoid about runtime errors
+	if(!(M.client && (M.client.prefs.skyrat_toggles & CUMFACE_PREF) && ishuman(M)))
 		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
 		return
 	var/mob/living/carbon/human/H = user
@@ -64,7 +58,7 @@
 		user.visible_message("<span class='warning'>[user] starts masturbating onto themself!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
 	else
 		user.visible_message("<span class='warning'>[user] starts masturbating onto [M]!</span>", "<span class='danger'>You start masturbating onto [M]!</span>")
-	if(do_after(user,60,M))
+	if(do_after(user,M,60))
 		if(M==user)
 			user.visible_message("<span class='warning'>[user] cums on themself!</span>", "<span class='danger'>You cum on yourself!</span>")
 		else
@@ -79,8 +73,6 @@
 /obj/item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
-		return
-	if(ishuman(target))
 		return
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
@@ -108,6 +100,8 @@
 				user.emote("moan")
 			qdel(src)
 	else
+		if(ishuman(target))
+			return
 		user.visible_message("<span class='warning'>[user] starts masturbating onto [target]!</span>", "<span class='danger'>You start masturbating onto [target]!</span>")
 		if(do_after(user,60))
 			var/turf/T = get_turf(target)

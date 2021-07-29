@@ -60,7 +60,7 @@
 "bV" = (
 /obj/structure/table,
 /obj/structure/window/spawner,
-/obj/item/toy/plush/lizard_plushie/green,
+/obj/item/toy/plush/lizardplushie,
 /obj/item/reagent_containers/food/drinks/bottle/hooch,
 /obj/structure/window/spawner/west,
 /turf/open/floor/iron/shuttle/evac{
@@ -89,7 +89,7 @@
 /area/shuttle/escape)
 "dw" = (
 /obj/machinery/door/window/brigdoor/security{
-	dir = 1
+	req_access_txt = "2"
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec"
@@ -155,12 +155,8 @@
 	},
 /area/shuttle/escape)
 "fi" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
-/obj/structure/window/reinforced/spawner{
-	dir = 1
-	},
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced/spawner,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -308,7 +304,7 @@
 "lL" = (
 /obj/structure/table,
 /obj/structure/window/spawner,
-/obj/item/toy/plush/space_lizard_plushie,
+/obj/item/toy/plush/lizardplushie/space,
 /obj/item/reagent_containers/food/drinks/bottle/grappa,
 /obj/structure/window/spawner/east,
 /turf/open/floor/iron/shuttle/evac{
@@ -429,11 +425,14 @@
 	},
 /area/shuttle/escape)
 "qh" = (
+/obj/machinery/button/flasher{
+	id = "shuttle_flasher";
+	pixel_x = -25;
+	pixel_y = -6
+	},
+/obj/structure/window/reinforced/spawner,
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
-	},
-/obj/structure/window/reinforced/spawner{
-	dir = 1
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
@@ -455,6 +454,7 @@
 	},
 /area/shuttle/escape)
 "qQ" = (
+/obj/machinery/door/airlock/external/glass,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorplace"
 	},
@@ -948,6 +948,11 @@
 	icon_state = "floorsec2"
 	},
 /area/shuttle/escape/brig)
+"JF" = (
+/turf/closed/wall/mineral/titanium/shuttle_wall/evac{
+	icon_state = "15,8"
+	},
+/area/shuttle/escape)
 "JR" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
 	icon_state = "10,18"
@@ -1028,12 +1033,6 @@
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "flooreng2"
-	},
-/area/shuttle/escape)
-"Nq" = (
-/obj/machinery/door/airlock/external/glass,
-/turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorplace"
 	},
 /area/shuttle/escape)
 "Nv" = (
@@ -1222,11 +1221,6 @@
 	icon_state = "floorsec2"
 	},
 /area/shuttle/escape/brig)
-"UG" = (
-/turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
-	icon_state = "15,14"
-	},
-/area/shuttle/escape)
 "UH" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/iron/shuttle/evac{
@@ -1255,11 +1249,6 @@
 	},
 /obj/machinery/light{
 	dir = 8
-	},
-/obj/machinery/button/flasher{
-	id = "shuttle_flasher";
-	pixel_x = -25;
-	pixel_y = -6
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
@@ -1328,11 +1317,6 @@
 	icon_state = "5,7"
 	},
 /area/shuttle/escape)
-"YF" = (
-/turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
-	icon_state = "15,16"
-	},
-/area/shuttle/escape)
 "YW" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "15,13"
@@ -1340,7 +1324,8 @@
 /area/shuttle/escape)
 "Zb" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
-	icon_state = "15,18"
+	dir = 1;
+	icon_state = "1,16"
 	},
 /area/shuttle/escape)
 "Zo" = (
@@ -1377,18 +1362,18 @@ ZF
 ZF
 tG
 hy
+qQ
+qQ
 Zb
-Nq
-YF
 zw
-UG
+qQ
 YW
 TU
 TU
 Yb
 IB
 Tb
-IB
+JF
 cz
 uS
 HQ
@@ -1406,18 +1391,18 @@ ZF
 ZF
 vm
 QD
-qQ
+MJ
 MJ
 aY
 MJ
-qQ
+MJ
 zc
 OY
 OY
 VC
 JZ
 qh
-JZ
+OY
 rh
 UT
 mL

@@ -192,7 +192,7 @@
 	update_body()
 	if(isturf(loc))
 		var/turf/T = loc
-		T.Entered(src, null)
+		T.Entered(src)
 
 //Ayy lmao
 

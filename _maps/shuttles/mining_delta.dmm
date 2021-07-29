@@ -12,7 +12,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/shuttle/mining)
 "d" = (
@@ -33,7 +35,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/shuttle/mining)
 "f" = (
@@ -85,6 +89,9 @@
 	port_direction = 8;
 	width = 7
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/mining)
 "j" = (
@@ -112,6 +119,21 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
+/area/shuttle/mining)
+"m" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Mining Shuttle Airlock"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
 /area/shuttle/mining)
 "n" = (
 /obj/structure/chair/comfy/shuttle{
@@ -225,7 +247,9 @@
 /obj/item/pickaxe/emergency,
 /obj/item/pickaxe/emergency,
 /obj/effect/turf_decal/delivery,
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/shuttle/mining)
 "r" = (
@@ -246,7 +270,9 @@
 /obj/structure/ore_box,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/shuttle/mining)
 "t" = (
@@ -299,7 +325,7 @@ a
 a
 a
 b
-b
+m
 b
 a
 a

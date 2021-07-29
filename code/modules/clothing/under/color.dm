@@ -1,16 +1,13 @@
 /obj/item/clothing/under/color
 	desc = "A standard issue colored jumpsuit. Variety is the spice of life!"
 	dying_key = DYE_REGISTRY_UNDER
-	greyscale_colors = "#3f3f3f"
 	greyscale_config = /datum/greyscale_config/jumpsuit
-	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_inhand_left
-	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_inhand_right
-	greyscale_config_worn = /datum/greyscale_config/jumpsuit_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_worn_digi
+	var/datum/greyscale_config/greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_inhand_left
+	var/datum/greyscale_config/greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_inhand_right
+	var/datum/greyscale_config/greyscale_config_worn = /datum/greyscale_config/jumpsuit_worn
 	icon = 'icons/obj/clothing/under/color.dmi'
 	icon_state = "jumpsuit"
 	inhand_icon_state = "jumpsuit"
-	worn_icon_state = "jumpsuit"
 	worn_icon = 'icons/mob/clothing/under/color.dmi'
 
 /obj/item/clothing/under/color/jumpskirt
@@ -18,14 +15,13 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
 	icon_state = "jumpskirt"
-	greyscale_config_worn_digi = null
 
 /obj/item/clothing/under/color/random
 	icon_state = "random_jumpsuit"
 
 /obj/item/clothing/under/color/random/Initialize()
 	..()
-	var/obj/item/clothing/under/color/C = pick(subtypesof(/obj/item/clothing/under/color) - typesof(/obj/item/clothing/under/color/jumpskirt) - /obj/item/clothing/under/color/random - /obj/item/clothing/under/color/grey/ancient - /obj/item/clothing/under/color/black/ghost - /obj/item/clothing/under/rank/prisoner)
+	var/obj/item/clothing/under/color/C = pick(subtypesof(/obj/item/clothing/under/color) - typesof(/obj/item/clothing/under/color/jumpskirt) - /obj/item/clothing/under/color/random - /obj/item/clothing/under/color/grey/ancient - /obj/item/clothing/under/color/black/ghost - /obj/item/clothing/under/color/prisoner)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.equip_to_slot_or_del(new C(H), ITEM_SLOT_ICLOTHING, initial=TRUE) //or else you end up with naked assistants running around everywhere...
@@ -38,7 +34,7 @@
 
 /obj/item/clothing/under/color/jumpskirt/random/Initialize()
 	..()
-	var/obj/item/clothing/under/color/jumpskirt/C = pick(subtypesof(/obj/item/clothing/under/color/jumpskirt) - /obj/item/clothing/under/color/jumpskirt/random - /obj/item/clothing/under/rank/prisoner/skirt)
+	var/obj/item/clothing/under/color/jumpskirt/C = pick(subtypesof(/obj/item/clothing/under/color/jumpskirt) - /obj/item/clothing/under/color/jumpskirt/random - /obj/item/clothing/under/color/jumpskirt/prisoner)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.equip_to_slot_or_del(new C(H), ITEM_SLOT_ICLOTHING, initial=TRUE)
@@ -46,12 +42,24 @@
 		new C(loc)
 	return INITIALIZE_HINT_QDEL
 
+/obj/item/clothing/under/color/Initialize()
+	. = ..()
+	if(greyscale_colors)
+		if(greyscale_config_inhand_left)
+			lefthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_left, greyscale_colors)
+		if(greyscale_config_inhand_right)
+			righthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_right, greyscale_colors)
+		if(greyscale_config_worn)
+			worn_icon = SSgreyscale.GetColoredIconByType(greyscale_config_worn, greyscale_colors)
+
 /obj/item/clothing/under/color/black
 	name = "black jumpsuit"
 	resistance_flags = NONE
+	greyscale_colors = "#3f3f3f"
 
 /obj/item/clothing/under/color/jumpskirt/black
 	name = "black jumpskirt"
+	greyscale_colors = "#3f3f3f"
 
 /obj/item/clothing/under/color/black/ghost
 	item_flags = DROPDEL

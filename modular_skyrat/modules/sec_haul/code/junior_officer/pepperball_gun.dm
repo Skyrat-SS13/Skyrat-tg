@@ -32,7 +32,6 @@
 	desc = "A pepperball casing."
 	caliber = CALIBER_PEPPERBALL
 	projectile_type = /obj/projectile/bullet/pepperball
-	harmful = FALSE
 
 /obj/projectile/bullet/pepperball
 	name = "pepperball orb"

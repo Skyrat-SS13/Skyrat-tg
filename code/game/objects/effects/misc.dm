@@ -74,7 +74,6 @@
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	light_color = COLOR_WHITE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	blocks_emissive = NONE
 
 /obj/effect/dummy/lighting_obj/Initialize(mapload, _range, _power, _color, _duration)
 	. = ..()
@@ -95,3 +94,5 @@
 	if(!ismob(loc))
 		return INITIALIZE_HINT_QDEL
 
+/obj/effect/abstract/directional_lighting
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

@@ -148,7 +148,7 @@
 		QDEL_NULL(chambered)
 	if(azoom)
 		QDEL_NULL(azoom)
-	if(isatom(suppressed))
+	if(suppressed)
 		QDEL_NULL(suppressed)
 	if(tsafety)
 		QDEL_NULL(tsafety)
@@ -278,8 +278,6 @@
 				user.visible_message("<span class='danger'>[user] fires [src]!</span>", \
 								"<span class='danger'>You fire [src]!</span>", \
 								"<span class='hear'>You hear a gunshot!</span>", COMBAT_MESSAGE_RANGE)
-	if(user.resting) // SKYRAT EDIT ADD - no crawlshooting
-		user.Immobilize(20, TRUE) // SKYRAT EDIT END
 
 /obj/item/gun/emp_act(severity)
 	. = ..()
@@ -693,7 +691,9 @@
 
 /obj/item/gun/proc/update_gunlight()
 	update_appearance()
-	update_action_buttons()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
 
 /obj/item/gun/pickup(mob/user)
 	. = ..()
@@ -708,7 +708,7 @@
 	if(azoom)
 		azoom.Remove(user)
 	if(zoomed)
-		zoom(user, user.dir, FALSE)
+		zoom(user, user.dir)
 
 /obj/item/gun/update_overlays()
 	. = ..()
@@ -794,15 +794,10 @@
 	var/obj/item/gun/gun = null
 
 /datum/action/toggle_scope_zoom/Trigger()
-	. = ..()
-	if(!.)
-		return
 	gun.zoom(owner, owner.dir)
 
 /datum/action/toggle_scope_zoom/IsAvailable()
 	. = ..()
-	if(owner.get_active_held_item() != gun)
-		. = FALSE
 	if(!. && gun)
 		gun.zoom(owner, owner.dir, FALSE)
 

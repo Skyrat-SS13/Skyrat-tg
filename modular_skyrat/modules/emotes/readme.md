@@ -1,7 +1,6 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/892
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/1925
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/2320
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/6259
 
 ## Title: All the emotes.
 
@@ -50,7 +49,4 @@ modular_skyrat/modules/emotes/code/emotes.dm 	| `#define EMOTE_DELAY`
   - refactoring code
   - adjusting existing sound files
   - adding more emotes
-- TheOOZ Additional emotes
-  - overlay emotes
-  - turf emotes
 - VOREstation - a couple of the soundfiles and emote texts

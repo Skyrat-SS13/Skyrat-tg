@@ -50,7 +50,7 @@
 	STR.set_holdable(null, list(/obj/item/disk/nuclear))
 
 /obj/item/storage/bag/trash/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!"))
+	user.visible_message("<span class='suicide'>[user] puts [src] over [user.p_their()] head and starts chomping at the insides! Disgusting!</span>")
 	playsound(loc, 'sound/items/eatfood.ogg', 50, TRUE, -1)
 	return (TOXLOSS)
 
@@ -75,7 +75,7 @@
 		J.mybag=src
 		J.update_appearance()
 	else
-		to_chat(user, span_warning("You are unable to fit your [name] into the [J.name]."))
+		to_chat(user, "<span class='warning'>You are unable to fit your [name] into the [J.name].</span>")
 		return
 
 /obj/item/storage/bag/trash/filled
@@ -143,7 +143,6 @@
 		listeningTo = null
 
 /obj/item/storage/bag/ore/proc/Pickup_ores(mob/living/user)
-	SIGNAL_HANDLER
 	var/show_message = FALSE
 	var/obj/structure/ore_box/box
 	var/turf/tile = user.loc
@@ -163,17 +162,17 @@
 				show_message = TRUE
 			else
 				if(!spam_protection)
-					to_chat(user, span_warning("Your [name] is full and can't hold any more!"))
+					to_chat(user, "<span class='warning'>Your [name] is full and can't hold any more!</span>")
 					spam_protection = TRUE
 					continue
 	if(show_message)
 		playsound(user, "rustle", 50, TRUE)
 		if (box)
-			user.visible_message(span_notice("[user] offloads the ores beneath [user.p_them()] into [box]."), \
-			span_notice("You offload the ores beneath you into your [box]."))
+			user.visible_message("<span class='notice'>[user] offloads the ores beneath [user.p_them()] into [box].</span>", \
+			"<span class='notice'>You offload the ores beneath you into your [box].</span>")
 		else
-			user.visible_message(span_notice("[user] scoops up the ores beneath [user.p_them()]."), \
-				span_notice("You scoop up the ores beneath you with your [name]."))
+			user.visible_message("<span class='notice'>[user] scoops up the ores beneath [user.p_them()].</span>", \
+				"<span class='notice'>You scoop up the ores beneath you with your [name].</span>")
 	spam_protection = FALSE
 
 /obj/item/storage/bag/ore/cyborg
@@ -222,15 +221,14 @@
 	desc = "For the enterprising botanist on the go. Less efficient than the stationary model, it creates one seed per plant."
 	icon_state = "portaseeder"
 
-/obj/item/storage/bag/plants/portaseeder/examine(mob/user)
-	. = ..()
-	. += span_notice("Ctrl-click to activate seed extraction.")
-
-/obj/item/storage/bag/plants/portaseeder/CtrlClick(mob/user)
-	if(user.incapacitated())
+/obj/item/storage/bag/plants/portaseeder/verb/dissolve_contents()
+	set name = "Activate Seed Extraction"
+	set category = "Object"
+	set desc = "Activate to convert your plants into plantable seeds."
+	if(usr.incapacitated())
 		return
-	for(var/obj/item/plant in contents)
-		seedify(plant, 1)
+	for(var/obj/item/O in contents)
+		seedify(O, 1)
 
 // -----------------------------
 //        Sheet Snatcher
@@ -253,7 +251,8 @@
 	var/datum/component/storage/concrete/stack/STR = GetComponent(/datum/component/storage/concrete/stack)
 	STR.allow_quick_empty = TRUE
 	STR.set_holdable(list(
-			/obj/item/stack/sheet
+			/obj/item/stack/sheet,
+			/obj/item/stack/tile/bronze
 			),
 		list(
 			/obj/item/stack/sheet/mineral/sandstone,
@@ -372,11 +371,11 @@
 		I_copy.layer = FLOAT_LAYER
 		. += I_copy
 
-/obj/item/storage/bag/tray/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/obj/item/storage/bag/tray/Entered()
 	. = ..()
 	update_appearance()
 
-/obj/item/storage/bag/tray/Exited(atom/movable/gone, direction)
+/obj/item/storage/bag/tray/Exited()
 	. = ..()
 	update_appearance()
 

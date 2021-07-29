@@ -378,23 +378,13 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE | DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/buffer_upgrade
+/datum/design/buffer
 	name = "Floor Buffer Upgrade"
 	desc = "A floor buffer that can be attached to vehicular janicarts."
 	id = "buffer"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 3000, /datum/material/glass = 200)
-	build_path = /obj/item/janicart_upgrade/buffer
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/vacuum_upgrade
-	name = "Vacuum Upgrade"
-	desc = "A vacuum that can be attached to vehicular janicarts."
-	id = "vacuum"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 3000, /datum/material/glass = 200)
-	build_path = /obj/item/janicart_upgrade/vacuum
+	build_path = /obj/item/janiupgrade
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
 
@@ -601,21 +591,7 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
-/datum/design/gas_filter
-	name = "Gas filter"
-	id = "gas_filter"
-	build_type = PROTOLATHE | AUTOLATHE
-	materials = list(/datum/material/iron = 100)
-	build_path = /obj/item/gas_filter
-	category = list("Equipment")
 
-/datum/design/plasmaman_gas_filter
-	name = "Plasmaman gas filter"
-	id = "plasmaman_gas_filter"
-	build_type = PROTOLATHE | AUTOLATHE
-	materials = list(/datum/material/iron = 100)
-	build_path = /obj/item/gas_filter/plasmaman
-	category = list("Equipment")
 
 /////////////////////////////////////////
 /////////////////Tape////////////////////

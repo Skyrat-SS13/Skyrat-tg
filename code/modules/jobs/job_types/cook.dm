@@ -26,6 +26,7 @@
 
 /datum/job/cook/New()
 	. = ..()
+	SSmapping.HACK_LoadMapConfig()
 	var/list/job_changes = SSmapping.config.job_changes
 
 	if(!length(job_changes))
@@ -55,7 +56,7 @@
 
 	mail_goodies = list(
 		/obj/item/storage/box/ingredients/random = 80,
-		/obj/item/reagent_containers/glass/bottle/caramel = 20,
+		/datum/reagent/consumable/caramel =  20,
 		/obj/item/reagent_containers/food/condiment/flour = 20,
 		/obj/item/reagent_containers/food/condiment/rice = 20,
 		/obj/item/reagent_containers/food/condiment/enzyme = 15,

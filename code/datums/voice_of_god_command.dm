@@ -1,7 +1,7 @@
 #define COOLDOWN_STUN 120 SECONDS
 #define COOLDOWN_DAMAGE 60 SECONDS
 #define COOLDOWN_MEME 30 SECONDS
-#define COOLDOWN_NONE 10 SECONDS
+#define COOLDOWN_NONE 1 SECONDS
 
 /// Used to stop listeners with silly or clown-esque (first) names such as "Honk" or "Flip" from screwing up certain commands.
 GLOBAL_DATUM(all_voice_of_god_triggers, /regex)
@@ -33,8 +33,11 @@ GLOBAL_LIST_INIT(voice_of_god_commands, init_voice_of_god_commands())
 /proc/voice_of_god(message, mob/living/user, list/span_list, base_multiplier = 1, include_speaker = FALSE, message_admins = TRUE)
 	var/log_message = uppertext(message)
 	var/is_cultie = IS_CULTIST(user)
-	if(LAZYLEN(span_list) && is_cultie)
-		span_list = list("narsiesmall")
+	if(LAZYLEN(span_list))
+		if(is_cultie)
+			span_list = list("narsiesmall")
+		else
+			span_list = list()
 
 	if(!user.say(message, spans = span_list, sanitize = FALSE))
 		return
@@ -130,14 +133,33 @@ GLOBAL_LIST_INIT(voice_of_god_commands, init_voice_of_god_commands())
 /datum/voice_of_god_command/proc/execute(list/listeners, mob/living/user, power_multiplier = 1, message)
 	return
 
+/// This command stuns the listeners.
+/datum/voice_of_god_command/stun
+	trigger = "stop|wait|stand\\s*still|hold\\s*on|halt"
+	cooldown = COOLDOWN_STUN
+
+/datum/voice_of_god_command/stun/execute(list/listeners, mob/living/user, power_multiplier = 1, message)
+	// Ensure 'as anything' is not used for loops that don't target all living mob types.
+	for(var/mob/living/target as anything in listeners)
+		target.Stun(4 SECONDS * power_multiplier)
+
 /// This command knocks the listeners down.
 /datum/voice_of_god_command/paralyze
-	trigger = "drop|fall|trip|knockdown|stop|wait|stand\\s*still|hold\\s*on|halt"
+	trigger = "drop|fall|trip|knockdown"
 	cooldown = COOLDOWN_STUN
 
 /datum/voice_of_god_command/paralyze/execute(list/listeners, mob/living/user, power_multiplier = 1, message)
 	for(var/mob/living/target as anything in listeners)
-		target.Knockdown(4 SECONDS * power_multiplier)
+		target.Paralyze(4 SECONDS * power_multiplier)
+
+/// This command puts carbon listeners to sleep.
+/datum/voice_of_god_command/sleeping
+	trigger = "sleep|slumber|rest"
+	cooldown = COOLDOWN_STUN
+
+/datum/voice_of_god_command/sleeping/execute(list/listeners, mob/living/user, power_multiplier = 1, message)
+	for(var/mob/living/carbon/target as anything in listeners)
+		target.Sleeping(2 SECONDS * power_multiplier)
 
 /// This command makes carbon listeners throw up like Mr. Creosote.
 /datum/voice_of_god_command/vomit
@@ -146,7 +168,7 @@ GLOBAL_LIST_INIT(voice_of_god_commands, init_voice_of_god_commands())
 
 /datum/voice_of_god_command/vomit/execute(list/listeners, mob/living/user, power_multiplier = 1, message)
 	for(var/mob/living/carbon/target in listeners)
-		target.vomit(10 * power_multiplier, distance = power_multiplier, stun = FALSE)
+		target.vomit(10 * power_multiplier, distance = power_multiplier)
 
 /// This command silences the listeners. Thrice as effective is the user is a mime or curator.
 /datum/voice_of_god_command/silence

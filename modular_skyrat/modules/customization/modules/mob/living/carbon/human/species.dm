@@ -285,7 +285,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human/felinid
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
-	learnable_languages = list(/datum/language/common, /datum/language/nekomimetic)
 
 /datum/species/human/monkey
 	mutant_bodyparts = list()
@@ -305,7 +304,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
-	learnable_languages = list(/datum/language/common, /datum/language/calcic)
 
 /datum/species/ethereal
 	mutant_bodyparts = list()
@@ -316,7 +314,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/pod
 	name = "Primal Podperson"
 	always_customizable = TRUE
-	learnable_languages = list(/datum/language/common, /datum/language/sylvan)
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

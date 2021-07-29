@@ -21,3 +21,6 @@
 
 /obj/item/stack/sheet/mineral/plasma
 	icon = 'modular_skyrat/modules/aesthetics/stacks/stack_objects.dmi'
+
+/obj/item/stack/tile/iron
+	icon = 'modular_skyrat/modules/aesthetics/stacks/stack_objects.dmi'

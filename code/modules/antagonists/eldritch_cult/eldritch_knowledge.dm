@@ -39,7 +39,7 @@
  * This proc is called whenever a new eldritch knowledge is added to an antag datum
  */
 /datum/eldritch_knowledge/proc/on_gain(mob/user)
-	to_chat(user, span_warning("[gain_text]"))
+	to_chat(user, "<span class='warning'>[gain_text]</span>")
 	return
 /**
  * What happens when you loose this
@@ -156,12 +156,12 @@
 	var/list/compiled_list = list()
 
 	for(var/mob/living/carbon/human/human_to_check as anything in GLOB.human_list)
-		if(fingerprints[md5(human_to_check.dna.unique_identity)])
+		if(fingerprints[md5(human_to_check.dna.uni_identity)])
 			compiled_list |= human_to_check.real_name
 			compiled_list[human_to_check.real_name] = human_to_check
 
 	if(compiled_list.len == 0)
-		to_chat(user, span_warning("These items don't possess the required fingerprints or DNA."))
+		to_chat(user, "<span class='warning'>These items don't possess the required fingerprints or DNA.</span>")
 		return FALSE
 
 	var/chosen_mob = input("Select the person you wish to curse","Your target") as null|anything in sortList(compiled_list, /proc/cmp_mob_realname_dsc)
@@ -187,7 +187,7 @@
 	message_admins("[summoned.name] is being summoned by [user.real_name] in [loc]")
 	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as [summoned.real_name]", ROLE_HERETIC, FALSE, 100, summoned)
 	if(!LAZYLEN(candidates))
-		to_chat(user,span_warning("No ghost could be found..."))
+		to_chat(user,"<span class='warning'>No ghost could be found...</span>")
 		qdel(summoned)
 		return FALSE
 	var/mob/dead/observer/picked_candidate = pick(candidates)
@@ -258,7 +258,7 @@
 	for(var/obj/item/living_heart/heart in atoms)
 
 		if(heart.target && heart.target.stat == DEAD)
-			to_chat(carbon_user,span_danger("Your patrons accepts your offer.."))
+			to_chat(carbon_user,"<span class='danger'>Your patrons accepts your offer..</span>")
 			var/mob/living/carbon/human/current_target = heart.target
 			//SKYRAT EDIT BEGIN: MAKES HERETICS NOT GIB PEOPLE
 			var/obj/item/bodypart/chest/chest = current_target.get_bodypart(BODY_ZONE_CHEST)
@@ -273,7 +273,7 @@
 			for(var/obj/item/forbidden_book/book as anything in carbon_user.get_all_gear())
 				if(!istype(book))
 					continue
-				book.charge += 3 //SKYRAT EDIT: More points for sacrifice
+				book.charge += 2
 				break
 
 		if(!heart.target)
@@ -298,9 +298,9 @@
 			heart.target = targets[input(user,"Choose your next target","Target") in targets]
 			qdel(temp_objective)
 			if(heart.target)
-				to_chat(user,span_warning("Your new target has been selected, go and sacrifice [heart.target.real_name]!"))
+				to_chat(user,"<span class='warning'>Your new target has been selected, go and sacrifice [heart.target.real_name]!</span>")
 			else
-				to_chat(user, span_warning("target could not be found for living heart."))
+				to_chat(user, "<span class='warning'>target could not be found for living heart.</span>")
 
 /datum/eldritch_knowledge/spell/basic/cleanup_atoms(list/atoms)
 	return
@@ -320,5 +320,5 @@
 	gain_text = "Their hand is at your throat, yet you see Them not."
 	cost = 0
 	required_atoms = list(/obj/item/organ/eyes,/obj/item/stack/sheet/animalhide/human,/obj/item/storage/book/bible,/obj/item/pen)
-	result_atoms = list(/obj/item/forbidden_book/ritual)
+	result_atoms = list(/obj/item/forbidden_book)
 	route = "Start"

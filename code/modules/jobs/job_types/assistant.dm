@@ -10,6 +10,7 @@ Assistant
 	selection_color = "#dddddd"
 	outfit = /datum/outfit/job/assistant
 	plasmaman_outfit = /datum/outfit/plasmaman
+	antag_rep = 7
 	paycheck = PAYCHECK_ASSISTANT // Get a job. Job reassignment changes your paycheck now. Get over it.
 	departments = DEPARTMENT_SERVICE
 

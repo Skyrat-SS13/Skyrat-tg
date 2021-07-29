@@ -51,6 +51,7 @@
 	var/list/antag_datums
 	var/antag_hud_icon_state = null //this mind's ANTAG_HUD should have this icon_state
 	var/datum/atom_hud/antag/antag_hud = null //this mind's antag HUD
+	var/damnation_type = 0
 	var/holy_role = NONE //is this person a chaplain or admin role allowed to use bibles, Any rank besides 'NONE' allows for this.
 
 	var/mob/living/enslaved_to //If this mind's master is another mob (i.e. adamantine golems)
@@ -68,8 +69,8 @@
 	var/list/skills_rewarded
 	///Assoc list of skills. Use SKILL_LVL to access level, and SKILL_EXP to access skill's exp.
 	var/list/known_skills = list()
-	///Weakref to thecharacter we joined in as- either at roundstart or latejoin, so we know for persistent scars if we ended as the same person or not
-	var/datum/weakref/original_character
+	///What character we joined in as- either at roundstart or latejoin, so we know for persistent scars if we ended as the same person or not
+	var/mob/original_character
 	/// The index for what character slot, if any, we were loaded from, so we can track persistent scars on a per-character basis. Each character slot gets PERSISTENT_SCAR_SLOTS scar slots
 	var/original_character_slot_index
 	/// The index for our current scar slot, so we don't have to constantly check the savefile (unlike the slots themselves, this index is independent of selected char slot, and increments whenever a valid char is joined with)
@@ -95,23 +96,10 @@
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
-	QDEL_LIST(antag_datums)
-	QDEL_NULL(language_holder)
-	set_current(null)
+	if(islist(antag_datums))
+		QDEL_LIST(antag_datums)
+	current = null
 	return ..()
-
-/datum/mind/proc/set_current(mob/new_current)
-	if(new_current && QDELETED(new_current))
-		CRASH("Tried to set a mind's current var to a qdeleted mob, what the fuck")
-	if(current)
-		UnregisterSignal(src, COMSIG_PARENT_QDELETING)
-	current = new_current
-	if(current)
-		RegisterSignal(src, COMSIG_PARENT_QDELETING, .proc/clear_current)
-
-/datum/mind/proc/clear_current(datum/source)
-	SIGNAL_HANDLER
-	set_current(null)
 
 /datum/mind/proc/get_language_holder()
 	if(!language_holder)
@@ -119,7 +107,7 @@
 	return language_holder
 
 /datum/mind/proc/transfer_to(mob/new_character, force_key_move = 0)
-	set_original_character(null)
+	original_character = null
 	if(current) // remove ourself from our old body's mind variable
 		current.mind = null
 		UnregisterSignal(current, COMSIG_LIVING_DEATH)
@@ -132,7 +120,7 @@
 		key = new_character.key
 
 	if(new_character.mind) //disassociate any mind currently in our new body's mind variable
-		new_character.mind.set_current(null)
+		new_character.mind.current = null
 
 	var/datum/atom_hud/antag/hud_to_transfer = antag_hud//we need this because leave_hud() will clear this list
 	var/mob/living/old_current = current
@@ -143,7 +131,7 @@
 		remove_verb(current, /mob/proc/view_ambitions)
 		add_verb(new_character, /mob/proc/view_ambitions)
 	//SKYRAT CHANGE ADDITION END
-	set_current(new_character) //associate ourself with our new body
+	current = new_character //associate ourself with our new body
 	new_character.mind = src //and associate our new body with ourself
 	for(var/a in antag_datums) //Makes sure all antag datums effects are applied in the new body
 		var/datum/antagonist/A = a
@@ -161,10 +149,6 @@
 		LAZYCLEARLIST(new_character.client.recent_examines)
 		new_character.client.init_verbs() // re-initialize character specific verbs
 	current.update_atom_languages()
-
-//I cannot trust you fucks to do this properly
-/datum/mind/proc/set_original_character(new_original_character)
-	original_character = WEAKREF(new_original_character)
 
 /datum/mind/proc/init_known_skills()
 	for (var/type in GLOB.skill_types)
@@ -238,9 +222,9 @@
 		if(known_skills[i][SKILL_LVL] > SKILL_LEVEL_NONE) //Do we actually have a level in this?
 			shown_skills += i
 	if(!length(shown_skills))
-		to_chat(user, span_notice("You don't seem to have any particularly outstanding skills."))
+		to_chat(user, "<span class='notice'>You don't seem to have any particularly outstanding skills.</span>")
 		return
-	var/msg = "[span_info("*---------*\n<EM>Your skills</EM>")]\n<span class='notice'>"
+	var/msg = "<span class='info'>*---------*\n<EM>Your skills</EM></span>\n<span class='notice'>"
 	for(var/i in shown_skills)
 		var/datum/skill/the_skill = i
 		msg += "[initial(the_skill.name)] - [get_skill_level_name(the_skill)]\n"
@@ -365,13 +349,6 @@
 		if(O)
 			O.unlock_code = null
 
-/// Remove the antagonists that should not persist when being borged
-/datum/mind/proc/remove_antags_for_borging()
-	remove_antag_datum(/datum/antagonist/cult)
-
-	var/datum/antagonist/rev/revolutionary = has_antag_datum(/datum/antagonist/rev)
-	revolutionary?.remove_revolutionary(borged = TRUE)
-
 /datum/mind/proc/equip_traitor(employer = "The Syndicate", silent = FALSE, datum/antagonist/uplink_owner)
 	if(!current)
 		return
@@ -426,11 +403,11 @@
 		U.setup_unlock_code()
 		if(!silent)
 			if(uplink_loc == R)
-				to_chat(traitor_mob, span_boldnotice("[employer] has cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(U.unlock_code)] to unlock its hidden features."))
+				to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly disguised a Syndicate Uplink as your [R.name]. Simply dial the frequency [format_frequency(U.unlock_code)] to unlock its hidden features.</span>")
 			else if(uplink_loc == PDA)
-				to_chat(traitor_mob, span_boldnotice("[employer] has cunningly disguised a Syndicate Uplink as your [PDA.name]. Simply enter the code \"[U.unlock_code]\" into the ringtone select to unlock its hidden features."))
+				to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly disguised a Syndicate Uplink as your [PDA.name]. Simply enter the code \"[U.unlock_code]\" into the ringtone select to unlock its hidden features.</span>")
 			else if(uplink_loc == P)
-				to_chat(traitor_mob, span_boldnotice("[employer] has cunningly disguised a Syndicate Uplink as your [P.name]. Simply twist the top of the pen [english_list(U.unlock_code)] from its starting position to unlock its hidden features."))
+				to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly disguised a Syndicate Uplink as your [P.name]. Simply twist the top of the pen [english_list(U.unlock_code)] from its starting position to unlock its hidden features.</span>")
 
 		if(uplink_owner)
 			uplink_owner.antag_memory += U.unlock_note + "<br>"
@@ -440,7 +417,7 @@
 		var/obj/item/implant/uplink/starting/I = new(traitor_mob)
 		I.implant(traitor_mob, null, silent = TRUE)
 		if(!silent)
-			to_chat(traitor_mob, span_boldnotice("[employer] has cunningly implanted you with a Syndicate Uplink (although uplink implants cost valuable TC, so you will have slightly less). Simply trigger the uplink to access it."))
+			to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly implanted you with a Syndicate Uplink (although uplink implants cost valuable TC, so you will have slightly less). Simply trigger the uplink to access it.</span>")
 		return I
 
 
@@ -469,7 +446,7 @@
 
 	if(creator.mind.special_role)
 		message_admins("[ADMIN_LOOKUPFLW(current)] has been created by [ADMIN_LOOKUPFLW(creator)], an antagonist.")
-		to_chat(current, span_userdanger("Despite your creator's current allegiances, your true master remains [creator.real_name]. If their loyalties change, so do yours. This will never change unless your creator's body is destroyed."))
+		to_chat(current, "<span class='userdanger'>Despite your creator's current allegiances, your true master remains [creator.real_name]. If their loyalties change, so do yours. This will never change unless your creator's body is destroyed.</span>")
 
 /datum/mind/proc/show_memory(mob/recipient, window=1)
 	if(!recipient)
@@ -498,7 +475,7 @@
 	if(window)
 		recipient << browse(output,"window=memory")
 	else if(all_objectives.len || memory)
-		to_chat(recipient, "<span class='infoplain'><i>[output]</i></span>")
+		to_chat(recipient, "<i>[output]</i>")
 
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))
@@ -511,7 +488,7 @@
 	if(href_list["remove_antag"])
 		var/datum/antagonist/A = locate(href_list["remove_antag"]) in antag_datums
 		if(!istype(A))
-			to_chat(usr,span_warning("Invalid antagonist ref to be removed."))
+			to_chat(usr,"<span class='warning'>Invalid antagonist ref to be removed.</span>")
 			return
 		A.admin_remove(usr)
 
@@ -663,7 +640,7 @@
 							log_admin("[key_name(usr)] changed [current]'s telecrystal count to [crystals].")
 			if("uplink")
 				if(!equip_traitor())
-					to_chat(usr, span_danger("Equipping a syndicate failed!"))
+					to_chat(usr, "<span class='danger'>Equipping a syndicate failed!</span>")
 					log_admin("[key_name(usr)] tried and failed to give [current] an uplink.")
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")
@@ -692,7 +669,7 @@
 
 /datum/mind/proc/announce_objectives()
 	var/obj_count = 1
-	to_chat(current, span_notice("Your current objectives:"))
+	to_chat(current, "<span class='notice'>Your current objectives:</span>")
 	for(var/datum/objective/objective as anything in get_all_objectives())
 		to_chat(current, "<B>[objective.objective_name] #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
@@ -708,28 +685,28 @@
 /datum/mind/proc/take_uplink()
 	qdel(find_syndicate_uplink())
 
-/datum/mind/proc/make_traitor()
+/datum/mind/proc/make_Traitor()
 	if(!(has_antag_datum(/datum/antagonist/traitor)))
 		add_antag_datum(/datum/antagonist/traitor)
 
-/datum/mind/proc/make_contractor_support()
+/datum/mind/proc/make_Contractor_Support()
 	if(!(has_antag_datum(/datum/antagonist/traitor/contractor_support)))
 		add_antag_datum(/datum/antagonist/traitor/contractor_support)
 
-/datum/mind/proc/make_changeling()
+/datum/mind/proc/make_Changeling()
 	var/datum/antagonist/changeling/C = has_antag_datum(/datum/antagonist/changeling)
 	if(!C)
 		C = add_antag_datum(/datum/antagonist/changeling)
 		special_role = ROLE_CHANGELING
 	return C
 
-/datum/mind/proc/make_wizard()
+/datum/mind/proc/make_Wizard()
 	if(!has_antag_datum(/datum/antagonist/wizard))
 		special_role = ROLE_WIZARD
 		assigned_role = ROLE_WIZARD
 		add_antag_datum(/datum/antagonist/wizard)
 
-/datum/mind/proc/make_rev()
+/datum/mind/proc/make_Rev()
 	var/datum/antagonist/rev/head/head = new()
 	head.give_flash = TRUE
 	head.give_hud = TRUE
@@ -847,7 +824,7 @@
 		SSticker.minds += mind
 	if(!mind.name)
 		mind.name = real_name
-	mind.set_current(src)
+	mind.current = src
 
 /mob/living/carbon/mind_initialize()
 	..()

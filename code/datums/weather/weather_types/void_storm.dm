@@ -3,11 +3,10 @@
 	desc = "A rare and highly anomalous event often accompanied by unknown entities shredding spacetime continouum. We'd advise you to start running."
 
 	telegraph_duration = 2 SECONDS
-	telegraph_overlay = "light_snow"
+	telegraph_overlay = "void"
 
 	weather_message = "<span class='danger'><i>You feel air around you getting colder... and void's sweet embrace...</i></span>"
-	weather_overlay = "snow_storm"
-	weather_color = COLOR_BLACK
+	weather_overlay = "void_storm"
 	weather_duration_lower = 60 SECONDS
 	weather_duration_upper = 120 SECONDS
 
@@ -18,7 +17,7 @@
 	protect_indoors = FALSE
 	target_trait = ZTRAIT_VOIDSTORM
 
-	immunity_type = WEATHER_VOID
+	immunity_type = "void"
 
 	barometer_predictable = FALSE
 	perpetual = TRUE

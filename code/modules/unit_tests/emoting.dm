@@ -30,5 +30,4 @@
 	//SKYRAT EDIT REMOVAL END
 
 /datum/unit_test/emoting/proc/on_emote_used()
-	SIGNAL_HANDLER
 	emotes_used += 1

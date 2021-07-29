@@ -89,6 +89,14 @@
 	contains = list(/obj/item/defibrillator/compact)
 	crate_name = "compact defibrillator crate"
 
+/datum/supply_pack/medical/medigun
+	name = "Experimental Medical Beam Crate"
+	desc = "Contains a single experimental NT-tech Medical Beam Gun, a highly experimental device capable of sending temporary healing nanites across a short distance."
+	cost = CARGO_CRATE_VALUE * 75
+	access = ACCESS_CMO
+	contains = list(/obj/item/gun/medbeam)
+	crate_name = "medical beam gun crate"
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -123,30 +131,6 @@
 					/obj/item/ammo_box/magazine/multi_sprite/croon,
 					/obj/item/ammo_box/magazine/multi_sprite/croon)
 	crate_name = "unmarked weapons crate"
-	dangerous = TRUE
-	
-/datum/supply_pack/security/wildcat
-	name = "CFA Wildcat Supply Crate"
-	desc = "Local police running low on equipment? Neighbor particularly loud in the early morning? This should help out. (Does not include weapons permits.)"
-	cost = CARGO_CRATE_VALUE * 55 // Bit cheaper then the next up, because it's not to good.
-	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat,
-					/obj/item/gun/ballistic/automatic/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
-	crate_name = "CFA sponsored weapons crate"
-	dangerous = TRUE
-
-/datum/supply_pack/security/lasergun // not to be confused with the normal laser gun crate
-	name = "Lasergun Supply Crate"
-	desc = "Really annoying guy hiding behind a window? Janitors refusing to clean up your bullet casings after the sixth 'self defense case' this week? This should help out, and leaves no evidence. (Comes with it's own recharger!)"
-	cost = CARGO_CRATE_VALUE * 75 //give or take 15,000 just to make it harder for a private lone officer purchase.
-	contains = list(/obj/item/gun/energy/laser,
-					/obj/item/gun/energy/laser,
-					/obj/item/gun/energy/laser,
-					/obj/machinery/recharger)
-	crate_name = "energy weapons crate"
 	dangerous = TRUE
 	
 /datum/supply_pack/costumes_toys/randomised/improvised
@@ -465,42 +449,6 @@
                     /obj/item/flashlight,
                     /obj/item/flashlight,)
 	crate_name = "lamp light crate"
-
-/datum/supply_pack/service/medieval
-	name = "Authentic Renaissance Faire Crate"
-	desc = "Contains two authentic suits of armor, swords, and two bows and cuirass' for the cowards hiding in the back."
-	cost = CARGO_CRATE_VALUE * 30
-	contraband = TRUE
-	contains = list(/obj/item/clothing/suit/armor/riot/knight/red,
-					/obj/item/clothing/gloves/plate/red,
-					/obj/item/clothing/head/helmet/knight/red,
-					/obj/item/clothing/shoes/plate/red,
-					/obj/item/claymore/weak/weaker,
-					/obj/item/clothing/shoes/plate/blue,
-					/obj/item/clothing/suit/armor/riot/knight/blue,
-					/obj/item/clothing/gloves/plate/blue,
-					/obj/item/clothing/head/helmet/knight/blue,
-					/obj/item/claymore/weak/weaker,
-					/obj/item/clothing/suit/armor/vest/cuirass,
-					/obj/item/clothing/suit/armor/vest/cuirass,
-					/obj/item/gun/ballistic/bow,
-					/obj/item/gun/ballistic/bow,
-					/obj/item/storage/bag/quiver,
-					/obj/item/storage/bag/quiver,
-					/obj/item/clothing/head/helmet/knight/red,
-					/obj/item/clothing/head/helmet/knight/blue,
-					/obj/item/food/bread)
-	crate_name = "vintage crate"
-
-/datum/supply_pack/service/hydrohelper
-	name = "Hydro-Helper Circuit Pack"
-	desc = "Botany being lazy with something? Being refused circuit boards? grow your only little garden with these three boards. (seeds and parts not included)"
-	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics,
-					/obj/item/circuitboard/machine/hydroponics)
-	crate_name = "garden crate"
-	crate_type = /obj/structure/closet/crate/hydroponics
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Materials & Sheets //////////////////////////////

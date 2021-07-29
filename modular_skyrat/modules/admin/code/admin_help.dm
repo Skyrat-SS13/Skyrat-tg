@@ -9,7 +9,7 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - ADMIN
 	if(handler && handler != usr.ckey)
-		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
+		var/response = alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", "Yes", "No")
 		if(!response || response == "No")
 			return
 	//SKYRAT EDIT ADDITION END

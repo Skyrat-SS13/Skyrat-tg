@@ -117,9 +117,7 @@ export const chatMiddleware = store => {
       const settings = selectSettings(store.getState());
       chatRenderer.setHighlight(
         settings.highlightText,
-        settings.highlightColor,
-        settings.matchWord,
-        settings.matchCase);
+        settings.highlightColor);
       return;
     }
     if (type === 'roundrestart') {

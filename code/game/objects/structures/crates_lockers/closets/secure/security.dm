@@ -46,10 +46,6 @@
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel(src)
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt(src)
 	new /obj/item/clothing/head/hopcap(src)
-	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade(src) //SKYRAT EDIT ADDITION START - HOP PARADE UNIFORMS
-	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female(src)
-	new /obj/item/clothing/suit/armor/hop_parade(src)
-	new /obj/item/clothing/suit/armor/hop_parade/female(src)	//SKYRAT EDIT ADDITION END
 	new /obj/item/cartridge/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
@@ -59,7 +55,7 @@
 	new /obj/item/clothing/suit/armor/vest/alt(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/gun/energy/e_gun(src) //SKYRAT EDIT
+	new /obj/item/storage/box/gunset/pdh_hop(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
@@ -107,7 +103,6 @@
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
 	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
-	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
@@ -207,7 +202,6 @@
 	new /obj/item/pinpointer/crew(src)
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/box/rxglasses/spyglasskit(src)
-	new /obj/item/taperoll/police(src) //SKYRAT EDIT ADDITION - Detective starts with this in their locker :)
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"
@@ -232,8 +226,8 @@
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
-	new /obj/item/clothing/under/rank/prisoner( src )
-	new /obj/item/clothing/under/rank/prisoner/skirt( src )
+	new /obj/item/clothing/under/color/prisoner( src )
+	new /obj/item/clothing/under/color/jumpskirt/prisoner( src )
 	new /obj/item/clothing/shoes/sneakers/orange( src )
 
 /obj/structure/closet/secure_closet/courtroom

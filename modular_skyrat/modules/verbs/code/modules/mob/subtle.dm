@@ -13,7 +13,6 @@
 	return FALSE
 
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null)
-	var/subtle_message
 	if(is_banned_from(user, "emote"))
 		to_chat(user, "You cannot send subtle emotes (banned).")
 		return FALSE
@@ -32,32 +31,32 @@
 				else
 					alert("Unable to use this emote, must be either hearable or visible.")
 					return
-			subtle_message = subtle_emote
+			message = subtle_emote
 		else
 			return FALSE
 	else
-		subtle_message = params
+		message = params
 		if(type_override)
 			emote_type = type_override
 	. = TRUE
 	if(!can_run_emote(user))
 		return FALSE
 
-	var/prefix_log_message = "(SUBTLE) [subtle_message]"
+	var/prefix_log_message = "(SUBTLE) [message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
-	subtle_message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(subtle_message)]</i></span>"
+	message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(message)]</i></span>"
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
 			continue
 		var/T = get_turf(src)
 		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
-			M.show_message(subtle_message)
+			M.show_message(message)
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message(message=subtle_message,hearing_distance=1)
+		user.audible_message(message=message,hearing_distance=1)
 	else
-		user.visible_message(message=subtle_message,self_message=subtle_message,vision_distance=1)
+		user.visible_message(message=message,self_message=message,vision_distance=1)
 
 
 ///////////////// SUBTLE 2: NO GHOST BOOGALOO
@@ -78,7 +77,6 @@
 	return FALSE
 
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
-	var/subtler_message
 	if(is_banned_from(user, "emote"))
 		to_chat(user, "You cannot send subtle emotes (banned).")
 		return FALSE
@@ -97,24 +95,24 @@
 				else
 					alert("Unable to use this emote, must be either hearable or visible.")
 					return
-			subtler_message = subtle_emote
+			message = subtle_emote
 		else
 			return FALSE
 	else
-		subtler_message = params
+		message = params
 		if(type_override)
 			emote_type = type_override
 	. = TRUE
 	if(!can_run_emote(user))
 		return FALSE
 
-	user.log_message(subtler_message, LOG_SUBTLER)
-	subtler_message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(subtler_message)]</i></span>"
+	user.log_message(message, LOG_SUBTLER)
+	message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(message)]</i></span>"
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message_subtler(message=subtler_message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.audible_message_subtler(message=message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
 	else
-		user.visible_message(message=subtler_message,self_message=subtler_message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.visible_message(message=message,self_message=message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list)
 
 ///////////////// VERB CODE
 /mob/living/proc/subtle_keybind()

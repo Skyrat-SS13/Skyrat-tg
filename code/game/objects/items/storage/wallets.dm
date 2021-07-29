@@ -37,12 +37,11 @@
 		/obj/item/photo,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/reagent_containers/pill,
 		/obj/item/screwdriver,
 		/obj/item/stamp),
 		list(/obj/item/screwdriver/power))
 
-/obj/item/storage/wallet/Exited(atom/movable/gone, direction)
+/obj/item/storage/wallet/Exited(atom/movable/AM)
 	. = ..()
 	refreshID(removed = TRUE)
 
@@ -66,12 +65,6 @@
 		var/obj/item/card/id/id_card = card
 		if(!istype(id_card))
 			continue
-
-		// Certain IDs can forcibly jump to the front so they can disguise other cards in wallets. Chameleon/Agent ID cards are an example of this.
-		if(HAS_TRAIT(id_card, TRAIT_MAGNETIC_ID_CARD))
-			front_id = id_card
-			break
-
 		var/card_tally = SSid_access.tally_access(id_card, ACCESS_FLAG_COMMAND)
 		if(card_tally > winning_tally)
 			winning_tally = card_tally
@@ -93,7 +86,7 @@
 	update_appearance(UPDATE_ICON)
 	update_slot_icon()
 
-/obj/item/storage/wallet/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/obj/item/storage/wallet/Entered(atom/movable/AM)
 	. = ..()
 	refreshID(removed = FALSE)
 
@@ -102,7 +95,6 @@
 	cached_flat_icon = null
 	if(!front_id)
 		return
-	COMPILE_OVERLAYS(front_id)
 	. += mutable_appearance(front_id.icon, front_id.icon_state)
 	. += front_id.overlays
 	. += mutable_appearance(icon, "wallet_overlay")
@@ -126,7 +118,7 @@
 /obj/item/storage/wallet/examine()
 	. = ..()
 	if(front_id)
-		. += span_notice("Alt-click to remove the id.")
+		. += "<span class='notice'>Alt-click to remove the id.</span>"
 
 /obj/item/storage/wallet/get_id_examine_strings(mob/user)
 	. = ..()
@@ -158,12 +150,9 @@
 		return ..()
 
 /obj/item/storage/wallet/random
-	icon_state = "random_wallet" // for mapping purposes
-
-/obj/item/storage/wallet/random/Initialize()
-	. = ..()
-	icon_state = "wallet"
+	icon_state = "random_wallet"
 
 /obj/item/storage/wallet/random/PopulateContents()
-	new /obj/item/holochip(src, rand(5, 30))
-	new /obj/effect/spawner/lootdrop/wallet_loot(src)
+	new /obj/item/holochip(src, rand(5,30))
+	icon_state = "wallet"
+

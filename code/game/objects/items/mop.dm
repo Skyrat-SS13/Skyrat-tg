@@ -14,7 +14,7 @@
 	attack_verb_simple = list("mop", "bash", "bludgeon", "whack")
 	resistance_flags = FLAMMABLE
 	var/mopcount = 0
-	var/mopcap = 50 //SKYRAT EDIT CHANGE
+	var/mopcap = 15
 	var/mopspeed = 15
 	force_string = "robust... against germs"
 	var/insertable = TRUE
@@ -22,21 +22,7 @@
 /obj/item/mop/Initialize()
 	. = ..()
 	create_reagents(mopcap)
-	//SKYRAT EDIT ADDITION
-	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/mop/.proc/attack_on_liquids_turf)
 
-/obj/item/mop/proc/attack_on_liquids_turf(obj/item/mop/the_mop, turf/T, mob/user, obj/effect/abstract/liquid_turf/liquids)
-	var/free_space = the_mop.reagents.maximum_volume - the_mop.reagents.total_volume
-	if(free_space <= 0)
-		to_chat(user, "<span class='warning'>Your mop can't absorb any more!</span>")
-		return TRUE
-	var/datum/reagents/tempr = liquids.take_reagents_flat(free_space)
-	tempr.trans_to(the_mop.reagents, tempr.total_volume)
-	to_chat(user, "<span class='notice'>You soak the mop with some liquids.</span>")
-	qdel(tempr)
-	user.changeNext_move(CLICK_CD_MELEE)
-	return TRUE
-	//SKYRAT EDIT END
 
 /obj/item/mop/proc/clean(turf/A, mob/living/cleaner)
 	if(reagents.has_reagent(/datum/reagent/water, 1) || reagents.has_reagent(/datum/reagent/water/holywater, 1) || reagents.has_reagent(/datum/reagent/consumable/ethanol/vodka, 1) || reagents.has_reagent(/datum/reagent/space_cleaner, 1))
@@ -58,15 +44,11 @@
 
 /obj/item/mop/afterattack(atom/A, mob/user, proximity)
 	. = ..()
-	//SKYRAT EDIT ADDITION
-	if(.)
-		return
-	//SKYRAT EDIT END
 	if(!proximity)
 		return
 
 	if(reagents.total_volume < 0.1)
-		to_chat(user, span_warning("Your mop is dry!"))
+		to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 		return
 
 	var/turf/T = get_turf(A)
@@ -75,12 +57,12 @@
 		return
 
 	if(T)
-		user.visible_message(span_notice("[user] begins to clean \the [T] with [src]."), span_notice("You begin to clean \the [T] with [src]..."))
+		user.visible_message("<span class='notice'>[user] begins to clean \the [T] with [src].</span>", "<span class='notice'>You begin to clean \the [T] with [src]...</span>")
 		var/clean_speedies = 1
 		if(user.mind)
 			clean_speedies = user.mind.get_skill_modifier(/datum/skill/cleaning, SKILL_SPEED_MODIFIER)
 		if(do_after(user, mopspeed*clean_speedies, target = T))
-			to_chat(user, span_notice("You finish mopping."))
+			to_chat(user, "<span class='notice'>You finish mopping.</span>")
 			clean(T, user)
 
 
@@ -97,16 +79,16 @@
 		J.mymop=src
 		J.update_appearance()
 	else
-		to_chat(user, span_warning("You are unable to fit your [name] into the [J.name]."))
+		to_chat(user, "<span class='warning'>You are unable to fit your [name] into the [J.name].</span>")
 		return
 
 /obj/item/mop/cyborg
 	insertable = FALSE
 
 /obj/item/mop/advanced
-	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this! Due to the self-wetting technology, it proves very inefficient for cleaning up spills." //SKYRAT EDIT
+	desc = "The most advanced tool in a custodian's arsenal, complete with a condenser for self-wetting! Just think of all the viscera you will clean up with this!"
 	name = "advanced mop"
-	mopcap = 100 //SKYRAT EDIT CHANGE
+	mopcap = 10
 	icon_state = "advmop"
 	inhand_icon_state = "mop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
@@ -120,8 +102,8 @@
 	var/refill_rate = 0.5
 	var/refill_reagent = /datum/reagent/water //Determins what reagent to use for refilling, just in case someone wanted to make a HOLY MOP OF PURGING
 
-/obj/item/mop/advanced/Initialize()
-	. = ..()
+/obj/item/mop/advanced/New()
+	..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/mop/advanced/attack_self(mob/user)
@@ -130,7 +112,7 @@
 		START_PROCESSING(SSobj, src)
 	else
 		STOP_PROCESSING(SSobj,src)
-	to_chat(user, span_notice("You set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position."))
+	to_chat(user, "<span class='notice'>You set the condenser switch to the '[refill_enabled ? "ON" : "OFF"]' position.</span>")
 	playsound(user, 'sound/machines/click.ogg', 30, TRUE)
 
 /obj/item/mop/advanced/process(delta_time)
@@ -140,10 +122,11 @@
 
 /obj/item/mop/advanced/examine(mob/user)
 	. = ..()
-	. += span_notice("The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.")
+	. += "<span class='notice'>The condenser switch is set to <b>[refill_enabled ? "ON" : "OFF"]</b>.</span>"
 
 /obj/item/mop/advanced/Destroy()
-	STOP_PROCESSING(SSobj, src)
+	if(refill_enabled)
+		STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/item/mop/advanced/cyborg

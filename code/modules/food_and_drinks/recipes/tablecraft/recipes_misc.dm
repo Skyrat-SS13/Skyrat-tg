@@ -68,16 +68,6 @@
 	result = /obj/item/food/cheesyfries
 	subcategory = CAT_MISCFOOD
 
-/datum/crafting_recipe/food/poutine
-	name = "Poutine"
-	reqs = list(
-		/obj/item/food/fries = 1,
-		/obj/item/food/cheese = 1,
-		/datum/reagent/consumable/gravy = 3
-	)
-	result = /obj/item/food/poutine
-	subcategory = CAT_MISCFOOD
-
 /datum/crafting_recipe/food/beans
 	name = "Beans"
 	time = 40
@@ -148,17 +138,6 @@
 	result = /obj/item/food/salad/ricepudding
 	subcategory = CAT_MISCFOOD
 
-/datum/crafting_recipe/food/risotto
-	name = "Risotto"
-	reqs = list(
-		/obj/item/food/cheese = 1,
-		/datum/reagent/consumable/ethanol/wine = 5,
-		/obj/item/food/salad/boiledrice = 1,
-		/obj/item/food/grown/mushroom/chanterelle = 1
-	)
-	result = /obj/item/food/salad/risotto
-	subcategory = CAT_MISCFOOD
-
 /datum/crafting_recipe/food/butterbear //ITS ALIVEEEEEE!
 	name = "Living bear/butter hybrid"
 	reqs = list(
@@ -192,14 +171,4 @@
 		/datum/reagent/toxin/mutagen = 5
 	)
 	result = /obj/item/food/cheese/royal
-	subcategory = CAT_MISCFOOD
-
-/datum/crafting_recipe/food/ant_candy
-	name = "Ant Candy"
-	reqs = list(/obj/item/stack/rods = 1,
-		/datum/reagent/consumable/sugar = 5,
-		/datum/reagent/water = 5,
-		/datum/reagent/ants = 10
-	)
-	result = /obj/item/food/ant_candy
 	subcategory = CAT_MISCFOOD

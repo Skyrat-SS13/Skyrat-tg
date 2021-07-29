@@ -5,7 +5,6 @@
 	antag_hud_name = "hud_gangster"
 	antagpanel_category = "Family"
 	show_in_antagpanel = FALSE // i don't *think* this base class is buggy but it's too worthless to test
-	suicide_cry = "FOR THE FAMILY!!"
 	/// The overarching family that the owner of this datum is a part of. Family teams are generic and imprinted upon by the per-person antagonist datums.
 	var/datum/team/gang/my_gang
 	/// The name of the family corresponding to this family member datum.
@@ -156,9 +155,9 @@
 	var/list/report = list()
 	report += "<span class='header'>[name]:</span>"
 	if(!members.len)
-		report += span_redtext("The family was wiped out!")
+		report += "<span class='redtext'>The family was wiped out!</span>"
 	else if(my_gang_datum.check_gang_objective())
-		report += span_greentext("The family completed their objective!")
+		report += "<span class='greentext'>The family completed their objective!</span>"
 	else
 		report += "<span class='redtext big'>The family failed their objective!</span>"
 	report += "Objective: [my_gang_datum.gang_objective]"

@@ -43,9 +43,6 @@
 #define MODE_DEADMIN "deadmin"
 #define MODE_KEY_DEADMIN "d"
 
-#define MODE_PUPPET "puppet"
-#define MODE_KEY_PUPPET "j"
-
 #define MODE_ALIEN "alientalk"
 #define MODE_HOLOPAD "holopad"
 

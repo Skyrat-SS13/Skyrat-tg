@@ -13,11 +13,11 @@ Armageddon is truly going to fuck the station, use it sparingly.
 */
 
 /datum/round_event_control/cme
-	name = "Coronal Mass Ejection: Random"
+	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme
-	weight = 10
+	weight = 0
 	min_players = 30
-	max_occurrences = 1 // Why was this allowed to roll three times bruh
+	max_occurrences = 3
 	earliest_start = 25 MINUTES
 
 /datum/round_event/cme
@@ -29,23 +29,14 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/cme_frequency_upper
 	var/list/cme_start_locs = list()
 
-/datum/round_event_control/cme/unknown
-	name = "Coronal Mass Ejection: Unknown"
-	typepath = /datum/round_event/cme/unknown
+/datum/round_event_control/cme/random
+	name = "Coronal Mass Ejection: Random"
+	typepath = /datum/round_event/cme/random
 	weight = 0
 	max_occurrences = 0
 
-/datum/round_event/cme/unknown
-	cme_intensity = CME_UNKNOWN
-	
-/datum/round_event_control/cme/minimal
-	name = "Coronal Mass Ejection: Minimal"
-	typepath = /datum/round_event/cme/minimal
-	weight = 0
-	max_occurrences = 0
-
-/datum/round_event/cme/minimal
-	cme_intensity = CME_MINIMAL
+/datum/round_event/cme/random
+	cme_intensity = CME_RANDOM
 
 /datum/round_event_control/cme/moderate
 	name = "Coronal Mass Ejection: Moderate"
@@ -76,9 +67,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/setup()
 	if(!cme_intensity)
-		cme_intensity = pick(CME_MINIMAL, CME_UNKNOWN, CME_MODERATE, CME_EXTREME)
+		cme_intensity = pick(CME_MINIMAL, CME_RANDOM, CME_MODERATE, CME_EXTREME)
 	switch(cme_intensity)
-		if(CME_UNKNOWN)
+		if(CME_RANDOM)
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
 			startWhen = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
@@ -119,7 +110,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		Ensure all sensitive equipment is shielded.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 	else
 		switch(cme_intensity)
-			if(CME_UNKNOWN)
+			if(CME_RANDOM)
 				priority_announce("Coronal mass ejection detected! Expected intensity: UNKNOWN. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
@@ -147,7 +138,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		spawn_cme(spawnpoint, cme_intensity)
 
 /datum/round_event/cme/proc/spawn_cme(var/turf/spawnpoint, intensity)
-	if(intensity == CME_UNKNOWN)
+	if(intensity == CME_RANDOM)
 		intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
 	var/area/loc_area_name = get_area(spawnpoint)
 	minor_announce("WARNING! [uppertext(intensity)] PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
@@ -189,8 +180,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
-	plane = MASSIVE_OBJ_PLANE
-	plane = ABOVE_LIGHTING_PLANE
+	plane = LIGHTING_PLANE
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/timeleft = CME_MINIMAL_BUBBLE_BURST_TIME
 	var/cme_light_range_lower = CME_MINIMAL_LIGHT_RANGE_LOWER

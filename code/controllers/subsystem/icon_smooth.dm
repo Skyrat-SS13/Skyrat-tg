@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(icon_smooth)
 		CHECK_TICK
 
 	queue = blueprint_queue
-	blueprint_queue = null
+	blueprint_queue = list()
 
 	for(var/item in queue)
 		var/atom/movable/movable_item = item
@@ -70,6 +70,5 @@ SUBSYSTEM_DEF(icon_smooth)
 /datum/controller/subsystem/icon_smooth/proc/remove_from_queues(atom/thing)
 	thing.smoothing_flags &= ~SMOOTH_QUEUED
 	smooth_queue -= thing
-	if(blueprint_queue)
-		blueprint_queue -= thing
+	blueprint_queue -= thing
 	deferred -= thing

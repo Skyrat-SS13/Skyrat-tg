@@ -29,6 +29,11 @@ GLOBAL_VAR(restart_counter)
  * All atoms in both compiled and uncompiled maps are initialized()
  */
 /world/New()
+#ifdef USE_EXTOOLS
+	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
+	if (fexists(extools))
+		call(extools, "maptick_initialize")()
+#endif
 	enable_debugger()
 
 	log_world("World loaded at [time_stamp()]!")
@@ -44,7 +49,7 @@ GLOBAL_VAR(restart_counter)
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 	load_admins()
-
+	load_mentors() //SKYRAT EDIT
 	//SetupLogs depends on the RoundID, so lets check
 	//DB schema and set RoundID if we can
 	SSdbcore.CheckSchemaVersion()
@@ -205,7 +210,7 @@ GLOBAL_VAR(restart_counter)
 		if(PRcounts[id] > PR_ANNOUNCEMENTS_PER_ROUND)
 			return
 
-	var/final_composed = span_announce("PR: [announcement]")
+	var/final_composed = "<span class='announce'>PR: [announcement]</span>"
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
 
@@ -235,9 +240,9 @@ GLOBAL_VAR(restart_counter)
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-		to_chat(world, span_boldannounce("Rebooting World immediately due to host request."))
+		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request.</span>")
 	else
-		to_chat(world, span_boldannounce("Rebooting world..."))
+		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 		Master.Shutdown() //run SS shutdowns
 
 	#ifdef UNIT_TESTS
@@ -276,7 +281,10 @@ GLOBAL_VAR(restart_counter)
 
 	var/list/features = list()
 
-	if(LAZYACCESS(SSlag_switch.measures, DISABLE_NON_OBSJOBS))
+	if(GLOB.master_mode)
+		features += GLOB.master_mode
+
+	if (!GLOB.enter_allowed)
 		features += "closed"
 
 	var/s = ""
@@ -318,7 +326,8 @@ GLOBAL_VAR(restart_counter)
 		s += ": [jointext(features, ", ")]"
 
 	status = s
-*/
+*/ //SKYRAT EDIT END
+
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)
 		return

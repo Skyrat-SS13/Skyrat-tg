@@ -75,11 +75,10 @@
 
 /turf/add_blood_DNA(list/blood_dna, list/datum/disease/diseases)
 	var/obj/effect/decal/cleanable/blood/splatter/B = locate() in src
-	if(QDELETED(B)) // SKYRAT EDIT - SANITY CHECK; DONT ADD DNA TO A FUCKING DELETED BLOOD SPATTER - original: if(!B)
+	if(!B)
 		B = new /obj/effect/decal/cleanable/blood/splatter(src, diseases)
-	if(!QDELETED(B))
-		B.add_blood_DNA(blood_dna) //give blood info to the blood decal.
-		return TRUE //we bloodied the floor
+	B.add_blood_DNA(blood_dna) //give blood info to the blood decal.
+	return TRUE //we bloodied the floor
 
 /mob/living/carbon/human/add_blood_DNA(list/blood_dna, list/datum/disease/diseases)
 	if(wear_suit)

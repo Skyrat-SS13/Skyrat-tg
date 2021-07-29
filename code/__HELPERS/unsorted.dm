@@ -332,12 +332,12 @@ Turf and target are separate in case you want to teleport some distance from a t
 //For example, using this on a disk, which is in a bag, on a mob, will return the mob because it's on the turf.
 //Optional arg 'type' to stop once it reaches a specific type instead of a turf.
 /proc/get_atom_on_turf(atom/movable/M, stop_type)
-	var/atom/turf_to_check = M
-	while(turf_to_check?.loc && !isturf(turf_to_check.loc))
-		turf_to_check = turf_to_check.loc
-		if(stop_type && istype(turf_to_check, stop_type))
+	var/atom/loc = M
+	while(loc?.loc && !isturf(loc.loc))
+		loc = loc.loc
+		if(stop_type && istype(loc, stop_type))
 			break
-	return turf_to_check
+	return loc
 
 //Returns a list of all locations (except the area) the movable is within.
 /proc/get_nested_locs(atom/movable/AM, include_turf = FALSE)
@@ -427,13 +427,12 @@ Turf and target are separate in case you want to teleport some distance from a t
 
 
 ///Returns the src and all recursive contents as a list.
-/atom/proc/GetAllContents(ignore_flag_1)
+/atom/proc/GetAllContents()
 	. = list(src)
 	var/i = 0
 	while(i < length(.))
 		var/atom/A = .[++i]
-		if (!(A.flags_1 & ignore_flag_1))
-			. += A.contents
+		. += A.contents
 
 ///identical to getallcontents but returns a list of atoms of the type passed in the argument.
 /atom/proc/get_all_contents_type(type)
@@ -511,13 +510,15 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/areas = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(cache[area_to_check.type])
-				areas += area_to_check
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(cache[A.type])
+				areas += V
 	else
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(area_to_check.type == areatype)
-				areas += area_to_check
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(A.type == areatype)
+				areas += V
 	return areas
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -534,19 +535,21 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/turfs = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(!cache[area_to_check.type])
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(!cache[A.type])
 				continue
-			for(var/turf/turf_in_area in area_to_check)
-				if(target_z == 0 || target_z == turf_in_area.z)
-					turfs += turf_in_area
+			for(var/turf/T in A)
+				if(target_z == 0 || target_z == T.z)
+					turfs += T
 	else
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(area_to_check.type != areatype)
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(A.type != areatype)
 				continue
-			for(var/turf/turf_in_area in area_to_check)
-				if(target_z == 0 || target_z == turf_in_area.z)
-					turfs += turf_in_area
+			for(var/turf/T in A)
+				if(target_z == 0 || target_z == T.z)
+					turfs += T
 	return turfs
 
 /proc/get_cardinal_dir(atom/A, atom/B)
@@ -1504,10 +1507,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		path = new path(pod)
 
 	//remove non var edits from specifications
-	specifications -= "target"
-	specifications -= "style"
-	specifications -= "path"
-	specifications -= "spawn" //list, we remove the key
+	specifications -= landing_location
+	specifications -= style
+	specifications -= spawn_type
+	specifications -= "paths_to_spawn" //list, we remove the key
 
 	//rest of specificiations are edits on the pod
 	for(var/variable_name in specifications)

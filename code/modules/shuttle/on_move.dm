@@ -31,7 +31,7 @@ All ShuttleMove procs go here
 				if(M.pulledby)
 					M.pulledby.stop_pulling()
 				M.stop_pulling()
-				M.visible_message(span_warning("[shuttle] slams into [M]!"))
+				M.visible_message("<span class='warning'>[shuttle] slams into [M]!</span>")
 				SSblackbox.record_feedback("tally", "shuttle_gib", 1, M.type)
 				log_attack("[key_name(M)] was shuttle gibbed by [shuttle].")
 				M.gib()
@@ -55,22 +55,6 @@ All ShuttleMove procs go here
 	if(!shuttle_boundary)
 		CRASH("A turf queued to move via shuttle somehow had no skipover in baseturfs. [src]([type]):[loc]")
 	var/depth = baseturfs.len - shuttle_boundary + 1
-
-	//SKYRAT EDIT ADDITION
-	if(newT.lgroup)
-		newT.lgroup.remove_from_group(newT)
-	if(newT.liquids)
-		if(newT.liquids.immutable)
-			newT.liquids.remove_turf(src)
-		else
-			qdel(newT.liquids, TRUE)
-
-	if(lgroup)
-		lgroup.remove_from_group(src)
-	if(liquids)
-		liquids.ChangeToNewTurf(newT)
-		newT.reasses_liquids()
-	//SKYRAT EDIT END
 	newT.CopyOnTop(src, 1, depth, TRUE)
 	newT.blocks_air = TRUE
 	newT.air_update_turf(TRUE, FALSE)
@@ -121,7 +105,8 @@ All ShuttleMove procs go here
 	if(loc != oldT) // This is for multi tile objects
 		return
 
-	abstract_move(newT)
+	loc = newT
+
 
 	return TRUE
 
@@ -378,6 +363,9 @@ All ShuttleMove procs go here
 
 /************************************Misc move procs************************************/
 
+/atom/movable/lighting_object/onShuttleMove()
+	return FALSE
+
 /obj/docking_port/mobile/beforeShuttleMove(turf/newT, rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()
 	if(moving_dock == src)
@@ -398,7 +386,7 @@ All ShuttleMove procs go here
 	if(loc != oldT) // This is for multi tile objects
 		return
 
-	abstract_move(newT)
+	loc = newT
 
 	return TRUE
 

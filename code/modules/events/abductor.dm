@@ -1,10 +1,11 @@
 /datum/round_event_control/abductor
 	name = "Abductors"
 	typepath = /datum/round_event/ghost_role/abductor
-	weight = 0 //SKYRAT EDIT CHANGE
+	weight = 10
 	max_occurrences = 1
 	min_players = 20
 	dynamic_should_hijack = TRUE
+	gamemode_blacklist = list("nuclear","wizard","revolution")
 
 /datum/round_event/ghost_role/abductor
 	minimum_required = 2

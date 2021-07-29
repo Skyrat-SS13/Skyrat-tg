@@ -16,6 +16,7 @@
 	var/hasmob = FALSE // contains a mob
 
 /obj/structure/disposalholder/Destroy()
+	QDEL_NULL(gas)
 	active = FALSE
 	return ..()
 
@@ -83,9 +84,6 @@
 /obj/structure/disposalholder/Moved(atom/oldLoc, dir)
 	. = ..()
 	var/static/list/pipes_typecache = typecacheof(/obj/structure/disposalpipe)
-	//Moved to nullspace gang
-	if(!loc)
-		return
 	if(!pipes_typecache[loc.type])
 		var/turf/T = get_turf(loc)
 		if(T)
@@ -134,6 +132,7 @@
 // called to vent all gas in holder to a location
 /obj/structure/disposalholder/proc/vent_gas(turf/T)
 	T.assume_air(gas)
+	T.air_update_turf(FALSE, FALSE)
 
 /obj/structure/disposalholder/AllowDrop()
 	return TRUE

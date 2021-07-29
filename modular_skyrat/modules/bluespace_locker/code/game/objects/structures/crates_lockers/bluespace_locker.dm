@@ -27,8 +27,6 @@
 	icon_state = null
 	desc = ""
 	cutting_tool = null
-	has_opened_overlay = FALSE
-	has_closed_overlay = FALSE
 	can_weld_shut = FALSE
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -37,7 +35,8 @@
 /obj/structure/closet/bluespace/internal/Initialize()
 	. = ..()
 	if(SSbluespace_locker.internal_locker && SSbluespace_locker.internal_locker != src)
-		return INITIALIZE_HINT_QDEL_FORCE
+		qdel(src)
+		return
 	SSbluespace_locker.internal_locker = src
 
 /obj/structure/closet/bluespace/internal/get_other_locker()
@@ -95,7 +94,7 @@
 	var/obj/structure/closet/other = get_other_locker()
 	if(!other)
 		other = src
-	var/mutable_appearance/masked_icon = mutable_appearance('modular_skyrat/master_files/icons/obj/closet.dmi', "bluespace_locker_mask")
+	var/mutable_appearance/masked_icon = mutable_appearance('modular_skyrat/modules/bluespace_locker/icons/obj/closet.dmi', "bluespace_locker_mask")
 	masked_icon.appearance_flags = KEEP_TOGETHER
 	var/mutable_appearance/masking_icon = mutable_appearance(other.icon, other.icon_state)
 	masking_icon.blend_mode = BLEND_MULTIPLY

@@ -30,7 +30,7 @@
 	var/check = FALSE
 	if(ismob(target))
 		var/mob/living/mobster = target
-		if(!(mobster.mob_biotypes & MOB_ROBOTIC))
+		if(!mobster.mob_biotypes & MOB_ROBOTIC)
 			return FALSE
 		else
 			check = TRUE
@@ -172,7 +172,7 @@
 	H.physiology.burn_mod *= 0.5
 	H.client?.give_award(/datum/award/achievement/misc/rust_ascension, H)
 	RegisterSignal(H,COMSIG_MOVABLE_MOVED,.proc/on_move)
-	priority_announce("$^@&#*$^@(#&$(@&#^$&#^@# Fear the decay, for the Rustbringer, [user.real_name] has ascended! None shall escape the corrosion! $^@&#*$^@(#&$(@&#^$&#^@#","#$^@&#*$^@(#&$(@&#^$&#^@#", ANNOUNCER_SPOOKY) //SKYRAT EDIT - Original: ANNOUNCER_SPANOMALIES
+	priority_announce("$^@&#*$^@(#&$(@&#^$&#^@# Fear the decay, for the Rustbringer, [user.real_name] has ascended! None shall escape the corrosion! $^@&#*$^@(#&$(@&#^$&#^@#","#$^@&#*$^@(#&$(@&#^$&#^@#", ANNOUNCER_SPANOMALIES)
 	new /datum/rust_spread(loc)
 	return ..()
 
@@ -262,8 +262,8 @@
 	edge_turfs = list()
 	var/list/removal_list = list()
 	var/max_dist = 1
-	for(var/atom/turfie as anything in turfs)
-		if(!HAS_TRAIT(turfie, TRAIT_RUSTY))
+	for(var/turfie in turfs)
+		if(!istype(turfie,/turf/closed/wall/rust) && !istype(turfie,/turf/closed/wall/r_wall/rust) && !istype(turfie,/turf/open/floor/plating/rust))
 			removal_list += turfie
 		max_dist = max(max_dist, get_dist(turfie,centre) +1)
 	turfs -= removal_list

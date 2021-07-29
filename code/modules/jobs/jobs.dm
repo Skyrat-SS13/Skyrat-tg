@@ -1,11 +1,4 @@
 //THIS FILE WAS EDITED BY SKYRAT EDIT
-
-//SKYRAT EDIT ADDITION
-GLOBAL_LIST_INIT(central_command_positions, list(
-	"Nanotrasen Representative",
-	"Blueshield"))
-//SKYRAT EDIT END
-
 GLOBAL_LIST_INIT(command_positions, list(
 	"Captain",
 	"Head of Personnel",
@@ -34,8 +27,7 @@ GLOBAL_LIST_INIT(science_positions, list(
 	"Research Director",
 	"Scientist",
 	"Geneticist",
-	"Roboticist",
-	"Vanguard Operative")) //SKYRAT EDIT ADDITION
+	"Roboticist"))
 
 
 GLOBAL_LIST_INIT(supply_positions, list(
@@ -63,7 +55,8 @@ GLOBAL_LIST_INIT(service_positions, list(
 GLOBAL_LIST_INIT(service_food_positions, list(
 	"Bartender",
 	"Botanist",
-	"Cook"))
+	"Cook",
+))
 
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
@@ -73,7 +66,7 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Security Medic",
 	"Security Sergeant",
 	"Civil Disputes Officer",
-	"Corrections Officer")) //SKYRAT EDIT - LIST AMENDED
+	"Blueshield")) //SKYRAT EDIT - LIST AMENDED
 
 /// These aren't defacto jobs, but are the special departmental variants for sec officers.
 GLOBAL_LIST_INIT(security_sub_positions, list(
@@ -90,7 +83,6 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 
 // job categories for rendering the late join menu
 GLOBAL_LIST_INIT(position_categories, list(
-	EXP_TYPE_CENTRAL_COMMAND = list("jobs" = central_command_positions, "#8df1b7"), //SKYRAT EDIT ADDITION
 	EXP_TYPE_COMMAND = list("jobs" = command_positions, "color" = "#ccccff"),
 	EXP_TYPE_ENGINEERING = list("jobs" = engineering_positions, "color" = "#ffeeaa"),
 	EXP_TYPE_SUPPLY = list("jobs" = supply_positions, "color" = "#ddddff"),
@@ -102,8 +94,7 @@ GLOBAL_LIST_INIT(position_categories, list(
 ))
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
-	EXP_TYPE_CREW = list("titles" = central_command_positions | command_positions | engineering_positions | medical_positions | science_positions | supply_positions | security_positions | service_positions | list("AI","Cyborg")), // crew positions //SKYRAT EDIT ADDITION
-	EXP_TYPE_CENTRAL_COMMAND = list("titles" = central_command_positions), //SKYRAT EDIT ADDITION
+	EXP_TYPE_CREW = list("titles" = command_positions | engineering_positions | medical_positions | science_positions | supply_positions | security_positions | service_positions | list("AI","Cyborg")), // crew positions
 	EXP_TYPE_COMMAND = list("titles" = command_positions),
 	EXP_TYPE_ENGINEERING = list("titles" = engineering_positions),
 	EXP_TYPE_MEDICAL = list("titles" = medical_positions),

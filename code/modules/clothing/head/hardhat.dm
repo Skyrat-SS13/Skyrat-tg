@@ -142,14 +142,12 @@
 		visor_sprite_path = 'icons/mob/clothing/head.dmi'	//END SKYRAT EDIT
 	update_appearance()
 
-/obj/item/clothing/head/hardhat/weldhat/worn_overlays(mutable_appearance/standing, isinhands)
+/obj/item/clothing/head/hardhat/weldhat/worn_overlays(isinhands)
 	. = ..()
-	if(isinhands)
-		return
-
-	. += mutable_appearance(visor_sprite_path, "weldhelmet")	//Changed first variable from 'icons/mob/clothing/head.dmi'
-	if(!up)
-		. += mutable_appearance(visor_sprite_path, "weldvisor")	//Changed first variable from 'icons/mob/clothing/head.dmi'
+	if(!isinhands)
+		. += mutable_appearance(visor_sprite_path, "weldhelmet")	//Changed first variable from 'icons/mob/clothing/head.dmi'
+		if(!up)
+			. += mutable_appearance(visor_sprite_path, "weldvisor")	//Changed first variable from 'icons/mob/clothing/head.dmi'
 
 /obj/item/clothing/head/hardhat/weldhat/update_overlays()
 	. = ..()

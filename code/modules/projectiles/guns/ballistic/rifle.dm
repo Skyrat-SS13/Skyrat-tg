@@ -17,9 +17,13 @@
 	bolt_drop_sound = 'sound/weapons/gun/rifle/bolt_in.ogg'
 	tac_reloads = FALSE
 
+/obj/item/gun/ballistic/rifle/update_overlays()
+	. = ..()
+	. += "[icon_state]_bolt[bolt_locked ? "_locked" : ""]"
+
 /obj/item/gun/ballistic/rifle/rack(mob/user = null)
 	if (bolt_locked == FALSE)
-		to_chat(user, span_notice("You open the bolt of \the [src]."))
+		to_chat(user, "<span class='notice'>You open the bolt of \the [src].</span>")
 		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 		process_chamber(FALSE, FALSE, FALSE)
 		bolt_locked = TRUE
@@ -34,7 +38,7 @@
 
 /obj/item/gun/ballistic/rifle/attackby(obj/item/A, mob/user, params)
 	if (!bolt_locked && !istype(A, /obj/item/stack/sheet/cloth))
-		to_chat(user, span_notice("The bolt is closed!"))
+		to_chat(user, "<span class='notice'>The bolt is closed!</span>")
 		return
 	return ..()
 
@@ -77,7 +81,7 @@
 				unjam_chance = 10
 			else
 				unjam_chance += 10
-				to_chat(user, span_warning("[src] is jammed!"))
+				to_chat(user, "<span class='warning'>[src] is jammed!</span>")
 				playsound(user,'sound/weapons/jammed.ogg', 75, TRUE)
 				return FALSE
 	..()
@@ -97,7 +101,7 @@
 		if(bolt_locked)
 			if(istype(item, /obj/item/gun_maintenance_supplies))
 				if(do_after(user, 10 SECONDS, target = src))
-					user.visible_message(span_notice("[user] finishes maintenance of [src]."))
+					user.visible_message("<span class='notice'>[user] finishes maintenance of [src].</span>")
 					jamming_chance = 10
 					qdel(item)
 */ //SKYRAT EDIT END
@@ -186,7 +190,6 @@
 	item_flags = NEEDS_PERMIT | DROPDEL | ABSTRACT | NOBLUDGEON
 	flags_1 = NONE
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
-	show_bolt_icon = FALSE //It's a magic hand, not a rifle
 	realistic = FALSE
 
 	mag_type = /obj/item/ammo_box/magazine/internal/arcane_barrage

@@ -11,8 +11,8 @@
 	exp_requirements = 120
 	exp_type = EXP_TYPE_MEDICAL
 
+
 	outfit = /datum/outfit/job/security_medic
-	plasmaman_outfit = /datum/outfit/plasmaman/security
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SEC
@@ -22,14 +22,9 @@
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_MEDIC
 	bounty_types = CIV_JOB_SEC
-	departments = DEPARTMENT_SECURITY
 
 	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
 
-/datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
-	. = ..()
-	to_chat(M, "<span class='redtext'>As the Security Medic, you are comparable in medical knowledge to a Paramedic, not a one man surgical bay. \
-	your main duty is healing on the field or in combat situations. Leave revivals and chemistry work to trained professionals.")
 
 /datum/outfit/job/security_medic
 	name = "Security Medic"
@@ -75,7 +70,8 @@
 /obj/structure/closet/secure_closet/security_medic
 	name = "security medics's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon_state = "brig_phys"
+	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
+	icon_state = "secmed"
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()
@@ -88,4 +84,3 @@
 	new /obj/item/clothing/suit/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/peacekeeper/full(src)
-	new /obj/item/clothing/under/rank/medical/doctor/red(src)

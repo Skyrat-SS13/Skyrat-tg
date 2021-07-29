@@ -162,6 +162,20 @@
 			turfs += T
 	return turfs
 
+
+//This is the new version of recursive_mob_check, used for say().
+//The other proc was left intact because morgue trays use it.
+//Sped this up again for real this time
+/proc/recursive_hear_check(O)
+	var/list/processing_list = list(O)
+	. = list()
+	var/i = 0
+	while(i < length(processing_list))
+		var/atom/A = processing_list[++i]
+		if(A.flags_1 & HEAR_1)
+			. += A
+		processing_list += A.contents
+
 /** recursive_organ_check
  * inputs: O (object to start with)
  * outputs:
@@ -199,26 +213,38 @@
 
 	return
 
-/// Returns a list of hearers in view(view_radius) from source (ignoring luminosity). uses important_recursive_contents[RECURSIVE_CONTENTS_HEARING_SENSITIVE]
-/proc/get_hearers_in_view(view_radius, atom/source)
-	var/turf/center_turf = get_turf(source)
+/proc/get_hearers_in_view(R, atom/source)
+	// Returns a list of hearers in view(R) from source (ignoring luminosity). Used in saycode.
+	var/turf/T = get_turf(source)
 	. = list()
-	if(!center_turf)
+	if(!T)
 		return
-	var/lum = center_turf.luminosity
-	center_turf.luminosity = 6 // This is the maximum luminosity
-	for(var/atom/movable/movable in view(view_radius, center_turf))
-		var/list/recursive_contents = LAZYACCESS(movable.important_recursive_contents, RECURSIVE_CONTENTS_HEARING_SENSITIVE)
-		if(recursive_contents)
-			. += recursive_contents
-			SEND_SIGNAL(movable, COMSIG_ATOM_HEARER_IN_VIEW, .)
-	center_turf.luminosity = lum
+	var/list/processing_list = list()
+	if (R == 0) // if the range is zero, we know exactly where to look for, we can skip view
+		processing_list += T.contents // We can shave off one iteration by assuming turfs cannot hear
+	else  // A variation of get_hear inlined here to take advantage of the compiler's fastpath for obj/mob in view
+		var/lum = T.luminosity
+		T.luminosity = 6 // This is the maximum luminosity
+		for(var/mob/M in view(R, T))
+			processing_list += M
+		for(var/obj/O in view(R, T))
+			processing_list += O
+		T.luminosity = lum
+
+	var/i = 0
+	while(i < length(processing_list)) // recursive_hear_check inlined here
+		var/atom/A = processing_list[++i]
+		if(A.flags_1 & HEAR_1)
+			. += A
+			SEND_SIGNAL(A, COMSIG_ATOM_HEARER_IN_VIEW, processing_list, .)
+		processing_list += A.contents
 
 /proc/get_mobs_in_radio_ranges(list/obj/item/radio/radios)
 	. = list()
 	// Returns a list of mobs who can hear any of the radios given in @radios
 	for(var/obj/item/radio/R in radios)
-		. |= get_hearers_in_view(R.canhear_range, R)
+		if(R)
+			. |= get_hearers_in_view(R.canhear_range, R)
 
 #define SIGNV(X) ((X<0)?-1:1)
 
@@ -317,10 +343,6 @@
 	O.screen_loc = screen_loc
 	return O
 
-/// Removes an image from a client's `.images`. Useful as a callback.
-/proc/remove_image_from_client(image/image, client/remove_from)
-	remove_from?.images -= image
-
 /proc/remove_images_from_clients(image/I, list/show_to)
 	for(var/client/C in show_to)
 		C.images -= I
@@ -368,22 +390,22 @@
 	var/list/answers = ignore_category ? list("Yes", "No", "Never for this round") : list("Yes", "No")
 	switch(tgui_alert(M, Question, "A limited-time offer!", answers, timeout=poll_time))
 		if("Yes")
-			to_chat(M, span_notice("Choice registered: Yes."))
+			to_chat(M, "<span class='notice'>Choice registered: Yes.</span>")
 			if(time_passed + poll_time <= world.time)
-				to_chat(M, span_danger("Sorry, you answered too late to be considered!"))
+				to_chat(M, "<span class='danger'>Sorry, you answered too late to be considered!</span>")
 				SEND_SOUND(M, 'sound/machines/buzz-sigh.ogg')
 				candidates -= M
 			else
 				candidates += M
 		if("No")
-			to_chat(M, span_danger("Choice registered: No."))
+			to_chat(M, "<span class='danger'>Choice registered: No.</span>")
 			candidates -= M
 		if("Never for this round")
 			var/list/L = GLOB.poll_ignore[ignore_category]
 			if(!L)
 				GLOB.poll_ignore[ignore_category] = list()
 			GLOB.poll_ignore[ignore_category] += M.ckey
-			to_chat(M, span_danger("Choice registered: Never for this round."))
+			to_chat(M, "<span class='danger'>Choice registered: Never for this round.</span>")
 			candidates -= M
 		else
 			candidates -= M
@@ -407,11 +429,6 @@
 		var/mob/M = m
 		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (M.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
-		//SKYRAT EDIT ADDITION BEGIN
-		if(is_banned_from(M.ckey, BAN_GHOST_TAKEOVER))
-			to_chat(M, "There was a ghost prompt for: [Question], unfortunately you are banned from ghost takeovers.")
-			continue
-		//SKYRAT EDIT END
 		if(be_special_flag)
 			if(!(M.client.prefs) || !(be_special_flag in M.client.prefs.be_special))
 				continue
@@ -492,7 +509,7 @@
 		A = A.loc
 
 	return A.loc
-/* - SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
+
 /proc/AnnounceArrival(mob/living/carbon/human/character, rank)
 	if(!SSticker.IsRoundInProgress() || QDELETED(character))
 		return
@@ -507,7 +524,7 @@
 
 	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
-*/
+
 /proc/lavaland_equipment_pressure_check(turf/T)
 	. = FALSE
 	if(!istype(T))

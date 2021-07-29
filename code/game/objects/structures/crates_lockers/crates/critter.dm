@@ -12,7 +12,6 @@
 	close_sound = 'sound/machines/wooden_closet_close.ogg'
 	open_sound_volume = 25
 	close_sound_volume = 50
-	contents_pressure_protection = 0.8
 	var/obj/item/tank/internals/emergency_oxygen/tank
 
 /obj/structure/closet/crate/critter/Initialize()
@@ -43,7 +42,7 @@
 
 /obj/structure/closet/crate/critter/return_air()
 	if(tank)
-		return tank.return_air()
+		return tank.air_contents
 	else
 		return loc.return_air()
 

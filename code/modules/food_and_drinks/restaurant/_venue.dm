@@ -1,12 +1,7 @@
-#define VENUE_RESTAURANT "Restaurant Venue"
-#define VENUE_BAR "Bar Venue"
-
 ///Represents the abstract concept of a food venue in the code.
 /datum/venue
 	///Name of the venue, also used for the icon state of any radials it can be selected in
 	var/name = "unnamed venue"
-	///What kind of Venue are we
-	var/venue_type = VENUE_RESTAURANT
 	///Max amount of guests at any time
 	var/max_guests = 6
 	///Weighted list of customer types
@@ -106,13 +101,15 @@
 	desc = "A robot-only gate into the wonders of Space Station cuisine!"
 	icon = 'icons/obj/machines/restaurant_portal.dmi'
 	icon_state = "portal"
-	anchored = TRUE
-	density = FALSE
+	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/machine/restaurant_portal
+
 	layer = BELOW_OBJ_LAYER
+	density = FALSE
+	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	///What venue is this portal for? Uses a typepath which is turned into an instance on Initialize
 	var/datum/venue/linked_venue = /datum/venue
@@ -129,8 +126,6 @@
 /obj/machinery/restaurant_portal/Destroy()
 	. = ..()
 	turned_on_portal = null
-	linked_venue.restaurant_portal = null
-	linked_venue = null
 
 /obj/machinery/restaurant_portal/update_overlays()
 	. = ..()
@@ -144,7 +139,7 @@
 		return ..()
 
 	if(!(linked_venue.req_access in used_id.GetAccess()))
-		to_chat(user, span_warning("This card lacks the access to change this venues status."))
+		to_chat(user, "<span class='warning'>This card lacks the access to change this venues status.</span>")
 		return
 
 	linked_venue.toggle_open()
@@ -157,7 +152,7 @@
 	var/obj/item/card/id/used_id = I
 
 	if(!(linked_venue.req_access in used_id.GetAccess()))
-		to_chat(user, span_warning("This card lacks the access to change this venues status."))
+		to_chat(user, "<span class='warning'>This card lacks the access to change this venues status.</span>")
 		return
 
 	var/list/radial_items = list()
@@ -178,16 +173,15 @@
 	turned_on_portal = WEAKREF(user)
 
 	if(!(chosen_venue.req_access in used_id.GetAccess()))
-		to_chat(user, span_warning("This card lacks the access to change this venues status."))
+		to_chat(user, "<span class='warning'>This card lacks the access to change this venues status.</span>")
 		return
 
-	to_chat(user, span_notice("You change the portal's linked venue."))
+	to_chat(user, "<span class='notice'>You change the portal's linked venue.</span>")
 
 	if(linked_venue && linked_venue.restaurant_portal) //We're already linked, unlink us.
 		if(linked_venue.open)
 			linked_venue.close()
 		linked_venue.restaurant_portal.linked_venue = null
-		linked_venue.restaurant_portal = null
 
 	linked_venue = chosen_venue
 	linked_venue.restaurant_portal = src

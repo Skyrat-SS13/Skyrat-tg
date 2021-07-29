@@ -1,0 +1,5 @@
+#define RADIO_CHANNEL_ASSAULT "DS-1"
+#define RADIO_KEY_ASSAULT "z"
+#define RADIO_TOKEN_ASSAULT ":z"
+
+#define FREQ_ASSAULT 1207

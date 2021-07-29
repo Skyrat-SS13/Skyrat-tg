@@ -27,16 +27,12 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/Initialize()
 	. = ..()
-	soundloop = new(src, FALSE, TRUE)
+	soundloop = new(list(), FALSE, TRUE)
 	soundloop.volume = 5
 	START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/head/helmet/space/hardsuit/Destroy()
 	. = ..()
-	if(!QDELETED(suit))
-		qdel(suit)
-	suit = null
-	QDEL_NULL(soundloop)
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/head/helmet/space/hardsuit/attack_self(mob/user)
@@ -46,7 +42,9 @@
 
 	set_light_on(on)
 
-	update_action_buttons()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
 
 /obj/item/clothing/head/helmet/space/hardsuit/dropped(mob/user)
 	..()
@@ -72,7 +70,7 @@
 /obj/item/clothing/head/helmet/space/hardsuit/proc/display_visor_message(msg)
 	var/mob/wearer = loc
 	if(msg && ishuman(wearer))
-		wearer.show_message("[icon2html(src, wearer)]<b>[span_robot("[msg]")]</b>", MSG_VISUAL)
+		wearer.show_message("[icon2html(src, wearer)]<b><span class='robot'>[msg]</span></b>", MSG_VISUAL)
 
 /obj/item/clothing/head/helmet/space/hardsuit/rad_act(amount)
 	. = ..()
@@ -116,6 +114,7 @@
 	
 	var/list/hardsuit_tail_colors			//SKYRAT EDIT ADDITION - CUSTOMIZATION
 
+
 /obj/item/clothing/suit/space/hardsuit/Initialize()
 	if(jetpack && ispath(jetpack))
 		jetpack = new jetpack(src)
@@ -128,49 +127,49 @@
 /obj/item/clothing/suit/space/hardsuit/examine(mob/user)
 	. = ..()
 	if(!helmet && helmettype)
-		. += span_notice("The helmet on [src] seems to be malfunctioning. Its light bulb needs to be replaced.")
+		. += "<span class='notice'>The helmet on [src] seems to be malfunctioning. Its light bulb needs to be replaced.</span>"
 
 /obj/item/clothing/suit/space/hardsuit/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/tank/jetpack/suit))
 		if(jetpack)
-			to_chat(user, span_warning("[src] already has a jetpack installed."))
+			to_chat(user, "<span class='warning'>[src] already has a jetpack installed.</span>")
 			return
 		if(src == user.get_item_by_slot(ITEM_SLOT_OCLOTHING)) //Make sure the player is not wearing the suit before applying the upgrade.
-			to_chat(user, span_warning("You cannot install the upgrade to [src] while wearing it."))
+			to_chat(user, "<span class='warning'>You cannot install the upgrade to [src] while wearing it.</span>")
 			return
 
 		if(user.transferItemToLoc(I, src))
 			jetpack = I
-			to_chat(user, span_notice("You successfully install the jetpack into [src]."))
+			to_chat(user, "<span class='notice'>You successfully install the jetpack into [src].</span>")
 			return
 	else if(!cell_cover_open && I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(!jetpack)
-			to_chat(user, span_warning("[src] has no jetpack installed."))
+			to_chat(user, "<span class='warning'>[src] has no jetpack installed.</span>")
 			return
 		if(src == user.get_item_by_slot(ITEM_SLOT_OCLOTHING))
-			to_chat(user, span_warning("You cannot remove the jetpack from [src] while wearing it."))
+			to_chat(user, "<span class='warning'>You cannot remove the jetpack from [src] while wearing it.</span>")
 			return
 
 		jetpack.turn_off(user)
 		jetpack.forceMove(drop_location())
 		jetpack = null
-		to_chat(user, span_notice("You successfully remove the jetpack from [src]."))
+		to_chat(user, "<span class='notice'>You successfully remove the jetpack from [src].</span>")
 		return
 	else if(istype(I, /obj/item/light) && helmettype)
 		if(src == user.get_item_by_slot(ITEM_SLOT_OCLOTHING))
-			to_chat(user, span_warning("You cannot replace the bulb in the helmet of [src] while wearing it."))
+			to_chat(user, "<span class='warning'>You cannot replace the bulb in the helmet of [src] while wearing it.</span>")
 			return
 		if(helmet)
-			to_chat(user, span_warning("The helmet of [src] does not require a new bulb."))
+			to_chat(user, "<span class='warning'>The helmet of [src] does not require a new bulb.</span>")
 			return
 		var/obj/item/light/L = I
 		if(L.status)
-			to_chat(user, span_warning("This bulb is too damaged to use as a replacement!"))
+			to_chat(user, "<span class='warning'>This bulb is too damaged to use as a replacement!</span>")
 			return
 		if(do_after(user, 5 SECONDS, src))
 			qdel(I)
 			helmet = new helmettype(src)
-			to_chat(user, span_notice("You have successfully repaired [src]'s helmet."))
+			to_chat(user, "<span class='notice'>You have successfully repaired [src]'s helmet.</span>")
 			new /obj/item/light/bulb/broken(drop_location())
 	return ..()
 
@@ -199,7 +198,7 @@
 	var/mob/living/carbon/human/user = src.loc
 	if(istype(user))
 		user.apply_damage(HARDSUIT_EMP_BURN, BURN, spread_damage=TRUE)
-		to_chat(user, span_warning("You feel \the [src] heat up from the EMP burning you slightly."))
+		to_chat(user, "<span class='warning'>You feel \the [src] heat up from the EMP burning you slightly.</span>")
 
 		// Chance to scream
 		if (user.stat < UNCONSCIOUS && prob(10))
@@ -227,7 +226,7 @@
 	//Atmospherics
 /obj/item/clothing/head/helmet/space/hardsuit/engine/atmos
 	name = "atmospherics hardsuit helmet"
-	desc = "A modified engineering hardsuit for work in a hazardous, low pressure environment. The radiation shielding plates were removed to allow for improved thermal protection instead."
+	desc = "A special helmet designed for work in a hazardous, low-pressure environment. Has thermal shielding."
 	icon_state = "hardsuit0-atmospherics"
 	inhand_icon_state = "atmo_helm"
 	hardsuit_type = "atmospherics"
@@ -237,7 +236,7 @@
 
 /obj/item/clothing/suit/space/hardsuit/engine/atmos
 	name = "atmospherics hardsuit"
-	desc = "A modified engineering hardsuit for work in a hazardous, low pressure environment. The radiation shielding plates were removed to allow for improved thermal protection instead."
+	desc = "A special suit that protects against hazardous, low pressure environments. Has thermal shielding."
 	icon_state = "hardsuit-atmospherics"
 	inhand_icon_state = "atmo_hardsuit"
 	armor = list(MELEE = 30, BULLET = 5, LASER = 10, ENERGY = 20, BOMB = 10, BIO = 100, RAD = 25, FIRE = 100, ACID = 75, WOUND = 10)
@@ -297,7 +296,6 @@
 		if(amount == maxamount)
 			hardsuit_type = "mining_goliath_full"
 	icon_state = "hardsuit[on]-[hardsuit_type]"
-	set_light_color(LIGHT_COLOR_FLARE)
 	if(ishuman(loc))
 		var/mob/living/carbon/human/wearer = loc
 		if(wearer.head == src)
@@ -351,6 +349,10 @@
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags = STOPSPRESSUREDAMAGE
 
+/obj/item/clothing/head/helmet/space/hardsuit/syndi/update_icon_state()
+	icon_state = "hardsuit[on]-[hardsuit_type]"
+	return ..()
+
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/Initialize()
 	. = ..()
 	if(istype(loc, /obj/item/clothing/suit/space/hardsuit/syndi))
@@ -358,11 +360,11 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/attack_self(mob/user) //Toggle Helmet
 	if(!isturf(user.loc))
-		to_chat(user, span_warning("You cannot toggle your helmet while in this [user.loc]!") )
+		to_chat(user, "<span class='warning'>You cannot toggle your helmet while in this [user.loc]!</span>" )
 		return
 	on = !on
 	if(on || force)
-		to_chat(user, span_notice("You switch your hardsuit to EVA mode, sacrificing speed for space protection."))
+		to_chat(user, "<span class='notice'>You switch your hardsuit to EVA mode, sacrificing speed for space protection.</span>")
 		name = initial(name)
 		desc = initial(desc)
 		set_light_on(TRUE)
@@ -371,7 +373,7 @@
 		flags_inv |= visor_flags_inv
 		cold_protection |= HEAD
 	else
-		to_chat(user, span_notice("You switch your hardsuit to combat mode and can now run at full speed."))
+		to_chat(user, "<span class='notice'>You switch your hardsuit to combat mode and can now run at full speed.</span>")
 		name += " (combat)"
 		desc = alt_desc
 		set_light_on(FALSE)
@@ -382,12 +384,13 @@
 	update_appearance()
 	playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, TRUE)
 	toggle_hardsuit_mode(user)
+	user.update_inv_head()
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.head_update(src, forced = 1)
-	icon_state = "hardsuit[on]-[hardsuit_type]"
-	user.update_inv_head()
-	update_action_buttons()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/proc/toggle_hardsuit_mode(mob/user) //Helmet Toggles Suit Mode
 	if(linkedsuit)
@@ -579,8 +582,6 @@
 
 /obj/item/clothing/head/helmet/space/hardsuit/rd/proc/sense_explosion(datum/source, turf/epicenter, devastation_range, heavy_impact_range,
 		light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)
-	SIGNAL_HANDLER
-
 	var/turf/T = get_turf(src)
 	if(T.z != epicenter.z)
 		return
@@ -736,7 +737,6 @@
 	var/mob/listeningTo
 
 /obj/item/clothing/suit/space/hardsuit/ancient/proc/on_mob_move()
-	SIGNAL_HANDLER
 	var/mob/living/carbon/human/H = loc
 	if(!istype(H) || H.wear_suit != src)
 		return
@@ -784,10 +784,6 @@
 	var/recharge_delay = 20 SECONDS
 	/// How quickly the shield recharges each charge once it starts charging
 	var/recharge_rate = 1 SECONDS
-	/// How many charges are recovered on each recharge
-	var/recharge_amount = 1
-	/// Should the shield lose charges equal to the damage dealt by a hit?
-	var/lose_multiple_charges = FALSE
 	/// The icon for the shield
 	var/shield_icon = "shield-old"
 
@@ -795,12 +791,92 @@
 	. = ..()
 	if(!allowed)
 		allowed = GLOB.advanced_hardsuit_allowed
-	AddComponent(/datum/component/shielded, max_charges = max_charges, recharge_start_delay = recharge_delay, charge_increment_delay = recharge_rate, charge_recovery = recharge_amount, lose_multiple_charges = lose_multiple_charges, shield_icon = shield_icon)
+	AddComponent(/datum/component/shielded, max_charges = max_charges, recharge_start_delay = recharge_delay, charge_increment_delay = recharge_rate, shield_icon = shield_icon)
 
 /obj/item/clothing/head/helmet/space/hardsuit/shielded
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+///////////////Capture the Flag////////////////////
+
+/obj/item/clothing/suit/space/hardsuit/shielded/ctf
+	name = "white shielded hardsuit"
+	desc = "Standard issue hardsuit for playing capture the flag."
+	icon_state = "ert_medical"
+	inhand_icon_state = "ert_medical"
+	hardsuit_type = "ert_medical"
+	// Adding TRAIT_NODROP is done when the CTF spawner equips people
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf
+	armor = list(MELEE = 0, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 50, BIO = 100, RAD = 100, FIRE = 95, ACID = 95)
+	slowdown = 0
+	max_charges = 5
+
+/obj/item/clothing/suit/space/hardsuit/shielded/ctf/red
+	name = "red shielded hardsuit"
+	icon_state = "ert_security"
+	inhand_icon_state = "ert_security"
+	hardsuit_type = "ert_security"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/red
+	shield_icon = "shield-red"
+
+/obj/item/clothing/suit/space/hardsuit/shielded/ctf/blue
+	name = "blue shielded hardsuit"
+	desc = "Standard issue hardsuit for playing capture the flag."
+	icon_state = "ert_command"
+	inhand_icon_state = "ert_command"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/blue
+
+/obj/item/clothing/suit/space/hardsuit/shielded/ctf/green
+	name = "green shielded hardsuit"
+	icon_state = "ert_green"
+	inhand_icon_state = "ert_green"
+	hardsuit_type = "ert_green"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/green
+	shield_icon = "shield-green"
+
+/obj/item/clothing/suit/space/hardsuit/shielded/ctf/yellow
+	name = "yellow shielded hardsuit"
+	icon_state = "ert_engineer"
+	inhand_icon_state = "ert_engineer"
+	hardsuit_type = "ert_engineer"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/yellow
+	shield_icon = "shield-yellow"
+
+
+/obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf
+	name = "shielded hardsuit helmet"
+	desc = "Standard issue hardsuit helmet for playing capture the flag."
+	icon_state = "hardsuit0-ert_medical"
+	inhand_icon_state = "hardsuit0-ert_medical"
+	hardsuit_type = "ert_medical"
+	armor = list(MELEE = 0, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 50, BIO = 100, RAD = 100, FIRE = 95, ACID = 95)
+
+
+/obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/red
+	icon_state = "hardsuit0-ert_security"
+	inhand_icon_state = "hardsuit0-ert_security"
+	hardsuit_type = "ert_security"
+
+/obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/blue
+	name = "shielded hardsuit helmet"
+	desc = "Standard issue hardsuit helmet for playing capture the flag."
+	icon_state = "hardsuit0-ert_commander"
+	inhand_icon_state = "hardsuit0-ert_commander"
+	hardsuit_type = "ert_commander"
+
+/obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/green
+	icon_state = "hardsuit0-ert_green"
+	inhand_icon_state = "hardsuit0-ert_green"
+	hardsuit_type = "ert_green"
+
+/obj/item/clothing/head/helmet/space/hardsuit/shielded/ctf/yellow
+	icon_state = "hardsuit0-ert_engineer"
+	inhand_icon_state = "hardsuit0-ert_engineer"
+	hardsuit_type = "ert_engineer"
+
+
+
 //////Syndicate Version
+
 /obj/item/clothing/suit/space/hardsuit/shielded/syndi
 	name = "blood-red hardsuit"
 	desc = "An advanced hardsuit with built in energy shielding."
@@ -812,7 +888,10 @@
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/syndi
 	slowdown = 0
 	shield_icon = "shield-red"
-	jetpack = /obj/item/tank/jetpack/suit
+
+/obj/item/clothing/suit/space/hardsuit/shielded/syndi/Initialize()
+	jetpack = new /obj/item/tank/jetpack/suit(src)
+	. = ..()
 
 /obj/item/clothing/head/helmet/space/hardsuit/shielded/syndi
 	name = "blood-red hardsuit helmet"

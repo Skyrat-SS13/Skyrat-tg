@@ -1,4 +1,3 @@
-
 /datum/ambition_template
 	///Name of the template. Has to be unique
 	var/name
@@ -50,8 +49,6 @@
 
 //TODO: Atmos Tech Ambition
 
-///SERVICE
-
 /datum/ambition_template/secret_agent_man
 	name = "Secret Agent Man"
 	narrative = "There's a man who lives a life of danger - to everyone he meets, he stays a stranger. With every move he makes, another chance he takes. Odds are, he won't live to see tomorrow. You are that man. Good luck, Agent - and remember, harm a single animal, you will be terminated upon extraction. -Your Benefactors, The Animal Rights Consortium."
@@ -66,19 +63,4 @@
 	tips = list("Punji sticks are your best friend if things get hot.")
 	job_whitelist = list("Botanist")
 
-/datum/ambition_template/hannibal
-	name = "Frontier Ripper"
-	narrative = "Manners make the man, they make every man. This station you have inhabited for a long while has been filled with so many rude creatures. Your skills in the culinary arts will be helpful, thankfully no one ever checks where the meat came from. Its time to get the the rolodex out, have an old friend for dinner..."
-	objectives = list("Make meals out of the rude.", "Make your judgements thematic.", "Cook the best part of someone. The leg of a lamb or runner will taste better than that of a skunk, just make sure the lamb stops screaming. Simply making a steak will not do, treat the meat with respect, make the best possible meal you can.")
-	tips = list(" Whenever feasible, one should always try to eat the rude. The Wound Man is a popular choice. Classical music is known to enhance cooking by 40 percent, Goldberg variations even more so.")
-	job_whitelist = list("Cook")
-
-///SCIENCE
-/datum/ambition_template/fsociety
-	name = "Zero Sum"
-	narrative = "What Im about to tell you is top secret. A conspiracy bigger than all of us. Theres a powerful group of people out there that are secretly running the world. Im talking about the guys no one knows about, the ones that are invisible. The top one percent of the top one percent, the guys that play God without permission. Nanotrasen, countless violations, countless evil...Its time for revenge, the plan,  all the debt we owe them. Every record of every credit card, loan, and mortgage would be wiped clean. It'd be impossible to reinforce outdated paper records. It would all be gone. The single, biggest incident of wealth redistribution in history. "
-	objectives = list("Stage One, the Digital, records are kept in the vault and science database.", "Stage Two, physical, Contracts are kept in the Lawyers office, Detective Office and Chief Medical Officers office, destroy them, wipe it away, awaken the masses.", "Frame the RD for the Digital Attacks, plant his prints if you can, one of their employees doesnt matter much, though he's more use alive than dead.", "Broadcast your demands, theres an old earth film, the mask will be perfect for your theatrics, though any will do.")
-	tips = list("All revolutions have casualties, this doesn't mean you should go around killing, this is for the people, the liberation. Sometimes another personality may help.")
-	job_whitelist = list("Scientist")
-
-//TODO: Everything Past Cook and Scientist Ambitions
+//TODO: Everything Past Botanist Ambitions

@@ -36,8 +36,8 @@
 			H.forceMove(lateJoinCore.loc)
 			qdel(lateJoinCore)
 	var/mob/living/silicon/ai/AI = H
-	if(GLOB.current_anonymous_theme)
-		AI.fully_replace_character_name(AI.real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
+	if(SSticker.anonymousnames)
+		AI.fully_replace_character_name(AI.real_name, SSticker.anonymousnames.anonymous_ai_name(TRUE))
 	else
 		AI.apply_pref_name("ai", M.client) //If this runtimes oh well jobcode is fucked. //what is this no energy attitude man
 	AI.set_core_display_icon(null, M.client)
@@ -71,5 +71,3 @@
 /datum/job/ai/config_check()
 	return CONFIG_GET(flag/allow_ai)
 
-/datum/job/ai/radio_help_message(mob/M)
-	to_chat(M, "<b>Prefix your message with :b to speak with cyborgs and other AIs.</b>")

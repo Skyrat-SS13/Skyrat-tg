@@ -220,7 +220,7 @@
 		screenmob.client.screen += module_store_icon //"store" icon
 
 		if(!R.model.modules)
-			to_chat(usr, span_warning("Selected model has no modules to select!"))
+			to_chat(usr, "<span class='warning'>Selected model has no modules to select!</span>")
 			return
 
 		if(!R.robot_modules_background)
@@ -300,11 +300,6 @@
 	icon_state = "[base_icon_state]_[robot?.lamp_enabled ? "on" : "off"]"
 	return ..()
 
-/atom/movable/screen/robot/lamp/Destroy()
-	robot.lampButton = null
-	robot = null
-	return ..()
-
 /atom/movable/screen/robot/modPC
 	name = "Modular Interface"
 	icon_state = "template"
@@ -315,11 +310,6 @@
 	if(.)
 		return
 	robot.modularInterface?.interact(robot)
-
-/atom/movable/screen/robot/modPC/Destroy()
-	robot.interfaceButton = null
-	robot = null
-	return ..()
 
 /atom/movable/screen/robot/alerts
 	name = "Alert Panel"
