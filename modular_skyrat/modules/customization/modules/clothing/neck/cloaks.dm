@@ -24,6 +24,6 @@
 	mutant_variants = NONE
 	heat_protection = CHEST
 
-/obj/item/clothing/toggle/cowboylea/ComponentInitialize()
+/obj/item/clothing/neck/cowboylea/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/toggle_clothes, "cowboy_poncho_t")

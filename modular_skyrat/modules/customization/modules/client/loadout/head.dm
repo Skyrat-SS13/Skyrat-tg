@@ -160,11 +160,11 @@
 
 /datum/loadout_item/head/cowboyhat/winter
 	name = "Winter Cowboy Hat"
-	path = /obj/item/clothing/head/cowboyhat/sherrif
+	path = /obj/item/clothing/head/cowboyhat/sheriff
 
-/datum/loadout_item/head/cowboyhat/sherrif
-	name = "Sherrif Hat"
-	path = /obj/item/clothing/head/cowboyhat/sherrif/alt
+/datum/loadout_item/head/cowboyhat/sheriff
+	name = "Sheriff Hat"
+	path = /obj/item/clothing/head/cowboyhat/sheriff/alt
 
 /datum/loadout_item/head/cowboyhat/deputy
 	name = "Deputy Hat"
@@ -255,7 +255,7 @@
 
 /datum/loadout_item/head/job/hos/imperial
 	name = "Head of security's navyblue beret"
-	path = /obj/item/clothing/head/beret/sec/navyhos
+	path = /obj/item/clothing/head/hos/beret/navyhos
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/job/navybluehosberet

@@ -21,7 +21,6 @@
 	You locked yourself in the ship's engine room just in time before he got you. \
 	You have... a gun with you; one shot. Just in case nobody comes for you. \
 	At this point, you don't care who it is, you need to escape."
-	assignedrole = "Abandoned Syndicate"
 	outfit = /datum/outfit/wildwest_syndicate
 	can_use_alias = TRUE
 	any_station_species = TRUE
