@@ -164,7 +164,7 @@ Borg Hypospray
 
 /obj/item/reagent_containers/borghypo/hacked
 	icon_state = "borghypo_s"
-	reagent_ids = list (/datum/reagent/toxin/acid/fluacid, /datum/reagent/toxin/mutetoxin, /datum/reagent/toxin/cyanide, /datum/reagent/toxin/sodium_thiopental, /datum/reagent/toxin/heparin, /datum/reagent/toxin/lexorin)
+	reagent_ids = list (/datum/reagent/toxin/acid/fluacid, /datum/reagent/toxin/mutetoxin, /datum/reagent/toxin/cyanide, /datum/reagent/medicine/c2/tirimol, /datum/reagent/toxin/heparin, /datum/reagent/toxin/lexorin) // SKYRAT EDIT - ORIGINAL: /datum/reagent/toxin/sodium_thiopental
 	accepts_reagent_upgrades = FALSE
 
 /obj/item/reagent_containers/borghypo/clown
@@ -186,7 +186,7 @@ Borg Hypospray
 	charge_cost = 20
 	recharge_time = 2
 	reagent_ids = list(
-		/datum/reagent/medicine/syndicate_nanites,
+		/datum/reagent/medicine/lesser_syndicate_nanites, //SKYRAT EDIT - ORIGINAL: /datum/reagent/medicine/syndicate_nanites
 		/datum/reagent/medicine/inacusiate,
 		/datum/reagent/medicine/potass_iodide,
 		/datum/reagent/medicine/morphine,
