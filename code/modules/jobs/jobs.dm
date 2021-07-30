@@ -13,7 +13,8 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Chief Engineer",
 	"Research Director",
 	"Quartermaster", //SKYRAT EDIT ADDITION
-	"Chief Medical Officer"))
+	"Chief Medical Officer",
+	"Command Secretary",)) //SKYRAT EDIT ADDITION
 
 
 GLOBAL_LIST_INIT(engineering_positions, list(

@@ -177,3 +177,15 @@
 				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
 
 	config_job = "brigoff"
+
+/datum/id_trim/job/command_secretary
+	assignment = "Command Secretary"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_commandsec"
+	full_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_HOS, ACCESS_HOP,
+				ACCESS_MEDICAL, ACCESS_CMO, ACCESS_CE, ACCESS_ENGINE, ACCESS_HEADS,
+				ACCESS_RESEARCH, ACCESS_RD, ACCESS_CAPTAIN)
+	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_HOS, ACCESS_HOP,
+				ACCESS_MEDICAL, ACCESS_CMO, ACCESS_CE, ACCESS_ENGINE, ACCESS_HEADS,
+				ACCESS_RESEARCH, ACCESS_RD, ACCESS_CAPTAIN)
+	config_job = "command_secretary"

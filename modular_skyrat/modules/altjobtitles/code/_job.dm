@@ -54,6 +54,9 @@
 /datum/job/chief_medical_officer
 	alt_titles = list("Medical Director")
 
+/datum/job/command_secretary
+	alt_titles = list("Bridge Worker")
+
 //Engineering
 /datum/job/station_engineer
 	alt_titles = list("Emergency Damage Control Technician", "Electrician", "Engine Technician", "EVA Technician", "Engineer")
