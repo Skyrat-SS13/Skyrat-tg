@@ -104,6 +104,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new /datum/stack_recipe("maintenance hatch assembly", /obj/structure/door_assembly/door_assembly_mhatch, 4, time = 50, one_per_turf = 1, on_floor = 1), \
 		//SKYRAT EDIT ADDITION
 		new /datum/stack_recipe("corporate airlock assembly", /obj/structure/door_assembly/door_assembly_corporate, 4, time = 50, one_per_turf = 1, on_floor = 1), \
+		new /datum/stack_recipe("service airlock assembly", /obj/structure/door_assembly/door_assembly_service, 4, time = 50, one_per_turf = 1, on_floor = 1), \
 		//SKYRAT EDIT ADDITION END
 	)), \
 	null, \
