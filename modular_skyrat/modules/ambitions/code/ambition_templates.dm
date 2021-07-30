@@ -36,10 +36,10 @@
 
 /datum/ambition_template/grey_tide
 	name = "Greytide Worldwide"
-	narrative = "You hacked open the wrong airlock, leading your underpaid self right into the teleporter. Seeing the Hand Teleporter, so shiny, so bright... you took it. Cybersun offered you a contract - obtain more high-class Nanotrasen Technology for them. However, what they think is a classified, highly secretive, thought out operation... is just another day at the office, for you."
+	narrative = "You hacked open the wrong airlock, leading your underpaid self right into the teleporter. Seeing the Hand Teleporter, so shiny, so bright... you took it. Cybersun offered you a contract - obtain more high-class Rival Corporate Technology for them. However, what they think is a classified, highly secretive, thought out operation... is just another day at the office, for you."
 	objectives = list("Steal two High Security items.")
-	tips = list("Wirecutters are better for hacking open airlocks, compared to multitools.", "Experiment with different airlock wires! Each department has their own setup, and the Chief Engineer's blueprints explains all. Alternatively, steal a spare Engineering Skillchip!")
-	job_whitelist = list("Assistant")
+	tips = list("Wirecutters are better for hacking open airlocks, compared to multitools.", "Experiment with different airlock wires! Each department has their own setup, and the Chief Engineering Officer's blueprints explains all. Alternatively, steal a spare Engineering Skillchip!")
+	job_whitelist = list("Operative")
 
 /datum/ambition_template/boot_prg
 	name = "BOOTSECTOR1.prg"

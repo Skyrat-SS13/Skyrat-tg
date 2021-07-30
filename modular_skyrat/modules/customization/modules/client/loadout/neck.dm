@@ -149,5 +149,5 @@
 /datum/loadout_item/neck/tie/discoproper
 	name = "Horrible Necktie"
 	path = /obj/item/clothing/neck/tie/disco
-	restricted_roles = list("Detective")
-	restricted_desc = "Superstar Detectives"
+	restricted_roles = list("Investigative Officer")
+	restricted_desc = "Stunning Noir Heroes"

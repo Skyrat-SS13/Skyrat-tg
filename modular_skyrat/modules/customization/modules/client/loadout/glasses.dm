@@ -69,27 +69,27 @@
 /datum/loadout_item/glasses/medicpatch
 	name = "Medical Eyepatch"
 	path = /obj/item/clothing/glasses/hud/eyepatch/med
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Bioweapons Technician", "Virologist", "Paramedic")
 	restricted_desc = "Medical"
 
 /datum/loadout_item/glasses/robopatch
 	name = "Diagnostic Eyepatch"
 	path = /obj/item/clothing/glasses/hud/eyepatch/diagnostic
-	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director")
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Chief Research Officer")
 	restricted_desc = "Science"
 
 /datum/loadout_item/glasses/scipatch
 	name = "Science Eyepatch"
 	path = /obj/item/clothing/glasses/hud/eyepatch/sci
-	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Chemist")
+	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Chief Research Officer", "Bioweapons Technician")
 	restricted_desc = "Science"
 
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"
 	path = /obj/item/clothing/glasses/hud/security
-	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security")
+	restricted_roles = list("Security Officer", "Security Sergeant", "Master At Arms", "Chief Master At Arms")
 
 /datum/loadout_item/glasses/secpatch
 	name = "Security Eyepatch Hud"
 	path = /obj/item/clothing/glasses/hud/eyepatch/sec
-	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security")
+	restricted_roles = list("Security Officer", "Security Sergeant", "Master At Arms", "Chief Master At Arms")

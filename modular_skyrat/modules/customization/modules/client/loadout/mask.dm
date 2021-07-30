@@ -83,5 +83,5 @@
 /datum/loadout_item/mask/job/surgical
 	name = "Sterile Mask"
 	path = /obj/item/clothing/mask/surgical
-	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Virologist", "Chemist", "Geneticist", "Paramedic", "Psychologist","Security Medic")
+	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Virologist", "Bioweapons Technician", "Geneticist", "Paramedic", "Psychologist","Security Medic")
 	restricted_desc = "Medical"
