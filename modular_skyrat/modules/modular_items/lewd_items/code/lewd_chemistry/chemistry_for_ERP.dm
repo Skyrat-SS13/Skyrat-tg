@@ -232,7 +232,7 @@
 	if(!ishuman(M))//Just in case
 		return..()
 
-	if(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT)
+	if(H.client?.prefs.skyrat_toggles & BREAST_ENLARGEMENT)
 		M.breast_enlarger_amount += 5
 		if(M.breast_enlarger_amount >= 100)
 			if(B?.genital_size < 16)
@@ -257,7 +257,7 @@
 			H.apply_damage(1, BRUTE, target)
 
 	//If they've opted out, then route processing though liver.
-	if(!(H.client?.prefs.skyrat_toggles && BREAST_ENLARGEMENT))
+	if(!(H.client?.prefs.skyrat_toggles & BREAST_ENLARGEMENT))
 		var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
 		if(L)
 			L.applyOrganDamage(0.25)
@@ -373,7 +373,7 @@ Haha! Kill me please.
 	if(!ishuman(M))
 		return ..()
 
-	if(H.client?.prefs.skyrat_toggles && PENIS_ENLARGEMENT)
+	if(H.client?.prefs.skyrat_toggles & PENIS_ENLARGEMENT)
 		M.penis_enlarger_amount += 5
 		if(M.penis_enlarger_amount >= 100)
 			if(P?.genital_size < 20)
@@ -398,7 +398,7 @@ Haha! Kill me please.
 			H.apply_damage(1, BRUTE, target)
 
 	//If they've opted out, then route processing though liver.
-	if(!(H.client?.prefs.skyrat_toggles && PENIS_ENLARGEMENT))
+	if(!(H.client?.prefs.skyrat_toggles & PENIS_ENLARGEMENT))
 		var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
 		if(L)
 			L.applyOrganDamage(0.25)
