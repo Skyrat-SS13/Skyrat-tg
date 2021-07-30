@@ -40,7 +40,7 @@
 		restricted_jobs += protected_jobs
 
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		restricted_jobs += "Assistant"
+		restricted_jobs += "Operative"
 
 	for (var/i=1 to max_headrevs)
 		if (antag_candidates.len==0)

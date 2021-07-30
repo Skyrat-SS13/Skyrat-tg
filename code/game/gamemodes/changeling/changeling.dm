@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 		restricted_jobs += protected_jobs
 
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		restricted_jobs += "Assistant"
+		restricted_jobs += "Operative"
 
 	var/num_changelings = 1
 

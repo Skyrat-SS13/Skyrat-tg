@@ -1740,15 +1740,15 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A tattered old jumpsuit that will provide absolutely no benefit to you."
 	item = /obj/item/clothing/under/color/grey/ancient
 	cost = 20
-	restricted_roles = list("Assistant")
+	restricted_roles = list("Operative")
 	surplus = 0
 
 /datum/uplink_item/role_restricted/oldtoolboxclean
 	name = "Ancient Toolbox"
-	desc = "An iconic toolbox design notorious with Assistants everywhere, this design was especially made to become more robust the more telecrystals it has inside it! Tools and insulated gloves included."
+	desc = "An iconic toolbox design notorious with Operatives everywhere, this design was especially made to become more robust the more telecrystals it has inside it! Tools and insulated gloves included."
 	item = /obj/item/storage/toolbox/mechanical/old/clean
 	cost = 2
-	restricted_roles = list("Assistant")
+	restricted_roles = list("Operative")
 	surplus = 0
 
 /datum/uplink_item/role_restricted/pie_cannon
@@ -1816,7 +1816,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			also give them a bit of sentience though."
 	item = /obj/item/reagent_containers/syringe/spider_extract
 	cost = 10
-	restricted_roles = list("Research Director", "Scientist", "Roboticist")
+	restricted_roles = list("Chief Research Officer", "Scientist", "Roboticist")
 
 /datum/uplink_item/role_restricted/clowncar
 	name = "Clown Car"
@@ -1839,7 +1839,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Only one can fit on a mecha."
 	item = /obj/item/mecha_parts/concealed_weapon_bay
 	cost = 3
-	restricted_roles = list("Roboticist", "Research Director")
+	restricted_roles = list("Roboticist", "Chief Research Officer")
 
 /datum/uplink_item/role_restricted/haunted_magic_eightball
 	name = "Haunted Magic Eightball"
@@ -1860,7 +1860,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	To activate His Grace, simply unlatch Him."
 	item = /obj/item/his_grace
 	cost = 20
-	restricted_roles = list("Chaplain")
+	restricted_roles = list("Counsel")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
 */
 //SKYRAT EDIT REMOVAL END
@@ -1907,21 +1907,21 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Side-affects may include hypertrichosis, violent outbursts, and an unending affinity for bananas."
 	item = /obj/item/reagent_containers/hypospray/medipen/magillitis
 	cost = 15
-	//restricted_roles = list("Geneticist", "Research Director") //SKYRAT EDIT: Removal
+	//restricted_roles = list("Geneticist", "Chief Research Officer") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/modified_syringe_gun
 	name = "Modified Syringe Gun"
 	desc = "A syringe gun that fires DNA injectors instead of normal syringes."
 	item = /obj/item/gun/syringe/dna
 	cost = 14
-	restricted_roles = list("Geneticist", "Research Director")
+	restricted_roles = list("Geneticist", "Chief Research Officer")
 
 /datum/uplink_item/role_restricted/chemical_gun
 	name = "Reagent Dartgun"
 	desc = "A heavily modified syringe gun which is capable of synthesizing its own chemical darts using input reagents. Can hold 100u of reagents."
 	item = /obj/item/gun/chem
 	cost = 12
-	//restricted_roles = list("Chemist", "Chief Medical Officer", "Botanist") //SKYRAT EDIT: Removal
+	//restricted_roles = list("Bioweapons Technician", "Chief Medical Officer", "Botanist") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/reverse_bear_trap
 	name = "Reverse Bear Trap"
@@ -1961,7 +1961,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An implant that grants you a recharging laser gun inside your arm. Weak to EMPs. Comes with a syndicate autosurgeon for immediate self-application."
 	cost = 10
 	item = /obj/item/autosurgeon/organ/syndicate/laser_arm
-	//restricted_roles = list("Roboticist", "Research Director") //SKYRAT EDIT: Removal
+	//restricted_roles = list("Roboticist", "Chief Research Officer") //SKYRAT EDIT: Removal
 
 /datum/uplink_item/role_restricted/ocd_device
 	name = "Organic Resources Disturbance Inducer"
@@ -1969,7 +1969,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 2
 	limited_stock = 1
 	item = /obj/item/devices/ocd_device
-	restricted_roles = list("Head of Personnel", "Quartermaster")
+	restricted_roles = list("Corporate Liasion", "Deck Officer")
 
 /datum/uplink_item/role_restricted/meathook
 	name = "Butcher's Meat Hook"
@@ -1983,7 +1983,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A disposable sentry gun deployment system cleverly disguised as a toolbox, apply wrench for functionality."
 	item = /obj/item/storage/toolbox/emergency/turret
 	cost = 11
-	restricted_roles = list("Station Engineer")
+	restricted_roles = list("Engine Technician")
 
 // Pointless
 /datum/uplink_item/badass

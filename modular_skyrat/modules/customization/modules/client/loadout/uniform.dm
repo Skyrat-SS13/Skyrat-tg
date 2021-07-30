@@ -8,7 +8,7 @@
 	ckeywhitelist = list("gandalf2k15")
 
 /datum/loadout_item/uniform/assistantformal
-	name = "Assistant's formal uniform"
+	name = "Operative's formal uniform"
 	path = /obj/item/clothing/under/misc/assistantformal
 
 /datum/loadout_item/uniform/greyshirt
@@ -302,7 +302,7 @@
 	cost = 3
 
 /datum/loadout_item/uniform/suit/arthur
-	name = "Dutch Assistant Suit"
+	name = "Dutch Operative Suit"
 	path = /obj/item/clothing/under/costume/arthur
 	cost = 2
 
@@ -1130,12 +1130,12 @@
 	name = "ORV - service"
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv/service
 	restricted_desc = "Service"
-	restricted_roles = list("Assistant", "Bartender", "Botanist", "Cook", "Curator", "Janitor", "Clown", "Mime", "Lawyer")
+	restricted_roles = list("Operative", "Bartender", "Botanist", "Cook", "Curator", "Janitor", "Clown", "Mime", "Lawyer")
 
 /datum/loadout_item/uniform/job/trekadjtorv
 	name = "ORV - assistant"
 	path = /obj/item/clothing/under/trek/modular_skyrat/orv
-	restricted_roles = list("Assistant")
+	restricted_roles = list("Operative")
 
 /datum/loadout_item/uniform/tactical_hawaiian_orange
 	name = "Tactical Hawaiian Outfit - Orange"
@@ -1180,14 +1180,14 @@
 	name = "TMP - trainee"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/trek/fedutil/trainee
-	restricted_roles = list("Assistant", "Janitor", "Deck Crewman")
+	restricted_roles = list("Operative", "Janitor", "Deck Crewman")
 
 /datum/loadout_item/trekfedservice
 	name = "TMP - service"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/trek/fedutil/service
 	restricted_desc = "Service and Civilian, barring Clown, Mime and Lawyer"
-	restricted_roles = list("Assistant", "Bartender", "Botanist", "Cook", "Curator", "Janitor")*/
+	restricted_roles = list("Operative", "Bartender", "Botanist", "Cook", "Curator", "Janitor")*/
 
 
 //Christmas

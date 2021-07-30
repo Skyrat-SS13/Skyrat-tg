@@ -129,7 +129,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 			p_r += MAKEANTAG_PL_DEFAULT_HEADS
 			p_r += MAKEANTAG_PL_DEFAULT_SILICON
 	if(c_a)
-		p_r += list("Assistant")
+		p_r += list("Operative")
 	if(c_p)
 		p_r += p_p
 	MAKEANTAG_RESTRICTLIST[antagtype] = p_r

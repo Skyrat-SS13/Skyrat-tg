@@ -282,7 +282,7 @@
 	min_val = -1
 
 /datum/config_entry/string/overflow_job
-	default = "Assistant"
+	default = "Operative"
 
 /datum/config_entry/flag/starlight
 /datum/config_entry/flag/grey_assistants
