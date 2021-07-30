@@ -14,7 +14,7 @@ Adds the Command Secretary job to the game. This includes all the Command Secret
 
 ### Defines:
 
-- #define JOB_DISPLAY_ORDER_BLUESHIELD 4
+- #define JOB_DISPLAY_ORDER_COMMAND_SECRETARY 4
 
 ### Master file additions
 
