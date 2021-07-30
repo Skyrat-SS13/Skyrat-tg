@@ -32,8 +32,8 @@
 /datum/species/mutant/infectious
 	name = "Mutated Abomination"
 	mutanthands = /obj/item/mutant_hand
-	armor = 10
 	speedmod = 1
+	armor = 10
 	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	/// The rate the mutants regenerate at
@@ -45,18 +45,16 @@
 	name = "Fast Mutated Abomination"
 	mutanthands = /obj/item/mutant_hand/fast
 	armor = 0
-	speedmod = 0.5
 	/// The rate the mutants regenerate at
 	heal_rate = 0.5
-	/// The cooldown before the mutant can start regenerating
+	speedmod = 0.5
 
 /datum/species/mutant/infectious/slow
 	name = "Slow Mutated Abomination"
-	armor = 30
-	speedmod = 2
+	armor = 15
+	speedmod = 1.5
 	/// The rate the mutants regenerate at
-	heal_rate = 2
-	/// The cooldown before the mutant can start regenerating
+	heal_rate = 1.5
 
 /// mutants do not stabilize body temperature they are the walking dead and are cold blooded
 /datum/species/mutant/body_temperature_core(mob/living/carbon/human/humi, delta_time, times_fired)
@@ -114,10 +112,9 @@
 	var/icon_left = "bloodhand_left"
 	var/icon_right = "bloodhand_right"
 	hitsound = 'sound/hallucinations/growl1.ogg'
-	force = 30
+	force = 26
 	sharpness = SHARP_EDGED
 	wound_bonus = -20
-	bare_wound_bonus = 20
 	damtype = BRUTE
 
 /obj/item/mutant_hand/fast
@@ -125,7 +122,6 @@
 	force = 21
 	sharpness = NONE
 	wound_bonus = -40
-	bare_wound_bonus = 0
 
 /obj/item/mutant_hand/Initialize()
 	. = ..()
@@ -150,7 +146,7 @@
 		else
 			check_feast(target, user)
 
-#define INFECT_CHANCE 50
+#define INFECT_CHANCE 70
 
 /proc/try_to_mutant_infect(mob/living/carbon/human/target, forced = FALSE, mob/user)
 	CHECK_DNA_AND_SPECIES(target)

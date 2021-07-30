@@ -11,6 +11,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/explorer/seva
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, RAD = 15, FIRE = 100, ACID = 25, WOUND = 2)
 	resistance_flags = FIRE_PROOF
+	transparent_protection = HIDEJUMPSUIT
 
 /obj/item/clothing/head/hooded/explorer/seva
 	name = "SEVA Hood"
