@@ -35,7 +35,10 @@
 
 /obj/projectile/energy/medical/default/on_hit(mob/living/target)
 	.=..()
-	target.adjustOxyLoss(-5)
+	if(target.stat == DEAD)
+		return
+	else
+		target.adjustOxyLoss(-5)
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
