@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/127
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/7257
 
 ## Title: Command Secretary
 
@@ -10,16 +10,15 @@ Adds the Command Secretary job to the game. This includes all the Command Secret
 
 ### TG Proc Changes:
 
-- code/modules/jobs/jobs.dm > GLOBAL_LIST_INIT(security_positions, list()
-- code/modules/jobs/access.dm > /proc/get_all_accesses()
+- code/modules/jobs/jobs.dm > GLOBAL_LIST_INIT(command_positions, list()
 
 ### Defines:
 
-- #define JOB_DISPLAY_ORDER_BLUESHIELD 34
-- #define ACCESS_BLUESHIELD 71
+- #define JOB_DISPLAY_ORDER_BLUESHIELD 4
 
 ### Master file additions
 
+- N/A
 
 ### Included files that are not contained in this module:
 
@@ -27,4 +26,4 @@ Adds the Command Secretary job to the game. This includes all the Command Secret
 
 ### Credits:
 
-Viro - Porting
+Viro - Coding
