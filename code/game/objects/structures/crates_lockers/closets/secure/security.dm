@@ -18,7 +18,8 @@
 	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
 	new /obj/item/clothing/head/caphat(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
-	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
+	new /obj/item/clothing/suit/toggle/captains_parade(src)
+	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
 	new /obj/item/clothing/head/caphat/parade(src)
 	new /obj/item/clothing/suit/captunic(src)
 	new /obj/item/clothing/head/crown/fancy(src)
@@ -29,7 +30,7 @@
 	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
 	new /obj/item/clothing/gloves/color/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/gun/energy/e_gun(src)
+	new /obj/item/storage/box/gunset/pdh_captain(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 

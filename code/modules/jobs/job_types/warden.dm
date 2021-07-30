@@ -47,7 +47,7 @@
 	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated //Run while you can.
-	head = /obj/item/clothing/head/warden/syndicate
+	head = /obj/item/clothing/head/sec/navywarden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
