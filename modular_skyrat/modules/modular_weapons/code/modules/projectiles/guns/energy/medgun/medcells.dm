@@ -19,7 +19,8 @@
 	projectile_type = /obj/projectile/energy/medical/default
 	select_name = "oxygen"
 	fire_sound = 'sound/effects/stealthoff.ogg'
-	e_cost = 60
+	e_cost = 120
+	delay = 8
 	harmful = FALSE
 
 /obj/projectile/energy/medical
@@ -38,7 +39,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustOxyLoss(-5)
+		target.adjustOxyLoss(-10)
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
@@ -55,7 +56,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustBruteLoss(-5)
+		target.adjustBruteLoss(-10)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
@@ -70,7 +71,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustFireLoss(-5)
+		target.adjustFireLoss(-10)
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin1
@@ -85,8 +86,8 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustToxLoss(-2.5)
-		target.radiation = max(target.radiation - 20, 0)//Toxin is treatable, but inefficent//
+		target.adjustToxLoss(-5)
+		target.radiation = max(target.radiation - 40, 0)//Toxin is treatable, but inefficent//
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
@@ -103,7 +104,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustBruteLoss(-7.5)
+		target.adjustBruteLoss(-15)
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
@@ -118,7 +119,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustFireLoss(-7.5)
+		target.adjustFireLoss(-15)
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
@@ -132,7 +133,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustOxyLoss(-10)
+		target.adjustOxyLoss(-20)
 //Tier II Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin2
@@ -147,8 +148,8 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustToxLoss(-3.5)
-		target.radiation = max(target.radiation - 40, 0)
+		target.adjustToxLoss(-7.5)
+		target.radiation = max(target.radiation - 60, 0)
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
@@ -164,7 +165,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustBruteLoss(-10)
+		target.adjustBruteLoss(-20)
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
@@ -179,7 +180,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustFireLoss(-10)
+		target.adjustFireLoss(-20)
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
@@ -193,7 +194,7 @@
 	if(target.stat == DEAD)
 		return
 	else
-		target.adjustOxyLoss(-15)
+		target.adjustOxyLoss(-30)
 //Tier III Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin3
@@ -209,6 +210,6 @@
 		return
 	else
 		target.adjustToxLoss(-5)
-		target.radiation = max(target.radiation - 60, 0)
+		target.radiation = max(target.radiation - 80, 0)
 
 //End of Basic Tiers of cells.//
