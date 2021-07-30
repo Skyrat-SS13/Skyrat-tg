@@ -39,13 +39,13 @@ SUBSYSTEM_DEF(job)
 	 * See [/datum/controller/subsystem/ticker/proc/equip_characters]
 	 */
 	var/list/chain_of_command = list(
-		"Captain" = 1,
-		"Head of Personnel" = 2,
-		"Research Director" = 3,
-		"Chief Engineer" = 4,
+		"Station Admiral" = 1,
+		"Corporate Liasion" = 2,
+		"Chief Research Officer" = 3,
+		"Chief Engineering Officer" = 4,
 		"Chief Medical Officer" = 5,
-		"Head of Security" = 6,
-		"Quartermaster" = 7)
+		"Chief Master At Arms" = 6,
+		"Deck Officer" = 7)
 
 	/// If TRUE, some player has been assigned Captaincy or Acting Captaincy at some point during the shift and has been given the spare ID safe code.
 	var/assigned_captain = FALSE
@@ -794,12 +794,12 @@ SUBSYSTEM_DEF(job)
 
 /// Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.
 /datum/controller/subsystem/job/proc/setup_job_lists()
-	station_jobs = list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician", \
-		"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer", \
-		"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Geneticist", "Virologist", "Psychologist", \
-		"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Corrections Officer", "Prisoner")
+	station_jobs = list("Operative", "Station Admiral", "Corporate Liasion", "Bartender", "Cook", "Botanist", "Deck Officer", "Deck Crewman", \
+		"Shaft Miner", "Clown", "Mime", "Janitor", "Curator", "Lawyer", "Counsel", "Chief Engineering Officer", "Engine Technician", \
+		"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Paramedic", "Bioweapons Technician", "Geneticist", "Virologist", "Psychologist", \
+		"Chief Research Officer", "Scientist", "Roboticist", "Chief Master At Arms", "Master At Arms", "Investigative Officer", "Security Officer", "Corrections Officer", "Prisoner")
 
-	head_of_staff_jobs = list("Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Head of Security", "Captain")
+	head_of_staff_jobs = list("Corporate Liasion", "Chief Engineering Officer", "Chief Medical Officer", "Chief Research Officer", "Chief Master At Arms", "Station Admiral")
 
 	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
 		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
