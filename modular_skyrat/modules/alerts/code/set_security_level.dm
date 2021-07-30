@@ -141,9 +141,9 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 				minor_announce(CONFIG_GET(string/alert_red_downto), "Attention! Code red!", sound = 'modular_skyrat/modules/alerts/sound/misc/downtoRED.ogg')
 		if(SEC_LEVEL_DELTA)
 			if(SSsecurity_level.current_level < SEC_LEVEL_DELTA)
-				minor_announce(CONFIG_GET(string/alert_delta_upto), "Attention! Delta Alert level reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/delta.ogg', override_volume = TRUE)
+				minor_announce(CONFIG_GET(string/alert_delta_upto), "Attention! Delta Alert level reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/deltaklaxon.ogg', override_volume = TRUE)
 			else
-				minor_announce(CONFIG_GET(string/alert_delta_downto), "Attention! Delta Alert level reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/delta.ogg', override_volume = TRUE)
+				minor_announce(CONFIG_GET(string/alert_delta_downto), "Attention! Delta Alert level reached!", TRUE, sound = 'modular_skyrat/modules/alerts/sound/misc/deltaklaxon.ogg', override_volume = TRUE)
 			SSsecurity_level.current_level = level //Snowflake shit to make sue they actually loop.
 			delta_alarm()
 		if(SEC_LEVEL_GAMMA)
