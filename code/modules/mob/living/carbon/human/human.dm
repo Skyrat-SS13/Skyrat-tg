@@ -21,7 +21,7 @@
 	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_FACE_ACT, .proc/clean_face)
 	AddComponent(/datum/component/personal_crafting)
 	//AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 1, -6) //ORIGINAL
-	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS 
+	AddComponent(/datum/component/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6) //SKYRAT EDIT CHANGE - AESTHETICS
 	AddComponent(/datum/component/bloodysoles/feet)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, /mob/living/carbon/human/.proc/should_strip)
@@ -684,6 +684,12 @@
 		visible_message(span_danger("[src] manages to [cuff_break ? "break" : "remove"] [I]!"))
 		to_chat(src, span_notice("You successfully [cuff_break ? "break" : "remove"] [I]."))
 		return TRUE
+	//SKYRAT ERP UPDATE ADDITION: NOW GLOVES CAN RESTRAIN PLAYERS
+	if(I == gloves)
+		visible_message(span_danger("[src] manages to [cuff_break ? "break" : "remove"] [I]!"))
+		to_chat(src, span_notice("You successfully [cuff_break ? "break" : "remove"] [I]."))
+		return TRUE
+	//SKYRAT ERP UPDATE ADDITION END
 
 /mob/living/carbon/human/replace_records_name(oldname,newname) // Only humans have records right now, move this up if changed.
 	for(var/list/L in list(GLOB.data_core.general,GLOB.data_core.medical,GLOB.data_core.security,GLOB.data_core.locked))

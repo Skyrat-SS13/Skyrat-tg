@@ -67,7 +67,6 @@
 		/obj/item/reagent_containers/glass/beaker = 1,
 		/obj/item/stock_parts/cell/upgraded = 1, //please, let it be. 1 lvl Cell makes machine almost useless, charge lasts only for 2 minutes.
 		/obj/item/screwdriver = 1,
-		/obj/item/multitool = 1,
 		/obj/item/wrench = 1)
 	generate_items_inside(items_inside,src)
 
@@ -101,7 +100,6 @@
 /obj/item/storage/box/strippole_kit/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/polepack = 1,
-		/obj/item/multitool = 1,
 		/obj/item/wrench = 1)
 	generate_items_inside(items_inside,src)
 
@@ -112,7 +110,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /mob/living/carbon/human/resist_restraints()
-	.=..()
 	if(gloves?.breakouttime)
 		changeNext_move(CLICK_CD_BREAKOUT)
 		last_special = world.time + CLICK_CD_BREAKOUT
