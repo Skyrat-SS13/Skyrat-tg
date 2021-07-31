@@ -35107,7 +35107,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount/directional/north,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/white,
@@ -45630,6 +45633,15 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/starboard/secondary)
+"mJu" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/machinery/stasissleeper{
+	dir = 4
+	},
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "mJw" = (
 /turf/closed/wall,
 /area/command/heads_quarters/cmo)
@@ -75758,6 +75770,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"wkJ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "wkO" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -102530,7 +102551,7 @@ bFZ
 wjS
 rKP
 xKj
-xKj
+wkJ
 xly
 nHt
 llx
@@ -103558,7 +103579,7 @@ tMC
 oxQ
 hks
 pzK
-pzK
+mJu
 jAC
 pGd
 llx
