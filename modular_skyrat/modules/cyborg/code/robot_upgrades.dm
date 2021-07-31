@@ -189,8 +189,8 @@
 	if(!.)
 		return
 	if(borgo.hasAdvanced)
-		to_chat(usr, span_warning("This unit already has advanced materials installed!"))
-		to_chat(usr, "There's no room for more materials!")
+		to_chat(user, span_warning("This unit already has advanced materials installed!"))
+		to_chat(user, "There's no room for more materials!")
 		return FALSE;
 
 	var/obj/item/stack/sheet/plasteel/cyborg/plasteel_holder = new(borgo.model)
