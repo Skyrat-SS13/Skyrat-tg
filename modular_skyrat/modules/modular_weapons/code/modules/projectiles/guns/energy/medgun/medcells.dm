@@ -84,7 +84,7 @@
 	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/toxin1/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
 	target.adjustToxLoss(-5)
