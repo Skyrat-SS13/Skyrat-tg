@@ -35,11 +35,10 @@
 	name = "oxygen heal shot"
 
 /obj/projectile/energy/medical/default/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustOxyLoss(-10)
+	target.adjustOxyLoss(-10)
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
@@ -52,11 +51,10 @@
 	icon_state = "red_laser"
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustBruteLoss(-7.5)
+	target.adjustBruteLoss(-7.5)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
@@ -67,11 +65,10 @@
 	icon_state = "yellow_laser"
 
 /obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustFireLoss(-7.5)
+	target.adjustFireLoss(-7.5)
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin1
@@ -85,9 +82,8 @@
 	.=..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustToxLoss(-5)
-		target.radiation = max(target.radiation - 40, 0)//Toxin is treatable, but inefficent//
+	target.adjustToxLoss(-5)
+	target.radiation = max(target.radiation - 40, 0)//Toxin is treatable, but inefficent//
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
