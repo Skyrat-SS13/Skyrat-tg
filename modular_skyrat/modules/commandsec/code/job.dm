@@ -9,7 +9,7 @@
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 10
-	exp_requirements = 180
+	exp_requirements = 60
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/commsec
@@ -21,19 +21,19 @@
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
-	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
+	display_order = JOB_DISPLAY_ORDER_COMMAND_SECRETARY
 
-	mail_goodies = list(
-		/obj/item/card/id/advanced/silver = 10,
-		/obj/item/stack/sheet/bone = 5
+    mail_goodies = list(
+		/obj/item/reagent_containers/food/drinks/coffee = 12,
+		/obj/item/stack/spacecash/c500 = 2,
+		/obj/item/clothing/head/collectable/hos = 2,
+		/obj/item/clothing/head/collectable/hop = 2,
+		/obj/item/clothing/head/collectable/captain = 2,
 	)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/trophy/silver_cup)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
-
-	voice_of_god_power = 1.4 //Command staff has authority
-
 
 /datum/outfit/job/commsec
 	name = "Command Secretary"
@@ -44,9 +44,7 @@
 	ears = /obj/item/radio/headset/commsec
 	uniform = /obj/item/clothing/under/misc/assistantformal
 	shoes = /obj/item/clothing/shoes/sneakers/brown
-	backpack_contents = list(/obj/item/storage/box/ids=1,\
-		/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command = 1)
-
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1)
 	id_trim = /datum/id_trim/job/command_secretary
 
 /obj/item/radio/headset/commsec
