@@ -54,6 +54,7 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
+
 	target.adjustBruteLoss(-7.5)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
