@@ -355,6 +355,11 @@
 	path = /obj/item/clothing/suit/hooded/wintercoat/bartender
 	restricted_roles = list("Head of Personnel", "Bartender") //Reserved for Bartenders and their head-of-staff
 
+/datum/loadout_item/suit/job/classpres_hop
+	name = "Class President Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/classpres_hop
+	restricted_roles = list("Head of Personnel") //Reserved for the HoP
+
 /datum/loadout_item/suit/job/coat_cargo
 	name = "Cargo winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/cargo

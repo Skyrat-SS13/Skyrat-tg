@@ -611,6 +611,16 @@
 	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
 	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
 
+/datum/loadout_item/uniform/job/schoolboyhop
+	name = "Class President Uniform"
+	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/school/schoolboy
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
+
+/datum/loadout_item/uniform/job/schoolgirlhop
+	name = "Class President Skirt"
+	path = /obj/item/clothing/under/rank/civilian/head_of_personnel/school/schoolgirl
+	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
+
 /datum/loadout_item/uniform/job/lowprison
  	name = "Low Security Prisoner Jumpsuit"
  	path = /obj/item/clothing/under/rank/prisoner/lowsec

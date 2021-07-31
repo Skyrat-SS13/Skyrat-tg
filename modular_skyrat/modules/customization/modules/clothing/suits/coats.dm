@@ -259,3 +259,11 @@
 
 /obj/item/clothing/suit/apron
     mutant_variants = STYLE_TAUR_ALL
+
+/obj/item/clothing/suit/toggle/classpres_hop
+	name = "Class President suit jacket"
+	desc = "Class President; the one you look up to for guidance and ask questions to... then promptly get ignored as they fuck the football team."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "suitjacket_hop"
+	mutant_variants = NONE

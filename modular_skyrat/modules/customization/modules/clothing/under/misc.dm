@@ -626,3 +626,17 @@
 /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female
 	name = "head of personnel's female parade uniform"
 	icon_state = "hop_parade_female"
+
+/obj/item/clothing/under/rank/civilian/head_of_personnel/school/schoolboy
+	desc = "The uniform of the boy all of the girls swoon over."
+	name = "class president uniform"
+	icon_state = "hop_schoolboy"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/civilian/head_of_personnel/school/schoolgirl
+	desc = "Guranteed to immediately come off after a single interaction with the school's hockey team."
+	name = "class president skirt"
+	icon_state = "hop_schoolgirl"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
