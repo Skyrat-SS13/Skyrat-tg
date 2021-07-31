@@ -93,7 +93,10 @@
 
 /obj/projectile/energy/medical/upgraded/brute2/on_hit(mob/living/target)
 	.=..()
-	target.adjustBruteLoss(-7.5)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustBruteLoss(-10)
+	else
+		return
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
@@ -105,7 +108,10 @@
 
 /obj/projectile/energy/medical/upgraded/burn2/on_hit(mob/living/target)
 	.=..()
-	target.adjustFireLoss(-7.5)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustFireLoss(-7.5)
+	else
+		return
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
@@ -142,7 +148,10 @@
 
 /obj/projectile/energy/medical/upgraded/brute3/on_hit(mob/living/target)
 	.=..()
-	target.adjustBruteLoss(-10)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustBruteLoss(-10)
+	else
+		return
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
@@ -154,7 +163,10 @@
 
 /obj/projectile/energy/medical/upgraded/burn3/on_hit(mob/living/target)
 	.=..()
-	target.adjustFireLoss(-10)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustFireLoss(-10)
+	else
+		return
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
