@@ -3,15 +3,16 @@ GLOBAL_LIST_INIT(ambition_objectives, create_objective_instances())
 /proc/create_objective_instances()
 	for(var/spath in subtypesof(/datum/ambition_objective))
 		var/datum/ambition_objective/sub = spath
-		if(istype(sub, initial(sub.abstract))
+		if(sub == initial(sub.abstract))
 			continue
-		LAZYADD(GLOB.ambitions_objectives[initial(sub.abstract)], new sub())
+		LAZYADD(GLOB.ambition_objectives[initial(sub.abstract)], new sub())
 
 /datum/ambition_objective
 	var/name = "BROKEN OBJECTIVE"
 	var/desc = "BROKEN OBJECTIVE"
 	var/key = "DEF"
 	var/intensity = INTENSITY_STEALTH
+	/// A type list of antags who are allowed to use this objective; if its TRUE any antag can
 	var/list/allowed_antag_types = list()
 	var/abstract = /datum/ambition_objective
 
@@ -20,6 +21,10 @@ GLOBAL_LIST_INIT(ambition_objectives, create_objective_instances())
 
 /datum/ambition_objective/proc/on_approved(client/parent)
 	return
+
+/datum/ambition_objective/proc/allow_select(client/parent, list/all_objectives, list/all_antags)
+	SHOULD_CALL_PARENT(TRUE)
+	return length(all_antags & allowed_antag_types)
 
 /datum/ambition_objective/cult
 	abstract = /datum/ambition_objective/cult
@@ -47,7 +52,7 @@ GLOBAL_LIST_INIT(ambition_objectives, create_objective_instances())
 
 /datum/ambition_objective/rev
 	abstract = /datum/ambition_objective/rev
-	allowed_antag_types = list(/datum/antagonist/rev)
+	allowed_antag_types = list(/datum/antagonist/rev/head)
 
 /datum/ambition_objective/gang
 	abstract = /datum/ambition_objective/gang
@@ -60,3 +65,23 @@ GLOBAL_LIST_INIT(ambition_objectives, create_objective_instances())
 /datum/ambition_objective/brother
 	abstract = /datum/ambition_objective/brother
 	allowed_antag_types = list(/datum/antagonist/brother)
+
+/datum/ambition_objective/generic
+	abstract = /datum/ambition_objective/generic
+	allowed_antag_types = TRUE
+
+///^^VV^^VV^^VV^^VV^^VV^^///
+/// AMBITION  OBJECTIVES ///
+///VV^^VV^^VV^^VV^^VV^^VV///
+
+/// GENERIC /// TODO
+/// TRAITOR /// TODO
+/// BROTHER /// TODO
+/// HERETIC /// TODO
+/// CHNGLNG /// TODO
+/// GANG    /// TODO
+/// CULT    /// TODO
+/// WIZARD  /// TODO
+/// MALF    /// TODO
+/// REVHEAD /// TODO
+/// NINJUA  /// TODO
