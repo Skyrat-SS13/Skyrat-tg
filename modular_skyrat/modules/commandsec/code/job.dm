@@ -44,12 +44,12 @@
 	ears = /obj/item/radio/headset/commsec
 	uniform = /obj/item/clothing/under/misc/assistantformal
 	shoes = /obj/item/clothing/shoes/sneakers/brown
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
 	id_trim = /datum/id_trim/job/command_secretary
 
 /obj/item/radio/headset/commsec
 	name = "\proper the command secretary's headset"
-	desc = "The headset of command's play-thing."
+	desc = "The headset of a professional coffee fetcher."
 	icon_state = "com_headset"
 	keyslot = new /obj/item/encryptionkey/commsec
 
