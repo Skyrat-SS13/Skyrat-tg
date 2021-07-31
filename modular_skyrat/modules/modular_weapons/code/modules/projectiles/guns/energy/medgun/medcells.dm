@@ -96,11 +96,10 @@
 
 
 /obj/projectile/energy/medical/upgraded/brute2/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustBruteLoss(-11.25)
+	target.adjustBruteLoss(-11.25)
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
@@ -111,11 +110,10 @@
 	icon_state = "yellow_laser"
 
 /obj/projectile/energy/medical/upgraded/burn2/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustFireLoss(-11.25)
+	target.adjustFireLoss(-11.25)
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
@@ -125,11 +123,10 @@
 	name = "strong oxygen heal shot"
 
 /obj/projectile/energy/medical/upgraded/oxy2/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustOxyLoss(-20)
+	target.adjustOxyLoss(-20)
 //Tier II Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin2
@@ -140,12 +137,11 @@
 	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/upgraded/toxin2/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustToxLoss(-7.5)
-		target.radiation = max(target.radiation - 60, 0)
+	target.adjustToxLoss(-7.5)
+	target.radiation = max(target.radiation - 60, 0)
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
@@ -157,11 +153,10 @@
 	icon_state = "red_laser"
 
 /obj/projectile/energy/medical/upgraded/brute3/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustBruteLoss(-15)
+	target.adjustBruteLoss(-15)
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
@@ -172,11 +167,10 @@
 	icon_state = "yellow_laser"
 
 /obj/projectile/energy/medical/upgraded/burn3/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustFireLoss(-15)
+	target.adjustFireLoss(-15)
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
@@ -186,11 +180,10 @@
 	name = "powerful oxygen heal shot"
 
 /obj/projectile/energy/medical/upgraded/oxy3/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustOxyLoss(-30)
+	target.adjustOxyLoss(-30)
 //Tier III Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin3
@@ -201,11 +194,10 @@
 	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/upgraded/toxin3/on_hit(mob/living/target)
-	.=..()
+	. = ..()
 	if(target.stat == DEAD)
 		return
-	else
-		target.adjustToxLoss(-5)
-		target.radiation = max(target.radiation - 80, 0)
+	target.adjustToxLoss(-5)
+	target.radiation = max(target.radiation - 80, 0)
 
 //End of Basic Tiers of cells.//
