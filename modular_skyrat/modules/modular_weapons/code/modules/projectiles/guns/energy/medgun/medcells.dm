@@ -36,7 +36,6 @@
 /obj/projectile/energy/medical/default/on_hit(mob/living/target)
 	.=..()
 	target.adjustOxyLoss(-5)
-
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
@@ -49,7 +48,10 @@
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
 	.=..()
-	target.adjustBruteLoss(-5)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustBruteLoss(-5)
+	else
+		return
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
@@ -61,7 +63,10 @@
 
 /obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
 	.=..()
-	target.adjustFireLoss(-5)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustFireLoss(-5)
+	else
+		return
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin1
