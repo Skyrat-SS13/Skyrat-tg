@@ -54,8 +54,9 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-
-	target.adjustBruteLoss(-7.5)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustBruteLoss(-7.5)
+	else
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
@@ -69,7 +70,10 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	target.adjustFireLoss(-7.5)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustFireLoss(-7.5)
+	else
+		return
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin1
@@ -100,7 +104,10 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	target.adjustBruteLoss(-11.25)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustBruteLoss(-11.25)
+	else
+		return
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
@@ -114,7 +121,10 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	target.adjustFireLoss(-11.25)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustFireLoss(-11.25)
+	else
+		return
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
@@ -157,7 +167,10 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	target.adjustBruteLoss(-15)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustBruteLoss(-15)
+	else
+		return
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
@@ -171,7 +184,10 @@
 	. = ..()
 	if(target.stat == DEAD)
 		return
-	target.adjustFireLoss(-15)
+	if(istype(target, /mob/living/carbon/human))
+		target.adjustFireLoss(-15)
+	else
+		return
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
