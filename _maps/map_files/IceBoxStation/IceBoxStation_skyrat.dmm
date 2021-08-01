@@ -5337,6 +5337,9 @@
 /area/maintenance/port/fore)
 "aBS" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/nitrous_oxide{
+	dir = 8
+	},
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "aBX" = (
@@ -8266,9 +8269,15 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
 "aZq" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/engine/air,
-/area/engineering/atmos)
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "aZJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/table,
@@ -12443,6 +12452,9 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
 	},
+/obj/machinery/stasissleeper{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "bwM" = (
@@ -15808,6 +15820,9 @@
 /area/tcommsat/computer)
 "bSf" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/carbon_dioxide{
+	dir = 8
+	},
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "bSm" = (
@@ -19991,7 +20006,7 @@
 /turf/open/floor/plating,
 /area/security/prison)
 "cKY" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/miner/toxins,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "cLc" = (
@@ -21510,7 +21525,7 @@
 /turf/open/floor/iron,
 /area/science/xenobiology)
 "dDh" = (
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/atmospherics/miner/n2o,
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "dDq" = (
@@ -22645,6 +22660,9 @@
 /area/security/prison)
 "ehY" = (
 /obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/vg_decals/atmos/oxygen{
+	dir = 1
+	},
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "eia" = (
@@ -22734,7 +22752,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/structure/cable,
 /obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron,
@@ -23067,6 +23088,9 @@
 /area/engineering/main)
 "esE" = (
 /obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
+	dir = 1
+	},
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "esI" = (
@@ -30801,7 +30825,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/machinery/stasis,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount/directional/north,
 /turf/open/floor/iron,
 /area/medical/medbay/central)
@@ -33142,7 +33169,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "jVr" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
+/obj/machinery/atmospherics/miner/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "jVG" = (
@@ -38084,7 +38111,7 @@
 /turf/open/floor/iron/dark,
 /area/commons/storage/mining)
 "mwT" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/miner/oxygen,
 /turf/open/floor/engine/o2,
 /area/engineering/atmos)
 "mxo" = (
@@ -38848,6 +38875,9 @@
 "mMH" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
+	},
+/obj/machinery/stasissleeper{
+	dir = 4
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
@@ -43464,7 +43494,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/structure/bed/pod,
+/obj/structure/bed/pod{
+	desc = "An old medical bed, just waiting for replacement with something up to date.";
+	name = "medical bed"
+	},
 /obj/machinery/defibrillator_mount/directional/south,
 /turf/open/floor/iron,
 /area/medical/medbay/central)
@@ -47869,6 +47902,9 @@
 /area/hallway/primary/central)
 "rGf" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/mix{
+	dir = 8
+	},
 /turf/open/floor/engine/vacuum,
 /area/engineering/atmos)
 "rGh" = (
@@ -53292,7 +53328,7 @@
 /turf/open/floor/plating,
 /area/engineering/main)
 "uro" = (
-/obj/item/circuitboard/machine/stasis,
+/obj/item/circuitboard/machine/stasissleeper,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
@@ -58388,6 +58424,9 @@
 /area/engineering/atmos)
 "xdx" = (
 /obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/vg_decals/atmos/air{
+	dir = 1
+	},
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "xek" = (
@@ -59279,10 +59318,13 @@
 /area/science/mixing/chamber)
 "xzc" = (
 /obj/machinery/light/small/directional/east,
+/obj/effect/turf_decal/vg_decals/atmos/plasma{
+	dir = 8
+	},
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "xzf" = (
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
 /turf/open/floor/engine/co2,
 /area/engineering/atmos)
 "xzg" = (
@@ -92039,7 +92081,7 @@ pcX
 pSI
 tHq
 pcX
-pSI
+aZq
 pSI
 pcX
 tHq
@@ -95456,7 +95498,7 @@ vqw
 fSP
 riF
 jnK
-aZq
+oUi
 xdx
 ccm
 boP

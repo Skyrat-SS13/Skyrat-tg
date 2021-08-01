@@ -244,6 +244,14 @@
 	glass = TRUE
 	normal_integrity = 400
 
+/obj/machinery/door/airlock/service
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/service.dmi'
+	assemblytype = /obj/structure/door_assembly/door_assembly_service
+
+/obj/machinery/door/airlock/service/glass
+	opacity = FALSE
+	glass = TRUE
+
 //STATION MINERAL AIRLOCKS
 /obj/machinery/door/airlock/gold
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/gold.dmi'
@@ -418,6 +426,13 @@
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/corporate.dmi'
 	glass_type = /obj/machinery/door/airlock/corporate/glass
 	airlock_type = /obj/machinery/door/airlock/corporate
+
+/obj/structure/door_assembly/door_assembly_service
+	name = "service airlock assembly"
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/service.dmi'
+	base_name = "service airlock"
+	glass_type = /obj/machinery/door/airlock/service/glass
+	airlock_type = /obj/machinery/door/airlock/service
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef AIRLOCK_LIGHT_POWER
