@@ -1,6 +1,7 @@
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
 	var/hasAffection = FALSE
+	var/hasAdvanced = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
@@ -180,23 +181,31 @@
 	name = "engineering advanced materials processor"
 	desc = "allows a cyborg to synthesize and store advanced materials"
 	icon_state = "cyborg_upgrade3"
+	model_type = list(/obj/item/robot_model/engineering)
 	model_flags = BORG_MODEL_ENGINEERING
 
 /obj/item/borg/upgrade/advanced_materials/action(mob/living/silicon/robot/borgo, user)
 	. = ..()
 	if(!.)
 		return
+	if(borgo.hasAdvanced)
+		to_chat(user, span_warning("This unit already has advanced materials installed!"))
+		to_chat(user, "There's no room for more materials!")
+		return FALSE;
+
 	var/obj/item/stack/sheet/plasteel/cyborg/plasteel_holder = new(borgo.model)
 	var/obj/item/stack/sheet/titaniumglass/cyborg/titanium_holder = new(borgo.model)
 	borgo.model.basic_modules += plasteel_holder
 	borgo.model.basic_modules += titanium_holder
-	borgo.model.add_module(plasteel_holder)
-	borgo.model.add_module(titanium_holder)
+	borgo.model.add_module(plasteel_holder, FALSE, TRUE)
+	borgo.model.add_module(titanium_holder, FALSE, TRUE)
+	borgo.hasAdvanced = TRUE
 
 /obj/item/borg/upgrade/advanced_materials/deactivate(mob/living/silicon/robot/borgo, user)
 	. = ..()
 	if(!.)
 		return
+	borgo.hasAdvanced = FALSE
 	for(var/obj/item/stack/sheet/plasteel/cyborg/plasteel_holder in borgo.model.modules)
 		borgo.model.remove_module(plasteel_holder, TRUE)
 	for(var/obj/item/stack/sheet/titaniumglass/cyborg/titanium_holder in borgo.model.modules)

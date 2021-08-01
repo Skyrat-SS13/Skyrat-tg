@@ -35,15 +35,6 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
 
-/obj/item/clothing/head/beret/nanotrasen_representative
-	name = "nanotrasen representative's beret"
-	desc =  "A beret made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "ntrep_beret"
-	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 30, ACID = 5, WOUND = 4)
-	mutant_variants = NONE
-
 /obj/item/clothing/head/nanotrasen_representative
 	name = "nanotrasen representative's hat"
 	desc = "A cap made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
@@ -56,6 +47,17 @@
 	strip_delay = 60
 	dog_fashion = null
 	mutant_variants = NONE
+
+/obj/item/clothing/head/nanotrasen_representative/beret
+	name = "nanotrasen representative's beret"
+	desc =  "A beret made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#3F3C40#155326"
+	icon_state = "beret_badge"
+
+/obj/item/clothing/head/beret/centcom_formal/ntrep
+	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 30, ACID = 5, WOUND = 4)
 
 /obj/item/clothing/suit/armor/vest/centcom_formal/ntrep
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
