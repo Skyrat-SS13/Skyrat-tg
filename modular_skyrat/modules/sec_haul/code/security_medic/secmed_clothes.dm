@@ -39,9 +39,8 @@
 /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 	name = "security medic's beret"
 	desc = "A robust beret with the medical insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "secmed_beret"
+	greyscale_colors = "#3F3C40#870E12"
+	icon_state = "beret_badge_med"
 	mutant_variants = NONE
 
 /obj/item/clothing/head/helmet/sec/peacekeeper/security_medic
