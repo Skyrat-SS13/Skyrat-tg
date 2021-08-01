@@ -6,7 +6,7 @@
 	overdose_threshold = 30
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
-/datum/reagent/medicine/changelingadrenaline/on_mob_life(mob/living/carbon/metabolizer, delta_time, times_fired)
+/datum/reagent/medicine/abductoradrenaline/on_mob_life(mob/living/carbon/metabolizer, delta_time, times_fired)
 	..()
 	metabolizer.AdjustAllImmobility(-10 * REM * delta_time)
 	metabolizer.adjustStaminaLoss(-5 * REM * delta_time, 0)
