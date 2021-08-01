@@ -17,9 +17,10 @@
 /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	name = "armadyne corporate beret"
 	desc = "A comfy yet robust beret worn by Armadyne corporate."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "armadyne_beret"
+	greyscale_config = /datum/greyscale_config/beret_badge_fancy
+	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
+	greyscale_colors = "#3F3C40#5B2423#491716"
+	icon_state = "beret_badge_fancy_diagonal"
 	mutant_variants = NONE
 	armor = list(MELEE = 50, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 0, RAD = 0, FIRE = 90, ACID = 90, WOUND = 30)
 
