@@ -39,7 +39,7 @@
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
-	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
+	head = /obj/item/clothing/head/sec/peacekeeper/sergeant
 
 	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
 

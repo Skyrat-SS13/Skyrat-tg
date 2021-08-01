@@ -483,7 +483,8 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Airtight Hatch" = get_airlock_image(/obj/machinery/door/airlock/hatch),
 //SKYRAT EDIT BEGIN//
 		"Maintenance Hatch" = get_airlock_image(/obj/machinery/door/airlock/maintenance_hatch),
-		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate)
+		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate),
+		"Service" = get_airlock_image(/obj/machinery/door/airlock/service)
 //SKYRAT EDIT END//
 	)
 
@@ -502,7 +503,8 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"External" = get_airlock_image(/obj/machinery/door/airlock/external/glass),
 //SKYRAT EDIT BEGIN//
 		"External Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/external/glass),
-		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate/glass)
+		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate/glass),
+		"Service" = get_airlock_image(/obj/machinery/door/airlock/service)
 //SKYRAT EDIT END//
 	)
 
@@ -547,6 +549,8 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 //SKYRAT EDIT BEGIN//
 					if("Corporate")
 						airlock_type = /obj/machinery/door/airlock/corporate
+					if("Service")
+						airlock_type = /obj/machinery/door/airlock/service
 //SKYRAT EDIT END//
 				airlock_glass = FALSE
 			else
@@ -586,6 +590,8 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 //SKYRAT EDIT BEGIN//
 					if("Corporate")
 						airlock_type = /obj/machinery/door/airlock/corporate/glass
+					if("Service")
+						airlock_type = /obj/machinery/door/airlock/service/glass
 //SKYRAT EDIT END//
 				airlock_glass = TRUE
 			else
