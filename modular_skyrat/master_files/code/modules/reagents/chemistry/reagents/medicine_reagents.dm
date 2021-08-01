@@ -22,8 +22,8 @@
 	L.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/reagent/medicine/abductoradrenaline/overdose_process(mob/living/metabolizer, delta_time, times_fired)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
+	if(iscarbon(metabolizer))
+		var/mob/living/carbon/C = metabolizer
 		C.adjustOrganLoss(ORGAN_SLOT_BRAIN,1*REM*delta_time)
 	..()
 	. = TRUE
