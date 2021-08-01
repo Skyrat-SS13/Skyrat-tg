@@ -502,7 +502,8 @@ SUBSYSTEM_DEF(job)
 	var/display_rank = job.title
 	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
 		display_rank = player_client.prefs.alt_titles_preferences[job.title]
-	to_chat(player_client, "<span class='infoplain'><b>You are the [display_rank].</b></span>")
+	if(player_client)
+		to_chat(player_client, "<span class='infoplain'><b>You are the [display_rank].</b></span>")
 	/* SKYRAT EDIT ORIGINAL
 	if(player_client)
 		to_chat(player_client, "<span class='infoplain'><b>You are the [job.title].</b></span>")
