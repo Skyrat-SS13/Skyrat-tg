@@ -499,8 +499,8 @@ SUBSYSTEM_DEF(job)
 
 	equipping.mind?.set_assigned_role(job)
 
-	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>You are the [job.title].</b></span>")
+	/* if(player_client)
+		to_chat(player_client, "<span class='infoplain'><b>You are the [job.title].</b></span>") */ // SKYRAT EDIT REMOVAL -- HANDLED BELOW WRT/ ALT TTILES
 
 	equipping.on_job_equipping(job)
 
