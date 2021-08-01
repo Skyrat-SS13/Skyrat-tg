@@ -90,8 +90,8 @@
 	crate_name = "compact defibrillator crate"
 
 /datum/supply_pack/medical/medigun
-	name = "CWM-479 Medigun Starter Kit"
-	desc = "Contains a single VeyMedical CWM-479 model medical gun with basic cells"
+	name = "CWM-479 Medigun"
+	desc = "Contains a single VeyMedical CWM-479 model medical gun; cells not included."
 	cost = CARGO_CRATE_VALUE * 30
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/storage/briefcase/medicalgunset/standard)
@@ -99,7 +99,7 @@
 
 /datum/supply_pack/medical/medicells
 	name = "Medicell Replacement Crate"
-	desc = "Contains a single replacement cell for each of the basic Medigun cells."
+	desc = "Contains the tier I Medigun cells."
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/medicell/brute1,
