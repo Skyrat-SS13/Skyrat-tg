@@ -22,11 +22,11 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		return
 	var/otype = text2path(json["outfit_type"])
 	if(!ispath(otype,/datum/outfit))
-		to_chat(admin,span_warning("Malformed/Outdated file."))
+		to_chat(admin,span_warning("Malformed/Outdated file. The object type is not a /datum/outfit"))
 		return
 	var/datum/outfit/O = new otype
 	if(!O.load_from(json))
-		to_chat(admin,span_warning("Malformed/Outdated file."))
+		to_chat(admin,span_warning("Malformed/Outdated file. Couldn't load from JSON."))
 		return
 	GLOB.custom_outfits += O
 	SStgui.update_user_uis(admin)
