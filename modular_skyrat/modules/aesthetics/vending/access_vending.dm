@@ -46,15 +46,15 @@
 		return
 
 	// Alright so, this is the EXACT SAME LOOP as our base proc; however we check to see if the user is allowed to purchase it first.
-	for (var/datum/data/vending_product/R in product_records)
-		if(!allow_purchase(user_id.access, R.product_path))
+	for (var/datum/data/vending_product/record in product_records)
+		if(!allow_purchase(user_id.access, record.product_path))
 			continue
 		var/list/data = list(
-			path = replacetext(replacetext("[R.product_path]", "/obj/item/", ""), "/", "-"),
-			name = R.name,
-			price = R.custom_price || default_price,
-			max_amount = R.max_amount,
-			ref = REF(R)
+			path = replacetext(replacetext("[record.product_path]", "/obj/item/", ""), "/", "-"),
+			name = record.name,
+			price = record.custom_price || default_price,
+			max_amount = record.max_amount,
+			ref = REF(record)
 		)
 		.["product_records"] += list(data)
 
