@@ -42,6 +42,8 @@
 	name = "Syndicate Deck Officer"
 	short_desc = "You are a syndicate Deck Officer, employed in a top secret research facility developing biological weapons."
 	outfit = /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
+	id = /obj/item/card/id/advanced/silver/generic
+	id_trim = /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate/captain(get_turf(src))
