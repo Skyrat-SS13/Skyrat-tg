@@ -10,7 +10,7 @@
 
 /**
  * This is where you generate the list to store what items each access grants.
- * Should be an assosciative list where the key is the access string and the value is the items typepath.
+ * Should be an assosciative list where the key is the access as a string and the value is the items typepath.
  * You can also set it to TRUE instead of a list to allow them to purchase anything.
  */
 /obj/machinery/vending/access_modular/proc/build_access_list(list/access_lists)
