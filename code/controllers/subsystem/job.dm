@@ -527,8 +527,8 @@ SUBSYSTEM_DEF(job)
 	//SKYRAT EDIT ADDITION END
 
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [rank]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT -- ALT TITLES
-		// to_chat(player_client, "<span class='infoplain'><b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</span></b>" // SKYRAT EDIT ORIGINAL
+		to_chat(player_client, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [job.title]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT -- ALT TITLES
+		// to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</span></b>" // SKYRAT EDIT ORIGINAL
 
 	job.radio_help_message(equipping)
 
