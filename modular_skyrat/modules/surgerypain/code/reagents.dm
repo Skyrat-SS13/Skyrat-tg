@@ -10,5 +10,5 @@
 
 /datum/reagent/medicine/mine_salve/on_mob_metabolize(mob/living/L)
 	ADD_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	L.throw_alert("numbed") // SKYRAT EDIT ADD END
+	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END
 	..()

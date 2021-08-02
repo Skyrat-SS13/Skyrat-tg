@@ -373,12 +373,13 @@
 	message = "puts their hands on their head and falls to the ground, they surrender%s!"
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
+//SKYRAT EDIT MOVAL - MOVED TO combat_indicator.dm IN INDICATORS MODULE
+/*/datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(. && isliving(user))
 		var/mob/living/L = user
 		L.Paralyze(200)
-		L.remove_status_effect(STATUS_EFFECT_SURRENDER)
+		L.remove_status_effect(STATUS_EFFECT_SURRENDER) */
 
 /datum/emote/living/sway
 	key = "sway"

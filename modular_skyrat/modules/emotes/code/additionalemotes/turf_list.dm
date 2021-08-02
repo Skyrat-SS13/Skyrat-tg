@@ -82,7 +82,7 @@
 
 		if("dust")
 			name = "cloud of dust"
-			desc = "It's a cloud of glittering moth's dust."
+			desc = "It's a cloud of glittering dust."
 			icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi'
 			icon_state = "dust"
 			pixel_x = -16

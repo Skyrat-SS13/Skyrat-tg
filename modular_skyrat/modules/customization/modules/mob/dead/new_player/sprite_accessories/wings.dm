@@ -9,6 +9,7 @@
 	recommended_species = list("human", "synthhuman", "felinid", "lizard", "synthmammal", "mammal", "synthliz")
 	organ_type = /obj/item/organ/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && H.try_hide_mutant_parts)
@@ -165,6 +166,7 @@
 	name = "Dragon (synthetic alt)"
 	icon_state = "dragonsynth"
 	color_src = USE_MATRIXED_COLORS
+	genetic = FALSE
 
 /datum/sprite_accessory/wings/mammal/dragon_alt1
 	name = "Dragon (alt 1)"

@@ -8,6 +8,7 @@
 #define TRAIT_DNC "cant_clone"
 #define TRAIT_DNR "cant_revive" //You just can't be revived without supernatural means
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass
+#define TRAIT_LINGUIST "linguist" // Extra language point.
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.
 #define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
@@ -20,6 +21,7 @@
 #define TRAIT_WEBBING_ASPECT "webbing_aspect"
 #define TRAIT_FLORAL_ASPECT "floral_aspect"
 #define TRAIT_ASH_ASPECT "ash_aspect"
+#define TRAIT_SPARKLE_ASPECT "sparkle_aspect"
 
 // Trait sources
 #define GHOSTROLE_TRAIT "ghostrole" // SKYRAT EDIT ADDITION -- Ghost Cafe Traits

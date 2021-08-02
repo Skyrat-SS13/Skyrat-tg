@@ -182,7 +182,7 @@
 			to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
 			return
 
-		if(!GLOB.enter_allowed)
+		if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
 			to_chat(usr, span_notice("There is an administrative lock on entering the game!"))
 			return
 
@@ -215,7 +215,10 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = tgui_alert(usr, "Are you sure you wish to observe? You will not be able to play this round!","Player Setup",list("Yes","No"))
+	var/less_input_message
+	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
+		less_input_message = " - Notice: Observer freelook is currently disabled."
+	var/this_is_like_playing_right = tgui_alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]","Player Setup",list("Yes","No"))
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
@@ -296,10 +299,6 @@
 		tgui_alert(usr, get_job_unavailable_error_message(error, rank))
 		return FALSE
 
-	if(SSticker.late_join_disabled)
-		tgui_alert(usr, "An administrator has disabled late join spawning.")
-		return FALSE
-
 	var/arrivals_docked = TRUE
 	if(SSshuttle.arrivals)
 		close_spawn_windows() //In case we get held up
@@ -327,9 +326,8 @@
 	else if(SSjob.always_promote_captain_job && (rank == "Captain"))
 		is_captain = TRUE
 
-	var/equip = SSjob.EquipRank(character, rank, TRUE, is_captain)
-	if(isliving(equip)) //Borgs get borged in the equip, so we need to make sure we handle the new mob.
-		character = equip
+	SSjob.EquipRank(character, job, character.client)
+	job.after_latejoin_spawn(character)
 
 	var/datum/job/job = SSjob.GetJob(rank)
 
@@ -389,7 +387,10 @@
 
 
 /mob/dead/new_player/proc/LateChoices()
-	var/list/dat = list("<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
+	var/list/dat = list()
+	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
+		dat += "<div class='notice red' style='font-size: 125%'>Only Observers may join at this time.</div><br>"
+	dat += "<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>"
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
