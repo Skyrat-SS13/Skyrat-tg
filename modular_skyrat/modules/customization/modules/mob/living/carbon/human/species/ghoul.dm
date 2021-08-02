@@ -5,7 +5,7 @@
 	say_mod = "rasps"
 	sexes = FALSE
 	default_color = "c4af7c"
-	species_traits = list(NOEYESPRITES, DYNCOLORS, AGENDER, HAS_FLESH, HAS_BONE)
+	species_traits = list(NOEYESPRITES, DYNCOLORS, AGENDER, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,
@@ -48,11 +48,14 @@
 	bodypart_overides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/ghoul,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/ghoul,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/ghoul,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/ghoul,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/ghoul,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/ghoul,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest,
 	)
+	//the chest and head cannot be turned into meat
+	//i dont have to worry about sprites due to limbs_icon, thank god
+	//also the head needs to be normal for hair to work
 
 /proc/proof_ghoul_features(list/inFeatures)
 	// Missing Defaults in DNA? Randomize!
@@ -71,8 +74,8 @@
 		set_ghoul_color(H)
 
 		// 2) BODYPARTS
-		C.part_default_head = /obj/item/bodypart/head/ghoul
-		C.part_default_chest = /obj/item/bodypart/chest/ghoul
+		C.part_default_head = /obj/item/bodypart/head
+		C.part_default_chest = /obj/item/bodypart/chest
 		C.part_default_l_arm = /obj/item/bodypart/l_arm/ghoul
 		C.part_default_r_arm = /obj/item/bodypart/r_arm/ghoul
 		C.part_default_l_leg = /obj/item/bodypart/l_leg/ghoul
@@ -207,12 +210,6 @@
 
 //LIMBS
 
-/obj/item/bodypart/head/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/chest/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
 /obj/item/bodypart/r_arm/ghoul
 	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 
@@ -224,19 +221,6 @@
 
 /obj/item/bodypart/l_leg/ghoul
 	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/chest/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
 
 /obj/item/bodypart/r_arm/ghoul/drop_limb(special)
 	//amCondemned = TRUE
