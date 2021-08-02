@@ -1,7 +1,7 @@
 /datum/job/nanotrasen_representative
 	title = "Nanotrasen Representative"
 	department_head = list("Central Command")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command"
@@ -33,6 +33,8 @@
 	veteran_only = TRUE
 
 	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/job/nanotrasen_representative/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
@@ -141,7 +143,8 @@
 	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/head/nanotrasen_representative(src)
-	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
+	new /obj/item/clothing/head/nanotrasen_representative/beret(src)
+	new /obj/item/clothing/head/beret/centcom_formal/ntrep(src)
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
