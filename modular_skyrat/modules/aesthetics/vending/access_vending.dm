@@ -1,7 +1,7 @@
 /**
  * This vending machine supports a list of items that changes based on the user/card's access.
  */
-/obj/machinery/vending/access_modular
+/obj/machinery/vending/access
 	name = "Access Based Vending Machine"
 	/// Internal variable to store our access list
 	var/list/access_lists
@@ -13,10 +13,10 @@
  * Should be an assosciative list where the key is the access as a string and the value is the items typepath.
  * You can also set it to TRUE instead of a list to allow them to purchase anything.
  */
-/obj/machinery/vending/access_modular/proc/build_access_list(list/access_lists)
+/obj/machinery/vending/access/proc/build_access_list(list/access_lists)
 	return
 
-/obj/machinery/vending/access_modular/Initialize(mapload)
+/obj/machinery/vending/access/Initialize(mapload)
 	var/list/_list = new
 	build_access_list(_list)
 	access_lists = _list
@@ -31,7 +31,7 @@
 				products[item] = auto_build_products
 	return ..()
 
-/obj/machinery/vending/access_modular/ui_static_data(mob/user)
+/obj/machinery/vending/access/ui_static_data(mob/user)
 	. = ..()
 	if(issilicon(user))
 		return // Silicons get to view all items regardless
@@ -59,7 +59,7 @@
 		.["product_records"] += list(data)
 
 /// Check if the list of given access is allowed to purchase the given product
-/obj/machinery/vending/access_modular/proc/allow_purchase(list/access, product_path)
+/obj/machinery/vending/access/proc/allow_purchase(list/access, product_path)
 	if(obj_flags & EMAGGED)
 		return TRUE
 	. = FALSE
@@ -75,10 +75,10 @@
 			return TRUE
 
 /// Debug version to verify access checking is working and functional
-/obj/machinery/vending/access_modular/debug
+/obj/machinery/vending/access/debug
 	auto_build_products = TRUE
 
-/obj/machinery/vending/access_modular/debug/build_access_list(list/access_lists)
+/obj/machinery/vending/access/debug/build_access_list(list/access_lists)
 	access_lists["[ACCESS_ENGINE]"] = TRUE
 	access_lists["[ACCESS_EVA]"] = list(/obj/item/crowbar)
 	access_lists["[ACCESS_SECURITY]"] = list(/obj/item/wrench, /obj/item/gun/ballistic/revolver/mateba)
