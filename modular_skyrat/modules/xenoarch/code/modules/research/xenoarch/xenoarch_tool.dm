@@ -123,6 +123,7 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 21
 	STR.max_items = 12
+	STR.max_combined_w_class = 1000
 	STR.set_holdable(list(
 		/obj/item/xenoarch/hammer,
 		/obj/item/xenoarch/brush,
@@ -203,7 +204,7 @@
 /obj/item/storage/bag/xenoarch/adv/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 25
+	STR.max_items = 30
 
 /obj/structure/closet/xenoarch
 	name = "xenoarchaeology equipment locker"
