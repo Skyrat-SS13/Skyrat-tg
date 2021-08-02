@@ -36,8 +36,7 @@
 	var/employer
 	var/backstory
 	var/intensity
-	/// Assosciate list of objectives, key is the antag reference sue me
-	var/list/objectives = list()
+	var/list/datum/ambition_objective/objectives = list()
 
 	// RECORD KEEPING //
 	var/list/amb_history = list()
@@ -85,9 +84,9 @@
 	connect(owner)
 
 /datum/ambitions/Destroy()
-	QDEL_LIST(objectives)
-	QDEL_LIST(amb_history)
-	QDEL_LIST(amb_touches)
+	objectives = null
+	amb_history = null
+	amb_touches = null
 	GLOB.ambitions -= src
 	GLOB.ambitions -= owner_ckey
 	owner = null
@@ -114,13 +113,11 @@
 	.["intensity"] = intensity
 	.["intensities"] = INTENSITY_ALL
 	.["is_malf"] = !!owner.has_antag_datum(/datum/antagonist/malf_ai)
-	.["obj_keys"] = list()
+	.["obj_refs"] = list()
 	.["antag_types"] = list()
 	.["page"] = ui_page
-	for(var/antag in objectives)
-		.["antag_types"] += antag
-		for(var/datum/ambition_objective/objective as anything in objectives[antag])
-			.["obj_keys"] += objective.key
+	for(var/datum/ambition_objective/objective as anything in objectives)
+		.["obj_refs"] += REF(objective)
 
 	.["is_antag"] = LAZYLEN(owner_antags)
 	.["antags"] = list()
@@ -211,7 +208,8 @@
 	message_admins(span_adminhelp("[owner_ckey]'s ambitions have been approved by [handling]."))
 	for(var/datum/antagonist/antag as anything in owner_antags)
 		antag.objectives.Cut()
-		for(var/datum/ambition_objective/ambition as anything in (objectives[antag]))
+		for(var/datum/ambition_objective/ambition as anything in objectives)
+			ambition.on_approved(src) // This might end up being called twice, or more times, depending on what happens with the client; this might need to be changed later
 			var/datum/objective/_obj = new /datum/objective(ambition.desc)
 			_obj.name = ambition.name
 			antag.objectives += _obj
@@ -227,3 +225,20 @@
 		autoapprove_stop()
 	message_admins("[owner_ckey]'s ambitions are being handled by [handling]")
 	to_chat(owner.current, span_adminhelp("Your ambitions are now being handled by an admin."))
+
+/datum/ambitions/proc/objective_select(obj_ref)
+	var/datum/ambition_objective/amb_obj = locate(obj_ref)
+	if(!istype(amb_obj))
+		stack_trace("illegal ambition objective reference")
+		return FALSE
+
+	if(!amb_obj.on_select(src))
+		return FALSE
+
+	objectives |= amb_obj
+
+/datum/ambitions/proc/objective_remove(datum/ambition_objective/amb_obj)
+	if(!(amb_obj in objectives))
+		return TRUE
+	amb_obj.on_deselect(src)
+	objectives -= amb_obj

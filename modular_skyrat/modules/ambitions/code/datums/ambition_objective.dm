@@ -1,11 +1,14 @@
 GLOBAL_LIST_INIT(ambition_objectives, create_objective_instances())
+GLOBAL_LIST_EMPTY(ambition_objectives_all)
 
 /proc/create_objective_instances()
 	for(var/spath in subtypesof(/datum/ambition_objective))
 		var/datum/ambition_objective/sub = spath
 		if(sub == initial(sub.abstract))
 			continue
-		LAZYADD(GLOB.ambition_objectives[initial(sub.abstract)], new sub())
+		var/sub_instance = new sub()
+		LAZYADD(GLOB.ambition_objectives[initial(sub.abstract)], sub_instance)
+		LAZYADD(GLOB.ambition_objectives_all, sub_instance)
 
 /datum/ambition_objective
 	var/name = "BROKEN OBJECTIVE"
@@ -16,15 +19,27 @@ GLOBAL_LIST_INIT(ambition_objectives, create_objective_instances())
 	var/list/allowed_antag_types = list()
 	var/abstract = /datum/ambition_objective
 
-/datum/ambition_objective/proc/on_select(client/parent)
+/// This proc is run when an objective is initially selected, the objective should do all calculations and assign values here.
+/// If the proc is unable to do anything it needs to do to ensure the objective works correctly, it should return FALSE.
+/datum/ambition_objective/proc/on_select(datum/ambitions/parent)
+	return TRUE
+
+/// The client has deselected us, either because it wasn't approved or they changed their mind.
+/datum/ambition_objective/proc/on_deselect(datum/ambitions/parent)
 	return
 
-/datum/ambition_objective/proc/on_approved(client/parent)
+/// This proc is run when an objective is approved.
+/datum/ambition_objective/proc/on_approved(datum/ambitions/parent)
 	return
 
-/datum/ambition_objective/proc/allow_select(client/parent, list/all_objectives, list/all_antags)
+/// Is this objective allowed to be selected; this is the proc that ensures only valid objectives are shown to potential clients.
+/// IF YOU OVERRIDE THIS DO NOT DO ANYTHING FANCY, IT IS CALLED EVERY UI UPDATE.
+/datum/ambition_objective/proc/allow_select(datum/ambitions/parent, list/all_objectives)
 	SHOULD_CALL_PARENT(TRUE)
-	return length(all_antags & allowed_antag_types)
+	for(var/datum/antagonist/antag as anything in parent.owner_antags)
+		if(is_type_in_list(antag, allowed_antag_types))
+			return TRUE
+	return FALSE
 
 /datum/ambition_objective/cult
 	abstract = /datum/ambition_objective/cult
