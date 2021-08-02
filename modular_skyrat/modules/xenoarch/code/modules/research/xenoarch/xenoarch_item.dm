@@ -5,7 +5,7 @@
 
 /obj/item/xenoarch/useless_relic/Initialize()
 	. = ..()
-	icon_state = "useless[rand(1,3)]"
+	icon_state = "useless[rand(1,8)]"
 
 /datum/export/xenoarch/useless_relic
 	cost = 200

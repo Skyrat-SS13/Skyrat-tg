@@ -6,6 +6,7 @@
 
 /obj/item/xenoarch/hammer
 	name = "parent dev item"
+	desc = "A hammer that can be used to remove dirt from strange rocks."
 	var/dig_amount = 1
 	var/dig_speed = 1 SECONDS
 	var/advanced = FALSE
@@ -41,42 +42,48 @@
 
 /obj/item/xenoarch/hammer/cm1
 	name = "Hammer (1cm)"
-	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer1"
 	dig_amount = 1
 	dig_speed = 1 SECONDS
 
 /obj/item/xenoarch/hammer/cm2
 	name = "Hammer (2cm)"
-	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer2"
 	dig_amount = 2
 	dig_speed = 2 SECONDS
 
 /obj/item/xenoarch/hammer/cm3
 	name = "Hammer (3cm)"
-	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer3"
 	dig_amount = 3
 	dig_speed = 3 SECONDS
 
+/obj/item/xenoarch/hammer/cm4
+	name = "Hammer (4cm)"
+	icon_state = "hammer4"
+	dig_amount = 4
+	dig_speed = 4 SECONDS
+
 /obj/item/xenoarch/hammer/cm5
 	name = "Hammer (5cm)"
-	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer5"
 	dig_amount = 5
 	dig_speed = 5 SECONDS
 
+/obj/item/xenoarch/hammer/cm6
+	name = "Hammer (6cm)"
+	icon_state = "hammer6"
+	dig_amount = 6
+	dig_speed = 6 SECONDS
+
 /obj/item/xenoarch/hammer/cm10
 	name = "Hammer (10cm)"
-	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "hammer10"
 	dig_amount = 10
 	dig_speed = 10 SECONDS
 
 /obj/item/xenoarch/hammer/adv
 	name = "advanced hammer"
-	desc = "A hammer that can be used to remove dirt from strange rocks."
 	icon_state = "adv_hammer"
 	dig_amount = 1
 	dig_speed = 1
@@ -103,8 +110,10 @@
 	icon_state = "tape"
 
 /obj/item/storage/belt/utility/xenoarch
-	name = "xenoarch toolbelt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
+	name = "xenoarch toolbelt"
 	desc = "Holds tools."
+	icon = 'modular_skyrat/modules/xenoarch/icons/xenoarch_items.dmi'
+	icon_state = "xenoarch_belt"
 	content_overlays = FALSE
 	custom_premium_price = PAYCHECK_MEDIUM * 2
 
@@ -113,13 +122,14 @@
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 21
-	STR.max_items = 8
+	STR.max_items = 12
 	STR.set_holdable(list(
 		/obj/item/xenoarch/hammer,
 		/obj/item/xenoarch/brush,
 		/obj/item/xenoarch/tape_measure,
 		/obj/item/t_scanner/adv_mining_scanner,
-		/obj/item/mining_scanner
+		/obj/item/mining_scanner,
+		/obj/item/gps
 		))
 
 /obj/item/storage/bag/xenoarch
@@ -204,7 +214,9 @@
 	new /obj/item/xenoarch/hammer/cm1(src)
 	new /obj/item/xenoarch/hammer/cm2(src)
 	new /obj/item/xenoarch/hammer/cm3(src)
+	new /obj/item/xenoarch/hammer/cm4(src)
 	new /obj/item/xenoarch/hammer/cm5(src)
+	new /obj/item/xenoarch/hammer/cm6(src)
 	new /obj/item/xenoarch/hammer/cm10(src)
 	new /obj/item/xenoarch/brush(src)
 	new /obj/item/xenoarch/tape_measure(src)

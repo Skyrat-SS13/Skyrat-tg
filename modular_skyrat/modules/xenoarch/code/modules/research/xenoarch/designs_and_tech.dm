@@ -1,52 +1,44 @@
-/datum/design/hammercm1
+/datum/design/xeno_hammer
+	desc = "A hammer that can slowly remove debris on a strange rock."
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+
+/datum/design/xeno_hammer/hammercm1
 	name = "Hammer (cm 1)"
-	desc = "A hammer that can slowly remove debris on a strange rock."
 	id = "hammercm1"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/hammer/cm1
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
-/datum/design/hammercm2
+/datum/design/xeno_hammer/hammercm2
 	name = "Hammer (cm 2)"
-	desc = "A hammer that can slowly remove debris on a strange rock."
 	id = "hammercm2"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/hammer/cm2
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
-/datum/design/hammercm3
+/datum/design/xeno_hammer/hammercm3
 	name = "Hammer (cm 3)"
-	desc = "A hammer that can slowly remove debris on a strange rock."
 	id = "hammercm3"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/hammer/cm3
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
-/datum/design/hammercm5
+/datum/design/xeno_hammer/hammercm4
+	name = "Hammer (cm 4)"
+	id = "hammercm4"
+	build_path = /obj/item/xenoarch/hammer/cm4
+
+/datum/design/xeno_hammer/hammercm5
 	name = "Hammer (cm 5)"
-	desc = "A hammer that can slowly remove debris on a strange rock."
 	id = "hammercm5"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/hammer/cm5
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
-/datum/design/hammercm10
+/datum/design/xeno_hammer/hammercm6
+	name = "Hammer (cm 6)"
+	id = "hammercm6"
+	build_path = /obj/item/xenoarch/hammer/cm6
+
+/datum/design/xeno_hammer/hammercm10
 	name = "Hammer (cm 10)"
-	desc = "A hammer that can slowly remove debris on a strange rock."
 	id = "hammercm10"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/hammer/cm10
-	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
 /datum/design/bas_brush
 	name = "Brush"
@@ -159,7 +151,9 @@
 		"hammercm1",
 		"hammercm2",
 		"hammercm3",
+		"hammercm4",
 		"hammercm5",
+		"hammercm6",
 		"hammercm10",
 		"bas_brush",
 		"xeno_tape",
