@@ -82,7 +82,7 @@
 	name = "Science Eyepatch"
 	path = /obj/item/clothing/glasses/hud/eyepatch/sci
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Chief Research Officer", "Bioweapons Technician")
-	restricted_desc = "Science"
+	restricted_desc = "Science and Chemists"
 
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"
@@ -93,3 +93,4 @@
 	name = "Security Eyepatch Hud"
 	path = /obj/item/clothing/glasses/hud/eyepatch/sec
 	restricted_roles = list("Security Officer", "Security Sergeant", "Master At Arms", "Chief Master At Arms")
+  

@@ -813,7 +813,7 @@
 	name = "Formal Virologist Suit"
 	path = /obj/item/clothing/under/rank/medical/virologist/formal
 	restricted_roles = list("Chief Medical Officer", "Virologist")
-	restricted_desc = "Virologists"
+	restricted_desc = "Virology"
 
 /datum/loadout_item/uniform/job/formalvirskirt
 	name = "Formal Virologist Skirt"

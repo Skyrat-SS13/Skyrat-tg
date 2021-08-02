@@ -60,7 +60,7 @@
 "ar" = (
 /obj/machinery/door/airlock/command{
 	name = "Deck Officer";
-	req_access_txt = "150"
+	req_access_txt = "151"
 	},
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -970,31 +970,6 @@
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
-"jl" = (
-/obj/item/organ/tail/fluffy,
-/obj/item/organ/tail/fluffy,
-/obj/item/organ/tail/fluffy,
-/obj/item/organ/tail/fluffy/no_wag{
-	desc = "A severed tail. What did you cut this off of? Whatever it is, it doesn't seem like it wagged much.";
-	name = "fluffy tail (averse to wagging)"
-	},
-/obj/item/organ/tail/fluffy/no_wag{
-	desc = "A severed tail. What did you cut this off of? Whatever it is, it doesn't seem like it wagged much.";
-	name = "fluffy tail (averse to wagging)"
-	},
-/obj/item/organ/tail/fluffy/no_wag{
-	desc = "A severed tail. What did you cut this off of? Whatever it is, it doesn't seem like it wagged much.";
-	name = "fluffy tail (averse to wagging)"
-	},
-/obj/item/organ/ears/mutant,
-/obj/item/organ/ears/mutant,
-/obj/item/organ/ears/mutant,
-/obj/item/organ/ears/mutant,
-/obj/item/organ/ears/mutant,
-/obj/item/organ/ears/mutant,
-/obj/structure/closet/crate/freezer,
-/turf/open/floor/plating,
-/area/ruin/unpowered/syndicate_lava_base/medbay)
 "jm" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -1685,16 +1660,13 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/mob/living/carbon/human/species/monkey{
-	faction = list("neutral","Syndicate")
-	},
-/obj/machinery/door/window/survival_pod{
-	dir = 8;
-	req_access_txt = "150"
-	},
-/obj/structure/window/reinforced/survival_pod,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/grass,
+/obj/structure/table/glass,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 10
+	},
+/obj/item/healthanalyzer,
+/turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/virology)
 "rG" = (
 /obj/machinery/door/airlock/medical/glass{
@@ -3011,15 +2983,17 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered/syndicate_lava_base/engineering)
 "Ij" = (
+/obj/machinery/light/directional/west,
 /obj/structure/closet/secure_closet{
 	icon_state = "qm";
 	name = "deck offficer's locker";
-	req_access = list(150)
+	req_access = list(151)
 	},
 /obj/item/clothing/neck/cloak/qm/syndie,
 /obj/item/clothing/under/rank/cargo/qm/syndie,
 /obj/item/circuitboard/computer/advanced_camera,
-/obj/machinery/light/directional/west,
+/obj/item/megaphone/cargo,
+/obj/item/clothing/glasses/sunglasses,
 /turf/open/floor/wood,
 /area/ruin/unpowered/syndicate_lava_base/cargo)
 "Im" = (
@@ -3367,6 +3341,11 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/mob/living/carbon/human/species/monkey{
+	ai_controller = null;
+	faction = list("neutral","Syndicate")
+	},
+/obj/structure/chair/office/light,
 /turf/open/floor/iron/white,
 /area/ruin/unpowered/syndicate_lava_base/medbay)
 "Ny" = (
@@ -3570,17 +3549,13 @@
 /turf/open/floor/engine,
 /area/ruin/unpowered/syndicate_lava_base/testlab)
 "PQ" = (
+/obj/machinery/light/directional/north,
 /obj/structure/table/glass,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/item/healthanalyzer,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/reagent_containers/dropper{
-	pixel_y = -7
+	pixel_y = -6
 	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = 10
-	},
-/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered/syndicate_lava_base/virology)
 "PW" = (
@@ -6772,7 +6747,7 @@ ab
 ab
 dJ
 jg
-jl
+EU
 yQ
 Vk
 jR
