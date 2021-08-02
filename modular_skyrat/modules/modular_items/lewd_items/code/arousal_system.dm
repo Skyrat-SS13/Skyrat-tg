@@ -141,7 +141,7 @@
 	var/pleasure = 0
 	var/pain = 0
 
-	var/pain_limit = 10
+	var/pain_limit = 0
 	var/arousal_status = AROUSAL_NONE
 
 /mob/living/carbon/human/Initialize()

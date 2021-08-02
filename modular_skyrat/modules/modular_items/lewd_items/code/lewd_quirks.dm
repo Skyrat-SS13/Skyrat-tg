@@ -453,7 +453,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
 	REMOVE_TRAIT(H,TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
-	H.pain_limit = 10
+	H.pain_limit = 0
 
 ////////////////
 ///NEVERBONER///

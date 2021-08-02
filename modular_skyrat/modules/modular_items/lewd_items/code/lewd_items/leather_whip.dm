@@ -252,7 +252,7 @@
 								M.emote(pick("moan","twitch","twitch_s","scream"))
 							if(prob(10))
 								M.apply_status_effect(/datum/status_effect/subspace)
-						M.adjustArousal(4)
+						M.adjustArousal(3)
 						M.adjustPain(8)
 						M.apply_status_effect(/datum/status_effect/spanked)
 						if(HAS_TRAIT(M, TRAIT_MASOCHISM || TRAIT_NYMPHOMANIA || TRAIT_BIMBO))
@@ -286,7 +286,8 @@
 						if(prob(10))
 							M.apply_status_effect(/datum/status_effect/subspace)
 						M.do_jitter_animation()
-					M.adjustPain(7)
+					M.adjustPain(4)
+					M.adjustArousal(5)
 					user.visible_message("<font color=purple>[user] [message].</font>")
 					playsound(loc, 'sound/weapons/whip.ogg', 60)
 				else
