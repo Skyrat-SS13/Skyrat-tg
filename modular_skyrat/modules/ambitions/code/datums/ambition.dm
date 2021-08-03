@@ -172,7 +172,9 @@
 			return TRUE
 
 		if("objective-add")
-			objective_select(params["objective_ref"])
+			if(!objective_select(params["objective_ref"]))
+				to_chat(usr, span_boldwarning("Unable to register with objective. If this continues ahelp."))
+				return FALSE
 			return TRUE
 
 		if("objective-rem")
@@ -260,6 +262,7 @@
 		return FALSE
 
 	objectives |= amb_obj
+	return TRUE
 
 /datum/ambitions/proc/objective_remove(obj_ref)
 	var/datum/ambition_objective/amb_obj = locate(obj_ref)
