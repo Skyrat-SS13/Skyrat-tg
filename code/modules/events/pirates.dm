@@ -17,18 +17,6 @@
 		return EVENT_CANT_RUN
 	return ..()
 
-<<<<<<< HEAD
-/datum/round_event/pirates
-	startWhen = 60 //2 minutes to answer
-	var/datum/comm_message/threat
-	var/payoff = 0
-	var/payoff_min = 20000
-	var/paid_off = FALSE
-	var/pirate_type
-	var/ship_template
-	var/ship_name = "Space Privateers Association"
-	var/shuttle_spawned = FALSE
-
 //SKRAT EDIT ADDITiON
 /datum/round_event_control/pirates/rogues
 	name = "Space Pirates - Rogues"
@@ -50,6 +38,9 @@
 	typepath = /datum/round_event/pirates/enclave
 	weight = 0
 
+/datum/round_event/pirates
+	var/pirate_type
+
 /datum/round_event/pirates/rogues
 	pirate_type = PIRATES_ROGUES
 
@@ -63,27 +54,13 @@
 	pirate_type = PIRATES_IMPERIAL_ENCLAVE
 //SKYRAT EDIT ADDITION END
 
-/datum/round_event/pirates/setup()
-	if(!pirate_type) //SKYRAT EDIT ADDITION
-		pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_IMPERIAL_ENCLAVE) //SKYRAT EDIT CHANGE
-	switch(pirate_type)
-		if(PIRATES_ROGUES)
-			ship_name = pick(strings(PIRATE_NAMES_FILE, "rogue_names"))
-		if(PIRATES_SILVERSCALES)
-			ship_name = pick(strings(PIRATE_NAMES_FILE, "silverscale_names"))
-		if(PIRATES_DUTCHMAN)
-			ship_name = "Flying Dutchman"
-		//SKYRAT EDIT ADDITION
-		if(PIRATES_IMPERIAL_ENCLAVE)
-			ship_name = "Imperial Enclave Enforcer-Class Starship"
-		//SKYRAT EDIT ADDITION END
-=======
 /datum/round_event/pirates/start()
-	send_pirate_threat()
->>>>>>> a4a5d7744c6 (Add Revenant, Sentient Disease, Space Pirates, and Obsessed to Dynamic (#60281))
+	send_pirate_threat(pirate_type) //SKYRAT EDIT CHANGE
 
-/proc/send_pirate_threat()
-	var/pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN)
+/proc/send_pirate_threat(pirate_override)
+	var/pirate_type = pick(PIRATES_ROGUES, PIRATES_SILVERSCALES, PIRATES_DUTCHMAN, PIRATES_IMPERIAL_ENCLAVE) //SKYRAT EDIT CHANGE
+	if(pirate_override)
+		pirate_type = pirate_override
 	var/ship_template = null
 	var/ship_name = "Space Privateers Association"
 	var/payoff_min = 20000
@@ -114,21 +91,18 @@
 			threat.title = "Business proposition"
 			threat.content = "Ahoy! This be the [ship_name]. Cough up [payoff] credits or you'll walk the plank."
 			threat.possible_answers = list("We'll pay.","We will not be extorted.")
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(PIRATES_IMPERIAL_ENCLAVE)
+			ship_name = "Imperial Enclave Enforcer-Class Starship"
 			ship_template = /datum/map_template/shuttle/pirate/imperial_enclave
 			threat.title = "Imperial Enclave Audit"
 			threat.content = "Greetings, this is the [ship_name]. Due to recent Imperial regulatory violations, your station has been fined [payoff] credits. Failure to comply will result in lethal debt recovery. Imperal Enclave out."
 			threat.possible_answers = list("Submit to audit and pay the fine.", "Imperial regulations? What a load of bollocks.")
 		//SKYRAT EDIT ADDITION END
-	threat.answer_callback = CALLBACK(src,.proc/answered)
-=======
 	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/spawn_pirates, threat, ship_template, FALSE), response_max_time)
->>>>>>> a4a5d7744c6 (Add Revenant, Sentient Disease, Space Pirates, and Obsessed to Dynamic (#60281))
 	SScommunications.send_message(threat,unique = TRUE)
-	
+
 /proc/pirates_answered(datum/comm_message/threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
 	if(world.time > initial_send_time + response_max_time)
 		priority_announce("Too late to beg for mercy!",sender_override = ship_name)
