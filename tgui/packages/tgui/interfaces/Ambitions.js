@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 export const Ambitions = (props, context) => {
   const { data } = useBackend(context);
   const { admin, is_malf } = data;
-  const { is_admin } = admin;
+  const { auth } = admin;
 
   return (
     <Window
@@ -13,7 +13,7 @@ export const Ambitions = (props, context) => {
       width={400}
       title={"Ambitions Panel"}
       theme={is_malf ? "malfunction" : "syndicate"} >
-      {!!is_admin && (
+      {!!auth && (
         <AdminPanel />
       )}
       <NarrativePanel />

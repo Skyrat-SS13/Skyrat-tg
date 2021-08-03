@@ -50,6 +50,7 @@
 
 	// UI DATA //
 	var/ui_page = 0
+	var/filter
 
 	// AUTO APPROVAL //
 	var/aa_timerid
@@ -106,31 +107,41 @@
 
 /datum/ambitions/ui_data(mob/user)
 	. = list()
+	.["intensities"] = INTENSITY_ALL
+	.["antags"] = list()
+	.["is_malf"] = !!owner.has_antag_datum(/datum/antagonist/malf_ai)
+	.["filter"] = filter
+	.["objectives_avail"] = get_available_objectives(.["filter"])
 	.["name"] = name
 	.["backstory"] = backstory
 	.["employer"] = employer
 	.["objectives"] = objectives
 	.["intensity"] = intensity
-	.["intensities"] = INTENSITY_ALL
-	.["is_malf"] = !!owner.has_antag_datum(/datum/antagonist/malf_ai)
 	.["obj_refs"] = list()
 	.["antag_types"] = list()
 	.["page"] = ui_page
-	for(var/datum/ambition_objective/objective as anything in objectives)
-		.["obj_refs"] += REF(objective)
-
 	.["is_antag"] = LAZYLEN(owner_antags)
-	.["antags"] = list()
+
 	for(var/datum/antagonist/antag as anything in owner_antags)
 		.["antags"] += antag.name
 
-	.["admin"] = list(
-		"is_admin" = check_rights_for(user.client, R_ADMIN),
-		"handling" = handling,
-		"submitted" = submitted,
-		"approved" = approved,
-		"changes_requested" = changes_requested,
-	)
+	for(var/datum/ambition_objective/objective as anything in objectives)
+		.["obj_refs"] += REF(objective)
+
+	.["admin"] = list()
+	.["admin"]["auth"] = check_rights_for(user.client, R_ADMIN)
+	.["admin"]["handling"] = handling
+	.["admin"]["submitted"] = submitted
+	.["admin"]["approved"] = approved
+	.["admin"]["changes_requested"] = changes_requested
+
+/datum/ambitions/proc/get_available_objectives(filter)
+	. = list()
+	for(var/datum/ambition_objective/amb_obj as anything in GLOB.ambition_objectives)
+		if(filter && !findtext(amb_obj.name, filter))
+			continue
+		if(amb_obj.allow_select(src, objectives))
+			. += amb_obj
 
 /datum/ambitions/ui_act(action, list/params)
 	_log("UIACT=[action]")
