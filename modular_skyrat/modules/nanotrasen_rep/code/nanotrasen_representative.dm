@@ -153,7 +153,7 @@
 	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
-	new /obj/item/clothing/suit/armor/vest/centcom_formal/ntrep(src)
+	new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep(src)
 	new /obj/item/clothing/head/centhat(src)
 	new /obj/item/clothing/head/centcom_cap(src)
