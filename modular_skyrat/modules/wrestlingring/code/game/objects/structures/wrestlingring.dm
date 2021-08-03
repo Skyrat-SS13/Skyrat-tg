@@ -21,7 +21,7 @@
 	return TRUE
 
 /obj/structure/railing/wrestling/on_exit(datum/source, atom/movable/leaving, direction)
-	SIGNAL_HANDLER
+	..()
 
 	if(leaving == src)
 		return // Let's not block ourselves.
