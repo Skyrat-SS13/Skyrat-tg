@@ -6,7 +6,7 @@
 /datum/cultural_info/culture/vatgrown
 	name = "Vat Grown"
 	description = "You were not born like most of the people, instead grown and raised in laboratory conditions, either as clone, gene-adapt or some experiment. Your outlook diverges from baseline humanity accordingly."
-	additional_langs = list(/datum/language/spacer, /datum/language/japanese)
+	additional_langs = list(/datum/language/spacer)
 
 /datum/cultural_info/culture/spacer_core
 	name = "Spacer, Core Systems"
@@ -23,7 +23,7 @@
 	vital goods, a lonely outpost on the edge of a dreary backwater, such people are raised in small, confined environments with few others, and tend to be most familiar with older, reliable but outdated \
 	technology. An independent sort, people on the frontier are more likely to be isolationist and self-driven."
 	economic_power = 0.9
-	additional_langs = list(/datum/language/spacer, /datum/language/japanese)
+	additional_langs = list(/datum/language/spacer)
 
 /datum/cultural_info/culture/generic_human
 	name = "Humankind"
@@ -54,6 +54,7 @@
 	The long recovery period of Earth has resulted in much of the population being environmentally aware and heavily conservationist, eager to avoid past mistakes. Most Earthers are \
 	a content folk who see themselves as close to nature and keepers of the heritage of humanity."
 	economic_power = 1.1
+	additional_langs = list(/datum/language/japanese)
 
 /datum/cultural_info/culture/luna_poor
 	name = "Luna, Lower Class"
