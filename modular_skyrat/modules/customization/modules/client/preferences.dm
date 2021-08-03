@@ -2208,6 +2208,11 @@ GLOBAL_LIST_INIT(food, list(
 					var/new_arousal = input(user, "Choose your character's arousal:", "Character Preference")  as null|anything in gen_arous_trans
 					if(new_arousal)
 						arousal_preview = gen_arous_trans[new_arousal]
+						for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+							var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
+							if(gent)
+								gent.aroused = arousal_preview
+								gent.update_sprite_suffix()
 						needs_update = TRUE
 
 				if("hair")
@@ -3075,12 +3080,6 @@ GLOBAL_LIST_INIT(food, list(
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 
 	character.dna.update_body_size()
-
-	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
-		var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
-		if(gent)
-			gent.aroused = arousal_preview
-			gent.update_sprite_suffix()
 
 	if(length(augments))
 		for(var/key in augments)
