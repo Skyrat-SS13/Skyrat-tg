@@ -193,10 +193,15 @@
 	id = "comp_mmi"
 	build_path = /obj/item/circuit_component/mmi
 
+/datum/design/component/router
+	name = "Router Component"
+	id = "comp_router"
+	build_path = /obj/item/circuit_component/router
+
 /datum/design/component/multiplexer
 	name = "Multiplexer Component"
 	id = "comp_multiplexer"
-	build_path = /obj/item/circuit_component/multiplexer
+	build_path = /obj/item/circuit_component/router/multiplexer
 
 /datum/design/component/get_column
 	name = "Get Column Component"
@@ -238,8 +243,6 @@
 	id = "comp_module"
 	build_path = /obj/item/circuit_component/module
 
-<<<<<<< HEAD
-=======
 /datum/design/component/list_literal
 	name = "List Literal Component"
 	id = "comp_list_literal"
@@ -277,7 +280,6 @@
 	name = "Counter Overlay Component"
 	id = "comp_counter_overlay"
 	build_path = /obj/item/circuit_component/counter_overlay
->>>>>>> 96f1c2abae5 (Adds the bare minimum admin components and allows admins to define list literals. (#60240))
 
 /datum/design/compact_remote_shell
 	name = "Compact Remote Shell"

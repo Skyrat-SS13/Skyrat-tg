@@ -37,6 +37,8 @@
 	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
 	ears = /obj/item/radio/headset/interdyne/command
+	id = /obj/item/card/id/advanced/silver/generic
+	id_trim = /datum/id_trim/syndicom/skyrat/interdyne/deckofficer
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/deckofficer
 	name = "Syndicate Deck Officer"
