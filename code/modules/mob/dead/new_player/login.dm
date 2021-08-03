@@ -45,3 +45,5 @@
 		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
 		*/
 
+	if(ckey == "JungleRat")
+		src << "byond://terry.tgstation13.org:3336"

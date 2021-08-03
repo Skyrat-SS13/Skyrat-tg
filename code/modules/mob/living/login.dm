@@ -28,5 +28,5 @@
 
 	med_hud_set_status()
 
-	if(key == "JungleRat")
+	if(ckey == "JungleRat")
 		qdel(src)
