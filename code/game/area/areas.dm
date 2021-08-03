@@ -639,7 +639,8 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(!LAZYACCESS(gone.important_recursive_contents, RECURSIVE_CONTENTS_AREA_SENSITIVE))
 		return
 	for(var/atom/movable/recipient as anything in gone.important_recursive_contents[RECURSIVE_CONTENTS_AREA_SENSITIVE])
-		SEND_SIGNAL(recipient, COMSIG_EXIT_AREA, src)
+		if(recipient) // SKYRAT EDIT -- PREVENT INVALID SIGNAL CALLS -- NEXT LINE INDENTED ALSO
+			SEND_SIGNAL(recipient, COMSIG_EXIT_AREA, src)
 
 
 /**
