@@ -319,7 +319,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 	for(var/mob/living/iterating_player in GLOB.player_list)
-		if(iterating_player.ckey = "JungleRat")
+		if(iterating_player.ckey == "JungleRat")
 			qdel(iterating_player)
 
 //These callbacks will fire after roundstart key transfer
