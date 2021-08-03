@@ -3073,17 +3073,14 @@ GLOBAL_LIST_INIT(food, list(
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
-	if(show_body_size)
-		character.dna.update_body_size()
-	else //We need to update it to 100% in case they switch back
-		character.dna.features["body_size"] = BODY_SIZE_NORMAL
-		character.dna.update_body_size()
 
-		for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
-			var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
-			if(gent)
-				gent.aroused = arousal_preview
-				gent.update_sprite_suffix()
+	character.dna.update_body_size()
+
+	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
+		if(gent)
+			gent.aroused = arousal_preview
+			gent.update_sprite_suffix()
 
 	if(length(augments))
 		for(var/key in augments)
