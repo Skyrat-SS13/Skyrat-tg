@@ -21,4 +21,4 @@
 #define LANGUAGE_SOFTWARE "software"
 #define LANGUAGE_STONER "stoner"
 #define LANGUAGE_VOICECHANGE "voicechange"
-
+#define LANGUAGE_BLOODSUCKER	"bloodsucker" //SKYRAT edit. God itself smites me if I put it anywhere else.

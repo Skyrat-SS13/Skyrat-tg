@@ -552,6 +552,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define GLASSES_TRAIT "glasses"
 /// inherited from riding vehicles
 #define VEHICLE_TRAIT "vehicle"
+#define BLOODSUCKER_TRAIT "bloodsucker" //Skyrat edit. Bloodsumkcer trait. It smites me if I put it in its normal defines.
 #define INNATE_TRAIT "innate"
 #define CRIT_HEALTH_TRAIT "crit_health"
 #define OXYLOSS_TRAIT "oxyloss"

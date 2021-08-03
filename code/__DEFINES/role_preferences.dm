@@ -79,7 +79,7 @@
 #define ROLE_SKELETON "Skeleton"
 #define ROLE_ZOMBIE "Zombie"
 #define ROLE_MAINTENANCE_DRONE "Maintenance Drone"
-
+#define ROLE_BLOODSUCKER "bloodsucker" //Skyrat edit.
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's
@@ -106,6 +106,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_SENTIENCE = 0,
 	ROLE_FAMILIES = 0,
 	ROLE_HERETIC = 0,
+	ROLE_BLOODSUCKER = 0,
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection
