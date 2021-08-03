@@ -97,11 +97,11 @@
 			to_chat(user, span_warning("[src] is already in good condition!"))
 		return
 
-/obj/structure/wrestling_corner/wirecutter_act(mob/living/user, obj/item/I)
+/obj/structure/wrestling_corner/wirecutter_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!anchored)
 		to_chat(user, span_warning("You cut apart the turnbuckle."))
-		I.play_tool_sound(src, 100)
+		tool.play_tool_sound(src, 100)
 		deconstruct()
 		return TRUE
 
@@ -112,12 +112,12 @@
 	return ..()
 
 ///Implements behaviour that makes it possible to unanchor the railing.
-/obj/structure/wrestling_corner/wrench_act(mob/living/user, obj/item/I)
+/obj/structure/wrestling_corner/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(flags_1&NODECONSTRUCT_1)
+	if(flags_1 & NODECONSTRUCT_1)
 		return
 	to_chat(user, span_notice("You begin to [anchored ? "unfasten the turnbuckle from":"fasten the turnbuckle to"] the floor..."))
-	if(I.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, .proc/check_anchored, anchored)))
+	if(tool.use_tool(src, user, volume = 75, extra_checks = CALLBACK(src, .proc/check_anchored, anchored)))
 		set_anchored(!anchored)
 		to_chat(user, span_notice("You [anchored ? "fasten the turnbuckle to":"unfasten the turnbuckle from"] the floor."))
 	return TRUE
@@ -137,8 +137,7 @@
 	return TRUE
 
 /obj/structure/wrestling_corner/proc/check_anchored(checked_anchored)
-	if(anchored == checked_anchored)
-		return TRUE
+	return anchored == checked_anchored
 
 /obj/structure/wrestling_corner/proc/after_rotation(mob/user,rotation_type)
 	add_fingerprint(user)
