@@ -149,6 +149,7 @@
 	if(.)
 		return
 
+	var/is_admin = check_rights_for(usr.client, R_ADMIN) //ui_act is called via a Topic, so this is safe
 	switch(action)
 		if("name")
 			name = params["name"]
@@ -164,6 +165,18 @@
 
 		if("intensity")
 			intensity = params["intensity"]
+			return TRUE
+
+		if("filter")
+			filter = params["filter"]
+			return TRUE
+
+		if("objective-add")
+			objective_select(params["objective_ref"])
+			return TRUE
+
+		if("objective-rem")
+			objective_remove(params["objective_ref"])
 			return TRUE
 
 		else
@@ -248,7 +261,12 @@
 
 	objectives |= amb_obj
 
-/datum/ambitions/proc/objective_remove(datum/ambition_objective/amb_obj)
+/datum/ambitions/proc/objective_remove(obj_ref)
+	var/datum/ambition_objective/amb_obj = locate(obj_ref)
+	if(!istype(amb_obj))
+		stack_trace("illegal ambition objective reference")
+		return FALSE
+
 	if(!(amb_obj in objectives))
 		return TRUE
 	amb_obj.on_deselect(src)
