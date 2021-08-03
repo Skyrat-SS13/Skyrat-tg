@@ -16,6 +16,8 @@
 	//normal forges are 0; to increase value, use watcher sinew to increase by 10, to a max of 100.
 	var/sinew_lower_chance = 0
 	var/current_sinew = 0
+	///the number of sheets an ore will produce, up to 3 (so you can upgrade 2 times before maxing)
+	var/goliath_ore_improvement = 1
 	///the fuel amount (in seconds) that the forge has (wood)
 	var/forge_fuel_weak = 0
 	///the fuel amount (in seconds) that the forge has (stronger than wood)
@@ -72,6 +74,9 @@
 		if(!livingMob)
 			in_use = FALSE
 
+/obj/structure/reagent_forge/proc/spawn_coal()
+	new /obj/item/stack/sheet/mineral/coal(get_turf(src))
+
 /obj/structure/reagent_forge/process()
 	if(world_check >= world.time) //to make it not too intensive, every 5 seconds
 		return
@@ -103,6 +108,8 @@
 		forge_fuel_weak += 300 //5 minutes
 		in_use = FALSE
 		to_chat(user, span_notice("You successfully fuel the forge."))
+		if(prob(30))
+			addtimer(CALLBACK(src, .proc/spawn_coal), 2 MINUTES)
 		return
 
 	if(istype(I, /obj/item/stack/sheet/mineral/coal)) //used for strong fuel
@@ -208,6 +215,59 @@
 			color = "#ff5151"
 			name = "reagent forge"
 			desc = "A structure built out of metal, with the intended purpose of heating up metal. It has the ability to imbue!"
+		return
+
+	if(istype(I, /obj/item/stack/sheet/animalhide/goliath_hide))
+		var/obj/item/stack/sheet/animalhide/goliath_hide/goliath_hide = I
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		if(goliath_ore_improvement >= 3)
+			to_chat(user, span_warning("You have applied the max amount of [goliath_hide]!"))
+			in_use = FALSE
+			return
+		to_chat(user, span_warning("You start to improve the forge with [goliath_hide]..."))
+		if(!do_after(user, 3 SECONDS, target = src)) //wait 3 seconds to upgrade
+			to_chat(user, span_warning("You abandon improving the forge."))
+			in_use = FALSE
+			return
+		var/obj/item/stack/sheet/stackSheet = I
+		if(!stackSheet.use(1)) //need to be able to use the item, so no glue
+			to_chat(user, span_warning("You abandon improving the forge."))
+			in_use = FALSE
+			return
+		goliath_ore_improvement++
+		in_use = FALSE
+		to_chat(user, span_notice("You successfully upgrade the forge with [goliath_hide]."))
+		return
+
+	if(istype(I, /obj/item/stack/ore))
+		var/obj/item/stack/ore/ore_stack = I
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		if(forge_temperature <= 50)
+			to_chat(user, span_warning("The temperature is not hot enough to start heating [ore_stack]."))
+			in_use = FALSE
+			return
+		if(!ore_stack.refined_type)
+			to_chat(user, span_warning("It is impossible to smelt [ore_stack]."))
+			in_use = FALSE
+			return
+		to_chat(user, span_warning("You start to smelt [ore_stack]..."))
+		if(!do_after(user, 3 SECONDS, target = src)) //wait 3 seconds to upgrade
+			to_chat(user, span_warning("You abandon smelting [ore_stack]."))
+			in_use = FALSE
+			return
+		var/src_turf = get_turf(src)
+		var/spawning_item = ore_stack.refined_type
+		for(var/spawn_ore in 1 to goliath_ore_improvement)
+			new spawning_item(src_turf)
+		in_use = FALSE
+		to_chat(user, span_notice("You successfully smelt [ore_stack]."))
+		qdel(I)
 		return
 
 	if(istype(I, /obj/item/forging/tongs))
