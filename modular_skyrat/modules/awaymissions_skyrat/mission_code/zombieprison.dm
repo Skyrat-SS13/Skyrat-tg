@@ -544,7 +544,6 @@
 	Do not use anything in the gateway outside your spawn zone.\
 	This is not meant to be a protagonist or an antagonist.\
 	Do not attack anything in the gateway except in self-defense.\ "
-	assignedrole = "Scalamov Guard"
 
 /datum/outfit/scalamovguard
 	name = "Scalamov Guard"
@@ -572,7 +571,6 @@
 	Do not use anything in the gateway outside your spawn zone.\
 	This is not meant to be a protagonist or an antagonist.\
 	Do not attack anything in the gateway except in self-defense.\ "
-	assignedrole = "Scalamov Guard"
 
 /datum/outfit/scalamovdoc
 	name = "Scalamov "
@@ -600,7 +598,6 @@
 	Do not use anything in the gateway outside your spawn zone.\
 	This is not meant to be a protagonist or an antagonist.\
 	Do not attack anything in the gateway except in self-defense.\ "
-	assignedrole = "Scalamov Guard"
 
 /datum/outfit/scalamovinmateally
 	name = "Scalamov Prisoner"
@@ -625,7 +622,6 @@
 	Do not use anything in the gateway outside your spawn zone.\
 	This is not meant to be a protagonist or an antagonist.\
 	Do not attack anything in the gateway except in self-defense.\ "
-	assignedrole = "Scalamov Hostile Inmate"
 
 /datum/outfit/scalamovinmatehostile
 	name = "Scalamov Hostile Inmate"
