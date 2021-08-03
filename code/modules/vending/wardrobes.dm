@@ -77,7 +77,6 @@
 					/obj/item/clothing/shoes/sneakers/white = 4,
 					/obj/item/clothing/head/beret/medical/paramedic = 4,
 					/obj/item/clothing/head/soft/paramedic = 4,
-					/obj/item/clothing/head/beret/job/med = 4,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/apron/surgical = 4,
 					/obj/item/clothing/mask/surgical = 4,
 					/obj/item/clothing/gloves/color/latex/nitrile = 2, //SKYRAT EDIT ADDITION
@@ -201,7 +200,7 @@
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
-					/obj/item/clothing/head/beret/job/sci/robo = 2,	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/head/beret/science/fancy/robo = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/mask/bandana/skull = 2)
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2,
 					/obj/item/organ/tongue/robot = 2)
@@ -470,10 +469,9 @@
 	vend_reply = "Thank you for using the ChemDrobe!"
 	products = list(/obj/item/clothing/under/rank/medical/chemist = 2,
 					/obj/item/clothing/under/rank/medical/chemist/skirt = 2,
-					/obj/item/clothing/head/beret/medical = 2,
+					/obj/item/clothing/head/beret/medical/chemist = 2, //SKYRAT EDIT - Beret-lliant! - Original:  /obj/item/clothing/head/beret/medical = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/chemist = 2,
-					/obj/item/clothing/head/beret/job/med/chem = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hooded/wintercoat/medical/chemistry = 2,
 					/obj/item/clothing/under/rank/medical/chemist/formal = 2,	//SKYRAT EDIT ADDITION BEGIN
 					/obj/item/clothing/under/rank/medical/chemist/formal/skirt = 2,	//SKYRAT EDIT ADDITION END
@@ -515,10 +513,9 @@
 	vend_reply = "Thank you for using the ViroDrobe"
 	products = list(/obj/item/clothing/under/rank/medical/virologist = 2,
 					/obj/item/clothing/under/rank/medical/virologist/skirt = 2,
-					/obj/item/clothing/head/beret/medical = 2,
+					/obj/item/clothing/head/beret/medical/virologist = 2, //SKYRAT EDIT - Beret-lliant! - Original: /obj/item/clothing/head/beret/medical = 2,
 					/obj/item/clothing/shoes/sneakers/white = 2,
 					/obj/item/clothing/suit/toggle/labcoat/virologist = 2,
-					/obj/item/clothing/head/beret/job/med/viro = 2,	//SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/hooded/wintercoat/medical/viro = 2,
 					/obj/item/clothing/mask/surgical = 2,
 					/obj/item/storage/backpack/virology = 2,

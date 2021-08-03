@@ -126,7 +126,7 @@
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
-	head = /obj/item/clothing/head/warden/syndicate
+	head = /obj/item/clothing/head/sec/navywarden/syndicate
 	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
 
 	backpack_contents = list(
