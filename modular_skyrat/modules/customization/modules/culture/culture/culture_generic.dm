@@ -1,7 +1,7 @@
 /datum/cultural_info/culture/generic
 	name = "Other Culture"
 	description = "You are from one of the many small, relatively unknown cultures scattered across the galaxy."
-	additional_langs = /datum/language/spacer
+	additional_langs = list(/datum/language/spacer, /datum/language/japanese)
 
 /datum/cultural_info/culture/vatgrown
 	name = "Vat Grown"
