@@ -23,10 +23,9 @@
 	if(!istype(target))
 		return
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
-	if(istype(I, /obj/item/clothing/shoes/combat/peacekeeper))
-		var/obj/item/clothing/shoes/combat/peacekeeper/boot = I
+	if(istype(target, /obj/item/clothing/shoes/combat/peacekeeper))
+		var/obj/item/clothing/shoes/combat/peacekeeper/boot = target
 		var/datum/component/squeak/annoyance = boot.GetComponent(/datum/component/squeak)
 		if(!annoyance)
 			to_chat(user, "<span class='notice'>[src] have already been silenced!")
@@ -41,12 +40,8 @@
 				return
 	//SKYRAT EDIT END
 
-	if(I.embedding && I.embedding == conferred_embed)
-		to_chat(user, span_warning("[I] is already coated in [src]!"))
-=======
 	if(target.embedding && target.embedding == conferred_embed)
 		to_chat(user, span_warning("[target] is already coated in [src]!"))
->>>>>>> 20f398b3b51 (Improves and documents some grenade-related code, fixes an exploit. (#60588))
 		return
 
 	user.visible_message(span_notice("[user] begins wrapping [target] with [src]."), span_notice("You begin wrapping [target] with [src]."))
