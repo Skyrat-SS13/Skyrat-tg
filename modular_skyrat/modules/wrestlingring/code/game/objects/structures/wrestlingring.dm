@@ -6,6 +6,7 @@
 	climbable = FALSE
 
 /obj/structure/railing/wrestling/CanPass(atom/movable/mover, border_dir)
+	..()
 	if(isliving(mover))
 		var/mob/living/living_mover = mover
 		if(!(living_mover.body_position == STANDING_UP)) //if youre laying down, you can crawl through
@@ -69,7 +70,15 @@
 	. = ..()
 	ini_dir = dir
 
+	AddElement(/datum/element/climbable, climb_time = 20, climb_stun = 0)
 	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS ,null,CALLBACK(src, .proc/can_be_rotated),CALLBACK(src,.proc/after_rotation))
+
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_enter,
+		COMSIG_ATOM_EXIT = .proc/on_exit,
+	)
+
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/structure/wrestling_corner/attackby(obj/item/I, mob/living/user, params)
 	..()
@@ -114,6 +123,7 @@
 	return TRUE
 
 /obj/structure/wrestling_corner/CanPass(atom/movable/mover, border_dir)
+	. = ..()
 	if(isliving(mover))
 		var/mob/living/living_mover = mover
 		if(!(living_mover.body_position == STANDING_UP)) //if youre laying down, you can crawl through
@@ -132,3 +142,17 @@
 
 /obj/structure/wrestling_corner/proc/after_rotation(mob/user,rotation_type)
 	add_fingerprint(user)
+
+/obj/structure/wrestling_corner/proc/on_enter(datum/source, atom/movable/movable)
+	SIGNAL_HANDLER
+	if(ishuman(movable))
+		var/mob/living/carbon/human/H = movable
+		H.AddComponent(/datum/component/tackler, stamina_cost=25, base_knockdown = 1 SECONDS, range = 4, speed = 1, skill_mod = 0, min_distance = 0)
+
+/obj/structure/wrestling_corner/proc/on_exit(datum/source, atom/movable/leaving, direction)
+	SIGNAL_HANDLER
+
+	if(ishuman(leaving))
+		var/mob/living/carbon/human/H = leaving
+		var/datum/component/tackler/wrestling_tackler = H.GetComponent(/datum/component/tackler)
+		wrestling_tackler.RemoveComponent()
