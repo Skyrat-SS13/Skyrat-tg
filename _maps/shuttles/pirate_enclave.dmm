@@ -1,30 +1,49 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bk" = (
+/turf/open/floor/pod/dark,
+/area/shuttle/syndicate/slaver)
 "bH" = (
-/obj/machinery/door/firedoor,
 /obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "prisonshipwreckdock3";
+	req_one_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
+"bS" = (
+/obj/machinery/door/airlock/external/glass{
+	id_tag = null;
+	req_one_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
 "dT" = (
-/obj/machinery/door/firedoor,
 /obj/structure/fans/tiny,
 /obj/docking_port/mobile/pirate{
 	dheight = 1;
 	dwidth = 12;
 	height = 21;
-	name = "EFSS 'Christian'";
+	name = "EFBC 'Christian'";
 	port_direction = 4;
 	preferred_direction = 4;
 	width = 40
 	},
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "prisonshipwreckdock4";
+	req_one_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "ef" = (
-/obj/machinery/door/firedoor,
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/external/glass{
-	id_tag = "prisonshipwreckdock";
-	req_one_access_txt = "150"
-	},
+/obj/machinery/ammo_workbench/unlocked,
+/obj/item/stack/sheet/iron/five,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "ei" = (
@@ -42,24 +61,152 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
+"hz" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 12;
+	pixel_y = 6
+	},
+/obj/structure/bed/maint,
+/obj/structure/mirror{
+	desc = "Mirror mirror on the wall, who's the most robust of them all? Not you, because you're in a prison cell.";
+	pixel_x = 23;
+	pixel_y = 12
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
+/area/shuttle/syndicate/slaver)
+"jT" = (
+/turf/open/floor/pod/light,
+/area/shuttle/syndicate/slaver)
 "nK" = (
 /obj/structure/window/shuttle/spaceship,
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
+"nP" = (
+/obj/machinery/door/window/survival_pod{
+	desc = "Kinda sleek. Doesn't offer much privacy.";
+	dir = 8;
+	name = "Prison Cell Door";
+	req_access_txt = "150"
+	},
+/obj/structure/toilet{
+	pixel_y = 13
+	},
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
+/area/shuttle/syndicate/slaver)
 "sd" = (
-/obj/machinery/door/firedoor,
-/obj/structure/fans/tiny,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/trimline/red/warning{
+	color = "#763c3a";
+	dir = 8
+	},
+/turf/open/floor/iron/dark/red/side{
+	dir = 4
+	},
 /area/shuttle/syndicate/slaver)
 "tM" = (
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate{
-	dir = 8
+	dir = 8;
+	view_range = 12;
+	y_offset = 9
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "wd" = (
 /turf/closed/wall/mineral/titanium/spaceship,
+/area/shuttle/syndicate/slaver)
+"ws" = (
+/turf/open/floor/pod,
+/area/shuttle/syndicate/slaver)
+"xr" = (
+/obj/machinery/door/airlock/external/glass{
+	id_tag = null;
+	req_one_access_txt = "150"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"Ai" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/brown/side{
+	dir = 8
+	},
+/area/shuttle/syndicate/slaver)
+"Bg" = (
+/obj/machinery/button/door{
+	id = "prisonshipwreckdock2";
+	name = "External Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_y = -24;
+	specialfunctions = 4
+	},
+/turf/open/floor/pod,
+/area/shuttle/syndicate/slaver)
+"BB" = (
+/obj/machinery/button/door{
+	id = "prisonshipwreckdock3";
+	name = "External Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_y = 24;
+	specialfunctions = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"DA" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Bridge";
+	req_access_txt = "150"
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/syndicate/slaver)
+"Ef" = (
+/obj/machinery/button/door{
+	id = "prisonshipwreckdock";
+	name = "External Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_y = 24;
+	specialfunctions = 4
+	},
+/turf/open/floor/pod,
+/area/shuttle/syndicate/slaver)
+"Ka" = (
+/obj/machinery/loot_locator,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"Rv" = (
+/obj/machinery/door/airlock/security/old{
+	name = "Security";
+	req_access_txt = "150"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"Rz" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "prisonshipwreckdock";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"Sd" = (
+/obj/machinery/button/door{
+	id = "prisonshipwreckdock4";
+	name = "External Bolt Control";
+	normaldoorcontrol = 1;
+	pixel_y = -24;
+	specialfunctions = 4
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Tb" = (
 /obj/machinery/computer/shuttle/pirate{
@@ -67,14 +214,65 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
+"UD" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external/glass{
+	id_tag = "prisonshipwreckdock2";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"VJ" = (
+/obj/machinery/shuttle_scrambler,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"WJ" = (
+/obj/structure/closet/secure_closet{
+	icon_state = "eng";
+	name = "Equipment Locker";
+	req_access_txt = "150"
+	},
+/obj/item/storage/belt,
+/obj/item/screwdriver/power{
+	name = "power drill";
+	powered_toolspeed = 0.2;
+	toolspeed = 0.5
+	},
+/obj/item/crowbar/power{
+	name = "power jaws";
+	powered_toolspeed = 0.2;
+	toolspeed = 0.5
+	},
+/obj/item/holosign_creator/atmos,
+/obj/item/stack/cable_coil,
+/obj/item/analyzer,
+/obj/item/storage/bag/material,
+/obj/item/construction/rcd/loaded/upgraded,
+/obj/item/pipe_dispenser,
+/obj/item/stack/sheet/plasteel/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/storage/backpack/satchel/flat/empty,
+/obj/item/storage/box,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
 "Ye" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
+/obj/structure/window/reinforced/survival_pod{
 	dir = 4
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/syndicate/slaver)
+"Ys" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/brown/side{
+	dir = 8
+	},
 /area/shuttle/syndicate/slaver)
 "ZH" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
@@ -161,10 +359,10 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
+nK
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -184,10 +382,10 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
+Rv
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -200,17 +398,17 @@ ZH
 "}
 (6,1,1) = {"
 ZH
+ef
 ZR
 ZR
 ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+nK
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -230,10 +428,10 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
+ZH
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -246,17 +444,17 @@ ZH
 "}
 (8,1,1) = {"
 ZH
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+sd
+sd
+sd
+sd
+sd
+ZH
+ZH
+ZH
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -269,17 +467,17 @@ ZH
 "}
 (9,1,1) = {"
 ZH
+nP
+ZH
+nP
+ZH
+nP
+ZH
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -292,17 +490,17 @@ ZH
 "}
 (10,1,1) = {"
 ZH
+hz
+ZH
+hz
+ZH
+hz
+ZH
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -315,48 +513,48 @@ ZH
 "}
 (11,1,1) = {"
 wd
+ZH
+ZH
+ZH
+ZH
+ZH
+ZH
+ZR
+ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+ZH
+ZH
+ZH
+ZH
 wd
 "}
 (12,1,1) = {"
+ZH
+BB
+ZR
+ZR
 ZH
 ZR
 ZR
 ZR
 ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
 ZR
+ZH
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+Sd
 ZH
 "}
 (13,1,1) = {"
@@ -364,19 +562,19 @@ bH
 ZR
 ZR
 ZR
+bS
 ZR
 ZR
 ZR
 ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+xr
 ZR
 ZR
 ZR
@@ -385,23 +583,23 @@ dT
 (14,1,1) = {"
 ZH
 ZH
+ZH
+ZH
+ZH
 ZR
 ZR
 ZR
 ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
+ZH
+ZH
+ZH
 ZH
 ZH
 "}
@@ -415,9 +613,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -438,9 +636,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -461,9 +659,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -484,9 +682,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -507,9 +705,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -530,9 +728,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -553,9 +751,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -576,9 +774,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -599,9 +797,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -622,9 +820,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -645,9 +843,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -668,9 +866,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -691,9 +889,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -714,9 +912,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -737,9 +935,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -760,9 +958,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+jT
+bk
+jT
 ZR
 ZR
 ZR
@@ -783,9 +981,9 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
+ws
+bk
+ws
 ZR
 ZR
 ZR
@@ -806,9 +1004,9 @@ ZH
 ZH
 ZH
 ZH
-ZR
-ZR
-ZR
+ZH
+DA
+ZH
 ZH
 ZH
 ZH
@@ -822,10 +1020,10 @@ ei
 (33,1,1) = {"
 ei
 ei
-ef
+ZH
 ZR
 ZR
-ZR
+WJ
 ZH
 ZR
 ZR
@@ -838,7 +1036,7 @@ ZH
 ZR
 ZR
 ZR
-sd
+ZH
 ei
 ei
 "}
@@ -846,9 +1044,9 @@ ei
 ei
 ei
 ZH
-ZR
-ZR
-ZR
+ws
+jT
+ws
 ZH
 ZR
 ZR
@@ -858,9 +1056,9 @@ ZR
 ZR
 ZR
 ZH
-ZR
-ZR
-ZR
+ws
+jT
+ws
 ZH
 ei
 ei
@@ -868,7 +1066,11 @@ ei
 (35,1,1) = {"
 ei
 ei
-ZH
+Rz
+bk
+bk
+bk
+DA
 ZR
 ZR
 ZR
@@ -876,15 +1078,11 @@ ZR
 ZR
 ZR
 ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZR
-ZH
+DA
+bk
+bk
+bk
+UD
 ei
 ei
 "}
@@ -892,9 +1090,9 @@ ei
 ei
 ei
 ZH
-ZR
-ZR
-ZR
+Ef
+jT
+ws
 ZH
 ZR
 ZR
@@ -904,9 +1102,9 @@ ZR
 ZR
 ZR
 ZH
-ZR
-ZR
-ZR
+ws
+jT
+Bg
 ZH
 ei
 ei
@@ -915,9 +1113,9 @@ ei
 ei
 ei
 ZH
-ZR
-ZR
-ZR
+Ys
+Ai
+Ai
 ZH
 ZR
 ZR
@@ -927,9 +1125,9 @@ ZR
 ZR
 ZR
 ZH
-ZR
-ZR
-ZR
+Ai
+Ai
+Ys
 ZH
 ei
 ei
@@ -942,13 +1140,13 @@ ZH
 ZH
 ZH
 ZH
+VJ
 ZR
 ZR
 ZR
 ZR
 ZR
-ZR
-ZR
+Ka
 ZH
 ZH
 ZH
