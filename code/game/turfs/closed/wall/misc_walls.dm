@@ -75,24 +75,6 @@
 	bullet_sizzle = TRUE
 
 /turf/closed/wall/rust
-<<<<<<< HEAD
-	name = "rusted wall"
-	desc = "A rusted metal wall."
-	icon = 'icons/turf/walls/rusty_wall.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "rusty_wall-0"
-	base_icon_state = "rusty_wall"
-	smoothing_flags = SMOOTH_BITMASK
-	hardness = 45
-
-/turf/closed/wall/r_wall/rust
-	name = "rusted reinforced wall"
-	desc = "A huge chunk of rusted reinforced metal."
-	icon = 'icons/turf/walls/rusty_reinforced_wall.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	icon_state = "rusty_reinforced_wall-0"
-	base_icon_state = "rusty_reinforced_wall"
-	smoothing_flags = SMOOTH_BITMASK
-	hardness = 15
-=======
 	//SDMM supports colors, this is simply for easier mapping
 	//and should be removed on initialize
 	color = COLOR_ORANGE_BROWN
@@ -117,7 +99,6 @@
 /turf/closed/wall/r_wall/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/rust)
->>>>>>> a02e928e2e8 (Turns rust component into bespoke element (#60496))
 
 /turf/closed/wall/mineral/bronze
 	name = "clockwork wall"
