@@ -81,7 +81,6 @@ SUBSYSTEM_DEF(decay)
 
 	for(var/turf/closed/iterating_wall in possible_turfs)
 		if(prob(WALL_RUST_PERCENT_CHANCE * severity_modifier))
-			var/mutable_appearance/rust = mutable_appearance(iterating_wall.icon, "rust")
 			iterating_wall.AddElement(/datum/element/rust)
 
 /datum/controller/subsystem/decay/proc/do_maintenance()
