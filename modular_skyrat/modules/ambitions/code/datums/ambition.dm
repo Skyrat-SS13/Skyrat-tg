@@ -99,7 +99,6 @@
 	return UI_CLOSE
 
 /datum/ambitions/ui_interact(mob/user, datum/tgui/ui)
-	_log("UI INTERACT")
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Ambitions")
@@ -144,7 +143,6 @@
 			. += amb_obj
 
 /datum/ambitions/ui_act(action, list/params)
-	_log("UIACT=[action]")
 	. = ..()
 	if(.)
 		return
@@ -152,19 +150,27 @@
 	var/is_admin = check_rights_for(usr.client, R_ADMIN) //ui_act is called via a Topic, so this is safe
 	switch(action)
 		if("name")
-			name = params["name"]
+			var/_new = params["name"]
+			_log("Name change: '[name]' => '[_new]'")
+			name = _new
 			return TRUE
 
 		if("backstory")
-			backstory = params["backstory"]
+			var/_new = params["backstory"]
+			_log("Backstory change: '[backstory]' => '[_new]'")
+			backstory = _new
 			return TRUE
 
 		if("employer")
-			employer = params["employer"]
+			var/_new = params["employer"]
+			_log("Employer change: '[employer]' => '[_new]'")
+			employer = _new
 			return TRUE
 
 		if("intensity")
-			intensity = params["intensity"]
+			var/_new = params["intensity"]
+			_log("Intensity change: '[intensity]' => '[_new]'")
+			intensity = _new
 			return TRUE
 
 		if("filter")
@@ -214,7 +220,7 @@
 	return
 
 /datum/ambitions/proc/autoapprove_stop()
-	_log("AUTOAPPROVE=STOP")
+	_log("APP: STOP")
 	message_admins(span_adminhelp("Ambition Auto-Approval for [owner_ckey] has been stopped."))
 	deltimer(aa_timerid)
 	aa_timerid = 0
@@ -222,13 +228,13 @@
 	return
 
 /datum/ambitions/proc/autoapprove_approve()
-	_log("AUTOAPPROVE=APPROVE")
+	_log("APP: START")
 	handling = "Auto-Approve"
 	approve()
 	return
 
 /datum/ambitions/proc/approve()
-	_log("APPROVED")
+	_log("APP: APPROVE")
 	approved = TRUE
 	to_chat(owner.current, span_adminhelp("Your ambitions have been approved and you have receieved any applicable gear. Check your Memory."))
 	message_admins(span_adminhelp("[owner_ckey]'s ambitions have been approved by [handling]."))
@@ -261,6 +267,7 @@
 	if(!amb_obj.on_select(src))
 		return FALSE
 
+	_log("OBJ++ '[amb_obj.name]'")
 	objectives |= amb_obj
 	return TRUE
 
@@ -272,5 +279,7 @@
 
 	if(!(amb_obj in objectives))
 		return TRUE
+
+	_log("OBJ-- '[amb_obj.name]'")
 	amb_obj.on_deselect(src)
 	objectives -= amb_obj
