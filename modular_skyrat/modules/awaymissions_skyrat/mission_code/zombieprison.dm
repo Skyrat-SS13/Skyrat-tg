@@ -647,6 +647,7 @@
 	deathsound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "begins to explode into chunks before he collapses into a pile of gore.."
 	gps_name = "Warden's Signal"
+	resize = 2.5
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/warden/death(gibbed)
 	spawn_gibs()
@@ -654,3 +655,60 @@
 	new /obj/effect/spawner/lootdrop/prison/warden
 	new /obj/effect/spawner/lootdrop/prison/warden
 	qdel(src)
+
+//Structures
+
+/obj/machinery/button/door/prison
+	name = "shutter lockdown release"
+
+/obj/machinery/button/door/prison/stage1
+	name = "shutter lockdown release"
+	id = "stage1"
+
+/obj/machinery/button/door/prison/stage2
+	name = "shutter lockdown release"
+	id = "stage2"
+
+/obj/machinery/button/door/prison/stage3
+	name = "shutter lockdown release"
+	id = "stage3"
+
+/obj/machinery/button/door/prison/stage4
+	name = "shutter lockdown release"
+	id = "stage4"
+
+/obj/machinery/button/door/prison/stage5
+	name = "shutter lockdown release"
+	id = "stage5"
+
+/obj/machinery/button/door/prison/stage6
+	name = "shutter lockdown release"
+	id = "stage6"
+
+/obj/machinery/button/door/prison/stage7
+	name = "shutter lockdown release"
+	id = "stage7"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison
+	name = "prison lockdown shutters"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage1
+	id = "stage1"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage2
+	id = "stage2"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage3
+	id = "stage3"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage4
+	id = "stage4"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage5
+	id = "stage5"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage6
+	id = "stage6"
+
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage7
+	id = "stage7"
