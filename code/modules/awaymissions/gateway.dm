@@ -25,9 +25,14 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		. = "Connection desynchronized. Recalibration in progress."
 
 /* Check if the movable is allowed to arrive at this destination (exile implants mostly) */
+/** SKYRAT EDIT - CYBORGS CANT USE GETWAY
 /datum/gateway_destination/proc/incoming_pass_check(atom/movable/AM)
 	return TRUE
-
+**/
+// Just a reminder that the home gateway overrides this proc so if a borg someone finds themself in an away mission they can still leave
+/datum/gateway_destination/proc/incoming_pass_check(atom/movable/AM)
+	return !iscyborg(AM)
+// SKYRAT EDIT - END
 /* Get the actual turf we'll arrive at */
 /datum/gateway_destination/proc/get_target_turf()
 	CRASH("get target turf not implemented for this destination type")

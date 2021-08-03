@@ -283,6 +283,14 @@
 	name = "Familiar Lizard plushie"
 	path = /obj/item/toy/plush/arcplush
 
+/datum/loadout_item/backpack/plushies/sharknet
+	name = "Gluttonous Shark plushie"
+	path = /obj/item/toy/plush/sharknet
+
+/datum/loadout_item/backpack/plushies/pintaplush
+	name = "Smaller Deer plushie"
+	path = /obj/item/toy/plush/pintaplush
+
 /datum/loadout_item/backpack/plushies/oleplush
 	name = "Irritable Goat plushie"
 	path = /obj/item/toy/plush/oleplush
@@ -334,3 +342,7 @@
 /datum/loadout_item/backpack/plushies/rouny
 	name = "Runner Plushie"
 	path = /obj/item/toy/plush/rouny
+
+/datum/loadout_item/backpack/plushies/seaduplush
+	name = "Sneed plushie"
+	path = /obj/item/toy/plush/seaduplush

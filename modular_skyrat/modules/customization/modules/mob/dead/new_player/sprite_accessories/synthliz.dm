@@ -6,6 +6,7 @@
 	default_color = null
 	name = "Synthetic Lizard - Snout"
 	icon_state = "synthliz_basic"
+	genetic = FALSE
 
 /datum/sprite_accessory/snouts/synthliz/synthliz_under
 	color_src = USE_MATRIXED_COLORS
@@ -77,6 +78,7 @@
 	name = "Synthetic Lizard"
 	icon_state = "synthliz"
 	general_type = "lizard"
+	genetic = FALSE
 
 //Synth Antennae
 /datum/sprite_accessory/antenna/synthliz
@@ -143,6 +145,7 @@
 	icon_state = "synthlizard"
 	taur_mode = STYLE_TAUR_PAW
 	recommended_species = list("synthliz")
+	genetic = FALSE
 
 /datum/sprite_accessory/taur/synthliz/inv
 	name = "Cybernetic Lizard (Inverted)"

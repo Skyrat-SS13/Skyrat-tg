@@ -8,4 +8,5 @@
 	)
 	icon_state = "zolmach"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
+	space_chance = 50
 	default_priority = 40

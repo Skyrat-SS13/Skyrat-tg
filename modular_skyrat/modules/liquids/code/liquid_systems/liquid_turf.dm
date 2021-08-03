@@ -167,11 +167,11 @@
 /turf/proc/can_share_liquids_with(turf/T)
 	if(T.z != z) //No Z here handling currently
 		return FALSE
-	/*
-	if(T.lgroup && T.lgroup != lgroup) //TEMPORARY@!!!!!!!!
-		return FALSE
-	*/
+
 	if(T.liquids && T.liquids.immutable)
+		return FALSE
+
+	if(istype(T, /turf/open/space)) //No space liquids - Maybe add an ice system later
 		return FALSE
 
 	var/my_liquid_height = liquids ? liquids.height : 0

@@ -52,7 +52,7 @@ var/current_turf
 				user.allowed_turfs += "holoseat"
 
 		//wings
-		if(istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth))
+		if((istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth)) || HAS_TRAIT(user, TRAIT_SPARKLE_ASPECT))
 			user.allowed_turfs += "dust" //moth's dust ✨
 
 		//body parts

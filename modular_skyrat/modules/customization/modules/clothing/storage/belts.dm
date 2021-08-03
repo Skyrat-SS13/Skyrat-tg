@@ -89,7 +89,7 @@
 		/obj/item/nullrod/carp,
 		/obj/item/nullrod/chainsaw,
 		/obj/item/nullrod/claymore/bostaff,
-		/obj/item/nullrod/hammmer,
+		/obj/item/nullrod/hammer,
 		/obj/item/nullrod/pitchfork,
 		/obj/item/nullrod/pride_hammer,
 		/obj/item/nullrod/spear,
@@ -126,3 +126,12 @@
 	STR.max_items = 6
 	STR.rustle_sound = TRUE
 	STR.max_w_class = WEIGHT_CLASS_SMALL //Rather than have a huge whitelist, the belt can simply hold anything a pocket can hold - Can easily be changed if it somehow becomes an issue
+
+/obj/item/storage/belt/holster/cowboy
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	name = "cowboy belt"
+	desc = "Yee haw! The holster on the side of the hip is leather stamped with swirling lines, all leading back to a deer's antlers."
+	icon_state = "cowboy_belt"
+	worn_icon_state = "cowboy_belt"
+	inhand_icon_state = "utility"

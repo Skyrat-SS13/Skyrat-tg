@@ -216,6 +216,7 @@
 
 					if(ReadHSV(temp_hsv)[3] >= ReadHSV("#7F7F7F")[3]) // mutantcolors must be bright
 						H.dna.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
+						H.dna.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
 
 					else
 						to_chat(H, span_notice("Invalid color. Your color is not bright enough."))
@@ -270,6 +271,7 @@
 						H.facial_hair_color = sanitize_hexcolor(new_face_color)
 						H.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
 				H.update_hair()
+				H.update_mutant_bodyparts(force_update = TRUE) /// SKYRAT EDIT - Mirrors are no longer scared of colored ears
 
 		if(BODY_ZONE_PRECISE_EYES)
 			var/new_eye_color = input(H, "Choose your eye color", "Eye Color","#"+H.eye_color) as color|null

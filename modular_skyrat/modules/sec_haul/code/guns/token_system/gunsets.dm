@@ -82,9 +82,24 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
 
+//DOZER
+/obj/item/storage/box/gunset/dozer
+	name = "dozer supply box"
+
+/obj/item/gun/ballistic/automatic/dozer/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/storage/box/gunset/dozer/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/dozer/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
+
 //PDH
 /obj/item/storage/box/gunset/pdh_peacekeeper
-	name = "pdh peacekeeper supply box"
+	name = "9x19mm handgun supply box"
+	desc = "Ideally contains a fast-firing 9x19mm Pistol."
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper/nomag
 	spawnwithmagazine = FALSE
@@ -98,8 +113,8 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
 
 // MK-58
-/obj/item/storage/box/gunset/ladon
-	name = "ladon supply box"
+/obj/item/storage/box/gunset/mk58
+	name = "mk-58 supply box"
 
 /obj/item/gun/ballistic/automatic/pistol/mk58/nomag
 	spawnwithmagazine = FALSE
@@ -114,7 +129,8 @@
 
 //CROON
 /obj/item/storage/box/gunset/croon
-	name = "croon supply box"
+	name = "weathered supply box"
+	desc = "Ideally contains a cheap 6mm SMG."
 
 /obj/item/gun/ballistic/automatic/croon/nomag
 	spawnwithmagazine = FALSE
@@ -143,24 +159,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
 
-//DOZER
-/obj/item/storage/box/gunset/dozer
-	name = "dozer supply box"
-
-/obj/item/gun/ballistic/automatic/dozer/nomag
-	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/dozer/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/dozer/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
-
 //ZETA
 /obj/item/storage/box/gunset/zeta
-	name = "zeta supply box"
+	name = "10mm Auto revolver supply box"
+	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()
 	. = ..()
@@ -182,12 +184,14 @@
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/advanced/b9mm(src)
 
-
 /////////////////
 //PRIMARY TOKEN GUNSETS
 ////////////////
+
+///////PCR-9
 /obj/item/storage/box/gunset/pcr
-	name = "a-3 pcr supply box"
+	name = "9mm SMG supply box"
+	desc = "Ideally contains a 9x19mm SMG with decent firerate."
 
 /obj/item/gun/ballistic/automatic/pcr/nomag
 	spawnwithmagazine = FALSE
@@ -200,8 +204,11 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
 
+////M112
+
 /obj/item/storage/box/gunset/norwind
-	name = "lg-2 norwind supply box"
+	name = "12.7x30mm DMR supply box."
+	desc = "Ideally contains an unwieldy rifle that hits like a truck."
 
 /obj/item/gun/ballistic/automatic/norwind/nomag
 	spawnwithmagazine = FALSE
@@ -214,8 +221,11 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
 
+//////DTR-6
+
 /obj/item/storage/box/gunset/ostwind
-	name = "ostwind supply box"
+	name = "6mm SPR box."
+	desc = "Ideally contains an all-around balanced special purpose rifle."
 
 /obj/item/gun/ballistic/automatic/ostwind/nomag
 	spawnwithmagazine = FALSE
@@ -228,22 +238,11 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
 
-/obj/item/storage/box/gunset/vintorez
-	name = "vintorez supply box"
-
-/obj/item/gun/ballistic/automatic/vintorez/nomag
-	spawnwithmagazine = FALSE
-
-/obj/item/storage/box/gunset/vintorez/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/vintorez/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/vintorez(src)
+////////PITBULL
 
 /obj/item/storage/box/gunset/pitbull
-	name = "pitbull supply box"
+	name = "10mm PDW supply box"
+	desc = "Ideally contains a slow-firing 10mm Auto PDW that packs a punch."
 
 /obj/item/gun/ballistic/automatic/pitbull/nomag
 	spawnwithmagazine = FALSE
@@ -279,6 +278,7 @@
 //HOS
 /obj/item/storage/box/gunset/glock18_hos
 	name = "glock-18 supply box"
+	desc = "Ideally contains a fast-firing 9x19mm Pistol made out of cheap plastic."
 	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/gun/ballistic/automatic/pistol/g18/nomag
 	spawnwithmagazine = FALSE
@@ -286,10 +286,10 @@
 /obj/item/storage/box/gunset/glock18_hos/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/pistol/g18/nomag(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/hp(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
 
 //HOP
 /obj/item/storage/box/gunset/pdh_hop
@@ -338,7 +338,8 @@
 
 //SECURITY MEDIC
 /obj/item/storage/box/gunset/security_medic
-	name = "firefly supply box"
+	name = "9x19mm special pistol supply box"
+	desc = "Ideally contains a special 9x19mm Pistol."
 	w_class = WEIGHT_CLASS_NORMAL
 /obj/item/gun/ballistic/automatic/pistol/firefly/nomag
 	spawnwithmagazine = FALSE
@@ -391,7 +392,7 @@
 	new /obj/item/trim_token/security_sergeant(src)
 	new /obj/item/melee/classic_baton/telescopic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/sergeant(src)
-	new /obj/item/clothing/head/beret/sec/peacekeeper/sergeant(src)
+	new /obj/item/clothing/head/sec/peacekeeper/sergeant(src)
 	new /obj/item/armament_token/primary(src)
 	new /obj/item/megaphone/sec(src)
 	// . = ..()

@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/direction
 	display_name = "Get Direction"
-	display_desc = "A component that returns the direction of itself and an entity."
+	desc = "A component that returns the direction of itself and an entity."
 
 	/// The input port
 	var/datum/port/input/input_port
@@ -26,11 +26,7 @@
 
 /obj/item/circuit_component/direction/get_ui_notices()
 	. = ..()
-	. += list(list(
-		"icon" = "info",
-		"content" = "Maximum Range: [max_range] tiles",
-		"color" = "orange",
-	))
+	. += create_ui_notice("Maximum Range: [max_range] tiles", "orange", "info")
 
 /obj/item/circuit_component/direction/Initialize()
 	. = ..()
@@ -42,11 +38,6 @@
 	east = add_output_port("East", PORT_TYPE_SIGNAL)
 	south = add_output_port("South", PORT_TYPE_SIGNAL)
 	west = add_output_port("West", PORT_TYPE_SIGNAL)
-
-/obj/item/circuit_component/direction/Destroy()
-	input_port = null
-	output = null
-	return ..()
 
 /obj/item/circuit_component/direction/input_received(datum/port/input/port)
 	. = ..()

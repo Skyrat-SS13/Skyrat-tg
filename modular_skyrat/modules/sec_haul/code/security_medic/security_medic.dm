@@ -2,7 +2,7 @@
 	title = "Security Medic"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of security and any security sergeants"
@@ -22,8 +22,11 @@
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_MEDIC
 	bounty_types = CIV_JOB_SEC
+	departments = DEPARTMENT_SECURITY
 
 	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -74,8 +77,7 @@
 /obj/structure/closet/secure_closet/security_medic
 	name = "security medics's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
-	icon_state = "secmed"
+	icon_state = "brig_phys"
 
 /obj/structure/closet/secure_closet/security_medic/PopulateContents()
 	..()

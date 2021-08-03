@@ -80,18 +80,18 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "ladon"
 		),
-	/obj/item/storage/box/gunset/dozer = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "dozer"
-		),
 	/obj/item/storage/box/gunset/zeta = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "zeta"
 		),
+	/obj/item/storage/box/gunset/dozer = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "dozer"
+		),
 	/obj/item/storage/box/gunset/revolution = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "revolution"
-		)
+		),
 	)
 
 //BAD BOY!
@@ -131,13 +131,13 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pcr"
 		),
+	/obj/item/storage/box/gunset/norwind = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "norwind"
+		),
 	/obj/item/storage/box/gunset/ostwind = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "ostwind"
-		),
-	/obj/item/storage/box/gunset/vintorez = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
-		icon_state = "vintorez"
 		),
 	/obj/item/storage/box/gunset/pitbull = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
