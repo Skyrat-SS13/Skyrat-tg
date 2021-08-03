@@ -41,13 +41,7 @@ const ObjectivePanel = (props, context) => {
   const { changes_requested } = admin;
 
   return (
-    <Section title={"Objectives - " + antag_types[page]}
-      buttons={
-        <Button
-          content={antag_types[page]}
-          color="blue"
-          onClick={() => act("change-antag")} />
-      } >
+    <Section title={"Objectives - " + antag_types[page]}>
       {
       // TODO
       }
