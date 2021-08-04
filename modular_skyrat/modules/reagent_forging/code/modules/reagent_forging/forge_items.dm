@@ -1,6 +1,6 @@
 /obj/item/forging
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
-	var/work_time = 1 SECONDS
+	var/work_time = 2 SECONDS
 
 /obj/item/forging/tongs
 	name = "forging tongs"
@@ -131,13 +131,14 @@
 /turf/open/floor/plating/attackby(obj/item/C, mob/user, params)
 	. = ..()
 	if(istype(C, /obj/item/forging/reagent_tile))
-		var/obj/item/forging/reagent_tile/reagentTile = C
-		var/turf/open/floor/reagent_plating/reagentPlating = ChangeTurf(/turf/open/floor/reagent_plating)
-		reagentPlating.imbued_reagent = reagentTile.imbued_reagent
-		reagentPlating.name = reagentTile.name
-		reagentPlating.color = reagentTile.color
-		reagentPlating.has_imbued = reagentTile.has_imbued
-		qdel(reagentTile)
+		var/obj/item/forging/reagent_tile/reagent_tile = C
+		var/turf/open/floor/reagent_plating/reagent_plating = ChangeTurf(/turf/open/floor/reagent_plating)
+		reagent_plating.imbued_reagent = reagent_tile.imbued_reagent
+		reagent_plating.name = reagent_tile.name
+		reagent_plating.color = reagent_tile.color
+		reagent_plating.has_imbued = reagent_tile.has_imbued
+		reagent_plating.previous_turf = src.type
+		qdel(reagent_tile)
 
 /turf/open/floor/reagent_plating
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
@@ -145,16 +146,17 @@
 	var/list/imbued_reagent = list()
 	var/list/current_affect = list()
 	var/world_timer = 0
-	var/obj/item/reagent_containers/reagentContainer
+	var/obj/item/reagent_containers/reagent_container
 	var/has_imbued = FALSE
+	var/turf/previous_turf
 
 /turf/open/floor/reagent_plating/Initialize(mapload)
 	. = ..()
-	reagentContainer = new /obj/item/reagent_containers(src)
+	reagent_container = new /obj/item/reagent_containers(src)
 
 /turf/open/floor/reagent_plating/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	qdel(reagentContainer)
+	qdel(reagent_container)
 	. = ..()
 
 /turf/open/floor/reagent_plating/process()
@@ -174,8 +176,8 @@
 		if(!carbonMob.can_inject())
 			continue
 		for(var/reagentList in imbued_reagent)
-			reagentContainer.reagents.add_reagent(reagentList, 0.5)
-			reagentContainer.reagents.trans_to(target = carbonMob, amount = 0.5, transfered_by = src, methods = INJECT)
+			reagent_container.reagents.add_reagent(reagentList, 0.5)
+			reagent_container.reagents.trans_to(target = carbonMob, amount = 0.5, transfered_by = src, methods = INJECT)
 	if(current_affect.len <= 0)
 		STOP_PROCESSING(SSobj, src)
 
@@ -186,10 +188,10 @@
 		START_PROCESSING(SSobj, src)
 
 /turf/open/floor/reagent_plating/crowbar_act(mob/living/user, obj/item/I)
-	var/obj/item/forging/reagent_tile/reagentTile = new /obj/item/forging/reagent_tile(get_turf(src))
-	reagentTile.name = name
-	reagentTile.color = color
-	reagentTile.imbued_reagent = imbued_reagent
-	reagentTile.has_imbued = has_imbued
-	ChangeTurf(/turf/open/floor/plating)
+	var/obj/item/forging/reagent_tile/reagent_tile = new /obj/item/forging/reagent_tile(get_turf(src))
+	reagent_tile.name = name
+	reagent_tile.color = color
+	reagent_tile.imbued_reagent = imbued_reagent
+	reagent_tile.has_imbued = has_imbued
+	ChangeTurf(previous_turf)
 	I.play_tool_sound(src, 80)
