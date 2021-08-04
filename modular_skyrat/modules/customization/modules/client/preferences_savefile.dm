@@ -271,6 +271,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	brief_outfit = sanitize_inlist(brief_outfit, subtypesof(/datum/outfit), null)
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
+	darkened_flash = sanitize_integer(darkened_flash, FALSE, TRUE, initial(darkened_flash))
 	announcement_volume = sanitize_integer(announcement_volume, 1, 100, initial(announcement_volume))
 
 	if(needs_update >= 0) //save the updated version
@@ -350,6 +351,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["hearted_until"], (hearted_until > world.realtime ? hearted_until : null))
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
+	WRITE_FILE(S["darkened_flash"], darkened_flash)
 	WRITE_FILE(S["announcement_volume"], announcement_volume)
 	return TRUE
 
@@ -436,6 +438,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["pda_style"], pda_style)
 	READ_FILE(S["pda_ringer"], pda_ringer)
 	READ_FILE(S["pda_color"], pda_color)
+	READ_FILE(S["darkened_flash"], darkened_flash)
 	/*READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
 	READ_FILE(S["feature_lizard_tail"], features["tail_lizard"])
