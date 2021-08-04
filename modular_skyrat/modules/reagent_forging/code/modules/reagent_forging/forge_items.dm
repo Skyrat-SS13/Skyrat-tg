@@ -1,6 +1,6 @@
 /obj/item/forging
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
-	var/work_time = 3 SECONDS
+	var/work_time = 1 SECONDS
 
 /obj/item/forging/tongs
 	name = "forging tongs"
@@ -10,7 +10,7 @@
 
 /obj/item/forging/tongs/primitive
 	name = "primitive forging tongs"
-	work_time = 6 SECONDS
+	work_time = 3 SECONDS
 
 /obj/item/forging/tongs/attack_self(mob/user, modifiers)
 	. = ..()
@@ -35,7 +35,7 @@
 
 /obj/item/forging/billow/primitive
 	name = "primitive forging billow"
-	work_time = 6 SECONDS
+	work_time = 3 SECONDS
 
 //incomplete pre-complete items
 /obj/item/forging/incomplete
