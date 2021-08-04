@@ -1,16 +1,16 @@
 /obj/item/forging/reagent_weapon
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	var/list/imbued_reagent = list()
-	var/obj/item/reagent_containers/reagentContainer
+	var/obj/item/reagent_containers/reagent_container
 	var/has_imbued = FALSE
 
 /obj/item/forging/reagent_weapon/Initialize()
 	. = ..()
 	create_reagents(500, INJECTABLE | REFILLABLE)
-	reagentContainer = new /obj/item/reagent_containers(src)
+	reagent_container = new /obj/item/reagent_containers(src)
 
 /obj/item/forging/reagent_weapon/Destroy()
-	qdel(reagentContainer)
+	qdel(reagent_container)
 	. = ..()
 
 /obj/item/forging/reagent_weapon/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -18,12 +18,12 @@
 	if(!proximity_flag)
 		return
 	if(isliving(target) && imbued_reagent)
-		var/mob/living/livingMob = target
-		if(!livingMob.can_inject(user, user.zone_selected))
+		var/mob/living/living_mob = target
+		if(!living_mob.can_inject(user, user.zone_selected))
 			return
-		for(var/reagentList in imbued_reagent)
-			reagentContainer.reagents.add_reagent(reagentList, 1)
-			reagentContainer.reagents.trans_to(target = livingMob, amount = 1, transfered_by = user, methods = INJECT)
+		for(var/reagent_list in imbued_reagent)
+			reagent_container.reagents.add_reagent(reagent_list, 1)
+			reagent_container.reagents.trans_to(target = living_mob, amount = 1, transfered_by = user, methods = INJECT)
 
 /obj/item/forging/reagent_weapon/sword
 	name = "reagent sword"

@@ -14,9 +14,9 @@
 
 /obj/item/forging/tongs/attack_self(mob/user, modifiers)
 	. = ..()
-	var/obj/searchObj = locate(/obj) in contents
-	if(searchObj)
-		searchObj.forceMove(get_turf(src))
+	var/obj/search_obj = locate(/obj) in contents
+	if(search_obj)
+		search_obj.forceMove(get_turf(src))
 		icon_state = "tong_empty"
 		return
 
@@ -54,8 +54,8 @@
 /obj/item/forging/incomplete/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/forging/tongs))
-		var/obj/searchObj = locate(/obj) in I.contents
-		if(searchObj)
+		var/obj/search_obj = locate(/obj) in I.contents
+		if(search_obj)
 			to_chat(user, span_warning("The tongs are already holding something, make room."))
 			return
 		forceMove(I)
@@ -172,12 +172,12 @@
 		if(!iscarbon(attempt_injectee))
 			current_affect -= attempt_injectee
 			continue
-		var/mob/living/carbon/carbonMob = attempt_injectee
-		if(!carbonMob.can_inject())
+		var/mob/living/carbon/carbon_mob = attempt_injectee
+		if(!carbon_mob.can_inject())
 			continue
-		for(var/reagentList in imbued_reagent)
-			reagent_container.reagents.add_reagent(reagentList, 0.5)
-			reagent_container.reagents.trans_to(target = carbonMob, amount = 0.5, transfered_by = src, methods = INJECT)
+		for(var/reagent_list in imbued_reagent)
+			reagent_container.reagents.add_reagent(reagent_list, 0.5)
+			reagent_container.reagents.trans_to(target = carbon_mob, amount = 0.5, transfered_by = src, methods = INJECT)
 	if(current_affect.len <= 0)
 		STOP_PROCESSING(SSobj, src)
 
