@@ -88,7 +88,7 @@
 
 
 //SKYRAT CHANGE, NERFED ICE DEMON FOR MINING
-/mob/living/simple_animal/hostile/asteroid/ice_demon/mining
+/mob/living/simple_animal/hostile/asteroid/ice_demon/lesser
 	name = "lesser demonic watcher"
 	icon_state = "ice_demon_lesser"
 	desc = "A creature formed entirely out of ice, bluespace energy emanates from inside of it. This lesser variant seems to rely entirely on beating the shit out of you by coming closer."
@@ -98,4 +98,6 @@
 	teleport_distance = 6 //Farther distance; more time to react.
 	speed = 4
 	move_to_delay = 4
+
+	crusher_loot = list()
 //END OF SKYRAT CHANGE
