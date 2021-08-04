@@ -543,7 +543,7 @@
 	Do not touch anything in the gateway outside your spawn zone. \
 	Do not use anything in the gateway outside your spawn zone.\
 	This is not meant to be a protagonist or an antagonist.\
-	Do not attack anything in the gateway except in self-defense.\ "
+	Do not attack anything in the gateway except in self-defense. The simplemob guards between you and the cafeteria are the exception.\ "
 
 /datum/outfit/scalamovguard
 	name = "Scalamov Guard"
@@ -570,7 +570,7 @@
 	Do not touch anything in the gateway outside your spawn zone. \
 	Do not use anything in the gateway outside your spawn zone.\
 	This is not meant to be a protagonist or an antagonist.\
-	Do not attack anything in the gateway except in self-defense.\ "
+	Do not attack anything in the gateway except in self-defense. The simplemob guards between you and the cafeteria are the exception.\ "
 
 /datum/outfit/scalamovdoc
 	name = "Scalamov "
@@ -597,7 +597,7 @@
 	Do not touch anything in the gateway outside your spawn zone. \
 	Do not use anything in the gateway outside your spawn zone.\
 	This is not meant to be a protagonist or an antagonist.\
-	Do not attack anything in the gateway except in self-defense.\ "
+	Do not attack anything in the gateway except in self-defense. The simplemob guards between you and the cafeteria are the exception.\ "
 
 /datum/outfit/scalamovinmateally
 	name = "Scalamov Prisoner"
@@ -617,11 +617,8 @@
 	outfit = /datum/outfit/
 	short_desc = "You are a Scalamov prisoner. You and some of the other inmates have taken over the cafeteria, and are hostile with the surviving guards. You have plenty of food, but barely any weapons."
 	flavour_text = "You are a Scalamov prisoner. The guards in the guardhouse are your enemies. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
-	Do not explore the gateway beyond the guard house and cafeteria. \
-	Do not touch anything in the gateway outside your spawn zone. \
-	Do not use anything in the gateway outside your spawn zone.\
-	This is not meant to be a protagonist or an antagonist.\
-	Do not attack anything in the gateway except in self-defense.\ "
+	Remember to use properly roleplay procedures. You may kill the simplemob guards seperating you from the guard's bunkhouse, but do not rush to kill the guards in the guardhouse. \
+	Do not fight or kill the guardhouse players without proper escalation and roleplay. Do not attack the Vanguards unless attacked first."
 
 /datum/outfit/scalamovinmatehostile
 	name = "Scalamov Hostile Inmate"
@@ -639,6 +636,9 @@
 	icon_gib = "abomination_death"
 	health = 1750
 	maxHealth = 1750
+	armour_penetration = 25
+	melee_damage_lower = 25
+	melee_damage_upper = 25
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
