@@ -47,6 +47,7 @@
 	var/list/changes_requested = list()
 	var/approved
 	var/handling
+	var/rejected
 
 	// UI DATA //
 	var/ui_page = 0
@@ -58,12 +59,20 @@
 	var/aa_honked
 
 /datum/ambitions/proc/connect(datum/mind/owner)
+	if(rejected) // Do not allow them to connect to a rejected ambition
+		return
 	src.owner = owner
-	owner_ckey = owner.key
-	owner.ambitions = src
+	update_owner()
 	// add_verb(owner.current, /mob/proc/cmd_view_ambitions)
 	_log("CONNECTED [owner_ckey]")
 	greet()
+
+/datum/ambitions/proc/update_owner()
+	if(!owner)
+		CRASH("no owner")
+	owner_ckey = owner.key
+	owner.ambitions = src
+	verify_objectives()
 
 /datum/ambitions/proc/disconnect()
 	if(owner)
@@ -147,7 +156,33 @@
 	if(.)
 		return
 
-	var/is_admin = check_rights_for(usr.client, R_ADMIN) //ui_act is called via a Topic, so this is safe
+	if(check_rights_for(usr.client, R_ADMIN)) //ui_act is called via a Topic, so this is safe
+		autoapprove_stop() // An admin has done literally anything to us = cancel autoapproval
+		switch(action)
+			if("handle")
+				handle(usr.client)
+				return TRUE
+
+			if("approve")
+				approve()
+				return TRUE
+
+			if("changes")
+				if(!length(params["changes"]))
+					to_chat(usr, span_notice("You did not specify any changes to be done."))
+					return FALSE
+				request_changes(params["changes"])
+				return TRUE
+
+			if("reject")
+				reject(params["reason"])
+				return TRUE
+	else
+		if(usr.ckey != owner_ckey) // We arent an admin and our ckey is wrong = Spoofed.
+			message_admins(span_adminhelp(span_boldwarning("[usr.ckey] attempted to Topic spoof the ambitions of [owner_ckey].")))
+			SStgui.close_user_uis(usr)
+			return FALSE
+
 	switch(action)
 		if("name")
 			var/_new = params["name"]
@@ -250,6 +285,15 @@
 			antag.on_gain()
 			antag.ambitions_approved = TRUE
 
+/datum/ambitions/proc/verify_objectives()
+	var/tmp/rem = 0
+	for(var/datum/ambition_objective/amb_obj as anything in objectives)
+		if(!length(owner_antags & amb_obj.allowed_antag_types))
+			rem++
+			objectives -= amb_obj
+	if(rem)
+		to_chat(owner, "[rem] objective[ rem == 1 ? "" : "s" ] were automatically removed due to different antag requirements.")
+
 /datum/ambitions/proc/handle(client/handler)
 	_log("HANDLED")
 	handling = handler.ckey
@@ -283,3 +327,21 @@
 	_log("OBJ-- '[amb_obj.name]'")
 	amb_obj.on_deselect(src)
 	objectives -= amb_obj
+
+/datum/ambitions/proc/reject(reason)
+	if(tgui_alert(usr, "Are you sure you want to reject these ambitions?", "Reject", list("Yes", "No")) != "Yes")
+		return
+	if(!reason)
+		reason = input(usr, "Reason") as message|null
+		if(!reason)
+			return
+		reason = sanitize(reason)
+	_log("Rejected: [reason]")
+	to_chat(owner, span_adminhelp("Your ambitions have been rejected: '[reason]'. You are no longer an antag."))
+	message_admins(span_adminhelp("[owner_ckey]'s ambitions have been rejected."))
+	for(var/datum/ambition_objective/amb_obj as anything in objectives)
+		amb_obj.on_deselect(src)
+	rejected = TRUE
+	for(var/datum/antagonist/antag as anything in owner_antags)
+		owner.remove_antag_datum(antag)
+	disconnect()
