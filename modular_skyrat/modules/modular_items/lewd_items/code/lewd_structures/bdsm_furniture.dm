@@ -122,7 +122,7 @@
 /obj/structure/chair/x_stand/can_user_rotate(mob/user)
 	return FALSE
 // Another plug to disable rotation
-/obj/structure/chair/x_stand/milking_machine/attack_tk(mob/user)
+/obj/structure/chair/x_stand/attack_tk(mob/user)
 	return FALSE
 
 // Handler for attempting to unbukle a mob from a X-Stand
