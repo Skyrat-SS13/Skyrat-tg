@@ -195,6 +195,8 @@ GLOBAL_LIST_INIT(food, list(
 	var/broadcast_login_logout = FALSE
 	///What outfit typepaths we've favorited in the SelectEquipment menu
 	var/list/favorite_outfits = list()
+	///If TRUE, we replace the flash effect from flashes with a solid black screen
+	var/darkened_flash = FALSE
 	/// Will the person see accessories not meant for their species to choose from
 	var/mismatched_customization = FALSE
 	var/allow_advanced_colors = FALSE
@@ -1184,6 +1186,7 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Play Combat Mode Sounds:</b> <a href='?_src_=prefs;preference=combat_mode_sound'>[(toggles & SOUND_COMBATMODE) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Announcement Sound Volume:</b> <a href='?_src_=prefs;preference=announcement_volume_level'>[announcement_volume]</a><br>"
 			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Darkened Flashes:</b> (replaces flashes with a black screen) <a href='?_src_=prefs;preference=darkened_flash'>[darkened_flash ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
 			//aphrodisiac pref
@@ -2937,6 +2940,9 @@ GLOBAL_LIST_INIT(food, list(
 							scaling_method = SCALING_METHOD_NORMAL
 					user.client.view_size.setZoomMode()
 
+				if("darkened_flash")
+					darkened_flash = !darkened_flash
+
 				if("save")
 					save_preferences()
 					save_character()
@@ -3065,17 +3071,14 @@ GLOBAL_LIST_INIT(food, list(
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
-	if(show_body_size)
-		character.dna.update_body_size()
-	else //We need to update it to 100% in case they switch back
-		character.dna.features["body_size"] = BODY_SIZE_NORMAL
-		character.dna.update_body_size()
 
-		for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
-			var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
-			if(gent)
-				gent.aroused = arousal_preview
-				gent.update_sprite_suffix()
+	character.dna.update_body_size()
+
+	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
+		if(gent)
+			gent.aroused = arousal_preview
+			gent.update_sprite_suffix()
 
 	if(length(augments))
 		for(var/key in augments)

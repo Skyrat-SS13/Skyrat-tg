@@ -498,9 +498,16 @@ SUBSYSTEM_DEF(job)
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role(job)
-
+	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
+	var/display_rank = job.title
+	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
+		display_rank = player_client.prefs.alt_titles_preferences[job.title]
+	if(player_client)
+		to_chat(player_client, "<span class='infoplain'><b>You are the [display_rank].</b></span>")
+	/* SKYRAT EDIT ORIGINAL
 	if(player_client)
 		to_chat(player_client, "<span class='infoplain'><b>You are the [job.title].</b></span>")
+	*/ // SKYRAT EDIT END
 
 	equipping.on_job_equipping(job)
 
@@ -512,19 +519,16 @@ SUBSYSTEM_DEF(job)
 		else
 			handle_auto_deadmin_roles(player_client, job.title)
 
-	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
-	var/display_rank = job.title
-	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
-		display_rank = player_client.prefs.alt_titles_preferences[job.title]
-	to_chat(equipping, "<span class='infoplain'><b>You are the [display_rank].</b></span>") // SKYRAT EDIT ADD END
-	var/list/packed_items
+
+	var/list/packed_items //SKYRAT EDIT ADD - CUSTOMISATION
 	if(job)
 		if (player_client && job.no_dresscode && job.loadout)
 			packed_items = player_client.prefs.equip_preference_loadout(equipping,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
 	//SKYRAT EDIT ADDITION END
 
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b></span>") //SKYRAT EDIT CHANGE
+		to_chat(player_client, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [job.title]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT -- ALT TITLES
+		// to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</span></b>" // SKYRAT EDIT ORIGINAL
 
 	job.radio_help_message(equipping)
 
