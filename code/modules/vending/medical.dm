@@ -15,7 +15,6 @@
 					/obj/item/stack/medical/ointment = 2,
 					/obj/item/stack/medical/suture = 2,
 					/obj/item/stack/medical/bone_gel/four = 4,
-					/obj/item/ttsdevice = 3, //SKYRAT EDIT TTS DEVICES
 					/obj/item/taperoll/med = 2,	//SKYRAT EDIT - Job tape!
 					/obj/item/taperoll/bio = 2)	//SKYRAT EDIT - Job tape!
 	contraband = list(/obj/item/storage/box/gum/happiness = 3,
@@ -23,6 +22,7 @@
 	premium = list(/obj/item/reagent_containers/hypospray/medipen = 3,
 					/obj/item/storage/belt/medical = 3,
 					/obj/item/sensor_device = 2,
+					/obj/item/ttsdevice = 3, //SKYRAT EDIT TTS DEVICES
 					/obj/item/pinpointer/crew = 2,
 					/obj/item/storage/firstaid/advanced = 2,
 					/obj/item/shears = 1,
