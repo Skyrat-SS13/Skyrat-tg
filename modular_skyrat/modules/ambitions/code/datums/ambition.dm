@@ -180,7 +180,10 @@
 	else
 		if(usr.ckey != owner_ckey) // We arent an admin and our ckey is wrong = Spoofed.
 			message_admins(span_adminhelp(span_boldwarning("[usr.ckey] attempted to Topic spoof the ambitions of [owner_ckey].")))
-			SStgui.close_user_uis(usr)
+			SStgui.close_user_uis(usr, src)
+			return FALSE
+		if(rejected)
+			SStgui.close_user_uis(usr, src)
 			return FALSE
 
 	switch(action)
@@ -337,11 +340,16 @@
 			return
 		reason = sanitize(reason)
 	_log("Rejected: [reason]")
+	SStgui.close_user_uis(owner.current, src)
 	to_chat(owner, span_adminhelp("Your ambitions have been rejected: '[reason]'. You are no longer an antag."))
 	message_admins(span_adminhelp("[owner_ckey]'s ambitions have been rejected."))
 	for(var/datum/ambition_objective/amb_obj as anything in objectives)
 		amb_obj.on_deselect(src)
 	rejected = TRUE
-	for(var/datum/antagonist/antag as anything in owner_antags)
-		owner.remove_antag_datum(antag)
+	owner.remove_all_antag_datums()
 	disconnect()
+
+/datum/ambitions/proc/request_changes(changes)
+	_log("ChangeRequest: [changes]")
+	changes_requested += changes
+	to_chat(owner.current, span_adminhelp("Ambition changes requested: [changes]"))
