@@ -17,6 +17,7 @@
 					/obj/item/stack/medical/bone_gel/four = 4,
 					/obj/item/taperoll/med = 2,	//SKYRAT EDIT - Job tape!
 					/obj/item/taperoll/bio = 2)	//SKYRAT EDIT - Job tape!
+					/obj/item/ttsdevice = 3 //SKYRAT EDIT TTS DEVICES
 	contraband = list(/obj/item/storage/box/gum/happiness = 3,
 						/obj/item/storage/box/hug/medical = 1)
 	premium = list(/obj/item/reagent_containers/hypospray/medipen = 3,
