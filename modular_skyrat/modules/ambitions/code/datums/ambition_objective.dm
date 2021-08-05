@@ -41,6 +41,26 @@ GLOBAL_LIST_EMPTY(ambition_objectives_all)
 			return TRUE
 	return FALSE
 
+/datum/ambition_objective/proc/calculate_completion(datum/ambitions/parent)
+	return
+
+/datum/ambition_objective/proc/update_completion(datum/ambitions/parent)
+	var/completion = calculate_completion(parent)
+	if(completion == parent.objectives[src])
+		return
+
+	if(completion)
+		on_completion(parent)
+		return
+
+	on_uncompletion(parent)
+
+/datum/ambition_objective/proc/on_completion(datum/ambitions/parent)
+	to_chat(parent.owner.current, span_green("Ambition Objective [name] completed!"))
+
+/datum/ambition_objective/proc/on_uncompletion(datum/ambitions/parent)
+	to_chat(parent.owner.current, span_red("Ambition Objective [name] no longer complete."))
+
 /datum/ambition_objective/cult
 	abstract = /datum/ambition_objective/cult
 	allowed_antag_types = list(/datum/antagonist/cult)
@@ -90,6 +110,20 @@ GLOBAL_LIST_EMPTY(ambition_objectives_all)
 ///VV^^VV^^VV^^VV^^VV^^VV///
 
 /// GENERIC /// TODO
+
+/datum/ambition_objective/generic/steal
+	abstract = /datum/ambition_objective/generic/steal
+
+/datum/ambition_objective/generic/steal/on_select(datum/ambitions/parent)
+	if(locate(item) in world)
+		return TRUE
+	return FALSE
+
+/datum/ambition_objective/generic/steal/calculate_completion(datum/ambitions/parent)
+	if(locate(item) in parent.owner.current)
+		return TRUE
+	return FALSE
+
 /// TRAITOR /// TODO
 /// BROTHER /// TODO
 /// HERETIC /// TODO
