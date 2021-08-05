@@ -35,3 +35,28 @@
 	aesthetic = TRUE
 
 	probability = 10
+
+/*
+/datum/weather/ash_storm/sand/update_areas()	//Has to be re-written to give new sprites, unless I wanted non-modular sprites which is a hell nah from me
+	for(var/V in impacted_areas)
+		var/area/N = V
+		N.layer = overlay_layer
+		N.plane = overlay_plane
+		N.icon = 'icons/effects/weather_effects.dmi'
+		N.color = weather_color
+		switch(stage)
+			if(STARTUP_STAGE)
+				N.icon_state = telegraph_overlay
+			if(MAIN_STAGE)
+				N.icon_state = weather_overlay
+			if(WIND_DOWN_STAGE)
+				N.icon_state = end_overlay
+			if(END_STAGE)
+				N.color = null
+				N.icon_state = ""
+				N.icon = 'icons/turf/areas.dmi'
+				N.layer = initial(N.layer)
+				N.plane = initial(N.plane)
+				N.set_opacity(FALSE)
+*/
+//This file needs heavy cleanup, hopefully not having it a subtype of ash storms/maybe doing eye damage when the face is uncovered/custom sprites and overlays. But this is a fine placeholder for now.
