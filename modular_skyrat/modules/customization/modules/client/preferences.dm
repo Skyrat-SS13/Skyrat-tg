@@ -3089,7 +3089,7 @@ GLOBAL_LIST_INIT(food, list(
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, preview, src)
+			aug.apply(character, prefs = src)
 
 	if(icon_updates)
 		character.update_body()
