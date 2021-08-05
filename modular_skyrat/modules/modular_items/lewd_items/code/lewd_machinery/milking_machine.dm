@@ -274,6 +274,54 @@
 	testicles_size = null
 	return
 
+/obj/structure/chair/milking_machine/is_buckle_possible(mob/living/target, force, check_loc)
+	// Make sure target is mob/living
+	if(!istype(target))
+		return FALSE
+
+	// No bucking you to yourself.
+	if(target == src)
+		return FALSE
+
+	// Check if the target to buckle isn't INSIDE OF A WALL
+	if(!isopenturf(loc) || !isopenturf(target.loc))
+		return FALSE
+
+	// Check if this atom can have things buckled to it.
+	if(!can_buckle && !force)
+		return FALSE
+
+	// If we're checking the loc, make sure the target is on the thing we're bucking them to.
+	if(check_loc && !target.Adjacent(src))
+		return FALSE
+
+	// Make sure the target isn't already buckled to something.
+	if(target.buckled)
+		return FALSE
+
+	// Make sure this atom can still have more things buckled to it.
+	if(LAZYLEN(buckled_mobs) >= max_buckled_mobs)
+		return FALSE
+
+	// Stacking buckling leads to lots of jank and issues, better to just nix it entirely
+	if(target.has_buckled_mobs())
+		return FALSE
+
+	// If the buckle requires restraints, make sure the target is actually restrained.
+	if(buckle_requires_restraints && !HAS_TRAIT(target, TRAIT_RESTRAINED))
+		return FALSE
+
+	//If buckling is forbidden for the target, cancel
+	if(!target.can_buckle_to && !force)
+		return FALSE
+
+	//If buckling is not human, cancel. fuck you
+	if(!target.ishuman())
+		return FALSE
+
+	return TRUE
+
+
 //for chair handcuffs, no alerts
 /mob/living/carbon/proc/update_abstract_handcuffed()
 	if(handcuffed)
