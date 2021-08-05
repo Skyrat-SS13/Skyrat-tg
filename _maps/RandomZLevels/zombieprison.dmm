@@ -3,10 +3,6 @@
 /obj/machinery/photocopier,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
-"ab" = (
-/obj/item/fireaxe,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "ad" = (
 /mob/living/simple_animal/hostile/zombie,
 /obj/effect/decal/cleanable/blood,
@@ -597,8 +593,6 @@
 /area/awaymission/prison/start)
 "cP" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/maint_kit,
-/obj/item/storage/toolbox/maint_kit,
 /obj/machinery/button/door/prison/stage5{
 	name = "shutter lockdown release 5";
 	pixel_x = 23
@@ -611,12 +605,22 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/guard)
+"cS" = (
+/mob/living/simple_animal/hostile/netherworld/migo{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/rec)
 "cT" = (
 /obj/effect/turf_decal/box,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/mob_spawn/human/corpse/nanotrasensoldier,
 /turf/open/floor/iron,
 /area/awaymission/prison/start)
+"cW" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "cX" = (
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
@@ -737,7 +741,7 @@
 "dp" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/glasses/thermal,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "dq" = (
 /obj/effect/decal/cleanable/blood,
@@ -874,8 +878,6 @@
 /area/awaymission/prison/guard)
 "dZ" = (
 /obj/structure/closet/secure_closet/contraband/armory,
-/obj/item/clothing/shoes/combat/sneakboots,
-/obj/item/clothing/under/syndicate/bloodred,
 /obj/item/clothing/gloves/combat,
 /turf/open/floor/iron,
 /area/awaymission/prison)
@@ -1159,7 +1161,6 @@
 "fq" = (
 /obj/structure/closet/secure_closet/contraband/armory,
 /obj/item/clothing/suit/space/hardsuit/shielded/syndi,
-/obj/item/clothing/glasses/thermal,
 /turf/open/floor/iron,
 /area/awaymission/prison)
 "fr" = (
@@ -1326,7 +1327,6 @@
 "fV" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/maint_kit,
-/obj/item/storage/toolbox/maint_kit,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
 "fW" = (
@@ -1400,6 +1400,10 @@
 /obj/structure/bedsheetbin,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/guard)
+"gr" = (
+/obj/machinery/door/airlock/external/glass,
+/turf/open/floor/plating,
+/area/space)
 "gs" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/hypospray/medipen/survival/luxury,
@@ -1410,7 +1414,7 @@
 /obj/machinery/porta_turret/syndicate/energy{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "gu" = (
 /obj/effect/spawner/structure/window/hollow/plasma/reinforced,
@@ -1491,10 +1495,6 @@
 /obj/effect/spawner/lootdrop/prison/doc,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
-"gL" = (
-/obj/item/storage/backpack/holding/duffel,
-/turf/open/floor/iron,
-/area/awaymission/prison/cellb)
 "gP" = (
 /obj/item/reagent_containers/spray/cleaner{
 	pixel_x = -10;
@@ -1611,11 +1611,6 @@
 "hx" = (
 /turf/closed/wall/r_wall,
 /area/space)
-"hy" = (
-/obj/structure/table/reinforced,
-/obj/item/autosurgeon/organ/syndicate/laser_arm,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/secret)
 "hB" = (
 /obj/structure/table/reinforced,
 /obj/item/disk/tech_disk/spaceloot,
@@ -1684,12 +1679,11 @@
 "hV" = (
 /obj/structure/table/reinforced,
 /obj/item/raw_anomaly_core/random,
-/obj/item/rna_vial,
-/obj/item/rna_vial,
-/obj/item/rna_vial,
-/obj/item/rna_vial,
-/obj/item/rna_vial,
 /obj/item/slimecross/charged/yellow,
+/obj/item/reagent_containers/glass/beaker{
+	pixel_x = 3;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "hW" = (
@@ -1772,6 +1766,12 @@
 /obj/item/implanter/mortis,
 /turf/open/floor/iron,
 /area/awaymission/prison/start)
+"iq" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "ir" = (
 /obj/item/clothing/shoes/combat/swat,
 /obj/item/clothing/suit/space/swat,
@@ -1960,10 +1960,6 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
 "js" = (
@@ -1972,6 +1968,12 @@
 	},
 /turf/open/floor/carpet,
 /area/awaymission/prison/med)
+"jt" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/noslip,
+/area/awaymission/prison/cellb)
 "jv" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs/core,
@@ -2055,6 +2057,10 @@
 /mob/living/simple_animal/hostile/prison/copsmg,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison)
+"jT" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage7,
+/turf/open/floor/iron,
+/area/awaymission/prison/hall)
 "jU" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/box/blue,
@@ -2091,10 +2097,13 @@
 /obj/item/shield/riot/tele,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
+"kg" = (
+/mob/living/simple_animal/chicken,
+/turf/open/floor/iron,
+/area/awaymission/prison/cafe)
 "ki" = (
 /obj/structure/table,
 /obj/machinery/recharger,
-/obj/item/gun/medbeam,
 /turf/open/floor/carpet/black,
 /area/awaymission/prison/solitary)
 "kk" = (
@@ -2132,6 +2141,9 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/cafe)
+"kr" = (
+/turf/open/floor/plating,
+/area/space)
 "ks" = (
 /obj/machinery/button/door/prison/stage3{
 	name = "shutter lockdown release 3"
@@ -2154,6 +2166,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
+"kv" = (
+/obj/structure/closet/crate,
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "kw" = (
 /obj/item/storage/backpack/duffelbag/med/surgery,
 /obj/structure/table/reinforced,
@@ -2179,6 +2195,10 @@
 /mob/living/simple_animal/hostile/syndicate/melee,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
+"kD" = (
+/mob/living/simple_animal/hostile/prison/zombieprisoner,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/solitary)
 "kE" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -2214,9 +2234,11 @@
 /area/awaymission/prison/death)
 "kK" = (
 /obj/structure/table/reinforced,
-/obj/item/kinetic_crusher,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
+"kM" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/space)
 "kO" = (
 /obj/effect/turf_decal/tile/blue/half,
 /obj/effect/decal/cleanable/blood,
@@ -2294,6 +2316,11 @@
 /obj/structure/barricade/security,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"lb" = (
+/obj/effect/cult_turf/overlay/floor,
+/mob/living/simple_animal/hostile/construct/wraith/noncult,
+/turf/open/floor/cult,
+/area/awaymission/prison/secret)
 "lc" = (
 /obj/structure/table,
 /obj/item/storage/fancy/donut_box,
@@ -2345,6 +2372,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/prison/cellb)
+"lq" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage5,
+/turf/open/floor/iron,
+/area/awaymission/prison/hall)
 "ls" = (
 /obj/machinery/door/airlock/security{
 	name = "interrogation"
@@ -2452,7 +2483,7 @@
 "ma" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/backpack/duffelbag/syndie,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "mb" = (
 /obj/effect/decal/cleanable/blood,
@@ -2617,7 +2648,6 @@
 /area/awaymission/prison/secret)
 "mR" = (
 /obj/structure/table,
-/obj/item/ammo_box/c45,
 /obj/item/reagent_containers/spray/cleaner,
 /turf/open/floor/iron,
 /area/awaymission/prison)
@@ -2972,7 +3002,6 @@
 /obj/item/gun/ballistic/automatic/assault_rifle/akm,
 /obj/item/storage/bag/ammo,
 /obj/item/ammo_box/magazine/akm,
-/obj/item/ammo_box/magazine/akm,
 /obj/structure/closet/secure_closet/contraband,
 /turf/open/floor/iron,
 /area/awaymission/prison)
@@ -3059,6 +3088,11 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/iron,
 /area/awaymission/prison)
+"oY" = (
+/obj/machinery/chem_dispenser/fullupgrade,
+/obj/item/reagent_containers/glass/beaker/synthflesh,
+/turf/open/floor/iron,
+/area/awaymission/prison/med)
 "oZ" = (
 /mob/living/simple_animal/hostile/prison/zombieguard,
 /turf/open/floor/noslip,
@@ -3122,10 +3156,6 @@
 /obj/structure/closet/crate/trashcart/laundry,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/med)
-"pp" = (
-/obj/item/kitchen/knife/combat/marksman,
-/turf/open/floor/iron,
-/area/awaymission/prison/cellb)
 "pq" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Warden's Office";
@@ -3143,7 +3173,7 @@
 "ps" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/fluff/awaymissions/prison/eggheadnote,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "pt" = (
 /obj/structure/barricade/sandbags,
@@ -3179,6 +3209,12 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/awaymission/prison/cella)
+"pB" = (
+/mob/living/simple_animal/hostile/netherworld/migo{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/med)
 "pC" = (
 /mob/living/simple_animal/hostile/prison/zombieprisoner,
 /obj/effect/decal/cleanable/blood,
@@ -3331,12 +3367,22 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/iron,
 /area/awaymission/prison)
+"qw" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "qx" = (
 /obj/effect/turf_decal/tile/blue/anticorner{
 	dir = 4
 	},
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"qy" = (
+/mob/living/simple_animal/cow,
+/turf/open/floor/iron,
+/area/awaymission/prison/cafe)
 "qz" = (
 /obj/machinery/button/door/prison/stage7{
 	name = "shutter lockdown release 7"
@@ -3387,6 +3433,10 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/prison/death)
+"qK" = (
+/mob/living/simple_animal/hostile/bear/butter,
+/turf/open/floor/iron,
+/area/awaymission/prison/rec)
 "qL" = (
 /obj/structure/chair/sofa/bench{
 	dir = 8;
@@ -3409,12 +3459,6 @@
 /obj/item/megaphone/sec,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
-"qR" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/clothing/glasses/thermal,
-/turf/open/floor/iron/showroomfloor,
-/area/awaymission/prison/secret)
 "qT" = (
 /obj/machinery/ore_silo,
 /turf/open/floor/iron/showroomfloor,
@@ -3625,6 +3669,10 @@
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage4,
 /turf/open/floor/iron,
 /area/awaymission/prison/rec)
+"se" = (
+/mob/living/simple_animal/hostile/syndicate/ranged/space,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/secret)
 "sf" = (
 /obj/machinery/chem_dispenser/fullupgrade,
 /turf/open/floor/iron/showroomfloor,
@@ -3687,6 +3735,12 @@
 /obj/item/radio,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"sy" = (
+/obj/machinery/computer{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "sB" = (
 /obj/machinery/vending/medical,
 /turf/open/floor/iron,
@@ -3814,6 +3868,7 @@
 /area/awaymission/prison/med)
 "tb" = (
 /obj/structure/closet/l3closet/scientist,
+/obj/item/reagent_containers/glass/beaker/synthflesh,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
 "tc" = (
@@ -3854,13 +3909,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet,
 /area/awaymission/prison/med)
-"tn" = (
-/obj/machinery/button/door/prison/stage6{
-	name = "shutter lockdown release 6";
-	pixel_y = 23
-	},
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison)
 "to" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Warden's Office";
@@ -3929,8 +3977,8 @@
 /area/awaymission/prison/solitary)
 "tH" = (
 /obj/structure/table/reinforced,
-/obj/item/autosurgeon/organ/syndicate/anti_stun,
-/turf/open/floor/iron/dark/textured,
+/obj/item/implanter/storage,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "tI" = (
 /obj/machinery/door/airlock/security/old,
@@ -4025,6 +4073,12 @@
 /obj/effect/spawner/lootdrop/prison_contraband,
 /turf/open/floor/iron,
 /area/awaymission/prison/start)
+"uf" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("nether")
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/prison/secret)
 "ug" = (
 /obj/structure/filingcabinet/medical,
 /obj/structure/window/plasma{
@@ -4050,10 +4104,6 @@
 "uj" = (
 /obj/structure/rack/shelf,
 /obj/item/shield/riot,
-/obj/item/shield/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/item/shield/riot{
 	pixel_x = -3;
 	pixel_y = 3
@@ -4139,6 +4189,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
+"uG" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage6,
+/turf/open/floor/cult,
+/area/awaymission/prison/warden)
 "uI" = (
 /obj/machinery/door/poddoor/shutters/indestructible{
 	id = "stage8";
@@ -4248,10 +4302,6 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
-"uW" = (
-/mob/living/simple_animal/hostile/zombie,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "uX" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin{
@@ -4267,6 +4317,12 @@
 /obj/effect/spawner/lootdrop/maintenance/five,
 /turf/open/floor/iron,
 /area/awaymission/prison/start)
+"uZ" = (
+/mob/living/simple_animal/hostile/netherworld/migo{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron/freezer,
+/area/awaymission/prison/med)
 "va" = (
 /obj/structure/rack,
 /obj/item/implanter/tracking,
@@ -4364,10 +4420,6 @@
 /obj/structure/bed,
 /turf/open/floor/carpet,
 /area/awaymission/prison/solitary)
-"vx" = (
-/obj/item/kitchen/knife/combat/marksman,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "vA" = (
 /turf/open/floor/wood,
 /area/awaymission/prison/cella)
@@ -4489,10 +4541,14 @@
 /area/awaymission/prison)
 "ws" = (
 /obj/structure/table/reinforced,
-/obj/item/hnz_cure,
-/obj/item/hnz_cure{
-	pixel_x = 8
+/obj/item/reagent_containers/glass/beaker/synthflesh{
+	pixel_x = 5;
+	pixel_y = 6
 	},
+/obj/item/reagent_containers/glass/beaker/synthflesh{
+	pixel_x = 5
+	},
+/obj/item/reagent_containers/glass/beaker/synthflesh,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "wu" = (
@@ -4601,6 +4657,11 @@
 	},
 /turf/open/floor/carpet,
 /area/awaymission/prison/guard)
+"wW" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/lootdrop/armory_contraband,
+/turf/open/indestructible/white,
+/area/awaymission/prison/secret)
 "wX" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/closed/wall/r_wall,
@@ -4784,6 +4845,10 @@
 /obj/machinery/vending/coffee,
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/guard)
+"yc" = (
+/mob/living/simple_animal/hostile/syndicate/ranged/infiltrator,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/secret)
 "yd" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/dark/textured,
@@ -4793,15 +4858,31 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
+"yg" = (
+/mob/living/simple_animal/hostile/prison/coppistol,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison)
 "yh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/carpet,
 /area/awaymission/prison/med)
+"yi" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/guard)
 "yk" = (
 /obj/effect/mob_spawn/human/scientist,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
+"ym" = (
+/mob/living/simple_animal/hostile/biohazard_blob/centaur{
+	faction = list("hostile")
+	},
+/turf/open/floor/carpet,
+/area/awaymission/prison/solitary)
 "yn" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/donkpockets,
@@ -5028,7 +5109,7 @@
 /area/awaymission/prison)
 "zt" = (
 /obj/structure/closet/crate/secure/loot,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "zu" = (
 /obj/machinery/door/airlock/medical/glass{
@@ -5140,6 +5221,16 @@
 /obj/structure/chair/office,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
+"zS" = (
+/obj/structure/rack/shelf,
+/obj/item/kinetic_crusher,
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
+"zT" = (
+/obj/structure/rack/shelf,
+/obj/item/gun/ballistic/revolver/nagant,
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "zW" = (
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
 	dir = 5
@@ -5148,7 +5239,6 @@
 /area/awaymission/prison)
 "zX" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/shotgun/riot,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
 "zY" = (
@@ -5252,11 +5342,8 @@
 "AG" = (
 /obj/structure/table/reinforced,
 /obj/item/laser_pointer/upgraded,
-/obj/item/cautery/alien,
 /obj/item/circular_saw/alien,
-/obj/item/hemostat/alien,
 /obj/item/retractor/alien,
-/obj/item/scalpel/alien,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "AI" = (
@@ -5295,11 +5382,6 @@
 /obj/item/paper/fluff/awaymissions/prison/guardhousenotice,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
-"AW" = (
-/obj/effect/decal/cleanable/blood,
-/obj/item/kitchen/knife/combat,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "AX" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -5327,9 +5409,7 @@
 "Bg" = (
 /obj/structure/table/reinforced,
 /obj/item/language_manual,
-/obj/item/language_manual,
-/obj/item/language_manual,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "Bh" = (
 /obj/structure/chair/sofa/bench{
@@ -5380,14 +5460,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
 /area/awaymission/prison)
-"Bs" = (
-/obj/structure/rack/shelf,
-/obj/item/gun/ballistic/automatic/battle_rifle/fg42,
-/obj/item/ammo_box/magazine/fg42,
-/obj/item/ammo_box/magazine/fg42,
-/obj/item/ammo_box/magazine/fg42,
-/turf/open/floor/iron,
-/area/awaymission/prison/cella)
 "Bt" = (
 /obj/structure/fence,
 /turf/open/floor/iron/dark/textured,
@@ -5519,7 +5591,10 @@
 /area/awaymission/prison/med)
 "Cj" = (
 /obj/structure/closet/secure_closet/contraband/armory,
-/obj/item/storage/box/syndie_kit/chameleon,
+/obj/item/clothing/mask/gas/polyclown,
+/obj/item/clothing/under/rank/civilian/clown/sexy,
+/obj/item/megaphone/clown,
+/obj/item/clothing/shoes/clown_shoes,
 /turf/open/floor/iron,
 /area/awaymission/prison)
 "Ck" = (
@@ -5548,6 +5623,10 @@
 /obj/item/storage/hypospraykit,
 /turf/open/floor/iron/checker,
 /area/awaymission/prison/cafe)
+"Cp" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage2,
+/turf/open/floor/iron,
+/area/awaymission/prison/hall)
 "Cq" = (
 /obj/machinery/button/door/prison/stage4{
 	pixel_x = -23
@@ -5689,7 +5768,7 @@
 /area/awaymission/prison/hall)
 "Dd" = (
 /obj/structure/table,
-/obj/item/food/donut/jelly/slimejelly/choco,
+/obj/item/phone,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
 "De" = (
@@ -5796,11 +5875,12 @@
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "DH" = (
-/obj/structure/rack/shelf,
-/obj/item/gun/ballistic/automatic/assault_rifle/m16/modern,
 /obj/item/ammo_box/magazine/m16,
 /obj/item/ammo_box/magazine/m16,
-/obj/item/ammo_box/magazine/m16,
+/obj/item/gun/ballistic/automatic/assault_rifle/m16,
+/obj/structure/closet/secure_closet/contraband/armory{
+	name = "SWAT gear"
+	},
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
 "DI" = (
@@ -5819,6 +5899,12 @@
 /obj/item/kitchen/knife/hunting,
 /turf/open/floor/iron,
 /area/awaymission/prison/start)
+"DN" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/awaymission/prison/death)
 "DO" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/restraints/handcuffs,
@@ -5867,17 +5953,12 @@
 /area/awaymission/prison/med)
 "DY" = (
 /obj/structure/rack/shelf,
-/obj/item/clothing/suit/armor/riot,
 /obj/item/clothing/suit/armor/riot{
 	pixel_x = -3;
 	pixel_y = 3
 	},
 /obj/item/clothing/head/helmet/riot{
 	pixel_x = -6;
-	pixel_y = 12
-	},
-/obj/item/clothing/head/helmet/riot{
-	pixel_x = 3;
 	pixel_y = 12
 	},
 /turf/open/floor/iron,
@@ -5986,6 +6067,12 @@
 /obj/structure/closet/bombcloset/security,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
+"Ez" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison)
 "EA" = (
 /obj/structure/table,
 /obj/item/storage/crayons,
@@ -6017,7 +6104,7 @@
 "EF" = (
 /obj/structure/table/reinforced,
 /obj/item/lazarus_injector,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "EG" = (
 /mob/living/simple_animal/hostile/prison/zombieprisoner,
@@ -6028,6 +6115,9 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"EI" = (
+/turf/open/indestructible/white,
+/area/awaymission/prison/secret)
 "EJ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood,
@@ -6124,6 +6214,12 @@
 /obj/machinery/computer/secure_data,
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/prison/guard)
+"Fn" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/med)
 "Fo" = (
 /obj/effect/turf_decal/tile/blue/anticorner{
 	dir = 1
@@ -6179,11 +6275,6 @@
 /mob/living/simple_animal/hostile/prison/zombieguard,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/cella)
-"FE" = (
-/mob/living/simple_animal/hostile/zombie,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "FH" = (
 /mob/living/simple_animal/hostile/true_changeling{
 	name = "Unknown Horror";
@@ -6202,9 +6293,6 @@
 /area/awaymission/prison/med)
 "FN" = (
 /obj/structure/closet/secure_closet/contraband/armory,
-/obj/item/gun/ballistic/automatic/cfa_wildcat,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
-/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
 /turf/open/floor/iron,
 /area/awaymission/prison)
 "FR" = (
@@ -6324,14 +6412,6 @@
 /obj/item/storage/bag/tray/cafeteria,
 /turf/open/floor/iron/checker,
 /area/awaymission/prison/cafe)
-"Gq" = (
-/obj/structure/rack/shelf,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/guard)
 "Gs" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/iron/shuttle/ferry,
@@ -6485,6 +6565,9 @@
 /obj/structure/closet/cabinet,
 /turf/open/floor/carpet/stellar,
 /area/awaymission/prison/cella)
+"Hi" = (
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "Hj" = (
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
@@ -6753,11 +6836,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/iron/shuttle/ferry,
 /area/awaymission/prison)
-"II" = (
-/obj/structure/rack,
-/obj/item/implanter/krav_maga,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/guard)
 "IK" = (
 /obj/machinery/button/door/prison/stage5{
 	name = "shutter lockdown release 5"
@@ -6791,7 +6869,7 @@
 "IQ" = (
 /obj/structure/table/reinforced,
 /obj/item/documents/syndicate,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "IR" = (
 /obj/structure/chair{
@@ -6898,6 +6976,12 @@
 /obj/item/ammo_casing/shotgun,
 /turf/open/floor/iron,
 /area/awaymission/prison/start)
+"Jq" = (
+/mob/living/simple_animal/hostile/biohazard_blob/centaur{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/cellb)
 "Js" = (
 /turf/open/floor/iron/dark/green,
 /area/awaymission/prison/rec)
@@ -6954,6 +7038,12 @@
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage2,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison)
+"JG" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/space/basic,
+/area/awaymission/prison)
 "JH" = (
 /obj/structure/chair/sofa/bench{
 	dir = 4;
@@ -6972,6 +7062,13 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"JK" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison)
 "JL" = (
 /obj/machinery/button/door/prison/stage5{
 	pixel_x = 23
@@ -6989,7 +7086,7 @@
 "JP" = (
 /obj/structure/table/reinforced,
 /obj/item/autosurgeon/organ/syndicate/reviver,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "JS" = (
 /mob/living/simple_animal/hostile/prison/zombieguard,
@@ -7041,6 +7138,12 @@
 /obj/item/food/pie/applepie,
 /turf/open/floor/wood,
 /area/awaymission/prison/cella)
+"JZ" = (
+/mob/living/simple_animal/hostile/biohazard_blob/centaur{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/cellb)
 "Ka" = (
 /obj/structure/table,
 /turf/open/floor/iron/shuttle/ferry,
@@ -7068,11 +7171,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/iron,
 /area/awaymission/prison)
-"Kg" = (
-/obj/structure/rack/shelf,
-/obj/item/katana,
-/turf/open/floor/iron,
-/area/awaymission/prison/cella)
 "Ki" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -7092,6 +7190,14 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/plating,
 /area/awaymission/prison)
+"Kn" = (
+/obj/machinery/button/door/prison/stage6{
+	name = "shutter lockdown release 6";
+	pixel_x = 25;
+	pixel_y = 30
+	},
+/turf/open/floor/cult,
+/area/awaymission/prison/warden)
 "Kp" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/iron/dark/textured,
@@ -7109,7 +7215,6 @@
 /area/awaymission/prison/cella)
 "Ku" = (
 /obj/structure/rack/shelf,
-/obj/item/shield/riot,
 /obj/item/shield/riot{
 	pixel_x = -3;
 	pixel_y = 3
@@ -7143,6 +7248,10 @@
 /obj/item/restraints/handcuffs,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"KE" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage6,
+/turf/open/indestructible/hotelwood,
+/area/awaymission/prison/warden)
 "KF" = (
 /obj/machinery/door/window{
 	dir = 1
@@ -7158,6 +7267,10 @@
 /obj/effect/spawner/lootdrop/prison/prisoner,
 /turf/open/floor/iron/dark,
 /area/awaymission/prison/death)
+"KJ" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage6,
+/turf/open/indestructible/necropolis,
+/area/awaymission/prison/warden)
 "KK" = (
 /obj/structure/closet/crate/secure/engineering,
 /obj/effect/turf_decal/bot,
@@ -7220,7 +7333,7 @@
 /obj/machinery/porta_turret/syndicate/energy{
 	dir = 1
 	},
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "KW" = (
 /obj/effect/decal/cleanable/blood,
@@ -7391,7 +7504,7 @@
 "LN" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "LP" = (
 /obj/effect/decal/cleanable/blood,
@@ -7543,7 +7656,7 @@
 "MK" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/shoes/magboots/syndie,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "ML" = (
 /mob/living/simple_animal/hostile/prison/zombieprisoner,
@@ -7656,6 +7769,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
 /area/awaymission/prison)
+"Nr" = (
+/mob/living/simple_animal/hostile/netherworld/migo{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "Nt" = (
 /obj/item/paper/fluff/awaymissions/prison/love,
 /turf/open/floor/noslip,
@@ -7676,6 +7795,12 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
+"Nx" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/carpet/blue,
+/area/awaymission/prison/med)
 "Ny" = (
 /obj/machinery/door/airlock/cult/friendly,
 /turf/open/floor/cult,
@@ -7744,7 +7869,7 @@
 /area/awaymission/prison/hall)
 "NV" = (
 /obj/effect/mob_spawn/human/corpse/syndicatesoldier,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "NW" = (
 /obj/effect/spawner/lootdrop/maintenance,
@@ -7926,7 +8051,7 @@
 /area/awaymission/prison/guard)
 "OR" = (
 /obj/effect/mob_spawn/human/corpse/syndicatecommando,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "OV" = (
 /turf/open/floor/noslip,
@@ -7968,12 +8093,6 @@
 /obj/structure/barricade/security,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
-"Pg" = (
-/obj/machinery/porta_turret/syndicate/energy{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/secret)
 "Ph" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
@@ -8032,10 +8151,6 @@
 /mob/living/simple_animal/hostile/prison/zombieriot,
 /turf/open/floor/iron,
 /area/awaymission/prison/cellb)
-"PC" = (
-/obj/structure/closet/secure_closet/ert_sec,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/guard)
 "PD" = (
 /mob/living/simple_animal/hostile/prison/zombieprisoner,
 /obj/effect/spawner/lootdrop/wallet_loot,
@@ -8131,6 +8246,10 @@
 /obj/machinery/chem_master,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"Qb" = (
+/mob/living/simple_animal/hostile/prison/zombieprisoner,
+/turf/open/floor/iron,
+/area/awaymission/prison/solitary)
 "Qc" = (
 /obj/structure/filingcabinet/chestdrawer/wheeled,
 /turf/open/floor/iron,
@@ -8144,6 +8263,12 @@
 /obj/machinery/computer,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
+"Ql" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "Qm" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4;
@@ -8231,7 +8356,7 @@
 /area/awaymission/prison/start)
 "QI" = (
 /obj/structure/table/reinforced,
-/obj/item/nuke_core_container,
+/obj/item/clothing/gloves/color/chief_engineer,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "QK" = (
@@ -8251,21 +8376,25 @@
 /obj/structure/table,
 /obj/item/storage/fancy/donut_box,
 /obj/item/radio,
+/obj/item/radio,
+/obj/item/radio,
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/guard)
 "QQ" = (
 /mob/living/simple_animal/hostile/prison/zombieguard,
 /turf/open/floor/carpet,
 /area/awaymission/prison/med)
+"QS" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron/freezer,
+/area/awaymission/prison/med)
 "QT" = (
 /mob/living/simple_animal/hostile/prison/zombiedoc,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
 /area/awaymission/prison)
-"QW" = (
-/obj/structure/closet/syndicate,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/guard)
 "QZ" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs,
@@ -8348,6 +8477,10 @@
 	},
 /turf/open/floor/iron/shuttle/ferry,
 /area/awaymission/prison)
+"Ry" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage6,
+/turf/open/floor/iron,
+/area/awaymission/prison/hall)
 "RB" = (
 /obj/item/clothing/under/misc/stripper/bunnysuit,
 /turf/open/floor/iron,
@@ -8379,11 +8512,6 @@
 /obj/item/clothing/under/scalamovdoc,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
-"RK" = (
-/obj/structure/table/reinforced,
-/obj/item/language_manual,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/secret)
 "RL" = (
 /obj/structure/table,
 /obj/item/food/muffin,
@@ -8411,14 +8539,6 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/open/floor/plating,
 /area/awaymission/prison)
-"RW" = (
-/obj/structure/table/reinforced,
-/obj/item/language_manual,
-/obj/item/language_manual,
-/obj/item/language_manual,
-/obj/item/language_manual,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/secret)
 "RX" = (
 /obj/item/bodybag/stasis,
 /turf/open/floor/iron/showroomfloor,
@@ -8521,7 +8641,7 @@
 "Su" = (
 /obj/structure/table/reinforced,
 /obj/item/mmi,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "Sw" = (
 /obj/structure/chair/sofa/bench{
@@ -8630,10 +8750,6 @@
 /obj/machinery/vending/wallmed/directional/north,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
-"SZ" = (
-/mob/living/simple_animal/hostile/prison/copsmg,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "Ta" = (
 /obj/structure/barricade/security,
 /turf/open/floor/iron,
@@ -8670,8 +8786,7 @@
 "Ti" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/under/syndicate/bloodred,
-/obj/item/clothing/under/syndicate/bloodred,
-/turf/open/floor/iron/dark/textured,
+/turf/open/indestructible/white,
 /area/awaymission/prison/secret)
 "Tj" = (
 /obj/effect/turf_decal/tile/red{
@@ -8705,6 +8820,10 @@
 /obj/effect/mob_spawn/human/corpse/damaged,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"Tm" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage4,
+/turf/open/floor/iron,
+/area/awaymission/prison/hall)
 "To" = (
 /obj/effect/turf_decal/tile/blue/half,
 /turf/open/floor/iron,
@@ -8810,9 +8929,25 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/iron,
 /area/awaymission/prison/start)
+"TR" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/computer/arcade/battle{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/guard)
 "TT" = (
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
+"TU" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 8
+	},
+/turf/open/indestructible/white,
+/area/awaymission/prison/secret)
 "TW" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -8828,6 +8963,10 @@
 /turf/open/floor/carpet/green,
 /area/awaymission/prison/cella)
 "Ud" = (
+/turf/open/floor/cult,
+/area/awaymission/prison/secret)
+"Uf" = (
+/mob/living/simple_animal/hostile/construct/artificer/noncult,
 /turf/open/floor/cult,
 /area/awaymission/prison/secret)
 "Ug" = (
@@ -8851,6 +8990,10 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
+"Uj" = (
+/mob/living/simple_animal/hostile/syndicate/melee,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/secret)
 "Ul" = (
 /obj/structure/table/reinforced,
 /obj/item/raw_anomaly_core/random,
@@ -8929,6 +9072,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
+"UJ" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage3,
+/turf/open/floor/iron,
+/area/awaymission/prison/hall)
 "UM" = (
 /obj/structure/chair/greyscale,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -9280,7 +9427,11 @@
 /area/awaymission/prison/cafe)
 "Wo" = (
 /obj/structure/table/reinforced,
-/obj/item/melee/tomahawk,
+/obj/item/reagent_containers/glass/beaker/synthflesh,
+/obj/item/reagent_containers/glass/beaker/synthflesh{
+	pixel_x = 5;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "Wp" = (
@@ -9420,7 +9571,6 @@
 	name = "Warden's Office";
 	req_access_txt = "3"
 	},
-/obj/machinery/door/poddoor/shutters/indestructible/prison/stage6,
 /turf/open/indestructible/white,
 /area/awaymission/prison)
 "Xl" = (
@@ -9476,6 +9626,12 @@
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/cella)
+"Xz" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/hall)
 "XA" = (
 /obj/machinery/door/airlock/engineering,
 /turf/open/floor/iron,
@@ -9496,6 +9652,13 @@
 "XE" = (
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/guard)
+"XF" = (
+/obj/machinery/button/door/prison/stage4{
+	name = "shutter lockdown release 4";
+	pixel_y = 23
+	},
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison)
 "XH" = (
 /obj/effect/spawner/structure/window/hollow/plasma/reinforced,
 /obj/structure/barricade/wooden/crude,
@@ -9553,6 +9716,12 @@
 /obj/machinery/door/airlock/public,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/cellb)
+"XW" = (
+/mob/living/simple_animal/hostile/biohazard_blob/centaur{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "XX" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
@@ -9567,6 +9736,7 @@
 /area/awaymission/prison/start)
 "Ya" = (
 /obj/machinery/door/airlock,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron/checker,
 /area/awaymission/prison/rec)
 "Yd" = (
@@ -9618,7 +9788,7 @@
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
 "Yu" = (
-/mob/living/simple_animal/hostile/prison/copsmg,
+/mob/living/simple_animal/bot/honkbot,
 /turf/open/floor/carpet,
 /area/awaymission/prison/solitary)
 "Yv" = (
@@ -9678,7 +9848,8 @@
 /area/awaymission/prison/cellb)
 "YK" = (
 /obj/structure/table/reinforced,
-/obj/item/melee/powerfist,
+/obj/item/disk/tech_disk/spaceloot,
+/obj/item/disk/tech_disk/spaceloot,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "YL" = (
@@ -9737,6 +9908,12 @@
 /obj/effect/mob_spawn/human/scalamovguard,
 /turf/open/floor/carpet,
 /area/awaymission/prison/guard)
+"Za" = (
+/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/med)
 "Zb" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/beer{
@@ -9788,12 +9965,23 @@
 /obj/structure/chair/office,
 /turf/open/floor/iron/dark,
 /area/awaymission/prison/death)
+"Zm" = (
+/obj/machinery/door/airlock/public,
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage4,
+/turf/open/floor/iron,
+/area/awaymission/prison)
 "Zn" = (
 /obj/structure/chair{
 	dir = 8
 	},
 /turf/open/floor/carpet/black,
 /area/awaymission/prison/solitary)
+"Zq" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/reagent_containers/glass/beaker/cryoxadone,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/prison/secret)
 "Zr" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -9899,6 +10087,12 @@
 /obj/machinery/door/airlock/public,
 /turf/open/floor/iron,
 /area/awaymission/prison)
+"ZX" = (
+/obj/structure/rack/shelf,
+/obj/item/implanter/mortis,
+/obj/item/implanter/mortis,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/guard)
 "ZZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/bookmanagement,
@@ -17000,7 +17194,7 @@ TT
 TT
 xx
 TT
-TT
+XW
 TT
 AI
 TT
@@ -17985,7 +18179,7 @@ bR
 gz
 cv
 gz
-cv
+Qb
 gz
 ER
 cv
@@ -18062,7 +18256,7 @@ kF
 Sr
 Sr
 SR
-TT
+iq
 TT
 TT
 SR
@@ -18239,7 +18433,7 @@ zZ
 bR
 bR
 bR
-gz
+kD
 cv
 gz
 cv
@@ -19011,9 +19205,9 @@ bR
 bR
 bR
 gz
-cv
+Qb
 gz
-cv
+Qb
 gz
 iM
 GL
@@ -19291,11 +19485,11 @@ ix
 OP
 cg
 OP
-ix
+ym
 OP
 cg
 OP
-ix
+OP
 OP
 cg
 OP
@@ -20555,7 +20749,7 @@ bR
 SR
 TT
 TT
-TT
+xx
 SR
 nv
 zZ
@@ -20632,7 +20826,7 @@ Gt
 Sr
 Sr
 SR
-TT
+XW
 TT
 TT
 SR
@@ -21002,8 +21196,8 @@ UX
 UX
 UX
 DA
-uW
-by
+UX
+JK
 SE
 SE
 SE
@@ -21067,7 +21261,7 @@ bR
 bR
 bR
 SR
-TT
+xx
 TT
 TT
 SR
@@ -22112,7 +22306,7 @@ TT
 TT
 TT
 TT
-TT
+xx
 TT
 TT
 TT
@@ -22354,7 +22548,7 @@ bR
 SR
 TT
 TT
-TT
+xx
 SR
 Sr
 TT
@@ -22616,7 +22810,7 @@ SR
 qG
 TT
 TT
-TT
+xx
 TT
 TT
 TT
@@ -22799,7 +22993,7 @@ UX
 UX
 UX
 UX
-ab
+UX
 ty
 UX
 by
@@ -22875,7 +23069,7 @@ SR
 SR
 SR
 SR
-SR
+ca
 SR
 SR
 SR
@@ -23306,8 +23500,8 @@ gg
 UX
 DA
 UX
-FE
-UX
+by
+Ez
 UX
 UX
 UX
@@ -23458,7 +23652,7 @@ Sr
 vO
 Sr
 SR
-TT
+XW
 TT
 cz
 TT
@@ -24631,7 +24825,7 @@ wi
 Xd
 wi
 va
-II
+lF
 lF
 lF
 vQ
@@ -24895,7 +25089,7 @@ vQ
 ED
 vU
 Ww
-Tf
+Ww
 vQ
 vQ
 Pr
@@ -25179,7 +25373,7 @@ zZ
 zZ
 bR
 bR
-Em
+wf
 UX
 UX
 Em
@@ -25406,10 +25600,10 @@ rO
 rO
 is
 vQ
-RP
+ZX
 Ww
 Vs
-Tf
+Ww
 vQ
 vQ
 Pr
@@ -25663,7 +25857,7 @@ rV
 GZ
 vQ
 vQ
-Gq
+ZX
 Ww
 Ww
 Tf
@@ -26464,7 +26658,7 @@ zZ
 zZ
 bR
 bR
-Em
+wf
 UX
 UX
 Em
@@ -26724,7 +26918,7 @@ bR
 Em
 UX
 UX
-Em
+wf
 bR
 bR
 bR
@@ -27731,7 +27925,7 @@ eC
 Tj
 Ww
 Ww
-gX
+TR
 de
 AT
 Ts
@@ -27988,7 +28182,7 @@ YX
 QG
 Ww
 Ww
-gX
+TR
 Ea
 XE
 XE
@@ -28195,7 +28389,7 @@ DA
 UX
 UX
 DA
-AW
+DA
 ll
 UX
 UX
@@ -28796,7 +28990,7 @@ zZ
 zZ
 zZ
 PV
-gL
+nm
 nm
 Li
 nm
@@ -29742,7 +29936,7 @@ si
 DA
 UX
 Ik
-vx
+UX
 UX
 UX
 UX
@@ -29770,7 +29964,7 @@ Ww
 vQ
 oc
 Ww
-Ww
+yi
 gD
 Ww
 Sk
@@ -30544,7 +30738,7 @@ rO
 bk
 Vs
 Ww
-PC
+Ww
 vQ
 Ww
 gD
@@ -30806,7 +31000,7 @@ vQ
 Ww
 IR
 IR
-Ww
+yi
 vQ
 vQ
 vQ
@@ -31058,7 +31252,7 @@ Ww
 vU
 Ww
 Ww
-QW
+Ww
 vQ
 Xp
 ft
@@ -32352,9 +32546,9 @@ zZ
 bR
 bR
 bR
-Bw
-rY
-Bw
+aN
+aQ
+aN
 bR
 bR
 bR
@@ -32711,7 +32905,7 @@ bR
 bR
 cc
 nm
-nm
+JZ
 cc
 PV
 bR
@@ -33115,7 +33309,7 @@ Sc
 Sc
 Ik
 fq
-SZ
+UX
 cu
 sJ
 zZ
@@ -33693,8 +33887,8 @@ bR
 bR
 bR
 bR
-bR
-Em
+sJ
+XF
 Em
 sJ
 bR
@@ -33950,7 +34144,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -33994,7 +34188,7 @@ zZ
 bR
 bR
 bR
-cc
+Jq
 nm
 nm
 cc
@@ -34207,7 +34401,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -34464,7 +34658,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -34721,7 +34915,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -34978,7 +35172,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -35235,7 +35429,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -35492,7 +35686,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -35749,7 +35943,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -36006,7 +36200,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -36263,7 +36457,7 @@ zZ
 zZ
 zZ
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -36520,7 +36714,7 @@ bR
 bR
 bR
 bR
-bR
+sJ
 Em
 Em
 sJ
@@ -37034,7 +37228,7 @@ Em
 Em
 Em
 Em
-Em
+mm
 UX
 UX
 Em
@@ -37291,7 +37485,7 @@ UX
 UX
 UX
 UX
-UX
+wd
 UX
 UX
 Ik
@@ -37514,7 +37708,7 @@ Bw
 Bw
 Bw
 Bw
-Bw
+WK
 UX
 UX
 Em
@@ -37548,7 +37742,7 @@ UX
 UX
 UX
 UX
-UX
+wd
 UX
 UX
 Ik
@@ -37771,7 +37965,7 @@ rY
 rY
 rY
 rY
-rY
+xl
 UX
 UX
 Em
@@ -37805,7 +37999,7 @@ Em
 Em
 Em
 Em
-Em
+mm
 Em
 Em
 Em
@@ -38027,8 +38221,8 @@ Bw
 Bw
 Bw
 Bw
-Bw
-Bw
+WK
+WK
 UX
 UX
 Em
@@ -38121,7 +38315,7 @@ nm
 nm
 Li
 nm
-nm
+JZ
 nm
 nm
 cc
@@ -38265,7 +38459,7 @@ Et
 Et
 bg
 rY
-rY
+Xz
 rY
 rY
 rY
@@ -39055,8 +39249,8 @@ Bw
 Bw
 Bw
 Bw
-Bw
-Bw
+WK
+WK
 UX
 VR
 Em
@@ -39126,7 +39320,7 @@ hw
 hw
 nm
 nm
-pp
+nm
 nm
 cc
 Az
@@ -39313,7 +39507,7 @@ rY
 rY
 rY
 rY
-rY
+xl
 UX
 UX
 Em
@@ -39351,7 +39545,7 @@ Em
 Em
 Em
 Em
-ZT
+Zm
 cc
 nm
 ML
@@ -39570,7 +39764,7 @@ Bw
 Bw
 Bw
 Bw
-Bw
+WK
 UX
 UX
 Em
@@ -39829,7 +40023,7 @@ bR
 bR
 bR
 Em
-UX
+VR
 Em
 Ik
 UX
@@ -40122,7 +40316,7 @@ Em
 Em
 Em
 Em
-ZT
+Zm
 cc
 nm
 nm
@@ -41372,7 +41566,7 @@ bR
 bR
 Em
 UX
-Em
+yg
 sJ
 GM
 Wv
@@ -41440,7 +41634,7 @@ Az
 uk
 uk
 Az
-uk
+jt
 uk
 Az
 uk
@@ -41902,7 +42096,7 @@ pN
 Ze
 Ze
 Ze
-Sy
+DN
 yo
 qX
 qX
@@ -42385,9 +42579,9 @@ zZ
 zZ
 zZ
 BR
+aQ
 rY
-rY
-rY
+lq
 IK
 zZ
 zZ
@@ -42899,9 +43093,9 @@ zZ
 zZ
 zZ
 bj
+Cp
 rY
-rY
-rY
+Ry
 DT
 zZ
 zZ
@@ -43413,9 +43607,9 @@ zZ
 zZ
 zZ
 ks
+UJ
 rY
-rY
-rY
+jT
 zH
 zZ
 zZ
@@ -43756,7 +43950,7 @@ TT
 TT
 TT
 TT
-TT
+Nr
 TT
 xx
 TT
@@ -43927,7 +44121,7 @@ zZ
 zZ
 zZ
 ge
-rY
+Tm
 rY
 rY
 rY
@@ -45011,12 +45205,12 @@ TT
 TT
 nv
 IN
-Bs
-IN
 mS
+IN
+zS
 so
-so
-Kg
+zT
+mS
 wh
 gs
 cP
@@ -46296,7 +46490,7 @@ TT
 TT
 TT
 TT
-TT
+Nr
 TT
 TT
 Gw
@@ -46444,7 +46638,7 @@ EM
 fY
 Ac
 Ac
-Ac
+uZ
 Ac
 Ac
 Ox
@@ -46457,7 +46651,7 @@ fY
 Ac
 Ac
 Ac
-Ac
+QS
 Ac
 fY
 Ac
@@ -46526,7 +46720,7 @@ fp
 fp
 qq
 fp
-fp
+cS
 fp
 pG
 fp
@@ -46607,7 +46801,7 @@ TT
 TT
 TT
 TT
-TT
+Nr
 TT
 TT
 Gw
@@ -47096,7 +47290,7 @@ TT
 wl
 Kb
 TT
-TT
+iq
 TT
 TT
 TT
@@ -47604,7 +47798,7 @@ TT
 TT
 TT
 TT
-TT
+Nr
 xx
 TT
 wl
@@ -47613,7 +47807,7 @@ ku
 TT
 zR
 TT
-TT
+iq
 TT
 Xw
 wl
@@ -48521,7 +48715,7 @@ FB
 yQ
 FB
 FB
-FB
+pB
 FB
 FB
 FB
@@ -48815,7 +49009,7 @@ Em
 Em
 DK
 Em
-Em
+JG
 co
 Em
 Em
@@ -48916,7 +49110,7 @@ TT
 TT
 TT
 TT
-TT
+Nr
 TT
 TT
 TT
@@ -49019,7 +49213,7 @@ FB
 FB
 FB
 FB
-FB
+Fn
 FB
 EN
 FB
@@ -49572,7 +49766,7 @@ FB
 FB
 FB
 FB
-FB
+pB
 FB
 RI
 ob
@@ -49622,7 +49816,7 @@ AM
 fp
 fp
 fp
-fp
+cS
 Js
 fp
 fp
@@ -51069,7 +51263,7 @@ FB
 FB
 fY
 Qa
-WU
+oY
 OA
 Xc
 qM
@@ -51112,11 +51306,11 @@ Ed
 wA
 fY
 FB
+Nx
 RY
 RY
 RY
-RY
-FB
+Fn
 ob
 bR
 zZ
@@ -51580,7 +51774,7 @@ Yq
 FB
 FB
 FB
-FB
+Fn
 YP
 YP
 vg
@@ -52484,7 +52678,7 @@ zZ
 bR
 bR
 sJ
-tn
+Em
 Oc
 Em
 Oc
@@ -52618,7 +52812,7 @@ FB
 FB
 XM
 FB
-FB
+Fn
 FB
 FB
 tv
@@ -52636,7 +52830,7 @@ dD
 FB
 XM
 FB
-FB
+pB
 FB
 To
 ob
@@ -54923,7 +55117,7 @@ HX
 mq
 MS
 HX
-MS
+Za
 MS
 HX
 Kp
@@ -57022,7 +57216,7 @@ WS
 mM
 ZM
 Vn
-Vn
+uf
 oq
 WS
 Vn
@@ -57054,7 +57248,7 @@ Vc
 WO
 WO
 Zt
-WO
+qy
 Df
 pf
 FI
@@ -57541,7 +57735,7 @@ WS
 WS
 ij
 Ul
-XL
+Zq
 Vn
 tD
 bR
@@ -57566,7 +57760,7 @@ up
 WO
 WO
 WO
-WO
+kg
 WO
 WO
 Df
@@ -57830,7 +58024,7 @@ WO
 pf
 kW
 fp
-fp
+qK
 fp
 fp
 fp
@@ -59678,15 +59872,15 @@ ee
 ee
 CC
 CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
-ee
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KE
 CC
 CC
 CC
@@ -59935,7 +60129,7 @@ CC
 CC
 ee
 CC
-CC
+KJ
 PU
 PU
 PU
@@ -59943,7 +60137,7 @@ XX
 qW
 fd
 PU
-CC
+KJ
 CC
 CC
 CC
@@ -60192,7 +60386,7 @@ CC
 CC
 CC
 CC
-CC
+KJ
 PU
 Nk
 Nk
@@ -60200,7 +60394,7 @@ qO
 Nk
 Nk
 PU
-CC
+KJ
 CC
 CC
 CC
@@ -60449,7 +60643,7 @@ ee
 ee
 CC
 CC
-qO
+uG
 Un
 dK
 fv
@@ -60457,7 +60651,7 @@ Fh
 CC
 dK
 PU
-qO
+uG
 CC
 CC
 CC
@@ -60626,7 +60820,7 @@ WS
 ij
 FV
 Vn
-Vn
+uf
 ij
 bR
 bR
@@ -60706,7 +60900,7 @@ Lr
 ee
 CC
 CC
-qO
+uG
 nl
 CC
 qO
@@ -60714,7 +60908,7 @@ qO
 qO
 CC
 nl
-qO
+uG
 CC
 CC
 CC
@@ -60963,7 +61157,7 @@ Lr
 CC
 CC
 CC
-qO
+uG
 Zc
 qO
 qO
@@ -60971,7 +61165,7 @@ Ji
 qO
 qO
 Zc
-qO
+uG
 CC
 CC
 CC
@@ -61138,7 +61332,7 @@ Ii
 WA
 WS
 ij
-qR
+XL
 Vn
 Vn
 Vn
@@ -61220,7 +61414,7 @@ Lr
 ee
 CC
 CC
-qO
+uG
 nl
 CC
 qO
@@ -61228,7 +61422,7 @@ qO
 qO
 CC
 nl
-qO
+uG
 CC
 CC
 CC
@@ -61477,15 +61671,15 @@ ee
 CC
 CC
 CC
-qO
+uG
 qi
-qO
+Kn
 vk
 qO
 CC
 nW
 PU
-qO
+uG
 CC
 CC
 CC
@@ -61734,7 +61928,7 @@ CC
 CC
 CC
 CC
-CC
+KJ
 PU
 Ks
 Ks
@@ -61742,7 +61936,7 @@ qz
 Ks
 Ks
 PU
-CC
+KJ
 CC
 CC
 CC
@@ -61991,7 +62185,7 @@ ee
 CC
 CC
 CC
-CC
+KJ
 PU
 Ml
 PU
@@ -61999,7 +62193,7 @@ Un
 PU
 PU
 PU
-CC
+KJ
 CC
 CC
 CC
@@ -62248,15 +62442,15 @@ CC
 CC
 CC
 CC
-CC
-ee
-CC
-CC
-CC
-CC
-CC
-CC
-CC
+KJ
+KE
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
+KJ
 CC
 CC
 CC
@@ -62957,18 +63151,18 @@ bR
 bR
 WS
 gt
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
 Ti
 IQ
-Uh
-Uh
+EI
+EI
 gt
 ma
 kK
-RW
+Bg
 EF
 WS
 bR
@@ -63213,19 +63407,19 @@ zZ
 bR
 bR
 WS
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 Bg
 WS
 bR
@@ -63470,20 +63664,20 @@ bR
 bR
 bR
 WS
-Uh
-Uh
-Uh
+EI
+EI
+EI
 OR
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-gC
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+wW
 WS
 bR
 bR
@@ -63701,7 +63895,7 @@ Vn
 Dt
 ij
 Vn
-Vn
+uf
 ij
 Vn
 ij
@@ -63727,20 +63921,20 @@ hx
 hx
 hx
 WS
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 NV
-Uh
-Uh
-RK
+EI
+EI
+Bg
 WS
 bR
 bR
@@ -63973,7 +64167,7 @@ WS
 Uh
 Uh
 Uh
-Uh
+yc
 Uh
 Uh
 Uh
@@ -63984,19 +64178,19 @@ Uh
 Uh
 Uh
 WS
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 zt
 WS
 bR
@@ -64232,28 +64426,28 @@ Uh
 Uh
 Uh
 Uh
+yc
 Uh
-Uh
-Uh
+se
 Uh
 Uh
 Uh
 Uh
 Uh
 tB
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 KV
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
 zt
 WS
 bR
@@ -64488,7 +64682,7 @@ Uh
 Uh
 Uh
 Uh
-Uh
+Uj
 Uh
 Uh
 Uh
@@ -64498,19 +64692,19 @@ Uh
 Uh
 Uh
 WS
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
 Su
 Su
 tH
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
 zt
 WS
 bR
@@ -64746,7 +64940,7 @@ hx
 hx
 hx
 hx
-hx
+kr
 hx
 hx
 hx
@@ -64755,20 +64949,20 @@ hx
 hx
 hx
 WS
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
 MK
 JP
-hy
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+kK
+EI
+EI
+EI
+EI
+EI
+EI
 WS
 bR
 bR
@@ -65002,9 +65196,9 @@ bR
 bR
 bR
 bR
-bR
-bR
-bR
+kM
+gr
+kM
 bR
 bR
 bR
@@ -65012,20 +65206,20 @@ bR
 bR
 bR
 WS
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 WS
 bR
 bR
@@ -65256,33 +65450,33 @@ Vn
 li
 bR
 bR
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
+kM
+kM
+kM
+kM
+Hi
+kM
+kM
+kM
+kM
 bR
 bR
 bR
 WS
 LN
-Uh
-Uh
+EI
+EI
 NV
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 WS
 WS
 WS
@@ -65513,33 +65707,33 @@ Vn
 Vn
 bR
 bR
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
+kM
+kv
+Hi
+Ql
+Hi
+Hi
+cW
+sy
+kM
 bR
 bR
 bR
 WS
 dp
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 OR
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
 WS
 Uh
 Uh
@@ -65770,33 +65964,33 @@ Vn
 li
 bR
 bR
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
+kM
+kv
+Hi
+Hi
+Hi
+Hi
+cW
+sy
+kM
 bR
 bR
 bR
 WS
 ps
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+EI
 oE
 Uh
 Uh
@@ -66027,33 +66221,33 @@ bR
 bR
 bR
 bR
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
+kM
+kv
+Hi
+qw
+qw
+Hi
+cW
+sy
+kM
 bR
 bR
 bR
 WS
-gC
-Uh
-Uh
-Uh
-Uh
-Pg
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
-Uh
+wW
+EI
+EI
+EI
+EI
+TU
+EI
+EI
+EI
+EI
+EI
+EI
+EI
+TU
 WS
 Uh
 Uh
@@ -66284,15 +66478,15 @@ bR
 bR
 bR
 bR
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
-zZ
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
+kM
 bR
 bR
 bR
@@ -67071,7 +67265,7 @@ bR
 tw
 Rf
 Ud
-Ud
+Uf
 Ud
 Ud
 Ud
@@ -67327,7 +67521,7 @@ bR
 bR
 tw
 pl
-AF
+lb
 AF
 AF
 AF
@@ -67841,7 +68035,7 @@ bR
 bR
 tw
 pl
-AF
+lb
 AF
 AF
 AF
@@ -68099,7 +68293,7 @@ bR
 tw
 Rf
 Ud
-Ud
+Uf
 Ud
 Ud
 Ud
