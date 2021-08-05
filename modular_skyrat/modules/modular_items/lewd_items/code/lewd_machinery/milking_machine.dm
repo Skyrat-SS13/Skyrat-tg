@@ -316,7 +316,7 @@
 		return FALSE
 
 	//If buckling is not human, cancel. fuck you
-	if(!target.ishuman())
+	if(!ishuman(target))
 		return FALSE
 
 	return TRUE
