@@ -36,7 +36,8 @@
 	var/employer
 	var/backstory
 	var/intensity
-	var/list/datum/ambition_objective/objectives = list()
+	/// Assosciative list, key is objective, value is completion
+	var/list/objectives = list()
 
 	// RECORD KEEPING //
 	var/list/amb_history = list()
@@ -123,7 +124,9 @@
 	.["name"] = name
 	.["backstory"] = backstory
 	.["employer"] = employer
-	.["objectives"] = objectives
+	.["objectives"] = list()
+	for(var/amb_obj in objectives)
+		.["objectives"] += amb_obj
 	.["intensity"] = intensity
 	.["obj_refs"] = list()
 	.["antag_types"] = list()
@@ -133,7 +136,7 @@
 	for(var/datum/antagonist/antag as anything in owner_antags)
 		.["antags"] += antag.name
 
-	for(var/datum/ambition_objective/objective as anything in objectives)
+	for(var/objective in objectives)
 		.["obj_refs"] += REF(objective)
 
 	.["admin"] = list()
@@ -315,7 +318,7 @@
 		return FALSE
 
 	_log("OBJ++ '[amb_obj.name]'")
-	objectives |= amb_obj
+	objectives[amb_obj] = FALSE
 	return TRUE
 
 /datum/ambitions/proc/objective_remove(obj_ref)
