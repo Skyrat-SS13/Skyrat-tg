@@ -18,6 +18,7 @@
 		return
 
 /datum/crew_manifest/ui_data(mob/user)
+<<<<<<< HEAD
 	var/list/positions = list(
 		"Central Command" = list("exceptions" = list(), "open" = 0), //SKYRAT EDIT ADDITION
 		"Command" = list("exceptions" = list(), "open" = 0),
@@ -55,6 +56,21 @@
 					else
 						// Add open positions to current department
 						positions[department["name"]]["open"] += (job["total_positions"] - job["current_positions"])
+=======
+	var/list/positions = list()
+	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+		var/open = 0
+		var/list/exceptions = list()
+		for(var/datum/job/job as anything in department.department_jobs)
+			if(job.total_positions == -1)
+				exceptions += job.title
+				continue
+			var/open_slots = job.total_positions - job.current_positions
+			if(open_slots < 1)
+				continue
+			open += open_slots
+		positions[department.department_name] = list("exceptions" = exceptions, "open" = open)
+>>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 
 	return list(
 		"manifest" = GLOB.data_core.get_manifest(),

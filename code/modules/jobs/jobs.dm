@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //THIS FILE WAS EDITED BY SKYRAT EDIT
 
 //SKYRAT EDIT ADDITION
@@ -114,6 +115,8 @@ GLOBAL_LIST_INIT(exp_jobsmap, list(
 	EXP_TYPE_SERVICE = list("titles" = service_positions)
 ))
 
+=======
+>>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 // TO DO: Replace this with job datum flags instead.
 GLOBAL_LIST_INIT(exp_specialmap, list(
 	EXP_TYPE_LIVING = list(), // all living mobs
@@ -141,7 +144,6 @@ GLOBAL_LIST_INIT(exp_specialmap, list(
 		), // Ghost roles
 	EXP_TYPE_GHOST = list() // dead people, observers
 ))
-GLOBAL_PROTECT(exp_jobsmap)
 GLOBAL_PROTECT(exp_specialmap)
 
 //this is necessary because antags happen before job datums are handed out, but NOT before they come into existence
