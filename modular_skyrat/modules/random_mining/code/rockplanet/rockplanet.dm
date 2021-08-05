@@ -18,11 +18,10 @@
 	flora_spawn_list = list(
 		/obj/structure/flora/rock/jungle = 2,
 		/obj/structure/flora/junglebush = 2,
-		/obj/structure/flora/ash/leaf_shroom = 2,
-		/obj/structure/flora/ash/cap_shroom = 2,
-		/obj/structure/flora/ash/stem_shroom = 2,
-		/obj/structure/flora/ash/cacti = 1,
-		/obj/structure/flora/ash/tall_shroom = 2
+		/obj/structure/flora/ash/rockplanet/coyote = 2,
+		/obj/structure/flora/ash/rockplanet/yucca = 2,
+		/obj/structure/flora/ash/rockplanet/agaricus = 2,
+		/obj/structure/flora/ash/cacti = 1
 		)
 	feature_spawn_list = list(
 		/obj/structure/geyser/wittel = 8,
