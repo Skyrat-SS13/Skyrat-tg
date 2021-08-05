@@ -7,8 +7,11 @@
 
 /datum/surgery_step/manipulate_organs/success(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results)
 	. = ..()
-	if(current_type == "insert")
-		display_pain(target, "<span class='userdanger'>Your [parse_zone(target_zone)] throbs with pain as your new [tool] comes to life!</span>")
-	else if(current_type == "extract")
-		if(target_organ && target_organ.owner == target)
-			display_pain(target, "<span class='userdanger'>Your [parse_zone(target_zone)] throbs with pain, you can't feel your [target_organ] anymore!</span>")
+	if(istype(tool, /obj/item/borg/apparatus/organ_storage))
+		tool = tool.contents[1]
+	if(isorgan(tool))
+		if(current_type == "insert")
+			display_pain(target, "<span class='userdanger'>Your [parse_zone(target_zone)] throbs with pain as your new [tool] comes to life!</span>")
+		else if(current_type == "extract")
+			if(target_organ && target_organ.owner == target)
+				display_pain(target, "<span class='userdanger'>Your [parse_zone(target_zone)] throbs with pain, you can't feel your [target_organ] anymore!</span>")
