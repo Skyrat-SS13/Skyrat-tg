@@ -5,7 +5,7 @@
 	id_arg_index = 2
 
 	/// An assoc list of listener -> signal -> procpath to register to the loc this object is on.
-	var/list/connections
+	var/list/connections = list()
 
 /datum/element/connect_loc/Attach(atom/movable/listener, list/connections)
 	. = ..()
@@ -52,7 +52,7 @@
 	id_arg_index = 3
 
 	/// An assoc list of listener -> signal -> procpath to register to the loc this object is on.
-	var/list/connections
+	var/list/connections = list()
 
 	/// An assoc list of locs that are being occupied and a list of targets that occupy them.
 	var/list/targets = list()
