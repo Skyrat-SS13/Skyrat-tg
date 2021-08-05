@@ -629,16 +629,16 @@
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/warden
 	name = "The Warden"
-	desc = "A victim to his own green and hubris. He won't make this easy for you, though.."
+	desc = "A victim to his own greed and hubris. He won't make this easy for you, though.."
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/prisonmobs.dmi'
 	icon_state = "abomination"
 	icon_living = "abomination"
 	icon_gib = "abomination_death"
-	health = 1750
-	maxHealth = 1750
-	armour_penetration = 25
-	melee_damage_lower = 25
-	melee_damage_upper = 25
+	health = 1200
+	maxHealth = 1200
+	armour_penetration = 20
+	melee_damage_lower = 20
+	melee_damage_upper = 20
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
 	attack_verb_simple = "attacks"
