@@ -3027,7 +3027,7 @@ GLOBAL_LIST_INIT(food, list(
 	apply_prefs_to(character, icon_updates)
 
 /// Applies the given preferences to a human mob.
-/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, preview = FALSE)
 	character.real_name = real_name
 	character.name = real_name
 
@@ -3085,7 +3085,7 @@ GLOBAL_LIST_INIT(food, list(
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, TRUE, src)
+			aug.apply(character, preview, src)
 
 	if(icon_updates)
 		character.update_body()
