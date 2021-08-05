@@ -289,7 +289,7 @@
 			antag.ambitions_approved = TRUE
 
 /datum/ambitions/proc/verify_objectives()
-	var/tmp/rem = 0
+	var/rem = 0
 	for(var/datum/ambition_objective/amb_obj as anything in objectives)
 		if(!length(owner_antags & amb_obj.allowed_antag_types))
 			rem++
