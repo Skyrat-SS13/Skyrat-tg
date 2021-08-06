@@ -484,8 +484,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["joblessrole"], joblessrole)
 	//Load prefs
 	READ_FILE(S["job_preferences"], job_preferences)
-	//Load Alternate Job Titles
-	S["alt_titles_preferences"]			>> alt_titles_preferences
 	//Quirks
 	READ_FILE(S["all_quirks"], all_quirks)
 

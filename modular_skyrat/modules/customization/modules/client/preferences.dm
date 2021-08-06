@@ -1392,11 +1392,6 @@ GLOBAL_LIST_INIT(food, list(
 			HTML += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>"
 			var/rank = job.title
 
-			//Alternate Job Titles
-			var/displayed_rank = rank
-			if(job.alt_titles.len && (rank in alt_titles_preferences))
-				displayed_rank = alt_titles_preferences[rank]
-
 			lastJob = job
 			if(is_banned_from(user.ckey, rank))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
@@ -1427,11 +1422,7 @@ GLOBAL_LIST_INIT(food, list(
 			var/rank_title_line = "[displayed_rank]"
 			if(job.job_flags & JOB_BOLD_SELECT_TEXT)//Bold head jobs
 				rank_title_line = "<b>[rank_title_line]</b>"
-
-			if(job.alt_titles.len)
-				rank_title_line = "<a href='?_src_=prefs;preference=job;task=alt_title;job_title=[job.title]'>[rank_title_line]</a>"
-			else
-				rank_title_line = "<span class='dark'>[rank_title_line]</span>" //Make it dark if we're not adding a button for alt titles
+			rank_title_line = "<span class='dark'>[rank_title_line]</span>" //Make it dark if we're not adding a button for alt titles
 			HTML += rank_title_line
 
 
