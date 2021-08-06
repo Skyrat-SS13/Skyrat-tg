@@ -81,7 +81,6 @@
 	new /obj/item/clothing/suit/toggle/armor/hos/hos_formal(src)
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
-	// new /obj/item/clothing/suit/armor/hos/parade/female(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src) // SKYRAT EDIT REMOVAL - OVERRIDDEN BY https://github.com/tgstation/tgstation/pull/60414
 	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
 	// new /obj/item/clothing/suit/armor/hos/parade(src) // SKYRAT EDIT ADDITION // SKYRAT EDIT REMOVAL - OVERRIDDEN BY https://github.com/tgstation/tgstation/pull/60414
 	new /obj/item/clothing/suit/armor/vest/leather(src)
