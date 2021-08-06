@@ -14,7 +14,7 @@
 
 	departments_list = list(
 		/datum/job_department/command,
-		/datum/job_department/central_command
+		/datum/job_department/nanotrasen_fleet_command
 	)
 
 	outfit = /datum/outfit/job/nanotrasen_representative

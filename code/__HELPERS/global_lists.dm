@@ -57,7 +57,7 @@
 		var/datum/job/J = new spath()
 		if(istype(J, /datum/job/captain))
 			GLOB.captain_alttitles += J.alt_titles
-		if(/datum/job_department/central_command in J.departments_list)
+		if(/datum/job_department/nanotrasen_fleet_command in J.departments_list)
 			GLOB.central_command_alttitles += J.alt_titles
 		if(/datum/job_department/command in J.departments_list)
 			GLOB.command_alttitles += J.alt_titles

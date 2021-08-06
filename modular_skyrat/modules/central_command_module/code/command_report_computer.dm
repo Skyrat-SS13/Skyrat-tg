@@ -70,7 +70,7 @@
 	var/report_sound = SSstation.announcer.get_rand_report_sound()
 
 	if(announce_contents)
-		priority_announce(command_report_content, command_report_title, report_sound, command_name, TRUE)
+		priority_announce(command_report_content, command_report_title, report_sound, sender_override = command_name, has_important_message = TRUE)
 	print_command_report(command_report_content, "[announce_contents ? "" : "Classified "][command_name] Update", !announce_contents)
 
 	log_admin("[key_name(usr)] has created a command report: \"[command_report_content]\", sent from \"[command_name]\".")

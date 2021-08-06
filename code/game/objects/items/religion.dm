@@ -219,7 +219,7 @@
 
 /obj/item/banner/command/Initialize()
 	. = ..()
-	job_loyalties = DEPARTMENT_BITFLAG_COMMAND | DEPARTMENT_BITFLAG_CENTRAL_COMMAND //SKYRAT EDIT ADDITION
+	job_loyalties = DEPARTMENT_BITFLAG_COMMAND | DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND //SKYRAT EDIT ADDITION
 
 /obj/item/banner/command/mundane
 	inspiration_available = FALSE

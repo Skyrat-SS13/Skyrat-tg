@@ -1,5 +1,5 @@
-/datum/job/admiral
-	title = "Nanotrasen Admiral"
+/datum/job/fleet_admiral
+	title = "Fleet Admiral"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("Nanotrasen Fleet Command")
 	faction = FACTION_STATION
@@ -11,10 +11,10 @@
 	minimal_player_age = 14
 	exp_requirements = 60000000
 	exp_required_type = EXP_TYPE_CREW
-	exp_required_type_department = EXP_TYPE_CENTRAL_COMMAND
+	exp_required_type_department = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
 
-	outfit = /datum/outfit/job/admiral
+	outfit = /datum/outfit/job/fleet_admiral
 	plasmaman_outfit = /datum/outfit/plasmaman/centcom_commander
 
 	paycheck = PAYCHECK_CENTRAL_COMMAND
@@ -22,10 +22,10 @@
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
-	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_ADMIRAL
+	display_order = JOB_DISPLAY_ORDER_FLEET_ADMIRAL
 	departments_list = list(
 		/datum/job_department/command,
-		/datum/job_department/central_command,
+		/datum/job_department/nanotrasen_fleet_command,
 		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/flask/gold)
@@ -43,13 +43,13 @@
 	veteran_only = TRUE
 
 
-/datum/job/captain/get_captaincy_announcement(mob/living/captain)
+/datum/job/fleet_admiral/get_captaincy_announcement(mob/living/captain)
 	return "Admiral [captain.real_name] on deck!"
 
-/datum/outfit/job/admiral
+/datum/outfit/job/fleet_admiral
 	name = "Nanotrasen Admiral"
 
-	jobtype = /datum/job/admiral
+	jobtype = /datum/job/fleet_admiral
 
 	implants = list(/obj/item/implant/mindshield)
 
