@@ -36,6 +36,8 @@
 
 /obj/projectile/energy/medical/default/on_hit(mob/living/target)
 	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
 	if(target.stat == DEAD)
 		return
 	target.adjustOxyLoss(-10)
@@ -52,11 +54,11 @@
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
 	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
 	if(target.stat == DEAD)
 		return
-	if(istype(target, /mob/living/carbon/human))
-		target.adjustBruteLoss(-7.5)
-	else
+	target.adjustBruteLoss(-7.5)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
@@ -68,12 +70,12 @@
 
 /obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
 	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
 	if(target.stat == DEAD)
 		return
-	if(istype(target, /mob/living/carbon/human))
-		target.adjustFireLoss(-7.5)
-	else
-		return
+	target.adjustFireLoss(-7.5)
+
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin1
@@ -85,6 +87,8 @@
 
 /obj/projectile/energy/medical/toxin1/on_hit(mob/living/target)
 	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
 	if(target.stat == DEAD)
 		return
 	target.adjustToxLoss(-5)
