@@ -73,7 +73,6 @@
 	new /obj/item/storage/backpack/head_of_personnel(src)
 	new /obj/item/storage/backpack/satchel/head_of_personnel(src)
 	new /obj/item/storage/backpack/duffel/head_of_personnel(src)
-	new /obj/item/radio/headset/heads/hop/alt(src)
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
