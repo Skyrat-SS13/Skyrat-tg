@@ -52,31 +52,6 @@
 		GLOB.laugh_types[L.name] = spath
 	sortList(GLOB.laugh_types, /proc/cmp_typepaths_asc)
 
-	//For alt titles.
-	for(var/spath in subtypesof(/datum/job))
-		var/datum/job/J = new spath()
-		if(istype(J, /datum/job/captain))
-			GLOB.captain_alttitles += J.alt_titles
-		if(/datum/job_department/central_command in J.departments_list)
-			GLOB.central_command_alttitles += J.alt_titles
-		if(/datum/job_department/command in J.departments_list)
-			GLOB.command_alttitles += J.alt_titles
-		if(/datum/job_department/security in J.departments_list)
-			GLOB.security_alttitles += J.alt_titles
-		if(/datum/job_department/cargo in J.departments_list)
-			GLOB.supply_alttitles += J.alt_titles
-		if(/datum/job_department/service in J.departments_list)
-			GLOB.service_alttitles += J.alt_titles
-		if(/datum/job_department/medical in J.departments_list)
-			GLOB.medical_alttitles += J.alt_titles
-		if(/datum/job_department/science in J.departments_list)
-			GLOB.science_alttitles += J.alt_titles
-		if(/datum/job_department/engineering in J.departments_list)
-			GLOB.engineering_alttitles += J.alt_titles
-		if(/datum/job_department/silicon in J.departments_list)
-			GLOB.nonhuman_alttitles += J.alt_titles
-	//SKYRAT EDIT END
-
 	//Species
 	for(var/spath in subtypesof(/datum/species))
 		var/datum/species/S = new spath()
