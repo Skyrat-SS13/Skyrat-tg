@@ -11,6 +11,8 @@
 	inhand_icon_state = "hos_parade_male"
 	can_adjust = FALSE
 
+// SKYRAT EDIT REMOVAL - OVERRIDDEN BY https://github.com/tgstation/tgstation/pull/60414
+/*
 /obj/item/clothing/suit/armor/hos/parade
 	name = "head of security's parade jacket"
 	desc = "A luxurious deep red jacket for the head of security, woven with a golden trim. It smells of gunpowder and authority."
@@ -21,6 +23,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
+*/
 
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
 	name = "sol chief of police uniform"
