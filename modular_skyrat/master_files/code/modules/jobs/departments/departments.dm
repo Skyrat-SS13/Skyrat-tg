@@ -5,4 +5,4 @@
 	department_experience_type = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
 	display_order = 1
 	label_class = "command"
-	latejoin_color = "#ccccff"
+	latejoin_color = "#86ff82"
