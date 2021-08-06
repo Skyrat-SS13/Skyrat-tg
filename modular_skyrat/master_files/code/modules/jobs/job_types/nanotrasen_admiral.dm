@@ -25,6 +25,7 @@
 	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_ADMIRAL
 	departments_list = list(
 		/datum/job_department/command,
+		/datum/job_department/central_command,
 		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/flask/gold)
@@ -64,7 +65,7 @@
 	shoes = /obj/item/clothing/shoes/combat/swat
 	head = /obj/item/clothing/head/centhat
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/melee/baton, /obj/item/ammo_box/a357 = 4)
+	backpack_contents = list(/obj/item/melee/baton/loaded, /obj/item/ammo_box/a357 = 4)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 
