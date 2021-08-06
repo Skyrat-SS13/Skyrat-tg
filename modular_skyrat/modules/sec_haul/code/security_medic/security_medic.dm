@@ -9,7 +9,9 @@
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
-	exp_type = EXP_TYPE_MEDICAL
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
+	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/security_medic
 	plasmaman_outfit = /datum/outfit/plasmaman/security
@@ -22,7 +24,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_MEDIC
 	bounty_types = CIV_JOB_SEC
-	departments = DEPARTMENT_SECURITY
+	departments_list = list(
+		/datum/job_department/security,
+		/datum/job_department/medical,
+	)
 
 	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
 

@@ -8,10 +8,14 @@
 	selection_color = "#c6ffe0"
 	minimal_player_age = 14
 	exp_requirements = 600
-	exp_type = EXP_TYPE_CREW
-	exp_type_department = EXP_TYPE_COMMAND
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_CREW
 
-	departments = DEPARTMENT_COMMAND | DEPARTMENT_CENTRAL_COMMAND
+	departments_list = list(
+		/datum/job_department/command,
+		/datum/job_department/central_command
+	)
 
 	outfit = /datum/outfit/job/nanotrasen_representative
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_representative

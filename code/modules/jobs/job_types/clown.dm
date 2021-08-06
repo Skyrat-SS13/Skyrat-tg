@@ -6,6 +6,7 @@
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/clown
 	plasmaman_outfit = /datum/outfit/plasmaman/clown
@@ -16,7 +17,9 @@
 	liver_traits = list(TRAIT_COMEDY_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_CLOWN
-	departments = DEPARTMENT_SERVICE
+	departments_list = list(
+		/datum/job_department/service,
+		)
 
 	mail_goodies = list(
 		/obj/item/food/grown/banana = 100,
@@ -28,9 +31,9 @@
 
 	family_heirlooms = list(/obj/item/bikehorn/golden)
 
-	veteran_only = TRUE // SKYRAT EDIT ADDITION
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+	veteran_only = TRUE // SKYRAT EDIT ADDITION
 
 
 /datum/job/clown/after_spawn(mob/living/spawned, client/player_client)
