@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
-	var/list/jobs_to_pick
+	var/list/jobs_to_pick = list()
 	for(var/datum/job/job as anything in shuffle(SSjob.joinable_occupations))
 		if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 			continue
