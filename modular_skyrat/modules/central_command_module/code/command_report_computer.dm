@@ -14,8 +14,12 @@
 	var/command_name = "Nanotrasen Fleet Control Update"
 	/// The actual contents of the report we're going to send.
 	var/command_report_content
+	/// The title of our report, if anything.
+	var/command_report_title
 	/// Whether the report's contents are announced.
 	var/announce_contents = TRUE
+	/// The error we encountered while trying to send a report.
+	var/error = ""
 
 	/// Cooldown for sending messages
 	COOLDOWN_DECLARE(static/announcement_cooldown)
@@ -30,7 +34,8 @@
 	var/list/data = list()
 	data["command_report_content"] = command_report_content
 	data["announce_contents"] = announce_contents
-
+	data["error"] = error
+	data["command_report_title"] = command_report_title
 	return data
 
 /obj/machinery/computer/centcom_announcement/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -40,14 +45,17 @@
 	switch(action)
 		if("update_report_contents")
 			command_report_content = params["updated_contents"]
+		if("update_report_title")
+			command_report_title = params["updated_title"]
 		if("toggle_announce")
 			announce_contents = !announce_contents
 		if("submit_report")
+			error = ""
 			if(!command_report_content)
-				to_chat(usr, span_danger("You can't send a report with no contents."))
+				error = "ERROR, NO CONTENTS"
 				return
 			if (!COOLDOWN_FINISHED(src, announcement_cooldown))
-				to_chat(usr, span_danger("System is still recharging!"))
+				error = "ERROR, SYSTEM IS RECHARGING, ETA: [announcement_cooldown]"
 				return
 			send_announcement()
 	return TRUE

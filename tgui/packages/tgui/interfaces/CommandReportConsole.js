@@ -1,12 +1,14 @@
 import { useBackend } from '../backend';
-import { Button, Dropdown, Input, Section, Stack, TextArea } from '../components';
+import { Button, NoticeBox, Input, Section, Stack, TextArea } from '../components';
 import { Window } from '../layouts';
 
 export const CommandReportConsole = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     command_report_content,
+    command_report_title,
     announce_contents,
+    error,
   } = data;
   return (
     <Window
@@ -14,8 +16,22 @@ export const CommandReportConsole = (props, context) => {
       width={325}
       height={525}>
       <Window.Content>
+        {!!error && (
+          <NoticeBox textAlign="center" color="red">
+            {error}
+          </NoticeBox>
+        )}
         <Stack vertical>
           <Stack.Item>
+            <Section title="Set report title:" textAlign="center">
+              <Input
+                width="100%"
+                mt={1}
+                value={command_report_title}
+                onChange={(e, value) => act("update_report_title", {
+                  updated_title: value,
+                })} />
+            </Section>
             <Section title="Set report text:" textAlign="center">
               <TextArea
                 height="200px"
