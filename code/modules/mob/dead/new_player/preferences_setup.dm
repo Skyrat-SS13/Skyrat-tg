@@ -41,7 +41,7 @@
 		eye_color = random_eye_color()
 	if(randomise_flags & RANDOMIZE_FEATURES)
 		features = random_features()
-*/ //SKYRAT EDIT END
+
 
 /// Randomizes the character according to preferences.
 /datum/preferences/proc/apply_character_randomization_prefs(antag_override = FALSE)
@@ -86,13 +86,13 @@
 		eye_color = random_eye_color()
 	features = random_features()
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
+
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
 	pref_species = new random_species_type
 	if(randomise[RANDOM_NAME])
 		real_name = pref_species.random_name(gender,1)
-*/
+
 
 ///Setup the random hardcore quirks and give the character the new score prize.
 /datum/preferences/proc/hardcore_random_setup(mob/living/carbon/human/character)
@@ -149,7 +149,7 @@
 		. += available_hardcore_quirks[picked_quirk]
 		available_hardcore_quirks -= picked_quirk
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
+
 /datum/preferences/proc/update_preview_icon()
 	// Determine what job is marked as 'High' priority, and dress them up as such.
 	var/datum/job/previewJob

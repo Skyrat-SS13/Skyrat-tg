@@ -212,3 +212,13 @@
 	name = "Harpy (Bat) (Top)"
 	icon_state = "harpybat_top"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/low_wings
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings"
+	icon_state = "low"
+
+/datum/sprite_accessory/wings/low_wings_top
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings (Top)"
+	icon_state = "low_top"

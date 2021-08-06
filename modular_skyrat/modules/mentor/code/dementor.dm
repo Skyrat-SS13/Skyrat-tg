@@ -6,8 +6,8 @@
 	remove_mentor_verbs()
 	if (/client/proc/mentor_unfollow in verbs)
 		mentor_unfollow()
-	to_chat(GLOB.mentors, "<span class='mentor'><b><font color ='#E236D8'><span class='prefix'>MENTOR:</span> [src] has dementored.</font></b></span>")
 	GLOB.mentors -= src
+	log_mentor("MENTOR: [src] dementored.")
 	add_verb(src,/client/proc/cmd_mentor_rementor)
 
 /client/proc/cmd_mentor_rementor()
@@ -17,5 +17,5 @@
 		return
 	add_mentor_verbs()
 	GLOB.mentors[src] = TRUE
-	to_chat(GLOB.mentors, "<span class='mentor'><b><font color ='#E236D8'><span class='prefix'>MENTOR:</span> [src] has rementored.</font></b></span>")
+	log_mentor("MENTOR: [src] rementored.")
 	remove_verb(src,/client/proc/cmd_mentor_rementor)
