@@ -272,7 +272,7 @@ GLOBAL_LIST_INIT(food, list(
 		if(load_character())
 			return
 	//we couldn't load character data so just randomize the character appearance + name
-	set_new_species(/datum/species/human)
+	//set_new_species(/datum/species/human) Disabled pending bugtesting.
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.set_macros()
@@ -3013,10 +3013,11 @@ GLOBAL_LIST_INIT(food, list(
 
 /// Sanitization checks to be performed before using these preferences.
 /datum/preferences/proc/sanitize_chosen_prefs()
+/* Disabled indefinitely pending review of config.
 	if(!(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
 		pref_species = new /datum/species/human
 		save_character()
-
+*/
 	if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
