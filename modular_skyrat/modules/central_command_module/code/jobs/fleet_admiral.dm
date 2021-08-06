@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/fleet_admiral
 	plasmaman_outfit = /datum/outfit/plasmaman/centcom_commander
 
-	paycheck = PAYCHECK_CENTRAL_COMMAND
+	paycheck = PAYCHECK_NANOTRASEN_FLEET_COMMAND
 	paycheck_department = ACCOUNT_SEC
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
