@@ -486,13 +486,18 @@
 		for(var/datum/job/job_datum as anything in department.department_jobs)
 			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
 				continue
+			var/jobline = ""
 			var/command_bold = ""
-			if(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+			if((job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) || (job_datum.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND))
 				command_bold = " command"
 			if(job_datum in SSjob.prioritized_jobs)
-				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
+				jobline = "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
 			else
-				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+				jobline = "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+
+			if(client && client.prefs && client.prefs.alt_titles_preferences[job_datum.title])
+				jobline += "<span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job_datum.title]])</span>"
+			dept_data += jobline
 
 		if(!length(dept_data))
 			dept_data += "<span class='nopositions'>No positions open.</span>"
