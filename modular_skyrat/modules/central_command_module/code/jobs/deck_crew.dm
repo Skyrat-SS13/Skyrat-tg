@@ -11,7 +11,7 @@
 	req_admin_notify = 1
 	minimal_player_age = 14
 	exp_requirements = 60000000
-	exp_required_type = EXP_TYPE_CREW
+	exp_required_type = EXP_TYPE_ADMIN
 	exp_required_type_department = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -37,6 +37,10 @@
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
 	)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER
 
 	veteran_only = TRUE
+
+/obj/effect/landmark/start/deck_crew
+	name = "Deck Crewman"
+	icon_state = "Captain"
