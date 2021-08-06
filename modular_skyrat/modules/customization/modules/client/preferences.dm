@@ -1419,11 +1419,12 @@ GLOBAL_LIST_INIT(food, list(
 			if((job_preferences[overflow_role.title] == JP_LOW) && (rank != overflow_role.title) && !is_banned_from(user.ckey, overflow_role.title))
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
 				continue
-			var/rank_title_line = "[displayed_rank]"
 			if(job.job_flags & JOB_BOLD_SELECT_TEXT)//Bold head jobs
-				rank_title_line = "<b>[rank_title_line]</b>"
-			rank_title_line = "<span class='dark'>[rank_title_line]</span>" //Make it dark if we're not adding a button for alt titles
-			HTML += rank_title_line
+				HTML += "<b><span class='dark'>[rank]</span></b>"
+			else
+				HTML += "<span class='dark'>[rank]</span>"
+
+			HTML += "</td><td width='40%'>"
 
 
 			HTML += "</td><td width='40%'>"
@@ -1663,23 +1664,6 @@ GLOBAL_LIST_INIT(food, list(
 			if("setJobLevel")
 				UpdateJobPreference(user, href_list["text"], text2num(href_list["level"]))
 
-			if("alt_title")
-				var/job_title = href_list["job_title"]
-				var/titles_list = list(job_title)
-				var/datum/job/J = SSjob.GetJob(job_title)
-				for(var/i in J.alt_titles)
-					titles_list += i
-				var/chosen_title
-				chosen_title = input(user, "Choose your job's title:", "Job Preference") as null|anything in titles_list
-				if(chosen_title)
-					if(chosen_title == job_title)
-						if(alt_titles_preferences[job_title])
-							alt_titles_preferences.Remove(job_title)
-					else
-						alt_titles_preferences[job_title] = chosen_title
-				SetChoices(user)
-			else
-				SetChoices(user)
 		return 1
 
 	else if(href_list["preference"] == "trait")

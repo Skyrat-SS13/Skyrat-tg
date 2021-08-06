@@ -739,8 +739,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["joblessrole"] , joblessrole)
 	//Write prefs
 	WRITE_FILE(S["job_preferences"] , job_preferences)
-	//Write Alternate Job Titles
-	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)
 
 	//Quirks
 	WRITE_FILE(S["all_quirks"] , all_quirks)
