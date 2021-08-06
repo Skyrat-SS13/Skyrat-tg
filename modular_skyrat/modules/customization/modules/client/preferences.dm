@@ -195,6 +195,8 @@ GLOBAL_LIST_INIT(food, list(
 	var/broadcast_login_logout = FALSE
 	///What outfit typepaths we've favorited in the SelectEquipment menu
 	var/list/favorite_outfits = list()
+	///If TRUE, we replace the flash effect from flashes with a solid black screen
+	var/darkened_flash = FALSE
 	/// Will the person see accessories not meant for their species to choose from
 	var/mismatched_customization = FALSE
 	var/allow_advanced_colors = FALSE
@@ -1185,6 +1187,7 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Play Combat Mode Sounds:</b> <a href='?_src_=prefs;preference=combat_mode_sound'>[(toggles & SOUND_COMBATMODE) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>Announcement Sound Volume:</b> <a href='?_src_=prefs;preference=announcement_volume_level'>[announcement_volume]</a><br>"
 			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Darkened Flashes:</b> (replaces flashes with a black screen) <a href='?_src_=prefs;preference=darkened_flash'>[darkened_flash ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
 			//aphrodisiac pref
@@ -1372,7 +1375,7 @@ GLOBAL_LIST_INIT(food, list(
 		var/datum/job/lastJob
 		var/datum/job/overflow_role = SSjob.GetJobType(SSjob.overflow_role)
 
-		for(var/datum/job/job as anything in sortList(SSjob.joinable_occupations, /proc/cmp_job_display_asc))
+		for(var/datum/job/job as anything in SSjob.joinable_occupations)
 
 			index += 1
 			if(index >= limit)
@@ -1420,8 +1423,9 @@ GLOBAL_LIST_INIT(food, list(
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
 				continue
 			var/rank_title_line = "[displayed_rank]"
-			if((rank in GLOB.command_positions) || (rank == "AI")) // Bold head jobs
+			if(job.job_flags & JOB_BOLD_SELECT_TEXT)//Bold head jobs
 				rank_title_line = "<b>[rank_title_line]</b>"
+
 			if(job.alt_titles.len)
 				rank_title_line = "<a href='?_src_=prefs;preference=job;task=alt_title;job_title=[job.title]'>[rank_title_line]</a>"
 			else
@@ -2939,6 +2943,9 @@ GLOBAL_LIST_INIT(food, list(
 							scaling_method = SCALING_METHOD_NORMAL
 					user.client.view_size.setZoomMode()
 
+				if("darkened_flash")
+					darkened_flash = !darkened_flash
+
 				if("save")
 					save_preferences()
 					save_character()
@@ -3021,7 +3028,7 @@ GLOBAL_LIST_INIT(food, list(
 	apply_prefs_to(character, icon_updates)
 
 /// Applies the given preferences to a human mob.
-/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, preview = FALSE)
 	character.real_name = real_name
 	character.name = real_name
 
@@ -3067,22 +3074,19 @@ GLOBAL_LIST_INIT(food, list(
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
-	if(show_body_size)
-		character.dna.update_body_size()
-	else //We need to update it to 100% in case they switch back
-		character.dna.features["body_size"] = BODY_SIZE_NORMAL
-		character.dna.update_body_size()
 
-		for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
-			var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
-			if(gent)
-				gent.aroused = arousal_preview
-				gent.update_sprite_suffix()
+	character.dna.update_body_size()
+
+	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
+		if(gent)
+			gent.aroused = arousal_preview
+			gent.update_sprite_suffix()
 
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, TRUE, src)
+			aug.apply(character, preview, src)
 
 	if(icon_updates)
 		character.update_body()
@@ -3093,7 +3097,7 @@ GLOBAL_LIST_INIT(food, list(
 /datum/preferences/proc/should_be_random_hardcore(datum/job/job, datum/mind/mind)
 	if(!randomise[RANDOM_HARDCORE])
 		return FALSE
-	if(job.departments & DEPARTMENT_COMMAND) //No command staff
+	if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) //No command staff
 		return FALSE
 	for(var/datum/antagonist/antag as anything in mind.antag_datums)
 		if(antag.get_team()) //No team antags

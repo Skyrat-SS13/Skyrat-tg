@@ -9,7 +9,8 @@
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 60
-	exp_type = EXP_TYPE_CREW
+	exp_required_type = EXP_TYPE_CREW
+	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/junior_officer
 	plasmaman_outfit = /datum/outfit/plasmaman/security
@@ -22,7 +23,9 @@
 
 	display_order = JOB_DISPLAY_ORDER_JUNIOR_SECURITY_OFFICER
 	bounty_types = CIV_JOB_SEC
-	departments = DEPARTMENT_SECURITY
+	departments_list = list(
+		/datum/job_department/security,
+	)
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 

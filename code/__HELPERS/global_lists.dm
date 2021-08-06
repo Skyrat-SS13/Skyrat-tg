@@ -57,23 +57,23 @@
 		var/datum/job/J = new spath()
 		if(istype(J, /datum/job/captain))
 			GLOB.captain_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_CENTRAL_COMMAND))
+		if(/datum/job_department/central_command in J.departments_list)
 			GLOB.central_command_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_COMMAND))
+		if(/datum/job_department/command in J.departments_list)
 			GLOB.command_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_SECURITY))
+		if(/datum/job_department/security in J.departments_list)
 			GLOB.security_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_CARGO))
+		if(/datum/job_department/cargo in J.departments_list)
 			GLOB.supply_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_SERVICE))
+		if(/datum/job_department/service in J.departments_list)
 			GLOB.service_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_MEDICAL))
+		if(/datum/job_department/medical in J.departments_list)
 			GLOB.medical_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_SCIENCE))
+		if(/datum/job_department/science in J.departments_list)
 			GLOB.science_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_ENGINEERING))
+		if(/datum/job_department/engineering in J.departments_list)
 			GLOB.engineering_alttitles += J.alt_titles
-		if((J.departments & DEPARTMENT_SILICON))
+		if(/datum/job_department/silicon in J.departments_list)
 			GLOB.nonhuman_alttitles += J.alt_titles
 	//SKYRAT EDIT END
 

@@ -33,6 +33,9 @@
 	/// Whether the integrated circuit is locked or not. Handled by the shell.
 	var/locked = FALSE
 
+	/// Whether the integrated circuit is admin only. Disables power usage and allows admin circuits to be attached, at the cost of making it inaccessible to regular users.
+	var/admin_only = FALSE
+
 	/// The ID that is authorized to unlock/lock the shell so that the circuit can/cannot be removed.
 	var/datum/weakref/owner_id
 
@@ -242,6 +245,7 @@
 				"connected_to" = REF(port.connected_port),
 				"color" = port.color,
 				"current_data" = current_data,
+				"datatype_data" = port.datatype_ui_data(user),
 			))
 		component_data["output_ports"] = list()
 		for(var/datum/port/output/port as anything in component.output_ports)
@@ -249,14 +253,12 @@
 				"name" = port.name,
 				"type" = port.datatype,
 				"ref" = REF(port),
-				"color" = port.color
+				"color" = port.color,
 			))
 
 		component_data["name"] = component.display_name
 		component_data["x"] = component.rel_x
 		component_data["y"] = component.rel_y
-		component_data["option"] = component.current_option
-		component_data["options"] = component.options
 		component_data["removable"] = component.removable
 		.["components"] += list(component_data)
 
@@ -272,7 +274,7 @@
 	.["examined_rel_x"] = examined_rel_x
 	.["examined_rel_y"] = examined_rel_y
 
-	.["is_admin"] = check_rights_for(user.client, R_ADMIN)
+	.["is_admin"] = check_rights_for(user.client, R_VAREDIT)
 
 /obj/item/integrated_circuit/ui_host(mob/user)
 	if(shell)
@@ -283,6 +285,16 @@
 	if(locked)
 		return FALSE
 	return ..()
+
+/obj/item/integrated_circuit/ui_status(mob/user)
+	. = ..()
+	// Extra protection because ui_state will not close the UI if they already have the ui open,
+	// as ui_state is only set during
+	if(admin_only)
+		if(!check_rights_for(user.client, R_VAREDIT))
+			return UI_CLOSE
+		else
+			return UI_INTERACTIVE
 
 /obj/item/integrated_circuit/ui_state(mob/user)
 	if(!shell)
@@ -319,7 +331,7 @@
 			var/datum/port/input/input_port = input_component.input_ports[input_port_id]
 			var/datum/port/output/output_port = output_component.output_ports[output_port_id]
 
-			if(input_port.datatype != PORT_TYPE_ANY && !output_port.compatible_datatype(input_port.datatype))
+			if(!input_port.can_receive_from_datatype(output_port.datatype))
 				return
 
 			input_port.register_output_port(output_port)
@@ -365,16 +377,6 @@
 			component.rel_x = min(max(-COMPONENT_MAX_POS, text2num(params["rel_x"])), COMPONENT_MAX_POS)
 			component.rel_y = min(max(-COMPONENT_MAX_POS, text2num(params["rel_y"])), COMPONENT_MAX_POS)
 			. = TRUE
-		if("set_component_option")
-			var/component_id = text2num(params["component_id"])
-			if(!WITHIN_RANGE(component_id, attached_components))
-				return
-			var/obj/item/circuit_component/component = attached_components[component_id]
-			var/option = params["option"]
-			if(!(option in component.options))
-				return
-			component.set_option(option)
-			. = TRUE
 		if("set_component_input")
 			var/component_id = text2num(params["component_id"])
 			var/port_id = text2num(params["port_id"])
@@ -397,6 +399,14 @@
 					return
 				var/obj/item/multitool/circuit/marker = usr.get_active_held_item()
 				if(!istype(marker))
+					var/client/user = usr.client
+					if(!check_rights_for(user, R_VAREDIT))
+						return TRUE
+					var/atom/marked_atom = user.holder.marked_datum
+					if(!marked_atom)
+						return TRUE
+					port.set_input(marked_atom)
+					balloon_alert(usr, "updated [port.name]'s value to marked object.")
 					return TRUE
 				if(!marker.marked_atom)
 					port.set_input(null)
@@ -406,17 +416,10 @@
 				port.set_input(marker.marked_atom)
 				return TRUE
 
-			var/user_input = params["input"]
-			switch(port.datatype)
-				if(PORT_TYPE_NUMBER)
-					port.set_input(text2num(user_input))
-				if(PORT_TYPE_ANY)
-					port.set_input(text2num(user_input) || user_input)
-				if(PORT_TYPE_STRING)
-					port.set_input(user_input)
-				if(PORT_TYPE_SIGNAL)
-					balloon_alert(usr, "triggered [port.name]")
-					port.set_input(COMPONENT_SIGNAL)
+			var/user_input = port.handle_manual_input(usr, params["input"])
+			if(isnull(user_input))
+				return TRUE
+			port.set_input(user_input)
 			. = TRUE
 		if("get_component_value")
 			var/component_id = text2num(params["component_id"])
@@ -466,7 +469,7 @@
 			. = TRUE
 		if("save_circuit")
 			var/client/saver = usr.client
-			if(!check_rights_for(saver, R_ADMIN))
+			if(!check_rights_for(saver, R_VAREDIT))
 				return
 			var/temp_file = file("data/CircuitDownloadTempFile")
 			fdel(temp_file)
@@ -503,4 +506,4 @@
 	if(owner_id)
 		id_card = owner_id.resolve()
 
-	return "(Shell: [shell || "*null*"], Inserter: [key_name(inserter, include_link)], Owner ID: [id_card?.name || "*null*"])"
+	return "[src] (Shell: [shell || "*null*"], Inserter: [key_name(inserter, include_link)], Owner ID: [id_card?.name || "*null*"])"

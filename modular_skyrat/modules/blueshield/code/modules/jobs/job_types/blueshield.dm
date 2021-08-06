@@ -9,7 +9,9 @@
 	selection_color = "#c6ffe0"
 	minimal_player_age = 7
 	exp_requirements = 2400
-	exp_type = EXP_TYPE_SECURITY
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_CREW
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SEC
@@ -18,7 +20,10 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	bounty_types = CIV_JOB_SEC
-	departments =  DEPARTMENT_CENTRAL_COMMAND
+	departments_list = list(
+		/datum/job_department/central_command,
+		/datum/job_department/command,
+	)
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
 
 	family_heirlooms = list(/obj/item/bedsheet/captain, /obj/item/clothing/head/beret/blueshield)
