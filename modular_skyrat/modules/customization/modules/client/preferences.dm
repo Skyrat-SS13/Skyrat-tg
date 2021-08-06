@@ -1375,7 +1375,7 @@ GLOBAL_LIST_INIT(food, list(
 		var/datum/job/lastJob
 		var/datum/job/overflow_role = SSjob.GetJobType(SSjob.overflow_role)
 
-		for(var/datum/job/job as anything in sortList(SSjob.joinable_occupations, /proc/cmp_job_display_asc))
+		for(var/datum/job/job as anything in SSjob.joinable_occupations)
 
 			index += 1
 			if(index >= limit)
@@ -1423,8 +1423,9 @@ GLOBAL_LIST_INIT(food, list(
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
 				continue
 			var/rank_title_line = "[displayed_rank]"
-			if((rank in GLOB.command_positions) || (rank == "AI")) // Bold head jobs
+			if(job.job_flags & JOB_BOLD_SELECT_TEXT)//Bold head jobs
 				rank_title_line = "<b>[rank_title_line]</b>"
+
 			if(job.alt_titles.len)
 				rank_title_line = "<a href='?_src_=prefs;preference=job;task=alt_title;job_title=[job.title]'>[rank_title_line]</a>"
 			else

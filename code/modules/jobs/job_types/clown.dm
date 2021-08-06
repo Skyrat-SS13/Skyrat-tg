@@ -31,13 +31,9 @@
 
 	family_heirlooms = list(/obj/item/bikehorn/golden)
 
-<<<<<<< HEAD
-	veteran_only = TRUE // SKYRAT EDIT ADDITION
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
-=======
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
+
+	veteran_only = TRUE // SKYRAT EDIT ADDITION
 
 
 /datum/job/clown/after_spawn(mob/living/spawned, client/player_client)

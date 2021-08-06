@@ -219,11 +219,7 @@
 
 /obj/item/banner/command/Initialize()
 	. = ..()
-<<<<<<< HEAD
-	job_loyalties = GLOB.command_positions + GLOB.central_command_positions //SKYRAT EDIT ADDITION
-=======
-	job_loyalties = DEPARTMENT_BITFLAG_COMMAND
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
+	job_loyalties = DEPARTMENT_BITFLAG_COMMAND | DEPARTMENT_BITFLAG_CENTRAL_COMMAND //SKYRAT EDIT ADDITION
 
 /obj/item/banner/command/mundane
 	inspiration_available = FALSE

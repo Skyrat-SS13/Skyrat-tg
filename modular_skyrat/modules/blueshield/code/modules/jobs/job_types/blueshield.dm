@@ -9,7 +9,9 @@
 	selection_color = "#c6ffe0"
 	minimal_player_age = 7
 	exp_requirements = 2400
-	exp_type = EXP_TYPE_SECURITY
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_CREW
 
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SEC

@@ -4,11 +4,7 @@ SUBSYSTEM_DEF(job)
 	flags = SS_NO_FIRE
 
 	/// List of all jobs.
-<<<<<<< HEAD
-	var/list/all_occupations = list()
-=======
-	var/list/datum/job/all_occupations = list() 
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
+	var/list/datum/job/all_occupations = list()
 	/// List of jobs that can be joined through the starting menu.
 	var/list/datum/job/joinable_occupations = list()
 	/// Dictionary of all jobs, keys are titles.
@@ -280,7 +276,7 @@ SUBSYSTEM_DEF(job)
 			continue
 
 		//SKYRAT EDIT ADDITION
-		if(job.title in GLOB.central_command_positions) //If you want a CC position, select it!
+		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND) //If you want a CC position, select it!
 			continue
 		//SKYRAT EDIT END
 

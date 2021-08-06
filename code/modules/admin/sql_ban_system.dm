@@ -266,50 +266,6 @@
 				banned_from += query_get_banned_roles.item[1]
 			qdel(query_get_banned_roles)
 		var/break_counter = 0
-<<<<<<< HEAD
-		output += "<div class='row'><div class='column'><label class='rolegroup command'><input type='checkbox' name='Command' class='hidden' [usr.client.prefs.tgui_fancy ? " onClick='toggle_checkboxes(this, \"_dep\")'" : ""]>Command</label><div class='content'>"
-		//all heads are listed twice so have a javascript call to toggle both their checkboxes when one is pressed
-		//for simplicity this also includes the captain even though it doesn't do anything
-		for(var/job in GLOB.command_positions)
-			if(break_counter > 0 && (break_counter % 3 == 0))
-				output += "<br>"
-			output += {"<label class='inputlabel checkbox'>[job]
-						<input type='checkbox' id='[job]_com' name='[job]' class='Command' value='1'[usr.client.prefs.tgui_fancy ? " onClick='toggle_head(this, \"_dep\")'" : ""]>
-						<div class='inputbox[(job in banned_from) ? " banned" : ""]'></div></label>
-			"}
-			break_counter++
-		output += "</div></div>"
-		//SKYRAT EDIT ADDITION
-		output += "<div class='row'><div class='column'><label class='rolegroup command'><input type='checkbox' name='Central Command' class='hidden' [usr.client.prefs.tgui_fancy ? " onClick='toggle_checkboxes(this, \"_dep\")'" : ""]>Central Command</label><div class='content'>"
-		//all heads are listed twice so have a javascript call to toggle both their checkboxes when one is pressed
-		//for simplicity this also includes the captain even though it doesn't do anything
-		for(var/job in GLOB.central_command_positions)
-			if(break_counter > 0 && (break_counter % 3 == 0))
-				output += "<br>"
-			output += {"<label class='inputlabel checkbox'>[job]
-						<input type='checkbox' id='[job]_com' name='[job]' class='Command' value='1'[usr.client.prefs.tgui_fancy ? " onClick='toggle_head(this, \"_dep\")'" : ""]>
-						<div class='inputbox[(job in banned_from) ? " banned" : ""]'></div></label>
-			"}
-			break_counter++
-		output += "</div></div>"
-		//SKYRAT EDIT END
-		//standard departments all have identical handling
-		var/list/job_lists = list("Security" = GLOB.security_positions,
-							"Engineering" = GLOB.engineering_positions,
-							"Medical" = GLOB.medical_positions,
-							"Science" = GLOB.science_positions,
-							"Supply" = GLOB.supply_positions)
-		for(var/department in job_lists)
-			//the first element is the department head so they need the same javascript call as above
-			output += "<div class='column'><label class='rolegroup [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' [usr.client.prefs.tgui_fancy ? " onClick='toggle_checkboxes(this, \"_com\")'" : ""]>[department]</label><div class='content'>"
-			output += {"<label class='inputlabel checkbox'>[job_lists[department][1]]
-						<input type='checkbox' id='[job_lists[department][1]]_dep' name='[job_lists[department][1]]' class='[department]' value='1'[usr.client.prefs.tgui_fancy ? " onClick='toggle_head(this, \"_com\")'" : ""]>
-						<div class='inputbox[(job_lists[department][1] in banned_from) ? " banned" : ""]'></div></label>
-			"}
-			break_counter = 1
-			for(var/job in job_lists[department] - job_lists[department][1]) //skip the first element since it's already been done
-				if(break_counter % 3 == 0)
-=======
 		output += "<div class='row'>"
 
 		for(var/datum/job_department/department as anything in SSjob.joinable_departments)
@@ -318,7 +274,6 @@
 			output += "<div class='column'><label class='rolegroup [label_class]'>[department_name]</label><div class='content'>"
 			for(var/datum/job/job_datum as anything in department.department_jobs)
 				if(break_counter > 0 && (break_counter % 3 == 0))
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 					output += "<br>"
 				break_counter++
 				var/job_name = job_datum.title

@@ -22,13 +22,10 @@
 
 	display_order = JOB_DISPLAY_ORDER_QUARTERMASTER
 	bounty_types = CIV_JOB_RANDOM
-<<<<<<< HEAD
-	departments = DEPARTMENT_CARGO | DEPARTMENT_COMMAND // SKYRAT EDIT
-=======
 	departments_list = list(
 		/datum/job_department/cargo,
+		/datum/job_department/command, //SKYRAT EDIT CHANGE
 		)
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 	family_heirlooms = list(/obj/item/stamp, /obj/item/stamp/denied)
 	mail_goodies = list(
 		/obj/item/circuitboard/machine/emitter = 3

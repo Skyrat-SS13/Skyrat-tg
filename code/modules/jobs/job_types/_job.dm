@@ -402,13 +402,8 @@
 	if(!player_client)
 		return // Disconnected while checking for the appearance ban.
 	if(fully_randomize)
-<<<<<<< HEAD
-		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments & DEPARTMENT_COMMAND))
-			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
-=======
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
-			if(player_client.prefs.pref_species.id != SPECIES_HUMAN)
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
+			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
 			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
 		else

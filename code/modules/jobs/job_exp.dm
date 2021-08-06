@@ -27,11 +27,7 @@ GLOBAL_PROTECT(exp_to_update)
 
 
 /datum/job/proc/get_exp_req_amount()
-<<<<<<< HEAD
-	if(title in (GLOB.central_command_positions | GLOB.command_positions | list("AI"))) //SKYRAT EDIT CHANGE
-=======
 	if(exp_required_type_department)
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 		var/uerhh = CONFIG_GET(number/use_exp_restrictions_heads_hours)
 		if(uerhh)
 			return uerhh * 60
@@ -39,24 +35,10 @@ GLOBAL_PROTECT(exp_to_update)
 
 
 /datum/job/proc/get_exp_req_type()
-<<<<<<< HEAD
-	if(title in (GLOB.central_command_positions | GLOB.command_positions | list("AI"))) //SKYRAT EDIT CHANGE
-		if(CONFIG_GET(flag/use_exp_restrictions_heads_department) && exp_type_department)
-			return exp_type_department
-	return exp_type
-
-/proc/job_is_xp_locked(jobtitle)
-	if(!CONFIG_GET(flag/use_exp_restrictions_heads) && (jobtitle in (GLOB.central_command_positions | GLOB.command_positions | list("AI")))) //SKYRAT EDIT CHANGE
-		return FALSE
-	if(!CONFIG_GET(flag/use_exp_restrictions_other) && !(jobtitle in (GLOB.central_command_positions | GLOB.command_positions | list("AI")))) //SKYRAT EDIT CHANGE
-		return FALSE
-	return TRUE
-=======
 	if(exp_required_type_department && CONFIG_GET(flag/use_exp_restrictions_heads_department))
 		return exp_required_type_department
 	return exp_required_type
 
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 
 /client/proc/calc_exp_type(exptype)
 	var/list/job_list = SSjob.experience_jobs_map[exptype]

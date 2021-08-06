@@ -141,12 +141,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/datum/data/record/foundrecord = find_record("name", name, GLOB.data_core.general)
 	if(foundrecord)
 		foundrecord.fields["rank"] = assignment
-<<<<<<< HEAD
-/* SKYRAT EDIT MOVAL - OVERWRITTEN IN ALTJOBTITLES
-=======
 
-
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 /datum/datacore/proc/get_manifest()
 	// First we build up the order in which we want the departments to appear in.
 	var/list/manifest_out = list()
@@ -188,7 +183,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			manifest_out -= department
 
 	return manifest_out
-*/
 
 
 /datum/datacore/proc/get_manifest_html(monochrome = FALSE)

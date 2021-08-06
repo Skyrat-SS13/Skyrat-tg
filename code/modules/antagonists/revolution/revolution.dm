@@ -22,11 +22,7 @@
 /datum/antagonist/rev/can_be_owned(datum/mind/new_owner)
 	. = ..()
 	if(.)
-<<<<<<< HEAD
-		if(new_owner.assigned_role.departments & (DEPARTMENT_COMMAND|DEPARTMENT_CENTRAL_COMMAND))
-=======
-		if(new_owner.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
+		if(new_owner.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND))//SKYRAT EDIT CHANGE
 			return FALSE
 		if(new_owner.unconvertable)
 			return FALSE
@@ -421,11 +417,7 @@
 			if (isnull(mind))
 				continue
 
-<<<<<<< HEAD
-			if (!(mind.assigned_role.departments & (DEPARTMENT_SECURITY|DEPARTMENT_COMMAND|DEPARTMENT_CENTRAL_COMMAND))) //SKYRAT EDIT CHANGE
-=======
-			if (!(mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND)))
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
+			if (!(mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
 				continue
 
 			if (mind in ex_revs + ex_headrevs)
@@ -443,14 +435,9 @@
 			else
 				mind.announce_objectives()
 
-<<<<<<< HEAD
-		for (var/job_name in GLOB.command_positions + GLOB.security_positions + GLOB.central_command_positions) //SKYRAT EDIT CHANGE
-			var/datum/job/job = SSjob.GetJob(job_name)
-=======
 		for(var/datum/job/job as anything in SSjob.joinable_occupations)
-			if(!(job.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND)))
+			if(!(job.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
 				continue
->>>>>>> 6c4134d1eaa (Job refactor 2: less hardcoded lists (#60578))
 			job.allow_bureaucratic_error = FALSE
 			job.total_positions = 0
 
