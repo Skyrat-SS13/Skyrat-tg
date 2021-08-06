@@ -141,6 +141,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/datum/data/record/foundrecord = find_record("name", name, GLOB.data_core.general)
 	if(foundrecord)
 		foundrecord.fields["rank"] = assignment
+		foundrecord.fields["truerank"] = assignment // SKYRAT EDIT - ALT TITLES
 
 /datum/datacore/proc/get_manifest()
 	// First we build up the order in which we want the departments to appear in.
@@ -153,12 +154,14 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	for(var/datum/data/record/record as anything in GLOB.data_core.general)
 		var/name = record.fields["name"]
 		var/rank = record.fields["rank"]
-		var/datum/job/job = SSjob.GetJob(rank)
+		var/truerank = record.fields["truerank"] // SKYRAT EDIT ADD - ALT TITLES
+		var/datum/job/job = SSjob.GetJob(truerank) // SKYRAT EDIT - ORIGINAL CALLED GetJob(rank)
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list)) // In case an unlawful custom rank is added.
 			var/list/misc_list = manifest_out[DEPARTMENT_UNASSIGNED]
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
+				"truerank" = truerank,
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -169,6 +172,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			var/list/entry = list(
 				"name" = name,
 				"rank" = rank,
+				"truerank" = truerank,
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -220,6 +224,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	if(H.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
 		var/assignment = H.mind.assigned_role.title
 		//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
+		var/true_assignment = assignment
 		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[assignment]) // latejoin
 			assignment = H.client.prefs.alt_titles_preferences[assignment]
 		else if(C && C.prefs && C.prefs.alt_titles_preferences[assignment]) // roundstart - yes both do separate things i don't fucking know why but they do and if they're not both there then they don't fucking work leave me ALONE
@@ -247,6 +252,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["id"] = id
 		G.fields["name"] = H.real_name
 		G.fields["rank"] = assignment
+		G.fields["truerank"] = true_assignment // SKYRAT EDIT ADD - ALT TITLES
 		G.fields["age"] = H.age
 		G.fields["species"] = H.dna.species.name
 		G.fields["fingerprint"] = md5(H.dna.unique_identity)
@@ -306,6 +312,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["id"] = md5("[H.real_name][assignment]") //surely this should just be id, like the others?
 		L.fields["name"] = H.real_name
 		L.fields["rank"] = assignment
+		L.fields["truerank"] = true_assignment // SKYRAT EDIT ADD - ALT TITLES
 		L.fields["age"] = H.age
 		L.fields["gender"] = H.gender
 		if(H.gender == "male")
