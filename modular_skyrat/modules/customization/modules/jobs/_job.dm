@@ -13,8 +13,6 @@
 	var/list/species_blacklist
 	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
 	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
-	//Alt titles
-	var/list/alt_titles = list()
 
 /datum/job/proc/has_banned_quirk(datum/preferences/pref)
 	if(!pref) //No preferences? We'll let you pass, this time (just a precautionary check,you dont wanna mess up gamemode setting logic)

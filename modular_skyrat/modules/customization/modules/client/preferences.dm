@@ -143,8 +143,6 @@ GLOBAL_LIST_INIT(food, list(
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
 	var/list/job_preferences = list()
 
-	// Alternate Job Titles
-	var/list/alt_titles_preferences = list()
 		// Want randomjob if preferences already filled - Donkie
 	var/joblessrole = BERANDOMJOB  //defaults to 1 for fewer assistants
 

@@ -486,13 +486,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["job_preferences"], job_preferences)
 	//Load Alternate Job Titles
 	S["alt_titles_preferences"]			>> alt_titles_preferences
-	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
-	if(SSjob)
-		for(var/datum/job/job as anything in sortList(SSjob.joinable_occupations, /proc/cmp_job_display_asc))
-			if(alt_titles_preferences[job.title])
-				if(!(alt_titles_preferences[job.title] in job.alt_titles))
-					alt_titles_preferences.Remove(job.title)
-
 	//Quirks
 	READ_FILE(S["all_quirks"], all_quirks)
 
