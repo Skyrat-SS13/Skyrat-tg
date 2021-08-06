@@ -34,7 +34,6 @@
 	disliked_food = VEGETABLES | FRUIT | CLOTH
 	liked_food = RAW | MEAT
 	payday_modifier = 0.75 //-- "Equality"
-	speedmod = -0.15 //speedy mfer
 	//armor = -100 //2x more damage
 	brutemod = 2
 	burnmod = 2
