@@ -85,3 +85,5 @@
 /obj/effect/landmark/start/fleet_admiral
 	name = "Fleet Admiral"
 	icon_state = "Captain"
+	delete_after_roundstart = FALSE
+	jobspawn_override = TRUE

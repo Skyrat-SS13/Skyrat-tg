@@ -43,3 +43,5 @@
 /obj/effect/landmark/start/bridge_officer
 	name = "Bridge Officer"
 	icon_state = "Captain"
+	delete_after_roundstart = FALSE
+	jobspawn_override = TRUE

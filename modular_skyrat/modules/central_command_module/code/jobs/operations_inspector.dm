@@ -43,3 +43,5 @@
 /obj/effect/landmark/start/operations_inspector
 	name = "Operations Inspector"
 	icon_state = "Captain"
+	delete_after_roundstart = FALSE
+	jobspawn_override = TRUE

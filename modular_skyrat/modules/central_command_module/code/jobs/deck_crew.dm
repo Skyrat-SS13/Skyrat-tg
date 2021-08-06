@@ -44,3 +44,5 @@
 /obj/effect/landmark/start/deck_crew
 	name = "Deck Crewman"
 	icon_state = "Captain"
+	delete_after_roundstart = FALSE
+	jobspawn_override = TRUE
