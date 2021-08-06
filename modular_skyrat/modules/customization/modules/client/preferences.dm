@@ -3071,12 +3071,12 @@ GLOBAL_LIST_INIT(food, list(
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
-
+/* GO AWAY SAVE BREAKER
 	if(!(pref_species.id in GLOB.customizable_races))
 		chosen_species = /datum/species/human
 		set_new_species(/datum/species/human)
 		save_character()
-
+*/
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
 
 	character.dna.update_body_size()
