@@ -1427,8 +1427,9 @@ GLOBAL_LIST_INIT(food, list(
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
 				continue
 			var/rank_title_line = "[displayed_rank]"
-			if((rank in GLOB.command_positions) || (rank == "AI")) // Bold head jobs
+			if(job.job_flags & JOB_BOLD_SELECT_TEXT)//Bold head jobs
 				rank_title_line = "<b>[rank_title_line]</b>"
+
 			if(job.alt_titles.len)
 				rank_title_line = "<a href='?_src_=prefs;preference=job;task=alt_title;job_title=[job.title]'>[rank_title_line]</a>"
 			else
@@ -3100,7 +3101,7 @@ GLOBAL_LIST_INIT(food, list(
 /datum/preferences/proc/should_be_random_hardcore(datum/job/job, datum/mind/mind)
 	if(!randomise[RANDOM_HARDCORE])
 		return FALSE
-	if(job.departments & DEPARTMENT_COMMAND) //No command staff
+	if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) //No command staff
 		return FALSE
 	for(var/datum/antagonist/antag as anything in mind.antag_datums)
 		if(antag.get_team()) //No team antags

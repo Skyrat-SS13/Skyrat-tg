@@ -240,7 +240,7 @@
 	retreat_distance = 5
 	minimum_distance = 5
 	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
-	robust_searching = 1
+	robust_searching = 0
 	maxHealth = 50
 	health = 50
 	harm_intent_damage = 5
@@ -251,7 +251,6 @@
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 15
-	check_friendly_fire = 1
 	dodging = TRUE
 	rapid_melee = 2
 	del_on_death = 1
@@ -273,8 +272,7 @@
 	minimum_distance = 6
 	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
 	rapid_melee = 1
-	dodging = FALSE
-	robust_searching = 1
+	robust_searching = 0
 	maxHealth = 80
 	health = 80
 	harm_intent_damage = 5
@@ -309,7 +307,7 @@
 	attack_verb_simple = "bash"
 	attack_sound = 'sound/weapons/smash.ogg'
 	status_flags = 0
-	robust_searching = 1
+	robust_searching = 0
 	maxHealth = 100
 	health = 100
 	harm_intent_damage = 5
@@ -431,14 +429,21 @@
 
 /obj/effect/spawner/lootdrop/prison/prisoner
 	name = "Prisoner Loot"
-	loot = list(/obj/item/chainsaw = 1,
-				/obj/item/fireaxe = 1,
+	loot = list(
 				/obj/item/melee/baseball_bat = 5,
 				/obj/item/kitchen/knife/shiv = 5,
 				/obj/item/storage/firstaid/regular = 3,
 				/obj/item/storage/fancy/cigarettes/cigpack_cannabis = 5,
 				/obj/item/clothing/mask/cigarette/rollie/cannabis = 10,
 				/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 15,
+				/obj/item/shovel = 5,
+				/obj/item/hatchet/wooden = 5,
+				/obj/item/switchblade = 1,
+				/obj/item/stack/sheet/cloth = 10,
+				/obj/item/toy/figure/prisoner = 5,
+				/obj/item/poster/random_contraband = 10,
+				/obj/item/grown/snapcorn = 10,
+				/obj/item/pickaxe = 5
 				)
 
 /obj/effect/spawner/lootdrop/prison/doc
@@ -448,10 +453,15 @@
 				/obj/item/storage/firstaid/advanced = 1,
 				/obj/item/storage/firstaid/fire = 3,
 				/obj/item/storage/firstaid/toxin = 3,
-				/obj/item/reagent_containers/syringe/penacid = 5,
-				/obj/item/reagent_containers/syringe/salacid = 15,
-				/obj/item/reagent_containers/syringe/oxandrolone = 10,
+				/obj/item/reagent_containers/syringe/penacid = 2,
+				/obj/item/reagent_containers/syringe/salacid = 3,
+				/obj/item/reagent_containers/syringe/oxandrolone = 5,
 				/obj/item/stack/medical/suture/medicated = 5,
+				/obj/item/stack/medical/suture = 15,
+				/obj/item/scalpel = 10,
+				/obj/item/retractor = 10,
+				/obj/item/clothing/glasses/science = 5,
+				/obj/item/reagent_containers/glass/beaker = 15,
 				/obj/item/clothing/under/scalamovdoc = 8)
 
 /obj/effect/spawner/lootdrop/prison/zedguard
@@ -459,12 +469,17 @@
 	loot = list(/obj/item/shield/riot = 1,
 				/obj/item/clothing/under/scalamovguard = 2,
 				/obj/item/clothing/mask/cigarette/uplift = 10,
-				/obj/item/clothing/suit/armor/riot = 2,
-				/obj/item/ammo_box/c9mm = 2,
-				/obj/item/ammo_box/c45 = 3,
-				/obj/item/ammo_box/magazine/wt550m9 = 1,
+				/obj/item/ammo_box/c9mm = 1,
+				/obj/item/ammo_box/c45 = 1,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 15,
-				/obj/item/clothing/head/helmet/riot = 5
+				/obj/item/clothing/head/helmet/riot = 5,
+				/obj/item/clothing/glasses/sunglasses = 10,
+				/obj/item/clothing/gloves/color/black = 5,
+				/obj/item/poster/random_official = 5,
+				/obj/item/flashlight/seclite = 10,
+				/obj/item/grenade/barrier = 5,
+				/obj/item/clothing/mask/gas/sechailer/swat = 5,
+				/obj/item/clothing/mask/gas/sechailer/swat/spacepol = 5
 				)
 
 /obj/effect/spawner/lootdrop/prison/guard
@@ -480,7 +495,9 @@
 				/obj/item/storage/box/lethalshot = 2,
 				/obj/item/kitchen/knife/combat = 2,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 15,
-				/obj/item/clothing/head/helmet/riot = 5
+				/obj/item/clothing/head/helmet/riot = 5,
+				/obj/item/poster/random_official = 15,
+				/obj/item/flashlight/seclite = 10,
 				)
 
 /obj/effect/spawner/lootdrop/prison/warden
@@ -529,7 +546,6 @@
 /obj/effect/mob_spawn/human/scalamovguard
 	name = "guard cryo pod"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
-	mob_name = "Scalamov Guard"
 	icon = 'modular_skyrat/modules/stasisrework/icons/obj/machines/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
@@ -556,7 +572,6 @@
 /obj/effect/mob_spawn/human/scalamovdoc
 	name = "Scalamov Doctor"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
-	mob_name = "Scalamov Doctor"
 	icon = 'modular_skyrat/modules/stasisrework/icons/obj/machines/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
@@ -583,7 +598,6 @@
 /obj/effect/mob_spawn/human/scalamovinmateally
 	name = "Scalamov Prisoner"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
-	mob_name = "Scalamov Prisoner"
 	icon = 'modular_skyrat/modules/stasisrework/icons/obj/machines/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
@@ -607,7 +621,6 @@
 /obj/effect/mob_spawn/human/scalamovinmatehostile
 	name = "Scalamov Hostile Inmate"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
-	mob_name = "Scalamov Hostile Inmate"
 	icon = 'modular_skyrat/modules/stasisrework/icons/obj/machines/stasissleeper.dmi'
 	icon_state = "sleeper"
 	density = FALSE
