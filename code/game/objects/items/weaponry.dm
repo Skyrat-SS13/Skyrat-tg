@@ -649,7 +649,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	inhand_icon_state = "baseball_bat"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
-	force = 10
+	force = 12
 	wound_bonus = -10
 	throwforce = 12
 	attack_verb_continuous = list("beats", "smacks")
@@ -663,9 +663,12 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	. = ..()
 	if(prob(1))
 		name = "cricket bat"
-		desc = "You've got red on you."
 		icon_state = "baseball_bat_brit"
 		inhand_icon_state = "baseball_bat_brit"
+		if(prob(50))
+			desc = "You've got red on you."
+		else
+			desc = "You gotta know what a crumpet is to understand cricket."
 
 	AddElement(/datum/element/kneecapping)
 
@@ -704,7 +707,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	else if(!target.anchored)
 		//var/whack_speed = (prob(60) ? 1 : 4) //ORIGINAL
 		var/whack_speed = 1 //SKYRAT EDIT CHANGE
-		target.throw_at(throw_target, rand(1, 2), whack_speed, user) // sorry friends, 7 speed batting caused wounds to absolutely delete whoever you knocked your target into (and said target)
+		target.throw_at(throw_target, rand(1, 2), whack_speed, user, gentle = TRUE) // sorry friends, 7 speed batting caused wounds to absolutely delete whoever you knocked your target into (and said target)
 
 /obj/item/melee/baseball_bat/ablative
 	name = "metal baseball bat"

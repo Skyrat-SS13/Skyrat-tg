@@ -17,7 +17,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 
-/obj/item/storage/belt/military/expeditionary_corps/PopulateContents()
+/obj/item/storage/belt/military/expeditionary_corps/combat_tech
+	name = "combat tech's chest rig"
+
+/obj/item/storage/belt/military/expeditionary_corps/combat_tech/PopulateContents()
 	new /obj/item/screwdriver(src)
 	new /obj/item/wrench(src)
 	new /obj/item/weldingtool(src)
@@ -25,6 +28,35 @@
 	new /obj/item/wirecutters(src)
 	new /obj/item/multitool(src)
 	new /obj/item/stack/cable_coil(src)
+
+/obj/item/storage/belt/military/expeditionary_corps/field_medic
+	name = "field medic's chest rig"
+
+/obj/item/storage/belt/military/expeditionary_corps/field_medic/PopulateContents()
+	new /obj/item/scalpel(src)
+	new /obj/item/circular_saw/field_medic(src)
+	new /obj/item/hemostat(src)
+	new /obj/item/retractor(src)
+	new /obj/item/cautery(src)
+	new /obj/item/surgical_drapes(src)
+	new /obj/item/bonesetter(src)
+
+/obj/item/storage/belt/military/expeditionary_corps/pointman
+	name = "pointman's chest rig"
+
+/obj/item/storage/belt/military/expeditionary_corps/pointman/PopulateContents()
+	new /obj/item/reagent_containers/food/drinks/bottle/whiskey(src)
+	new /obj/item/stack/sheet/plasteel(src,5)
+	new /obj/item/reagent_containers/glass/bottle/morphine(src)
+
+/obj/item/storage/belt/military/expeditionary_corps/marksman
+	name = "marksman's chest rig"
+
+/obj/item/storage/belt/military/expeditionary_corps/marksman/PopulateContents()
+	new /obj/item/binoculars(src)
+	new /obj/item/storage/fancy/cigarettes/cigpack_robust(src)
+	new /obj/item/lighter(src)
+	new /obj/item/clothing/mask/bandana/skull(src)
 
 /obj/item/clothing/shoes/combat/expeditionary_corps
 	name = "expeditionary corps boots"
@@ -35,11 +67,43 @@
 	inhand_icon_state = "exp_corps"
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, RAD = 40, FIRE = 80, ACID = 100, WOUND = 30)
 
-/obj/item/clothing/gloves/combat/expeditionary_corps
+/obj/item/clothing/gloves/color/black/expeditionary_corps
 	name = "expeditionary corps gloves"
 	icon_state = "exp_corps"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	resistance_flags = FIRE_PROOF
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 50)
+
+/obj/item/clothing/gloves/color/chief_engineer/expeditionary_corps
+	name = "expeditionary corps insulated gloves"
+	icon_state = "exp_corps_eng"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	worn_icon_state = "exp_corps"
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	resistance_flags = FIRE_PROOF
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 50)
+
+/obj/item/clothing/gloves/color/latex/nitrile/expeditionary_corps
+	name = "expeditionary corps medic gloves"
+	icon_state = "exp_corps_med"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/gloves.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
+	worn_icon_state = "exp_corps"
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	resistance_flags = FIRE_PROOF
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 50)
 
 /obj/item/storage/backpack/duffelbag/expeditionary_corps
 	name = "expeditionary corps bag"

@@ -9,6 +9,7 @@
 	recommended_species = list("human", "synthhuman", "felinid", "lizard", "synthmammal", "mammal", "synthliz")
 	organ_type = /obj/item/organ/wings
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.wear_suit && H.try_hide_mutant_parts)
@@ -165,6 +166,7 @@
 	name = "Dragon (synthetic alt)"
 	icon_state = "dragonsynth"
 	color_src = USE_MATRIXED_COLORS
+	genetic = FALSE
 
 /datum/sprite_accessory/wings/mammal/dragon_alt1
 	name = "Dragon (alt 1)"
@@ -210,3 +212,13 @@
 	name = "Harpy (Bat) (Top)"
 	icon_state = "harpybat_top"
 	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/low_wings
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings"
+	icon_state = "low"
+
+/datum/sprite_accessory/wings/low_wings_top
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
+	name = "Low wings (Top)"
+	icon_state = "low_top"

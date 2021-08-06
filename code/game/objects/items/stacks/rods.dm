@@ -6,7 +6,9 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	new/datum/stack_recipe("railing", /obj/structure/railing, 3, time = 18, window_checks = TRUE), \
 	new/datum/stack_recipe("tank holder", /obj/structure/tank_holder, 2, time = 5, one_per_turf = TRUE, on_floor = FALSE), \
 	new/datum/stack_recipe("ladder", /obj/structure/ladder/crafted, 15, time = 150, one_per_turf = TRUE, on_floor = FALSE), \
+	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 18, window_checks = TRUE), \
 	))
+//the wrestling ropes recipe is a SKYRAT EDIT
 
 /obj/item/stack/rods
 	name = "iron rod"
@@ -39,6 +41,11 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 /obj/item/stack/rods/Initialize(mapload, new_amount, merge = TRUE, list/mat_override=null, mat_amt=1)
 	. = ..()
 	update_appearance()
+	AddElement(/datum/element/openspace_item_click_handler)
+
+/obj/item/stack/rods/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
+	if(proximity_flag)
+		target.attackby(src, user, click_parameters)
 
 /obj/item/stack/rods/get_main_recipes()
 	. = ..()

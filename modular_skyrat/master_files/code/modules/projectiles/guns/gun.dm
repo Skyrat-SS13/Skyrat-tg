@@ -56,6 +56,8 @@
 	var/obj/item/firing_pin/pin = /obj/item/firing_pin //standard firing pin for most guns
 
 	var/can_flashlight = FALSE //if a flashlight can be added or removed if it already has one.
+	/// True if a gun dosen't need a pin, mostly used for abstract guns like tentacles and meathooks
+	var/pinless = FALSE
 	var/obj/item/flashlight/seclite/gun_light
 	var/datum/action/item_action/toggle_gunlight/alight
 	var/gunlight_state = "flight"
@@ -106,7 +108,7 @@
 
 /obj/item/gun/Initialize()
 	. = ..()
-	if(pin)
+	if(pin && !pinless)
 		pin = new pin(src)
 
 	if(gun_light)
@@ -148,7 +150,7 @@
 		QDEL_NULL(chambered)
 	if(azoom)
 		QDEL_NULL(azoom)
-	if(suppressed)
+	if(isatom(suppressed))
 		QDEL_NULL(suppressed)
 	if(tsafety)
 		QDEL_NULL(tsafety)
@@ -179,11 +181,12 @@
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
-	if(pin)
-		. += "It has \a [pin] installed."
-		. += "<span class='info'>[pin] looks like it could be removed with some <b>tools</b>.</span>"
-	else
-		. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
+	if(!pinless)
+		if(pin)
+			. += "It has \a [pin] installed."
+			. += span_info("[pin] looks like it could be removed with some <b>tools</b>.")
+		else
+			. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
 
 	if(gun_light)
 		. += "It has \a [gun_light] [can_flashlight ? "" : "permanently "]mounted on it."
@@ -390,6 +393,8 @@
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
+	if(pinless)
+		return TRUE
 	if(pin)
 		if(pin.pin_auth(user) || (pin.obj_flags & EMAGGED))
 			return TRUE
@@ -693,9 +698,7 @@
 
 /obj/item/gun/proc/update_gunlight()
 	update_appearance()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
+	update_action_buttons()
 
 /obj/item/gun/pickup(mob/user)
 	. = ..()

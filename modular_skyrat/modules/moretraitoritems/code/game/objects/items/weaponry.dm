@@ -30,4 +30,8 @@
 		//I.throw_mode_off(THROW_MODE_TOGGLE) //so they can catch it on the return.
 	//return ..()
 
-
+/obj/item/katana/weak/curator //This has the same stats as the curator's claymore
+	desc = "An ancient Katana. Forged by... Well, it doesn't really say, but surely it's authentic! And sharp to boot!"
+	force = 15
+	block_chance = 30
+	armour_penetration = 5

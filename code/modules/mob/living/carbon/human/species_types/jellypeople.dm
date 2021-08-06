@@ -242,19 +242,12 @@
 	spare.underwear = "Nude"
 	H.dna.transfer_identity(spare, transfer_SE=1)
 	spare.dna.features["mcolor"] = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
+	spare.dna.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
 	spare.real_name = spare.dna.real_name
 	spare.name = spare.dna.real_name
 	spare.updateappearance(mutcolor_update=1)
 	spare.domutcheck()
 	spare.Move(get_step(H.loc, pick(NORTH,SOUTH,EAST,WEST)))
-
-
-	var/datum/component/nanites/owner_nanites = H.GetComponent(/datum/component/nanites)
-	if(owner_nanites)
-		//copying over nanite programs/cloud sync with 50% saturation in host and spare
-		owner_nanites.nanite_volume *= 0.5
-		spare.AddComponent(/datum/component/nanites, owner_nanites.nanite_volume)
-		SEND_SIGNAL(spare, COMSIG_NANITE_SYNC, owner_nanites, TRUE, TRUE) //The trues are to copy activation as well
 
 	H.blood_volume *= 0.45
 	H.notransform = 0

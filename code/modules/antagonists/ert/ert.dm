@@ -5,6 +5,11 @@
 
 /datum/antagonist/ert
 	name = "Emergency Response Officer"
+	can_elimination_hijack = ELIMINATION_PREVENT
+	show_in_antagpanel = FALSE
+	show_to_ghosts = TRUE
+	antag_moodlet = /datum/mood_event/focused
+	suicide_cry = "FOR NANOTRASEN!!"
 	var/datum/team/ert/ert_team
 	var/leader = FALSE
 	var/datum/outfit/outfit = /datum/outfit/centcom/ert/security
@@ -15,11 +20,9 @@
 	var/rip_and_tear = FALSE
 	var/equip_ert = TRUE
 	var/forge_objectives_for_ert = TRUE
-	can_elimination_hijack = ELIMINATION_PREVENT
-	show_in_antagpanel = FALSE
-	show_to_ghosts = TRUE
-	antag_moodlet = /datum/mood_event/focused
-	suicide_cry = "FOR NANOTRASEN!!"
+	/// Typepath indicating the kind of job datum this ert member will have.
+	var/ert_job_path = /datum/job/ert_generic
+
 
 /datum/antagonist/ert/on_gain()
 	if(random_names)
@@ -354,3 +357,23 @@
 /datum/antagonist/ert/families/beatcop/military/New()
 	. = ..()
 	name_source = GLOB.commando_names
+
+/datum/antagonist/ert/marine
+	name = "Marine Commander"
+	outfit = /datum/outfit/centcom/ert/marine
+	role = "Commander"
+
+/datum/antagonist/ert/marine/security
+	name = "Marine Heavy"
+	outfit = /datum/outfit/centcom/ert/marine/security
+	role = "Trooper"
+
+/datum/antagonist/ert/marine/engineer
+	name = "Marine Engineer"
+	outfit = /datum/outfit/centcom/ert/marine/engineer
+	role = "Engineer"
+
+/datum/antagonist/ert/marine/medic
+	name = "Marine Medic"
+	outfit = /datum/outfit/centcom/ert/marine/medic
+	role = "Medical Officer"
