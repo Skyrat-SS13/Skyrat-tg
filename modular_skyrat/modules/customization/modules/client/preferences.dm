@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(preferences_datums)
+
 // i shall taint your pretty preferences file with bobcode
 GLOBAL_LIST_INIT(food, list(
 		"Meat" = MEAT,
@@ -77,6 +79,8 @@ GLOBAL_LIST_INIT(food, list(
 	var/inquisitive_ghost = 1
 	var/allow_midround_antag = 1
 	var/preferred_map = null
+	var/pda_style = MONO
+	var/pda_color = "#808000"
 
 	//aphrodisiac preference
 	var/aphrodisiacs_pref = 1
@@ -127,9 +131,6 @@ GLOBAL_LIST_INIT(food, list(
 	var/list/fooddislikes = list()
 	var/maxlikes = 4
 	var/maxdislikes = 6
-
-	var/pda_style = MONO
-	var/pda_color = "#808000"
 	var/pda_ringer = "beep" //text the PDA emits when messaged
 
 	var/list/custom_names = list()
@@ -192,7 +193,7 @@ GLOBAL_LIST_INIT(food, list(
 	/// If we have persistent scars enabled
 	var/persistent_scars = TRUE
 	///If we want to broadcast deadchat connect/disconnect messages
-	var/broadcast_login_logout = FALSE
+	var/broadcast_login_logout = TRUE
 	///What outfit typepaths we've favorited in the SelectEquipment menu
 	var/list/favorite_outfits = list()
 	///If TRUE, we replace the flash effect from flashes with a solid black screen
@@ -1056,6 +1057,9 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Action Buttons:</b> <a href='?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
 			dat += "<b>Hotkey mode:</b> <a href='?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 			dat += "<br>"
+			dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
+			dat += "<b>PDA Style:</b> <a href='?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
+			dat += "<br>"
 			dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "All Messages":"No Messages"]</a><br>"
 			dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'>[(chat_toggles & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</a><br>"
@@ -1549,7 +1553,7 @@ GLOBAL_LIST_INIT(food, list(
 
 /datum/preferences/proc/SetQuirks(mob/user)
 	if(!SSquirks)
-		to_chat(user, "<span class='danger'>The quirk subsystem is still initializing! Try again in a minute.</span>")
+		to_chat(user, span_danger("The quirk subsystem is still initializing! Try again in a minute."))
 		return
 
 	var/list/dat = list()
@@ -1640,11 +1644,11 @@ GLOBAL_LIST_INIT(food, list(
 				continue
 			ban_details = i
 			break //we only want to get the most recent ban's details
-		if(ban_details && ban_details.len)
+		if(ban_details?.len)
 			var/expires = "This is a permanent ban."
 			if(ban_details["expiration_time"])
 				expires = " The ban is for [DisplayTimeText(text2num(ban_details["duration"]) MINUTES)] and expires on [ban_details["expiration_time"]] (server time)."
-			to_chat(user, "<span class='danger'>You, or another user of this computer or connection ([ban_details["key"]]) is banned from playing [href_list["bancheck"]].<br>The ban reason is: [ban_details["reason"]]<br>This ban (BanID #[ban_details["id"]]) was applied by [ban_details["admin_key"]] on [ban_details["bantime"]] during round ID [ban_details["round_id"]].<br>[expires]</span>")
+			to_chat(user, span_danger("You, or another user of this computer or connection ([ban_details["key"]]) is banned from playing [href_list["bancheck"]].<br>The ban reason is: [ban_details["reason"]]<br>This ban (BanID #[ban_details["id"]]) was applied by [ban_details["admin_key"]] on [ban_details["bantime"]] during round ID [ban_details["round_id"]].<br>[expires]"))
 			return
 	if(href_list["preference"] == "job")
 		switch(href_list["task"])
@@ -1704,19 +1708,19 @@ GLOBAL_LIST_INIT(food, list(
 						continue
 					for(var/Q in all_quirks)
 						if((Q in L) && !(Q == quirk)) //two quirks have lined up in the list of the list of quirks that conflict with each other, so return (see quirks.dm for more details)
-							to_chat(user, "<span class='danger'>[quirk] is incompatible with [Q].</span>")
+							to_chat(user, span_danger("[quirk] is incompatible with [Q]."))
 							return
 				var/value = SSquirks.quirk_points[quirk]
 				var/balance = GetQuirkBalance()
 				if(quirk in all_quirks)
 					if(balance + value < 0)
-						to_chat(user, "<span class='warning'>Refunding this would cause you to go below your balance!</span>")
+						to_chat(user, span_warning("Refunding this would cause you to go below your balance!"))
 						return
 					all_quirks -= quirk
 				else
 					var/is_positive_quirk = SSquirks.quirk_points[quirk] > 0
 					if(is_positive_quirk && GetPositiveQuirkCount() >= MAX_QUIRKS)
-						to_chat(user, "<span class='warning'>You can't have more than [MAX_QUIRKS] positive quirks!</span>")
+						to_chat(user, span_warning("You can't have more than [MAX_QUIRKS] positive quirks!"))
 						return
 					if(balance - value < 0)
 						to_chat(user, "<span class='warning'>You don't have enough balance to gain this quirk!</span>")
@@ -2099,7 +2103,7 @@ GLOBAL_LIST_INIT(food, list(
 							ghost_orbit = new_orbit
 
 				if("ghostaccs")
-					var/new_ghost_accs = tgui_alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?", "", list(GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME))
+					var/new_ghost_accs = tgui_alert(usr,"Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,list(GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME))
 					switch(new_ghost_accs)
 						if(GHOST_ACCS_FULL_NAME)
 							ghost_accs = GHOST_ACCS_FULL
@@ -2109,7 +2113,7 @@ GLOBAL_LIST_INIT(food, list(
 							ghost_accs = GHOST_ACCS_NONE
 
 				if("ghostothers")
-					var/new_ghost_others = tgui_alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?", "", list(GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME))
+					var/new_ghost_others = tgui_alert(usr,"Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,list(GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME))
 					switch(new_ghost_others)
 						if(GHOST_OTHERS_THEIR_SETTING_NAME)
 							ghost_others = GHOST_OTHERS_THEIR_SETTING
@@ -2665,11 +2669,11 @@ GLOBAL_LIST_INIT(food, list(
 					var/pickedGender = input(user, "Choose your gender.", "Character Preference", gender) as null|anything in friendlyGenders
 					if(pickedGender && friendlyGenders[pickedGender] != gender)
 						gender = friendlyGenders[pickedGender]
-						//underwear = random_underwear(gender)
-						//undershirt = random_undershirt(gender)
-						//socks = random_socks()
-						//facial_hairstyle = random_facial_hairstyle(gender)
-						//hairstyle = random_hairstyle(gender) //TODO: this is just a bandaid. Remove those restrictions later
+						underwear = random_underwear(gender)
+						undershirt = random_undershirt(gender)
+						socks = random_socks()
+						facial_hairstyle = random_facial_hairstyle(gender)
+						hairstyle = random_hairstyle(gender)
 				if("body_type")
 					needs_update = TRUE
 					if(body_type == MALE)
@@ -2744,7 +2748,7 @@ GLOBAL_LIST_INIT(food, list(
 					save_preferences()
 
 				if("keybindings_reset")
-					var/choice = tgui_alert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))
+					var/choice = tgui_alert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"), 60 SECONDS)
 					if(choice == "Cancel")
 						ShowChoices(user)
 						return
@@ -2819,7 +2823,7 @@ GLOBAL_LIST_INIT(food, list(
 				if("clear_scars")
 					var/path = "data/player_saves/[user.ckey[1]]/[user.ckey]/scars.sav"
 					fdel(path)
-					to_chat(user, "<span class='notice'>All scar slots cleared.</span>")
+					to_chat(user, span_notice("All scar slots cleared."))
 
 				if("hear_midis")
 					toggles ^= SOUND_MIDI
@@ -3001,7 +3005,7 @@ GLOBAL_LIST_INIT(food, list(
 				if("clear_heart")
 					hearted = FALSE
 					hearted_until = null
-					to_chat(user, "<span class='notice'>OOC Commendation Heart disabled</span>")
+					to_chat(user, span_notice("OOC Commendation Heart disabled"))
 					save_preferences()
 
 	ShowChoices(user)
@@ -3009,10 +3013,6 @@ GLOBAL_LIST_INIT(food, list(
 
 /// Sanitization checks to be performed before using these preferences.
 /datum/preferences/proc/sanitize_chosen_prefs()
-	if(!(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
-		pref_species = new /datum/species/human
-		save_character()
-
 	if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
@@ -3028,7 +3028,7 @@ GLOBAL_LIST_INIT(food, list(
 	apply_prefs_to(character, icon_updates)
 
 /// Applies the given preferences to a human mob.
-/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, preview = FALSE)
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	character.real_name = real_name
 	character.name = real_name
 
@@ -3086,7 +3086,7 @@ GLOBAL_LIST_INIT(food, list(
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, preview, src)
+			aug.apply(character, prefs = src)
 
 	if(icon_updates)
 		character.update_body()
@@ -3117,9 +3117,11 @@ GLOBAL_LIST_INIT(food, list(
 		if("mime")
 			return pick(GLOB.mime_names)
 		if("religion")
-			return DEFAULT_RELIGION
+			return pick(GLOB.religion_names)
 		if("deity")
 			return DEFAULT_DEITY
+		if("bible")
+			return DEFAULT_BIBLE
 	return random_unique_name()
 
 /datum/preferences/proc/ask_for_custom_name(mob/user,name_id)
@@ -3140,6 +3142,78 @@ GLOBAL_LIST_INIT(food, list(
 			return
 		else
 			custom_names[name_id] = sanitized_name
+
+	if(name_id == "religion")
+		update_bible_and_deity_name(custom_names[name_id])
+
+/datum/preferences/proc/update_bible_and_deity_name(religion)
+	switch(lowertext(religion))
+		if("christianity") // DEFAULT_RELIGION
+			custom_names["bible"] = pick("The Holy Bible","The Dead Sea Scrolls")
+			custom_names["deity"] = "Space Jesus"
+		if("buddhism")
+			custom_names["bible"] = "The Sutras"
+			custom_names["deity"] = "Buddha"
+		if("clownism","honkmother","honk","honkism","comedy")
+			custom_names["bible"] = pick("The Holy Joke Book", "Just a Prank", "Hymns to the Honkmother")
+			custom_names["deity"] = "The Honkmother"
+		if("chaos")
+			custom_names["bible"] = "The Book of Lorgar"
+			custom_names["deity"] = pick("Chaos Gods", "Dark Gods", "Ruinous Powers")
+		if("cthulhu")
+			custom_names["bible"] = "The Necronomicon"
+			custom_names["deity"] = pick("Great Old Ones", "Old Ones")
+		if("hinduism")
+			custom_names["bible"] = "The Vedas"
+			custom_names["deity"] = pick("Brahma", "Vishnu", "Shiva")
+		if("imperium")
+			custom_names["bible"] = "Uplifting Primer"
+			custom_names["deity"] = "Astra Militarum"
+		if("islam")
+			custom_names["bible"] = "Quran"
+			custom_names["deity"] = "Allah"
+		if("judaism")
+			custom_names["bible"] = "The Torah"
+			custom_names["deity"] = "Yahweh"
+		if("lampism")
+			custom_names["bible"] = "Fluorescent Incandescence"
+			custom_names["deity"] = "Lamp"
+		if("monkeyism","apism","gorillism","primatism")
+			custom_names["bible"] = pick("Going Bananas", "Bananas Out For Harambe")
+			custom_names["deity"] = pick("Harambe", "monky")
+		if("mormonism")
+			custom_names["bible"] = "The Book of Mormon"
+			custom_names["deity"] = pick("God", "Elohim", "Godhead")
+		if("pastafarianism")
+			custom_names["bible"] = "The Gospel of the Flying Spaghetti Monster"
+			custom_names["deity"] = "Flying Spaghetti Monster"
+		if("rastafarianism","rasta")
+			custom_names["bible"] = "The Holy Piby"
+			custom_names["deity"] = "Haile Selassie I"
+		if("satanism")
+			custom_names["bible"] = "The Unholy Bible"
+			custom_names["deity"] = "Satan"
+		if("sikhism")
+			custom_names["bible"] = "Guru Granth Sahib"
+			custom_names["deity"] = "Waheguru"
+		if("science")
+			custom_names["bible"] = pick("Principle of Relativity", "Quantum Enigma: Physics Encounters Consciousness", "Programming the Universe", "Quantum Physics and Theology", "String Theory for Dummies", "How To: Build Your Own Warp Drive", "The Mysteries of Bluespace", "Playing God: Collector's Edition")
+			custom_names["deity"] = pick("Albert Einstein", "Stephen Hawking", "Neil deGrasse Tyson", "Carl Sagan", "Richard Dawkins")
+		if("scientology")
+			custom_names["bible"] = pick("The Biography of L. Ron Hubbard","Dianetics")
+			custom_names["deity"] = pick("Money", "Power", "Xenu", "Tom Cruise", "L. Ron Hubbard", "David Miscavige", "John Travolta")
+		if("servicianism", "partying")
+			custom_names["bible"] = "The Tenets of Servicia"
+			custom_names["deity"] = pick("Servicia", "Space Bacchus", "Space Dionysus")
+		if("subgenius")
+			custom_names["bible"] = "Book of the SubGenius"
+			custom_names["deity"] = pick("Jehovah 1", "J. R. \"Bob\" Dobbs")
+		if("toolboxia","greytide")
+			custom_names["bible"] = pick("Toolbox Manifesto","iGlove Assistants")
+			custom_names["deity"] = "Maintenance"
+		else
+			if(custom_names["bible"] == DEFAULT_BIBLE)
+				custom_names["bible"] = "The Holy Book of [religion]"
 
 /datum/preferences/proc/print_bodypart_change_line(key)
 	var/acc_name = mutant_bodyparts[key][MUTANT_INDEX_NAME]

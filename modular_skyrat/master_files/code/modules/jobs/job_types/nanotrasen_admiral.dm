@@ -82,3 +82,6 @@
 
 	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
 
+/obj/effect/landmark/start/nanotrasen_admiral
+	name = "Nanotrasen Admiral"
+	icon_state = "Captain"
