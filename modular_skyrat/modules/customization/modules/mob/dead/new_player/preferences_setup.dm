@@ -40,8 +40,6 @@
 		eye_color = random_eye_color()
 	if(randomise_flags & RANDOMIZE_FEATURES)
 		features = random_features()
-
-	features = pref_species.get_random_features()
 	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
 	for(var/key in new_features)
 		features[key] = new_features[key]
