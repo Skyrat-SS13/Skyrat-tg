@@ -1,36 +1,14 @@
-/datum/job
-	var/alt_title_pref
-
-/datum/job/proc/get_alt_title_pref(client/preference_source)
-	if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[title])
-		alt_title_pref = preference_source.prefs.alt_titles_preferences[title]
-	else
-		alt_title_pref = title
-
-/datum/job/proc/get_id_titles(mob/living/carbon/human/H, obj/item/card/id/ID)
-	ID.real_title = title
-	if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
-		ID.assignment = H.client.prefs.alt_titles_preferences[title]
-	else if (alt_title_pref)
-		ID.assignment = alt_title_pref
-	else
-		ID.assignment = title
-
-/datum/job/proc/get_pda_titles(mob/living/carbon/human/H, obj/item/pda/PDA)
-	if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
-		PDA.ownjob = H.client.prefs.alt_titles_preferences[title]
-	else if (alt_title_pref)
-		PDA.ownjob = alt_title_pref
-	else
-		PDA.ownjob = title
+/mob/living
+	/// used to hold alt titles because apparently a round-start player applies post-equip before there's a goddamn client in the mob AAAAAAAAAAAAAAAAA
+	var/alt_title_holder
 
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
-		if(alt_title_pref)
+/*		if(alt_title_pref)
 			//timer because these should come after the captain announcement
 			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, alt_title_pref, channels), 1))
-		else
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		else */
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //Command
 /datum/job/captain

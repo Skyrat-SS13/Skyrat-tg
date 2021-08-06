@@ -74,6 +74,9 @@
 		aiPDA = new/obj/item/pda/ai(src)
 		aiPDA.owner = real_name
 		aiPDA.ownjob = "Cyborg"
+	/*	if(client && client.prefs && client.prefs.alt_titles_preferences["Cyborg"])
+			alt_title_holder = client.prefs.alt_titles_preferences["Cyborg"]
+			aiPDA.ownjob = alt_title_holder */ // TODO: MAKE THIS SHIT WORK, AND ADD TO AI
 		aiPDA.name = real_name + " (" + aiPDA.ownjob + ")"
 	//SKYRAT EDIT ADDITION END
 

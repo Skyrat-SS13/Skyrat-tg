@@ -289,7 +289,9 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-		J.get_id_titles(H, C) // SKYRAT EDIT ADD - ALT TITLES
+		if(H.alt_title_holder) // SKYRAT EDIT ADD -- ALT TITLES
+			C.real_title = J.title
+			C.assignment = H.alt_title_holder // SKYRAT EDIT ADD END
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -301,8 +303,9 @@
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		J.get_pda_titles(H, PDA) // SKYRAT EDIT ADD - ALT TITLES
-		// PDA.ownjob = J.title - SKYRAT EDIT - OVERWRITTEN IN ALT TITLES
+		PDA.ownjob = J.title
+		if(H.alt_title_holder) // SKYRAT EDIT ADD -- ALT TITLES
+			PDA.ownjob = H.alt_title_holder // SKYRAT EDIT ADD END
 		PDA.update_label()
 
 	if(H.client?.prefs.playtime_reward_cloak)
@@ -422,6 +425,11 @@
 			player_client.prefs.real_name = player_client.prefs.pref_species.random_name(player_client.prefs.gender, TRUE)
 	dna.update_dna_identity()
 
+	//SKYRAT EDIT ADD -- ALT TITLES
+	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
+		alt_title_holder = player_client.prefs.alt_titles_preferences[job.title]
+	//SKYRAT EDIT ADD END
+
 
 /mob/living/silicon/ai/apply_prefs_job(client/player_client, datum/job/job)
 	if(GLOB.current_anonymous_theme)
@@ -430,6 +438,10 @@
 	apply_pref_name("ai", player_client) // This proc already checks if the player is appearance banned.
 	set_core_display_icon(null, player_client)
 
+	//SKYRAT EDIT ADD -- ALT TITLES
+	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
+		alt_title_holder = player_client.prefs.alt_titles_preferences[job.title]
+	//SKYRAT EDIT ADD END
 
 /mob/living/silicon/robot/apply_prefs_job(client/player_client, datum/job/job)
 	if(mmi)
@@ -454,6 +466,11 @@
 	// If this checks fails, then the name will have been handled during initialization.
 	if(!GLOB.current_anonymous_theme && player_client.prefs.custom_names["cyborg"] != DEFAULT_CYBORG_NAME)
 		apply_pref_name("cyborg", player_client)
+
+	//SKYRAT EDIT ADD -- ALT TITLES
+	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
+		alt_title_holder = player_client.prefs.alt_titles_preferences[job.title]
+	//SKYRAT EDIT ADD END
 
 /**
  * Called after a successful roundstart spawn.
