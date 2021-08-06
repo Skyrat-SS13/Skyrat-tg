@@ -2,11 +2,10 @@ import { useBackend } from '../backend';
 import { Button, Dropdown, Input, Section, Stack, TextArea } from '../components';
 import { Window } from '../layouts';
 
-export const CommandReport = (props, context) => {
+export const CommandReportConsole = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     command_report_content,
-    played_sound,
     announce_contents,
   } = data;
   return (
