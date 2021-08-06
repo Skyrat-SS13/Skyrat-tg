@@ -11,7 +11,7 @@
 	light_color = LIGHT_COLOR_BLUE
 
 	/// The name of central command that will accompany our report
-	var/command_name = "Nanotrasen Fleet Control Update"
+	var/command_name = "Nanotrasen Fleet Command Update"
 	/// The actual contents of the report we're going to send.
 	var/command_report_content
 	/// The title of our report, if anything.
@@ -70,7 +70,7 @@
 	var/report_sound = SSstation.announcer.get_rand_report_sound()
 
 	if(announce_contents)
-		priority_announce(command_report_content, command_name, report_sound, has_important_message = TRUE)
+		priority_announce(command_report_content, command_report_title, report_sound, command_name, TRUE)
 	print_command_report(command_report_content, "[announce_contents ? "" : "Classified "][command_name] Update", !announce_contents)
 
 	log_admin("[key_name(usr)] has created a command report: \"[command_report_content]\", sent from \"[command_name]\".")
