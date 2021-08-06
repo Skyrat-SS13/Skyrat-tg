@@ -38,6 +38,7 @@
 	name = "\proper head of personnel's locker"
 	req_access = list(ACCESS_HOP)
 	icon_state = "hop"
+	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
@@ -49,7 +50,7 @@
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade(src) //SKYRAT EDIT ADDITION START - HOP PARADE UNIFORMS
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female(src)
 	new /obj/item/clothing/suit/armor/hop_parade(src)
-	new /obj/item/clothing/suit/armor/hop_parade/female(src)	//SKYRAT EDIT ADDITION END
+	new /obj/item/clothing/suit/armor/hop_parade/female(src) //SKYRAT EDIT ADDITION END
 	new /obj/item/cartridge/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
@@ -67,7 +68,11 @@
 	new /obj/item/storage/photo_album/hop(src)
 	new /obj/item/storage/lockbox/medal/hop(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
-
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck(src) //SKYRAT EDIT ADDITION START - HOP DRIP
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck/skirt(src)
+	new /obj/item/storage/backpack/head_of_personnel(src)
+	new /obj/item/storage/backpack/satchel/head_of_personnel(src)
+	new /obj/item/storage/backpack/duffel/head_of_personnel(src)
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
