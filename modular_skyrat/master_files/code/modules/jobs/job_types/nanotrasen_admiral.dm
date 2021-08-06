@@ -6,7 +6,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Nanotrasen Fleet Command and God himself"
-	selection_color = "#1e1ef0"
+	selection_color = "#6969f8"
 	req_admin_notify = 1
 	minimal_player_age = 14
 	exp_requirements = 60000000
