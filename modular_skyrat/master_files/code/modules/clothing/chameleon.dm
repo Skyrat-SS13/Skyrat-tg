@@ -3,8 +3,8 @@
 	button_icon_state = "chameleon_outfit"
 	var/savedslowdown = 0
 
-/datum/action/chameleon_slowdown/New(var/slowdown)
-	..()
+/datum/action/chameleon_slowdown/New(Target, slowdown)
+	..(Target)
 	savedslowdown = slowdown
 
 /datum/action/chameleon_slowdown/Trigger()
@@ -40,7 +40,7 @@
 		T.slowdown = 0
 		var/slow = initial(P.slowdown)
 		if(slow)
-			slowtoggle = new(slow, T)
+			slowtoggle = new(T, slow)
 			slowtoggle.Grant(owner)
 			slowtoggle.target = T
 		else if(slowtoggle)

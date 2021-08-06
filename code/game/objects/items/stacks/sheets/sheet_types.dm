@@ -104,6 +104,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new /datum/stack_recipe("maintenance hatch assembly", /obj/structure/door_assembly/door_assembly_mhatch, 4, time = 50, one_per_turf = 1, on_floor = 1), \
 		//SKYRAT EDIT ADDITION
 		new /datum/stack_recipe("corporate airlock assembly", /obj/structure/door_assembly/door_assembly_corporate, 4, time = 50, one_per_turf = 1, on_floor = 1), \
+		new /datum/stack_recipe("service airlock assembly", /obj/structure/door_assembly/door_assembly_service, 4, time = 50, one_per_turf = 1, on_floor = 1), \
 		//SKYRAT EDIT ADDITION END
 	)), \
 	null, \
@@ -125,10 +126,12 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("iron door", /obj/structure/mineral_door/iron, 20, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("floodlight frame", /obj/structure/floodlight_frame, 5, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("voting box", /obj/structure/votebox, 15, time = 50), \
+	new/datum/stack_recipe("wrestling turnbuckle", /obj/structure/wrestling_corner, 3, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("pestle", /obj/item/pestle, 1, time = 50), \
 	new/datum/stack_recipe("hygienebot assembly", /obj/item/bot_assembly/hygienebot, 2, time = 5 SECONDS), \
 	new/datum/stack_recipe("shower frame", /obj/structure/showerframe, 2, time= 2 SECONDS)
 ))
+//the wrestling turnbuckle recipe is a SKYRAT EDIT
 
 /obj/item/stack/sheet/iron//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "iron"

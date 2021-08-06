@@ -1,17 +1,21 @@
 /datum/job/nanotrasen_representative
 	title = "Nanotrasen Representative"
 	department_head = list("Central Command")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command"
 	selection_color = "#c6ffe0"
 	minimal_player_age = 14
 	exp_requirements = 600
-	exp_type = EXP_TYPE_CREW
-	exp_type_department = EXP_TYPE_COMMAND
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_CREW
 
-	departments = DEPARTMENT_COMMAND | DEPARTMENT_CENTRAL_COMMAND
+	departments_list = list(
+		/datum/job_department/command,
+		/datum/job_department/central_command
+	)
 
 	outfit = /datum/outfit/job/nanotrasen_representative
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_representative
@@ -32,7 +36,7 @@
 
 	veteran_only = TRUE
 
-	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/job/nanotrasen_representative/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
@@ -141,7 +145,8 @@
 	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
 	new /obj/item/clothing/suit/armor/vest(src)
 	new /obj/item/clothing/head/nanotrasen_representative(src)
-	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
+	new /obj/item/clothing/head/nanotrasen_representative/beret(src)
+	new /obj/item/clothing/head/beret/centcom_formal/ntrep(src)
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
@@ -150,7 +155,7 @@
 	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
-	new /obj/item/clothing/suit/armor/vest/centcom_formal/ntrep(src)
+	new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep(src)
 	new /obj/item/clothing/head/centhat(src)
 	new /obj/item/clothing/head/centcom_cap(src)
