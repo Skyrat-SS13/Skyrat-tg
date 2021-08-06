@@ -89,18 +89,9 @@
 	//and should be removed on initialize
 	color = COLOR_ORANGE_BROWN
 
-<<<<<<< HEAD
-/turf/closed/wall/r_wall/rust/Initialize(mapload) //SKYRAT EDIT CHANGE
-	. = ..()
-	color = null
-
-/turf/closed/wall/r_wall/rust/ComponentInitialize()//SKYRAT EDIT CHANGE
-	. = ..()
-=======
 /turf/closed/wall/r_wall/rust/Initialize(mapload)
 	. = ..()
 	color = null
->>>>>>> 07ce4570bc2 (Fixes all R_WALLS being rusty (#60687))
 	AddElement(/datum/element/rust)
 
 /turf/closed/wall/mineral/bronze
