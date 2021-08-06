@@ -10,6 +10,16 @@
 		else */
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
+//Central Command
+/datum/job/admiral
+	alt_titles = list("Fleet Admiral", "Fleet Commander")
+
+/datum/job/nanotrasen_representative
+	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
+
+/datum/job/blueshield
+	alt_titles = list("Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist")
+
 //Command
 /datum/job/captain
 	alt_titles = list("Station Commander", "Commanding Officer", "Site Manager")
@@ -62,6 +72,9 @@
 /datum/job/geneticist
 	alt_titles = list("Mutation Researcher")
 
+/datum/job/expeditionary_trooper // taken from chesify's classes update. miss 'em
+	alt_titles = list("Vanguard Medic", "Vanguard Technician", "Vanguard Pointman", "Vanguard Marksman")
+
 //Cargo
 /datum/job/cargo_technician
 	alt_titles = list("Deck Worker", "Mailman")
@@ -97,12 +110,6 @@
 /datum/job/clown
 	alt_titles = list("Jester")
 
-/datum/job/prisoner
-	alt_titles = list("Low Risk Prisoner", "High Risk Prisoner", "Extreme Risk Prisoner", "Protective Custody Prisoner")
-
-/datum/job/assistant
-	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")
-
 /datum/job/botanist
 	alt_titles = list("Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
 
@@ -128,8 +135,12 @@
 /datum/job/brigoff
     alt_titles = list("Brig Officer", "Prison Guard")
 
-/datum/job/blueshield
-	alt_titles = list("Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist")
+//Civillian
+/datum/job/prisoner
+	alt_titles = list("Low Risk Prisoner", "High Risk Prisoner", "Extreme Risk Prisoner", "Protective Custody Prisoner")
+
+/datum/job/assistant
+	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")
 
 //Silicon
 /datum/job/ai
