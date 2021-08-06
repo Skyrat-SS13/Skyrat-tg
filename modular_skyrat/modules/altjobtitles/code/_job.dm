@@ -1,3 +1,4 @@
+/*
 /datum/job
 	var/alt_title_pref
 
@@ -159,3 +160,4 @@
 
 /datum/job/cyborg
 	alt_titles = list("Robot", "Android")
+*/
