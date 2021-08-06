@@ -1,5 +1,11 @@
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
-	var/list/jobs_to_pick = shuffle(SSjob.joinable_occupations)
+	var/list/jobs_to_pick
+	for(var/datum/job/job as anything in shuffle(SSjob.joinable_occupations))
+		if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+			continue
+		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND)
+			continue
+		jobs_to_pick += job
 	var/datum/job/J = pick(jobs_to_pick)
 	var/datum/outfit/O
 	if(J.outfit)
