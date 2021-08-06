@@ -76,6 +76,8 @@
 	for(var/r in giver.reagent_list)
 		var/datum/reagent/R = r
 		compiled_list[R.type] = R.volume
+	if(!compiled_list.len) //No reagents to add, don't bother going further
+		return
 	add_liquid_list(compiled_list, no_react, giver.chem_temp)
 
 //More efficient than add_liquid for multiples
@@ -167,11 +169,11 @@
 /turf/proc/can_share_liquids_with(turf/T)
 	if(T.z != z) //No Z here handling currently
 		return FALSE
-	/*
-	if(T.lgroup && T.lgroup != lgroup) //TEMPORARY@!!!!!!!!
-		return FALSE
-	*/
+
 	if(T.liquids && T.liquids.immutable)
+		return FALSE
+
+	if(istype(T, /turf/open/space)) //No space liquids - Maybe add an ice system later
 		return FALSE
 
 	var/my_liquid_height = liquids ? liquids.height : 0

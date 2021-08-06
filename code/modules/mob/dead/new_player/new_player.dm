@@ -182,7 +182,7 @@
 			to_chat(usr, span_danger("The round is either not ready, or has already finished..."))
 			return
 
-		if(!GLOB.enter_allowed)
+		if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
 			to_chat(usr, span_notice("There is an administrative lock on entering the game!"))
 			return
 
@@ -215,7 +215,10 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = tgui_alert(usr, "Are you sure you wish to observe? You will not be able to play this round!","Player Setup",list("Yes","No"))
+	var/less_input_message
+	if(SSlag_switch.measures[DISABLE_DEAD_KEYLOOP])
+		less_input_message = " - Notice: Observer freelook is currently disabled."
+	var/this_is_like_playing_right = tgui_alert(usr, "Are you sure you wish to observe? You will not be able to play this round![less_input_message]","Player Setup",list("Yes","No"))
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
@@ -296,10 +299,6 @@
 		tgui_alert(usr, get_job_unavailable_error_message(error, rank))
 		return FALSE
 
-	if(SSticker.late_join_disabled)
-		tgui_alert(usr, "An administrator has disabled late join spawning.")
-		return FALSE
-
 	var/arrivals_docked = TRUE
 	if(SSshuttle.arrivals)
 		close_spawn_windows() //In case we get held up
@@ -327,9 +326,8 @@
 	else if(SSjob.always_promote_captain_job && (rank == "Captain"))
 		is_captain = TRUE
 
-	var/equip = SSjob.EquipRank(character, rank, TRUE, is_captain)
-	if(isliving(equip)) //Borgs get borged in the equip, so we need to make sure we handle the new mob.
-		character = equip
+	SSjob.EquipRank(character, job, character.client)
+	job.after_latejoin_spawn(character)
 
 	var/datum/job/job = SSjob.GetJob(rank)
 
@@ -389,7 +387,10 @@
 
 
 /mob/dead/new_player/proc/LateChoices()
-	var/list/dat = list("<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
+	var/list/dat = list()
+	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
+		dat += "<div class='notice red' style='font-size: 125%'>Only Observers may join at this time.</div><br>"
+	dat += "<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>"
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
@@ -402,26 +403,25 @@
 			SSjob.prioritized_jobs -= prioritized_job
 	dat += "<table><tr><td valign='top'>"
 	var/column_counter = 0
-	// render each category's available jobs
-	for(var/category in GLOB.position_categories)
-		// position_categories contains category names mapped to available jobs and an appropriate color
-		var/cat_color = GLOB.position_categories[category]["color"]
-		dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
-		dat += "<legend align='center' style='color: [cat_color]'>[category]</legend>"
-		var/list/dept_dat = list()
-		for(var/job in GLOB.position_categories[category]["jobs"])
-			var/datum/job/job_datum = SSjob.name_occupations[job]
-			if(job_datum && IsJobUnavailable(job_datum.title, TRUE) == JOB_AVAILABLE)
-				var/command_bold = ""
-				if(job in GLOB.command_positions)
-					command_bold = " command"
-				if(job_datum in SSjob.prioritized_jobs)
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
-				else
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
-		if(!dept_dat.len)
-			dept_dat += "<span class='nopositions'>No positions open.</span>"
-		dat += jointext(dept_dat, "")
+
+	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+		var/department_color = department.latejoin_color
+		dat += "<fieldset style='width: 185px; border: 2px solid [department_color]; display: inline'>"
+		dat += "<legend align='center' style='color: [department_color]'>[department.department_name]</legend>"
+		var/list/dept_data = list()
+		for(var/datum/job/job_datum as anything in department.department_jobs)
+			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
+				continue
+			var/command_bold = ""
+			if(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+				command_bold = " command"
+			if(job_datum in SSjob.prioritized_jobs)
+				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
+			else
+				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+		if(!length(dept_data))
+			dept_data += "<span class='nopositions'>No positions open.</span>"
+		dat += dept_data.Join()
 		dat += "</fieldset><br>"
 		column_counter++
 		if(column_counter > 0 && (column_counter % 3 == 0))

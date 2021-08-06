@@ -71,15 +71,25 @@
 				DNA.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 				DNA.features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
 				DNA.features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
+				DNA.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
+				DNA.update_uf_block(DNA_MUTANT_COLOR_2_BLOCK)
+				DNA.update_uf_block(DNA_MUTANT_COLOR_3_BLOCK)
 			else
 				DNA.features[color_target] = sanitize_hexcolor(new_mutantcolor)
+				switch(color_target)
+					if("mcolor")
+						DNA.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
+					if("mcolor2")
+						DNA.update_uf_block(DNA_MUTANT_COLOR_2_BLOCK)
+					if("mcolor3")
+						DNA.update_uf_block(DNA_MUTANT_COLOR_3_BLOCK)
 			if(marking_reset && marking_reset == "Yes")
-				for(var/zone in DNA.body_markings)
-					for(var/key in DNA.body_markings[zone])
+				for(var/zone in DNA.species.body_markings)
+					for(var/key in DNA.species.body_markings[zone])
 						var/datum/body_marking/BD = GLOB.body_markings[key]
 						if(BD.always_color_customizable)
 							continue
-						DNA.body_markings[zone][key] = BD.get_default_color(DNA.features, DNA.species)
+						DNA.species.body_markings[zone][key] = BD.get_default_color(DNA.features, DNA.species)
 				H.icon_render_key = "" //Currently the render key doesnt recognize the markings colors
 			if(mutantpart_reset && mutantpart_reset == "Yes")
 				H.mutant_renderkey = "" //Just in case
@@ -146,6 +156,7 @@
 					new_acc_list[MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(DNA.features, DNA.species)
 					DNA.species.mutant_bodyparts[chosen_key] = new_acc_list
 					DNA.mutant_bodyparts[chosen_key] = new_acc_list.Copy()
+				DNA.update_uf_block(GLOB.dna_mutant_bodypart_blocks[chosen_key])
 			if (chosen_key == "legs" && chosen_name_key != "Cancel")
 				if (chosen_name_key == "Digitigrade Legs" && !(DIGITIGRADE in DNA.species.species_traits))
 					DNA.species.species_traits += DIGITIGRADE

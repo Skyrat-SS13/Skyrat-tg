@@ -29,8 +29,6 @@
 /mob/living/carbon/swap_hand(held_index)
 	. = ..()
 	if(!.)
-		var/obj/item/held_item = get_active_held_item()
-		to_chat(usr, span_warning("Your other hand is too busy holding [held_item]."))
 		return
 
 	if(!held_index)
@@ -1211,13 +1209,8 @@
 			else
 				wound_type = forced_type
 		else
-		//SKYRAT EDIT BEGIN
-			switch(scar_part.status)
-				if(BODYPART_ROBOTIC)
-					wound_type = pick(GLOB.global_all_wound_types_synth)
-				if(BODYPART_ORGANIC)
-					wound_type = pick(GLOB.global_all_wound_types)
-		//SKYRAT EDIT END
+			wound_type = pick(GLOB.global_all_wound_types)
+
 		var/datum/wound/phantom_wound = new wound_type
 		scaries.generate(scar_part, phantom_wound)
 		scaries.fake = TRUE

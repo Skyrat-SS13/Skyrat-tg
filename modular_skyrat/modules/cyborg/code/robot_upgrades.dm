@@ -1,6 +1,7 @@
 /mob/living/silicon/robot
 	var/hasShrunk = FALSE
 	var/hasAffection = FALSE
+	var/hasAdvanced = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
@@ -68,6 +69,8 @@
 			borg.model.remove_module(SP, TRUE)
 		for(var/obj/item/circular_saw/CS in borg.model.modules)
 			borg.model.remove_module(CS, TRUE)
+		for(var/obj/item/healthanalyzer/HA in borg.model.modules)
+			borg.model.remove_module(HA, TRUE)
 
 		var/obj/item/scalpel/advanced/AS = new /obj/item/scalpel/advanced(borg.model)
 		borg.model.basic_modules += AS
@@ -78,6 +81,9 @@
 		var/obj/item/cautery/advanced/AC = new /obj/item/cautery/advanced(borg.model)
 		borg.model.basic_modules += AC
 		borg.model.add_module(AC, FALSE, TRUE)
+		var/obj/item/healthanalyzer/advanced/AHA = new /obj/item/healthanalyzer/advanced(borg.model)
+		borg.model.basic_modules += AHA
+		borg.model.add_module(AHA, FALSE, TRUE)
 
 /obj/item/borg/upgrade/surgerytools/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
@@ -88,6 +94,8 @@
 			borg.model.remove_module(AR, TRUE)
 		for(var/obj/item/cautery/advanced/AC in borg.model.modules)
 			borg.model.remove_module(AC, TRUE)
+		for(var/obj/item/healthanalyzer/advanced/AHA in borg.model.modules)
+			borg.model.remove_module(AHA, TRUE)
 
 		var/obj/item/retractor/RT = new (borg.model)
 		borg.model.basic_modules += RT
@@ -107,6 +115,9 @@
 		var/obj/item/circular_saw/CS = new (borg.model)
 		borg.model.basic_modules += CS
 		borg.model.add_module(CS, FALSE, TRUE)
+		var/obj/item/healthanalyzer/HA = new (borg.model)
+		borg.model.basic_modules += HA
+		borg.model.add_module(HA, FALSE, TRUE)
 
 /obj/item/borg/upgrade/affectionmodule
 	name = "borg affection module"
@@ -135,7 +146,73 @@
 /obj/item/borg/upgrade/affectionmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
 	if(.)
-		for(var/obj/item/dogborg_tongue/dogtongue in borg.model.modules)
-			borg.model.remove_module(dogtongue, TRUE)
-		for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
-			borg.model.remove_module(dognose, TRUE)
+		return
+	borg.hasAffection = FALSE
+	for(var/obj/item/dogborg_tongue/dogtongue in borg.model.modules)
+		borg.model.remove_module(dogtongue, TRUE)
+	for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
+		borg.model.remove_module(dognose, TRUE)
+
+/////////////////////////////////////////////
+/// Advanced Engineering Cyborg Materials ///
+/////////////////////////////////////////////
+
+#define ENGINEERING_CYBORG_CHARGE_PER_STACK 1000
+
+/datum/robot_energy_storage/plasteel
+	name = "Plasteel Processor"
+	recharge_rate = 0
+	max_energy = ENGINEERING_CYBORG_CHARGE_PER_STACK * 50
+
+/datum/robot_energy_storage/titanium
+	name = "Titanium Processor"
+	recharge_rate = 0
+	max_energy = ENGINEERING_CYBORG_CHARGE_PER_STACK * 50
+
+/obj/item/stack/sheet/plasteel/cyborg
+	cost = ENGINEERING_CYBORG_CHARGE_PER_STACK
+	is_cyborg = TRUE
+	source = /datum/robot_energy_storage/plasteel
+
+/obj/item/stack/sheet/titaniumglass/cyborg
+	cost = ENGINEERING_CYBORG_CHARGE_PER_STACK
+	is_cyborg = TRUE
+	source = /datum/robot_energy_storage/titanium
+
+/obj/item/borg/upgrade/advanced_materials
+	name = "engineering advanced materials processor"
+	desc = "allows a cyborg to synthesize and store advanced materials"
+	icon_state = "cyborg_upgrade3"
+	model_type = list(/obj/item/robot_model/engineering)
+	model_flags = BORG_MODEL_ENGINEERING
+
+/obj/item/borg/upgrade/advanced_materials/action(mob/living/silicon/robot/borgo, user)
+	. = ..()
+	if(!.)
+		return
+	if(borgo.hasAdvanced)
+		to_chat(user, span_warning("This unit already has advanced materials installed!"))
+		to_chat(user, "There's no room for more materials!")
+		return FALSE;
+
+	var/obj/item/stack/sheet/plasteel/cyborg/plasteel_holder = new(borgo.model)
+	var/obj/item/stack/sheet/titaniumglass/cyborg/titanium_holder = new(borgo.model)
+	borgo.model.basic_modules += plasteel_holder
+	borgo.model.basic_modules += titanium_holder
+	borgo.model.add_module(plasteel_holder, FALSE, TRUE)
+	borgo.model.add_module(titanium_holder, FALSE, TRUE)
+	borgo.hasAdvanced = TRUE
+
+/obj/item/borg/upgrade/advanced_materials/deactivate(mob/living/silicon/robot/borgo, user)
+	. = ..()
+	if(!.)
+		return
+	borgo.hasAdvanced = FALSE
+	for(var/obj/item/stack/sheet/plasteel/cyborg/plasteel_holder in borgo.model.modules)
+		borgo.model.remove_module(plasteel_holder, TRUE)
+	for(var/obj/item/stack/sheet/titaniumglass/cyborg/titanium_holder in borgo.model.modules)
+		borgo.model.remove_module(titanium_holder, TRUE)
+	for(var/datum/robot_energy_storage/plasteel/plasteel_energy in borgo.model.storages)
+		qdel(plasteel_energy)
+	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
+		qdel(titanium_energy)

@@ -25,6 +25,8 @@
 	var/last_requested_change
 	///Callback for auto approval
 	var/auto_approve_timerid
+	///Have we already honked for auto approval?
+	var/auto_approve_honked
 
 /datum/ambitions/New(datum/mind/M)
 	my_mind = M
@@ -317,18 +319,20 @@
 				return
 			if("requested_done")
 				to_chat(src, "<span class='nicegreen'><b>You notify admins that you have adressed the requested changes.</b></span>")
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] notifies that he has finished the requested changes in his ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
+				message_admins(span_adminhelp("[ADMIN_TPMONTY(usr)] notifies that he has finished the requested changes in his ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
 			if("request_review")
 				admin_review_requested = TRUE
 				GLOB.ambitions_to_review[src] = 0
 				log_action("--Requested an admin review--", FALSE)
-				message_admins("<span class='adminhelp'>[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)</span>")
-				message_admins(span_big(span_adminhelp("THIS WILL BE AUTO-APPROVED IN FIVE MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT")))
-				for(var/client/I in GLOB.admins)
-					if(I.prefs.toggles & SOUND_ADMINHELP)
-						SEND_SOUND(I, sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
-					window_flash(I, ignorepref = TRUE)
-				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME)
+				message_admins(span_adminhelp("[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
+				message_admins(span_adminhelp("THIS WILL BE AUTO-APPROVED IN FIVE MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT"))
+				if(!auto_approve_honked)
+					auto_approve_honked = TRUE
+					for(var/client/staff as anything in GLOB.admins)
+						if(staff.prefs.toggles & SOUND_ADMINHELP)
+							SEND_SOUND(staff, sound('sound/effects/hygienebot_happy.ogg'))
+						window_flash(staff, ignorepref = TRUE)
+				auto_approve_timerid = _addtimer(CALLBACK(src, .proc/auto_approve), 10 MINUTES, TIMER_UNIQUE|TIMER_CLIENT_TIME|TIMER_STOPPABLE)
 			if("spice")
 				var/new_intensity = text2num(href_list["amount"])
 				if(intensity == new_intensity)
@@ -390,7 +394,7 @@
 		return TRUE
 
 /datum/ambitions/proc/auto_approve()
-	message_admins(span_big(span_adminhelp("[ADMIN_TPMONTY(my_mind.current)]'s ambitions were automatically approved")))
+	message_admins(span_adminhelp("[ADMIN_TPMONTY(my_mind.current)]'s ambitions were automatically approved"))
 	to_chat(my_mind.current, span_big(span_adminhelp("Your ambitions were automatically approved. This does not mean you won't get in trouble if your ambitions are non-sensical")))
 	admin_approval = TRUE
 	changed_after_approval = FALSE

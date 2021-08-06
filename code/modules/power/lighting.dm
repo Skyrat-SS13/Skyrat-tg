@@ -381,8 +381,8 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-			var/area/A = get_area(src)
-			if(emergency_mode || (A?.fire))
+			//var/area/A = get_area(src) //SKYRAT EDIT REMOVAL
+			if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
@@ -399,8 +399,8 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	var/area/A = get_area(src)
-	if(emergency_mode || (A?.fire))
+	// var/area/A = get_area(src) SKYRAT EDIT REMOVAL
+	if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
 		. += mutable_appearance(overlayicon, "[base_state]_emergency", layer, plane)
 		return
 	if(nightshift_enabled)
@@ -440,7 +440,7 @@
 			if(rigged)
 				if(status == LIGHT_OK && trigger)
 					explode()
-			else if( prob( min(60, (switchcount^2)*0.01) ) )
+			else if( prob( min(60, (switchcount**2)*0.01) ) )
 				if(trigger)
 					burn_out()
 			else
@@ -548,6 +548,7 @@
 	if(istype(W, /obj/item/lightreplacer))
 		var/obj/item/lightreplacer/LR = W
 		LR.ReplaceLight(src, user)
+		return //SKYRAT EDIT ADDITION - Fix Light Replacer
 
 	//SKYRAT EDIT ADDITION
 	if(istype(W, /obj/item/multitool) && constant_flickering)
@@ -555,6 +556,8 @@
 		if(do_after(user, 2 SECONDS, src))
 			stop_flickering()
 			to_chat(user, span_notice("You repair the ballast of [src]!"))
+		return
+
 	//SKYRAT EDTI END
 
 	// attempt to insert light

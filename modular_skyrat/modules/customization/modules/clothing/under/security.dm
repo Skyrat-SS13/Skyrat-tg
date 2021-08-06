@@ -11,17 +11,6 @@
 	inhand_icon_state = "hos_parade_male"
 	can_adjust = FALSE
 
-/obj/item/clothing/suit/armor/hos/parade
-	name = "head of security's parade jacket"
-	desc = "A luxurious deep red jacket for the head of security, woven with a golden trim. It smells of gunpowder and authority."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "hos_parade"
-	inhand_icon_state = "hos_parade"
-	body_parts_covered = CHEST|GROIN|ARMS
-	cold_protection = CHEST|GROIN|ARMS
-	heat_protection = CHEST|GROIN|ARMS
-
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
 	name = "sol chief of police uniform"
 	desc = "A white satin shirt with a leather belt, the belt buckle is a large NT."
@@ -53,6 +42,41 @@
 	cold_protection = CHEST|ARMS
 	mutant_variants = NONE
 	heat_protection = CHEST|ARMS
+
+/obj/item/clothing/under/rank/security/detective/cowboy
+	name = "blond cowboy uniform"
+	desc = "A blue shirt with some cool cowboy socks. You dig."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "cowboy_uniform"
+	mutant_variants = NONE
+	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/security/detective/cowboy/armorless
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
+/obj/item/clothing/suit/cowboyvest
+	name = "blonde cowboy vest"
+	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "cowboy_vest"
+	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
+	mutant_variants = NONE
+	heat_protection = CHEST|ARMS
+
+/obj/item/clothing/suit/det_suit/cowboyvest
+	name = "blonde cowboy vest"
+	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "cowboy_vest"
+	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
+	mutant_variants = NONE
+	heat_protection = CHEST|ARMS
+
 
 // SEC GENERAL
 

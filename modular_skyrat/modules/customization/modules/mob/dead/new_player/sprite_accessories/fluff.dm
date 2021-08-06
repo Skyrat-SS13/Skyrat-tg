@@ -5,6 +5,7 @@
 	generic = "Fluff"
 	recommended_species = list("moth", "synthmammal", "mammal", "insect")
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/fluff/moth/none
 	name = "None"

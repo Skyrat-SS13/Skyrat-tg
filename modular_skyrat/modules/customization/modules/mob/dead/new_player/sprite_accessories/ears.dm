@@ -3,6 +3,7 @@
 	generic = "Ears"
 	organ_type = /obj/item/organ/ears/mutant
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
 	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
@@ -93,7 +94,7 @@
 	default_color = DEFAULT_TERTIARY
 
 /datum/sprite_accessory/ears/mutant/deer
-	name = "Deer"
+	name = "Deer (Antler)"
 	icon_state = "deer"
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_TERTIARY
@@ -224,3 +225,15 @@
 /datum/sprite_accessory/ears/mutant/miqote
 	name = "Miqo'te"
 	icon_state = "miqote"
+
+/datum/sprite_accessory/ears/mutant/hare
+	name = "Hare"
+	icon_state = "rabbitalt"
+
+/datum/sprite_accessory/ears/mutant/bunnyalt
+	name = "Curved Rabbit Ears"
+	icon_state = "bunnyalt"
+
+/datum/sprite_accessory/ears/mutant/deerear
+	name = "Deer (ear)"
+	icon_state = "deerear"
