@@ -29,7 +29,7 @@
 
 
 /obj/item/clothing/mask/cigarette/pipe/crackpipe/attackby(obj/item/used_item, mob/user, params)
-	if(is_type_in_list(used_item, list(/obj/item/reagent_containers/crack,/obj/item/reagent_containers/blacktar))&&!istype(used_item, /obj/item/reagent_containers/crack/crackbrick))
+	if(is_type_in_list(used_item, list(/obj/item/reagent_containers/crack,/obj/item/reagent_containers/blacktar)))
 		to_chat(user, "<span class='notice'>You stuff [used_item] into [src].</span>")
 		smoketime = 2 * 60
 		name = "[used_item.name]-packed [initial(name)]"

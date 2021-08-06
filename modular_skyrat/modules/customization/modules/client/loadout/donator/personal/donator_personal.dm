@@ -1,3 +1,13 @@
+/datum/loadout_item/backpack/donator/miafoxplush
+	name = "Mia’s fox plushie"
+	path = /obj/item/toy/plush/fox/mia
+	ckeywhitelist = list("fuzlet")
+
+/datum/loadout_item/backpack/donator/teasefoxplush
+	name = "Teasable fox plushie"
+	path = /obj/item/toy/plush/fox/kailyn
+	ckeywhitelist = list("ratraus")
+
 /datum/loadout_item/backpack/donator/drawingtablet
 	name = "Drawing Tablet"
 	path = /obj/item/canvas/drawingtablet
