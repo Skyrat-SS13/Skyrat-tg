@@ -1,7 +1,7 @@
 
 /datum/job/deck_crew
 	title = "Deck Crewman"
-	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
+	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Fleet Admiral", "Bridge Officer")
 	faction = FACTION_STATION
 	total_positions = 1
@@ -37,6 +37,6 @@
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
 	)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 
 	veteran_only = TRUE
