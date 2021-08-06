@@ -153,7 +153,7 @@
 
 	// Set up the dummy for its photoshoot
 	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
-	apply_prefs_to(mannequin, TRUE)
+	apply_prefs_to(mannequin, TRUE, TRUE)
 
 	switch(preview_pref)
 		if(PREVIEW_PREF_JOB)

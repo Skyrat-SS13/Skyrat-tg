@@ -3089,7 +3089,7 @@ GLOBAL_LIST_INIT(food, list(
 	apply_prefs_to(character, icon_updates)
 
 /// Applies the given preferences to a human mob.
-/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, preview = FALSE)
 	character.real_name = real_name
 	character.name = real_name
 
@@ -3135,22 +3135,19 @@ GLOBAL_LIST_INIT(food, list(
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
-	if(show_body_size)
-		character.dna.update_body_size()
-	else //We need to update it to 100% in case they switch back
-		character.dna.features["body_size"] = BODY_SIZE_NORMAL
-		character.dna.update_body_size()
 
-		for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
-			var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
-			if(gent)
-				gent.aroused = arousal_preview
-				gent.update_sprite_suffix()
+	character.dna.update_body_size()
+
+	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
+		if(gent)
+			gent.aroused = arousal_preview
+			gent.update_sprite_suffix()
 
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, TRUE, src)
+			aug.apply(character, preview, src)
 
 	if(icon_updates)
 		character.update_body()
