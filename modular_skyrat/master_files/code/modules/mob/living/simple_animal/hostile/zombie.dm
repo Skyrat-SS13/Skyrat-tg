@@ -1,12 +1,26 @@
+/mob/living/simple_animal/hostile/zombie
+	var/no_corpse = FALSE
+	var/list/possible_jobs = list(
+		/datum/job/assistant,
+		/datum/job/station_engineer,
+		/datum/job/cook,
+		/datum/job/bartender,
+		/datum/job/chemist,
+		/datum/job/doctor,
+		/datum/job/virologist,
+		/datum/job/clown,
+		/datum/job/mime,
+		/datum/job/scientist,
+		/datum/job/cargo_technician,
+		/datum/job/security_officer,
+		/datum/job/security_medic,
+	)
+
+/mob/living/simple_animal/hostile/zombie/nocorpse
+	no_corpse = TRUE
+
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
-	var/list/jobs_to_pick = list()
-	for(var/datum/job/job as anything in shuffle(SSjob.joinable_occupations))
-		if(job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
-			continue
-		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND)
-			continue
-		jobs_to_pick += job
-	var/datum/job/J = pick(jobs_to_pick)
+	var/datum/job/J = pick(possible_jobs)
 	var/datum/outfit/O
 	if(J.outfit)
 		O = new J.outfit
@@ -16,7 +30,8 @@
 
 	var/icon/P = get_flat_human_icon_skyrat(null, J, /datum/species/zombie, "zombie", outfit_override = O)
 	icon = P
-	corpse = new(src)
-	corpse.outfit = O
-	corpse.mob_species = /datum/species/zombie
-	corpse.mob_name = name
+	if(!no_corpse)
+		corpse = new(src)
+		corpse.outfit = O
+		corpse.mob_species = /datum/species/zombie
+		corpse.mob_name = name
