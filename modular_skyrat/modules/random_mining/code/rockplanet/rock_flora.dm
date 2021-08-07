@@ -193,10 +193,16 @@
 	desc = "A homemade bar of soap. Has a nice earthy scent."
 	icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
 	icon_state = "yucca_soap"
-	cleanspeed = 30 //faster to reward chemists (and botanists in this case!) for going to the effort
+	cleanspeed = 30 //faster to reward botanists for going thru the effort - however, it's not AS fast as the other homemade soap, and it's slip-resistant due to the ingredients being more gritty
+
+/obj/item/soap/homemade/yucca/ComponentInitialize()
+	. = ..()
+	//Remove Slippery component here
 
 //////////////
 //CRAFTING RECIPES
+
+//TODO: recipe for yucca soap that somehow puts their seeds to use. Can you grind seeds? Should it just be a misc crafting? Maybe pouring a mix onto the seed pack?(how would that prevent whole tiles of seedpacks getting affected?)
 
 //Do I actually need this for Sotol Coyote? It comes from fermenting the coyote leaves in a barrel, so its not a recipe per-se...
 /*
