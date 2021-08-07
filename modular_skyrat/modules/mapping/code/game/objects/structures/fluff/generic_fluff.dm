@@ -1,7 +1,7 @@
 /* ----- Metal Poles -----*/
 //Just a re-done Tram Rail, but with all 4 directions instead of being stuck east/west - more varied placement, and a more vague name. Good for mapping support beams/antennae/etc
 /obj/structure/fluff/metalpole
-	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/generic_fluff.dmi'
 	name = "metal pole"
 	desc = "A metal pole, the likes of which are commonly used as an antennae, structural support, or simply to maneuver in zero-g."
 	icon_state = "pole"
@@ -25,7 +25,7 @@
 /* ----- Abandoned Decor -----*/
 //Abandoned items, apocalypse-themed stuff basically. Most common examples will be found on Rockplanet's ruins, but it's here for use in gateways and other maps' ruins too
 /obj/structure/fluff/abandoned	//Keeps me from having to re-define icon over and over
-	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/generic_fluff.dmi'
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
 	deconstructible = TRUE
