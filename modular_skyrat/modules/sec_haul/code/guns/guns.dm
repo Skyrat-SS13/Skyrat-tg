@@ -25,7 +25,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17, /obj/item/ammo_box/magazine/multi_sprite/g18
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17 | /obj/item/ammo_box/magazine/multi_sprite/g18
 	can_suppress = FALSE
 	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
