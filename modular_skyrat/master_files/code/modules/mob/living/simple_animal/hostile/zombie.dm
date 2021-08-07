@@ -14,6 +14,8 @@
 		/datum/job/cargo_technician,
 		/datum/job/security_officer,
 		/datum/job/security_medic,
+		/datum/job/geneticist,
+		/datum/job/botanist,
 	)
 
 /mob/living/simple_animal/hostile/zombie/nocorpse
@@ -21,6 +23,7 @@
 
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
 	var/datum/job/J = pick(possible_jobs)
+	J = new()
 	var/datum/outfit/O
 	if(J.outfit)
 		O = new J.outfit
