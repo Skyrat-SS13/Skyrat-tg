@@ -201,6 +201,38 @@ Possible to do for anyone motivated enough:
 	else if(in_range(user, src) || isobserver(user))
 		. += span_notice("The status display reads: Current projection range: <b>[holo_range]</b> units.")
 
+	//SKYRAT EDIT ADDITION BEGIN - AI QoL
+	var/obj/effect/overlay/holo_pad_hologram/holo
+	var/line
+	var/mob/living/silicon/ai/aiPlayer
+	for(var/mob/living/silicon/ai/master in masters)
+		if(masters[master])
+			holo = masters[master]
+	if(LAZYLEN(masters))
+		for(var/I in masters)
+			var/mob/living/master = I
+			var/mob/living/silicon/ai/AI = master
+			if(!istype(AI))
+				AI = null
+			else
+				aiPlayer = AI
+	if(aiPlayer)
+		if(aiPlayer.client)
+			if(length(aiPlayer.client.prefs.features["silicon_flavor_text"]))
+				var/message = aiPlayer.client.prefs.features["silicon_flavor_text"]
+				if(length_char(message) <= 40)
+					line = "<span class='notice'>[message]</span>"
+				else
+					line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(aiPlayer)];lookup_info=silicon_flavor_text'>More...</a></span>"
+			line += " <span class='notice'><a href='?src=[REF(aiPlayer)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+	if(LAZYLEN(masters))
+		if(holo.Impersonation)
+			. += holo.Impersonation.examine(user)
+		else
+			. += "<span class='info'>*---------*\nThis is <EM>[aiPlayer.name].</EM>\n*---------*</span>"
+			. += line
+	//SKYRAT EDIT ADDITION END - AI QoL
+
 /obj/machinery/holopad/attackby(obj/item/P, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "holopad_open", "holopad0", P))
 		return
@@ -519,7 +551,15 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		AI.current = src
 	SetLightsAndPower()
 	update_holoray(user, get_turf(loc))
+	RegisterSignal(user, COMSIG_MOB_EMOTE, .proc/handle_hologram_emote) // SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
 	return TRUE
+
+// SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
+/obj/machinery/holopad/proc/handle_hologram_emote(atom/movable/source, datum/emote/emote, action, type_override, message, intentional)
+	SIGNAL_HANDLER
+	for(var/mob/mob_viewer in viewers(world.view, src))
+		to_chat(mob_viewer, "<span class='emote'><b>[source]</b> [message]</span>")
+// SKYRAT ADDITION - END
 
 /obj/machinery/holopad/proc/clear_holo(mob/living/user)
 	qdel(masters[user]) // Get rid of user's hologram
@@ -534,6 +574,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	qdel(holorays[user])
 	LAZYREMOVE(holorays, user)
 	SetLightsAndPower()
+	UnregisterSignal(user, COMSIG_MOB_EMOTE) // SKYRAT ADDITION - HOLOGRAM EMOTE MIRROR
 	return TRUE
 
 //Try to transfer hologram to another pad that can project on T

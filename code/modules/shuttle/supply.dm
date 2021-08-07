@@ -32,8 +32,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		/obj/item/hilbertshotel,
 		/obj/machinery/camera,
 		/obj/item/gps,
-		/obj/structure/checkoutmachine,
-		/obj/structure/closet/bluespace // SKYRAT EDIT ADDTION -- Bluespace Locker
+		/obj/structure/checkoutmachine
 	)))
 
 /// How many goody orders we can fit in a lockbox before we upgrade to a crate
@@ -94,6 +93,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	var/list/obj/miscboxes = list() //miscboxes are combo boxes that contain all goody orders grouped
 	var/list/misc_order_num = list() //list of strings of order numbers, so that the manifest can show all orders in a box
 	var/list/misc_contents = list() //list of lists of items that each box will contain
+	var/list/misc_costs = list() //list of overall costs sustained by each buyer.
 
 	var/list/empty_turfs = list()
 	for(var/place in shuttle_areas)
@@ -191,12 +191,13 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			var/datum/supply_order/our_order = O
 			for (var/item in our_order.pack.contains)
 				misc_contents[buyer] += item
+			misc_costs[buyer] += our_order.pack.cost
 			misc_order_num[buyer] = "[misc_order_num[buyer]]#[our_order.id]  "
 
 	for(var/I in miscboxes)
 		var/datum/supply_order/SO = new/datum/supply_order()
 		SO.id = misc_order_num[I]
-		SO.generateCombo(miscboxes[I], I, misc_contents[I])
+		SO.generateCombo(miscboxes[I], I, misc_contents[I], misc_costs[I])
 		qdel(SO)
 
 	SSeconomy.import_total += value
