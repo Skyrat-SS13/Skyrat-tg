@@ -36,7 +36,7 @@
 	dirt_modifier = 1
 	emp_damageable = TRUE
 	armadyne = TRUE
-	fire_delay = 3
+	fire_delay = 1.90
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
 	name = "9x19mm double stack magazine"
@@ -61,7 +61,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Glock-18"
-	desc = "A special anniversary edition of the Glock-18 from Armadyne, it has a 3 round burst mode and accepts extended magazines."
+	desc = "A burst-firing special anniversary edition of the Glock-18 from Armadyne. Its heavier barrel negatively affects firerate minimally."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -72,7 +72,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	burst_size = 3
-	fire_delay = 2
+	fire_delay = 2.10
 	spread = 8
 	realistic = TRUE
 	mag_display = FALSE
