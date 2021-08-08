@@ -189,15 +189,15 @@
 // Adding breath_manually on equip
 /obj/item/clothing/mask/gas/bdsm_mask/equipped(/mob/user, slot)
 	. = ..()
-	var/mob/living/carbon/C = usr
-	var/I = usr.get_item_by_slot(ITEM_SLOT_MASK)
+	var/mob/living/carbon/human/C = loc
+	var/I = C.get_item_by_slot(ITEM_SLOT_MASK)
 	if(I==src)
 		if(mask_on)
 			if(breath_status == FALSE)
 				time_to_choke_left = time_to_choke
 				breath_status = TRUE
 				C.emote("inhale")
-			to_chat(usr,"<font color=purple>You suddenly realize that breathing has become much harder!.</font>")
+			to_chat(C,"<font color=purple>You suddenly realize that breathing has become much harder!.</font>")
 			START_PROCESSING(SSobj, src)
 			time_to_choke_left = time_to_choke
 
