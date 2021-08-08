@@ -32,3 +32,34 @@
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	playsound(aimed_turf, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 	return TRUE
+
+/obj/machinery/pollution_scrubber
+	name = "Pollution Scrubber"
+	desc = "A scrubber that will process the air and filter out any contaminants."
+	icon = 'modular_skyrat/modules/pollution/icons/pollution_scrubber.dmi'
+	icon_state = "scrubber"
+	var/scrub_amount = 5
+	var/on = FALSE
+
+/obj/machinery/pollution_scrubber/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	on = !on
+	balloon_alert(user, "scrubber turned [on ? "on" : "off"]")
+
+	update_appearance()
+
+/obj/machinery/pollution_scrubber/update_icon(updates)
+	. = ..()
+	if(on)
+		icon_state = "scrubber_on"
+	else
+		icon_state = "scrubber"
+
+/obj/machinery/pollution_scrubber/process()
+	if(machine_stat)
+		return
+	if(on && isopenturf(get_turf(src)))
+		var/turf/open/open_turf = get_turf(src)
+		if(open_turf.pollution)
+			open_turf.pollution.ScrubAmount(scrub_amount)
+			use_power(100)
