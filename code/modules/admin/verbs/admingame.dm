@@ -85,7 +85,7 @@
 		body += "(<A href='?_src_=holder;[HrefToken()];mute=[M.ckey];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>toggle all</font></a>)"
 	// SKYRAT ADDITION - ADMIN MARKS
 	body += "<br><br>"
-	body += "<b>Admin Mark: <A href='?_src_=holder;[HrefToken()];setmark=[M.ckey]>[M.client.prefs.admin_mark || "None"]</A></b>"
+	body += "<b>Admin Mark: <A href='?_src_=holder;[HrefToken()];setmark=[M.ckey]'>[M.client.prefs.admin_mark || "None"]</A></b>"
 	// SKYRAT ADDITION END
 	body += "<br><br>"
 	body += "<A href='?_src_=holder;[HrefToken()];jumpto=[REF(M)]'><b>Jump to</b></A> | "
