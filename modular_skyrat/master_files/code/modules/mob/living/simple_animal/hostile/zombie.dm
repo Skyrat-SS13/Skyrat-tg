@@ -1,29 +1,29 @@
 /mob/living/simple_animal/hostile/zombie
 	var/no_corpse = FALSE
 	var/list/possible_jobs = list(
-		/datum/job/assistant,
-		/datum/job/station_engineer,
-		/datum/job/cook,
-		/datum/job/bartender,
-		/datum/job/chemist,
-		/datum/job/doctor,
-		/datum/job/virologist,
-		/datum/job/clown,
-		/datum/job/mime,
-		/datum/job/scientist,
-		/datum/job/cargo_technician,
-		/datum/job/security_officer,
-		/datum/job/security_medic,
-		/datum/job/geneticist,
-		/datum/job/botanist,
+		"Assistant",
+		"Station Engineer",
+		"Cook",
+		"Bartender",
+		"Chemist",
+		"Medical Doctor",
+		"Virologist",
+		"Clown",
+		"Mime",
+		"Scientist",
+		"Cargo Technician",
+		"Security Officer",
+		"Security Medic",
+		"Geneticist",
+		"Botanist",
 	)
 
 /mob/living/simple_animal/hostile/zombie/nocorpse
 	no_corpse = TRUE
 
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
-	var/datum/job/J = pick(possible_jobs)
-	J = new()
+	var/picked_job = pick(possible_jobs)
+	var/datum/job/J = SSjob.GetJob(picked_job)
 	var/datum/outfit/O
 	if(J.outfit)
 		O = new J.outfit
@@ -31,7 +31,7 @@
 		O.r_hand = null
 		O.l_hand = null
 
-	var/icon/P = get_flat_human_icon_skyrat(null, J, /datum/species/zombie, "zombie", outfit_override = O)
+	var/icon/P = get_flat_human_icon_skyrat("zombie_[picked_job]", J, /datum/species/zombie, "zombie", outfit_override = O)
 	icon = P
 	if(!no_corpse)
 		corpse = new(src)
