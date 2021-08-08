@@ -280,7 +280,7 @@
 					/obj/item/stack/sheet/cloth/ten,
 					/obj/item/stack/sheet/cloth/ten)
 	crate_name = "advanced art supplies"
-	
+
 /datum/supply_pack/service/paintcan
 	name = "Adaptive Paintcan"
 	desc = "Give things a splash of color with this experimental color-changing can of paint! Sellers note: We are not responsible for lynchings carried out by angry janitors, security officers, or any other crewmembers as a result of you using this."
