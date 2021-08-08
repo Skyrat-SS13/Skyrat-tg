@@ -13,10 +13,11 @@
 	src.pollutant_type = pollutant_type
 	src.pollutant_amount = pollutant_amount
 	src.expiry_time = world.time + expiry_time
-	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/Destroy)
+	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/wash_off)
 	START_PROCESSING(SSobj, src)
 
 /datum/component/temporary_pollution_emission/Destroy()
+	UnregisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -25,3 +26,8 @@
 	my_turf.PolluteTurf(pollutant_type, pollutant_amount * delta_time)
 	if(world.time >= expiry_time)
 		qdel(src)
+
+/datum/component/temporary_pollution_emission/proc/wash_off()
+	if(ismob(parent))
+		to_chat(parent, span_notice("The smell that lingered on your body fades."))
+	qdel(src)
