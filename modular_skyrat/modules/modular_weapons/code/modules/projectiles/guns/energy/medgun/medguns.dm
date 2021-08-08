@@ -160,15 +160,15 @@
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
 
 /obj/item/storage/briefcase/medicalgunset/standard
-	name = "VeyMedical CWM-479 Cell Powered Medigun starter kit"
-	desc = "A stater kit containing the CWM-479 medigun along with a tier I medicells."
+	name = "VeyMedical CWM-479 Cell Powered Medigun case"
+	desc = "Contains the CWM-479 Medigun"
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/medigun/standard(src)
 
 /obj/item/storage/briefcase/medicalgunset/cmo
 	name = "VeyMedical CWM-479-CC Cell Powered Medigun case"
-	desc = "Case that includes the Experimental CWM-479-CC Medigun and Tier I medicells"
+	desc = "A case that includes the Experimental CWM-479-CC Medigun and Tier I Medicells"
 
 /obj/item/storage/briefcase/medicalgunset/cmo/PopulateContents()
 	new /obj/item/gun/energy/medigun/cmo(src)
