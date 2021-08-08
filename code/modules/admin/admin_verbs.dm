@@ -87,7 +87,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
 	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
-	/datum/admins/proc/open_borgopanel
+	/datum/admins/proc/open_borgopanel,
+	/datum/admins/proc/view_all_circuits,
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -120,7 +121,6 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/admin_away,
-	/client/proc/load_circuit,
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -183,7 +183,6 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
 	/client/proc/clear_dynamic_transit,
-	/client/proc/run_empty_query,
 	/client/proc/toggle_medal_disable,
 	/client/proc/view_runtimes,
 	/client/proc/pump_random_event,
@@ -204,7 +203,8 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/check_timer_sources,
 	/client/proc/toggle_cdn,
 	/client/proc/cmd_give_sdql_spell,
-	/client/proc/adventure_manager
+	/client/proc/adventure_manager,
+	/client/proc/load_circuit,
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_possess)
