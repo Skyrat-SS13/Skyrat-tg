@@ -93,4 +93,3 @@
 	name = "Security Eyepatch Hud"
 	path = /obj/item/clothing/glasses/hud/eyepatch/sec
 	restricted_roles = list("Security Officer", "Security Sergeant", "Master At Arms", "Chief Master At Arms")
-  
