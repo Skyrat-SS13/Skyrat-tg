@@ -359,6 +359,10 @@
 	else
 		return ..()
 
+//to prevent creating metal chair from pillow
+/obj/structure/chair/pillow_small/MouseDrop(over_object, src_location, over_location)
+	return
+
 /////////////////////////
 ///CODE FOR PILLOW BED///
 /////////////////////////
