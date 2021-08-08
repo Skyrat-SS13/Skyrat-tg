@@ -30,6 +30,7 @@
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/generic_fluff.dmi'
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
+	density = FALSE	//Will be edited when it matters
 	deconstructible = TRUE	//Most, if not all the abandoned decor is deconstructable
 
 //Signs -----
@@ -101,17 +102,36 @@
 	climbable = FALSE
 
 /obj/structure/fluff/abandoned/cinderblock/tube	//I know this isn't a cinderblock, but they're both construction supplies so they go together
-	icon_state = "pipe"
+
+	icon_state = "tube"
 
 /obj/structure/fluff/abandoned/cinderblock/tube/middle
-	icon_state = "pipe_mid"
+	icon_state = "tube_mid"
 
 /obj/structure/fluff/abandoned/cinderblock/tube/end
-	icon_state = "pipe_end"
+	icon_state = "tube_end"
 
 /obj/structure/fluff/abandoned/cinderblock/Initialize()
 	. = ..()
 	if(climbable)
 		AddElement(/datum/element/climbable)
 
-//NEXT -----
+//Furnishings -----
+/obj/structure/fluff/abandoned/piping
+	name = "piping"
+	desc = "Old, exposed water piping."
+	icon_state = "piping"
+
+/obj/structure/fluff/abandoned/piping/broken
+	name = "broken piping"
+	desc = "Old, exposed water piping. This one has burst."
+	icon_state = "piping_broken"
+
+/obj/structure/fluff/abandoned/radiator
+	name = "radiator"
+	desc = "An old method of temperature control using the power of water and electricity. We've advanced past the need for these, though!"
+	icon_state = "radiator"
+
+/obj/structure/fluff/abandoned/radiator/worn
+	icon_state = "radiator_worn"
+
