@@ -43,6 +43,13 @@
 	suffix = "factory.dmm"
 	cost = 5
 
+/datum/map_template/ruin/rockplanet/construction
+	name = "Abandoned Construction Site"
+	id = "rockplanet_construction"
+	description = "A construction site building a new structure. Whatever it was meant to be, it isn't going to be finished now..."
+	suffix = "construction.dmm"
+	cost = 5
+
 /datum/map_template/ruin/rockplanet/cantina	//Yeah, its a really blatant reference, but so what? It looks cool as hell, and if the station and mining really want they can get the qpad working
 	name = "Chalmun's Cantina"
 	id = "rockplanetcantina"
@@ -81,8 +88,14 @@
 /datum/map_template/ruin/rockplanet/abandoned_d	//Road intersection
 	name = "Abandoned Structure D"
 	id = "rockplanetabandoned_d"
-	description = "The remains of some ancient structure."
+	description = "The remains of some ancient roadway."
 	suffix = "abandoned_d.dmm"
+
+/datum/map_template/ruin/rockplanet/abandoned_e //Highway
+	name = "Abandoned Structure E"
+	id = "rockplanetabandoned_d"
+	description = "The remains of some ancient roadway."
+	suffix = "abandoned_e.dmm"
 
 // Anywhere ruins that all mining levels should have, minimally modified.
 

@@ -86,28 +86,15 @@
 /obj/effect/turf_decal/skyrat_decals/street/manhole
 	icon_state = "manhole"
 
-/obj/effect/turf_decal/skyrat_decals/street/double/vertical
+/obj/effect/turf_decal/skyrat_decals/street/double
 	icon_state = "double_v"
-
-/obj/effect/turf_decal/skyrat_decals/street/double/vertical/degraded
-	icon_state = "double_v_degraded"
-
-/obj/effect/turf_decal/skyrat_decals/street/double/vertical/corroded
-	icon_state = "double_v_corroded"
 
 /obj/effect/turf_decal/skyrat_decals/street/double/horizontal
 	icon_state = "double_h"
-
-/obj/effect/turf_decal/skyrat_decals/street/double/horizontal/degraded
-	icon_state = "double_h_degraded"
-
-/obj/effect/turf_decal/skyrat_decals/street/double/horizontal/corroded
-	icon_state = "double_h_corroded"
-
 /obj/effect/turf_decal/skyrat_decals/street/double/end
 	icon_state = "double_end"
 
-/obj/effect/turf_decal/skyrat_decals/street/full/vertical
+/obj/effect/turf_decal/skyrat_decals/street/full
 	icon_state = "full_v"
 
 /obj/effect/turf_decal/skyrat_decals/street/full/horizontal
@@ -116,25 +103,11 @@
 /obj/effect/turf_decal/skyrat_decals/street/full/end
 	icon_state = "full_end"
 
-/obj/effect/turf_decal/skyrat_decals/street/dashed/vertical
-	icon_state = "dsahed_v"
+/obj/effect/turf_decal/skyrat_decals/street/dashed
+	icon_state = "dashed_v"
 
-/obj/effect/turf_decal/skyrat_decals/street/dashed/vertical/degraded
-	icon_state = "dashed_v_degraded"
-
-/obj/effect/turf_decal/skyrat_decals/street/dashed/vertical/corroded
-	icon_state = "dashed_v_corroded"
-
-/obj/effect/turf_decal/skyrat_decals/street/full/horizontal
+/obj/effect/turf_decal/skyrat_decals/street/dashed/horizontal
 	icon_state = "dashed_h"
 
-/obj/effect/turf_decal/skyrat_decals/street/dashed/horizontal/degraded
-	icon_state = "dashed_h_degraded"
-
-/obj/effect/turf_decal/skyrat_decals/street/dashed/horizontal/corroded
-	icon_state = "dashed_h_corroded"
-
-/* 	-----NYI-----
-/obj/effect/turf_decal/skyrat_decals/street/full/end
+/obj/effect/turf_decal/skyrat_decals/street/dashed/end
 	icon_state = "dashed_end"
-*/
