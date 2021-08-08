@@ -121,6 +121,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/admin_away,
+	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -277,6 +278,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/cmd_display_del_log,
 	/client/proc/toggle_combo_hud,
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
+	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
 	/client/proc/debug_huds
 	))
 GLOBAL_PROTECT(admin_verbs_hideable)

@@ -7,6 +7,8 @@
 	var/clawfootstep = null
 	var/heavyfootstep = null
 
+	var/datum/pollution/pollution //SKYRAT EDIT ADDITION /// Pollution of this turf
+
 //SKYRAT EDIT ADDITION
 //Consider making all of these behaviours a smart component/element? Something that's only applied wherever it needs to be
 //Could probably have the variables on the turf level, and the behaviours being activated/deactived on the component level as the vars are updated
