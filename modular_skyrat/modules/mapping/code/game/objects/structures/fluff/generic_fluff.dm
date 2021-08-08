@@ -24,11 +24,13 @@
 
 /* ----- Abandoned Decor -----*/
 //Abandoned items, apocalypse-themed stuff basically. Most common examples will be found on Rockplanet's ruins, but it's here for use in gateways and other maps' ruins too
+//If you're adding new stuff to the file, feel free to make a section above this. Otherwise you'll need to scroll kiiiinda far.
+
 /obj/structure/fluff/abandoned	//Keeps me from having to re-define icon over and over
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/generic_fluff.dmi'
 	layer = ABOVE_OPEN_TURF_LAYER
 	plane = FLOOR_PLANE
-	deconstructible = TRUE
+	deconstructible = TRUE	//Most, if not all the abandoned decor is deconstructable
 
 //Signs -----
 /obj/structure/fluff/abandoned/stopsign
@@ -57,50 +59,59 @@
 
 /obj/structure/sign/warning/nosmoking/circle/worn
 	desc = "A warning sign which probably used to read 'NO SMOKING'."
+	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/generic_fluff.dmi'
 	icon_state = "nosmoking_worn"
 	is_editable = FALSE
 	buildable_sign = FALSE
 
 /obj/structure/sign/warning/nosmoking/circle/worn/wrench_act(mob/living/user, obj/item/wrench/I)	//Overwrites the sign deconstruct (I just wanted to keep the wall mounting ok)
-	new /obj/item/stack/sheet/plastic
 	user.visible_message(span_notice("[user] tries to take the [src] off the wall, but it falls to pieces!"), \
 		span_notice("You try removing the [src] from the wall, but it falls to pieces!"))
+	new /obj/item/stack/sheet/plastic
 	qdel(src)
 	return TRUE
 
 //Cinderblock -----
 /obj/structure/fluff/abandoned/cinderblock
-	//This will be block1
-	//TODO: blend east/west
-	//TODO: make climbable
+	name = "cinderblock"
+	icon_state = "block1"
+	//NOTE - Block1 is the only block with north-to-south variants
+	density = TRUE
+	var/climbable = TRUE
+
+/obj/structure/fluff/abandoned/cinderblock/end
+	icon_state = "block1_end"
+
+/obj/structure/fluff/abandoned/cinderblock/mid
+	icon_state = "block1_mid"
 
 /obj/structure/fluff/abandoned/cinderblock/double
-	//This will be block2
-	//TODO: blend east/west
-	//TODO: block movement
+	icon_state = "block2"
+	climbable = FALSE
 
 /obj/structure/fluff/abandoned/cinderblock/large
-	//This will be block3
-	//TODO: blend east/west
-	//TODO: block movement
+	icon_state = "block3"
+	climbable = FALSE
 
 /obj/structure/fluff/abandoned/cinderblock/long
-	//This will be block4
-	//TODO: blend north/south
-	//TODO: make climbable
+	icon_state = "block4"
 
 /obj/structure/fluff/abandoned/cinderblock/tall
-	//This will be block5
-	//TODO: blend north/south
-	//TODO: block movement
+	icon_state = "block5"
+	climbable = FALSE
 
 /obj/structure/fluff/abandoned/cinderblock/tube	//I know this isn't a cinderblock, but they're both construction supplies so they go together
-	//This will be pipe
+	icon_state = "pipe"
 
 /obj/structure/fluff/abandoned/cinderblock/tube/middle
-	//This will be pipe_mid
+	icon_state = "pipe_mid"
 
 /obj/structure/fluff/abandoned/cinderblock/tube/end
-	//This will be pipe_end
+	icon_state = "pipe_end"
+
+/obj/structure/fluff/abandoned/cinderblock/Initialize()
+	. = ..()
+	if(climbable)
+		AddElement(/datum/element/climbable)
 
 //NEXT -----
