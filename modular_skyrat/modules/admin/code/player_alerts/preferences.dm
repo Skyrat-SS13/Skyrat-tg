@@ -19,7 +19,7 @@
 /datum/preferences/proc/admin_mark_stat_who()
 	if(!admin_mark)
 		return ""
-	return emoji_parse(admin_mark)
+	return emoji_parse(":[admin_mark]:")
 
 /datum/preferences/save_preferences()
 	. = ..()
