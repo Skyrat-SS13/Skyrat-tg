@@ -332,8 +332,8 @@
 	icon_state = "zombieprisoner"
 	icon_living = "zombieprisoner"
 	speak_chance = 0
-	maxHealth = 25
-	health = 25
+	maxHealth = 45
+	health = 45
 	harm_intent_damage = 10
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -352,8 +352,8 @@
 	icon_state = "zombieguard"
 	icon_living = "zombieguard"
 	speak_chance = 0
-	maxHealth = 35
-	health = 35
+	maxHealth = 55
+	health = 55
 	harm_intent_damage = 15
 	melee_damage_lower = 15
 	melee_damage_upper = 15
@@ -372,8 +372,8 @@
 	icon_state = "zombieriot"
 	icon_living = "zombieriot"
 	speak_chance = 0
-	maxHealth = 50
-	health = 50
+	maxHealth = 80
+	health = 80
 	harm_intent_damage = 15
 	melee_damage_lower = 15
 	melee_damage_upper = 15
@@ -392,8 +392,8 @@
 	icon_state = "zombieert"
 	icon_living = "zombieert"
 	speak_chance = 0
-	maxHealth = 35
-	health = 35
+	maxHealth = 65
+	health = 65
 	harm_intent_damage = 10
 	melee_damage_lower = 10
 	melee_damage_upper = 10
@@ -412,8 +412,8 @@
 	icon_state = "zombiedoc"
 	icon_living = "zombiedoc"
 	speak_chance = 0
-	maxHealth = 25
-	health = 25
+	maxHealth = 35
+	health = 35
 	harm_intent_damage = 10
 	melee_damage_lower = 10
 	melee_damage_upper = 10
