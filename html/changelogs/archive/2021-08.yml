@@ -78,3 +78,238 @@
       of euphoria so it may not harm the masses.
   - bugfix: The Interdyne Deck Officer's office now is command only - but has some
       extra goodies for the DO when they wake up.
+2021-08-04:
+  FlamingLily:
+  - rscdel: the gas giant doesn't existthe gas giant doesn't existthe gas giant doesn't
+      existthe gas giant doesn't existthe gas giant doesn't existthe gas giant doesn't
+      existthe gas giant doesn't exist
+  - bugfix: Some alt title functionality
+  ForrestWick:
+  - rscadd: 'Added more ashwalker clothes. expansion: Expanded the previous ashwalker
+      nest ruin into a larger village qol: Gives Ashwalkers more tools, barter options,
+      and general gameplay options for their rounds.'
+  - config: put the new map in the config file
+  Gandalf2k15:
+  - bugfix: You will now join as your set size.
+  GoldenAlpharex:
+  - bugfix: Nanotrasen decided to fix the issue in its formal coat production line,
+      resulting in the Nanotrasen Representative receiving their CentCom formal coat
+      once again, now with some extra buttons to toggle its look on the go!
+  Improvedname:
+  - bugfix: Anti-tider mister is no longer invinsible inhand
+  RatFromTheJungle:
+  - bugfix: "fixes slime sprites why don't we have a 'spritefix' cl \U0001F614"
+  Seris02:
+  - bugfix: batons stamcrit again
+  - rscadd: mentor chat filter
+  SkyratBot:
+  - bugfix: ethereal hair will now change with ethereal color without an external
+      update
+  - bugfix: Beef wellingtons cannot be sliced to produce beef wellington slices that
+      can be sliced to produce beef wellington slices that can be sliced to produce
+      beef wellington slices...
+  - code_imp: Improves BCI code by removing an easily bypassable `add_to` check for
+      circuit components and implementing proper typechecking in the addable BCI components
+  - bugfix: Fixed the UI notices about the supported types not showing up on all BCI
+      components
+  - admin: 'Adds admin components that allow admins to set variables, get variables,
+      call procs and execute sdql via circuits. To enable these components to function,
+      an admin needs to enable the admin_only variable on a circuit. qol: Adds more
+      entity information to shell outputs to allow circuits to identify who used the
+      shell. expansion: Adds list literals.'
+  - admin: adds list getter and text2num to sdql wrappers
+  - bugfix: Fixed phantom slipping caused by synthesized banana peels.
+  - refactor: refactored spirit possession used in the possessed blade into a component.
+      now ANYTHING could be possessed if you so desire!
+  - bugfix: The pip count, layout, and orientation of standard D6s has been brought
+      in line with a standard casino D6.
+  - bugfix: Being clumsy no longer protects you from grenades sticking to your hands.
+  - bugfix: CTF will no longer delete objects on CTF maps that shouldn't be deleted
+      and it'll also successfully regenerate the map once a CTF round ends.
+  - bugfix: Using Twisted Construction on an AI shell no longer ghosts the AI
+  - bugfix: Fixed the metabolism unit test randomly failing because of neurowhine
+  - balance: BCI now has it's own research node.
+  - bugfix: You no longer can remove BCI core and actions from BCIs and insert them
+      into other circutry.
+  - bugfix: Cultists can once again draw runes in lavaland mining station
+  - code_imp: Pavlova has better code :)
+  - spellcheck: Pavlova has a different description now
+  - refactor: Revenant, Sentient Disease, Space Pirates, and Obsessed have been registered
+      into dynamic mode.
+  - bugfix: Vehicles can now be buckled to again.
+  - bugfix: fixes soulstones granting themselves every language... instead of the
+      spirit inside. lol.
+  - bugfix: Cultists using Twisted Construction on a Cyborg will no longer spawn 2
+      constructs.
+  - bugfix: Phazon microtool arrays no longer have an error sprite
+  - bugfix: Fixed rad collectors ignoring letting anyone (un)lock them with their
+      ID.
+  - bugfix: Fixed a bug preventing the Plexagon HR Core app from de-prioritising jobs
+      when 5 or more jobs were prioritised.
+  - bugfix: Fixed medical HUDs not showing the defib icon.
+  SpooksAnno:
+  - bugfix: fixes the affection upgrade not able to be used more than once
+  carshalash:
+  - bugfix: Eggs now work when cracked into glasses
+2021-08-05:
+  ForrestWick:
+  - rscadd: 'New gateway: Scalamov Prison. Custom-made enemies and clothes specific
+      to the gateway, but can be adapted to other stuff.'
+  - imageadd: icons for the new items and enemies.
+  - code_imp: added code and items for the prison, such as jumpsuits, enemies, and
+      the ghost roles.
+  MMMiracles:
+  - rscadd: Tramstation's service wing has been revamped!
+  - rscadd: The Kitchen and Hydroponics has been redesigned entirely with small adjustments
+      to the bar.
+  - rscadd: A larger dining area as well as a Kitchen area with underground freezer.
+  - rscadd: Better department layout in general for Hydroponics while keeping the
+      dedicated beekeeper room.
+  - rscadd: A dedicated service room to hold the various ordering/request consoles
+      between the ktichen/bar/hydro.
+  - rscadd: The stairs leading to the bar have been made very accessible from the
+      tram dock, being right beside the kitchen entrance. The lower segment of the
+      bar has been redesigned the better fit this change.
+  Melbert:
+  - code_imp: Uncomments the code that makes chaplains enjoy holymelons. Chaplains
+      will now gain positive moodlets from eating holy melons once again.
+  SkyratBot:
+  - refactor: Refactors datatype code completely for integrated circuits.
+  - refactor: Options have been moved to their own input port with their own special
+      type known as the "Option" type.
+  - balance: Standard bananium floor is now viable for clown decoration and isn't
+      slippery. Custom bananium floor tiles can be used to slip people though.
+  - bugfix: Fixed CTF breaking when it restarts.
+  - bugfix: Custom vendor bluescreen
+  - bugfix: List literal components no longer append their output with garbage data.
+  - rscadd: Makes Icebox Service Multi-Z through retroaction.
+  - rscadd: The first Multi-Z kitchen on /tgstation/
+  - bugfix: 'Tosses out the non Multi-Z aspects of the previous service qol: You can
+      now use stairs to visit the various areas of Icebox Service'
+  - bugfix: This should force ruin spawns out and away from the center of the station.
+      Next step is to actually add icebox ruins that are small but help force that
+      spawn condition.
+  - bugfix: Dead Cyborgs are thrown back into their body when turned into a Cultist
+      construct.
+  - bugfix: manned turret projectiles now actually go towards where you aim
+  - soundadd: new heavy machinegun sound from tgmc
+  - code_imp: deployable component, for deploying things from other things
+  - bugfix: You no longer need to unbuckle twice from xenomorph nests to be free
+  - spellcheck: Gutlunches no longer eat through their nutrient sacs.
+  lyricalpaws:
+  - rscadd: Traitor items
+  - rscdel: removed Elite Suit from Uplink
+  unit0016:
+  - rscadd: The Imperial pirates no longer use a near identical shuttle structure
+      to the other slaver shuttle that also exists.
+2021-08-06:
+  3D-Bat:
+  - rscadd: Low wings
+  FlamingLily:
+  - bugfix: Surgical procedures done by cyborgs no longer insert a living organ storage
+      bag into your chest cavity
+  - spellcheck: Surgery pain uses span procs
+  ForrestWick:
+  - bugfix: removed debug machine that was not supposed to be there
+  - bugfix: dialed back most of the gamer loot from the zombie prison gateway, fixed
+      some code errors in the enemy AI, added some new enemies to increase difficulty
+      since people noted that it's a bit easy to get through zombies, reworked the
+      loot lists for enemy drops
+  - bugfix: made the flavortext for the scalamov ghost roles less confusing, fixes
+      a lot of other oversights with shutters, buttons, and the warden boss fight.
+  - rscadd: Added hatchet, new building, ORM, mining vendor, and changed up a few
+      bits of the ashwalker village
+  Gandalf2k15:
+  - rscdel: Removed bluespace lockers.
+  Melbert:
+  - bugfix: Rust Heretics now need to stand on Rust to heal again, instead of passive
+      free healing
+  SabreML:
+  - imageadd: Added vox sprites for the owl mask.
+  Seris02:
+  - bugfix: SOOC works again
+  SkyratBot:
+  - code_imp: Removes (almost) all misc files from the clothing module
+  - bugfix: Fixed being able to polymorph pAIs into other mobs.  It changes their
+      holoform now instead.
+  - bugfix: Fixed being able to polymorph mimics spawned from a staff of animate
+  - bugfix: Tailored winter suit hoods are now colored correctly
+  - balance: Doubles capacity for most shells
+  - admin: adds an additional log file, mob_tags, for referencing mob numbers in logs
+  - bugfix: Contractor pods won't land on groundless turfs such as chasms, lava or
+      open space anymore.
+  - refactor: 'refactored the thrownthing datum a little. qol: you can now throw stuff
+      at movables with no density, such as mobs lying on the floor, mice, APCs, light
+      bulbs etcetera etcetera.'
+  ZephyrTFA:
+  - bugfix: Augments now correctly apply on characters
+  axietheaxolotl:
+  - rscadd: Adds CMO turtleneck to code, and puts it in locker.
+  linnpap:
+  - rscadd: Added wrestling rings
+  - bugfix: You can now actually craft crack bricks.
+  unit0016:
+  - bugfix: Blue robotics isn't real. And now, it can no longer hurt you... on NSS
+      Journey. Watch out, Kilo fans! I hear they bite...
+2021-08-07:
+  3D-Bat:
+  - rscadd: A nice sink for doctors to get water from
+  Azarak:
+  - bugfix: Fixes blank liquids and division by zero in them
+  FlamingLily:
+  - bugfix: everything (relating to alt titles)
+  - rscadd: more alt titles
+  - bugfix: Employment contracts now are uh good for RP and shit
+  ForrestWick:
+  - rscadd: put pandemics down and modified zombie damage
+  - bugfix: shrunk down some parts of the map to help with performance hits, loot
+      reductions
+  Gandalf2k15:
+  - balance: NPC  zombies can now be any job(apart from command jobs)!
+  - bugfix: NPC zombies are now actually zombies.
+  - refactor: The preferences system has been reset. Report any anomalies to github.
+  - bugfix: Ghost roles work now.
+  SkyratBot:
+  - code_imp: Made the Occupational Corruption Device's deadchat message less cryptic,
+      and repathed it to something more descriptive
+  - bugfix: Reinforced walls should now smooth properly.
+  - bugfix: Wirecutters have their correct belt slot icon again.
+  - rscadd: 'Added new mechanics or gameplay changes expansion: Expands content of
+      an existing thing qol: made something easier to use'
+  - bugfix: railings can now be vaulted/climbed over from both sides.
+  - admin: Admins now have a "View All Circuits" button to investigate circuits easier.
+  - bugfix: Missing APC in Icebox Bar Maint
+  - bugfix: Changes icebox apiary to the correct type
+  - bugfix: Icebox Disposals was unlinked under the bar table. This should fix that.
+  - bugfix: Icebox - It was stated that the new department lacks some visibility so
+      I added some windows to Upstairs Botany to help with that.
+  - bugfix: Icebox - Bar was mapped using the wrong table type, now it isn't.
+  - bugfix: Icebox - Kitchen was missing the Processor and Grinder, you can now find
+      them in the freezer and downstairs respectively.
+  - bugfix: Icebox - Changes the bot portal in the bar to the correct subtype.
+  - bugfix: Folded gold wheelchairs are now actually made of gold.
+  - bugfix: Adds a missing wall on CentCom in the supplypod facility
+  - bugfix: Most if not all CentCom windows should now be on plating
+  ZephyrTFA:
+  - balance: NT has signed an agreement to properly stock station atmos tanks.
+  axietheaxolotl:
+  - rscdel: Removed HOS Parade jackets.
+  - rscadd: Added new HoP clothing (satchel, backpack, duffle bag, turtleneck, and
+      turtle skirt.)
+  - rscadd: Added unique HoP satchels to loadout
+  - rscadd: Gave HoP their own Bowman.
+  - imageadd: added icons for the HoP satchels, and turtleneck, and skirt.
+  capsaicinz:
+  - rscadd: warden's disabler is back from comment hell.
+  - bugfix: security officer is no longer cucked by a weird pr change. disabler back.
+  softcerv:
+  - bugfix: fixes runtime errors with the medigun
+  twilightwanderer:
+  - bugfix: Fix the program at the cyborg tablet
+  unit0016:
+  - bugfix: Icebox
+2021-08-08:
+  SkyratBot:
+  - bugfix: Fixed circuit component options
+  capsaicinz:
+  - rscadd: sec sarge now gets a sidearm token.

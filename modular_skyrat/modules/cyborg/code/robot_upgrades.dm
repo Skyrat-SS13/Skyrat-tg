@@ -146,10 +146,12 @@
 /obj/item/borg/upgrade/affectionmodule/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
 	if(.)
-		for(var/obj/item/dogborg_tongue/dogtongue in borg.model.modules)
-			borg.model.remove_module(dogtongue, TRUE)
-		for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
-			borg.model.remove_module(dognose, TRUE)
+		return
+	borg.hasAffection = FALSE
+	for(var/obj/item/dogborg_tongue/dogtongue in borg.model.modules)
+		borg.model.remove_module(dogtongue, TRUE)
+	for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
+		borg.model.remove_module(dognose, TRUE)
 
 /////////////////////////////////////////////
 /// Advanced Engineering Cyborg Materials ///
