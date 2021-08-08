@@ -151,7 +151,6 @@
 /obj/item/storage/briefcase/medicalgunset/
 	name = "Medigun Supply Kit"
 	desc = "Medigun Supply Kit"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "medbriefcase"
 	inhand_icon_state = "lockbox"
@@ -206,4 +205,3 @@
 	else
 		to_chat(user, span_notice("The Medigun has no cells inside"))
 		return ..()
-//Procs//
