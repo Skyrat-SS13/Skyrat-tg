@@ -38,26 +38,19 @@ GLOBAL_LIST_INIT(tech_reward, list(
 ))
 
 GLOBAL_LIST_INIT(weapon_reward, list(
-	/obj/item/spear/bonespear = 1,
+	/obj/item/spear/bonespear = 6,
 	/obj/item/claymore/cutlass = 1,
 	/obj/item/gun/ballistic/automatic/pistol = 1,
 	/obj/item/shield/riot = 1,
 	/obj/item/shield/riot/roman = 1,
 	/obj/item/pneumatic_cannon = 1,
-	/obj/item/clothing/gloves/tackler/rocket = 1,
 	/obj/item/gun/syringe/rapidsyringe = 1,
-	/obj/item/weaponcrafting/gunkit/tesla = 1,
 ))
 
 GLOBAL_LIST_INIT(illegal_reward, list(
-	/obj/item/chameleon = 1,
-	/obj/item/healthanalyzer/rad_laser = 1,
-	/obj/item/jammer = 1,
 	/obj/item/stack/telecrystal = 1,
-	/obj/item/inducer/syndicate = 1,
-	/obj/item/card/emag = 1,
 	/obj/item/storage/box/rndboards = 1,
-	/obj/item/weaponcrafting/gunkit/ebow = 1,
+	/obj/item/disk/tech_disk/spaceloot = 6
 ))
 
 GLOBAL_LIST_INIT(alien_reward, list(
