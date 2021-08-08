@@ -14,11 +14,11 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == "lizard")
+		if(H.dna.species.limbs_id == SPECIES_LIZARD)
 			cumface.icon_state = "cumface_lizard"
-		else if(H.dna.species.limbs_id == "monkey")
+		else if(H.dna.species.limbs_id == SPECIES_MONKEY)
 			cumface.icon_state = "cumface_monkey"
-		else if(H.dna.species.id == "vox")
+		else if(H.dna.species.id == SPECIES_VOX)
 			cumface.icon_state = "cumface_vox"
 		else if(H.dna.species.mutant_bodyparts["snout"])
 			cumface.icon_state = "cumface_lizard"
@@ -71,11 +71,11 @@
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == "lizard")
+		if(H.dna.species.limbs_id == SPECIES_LIZARD)
 			bigcumface.icon_state = "bigcumface_lizard"
-		else if(H.dna.species.limbs_id == "monkey")
+		else if(H.dna.species.limbs_id == SPECIES_MONKEY)
 			bigcumface.icon_state = "bigcumface_monkey"
-		else if(H.dna.species.id == "vox")
+		else if(H.dna.species.id == SPECIES_VOX)
 			bigcumface.icon_state = "bigcumface_vox"
 		else if(H.dna.species.mutant_bodyparts["snout"])
 			bigcumface.icon_state = "bigcumface_lizard"
