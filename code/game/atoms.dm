@@ -1127,6 +1127,12 @@
 		remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		return TRUE
 
+	//SKYRAT EDIT ADDITION
+	var/datum/component/temporary_pollution_emission/pollution_component = GetComponent(/datum/component/temporary_pollution_emission)
+	if(pollution_component)
+		qdel(pollution_component) //Washing stuff should ideally remove the smell!
+	//SKYRAT EDTI END
+
 /**
  * call back when a var is edited on this atom
  *
