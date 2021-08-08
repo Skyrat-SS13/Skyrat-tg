@@ -38,7 +38,7 @@
 	desc = "A scrubber that will process the air and filter out any contaminants."
 	icon = 'modular_skyrat/modules/pollution/icons/pollution_scrubber.dmi'
 	icon_state = "scrubber"
-	var/scrub_amount = 5
+	var/scrub_amount = 2
 	var/on = FALSE
 
 /obj/machinery/pollution_scrubber/attack_hand(mob/living/user, list/modifiers)
