@@ -31,7 +31,7 @@
 		O.r_hand = null
 		O.l_hand = null
 
-	var/icon/P = get_flat_human_icon_skyrat("zombie_[picked_job]", J, /datum/species/zombie, "zombie", outfit_override = O)
+	var/icon/P = get_flat_human_icon_skyrat("zombie_[picked_job]", J, SPECIES_ZOMBIE_HALLOWEEN, "zombie", outfit_override = O)
 	icon = P
 	if(!no_corpse)
 		corpse = new(src)

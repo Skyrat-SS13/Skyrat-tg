@@ -260,7 +260,7 @@
 		if(!(head && (head.flags_inv & HIDEEYES)) && !(wear_mask && (wear_mask.flags_inv & HIDEEYES)))
 			var/icon_file = glasses.worn_icon
 			var/applied_style = NONE
-			if(dna.species.id == "vox")
+			if(dna.species.id == SPECIES_VOX)
 				applied_style |= STYLE_VOX
 				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/eyes_vox.dmi'
 			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_icon = icon_file, mutant_styles = applied_style)
