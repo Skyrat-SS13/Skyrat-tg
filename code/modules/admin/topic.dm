@@ -56,7 +56,7 @@
 			_mob.client.prefs.admin_mark_clear()
 			return
 		mark = sanitize(mark)
-		_mob.client.prefs.admin_mark_set()
+		_mob.client.prefs.admin_mark_set(mark)
 
 	else if(href_list["makeAntag"])
 
