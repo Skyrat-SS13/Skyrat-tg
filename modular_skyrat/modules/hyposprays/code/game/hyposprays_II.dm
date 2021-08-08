@@ -39,7 +39,7 @@
 	var/spray_self = SELF_SPRAY
 
 	//Can you hotswap vials? - Currently no hyposprays allow this for some reason
-	var/quickload = FALSE
+	var/quickload = TRUE
 	//Does it go through hardsuits?
 	var/penetrates = FALSE
 
