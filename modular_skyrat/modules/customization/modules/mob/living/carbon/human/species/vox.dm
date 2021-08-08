@@ -4,7 +4,7 @@
 	id = "vox"
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/vox_parts_greyscale.dmi'
-	say_mod = "shrieks"
+	say_mod = "skrees"
 	default_color = "00FF00"
 	can_augment = FALSE
 	species_traits = list(
