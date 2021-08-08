@@ -11,8 +11,8 @@
 
 /datum/species/pod/podweak
 	name = "Podperson"
-	id = "podweak"
-	limbs_id = "pod"
+	id = SPECIES_PODPERSON_WEAK
+	limbs_id = SPECIES_PODPERSON
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
