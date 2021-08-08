@@ -121,7 +121,7 @@
 		//SKYRAT EDIT CHANGE END
 
 	var/user_turf = get_turf(user)
-	if(user.client)
+	if(user.client) //SKYRAT EDIT ADDITION - so that clientless mob emotes don't clog dchat
 		for(var/mob/ghost in GLOB.dead_mob_list)
 			if(!ghost.client || isnewplayer(ghost))
 				continue
@@ -302,7 +302,7 @@
 	var/ghost_text = "<b>[src]</b> [text]"
 
 	var/origin_turf = get_turf(src)
-	if (client)
+	if (client) //SKYRAT EDIT ADDITION - so that clientless mob emotes don't clog dchat
 		for(var/mob/ghost in GLOB.dead_mob_list)
 			if(!ghost.client || isnewplayer(ghost))
 				continue
