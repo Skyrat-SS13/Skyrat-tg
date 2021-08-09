@@ -50,6 +50,7 @@
 		/obj/item/clothing/under/rank/security/head_of_security/skirt = 1, /obj/item/clothing/under/rank/security/head_of_security/grey = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1, /obj/item/clothing/under/rank/security/head_of_security/alt/skirt = 1,
 		/obj/item/clothing/suit/armor/hos/navyblue = 1, /obj/item/clothing/under/rank/security/head_of_security/parade = 1,
+		/obj/item/clothing/suit/armor/hos/parade = 1, /obj/item/clothing/suit/armor/hos/parade/female = 1,
 		/obj/item/clothing/suit/toggle/armor/hos/hos_formal = 1, /obj/item/clothing/shoes/sneakers/brown = 1
 		)
 	access_lists["[ACCESS_QM]"] = list(
