@@ -365,6 +365,10 @@
 	icon_state = "chastcage"
 	use_static = null
 
+/datum/sprite_accessory/underwear/lizared
+	name = "LIZARED Underwear"
+	icon_state = "lizared"
+	use_static = TRUE
 
 /datum/sprite_accessory/underwear/male_briefs
 	has_digitigrade = TRUE
