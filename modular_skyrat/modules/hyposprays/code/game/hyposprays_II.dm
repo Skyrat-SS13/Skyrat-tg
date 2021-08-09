@@ -38,7 +38,7 @@
 	//Time taken to spray self
 	var/spray_self = SELF_SPRAY
 
-	//Can you hotswap vials? - Currently no hyposprays allow this for some reason
+	//Can you hotswap vials? - now all hyposprays can!
 	var/quickload = TRUE
 	//Does it go through hardsuits?
 	var/penetrates = FALSE
@@ -98,7 +98,20 @@
 		if(!quickload)
 			to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
 			return FALSE
-		unload_hypo(vial, user)
+		else
+			var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
+			var/obj/item/reagent_containers/glass/bottle/vial/old_container = vial
+			if(!is_type_in_list(container, allowed_containers))
+				to_chat(user, "<span class='notice'>[src] doesn't accept this type of vial.</span>")
+				return FALSE
+			old_container.forceMove(drop_location())
+			if(!user.transferItemToLoc(container, src))
+				return FALSE
+			vial = container
+			user.visible_message("<span class='notice'>[user] has swapped a vial into [src].</span>","<span class='notice'>You have swapped [vial] into [src].</span>")
+			playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+			user.put_in_hands(old_container)
+			return TRUE
 	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial)))
 		var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
 		if(!is_type_in_list(container, allowed_containers))
