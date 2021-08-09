@@ -350,7 +350,6 @@ Haha! Kill me please.
 	taste_description = "chinese dragon powder"
 	overdose_threshold = 17 //ODing makes you male and removes female genitals
 	metabolization_rate = 0.5
-	var/message_spam
 
 /datum/reagent/penis_enlarger/on_mob_metabolize(mob/living/M)
 	. = ..()
@@ -392,10 +391,9 @@ Haha! Kill me please.
 
 		if(ISINRANGE_EX(P?.genital_size, 18, 20) && (H.w_uniform || H.wear_suit))
 			var/target = H.get_bodypart(BODY_ZONE_PRECISE_GROIN)
-			if(!message_spam)
-				to_chat(H, "<span class='danger'>You feel tight in pants!</b></span>")
-				message_spam = TRUE
-			H.apply_damage(1, BRUTE, target)
+			if(prob(20))
+				to_chat(H, "<span class='danger'>You feel the tight in your pants!</b></span>")
+				H.apply_damage(1, BRUTE, target)
 
 	//If they've opted out, then route processing though liver.
 	if(!(H.client?.prefs.skyrat_toggles & PENIS_ENLARGEMENT))
