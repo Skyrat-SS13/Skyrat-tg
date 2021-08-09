@@ -102,13 +102,13 @@
 			var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
 			var/obj/item/reagent_containers/glass/bottle/vial/old_container = vial
 			if(!is_type_in_list(container, allowed_containers))
-				to_chat(user, "<span class='notice'>[src] doesn't accept this type of vial.</span>")
+				to_chat(user, span_notice("[src] doesn't accept this type of vial."))
 				return FALSE
 			old_container.forceMove(drop_location())
 			if(!user.transferItemToLoc(container, src))
 				return FALSE
 			vial = container
-			user.visible_message("<span class='notice'>[user] has swapped a vial into [src].</span>","<span class='notice'>You have swapped [vial] into [src].</span>")
+			user.visible_message(span_notice("[user] has swapped a vial into [src]."), span_notice("You have swapped [vial] into [src]."))
 			playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
 			user.put_in_hands(old_container)
 			return TRUE
