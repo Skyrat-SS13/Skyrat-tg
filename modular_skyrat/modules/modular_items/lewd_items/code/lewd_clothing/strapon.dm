@@ -79,20 +79,20 @@
 /obj/item/clothing/strapon/dropped(mob/living/user)
 	. = ..()
 	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/genital/vagina/V = H.getorganslot(ORGAN_SLOT_VAGINA)
-	var/obj/item/organ/genital/womb/W = H.getorganslot(ORGAN_SLOT_WOMB)
-	var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
-	var/obj/item/organ/genital/testicles/T = H.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/vagina/Vagene = H.getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/genital/womb/Wombo = H.getorganslot(ORGAN_SLOT_WOMB)
+	var/obj/item/organ/genital/penis/Penus = H.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/genital/testicles/Testes = H.getorganslot(ORGAN_SLOT_TESTICLES)
 
 	if(W && !ismob(loc) && in_hands == TRUE && src != H.belt)
 		qdel(W)
 		in_hands = FALSE
 
 	if(src == H.belt)
-		V?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
-		W?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
-		P?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
-		T?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
+		Vagene?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
+		Wombo?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
+		Penus?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
+		Testes?.visibility_preference = GENITAL_HIDDEN_BY_CLOTHES
 		H.update_body()
 	else
 		return
