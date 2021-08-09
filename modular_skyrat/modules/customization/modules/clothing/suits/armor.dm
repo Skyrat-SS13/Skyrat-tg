@@ -54,7 +54,7 @@
 // CAPTAIN
 
 /obj/item/clothing/suit/armor/captain/parade/female
-	name = "captain's female parade jacket"
+	name = "captain's female formal jacket"
 	desc = "A captain's luxury-wear, for special occasions."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -63,7 +63,7 @@
 
 // HEAD OF PERSONNEL (Lowered the armor values, but technically they'd be giving up their vest for this so they deserve some armor)
 /obj/item/clothing/suit/armor/hop_parade
-	name = "head of personnel's male parade jacket"
+	name = "head of personnel's male formal jacket"
 	desc = "A luxurious deep blue jacket for the Head of Personnel, woven with a red trim. It smells of bureaucracy."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -75,5 +75,5 @@
 	heat_protection = CHEST|GROIN|ARMS
 
 /obj/item/clothing/suit/armor/hop_parade/female
-	name = "head of personnel's female parade jacket"
+	name = "head of personnel's female formal jacket"
 	icon_state = "hop_parade_female"
