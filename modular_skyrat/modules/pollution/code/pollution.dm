@@ -12,6 +12,9 @@
 
 /datum/pollution/New(turf/open/passed_turf)
 	. = ..()
+	if(isspaceturf(passed_turf))
+		qdel(src)
+		return
 	my_turf = passed_turf
 	my_turf.pollution = src
 	REGISTER_POLLUTION(src)
@@ -133,6 +136,10 @@
 	var/list/already_processed_cache = SSpollution.processed_this_run
 	var/list/potential_activers = list()
 	for(var/turf/open/open_turf as anything in my_turf.atmos_adjacent_turfs)
+		if(isspaceturf(open_turf)) //Space turfs shouldn't have pollution on them.
+			if(open_turf.pollution)
+				qdel(open_turf.pollution)
+			continue
 		if(!already_processed_cache[open_turf])
 			if(CanShareWith(open_turf))
 				sharing_turfs[open_turf] = TRUE
