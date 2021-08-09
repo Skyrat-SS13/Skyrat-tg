@@ -121,7 +121,9 @@
 
 /datum/pollution/Destroy()
 	if(managed_overlay)
-		my_turf.overlays -= managed_overlay
+		my_turf.underlays -= managed_overlay
+		qdel(managed_overlay)
+		managed_overlay = null
 	REMOVE_POLLUTION_CURRENTRUN(src)
 	SET_UNACTIVE_POLLUTION(src)
 	UNREGISTER_POLLUTION(src)
