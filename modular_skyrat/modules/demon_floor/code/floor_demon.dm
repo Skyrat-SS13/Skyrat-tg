@@ -76,11 +76,11 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 /mob/living/simple_animal/hostile/floor_cluwne/Life()
 	do_jitter_animation(1000)
 	pixel_y = 8
-	var/area/A = get_area(loc) // Has to be separated from the below since is_type_in_typecache is also a funky macro
-	if(is_type_in_typecache(A, invalid_area_typecache) || !is_station_level(z))
+	var/area/check_area = get_area(loc) // Has to be separated from the below since is_type_in_typecache is also a funky macro
+	if(is_type_in_typecache(check_area, invalid_area_typecache) || !is_station_level(z))
 		var/area = pick(GLOB.teleportlocs)
-		var/area/tp = GLOB.teleportlocs[area]
-		forceMove(pick(get_area_turfs(tp.type)))
+		var/area/teleport_locs = GLOB.teleportlocs[area]
+		forceMove(pick(get_area_turfs(teleport_locs.type)))
 
 	if(!current_victim)
 		Acquire_Victim()
@@ -94,15 +94,15 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 	if(eating)
 		return
 
-	var/turf/T = get_turf(current_victim)
-	A = get_area(T) // Has to be separated from the below since is_type_in_typecache is also a funky macro
+	var/turf/victim_turf = get_turf(current_victim)
+	check_area = get_area(victim_turf) // Has to be separated from the below since is_type_in_typecache is also a funky macro
 	if(prob(5))//checks roughly every 20 ticks
-		if(current_victim.stat == DEAD || is_type_in_typecache(A, invalid_area_typecache) || !is_station_level(current_victim.z))
+		if(current_victim.stat == DEAD || is_type_in_typecache(check_area, invalid_area_typecache) || !is_station_level(current_victim.z))
 			if(!Found_You())
 				Acquire_Victim()
 
-	if(get_dist(src, current_victim) > 9 && !manifested &&  !is_type_in_typecache(A, invalid_area_typecache))//if cluwne gets stuck he just teleports
-		do_teleport(src, T)
+	if(get_dist(src, current_victim) > 9 && !manifested &&  !is_type_in_typecache(check_area, invalid_area_typecache))//if cluwne gets stuck he just teleports
+		do_teleport(src, victim_turf)
 
 	interest++
 	if(interest >= switch_stage * 4)
@@ -120,8 +120,8 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 	..()
 
 /mob/living/simple_animal/hostile/floor_cluwne/Goto(target, delay, minimum_distance)
-	var/area/A = get_area(current_victim.loc)
-	if(!manifested && !is_type_in_typecache(A, invalid_area_typecache) && is_station_level(current_victim.z))
+	var/area/check_area = get_area(current_victim.loc)
+	if(!manifested && !is_type_in_typecache(check_area, invalid_area_typecache) && is_station_level(current_victim.z))
 		walk_to(src, target, minimum_distance, delay)
 	else
 		walk_to(src,0)
@@ -387,7 +387,7 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 
 	if(get_dist(src,carbon_human) <= 1)
 		visible_message(span_warning("[src] begins dragging [carbon_human] under the floor!"))
-		if(do_after(src, 50, target = carbon_human) && eating)
+		if(do_after(src, 5 SECONDS, target = carbon_human) && eating)
 			carbon_human.become_blind()
 			carbon_human.layer = GAME_PLANE
 			carbon_human.invisibility = INVISIBILITY_OBSERVER
@@ -416,16 +416,17 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 	animate(carbon_human.client,color = red_splash, time = 10, easing = SINE_EASING|EASE_OUT)
 	for(var/turf/splatter_turf in orange(carbon_human, 4))
 		carbon_human.add_splatter_floor(splatter_turf)
-	if(do_after(src, 50, target = carbon_human))
+	if(do_after(src, 5 SECONDS, target = carbon_human))
 		carbon_human.unequip_everything()//more runtime prevention
-		carbon_human.equipOutfit(/datum/outfit/job/clown)
-		carbon_human.adjustBruteLoss(30)
 		carbon_human.cure_blind()
+		carbon_human.fully_heal(TRUE)
+		carbon_human.adjustBruteLoss(30)
 		carbon_human.layer = initial(carbon_human.layer)
 		carbon_human.invisibility = initial(carbon_human.invisibility)
 		carbon_human.density = initial(carbon_human.density)
 		carbon_human.anchored = initial(carbon_human.anchored)
 		carbon_human.blur_eyes(10)
+		carbon_human.equipOutfit(/datum/outfit/job/clown)
 		carbon_human.pull_force = initial(carbon_human.pull_force)
 		animate(carbon_human.client,color = old_color, time = 20)
 		var/turf/move_turf = get_turf(pick(GLOB.cluwne_maze))
