@@ -201,12 +201,19 @@ structure_check() searches for nearby cultist structures required for the invoca
 	req_cultists = 1
 	rune_in_use = FALSE
 
+	var/last_used = 0 //SKYRAT EDIT ADDITION
+
 /obj/effect/rune/convert/do_invoke_glow()
 	return
 
 /obj/effect/rune/convert/invoke(list/invokers)
 	if(rune_in_use)
 		return
+	//SKYRAT EDIT ADDITION
+	if((world.time > last_used + 15 SECONDS))
+		visible_message(span_warning("[src] glows red! It was used too soon."))
+		return
+	//SKYRAT EDIT END
 	var/list/myriad_targets = list()
 	var/turf/T = get_turf(src)
 	for(var/mob/living/M in T)
@@ -251,6 +258,17 @@ structure_check() searches for nearby cultist structures required for the invoca
 			to_chat(M, span_warning("Something is shielding [convertee]'s mind!"))
 		log_game("Offer rune failed - convertee had anti-magic")
 		return FALSE
+	//SKYRAT EDIT ADDITION
+	var/demonic_response = tgui_alert(convertee, "You feel demonic forces attempting to penetrate your mind... resistance... futile...", "NAR-...SIE", list("Submit...", "Resist..."), 5 SECONDS)
+	if(demonic_response != "Submit...")
+		convertee.visible_message(span_warning("[convertee] resists the ritual!"), span_narsiesmall("You fool... resistance is futile."))
+		convertee.playsound_local(get_turf(convertee), 'modular_skyrat/master_files/sound/effects/cult_convert_fail.ogg', 80)
+		convertee.adjust_blindness(10)
+		convertee.Jitter(10)
+		convertee.adjustBruteLoss(5)
+		last_used = world.time
+		return
+	//SKYRAT EDIT END
 	var/brutedamage = convertee.getBruteLoss()
 	var/burndamage = convertee.getFireLoss()
 	if(brutedamage || burndamage)
