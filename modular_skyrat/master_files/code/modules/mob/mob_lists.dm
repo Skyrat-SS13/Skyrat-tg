@@ -2,7 +2,9 @@
 	. = ..()
 	if(!SSticker?.mode)
 		return
-	if(mind?.assigned_role.type == /datum/job/assistant)
+	if(mind?.assigned_role?.type == /datum/job/assistant)
+		return
+	if(!(mind?.assigned_role?.job_flags & JOB_CREW_MEMBER))
 		return
 	GLOB.useful_player_list |= src
 
@@ -10,6 +12,8 @@
 	. = ..()
 	if(!SSticker?.mode)
 		return
-	if(mind?.assigned_role.type == /datum/job/assistant)
+	if(mind?.assigned_role?.type == /datum/job/assistant)
+		return
+	if(!(mind?.assigned_role?.job_flags & JOB_CREW_MEMBER))
 		return
 	GLOB.useful_player_list -= src
