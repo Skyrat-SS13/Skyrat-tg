@@ -142,7 +142,7 @@
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/clothing/suit/armor/vest(src)
 	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR // I know this is modular and I don't have to do this, but just let me live man.
-    /*
+	/*
 	// new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
 	// new /obj/item/clothing/under/rank/nanotrasen_representative(src)
 	// new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
