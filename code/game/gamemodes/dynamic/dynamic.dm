@@ -562,7 +562,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 				if(high_impact_ruleset_executed)
 					return FALSE
 
-	var/population = GLOB.alive_player_list.len
+	var/population = GLOB.useful_player_list.len //SKYRAT CHANGE, alive_player_list TO useful_player_list
 	if((new_rule.acceptable(population, threat_level) && new_rule.cost <= mid_round_budget) || forced)
 		new_rule.trim_candidates()
 		if (new_rule.ready(forced))
@@ -611,7 +611,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 			for (var/datum/dynamic_ruleset/midround/rule in midround_rules)
 				if (!rule.weight)
 					continue
-				if (rule.acceptable(GLOB.alive_player_list.len, threat_level) && mid_round_budget >= rule.cost)
+				if (rule.acceptable(GLOB.useful_player_list.len, threat_level) && mid_round_budget >= rule.cost) //SKYRAT CHANGE, alive_player_list TO useful_player_list
 					// If admins have disabled dynamic from picking from the ghost pool
 					if(rule.ruletype == "Latejoin" && !(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
 						continue
@@ -636,16 +636,16 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		forced_injection = dry_run
 		return 100
 	var/chance = 0
-	var/max_pop_per_antag = max(5,15 - round(threat_level/10) - round(GLOB.alive_player_list.len/5))
+	var/max_pop_per_antag = max(5,15 - round(threat_level/10) - round(GLOB.useful_player_list.len/5)) //SKYRAT CHANGE, alive_player_list TO useful_player_list
 	if (!GLOB.current_living_antags.len)
 		chance += 50 // No antags at all? let's boost those odds!
 	else
-		var/current_pop_per_antag = GLOB.alive_player_list.len / GLOB.current_living_antags.len
+		var/current_pop_per_antag = GLOB.useful_player_list.len / GLOB.current_living_antags.len //SKYRAT CHANGE, alive_player_list TO useful_player_list
 		if (current_pop_per_antag > max_pop_per_antag)
 			chance += min(50, 25+10*(current_pop_per_antag-max_pop_per_antag))
 		else
 			chance += 25-10*(max_pop_per_antag-current_pop_per_antag)
-	if (GLOB.dead_player_list.len > GLOB.alive_player_list.len)
+	if (GLOB.dead_player_list.len > GLOB.useful_player_list.len) //SKYRAT CHANGE, alive_player_list TO useful_player_list
 		chance -= 30 // More than half the crew died? ew, let's calm down on antags
 	if (mid_round_budget > higher_injection_chance_minimum_threat)
 		chance += higher_injection_chance
@@ -701,7 +701,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		for (var/datum/dynamic_ruleset/latejoin/rule in latejoin_rules)
 			if (!rule.weight)
 				continue
-			if (rule.acceptable(GLOB.alive_player_list.len, threat_level) && mid_round_budget >= rule.cost)
+			if (rule.acceptable(GLOB.useful_player_list.len, threat_level) && mid_round_budget >= rule.cost) //SKYRAT CHANGE, alive_player_list TO useful_player_list
 				// No stacking : only one round-ender, unless threat level > stacking_limit.
 				if (threat_level < GLOB.dynamic_stacking_limit && GLOB.dynamic_no_stacking)
 					if(rule.flags & HIGH_IMPACT_RULESET && high_impact_ruleset_executed)

@@ -198,7 +198,7 @@
 	var/has_failure_chance = TRUE
 
 /datum/dynamic_ruleset/midround/autotraitor/acceptable(population = 0, threat = 0)
-	var/player_count = GLOB.alive_player_list.len
+	var/player_count = GLOB.useful_player_list.len  //SKYRAT CHANGE, alive_player_list TO useful_player_list
 	var/antag_count = GLOB.current_living_antags.len
 	var/max_traitors = round(player_count / 10) + 1
 
