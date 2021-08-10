@@ -443,7 +443,7 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 
 //manifestation animation
 /obj/effect/temp_visual/fcluwne_manifest
-	icon = 'modular_skyrat/modules/demon_floor/icon/floors.dmi'
+	icon = 'modular_skyrat/modules/demon_floor/icon/demon.dmi'
 	icon_state = "fcluwne_open"
 	layer = TURF_LAYER
 	duration = 600
