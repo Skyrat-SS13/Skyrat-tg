@@ -1,6 +1,6 @@
 /datum/species/skrell
 	name = "Skrell"
-	id = "skrell"
+	id = SPECIES_SKRELL
 	default_color = "4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
