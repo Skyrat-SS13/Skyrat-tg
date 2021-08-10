@@ -46,12 +46,14 @@
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/hop(src)
-	new /obj/item/storage/lockbox/medal/service(src)
 	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
 	/*
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel(src)
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt(src)
 	new /obj/item/clothing/head/hopcap(src)
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade(src) //SKYRAT EDIT ADDITION START - HOP PARADE UNIFORMS
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female(src)
+	new /obj/item/clothing/suit/toggle/hop_parade(src) //SKYRAT EDIT ADDITION END
 	*/
 	// SKYRAT EDIT REMOVAL END
 	new /obj/item/cartridge/hop(src)
