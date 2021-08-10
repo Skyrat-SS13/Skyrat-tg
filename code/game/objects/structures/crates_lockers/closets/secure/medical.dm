@@ -78,7 +78,7 @@
 	new /obj/item/clothing/head/bio_hood/cmo(src)
 	new /obj/item/clothing/suit/toggle/labcoat/cmo(src)
 	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-    /*
+	/*
 	new /obj/item/clothing/under/rank/medical/chief_medical_officer(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/clothing/under/rank/medical/chief_medical_officer/skirt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck(src) // SKYRAT EDIT ADDITION // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
