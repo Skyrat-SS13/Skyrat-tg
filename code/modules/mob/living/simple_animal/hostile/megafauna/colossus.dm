@@ -478,28 +478,9 @@
 /obj/machinery/anomalous_crystal/emitter/ActivationReaction(mob/user, method)
 	if(..())
 		var/obj/projectile/P = new generated_projectile(get_turf(src))
-<<<<<<< HEAD
-		P.setDir(dir)
-		switch(dir)
-			if(NORTH)
-				P.yo = 20
-				P.xo = 0
-			if(EAST)
-				P.yo = 0
-				P.xo = 20
-			if(WEST)
-				P.yo = 0
-				P.xo = -20
-			else
-				P.yo = -20
-				P.xo = 0
-		P.fire()
-/* SKYRAT REMOVAL EDIT -- More generic roundremove/transformation shit
-=======
 		P.firer = src
 		P.fire(dir2angle(dir))
 
->>>>>>> 270acce4f55 ([Ready] Mining Loot Rework (#60516))
 /obj/machinery/anomalous_crystal/dark_reprise //Revives anyone nearby, but turns them into shadowpeople and renders them uncloneable, so the crystal is your only hope of getting up again if you go down.
 	observer_desc = "When activated, this crystal revives anyone nearby, but turns them into Shadowpeople and makes them unclonable, making the crystal their only hope of getting up again."
 	activation_method = ACTIVATE_TOUCH
@@ -521,7 +502,6 @@
 					H.revive(full_heal = TRUE, admin_revive = FALSE)
 					ADD_TRAIT(H, TRAIT_BADDNA, MAGIC_TRAIT) //Free revives, but significantly limits your options for reviving except via the crystal
 					H.grab_ghost(force = TRUE)
-SKYRAT REMOVAL EDIT END*/
 
 /obj/machinery/anomalous_crystal/helpers //Lets ghost spawn as helpful creatures that can only heal people slightly. Incredibly fragile and they can't converse with humans
 	observer_desc = "This crystal allows ghosts to turn into a fragile creature that can heal people."
