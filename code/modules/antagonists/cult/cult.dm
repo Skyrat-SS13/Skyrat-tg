@@ -330,9 +330,11 @@
 	sacrifice_objective.find_target()
 	objectives += sacrifice_objective
 
+	/* SKYRAT EDIT REMOVAL
 	var/datum/objective/eldergod/summon_objective = new
 	summon_objective.team = src
 	objectives += summon_objective
+	*/
 
 /datum/objective/sacrifice
 	var/sacced = FALSE
