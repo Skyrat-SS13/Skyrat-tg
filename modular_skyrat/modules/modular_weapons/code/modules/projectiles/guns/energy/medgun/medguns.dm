@@ -80,21 +80,18 @@
 /obj/item/medicell/brute1
 	name = "Brute I Medicell"
 	desc = "A small cell with a red glow. Can be used on Mediguns to unlock the Brute I Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Brute1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute1
 //Burn I//
 /obj/item/medicell/burn1
 	name = "Burn I Medicell"
 	desc = "A small cell with a yellow glow. Can be used on Mediguns to unlock the Burn I Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Burn1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn1
 //Toxin I//
 /obj/item/medicell/toxin1
 	name = "Toxin I Medicell"
 	desc = "A small cell with a green glow. Can be used on Mediguns to unlock the Toxin I Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Toxin1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin1
 //End of Tier I Cells/
@@ -103,28 +100,24 @@
 /obj/item/medicell/brute2
 	name = "Brute II Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Brute2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute2
 //Burn II//
 /obj/item/medicell/burn2
 	name = "Burn II Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Burn2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn2
 //Toxin II//
 /obj/item/medicell/toxin2
 	name = "Toxin II Medicell"
 	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Toxin2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin2
 //Oxygen II//
 /obj/item/medicell/oxy2
 	name = "Oxygen II Medicell"
 	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Oxy2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy2
 //End of Tier II
@@ -133,28 +126,24 @@
 /obj/item/medicell/brute3
 	name = "Brute III Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Brute3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute3
 //Burn III//
 /obj/item/medicell/burn3
 	name = "Burn III Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Burn3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn3
 //Toxin III//
 /obj/item/medicell/toxin3
 	name = "Toxin III Medicell"
 	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Toxin3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin3
 //Oxygen III//
 /obj/item/medicell/oxy3
 	name = "Oxygen III Medicell"
 	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
-	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "Oxy3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III
@@ -162,7 +151,6 @@
 /obj/item/storage/briefcase/medicalgunset/
 	name = "Medigun Supply Kit"
 	desc = "Medigun Supply Kit"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "medbriefcase"
 	inhand_icon_state = "lockbox"
@@ -172,15 +160,15 @@
 	pickup_sound =  'sound/items/handling/ammobox_pickup.ogg'
 
 /obj/item/storage/briefcase/medicalgunset/standard
-	name = "VeyMedical CWM-479 Cell Powered Medigun starter kit"
-	desc = "A stater kit containing the CWM-479 medigun along with a tier I medicells."
+	name = "VeyMedical CWM-479 Cell Powered Medigun case"
+	desc = "Contains the CWM-479 Medigun"
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/medigun/standard(src)
 
 /obj/item/storage/briefcase/medicalgunset/cmo
 	name = "VeyMedical CWM-479-CC Cell Powered Medigun case"
-	desc = "Case that includes the Experimental CWM-479-CC Medigun and Tier I medicells"
+	desc = "A case that includes the Experimental CWM-479-CC Medigun and Tier I Medicells"
 
 /obj/item/storage/briefcase/medicalgunset/cmo/PopulateContents()
 	new /obj/item/gun/energy/medigun/cmo(src)
@@ -217,4 +205,3 @@
 	else
 		to_chat(user, span_notice("The Medigun has no cells inside"))
 		return ..()
-//Procs//
