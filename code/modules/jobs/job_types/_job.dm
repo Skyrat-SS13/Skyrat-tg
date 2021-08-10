@@ -406,7 +406,7 @@
 		return // Disconnected while checking for the appearance ban.
 	if(fully_randomize)
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
-			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
+			if(player_client.prefs.pref_species.id != SPECIES_HUMAN) //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
 			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
 		else
@@ -418,7 +418,7 @@
 		var/is_antag = (player_client.mob.mind in GLOB.pre_setup_antags)
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
 			player_client.prefs.randomise[RANDOM_SPECIES] = FALSE
-			if(player_client.prefs.pref_species.id != "human") //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
+			if(player_client.prefs.pref_species.id != SPECIES_HUMAN) //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
 		player_client.prefs.safe_transfer_prefs_to(src, TRUE, is_antag)
 		if(CONFIG_GET(flag/force_random_names))
