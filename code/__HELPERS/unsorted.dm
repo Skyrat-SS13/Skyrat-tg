@@ -206,7 +206,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 			newname = C.prefs.custom_names[role]
 		else
 			switch(role)
-				if("human")
+				if(SPECIES_HUMAN)
 					newname = random_unique_name(gender)
 				if("clown")
 					newname = pick(GLOB.clown_names)

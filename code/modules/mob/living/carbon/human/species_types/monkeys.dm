@@ -1,6 +1,6 @@
 /datum/species/monkey
 	name = "Monkey"
-	id = "monkey"
+	id = SPECIES_MONKEY
 	say_mod = "chimpers"
 	attack_verb = "bite"
 	attack_effect = ATTACK_EFFECT_BITE
@@ -23,8 +23,8 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN | SLIME_EXTRACT
 	liked_food = MEAT | FRUIT
 	disliked_food = CLOTH
-	limbs_id = "monkey"
-	damage_overlay_type = "monkey"
+	limbs_id = SPECIES_MONKEY
+	damage_overlay_type = SPECIES_MONKEY
 	sexes = FALSE
 	punchdamagelow = 1
 	punchdamagehigh = 3
