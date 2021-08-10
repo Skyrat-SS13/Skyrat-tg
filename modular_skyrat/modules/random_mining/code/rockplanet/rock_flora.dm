@@ -110,6 +110,8 @@
 	special_desc_jobs = list("Botanist")
 	special_desc = "Aside from these edible fruits, the plant's seeds can be used in soap and shampoo!" //You can grind the seeds to get (somewhat hard to get soap ingredient(?)) Craft the soap with the seeds as an item?(?)
 
+	//TODO: Roast(bonfire) or bake(microwave) - sweet molasses/figgy flavor || dry and grind into a meal(needs to be dried to blend, but gives good nutriment when you do?? idk what to do for this)
+
 /obj/item/food/grown/rock_flora/agaricus
 	name = "wine-colored agaricus"
 	desc = ""
