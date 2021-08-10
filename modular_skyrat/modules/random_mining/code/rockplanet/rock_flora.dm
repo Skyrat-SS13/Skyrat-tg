@@ -98,7 +98,7 @@
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
-	special_desc = "Tobacco like this commonly sees medicinal use as (whatever i come up with9. This particular plant could also substitute Dasylirion Cedrosanum in making mild alcohol..."
+	special_desc = "Tobacco like this commonly sees medicinal use as (whatever i come up with). This particular plant could also substitute Dasylirion Cedrosanum in making mild alcohol..."
 
 /obj/item/food/grown/rock_flora/yucca
 	name = "purple yucca fruit"
