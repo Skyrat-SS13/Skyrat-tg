@@ -108,13 +108,13 @@
 	health_doll_icon = "venus_human_trap"
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
 	layer = SPACEVINE_MOB_LAYER
-	health = 40 //SKYRAT EDIT CHANGE
-	maxHealth = 40 //SKYRAT EDIT CHANGE
+	health = 60 //SKYRAT EDIT CHANGE
+	maxHealth = 60 //SKYRAT EDIT CHANGE
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
-	melee_damage_lower = 20 //SKYRAT EDIT CHANGE - Original: 25
-	melee_damage_upper = 20 //SKYRAT EDIT CHANGE - Original: 25
+	melee_damage_lower = 25
+	melee_damage_upper = 25
 	combat_mode = TRUE
 	//del_on_death = TRUE //SKYRAT EDIT REMOVAL
 	flip_on_death = TRUE
@@ -136,7 +136,7 @@
 	/// The maximum amount of vines a plant can have at one time
 	var/max_vines = 4
 	/// How far away a plant can attach a vine to something
-	var/vine_grab_distance = 4 //SKYRAT EDIT - Original 5
+	var/vine_grab_distance = 5
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
 
