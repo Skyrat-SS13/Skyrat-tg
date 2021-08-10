@@ -10,7 +10,6 @@
 	mutant_bodyparts = list("tail_monkey" = "Monkey")
 	skinned_type = /obj/item/stack/sheet/animalhide/monkey
 	meat = /obj/item/food/meat/slab/monkey
-	allowed_animal_origin = MONKEY_BODY
 	knife_butcher_results = list(/obj/item/food/meat/slab/monkey = 5, /obj/item/stack/sheet/animalhide/monkey = 1)
 	species_traits = list(HAS_FLESH,HAS_BONE,NO_UNDERWEAR,LIPS,NOEYESPRITES,NOBLOODOVERLAY,NOTRANSSTING, NOAUGMENTS)
 	inherent_traits = list(
@@ -42,7 +41,6 @@
 	gib_anim = "gibbed-m"
 
 	payday_modifier = 1.5
-
 
 
 /datum/species/monkey/random_name(gender,unique,lastname)

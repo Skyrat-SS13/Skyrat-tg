@@ -63,8 +63,6 @@
 
 	///for nonhuman bodypart (e.g. monkey)
 	var/animal_origin
-	//for all bodyparts
-	var/part_origin = HUMAN_BODY
 	///whether it can be dismembered with a weapon.
 	var/dismemberable = 1
 

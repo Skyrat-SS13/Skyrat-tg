@@ -270,8 +270,19 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	user.visible_message(span_suicide("[user] is slitting [user.p_their()] stomach open with [src]! It looks like [user.p_theyre()] trying to commit seppuku!"))
 	return(BRUTELOSS)
 
-/obj/item/katana/cursed //used by wizard events, see the tendril_loot.dm file for the miner one
+/obj/item/katana/cursed
 	slot_flags = null
+	item_flags = DROPDEL
+
+/obj/item/katana/cursed/equipped(mob/living/carbon/human/user)
+	. = ..()
+	if(!istype(user))
+		return
+	user.gain_trauma(/datum/brain_trauma/magic/stalker, TRAUMA_RESILIENCE_MAGIC)
+
+/obj/item/katana/cursed/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT(type))
 
 /obj/item/wirerod
 	name = "wired rod"

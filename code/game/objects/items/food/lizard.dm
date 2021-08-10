@@ -234,6 +234,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "nizaya"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 2)
+	microwaved_type = null
 	tastes = list("gnocchi" = 1)
 	foodtypes = VEGETABLES | NUTS
 
@@ -243,6 +244,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "snail_nizaya"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/nutriment/vitamin = 6)
+	microwaved_type = null
 	tastes = list("snails" = 1, "wine" = 1, "gnocchi" = 1)
 	foodtypes = VEGETABLES | MEAT | NUTS
 
@@ -252,6 +254,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "garlic_nizaya"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 8)
+	microwaved_type = null
 	tastes = list("garlic" = 1, "oil" = 1, "gnocchi" = 1)
 	foodtypes = VEGETABLES | NUTS
 
@@ -261,6 +264,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "demit_nizaya"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/korta_nectar = 2)
+	microwaved_type = null
 	tastes = list("peppery sweet" = 1, "veggies" = 1, "gnocchi" = 1)
 	foodtypes = VEGETABLES | SUGAR | NUTS
 
@@ -270,6 +274,7 @@
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "mushroom_nizaya"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
+	microwaved_type = null
 	tastes = list("savouriness" = 1, "nuttiness" = 1, "gnocchi" = 1)
 	foodtypes = VEGETABLES
 
@@ -280,13 +285,11 @@
 	desc = "A root based dough, made with nuts and tubers. Used in a wide range of Tiziran cooking."
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "rootdough"
+	microwaved_type = /obj/item/food/bread/root
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("potato" = 1, "earthy heat" = 1)
 	foodtypes = VEGETABLES | NUTS
-
-/obj/item/food/rootdough/MakeBakeable()
-	AddComponent(/datum/component/bakeable, /obj/item/food/bread/root, rand(30 SECONDS, 45 SECONDS), TRUE, TRUE)
 
 /obj/item/food/rootdough/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/food/flatrootdough, 1, 30)
@@ -296,6 +299,7 @@
 	desc = "Flattened rootdough, ready to be made into a flatbread, or cut into segments."
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "flat_rootdough"
+	microwaved_type = null
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	tastes = list("potato" = 1, "earthy heat" = 1)
 	foodtypes = VEGETABLES | NUTS
@@ -311,6 +315,7 @@
 	desc = "A ball of root dough. Perfect for making pasta or rolls."
 	icon = 'icons/obj/food/lizard.dmi'
 	icon_state = "rootdough_slice"
+	microwaved_type = /obj/item/food/rootroll
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("potato" = 1, "earthy heat" = 1)
@@ -318,9 +323,6 @@
 
 /obj/item/food/rootdoughslice/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/spaghetti/nizaya, 1, 30)
-
-/obj/item/food/rootdoughslice/MakeBakeable()
-	AddComponent(/datum/component/bakeable, /obj/item/food/rootroll, rand(30 SECONDS, 45 SECONDS), TRUE, TRUE)
 
 /obj/item/food/root_flatbread
 	name = "root flatbread"
@@ -341,7 +343,6 @@
 	w_class = WEIGHT_CLASS_SMALL
 	tastes = list("roll" = 1) // the roll tastes of roll.
 	foodtypes = VEGETABLES | NUTS
-	burns_in_oven = TRUE
 
 //Bread Dishes
 
@@ -355,7 +356,6 @@
 	foodtypes = VEGETABLES | NUTS
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
-	burns_in_oven = TRUE
 
 /obj/item/food/bread/root/Initialize()
 	. = ..()

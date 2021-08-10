@@ -117,9 +117,6 @@
 //Deals with covering the target in ants.
 #define STATUS_EFFECT_ANTS /datum/status_effect/ants
 
-/// Doubles attack cooldowns on simplemobs and recovery time on megafauna.
-#define STATUS_EFFECT_STAGGER /datum/status_effect/stagger
-
 /////////////
 // NEUTRAL //
 /////////////

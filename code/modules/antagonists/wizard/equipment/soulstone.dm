@@ -9,8 +9,7 @@
 	desc = "A fragment of the legendary treasure known simply as the 'Soul Stone'. The shard still flickers with a fraction of the full artefact's power."
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_BELT
-	var/one_use = FALSE
-	var/grab_sleeping = TRUE
+	var/old_shard = FALSE
 	var/spent = FALSE
 	/// This controls the color of the soulstone as well as restrictions for who can use it. THEME_CULT is red and is the default of cultist THEME_WIZARD is purple and is the default of wizard and THEME_HOLY is for purified soul stone
 	var/theme = THEME_CULT
@@ -21,7 +20,7 @@
 	return required_role ? (who.mind && who.mind.has_antag_datum(required_role, TRUE)) : TRUE
 
 /obj/item/soulstone/proc/was_used()
-	if(one_use)
+	if(old_shard)
 		spent = TRUE
 		name = "dull [name]"
 		desc = "A fragment of the legendary treasure known simply as \
@@ -37,8 +36,7 @@
 	required_role = /datum/antagonist/wizard
 
 /obj/item/soulstone/anybody/revolver
-	one_use = TRUE
-	grab_sleeping = FALSE
+	old_shard = TRUE
 
 /obj/item/soulstone/anybody/purified
 	icon_state = "purified_soulstone"
@@ -46,11 +44,7 @@
 
 /obj/item/soulstone/anybody/chaplain
 	name = "mysterious old shard"
-	one_use = TRUE
-	grab_sleeping = FALSE
-
-/obj/item/soulstone/anybody/mining
-	grab_sleeping = FALSE
+	old_shard = TRUE
 
 /obj/item/soulstone/pickup(mob/living/user)
 	..()
@@ -60,7 +54,7 @@
 /obj/item/soulstone/examine(mob/user)
 	. = ..()
 	if(role_check(user) || isobserver(user))
-		if(!grab_sleeping)
+		if (old_shard)
 			. += span_cult("A soulstone, used to capture a soul, either from dead humans or from freed shades.")
 		else
 			. += span_cult("A soulstone, used to capture souls, either from unconscious or sleeping humans or from freed shades.")
@@ -229,7 +223,7 @@
 			if(contents.len)
 				to_chat(user, "[span_userdanger("Capture failed!")]: [src] is full! Free an existing soul to make room.")
 			else
-				if((grab_sleeping && T.stat != CONSCIOUS) || (!grab_sleeping && T.stat == DEAD))
+				if((!old_shard && T.stat != CONSCIOUS) || (old_shard && T.stat == DEAD))
 					if(T.client == null)
 						to_chat(user, "[span_userdanger("Capture failed!")]: The soul has already fled its mortal frame. You attempt to bring it back...")
 						getCultGhost(T,user)
@@ -404,3 +398,4 @@
 	init_shade(T, user , shade_controller = chosen_ghost)
 	qdel(T)
 	return TRUE
+

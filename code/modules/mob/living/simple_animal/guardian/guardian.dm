@@ -61,8 +61,6 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	var/tech_fluff_string = "<span class='holoparasite'>BOOT SEQUENCE COMPLETE. ERROR MODULE LOADED. THIS SHOULDN'T HAPPEN. Submit a bug report!</span>"
 	var/carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP SOME SORT OF HORRIFIC BUG BLAME THE CODERS CARP CARP CARP</span>"
 	var/miner_fluff_string = "<span class='holoparasite'>You encounter... Mythril, it shouldn't exist... Submit a bug report!</span>"
-	///Are we forced to not be able to manifest/recall?
-	var/locked = FALSE
 
 /mob/living/simple_animal/hostile/guardian/Initialize(mapload, theme)
 	GLOB.parasites += src
@@ -350,7 +348,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 //MANIFEST, RECALL, TOGGLE MODE/LIGHT, SHOW TYPE
 
 /mob/living/simple_animal/hostile/guardian/proc/Manifest(forced)
-	if(istype(summoner.loc, /obj/effect) || (cooldown > world.time && !forced) || locked)
+	if(istype(summoner.loc, /obj/effect) || (cooldown > world.time && !forced))
 		return FALSE
 	if(loc == summoner)
 		forceMove(summoner.loc)
@@ -361,7 +359,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	return FALSE
 
 /mob/living/simple_animal/hostile/guardian/proc/Recall(forced)
-	if(!summoner || loc == summoner || (cooldown > world.time && !forced) || locked)
+	if(!summoner || loc == summoner || (cooldown > world.time && !forced))
 		return FALSE
 	new /obj/effect/temp_visual/guardian/phase/out(loc)
 
