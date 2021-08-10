@@ -320,7 +320,13 @@ structure_check() searches for nearby cultist structures required for the invoca
 			if(sac_objective.target == sacrificial.mind)
 				sac_objective.sacced = TRUE
 				sac_objective.update_explanation_text()
-				big_sac = TRUE
+				//big_sac = TRUE
+				//SKYRAT EDIT ADDITION
+				var/datum/objective/sacrifice/sacrifice_objective = new
+				sacrifice_objective.team = C.cult_team
+				sacrifice_objective.find_target()
+				C.cult_team.objectives += sacrifice_objective
+				//SKYRAT EDIT END
 	else
 		GLOB.sacrificed += sacrificial
 
