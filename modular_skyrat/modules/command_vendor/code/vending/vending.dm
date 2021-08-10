@@ -22,7 +22,7 @@
 		/obj/item/clothing/under/rank/civilian/head_of_personnel = 1, /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck = 1, /obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck/skirt = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/parade = 1, /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female = 1,
-		/obj/item/clothing/suit/armor/hop_parade = 1, /obj/item/clothing/suit/armor/hop_parade/female = 1, /obj/item/storage/backpack/head_of_personnel = 1,
+		/obj/item/clothing/suit/toggle/hop_parade = 1, /obj/item/storage/backpack/head_of_personnel = 1,
 		/obj/item/storage/backpack/satchel/head_of_personnel = 1, /obj/item/storage/backpack/duffel/head_of_personnel = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
