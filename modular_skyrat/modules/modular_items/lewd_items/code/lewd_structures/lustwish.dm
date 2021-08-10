@@ -32,7 +32,7 @@
 					/obj/item/clothing/sextoy/vibrator = 4,
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
-					/obj/item/pillow = 6,
+					/obj/item/pillow = 24,
 					/obj/item/assembly/signaler = 8,
 
 					//clothing facial/head
