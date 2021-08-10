@@ -463,7 +463,7 @@ Haha! Kill me please.
 
 /datum/chemical_reaction/pentacamphor //liquid equivalent of horny jail
 	results = list(/datum/reagent/drug/pentacamphor = 1)
-	required_reagents = list(/datum/reagent/drug/pentacamphor = 5, /datum/reagent/acetone = 1)
+	required_reagents = list(/datum/reagent/drug/camphor = 5, /datum/reagent/acetone = 1)
 	required_temp = 500
 	mix_message = "The mixture thickens and heats up slighty..."
 
