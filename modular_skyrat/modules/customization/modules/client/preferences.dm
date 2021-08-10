@@ -3011,7 +3011,7 @@ GLOBAL_LIST_INIT(food, list(
 
 /// Sanitization checks to be performed before using these preferences.
 /datum/preferences/proc/sanitize_chosen_prefs()
-	if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))
+	if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == SPECIES_HUMAN))
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
 		if(!firstspace) //we need a surname
@@ -3104,7 +3104,7 @@ GLOBAL_LIST_INIT(food, list(
 
 /datum/preferences/proc/get_default_name(name_id)
 	switch(name_id)
-		if("human")
+		if(SPECIES_HUMAN)
 			return random_unique_name()
 		if("ai")
 			return pick(GLOB.ai_names)

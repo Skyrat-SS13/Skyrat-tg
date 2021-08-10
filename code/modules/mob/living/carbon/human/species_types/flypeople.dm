@@ -1,6 +1,6 @@
 /datum/species/fly
 	name = "Flyperson"
-	id = "fly"
+	id = SPECIES_FLY
 	say_mod = "buzzes"
 	species_traits = list(HAS_FLESH, HAS_BONE, TRAIT_ANTENNAE)
 	inherent_traits = list(

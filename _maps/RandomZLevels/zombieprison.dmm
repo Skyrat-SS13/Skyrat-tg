@@ -3,11 +3,6 @@
 /obj/machinery/photocopier,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
-"ad" = (
-/mob/living/simple_animal/hostile/zombie,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "ae" = (
 /obj/structure/weightmachine/weightlifter,
 /turf/open/floor/iron,
@@ -54,6 +49,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"am" = (
+/obj/machinery/door/poddoor/shutters/indestructible/prison/stage1,
+/turf/open/floor/iron/airless,
+/area/awaymission/prison/hall)
 "an" = (
 /turf/closed/indestructible/fakeglass,
 /area/awaymission/prison/start)
@@ -135,10 +134,6 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/carpet,
 /area/awaymission/prison/med)
-"aF" = (
-/mob/living/simple_animal/hostile/syndicate/ranged/infiltrator,
-/turf/open/floor/iron,
-/area/awaymission/prison/cella)
 "aH" = (
 /obj/structure/chair/comfy/black{
 	dir = 8
@@ -238,11 +233,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/med)
-"bd" = (
-/obj/effect/decal/cleanable/blood/tracks,
-/obj/item/gun/energy/laser,
-/turf/open/floor/iron,
-/area/awaymission/prison/start)
 "be" = (
 /obj/structure/closet/radiation,
 /turf/open/floor/iron,
@@ -259,7 +249,7 @@
 /obj/machinery/button/door/prison/stage2{
 	name = "shutter lockdown release 2"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "bk" = (
 /obj/machinery/button/door/prison/stage5{
@@ -1205,12 +1195,12 @@
 	},
 /obj/structure/rack/shelf,
 /obj/item/gun/ballistic/automatic/wt550{
-	pixel_x = -6;
-	pixel_y = -8
-	},
-/obj/item/gun/ballistic/automatic/wt550{
 	pixel_x = 6;
 	pixel_y = -8
+	},
+/obj/item/gun/energy/laser/retro{
+	pixel_x = 2;
+	pixel_y = -2
 	},
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
@@ -1362,7 +1352,7 @@
 /obj/machinery/button/door/prison/stage4{
 	name = "shutter lockdown release 4"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "gg" = (
 /obj/structure/rack/shelf,
@@ -1437,10 +1427,6 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/guard)
-"gx" = (
-/obj/item/storage/backpack/holding,
-/turf/open/floor/iron/freezer,
-/area/space)
 "gz" = (
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/solitary)
@@ -1622,11 +1608,6 @@
 /obj/item/disk/tech_disk/spaceloot,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/secret)
-"hC" = (
-/mob/living/simple_animal/hostile/prison/zombiedoc,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/med)
 "hD" = (
 /obj/machinery/button/door/prison/stage7{
 	pixel_y = 23
@@ -2065,7 +2046,7 @@
 /area/awaymission/prison)
 "jT" = (
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage7,
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "jU" = (
 /obj/structure/closet/emcloset,
@@ -2154,7 +2135,7 @@
 /obj/machinery/button/door/prison/stage3{
 	name = "shutter lockdown release 3"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "kt" = (
 /obj/effect/turf_decal/tile/blue/half{
@@ -2185,10 +2166,6 @@
 /obj/effect/spawner/lootdrop/wallet_loot,
 /turf/open/floor/carpet,
 /area/awaymission/prison/med)
-"kz" = (
-/mob/living/simple_animal/hostile/prison/copsmg,
-/turf/open/floor/iron/freezer,
-/area/space)
 "kA" = (
 /obj/machinery/destructive_scanner,
 /turf/open/floor/iron/showroomfloor,
@@ -2379,7 +2356,7 @@
 /area/awaymission/prison/cellb)
 "lq" = (
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage5,
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "ls" = (
 /obj/machinery/door/airlock/security{
@@ -2601,6 +2578,10 @@
 /obj/structure/bed,
 /turf/open/floor/iron/dark/brown,
 /area/awaymission/prison/cellb)
+"mG" = (
+/obj/item/emptysandbag,
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "mH" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -2779,6 +2760,11 @@
 /obj/item/ammo_box/magazine/m50,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
+"nC" = (
+/obj/structure/table/reinforced,
+/obj/item/fireaxe/metal_h2_axe,
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "nE" = (
 /obj/machinery/autolathe/hacked,
 /turf/open/floor/iron/showroomfloor,
@@ -2930,7 +2916,7 @@
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/hall)
 "oo" = (
-/mob/living/simple_animal/hostile/prison/zombieguard,
+/mob/living/simple_animal/hostile/prison/zombieriot,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
@@ -2994,6 +2980,7 @@
 /obj/item/storage/bag/ammo,
 /obj/item/ammo_box/magazine/akm,
 /obj/structure/closet/secure_closet/contraband,
+/obj/item/ammo_box/magazine/akm,
 /turf/open/floor/iron,
 /area/awaymission/prison)
 "oE" = (
@@ -3078,10 +3065,6 @@
 /obj/item/reagent_containers/glass/beaker/synthflesh,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
-"oZ" = (
-/mob/living/simple_animal/hostile/prison/zombieguard,
-/turf/open/floor/noslip,
-/area/awaymission/prison/cellb)
 "pa" = (
 /obj/structure/rack,
 /obj/item/ammo_box/magazine/wt550m9,
@@ -3399,6 +3382,11 @@
 "qC" = (
 /turf/closed/wall/r_wall,
 /area/awaymission/prison/death)
+"qD" = (
+/obj/structure/chair/comfy/shuttle,
+/mob/living/simple_animal/hostile/syndicate/civilian,
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "qF" = (
 /obj/structure/table,
 /obj/item/storage/fancy/donut_box,
@@ -3446,6 +3434,12 @@
 "qP" = (
 /obj/structure/table,
 /obj/item/megaphone/sec,
+/turf/open/floor/iron,
+/area/awaymission/prison/guard)
+"qR" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
 "qT" = (
@@ -3776,7 +3770,7 @@
 /area/awaymission/prison/start)
 "sI" = (
 /obj/structure/table/reinforced,
-/obj/item/book_of_babel,
+/obj/item/disk/tech_disk/major,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/secret)
 "sJ" = (
@@ -4611,7 +4605,9 @@
 /turf/open/floor/iron,
 /area/awaymission/prison)
 "wO" = (
-/mob/living/simple_animal/hostile/biohazard_blob/centaur,
+/mob/living/simple_animal/hostile/biohazard_blob/centaur{
+	faction = list("hostile")
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "wQ" = (
@@ -4896,12 +4892,6 @@
 /obj/machinery/vending/wallmed/directional/west,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
-"ym" = (
-/mob/living/simple_animal/hostile/biohazard_blob/centaur{
-	faction = list("hostile")
-	},
-/turf/open/floor/carpet,
-/area/awaymission/prison/solitary)
 "yn" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/donkpockets,
@@ -4919,12 +4909,6 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/guard)
-"yr" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/blood/gibs/down,
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/turf/open/floor/iron,
-/area/awaymission/prison/cellb)
 "ys" = (
 /obj/effect/decal/cleanable/blood/gibs/torso,
 /obj/effect/decal/cleanable/blood,
@@ -5192,7 +5176,7 @@
 /obj/machinery/button/door/prison/stage7{
 	name = "shutter lockdown release 7"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "zI" = (
 /obj/machinery/computer{
@@ -5257,6 +5241,7 @@
 /area/awaymission/prison/cella)
 "zX" = (
 /obj/structure/rack,
+/obj/item/gun/energy/laser,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/cella)
 "zY" = (
@@ -5321,6 +5306,12 @@
 	},
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
+"Ar" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/cella)
 "As" = (
 /obj/structure/toilet{
 	dir = 4
@@ -5548,7 +5539,7 @@
 /obj/machinery/button/door/prison/stage1{
 	name = "shutter lockdown release 1"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "BS" = (
 /obj/structure/barricade/security,
@@ -5634,7 +5625,7 @@
 /area/awaymission/prison/cafe)
 "Cp" = (
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage2,
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "Cq" = (
 /obj/machinery/button/door/prison/stage4{
@@ -5668,6 +5659,12 @@
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/iron,
 /area/awaymission/prison)
+"Cy" = (
+/mob/living/simple_animal/hostile/netherworld/migo{
+	faction = list("hostile")
+	},
+/turf/open/floor/iron/dark,
+/area/awaymission/prison/death)
 "Cz" = (
 /obj/machinery/door/airlock/security,
 /turf/open/floor/iron,
@@ -5944,7 +5941,7 @@
 /obj/machinery/button/door/prison/stage6{
 	name = "shutter lockdown release 6"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "DU" = (
 /mob/living/simple_animal/hostile/zombie,
@@ -6078,12 +6075,6 @@
 /obj/structure/closet/bombcloset/security,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
-"Ez" = (
-/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
-	faction = list("hostile")
-	},
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "EA" = (
 /obj/structure/table,
 /obj/item/storage/crayons,
@@ -6142,10 +6133,6 @@
 "EL" = (
 /obj/structure/sign/departments/chemistry,
 /turf/closed/wall,
-/area/awaymission/prison/med)
-"EM" = (
-/mob/living/simple_animal/hostile/prison/zombieert,
-/turf/open/floor/iron/freezer,
 /area/awaymission/prison/med)
 "EN" = (
 /mob/living/simple_animal/hostile/prison/zombieprisoner,
@@ -6238,13 +6225,6 @@
 /obj/structure/barricade/security,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
-"Fp" = (
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 1
-	},
-/mob/living/simple_animal/hostile/prison/zombiedoc,
-/turf/open/floor/iron,
-/area/awaymission/prison/med)
 "Fq" = (
 /turf/open/indestructible/white,
 /area/awaymission/prison/warden)
@@ -6267,10 +6247,6 @@
 /obj/item/reagent_containers/hypospray/medipen/ekit,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/cella)
-"Fz" = (
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/turf/open/floor/iron/dark/brown,
-/area/awaymission/prison/cellb)
 "FA" = (
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 1
@@ -6304,6 +6280,7 @@
 /area/awaymission/prison/med)
 "FN" = (
 /obj/structure/closet/secure_closet/contraband/armory,
+/obj/item/stack/spacecash/c10000,
 /turf/open/floor/iron,
 /area/awaymission/prison)
 "FO" = (
@@ -6360,11 +6337,6 @@
 /obj/item/blood_filter,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/guard)
-"FY" = (
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/obj/structure/bed,
-/turf/open/floor/iron/dark/blue,
-/area/awaymission/prison/cella)
 "FZ" = (
 /obj/machinery/door/airlock/public,
 /obj/structure/barricade/wooden,
@@ -6719,10 +6691,6 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/iron,
 /area/awaymission/prison)
-"Ib" = (
-/mob/living/simple_animal/hostile/prison/zombieert,
-/turf/open/floor/iron/dark/brown,
-/area/awaymission/prison/cellb)
 "Ic" = (
 /obj/machinery/door/airlock/medical/glass,
 /turf/open/floor/iron,
@@ -6861,7 +6829,7 @@
 /obj/machinery/button/door/prison/stage5{
 	name = "shutter lockdown release 5"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "IN" = (
 /obj/structure/rack/shelf,
@@ -7053,12 +7021,6 @@
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage2,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison)
-"JG" = (
-/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
-	faction = list("hostile")
-	},
-/turf/open/space/basic,
-/area/awaymission/prison)
 "JH" = (
 /obj/structure/chair/sofa/bench{
 	dir = 4;
@@ -7086,6 +7048,9 @@
 "JM" = (
 /mob/living/simple_animal/hostile/prison/copsmg,
 /turf/open/floor/iron,
+/area/awaymission/prison/hall)
+"JO" = (
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "JP" = (
 /obj/structure/table/reinforced,
@@ -7465,6 +7430,11 @@
 /obj/structure/barricade/sandbags,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"LA" = (
+/obj/structure/closet/crate,
+/obj/item/gun/energy/laser,
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "LD" = (
 /obj/structure/closet/secure_closet/medical1,
 /turf/open/floor/iron/shuttle/ferry,
@@ -7472,11 +7442,6 @@
 "LE" = (
 /obj/machinery/door/airlock/medical/glass,
 /obj/structure/barricade/wooden/crude,
-/turf/open/floor/iron,
-/area/awaymission/prison/med)
-"LF" = (
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
 "LG" = (
@@ -7498,11 +7463,6 @@
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
-"LM" = (
-/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
-/mob/living/simple_animal/hostile/prison/zombieguard,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "LN" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle,
@@ -7529,11 +7489,6 @@
 /mob/living/simple_animal/hostile/retaliate/ghost,
 /turf/open/floor/plating,
 /area/awaymission/prison/death)
-"LX" = (
-/obj/machinery/atmospherics/pipe/smart/simple/green/visible,
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/turf/open/floor/iron,
-/area/awaymission/prison)
 "LZ" = (
 /obj/structure/table,
 /obj/item/storage/box/syringes/variety,
@@ -7699,7 +7654,6 @@
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
 "MX" = (
-/mob/living/simple_animal/hostile/prison/zombiedoc,
 /obj/item/gun/ballistic/automatic/wt550,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/med)
@@ -8159,11 +8113,6 @@
 /mob/living/simple_animal/hostile/prison/zombieriot,
 /turf/open/floor/iron,
 /area/awaymission/prison/cellb)
-"PD" = (
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/obj/effect/spawner/lootdrop/wallet_loot,
-/turf/open/floor/iron,
-/area/awaymission/prison/cella)
 "PE" = (
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/item/healthanalyzer/advanced,
@@ -8331,10 +8280,6 @@
 /obj/structure/table/optable,
 /turf/open/floor/iron/freezer,
 /area/awaymission/prison/med)
-"Qx" = (
-/mob/living/simple_animal/hostile/prison/zombieguard,
-/turf/open/floor/iron/dark/brown,
-/area/awaymission/prison/cellb)
 "QA" = (
 /obj/machinery/computer/operating,
 /turf/open/floor/iron/showroomfloor,
@@ -8346,6 +8291,11 @@
 "QE" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/effect/turf_decal/box/blue,
+/turf/open/floor/iron,
+/area/awaymission/prison/med)
+"QF" = (
+/obj/structure/closet/secure_closet/medical1,
+/obj/item/defibrillator/compact/loaded,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
 "QG" = (
@@ -8484,8 +8434,12 @@
 /area/awaymission/prison)
 "Ry" = (
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage6,
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
+"RA" = (
+/obj/machinery/porta_turret/syndicate/energy,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/cella)
 "RB" = (
 /obj/item/clothing/under/misc/stripper/bunnysuit,
 /turf/open/floor/iron,
@@ -8568,7 +8522,6 @@
 /area/awaymission/prison/med)
 "Sh" = (
 /obj/structure/chair,
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
 /turf/open/floor/iron,
 /area/awaymission/prison/death)
 "Si" = (
@@ -8819,7 +8772,7 @@
 /area/awaymission/prison/med)
 "Tm" = (
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage4,
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "To" = (
 /obj/effect/turf_decal/tile/blue/half,
@@ -8959,6 +8912,13 @@
 "TY" = (
 /turf/open/floor/carpet/green,
 /area/awaymission/prison/cella)
+"Ua" = (
+/mob/living/simple_animal/hostile/netherworld/migo{
+	faction = list("hostile")
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/med)
 "Ud" = (
 /turf/open/floor/cult,
 /area/awaymission/prison/secret)
@@ -9071,7 +9031,7 @@
 /area/awaymission/prison/cella)
 "UJ" = (
 /obj/machinery/door/poddoor/shutters/indestructible/prison/stage3,
-/turf/open/floor/iron,
+/turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
 "UM" = (
 /obj/structure/chair/greyscale,
@@ -9148,11 +9108,6 @@
 /obj/item/clothing/head/helmet/police,
 /turf/open/floor/iron/checker,
 /area/awaymission/prison/cafe)
-"Vg" = (
-/mob/living/simple_animal/hostile/prison/zombieriot,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/iron/kitchen,
-/area/awaymission/prison/med)
 "Vh" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/plating,
@@ -9450,20 +9405,9 @@
 /mob/living/simple_animal/hostile/prison/zombieguard,
 /turf/open/floor/iron,
 /area/awaymission/prison)
-"Wv" = (
-/obj/item/reverse_bear_trap,
-/turf/open/floor/iron,
-/area/awaymission/prison/death)
 "Ww" = (
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
-"Wy" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/turf/open/floor/iron,
-/area/awaymission/prison/rec)
 "Wz" = (
 /obj/structure/barricade/security,
 /turf/open/floor/carpet,
@@ -9514,7 +9458,7 @@
 /area/awaymission/prison/med)
 "WR" = (
 /obj/structure/table/reinforced,
-/obj/item/katana/ninja_blade,
+/obj/item/katana,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/secret)
 "WS" = (
@@ -9562,10 +9506,6 @@
 "Xe" = (
 /turf/open/floor/carpet/royalblack,
 /area/awaymission/prison/cella)
-"Xf" = (
-/mob/living/simple_animal/hostile/prison/zombieprisoner,
-/turf/open/floor/iron/dark,
-/area/awaymission/prison/death)
 "Xj" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Warden's Office";
@@ -9626,12 +9566,6 @@
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/cella)
-"Xz" = (
-/mob/living/simple_animal/hostile/blob/blobbernaut/independent{
-	faction = list("hostile")
-	},
-/turf/open/floor/iron,
-/area/awaymission/prison/hall)
 "XA" = (
 /obj/machinery/door/airlock/engineering,
 /turf/open/floor/iron,
@@ -9849,6 +9783,10 @@
 /obj/structure/table/reinforced,
 /obj/item/disk/tech_disk/spaceloot,
 /obj/item/disk/tech_disk/spaceloot,
+/obj/item/documents{
+	desc = "Documents containing research notes, data, observation studies, and reports on the zombification disease created and modified at the secret lab operating in Scalamov Prison, all under Nanotrasen orders, supervision, and approval.";
+	name = "Scalamov Research Documents - Property of Nanotrasen"
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "YL" = (
@@ -9885,6 +9823,10 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/hall)
+"YV" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "YX" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -15134,9 +15076,9 @@ bR
 bR
 bR
 dC
-gx
+Nl
 vt
-kz
+Nl
 bR
 bR
 bR
@@ -15894,7 +15836,7 @@ OP
 OP
 cg
 vu
-ix
+OP
 OP
 cg
 gT
@@ -16127,7 +16069,7 @@ Iu
 iM
 GL
 OP
-ix
+OP
 OP
 cg
 OP
@@ -16135,15 +16077,15 @@ ix
 OP
 cg
 OP
-ix
+OP
 OP
 cg
 OP
-ix
+OP
 OP
 cg
 OP
-ix
+OP
 OP
 cg
 OP
@@ -17191,17 +17133,17 @@ Eg
 SR
 TT
 TT
-xx
+TT
 TT
 XW
 TT
-AI
+TT
 TT
 Xr
 Gw
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -17223,7 +17165,7 @@ TT
 TT
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -17422,7 +17364,7 @@ cv
 cv
 ly
 cv
-Nf
+cv
 cv
 cv
 cv
@@ -17438,7 +17380,7 @@ cv
 cv
 cv
 SA
-Nf
+cv
 cv
 cv
 cv
@@ -17452,7 +17394,7 @@ AI
 TT
 TT
 TT
-xx
+TT
 TT
 TT
 Gw
@@ -17463,7 +17405,7 @@ TT
 TT
 AI
 TT
-xx
+TT
 TT
 Bm
 oo
@@ -17485,7 +17427,7 @@ TT
 TT
 TT
 TT
-xQ
+TT
 TT
 SR
 nv
@@ -17931,7 +17873,7 @@ sT
 gz
 gz
 sT
-PZ
+gz
 gz
 gz
 gz
@@ -18178,7 +18120,7 @@ bR
 gz
 cv
 gz
-Qb
+cv
 gz
 ER
 cv
@@ -18191,14 +18133,6 @@ cv
 cv
 cv
 cv
-Nf
-cv
-cv
-SA
-cv
-cv
-cv
-cv
 cv
 cv
 cv
@@ -18210,10 +18144,18 @@ cv
 cv
 cv
 cv
+SA
 cv
 cv
 cv
-Nf
+cv
+cv
+cv
+cv
+cv
+cv
+cv
+cv
 gz
 Eg
 Sr
@@ -18481,7 +18423,7 @@ Gt
 Gt
 Sr
 Gt
-Xq
+Gt
 Sr
 Gt
 Gt
@@ -18720,7 +18662,7 @@ gz
 gz
 gz
 gz
-PZ
+gz
 gz
 gz
 gz
@@ -18741,7 +18683,7 @@ Ol
 Gt
 Sr
 Ol
-xE
+Gt
 Sr
 Ol
 ml
@@ -18771,7 +18713,7 @@ Sr
 SR
 TT
 TT
-xQ
+TT
 SR
 nv
 bR
@@ -19468,7 +19410,11 @@ gz
 iM
 GL
 OP
-ix
+OP
+OP
+cg
+OP
+OP
 OP
 cg
 OP
@@ -19480,11 +19426,7 @@ ix
 OP
 cg
 OP
-ix
 OP
-cg
-OP
-ym
 OP
 cg
 OP
@@ -19492,7 +19434,7 @@ OP
 OP
 cg
 OP
-ix
+OP
 OP
 cg
 Da
@@ -19759,16 +19701,16 @@ gz
 GL
 Eg
 SR
-xx
+TT
 TT
 Jd
 TT
 TT
 TT
-xx
+TT
 Bm
 bY
-xx
+TT
 Bm
 Xr
 xQ
@@ -20023,20 +19965,20 @@ TT
 TT
 GJ
 TT
-TT
+xQ
 um
 TT
 Bm
-xx
+TT
 Gw
 TT
 TT
 TT
 Ff
-xx
+TT
 Bm
 TT
-xx
+TT
 Gw
 Bm
 TT
@@ -20046,7 +19988,7 @@ Te
 TT
 xQ
 TT
-xx
+TT
 ik
 TT
 xx
@@ -20275,11 +20217,11 @@ Eg
 SR
 SR
 SR
-ca
 SR
 SR
 SR
-ca
+SR
+SR
 XQ
 SR
 SR
@@ -20748,7 +20690,7 @@ bR
 SR
 TT
 TT
-xx
+TT
 SR
 nv
 zZ
@@ -21002,7 +20944,7 @@ zZ
 bR
 bR
 bR
-ca
+SR
 TT
 TT
 TT
@@ -21260,7 +21202,7 @@ bR
 bR
 bR
 SR
-xx
+TT
 TT
 TT
 SR
@@ -21310,7 +21252,7 @@ Sr
 Gt
 Gt
 Sr
-xE
+Gt
 dt
 Sr
 Gt
@@ -21320,7 +21262,7 @@ Gt
 Gt
 Sr
 Gt
-xE
+Gt
 Sr
 Gt
 Gt
@@ -21341,7 +21283,7 @@ Sr
 SR
 TT
 TT
-xx
+TT
 SR
 nv
 bR
@@ -21573,7 +21515,7 @@ Sr
 kF
 kF
 Sr
-FY
+kF
 kF
 Sr
 kF
@@ -21697,7 +21639,7 @@ sJ
 by
 UX
 in
-LM
+jc
 Qe
 HI
 VQ
@@ -21707,7 +21649,7 @@ jc
 Bq
 jc
 jc
-LX
+jc
 UX
 UX
 qf
@@ -21776,7 +21718,7 @@ bR
 SR
 TT
 TT
-xx
+TT
 SR
 nv
 nv
@@ -22108,7 +22050,7 @@ SR
 SR
 SR
 SR
-ca
+SR
 SR
 SR
 SR
@@ -22300,12 +22242,12 @@ TT
 TT
 TT
 TT
-xx
 TT
 TT
 TT
 TT
-xx
+TT
+TT
 TT
 TT
 TT
@@ -22339,7 +22281,7 @@ Bm
 Gw
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -22347,10 +22289,10 @@ AI
 TT
 Gw
 TT
-xx
+TT
 Bm
 TT
-xx
+TT
 TT
 TT
 TT
@@ -22360,17 +22302,17 @@ TT
 Ow
 TT
 TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
+TT
 AI
 TT
 TT
-TT
-TT
-TT
-TT
-TT
-AI
-TT
-xx
 nv
 bR
 bR
@@ -22466,7 +22408,7 @@ be
 be
 sJ
 UX
-ld
+UX
 UX
 UX
 UX
@@ -22547,7 +22489,7 @@ bR
 SR
 TT
 TT
-xx
+TT
 SR
 Sr
 TT
@@ -22556,7 +22498,7 @@ TT
 TT
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -22612,7 +22554,6 @@ TT
 TT
 TT
 TT
-AI
 TT
 TT
 TT
@@ -22620,7 +22561,8 @@ TT
 TT
 TT
 TT
-xx
+TT
+TT
 TT
 TT
 TT
@@ -22823,12 +22765,6 @@ TT
 TT
 TT
 TT
-xx
-TT
-TT
-TT
-xx
-TT
 TT
 TT
 TT
@@ -22844,7 +22780,13 @@ TT
 TT
 TT
 TT
-AI
+TT
+TT
+TT
+TT
+TT
+TT
+TT
 TT
 TT
 TT
@@ -22857,7 +22799,7 @@ Bm
 Bm
 TT
 TT
-xx
+TT
 TT
 Gw
 TT
@@ -22872,7 +22814,7 @@ TT
 TT
 Xr
 TT
-xx
+TT
 TT
 TT
 AI
@@ -22881,7 +22823,7 @@ TT
 TT
 TT
 TT
-PD
+um
 TT
 TT
 TT
@@ -22998,7 +22940,7 @@ UX
 UX
 UX
 UX
-ld
+UX
 UX
 UX
 sJ
@@ -23500,7 +23442,7 @@ UX
 DA
 UX
 by
-Ez
+UX
 UX
 UX
 UX
@@ -23655,7 +23597,7 @@ XW
 TT
 cz
 TT
-ca
+SR
 nv
 bR
 bR
@@ -23766,7 +23708,7 @@ UX
 DA
 DA
 UX
-ad
+DA
 by
 UX
 UX
@@ -24017,7 +23959,7 @@ UX
 UX
 UX
 DA
-ld
+UX
 UX
 by
 UX
@@ -24395,11 +24337,11 @@ Sr
 vO
 vO
 Sr
-EG
+vO
 vO
 Sr
 vO
-EG
+vO
 Sr
 La
 vO
@@ -25372,7 +25314,7 @@ zZ
 zZ
 bR
 bR
-wf
+Em
 UX
 UX
 Em
@@ -25569,7 +25511,7 @@ DA
 UX
 UX
 UX
-ld
+UX
 UX
 sJ
 sJ
@@ -26144,7 +26086,7 @@ zZ
 bR
 bR
 Em
-ld
+UX
 UX
 Em
 bR
@@ -26657,7 +26599,7 @@ zZ
 zZ
 bR
 bR
-wf
+Em
 UX
 UX
 Em
@@ -26941,7 +26883,7 @@ RM
 RM
 Az
 RM
-Qx
+RM
 Az
 RM
 RM
@@ -27201,7 +27143,7 @@ rB
 RM
 Az
 rB
-Fz
+RM
 Az
 rB
 RM
@@ -27222,7 +27164,7 @@ rB
 RM
 Az
 rB
-Fz
+RM
 Az
 rB
 RM
@@ -27232,7 +27174,7 @@ rB
 RM
 Az
 rB
-Fz
+RM
 Az
 rB
 RM
@@ -27242,7 +27184,7 @@ rB
 RM
 Az
 rB
-Fz
+RM
 Az
 rB
 RM
@@ -28219,19 +28161,19 @@ zZ
 zZ
 PV
 nm
-ML
 nm
 nm
 nm
 nm
 nm
-ML
 nm
 nm
-ML
 nm
 nm
-PA
+nm
+nm
+nm
+nm
 nm
 nm
 VJ
@@ -28245,7 +28187,7 @@ PA
 nm
 nm
 nm
-ML
+nm
 US
 nm
 nm
@@ -28258,7 +28200,7 @@ Li
 nm
 nm
 US
-lU
+nm
 nm
 nm
 nm
@@ -28487,13 +28429,13 @@ nm
 Ij
 hw
 nm
-ML
 nm
 nm
 nm
 nm
 nm
-ML
+nm
+nm
 nm
 nm
 ML
@@ -28506,10 +28448,10 @@ nm
 US
 PA
 nm
-ML
 nm
 nm
-ML
+nm
+nm
 nm
 nm
 lU
@@ -28735,11 +28677,11 @@ PV
 nm
 nm
 nm
-ML
+nm
 nm
 nm
 dQ
-ML
+nm
 nm
 nm
 hw
@@ -28757,7 +28699,7 @@ nm
 nm
 nm
 nm
-lU
+nm
 Li
 nm
 US
@@ -28781,11 +28723,11 @@ nm
 nm
 nm
 nm
-ML
 nm
 nm
 nm
-lU
+nm
+nm
 ML
 nm
 nm
@@ -29252,7 +29194,7 @@ nm
 nm
 nm
 nm
-lU
+nm
 nm
 nm
 nm
@@ -29262,7 +29204,7 @@ nm
 nm
 nm
 Dr
-ML
+nm
 nm
 nm
 hw
@@ -29522,23 +29464,23 @@ nm
 nm
 nm
 nm
-lU
-nm
-nm
-lU
 nm
 nm
 nm
 nm
-ML
+nm
+nm
+nm
+nm
+nm
 US
 nm
 nm
-Oh
 nm
 nm
 nm
-ML
+nm
+nm
 nm
 nm
 nm
@@ -29551,7 +29493,7 @@ US
 US
 US
 nm
-ML
+nm
 ML
 nm
 nm
@@ -29762,7 +29704,7 @@ zZ
 PV
 nm
 nm
-lU
+nm
 Li
 nm
 nm
@@ -29810,7 +29752,7 @@ US
 nm
 nm
 nm
-lU
+nm
 nm
 nm
 nm
@@ -30034,7 +29976,7 @@ cc
 cc
 cc
 cc
-nL
+cc
 cc
 cc
 oI
@@ -31049,13 +30991,13 @@ Az
 RM
 RM
 Az
-Qx
-RM
-Az
 RM
 RM
 Az
-Fz
+RM
+RM
+Az
+RM
 RM
 Az
 RM
@@ -31072,7 +31014,7 @@ RM
 RM
 Az
 RM
-Fz
+RM
 Az
 RM
 RM
@@ -31099,7 +31041,7 @@ Vw
 RM
 Az
 RM
-Ib
+RM
 Az
 zL
 cc
@@ -31325,7 +31267,7 @@ Az
 RM
 mF
 Az
-Fz
+RM
 mF
 Az
 RM
@@ -32579,7 +32521,7 @@ Em
 wf
 Em
 Em
-wf
+Em
 oA
 Em
 Em
@@ -32591,7 +32533,7 @@ Em
 Em
 Em
 Em
-wf
+Em
 Em
 Em
 Em
@@ -32845,7 +32787,7 @@ UX
 DA
 ld
 UX
-UU
+UX
 DA
 UX
 UX
@@ -33105,7 +33047,7 @@ UX
 UX
 UX
 UX
-ld
+UX
 UX
 UX
 UX
@@ -34391,7 +34333,7 @@ Wp
 vQ
 sJ
 yd
-ld
+UX
 UX
 Em
 sJ
@@ -35677,7 +35619,7 @@ vQ
 sJ
 Em
 DA
-ld
+UX
 Em
 sJ
 bR
@@ -36178,13 +36120,13 @@ Th
 Pr
 Th
 Th
-wR
 Th
 Th
 Th
 Th
 Th
 Th
+qR
 Th
 Th
 vQ
@@ -36212,7 +36154,7 @@ uk
 uk
 Az
 uk
-oZ
+uk
 Az
 uk
 uk
@@ -36472,7 +36414,7 @@ bZ
 uk
 Az
 bZ
-Yg
+uk
 Az
 bZ
 uk
@@ -36507,16 +36449,16 @@ US
 cc
 Az
 bZ
-Yg
-Az
-bZ
 uk
 Az
 bZ
 uk
 Az
 bZ
-Yg
+uk
+Az
+bZ
+uk
 Az
 bZ
 uk
@@ -36695,12 +36637,12 @@ vW
 Th
 Th
 Th
-wR
 Th
 Th
 Th
 Th
 Th
+qR
 vQ
 sJ
 wf
@@ -36752,7 +36694,7 @@ Az
 cc
 nm
 nm
-ML
+nm
 nm
 US
 nm
@@ -36963,7 +36905,7 @@ sJ
 Em
 UX
 UX
-wf
+Em
 sJ
 sJ
 sJ
@@ -37204,7 +37146,7 @@ Em
 Em
 Em
 Em
-wf
+Em
 Em
 Em
 Em
@@ -37270,7 +37212,7 @@ nm
 nm
 nm
 nm
-ML
+nm
 nm
 Li
 nm
@@ -37429,7 +37371,7 @@ rY
 Bw
 rY
 bg
-Dk
+rY
 Bw
 Bw
 rY
@@ -37468,8 +37410,8 @@ UX
 UX
 UX
 st
-ld
-UU
+UX
+UX
 UX
 UX
 UX
@@ -37505,7 +37447,7 @@ nm
 nm
 nm
 nm
-ML
+nm
 nm
 nm
 nm
@@ -37534,8 +37476,8 @@ nm
 nm
 nm
 nm
-ML
-ML
+nm
+nm
 nm
 nm
 ML
@@ -37729,10 +37671,10 @@ UX
 UX
 UX
 UX
-ld
 UX
 UX
-UU
+UX
+UX
 UX
 UX
 Ik
@@ -37939,7 +37881,7 @@ rY
 yC
 lY
 rY
-lE
+DI
 Bw
 rY
 bg
@@ -38005,11 +37947,11 @@ Em
 ZT
 cc
 nm
-ML
 nm
 nm
 nm
-ML
+nm
+nm
 hw
 hw
 hw
@@ -38024,7 +37966,7 @@ cc
 cc
 cc
 nm
-ML
+nm
 nm
 nm
 hw
@@ -38188,7 +38130,7 @@ bE
 bE
 lk
 rY
-Dk
+rY
 rY
 Bw
 rY
@@ -38265,7 +38207,7 @@ nm
 nm
 nm
 Up
-ML
+nm
 Li
 hw
 Li
@@ -38391,7 +38333,7 @@ yE
 QH
 cN
 QH
-bd
+rI
 CO
 Om
 Bc
@@ -38458,7 +38400,7 @@ Et
 Et
 bg
 rY
-Xz
+rY
 rY
 rY
 rY
@@ -38539,10 +38481,10 @@ NK
 Az
 cc
 nm
-lU
 nm
 nm
-yr
+nm
+pY
 QZ
 Li
 ML
@@ -38569,7 +38511,7 @@ nm
 nm
 nm
 nm
-ML
+nm
 nm
 nm
 nm
@@ -38711,7 +38653,7 @@ Bw
 Bw
 Et
 Et
-Et
+JO
 Et
 Et
 Bw
@@ -38783,7 +38725,7 @@ nm
 nm
 tc
 Li
-ML
+nm
 Li
 tc
 vf
@@ -38800,13 +38742,13 @@ nm
 nm
 nm
 Up
-ML
+nm
 nm
 Li
 nm
 nm
 nm
-ML
+nm
 cc
 gu
 YJ
@@ -39034,7 +38976,7 @@ bR
 cc
 nm
 nm
-lU
+nm
 nm
 nm
 Li
@@ -39309,7 +39251,7 @@ hm
 Az
 Az
 cc
-ML
+nm
 nm
 nm
 hw
@@ -39342,7 +39284,7 @@ nm
 nm
 nm
 nm
-ML
+nm
 nm
 nm
 cc
@@ -39823,7 +39765,7 @@ nm
 nm
 nm
 nm
-ML
+nm
 Up
 nm
 nm
@@ -39851,19 +39793,19 @@ nm
 nm
 nm
 nm
-lU
-lU
 nm
 nm
 nm
 nm
 nm
-nm
-ML
 nm
 nm
 nm
 ML
+nm
+nm
+nm
+nm
 nm
 nm
 nm
@@ -40065,11 +40007,11 @@ nm
 nm
 nm
 nm
-lU
 nm
 nm
 nm
-ML
+nm
+nm
 nm
 nm
 nm
@@ -40088,7 +40030,7 @@ nm
 ML
 nm
 nm
-lU
+nm
 nm
 lU
 nm
@@ -40574,7 +40516,7 @@ sJ
 sJ
 sJ
 cc
-ML
+nm
 nm
 cc
 CE
@@ -40638,7 +40580,7 @@ CE
 OD
 Bt
 CE
-ML
+nm
 nm
 cc
 PV
@@ -41316,11 +41258,11 @@ qm
 PH
 Ze
 Ze
-Xf
 Ze
 Ze
-Xf
-jj
+Ze
+Ze
+Ze
 Ze
 Ze
 Ze
@@ -41347,7 +41289,7 @@ bR
 cc
 nm
 nm
-oI
+cc
 Az
 Sa
 uk
@@ -41365,7 +41307,16 @@ Sa
 uk
 Az
 Sa
-Yg
+uk
+Az
+Sa
+uk
+Az
+Sa
+uk
+Az
+Sa
+uk
 Az
 Sa
 uk
@@ -41380,19 +41331,10 @@ Sa
 uk
 Az
 Sa
-Yg
-Az
-Sa
 uk
 Az
 Sa
 uk
-Az
-Sa
-uk
-Az
-Sa
-Yg
 Az
 Sa
 uk
@@ -41407,7 +41349,7 @@ Sa
 uk
 Az
 Sa
-Yg
+uk
 Az
 nm
 ML
@@ -41568,16 +41510,16 @@ UX
 yg
 sJ
 GM
-Wv
+qm
 qp
 yo
 Fd
-jj
+Ze
 Ze
 KI
 Ze
 Ze
-Ze
+Cy
 Ze
 KI
 Ze
@@ -41615,11 +41557,11 @@ Az
 uk
 uk
 Az
-Yg
+uk
 uk
 Az
 uk
-Yg
+uk
 Az
 uk
 uk
@@ -41646,7 +41588,7 @@ Yg
 uk
 Az
 uk
-Yg
+uk
 Az
 uk
 uk
@@ -41796,7 +41738,7 @@ bE
 bE
 KH
 rY
-Dk
+rY
 Bw
 bE
 bE
@@ -42350,7 +42292,7 @@ Oz
 YO
 We
 Mg
-Xf
+Ze
 Ze
 tL
 au
@@ -42578,8 +42520,8 @@ zZ
 zZ
 zZ
 BR
-aQ
-rY
+am
+JO
 lq
 IK
 zZ
@@ -42834,11 +42776,11 @@ zZ
 zZ
 zZ
 zZ
-rY
-rY
-rY
-rY
-rY
+JO
+JO
+JO
+JO
+JO
 zZ
 zZ
 zZ
@@ -42857,13 +42799,13 @@ qC
 qC
 qC
 Ze
-Xf
 Ze
 Ze
 Ze
 Ze
 Ze
-qh
+Ze
+Ze
 Ze
 Ze
 Ze
@@ -43093,7 +43035,7 @@ zZ
 zZ
 bj
 Cp
-rY
+JO
 Ry
 DT
 zZ
@@ -43111,13 +43053,13 @@ Em
 sJ
 GM
 pD
-YD
+qX
 Cz
 Ze
 KI
 Fd
 Ze
-jj
+Ze
 Ze
 Ze
 Ze
@@ -43348,11 +43290,11 @@ zZ
 zZ
 zZ
 zZ
-rY
-rY
-rY
-rY
-rY
+JO
+JO
+JO
+JO
+JO
 zZ
 zZ
 zZ
@@ -43404,7 +43346,7 @@ SR
 TT
 Gw
 nv
-SR
+RA
 SR
 SR
 SR
@@ -43433,9 +43375,9 @@ TT
 TT
 TT
 TT
+mG
 TT
-TT
-TT
+mG
 TT
 TT
 TT
@@ -43595,7 +43537,7 @@ bR
 bE
 Bw
 rY
-Dk
+rY
 Bw
 bE
 bR
@@ -43607,7 +43549,7 @@ zZ
 zZ
 ks
 UJ
-rY
+JO
 jT
 zH
 zZ
@@ -43689,14 +43631,14 @@ TT
 TT
 TT
 TT
-xx
+TT
+mG
 TT
 TT
 TT
 TT
 TT
-TT
-TT
+YV
 TT
 TT
 Gw
@@ -43862,11 +43804,11 @@ zZ
 zZ
 zZ
 zZ
-rY
-rY
-rY
-rY
-rY
+JO
+JO
+JO
+JO
+JO
 zZ
 zZ
 zZ
@@ -43946,14 +43888,14 @@ TT
 TT
 TT
 TT
-TT
+YV
 TT
 TT
 Nr
 TT
 xx
 TT
-TT
+YV
 TT
 TT
 Gw
@@ -44121,9 +44063,9 @@ zZ
 zZ
 ge
 Tm
-rY
-rY
-rY
+JO
+JO
+JO
 zZ
 zZ
 zZ
@@ -44202,15 +44144,15 @@ TT
 TT
 TT
 TT
-AI
 TT
+YV
 TT
 TT
 TT
 TT
 YL
 TT
-TT
+YV
 TT
 TT
 Gw
@@ -44237,7 +44179,7 @@ Sr
 SR
 TT
 TT
-xx
+TT
 TT
 bR
 bR
@@ -44438,7 +44380,7 @@ ze
 SR
 TT
 TT
-aF
+TT
 TT
 pK
 TT
@@ -44455,20 +44397,20 @@ Dp
 Dp
 nv
 SR
-xx
+TT
 TT
 AI
 TT
 TT
+YV
 TT
 TT
 TT
 TT
 TT
 TT
+mG
 TT
-TT
-xx
 TT
 TT
 TT
@@ -44717,13 +44659,13 @@ TT
 TT
 TT
 TT
+YV
 TT
 TT
 TT
 TT
 TT
-TT
-TT
+mG
 TT
 TT
 TT
@@ -44750,7 +44692,7 @@ Xb
 Sr
 SR
 TT
-xx
+TT
 TT
 TT
 bR
@@ -44946,7 +44888,7 @@ SR
 TT
 TT
 nv
-SR
+RA
 SR
 SR
 SR
@@ -44959,7 +44901,7 @@ SR
 SR
 SR
 Sr
-hq
+Ar
 TT
 TT
 SR
@@ -44974,12 +44916,12 @@ TT
 TT
 TT
 TT
-TT
-TT
-TT
-AI
-TT
-TT
+YV
+YV
+YV
+YV
+YV
+YV
 TT
 TT
 TT
@@ -45137,8 +45079,8 @@ bR
 bE
 Bw
 rY
-rY
-Bw
+bg
+Pv
 bE
 bR
 zZ
@@ -45393,8 +45335,8 @@ zZ
 bR
 bE
 Bw
-rY
-rY
+bg
+bg
 Bw
 bE
 bR
@@ -45486,12 +45428,6 @@ SR
 TT
 TT
 TT
-xx
-TT
-TT
-TT
-TT
-xx
 TT
 TT
 TT
@@ -45500,7 +45436,13 @@ TT
 TT
 TT
 TT
-AI
+TT
+TT
+TT
+TT
+TT
+TT
+TT
 Gw
 TT
 SR
@@ -45649,7 +45591,7 @@ bR
 bR
 bR
 bE
-Bw
+Pv
 bg
 bg
 om
@@ -45692,10 +45634,10 @@ Js
 Js
 Js
 Js
-De
 Js
 Js
-De
+Js
+Js
 Js
 Js
 Js
@@ -45753,7 +45695,7 @@ TT
 TT
 TT
 TT
-AI
+TT
 TT
 xx
 TT
@@ -45940,7 +45882,7 @@ bR
 zi
 zi
 nA
-pG
+fp
 aW
 fp
 Js
@@ -46250,7 +46192,7 @@ TT
 TT
 AI
 TT
-xx
+TT
 TT
 TT
 TT
@@ -46370,7 +46312,7 @@ zZ
 zZ
 bR
 hr
-OG
+FB
 To
 fY
 Ac
@@ -46474,10 +46416,10 @@ fp
 fp
 fp
 fp
-qq
 fp
 fp
-pG
+fp
+fp
 Js
 zi
 zi
@@ -46502,7 +46444,7 @@ TT
 Gw
 TT
 TT
-xx
+TT
 TT
 Gw
 TT
@@ -46526,7 +46468,7 @@ wl
 Sr
 Sr
 SR
-xx
+TT
 TT
 TT
 TT
@@ -46633,7 +46575,7 @@ fY
 Ac
 Ac
 Ac
-EM
+Ac
 fY
 Ac
 Ac
@@ -46721,7 +46663,7 @@ qq
 fp
 cS
 fp
-pG
+fp
 fp
 Js
 wS
@@ -47024,7 +46966,7 @@ TT
 TT
 TT
 TT
-AI
+TT
 TT
 TT
 TT
@@ -47052,14 +46994,14 @@ TT
 TT
 TT
 TT
-xx
 TT
 TT
 TT
 TT
 TT
 TT
-xx
+TT
+TT
 Gw
 TT
 TT
@@ -47516,7 +47458,6 @@ SR
 TT
 TT
 TT
-xx
 TT
 TT
 TT
@@ -47526,7 +47467,8 @@ TT
 TT
 TT
 TT
-xx
+TT
+TT
 TT
 TT
 AI
@@ -47560,7 +47502,7 @@ TT
 TT
 TT
 TT
-AI
+TT
 Gw
 TT
 TT
@@ -47663,7 +47605,7 @@ FB
 YP
 YP
 YP
-iJ
+YP
 YP
 Yq
 YP
@@ -47815,7 +47757,7 @@ TT
 TT
 TT
 TT
-xx
+TT
 TT
 TT
 Gw
@@ -47928,7 +47870,7 @@ FB
 iC
 FB
 dD
-AO
+FB
 FB
 FB
 WM
@@ -48008,7 +47950,7 @@ iT
 iT
 oM
 fp
-De
+Js
 fp
 fp
 oC
@@ -48036,7 +47978,7 @@ xx
 TT
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -48051,7 +47993,7 @@ TT
 TT
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -48064,7 +48006,7 @@ Gm
 Gm
 TT
 TT
-Xw
+nC
 hL
 Sr
 SR
@@ -48180,7 +48122,7 @@ Yq
 dD
 FB
 FB
-EN
+FB
 yA
 FB
 dD
@@ -48277,7 +48219,7 @@ AM
 IF
 AM
 fp
-De
+Js
 pf
 fp
 fp
@@ -48306,7 +48248,7 @@ TT
 Gw
 TT
 TT
-AI
+TT
 TT
 TT
 TT
@@ -48346,7 +48288,7 @@ xx
 Gw
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -48431,7 +48373,7 @@ Pe
 fY
 Bp
 FB
-OG
+FB
 FB
 FB
 Yq
@@ -48487,13 +48429,13 @@ fY
 co
 Em
 Em
-wf
+Em
 Em
 DK
 Em
 Em
 Em
-wf
+Em
 Em
 co
 Em
@@ -48584,7 +48526,7 @@ SR
 TT
 TT
 TT
-AI
+TT
 TT
 TT
 TT
@@ -48748,7 +48690,7 @@ UX
 UX
 UX
 UU
-ld
+UX
 UX
 UX
 UX
@@ -48999,16 +48941,16 @@ FB
 To
 fY
 co
-DK
+Em
 Em
 Em
 wf
 Em
 Em
 Em
-DK
 Em
-JG
+Em
+Em
 co
 Em
 Em
@@ -49046,7 +48988,7 @@ Js
 Js
 Js
 Js
-Va
+Js
 Js
 ag
 zi
@@ -49071,7 +49013,7 @@ TT
 TT
 TT
 TT
-xx
+TT
 TT
 TT
 TT
@@ -49095,7 +49037,7 @@ TT
 TT
 TT
 TT
-AI
+TT
 TT
 TT
 TT
@@ -49455,11 +49397,11 @@ UW
 zg
 ko
 FB
-wk
+Yq
 FB
 FB
 Yq
-EN
+FB
 FB
 zh
 Lz
@@ -49548,18 +49490,18 @@ oC
 fp
 fp
 fp
-Wy
-oC
-fp
-fp
 oC
 oC
 fp
 fp
-pG
+oC
+oC
 fp
 fp
-De
+fp
+fp
+fp
+Js
 fp
 fp
 ag
@@ -49707,14 +49649,14 @@ fY
 fY
 bq
 FB
-EN
+FB
 UW
 jH
 ko
 FB
 FB
 FB
-AO
+FB
 FB
 FB
 FB
@@ -49962,7 +49904,7 @@ ob
 dF
 Oy
 fY
-Fp
+ko
 FB
 FB
 To
@@ -49980,7 +49922,7 @@ Qa
 WU
 OA
 Xc
-EN
+FB
 FB
 FB
 tb
@@ -50253,11 +50195,11 @@ dq
 zq
 fY
 pu
-Vg
+dq
 zq
 fY
 pu
-Io
+zq
 zq
 fY
 Tl
@@ -50496,7 +50438,7 @@ bL
 lK
 HC
 Mi
-of
+Mi
 Mi
 yX
 je
@@ -50606,7 +50548,7 @@ Sr
 OV
 OV
 Sr
-lW
+OV
 OV
 Sr
 OV
@@ -50636,21 +50578,11 @@ Sr
 OV
 OV
 Sr
-lW
-OV
-Sr
 OV
 OV
 Sr
 OV
 OV
-Sr
-OV
-OV
-Sr
-lW
-OV
-Sr
 Sr
 OV
 OV
@@ -50661,7 +50593,17 @@ Sr
 OV
 OV
 Sr
-lW
+Sr
+OV
+OV
+Sr
+OV
+OV
+Sr
+OV
+OV
+Sr
+OV
 OV
 Sr
 bR
@@ -50755,7 +50697,7 @@ of
 NF
 yX
 Mi
-of
+Mi
 JT
 fY
 fY
@@ -50790,7 +50732,7 @@ eK
 pr
 hQ
 fY
-FB
+QF
 FB
 FB
 ct
@@ -51007,7 +50949,7 @@ ss
 FB
 Mi
 ZL
-OM
+Mi
 Mi
 Mi
 lK
@@ -51096,7 +51038,7 @@ Js
 Js
 Js
 Js
-De
+Js
 Js
 Js
 Js
@@ -51510,11 +51452,11 @@ kP
 To
 fY
 ko
-AO
+FB
 Yq
 nU
 FB
-EN
+FB
 FB
 FB
 fY
@@ -52046,7 +51988,7 @@ FB
 FB
 AO
 FB
-EN
+FB
 FB
 FB
 FB
@@ -52289,12 +52231,12 @@ AO
 FB
 FB
 FB
-EN
+FB
 FB
 FB
 wu
 FB
-EN
+FB
 IY
 FB
 Ef
@@ -52551,7 +52493,7 @@ OG
 FB
 FB
 FB
-AO
+FB
 FB
 FB
 FB
@@ -52569,7 +52511,7 @@ FB
 yQ
 Yq
 FB
-EN
+FB
 FB
 FB
 FB
@@ -53069,7 +53011,7 @@ VM
 FB
 OG
 FB
-EN
+FB
 FB
 FB
 iC
@@ -53079,7 +53021,7 @@ FB
 dD
 FB
 FB
-LF
+vj
 FB
 OG
 dD
@@ -53838,7 +53780,7 @@ MS
 mq
 HX
 MS
-mq
+MS
 HX
 MS
 po
@@ -54092,7 +54034,7 @@ MS
 oV
 HX
 Kp
-mq
+MS
 HX
 MS
 MS
@@ -54338,7 +54280,7 @@ zZ
 zZ
 ob
 HX
-mq
+MS
 MS
 oV
 HX
@@ -54863,7 +54805,7 @@ MS
 MS
 HX
 MS
-mq
+MS
 HX
 BE
 MS
@@ -55111,9 +55053,9 @@ ob
 HX
 MS
 MS
-mq
+MS
 HX
-mq
+MS
 MS
 HX
 Za
@@ -55367,7 +55309,7 @@ zZ
 ob
 HX
 MS
-wI
+MS
 MS
 HX
 MS
@@ -56138,7 +56080,7 @@ zZ
 ob
 aS
 MS
-rg
+Ua
 MS
 MX
 MS
@@ -56397,7 +56339,7 @@ aS
 MS
 MS
 Kp
-wI
+MS
 MS
 fY
 fY
@@ -56911,7 +56853,7 @@ aS
 MS
 mq
 MS
-hC
+Kp
 MS
 fY
 aU
@@ -57213,7 +57155,7 @@ ij
 Vn
 WS
 mM
-ZM
+Vn
 Vn
 uf
 oq
@@ -59527,7 +59469,7 @@ Vn
 WS
 WA
 ci
-ZM
+Vn
 Ii
 WA
 WS
@@ -60041,7 +59983,7 @@ ij
 WS
 WA
 ci
-ZM
+Vn
 Ii
 WE
 WS
@@ -62615,7 +62557,7 @@ Vn
 oR
 WS
 Vn
-ZM
+Vn
 Vn
 Vn
 Vn
@@ -64159,7 +64101,7 @@ ij
 ij
 ij
 Vn
-ZM
+Vn
 ij
 Vn
 WS
@@ -65707,7 +65649,7 @@ Vn
 bR
 bR
 kM
-kv
+LA
 Hi
 Ql
 Hi
@@ -65969,7 +65911,7 @@ Hi
 Hi
 Hi
 Hi
-cW
+qD
 sy
 kM
 bR

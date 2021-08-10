@@ -1,7 +1,7 @@
 /datum/species/xeno
 	// A cloning mistake, crossing human and xenomorph DNA
 	name = "Xenomorph Hybrid"
-	id = "xeno"
+	id = SPECIES_XENO
 	say_mod = "hisses"
 	default_color = "00FF00"
 	species_traits = list(
@@ -33,5 +33,5 @@
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/xeno_parts_greyscale.dmi'
-	damage_overlay_type = "xeno"
+	damage_overlay_type = SPECIES_XENO
 
