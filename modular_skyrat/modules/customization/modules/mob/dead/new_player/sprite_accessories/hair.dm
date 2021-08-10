@@ -337,7 +337,7 @@
 
 /datum/sprite_accessory/hair/skyrat/spicy
 	name = "Spicy"
-	icon_state = "hair_waodomadethis"
+	icon_state = "hair_spicy"
 
 // Facial hair
 
