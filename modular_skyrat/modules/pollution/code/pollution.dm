@@ -12,9 +12,6 @@
 
 /datum/pollution/New(turf/open/passed_turf)
 	. = ..()
-	if(isspaceturf(passed_turf))
-		qdel(src)
-		return
 	my_turf = passed_turf
 	my_turf.pollution = src
 	REGISTER_POLLUTION(src)
@@ -121,13 +118,15 @@
 
 /datum/pollution/Destroy()
 	if(managed_overlay)
-		my_turf.underlays -= managed_overlay
+		if(my_turf)
+			my_turf.underlays -= managed_overlay
 		qdel(managed_overlay)
 		managed_overlay = null
 	REMOVE_POLLUTION_CURRENTRUN(src)
 	SET_UNACTIVE_POLLUTION(src)
 	UNREGISTER_POLLUTION(src)
-	my_turf.pollution = null
+	if(my_turf)
+		my_turf.pollution = null
 	return ..()
 
 /datum/pollution/proc/ProcessCell()
@@ -138,10 +137,6 @@
 	var/list/already_processed_cache = SSpollution.processed_this_run
 	var/list/potential_activers = list()
 	for(var/turf/open/open_turf as anything in my_turf.atmos_adjacent_turfs)
-		if(isspaceturf(open_turf)) //Space turfs shouldn't have pollution on them.
-			if(open_turf.pollution)
-				qdel(open_turf.pollution)
-			continue
 		if(!already_processed_cache[open_turf])
 			if(CanShareWith(open_turf))
 				sharing_turfs[open_turf] = TRUE
