@@ -8,7 +8,7 @@
 	new /obj/item/clothing/neck/cloak/qm(src)
 	new /obj/item/storage/lockbox/medal/cargo(src)
 	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-    /*
+	/*
 	new /obj/item/clothing/under/rank/cargo/qm(src)
 	new /obj/item/clothing/under/rank/cargo/qm/skirt(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
