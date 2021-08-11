@@ -458,7 +458,6 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/glass/beaker/plastic, //I know a shaker is more appropiate but this is for ease of identification //Skyrat Edit makes service borgs less awful
-		/obj/item/reagent_containers/food/condiment/flour, //Skyrat Edit makes service borgs less awful
 		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/borg/lollipop,
 		/obj/item/rsf/cookiesynth,
