@@ -99,6 +99,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
 	/client/proc/change_title_screen_html, //SKYRAT EDIT ADDITION
 	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
+	/client/proc/spawn_floor_cluwne, //SKYRAT EDIT ADDITION - Floor Cluwne
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
@@ -183,7 +184,6 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
 	/client/proc/clear_dynamic_transit,
-	/client/proc/run_empty_query,
 	/client/proc/toggle_medal_disable,
 	/client/proc/view_runtimes,
 	/client/proc/pump_random_event,
