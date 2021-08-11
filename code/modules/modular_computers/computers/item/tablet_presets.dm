@@ -143,6 +143,6 @@
 
 /obj/item/modular_computer/tablet/integrated/clown/Initialize()
 	. = ..()
-	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive"
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/chatclient)
 // SKYRAT EDIT ADDITION END
