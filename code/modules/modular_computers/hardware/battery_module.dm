@@ -59,7 +59,7 @@
 			user.put_in_hands(battery)
 			to_chat(user, span_notice("You detach \the [battery] from \the [src]."))
 		else
-			battery.forceMove(drop_location())
+			QDEL_NULL(battery) //Skyrat Edit Start - These batteries are outrageous
 		return TRUE
 
 /obj/item/stock_parts/cell/computer

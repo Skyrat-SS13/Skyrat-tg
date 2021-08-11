@@ -330,6 +330,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	handle_objectives()
 	QDEL_NULL(occupant)
+	//Skyrat Edit Start - No MMIs either
+	var/turf/src_turf = get_turf(src)
+	var/obj/item/mmi/mmi_item = locate() in src_turf.contents
+	qdel(mmi_item)
+	//Skyrat Edit Stop
 	open_machine()
 	name = initial(name)
 
