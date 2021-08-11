@@ -477,7 +477,6 @@
 		/obj/item/hand_labeler/borg,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/razor,
-		/obj/item/stack/rods/cyborg, //Skyrat Edit makes service borgs less awful
 		/obj/item/soap/nanotrasen, //Skyrat Edit makes service borgs less awful
 		/obj/item/weldingtool/mini, //Skyrat Edit makes service borgs less awful
 		/obj/item/lighter,
