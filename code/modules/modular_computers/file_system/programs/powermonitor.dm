@@ -101,3 +101,13 @@
 
 	return data
 
+//SKYRAT EDIT ADDITION BEGIN
+//Cyborg tablet software option
+/datum/computer_file/program/power_monitor/integrated
+	filename = "ampcheck_cyborg"
+	filedesc = "Cyborg AmpCheck"
+	requires_ntnet = TRUE
+	available_on_ntnet = FALSE
+	category = PROGRAM_CATEGORY_MISC
+	usage_flags = PROGRAM_TABLET
+// SKYRAT EDIT ADDITION END
