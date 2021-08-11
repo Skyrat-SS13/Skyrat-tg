@@ -210,7 +210,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	if(rune_in_use)
 		return
 	//SKYRAT EDIT ADDITION
-	if((world.time > last_used + 15 SECONDS))
+	if((last_used + 15 SECONDS) > world.time)
 		visible_message(span_warning("[src] glows red! It was used too soon."))
 		return
 	//SKYRAT EDIT END
