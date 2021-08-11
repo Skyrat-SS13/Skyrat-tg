@@ -261,11 +261,13 @@ structure_check() searches for nearby cultist structures required for the invoca
 	//SKYRAT EDIT ADDITION
 	var/demonic_response = tgui_alert(convertee, "You feel demonic forces attempting to penetrate your mind... resistance... futile...", "NAR-...SIE", list("Submit...", "Resist..."), 5 SECONDS)
 	if(demonic_response != "Submit...")
-		convertee.visible_message(span_warning("[convertee] resists the ritual!"), span_narsiesmall("You fool... resistance is futile."))
+		convertee.visible_message(span_warning("[convertee] resists the ritual and is brainwashed!"), span_narsiesmall("You fool... resistance is futile."))
 		convertee.playsound_local(get_turf(convertee), 'modular_skyrat/master_files/sound/effects/cult_convert_fail.ogg', 80)
 		convertee.adjust_blindness(10)
 		convertee.Jitter(10)
 		convertee.adjustBruteLoss(5)
+		convertee.AdjustUnconscious(10 SECONDS)
+		to_chat(convertee, span_narsiesmall("You feel your memories being altered... you can't seem to remember the past 10 minutes. Where am I? Why am I here?"))
 		last_used = world.time
 		return
 	//SKYRAT EDIT END
