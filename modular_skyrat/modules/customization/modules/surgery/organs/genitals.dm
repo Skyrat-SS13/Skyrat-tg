@@ -6,7 +6,7 @@
 	///Sprite name of the genital, it's what shows up on character creation
 	var/genital_name = "Human"
 	///Type of the genital. For penises tapered/horse/human etc. for breasts quadruple/sixtuple etc...
-	var/genital_type = "human"
+	var/genital_type = SPECIES_HUMAN
 	///Used for determining what sprite is being used, derrives from size and type
 	var/sprite_suffix
 	///Used for input from the user whether to show a genital through clothing or not, always or never etc.

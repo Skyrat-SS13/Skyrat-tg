@@ -5,5 +5,6 @@
 	flags = TONGUELESS_SPEECH
 	space_chance = 40
 	syllables = list("ti","ti","ti","hi","hi","ki","ki","ki","ki","ya","ta","ha","ka","ya", "yi", "chi","cha","kah","SKRE","AHK","EHK","RAWK","KRA","AAA","EEE","KI","II","KRI","KA")
-	icon_state = "swarmer"
+	icon_state = "vox-pidgin"
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 99
