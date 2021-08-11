@@ -82,6 +82,8 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 
 //more carbon mobs
 
+#define iscorticalborer(A) (istype(A, /mob/living/simple_animal/cortical_borer)) //Skyrat Edit Add: Cortical Borers
+
 #define isalien(A) (istype(A, /mob/living/carbon/alien))
 
 #define islarva(A) (istype(A, /mob/living/carbon/alien/larva))
