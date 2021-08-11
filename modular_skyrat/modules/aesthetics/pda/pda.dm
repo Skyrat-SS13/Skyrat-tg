@@ -2,7 +2,6 @@
 
 //greyscale config
 /datum/greyscale_config/pda/aesthetics
-	icon_file = 'modular_skyrat/modules/aesthetics/pda/pda.dmi'
 	json_config = 'code/datums/greyscale/json_configs/pda.json'
 
 /datum/greyscale_config/pda/aesthetics/chaplain
