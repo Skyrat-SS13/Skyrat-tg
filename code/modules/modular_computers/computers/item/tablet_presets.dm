@@ -117,7 +117,7 @@
 	. = ..()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/power_monitor/integrated)
-	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor())
+	hard_drive.store_file(new /datum/computer_file/program/alarm_monitor)
 	hard_drive.store_file(new /datum/computer_file/program/supermatter_monitor)
 	
 /obj/item/modular_computer/tablet/integrated/medical/Initialize()
