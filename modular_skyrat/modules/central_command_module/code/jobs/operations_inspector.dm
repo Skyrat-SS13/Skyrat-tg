@@ -11,8 +11,8 @@
 	minimal_player_age = 14
 	exp_requirements = 6000
 	exp_required_type = EXP_TYPE_CREW
-	exp_required_type_department = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
-	exp_granted_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
 
 	outfit = /datum/outfit/job/operations_inspector
 	plasmaman_outfit = /datum/outfit/plasmaman/centcom_official
