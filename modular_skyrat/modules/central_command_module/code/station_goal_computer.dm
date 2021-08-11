@@ -52,8 +52,8 @@
 
 	for(var/datum/station_goal/iterating_goal as anything in station_goal_cache)
 		if(initial(iterating_goal.name) == selected_goal)
-			iterating_goal = new()
-			iterating_goal.send_report()
-			GLOB.station_goals += iterating_goal
+			var/datum/station_goal/selected_goal = new iterating_goal()
+			selected_goal.send_report()
+			GLOB.station_goals += selected_goal
 			goal_assigned = TRUE
 			break
