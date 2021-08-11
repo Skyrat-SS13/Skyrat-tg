@@ -369,7 +369,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 	if(sacrificial)
 		playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
-		sacrificial.gib()
+		to_chat(sacrificial, span_narsie("DIE HEATHEN!"))
+		sacrificial.death() //SKYRAT EDIT CHANGE
+		sacrificial.gib(FALSE,FALSE,FALSE) //SKYRAT EDIT CHANGE
 	return TRUE
 
 
