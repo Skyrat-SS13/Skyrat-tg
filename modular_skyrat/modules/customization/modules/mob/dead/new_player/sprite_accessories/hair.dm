@@ -1,7 +1,7 @@
 // Hairstyles
 
 /datum/sprite_accessory/hair/skyrat
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/hair.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/hair.dmi'
 
 /datum/sprite_accessory/hair/skyrat/pigtails4
 	name = "Pigtails 4"
@@ -335,10 +335,14 @@
 	name = "New You"
 	icon_state = "hair_newyou"
 
+/datum/sprite_accessory/hair/skyrat/spicy
+	name = "Spicy"
+	icon_state = "hair_spicy"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
-	icon = 'modular_skyrat/modules/customization//icons/mob/sprite_accessory/facialhair.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/facialhair.dmi'
 
 /datum/sprite_accessory/facial_hair/skyrat/sideburns
 	name = "Sideburns"
@@ -367,3 +371,9 @@
 /datum/sprite_accessory/facial_hair/skyrat/neckfluff
 	name = "Neckfluff"
 	icon_state = "facial_neckfluff"
+
+/datum/sprite_accessory/facial_hair/skyrat/squid
+	name = "Tentacle Beard"
+	icon_state = "facial_squid"
+
+

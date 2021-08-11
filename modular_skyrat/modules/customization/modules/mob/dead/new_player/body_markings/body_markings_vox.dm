@@ -1,6 +1,6 @@
 /datum/body_marking/secondary/vox
-	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/vox_secondary.dmi'
-	recommended_species = list("vox")
+	icon = 'modular_skyrat/master_files/icons/mob/body_markings/vox_secondary.dmi'
+	recommended_species = list(SPECIES_VOX)
 
 /datum/body_marking/secondary/vox/vox
 	name = "Vox Talon"
@@ -8,8 +8,8 @@
 	affected_bodyparts = ARM_LEFT | ARM_RIGHT | HAND_LEFT | HAND_RIGHT | LEG_RIGHT | LEG_LEFT
 
 /datum/body_marking/tertiary/vox
-	recommended_species = list("vox")
-	icon = 'modular_skyrat/modules/customization/icons/mob/body_markings/vox_tertiary.dmi'
+	recommended_species = list(SPECIES_VOX)
+	icon = 'modular_skyrat/master_files/icons/mob/body_markings/vox_tertiary.dmi'
 
 /datum/body_marking/tertiary/vox/tiger
 	name = "Vox Tiger Tattoo"

@@ -15,8 +15,8 @@
 	/obj/item/key/collar))
 
 /obj/item/clothing/neck/human_petcollar
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/neck.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	name = "pet collar"
 	desc = "It's for pets. Though you probably could wear it yourself, you'd doubtless be the subject of ridicule. It seems to be made out of a polychromic material."
 	icon_state = "petcollar_poly"
@@ -90,3 +90,45 @@
 /obj/item/key/collar
 	name = "Collar Key"
 	desc = "A key for a tiny lock on a collar or bag."
+
+/obj/item/clothing/neck/human_petcollar/locked/cowcollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "cowbell collar"
+	desc = "Don't fear the reaper, now your pet doesn't have to."
+	icon_state = "collar_cowbell"
+
+/obj/item/clothing/neck/human_petcollar/locked/bellcollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "bell collar"
+	desc = "A loud and annoying collar for your little kittens!"
+	icon_state = "collar_bell"
+
+
+/obj/item/clothing/neck/human_petcollar/locked/spikecollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "spiked collar"
+	desc = "A collar for moody pets. Or pitbulls."
+	icon_state = "collar_spik"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/holocollar
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "holocollar"
+	desc = "A collar with holographic information, like a microchip, but around the neck."
+	icon_state = "collar_holo"
+	is_polychromic = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/cross
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	name = "cross collar"
+	desc = "A religious punishment, probably."
+	icon_state = "collar_blk"
+
+
+
+

@@ -15,6 +15,7 @@
 #define CHANNEL_AMBIENCE 1014
 #define CHANNEL_BUZZ 1013
 #define CHANNEL_BICYCLE 1012
+#define CHANNEL_HEV 1011
 //SKYRAT EDIT CHANGE END
 ///Default range of a sound.
 #define SOUND_RANGE 17
@@ -140,6 +141,7 @@
 #define ANNOUNCER_SPOOKY "announcer_spooky"
 #define ANNOUNCER_ERTYES "announcer_ertyes"
 #define ANNOUNCER_MUTANTS "announcer_mutants"
+#define ANNOUNCER_KLAXON "announcer_klaxon"
 //SKYRAT EDIT END
 
 
@@ -180,6 +182,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_BLUESPACEARTY,
 	ANNOUNCER_SPOOKY,
 	ANNOUNCER_ERTYES,
-	ANNOUNCER_MUTANTS
+	ANNOUNCER_MUTANTS,
+	ANNOUNCER_KLAXON
 	//SKYRAT EDIT END
 ))

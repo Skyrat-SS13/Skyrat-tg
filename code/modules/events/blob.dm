@@ -2,16 +2,13 @@
 	name = "Blob"
 	typepath = /datum/round_event/ghost_role/blob
 	weight = 10
-	max_occurrences = 1
+	max_occurrences = 0 //SKYRAT EDIT CHANGE
 
-	// min_players = 20 // SKYRAT EDIT -- Original
-	min_players = 60 	// SKYRAT EDIT CHANGE -- Requires 60 alive non-afk players for blob
+	min_players = 20
 
 	dynamic_should_hijack = TRUE
 
-	gamemode_blacklist = list("blob") //Just in case a blob survives that long
-
-/datum/round_event_control/blob/canSpawnEvent(players, gamemode)
+/datum/round_event_control/blob/canSpawnEvent(players)
 	if(EMERGENCY_PAST_POINT_OF_NO_RETURN) // no blobs if the shuttle is past the point of no return
 		return FALSE
 

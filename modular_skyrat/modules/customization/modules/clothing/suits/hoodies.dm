@@ -2,9 +2,9 @@
 /obj/item/clothing/suit/storage/toggle/hoodie
 	name = "grey hoodie"
 	desc = "A warm, grey sweatshirt."
-	icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/customization/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "grey_hoodie"
 	min_cold_protection_temperature = T0C - 20
 

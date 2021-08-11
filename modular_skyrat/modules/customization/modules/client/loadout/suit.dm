@@ -36,6 +36,16 @@
 	name = "Tailcoat"
 	path = /obj/item/clothing/suit/costume/tailcoat
 
+/datum/loadout_item/suit/duster
+	name = "Colorable Duster"
+	path = /obj/item/clothing/suit/duster/colorable
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
+/datum/loadout_item/suit/peacoat
+	name = "Colorable Peacoat"
+	path = /obj/item/clothing/suit/toggle/peacoat
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/suit/dresscoat
 	name = "Black Dresscoat"
 	path = /obj/item/clothing/suit/costume/vic_dresscoat
@@ -43,6 +53,10 @@
 /datum/loadout_item/suit/dresscoat_red
 	name = "Red Dresscoat"
 	path = /obj/item/clothing/suit/costume/vic_dresscoat/red
+
+/datum/loadout_item/suit/trackjacket
+	name = "Track Jacket"
+	path = /obj/item/clothing/suit/toggle/trackjacket
 
 /*Flannels go inside Misc*/
 /datum/loadout_item/suit/flannel_black
@@ -140,6 +154,10 @@
 	path = /obj/item/clothing/suit/blackfurrich
 	cost = 3
 
+/datum/loadout_item/suit/coat/custom
+	name = "Alternate Winter Coat"
+	path = /obj/item/clothing/suit/hooded/wintercoat/custom
+	cost= 2
 
 
 //JACKETS
@@ -169,6 +187,10 @@
 /datum/loadout_item/suit/jacket/suitblack
 	name = "Black Suit Jacket"
 	path = /obj/item/clothing/suit/toggle/lawyer/black
+
+/datum/loadout_item/suit/jacket/suitblackbetter
+	name = "Light Black Suit Jacket"
+	path = /obj/item/clothing/suit/toggle/lawyer/black/better
 
 /datum/loadout_item/suit/jacket/suitwhite
 	name = "White Suit Jacket"
@@ -311,7 +333,7 @@
 /datum/loadout_item/suit/job/coat_sci
 	name = "Science winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/science
-	restricted_roles = list("Research Director", "Scientist", "Roboticist") // Reserve it to the Science Departement
+	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Vanguard Operative") // Reserve it to the Science Departement
 
 /datum/loadout_item/suit/job/coat_eng
 	name = "Engineering winter coat"
@@ -361,19 +383,19 @@
 /datum/loadout_item/suit/job/security_jacket
 	name = "Security Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
-	restricted_desc = "All Security Personnel"
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant") //Not giving this one to CDOs or COs because it's actually better than the one they spawn with
+	//restricted_desc = "All Security Personnel" //Liar...
 
 /datum/loadout_item/suit/job/cossak
 	name = "Ukrainian Security Jacket"
 	path = /obj/item/clothing/suit/cossack/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
 	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/job/brit
 	name = "High Vis Armored Vest"
 	path = /obj/item/clothing/suit/toggle/brit/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
 	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/job/british_jacket
@@ -391,7 +413,7 @@
 /datum/loadout_item/suit/job/sci_jacket
 	name = "Science Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/sci
-	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist")
+	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist", "Vanguard Operative")
 	restricted_desc = "All Science Personnel"
 
 /datum/loadout_item/suit/job/med_jacket
@@ -457,13 +479,13 @@
 	name = "Medsci fed jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Security Medic","Psychologist","Geneticist","Research Director","Scientist","Roboticist","Vanguard Operative")
 
 /datum/loadout_item/suit/job/trek/fedeng
 	name = "Ops/Sec fed Jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Modern trekkie
 /datum/loadout_item/suit/job/trek/fedcoatmodern
@@ -474,7 +496,7 @@
 	name = "Modern medsci jacket"
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Psychologist","Geneticist","Research Director","Scientist","Roboticist","Vanguard Operative")
 
 /datum/loadout_item/suit/job/trek/fedcoatmoderneng
 	name = "Modern ops jacket"
@@ -485,5 +507,5 @@
 /datum/loadout_item/suit/job/trek/fedcoatmodernsec
 	name = "Modern sec jacket"
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant","Civil Disputes Officer","Corrections Officer")
 	restricted_desc = "All Security Personnel"

@@ -14,8 +14,9 @@
 	uses_ambitions = TRUE
 
 /datum/antagonist/traitor/ambitions_add()
-	if(traitor_kind == TRAITOR_HUMAN && should_equip)
-		equip()
+	if(give_uplink)
+		owner.give_uplink(silent = TRUE, antag_datum = src)
+	uplink = owner.find_syndicate_uplink()
 
 /datum/antagonist/changeling
 	uses_ambitions = TRUE

@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/submachine_gun/pps
-	name = "\improper Pistolet-pulemyot Sudayeva"
-	desc = "The PPS (Pistolet-pulemyot Sudayeva) is a family of Soviet submachine guns chambered in 7.62×25mm Tokarev, developed by Alexei Sudayev as a low-cost personal defense weapon for reconnaissance units, vehicle crews and support service personnel."
+	name = "\improper PPS-43"
+	desc = "A very cheap, barely reliable reproduction of a personal defense weapon based on the original Soviet model. Not nearly as infamous as the Mosin."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/pps/pps.dmi'
 	icon_state = "pps"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/pps/pps_lefthand.dmi'

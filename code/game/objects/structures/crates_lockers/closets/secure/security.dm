@@ -18,8 +18,8 @@
 	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
 	new /obj/item/clothing/head/caphat(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
+	new /obj/item/clothing/suit/toggle/captains_parade(src)
 	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
-	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
 	new /obj/item/clothing/head/caphat/parade(src)
 	new /obj/item/clothing/suit/captunic(src)
 	new /obj/item/clothing/head/crown/fancy(src)
@@ -38,6 +38,7 @@
 	name = "\proper head of personnel's locker"
 	req_access = list(ACCESS_HOP)
 	icon_state = "hop"
+	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
@@ -46,6 +47,9 @@
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel(src)
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt(src)
 	new /obj/item/clothing/head/hopcap(src)
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade(src) //SKYRAT EDIT ADDITION START - HOP PARADE UNIFORMS
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female(src)
+	new /obj/item/clothing/suit/toggle/hop_parade(src) //SKYRAT EDIT ADDITION END
 	new /obj/item/cartridge/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
@@ -55,7 +59,7 @@
 	new /obj/item/clothing/suit/armor/vest/alt(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/storage/box/gunset/pdh_hop(src) //SKYRAT EDIT CHANGE - SEC_HAUL
+	new /obj/item/gun/energy/e_gun(src) //SKYRAT EDIT
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
@@ -63,7 +67,11 @@
 	new /obj/item/storage/photo_album/hop(src)
 	new /obj/item/storage/lockbox/medal/hop(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
-
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck(src) //SKYRAT EDIT ADDITION START - HOP DRIP
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck/skirt(src)
+	new /obj/item/storage/backpack/head_of_personnel(src)
+	new /obj/item/storage/backpack/satchel/head_of_personnel(src)
+	new /obj/item/storage/backpack/duffel/head_of_personnel(src)
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
@@ -74,6 +82,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/hos(src)
+	new /obj/item/clothing/suit/toggle/armor/hos/hos_formal(src)
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/clothing/suit/armor/hos/parade/female(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
@@ -103,6 +112,7 @@
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
 	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
+	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
@@ -202,6 +212,7 @@
 	new /obj/item/pinpointer/crew(src)
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/box/rxglasses/spyglasskit(src)
+	new /obj/item/taperoll/police(src) //SKYRAT EDIT ADDITION - Detective starts with this in their locker :)
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"

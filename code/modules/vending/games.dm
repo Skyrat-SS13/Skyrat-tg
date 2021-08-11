@@ -20,7 +20,10 @@
 					/obj/item/skillchip/bonsai=2,
 					/obj/item/skillchip/wine_taster=2,
 					/obj/item/skillchip/light_remover=2,
-					/obj/item/skillchip/useless_adapter=5)
+					/obj/item/skillchip/useless_adapter=5,
+					/obj/item/dyespray=3,
+					/obj/item/hairbrush=3 // SKYRAT EDIT ADD - HAIRBRUSHES
+					)
 	contraband = list(/obj/item/dice/fudge = 9,
 					/obj/item/clothing/shoes/wheelys/skishoes=4,
 					/obj/item/instrument/musicalmoth=1)

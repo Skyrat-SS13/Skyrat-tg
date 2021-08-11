@@ -50,11 +50,13 @@ Key procs
 	/// Currently spoken language
 	var/selected_language
 	/// Tracks the entity that owns the holder.
-	var/owner
+	var/atom/owner
 
 /// Initializes, and copies in the languages from the current atom if available.
-///datum/language_holder/New(_owner) //ORIGINAL
-/datum/language_holder/New(_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+///datum/language_holder/New(atom/_owner) //ORIGINAL
+/datum/language_holder/New(atom/_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+	if(_owner && QDELETED(_owner))
+		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(pref_load)
 		//If we're loading a holder from prefs, override the languages
@@ -74,6 +76,7 @@ Key procs
 
 /datum/language_holder/Destroy()
 	QDEL_NULL(language_menu)
+	owner = null
 	return ..()
 
 /// Grants the supplied language.

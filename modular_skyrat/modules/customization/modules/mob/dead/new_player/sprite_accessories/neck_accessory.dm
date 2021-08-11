@@ -1,8 +1,9 @@
 /datum/sprite_accessory/neck_accessory
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/neck_accessory.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/neck_accessory.dmi'
 	key = "neck_acc"
 	generic = "Neck Accessory"
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	genetic = TRUE
 
 /datum/sprite_accessory/neck_accessory/none
 	name = "None"
@@ -18,7 +19,7 @@
 /datum/sprite_accessory/neck_accessory/sylveon_bow
 	name = "Sylveon Neck Bow"
 	icon_state = "sylveon_bow"
-	recommended_species = list("synthmammal", "mammal", "human", "synthhuman", "felinid", "humanoid")
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	color_src = USE_MATRIXED_COLORS
 	ckey_whitelist = list("whirlsam" = TRUE)

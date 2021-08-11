@@ -12,12 +12,14 @@
 
 /datum/round_event/mutant_infestation/setup()
 	. = ..()
-	infected = rand(1, 2)
+	infected = rand(2, 3)
 
 /datum/round_event/mutant_infestation/start()
 	. = ..()
 	var/infectees = 0
 	for(var/mob/living/carbon/human/H in shuffle(GLOB.player_list))
+		if(!is_station_level(H.z))
+			continue
 		if(infectees >= infected)
 			break
 		if(try_to_mutant_infect(H, TRUE))
@@ -25,5 +27,5 @@
 			notify_ghosts("[H] has been infected by the HNZ-1 pathogen!", source = H)
 
 /datum/round_event/mutant_infestation/announce(fake)
-	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'))
+	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'), override_volume = TRUE)
 	priority_announce("Automated air filtration screeing systems have flagged an unknown pathogen in the ventilation systems, quarantine is in effect.", "Level-1 Viral Biohazard Alert", ANNOUNCER_MUTANTS)

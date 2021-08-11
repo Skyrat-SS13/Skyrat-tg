@@ -185,7 +185,7 @@
 
 /datum/loadout_item/backpack/plushies/plushliz
 	name = "Lizard plushie"
-	path = /obj/item/toy/plush/lizardplushie
+	path = /obj/item/toy/plush/lizard_plushie/green
 
 /datum/loadout_item/backpack/plushies/plushsnek
 	name = "Snake plushie"
@@ -283,6 +283,14 @@
 	name = "Familiar Lizard plushie"
 	path = /obj/item/toy/plush/arcplush
 
+/datum/loadout_item/backpack/plushies/sharknet
+	name = "Gluttonous Shark plushie"
+	path = /obj/item/toy/plush/sharknet
+
+/datum/loadout_item/backpack/plushies/pintaplush
+	name = "Smaller Deer plushie"
+	path = /obj/item/toy/plush/pintaplush
+
 /datum/loadout_item/backpack/plushies/oleplush
 	name = "Irritable Goat plushie"
 	path = /obj/item/toy/plush/oleplush
@@ -295,6 +303,30 @@
 	name = "Valid plushie"
 	path = /obj/item/toy/plush/riffplush
 
+/datum/loadout_item/backpack/plushies/ianbastardman
+	name = "Ian plushie"
+	path = /obj/item/toy/plush/ian
+
+/datum/loadout_item/backpack/plushies/corgiman
+	name = "Corgi plushie"
+	path = /obj/item/toy/plush/ian/small
+
+/datum/loadout_item/backpack/plushies/corgiwoman
+	name = "Girly Corgi plushie"
+	path = /obj/item/toy/plush/ian/lisa
+
+/datum/loadout_item/backpack/plushies/cat
+	name = "Cat plushie"
+	path = /obj/item/toy/plush/cat
+
+/datum/loadout_item/backpack/plushies/tuxcat
+	name = "Tux Cat plushie"
+	path = /obj/item/toy/plush/cat/tux
+
+/datum/loadout_item/backpack/plushies/whitecat
+	name = "White Cat plushie"
+	path = /obj/item/toy/plush/cat/white
+
 /datum/loadout_item/backpack/plushies/narplush
 	name = "Narsie Plushie"
 	path = /obj/item/toy/plush/narplush
@@ -306,3 +338,11 @@
 	path = /obj/item/toy/plush/ratplush
 	cost = 5
 	restricted_roles = list("Chaplain")
+
+/datum/loadout_item/backpack/plushies/rouny
+	name = "Runner Plushie"
+	path = /obj/item/toy/plush/rouny
+
+/datum/loadout_item/backpack/plushies/seaduplush
+	name = "Sneed plushie"
+	path = /obj/item/toy/plush/seaduplush

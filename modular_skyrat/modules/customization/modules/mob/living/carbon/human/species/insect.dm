@@ -1,6 +1,6 @@
 /datum/species/insect
 	name = "Anthromorphic Insect"
-	id = "insect"
+	id = SPECIES_INSECT
 	say_mod = "chitters"
 	default_color = "4B4B4B"
 	species_traits = list(
@@ -35,4 +35,4 @@
 	liked_food = GROSS | MEAT | TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/insect_parts_greyscale.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/insect_parts_greyscale.dmi'

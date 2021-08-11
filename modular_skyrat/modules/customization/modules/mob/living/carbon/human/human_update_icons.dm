@@ -35,13 +35,13 @@
 		var/x_override
 		switch(applied_style)
 			if(STYLE_DIGITIGRADE)
-				icon_file = w_uniform.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_digi.dmi'
+				icon_file = w_uniform.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 			if(STYLE_TAUR_SNAKE)
-				icon_file = w_uniform.worn_icon_taur_snake || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_taur_snake.dmi'
+				icon_file = w_uniform.worn_icon_taur_snake || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_snake.dmi'
 			if(STYLE_TAUR_HOOF)
-				icon_file = w_uniform.worn_icon_taur_hoof || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_taur_hoof.dmi'
+				icon_file = w_uniform.worn_icon_taur_hoof || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_hoof.dmi'
 			if(STYLE_TAUR_PAW)
-				icon_file = w_uniform.worn_icon_taur_paw || 'modular_skyrat/master_files/icons/mob/clothing/under/uniform_taur_paw.dmi'
+				icon_file = w_uniform.worn_icon_taur_paw || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_paw.dmi'
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -181,7 +181,7 @@
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
-	var/list/worn_overlays = worn_overlays(isinhands, file2use, mutant_styles)
+	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use, mutant_styles)
 	if(worn_overlays && worn_overlays.len)
 		standing.overlays.Add(worn_overlays)
 
@@ -260,7 +260,7 @@
 		if(!(head && (head.flags_inv & HIDEEYES)) && !(wear_mask && (wear_mask.flags_inv & HIDEEYES)))
 			var/icon_file = glasses.worn_icon
 			var/applied_style = NONE
-			if(dna.species.id == "vox")
+			if(dna.species.id == SPECIES_VOX)
 				applied_style |= STYLE_VOX
 				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/eyes_vox.dmi'
 			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_icon = icon_file, mutant_styles = applied_style)

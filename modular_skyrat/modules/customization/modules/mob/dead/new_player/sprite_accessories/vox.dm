@@ -1,15 +1,15 @@
 //The snouts
 /datum/sprite_accessory/snouts/vox
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_snouts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/vox_snouts.dmi'
 	default_color = DEFAULT_SECONDARY
 	name = "Vox Snout"
 	icon_state = "vox"
-	recommended_species = list("vox")
+	recommended_species = list(SPECIES_VOX)
 
 //The hairstyles
 /datum/sprite_accessory/hair/vox
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_hair.dmi'
-	recommended_species = list("vox")
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/vox_hair.dmi'
+	recommended_species = list(SPECIES_VOX)
 
 /datum/sprite_accessory/hair/vox/vox_afro
 	name = "Vox Afro"
@@ -89,8 +89,8 @@
 
 //The facial hairstyles
 /datum/sprite_accessory/facial_hair/vox
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_facial_hair.dmi'
-	recommended_species = list("vox")
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/vox_facial_hair.dmi'
+	recommended_species = list(SPECIES_VOX)
 
 /datum/sprite_accessory/facial_hair/vox/vox_beard
 	name = "Vox Beard"
@@ -110,16 +110,16 @@
 
 //The tail
 /datum/sprite_accessory/tails/vox
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_tails.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/vox_tails.dmi'
 	name = "Vox Tail"
 	icon_state = "vox"
-	recommended_species = list("vox")
+	recommended_species = list(SPECIES_VOX)
 
 //The tail markings
 /datum/sprite_accessory/spines/vox
-	icon = 'modular_skyrat/modules/customization/icons/mob/sprite_accessory/vox_spines.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/vox_spines.dmi'
 	default_color = DEFAULT_TERTIARY
-	recommended_species = list("vox")
+	recommended_species = list(SPECIES_VOX)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 
 /datum/sprite_accessory/spines/vox/vox_bands

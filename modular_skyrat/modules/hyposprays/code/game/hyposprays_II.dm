@@ -38,8 +38,8 @@
 	//Time taken to spray self
 	var/spray_self = SELF_SPRAY
 
-	//Can you hotswap vials? - Currently no hyposprays allow this for some reason
-	var/quickload = FALSE
+	//Can you hotswap vials? - now all hyposprays can!
+	var/quickload = TRUE
 	//Does it go through hardsuits?
 	var/penetrates = FALSE
 
@@ -98,7 +98,20 @@
 		if(!quickload)
 			to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
 			return FALSE
-		unload_hypo(vial, user)
+		else
+			var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
+			var/obj/item/reagent_containers/glass/bottle/vial/old_container = vial
+			if(!is_type_in_list(container, allowed_containers))
+				to_chat(user, span_notice("[src] doesn't accept this type of vial."))
+				return FALSE
+			old_container.forceMove(drop_location())
+			if(!user.transferItemToLoc(container, src))
+				return FALSE
+			vial = container
+			user.visible_message(span_notice("[user] has swapped a vial into [src]."), span_notice("You have swapped [vial] into [src]."))
+			playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+			user.put_in_hands(old_container)
+			return TRUE
 	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial)))
 		var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
 		if(!is_type_in_list(container, allowed_containers))
@@ -182,7 +195,12 @@
 	else
 		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", INDIVIDUAL_ATTACK_LOG)
 
-	vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this)
+	switch(mode)
+		if(HYPO_INJECT)
+			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this)
+		if(HYPO_SPRAY)
+			vial.reagents.trans_to(injectee, vial.amount_per_transfer_from_this, methods = PATCH)
+
 	var/long_sound = vial.amount_per_transfer_from_this >= 15
 	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
 	to_chat(user, "<span class='notice'>You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units.</span>")
