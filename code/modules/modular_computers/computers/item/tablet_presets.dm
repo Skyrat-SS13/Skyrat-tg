@@ -110,3 +110,39 @@
 	install_component(new /obj/item/computer_hardware/recharger/cyborg)
 	install_component(new /obj/item/computer_hardware/network_card/integrated)
 	hard_drive.store_file(new /datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD
+
+//SKYRAT EDIT ADDITION BEGIN
+//Program presets for different types of cyborgs
+/obj/item/modular_computer/tablet/integrated/enginer/Initialize()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
+	hard_drive.store_file(new /datum/computer_file/program/power_monitor/integrated)
+	hard_drive.store_file(new/datum/computer_file/program/alarm_monitor())
+	hard_drive.store_file(new /datum/computer_file/program/supermatter_monitor)
+	
+/obj/item/modular_computer/tablet/integrated/medical/Initialize()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
+	hard_drive.store_file(new /datum/computer_file/program/radar/lifeline)
+
+/obj/item/modular_computer/tablet/integrated/security/Initialize()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
+	hard_drive.store_file(new /datum/computer_file/program/secureye/integrated)
+	
+/obj/item/modular_computer/tablet/integrated/service/Initialize()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive"
+	hard_drive.store_file(new /datum/computer_file/program/chatclient)
+
+/obj/item/modular_computer/tablet/integrated/peacekeeper/Initialize()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
+	hard_drive.store_file(new /datum/computer_file/program/radar/lifeline)
+	hard_drive.store_file(new /datum/computer_file/program/secureye/integrated)
+
+/obj/item/modular_computer/tablet/integrated/clown/Initialize()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive"
+	hard_drive.store_file(new /datum/computer_file/program/chatclient)
+// SKYRAT EDIT ADDITION END
