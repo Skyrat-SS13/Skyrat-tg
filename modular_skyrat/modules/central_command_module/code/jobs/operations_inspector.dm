@@ -24,7 +24,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_OPERATIONS_INSPECTOR
 	departments_list = list(
-		/datum/job_department/command,
 		/datum/job_department/nanotrasen_fleet_command,
 		)
 

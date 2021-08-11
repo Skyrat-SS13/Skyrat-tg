@@ -25,7 +25,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_DECK_CREW
 	departments_list = list(
-		/datum/job_department/command,
 		/datum/job_department/nanotrasen_fleet_command,
 		)
 
