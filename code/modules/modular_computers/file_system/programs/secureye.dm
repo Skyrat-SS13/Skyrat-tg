@@ -194,3 +194,14 @@
 		if(tempnetwork.len)
 			camlist["[cam.c_tag]"] = cam
 	return camlist
+
+//SKYRAT EDIT ADDITION BEGIN
+//Cyborg tablet software option
+/datum/computer_file/program/secureye/integrated
+	filename = "secureye_cyborg"
+	filedesc = "Cyborg SecurEye"
+	requires_ntnet = TRUE
+	available_on_ntnet = FALSE
+	category = PROGRAM_CATEGORY_MISC
+	usage_flags = PROGRAM_TABLET
+// SKYRAT EDIT ADDITION END
