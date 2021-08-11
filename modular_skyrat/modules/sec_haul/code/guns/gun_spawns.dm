@@ -92,9 +92,8 @@
 	gun_count = 2
 	guns = list(
 		/obj/item/gun/ballistic/automatic/ar,
-		/obj/item/gun/ballistic/automatic/cfa_lynx,
 		/obj/item/gun/ballistic/automatic/assault_rifle/m16,
-		/obj/item/gun/ballistic/automatic/cfa_lynx,
+		/obj/item/gun/ballistic/automatic/cfa_rifle,
 	)
 
 /obj/effect/spawner/armory_spawn/centcom_lasers
