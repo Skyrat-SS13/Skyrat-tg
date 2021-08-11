@@ -36,7 +36,7 @@
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
 	)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_BOLD_SELECT_TEXT
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
@@ -47,7 +47,7 @@
 	return "Admiral [captain.real_name] on deck!"
 
 /datum/outfit/job/fleet_admiral
-	name = "Nanotrasen Admiral"
+	name = "Fleet Admiral"
 
 	jobtype = /datum/job/fleet_admiral
 
@@ -74,10 +74,13 @@
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/centcom)
 
-	id_trim = /datum/id_trim/centcom/admiral
+	id_trim = /datum/id_trim/centcom/fleet_admiral
 
 
-/datum/id_trim/centcom/admiral/New()
+/datum/id_trim/centcom/fleet_admiral
+	assignment = "Fleet Admiral"
+
+/datum/id_trim/centcom/fleet_admiral/New()
 	. = ..()
 
 	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))

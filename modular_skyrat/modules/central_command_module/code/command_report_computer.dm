@@ -55,7 +55,7 @@
 				error = "ERROR, NO CONTENTS"
 				return
 			if (!COOLDOWN_FINISHED(src, announcement_cooldown))
-				error = "ERROR, SYSTEM IS RECHARGING, ETA: [announcement_cooldown]"
+				error = "ERROR, SYSTEM IS RECHARGING, ETA: [announcement_cooldown - world.time]"
 				return
 			send_announcement()
 	return TRUE
