@@ -137,7 +137,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ipc_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SECONDARY
-	recommended_species = list("ipc")
+	recommended_species = list(SPECIES_IPC)
 	key = "ipc_antenna"
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)

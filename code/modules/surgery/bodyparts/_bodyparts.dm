@@ -63,6 +63,8 @@
 
 	///for nonhuman bodypart (e.g. monkey)
 	var/animal_origin
+	//for all bodyparts
+	var/part_origin = HUMAN_BODY
 	///whether it can be dismembered with a weapon.
 	var/dismemberable = 1
 
@@ -795,7 +797,7 @@
 		no_update = TRUE
 
 	if(HAS_TRAIT(src, TRAIT_PLASMABURNT) && is_organic_limb())
-		species_id = "plasmaman"
+		species_id = SPECIES_PLASMAMAN
 		dmg_overlay_type = ""
 		should_draw_gender = FALSE
 		should_draw_greyscale = FALSE

@@ -106,7 +106,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	default_color = DEFAULT_SECONDARY
-	recommended_species = list("lizard", "unathi", "ashlizard", "silverlizard")
+	recommended_species = list(SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER)
 	genetic = TRUE
 
@@ -365,6 +365,10 @@
 	icon_state = "chastcage"
 	use_static = null
 
+/datum/sprite_accessory/underwear/lizared
+	name = "LIZARED Underwear"
+	icon_state = "lizared"
+	use_static = TRUE
 
 /datum/sprite_accessory/underwear/male_briefs
 	has_digitigrade = TRUE
