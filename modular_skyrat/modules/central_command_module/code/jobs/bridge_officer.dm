@@ -52,7 +52,7 @@
 	ears = /obj/item/radio/headset/headset_cent/alt_with_Key
 	gloves = /obj/item/clothing/gloves/color/black
 	uniform = /obj/item/clothing/under/rank/centcom/officer
-	suit = /obj/item/clothing/suit/toggle/armor/vest
+	suit = /obj/item/clothing/suit/armor/vest
 	suit_store = /obj/item/gun/energy/e_gun/cfa_phalanx
 	shoes = /obj/item/clothing/shoes/combat/swat
 	head = /obj/item/clothing/head/soft/enclaveo
