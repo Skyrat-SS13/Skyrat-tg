@@ -59,7 +59,7 @@
 	id_trim = /datum/id_trim/centcom/deck_crew
 
 /datum/id_trim/centcom/deck_crew
-	access = list(ACCESS_CENT_GENERAL, ACCESS_CENT_LIVING, ACCESS_WEAPONS)
+	access = list(ACCESS_CENT_GENERAL, ACCESS_CENT_LIVING, ACCESS_WEAPONS, ACCESS_CARGO, ACCESS_MAILSORTING)
 	assignment = "Deck Crewman"
 
 /obj/effect/landmark/start/deck_crew
