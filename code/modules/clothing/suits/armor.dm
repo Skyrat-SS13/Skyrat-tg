@@ -139,7 +139,7 @@
 	icon_state = "syndievest"
 
 /obj/item/clothing/suit/toggle/captains_parade
-	name = "captain's parade jacket"
+	name = "captain's formal jacket"
 	desc = "For when an armoured vest isn't fashionable enough."
 	icon_state = "capformal"
 	inhand_icon_state = "capspacesuit"
@@ -370,7 +370,7 @@
 	allowed = GLOB.security_wintercoat_allowed
 
 /obj/item/clothing/suit/toggle/armor/hos/hos_formal
-	name = "\improper Head of Security's parade jacket"
+	name = "\improper Head of Security's formal jacket"
 	desc = "For when an armoured vest isn't fashionable enough."
 	icon_state = "hosformal"
 	inhand_icon_state = "hostrench"
