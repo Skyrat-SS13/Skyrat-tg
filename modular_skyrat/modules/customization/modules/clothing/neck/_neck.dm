@@ -18,6 +18,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "regal-mantle"
 
+
 /obj/item/clothing/neck/mantle/hopmantle
 	name = "Head of Personnel's Mantle"
 	desc = "A decorative draping of blue and red over your shoulders, signifying your stamping prowess."
