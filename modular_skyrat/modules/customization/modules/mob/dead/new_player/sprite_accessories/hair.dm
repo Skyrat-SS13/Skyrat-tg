@@ -335,6 +335,10 @@
 	name = "New You"
 	icon_state = "hair_newyou"
 
+/datum/sprite_accessory/hair/skyrat/spicy
+	name = "Spicy"
+	icon_state = "hair_spicy"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
