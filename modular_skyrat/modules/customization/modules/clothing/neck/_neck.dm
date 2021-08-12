@@ -14,7 +14,7 @@
 
 /obj/item/clothing/neck/mantle/regal
 	name = "Regal Mantle"
-	desc = "A colorful, felt mantle. You feel posh just holding this thing."
+	desc = desc = "A colorful felt mantle. You feel posh just holding this thing."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "regal-mantle"
 
@@ -41,14 +41,14 @@
 
 /obj/item/clothing/neck/mantle/cemantle
 	name = "Chief Engineer's Mantle"
-	desc = "A matte-grey shoulder covering. Do not wear around active machinery."
+	desc = "A matte grey shoulder covering. Do not wear around active machinery."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "cemantle"
 
 /obj/item/clothing/neck/mantle/hosmantle
 	name = "Head of Security's Mantle"
-	desc = "A plated mantle that one might wrap around the upper torso. The 'scales' of the garment signify the members of security, and how you're carrying them on your shoulders."
+	desc = "A plated mantle that one might wrap around the upper torso. The 'scales' of the garment signify the members of security and how you're carrying them on your shoulders."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "hosmantle"
