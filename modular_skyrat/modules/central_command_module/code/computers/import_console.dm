@@ -52,7 +52,7 @@ GLOBAL_LIST_EMPTY(cargo_control_consoles)
 		dat += "MANUAL SHUTTLE OPERATION IS REQUIRED TO USE THIS TERMINAL."
 
 
-	var/datum/browser/popup = new(user, "cargo_console","Cargo Console", 600, 600, src)
+	var/datum/browser/popup = new(user, "cargo_console","Cargo Console", 600, 400, src)
 	popup.set_content(dat.Join("<br>"))
 	popup.open()
 	onclose(user, "cargo_console")
