@@ -31,3 +31,6 @@
 
 /// Under the effect of a numbling agent, such as morphine, for surgery.
 #define TRAIT_NUMBED "numbed"
+
+// felinid traits
+#define TRAIT_FELINE "feline_aspect"
