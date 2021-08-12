@@ -10,7 +10,7 @@
 	selection_color = "#6969f8"
 	req_admin_notify = 1
 	minimal_player_age = 14
-	exp_requirements = 6000
+	exp_requirements = 600
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
@@ -36,7 +36,6 @@
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
-	veteran_only = TRUE
 
 /datum/outfit/job/deck_crew
 	name = "Deck Crewman"
@@ -68,3 +67,4 @@
 	icon_state = "Captain"
 	delete_after_roundstart = FALSE
 	jobspawn_override = TRUE
+

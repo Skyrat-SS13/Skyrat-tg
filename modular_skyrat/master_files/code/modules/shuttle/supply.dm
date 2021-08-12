@@ -1,6 +1,4 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
-		/mob/living,
 		/obj/structure/blob,
 		/obj/effect/rune,
 		/obj/structure/spider/spiderling,
@@ -57,6 +55,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	//Export categories for this run, this is set by console sending the shuttle.
 	var/export_categories = EXPORT_CARGO
 
+	var/manual_operation = FALSE
+
 /obj/docking_port/mobile/supply/register()
 	. = ..()
 	SSshuttle.supply = src
@@ -81,13 +81,13 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	return ..()
 
 /obj/docking_port/mobile/supply/initiate_docking()
-	if(getDockedId() == "supply_away") // Buy when we leave home.
+	if(getDockedId() == "supply_away" && !manual_operation) // Buy when we leave home.
 		buy()
 		create_mail()
 	. = ..() // Fly/enter transit.
 	if(. != DOCKING_SUCCESS)
 		return
-	if(getDockedId() == "supply_away") // Sell when we get home
+	if(getDockedId() == "supply_away" && !manual_operation) // Sell when we get home
 		sell()
 
 /obj/docking_port/mobile/supply/proc/buy()
@@ -262,4 +262,3 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 #undef GOODY_FREE_SHIPPING_MAX
 #undef CRATE_TAX
-*/
