@@ -1,8 +1,8 @@
 /area/centcom/interlink
 	name = "The Interlink"
 
-/area/centcom/nsstitan
-	name = "NSS Titan"
+/area/centcom/ncvtitan
+	name = "NCV Titan"
 
 /area/shuttle/escape/no_light
 	dynamic_lighting = DYNAMIC_LIGHTING_IFSTARLIGHT
