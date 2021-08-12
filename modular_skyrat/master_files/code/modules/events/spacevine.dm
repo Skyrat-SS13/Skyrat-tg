@@ -640,7 +640,7 @@
 		var/mob/living/simple_animal/hostile/venus_human_trap/venus_trap = moving_atom
 		if(venus_trap.health >= venus_trap.maxHealth)
 			return
-		venus_trap.adjustHealth(-clamp(venus_trap.health += 2, 0, venus_trap.maxHealth), TRUE, TRUE)
+		venus_trap.adjustHealth(-5, TRUE, TRUE) //that previous line was outrageous: venus_trap.adjustHealth(-clamp(venus_trap.health += 2, 0, venus_trap.maxHealth), TRUE, TRUE)
 		to_chat(venus_trap, span_notice("The vines attempt to regenerate some of your wounds!"))
 		return
 
@@ -677,7 +677,7 @@
 	vine_mutations_list = list()
 	init_subtypes(/datum/spacevine_mutation/, vine_mutations_list)
 	if(potency != null)
-		mutativeness = potency / 10
+		mutativeness = min(potency / 5, 10) //make it easier to get to max mutativeness, but caps it to the previous number
 	if(production != null && production <= 10) //Prevents runtime in case production is set to 11.
 		spread_cap *= (11 - production) / 5 //Best production speed of 1 doubles spread_cap to 60 while worst speed of 10 lowers it to 6. Even distribution.
 		spread_multiplier /= (11 - production) / 5
@@ -711,7 +711,7 @@
 		current_vine.mutations |= parent.mutations
 		var/parentcolor = parent.atom_colours[FIXED_COLOUR_PRIORITY]
 		current_vine.add_atom_colour(parentcolor, FIXED_COLOUR_PRIORITY)
-		if(prob(mutativeness))
+		if(prob(mutativeness * 1.5)) //mutate just a little more
 			var/datum/spacevine_mutation/randmut = pick(vine_mutations_list - current_vine.mutations)
 			randmut.add_mutation_to_vinepiece(current_vine)
 
