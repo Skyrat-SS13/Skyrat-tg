@@ -18,7 +18,8 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 
 	var/static/list/job_lookup = list("Security Officer"=TRUE, "Warden"=TRUE, "Detective"=TRUE, "Head of Security"=TRUE, "Captain"=TRUE, "Blueshield"=TRUE, "Security Medic"=TRUE, "Security Sergeant"=TRUE, "Civil Disputes Officer"=TRUE)
 	if(!holder)
-		if(!mob.mind || !job_lookup[mob.mind.assigned_role])
+		var/job = mob?.mind.assigned_role.title
+		if(!job || !job_lookup[job])
 			to_chat(src, "<span class='danger'>You're not a security role!</span>")
 			return
 		if(!GLOB.sooc_allowed)
@@ -67,7 +68,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 		else
 			if(M.mind)
 				var/datum/mind/MIND = M.mind
-				if(job_lookup[MIND.assigned_role])
+				if(job_lookup[MIND.assigned_role.title])
 					listeners[M.client] = SOOC_LISTEN_PLAYER
 
 	for(var/c in listeners)

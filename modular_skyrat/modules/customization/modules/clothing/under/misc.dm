@@ -626,3 +626,13 @@
 /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female
 	name = "head of personnel's female parade uniform"
 	icon_state = "hop_parade_female"
+
+/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck
+	name = "chief medical officer's turtleneck"
+	desc = "A light blue turtleneck and brown khakis, for a doctor with a superior sense of style."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "cmoturtle"
+	inhand_icon_state = "b_suit"
+	can_adjust = TRUE
+	alt_covers_chest = TRUE
