@@ -83,33 +83,32 @@
 	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
 
 /mob/living/silicon/robot/proc/create_modularInterface()
-	// TG ORIGINAL BEGIN
-	//if(!modularInterface)
-	//	modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
-	// TG ORIGINAL END
-	
-	//SKYRAT EDIT ADDITION BEGIN
-	//Creating a certain cyborg tablet depending on his species
-	if (model.name == "Default")
+	if(!modularInterface)
 		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
-	else if (model.name == "Engineering")
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/enginer(src)
-	else if (model.name == "Security")
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/security(src)
-	else if (model.name == "Medical")
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/medical(src)
-	else if (model.name == "Service")
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/service(src)
-	else if (model.name == "Peacekeeper")
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/peacekeeper(src)
-	else if (model.name == "Clown")
-		modularInterface = new /obj/item/modular_computer/tablet/integrated/clown(src)
-	else
-		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
-	// SKYRAT EDIT ADDITION END
-	
+		install_programs() // SKYRAT EDIT ADD
 	modularInterface.layer = ABOVE_HUD_PLANE
 	modularInterface.plane = ABOVE_HUD_PLANE
+	
+// SKYRAT EDIT ADDITION BEGIN
+// Program installation procedure depending on the selected module
+/mob/living/silicon/robot/proc/install_programs()
+	if (model.name == "Default")
+		modularInterface.default_programs_install()
+	else if (model.name == "Engineering")
+		modularInterface.enginering_programs_install()
+	else if (model.name == "Security")
+		modularInterface.security_programs_install()
+	else if (model.name == "Medical")
+		modularInterface.medical_programs_install()
+	else if (model.name == "Service")
+		modularInterface.service_programs_install()
+	else if (model.name == "Peacekeeper")
+		modularInterface.peacekeeper_programs_install()
+	else if (model.name == "Clown")
+		modularInterface.clown_programs_install()
+	else
+		modularInterface.default_programs_install()
+// SKYRAT EDIT ADDITION END
 
 /mob/living/silicon/robot/model/syndicate/create_modularInterface()
 	if(!modularInterface)
@@ -191,7 +190,7 @@
 		return
 	
 	model.transform_to(model_list[input_model])
-	create_modularInterface() // SKYRAT EDIT ADD
+	install_programs() // SKYRAT EDIT ADD
 
 
 /// Used to setup the a basic and (somewhat) unique name for the robot.
@@ -751,7 +750,8 @@
 
 	ionpulse = FALSE
 	revert_shell()
-	create_modularInterface() // SKYRAT EDIT ADD
+	modularInterface.remove_module_programs() // SKYRAT EDIT ADD
+	install_programs() // SKYRAT EDIT ADD
 	
 	return TRUE
 
