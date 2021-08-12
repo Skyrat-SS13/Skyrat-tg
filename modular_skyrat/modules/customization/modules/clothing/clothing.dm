@@ -22,13 +22,16 @@
 	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/under
-	mutant_variants = STYLE_DIGITIGRADE
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
 
 /obj/item/clothing/suit
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL|STYLE_VOX
+
+/obj/item/clothing/gloves
+	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/shoes
-	mutant_variants = STYLE_DIGITIGRADE
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
 
 /obj/item/clothing/suit/armor
 	mutant_variants = NONE
