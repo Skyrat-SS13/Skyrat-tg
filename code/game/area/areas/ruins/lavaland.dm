@@ -80,12 +80,8 @@
 	name = "Syndicate Lavaland Virology"
 
 /area/ruin/unpowered/syndicate_lava_base/testlab
-<<<<<<< HEAD
-	name = "Syndicate Lavaland Experimentation Lab"
-	area_flags = XENOBIOLOGY_COMPATIBLE //SKYRAT EDIT ADDITION - MAPPING
-=======
 	name = "\improper Syndicate Lavaland Experimentation Lab"
->>>>>>> 453725d8689 (Areas where it makes sense now have \improper pre-fixed to them (#60805))
+	area_flags = XENOBIOLOGY_COMPATIBLE //SKYRAT EDIT ADDITION - MAPPING
 
 /area/ruin/unpowered/syndicate_lava_base/dormitories
 	name = "\improper Syndicate Lavaland Dormitories"
