@@ -118,7 +118,7 @@
 /datum/quirk/feline_aspect
 	name = "Feline Traits"
 	desc = "You happen to act like a feline, for whatever reason."
-	gain_text = "<span class='notice'>Nya~ could go for some catnip wight about now...~ OwO</span>"
+	gain_text = "<span class='notice'>Nya could go for some catnip right about now...</span>"
 	lose_text = "<span class='notice'>You feel less attracted to lasers.</span>"
 	medical_record_text = "Patient seems to possess behavior much like a feline."
 	value = 0
