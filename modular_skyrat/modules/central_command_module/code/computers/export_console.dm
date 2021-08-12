@@ -36,7 +36,7 @@
 		if(bay_items.len)
 			dat += "<select name='requested_items' size='number_of_options' multiple='multiple'>"
 			for(var/atom/iterating_atom in bay_items)
-				dat += "<option value='[iterating_atom.name]'>[iterating_atom.name] selling for: iterating_atom</option>"
+				dat += "<option value='[iterating_atom.name]'>[iterating_atom.name]</option>"
 			dat += "</select>"
 			dat += "<a href='byond://?src=[REF(src)];function=sell'>EXPORT ITEMS</a>"
 		else
