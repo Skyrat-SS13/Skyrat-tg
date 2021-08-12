@@ -13,6 +13,9 @@
 	var/list/bay_items = list()
 	var/list/possible_areas = list()
 
+	//Export categories for this run, this is set by console sending the shuttle.
+	var/export_categories = EXPORT_CARGO
+
 /obj/machinery/computer/market_link/Initialize()
 	. = ..()
 	radio = new /obj/item/radio/headset/headset_cargo(src)
@@ -63,7 +66,10 @@
 			if(!SSshuttle.supply.manual_operation)
 				say("Manual shuttle operation required.")
 				return
-			for(var/atom/movable/movable_atom in )
+			for(var/place in possible_areas)
+				var/area/centcom/ncvtitan/export_bay/exporting_bay = place
+				for(var/atom/movable/moveable_atom in exporting_bay)
+					bay_items += moveable_atom
 
 			say("Area scanned.")
 		if("sell")

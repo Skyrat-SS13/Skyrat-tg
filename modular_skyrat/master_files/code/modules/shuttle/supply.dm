@@ -98,6 +98,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	var/list/empty_turfs = list()
 	for(var/place in shuttle_areas)
+		if(istype(place, /area/shuttle/supply/cockpit))
+			continue
 		var/area/shuttle/shuttle_area = place
 		for(var/turf/open/floor/T in shuttle_area)
 			if(T.is_blocked_turf())
@@ -252,6 +254,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	//spawn crate
 	var/list/empty_turfs = list()
 	for(var/place as anything in shuttle_areas)
+		if(istype(place, /area/shuttle/supply/cockpit))
+			continue
 		var/area/shuttle/shuttle_area = place
 		for(var/turf/open/floor/shuttle_floor in shuttle_area)
 			if(shuttle_floor.is_blocked_turf())
