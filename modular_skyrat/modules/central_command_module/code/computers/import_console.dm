@@ -68,6 +68,10 @@ GLOBAL_LIST_EMPTY(cargo_control_consoles)
 
 	var/function = href_list["function"]
 
+	if(href_list["close"])
+		usr << browse(null, "window=cargo_console")
+		return
+
 	switch(function)
 		if("purchase")
 			if(!SSshuttle.supply.manual_operation)

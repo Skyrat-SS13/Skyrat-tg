@@ -61,6 +61,10 @@
 
 	var/function = href_list["function"]
 
+	if(href_list["close"])
+		usr << browse(null, "window=export_console")
+		return
+
 	switch(function)
 		if("scan")
 			if(!SSshuttle.supply.manual_operation)

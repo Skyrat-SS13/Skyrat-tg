@@ -52,10 +52,10 @@
 		dat += "<font color='#00ff15'>AUTOPILOT ONLINE</font> - <a href='byond://?src=[REF(src)];function=autopilot'>SWITCH TO MANUAL OPERATION</a>"
 
 
-	var/datum/browser/popup = new(user, "cargo_console","FLIGHT CONTROL", 400, 400, src)
+	var/datum/browser/popup = new(user, "flight_control","FLIGHT CONTROL", 400, 400, src)
 	popup.set_content(dat.Join("<br>"))
 	popup.open()
-	onclose(user, "cargo_console")
+	onclose(user, "flight_control")
 
 /obj/machinery/computer/cargo_shuttle_console/Topic(href, href_list)
 	if(..())
@@ -67,6 +67,10 @@
 	usr.set_machine(src)
 
 	var/function = href_list["function"]
+
+	if(href_list["close"])
+		usr << browse(null, "window=flight_control")
+		return
 
 	switch(function)
 		if("autopilot")

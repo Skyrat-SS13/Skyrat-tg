@@ -50,6 +50,10 @@
 
 	var/selected_goal = href_list["selected_goal"]
 
+	if(href_list["close"])
+		usr << browse(null, "window=station_goals")
+		return
+
 	for(var/datum/station_goal/iterating_goal as anything in station_goal_cache)
 		if(initial(iterating_goal.name) == selected_goal)
 			var/datum/station_goal/goal_to_set = new iterating_goal()
