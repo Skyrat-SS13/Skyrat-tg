@@ -99,6 +99,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/medical(src)
 	new /obj/item/storage/photo_album/cmo(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/medical/cmo(src)
+	new /obj/item/gun/energy/e_gun/mini(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control"
