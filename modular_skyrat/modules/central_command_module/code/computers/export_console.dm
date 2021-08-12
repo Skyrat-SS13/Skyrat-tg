@@ -79,6 +79,7 @@
 			sell()
 			say("Export complete.")
 			radio.talk_into(src, "NCV Titan has exported your recieved items and credited you accordingly.", RADIO_CHANNEL_SUPPLY)
+	updateUsrDialog()
 
 /obj/machinery/computer/market_link/proc/sell()
 	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -96,6 +97,7 @@
 			if(iscameramob(AM))
 				continue
 			if(!AM.anchored || istype(AM, /obj/vehicle/sealed/mecha))
+				bay_items -= AM
 				export_item_and_contents(AM, export_categories , dry_run = FALSE, external_report = ex)
 
 	if(ex.exported_atoms)

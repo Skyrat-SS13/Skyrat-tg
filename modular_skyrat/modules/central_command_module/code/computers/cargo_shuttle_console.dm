@@ -101,3 +101,5 @@
 		if("unlockdoors")
 			for(var/obj/machinery/door/airlock/iterating_airlock in SSshuttle.supply.shuttle_areas)
 				iterating_airlock.unbolt()
+
+		updateUsrDialog()

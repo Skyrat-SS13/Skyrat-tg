@@ -68,3 +68,10 @@
 	delete_after_roundstart = FALSE
 	jobspawn_override = TRUE
 
+/obj/structure/closet/pilot
+	name = "Pilots closet"
+	desc = "For the deck crewman that decides to take up piloting."
+
+/obj/structure/closet/pilot/PopulateContents()
+	new /obj/item/clothing/head/helmet/alt
+	new /obj/item/clothing/suit/armor/vest

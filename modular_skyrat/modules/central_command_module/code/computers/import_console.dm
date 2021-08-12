@@ -76,6 +76,7 @@ GLOBAL_LIST_EMPTY(cargo_control_consoles)
 			buy()
 			create_mail()
 			radio.talk_into(src, "NCV Titan has processed your purchase list, they will deliver it shortly.", RADIO_CHANNEL_SUPPLY)
+	updateUsrDialog()
 
 /obj/machinery/computer/cargo_control_console/proc/create_mail()
 	//Early return if there's no mail waiting to prevent taking up a slot. We also don't send mails on sundays or holidays.

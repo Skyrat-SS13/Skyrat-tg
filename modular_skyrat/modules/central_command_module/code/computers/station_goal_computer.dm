@@ -57,3 +57,4 @@
 			GLOB.station_goals += goal_to_set
 			goal_assigned = TRUE
 			break
+	updateUsrDialog()
