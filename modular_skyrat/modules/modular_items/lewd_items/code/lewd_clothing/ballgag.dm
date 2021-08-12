@@ -204,7 +204,7 @@
 //start choking when equipping gag
 /obj/item/clothing/mask/ballgag_phallic/equipped(mob/user, slot)
 	..()
-	var/mob/living/carbon/U = usr
+	var/mob/living/carbon/human/U = loc
 	if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
 		START_PROCESSING(SSobj, src)
 
@@ -217,21 +217,21 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/ballgag_phallic/process(delta_time)
-	var/mob/living/U = loc
+	var/mob/living/carbon/human/U = loc
 	tt += delta_time
 	if(tt >= time)
 		if(ballgag_size == "small")
 			U.adjustOxyLoss(rand(0, 2))
-			if(prob(30))
+			if(prob(15))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0
 		if(ballgag_size == "medium")
 			U.adjustOxyLoss(rand(0, 3))
-			if(prob(40))
+			if(prob(20))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0
 		if(ballgag_size == "big")
 			U.adjustOxyLoss(rand(1, 4))
-			if(prob(50))
+			if(prob(25))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0

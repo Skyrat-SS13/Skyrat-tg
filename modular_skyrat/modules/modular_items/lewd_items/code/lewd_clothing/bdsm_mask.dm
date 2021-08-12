@@ -21,7 +21,7 @@
 	var/mask_on = FALSE
 	var/current_mask_color = "pink"
 	var/breath_status = TRUE
-	var/time_to_choke = 6	// How long can breath hold
+	var/time_to_choke = 12	// How long can breath hold
 	var/time_to_choke_left	// Time left before start choking
 	var/time = 2			// Interval for emotes
 	var/tt					// Interval timer
