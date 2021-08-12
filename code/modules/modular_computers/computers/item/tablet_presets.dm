@@ -113,36 +113,48 @@
 
 //SKYRAT EDIT ADDITION BEGIN
 //Program presets for different types of cyborgs
-/obj/item/modular_computer/tablet/integrated/enginer/Initialize()
-	. = ..()
+/obj/item/modular_computer/tablet/integrated/proc/default_programs_install()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
+	hard_drive.store_file(new /datum/computer_file/program/crew_manifest)
+	return null
+
+/obj/item/modular_computer/tablet/integrated/proc/enginering_programs_install()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/power_monitor/integrated)
 	hard_drive.store_file(new /datum/computer_file/program/alarm_monitor)
 	hard_drive.store_file(new /datum/computer_file/program/supermatter_monitor)
+	return null
 	
-/obj/item/modular_computer/tablet/integrated/medical/Initialize()
-	. = ..()
+/obj/item/modular_computer/tablet/integrated/proc/medical_programs_install()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/radar/lifeline)
+	return null
 
-/obj/item/modular_computer/tablet/integrated/security/Initialize()
-	. = ..()
+/obj/item/modular_computer/tablet/integrated/proc/security_programs_install()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/secureye/integrated)
+	return null
 	
-/obj/item/modular_computer/tablet/integrated/service/Initialize()
-	. = ..()
+/obj/item/modular_computer/tablet/integrated/proc/service_programs_install()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/chatclient)
+	return null
 
-/obj/item/modular_computer/tablet/integrated/peacekeeper/Initialize()
-	. = ..()
+/obj/item/modular_computer/tablet/integrated/proc/peacekeeper_programs_install()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/radar/lifeline)
 	hard_drive.store_file(new /datum/computer_file/program/secureye/integrated)
+	return null
 
-/obj/item/modular_computer/tablet/integrated/clown/Initialize()
-	. = ..()
+/obj/item/modular_computer/tablet/integrated/proc/clown_programs_install()
 	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
 	hard_drive.store_file(new /datum/computer_file/program/chatclient)
+	return null
+
+/obj/item/modular_computer/tablet/integrated/proc/remove_module_programs()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive")
+	for (var/datum/computer_file/file in hard_drive.stored_files)
+		if (file.filename != "robotact" & file.filename != "filemanager" & file.filename != "compconfig" & file.filename != "plexagoncrew")
+			hard_drive.remove_file(file)
+	return null
 // SKYRAT EDIT ADDITION END
