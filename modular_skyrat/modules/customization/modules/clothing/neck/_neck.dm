@@ -66,3 +66,4 @@
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "capmantle"
+
