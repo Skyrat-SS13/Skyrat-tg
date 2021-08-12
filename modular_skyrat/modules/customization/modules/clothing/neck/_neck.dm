@@ -14,10 +14,9 @@
 
 /obj/item/clothing/neck/mantle/regal
 	name = "Regal Mantle"
-	desc = desc = "A colorful felt mantle. You feel posh just holding this thing."
+	desc = "A colorful felt mantle. You feel posh just holding this thing."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "regal-mantle"
-
 
 /obj/item/clothing/neck/mantle/hopmantle
 	name = "Head of Personnel's Mantle"
