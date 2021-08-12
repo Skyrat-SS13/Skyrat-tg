@@ -30,6 +30,7 @@
 	. = ..()
 	INVOKE_ASYNC(src, .proc/setup_visuals)
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR ZOMBIE.DM
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
 	var/datum/preferences/dummy_prefs = new
 	dummy_prefs.pref_species = new /datum/species/zombie
@@ -48,7 +49,7 @@
 	corpse.outfit = O
 	corpse.mob_species = /datum/species/zombie
 	corpse.mob_name = name
-
+*/
 /mob/living/simple_animal/hostile/zombie/AttackingTarget()
 	. = ..()
 	if(. && ishuman(target) && prob(infection_chance))

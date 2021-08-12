@@ -1,6 +1,6 @@
 /datum/species/unathi
 	name = "Unathi"
-	id = "unathi"
+	id = SPECIES_UNATHI
 	default_color = "4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
@@ -31,7 +31,7 @@
 	liked_food = GROSS | MEAT | FRIED
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_id = "lizard"
+	limbs_id = SPECIES_LIZARD
 
 /datum/species/unathi/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
