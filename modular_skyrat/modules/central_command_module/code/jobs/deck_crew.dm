@@ -47,9 +47,9 @@
 	id = /obj/item/card/id/advanced/centcom
 	belt = /obj/item/pda/nanotrasen_representative
 	glasses = /obj/item/clothing/glasses/sunglasses
-	ears = /obj/item/radio/headset/headset_cent/alt_with_Key
+	ears = /obj/item/radio/headset/headset_cent/alt_with_Key/cargo
 	gloves = /obj/item/clothing/gloves/color/black
-	uniform = /obj/item/clothing/under/utility/eng
+	uniform = /obj/item/clothing/under/utility/cargo
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/soft/enclave
 	back = /obj/item/storage/backpack/satchel/leather
@@ -61,6 +61,9 @@
 /datum/id_trim/centcom/deck_crew
 	access = list(ACCESS_CENT_GENERAL, ACCESS_CENT_LIVING, ACCESS_WEAPONS, ACCESS_CARGO, ACCESS_MAILSORTING)
 	assignment = "Deck Crewman"
+
+/obj/item/radio/headset/headset_cent/alt_with_Key/cargo
+	keyslot = /obj/item/encryptionkey/headset_cargo
 
 /obj/effect/landmark/start/deck_crew
 	name = "Deck Crewman"
