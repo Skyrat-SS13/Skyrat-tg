@@ -3372,8 +3372,10 @@ GLOBAL_LIST_INIT(food, list(
 
 /datum/preferences/proc/get_linguistic_points()
 	var/points
-	points = LINGUISTIC_POINTS_DEFAULT
-	points = (TRAIT_LINGUIST in all_quirks) ? points + LINGUISTIC_POINTS_LINGUIST : points
+	if("Linguist" in all_quirks)
+		points = LINGUISTIC_POINTS_LINGUIST
+	else
+		points = LINGUISTIC_POINTS_DEFAULT
 	for(var/langpath in languages)
 		points -= languages[langpath]
 	return points
