@@ -23,4 +23,3 @@
 /datum/loadout_item/neck/donator/mantle/regal
 	name = "Regal Mantle"
 	path = /obj/item/clothing/neck/mantle/regal
-	
