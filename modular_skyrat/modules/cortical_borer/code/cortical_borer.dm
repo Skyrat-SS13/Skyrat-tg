@@ -9,6 +9,36 @@
 	layer = BELOW_MOB_LAYER
 	///what chemicals borers know, starting with none
 	var/list/known_chemicals = list()
+	var/list/potential_chemicals = list(/datum/reagent/medicine/spaceacillin,
+										/datum/reagent/medicine/potass_iodide,
+										/datum/reagent/medicine/diphenhydramine,
+										/datum/reagent/medicine/epinephrine,
+										/datum/reagent/medicine/antihol,
+										/datum/reagent/medicine/haloperidol,
+										/datum/reagent/consumable/nutriment,
+										/datum/reagent/consumable/hell_ramen,
+										/datum/reagent/consumable/tearjuice,
+										/datum/reagent/drug/thc,
+										/datum/reagent/drug/quaalude,
+										/datum/reagent/drug/happiness,
+										/datum/reagent/consumable/tea,
+										/datum/reagent/consumable/hot_coco,
+										/datum/reagent/toxin/formaldehyde,
+										/datum/reagent/impurity/libitoil,
+										/datum/reagent/impurity/mannitol,
+										/datum/reagent/medicine/c2/libital,
+										/datum/reagent/medicine/c2/lenturi,
+										/datum/reagent/medicine/c2/convermol,
+										/datum/reagent/medicine/c2/seiver,
+										/datum/reagent/lithium,
+										/datum/reagent/consumable/orangejuice,
+										/datum/reagent/consumable/tomatojuice,
+										/datum/reagent/consumable/limejuice,
+										/datum/reagent/consumable/carrotjuice,
+										/datum/reagent/consumable/milk,
+										/datum/reagent/medicine/salglu_solution,
+										/datum/reagent/medicine/mutadone,
+	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
 	///the amount of "evolution" points a borer has for chemicals
@@ -22,26 +52,57 @@
 	///how fast chemicals are gained. Goes up only when inside a host
 	var/chemical_regen = 1
 	///the list of actions that the borer has
-	var/list/known_abilities = list(
+	var/list/known_abilities = list(/datum/action/cooldown/toggle_hiding,
+									/datum/action/cooldown/choosing_host,
+									/datum/action/cooldown/produce_offspring,
 
 	)
 	///the host
 	var/mob/living/carbon/human/human_host
+	var/timed_maturity = 0
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT) //they need to be able to move around
 
+/mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
+	. = ..()
+
+	if(!inside_human())
+		return
+
+	if(chemical_storage < max_chemical_storage)
+		chemical_storage = min(chemical_storage + chemical_regen, max_chemical_storage)
+
+	if(health < maxHealth)
+		health = min(health * 1.01, maxHealth)
+
+	if(timed_maturity < world.time)
+		timed_maturity = world.time + 1 SECONDS
+		maturity_age++
+
+	switch(maturity_age)
+		if(180) //every three minutes, which basically turns into 9 minutes
+			chemical_evolution++
+		if(360)
+			stat_evolution++
+		if(540)
+			maturity_age = 0
+
 /mob/living/simple_animal/cortical_borer/attack_ghost(mob/dead/observer/user)
 	. = ..()
 	if(mind)
 		return
-	var/choice = tgui_input_list(usr, "Do you want to controll [src]?", "Confirmation", list("Yes", "No"))
+	var/choice = tgui_input_list(usr, "Do you want to control [src]?", "Confirmation", list("Yes", "No"))
 	if(choice != "Yes")
 		return
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
 	key = user.key
 	mind = user.mind
+
+/datum/action/cooldown/upgrade_chemical
+	name = "Toggle Hiding"
+	cooldown_time = 1 SECONDS
 
 //go between either hiding behind tables or behind mobs
 /datum/action/cooldown/toggle_hiding
@@ -50,7 +111,7 @@
 
 /datum/action/cooldown/toggle_hiding/Trigger()
 	if(!IsAvailable())
-		to_chat(cortical_owner, span_warning("This action is still on cooldown!"))
+		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
 	if(!iscorticalborer(owner))
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
@@ -71,7 +132,7 @@
 
 /datum/action/cooldown/choosing_host/Trigger()
 	if(!IsAvailable())
-		to_chat(cortical_owner, span_warning("This action is still on cooldown!"))
+		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
 	if(!iscorticalborer(owner))
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
@@ -112,7 +173,7 @@
 
 /datum/action/cooldown/produce_offspring/Trigger()
 	if(!IsAvailable())
-		to_chat(cortical_owner, span_warning("This action is still on cooldown!"))
+		to_chat(owner, span_warning("This action is still on cooldown!"))
 		return
 	if(!iscorticalborer(owner))
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
