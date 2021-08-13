@@ -9,8 +9,8 @@
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
 	default_mutant_bodyparts = list(
-		"tail" = "none",
-		"ears" = "none"
+		"tail" = "None",
+		"ears" = "None"
 	)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
