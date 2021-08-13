@@ -1,6 +1,6 @@
 /datum/species/ghoul
 	name = "Ghoul"
-	id = "ghoul"
+	id = SPECIES_GHOUL
 	limbs_id = "ghoul"
 	say_mod = "rasps"
 	sexes = FALSE
@@ -8,6 +8,10 @@
 	species_traits = list(NOEYESPRITES, DYNCOLORS, AGENDER, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
+	default_mutant_bodyparts = list(
+		"tail" = "none",
+		"ears" = "none"
+	)
 	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
 		TRAIT_CAN_STRIP,
