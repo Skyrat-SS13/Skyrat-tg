@@ -23,7 +23,7 @@
 
 //Captain
 /obj/item/clothing/suit/captunic
-	name = "captain's parade tunic"
+	name = "captain's formal tunic"
 	desc = "Worn by a Captain to show their class."
 	icon_state = "captunic"
 	inhand_icon_state = "bio_suit"

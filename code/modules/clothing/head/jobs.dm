@@ -52,7 +52,7 @@
 
 //Captain: This is no longer space-worthy
 /obj/item/clothing/head/caphat/parade
-	name = "captain's parade cap"
+	name = "captain's formal cap"
 	desc = "Worn only by Captains with an abundance of class."
 	icon_state = "capcap"
 

@@ -136,17 +136,21 @@
 
 /obj/structure/closet/secure_closet/nanotrasen_representative/station/PopulateContents()
 	..()
-	new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
 	new /obj/item/storage/backpack/satchel/leather(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
-	new /obj/item/clothing/under/rank/nanotrasen_representative(src)
-	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
 	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/clothing/head/nanotrasen_representative(src)
-	new /obj/item/clothing/head/nanotrasen_representative/beret(src)
-	new /obj/item/clothing/head/beret/centcom_formal/ntrep(src)
+	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR // I know this is modular and I don't have to do this, but just let me live man.
+	/*
+	// new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
+	// new /obj/item/clothing/under/rank/nanotrasen_representative(src)
+	// new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
+	// new /obj/item/clothing/head/nanotrasen_representative(src)
+	// new /obj/item/clothing/head/nanotrasen_representative/beret(src)
+	// new /obj/item/clothing/head/beret/centcom_formal/ntrep(src)
+	*/
+	// SKYRAT EDIT REMOVAL END
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
@@ -155,9 +159,7 @@
 	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
 	new /obj/item/storage/photo_album/personal(src)
 	new /obj/item/bedsheet/centcom(src)
-	new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep(src)
+	// new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep(src)
-	new /obj/item/clothing/head/centhat(src)
-	new /obj/item/clothing/head/centcom_cap(src)
-
-
+	// new /obj/item/clothing/head/centhat(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	// new /obj/item/clothing/head/centcom_cap(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR

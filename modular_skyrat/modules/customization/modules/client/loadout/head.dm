@@ -253,19 +253,9 @@
 	restricted_desc = "Security and Command"
 	restricted_roles = list("Master At Arms","Investigative Officer","Security Medic","Security Sergeant","Security Officer","Civil Disputes Officer","Station Admiral", "Corporate Liasion", "Redshield", "Chief Master At Arms", "Chief Research Officer", "Deck Officer", "Chief Medical Officer", "Chief Engineering Officer")
 
-/datum/loadout_item/head/job/hos/imperial
-	name = "Head of security's navyblue beret"
-	path = /obj/item/clothing/head/hos/beret/navyhos
-	restricted_roles = list("Chief Master At Arms")
-
 /datum/loadout_item/head/job/navybluehoscap
 	name = "Chief Master At Arms's Naval Cap"
 	path = /obj/item/clothing/head/imperial/hos
-	restricted_roles = list("Chief Master At Arms")
-
-/datum/loadout_item/head/job/solhoscap
-	name = "Head of security's Sol Cap"
-	path = /obj/item/clothing/head/hos/peacekeeper/sol
 	restricted_roles = list("Chief Master At Arms")
 
 /datum/loadout_item/head/job/navyblueofficerberet
@@ -331,6 +321,8 @@
 	restricted_roles = list("Engine Technician", "Atmospheric Technician", "Chief Engineering Officer")
 	restricted_desc = "Engineering"
 
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/head/job/CE_beret
 	name = "Chief Engineering Officer's Beret"
 	path = /obj/item/clothing/head/beret/engi/ce
@@ -341,8 +333,9 @@
 	name = "Chief Engineering Officer's White Beret"
 	path = /obj/item/clothing/head/beret/engi/ce/alt
 	restricted_roles = list("Chief Engineering Officer")
-	restricted_desc = "Chief Engineering Officer"
-
+	restricted_desc = "Chief Engineer"
+*/
+// SKYRAT EDIT REMOVAL END
 /datum/loadout_item/head/job/med
 	name = "Medical Beret"
 	path = /obj/item/clothing/head/beret/medical
@@ -367,6 +360,8 @@
 	restricted_roles = list("Bioweapons Technician", "Chief Medical Officer")
 	restricted_desc = "Bioweapons Technicianry"
 
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/head/job/CMO_beret_alt
 	name = "Chief Medical Officer's Blue Beret"
 	path = /obj/item/clothing/head/beret/medical/cmo
@@ -378,7 +373,8 @@
 	path = /obj/item/clothing/head/beret/medical/cmo/alt
 	restricted_roles = list("Chief Medical Officer")
 	restricted_desc = "Chief Medical Officer"
-
+*/
+// SKYRAT EDIT REMOVAL END
 /datum/loadout_item/head/job/sci
 	name = "Scientist's Beret"
 	path = /obj/item/clothing/head/beret/science
@@ -391,6 +387,8 @@
 	restricted_roles = list("Roboticist", "Chief Research Officer")
 	restricted_desc = "Robotics"
 
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/head/job/RD_beret
 	name = "Chief Research Officer's Beret"
 	path = /obj/item/clothing/head/beret/science/fancy/rd
@@ -436,5 +434,5 @@
 /datum/loadout_item/head/job/HOP_beret_alt
 	name = "Corporate Liasion's White Beret"
 	path = /obj/item/clothing/head/hopcap/beret/alt
-	restricted_roles = list("Corporate Liasion")
-	restricted_desc = "Corporate Liasion"
+*/
+// SKYRAT EDIT REMOVAL END

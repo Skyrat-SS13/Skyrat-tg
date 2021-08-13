@@ -365,10 +365,14 @@
 	path = /obj/item/clothing/suit/hooded/wintercoat/miner
 	restricted_roles = list("Deck Officer", "Shaft Miner") // Reserve it to Miners and their boss, the Deck Officer
 
+// SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/suit/job/navybluejackethos
 	name = "head of security's navyblue jacket"
 	path = /obj/item/clothing/suit/armor/hos/navyblue
 	restricted_roles = list("Chief Master At Arms")
+*/
+// SKYRAT EDIT END
 
 /datum/loadout_item/suit/job/navybluejacketofficer
 	name = "security officer's navyblue jacket"
@@ -434,6 +438,8 @@
 	restricted_roles = list("Deck Officer", "Deck Crewman", "Shaft Miner")
 	restricted_desc = "All Cargo Personnel"
 
+// SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/suit/job/supply_head_jacket
 	name = "Deck Officer's Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/supply/head
@@ -445,6 +451,8 @@
 	path = /obj/item/clothing/suit/brownfurrich
 	restricted_roles = list("Deck Officer")
 	restricted_desc = "Deck Officer Only"
+*/
+// SKYRAT EDIT REMOVAL END
 
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
