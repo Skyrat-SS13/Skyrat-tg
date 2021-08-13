@@ -72,16 +72,27 @@
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT) //they need to be able to move around
 	name = "[initial(name)] ([rand(100,999)])"
 
+/mob/living/simple_animal/cortical_borer/death(gibbed)
+	if(inside_human())
+		var/turf/human_turf = get_turf(human_host)
+		forceMove(human_turf)
+	return ..()
+
 /mob/living/simple_animal/cortical_borer/get_status_tab_items()
 	. = ..()
 	. += "Chemical Storage: [chemical_storage]/[max_chemical_storage]"
 	. += "Chemical Evoltion Points: [chemical_evolution]"
 	. += "Stat Evolution Points: [stat_evolution]"
+	if(host_sugar())
+		. += "Sugar detected! Unable to generate resources!"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
 
 	if(!inside_human())
+		return
+
+	if(host_sugar())
 		return
 
 	if(chemical_storage < max_chemical_storage)
@@ -127,19 +138,24 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
 	if(!cortical_owner.chemical_evolution)
 		to_chat(owner, span_warning("You do not have any upgrade points for chemicals!"))
 		return
 	if(!cortical_owner.potential_chemicals.len)
 		to_chat(owner, span_warning("There are no more chemicals!"))
 		return
-	var/datum/reagent/reagent_choice = tgui_input_list(cortical_owner, "Choose a chemical to learn.", "Chemical Selection", cortical_owner.potential_chemicals)
+	var/reagent_choice = tgui_input_list(cortical_owner, "Choose a chemical to learn.", "Chemical Selection", cortical_owner.potential_chemicals)
 	if(!reagent_choice)
 		to_chat(owner, span_warning("No selection made!"))
 		return
 	cortical_owner.known_chemicals += reagent_choice
+	cortical_owner.potential_chemicals -= reagent_choice
 	cortical_owner.chemical_evolution--
-	to_chat(owner, span_notice("You have learned [reagent_choice]"))
+	var/datum/reagent/reagent_name = reagent_choice
+	to_chat(owner, span_notice("You have learned [reagent_name.name]"))
 	StartCooldown()
 
 //become stronger by affecting the stats
@@ -155,6 +171,9 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
 	if(!cortical_owner.stat_evolution)
 		to_chat(owner, span_warning("You do not have any upgrade points for stats!"))
 		return
@@ -212,6 +231,9 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
 	if(cortical_owner.human_host)
 		to_chat(cortical_owner, span_notice("You incite fear into your host."))
 		cortical_owner.human_host.Paralyze(10 SECONDS)
@@ -249,9 +271,23 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
 	if(!cortical_owner.human_host)
 		to_chat(owner, span_warning("You must have a host to check blood!"))
 		return
+	var/message = ""
+	message += "Brute: [cortical_owner.human_host.getBruteLoss()]"
+	message += "Fire: [cortical_owner.human_host.getFireLoss()]"
+	message += "Toxin: [cortical_owner.human_host.getToxLoss()]"
+	message += "Oxygen: [cortical_owner.human_host.getOxyLoss()]"
+	var/reagent_message = "Current Reagents:"
+	for(var/check_reagents in cortical_owner.human_host.reagents.reagent_list)
+		var/datum/reagent/reagent_name = check_reagents
+		reagent_message += reagent_name.name
+	message += reagent_message
+	StartCooldown()
 
 //to either get inside, or out, of a host
 /datum/action/cooldown/choosing_host
@@ -307,6 +343,9 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
 	if(!ishuman(cortical_owner.loc))
 		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
 		return
@@ -331,6 +370,11 @@
 		return FALSE
 	return TRUE
 
+/mob/living/simple_animal/cortical_borer/proc/host_sugar()
+	if(human_host?.reagents?.has_reagent(/datum/reagent/consumable/sugar))
+		return TRUE
+	return FALSE
+
 //borers should not be emoting
 /mob/living/simple_animal/cortical_borer/emote(act, m_type, message, intentional, force_silence)
 	to_chat(src, span_warning("You are not able to emote!"))
@@ -340,6 +384,10 @@
 /mob/living/simple_animal/cortical_borer/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
 	if(!inside_human())
 		to_chat(src, span_warning("You are not able to speak without a host!"))
+		return
+	if(host_sugar())
+		to_chat(src, span_warning("Sugar inhibits your abilities to function!"))
+		to_chat(human_host, span_notice("You start to feel some squirming inside of you..."))
 		return
 	message = sanitize(message)
 	to_chat(human_host, span_noticealien("[name] telepathically says: [message]"))
