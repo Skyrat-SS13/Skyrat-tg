@@ -56,8 +56,13 @@ Difficulty: Extremely Hard
 	. = ..()
 	for(var/obj/structure/frost_miner_prism/prism_to_set in GLOB.frost_miner_prisms)
 		prism_to_set.set_prism_light(LIGHT_COLOR_BLUE, 5)
+<<<<<<< HEAD
 	AddComponent(/datum/component/knockback, 7, FALSE, TRUE)
 	AddComponent(/datum/component/lifesteal, 50)
+=======
+	AddElement(/datum/element/knockback, 7, FALSE, TRUE)
+	AddElement(/datum/element/lifesteal, 50)
+>>>>>>> d79c0039629 (knockback component to element. (#60633))
 
 /datum/action/innate/megafauna_attack/frost_orbs
 	name = "Fire Frost Orbs"
@@ -365,8 +370,13 @@ Difficulty: Extremely Hard
 
 /obj/item/pickaxe/drill/jackhammer/demonic/Initialize()
 	. = ..()
+<<<<<<< HEAD
 	AddComponent(/datum/component/knockback, 4, TRUE, FALSE)
 	AddComponent(/datum/component/lifesteal, 5)
+=======
+	AddElement(/datum/element/knockback, 4, TRUE, FALSE)
+	AddElement(/datum/element/lifesteal, 5)
+>>>>>>> d79c0039629 (knockback component to element. (#60633))
 
 /obj/item/pickaxe/drill/jackhammer/demonic/use_tool(atom/target, mob/living/user, delay, amount=0, volume=0, datum/callback/extra_checks)
 	var/turf/T = get_turf(target)
