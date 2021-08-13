@@ -52,3 +52,12 @@
 /obj/item/clothing/under/syndicate
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+
+///////////////////////////////////////////////////////////////////////SYNDIE HELMETS
+/obj/item/clothing/head/helmet/space/hardsuit/syndi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+
+/obj/item/clothing/head/helmet/space/hardsuit/syndi/elite
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
