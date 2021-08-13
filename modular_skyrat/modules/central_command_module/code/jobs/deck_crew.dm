@@ -2,11 +2,11 @@
 /datum/job/deck_crew
 	title = "Deck Crewman"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Fleet Admiral", "Bridge Officer")
+	department_head = list("Fleetmaster", "Bridge Officer")
 	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "Fleet Admiral"
+	supervisors = "Fleetmaster"
 	selection_color = "#6969f8"
 	req_admin_notify = 1
 	minimal_player_age = 14

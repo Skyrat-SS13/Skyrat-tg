@@ -1,5 +1,5 @@
-/datum/job/fleet_admiral
-	title = "Fleet Admiral"
+/datum/job/fleetmaster
+	title = "Fleetmaster"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("Nanotrasen Fleet Command")
 	faction = FACTION_STATION
@@ -14,7 +14,7 @@
 	exp_required_type_department = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
 
-	outfit = /datum/outfit/job/fleet_admiral
+	outfit = /datum/outfit/job/fleetmaster
 	plasmaman_outfit = /datum/outfit/plasmaman/centcom_commander
 
 	paycheck = PAYCHECK_NANOTRASEN_FLEET_COMMAND
@@ -22,7 +22,7 @@
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
-	display_order = JOB_DISPLAY_ORDER_FLEET_ADMIRAL
+	display_order = JOB_DISPLAY_ORDER_fleetmaster
 	departments_list = list(
 		/datum/job_department/command,
 		/datum/job_department/nanotrasen_fleet_command,
@@ -43,13 +43,13 @@
 	veteran_only = TRUE
 
 
-/datum/job/fleet_admiral/get_captaincy_announcement(mob/living/captain)
+/datum/job/fleetmaster/get_captaincy_announcement(mob/living/captain)
 	return "Admiral [captain.real_name] on deck!"
 
-/datum/outfit/job/fleet_admiral
-	name = "Fleet Admiral"
+/datum/outfit/job/fleetmaster
+	name = "Fleetmaster"
 
-	jobtype = /datum/job/fleet_admiral
+	jobtype = /datum/job/fleetmaster
 
 	implants = list(/obj/item/implant/mindshield)
 
@@ -74,19 +74,19 @@
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/centcom)
 
-	id_trim = /datum/id_trim/centcom/fleet_admiral
+	id_trim = /datum/id_trim/centcom/fleetmaster
 
 
-/datum/id_trim/centcom/fleet_admiral
-	assignment = "Fleet Admiral"
+/datum/id_trim/centcom/fleetmaster
+	assignment = "Fleetmaster"
 
-/datum/id_trim/centcom/fleet_admiral/New()
+/datum/id_trim/centcom/fleetmaster/New()
 	. = ..()
 
 	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
 
-/obj/effect/landmark/start/fleet_admiral
-	name = "Fleet Admiral"
+/obj/effect/landmark/start/fleetmaster
+	name = "Fleetmaster"
 	icon_state = "Captain"
 	delete_after_roundstart = FALSE
 	jobspawn_override = TRUE

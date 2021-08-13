@@ -1,11 +1,11 @@
 /datum/job/bridge_officer
 	title = "Bridge Officer"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Fleet Admiral")
+	department_head = list("Fleetmaster")
 	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "Fleet Admiral"
+	supervisors = "Fleetmaster"
 	selection_color = "#6969f8"
 	req_admin_notify = 1
 	minimal_player_age = 14
