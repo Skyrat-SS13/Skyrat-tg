@@ -1,6 +1,6 @@
 /datum/species/monkey
 	name = "Monkey"
-	id = "monkey"
+	id = SPECIES_MONKEY
 	say_mod = "chimpers"
 	attack_verb = "bite"
 	attack_effect = ATTACK_EFFECT_BITE
@@ -10,6 +10,7 @@
 	mutant_bodyparts = list("tail_monkey" = "Monkey")
 	skinned_type = /obj/item/stack/sheet/animalhide/monkey
 	meat = /obj/item/food/meat/slab/monkey
+	allowed_animal_origin = MONKEY_BODY
 	knife_butcher_results = list(/obj/item/food/meat/slab/monkey = 5, /obj/item/stack/sheet/animalhide/monkey = 1)
 	species_traits = list(HAS_FLESH,HAS_BONE,NO_UNDERWEAR,LIPS,NOEYESPRITES,NOBLOODOVERLAY,NOTRANSSTING, NOAUGMENTS)
 	inherent_traits = list(
@@ -23,8 +24,8 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN | SLIME_EXTRACT
 	liked_food = MEAT | FRUIT
 	disliked_food = CLOTH
-	limbs_id = "monkey"
-	damage_overlay_type = "monkey"
+	limbs_id = SPECIES_MONKEY
+	damage_overlay_type = SPECIES_MONKEY
 	sexes = FALSE
 	punchdamagelow = 1
 	punchdamagehigh = 3
@@ -41,6 +42,7 @@
 	gib_anim = "gibbed-m"
 
 	payday_modifier = 1.5
+
 
 
 /datum/species/monkey/random_name(gender,unique,lastname)

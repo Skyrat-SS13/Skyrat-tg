@@ -3,13 +3,24 @@
 // HEAD OF SECURITY
 
 /obj/item/clothing/under/rank/security/head_of_security/parade
-	name = "head of security's male parade uniform"
+	name = "head of security's male formal uniform"
 	desc = "A luxurious uniform for the head of security, woven in a deep red. On the lapel is a small pin in the shape of a deer's head."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "hos_parade_male"
 	inhand_icon_state = "hos_parade_male"
 	can_adjust = FALSE
+
+/obj/item/clothing/suit/armor/hos/parade
+	name = "head of security's parade jacket"
+	desc = "A luxurious deep red jacket for the head of security, woven with a golden trim. It smells of gunpowder and authority."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "hos_parade"
+	inhand_icon_state = "hos_parade"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	heat_protection = CHEST|GROIN|ARMS
 
 /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
 	name = "sol chief of police uniform"
