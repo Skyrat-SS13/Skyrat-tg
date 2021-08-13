@@ -34,7 +34,7 @@
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
 
 /obj/item/clothing/suit/armor
-	mutant_variants = NONE
+	mutant_variants = STYLE_VOX
 
 /obj/item/clothing/under/color/jumpskirt
 	mutant_variants = NONE

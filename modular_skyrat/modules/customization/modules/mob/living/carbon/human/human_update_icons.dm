@@ -151,7 +151,7 @@
 		var/applied_styles = NONE
 		if((shoes.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
 			applied_styles = STYLE_VOX
-			icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/shoes.dmi'
+			icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/feet.dmi'
 		else if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
 			applied_styles = STYLE_DIGITIGRADE
 			icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
@@ -194,7 +194,7 @@
 		var/applied_styles = NONE
 		if((gloves.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
 			applied_styles = STYLE_VOX
-			icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/gloves.dmi'
+			icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/hands.dmi'
 
 		overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/hands.dmi', override_icon = icon_file, mutant_styles = applied_styles)
 		gloves_overlay = overlays_standing[GLOVES_LAYER]
