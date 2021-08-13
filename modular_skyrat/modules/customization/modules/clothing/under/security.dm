@@ -3,7 +3,7 @@
 // HEAD OF SECURITY
 
 /obj/item/clothing/under/rank/security/head_of_security/parade
-	name = "head of security's male parade uniform"
+	name = "head of security's male formal uniform"
 	desc = "A luxurious uniform for the head of security, woven in a deep red. On the lapel is a small pin in the shape of a deer's head."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
