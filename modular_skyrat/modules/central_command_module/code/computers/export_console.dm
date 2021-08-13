@@ -70,6 +70,7 @@
 			if(!SSshuttle.supply.manual_operation)
 				say("Manual shuttle operation required.")
 				return
+			bay_items.Cut()
 			for(var/place in possible_areas)
 				var/area/centcom/ncvtitan/export_bay/exporting_bay = place
 				for(var/atom/movable/moveable_atom in exporting_bay)

@@ -78,7 +78,7 @@
 				say("Autopilot system in cooldown.")
 				return
 			SSshuttle.supply.manual_operation = !SSshuttle.supply.manual_operation
-			say("Autopilot [SSshuttle.supply.manual_operation ? "engaged" : "disengaged"].")
+			say("Autopilot [SSshuttle.supply.manual_operation ? "disengaged" : "engaged"].")
 			minor_announce("Cargo shuttle is now in [SSshuttle.supply.manual_operation ? "manual" : "automatic"] operation.", "Cargo Shuttle")
 			last_autopilot_change = world.time
 		if("takeoff")
