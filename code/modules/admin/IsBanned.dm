@@ -96,7 +96,11 @@
 				This ban (BanID #[i["id"]]) was applied by [i["admin_key"]] on [i["bantime"]] during round ID [i["round_id"]].
 				[global_ban]
 				[expires]"}
+<<<<<<< HEAD
 				log_access("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]]) [text2num(i["global_ban"]) ? "globally" : "locally"]") //SKYRAT EDIT CHANGE - MULTISERVER
+=======
+				log_suspicious_login("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]])")
+>>>>>>> dc5158324bd (Adds new config flag to mirror logging of suspicious failed logins to its own file (#60791))
 				return list("reason"="Banned","desc"="[desc]")
 	if (admin)
 		if (GLOB.directory[ckey])
@@ -229,7 +233,7 @@
 
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis ban was applied by [ban["admin"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)
-		log_access("Failed Login: [key] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
+		log_suspicious_login("Failed Login: [key] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
 
 	return .
 
