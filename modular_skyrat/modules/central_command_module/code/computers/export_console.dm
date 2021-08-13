@@ -99,6 +99,9 @@
 	for(var/place in possible_areas)
 		var/area/centcom/ncvtitan/export_bay/exporting_bay = place
 		for(var/atom/movable/AM in exporting_bay)
+			if(isliving(AM))
+				say("Biological material detected in export area. Halting.")
+				return
 			if(iscameramob(AM))
 				continue
 			if(!AM.anchored || istype(AM, /obj/vehicle/sealed/mecha))
