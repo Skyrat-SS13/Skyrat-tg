@@ -220,6 +220,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	for(var/place in shuttle_areas)
 		var/area/shuttle/shuttle_area = place
+		if(istype(place, /area/shuttle/supply/cockpit))
+			continue
 		for(var/atom/movable/AM in shuttle_area)
 			if(iscameramob(AM))
 				continue
