@@ -235,6 +235,7 @@
 	hallucination.cleanup()
 	QDEL_NULL(hallucination2)
 
+/* SKYRAT CHANGE, MOVED TO MODULAR.
 ///Nicotine
 /datum/addiction/nicotine
 	name = "nicotine"
@@ -259,3 +260,4 @@
 	affected_carbon.Jitter(15 * delta_time)
 	if(DT_PROB(15, delta_time))
 		affected_carbon.emote("cough")
+*/

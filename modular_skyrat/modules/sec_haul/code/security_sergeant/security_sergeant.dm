@@ -47,7 +47,7 @@
 
 	suit_store = /obj/item/gun/energy/disabler
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm)
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
