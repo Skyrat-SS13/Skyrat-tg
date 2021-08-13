@@ -31,6 +31,7 @@
 	var/world_check = 0
 	//the variable that stops spamming
 	var/in_use = FALSE
+	var/primitive = FALSE
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
@@ -45,6 +46,9 @@
 /obj/structure/reagent_forge/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	if(is_mining_level(z))
+		primitive = TRUE
+		icon_state = "primitive_forge_empty"
 
 /obj/structure/reagent_forge/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -71,10 +75,16 @@
 		forge_temperature += 5
 
 	if(forge_temperature > 0)
-		icon_state = "forge_full"
+		if(primitive)
+			icon_state = "primitive_forge_full"
+		else
+			icon_state = "forge_full"
 		light_range = 3
 	else if(forge_temperature <= 0)
-		icon_state = "forge_empty"
+		if(primitive)
+			icon_state = "primitive_forge_empty"
+		else
+			icon_state = "forge_empty"
 		light_range = 0
 
 /obj/structure/reagent_forge/proc/check_in_use()
