@@ -49,7 +49,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_cent/alt_with_Key/cargo
 	gloves = /obj/item/clothing/gloves/color/black
-	uniform = /obj/item/clothing/under/utility/cargo
+	uniform = /obj/item/clothing/under/utility/eng
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/soft/enclave
 	back = /obj/item/storage/backpack/satchel/leather
@@ -63,7 +63,7 @@
 	assignment = "Deck Crewman"
 
 /obj/item/radio/headset/headset_cent/alt_with_Key/cargo
-	keyslot = /obj/item/encryptionkey/headset_cargo
+	keyslot = new /obj/item/encryptionkey/headset_cargo
 
 /obj/effect/landmark/start/deck_crew
 	name = "Deck Crewman"
