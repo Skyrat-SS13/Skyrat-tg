@@ -49,7 +49,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/headset_cent/alt_with_Key/cargo
 	gloves = /obj/item/clothing/gloves/color/black
-	uniform = /obj/item/clothing/under/utility/eng
+	uniform = /obj/item/clothing/under/utility/cargo
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/soft/enclave
 	back = /obj/item/storage/backpack/satchel/leather
