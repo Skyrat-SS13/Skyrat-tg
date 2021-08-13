@@ -22,7 +22,7 @@
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
-	display_order = JOB_DISPLAY_ORDER_fleetmaster
+	display_order = JOB_DISPLAY_ORDER_FLEETMASTER
 	departments_list = list(
 		/datum/job_department/command,
 		/datum/job_department/nanotrasen_fleet_command,
