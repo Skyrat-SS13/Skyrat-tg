@@ -1,3 +1,11 @@
+GLOBAL_LIST_EMPTY(cortical_borers)
+
+/mob/living/carbon/human/proc/has_borer()
+	for(var/check_content in contents)
+		if(iscorticalborer(check_content))
+			return check_content
+	return FALSE
+
 /mob/living/simple_animal/cortical_borer
 	name = "cortical borer"
 	desc = "A slimy creature that is known to go into the ear canal of unsuspecting victims."
@@ -66,16 +74,21 @@
 	var/timed_maturity = 0
 	///multiplies the current health up to the max health
 	var/health_regen = 1.01
+	var/obj/item/reagent_containers/reagent_holder
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT) //they need to be able to move around
 	name = "[initial(name)] ([rand(100,999)])"
+	GLOB.cortical_borers += src
+	reagent_holder = new /obj/item/reagent_containers(src)
 
 /mob/living/simple_animal/cortical_borer/death(gibbed)
 	if(inside_human())
 		var/turf/human_turf = get_turf(human_host)
 		forceMove(human_turf)
+	GLOB.cortical_borers -= src
+	qdel(reagent_holder)
 	return ..()
 
 /mob/living/simple_animal/cortical_borer/get_status_tab_items()
@@ -124,6 +137,34 @@
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
 	key = user.key
 	mind = user.mind
+
+/datum/action/cooldown/inject_chemical
+	name = "Inject Chemical (10 chemicals)"
+	cooldown_time = 1 SECONDS
+
+/datum/action/cooldown/inject_chemical/Trigger()
+	if(!IsAvailable())
+		to_chat(owner, span_warning("This action is still on cooldown!"))
+		return
+	if(!iscorticalborer(owner))
+		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
+		return
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(!cortical_owner.human_host)
+		to_chat(cortical_owner, span_warning("You need a host in order to use this ability!"))
+		return
+	if(cortical_owner.host_sugar())
+		to_chat(cortical_owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
+	if(cortical_owner.chemical_storage < 10)
+		to_chat(cortical_owner, span_warning("You require at least 10 chemical units to inject a chemical!"))
+		return
+	var/choice = tgui_input_list(cortical_owner, "Choose a chemical to inject!", "Chemical Selection", cortical_owner.known_chemicals)
+	if(!choice)
+		to_chat(cortical_owner, span_warning("No selection made!"))
+		return
+	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5)
+	cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, 30, methods = INGEST)
 
 //become stronger by learning new chemicals
 /datum/action/cooldown/upgrade_chemical
@@ -380,6 +421,10 @@
 	to_chat(src, span_warning("You are not able to emote!"))
 	return FALSE
 
+/mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
+	to_chat(src, span_warning("You are not able to whisper!"))
+	return FALSE
+
 //borers should not be talking without a host at least
 /mob/living/simple_animal/cortical_borer/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
 	if(!inside_human())
@@ -387,7 +432,14 @@
 		return
 	if(host_sugar())
 		to_chat(src, span_warning("Sugar inhibits your abilities to function!"))
-		to_chat(human_host, span_notice("You start to feel some squirming inside of you..."))
 		return
 	message = sanitize(message)
-	to_chat(human_host, span_noticealien("[name] telepathically says: [message]"))
+	var/list/split_message = splittext(message, "")
+	if(split_message[1] == ";")
+		message = copytext(message, 2)
+		for(var/borer in GLOB.cortical_borers)
+			to_chat(borer, span_noticealien("Cortical Link: [name] sings, \"[message]\""))
+		for(var/mob/dead_mob in GLOB.dead_mob_list)
+			to_chat(dead_mob, span_noticealien("Cortical Link: [name] sings, \"[message]\""))
+		return
+	to_chat(human_host, span_noticealien("Cortical Link: [name] sings, \"[message]\""))
