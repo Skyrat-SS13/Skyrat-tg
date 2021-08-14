@@ -20,4 +20,5 @@ N/A
 
 ### Credits:
 
-Jake Park
+Jake Park - Code
+/vg/station - Partial Icons
