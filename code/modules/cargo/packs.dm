@@ -612,7 +612,7 @@
 /datum/supply_pack/security/armory/russian
 	name = "Russian Surplus Crate"
 	desc = "Hello Comrade, we have the most modern russian military equipment the black market can offer, for the right price of course. Sadly we couldnt remove the lock so it requires Armory access to open."
-	cost = CARGO_CRATE_VALUE * 12
+	cost = CARGO_CRATE_VALUE * 6 //SKYRAT EDIT - ORIGINAL: cost = CARGO_CRATE_VALUE * 12
 	contraband = TRUE
 	contains = list(/obj/item/food/rationpack,
 					/obj/item/ammo_box/a762,
