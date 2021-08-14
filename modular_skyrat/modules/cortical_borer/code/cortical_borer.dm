@@ -6,18 +6,18 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			return check_content
 	return FALSE
 
-/obj/machinery/door/Bumped(atom/movable/AM)
-	if(iscorticalborer(AM) && density)
-		if(!do_after(AM, 5 SECONDS, src))
+/obj/machinery/door/Bumped(atom/movable/movable_atom)
+	if(iscorticalborer(movable_atom) && density)
+		if(!do_after(movable_atom, 5 SECONDS, src))
 			return ..()
-		AM.forceMove(get_turf(src))
-		to_chat(AM, span_notice("You squeeze through [src]."))
+		movable_atom.forceMove(get_turf(src))
+		to_chat(movable_atom, span_notice("You squeeze through [src]."))
 		return
 	return ..()
 
-/obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
+/obj/item/organ/brain/Remove(mob/living/carbon/target, special = 0, no_id_transfer = FALSE)
 	. = ..()
-	var/mob/living/simple_animal/cortical_borer/cb_inside = C.has_borer()
+	var/mob/living/simple_animal/cortical_borer/cb_inside = target.has_borer()
 	if(cb_inside)
 		cb_inside.leave_host()
 
@@ -493,11 +493,14 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
 		return
 	if(cortical_owner.chemical_storage < 200)
-		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can reproduce!"))
+		to_chat(cortical_owner, span_warning("You require at least 200 chemical units before you can reproduce!"))
 		return
 	cortical_owner.chemical_storage -= 200
-	cortical_owner.human_host.revive(full_heal = TRUE) //lets not heal all the way, but do it from the start
-	cortical_owner.human_host.adjustBruteLoss(cortical_owner.human_host.maxHealth * 0.5) //do 50 percent of their full health
+	cortical_owner.human_host.adjustBruteLoss(-(cortical_owner.human_host.getBruteLoss()/4))
+	cortical_owner.human_host.adjustToxLoss(-(cortical_owner.human_host.getToxLoss()/4))
+	cortical_owner.human_host.adjustFireLoss(-(cortical_owner.human_host.getFireLoss()/4))
+	cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()/4))
+	cortical_owner.human_host.revive()
 	StartCooldown()
 
 //check if we are inside a human
