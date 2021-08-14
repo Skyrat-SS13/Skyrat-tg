@@ -626,9 +626,8 @@
 					/obj/item/clothing/under/costume/soviet,
 					/obj/item/clothing/mask/russian_balaclava,
 					/obj/item/clothing/head/helmet/rus_ushanka,
-					/obj/item/clothing/suit/armor/vest/russian_coat,
-					/obj/item/gun/ballistic/rifle/boltaction,
-					/obj/item/gun/ballistic/rifle/boltaction)
+					/obj/item/clothing/suit/armor/vest/russian_coat)
+					//SKYRAT EDIT: REMOVAL - Removed /obj/item/gun/ballistic/rifle/boltaction
 	crate_name = "surplus military crate"
 
 /datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/C)
