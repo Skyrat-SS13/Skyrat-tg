@@ -26,6 +26,8 @@
 
 	var/clothing_flags = NONE
 
+	var/moth_edible = TRUE //Added it because moths were able to eat fucking vibrators. Fucking moths.
+
 	var/can_be_bloody = TRUE
 
 	/// What items can be consumed to repair this clothing (must by an /obj/item/stack)
@@ -125,11 +127,12 @@
 /obj/item/clothing/attack(mob/living/M, mob/living/user, params)
 	if(user.combat_mode || !ismoth(M))
 		return ..()
-	if(isnull(moth_snack))
-		moth_snack = new
-		moth_snack.name = name
-		moth_snack.clothing = WEAKREF(src)
-	moth_snack.attack(M, user, params)
+	if(moth_edible == TRUE)
+		if(isnull(moth_snack))
+			moth_snack = new
+			moth_snack.name = name
+			moth_snack.clothing = WEAKREF(src)
+		moth_snack.attack(M, user, params)
 
 /obj/item/clothing/attackby(obj/item/W, mob/user, params)
 	if(!istype(W, repairable_by))
