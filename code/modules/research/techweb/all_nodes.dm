@@ -813,6 +813,7 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"borg_upgrade_shrink",
+		"borg_upgrade_ewelder",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
