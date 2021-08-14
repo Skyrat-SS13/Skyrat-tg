@@ -151,3 +151,45 @@
 	path = /obj/item/clothing/neck/tie/disco
 	restricted_roles = list("Investigative Officer")
 	restricted_desc = "Stunning Noir Heroes"
+
+//MANTLES
+
+/datum/loadout_item/neck/mantle
+	name = "Mantle"
+	path = /obj/item/clothing/neck/mantle
+
+/datum/loadout_item/neck/mantle/hopmantle
+	name = "Head of Personnel's Mantle"
+	path = /obj/item/clothing/neck/mantle/hopmantle
+	restricted_roles = list("Corporate Liasion")
+
+/datum/loadout_item/neck/mantle/cmomantle
+	name = "Chief Medical Officer's Mantle"
+	path = /obj/item/clothing/neck/mantle/cmomantle
+	restricted_roles = list("Chief Medical Officer")
+
+/datum/loadout_item/neck/mantle/rdmantle
+	name = "Research Director's Mantle"
+	path = /obj/item/clothing/neck/mantle/rdmantle
+	restricted_roles = list("Chief Research Officer")
+
+/datum/loadout_item/neck/mantle/cemantle
+	name = "Chief Engineer's Mantle"
+	path = /obj/item/clothing/neck/mantle/cemantle
+	restricted_roles = list("Chief Engineering Officer")
+
+/datum/loadout_item/neck/mantle/hosmantle
+	name = "Head of Security's Mantle"
+	path = /obj/item/clothing/neck/mantle/hosmantle
+	restricted_roles = list("Chief Master At Arms")
+
+/datum/loadout_item/neck/mantle/bsmantle
+	name = "Blueshield's Mantle"
+	path = /obj/item/clothing/neck/mantle/bsmantle
+	restricted_roles = list("Redshield")
+
+/datum/loadout_item/neck/mantle/capmantle
+	name = "Captain's Mantle"
+	path = /obj/item/clothing/neck/mantle/capmantle
+	restricted_roles = list("Station Admiral")
+  
