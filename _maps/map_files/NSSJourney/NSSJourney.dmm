@@ -11294,6 +11294,10 @@
 "aTN" = (
 /obj/structure/table,
 /obj/item/kitchen/rollingpin,
+/obj/item/stack/package_wrap,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	layer = 5
+	},
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "aTO" = (
@@ -11808,11 +11812,7 @@
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "aVB" = (
-/obj/structure/table,
-/obj/item/reagent_containers/food/condiment/enzyme{
-	layer = 5
-	},
-/obj/item/stack/package_wrap,
+/obj/machinery/oven,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
 "aVD" = (
@@ -40410,16 +40410,7 @@
 /turf/open/floor/plating,
 /area/construction)
 "gWI" = (
-/obj/structure/table,
-/obj/item/reagent_containers/food/condiment/saltshaker{
-	pixel_x = -3;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/food/condiment/peppermill{
-	dir = 1;
-	pixel_x = 3;
-	pixel_y = 9
-	},
+/obj/machinery/oven,
 /turf/open/floor/iron/kitchen,
 /area/security/prison)
 "gWZ" = (
@@ -42875,6 +42866,15 @@
 /obj/structure/table,
 /obj/effect/turf_decal/stripes/end{
 	dir = 1
+	},
+/obj/item/reagent_containers/food/condiment/peppermill{
+	dir = 1;
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -3;
+	pixel_y = 9
 	},
 /turf/open/floor/iron/dark,
 /area/security/prison)
