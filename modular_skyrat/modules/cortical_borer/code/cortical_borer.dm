@@ -547,6 +547,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		return
 	to_chat(human_host, span_noticealien("Cortical Link: [src] sings, \"[message]\""))
 	to_chat(src, span_noticealien("Cortical Link: [src] sings, \"[message]\""))
+	for(var/mob/dead_mob in GLOB.dead_mob_list)
+		to_chat(dead_mob, span_noticealien("Cortical Hivemind: [src] sings to [human_host], \"[message]\""))
 
 /datum/antagonist/cortical_borer
 	name = "Cortical Borer"
