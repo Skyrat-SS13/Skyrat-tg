@@ -1,20 +1,43 @@
 GLOBAL_LIST_EMPTY(cortical_borers)
 
-/mob/living/carbon/human/proc/has_borer()
+/mob/proc/has_borer()
 	for(var/check_content in contents)
 		if(iscorticalborer(check_content))
 			return check_content
 	return FALSE
 
+/obj/machinery/door/Bumped(atom/movable/AM)
+	if(iscorticalborer(AM) && density)
+		if(!do_after(AM, 5 SECONDS, src))
+			return ..()
+		AM.forceMove(get_turf(src))
+		to_chat(AM, span_notice("You squeeze through [src]."))
+		return
+	return ..()
+
+/obj/item/organ/brain/Remove(mob/living/carbon/C, special = 0, no_id_transfer = FALSE)
+	. = ..()
+	var/mob/living/simple_animal/cortical_borer/cb_inside = C.has_borer()
+	if(cb_inside)
+		cb_inside.leave_host()
+
 /mob/living/simple_animal/cortical_borer
 	name = "cortical borer"
 	desc = "A slimy creature that is known to go into the ear canal of unsuspecting victims."
+	icon = 'modular_skyrat/modules/cortical_borer/icons/animal.dmi'
+	icon_state = "brainslug"
+	icon_living = "brainslug"
+	icon_dead = "brainslug_dead"
 	maxHealth = 50
 	health = 50
 	//they need to be able to pass tables and mobs
 	pass_flags = PASSTABLE | PASSMOB
 	//they are below mobs, or below tables
 	layer = BELOW_MOB_LAYER
+	//corticals are tiny
+	mob_size = MOB_SIZE_TINY
+	//because they are small, why can't they be held?
+	can_be_held = TRUE
 	///what chemicals borers know, starting with none
 	var/list/known_chemicals = list()
 	///what chemicals the borer can learn
@@ -49,6 +72,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/medicine/mutadone,
 										/datum/reagent/toxin/heparin,
 										/datum/reagent/consumable/ethanol/beer,
+										/datum/reagent/medicine/mannitol,
+										/datum/reagent/drug/methamphetamine,
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
@@ -66,7 +91,12 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/list/known_abilities = list(/datum/action/cooldown/toggle_hiding,
 									/datum/action/cooldown/choosing_host,
 									/datum/action/cooldown/produce_offspring,
-
+									/datum/action/cooldown/inject_chemical,
+									/datum/action/cooldown/upgrade_chemical,
+									/datum/action/cooldown/upgrade_stat,
+									/datum/action/cooldown/fear_human,
+									/datum/action/cooldown/check_blood,
+									/datum/action/cooldown/revive_host,
 	)
 	///the host
 	var/mob/living/carbon/human/human_host
@@ -75,6 +105,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	///multiplies the current health up to the max health
 	var/health_regen = 1.01
 	var/obj/item/reagent_containers/reagent_holder
+	var/taken_over = FALSE
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -82,12 +113,16 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	name = "[initial(name)] ([rand(100,999)])"
 	GLOB.cortical_borers += src
 	reagent_holder = new /obj/item/reagent_containers(src)
+	for(var/action_type in known_abilities)
+		var/datum/action/attack_action = new action_type()
+		attack_action.Grant(src)
 
 /mob/living/simple_animal/cortical_borer/death(gibbed)
 	if(inside_human())
 		var/turf/human_turf = get_turf(human_host)
 		forceMove(human_turf)
 	GLOB.cortical_borers -= src
+	mind.remove_all_antag_datums()
 	qdel(reagent_holder)
 	return ..()
 
@@ -129,18 +164,23 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 //if it doesnt have a mind, let ghosts have it
 /mob/living/simple_animal/cortical_borer/attack_ghost(mob/dead/observer/user)
 	. = ..()
-	if(mind)
+	if(mind || taken_over)
 		return
 	var/choice = tgui_input_list(usr, "Do you want to control [src]?", "Confirmation", list("Yes", "No"))
 	if(choice != "Yes")
 		return
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
-	key = user.key
+	ckey = user.ckey
 	mind = user.mind
+	mind.add_antag_datum(/datum/antagonist/cortical_borer)
+	taken_over = TRUE
 
+//inject chemicals into your host
 /datum/action/cooldown/inject_chemical
 	name = "Inject Chemical (10 chemicals)"
 	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "chemical"
 
 /datum/action/cooldown/inject_chemical/Trigger()
 	if(!IsAvailable())
@@ -156,20 +196,28 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(cortical_owner.host_sugar())
 		to_chat(cortical_owner, span_warning("Sugar inhibits your abilities to function!"))
 		return
+	if(!cortical_owner.known_chemicals.len)
+		to_chat(cortical_owner, span_warning("You need to learn chemicals first!"))
+		return
 	if(cortical_owner.chemical_storage < 10)
 		to_chat(cortical_owner, span_warning("You require at least 10 chemical units to inject a chemical!"))
 		return
+	cortical_owner.chemical_storage -= 10
 	var/choice = tgui_input_list(cortical_owner, "Choose a chemical to inject!", "Chemical Selection", cortical_owner.known_chemicals)
 	if(!choice)
 		to_chat(cortical_owner, span_warning("No selection made!"))
+		cortical_owner.chemical_storage += 10
 		return
 	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5)
 	cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, 30, methods = INGEST)
+	StartCooldown()
 
 //become stronger by learning new chemicals
 /datum/action/cooldown/upgrade_chemical
 	name = "Learn New Chemical"
 	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "level"
 
 /datum/action/cooldown/upgrade_chemical/Trigger()
 	if(!IsAvailable())
@@ -203,6 +251,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 /datum/action/cooldown/upgrade_stat
 	name = "Become Stronger"
 	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "level"
 
 /datum/action/cooldown/upgrade_stat/Trigger()
 	if(!IsAvailable())
@@ -242,6 +292,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 /datum/action/cooldown/toggle_hiding
 	name = "Toggle Hiding"
 	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "hide"
 
 /datum/action/cooldown/toggle_hiding/Trigger()
 	if(!IsAvailable())
@@ -262,7 +314,9 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 //to paralyze people
 /datum/action/cooldown/fear_human
 	name = "Incite Fear"
-	cooldown_time = 20 SECONDS
+	cooldown_time = 12 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "fear"
 
 /datum/action/cooldown/fear_human/Trigger()
 	if(!IsAvailable())
@@ -296,13 +350,15 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(get_dist(choose_fear, cortical_owner) > 1)
 		to_chat(cortical_owner, span_warning("The chosen is too far"))
 		return
-	choose_fear.Paralyze(10 SECONDS)
+	choose_fear.Paralyze(6 SECONDS)
 	StartCooldown()
 
 //to check the health of the human
 /datum/action/cooldown/check_blood
 	name = "Check Blood"
 	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "blood"
 
 /datum/action/cooldown/check_blood/Trigger()
 	if(!IsAvailable())
@@ -319,21 +375,25 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(owner, span_warning("You must have a host to check blood!"))
 		return
 	var/message = ""
-	message += "Brute: [cortical_owner.human_host.getBruteLoss()]"
-	message += "Fire: [cortical_owner.human_host.getFireLoss()]"
-	message += "Toxin: [cortical_owner.human_host.getToxLoss()]"
-	message += "Oxygen: [cortical_owner.human_host.getOxyLoss()]"
+	message += "Brute: [cortical_owner.human_host.getBruteLoss()] "
+	message += "Fire: [cortical_owner.human_host.getFireLoss()] "
+	message += "Toxin: [cortical_owner.human_host.getToxLoss()] "
+	message += "Oxygen: [cortical_owner.human_host.getOxyLoss()] "
 	var/reagent_message = "Current Reagents:"
 	for(var/check_reagents in cortical_owner.human_host.reagents.reagent_list)
 		var/datum/reagent/reagent_name = check_reagents
 		reagent_message += reagent_name.name
+		reagent_message += ", "
 	message += reagent_message
+	to_chat(cortical_owner, span_notice(message))
 	StartCooldown()
 
 //to either get inside, or out, of a host
 /datum/action/cooldown/choosing_host
 	name = "Inhabit/Uninhabit Host"
 	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "host"
 
 /datum/action/cooldown/choosing_host/Trigger()
 	if(!IsAvailable())
@@ -357,10 +417,16 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			continue
 		if(considered_afk(listed_human.mind)) //no afk hosts
 			continue
+		if(listed_human.has_borer())
+			continue
 		usable_hosts += listed_human
 	var/choose_host = tgui_input_list(cortical_owner, "Choose your host!", "Host Choice", usable_hosts)
 	if(!choose_host)
 		to_chat(cortical_owner, span_warning("You failed to choose a host."))
+		return
+	var/mob/living/carbon/human/choosen_human = choose_host
+	if(choosen_human.has_borer())
+		to_chat(cortical_owner, span_warning("You cannot occupy a body already occupied!"))
 		return
 	if(!do_after(cortical_owner, 5 SECONDS, target = choose_host))
 		to_chat(cortical_owner, span_warning("You and the host must be still."))
@@ -369,12 +435,15 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(cortical_owner, span_warning("The host is too far away."))
 		return
 	cortical_owner.human_host = choose_host
+	cortical_owner.forceMove(cortical_owner.human_host)
 	StartCooldown()
 
 //we need a way to produce offspring
 /datum/action/cooldown/produce_offspring
 	name = "Produce Offspring (100 chemicals)"
 	cooldown_time = 1 MINUTES
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "reproduce"
 
 /datum/action/cooldown/produce_offspring/Trigger()
 	if(!IsAvailable())
@@ -399,10 +468,42 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(cortical_owner, span_notice("No available borers in the hivemind."))
 		cortical_owner.chemical_storage = min(cortical_owner.max_chemical_storage, cortical_owner.chemical_storage + 100)
 		return
+	var/turf/human_turf = get_turf(cortical_owner.human_host)
 	var/mob/dead/observer/pick_candidate = pick(candidates)
-	var/mob/living/simple_animal/cortical_borer/spawn_borer = new /mob/living/simple_animal/cortical_borer
+	var/mob/living/simple_animal/cortical_borer/spawn_borer = new /mob/living/simple_animal/cortical_borer(human_turf)
+	new /obj/effect/decal/cleanable/vomit(human_turf)
+	playsound(human_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	spawn_borer.key = pick_candidate.key
 	spawn_borer.mind = pick_candidate.mind
+	spawn_borer.taken_over = TRUE
+	StartCooldown()
+
+/datum/action/cooldown/revive_host
+	name = "Revive Host (200 chemicals)"
+	cooldown_time = 2 MINUTES
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "revive"
+
+/datum/action/cooldown/revive_host/Trigger()
+	if(!IsAvailable())
+		to_chat(owner, span_warning("This action is still on cooldown!"))
+		return
+	if(!iscorticalborer(owner))
+		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
+		return
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
+	if(!ishuman(cortical_owner.loc))
+		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
+		return
+	if(cortical_owner.chemical_storage < 200)
+		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can reproduce!"))
+		return
+	cortical_owner.chemical_storage -= 200
+	cortical_owner.human_host.revive(full_heal = TRUE) //lets not heal all the way, but do it from the start
+	cortical_owner.human_host.adjustBruteLoss(cortical_owner.human_host.maxHealth * 0.5) //do 50 percent of their full health
 	StartCooldown()
 
 //check if we are inside a human
@@ -415,6 +516,13 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(human_host?.reagents?.has_reagent(/datum/reagent/consumable/sugar))
 		return TRUE
 	return FALSE
+
+/mob/living/simple_animal/cortical_borer/proc/leave_host()
+	if(!human_host)
+		return
+	var/turf/human_turf = get_turf(human_host)
+	forceMove(human_turf)
+	human_host = null
 
 //borers should not be emoting
 /mob/living/simple_animal/cortical_borer/emote(act, m_type, message, intentional, force_silence)
@@ -438,8 +546,60 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(split_message[1] == ";")
 		message = copytext(message, 2)
 		for(var/borer in GLOB.cortical_borers)
-			to_chat(borer, span_noticealien("Cortical Link: [name] sings, \"[message]\""))
+			to_chat(borer, span_noticealien("Cortical Hivemind: [src] sings, \"[message]\""))
 		for(var/mob/dead_mob in GLOB.dead_mob_list)
-			to_chat(dead_mob, span_noticealien("Cortical Link: [name] sings, \"[message]\""))
+			to_chat(dead_mob, span_noticealien("Cortical Hivemind: [src] sings, \"[message]\""))
+		to_chat(src, span_noticealien("Cortical Hivemind: [src] sings, \"[message]\""))
 		return
-	to_chat(human_host, span_noticealien("Cortical Link: [name] sings, \"[message]\""))
+	to_chat(human_host, span_noticealien("Cortical Link: [src] sings, \"[message]\""))
+	to_chat(src, span_noticealien("Cortical Link: [src] sings, \"[message]\""))
+
+/datum/antagonist/cortical_borer
+	name = "Cortical Borer"
+	job_rank = ROLE_ALIEN
+	show_in_antagpanel = TRUE
+	prevent_roundtype_conversion = FALSE
+	show_to_ghosts = TRUE
+
+//Event (Admin Only)
+/datum/round_event_control/cortical_borer
+	name = "Cortical Borer Infestation"
+	typepath = /datum/round_event/ghost_role/cortical_borer
+	weight = 10
+	min_players = 999 //so it wont spawn without admin intervention
+	dynamic_should_hijack = TRUE
+
+/datum/round_event/ghost_role/cortical_borer
+	announceWhen = 400
+
+/datum/round_event/ghost_role/cortical_borer/setup()
+	announceWhen = rand(announceWhen, announceWhen + 50)
+
+/datum/round_event/ghost_role/cortical_borer/announce(fake)
+	priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", ANNOUNCER_ALIENS)
+
+/datum/round_event/ghost_role/cortical_borer/start()
+	var/list/vents = list()
+	for(var/obj/machinery/atmospherics/components/unary/vent_pump/temp_vent in GLOB.machines)
+		if(QDELETED(temp_vent))
+			continue
+		if(is_station_level(temp_vent.loc.z) && !temp_vent.welded)
+			var/datum/pipeline/temp_vent_parent = temp_vent.parents[1]
+			if(!temp_vent_parent)
+				continue // No parent vent
+			// Stops Cortical Borers getting stuck in small networks.
+			// See: Security, Virology
+			if(temp_vent_parent.other_atmosmch.len > 20)
+				vents += temp_vent
+	if(!vents.len)
+		return MAP_ERROR
+	var/list/candidates = get_candidates(ROLE_ALIEN, ROLE_ALIEN) //Cortical Borers *are* aliens
+	if(!candidates.len)
+		return NOT_ENOUGH_PLAYERS
+	var/mob/dead/observer/new_borer = pick(candidates)
+	var/turf/vent_turf = get_turf(pick(vents))
+	var/mob/living/simple_animal/cortical_borer/spawned_cb = new /mob/living/simple_animal/cortical_borer(vent_turf)
+	spawned_cb.ckey = new_borer.ckey
+	spawned_cb.mind = new_borer.mind
+	spawned_cb.mind.add_antag_datum(/datum/antagonist/cortical_borer)
+	spawned_cb.taken_over = TRUE
