@@ -141,7 +141,7 @@
 	if (e_welding)
 		targeted_robot.model.remove_module(e_welding, TRUE)
 
-/datum/design/borg_upgrade_broomer
+/datum/design/robot_ewelder
 	name = "Cyborg Upgrade (Electric Welding Tool)"
 	id = "borg_upgrade_ewelder"
 	build_type = MECHFAB
