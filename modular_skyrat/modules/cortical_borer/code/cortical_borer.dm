@@ -73,7 +73,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/toxin/heparin,
 										/datum/reagent/consumable/ethanol/beer,
 										/datum/reagent/medicine/mannitol,
-										/datum/reagent/drug/methamphetamine,
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
@@ -105,7 +104,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	///multiplies the current health up to the max health
 	var/health_regen = 1.01
 	var/obj/item/reagent_containers/reagent_holder
-	var/taken_over = FALSE
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -164,16 +162,14 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 //if it doesnt have a mind, let ghosts have it
 /mob/living/simple_animal/cortical_borer/attack_ghost(mob/dead/observer/user)
 	. = ..()
-	if(mind || taken_over)
+	if(ckey)
 		return
 	var/choice = tgui_input_list(usr, "Do you want to control [src]?", "Confirmation", list("Yes", "No"))
 	if(choice != "Yes")
 		return
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
 	ckey = user.ckey
-	mind = user.mind
 	mind.add_antag_datum(/datum/antagonist/cortical_borer)
-	taken_over = TRUE
 
 //inject chemicals into your host
 /datum/action/cooldown/inject_chemical
@@ -473,9 +469,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/mob/living/simple_animal/cortical_borer/spawn_borer = new /mob/living/simple_animal/cortical_borer(human_turf)
 	new /obj/effect/decal/cleanable/vomit(human_turf)
 	playsound(human_turf, 'sound/effects/splat.ogg', 50, TRUE)
-	spawn_borer.key = pick_candidate.key
-	spawn_borer.mind = pick_candidate.mind
-	spawn_borer.taken_over = TRUE
+	spawn_borer.ckey = pick_candidate.ckey
 	StartCooldown()
 
 /datum/action/cooldown/revive_host
@@ -593,13 +587,14 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 				vents += temp_vent
 	if(!vents.len)
 		return MAP_ERROR
-	var/list/candidates = get_candidates(ROLE_ALIEN, ROLE_ALIEN) //Cortical Borers *are* aliens
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 10 SECONDS, POLL_IGNORE_CORTICAL_BORER)
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
-	var/mob/dead/observer/new_borer = pick(candidates)
-	var/turf/vent_turf = get_turf(pick(vents))
-	var/mob/living/simple_animal/cortical_borer/spawned_cb = new /mob/living/simple_animal/cortical_borer(vent_turf)
-	spawned_cb.ckey = new_borer.ckey
-	spawned_cb.mind = new_borer.mind
-	spawned_cb.mind.add_antag_datum(/datum/antagonist/cortical_borer)
-	spawned_cb.taken_over = TRUE
+	var/living_number = max(GLOB.player_list.len / 30, 1)
+	var/choosing_number = min(candidates.len, living_number)
+	for(var/repeating_code in 1 to choosing_number)
+		var/mob/dead/observer/new_borer = pick(candidates)
+		var/turf/vent_turf = get_turf(pick(vents))
+		var/mob/living/simple_animal/cortical_borer/spawned_cb = new /mob/living/simple_animal/cortical_borer(vent_turf)
+		spawned_cb.ckey = new_borer.ckey
+		spawned_cb.mind.add_antag_datum(/datum/antagonist/cortical_borer)
