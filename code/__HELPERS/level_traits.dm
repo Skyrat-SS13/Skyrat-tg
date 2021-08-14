@@ -10,7 +10,3 @@
 #define is_reserved_level(z) SSmapping.level_trait(z, ZTRAIT_RESERVED)
 
 #define is_away_level(z) SSmapping.level_trait(z, ZTRAIT_AWAY)
-
-//SKYRAT EDIT BEGIN//
-#define is_spaceruins_level(z) SSmapping.level_trait(z, ZTRAIT_SPACE_RUINS) //Somewhat of a cheesy way to go about this but it works.
-//SKYRAT EDIT END//
