@@ -12,7 +12,8 @@
 		"tail" = "None",
 		"ears" = "None"
 	)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER,
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_RADIMMUNE,
 		TRAIT_CAN_STRIP,
 		TRAIT_EASYDISMEMBER,
