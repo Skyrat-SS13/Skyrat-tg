@@ -615,9 +615,6 @@
 	cost = CARGO_CRATE_VALUE * 6 //SKYRAT EDIT - ORIGINAL: cost = CARGO_CRATE_VALUE * 12
 	contraband = TRUE
 	contains = list(/obj/item/food/rationpack,
-					/obj/item/ammo_box/a762,
-					/obj/item/storage/toolbox/ammo,
-					/obj/item/storage/toolbox/maint_kit,
 					/obj/item/clothing/suit/armor/vest/russian,
 					/obj/item/clothing/head/helmet/rus_helmet,
 					/obj/item/clothing/shoes/russian,
@@ -627,7 +624,7 @@
 					/obj/item/clothing/mask/russian_balaclava,
 					/obj/item/clothing/head/helmet/rus_ushanka,
 					/obj/item/clothing/suit/armor/vest/russian_coat)
-					//SKYRAT EDIT: REMOVAL - Removed /obj/item/gun/ballistic/rifle/boltaction
+					//SKYRAT EDIT: REMOVAL - Removed /obj/item/gun/ballistic/rifle/boltaction, /obj/item/storage/toolbox/maint_kit, /obj/item/storage/toolbox/ammo, /obj/item/ammo_box/a762
 	crate_name = "surplus military crate"
 
 /datum/supply_pack/security/armory/russian/fill(obj/structure/closet/crate/C)
