@@ -109,11 +109,11 @@
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
 	if(tool_behaviour != TOOL_ROLLINGPIN)
 		tool_behaviour = TOOL_ROLLINGPIN
-		to_chat(user, "<span class='notice'>You attach the rolling pin bit to [src].</span>")
+		to_chat(user, span_notice("You attach the rolling pin bit to [src]."))
 		icon_state = "rolling_bolt_cyborg"
 	else
 		tool_behaviour = TOOL_KNIFE
-		to_chat(user, "<span class='notice'>You attach the knife bit to [src].</span>")
+		to_chat(user, span_notice("You attach the knife bit to [src]."))
 		icon_state = "knife_screw_cyborg"
 
 /obj/item/borg/upgrade/robot_ewelder
