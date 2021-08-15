@@ -109,7 +109,8 @@
 
 /obj/item/clothing/suit/straight_jacket/shackles/examine(mob/user)
 	.=..()
-	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
 
 //reinforced version.
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced
