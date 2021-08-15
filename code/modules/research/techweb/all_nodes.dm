@@ -236,7 +236,6 @@
 		"comp_not",
 		"comp_pressuresensor",
 		"comp_radio",
-		"comp_ram",
 		"comp_random",
 		"comp_router",
 		"comp_select_query",
