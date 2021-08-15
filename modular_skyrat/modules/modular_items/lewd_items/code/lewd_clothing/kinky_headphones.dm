@@ -101,3 +101,10 @@
 	var/obj/item/clothing/ears/kinky_headphones/H = target
 	if(istype(H))
 		H.toggle(owner)
+
+//examine stuff
+
+/obj/item/clothing/ears/kinky_headphones/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
