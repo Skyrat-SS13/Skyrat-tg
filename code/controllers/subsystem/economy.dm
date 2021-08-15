@@ -11,6 +11,10 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_MED = ACCOUNT_MED_NAME,
 										ACCOUNT_SRV = ACCOUNT_SRV_NAME,
 										ACCOUNT_CAR = ACCOUNT_CAR_NAME,
+//SKYRAT EDIT BEGIN// - - - - - - - - - - - - - - - - - - - - - - - - - - //
+										ACCOUNT_GHO = ACCOUNT_GHO_NAME,
+										ACCOUNT_INT = ACCOUNT_INT_NAME,
+//SKYRAT EDIT END// - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
 	var/list/generated_accounts = list()
 	var/full_ancap = FALSE // Enables extra money charges for things that normally would be free, such as sleepers/cryo/cloning.
