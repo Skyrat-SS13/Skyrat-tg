@@ -24,14 +24,25 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		"Head of Security",
 		"Chief Engineer",
 		"Research Director",
-		"Security Sergeant", //SKYRAT EDIT CHANGE START
+//SKYRAT EDIT CHANGE START
+		"Security Sergeant",
 		"Security Medic",
 		"Clown",
 		"Blueshield",
-		"Nanotrasen Representative",//SKYRAT EDIT END
+		"Nanotrasen Representative",
+//SKYRAT EDIT END
 		"Chief Medical Officer",
 		"Quartermaster",
-		"Shuttle Pilot")
+//SKYRAT EDIT START// - Syndicate Jobs Start Here
+		"Operative",
+		"Syndicate Staff",
+		"Researcher",
+		"Station Medical Officer",
+		"Master At Arms",
+		"Enforcement Officer",
+		"Station Admiral",
+		"Engine Technician")
+//SKYRAT EDIT END// - Syndicate jobs end here
 
 	//The scaling factor of max total positions in relation to the total amount of people on board the station in %
 	var/max_relative_positions = 30 //30%: Seems reasonable, limit of 6 @ 20 players

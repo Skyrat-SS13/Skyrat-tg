@@ -14,55 +14,83 @@
 
 ///DS-2
 
-/datum/id_trim/syndicom/skyrat/assault
+/datum/id_trim/job/syndicom/skyrat/assault
 	assignment = "DS-2 Operative"
 	trim_state = "trim_syndicateoperative"
 
-/datum/id_trim/syndicom/skyrat/assault/assistant
+/datum/id_trim/job/syndicom/skyrat/assault/assistant
 	assignment = "Operative"
 	trim_state = "trim_syndicateassistant"
+	config_job = "operative"
+	template_access = list(ACCESS_SYNDICATE)
+	full_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE)
+	job = /datum/job/skyratghostrole/syndicate/operative
 
-/datum/id_trim/syndicom/skyrat/assault/syndicatestaff
+/datum/id_trim/job/syndicom/skyrat/assault/syndicatestaff
 	assignment = "Syndicate Staff"
 	trim_state = "trim_syndicatestaff"
+	config_job = "syndicate_staff"
+	template_access = list(ACCESS_SYNDICATE)
+	full_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE)
+	job = /datum/job/skyratghostrole/syndicate/service
 
-/datum/id_trim/syndicom/skyrat/assault/researcher
+/datum/id_trim/job/syndicom/skyrat/assault/researcher
 	assignment = "Researcher"
 	trim_state = "trim_researcher"
+	config_job = "researcher"
+	template_access = list(ACCESS_SYNDICATE)
+	full_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE)
+	job = /datum/job/skyratghostrole/syndicate/researcher
 
-/datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
+/datum/id_trim/job/syndicom/skyrat/assault/stationmedicalofficer
 	assignment = "Station Medical Officer"
 	trim_state = "trim_stationmedicalofficer"
+	template_access = list(ACCESS_SYNDICATE)
+	full_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE)
+	job = /datum/job/skyratghostrole/syndicate/medicalofficer
 
-/datum/id_trim/syndicom/skyrat/assault/masteratarms
+/datum/id_trim/job/syndicom/skyrat/assault/masteratarms
 	assignment = "Master At Arms"
 	trim_state = "trim_masteratarms"
-	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	template_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	full_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	job = /datum/job/skyratghostrole/syndicate/masteratarms
 
-/datum/id_trim/syndicom/skyrat/assault/brigofficer
-	assignment = "Brig Officer"
+/datum/id_trim/job/syndicom/skyrat/assault/brigofficer
+	assignment = "Enforcement Officer"
 	trim_state = "trim_brigofficer"
-	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	template_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	full_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	job = /datum/job/skyratghostrole/syndicate/brig_officer
 
-/datum/id_trim/syndicom/skyrat/assault/chiefmasteratarms
+/datum/id_trim/job/syndicom/skyrat/assault/chiefmasteratarms
 	assignment = "Chief Master At Arms"
 	trim_state = "trim_chiefmasteratarms"
 	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
 
-/datum/id_trim/syndicom/skyrat/assault/chiefresearchofficer
+/datum/id_trim/job/syndicom/skyrat/assault/chiefresearchofficer
 	assignment = "Chief Research Officer"
 	trim_state = "trim_chiefresearchofficer"
 	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
 
-/datum/id_trim/syndicom/skyrat/assault/chiefengineeringofficer
+/datum/id_trim/job/syndicom/skyrat/assault/chiefengineeringofficer
 	assignment = "Chief Engineering Officer"
 	trim_state = "trim_chiefengineeringofficer"
 	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
 
-/datum/id_trim/syndicom/skyrat/assault/stationadmiral
+/datum/id_trim/job/syndicom/skyrat/assault/stationadmiral
 	assignment = "Station Admiral"
 	trim_state = "trim_stationadmiral"
-	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	template_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	full_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	job = /datum/job/skyratghostrole/syndicate/station_admiral
 
 ///Interdyne
 
@@ -121,6 +149,10 @@
 	assignment = "Robotics Technician"
 	trim_state = "trim_roboticist"
 
-/datum/id_trim/syndicom/skyratnoicon/enginetechnician
+/datum/id_trim/job/syndicom/skyratnoicon/enginetechnician
 	assignment = "Engine Technician"
 	trim_state = "trim_stationengineer"
+	template_access = list(ACCESS_SYNDICATE)
+	minimal_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	full_access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	job = /datum/job/skyratghostrole/syndicate/enginetech

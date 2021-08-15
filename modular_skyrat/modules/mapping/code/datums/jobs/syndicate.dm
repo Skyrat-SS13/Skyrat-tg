@@ -6,7 +6,7 @@
 	title = "Operative"
 	total_positions = 5
 	supervisors = "absolutely everyone"
-	outfit = /datum/outfit/job/assistant
+	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative
 	plasmaman_outfit = /datum/outfit/plasmaman //TEMP
 	paycheck = PAYCHECK_ASSISTANT
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
@@ -19,12 +19,13 @@
 /datum/outfit/job/skyratghostrole/syndicate/operative //This is intended both as the operative outfit and as a base for all others.
 	name = "DS-2 Operative"
 	jobtype = /datum/job/skyratghostrole/syndicate/operative
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/assistant
+	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/assistant
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	ears = /obj/item/radio/headset/interdyne
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/black
+	belt = null
 	implants = list(/obj/item/implant/weapons_auth) //TO-DO - When the access update rolls out, strip these out to be the mindshield equivalent
 
 /datum/outfit/job/skyratghostrole/syndicate/operative/post_equip(mob/living/carbon/human/H) //Sets them as part of the syndicate faction so turrets don't nuke them
@@ -50,7 +51,7 @@
 /datum/outfit/job/skyratghostrole/syndicate/operative/service
 	name = "DS-2 Staff"
 	uniform = /obj/item/clothing/under/utility/syndicate
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
+	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/syndicatestaff
 
 //ENGINE TECHNICIANS / STATION ENGINEERS//
 /datum/job/skyratghostrole/syndicate/enginetech
@@ -71,7 +72,7 @@
 /datum/outfit/job/skyratghostrole/syndicate/operative/enginetech
 	name = "DS-2 Engine Technician"
 	uniform = /obj/item/clothing/under/utility/eng/syndicate
-	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
+	id_trim = /datum/id_trim/job/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
 //Researchers / Scientists//
@@ -90,7 +91,7 @@
 /datum/outfit/job/skyratghostrole/syndicate/operative/researcher
 	name = "DS-2 Researcher"
 	uniform = /obj/item/clothing/under/utility/sci/syndicate
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/researcher
+	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/researcher
 
 //Medical Officers/Medical Doctors//
 /datum/job/skyratghostrole/syndicate/medicalofficer
@@ -110,14 +111,14 @@
 /datum/outfit/job/skyratghostrole/syndicate/operative/stationmed
 	name = "DS-2 Station Medical Officer"
 	uniform = /obj/item/clothing/under/utility/med/syndicate
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationmedicalofficer
+	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/stationmedicalofficer
 
 //Master At Arms/Warden//
 /datum/job/skyratghostrole/syndicate/masteratarms
 	title = "Master At Arms"
 	total_positions = 1
 	supervisors = "the chief master at arms"
-	outfit = /datum/outfit/job/warden
+	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/masteratarms
 	plasmaman_outfit = /datum/outfit/plasmaman/warden //TEMP
 	paycheck = PAYCHECK_HARD
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
@@ -131,7 +132,7 @@
 /datum/outfit/job/skyratghostrole/syndicate/operative/masteratarms
 	name = "DS-2 Master At Arms"
 	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/masteratarms
+	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/masteratarms
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
@@ -148,7 +149,7 @@
 	title = "Enforcement Officer"
 	total_positions = 5
 	supervisors = "the chief master at arms"
-	outfit = /datum/outfit/job/security
+	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/brigoff
 	plasmaman_outfit = /datum/outfit/plasmaman/security //TEMP
 	paycheck = PAYCHECK_HARD
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
@@ -160,9 +161,9 @@
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
 /datum/outfit/job/skyratghostrole/syndicate/operative/brigoff
-	name = "DS-2 Brig Officer"
+	name = "DS-2 Enforcement Officer"
 	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
+	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof
@@ -180,7 +181,7 @@
 	total_positions = 1
 	supervisors = "Your benefactors and space law"
 	req_admin_notify = 1
-	outfit = /datum/outfit/job/captain
+	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/admiral
 	plasmaman_outfit = /datum/outfit/plasmaman/captain //TEMP
 	paycheck = PAYCHECK_COMMAND
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
@@ -199,7 +200,7 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/gold/generic
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
-	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationadmiral
+	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/stationadmiral
 	ears = /obj/item/radio/headset/interdyne/command
 
 //Prisoners, AKA How I extended griff to ghostroles//
