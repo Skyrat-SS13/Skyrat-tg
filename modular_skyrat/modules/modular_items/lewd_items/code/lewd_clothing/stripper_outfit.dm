@@ -78,3 +78,4 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
