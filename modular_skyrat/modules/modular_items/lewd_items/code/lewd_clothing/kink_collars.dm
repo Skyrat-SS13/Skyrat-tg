@@ -20,15 +20,16 @@
 	/obj/item/food/cookie/sugar,
 	/obj/item/key/kink_collar))
 
-/datum/component/storage/concrete/pockets/small/kink_collar/mind_collar/Initialize()
+/datum/component/storage/concrete/pockets/small/mind_collar/Initialize()
 	. = ..()
-	can_hold = typecacheof(/obj/item/mind_controller)
+	max_items = 1
+	can_hold = typecacheof(/obj/item/connect/mind_controller)
 
 //Here goes code for normal collar
 
 /obj/item/clothing/neck/kink_collar
 	name = "collar"
-	desc = "A nice, tight collar. It fits snug to your skin"
+	desc = "A nice, tight collar. It fits perfectly to your skin"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar"
@@ -123,7 +124,6 @@
 	.=..()
 	if(color_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
-	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
 
 ////////////////////////
 ///COLLAR WITH A LOCK///
@@ -131,7 +131,7 @@
 
 /obj/item/clothing/neck/kink_collar/locked
 	name = "locked collar"
-	desc = "A tight collar. It appears to have some kind of lock."
+	desc = "A tight collar. It looks like it has some kind of lock."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "lock_collar"
@@ -371,7 +371,7 @@
 //Ok, first - it's not mind control. Just forcing someone to do emotes that user added to remote thingy. Just a funny illegal ERP toy.
 
 //Controller stuff
-/obj/item/mind_controller
+/obj/item/connect/mind_controller
 	name = "mind controller"
 	desc = "A small remote for sending basic emotion patterns to a collar."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -379,17 +379,15 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	icon_state = "mindcontroller"
 	var/obj/item/clothing/neck/mind_collar/collar = null
-	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/mind_controller/Initialize(mapload, collar)
+/obj/item/connect/mind_controller/Initialize(mapload, collar)
     //Store the collar on creation.
 	src.collar = collar
 	. = ..() //very important to call parent in Intialize
 
-/obj/item/mind_controller/attack_self(mob/user)
-	if (collar)
-		collar.emoting = stripped_input(user, "Change the emotion pattern")
-		collar.emoting_proc()
+/obj/item/connect/mind_controller/attack_self(mob/user)
+	collar.emoting = stripped_input(user, "Change the emotion pattern")
+	collar.emoting_proc()
 
 //Collar stuff
 /obj/item/clothing/neck/mind_collar
@@ -399,18 +397,18 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "mindcollar"
 	inhand_icon_state = "mindcollar"
-	var/obj/item/mind_controller/remote = null
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/kink_collar/mind_collar
+	var/obj/item/connect/mind_controller/remote = null
 	var/emoting = "Shivers"
 
 /obj/item/clothing/neck/mind_collar/Initialize()
 	. = ..()
-	remote = new /obj/item/mind_controller(src, src)
-	remote.forceMove(src)
+	remote = new /obj/item/connect/mind_controller(src, src)
+	var/turf = get_turf(src)
+	remote.forceMove(turf)
 
 /obj/item/clothing/neck/mind_collar/proc/emoting_proc()
 	var/mob/living/carbon/human/U = src.loc
-	if(istype(U) && src == U.wear_neck)
+	if(src == U.wear_neck)
 		U.emote("me", 1,"[emoting]", TRUE)
 
 /obj/item/clothing/neck/mind_collar/Destroy()

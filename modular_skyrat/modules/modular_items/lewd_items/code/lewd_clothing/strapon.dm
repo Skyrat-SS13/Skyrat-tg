@@ -132,7 +132,7 @@
 
 /obj/item/clothing/strapon/proc/toggle(user)
 	var/mob/living/carbon/human/C = usr
-	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
+	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 	var/obj/item/held = C.get_active_held_item()
 	var/obj/item/unheld = C.get_inactive_held_item()
 
@@ -181,7 +181,6 @@
 	.=..()
 	if(type_changed == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
-	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
 
 /obj/item/strapon_dildo
 	name = "strapon"
@@ -213,7 +212,7 @@
 
 	var/message = ""
 	var/obj/item/organ/genital/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
-	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(M.client?.prefs.sextoys_pref == "Yes")
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
@@ -229,7 +228,7 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE, ignore_walls = FALSE)
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
@@ -251,7 +250,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE, ignore_walls = FALSE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
 					to_chat(user, span_danger("[M]'s mouth is covered!"))
@@ -270,7 +269,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
 					to_chat(user, span_danger("[M]'s anus is covered!"))

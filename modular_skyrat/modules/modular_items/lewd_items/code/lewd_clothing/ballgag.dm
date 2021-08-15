@@ -5,7 +5,7 @@
 
 /obj/item/clothing/mask/ballgag
 	name = "ball gag"
-	desc = "Prevents the wearer from speaking."
+	desc = "Prevents wearer from speaking"
 	icon_state = "ballgag"
 	inhand_icon_state = "ballgag"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -39,7 +39,7 @@
 // A ballgag, but it chokes! Also its a dick!
 /obj/item/clothing/mask/ballgag/phallic
 	name = "phallic ball gag"
-	desc = "Prevents the wearer from speaking, as well as making breathing harder."
+	desc = "Prevents the wearer from speaking, as well as make breathing even harder."
 	icon_state = "chokegag"
 	inhand_icon_state = "blindfold"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -75,7 +75,7 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
-						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1, ignore_walls = FALSE)
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1)
 
 //to update model lol
 /obj/item/clothing/mask/ballgag/ComponentInitialize()
@@ -96,10 +96,6 @@
 	icon_state = icon_state = "[initial(icon_state)]_[gag_color]"
 	inhand_icon_state = "[initial(icon_state)]_[gag_color]"
 
-/obj/item/clothing/mask/ballgag/phallic/update_icon_state()
-	. = ..()
-	icon_state = "[initial(icon_state)]_[gag_size]_[gag_color]"
-	inhand_icon_state = "[initial(icon_state)]_[gag_size]_[gag_color]"
 //examine stuff
 
 /obj/item/clothing/mask/ballgag/examine(mob/user)
@@ -182,7 +178,7 @@
 /obj/item/clothing/mask/ballgag/equipped(mob/user, slot)
 	if(chokes_wearer)
 		var/mob/living/carbon/human/U = loc
-		if(src == U.wear_mask && U.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) //To prevent abusing this thing on non-erp players. We care about them, yes.
+		if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
 			START_PROCESSING(SSobj, src)
 	return ..()
 
@@ -194,31 +190,6 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/mask/ballgag/process(delta_time)
-	if(chokes_wearer)
-		var/mob/living/carbon/human/U = loc
-		tt += delta_time
-		if(tt >= time)
-			if(gag_size == "small")
-				U.adjustOxyLoss(rand(0, 2))
-				if(prob(15))
-					U.emote(pick("gasp","choke","moan"))
-				tt = 0
-			if(gag_size == "medium")
-				U.adjustOxyLoss(rand(0, 3))
-				if(prob(20))
-					U.emote(pick("gasp","choke","moan"))
-				tt = 0
-			if(gag_size == "big")
-				U.adjustOxyLoss(rand(1, 4))
-				if(prob(25))
-					U.emote(pick("gasp","choke","moan"))
-				tt = 0
-
-// Be kind, undefined
-#undef GAG_SIZABLE
-#undef GAG_COLORABLE
-#undef GAG_COLORABLE_AND_SIZABLE
 /obj/item/clothing/mask/ballgag_phallic/process(delta_time)
 	var/mob/living/carbon/human/U = loc
 	tt += delta_time
