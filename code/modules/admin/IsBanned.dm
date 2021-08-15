@@ -96,11 +96,7 @@
 				This ban (BanID #[i["id"]]) was applied by [i["admin_key"]] on [i["bantime"]] during round ID [i["round_id"]].
 				[global_ban]
 				[expires]"}
-<<<<<<< HEAD
-				log_access("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]]) [text2num(i["global_ban"]) ? "globally" : "locally"]") //SKYRAT EDIT CHANGE - MULTISERVER
-=======
-				log_suspicious_login("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]])")
->>>>>>> dc5158324bd (Adds new config flag to mirror logging of suspicious failed logins to its own file (#60791))
+				log_suspicious_login("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]]) [text2num(i["global_ban"]) ? "globally" : "locally"]") //SKYRAT EDIT CHANGE - MULTISERVER
 				return list("reason"="Banned","desc"="[desc]")
 	if (admin)
 		if (GLOB.directory[ckey])
