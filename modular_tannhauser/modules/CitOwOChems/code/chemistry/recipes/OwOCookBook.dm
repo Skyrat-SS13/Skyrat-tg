@@ -83,7 +83,7 @@
 	name = "Furranium"
 	id = /datum/reagent/OwO/furranium
 	results = list(/datum/reagent/OwO/furranium = 5)
-	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/pax/catnip = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1) // /datum/reagent/moonsugar = 1,
+	required_reagents = list(/datum/reagent/drug/dopamine = 1, /datum/reagent/pax/catnip = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1) // /datum/reagent/moonsugar = 1,
 	mix_message = "You think you can hear a howl come from the beaker."
 	//OwOChem vars:
 	required_temp 	= 350
