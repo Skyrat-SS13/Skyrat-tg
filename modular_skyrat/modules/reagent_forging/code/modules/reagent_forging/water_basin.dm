@@ -6,6 +6,11 @@
 	anchored = TRUE
 	density = TRUE
 
+/obj/structure/reagent_water_basin/Initialize()
+	. = ..()
+	if(is_mining_level(z))
+		icon_state = "primitive_water_basin"
+
 /obj/structure/reagent_water_basin/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/forging/tongs))
 		var/obj/item/forging/incomplete/searchIncomplete = locate(/obj/item/forging/incomplete) in I.contents

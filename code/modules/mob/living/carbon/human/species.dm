@@ -140,6 +140,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	/// The body temperature limit the body can take before it starts taking damage from cold.
 	var/bodytemp_cold_damage_limit = BODYTEMP_COLD_DAMAGE_LIMIT
 
+	///the species that body parts are surgically compatible with (found in _DEFINES/mobs.dm)
+	///current acceptable bitfields are HUMAN_BODY, ALIEN_BODY, LARVA_BODY, MONKEY_BODY, or NONE
+	var/allowed_animal_origin = HUMAN_BODY
+
+
 	///Species-only traits. Can be found in [code/__DEFINES/DNA.dm]
 	var/list/species_traits = list()
 	///Generic traits tied to having the species.
@@ -203,6 +208,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	///List of visual overlays created by handle_body()
 	var/list/body_vis_overlays = list()
+
+
 
 ///////////
 // PROCS //
@@ -1220,6 +1227,30 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.back && SEND_SIGNAL(H.back, COMSIG_TRY_STORAGE_CAN_INSERT, I, H, TRUE))
 				return TRUE
 			return FALSE
+
+		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+		if(ITEM_SLOT_VAGINA)
+			if(H.is_bottomless())
+				if(H.getorganslot(ORGAN_SLOT_VAGINA))
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
+				return FALSE
+			return FALSE
+		if(ITEM_SLOT_ANUS)
+			if(H.is_bottomless())
+				return equip_delay_self_check(I, H, bypass_equip_delay_self)
+			return FALSE
+		if(ITEM_SLOT_NIPPLES)
+			if(H.is_topless())
+				return equip_delay_self_check(I, H, bypass_equip_delay_self)
+			return FALSE
+		if(ITEM_SLOT_PENIS)
+			if(H.is_bottomless())
+				if(H.getorganslot(ORGAN_SLOT_PENIS))
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
+				return FALSE
+			return FALSE
+		//SKYRAT EDIT ADDITION END
+
 	return FALSE //Unsupported slot
 
 /datum/species/proc/equip_delay_self_check(obj/item/I, mob/living/carbon/human/H, bypass_equip_delay_self)

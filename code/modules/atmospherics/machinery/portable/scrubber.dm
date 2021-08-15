@@ -70,6 +70,11 @@
 	var/atom/target = holding || get_turf(src)
 	scrub(target.return_air())
 
+	//SKYRAT EDIT ADDITION
+	for(var/turf/open/open_turf in view(3, src))
+		if(open_turf.pollution)
+			open_turf.pollution.ScrubAmount(POLLUTION_HEIGHT_DIVISOR)
+	//SKYRAT EDIT END
 
 	return ..()
 
