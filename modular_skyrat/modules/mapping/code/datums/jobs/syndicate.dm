@@ -28,7 +28,7 @@
 	implants = list(/obj/item/implant/weapons_auth) //TO-DO - When the access update rolls out, strip these out to be the mindshield equivalent
 
 /datum/outfit/job/skyratghostrole/syndicate/operative/post_equip(mob/living/carbon/human/H) //Sets them as part of the syndicate faction so turrets don't nuke them
-	H.faction |= ROLE_SYNDICATE.
+	H.faction |= ROLE_SYNDICATE
 
 //BOTANISTS / CHEFS / SERVICE STAFF//
 // Technically these have dedicated equivalents too, but rolling them into one role helps considering how far apart they are and is totally not at all a lazy holdover from DS-1 :)
