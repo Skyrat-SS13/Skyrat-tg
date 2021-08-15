@@ -22,11 +22,11 @@
 	var/swiping = FALSE
 
 /obj/item/scythe/pre_attack(atom/A, mob/living/user, params)
+	if(!istype(A, /obj/structure/spacevine) && !istype(A, /mob/living/simple_animal/hostile/venus_human_trap))
+		return ..()
 	if(swiping)
 		return ..()
 	swiping = TRUE
-	if(!istype(A, /obj/structure/spacevine) && !istype(A, /mob/living/simple_animal/hostile/venus_human_trap))
-		return ..()
 	if(istype(A, /obj/structure/spacevine) && hit_range >= 1)
 		for(var/obj/structure/spacevine/choose_vine in range(hit_range, A))
 			if(prob(venus_chance/2))
@@ -38,8 +38,8 @@
 	if(istype(A, /mob/living/simple_animal/hostile/venus_human_trap))
 		var/mob/living/simple_animal/hostile/venus_human_trap/hostile_venus = A
 		if(prob(venus_chance))
-			swiping = FALSE
 			hostile_venus.death()
+	swiping = FALSE
 
 /obj/item/scythe/tier1
 	name = "scythe (tier 1)"
