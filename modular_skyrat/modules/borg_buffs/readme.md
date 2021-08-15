@@ -4,10 +4,7 @@ MODULE ID: BORG_BUFF
 
 ### Description:
 
-some qol for two modules.
-
 Splits service borg shaker into multiple; adds a few more reagents to the shakers.
-Engiborgs should get the ewelder as an upgrade.
 
 ### TG Proc Changes:
 
