@@ -6,6 +6,7 @@
 /obj/structure/flora/ash/rockplanet //Yes, I made them ash subtypes. It gives me juicy harvest-related variables.
 	icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
 	needs_sharp_harvest = FALSE
+	number_of_variants = 1	//Can be changed later :)
 
 /obj/structure/flora/ash/rockplanet/coyote	//((Coyote Tobacco, Nicotiana attenuata)
 	name = "leafy coyote"
@@ -158,7 +159,7 @@
 	plantname = "Dagger-Yucca"
 	product = /obj/item/food/grown/rock_flora/yucca
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/consumable/tinlux = 0.04, /datum/reagent/consumable/nutriment/vitamin = 0.02, /datum/reagent/drug/space_drugs = 0.02)	//CHANGE THIS
+	reagents_add = list(/datum/reagent/consumable/tinlux = 0.04, /datum/reagent/consumable/nutriment/vitamin = 0.02)	//CHANGE THIS
 
 /obj/item/seeds/rockplanet/agaricus
 	name = "pack of agaricus mycelium"

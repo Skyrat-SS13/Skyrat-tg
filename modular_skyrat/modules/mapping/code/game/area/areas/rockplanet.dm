@@ -14,7 +14,7 @@
 	power_equip = FALSE
 	power_light = FALSE
 	requires_power = TRUE
-	ambience_index = AMBIENCE_CREEPY
+	ambience_index = AMBIENCE_MINING
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED | NO_ALERTS
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
@@ -27,7 +27,7 @@
 	power_environ = FALSE
 	power_equip = FALSE
 	power_light = FALSE
-	ambience_index = AMBIENCE_CREEPY
+	ambience_index = AMBIENCE_MINING
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | FLORA_ALLOWED | NO_ALERTS
 	min_ambience_cooldown = 70 SECONDS
 	max_ambience_cooldown = 220 SECONDS
