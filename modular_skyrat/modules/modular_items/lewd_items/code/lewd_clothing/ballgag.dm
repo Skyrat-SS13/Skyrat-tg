@@ -111,6 +111,13 @@
 	icon_state = icon_state = "[initial(icon_state)]_[current_ballgag_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_ballgag_color]"
 
+//examine stuff
+
+/obj/item/clothing/mask/ballgag/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+
 /////////////////////////////////////////////////////////////////////
 /////////here goes code for choking version of ballgag///////////////
 /////////////////////////////////////////////////////////////////////
@@ -235,3 +242,10 @@
 			if(prob(25))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0
+
+//examine stuff
+
+/obj/item/clothing/mask/ballgag_phallic/examine(mob/user)
+	.=..()
+	if(was_reformed == FALSE && was_recolored == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

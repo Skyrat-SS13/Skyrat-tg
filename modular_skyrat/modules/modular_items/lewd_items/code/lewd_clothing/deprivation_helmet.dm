@@ -390,3 +390,10 @@
 	midis_sound_state = null
 	announcement_sound_state = null
 	ship_ambience_sound_state = null
+
+//examine stuff
+
+/obj/item/clothing/head/helmet/space/deprivation_helmet/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

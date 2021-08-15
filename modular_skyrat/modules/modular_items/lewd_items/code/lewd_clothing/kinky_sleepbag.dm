@@ -202,3 +202,10 @@
 	. = ..()
 	owner.update_inv_hands()
 	stripper.update_inv_hands()
+
+//examine stuff
+
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

@@ -179,7 +179,8 @@
 
 /obj/item/clothing/strapon/examine(mob/user)
 	.=..()
-	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
+	if(type_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
 
 /obj/item/strapon_dildo
 	name = "strapon"

@@ -95,3 +95,10 @@
 		U.adjustPleasure(1 * delta_time)
 		if(P.aroused != AROUSAL_CANT)
 			P.aroused = AROUSAL_FULL //Vibroring keep penis erected.
+
+//examine stuff
+
+/obj/item/clothing/sextoy/vibroring/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

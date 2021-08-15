@@ -95,3 +95,10 @@
 		H.update_inv_wear_suit()
 		H.fan_hud_set_fandom()
 	return TRUE
+
+//examine stuff
+
+/obj/item/clothing/accessory/lewdapron/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
