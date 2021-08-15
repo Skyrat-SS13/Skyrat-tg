@@ -115,37 +115,3 @@
 		tool_behaviour = TOOL_KNIFE
 		to_chat(user, span_notice("You attach the knife bit to [src]."))
 		icon_state = "knife_screw_cyborg"
-
-/obj/item/borg/upgrade/robot_ewelder
-	name = "electrical welding tool"
-	desc = "An experimental welding tool capable of welding functionality through the use of electricity. The flame seems almost cold."
-	icon_state = "cyborg_upgrade3"
-
-/obj/item/borg/upgrade/robot_ewelder/action(mob/living/silicon/robot/targeted_robot, user = usr)
-	. = ..()
-	if (!.)
-		return
-	var/obj/item/weldingtool/electric/e_welding = locate() in targeted_robot.model.modules
-	if (e_welding)
-		to_chat(user, span_warning("This borg already has an electric welding tool!"))
-		return FALSE
-	e_welding = new(targeted_robot.model)
-	targeted_robot.model.basic_modules += e_welding
-	targeted_robot.model.add_module(e_welding, FALSE, TRUE)
-
-/obj/item/borg/upgrade/robot_ewelder/deactivate(mob/living/silicon/robot/targeted_robot, user = usr)
-	. = ..()
-	if (!.)
-		return
-	var/obj/item/weldingtool/electric/e_welding = locate() in targeted_robot.model.modules
-	if (e_welding)
-		targeted_robot.model.remove_module(e_welding, TRUE)
-
-/datum/design/robot_ewelder
-	name = "Cyborg Upgrade (Electric Welding Tool)"
-	id = "borg_upgrade_ewelder"
-	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/robot_ewelder
-	materials = list(/datum/material/iron = 4000, /datum/material/glass = 500, /datum/material/plasma = 500)
-	construction_time = 120
-	category = list("Cyborg Upgrade Modules")
