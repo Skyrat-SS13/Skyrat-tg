@@ -2816,6 +2816,15 @@
 	contains = list(/obj/item/vending_refill/clothing)
 	crate_name = "ClothesMate supply crate"
 
+//SKYRAT EDIT ADDITION - ERP UPDATE - ADDED RESTOCK FOR LUSTWISH VENDING MACHINE
+/datum/supply_pack/vending/lustwish
+	name = "LustWish Supply Crate"
+	desc = "A clown bought all of your penis enlarger pills and put them into the smoke machine? Don't worry, you can refill them!"
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/vending_refill/lustwish)
+	crate_name = "LustWish supply crate"
+//SKYRAT EDIT END
+
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////// Clothing Vending Restocks ////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
