@@ -65,6 +65,11 @@
 	soundloop2 = new(src, FALSE)
 	soundloop3 = new(src, FALSE)
 
+	//random color variation on start. Because why not?
+	current_color = pick(vibrator_designs)
+	update_icon_state()
+	update_icon()
+
 /obj/item/clothing/sextoy/vibrator/Destroy()
 	QDEL_NULL(soundloop1)
 	QDEL_NULL(soundloop2)
@@ -412,3 +417,9 @@
 			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
+
+//examine stuff
+
+/obj/item/clothing/sextoy/vibrator/examine(mob/user)
+	.=..()
+	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
