@@ -5,7 +5,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Icon, Stack } from "../components";
 import { Window } from "../layouts";
 
-const ROWS = 5;
+const ROWS = 6;
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = "50px";
@@ -205,6 +205,30 @@ const SLOTS: Record<
   right_pocket: {
     displayName: "right pocket",
     gridSpot: getGridSpotKey([4, 5]),
+    image: "inventory-pocket.png",
+  },
+
+  vagina: {
+    displayName: "vagina",
+    gridSpot: getGridSpotKey([5, 1]),
+    image: "inventory-pocket.png",
+  },
+
+  anus: {
+    displayName: "anus",
+    gridSpot: getGridSpotKey([5, 2]),
+    image: "inventory-pocket.png",
+  },
+
+  nipples: {
+    displayName: "nipples",
+    gridSpot: getGridSpotKey([5, 3]),
+    image: "inventory-pocket.png",
+  },
+
+  penis: {
+    displayName: "penis",
+    gridSpot: getGridSpotKey([5, 4]),
     image: "inventory-pocket.png",
   },
 };

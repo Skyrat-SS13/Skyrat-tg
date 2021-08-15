@@ -647,9 +647,9 @@
 	icon_state = "abomination"
 	icon_living = "abomination"
 	icon_gib = "abomination_death"
-	health = 1200
-	maxHealth = 1200
-	armour_penetration = 20
+	health = 750
+	maxHealth = 750
+	armour_penetration = 10
 	melee_damage_lower = 20
 	melee_damage_upper = 20
 	health_doll_icon = "pandora"
@@ -660,7 +660,7 @@
 	deathsound = 'sound/creatures/space_dragon_roar.ogg'
 	deathmessage = "begins to explode into chunks before he collapses into a pile of gore.."
 	gps_name = "Warden's Signal"
-	resize = 2.5
+	resize = 3
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/warden/death(gibbed)
 	spawn_gibs()
