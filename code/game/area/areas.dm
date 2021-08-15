@@ -17,21 +17,13 @@
 
 	///Do we have an active fire alarm?
 	var/fire = FALSE
-	/* SKYRAT EDIT REMOVAL
 	///How many fire alarm sources do we have?
 	var/triggered_firealarms = 0
-<<<<<<< HEAD
-	*/
-	///Whether there is an atmos alarm in this area
-	var/atmosalm = FALSE
-	var/poweralm = FALSE
-=======
 	///Alarm type to count of sources. Not usable for ^ because we handle fires differently
 	var/list/active_alarms = list()
 	///We use this just for fire alarms, because they're area based right now so one alarm going poof shouldn't prevent you from clearing your alarms listing
 	var/datum/alarm_handler/alarm_manager
 
->>>>>>> 79dc58fe2a3 (Redoes how alarms are handled, moves their behavior to datums (#60060))
 	var/lightswitch = TRUE
 
 	/// All beauty in this area combined, only includes indoor area.
@@ -244,91 +236,8 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(alarm_manager)
 	return ..()
-
-/**
-<<<<<<< HEAD
- * Generate a power alert for this area
- *
- * Sends to all ai players, alert consoles, drones and alarm monitor programs in the world
- */
-/area/proc/poweralert(state, obj/source)
-	if (area_flags & NO_ALERTS)
-		return
-	if (state != poweralm)
-		poweralm = state
-		if(istype(source)) //Only report power alarms on the z-level where the source is located.
-			for (var/item in GLOB.silicon_mobs)
-				var/mob/living/silicon/aiPlayer = item
-				if (!state)
-					aiPlayer.cancelAlarm("Power", src, source)
-				else
-					aiPlayer.triggerAlarm("Power", src, cameras, source)
-
-			for (var/item in GLOB.alert_consoles)
-				var/obj/machinery/computer/station_alert/a = item
-				if(!state)
-					a.cancelAlarm("Power", src, source)
-				else
-					a.triggerAlarm("Power", src, cameras, source)
-
-			for (var/item in GLOB.drones_list)
-				var/mob/living/simple_animal/drone/D = item
-				if(!state)
-					D.cancelAlarm("Power", src, source)
-				else
-					D.triggerAlarm("Power", src, cameras, source)
-			for(var/item in GLOB.alarmdisplay)
-				var/datum/computer_file/program/alarm_monitor/p = item
-				if(!state)
-					p.cancelAlarm("Power", src, source)
-				else
-					p.triggerAlarm("Power", src, cameras, source)
-
-/**
- * Generate an atmospheric alert for this area
- *
- * Sends to all ai players, alert consoles, drones and alarm monitor programs in the world
- */
-/area/proc/atmosalert(isdangerous, obj/source)
-	if (area_flags & NO_ALERTS)
-		return
-	if(isdangerous != atmosalm)
-		if(isdangerous)
-
-			for (var/item in GLOB.silicon_mobs)
-				var/mob/living/silicon/aiPlayer = item
-				aiPlayer.triggerAlarm("Atmosphere", src, cameras, source)
-			for (var/item in GLOB.alert_consoles)
-				var/obj/machinery/computer/station_alert/a = item
-				a.triggerAlarm("Atmosphere", src, cameras, source)
-			for (var/item in GLOB.drones_list)
-				var/mob/living/simple_animal/drone/D = item
-				D.triggerAlarm("Atmosphere", src, cameras, source)
-			for(var/item in GLOB.alarmdisplay)
-				var/datum/computer_file/program/alarm_monitor/p = item
-				p.triggerAlarm("Atmosphere", src, cameras, source)
-
-		else
-			for (var/item in GLOB.silicon_mobs)
-				var/mob/living/silicon/aiPlayer = item
-				aiPlayer.cancelAlarm("Atmosphere", src, source)
-			for (var/item in GLOB.alert_consoles)
-				var/obj/machinery/computer/station_alert/a = item
-				a.cancelAlarm("Atmosphere", src, source)
-			for (var/item in GLOB.drones_list)
-				var/mob/living/simple_animal/drone/D = item
-				D.cancelAlarm("Atmosphere", src, source)
-			for(var/item in GLOB.alarmdisplay)
-				var/datum/computer_file/program/alarm_monitor/p = item
-				p.cancelAlarm("Atmosphere", src, source)
-
-		atmosalm = isdangerous
-		return TRUE
-	return FALSE
 /* SKYRAT EDIT REMOVAL
 /**
-=======
->>>>>>> 79dc58fe2a3 (Redoes how alarms are handled, moves their behavior to datums (#60060))
  * Try to close all the firedoors in the area
  */
 /area/proc/ModifyFiredoors(opening)
@@ -390,29 +299,13 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	if (should_reset_alarms) // if there's a source, make sure there's no fire alarms left
 		unset_fire_alarm_effects()
-		//ModifyFiredoors(TRUE) SKYRAT EDIT CHANGE
+		ModifyFiredoors(TRUE)
 		for(var/item in firealarms)
 			var/obj/machinery/firealarm/F = item
 			F.update_appearance()
 	alarm_manager.clear_alarm(ALARM_FIRE, source)
 	STOP_PROCESSING(SSobj, src)
-<<<<<<< HEAD
-*/ //SKYRAT EDIT END
-///Get rid of any dangling camera refs
-/area/proc/clear_camera(obj/machinery/camera/cam)
-	LAZYREMOVE(cameras, cam)
-	for (var/mob/living/silicon/aiPlayer as anything in GLOB.silicon_mobs)
-		aiPlayer.freeCamera(src, cam)
-	for (var/obj/machinery/computer/station_alert/comp as anything in GLOB.alert_consoles)
-		comp.freeCamera(src, cam)
-	for (var/mob/living/simple_animal/drone/drone_on as anything in GLOB.drones_list)
-		drone_on.freeCamera(src, cam)
-	for(var/datum/computer_file/program/alarm_monitor/monitor as anything in GLOB.alarmdisplay)
-		monitor.freeCamera(src, cam)
-/* SKYRAT EDIT REMOVAL
-=======
 
->>>>>>> 79dc58fe2a3 (Redoes how alarms are handled, moves their behavior to datums (#60060))
 /**
  * If 100 ticks has elapsed, toggle all the firedoors closed again
  */
@@ -421,7 +314,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		firereset() //If there are no breaches or fires, and this alert was caused by a breach or fire, die
 	if(firedoors_last_closed_on + 100 < world.time) //every 10 seconds
 		ModifyFiredoors(FALSE)
-*/ //SKYRAT EDIT END
+
 /**
  * Close and lock a door passed into this proc
  *
@@ -444,23 +337,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if (area_flags & NO_ALERTS)
 		return
 	//Trigger alarm effect
-	//set_fire_alarm_effect() SKYRAT EDIT REMOVAL
+	set_fire_alarm_effect()
 	//Lockdown airlocks
-<<<<<<< HEAD
-	for(var/obj/machinery/door/DOOR in src)
-		close_and_lock_door(DOOR)
-
-	for (var/i in GLOB.silicon_mobs)
-		var/mob/living/silicon/SILICON = i
-		if(SILICON.triggerAlarm("Burglar", src, cameras, trigger))
-			//Cancel silicon alert after 1 minute
-			addtimer(CALLBACK(SILICON, /mob/living/silicon.proc/cancelAlarm,"Burglar",src,trigger), 600)
-/* SKYRAT EDIT REMOVAL
-=======
 	for(var/obj/machinery/door/door in src)
 		close_and_lock_door(door)
 
->>>>>>> 79dc58fe2a3 (Redoes how alarms are handled, moves their behavior to datums (#60060))
 /**
  * Trigger the fire alarm visual affects in an area
  *
@@ -493,7 +374,6 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	for(var/obj/machinery/light/L in src)
 		L.update()
 */
-
 /**
  * Update the icon state of the area
  *

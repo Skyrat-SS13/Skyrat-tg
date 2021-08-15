@@ -100,8 +100,8 @@
 /obj/structure/displaycase/proc/trigger_alarm()
 	if(!alert)
 		return
-	var/area/alarmed = get_area(src)
-	alarmed.burglaralert(src)
+	//var/area/alarmed = get_area(src) SKYRAT EDIT REMOVAL
+	//alarmed.burglaralert(src) SKYRAT EDIT REMOVAL
 
 	alarm_manager.send_alarm(ALARM_BURGLAR)
 	addtimer(CALLBACK(alarm_manager, /datum/alarm_handler/proc/clear_alarm, ALARM_BURGLAR), 1 MINUTES)
