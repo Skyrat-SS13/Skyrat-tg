@@ -56,13 +56,8 @@ Difficulty: Extremely Hard
 	. = ..()
 	for(var/obj/structure/frost_miner_prism/prism_to_set in GLOB.frost_miner_prisms)
 		prism_to_set.set_prism_light(LIGHT_COLOR_BLUE, 5)
-<<<<<<< HEAD
-	AddComponent(/datum/component/knockback, 7, FALSE, TRUE)
-	AddComponent(/datum/component/lifesteal, 50)
-=======
 	AddElement(/datum/element/knockback, 7, FALSE, TRUE)
 	AddElement(/datum/element/lifesteal, 50)
->>>>>>> d79c0039629 (knockback component to element. (#60633))
 
 /datum/action/innate/megafauna_attack/frost_orbs
 	name = "Fire Frost Orbs"
