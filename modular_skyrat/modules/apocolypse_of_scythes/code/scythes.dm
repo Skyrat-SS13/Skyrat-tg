@@ -3,6 +3,7 @@
 	desc = "A sharp and curved blade on a long fibremetal handle, this tool makes it easy to reap what you sow."
 	icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/items_and_weapons.dmi'
 	icon_state = "scythe"
+	worn_icon = 'modular_skyrat/modules/apocolypse_of_scythes/icons/back.dmi'
 	lefthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/apocolypse_of_scythes/icons/polearms_righthand.dmi'
 	force = 10
