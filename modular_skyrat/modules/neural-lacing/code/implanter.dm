@@ -41,6 +41,6 @@
 	name = "Believer Bundle"
 	desc = "Named after the infamous collector of souls - the believer bundle, a collection of items to ensure you get that payment on time..."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/believer
-	cost = 25
+	cost = 35
 
 
