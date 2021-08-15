@@ -887,7 +887,7 @@
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
 "ee" = (
-/turf/open/indestructible/hotelwood,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/prison/warden)
 "eg" = (
 /obj/item/storage/firstaid/advanced,
@@ -1276,7 +1276,7 @@
 /obj/machinery/button/door/prison/stage6{
 	pixel_x = -23
 	},
-/turf/open/indestructible/hotelwood,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/awaymission/prison/warden)
 "fM" = (
 /obj/machinery/door/airlock/security/old/glass,
@@ -1363,10 +1363,6 @@
 /obj/item/gun/ballistic/automatic/pistol/m1911,
 /turf/open/floor/iron/checker,
 /area/awaymission/prison/cafe)
-"gi" = (
-/obj/structure/closet/secure_closet/tac,
-/turf/open/floor/iron/shuttle/ferry,
-/area/awaymission/prison)
 "gl" = (
 /obj/structure/rack/shelf,
 /obj/item/storage/backpack/chameleon,
@@ -1587,6 +1583,10 @@
 /obj/effect/decal/cleanable/blood/innards,
 /turf/open/floor/iron/freezer,
 /area/awaymission/prison/med)
+"hu" = (
+/obj/structure/closet/crate/secure/weapon,
+/turf/open/floor/iron/dark/textured,
+/area/space)
 "hv" = (
 /obj/structure/water_source{
 	dir = 8;
@@ -1681,6 +1681,7 @@
 /area/awaymission/prison)
 "hX" = (
 /obj/structure/closet/toolcloset,
+/obj/item/tank/internals/emergency_oxygen/double,
 /turf/open/floor/iron/shuttle/ferry,
 /area/awaymission/prison)
 "ib" = (
@@ -2334,9 +2335,6 @@
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/iron,
 /area/awaymission/prison)
-"ln" = (
-/turf/open/space/basic,
-/area/awaymission/prison/cafe)
 "lo" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -2510,8 +2508,8 @@
 /turf/open/floor/iron/dark,
 /area/awaymission/prison/death)
 "mj" = (
-/mob/living/simple_animal/hostile/retaliate/ghost,
 /obj/structure/chair/bronze,
+/obj/item/clothing/suit/ghost_sheet/spooky,
 /turf/open/floor/iron,
 /area/space)
 "mk" = (
@@ -2624,6 +2622,11 @@
 /obj/item/ammo_box/c10mm,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/secret)
+"mQ" = (
+/obj/structure/table/reinforced,
+/obj/item/tank/internals/emergency_oxygen/double,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/cella)
 "mR" = (
 /obj/structure/table,
 /obj/item/reagent_containers/spray/cleaner,
@@ -3071,6 +3074,11 @@
 /obj/item/ammo_box/magazine/wt550m9,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/guard)
+"pb" = (
+/obj/structure/table/reinforced,
+/obj/item/tank/internals/emergency_oxygen/double,
+/turf/open/floor/iron,
+/area/awaymission/prison/cella)
 "pc" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/ballistic/automatic/pistol/ladon,
@@ -3098,7 +3106,6 @@
 /area/awaymission/prison/start)
 "pi" = (
 /obj/structure/table/reinforced,
-/obj/effect/spawner/lootdrop/armory_contraband,
 /turf/open/indestructible/boss/air,
 /area/awaymission/prison/secret)
 "pk" = (
@@ -3225,7 +3232,6 @@
 "pP" = (
 /obj/structure/table/reinforced,
 /obj/item/ammo_box/magazine/multi_sprite/ladon,
-/obj/item/ammo_box/magazine/multi_sprite/ladon,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/secret)
 "pQ" = (
@@ -3280,6 +3286,10 @@
 	dir = 6
 	},
 /area/awaymission/prison/rec)
+"qc" = (
+/mob/living/simple_animal/hostile/prison/zombiedoc,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/prison/secret)
 "qe" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron,
@@ -3866,8 +3876,8 @@
 /turf/open/floor/iron,
 /area/space)
 "tg" = (
-/mob/living/simple_animal/hostile/zombie,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/prison/zombieriot,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "th" = (
@@ -3945,7 +3955,7 @@
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
 "tD" = (
-/mob/living/simple_animal/hostile/zombie,
+/mob/living/simple_animal/hostile/prison/zombieert,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/prison/secret)
 "tF" = (
@@ -4569,6 +4579,10 @@
 /obj/item/kitchen/knife/combat/marksman,
 /turf/open/floor/iron/dark/textured,
 /area/awaymission/prison/med)
+"wD" = (
+/obj/item/tank/internals/emergency_oxygen/double,
+/turf/open/indestructible/white,
+/area/awaymission/prison)
 "wE" = (
 /obj/machinery/light/broken{
 	dir = 1
@@ -5943,10 +5957,6 @@
 	},
 /turf/open/floor/iron/airless,
 /area/awaymission/prison/hall)
-"DU" = (
-/mob/living/simple_animal/hostile/zombie,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/med)
 "DV" = (
 /obj/machinery/door/airlock/security{
 	name = "Contraband";
@@ -6278,6 +6288,10 @@
 /obj/machinery/reagentgrinder,
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
+"FL" = (
+/obj/item/tank/internals/emergency_oxygen/double,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison)
 "FN" = (
 /obj/structure/closet/secure_closet/contraband/armory,
 /obj/item/stack/spacecash/c10000,
@@ -6407,6 +6421,9 @@
 /area/awaymission/prison/cafe)
 "Gs" = (
 /obj/structure/closet/secure_closet/personal,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/tank/internals/emergency_oxygen/double,
 /turf/open/floor/iron/shuttle/ferry,
 /area/awaymission/prison)
 "Gt" = (
@@ -6660,6 +6677,10 @@
 "HO" = (
 /turf/closed/wall,
 /area/space)
+"HQ" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark/textured,
+/area/awaymission/prison/secret)
 "HV" = (
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/floor/iron,
@@ -7431,14 +7452,10 @@
 /turf/open/floor/iron,
 /area/awaymission/prison/med)
 "LA" = (
-/obj/structure/closet/crate,
 /obj/item/gun/energy/laser,
+/obj/structure/closet/crate/secure/weapon,
 /turf/open/floor/iron/dark/textured,
 /area/space)
-"LD" = (
-/obj/structure/closet/secure_closet/medical1,
-/turf/open/floor/iron/shuttle/ferry,
-/area/awaymission/prison)
 "LE" = (
 /obj/machinery/door/airlock/medical/glass,
 /obj/structure/barricade/wooden/crude,
@@ -7712,11 +7729,6 @@
 "Nl" = (
 /turf/open/floor/iron/freezer,
 /area/space)
-"Nm" = (
-/obj/effect/decal/cleanable/blood,
-/obj/item/kitchen/knife/combat/marksman,
-/turf/open/floor/iron/dark/textured,
-/area/awaymission/prison/hall)
 "Nn" = (
 /obj/effect/decal/cleanable/blood/footprints,
 /obj/effect/spawner/lootdrop/prison/prisoner,
@@ -8251,6 +8263,11 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/iron,
 /area/awaymission/prison)
+"Qo" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/prison/zombiedoc,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/prison/secret)
 "Qp" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -8269,6 +8286,9 @@
 	},
 /obj/item/clothing/head/helmet/swat/nanotrasen,
 /obj/item/clothing/suit/armor/vest,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/tank/internals/emergency_oxygen/double,
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
 "Qq" = (
@@ -9022,6 +9042,10 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/prison/guard)
+"UE" = (
+/mob/living/simple_animal/hostile/prison/zombieprisoner,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/prison/secret)
 "UH" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Security Desk";
@@ -9720,10 +9744,6 @@
 /obj/item/food/bread/root,
 /turf/open/floor/iron,
 /area/awaymission/prison/cella)
-"Yu" = (
-/mob/living/simple_animal/bot/honkbot,
-/turf/open/floor/carpet,
-/area/awaymission/prison/solitary)
 "Yv" = (
 /obj/machinery/computer/atmos_control/tank/oxygen_tank{
 	dir = 4
@@ -9944,6 +9964,11 @@
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/cafeteria,
 /area/awaymission/prison/cafe)
+"Zz" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/prison/zombieert,
+/turf/open/floor/iron/showroomfloor,
+/area/awaymission/prison/secret)
 "ZA" = (
 /mob/living/simple_animal/hostile/prison/zombiedoc,
 /obj/effect/decal/cleanable/blood,
@@ -16096,7 +16121,7 @@ OP
 OP
 OP
 cg
-Yu
+OP
 dO
 gz
 gz
@@ -31638,11 +31663,11 @@ bM
 Iw
 WT
 hX
-gi
+Yf
 Gs
 Gs
 Gs
-LD
+Yf
 Ka
 Ka
 Ka
@@ -36336,7 +36361,7 @@ bR
 bE
 Bw
 Bw
-yK
+rY
 JS
 rY
 rY
@@ -39681,7 +39706,7 @@ Bw
 xl
 xl
 rY
-Nm
+YS
 lE
 ds
 rY
@@ -43105,7 +43130,7 @@ Sr
 tG
 SR
 SR
-Yr
+mQ
 Sr
 Yr
 Yr
@@ -43362,7 +43387,7 @@ Sr
 tG
 sX
 TT
-Yr
+mQ
 wl
 SR
 TT
@@ -47486,7 +47511,7 @@ TT
 TT
 SR
 wl
-Xw
+pb
 TT
 TT
 TT
@@ -51593,7 +51618,7 @@ bR
 sJ
 Em
 Oc
-Em
+FL
 Oc
 Em
 sJ
@@ -52105,7 +52130,7 @@ zZ
 bR
 bR
 sJ
-Em
+FL
 Oc
 Em
 Oc
@@ -52622,7 +52647,7 @@ sJ
 Em
 Oc
 Em
-Oc
+wD
 Em
 sJ
 bR
@@ -55832,7 +55857,7 @@ MS
 do
 BE
 MS
-DU
+MS
 MS
 MS
 MS
@@ -56392,7 +56417,7 @@ WS
 ci
 Vn
 aJ
-Vn
+UE
 Ii
 bR
 bR
@@ -56858,7 +56883,7 @@ MS
 fY
 aU
 MS
-DU
+MS
 fY
 aU
 MS
@@ -56870,7 +56895,7 @@ aU
 BE
 fY
 aU
-DU
+MS
 MS
 ob
 zZ
@@ -56904,7 +56929,7 @@ RD
 DG
 WS
 Vn
-tD
+UE
 Vn
 ij
 wO
@@ -56983,7 +57008,7 @@ ee
 ee
 ee
 CC
-CC
+ee
 CC
 CC
 ee
@@ -57121,7 +57146,7 @@ Kp
 Aa
 fY
 MS
-DU
+MS
 fY
 MS
 mq
@@ -57149,10 +57174,10 @@ bR
 bR
 bR
 bR
-ij
+Zz
 Vn
 ij
-Vn
+tD
 WS
 mM
 Vn
@@ -57240,7 +57265,7 @@ ee
 ee
 ee
 CC
-CC
+ee
 Lr
 Lr
 ee
@@ -57409,7 +57434,7 @@ hx
 ij
 Vn
 ij
-tD
+Vn
 WS
 mM
 ZM
@@ -57498,7 +57523,7 @@ ee
 CC
 CC
 CC
-CC
+ee
 ee
 ee
 ee
@@ -57664,7 +57689,7 @@ pW
 pW
 eX
 Vn
-tg
+ij
 ij
 Vn
 WS
@@ -57753,7 +57778,7 @@ Lr
 ee
 ee
 ee
-CC
+ee
 CC
 CC
 ee
@@ -57931,7 +57956,7 @@ Vn
 Ii
 WE
 WS
-tg
+ij
 Vn
 Vn
 Vn
@@ -58028,7 +58053,7 @@ ee
 ee
 ee
 CC
-CC
+ee
 ee
 ee
 Lr
@@ -58269,9 +58294,9 @@ ee
 ee
 ee
 CC
-CC
-CC
-CC
+ee
+ee
+ee
 CC
 ee
 ee
@@ -58526,11 +58551,11 @@ CC
 CC
 ee
 ee
-CC
-CC
-CC
-CC
-CC
+ee
+ee
+ee
+ee
+ee
 CC
 CC
 CC
@@ -58543,7 +58568,7 @@ ee
 CC
 CC
 CC
-CC
+ee
 ee
 ee
 ee
@@ -58692,9 +58717,9 @@ bR
 bR
 bR
 Vn
-tD
+Vn
 ij
-tD
+Vn
 WS
 WE
 ci
@@ -58782,21 +58807,14 @@ ee
 ee
 CC
 CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
+ee
 ee
 ee
 CC
 ee
-CC
+ee
+ee
+ee
 ee
 ee
 ee
@@ -58804,6 +58822,13 @@ ee
 CC
 ee
 CC
+ee
+ee
+ee
+ee
+CC
+ee
+ee
 ee
 ee
 ee
@@ -58971,7 +58996,7 @@ zZ
 zZ
 bR
 xU
-xU
+zZ
 xU
 xU
 xU
@@ -59039,28 +59064,28 @@ ee
 ee
 ee
 ee
+ee
+ee
+ee
+ee
+ee
+ee
+ee
 CC
+CC
+ee
+ee
+ee
+CC
+CC
+ee
+ee
 CC
 CC
 ee
 CC
 CC
-CC
-CC
-CC
 ee
-ee
-CC
-CC
-CC
-CC
-ee
-CC
-CC
-ee
-CC
-CC
-CC
 ee
 ee
 ee
@@ -59227,17 +59252,17 @@ zZ
 zZ
 zZ
 zZ
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
 zZ
 zZ
 zZ
@@ -59291,33 +59316,33 @@ ee
 ee
 ee
 ee
+ee
+ee
+ee
 CC
 ee
 ee
-CC
 ee
-CC
-CC
-CC
-CC
-ee
-CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
 CC
 CC
 ee
 CC
 CC
 ee
+CC
+CC
+CC
+CC
+ee
+CC
+ee
 ee
 CC
 CC
+ee
+ee
+ee
+ee
 ee
 ee
 ee
@@ -59484,17 +59509,17 @@ zZ
 zZ
 zZ
 zZ
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
 zZ
 zZ
 zZ
@@ -59553,8 +59578,8 @@ ee
 CC
 CC
 ee
-CC
-CC
+ee
+ee
 CC
 CC
 CC
@@ -59565,16 +59590,16 @@ CC
 ee
 CC
 CC
+ee
 CC
-CC
-CC
-CC
+ee
+ee
 ee
 ee
 ee
 ee
 Lr
-CC
+ee
 ee
 ee
 ee
@@ -59742,16 +59767,16 @@ zZ
 zZ
 zZ
 zZ
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
-ln
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
+zZ
 zZ
 zZ
 zZ
@@ -59807,8 +59832,8 @@ ee
 Lr
 CC
 CC
-CC
-CC
+ee
+ee
 ee
 ee
 CC
@@ -59822,16 +59847,16 @@ KJ
 KJ
 KJ
 KE
-CC
-CC
-CC
+ee
+ee
+ee
+ee
 ee
 CC
 CC
 CC
-CC
-Lr
-CC
+ee
+ee
 ee
 ee
 ee
@@ -59978,7 +60003,7 @@ bR
 bR
 lA
 Vn
-tD
+Vn
 ij
 WS
 WA
@@ -60063,7 +60088,7 @@ ee
 ee
 CC
 CC
-CC
+ee
 ee
 ee
 CC
@@ -60081,7 +60106,7 @@ PU
 KJ
 CC
 CC
-CC
+ee
 CC
 ee
 ee
@@ -60308,8 +60333,8 @@ zZ
 zZ
 zZ
 zZ
+bR
 sJ
-sJ
 ee
 ee
 ee
@@ -60319,8 +60344,8 @@ CC
 ee
 CC
 CC
-CC
-CC
+ee
+ee
 ee
 ee
 CC
@@ -60338,7 +60363,7 @@ PU
 KJ
 CC
 CC
-CC
+ee
 CC
 ee
 ee
@@ -60493,7 +60518,7 @@ bR
 mM
 Vn
 ij
-Vn
+qc
 WS
 WE
 ci
@@ -60565,8 +60590,8 @@ zZ
 zZ
 zZ
 zZ
+bR
 sJ
-sJ
 ee
 ee
 ee
@@ -60575,7 +60600,7 @@ ee
 CC
 CC
 CC
-CC
+ee
 CC
 ee
 ee
@@ -60595,8 +60620,8 @@ PU
 uG
 CC
 CC
-CC
-CC
+ee
+ee
 ee
 ee
 ee
@@ -60822,7 +60847,7 @@ zZ
 zZ
 zZ
 zZ
-sJ
+bR
 sJ
 ee
 ee
@@ -60840,7 +60865,7 @@ ee
 Lr
 ee
 CC
-CC
+ee
 uG
 nl
 CC
@@ -60853,7 +60878,7 @@ uG
 CC
 CC
 CC
-CC
+ee
 ee
 Lr
 CC
@@ -61005,7 +61030,7 @@ zZ
 bR
 bR
 ij
-tg
+ij
 ij
 Vn
 WS
@@ -61079,7 +61104,7 @@ zZ
 zZ
 zZ
 zZ
-sJ
+bR
 sJ
 ee
 ee
@@ -61110,7 +61135,7 @@ uG
 CC
 CC
 CC
-CC
+ee
 CC
 Lr
 ee
@@ -61262,7 +61287,7 @@ zZ
 bR
 bR
 ij
-ij
+Qo
 ij
 Vn
 WS
@@ -61336,7 +61361,7 @@ zZ
 zZ
 zZ
 zZ
-sJ
+bR
 sJ
 ee
 ee
@@ -61365,7 +61390,7 @@ CC
 nl
 uG
 CC
-CC
+ee
 CC
 CC
 ee
@@ -61606,7 +61631,7 @@ CC
 CC
 CC
 ee
-CC
+ee
 CC
 ee
 CC
@@ -61624,7 +61649,7 @@ uG
 CC
 CC
 CC
-CC
+ee
 ee
 ee
 ee
@@ -61777,7 +61802,7 @@ bR
 bR
 Vn
 ij
-ij
+tg
 Ju
 WS
 WE
@@ -62119,12 +62144,12 @@ ee
 ee
 Lr
 ee
-CC
+ee
+ee
+ee
 ee
 CC
 ee
-CC
-CC
 CC
 KJ
 PU
@@ -62138,7 +62163,7 @@ KJ
 CC
 CC
 CC
-CC
+ee
 ee
 ee
 ee
@@ -62377,12 +62402,12 @@ ee
 Lr
 ee
 ee
+ee
+CC
+ee
 CC
 CC
-CC
-CC
-CC
-CC
+ee
 KJ
 KE
 KJ
@@ -62395,7 +62420,7 @@ KJ
 CC
 CC
 CC
-CC
+ee
 ee
 ee
 CC
@@ -62634,6 +62659,7 @@ ee
 ee
 ee
 CC
+ee
 CC
 CC
 CC
@@ -62649,10 +62675,9 @@ CC
 CC
 CC
 CC
+ee
 CC
-CC
-CC
-CC
+ee
 ee
 ee
 ee
@@ -62862,7 +62887,7 @@ bR
 WS
 WR
 hB
-gC
+HQ
 hB
 WS
 Uh
@@ -62890,14 +62915,7 @@ ee
 ee
 ee
 ee
-CC
-CC
-CC
-CC
-CC
-CC
-CC
-CC
+ee
 CC
 CC
 CC
@@ -62908,8 +62926,15 @@ CC
 CC
 CC
 CC
+ee
+CC
+ee
 CC
 CC
+CC
+CC
+CC
+ee
 ee
 ee
 ee
@@ -63149,13 +63174,13 @@ ee
 ee
 ee
 ee
+ee
 CC
 CC
-CC
-CC
-CC
-CC
-CC
+ee
+ee
+ee
+ee
 CC
 ee
 ee
@@ -63165,7 +63190,7 @@ CC
 CC
 CC
 CC
-CC
+ee
 ee
 CC
 ee
@@ -63413,16 +63438,16 @@ ee
 CC
 CC
 CC
+ee
+ee
 CC
 ee
 CC
 CC
 CC
-CC
-CC
 ee
 ee
-CC
+ee
 CC
 CC
 CC
@@ -63608,7 +63633,7 @@ WS
 EI
 EI
 EI
-OR
+EI
 EI
 EI
 EI
@@ -63676,8 +63701,8 @@ ee
 CC
 ee
 ee
-CC
-CC
+ee
+ee
 CC
 ee
 ee
@@ -64181,7 +64206,7 @@ ee
 ee
 ee
 ee
-CC
+ee
 ee
 ee
 CC
@@ -64439,8 +64464,8 @@ ee
 ee
 ee
 ee
-CC
-CC
+ee
+ee
 ee
 ee
 ee
@@ -65906,7 +65931,7 @@ li
 bR
 bR
 kM
-kv
+hu
 Hi
 Hi
 Hi
