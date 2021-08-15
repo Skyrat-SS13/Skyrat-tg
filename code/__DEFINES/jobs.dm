@@ -75,6 +75,8 @@
 #define DEPARTMENT_SILICON "Silicon"
 #define DEPARTMENT_BITFLAG_CENTRAL_COMMAND (1<<8) //SKYRAT EDIT CHANGE
 #define DEPARTMENT_CENTRAL_COMMAND "Central Command" //SKYRAT EDIT CHANGE
+#define DEPARTMENT_BITFLAG_SYNDICATE (1<<9) //SKYRAT EDIT CHANGE
+#define DEPARTMENT_SYNDICATE "Syndicate" //SKYRAT EDIT CHANGE
 
 /* Job datum job_flags */
 /// Whether the mob is announced on arrival.
