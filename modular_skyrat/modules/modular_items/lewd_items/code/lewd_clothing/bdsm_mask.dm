@@ -264,6 +264,13 @@
 	else
 		time_to_choke_left -= delta_time
 
+//examine stuff
+
+/obj/item/clothing/mask/gas/bdsm_mask/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+
 ////////////////////////////////
 //////////---FILTERS---/////////
 ////////////////////////////////

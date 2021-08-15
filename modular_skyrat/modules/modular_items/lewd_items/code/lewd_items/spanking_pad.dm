@@ -87,3 +87,10 @@
 	else
 		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
+
+//examine stuff
+
+/obj/item/spanking_pad/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

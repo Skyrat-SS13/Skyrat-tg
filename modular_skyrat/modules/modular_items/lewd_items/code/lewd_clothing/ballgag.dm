@@ -100,6 +100,16 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_[gag_size]_[gag_color]"
 	inhand_icon_state = "[initial(icon_state)]_[gag_size]_[gag_color]"
+//examine stuff
+
+/obj/item/clothing/mask/ballgag/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+
+/////////////////////////////////////////////////////////////////////
+/////////here goes code for choking version of ballgag///////////////
+/////////////////////////////////////////////////////////////////////
 
 // Fill the list of gag colors with gag colors
 /obj/item/clothing/mask/ballgag/proc/populate_gag_colors()
@@ -209,3 +219,29 @@
 #undef GAG_SIZABLE
 #undef GAG_COLORABLE
 #undef GAG_COLORABLE_AND_SIZABLE
+/obj/item/clothing/mask/ballgag_phallic/process(delta_time)
+	var/mob/living/carbon/human/U = loc
+	tt += delta_time
+	if(tt >= time)
+		if(ballgag_size == "small")
+			U.adjustOxyLoss(rand(0, 2))
+			if(prob(15))
+				U.emote(pick("gasp","choke","moan"))
+			tt = 0
+		if(ballgag_size == "medium")
+			U.adjustOxyLoss(rand(0, 3))
+			if(prob(20))
+				U.emote(pick("gasp","choke","moan"))
+			tt = 0
+		if(ballgag_size == "big")
+			U.adjustOxyLoss(rand(1, 4))
+			if(prob(25))
+				U.emote(pick("gasp","choke","moan"))
+			tt = 0
+
+//examine stuff
+
+/obj/item/clothing/mask/ballgag_phallic/examine(mob/user)
+	.=..()
+	if(was_reformed == FALSE && was_recolored == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

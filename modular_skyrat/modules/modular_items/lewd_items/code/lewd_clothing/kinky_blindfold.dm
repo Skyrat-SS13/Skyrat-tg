@@ -72,3 +72,10 @@
 	var/mob/living/carbon/C = user
 	if(src == C.glasses)
 		to_chat(C, span_purple("The blindfold no longer restricts your vision."))
+
+//examine stuff
+
+/obj/item/clothing/glasses/blindfold/kinky/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

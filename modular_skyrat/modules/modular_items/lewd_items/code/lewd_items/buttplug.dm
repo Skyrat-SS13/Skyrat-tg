@@ -131,4 +131,5 @@
 
 /obj/item/clothing/sextoy/buttplug/examine(mob/user)
 	.=..()
-	. += "<span class='notice'>It can be customized by Alt-click.</font>\n"
+	if(color_changed == FALSE && form_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
