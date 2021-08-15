@@ -885,6 +885,12 @@
 		return
 	///////////////////////////////////////
 
+//examine stuff
+
+/obj/structure/chair/milking_machine/examine(mob/user)
+	.=..()
+	. += "<span class='notice'>Click on \the [src.name] with multitool to customize it.</span>"
+
 // Interface data filling handler
 /obj/structure/chair/milking_machine/ui_data(mob/user)
 	var/list/data = list()

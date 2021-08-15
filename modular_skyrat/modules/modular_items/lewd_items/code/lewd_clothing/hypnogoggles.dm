@@ -88,6 +88,13 @@
 	icon_state = icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_hypnogoggles_color]"
 
+//examine stuff
+
+/obj/item/clothing/glasses/hypno/examine(mob/user)
+	.=..()
+	if(color_changed == FALSE)
+		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+
 /datum/brain_trauma/induced_hypnosis
 	name = "Hypnosis"
 	desc = "Patient's subconscious is completely enthralled by a word or sentence. It appears to be induced by something they're wearing."
