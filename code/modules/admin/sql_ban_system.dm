@@ -101,30 +101,6 @@
 /proc/build_ban_cache(client/player_client)
 	if(!SSdbcore.Connect())
 		return
-<<<<<<< HEAD
-	if(C && istype(C))
-		C.ban_cache = list()
-		var/is_admin = FALSE
-		if(GLOB.admin_datums[C.ckey] || GLOB.deadmins[C.ckey])
-			is_admin = TRUE
-		var/ssqlname = CONFIG_GET(string/serversqlname)   // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
-		var/server_check
-		if(CONFIG_GET(flag/respect_global_bans))
-			server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
-		else
-			server_check = "server_name = '[ssqlname]'"  // SKYRAT EDIT ADDITION END - MULTISERVER
-		var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
-			"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())  AND [server_check]",  // SKYRAT EDIT CHANGE - MULTISERVER
-			list("ckey" = C.ckey)
-		)
-		if(!query_build_ban_cache.warn_execute())
-			qdel(query_build_ban_cache)
-			return
-		while(query_build_ban_cache.NextRow())
-			if(is_admin && !text2num(query_build_ban_cache.item[2]))
-				continue
-			C.ban_cache[query_build_ban_cache.item[1]] = TRUE
-=======
 	if(QDELETED(player_client))
 		return
 	var/ckey = player_client.ckey
@@ -132,12 +108,17 @@
 	var/is_admin = FALSE
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		is_admin = TRUE
+	var/ssqlname = CONFIG_GET(string/serversqlname)   // SKYRAT EDIT ADDITION BEGIN - MULTISERVER
+	var/server_check
+	if(CONFIG_GET(flag/respect_global_bans))
+		server_check = "(server_name = '[ssqlname]' OR global_ban = '1')"
+	else
+		server_check = "server_name = '[ssqlname]'"  // SKYRAT EDIT ADDITION END - MULTISERVER
 	var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
 		"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())",
 		list("ckey" = ckey)
 	)
 	if(!query_build_ban_cache.warn_execute())
->>>>>>> af21c43ec70 (Fixes a minor client disconnection runtime (#60834))
 		qdel(query_build_ban_cache)
 		return
 	while(query_build_ban_cache.NextRow())
