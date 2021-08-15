@@ -526,10 +526,10 @@
 	var/turf/T = get_turf(src)
 	var/ladder_x = T.x
 	var/ladder_y = T.y
-	to_chat(user, span_notice("You unfold the ladder. It extends much farther than you were expecting."))
+	to_chat(user, span_notice("You unfold the ladder. It does some unknowable, eldritch twisting and turning in a dance of form, seeming to invert and fold into itself - before a satisfying click rings out.")) //Skyrat Edit - Attempts to explain why it sometimes just 'dissapears' on some z-levels.
 	var/last_ladder = null
 	for(var/i in 1 to world.maxz)
-		if(is_centcom_level(i) || is_reserved_level(i) || is_away_level(i))
+		if(is_centcom_level(i) || is_reserved_level(i) || is_away_level(i) || is_spaceruins_level(i)) //Skyrat Edit: Stops Jacob's ladder from piercing problematic space ruins.
 			continue
 		var/turf/T2 = locate(ladder_x, ladder_y, i)
 		last_ladder = new /obj/structure/ladder/unbreakable/jacob(T2, null, last_ladder)
