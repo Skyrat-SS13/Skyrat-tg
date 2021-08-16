@@ -1421,6 +1421,9 @@ GLOBAL_LIST_INIT(food, list(
 			if(job.veteran_only && !is_veteran_player(user.client))
 				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT VETERAN\]</font></td></tr>"
 				continue
+			if(job.is_spacer)
+				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT JOB\]</font></td></tr>"
+				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
 				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \] </font></td></tr>"

@@ -17,6 +17,7 @@
 /datum/id_trim/job/syndicom/skyrat/assault
 	assignment = "DS-2 Operative"
 	trim_state = "trim_syndicateoperative"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 
 /datum/id_trim/job/syndicom/skyrat/assault/assistant
 	assignment = "Operative"
@@ -28,7 +29,7 @@
 	job = /datum/job/skyratghostrole/syndicate/operative
 
 /datum/id_trim/job/syndicom/skyrat/assault/syndicatestaff
-	assignment = "Syndicate Staff"
+	assignment = "Service Staff"
 	trim_state = "trim_syndicatestaff"
 	config_job = "syndicate_staff"
 	template_access = list(ACCESS_SYNDICATE)

@@ -1,5 +1,12 @@
 /datum/job/skyratghostrole/syndicate
+	selection_color = "#ff9191"
 	paycheck_department = ACCOUNT_INT //Interdyne is the most prominent syndicate ghostrole.
+
+//Shitcode Spacer//
+/datum/job/skyratghostrole/syndicate/spacer
+	title = "SYNDICATE ROLES BELOW"
+	job_flags = JOB_NEW_PLAYER_JOINABLE //Not actually joinable thanks to the below, just makes it show up on the menu
+	is_spacer = TRUE //AHOY, [REDACTED] ME BOY! I BE SHITCODING ARGHGHGGHG
 
 //OPERATVIES / ASSISTANTS//
 /datum/job/skyratghostrole/syndicate/operative
@@ -26,10 +33,17 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/black
 	belt = null
-	implants = list(/obj/item/implant/weapons_auth) //TO-DO - When the access update rolls out, strip these out to be the mindshield equivalent
+	implants = list(/obj/item/implant/weapons_auth) //TO-DO - Move these to command/security only when access is decentralized from "ACCESS_SYNDICATE".
 
-/datum/outfit/job/skyratghostrole/syndicate/operative/post_equip(mob/living/carbon/human/H) //Sets them as part of the syndicate faction so turrets don't nuke them
+/datum/outfit/job/skyratghostrole/syndicate/operative/post_equip(mob/living/carbon/human/H) //Sets them as part of the syndicate faction so turrets don't nuke them.
+	. = ..()
 	H.faction |= ROLE_SYNDICATE
+	to_chat(H, "<span class='userdanger'>You <b><u>MUST</b></u> be careful with researching.")
+	to_chat(H, "<span class='warning'>Make sure Nanotrasen's Science Department has at least 15k points before researching /ANYTHING/, then research in the following order: Mining Tech, Parts, Anything else. <b>Remember: By default, you aren't an antagonist, to NT or your co-workers.</b>")
+	to_chat(H, "<b>You are a member of an Interdyne Pharmaceuticals Space Station, and know nothing of Nanotrasen's activity in the sector save for whispers over communications planetside.</b>")
+	to_chat(H, "Remember that the planetside base is considered 'valid' for NT Miners to attack, including anyone on it. IP-DS-2 itself is not.<br>")
+	//DS-2 not being valid is the result of traditional antagonists still.. existing. And I can guarantee that if we ever do rework enough systems to open the flood gates and let the two stations war with each other - It won't be spacetiders and miners \
+	 like the people who whine about the place all the time who'll be attacking it, it'll be a vet-crew locked role for both stations. Is this a subtweet? Sub..code? Iunno.
 
 //BOTANISTS / CHEFS / SERVICE STAFF//
 // Technically these have dedicated equivalents too, but rolling them into one role helps considering how far apart they are and is totally not at all a lazy holdover from DS-1 :)
@@ -52,6 +66,7 @@
 	name = "DS-2 Staff"
 	uniform = /obj/item/clothing/under/utility/syndicate
 	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/syndicatestaff
+	jobtype = /datum/job/skyratghostrole/syndicate/service
 
 //ENGINE TECHNICIANS / STATION ENGINEERS//
 /datum/job/skyratghostrole/syndicate/enginetech
@@ -74,6 +89,7 @@
 	uniform = /obj/item/clothing/under/utility/eng/syndicate
 	id_trim = /datum/id_trim/job/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
+	jobtype = /datum/job/skyratghostrole/syndicate/enginetech
 
 //Researchers / Scientists//
 /datum/job/skyratghostrole/syndicate/researcher
@@ -92,6 +108,7 @@
 	name = "DS-2 Researcher"
 	uniform = /obj/item/clothing/under/utility/sci/syndicate
 	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/researcher
+	jobtype = /datum/job/skyratghostrole/syndicate/researcher
 
 //Medical Officers/Medical Doctors//
 /datum/job/skyratghostrole/syndicate/medicalofficer
@@ -112,6 +129,7 @@
 	name = "DS-2 Station Medical Officer"
 	uniform = /obj/item/clothing/under/utility/med/syndicate
 	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/stationmedicalofficer
+	jobtype = /datum/job/skyratghostrole/syndicate/medicalofficer
 
 //Master At Arms/Warden//
 /datum/job/skyratghostrole/syndicate/masteratarms
@@ -138,6 +156,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
 	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	jobtype = /datum/job/skyratghostrole/syndicate/masteratarms
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -169,6 +188,7 @@
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	head = /obj/item/clothing/head/helmet/swat
 	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	jobtype = /datum/job/skyratghostrole/syndicate/brig_officer
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -202,6 +222,7 @@
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
 	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/stationadmiral
 	ears = /obj/item/radio/headset/interdyne/command
+	jobtype = /datum/job/skyratghostrole/syndicate/station_admiral
 
 //Prisoners, AKA How I extended griff to ghostroles//
 /datum/job/skyratghostrole/syndicate/prisoner
@@ -275,7 +296,7 @@
 	delete_after_roundstart = FALSE
 
 /obj/effect/landmark/start/syndicatestaff
-	name = "Syndicate Staff"
+	name = "Service Staff"
 	icon_state = "Chef"
 	jobspawn_override = TRUE
 	delete_after_roundstart = FALSE

@@ -106,6 +106,10 @@
 	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
 	var/veteran_only = FALSE
 
+	///Is this job a spacer 'job'? If so, prevent it from being added to preferences.
+	var/is_spacer = FALSE
+	//SKYRAT EDIT END
+
 
 /datum/job/New()
 	. = ..()
