@@ -84,6 +84,7 @@
 	desc = "Surprisingly stylish, if you lived in a silent impressionist film."
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#353535#AAAAAA"
 	icon_state = "beret_badge"
 	dog_fashion = null

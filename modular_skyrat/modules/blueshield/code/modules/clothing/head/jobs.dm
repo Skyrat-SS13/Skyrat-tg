@@ -3,6 +3,7 @@
 	desc = "A blue beret made of durathread with a genuine golden badge, denoting its owner as a Blueshield Lieuteneant. It seems to be padded with nano-kevlar, making it tougher than standard reinforced berets."
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#3A4E7D#DEB63D"
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/head_muzzled.dmi'
 	icon_state = "beret_badge_police"

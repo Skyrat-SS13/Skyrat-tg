@@ -19,6 +19,7 @@
 	desc = "A comfy yet robust beret worn by Armadyne corporate."
 	greyscale_config = /datum/greyscale_config/beret_badge_fancy
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge_fancy/worn/vox
 	greyscale_colors = "#3F3C40#5B2423#491716"
 	icon_state = "beret_badge_fancy_diagonal"
 	mutant_variants = NONE

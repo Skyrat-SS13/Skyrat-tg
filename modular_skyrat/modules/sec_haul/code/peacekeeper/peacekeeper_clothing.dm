@@ -14,6 +14,7 @@
 	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	icon_state = "beret_badge"
 	greyscale_colors = "#3F3C40#333399"
 	mutant_variants = NONE
@@ -34,6 +35,7 @@
 	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
 	greyscale_config = /datum/greyscale_config/beret_badge_fancy
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge_fancy/worn/vox
 	greyscale_colors = "#3F3C40#FF0000#00AEEF"
 	icon_state = "beret_badge_fancy_twist"
 	mutant_variants = NONE

@@ -64,6 +64,7 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#0070B7#FFCE5B"
 
 //Head of Personnel
@@ -128,6 +129,7 @@
 	dynamic_hair_suffix = ""
 	greyscale_config = /datum/greyscale_config/beret
 	greyscale_config_worn = /datum/greyscale_config/beret/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret/worn/vox
 	greyscale_colors = "#972A2A"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -152,6 +154,7 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#3F3C40#FFCE5B"
 
 /obj/item/clothing/head/hos/beret/navyhos
@@ -246,6 +249,7 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#972A2A#F2F2F2"
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 20, ACID = 50, WOUND = 4)
 	strip_delay = 60
@@ -278,6 +282,7 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#8D008F#FFFFFF"
 
 
@@ -339,10 +344,11 @@
 
 /obj/item/clothing/head/beret/durathread
 	name = "durathread beret"
-	desc =  "A beret made from durathread, its resilient fibres provide some protection to the wearer."
+	desc = "A beret made from durathread, its resilient fibres provide some protection to the wearer."
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#C5D4F3#ECF1F8"
 	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 30, ACID = 5, WOUND = 4)
 
@@ -363,6 +369,7 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#397F3F#FFCE5B"
 	armor = list(MELEE = 80, BULLET = 80, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, RAD = 90, FIRE = 100, ACID = 90, WOUND = 10)
 	strip_delay = 10 SECONDS
