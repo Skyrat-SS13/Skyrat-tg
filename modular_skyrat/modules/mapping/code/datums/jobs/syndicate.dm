@@ -42,7 +42,6 @@
 	back = /obj/item/storage/backpack
 	id = /obj/item/card/id/advanced/black
 	belt = null
-	implants = list(/obj/item/implant/weapons_auth) //TO-DO - Move these to command/security only when access is decentralized from "ACCESS_SYNDICATE".
 
 /datum/outfit/job/skyratghostrole/syndicate/operative/post_equip(mob/living/carbon/human/H) //Sets them as part of the syndicate faction so turrets don't nuke them.
 	. = ..()
@@ -161,6 +160,7 @@
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
 	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
 	jobtype = /datum/job/skyratghostrole/syndicate/masteratarms
+	implants = list(/obj/item/implant/weapons_auth)
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -193,6 +193,7 @@
 	head = /obj/item/clothing/head/helmet/swat
 	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
 	jobtype = /datum/job/skyratghostrole/syndicate/brig_officer
+	implants = list(/obj/item/implant/weapons_auth)
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -227,6 +228,7 @@
 	id_trim = /datum/id_trim/job/syndicom/skyrat/assault/stationadmiral
 	ears = /obj/item/radio/headset/interdyne/command
 	jobtype = /datum/job/skyratghostrole/syndicate/station_admiral
+	implants = list(/obj/item/implant/weapons_auth)
 
 //Prisoners, AKA How I extended griff to ghostroles//
 /datum/job/skyratghostrole/syndicate/prisoner
