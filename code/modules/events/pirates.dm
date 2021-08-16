@@ -318,10 +318,6 @@
 	var/datum/export_report/total_report
 	var/sending_timer
 	var/cargo_hold_id
-//SKYRAT EDIT BEGIN//
-	var/is_bank_connected = FALSE //Set to true if below is defined
-	var/datum/bank_account/sell_account //Account 'points' are sent to if above is defined. WNI with pirates, meant for other things!
-//SKYRAT EDIT END//
 
 /obj/machinery/computer/piratepad_control/Initialize()
 	..()
@@ -353,10 +349,6 @@
 /obj/machinery/computer/piratepad_control/ui_data(mob/user)
 	var/list/data = list()
 	data["points"] = points
-//SKYRAT EDIT BEGIN//
-	if(is_bank_connected = TRUE)
-		data["points"] = sell_account.account_balance
-//SKYRAT EDIT END//
 	data["pad"] = pad ? TRUE : FALSE
 	data["sending"] = sending
 	data["status_report"] = status_report
@@ -440,10 +432,7 @@
 		playsound(loc, 'sound/machines/wewewew.ogg', 70, TRUE)
 
 	points += value
-//SKYRAT EDIT BEGIN//
-	if(is_bank_connected = TRUE)
-		sell_account.adjust_money(value)
-//SKYRAT EDIT END//
+
 	if(!value)
 		status_report += "Nothing"
 
