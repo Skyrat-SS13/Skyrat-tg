@@ -86,6 +86,7 @@ require only minor tweaks.
 	ZTRAIT_DS2 = TRUE)
 
 #define ZTRAITS_ICETERDYNE list(\
+	ZTRAIT_LINKAGE = SELFLOOPING, \
 	ZTRAIT_STATION = TRUE, \
 	ZTRAIT_DS2 = TRUE)
 
