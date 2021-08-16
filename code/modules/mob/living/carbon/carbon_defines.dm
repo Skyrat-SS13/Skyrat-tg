@@ -107,3 +107,6 @@
 	var/can_be_shoved_into = FALSE
 
 	COOLDOWN_DECLARE(bleeding_message_cd)
+
+
+	var/next_smell = 0 //SKYRAT EDIT ADDITION /// Cooldown for the next smell
