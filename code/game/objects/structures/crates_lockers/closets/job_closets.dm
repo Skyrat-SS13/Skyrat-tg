@@ -69,6 +69,10 @@
 	new /obj/item/watertank/janitor(src)
 	new /obj/item/storage/belt/janitor(src)
 
+	//SKYRAT EDIT ADDITION
+	new /obj/item/air_refresher(src)
+	new /obj/item/air_refresher(src)
+	//SKYRAT EDIT END
 
 /obj/structure/closet/lawcloset
 	name = "legal closet"

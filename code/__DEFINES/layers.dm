@@ -10,16 +10,18 @@
 
 
 #define OPENSPACE_LAYER 600 //Openspace layer over all
-#define OPENSPACE_PLANE -9 //Openspace plane below all turfs
-#define OPENSPACE_BACKDROP_PLANE -8 //Black square just over openspace plane to guaranteed cover all in openspace turf
+#define OPENSPACE_PLANE -10 //Openspace plane below all turfs //SKYRAT EDIT CHANGE - MOVED TO 10 FROM 9 - Pollution port
+#define OPENSPACE_BACKDROP_PLANE -9 //Black square just over openspace plane to guaranteed cover all in openspace turf //SKYRAT EDIT CHANGE - MOVED TO 9 FROM 8 - Pollution port
 
 
-#define FLOOR_PLANE -7
+#define FLOOR_PLANE -8 //SKYRAT EDIT CHANGE - Pollution port
 #define FLOOR_PLANE_RENDER_TARGET "FLOOR_PLANE"
-#define OVER_TILE_PLANE -6
-#define WALL_PLANE -5
-#define GAME_PLANE -4
+#define OVER_TILE_PLANE -7 //SKYRAT EDIT CHANGE - Pollution port
+#define WALL_PLANE -6 //SKYRAT EDIT CHANGE - Pollution port
+#define GAME_PLANE -5 //SKYRAT EDIT CHANGE - Pollution port
 #define GAME_PLANE_RENDER_TARGET "GAME_PLANE"
+#define MOUSE_TRANSPARENT_PLANE -4 //SKYRAT EDIT ADDITION - Pollution port
+#define MOUSE_TRANSPARENT_PLANE_RENDER_TARGET "MOUSE_TRANSPARENT_PLANE" //SKYRAT EDIT ADDITION - Pollution port
 #define UNDER_FRILL_PLANE -3
 #define UNDER_FRILL_RENDER_TARGET "UNDER_FRILL_PLANE"
 #define FRILL_PLANE -2
