@@ -354,7 +354,7 @@
 	var/list/data = list()
 	data["points"] = points
 //SKYRAT EDIT BEGIN//
-	if(is_bank_connected = TRUE)
+	if(is_bank_connected == TRUE)
 		data["points"] = sell_account.account_balance
 //SKYRAT EDIT END//
 	data["pad"] = pad ? TRUE : FALSE
@@ -441,7 +441,7 @@
 
 	points += value
 //SKYRAT EDIT BEGIN//
-	if(is_bank_connected = TRUE)
+	if(is_bank_connected == TRUE)
 		sell_account.adjust_money(value)
 //SKYRAT EDIT END//
 	if(!value)
