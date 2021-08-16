@@ -134,7 +134,7 @@
 	name = "Crew Pinpointer"
 	desc = "Allows tracking of someone's location if their suit sensors are turned to tracking beacon."
 	id = "crewpinpointer"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE //Skyrat Edit Addition
 	materials = list(/datum/material/iron = 3000, /datum/material/glass = 1500, /datum/material/gold = 500)
 	build_path = /obj/item/pinpointer/crew
 	category = list("Medical Designs")
@@ -144,7 +144,7 @@
 	name = "Proximity Crew Pinpointer"
 	desc = "Displays your approximate proximity to someone if their suit sensors are turned to tracking beacon."
 	id = "crewpinpointerprox"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE //Skyrat Edit Addition
 	materials = list(/datum/material/iron = 1200, /datum/material/glass = 300, /datum/material/gold = 200)
 	build_path = /obj/item/pinpointer/crew/prox
 	category = list("Medical Designs")
@@ -233,7 +233,7 @@
 /datum/design/hospital_gown	//SKYRAT EDIT ADDITION START
 	name = "Hospital Gown"
 	id = "hospital_gown"
-	build_type = PROTOLATHE
+	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2500)
 	build_path = /obj/item/clothing/suit/toggle/labcoat/hospitalgown
 	category = list("Medical Designs")

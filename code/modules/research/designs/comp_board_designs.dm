@@ -71,6 +71,7 @@
 	build_path = /obj/item/circuitboard/computer/med_data
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	build_type = IMPRINTER //SKYRAT EDIT
 
 /datum/design/board/operating
 	name = "Computer Design (Operating Computer)"
@@ -103,12 +104,13 @@
 	build_path = /obj/item/circuitboard/computer/communications
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SECURITY //Honestly should have a bridge techfab for this sometime.
+	build_type = IMPRINTER //SKYRAT EDIT
 
 /datum/design/board/crewconsole
 	name = "Computer Design (Crew monitoring computer)"
 	desc = "Allows for the construction of circuit boards used to build a Crew monitoring computer."
 	id = "crewconsole"
-	build_type = IMPRINTER
+//	build_type = IMPRINTER // - SKYRAT EDIT REMOVAL - Come on, most ghostroles can nab these easily. Fukken /tg/
 	build_path = /obj/item/circuitboard/computer/crew
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_MEDICAL
@@ -120,6 +122,7 @@
 	build_path = /obj/item/circuitboard/computer/secure_data
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	build_type = IMPRINTER //SKYRAT EDIT
 
 /datum/design/board/atmosalerts
 	name = "Computer Design (Atmosphere Alert)"
@@ -184,6 +187,7 @@
 	build_path = /obj/item/circuitboard/computer/mecha_control
 	category = list("Computer Boards")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	build_type = IMPRINTER //SKYRAT EDIT
 
 /datum/design/board/mechapower
 	name = "Computer Design (Mech Bay Power Control Console)"
