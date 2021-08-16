@@ -1,12 +1,14 @@
 /datum/job/skyratghostrole/syndicate
 	selection_color = "#ff9191"
 	paycheck_department = ACCOUNT_INT //Interdyne is the most prominent syndicate ghostrole.
+	display_order = JOB_DISPLAY_ORDER_SYNDICATE
 
 //Shitcode Spacer//
 /datum/job/skyratghostrole/syndicate/spacer
 	title = "SYNDICATE ROLES BELOW"
 	job_flags = JOB_NEW_PLAYER_JOINABLE //Not actually joinable thanks to the below, just makes it show up on the menu
 	is_spacer = TRUE //AHOY, [REDACTED] ME BOY! I BE SHITCODING ARGHGHGGHG
+	display_order = JOB_DISPLAY_ORDER_SYNDSPACER
 
 //OPERATVIES / ASSISTANTS//
 /datum/job/skyratghostrole/syndicate/operative
@@ -14,7 +16,7 @@
 	total_positions = 5
 	supervisors = "absolutely everyone"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative
-	plasmaman_outfit = /datum/outfit/plasmaman //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman
 	paycheck = PAYCHECK_ASSISTANT
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	departments_list = list(/datum/job_department/syndicate)
@@ -22,6 +24,13 @@
 	liver_traits = list(TRAIT_GREYTIDE_METABOLISM)
 
 	family_heirlooms = list(/obj/item/storage/toolbox/mechanical/old/heirloom, /obj/item/clothing/gloves/cut/heirloom)
+
+/datum/job/skyratghostrole/syndicate/prisoner/after_spawn(mob/living/carbon/human/H, mob/M)
+	. = ..()
+	to_chat(H, "<span class='userdanger'>You <b><u>MUST</b></u> be careful with researching.")
+	to_chat(H, "<span class='warning'>Make sure Nanotrasen's Science Department has at least 15k points before researching /ANYTHING/, then research in the following order: Mining Tech, Parts, Anything else. <b>Remember: By default, you aren't an antagonist, to NT or your co-workers.</b>")
+	to_chat(H, "<b>You are a member of an Interdyne Pharmaceuticals Space Station, and know nothing of Nanotrasen's activity in the sector save for whispers over communications planetside.</b>")
+	to_chat(H, "Remember that the planetside base is considered 'valid' for NT Miners to attack, including anyone on it. IP-DS-2 itself is not.<br>")
 
 /datum/outfit/job/skyratghostrole/syndicate/operative //This is intended both as the operative outfit and as a base for all others.
 	name = "DS-2 Operative"
@@ -38,10 +47,6 @@
 /datum/outfit/job/skyratghostrole/syndicate/operative/post_equip(mob/living/carbon/human/H) //Sets them as part of the syndicate faction so turrets don't nuke them.
 	. = ..()
 	H.faction |= ROLE_SYNDICATE
-	to_chat(H, "<span class='userdanger'>You <b><u>MUST</b></u> be careful with researching.")
-	to_chat(H, "<span class='warning'>Make sure Nanotrasen's Science Department has at least 15k points before researching /ANYTHING/, then research in the following order: Mining Tech, Parts, Anything else. <b>Remember: By default, you aren't an antagonist, to NT or your co-workers.</b>")
-	to_chat(H, "<b>You are a member of an Interdyne Pharmaceuticals Space Station, and know nothing of Nanotrasen's activity in the sector save for whispers over communications planetside.</b>")
-	to_chat(H, "Remember that the planetside base is considered 'valid' for NT Miners to attack, including anyone on it. IP-DS-2 itself is not.<br>")
 	//DS-2 not being valid is the result of traditional antagonists still.. existing. And I can guarantee that if we ever do rework enough systems to open the flood gates and let the two stations war with each other - It won't be spacetiders and miners \
 	 like the people who whine about the place all the time who'll be attacking it, it'll be a vet-crew locked role for both stations. Is this a subtweet? Sub..code? Iunno.
 
@@ -53,7 +58,7 @@
 	total_positions = 4
 	supervisors = "the corporate liaison"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/service
-	plasmaman_outfit = /datum/outfit/plasmaman/chef //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman/chef
 	paycheck = PAYCHECK_EASY
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	departments_list = list(/datum/job_department/syndicate)
@@ -75,7 +80,7 @@
 	total_positions = 5
 	supervisors = "the chief engineering officer"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/enginetech
-	plasmaman_outfit = /datum/outfit/plasmaman/engineering //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman/engineering
 	paycheck = PAYCHECK_MEDIUM
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	departments_list = list(/datum/job_department/syndicate)
@@ -97,7 +102,7 @@
 	total_positions = 5
 	supervisors = "the chief research officer"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/researcher
-	plasmaman_outfit = /datum/outfit/plasmaman/science //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman/science
 	paycheck = PAYCHECK_MEDIUM
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	departments_list = list(/datum/job_department/syndicate)
@@ -116,7 +121,7 @@
 	total_positions = 5
 	supervisors = "the chief medical officer"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/stationmed
-	plasmaman_outfit = /datum/outfit/plasmaman/medical //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman/medical
 	paycheck = PAYCHECK_MEDIUM
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	departments_list = list(/datum/job_department/syndicate)
@@ -137,7 +142,7 @@
 	total_positions = 1
 	supervisors = "the chief master at arms"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/masteratarms
-	plasmaman_outfit = /datum/outfit/plasmaman/warden //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman/warden
 	paycheck = PAYCHECK_HARD
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	departments_list = list(/datum/job_department/syndicate)
@@ -169,7 +174,7 @@
 	total_positions = 5
 	supervisors = "the chief master at arms"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/brigoff
-	plasmaman_outfit = /datum/outfit/plasmaman/security //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman/security
 	paycheck = PAYCHECK_HARD
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	departments_list = list(/datum/job_department/syndicate)
@@ -202,7 +207,7 @@
 	supervisors = "Your benefactors and space law"
 	req_admin_notify = 1
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/admiral
-	plasmaman_outfit = /datum/outfit/plasmaman/captain //TEMP
+	plasmaman_outfit = /datum/outfit/plasmaman/captain
 	paycheck = PAYCHECK_COMMAND
 	job_flags = JOB_EQUIP_RANK | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
