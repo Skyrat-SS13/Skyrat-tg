@@ -305,7 +305,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	add_startupmessage("Loading DS-2...")
 	if(config.minetype != "none")
 		LoadGroup(FailedZs, "DS-2", "map_files/generic", "interdynestation.dmm", default_traits = ZTRAITS_INTERDYNE)
-		else (config.minetype == "none") //I can't remember the clean way to do this for the life of me, and I'm sure someone will pick it apart on github
+	if(config.minetype == "none") //I can't remember the clean way to do this for the life of me, and I'm sure someone will pick it apart on github
 		LoadGroup(FailedZs, "DS-2", "map_files/generic", "interdynestation.dmm", default_traits = ZTRAITS_ICETERDYNE)
 //SKYRAT EDIT END//
 
