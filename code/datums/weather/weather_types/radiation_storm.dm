@@ -18,7 +18,8 @@
 
 	area_type = /area
 	protected_areas = list(/area/maintenance, /area/ai_monitored/turret_protected/ai_upload, /area/ai_monitored/turret_protected/ai_upload_foyer, /area/ai_monitored/turret_protected/aisat/maint, /area/ai_monitored/command/storage/satellite,
-	/area/ai_monitored/turret_protected/ai, /area/commons/storage/emergency/starboard, /area/commons/storage/emergency/port, /area/shuttle, /area/security/prison/safe, /area/security/prison/toilet)
+	/area/ai_monitored/turret_protected/ai, /area/commons/storage/emergency/starboard, /area/commons/storage/emergency/port, /area/shuttle, /area/security/prison/safe, /area/security/prison/toilet, /area/ruin/space/has_grav/skyrat/interdynefob/maintenance,
+	/area/ruin/space/has_grav/skyrat/interdynefob/security/prison, /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms) //SKYRAT EDIT - Added DS-2 maintenance and a few other choice areas
 	target_trait = ZTRAIT_STATION
 
 	immunity_type = WEATHER_RAD
