@@ -36,7 +36,6 @@
 	icon_state = "ranger_cloak"
 	mutant_variants = NONE
 	heat_protection = CHEST
-	togglename = "cloak"
 
 /obj/item/clothing/neck/ponchoranger/ComponentInitialize()
 	. = ..()
