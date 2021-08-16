@@ -7,6 +7,7 @@
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_worn
 	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_worn_digi
+	greyscale_config_worn_vox = /datum/greyscale_config/jumpsuit_worn_vox
 	icon = 'icons/obj/clothing/under/color.dmi'
 	icon_state = "jumpsuit"
 	inhand_icon_state = "jumpsuit"
