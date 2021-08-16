@@ -28,7 +28,7 @@
 	desc = "A Yucca plant acclimated to the dry climate, with large purple fruits hanging off of it.."
 	harvested_name = "dagger-yucca"
 	harvested_desc = "A plucked Yucca plant acclimated to the dry climate, the stem beggining to blossom with small buds."
-	icon_state = "wild_yucca"	//TO-DO: turn fruits purple (Dagger Plant, Yucca aloifolia)
+	icon_state = "wild_yucca"
 	harvest = /obj/item/food/grown/rock_flora/yucca
 	harvest_amount_high = 3
 	harvest_time = 10
@@ -55,29 +55,6 @@
 
 //////////////
 //FOOD ITEMS
-/*
-/obj/item/food/grown
-	icon = 'icons/obj/hydroponics/harvest.dmi'
-	worn_icon = 'icons/mob/clothing/head/hydroponics.dmi'
-	name = "fresh produce" // so recipe text doesn't say 'snack'
-	max_volume = 100
-	w_class = WEIGHT_CLASS_SMALL
-	resistance_flags = FLAMMABLE
-	/// The typepath made when the plant is splatted with liquid contents.
-	var/splat_type = /obj/effect/decal/cleanable/food/plant_smudge
-	/// If TRUE, this object needs to be dry to be ground up
-	var/dry_grind = FALSE
-	/// If FALSE, this object cannot be distilled into an alcohol.
-	var/can_distill = TRUE
-	/// The reagent this plant distill to. If NULL, it uses a generic fruit_wine reagent and adjusts its variables.
-	var/distill_reagent
-	/// Flavor of the plant's wine if NULL distll_reagent. If NULL, this is automatically set to the fruit's flavor.
-	var/wine_flavor
-	/// Boozepwr of the wine if NULL distill_reagent
-	var/wine_power = 10
-	/// Color of the grown object, for use in coloring greyscale splats.
-	var/filling_color
-*/
 /obj/item/food/grown/rock_flora
 	name = "rockplanet grown item"
 	desc = "(THIS IS BROKEN - PLEASE REPORT HOW YOU GOT IT, THEN CONVERT IT INTO A SEED)"
@@ -90,7 +67,7 @@
 
 /obj/item/food/grown/rock_flora/coyote
 	name = "coyote tobacco"
-	desc = ""
+	desc = "Dry them out to make some smokes."	//Same description as normal tobacco, and to non-botanists it'll seem to just be the same
 	icon_state = "coyote_tobacco"
 	seed = /obj/item/seeds/rockplanet/coyote
 
@@ -99,23 +76,23 @@
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
-	special_desc = "Tobacco like this commonly sees medicinal use as (whatever i come up with). This particular plant could also substitute Dasylirion Cedrosanum in making mild alcohol..."
+	special_desc = "Tobacco like this commonly sees medicinal use as a painkiller due to its chemical contents. This particular strain could also substitute Dasylirion Cedrosanum in making mild alcohol..."
 
 /obj/item/food/grown/rock_flora/yucca
 	name = "purple yucca fruit"
-	desc = ""
+	desc = "A deep purple fruit with hard ridges. The inside is a pale white."
 	icon_state = "yucca_fruit"
 	seed = /obj/item/seeds/rockplanet/yucca
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
-	special_desc = "Aside from these edible fruits, the plant's seeds can be used in soap and shampoo!" //You can grind the seeds to get (somewhat hard to get soap ingredient(?)) Craft the soap with the seeds as an item?(?)
+	special_desc = "Aside from these edible fruits, the plant's seeds can be used in soap and shampoo!" //(grind seeds for somewhat hard to get soap ingredient(?)) Craft the soap with the seeds as an item?(?)
 
 	//TODO: Roast(bonfire) or bake(microwave) - sweet molasses/figgy flavor || dry and grind into a meal(needs to be dried to blend, but gives good nutriment when you do?? idk what to do for this)
 
 /obj/item/food/grown/rock_flora/agaricus
 	name = "wine-colored agaricus"
-	desc = ""
+	desc = "Average-sized mushrooms, the undersides of the caps are wine-red."
 	icon_state = "agaricus_shrooms"
 	seed = /obj/item/seeds/rockplanet/agaricus
 
@@ -150,8 +127,7 @@
 	plantname = "Coyote Tobacco"
 	product = /obj/item/food/grown/rock_flora/coyote
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/medicine/salbutamol = 0.05, /datum/reagent/drug/nicotine = 0.08, /datum/reagent/consumable/nutriment = 0.03)
-	//To-do: smoking it 'reduces throbbing from rattlesnake bites' (light painkiller? [(whatever i come up with)])
+	reagents_add = list(/datum/reagent/drug/nicotine = 0.03, /datum/reagent/consumable/nutriment = 0.01, /datum/reagent/medicine/granibitaluri = 0.01)	//Acts as a mild painkiller. Balance debate pending.
 
 /obj/item/seeds/rockplanet/yucca
 	name = "pack of dagger-yucca seeds"
