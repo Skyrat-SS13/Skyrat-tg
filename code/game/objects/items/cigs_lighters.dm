@@ -43,7 +43,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/match/proc/matchignite()
 	if(lit || burnt)
 		return
-
+	//SKYRAT EDIT ADDITION
+	var/turf/my_turf = get_turf(src)
+	my_turf.PolluteTurf(/datum/pollutant/sulphur, 5)
+	//SKYRAT EDIT END
 	playsound(src, 'sound/items/match_strike.ogg', 15, TRUE)
 	lit = TRUE
 	icon_state = "match_lit"
@@ -160,6 +163,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	/// How much damage this deals to the lungs per drag.
 	var/lung_harm = 1
 
+	var/pollution_type = /datum/pollutant/smoke //SKYRAT EDIT ADDITION /// What type of pollution does this produce on smoking, changed to weed pollution sometimes
+
 
 /obj/item/clothing/mask/cigarette/Initialize()
 	. = ..()
@@ -234,7 +239,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		e.start()
 		qdel(src)
 		return
+	//SKYRAT EDIT ADDITION
+	// Setting the puffed pollutant to cannabis if we're smoking the space drugs reagent(obtained from cannabis)
+	if(reagents.has_reagent(/datum/reagent/drug/space_drugs))
+		pollution_type = /datum/pollutant/smoke/cannabis
 	// allowing reagents to react after being lit
+	//SKYRAT EDIT END
+
 	reagents.flags &= ~(NO_REACT)
 	reagents.handle_reactions()
 	icon_state = icon_on
@@ -300,6 +311,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!air || !air.has_gas(/datum/gas/oxygen, 1)) //or oxygen on a tile to burn
 			extinguish()
 			return
+
+	location.PolluteTurf(pollution_type, 10) //SKYRAT EDIT ADDITION
 
 	smoketime -= delta_time * (1 SECONDS)
 	if(smoketime <= 0)
@@ -1067,6 +1080,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	//Time to start puffing those fat vapes, yo.
 	COOLDOWN_START(src, drag_cooldown, dragtime)
+
+	//SKYRAT EDIT ADDITION
+	//open flame removed because vapes are a closed system, they won't light anything on fire
+	var/turf/my_turf = get_turf(src)
+	my_turf.PolluteTurf(/datum/pollutant/smoke/vape, 10)
+	//SKYRAT EDIT END
+
 	if(obj_flags & EMAGGED)
 		var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
 		s.set_up(reagents, 4, 24, loc)

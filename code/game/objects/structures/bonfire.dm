@@ -143,6 +143,10 @@
 	if(!check_oxygen())
 		extinguish()
 		return
+	//SKYRAT EDIT ADDITION
+	var/turf/my_turf = get_turf(src)
+	my_turf.PolluteListTurf(list(/datum/pollutant/smoke = 20, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP)
+	//SKYRAT EDIT END
 	bonfire_burn(delta_time)
 
 /obj/structure/bonfire/extinguish()
