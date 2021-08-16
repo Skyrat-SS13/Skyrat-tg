@@ -39,6 +39,7 @@ require only minor tweaks.
 #define ZTRAIT_ICE_RUINS_UNDERGROUND "Ice Ruins Underground"
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
 #define ZTRAIT_ROCKPLANET_RUINS "Rockplanet Ruins" //SKYRAT EDIT - Adds Ruins to Rockplanet mining map
+#define ZTRAIT_DS2 "Interdyne Station" //SKYRAT EDIT - Interdyne z-level trait.
 
 // boolean - weather types that occur on the level
 #define ZTRAIT_SNOWSTORM "Weather_Snowstorm"
@@ -78,6 +79,15 @@ require only minor tweaks.
 	ZTRAIT_LAVA_RUINS = TRUE, \
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
 	ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
+
+#define ZTRAITS_INTERDYNE list(\
+	ZTRAIT_LINKAGE = CROSSLINKED, \
+	ZTRAIT_STATION = TRUE, \
+	ZTRAIT_DS2 = TRUE)
+
+#define ZTRAITS_ICETERDYNE list(\
+	ZTRAIT_STATION = TRUE, \
+	ZTRAIT_DS2 = TRUE)
 
 #define DL_NAME "name"
 #define DL_TRAITS "traits"

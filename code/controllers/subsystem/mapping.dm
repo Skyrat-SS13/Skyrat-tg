@@ -300,6 +300,15 @@ Used by the AI doomsday and the self-destruct nuke.
 	add_startupmessage("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
+//SKYRAT EDIT BEGIN//
+//TL;DR, this quick and dirty approach lets DS-2 Load on both normal maps with space linkage and planetside maps with no space linkage.
+	add_startupmessage("Loading DS-2...")
+	if(config.minetype != "none")
+		LoadGroup(FailedZs, "DS-2", "map_files/generic", "interdynestation.dmm", default_traits = ZTRAITS_INTERDYNE)
+		else (config.minetype == "none") //I can't remember the clean way to do this for the life of me, and I'm sure someone will pick it apart on github
+		LoadGroup(FailedZs, "DS-2", "map_files/generic", "interdynestation.dmm", default_traits = ZTRAITS_ICETERDYNE)
+//SKYRAT EDIT END//
+
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id
