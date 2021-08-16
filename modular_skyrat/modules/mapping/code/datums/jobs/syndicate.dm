@@ -76,7 +76,6 @@
 //ENGINE TECHNICIANS / STATION ENGINEERS//
 /datum/job/skyratghostrole/syndicate/enginetech
 	title = "Engine Technician"
-	faction = FACTION_STATION
 	total_positions = 5
 	supervisors = "the chief engineering officer"
 	outfit = /datum/outfit/job/skyratghostrole/syndicate/operative/enginetech
