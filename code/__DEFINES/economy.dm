@@ -40,7 +40,7 @@
 #define ACCOUNT_CMD "CMD" // SKYRAT EDIT
 #define ACCOUNT_CMD_NAME "Command Budget" // SKYRAT EDIT
 #define ACCOUNT_CCM "CCM" // SKYRAT EDIT
-#define ACCOUNT_CMD_NAME "Central Command Budget" // SKYRAT EDIT
+#define ACCOUNT_CCM_NAME "Central Command Budget" // SKYRAT EDIT
 
 #define NO_FREEBIES "commies go home"
 
