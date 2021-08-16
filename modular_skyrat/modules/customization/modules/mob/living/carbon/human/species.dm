@@ -394,7 +394,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		for(var/obj/item/organ/external/organ_path as anything in external_organs)
 			//Load a persons preferences from DNA
 			var/preference_name = human.dna.features[initial(organ_path.preference)]
+
 			var/obj/item/organ/external/new_organ = new organ_path(null, preference_name, human.body_type)
+
 			new_organ.Insert(human)
 
 	for(var/X in inherent_traits)

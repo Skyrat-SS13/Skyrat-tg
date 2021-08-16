@@ -619,16 +619,13 @@ generate/load female uniform sprites matching all previously decided variables
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		. += "-[BP.body_zone]"
-<<<<<<< HEAD
-		//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
-		/*
-=======
 
 		for(var/obj/item/organ/external/organ in BP.external_organs)
 			if(organ.can_draw_on_bodypart(src)) //make sure we're drawn before generating a key
 				. += "([organ.cache_key])"
 
->>>>>>> 8a7f2581718 (The Great Species Dedatumming: External feature organs, part 1 (#59981))
+		//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
+		/*
 		if(BP.status == BODYPART_ORGANIC)
 			. += "-organic"
 		else
