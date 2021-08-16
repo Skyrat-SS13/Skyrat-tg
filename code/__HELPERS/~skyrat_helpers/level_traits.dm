@@ -1,1 +1,1 @@
-#define is_spaceruins_level(z) SSmapping.level_trait(z, ZTRAIT_SPACE_RUINS) //Detects when a z-level has space ruins. This is different from empty space z-levels, or the station. COUGH COUGH, MAINTAINERS.
+#define is_ds2_level(z) SSmapping.level_trait(z, ZTRAIT_DS2) //Detects when a z-level has a viral outbreak of syndicate. Sad!
