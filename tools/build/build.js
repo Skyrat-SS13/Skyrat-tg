@@ -79,11 +79,18 @@ const TguiTarget = Juke.createTarget({
     "tgui/packages/**/*.+(js|cjs|ts|tsx|scss)",
   ],
   outputs: [
+<<<<<<< HEAD
     "tgui/public/tgui.bundle.css",
     "tgui/public/tgui.bundle.js",
     "tgui/public/tgui-common.bundle.js",
     "tgui/public/tgui-panel.bundle.css",
     "tgui/public/tgui-panel.bundle.js",
+=======
+    'tgui/public/tgui.bundle.css',
+    'tgui/public/tgui.bundle.js',
+    'tgui/public/tgui-panel.bundle.css',
+    'tgui/public/tgui-panel.bundle.js',
+>>>>>>> 9bbabfe36b0 (tgui maintenance chores (#60859))
   ],
   executes: () => yarn("run", "webpack-cli", "--mode=production"),
 });
@@ -94,6 +101,7 @@ const DefineParameter = Juke.createParameter({
   alias: "D",
 });
 
+<<<<<<< HEAD
 const DmTarget = Juke.createTarget({
   name: "dm",
   inputs: [
@@ -108,6 +116,54 @@ const DmTarget = Juke.createTarget({
   ],
   outputs: [`${DME_NAME}.dmb`, `${DME_NAME}.rsc`],
   parameters: [DefineParameter],
+=======
+export const TguiTscTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: async () => {
+    await yarn('tsc');
+  },
+});
+
+export const TguiTestTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: async ({ args }) => {
+    await yarn('jest', ...args);
+  },
+});
+
+export const TguiLintTarget = new Juke.Target({
+  dependsOn: [YarnTarget, TguiEslintTarget, TguiTscTarget, TguiTestTarget],
+});
+
+export const TguiDevTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: async ({ args }) => {
+    await yarn('node', 'packages/tgui-dev-server/index.js', ...args);
+  },
+});
+
+export const TguiAnalyzeTarget = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: async () => {
+    await yarn('webpack-cli', '--mode=production', '--analyze');
+  },
+});
+
+export const TestTarget = new Juke.Target({
+  dependsOn: [DmTestTarget, TguiTestTarget],
+});
+
+export const LintTarget = new Juke.Target({
+  dependsOn: [TguiLintTarget],
+});
+
+export const BuildTarget = new Juke.Target({
+  dependsOn: [TguiTarget, TgFontTarget, DmTarget],
+});
+
+export const ServerTarget = new Juke.Target({
+  dependsOn: [BuildTarget],
+>>>>>>> 9bbabfe36b0 (tgui maintenance chores (#60859))
   executes: async ({ get }) => {
     const defines = get(DefineParameter);
     if (defines.length > 0) {
