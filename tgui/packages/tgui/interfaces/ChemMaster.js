@@ -230,12 +230,12 @@ const PackagingControls = (props, context) => {
     bottleAmount,
     setBottleAmount,
   ] = useSharedState(context, 'bottleAmount', 1);
-  //SKYRAT EDIT HYPOVIALS
+  // SKYRAT EDIT HYPOVIALS
   const [
     vialAmount,
     setVialAmount,
   ] = useSharedState(context, 'vialAmount', 1);
-  //SKYRAT EDIT END
+  // SKYRAT EDIT END
   const [
     packAmount,
     setPackAmount,
@@ -316,7 +316,7 @@ const PackagingControls = (props, context) => {
             type: 'vial',
             amount: vialAmount,
             volume: 'auto',
-          })} /> //SKYRAT EDIT HYPOVIALS END
+          })} /> // SKYRAT EDIT HYPOVIALS END
       )} 
       {!!condi && (
         <LabeledList.Item label="Bottle type">
