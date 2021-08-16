@@ -271,5 +271,5 @@
 /obj/structure/jobtape/bio
 	name = "biohazard tape"
 	desc = "A length of biohazard tape. Do not cross."
-	req_one_access = list(ACCESS_MEDICAL, ACCESS_VIROLOGY, ACCESS_XENOBIOLOGY)
+	req_one_access = list(ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_VIROLOGY, ACCESS_XENOBIOLOGY)
 	icon_base = "bio"
