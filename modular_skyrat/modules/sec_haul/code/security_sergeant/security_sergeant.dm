@@ -9,7 +9,9 @@
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
-	exp_type = EXP_TYPE_SECURITY
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
+	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/security_sergeant
 	plasmaman_outfit = /datum/outfit/plasmaman/security
@@ -19,7 +21,9 @@
 
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	departments = DEPARTMENT_SECURITY
+	departments_list = list(
+		/datum/job_department/security,
+	)
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_SERGEANT
 	bounty_types = CIV_JOB_SEC
@@ -43,7 +47,7 @@
 
 	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/armament_token/sidearm)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

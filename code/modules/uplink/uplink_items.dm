@@ -1693,7 +1693,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	uplink_box.name = "Uplink Implant Box"
 	new /obj/item/implanter/uplink(uplink_box, purchaser_uplink.uplink_flag)
 	return uplink_box
-	
+
 
 /datum/uplink_item/implants/xray
 	name = "X-ray Vision Implant"
@@ -1727,7 +1727,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	Syndicate brand \"Extra-Bright Lantern™\". Enjoy."
 	cost = 2
 	item = /obj/item/flashlight/lantern/syndicate
-	restricted_species = list("moth")
+	restricted_species = list(SPECIES_MOTH)
 
 // Role-specific items
 /datum/uplink_item/role_restricted
@@ -1963,12 +1963,12 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/autosurgeon/organ/syndicate/laser_arm
 	//restricted_roles = list("Roboticist", "Research Director") //SKYRAT EDIT: Removal
 
-/datum/uplink_item/role_restricted/ocd_device
+/datum/uplink_item/role_restricted/bureaucratic_error_remote
 	name = "Organic Resources Disturbance Inducer"
 	desc = "A device that raises hell in organic resources indirectly. Single use."
 	cost = 2
 	limited_stock = 1
-	item = /obj/item/devices/ocd_device
+	item = /obj/item/devices/bureaucratic_error_remote
 	restricted_roles = list("Head of Personnel", "Quartermaster")
 
 /datum/uplink_item/role_restricted/meathook

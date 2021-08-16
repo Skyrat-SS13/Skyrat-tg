@@ -36,6 +36,7 @@
 
 /mob/dead/new_player/Destroy()
 	GLOB.new_player_list -= src
+
 	return ..()
 
 /mob/dead/new_player/prepare_huds()
@@ -50,10 +51,24 @@
 
 	winset(src, "lobbybrowser", "is-disabled=false;is-visible=true")
 
+
+
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/lobby) //Sending pictures to the client
 	assets.send(src)
 
+
+
+
+
+
+
+
+
+
+
 	update_titlescreen()
+
+
 
 
 /mob/dead/new_player/proc/update_titlescreen()
@@ -93,6 +108,7 @@
 				AND deleted = 0
 			)
 		"}, list("isadmin" = isadmin, "ckey" = ckey))
+
 		if(!query_get_new_polls.Execute())
 			qdel(query_get_new_polls)
 			return
@@ -107,6 +123,9 @@
 
 /mob/dead/new_player/Topic(href, href_list[])
 	if(src != usr || !client)
+
+
+
 		return
 
 	if(client.interviewee)
@@ -173,6 +192,7 @@
 		if(!client.prefs.check_flavor_text())
 			return
 
+
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(usr, "<span class='boldwarning'>The round is either not ready, or has already finished...</span>")
 			return
@@ -220,6 +240,9 @@
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
 
+
+
+
 	if(href_list["showpoll"])
 		handle_player_polling()
 		return
@@ -248,6 +271,7 @@
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
 		show_titlescreen()
+
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
@@ -453,31 +477,31 @@
 			SSjob.prioritized_jobs -= prioritized_job
 	dat += "<table><tr><td valign='top'>"
 	var/column_counter = 0
-	// render each category's available jobs
-	for(var/category in GLOB.position_categories)
-		// position_categories contains category names mapped to available jobs and an appropriate color
-		var/cat_color = GLOB.position_categories[category]["color"]
-		dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
-		dat += "<legend align='center' style='color: [cat_color]'>[category]</legend>"
-		var/list/dept_dat = list()
-		for(var/job in GLOB.position_categories[category]["jobs"])
-			var/datum/job/job_datum = SSjob.name_occupations[job]
-			if(job_datum && IsJobUnavailable(job_datum.title, TRUE) == JOB_AVAILABLE)
-				var/command_bold = ""
-				if(job in GLOB.command_positions)
-					command_bold = " command"
-				var/jobline = "[job_datum.title] ([job_datum.current_positions])"
-				if(job_datum in SSjob.prioritized_jobs)
-					jobline = "<span class='priority'>[jobline]</span>"
-				if(client && client.prefs && client.prefs.alt_titles_preferences[job_datum.title])
-					jobline = "[jobline]<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job_datum.title]])</span>"
 
-				jobline = "<a class='job[command_bold]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[jobline]</a>"
-				dept_dat += jobline
+	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+		var/department_color = department.latejoin_color
+		dat += "<fieldset style='width: 185px; border: 2px solid [department_color]; display: inline'>"
+		dat += "<legend align='center' style='color: [department_color]'>[department.department_name]</legend>"
+		var/list/dept_data = list()
+		for(var/datum/job/job_datum as anything in department.department_jobs)
+			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
+				continue
+			var/jobline = ""
+			var/command_bold = ""
+			if((job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) || (job_datum.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND))
+				command_bold = " command"
+			if(job_datum in SSjob.prioritized_jobs)
+				jobline = "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
+			else
+				jobline = "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
 
-		if(!dept_dat.len)
-			dept_dat += "<span class='nopositions'>No positions open.</span>"
-		dat += jointext(dept_dat, "")
+			if(client && client.prefs && client.prefs.alt_titles_preferences[job_datum.title])
+				jobline += "<span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job_datum.title]])</span>"
+			dept_data += jobline
+
+		if(!length(dept_data))
+			dept_data += "<span class='nopositions'>No positions open.</span>"
+		dat += dept_data.Join()
 		dat += "</fieldset><br>"
 		column_counter++
 		if(column_counter > 0 && (column_counter % 3 == 0))
@@ -488,6 +512,7 @@
 	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
 	popup.set_content(jointext(dat, ""))
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
+
 
 /// Creates, assigns and returns the new_character to spawn as. Assumes a valid mind.assigned_role exists.
 /mob/dead/new_player/proc/create_character(atom/destination)
@@ -506,6 +531,7 @@
 	. = spawning_mob
 	new_character = .
 
+
 /mob/dead/new_player/proc/transfer_character()
 	. = new_character
 	if(!.)
@@ -518,6 +544,7 @@
 	new_character = null
 	qdel(src)
 
+
 /mob/dead/new_player/proc/ViewManifest()
 	if(!client)
 		return
@@ -525,11 +552,11 @@
 		return
 	client.crew_manifest_delay = world.time + (1 SECONDS)
 
-	var/dat = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>"
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest_html()
+	if(!GLOB.crew_manifest_tgui)
+		GLOB.crew_manifest_tgui = new /datum/crew_manifest(src)
 
-	src << browse(dat, "window=manifest;size=387x420;can_close=1")
+
+	GLOB.crew_manifest_tgui.ui_interact(src)
 
 /mob/dead/new_player/Move()
 	return 0

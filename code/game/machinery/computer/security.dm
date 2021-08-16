@@ -3,7 +3,7 @@
 	desc = "Used to view and edit personnel's security records."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
-	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS)
+	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS, ACCESS_SECURITY_RECORDS)
 	circuit = /obj/item/circuitboard/computer/secure_data
 	light_color = COLOR_SOFT_RED
 	var/rank = null
@@ -25,6 +25,13 @@
 		/obj/item/circuit_component/arrest_console_data,
 		/obj/item/circuit_component/arrest_console_arrest,
 	))
+
+#define COMP_STATE_ARREST "*Arrest*"
+#define COMP_STATE_PRISONER "Incarcerated"
+#define COMP_STATE_PAROL "Paroled"
+#define COMP_STATE_DISCHARGED "Discharged"
+#define COMP_STATE_NONE "None"
+#define COMP_SECURITY_ARREST_AMOUNT_TO_FLAG 10
 
 /obj/item/circuit_component/arrest_console_data
 	display_name = "Security Records Data"
@@ -107,8 +114,8 @@
 	/// The targets to set the status of.
 	var/datum/port/input/targets
 
-	/// Sets the new status of the targets. If set to null, the status is taken from the options.
-	var/datum/port/input/new_status
+	/// Sets the new status of the targets.
+	var/datum/port/input/option/new_status
 
 	/// Returns the new status set once the setting is complete. Good for locating errors.
 	var/datum/port/output/new_status_set
@@ -135,12 +142,11 @@
 		COMP_STATE_DISCHARGED,
 		COMP_STATE_NONE,
 	)
-	options = component_options
+	new_status = add_option_port("Arrest Options", component_options)
 
 /obj/item/circuit_component/arrest_console_arrest/Initialize()
 	. = ..()
 	targets = add_input_port("Targets", PORT_TYPE_TABLE)
-	new_status = add_input_port("New Status", PORT_TYPE_STRING)
 	new_status_set = add_output_port("Set Status", PORT_TYPE_STRING)
 	on_fail = add_output_port("Failed", PORT_TYPE_SIGNAL)
 
@@ -153,12 +159,10 @@
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
 
-	var/status_to_set = new_status.input_value
-	if(!status_to_set || !(status_to_set in options))
-		status_to_set = current_option
+	var/status_to_set = new_status.value
 
 	new_status_set.set_output(status_to_set)
-	var/list/target_table = targets.input_value
+	var/list/target_table = targets.value
 	if(!target_table)
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
@@ -182,6 +186,13 @@
 			message_admins("[successful_set] security entries have been set to [status_to_set] by [parent.get_creator_admin()]. [ADMIN_COORDJMP(src)]")
 		for(var/mob/living/carbon/human/human as anything in GLOB.human_list)
 			human.sec_hud_set_security_status()
+
+#undef COMP_STATE_ARREST
+#undef COMP_STATE_PRISONER
+#undef COMP_STATE_PAROL
+#undef COMP_STATE_DISCHARGED
+#undef COMP_STATE_NONE
+#undef COMP_SECURITY_ARREST_AMOUNT_TO_FLAG
 
 /obj/machinery/computer/secure_data/syndie
 	icon_keyboard = "syndie_key"

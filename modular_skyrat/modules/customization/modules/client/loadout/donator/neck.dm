@@ -19,3 +19,8 @@
 	name = "Polychromic Cape - Cross"
 	path = /obj/item/clothing/neck/cloak/polychromic/rscloak_cross
 	extra_info = LOADOUT_INFO_THREE_COLORS
+
+/datum/loadout_item/neck/donator/mantle/regal
+	name = "Regal Mantle"
+	path = /obj/item/clothing/neck/mantle/regal
+

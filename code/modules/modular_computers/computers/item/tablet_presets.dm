@@ -109,4 +109,4 @@
 	install_component(hard_drive) // SKYRAT EDIT -- ORIGINAL install_component(new /obj/item/computer_hardware/hard_drive/small/integrated/)
 	install_component(new /obj/item/computer_hardware/recharger/cyborg)
 	install_component(new /obj/item/computer_hardware/network_card/integrated)
-	hard_drive.store_file(/datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD
+	hard_drive.store_file(new /datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD

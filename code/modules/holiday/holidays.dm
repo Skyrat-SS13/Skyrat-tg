@@ -573,7 +573,7 @@
 	. = ..()
 	GLOB.maintenance_loot += list(
 		list(
-			/obj/item/food/egg/loaded = 15,
+			/obj/item/surprise_egg = 15,
 			/obj/item/storage/basket/easter = 15
 		) = MAINT_HOLIDAY_WEIGHT, //SKYRAT CHANGE
 	)
