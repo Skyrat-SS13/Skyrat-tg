@@ -359,11 +359,6 @@
 	name = "Beachwave"
 	icon_state = "hair_beachwave"
 
-/datum/sprite_accessory/hair/skyrat/amazon
-	name = "Amazon"
-	icon_state = "hair_amazon"
-
-
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
