@@ -100,7 +100,10 @@
 	ignore += typesof(/obj/item/clothing/head/mob_holder)
 
 	//SKYRAT EDIT ADDITION - OUR IGNORES DOWN HERE
+	//Not designed to be spawned without a turf.
 	ignore += typesof(/obj/effect/abstract/liquid_turf)
+	//Not designed to be spawned individually.
+	ignore += typesof(/obj/structure/biohazard_blob)
 	//SKYRAT EDIT END
 
 	var/list/cached_contents = spawn_at.contents.Copy()
