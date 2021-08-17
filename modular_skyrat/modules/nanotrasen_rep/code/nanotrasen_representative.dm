@@ -21,7 +21,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_representative
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_CCM
 
 	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE
 	bounty_types = CIV_JOB_SEC
