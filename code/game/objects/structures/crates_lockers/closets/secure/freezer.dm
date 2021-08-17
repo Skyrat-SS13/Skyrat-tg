@@ -25,11 +25,7 @@
 	if(jones)
 		return ..()
 	jones = TRUE
-<<<<<<< HEAD
-	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
-=======
 	flags_1 &= ~PREVENT_CONTENTS_EXPLOSION_1
->>>>>>> 3d1d68d727e (Fixes a warning that some guy left in freezer.dm code (#60887))
 
 /obj/structure/closet/secure_closet/freezer/kitchen
 	name = "kitchen cabinet"
