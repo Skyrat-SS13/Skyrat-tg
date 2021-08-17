@@ -37,7 +37,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
-
+	
 /datum/round_event_control/cme/minimal
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme/minimal
@@ -64,7 +64,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/extreme
 	cme_intensity = CME_EXTREME
-/*
+
 /datum/round_event_control/cme/armageddon
 	name = "Coronal Mass Ejection: Armageddon"
 	typepath = /datum/round_event/cme/armageddon
@@ -73,7 +73,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/armageddon
 	cme_intensity = CME_ARMAGEDDON
-*/
+
 /datum/round_event/cme/setup()
 	if(!cme_intensity)
 		cme_intensity = pick(CME_MINIMAL, CME_UNKNOWN, CME_MODERATE, CME_EXTREME)
@@ -98,13 +98,11 @@ Armageddon is truly going to fuck the station, use it sparingly.
 			cme_frequency_upper = CME_EXTREME_FREQUENCY_UPPER
 			startWhen = rand(CME_EXTREME_START_LOWER, CME_EXTREME_START_UPPER)
 			endWhen = startWhen + CME_EXTREME_END
-		/*
 		if(CME_ARMAGEDDON)
 			cme_frequency_lower = CME_ARMAGEDDON_FREQUENCY_LOWER
 			cme_frequency_upper = CME_ARMAGEDDON_FREQUENCY_UPPER
 			startWhen = rand(CME_ARMAGEDDON_START_LOWER, CME_ARMAGEDDON_START_UPPER)
 			endWhen = startWhen + CME_ARMAGEDDON_END
-		*/
 		else
 			message_admins("CME setup failure, aborting.")
 			kill()
@@ -138,12 +136,11 @@ Armageddon is truly going to fuck the station, use it sparingly.
 				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
-			/*
 			if(CME_ARMAGEDDON)
 				set_security_level(SEC_LEVEL_GAMMA)
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
-			*/
+
 /datum/round_event/cme/tick()
 	if(ISMULTIPLE(activeFor, rand(cme_frequency_lower, cme_frequency_upper)))
 		var/turf/spawnpoint = pick(cme_start_locs)
@@ -165,11 +162,10 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		if(CME_EXTREME)
 			var/obj/effect/cme/extreme/spawnedcme = new(spawnpoint)
 			announce_to_ghosts(spawnedcme)
-		/*
 		if(CME_ARMAGEDDON)
 			var/obj/effect/cme/armageddon/spawnedcme = new(spawnpoint)
 			announce_to_ghosts(spawnedcme)
-		*/
+
 
 /datum/round_event/cme/end()
 	minor_announce("The station has cleared the solar flare, please proceed to repair electronic failures.", "CME cleared:")
