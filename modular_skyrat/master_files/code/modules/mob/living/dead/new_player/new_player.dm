@@ -488,7 +488,7 @@
 				continue
 			var/jobline = ""
 			var/command_bold = ""
-			if((job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) || (job_datum.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND))
+			if((job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND) || (job_datum.departments_bitflags & DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND))
 				command_bold = " command"
 			if(job_datum in SSjob.prioritized_jobs)
 				jobline = "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
@@ -508,7 +508,7 @@
 			dat += "</td><td valign='top'>"
 	dat += "</td></tr></table></center>"
 	dat += "</div></div>"
-	var/datum/browser/popup = new(src, "latechoices", "Choose Profession", 680, 580)
+	var/datum/browser/popup = new(src, "latechoices", "Choose Profession", 1080, 680)
 	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
 	popup.set_content(jointext(dat, ""))
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc

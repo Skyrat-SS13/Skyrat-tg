@@ -1,6 +1,4 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
-		/mob/living,
 		/obj/structure/blob,
 		/obj/effect/rune,
 		/obj/structure/spider/spiderling,
@@ -57,6 +55,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	//Export categories for this run, this is set by console sending the shuttle.
 	var/export_categories = EXPORT_CARGO
 
+	var/manual_operation = FALSE
+
 /obj/docking_port/mobile/supply/register()
 	. = ..()
 	SSshuttle.supply = src
@@ -81,13 +81,13 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	return ..()
 
 /obj/docking_port/mobile/supply/initiate_docking()
-	if(getDockedId() == "supply_away") // Buy when we leave home.
+	if(getDockedId() == "supply_away" && !manual_operation) // Buy when we leave home.
 		buy()
 		create_mail()
 	. = ..() // Fly/enter transit.
 	if(. != DOCKING_SUCCESS)
 		return
-	if(getDockedId() == "supply_away") // Sell when we get home
+	if(getDockedId() == "supply_away" && !manual_operation) // Sell when we get home
 		sell()
 
 /obj/docking_port/mobile/supply/proc/buy()
@@ -98,6 +98,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	var/list/empty_turfs = list()
 	for(var/place in shuttle_areas)
+		if(istype(place, /area/shuttle/supply/cockpit))
+			continue
 		var/area/shuttle/shuttle_area = place
 		for(var/turf/open/floor/T in shuttle_area)
 			if(T.is_blocked_turf())
@@ -218,8 +220,12 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	for(var/place in shuttle_areas)
 		var/area/shuttle/shuttle_area = place
+		if(istype(place, /area/shuttle/supply/cockpit))
+			continue
 		for(var/atom/movable/AM in shuttle_area)
 			if(iscameramob(AM))
+				continue
+			if(isliving(AM))
 				continue
 			if(!AM.anchored || istype(AM, /obj/vehicle/sealed/mecha))
 				export_item_and_contents(AM, export_categories , dry_run = FALSE, external_report = ex)
@@ -252,6 +258,8 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	//spawn crate
 	var/list/empty_turfs = list()
 	for(var/place as anything in shuttle_areas)
+		if(istype(place, /area/shuttle/supply/cockpit))
+			continue
 		var/area/shuttle/shuttle_area = place
 		for(var/turf/open/floor/shuttle_floor in shuttle_area)
 			if(shuttle_floor.is_blocked_turf())
@@ -262,4 +270,3 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 #undef GOODY_FREE_SHIPPING_MAX
 #undef CRATE_TAX
-*/
