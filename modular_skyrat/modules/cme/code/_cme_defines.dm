@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(cme_loot_list, list(
 #define CME_MINIMAL_BUBBLE_BURST_TIME 20 SECONDS //The time taken for a cme bubble to pop.
 #define CME_MINIMAL_START_LOWER 120 * 0.5 //The lowest amount of time for the event to start from the announcement. - Prep time
 #define CME_MINIMAL_START_UPPER 180 * 0.5 //The highest amount of time for the event to start from the announcement. - Prep time
-#define CME_MINIMAL_END 240 * 0.75 //The amount of time starting from THE MINIMAL START TIME for the event to end. - How long it actually lasts.
+#define CME_MINIMAL_END 240 * 0.25 //The amount of time starting from THE MINIMAL START TIME for the event to end. - How long it actually lasts.
 
 #define CME_MODERATE_LIGHT_RANGE_LOWER 10
 #define CME_MODERATE_LIGHT_RANGE_UPPER 15
@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(cme_loot_list, list(
 #define CME_MODERATE_BUBBLE_BURST_TIME 15 SECONDS
 #define CME_MODERATE_START_LOWER 120 * 0.5
 #define CME_MODERATE_START_UPPER 180 * 0.5
-#define CME_MODERATE_END 240 * 0.75
+#define CME_MODERATE_END 240 * 0.25
 
 
 #define CME_EXTREME_LIGHT_RANGE_LOWER 15
@@ -53,7 +53,7 @@ GLOBAL_LIST_INIT(cme_loot_list, list(
 #define CME_EXTREME_BUBBLE_BURST_TIME 10 SECONDS
 #define CME_EXTREME_START_LOWER 60 * 0.5
 #define CME_EXTREME_START_UPPER 120 * 0.5
-#define CME_EXTREME_END 300 * 0.75
+#define CME_EXTREME_END 300 * 0.25
 
 #define CME_ARMAGEDDON_LIGHT_RANGE_LOWER 25
 #define CME_ARMAGEDDON_LIGHT_RANGE_UPPER 30
@@ -64,4 +64,4 @@ GLOBAL_LIST_INIT(cme_loot_list, list(
 #define CME_ARMAGEDDON_BUBBLE_BURST_TIME 5 SECONDS
 #define CME_ARMAGEDDON_START_LOWER 60 * 0.5
 #define CME_ARMAGEDDON_START_UPPER 70 * 0.5
-#define CME_ARMAGEDDON_END 600 * 0.75
+#define CME_ARMAGEDDON_END 600 * 0.25
