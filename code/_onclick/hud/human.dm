@@ -232,7 +232,7 @@
 	using.screen_loc = ui_inventory
 	using.hud = src
 	static_inventory += using
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	using = new /atom/movable/screen/human/ERP_toggle()
 	using.icon = ui_style
@@ -243,7 +243,7 @@
 		using.invisibility = 100
 	static_inventory += using
 	//SKYRAT EDIT ADDITION END
-
+*/
 	using = new /atom/movable/screen/human/equip()
 	using.icon = ui_style
 	using.screen_loc = ui_equip_position(mymob)
@@ -304,7 +304,7 @@
 	inv_box.slot_id = ITEM_SLOT_BELT
 	inv_box.hud = src
 	static_inventory += inv_box
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "vagina"
@@ -342,7 +342,7 @@
 	inv_box.hud = src
 	ERP_toggleable_inventory += inv_box
 	//SKYRAT EDIT ADDITION END
-
+*/
 	throw_icon = new /atom/movable/screen/throw_catch()
 	throw_icon.icon = ui_style
 	throw_icon.screen_loc = ui_drop_throw
