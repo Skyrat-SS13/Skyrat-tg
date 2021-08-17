@@ -1,4 +1,4 @@
-/datum/job/fleetmaster
+		/datum/job/fleetmaster
 	title = "Fleetmaster"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("Nanotrasen Fleet Command")
@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/fleetmaster
 	plasmaman_outfit = /datum/outfit/plasmaman/centcom_commander
 
-	paycheck = PAYCHECK_NANOTRASEN_FLEET_COMMAND
+	paycheck = PAYCHECK_CENTRAL_COMMAND
 	paycheck_department = ACCOUNT_SEC
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
