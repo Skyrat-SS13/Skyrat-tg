@@ -433,6 +433,6 @@
 			return FALSE
 	else
 		return FALSE
-	if(HAS_TRAIT(M, TRAIT_MINDSHIELD) || issilicon(M) || isbot(M) || isdrone(M) || !M.client)
+	if(issilicon(M) || isbot(M) || isdrone(M) || !M.client) //SKYRAT EDIT CHANGE
 		return FALSE //can't convert machines, shielded, or braindead
 	return TRUE

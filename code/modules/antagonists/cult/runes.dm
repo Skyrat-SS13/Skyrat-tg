@@ -330,13 +330,13 @@ structure_check() searches for nearby cultist structures required for the invoca
 				C.cult_team.objectives -= sac_objective
 				qdel(sac_objective)
 				C.cult_team.objectives += sacrifice_objective
-				for(var/datum/mind/B in C.cult_team.members)
-					if(B.current)
-						SEND_SOUND(B.current, 'sound/hallucinations/im_here1.ogg')
+				for(var/datum/mind/cultie in C.cult_team.members)
+					if(cultie.current)
+						SEND_SOUND(cultie.current, 'sound/hallucinations/im_here1.ogg')
 						if(sacrifice_objective.target)
-							to_chat(B.current, span_cultlarge("<span class='warningplain'>[sacrificial] has been sacrificed, your new objective is [sacrifice_objective.target]!</span>"))
+							to_chat(cultie.current, span_cultlarge("<span class='warningplain'>[sacrificial] has been sacrificed, your new objective is [sacrifice_objective.target]!</span>"))
 						else
-							to_chat(B.current, span_cultlarge("<span class='warningplain'>[sacrificial] has been sacrificed, your new objective is SURVIVE!</span>"))
+							to_chat(cultie.current, span_cultlarge("<span class='warningplain'>[sacrificial] has been sacrificed, your new objective is SURVIVE!</span>"))
 				//SKYRAT EDIT END
 	else
 		GLOB.sacrificed += sacrificial
