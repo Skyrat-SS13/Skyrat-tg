@@ -14,10 +14,6 @@
 	name = "Red poncho"
 	path = /obj/item/clothing/suit/poncho/red
 
-/datum/loadout_item/suit/poncho
-	name = "Cowboy Poncho"
-	path = /obj/item/clothing/suit/toggle/ranger
-
 /datum/loadout_item/suit/redhood
 	name = "Red cloak"
 	path = /obj/item/clothing/suit/hooded/cloak/david

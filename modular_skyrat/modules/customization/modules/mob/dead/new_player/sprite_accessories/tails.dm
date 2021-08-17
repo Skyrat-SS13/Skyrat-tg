@@ -122,7 +122,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
-	general_type = SPECIES_LIZARD
+	general_type = "axolotl"
 
 /datum/sprite_accessory/tails/mammal/wagging/batl
 	name = "Bat (Long)"

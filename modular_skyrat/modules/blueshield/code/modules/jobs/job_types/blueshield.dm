@@ -21,7 +21,7 @@
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	bounty_types = CIV_JOB_SEC
 	departments_list = list(
-		/datum/job_department/central_command,
+		/datum/job_department/nanotrasen_fleet_command,
 		/datum/job_department/command,
 	)
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)

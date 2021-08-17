@@ -57,5 +57,8 @@
 
 /mob/living/simple_animal/hostile/zombie/drop_loot()
 	. = ..()
-	corpse.forceMove(drop_location())
-	corpse.create()
+	if(!no_corpse) //SKYRAT EDIT CHANGE
+		corpse.forceMove(drop_location())
+		corpse.create()
+	else //SKYRAT EDIT CHANGE
+		new /obj/effect/gibspawner/human(loc) //SKYRAT EDIT CHANGE
