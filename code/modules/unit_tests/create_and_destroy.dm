@@ -104,6 +104,8 @@
 	ignore += typesof(/obj/effect/abstract/liquid_turf)
 	//Not designed to be spawned individually.
 	ignore += typesof(/obj/structure/biohazard_blob)
+	//Unused - not supposed to be spawned without SSliquids
+	ignore += typesof(/turf/open/openspace/ocean)
 	//SKYRAT EDIT END
 
 	var/list/cached_contents = spawn_at.contents.Copy()
