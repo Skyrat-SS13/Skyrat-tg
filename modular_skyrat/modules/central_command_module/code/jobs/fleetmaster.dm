@@ -1,5 +1,5 @@
-/datum/job/admiral
-	title = "Nanotrasen Admiral"
+/datum/job/fleetmaster
+	title = "Fleetmaster"
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	department_head = list("Nanotrasen Fleet Command")
 	faction = FACTION_STATION
@@ -9,23 +9,23 @@
 	selection_color = "#6969f8"
 	req_admin_notify = 1
 	minimal_player_age = 14
-	exp_requirements = 60000000
+	exp_requirements = 6000
 	exp_required_type = EXP_TYPE_CREW
-	exp_required_type_department = EXP_TYPE_CENTRAL_COMMAND
+	exp_required_type_department = EXP_TYPE_NANOTRASEN_FLEET_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
 
-	outfit = /datum/outfit/job/admiral
+	outfit = /datum/outfit/job/fleetmaster
 	plasmaman_outfit = /datum/outfit/plasmaman/centcom_commander
 
-	paycheck = PAYCHECK_CENTRAL_COMMAND
+	paycheck = PAYCHECK_NANOTRASEN_FLEET_COMMAND
 	paycheck_department = ACCOUNT_SEC
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
-	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_ADMIRAL
+	display_order = JOB_DISPLAY_ORDER_FLEETMASTER
 	departments_list = list(
 		/datum/job_department/command,
-		/datum/job_department/central_command,
+		/datum/job_department/nanotrasen_fleet_command,
 		)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/flask/gold)
@@ -36,20 +36,20 @@
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
 	)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
 	veteran_only = TRUE
 
 
-/datum/job/captain/get_captaincy_announcement(mob/living/captain)
-	return "Admiral [captain.real_name] on deck!"
+/datum/job/fleetmaster/get_captaincy_announcement(mob/living/captain)
+	return "Fleetmaster [captain.real_name] on deck!"
 
-/datum/outfit/job/admiral
-	name = "Nanotrasen Admiral"
+/datum/outfit/job/fleetmaster
+	name = "Fleetmaster"
 
-	jobtype = /datum/job/admiral
+	jobtype = /datum/job/fleetmaster
 
 	implants = list(/obj/item/implant/mindshield)
 
@@ -74,14 +74,19 @@
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/centcom)
 
-	id_trim = /datum/id_trim/centcom/admiral
+	id_trim = /datum/id_trim/centcom/fleetmaster
 
 
-/datum/id_trim/centcom/admiral/New()
+/datum/id_trim/centcom/fleetmaster
+	assignment = "Fleetmaster"
+
+/datum/id_trim/centcom/fleetmaster/New()
 	. = ..()
 
 	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
 
-/obj/effect/landmark/start/nanotrasen_admiral
-	name = "Nanotrasen Admiral"
+/obj/effect/landmark/start/fleetmaster
+	name = "Fleetmaster"
 	icon_state = "Captain"
+	delete_after_roundstart = FALSE
+	jobspawn_override = TRUE

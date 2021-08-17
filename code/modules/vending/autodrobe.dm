@@ -150,7 +150,7 @@
 					/obj/item/clothing/glasses/biker = 1,
 					/obj/item/clothing/head/cowboyhat/blackwide = 1,
 					/obj/item/clothing/head/cowboyhat/wide = 1,
-					/obj/item/clothing/suit/toggle/ranger = 1,
+					/obj/item/clothing/neck/ponchoranger = 1,
 					/obj/item/clothing/suit/duster/colorable = 1,
 					/obj/item/clothing/suit/frenchtrench = 1,
 					/obj/item/clothing/suit/dutchjacketsr = 1,
