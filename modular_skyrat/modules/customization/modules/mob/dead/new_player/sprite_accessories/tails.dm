@@ -53,14 +53,14 @@
 	general_type = SPECIES_LIZARD
 
 /datum/sprite_accessory/tails/human
-	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL)
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_GHOUL)
 	organ_type = /obj/item/organ/tail/cat
 
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
 	icon_state = "monkey"
 	icon = 'icons/mob/mutant_bodyparts.dmi'
-	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY)
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
 	color_src = FALSE
 	organ_type = /obj/item/organ/tail/monkey
 
@@ -83,13 +83,13 @@
 /datum/sprite_accessory/tails/none
 	name = "None"
 	icon_state = "none"
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 	color_src = null
 	factual = FALSE
 
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL,SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL,SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	organ_type = /obj/item/organ/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
@@ -98,15 +98,15 @@
 	organ_type = /obj/item/organ/tail/fluffy
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_VULP, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
 	general_type = "vulpine"
 
 /datum/sprite_accessory/tails/mammal/wagging/tajaran
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_TAJARAN, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_TAJARAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 	general_type = "feline"
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID, SPECIES_GHOUL)
 	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/avian1
@@ -122,7 +122,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
-	general_type = SPECIES_LIZARD
+	general_type = "axolotl"
 
 /datum/sprite_accessory/tails/mammal/wagging/batl
 	name = "Bat (Long)"

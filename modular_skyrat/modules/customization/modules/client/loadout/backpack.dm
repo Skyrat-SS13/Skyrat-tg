@@ -346,3 +346,47 @@
 /datum/loadout_item/backpack/plushies/seaduplush
 	name = "Sneed plushie"
 	path = /obj/item/toy/plush/seaduplush
+
+/datum/loadout_item/backpack/fragrance
+	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_FRAGRANCE
+	cost = 2
+
+/datum/loadout_item/backpack/fragrance/cologne
+	name = "Cologne Bottle"
+	path = /obj/item/perfume/cologne
+
+/datum/loadout_item/backpack/fragrance/wood
+	name = "Wood Perfume"
+	path = /obj/item/perfume/wood
+
+/datum/loadout_item/backpack/fragrance/rose
+	name = "Rose Perfume"
+	path = /obj/item/perfume/rose
+
+/datum/loadout_item/backpack/fragrance/jasmine
+	name = "Jasmine Perfume"
+	path = /obj/item/perfume/jasmine
+
+/datum/loadout_item/backpack/fragrance/mint
+	name = "Mint Perfume"
+	path = /obj/item/perfume/mint
+
+/datum/loadout_item/backpack/fragrance/vanilla
+	name = "Vanilla Perfume"
+	path = /obj/item/perfume/vanilla
+
+/datum/loadout_item/backpack/fragrance/pear
+	name = "Pear Perfume"
+	path = /obj/item/perfume/pear
+
+/datum/loadout_item/backpack/fragrance/strawberry
+	name = "Strawberry Perfume"
+	path = /obj/item/perfume/strawberry
+
+/datum/loadout_item/backpack/fragrance/cherry
+	name = "Cherry Perfume"
+	path = /obj/item/perfume/cherry
+
+/datum/loadout_item/backpack/fragrance/amber
+	name = "Amber Perfume"
+	path = /obj/item/perfume/amber

@@ -199,6 +199,7 @@
 		var/obj/item/last_cell = installedcells[installedcells.len]
 		if(last_cell)
 			last_cell.forceMove(drop_location())
+			user.put_in_hands(last_cell)
 		installedcells -= last_cell
 		ammo_type.len--
 		cellcount -= 1

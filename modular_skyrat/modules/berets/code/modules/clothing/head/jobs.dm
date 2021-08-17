@@ -92,7 +92,7 @@
 /obj/item/clothing/head/beret/medical/cmo
 	name = "chief medical officer's beret"
 	desc = "A beret custom-fit to the Chief Medical Officer, repaired once or twice after Runtime got a hold of it."
-	greyscale_colors = "#679CFE#34CCEE"
+	greyscale_colors = "#3299CC#34CCEE"
 
 /obj/item/clothing/head/beret/medical/cmo/alt
 	name = "chief medical officer's beret"
