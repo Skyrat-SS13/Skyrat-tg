@@ -44,7 +44,7 @@
 
 
 /datum/job/fleetmaster/get_captaincy_announcement(mob/living/captain)
-	return "Admiral [captain.real_name] on deck!"
+	return "Fleetmaster [captain.real_name] on deck!"
 
 /datum/outfit/job/fleetmaster
 	name = "Fleetmaster"
