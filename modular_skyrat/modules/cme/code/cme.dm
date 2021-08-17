@@ -16,7 +16,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme
 	weight = 10
-	min_players = 30
+	min_players = 70 //30 is somewhat low pop still
 	max_occurrences = 1 // Why was this allowed to roll three times bruh
 	earliest_start = 25 MINUTES
 
@@ -37,7 +37,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
-	
+
 /datum/round_event_control/cme/minimal
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme/minimal
@@ -152,23 +152,26 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/area/loc_area_name = get_area(spawnpoint)
 	minor_announce("WARNING! [uppertext(intensity)] PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
 	alert_sound_to_playing(sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
+	var/obj/effect/cme/spawnedcme
 	switch(intensity)
 		if(CME_MINIMAL)
-			var/obj/effect/cme/spawnedcme = new(spawnpoint)
+			spawnedcme = new(spawnpoint)
 			announce_to_ghosts(spawnedcme)
 		if(CME_MODERATE)
-			var/obj/effect/cme/moderate/spawnedcme = new(spawnpoint)
+			spawnedcme = new(spawnpoint)
 			announce_to_ghosts(spawnedcme)
 		if(CME_EXTREME)
-			var/obj/effect/cme/extreme/spawnedcme = new(spawnpoint)
+			spawnedcme = new(spawnpoint)
 			announce_to_ghosts(spawnedcme)
 		if(CME_ARMAGEDDON)
-			var/obj/effect/cme/armageddon/spawnedcme = new(spawnpoint)
+			spawnedcme = new(spawnpoint)
 			announce_to_ghosts(spawnedcme)
+	log_game("CME spawned at [AREACOORD(spawnedcme)].")
 
 
 /datum/round_event/cme/end()
 	minor_announce("The station has cleared the solar flare, please proceed to repair electronic failures.", "CME cleared:")
+	log_game("CME event has ended.")
 
 
 ////////////////////////
@@ -231,7 +234,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/Initialize()
 	. = ..()
-	playsound(src,'sound/weapons/resonator_fire.ogg',75,TRUE)
+	playsound(src,'sound/weapons/resonator_fire.ogg',50,TRUE)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
 		T.atmos_spawn_air("o2=15;plasma=15;TEMP=5778")
@@ -246,13 +249,14 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	playsound(src,'sound/weapons/resonator_blast.ogg',50,TRUE,)
 	explosion(src, 0, 0, 2, flame_range = 3)
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
 		if(M.client && M.z == z)
 			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme.ogg'))
 			shake_camera(M, 15, 1)
+	log_game("CME has exploded at [AREACOORD(src)].")
 	qdel(src)
 
 /obj/effect/cme/armageddon/burst()
@@ -265,7 +269,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	explosion(src, 0, 3, 10, flame_range = 10)
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	playsound(src,'sound/weapons/resonator_blast.ogg',50,TRUE)
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
 		if(M.client && M.z == z)
@@ -277,7 +281,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	burst()
 
 /obj/effect/cme/proc/anomalyNeutralize()
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	playsound(src,'sound/weapons/resonator_blast.ogg',50,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
@@ -289,7 +293,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	new loot(loc)
 
 /obj/effect/cme/extreme/anomalyNeutralize()
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	playsound(src,'sound/weapons/resonator_blast.ogg',50,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
@@ -301,7 +305,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	new loot(loc)
 
 /obj/effect/cme/armageddon/anomalyNeutralize()
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
+	playsound(src,'sound/weapons/resonator_blast.ogg',50,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
