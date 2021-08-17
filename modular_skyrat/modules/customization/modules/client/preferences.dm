@@ -2223,6 +2223,7 @@ GLOBAL_LIST_INIT(food, list(
 							vore_pref = "No"
 						if("No")
 							vore_pref = "Yes"
+/*
 				//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 				if("sextoys_pref")
 					// User changed state of ERP pref
@@ -2260,7 +2261,7 @@ GLOBAL_LIST_INIT(food, list(
 								user.hud_used.hidden_inventory_update(user)
 								user.hud_used.persistent_inventory_update(user)
 				//SKYRAT EDIT ADDITION END
-
+*/
 				if("change_arousal_preview")
 					var/list/gen_arous_trans = list("Not aroused" = AROUSAL_NONE,
 						"Partly aroused" = AROUSAL_PARTIAL,
