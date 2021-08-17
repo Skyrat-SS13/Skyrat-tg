@@ -38,7 +38,7 @@
 			return r_store
 		if(ITEM_SLOT_SUITSTORE)
 			return s_store
-
+/*
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_VAGINA)
 			return vagina
@@ -49,7 +49,7 @@
 		if(ITEM_SLOT_PENIS)
 			return penis
 		//SKYRAT EDIT ADDITION END
-
+*/
 	return null
 
 /mob/living/carbon/human/proc/get_all_slots()
@@ -151,6 +151,7 @@
 
 			if(I.flags_inv & HIDEJUMPSUIT)
 				update_inv_w_uniform()
+/*
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
@@ -158,6 +159,7 @@
 				update_inv_penis()
 				update_inv_nipples()
 			//SKYRAT EDIT ADDITION END
+*/
 			if(wear_suit.breakouttime) //when equipping a straightjacket
 				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 				stop_pulling() //can't pull if restrained
@@ -180,7 +182,7 @@
 				return
 			s_store = I
 			update_inv_s_store()
-
+/*
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_VAGINA)
 			if(src.is_bottomless())
@@ -219,7 +221,7 @@
 				to_chat(usr, "[src] is not bottomless, you cannot access to penis")
 
 		//SKYRAT EDIT ADDITION END
-
+*/
 		else
 			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
@@ -330,7 +332,7 @@
 		s_store = null
 		if(!QDELETED(src))
 			update_inv_s_store()
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	else if(I == vagina)
 		vagina = null
@@ -349,7 +351,7 @@
 		if(!QDELETED(src))
 			update_inv_penis()
 	//SKYRAT EDIT ADDITION END
-
+*/
 	update_equipment_speed_mods()
 
 	// Send a signal for when we unequip an item that used to cover our feet/shoes. Used for bloody feet
