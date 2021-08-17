@@ -468,7 +468,7 @@
 		if(H.wear_mask) screenmob.client.screen -= H.wear_mask
 		if(H.wear_neck) screenmob.client.screen -= H.wear_neck
 		if(H.head) screenmob.client.screen -= H.head
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	if(screenmob.hud_used.ERP_inventory_shown && screenmob.hud_used.hud_shown && H.client.prefs?.sextoys_pref == "Yes")
 		if(H.vagina)
@@ -502,7 +502,7 @@
 		if(H.nipples) screenmob.client.screen -= H.nipples
 		if(H.penis) screenmob.client.screen -= H.penis
 	//SKYRAT EDIT ADDITION END
-
+*/
 
 
 /datum/hud/human/persistent_inventory_update(mob/viewer)
@@ -533,7 +533,7 @@
 			if(H.r_store)
 				H.r_store.screen_loc = ui_storage2
 				screenmob.client.screen += H.r_store
-
+/*
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 			if(H.client.prefs?.sextoys_pref == "Yes")
 				if(H.vagina)
@@ -549,7 +549,7 @@
 					H.penis.screen_loc = ui_penis
 					screenmob.client.screen += H.penis
 			//SKYRAT EDIT ADDITION END
-
+*/
 		else
 			if(H.s_store)
 				screenmob.client.screen -= H.s_store
@@ -563,7 +563,7 @@
 				screenmob.client.screen -= H.l_store
 			if(H.r_store)
 				screenmob.client.screen -= H.r_store
-
+/*
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 			if(H.vagina)
 				screenmob.client.screen -= H.vagina
@@ -574,7 +574,7 @@
 			if(H.penis)
 				screenmob.client.screen -= H.penis
 			//SKYRAT EDIT ADDITION END
-
+*/
 	if(hud_version != HUD_STYLE_NOHUD)
 		for(var/obj/item/I in H.held_items)
 			I.screen_loc = ui_hand_position(H.get_held_index_of_item(I))
