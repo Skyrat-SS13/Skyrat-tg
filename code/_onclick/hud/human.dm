@@ -20,7 +20,7 @@
 	else
 		usr.hud_used.inventory_shown = TRUE
 		usr.client.screen += targetmob.hud_used.toggleable_inventory
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	if(usr.hud_used.inventory_shown && targetmob.hud_used)
 		for (var/atom/movable/screen/human/using in targetmob.hud_used.static_inventory)
@@ -51,7 +51,7 @@
 			if(inv.screen_loc == ui_penis)
 				inv.screen_loc = ui_penis_down
 	//SKYRAT EDIT ADDITION END
-
+*/
 	targetmob.hud_used.hidden_inventory_update(usr)
 
 /atom/movable/screen/human/equip
