@@ -48,9 +48,13 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 
 /obj/item/clothing/mask/animal/AltClick(mob/user)
 	. = ..()
+	//skyrat edit start: less lrp
+	to_chat(user, span_notice("The voicebox has been disabled temporarily."))
+	/*
 	if(clothing_flags & VOICEBOX_TOGGLABLE)
 		clothing_flags ^= VOICEBOX_DISABLED
 		to_chat(user, span_notice("You [clothing_flags & VOICEBOX_DISABLED ? "disabled" : "enabled"] [src]'s voicebox."))
+	skyrat edit end: less lrp*/
 
 /obj/item/clothing/mask/animal/proc/make_cursed() //apply cursed effects.
 	ADD_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
