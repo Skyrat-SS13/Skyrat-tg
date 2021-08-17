@@ -115,7 +115,7 @@
 	else
 		server_check = "server_name = '[ssqlname]'"  // SKYRAT EDIT ADDITION END - MULTISERVER
 	var/datum/db_query/query_build_ban_cache = SSdbcore.NewQuery(
-		"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())",
+		"SELECT role, applies_to_admins FROM [format_table_name("ban")] WHERE ckey = :ckey AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW()) AND [server_check]", //skyrat edit
 		list("ckey" = ckey)
 	)
 	if(!query_build_ban_cache.warn_execute())
