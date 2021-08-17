@@ -60,6 +60,8 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 
 /mob/living/simple_animal/hostile/floor_cluwne/Destroy()
 	QDEL_NULL(poi)
+	if(current_victim)
+		current_victim = null
 	return ..()
 
 

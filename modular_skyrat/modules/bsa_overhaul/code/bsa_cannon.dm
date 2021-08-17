@@ -337,8 +337,9 @@
 	return TRUE
 
 /obj/machinery/bsa_powercore/Destroy()
-	control_unit.core = null
-	control_unit = null
+	if(control_unit)
+		control_unit.core = null
+		control_unit = null
 	attached = null
 	. = ..()
 
