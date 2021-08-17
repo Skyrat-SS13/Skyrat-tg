@@ -1227,7 +1227,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.back && SEND_SIGNAL(H.back, COMSIG_TRY_STORAGE_CAN_INSERT, I, H, TRUE))
 				return TRUE
 			return FALSE
-
+/*
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_VAGINA)
 			if(H.is_bottomless())
@@ -1250,7 +1250,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				return FALSE
 			return FALSE
 		//SKYRAT EDIT ADDITION END
-
+*/
 	return FALSE //Unsupported slot
 
 /datum/species/proc/equip_delay_self_check(obj/item/I, mob/living/carbon/human/H, bypass_equip_delay_self)
