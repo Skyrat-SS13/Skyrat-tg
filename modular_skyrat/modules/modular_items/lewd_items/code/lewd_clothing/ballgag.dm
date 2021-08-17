@@ -203,18 +203,18 @@
 
 //start choking when equipping gag
 /obj/item/clothing/mask/ballgag_phallic/equipped(mob/user, slot)
-	..()
 	var/mob/living/carbon/human/U = loc
 	if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
 		START_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/clothing/mask/ballgag_phallic/dropped(mob/user, slot)
-	..()
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/clothing/mask/ballgag_phallic/Destroy()
-	..()
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/clothing/mask/ballgag_phallic/process(delta_time)
 	var/mob/living/carbon/human/U = loc

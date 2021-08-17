@@ -11,6 +11,9 @@
 
 /datum/element/polychromic/Attach(datum/target, list/colors)
 	. = ..()
+	if(QDELETED(target))
+		qdel(src)
+		return
 	var/obj/item/our_thing = target
 	var/list/finished_list = list()
 	finished_list += ReadRGB("[colors[1]]0")

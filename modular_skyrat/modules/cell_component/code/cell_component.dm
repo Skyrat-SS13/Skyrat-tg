@@ -37,6 +37,10 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	var/has_cell_overlays
 
 /datum/component/cell/Initialize(cell_override, _on_cell_removed, _power_use_amount, start_with_cell = TRUE, _cell_can_be_removed, _has_cell_overlays = TRUE)
+	if(QDELETED(parent))
+		qdel(src)
+		return
+
 	if(!isitem(parent)) //Currently only compatable with items.
 		return COMPONENT_INCOMPATIBLE
 

@@ -99,6 +99,10 @@
 	//Expects a mob to holderize, we have nothing to give
 	ignore += typesof(/obj/item/clothing/head/mob_holder)
 
+	//SKYRAT EDIT ADDITION - OUR IGNORES DOWN HERE
+	ignore += typesof(/obj/effect/abstract/liquid_turf)
+	//SKYRAT EDIT END
+
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/baseturf_count = length(spawn_at.baseturfs)
 
