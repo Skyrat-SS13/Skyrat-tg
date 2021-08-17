@@ -240,6 +240,15 @@ This is highly likely to cause a lag spike for a few seconds."},
 			var/list/step_data = data["steps"][step]
 			var/image/layer = image(step)
 			var/image/result = step_data["result"]
+			// SKYRAT EDIT BEGIN - Bringing back the GAGS coloring menu - ORIGINAL:
+			/*
+			steps += list(
+				list(
+					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
+					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
+					"config_name"=step_data["config_name"]
+				)
+			)*/
 			steps += list(
 				list(
 					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
@@ -247,6 +256,7 @@ This is highly likely to cause a lag spike for a few seconds."},
 					"config_name"=step_data["config_name"]
 				)
 			)
+			// SKYRAT EDIT END
 
 	sprite_data["time_spent"] = TICK_DELTA_TO_MS(time_spent)
 	sprite_data["finished"] = icon2html(finished, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE)
