@@ -297,3 +297,9 @@
 	var/mob/living/carbon/human/U = src.loc
 	if(src == U.wear_neck)
 		U.emote("me", 1,"[emoting]", TRUE)
+
+/obj/item/clothing/neck/mind_collar/Destroy()
+	if(remote)
+		remote.collar = null
+		remote = null
+	return ..()
