@@ -1,3 +1,4 @@
+/*
 // Set up the types of items that can be placed in the mask
 /datum/component/storage/concrete/pockets/small/bdsm_mask
 	max_items = 1
@@ -355,3 +356,4 @@
 						return
 			add_fingerprint(usr)
 		. = ..()
+*/
