@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/sextoy/magic_wand
 	name = "magic wand"
 	desc = "Not sure where is magic in this thing, but if you press button - it makes funny vibrations"
@@ -389,3 +390,4 @@
 			vibration_mode = "off"
 			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
 			soundloop3.stop()
+*/
