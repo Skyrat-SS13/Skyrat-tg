@@ -146,7 +146,6 @@
 					/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
 					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
 					//hands
-					/obj/item/clothing/gloves/ball_mittens = 1,
 					/obj/item/clothing/gloves/latex_gloves = 2,
 					/obj/item/clothing/gloves/evening = 2,
 					//legs
@@ -158,14 +157,12 @@
 					//special
 					/obj/item/clothing/glasses/nice_goggles = 1 //easter egg, don't touch plz)
 					)
-
 	contraband = list(
 					/obj/item/electropack/shockcollar = 1
 					)
 	premium = list(
 					/obj/item/clothing/under/dress/corset = 4,
 					/obj/item/clothing/under/pants/chaps = 4,
-					/obj/item/clothing/accessory/skullcodpiece/fake = 4,
 					/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3
 					)
 	refill_canister = /obj/item/vending_refill/lustwish
