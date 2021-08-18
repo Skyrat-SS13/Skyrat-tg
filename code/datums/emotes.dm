@@ -130,13 +130,8 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
 	for(var/mob/ai in GLOB.ai_list)
-		//ai.show_message("<span class='emote'>[!(ai.stat == DEAD)]</span>")
-		var/aiEye_turf
-		for(var/mob/camera/ai_eye/AI_eye as anything in GLOB.aiEyes)
-			aiEye_turf = get_turf(AI_eye)
-		if(!ai.client)
-			continue
-		if(!(ai.stat == DEAD) && ai.client && (get_dist(user_turf, aiEye_turf)<8))
+		var/ai_eye_turf = get_turf(ai.eyeobj)
+		if(ai.client && !(ai.stat == DEAD) && (get_dist(user_turf, ai_eye_turf)<8))
 			ai.show_message("<span class='emote'>[dchatmsg]</span>")
 	//SKYRAT EDIT ADDITION END - AI QoL
 
