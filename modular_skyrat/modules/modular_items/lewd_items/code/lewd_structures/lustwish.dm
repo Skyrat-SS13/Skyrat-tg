@@ -117,6 +117,8 @@
 					/obj/item/clothing/head/rabbitears = 4,
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/mask/muzzle/ball = 4,
+					/obj/item/clothing/ears/kinky_headphones
+					/obj/item/clothing/glasses/blindfold/kinky
 					//neck
 					/obj/item/clothing/neck/kink_collar = 3,
 					/obj/item/clothing/neck/human_petcollar = 8,
