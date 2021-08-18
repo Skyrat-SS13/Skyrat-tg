@@ -519,10 +519,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(cortical_owner, span_warning("You require at least 200 chemical units before you can reproduce!"))
 		return
 	cortical_owner.chemical_storage -= 200
-	cortical_owner.human_host.adjustBruteLoss(-(cortical_owner.human_host.getBruteLoss()/2))
-	cortical_owner.human_host.adjustToxLoss(-(cortical_owner.human_host.getToxLoss()/2))
-	cortical_owner.human_host.adjustFireLoss(-(cortical_owner.human_host.getFireLoss()/2))
-	cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()/2))
+	cortical_owner.human_host.adjustBruteLoss(-(cortical_owner.human_host.getBruteLoss()*0.5))
+	cortical_owner.human_host.adjustToxLoss(-(cortical_owner.human_host.getToxLoss()*0.5))
+	cortical_owner.human_host.adjustFireLoss(-(cortical_owner.human_host.getFireLoss()*0.5))
+	cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()*0.5))
 	cortical_owner.human_host.revive()
 	StartCooldown()
 
