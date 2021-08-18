@@ -212,8 +212,11 @@
 				return FALSE
 			var/mob/living/carbon/T = target
 			if(T.client != null)
+				/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 				for(var/obj/item/W in T)
 					T.dropItemToGround(W)
+				*/
+				//SKYRAT EDIT REMOVAL END
 				init_shade(T, user)
 				return TRUE
 			else
@@ -234,8 +237,11 @@
 						to_chat(user, "[span_userdanger("Capture failed!")]: The soul has already fled its mortal frame. You attempt to bring it back...")
 						getCultGhost(T,user)
 					else
+						/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 						for(var/obj/item/W in T)
 							T.dropItemToGround(W)
+						*/
+						//SKYRAT EDIT REMOVAL END
 						init_shade(T, user, message_user = 1)
 						qdel(T)
 				else
@@ -345,13 +351,26 @@
 
 
 /obj/item/soulstone/proc/init_shade(mob/living/carbon/human/dusted_victim, mob/user, message_user = FALSE, mob/shade_controller)
+	//SKYRAT EDIT ADDITION BEGIN - SOULSTONE_CHANGES
+	if(HAS_TRAIT_FROM(dusted_victim, TRAIT_SACRIFICED, "soulstoned"))
+		if(user)
+			to_chat(user, "This body has already been harvested!")
+		return
+	ADD_TRAIT(dusted_victim, TRAIT_SACRIFICED, "soulstoned")
+
 	if(!shade_controller)
 		shade_controller = dusted_victim
+	//SKYRAT EDIT ADDITION END
+
+	/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 	new /obj/effect/decal/remains/human(dusted_victim.loc) //Spawns a skeleton
 	dusted_victim.stop_sound_channel(CHANNEL_HEARTBEAT)
 	dusted_victim.invisibility = INVISIBILITY_ABSTRACT
 	dusted_victim.dust_animation()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	var/mob/living/simple_animal/shade/soulstone_spirit = new /mob/living/simple_animal/shade(src)
+	soulstone_spirit.AddComponent(/datum/component/return_on_death, src, dusted_victim) //SKYRAT EDIT ADDITION - SOULSTONE_CHANGES
 	soulstone_spirit.AddComponent(/datum/component/soulstoned, src)
 	soulstone_spirit.name = "Shade of [dusted_victim.real_name]"
 	soulstone_spirit.real_name = "Shade of [dusted_victim.real_name]"
@@ -399,8 +418,11 @@
 		return FALSE
 	if(contents.len) //If they used the soulstone on someone else in the meantime
 		return FALSE
+	/* SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
 	for(var/obj/item/W in T)
 		T.dropItemToGround(W)
+	*/
+	//SKYRAT EDIT REMOVAL END
 	init_shade(T, user , shade_controller = chosen_ghost)
 	qdel(T)
 	return TRUE
