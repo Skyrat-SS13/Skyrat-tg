@@ -45,7 +45,7 @@
 		to_chat(H,"<font color=purple>Painful heels no longer hurt your legs</font>")
 	discomfort = 0
 	slowdown = 4
-
+/*
 // Heels pain processor
 /obj/item/clothing/shoes/latexheels/process(delta_time)
 	var/mob/living/carbon/human/U = loc
@@ -73,7 +73,7 @@
 		else
 			to_chat(U, "<span class='notice'>These heels hurt my feet terribly!</span>")
 		message_sent = TRUE
-
+*/
 //to make sound when we walking in this
 /obj/item/clothing/shoes/latexheels/Initialize()
 	. = ..()
