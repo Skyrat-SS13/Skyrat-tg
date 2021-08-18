@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
 	desc = "Uhh... Again, WHERE i supposed to put that?!"
@@ -120,3 +121,4 @@
 		U.adjustPleasure(1 * delta_time)
 	if(current_size == "big" && U.pain < 22.5) //yeah, this will cause pain. No buttplug gib intended, sry
 		U.adjustPain (1*delta_time)
+*/
