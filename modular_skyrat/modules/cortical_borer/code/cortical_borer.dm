@@ -549,13 +549,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	forceMove(human_turf)
 	human_host = null
 
-//borers should not be emoting
-/mob/living/simple_animal/cortical_borer/emote(act, m_type, message, intentional, force_silence)
-	if(human_host)
-		to_chat(src, span_warning("You are not able to emote while inside a host!"))
-		return FALSE
-	return ..()
-
 /mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
 	to_chat(src, span_warning("You are not able to whisper!"))
 	return FALSE
