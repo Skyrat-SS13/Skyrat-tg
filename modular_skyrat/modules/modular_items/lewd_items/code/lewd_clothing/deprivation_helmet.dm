@@ -1,3 +1,4 @@
+/*
 //seems like it kinda SPACE helmet. So probably abusable, but not really.
 //If you want to make it less abusable and remove from helmet/space to just /helmet/ - please, add code that removes hair on use. Because we weren't able to do that.
 
@@ -395,3 +396,4 @@
 	midis_sound_state = null
 	announcement_sound_state = null
 	ship_ambience_sound_state = null
+*/
