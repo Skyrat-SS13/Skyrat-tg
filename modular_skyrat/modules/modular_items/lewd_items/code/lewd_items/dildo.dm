@@ -1,3 +1,4 @@
+/*
 //////////////////
 ///NORMAL DILDO///
 //////////////////
@@ -688,3 +689,4 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
+*/
