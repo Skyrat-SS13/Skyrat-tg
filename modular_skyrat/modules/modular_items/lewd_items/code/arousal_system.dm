@@ -1,3 +1,4 @@
+/*
 #define AROUS_SYS_LITTLE 30
 #define AROUS_SYS_STRONG 70
 #define AROUS_SYS_READYTOCUM 90
@@ -954,3 +955,4 @@
 			if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
 				target.icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
 			qdel(src)
+*/
