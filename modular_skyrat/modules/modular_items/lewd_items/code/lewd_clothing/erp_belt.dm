@@ -1,3 +1,4 @@
+/*
 /obj/item/storage/belt/erpbelt
 	name = "leather belt"
 	desc = "Used to hold sex toys. Looks pretty good."
@@ -89,3 +90,4 @@
 						/obj/item/reagent_containers/pill/pentacamphor,
 						/obj/item/reagent_containers/glass/bottle/hexacrocin,
 						/obj/item/reagent_containers/glass/bottle/pentacamphor))
+*/
