@@ -1,3 +1,4 @@
+/*
 //WARNING - Lot's of shitcode here. I'm not the best coder but this stuff works and i'm happy. Improve it if you want, but don't break anything.
 
 //////////////////////////
@@ -464,3 +465,4 @@
 	C.update_icon_state()
 	C.update_icon()
 	qdel(src)
+*/
