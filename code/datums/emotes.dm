@@ -129,7 +129,7 @@
 				ghost.show_message("<span class='emote'>[FOLLOW_LINK(ghost, user)] [dchatmsg]</span>")
 
 	//SKYRAT EDIT ADDITION BEGIN - AI QoL
-	for(var/mob/ai in GLOB.ai_list)
+	for(var/mob/living/silicon/ai/ai in GLOB.ai_list)
 		var/ai_eye_turf = get_turf(ai.eyeobj)
 		if(ai.client && !(ai.stat == DEAD) && (get_dist(user_turf, ai_eye_turf)<8))
 			ai.show_message("<span class='emote'>[dchatmsg]</span>")
