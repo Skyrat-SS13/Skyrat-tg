@@ -1,3 +1,4 @@
+/*
 //////////////////////////////////
 ///Loadout items from our update///
 //////////////////////////////////
@@ -25,3 +26,4 @@
 /datum/loadout_item/neck/kinkycollar
 	name = "Kinky collar"
 	path = /obj/item/clothing/neck/kink_collar
+*/
