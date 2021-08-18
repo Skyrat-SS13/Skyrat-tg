@@ -1,3 +1,4 @@
+/*
 //////////////////
 ///APHRODISIACS///
 //////////////////
@@ -585,3 +586,4 @@ Haha! Kill me please.
 	icon_state = "cumkeg"
 	reagent_id = /datum/reagent/consumable/cum
 	tank_volume = 150
+*/
