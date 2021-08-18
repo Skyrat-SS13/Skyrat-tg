@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/suit/straight_jacket/shackles
 	name = "shackles"
 	desc = "Fancy shackles with fake locks."
@@ -135,3 +136,4 @@
 	. = ..()
 	if(src == C.wear_suit)
 		to_chat(user, "<font color=purple>The shackles are no longer restraining your body. You are free!</font>")
+*/
