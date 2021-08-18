@@ -1,3 +1,4 @@
+/*
 //Yes, whip is mask item, because character can take it in mouth. For some BDSM scenarios it would be cool, but if you make it better with same functionality - go ahead, make me proud.
 
 /obj/item/clothing/mask/leatherwhip
@@ -315,3 +316,4 @@
 			current_whip_type = "hard"
 		if("weak")
 			current_whip_type = "weak"
+*/
