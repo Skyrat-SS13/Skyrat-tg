@@ -1,3 +1,4 @@
+/*
 //////////////////////////
 ///Normal vibrating egg///
 //////////////////////////
@@ -423,3 +424,4 @@
 		if(vibration_mode == "hard")
 			U.adjustArousal(0.7 * delta_time)
 			U.adjustPleasure(0.7 * delta_time)
+*/
