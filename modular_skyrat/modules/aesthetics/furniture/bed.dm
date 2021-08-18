@@ -88,3 +88,23 @@
 	icon_state = "doublesheetian"
 	icon = 'modular_skyrat/modules/aesthetics/furniture/bedsheets.dmi'
 	slot_flags = null
+
+/obj/item/bedsheet/centcom/double
+	icon_state = "doublesheetcc"
+	icon = 'modular_skyrat/modules/aesthetics/furniture/bedsheets.dmi'
+	slot_flags = null
+
+/obj/item/bedsheet/nanotrasen/double
+	icon_state = "doublesheetNT"
+	icon = 'modular_skyrat/modules/aesthetics/furniture/bedsheets.dmi'
+	slot_flags = null
+
+/obj/item/bedsheet/qm/double
+	icon_state = "doublesheetqm"
+	icon = 'modular_skyrat/modules/aesthetics/furniture/bedsheets.dmi'
+	slot_flags = null
+
+/obj/item/bedsheet/cmo
+	icon_state = "doublesheetCMO"
+	icon = 'modular_skyrat/modules/aesthetics/furniture/bedsheets.dmi'
+	slot_flags = null
