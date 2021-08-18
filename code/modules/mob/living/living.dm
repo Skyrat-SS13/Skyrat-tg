@@ -284,7 +284,7 @@
 	now_pushing = FALSE
 
 /mob/living/start_pulling(atom/movable/AM, state, force = pull_force, supress_message = FALSE)
-	if(!AM || !src)
+	if(!AM || !src || iscorticalborer(src)) //skyrat edit: no borer pulls
 		return FALSE
 	if(!(AM.can_be_pulled(src, state, force)))
 		return FALSE
