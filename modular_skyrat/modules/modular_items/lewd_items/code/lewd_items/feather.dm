@@ -1,3 +1,4 @@
+/*
 /obj/item/tickle_feather
 	name = "tickling feather"
 	desc = "Feather that can be used for tickling or even torturing. Have fun!"
@@ -141,3 +142,4 @@
 	description = "<span class='nicegreen'>Wooh... I was tickled. It was... Funny!</span>\n"
 	mood_change = 4
 	timeout = 2 MINUTES
+*/
