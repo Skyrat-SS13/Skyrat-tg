@@ -73,6 +73,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/toxin/heparin,
 										/datum/reagent/consumable/ethanol/beer,
 										/datum/reagent/medicine/mannitol,
+										/datum/reagent/drug/methamphetamine,
+										/datum/reagent/medicine/morphine,
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
@@ -102,13 +104,16 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	//just a little "timer" to compare to world.time
 	var/timed_maturity = 0
 	///multiplies the current health up to the max health
-	var/health_regen = 1.01
+	var/health_regen = 1.02
+	//holds the chems right before injection
 	var/obj/item/reagent_containers/reagent_holder
+	//just a flavor kind of thing
+	var/generation = 1
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT) //they need to be able to move around
-	name = "[initial(name)] ([rand(100,999)])"
+	name = "[initial(name)] ([generation]-[rand(100,999)])"
 	GLOB.cortical_borers += src
 	reagent_holder = new /obj/item/reagent_containers(src)
 	for(var/action_type in known_abilities)
@@ -143,20 +148,26 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 
 	if(chemical_storage < max_chemical_storage)
 		chemical_storage = min(chemical_storage + chemical_regen, max_chemical_storage)
+		if(chemical_storage > max_chemical_storage)
+			chemical_storage = max_chemical_storage
 
 	if(health < maxHealth)
 		health = min(health * health_regen, maxHealth)
+		if(health > maxHealth)
+			health = maxHealth
 
 	if(timed_maturity < world.time)
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
 	switch(maturity_age)
-		if(180) //every three minutes, which basically turns into 9 minutes
+		if(60) //every 1 minutes, which basically turns into 3 minutes
 			chemical_evolution++
-		if(360)
+			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
+		if(120)
 			stat_evolution++
-		if(540)
+			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
+		if(180)
 			maturity_age = 0
 
 //if it doesnt have a mind, let ghosts have it
@@ -168,12 +179,13 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(choice != "Yes")
 		return
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
+	to_chat(user, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	ckey = user.ckey
 	mind.add_antag_datum(/datum/antagonist/cortical_borer)
 
 //inject chemicals into your host
 /datum/action/cooldown/inject_chemical
-	name = "Inject Chemical (10 chemicals)"
+	name = "Inject 5u Chemical (10 chemicals)"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "chemical"
@@ -226,7 +238,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(cortical_owner.host_sugar())
 		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
 		return
-	if(!cortical_owner.chemical_evolution)
+	if(cortical_owner.chemical_evolution < 1)
 		to_chat(owner, span_warning("You do not have any upgrade points for chemicals!"))
 		return
 	if(!cortical_owner.potential_chemicals.len)
@@ -235,6 +247,9 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/reagent_choice = tgui_input_list(cortical_owner, "Choose a chemical to learn.", "Chemical Selection", cortical_owner.potential_chemicals)
 	if(!reagent_choice)
 		to_chat(owner, span_warning("No selection made!"))
+		return
+	if(cortical_owner.chemical_evolution < 1)
+		to_chat(owner, span_warning("You do not have any upgrade points for chemicals!"))
 		return
 	cortical_owner.known_chemicals += reagent_choice
 	cortical_owner.potential_chemicals -= reagent_choice
@@ -261,19 +276,22 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(cortical_owner.host_sugar())
 		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
 		return
-	if(!cortical_owner.stat_evolution)
+	if(cortical_owner.stat_evolution < 1)
 		to_chat(owner, span_warning("You do not have any upgrade points for stats!"))
 		return
 	var/choice = tgui_input_list(cortical_owner, "Choose a stat to upgrade!", "Stat Choice", list("Health", "Health Regen", "Chemical Storage", "Chemical Regen"))
 	if(!choice)
 		to_chat(owner, span_warning("No selection made!"))
 		return
+	if(cortical_owner.stat_evolution < 1)
+		to_chat(owner, span_warning("You do not have any upgrade points for stats!"))
+		return
 	switch(choice)
 		if("Health")
 			cortical_owner.maxHealth += 5
 			to_chat(cortical_owner, span_notice("Your health increases slightly!"))
 		if("Health Regen")
-			cortical_owner.health_regen += 0.01
+			cortical_owner.health_regen += 0.02
 			to_chat(cortical_owner, span_notice("Your health regen increases slightly!"))
 		if("Chemical Storage")
 			cortical_owner.max_chemical_storage += 20
@@ -346,7 +364,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(get_dist(choose_fear, cortical_owner) > 1)
 		to_chat(cortical_owner, span_warning("The chosen is too far"))
 		return
-	choose_fear.Paralyze(6 SECONDS)
+	choose_fear.Paralyze(7 SECONDS)
 	StartCooldown()
 
 //to check the health of the human
@@ -432,6 +450,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		return
 	cortical_owner.human_host = choose_host
 	cortical_owner.forceMove(cortical_owner.human_host)
+	cortical_owner.copy_languages(cortical_owner.human_host)
 	StartCooldown()
 
 //we need a way to produce offspring
@@ -470,6 +489,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	new /obj/effect/decal/cleanable/vomit(human_turf)
 	playsound(human_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	spawn_borer.ckey = pick_candidate.ckey
+	spawn_borer.generation = cortical_owner.generation + 1
+	spawn_borer.name = "[initial(spawn_borer.name)] ([cortical_owner.generation]-[rand(100,999)])"
+	spawn_borer.mind.add_antag_datum(/datum/antagonist/cortical_borer)
+	to_chat(spawn_borer, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	StartCooldown()
 
 /datum/action/cooldown/revive_host
@@ -496,10 +519,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(cortical_owner, span_warning("You require at least 200 chemical units before you can reproduce!"))
 		return
 	cortical_owner.chemical_storage -= 200
-	cortical_owner.human_host.adjustBruteLoss(-(cortical_owner.human_host.getBruteLoss()/4))
-	cortical_owner.human_host.adjustToxLoss(-(cortical_owner.human_host.getToxLoss()/4))
-	cortical_owner.human_host.adjustFireLoss(-(cortical_owner.human_host.getFireLoss()/4))
-	cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()/4))
+	cortical_owner.human_host.adjustBruteLoss(-(cortical_owner.human_host.getBruteLoss()/2))
+	cortical_owner.human_host.adjustToxLoss(-(cortical_owner.human_host.getToxLoss()/2))
+	cortical_owner.human_host.adjustFireLoss(-(cortical_owner.human_host.getFireLoss()/2))
+	cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()/2))
 	cortical_owner.human_host.revive()
 	StartCooldown()
 
@@ -523,8 +546,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 
 //borers should not be emoting
 /mob/living/simple_animal/cortical_borer/emote(act, m_type, message, intentional, force_silence)
-	to_chat(src, span_warning("You are not able to emote!"))
-	return FALSE
+	if(human_host)
+		to_chat(src, span_warning("You are not able to emote while inside a host!"))
+		return FALSE
+	return ..()
 
 /mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
 	to_chat(src, span_warning("You are not able to whisper!"))
@@ -543,15 +568,16 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(split_message[1] == ";")
 		message = copytext(message, 2)
 		for(var/borer in GLOB.cortical_borers)
-			to_chat(borer, span_noticealien("Cortical Hivemind: [src] sings, \"[message]\""))
+			to_chat(borer, span_purple("Cortical Hivemind: [src] sings, \"[message]\""))
 		for(var/mob/dead_mob in GLOB.dead_mob_list)
-			to_chat(dead_mob, span_noticealien("Cortical Hivemind: [src] sings, \"[message]\""))
-		to_chat(src, span_noticealien("Cortical Hivemind: [src] sings, \"[message]\""))
+			var/link = FOLLOW_LINK(dead_mob, src)
+			to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings, \"[message]\""))
 		return
-	to_chat(human_host, span_noticealien("Cortical Link: [src] sings, \"[message]\""))
-	to_chat(src, span_noticealien("Cortical Link: [src] sings, \"[message]\""))
+	to_chat(human_host, span_purple("Cortical Link: [src] sings, \"[message]\""))
+	to_chat(src, span_purple("Cortical Link: [src] sings, \"[message]\""))
 	for(var/mob/dead_mob in GLOB.dead_mob_list)
-		to_chat(dead_mob, span_noticealien("Cortical Hivemind: [src] sings to [human_host], \"[message]\""))
+		var/link = FOLLOW_LINK(dead_mob, src)
+		to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings to [human_host], \"[message]\""))
 
 /datum/antagonist/cortical_borer
 	name = "Cortical Borer"
@@ -603,3 +629,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		var/mob/living/simple_animal/cortical_borer/spawned_cb = new /mob/living/simple_animal/cortical_borer(vent_turf)
 		spawned_cb.ckey = new_borer.ckey
 		spawned_cb.mind.add_antag_datum(/datum/antagonist/cortical_borer)
+		to_chat(spawned_cb, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
+	for(var/mob/dead_mob in GLOB.dead_mob_list)
+		to_chat(dead_mob, span_notice("The cortical borers have been selected, you are able to orbit them! Remember, they can reproduce!"))
