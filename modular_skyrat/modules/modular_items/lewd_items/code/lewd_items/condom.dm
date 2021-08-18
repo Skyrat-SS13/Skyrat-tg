@@ -1,3 +1,4 @@
+/*
 ////////////
 ///CONDOM///
 ////////////
@@ -90,3 +91,4 @@
 		condom_state = "used"
 		update_icon_state()
 		update_icon()
+*/
