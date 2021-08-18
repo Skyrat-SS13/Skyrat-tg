@@ -1,3 +1,4 @@
+/*
 #define CANDLE_LUMINOSITY	2
 /obj/item/bdsm_candle
 	name = "soy candle"
@@ -476,3 +477,4 @@
 		return
 
 #undef CANDLE_LUMINOSITY
+*/
