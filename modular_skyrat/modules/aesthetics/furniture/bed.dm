@@ -104,7 +104,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/furniture/bedsheets.dmi'
 	slot_flags = null
 
-/obj/item/bedsheet/cmo
+/obj/item/bedsheet/cmo/double
 	icon_state = "doublesheetCMO"
 	icon = 'modular_skyrat/modules/aesthetics/furniture/bedsheets.dmi'
 	slot_flags = null
