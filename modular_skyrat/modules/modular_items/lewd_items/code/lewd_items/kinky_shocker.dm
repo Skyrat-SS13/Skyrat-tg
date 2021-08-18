@@ -1,3 +1,4 @@
+/*
 /obj/item/kinky_shocker
 	name = "kinky shocker"
 	desc = "Just a toy, that can weakly shock someone."
@@ -336,3 +337,4 @@
 	else
 		to_chat(user, "<span class='danger'>Shocker must be enabled before use!</span>")
 		return
+*/
