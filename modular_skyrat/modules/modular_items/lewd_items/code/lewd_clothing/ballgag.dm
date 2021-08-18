@@ -1,3 +1,4 @@
+/*
 //things for normal ballgag
 /obj/item/clothing/mask/ballgag
 	var/list/moans ///phrases to be said when the player attempts to talk when speech modification.
@@ -235,3 +236,4 @@
 			if(prob(25))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0
+*/
