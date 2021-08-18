@@ -58,6 +58,13 @@
 		return
 	if(target.stat == DEAD)
 		return
+	//DISGUST 
+	if(target.getBruteLoss() > 49)
+		target.adjust_disgust(1.5) 
+	if(target.getBruteLoss() > 99)
+		target.adjust_disgust(1.5)
+	target.adjust_disgust(3)
+	//CLONE
 	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
 		target.adjustCloneLoss(2.45)
 	if(target.getBruteLoss() > 99)
@@ -78,7 +85,14 @@
 		return
 	if(target.stat == DEAD)
 		return
-	if(target.getFireLoss() > 49 && target.geFireLoss() < 100 )
+	//DISGUST 
+	if(target.getFireLoss() > 49)
+		target.adjust_disgust(1.5) 
+	if(target.getFireLoss() > 99)
+		target.adjust_disgust(1.5)
+	target.adjust_disgust(3)
+	//CLONE
+	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
 		target.adjustCloneLoss(2.45)
 	if(target.getFireLoss() > 99)
 		target.adjustCloneLoss(4.9)
@@ -118,6 +132,13 @@
 		return
 	if(target.stat == DEAD)
 		return
+	//DISGUST 
+	if(target.getBruteLoss() > 49)
+		target.adjust_disgust(1.5) 
+	if(target.getBruteLoss() > 99)
+		target.adjust_disgust(1.5)
+	target.adjust_disgust(2)
+	//CLONE
 	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
 		target.adjustCloneLoss(1.9)
 	if(target.getBruteLoss() > 99)
@@ -138,6 +159,13 @@
 		return
 	if(target.stat == DEAD)
 		return
+	//DISGUST 
+	if(target.getFireLoss() > 49)
+		target.adjust_disgust(1.5) 
+	if(target.getFireLoss() > 99)
+		target.adjust_disgust(1.5)
+	target.adjust_disgust(2)
+	//CLONE
 	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
 		target.adjustCloneLoss(1.9)
 	if(target.getFireLoss() > 99)
@@ -191,6 +219,13 @@
 		return
 	if(target.stat == DEAD)
 		return
+	//DISGUST 
+	if(target.getBruteLoss() > 49)
+		target.adjust_disgust(1.5) 
+	if(target.getBruteLoss() > 99)
+		target.adjust_disgust(1.5)
+	target.adjust_disgust(1)
+	//CLONE
 	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
 		target.adjustCloneLoss(1.125)
 	if(target.getBruteLoss() > 99)
@@ -211,6 +246,13 @@
 		return
 	if(target.stat == DEAD)
 		return
+	//DISGUST 
+	if(target.getFireLoss() > 49)
+		target.adjust_disgust(1.5) 
+	if(target.getFireLoss() > 99)
+		target.adjust_disgust(1.5)
+	target.adjust_disgust(1)
+	//CLONE
 	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
 		target.adjustCloneLoss(1.125)
 	if(target.getFireLoss() > 99)
