@@ -1,3 +1,4 @@
+/*
 //////////////////////////
 ///CODE FOR LEWD QUIRKS///
 //////////////////////////
@@ -558,3 +559,4 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 						. += "<font color=purple>[t_He] looks aroused as hell.</font>\n"
 					if(91.01 to INFINITY)
 						. += "<font color=purple>[t_He] [t_is] extremely excited, exhausting from entolerable desire.</font>\n"
+*/
