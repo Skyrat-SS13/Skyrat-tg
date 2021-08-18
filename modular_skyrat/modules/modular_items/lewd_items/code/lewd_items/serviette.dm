@@ -1,3 +1,4 @@
+/*
 ///////////////////////
 //CODE FOR SERVIETTES//
 ///////////////////////
@@ -133,3 +134,4 @@
 			to_chat(user, "<span class='notice'>There is no more serviettes left!</span>")
 			update_icon()
 			update_icon_state()
+*/
