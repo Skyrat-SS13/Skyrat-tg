@@ -22,6 +22,11 @@
 		Base parts are available for shipping via cargo.
 		-Nanotrasen Naval Command"}
 
+/datum/station_goal/bluespace_cannon/on_report()
+	//Unlock BSA parts
+	var/datum/supply_pack/engineering/bsa/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bsa]
+	P.special_enabled = TRUE
+
 /datum/station_goal/bluespace_cannon/check_completion()
 	if(..())
 		return TRUE
@@ -332,8 +337,9 @@
 	return TRUE
 
 /obj/machinery/bsa_powercore/Destroy()
-	control_unit.core = null
-	control_unit = null
+	if(control_unit)
+		control_unit.core = null
+		control_unit = null
 	attached = null
 	. = ..()
 

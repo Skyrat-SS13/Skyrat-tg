@@ -159,7 +159,7 @@
 		to_chat(user, "<span class='warning'>The collar is locked! You'll need unlock the collar before you can take it off!</span>")
 		return
 	add_fingerprint(usr)
-	..()
+	return ..()
 
 /obj/item/clothing/neck/kink_collar/locked/MouseDrop(atom/over_object)
 	var/mob/M = usr
@@ -169,7 +169,7 @@
 	var/atom/movable/screen/inventory/hand/H = over_object
 	if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 		add_fingerprint(usr)
-	..()
+	return ..()
 
 //This is a KEY moment of this code. You got it. Key.
 //...
@@ -297,5 +297,9 @@
 	var/mob/living/carbon/human/U = src.loc
 	if(src == U.wear_neck)
 		U.emote("me", 1,"[emoting]", TRUE)
-	else
-		return
+
+/obj/item/clothing/neck/mind_collar/Destroy()
+	if(remote)
+		remote.collar = null
+		remote = null
+	return ..()
