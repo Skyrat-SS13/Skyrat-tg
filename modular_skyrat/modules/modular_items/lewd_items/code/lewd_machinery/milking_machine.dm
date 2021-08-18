@@ -1,3 +1,4 @@
+/*
 /obj/structure/chair/milking_machine
 	name = "Milking machine"
 	desc = "Stationary device for milking people."
@@ -1061,3 +1062,4 @@
 			qdel(src)
 			to_chat(user, "<span class='notice'>You have assembled the milking machine!</span>")
 			return
+*/
