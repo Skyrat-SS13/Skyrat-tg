@@ -127,7 +127,7 @@
 	plantname = "Coyote Tobacco"
 	product = /obj/item/food/grown/rock_flora/coyote
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/drug/nicotine = 0.03, /datum/reagent/consumable/nutriment = 0.01, /datum/reagent/medicine/granibitaluri = 0.01)	//Acts as a mild painkiller. Balance debate pending.
+	reagents_add = list(/datum/reagent/drug/nicotine = 0.03, /datum/reagent/consumable/nutriment = 0.01, /datum/reagent/medicine/granibitaluri = 0.03)	//Acts as a mild painkiller. Balance debate pending.
 
 /obj/item/seeds/rockplanet/yucca
 	name = "pack of dagger-yucca seeds"
