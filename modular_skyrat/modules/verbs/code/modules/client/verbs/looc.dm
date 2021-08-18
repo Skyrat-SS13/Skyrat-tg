@@ -44,7 +44,7 @@
 	if(istype(mob,/mob/living/silicon/ai))
 		heard = get_hearers_in_view(7, ai.eyeobj)
 	//so the ai can see looc text
-	for(var/mob/living/silicon/ai/ai in GLOB.ai_list)
+	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
 		if(ai.client && !(ai in heard) && ai.eyeobj in heard)
 			heard += ai
 
