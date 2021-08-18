@@ -1,3 +1,4 @@
+/*
 //////////////////////////////////////////////////////////////////////////
 //THIS IS NOT HERESY, DO NOT TOUCH IT IN THE NAME OF GOD//////////////////
 //I made this file to prevent myself from touching normal files///////////
@@ -1271,3 +1272,4 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 		return FALSE
 	return FALSE
+*/
