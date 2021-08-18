@@ -75,6 +75,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/medicine/mannitol,
 										/datum/reagent/drug/methamphetamine,
 										/datum/reagent/medicine/morphine,
+										/datum/reagent/medicine/inacusiate,
+										/datum/reagent/medicine/oculine,
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
@@ -492,7 +494,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	playsound(human_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	spawn_borer.ckey = pick_candidate.ckey
 	spawn_borer.generation = cortical_owner.generation + 1
-	spawn_borer.name = "[initial(spawn_borer.name)] ([cortical_owner.generation]-[rand(100,999)])"
+	spawn_borer.name = "[initial(spawn_borer.name)] ([spawn_borer.generation]-[rand(100,999)])"
 	spawn_borer.mind.add_antag_datum(/datum/antagonist/cortical_borer)
 	to_chat(spawn_borer, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	StartCooldown()
