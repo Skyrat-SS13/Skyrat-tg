@@ -1,3 +1,4 @@
+/*
 /obj/item/spanking_pad
 	name = "spanking pad"
 	desc = "Leather pad with a handle."
@@ -87,3 +88,4 @@
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
+*/
