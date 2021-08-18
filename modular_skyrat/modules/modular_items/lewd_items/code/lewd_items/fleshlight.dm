@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/sextoy/fleshlight
 	name = "fleshlight"
 	desc = "What a strange flashlight."
@@ -119,3 +120,4 @@
 	else
 		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
 		return
+*/
