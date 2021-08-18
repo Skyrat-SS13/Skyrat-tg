@@ -76,7 +76,7 @@
 	new /obj/item/camera_bug(src)
 	new /obj/item/clothing/glasses/thermal/syndi(src)
 	new /obj/item/card/id/advanced/chameleon(src)
-
+/*
 /obj/item/storage/backpack/duffelbag/syndie/loadout/sniper/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/sniper_rifle/modular/blackmarket(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
@@ -89,7 +89,7 @@
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/clothing/mask/gas/clown_hat(src)
 	new /obj/item/clothing/under/syndicate/sniper(src)
-	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/kitchen/knife/combat/survival(src)*/
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops/PopulateContents()
 	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
@@ -194,7 +194,7 @@
 	new /obj/item/toy/balloon/syndicate(src)
 	new /obj/item/storage/box/fakesyndiesuit(src)
 	new /obj/item/storage/box/donkpockets(src)
-
+/*
 /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/tommygun/therealtommy(src)
 	new /obj/item/ammo_box/magazine/tommygunm45(src)
@@ -209,7 +209,7 @@
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/lighter(src)
-	new /obj/item/storage/fancy/cigarettes/cigars/cohiba(src)
+	new /obj/item/storage/fancy/cigarettes/cigars/cohiba(src)*/
 
 /obj/item/storage/box/syndie_kit/loadout/ocelotfoxtrot/PopulateContents()
 	new /obj/item/gun/ballistic/revolver/ocelot(src)
