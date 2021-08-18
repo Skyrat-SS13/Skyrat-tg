@@ -126,6 +126,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(inside_human())
 		var/turf/human_turf = get_turf(human_host)
 		forceMove(human_turf)
+		human_host = null
 	GLOB.cortical_borers -= src
 	for(var/borers in GLOB.cortical_borers)
 		to_chat(borers, span_boldwarning("[src] has left the hivemind forcibly!"))
@@ -565,8 +566,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(src, span_warning("You are not able to speak without a host!"))
 		return
 	if(host_sugar())
-		to_chat(src, span_warning("Sugar inhibits your abilities to function!"))
-		return
+		message = scramble_message_replace_chars(message, 10)
 	message = sanitize(message)
 	var/list/split_message = splittext(message, "")
 	if(split_message[1] == ";")
