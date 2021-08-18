@@ -10,7 +10,7 @@
 	var/static/list/vend_designs
 	product_ads = "Try me!;Kinky!;Lewd and fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!;You might want to buy a protection"
 	vend_reply = "Enjoy!;We glad to satisfly your desires!"
-
+/*
 	//STUFF SOLD HERE//
 	products = list(//Sex toys
 					/obj/item/clothing/sextoy/signalvib = 8,
@@ -107,7 +107,65 @@
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
 					/obj/item/reagent_containers/glass/bottle/hexacrocin = 4,
 					/obj/item/reagent_containers/glass/bottle/pentacamphor = 2)
+*/
+	products = list(//Sex toys
+					/obj/item/restraints/handcuffs/lewd = 8,
+					//clothing facial/head
+					/obj/item/clothing/head/domina_cap = 5,
+					/obj/item/clothing/head/maid = 5,
+					/obj/item/clothing/head/kitty = 4,
+					/obj/item/clothing/head/rabbitears = 4,
+					/obj/item/clothing/mask/muzzle/ring = 4,
+					/obj/item/clothing/mask/muzzle/ball = 4,
+					//neck
+					/obj/item/clothing/neck/kink_collar = 3,
+					/obj/item/clothing/neck/human_petcollar = 8,
+					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 3,
+					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 5,
+					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 3,
+					/obj/item/clothing/neck/human_petcollar/locked/cross = 3,
+					/obj/item/clothing/neck/human_petcollar/choker = 4,
+					//torso clothing
+					/obj/item/clothing/suit/corset = 2,
+					/obj/item/clothing/under/misc/latex_catsuit = 1,
+					/obj/item/clothing/under/rank/civilian/janitor/maid = 1,
+					/obj/item/clothing/under/costume/lewdmaid = 1,
+					/obj/item/clothing/under/costume/maid = 1,
+					/obj/item/clothing/under/stripper_outfit = 2,
+					/obj/item/clothing/under/misc/gear_harness = 1,
+					/obj/item/clothing/under/shorts/polychromic/pantsu = 2,
+					/obj/item/clothing/under/misc/poly_bottomless = 4,
+					/obj/item/clothing/under/misc/poly_tanktop = 4,
+					/obj/item/clothing/under/misc/poly_tanktop/female = 4,
+					/obj/item/clothing/under/costume/loincloth = 2,
+					/obj/item/clothing/under/misc/stripper = 4,
+					/obj/item/clothing/under/misc/stripper/green = 4,
+					/obj/item/clothing/under/misc/stripper/mankini = 4,
+					/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
+					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
+					//hands
+					/obj/item/clothing/gloves/ball_mittens = 1,
+					/obj/item/clothing/gloves/latex_gloves = 2,
+					/obj/item/clothing/gloves/evening = 2,
+					//legs
+					/obj/item/clothing/shoes/latex_socks = 2,
+					/obj/item/clothing/shoes/latexheels = 1,
+					/obj/item/clothing/shoes/dominaheels = 1,
+					/obj/item/clothing/shoes/jackboots/thigh = 1,
+					/obj/item/clothing/shoes/jackboots/knee = 1,
+					//special
+					/obj/item/clothing/glasses/nice_goggles = 1 //easter egg, don't touch plz)
+					)
 
+	contraband = list(
+					/obj/item/electropack/shockcollar = 1
+					)
+	premium = list(
+					/obj/item/clothing/under/dress/corset = 4,
+					/obj/item/clothing/under/pants/chaps = 4,
+					/obj/item/clothing/accessory/skullcodpiece/fake = 4,
+					/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3
+					)
 	refill_canister = /obj/item/vending_refill/lustwish
 	payment_department = ACCOUNT_SRV
 	default_price = 30
