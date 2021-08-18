@@ -74,8 +74,9 @@
 
 /obj/item/rna_extractor/Destroy()
 	. = ..()
-	loaded_vial.forceMove(loc)
-	loaded_vial = null
+	if(loaded_vial)
+		loaded_vial.forceMove(loc)
+		loaded_vial = null
 
 /obj/item/rna_vial
 	name = "Raw RNA vial"
