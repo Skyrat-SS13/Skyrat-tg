@@ -1,3 +1,4 @@
+/*
 //normal ball mittens
 /obj/item/clothing/gloves/ball_mittens
 	name = "Ball mittens"
@@ -36,7 +37,7 @@
 	// equip_delay_self = 80
 	// strip_delay = 80
 	breakouttime = 1000 //do not touch this, i beg you.
-
+*/
 //latex gloves
 /obj/item/clothing/gloves/latex_gloves
 	name = "Latex gloves"
