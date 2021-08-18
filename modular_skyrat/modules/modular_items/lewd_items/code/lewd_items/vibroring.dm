@@ -1,3 +1,4 @@
+/*
 ///////////////
 ///Vibroring///
 ///////////////
@@ -95,3 +96,4 @@
 		U.adjustPleasure(1 * delta_time)
 		if(P.aroused != AROUSAL_CANT)
 			P.aroused = AROUSAL_FULL //Vibroring keep penis erected.
+*/
