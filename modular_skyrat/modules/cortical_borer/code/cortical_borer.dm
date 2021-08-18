@@ -125,6 +125,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		var/turf/human_turf = get_turf(human_host)
 		forceMove(human_turf)
 	GLOB.cortical_borers -= src
+	for(var/borers in GLOB.cortical_borers)
+		to_chat(borers, span_boldwarning("[src] has left the hivemind forcibly!"))
 	mind.remove_all_antag_datums()
 	qdel(reagent_holder)
 	return ..()
@@ -370,7 +372,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 //to check the health of the human
 /datum/action/cooldown/check_blood
 	name = "Check Blood"
-	cooldown_time = 1 SECONDS
+	cooldown_time = 5 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "blood"
 
@@ -405,7 +407,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 //to either get inside, or out, of a host
 /datum/action/cooldown/choosing_host
 	name = "Inhabit/Uninhabit Host"
-	cooldown_time = 1 SECONDS
+	cooldown_time = 10 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "host"
 
