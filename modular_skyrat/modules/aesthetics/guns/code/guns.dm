@@ -143,6 +143,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
 	icon_state = "laser"
 
+/obj/item/gun/energy/e_gun/nuclear/emag_act(mob/user, obj/item/card/emag/E)
 //nuclear/emag_act(mob/user, obj/item/card/emag/E)
 	. = ..()
 	if(pin)
