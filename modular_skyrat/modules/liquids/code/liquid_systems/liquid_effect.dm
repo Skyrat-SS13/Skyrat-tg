@@ -432,9 +432,9 @@
 			to_chat(M, "<span class='userdanger'>You fall in the water!</span>")
 
 /obj/effect/abstract/liquid_turf/Initialize()
+	. = ..()
 	if(!SSliquids)
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
-	. = ..()
 	if(!immutable)
 		my_turf = loc
 		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)

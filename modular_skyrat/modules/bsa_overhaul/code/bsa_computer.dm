@@ -135,7 +135,8 @@
 	return cannon
 
 /obj/machinery/computer/bsa_control/Destroy()
-	cannon.control_unit = null
-	cannon = null
+	if(cannon)
+		cannon.control_unit = null
+		cannon = null
 	core = null
 	. = ..()

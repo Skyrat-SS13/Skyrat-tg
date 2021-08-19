@@ -99,6 +99,15 @@
 	//Expects a mob to holderize, we have nothing to give
 	ignore += typesof(/obj/item/clothing/head/mob_holder)
 
+	//SKYRAT EDIT ADDITION - OUR IGNORES DOWN HERE
+	//Not designed to be spawned without a turf.
+	ignore += typesof(/obj/effect/abstract/liquid_turf)
+	//Not designed to be spawned individually.
+	ignore += typesof(/obj/structure/biohazard_blob)
+	//Unused - not supposed to be spawned without SSliquids
+	ignore += typesof(/turf/open/openspace/ocean)
+	//SKYRAT EDIT END
+
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/baseturf_count = length(spawn_at.baseturfs)
 

@@ -204,7 +204,7 @@
 	mag_display = TRUE
 
 /obj/item/gun/ballistic/automatic/ar/modular
-	name = "NT ARG-63 infantry rifle"
+	name = "NT ARG-63"
 	desc = "Nanotrasen's prime ballistic option based on the Stoner design, fitted with a light polymer frame and other tactical furniture - nicknamed 'Boarder' by Special Operations teams."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "arg"
@@ -263,3 +263,27 @@
 	name = "\improper Type-69 Surplus Rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	
+/obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
+	name = "\improper NT CMG-1"
+	desc = "A bullpup three-round burst .45 PDW with an eerily familiar design. It has a foldable stock and a dot sight."
+	icon_state = "cmg1"
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	
+/obj/item/gun/ballistic/automatic/ar/modular/model75
+	name = "\improper NT ARG-75"
+	desc = "A contemporary rifle that just exited its prototype phase and has started production, a rare sight for now. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
+	icon_state = "arg75"
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
+	fire_delay = 5
+	fire_sound_volume = 90
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
+
+/obj/item/ammo_box/magazine/multi_sprite/ostwind/arg75
+	name = "7.62mm straight magazine"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "pcr"
+	ammo_type = /obj/item/ammo_casing/a762
+	caliber = CALIBER_A762
+	max_ammo = 20

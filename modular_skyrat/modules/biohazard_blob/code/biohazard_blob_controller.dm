@@ -77,6 +77,10 @@
 
 /datum/biohazard_blob_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	all_resin = null
+	active_resin = null
+	our_core = null
+	other_structures = null
 	return ..()
 
 /datum/biohazard_blob_controller/proc/CoreRetaliated()
