@@ -180,6 +180,7 @@
 	name = "Captain's Dress"
 	path = /obj/item/clothing/under/rank/captain/dress
 	ckeywhitelist = list("netrakyram")
+	restricted_roles = list("Captain")
 
 /datum/loadout_item/uniform/donator/kilano_suit
 	name = "black and gold dress uniform"
