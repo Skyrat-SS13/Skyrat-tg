@@ -6,7 +6,6 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#3F3C40#FFCE5B"
 
 /obj/item/clothing/head/hos/beret/syndicate
@@ -20,7 +19,6 @@
 	icon_state = "beret_badge_fancy_twist"
 	greyscale_config = /datum/greyscale_config/beret_badge_fancy
 	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge_fancy/worn/vox
 	greyscale_colors = "#3C485A#FF0000#00AEEF"
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 30, ACID = 50, WOUND = 6)
 	strip_delay = 60
@@ -39,7 +37,6 @@
 	icon_state = "beret_badge_med"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#FFFFFF#5A96BB"
 	flags_1 = NONE
 
@@ -67,7 +64,6 @@
 	icon_state = "beret_badge_engi"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#FFBC30#EFEFEF"
 	flags_1 = NONE
 
@@ -77,7 +73,6 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	greyscale_colors = "#FFDE15#00A5FF"
 	flags_1 = NONE
 
@@ -124,7 +119,6 @@
 	desc = "A beret that helps the QM keep telling themselves that they're an official head of staff."
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	icon_state = "beret_badge"
 	greyscale_colors = "#714711#EBF755"
 
@@ -143,7 +137,6 @@
 	desc = "A fancy beret designed by NT's Personnel division for their favorite head's head."
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 	icon_state = "beret_badge"
 	greyscale_colors = "#006086#D60000"
 

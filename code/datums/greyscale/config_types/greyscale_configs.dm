@@ -82,11 +82,6 @@
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
-/datum/greyscale_config/jumpsuit_worn_vox
-	name = "Worn Jumpsuit - Vox"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'
-	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
-
 /datum/greyscale_config/jumpsuit_inhand_left
 	name = "Held Jumpsuit, Left"
 	icon_file = 'icons/mob/inhands/clothing_lefthand.dmi'
@@ -111,11 +106,6 @@
 	name = "Worn Prison Jumpsuit - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/color_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/jumpsuit_prison_worn.json'
-
-/datum/greyscale_config/jumpsuit_prison_worn_vox
-	name = "Worn Prison Jumpsuit - Vox"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'
-	json_config = 'code/datums/greyscale/json_configs/jumpsuit_worn.json'
 
 /datum/greyscale_config/jumpsuit_prison_inhand_left
 	name = "Held Prison Jumpsuit, Left"
@@ -175,11 +165,6 @@
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
-/datum/greyscale_config/sneakers_worn_vox
-	name = "Worn Sneakers - Vox"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'
-	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
-
 /datum/greyscale_config/sneakers_orange
 	name = "Orange Sneakers"
 	icon_file = 'icons/obj/clothing/shoes.dmi'
@@ -194,11 +179,6 @@
 	name = "Worn Orange Sneakers - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/feet_gags_digi.dmi'
 	json_config = 'code/datums/greyscale/json_configs/sneakers_orange_worn.json'
-
-/datum/greyscale_config/sneakers_orange_worn_vox
-	name = "Worn Orange Sneakers - Vox"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'
-	json_config = 'code/datums/greyscale/json_configs/sneakers_worn.json'
 
 /datum/greyscale_config/sneakers_wheelys
 	name = "Wheeled Sneakers"

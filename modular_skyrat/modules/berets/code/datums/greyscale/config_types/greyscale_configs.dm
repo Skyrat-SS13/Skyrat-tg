@@ -26,17 +26,3 @@
 /datum/greyscale_config/beret_badge_fancy/worn
 	name = "Beret With Fancy Badge Worn"
 	json_config = 'modular_skyrat/modules/berets/code/datums/greyscale/json_configs/beret_badge_fancy_worn.json'
-
-
-// Vox!
-/datum/greyscale_config/beret/worn/vox
-	name = "Beret Worn - Vox"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'
-
-/datum/greyscale_config/beret_badge/worn/vox
-	name = "Beret With Badge Worn - Vox"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'
-
-/datum/greyscale_config/beret_badge_fancy/worn/vox
-	name = "Beret With Fancy Badge Worn - Vox"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/color_gags_vox.dmi'

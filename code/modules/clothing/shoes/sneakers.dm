@@ -5,7 +5,6 @@
 	greyscale_config = /datum/greyscale_config/sneakers
 	greyscale_config_worn = /datum/greyscale_config/sneakers_worn
 	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_worn_digi //SKYRAT EDIT ADDITION
-	greyscale_config_worn_vox = /datum/greyscale_config/sneakers_worn_vox //SKYRAT EDIT ADDITION
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/sneakers/black
@@ -69,7 +68,6 @@
 	greyscale_config = /datum/greyscale_config/sneakers_orange
 	greyscale_config_worn = /datum/greyscale_config/sneakers_orange_worn
 	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn_digi //SKYRAT EDIT ADDITION
-	greyscale_config_worn_vox = /datum/greyscale_config/sneakers_orange_worn_vox //SKYRAT EDIT ADDITION
 	flags_1 = NONE
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)

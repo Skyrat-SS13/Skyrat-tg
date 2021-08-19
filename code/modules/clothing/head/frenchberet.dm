@@ -4,7 +4,6 @@
 	icon_state = "beret"
 	greyscale_config = /datum/greyscale_config/beret
 	greyscale_config_worn = /datum/greyscale_config/beret/worn
-	greyscale_config_worn_vox = /datum/greyscale_config/beret/worn/vox
 	greyscale_colors = "#972A2A"
 	dynamic_hair_suffix = ""
 

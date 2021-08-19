@@ -206,7 +206,6 @@
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
 	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn_digi
-	greyscale_config_worn_vox = /datum/greyscale_config/jumpsuit_prison_worn_vox
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
