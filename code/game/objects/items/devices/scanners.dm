@@ -371,10 +371,6 @@ GENE SCANNER
 			|| S.mutantappendix != initial(S.mutantappendix) \
 			|| S.flying_species != initial(S.flying_species)
 
-		//Skyrat Edit Start: Cortical Borer
-		if(H.has_borer())
-			render_list += "<span class='info ml-1'>Foreign Organism detected within patient, recommended treatment: Dose of sugar and removal through surgery.</span>\n"
-		//Skyrat Edit Stop: Cortical Borer
 		render_list += "<span class='info ml-1'>Species: [S.name][mutant ? "-derived mutant" : ""]</span>\n"
 		render_list += "<span class='info ml-1'>Core temperature: [round(H.coretemperature-T0C,0.1)] &deg;C ([round(H.coretemperature*1.8-459.67,0.1)] &deg;F)</span>\n"
 	render_list += "<span class='info ml-1'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature*1.8-459.67,0.1)] &deg;F)</span>\n"
