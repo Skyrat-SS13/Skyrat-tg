@@ -2,54 +2,54 @@
 ///////////////////////////////////////////////////////////////////////SHOES
 
 /obj/item/clothing/shoes/sneakers/white
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 
 ///////////////////////////////////////////////////////////////////////UNIFORMS
 
 /obj/item/clothing/under/rank/civilian/chef/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/bartender/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/chef
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/bartender
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/mime
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/mime/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/black
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/black/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/red
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/red/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/blue
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/medical
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 /obj/item/clothing/under/rank/rnd
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
 ///////////////////////////////////////////////////////////////////////SUITS
 
