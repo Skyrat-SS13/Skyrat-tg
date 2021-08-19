@@ -37,7 +37,7 @@
 /obj/item/organ/cyberimp/arm/hacker
 	name = "hacking arm implant"
 	desc = "An small arm implant containing an advanced screwdriver, wirecutters, and multitool designed for engineers and on-the-field machine modification. Actually legal, despite what the name may make you think."
-	icon ='icons/obj/items_cyborg.dmi'
+	icon ='modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "multitool_cyborg"
 	items_to_create = list(/obj/item/screwdriver/cyborg, /obj/item/wirecutters/cyborg, /obj/item/multitool/abductor/implant)
 
@@ -49,7 +49,7 @@
 /obj/item/multitool/abductor/implant
 	name = "multitool"
 	desc = "An optimized, highly advanced stripped-down multitool able to interface with electronics far better than its standard counterpart."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "multitool_cyborg"
 
 /obj/item/organ/cyberimp/arm/janitor
