@@ -144,7 +144,6 @@
 	icon_state = "laser"
 
 /obj/item/gun/energy/e_gun/nuclear/emag_act(mob/user, obj/item/card/emag/E)
-//nuclear/emag_act(mob/user, obj/item/card/emag/E)
 	. = ..()
 	if(pin)
 		to_chat(user, "<span class='warning'>You probably want to do this on a new gun!")
