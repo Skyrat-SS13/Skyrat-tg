@@ -109,6 +109,7 @@
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
 	worn_icon_state = "gun"
+	worn_icon = null
 
 /obj/item/gun/energy/lasercannon
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
@@ -123,7 +124,6 @@
 	name = "fantastic energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell. This one seems quite fancy!"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/rainbow, /obj/item/ammo_casing/energy/disabler/rainbow)
-	worn_icon_state = "gun"
 
 /obj/item/ammo_casing/energy/laser/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
@@ -143,7 +143,7 @@
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
 	icon_state = "laser"
 
-/obj/item/gun/energy/e_gun/nuclear/emag_act(mob/user, obj/item/card/emag/E)
+//nuclear/emag_act(mob/user, obj/item/card/emag/E)
 	. = ..()
 	if(pin)
 		to_chat(user, "<span class='warning'>You probably want to do this on a new gun!")
