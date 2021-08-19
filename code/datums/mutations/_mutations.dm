@@ -60,7 +60,7 @@
 	if(!H || !istype(H) || H.stat == DEAD || (src in H.dna.mutations))
 		return TRUE
 	//Skyrat Edit Start: Cortical Borer
-	if(H.has_borer() && !istype(src, XRAY))
+	if(H.has_borer())
 		to_chat(H, span_warning("Something inside holds dearly to your humanity!"))
 		return TRUE
 	//Skyrat Edit Stop: Cortical Borer
