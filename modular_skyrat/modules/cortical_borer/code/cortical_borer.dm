@@ -633,6 +633,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			continue
 		if(listed_human.has_borer())
 			continue
+		if(!(listed_human.dna.species.inherent_biotypes & MOB_ORGANIC))
+			continue
+		if(!(listed_human.mob_biotypes & MOB_ORGANIC))
+			continue
 		usable_hosts += listed_human
 	var/choose_host = tgui_input_list(cortical_owner, "Choose your host!", "Host Choice", usable_hosts)
 	if(!choose_host)
