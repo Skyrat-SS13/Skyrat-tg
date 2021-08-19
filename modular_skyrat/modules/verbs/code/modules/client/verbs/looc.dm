@@ -42,10 +42,11 @@
 
 	//so the ai can post looc text
 	if(istype(mob,/mob/living/silicon/ai))
+		var/mob/living/silicon/ai/ai = mob
 		heard = get_hearers_in_view(7, ai.eyeobj)
 	//so the ai can see looc text
 	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
-		if(ai.client && !(ai in heard) && ai.eyeobj in heard)
+		if(ai.client && !(ai in heard) && (ai.eyeobj in heard))
 			heard += ai
 
 	var/list/admin_seen = list()
