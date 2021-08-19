@@ -247,6 +247,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	for(var/action_type in known_abilities)
 		var/datum/action/attack_action = new action_type()
 		attack_action.Grant(src)
+	if(mind)
+		if(!mind.has_antag_datum(/datum/antagonist/cortical_borer))
+			mind.add_antag_datum(/datum/antagonist/cortical_borer)
+
 
 /mob/living/simple_animal/cortical_borer/death(gibbed)
 	if(inside_human())
@@ -256,8 +260,12 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	GLOB.cortical_borers -= src
 	for(var/borers in GLOB.cortical_borers)
 		to_chat(borers, span_boldwarning("[src] has left the hivemind forcibly!"))
-	mind.remove_all_antag_datums()
-	qdel(reagent_holder)
+	if(mind)
+		mind.remove_all_antag_datums()
+	QDEL_NULL(reagent_holder)
+	if(!ckey)
+		gib()
+		return
 	return ..()
 
 //so we can add some stuff to status, making it easier to read... maybe some hud some day
