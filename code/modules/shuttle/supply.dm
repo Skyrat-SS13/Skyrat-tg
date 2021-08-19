@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		/mob/living,
 		/obj/structure/blob,
@@ -261,3 +262,4 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 #undef GOODY_FREE_SHIPPING_MAX
 #undef CRATE_TAX
+*/

@@ -60,6 +60,8 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 
 /mob/living/simple_animal/hostile/floor_cluwne/Destroy()
 	QDEL_NULL(poi)
+	if(current_victim)
+		current_victim = null
 	return ..()
 
 
@@ -426,11 +428,12 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 		carbon_human.density = initial(carbon_human.density)
 		carbon_human.anchored = initial(carbon_human.anchored)
 		carbon_human.blur_eyes(10)
-		carbon_human.equipOutfit(/datum/outfit/job/clown)
+		carbon_human.equipOutfit(/datum/outfit/job/clown_free)
 		carbon_human.pull_force = initial(carbon_human.pull_force)
 		animate(carbon_human.client,color = old_color, time = 20)
 		var/turf/move_turf = get_turf(pick(GLOB.cluwne_maze))
 		carbon_human.forceMove(move_turf)
+		to_chat(carbon_human, span_warning("You have entered the belly of the beast! Go to the ends and try to escape!"))
 
 	eating = FALSE
 	switch_stage = switch_stage * 0.75 //he gets faster after each feast
@@ -510,7 +513,7 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 #undef MANIFEST_DELAY
 
 /client/proc/spawn_floor_cluwne()
-	set category = "Fun"
+	set category = "Admin.Fun"
 	set name = "Unleash Floor Cluwne"
 	set desc = "Pick a specific target or just let it select randomly and spawn the floor cluwne mob on the station. Be warned: spawning more than one may cause issues!"
 	var/target

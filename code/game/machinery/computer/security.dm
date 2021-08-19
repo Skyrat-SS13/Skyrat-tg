@@ -3,7 +3,7 @@
 	desc = "Used to view and edit personnel's security records."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
-	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS)
+	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS, ACCESS_SECURITY_RECORDS)
 	circuit = /obj/item/circuitboard/computer/secure_data
 	light_color = COLOR_SOFT_RED
 	var/rank = null
@@ -159,10 +159,10 @@
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
 
-	var/status_to_set = new_status.input_value
+	var/status_to_set = new_status.value
 
 	new_status_set.set_output(status_to_set)
-	var/list/target_table = targets.input_value
+	var/list/target_table = targets.value
 	if(!target_table)
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return

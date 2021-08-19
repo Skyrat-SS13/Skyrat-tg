@@ -6,6 +6,13 @@
 
 	anchored = TRUE
 	density = TRUE
+	var/primitive = FALSE
+
+/obj/structure/reagent_anvil/Initialize()
+	. = ..()
+	if(is_mining_level(z))
+		primitive = TRUE
+		icon_state = "primitive_anvil_empty"
 
 /obj/structure/reagent_anvil/attackby(obj/item/I, mob/living/user, params)
 	var/obj/item/forging/incomplete/searchIncompleteSrc = locate(/obj/item/forging/incomplete) in contents
@@ -26,19 +33,28 @@
 		to_chat(user, span_warning("You strike the metal-- bad hit."))
 		if(searchIncompleteSrc.times_hit <= -(searchIncompleteSrc.average_hits))
 			to_chat(user, span_warning("The hits were too inconsistent-- the metal breaks!"))
-			icon_state = "anvil_empty"
+			if(!primitive)
+				icon_state = "anvil_empty"
+			else
+				icon_state = "primitive_anvil_empty"
 			qdel(searchIncompleteSrc)
 		return
 	if(istype(I, /obj/item/forging/tongs))
 		var/obj/item/forging/incomplete/searchIncompleteItem = locate(/obj/item/forging/incomplete) in I.contents
 		if(searchIncompleteSrc && !searchIncompleteItem)
 			searchIncompleteSrc.forceMove(I)
-			icon_state = "anvil_empty"
+			if(!primitive)
+				icon_state = "anvil_empty"
+			else
+				icon_state = "primitive_anvil_empty"
 			I.icon_state = "tong_full"
 			return
 		if(!searchIncompleteSrc && searchIncompleteItem)
 			searchIncompleteItem.forceMove(src)
-			icon_state = "anvil_full"
+			if(!primitive)
+				icon_state = "anvil_full"
+			else
+				icon_state = "primitive_anvil_full"
 			I.icon_state = "tong_empty"
 		return
 	if(I.tool_behaviour == TOOL_WRENCH)

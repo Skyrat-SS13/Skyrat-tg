@@ -61,7 +61,7 @@
 // CAPTAIN
 
 /obj/item/clothing/suit/armor/captain/parade/female
-	name = "captain's female parade jacket"
+	name = "captain's female formal jacket"
 	desc = "A captain's luxury-wear, for special occasions."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'

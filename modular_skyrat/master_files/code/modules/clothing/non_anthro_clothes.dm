@@ -309,4 +309,8 @@
 
 /obj/item/clothing/suit/armor/riot/knight/greyscale
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/armor/vest/centcom_formal
+	mutant_variants = NONE
+
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

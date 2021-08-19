@@ -339,6 +339,26 @@
 	name = "Spicy"
 	icon_state = "hair_spicy"
 
+/datum/sprite_accessory/hair/skyrat/sabitsuki
+	name = "Sabitsuki"
+	icon_state = "hair_sabitsuki"
+
+/datum/sprite_accessory/hair/skyrat/jessica
+	name = "Jessica"
+	icon_state = "hair_jessica"
+
+/datum/sprite_accessory/hair/skyrat/gentle21
+	name = "Gently Brushed"
+	icon_state = "hair_gentle21"
+
+/datum/sprite_accessory/hair/skyrat/country_s
+	name = "Country Side-Braid"
+	icon_state = "hair_country_s"
+
+/datum/sprite_accessory/hair/skyrat/beachwave
+	name = "Beachwave"
+	icon_state = "hair_beachwave"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
