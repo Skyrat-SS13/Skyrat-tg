@@ -67,6 +67,27 @@
 	qdel(src)
 	return TRUE
 
+//This is a 3x1 road blocker, use it for road checkpoints and the likes. Make sure all 3 pieces are placed
+/obj/structure/fluff/abandoned/blocker
+	name = "road blocker"
+	desc = "An old blocker intended to prevent vehicles from passing into an area. Considering you can't move it, you'll have to climb over or go around."
+	icon_state = "blocker_h"
+	density = TRUE
+	deconstructible = FALSE
+
+/obj/structure/fluff/abandoned/blocker/vertical
+	icon_state = "blocker_v"
+
+/obj/structure/fluff/abandoned/blocker/worn
+	icon_state = "blocker_h_worn"
+
+/obj/structure/fluff/abandoned/blocker/worn/vertical
+	icon_state = "blocker_v_worn"
+
+/obj/structure/fluff/abandoned/blocker/Initialize()
+	. = ..()
+	AddElement(/datum/element/climbable)
+
 //Cinderblock -----
 /obj/structure/fluff/abandoned/cinderblock
 	name = "cinderblock"
@@ -74,6 +95,7 @@
 	icon_state = "block1"
 	//NOTE - Block1 is the only block with north-to-south variants
 	density = TRUE
+	deconstructible = FALSE
 	var/climbable = TRUE
 
 /obj/structure/fluff/abandoned/cinderblock/end
@@ -118,7 +140,7 @@
 	name = "piping"
 	desc = "Old, exposed water piping."
 	icon_state = "piping"
-	layer = WALL_OBJ_LAYER
+	layer = SIGN_LAYER
 
 /obj/structure/fluff/abandoned/piping/broken
 	name = "broken piping"
@@ -129,7 +151,7 @@
 	name = "radiator"
 	desc = "An old method of temperature control using the power of water and electricity. We've advanced past the need for these, though!"
 	icon_state = "radiator"
-	layer = WALL_OBJ_LAYER
+	layer = SIGN_LAYER
 
 /obj/structure/fluff/abandoned/radiator/worn
 	icon_state = "radiator_worn"
@@ -138,7 +160,7 @@
 	name = "breaker box"
 	desc = "An old-fashioned method of preventing electrical hazards, these breaker boxes are full of switches to automatically cut power in case of a surge. If only Nanotrasen's APCs used this for SM output..."
 	icon_state = "breaker"
-	layer = WALL_OBJ_LAYER
+	layer = SIGN_LAYER
 
 /obj/structure/fluff/abandoned/breaker/worn
 	icon_state = "breaker_worn"
@@ -190,7 +212,7 @@
 	. = ..()
 	icon_state += pick("", "_a","_b")	//Random level of wear
 
-/obj/item/abandoned_mic_stand
+/obj/item/abandoned_mic_stand	//Not a structure, but I dont care >:)
 	name = "old microphone"
 	desc = "An old microphone, wired to.. nothing. I guess it's still good for pretending to sing."
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/abandoned_fluff.dmi'
@@ -201,7 +223,7 @@
 	name = "mattress"
 	desc = "An old mattress, with a cross-sewn pattern. While it's not a nest to some sort of vermin, it's still probably going to give you a long-dormant disease if you touch it."
 	icon_state = "mattress"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/abandoned_fluff.dmi'
 	can_buckle = FALSE //Why would these have straps?
 
 /obj/structure/bed/maint/abandoned/randomspawn
@@ -220,7 +242,7 @@
 
 //Functional -----
 //Probably should be in different files, but seeing how they're mostly just fluff variants of existing items, I figure they're practically fluff anyways. Saves space in the .dme too
-/obj/item/radio/ancient_military	//Essentially a reskinned station-bounced, except bigger. Why would you want this? A E S T H E T I C
+/obj/item/radio/ancient_military	//Essentially a reskinned station-bounced, except bigger. Why would you want this? A E S T H E T I C. Yes, not a structure, but because its anchorable its going here.
 	name = "military stationary radio"
 	desc = "An old radio that transmits over local frequencies. Luckily, it's tuning range is close enough to NT-standard."
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/abandoned_fluff.dmi'

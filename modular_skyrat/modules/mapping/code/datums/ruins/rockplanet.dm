@@ -57,6 +57,13 @@
 	suffix = "cantina.dmm"
 	cost = 5
 
+/datum/map_template/ruin/rockplanet/mil_crossroad
+	name = "Military Checkpoint"
+	id = "rockplanet_mil_crossroad"
+	description = "Setting up on crossroads was an effective way to ensure you had a large amount of coverage. Why it was set up is a mystery though."
+	suffix = "military_tent.dmm"
+	cost = 5
+
 /datum/map_template/ruin/rockplanet/syndicate_base
 	name = "Syndicate Rockplanet Base"
 	id = "rock-base"
