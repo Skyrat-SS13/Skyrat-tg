@@ -6,6 +6,34 @@
 	worn_icon_state = "energy"
 	ammo_x_offset = 2
 
+/obj/item/gun/energy/e_gun/advtaser
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/cfa_phalanx
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/mini
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/stun
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/old
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/hos
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/dragnet
+	worn_icon = null
+	worn_icon_state = "gun"
+
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -80,6 +108,7 @@
 	ammo_x_offset = 2
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	worn_icon_state = "gun"
 
 /obj/item/gun/energy/lasercannon
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
@@ -94,6 +123,7 @@
 	name = "fantastic energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell. This one seems quite fancy!"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/rainbow, /obj/item/ammo_casing/energy/disabler/rainbow)
+	worn_icon_state = "gun"
 
 /obj/item/ammo_casing/energy/laser/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
