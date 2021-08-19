@@ -476,10 +476,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(owner, span_warning("No selection made!"))
 		cortical_owner.stat_evolution++
 		return
-	if(cortical_owner.stat_evolution < 1)
-		to_chat(owner, span_warning("You do not have any upgrade points for stats!"))
-		cortical_owner.stat_evolution++
-		return
 	switch(choice)
 		if("Health")
 			cortical_owner.maxHealth += 5
