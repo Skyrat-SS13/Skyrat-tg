@@ -1,4 +1,7 @@
 GLOBAL_LIST_EMPTY(cortical_borers)
+GLOBAL_LIST_EMPTY(willing_hosts)
+GLOBAL_VAR_INIT(focused_borers, 0)
+GLOBAL_VAR_INIT(born_borers, 0)
 
 //so when borers choose their focus
 #define FOCUS_HEAD "head-focused"
@@ -220,6 +223,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 									/datum/action/cooldown/fear_human,
 									/datum/action/cooldown/check_blood,
 									/datum/action/cooldown/revive_host,
+									/datum/action/cooldown/willing_host,
 	)
 	///the host
 	var/mob/living/carbon/human/human_host
@@ -237,6 +241,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/generation = 1
 	///what the borer focuses to increase the hosts capabilities
 	var/body_focus = null
+	///how many children the borer has produced
+	var/children_produced = 0
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -276,6 +282,18 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	. += "Stat Evolution Points: [stat_evolution]"
 	if(host_sugar())
 		. += "Sugar detected! Unable to generate resources!"
+	var/enabled_willing = FALSE
+	var/enabled_focus = FALSE
+	var/enabled_born = FALSE
+	if(length(GLOB.willing_hosts) >= 10) //if there are 10 or more willing hosts
+		enabled_willing = TRUE
+	if(GLOB.focused_borers >= 10) //if there are 10 or more focused borers
+		enabled_focus = TRUE
+	if(GLOB.born_borers >= 10) //if there are 10 or more BORN (not spawned) borers
+		enabled_born = TRUE
+	. += "Willing Hosts Boost: [enabled_willing ? "Enabled" : "Disabled"]"
+	. += "Focused Borers Boost: [enabled_focus ? "Enabled" : "Disabled"]"
+	. += "Born Borers Boost: [enabled_born ? "Enabled" : "Disabled"]"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
@@ -300,14 +318,28 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-	switch(maturity_age)
-		if(60) //every 1 minutes, which basically turns into 3 minutes
+		//objective boosting
+		var/objective_boosting = 1
+		if(length(GLOB.willing_hosts) >= 10) //if there are 10 or more willing hosts, get a boost!
+			objective_boosting += 1
+		if(GLOB.focused_borers >= 10) //if there are 10 or more focused borers, get a boost!
+			objective_boosting += 1
+		if(GLOB.born_borers >= 10) //if there are 10 or more BORN (not spawned) borers, get a boost!
+			objective_boosting += 1
+
+		var/switch_one = 60
+		var/switch_two = 120
+		var/switch_three = 180
+		switch_one = switch_one / objective_boosting
+		switch_two = switch_two / objective_boosting
+		switch_three = switch_three / objective_boosting
+		if(maturity_age == switch_one) //every 1 minutes, which basically turns into 3 minutes (when not boosted)
 			chemical_evolution++
 			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-		if(120)
+		if(maturity_age == switch_two)
 			stat_evolution++
 			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
-		if(180)
+		if(maturity_age == switch_three)
 			maturity_age = 0
 
 //if it doesnt have a ckey, let ghosts have it
@@ -394,6 +426,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		cortical_owner.stat_evolution += 10
 		return
 	cortical_owner.body_focus = focus_choice
+	GLOB.focused_borers += 1
 	switch(cortical_owner.body_focus)
 		if(FOCUS_HEAD)
 			to_chat(cortical_owner.human_host, span_notice("Your eyes begin to feel strange..."))
@@ -451,7 +484,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	cortical_owner.known_chemicals += reagent_choice
 	cortical_owner.potential_chemicals -= reagent_choice
 	var/datum/reagent/reagent_name = initial(reagent_choice)
-	to_chat(owner, span_notice("You have learned [reagent_name.name]"))
+	to_chat(owner, span_notice("You have learned [reagent_name]"))
 	StartCooldown()
 
 //become stronger by affecting the stats
@@ -682,7 +715,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
 		return
 	if(cortical_owner.chemical_storage < 50)
-		to_chat(cortical_owner, span_warning("You require at least 50 chemical units before you can reproduce!"))
+		to_chat(cortical_owner, span_warning("You require at least 50 chemical units before you can force your host to speak!"))
 		return
 	cortical_owner.chemical_storage -= 50
 	var/borer_message = input(cortical_owner, "What would you like to force your host to say?", "Force Speak") as message|null
@@ -728,6 +761,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
 	var/mob/dead/observer/pick_candidate = pick(candidates)
 	var/mob/living/simple_animal/cortical_borer/spawn_borer = new /mob/living/simple_animal/cortical_borer(human_turf)
+	GLOB.born_borers += 1
+	cortical_owner.children_produced++
 	var/datum/component/mood/target_mood = cortical_owner.human_host.GetComponent(/datum/component/mood)
 	if(target_mood >= 25)
 		target_mood -= 25
@@ -767,7 +802,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
 		return
 	if(cortical_owner.chemical_storage < 200)
-		to_chat(cortical_owner, span_warning("You require at least 200 chemical units before you can reproduce!"))
+		to_chat(cortical_owner, span_warning("You require at least 200 chemical units before you can revive your host!"))
 		return
 	cortical_owner.chemical_storage -= 200
 	if(cortical_owner.human_host.getBruteLoss())
@@ -783,6 +818,43 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	cortical_owner.human_host.revive()
 	to_chat(cortical_owner.human_host, span_boldwarning("Your heart jumpstarts!"))
 	StartCooldown()
+
+//this is the final step in borer mode
+/datum/action/cooldown/willing_host
+	name = "Willing Host (300 chemicals)"
+	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "willing"
+
+/datum/action/cooldown/willing_host/Trigger()
+	if(!IsAvailable())
+		to_chat(owner, span_warning("This action is still on cooldown!"))
+		return
+	if(!iscorticalborer(owner))
+		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
+		return
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
+	if(!cortical_owner.inside_human())
+		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
+		return
+	for(var/check_human in GLOB.willing_hosts)
+		if(cortical_owner.human_host != check_human)
+			continue
+		to_chat(cortical_owner, span_warning("This host is already accepting!"))
+		return
+	if(cortical_owner.chemical_storage < 300)
+		to_chat(cortical_owner, span_warning("You require at least 300 chemical units before you can allow your host to accept you!"))
+		return
+	cortical_owner.chemical_storage -= 300
+	var/choice = tgui_input_list(cortical_owner.human_host, "Are you a willing host?", "Your Choice", list("Yes", "No"))
+	if(choice != "Yes")
+		to_chat(cortical_owner, span_warning("This host is not accepting, do more!"))
+		return
+	to_chat(cortical_owner, span_notice("You have an accepting host, great job!"))
+	GLOB.willing_hosts += cortical_owner.human_host
 
 //check if we are inside a human
 /mob/living/simple_animal/cortical_borer/proc/inside_human()
@@ -837,12 +909,94 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		var/link = FOLLOW_LINK(dead_mob, src)
 		to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings to [human_host], \"[message]\""))
 
+/proc/printborer(datum/mind/ply)
+	var/text = list()
+	var/mob/living/simple_animal/cortical_borer/player_borer = ply.current
+	text = span_bold(ply.name)
+	if(player_borer)
+		text = span_bold("[player_borer.name]")
+		if(ply.current.stat != DEAD)
+			text += span_greentext(" survived")
+		else
+			text += span_redtext(" died")
+		if(is_centcom_level(ply.current.z))
+			text += span_greentext(" and was able to get to CentCom.")
+		else
+			text += span_redtext(" and was unable to get to CentCom.")
+		text += span_bold(" The borer produced [player_borer.children_produced] borers.")
+		if(player_borer.body_focus)
+			text += span_bold(" Their focus was [player_borer.body_focus].")
+		else
+			text += span_bold(" They were unable to gain a focus.")
+	return text
+
+/proc/printborerlist(list/players,fleecheck)
+	var/list/parts = list()
+
+	parts += "<ul class='playerlist'>"
+	for(var/datum/mind/M in players)
+		parts += "<li>[printborer(M)]</li>"
+	parts += "</ul>"
+	return parts.Join()
+
 /datum/antagonist/cortical_borer
 	name = "Cortical Borer"
 	job_rank = ROLE_ALIEN
 	show_in_antagpanel = TRUE
+	roundend_category = "cortical borers"
+	antagpanel_category = "Cortical borers"
 	prevent_roundtype_conversion = FALSE
 	show_to_ghosts = TRUE
+	var/datum/team/cortical_borers/borers
+
+/datum/antagonist/cortical_borer/get_team()
+	return borers
+
+/datum/antagonist/cortical_borer/create_team(datum/team/cortical_borers/new_team)
+	if(!new_team)
+		for(var/datum/antagonist/cortical_borer/P in GLOB.antagonists)
+			if(!P.owner)
+				stack_trace("Antagonist datum without owner in GLOB.antagonists: [P]")
+				continue
+			if(P.borers)
+				borers = P.borers
+				return
+		if(!new_team)
+			borers = new /datum/team/cortical_borers
+			return
+	if(!istype(new_team))
+		stack_trace("Wrong team type passed to [type] initialization.")
+	borers = new_team
+
+/datum/team/cortical_borers
+	name = "Cortical borers"
+
+/datum/team/cortical_borers/roundend_report()
+	var/list/parts = list()
+	parts += "<span class='header'>The [name] were:</span>"
+	parts += printborerlist(members)
+	var/survival = FALSE
+	for(var/mob/living/simple_animal/cortical_borer/check_borer in GLOB.cortical_borers)
+		if(check_borer.stat == DEAD)
+			continue
+		survival = TRUE
+	if(survival)
+		parts += span_greentext("Borers were able to survive the shift!")
+	else
+		parts += span_redtext("Borers were unable to survive the shift!")
+	if(GLOB.born_borers >= 10)
+		parts += span_greentext("Borers were able to reproduce enough during the shift!")
+	else
+		parts += span_redtext("Borers were unable to reproduce enough during the shift!")
+	if(GLOB.focused_borers >= 10)
+		parts += span_greentext("Borers were able to focus enough during the shift!")
+	else
+		parts += span_redtext("Borers were unable to focus enough during the shift!")
+	if(length(GLOB.willing_hosts) >= 10)
+		parts += span_greentext("Borers were kind enough to gain willing hosts!")
+	else
+		parts += span_redtext("Borers were not kind enough to gain willing hosts!")
+	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
 /datum/round_event_control/cortical_borer
 	name = "Cortical Borer Infestation"
