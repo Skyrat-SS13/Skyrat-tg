@@ -36,7 +36,11 @@
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
-	learnable_languages = list(/datum/language/common, /datum/language/nekomimetic, /datum/language/xenoknockoff, /datum/language/moffic)
+	learnable_languages = list(/datum/language/common,
+	/datum/language/monkey,
+	/datum/language/nekomimetic,
+	/datum/language/xenoknockoff,
+	/datum/language/moffic)
 
 /datum/species/mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

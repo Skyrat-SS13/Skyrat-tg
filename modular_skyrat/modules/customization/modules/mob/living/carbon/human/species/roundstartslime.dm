@@ -4,8 +4,16 @@
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
-	learnable_languages = list(/datum/language/common, /datum/language/slime)
 	payday_modifier = 0.75
+	learnable_languages = list(/datum/language/common,
+	/datum/language/slime,
+	/datum/language/nekomimetic,
+	/datum/language/monkey,
+	/datum/language/xenoknockoff,
+	/datum/language/moffic,
+	/datum/language/buzzwords,
+	/datum/language/draconic)
+
 
 /datum/species/jelly/roundstartslime
 	name = "Xenobiological Slime Hybrid"

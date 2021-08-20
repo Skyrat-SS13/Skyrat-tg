@@ -25,7 +25,6 @@
 	heatmod = 2
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 	payday_modifier = 0.5 //Robots are cheep labor
-	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
 	mutantbrain = /obj/item/organ/brain/ipc_positron
 	mutantstomach = /obj/item/organ/stomach/robot_ipc
@@ -36,7 +35,15 @@
 	mutantheart = /obj/item/organ/heart/robot_ipc
 	mutantliver = /obj/item/organ/liver/robot_ipc
 	exotic_blood = /datum/reagent/fuel/oil
-	learnable_languages = list(/datum/language/common, /datum/language/machine)
+	learnable_languages = list(/datum/language/common,
+	/datum/language/machine,
+	/datum/language/slime,
+	/datum/language/nekomimetic,
+	/datum/language/monkey,
+	/datum/language/xenoknockoff,
+	/datum/language/moffic,
+	/datum/language/buzzwords,
+	/datum/language/draconic)
 
 /datum/species/robotic/spec_life(mob/living/carbon/human/H)
 	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
@@ -282,5 +289,4 @@
 	use_skintones = TRUE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	species_language_holder = /datum/language_holder/machine
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/synthhuman_parts_greyscale.dmi'

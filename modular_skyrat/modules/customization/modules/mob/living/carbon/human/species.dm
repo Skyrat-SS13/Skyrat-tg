@@ -294,6 +294,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
+	learnable_languages = list(/datum/language/common, /datum/language/moffic, /datum/language/draconic)
 
 /datum/species/mush
 	mutant_bodyparts = list()
