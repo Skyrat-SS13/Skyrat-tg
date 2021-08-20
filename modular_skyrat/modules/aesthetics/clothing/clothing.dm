@@ -8,49 +8,63 @@
 
 /obj/item/clothing/under/rank/civilian/chef/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/bartender/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/chef
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/bartender
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/mime
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/mime/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/black
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/black/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/red
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/red/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/blue
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/medical
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/rnd
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 ///////////////////////////////////////////////////////////////////////SUITS
 
 /obj/item/clothing/suit/bio_suit/general
@@ -73,27 +87,35 @@
 
 /obj/item/clothing/suit/toggle/labcoat
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/cmo
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/genetics
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/chemist
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/virologist
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/suit/toggle/labcoat/science
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
 ///////////////////////////////////////////////////////////////////////BIO HOODS
 /obj/item/clothing/head/bio_hood
