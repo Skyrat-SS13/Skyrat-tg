@@ -76,7 +76,8 @@
 		U.adjustArousal(0.6 * delta_time)
 	if(tight == "hard" && U.arousal < 30)
 		U.adjustArousal(0.6 * delta_time)
-		U.adjustPain(0.6 * delta_time)
+		if(U.pain < 25)
+			U.adjustPain(0.6 * delta_time)
 		if(prob(10))
 			U.adjustOxyLoss(5)
 
@@ -240,9 +241,135 @@
 	if(tight == "medium" && U.arousal < 40)
 		U.adjustArousal(0.6 * delta_time)
 		U.adjustPleasure(0.6 * delta_time)
-	if(tight == "hard" && U.arousal < 60)
+	if(tight == "hard" && U.arousal < 70)
 		U.adjustArousal(0.6 * delta_time)
 		U.adjustPleasure(0.6 * delta_time)
-		U.adjustPain(0.6 * delta_time)
+		if(U.pain < 40)
+			U.adjustPain(0.6 * delta_time)
 		if(prob(10))
 			U.adjustOxyLoss(5)
+
+////////////////
+//ARMS BONDAGE//
+////////////////
+
+/obj/item/clothing/gloves/shibari_hands
+	name = "Shibari arms bondage"
+	desc = "Bondage ropes that cover arms"
+	icon_state = "shibari_arms"
+	//worn icons path stuff
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
+	//some unimportant vars
+	body_parts_covered = NONE
+	strip_delay = 100
+	breakouttime = 100
+	//some important vars
+	var/current_color = "pink"
+	var/tight = "low" //can be low, medium and hard.
+
+//customization stuff
+/obj/item/clothing/under/shibari_hands/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[current_color]"
+	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+
+/obj/item/clothing/under/shibari_hands/Initialize()
+	. = ..()
+	update_icon_state()
+	update_icon()
+
+//unequip stuff for adding rope to hands
+/obj/item/clothing/under/shibari_hands/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/C = user
+		if(src == C.gloves)
+			if((do_after(C, 100, target = src)) && (!HAS_TRAIT(C, TRAIT_RIGGER)))
+				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
+				user.put_in_hands(R)
+				qdel(src)
+
+			if((do_after(C, 20, target = src)) && (HAS_TRAIT(C, TRAIT_RIGGER)))
+				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
+				user.put_in_hands(R)
+				qdel(src)
+		else
+			return
+	. = ..()
+
+//stuff to apply mood event for perverts
+/obj/item/clothing/under/shibari_hands/equipped(mob/user, slot)
+	.=..()
+	var/mob/living/carbon/human/C = user
+	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
+		C.apply_status_effect(/datum/status_effect/ropebunny)
+
+//same stuff as above but for dropping item
+/obj/item/clothing/under/shibari_hands/dropped(mob/user, slot)
+	.=..()
+	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
+		C.remove_status_effect(/datum/status_effect/ropebunny)
+
+////////////////
+//LEGS BONDAGE//
+////////////////
+
+/obj/item/clothing/gloves/shibari_legs
+	name = "Shibari arms bondage"
+	desc = "Bondage ropes that cover arms"
+	icon_state = "shibari_legs"
+	//worn icons path stuff
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_shoes.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_shoes.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_shoes_digi.dmi'
+	//some unimportant vars
+	body_parts_covered = NONE
+	strip_delay = 100
+	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+	slowdown = 4
+	//some important vars
+	var/current_color = "pink"
+	var/tight = "low" //can be low, medium and hard.
+
+//customization stuff
+/obj/item/clothing/under/shibari_legs/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[current_color]"
+	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+
+/obj/item/clothing/under/shibari_legs/Initialize()
+	. = ..()
+	update_icon_state()
+	update_icon()
+
+//unequip stuff for adding rope to hands
+/obj/item/clothing/under/shibari_legs/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/human/C = user
+		if(src == C.gloves)
+			if((do_after(C, 100, target = src)) && (!HAS_TRAIT(C, TRAIT_RIGGER)))
+				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
+				user.put_in_hands(R)
+				qdel(src)
+
+			if((do_after(C, 20, target = src)) && (HAS_TRAIT(C, TRAIT_RIGGER)))
+				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
+				user.put_in_hands(R)
+				qdel(src)
+		else
+			return
+	. = ..()
+
+//stuff to apply mood event for perverts
+/obj/item/clothing/under/shibari_legs/equipped(mob/user, slot)
+	.=..()
+	var/mob/living/carbon/human/C = user
+	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
+		C.apply_status_effect(/datum/status_effect/ropebunny)
+
+//same stuff as above but for dropping item
+/obj/item/clothing/under/shibari_legs/dropped(mob/user, slot)
+	.=..()
+	var/mob/living/carbon/human/C = user
+	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
+		C.remove_status_effect(/datum/status_effect/ropebunny)
