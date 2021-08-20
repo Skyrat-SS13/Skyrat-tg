@@ -106,8 +106,8 @@
 /obj/item/seeds/rockplanet
 	name = "rockplanet seeds"
 	desc = "(You should never see this. If you do, report the issue and... uh, throw it in disposals? Burn it?)"
-	icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'	//CHANGE THIS (same link as below)
-	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'	//CHANGE THIS (same link as above)
+	icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
+	growing_icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
 	lifespan = 50
 	endurance = 35
 	maturation = 8
@@ -145,6 +145,8 @@
 	icon_state = "mycelium-agaricus"
 	species = "agaricus"
 	plantname = "Agaricus Mushrooms"
+	maturation = 4
+	growthstages = 2
 	product = /obj/item/food/grown/rock_flora/agaricus
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	reagents_add = list(/datum/reagent/toxin/mushroom_powder = 0.1, /datum/reagent/medicine/coagulant/seraka_extract = 0.02)	//CHANGE THIS
