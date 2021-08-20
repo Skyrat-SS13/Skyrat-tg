@@ -803,7 +803,7 @@
 //Skyrat add - Language module
 /datum/techweb_node/linguistic_research
 	id = "linguistic_research"
-	display_name = "Linguistic Research"
+	display_name = "Cyborg Upgrades: Linguistic Research"
 	description = "Technology allowing machines to imitate speech-patterns of nearly every recognized species."
 	prereq_ids = list("adv_robotics", "datatheory")
 	design_ids = list(
