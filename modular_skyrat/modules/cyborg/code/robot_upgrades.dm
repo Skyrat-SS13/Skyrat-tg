@@ -2,6 +2,7 @@
 	var/hasShrunk = FALSE
 	var/hasAffection = FALSE
 	var/hasAdvanced = FALSE
+	var/hasExpLang = FALSE
 
 /obj/item/borg/upgrade/shrink
 	name = "borg shrinker"
@@ -152,6 +153,54 @@
 		borg.model.remove_module(dogtongue, TRUE)
 	for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
 		borg.model.remove_module(dognose, TRUE)
+
+
+/obj/item/borg/upgrade/translator
+	name = "expanded translation module"
+	desc = "A module which allows the borgs to understand and speak additional languages."
+	icon_state = "component"
+
+/obj/item/borg/upgrade/translator/action(mob/living/silicon/robot/borg)
+	. = ..()
+	if(!.)
+		return
+	if(borg.hasExpLang)
+		to_chat(usr, "<span class='warning'>This unit already has an expanded translation module installed!</span>")
+		return FALSE
+
+	borg.hasExpLang = TRUE
+
+	borg.grant_language(/datum/language/calcic, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/voltaic, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/nekomimetic, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/buzzwords, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/sylvan, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/monkey, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/slime, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/shadowtongue, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/piratespeak, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/terrum, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/vox, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/xenoknockoff, TRUE, TRUE, LANGUAGE_ATOM)
+
+/obj/item/borg/upgrade/translator/deactivate(mob/living/silicon/robot/borg, user = usr)
+	. = ..()
+	if(.)
+		return
+	borg.hasExpLang = FALSE
+
+	borg.remove_language(/datum/language/calcic, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/voltaic, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/nekomimetic, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/buzzwords, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/sylvan, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/monkey, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/slime, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/shadowtongue, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/piratespeak, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/terrum, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/vox, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.remove_language(/datum/language/xenoknockoff, TRUE, TRUE, LANGUAGE_ATOM)
 
 /////////////////////////////////////////////
 /// Advanced Engineering Cyborg Materials ///

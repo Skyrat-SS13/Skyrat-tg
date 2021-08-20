@@ -329,17 +329,37 @@ Key procs
 								/datum/language/machine = list(LANGUAGE_ATOM),
 								/datum/language/draconic = list(LANGUAGE_ATOM),
 								/datum/language/moffic = list(LANGUAGE_ATOM),
+								/*Skyrat remove - Moved to expanded language upgrade module
 								/datum/language/calcic = list(LANGUAGE_ATOM),
 								/datum/language/voltaic = list(LANGUAGE_ATOM),
-								/datum/language/nekomimetic = list(LANGUAGE_ATOM))
+								/datum/language/nekomimetic = list(LANGUAGE_ATOM),
+								Skyrat remove end*/
+								//Skyrat add - Adds our modular culture languages to borgs
+								/datum/language/spacer = list(LANGUAGE_ATOM),
+								/datum/language/japanese = list(LANGUAGE_ATOM),
+								/datum/language/gutter = list(LANGUAGE_ATOM),
+								/datum/language/russian = list(LANGUAGE_ATOM),
+								/datum/language/selenian = list(LANGUAGE_ATOM),
+								/datum/language/zolmach = list(LANGUAGE_ATOM))
+								//Skyrat add end
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/uncommon = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM),
 							/datum/language/draconic = list(LANGUAGE_ATOM),
 							/datum/language/moffic = list(LANGUAGE_ATOM),
+							/*Skyrat remove - Moved to expanded language upgrade module
 							/datum/language/calcic = list(LANGUAGE_ATOM),
 							/datum/language/voltaic = list(LANGUAGE_ATOM),
-							/datum/language/nekomimetic = list(LANGUAGE_ATOM))
+							/datum/language/nekomimetic = list(LANGUAGE_ATOM),
+							Skyrat remove end*/
+							//Skyrat add - Adds our modular culture languages to borgs
+							/datum/language/spacer = list(LANGUAGE_ATOM),
+							/datum/language/japanese = list(LANGUAGE_ATOM),
+							/datum/language/gutter = list(LANGUAGE_ATOM),
+							/datum/language/russian = list(LANGUAGE_ATOM),
+							/datum/language/selenian = list(LANGUAGE_ATOM),
+							/datum/language/zolmach = list(LANGUAGE_ATOM))
+							//Skyrat add end
 
 /datum/language_holder/moth
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
