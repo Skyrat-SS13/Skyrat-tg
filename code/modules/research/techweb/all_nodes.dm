@@ -91,6 +91,7 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"affection_module",
+		"borg_upgrade_translator",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
