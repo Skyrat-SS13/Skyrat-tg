@@ -14,6 +14,9 @@
 #define TRAIT_BIMBO 		"bimbo"
 #define TRAIT_NEVERBONER	"neverboner"
 #define TRAIT_SOBSESSED		"sexual obsession"
+#define TRAIT_RIGGER		"rigger"
+#define TRAIT_ROPEBUNNY		"rope bunny"
+
 #define APHRO_TRAIT			"aphro"				///traits gained by brain traumas, can be removed if the brain trauma is gone
 #define LEWDQUIRK_TRAIT		"lewdquirks"		///traits gained by quirks, cannot be removed unless the quirk itself is gone
 #define LEWDCHEM_TRAIT		"lewdchem"			///traits gained by chemicals, you get the idea
@@ -594,6 +597,29 @@
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
 	mood_change = 4
+
+//////////////////////
+///ROPEBUNNY EFFECT///
+//////////////////////
+/datum/status_effect/ropebunny
+	id = "ropebunny"
+	tick_interval = 10
+	duration = INFINITE
+	alert_type = null
+
+/datum/status_effect/ropebunny/on_apply()
+	. = ..()
+	var/mob/living/carbon/human/target = owner
+	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "ropebunny", /datum/mood_event/ropebunny)
+
+/datum/status_effect/ropebunny/on_remove()
+	. = ..()
+	var/mob/living/carbon/human/target = owner
+	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "ropebunny", /datum/mood_event/ropebunny)
+
+/datum/mood_event/ropebunny
+	description = "<font color=purple>i'm tied! Cannot move! These ropes... Ah!~</font>\n"
+	mood_change = 7
 
 ///////////////////////
 ///AROUSAL INDICATOR///
