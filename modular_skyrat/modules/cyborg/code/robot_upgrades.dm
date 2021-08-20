@@ -172,7 +172,6 @@
 
 	borg.grant_language(/datum/language/calcic, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.grant_language(/datum/language/voltaic, TRUE, TRUE, LANGUAGE_ATOM)
-	borg.grant_language(/datum/language/nekomimetic, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.grant_language(/datum/language/buzzwords, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.grant_language(/datum/language/sylvan, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.grant_language(/datum/language/monkey, TRUE, TRUE, LANGUAGE_ATOM)
@@ -182,6 +181,7 @@
 	borg.grant_language(/datum/language/terrum, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.grant_language(/datum/language/vox, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.grant_language(/datum/language/xenoknockoff, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/xenocommon, TRUE, TRUE, LANGUAGE_ATOM)
 
 /obj/item/borg/upgrade/translator/deactivate(mob/living/silicon/robot/borg, user = usr)
 	. = ..()
@@ -191,7 +191,6 @@
 
 	borg.remove_language(/datum/language/calcic, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.remove_language(/datum/language/voltaic, TRUE, TRUE, LANGUAGE_ATOM)
-	borg.remove_language(/datum/language/nekomimetic, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.remove_language(/datum/language/buzzwords, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.remove_language(/datum/language/sylvan, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.remove_language(/datum/language/monkey, TRUE, TRUE, LANGUAGE_ATOM)
@@ -201,6 +200,7 @@
 	borg.remove_language(/datum/language/terrum, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.remove_language(/datum/language/vox, TRUE, TRUE, LANGUAGE_ATOM)
 	borg.remove_language(/datum/language/xenoknockoff, TRUE, TRUE, LANGUAGE_ATOM)
+	borg.grant_language(/datum/language/xenocommon, TRUE, TRUE, LANGUAGE_ATOM)
 
 /////////////////////////////////////////////
 /// Advanced Engineering Cyborg Materials ///

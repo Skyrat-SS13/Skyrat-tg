@@ -30,8 +30,8 @@
 	id = "borg_upgrade_translator"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/translator
-	materials = list(/datum/material/iron = 5000, /datum/material/glass = 1000, /datum/material/silver = 2000, /datum/material/gold = 2000,  /datum/material/diamond = 200, /datum/material/plasma = 1000)
-	construction_time = 90
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/silver = 1000, /datum/material/gold = 500,  /datum/material/diamond = 200, /datum/material/plasma = 1000)
+	construction_time = 40
 	category = list("Cyborg Upgrade Modules")
 
 /datum/design/advanced_materials

@@ -91,7 +91,6 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"affection_module",
-		"borg_upgrade_translator",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 
@@ -800,6 +799,18 @@
 		"skill_station",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+//Skyrat add - Language module
+/datum/techweb_node/linguistic_research
+	id = "linguistic_research"
+	display_name = "Linguistic Research"
+	description = "Technology allowing machines to imitate speech-patterns of nearly every recognized species."
+	prereq_ids = list("adv_robotics", "datatheory")
+	design_ids = list(
+		"borg_upgrade_translator"
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+//Skyrat add end
 
 /datum/techweb_node/cyborg_upg_util
 	id = "cyborg_upg_util"

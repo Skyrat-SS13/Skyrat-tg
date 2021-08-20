@@ -332,8 +332,8 @@ Key procs
 								/*Skyrat remove - Moved to expanded language upgrade module
 								/datum/language/calcic = list(LANGUAGE_ATOM),
 								/datum/language/voltaic = list(LANGUAGE_ATOM),
-								/datum/language/nekomimetic = list(LANGUAGE_ATOM),
 								Skyrat remove end*/
+								/datum/language/nekomimetic = list(LANGUAGE_ATOM),
 								//Skyrat add - Adds our modular culture languages to borgs
 								/datum/language/spacer = list(LANGUAGE_ATOM),
 								/datum/language/japanese = list(LANGUAGE_ATOM),
@@ -350,8 +350,8 @@ Key procs
 							/*Skyrat remove - Moved to expanded language upgrade module
 							/datum/language/calcic = list(LANGUAGE_ATOM),
 							/datum/language/voltaic = list(LANGUAGE_ATOM),
-							/datum/language/nekomimetic = list(LANGUAGE_ATOM),
 							Skyrat remove end*/
+							/datum/language/nekomimetic = list(LANGUAGE_ATOM),
 							//Skyrat add - Adds our modular culture languages to borgs
 							/datum/language/spacer = list(LANGUAGE_ATOM),
 							/datum/language/japanese = list(LANGUAGE_ATOM),
