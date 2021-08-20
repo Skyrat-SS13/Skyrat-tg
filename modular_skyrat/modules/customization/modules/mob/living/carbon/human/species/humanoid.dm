@@ -28,3 +28,4 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 0.75
 	limbs_id = SPECIES_HUMAN
+	learnable_languages = list(/datum/language/common, /datum/language/nekomimetic, /datum/language/xenoknockoff, /datum/language/moffic, /datum/language/draconic)
