@@ -59,6 +59,11 @@ SUBSYSTEM_DEF(economy)
 		new /datum/bank_account/department(A, budget_to_hand_out)
 	return ..()
 
+/datum/controller/subsystem/economy/Recover()
+	generated_accounts = SSeconomy.generated_accounts
+	bank_accounts_by_id = SSeconomy.bank_accounts_by_id
+	dep_cards = SSeconomy.dep_cards
+
 /datum/controller/subsystem/economy/fire(resumed = 0)
 	fire_counter_for_paycheck++ //SKYRAT EDIT ADDITION
 	var/temporary_total = 0
