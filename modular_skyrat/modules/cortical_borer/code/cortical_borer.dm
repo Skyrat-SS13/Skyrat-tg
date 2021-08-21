@@ -285,11 +285,11 @@ GLOBAL_VAR_INIT(born_borers, 0)
 	var/enabled_willing = FALSE
 	var/enabled_focus = FALSE
 	var/enabled_born = FALSE
-	if(length(GLOB.willing_hosts) >= 10) //if there are 10 or more willing hosts
+	if(length(GLOB.willing_hosts) >= 5) //if there are 10 or more willing hosts
 		enabled_willing = TRUE
-	if(GLOB.focused_borers >= 10) //if there are 10 or more focused borers
+	if(GLOB.focused_borers >= 5) //if there are 10 or more focused borers
 		enabled_focus = TRUE
-	if(GLOB.born_borers >= 10) //if there are 10 or more BORN (not spawned) borers
+	if(GLOB.born_borers >= 5) //if there are 10 or more BORN (not spawned) borers
 		enabled_born = TRUE
 	. += "Willing Hosts Boost: [enabled_willing ? "Enabled" : "Disabled"]"
 	. += "Focused Borers Boost: [enabled_focus ? "Enabled" : "Disabled"]"
@@ -320,11 +320,11 @@ GLOBAL_VAR_INIT(born_borers, 0)
 
 		//objective boosting
 		var/objective_boosting = 1
-		if(length(GLOB.willing_hosts) >= 10) //if there are 10 or more willing hosts, get a boost!
+		if(length(GLOB.willing_hosts) >= 5) //if there are 10 or more willing hosts, get a boost!
 			objective_boosting += 1
-		if(GLOB.focused_borers >= 10) //if there are 10 or more focused borers, get a boost!
+		if(GLOB.focused_borers >= 5) //if there are 10 or more focused borers, get a boost!
 			objective_boosting += 1
-		if(GLOB.born_borers >= 10) //if there are 10 or more BORN (not spawned) borers, get a boost!
+		if(GLOB.born_borers >= 5) //if there are 10 or more BORN (not spawned) borers, get a boost!
 			objective_boosting += 1
 
 		var/switch_one = 60
@@ -394,7 +394,7 @@ GLOBAL_VAR_INIT(born_borers, 0)
 	StartCooldown()
 
 /datum/action/cooldown/choose_focus
-	name = "Choose Focus (10 stat points)"
+	name = "Choose Focus (5 stat points)"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "level"
@@ -416,22 +416,26 @@ GLOBAL_VAR_INIT(born_borers, 0)
 	if(cortical_owner.body_focus)
 		to_chat(owner, span_warning("You already have a focus, you cannot get a new focus!"))
 		return
-	if(cortical_owner.stat_evolution < 10)
-		to_chat(owner, span_warning("You do not have 10 upgrade points for a focus!"))
+	if(cortical_owner.stat_evolution < 5)
+		to_chat(owner, span_warning("You do not have 5 upgrade points for a focus!"))
 		return
-	cortical_owner.stat_evolution -= 10
+	cortical_owner.stat_evolution -= 5
 	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", list(FOCUS_HEAD, FOCUS_CHEST, FOCUS_ARMS, FOCUS_LEGS))
 	if(!focus_choice)
 		to_chat(owner, span_warning("You did not choose a focus"))
-		cortical_owner.stat_evolution += 10
+		cortical_owner.stat_evolution += 5
 		return
 	cortical_owner.body_focus = focus_choice
 	GLOB.focused_borers += 1
 	switch(cortical_owner.body_focus)
 		if(FOCUS_HEAD)
 			to_chat(cortical_owner.human_host, span_notice("Your eyes begin to feel strange..."))
-			cortical_owner.human_host.add_quirk(/datum/quirk/night_vision)
-			cortical_owner.human_host.dna.add_mutation(XRAY)
+			var/obj/item/organ/eyes/my_eyes = cortical_owner.human_host.getorgan(/obj/item/organ/eyes)
+			if(my_eyes)
+				my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+				my_eyes.see_in_dark = 8
+				my_eyes.flash_protect = FLASH_PROTECTION_WELDER
+			cortical_owner.human_host.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
 		if(FOCUS_CHEST)
 			to_chat(cortical_owner.human_host, span_notice("Your chest begins to slow down..."))
 			ADD_TRAIT(cortical_owner.human_host, TRAIT_NOBREATH, src)
@@ -695,7 +699,7 @@ GLOBAL_VAR_INIT(born_borers, 0)
 
 //you can force your host to speak... dont abuse this
 /datum/action/cooldown/force_speak
-	name = "Force Host Speak (50 chemicals)"
+	name = "Force Host Speak"
 	cooldown_time = 30 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "speak"
@@ -714,10 +718,6 @@ GLOBAL_VAR_INIT(born_borers, 0)
 	if(!cortical_owner.inside_human())
 		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
 		return
-	if(cortical_owner.chemical_storage < 50)
-		to_chat(cortical_owner, span_warning("You require at least 50 chemical units before you can force your host to speak!"))
-		return
-	cortical_owner.chemical_storage -= 50
 	var/borer_message = input(cortical_owner, "What would you like to force your host to say?", "Force Speak") as message|null
 	if(!borer_message)
 		to_chat(cortical_owner, span_warning("No message given!"))
@@ -821,7 +821,7 @@ GLOBAL_VAR_INIT(born_borers, 0)
 
 //this is the final step in borer mode
 /datum/action/cooldown/willing_host
-	name = "Willing Host (300 chemicals)"
+	name = "Willing Host (100 chemicals)"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "willing"
@@ -845,10 +845,10 @@ GLOBAL_VAR_INIT(born_borers, 0)
 			continue
 		to_chat(cortical_owner, span_warning("This host is already accepting!"))
 		return
-	if(cortical_owner.chemical_storage < 300)
-		to_chat(cortical_owner, span_warning("You require at least 300 chemical units before you can allow your host to accept you!"))
+	if(cortical_owner.chemical_storage < 100)
+		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can allow your host to accept you!"))
 		return
-	cortical_owner.chemical_storage -= 300
+	cortical_owner.chemical_storage -= 100
 	var/choice = tgui_input_list(cortical_owner.human_host, "Are you a willing host?", "Your Choice", list("Yes", "No"))
 	if(choice != "Yes")
 		to_chat(cortical_owner, span_warning("This host is not accepting, do more!"))
@@ -928,6 +928,8 @@ GLOBAL_VAR_INIT(born_borers, 0)
 			text += span_bold(" Their focus was [player_borer.body_focus].")
 		else
 			text += span_bold(" They were unable to gain a focus.")
+	else
+		text += span_redtext(" had their body destroy.")
 	return text
 
 /proc/printborerlist(list/players,fleecheck)
