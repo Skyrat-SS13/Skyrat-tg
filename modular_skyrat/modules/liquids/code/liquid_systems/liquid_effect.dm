@@ -444,9 +444,9 @@
 		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
 
 	update_liquid_vis()
-
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	if(z)
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 
 	/* //Cant do it immediately, hmhm
 	if(isspaceturf(my_turf))

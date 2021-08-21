@@ -22,6 +22,12 @@ GLOBAL_LIST_EMPTY(cargo_control_consoles)
 		for(var/turf/open/floor/iterating_floor in iterating_import_bay)
 			possible_floors += iterating_floor
 
+/obj/machinery/computer/cargo_control_console/Destroy()
+	if(radio)
+		QDEL_NULL(radio)
+	. = ..()
+
+
 /obj/item/circuitboard/computer/cargo_control_console
 	name = "Cargo Console (Computer Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
