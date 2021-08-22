@@ -232,7 +232,7 @@
 
 /obj/item/kitchen/knife/combat/cyborg
 	name = "cyborg knife"
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "knife_cyborg"
 	desc = "A cyborg-mounted plasteel knife. Extremely sharp and durable."
 

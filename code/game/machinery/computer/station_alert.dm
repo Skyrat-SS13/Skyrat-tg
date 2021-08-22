@@ -50,5 +50,5 @@
 	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
-	if(length(listener.alarms))
+	if(listener && length(listener.alarms)) //skyrat edit: fix createanddestroy
 		. += "alert:2"

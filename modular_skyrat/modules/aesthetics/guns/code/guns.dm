@@ -6,6 +6,34 @@
 	worn_icon_state = "energy"
 	ammo_x_offset = 2
 
+/obj/item/gun/energy/e_gun/advtaser
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/cfa_phalanx
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/mini
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/stun
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/old
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/hos
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/dragnet
+	worn_icon = null
+	worn_icon_state = "gun"
+
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -80,6 +108,8 @@
 	ammo_x_offset = 2
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	worn_icon_state = "gun"
+	worn_icon = null
 
 /obj/item/gun/energy/lasercannon
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
@@ -97,7 +127,7 @@
 
 /obj/item/ammo_casing/energy/laser/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
-	select_name = "fantastic kill"
+	select_name = "kill"
 	projectile_type = /obj/projectile/beam/laser/rainbow
 
 /obj/projectile/beam/laser/rainbow
@@ -106,7 +136,7 @@
 
 /obj/item/ammo_casing/energy/disabler/rainbow
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/nucgun.dmi'
-	select_name = "fantastic disable"
+	select_name = "disable"
 	projectile_type = /obj/projectile/beam/disabler/rainbow
 
 /obj/projectile/beam/disabler/rainbow
@@ -228,18 +258,18 @@
 
 /obj/item/gun/energy/kinetic_accelerator
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
-	
+
 /obj/item/gun/ballistic/rifle/boltaction
 	name = "\improper Mosin Nagant 91-30"
 	desc = "This piece of junk looks like something that could have been used 700 years ago. It feels slightly moist."
 	sawn_desc = "An extremely sawn-off Mosin Nagant, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	
+
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	name = "\improper Mosin Nagant M39"
 	desc = "A freshly-produced Mosin Nagant variant issued by Nanotrasen for their interns. You would rather not damage it."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	
+
 /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster
 	name = "\improper FTU 'Archangel' Mosin"
 	desc = "A very... Modernized MN91-30 rifle, the frame even feels a little flimsy. This thing was probably built with a conversion kit from spaceBay."
@@ -250,7 +280,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	can_be_sawn_off = FALSE
 	realistic = TRUE
-	
+
 /obj/item/ammo_box/magazine/internal/boltaction/bubba
 	name = "mosin nagant extended internal magazine"
 	desc = "How did you get it out?"
@@ -258,7 +288,7 @@
 	caliber = CALIBER_A762
 	max_ammo = 8
 	multiload = TRUE
-	
+
 /obj/item/gun/ballistic/automatic/surplus
 	name = "\improper Type-69 Surplus Rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
