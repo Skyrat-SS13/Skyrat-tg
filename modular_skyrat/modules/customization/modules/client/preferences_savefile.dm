@@ -5,7 +5,7 @@
 // You do not need to raise this if you are adding new values that have sane defaults.
 // Only raise this value when changing the meaning/format/name/layout of an existing value
 // where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX 40
+#define SAVEFILE_VERSION_MAX 41
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -87,12 +87,37 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 39)
 		LAZYADD(key_bindings["F"], "toggle_combat_mode")
 		LAZYADD(key_bindings["4"], "toggle_combat_mode")
+
 	if (current_version < 40)
 		LAZYADD(key_bindings["Space"], "hold_throw_mode")
 
+	if (current_version < 41)
+		if(cumfaced_pref == TRUE)
+			cumfaced_pref = FALSE
+		if(aphrodisiacs_pref == TRUE)
+			aphrodisiacs_pref = FALSE
+/* 		if(erp_pref != "No")
+			erp_pref = "No"
+		if(noncon_pref != "No")
+			noncon_pref = "No"
+		if(vore_pref != "No")
+			vore_pref = "No"
+		if(sextoys_pref != "No")
+			sextoys_pref = "No" */
+
 /datum/preferences/proc/update_character(current_version, savefile/S)
 	return
-
+/*
+	if(current_version < 41)
+		if(erp_pref != "No")
+			erp_pref = "No"
+		if(noncon_pref != "No")
+			noncon_pref = "No"
+		if(vore_pref != "No")
+			vore_pref = "No"
+		if(sextoys_pref == "Yes")
+			sextoys_pref = "No"
+ */
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
 	if(!parent)
@@ -572,6 +597,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	READ_FILE(S["ooc_prefs"], ooc_prefs)
 	READ_FILE(S["erp_pref"], erp_pref)
+	READ_FILE(S["sextoys_pref"], sextoys_pref)
 	READ_FILE(S["noncon_pref"], noncon_pref)
 	READ_FILE(S["vore_pref"], vore_pref)
 	READ_FILE(S["general_record"], general_record)
@@ -620,11 +646,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	ooc_prefs = sanitize_text(ooc_prefs)
 	if(!length(erp_pref))
-		erp_pref = "Ask"
+		erp_pref = "No"
 	if(!length(noncon_pref))
-		noncon_pref = "Ask"
+		noncon_pref = "No"
 	if(!length(vore_pref))
-		vore_pref = "Ask"
+		vore_pref = "No"
+	//if(!length(sextoys_pref))
+	//	sextoys_pref = "No"
 
 	general_record = sanitize_text(general_record)
 	security_record = sanitize_text(security_record)
@@ -763,6 +791,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
 	WRITE_FILE(S["erp_pref"] , erp_pref)
+	WRITE_FILE(S["sextoys_pref"], sextoys_pref)
 	WRITE_FILE(S["noncon_pref"] , noncon_pref)
 	WRITE_FILE(S["vore_pref"] , vore_pref)
 	WRITE_FILE(S["general_record"] , general_record)
