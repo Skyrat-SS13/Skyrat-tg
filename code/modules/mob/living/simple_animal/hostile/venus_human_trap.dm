@@ -271,7 +271,7 @@
 			attacked_spacevine.grow()
 			to_chat(src, span_notice("You help [attacked_spacevine] grow..."))
 	var/turf/vine_turf = get_turf(attack_target)
-	var/break_list = list(
+	var/list/break_list = list(
 		/obj/machinery/door,
 		/obj/structure/table,
 		/obj/structure/window,
@@ -284,9 +284,7 @@
 	for(var/check_contents in vine_turf.contents)
 		if(isliving(check_contents) && !istype(check_contents, /mob/living/simple_animal/hostile/venus_human_trap))
 			UnarmedAttack(check_contents)
-		for(var/check_break in break_list)
-			if(!istype(check_contents, check_break))
-				continue
+		if(is_type_in_list(check_contents, break_list))
 			UnarmedAttack(check_contents)
 
 /mob/living/simple_animal/hostile/venus_human_trap/start_pulling(atom/movable/AM, state, force, supress_message)
