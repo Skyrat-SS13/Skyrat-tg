@@ -182,7 +182,7 @@
 /obj/item/food/grown/rock_flora/yuccaroot
 	name = "yucca root"
 	desc = "A greenish-brown root, prepped for grinding."
-	icon_state = "yucca_fruit"
+	icon_state = "yucca_fruit"	//to-do: root icon
 	seed = /obj/item/seeds/rockplanet/yucca
 	grind_results = list(/datum/reagent/space_cleaner/yucca_soap)
 
