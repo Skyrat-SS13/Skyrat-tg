@@ -282,8 +282,10 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/machinery/bsa/full/Destroy()
-	control_unit.cannon = null
-	control_unit = null
+	if(control_unit)
+		if(control_unit.cannon)
+			control_unit.cannon = null
+		control_unit = null
 	. = ..()
 
 /obj/structure/filler

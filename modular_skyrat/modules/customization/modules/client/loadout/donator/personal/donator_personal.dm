@@ -176,6 +176,12 @@
 	path = /obj/item/clothing/under/custom/blutigen_undergarment
 	ckeywhitelist = list("random516")
 
+/datum/loadout_item/uniform/donator/captain_dress
+	name = "Captain's Dress"
+	path = /obj/item/clothing/under/rank/captain/dress
+	ckeywhitelist = list("netrakyram")
+	restricted_roles = list("Captain")
+
 /datum/loadout_item/uniform/donator/kilano_suit
 	name = "black and gold dress uniform"
 	path = /obj/item/clothing/under/custom/kilano

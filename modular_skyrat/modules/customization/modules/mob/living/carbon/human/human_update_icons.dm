@@ -29,7 +29,9 @@
 			else if(w_uniform.mutant_variants & S.alt_taur_mode)
 				applied_style = S.alt_taur_mode
 		if(!applied_style)
-			if((DIGITIGRADE in dna.species.species_traits) && (w_uniform.mutant_variants & STYLE_DIGITIGRADE))
+			if((w_uniform.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+				applied_style = STYLE_VOX
+			else if((DIGITIGRADE in dna.species.species_traits) && (w_uniform.mutant_variants & STYLE_DIGITIGRADE))
 				applied_style = STYLE_DIGITIGRADE
 
 		var/x_override
@@ -42,6 +44,8 @@
 				icon_file = w_uniform.worn_icon_taur_hoof || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_hoof.dmi'
 			if(STYLE_TAUR_PAW)
 				icon_file = w_uniform.worn_icon_taur_paw || 'modular_skyrat/master_files/icons/mob/clothing/uniform_taur_paw.dmi'
+			if(STYLE_VOX)
+				icon_file = w_uniform.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/uniform.dmi'
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -90,7 +94,9 @@
 			else if(wear_suit.mutant_variants & S.alt_taur_mode)
 				applied_style = S.alt_taur_mode
 		if(!applied_style)
-			if((DIGITIGRADE in dna.species.species_traits) && (wear_suit.mutant_variants & STYLE_DIGITIGRADE))
+			if((wear_suit.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+				applied_style = STYLE_VOX
+			else if((DIGITIGRADE in dna.species.species_traits) && (wear_suit.mutant_variants & STYLE_DIGITIGRADE))
 				applied_style = STYLE_DIGITIGRADE
 
 		var/x_override
@@ -103,6 +109,8 @@
 				icon_file = wear_suit.worn_icon_taur_hoof || 'modular_skyrat/master_files/icons/mob/clothing/suit_taur_hoof.dmi'
 			if(STYLE_TAUR_PAW)
 				icon_file = wear_suit.worn_icon_taur_paw || 'modular_skyrat/master_files/icons/mob/clothing/suit_taur_paw.dmi'
+			if(STYLE_VOX)
+				icon_file = wear_suit.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/suit.dmi'
 
 		if(applied_style & STYLE_TAUR_ALL)
 			x_override = 64
@@ -141,8 +149,11 @@
 		update_observer_view(shoes,1)
 		var/icon_file = shoes.worn_icon
 		var/applied_styles = NONE
-		if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
-			applied_styles |= STYLE_DIGITIGRADE
+		if((shoes.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+			applied_styles = STYLE_VOX
+			icon_file = shoes.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/feet.dmi'
+		else if((DIGITIGRADE in dna.species.species_traits) && (shoes.mutant_variants & STYLE_DIGITIGRADE))
+			applied_styles = STYLE_DIGITIGRADE
 			icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 
 		overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_icon = icon_file, mutant_styles = applied_styles)
@@ -153,6 +164,45 @@
 		overlays_standing[SHOES_LAYER] = shoes_overlay
 
 	apply_overlay(SHOES_LAYER)
+
+/mob/living/carbon/human/update_inv_gloves()
+	remove_overlay(GLOVES_LAYER)
+
+	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1])
+		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1]
+		inv.update_appearance()
+
+	if(!gloves && blood_in_hands && (num_hands > 0) && !(NOBLOODOVERLAY in dna.species.species_traits))
+		var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER)
+		if(num_hands < 2)
+			if(has_left_hand(FALSE))
+				bloody_overlay.icon_state = "bloodyhands_left"
+			else if(has_right_hand(FALSE))
+				bloody_overlay.icon_state = "bloodyhands_right"
+
+		overlays_standing[GLOVES_LAYER] = bloody_overlay
+
+	var/mutable_appearance/gloves_overlay = overlays_standing[GLOVES_LAYER]
+	if(gloves)
+		gloves.screen_loc = ui_gloves
+		if(client && hud_used?.hud_shown)
+			if(hud_used.inventory_shown)
+				client.screen += gloves
+		update_observer_view(gloves,1)
+
+		var/icon_file = gloves.worn_icon
+		var/applied_styles = NONE
+		if((gloves.mutant_variants & STYLE_VOX) && dna.species.id == "vox")
+			applied_styles = STYLE_VOX
+			icon_file = gloves.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/hands.dmi'
+
+		overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/hands.dmi', override_icon = icon_file, mutant_styles = applied_styles)
+		gloves_overlay = overlays_standing[GLOVES_LAYER]
+		if(OFFSET_GLOVES in dna.species.offset_features)
+			gloves_overlay.pixel_x += dna.species.offset_features[OFFSET_GLOVES][1]
+			gloves_overlay.pixel_y += dna.species.offset_features[OFFSET_GLOVES][2]
+	overlays_standing[GLOVES_LAYER] = gloves_overlay
+	apply_overlay(GLOVES_LAYER)
 
 /obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null, override_icon = null, override_x_center = null, override_y_center = null, mutant_styles = NONE)
 
@@ -262,7 +312,7 @@
 			var/applied_style = NONE
 			if(dna.species.id == SPECIES_VOX)
 				applied_style |= STYLE_VOX
-				icon_file = 'modular_skyrat/master_files/icons/mob/clothing/eyes_vox.dmi'
+				icon_file = glasses.worn_icon_vox || 'modular_skyrat/master_files/icons/mob/clothing/species/vox/eyes.dmi'
 			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_icon = icon_file, mutant_styles = applied_style)
 
 		var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
