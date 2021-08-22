@@ -178,15 +178,6 @@
 	build_path = /obj/item/storage/belt/medical
 	category = list("initial","Organic Materials")
 
-//SKYRAT EDIT ADDITION BEGIN
-/datum/design/medbandolier
-	name = "Medical Bandolier"
-	id = "medban"
-	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass = 600)
-	build_path = /obj/item/storage/belt/medbandolier
-	category = list("initial","Organic Materials")
-//SKYRAT EDIT ADDITION END
 /datum/design/janibelt
 	name = "Janitorial Belt"
 	id = "janibelt"
