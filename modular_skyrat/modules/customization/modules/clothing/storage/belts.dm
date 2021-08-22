@@ -170,9 +170,3 @@
 		/obj/item/reagent_containers/spray,
 		/obj/item/medicell
 		))
-
-/obj/item/storage/belt/medbandolier/examine(mob/user)
-	. = ..()
-	if(contents.len == 1)
-		. += "<span class='notice'>Use the Quick Equip Belt hotkey to quickly draw the last stored item.</span>"
-		return

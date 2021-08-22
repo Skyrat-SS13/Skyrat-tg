@@ -81,7 +81,7 @@
 					/obj/item/clothing/mask/surgical = 4,
 					/obj/item/clothing/gloves/color/latex/nitrile = 2, //SKYRAT EDIT ADDITION
 					/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 4,	//SKYRAT EDIT ADDITION
-					/obj/item/storage/belt/medbandolier = 4)	// SKYRAT EDIT ADDITION
+					/obj/item/storage/belt/medbandolier = 2)	// SKYRAT EDIT ADDITION
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
 	payment_department = ACCOUNT_MED
 
