@@ -23,7 +23,7 @@
 ///////////-----Decals-----//////////
 /obj/effect/decal/cleanable/cum
 	name = "cum"
-	desc = "Uh... Gross."
+	desc = "Ew... Gross."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
 	icon_state = "cum_1"
 	random_icon_states = list("cum_1", "cum_2", "cum_3", "cum_4")
@@ -31,7 +31,7 @@
 
 /obj/effect/decal/cleanable/femcum
 	name = "female cum"
-	desc = "Uhh... Someone had fun.."
+	desc = "Uhh... Someone had fun..."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
 	icon_state = "femcum_1"
 	random_icon_states = list("femcum_1", "femcum_2", "femcum_3", "femcum_4")
@@ -43,37 +43,37 @@
 	description = "Uhh... Someone had fun."
 	taste_description = "astringent and sweetish"
 	color = "#ffffffb0"
-	glass_name = "glass of Girlcum"
-	glass_desc = "Strange white liquid... Eww!"
+	glass_name = "glass of girlcum"
+	glass_desc = "A strange white liquid... Ew!"
 	reagent_state = LIQUID
 	shot_glass_icon_state = "shotglasswhite"
 
 /datum/reagent/consumable/cum
 	name = "cum"
-	description = "A fluid containing sperm that is secretated by the sexual organs of most species."
+	description = "A fluid secreted by the sexual organs of many species."
 	taste_description = "musky and salty"
 	color = "#ffffffff"
-	glass_name = "glass of Cum"
+	glass_name = "glass of cum"
 	glass_desc = "O-oh, my...~"
 	reagent_state = LIQUID
 	shot_glass_icon_state = "shotglasswhite"
 
 /datum/reagent/consumable/milk/breast_milk
 	name = "breast milk"
-	description = "This looks familiar... Wait, it's a milk!"
+	description = "This looks familiar... Wait, it's milk!"
 	taste_description = "warm and creamy"
 	color = "#ffffffff"
-	glass_name = "glass of Breast milk"
-	glass_desc = "Almost like a normal milk."
+	glass_name = "glass of breast milk"
+	glass_desc = "almost like normal milk."
 	reagent_state = LIQUID
 
 /datum/reagent/drug/dopamine
 	name = "dopamine"
-	description = "Pure happines"
+	description = "Pure happiness"
 	taste_description = "passion fruit, banana and hint of apple"
 	color = "#97ffee"
 	glass_name = "dopamine"
-	glass_desc = "Delicious flavored reagent. You feel happy even looking at it."
+	glass_desc = "A deliciously flavored reagent. You feel happy even looking at it."
 	reagent_state = LIQUID
 	overdose_threshold = 10
 
@@ -156,7 +156,7 @@
 	set category = "IC"
 
 	if(!has_status_effect(/datum/status_effect/climax_cooldown))
-		if(tgui_alert(usr, "You sure you want to cum?", "Climax", list("Yes", "No")) == "Yes")
+		if(tgui_alert(usr, "Are you sure you want to cum?", "Climax", list("Yes", "No")) == "Yes")
 			if(stat != CONSCIOUS)
 				to_chat(usr, "<span class='warning'>You can't climax right now...</span>")
 				return
@@ -356,7 +356,7 @@
 	timeout = 4 MINUTES
 
 /datum/mood_event/overgasm
-	description = "<span class='warning'>Uhh... I don't feel like i want to be horny anymore.</span>\n" //Me too, buddy. Me too.
+	description = "<span class='warning'>Uhh... I don't want to be horny anymore.</span>\n" //Me too, buddy. Me too.
 	mood_change = -6
 	timeout = 10 MINUTES
 
@@ -884,7 +884,7 @@
 	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
 	if(spriteP.is_hidden(H))
-		to_chat(user, "<span class='notice'>You need to expose your penis out in order to masturbate.</span>")
+		to_chat(user, "<span class='notice'>You need to expose yourself in order to masturbate.</span>")
 		return
 	else if(P.aroused != AROUSAL_FULL)
 		to_chat(user, "<span class='notice'>You need to be aroused in order to masturbate.</span>")
@@ -893,12 +893,12 @@
 	var/datum/reagents/R = new/datum/reagents(50)
 	R.add_reagent(/datum/reagent/consumable/cum, cum_volume)
 	if(M==user)
-		user.visible_message("<span class='warning'>[user] starts masturbating onto themself!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
+		user.visible_message("<span class='warning'>[user] starts masturbating onto [M.p_them()]self!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
 	else
 		user.visible_message("<span class='warning'>[user] starts masturbating onto [M]!</span>", "<span class='danger'>You start masturbating onto [M]!</span>")
 	if(do_after(user,60,M))
 		if(M==user)
-			user.visible_message("<span class='warning'>[user] cums on themself!</span>", "<span class='danger'>You cum on yourself!</span>")
+			user.visible_message("<span class='warning'>[user] cums on [M.p_them()]self!</span>", "<span class='danger'>You cum on yourself!</span>")
 		else
 			user.visible_message("<span class='warning'>[user] cums on [M]!</span>", "<span class='danger'>You cum on [M]!</span>")
 		R.expose(M, TOUCH)
@@ -921,7 +921,7 @@
 	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
 	if(spriteP.is_hidden(H))
-		to_chat(user, "<span class='notice'>You need to expose your penis out in order to masturbate.</span>")
+		to_chat(user, "<span class='notice'>You need to expose yourself in order to masturbate.</span>")
 		return
 	else if(P.aroused != AROUSAL_FULL)
 		to_chat(user, "<span class='notice'>You need to be aroused in order to masturbate.</span>")

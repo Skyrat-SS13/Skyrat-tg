@@ -41,7 +41,7 @@
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
 
-/datum/looping_sound/vibrator_hard
+/datum/looping_sound/vibrator_high
 	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
 	start_length = 1
 	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'

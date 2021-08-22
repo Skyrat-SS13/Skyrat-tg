@@ -15,7 +15,7 @@
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
 	var/datum/looping_sound/vibrator_low/soundloop1
 	var/datum/looping_sound/vibrator_medium/soundloop2
-	var/datum/looping_sound/vibrator_hard/soundloop3
+	var/datum/looping_sound/vibrator_high/soundloop3
 	var/mode = "off"
 	var/static/list/vibrator_designs
 	w_class = WEIGHT_CLASS_TINY
@@ -123,7 +123,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan","blush"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
@@ -132,7 +132,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan","blush"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else if(penis.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
@@ -141,7 +141,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan","blush"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 							else
 								to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
@@ -154,7 +154,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 							else
 								to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
@@ -167,7 +167,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 							else
 								user.visible_message("<span class='danger'>Looks like [M]'s groin is covered!</span>")
@@ -184,7 +184,7 @@
 								M.adjustPleasure(5)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 
 							else if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
@@ -193,7 +193,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan","blush"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else if(penis.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
@@ -202,7 +202,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan","blush"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else
@@ -216,7 +216,7 @@
 								M.adjustPleasure(5)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 
 							else
@@ -230,7 +230,7 @@
 								M.adjustPleasure(5)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 
 							else
@@ -249,7 +249,7 @@
 								M.adjustPleasure(10)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
 
 							else if(vagina.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
@@ -258,7 +258,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan","blush"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else if(penis.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_bottomless())
@@ -267,7 +267,7 @@
 								M.adjustPleasure(2)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan","blush"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 							else
@@ -281,7 +281,7 @@
 								M.adjustPleasure(10)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
 
 							else
@@ -295,7 +295,7 @@
 								M.adjustPleasure(10)
 								if(prob(50) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
 
 							else
@@ -316,7 +316,7 @@
 								M.adjustPleasure(1)
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 							else
 								message = (user == M) ? pick("massages their nipples with the [src]","gently teases their nipples with [src]") : pick("delicately teases [M]'s nipples with [src]", "uses [src] to slowly massage [M]'s nipples", "uses [src] to tease [M]'s nipples")
@@ -324,7 +324,7 @@
 								M.adjustPleasure(1)
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
 
 
@@ -335,7 +335,7 @@
 								M.adjustPleasure(4)
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 							else
 								message = (user == M) ? pick("massages their nipples with the [src]","gently teases their nipples with [src]") : pick("teases [M]'s nipples with [src]", "uses [src] to massage [M]'s nipples", "uses [src] to tease [M]'s nipples")
@@ -343,7 +343,7 @@
 								M.adjustPleasure(1)
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
 
 						if(vibration_mode == "hard")
@@ -353,7 +353,7 @@
 								M.adjustPleasure(9)
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
 							else
 								message = (user == M) ? pick("massages their nipples with the [src]","hardly teases their nipples with [src]") : pick("leans massager tight against [M]'s nipples with [src]", "uses [src] to massage [M]'s nipples", "uses [src] to tease [M]'s nipples")
@@ -361,7 +361,7 @@
 								M.adjustPleasure(2)
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
-								user.visible_message("<font color=purple>[user] [message].</font>")
+								user.visible_message("<font color=purple>[user] [message]!</font>")
 								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
 
 					else

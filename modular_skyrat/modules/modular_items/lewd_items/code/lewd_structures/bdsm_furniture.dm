@@ -1,13 +1,13 @@
 /obj/structure/bed/bdsm_bed
 	name = "bdsm bed"
-	desc = "This is a latex bed with D-rings on sides. Looks comfortable."
+	desc = "A latex bed with D-rings on the sides. Looks comfortable."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "bdsm_bed"
 	max_integrity = 50
 
 /obj/item/bdsm_bed_kit
 	name = "bdsm bed construction kit"
-	desc = "A wrench is required to construct."
+	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "bdsm_bed_kit"
@@ -18,9 +18,9 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
-			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor and inflating latex pillows...</span>")
+			to_chat(user, "<span class='notice'>You fasten the frame to the floor and begin to inflate the latex pillows...</span>")
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
-				to_chat(user, "<span class='notice'>You construct the bdsm bed!</span>")
+				to_chat(user, "<span class='notice'>You assemble the bdsm bed.</span>")
 				var/obj/structure/bed/bdsm_bed/C = new
 				C.loc = loc
 				qdel(src)
@@ -41,9 +41,9 @@
 /obj/structure/bed/bdsm_bed/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		to_chat(user, "<span class='notice'>You start to unfastening the frame of bdsm bed...</span>")
+		to_chat(user, "<span class='notice'>You begin unfastening the frame of bdsm bed and deflating the latex pillows...</span>")
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
-			to_chat(user, "<span class='notice'>You take down the BDSM bed!</span>")
+			to_chat(user, "<span class='notice'>You disassemble the BDSM bed.</span>")
 			var/obj/item/bdsm_bed_kit/C = new
 			C.loc = loc
 			unbuckle_all_mobs()
@@ -62,7 +62,7 @@
 
 /obj/structure/chair/x_stand
 	name = "x stand"
-	desc = "Why you even call it X stand? It doesn't even in X form. Anyway you can buckle someone to it"
+	desc = "A stand for buckling people in an X shape."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	icon_state = "xstand"
 	max_buckled_mobs = 1
@@ -265,7 +265,7 @@
 
 /obj/item/x_stand_kit
 	name = "xstand construction kit"
-	desc = "A wrench is required to construct."
+	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "xstand_kit"
@@ -276,9 +276,9 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
-			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor.</span>")
+			to_chat(user, "<span class='notice'>You begin fastening the frame to the floor.</span>")
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
-				to_chat(user, "<span class='notice'>You construct the x-stand!</span>")
+				to_chat(user, "<span class='notice'>You assemble the x-stand.</span>")
 				var/obj/structure/chair/x_stand/C = new
 				C.loc = loc
 				qdel(src)
@@ -289,9 +289,9 @@
 /obj/structure/chair/x_stand/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		to_chat(user, "<span class='notice'>You start to unfastening the frame of x-stand...</span>")
+		to_chat(user, "<span class='notice'>You begin unfastening the frame of x-stand...</span>")
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
-			to_chat(user, "<span class='notice'>You take down the x-stand!</span>")
+			to_chat(user, "<span class='notice'>You disassemble the x-stand.</span>")
 			var/obj/item/x_stand_kit/C = new
 			C.loc = loc
 			unbuckle_all_mobs()

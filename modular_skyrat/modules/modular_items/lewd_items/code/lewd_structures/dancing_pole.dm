@@ -2,7 +2,7 @@
 
 /obj/structure/pole
 	name = "stripper pole"
-	desc = "A pole fastened to the ceiling and floor, used to show of ones goods to company."
+	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	icon_state = "pole"
 	density = TRUE
@@ -95,7 +95,7 @@
 	if(.)
 		return
 	if(obj_flags & IN_USE)
-		to_chat(user, "It's already in use - wait a bit.")
+		to_chat(user, "[src] is already in use!")
 		return
 	else
 		obj_flags |= IN_USE
@@ -153,7 +153,7 @@
 
 /obj/item/polepack
 	name = "pink stripper pole flatpack"
-	desc = "A wrench is required to construct."
+	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	throwforce = 0
 	icon_state = "pole_base"
@@ -164,9 +164,9 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
-			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor and celing...</span>")
+			to_chat(user, "<span class='notice'>You begin fastening the frame to the floor and ceiling...</span>")
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
-				to_chat(user, "<span class='notice'>You construct the stripper pole!</span>")
+				to_chat(user, "<span class='notice'>You assemble the stripper pole.</span>")
 				var/obj/structure/pole/C = new
 				C.loc = loc
 				qdel(src)
@@ -177,9 +177,9 @@
 /obj/structure/pole/attackby(obj/item/P, mob/user, params) //un-erecting a pole. :(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		to_chat(user, "<span class='notice'>You start to unfastening the frame...</span>")
+		to_chat(user, "<span class='notice'>You begin unfastening the frame from the floor and ceiling...</span>")
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
-			to_chat(user, "<span class='notice'>You take down the stripper pole!</span>")
+			to_chat(user, "<span class='notice'>You disassemble the stripper pole.</span>")
 			var/obj/item/polepack/C = new
 			C.loc = loc
 			qdel(src)
