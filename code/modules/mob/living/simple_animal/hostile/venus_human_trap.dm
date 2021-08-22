@@ -142,7 +142,7 @@
 
 	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
 
-	var/help_grow = 0 //SKYRAT EDIT CHANGE cooldown for helping plants grow
+	COOLDOWN_DECLARE(help_grow)
 
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
@@ -262,8 +262,8 @@
 	if(!proximity_flag)
 		return
 	var/obj/structure/spacevine/attacked_spacevine = attack_target
-	if(help_grow <= world.time)
-		help_grow = world.time + 1 SECONDS
+	if(COOLDOWN_FINISHED(src, help_grow))
+		COOLDOWN_START(src, help_grow, 1 SECONDS)
 		if(attacked_spacevine.energy >= 2)
 			attacked_spacevine.spread()
 			to_chat(src, span_notice("You help [attacked_spacevine] expand..."))
@@ -271,7 +271,7 @@
 			attacked_spacevine.grow()
 			to_chat(src, span_notice("You help [attacked_spacevine] grow..."))
 	var/turf/vine_turf = get_turf(attack_target)
-	var/list/break_list = list(
+	var/static/list/break_list = list(
 		/obj/machinery/door,
 		/obj/structure/table,
 		/obj/structure/window,
@@ -284,7 +284,7 @@
 	for(var/check_contents in vine_turf.contents)
 		if(isliving(check_contents) && !istype(check_contents, /mob/living/simple_animal/hostile/venus_human_trap))
 			UnarmedAttack(check_contents)
-		if(is_type_in_list(check_contents, break_list))
+		if(is_type_in_typecache(check_contents, break_list))
 			UnarmedAttack(check_contents)
 
 /mob/living/simple_animal/hostile/venus_human_trap/start_pulling(atom/movable/AM, state, force, supress_message)
