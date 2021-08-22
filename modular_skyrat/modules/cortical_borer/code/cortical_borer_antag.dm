@@ -8,11 +8,8 @@
 			text += span_greentext(" survived")
 		else
 			text += span_redtext(" died")
-		if(is_centcom_level(ply.current.z))
-			text += span_greentext(" and was able to get to CentCom.")
-		else
-			text += span_redtext(" and was unable to get to CentCom.")
 		text += span_bold(" The borer produced [player_borer.children_produced] borers.")
+		text += span_bold(" The borer was able to obtain [player_borer.count_willingness] willing hosts.")
 		if(player_borer.body_focus)
 			text += span_bold(" Their focus was [player_borer.body_focus].")
 		else

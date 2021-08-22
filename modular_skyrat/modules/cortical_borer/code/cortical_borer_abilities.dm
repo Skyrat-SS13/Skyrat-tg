@@ -497,4 +497,5 @@
 		to_chat(cortical_owner, span_warning("This host is not accepting, do more!"))
 		return
 	to_chat(cortical_owner, span_notice("You have an accepting host, great job!"))
+	cortical_owner.count_willingness++
 	GLOB.willing_hosts += cortical_owner.human_host

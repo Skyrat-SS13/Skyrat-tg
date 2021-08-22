@@ -232,6 +232,10 @@
 	var/body_focus = null
 	///how many children the borer has produced
 	var/children_produced = 0
+	///we dont want to spam the chat
+	var/deathgasp_once = FALSE
+	///how many willing hosts we created
+	var/count_willingness = 0
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -246,22 +250,20 @@
 		if(!mind.has_antag_datum(/datum/antagonist/cortical_borer))
 			mind.add_antag_datum(/datum/antagonist/cortical_borer)
 
-
 /mob/living/simple_animal/cortical_borer/death(gibbed)
 	if(inside_human())
 		var/turf/human_turf = get_turf(human_host)
 		forceMove(human_turf)
 		human_host = null
 	GLOB.cortical_borers -= src
-	for(var/borers in GLOB.cortical_borers)
-		to_chat(borers, span_boldwarning("[src] has left the hivemind forcibly!"))
+	if(!deathgasp_once)
+		deathgasp_once = TRUE
+		for(var/borers in GLOB.cortical_borers)
+			to_chat(borers, span_boldwarning("[src] has left the hivemind forcibly!"))
 	if(mind)
 		mind.remove_all_antag_datums()
 	QDEL_NULL(reagent_holder)
-	if(!ckey)
-		gib()
-		return
-	return ..()
+	gib()
 
 //so we can add some stuff to status, making it easier to read... maybe some hud some day
 /mob/living/simple_animal/cortical_borer/get_status_tab_items()
