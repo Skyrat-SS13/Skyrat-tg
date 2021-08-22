@@ -53,7 +53,7 @@
 		. = is_convertable_to_cult(new_owner.current,cult_team)
 
 /datum/antagonist/cult/greet()
-	to_chat(owner, span_userdanger("You are a member of the cult!"))
+	to_chat(owner, span_userdanger("You are a member of the cult! - UPDATE: CONVERSION IS OPTIONAL, ATTEMPT CONVERSION AND ALLOW VICTIM TO LEAVE. THEY WILL HAVE BEEN BRAINWASHED.")) //SKYRAT EDIT CHANGE
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/bloodcult.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)//subject to change
 	owner.announce_objectives()
 
@@ -335,9 +335,11 @@
 	sacrifice_objective.find_target()
 	objectives += sacrifice_objective
 
+	/* SKYRAT EDIT REMOVAL
 	var/datum/objective/eldergod/summon_objective = new
 	summon_objective.team = src
 	objectives += summon_objective
+	*/
 
 /datum/objective/sacrifice
 	var/sacced = FALSE
@@ -431,6 +433,6 @@
 			return FALSE
 	else
 		return FALSE
-	if(HAS_TRAIT(M, TRAIT_MINDSHIELD) || issilicon(M) || isbot(M) || isdrone(M) || !M.client)
+	if(issilicon(M) || isbot(M) || isdrone(M) || !M.client) //SKYRAT EDIT CHANGE
 		return FALSE //can't convert machines, shielded, or braindead
 	return TRUE
