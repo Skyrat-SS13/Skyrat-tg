@@ -425,7 +425,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/clothing/sextoy/double_dildo/proc/toggle(user)
+/obj/item/clothing/sextoy/double_dildo/proc/toggle(mob/living/carbon/user)
 	var/mob/living/carbon/human/C = usr
 	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 	var/obj/item/held = C.get_active_held_item()
@@ -453,18 +453,18 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					C.put_in_hands(W)
 					W.update_icon_state()
 					W.update_icon()
-					C.visible_message("<span class='notice'>[user] holds one end of [src] in [user.p_their()] hand.</span>")
+					C.visible_message("<span class='notice'>[user] holds one end of [src] in [C.p_their()] hand.</span>")
 					in_hands = TRUE
 					return
 		else
-			C.visible_message("<span class='notice'>[user] tries to hold one end of [src] in [user.p_their()] hand, but [user.p_their()] hand isn't empty!</span>")
+			C.visible_message("<span class='notice'>[user] tries to hold one end of [src] in [C.p_their()] hand, but [C.p_their()] hand isn't empty!</span>")
 			return
 	else
 		W = new()
 		C.put_in_hands(W)
 		W.update_icon_state()
 		W.update_icon()
-		C.visible_message("<span class='notice'>[user] holds one end of [src] in [user.p_their()] hand.</span>")
+		C.visible_message("<span class='notice'>[user] holds one end of [src] in [C.p_their()] hand.</span>")
 		in_hands = TRUE
 		return
 

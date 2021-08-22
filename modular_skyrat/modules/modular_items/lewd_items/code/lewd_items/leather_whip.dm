@@ -219,7 +219,7 @@
 					return
 
 			if(BODY_ZONE_HEAD)
-				message = (user == M) ? pick("wraps [src] around [M.p_their()] neck, choking [M.p_them()]self", "chokes [M.p_them]self with [src]") : pick("chokes [M] with [src]", "twines [src] around [M]'s neck!")
+				message = (user == M) ? pick("wraps [src] around [M.p_their()] neck, choking [M.p_them()]self", "chokes [M.p_them()]self with [src]") : pick("chokes [M] with [src]", "twines [src] around [M]'s neck!")
 				if(prob(70) && (M.stat != DEAD))
 					M.emote(pick("gasp","choke", "moan"))
 				M.adjustArousal(3)
@@ -232,7 +232,6 @@
 				if(M.is_bottomless())
 					if(current_whip_type == "weak")
 						message = (user == M) ? pick("whips [M.p_them()]self with [src]", "flogs [M.p_them()]self with [src]") :pick("playfully flogs [M]'s thighs with [src]","flogs [M] with [src]","mercilessly flogs [M] with [src]")
-						if(M.stat != DEAD)
 						if(M.stat != DEAD)
 							if(prob(70))
 								M.emote(pick("moan","twitch"))

@@ -109,7 +109,7 @@
 						owner.blur_eyes(15)
 						owner.visible_message(pick("<font color=purple>[owner] seductively wags [owner.p_their()] hips.</font>\n",
 											"<font color=purple>[owner] moans in lust!</font>\n",
-											"<font color=purple>[owner] touches [M.p_them()]self in intimate places...</font>\n",
+											"<font color=purple>[owner] touches [owner.p_them()]self in intimate places...</font>\n",
 											"<font color=purple>[owner] trembling longingly.</font>\n",
 											"<font color=purple>[owner] moans indecently!</font>\n"))
 
@@ -233,7 +233,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 					owner.blur_eyes(10)
 					owner.visible_message(pick("<font color=purple>[owner] seductively wags their hips.</font>\n",
 										"<font color=purple>[owner] moans in lust!</font>\n",
-										"<font color=purple>[owner] touches [M.p_them()]self in intimate places...</font>\n",
+										"<font color=purple>[owner] touches [owner.p_them()]self in intimate places...</font>\n",
 										"<font color=purple>[owner] trembling longingly.</font>\n",
 										"<font color=purple>[owner] moans indecently!</font>\n"))
 	if(satisfaction >= 0.20)
@@ -357,7 +357,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 						owner.blur_eyes(15)
 						owner.visible_message(pick("<font color=purple>[owner] wags their hips seductively.</font>\n",
 											"<font color=purple>[owner] moans in lust!</font>\n",
-											"<font color=purple>[owner] touches [M.p_them()]self in intimate places...</font>\n",
+											"<font color=purple>[owner] touches [owner.p_them()]self in intimate places...</font>\n",
 											"<font color=purple>[owner] trembling longingly.</font>\n",
 											"<font color=purple>[owner] moans indecently!</font>\n"))
 
