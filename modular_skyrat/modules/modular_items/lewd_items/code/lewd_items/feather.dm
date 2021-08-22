@@ -1,6 +1,6 @@
 /obj/item/tickle_feather
 	name = "tickling feather"
-	desc = "A feather that can be used for tickling or even torture. Have fun!"
+	desc = "A rather ticklish feather that can be used in both mirth and malice."
 	icon_state = "feather"
 	inhand_icon_state = "feather"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
