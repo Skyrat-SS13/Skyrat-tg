@@ -167,7 +167,8 @@
 		/obj/item/implantcase,
 		/obj/item/implant,
 		/obj/item/implanter,
-		/obj/item/reagent_containers/spray
+		/obj/item/reagent_containers/spray,
+		/obj/item/medicell
 		))
 
 /obj/item/storage/belt/medbandolier/examine(mob/user)
