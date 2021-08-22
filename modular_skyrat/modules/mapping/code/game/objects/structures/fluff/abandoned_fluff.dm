@@ -130,6 +130,11 @@
 /obj/structure/fluff/abandoned/cinderblock/tube/end
 	icon_state = "tube_end"
 
+/obj/structure/fluff/abandoned/cinderblock/wirecoil	//Again, not a cinderblock, but it falls under the construction supplies
+	name = "wire coil"
+	desc = "A large spool of wire, to be layed underground or within walls."
+	icon_state = "wirecoil"
+
 /obj/structure/fluff/abandoned/cinderblock/Initialize()
 	. = ..()
 	if(climbable)
