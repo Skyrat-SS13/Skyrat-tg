@@ -14,8 +14,8 @@ GLOBAL_LIST(donator_list)
 /proc/save_donators()
 	/// Yes, this is incredibly long, deal with it. It's to keep that cute little comment at the top.
 	var/donators = "###############################################################################################\n# List for people who support us! They get cool loadout items                                 #\n# Case is not important for ckey.                                                             #\n###############################################################################################\n"
-	for(var/veteran in GLOB.donator_list)
-		donators += veteran + "\n"
+	for(var/donator in GLOB.donator_list)
+		donators += donator + "\n"
 	rustg_file_write(donators, DONATORLISTFILE)
 
 #undef DONATORLISTFILE
