@@ -14,6 +14,6 @@
 	desc = "It has a picture of shot glasses on it."
 	illustration = "drinkglass"
 
-/obj/item/storage/box/drinkingglasses/PopulateContents()
+/obj/item/storage/box/syndieshotglasses/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/syndicate(src)

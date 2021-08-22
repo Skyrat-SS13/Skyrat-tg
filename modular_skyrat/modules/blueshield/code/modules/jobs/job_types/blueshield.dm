@@ -14,7 +14,7 @@
 	exp_granted_type = EXP_TYPE_CREW
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_CCM
 
 	outfit = /datum/outfit/job/blueshield
 	plasmaman_outfit = /datum/outfit/plasmaman/blueshield

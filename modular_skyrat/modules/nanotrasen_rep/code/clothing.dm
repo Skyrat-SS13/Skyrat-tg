@@ -50,7 +50,7 @@
 
 /obj/item/clothing/head/nanotrasen_representative/beret
 	name = "nanotrasen representative's beret"
-	desc =  "A beret made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
+	desc = "A beret made from durathread, it has an insignia on the front denoting the rank of a Nanotrasen Representative."
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
 	greyscale_colors = "#3F3C40#155326"

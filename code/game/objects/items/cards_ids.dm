@@ -1361,11 +1361,20 @@
 	return ..()
 
 /// A special variant of the classic chameleon ID card which accepts all access.
+//SKYRAT EDIT BEGIN..
+
+#define WILDCARD_LIMIT_CHAMELEON_ADVANCED list( \
+	WILDCARD_NAME_CENTCOM = list(limit = 2, usage = list()), \
+	WILDCARD_NAME_SYNDICATE = list(limit = -1, usage = list()), \
+	WILDCARD_NAME_CAPTAIN = list(limit = -1, usage = list()) \
+)
+
 /obj/item/card/id/advanced/chameleon/black
 	icon_state = "card_black"
 	worn_icon_state = "card_black"
 	assigned_icon_state = "assigned_syndicate"
-	wildcard_slots = WILDCARD_LIMIT_GOLD
+	wildcard_slots = WILDCARD_LIMIT_CHAMELEON_ADVANCED
+//SKYRAT EDIT END
 
 /obj/item/card/id/advanced/engioutpost
 	registered_name = "George 'Plastic' Miller"
