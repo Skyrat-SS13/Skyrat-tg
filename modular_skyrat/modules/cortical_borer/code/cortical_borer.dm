@@ -398,3 +398,7 @@
 	for(var/mob/dead_mob in GLOB.dead_mob_list)
 		var/link = FOLLOW_LINK(dead_mob, src)
 		to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings to [human_host], \"[message]\""))
+
+/mob/living/simple_animal/cortical_borer/start_pulling(atom/movable/AM, state, force, supress_message)
+	to_chat(src, span_warning("You cannot pull things!"))
+	return
