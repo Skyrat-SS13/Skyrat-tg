@@ -137,7 +137,7 @@
 	inhand_icon_state = "utility"
 
 /obj/item/storage/belt/medbandolier
-	icon = 'modular_skyrat/master_files/obj/clothing/belts.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "medical bandolier"
 	desc = "A pocketed, pine green belt slung like a sash over the shoulder. Features numerous pockets for medicines, poisons, and your smoke break. Now is coward healing time."
@@ -146,10 +146,10 @@
 
 /obj/item/storage/belt/medbandolier/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 21
-	STR.set_holdable(list(
+	var/datum/component/storage/bandolier_storage = GetComponent(/datum/component/storage)
+	bandolier_storage.max_w_class = WEIGHT_CLASS_NORMAL
+	bandolier_storage.max_combined_w_class = 21
+	bandolier_storage.set_holdable(list(
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/glass/beaker,
