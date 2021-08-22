@@ -54,7 +54,9 @@
 
 /obj/item/modular_computer/tablet/preset/advanced/atmos/Initialize() //This will be defunct and will be replaced when NtOS PDAs are done
 	. = ..()
+	var/obj/item/computer_hardware/hard_drive/small/hard_drive = find_hardware_by_name("solid state drive") //SKYRAT EDIT ADD
 	install_component(new /obj/item/computer_hardware/sensorpackage)
+	hard_drive.store_file(new /datum/computer_file/program/alarm_monitor) //SKYRAT EDIT ADD
 
 /obj/item/modular_computer/tablet/preset/advanced/engineering/Initialize()
 	. = ..()
