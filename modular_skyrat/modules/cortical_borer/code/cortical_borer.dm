@@ -338,6 +338,8 @@
 	. = ..()
 	if(ckey)
 		return
+	if(stat == DEAD)
+		return
 	var/choice = tgui_input_list(usr, "Do you want to control [src]?", "Confirmation", list("Yes", "No"))
 	if(choice != "Yes")
 		return
