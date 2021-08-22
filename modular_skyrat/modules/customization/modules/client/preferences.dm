@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(food, list(
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
-#define FLAVORTEXT_JOIN_MINIMUM 150
+#define FLAVORTEXT_JOIN_MINIMUM 50 // 150 is SkyRat Defualt
 
 /datum/preferences/proc/check_flavor_text(inform_client = TRUE)
 	if(!features["flavor_text"])
