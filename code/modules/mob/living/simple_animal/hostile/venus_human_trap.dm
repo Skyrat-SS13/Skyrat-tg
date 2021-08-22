@@ -271,7 +271,7 @@
 			attacked_spacevine.grow()
 			to_chat(src, span_notice("You help [attacked_spacevine] grow..."))
 	var/turf/vine_turf = get_turf(attack_target)
-	var/static/list/break_list = list(
+	var/static/list/break_list = typecacheof(list(
 		/obj/machinery/door,
 		/obj/structure/table,
 		/obj/structure/window,
@@ -280,7 +280,7 @@
 		/obj/structure/rack,
 		/obj/structure/door_assembly,
 		/obj/structure/closet,
-	)
+	))
 	for(var/check_contents in vine_turf.contents)
 		if(isliving(check_contents) && !istype(check_contents, /mob/living/simple_animal/hostile/venus_human_trap))
 			UnarmedAttack(check_contents)
