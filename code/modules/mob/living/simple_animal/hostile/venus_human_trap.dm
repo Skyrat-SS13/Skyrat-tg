@@ -107,7 +107,7 @@
 	icon_state = "venus_human_trap"
 	health_doll_icon = "venus_human_trap"
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
-	layer = SPACEVINE_MOB_LAYER
+	layer = ABOVE_ALL_MOB_LAYER //SKYRAT EDIT CHANGE Venus should be able to hide within the vines...
 	health = 60 //SKYRAT EDIT CHANGE
 	maxHealth = 60 //SKYRAT EDIT CHANGE
 	ranged = TRUE
@@ -142,10 +142,20 @@
 
 	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
 
+	var/help_grow = 0 //SKYRAT EDIT CHANGE cooldown for helping plants grow
+
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
 	pull_vines()
+	//SKYRAT EDIT CHANGE
+	var/turf/src_turf = get_turf(src)
+	var/obj/structure/spacevine/find_vine = locate() in src_turf.contents
+	if(!find_vine)
+		adjustHealth(maxHealth * 0.05)
+	else
+		adjustHealth(maxHealth * -0.05)
+	//SKYRAT EDIT CHANGE
 
 /mob/living/simple_animal/hostile/venus_human_trap/Moved(atom/OldLoc, Dir)
 	. = ..()
@@ -244,5 +254,44 @@
 /mob/living/simple_animal/hostile/venus_human_trap/death(gibbed)
 	for(var/i in vines)
 		qdel(i)
+	return ..()
+
+/mob/living/simple_animal/hostile/venus_human_trap/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)
+	if(!istype(attack_target, /obj/structure/spacevine))
+		return ..()
+	if(!proximity_flag)
+		return
+	var/obj/structure/spacevine/attacked_spacevine = attack_target
+	if(help_grow <= world.time)
+		help_grow = world.time + 1 SECONDS
+		if(attacked_spacevine.energy >= 2)
+			attacked_spacevine.spread()
+			to_chat(src, span_notice("You help [attacked_spacevine] expand..."))
+		else
+			attacked_spacevine.grow()
+			to_chat(src, span_notice("You help [attacked_spacevine] grow..."))
+	var/turf/vine_turf = get_turf(attack_target)
+	var/break_list = list(
+		/obj/machinery/door,
+		/obj/structure/table,
+		/obj/structure/window,
+		/obj/structure/girder,
+		/obj/structure/grille,
+		/obj/structure/rack,
+		/obj/structure/door_assembly,
+		/obj/structure/closet,
+	)
+	for(var/check_contents in vine_turf.contents)
+		if(isliving(check_contents) && !istype(check_contents, /mob/living/simple_animal/hostile/venus_human_trap))
+			UnarmedAttack(check_contents)
+		for(var/check_break in break_list)
+			if(!istype(check_contents, check_break))
+				continue
+			UnarmedAttack(check_contents)
+
+/mob/living/simple_animal/hostile/venus_human_trap/start_pulling(atom/movable/AM, state, force, supress_message)
+	if(isliving(AM))
+		to_chat(src, span_warning("You are unable to pull living creatures, they are too heavy!"))
+		return FALSE
 	return ..()
 //SKYRAT EDIT END
