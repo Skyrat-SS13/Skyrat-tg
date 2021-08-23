@@ -10,18 +10,19 @@
 		/mob/living/simple_animal/hostile/asteroid/goliath = 20,
 		/mob/living/simple_animal/hostile/asteroid/fugu = 30,
 		/mob/living/simple_animal/hostile/asteroid/basilisk = 40,
-		/mob/living/simple_animal/hostile/asteroid/hivelord = 20,
+		/mob/living/simple_animal/hostile/asteroid/hivelord = 20,	//TODO: hivelord reskin, weaver & mimics from Prey
 		/*/mob/living/simple_animal/hostile/lost_husk = 50, ----- NYI*/
+		/*/mob/living/simple_animal/hostile/slider = 15 ----- NYI, will teleport randomly*/
 		SPAWN_MEGAFAUNA = 3,
 		/mob/living/simple_animal/hostile/asteroid/goldgrub = 10
 		)
 	flora_spawn_list = list(
-		/obj/structure/flora/rock/jungle = 2,
-		/obj/structure/flora/junglebush = 2,
+		/*/obj/structure/flora/rock/jungle = 2,
+		/obj/structure/flora/junglebush = 2, ----- CHANGE TO BE NOT JUNGLE*/
 		/obj/structure/flora/ash/rockplanet/coyote = 2,
 		/obj/structure/flora/ash/rockplanet/yucca = 2,
 		/obj/structure/flora/ash/rockplanet/agaricus = 2,
-		/obj/structure/flora/ash/cacti = 1
+		/obj/structure/flora/ash/seraka= 1
 		)
 	feature_spawn_list = list(
 		/obj/structure/geyser/wittel = 8,
@@ -37,7 +38,7 @@
 	birth_limit = 4
 	death_limit = 3
 
-/turf/closed/mineral/random/stationside/asteroid/rockplanet
+/turf/closed/mineral/random/stationside/asteroid/rockplanet	//TODO : change icon to be less red
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	turf_type = /turf/open/floor/plating/asteroid
 	mineralSpawnChanceList = list(

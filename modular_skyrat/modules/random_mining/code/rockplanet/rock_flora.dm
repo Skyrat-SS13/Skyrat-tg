@@ -87,7 +87,6 @@
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
 	special_desc = "Aside from these edible fruits, the plant's seeds can be scraped and made into a cleaning solution!"
-	//TODO: Roast(bonfire) or bake(microwave) - sweet molasses/figgy flavor || dry and grind into a meal(needs to be dried to blend, but gives good nutriment when you do?? idk what to do for this)
 
 /obj/item/food/grown/rock_flora/agaricus
 	name = "wine-colored agaricus"
@@ -98,7 +97,6 @@
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
 	special_desc = "This mushroom is regarded simultaneously as edible, inedible, and responsible for causing gastric upset."	//The wikipedia said pretty much the same thing. Its funny, I'm keeping it like this
-	//TO-DO: INDUCES VOMIT
 
 //////////////
 //SEED ITEMS
@@ -136,7 +134,7 @@
 	plantname = "Dagger-Yucca"
 	product = /obj/item/food/grown/rock_flora/yucca
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/consumable/tinlux = 0.04, /datum/reagent/consumable/nutriment/vitamin = 0.02)	//CHANGE THIS
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.02)	//Find a secondary chem? MAKE a secondary chem?
 
 /obj/item/seeds/rockplanet/agaricus
 	name = "pack of agaricus mycelium"
@@ -148,7 +146,7 @@
 	growthstages = 2
 	product = /obj/item/food/grown/rock_flora/agaricus
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
-	reagents_add = list(/datum/reagent/toxin/mushroom_powder = 0.1, /datum/reagent/medicine/coagulant/seraka_extract = 0.02)	//CHANGE THIS
+	reagents_add = list(/datum/reagent/toxin/mushroom_powder = 0.1, /datum/reagent/medicine/insulin = 0.1, /datum/reagent/yuck = 0.1)	//Could be of value for the insulin (Yes, I looked it up, agaricus can help improve the bodies use of insulin)
 
 //////////////
 //CRAFTED ITEMS
@@ -163,10 +161,9 @@
 	glass_icon_state = "sotol_coyote_glass"
 	glass_name = "Sotol Coyote"
 	glass_desc = "A cleverly-recreated recipe, almost impossible to distinguish from the original. It's adorned with... a tobacco leaf?"
-	chemical_flags = NONE	//Only way to get this is fermenting, so no flag for it being mixable.
+	chemical_flags = NONE	//Only way to get this is fermenting
 	glass_price = DRINK_PRICE_HIGH
 	liquid_fire_power = 2
-
 
 //Yucca soap is a 2 step process:
 //First step, scraping the seed/root
@@ -181,7 +178,7 @@
 //Second step, grinding the result
 /obj/item/food/grown/rock_flora/yuccaroot
 	name = "yucca root"
-	desc = "A greenish-brown root, prepped for grinding."
+	desc = "A greenish-brownish root, prepped for grinding."
 	icon_state = "yuccaroot"
 	seed = /obj/item/seeds/rockplanet/yucca
 	grind_results = list(/datum/reagent/space_cleaner/yucca_soap)
@@ -191,9 +188,9 @@
 	special_desc = "Full of saponin, an all-natural cleaning solution!"
 
 /datum/reagent/space_cleaner/yucca_soap
-	name = "Yuccaroot Soap"
+	name = "Yucca root Soap"
 	description = "Concentrated saponin, which as an antibacterial/antifungal soap. Most effective mixed with water."
-	color = "#96a58c"	//Its a green color
+	color = "#88967f"	//Its a green, earthy color
 	taste_description = "earthy sourness"
 	reagent_weight = 0.7 //Doesnt spray quite as far
 	chemical_flags = NONE //Only way to get this is cutting root from the seed (idk if it doesnt make sense) and then grinding it
