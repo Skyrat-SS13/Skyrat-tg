@@ -35,11 +35,18 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			if(get_active_held_item())
 				ciweapon = get_active_held_item()
 				if(istype(ciweapon, /obj/item/gun))
-					visible_message(span_warning("<b>[src] Raises the [ciweapon], putting their finger on the trigger, ready for combat!<b>"))
+					visible_message(span_warning("<b>[src] Raises the [ciweapon], putting [p_their()] finger on the trigger, ready for combat!</b>"))
 				else
-					visible_message(span_warning("<b>[src] tightens their grip on the [ciweapon], raising it and standing in an offensive stance, ready for combat!<b>"))
+					visible_message(span_warning("<b>[src] tightens [p_their()] grip on the [ciweapon], raising it and standing in an offensive stance, ready for combat!</b>"))
 			else
-				visible_message(span_warning("<b>[src] raises their fists, taking an offensive stance, ready for combat!</b>"))
+				if(issilicon(src))
+					visible_message(span_warning("<b>[src] shifts it's armour plating, taking a defensive stance, ready for combat!</b>"))
+				if(ishuman(src))
+					visible_message(span_warning("<b>[src] raises [p_their()] fists, taking an offensive stance, ready for combat!</b>"))
+				if(isalien(src))
+					visible_message(span_warning("<b>[src] hisses, raising its claws and taking a terrifyingly stance, ready for combat!</b>"))
+				else
+					visible_message(span_warning("<b>[src] gets ready for combat!</b>"))
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = TRUE
 		src.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
