@@ -45,7 +45,7 @@
 
 /obj/item/storage/bag/bio/holding
 	name = "bio bag of holding"
-	desc = "A bag for the safe transportation and disposal of biowaste and other biological materials."
+	desc = "A bag, with expanded capacity, for the safe transportation and disposal of biowaste and other biological materials."
 	icon = 'modular_skyrat/modules/modular_items/icons/obj/items/storage.dmi'
 	icon_state = "bspace_biobag"
 
