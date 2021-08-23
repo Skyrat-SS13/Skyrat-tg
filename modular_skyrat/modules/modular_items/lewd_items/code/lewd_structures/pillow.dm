@@ -91,6 +91,12 @@
 	icon_state = "[initial(icon_state)]_[current_color]_[current_form]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]_[current_form]"
 
+/obj/item/pillow/Destroy()
+	if(pillow_feathers)
+		qdel(pillow_feathers)
+		pillow_feathers = null
+	return ..()
+
 //feathers effect on hit
 
 /obj/effect/temp_visual/feathers

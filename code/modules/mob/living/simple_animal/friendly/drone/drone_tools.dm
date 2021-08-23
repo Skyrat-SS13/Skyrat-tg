@@ -42,7 +42,7 @@
 /obj/item/crowbar/drone
 	name = "built-in crowbar"
 	desc = "A crowbar built into your chassis."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "crowbar_cyborg"
 	inhand_icon_state = "crowbar"
 	item_flags = NO_MAT_REDEMPTION
@@ -50,7 +50,7 @@
 /obj/item/screwdriver/drone
 	name = "built-in screwdriver"
 	desc = "A screwdriver built into your chassis."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "screwdriver_cyborg"
 	inhand_icon_state = "screwdriver"
 	item_flags = NO_MAT_REDEMPTION
@@ -69,7 +69,7 @@
 /obj/item/wrench/drone
 	name = "built-in wrench"
 	desc = "A wrench built into your chassis."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "wrench_cyborg"
 	inhand_icon_state = "wrench"
 	item_flags = NO_MAT_REDEMPTION
@@ -77,14 +77,14 @@
 /obj/item/weldingtool/drone
 	name = "built-in welding tool"
 	desc = "A welding tool built into your chassis."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "indwelder_cyborg"
 	item_flags = NO_MAT_REDEMPTION
 
 /obj/item/wirecutters/drone
 	name = "built-in wirecutters"
 	desc = "Wirecutters built into your chassis."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "wirecutters_cyborg"
 	inhand_icon_state = "cutters"
 	item_flags = NO_MAT_REDEMPTION

@@ -201,7 +201,7 @@
 /obj/item/crowbar/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "hydraulic crowbar"
 	desc = "A hydraulic prying tool, simple but powerful."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "crowbar_cyborg"
 	worn_icon_state = "crowbar"
 	usesound = 'sound/items/jaws_pry.ogg'
