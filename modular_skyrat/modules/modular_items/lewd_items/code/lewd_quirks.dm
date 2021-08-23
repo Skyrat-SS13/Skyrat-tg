@@ -9,10 +9,10 @@
 /datum/quirk/nymphomania
 	name = "Nymphomania"
 	desc = "You have an overwhelming urge to have sex with someone. Constantly."
-	value = -2 //This gives you uncomfortable stuff. But you can change it to 0. Don't change to positive values, it will be dumb.
+	value = 0
 	mob_trait = TRAIT_NYMPHOMANIA
 	gain_text = "<font color=purple>You feel yourself much more hornier than before...</font>"
-	lose_text = "<span class='notice'>A pleasant coolness spreads through the body. You are in control of your sexual desires again.</font>"
+	lose_text = span_notice("A pleasant coolness spreads through the body. You are in control of your sexual desires again.")
 	medical_record_text = "Subject has nymphomania."
 	var/obj/item/sextoy
 	var/where
@@ -53,7 +53,7 @@
 	desc = "The patient constantly feels aroused and supposed to satisfy their sexual desires."
 	scan_desc = "constant sexual arousal"
 	gain_text = "<font color=purple>You feel yourself much more hornier than before...</font>"
-	lose_text = "<span class='notice'>A pleasant coolness spreads through the body. You are in control of your sexual desires again.</font>"
+	lose_text = span_notice("A pleasant coolness spreads through the body. You are in control of your sexual desires again.")
 	can_gain = TRUE
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
@@ -77,41 +77,42 @@
 			switch(rand(1,6))
 				if(1)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
+						to_chat(owner, "<font color=purple>Your breath grows hot and heavy...</font>")
+						owner.adjustOxyLoss(8)
+						owner.emote("exhale")
 					else
-						to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
-						owner.emote("moan")
+						to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
+						owner.adjustOxyLoss(16)
+						owner.emote("gasp")
+						
 				if(2)
 					if(stress >= 100)
 						to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
 						owner.do_jitter_animation(20)
+						owner.emote("shiver")
 					else
-						to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
+						to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
 						owner.dizziness += 20
 						owner.add_confusion(20)
 						owner.Jitter(20)
 						owner.do_jitter_animation(20)
-						owner.adjustStaminaLoss(50)
+						owner.emote("twitch")
 				if(3, 4)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You bring your hips together in lust.</font>")
+						to_chat(owner, "<font color=purple>You bring your hips together in lust....</font>")
 					else
-						to_chat(owner, "<font color=purple>Desire driving you mad!</font>")
-						owner.hallucination += 30
+						to_chat(owner, "<font color=purple>You press your thighs together in lust, stumbling slighty!</font>")
+						owner.emote("stumble")
+						owner.Immobilize(2 SECONDS, TRUE)
 				if(5)
 					if(stress >= 100)
 						to_chat(owner, "<font color=purple>You feel like your genitalias are burning...</font>")
-						owner.adjustOxyLoss(8)
 						owner.blur_eyes(10)
+						owner.adjustStaminaLoss(20)
 					else
-						to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
-						owner.adjustOxyLoss(16)
+						to_chat(owner, "<font color=purple>Your body pulses with lust, you need release!</font>")
 						owner.blur_eyes(15)
-						owner.visible_message(pick("<font color=purple>[owner] seductively wags the hips.</font>\n",
-											"<font color=purple>[owner] moans in lust!</font>\n",
-											"<font color=purple>[owner] touches themselves in intimate places...</font>\n",
-											"<font color=purple>[owner] trembling longingly.</font>\n",
-											"<font color=purple>[owner] moans indecently!</font>\n"))
+						owner.adjustStaminaLoss(50)
 
 	if(in_company() && satisfaction >= 0)
 		satisfaction -= 1
