@@ -10,6 +10,8 @@
 	var/empty = FALSE
 	var/current_case = "firstaid"
 	var/static/list/case_designs
+	var/static/list/cmo_case_designs
+	var/cmo_case = FALSE
 
 //Code to give hypospray kits selectable paterns.
 
@@ -29,6 +31,9 @@
 		"rad" = image(icon = src.icon, icon_state = "rad-mini"),
 		"bpurple" = image(icon = src.icon, icon_state = "purple-mini"),
 		"oxy" = image(icon = src.icon, icon_state = "oxy-mini"))
+	cmo_case_designs = list(
+		"tactical" = image(icon= src.icon, icon_state = "tactical-mini"))
+	cmo_case_designs += case_designs
 
 /obj/item/storage/hypospraykit/update_icon_state()
 	. = ..()
@@ -37,7 +42,10 @@
 /obj/item/storage/hypospraykit/proc/case_menu(mob/user)
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src , case_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
+	var/casetype = cmo_case_designs
+	if(!src.cmo_case)
+		casetype = case_designs
+	var/choice = show_radial_menu(user, src , casetype, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_case = choice
@@ -79,6 +87,8 @@
 	name = "deluxe hypospray kit"
 	desc = "A kit containing a deluxe hypospray and vials."
 	icon_state = "tactical-mini"
+	current_case = "tactical"
+	cmo_case = TRUE
 
 /obj/item/storage/hypospraykit/cmo/PopulateContents()
 	if(empty)
