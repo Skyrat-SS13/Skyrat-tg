@@ -28,4 +28,5 @@
 	materials = list(/datum/material/gold = 1500, /datum/material/diamond = 750, /datum/material/uranium = 250, /datum/material/bluespace = 1000)
 	build_path = /obj/item/storage/bag/bio/holding
 	category = list("Bluespace Designs")
+	dangerous_construction = FALSE //These are robust, but not dangerous......
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
