@@ -39,8 +39,6 @@
 	. = ..()
 	if(!proximity)
 		return
-	if(istype(target, /mob/living/carbon))
-		user.changeNext_move(2 SECONDS)
 	if(istype(target, /obj/machinery/door))
 		user.changeNext_move(5 SECONDS)
 		if(!registered)
@@ -52,6 +50,7 @@
 		SEND_SIGNAL(target, COMSIG_BREACHING, user)
 		breaching_target = target
 	if(iscarbon(target))
+		user.changeNext_move(2 SECONDS)
 		var/mob/living/carbon/H = target
 		H.apply_damage_type(40, STAMINA)
 		H.throw_at(get_step_away(H, user), 1, 1, user, TRUE, gentle = TRUE)
