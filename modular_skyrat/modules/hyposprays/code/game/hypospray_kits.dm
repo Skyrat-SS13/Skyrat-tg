@@ -24,7 +24,11 @@
 	case_designs = list(
 		"firstaid" = image(icon = src.icon, icon_state = "firstaid-mini"),
 		"brute" = image(icon = src.icon, icon_state = "brute-mini"),
-		"burn" = image(icon = src.icon, icon_state = "burn-mini"))
+		"burn" = image(icon = src.icon, icon_state = "burn-mini"),
+		"toxin" = image(icon = src.icon, icon_state = "toxin-mini"),
+		"rad" = image(icon = src.icon, icon_state = "rad-mini"),
+		"bpurple" = image(icon = src.icon, icon_state = "purple-mini"),
+		"oxy" = image(icon = src.icon, icon_state = "oxy-mini"))
 
 /obj/item/storage/hypospraykit/update_icon_state()
 	. = ..()
