@@ -191,7 +191,8 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	. = ..()
 	if((resistance_flags & UNACIDABLE) || (acid_volume <= 0) || acidpwr <= 0)
 		return FALSE
-
+	if(QDELETED(src)) //skyrat edit: fix createanddestroy
+		return FALSE
 	AddComponent(/datum/component/acid, acidpwr, acid_volume)
 	return TRUE
 

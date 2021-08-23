@@ -184,7 +184,7 @@
 			var/obj/item/reagent_containers/glass/lewd_filter/F = M.contents[1]
 			F.reagent_consumption(C, F.amount_per_transfer_from_this)
 		return
-	..()
+	return ..()
 
 // Adding breath_manually on equip
 /obj/item/clothing/mask/gas/bdsm_mask/equipped(/mob/user, slot)

@@ -64,6 +64,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/prisoner
 	name = "Prisoner"
 	icon_state = "Prisoner"
+	//SKYRAT EDIT: Start - Makes latejoin prisoners spawn in the prison instead of on the interlink.
+	jobspawn_override = TRUE
+	delete_after_roundstart = FALSE
+	//SKYRAT EDIT: End - Makes latejoin prisoners spawn in the prison instead of on the interlink.
 
 /obj/effect/landmark/start/prisoner/after_round_start()
 	return

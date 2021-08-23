@@ -18,7 +18,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/captain
 
 	paycheck = PAYCHECK_COMMAND
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_CMD // SKYRAT EDIT - Original: paycheck_department = ACCOUNT_SEC
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 

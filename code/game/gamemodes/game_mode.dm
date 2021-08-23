@@ -49,7 +49,7 @@
 			)
 			query_round_game_mode.Execute()
 			qdel(query_round_game_mode)
-	generate_station_goals()
+	//generate_station_goals() SKYRAT EDIT REMOVAL
 	return TRUE
 
 

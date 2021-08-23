@@ -16,7 +16,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/security
 
 	paycheck = PAYCHECK_EASY
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_CCM
 
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)

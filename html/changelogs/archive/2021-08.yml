@@ -470,3 +470,236 @@
   - bugfix: 'A lot of security, BS, and NTR can no longer roll certain antags as referenced
       in #6406'
   - server: changes to `config/dynamic.json` should be reflected
+2021-08-16:
+  AMonkeyThatCodes:
+  - spellcheck: Areas where it makes sense now have \improper pre-fixed to them
+  Azarak:
+  - rscadd: The sense of smell - Ported from Horizon
+  - rscadd: 'Added a pollution system, which is used for air pollutants, such as cigarette
+      smoke, deadly carbon pollution, perfumes, food scents etc. See #7453 for all
+      changes'
+  Colovorat:
+  - bugfix: Controller shell extra button now works properly
+  - bugfix: Cyborg emergency reboot module now is no longer dropped if revive is succesful
+  ForrestWick:
+  - balance: removed some loot left over as an oversight and nerfed the Warden boss
+      fight a bit.
+  - bugfix: removed and replaced some zombies that spawned invisible
+  GoldenAlpharex:
+  - bugfix: Paper that's on a clipboard doesn't need to be poked to realise that its
+      appearance has changed and to properly display it on a clipboard.
+  - bugfix: You finally figured that using a stamp on a clipboard was more important
+      than using the pen that's currently attached to it. Congratulations!
+  - code_imp: Added support for preventing a pen from being removed from a clipboard.
+  - spellcheck: Ambitions now properly tell admins that auto-approve lasts TEN, not
+      FIVE minutes.
+  OrionTheFox:
+  - bugfix: Icebox Disposals no longer spew trash into service, nor clog above the
+      library. Rejoice!
+  SkyratBot:
+  - bugfix: Fixed new ticket ahelp message double sanitizing.
+  - rscdel: Removed crank.
+  - balance: Mushroom hallucinogen has a new trippy effect, but no longer makes you
+      druggy or dizzy.
+  - bugfix: freezers will now actually protect their contents from explosions once
+      like iamgoofball intended almost 4 years ago.
+  - code_imp: Moved all the integrated circuit core files into a new subfolder called
+      core
+  - spellcheck: DNA activators will now become expended once used, even if it hasn't
+      activated anything.
+  - spellcheck: Removed a space when recycling an activator at a DNA console.
+  - config: Added a config flag for mirroring the logging of certain failed logins
+      to their own file.
+  - balance: liquid electricity grants more charge to ethereals.
+  - balance: Ethereal racial foods contain more liquid electricity.
+  - bugfix: bright white spheres when attacking things with an item that has a light
+      source attached
+  - bugfix: inventory and action buttons creating light sources
+  - bugfix: HFR fuel mixes now properly consume the correct amounts
+  - bugfix: constructed atmos devices now show the correct color in the name (no longer
+      all grey)
+  - bugfix: Buckling to nearby objects and roundstart shuttle buckling now result
+      in the proper facing direction.
+  Yawet330:
+  - bugfix: Regen cores are now scaled to correctly clear stamina.
+  jjpark-kb:
+  - rscadd: made the scythe into four tiers. Researchable, and printable at the service
+      lathe.
+  - balance: venus man eaters heal slower walking through vines.
+  - balance: vines are more mutative.
+  linnpap:
+  - rscadd: Added new 'Feline Traits' quirk
+  tf-4:
+  - bugfix: The hairbrush is now tiny, making it fit in boxes and pockets
+  unit0016:
+  - balance: Jacob's ladder can no longer reach space levels that aren't empty. It
+      can still reach lavaland and the station, however.
+2021-08-18:
+  Gandalf2k15:
+  - rscadd: Nanotrasen Fleet Command expansion!
+  GoldenAlpharex, with some help from AlexPlayz for finding the bugs:
+  - bugfix: Space-proof beret now actually appears to have been made into a beret,
+      instead of a reality-bending bunch of letters.
+  - bugfix: CMO's beret received a new coat of paint, making it fit with the rest
+      of their clothes a lot better.
+  OrionTheFox:
+  - bugfix: Detectives can now pass through police tape unhindered, Engineers through
+      atmospheric tape, and Medical/Science staff through Biohazard tape
+  Orion_the_Fox, Gob:
+  - rscadd: '5 new hairstyles are circulating the popular barber shops:  "Sabitsuki",
+      "Jessica", "Gently Brushed", "Country Side-Braid", and "Beachwave"! (Credit
+      to Gob for sprites <3)'
+  SkyratBot:
+  - bugfix: NTNet Transmitter now works
+  - admin: Admins can now find "banned account in connection history" admin alerts
+      mirrored to the suspicious logins log file.
+  - bugfix: Fixed freezers protecting their contents after being exploded.
+  - bugfix: The insufficient black market credits message now properly displays.
+  - refactor: Refactors connect_loc_behalf and caltrops to both be components. This
+      will likely solve a lot of current issues with connect_loc_behalf as storing
+      states will be much more stable on it.
+  - bugfix: Defined the in-hand state for the chaplains' unholy pitchfork. The in-hand
+      sprites will now actually appear.
+  axietheaxolotl:
+  - rscadd: axolotl hardsuit tail
+  - imageadd: added axolotl hardsuit sprite
+  - imageadd: worn icon for AC-2 carbine
+  jjpark-kb:
+  - rscadd: added xenoarch section to mining on icebox
+  thestubborn:
+  - rscadd: old cowboy ponch now uses neckslot, still toggleable
+  - bugfix: mantles now have an obj sprite
+2021-08-19:
+  GoldenAlpharex:
+  - bugfix: Nanotrasen realized that not being able to preview color changes that
+      were to be applied to the items they were hoping to sell in their vendors has
+      drastically reduced interest in those items. They hope to bring back interest
+      on them by enabling the preview once again.
+  - code_imp: icon2html now supports an override to use it even if it's meant to be
+      disabled on here.
+  jjpark-kb:
+  - bugfix: fixes that one stair on icebox
+2021-08-20:
+  GoldenAlpharex:
+  - bugfix: Space-proof beret now actually appears to have been made into a beret,
+      instead of a reality-bending bunch of letters.
+  Pepsiman0:
+  - bugfix: 'the chem mass spectrometer is now a proper machine that is now: buildable,
+      deconstructable, movable and upgradable. (the research for the board is in the
+      basic bio tech node)'
+  SkyratBot:
+  - bugfix: Fixed the circuit duplicator not working.
+  - bugfix: if a character is blind, they can feel how full they feel while eating
+  - bugfix: Fixed an exploit that allowed SaturnX enjoyers to become permanently invisible.
+  - bugfix: fixes wizard failing to spawn without a spellbook when you roll a d20
+  - bugfix: The intern responsible for NTNet circuit components not working has been
+      sacked.
+  - bugfix: Player controlled mulebot mobility is now affected by motor wires.
+  Spc-Dragonfruits:
+  - rscadd: Added ARG-75 rifle and 7.62mm rifle magazine
+  - rscadd: Added CMG-1 smg
+2021-08-21:
+  GoldenAlpharex:
+  - code_imp: Skyrat coders will now be able to have the building tool detect their
+      modifications in the modular_skyrat directory, helping them re-compile with
+      less pain involved.
+  MMMiracles:
+  - bugfix: Solar assemblies can no longer be built on top of existing solar panels.
+  SkyratBot:
+  - bugfix: corrected Fiery Rebirth's and Curse of Corrosion's heretic research descriptions
+  - bugfix: fixed heretic research progression after unlocking the Lonely Ritual
+  - bugfix: fix crystallizer from getting stuck on same amount of gases, limits the
+      allowed amount of allowed gas inside by double the recipe amount per type
+  - bugfix: Fixed microwave's attack_hand_secondary return value.
+  - code_imp: Failsafe is more robust now and the game can actually recover from an
+      deleted MC
+  - admin: The add component option in view variables now uses a tgui list that can
+      be searched.
+  - bugfix: fixes thermomachine abuse by slowing the exchange ratio based on the moles
+      amount on the ports (both if cooling, only main if not)
+  - bugfix: Fix fire being extinguished by pAIs, borgs, or simple animals by walking
+      over the mob.
+  - bugfix: fixes service achievements
+2021-08-22:
+  Arkatos:
+  - bugfix: Fixed several messages which were not showing properly about finding a
+      rabbit in a hat, rattling your bones, denying sect membership or cooking sausages.
+  Deek-Za:
+  - bugfix: Fixed a small error in Access Code.
+  - balance: Prevents security and their respective tokens from potentially being
+      taken entirely out of the fight in the event of a bombing.
+  FlamingLily:
+  - balance: NT Reps offices are all with maintenance doors, now.
+  Gandalf2k15:
+  - balance: Mold cores are no longer the Achilles heel of mold, mold no longer slips.
+  GoldenAlpharex:
+  - bugfix: Ghost Cafe Visitors are now always eligible to a free box of chameleon
+      clothes, and as such will always receive one in their left hand upon joining
+      the Ghost Cafe!
+  - bugfix: Admins are now the one that decide how you spawn when they quick-spawn
+      you, instead of having to awkwardly wait for you to do it yourself.
+  LeonY24:
+  - soundadd: M16, MP40 and AKM now have their interaction sounds.
+  Melbert:
+  - bugfix: Some mask slot items won't prevent you from breathing properly due to
+      a runtime error
+  Seris02:
+  - bugfix: AIs will no longer hear all emotes from all ai_eye cameras
+  SkyratBot:
+  - admin: Adds component removals and mass component removals to the VV menu.
+  - bugfix: Moving aside your mask will no longer make you impervious to disease
+  - code_imp: prevent possible QDEL_IN harddel
+  - bugfix: tweaked soda dispenser reagent temperatures
+  Yawet330:
+  - tweak: The syndicate advanced card can now hold infinite syndicate and captain
+      access, along with two CC accesses. Bruh.
+  axietheaxolotl:
+  - rscadd: Added double beds
+  - imageadd: added double bedsheets
+  - bugfix: fixed e_gun subtypes using the AC-2 worn icon
+  - rscadd: Added Command and CC budgets
+  - rscadd: Added Captain to Command Budget
+  - rscadd: Added the Titan Crew, Blueshield, NT Rep to CC budget.
+  goatking-ss13:
+  - bugfix: Latejoin prisoners will now spawn in the permabrig, as intended.
+  jjpark-kb:
+  - rscadd: added the ability to grow plants on basalt turfs
+  softcerv:
+  - balance: 'see #7628'
+  - rscdel: 'Removed small hypovials from the autolathe qol: Hypovials can now be
+      produced by ChemMasters and pill presses, like on oldbase.'
+  - balance: Pill presses now have a buffer of 60 to accommodate for hypovials.
+  - bugfix: incubus draft recipe now makes incubus draft instead of succubus milk
+  thestubborn:
+  - bugfix: hopefully fixes headphone off state
+2021-08-23:
+  CandleJaxx:
+  - rscadd: Added Vox clothing sprites that fit on their newly-adjusted sprite
+  - rscadd: vox suit / helmet additions to better fit their new sprites
+  - rscadd: vox-specific GAGS jumpsuits, skirts, shoes, berets, prison suits
+  - rscadd: gloves for vox-fucked-up-hands
+  - rscadd: 'modular species specific clothing section for future utilization on broader
+      scope projects qol: made something easier to use change: Vox species parts and
+      markings have been edited to appear more alien.
+
+      More to be posted as the PR progresses'
+  Gandalf2k15:
+  - balance: Be antag now starts set to off.
+  - bugfix: Be antag now actually works.
+  GoldenAlpharex:
+  - admin: Added a Manage Player Ranks verb for those with the +PERMISSIONS flag,
+      to allow for easy in-game editing of the donator, mentor and veteran members.
+  - bugfix: Nanotrasen has seized control of their drinking glass factory once more,
+      meaning that the Syndicate no longer manages to smuggle modified shot glasses
+      in the station's standard-issue glass boxes.
+  SkyratBot:
+  - bugfix: fixes hot ice igniting using 100x the actual number of the sheets
+  - bugfix: fixes hot ice being ignitable with a condenser
+  - bugfix: Fixed runtime in monkey AI which would prevent monkey from pickpocketing
+      weapons or picking weapons off the ground.
+  Snakebittenn:
+  - rscadd: Adds a Medical bandolier for vials/beakers/medicells/etc.
+  - bugfix: Fixes Crusader bandolier sprite.
+  sqnztb:
+  - balance: Head roles and security cannot have nymphomania. NT fleet now under same
+      head role quirk restrictions.

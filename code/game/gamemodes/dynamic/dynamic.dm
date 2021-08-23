@@ -370,8 +370,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 		var/mob/dead/new_player/player = i
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind && player.check_preferences())
 			roundstart_pop_ready++
-			if(player.client.prefs.be_antag) //SKYRAT EDIT CHANGE
-				candidates.Add(player)
+			candidates.Add(player)
 	log_game("DYNAMIC: Listing [roundstart_rules.len] round start rulesets, and [candidates.len] players ready.")
 	if (candidates.len <= 0)
 		log_game("DYNAMIC: [candidates.len] candidates.")
