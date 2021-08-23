@@ -812,7 +812,7 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
-* **Pull requests that include sprites must have in-game screenshots that were taken on your own test-server in the PR body**, to ensure they were tested properly. For instance, if you're adding new clothes, a screenshot of those clothes being worn is expected in the PR body. Not every single direction needs to be displayed, but each icon that's actually being used in-game should be showcased.
+* **Pull requests that include sprites must have in-game screenshots that were taken on your own test-server in the PR body.** For instance, if you're adding new clothes, a screenshot of those clothes being worn is expected in the PR body. Not every single direction needs to be displayed, but each icon that's actually being used in-game should be showcased.
 
 ## Porting features/sprites/sounds/tools from other codebases
 
