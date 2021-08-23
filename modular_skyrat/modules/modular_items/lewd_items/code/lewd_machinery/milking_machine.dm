@@ -869,6 +869,8 @@
 	// 	ui.open()
 	// ///////////////////////////////////////////////////////////
 
+	/*
+
 	//Block the interface if we are in the machine. Use in production
 	if(LAZYLEN(buckled_mobs))
 		if(user != src.buckled_mobs[1])
@@ -883,7 +885,15 @@
 		ui = new(user, src, "MilkingMachine", name)
 		ui.open()
 		return
+	*/
+
 	///////////////////////////////////////
+
+	// // Tannhauser Gate behavior.
+	if(!ui)
+		ui = new(user, src, "MilkingMachine", name)
+		ui.close()
+	// ///////////////////////////////////////////////////////////
 
 // Interface data filling handler
 /obj/structure/chair/milking_machine/ui_data(mob/user)
