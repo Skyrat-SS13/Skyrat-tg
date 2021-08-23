@@ -10,7 +10,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	force = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	cooldown = 1.5 SECONDS
+	cooldown = 2.5 SECONDS
 
 /obj/item/melee/baton/peacekeeper
 	name = "stunstick"
@@ -21,7 +21,7 @@
 	attack_verb_simple = list("whap")
 	throw_stun_chance = 20
 	cell_hit_cost = 1000
-	attack_cooldown = 1.5 SECONDS
+	attack_cooldown = 2.5 SECONDS
 	stamina_loss_amt = 40
 
 /obj/item/melee/classic_baton/peacekeeper/Initialize()
