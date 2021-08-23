@@ -470,8 +470,7 @@
 /turf/open/floor/iron,
 /area/ai_monitored/security/armory)
 "acV" = (
-/obj/structure/railing/corner,
-/obj/machinery/door/firedoor/border_only{
+/obj/structure/railing/corner{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -20677,9 +20676,6 @@
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
 "duB" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -26642,7 +26638,6 @@
 /turf/closed/wall/r_wall,
 /area/command/meeting_room)
 "gGZ" = (
-/obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -28252,9 +28247,6 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "hDa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/light_switch/directional/south,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -29546,9 +29538,6 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "iln" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
 /obj/item/radio/intercom/directional/south,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -30335,23 +30324,10 @@
 /turf/closed/wall,
 /area/service/lawoffice)
 "iHl" = (
-/obj/structure/railing{
-	dir = 1
-	},
+/obj/structure/railing/corner,
 /obj/machinery/door/firedoor/border_only{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/duct,
 /turf/open/floor/iron,
 /area/hallway/secondary/service)
 "iHW" = (
@@ -32657,9 +32633,6 @@
 /turf/open/floor/grass,
 /area/maintenance/starboard/aft)
 "jWV" = (
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -36566,7 +36539,13 @@
 /turf/open/openspace,
 /area/science/xenobiology)
 "lXl" = (
-/turf/open/openspace,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/iron,
 /area/hallway/secondary/service)
 "lXm" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/plasma{
@@ -39335,12 +39314,6 @@
 /obj/structure/rack,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
-"nnL" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/commons/fitness)
 "nnT" = (
 /obj/machinery/light/small/directional/north,
 /obj/machinery/requests_console/directional/north{
@@ -43070,7 +43043,6 @@
 	},
 /area/maintenance/starboard/fore)
 "prs" = (
-/obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -44507,11 +44479,6 @@
 "pZC" = (
 /turf/closed/wall,
 /area/service/hydroponics)
-"pZG" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/commons/fitness)
 "pZN" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -48651,9 +48618,6 @@
 /turf/open/floor/iron,
 /area/cargo/storage)
 "skC" = (
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 10
 	},
@@ -50758,21 +50722,7 @@
 /turf/open/floor/iron,
 /area/commons/storage/mining)
 "tpi" = (
-/obj/structure/railing/corner{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/duct,
-/turf/open/floor/iron,
+/turf/open/openspace,
 /area/hallway/secondary/service)
 "tpo" = (
 /obj/structure/ladder,
@@ -50790,9 +50740,8 @@
 /area/service/hydroponics/garden)
 "tqe" = (
 /obj/structure/cable,
-/obj/structure/disposalpipe/sorting/mail/flip{
-	dir = 1;
-	sortType = 17
+/obj/structure/disposalpipe/junction{
+	dir = 2
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
@@ -53046,9 +52995,6 @@
 	},
 /area/maintenance/starboard/fore)
 "uwc" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -53401,7 +53347,6 @@
 /area/security/prison)
 "uBj" = (
 /obj/machinery/airalarm/directional/west,
-/obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -54823,9 +54768,6 @@
 /area/command/heads_quarters/ce)
 "vuN" = (
 /obj/machinery/firealarm/directional/south,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -57663,7 +57605,6 @@
 /turf/open/floor/iron/white,
 /area/medical/virology)
 "wRS" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /obj/machinery/door/airlock{
 	name = "Service Hall";
@@ -58282,9 +58223,6 @@
 /turf/open/floor/engine,
 /area/science/misc_lab)
 "xhm" = (
-/obj/structure/railing/corner{
-	dir = 1
-	},
 /obj/structure/sign/poster/official/random{
 	pixel_y = 32
 	},
@@ -60056,10 +59994,6 @@
 /turf/open/openspace,
 /area/science/xenobiology)
 "ycs" = (
-/obj/structure/disposalpipe/sorting/mail/flip{
-	dir = 2;
-	sortType = 26
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -60073,6 +60007,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/power/apc/auto_name/west,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
 /turf/open/floor/iron,
 /area/commons/fitness)
 "ycH" = (
@@ -94613,8 +94550,8 @@ ycs
 prs
 uBj
 gGZ
-nnL
-pZG
+fMz
+dSI
 iln
 baY
 eIL
@@ -96418,9 +96355,9 @@ wNq
 gpv
 baY
 cVb
-cVb
+iHl
 acV
-tpi
+rHC
 eyi
 eTl
 cVb
@@ -96675,9 +96612,9 @@ ufs
 ufs
 vYa
 hzT
-cVb
+tpi
 lXl
-iHl
+rHC
 kSl
 oTg
 cVb
@@ -96932,9 +96869,9 @@ aro
 aro
 aro
 jjD
-cVb
+tpi
 lXl
-iHl
+rHC
 eyi
 qJF
 cVb

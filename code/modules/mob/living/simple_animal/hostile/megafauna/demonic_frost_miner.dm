@@ -56,7 +56,7 @@ Difficulty: Extremely Hard
 	. = ..()
 	for(var/obj/structure/frost_miner_prism/prism_to_set in GLOB.frost_miner_prisms)
 		prism_to_set.set_prism_light(LIGHT_COLOR_BLUE, 5)
-	AddComponent(/datum/component/knockback, 7, FALSE, TRUE)
+	AddElement(/datum/element/knockback, 7, FALSE, TRUE)
 	AddElement(/datum/element/lifesteal, 50)
 
 /datum/action/innate/megafauna_attack/frost_orbs
@@ -75,7 +75,7 @@ Difficulty: Extremely Hard
 
 /datum/action/innate/megafauna_attack/ice_shotgun
 	name = "Fire Ice Shotgun"
-	icon_icon = 'icons/obj/guns/ballistic.dmi'
+	icon_icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
 	button_icon_state = "shotgun"
 	chosen_message = "<span class='colossus'>You are now firing shotgun ice blasts.</span>"
 	chosen_attack_num = 3
@@ -365,7 +365,7 @@ Difficulty: Extremely Hard
 
 /obj/item/pickaxe/drill/jackhammer/demonic/Initialize()
 	. = ..()
-	AddComponent(/datum/component/knockback, 4, TRUE, FALSE)
+	AddElement(/datum/element/knockback, 4, TRUE, FALSE)
 	AddElement(/datum/element/lifesteal, 5)
 
 /obj/item/pickaxe/drill/jackhammer/demonic/use_tool(atom/target, mob/living/user, delay, amount=0, volume=0, datum/callback/extra_checks)

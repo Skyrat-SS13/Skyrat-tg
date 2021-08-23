@@ -11,11 +11,17 @@
 
 /datum/element/polychromic/Attach(datum/target, list/colors)
 	. = ..()
+	if(QDELETED(target))
+		qdel(src)
+		return
 	var/obj/item/our_thing = target
 	var/list/finished_list = list()
-	finished_list += ReadRGB("[colors[1]]0")
-	finished_list += ReadRGB("[colors[2]]0")
-	finished_list += ReadRGB("[colors[3]]0")
+	for(var/read_color in 1 to colors.len)
+		finished_list += ReadRGB("[colors[read_color]]0")
+	var/remaining_count = 3 - length(colors)
+	if(remaining_count > 0)
+		for(var/remaining_color in 1 to remaining_count)
+			finished_list += ReadRGB("FFF0")
 	finished_list += list(0,0,0,255)
 	for(var/index in 1 to finished_list.len)
 		finished_list[index] /= 255

@@ -142,7 +142,7 @@
 	area_flags = NONE //Set this so it doesn't inherit NO_ALERTS
 
 /area/shuttle/supply
-	name = "Supply Shuttle"
+	name = "NLV Consign" //SKYRAT EDIT CHANGE
 	area_flags = NOTELEPORT
 
 /area/shuttle/escape

@@ -135,3 +135,38 @@
 	icon_state = "cowboy_belt"
 	worn_icon_state = "cowboy_belt"
 	inhand_icon_state = "utility"
+
+/obj/item/storage/belt/medbandolier
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	name = "medical bandolier"
+	desc = "A pocketed, pine green belt slung like a sash over the shoulder. Features numerous pockets for medicines, poisons, and your smoke break. Now is coward healing time."
+	icon_state = "med_bandolier"
+	worn_icon_state = "med_bandolier"
+
+/obj/item/storage/belt/medbandolier/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/bandolier_storage = GetComponent(/datum/component/storage)
+	bandolier_storage.max_w_class = WEIGHT_CLASS_NORMAL
+	bandolier_storage.max_combined_w_class = 21
+	bandolier_storage.set_holdable(list(
+		/obj/item/dnainjector,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/glass/beaker,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/pill,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/reagent_containers/medigel,
+		/obj/item/reagent_containers/glass/bottle/vial,
+		/obj/item/lighter, // This was too funny to pass up.
+		/obj/item/storage/fancy/cigarettes, // Same here.
+		/obj/item/storage/pill_bottle,
+		/obj/item/reagent_containers/hypospray,
+		/obj/item/hypospray/mkii,
+		/obj/item/gun/syringe/syndicate,
+		/obj/item/implantcase,
+		/obj/item/implant,
+		/obj/item/implanter,
+		/obj/item/reagent_containers/spray,
+		/obj/item/medicell
+		))
