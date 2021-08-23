@@ -9,6 +9,7 @@
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/baton/peacekeeper_baton_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
 	force = 15
+	cooldown = 2.5 SECONDS
 	throwforce = 20
 	throw_range = 1
 	wound_bonus = 30
