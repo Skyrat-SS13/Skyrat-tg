@@ -208,7 +208,7 @@
 	else
 		mole_eff_main_port = 1 - (1 / (main_port.total_moles() + 1)) * 5
 
-	mole_efficiency = clamp(mole_eff_thermal_port, 1, mole_eff_main_port)
+	mole_efficiency = clamp(mole_eff_thermal_port, 1, mole_eff_main_port) //SKYRAT EDIT - Temporary experimental thermomachine usability fix
 
 	if(cooling)
 		if (exchange_target.total_moles() < 0.01)
