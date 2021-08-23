@@ -37,7 +37,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 				if(istype(ciweapon, /obj/item/gun))
 					visible_message(span_warning("<b>[src] raises \the [ciweapon] with their finger on the trigger, ready for combat!<b>"))
 				else
-					visible_message(span_warning("<b>[src] tightens their grip on the [ciweapon], raising it and standing in an offensive stance, ready for combat!<b>"))
+					visible_message(span_warning("<b>[src] readies \the [ciweapon] with a tightened grip and offensive stance, ready for combat!<b>"))
 			else
 				visible_message(span_warning("<b>[src] raises their fists, taking an offensive stance, ready for combat!</b>"))
 		add_overlay(GLOB.combat_indicator_overlay)
