@@ -5,7 +5,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Icon, Stack } from "../components";
 import { Window } from "../layouts";
 
-const ROWS = 6;
+const ROWS = 5;
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = "50px";
@@ -208,7 +208,7 @@ const SLOTS: Record<
     image: "inventory-pocket.png",
   },
 
-  vagina: {
+  /* vagina: {
     displayName: "vagina",
     gridSpot: getGridSpotKey([5, 1]),
     image: "inventory-pocket.png",
@@ -230,7 +230,7 @@ const SLOTS: Record<
     displayName: "penis",
     gridSpot: getGridSpotKey([5, 4]),
     image: "inventory-pocket.png",
-  },
+  }, */
 };
 
 enum ObscuringLevel {
