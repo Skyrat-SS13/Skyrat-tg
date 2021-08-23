@@ -8,6 +8,48 @@
 	throw_speed = 3
 	throw_range = 7
 	var/empty = FALSE
+	var/current_case = "firstaid"
+	var/static/list/case_designs
+
+//Code to give hypospray kits selectable paterns.
+
+/obj/item/storage/hypospraykit/Initialize()
+	..()
+	if(!length(case_designs))
+		populate_case_designs()
+	update_icon_state()
+	update_icon()
+
+/obj/item/storage/hypospraykit/proc/populate_case_designs()
+	case_designs = list(
+		"firstaid" = image(icon = src.icon, icon_state = "firstaid-mini"),
+		"brute" = image(icon = src.icon, icon_state = "brute-mini"),
+		"burn" = image(icon = src.icon, icon_state = "burn-mini"))
+
+/obj/item/storage/hypospraykit/update_icon_state()
+	. = ..()
+	icon_state = icon_state = "[current_case]-mini"
+
+/obj/item/storage/hypospraykit/proc/case_menu(mob/user)
+	if(.)
+		return
+	var/choice = show_radial_menu(user, src , case_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	current_case = choice
+	update_icon()
+
+/obj/item/storage/hypospraykit/proc/check_menu(mob/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated() || !user.is_holding(src))
+		return FALSE
+	return TRUE
+
+
+/obj/item/storage/hypospraykit/CtrlShiftClick(mob/user, obj/item/I)
+	case_menu(user)
+
 
 /obj/item/storage/hypospraykit/ComponentInitialize()
 	. = ..()
@@ -16,6 +58,7 @@
 	stored.can_hold = typecacheof(list(
 	/obj/item/hypospray/mkii,
 	/obj/item/reagent_containers/glass/bottle/vial))
+
 
 /obj/item/storage/hypospraykit/empty
 	desc = "A hypospray kit with general use vials."
