@@ -29,7 +29,7 @@
 		"burn" = image(icon = src.icon, icon_state = "burn-mini"),
 		"toxin" = image(icon = src.icon, icon_state = "toxin-mini"),
 		"rad" = image(icon = src.icon, icon_state = "rad-mini"),
-		"bpurple" = image(icon = src.icon, icon_state = "purple-mini"),
+		"purple" = image(icon = src.icon, icon_state = "purple-mini"),
 		"oxy" = image(icon = src.icon, icon_state = "oxy-mini"))
 	cmo_case_designs = list(
 		"tactical" = image(icon= src.icon, icon_state = "tactical-mini"))
