@@ -282,11 +282,6 @@
 		"pinkn" = image(icon = src.icon, icon_state = "dephelmet_pinkn"),
 		"tealn" = image(icon = src.icon, icon_state = "dephelmet_tealn"))
 
-//to update model
-/obj/item/clothing/head/helmet/space/deprivation_helmet/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/head/helmet/space/deprivation_helmet/AltClick(mob/user, obj/item/I)
 	if(color_changed == FALSE)

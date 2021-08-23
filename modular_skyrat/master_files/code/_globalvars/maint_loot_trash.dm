@@ -164,7 +164,6 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/reagent_containers/spray/cleaner = 100,
 		/obj/item/reagent_containers/spray/spraytan = 50,
 		/obj/item/reagent_containers/syringe/contraband/bath_salts = 25,
-		/obj/item/reagent_containers/syringe/contraband/crank = 25,
 		/obj/item/reagent_containers/syringe/contraband/fentanyl = 25,
 		/obj/item/reagent_containers/syringe/contraband/krokodil = 25,
 		/obj/item/reagent_containers/syringe/contraband/methamphetamine = 25,

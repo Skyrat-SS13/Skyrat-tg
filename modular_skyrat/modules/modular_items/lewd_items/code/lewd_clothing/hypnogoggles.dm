@@ -108,7 +108,7 @@
 	catch(var/exception/e)
 		stack_trace("[e] on [e.file]:[e.line]")
 		qdel(src)
-	..()
+	return ..()
 
 /datum/brain_trauma/induced_hypnosis/on_gain()
 	log_game("[key_name(owner)] was hypnogoggled'.")
@@ -122,7 +122,7 @@
 										as long as you act like the words are your highest priority.</span>")
 	var/atom/movable/screen/alert/hypnosis/hypno_alert = owner.throw_alert("hypnosis", /atom/movable/screen/alert/hypnosis)
 	hypno_alert.desc = "\"[hypnotic_phrase]\"... your mind seems to be fixated on this concept."
-	..()
+	return ..()
 
 /datum/brain_trauma/induced_hypnosis/on_lose()
 	log_game("[key_name(owner)] is no longer hypnogoggled.")

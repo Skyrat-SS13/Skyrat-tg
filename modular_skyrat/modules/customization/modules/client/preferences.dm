@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/tmp/old_be_special = 0 //Bitflag version of be_special, used to update old savefiles and nothing more
 										//If it's 0, that's good, if it's anything but 0, the owner of this prefs file's antag choices were,
 										//autocorrected this round, not that you'd need to check that.
-	var/be_antag = TRUE //Does this player wish to be an antag this round?
+	var/be_antag = FALSE //Does this player wish to be an antag this round?
 
 	var/UI_style = null
 	var/buttons_locked = FALSE
@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(food, list(
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
-#define FLAVORTEXT_JOIN_MINIMUM 150
+#define FLAVORTEXT_JOIN_MINIMUM 50 // 150 is SkyRat Defualt
 
 /datum/preferences/proc/check_flavor_text(inform_client = TRUE)
 	if(!features["flavor_text"])

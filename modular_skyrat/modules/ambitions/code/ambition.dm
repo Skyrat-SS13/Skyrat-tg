@@ -325,7 +325,7 @@
 				GLOB.ambitions_to_review[src] = 0
 				log_action("--Requested an admin review--", FALSE)
 				message_admins(span_adminhelp("[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
-				message_admins(span_adminhelp("THIS WILL BE AUTO-APPROVED IN FIVE MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT"))
+				message_admins(span_adminhelp("THIS WILL BE AUTO-APPROVED IN TEN MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT"))
 				if(!auto_approve_honked)
 					auto_approve_honked = TRUE
 					for(var/client/staff as anything in GLOB.admins)
