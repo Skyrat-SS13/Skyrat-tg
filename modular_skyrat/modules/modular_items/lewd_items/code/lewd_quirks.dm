@@ -11,7 +11,7 @@
 	desc = "You have an overwhelming urge to have sex with someone. Constantly."
 	value = 0
 	mob_trait = TRAIT_NYMPHOMANIA
-	gain_text = "<font color=purple>You feel yourself much more hornier than before...</font>"
+	gain_text = "<font color=purple>You feel yourself much hornier than before...</font>"
 	lose_text = span_notice("A pleasant coolness spreads through the body. You are in control of your sexual desires again.")
 	medical_record_text = "Subject has nymphomania."
 	var/obj/item/sextoy
@@ -50,9 +50,9 @@
 
 /datum/brain_trauma/special/nymphomania
 	name = "Nymphomania"
-	desc = "The patient constantly feels aroused and supposed to satisfy their sexual desires."
-	scan_desc = "constant sexual arousal"
-	gain_text = "<font color=purple>You feel yourself much more hornier than before...</font>"
+	desc = "The patient constantly feels sexual arousal and heightened libido."
+	scan_desc = "severly heightened libido"
+	gain_text = "<font color=purple>You feel yourself much hornier than before...</font>"
 	lose_text = span_notice("A pleasant coolness spreads through the body. You are in control of your sexual desires again.")
 	can_gain = TRUE
 	random_gain = FALSE
