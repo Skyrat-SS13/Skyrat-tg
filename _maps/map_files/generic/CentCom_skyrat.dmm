@@ -3363,14 +3363,6 @@
 /obj/structure/punching_bag,
 /turf/open/floor/carpet,
 /area/wizard_station)
-"aoS" = (
-/obj/structure/table/wood/bar,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/multitool,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "aoT" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -3479,12 +3471,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/evac)
-"app" = (
-/obj/structure/table/wood/bar,
-/obj/structure/safe/floor,
-/obj/item/seeds/cherry/bomb,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "aps" = (
 /obj/structure/table,
 /obj/item/paper_bin,
@@ -3579,13 +3565,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/ferry)
-"apN" = (
-/obj/structure/table/wood/bar,
-/obj/structure/mirror{
-	pixel_y = 28
-	},
-/turf/open/floor/wood,
-/area/centcom/holding)
 "apP" = (
 /obj/machinery/computer/cargo{
 	dir = 4
@@ -3623,14 +3602,10 @@
 /area/tdome/tdomeobserve)
 "apS" = (
 /obj/structure/chair/office,
-/obj/effect/landmark/ert_spawn,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -8132,7 +8107,6 @@
 /area/centcom/ferry)
 "aDQ" = (
 /obj/structure/chair/office,
-/obj/effect/landmark/ert_spawn,
 /turf/open/floor/iron/dark,
 /area/centcom/ferry)
 "aDR" = (
@@ -9034,7 +9008,6 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
-/obj/effect/landmark/ert_spawn,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/centcom/ferry)
@@ -9130,14 +9103,10 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
-/obj/effect/landmark/ert_spawn,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -9483,14 +9452,10 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
-/obj/effect/landmark/ert_spawn,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -9827,7 +9792,6 @@
 /area/centcom/control)
 "aJB" = (
 /obj/structure/chair/office,
-/obj/effect/landmark/ert_spawn,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/centcom/ferry)
@@ -12154,7 +12118,6 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
-/obj/effect/landmark/ert_spawn,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/centcom/ferry)
@@ -13261,18 +13224,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/control)
-"aUX" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 8;
-	height = 7;
-	id = "supply_away";
-	json_key = "cargo";
-	name = "CentCom";
-	width = 20
-	},
-/turf/open/space,
-/area/space)
 "aUZ" = (
 /obj/machinery/door/airlock{
 	icon = 'icons/obj/doors/airlocks/station/uranium.dmi';
@@ -14981,25 +14932,18 @@
 	},
 /turf/open/floor/iron,
 /area/tdome/arena_source)
-"mAO" = (
-/obj/docking_port/stationary{
-	dheight = 3;
-	dir = 8;
-	dwidth = 8;
-	height = 11;
-	id = "ferry_away";
-	json_key = null;
-	name = "CentCom Ferry Dock";
-	roundstart_template = /datum/map_template/shuttle/ferry;
-	width = 20
-	},
-/turf/open/space,
-/area/space)
 "mNq" = (
 /obj/machinery/igniter/on,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/tdome/arena_source)
+"mWI" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/turf/open/floor/wood,
+/area/centcom/holding)
 "mYf" = (
 /obj/machinery/door/airlock/centcom{
 	locked = 1;
@@ -15014,6 +14958,20 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
+"nmb" = (
+/obj/docking_port/stationary{
+	dheight = 3;
+	dir = 8;
+	dwidth = 8;
+	height = 11;
+	id = "ferry_away";
+	json_key = null;
+	name = "CentCom Ferry Dock";
+	roundstart_template = /datum/map_template/shuttle/ferry;
+	width = 20
+	},
+/turf/open/space/basic,
+/area/space)
 "nmH" = (
 /obj/effect/landmark/start/new_player,
 /turf/open/floor/plating,
@@ -15065,6 +15023,14 @@
 	},
 /turf/open/floor/circuit/green,
 /area/tdome/arena_source)
+"pIM" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/multitool,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "qag" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/green,
@@ -15169,10 +15135,6 @@
 /obj/item/clothing/under/costume/roman,
 /turf/open/floor/wood,
 /area/centcom/holding)
-"tLr" = (
-/obj/effect/landmark/start/nanotrasen_admiral,
-/turf/open/floor/iron/grimy,
-/area/centcom/ferry)
 "tOv" = (
 /turf/open/floor/circuit/green,
 /area/tdome/arena_source)
@@ -15190,6 +15152,12 @@
 	dir = 8
 	},
 /turf/open/floor/carpet/black,
+/area/centcom/holding)
+"wcN" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/safe/floor,
+/obj/item/seeds/cherry/bomb,
+/turf/open/floor/wood,
 /area/centcom/holding)
 "wgi" = (
 /obj/effect/landmark/ctf,
@@ -41362,7 +41330,7 @@ aaa
 aaa
 aaa
 ank
-aoS
+pIM
 ape
 atP
 auu
@@ -42390,7 +42358,7 @@ aaa
 aaa
 aaa
 ank
-app
+wcN
 ape
 atv
 ape
@@ -42904,7 +42872,7 @@ aaa
 aaa
 aaa
 ank
-apN
+mWI
 ape
 ape
 ape
@@ -48035,8 +48003,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
-mAO
+nmb
+nDB
 aaa
 aaa
 aaa
@@ -54178,7 +54146,7 @@ aaa
 aaa
 aaa
 aaa
-aUX
+nDB
 aaa
 aaa
 aaa
@@ -54707,7 +54675,7 @@ aTW
 aWA
 amD
 asP
-tLr
+aEr
 aEr
 aVe
 aQt

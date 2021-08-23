@@ -478,7 +478,7 @@ Haha! Kill me please.
 	mix_message = "the reaction gives off a mist of milk."
 
 /datum/chemical_reaction/penis_enlarger
-	results = list(/datum/reagent/breast_enlarger = 8)
+	results = list(/datum/reagent/penis_enlarger = 8)
 	required_reagents = list(/datum/reagent/blood = 5, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/carbon = 2, /datum/reagent/drug/crocin = 2, /datum/reagent/medicine/salglu_solution = 1)
 	mix_message = "the reaction gives off a mist of milk."
 

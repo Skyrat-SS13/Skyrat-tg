@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(job)
 			continue
 
 		//SKYRAT EDIT ADDITION
-		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND) //If you want a CC position, select it!
+		if(job.departments_bitflags & DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND) //If you want a CC position, select it!
 			continue
 		//SKYRAT EDIT END
 

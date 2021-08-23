@@ -14,14 +14,14 @@
 
 	departments_list = list(
 		/datum/job_department/command,
-		/datum/job_department/central_command
+		/datum/job_department/nanotrasen_fleet_command
 	)
 
 	outfit = /datum/outfit/job/nanotrasen_representative
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_representative
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_CCM
 
 	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE
 	bounty_types = CIV_JOB_SEC

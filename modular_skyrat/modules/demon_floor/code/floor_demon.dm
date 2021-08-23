@@ -59,7 +59,12 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 	return //we use a different hud
 
 /mob/living/simple_animal/hostile/floor_cluwne/Destroy()
-	QDEL_NULL(poi)
+	if(poi)
+		QDEL_NULL(poi)
+	if(cluwnehole)
+		QDEL_NULL(cluwnehole)
+	if(current_victim)
+		current_victim = null
 	return ..()
 
 

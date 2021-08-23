@@ -196,10 +196,6 @@
 		my_helmet.disable_nv()
 	my_helmet.update_appearance()
 
-/obj/item/clothing/head/helmet/expeditionary_corps/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 /obj/item/clothing/head/helmet/expeditionary_corps/equipped(mob/user, slot)
 	. = ..()
 	current_user = user
