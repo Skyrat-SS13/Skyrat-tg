@@ -318,19 +318,13 @@
 		if(GLOB.born_borers >= 5) //if there are 10 or more BORN (not spawned) borers, get a boost!
 			objective_boosting += 1
 
-		var/switch_one = 60
-		var/switch_two = 120
-		var/switch_three = 180
-		switch_one = switch_one / objective_boosting
-		switch_two = switch_two / objective_boosting
-		switch_three = switch_three / objective_boosting
-		if(maturity_age == switch_one) //every 1 minutes, which basically turns into 3 minutes (when not boosted)
+		if(maturity_age == (60 / objective_boosting)) //every 1 minutes, which basically turns into 3 minutes (when not boosted)
 			chemical_evolution++
 			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-		if(maturity_age == switch_two)
+		if(maturity_age == (120 / objective_boosting))
 			stat_evolution++
 			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
-		if(maturity_age == switch_three)
+		if(maturity_age == (180 / objective_boosting))
 			maturity_age = 0
 
 //if it doesnt have a ckey, let ghosts have it
@@ -346,7 +340,7 @@
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
 	to_chat(user, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	ckey = user.ckey
-	mind.add_antag_datum(/datum/antagonist/cortical_borer)
+	user.mind.add_antag_datum(/datum/antagonist/cortical_borer)
 
 //check if we are inside a human
 /mob/living/simple_animal/cortical_borer/proc/inside_human()

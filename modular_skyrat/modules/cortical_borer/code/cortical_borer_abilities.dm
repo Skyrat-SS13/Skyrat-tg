@@ -29,7 +29,6 @@
 	var/choice = tgui_input_list(cortical_owner, "Choose a chemical to inject!", "Chemical Selection", cortical_owner.known_chemicals)
 	if(!choice)
 		to_chat(cortical_owner, span_warning("No selection made!"))
-		cortical_owner.chemical_storage += 10
 		return
 	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5)
 	cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, 30, methods = INGEST)
@@ -166,7 +165,7 @@
 		return
 	switch(choice)
 		if("Health")
-			cortical_owner.maxHealth += 5
+			cortical_owner.maxHealth += 10
 			to_chat(cortical_owner, span_notice("Your health increases slightly!"))
 		if("Health Regen")
 			cortical_owner.health_regen += 0.02
@@ -404,22 +403,15 @@
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
 	var/mob/dead/observer/pick_candidate = pick(candidates)
 	var/mob/living/simple_animal/cortical_borer/spawn_borer = new /mob/living/simple_animal/cortical_borer(human_turf)
-	GLOB.born_borers += 1
-	cortical_owner.children_produced++
-	var/datum/component/mood/target_mood = cortical_owner.human_host.GetComponent(/datum/component/mood)
-	if(target_mood >= 25)
-		target_mood -= 25
-		to_chat(cortical_owner.human_host, span_boldwarning("You start to feel awful..."))
-	if(prob(10))
-		cortical_owner.human_host.gain_trauma_type(BRAIN_TRAUMA_MILD)
-		to_chat(cortical_owner.human_host, span_boldwarning("You feel a massive headache coming..."))
-	cortical_owner.human_host.Paralyze(3 SECONDS)
-	new /obj/effect/decal/cleanable/vomit(human_turf)
-	playsound(human_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	spawn_borer.ckey = pick_candidate.ckey
 	spawn_borer.generation = cortical_owner.generation + 1
 	spawn_borer.name = "[initial(spawn_borer.name)] ([spawn_borer.generation]-[rand(100,999)])"
 	spawn_borer.mind.add_antag_datum(/datum/antagonist/cortical_borer)
+	GLOB.born_borers += 1
+	cortical_owner.children_produced++
+	cortical_owner.human_host.Paralyze(3 SECONDS)
+	new /obj/effect/decal/cleanable/vomit(human_turf)
+	playsound(human_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	to_chat(spawn_borer, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	StartCooldown()
 

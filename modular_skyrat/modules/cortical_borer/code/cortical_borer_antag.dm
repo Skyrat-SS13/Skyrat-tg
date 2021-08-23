@@ -90,7 +90,7 @@
 	name = "Cortical Borer Infestation"
 	typepath = /datum/round_event/ghost_role/cortical_borer
 	weight = 10
-	min_players = 0 //you asked... lets hope it doesnt get repetitive
+	min_players = 999
 	max_occurrences = 1 //should only ever happen once
 	dynamic_should_hijack = TRUE
 
