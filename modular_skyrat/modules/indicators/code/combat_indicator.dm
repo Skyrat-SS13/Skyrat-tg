@@ -39,7 +39,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 				else
 					visible_message(span_warning("<b>[src] readies \the [ciweapon] with a tightened grip and offensive stance, ready for combat!<b>"))
 			else
-				visible_message(span_warning("<b>[src] raises their fists, taking an offensive stance, ready for combat!</b>"))
+				visible_message(span_warning("<b>[src] raises their fists in an offensive stance, ready for combat!</b>"))
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = TRUE
 		src.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
