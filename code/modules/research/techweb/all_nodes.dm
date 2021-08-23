@@ -631,6 +631,7 @@
 		"bluespacesyringe",
 		"bs_rped",
 		"minerbag_holding",
+		"biobag_holding", //SKYRAT EDIT BIO BAGS OF HOLDING
 		"ore_silo",
 		"phasic_scanning",
 		"plumbing_receiver",
