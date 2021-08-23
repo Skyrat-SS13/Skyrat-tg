@@ -20,7 +20,7 @@
 	dangerous_construction = TRUE
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
-	/datum/design/biobag_holding
+/datum/design/biobag_holding
 	name = "Bio Bag of Holding"
 	desc = "A bio bag with greatly expanded capacity"
 	id = "biobag_holding"
