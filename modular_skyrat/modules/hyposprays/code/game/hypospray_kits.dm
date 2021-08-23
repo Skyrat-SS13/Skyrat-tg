@@ -37,7 +37,7 @@
 
 /obj/item/storage/hypospraykit/update_icon_state()
 	. = ..()
-	icon_state = icon_state = "[current_case]-mini"
+	icon_state = "[current_case]-mini"
 
 /obj/item/storage/hypospraykit/proc/case_menu(mob/user)
 	if(.)
