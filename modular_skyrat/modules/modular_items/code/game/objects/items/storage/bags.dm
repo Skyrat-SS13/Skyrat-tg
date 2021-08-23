@@ -40,3 +40,17 @@
 	slot_flags = ITEM_SLOT_BELT //QoL by Gandalf
 	worn_icon_state = "trashbag"
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+
+//BIO BAG OF HOLDING
+
+/obj/item/storage/bag/bio/holding
+	name = "bio bag of holding"
+	desc = "A bag for the safe transportation and disposal of biowaste and other biological materials."
+	icon = 'modular_skyrat/modules/modular_items/icons/obj/items/storage.dmi'
+	icon_state = "bspace_biobag"
+
+/obj/item/storage/bag/bio/holding/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/concrete/stack/STR = GetComponent(/datum/component/storage)
+	STR.max_combined_w_class = INFINITY
+	STR.max_items = 100
