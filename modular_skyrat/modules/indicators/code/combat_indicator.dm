@@ -44,7 +44,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 				if(ishuman(src))
 					visible_message(span_warning("<b>[src] raises [p_their()] fists in an offensive stance, ready for combat!</b>"))
 				if(isalien(src))
-					visible_message(span_warning("<b>[src] hisses with its claws raised and takes a terrifying stance, ready for combat!</b>"))
+					visible_message(span_warning("<b>[src] hisses in a terrifying stance, claws raised and ready for combat!</b>"))
 				else
 					visible_message(span_warning("<b>[src] gets ready for combat!</b>"))
 		add_overlay(GLOB.combat_indicator_overlay)
