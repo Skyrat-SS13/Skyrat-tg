@@ -61,6 +61,7 @@
 
 /obj/item/storage/hypospraykit/CtrlShiftClick(mob/user, obj/item/I)
 	case_menu(user)
+
 //END OF HYPOSPRAY CASE MENU CODE
 
 /obj/item/storage/hypospraykit/ComponentInitialize()
