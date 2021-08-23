@@ -42,7 +42,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 				if(issilicon(src))
 					visible_message(span_warning("<b>[src] shifts it's armour plating, taking a defensive stance, ready for combat!</b>"))
 				if(ishuman(src))
-					visible_message(span_warning("<b>[src] raises [p_their()] fists, taking an offensive stance, ready for combat!</b>"))
+					visible_message(span_warning("<b>[src] raises [p_their()] fists in an offensive stance, ready for combat!</b>"))
 				if(isalien(src))
 					visible_message(span_warning("<b>[src] hisses, raising its claws and taking a terrifying stance, ready for combat!</b>"))
 				else
