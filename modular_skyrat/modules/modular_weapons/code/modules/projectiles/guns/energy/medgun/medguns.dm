@@ -83,10 +83,10 @@
 	if(!has_safety)
 		return
 	if(!on_safety)
-		to_chat(user, span_info("[src] has the safety turned off."))
+		. += span_notice("[src] has the safety turned off.")
 		return
 	else
-		to_chat(user, span_info("[src] has the safety turned on."))
+		. += span_notice("[src] has the safety turned on.")
 
 /obj/item/medicell/attack_self(mob/living/user)
 	if(!has_safety)
