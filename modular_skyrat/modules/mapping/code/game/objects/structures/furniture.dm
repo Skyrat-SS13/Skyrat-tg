@@ -60,3 +60,12 @@
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi'
 	icon_state = "ladder"
 /////////////      LADDER     /////////////
+
+//Chair version of the corporate sofas
+/obj/structure/chair/comfy/corporate
+	name = "corporate chair"
+	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi'
+	icon_state = "corp_chair"
+
+/obj/structure/chair/comfy/corporate/GetArmrest()
+	return mutable_appearance('modular_skyrat/modules/mapping/icons/unique/furniture.dmi', "corp_chair_armrest")
