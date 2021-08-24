@@ -64,15 +64,6 @@
 	suffix = "military_tent.dmm"
 	cost = 5
 
-/datum/map_template/ruin/rockplanet/syndicate_base
-	name = "Syndicate Rockplanet Base"
-	id = "rock-base"
-	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
-	suffix = "rockplanet_surface_syndicate_base1_skyrat.dmm"
-	allow_duplicates = FALSE
-	never_spawn_with = list(/datum/map_template/ruin/icemoon/underground/skyrat/syndicate_base, /datum/map_template/ruin/lavaland/skyrat/syndicate_base)
-	always_place = TRUE
-
 //Below here should be ruins that are pretty much entirely fluff - minimal loot or threat, just adds to the aesthetic
 /datum/map_template/ruin/rockplanet/abandoned_a	//Restaraunt
 	name = "Abandoned Structure A"
@@ -105,6 +96,14 @@
 	suffix = "abandoned_e.dmm"
 
 // Anywhere ruins that all mining levels should have, minimally modified.
+/datum/map_template/ruin/rockplanet/syndicate_base	//Each planet has a version of this
+	name = "Syndicate Rockplanet Base"
+	id = "rock-base"
+	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
+	suffix = "rockplanet_surface_syndicate_base1_skyrat.dmm"
+	allow_duplicates = FALSE
+	never_spawn_with = list(/datum/map_template/ruin/icemoon/underground/skyrat/syndicate_base, /datum/map_template/ruin/lavaland/skyrat/syndicate_base)
+	always_place = TRUE
 
 /datum/map_template/ruin/rockplanet/free_golem
 	name = "Free Golem Ship"

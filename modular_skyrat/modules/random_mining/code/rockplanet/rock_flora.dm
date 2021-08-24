@@ -38,6 +38,15 @@
 	regrowth_time_low = 4800
 	regrowth_time_high = 7200
 
+/obj/structure/flora/ash/rockplanet/yucca/harvest(user)
+	. = ..()
+	if(prob(20))
+		for(var/i in 1 to rand(3))	//Im sure there's a better way to randomly spawn 1 to 3 yucca roots, but plants dont support 2 drops PERIOD so this whole thing is crummy code
+			new /obj/item/food/grown/rock_flora/yuccaroot(get_turf(src))
+	return
+//[FUCK] THIS MIGHT ONLY APPLY TO THE RANDOM-GEN PLANT, NOT THE BOTANY ONE. FIND A SOLUTION!!!!! WE NEED OUR SOAP!!!!!!!!!!
+
+
 /obj/structure/flora/ash/rockplanet/agaricus //(Wine-colored Agaricus, Agaricus subrutilescens)
 	name = "blooming agaricus"
 	desc = "A palm-sized, brown-ish mushroom cap. The bottomside is almost wine-red."
@@ -86,7 +95,7 @@
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
-	special_desc = "Aside from these edible fruits, the plant's seeds can be scraped and made into a cleaning solution!"
+	special_desc = "Aside from these edible fruits, the plant's roots can be scraped and made into a cleaning solution!"
 
 /obj/item/food/grown/rock_flora/agaricus
 	name = "wine-colored agaricus"
@@ -165,23 +174,13 @@
 	glass_price = DRINK_PRICE_HIGH
 	liquid_fire_power = 2
 
-//Yucca soap is a 2 step process:
-//First step, scraping the seed/root
-/obj/item/seeds/rockplanet/yucca/proc/tool_interact(obj/item/used_tool, mob/living/user)
-	if(used_tool == (TOOL_KNIFE || TOOL_SCALPEL))
-		if(!do_after(10))
-			to_chat(span_warning("You need to stand still to scrape [src]'s roots."))
-			return
-		new /obj/item/food/grown/rock_flora/yuccaroot
-		qdel(src)
-
-//Second step, grinding the result
+//Grinding the yuccaroot is good mmkay
 /obj/item/food/grown/rock_flora/yuccaroot
 	name = "yucca root"
-	desc = "A greenish-brownish root, prepped for grinding."
+	desc = "A greenish-brownish root, taken from a yucca plant."
 	icon_state = "yuccaroot"
 	seed = /obj/item/seeds/rockplanet/yucca
-	grind_results = list(/datum/reagent/space_cleaner/yucca_soap)
+	grind_results = list(/datum/reagent/space_cleaner/yucca_soap = 10)
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist","Chemist")

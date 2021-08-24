@@ -43,7 +43,7 @@
 /obj/structure/sign/warning/nosmoking/circle/worn/wrench_act(mob/living/user, obj/item/wrench/I)	//Overwrites the sign deconstruct (I just wanted to keep the wall mounting ok)
 	user.visible_message(span_notice("[user] tries to take the [src] off the wall, but it falls to pieces!"), \
 		span_notice("You try removing the [src] from the wall, but it falls to pieces!"))
-	new /obj/item/stack/sheet/plastic
+	new /obj/item/stack/sheet/plastic(src)
 	qdel(src)
 	return TRUE
 
@@ -54,6 +54,15 @@
 	icon_state = "painting_astronauts"
 	custom_materials = list(/datum/material/wood = 2000) //The same as /obj/structure/sign/picture_frame
 
+/obj/structure/sign/plaques/ancient_astronaut/wrench_act(mob/living/user, obj/item/wrench/I)
+	user.visible_message(span_notice("[user] tries to take the [src] off the wall, but it falls to pieces!"), \
+		span_notice("You try removing the [src] from the wall, but it falls to pieces!"))
+	new /obj/item/stack/sheet/mineral/wood(src)
+	qdel(src)
+	return TRUE
+	//Look. I __want__ them to be able to move the painting, but its 4am and i cant even begin to think how to fix the messy code that that'd need.
+	//No, seriously. I'd need a whole new item version, including code to place it on the wall and spawn the right thing. Its probably easy as hell but its 4am.
+
 /obj/structure/sign/plaques/clock_broken
 	name = "old clock"
 	desc = "An ancient clock from the times when people had the patience to analyze where the arms were pointing. Deep down you're glad this one's broken."
@@ -63,7 +72,7 @@
 /obj/structure/sign/plaques/clock_broken/wrench_act(mob/living/user, obj/item/wrench/I)	//Overwrites the sign deconstruct for the broken clock
 	user.visible_message(span_notice("[user] tries to take the [src] off the wall, but it falls to pieces!"), \
 		span_notice("You try removing the [src] from the wall, but it falls to pieces!"))
-	new /obj/item/stack/sheet/iron
+	new /obj/item/stack/sheet/iron(src)
 	qdel(src)
 	return TRUE
 
@@ -248,7 +257,7 @@
 //Functional -----
 //Probably should be in different files, but seeing how they're mostly just fluff variants of existing items, I figure they're practically fluff anyways. Saves space in the .dme too
 /obj/item/radio/ancient_military	//Essentially a reskinned station-bounced, except bigger. Why would you want this? A E S T H E T I C. Yes, not a structure, but because its anchorable its going here.
-	name = "military stationary radio"
+	name = "military radio set"
 	desc = "An old radio that transmits over local frequencies. Luckily, it's tuning range is close enough to NT-standard."
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/abandoned_fluff.dmi'
 	icon_state = "radio"
@@ -258,20 +267,15 @@
 	flags_1 = CONDUCT_1
 	throw_speed = 2
 	throw_range = 5
-	w_class = WEIGHT_CLASS_BULKY	//Maybe Normal, so backpacks can carry it?
+	w_class = WEIGHT_CLASS_NORMAL
 
 	on = FALSE	//Starts turned off
 	canhear_range = 4  //Longer range for hearing, because it'd be intended to stay on a table. In fact..-
 
 /obj/item/radio/ancient_military/attackby(obj/item/W, mob/user, params)	//Rewritten because otherwise the if statement ends early. TL;DR, this version can be anchored
 	add_fingerprint(user)
-	if(W.tool_behaviour == TOOL_SCREWDRIVER)
-		unscrewed = !unscrewed
-		if(unscrewed)
-			to_chat(user, span_notice("The radio can now be attached and modified!"))
-		else
-			to_chat(user, span_notice("The radio can no longer be modified or attached!"))
-	else if(W.tool_behaviour == TOOL_WRENCH)
+	//Removing the screwdriver function prevents it being attached to any assemblies and whatnot
+	if(W.tool_behaviour == TOOL_WRENCH)
 		set_anchored(!anchored)
 		W.play_tool_sound(src, 50)
 		user.visible_message(span_notice("[user] [anchored ? "anchored" : "unanchored"] \the [src]."), \
@@ -293,7 +297,7 @@
 /obj/structure/closet/crate/abandoned/wooden/loot/PopulateContents()
 	. = ..()
 	for(var/i in 1 to rand(3,5))
-		new /obj/effect/spawner/lootdrop/maintenance(src)	//Change this
+		new /obj/effect/spawner/lootdrop/maintenance(src)	//Change this!!!
 
 /obj/structure/closet/abandoned_fridge
 	name = "grimy old fridge"

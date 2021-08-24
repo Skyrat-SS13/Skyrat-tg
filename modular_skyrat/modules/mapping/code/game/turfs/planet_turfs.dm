@@ -146,7 +146,7 @@
 		/obj/item/stack/ore/titanium = 8,
 		/obj/item/stack/ore/uranium = 3,
 		/obj/item/stack/ore/diamond = 1,
-		/turf/closed/mineral/gibtonite = 1
+		/turf/closed/mineral/gibtonite/rockplanet = 1
 		)
 
 ///////////////////////////////////////////
