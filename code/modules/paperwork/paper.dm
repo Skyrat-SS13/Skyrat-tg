@@ -1,3 +1,4 @@
+/* SKYRAT EDIT - moved to HTMLPAPERWORK
 /**
  * Paper
  * also scraps of paper
@@ -393,4 +394,4 @@
 #undef MAX_PAPER_STAMPS_OVERLAYS
 #undef MODE_READING
 #undef MODE_WRITING
-#undef MODE_STAMPING
+#undef MODE_STAMPING */
