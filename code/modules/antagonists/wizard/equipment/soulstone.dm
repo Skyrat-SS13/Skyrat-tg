@@ -330,6 +330,12 @@
 	var/theme = newstruct.theme
 	flick("make_[makeicon][theme]", newstruct)
 	playsound(newstruct, 'sound/effects/constructform.ogg', 50)
+	//SKYRAT EDIT ADDITION BEGIN - SOULSTONE_CHANGES
+	var/datum/component/return_on_death/rod = target.GetComponent(/datum/component/return_on_death)
+	if(rod)
+		var/sourcemob = rod.sourcemob
+		newstruct.AddComponent(/datum/component/return_on_death, sourcemob, newstruct)
+	//SKYRAT EDIT ADDITION END
 	if(stoner)
 		newstruct.faction |= "[REF(stoner)]"
 		newstruct.master = stoner
@@ -370,7 +376,7 @@
 	*/
 	//SKYRAT EDIT REMOVAL END
 	var/mob/living/simple_animal/shade/soulstone_spirit = new /mob/living/simple_animal/shade(src)
-	soulstone_spirit.AddComponent(/datum/component/return_on_death, src, dusted_victim) //SKYRAT EDIT ADDITION - SOULSTONE_CHANGES
+	soulstone_spirit.AddComponent(/datum/component/return_on_death, soulstone_spirit, dusted_victim) //SKYRAT EDIT ADDITION - SOULSTONE_CHANGES
 	soulstone_spirit.AddComponent(/datum/component/soulstoned, src)
 	soulstone_spirit.name = "Shade of [dusted_victim.real_name]"
 	soulstone_spirit.real_name = "Shade of [dusted_victim.real_name]"
