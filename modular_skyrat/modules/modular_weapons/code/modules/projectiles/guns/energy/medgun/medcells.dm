@@ -239,6 +239,41 @@
 		return
 	target.adjustToxLoss(-7.5)
 	target.radiation = max(target.radiation - 60, 0)
+
+//SAFE MODES
+/obj/item/ammo_casing/energy/medical/brute2/safe
+	projectile_type = /obj/projectile/energy/medical/upgraded/safe/brute2
+/obj/projectile/energy/medical/upgraded/safe/brute2
+	name = "safe brute heal shot"
+	icon_state = "red_laser"
+
+/obj/projectile/energy/medical/upgraded/safe/brute2/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
+	if(target.stat == DEAD)
+		return
+	//Stops healing from 50 or over
+	if(target.getBruteLoss() > 49)
+		return
+	target.adjustBruteLoss(-11.25)
+
+/obj/item/ammo_casing/energy/medical/burn2/safe
+	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn2
+/obj/projectile/energy/medical/upgraded/safe/burn2
+	name = "safe burn heal shot"
+	icon_state = "yellow_laser"
+
+/obj/projectile/energy/medical/upgraded/safe/burn2/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
+	if(target.stat == DEAD)
+		return
+	//Stops healing from 50 or over
+	if(target.getFireLoss() > 49)
+		return
+	target.adjustFireLoss(-11.25)
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
@@ -326,5 +361,39 @@
 		return
 	target.adjustToxLoss(-5)
 	target.radiation = max(target.radiation - 80, 0)
+//SAFE MODES
+/obj/item/ammo_casing/energy/medical/brute3/safe
+	projectile_type = /obj/projectile/energy/medical/upgraded/safe/brute3
+/obj/projectile/energy/medical/upgraded/safe/brute3
+	name = "safe brute heal shot"
+	icon_state = "red_laser"
+
+/obj/projectile/energy/medical/upgraded/safe/brute3/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
+	if(target.stat == DEAD)
+		return
+	//Stops healing from 50 or over
+	if(target.getBruteLoss() > 49)
+		return
+	target.adjustBruteLoss(-15)
+
+/obj/item/ammo_casing/energy/medical/burn3/safe
+	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn3
+/obj/projectile/energy/medical/upgraded/safe/burn3
+	name = "safe burn heal shot"
+	icon_state = "yellow_laser"
+
+/obj/projectile/energy/medical/upgraded/safe/burn3/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
+	if(target.stat == DEAD)
+		return
+	//Stops healing from 50 or over
+	if(target.getFireLoss() > 49)
+		return
+	target.adjustFireLoss(-15)
 
 //End of Basic Tiers of cells.//

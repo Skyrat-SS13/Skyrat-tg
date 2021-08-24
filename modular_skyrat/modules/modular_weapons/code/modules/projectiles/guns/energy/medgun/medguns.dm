@@ -62,7 +62,7 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "plasticbox"
 
-//Medigun Cells// Spritework is done by Arctaisia!
+//Medigun Cells - Spritework is done by Arctaisia!
 //Default Cell//
 /obj/item/medicell
 	name = "Default Medicell"
@@ -82,12 +82,12 @@
 		return
 	if(!on_safety)
 		on_safety = TRUE
-		to_chat(user, span_notice("The Safety on the Medicell is now on, you cannot heal when it will do clone damage to the patient"))
+		to_chat(user, span_notice("The safety on the Medicell is now on, you cannot heal when it will cause clone damage to the patient"))
 		src.ammo_type = safe_ammo
 		return
 	if(on_safety ==  1)
 		on_safety = FALSE
-		to_chat(user, span_notice("The Safety on the Medicell is now off, you can heal when it will cause clone damage to the patient."))
+		to_chat(user, span_notice("The safety on the Medicell is now off, you can heal when it will cause clone damage to the patient"))
 		src.ammo_type = unsafe_ammo
 		return
 	else
@@ -129,13 +129,19 @@
 	name = "Brute II Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
 	icon_state = "Brute2"
-	ammo_type = /obj/item/ammo_casing/energy/medical/brute2
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute2/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/brute2
+	safe_ammo = /obj/item/ammo_casing/energy/medical/brute2/safe
+	has_safety = TRUE
 //Burn II//
 /obj/item/medicell/burn2
 	name = "Burn II Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
 	icon_state = "Burn2"
-	ammo_type = /obj/item/ammo_casing/energy/medical/burn2
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn2/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/burn2
+	safe_ammo = /obj/item/ammo_casing/energy/medical/burn2/safe
+	has_safety = TRUE
 //Toxin II//
 /obj/item/medicell/toxin2
 	name = "Toxin II Medicell"
@@ -155,13 +161,19 @@
 	name = "Brute III Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
 	icon_state = "Brute3"
-	ammo_type = /obj/item/ammo_casing/energy/medical/brute3
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute3/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/brute3
+	safe_ammo = /obj/item/ammo_casing/energy/medical/brute3/safe
+	has_safety = TRUE
 //Burn III//
 /obj/item/medicell/burn3
 	name = "Burn III Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
 	icon_state = "Burn3"
-	ammo_type = /obj/item/ammo_casing/energy/medical/burn3
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn3/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/burn3
+	safe_ammo = /obj/item/ammo_casing/energy/medical/burn3/safe
+	has_safety = TRUE
 //Toxin III//
 /obj/item/medicell/toxin3
 	name = "Toxin III Medicell"
