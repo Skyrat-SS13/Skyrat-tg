@@ -157,15 +157,7 @@
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/medigel,
-		/obj/item/reagent_containers/glass/bottle/vial,
-		/obj/item/lighter, // This was too funny to pass up.
-		/obj/item/storage/fancy/cigarettes, // Same here.
 		/obj/item/storage/pill_bottle,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/hypospray/mkii,
-		/obj/item/implantcase,
-		/obj/item/implant,
 		/obj/item/implanter,
-		/obj/item/reagent_containers/spray,
 		/obj/item/medicell
 		))
