@@ -58,9 +58,9 @@
 		return
 	if(target.stat == DEAD)
 		return
-	//DISGUST 
+	//DISGUST
 	if(target.getBruteLoss() > 49)
-		target.adjust_disgust(1.5) 
+		target.adjust_disgust(1.5)
 	if(target.getBruteLoss() > 99)
 		target.adjust_disgust(1.5)
 	target.adjust_disgust(3)
@@ -85,9 +85,9 @@
 		return
 	if(target.stat == DEAD)
 		return
-	//DISGUST 
+	//DISGUST
 	if(target.getFireLoss() > 49)
-		target.adjust_disgust(1.5) 
+		target.adjust_disgust(1.5)
 	if(target.getFireLoss() > 99)
 		target.adjust_disgust(1.5)
 	target.adjust_disgust(3)
@@ -115,6 +115,25 @@
 		return
 	target.adjustToxLoss(-5)
 	target.radiation = max(target.radiation - 40, 0)//Toxin is treatable, but inefficent//
+
+//SAFE MODES
+/obj/item/ammo_casing/energy/medical/brute1/safe
+	projectile_type = /obj/projectile/energy/medical/safe/brute1
+/obj/projectile/energy/medical/safe/brute1
+	name = "safe brute heal shot"
+	icon_state = "red_laser"
+
+/obj/projectile/energy/medical/safe/brute1/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
+	if(target.stat == DEAD)
+		return
+	//Stops healing from 50 or over
+	if(target.getBruteLoss() > 49)
+		return
+	target.adjustBruteLoss(-7.5)
+
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
@@ -132,9 +151,9 @@
 		return
 	if(target.stat == DEAD)
 		return
-	//DISGUST 
+	//DISGUST
 	if(target.getBruteLoss() > 49)
-		target.adjust_disgust(1.5) 
+		target.adjust_disgust(1.5)
 	if(target.getBruteLoss() > 99)
 		target.adjust_disgust(1.5)
 	target.adjust_disgust(2)
@@ -159,9 +178,9 @@
 		return
 	if(target.stat == DEAD)
 		return
-	//DISGUST 
+	//DISGUST
 	if(target.getFireLoss() > 49)
-		target.adjust_disgust(1.5) 
+		target.adjust_disgust(1.5)
 	if(target.getFireLoss() > 99)
 		target.adjust_disgust(1.5)
 	target.adjust_disgust(2)
@@ -219,9 +238,9 @@
 		return
 	if(target.stat == DEAD)
 		return
-	//DISGUST 
+	//DISGUST
 	if(target.getBruteLoss() > 49)
-		target.adjust_disgust(1.5) 
+		target.adjust_disgust(1.5)
 	if(target.getBruteLoss() > 99)
 		target.adjust_disgust(1.5)
 	target.adjust_disgust(1)
@@ -246,9 +265,9 @@
 		return
 	if(target.stat == DEAD)
 		return
-	//DISGUST 
+	//DISGUST
 	if(target.getFireLoss() > 49)
-		target.adjust_disgust(1.5) 
+		target.adjust_disgust(1.5)
 	if(target.getFireLoss() > 99)
 		target.adjust_disgust(1.5)
 	target.adjust_disgust(1)

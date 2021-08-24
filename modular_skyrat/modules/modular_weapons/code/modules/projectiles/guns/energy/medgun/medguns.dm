@@ -73,6 +73,8 @@
 	var/ammo_type = /obj/item/ammo_casing/energy/medical //This is the ammo type that all mediguns come with.
 	var/has_safety = FALSE //Can the cell be toggled between safe and unsafe?
 	var/on_safety = TRUE //Is the safety for the cell on?
+	var/safe_ammo = /obj/item/ammo_casing/energy/medical
+	var/unsafe_ammo = /obj/item/ammo_casing/energy/medical
 
 //MEDIGUN SAFETY
 /obj/item/medicell/attack_self(mob/living/user)
@@ -81,10 +83,12 @@
 	if(!on_safety)
 		on_safety = TRUE
 		to_chat(user, span_notice("The Safety on the Medicell is now on, you will not heal when it could cause clone damage to the patient"))
+		src.ammo_type = safe_ammo
 		return
 	if(on_safety ==  1)
 		on_safety = FALSE
 		to_chat(user, span_notice("The Safety on the Medicell is now of, you will now heal when it could cause clone damage to the patient"))
+		src.ammo_type = unsafe_ammo
 		return
 	else
 		return
@@ -98,8 +102,11 @@
 	name = "Brute I Medicell"
 	desc = "A small cell with a red glow. Can be used on Mediguns to unlock the Brute I Functoinality"
 	icon_state = "Brute1"
-	ammo_type = /obj/item/ammo_casing/energy/medical/brute1
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute1/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/brute1
+	safe_ammo = /obj/item/ammo_casing/energy/medical/brute1/safe
 	has_safety = TRUE
+
 //Burn I//
 /obj/item/medicell/burn1
 	name = "Burn I Medicell"
