@@ -159,6 +159,7 @@
 					/obj/item/clothing/head/cowboyhat/sheriff = 1,
 					/obj/item/clothing/head/cowboyhat/sheriff/alt = 1,
 					/obj/item/clothing/head/cowboyhat/deputy = 1,
+					/obj/item/clothing/shoes/jackboots/timbs = 1,
 					/obj/item/clothing/under/costume/loincloth/sensor = 1,
 					/obj/item/clothing/under/costume/loincloth/cloth/sensor = 1)	//SKYRAT EDIT ADDITION END
 
