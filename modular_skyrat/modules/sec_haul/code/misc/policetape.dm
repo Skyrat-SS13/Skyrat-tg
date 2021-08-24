@@ -103,7 +103,7 @@
 			return TRUE
 		//if(allowed(target_carbon) && target_carbon.m_intent != MOVE_INTENT_WALK)	//Allowed people NEED to walk (?) ((If so, remove allowed(target_carbon) from above))
 		if(!crumpled)
-			if(target_carbon.combat_mode || target_carbon.m_intent != MOVE_INTENT_WALK)
+			if(target_carbon.combat_mode || target_carbon.m_intent == MOVE_INTENT_WALK)
 				crumple()
 				visible_message("<span class='notice'>[target_carbon] pushes through \the [src] aggressively, ruining the tape!</span>")
 				return TRUE
@@ -219,7 +219,7 @@
 /obj/structure/jobtape/police
 	name = "police tape"
 	desc = "A length of police tape. Do not cross."
-	req_one_access = list(ACCESS_SECURITY)
+	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS)
 	icon_base = "police"
 
 /obj/item/taperoll/engi
@@ -245,7 +245,7 @@
 /obj/structure/jobtape/atmos
 	name = "atmospherics tape"
 	desc = "A length of atmospherics tape. Better not cross it."
-	req_one_access = list(ACCESS_ATMOSPHERICS)
+	req_one_access = list(ACCESS_ENGINE_EQUIP, ACCESS_ATMOSPHERICS)
 	icon_base = "atmos"
 
 /obj/item/taperoll/med
@@ -271,5 +271,5 @@
 /obj/structure/jobtape/bio
 	name = "biohazard tape"
 	desc = "A length of biohazard tape. Do not cross."
-	req_one_access = list(ACCESS_VIROLOGY, ACCESS_XENOBIOLOGY)
+	req_one_access = list(ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_VIROLOGY, ACCESS_XENOBIOLOGY)
 	icon_base = "bio"

@@ -134,6 +134,8 @@
 			volume = affected.reaction_results["fire"]*FIRE_GROWTH_RATE
 			location.assume_air(affected)
 
+	location.PolluteListTurf(list(/datum/pollutant/smoke = 15, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP) //SKYRAT EDIT ADDITION
+
 	// Handles the burning of atoms.
 	for(var/A in location)
 		var/atom/AT = A
@@ -263,7 +265,7 @@
 		T.active_hotspot = null
 	return ..()
 
-/obj/effect/hotspot/proc/on_entered(datum/source, atom/movable/arrived, direction)
+/obj/effect/hotspot/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 	if(isliving(arrived))
 		var/mob/living/immolated = arrived

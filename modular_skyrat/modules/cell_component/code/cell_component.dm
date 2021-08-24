@@ -37,6 +37,10 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	var/has_cell_overlays
 
 /datum/component/cell/Initialize(cell_override, _on_cell_removed, _power_use_amount, start_with_cell = TRUE, _cell_can_be_removed, _has_cell_overlays = TRUE)
+	if(QDELETED(parent))
+		qdel(src)
+		return
+
 	if(!isitem(parent)) //Currently only compatable with items.
 		return COMPONENT_INCOMPATIBLE
 
@@ -60,10 +64,10 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		inside_robot = TRUE
 	else if(start_with_cell)
 		var/obj/item/stock_parts/cell/new_cell
-		if(cell_override)
-			new_cell = new cell_override()
-		else
+		if(!cell_override)
 			new_cell = new /obj/item/stock_parts/cell/upgraded()
+		else
+			new_cell = new cell_override()
 		inserted_cell = new_cell
 		new_cell.forceMove(parent) //We use the parents location so things like EMP's can interact with the cell.
 	handle_cell_overlays()

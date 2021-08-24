@@ -41,11 +41,12 @@
 /// Handles the integrity of an object changing. This must be called instead of changing integrity directly.
 /obj/proc/update_integrity(new_value)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	var/old_value = obj_integrity
 	new_value = max(0, new_value)
 	if(obj_integrity == new_value)
 		return
 	obj_integrity = new_value
-	SEND_SIGNAL(src, COMSIG_OBJ_INTEGRITY_CHANGED)
+	SEND_SIGNAL(src, COMSIG_OBJ_INTEGRITY_CHANGED, old_value, new_value)
 
 /// This mostly exists to keep obj_integrity private. Might be useful in the future.
 /obj/proc/get_integrity()
@@ -190,7 +191,8 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	. = ..()
 	if((resistance_flags & UNACIDABLE) || (acid_volume <= 0) || acidpwr <= 0)
 		return FALSE
-
+	if(QDELETED(src)) //skyrat edit: fix createanddestroy
+		return FALSE
 	AddComponent(/datum/component/acid, acidpwr, acid_volume)
 	return TRUE
 

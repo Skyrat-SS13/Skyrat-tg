@@ -345,6 +345,8 @@ Auto Patrol: []"},
 					else
 						stun_attack(target)
 
+					//mode = BOT_PREP_ARREST SKYRAT EDIT CHANGE BELOW
+					//set_anchored(TRUE)
 					target_lastloc = target.loc
 					if(target.incapacitated()) //SKYRAT EDIT ADDITION
 						mode = BOT_PREP_ARREST

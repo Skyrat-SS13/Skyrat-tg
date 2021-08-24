@@ -1,23 +1,27 @@
 /datum/job/nanotrasen_representative
 	title = "Nanotrasen Representative"
 	department_head = list("Central Command")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Central Command"
 	selection_color = "#c6ffe0"
 	minimal_player_age = 14
 	exp_requirements = 600
-	exp_type = EXP_TYPE_CREW
-	exp_type_department = EXP_TYPE_COMMAND
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_CREW
 
-	departments = DEPARTMENT_COMMAND | DEPARTMENT_CENTRAL_COMMAND
+	departments_list = list(
+		/datum/job_department/command,
+		/datum/job_department/nanotrasen_fleet_command
+	)
 
 	outfit = /datum/outfit/job/nanotrasen_representative
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_representative
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_CCM
 
 	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE
 	bounty_types = CIV_JOB_SEC
@@ -32,7 +36,7 @@
 
 	veteran_only = TRUE
 
-	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/job/nanotrasen_representative/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
@@ -101,32 +105,6 @@
 	gloves = /obj/item/clothing/gloves/color/captain //Too iconic to be replaced with a plasma version
 	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_official
 
-/obj/structure/closet/secure_closet/nanotrasen_representative
-	name = "\proper captain's locker"
-	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
-	icon_state = "cap"
-
-/obj/structure/closet/secure_closet/nanotrasen_representative/PopulateContents()
-	..()
-	new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
-	new /obj/item/storage/backpack/satchel/leather(src)
-	new /obj/item/clothing/neck/petcollar(src)
-	new /obj/item/pet_carrier(src)
-	new /obj/item/clothing/shoes/sneakers/brown(src)
-	new /obj/item/clothing/under/rank/nanotrasen_representative(src)
-	new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
-	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/clothing/head/nanotrasen_representative(src)
-	new /obj/item/clothing/head/beret/nanotrasen_representative(src)
-	new /obj/item/cartridge/captain(src)
-	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
-	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
-	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
-	new /obj/item/clothing/gloves/combat(src)
-	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
-	new /obj/item/storage/photo_album/personal(src)
-	new /obj/item/stamp/centcom(src)
-
 /obj/item/pda/nanotrasen_representative
 	name = "nanotrasen representatives PDA"
 	default_cartridge = /obj/item/cartridge/captain
@@ -147,3 +125,41 @@
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
 	new /obj/item/ammo_box/magazine/m45a5(src)
+
+
+/obj/structure/closet/secure_closet/nanotrasen_representative/station
+	name = "\proper nanotrasen representative's locker"
+	req_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
+	icon_state = "cc"
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
+	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
+
+/obj/structure/closet/secure_closet/nanotrasen_representative/station/PopulateContents()
+	..()
+	new /obj/item/storage/backpack/satchel/leather(src)
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/pet_carrier(src)
+	new /obj/item/clothing/shoes/sneakers/brown(src)
+	new /obj/item/clothing/suit/armor/vest(src)
+	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR // I know this is modular and I don't have to do this, but just let me live man.
+	/*
+	// new /obj/item/clothing/suit/armor/vest/nanotrasen_representative(src)
+	// new /obj/item/clothing/under/rank/nanotrasen_representative(src)
+	// new /obj/item/clothing/under/rank/nanotrasen_representative/skirt(src)
+	// new /obj/item/clothing/head/nanotrasen_representative(src)
+	// new /obj/item/clothing/head/nanotrasen_representative/beret(src)
+	// new /obj/item/clothing/head/beret/centcom_formal/ntrep(src)
+	*/
+	// SKYRAT EDIT REMOVAL END
+	new /obj/item/cartridge/captain(src)
+	new /obj/item/radio/headset/heads/nanotrasen_representative/alt(src)
+	new /obj/item/radio/headset/heads/nanotrasen_representative(src)
+	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
+	new /obj/item/clothing/gloves/combat(src)
+	new /obj/item/storage/box/gunset/nanotrasen_representative(src)
+	new /obj/item/storage/photo_album/personal(src)
+	new /obj/item/bedsheet/centcom(src)
+	// new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	new /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep(src)
+	// new /obj/item/clothing/head/centhat(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	// new /obj/item/clothing/head/centcom_cap(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR

@@ -436,7 +436,7 @@
 	build_path = /obj/machinery/rnd/production/protolathe/department
 
 /obj/item/circuitboard/machine/reagentgrinder
-	name = "Machine Design (All-In-One Grinder)"
+	name = "All-In-One Grinder (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/reagentgrinder/constructed
 	req_components = list(
@@ -568,7 +568,8 @@
 		/obj/machinery/vending/modularpc = "Deluxe Silicate Selections",
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
-		/obj/machinery/vending/dorms = "KinkVend")	//SKYRAT EDIT ADDITION
+		/obj/machinery/vending/dorms = "LustWish",	//SKYRAT EDIT CHANGE - ERP UPDATE - ORIGINAL: /obj/machinery/vending/dorms = "KinkVend"
+		/obj/machinery/vending/access/command = "Command Outfitting Station") //SKYRAT EDIT ADDITION
 
 /obj/item/circuitboard/machine/vendor/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
@@ -682,6 +683,14 @@
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1)
+
+/obj/item/circuitboard/machine/chem_mass_spec
+	name = "High-Performance Liquid Chromatography (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_MEDICAL
+	build_path = /obj/machinery/chem_mass_spec
+	req_components = list(
+	/obj/item/stock_parts/micro_laser = 1,
+	/obj/item/stack/cable_coil = 5)
 
 /obj/item/circuitboard/machine/chem_master
 	name = "ChemMaster 3000 (Machine Board)"
@@ -886,32 +895,6 @@
 		/obj/item/stock_parts/manipulator = 1)
 	needs_anchored = FALSE
 
-/obj/item/circuitboard/machine/nanite_chamber
-	name = "Nanite Chamber (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/nanite_chamber
-	req_components = list(
-		/obj/item/stock_parts/scanning_module = 2,
-		/obj/item/stock_parts/micro_laser = 2,
-		/obj/item/stock_parts/manipulator = 1)
-
-/obj/item/circuitboard/machine/nanite_program_hub
-	name = "Nanite Program Hub (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/nanite_program_hub
-	req_components = list(
-		/obj/item/stock_parts/matter_bin = 1,
-		/obj/item/stock_parts/manipulator = 1)
-
-/obj/item/circuitboard/machine/nanite_programmer
-	name = "Nanite Programmer (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/nanite_programmer
-	req_components = list(
-		/obj/item/stock_parts/manipulator = 2,
-		/obj/item/stock_parts/micro_laser = 2,
-		/obj/item/stock_parts/scanning_module = 1)
-
 /obj/item/circuitboard/machine/processor/slime
 	name = "Slime Processor (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
@@ -921,27 +904,6 @@
 	name = "Departmental Protolathe (Machine Board) - Science"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/rnd/production/protolathe/department/science
-
-/obj/item/circuitboard/machine/public_nanite_chamber
-	name = "Public Nanite Chamber (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_SCIENCE
-	build_path = /obj/machinery/public_nanite_chamber
-	var/cloud_id = 1
-	req_components = list(
-		/obj/item/stock_parts/micro_laser = 2,
-		/obj/item/stock_parts/manipulator = 1)
-
-/obj/item/circuitboard/machine/public_nanite_chamber/multitool_act(mob/living/user)
-	. = ..()
-	var/new_cloud = input("Set the public nanite chamber's Cloud ID (1-100).", "Cloud ID", cloud_id) as num|null
-	if(!new_cloud || (loc != user))
-		to_chat(user, span_warning("You must hold the circuitboard to change its Cloud ID!"))
-		return
-	cloud_id = clamp(round(new_cloud, 1), 1, 100)
-
-/obj/item/circuitboard/machine/public_nanite_chamber/examine(mob/user)
-	. = ..()
-	. += "Cloud ID is currently set to [cloud_id]."
 
 /obj/item/circuitboard/machine/quantumpad
 	name = "Quantum Pad (Machine Board)"
@@ -1080,6 +1042,13 @@
 	name = "circuit board (Griddle)"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/griddle
+	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/oven
+	name = "circuit board (Oven)"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
+	build_path = /obj/machinery/oven
 	req_components = list(/obj/item/stock_parts/micro_laser = 1)
 	needs_anchored = FALSE
 

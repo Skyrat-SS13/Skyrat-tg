@@ -37,7 +37,7 @@
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals)
 	slowdown = 1
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 100, RAD = 50, FIRE = 80, ACID = 70)
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY //SKYRAT EDIT CHANGE - ADDED HIDESEXTOY FLAG TO PREVENT VISUAL BUGS.
 	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT_OFF
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -256,5 +256,21 @@
 		return
 	if(cell)
 		cell.emp_act(severity)
+
+/obj/item/clothing/head/helmet/space/suicide_act(mob/living/carbon/user)
+	var/datum/gas_mixture/environment = user.loc.return_air()
+	if(HAS_TRAIT(user, TRAIT_RESISTCOLD) || !environment || environment.return_temperature() >= user.get_body_temp_cold_damage_limit())
+		user.visible_message(span_suicide("[user] is beating [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+		return BRUTELOSS
+	user.say("You want proof? I'll give you proof! Here's proof of what'll happen to you if you stay here with your stuff!", forced = "space helmet suicide")
+	user.visible_message(span_suicide("[user] is removing [user.p_their()] helmet to make a point! Yo, holy shit, [user.p_they()] dead!")) //the use of p_they() instead of p_their() here is intentional
+	user.adjust_bodytemperature(-300)
+	user.apply_status_effect(/datum/status_effect/freon)
+	if(!ishuman(user))
+		return FIRELOSS
+	var/mob/living/carbon/human/humanafterall = user
+	var/datum/disease/advance/cold/pun = new //in the show, arnold survives his stunt, but catches a cold because of it
+	humanafterall.ForceContractDisease(pun, FALSE, TRUE) //this'll show up on health analyzers and the like
+	return FIRELOSS
 
 #undef THERMAL_REGULATOR_COST

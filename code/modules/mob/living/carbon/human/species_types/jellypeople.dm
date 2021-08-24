@@ -1,7 +1,7 @@
 /datum/species/jelly
 	// Entirely alien beings that seem to be made entirely out of gel. They have three eyes and a skeleton visible within them.
 	name = "Jellyperson"
-	id = "jelly"
+	id = SPECIES_JELLYPERSON
 	default_color = "00FF90"
 	say_mod = "chirps"
 	species_traits = list(MUTCOLORS,EYECOLOR,NOBLOOD)
@@ -130,7 +130,7 @@
 
 /datum/species/jelly/slime
 	name = "Slimeperson"
-	id = "slime"
+	id = SPECIES_SLIMEPERSON
 	default_color = "00FFFF"
 	species_traits = list(MUTCOLORS,EYECOLOR,HAIR,FACEHAIR,NOBLOOD)
 	say_mod = "says"
@@ -242,19 +242,12 @@
 	spare.underwear = "Nude"
 	H.dna.transfer_identity(spare, transfer_SE=1)
 	spare.dna.features["mcolor"] = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
+	spare.dna.update_uf_block(DNA_MUTANT_COLOR_BLOCK)
 	spare.real_name = spare.dna.real_name
 	spare.name = spare.dna.real_name
 	spare.updateappearance(mutcolor_update=1)
 	spare.domutcheck()
 	spare.Move(get_step(H.loc, pick(NORTH,SOUTH,EAST,WEST)))
-
-
-	var/datum/component/nanites/owner_nanites = H.GetComponent(/datum/component/nanites)
-	if(owner_nanites)
-		//copying over nanite programs/cloud sync with 50% saturation in host and spare
-		owner_nanites.nanite_volume *= 0.5
-		spare.AddComponent(/datum/component/nanites, owner_nanites.nanite_volume)
-		SEND_SIGNAL(spare, COMSIG_NANITE_SYNC, owner_nanites, TRUE, TRUE) //The trues are to copy activation as well
 
 	H.blood_volume *= 0.45
 	H.notransform = 0
@@ -424,7 +417,7 @@
 
 /datum/species/jelly/luminescent
 	name = "Luminescent"
-	id = "lum"
+	id = SPECIES_LUMINESCENT
 	say_mod = "says"
 	var/glow_intensity = LUMINESCENT_DEFAULT_GLOW
 	var/obj/effect/dummy/luminescent_glow/glow
@@ -474,7 +467,7 @@
 /datum/species/jelly/luminescent/proc/update_glow(mob/living/carbon/C, intensity)
 	if(intensity)
 		glow_intensity = intensity
-	glow.set_light(glow_intensity, glow_intensity, C.dna.features["mcolor"])
+	glow.set_light_range_power_color(glow_intensity, glow_intensity, C.dna.features["mcolor"])
 
 /obj/effect/dummy/luminescent_glow
 	name = "luminescent glow"
@@ -598,7 +591,7 @@
 
 /datum/species/jelly/stargazer
 	name = "Stargazer"
-	id = "stargazer"
+	id = SPECIES_STARGAZER
 	var/datum/action/innate/project_thought/project_thought
 	var/datum/action/innate/link_minds/link_minds
 	var/list/mob/living/linked_mobs = list()

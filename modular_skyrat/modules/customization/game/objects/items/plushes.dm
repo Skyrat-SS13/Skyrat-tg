@@ -136,6 +136,39 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 	gender = MALE
 
+/obj/item/toy/plush/sharknet
+	name = "Gluttonous Shark plushie"
+	desc = "A heavy plushie of a rather large and hungry shark"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_sharknet"
+	inhand_icon_state = "plushie_sharknet"
+	attack_verb_continuous = list("cuddles", "squishes", "wehs")
+	attack_verb_simple = list("cuddle", "squish", "weh")
+	w_class = WEIGHT_CLASS_NORMAL
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
+	young = 1 //No.
+//Storage component for Sharknet Plushie//
+/obj/item/toy/plush/sharknet/ComponentInitialize()
+	var/datum/component/storage/concrete/storage = AddComponent(/datum/component/storage/concrete)
+	storage.max_items = 2
+	storage.max_w_class = WEIGHT_CLASS_SMALL
+	storage.set_holdable(list(
+		/obj/item/toy/plush/pintaplush,
+		/obj/item/toy/plush/arcplush
+		))
+//End of storage component//
+
+/obj/item/toy/plush/pintaplush
+	name = "Smaller Deer plushie"
+	desc = "A pint-sized cervine with a vacant look."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_pinta"
+	inhand_icon_state = "plushie_pinta"
+	attack_verb_continuous = list("bonks", "snugs")
+	attack_verb_simple = list("bonk", "snug")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
+	young = 1 //No.
+
 /obj/item/toy/plush/arcplush
 	name = "Familiar lizard plushie"
 	desc = "A small plushie that resembles a lizard-- Or, not a lizard, it's mouth seems to go horizontally too.. Are those limbs in it's maw?"
@@ -229,3 +262,25 @@
 	icon_state = "whitecat"
 	inhand_icon_state = "whitecat"
 
+/obj/item/toy/plush/seaduplush
+	name = "Sneed plushie"
+	desc = "A plushie of a particular, bundled up IPC. Underneath the cloak, you can see a plush recreation of the captain's sabre."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_seadu"
+	inhand_icon_state = "plushie_seadu"
+	attack_verb_continuous = list("beeps","sneeds","swords")
+	attack_verb_simple = list("beep","sneed","sword")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg' = 1)
+
+/obj/item/toy/plush/fox/mia
+	name = "Mia’s fox plushie"
+	desc = "A small stuffed silver fox with a collar tag that says “Eavy” and a tiny bell in its fluffy tail."
+	icon_state = "miafox"
+
+/obj/item/toy/plush/fox/kailyn
+	name = "teasable fox plushie"
+	desc = "A familiar looking vixen in a peacekeeper attire, perfect for everyone who intends on venturing in the dark alone! There's a little tag which tells you to not boop its nose."
+	icon_state = "teasefox"
+	attack_verb_continuous = list("sneezes on", "detains", "tazes")
+	attack_verb_simple = list("sneeze on", "detain", "taze")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg' = 1)

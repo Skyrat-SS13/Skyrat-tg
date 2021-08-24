@@ -132,9 +132,7 @@
 	else
 		set_light_on(FALSE)
 
-	for(var/X in actions)
-		var/datum/action/A=X
-		A.UpdateButtonIcon()
+	update_action_buttons()
 
 /obj/item/clothing/head/helmet/space/plasmaman/security
 	name = "security plasma envirosuit helmet"
@@ -252,6 +250,8 @@
 	icon_state = "explorer_envirohelm"
 	inhand_icon_state = "explorer_envirohelm"
 	visor_icon = "explorer_envisor"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, RAD = 0, FIRE = 100, ACID = 75)//SKYRAT EDIT
+
 
 /obj/item/clothing/head/helmet/space/plasmaman/chaplain
 	name = "chaplain's plasma envirosuit helmet"

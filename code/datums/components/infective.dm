@@ -3,6 +3,7 @@
 	var/expire_time
 	var/required_clean_types = CLEAN_TYPE_DISEASE
 
+
 /datum/component/infective/Initialize(list/datum/disease/_diseases, expire_in)
 	if(islist(_diseases))
 		diseases = _diseases
@@ -18,7 +19,7 @@
 	var/static/list/disease_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/try_infect_crossed,
 	)
-	AddElement(/datum/element/connect_loc_behalf, parent, disease_connections)
+	AddComponent(/datum/component/connect_loc_behalf, parent, disease_connections)
 
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/clean)
 	RegisterSignal(parent, COMSIG_MOVABLE_BUCKLE, .proc/try_infect_buckle)
@@ -109,7 +110,7 @@
 		var/obj/item/I = parent
 		I.permeability_coefficient = old_permeability
 
-/datum/component/infective/proc/try_infect_crossed(datum/source, atom/movable/arrived, direction)
+/datum/component/infective/proc/try_infect_crossed(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 
 	if(isliving(arrived))

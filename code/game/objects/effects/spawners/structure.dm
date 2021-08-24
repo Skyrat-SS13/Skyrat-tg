@@ -10,7 +10,7 @@ again.
 
 /obj/effect/spawner/structure/Initialize()
 	. = ..()
-	if(spawn_list && spawn_list.len)
+	if(spawn_list?.len)
 		for(var/I in spawn_list)
 			new I(get_turf(src))
 	return INITIALIZE_HINT_QDEL
@@ -91,7 +91,7 @@ again.
 /obj/effect/spawner/structure/window/reinforced
 	name = "reinforced window spawner"
 	icon_state = "rwindow_spawner"
-	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
+	spawn_list = list(/obj/machinery/door/firedoor/onetile, /obj/structure/grille, /obj/structure/window/reinforced/fulltile) //SKYRAT EDIT CHANGE
 
 /obj/effect/spawner/structure/window/hollow/reinforced
 	name = "hollow reinforced window spawner"

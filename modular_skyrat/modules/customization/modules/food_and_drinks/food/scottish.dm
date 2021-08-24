@@ -27,5 +27,7 @@
 /obj/item/food/sausage/battered
 	name = "battered sausage"
 	desc = "A sausage coated in thick beer batter, best served with a portion of chips wrapped in a newspaper, it however, is pure cholesterol, Scottish people eat it. Few of them make 60."
+	icon = 'modular_skyrat/master_files/icons/obj/food/irnbru.dmi'
+	icon_state = "batteredsausage"
 
 
