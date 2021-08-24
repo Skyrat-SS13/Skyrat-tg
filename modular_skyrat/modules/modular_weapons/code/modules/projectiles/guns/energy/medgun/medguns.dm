@@ -82,12 +82,12 @@
 		return
 	if(!on_safety)
 		on_safety = TRUE
-		to_chat(user, span_notice("The Safety on the Medicell is now on, you will not heal when it could cause clone damage to the patient"))
+		to_chat(user, span_notice("The Safety on the Medicell is now on, you cannot heal when it will do clone damage to the patient"))
 		src.ammo_type = safe_ammo
 		return
 	if(on_safety ==  1)
 		on_safety = FALSE
-		to_chat(user, span_notice("The Safety on the Medicell is now of, you will now heal when it could cause clone damage to the patient"))
+		to_chat(user, span_notice("The Safety on the Medicell is now off, you can heal when it will cause clone damage to the patient."))
 		src.ammo_type = unsafe_ammo
 		return
 	else
