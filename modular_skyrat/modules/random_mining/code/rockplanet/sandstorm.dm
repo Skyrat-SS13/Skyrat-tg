@@ -20,7 +20,8 @@
 	if(is_ash_immune(L))
 		return
 	L.set_blurriness(5)
-	L.adjustBruteLoss(2)
+	if(!L.getBruteLoss() <= 50)	//Caps out at 50 brute. Nonlethal but annoying as hell.
+		L.adjustBruteLoss(2)
 
 /datum/weather/ash_storm/sand/light_winds
 	name = "light winds"
