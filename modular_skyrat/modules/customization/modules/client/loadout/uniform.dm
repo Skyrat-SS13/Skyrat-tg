@@ -420,6 +420,10 @@
 	name = "Striped Dress"
 	path = /obj/item/clothing/under/dress/striped
 
+/datum/loadout_item/uniform/dress/sailordress
+	name = "Sailor Dress"
+	path = /obj/item/clothing/under/dress/sailor
+
 /datum/loadout_item/uniform/dress/sundresswhite
 	name = "White Sundress"
 	path = /obj/item/clothing/under/dress/sundress/white
