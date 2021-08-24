@@ -130,7 +130,7 @@
 	if(target.stat == DEAD)
 		return
 	//Stops healing from 50 or over
-	if(target.getBruteLoss() > 49)
+	if(target.getBruteLoss() >= 50)
 		return
 	target.adjustBruteLoss(-7.5)
 	target.adjust_disgust(3)
@@ -148,7 +148,7 @@
 	if(target.stat == DEAD)
 		return
 	//Stops healing from 50 or over
-	if(target.getFireLoss() > 49)
+	if(target.getFireLoss() >= 50)
 		return
 	target.adjustFireLoss(-7.5)
 	target.adjust_disgust(3)
@@ -171,9 +171,9 @@
 	if(target.stat == DEAD)
 		return
 	//DISGUST
-	if(target.getBruteLoss() > 49)
+	if(target.getBruteLoss() >= 50)
 		target.adjust_disgust(1.5)
-	if(target.getBruteLoss() > 99)
+	if(target.getBruteLoss() >= 100)
 		target.adjust_disgust(1.5)
 	target.adjust_disgust(2)
 	//CLONE
