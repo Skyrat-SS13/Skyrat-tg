@@ -195,37 +195,6 @@
 		/obj/item/stack/ore/silver = 24, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 20, /obj/item/stack/ore/bananium = 1,
 		/turf/closed/mineral/gibtonite/ice/icemoon = 8, /turf/closed/mineral/strange_rock/ice/icemoon = 10, /obj/item/stack/ore/bluespace_crystal = 2)
 
-//small gibonite fix
-/turf/closed/mineral/gibtonite/asteroid
-	environment_type = "asteroid"
-	icon_state = "redrock_Gibonite"
-	smooth_icon = 'icons/turf/walls/red_wall.dmi'
-	base_icon_state = "red_wall"
-	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid
-	baseturfs = /turf/open/floor/plating/asteroid
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	defer_change = TRUE
-
-/turf/closed/mineral/strange_rock/asteroid
-	environment_type = "asteroid"
-	icon_state = "redrock_strange"
-	smooth_icon = 'icons/turf/walls/red_wall.dmi'
-	base_icon_state = "red_wall"
-	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid
-	baseturfs = /turf/open/floor/plating/asteroid
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	defer_change = TRUE
-
-/turf/closed/mineral/random/stationside/asteroid/rockplanet
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	turf_type = /turf/open/floor/plating/asteroid
-	mineralSpawnChanceList = list(/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10,
-		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /obj/item/stack/ore/titanium = 11,
-		/turf/closed/mineral/gibtonite/asteroid = 4, /obj/item/stack/ore/bluespace_crystal = 1, /turf/closed/mineral/strange_rock/asteroid = 10)
-	mineralChance = 30
-
 #undef DIG_UNDEFINED
 #undef DIG_DELETE
 #undef DIG_ROCK
