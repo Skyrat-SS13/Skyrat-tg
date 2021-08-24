@@ -83,7 +83,7 @@
 	defer_change = TRUE
 
 /turf/closed/mineral/random/asteroid/rockplanet	//A version that can be used on the mining planet without destroying atmos - starts with Low_Pressure, along with the rest of the planet.
-	name = "iron rock"
+	name = "monazite rock"
 	icon = 'icons/turf/mining.dmi'
 	icon_state = "redrock"
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
@@ -92,6 +92,7 @@
 	baseturfs = /turf/open/floor/plating/asteroid/lowpressure
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 	defer_change = TRUE
+	color = "#a89877"	//more brownish and sandy, instead of ugly blood red
 
 	mineralSpawnChanceList = list(
 		/obj/item/stack/ore/iron = 40,
@@ -100,11 +101,40 @@
 		/obj/item/stack/ore/titanium = 11,
 		/obj/item/stack/ore/gold = 10,
 		/obj/item/stack/ore/uranium = 5,
-		/turf/closed/mineral/gibtonite = 3,	//A bit less gibtonite because of higher spawns making it nuts
+		/turf/closed/mineral/gibtonite/rockplanet = 3,	//A bit less gibtonite because of higher spawns making it nuts
 		/obj/item/stack/ore/diamond = 1,
-		/obj/item/stack/ore/bluespace_crystal = 1
+		/obj/item/stack/ore/bluespace_crystal = 1,
+		/turf/closed/mineral/strange_rock/rockplanet = 10	//Instead of re-defining the entire turf, this goes in my already-modular file
 		)
 	mineralChance = 25	//Higher mineral chance than normal
+
+
+//small gibonite fix - jjpark-kb's fix, put in a more relevant file
+/turf/closed/mineral/gibtonite/rockplanet
+	environment_type = "asteroid"
+	icon = 'icons/turf/mining.dmi'
+	icon_state = "redrock_Gibonite"
+	smooth_icon = 'icons/turf/walls/red_wall.dmi'
+	base_icon_state = "red_wall"
+	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
+	turf_type = /turf/open/floor/plating/asteroid
+	baseturfs = /turf/open/floor/plating/asteroid
+	initial_gas_mix = OPENTURF_LOW_PRESSURE
+	defer_change = TRUE
+	color = "#a89877"
+
+/turf/closed/mineral/strange_rock/rockplanet
+	environment_type = "asteroid"
+	icon = 'icons/turf/mining.dmi'
+	icon_state = "redrock_strange"
+	smooth_icon = 'icons/turf/walls/red_wall.dmi'
+	base_icon_state = "red_wall"
+	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
+	turf_type = /turf/open/floor/plating/asteroid
+	baseturfs = /turf/open/floor/plating/asteroid
+	initial_gas_mix = OPENTURF_LOW_PRESSURE
+	defer_change = TRUE
+	color = "#a89877"
 
 /turf/closed/mineral/random/asteroid/rockplanet/labor	//No bluespace for the inmates!
 	icon_state = "rock_labor"
@@ -118,9 +148,6 @@
 		/obj/item/stack/ore/diamond = 1,
 		/turf/closed/mineral/gibtonite = 1
 		)
-
-/turf/closed/mineral/asteroid/has_air
-	initial_gas_mix = OPENTURF_LOW_PRESSURE	//one that WONT screw with atmos if its mapped somewhere
 
 ///////////////////////////////////////////
 /////////////  HAZARD  TURFS  /////////////
