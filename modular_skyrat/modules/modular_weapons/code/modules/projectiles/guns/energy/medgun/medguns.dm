@@ -71,6 +71,23 @@
 	icon_state = "Oxy1"
 	w_class = WEIGHT_CLASS_SMALL
 	var/ammo_type = /obj/item/ammo_casing/energy/medical //This is the ammo type that all mediguns come with.
+	var/has_safety = FALSE //Can the cell be toggled between safe and unsafe?
+	var/on_safety = TRUE //Is the safety for the cell on?
+
+//MEDIGUN SAFETY
+/obj/item/medicell/attack_self(mob/living/user)
+	if(!has_safety)
+		return
+	if(!on_safety)
+		on_safety = TRUE
+		to_chat(user, span_notice("The Safety on the Medicell is now on, you will not heal when it could cause clone damage to the patient"))
+		return
+	if(on_safety ==  1)
+		on_safety = FALSE
+		to_chat(user, span_notice("The Safety on the Medicell is now of, you will now heal when it could cause clone damage to the patient"))
+		return
+	else
+		return
 
 /obj/item/medicell/Initialize()
 	. =..()
@@ -82,12 +99,14 @@
 	desc = "A small cell with a red glow. Can be used on Mediguns to unlock the Brute I Functoinality"
 	icon_state = "Brute1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute1
+	has_safety = TRUE
 //Burn I//
 /obj/item/medicell/burn1
 	name = "Burn I Medicell"
 	desc = "A small cell with a yellow glow. Can be used on Mediguns to unlock the Burn I Functoinality"
 	icon_state = "Burn1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn1
+	has_safety = TRUE
 //Toxin I//
 /obj/item/medicell/toxin1
 	name = "Toxin I Medicell"
