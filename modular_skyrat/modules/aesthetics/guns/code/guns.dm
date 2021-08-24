@@ -6,6 +6,34 @@
 	worn_icon_state = "energy"
 	ammo_x_offset = 2
 
+/obj/item/gun/energy/e_gun/advtaser
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/cfa_phalanx
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/mini
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/stun
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/old
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/hos
+	worn_icon = null
+	worn_icon_state = "gun"
+
+/obj/item/gun/energy/e_gun/dragnet
+	worn_icon = null
+	worn_icon_state = "gun"
+
 /obj/item/gun/energy/ionrifle
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
@@ -80,6 +108,8 @@
 	ammo_x_offset = 2
 	lefthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/aesthetics/guns/icons/guns_righthand.dmi'
+	worn_icon_state = "gun"
+	worn_icon = null
 
 /obj/item/gun/energy/lasercannon
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/energy.dmi'
