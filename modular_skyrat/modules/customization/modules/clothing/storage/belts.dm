@@ -148,11 +148,11 @@
 	. = ..()
 	var/datum/component/storage/bandolier_storage = GetComponent(/datum/component/storage)
 	bandolier_storage.max_w_class = WEIGHT_CLASS_NORMAL
+	bandolier.max_items = 14
 	bandolier_storage.max_combined_w_class = 21
 	bandolier_storage.set_holdable(list(
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
