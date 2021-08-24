@@ -112,7 +112,9 @@
 	name = "Burn I Medicell"
 	desc = "A small cell with a yellow glow. Can be used on Mediguns to unlock the Burn I Functoinality"
 	icon_state = "Burn1"
-	ammo_type = /obj/item/ammo_casing/energy/medical/burn1
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn1/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/burn1
+	safe_ammo = /obj/item/ammo_casing/energy/medical/burn1/safe
 	has_safety = TRUE
 //Toxin I//
 /obj/item/medicell/toxin1

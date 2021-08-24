@@ -134,6 +134,23 @@
 		return
 	target.adjustBruteLoss(-7.5)
 
+/obj/item/ammo_casing/energy/medical/burn1/safe
+	projectile_type = /obj/projectile/energy/medical/safe/burn1
+/obj/projectile/energy/medical/safe/burn1
+	name = "safe burn heal shot"
+	icon_state = "yellow_laser"
+
+/obj/projectile/energy/medical/safe/burn1/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human))
+		return
+	if(target.stat == DEAD)
+		return
+	//Stops healing from 50 or over
+	if(target.getFireLoss() > 49)
+		return
+	target.adjustFireLoss(-7.5)
+
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
