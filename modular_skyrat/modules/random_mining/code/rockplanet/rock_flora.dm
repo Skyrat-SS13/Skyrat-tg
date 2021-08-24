@@ -9,9 +9,9 @@
 
 /obj/structure/flora/ash/rockplanet/coyote	//((Coyote Tobacco, Nicotiana attenuata)
 	name = "leafy coyote"
-	desc = ""
+	desc = "A coyote plant more accustomed to drier climates, with flourishing green tobacco leaves."
 	harvested_name = "plucked coyote"
-	harvested_desc = ""
+	harvested_desc = "A plucked coyote plant, more accustomed to the drier climates. Small buds are growing along it."
 	icon_state = "wild_coyote"
 	harvest = /obj/item/food/grown/rock_flora/coyote
 	harvest_amount_high = 6
@@ -24,9 +24,9 @@
 
 /obj/structure/flora/ash/rockplanet/yucca //(Dagger Plant, Yucca aloifolia)
 	name = "fruiting dagger-yucca"
-	desc = ""
+	desc = "A Yucca plant acclimated to the dry climate, with large purple fruits hanging off of it.."
 	harvested_name = "dagger-yucca"
-	harvested_desc = ""
+	harvested_desc = "A plucked Yucca plant acclimated to the dry climate, the stem beggining to blossom with small buds."
 	icon_state = "wild_yucca"	//TO-DO: turn fruits purple (Dagger Plant, Yucca aloifolia)
 	harvest = /obj/item/food/grown/rock_flora/yucca
 	harvest_amount_high = 3
@@ -39,9 +39,9 @@
 
 /obj/structure/flora/ash/rockplanet/agaricus //(Wine-colored Agaricus, Agaricus subrutilescens)
 	name = "blooming agaricus"
-	desc = ""
+	desc = "A palm-sized, brown-ish mushroom cap. The bottomside is almost wine-red."
 	harvested_name = "budding agaricus"
-	harvested_desc = ""
+	harvested_desc = "Small brown-capped mushrooms seem to be sprouting here, though they're too small to be of use right now."
 	icon_state = "wild_agaricus"
 	harvest = /obj/item/food/grown/rock_flora/agaricus
 	harvest_amount_high = 4
@@ -78,23 +78,23 @@
 	var/filling_color
 */
 /obj/item/food/grown/rock_flora
-	name = ""
-	desc = ""
-	icon = 'icons/obj/lavaland/ash_flora.dmi'	//CHANGE THIS
-	icon_state = "" //ADD A NULL ICON
-	resistance_flags = FLAMMABLE	//CHANGE THIS
+	name = "rockplanet grown item"
+	desc = "(THIS IS BROKEN - PLEASE REPORT HOW YOU GOT IT, THEN CONVERT IT INTO A SEED)"
+	icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
+	icon_state = "no name"
+	resistance_flags = FLAMMABLE
 	max_integrity = 100
-	seed = /obj/item/seeds/rockplanet/coyote	//This is just here so code doesnt throw a fit - it's actually unobtainable
-	wine_power = 20
+	seed = /obj/item/seeds/rockplanet/coyote	//If the item is somehow found, it can't be re-created
+	wine_power = 20	//Inherited by all the types
 
 /obj/item/food/grown/rock_flora/coyote
 	name = "coyote tobacco"
 	desc = ""
 	icon_state = "coyote_tobacco"
-	dry_grind = TRUE
-	//distill_reagent =  //TO-DO: Sotol Coyote - "Sotol Coyote Durango has distinctive aromas of hazelnut and almond with notes of butter and yeast coming from the fermentation. On the palate, it is semi-sweet with medium intensity and slight minerality."
-	//To-do: smoking it 'reduces throbbing from rattlesnake bites' (light painkiller? [(whatever i come up with)])
 	seed = /obj/item/seeds/rockplanet/coyote
+
+	dry_grind = TRUE
+	distill_reagent = /datum/reagent/consumable/ethanol/sotol_coyote
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
@@ -118,14 +118,14 @@
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
-	special_desc = "This mushroom is regarded simultaneously as edible, inedible, and responsible for causing gastric upset."	//The wikipedia said pretty much the same thing. Its funny, I'm keeping it like this - it explains enough too, it induces vomit (?)
+	special_desc = "This mushroom is regarded simultaneously as edible, inedible, and responsible for causing gastric upset."	//The wikipedia said pretty much the same thing. Its funny, I'm keeping it like this
 	//TO-DO: INDUCES VOMIT
 
 //////////////
 //SEED ITEMS
 /obj/item/seeds/rockplanet
 	name = "rockplanet seeds"
-	desc = "You should never see this."
+	desc = "(You should never see this. If you do, report the issue and... uh, throw it in disposals? Burn it?)"
 	icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'	//CHANGE THIS (same link as below)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'	//CHANGE THIS (same link as above)
 	lifespan = 50
@@ -136,11 +136,8 @@
 	potency = 15
 	growthstages = 4
 	rarity = 25
-	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)	//CHANGE THIS
-	resistance_flags = FIRE_PROOF	//CHANGE THIS
-	species = "coyote" //silence unit test
-	genes = list(/datum/plant_gene/trait/fire_resistance)	//CHANGE THIS
-	graft_gene = /datum/plant_gene/trait/fire_resistance	//CHANGE THIS
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
+	species = "coyote" //silence unit test (like the lavaland ones needed)
 
 /obj/item/seeds/rockplanet/coyote
 	name = "pack of coyote tobacco seeds"
@@ -149,8 +146,9 @@
 	species = "coyote"
 	plantname = "Coyote Tobacco"
 	product = /obj/item/food/grown/rock_flora/coyote
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/fire_resistance)	//CHANGE THIS
-	reagents_add = list(/datum/reagent/toxin/mindbreaker = 0.04, /datum/reagent/consumable/entpoly = 0.08, /datum/reagent/drug/mushroomhallucinogen = 0.04)	//CHANGE THIS
+	genes = list(/datum/plant_gene/trait/repeated_harvest)
+	reagents_add = list(/datum/reagent/medicine/salbutamol = 0.05, /datum/reagent/drug/nicotine = 0.08, /datum/reagent/consumable/nutriment = 0.03)
+	//To-do: smoking it 'reduces throbbing from rattlesnake bites' (light painkiller? [(whatever i come up with)])
 
 /obj/item/seeds/rockplanet/yucca
 	name = "pack of dagger-yucca seeds"
@@ -159,7 +157,7 @@
 	species = "yucca"
 	plantname = "Dagger-Yucca"
 	product = /obj/item/food/grown/rock_flora/yucca
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow, /datum/plant_gene/trait/fire_resistance)	//CHANGE THIS
+	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	reagents_add = list(/datum/reagent/consumable/tinlux = 0.04, /datum/reagent/consumable/nutriment/vitamin = 0.02, /datum/reagent/drug/space_drugs = 0.02)	//CHANGE THIS
 
 /obj/item/seeds/rockplanet/agaricus
@@ -169,25 +167,25 @@
 	species = "agaricus"
 	plantname = "Agaricus Mushrooms"
 	product = /obj/item/food/grown/rock_flora/agaricus
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/fire_resistance)	//CHANGE THIS
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	reagents_add = list(/datum/reagent/toxin/mushroom_powder = 0.1, /datum/reagent/medicine/coagulant/seraka_extract = 0.02)	//CHANGE THIS
 
 //////////////
 //CRAFTED ITEMS
 /datum/reagent/consumable/ethanol/sotol_coyote
 	name = "Sotol Coyote"
-	description = ""
-	color = "#868f84"
+	description = "A cleverly-recreated recipe, using fermented Coyote Tobacco sourced from LV-669. In exchange for the accessible ingredients, its minerality is replaced with - tobacco-ality.?"
+	color = "#60745c"
 	boozepwr = 30
 	quality = DRINK_GOOD
-	taste_description = ""
-	icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
+	taste_description = "sweet hazelnut with a hint of tobacco"
+	glass_icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
 	glass_icon_state = "sotol_coyote_glass"
 	glass_name = "Sotol Coyote"
-	glass_desc = ""
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED	//CHANGE THIS
-	glass_price = DRINK_PRICE_MEDIUM	//CHANGE THIS
-	liquid_fire_power = 3 //SKYRAT EDIT ADDITION
+	glass_desc = "A cleverly-recreated recipe, almost impossible to distinguish from the original. It's adorned with... a tobacco leaf?"
+	chemical_flags = NONE	//Only way to get this is fermenting.
+	glass_price = DRINK_PRICE_HIGH
+	liquid_fire_power = 2
 
 /obj/item/soap/homemade/yucca
 	desc = "A homemade bar of soap. Has a nice earthy scent."
@@ -195,12 +193,27 @@
 	icon_state = "yucca_soap"
 	cleanspeed = 30 //faster to reward chemists (and botanists in this case!) for going to the effort
 
+/obj/item/soap/homemade/yucca/ComponentInitialize()
+	return	//Yucca soap is gritty and doesn't slip (So botanists can't mass-produce slip items)
+	/*
+	Also, this may cause issues with the item having zero components?
+	I dont know, it didnt look like /obj/item had any components unless they were under special conditions, and this doesnt have any of those conditions..
+	If this causes future issues, now we know why. If not, then hopefully this comment can be removed in the future.
+	*/
+
 //////////////
 //CRAFTING RECIPES
 
-//Do I actually need this for Sotol Coyote? It comes from fermenting the coyote leaves in a barrel, so its not a recipe per-se...
+//TODO:
+//recipe for yucca soap that somehow puts their seeds to use. Can you grind seeds? Should it just be a misc crafting? Maybe pouring a mix onto the seed pack?
+//(how would that last one prevent whole tiles of seedpacks getting affected? idk its 2am)
+
+
 /*
-/datum/chemical_reaction/drink/kamikaze
-	results = list(/datum/reagent/consumable/ethanol/kamikaze = 3)
-	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 1, /datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/limejuice = 1)
+Do I actually need this for Sotol Coyote? It comes from fermenting the coyote leaves in a barrel, so its not a recipe per-se...
+Should it ever need a recipe, this template is here. If its decided its not necessary, then this comment will be removed.
+
+/datum/chemical_reaction/drink/sotol_coyote
+	results = list(/datum/reagent/consumable/ethanol/sotol_coyote = 3)
+	required_reagents = list([reagents here])
 */

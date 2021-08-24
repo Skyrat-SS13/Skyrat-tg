@@ -92,7 +92,7 @@
 /obj/structure/decorative/fluff/holo_band/member
 	name = "holographic musician"
 	desc = "Woah, they're jammin!"
-	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/unique_fluff.dmi'
 
 /obj/structure/decorative/fluff/holo_band/member/Initialize()	//This is the same method used to hologram-ify holocallers. Makes spriting easier on my part.
 	. = ..()
@@ -110,7 +110,7 @@
 
 /* ----------------- Fluff/Decor ----------------- */
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
-	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/unique_fluff.dmi'
 	name = "ai node"
 	desc = "A mysterious, blinking device, attached straight to a surface. It's function is beyond you."
 	icon_state = "ai_node"	//credit to @Hay#7679 on the SR Discord
@@ -130,27 +130,3 @@
 		do_sparks(2, TRUE, src)
 		qdel(src)
 		return
-
-/* ----- Metal Poles (These shouldn't be in this file but there's not a better place tbh) -----*/
-//Just a re-done Tram Rail, but with all 4 directions instead of being stuck east/west - more varied placement, and a more vague name. Good for mapping support beams/antennae/etc
-/obj/structure/fluff/metalpole
-	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff.dmi'
-	name = "metal pole"
-	desc = "A metal pole, the likes of which are commonly used as an antennae, structural support, or simply to maneuver in zero-g."
-	icon_state = "pole"
-	layer = ABOVE_OPEN_TURF_LAYER
-	plane = FLOOR_PLANE
-	deconstructible = TRUE
-
-/obj/structure/fluff/metalpole/end
-	icon_state = "poleend"
-
-/obj/structure/fluff/metalpole/end/left
-	icon_state = "poleend_left"
-
-/obj/structure/fluff/metalpole/end/right
-	icon_state = "poleend_right"
-
-/obj/structure/fluff/metalpole/anchor
-	name = "metal pole anchor"
-	icon_state = "poleanchor"
