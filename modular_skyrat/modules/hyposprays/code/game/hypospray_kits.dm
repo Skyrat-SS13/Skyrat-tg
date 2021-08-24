@@ -8,6 +8,61 @@
 	throw_speed = 3
 	throw_range = 7
 	var/empty = FALSE
+	var/current_case = "firstaid"
+	var/static/list/case_designs
+	var/static/list/cmo_case_designs
+	var/cmo_case = FALSE
+
+//Code to give hypospray kits selectable paterns.
+
+/obj/item/storage/hypospraykit/Initialize()
+	..()
+	if(!length(case_designs))
+		populate_case_designs()
+	update_icon_state()
+	update_icon()
+
+/obj/item/storage/hypospraykit/proc/populate_case_designs()
+	case_designs = list(
+		"firstaid" = image(icon = src.icon, icon_state = "firstaid-mini"),
+		"brute" = image(icon = src.icon, icon_state = "brute-mini"),
+		"burn" = image(icon = src.icon, icon_state = "burn-mini"),
+		"toxin" = image(icon = src.icon, icon_state = "toxin-mini"),
+		"rad" = image(icon = src.icon, icon_state = "rad-mini"),
+		"purple" = image(icon = src.icon, icon_state = "purple-mini"),
+		"oxy" = image(icon = src.icon, icon_state = "oxy-mini"))
+	cmo_case_designs = list(
+		"tactical" = image(icon= src.icon, icon_state = "tactical-mini"))
+	cmo_case_designs += case_designs
+
+/obj/item/storage/hypospraykit/update_icon_state()
+	. = ..()
+	icon_state = "[current_case]-mini"
+
+/obj/item/storage/hypospraykit/proc/case_menu(mob/user)
+	if(.)
+		return
+	var/casetype = cmo_case_designs
+	if(!src.cmo_case)
+		casetype = case_designs
+	var/choice = show_radial_menu(user, src , casetype, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	current_case = choice
+	update_icon()
+
+/obj/item/storage/hypospraykit/proc/check_menu(mob/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated() || !user.is_holding(src))
+		return FALSE
+	return TRUE
+
+
+/obj/item/storage/hypospraykit/CtrlShiftClick(mob/user, obj/item/I)
+	case_menu(user)
+
+//END OF HYPOSPRAY CASE MENU CODE
 
 /obj/item/storage/hypospraykit/ComponentInitialize()
 	. = ..()
@@ -16,6 +71,7 @@
 	stored.can_hold = typecacheof(list(
 	/obj/item/hypospray/mkii,
 	/obj/item/reagent_containers/glass/bottle/vial))
+
 
 /obj/item/storage/hypospraykit/empty
 	desc = "A hypospray kit with general use vials."
@@ -32,6 +88,8 @@
 	name = "deluxe hypospray kit"
 	desc = "A kit containing a deluxe hypospray and vials."
 	icon_state = "tactical-mini"
+	current_case = "tactical"
+	cmo_case = TRUE
 
 /obj/item/storage/hypospraykit/cmo/PopulateContents()
 	if(empty)

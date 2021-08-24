@@ -89,7 +89,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
-/obj/item/clothing/suit/toggle/labcoat/paramedic
+/obj/item/clothing/suit/toggle/labcoat/emt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 
