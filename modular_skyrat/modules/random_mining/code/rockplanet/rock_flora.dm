@@ -86,7 +86,8 @@
 
 	special_desc_requirement = EXAMINE_CHECK_JOB
 	special_desc_jobs = list("Botanist")
-	special_desc = "Aside from these edible fruits, the plant's seeds can be used in soap and shampoo!" //(grind seeds for somewhat hard to get soap ingredient(?)) Craft the soap with the seeds as an item?(?)
+	special_desc = "Aside from these edible fruits, the plant's seeds can be scraped and made into a cleaning solution!"
+	//TODO: Roast(bonfire) or bake(microwave) - sweet molasses/figgy flavor || dry and grind into a meal(needs to be dried to blend, but gives good nutriment when you do?? idk what to do for this)
 
 /obj/item/food/grown/rock_flora/agaricus
 	name = "wine-colored agaricus"
@@ -166,33 +167,33 @@
 	glass_price = DRINK_PRICE_HIGH
 	liquid_fire_power = 2
 
-/obj/item/soap/homemade/yucca
-	desc = "A homemade bar of soap. Has a nice earthy scent."
-	icon = 'modular_skyrat/modules/random_mining/code/rockplanet/icons/rock_flora.dmi'
-	icon_state = "yucca_soap"
-	cleanspeed = 30 //faster to reward chemists (and botanists in this case!) for going to the effort
 
-/obj/item/soap/homemade/yucca/ComponentInitialize()
-	return	//Yucca soap is gritty and doesn't slip (So botanists can't mass-produce slip items)
-	/*
-	Also, this may cause issues with the item having zero components?
-	I dont know, it didnt look like /obj/item had any components unless they were under special conditions, and this doesnt have any of those conditions..
-	If this causes future issues, now we know why. If not, then hopefully this comment can be removed in the future.
-	*/
+//Yucca soap is a 2 step process:
+//First step, scraping the seed/root
+/obj/item/seeds/rockplanet/yucca/proc/tool_interact(obj/item/used_tool, mob/living/user)
+	if(used_tool == (TOOL_KNIFE || TOOL_SCALPEL))
+		if(!do_after(10))
+			to_chat(span_warning("You need to stand still to scrape [src]'s roots."))
+			return
+		new /obj/item/food/grown/rock_flora/yuccaroot
+		qdel(src)
 
-//////////////
-//CRAFTING RECIPES
+//Second step, grinding the result
+/obj/item/food/grown/rock_flora/yuccaroot
+	name = "yucca root"
+	desc = "A greenish-brown root, prepped for grinding."
+	icon_state = "yucca_fruit"
+	seed = /obj/item/seeds/rockplanet/yucca
+	grind_results = list(/datum/reagent/space_cleaner/yucca_soap)
 
-//TODO:
-//recipe for yucca soap that somehow puts their seeds to use. Can you grind seeds? Should it just be a misc crafting? Maybe pouring a mix onto the seed pack?
-//(how would that last one prevent whole tiles of seedpacks getting affected? idk its 2am)
+	special_desc_requirement = EXAMINE_CHECK_JOB
+	special_desc_jobs = list("Botanist","Chemist")
+	special_desc = "Full of saponin, an all-natural cleaning solution!"
 
-
-/*
-Do I actually need this for Sotol Coyote? It comes from fermenting the coyote leaves in a barrel, so its not a recipe per-se...
-Should it ever need a recipe, this template is here. If its decided its not necessary, then this comment will be removed.
-
-/datum/chemical_reaction/drink/sotol_coyote
-	results = list(/datum/reagent/consumable/ethanol/sotol_coyote = 3)
-	required_reagents = list([reagents here])
-*/
+/datum/reagent/space_cleaner/yucca_soap
+	name = "Yuccaroot Soap"
+	description = "Concentrated saponin, which as an antibacterial/antifungal soap. Most effective mixed with water."
+	color = "#96a58c"	//Its a green color
+	taste_description = "earthy sourness"
+	reagent_weight = 0.7 //Doesnt spray quite as far
+	chemical_flags = NONE //Only way to get this is cutting root from the seed (idk if it doesnt make sense) and then grinding it
