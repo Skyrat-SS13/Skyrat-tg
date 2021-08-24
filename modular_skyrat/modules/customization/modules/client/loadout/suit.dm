@@ -389,13 +389,13 @@
 /datum/loadout_item/suit/job/cossak
 	name = "Ukrainian Security Jacket"
 	path = /obj/item/clothing/suit/cossack/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Security Assistant", "Corrections Officer")
 	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/job/brit
 	name = "High Vis Armored Vest"
 	path = /obj/item/clothing/suit/toggle/brit/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Security Assistant", "Corrections Officer")
 	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/job/british_jacket
@@ -489,7 +489,7 @@
 	name = "Ops/Sec fed Jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Modern trekkie
 /datum/loadout_item/suit/job/trek/fedcoatmodern
@@ -511,5 +511,5 @@
 /datum/loadout_item/suit/job/trek/fedcoatmodernsec
 	name = "Modern sec jacket"
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant","Civil Disputes Officer","Corrections Officer")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant","Security Assistant","Corrections Officer")
 	restricted_desc = "All Security Personnel"

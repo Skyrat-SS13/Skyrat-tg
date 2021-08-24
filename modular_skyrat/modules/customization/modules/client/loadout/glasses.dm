@@ -87,9 +87,9 @@
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"
 	path = /obj/item/clothing/glasses/hud/security
-	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security", "Civil Disputes Officer")
+	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security", "Security Assistant")
 
 /datum/loadout_item/glasses/secpatch
 	name = "Security Eyepatch Hud"
 	path = /obj/item/clothing/glasses/hud/eyepatch/sec
-	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security", "Civil Disputes Officer")
+	restricted_roles = list("Security Officer", "Security Sergeant", "Warden", "Head of Security", "Security Assistant")

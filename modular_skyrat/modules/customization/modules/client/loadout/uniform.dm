@@ -724,12 +724,12 @@
 /datum/loadout_item/uniform/job/seccadett
 	name = "Sol Cadet Uniform"
 	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol
-	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Security Assistant")
 
 /datum/loadout_item/uniform/job/sectrafficop
 	name = "Sol Traffic Cop Uniform"
 	path = /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic
-	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Civil Disputes Officer")
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant", "Security Assistant")
 
 /datum/loadout_item/uniform/job/solofficerthing
 	name = "Sol Officer Uniform"
@@ -954,7 +954,7 @@
 /datum/loadout_item/uniform/job/utility_sec
 	name = "Security Utility Uniform"
 	path = /obj/item/clothing/under/utility/sec
-	restricted_roles = list("Security Officer", "Detective", "Warden", "Blueshield", "Security Medic","Security Sergeant", "Head of Security", "Civil Disputes Officer", "Corrections Officer") //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
+	restricted_roles = list("Security Officer", "Detective", "Warden", "Blueshield", "Security Medic","Security Sergeant", "Head of Security", "Security Assistant", "Corrections Officer") //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 	restricted_desc = "Security"
 
 /datum/loadout_item/uniform/job/utility_com
@@ -1017,7 +1017,7 @@
 	name = "TOS - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //handled by modular skyrat code as reskins
 //TNG
@@ -1037,7 +1037,7 @@
 	name = "TNG - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec/next
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //VOY
 /datum/loadout_item/uniform/job/trekcmdvoy
@@ -1056,7 +1056,7 @@
 	name = "VOY - ops/sec"
 	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/voy
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //DS9
 /datum/loadout_item/uniform/job/trekcmdds9
@@ -1075,7 +1075,7 @@
 	name = "DS9 - ops/sec"
 	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/ds9
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //ENT
 /datum/loadout_item/uniform/job/trekcmdent
@@ -1094,7 +1094,7 @@
 	name = "ENT - ops/sec"
 	path = /obj/item/clothing/under/trek/engsec/ent
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Orville+
 /datum/loadout_item/uniform/job/trekcptorv
@@ -1128,7 +1128,7 @@
 	name = "ORV - ops/sec"
 	path = /obj/item/clothing/under/trek/modular_skyrat/engsec/orv
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /datum/loadout_item/uniform/job/trekservorv
 	name = "ORV - service"

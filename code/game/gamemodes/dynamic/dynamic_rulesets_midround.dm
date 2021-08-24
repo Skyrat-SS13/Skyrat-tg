@@ -185,7 +185,7 @@
 	name = "Syndicate Sleeper Agent"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_TRAITOR
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
+	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Security Assistant", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
 	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
 	required_candidates = 1
 	weight = 7
@@ -250,7 +250,7 @@
 	persistent = TRUE
 	antag_flag = ROLE_FAMILIES
 	protected_roles = list("Prisoner", "Head of Personnel")
-	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant") //SKYRAT EDIT - Sec_haul
+	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Security Assistant", "Security Sergeant") //SKYRAT EDIT - Sec_haul
 	required_candidates = 6 // gotta have 'em ALL
 	weight = 1
 	cost = 25
@@ -458,7 +458,7 @@
 	name = "Blob Infection"
 	antag_datum = /datum/antagonist/blob
 	antag_flag = ROLE_BLOB
-	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
+	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Security Assistant", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
 	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
 	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)

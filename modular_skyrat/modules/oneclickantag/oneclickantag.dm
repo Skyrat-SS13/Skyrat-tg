@@ -88,7 +88,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 
 /datum/admins/
 	var/MAKEANTAG_RESTRICTLIST = list()
-	var/MAKEANTAG_PL_DEFAULT_SECURITY = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Civil Disputes Officer", "Security Medic", "Security Sergeant", "Blueshield")
+	var/MAKEANTAG_PL_DEFAULT_SECURITY = list("Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Security Assistant", "Security Medic", "Security Sergeant", "Blueshield")
 	var/MAKEANTAG_PL_DEFAULT_HEADS = list("Captain","Head of Personnel","Research Director","Chief Engineer","Chief Medical Officer","Head of Security","Quartermaster")
 	var/MAKEANTAG_PL_DEFAULT_SILICON = list("AI", "Cyborg")
 

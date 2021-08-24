@@ -191,13 +191,13 @@
 	name = "Federation Officer's Cap (Yellow)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /datum/loadout_item/head/trek/trekcapsec
 	name = "Federation Officer's Cap (Red)"
 	path = /obj/item/clothing/head/caphat/formal/fedcover/sec
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Security Assistant","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /*Commenting out Until next Christmas or made automatic
 /datum/gear/santahatr
@@ -233,25 +233,25 @@
 	name = "Cowboy Hat, Security"
 	path = /obj/item/clothing/head/cowboyhat/sec
 	restricted_desc = "Security"
-	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Security Assistant","Corrections Officer")
 
 /datum/loadout_item/head/job/cowboyhat/secwide
 	name = "Wide Cowboy Hat, Security"
 	path = /obj/item/clothing/head/cowboyhat/widesec
 	restricted_desc = "Security"
-	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Security Assistant","Corrections Officer")
 
 /datum/loadout_item/head/job/sec/ushanka
 	name = "Security Ushanka"
 	path = /obj/item/clothing/head/ushankasec
 	restricted_desc = "Security"
-	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Security Assistant","Corrections Officer")
 
 /datum/loadout_item/head/job/blasthelmet
 	name = "General's Helmet"
 	path = /obj/item/clothing/head/imperialhelmet
 	restricted_desc = "Security and Command"
-	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Civil Disputes Officer","Corrections Officer","Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Security Assistant","Corrections Officer","Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 
 /datum/loadout_item/head/job/navybluehoscap
 	name = "Head of Security's Naval Cap"
@@ -271,7 +271,7 @@
 /datum/loadout_item/head/job/soltrafficoff
 	name = "Traffic Officer Cap"
 	path = /obj/item/clothing/head/soltraffic
-	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Civil Disputes Officer")
+	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Security Assistant")
 
 /datum/loadout_item/head/job/navybluewardenberet
 	name = "Warden's navyblue beret"

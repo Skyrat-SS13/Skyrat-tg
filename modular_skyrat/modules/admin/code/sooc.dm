@@ -16,7 +16,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	if(!mob)
 		return
 
-	var/static/list/job_lookup = list("Security Officer"=TRUE, "Warden"=TRUE, "Detective"=TRUE, "Head of Security"=TRUE, "Captain"=TRUE, "Blueshield"=TRUE, "Security Medic"=TRUE, "Security Sergeant"=TRUE, "Civil Disputes Officer"=TRUE)
+	var/static/list/job_lookup = list("Security Officer"=TRUE, "Warden"=TRUE, "Detective"=TRUE, "Head of Security"=TRUE, "Captain"=TRUE, "Blueshield"=TRUE, "Security Medic"=TRUE, "Security Sergeant"=TRUE, "Security Assistant"=TRUE)
 	if(!holder)
 		var/job = mob?.mind.assigned_role.title
 		if(!job || !job_lookup[job])

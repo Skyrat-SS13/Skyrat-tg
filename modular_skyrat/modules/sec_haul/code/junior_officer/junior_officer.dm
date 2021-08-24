@@ -1,5 +1,5 @@
 /datum/job/junior_officer
-	title = "Civil Disputes Officer"
+	title = "Security Assistant"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
 	faction = FACTION_STATION
@@ -39,7 +39,7 @@
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/outfit/job/junior_officer
-	name = "Civil Disputes Officer"
+	name = "Security Assistant"
 	jobtype = /datum/job/junior_officer
 
 	belt = /obj/item/pda/security
@@ -67,11 +67,6 @@
 
 	id_trim = /datum/id_trim/job/junior_officer
 
-/datum/outfit/job/junior_officer/post_equip(mob/living/carbon/human/H, visualsOnly)
-	. = ..()
-	if(prob(1)) //HURR DURR I BATONG SELF
-		ADD_TRAIT(H, TRAIT_CLUMSY, ROUNDSTART_TRAIT)
-
 /obj/effect/landmark/start/junior_officer
-	name = "Civil Disputes Officer"
+	name = "Security Assistant"
 	icon_state = "Security Officer"
