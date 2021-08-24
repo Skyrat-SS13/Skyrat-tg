@@ -117,8 +117,8 @@
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid
-	baseturfs = /turf/open/floor/plating/asteroid
+	turf_type = /turf/open/floor/plating/asteroid/lowpressure
+	baseturfs = /turf/open/floor/plating/asteroid/lowpressure
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 	defer_change = TRUE
 	color = "#a89877"
@@ -130,8 +130,8 @@
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	turf_type = /turf/open/floor/plating/asteroid
-	baseturfs = /turf/open/floor/plating/asteroid
+	turf_type = /turf/open/floor/plating/asteroid/lowpressure
+	baseturfs = /turf/open/floor/plating/asteroid/lowpressure
 	initial_gas_mix = OPENTURF_LOW_PRESSURE
 	defer_change = TRUE
 	color = "#a89877"
