@@ -7,4 +7,4 @@
 	if(key || !getorgan(/obj/item/organ/brain) || ghost?.can_reenter_corpse)
 		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life...")
 	else
-		return span_deadsay("[t_He] [t_is] limp and unresponsive. [t_his] consciousness has degraded beyond the point of no return, revival is impossible.")
+		return span_deadsay("[t_He] [t_is] limp and unresponsive. [t_his] consciousness has degraded beyond revival.")
