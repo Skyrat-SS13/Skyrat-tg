@@ -68,7 +68,6 @@
 		cortical_owner.stat_evolution += 5
 		return
 	cortical_owner.body_focus = focus_choice
-	GLOB.focused_borers += 1
 	switch(cortical_owner.body_focus)
 		if(FOCUS_HEAD)
 			to_chat(cortical_owner.human_host, span_notice("Your eyes begin to feel strange..."))
@@ -158,24 +157,11 @@
 		to_chat(owner, span_warning("You do not have any upgrade points for stats!"))
 		return
 	cortical_owner.stat_evolution--
-	var/choice = tgui_input_list(cortical_owner, "Choose a stat to upgrade!", "Stat Choice", list("Health", "Health Regen", "Chemical Storage", "Chemical Regen"))
-	if(!choice)
-		to_chat(owner, span_warning("No selection made!"))
-		cortical_owner.stat_evolution++
-		return
-	switch(choice)
-		if("Health")
-			cortical_owner.maxHealth += 10
-			to_chat(cortical_owner, span_notice("Your health increases slightly!"))
-		if("Health Regen")
-			cortical_owner.health_regen += 0.02
-			to_chat(cortical_owner, span_notice("Your health regen increases slightly!"))
-		if("Chemical Storage")
-			cortical_owner.max_chemical_storage += 20
-			to_chat(cortical_owner, span_notice("Your chemical storage increases slightly!"))
-		if("Chemical Regen")
-			cortical_owner.chemical_regen++
-			to_chat(cortical_owner, span_notice("Your chemical regen increases slightly!"))
+	cortical_owner.maxHealth += 10
+	cortical_owner.health_regen += 0.02
+	cortical_owner.max_chemical_storage += 20
+	cortical_owner.chemical_regen++
+	to_chat(cortical_owner, span_notice("You have grown!"))
 	StartCooldown()
 
 //go between either hiding behind tables or behind mobs
@@ -234,6 +220,12 @@
 		if(considered_afk(listed_human.mind)) //no afk hosts
 			continue
 		potential_freezers += listed_human
+	if(length(potential_freezers) == 1)
+		var/mob/living/carbon/human/singular_fear = pick(potential_freezers)
+		to_chat(singular_fear, span_warning("Something glares menacingly at you!"))
+		singular_fear.Paralyze(7 SECONDS)
+		StartCooldown()
+		return
 	var/mob/living/carbon/human/choose_fear = tgui_input_list(cortical_owner, "Choose who you will fear!", "Fear Choice", potential_freezers)
 	if(!choose_fear)
 		to_chat(cortical_owner, span_warning("No selection was made!"))
@@ -317,6 +309,25 @@
 		if(!(listed_human.mob_biotypes & MOB_ORGANIC))
 			continue
 		usable_hosts += listed_human
+	if(length(usable_hosts) == 1)
+		var/mob/living/carbon/human/singular_host = pick(usable_hosts)
+		if(singular_host.has_borer())
+			to_chat(cortical_owner, span_warning("You cannot occupy a body already occupied!"))
+			return
+		if(!do_after(cortical_owner, 5 SECONDS, target = singular_host))
+			to_chat(cortical_owner, span_warning("You and the host must be still."))
+			return
+		if(get_dist(singular_host, cortical_owner) > 1)
+			to_chat(cortical_owner, span_warning("The host is too far away."))
+			return
+		cortical_owner.human_host = singular_host
+		cortical_owner.forceMove(cortical_owner.human_host)
+		to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
+		cortical_owner.copy_languages(cortical_owner.human_host)
+		var/obj/item/organ/borer_body/borer_organ = new(cortical_owner.human_host)
+		borer_organ.Insert(cortical_owner.human_host)
+		StartCooldown()
+		return
 	var/choose_host = tgui_input_list(cortical_owner, "Choose your host!", "Host Choice", usable_hosts)
 	if(!choose_host)
 		to_chat(cortical_owner, span_warning("You failed to choose a host."))
@@ -385,11 +396,8 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
-	if(cortical_owner.host_sugar())
-		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
-		return
-	if(!cortical_owner.inside_human())
-		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
+	if(cortical_owner.inside_human())
+		to_chat(cortical_owner, span_warning("You are unable to reproduce while inside a host!"))
 		return
 	if(cortical_owner.chemical_storage < 100)
 		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can reproduce!"))
@@ -400,18 +408,20 @@
 		to_chat(cortical_owner, span_notice("No available borers in the hivemind."))
 		cortical_owner.chemical_storage = min(cortical_owner.max_chemical_storage, cortical_owner.chemical_storage + 100)
 		return
-	var/turf/human_turf = get_turf(cortical_owner.human_host)
+	var/turf/borer_turf = get_turf(cortical_owner)
 	var/mob/dead/observer/pick_candidate = pick(candidates)
-	var/mob/living/simple_animal/cortical_borer/spawn_borer = new /mob/living/simple_animal/cortical_borer(human_turf)
-	spawn_borer.ckey = pick_candidate.ckey
+	if(!pick_candidate)
+		return
+	var/mob/living/simple_animal/cortical_borer/spawn_borer = new /mob/living/simple_animal/cortical_borer(borer_turf)
+	if(!spawn_borer.ckey)
+		spawn_borer.ckey = pick_candidate.ckey
 	spawn_borer.generation = cortical_owner.generation + 1
 	spawn_borer.name = "[initial(spawn_borer.name)] ([spawn_borer.generation]-[rand(100,999)])"
-	spawn_borer.mind.add_antag_datum(/datum/antagonist/cortical_borer)
-	GLOB.born_borers += 1
+	if(spawn_borer.mind)
+		spawn_borer.mind.add_antag_datum(/datum/antagonist/cortical_borer)
 	cortical_owner.children_produced++
-	cortical_owner.human_host.Paralyze(3 SECONDS)
-	new /obj/effect/decal/cleanable/vomit(human_turf)
-	playsound(human_turf, 'sound/effects/splat.ogg', 50, TRUE)
+	new /obj/effect/decal/cleanable/vomit(borer_turf)
+	playsound(borer_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	to_chat(spawn_borer, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	StartCooldown()
 
@@ -453,41 +463,3 @@
 	cortical_owner.human_host.revive()
 	to_chat(cortical_owner.human_host, span_boldwarning("Your heart jumpstarts!"))
 	StartCooldown()
-
-//this is the final step in borer mode
-/datum/action/cooldown/willing_host
-	name = "Willing Host (100 chemicals)"
-	cooldown_time = 1 SECONDS
-	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
-	button_icon_state = "willing"
-
-/datum/action/cooldown/willing_host/Trigger()
-	if(!IsAvailable())
-		to_chat(owner, span_warning("This action is still on cooldown!"))
-		return
-	if(!iscorticalborer(owner))
-		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
-		return
-	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
-	if(cortical_owner.host_sugar())
-		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
-		return
-	if(!cortical_owner.inside_human())
-		to_chat(cortical_owner, span_warning("You must be inside a human in order to do this!"))
-		return
-	for(var/check_human in GLOB.willing_hosts)
-		if(cortical_owner.human_host != check_human)
-			continue
-		to_chat(cortical_owner, span_warning("This host is already accepting!"))
-		return
-	if(cortical_owner.chemical_storage < 100)
-		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can allow your host to accept you!"))
-		return
-	cortical_owner.chemical_storage -= 100
-	var/choice = tgui_input_list(cortical_owner.human_host, "Are you a willing host?", "Your Choice", list("Yes", "No"))
-	if(choice != "Yes")
-		to_chat(cortical_owner, span_warning("This host is not accepting, do more!"))
-		return
-	to_chat(cortical_owner, span_notice("You have an accepting host, great job!"))
-	cortical_owner.count_willingness++
-	GLOB.willing_hosts += cortical_owner.human_host

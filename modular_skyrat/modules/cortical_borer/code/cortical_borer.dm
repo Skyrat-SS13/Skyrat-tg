@@ -190,8 +190,8 @@
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
-	///the amount of "evolution" points a borer has for chemicals
-	var/chemical_evolution = 0
+	///the amount of "evolution" points a borer has for chemicals. Start with one
+	var/chemical_evolution = 1
 	///the amount of "evolution" points a borer has for stats
 	var/stat_evolution = 0
 	///how many chemical points the borer can have. Can be upgraded
@@ -212,7 +212,6 @@
 									/datum/action/cooldown/fear_human,
 									/datum/action/cooldown/check_blood,
 									/datum/action/cooldown/revive_host,
-									/datum/action/cooldown/willing_host,
 	)
 	///the host
 	var/mob/living/carbon/human/human_host
@@ -234,8 +233,6 @@
 	var/children_produced = 0
 	///we dont want to spam the chat
 	var/deathgasp_once = FALSE
-	///how many willing hosts we created
-	var/count_willingness = 0
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -263,7 +260,7 @@
 	if(mind)
 		mind.remove_all_antag_datums()
 	QDEL_NULL(reagent_holder)
-	gib()
+	return ..()
 
 //so we can add some stuff to status, making it easier to read... maybe some hud some day
 /mob/living/simple_animal/cortical_borer/get_status_tab_items()
@@ -273,18 +270,6 @@
 	. += "Stat Evolution Points: [stat_evolution]"
 	if(host_sugar())
 		. += "Sugar detected! Unable to generate resources!"
-	var/enabled_willing = FALSE
-	var/enabled_focus = FALSE
-	var/enabled_born = FALSE
-	if(length(GLOB.willing_hosts) >= 5) //if there are 10 or more willing hosts
-		enabled_willing = TRUE
-	if(GLOB.focused_borers >= 5) //if there are 10 or more focused borers
-		enabled_focus = TRUE
-	if(GLOB.born_borers >= 5) //if there are 10 or more BORN (not spawned) borers
-		enabled_born = TRUE
-	. += "Willing Hosts Boost: [enabled_willing ? "Enabled" : "Disabled"]"
-	. += "Focused Borers Boost: [enabled_focus ? "Enabled" : "Disabled"]"
-	. += "Born Borers Boost: [enabled_born ? "Enabled" : "Disabled"]"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
@@ -309,22 +294,13 @@
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-		//objective boosting
-		var/objective_boosting = 1
-		if(length(GLOB.willing_hosts) >= 5) //if there are 10 or more willing hosts, get a boost!
-			objective_boosting += 1
-		if(GLOB.focused_borers >= 5) //if there are 10 or more focused borers, get a boost!
-			objective_boosting += 1
-		if(GLOB.born_borers >= 5) //if there are 10 or more BORN (not spawned) borers, get a boost!
-			objective_boosting += 1
-
-		if(maturity_age == (60 / objective_boosting)) //every 1 minutes, which basically turns into 3 minutes (when not boosted)
+		if(maturity_age == 30)
 			chemical_evolution++
 			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-		if(maturity_age == (120 / objective_boosting))
+		if(maturity_age == 60)
 			stat_evolution++
 			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
-		if(maturity_age == (180 / objective_boosting))
+		if(maturity_age >= 90)
 			maturity_age = 0
 
 //if it doesnt have a ckey, let ghosts have it
@@ -340,7 +316,8 @@
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
 	to_chat(user, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	ckey = user.ckey
-	user.mind.add_antag_datum(/datum/antagonist/cortical_borer)
+	if(mind)
+		mind.add_antag_datum(/datum/antagonist/cortical_borer)
 
 //check if we are inside a human
 /mob/living/simple_animal/cortical_borer/proc/inside_human()

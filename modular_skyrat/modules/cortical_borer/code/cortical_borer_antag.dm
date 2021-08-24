@@ -9,7 +9,6 @@
 		else
 			text += span_redtext(" died")
 		text += span_bold(" The borer produced [player_borer.children_produced] borers.")
-		text += span_bold(" The borer was able to obtain [player_borer.count_willingness] willing hosts.")
 		if(player_borer.body_focus)
 			text += span_bold(" Their focus was [player_borer.body_focus].")
 		else
@@ -72,18 +71,6 @@
 		parts += span_greentext("Borers were able to survive the shift!")
 	else
 		parts += span_redtext("Borers were unable to survive the shift!")
-	if(GLOB.born_borers >= 10)
-		parts += span_greentext("Borers were able to reproduce enough during the shift!")
-	else
-		parts += span_redtext("Borers were unable to reproduce enough during the shift!")
-	if(GLOB.focused_borers >= 10)
-		parts += span_greentext("Borers were able to focus enough during the shift!")
-	else
-		parts += span_redtext("Borers were unable to focus enough during the shift!")
-	if(length(GLOB.willing_hosts) >= 10)
-		parts += span_greentext("Borers were kind enough to gain willing hosts!")
-	else
-		parts += span_redtext("Borers were not kind enough to gain willing hosts!")
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
 /datum/round_event_control/cortical_borer
@@ -125,6 +112,7 @@
 	var/choosing_number = min(candidates.len, living_number)
 	for(var/repeating_code in 1 to choosing_number)
 		var/mob/dead/observer/new_borer = pick(candidates)
+		candidates -= new_borer
 		var/turf/vent_turf = get_turf(pick(vents))
 		var/mob/living/simple_animal/cortical_borer/spawned_cb = new /mob/living/simple_animal/cortical_borer(vent_turf)
 		spawned_cb.ckey = new_borer.ckey
