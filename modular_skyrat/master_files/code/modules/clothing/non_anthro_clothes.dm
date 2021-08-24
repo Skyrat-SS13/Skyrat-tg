@@ -227,9 +227,6 @@
 /obj/item/clothing/under/color/jumpskirt
 	mutant_variants = NONE
 
-/obj/item/clothing/under/dress/skirt
-	mutant_variants = NONE
-
 /obj/item/clothing/under/suit/black/skirt
 	mutant_variants = NONE
 

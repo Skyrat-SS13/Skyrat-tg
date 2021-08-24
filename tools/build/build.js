@@ -61,6 +61,7 @@ export const DmTarget = new Juke.Target({
     'html/**',
     'icons/**',
     'interface/**',
+    'modular_skyrat/**', ///SKYRAT EDIT ADDITION - Making the CBT work
     `${DME_NAME}.dme`,
   ],
   outputs: [
@@ -192,7 +193,7 @@ export const TguiLintTarget = new Juke.Target({
 export const TguiDevTarget = new Juke.Target({
   dependsOn: [YarnTarget],
   executes: async ({ args }) => {
-    await yarn('node', 'packages/tgui-dev-server/index.js', ...args);
+    await yarn('node', 'packages/tgui-dev-server/index.esm.js', ...args);
   },
 });
 

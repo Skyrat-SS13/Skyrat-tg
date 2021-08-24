@@ -81,7 +81,6 @@
 
 /obj/structure/biohazard_blob/structure/core/Destroy()
 	if(our_controller)
-		our_controller.CoreDeath()
 		our_controller.our_core = null
 	soundloop.stop()
 	QDEL_NULL(soundloop)
@@ -177,7 +176,6 @@
 			desc += " It feels damp and smells of rat poison."
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			desc += " It glows softly."
-	AddComponent(/datum/component/slippery, 80)
 
 /obj/structure/biohazard_blob/resin/update_overlays()
 	. = ..()
