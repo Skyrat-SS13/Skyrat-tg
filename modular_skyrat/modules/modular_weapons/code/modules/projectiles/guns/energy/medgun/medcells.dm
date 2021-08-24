@@ -133,6 +133,7 @@
 	if(target.getBruteLoss() > 49)
 		return
 	target.adjustBruteLoss(-7.5)
+	target.adjust_disgust(3)
 
 /obj/item/ammo_casing/energy/medical/burn1/safe
 	projectile_type = /obj/projectile/energy/medical/safe/burn1
@@ -150,6 +151,7 @@
 	if(target.getFireLoss() > 49)
 		return
 	target.adjustFireLoss(-7.5)
+	target.adjust_disgust(3)
 
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
@@ -257,6 +259,7 @@
 	if(target.getBruteLoss() > 49)
 		return
 	target.adjustBruteLoss(-11.25)
+	target.adjust_disgust(2)
 
 /obj/item/ammo_casing/energy/medical/burn2/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn2
@@ -274,6 +277,7 @@
 	if(target.getFireLoss() > 49)
 		return
 	target.adjustFireLoss(-11.25)
+	target.adjust_disgust(2)
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
@@ -378,6 +382,7 @@
 	if(target.getBruteLoss() > 49)
 		return
 	target.adjustBruteLoss(-15)
+	target.adjust_disgust(1)
 
 /obj/item/ammo_casing/energy/medical/burn3/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn3
@@ -395,5 +400,6 @@
 	if(target.getFireLoss() > 49)
 		return
 	target.adjustFireLoss(-15)
+	target.adjust_disgust(1)
 
 //End of Basic Tiers of cells.//
