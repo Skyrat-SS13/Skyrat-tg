@@ -119,7 +119,7 @@
 
 /obj/item/seeds/rockplanet/coyote
 	name = "pack of coyote tobacco seeds"
-	desc = ""
+	desc = "These seeds grow into Coyote Tobacco."
 	icon_state = "seeds-coyote"
 	species = "coyote"
 	plantname = "Coyote Tobacco"
@@ -129,7 +129,7 @@
 
 /obj/item/seeds/rockplanet/yucca
 	name = "pack of dagger-yucca seeds"
-	desc = ""
+	desc = "These seeds grow into Dagger-Plant Yucca."
 	icon_state = "seed-yucca"
 	species = "yucca"
 	plantname = "Dagger-Yucca"
@@ -139,7 +139,7 @@
 
 /obj/item/seeds/rockplanet/agaricus
 	name = "pack of agaricus mycelium"
-	desc = ""
+	desc = "This mycelium grows into agaricus mushrooms, specifically wine-colored agaricus. Technically edible, but very unappetizing..."
 	icon_state = "mycelium-agaricus"
 	species = "agaricus"
 	plantname = "Agaricus Mushrooms"
@@ -160,7 +160,7 @@
 	glass_icon_state = "sotol_coyote_glass"
 	glass_name = "Sotol Coyote"
 	glass_desc = "A cleverly-recreated recipe, almost impossible to distinguish from the original. It's adorned with... a tobacco leaf?"
-	chemical_flags = NONE	//Only way to get this is fermenting.
+	chemical_flags = NONE	//Only way to get this is fermenting, so no flag for it being mixable.
 	glass_price = DRINK_PRICE_HIGH
 	liquid_fire_power = 2
 
