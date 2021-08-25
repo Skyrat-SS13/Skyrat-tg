@@ -42,13 +42,19 @@
 	target.adjustOxyLoss(-10)
 
 //PROCS//
-//DIGUST
+//Applies digust by damage thresholds.
 /obj/projectile/energy/medical/proc/DamageDisgust(mob/living/target, type_damage)
 	if(type_damage >= 100)
 		target.adjust_disgust(3)
 	if(type_damage >=  50 && type_damage < 100)
 		target.adjust_disgust(1.5)
-
+//Applies clone damage by thresholds
+/obj/projectile/energy/medical/proc/DamageClone(mob/living/target, type_damage, ammount_healed, max_clone)
+	if(type_damage > 49 && type_damage < 100 )
+		target.adjustCloneLoss((ammount_healed * (max_clone * 0.5)))
+	if(type_damage > 99)
+		target.adjustCloneLoss((ammount_healed * max_clone))
+//Checks to see if the patient is living.
 /obj/projectile/energy/medical/proc/IsLivingHuman(mob/living/target)
 	if(!istype(target, /mob/living/carbon/human))
 		return FALSE
@@ -74,10 +80,7 @@
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(3)
 	//CLONE
-	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
-		target.adjustCloneLoss(2.45)
-	if(target.getBruteLoss() > 99)
-		target.adjustCloneLoss(4.9)
+	DamageClone(target, target.getBruteLoss(), 7.5, 0.66)
 	target.adjustBruteLoss(-7.5)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
