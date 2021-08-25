@@ -418,8 +418,8 @@
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
-	if(cortical_owner.inside_human())
-		to_chat(cortical_owner, span_warning("You are unable to reproduce while inside a host!"))
+	if(!cortical_owner.inside_human())
+		to_chat(cortical_owner, span_warning("You need a host to reproduce!"))
 		return
 	if(cortical_owner.chemical_storage < 100)
 		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can reproduce!"))
@@ -442,6 +442,9 @@
 	if(spawn_borer.mind)
 		spawn_borer.mind.add_antag_datum(/datum/antagonist/cortical_borer)
 	cortical_owner.children_produced++
+	if(prob(25))
+		cortical_owner.human_host.gain_trauma_type(BRAIN_TRAUMA_MILD, TRAUMA_RESILIENCE_BASIC)
+		to_chat(cortical_owner.human_host, span_warning("Your brain begins to hurt..."))
 	new /obj/effect/decal/cleanable/vomit(borer_turf)
 	playsound(borer_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	to_chat(spawn_borer, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
