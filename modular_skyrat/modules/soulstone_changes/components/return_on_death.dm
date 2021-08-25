@@ -13,7 +13,7 @@
 /datum/component/return_on_death/proc/return_to_old_body()
 	SIGNAL_HANDLER
 	var/mob/currentmob = parent
-	if(currentmob && sourcemob && !(QDELETED(sourcemob)) && !(QDELETED(currentmob)) && currentmob.client)
+	if(currentmob && sourcemob && !(QDELETED(sourcemob)) && !(QDELETED(currentmob)))
 		to_chat(currentmob, span_warning("Your current body no longer anchoring you, your soul returns to your original body."))
 		sourcemob.ckey = currentmob.ckey
 		if(HAS_TRAIT_FROM(sourcemob, TRAIT_SACRIFICED, "sacrificed"))
