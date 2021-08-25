@@ -99,7 +99,10 @@
 	if(target.stat == DEAD)
 		return
 	//DISGUST
-	BurnDisgust(target)
+	if(target.getFireLoss() > 49)
+		target.adjust_disgust(1.5)
+	if(target.getFireLoss() > 99)
+		target.adjust_disgust(1.5)
 	target.adjust_disgust(3)
 	//CLONE
 	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
@@ -181,7 +184,10 @@
 	if(target.stat == DEAD)
 		return
 	//DISGUST
-	BruteDisgust(target)
+	if(target.getBruteLoss() >= 50)
+		target.adjust_disgust(1.5)
+	if(target.getBruteLoss() >= 100)
+		target.adjust_disgust(1.5)
 	target.adjust_disgust(2)
 	//CLONE
 	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
@@ -205,7 +211,10 @@
 	if(target.stat == DEAD)
 		return
 	//DISGUST
-	BurnDisgust(target)
+	if(target.getFireLoss() > 49)
+		target.adjust_disgust(1.5)
+	if(target.getFireLoss() > 99)
+		target.adjust_disgust(1.5)
 	target.adjust_disgust(2)
 	//CLONE
 	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
@@ -299,7 +308,10 @@
 	if(target.stat == DEAD)
 		return
 	//DISGUST
-	BruteDisgust(target)
+	if(target.getBruteLoss() > 49)
+		target.adjust_disgust(1.5)
+	if(target.getBruteLoss() > 99)
+		target.adjust_disgust(1.5)
 	target.adjust_disgust(1)
 	//CLONE
 	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
@@ -323,7 +335,10 @@
 	if(target.stat == DEAD)
 		return
 	//DISGUST
-	BurnDisgust(target)
+	if(target.getFireLoss() > 49)
+		target.adjust_disgust(1.5)
+	if(target.getFireLoss() > 99)
+		target.adjust_disgust(1.5)
 	target.adjust_disgust(1)
 	//CLONE
 	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
