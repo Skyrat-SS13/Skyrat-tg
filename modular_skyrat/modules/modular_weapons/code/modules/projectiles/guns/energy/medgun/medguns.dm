@@ -170,7 +170,7 @@
 //Brute III//
 /obj/item/medicell/brute3
 	name = "Brute III Medicell"
-	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
+	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute III Functoinality"
 	icon_state = "Brute3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute3/safe
 	unsafe_ammo = /obj/item/ammo_casing/energy/medical/brute3
@@ -179,7 +179,7 @@
 //Burn III//
 /obj/item/medicell/burn3
 	name = "Burn III Medicell"
-	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
+	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn III Functoinality"
 	icon_state = "Burn3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn3/safe
 	unsafe_ammo = /obj/item/ammo_casing/energy/medical/burn3

@@ -47,11 +47,11 @@
 	if(type_damage >=  50 && type_damage < 100)
 		target.adjust_disgust(1.5)
 //Applies clone damage by thresholds
-/obj/projectile/energy/medical/proc/DamageClone(mob/living/target, type_damage, ammount_healed, max_clone)
-	if(type_damage > 49 && type_damage < 100 )
-		target.adjustCloneLoss((ammount_healed * (max_clone * 0.5)))
-	if(type_damage > 99)
-		target.adjustCloneLoss((ammount_healed * max_clone))
+/obj/projectile/energy/medical/proc/DamageClone(mob/living/target, type_damage, amount_healed, max_clone)
+	if(type_damage >= 50 && type_damage < 100 )
+		target.adjustCloneLoss((amount_healed * (max_clone * 0.5)))
+	if(type_damage >= 100)
+		target.adjustCloneLoss((amount_healed * max_clone))
 //Checks to see if the patient is living.
 /obj/projectile/energy/medical/proc/IsLivingHuman(mob/living/target)
 	if(!istype(target, /mob/living/carbon/human))
@@ -76,7 +76,7 @@
 		return FALSE
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(3)
-	DamageClone(target, target.getBruteLoss(), 7.5, 0.66)
+	DamageClone(target, target.getBruteLoss(), 7.5, 2/3)
 	target.adjustBruteLoss(-7.5)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
@@ -93,7 +93,7 @@
 		return FALSE
 	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(3)
-	DamageClone(target, target.getFireLoss(), 7.5, 0.66)
+	DamageClone(target, target.getFireLoss(), 7.5, 2/3)
 	target.adjustFireLoss(-7.5)
 
 //Basic Toxin Heal//
@@ -162,7 +162,7 @@
 		return FALSE
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(2)
-	DamageClone(target, target.getBruteLoss(), 11.25, 0.33)
+	DamageClone(target, target.getBruteLoss(), 11.25, 1/3)
 	target.adjustBruteLoss(-11.25)
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
@@ -179,7 +179,7 @@
 		return FALSE
 	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(2)
-	DamageClone(target, target.getFireLoss(), 11.25, 0.33)
+	DamageClone(target, target.getFireLoss(), 11.25, 1/3)
 	target.adjustFireLoss(-11.25)
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
@@ -221,7 +221,7 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	if(target.getBruteLoss() > 49)
+	if(target.getBruteLoss() >= 50)
 		return
 	target.adjustBruteLoss(-11.25)
 	target.adjust_disgust(2)
@@ -237,7 +237,7 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	if(target.getFireLoss() > 49)
+	if(target.getFireLoss() >= 50)
 		return
 	target.adjustFireLoss(-11.25)
 	target.adjust_disgust(2)
@@ -257,7 +257,7 @@
 		return FALSE
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(1)
-	DamageClone(target, target.getBruteLoss(), 15, 0.11)
+	DamageClone(target, target.getBruteLoss(), 15, 1/9)
 	target.adjustBruteLoss(-15)
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
@@ -274,7 +274,7 @@
 		return FALSE
 	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(1)
-	DamageClone(target, target.getFireLoss(), 15, 0.11)
+	DamageClone(target, target.getFireLoss(), 15, 1/9)
 	target.adjustFireLoss(-15)
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
@@ -316,7 +316,7 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	if(target.getBruteLoss() > 49)
+	if(target.getBruteLoss() >= 50)
 		return
 	target.adjustBruteLoss(-15)
 	target.adjust_disgust(1)
@@ -332,7 +332,7 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	if(target.getFireLoss() > 49)
+	if(target.getFireLoss() >= 50)
 		return
 	target.adjustFireLoss(-15)
 	target.adjust_disgust(1)
