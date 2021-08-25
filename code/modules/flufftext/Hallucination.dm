@@ -113,6 +113,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 
 /obj/effect/hallucination/simple/Initialize(mapload, mob/living/carbon/T)
 	. = ..()
+	if(!T)
+		stack_trace("A hallucination was created with no target")
+		return INITIALIZE_HINT_QDEL
 	target = T
 	current_image = GetImage()
 	if(target.client)
@@ -1245,7 +1248,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		halitem.plane = ABOVE_HUD_PLANE
 		switch(rand(1,6))
 			if(1) //revolver
-				halitem.icon = 'icons/obj/guns/ballistic.dmi'
+				halitem.icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
 				halitem.icon_state = "revolver"
 				halitem.name = "Revolver"
 			if(2) //c4

@@ -1,8 +1,12 @@
+#define SKYRAT_MENTOR_CONFIG_FILE "[global.config.directory]/skyrat/mentors.txt"
+
 GLOBAL_LIST_EMPTY(mentor_datums)
 GLOBAL_PROTECT(mentor_datums)
 
 GLOBAL_VAR_INIT(mentor_href_token, GenerateToken())
 GLOBAL_PROTECT(mentor_href_token)
+
+//#define SKYRAT_MENTOR_CONFIG_FILE "[global.config.directory]/skyrat/mentors.txt"
 
 /datum/mentors
 	var/name = "someone's mentor datum"
@@ -26,6 +30,16 @@ GLOBAL_PROTECT(mentor_href_token)
 		owner.add_mentor_verbs()
 		if(!check_rights_for(owner, R_ADMIN,0)) // don't add admins to mentor list.
 			GLOB.mentors[owner] = TRUE
+
+/datum/mentors/proc/remove_mentor()
+	if(owner)
+		owner.remove_mentor_verbs()
+		GLOB.mentors -= owner
+		owner.mentor_datum = null
+		owner = null
+	log_admin_private("[target] was removed from the rank of mentor.")
+	GLOB.mentor_datums -= target
+	qdel(src)
 
 /datum/mentors/proc/CheckMentorHREF(href, href_list)
 	var/auth = href_list["mentor_token"]
@@ -59,13 +73,13 @@ GLOBAL_PROTECT(mentor_href_token)
 /proc/load_mentors()
 	usr = null
 	GLOB.mentor_datums.Cut()
-	for(var/it in GLOB.mentors)
+	for(var/it as anything in GLOB.mentors)
 		var/client/C = it
 		C.remove_mentor_verbs()
 		C.mentor_datum = null
 	GLOB.mentors.Cut()
 	//if(CONFIG_GET(flag/mentor_legacy_system))//legacy
-	var/list/lines = world.file2list("config/skyrat/mentors.txt")
+	var/list/lines = world.file2list(SKYRAT_MENTOR_CONFIG_FILE)
 	for(var/line in lines)
 		if(!length(line))
 			continue
@@ -86,6 +100,34 @@ GLOBAL_PROTECT(mentor_href_token)
 			var/ckey = ckey(query_load_mentors.item[1])
 			new /datum/mentors(ckey)*/
 
+/// Proc to save the current mentor list into the config, overwriting it.
+/proc/save_mentors()
+	usr = null
+	var/mentor_list = ""
+
+	// This whole mess is just to create a cache of all the mentors that were in the config already
+	// so that we don't add every admin to the list, which would be a pain to maintain afterwards.
+	var/list/existing_mentor_config = world.file2list(SKYRAT_MENTOR_CONFIG_FILE)
+	var/list/existing_mentors = list()
+	for(var/line in existing_mentor_config)
+		if(!length(line))
+			continue
+		if(findtextEx(line, "#", 1, 2))
+			continue
+		var/existing_mentor = ckey(line)
+		if(!existing_mentor)
+			continue
+		existing_mentors[existing_mentor] = TRUE
+
+	for(var/mentor as anything in GLOB.mentor_datums)
+		// We're doing this check to not add admins to the file, as explained above.
+		if(existing_mentors[mentor] == TRUE)
+			mentor_list += mentor + "\n"
+	rustg_file_write(mentor_list, SKYRAT_MENTOR_CONFIG_FILE)
+
+
 // new client var: mentor_datum. Acts the same way holder does towards admin: it holds the mentor datum. if set, the guy's a mentor.
 /client
 	var/datum/mentors/mentor_datum
+
+#undef SKYRAT_MENTOR_CONFIG_FILE

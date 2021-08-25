@@ -224,7 +224,10 @@
 					var/list/access = H.wear_id.GetAccess()
 					if(ACCESS_SECURITY in access)
 						allowed_access = H.get_authentification_name()
-
+				if(H.wear_id)
+					var/list/access = H.wear_id.GetAccess()
+					if(ACCESS_SECURITY_RECORDS in access)
+						allowed_access = H.get_authentification_name()
 			if(!allowed_access)
 				to_chat(H, span_warning("ERROR: Invalid access."))
 				return

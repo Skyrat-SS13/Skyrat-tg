@@ -472,6 +472,7 @@
 	custom_materials = null
 	flags_1 = NONE
 
+/* Skyrat Edit Start - Modularization and New Scythes
 /obj/item/scythe
 	icon_state = "scythe0"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
@@ -519,6 +520,7 @@
 				melee_attack_chain(user, V)
 	swiping = FALSE
 	return TRUE
+*/
 
 /obj/item/secateurs
 	name = "secateurs"

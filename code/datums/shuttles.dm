@@ -111,12 +111,12 @@
 	suffix = "skyrat" //SKYRAT EDIT CHANGE
 	name = "Base Shuttle Template (Emergency)"
 
+/* //SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/map_template/shuttle/cargo
 	port_id = "cargo"
 	name = "Base Shuttle Template (Cargo)"
 	who_can_purchase = null
 
-/* //SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/map_template/shuttle/ferry
 	port_id = "ferry"
 	name = "Base Shuttle Template (Ferry)"
@@ -451,7 +451,7 @@
 	description = "A large shuttle with a center biodome that is flourishing with life. Frolick with the monkeys! (Extra monkeys are stored on the bridge.)"
 	admin_notes = "Pretty freakin' large, almost as big as Raven or Cere. Excercise caution with it."
 	credit_cost = CARGO_CRATE_VALUE * 16
-	
+
 /datum/map_template/shuttle/emergency/casino
 	suffix = "casino"
 	name = "Lucky Jackpot Casino Shuttle"

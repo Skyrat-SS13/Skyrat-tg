@@ -75,7 +75,7 @@
 
 /obj/item/gun/energy/laser/scatter/shotty
 	name = "energy shotgun"
-	icon = 'icons/obj/guns/ballistic.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
 	icon_state = "cshotgun"
 	inhand_icon_state = "shotgun"
 	desc = "A combat shotgun gutted and refitted with an internal laser system. Can switch between taser and scattered disabler shots."

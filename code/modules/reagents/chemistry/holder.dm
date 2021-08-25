@@ -1025,6 +1025,12 @@
 	var/reaction_message = equilibrium.reaction.mix_message
 	if(equilibrium.reaction.mix_sound)
 		playsound(get_turf(my_atom), equilibrium.reaction.mix_sound, 80, TRUE)
+	//SKYRAT EDIT ADDITION
+	//If the reaction pollutes, pollute it here if we have an atom
+	if(equilibrium.reaction.pollutant_type && my_atom)
+		var/turf/my_turf = get_turf(my_atom)
+		my_turf.PolluteTurf(equilibrium.reaction.pollutant_type, equilibrium.reaction.pollutant_amount * equilibrium.reacted_vol)
+	//SKYRAT EDIT END
 	qdel(equilibrium)
 	update_total()
 	SEND_SIGNAL(src, COMSIG_REAGENTS_REACTED, .)
@@ -1178,6 +1184,13 @@
 				my_atom.visible_message(span_notice("[iconhtml] \The [my_atom]'s power is consumed in the reaction."))
 				extract.name = "used slime extract"
 				extract.desc = "This extract has been used up."
+
+	//SKYRAT EDIT ADDITION
+	//If the reaction pollutes, pollute it here if we have an atom
+	if(selected_reaction.pollutant_type && my_atom)
+		var/turf/my_turf = get_turf(my_atom)
+		my_turf.PolluteTurf(selected_reaction.pollutant_type, selected_reaction.pollutant_amount * multiplier)
+	//SKYRAT EDIT END
 
 	selected_reaction.on_reaction(src, null, multiplier)
 

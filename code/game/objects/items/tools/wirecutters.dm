@@ -76,7 +76,7 @@
 /obj/item/wirecutters/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "powered wirecutters"
 	desc = "Cuts wires with the power of ELECTRICITY. Faster than normal wirecutters."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "wirecutters_cyborg"
 	worn_icon_state = "cutters"
 	toolspeed = 0.5
