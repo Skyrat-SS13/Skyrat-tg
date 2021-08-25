@@ -91,17 +91,9 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//DISGUST
-	if(target.getFireLoss() > 49)
-		target.adjust_disgust(1.5)
-	if(target.getFireLoss() > 99)
-		target.adjust_disgust(1.5)
+	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(3)
-	//CLONE
-	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
-		target.adjustCloneLoss(2.45)
-	if(target.getFireLoss() > 99)
-		target.adjustCloneLoss(4.9)
+	DamageClone(target, target.getFireLoss(), 7.5, 0.66)
 	target.adjustFireLoss(-7.5)
 
 //Basic Toxin Heal//
