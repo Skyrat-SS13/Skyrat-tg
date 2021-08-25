@@ -29,9 +29,8 @@
 	if(!soul_moved)
 		return_to_old_body()
 	sourcemob = null
-	currentmob = null
 	. = ..()
 
 
 /datum/component/return_on_death/UnregisterFromParent()
-	UnregisterSignal(currentmob, COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(parent, COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING)
