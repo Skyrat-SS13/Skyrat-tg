@@ -262,7 +262,7 @@ effective or pretty fucking useless.
 	//SKYRAT EDIT ADDITION BEGIN
 /obj/item/jammer/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/cell, power_use_amount, CALLBACK(src, .proc/turn_off))
+	AddComponent(/datum/component/cell, null, CALLBACK(src, .proc/turn_off))
 
 /obj/item/jammer/proc/turn_on()
 	active = TRUE
