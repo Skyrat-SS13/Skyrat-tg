@@ -82,27 +82,16 @@
 	. = ..()
 	if(!has_safety)
 		return
-	if(!on_safety)
-		. += span_notice("[src] has the safety turned off.")
-		return
-	else
-		. += span_notice("[src] has the safety turned on.")
+	. += span_notice("[src] has the safety turned [on_safety ? 'on' : 'off'].")
+	return .
 
 /obj/item/medicell/attack_self(mob/living/user)
 	if(!has_safety)
 		return
-	if(!on_safety)
-		on_safety = TRUE
-		to_chat(user, span_notice("The safety on the Medicell is now on, you cannot heal when it will cause clone damage to the patient"))
-		src.ammo_type = safe_ammo
-		return
-	if(on_safety)
-		on_safety = FALSE
-		to_chat(user, span_notice("The safety on the Medicell is now off, you can heal when it will cause clone damage to the patient"))
-		src.ammo_type = unsafe_ammo
-		return
-	else
-		return
+	on_safety = !on_safety
+	to_chat(user, span_notice("The safety on the Medicell is now [on_safety ? "on, you can't" : "off, you can"] use it to heal when it would cause clone damage to the patient."))
+	src.ammo_type = on_safety ? safe_ammo : unsafe_ammo
+	return
 
 /obj/item/medicell/Initialize()
 	. =..()
