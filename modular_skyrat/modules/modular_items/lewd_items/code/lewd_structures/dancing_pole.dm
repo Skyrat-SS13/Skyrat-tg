@@ -77,10 +77,6 @@
 	if(!length(pole_designs))
 		populate_pole_designs()
 
-/obj/structure/pole/ComponentInitialize()
-    . = ..()
-    AddElement(/datum/element/update_icon_updates_onmob)
-
 /obj/structure/pole/update_icon_state()
     . = ..()
     icon_state = "[initial(icon_state)]_[current_pole_color]_[pole_on? "on" : "off"]"

@@ -63,8 +63,9 @@ GLOBAL_LIST_EMPTY(cluwne_maze)
 		QDEL_NULL(poi)
 	if(cluwnehole)
 		QDEL_NULL(cluwnehole)
-	if(current_victim)
-		current_victim = null
+	current_victim = null
+	target_area = null
+	invalid_area_typecache = null
 	return ..()
 
 
