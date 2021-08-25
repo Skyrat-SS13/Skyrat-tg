@@ -104,7 +104,7 @@
 
 /obj/item/cooking/cyborg/power/examine()
 	. = ..()
-	. += " It's fitted with a [tool_behaviour == TOOL_KNIFE ? "screw" : "bolt"] head."
+	. += " It's fitted with a [tool_behaviour == TOOL_KNIFE ? "knife" : "rolling pin"] head."
 
 /obj/item/cooking/cyborg/power/attack_self(mob/user)
 	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
