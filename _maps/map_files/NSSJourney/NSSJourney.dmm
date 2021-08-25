@@ -26662,10 +26662,10 @@
 	name = "Isolation Cell 1";
 	req_access_txt = "2"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = isolationshuttera
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "solitarya"
+	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "bPC" = (
@@ -44494,14 +44494,6 @@
 	},
 /turf/open/floor/iron,
 /area/construction/mining/aux_base)
-"kZK" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "briggate";
-	name = "security shutters"
-	},
-/turf/open/floor/plating,
-/area/security/prison/safe)
 "kZR" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 6
@@ -48809,7 +48801,7 @@
 "prj" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = isolationshuttera
+	id = "solitarya"
 	},
 /turf/open/floor/plating,
 /area/security/prison/safe)
@@ -52041,18 +52033,19 @@
 /turf/open/floor/iron/white,
 /area/science/mixing)
 "sIR" = (
-/obj/machinery/button/door{
-	id = "isolationshutterb";
-	name = "Isolation Shutter";
-	pixel_y = 25;
-	req_access_txt = "63"
-	},
 /obj/machinery/button/flasher{
 	id = "solitaryflashb";
-	pixel_x = -12;
+	pixel_x = -8;
 	pixel_y = 25
 	},
 /obj/structure/closet/secure_closet/genpop,
+/obj/machinery/button/door{
+	id = "solitaryb";
+	name = "solitary cell lock b";
+	pixel_x = 3;
+	pixel_y = 25;
+	req_access_txt = "2"
+	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "sJf" = (
@@ -52683,10 +52676,6 @@
 	id_tag = "IsolationCell";
 	name = "Isolation Cells";
 	req_access_txt = "2"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "briggate";
-	name = "security shutters"
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -54453,10 +54442,10 @@
 	name = "Isolation Cell 2";
 	req_access_txt = "2"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "isolationshutterb"
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "solitaryb"
+	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "uWe" = (
@@ -56606,18 +56595,19 @@
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/science)
 "wUO" = (
-/obj/machinery/button/door{
-	id = "isolationshuttera";
-	name = "isolation shutters";
-	pixel_y = 25;
-	req_access_txt = "63"
-	},
 /obj/machinery/button/flasher{
 	id = "solitaryflasha";
-	pixel_x = 12;
+	pixel_x = 8;
 	pixel_y = 25
 	},
 /obj/structure/closet/secure_closet/genpop,
+/obj/machinery/button/door{
+	id = "solitarya";
+	name = "solitary cell lock a";
+	pixel_x = -3;
+	pixel_y = 25;
+	req_access_txt = "2"
+	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "wVq" = (
@@ -57145,7 +57135,7 @@
 "xsE" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "isolationshutterb"
+	id = "solitaryb"
 	},
 /turf/open/floor/plating,
 /area/security/prison/safe)
@@ -78949,7 +78939,7 @@ sUX
 aaJ
 wUO
 xuu
-kZK
+iNO
 xuu
 xuu
 xuu
@@ -79463,7 +79453,7 @@ xzh
 aaJ
 sIR
 xuu
-kZK
+iNO
 xuu
 lZV
 xuu
