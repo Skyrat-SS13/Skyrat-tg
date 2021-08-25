@@ -161,16 +161,9 @@
 	if(!IsLivingHuman(target))
 		return FALSE
 	//DISGUST
-	if(target.getBruteLoss() >= 50)
-		target.adjust_disgust(1.5)
-	if(target.getBruteLoss() >= 100)
-		target.adjust_disgust(1.5)
+	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(2)
-	//CLONE
-	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
-		target.adjustCloneLoss(1.9)
-	if(target.getBruteLoss() > 99)
-		target.adjustCloneLoss(3.8)
+	DamageClone(target, target.getBruteLoss(), 11.25, 0.33)
 	target.adjustBruteLoss(-11.25)
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
@@ -185,17 +178,9 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//DISGUST
-	if(target.getFireLoss() > 49)
-		target.adjust_disgust(1.5)
-	if(target.getFireLoss() > 99)
-		target.adjust_disgust(1.5)
+	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(2)
-	//CLONE
-	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
-		target.adjustCloneLoss(1.9)
-	if(target.getFireLoss() > 99)
-		target.adjustCloneLoss(3.8)
+	DamageClone(target, target.getFireLoss(), 11.25, 0.33)
 	target.adjustFireLoss(-11.25)
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
@@ -271,17 +256,9 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//DISGUST
-	if(target.getBruteLoss() > 49)
-		target.adjust_disgust(1.5)
-	if(target.getBruteLoss() > 99)
-		target.adjust_disgust(1.5)
+	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(1)
-	//CLONE
-	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
-		target.adjustCloneLoss(1.125)
-	if(target.getBruteLoss() > 99)
-		target.adjustCloneLoss(2.25)
+	DamageClone(target, target.getBruteLoss(), 15, 0.11)
 	target.adjustBruteLoss(-15)
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
@@ -296,17 +273,9 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//DISGUST
-	if(target.getFireLoss() > 49)
-		target.adjust_disgust(1.5)
-	if(target.getFireLoss() > 99)
-		target.adjust_disgust(1.5)
+	DamageDisgust(target, target.getFireLoss())
 	target.adjust_disgust(1)
-	//CLONE
-	if(target.getFireLoss() > 49 && target.getFireLoss() < 100 )
-		target.adjustCloneLoss(1.125)
-	if(target.getFireLoss() > 99)
-		target.adjustCloneLoss(2.25)
+	DamageClone(target, target.getFireLoss(), 15, 0.11)
 	target.adjustFireLoss(-15)
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
