@@ -60,7 +60,7 @@
 		return FALSE
 	else
 		return TRUE
-
+//Heals Brute without safety
 /obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone)
 	. = ..()
 	if(!IsLivingHuman(target))
@@ -69,6 +69,15 @@
 	target.adjust_disgust(3)
 	DamageClone(target, target.getBruteLoss(), amount_healed, max_clone)
 	target.adjustBruteLoss(-amount_healed)
+//Heals Burn damage without safety
+/obj/projectile/energy/medical/proc/healBurn(mob/living/target, amount_healed, max_clone)
+	. = ..()
+	if(!IsLivingHuman(target))
+		return FALSE
+	DamageDisgust(target, target.getFireLoss())
+	target.adjust_disgust(3)
+	DamageClone(target, target.getFireLoss(), amount_healed, max_clone)
+	target.adjustFireLoss(-amount_healed)
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
@@ -81,6 +90,7 @@
 	icon_state = "red_laser"
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
+	. = ..()
 	healBrute(target, 7.5, 2/3)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
@@ -93,12 +103,7 @@
 
 /obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	DamageDisgust(target, target.getFireLoss())
-	target.adjust_disgust(3)
-	DamageClone(target, target.getFireLoss(), 7.5, 2/3)
-	target.adjustFireLoss(-7.5)
+	healBurn(target, 7.5, 2/3)
 
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
