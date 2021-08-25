@@ -35,10 +35,8 @@
 
 /obj/projectile/energy/medical/default/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	target.adjustOxyLoss(-10)
 
 //PROCS//
@@ -91,10 +89,8 @@
 
 /obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//DISGUST
 	if(target.getFireLoss() > 49)
 		target.adjust_disgust(1.5)
@@ -119,10 +115,8 @@
 
 /obj/projectile/energy/medical/toxin1/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	target.adjustToxLoss(-5)
 	target.radiation = max(target.radiation - 40, 0)//Toxin is treatable, but inefficent//
 
@@ -135,10 +129,8 @@
 
 /obj/projectile/energy/medical/safe/brute1/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//Stops healing from 50 or over
 	if(target.getBruteLoss() >= 50)
 		return
@@ -153,10 +145,8 @@
 
 /obj/projectile/energy/medical/safe/burn1/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//Stops healing from 50 or over
 	if(target.getFireLoss() >= 50)
 		return
@@ -176,10 +166,8 @@
 
 /obj/projectile/energy/medical/upgraded/brute2/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//DISGUST
 	if(target.getBruteLoss() >= 50)
 		target.adjust_disgust(1.5)
@@ -203,10 +191,8 @@
 
 /obj/projectile/energy/medical/upgraded/burn2/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//DISGUST
 	if(target.getFireLoss() > 49)
 		target.adjust_disgust(1.5)
@@ -229,10 +215,8 @@
 
 /obj/projectile/energy/medical/upgraded/oxy2/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	target.adjustOxyLoss(-20)
 //Tier II Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin2
@@ -244,11 +228,8 @@
 	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/upgraded/toxin2/on_hit(mob/living/target)
-	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	target.adjustToxLoss(-7.5)
 	target.radiation = max(target.radiation - 60, 0)
 
@@ -261,10 +242,8 @@
 
 /obj/projectile/energy/medical/upgraded/safe/brute2/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//Stops healing from 50 or over
 	if(target.getBruteLoss() > 49)
 		return
@@ -279,10 +258,8 @@
 
 /obj/projectile/energy/medical/upgraded/safe/burn2/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//Stops healing from 50 or over
 	if(target.getFireLoss() > 49)
 		return
@@ -300,10 +277,8 @@
 
 /obj/projectile/energy/medical/upgraded/brute3/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//DISGUST
 	if(target.getBruteLoss() > 49)
 		target.adjust_disgust(1.5)
@@ -327,10 +302,8 @@
 
 /obj/projectile/energy/medical/upgraded/burn3/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//DISGUST
 	if(target.getFireLoss() > 49)
 		target.adjust_disgust(1.5)
@@ -353,10 +326,8 @@
 
 /obj/projectile/energy/medical/upgraded/oxy3/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	target.adjustOxyLoss(-30)
 //Tier III Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin3
@@ -369,10 +340,8 @@
 
 /obj/projectile/energy/medical/upgraded/toxin3/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	target.adjustToxLoss(-5)
 	target.radiation = max(target.radiation - 80, 0)
 //SAFE MODES
@@ -384,10 +353,8 @@
 
 /obj/projectile/energy/medical/upgraded/safe/brute3/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//Stops healing from 50 or over
 	if(target.getBruteLoss() > 49)
 		return
@@ -402,10 +369,8 @@
 
 /obj/projectile/energy/medical/upgraded/safe/burn3/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
-		return
+	if(!IsLivingHuman(target))
+		return FALSE
 	//Stops healing from 50 or over
 	if(target.getFireLoss() > 49)
 		return
