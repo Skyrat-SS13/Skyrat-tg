@@ -54,6 +54,12 @@
 		target.adjust_disgust(1.5)
 	if(target.getFireLoss() > 99)
 		target.adjust_disgust(1.5)
+
+/obj/projectile/energy/medical/proc/IsLivingHuman(mob/living/target)
+	if(!istype(target, /mob/living/carbon/human))
+		return FALSE
+	if(target.stat == DEAD)
+		return FALSE
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
@@ -66,9 +72,7 @@
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
 	. = ..()
-	if(!istype(target, /mob/living/carbon/human))
-		return
-	if(target.stat == DEAD)
+	if(!IsLivingHuman(target))
 		return
 	//DISGUST
 	BruteDisgust(target)
