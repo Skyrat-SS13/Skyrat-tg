@@ -362,7 +362,7 @@
 		if(user)
 			to_chat(user, "This body has already been harvested!")
 		return
-	ADD_TRAIT(dusted_victim, TRAIT_SACRIFICED, "soulstoned")
+	ADD_TRAIT(dusted_victim, TRAIT_SACRIFICED, "sacrificed")
 
 	if(!shade_controller)
 		shade_controller = dusted_victim
@@ -430,5 +430,5 @@
 	*/
 	//SKYRAT EDIT REMOVAL END
 	init_shade(T, user , shade_controller = chosen_ghost)
-	qdel(T)
+	//qdel(T) SKYRAT REMOVAL -- SOULSTONE_CHANGES
 	return TRUE

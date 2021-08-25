@@ -1,28 +1,32 @@
 //This component makes the ckey return to a body on death
 /datum/component/return_on_death
 	var/mob/sourcemob
-	var/mob/currentmob
+	var/soul_moved
 
-/datum/component/return_on_death/Initialize(mob/source, mob/current)
+/datum/component/return_on_death/Initialize(mob/source)
 	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(current, COMSIG_LIVING_DEATH, .proc/return_to_old_body)
-	RegisterSignal(current, COMSIG_PARENT_QDELETING, proc/return_to_old_body)
+	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/return_to_old_body)
+	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/return_to_old_body)
 	sourcemob = source
-	currentmob = current
 
 /datum/component/return_on_death/proc/return_to_old_body()
 	SIGNAL_HANDLER
-	if(currentmob && sourcemob && !(QDELETED(sourcemob)) && !(QDELETED(currentmob)) && sourcemob.client)
+	var/mob/currentmob = parent
+	if(currentmob && sourcemob && !(QDELETED(sourcemob)) && !(QDELETED(currentmob)) && currentmob.client)
 		to_chat(currentmob, span_warning("Your current body no longer anchoring you, your soul returns to your original body."))
 		sourcemob.ckey = currentmob.ckey
+		if(HAS_TRAIT_FROM(sourcemob, TRAIT_SACRIFICED, "sacrificed"))
+			REMOVE_TRAIT(sourcemob, TRAIT_SACRIFICED, "sacrificed")
+		soul_moved = TRUE
 	else
 		to_chat(currentmob, span_warning("You were unable to return to your old body as it was destroyed."))
-
+	if(!QDELETED(src))
+		qdel(src)
 
 
 /datum/component/return_on_death/Destroy(force, silent)
-	if(!force)
+	if(!soul_moved)
 		return_to_old_body()
 	sourcemob = null
 	currentmob = null
