@@ -30,7 +30,6 @@
 
 /obj/projectile/energy/medical/upgraded
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-
 /obj/item/ammo_casing/energy/medical/default
 	name = "oxygen heal shot"
 
@@ -42,6 +41,19 @@
 		return
 	target.adjustOxyLoss(-10)
 
+//PROCS//
+//DIGUST
+/obj/projectile/energy/medical/proc/BruteDisgust(mob/living/target)
+	if(target.getBruteLoss() > 49)
+		target.adjust_disgust(1.5)
+	if(target.getBruteLoss() > 99)
+		target.adjust_disgust(1.5)
+
+/obj/projectile/energy/medical/proc/BurnDisgust(mob/living/target)
+	if(target.getFireLoss() > 49)
+		target.adjust_disgust(1.5)
+	if(target.getFireLoss() > 99)
+		target.adjust_disgust(1.5)
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
@@ -59,10 +71,7 @@
 	if(target.stat == DEAD)
 		return
 	//DISGUST
-	if(target.getBruteLoss() > 49)
-		target.adjust_disgust(1.5)
-	if(target.getBruteLoss() > 99)
-		target.adjust_disgust(1.5)
+	BruteDisgust(target)
 	target.adjust_disgust(3)
 	//CLONE
 	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
