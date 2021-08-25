@@ -60,6 +60,16 @@
 		return FALSE
 	else
 		return TRUE
+
+/obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone)
+	. = ..()
+	if(!IsLivingHuman(target))
+		return FALSE
+	DamageDisgust(target, target.getBruteLoss())
+	target.adjust_disgust(3)
+	DamageClone(target, target.getBruteLoss(), amount_healed, max_clone)
+	target.adjustBruteLoss(-amount_healed)
+
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
@@ -71,13 +81,7 @@
 	icon_state = "red_laser"
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
-	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	DamageDisgust(target, target.getBruteLoss())
-	target.adjust_disgust(3)
-	DamageClone(target, target.getBruteLoss(), 7.5, 2/3)
-	target.adjustBruteLoss(-7.5)
+	healBrute(target, 7.5, 2/3)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1

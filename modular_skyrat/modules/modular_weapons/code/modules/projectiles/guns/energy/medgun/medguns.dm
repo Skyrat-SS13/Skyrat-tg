@@ -82,7 +82,7 @@
 	. = ..()
 	if(!has_safety)
 		return
-	. += span_notice("[src] has the safety turned [on_safety ? 'on' : 'off'].")
+	. += span_notice("[src] has the safety turned [on_safety ? "on" : "off"].")
 	return .
 
 /obj/item/medicell/attack_self(mob/living/user)
