@@ -43,16 +43,10 @@
 
 //PROCS//
 //DIGUST
-/obj/projectile/energy/medical/proc/BruteDisgust(mob/living/target)
-	if(target.getBruteLoss() > 49)
-		target.adjust_disgust(1.5)
-	if(target.getBruteLoss() > 99)
-		target.adjust_disgust(1.5)
-
-/obj/projectile/energy/medical/proc/BurnDisgust(mob/living/target)
-	if(target.getFireLoss() > 49)
-		target.adjust_disgust(1.5)
-	if(target.getFireLoss() > 99)
+/obj/projectile/energy/medical/proc/DamageDisgust(mob/living/target, type_damage)
+	if(type_damage >= 100)
+		target.adjust_disgust(3)
+	if(type_damage >=  50 && type_damage < 100)
 		target.adjust_disgust(1.5)
 
 /obj/projectile/energy/medical/proc/IsLivingHuman(mob/living/target)
@@ -60,6 +54,8 @@
 		return FALSE
 	if(target.stat == DEAD)
 		return FALSE
+	else
+		return TRUE
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
@@ -73,9 +69,9 @@
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
 	. = ..()
 	if(!IsLivingHuman(target))
-		return
+		return FALSE
 	//DISGUST
-	BruteDisgust(target)
+	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(3)
 	//CLONE
 	if(target.getBruteLoss() > 49 && target.getBruteLoss() < 100 )
