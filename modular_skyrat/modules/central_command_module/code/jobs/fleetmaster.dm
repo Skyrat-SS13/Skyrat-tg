@@ -99,6 +99,7 @@
 	inhand_icon_state = "cent_headset_alt"
 	keyslot = new /obj/item/encryptionkey/heads/captain
 	keyslot2 = new /obj/item/encryptionkey/headset_cent
+	command = TRUE
 
 /obj/item/radio/headset/headset_cent/fleetmaster/ComponentInitialize()
 	. = ..()
