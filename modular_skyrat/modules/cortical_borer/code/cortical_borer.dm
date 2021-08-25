@@ -365,8 +365,12 @@
 		for(var/mob/dead_mob in GLOB.dead_mob_list)
 			var/link = FOLLOW_LINK(dead_mob, src)
 			to_chat(dead_mob, span_purple("[link] Cortical Hivemind: [src] sings, \"[message]\""))
+		var/logging_textone = "[key_name(src)] spoke into the hivemind: [message]"
+		log_say(logging_textone)
 		return
 	to_chat(human_host, span_purple("Cortical Link: [src] sings, \"[message]\""))
+	var/logging_texttwo = "[key_name(src)] spoke to [key_name(human_host)]: [message]"
+	log_say(logging_texttwo)
 	to_chat(src, span_purple("Cortical Link: [src] sings, \"[message]\""))
 	for(var/mob/dead_mob in GLOB.dead_mob_list)
 		var/link = FOLLOW_LINK(dead_mob, src)
