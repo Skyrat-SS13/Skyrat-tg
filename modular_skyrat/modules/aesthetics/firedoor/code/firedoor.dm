@@ -22,6 +22,9 @@
 /obj/structure/firelock_frame
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor.dmi'
 
+/obj/machinery/door/firedoor/border_only
+	has_hotcold_sprite = FALSE
+
 /obj/machinery/door/firedoor/open()
 	playsound(loc, door_open_sound, 90, TRUE)
 	. = ..()
