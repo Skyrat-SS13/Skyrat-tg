@@ -17,7 +17,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	typepath = /datum/round_event/cme
 	weight = 10
 	min_players = 30
-	max_occurrences = 1 // Why was this allowed to roll three times bruh
+	max_occurrences = 0 // Why was this allowed to roll three times bruh
 	earliest_start = 25 MINUTES
 
 /datum/round_event/cme
@@ -37,7 +37,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
-	
+
 /datum/round_event_control/cme/minimal
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme/minimal
