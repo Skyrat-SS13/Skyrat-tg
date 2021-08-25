@@ -100,6 +100,7 @@
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
 	toolspeed = 0.5
+	tool_behaviour = TOOL_KNIFE
 
 /obj/item/cooking/cyborg/power/examine()
 	. = ..()
