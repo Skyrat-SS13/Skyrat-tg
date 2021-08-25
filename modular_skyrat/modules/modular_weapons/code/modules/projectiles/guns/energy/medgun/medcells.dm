@@ -76,10 +76,8 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//DISGUST
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(3)
-	//CLONE
 	DamageClone(target, target.getBruteLoss(), 7.5, 0.66)
 	target.adjustBruteLoss(-7.5)
 //The Basic Burn Heal//
