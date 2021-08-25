@@ -115,6 +115,7 @@
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute1/safe
 	projectile_type = /obj/projectile/energy/medical/safe/brute1
+
 /obj/projectile/energy/medical/safe/brute1
 	name = "safe brute heal shot"
 	icon_state = "red_laser"
@@ -123,7 +124,6 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//Stops healing from 50 or over
 	if(target.getBruteLoss() >= 50)
 		return
 	target.adjustBruteLoss(-7.5)
@@ -131,6 +131,7 @@
 
 /obj/item/ammo_casing/energy/medical/burn1/safe
 	projectile_type = /obj/projectile/energy/medical/safe/burn1
+
 /obj/projectile/energy/medical/safe/burn1
 	name = "safe burn heal shot"
 	icon_state = "yellow_laser"
@@ -139,7 +140,6 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//Stops healing from 50 or over
 	if(target.getFireLoss() >= 50)
 		return
 	target.adjustFireLoss(-7.5)
@@ -160,7 +160,6 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//DISGUST
 	DamageDisgust(target, target.getBruteLoss())
 	target.adjust_disgust(2)
 	DamageClone(target, target.getBruteLoss(), 11.25, 0.33)
@@ -213,6 +212,7 @@
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute2/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/brute2
+
 /obj/projectile/energy/medical/upgraded/safe/brute2
 	name = "safe brute heal shot"
 	icon_state = "red_laser"
@@ -221,7 +221,6 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//Stops healing from 50 or over
 	if(target.getBruteLoss() > 49)
 		return
 	target.adjustBruteLoss(-11.25)
@@ -229,6 +228,7 @@
 
 /obj/item/ammo_casing/energy/medical/burn2/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn2
+
 /obj/projectile/energy/medical/upgraded/safe/burn2
 	name = "safe burn heal shot"
 	icon_state = "yellow_laser"
@@ -237,7 +237,6 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//Stops healing from 50 or over
 	if(target.getFireLoss() > 49)
 		return
 	target.adjustFireLoss(-11.25)
@@ -308,6 +307,7 @@
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute3/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/brute3
+
 /obj/projectile/energy/medical/upgraded/safe/brute3
 	name = "safe brute heal shot"
 	icon_state = "red_laser"
@@ -316,7 +316,6 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//Stops healing from 50 or over
 	if(target.getBruteLoss() > 49)
 		return
 	target.adjustBruteLoss(-15)
@@ -324,6 +323,7 @@
 
 /obj/item/ammo_casing/energy/medical/burn3/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn3
+
 /obj/projectile/energy/medical/upgraded/safe/burn3
 	name = "safe burn heal shot"
 	icon_state = "yellow_laser"
@@ -332,7 +332,6 @@
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	//Stops healing from 50 or over
 	if(target.getFireLoss() > 49)
 		return
 	target.adjustFireLoss(-15)
