@@ -118,16 +118,17 @@
 
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
-	projectile_type = /obj/projectile/energy/medical/toxin1
+	projectile_type = /obj/projectile/energy/medical/toxin
 	select_name = "toxin"
 
-/obj/projectile/energy/medical/toxin1
+/obj/projectile/energy/medical/toxin
 	name = "toxin heal shot"
 	icon_state = "green_laser"
+	var/amount_healed = 5
 
-/obj/projectile/energy/medical/toxin1/on_hit(mob/living/target)
+/obj/projectile/energy/medical/toxin/on_hit(mob/living/target)
 	. = ..()
-	healTox(target, 5)
+	healTox(target, amount_healed)
 
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute1/safe
@@ -198,16 +199,12 @@
 
 //Tier II Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin2
-	projectile_type = /obj/projectile/energy/medical/upgraded/toxin2
+	projectile_type = /obj/projectile/energy/medical/toxin/better
 	select_name = "toxin II"
 
-/obj/projectile/energy/medical/upgraded/toxin2
+/obj/projectile/energy/medical/toxin/better
 	name = "strong toxin heal shot"
-	icon_state = "green_laser"
-
-/obj/projectile/energy/medical/upgraded/toxin2/on_hit(mob/living/target)
-	. = ..()
-	healTox(target, 7.5)
+	amount_healed = 7.5
 
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute2/safe
@@ -275,12 +272,12 @@
 
 //Tier III Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin3
-	projectile_type = /obj/projectile/energy/medical/upgraded/toxin3
+	projectile_type = /obj/projectile/energy/medical/toxin/better/best
 	select_name = "toxin III"
 
-/obj/projectile/energy/medical/upgraded/toxin3
+/obj/projectile/energy/medical/toxin/better/best
 	name = "powerful toxin heal shot"
-	icon_state = "green_laser"
+	amount_healed = 10
 
 /obj/projectile/energy/medical/upgraded/toxin3/on_hit(mob/living/target)
 	. = ..()
