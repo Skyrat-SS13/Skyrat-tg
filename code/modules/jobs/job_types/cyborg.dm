@@ -3,7 +3,6 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
 	faction = FACTION_STATION
 	total_positions = 3	// SKYRAT EDIT: Original value (0)
-
 	spawn_positions = 3	// SKYRAT EDIT: Original value (1)
 	supervisors = "your laws and the AI" //Nodrak
 	selection_color = "#ddffdd"
