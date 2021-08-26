@@ -1,11 +1,13 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface/attackby(obj/item/attacking_object, mob/user, params)
 	if(istype(attacking_object, /obj/item/food/grown))
 		var/obj/item/food/grown/attacking_grown = attacking_object
-		seeding(attacking_grown.seed, attacking_grown, user)
+		if(attacking_grown.seed)
+			seeding(attacking_grown.seed, attacking_grown, user)
 		return
 	else if(istype(attacking_object, /obj/item/grown))
 		var/obj/item/grown/attacking_grown = attacking_object
-		seeding(attacking_grown.seed, attacking_grown, user)
+		if(attacking_grown.seed)
+			seeding(attacking_grown.seed, attacking_grown, user)
 		return
 	return ..()
 
@@ -39,7 +41,7 @@
 	new_farm.icon = new_farm.planted_seeds.growing_icon
 	new_farm.icon_state = "[new_farm.planted_seeds.icon_grow]1"
 	new_farm.update_appearance()
-	to_chat(user, span_notice("You finish planting."))
+	user.visible_message("[user] finished planting [new_farm].", "You finish planting [new_farm].")
 	qdel(deleted_item)
 
 /obj/structure/flora/ash_farming
