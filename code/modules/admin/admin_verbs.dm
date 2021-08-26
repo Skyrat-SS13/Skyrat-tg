@@ -22,8 +22,12 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/mark_datum_mapview,
 	/client/proc/debugstatpanel,
 	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
+<<<<<<< HEAD
 	/client/proc/revokebunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/addbunkerbypass //SKYRAT EDIT ADDITION - PANICBUNKER
+=======
+	/client/proc/requests
+>>>>>>> 8549cc0bed3 (Add Requests Manager to View All Prayers, Centcom/Syndicate Requests & Nuke Code Requests in Round (#60905))
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
