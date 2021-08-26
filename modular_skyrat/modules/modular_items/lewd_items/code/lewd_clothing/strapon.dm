@@ -246,7 +246,7 @@
 
 			else
 				if(M.is_bottomless())
-					message = pick("fucks [M]'s ass with [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with [src]", "roughly fucks [M]'s ass with [src], making them roll eyes back")
+					message = pick("fucks [M]'s ass with [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with [src]", "roughly fucks [M]'s ass with [src], causing their eyes to roll back")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
 					if(prob(60))
