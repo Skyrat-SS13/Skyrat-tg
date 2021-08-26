@@ -858,7 +858,7 @@
 // Donation reward for CandleJax
 /obj/item/clothing/glasses/sunglasses/zentai
 	var/list/spans = list()
-	actions_types = list(/datum/action/item_action/hypno_whisper)
+	actions_types = list(/datum/action/item_action/demonic_whisper)
 
 /obj/item/clothing/glasses/sunglasses/zentai
 	name = "Demonic Sunglasses"
@@ -873,7 +873,7 @@
 	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
-/datum/action/item_action/hypno_whisper
+/datum/action/item_action/demonic_whisper
 	name = "Demonic Whisper"
 
 /obj/item/clothing/glasses/sunglasses/zentai/ui_action_click(mob/living/user, action)
