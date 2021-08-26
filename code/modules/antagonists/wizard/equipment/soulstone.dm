@@ -331,9 +331,9 @@
 	flick("make_[makeicon][theme]", newstruct)
 	playsound(newstruct, 'sound/effects/constructform.ogg', 50)
 	//SKYRAT EDIT ADDITION BEGIN - SOULSTONE_CHANGES
-	var/datum/component/return_on_death/rod = target.GetComponent(/datum/component/return_on_death)
-	if(rod)
-		var/sourcemob = rod.sourcemob
+	var/datum/component/return_on_death/RoD = target.GetComponent(/datum/component/return_on_death)
+	if(RoD)
+		var/sourcemob = RoD.sourcemob
 		newstruct.AddComponent(/datum/component/return_on_death, sourcemob, newstruct)
 	//SKYRAT EDIT ADDITION END
 	if(stoner)
