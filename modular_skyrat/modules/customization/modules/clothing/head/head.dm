@@ -431,3 +431,11 @@
 	soft_type = "yankee"
 	dog_fashion = /datum/dog_fashion/head/yankee
 	mutant_variants = NONE
+
+/obj/item/clothing/head/soft/yankee/rimless
+	name = "rimless fashionable baseball cap"
+	desc = "Rimless for her pleasure."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "yankeenobrimsoft"
+	soft_type = "yankeenobrim"
