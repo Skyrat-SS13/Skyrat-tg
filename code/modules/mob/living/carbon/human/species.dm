@@ -505,7 +505,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(!noggin) //Decapitated
 		return
 
-	if(HAS_TRAIT(H, TRAIT_HUSK))
+	if(HAS_TRAIT(H, TRAIT_HUSK) || HAS_TRAIT(H, TRAIT_INVISIBLE_MAN))
 		return
 	var/datum/sprite_accessory/S
 	var/list/standing = list()
@@ -681,7 +681,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 /*
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
-
+	if(HAS_TRAIT(species_human, TRAIT_INVISIBLE_MAN))
+		return handle_mutant_bodyparts(species_human)
 	var/list/standing = list()
 
 	var/obj/item/bodypart/head/noggin = species_human.get_bodypart(BODY_ZONE_HEAD)
@@ -826,7 +827,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	source.remove_overlay(BODY_ADJ_LAYER)
 	source.remove_overlay(BODY_FRONT_LAYER)
 
-	if(!mutant_bodyparts)
+	if(!mutant_bodyparts || HAS_TRAIT(source, TRAIT_INVISIBLE_MAN))
 		return
 
 	var/obj/item/bodypart/head/noggin = source.get_bodypart(BODY_ZONE_HEAD)
@@ -1226,6 +1227,30 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(H.back && SEND_SIGNAL(H.back, COMSIG_TRY_STORAGE_CAN_INSERT, I, H, TRUE))
 				return TRUE
 			return FALSE
+
+		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+		if(ITEM_SLOT_VAGINA)
+			if(H.is_bottomless())
+				if(H.getorganslot(ORGAN_SLOT_VAGINA))
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
+				return FALSE
+			return FALSE
+		if(ITEM_SLOT_ANUS)
+			if(H.is_bottomless())
+				return equip_delay_self_check(I, H, bypass_equip_delay_self)
+			return FALSE
+		if(ITEM_SLOT_NIPPLES)
+			if(H.is_topless())
+				return equip_delay_self_check(I, H, bypass_equip_delay_self)
+			return FALSE
+		if(ITEM_SLOT_PENIS)
+			if(H.is_bottomless())
+				if(H.getorganslot(ORGAN_SLOT_PENIS))
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
+				return FALSE
+			return FALSE
+		//SKYRAT EDIT ADDITION END
+
 	return FALSE //Unsupported slot
 
 /datum/species/proc/equip_delay_self_check(obj/item/I, mob/living/carbon/human/H, bypass_equip_delay_self)

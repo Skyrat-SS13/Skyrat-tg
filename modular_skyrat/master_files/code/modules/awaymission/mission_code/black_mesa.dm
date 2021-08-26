@@ -351,7 +351,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Stop right there!"
+	speak = list("Stop right there!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -418,7 +418,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Hey, freeman! Over here!"
+	speak = list("Hey, freeman! Over here!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -495,10 +495,10 @@
 	name = "mob placer"
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = "mobspawner"
-	var/list/possible_mobs
+	var/list/possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 
 /obj/effect/random_mob_placer/Initialize(mapload)
-	..()
+	. = ..()
 	var/mob/picked_mob = pick(possible_mobs)
 	new picked_mob(loc)
 	return INITIALIZE_HINT_QDEL

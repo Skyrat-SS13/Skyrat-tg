@@ -537,7 +537,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	. = ..()
 	if((acidpwr <= 0) || (acid_volume <= 0))
 		return FALSE
-
+	if(QDELETED(src)) //skyrat edit: fix createanddestroy
+		return FALSE
 	AddComponent(/datum/component/acid, acidpwr, acid_volume)
 	for(var/obj/O in src)
 		if(intact && HAS_TRAIT(O, TRAIT_T_RAY_VISIBLE))

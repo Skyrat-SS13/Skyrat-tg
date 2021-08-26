@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/tmp/old_be_special = 0 //Bitflag version of be_special, used to update old savefiles and nothing more
 										//If it's 0, that's good, if it's anything but 0, the owner of this prefs file's antag choices were,
 										//autocorrected this round, not that you'd need to check that.
-	var/be_antag = TRUE //Does this player wish to be an antag this round?
+	var/be_antag = FALSE //Does this player wish to be an antag this round?
 
 	var/UI_style = null
 	var/buttons_locked = FALSE
@@ -220,6 +220,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/erp_pref = "Ask"
 	var/noncon_pref = "Ask"
 	var/vore_pref = "Ask"
+	var/sextoys_pref = "No"
 
 	//BACKGROUND STUFF
 	var/general_record = ""
@@ -516,6 +517,7 @@ GLOBAL_LIST_INIT(food, list(
 					dat += 	"<b>ERP:</b><a href='?_src_=prefs;preference=erp_pref;task=input'>[erp_pref]</a> "
 					dat += 	"<b>Non-Con:</b><a href='?_src_=prefs;preference=noncon_pref;task=input'>[noncon_pref]</a> "
 					dat += 	"<b>Vore:</b><a href='?_src_=prefs;preference=vore_pref;task=input'>[vore_pref]</a><br>"
+					dat += 	"<b>Sex toys usage:</b><a href='?_src_=prefs;preference=sextoys_pref;task=input'>[sextoys_pref]</a><br>"
 					dat += "<a href='?_src_=prefs;preference=ooc_prefs;task=input'><b>Set OOC prefs</b></a><br>"
 					if(length(ooc_prefs) <= 40)
 						if(!length(ooc_prefs))
@@ -1206,6 +1208,13 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Be Able To Get Covered In \"Reproductive Reagent\":</b> <a href='?_src_=prefs;preference=cumfaced_pref'>[(skyrat_toggles & CUMFACE_PREF) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
 
+			//erp update prefs here
+			dat += "<b>Be able to become bimboficated:</b> <a href='?_src_=prefs;preference=bimbo_pref'>[(skyrat_toggles & BIMBO_PREF) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Be affected by breast enlargement chemicals:</b> <a href='?_src_=prefs;preference=b_enlargement_pref'>[(skyrat_toggles & BREAST_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Be affected by penis enlargement chemicals:</b> <a href='?_src_=prefs;preference=p_enlargement_pref'>[(skyrat_toggles & PENIS_ENLARGEMENT) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Forced masculinity:</b> <a href='?_src_=prefs;preference=forced_m_pref'>[(skyrat_toggles & FORCED_MALE) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<b>Forced femininity:</b> <a href='?_src_=prefs;preference=forced_fem_pref'>[(skyrat_toggles & FORCED_FEM) ? "Enabled":"Disabled"]</a><br>"
+			dat += "<br>"
 
 			if(user.client)
 				if(unlock_content)
@@ -2210,6 +2219,43 @@ GLOBAL_LIST_INIT(food, list(
 							vore_pref = "No"
 						if("No")
 							vore_pref = "Yes"
+				//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+				if("sextoys_pref")
+					// User changed state of ERP pref
+					var/mob/living/carbon/human/M = user
+					switch(sextoys_pref)
+						if("No")
+							sextoys_pref = "Yes"
+							// User set ERP pref to "Yes", make the ERP button of the inventory visible and interactive again
+							if(user.hud_used)
+								for(var/atom/movable/screen/human/ERP_toggle/E in user.hud_used.static_inventory)
+									if(istype(E, /atom/movable/screen/human/ERP_toggle))
+										E.invisibility = 0
+						// Perform standard inventory updates
+						if("Yes")
+							sextoys_pref = "No"
+							if(ishuman(user))
+								// The user has set the ERP pref to a value other than "Yes", now we drop all items from ERP slots and can't use them
+								if(M.vagina != null)
+									M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
+								if(M.anus != null)
+									M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
+								if(M.nipples != null)
+									M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
+								if(M.penis != null)
+									M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+							// If the user has an inventory of the ERP open, then we will hide it
+							if(user.hud_used)
+								if(user.hud_used.ERP_inventory_shown)
+									user.hud_used.ERP_inventory_shown = FALSE
+									user.client.screen -= user.hud_used.ERP_toggleable_inventory
+								// Find the ERP button of the inventory and make it invisible so that the user cannot interact with it
+								for(var/atom/movable/screen/human/ERP_toggle/E in user.hud_used.static_inventory)
+									if(istype(E, /atom/movable/screen/human/ERP_toggle))
+										E.invisibility = 100
+								user.hud_used.hidden_inventory_update(user)
+								user.hud_used.persistent_inventory_update(user)
+				//SKYRAT EDIT ADDITION END
 
 				if("change_arousal_preview")
 					var/list/gen_arous_trans = list("Not aroused" = AROUSAL_NONE,
@@ -2897,6 +2943,22 @@ GLOBAL_LIST_INIT(food, list(
 				//cumface pref
 				if("cumfaced_pref")
 					skyrat_toggles ^= CUMFACE_PREF
+
+				//erp update prefs coming riiight here
+				if("bimbo_pref")
+					skyrat_toggles ^= BIMBO_PREF
+
+				if("b_enlargement_pref")
+					skyrat_toggles ^= BREAST_ENLARGEMENT
+
+				if("p_enlargement_pref")
+					skyrat_toggles ^= PENIS_ENLARGEMENT
+
+				if("forced_m_pref")
+					skyrat_toggles ^= FORCED_MALE
+
+				if("forced_fem_pref")
+					skyrat_toggles ^= FORCED_FEM
 
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)

@@ -7,6 +7,7 @@
 	light_mask = "wardrobe-light-mask"
 	vend_reply = "Thank you for using the CommDrobe!"
 	auto_build_products = TRUE
+	payment_department = ACCOUNT_CMD
 
 /obj/machinery/vending/access/command/build_access_list(list/access_lists)
 	access_lists["[ACCESS_CAPTAIN]"] = list(

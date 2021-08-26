@@ -11,7 +11,7 @@
 
 	if(isliving(user))
 		var/mob/living/L = user
-		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA))
+		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA) || HAS_TRAIT(L, TRAIT_INVISIBLE_MAN))
 			obscure_name = TRUE
 
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
