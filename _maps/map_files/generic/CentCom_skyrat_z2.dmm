@@ -6318,6 +6318,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/mechanical,
+/obj/machinery/recharger,
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/ncvtitan)
 "cHE" = (
@@ -6378,6 +6379,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"cRx" = (
+/obj/machinery/light/directional/north,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/iron/dark,
+/area/centcom/ncvtitan)
 "cSo" = (
 /obj/effect/turf_decal/trimline/green/filled/warning{
 	dir = 1
@@ -7389,12 +7396,7 @@
 /area/centcom/ncvtitan)
 "hvB" = (
 /obj/structure/table,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/item/clipboard,
-/obj/item/pen/red,
+/obj/machinery/cell_charger_multi,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
 "hvQ" = (
@@ -8368,6 +8370,11 @@
 	},
 /turf/open/floor/iron/white,
 /area/centcom/interlink)
+"lin" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/iron/smooth,
+/area/centcom/ncvtitan)
 "liz" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
@@ -8811,6 +8818,7 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 8
 	},
+/obj/machinery/recharger,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
 "ncg" = (
@@ -9641,7 +9649,10 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/gun/grenadelauncher,
+/obj/item/gun/grenadelauncher{
+	pixel_y = -10
+	},
+/obj/machinery/recharger,
 /turf/open/floor/iron/smooth_large,
 /area/centcom/ncvtitan)
 "qua" = (
@@ -10877,12 +10888,11 @@
 /area/centcom/interlink)
 "vyg" = (
 /obj/structure/table,
-/obj/item/stack/wrapping_paper{
-	pixel_x = 3;
-	pixel_y = 4
-	},
-/obj/item/folder/yellow{
-	pixel_x = 4
+/obj/item/clipboard,
+/obj/item/pen/red,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
@@ -11319,6 +11329,7 @@
 "wZN" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/west,
+/obj/machinery/recharger,
 /turf/open/floor/wood,
 /area/centcom/ncvtitan)
 "xbr" = (
@@ -20010,7 +20021,7 @@ uQr
 uQr
 gpK
 rKz
-aBz
+cRx
 dyB
 dyB
 dyB
@@ -30534,7 +30545,7 @@ dPq
 frg
 ngI
 rKZ
-frg
+lin
 rKz
 cMJ
 aaa
@@ -30544,7 +30555,7 @@ aaa
 aaa
 cMJ
 rKz
-frg
+lin
 rKZ
 ngI
 frg
