@@ -18,7 +18,7 @@
 //End of cells
 
 /obj/item/ammo_casing/energy/medical
-	projectile_type = /obj/projectile/energy/medical/default
+	projectile_type = /obj/projectile/energy/medical/oxygen
 	select_name = "oxygen"
 	fire_sound = 'sound/effects/stealthoff.ogg'
 	e_cost = 120
@@ -29,17 +29,15 @@
 	name = "medical heal shot"
 	icon_state = "blue_laser"
 	damage = 0
-
-/obj/projectile/energy/medical/upgraded
-	pass_flags = UPGRADED_MEDICELL_PASSFLAGS
-/obj/item/ammo_casing/energy/medical/default
+/obj/projectile/energy/medical/oxygen
 	name = "oxygen heal shot"
+	var/amount_healed = 10
 
-/obj/projectile/energy/medical/default/on_hit(mob/living/target)
+/obj/projectile/energy/medical/oxygen/on_hit(mob/living/target)
 	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
-	target.adjustOxyLoss(-10)
+	target.adjustOxyLoss(-amount_healed)
 
 //PROCS//
 //Applies digust by damage thresholds.
@@ -191,17 +189,13 @@
 
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
-	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
+	projectile_type = /obj/projectile/energy/medical/oxygen/better
 	select_name = "oxygen II"
 
-/obj/projectile/energy/medical/upgraded/oxy2
+/obj/projectile/energy/medical/oxygen/better
 	name = "strong oxygen heal shot"
+	amount_healed = 20
 
-/obj/projectile/energy/medical/upgraded/oxy2/on_hit(mob/living/target)
-	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	target.adjustOxyLoss(-20)
 //Tier II Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin2
@@ -272,17 +266,13 @@
 
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
-	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
+	projectile_type = /obj/projectile/energy/medical/oxygen/better/best
 	select_name = "oxygen III"
 
-/obj/projectile/energy/medical/upgraded/oxy3
+/obj/projectile/energy/medical/oxygen/better/best
 	name = "powerful oxygen heal shot"
+	amount_healed = 30
 
-/obj/projectile/energy/medical/upgraded/oxy3/on_hit(mob/living/target)
-	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	target.adjustOxyLoss(-30)
 //Tier III Toxin Projectile//
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/upgraded/toxin3
