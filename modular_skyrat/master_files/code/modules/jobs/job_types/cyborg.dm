@@ -1,7 +1,5 @@
 /mob/living/silicon/robot/proc/latejoin_find_parent_ai(target_z_level = 3)
-	to_chat(world, "find parent ai")
 	if(connected_ai)
-		to_chat(world, "connected ai, returning")
 		return
 	for(var/mob/living/silicon/ai/AI in GLOB.silicon_mobs)
 		to_chat(world, "Current AI [AI]")
