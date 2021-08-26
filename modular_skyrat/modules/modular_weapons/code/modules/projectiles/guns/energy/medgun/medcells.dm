@@ -104,16 +104,19 @@
 	healBrute(target, amount_healed, max_clone, base_disgust)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
-	projectile_type = /obj/projectile/energy/medical/burn1
+	projectile_type = /obj/projectile/energy/medical/burn
 	select_name = "burn"
 
-/obj/projectile/energy/medical/burn1
+/obj/projectile/energy/medical/burn
 	name = "burn heal shot"
 	icon_state = "yellow_laser"
+	var/amount_healed = 7.5
+	var/max_clone = 2/3
+	var/base_disgust = 3
 
-/obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
+/obj/projectile/energy/medical/burn/on_hit(mob/living/target)
 	. = ..()
-	healBurn(target, 7.5, 2/3, 3)
+	healBurn(target, amount_healed, max_clone, base_disgust)
 
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
@@ -176,16 +179,16 @@
 
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
-	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
+	projectile_type = /obj/projectile/energy/medical/burn/better
 	select_name = "burn II"
 
-/obj/projectile/energy/medical/upgraded/burn2
+/obj/projectile/energy/medical/burn/better
 	name = "strong burn heal shot"
-	icon_state = "yellow_laser"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
+	amount_healed = 11.25
+	max_clone = 1/3
+	base_disgust = 2
 
-/obj/projectile/energy/medical/upgraded/burn2/on_hit(mob/living/target)
-	. = ..()
-	healBurn(target, 11.25, 1/3, 2)
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
@@ -258,16 +261,15 @@
 
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
-	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
+	projectile_type = /obj/projectile/energy/medical/burn/better/best
 	select_name = "burn III"
 
-/obj/projectile/energy/medical/upgraded/burn3
+/obj/projectile/energy/medical/burn/better/best
 	name = "powerful burn heal shot"
-	icon_state = "yellow_laser"
+	amount_healed = 15
+	max_clone = 1/9
+	base_disgust = 1
 
-/obj/projectile/energy/medical/upgraded/burn3/on_hit(mob/living/target)
-	. = ..()
-	healBurn(target, 15, 1/9, 1)
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
