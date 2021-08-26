@@ -356,7 +356,7 @@
 	timeout = 4 MINUTES
 
 /datum/mood_event/overgasm
-	description = "<span class='warning'>Uhh... I don't want to be horny anymore.</span>\n" //Me too, buddy. Me too.
+	description = span_warning("Uhh... I don't want to be horny anymore.") //Me too, buddy. Me too.
 	mood_change = -6
 	timeout = 10 MINUTES
 
