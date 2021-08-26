@@ -458,7 +458,8 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/glass/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		/obj/item/reagent_containers/food/condiment/enzyme,
+		//Skyrat Edit Start: Borg Buff
+		//obj/item/reagent_containers/food/condiment/enzyme, //edit
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
@@ -468,9 +469,16 @@
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
 		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
 		/obj/item/lighter,
 		/obj/item/storage/bag/tray,
-		/obj/item/reagent_containers/borghypo/borgshaker,
+		//obj/item/reagent_containers/borghypo/borgshaker, //edit
+		/obj/item/reagent_containers/syringe, //edit
+		/obj/item/cooking/cyborg/power, //edit
+		//Skyrat Edit Stop: Borg Buff
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/borg/apparatus/beaker/service)

@@ -1,35 +1,48 @@
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface/attackby(obj/item/attacking_object, mob/user, params)
 	if(istype(attacking_object, /obj/item/food/grown))
-		var/planting_chance = 30 //you only have a 30 percent chance of succeeding in planting, unless you are an ashwalker
-		if(iscarbon(user))
-			var/mob/living/carbon/carbon_user = user
-			if(carbon_user?.dna?.species?.id == SPECIES_LIZARD_ASH)
-				planting_chance = 80
 		var/obj/item/food/grown/attacking_grown = attacking_object
-		if(!dug)
-			to_chat(user, span_warning("You cannot grow plants on [src] without it being dug first!"))
-			return
-		if(!attacking_grown.seed)
-			to_chat(user, span_warning("[attacking_grown] does not have a seed, it cannot be grown!"))
-			return
-		to_chat(user, span_notice("You begin planting..."))
-		if(!do_after(user, 5 SECONDS, target = src))
-			to_chat(user, span_warning("You interrupt your planting!"))
-			return
-		if(!prob(planting_chance))
-			to_chat(user, span_warning("[attacking_grown] breaks in your hands!"))
-			qdel(attacking_grown)
-			return
-		var/obj/structure/flora/ash_farming/new_farm = new /obj/structure/flora/ash_farming(src)
-		new_farm.planted_seeds = attacking_grown.seed
-		new_farm.name = new_farm.planted_seeds.plantname
-		new_farm.icon = new_farm.planted_seeds.growing_icon
-		new_farm.icon_state = "[new_farm.planted_seeds.icon_grow]1"
-		new_farm.update_appearance()
-		to_chat(user, span_notice("You finish planting."))
-		qdel(attacking_grown)
+		if(attacking_grown.seed)
+			seeding(attacking_grown.seed, attacking_grown, user)
+		return
+	else if(istype(attacking_object, /obj/item/grown))
+		var/obj/item/grown/attacking_grown = attacking_object
+		if(attacking_grown.seed)
+			seeding(attacking_grown.seed, attacking_grown, user)
 		return
 	return ..()
+
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface/proc/seeding(obj/item/item_seed, obj/item/deleted_item, mob/user)
+	var/obj/structure/flora/ash_farming/find_farm = locate() in contents
+	if(find_farm)
+		to_chat(user, span_warning("There can only be one farm in a hole at a time!"))
+		return
+	var/planting_chance = 30 //you only have a 30 percent chance of succeeding in planting, unless you are an ashwalker
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		if(carbon_user?.dna?.species?.id == SPECIES_LIZARD_ASH)
+			planting_chance = 80
+	if(!dug)
+		to_chat(user, span_warning("You cannot grow plants on [src] without it being dug first!"))
+		return
+	if(!item_seed)
+		to_chat(user, span_warning("[deleted_item] does not have a seed, it cannot be grown!"))
+		return
+	to_chat(user, span_notice("You begin planting..."))
+	if(!do_after(user, 5 SECONDS, target = src))
+		to_chat(user, span_warning("You interrupt your planting!"))
+		return
+	if(!prob(planting_chance))
+		to_chat(user, span_warning("[deleted_item] breaks in your hands!"))
+		qdel(deleted_item)
+		return
+	var/obj/structure/flora/ash_farming/new_farm = new /obj/structure/flora/ash_farming(src)
+	new_farm.planted_seeds = item_seed
+	new_farm.name = new_farm.planted_seeds.plantname
+	new_farm.icon = new_farm.planted_seeds.growing_icon
+	new_farm.icon_state = "[new_farm.planted_seeds.icon_grow]1"
+	new_farm.update_appearance()
+	user.visible_message("[user] finished planting [new_farm].", "You finish planting [new_farm].")
+	qdel(deleted_item)
 
 /obj/structure/flora/ash_farming
 	name = "random plant"

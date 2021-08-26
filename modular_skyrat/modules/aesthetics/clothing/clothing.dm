@@ -92,6 +92,7 @@
 /obj/item/clothing/suit/toggle/labcoat/paramedic
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	icon_state = "labcoat_emt"
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'

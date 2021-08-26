@@ -219,6 +219,7 @@
 		           /obj/item/clothing/suit/jacket/letterman_nanotrasen = 1,
 				   /obj/item/clothing/under/costume/swagoutfit = 1,
 				   /obj/item/clothing/shoes/swagshoes = 1,
+				   /obj/item/clothing/shoes/jackboots/timbs = 2, //SKYRAT EDIT ADDITION
 		           /obj/item/instrument/piano_synth/headphones/spacepods = 1,
 		           /obj/item/clothing/suit/brownbattlecoat = 1, 	//SKYRAT EDIT ADDITION BEGIN
 		           /obj/item/clothing/suit/blackfurrich = 1,
