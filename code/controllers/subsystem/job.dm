@@ -758,24 +758,8 @@ SUBSYSTEM_DEF(job)
 	var/atom/destination
 	if(M.mind && !is_unassigned_job(M.mind.assigned_role) && length(GLOB.jobspawn_overrides[M.mind.assigned_role.title])) //We're doing something special today.
 		destination = pick(GLOB.jobspawn_overrides[M.mind.assigned_role.title])
-		// SKYRAT EDIT ADD -- LATEJOIN BORGS SYNCED WITH AI
-		var/mob/living/silicon/robot/cyborg = M
-		if(istype(cyborg))
-			cyborg.latejoin_find_parent_ai(destination.z)
-		//SKYRAT EDIT ADD END
 		destination.JoinPlayerHere(M, FALSE)
 		return TRUE
-	//SKYRAT EDIT ADDITION -- ONSTATION LATEJOINS
-	/*if(M.job && M.job == "Prisoner")
-		destination = locate(/obj/effect/landmark/start/prisoner) in GLOB.landmarks_list
-		destination.JoinPlayerHere(M, buckle)
-		return TRUE
-	if(M.job && M.job == "Cyborg")
-		destination = locate(/obj/effect/landmark/start/cyborg) in GLOB.landmarks_list
-		M.latejoin_find_parent_ai(destination.z)
-		destination.JoinPlayerHere(M, buckle)
-		return TRUE */
-	//SKYRAT EDIT END
 	if(latejoin_trackers.len)
 		destination = pick(latejoin_trackers)
 		destination.JoinPlayerHere(M, buckle)
