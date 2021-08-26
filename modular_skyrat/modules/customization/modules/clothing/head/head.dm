@@ -421,3 +421,12 @@
 	icon_state = "deputy_hat"
 	mutant_variants = NONE
 	desc = "A light brown hat with a smell of iron. There's a small set of antlers embroidered on the inside."
+
+/obj/item/clothing/head/soft/yankee
+	name = "fashionable baseball cap"
+	desc = "Rimmed and brimmed."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "yankeesoft"
+	soft_type = "yankee"
+	dog_fashion = /datum/dog_fashion/head/yankee
