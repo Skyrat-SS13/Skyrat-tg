@@ -1,12 +1,15 @@
-/mob/proc/latejoin_find_parent_ai(target_z_level = 3)
-	var/mob/living/silicon/robot/cyborg = src
-	if(!istype(cyborg))
-		return
-	if(cyborg.connected_ai)
+/mob/living/silicon/robot/proc/latejoin_find_parent_ai(target_z_level = 3)
+	to_chat(world, "find parent ai")
+	if(connected_ai)
+		to_chat(world, "connected ai, returning")
 		return
 	for(var/mob/living/silicon/ai/AI in GLOB.silicon_mobs)
+		to_chat(world, "Current AI [AI]")
+		to_chat(world, "AI z = [AI.z], target Z = [target_z_level]")
 		if(AI.z == target_z_level)
-			cyborg.set_connected_ai(AI)
+			to_chat(world, "setting [AI]")
+			set_connected_ai(AI)
 			break
-	cyborg.lawsync()
-	cyborg.show_laws()
+	to_chat(world, "Loop over")
+	lawsync()
+	show_laws()
