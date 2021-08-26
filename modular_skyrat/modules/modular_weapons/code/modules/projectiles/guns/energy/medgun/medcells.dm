@@ -61,27 +61,24 @@
 	else
 		return TRUE
 //Heals Brute without safety
-/obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone)
-	. = ..()
+/obj/projectile/energy/medical/proc/healBrute(mob/living/target, amount_healed, max_clone, base_disgust)
 	if(!IsLivingHuman(target))
 		return FALSE
 	DamageDisgust(target, target.getBruteLoss())
-	target.adjust_disgust(3)
+	target.adjust_disgust(base_disgust)
 	DamageClone(target, target.getBruteLoss(), amount_healed, max_clone)
 	target.adjustBruteLoss(-amount_healed)
 //Heals Burn damage without safety
-/obj/projectile/energy/medical/proc/healBurn(mob/living/target, amount_healed, max_clone)
-	. = ..()
+/obj/projectile/energy/medical/proc/healBurn(mob/living/target, amount_healed, max_clone, base_disgust)
 	if(!IsLivingHuman(target))
 		return FALSE
 	DamageDisgust(target, target.getFireLoss())
-	target.adjust_disgust(3)
+	target.adjust_disgust(base_disgust)
 	DamageClone(target, target.getFireLoss(), amount_healed, max_clone)
 	target.adjustFireLoss(-amount_healed)
 
 //Heal Toxin damage
 /obj/projectile/energy/medical/proc/healTox(mob/living/target, amount_healed)
-	. = ..()
 	if(!IsLivingHuman(target))
 		return FALSE
 	target.adjustToxLoss(-amount_healed)
@@ -99,7 +96,7 @@
 
 /obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
 	. = ..()
-	healBrute(target, 7.5, 2/3)
+	healBrute(target, 7.5, 2/3, 3)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
@@ -111,7 +108,7 @@
 
 /obj/projectile/energy/medical/burn1/on_hit(mob/living/target)
 	. = ..()
-	healBurn(target, 7.5, 2/3)
+	healBurn(target, 7.5, 2/3, 3)
 
 //Basic Toxin Heal//
 /obj/item/ammo_casing/energy/medical/toxin1
@@ -172,12 +169,7 @@
 
 /obj/projectile/energy/medical/upgraded/brute2/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	DamageDisgust(target, target.getBruteLoss())
-	target.adjust_disgust(2)
-	DamageClone(target, target.getBruteLoss(), 11.25, 1/3)
-	target.adjustBruteLoss(-11.25)
+	healBrute(target, 11.25, 1/3, 2)
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
@@ -189,12 +181,7 @@
 
 /obj/projectile/energy/medical/upgraded/burn2/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	DamageDisgust(target, target.getFireLoss())
-	target.adjust_disgust(2)
-	DamageClone(target, target.getFireLoss(), 11.25, 1/3)
-	target.adjustFireLoss(-11.25)
+	healBurn(target, 11.25, 1/3, 2)
 //Tier II Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy2
@@ -218,10 +205,8 @@
 	icon_state = "green_laser"
 
 /obj/projectile/energy/medical/upgraded/toxin2/on_hit(mob/living/target)
-	if(!IsLivingHuman(target))
-		return FALSE
-	target.adjustToxLoss(-7.5)
-	target.radiation = max(target.radiation - 60, 0)
+	. = ..()
+	healTox(target, 7.5)
 
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute2/safe
@@ -267,12 +252,7 @@
 
 /obj/projectile/energy/medical/upgraded/brute3/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	DamageDisgust(target, target.getBruteLoss())
-	target.adjust_disgust(1)
-	DamageClone(target, target.getBruteLoss(), 15, 1/9)
-	target.adjustBruteLoss(-15)
+	healBrute(target, 15, 1/9, 1)
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
@@ -284,12 +264,7 @@
 
 /obj/projectile/energy/medical/upgraded/burn3/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	DamageDisgust(target, target.getFireLoss())
-	target.adjust_disgust(1)
-	DamageClone(target, target.getFireLoss(), 15, 1/9)
-	target.adjustFireLoss(-15)
+	healBurn(target, 15, 1/9, 1)
 //Tier III Oxy Projectile//
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/upgraded/oxy3
@@ -314,10 +289,7 @@
 
 /obj/projectile/energy/medical/upgraded/toxin3/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	target.adjustToxLoss(-5)
-	target.radiation = max(target.radiation - 80, 0)
+	healTox(target, 10)
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute3/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/brute3
