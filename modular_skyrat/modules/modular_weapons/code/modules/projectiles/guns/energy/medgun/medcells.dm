@@ -77,6 +77,22 @@
 	DamageClone(target, target.getFireLoss(), amount_healed, max_clone)
 	target.adjustFireLoss(-amount_healed)
 
+/obj/projectile/energy/medical/proc/safeBrute(mob/living/target, amount_healed, base_disgust)
+	if(!IsLivingHuman(target))
+		return FALSE
+	if(target.getBruteLoss() >= 50 )
+		return FALSE
+	target.adjust_disgust(base_disgust)
+	target.adjustBruteLoss(-amount_healed)
+
+/obj/projectile/energy/medical/proc/safeBurn(mob/living/target, amount_healed, base_disgust)
+	if(!IsLivingHuman(target))
+		return FALSE
+	if(target.getFireLoss() >= 50 )
+		return FALSE
+	target.adjust_disgust(base_disgust)
+	target.adjustFireLoss(-amount_healed)
+
 //Heal Toxin damage
 /obj/projectile/energy/medical/proc/healTox(mob/living/target, amount_healed)
 	if(!IsLivingHuman(target))
@@ -132,20 +148,18 @@
 
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute1/safe
-	projectile_type = /obj/projectile/energy/medical/safe/brute1
+	projectile_type = /obj/projectile/energy/medical/safe/brute
 
-/obj/projectile/energy/medical/safe/brute1
+/obj/projectile/energy/medical/safe/brute
 	name = "safe brute heal shot"
 	icon_state = "red_laser"
+	var/amount_healed = 7.5
+	var/base_disgust = 3
 
-/obj/projectile/energy/medical/safe/brute1/on_hit(mob/living/target)
+
+/obj/projectile/energy/medical/safe/brute/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	if(target.getBruteLoss() >= 50)
-		return
-	target.adjustBruteLoss(-7.5)
-	target.adjust_disgust(3)
+	safeBrute(target, amount_healed, base_disgust)
 
 /obj/item/ammo_casing/energy/medical/burn1/safe
 	projectile_type = /obj/projectile/energy/medical/safe/burn1
@@ -195,6 +209,7 @@
 
 /obj/projectile/energy/medical/oxygen/better
 	name = "strong oxygen heal shot"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 	amount_healed = 20
 
 //Tier II Toxin Projectile//
@@ -204,24 +219,18 @@
 
 /obj/projectile/energy/medical/toxin/better
 	name = "strong toxin heal shot"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 	amount_healed = 7.5
 
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute2/safe
-	projectile_type = /obj/projectile/energy/medical/upgraded/safe/brute2
+	projectile_type = /obj/projectile/energy/medical/safe/brute/better
 
-/obj/projectile/energy/medical/upgraded/safe/brute2
-	name = "safe brute heal shot"
-	icon_state = "red_laser"
-
-/obj/projectile/energy/medical/upgraded/safe/brute2/on_hit(mob/living/target)
-	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	if(target.getBruteLoss() >= 50)
-		return
-	target.adjustBruteLoss(-11.25)
-	target.adjust_disgust(2)
+/obj/projectile/energy/medical/safe/brute/better
+	name = "safe strong brute heal shot"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
+	amount_healed = 11.25
+	base_disgust = 2
 
 /obj/item/ammo_casing/energy/medical/burn2/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn2
@@ -284,21 +293,12 @@
 	healTox(target, 10)
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute3/safe
-	projectile_type = /obj/projectile/energy/medical/upgraded/safe/brute3
+	projectile_type = /obj/projectile/energy/medical/safe/brute/better/best
 
-/obj/projectile/energy/medical/upgraded/safe/brute3
-	name = "safe brute heal shot"
-	icon_state = "red_laser"
-
-/obj/projectile/energy/medical/upgraded/safe/brute3/on_hit(mob/living/target)
-	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	if(target.getBruteLoss() >= 50)
-		return
-	target.adjustBruteLoss(-15)
-	target.adjust_disgust(1)
-
+/obj/projectile/energy/medical/safe/brute/better/best
+	name = "safe powerful brute heal shot"
+	amount_healed = 15
+	base_disgust = 1
 /obj/item/ammo_casing/energy/medical/burn3/safe
 	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn3
 
