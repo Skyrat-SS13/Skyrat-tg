@@ -79,6 +79,14 @@
 	DamageClone(target, target.getFireLoss(), amount_healed, max_clone)
 	target.adjustFireLoss(-amount_healed)
 
+//Heal Toxin damage
+/obj/projectile/energy/medical/proc/healTox(mob/living/target, amount_healed)
+	. = ..()
+	if(!IsLivingHuman(target))
+		return FALSE
+	target.adjustToxLoss(-amount_healed)
+	target.radiation = max(target.radiation - (amount_healed * 8), 0)//Rads are treatable, but inefficent//
+
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
@@ -116,10 +124,7 @@
 
 /obj/projectile/energy/medical/toxin1/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	target.adjustToxLoss(-5)
-	target.radiation = max(target.radiation - 40, 0)//Toxin is treatable, but inefficent//
+	healTox(target, 5)
 
 //SAFE MODES
 /obj/item/ammo_casing/energy/medical/brute1/safe
