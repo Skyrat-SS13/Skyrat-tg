@@ -162,21 +162,17 @@
 	safeBrute(target, amount_healed, base_disgust)
 
 /obj/item/ammo_casing/energy/medical/burn1/safe
-	projectile_type = /obj/projectile/energy/medical/safe/burn1
+	projectile_type = /obj/projectile/energy/medical/safe/burn
 
-/obj/projectile/energy/medical/safe/burn1
+/obj/projectile/energy/medical/safe/burn
 	name = "safe burn heal shot"
 	icon_state = "yellow_laser"
+	var/amount_healed = 7.5
+	var/base_disgust = 3
 
-/obj/projectile/energy/medical/safe/burn1/on_hit(mob/living/target)
+/obj/projectile/energy/medical/safe/burn/on_hit(mob/living/target)
 	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	if(target.getFireLoss() >= 50)
-		return
-	target.adjustFireLoss(-7.5)
-	target.adjust_disgust(3)
-
+	safeBurn(target, amount_healed, base_disgust)
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
@@ -233,20 +229,14 @@
 	base_disgust = 2
 
 /obj/item/ammo_casing/energy/medical/burn2/safe
-	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn2
+	projectile_type = /obj/projectile/energy/medical/safe/burn/better
 
-/obj/projectile/energy/medical/upgraded/safe/burn2
-	name = "safe burn heal shot"
-	icon_state = "yellow_laser"
+/obj/projectile/energy/medical/safe/burn/better
+	name = "safe strong burn heal shot"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
+	amount_healed = 11.25
+	base_disgust = 2
 
-/obj/projectile/energy/medical/upgraded/safe/burn2/on_hit(mob/living/target)
-	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	if(target.getFireLoss() >= 50)
-		return
-	target.adjustFireLoss(-11.25)
-	target.adjust_disgust(2)
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
@@ -300,20 +290,11 @@
 	amount_healed = 15
 	base_disgust = 1
 /obj/item/ammo_casing/energy/medical/burn3/safe
-	projectile_type = /obj/projectile/energy/medical/upgraded/safe/burn3
-
-/obj/projectile/energy/medical/upgraded/safe/burn3
-	name = "safe burn heal shot"
-	icon_state = "yellow_laser"
-
-/obj/projectile/energy/medical/upgraded/safe/burn3/on_hit(mob/living/target)
-	. = ..()
-	if(!IsLivingHuman(target))
-		return FALSE
-	if(target.getFireLoss() >= 50)
-		return
-	target.adjustFireLoss(-15)
-	target.adjust_disgust(1)
+	projectile_type = /obj/projectile/energy/medical/safe/burn/better/best
+/obj/projectile/energy/medical/safe/burn/better/best
+	name = "safe powerful burn heal shot"
+	amount_healed = 15
+	base_disgust = 1
 
 //End of Basic Tiers of cells.//
 
