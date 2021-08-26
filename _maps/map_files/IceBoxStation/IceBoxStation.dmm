@@ -31354,8 +31354,12 @@
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
 "jpx" = (
-/turf/open/floor/iron/white/side{
+/obj/structure/disposalpipe/trunk{
 	dir = 8
+	},
+/obj/machinery/disposal/bin,
+/turf/open/floor/iron/white/corner{
+	dir = 1
 	},
 /area/science/misc_lab)
 "jpE" = (
@@ -33271,6 +33275,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/execution/transfer)
+"krK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "kse" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -33656,11 +33669,10 @@
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
 "kCv" = (
-/obj/structure/reagent_dispensers/watertank,
 /obj/structure/sign/poster/random{
 	pixel_x = 32
 	},
-/turf/open/floor/plating,
+/turf/closed/wall,
 /area/maintenance/starboard/aft)
 "kCw" = (
 /obj/structure/tank_holder/extinguisher,
@@ -39609,7 +39621,12 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/white,
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/iron/white/side{
+	dir = 9
+	},
 /area/science/misc_lab)
 "nPP" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -45335,15 +45352,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
-"rbd" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/floor/iron/white/corner{
-	dir = 1
-	},
-/area/science/misc_lab)
 "rbz" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -46465,6 +46473,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 9
+	},
+/obj{
+	name = "---Merge conflict marker---"
 	},
 /turf/closed/wall,
 /area/maintenance/starboard/fore)
@@ -52799,11 +52810,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white/side{
-	dir = 9
+	dir = 8
 	},
 /area/science/misc_lab)
 "vdE" = (
@@ -78062,7 +78071,7 @@ alU
 pjX
 boP
 boP
-pjX
+alU
 alU
 ali
 ali
@@ -98628,7 +98637,7 @@ aqy
 bqg
 kxX
 alP
-rCp
+awG
 anf
 alP
 alP
@@ -98884,14 +98893,14 @@ alP
 alP
 rCp
 raX
-awG
+rCp
 ozf
 anf
 anf
 anf
 bqg
 wBd
-aFm
+krK
 aIl
 alP
 rag
@@ -104611,7 +104620,7 @@ jsw
 jsw
 cri
 cNW
-isx
+bYs
 cOe
 gAk
 cNW
@@ -104860,7 +104869,7 @@ uLK
 iGi
 xWW
 jpx
-rbd
+bQZ
 bPN
 bQZ
 qUz
@@ -104868,8 +104877,8 @@ cNW
 cNW
 cvO
 cNW
-bYs
-cOe
+cNW
+isx
 iLm
 viq
 cTI
@@ -105383,7 +105392,7 @@ cgp
 cvO
 bMB
 cNW
-cOe
+bNA
 iLm
 iLm
 cNW
@@ -105888,7 +105897,7 @@ bYj
 pWN
 bZZ
 bPN
-bPN
+bQZ
 bQZ
 bQZ
 bQZ
