@@ -1,3 +1,5 @@
+#define UPGRADED_MEDICELL_PASSFLAGS PASSTABLE | PASSGLASS | PASSGRILLE
+
 //Medigun Cells/
 /obj/item/stock_parts/cell/medigun/ //This is the cell that mediguns from cargo will come with//
 	name = "Basic Medigun Cell"
@@ -29,7 +31,7 @@
 	damage = 0
 
 /obj/projectile/energy/medical/upgraded
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = UPGRADED_MEDICELL_PASSFLAGS
 /obj/item/ammo_casing/energy/medical/default
 	name = "oxygen heal shot"
 
@@ -87,16 +89,19 @@
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
-	projectile_type = /obj/projectile/energy/medical/brute1
+	projectile_type = /obj/projectile/energy/medical/brute
 	select_name = "brute"
 
-/obj/projectile/energy/medical/brute1
+/obj/projectile/energy/medical/brute
 	name = "brute heal shot"
 	icon_state = "red_laser"
+	var/amount_healed = 7.5
+	var/max_clone = 2/3
+	var/base_disgust = 3
 
-/obj/projectile/energy/medical/brute1/on_hit(mob/living/target)
+/obj/projectile/energy/medical/brute/on_hit(mob/living/target)
 	. = ..()
-	healBrute(target, 7.5, 2/3, 3)
+	healBrute(target, amount_healed, max_clone, base_disgust)
 //The Basic Burn Heal//
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn1
@@ -159,17 +164,16 @@
 //T2 Healing Projectiles//
 //Tier II Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute2
-	projectile_type = /obj/projectile/energy/medical/upgraded/brute2
+	projectile_type = /obj/projectile/energy/medical/brute/better
 	select_name = "brute II"
 
-/obj/projectile/energy/medical/upgraded/brute2
+/obj/projectile/energy/medical/brute/better
 	name = "strong brute heal shot"
-	icon_state = "red_laser"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
+	amount_healed = 11.25
+	max_clone = 1/3
+	base_disgust = 2
 
-
-/obj/projectile/energy/medical/upgraded/brute2/on_hit(mob/living/target)
-	. = ..()
-	healBrute(target, 11.25, 1/3, 2)
 //Tier II Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn2
@@ -243,16 +247,15 @@
 //T3 Healing Projectiles//
 //Tier III Brute Projectile//
 /obj/item/ammo_casing/energy/medical/brute3
-	projectile_type = /obj/projectile/energy/medical/upgraded/brute3
+	projectile_type = /obj/projectile/energy/medical/brute/better/best
 	select_name = "brute III"
 
-/obj/projectile/energy/medical/upgraded/brute3
+/obj/projectile/energy/medical/brute/better/best
 	name = "powerful brute heal shot"
-	icon_state = "red_laser"
+	amount_healed = 15
+	max_clone = 1/9
+	base_disgust = 1
 
-/obj/projectile/energy/medical/upgraded/brute3/on_hit(mob/living/target)
-	. = ..()
-	healBrute(target, 15, 1/9, 1)
 //Tier III Burn Projectile//
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/upgraded/burn3
@@ -324,3 +327,5 @@
 	target.adjust_disgust(1)
 
 //End of Basic Tiers of cells.//
+
+#undef UPGRADED_MEDICELL_PASSFLAGS
