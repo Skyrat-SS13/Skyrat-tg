@@ -430,3 +430,4 @@
 	icon_state = "yankeesoft"
 	soft_type = "yankee"
 	dog_fashion = /datum/dog_fashion/head/yankee
+	mutant_variants = NONE
