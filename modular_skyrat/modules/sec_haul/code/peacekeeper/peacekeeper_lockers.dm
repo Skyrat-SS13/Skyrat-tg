@@ -16,4 +16,3 @@
 
 /obj/structure/closet/secure_closet/armory3
 	icon = 'modular_skyrat/modules/sec_haul/icons/lockers/closet.dmi'
-	
