@@ -1,7 +1,6 @@
 /datum/job/cyborg
 	title = "Cyborg"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SILICON
-
 	faction = FACTION_STATION
 	total_positions = 3	// SKYRAT EDIT: Original value (0)
 
