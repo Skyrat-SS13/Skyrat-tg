@@ -1,4 +1,4 @@
-//This component makes the ckey return to a body on death
+//This component makes the ckey be moved to a target body on death
 /datum/component/return_on_death
 	var/mob/sourcemob
 	var/deleting

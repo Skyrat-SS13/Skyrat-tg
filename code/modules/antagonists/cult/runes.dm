@@ -344,8 +344,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 
 		if(iscarbon(sacrificial))
 			var/mob/living/carbon/victim = sacrificial
-			var/obj/item/bodypart/chest/B = victim.get_bodypart(BODY_ZONE_CHEST)
-			B.dismember()
+			var/obj/item/bodypart/chest/victim_chest = victim.get_bodypart(BODY_ZONE_CHEST)
+			victim_chest.dismember()
 			victim.adjustFireLoss(300)
 			ADD_TRAIT(victim, TRAIT_SACRIFICED, "sacrificed")
 		else
