@@ -1,18 +1,23 @@
 Any time you make a change to the schema files, remember to increment the database schema version. Generally increment the minor number, major should be reserved for significant changes to the schema. Both values go up to 255.
 
-The latest database version is 5.16; The query to update the schema revision table is:
+The latest database version is 5.18 (5.16 for /tg/); The query to update the schema revision table is:
 
-INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 16);
+INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 18);
 or
-INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 16);
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 18);
 
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
-<<<<<<< HEAD
-Version 5.16, 2 June 2021, by Mothblocks
-=======
-Version 5.16, 31 July 2021, by Atlanta-Ned
+Version 5.18, 23 August 2021, by GoldenAlpharex
+Added `discord_report` column to the `ban table`
+
+```
+`discord_reported` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0', /* SKYRAT EDIT - Labelling bans for ease of reporting them over Discord. */
+```
+
+-----------------------------------------------------
+Version 5.17, 31 July 2021, by Atlanta-Ned
 Added `library_action` table for tracking reported library books and actions taken on them.
 
 ```
@@ -31,8 +36,7 @@ CREATE TABLE `library_action` (
 
 
 -----------------------------------------------------
-Version 5.15, 2 June 2021, by Mothblocks
->>>>>>> ec2189370df (Adds the library_report table (#60599))
+Version 5.16, 2 June 2021, by Mothblocks
 Added verified admin connection log used for 2FA
 
 ```
