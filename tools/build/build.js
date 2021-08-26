@@ -34,6 +34,11 @@ export const CiParameter = new Juke.Parameter({
   type: 'boolean',
 });
 
+export const WarningParameter = new Juke.Parameter({
+  type: 'string[]',
+  alias: 'W',
+});
+
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
     const folders = [
@@ -75,7 +80,12 @@ export const DmTarget = new Juke.Target({
       Juke.logger.info('Using defines:', defines.join(', '));
     }
     await DreamMaker(`${DME_NAME}.dme`, {
+<<<<<<< HEAD
       defines: ['CBT', ...defines],
+=======
+      defines: ['CBT', ...get(DefineParameter)],
+      warningsAsErrors: get(WarningParameter).includes('error'),
+>>>>>>> e6e38ec4e54 (Exit on DreamMaker warnings in CI Windows build (#61025))
     });
   },
 });
@@ -91,7 +101,12 @@ export const DmTestTarget = new Juke.Target({
     }
     fs.copyFileSync(`${DME_NAME}.dme`, `${DME_NAME}.test.dme`);
     await DreamMaker(`${DME_NAME}.test.dme`, {
+<<<<<<< HEAD
       defines: ['CBT', 'CIBUILDING', ...defines],
+=======
+      defines: ['CBT', 'CIBUILDING', ...get(DefineParameter)],
+      warningsAsErrors: get(WarningParameter).includes('error'),
+>>>>>>> e6e38ec4e54 (Exit on DreamMaker warnings in CI Windows build (#61025))
     });
     Juke.rm('data/logs/ci', { recursive: true });
     await DreamDaemon(
