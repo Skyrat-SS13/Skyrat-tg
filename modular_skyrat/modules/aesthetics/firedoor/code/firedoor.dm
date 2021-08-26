@@ -12,6 +12,7 @@
 	var/hot_or_cold = FALSE //True for hot, false for cold
 
 	var/stay_open = FALSE // Do we stay open? Triggered via atmos techs using their ID on it.
+	var/has_hotcold_sprite = TRUE //does it actually have the sprites needed
 
 /obj/machinery/door/firedoor/heavy
 	name = "Heavy Emergency Shutter"
@@ -20,6 +21,9 @@
 
 /obj/structure/firelock_frame
 	icon = 'modular_skyrat/modules/aesthetics/firedoor/icons/firedoor.dmi'
+
+/obj/machinery/door/firedoor/border_only
+	has_hotcold_sprite = FALSE
 
 /obj/machinery/door/firedoor/open()
 	playsound(loc, door_open_sound, 90, TRUE)
@@ -66,7 +70,7 @@
 /obj/machinery/door/firedoor/update_icon_state()
 	. = ..()
 	if(density)
-		icon_state = "[base_icon_state]_closed_[hot_or_cold ? "hot" : "cold"]"
+		icon_state = "[base_icon_state]_closed[has_hotcold_sprite ? (hot_or_cold ? "_hot" : "_cold") : ""]"
 	else
 		icon_state = "[base_icon_state]_open"
 
