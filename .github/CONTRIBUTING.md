@@ -812,11 +812,15 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
+* **Pull requests that include sprites must have in-game screenshots that were taken on your own test-server in the PR body.** For instance, if you're adding new clothes, a screenshot of those clothes being worn is expected in the PR body. Not every single direction needs to be displayed, but each icon that's actually being used in-game should be showcased.
+
 ## Porting features/sprites/sounds/tools from other codebases
 
 If you are porting features/tools from other codebases, you must give them credit where it's due. Typically, crediting them in your pull request and the changelog is the recommended way of doing it. Take note of what license they use though, porting stuff from AGPLv3 and GPLv3 codebases are allowed.
 
 Regarding sprites & sounds, you must credit the artist and possibly the codebase. All Sea of Lost Souls assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. However if you are porting assets from GoonStation or usually any assets under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0/) are to go into the 'goon' folder of the Tannhauser Gate codebase.
+
+Regarding sprites in particular, you still need to take your own screenshots of the sprites in-game on your Skyrat code in your PR body, not just re-use the screenshots provided in the original PR.
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:
