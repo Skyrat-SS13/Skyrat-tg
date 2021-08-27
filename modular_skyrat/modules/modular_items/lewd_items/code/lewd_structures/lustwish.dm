@@ -122,7 +122,7 @@
 //Changing special secret var
 /obj/machinery/vending/dorms/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/lustwish_discount))
-		user.visible_message("<span class='boldnotice'>Something changes in [src] with a loud clunk.</span>")
+		user.visible_message(span_boldnotice("Something changes in [src] with a loud clunk."))
 		card_used = !card_used
 		switch(card_used)
 			if(TRUE)

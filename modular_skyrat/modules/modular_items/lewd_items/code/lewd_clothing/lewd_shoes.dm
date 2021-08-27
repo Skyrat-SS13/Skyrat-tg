@@ -42,7 +42,7 @@
 	var/mob/living/carbon/human/H = user
 	STOP_PROCESSING(SSobj, src)
 	if(discomfort >= 80)
-		to_chat(H,"<font color=purple>The latex heels no longer hurt your legs.</font>")
+		to_chat(H, span_purple("The latex heels no longer hurt your legs."))
 	discomfort = 0
 	slowdown = 4
 
@@ -69,9 +69,9 @@
 	//Discomfort milestone signalling that something is really wrong
 	if(discomfort >= 100 && U.body_position != LYING_DOWN && message_sent == FALSE)
 		if(HAS_TRAIT(U, TRAIT_MASOCHISM))
-			to_chat(U, "<span class='notice'>These heels are causing my feet incredible pain... And I kind of like it!</span>")
+			to_chat(U, span_notice("These heels are causing my feet incredible pain... And I kind of like it!"))
 		else
-			to_chat(U, "<span class='notice'>These heels are really hurting my feet!</span>")
+			to_chat(U, span_notice("These heels are really hurting my feet!"))
 		message_sent = TRUE
 
 //to make sound when we walking in this

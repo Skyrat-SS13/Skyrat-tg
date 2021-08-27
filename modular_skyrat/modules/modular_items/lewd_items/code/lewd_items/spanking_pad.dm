@@ -77,13 +77,13 @@
 							SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
 						if(prob(10) && (M.stat != DEAD))
 							M.apply_status_effect(/datum/status_effect/subspace)
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
 				else
-					to_chat(user, "<span class='danger'>[M]'s butt is covered!</span>")
+					to_chat(user, span_danger("[M]'s butt is covered!"))
 					return
 			else
 				return
 	else
-		to_chat(user, "<span class='danger'>[M] doesn't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return

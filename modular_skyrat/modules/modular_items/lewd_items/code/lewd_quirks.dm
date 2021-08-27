@@ -11,7 +11,7 @@
 	desc = "You have an overwhelming urge to have sex with someone. Constantly."
 	value = -2 //This gives you uncomfortable stuff. But you can change it to 0. Don't change to positive values, it will be dumb.
 	mob_trait = TRAIT_NYMPHOMANIA
-	gain_text = "<font color=purple>You feel much hornier than before...</font>"
+	gain_text = span_purple("You feel much hornier than before...")
 	lose_text = "<span class='notice'>A pleasant coolness spreads throughout your body. You are in control of your sexual desires once again.</font>"
 	medical_record_text = "Subject has nymphomania."
 	var/obj/item/sextoy
@@ -52,7 +52,7 @@
 	name = "Nymphomania"
 	desc = "The patient constantly feels aroused and supposed to satisfy their sexual desires."
 	scan_desc = "constant sexual arousal"
-	gain_text = "<font color=purple>You feel much hornier than before...</font>"
+	gain_text = span_purple("You feel much hornier than before...")
 	lose_text = "<span class='notice'>A pleasant coolness spreads throughout your body. You are in control of your sexual desires once again.</font>"
 	can_gain = TRUE
 	random_gain = FALSE
@@ -77,16 +77,16 @@
 			switch(rand(1,6))
 				if(1)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
+						to_chat(owner, span_purple("You feel slightly aroused..."))
 					else
-						to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
+						to_chat(owner, span_purple("Lust spreads over your body!"))
 						owner.emote("moan")
 				if(2)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
+						to_chat(owner, span_purple("You can't stop shaking..."))
 						owner.do_jitter_animation(20)
 					else
-						to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
+						to_chat(owner, span_purple("You feel hot and seduced!"))
 						owner.dizziness += 20
 						owner.add_confusion(20)
 						owner.Jitter(20)
@@ -94,17 +94,17 @@
 						owner.adjustStaminaLoss(50)
 				if(3, 4)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You bring your hips together in lust.</font>")
+						to_chat(owner, span_purple("You bring your hips together in lust."))
 					else
-						to_chat(owner, "<font color=purple>Desire is driving you mad!</font>")
+						to_chat(owner, span_purple("Desire is driving you mad!"))
 						owner.hallucination += 30
 				if(5)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You feel like your genitals are burning...</font>")
+						to_chat(owner, span_purple("You feel like your genitals are burning..."))
 						owner.adjustOxyLoss(8)
 						owner.blur_eyes(10)
 					else
-						to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
+						to_chat(owner, span_purple("You need something to satisfy this desire! Something... Or someone?"))
 						owner.adjustOxyLoss(16)
 						owner.blur_eyes(15)
 						owner.visible_message(pick("<font color=purple>[owner] seductively wags [owner.p_their()] hips.</font>\n",
@@ -117,19 +117,19 @@
 		satisfaction -= 1
 
 	if(in_company() && satisfaction == 300)
-		to_chat(owner, "<font color=purple>Jeez, it's hot in here...</font>")
+		to_chat(owner, span_purple("Jeez, it's hot in here..."))
 
 	if(in_company() && satisfaction == 250)
-		to_chat(owner, "<font color=purple>Desire fogs your decisions.</font>")
+		to_chat(owner, span_purple("Desire fogs your decisions."))
 
 	if(in_company() && satisfaction == 200)
-		to_chat(owner, "<font color=purple>Your clothes grow uncomfortable.</font>")
+		to_chat(owner, span_purple("Your clothes grow uncomfortable."))
 
 	if(in_company() && satisfaction == 150)
-		to_chat(owner, "<font color=purple>You'd hit that. Yeah. That's at least a six.</font>")
+		to_chat(owner, span_purple("You'd hit that. Yeah. That's at least a six."))
 
 	if(in_company() && satisfaction == 100)
-		to_chat(owner, "<font color=purple>You can't STAND it, you need a partner NOW!</font>"	)
+		to_chat(owner, span_purple("You can't STAND it, you need a partner NOW!")	)
 
 	if(in_company() && satisfaction <= 0)
 		if(stress <= 100)
@@ -185,7 +185,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 			lose_text = ""
 			qdel(src)
 			return
-	gain_text = "<font color=purple>You feel an inexplicable desire to have sex with someone...</font>"
+	gain_text = span_purple("You feel an inexplicable desire to have sex with someone...")
 	ADD_TRAIT(owner, TRAIT_SOBSESSED, APHRO_TRAIT)
 
 /datum/brain_trauma/special/sexual_obsession/on_lose()
@@ -199,16 +199,16 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 		switch(rand(1,6))
 			if(1)
 				if(stress < 95)
-					to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
+					to_chat(owner, span_purple("You feel slightly aroused..."))
 				else
-					to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
+					to_chat(owner, span_purple("Lust spreads over your body!"))
 					owner.emote("moan")
 			if(2)
 				if(stress < 95)
-					to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
+					to_chat(owner, span_purple("You can't stop shaking..."))
 					owner.do_jitter_animation(20)
 				else
-					to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
+					to_chat(owner, span_purple("You feel hot and seduced!"))
 					owner.dizziness += 20
 					owner.add_confusion(20)
 					owner.Jitter(20)
@@ -217,18 +217,18 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 			if(3, 4)
 				if(stress < 95)
-					to_chat(owner, "<font color=purple>You bring your thighs together in lust.</font>")
+					to_chat(owner, span_purple("You bring your thighs together in lust."))
 				else
-					to_chat(owner, "<font color=purple>Desire is driving you mad!</font>")
+					to_chat(owner, span_purple("Desire is driving you mad!"))
 					owner.hallucination += 30
 
 			if(5)
 				if(stress < 95)
-					to_chat(owner, "<font color=purple>You feel like your genitals are burning...</font>")
+					to_chat(owner, span_purple("You feel like your genitals are burning..."))
 					owner.adjustOxyLoss(8)
 					owner.blur_eyes(10)
 				else
-					to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
+					to_chat(owner, span_purple("You need something to satisfy this desire! Something... Or someone?"))
 					owner.adjustOxyLoss(16)
 					owner.blur_eyes(10)
 					owner.visible_message(pick("<font color=purple>[owner] seductively wags their hips.</font>\n",
@@ -267,7 +267,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	SIGNAL_HANDLER
 	if(examining_mob != owner || !triggering_examiner || prob(80))
 		return
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, obsession, "<span class='warning'>You catch [examining_mob] staring at you lustfully...</span>", 3))
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, obsession, span_warning("You catch [examining_mob] staring at you lustfully..."), 3))
 	return COMSIG_BLOCK_EYECONTACT
 
 /datum/brain_trauma/special/sexual_obsession/proc/find_obsession()
@@ -302,8 +302,8 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
 	scan_desc = "permanent hormonal disruption"
-	gain_text = "<font color=purple>Your thoughts get cloudy, but it turns you on like hell.</font>"
-	lose_text = "<span class='warning'>A pleasant coolness spreads throughout your body, You are thinking clearly again.</span>"
+	gain_text = span_purple("Your thoughts get cloudy, but it turns you on like hell.")
+	lose_text = span_warning("A pleasant coolness spreads throughout your body, You are thinking clearly again.")
 	can_gain = TRUE
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_LOBOTOMY
@@ -325,16 +325,16 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 			switch(rand(1,6))
 				if(1)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You feel slightly aroused...</font>")
+						to_chat(owner, span_purple("You feel slightly aroused..."))
 					else
-						to_chat(owner, "<font color=purple>Lust spreads over your body!</font>")
+						to_chat(owner, span_purple("Lust spreads over your body!"))
 						owner.emote("moan")
 				if(2)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You can't stop shaking...</font>")
+						to_chat(owner, span_purple("You can't stop shaking..."))
 						owner.do_jitter_animation(20)
 					else
-						to_chat(owner, "<font color=purple>You feel hot and seduced!</font>")
+						to_chat(owner, span_purple("You feel hot and seduced!"))
 						owner.dizziness += 20
 						owner.add_confusion(20)
 						owner.Jitter(20)
@@ -342,17 +342,17 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 						owner.adjustStaminaLoss(50)
 				if(3, 4)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You bring your thighs together in lust.</font>")
+						to_chat(owner, span_purple("You bring your thighs together in lust."))
 					else
-						to_chat(owner, "<font color=purple>Desire is driving you mad!</font>")
+						to_chat(owner, span_purple("Desire is driving you mad!"))
 						owner.hallucination += 30
 				if(5)
 					if(stress >= 100)
-						to_chat(owner, "<font color=purple>You feel like your genitals are burning...</font>")
+						to_chat(owner, span_purple("You feel like your genitals are burning..."))
 						owner.adjustOxyLoss(8)
 						owner.blur_eyes(10)
 					else
-						to_chat(owner, "<font color=purple>You need something to satisfy this desire! Something... Or someone?</font>")
+						to_chat(owner, span_purple("You need something to satisfy this desire! Something... Or someone?"))
 						owner.adjustOxyLoss(16)
 						owner.blur_eyes(15)
 						owner.visible_message(pick("<font color=purple>[owner] wags their hips seductively.</font>\n",
@@ -365,19 +365,19 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 		satisfaction -= 1
 
 	if(in_company() && satisfaction == 300)
-		to_chat(owner, "<font color=purple>Jeez, it's hot in here..</font>")
+		to_chat(owner, span_purple("Jeez, it's hot in here.."))
 
 	if(in_company() && satisfaction == 250)
-		to_chat(owner, "<font color=purple>Desire fogs your decisions.</font>")
+		to_chat(owner, span_purple("Desire fogs your decisions."))
 
 	if(in_company() && satisfaction == 200)
-		to_chat(owner, "<font color=purple>Your clothes grow uncomfortable.</font>")
+		to_chat(owner, span_purple("Your clothes grow uncomfortable."))
 
 	if(in_company() && satisfaction == 150)
-		to_chat(owner, "<font color=purple>You'd hit that. Yeah. That's at least a six.</font>")
+		to_chat(owner, span_purple("You'd hit that. Yeah. That's at least a six."))
 
 	if(in_company() && satisfaction == 100)
-		to_chat(owner, "<font color=purple>You can't STAND it, you need a partner NOW!</font>"	)
+		to_chat(owner, span_purple("You can't STAND it, you need a partner NOW!")	)
 
 	if(in_company() && satisfaction <= 0)
 		if(stress <= 100)
@@ -503,7 +503,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	name = "Sadism"
 	desc = "The subject's cerebral pleasure centers are more active when someone is suffering."
 	scan_desc = "sadistic tendencies"
-	gain_text = "<font color=purple>You feel a desire to hurt somebody.</font>"
+	gain_text = span_purple("You feel a desire to hurt somebody.")
 	lose_text = "<span class='notice'>You feel compassion again.</font>"
 	can_gain = TRUE
 	random_gain = FALSE

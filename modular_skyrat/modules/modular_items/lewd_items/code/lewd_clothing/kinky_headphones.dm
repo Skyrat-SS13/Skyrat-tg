@@ -60,10 +60,10 @@
 	if(ishuman(user) && slot == ITEM_SLOT_EARS)
 		if(kinky_headphones_on == FALSE)
 			ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
-			to_chat(H,"<font color=purple>You can barely hear anything! Your other senses have become more apparent...</font>")
+			to_chat(H, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
 		if(kinky_headphones_on == TRUE)
 			ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
-			to_chat(H,"<font color=purple>Strange but relaxing music fills your mind. You feel so... Calm.</font>")
+			to_chat(H, span_purple("Strange but relaxing music fills your mind. You feel so... Calm."))
 
 //we dropping item so we not deaf now. hurray.
 /obj/item/clothing/ears/kinky_headphones/dropped(mob/user)
@@ -71,7 +71,7 @@
 	var/mob/living/carbon/human/H = user
 	if(src == H.ears)
 		REMOVE_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
-		to_chat(H,"<font color=purple>You can finally hear the world around you once more.</font>")
+		to_chat(H, span_purple("You can finally hear the world around you once more."))
 
 
 //to make it change model on click
@@ -91,7 +91,7 @@
 /obj/item/clothing/ears/kinky_headphones/proc/toggle(owner)
 	kinky_headphones_on = !kinky_headphones_on
 	update_icon()
-	to_chat(owner, "<span class='notice'>You turn the music [kinky_headphones_on? "on. It plays relaxing music." : "off."]</span>")
+	to_chat(owner, span_notice("You turn the music [kinky_headphones_on? "on. It plays relaxing music." : "off."]"))
 
 /datum/action/item_action/toggle_kinky_headphones
 	name = "Toggle kinky headphones"

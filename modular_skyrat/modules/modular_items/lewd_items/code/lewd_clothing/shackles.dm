@@ -77,7 +77,7 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>The shackles are restraining your body, though the lock appears to be made of... Plastic?</font>")
+		to_chat(user, span_purple("The shackles are restraining your body, though the lock appears to be made of... Plastic?"))
 	else
 		return
 
@@ -86,7 +86,7 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>The shackles are no longer restraining your body. It wasn't too hard, huh?</font>")
+		to_chat(user, span_purple("The shackles are no longer restraining your body. It wasn't too hard, huh?"))
 
 //reinforcing normal version by using handcuffs on it.
 /obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/I, mob/user, params) //That part allows reinforcing this item with normal straightjacket
@@ -94,7 +94,7 @@
         var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/W = new /obj/item/clothing/suit/straight_jacket/shackles/reinforced
         remove_item_from_storage(user)
         user.put_in_hands(W)
-        to_chat(user, "<span class='notice'>You reinforced the locks on [src] with [I].</span>")
+        to_chat(user, span_notice("You reinforced the locks on [src] with [I]."))
         qdel(I)
         qdel(src)
         return
@@ -125,7 +125,7 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>The shackles are restraining your body!</font>")
+		to_chat(user, span_purple("The shackles are restraining your body!"))
 	else
 		return
 
@@ -134,4 +134,4 @@
 	var/mob/living/carbon/human/C = user
 	. = ..()
 	if(src == C.wear_suit)
-		to_chat(user, "<font color=purple>The shackles are no longer restraining your body. You are free!</font>")
+		to_chat(user, span_purple("The shackles are no longer restraining your body. You are free!"))

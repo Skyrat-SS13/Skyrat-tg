@@ -26,12 +26,12 @@
 				M.adjustStaminaLoss(4)
 				SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
 				M.adjustArousal(3)
-				user.visible_message("<font color=purple>[user] [message]!</font>")
+				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg', 					//i duplicate this part of code because im useless shitcoder that can't make it work properly without tons of repeating code blocks
             			            'sound/items/handling/cloth_pickup.ogg',				//if you can make it better - go ahead, modify it, please.
         	       	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)	//selfdestruction - 100
 			else
-				to_chat(user, "<span class='danger'>[M]'s groin is covered!</span>")
+				to_chat(user, span_danger("[M]'s groin is covered!"))
 				return
 
 		if(BODY_ZONE_CHEST)
@@ -45,12 +45,12 @@
 				M.adjustStaminaLoss(4)
 				SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
 				M.adjustArousal(3)
-				user.visible_message("<font color=purple>[user] [message]!</font>")
+				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
             			            'sound/items/handling/cloth_pickup.ogg',
         	       	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
 			else
-				to_chat(user, "<span class='danger'>[M]'s chest is covered!</span>")
+				to_chat(user, span_danger("[M]'s chest is covered!"))
 				return
 
 		if(BODY_ZONE_L_LEG)
@@ -64,15 +64,15 @@
 					M.adjustStaminaLoss(4)
 					SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
 					M.adjustArousal(3)
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
             				            'sound/items/handling/cloth_pickup.ogg',
         	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
 				else
-					to_chat(user, "<span class='danger'>[M]'s toes are covered!</span>")
+					to_chat(user, span_danger("[M]'s toes are covered!"))
 					return
 			else
-				to_chat(user, "<span class='danger'>[M] doesn't have any legs!</span>")
+				to_chat(user, span_danger("[M] doesn't have any legs!"))
 				return
 
 		if(BODY_ZONE_R_LEG)
@@ -86,16 +86,16 @@
 					M.adjustStaminaLoss(4)
 					SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
 					M.adjustArousal(3)
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
             				            'sound/items/handling/cloth_pickup.ogg',
         	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
 
 				else
-					to_chat(user, "<span class='danger'>[M]'s toes are covered!</span>")
+					to_chat(user, span_danger("[M]'s toes are covered!"))
 					return
 			else
-				to_chat(user, "<span class='danger'>[M] doesn't have any legs!</span>")
+				to_chat(user, span_danger("[M] doesn't have any legs!"))
 				return
 
 		if(BODY_ZONE_R_ARM)
@@ -108,13 +108,13 @@
 				M.adjustStaminaLoss(4)
 				SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
 				M.adjustArousal(3)
-				user.visible_message("<font color=purple>[user] [message]!</font>")
+				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
            				            'sound/items/handling/cloth_pickup.ogg',
        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
 
 			else
-				to_chat(user, "<span class='danger'>[M]'s armpits are covered!</span>")
+				to_chat(user, span_danger("[M]'s armpits are covered!"))
 				return
 
 		if(BODY_ZONE_L_ARM)
@@ -127,13 +127,13 @@
 				M.adjustStaminaLoss(4)
 				SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
 				M.adjustArousal(3)
-				user.visible_message("<font color=purple>[user] [message]!</font>")
+				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
            				            'sound/items/handling/cloth_pickup.ogg',
        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
 
 			else
-				to_chat(user, "<span class='danger'>[M]'s armpits are covered!</span>")
+				to_chat(user, span_danger("[M]'s armpits are covered!"))
 				return
 
 //Mood boost

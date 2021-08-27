@@ -81,7 +81,7 @@
 /obj/item/kinky_shocker/proc/toggle_on(mob/user)
 	if(cell && cell.charge >= cell_hit_cost)
 		shocker_on = !shocker_on
-		to_chat(user, "<span class='notice'>You turn the shocker [shocker_on? "on. Buzz!" : "off."]</span>")
+		to_chat(user, span_notice("You turn the shocker [shocker_on? "on. Buzz!" : "off."]"))
 		playsound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	else
 		shocker_on = FALSE
@@ -128,7 +128,7 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
@@ -143,7 +143,7 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
@@ -158,10 +158,10 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 					else if(penis)
@@ -177,10 +177,10 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 					else if(vagina)
@@ -196,10 +196,10 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 					else
@@ -215,11 +215,11 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 				if(BODY_ZONE_CHEST)
@@ -237,10 +237,10 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 							return
 
 					else
@@ -256,10 +256,10 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 							return
 
 				if(BODY_ZONE_R_ARM)
@@ -276,13 +276,13 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>[M]'s arms are covered!</span>")
+							to_chat(user, span_danger("[M]'s arms are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>[M] doesn't have any arms!</span>")
+						to_chat(user, span_danger("[M] doesn't have any arms!"))
 						return
 
 				if(BODY_ZONE_L_ARM)
@@ -299,13 +299,13 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>[M]'s arms are covered!</span>")
+							to_chat(user, span_danger("[M]'s arms are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>[M] doesn't have any arms!</span>")
+						to_chat(user, span_danger("[M] doesn't have any arms!"))
 						return
 
 				if(BODY_ZONE_HEAD)
@@ -321,10 +321,10 @@
 						M.adjustStaminaLoss(2)
 						M.adjustPain(9)
 						M.stuttering += 20
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc,'sound/weapons/taserhit.ogg')
 					else
-						to_chat(user, "<span class='danger'>[M]'s head is covered!</span>")
+						to_chat(user, span_danger("[M]'s head is covered!"))
 						return
 
 				if(BODY_ZONE_L_LEG)
@@ -341,13 +341,13 @@
 							M.adjustStaminaLoss(2)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>[M]'s toes are covered!</span>")
+							to_chat(user, span_danger("[M]'s toes are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>[M] doesn't have any legs!</span>")
+						to_chat(user, span_danger("[M] doesn't have any legs!"))
 						return
 
 				if(BODY_ZONE_R_LEG)
@@ -364,18 +364,18 @@
 							M.adjustStaminaLoss(2)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message]!</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else
-							to_chat(user, "<span class='danger'>[M]'s toes are covered!</span>")
+							to_chat(user, span_danger("[M]'s toes are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>[M] doesn't have any legs!</span>")
+						to_chat(user, span_danger("[M] doesn't have any legs!"))
 						return
 		else
-			to_chat(user, "<span class='danger'>[M] doesn't want you to do that.</span>")
+			to_chat(user, span_danger("[M] doesn't want you to do that."))
 			return
 	else
-		to_chat(user, "<span class='danger'>[src] must be enabled before use!</span>")
+		to_chat(user, span_danger("[src] must be enabled before use!"))
 		return

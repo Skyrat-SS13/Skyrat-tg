@@ -94,7 +94,7 @@
 						M.adjustPleasure(8)
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -102,10 +102,10 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>[M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>[M] don't have suitable genitalia for that!</span>")
+					to_chat(user, span_danger("[M] don't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
@@ -116,7 +116,7 @@
 					M.adjustOxyLoss(1.5)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -125,7 +125,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("Looks like [M]'s mouth is covered!"))
 					return
 
 			else
@@ -135,7 +135,7 @@
 					M.adjustPleasure(5)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -144,10 +144,10 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>[M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>[M] doesn't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
 
 ///////////////////////
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/custom_dildo/examine(mob/user)
 	. = ..()
 	if(can_customize)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+		. += span_notice("Alt-Click \the [src.name] to customize it.")
 
 //to check if we can change dildo's model
 /obj/item/clothing/sextoy/custom_dildo/proc/check_menu(mob/living/user)
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 							if(prob(60) && (M.stat != DEAD))
 								M.emote(pick("twitch_s","moan","gasp"))
 
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -319,10 +319,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>[M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>[M] doesn't have suitable genitalia for that!</span>")
+					to_chat(user, span_danger("[M] doesn't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustOxyLoss(1.5)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -342,7 +342,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>[M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("[M]'s mouth is covered!"))
 					return
 
 			else
@@ -352,7 +352,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustPleasure(5)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -361,10 +361,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>[M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>[M] doesn't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
 
 //////////////////
@@ -419,9 +419,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(src == C.vagina)
 		toggle(C)
 	else if(src == C.anus)
-		to_chat(C, "<span class='warning'>You can't use [src] from this angle!</span>")
+		to_chat(C, span_warning("You can't use [src] from this angle!"))
 	else
-		to_chat(C, "<span class='warning'>You need to equip [src] before you can use it!</span>")
+		to_chat(C, span_warning("You need to equip [src] before you can use it!"))
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -434,13 +434,13 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(in_hands == TRUE)
 		if(held?.name == "dildo side" && held?.item_flags == ABSTRACT | HAND_ITEM)
 			qdel(held)
-			C.visible_message("<span class='notice'>[user] puts one end of [src] back.</span>") // I tried to work out what this message is trying to say, but I can't quite get it.
+			C.visible_message(span_notice("[user] puts one end of [src] back.")) // I tried to work out what this message is trying to say, but I can't quite get it.
 			in_hands = FALSE
 			return
 
 		else if(unheld?.name == "dildo side" && unheld?.item_flags == ABSTRACT | HAND_ITEM)
 			qdel(unheld)
-			C.visible_message("<span class='notice'>[user] puts one end of [src] back.</span>")
+			C.visible_message(span_notice("[user] puts one end of [src] back."))
 			in_hands = FALSE
 			return
 
@@ -453,18 +453,18 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					C.put_in_hands(W)
 					W.update_icon_state()
 					W.update_icon()
-					C.visible_message("<span class='notice'>[C] holds one end of [src] in [C.p_their()] hand.</span>")
+					C.visible_message(span_notice("[C] holds one end of [src] in [C.p_their()] hand."))
 					in_hands = TRUE
 					return
 		else
-			C.visible_message("<span class='notice'>[C] tries to hold one end of [src] in [C.p_their()] hand, but [C.p_their()] hand isn't empty!</span>")
+			C.visible_message(span_notice("[C] tries to hold one end of [src] in [C.p_their()] hand, but [C.p_their()] hand isn't empty!"))
 			return
 	else
 		W = new()
 		C.put_in_hands(W)
 		W.update_icon_state()
 		W.update_icon()
-		C.visible_message("<span class='notice'>[C] holds one end of [src] in [C.p_their()] hand.</span>")
+		C.visible_message(span_notice("[C] holds one end of [src] in [C.p_their()] hand."))
 		in_hands = TRUE
 		return
 
@@ -539,7 +539,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 						M.adjustPleasure(8)
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -547,10 +547,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>[M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>[M] don't have suitable genitalia for that!</span>")
+					to_chat(user, span_danger("[M] don't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
@@ -561,7 +561,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustOxyLoss(1.5)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -570,7 +570,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("Looks like [M]'s mouth is covered!"))
 					return
 
 			else
@@ -580,7 +580,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					M.adjustPleasure(5)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -589,10 +589,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>[M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>[M] doesn't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
 
 /obj/item/clothing/sextoy/dildo_side
@@ -629,7 +629,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 						user.adjustPleasure(8)
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -637,10 +637,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>[M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>[M] doesn't have suitable genitalia for that!</span>")
+					to_chat(user, span_danger("[M] doesn't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
@@ -653,7 +653,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					user.adjustPleasure(8)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -662,7 +662,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>[M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("[M]'s mouth is covered!"))
 					return
 
 			else
@@ -674,7 +674,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					user.adjustPleasure(8)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -683,8 +683,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>[M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>[M] doesn't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return

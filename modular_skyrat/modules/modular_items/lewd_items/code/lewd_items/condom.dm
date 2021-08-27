@@ -28,7 +28,7 @@
 	icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/condom_pack/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>You start to open the condom pack...</span>")
+	to_chat(user, span_notice("You start to open the condom pack..."))
 	if(!do_after(user, 15, target = user))
 		return
 	playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)

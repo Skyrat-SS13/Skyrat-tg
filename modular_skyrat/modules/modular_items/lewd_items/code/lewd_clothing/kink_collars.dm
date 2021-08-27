@@ -121,14 +121,14 @@
 /obj/item/clothing/neck/kink_collar/locked/proc/IsLocked(var/L,mob/user)
 	if(!broke)
 		if(L == TRUE)
-			to_chat(user, "<span class='warning'>The collar locks with a resounding click!</span>")
+			to_chat(user, span_warning("The collar locks with a resounding click!"))
 			lock = TRUE
 		if(L == FALSE)
-			to_chat(user, "<span class='warning'>The collar unlocks with a small clunk.</span>")
+			to_chat(user, span_warning("The collar unlocks with a small clunk."))
 			lock = FALSE
 			REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
 	else
-		to_chat(user, "<span class='warning'>It looks like the lock is broken - now it's just an ordinary old collar.</span>")
+		to_chat(user, span_warning("It looks like the lock is broken - now it's just an ordinary old collar."))
 		lock = FALSE
 		REMOVE_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
 
@@ -142,7 +142,7 @@
 			else
 				IsLocked(TRUE,user)
 		else
-			to_chat(user,"<span class='warning'>This isn't the correct key!</span>")
+			to_chat(user, span_warning("This isn't the correct key!"))
 	return
 
 /obj/item/clothing/neck/kink_collar/locked/equipped(mob/living/U, slot)
@@ -150,13 +150,13 @@
 	var/mob/living/carbon/human/H = U
 	if(lock == TRUE && src == H.wear_neck)
 		ADD_TRAIT(src, TRAIT_NODROP, TRAIT_NODROP)
-		to_chat(H, "<span class='warning'>You hear a suspicious click around your neck - it seems the collar is now locked!</span>")
+		to_chat(H, span_warning("You hear a suspicious click around your neck - it seems the collar is now locked!"))
 
 //this code prevents wearer from taking collar off if it's locked. Have fun!
 
 /obj/item/clothing/neck/kink_collar/locked/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && lock != FALSE)
-		to_chat(user, "<span class='warning'>The collar is locked! You'll need to unlock it before you can take it off!</span>")
+		to_chat(user, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
 		return
 	add_fingerprint(usr)
 	return ..()
@@ -164,7 +164,7 @@
 /obj/item/clothing/neck/kink_collar/locked/MouseDrop(atom/over_object)
 	var/mob/M = usr
 	if(loc == usr && usr.get_item_by_slot(ITEM_SLOT_NECK) && lock != FALSE && istype(over_object, /atom/movable/screen/inventory/hand))
-		to_chat(usr, "<span class='warning'>The collar is locked! You'll need to unlock it before you can take it off!</span>")
+		to_chat(usr, span_warning("The collar is locked! You'll need to unlock it before you can take it off!"))
 		return
 	var/atom/movable/screen/inventory/hand/H = over_object
 	if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
@@ -218,7 +218,7 @@
 			else
 				collar.IsLocked(TRUE,user)
 		else
-			to_chat(user,"<span class='warning'>This isn't the correct key!</span>")
+			to_chat(user, span_warning("This isn't the correct key!"))
 	return
 
 /obj/item/circular_saw/attack(mob/living/M, mob/living/user, params)
@@ -228,28 +228,28 @@
 		var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck
 		if(!collar.broke)
 			if(target != user)
-				to_chat(user, "<span class='warning'>You try to cut the lock right off!</span>")
+				to_chat(user, span_warning("You try to cut the lock right off!"))
 				if(do_after(user, 20, target))
 					collar.broke = TRUE
 					collar.IsLocked(FALSE,user)
 					if(rand(0,2) == 0) //chance to get damage
-						to_chat(user, "<span class='warning'>You successfully cut away the lock, but gave [target.name] several cuts in the process!</span>")
+						to_chat(user, span_warning("You successfully cut away the lock, but gave [target.name] several cuts in the process!"))
 						target.apply_damage(rand(1,4),BRUTE,BODY_ZONE_HEAD,wound_bonus=10)
 					else
-						to_chat(user, "<span class='warning'>You successfully cut away the lock!</span>")
+						to_chat(user, span_warning("You successfully cut away the lock!"))
 			else
-				to_chat(user, "<span class='warning'>You try to cut the lock right off!</span>")
+				to_chat(user, span_warning("You try to cut the lock right off!"))
 				if(do_after(user, 30, target))
 					if(rand(0,2) == 0)
-						to_chat(user, "<span class='warning'>You successfully cut away the lock, but gave yourself several cuts in the process!</span>")
+						to_chat(user, span_warning("You successfully cut away the lock, but gave yourself several cuts in the process!"))
 						collar.broke = TRUE
 						collar.IsLocked(FALSE,user)
 						target.apply_damage(rand(2,4),BRUTE,BODY_ZONE_HEAD,wound_bonus=10)
 					else
-						to_chat(user, "<span class='warning'>You fail to cut away the lock, cutting yourself in the process!</span>")
+						to_chat(user, span_warning("You fail to cut away the lock, cutting yourself in the process!"))
 						target.apply_damage(rand(3,5),BRUTE,BODY_ZONE_HEAD,wound_bonus=30)
 		else
-			to_chat(user, "<span class='warning'>The lock is already broken!</span>")
+			to_chat(user, span_warning("The lock is already broken!"))
 
 /////////////////////////
 ///MIND CONTROL COLLAR///

@@ -110,7 +110,7 @@
 			color_changed = TRUE
 	if(lit == TRUE)
 		if(put_out_candle())
-			user.visible_message("<span class='notice'>[user] snuffs [src].</span>")
+			user.visible_message(span_notice("[user] snuffs [src]."))
 
 ///////////////////////////////////////////////////
 //here goes things that required for wax dropping//
@@ -142,7 +142,7 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 
@@ -157,7 +157,7 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 
@@ -168,12 +168,12 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
 
 						else if(penis)
@@ -184,11 +184,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
 
 						else if(vagina)
@@ -199,11 +199,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
 
 						else
@@ -214,11 +214,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
 
 				if(BODY_ZONE_CHEST)
@@ -232,11 +232,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
 						else
 							if(M.is_topless())
@@ -246,11 +246,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
 
 					if(M.gender == FEMALE)
@@ -262,11 +262,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
 						else
 							if(M.is_topless())
@@ -276,11 +276,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
 					else
 						if(breasts)
@@ -291,11 +291,11 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
 						else
 							if(M.is_topless())
@@ -305,18 +305,18 @@
 									M.do_jitter_animation()
 									if(prob(50))
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
-								user.visible_message("<font color=purple>[user] [message]!</font>")
+								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
 
 							else
-								to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
 		else
-			to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+			to_chat(user, span_danger("Looks like [M] don't want you to do that."))
 			return
 	else
-		to_chat(user, "<span class='danger'>Candle should be lit to produce hot liquid wax!</span>")
+		to_chat(user, span_danger("Candle should be lit to produce hot liquid wax!"))
 		return
 
 #undef CANDLE_LUMINOSITY

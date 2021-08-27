@@ -17,7 +17,7 @@
         var/obj/item/clothing/gloves/ball_mittens_reinforced/W = new /obj/item/clothing/gloves/ball_mittens_reinforced
         remove_item_from_storage(user)
         user.put_in_hands(W)
-        to_chat(user, "<span class='notice'>You reinforced the belts on [src] with [I].</span>")
+        to_chat(user, span_notice("You reinforced the belts on [src] with [I]."))
         qdel(I)
         qdel(src)
         return

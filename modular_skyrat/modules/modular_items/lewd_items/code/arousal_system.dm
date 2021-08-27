@@ -89,7 +89,7 @@
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
 	if(!HAS_TRAIT(M, TRAIT_NYMPHOMANIA) || !HAS_TRAIT(M, TRAIT_BIMBO))
-		to_chat(M, "<span class='userdanger'>You don't want to cum anymore!</span>")
+		to_chat(M, span_userdanger("You don't want to cum anymore!"))
 		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 	return
 
@@ -158,7 +158,7 @@
 	if(!has_status_effect(/datum/status_effect/climax_cooldown))
 		if(tgui_alert(usr, "Are you sure you want to cum?", "Climax", list("Yes", "No")) == "Yes")
 			if(stat != CONSCIOUS)
-				to_chat(usr, "<span class='warning'>You can't climax right now...</span>")
+				to_chat(usr, span_warning("You can't climax right now..."))
 				return
 			else
 				climax(TRUE)
@@ -356,7 +356,7 @@
 	timeout = 4 MINUTES
 
 /datum/mood_event/overgasm
-	description = "<span class='warning'>Uhh... I don't want to be horny anymore.</span>\n" //Me too, buddy. Me too.
+	description = span_warning("Uhh... I don't want to be horny anymore.") //Me too, buddy. Me too.
 	mood_change = -6
 	timeout = 10 MINUTES
 
@@ -383,47 +383,47 @@
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+					visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
 			else if(vagina)
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+					visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
 			else if(penis)
 				if(is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+					visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
 			else
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message("<font color=purple>[src] twitches in orgasm!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+				visible_message(span_purple("[src] twitches in orgasm!"), \
+								span_purple("You cum in your underwear! Eww."))
 
 		else
-			visible_message("<font color=purple>[src] twitches, trying to cum, but with no result.</font>", \
-							"<font color=purple>You can't have an orgasm!</font>")
+			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
+							span_purple("You can't have an orgasm!"))
 		return TRUE
 
 	else if(manual == FALSE && client?.prefs.sextoys_pref == "Yes")
@@ -444,16 +444,16 @@
 			if(is_bottomless())
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+				visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 			else
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+				visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 		else
-			visible_message("<font color=purple>[src] twitches, trying to cum, but with no result.</font>", \
-							"<font color=purple>You can't have an orgasm!</font>")
+			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
+							span_purple("You can't have an orgasm!"))
 		return TRUE
 
 	else
@@ -846,14 +846,14 @@
 	if(user.put_in_hands(coomer) && H.dna.species.mutant_bodyparts["testicles"] && H.dna.species.mutant_bodyparts["penis"])
 		if(held || unheld)
 			if(!((held.name=="cum" && held.item_flags == DROPDEL | ABSTRACT | HAND_ITEM) || (unheld.name=="cum" && unheld.item_flags == DROPDEL | ABSTRACT | HAND_ITEM)))
-				to_chat(user, "<span class='notice'>You mentally prepare yourself to masturbate.</span>")
+				to_chat(user, span_notice("You mentally prepare yourself to masturbate."))
 			else
 				qdel(coomer)
 		else
-			to_chat(user, "<span class='notice'>You mentally prepare yourself to masturbate.</span>")
+			to_chat(user, span_notice("You mentally prepare yourself to masturbate."))
 	else
 		qdel(coomer)
-		to_chat(user, "<span class='warning'>You're incapable of masturbating.</span>")
+		to_chat(user, span_warning("You're incapable of masturbating."))
 
 /obj/item/coom
 	name = "cum"
@@ -874,33 +874,33 @@
 		return
 	var/mob/living/carbon/human/human_cumvictim = M
 	if(!human_cumvictim.client)
-		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
+		to_chat(user, span_warning("You can't cum onto [M]."))
 		return
 	if(!(human_cumvictim.client.prefs.skyrat_toggles & CUMFACE_PREF)) //im just paranoid about runtime errors
-		to_chat(user, "<span class='warning'>You can't cum onto [M].</span>")
+		to_chat(user, span_warning("You can't cum onto [M]."))
 		return
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
 	if(spriteP.is_hidden(H))
-		to_chat(user, "<span class='notice'>You need to expose yourself in order to masturbate.</span>")
+		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))
 		return
 	else if(P.aroused != AROUSAL_FULL)
-		to_chat(user, "<span class='notice'>You need to be aroused in order to masturbate.</span>")
+		to_chat(user, span_notice("You need to be aroused in order to masturbate."))
 		return
 	var/cum_volume = G.genital_size*5+5
 	var/datum/reagents/R = new/datum/reagents(50)
 	R.add_reagent(/datum/reagent/consumable/cum, cum_volume)
 	if(M==user)
-		user.visible_message("<span class='warning'>[user] starts masturbating onto [M.p_them()]self!</span>", "<span class='danger'>You start masturbating onto yourself!</span>")
+		user.visible_message(span_warning("[user] starts masturbating onto [M.p_them()]self!"), span_danger("You start masturbating onto yourself!"))
 	else
-		user.visible_message("<span class='warning'>[user] starts masturbating onto [M]!</span>", "<span class='danger'>You start masturbating onto [M]!</span>")
+		user.visible_message(span_warning("[user] starts masturbating onto [M]!"), span_danger("You start masturbating onto [M]!"))
 	if(do_after(user,60,M))
 		if(M==user)
-			user.visible_message("<span class='warning'>[user] cums on [M.p_them()]self!</span>", "<span class='danger'>You cum on yourself!</span>")
+			user.visible_message(span_warning("[user] cums on [M.p_them()]self!"), span_danger("You cum on yourself!"))
 		else
-			user.visible_message("<span class='warning'>[user] cums on [M]!</span>", "<span class='danger'>You cum on [M]!</span>")
+			user.visible_message(span_warning("[user] cums on [M]!"), span_danger("You cum on [M]!"))
 		R.expose(M, TOUCH)
 		log_combat(user, M, "came on")
 		if(prob(40))
@@ -921,31 +921,31 @@
 	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
 	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
 	if(spriteP.is_hidden(H))
-		to_chat(user, "<span class='notice'>You need to expose yourself in order to masturbate.</span>")
+		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))
 		return
 	else if(P.aroused != AROUSAL_FULL)
-		to_chat(user, "<span class='notice'>You need to be aroused in order to masturbate.</span>")
+		to_chat(user, span_notice("You need to be aroused in order to masturbate."))
 		return
 	if(target.is_refillable() && target.is_drainable())
 		var/cum_volume = G.genital_size*5+5
 		if(target.reagents.holder_full())
-			to_chat(user, "<span class='warning'>[target] is full.</span>")
+			to_chat(user, span_warning("[target] is full."))
 			return
 		var/datum/reagents/R = new/datum/reagents(50)
 		R.add_reagent(/datum/reagent/consumable/cum, cum_volume)
-		user.visible_message("<span class='warning'>[user] starts masturbating into [target]!</span>", "<span class='danger'>You start masturbating into [target]!</span>")
+		user.visible_message(span_warning("[user] starts masturbating into [target]!"), span_danger("You start masturbating into [target]!"))
 		if(do_after(user,60))
-			user.visible_message("<span class='warning'>[user] cums into [target]!</span>", "<span class='danger'>You cum into [target]!</span>")
+			user.visible_message(span_warning("[user] cums into [target]!"), span_danger("You cum into [target]!"))
 			playsound(target, "desecration", 50, TRUE)
 			R.trans_to(target, cum_volume)
 			if(prob(40))
 				user.emote("moan")
 			qdel(src)
 	else
-		user.visible_message("<span class='warning'>[user] starts masturbating onto [target]!</span>", "<span class='danger'>You start masturbating onto [target]!</span>")
+		user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
 		if(do_after(user,60))
 			var/turf/T = get_turf(target)
-			user.visible_message("<span class='warning'>[user] cums on [target]!</span>", "<span class='danger'>You cum on [target]!</span>")
+			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
 			playsound(target, "desecration", 50, TRUE)
 			new/obj/effect/decal/cleanable/cum(T)
 			if(prob(40))
