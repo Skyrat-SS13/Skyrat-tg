@@ -8,5 +8,5 @@
 	if(!left_leg || !right_leg || left_leg.bodypart_disabled || right_leg.bodypart_disabled)
 		return ..()
 	//Nailed it!
-	visible_message("<span class='notice'>[src] lands elegantly on [p_their()] feet!</span>",
-		"<span class='warning'>You fall [levels] level[levels > 1 ? "s" : ""] into [T], perfecting the landing!</span>")
+	visible_message(span_notice("[src] lands elegantly on [p_their()] feet!"),
+		span_warning("You fall [levels] level[levels > 1 ? "s" : ""] into [T], perfecting the landing!"))
