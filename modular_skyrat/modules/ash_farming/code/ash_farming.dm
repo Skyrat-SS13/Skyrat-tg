@@ -77,7 +77,7 @@
 		for(var/spawning_food in 1 to 3)
 			if(prob(33))
 				continue
-			if(planted_seeds.mutatelist.len >= 1 && prob(10))
+			if(planted_seeds?.mutatelist.len >= 1 && prob(10))
 				var/obj/item/seeds/choose_seed = pick(planted_seeds.mutatelist)
 				var/obj/item/food/grown/chosen_grow = initial(choose_seed.product)
 				new chosen_grow(src_turf)
