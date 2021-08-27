@@ -151,6 +151,10 @@
 	return
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
+	if((istype(target, /obj/item/reagent_containers/glass/bottle/vial)))
+		insert_vial(target, user, vial)
+		return TRUE
+
 	if(!vial || !proximity || !isliving(target))
 		return
 	var/mob/living/injectee = target
