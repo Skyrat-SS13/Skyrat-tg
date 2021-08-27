@@ -171,7 +171,7 @@
 								M.apply_status_effect(/datum/status_effect/subspace)
 						M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
 						M.adjustPain(5)
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, 'sound/weapons/whip.ogg', 100)
 
 					if(current_whip_type == "weak")
@@ -183,10 +183,10 @@
 								M.apply_status_effect(/datum/status_effect/subspace)
 						M.Paralyze(1)
 						M.adjustPain(3)
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, 'sound/weapons/whip.ogg', 60)
 				else
-					to_chat(user, "<span class='danger'>[M] is missing their left leg!</span>")
+					to_chat(user, span_danger("[M] is missing their left leg!"))
 					return
 
 			if(BODY_ZONE_R_LEG)
@@ -200,7 +200,7 @@
 								M.apply_status_effect(/datum/status_effect/subspace)
 						M.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
 						M.adjustPain(5)
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, 'sound/weapons/whip.ogg', 100)
 
 					if(current_whip_type == "weak")
@@ -212,10 +212,10 @@
 								M.apply_status_effect(/datum/status_effect/subspace)
 						M.Paralyze(1)
 						M.adjustPain(3)
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, 'sound/weapons/whip.ogg', 60)
 				else
-					to_chat(user, "<span class='danger'>[M] is missing their right leg!</span>")
+					to_chat(user, span_danger("[M] is missing their right leg!"))
 					return
 
 			if(BODY_ZONE_HEAD)
@@ -225,7 +225,7 @@
 				M.adjustArousal(3)
 				M.adjustPain(5)
 				M.adjustOxyLoss(2)//DON'T TOUCH THIS TOO, IT DEALS REALLY LOW DAMAGE. I DARE YOU!
-				user.visible_message("<font color=purple>[user] [message]!</font>")
+				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
 
 			if(BODY_ZONE_PRECISE_GROIN)
@@ -242,7 +242,7 @@
 						M.apply_status_effect(/datum/status_effect/spanked)
 						if(HAS_TRAIT(M, TRAIT_MASOCHISM || TRAIT_NYMPHOMANIA || TRAIT_BIMBO))
 							SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, 'sound/weapons/whip.ogg', 60)
 
 					if(current_whip_type == "hard")
@@ -257,12 +257,12 @@
 						M.apply_status_effect(/datum/status_effect/spanked)
 						if(HAS_TRAIT(M, TRAIT_MASOCHISM || TRAIT_NYMPHOMANIA || TRAIT_BIMBO))
 							SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, 'sound/weapons/whip.ogg', 100)
 					else
 						return
 				else
-					to_chat(user, "<span class='danger'>[M]'s butt is covered!</span>")
+					to_chat(user, span_danger("[M]'s butt is covered!"))
 					return
 
 			else
@@ -275,7 +275,7 @@
 							M.apply_status_effect(/datum/status_effect/subspace)
 						M.do_jitter_animation()
 					M.adjustPain(7)
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, 'sound/weapons/whip.ogg', 100)
 
 				if(current_whip_type == "weak")
@@ -288,12 +288,12 @@
 						M.do_jitter_animation()
 					M.adjustPain(4)
 					M.adjustArousal(5)
-					user.visible_message("<font color=purple>[user] [message]!</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, 'sound/weapons/whip.ogg', 60)
 				else
 					return
 	else
-		to_chat(user, "<span class='danger'>[M] doesn't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
 
 //toggle low pain mode. Because sometimes screaming isn't good
@@ -301,9 +301,9 @@
 	toggle_mode()
 	switch(mode)
 		if("hard")
-			to_chat(user, "<span class='notice'>[src] is now hard. Someone need to be punished!</span>")
+			to_chat(user, span_notice("[src] is now hard. Someone need to be punished!"))
 		if("weak")
-			to_chat(user, "<span class='notice'>[src] feels softer. Easy mode!</span>")
+			to_chat(user, span_notice("[src] feels softer. Easy mode!"))
 	update_icon()
 	update_icon_state()
 

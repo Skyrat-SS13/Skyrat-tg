@@ -383,47 +383,47 @@
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+					visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
 			else if(vagina)
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+					visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
 			else if(penis)
 				if(is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
-					visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+					visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 
 			else
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message("<font color=purple>[src] twitches in orgasm!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+				visible_message(span_purple("[src] twitches in orgasm!"), \
+								span_purple("You cum in your underwear! Eww."))
 
 		else
-			visible_message("<font color=purple>[src] twitches, trying to cum, but with no result.</font>", \
-							"<font color=purple>You can't have an orgasm!</font>")
+			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
+							span_purple("You can't have an orgasm!"))
 		return TRUE
 
 	else if(manual == FALSE && client?.prefs.sextoys_pref == "Yes")
@@ -444,16 +444,16 @@
 			if(is_bottomless())
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message("<font color=purple>[src] is cumming!</font>", "<font color=purple>You are cumming!</font>")
+				visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 			else
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
-				visible_message("<font color=purple>[src] cums in their underwear!</font>", \
-								"<font color=purple>You cum in your underwear! Eww.</font>")
+				visible_message(span_purple("[src] cums in their underwear!"), \
+								span_purple("You cum in your underwear! Eww."))
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
 		else
-			visible_message("<font color=purple>[src] twitches, trying to cum, but with no result.</font>", \
-							"<font color=purple>You can't have an orgasm!</font>")
+			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
+							span_purple("You can't have an orgasm!"))
 		return TRUE
 
 	else

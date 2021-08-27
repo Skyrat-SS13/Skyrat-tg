@@ -73,7 +73,7 @@
 							M.emote(pick("twitch_s","moan","blush"))
 						M.adjustArousal(6)
 						M.adjustPleasure(9)
-						user.visible_message("<font color=purple>[user] [message]!</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -81,7 +81,7 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
 					else
-						to_chat(user, "<span class='danger'>[M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
 					to_chat(user, "<span class = 'danger'>[M] doesn't have a penis!</span>")
@@ -89,5 +89,5 @@
 			else
 				return
 	else
-		to_chat(user, "<span class='danger'>[M] doesn't want you to do that!</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that!"))
 		return

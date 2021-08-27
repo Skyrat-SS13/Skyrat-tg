@@ -78,13 +78,13 @@
 /obj/item/clothing/sextoy/eggvib/attack_self(mob/user, obj/item/I)
 	toggle_mode()
 	if(vibration_mode == "low")
-		to_chat(user, "<span class='notice'>You set the vibration mode to low. Bzzz...</span>")
+		to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
 	if(vibration_mode == "medium")
-		to_chat(user, "<span class='notice'>You set the vibration mode to medium. Bzzzz!</span>")
+		to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
 	if(vibration_mode == "high")
-		to_chat(user, "<span class='notice'>You set the vibration mode to high. Careful with that thing.</span>")
+		to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing."))
 	if(vibration_mode == "off")
-		to_chat(user, "<span class='notice'>You turn off the vibrating egg. Fun time over.</span>")
+		to_chat(user, span_notice("You turn off the vibrating egg. Fun time over."))
 	update_icon()
 	update_icon_state()
 
@@ -186,7 +186,7 @@
 		A.icon = 'icons/obj/assemblies.dmi'
 
 		if(!user.transferItemToLoc(W, A))
-			to_chat(user, "<span class='warning'>[W] is stuck to your hand, you cannot attach it to [src]!</span>")
+			to_chat(user, span_warning("[W] is stuck to your hand, you cannot attach it to [src]!"))
 			return
 		W.master = A
 		A.helmet_part = W
@@ -238,11 +238,11 @@
 	var/mob/living/carbon/human/U = loc
 	if(toy_on == TRUE)
 		if(src == U.penis || U.vagina || U.anus)
-			to_chat(U, "<font color=purple>You feel pleasant vibrations deep below...</font>")
+			to_chat(U, span_purple("You feel pleasant vibrations deep below..."))
 		if(src == U.nipples)
-			to_chat(U, "<font color=purple>You feel pleasant stimulation in your nipples.</font>")
+			to_chat(U, span_purple("You feel pleasant stimulation in your nipples."))
 	if(toy_on == FALSE && (src == U.penis || src == U.vagina || src == U.anus || src == U.nipples))
-		to_chat(U, "<font color=purple>The vibrating toy no longer drives you mad.</font>")
+		to_chat(U, span_purple("The vibrating toy no longer drives you mad."))
 
 	if(master)
 		if(isassembly(master))
@@ -274,18 +274,18 @@
 			soundloop2.stop()
 			soundloop3.stop()
 			if(vibration_mode == "low")
-				to_chat(user, "<span class='notice'>You set the vibration mode to low. Bzzz...</span>")
+				to_chat(user, span_notice("You set the vibration mode to low. Bzzz..."))
 				soundloop1.start()
 			if(vibration_mode == "medium")
-				to_chat(user, "<span class='notice'>You set the vibration mode to medium. Bzzzz!</span>")
+				to_chat(user, span_notice("You set the vibration mode to medium. Bzzzz!"))
 				soundloop2.start()
 			if(vibration_mode == "high")
-				to_chat(user, "<span class='notice'>You set the vibration mode to high. Careful with that thing!</span>")
+				to_chat(user, span_notice("You set the vibration mode to high. Careful with that thing!"))
 				soundloop3.start()
 			update_icon()
 			update_icon_state()
 		else
-			to_chat(usr, "<span class ='notice'>You can't switch modes while the vibrating egg is turned off!</span>")
+			to_chat(usr, span_notice("You can't switch modes while the vibrating egg is turned off!"))
 			return
 	else
 		return

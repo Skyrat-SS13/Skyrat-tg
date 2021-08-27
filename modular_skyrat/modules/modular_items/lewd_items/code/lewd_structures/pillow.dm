@@ -148,7 +148,7 @@
 
 /obj/item/pillow/attack_self(mob/user)
 	if(IN_INVENTORY)
-		to_chat(user, "<span class='notice'>You set [src] down on the floor.</span>")
+		to_chat(user, span_notice("You set [src] down on the floor."))
 		var/obj/structure/bed/pillow_tiny/C = new(get_turf(src))
 		C.current_color = current_color
 		C.current_form = current_form
@@ -188,7 +188,7 @@
 //picking up the pillow
 
 /obj/structure/bed/pillow_tiny/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>You pick up [src].</span>")
+	to_chat(user, span_notice("You pick up [src]."))
 	var/obj/item/pillow/W = new()
 	user.put_in_hands(W)
 
@@ -221,7 +221,7 @@
 		var/obj/item/pillow/P = I
 		var/obj/structure/chair/pillow_small/C
 		if(P.current_color == current_color)
-			to_chat(user, "<span class='notice'>You add [src] to a pile.</span>")
+			to_chat(user, span_notice("You add [src] to a pile."))
 			C = new(get_turf(src))
 			C.current_color = current_color
 			C.pillow2_color = P.current_color
@@ -239,7 +239,7 @@
 			qdel(src)
 			qdel(P)
 		else
-			to_chat(user, "<span class='notice'>You feel that those colours would clash...</span>") //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -310,7 +310,7 @@
 
 //Removing pillow from a pile
 /obj/structure/chair/pillow_small/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>You take [src] from the pile.</span>")
+	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/pillow/W = new()
 	var/obj/structure/bed/pillow_tiny/C = new(get_turf(src))
 	user.put_in_hands(W)
@@ -338,7 +338,7 @@
 		var/obj/item/pillow/P = I
 		var/obj/structure/bed/pillow_large/C
 		if(P.current_color == current_color)
-			to_chat(user, "<span class='notice'>You add [src] to the pile.</span>")
+			to_chat(user, span_notice("You add [src] to the pile."))
 			C = new(get_turf(src))
 			C.current_color = current_color
 			C.pillow3_color = P.current_color
@@ -360,7 +360,7 @@
 			qdel(src)
 			qdel(P)
 		else
-			to_chat(user, "<span class='notice'>You feel that those colours would clash...</span>") //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -438,7 +438,7 @@
 
 //Removing pillow from a pile
 /obj/structure/bed/pillow_large/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>You take [src] from the pile.</span>")
+	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/pillow/W = new()
 	var/obj/structure/chair/pillow_small/C = new(get_turf(src))
 	user.put_in_hands(W)

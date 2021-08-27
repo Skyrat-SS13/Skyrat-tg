@@ -103,7 +103,7 @@
 // Additional examine text
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
-	. +="<span class='notice'>What are these metal mounts on the armrests for...?</span>"
+	. +=span_notice("What are these metal mounts on the armrests for...?")
 
 /obj/structure/chair/milking_machine/Destroy()
 	. = ..()
@@ -177,7 +177,7 @@
 	machine_color = choice
 	update_icon()
 	color_changed = TRUE
-	to_chat(user, "<span class='notice'>You change the color of the milking machine.</span>")
+	to_chat(user, span_notice("You change the color of the milking machine."))
 	return TRUE
 
 // Checking if we can use the menu
@@ -362,7 +362,7 @@
 			// Have difficulty unbuckling if overly aroused
 			if(M.arousal >= 60)
 				if((current_mode != mode_list[1]) && (current_mode != mode_list[2]))
-					to_chat(M, "<font color=purple>You are too horny to try to get out!</font>")
+					to_chat(M, span_purple("You are too horny to try to get out!"))
 					return
 				else
 					M.visible_message(span_notice("[M] unbuckles [M.p_them()]self from [src]."),\
@@ -389,7 +389,7 @@
 	if(panel_open && cell)
 		user.put_in_hands(cell)
 		cell.add_fingerprint(user)
-		user.visible_message("<span class='notice'>[user] removes [cell] from [src].</span>", "<span class='notice'>You remove [cell] from [src].</span>")
+		user.visible_message(span_notice("[user] removes [cell] from [src]."), span_notice("You remove [cell] from [src]."))
 		removecell()
 		update_all_visuals()
 		return
@@ -410,7 +410,7 @@
 	if(istype(W, /obj/item/reagent_containers) && !(W.item_flags & ABSTRACT) && W.is_open_container())
 		. = TRUE // No afterattack
 		if(panel_open)
-			to_chat(user, "<span class='warning'>You can't use [src] while its panel is opened!</span>")
+			to_chat(user, span_warning("You can't use [src] while its panel is opened!"))
 			return
 		var/obj/item/reagent_containers/B = W
 		. = TRUE // No afterattack
@@ -423,10 +423,10 @@
 	if(istype(W, /obj/item/stock_parts/cell))
 		if(panel_open)
 			if(!anchored)
-				to_chat(user, "<span class='warning'>[src] isn't attached to the ground!</span>")
+				to_chat(user, span_warning("[src] isn't attached to the ground!"))
 				return
 			if(cell)
-				to_chat(user, "<span class='warning'>There is already a cell in [src]!</span>")
+				to_chat(user, span_warning("There is already a cell in [src]!"))
 				return
 			else
 				var/area/a = loc.loc // Gets our locations location, like a dream within a dream
@@ -442,11 +442,11 @@
 				cut_overlay(cell_overlay)
 				cell_overlay.icon_state = "milking_cell"
 				add_overlay(cell_overlay)
-				user.visible_message("<span class='notice'>[user] inserts a cell into [src].</span>", "<span class='notice'>You insert a cell into [src].</span>")
+				user.visible_message(span_notice("[user] inserts a cell into [src]."), span_notice("You insert a cell into [src]."))
 				update_all_visuals()
 				return
 		else
-			to_chat(user, "<span class='warning'>[src]'s maintenance panel isn't opened!</span>")
+			to_chat(user, span_warning("[src]'s maintenance panel isn't opened!"))
 			return
 	else
 		if(screwdriver_action(user, icon_state, icon_state, W))
@@ -503,7 +503,7 @@
 			cut_overlay(panel_overlay)
 			panel_overlay.icon_state = "milking_panel"
 			add_overlay(panel_overlay)
-			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
+			to_chat(user, span_notice("You open the maintenance hatch of [src]."))
 		else
 			panel_open = FALSE
 			cut_overlay(panel_overlay)
@@ -513,7 +513,7 @@
 			cut_overlay(cell_overlay)
 			cell_overlay.icon_state = "milking_cell_empty"
 
-			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
+			to_chat(user, span_notice("You close the maintenance hatch of [src]."))
 
 		return TRUE
 	return FALSE
@@ -661,11 +661,11 @@
 
 /obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/I)
 	if((flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>You being to deconstruct [src]...</span>")
+		to_chat(user, span_notice("You being to deconstruct [src]..."))
 		if(I.use_tool(src, user, 8 SECONDS, volume=50))
 			I.play_tool_sound(src, 50)
 			deconstruct(TRUE)
-			to_chat(user, "<span class='notice'>You disassemble [src].</span>")
+			to_chat(user, span_notice("You disassemble [src]."))
 		return TRUE
 	return TRUE
 
@@ -1059,5 +1059,5 @@
 					N.machine_color = N.machine_color_list[2]
 					N.icon_state = "milking_teal_off"
 			qdel(src)
-			to_chat(user, "<span class='notice'>You assemble the milking machine.</span>")
+			to_chat(user, span_notice("You assemble the milking machine."))
 			return

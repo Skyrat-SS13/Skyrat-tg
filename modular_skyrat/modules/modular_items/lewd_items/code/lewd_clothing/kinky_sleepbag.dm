@@ -78,7 +78,7 @@
 		if(TRUE)
 			if(bag_state == "deflated")
 				fold()
-				to_chat(user, "<span class='notice'>The sleeping bag now is [bag_fold? "folded." : "unfolded."]</span>")
+				to_chat(user, span_notice("The sleeping bag now is [bag_fold? "folded." : "unfolded."]"))
 				update_icon()
 				update_icon_state()
 			else
@@ -120,11 +120,11 @@
 		time_to_sound_left = time_to_sound
 
 		if(bag_state == "inflated")
-			to_chat(H,"<font color=purple>You realize that you can't move even an inch. The inflated sleeping bag squeezes you from all sides!</font>")
+			to_chat(H, span_purple("You realize that you can't move even an inch. The inflated sleeping bag squeezes you from all sides!"))
 			H.cut_overlay(H.overlays_standing[HEAD_LAYER])
 			H.cut_overlay(H.overlays_standing[HAIR_LAYER])
 		if(bag_state == "deflated")
-			to_chat(H,"<font color=purple>You realize that moving now is much harder. You're fully restrained, any struggling is useless!</font>")
+			to_chat(H, span_purple("You realize that moving now is much harder. You're fully restrained, any struggling is useless!"))
 	. = ..()
 
 //to inflate/deflate that thing
@@ -132,11 +132,11 @@
 	var/mob/living/carbon/human/H = user
 	if(bag_fold == FALSE)
 		toggle_mode()
-		to_chat(H, "<span class='notice'>The sleeping bag now is [bag_state? "inflated." : "deflated."]</span>")
+		to_chat(H, span_notice("The sleeping bag now is [bag_state? "inflated." : "deflated."]"))
 		update_icon()
 		update_icon_state()
 	else
-		to_chat(H, "<span class='notice'>You need to unfold the bag before inflating it!</span>")
+		to_chat(H, span_notice("You need to unfold the bag before inflating it!"))
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/fold(mob/user, src)
 	bag_fold = !bag_fold
@@ -169,7 +169,7 @@
 	if(ishuman(user))
 		if(src == H.wear_suit)
 			REMOVE_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
-			to_chat(user,"<font color=purple>You are finally free! The bag is no longer constricting your movements.</font>")
+			to_chat(user, span_purple("You are finally free! The bag is no longer constricting your movements."))
 
 			H.add_overlay(H.overlays_standing[SHOES_LAYER])
 			H.update_inv_shoes()
