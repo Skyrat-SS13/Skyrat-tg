@@ -868,8 +868,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "zentai"
 	inhand_icon_state = "zentai"
-	darkness_view = 1
-	flash_protect = FLASH_PROTECTION_FLASH
 	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
