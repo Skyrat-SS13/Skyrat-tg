@@ -24,7 +24,7 @@
 	if (istype(weapon, /obj/item/paper/carbon))
 		var/obj/item/paper/carbon/carbon_paper = weapon
 		if (!carbon_paper.iscopy && !carbon_paper.copied)
-			to_chat(user, span_notice("Take off the carbon copy first.")
+			to_chat(user, span_notice("Take off the carbon copy first."))
 			add_fingerprint(user)
 			return
 	// adding sheets

@@ -1,4 +1,3 @@
-/* -- SKYRAT EDIT MOVAL -- MOVED TO HTML_PAPERWORK
 /obj/item/paper/carbon
 	name = "sheet of carbon"
 	icon_state = "paper_stack"
@@ -45,4 +44,4 @@
 
 /obj/item/paper/carbon_copy
 	icon_state = "cpaper"
-*/
+

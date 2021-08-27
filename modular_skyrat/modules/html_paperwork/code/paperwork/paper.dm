@@ -15,7 +15,7 @@
 /obj/item/paper
 	name = "sheet of paper"
 	gender = NEUTER
-	icon = 'icons/obj/bureaucracy.dmi'
+	icon = 'modular_skyrat/modules/html_paperwork/icons/bureaucracy.dmi'
 	icon_state = "paper"
 	inhand_icon_state = "paper"
 	worn_icon_state = "paper"
@@ -51,16 +51,19 @@
 	var/last_modified_ckey
 	var/age = 0
 	var/list/metadata
-	var/readable = TRUE  //Paper will not be able to be written on and will not bring up a window upon examine if FALSE
-	var/is_memo = FALSE  //If TRUE, paper will act the same as readable = FALSE, but will also be unrenameable.
-	var/datum/language/language = LANGUAGE_COMMON // Language the paper was written in. Editable by users up until something's actually written
+	///Paper will not be able to be written on and will not bring up a window upon examine if FALSE -- USED TO BE "readable"
+	var/show_written_words = TRUE
+	///If TRUE, paper will act the same as readable = FALSE, but will also be unrenameable.
+	var/is_memo = FALSE
+	///Language the paper was written in. Editable by users up until something's actually written
+	var/datum/language/language = LANGUAGE_COMMON
 
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
 	var/const/fancyfont = "Segoe Script"
 
-	var/scan_file_type = /datum/computer_file/data/text
+	// var/scan_file_type = /datum/computer_file/data/text
 
 	var/contact_poison // Reagent ID to transfer on contact
 	var/contact_poison_volume = 0
@@ -91,6 +94,27 @@
 	update_icon_state()
 	update_space(info)
 	updateinfolinks()
+
+/obj/item/paper/proc/copy(paper_type = /obj/item/paper, atom/location = loc, colored = TRUE)
+	var/obj/item/paper/new_paper = new paper_type (location)
+	if(colored)
+		new_paper.color = color
+		new_paper.info = info
+	var/copied = info
+	copied = replacetext(copied, "<font face=\"[new_paper.deffont]\" color=", "<font face=\"[new_paper.deffont]\" nocolor=")	//state of the art techniques in action
+	copied = replacetext(copied, "<font face=\"[new_paper.crayonfont]\" color=", "<font face=\"[new_paper.crayonfont]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
+	new_paper.info += copied
+	new_paper.info += "</font>"//</font>
+	new_paper.SetName(name) // -- Doohl
+	new_paper.fields = fields
+	new_paper.stamps = stamps
+	new_paper.stamped = stamped
+	new_paper.ico = ico
+	new_paper.offset_x = offset_x
+	new_paper.offset_y = offset_y
+	copy_overlays(new_paper, TRUE)
+	return new_paper
+
 
 /obj/item/paper/proc/set_language(datum/language/new_language, force = FALSE)
 	if (!new_language || (info && !force))
@@ -155,7 +179,7 @@
 
 	var/new_language = tgui_input_list(user, "What language do you want to write in?", "Change language", selectable_languages)
 	if(!new_language || new_language == language)
-		to_chat(user, span_notice("You decide to leave the language as [language.name]."))
+		to_chat(user, span_notice("You decide to leave the language as [language]."))
 		return
 	if(!admin_force && !Adjacent(user) && !can_interact(user, GLOB.deep_inventory_state))
 		to_chat(user, span_warning("You must remain next to or continue holding \the [src] to do that."))
@@ -164,7 +188,7 @@
 
 
 /obj/item/paper/proc/show_content(mob/user, forced, editable)
-	if(!readable || is_memo)
+	if(!show_written_words || is_memo)
 		return
 	if(!user)
 		return
@@ -189,17 +213,17 @@
 		html += "<hr/>" + language.scramble(info)
 	else if(editable)
 		if(has_content)
-			html += PAPER_META("The paper is written in [language.name].")
+			html += PAPER_META("The paper is written in [language].")
 			html += "<hr/>" + info_links
 		else if(forced || user.get_random_understood_language()) // checks if any languages exist
 			if(!has_language)
 				language = user.get_selected_language()
-			html += PAPER_META("You are writing in <a href='?src=\ref[src];change_language=1'>[language.name]</a>.")
+			html += PAPER_META("You are writing in <a href='?src=\ref[src];change_language=1'>[language]</a>.")
 			html += "<hr/>" + info_links
 		else
 			html += PAPER_META_BAD("You can't write without knowing a language.")
 	else if(has_content)
-		html += PAPER_META("The paper is written in [language.name].")
+		html += PAPER_META("The paper is written in [language].")
 		html += "<hr/>" + info
 	html += "[stamps]</body></html>"
 	show_browser(user, html, "window=[name]") //todo - figure out what this does
@@ -490,7 +514,7 @@
 
 		show_content(usr, editable = TRUE)
 
-		playsound(src, pick('sound/effects/pen1.ogg','sound/effects/pen2.ogg'), 10)
+		playsound(src, pick('modular_skyrat/modules/html_paperwork/sounds/pen1.ogg','modular_skyrat/modules/html_paperwork/sounds/pen2.ogg'), 10)
 		update_icon()
 
 
@@ -502,11 +526,11 @@
 	if(user.mind && (user.mind.assigned_role == "Clown"))
 		clown = TRUE
 
-	if(istype(weapon, /obj/item/stack/sticky_tape))
+	/*if(istype(weapon, /obj/item/stack/sticky_tape))
 		var/obj/item/stack/sticky_tape/tape = weapon
 		tape.stick_to_paper(src, user)
 		tape.use(1)
-		return
+		return */ // TODO -- TAPE
 
 	if(istype(weapon, /obj/item/paper) || istype(weapon, /obj/item/photo))
 		if(!can_bundle())
@@ -514,13 +538,13 @@
 		var/obj/item/paper/other = weapon
 		if(istype(other) && !other.can_bundle())
 			return
-		if (istype(weapon, /obj/item/paper/carbon))
+		/*if (istype(weapon, /obj/item/paper/carbon))
 			var/obj/item/paper/carbon/carbon_paper = weapon
 			if (!carbon_paper.iscopy && !carbon_paper.copied)
 				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
 				add_fingerprint(user)
-				return
-		var/obj/item/paper_bundle/bundle = new(src.loc)
+				return */ // TODO -- CARBON PAPER
+		/*var/obj/item/paper_bundle/bundle = new(src.loc)
 		if (name != "paper")
 			bundle.SetName(name)
 		else if (weapon.name != "paper" && weapon.name != "photo")
@@ -533,7 +557,7 @@
 
 		bundle.pages.Add(src)
 		bundle.pages.Add(weapon)
-		bundle.update_icon()
+		bundle.update_icon()*/ //TODO - BUNDLES
 
 	else if(istype(weapon, /obj/item/pen))
 		if(icon_state == "scrap")
@@ -543,12 +567,12 @@
 		var/obj/item/pen/robopen/RP = weapon
 		if ( istype(RP) && RP.mode == 2 )
 			RP.RenamePaper(user,src)
-		else
-			show_content(user, editable = TRUE) */
+		else */ // TODO - THIS
+		show_content(user, editable = TRUE)
 		return
 
 	else if(istype(weapon, /obj/item/stamp)/* || istype(weapon, /obj/item/clothing/ring/seal)*/)
-		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/material/clipboard) ) && loc.loc != user && user.get_active_hand() != weapon))
+		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != weapon))
 			return
 
 		stamps += (stamps=="" ? "<HR>" : "<BR>") + "<i>This paper has been stamped with the [weapon.name].</i>"
@@ -582,18 +606,18 @@
 		stamped += weapon.type
 		overlays += stampoverlay
 
-		playsound(src, 'sound/effects/stamp.ogg', 50, 1)
+		playsound(src, 'modular_skyrat/modules/html_paperwork/sounds/stamp.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>You stamp the paper with your [weapon.name].</span>")
 
 	else if(istype(weapon, /obj/item/lighter))
 		burn_paper_product_attackby_check(weapon, user)
 
-	else if(istype(weapon, /obj/item/paper_bundle))
+	/*else if(istype(weapon, /obj/item/paper_bundle))
 		if(!can_bundle())
 			return
 		var/obj/item/paper_bundle/attacking_bundle = weapon
 		attacking_bundle.insert_sheet_at(user, (attacking_bundle.pages.len)+1, src)
-		attacking_bundle.update_icon()
+		attacking_bundle.update_icon() */ // TODO -- BUNDLES
 
 	add_fingerprint(user)
 
@@ -621,9 +645,6 @@
 /obj/item/paper/crumpled
 	name = "paper scrap"
 	icon_state = "scrap"
-
-/obj/item/paper/crumpled/on_update_icon()
-	return
 
 /obj/item/paper/crumpled/bloody
 	icon_state = "scrap_bloodied"
@@ -665,6 +686,34 @@
 /obj/item/paper/aromatherapy_disclaimer
 	name = "aromatherapy disclaimer"
 	info = "<I>The manufacturer and the retailer make no claims of the contained products' effacy.</I> <BR><BR><B>Use at your own risk.</B>"
+
+/**
+ * Construction paper
+ */
+/obj/item/paper/construction
+
+/obj/item/paper/construction/Initialize()
+	. = ..()
+	color = pick("FF0000", "#33cc33", "#ffb366", "#551A8B", "#ff80d5", "#4d94ff")
+
+/**
+ * Natural paper
+ */
+/obj/item/paper/natural/Initialize()
+	. = ..()
+	color = "#FFF5ED"
+
+/obj/item/paper/crumpled
+	name = "paper scrap"
+	icon_state = "scrap"
+	slot_flags = null
+	show_written_words = FALSE
+
+/obj/item/paper/crumpled/bloody
+	icon_state = "scrap_bloodied"
+
+/obj/item/paper/crumpled/muddy
+	icon_state = "scrap_mud"
 
 
 #undef PAPER_CAMERA_DISTANCE
