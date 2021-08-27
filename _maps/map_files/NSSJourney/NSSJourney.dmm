@@ -1795,17 +1795,16 @@
 /turf/open/floor/iron,
 /area/hallway/primary/starboard)
 "alw" = (
-/obj/machinery/button/door{
-	id = "isolationshuttera";
-	name = "isolation shutters";
-	pixel_x = 25;
-	req_access_txt = "63"
-	},
 /obj/structure/cable,
 /obj/machinery/button/flasher{
 	id = "solitaryflasha";
 	pixel_x = 25;
 	pixel_y = -10
+	},
+/obj/machinery/button/door{
+	id = "solitarya";
+	pixel_x = 25;
+	pixel_y = 8
 	},
 /turf/open/floor/iron,
 /area/security/prison)
@@ -36466,10 +36465,10 @@
 	name = "solitary cell";
 	req_access_txt = "2"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = isolationshuttera
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "solitarya"
+	},
 /turf/open/floor/carpet,
 /area/security/prison)
 "dbK" = (
@@ -39984,6 +39983,10 @@
 /area/science/misc_lab)
 "gKI" = (
 /obj/structure/fence,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "briggate";
+	name = "security shutters"
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -50057,11 +50060,11 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay)
 "quB" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = isolationshuttera
-	},
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "solitarya"
+	},
 /turf/open/floor/plating,
 /area/security/prison)
 "quE" = (
@@ -50669,12 +50672,6 @@
 /turf/open/floor/plating,
 /area/security/office)
 "rcU" = (
-/obj/machinery/button/door{
-	id = "isolationshutter";
-	name = "Isolation Shutter";
-	pixel_x = 25;
-	req_access_txt = "63"
-	},
 /obj/structure/cable,
 /obj/machinery/button/flasher{
 	id = "solitaryflashb";
@@ -50684,6 +50681,11 @@
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "briggate";
 	name = "security shutters"
+	},
+/obj/machinery/button/door{
+	id = "solitaryb";
+	pixel_x = 25;
+	pixel_y = 8
 	},
 /turf/open/floor/iron,
 /area/security/prison)
@@ -52147,11 +52149,11 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "sFd" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "isolationshutter"
-	},
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "solitaryb"
+	},
 /turf/open/floor/plating,
 /area/security/prison)
 "sGc" = (
@@ -54427,10 +54429,10 @@
 	name = "solitary cell";
 	req_access_txt = "2"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "isolationshutter"
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "solitaryb"
+	},
 /turf/open/floor/carpet,
 /area/security/prison)
 "uMS" = (
