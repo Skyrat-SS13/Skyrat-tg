@@ -667,10 +667,10 @@ SUBSYSTEM_DEF(job)
 	var/jobstext = file2text("[global.config.directory]/jobs.txt")
 	for(var/datum/job/job as anything in joinable_occupations)
 		var/regex/jobs = new("[job.title]=(-1|\\d+),(-1|\\d+)")
+		jobs.Find(jobstext)
 		if(length(jobs.group)<2)
 			stack_trace("failed to find a job entry for [job.title] in jobs.txt")
 			continue
-		jobs.Find(jobstext)
 		job.total_positions = text2num(jobs.group[1])
 		job.spawn_positions = text2num(jobs.group[2])
 
@@ -871,7 +871,7 @@ SUBSYSTEM_DEF(job)
 
 	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
 		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
-		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot",\
+		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot", \
 		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative")
 
 	centcom_jobs = list("Central Command","VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Research Officer", \
