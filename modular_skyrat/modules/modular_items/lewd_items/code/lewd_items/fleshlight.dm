@@ -84,7 +84,7 @@
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, span_danger("[M] doesn't have a penis!\n"))
+					to_chat(user, span_danger("[M] doesn't have a penis!"))
 					return
 			else
 				return
