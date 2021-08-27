@@ -98,7 +98,7 @@
 	icon_state = largest_reagent.shot_glass_icon_state || "[base_icon_state]clear"
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass/update_overlays()
-	//. = ..()
+	. = ..()
 	if(icon_state != "[base_icon_state]clear")
 		return
 
