@@ -93,7 +93,7 @@
 
 /datum/loadout_item/glasses/donator/zentaiglasses
 	name = "Demonic Sunglasses"
-	path = /obj/item/clothing/glasses/sunglasses/zentai
+	path = /obj/item/clothing/glasses/zentai
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/head/donator/hephelmet

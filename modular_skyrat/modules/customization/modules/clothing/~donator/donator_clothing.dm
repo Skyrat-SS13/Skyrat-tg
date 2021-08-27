@@ -856,11 +856,11 @@
 	inhand_icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
-/obj/item/clothing/glasses/sunglasses/zentai
+/obj/item/clothing/glasses/zentai
 	var/list/spans = list()
 	actions_types = list(/datum/action/item_action/demonic_whisper)
 
-/obj/item/clothing/glasses/sunglasses/zentai
+/obj/item/clothing/glasses/zentai
 	name = "Demonic Sunglasses"
 	desc = "A devilishly fashionable set of shades. An eerie red glint is present."
 	spans = list("velvet")
@@ -874,7 +874,7 @@
 /datum/action/item_action/demonic_whisper
 	name = "Demonic Whisper"
 
-/obj/item/clothing/glasses/sunglasses/zentai/ui_action_click(mob/living/user, action)
+/obj/item/clothing/glasses/zentai/ui_action_click(mob/living/user, action)
 	if(!isliving(user) || !can_use(user))
 		return
 	var/message = input(user, "Speak with a demonic whisper", "Whisper")
