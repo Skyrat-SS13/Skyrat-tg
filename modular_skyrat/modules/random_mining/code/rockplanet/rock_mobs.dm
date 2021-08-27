@@ -314,7 +314,7 @@ To-do: Overwrite this, Spawn cannot fly. Or re-do the base-type to be headcrabs 
 //////////////
 /obj/item/clothing/under/color/garbage_green	//Literally just a color variant
 	name = "garbage-man's jumpsuit"
-	greyscale_colors = "#738359"
+	greyscale_colors = "#5e6d45"
 
 /obj/item/clothing/under/color/mechanic_blue	//Literally just a color variant
 	name = "mechanic's jumpsuit"
