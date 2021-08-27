@@ -15,14 +15,6 @@
 	var/charge_rate_base = 250 // Amount of charge we gain from a level one capacitor
 	var/charge_rate_max = 4000 // The highest we allow the charge rate to go
 
-/obj/machinery/cell_charger_multi/Initialize()
-	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, /atom.proc/RightClick)
-
-/obj/machinery/cell_charger_multi/Destroy()
-	UnregisterSignal(src, COMSIG_PARENT_ATTACKBY)
-	. = ..()
-
 /obj/machinery/cell_charger_multi/update_overlays()
 	. = ..()
 
@@ -39,12 +31,7 @@
 		. += new /mutable_appearance(charge_overlay)
 		. += new /mutable_appearance(cell_overlay)
 
-/obj/machinery/cell_charger_multi/CtrlShiftClick(mob/user) // Remove this after like a month - starting 11-Jun-21
-	. = ..()
-	to_chat(user, "<span class='warning'>This action has been moved to Right Click.</span>")
-
-/obj/machinery/cell_charger_multi/RightClick(mob/user)
-	. = ..()
+/obj/machinery/cell_charger_multi/attack_hand_secondary(mob/user, list/modifiers)
 	if(!can_interact(user) || !charging_batteries.len)
 		return
 	to_chat(user, "<span class='notice'>You press the quick release as all the cells pop out!</span>")

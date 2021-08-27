@@ -111,12 +111,12 @@
 					music_extra_data["start"] = data["start_time"]
 					music_extra_data["end"] = data["end_time"]
 					music_extra_data["link"] = data["webpage_url"]
-					music_extra_data["title"] = data["title"]
 
 					var/res = tgui_alert(usr, "Show the title of and link to this song to the players?\n[title]",, list("No", "Yes", "Cancel"))
 					switch(res)
 						if("Yes")
 							to_chat(world, "<span class='boldannounce'>[src] played: [webpage_url]</span>", confidential = TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, "<span class='boldannounce'>An admin played: [webpage_url]</span>", confidential = TRUE)
+							music_extra_data["title"] = data["title"]
 						if("Cancel")
 							return
 

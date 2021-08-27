@@ -28,7 +28,7 @@
 	desc = "Used to designate a precise transit location for the affectionately named 'Chevvy'."
 	shuttleId = "blackmarket_chevvy"
 	lock_override = NONE
-	shuttlePortId = "caravansyndicate1_custom"
+	shuttlePortId = "blackmarket_chevvy_custom"
 	jumpto_ports = list("blackmarket_chevvy_home" = 1, "whiteship_home" = 1)
 	view_range = 0
 	x_offset = 2
@@ -38,3 +38,8 @@
 	name = "Chevvy Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 /*----- End of Black Market Shuttle Code -----*/
+
+/datum/map_template/shuttle/prison_transport
+	port_id = "prison_transport"
+	suffix = "skyrat"
+	name = "Prison Transporter NSS-74"

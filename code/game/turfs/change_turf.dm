@@ -84,6 +84,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/old_lighting_corner_SW = lighting_corner_SW
 	var/old_lighting_corner_NW = lighting_corner_NW
 	var/old_directional_opacity = directional_opacity
+	var/old_dynamic_lumcount = dynamic_lumcount
 	//SKYRAT EDIT CHANGE
 	var/obj/effect/abstract/liquid_turf/old_liquids = liquids
 	if(lgroup)
@@ -102,7 +103,18 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	changing_turf = TRUE
 	qdel(src) //Just get the side effects and call Destroy
+	//We do this here so anything that doesn't want to persist can clear itself
+	var/list/old_comp_lookup = comp_lookup?.Copy()
+	var/list/old_signal_procs = signal_procs?.Copy()
 	var/turf/W = new path(src)
+
+	// WARNING WARNING
+	// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
+	// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
+	if(old_comp_lookup)
+		LAZYOR(W.comp_lookup, old_comp_lookup)
+	if(old_signal_procs)
+		LAZYOR(W.signal_procs, old_signal_procs)
 
 	for(var/datum/callback/callback as anything in post_change_callbacks)
 		callback.InvokeAsync(W)
@@ -122,6 +134,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	lighting_corner_SE = old_lighting_corner_SE
 	lighting_corner_SW = old_lighting_corner_SW
 	lighting_corner_NW = old_lighting_corner_NW
+
+	dynamic_lumcount = old_dynamic_lumcount
 
 	if(SSlighting.initialized)
 		lighting_object = old_lighting_object
@@ -173,14 +187,18 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/datum/gas_mixture/stashed_air = new()
 		stashed_air.copy_from(air)
 		var/stashed_state = excited
+		var/datum/pollution/stashed_pollution = pollution //SKYRAT EDIT ADDITION
 		var/datum/excited_group/stashed_group = excited_group
 		. = ..() //If path == type this will return us, don't bank on making a new type
 		if (!.) // changeturf failed or didn't do anything
-			QDEL_NULL(stashed_air)
 			return
 		var/turf/open/newTurf = .
+		//SKYRAT EDIT ADDITION
+		if(stashed_pollution)
+			newTurf.pollution = stashed_pollution
+			stashed_pollution.HandleOverlay()
+		//SKYRAT EDIT END
 		newTurf.air.copy_from(stashed_air)
-		QDEL_NULL(stashed_air)
 		newTurf.excited = stashed_state
 		newTurf.excited_group = stashed_group
 		#ifdef VISUALIZE_ACTIVE_TURFS
@@ -191,6 +209,10 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			if(stashed_group.should_display || SSair.display_all_groups)
 				stashed_group.display_turf(newTurf)
 	else
+		//SKYRAT EDIT ADDITION
+		if(pollution)
+			qdel(pollution)
+		//SKYRAT EDIT END
 		SSair.remove_from_active(src) //Clean up wall excitement, and refresh excited groups
 		if(ispath(path,/turf/closed))
 			flags |= CHANGETURF_RECALC_ADJACENT

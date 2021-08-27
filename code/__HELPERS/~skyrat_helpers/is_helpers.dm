@@ -13,3 +13,7 @@
 #define isroundstartslime(A) (is_species(A,/datum/species/jelly/roundstartslime))
 
 #define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
+
+#define isaquatic(A) (is_species(A,/datum/species/aquatic))
+#define isakula(A) (is_species(A,/datum/species/akula))
+#define ishumanoid(A) (is_species(A,/datum/species/humanoid))

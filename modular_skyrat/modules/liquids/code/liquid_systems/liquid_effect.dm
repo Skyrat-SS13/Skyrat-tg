@@ -133,6 +133,7 @@
 				total_reagents -= burn_rate
 
 	my_turf.hotspot_expose((T20C+50) + (50*fire_state), 125)
+	my_turf.PolluteListTurf(list(/datum/pollutant/smoke = 15, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP)
 	for(var/A in my_turf.contents)
 		var/atom/AT = A
 		if(!QDELETED(AT))
@@ -431,9 +432,9 @@
 			to_chat(M, "<span class='userdanger'>You fall in the water!</span>")
 
 /obj/effect/abstract/liquid_turf/Initialize()
+	. = ..()
 	if(!SSliquids)
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
-	. = ..()
 	if(!immutable)
 		my_turf = loc
 		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
@@ -443,9 +444,9 @@
 		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
 
 	update_liquid_vis()
-
-	QUEUE_SMOOTH(src)
-	QUEUE_SMOOTH_NEIGHBORS(src)
+	if(z)
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
 
 	/* //Cant do it immediately, hmhm
 	if(isspaceturf(my_turf))

@@ -38,12 +38,12 @@
 	. = ..()
 	create_reagents(reagent_capacity)
 	reagents.add_reagent(reagent_id, reagent_capacity)
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	AddComponent(/datum/component/plumbing/simple_demand)
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/machinery/shower/examine(mob/user)
 	. = ..()
@@ -77,6 +77,13 @@
 		to_chat(user, span_notice("The water temperature seems to be [current_temperature]."))
 	else
 		return ..()
+
+//SKYRAT EDIT ADDITION
+/obj/machinery/shower/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	if(do_after(user, 3 SECONDS, src))
+		reagents.remove_any(reagents.total_volume)
+		balloon_alert(user, "reservoir emptied")
+//SKYRAT EDIT END
 
 /obj/machinery/shower/multitool_act(mob/living/user, obj/item/I)
 	. = ..()

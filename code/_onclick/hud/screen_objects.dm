@@ -266,7 +266,7 @@
 	icon_state = "combat_off"
 	screen_loc = ui_combat_toggle
 
-/atom/movable/screen/combattoggle/New(loc, ...)
+/atom/movable/screen/combattoggle/Initialize()
 	. = ..()
 	update_appearance()
 
@@ -676,6 +676,8 @@
 /* SKYRAT EDIT REMOVAL
 /atom/movable/screen/splash/New(client/C, visible, use_previous_title) //TODO: Make this use INITIALIZE_IMMEDIATE, except its not easy
 	. = ..()
+	if(!istype(C))
+		return
 
 	holder = C
 

@@ -112,7 +112,7 @@
 	. = ..()
 	if(!.)
 		return
-	AddComponent(/datum/component/rot, 0, 5 MINUTES, 0.7)
+	//AddComponent(/datum/component/rot, 0, 5 MINUTES, 0.7) skyrat edit
 
 /obj/effect/decal/cleanable/blood/gibs/ex_act(severity, target)
 	return FALSE
@@ -279,9 +279,9 @@
 			// god help me
 			if(species == "unknown")
 				. += "Some <B>feet</B>."
-			else if(species == "monkey")
+			else if(species == SPECIES_MONKEY)
 				. += "[icon2html('icons/mob/monkey.dmi', user, "monkey1")] Some <B>monkey feet</B>."
-			else if(species == "human")
+			else if(species == SPECIES_HUMAN)
 				. += "[icon2html('icons/mob/human_parts.dmi', user, "default_human_l_leg")] Some <B>human feet</B>."
 			else
 				. += "[icon2html('icons/mob/human_parts.dmi', user, "[species]_l_leg")] Some <B>[species] feet</B>."

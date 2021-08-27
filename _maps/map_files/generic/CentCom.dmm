@@ -176,6 +176,14 @@
 /obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
+"ek" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/multitool,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "ev" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/green,
@@ -268,6 +276,12 @@
 "gu" = (
 /turf/closed/indestructible/splashscreen,
 /area/start)
+"gE" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/safe/floor,
+/obj/item/seeds/cherry/bomb,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "hh" = (
 /turf/closed/indestructible/rock/snow,
 /area/syndicate_mothership)
@@ -639,11 +653,6 @@
 	dir = 8
 	},
 /turf/open/floor/iron,
-/area/centcom/supply)
-"je" = (
-/turf/open/floor/iron/yellowsiding{
-	dir = 1
-	},
 /area/centcom/supply)
 "jf" = (
 /obj/machinery/light/directional/east,
@@ -1301,9 +1310,6 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership/control)
-"kw" = (
-/turf/open/floor/iron/yellowsiding,
-/area/centcom/supply)
 "kx" = (
 /obj/structure/filingcabinet/medical,
 /obj/effect/turf_decal/stripes/line{
@@ -4572,7 +4578,7 @@
 /turf/open/floor/iron,
 /area/syndicate_mothership/control)
 "rf" = (
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/directional/north,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -5128,7 +5134,7 @@
 /turf/open/floor/iron,
 /area/syndicate_mothership/control)
 "sh" = (
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/directional/west,
 /obj/effect/landmark/start/nukeop,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -5793,7 +5799,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/tank/air{
+/obj/machinery/atmospherics/components/tank/air{
 	dir = 1
 	},
 /obj/machinery/firealarm/directional/south,
@@ -5918,9 +5924,10 @@
 /turf/open/floor/iron,
 /area/centcom/evac)
 "tT" = (
-/turf/open/floor/iron/yellowsiding{
+/obj/effect/turf_decal/siding/yellow{
 	dir = 1
 	},
+/turf/open/floor/iron,
 /area/centcom/evac)
 "tU" = (
 /obj/effect/turf_decal/stripes/line{
@@ -6249,6 +6256,10 @@
 /obj/structure/chair/wood/wings,
 /turf/open/floor/carpet,
 /area/wizard_station)
+"uG" = (
+/obj/effect/turf_decal/siding/yellow,
+/turf/open/floor/iron,
+/area/centcom/supply)
 "uJ" = (
 /obj/machinery/door/airlock/external{
 	req_access_txt = "150"
@@ -6931,10 +6942,6 @@
 /obj/item/clothing/head/helmet/space/plasmaman,
 /turf/open/floor/wood,
 /area/centcom/holding)
-"wk" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/iron/dark,
-/area/centcom/supplypod)
 "wl" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood,
@@ -7812,12 +7819,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/grass,
 /area/wizard_station)
-"yM" = (
-/obj/structure/table/wood/bar,
-/obj/structure/safe/floor,
-/obj/item/seeds/cherry/bomb,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "yU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
@@ -7851,7 +7852,7 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "yX" = (
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/directional/north,
 /turf/open/floor/iron/dark,
 /area/syndicate_mothership/control)
 "yY" = (
@@ -8373,9 +8374,22 @@
 /area/centcom/ferry)
 "Ak" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -7
+	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
+	},
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_x = 7
 	},
 /turf/open/floor/iron,
 /area/centcom/ferry)
@@ -8459,7 +8473,8 @@
 /turf/open/floor/iron/white,
 /area/centcom/control)
 "At" = (
-/turf/open/floor/iron/yellowsiding,
+/obj/effect/turf_decal/siding/yellow,
+/turf/open/floor/iron,
 /area/centcom/evac)
 "Au" = (
 /obj/machinery/abductor/experiment{
@@ -8506,7 +8521,6 @@
 /area/centcom/supplypod/loading/one)
 "AL" = (
 /obj/structure/table/reinforced,
-/obj/item/flashlight/seclite,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -8517,6 +8531,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/toy/figure/dsquad{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/obj/item/flashlight/seclite,
 /turf/open/floor/iron/dark,
 /area/centcom/ferry)
 "AM" = (
@@ -9557,7 +9576,7 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "CV" = (
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/directional/south,
 /turf/open/floor/wood,
 /area/centcom/holding)
 "CX" = (
@@ -10524,7 +10543,7 @@
 /obj/structure/sign/barsign{
 	pixel_y = 32
 	},
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/directional/east,
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
 "Fe" = (
@@ -14125,6 +14144,12 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"Qx" = (
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/centcom/supply)
 "QA" = (
 /obj/machinery/deepfryer,
 /turf/open/floor/iron/cafeteria,
@@ -14435,14 +14460,6 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"Tq" = (
-/obj/structure/table/wood/bar,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/multitool,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "Tr" = (
 /obj/structure/closet/chefcloset,
 /turf/open/floor/iron/cafeteria,
@@ -14474,11 +14491,6 @@
 "TC" = (
 /obj/machinery/door/window/eastright,
 /turf/open/floor/carpet/black,
-/area/centcom/holding)
-"TK" = (
-/obj/structure/table/wood/bar,
-/obj/structure/mirror/directional/north,
-/turf/open/floor/wood,
 /area/centcom/holding)
 "TT" = (
 /obj/structure/table/reinforced,
@@ -14581,7 +14593,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/supplypod)
 "UE" = (
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar/directional/south,
 /turf/open/floor/wood,
 /area/centcom/holding)
 "UH" = (
@@ -14644,6 +14656,10 @@
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
+"Vg" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/centcom/supplypod)
 "Vk" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -14700,6 +14716,15 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/supplypod/loading/four)
+"VX" = (
+/obj/structure/chair/stool/directional/east,
+/obj/effect/landmark/start/nukeop,
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/syndicate_mothership/control)
 "Wc" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
@@ -14849,10 +14874,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/supplypod/loading/one)
-"XK" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/iron,
-/area/centcom/supplypod)
 "XL" = (
 /obj/machinery/door/airlock/wood,
 /turf/open/floor/wood,
@@ -14863,10 +14884,11 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"XT" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/space/basic,
-/area/centcom/supplypod)
+"XV" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/mirror/directional/north,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "Ya" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -33463,8 +33485,8 @@ pF
 qa
 pZ
 pZ
-sh
-sh
+VX
+VX
 pZ
 rg
 Qd
@@ -41187,7 +41209,7 @@ aa
 aa
 aa
 Nd
-Tq
+ek
 CT
 MG
 YN
@@ -42215,7 +42237,7 @@ aa
 aa
 aa
 Nd
-yM
+gE
 CT
 oV
 CT
@@ -42729,7 +42751,7 @@ aa
 aa
 aa
 Nd
-TK
+XV
 CT
 CT
 CT
@@ -55798,7 +55820,7 @@ aa
 iG
 iR
 iY
-je
+Qx
 iO
 iY
 iO
@@ -55806,7 +55828,7 @@ iY
 iO
 iY
 iO
-kw
+uG
 iY
 lo
 lJ
@@ -56055,7 +56077,7 @@ aa
 iG
 iR
 iY
-je
+Qx
 jp
 iY
 jp
@@ -56063,7 +56085,7 @@ iY
 jp
 iY
 jp
-kw
+uG
 iY
 lo
 iF
@@ -56312,7 +56334,7 @@ aa
 iF
 iR
 iY
-je
+Qx
 jp
 iY
 jp
@@ -56320,7 +56342,7 @@ iY
 jp
 iY
 jp
-kw
+uG
 iY
 EK
 iF
@@ -56569,7 +56591,7 @@ aa
 iG
 iR
 iY
-je
+Qx
 jp
 iY
 jp
@@ -56577,7 +56599,7 @@ iY
 jp
 iY
 jp
-kw
+uG
 iY
 lp
 iF
@@ -64599,7 +64621,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -64856,7 +64878,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -65871,8 +65893,8 @@ Yn
 Yn
 Yn
 Yn
-wk
-wk
+Vg
+Vg
 Yn
 Yn
 Yn
@@ -66141,7 +66163,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -66398,7 +66420,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -67660,8 +67682,8 @@ sV
 qx
 qx
 qx
-XT
-XT
+Vg
+Vg
 Yn
 Yn
 Yn
@@ -67680,10 +67702,10 @@ Yn
 Yn
 Yn
 Yn
-XK
-XK
+Vg
+Vg
 Yn
-aa
+Yn
 aa
 aa
 aa

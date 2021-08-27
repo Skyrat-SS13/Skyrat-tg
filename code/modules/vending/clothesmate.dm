@@ -1,4 +1,3 @@
-//DON'T FORGET TO CHANGE THE REFILL SIZE IF YOU CHANGE THE MACHINE'S CONTENTS!
 /obj/machinery/vending/clothing
 	name = "ClothesMate" //renamed to make the slogan rhyme
 	desc = "A vending machine for clothing."
@@ -21,6 +20,7 @@
 		            /obj/item/clothing/head/beanie/stripedblue = 3,
 		            /obj/item/clothing/head/beanie/stripedgreen = 3,
 					/obj/item/clothing/head/beanie/rasta = 3,
+					/obj/item/clothing/head/beret/black = 3,
 					/obj/item/clothing/head/kippah = 3,
 					/obj/item/clothing/head/taqiyahred = 3,
 		            /obj/item/clothing/gloves/fingerless = 2,
@@ -159,9 +159,14 @@
 					/obj/item/clothing/head/hijab = 3,
 					/obj/item/clothing/head/turb = 3,
 					/obj/item/clothing/head/keffiyeh = 3,
+					/obj/item/clothing/head/cowboyhat/sheriff = 3,
+					/obj/item/clothing/head/cowboyhat/sheriff/alt = 3,
+					/obj/item/clothing/head/cowboyhat/deputy = 3,
 					/obj/item/clothing/shoes/sports = 3,
 					/obj/item/clothing/shoes/wraps/poly = 3,
 					/obj/item/clothing/shoes/jungleboots = 3,
+					/obj/item/clothing/shoes/jackboots/thigh = 3,
+					/obj/item/clothing/shoes/jackboots/knee = 3,
 					/obj/item/clothing/suit/duster/colorable = 3,
 					/obj/item/clothing/suit/toggle/peacoat = 3,
 					/obj/item/clothing/suit/toggle/trackjacket = 3,
@@ -181,6 +186,14 @@
 					/obj/item/clothing/under/tachawaiian/purple = 3,
 					/obj/item/clothing/under/tachawaiian/green = 3,
 					/obj/item/clothing/under/tachawaiian/blue = 3,
+					// SKYRAT EDIT - ADDITION - Loadout stuff is in vendors now
+					/obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby = 3,
+					/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby = 3,
+					// SKYRAT EDIT - END
 					/obj/item/clothing/glasses/betterunshit = 5,
 					/obj/item/clothing/glasses/thin = 3)	//SKYRAT EDIT ADDITION END
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 1,
@@ -206,6 +219,7 @@
 		           /obj/item/clothing/suit/jacket/letterman_nanotrasen = 1,
 				   /obj/item/clothing/under/costume/swagoutfit = 1,
 				   /obj/item/clothing/shoes/swagshoes = 1,
+				   /obj/item/clothing/shoes/jackboots/timbs = 2, //SKYRAT EDIT ADDITION
 		           /obj/item/instrument/piano_synth/headphones/spacepods = 1,
 		           /obj/item/clothing/suit/brownbattlecoat = 1, 	//SKYRAT EDIT ADDITION BEGIN
 		           /obj/item/clothing/suit/blackfurrich = 1,

@@ -22,10 +22,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "brigguardsweat"
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/security/brigguard/sweater/women
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "brigguardsweatw"
+	icon_state = "brigguardsuitw"
+	mutant_variants = NONE
 
 

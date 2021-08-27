@@ -127,12 +127,16 @@
 
 		if("recolor")
 			var/index = text2num(params["color_index"])
-			split_colors[index] = lowertext(params["new_color"])
-			queue_refresh()
+			var/new_color = lowertext(params["new_color"])
+			if(split_colors[index] != new_color)
+				split_colors[index] = new_color
+				queue_refresh()
 
 		if("recolor_from_string")
-			ReadColorsFromString(lowertext(params["color_string"]))
-			queue_refresh()
+			var/full_color_string = lowertext(params["color_string"])
+			if(full_color_string != split_colors.Join())
+				ReadColorsFromString(full_color_string)
+				queue_refresh()
 
 		if("pick_color")
 			var/group = params["color_index"]
@@ -236,16 +240,26 @@ This is highly likely to cause a lag spike for a few seconds."},
 			var/list/step_data = data["steps"][step]
 			var/image/layer = image(step)
 			var/image/result = step_data["result"]
+			// SKYRAT EDIT BEGIN - Bringing back the GAGS coloring menu - ORIGINAL:
+			/*
 			steps += list(
 				list(
-					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE),
-					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE),
+					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
+					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
+					"config_name"=step_data["config_name"]
+				)
+			)*/
+			steps += list(
+				list(
+					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
+					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
 					"config_name"=step_data["config_name"]
 				)
 			)
+			// SKYRAT EDIT END
 
 	sprite_data["time_spent"] = TICK_DELTA_TO_MS(time_spent)
-	sprite_data["finished"] = icon2html(finished, user, dir=sprite_dir, sourceonly=TRUE)
+	sprite_data["finished"] = icon2html(finished, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE)
 	refreshing = FALSE
 
 /datum/greyscale_modify_menu/proc/Unlock()

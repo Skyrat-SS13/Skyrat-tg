@@ -99,9 +99,19 @@
 	desc = "Weeeeee"
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
+
 /area/shuttle/arrival
 	name = "Arrival Shuttle"
 	area_flags = UNIQUE_AREA// SSjob refers to this area for latejoiners
+
+
+/area/shuttle/arrival/on_joining_game(mob/living/boarder)
+	if(SSshuttle.arrivals?.mode == SHUTTLE_CALL)
+		var/atom/movable/screen/splash/Spl = new(boarder.client, TRUE)
+		Spl.Fade(TRUE)
+		boarder.playsound_local(get_turf(boarder), 'sound/voice/ApproachingTG.ogg', 25)
+	boarder.update_parallax_teleport()
+
 
 /area/shuttle/pod_1
 	name = "Escape Pod One"
@@ -132,7 +142,7 @@
 	area_flags = NONE //Set this so it doesn't inherit NO_ALERTS
 
 /area/shuttle/supply
-	name = "Supply Shuttle"
+	name = "NLV Consign" //SKYRAT EDIT CHANGE
 	area_flags = NOTELEPORT
 
 /area/shuttle/escape

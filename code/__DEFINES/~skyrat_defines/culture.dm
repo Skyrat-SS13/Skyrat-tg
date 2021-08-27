@@ -4,6 +4,8 @@
 
 //Amount of linguistic points people have by default. 1 point to understand, 2 points to get it spoken
 #define LINGUISTIC_POINTS_DEFAULT 5
+// How many points you have upon having QUIRK_LINGUIST.
+#define LINGUISTIC_POINTS_LINGUIST 6
 
 #define LANGUAGE_UNDERSTOOD	1
 #define LANGUAGE_SPOKEN	2
@@ -14,6 +16,8 @@
 						/datum/cultural_info/culture/spacer_core, \
 						/datum/cultural_info/culture/spacer_frontier, \
 						/datum/cultural_info/culture/zolmalchi
+
+#define CULTURES_XENO	/datum/cultural_info/culture/xenoknockoff
 
 #define CULTURES_LIZARD /datum/cultural_info/culture/lavaland
 
@@ -50,7 +54,7 @@
 						/datum/cultural_info/location/lordania, \
 						/datum/cultural_info/location/kingston, \
 						/datum/cultural_info/location/gaia, \
-						/datum/cultural_info/location/magnitka, \
+						/datum/cultural_info/location/magnitka
 
 
 #define FACTIONS_GENERIC	/datum/cultural_info/faction/none, \

@@ -5,7 +5,8 @@
 	icon_state = "bumbles"
 	icon_living = "bumbles"
 	icon_dead = "bumbles_dead"
-	turns_per_move = 1
+	maxHealth = 15
+	health = 15
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "brushes aside"
@@ -15,6 +16,7 @@
 	speak_emote = list("buzzes")
 	friendly_verb_continuous = "bzzs"
 	friendly_verb_simple = "bzz"
+	butcher_results = list(/obj/item/reagent_containers/honeycomb = 2)
 	density = FALSE
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
@@ -33,8 +35,6 @@
 	. = ..()
 	AddElement(/datum/element/simple_flying)
 	add_verb(src, /mob/living/proc/toggle_resting)
-	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-
 
 /mob/living/simple_animal/pet/bumbles/update_resting()
 	. = ..()
@@ -49,20 +49,15 @@
 /mob/living/simple_animal/pet/bumbles/bee_friendly()
 	return TRUE //treaty signed at the Beeneeva convention
 
-/mob/living/simple_animal/pet/bumbles/handle_automated_movement()
-	. = ..()
-
 /mob/living/simple_animal/pet/bumbles/Life(delta_time = SSMOBS_DT, times_fired)
-	if(!stat && !buckled && !client)
-		if(DT_PROB(0.5, delta_time))
-			manual_emote(pick("curls up on the surface below.", "is looking very sleepy.", "buzzes happily.", "looks around for a flower nap."))
-			REMOVE_TRAIT(src, TRAIT_MOVE_FLYING, ROUNDSTART_TRAIT)
-			set_resting(TRUE)
-		else if(DT_PROB(0.5, delta_time))
-			if (resting)
-				manual_emote(pick("wakes up with a smiling buzz.", "rolls upside down before waking up.", "stops resting."))
-				ADD_TRAIT(src, TRAIT_MOVE_FLYING, ROUNDSTART_TRAIT)
-				set_resting(FALSE)
-			else
-				manual_emote(pick("buzzes softly."))
-	..()
+	if(buckled || client || !DT_PROB(0.5, delta_time))
+		return ..()
+	if(resting)
+		manual_emote(pick("curls up on the surface below.", "is looking very sleepy.", "buzzes happily.", "looks around for a flower nap."))
+		REMOVE_TRAIT(src, TRAIT_MOVE_FLYING, ROUNDSTART_TRAIT)
+		set_resting(TRUE)
+		return ..()
+	manual_emote(pick("wakes up with a smiling buzz.", "rolls upside down before waking up.", "stops resting."))
+	ADD_TRAIT(src, TRAIT_MOVE_FLYING, ROUNDSTART_TRAIT)
+	set_resting(FALSE)
+	return ..()

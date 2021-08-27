@@ -31,10 +31,10 @@
 			remove_occupant(V)
 	return ..()
 
-/obj/item/pet_carrier/Exited(atom/movable/occupant)
-	if(occupant in occupants && isliving(occupant))
-		var/mob/living/L = occupant
-		occupants -= occupant
+/obj/item/pet_carrier/Exited(atom/movable/gone, direction)
+	if(isliving(gone) && (gone in occupants))
+		var/mob/living/L = gone
+		occupants -= gone
 		occupant_weight -= L.mob_size
 
 /obj/item/pet_carrier/handle_atom_del(atom/A)
@@ -91,7 +91,8 @@
 	if(target.mob_size > max_occupant_weight)
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
-			if(isfelinid(H))
+			//if(isfelinid(H))
+			if(isfelinid(H) || HAS_TRAIT(H, TRAIT_FELINE)) //SKYRAT EDIT - FELINE TRAITS
 				to_chat(user, span_warning("You'd need a lot of catnip and treats, plus maybe a laser pointer, for that to work."))
 			else
 				to_chat(user, span_warning("Humans, generally, do not fit into pet carriers."))

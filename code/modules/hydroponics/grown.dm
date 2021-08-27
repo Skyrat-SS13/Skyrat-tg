@@ -51,6 +51,9 @@
 		// This is for adminspawn or map-placed growns. They get the default stats of their seed type.
 		seed = new seed()
 		seed.adjust_potency(50-seed.potency)
+	else if(!seed)
+		stack_trace("Grown object created without a seed. WTF")
+		return INITIALIZE_HINT_QDEL
 
 	pixel_x = base_pixel_x + rand(-5, 5)
 	pixel_y = base_pixel_y + rand(-5, 5)
@@ -109,7 +112,7 @@
 /obj/item/food/grown/on_grind()
 	. = ..()
 	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(grind_results && grind_results.len)
+	if(grind_results?.len)
 		for(var/i in 1 to grind_results.len)
 			grind_results[grind_results[i]] = nutriment
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)
@@ -117,7 +120,7 @@
 
 /obj/item/food/grown/on_juice()
 	var/nutriment = reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
-	if(juice_results && juice_results.len)
+	if(juice_results?.len)
 		for(var/i in 1 to juice_results.len)
 			juice_results[juice_results[i]] = nutriment
 		reagents.del_reagent(/datum/reagent/consumable/nutriment)

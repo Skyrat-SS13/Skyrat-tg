@@ -117,7 +117,10 @@
 				var/obj/machinery/new_machine = new circuit.build_path(loc)
 				new_machine.setDir(dir)
 				transfer_fingerprints_to(new_machine)
-
+				// SKYRAT EDIT ADDITION BEGIN - Connecting Computers
+				for(var/obj/machinery/computer/selected in range(1,src))
+					selected.update_overlays()
+				// SKYRAT EDIT ADDITION END - Connecting Computers
 				if(istype(new_machine, /obj/machinery/computer))
 					var/obj/machinery/computer/new_computer = new_machine
 

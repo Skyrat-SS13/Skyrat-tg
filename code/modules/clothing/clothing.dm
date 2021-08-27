@@ -26,6 +26,8 @@
 
 	var/clothing_flags = NONE
 
+	var/moth_edible = TRUE //Added it because moths were able to eat fucking vibrators. Fucking moths.
+
 	var/can_be_bloody = TRUE
 
 	/// What items can be consumed to repair this clothing (must by an /obj/item/stack)
@@ -125,11 +127,12 @@
 /obj/item/clothing/attack(mob/living/M, mob/living/user, params)
 	if(user.combat_mode || !ismoth(M))
 		return ..()
-	if(isnull(moth_snack))
-		moth_snack = new
-		moth_snack.name = name
-		moth_snack.clothing = WEAKREF(src)
-	moth_snack.attack(M, user, params)
+	if(moth_edible == TRUE)
+		if(isnull(moth_snack))
+			moth_snack = new
+			moth_snack.name = name
+			moth_snack.clothing = WEAKREF(src)
+		moth_snack.attack(M, user, params)
 
 /obj/item/clothing/attackby(obj/item/W, mob/user, params)
 	if(!istype(W, repairable_by))
@@ -304,7 +307,7 @@
 			how_cool_are_your_threads += "[src]'s storage opens when clicked.\n"
 		else
 			how_cool_are_your_threads += "[src]'s storage opens when dragged to yourself.\n"
-		if (pockets.can_hold && pockets.can_hold.len) // If pocket type can hold anything, vs only specific items
+		if (pockets.can_hold?.len) // If pocket type can hold anything, vs only specific itemss
 			how_cool_are_your_threads += "[src] can store [pockets.max_items] <a href='?src=[REF(src)];show_valid_pocket_items=1'>item\s</a>.\n"
 		else
 			how_cool_are_your_threads += "[src] can store [pockets.max_items] item\s that are [weightclass2text(pockets.max_w_class)] or smaller.\n"
@@ -455,9 +458,7 @@ BLIND     // can't see anything
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.head_update(src, forced = 1)
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
+	update_action_buttons()
 	return TRUE
 
 /obj/item/clothing/proc/visor_toggling() //handles all the actual toggling of flags

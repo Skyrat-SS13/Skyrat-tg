@@ -7,7 +7,8 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	))
 GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 	new/datum/stack_recipe("shuttle window", /obj/structure/window/shuttle/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE) \
+	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE), \
+	new/datum/stack_recipe("spaceship window plate", /obj/item/stack/sheet/spaceshipglass, 1, time = 5), \
 	))
 GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/plasma/reinforced/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
@@ -160,7 +161,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 /obj/item/stack/sheet/rglass/cyborg/get_amount()
 	return min(round(source.energy / cost), round(glasource.energy / glacost))
 
-/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE) // Requires special checks, because it uses two storages
+/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE, check = TRUE) // Requires special checks, because it uses two storages
 	if(get_amount(used)) //ensure we still have enough energy if called in a do_after chain
 		source.use_charge(used * cost)
 		glasource.use_charge(used * glacost)
@@ -257,7 +258,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 
 /obj/item/shard/Initialize()
 	. = ..()
-	AddElement(/datum/element/caltrop, min_damage = force)
+	AddComponent(/datum/component/caltrop, min_damage = force)
 	AddComponent(/datum/component/butchering, 150, 65)
 	icon_state = pick("large", "medium", "small")
 	switch(icon_state)
@@ -279,7 +280,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, src, loc_connections)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
 /obj/item/shard/Destroy()
 	. = ..()

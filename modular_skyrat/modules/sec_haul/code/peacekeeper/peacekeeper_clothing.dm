@@ -12,28 +12,30 @@
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "peacekeeper beret"
 	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_beret"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	icon_state = "beret_badge"
+	greyscale_colors = "#3F3C40#333399"
 	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/sec/peacekeeper/white
-	icon_state = "peacekeeper_beret_white"
+	greyscale_config = /datum/greyscale_config/beret
+	greyscale_config_worn = /datum/greyscale_config/beret/worn
+	icon_state = "beret"
+	greyscale_colors = "#EAEAEA"
 
 /obj/item/clothing/head/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_beret_hos"
 	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/sec/navywarden/peacekeeper
 	name = "warden's peacekeeper beret"
 	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_beret_warden"
+	greyscale_config = /datum/greyscale_config/beret_badge_fancy
+	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
+	greyscale_colors = "#3F3C40#FF0000#00AEEF"
+	icon_state = "beret_badge_fancy_twist"
 	mutant_variants = NONE
 
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
@@ -179,9 +181,9 @@
 	content_overlays = FALSE
 	component_type = /datum/component/storage/concrete/peacekeeper
 
-/datum/component/storage/concrete/peacekeeper/on_alt_click(datum/source, mob/user)
+/datum/component/storage/concrete/peacekeeper/open_storage(mob/user)
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
-		return
+		return FALSE
 	if(locked)
 		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
 		return
@@ -222,6 +224,7 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/gun/ballistic/revolver,
 		/obj/item/melee/baton,
 		/obj/item/melee/classic_baton,
 		/obj/item/grenade,
@@ -266,6 +269,7 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/gun/ballistic/revolver,
 		/obj/item/melee/baton,
 		/obj/item/melee/classic_baton,
 		/obj/item/grenade,

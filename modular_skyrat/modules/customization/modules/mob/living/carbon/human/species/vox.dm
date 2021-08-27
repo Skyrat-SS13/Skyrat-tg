@@ -1,11 +1,12 @@
 /datum/species/vox
 	// Bird-like humanoids
 	name = "Vox"
-	id = "vox"
+	id = SPECIES_VOX
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/vox_parts_greyscale.dmi'
-	say_mod = "shrieks"
+	say_mod = "skrees"
 	default_color = "00FF00"
+	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -41,11 +42,12 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	learnable_languages = list(/datum/language/common, /datum/language/vox)
 
-/datum/species/vox/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/species/vox/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only)
+	. = ..()
 	var/datum/outfit/vox/O = new /datum/outfit/vox
-	H.equipOutfit(O, visualsOnly)
-	H.internal = H.get_item_for_held_index(2)
-	H.update_internals_hud_icon(1)
+	equipping.equipOutfit(O, visuals_only)
+	equipping.internal = equipping.get_item_for_held_index(2)
+	equipping.update_internals_hud_icon(1)
 
 /datum/species/vox/random_name(gender,unique,lastname)
 	if(unique)

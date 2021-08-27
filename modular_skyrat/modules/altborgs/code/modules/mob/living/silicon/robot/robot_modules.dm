@@ -1,8 +1,6 @@
 /obj/item/robot_model/proc/dogborg_equip()
 	cyborg_pixel_offset = -16
 	hat_offset = INFINITY
-	basic_modules += new /obj/item/dogborg_nose(src)
-	basic_modules += new /obj/item/dogborg_tongue(src)
 	var/mob/living/silicon/robot/cyborg = loc
 	add_verb(cyborg , /mob/living/silicon/robot/proc/robot_lay_down)
 	add_verb(cyborg , /mob/living/silicon/robot/proc/rest_style)

@@ -212,6 +212,20 @@
 /// The modifier on cold damage hulks get.
 #define HULK_COLD_DAMAGE_MOD 2
 
+// Body temperature warning icons
+/// The temperature the red icon is displayed.
+#define BODYTEMP_HEAT_WARNING_3 (BODYTEMP_HEAT_DAMAGE_LIMIT + 360) //+700k
+/// The temperature the orange icon is displayed.
+#define BODYTEMP_HEAT_WARNING_2 (BODYTEMP_HEAT_DAMAGE_LIMIT + 120) //460K
+/// The temperature the yellow icon is displayed.
+#define BODYTEMP_HEAT_WARNING_1 (BODYTEMP_HEAT_DAMAGE_LIMIT) //340K
+/// The temperature the light green icon is displayed.
+#define BODYTEMP_COLD_WARNING_1 (BODYTEMP_COLD_DAMAGE_LIMIT) //270k
+/// The temperature the cyan icon is displayed.
+#define BODYTEMP_COLD_WARNING_2 (BODYTEMP_COLD_DAMAGE_LIMIT - 70) //200k
+/// The temperature the blue icon is displayed.
+#define BODYTEMP_COLD_WARNING_3 (BODYTEMP_COLD_DAMAGE_LIMIT - 150) //120k
+
 /// what min_cold_protection_temperature is set to for space-helmet quality headwear. MUST NOT BE 0.
 #define SPACE_HELM_MIN_TEMP_PROTECT 2.0
 /// Thermal insulation works both ways /Malkevin
@@ -262,6 +276,15 @@
 #define COLD_SLOWDOWN_FACTOR 20
 
 //PIPES
+//Defines for pipe bitmasking
+#define NORTH_FULLPIPE (1<<0) //also just NORTH
+#define SOUTH_FULLPIPE (1<<1) //also just SOUTH
+#define EAST_FULLPIPE (1<<2) //also just EAST
+#define WEST_FULLPIPE (1<<3) //also just WEST
+#define NORTH_SHORTPIPE (1<<4)
+#define SOUTH_SHORTPIPE (1<<5)
+#define EAST_SHORTPIPE (1<<6)
+#define WEST_SHORTPIPE (1<<7)
 //Atmos pipe limits
 /// (kPa) What pressure pumps and powered equipment max out at.
 #define MAX_OUTPUT_PRESSURE 4500
@@ -318,9 +341,9 @@
 #define BURNMIX_ATMOS "o2=2500;plasma=5000;TEMP=370"
 
 //ATMOSPHERICS DEPARTMENT GAS TANK TURFS
-#define ATMOS_TANK_N2O "n2o=6000;TEMP=293.15"
-#define ATMOS_TANK_CO2 "co2=50000;TEMP=293.15"
-#define ATMOS_TANK_PLASMA "plasma=70000;TEMP=293.15"
+#define ATMOS_TANK_N2O "n2o=100000;TEMP=293.15" // SKYRAT EDIT - ORIGINAL: "n2o=6000;TEMP=293.15"
+#define ATMOS_TANK_CO2 "co2=100000;TEMP=293.15" // SKYRAT EDIT - ORIGINAL: "co2=50000;TEMP=293.15"
+#define ATMOS_TANK_PLASMA "plasma=100000;TEMP=293.15" // SKYRAT EDIT - ORIGINAL: "plasma=70000;TEMP=293.15"
 #define ATMOS_TANK_O2 "o2=100000;TEMP=293.15"
 #define ATMOS_TANK_N2 "n2=100000;TEMP=293.15"
 #define ATMOS_TANK_BZ "bz=100000;TEMP=293.15"

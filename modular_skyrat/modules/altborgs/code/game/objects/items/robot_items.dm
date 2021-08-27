@@ -11,15 +11,15 @@
 	. = ..()
 	if(!proximity || !isliving(target))
 		return
-	var/mob/living/silicon/robot/R = user
-	var/mob/living/L = target
+	var/mob/living/silicon/robot/borg = user
+	var/mob/living/mob = target
 
-	if(check_zone(R.zone_selected) == "head")
-		R.visible_message("<span class='warning'>\the [R] affectionally licks \the [L]'s face!</span>", "<span class='notice'>You affectionally lick \the [L]'s face!</span>")
-		playsound(R, 'sound/effects/attackblob.ogg', 50, 1)
+	if(check_zone(borg.zone_selected) == "head")
+		borg.visible_message("<span class='warning'>\the [borg] affectionally licks \the [mob]'s face!</span>", "<span class='notice'>You affectionally lick \the [mob]'s face!</span>")
+		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
 	else
-		R.visible_message("<span class='warning'>\the [R] affectionally licks \the [L]!</span>", "<span class='notice'>You affectionally lick \the [L]!</span>")
-		playsound(R, 'sound/effects/attackblob.ogg', 50, 1)
+		borg.visible_message("<span class='warning'>\the [borg] affectionally licks \the [mob]!</span>", "<span class='notice'>You affectionally lick \the [mob]!</span>")
+		playsound(borg, 'sound/effects/attackblob.ogg', 50, 1)
 
 /obj/item/dogborg_nose
 	name = "boop module"

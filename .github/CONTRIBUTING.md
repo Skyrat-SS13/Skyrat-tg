@@ -688,6 +688,10 @@ This is good:
 
 Setting `is_red` in args is simple, and directly names the variable the argument sets.
 
+### Don't create code that hangs references
+
+This is part of the larger issue of hard deletes, read this file for more info: [Guide to Harddels](HARDDEL_GUIDE.md))
+
 ### Other Notes
 * Code should be modular where possible; if you are working on a new addition, then strongly consider putting it in its own file unless it makes sense to put it with similar ones (i.e. a new tool would go in the "tools.dm" file)
 
@@ -776,6 +780,13 @@ This does NOT mean that you can access it everywhere like a global var. Instead,
 Isn't that confusing?
 
 There is also an undocumented keyword called `static` that has the same behaviour as global but more correctly describes BYOND's behaviour. Therefore, we always use static instead of global where we need it, as it reduces suprise when reading BYOND code.
+
+### Byond Hellspawn 
+
+Put stuff that shouldn’t work but does, or should work but doesn’t here so we don’t forget about it.
+#### Icon hell
+
+The ‘transparent’ icon state causes fucked behavior when used on turfs, for reasons unknown and unknowable
 
 ## Pull Request Process
 

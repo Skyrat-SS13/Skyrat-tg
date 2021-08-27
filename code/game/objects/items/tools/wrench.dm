@@ -74,7 +74,7 @@
 /obj/item/wrench/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "hydraulic wrench"
 	desc = "An advanced robotic wrench, powered by internal hydraulics. Twice as fast as the handheld version."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "wrench_cyborg"
 	toolspeed = 0.5
 

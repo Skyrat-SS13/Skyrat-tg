@@ -157,13 +157,13 @@
 	playsound(get_turf(user), 'sound/items/change_jaws.ogg', 50, TRUE)
 	if(tool_behaviour == TOOL_CROWBAR)
 		tool_behaviour = TOOL_WIRECUTTER
-		to_chat(user, span_notice("You attach the cutting jaws to [src]."))
+		balloon_alert(user, "attached cutting jaws")
 		usesound = 'sound/items/jaws_cut.ogg'
 		update_appearance()
 
 	else
 		tool_behaviour = TOOL_CROWBAR
-		to_chat(user, span_notice("You attach the prying jaws to [src]."))
+		balloon_alert(user, "attached prying jaws")
 		usesound = 'sound/items/jaws_pry.ogg'
 		update_appearance()
 
@@ -201,7 +201,7 @@
 /obj/item/crowbar/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "hydraulic crowbar"
 	desc = "A hydraulic prying tool, simple but powerful."
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "crowbar_cyborg"
 	worn_icon_state = "crowbar"
 	usesound = 'sound/items/jaws_pry.ogg'

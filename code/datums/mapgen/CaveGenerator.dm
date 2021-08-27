@@ -118,7 +118,7 @@
 				var/atom/picked_mob = pickweight(mob_spawn_list)
 
 				if(picked_mob == SPAWN_MEGAFAUNA) //
-					if((A.area_flags & MEGAFAUNA_SPAWN_ALLOWED) && megafauna_spawn_list && megafauna_spawn_list.len) //this is danger. it's boss time.
+					if((A.area_flags & MEGAFAUNA_SPAWN_ALLOWED) && megafauna_spawn_list?.len) //this is danger. it's boss time.
 						picked_mob = pickweight(megafauna_spawn_list)
 					else //this is not danger, don't spawn a boss, spawn something else
 						picked_mob = pickweight(mob_spawn_list - SPAWN_MEGAFAUNA) //What if we used 100% of the brain...and did something (slightly) less shit than a while loop?

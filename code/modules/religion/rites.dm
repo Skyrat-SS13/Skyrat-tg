@@ -96,7 +96,7 @@
 	if(!ismovable(religious_tool))
 		CRASH("[name]'s perform_rite had a movable atom that has somehow turned into a non-movable!")
 	var/atom/movable/movable_reltool = religious_tool
-	if(!(movable_reltool?.buckled_mobs && movable_reltool?.buckled_mobs.len))
+	if(!movable_reltool?.buckled_mobs?.len)
 		return FALSE
 	var/mob/living/carbon/human/human2borg
 	for(var/i in movable_reltool.buckled_mobs)
@@ -110,6 +110,27 @@
 	return TRUE
 
 
+/datum/religion_rites/machine_blessing
+	name = "Receive Blessing"
+	desc = "Receive a blessing from the machine god to further your ascension."
+	ritual_length = 5 SECONDS
+	ritual_invocations =list( "Let your will power our forges.",
+							"...Help us in our great conquest!")
+	invoke_msg = "The end of flesh is near!"
+	favor_cost = 2000	
+
+/datum/religion_rites/machine_blessing/invoke_effect(mob/living/user, atom/movable/religious_tool)
+	..()
+	var/altar_turf = get_turf(religious_tool)
+	var/blessing = pick(
+					/obj/item/organ/cyberimp/arm/surgery,
+					/obj/item/organ/cyberimp/eyes/hud/diagnostic,
+					/obj/item/organ/cyberimp/eyes/hud/medical,
+					/obj/item/organ/cyberimp/mouth/breathing_tube,
+					/obj/item/organ/cyberimp/chest/thrusters,
+					/obj/item/organ/eyes/robotic/glow)
+	new blessing(altar_turf)
+	return TRUE
 /**** Pyre God ****/
 
 ///apply a bunch of fire immunity effect to clothing

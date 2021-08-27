@@ -15,7 +15,8 @@
 		/obj/item/food/donut = 12,
 		/obj/item/storage/box/evidence = 6,
 		/obj/item/flashlight/seclite = 4,
-		/obj/item/gun_maintenance_supplies = 40
+    	/obj/item/gun_maintenance_supplies = 40,
+		/obj/item/taperoll/police = 4
 	)
 	contraband = list(
 		/obj/item/clothing/glasses/sunglasses = 2,
@@ -66,7 +67,7 @@
 		/obj/item/clothing/shoes/combat/peacekeeper = 3,
 		/obj/item/clothing/head/beret/sec/peacekeeper = 3,
 		/obj/item/clothing/head/soft/sec = 3,
-		/obj/item/clothing/head/beret/sec/peacekeeper/sol = 3,
+		/obj/item/clothing/head/sec/peacekeeper/sol = 3,
 		/obj/item/clothing/head/soltraffic = 3,
 		/obj/item/clothing/mask/bandana/black = 3,
 		/obj/item/clothing/gloves/combat/peacekeeper = 3,

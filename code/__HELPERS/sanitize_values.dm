@@ -29,7 +29,7 @@
 		return value
 	if(default)
 		return default
-	if(List && List.len)
+	if(List?.len)
 		return pick(List)
 
 
@@ -53,6 +53,11 @@
 
 /proc/sanitize_hexcolor(color, desired_format = 3, include_crunch = FALSE, default)
 	var/crunch = include_crunch ? "#" : ""
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(islist(color))
+		var/list/color_list = color
+		color = color_list.Join()
+	//SKYRAT EDIT ADDITION END
 	if(!istext(color))
 		color = ""
 
