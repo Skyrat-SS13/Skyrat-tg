@@ -18,12 +18,12 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	weight = 10
 	min_players = 30
 	max_occurrences = 1 // Why was this allowed to roll three times bruh
-	earliest_start = 25 MINUTES
+	earliest_start = 40 MINUTES
 
 /datum/round_event/cme
-	startWhen = 6
-	endWhen	= 66
-	announceWhen = 10
+	startWhen = 60 //This is actually 2 minutes.
+	endWhen	= 60 //This is set depending on the type, but this is a fallback.
+	announceWhen = 5 //10 second announcement time.
 	var/cme_intensity
 	var/cme_frequency_lower
 	var/cme_frequency_upper
@@ -37,7 +37,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
-	
+
 /datum/round_event_control/cme/minimal
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme/minimal
@@ -76,32 +76,27 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/setup()
 	if(!cme_intensity)
-		cme_intensity = pick(CME_MINIMAL, CME_UNKNOWN, CME_MODERATE, CME_EXTREME)
+		cme_intensity = pick(CME_MINIMAL, CME_MODERATE)
 	switch(cme_intensity)
 		if(CME_UNKNOWN)
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
-			startWhen = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
 			endWhen = startWhen + rand(CME_MINIMAL_END, CME_EXTREME_END)
 		if(CME_MINIMAL)
 			cme_frequency_lower = CME_MINIMAL_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MINIMAL_FREQUENCY_UPPER
-			startWhen = rand(CME_MINIMAL_START_LOWER, CME_MINIMAL_START_UPPER)
 			endWhen = startWhen + CME_MINIMAL_END
 		if(CME_MODERATE)
 			cme_frequency_lower = CME_MODERATE_FREQUENCY_LOWER
 			cme_frequency_upper = CME_MODERATE_FREQUENCY_UPPER
-			startWhen = rand(CME_MODERATE_START_LOWER, CME_MODERATE_START_UPPER)
 			endWhen = startWhen + CME_MODERATE_END
 		if(CME_EXTREME)
 			cme_frequency_lower = CME_EXTREME_FREQUENCY_LOWER
 			cme_frequency_upper = CME_EXTREME_FREQUENCY_UPPER
-			startWhen = rand(CME_EXTREME_START_LOWER, CME_EXTREME_START_UPPER)
 			endWhen = startWhen + CME_EXTREME_END
 		if(CME_ARMAGEDDON)
 			cme_frequency_lower = CME_ARMAGEDDON_FREQUENCY_LOWER
 			cme_frequency_upper = CME_ARMAGEDDON_FREQUENCY_UPPER
-			startWhen = rand(CME_ARMAGEDDON_START_LOWER, CME_ARMAGEDDON_START_UPPER)
 			endWhen = startWhen + CME_ARMAGEDDON_END
 		else
 			message_admins("CME setup failure, aborting.")
@@ -248,6 +243,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	explosion(src, 0, 0, 2, flame_range = 3)
+	var/turf/T = get_turf(src)
+	if(istype(T))
+		T.atmos_spawn_air("o2=30;TEMP=5778")
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
 		if(M.client && M.z == z)
@@ -265,6 +263,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	var/pulse_range_heavy = rand(cme_heavy_range_lower, cme_heavy_range_upper)
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	explosion(src, 0, 3, 10, flame_range = 10)
+	var/turf/T = get_turf(src)
+	if(istype(T))
+		T.atmos_spawn_air("o2=30;TEMP=5778")
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	for(var/i in GLOB.mob_list)
 		var/mob/M = i
@@ -279,33 +280,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /obj/effect/cme/proc/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
-	var/turf/open/T = get_turf(src)
-	if(istype(T))
-		T.atmos_spawn_air("o2=30;TEMP=5778")
-	color = COLOR_WHITE
-	light_color = COLOR_WHITE
-	neutralized = TRUE
-	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
-	new loot(loc)
-
-/obj/effect/cme/extreme/anomalyNeutralize()
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	new /obj/effect/particle_effect/smoke/bad(loc)
-	var/turf/open/T = get_turf(src)
-	if(istype(T))
-		T.atmos_spawn_air("o2=30;plasma=30;TEMP=5778")
-	color = COLOR_WHITE
-	light_color = COLOR_WHITE
-	neutralized = TRUE
-	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
-	new loot(loc)
-
-/obj/effect/cme/armageddon/anomalyNeutralize()
-	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	new /obj/effect/particle_effect/smoke/bad(loc)
-	var/turf/open/T = get_turf(src)
-	if(istype(T))
-		T.atmos_spawn_air("o2=30;plasma=80;TEMP=5778")
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
