@@ -2,7 +2,7 @@
 	name = "Moldies"
 	typepath = /datum/round_event/mold
 	weight = 5
-	max_occurrences = 0
+	max_occurrences = 0 // SKYRAT EDIT - disables moldies until a rework is made - Moldies are unfun, anti-RP, and round ending. It has got to the point where the best way to deal with them is often just wall up the area if they spawn in maint, and decide that it has just been lost. It also loves to spawn in the middle of perma with people around (something blob can't do), which is kind of crap if you had anything going on there. Blob is fine, because they don't spawn in pairs. They provide a more engaging fight for both groups, and don't spawn mobs that use broken/buggy mechanics that end up turning half of the station into an unending smoke cloud. While leaving behind a bunch of weird corpses that reply the death animation whenever they came off/on your screen. Moldies have no benefit, no positive upside, and are all negatives. They have the same reason for being in the game as an event that suddenly gibs everyone on station with no warning. I've heard mention of a possible rework, but until then, they should be disabled to prevent any more round-ruining.
 	min_players = 10
 
 /datum/round_event/mold
