@@ -346,17 +346,17 @@
 ////////////
 
 /datum/mood_event/orgasm
-	description = "<font color=purple>Woah... This pleasant tiredness... I love it.</font>\n"
+	description = span_purple("Woah... This pleasant tiredness... I love it.\n")
 	mood_change = 8 //yes, +8. Well fed buff gives same amount. This is Fair (tm).
 	timeout = 5 MINUTES
 
 /datum/mood_event/climaxself
-	description = "<font color=purple>I just came in my own underwear. Messy.</font>\n"
+	description = span_purple("I just came in my own underwear. Messy.\n")
 	mood_change = -2
 	timeout = 4 MINUTES
 
 /datum/mood_event/overgasm
-	description = span_warning("Uhh... I don't want to be horny anymore.") //Me too, buddy. Me too.
+	description = span_warning("Uhh... I don't want to be horny anymore.\n") //Me too, buddy. Me too.
 	mood_change = -6
 	timeout = 10 MINUTES
 
@@ -563,11 +563,11 @@
 	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != U)
 		if(src != user)
 			if(has_status_effect(/datum/status_effect/spanked) && is_bottomless())
-				. += "<font color=purple>[user.p_their(TRUE)] butt has a red tint to it.</font>\n"
+				. += span_purple("[user.p_their(TRUE)] butt has a red tint to it.") + "\n"
 
 //Mood boost for masochist
 /datum/mood_event/perv_spanked
-	description = "<font color=purple>Ah, yes! More! Punish me!</font>\n"
+	description = span_purple("Ah, yes! More! Punish me!\n")
 	mood_change = 3
 	timeout = 5 MINUTES
 
@@ -592,7 +592,7 @@
 	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
 
 /datum/mood_event/subspace
-	description = "<font color=purple>Everything is so woozy... Pain feels so... Awesome.</font>\n"
+	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
 	mood_change = 4
 
 ///////////////////////

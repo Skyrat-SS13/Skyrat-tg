@@ -125,7 +125,7 @@
 			message = (user == M) ? pick("hits [M.p_them()]self with [src]", "hits [M.p_their()] head with [src]") : pick("hits [M] with [src]", "hits [M] over the head with [src]! Luckily, [src] is soft.")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<span class='notice'>[user] [message]!</font>")
+			user.visible_message(span_notice("[user] [message]!"))
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 		if(BODY_ZONE_CHEST)
@@ -133,7 +133,7 @@
 			message = (user == M) ? pick("has a solo pillow fight, hitting [M.p_them()]self with [src]","hits [M.p_them()]self with [src]") : pick("hits [M] in the chest with [src]", "playfully hits [M]'s chest with [src]")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<span class='notice'>[user] [message]!</font>")
+			user.visible_message(span_notice("[user] [message]!"))
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 		else
@@ -141,7 +141,7 @@
 			message = (user == M) ? pick("hits [M.p_them()]self with [src]","playfully hits [M.p_them()]self with a [src]", "grabs [src], hitting [M.p_them()]self with it") : pick("hits [M] with [src]", "playfully hits [M] with [src].","hits [M] with [src]. Looks like fun")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<span class='notice'>[user] [message]!</font>")
+			user.visible_message(span_notice("[user] [message]!"))
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 //spawning pillow on the ground when clicking on pillow	by LBM

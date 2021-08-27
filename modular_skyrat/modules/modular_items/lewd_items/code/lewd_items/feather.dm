@@ -138,6 +138,6 @@
 
 //Mood boost
 /datum/mood_event/tickled
-	description = "<span class='nicegreen'>Wooh... I was tickled. It was... Funny!</span>\n"
+	description = span_nicegreen("Wooh... I was tickled. It was... Funny!\n")
 	mood_change = 4
 	timeout = 2 MINUTES

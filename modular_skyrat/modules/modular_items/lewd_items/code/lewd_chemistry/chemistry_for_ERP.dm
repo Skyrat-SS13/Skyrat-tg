@@ -169,7 +169,7 @@
 		if(HAS_TRAIT(M, TRAIT_BIMBO))
 			if(prob(30))
 				H.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
-				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
+				to_chat(M, span_notice("Your mind is free from purple liquid substance. Your thoughts are pure and innocent again."))
 				REMOVE_TRAIT(M, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	..()
 

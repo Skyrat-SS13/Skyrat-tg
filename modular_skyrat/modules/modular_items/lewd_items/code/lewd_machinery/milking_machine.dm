@@ -475,10 +475,10 @@
 	if(beaker)
 		try_put_in_hand(beaker, user)
 		beaker = null
-		to_chat(user, "<span class='notice'>You take the beaker out of [src]</font>")
+		to_chat(user, span_notice("You take the beaker out of [src]"))
 	if(new_beaker)
 		beaker = new_beaker
-		to_chat(user, "<span class='notice'>You put the beaker in [src]</font>")
+		to_chat(user, span_notice("You put the beaker in [src]"))
 	return TRUE
 
 // We will try to take the item in our hand, if it doesn’t work, then drop it into the car tile
@@ -934,7 +934,7 @@
 		return
 	if(action == "ejectCreature")
 		unbuckle_mob(current_mob)
-		to_chat(usr,"<span class='notice'>You eject [current_mob] from [src]</font>")
+		to_chat(usr,span_notice("You eject [current_mob] from [src]"))
 		return TRUE
 
 	if(action == "ejectBeaker")
@@ -946,28 +946,28 @@
 		current_mode = mode_list[1]
 		pump_state = pump_state_list[1]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You turn off [src]</font>")
+		to_chat(usr,span_notice("You turn off [src]"))
 		return TRUE
 
 	if(action == "setLowMode")
 		current_mode = mode_list[2]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You switch [src] onto low mode</font>")
+		to_chat(usr,span_notice("You switch [src] onto low mode"))
 		return TRUE
 
 	if(action == "setMediumMode")
 		current_mode = mode_list[3]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You switch [src] onto medium mode</font>")
+		to_chat(usr,span_notice("You switch [src] onto medium mode"))
 		return TRUE
 
 	if(action == "setHardMode")
 		current_mode = mode_list[4]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You switch [src] onto hard mode</font>")
+		to_chat(usr,span_notice("You switch [src] onto hard mode"))
 		return TRUE
 
 	if(action == "unplug")
@@ -976,25 +976,25 @@
 		pump_state = pump_state_list[1]
 		current_selected_organ = null
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You detach the liner.</font>")
+		to_chat(usr,span_notice("You detach the liner."))
 		return TRUE
 
 	if(action == "setBreasts")
 		current_selected_organ = current_breasts
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You attach the liner to [current_selected_organ].</font>")
+		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setVagina")
 		current_selected_organ = current_vagina
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You attach the liner to [current_selected_organ].</font>")
+		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setTesticles")
 		current_selected_organ = current_testicles
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You attach the liner to [current_selected_organ].</font>")
+		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setMilk")
@@ -1020,7 +1020,7 @@
 		current_vessel.reagents.trans_to(beaker, amount)
 		current_vessel.reagents.reagent_list[1].name
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]</font>")
+		to_chat(usr,span_notice("You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
 // Milking machine construction kit

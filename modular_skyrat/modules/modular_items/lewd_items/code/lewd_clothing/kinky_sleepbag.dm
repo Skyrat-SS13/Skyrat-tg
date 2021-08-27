@@ -82,7 +82,7 @@
 				update_icon()
 				update_icon_state()
 			else
-				to_chat(user, "<span class='notice'>You can't fold the bag while it's inflated!")
+				to_chat(user, span_notice("You can't fold the bag while it's inflated!"))
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/proc/check_menu(mob/living/user)
 	if(!istype(user))
