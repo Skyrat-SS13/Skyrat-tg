@@ -271,8 +271,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
-	if(istype(T))
-		T.atmos_spawn_air("o2=30;TEMP=5778")
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE

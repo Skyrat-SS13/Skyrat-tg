@@ -1,8 +1,7 @@
 /datum/round_event_control/spawn_swarmer
 	name = "Spawn Swarmer Beacon"
 	typepath = /datum/round_event/spawn_swarmer
-	//weight = 10 //ORIGINAL
-	weight = 0 //SKYRAT EDIT CHANGE - EVENTS - same as the dynamic ruleset
+	weight = 5 //SKYRAT EDIT CHANGE
 	max_occurrences = 1 //Only once okay fam
 	min_players = 20
 	dynamic_should_hijack = TRUE
