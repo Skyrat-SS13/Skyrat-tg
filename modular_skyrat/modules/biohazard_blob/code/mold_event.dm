@@ -2,7 +2,7 @@
 	name = "Moldies"
 	typepath = /datum/round_event/mold
 	weight = 5
-	max_occurrences = 1
+	max_occurrences = 0
 	min_players = 10
 
 /datum/round_event/mold
