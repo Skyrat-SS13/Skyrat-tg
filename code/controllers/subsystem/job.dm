@@ -874,8 +874,8 @@ SUBSYSTEM_DEF(job)
 		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot", \
 		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative")
 
-	centcom_jobs = list("Central Command","VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Research Officer", \
-		"Special Ops Officer","Admiral","CentCom Commander","CentCom Bartender","Private Security Force","Fleetmaster","Bridge Officer","Operations Inspector", \
+	centcom_jobs = list("Central Command", "VIP Guest", "Custodian", "Thunderdome Overseer", "CentCom Official", "Medical Officer", "Research Officer", \
+		"Special Ops Officer", "Admiral", "CentCom Commander", "CentCom Bartender", "Private Security Force", "Fleetmaster", "Bridge Officer", "Operations Inspector", \
 		"Deck Crewman")
 
 /obj/item/paper/fluff/spare_id_safe_code
