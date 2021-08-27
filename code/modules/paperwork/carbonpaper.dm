@@ -1,3 +1,4 @@
+/* -- SKYRAT EDIT MOVAL -- MOVED TO HTML_PAPERWORK
 /obj/item/paper/carbon
 	name = "sheet of carbon"
 	icon_state = "paper_stack"
@@ -49,3 +50,4 @@
 		removecopy(user)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
+*/
