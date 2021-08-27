@@ -148,7 +148,7 @@
 	if(HAS_TRAIT(owner, TRAIT_BLIND))
 		return FALSE
 	for(var/mob/living/carbon/human/M in oview(owner, 4))
-		if(!isliving(M)) //ghosts ain't people
+		if((M.stat =< SOFT_CRIT) || !(M.client) || ismonkey(M)) //corpses, empty, consciousness-less husks, and FOR THE LOVE OF FUCKING CHRIST, MONKEYS, ain't people
 			continue
 		if(istype(M))
 			return TRUE
