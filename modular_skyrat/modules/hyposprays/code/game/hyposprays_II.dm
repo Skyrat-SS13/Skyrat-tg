@@ -70,8 +70,10 @@
 		return
 	if(!vial.reagents.total_volume)
 		return
-
-	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', "chem-color")
+	var/vial_spritetype = "chem-color"
+	if(/obj/item/reagent_containers/glass/bottle/vial/large in allowed_containers)
+		vial_spritetype += "-cmo"
+	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
 	chem_loaded.color = vial.chem_color
 	. += chem_loaded
 
