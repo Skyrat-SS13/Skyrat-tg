@@ -199,6 +199,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
 	icon_state = "Cyborg"
+	//SKYRAT EDIT: Start - Makes latejoin cyborgs spawn in the station instead of on the interlink.
+	jobspawn_override = TRUE
+	delete_after_roundstart = FALSE
+	//SKYRAT EDIT: End - Makes latejoin cyborgs spawn in the station instead of on the interlink.
 
 /obj/effect/landmark/start/ai
 	name = "AI"
