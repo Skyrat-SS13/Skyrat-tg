@@ -904,7 +904,7 @@
 /turf/open/floor/iron/dark/brown/side{
 	dir = 9
 	},
-/area/security/prison/safe)
+/area/security/prison)
 "afn" = (
 /turf/open/floor/plating,
 /area/security/office)
@@ -1063,6 +1063,8 @@
 /area/cargo/miningdock)
 "agB" = (
 /obj/machinery/light,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/security/prison)
 "agI" = (
@@ -26383,6 +26385,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
+"bOF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/security/prison)
 "bOG" = (
 /obj/machinery/airalarm/mixingchamber{
 	dir = 1;
@@ -31833,6 +31843,7 @@
 	id = "briggate";
 	name = "security shutters"
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/security/prison)
 "cpl" = (
@@ -35859,18 +35870,10 @@
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "cMF" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt/planet,
+/turf/open/floor/wood,
 /area/security/prison)
 "cMH" = (
 /turf/open/floor/engine,
@@ -37629,10 +37632,6 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/command/meeting_room)
-"eos" = (
-/obj/structure/cable,
-/turf/open/floor/wood,
-/area/security/prison)
 "eoI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 4
@@ -38420,6 +38419,11 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
+"fgw" = (
+/obj/structure/chair/stool/directional/north,
+/obj/structure/cable,
+/turf/open/floor/wood,
+/area/security/prison)
 "fhy" = (
 /obj/item/trash/pistachios,
 /turf/open/floor/plating,
@@ -39050,6 +39054,8 @@
 /obj/machinery/shower{
 	pixel_y = 13
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/security/prison)
 "fOl" = (
@@ -40190,6 +40196,9 @@
 	dir = 1;
 	network = list("ss13","prison")
 	},
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "gWd" = (
@@ -41324,18 +41333,10 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/lobby)
 "hXd" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating/dirt/planet,
+/turf/open/floor/wood,
 /area/security/prison)
 "hXw" = (
 /obj/structure/chair/comfy/black{
@@ -41765,7 +41766,6 @@
 /area/science/genetics)
 "itT" = (
 /obj/structure/loom,
-/obj/machinery/light/small/directional/north,
 /turf/open/floor/vault/rock,
 /area/security/prison)
 "itY" = (
@@ -42055,6 +42055,7 @@
 	dir = 8;
 	pixel_x = -5
 	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/security/prison)
 "iOA" = (
@@ -42187,11 +42188,6 @@
 	},
 /turf/open/floor/iron/dark/side,
 /area/commons/fitness)
-"iXl" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4,
-/turf/open/floor/plating,
-/area/security/prison)
 "iXm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
@@ -43162,6 +43158,7 @@
 	dir = 8;
 	light_color = "#e8eaff"
 	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/security/prison)
 "jOF" = (
@@ -45098,7 +45095,6 @@
 /obj/machinery/plate_press{
 	pixel_y = -3
 	},
-/obj/machinery/light/small/directional/south,
 /turf/open/floor/vault/rock,
 /area/security/prison)
 "lFo" = (
@@ -46208,6 +46204,10 @@
 /obj/item/reagent_containers/spray/pepper,
 /turf/open/floor/iron/dark,
 /area/security/office)
+"mLM" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side,
+/area/security/prison)
 "mLY" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -47246,7 +47246,7 @@
 /turf/open/floor/iron/dark/brown/side{
 	dir = 5
 	},
-/area/security/prison/safe)
+/area/security/prison)
 "nJN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 10
@@ -47391,6 +47391,10 @@
 	dir = 8
 	},
 /turf/open/floor/iron/cafeteria,
+/area/security/prison)
+"nQt" = (
+/obj/machinery/light,
+/turf/open/floor/wood,
 /area/security/prison)
 "nQD" = (
 /obj/structure/sign/warning/pods{
@@ -48116,6 +48120,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/kitchen{
 	dir = 1
 	},
@@ -48346,6 +48351,13 @@
 /obj/effect/turf_decal/trimline/darkblue/filled/warning,
 /turf/open/floor/iron/dark,
 /area/security/brig)
+"oLv" = (
+/obj/machinery/light/small/directional/west,
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen/fourcolor,
+/turf/open/floor/iron,
+/area/security/prison/safe)
 "oLy" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -48413,6 +48425,7 @@
 "oNI" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison)
 "oOF" = (
@@ -48463,6 +48476,11 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/white,
 /area/medical/cryo)
+"oQH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/showroomfloor,
+/area/security/prison)
 "oRp" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/blue/filled/corner,
@@ -48644,7 +48662,7 @@
 /turf/open/floor/iron/dark/brown/side{
 	dir = 6
 	},
-/area/security/prison/safe)
+/area/security/prison)
 "pby" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -48748,13 +48766,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/storage)
-"pgl" = (
-/obj/structure/table,
-/obj/machinery/chem_dispenser/drinks/beer{
-	dir = 1
-	},
-/turf/open/floor/iron/kitchen,
-/area/security/prison)
 "phz" = (
 /obj/machinery/vending/wardrobe/law_wardrobe,
 /obj/machinery/camera{
@@ -49175,21 +49186,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/crew_quarters/cryopod)
-"pAv" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/light,
-/turf/open/floor/plating/dirt/planet,
-/area/security/prison)
 "pAx" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -49266,10 +49262,11 @@
 /area/science/mixing)
 "pCZ" = (
 /obj/structure/toilet{
+	pixel_x = -10;
 	pixel_y = 14
 	},
 /obj/structure/sink{
-	pixel_x = 20;
+	pixel_x = 10;
 	pixel_y = 20
 	},
 /turf/open/floor/iron,
@@ -50888,16 +50885,6 @@
 /obj/item/reagent_containers/food/drinks/beer,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"rmY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/camera{
-	c_tag = " Prison - East Hallway";
-	dir = 1;
-	network = list("ss13","prison")
-	},
-/turf/open/floor/iron/dark/side,
-/area/security/prison)
 "roA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/computer/arcade/battle,
@@ -50909,6 +50896,11 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"roL" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/closed/wall,
+/area/security/prison)
 "roW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
@@ -51447,10 +51439,10 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "rTk" = (
-/obj/machinery/cryopod{
-	dir = 4
-	},
 /obj/machinery/light/small/directional/west,
+/obj/structure/table,
+/obj/item/paper,
+/obj/item/pen,
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "rTE" = (
@@ -51680,10 +51672,6 @@
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
-"sep" = (
-/obj/structure/cable,
-/turf/open/floor/iron/cafeteria,
-/area/security/prison)
 "seq" = (
 /obj/structure/table,
 /obj/item/t_scanner,
@@ -52927,6 +52915,7 @@
 /area/science/mixing)
 "tpT" = (
 /obj/machinery/vending/games,
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/security/prison)
 "tqd" = (
@@ -53410,7 +53399,7 @@
 /turf/open/floor/iron/dark/brown/side{
 	dir = 10
 	},
-/area/security/prison/safe)
+/area/security/prison)
 "tLN" = (
 /obj/structure/falsewall,
 /turf/open/floor/plating,
@@ -54445,6 +54434,7 @@
 	pixel_y = 8
 	},
 /obj/structure/table/wood,
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/security/prison)
 "uOx" = (
@@ -55160,6 +55150,12 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron/kitchen,
 /area/security/prison)
+"vxL" = (
+/obj/structure/falsewall,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/security/prison)
 "vyk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/window/reinforced/spawner/north,
@@ -55260,18 +55256,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
-"vDq" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/machinery/light,
-/turf/open/floor/plating/dirt/planet,
-/area/security/prison)
 "vDt" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start/warden,
@@ -55287,6 +55271,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"vEx" = (
+/obj/machinery/oven,
+/turf/open/floor/iron/kitchen,
+/area/security/prison)
 "vEA" = (
 /turf/open/floor/iron/dark,
 /area/security/warden)
@@ -55420,6 +55408,13 @@
 /area/science/misc_lab)
 "vHU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/camera{
+	c_tag = " Prison - East Hallway";
+	dir = 1;
+	network = list("ss13","prison")
+	},
+/obj/machinery/power/apc/auto_name/south,
+/obj/structure/cable,
 /turf/open/floor/iron/dark/side,
 /area/security/prison)
 "vIU" = (
@@ -55980,6 +55975,7 @@
 /area/security/office)
 "wkz" = (
 /obj/machinery/light,
+/obj/structure/cable,
 /turf/open/floor/iron/dark/side,
 /area/security/prison)
 "wkI" = (
@@ -57076,6 +57072,7 @@
 /obj/item/toy/crayon/spraycan,
 /obj/item/storage/crayons,
 /obj/item/storage/crayons,
+/obj/item/storage/crayons,
 /turf/open/floor/wood,
 /area/security/prison)
 "xhV" = (
@@ -57523,6 +57520,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"xFA" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/security/prison)
 "xFL" = (
 /obj/structure/disposalpipe/junction/flip{
 	dir = 8
@@ -58060,6 +58061,7 @@
 /obj/item/pushbroom,
 /obj/item/storage/box/lights/mixed,
 /obj/item/storage/box/lights/mixed,
+/obj/structure/cable,
 /turf/open/floor/iron/kitchen{
 	dir = 1
 	},
@@ -58311,6 +58313,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/science)
+"ylq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/side,
+/area/security/prison)
 "yls" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/line,
 /obj/machinery/light/directional/south,
@@ -76880,7 +76887,7 @@ mBe
 xzh
 aaJ
 jYu
-rTk
+oLv
 abz
 jYu
 rTk
@@ -76889,13 +76896,13 @@ jYu
 rTk
 abz
 jYu
-rTk
+oLv
 abz
 jYu
 rTk
 abz
 jYu
-rTk
+oLv
 abz
 jYu
 rTk
@@ -77662,7 +77669,7 @@ sYM
 sZT
 sZT
 dAi
-dJo
+sZT
 lHL
 eIo
 dJo
@@ -77926,7 +77933,7 @@ azJ
 azJ
 azJ
 oBr
-qtN
+ixi
 aai
 xzh
 xzh
@@ -78954,7 +78961,7 @@ dYa
 hXx
 aaw
 nvi
-qtN
+ixi
 aai
 xzh
 xzh
@@ -79206,7 +79213,7 @@ fjY
 jNa
 tpT
 ulw
-tJW
+fgw
 xhN
 uRJ
 aaw
@@ -79720,7 +79727,7 @@ wKv
 jNa
 pLk
 ulw
-eos
+ulw
 vCz
 xuu
 aaw
@@ -80228,7 +80235,7 @@ eFj
 tym
 hQn
 oNI
-sZT
+dJo
 sZT
 iyi
 acd
@@ -80480,8 +80487,8 @@ xzh
 mBe
 sUX
 aai
-acd
-iXl
+xFA
+hnO
 hnO
 wOx
 acd
@@ -80737,8 +80744,8 @@ xzh
 mBe
 xzh
 aai
-acd
 vhr
+hnO
 wik
 vFD
 wWc
@@ -80753,7 +80760,7 @@ snX
 eWX
 uFU
 uFU
-uFU
+aGS
 sUL
 sUL
 sUL
@@ -80994,8 +81001,8 @@ sUX
 mBe
 xzh
 aai
-acd
 bqc
+hnO
 hnO
 ors
 acd
@@ -81518,7 +81525,7 @@ ifP
 fpt
 ykK
 fpt
-sep
+ykK
 vAN
 iZl
 dHU
@@ -81766,7 +81773,7 @@ xzh
 mBe
 xzh
 aai
-vlB
+vEx
 tTU
 czu
 tTU
@@ -81775,13 +81782,13 @@ ifP
 fEF
 ykK
 fEF
-sep
+ykK
 fEF
 iZl
 dHU
 oBr
 dJo
-kev
+mLM
 uMS
 jud
 nyx
@@ -82282,7 +82289,7 @@ sUX
 aai
 oBk
 tTU
-pgl
+tTU
 tTU
 ozq
 ykK
@@ -82552,7 +82559,7 @@ mtl
 acd
 fMC
 dJo
-rmY
+ixi
 rrE
 nWo
 rrE
@@ -82805,12 +82812,12 @@ uza
 uza
 uza
 uza
-pAv
+uza
 acd
 aaw
 iPV
 qtN
-jXG
+bOF
 ufo
 ufo
 jdF
@@ -83057,16 +83064,16 @@ acd
 xTB
 dPC
 ulw
-uAt
-uAt
-uAt
-uAt
-uAt
-uAt
+ulw
+ulw
+ulw
+ulw
+ulw
+ulw
 acd
 pVi
-mWy
-kev
+aaw
+ylq
 aaw
 gIk
 euL
@@ -83316,14 +83323,14 @@ sKX
 frT
 uAt
 uAt
+ulw
 uAt
 uAt
 uAt
-vDq
 acd
 pVi
 aaw
-kev
+ylq
 qYD
 awO
 uWe
@@ -83571,16 +83578,16 @@ aai
 aai
 aai
 hXd
-uAt
-uAt
-uAt
-uAt
-uAt
-uAt
+ulw
+ulw
+ulw
+ulw
+ulw
+nQt
 acd
 acd
 tGG
-acd
+roL
 acd
 eLs
 sCd
@@ -83828,11 +83835,11 @@ hhR
 mam
 pqP
 uAt
+ulw
 uAt
+ulw
 uAt
-uAt
-uAt
-uAt
+ulw
 uAt
 acd
 qat
@@ -84084,13 +84091,13 @@ aai
 aai
 fyu
 aai
-hXd
-cMF
+uAt
+ulw
 uAt
 cMF
 uAt
-cMF
-vDq
+ulw
+uAt
 acd
 hfa
 tKd
@@ -84341,13 +84348,13 @@ aai
 hhR
 mam
 aai
-aai
-aai
-aai
-aai
-aai
-aai
-acd
+uAt
+ulw
+uAt
+ulw
+uAt
+ulw
+uAt
 acd
 hfa
 tKd
@@ -84604,7 +84611,7 @@ aai
 aai
 aai
 aai
-acd
+tLN
 acd
 hfa
 tKd
@@ -85124,9 +85131,9 @@ qat
 pmM
 agB
 acd
-abz
-abz
-aaJ
+acd
+acd
+aai
 aai
 aai
 aai
@@ -85379,11 +85386,11 @@ aai
 aai
 pee
 pee
-pee
-tLN
+oQH
+vxL
 aeZ
 tLG
-aaJ
+aai
 dod
 xwv
 ygD
@@ -85640,7 +85647,7 @@ aai
 acd
 nJL
 pbq
-aaJ
+aai
 dgl
 qyg
 dYx
@@ -85895,9 +85902,9 @@ mBe
 mBe
 mBe
 acd
-abz
-aaJ
-aaJ
+acd
+aai
+aai
 xcp
 tuw
 ygD
