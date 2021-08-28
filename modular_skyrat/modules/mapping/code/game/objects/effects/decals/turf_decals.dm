@@ -1,5 +1,5 @@
 /obj/effect/turf_decal/skyrat_decals
-	icon = 'modular_skyrat/modules/mapping/icons/turf/turf_decals.dmi'
+	icon = 'modular_skyrat/modules/mapping/icons/turf/decals/turf_decals.dmi'
 	icon_state = "bad_coder"
 
 ///SYNDICATE EMBLEM///
@@ -81,6 +81,38 @@
 ///Misc///
 /obj/effect/turf_decal/skyrat_decals/misc/handicapped
 	icon_state = "handicapped"
+
+///Trash///
+/obj/effect/decal/cleanable/ash/cig_trash
+	name = "cigarette rubbish"
+	desc = "Littering is bad for the environment, y'know."
+	icon = 'modular_skyrat/modules/mapping/icons/turf/decals/turf_decals.dmi'
+	icon_state = "cig_trash"
+//Subtype of ash so that you can get ash from scooping it up
+
+/obj/effect/decal/cleanable/wood_trash	//Cleanable because I dont like making messes people can't remove
+	name = "wood scraps"
+	desc = "I hope that whatever this was part of is doing fine without it..."
+	icon = 'modular_skyrat/modules/mapping/icons/turf/decals/turf_decals.dmi'
+	icon_state = "wood_trash"
+
+/obj/effect/decal/cleanable/wood_trash/Initialize()
+	. = ..()
+	icon_state += pick("_a", "_b", "_c", "_d")
+	pixel_x = base_pixel_x + rand(-5, 5)
+	pixel_y = base_pixel_y + rand(-5, 5)
+
+/obj/effect/decal/cleanable/brick_rubble	//Cleanable because I dont like making messes people can't remove
+	name = "rubble"
+	desc = "No longer part of a happy home."
+	icon = 'modular_skyrat/modules/mapping/icons/turf/decals/turf_decals.dmi'
+	icon_state = "bricks"
+
+/obj/effect/decal/cleanable/brick_rubble/Initialize()
+	. = ..()
+	dir = rand(1,8)
+	pixel_x = base_pixel_x + rand(-5, 5)
+	pixel_y = base_pixel_y + rand(-5, 5)
 
 ///Street (Rockplanet fluff)///
 /obj/effect/turf_decal/skyrat_decals/street/manhole

@@ -7,6 +7,11 @@
 	usesound = 'sound/effects/empulse.ogg'
 	toolspeed = 0.2
 
+/obj/item/wrench/monkey	//Just a reskin, used on Rockplanet/by the Scavenger Guild
+	name = "monkey wrench"
+	desc = "A wrench which is tightened by adjusting the head in or out. Clunky, but just holding it makes you feel more rugged."
+	icon_state = "wrench_caravan"	//This already existed luckily. But, I don't want to give it the speed buff, its just the reskin.
+
 //WIRECUTTERS//
 /obj/item/wirecutters/advanced
 	name = "advanced wirecutters"
