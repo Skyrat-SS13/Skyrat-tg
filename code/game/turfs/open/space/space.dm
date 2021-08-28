@@ -28,7 +28,7 @@
 /turf/open/space/mirage
 	blocks_air = TRUE
 	light_power = 0
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	always_lit = TRUE
 //SKYRAT EDIT END
 
 /**
