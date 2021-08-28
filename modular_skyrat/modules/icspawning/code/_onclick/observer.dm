@@ -11,13 +11,13 @@
 		outfits["Show All"] = "Show All"
 
 		var/dresscode
-		var/teleport_option = tgui_alert(user, "How would you like to be spawned in?", "IC Quick Spawn", list("Bluespace", "Pod", "Cancel"))
+		var/teleport_option = tgui_alert(usr, "How would you like to be spawned in?", "IC Quick Spawn", list("Bluespace", "Pod", "Cancel"))
 		if (teleport_option == "Cancel")
 			return
-		var/character_option = tgui_alert(user, "Which character?", "IC Quick Spawn", list("Selected Character", "Randomly Created", "Cancel"))
+		var/character_option = tgui_alert(usr, "Which character?", "IC Quick Spawn", list("Selected Character", "Randomly Created", "Cancel"))
 		if (character_option == "Cancel")
 			return
-		var/initial_outfits = tgui_alert(user, "Select outfit", "Quick Dress", list("Bluespace Tech", "Show All", "Cancel"))
+		var/initial_outfits = tgui_alert(usr, "Select outfit", "Quick Dress", list("Bluespace Tech", "Show All", "Cancel"))
 		if (initial_outfits == "Cancel")
 			return
 
@@ -32,7 +32,7 @@
 		// We're spawning someone else
 		var/give_return
 		if (user != usr)
-			give_return = tgui_alert(user, "Do you want to give them the power to return? Not recommended for non-admins.", "Give power?", list("Yes", "No"))
+			give_return = tgui_alert(usr, "Do you want to give them the power to return? Not recommended for non-admins.", "Give power?", list("Yes", "No"))
 			if(!give_return)
 				return
 

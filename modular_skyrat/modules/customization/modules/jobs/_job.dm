@@ -67,7 +67,7 @@
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/nanotrasen_representative
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 // Command
 /datum/job/captain
@@ -128,3 +128,16 @@
 		if(!pref.languages[lang] || pref.languages[lang] < required_languages[lang])
 			return FALSE
 	return TRUE
+
+// Nanotrasen Fleet
+/datum/job/fleetmaster
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/operations_inspector
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/deck_crew
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/bridge_officer
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)

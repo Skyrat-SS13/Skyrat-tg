@@ -77,7 +77,7 @@
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
 	req_access = list(ACCESS_HOS)
-	icon_state = "hos"
+	icon_state = "hos" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 	storage_capacity = 40 //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
@@ -116,7 +116,7 @@
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "warden"
+	icon_state = "warden" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()
@@ -138,11 +138,12 @@
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/clothing/gloves/krav_maga/sec/peacekeeper(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/head_of_security(src)
+	new /obj/item/circuitboard/machine/gun_vendor(src) // SKYRAT EDIT CHANGE
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
 	req_access = list(ACCESS_SECURITY)
-	icon_state = "sec"
+	icon_state = "sec" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
@@ -267,7 +268,7 @@
 /obj/structure/closet/secure_closet/armory1
 	name = "armory armor locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "armory"
+	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/armory1/PopulateContents()
 	..()
@@ -282,7 +283,7 @@
 /obj/structure/closet/secure_closet/armory2
 	name = "armory ballistics locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "armory"
+	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/armory2/PopulateContents()
 	..()
@@ -295,7 +296,7 @@
 /obj/structure/closet/secure_closet/armory3
 	name = "armory energy gun locker"
 	req_access = list(ACCESS_ARMORY)
-	icon_state = "armory"
+	icon_state = "armory" // SKYRAT EDIT ADDITION - NEW ICON ADDED IN peacekeeper_lockers.dm
 
 /obj/structure/closet/secure_closet/armory3/PopulateContents()
 	..()

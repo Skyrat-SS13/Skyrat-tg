@@ -11,7 +11,7 @@
 	. = ..()
 	var/mob/living/carbon/C = user
 	if(src == C.head)
-		to_chat(user, "<font color=purple>You feel much more determined.</font>")
+		to_chat(user, span_purple("You feel much more determined."))
 	else
 		return
 
@@ -20,4 +20,4 @@
 	. = ..()
 	var/mob/living/carbon/C = user
 	if(src == C.head)
-		to_chat(user, "<font color=purple>BDSM session ended, huh?</font>")
+		to_chat(user, span_purple("BDSM session ended, huh?"))

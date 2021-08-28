@@ -77,14 +77,14 @@
 
 /datum/action/innate/megafauna_attack/shotgun
 	name = "Shotgun Fire"
-	icon_icon = 'icons/obj/guns/ballistic.dmi'
+	icon_icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
 	button_icon_state = "shotgun"
 	chosen_message = "<span class='colossus'>You are now firing shotgun shots where you aim.</span>"
 	chosen_attack_num = 3
 
 /datum/action/innate/megafauna_attack/alternating_cardinals
 	name = "Alternating Shots"
-	icon_icon = 'icons/obj/guns/ballistic.dmi'
+	icon_icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
 	button_icon_state = "pistol"
 	chosen_message = "<span class='colossus'>You are now firing in alternating cardinal directions.</span>"
 	chosen_attack_num = 4
@@ -277,7 +277,7 @@
 		if(dust_mob.stat == DEAD)
 			dust_mob.dust()
 		return
-	if(!explode_hit_objects)
+	if(!explode_hit_objects || istype(target, /obj/vehicle/sealed))
 		return
 	if(isturf(target) || isobj(target))
 		if(isobj(target))

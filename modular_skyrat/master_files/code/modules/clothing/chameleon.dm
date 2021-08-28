@@ -1,4 +1,4 @@
-/datum/action/chameleon_slowdown/
+/datum/action/chameleon_slowdown
 	name = "Toggle Chameleon Slowdown"
 	button_icon_state = "chameleon_outfit"
 	var/savedslowdown = 0
@@ -14,7 +14,7 @@
 	savedslowdown = slow
 	owner.update_equipment_speed_mods()
 
-/datum/action/item_action/chameleon/change/
+/datum/action/item_action/chameleon/change
 	var/datum/action/chameleon_slowdown/slowtoggle
 
 /datum/action/item_action/chameleon/change/update_look(mob/user, obj/item/picked_item)

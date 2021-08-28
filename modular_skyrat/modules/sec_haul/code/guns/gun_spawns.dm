@@ -85,3 +85,21 @@
 /obj/item/storage/box/ammo_box/PopulateContents()
 	new /obj/item/storage/bag/ammo(src)
 	new /obj/item/gun_maintenance_supplies(src)
+
+
+/obj/effect/spawner/armory_spawn/centcom_rifles
+	icon_state = "random_rifle"
+	gun_count = 2
+	guns = list(
+		/obj/item/gun/ballistic/automatic/ar,
+		/obj/item/gun/ballistic/automatic/assault_rifle/m16,
+		/obj/item/gun/ballistic/automatic/cfa_rifle,
+	)
+
+/obj/effect/spawner/armory_spawn/centcom_lasers
+	gun_count = 2
+	guns = list(
+		/obj/item/gun/energy/laser,
+		/obj/item/gun/energy/laser/cfa_paladin,
+		/obj/item/gun/energy/e_gun,
+	)

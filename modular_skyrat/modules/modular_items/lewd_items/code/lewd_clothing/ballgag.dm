@@ -28,7 +28,7 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), 70, 1, -1)
 
-//here goes code for chocking ballgag
+//here goes code for choking ballgag
 
 /obj/item/clothing/mask/ballgag_phallic
 	w_class = WEIGHT_CLASS_SMALL
@@ -117,7 +117,7 @@
 
 /obj/item/clothing/mask/ballgag_phallic
 	name = "phallic ball gag"
-	desc = "Prevents wearer from speaking and make breathing even harder"
+	desc = "Prevents the wearer from speaking, as well as make breathing even harder."
 	icon_state = "chokegag"
 	inhand_icon_state = "blindfold"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -127,7 +127,7 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	gas_transfer_coefficient = 0.9
 	moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...")
-	moans_alt = list("Mhgm...", "Hmmmp!...", "GMmmhp!")
+	moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!")
 	moans_alt_probability = 5
 	time = 2
 	var/ballgag_size = "small"
@@ -203,18 +203,18 @@
 
 //start choking when equipping gag
 /obj/item/clothing/mask/ballgag_phallic/equipped(mob/user, slot)
-	..()
 	var/mob/living/carbon/human/U = loc
 	if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
 		START_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/clothing/mask/ballgag_phallic/dropped(mob/user, slot)
-	..()
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/clothing/mask/ballgag_phallic/Destroy()
-	..()
 	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/clothing/mask/ballgag_phallic/process(delta_time)
 	var/mob/living/carbon/human/U = loc

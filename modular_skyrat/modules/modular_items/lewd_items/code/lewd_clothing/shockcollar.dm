@@ -1,6 +1,6 @@
 /obj/item/electropack/shockcollar
 	name = "shock collar"
-	desc = "A reinforced metal collar. It seems to have some form of wiring near the front. Strange.."
+	desc = "A reinforced metal collar. It has some sort of wiring near the front."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "shockcollar"
@@ -25,7 +25,7 @@
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
-		to_chat(user, "<span class='warning'>The collar is fastened tight! You'll need help taking this off!</span>")
+		to_chat(user, span_warning("The collar is fastened tight! You'll need help if you want to take it off!"))
 		return
 	return ..()
 
@@ -43,7 +43,7 @@
 		addtimer(VARSET_CALLBACK(src, shock_cooldown, FALSE), 100)
 		step(L, pick(GLOB.cardinals))
 
-		to_chat(L, "<span class='danger'>You feel a sharp shock from the collar!</span>")
+		to_chat(L, span_danger("You feel a sharp shock from the collar!"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, L)
 		s.start()
@@ -83,7 +83,7 @@
 
 /obj/item/electropack/shockcollar/pacify
 	name = "pacifying collar"
-	desc = "A reinforced metal collar that latches onto the wearer and halts any harmful thoughts."
+	desc = "A reinforced metal collar that latches onto the wearer and prevents harmful thoughts."
 
 /obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

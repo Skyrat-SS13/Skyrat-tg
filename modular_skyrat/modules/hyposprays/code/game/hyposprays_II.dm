@@ -1,8 +1,8 @@
 #define HYPO_SPRAY 0
 #define HYPO_INJECT 1
 
-#define WAIT_SPRAY 25
-#define WAIT_INJECT 25
+#define WAIT_SPRAY 15
+#define WAIT_INJECT 20
 #define SELF_SPRAY 15
 #define SELF_INJECT 15
 
@@ -58,11 +58,24 @@
 /obj/item/hypospray/mkii/Initialize()
 	. = ..()
 	if(!spawnwithvial)
-		update_icon()
+		update_appearance()
 		return
 	if(start_vial)
 		vial = new start_vial
-	update_icon()
+		update_appearance()
+
+/obj/item/hypospray/mkii/update_overlays()
+	. = ..()
+	if(!vial)
+		return
+	if(!vial.reagents.total_volume)
+		return
+	var/vial_spritetype = "chem-color"
+	if(/obj/item/reagent_containers/glass/bottle/vial/large in allowed_containers)
+		vial_spritetype += "-cmo"
+	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
+	chem_loaded.color = vial.chem_color
+	. += chem_loaded
 
 /obj/item/hypospray/mkii/ComponentInitialize()
 	. = ..()
@@ -93,40 +106,35 @@
 		to_chat(user, "<span class='notice'>This hypo isn't loaded!</span>")
 		return
 
+/obj/item/hypospray/mkii/proc/insert_vial(obj/item/new_vial, mob/living/user, obj/item/current_vial)
+	var/obj/item/reagent_containers/glass/bottle/vial/container = new_vial
+	if(!is_type_in_list(container, allowed_containers))
+		to_chat(user, span_notice("[src] doesn't accept this type of vial."))
+		return FALSE
+	if(current_vial)
+		var/obj/item/reagent_containers/glass/bottle/vial/old_container = current_vial
+		old_container.forceMove(drop_location())
+	if(!user.transferItemToLoc(container, src))
+		return FALSE
+	vial = container
+	user.visible_message(span_notice("[user] has loaded a vial into [src]."), span_notice("You have loaded [vial] into [src]."))
+	playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+	update_appearance()
+	if(current_vial)
+		user.put_in_hands(current_vial)
+
 /obj/item/hypospray/mkii/attackby(obj/item/used_item, mob/living/user)
 	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial) && vial != null))
 		if(!quickload)
 			to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
 			return FALSE
 		else
-			var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
-			var/obj/item/reagent_containers/glass/bottle/vial/old_container = vial
-			if(!is_type_in_list(container, allowed_containers))
-				to_chat(user, span_notice("[src] doesn't accept this type of vial."))
-				return FALSE
-			old_container.forceMove(drop_location())
-			if(!user.transferItemToLoc(container, src))
-				return FALSE
-			vial = container
-			user.visible_message(span_notice("[user] has swapped a vial into [src]."), span_notice("You have swapped [vial] into [src]."))
-			playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
-			user.put_in_hands(old_container)
+			insert_vial(used_item, user, vial)
 			return TRUE
+
 	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial)))
-		var/obj/item/reagent_containers/glass/bottle/vial/container = used_item
-		if(!is_type_in_list(container, allowed_containers))
-			to_chat(user, "<span class='notice'>[src] doesn't accept this type of vial.</span>")
-			return FALSE
-		if(!user.transferItemToLoc(container,src))
-			return FALSE
-		vial = container
-		user.visible_message("<span class='notice'>[user] has loaded a vial into [src].</span>","<span class='notice'>You have loaded [vial] into [src].</span>")
-		update_icon()
-		playsound(loc, 'sound/weapons/autoguninsert.ogg', 35, 1)
+		insert_vial(used_item, user)
 		return TRUE
-	else
-		to_chat(user, "<span class='notice'>This doesn't fit in [src].</span>")
-		return FALSE
 
 /obj/item/hypospray/mkii/AltClick(mob/user)
 	. = ..()
@@ -156,6 +164,10 @@
 	return
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
+	if((istype(target, /obj/item/reagent_containers/glass/bottle/vial)))
+		insert_vial(target, user, vial)
+		return TRUE
+
 	if(!vial || !proximity || !isliving(target))
 		return
 	var/mob/living/injectee = target
@@ -204,6 +216,7 @@
 	var/long_sound = vial.amount_per_transfer_from_this >= 15
 	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
 	to_chat(user, "<span class='notice'>You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units.</span>")
+	update_appearance()
 
 /obj/item/hypospray/mkii/attack_self(mob/living/user)
 	if(user)
