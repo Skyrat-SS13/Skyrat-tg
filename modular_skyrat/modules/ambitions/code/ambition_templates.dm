@@ -82,3 +82,10 @@
 	job_whitelist = list("Scientist")
 
 //TODO: Everything Past Cook and Scientist Ambitions
+/datum/ambition_template/syndicate_fight_club
+	name = "Syndicate Fight Club"
+	narrative = "Today you're feeling quite pent up and extra hyped. What's an awesome idea to do then? A fight club! It can let you blow off some steam and have some fun!"
+	objective = list("Host a fight club inside of the Holodeck.", "Obtain the Championship Belt.", "Do NOT let anyone shut down your fight club.")
+	tips = list("Not all fight clubs go by the same rules, you can try to get a form of martial arts or CQC in order to get the upperhand.", "A way of obtaining the championship belt is by either, A.) Having a brawl with the captain or a head of staff for it. B.) Breaking into the vault and taking it yourself. C.) Convincing the captain or a head of staff to give it to you ", "Now remember, in fight club there's only one rule, don't talk about fight club. have an uprise against security for trying to stop your fight club, convince the captain to allow it, security and or medical will likely try to shut it down so stay aware of what security and medical are doing. ")
+
+
