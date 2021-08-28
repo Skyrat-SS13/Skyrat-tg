@@ -3,12 +3,10 @@
 ///////////////////////
 
 GLOBAL_LIST_INIT(cme_loot_list, list(
-	/obj/item/stack/sheet/bluespace_crystal = 30,
-	/obj/item/stack/sheet/mineral/diamond = 20,
-	/obj/item/stack/sheet/mineral/plasma = 50,
-	/obj/item/stack/sheet/mineral/gold = 80,
-	/obj/item/raw_anomaly_core/random = 10,
-	/obj/item/relic = 40))
+	/obj/item/raw_anomaly_core/random = 30,
+	/obj/item/stack/sheet/bluespace_crystal = 20,
+	/obj/item/stack/sheet/mineral/diamond = 10,
+	))
 
 /obj/item/strange
 
