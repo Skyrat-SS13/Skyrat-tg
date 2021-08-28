@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/corset
 	name = "corset"
-	desc = "Tight latex corset. How anybody can fit in THAT?"
+	desc = "A tight latex corset. How can anybody fit in THAT?"
 	inhand_icon_state = "corset"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
@@ -18,8 +18,8 @@
 
 /obj/item/clothing/suit/corset/AltClick(mob/user)
 	corset_laced_hard = !corset_laced_hard
-	to_chat(user, "<span class='notice'>You laced corset [corset_laced_hard? "hard. I do not envy whoever has to wear this..." : "weak."]</span>")
-	playsound(user, corset_laced_hard? 'sound/items/handling/cloth_pickup.ogg' : 'sound/items/handling/cloth_drop.ogg', 40, TRUE)
+	to_chat(user, span_notice("You lace the corset up [corset_laced_hard ? "tight. I don't envy whoever has to wear this..." : "loosely."]"))
+	playsound(user, corset_laced_hard ? 'sound/items/handling/cloth_pickup.ogg' : 'sound/items/handling/cloth_drop.ogg', 40, TRUE)
 	switch(corset_laced_hard)
 		if(TRUE)
 			slowdown = 2
@@ -32,7 +32,7 @@
 	var/mob/living/carbon/human/C = user
 	if(src == C.wear_suit)
 		if(corset_laced_hard == TRUE)
-			to_chat(user,"<font color=purple>Something squeezes your ribs tight! Breathing now is much harder.</font>")
+			to_chat(user, span_purple("The corset squeezes tightly against your ribs! Breathing suddenly feels much more difficult."))
 	else
 		return
 
@@ -41,4 +41,4 @@
 	. = ..()
 	var/mob/living/carbon/human/C = user
 	if(corset_laced_hard == TRUE && src == C.wear_suit)
-		to_chat(user,"<font color=purple>Phew. Now you can breath normally.</font>")
+		to_chat(user, span_purple("Phew. Now you can breath normally."))
