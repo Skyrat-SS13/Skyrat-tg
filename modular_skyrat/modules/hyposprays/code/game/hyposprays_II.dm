@@ -1,8 +1,8 @@
 #define HYPO_SPRAY 0
 #define HYPO_INJECT 1
 
-#define WAIT_SPRAY 25
-#define WAIT_INJECT 25
+#define WAIT_SPRAY 15
+#define WAIT_INJECT 20
 #define SELF_SPRAY 15
 #define SELF_INJECT 15
 
