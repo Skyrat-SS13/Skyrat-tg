@@ -695,7 +695,7 @@
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MM
-	max_ammo = 15
+	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
