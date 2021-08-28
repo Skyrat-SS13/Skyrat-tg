@@ -557,3 +557,6 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 						. += span_purple("[p_they()] [p_are()] aroused as hell.") + "\n"
 					if(91.01 to INFINITY)
 						. += span_purple("[p_they()] [p_are()] extremely excited, exhausting from entolerable desire.") + "\n"
+
+
+*/
