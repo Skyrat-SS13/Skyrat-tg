@@ -68,54 +68,26 @@
 				var/obj/item/organ/genital/penis = M.getorganslot(ORGAN_SLOT_PENIS)
 				if(penis)
 					if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
-						switch(M.gender)
-							if(MALE)
-								message = (user == M) ? pick("moans in ecstasy, as he uses the [src]","puts [src] on [M]'s penis and slowly moving it, he bends in pleasure","slightly shivers in pleasure while using a [src].") : pick("uses [src] on [M]'s penis","fucks [M] with a [src]","masturbates to [M], as he moans in ecstasy while [src] tightly holding his penis")
-								if(prob(40) && (M.stat != DEAD))
-									M.emote(pick("twitch_s","moan","blush"))
-								M.adjustArousal(6)
-								M.adjustPleasure(9)
-								user.visible_message("<font color=purple>[user] [message].</font>")
-								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
-							if(FEMALE)
-								message = (user == M) ? pick("moans in ecstasy, as she uses the [src]","puts [src] on [M]'s penis and slowly moving it, she bends in pleasure","slightly shivers in pleasure while using a [src].") : pick("uses [src] on [M]'s penis","fucks [M] with a [src]","masturbates to [M], as she moans in ecstasy while [src] tightly holding her penis")
-								if(prob(40) && (M.stat != DEAD))
-									M.emote(pick("twitch_s","moan","blush"))
-								M.adjustArousal(6)
-								M.adjustPleasure(9)
-								user.visible_message("<font color=purple>[user] [message].</font>")
-								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
-							else
-								message = (user == M) ? pick("moans in ecstasy, as it uses the [src]","puts [src] on [M]'s penis and slowly moving it, they bends in pleasure","slightly shivers in pleasure while using a [src].") : pick("uses [src] on [M]'s penis","fucks [M] with a [src]","masturbates to [M], as it moans in ecstasy while [src] tightly holding it's penis")
-								if(prob(40) && (M.stat != DEAD))
-									M.emote(pick("twitch_s","moan","blush"))
-								M.adjustArousal(6)
-								M.adjustPleasure(9)
-								user.visible_message("<font color=purple>[user] [message].</font>")
-								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
+						message = (user == M) ? pick("moans in ecstasy as [M.p_they()] use the [src]","slowly moves [src] up and down on [M]'s penis, causing [M.p_them()] to bend in pleasure","slightly shivers in pleasure as [M.p_they()] use [src].") : pick("uses [src] on [M]'s penis","fucks [M] with [src]","masturbates [M] with [src], causing [M.p_them()] to moan in ecstasy")
+						if(prob(40) && (M.stat != DEAD))
+							M.emote(pick("twitch_s","moan","blush"))
+						M.adjustArousal(6)
+						M.adjustPleasure(9)
+						user.visible_message(span_purple("[user] [message]!"))
+						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
 					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class = 'danger'> You realised that [M] don't have a penis.</span>")
+					to_chat(user, span_danger("[M] doesn't have a penis!"))
 					return
 			else
 				return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that!"))
 		return
