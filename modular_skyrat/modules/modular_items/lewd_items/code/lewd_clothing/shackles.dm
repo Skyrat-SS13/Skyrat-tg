@@ -1,3 +1,5 @@
+/*
+
 /obj/item/clothing/suit/straight_jacket/shackles
 	name = "shackles"
 	desc = "Fancy shackles with a fake lock."
