@@ -85,12 +85,12 @@
 		var/obj/item/reagent_containers/glass/bottle/vial/container = hypo
 		container.forceMove(user.loc)
 		user.put_in_hands(container)
-		to_chat(user, "<span class='notice'>You remove [vial] from [src].</span>")
+		to_chat(user, span_notice("You remove [vial] from [src]."))
 		vial = null
 		update_icon()
 		playsound(loc, 'sound/weapons/empty.ogg', 50, 1)
 	else
-		to_chat(user, "<span class='notice'>This hypo isn't loaded!</span>")
+		to_chat(user, span_notice("This hypo isn't loaded!"))
 		return
 
 /obj/item/hypospray/mkii/proc/insert_vial(obj/item/new_vial, mob/living/user, obj/item/current_vial)
@@ -172,10 +172,10 @@
 	log_combat(user, injectee, "attemped to inject", src, addition="which had [contained]")
 
 	if(!vial)
-		to_chat(user, "<span class='notice'>[src] doesn't have any vial installed!</span>")
+		to_chat(user, span_notice("[src] doesn't have any vial installed!"))
 		return
 	if(!vial.reagents.total_volume)
-		to_chat(user, "<span class='notice'>[src]'s vial is empty!</span>")
+		to_chat(user, span_notice("[src]'s vial is empty!"))
 		return
 
 	var/fp_verb = mode == HYPO_SPRAY ? "spray" : "inject"
@@ -202,7 +202,7 @@
 
 	var/long_sound = vial.amount_per_transfer_from_this >= 15
 	playsound(loc, long_sound ? 'modular_skyrat/modules/hyposprays/sound/hypospray_long.ogg' : pick('modular_skyrat/modules/hyposprays/sound/hypospray.ogg','modular_skyrat/modules/hyposprays/sound/hypospray2.ogg'), 50, 1, -1)
-	to_chat(user, "<span class='notice'>You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units.</span>")
+	to_chat(user, span_notice("You [fp_verb] [vial.amount_per_transfer_from_this] units of the solution. The hypospray's cartridge now contains [vial.reagents.total_volume] units.</span>"))
 
 /obj/item/hypospray/mkii/attack_self(mob/living/user)
 	if(user)
@@ -228,7 +228,7 @@
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'><b>Ctrl-Click</b> it to toggle its mode from spraying to injecting and vice versa.</span>"
+	. += span_notice("<b>Ctrl-Click</b> it to toggle its mode from spraying to injecting and vice versa.")
 
 #undef HYPO_SPRAY
 #undef HYPO_INJECT
