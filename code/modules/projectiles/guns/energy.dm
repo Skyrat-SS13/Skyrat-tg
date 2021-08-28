@@ -184,11 +184,7 @@
 	chambered = null
 	recharge_newshot(TRUE)
 	update_appearance()
-<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
-	return
-=======
->>>>>>> 68aa7ebe4d9 ( wormhole projectors now fire blue wormholes with lmb and orange ones with rmb. (#60563))
 
 /obj/item/gun/energy/update_icon_state()
 	var/skip_inhand = initial(inhand_icon_state) //only build if we aren't using a preset inhand icon
