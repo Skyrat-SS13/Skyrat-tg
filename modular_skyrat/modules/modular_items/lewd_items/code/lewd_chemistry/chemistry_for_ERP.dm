@@ -17,7 +17,7 @@
 			M.emote(pick("moan","blush"))
 		if(prob(min(current_cycle/4,10)))
 			var/aroused_message = pick("You feel frisky.", "You're having trouble suppressing your urges.", "You feel in the mood.")
-			to_chat(M, "<span class='notice'>[aroused_message]</span>")
+			to_chat(M, span_notice("[aroused_message]"))
 		if(ishuman(M))
 			M.adjustArousal(1)
 			for(var/obj/item/organ/genital/G in M.internal_organs)
@@ -50,7 +50,7 @@
 				aroused_message = pick("You need to fuck someone!", "You're bursting with sexual tension!", "You can't get sex off your mind!")
 			else
 				aroused_message = pick("You feel a bit hot.", "You feel strong sexual urges.", "You feel in the mood.", "You're ready to go down on someone.")
-			to_chat(M, "<font color=purple>[aroused_message]</font>")
+			to_chat(M, span_purple("[aroused_message]"))
 		if(ishuman(M))
 			M.adjustArousal(2)
 			M.adjustPleasure(1.5)
@@ -66,7 +66,7 @@
 	var/mob/living/carbon/human/H = M
 	if(M.client && (M.client.prefs.skyrat_toggles & BIMBO_PREF))
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
-			to_chat(M, "<font color=purple>Your libido is going haywire! Speaking gets much harder...</font>")
+			to_chat(M, span_purple("Your libido is going haywire! Speaking gets much harder..."))
 			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC) //what am i doing with my life.
 			ADD_TRAIT(M, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	..()
@@ -97,7 +97,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/M)
-	to_chat(M, "<font color=purple>You feel so happy!</font>")
+	to_chat(M, span_purple("You feel so happy!"))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/M)
@@ -131,7 +131,7 @@
 			M.adjustArousal(-12)
 			M.adjustPleasure(-3)
 			if(M.arousal <= 0 && old_arousal > 0)
-				to_chat(M, "<span class='notice'>You no longer feel aroused.</span>")
+				to_chat(M, span_notice("You no longer feel aroused."))
 	..()
 
 //Pentacamphor. Used to PERMANENTLY reduce libido. Possibly can cure bimbofication. I wrote this with a straight face, what am i doing?
@@ -151,7 +151,7 @@
 			M.adjustArousal(-18)
 			M.adjustPleasure(-3)
 			if(M.arousal <= 0 && old_arousal > 0)
-				to_chat(M, "<span class='notice'>You no longer feel aroused.</span>")
+				to_chat(M, span_notice("You no longer feel aroused."))
 
 		if(M.reagents.has_reagent(/datum/reagent/drug/crocin))
 			M.reagents.remove_reagent(/datum/reagent/drug/crocin, 20)
@@ -163,13 +163,13 @@
 	var/mob/living/carbon/human/H = M
 	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
 		if(!HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_NEVERBONER))
-			to_chat(M, "<span class='notice'>You feel like you'll never feel aroused again...</span>") //Go to horny jail *bonk*
+			to_chat(M, span_notice("You feel like you'll never feel aroused again...")) //Go to horny jail *bonk*
 			ADD_TRAIT(M,TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
 
 		if(HAS_TRAIT(M, TRAIT_BIMBO))
 			if(prob(30))
 				H.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
-				to_chat(M, "<span class='notice'>Your mind is free from purple liquid substance. Your thoughts are pure and innocent again.")
+				to_chat(M, span_notice("Your mind is free from purple liquid substance. Your thoughts are pure and innocent again."))
 				REMOVE_TRAIT(M, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	..()
 
@@ -217,7 +217,7 @@
 		if(volume >= 15) //To prevent monkey breast farms
 			var/turf/T = get_turf(M)
 			var/obj/item/organ/genital/breasts/B = new /obj/item/organ/genital/breasts(T)
-			M.visible_message("<span class='warning'>A pair of breasts suddenly fly out of the [M]!</b></span>")
+			M.visible_message(span_warning("A pair of breasts suddenly fly out of the [M]!</b>"))
 			var/T2 = get_random_station_turf()
 			M.adjustBruteLoss(25)
 			M.Paralyze(50)
@@ -251,7 +251,7 @@
 		if(ISINRANGE_EX(B?.genital_size, 14, 16) && (H.w_uniform || H.wear_suit))
 			var/target = H.get_bodypart(BODY_ZONE_CHEST)
 			if(!message_spam)
-				to_chat(H, "<span class='danger'>Your breasts begin to strain against your clothes tightly!</b></span>")
+				to_chat(H, span_danger("Your breasts begin to strain against your clothes tightly!</b>"))
 				message_spam = TRUE
 			H.adjustOxyLoss(5, 0)
 			H.apply_damage(1, BRUTE, target)
@@ -316,7 +316,7 @@ Haha! Kill me please.
 			B.color = "#[M.dna.features["breasts_color"]]"
 		else
 			B.color = SKINTONE2HEX(M.skin_tone)
-		to_chat(M, "<span class='warning'>Your chest feels warm, tingling with newfound sensitivity.</b></span>")
+		to_chat(M, span_warning("Your chest feels warm, tingling with newfound sensitivity.</b>"))
 		M.update_body()
 		B.update_genital_icon_state()
 		B.update_sprite_suffix()
@@ -357,7 +357,7 @@ Haha! Kill me please.
 		if(volume >= 15) //to prevent monkey penis farms
 			var/turf/T = get_turf(M)
 			var/obj/item/organ/genital/penis/P = new /obj/item/organ/genital/penis(T)
-			M.visible_message("<span class='warning'>A penis suddenly flies out of the [M]!</b></span>")
+			M.visible_message(span_warning("A penis suddenly flies out of the [M]!</b>"))
 			var/T2 = get_random_station_turf()
 			M.adjustBruteLoss(25)
 			M.Paralyze(50)
@@ -392,7 +392,7 @@ Haha! Kill me please.
 		if(ISINRANGE_EX(P?.genital_size, 18, 20) && (H.w_uniform || H.wear_suit))
 			var/target = H.get_bodypart(BODY_ZONE_PRECISE_GROIN)
 			if(prob(20))
-				to_chat(H, "<span class='danger'>You feel the tight in your pants!</b></span>")
+				to_chat(H, span_danger("You feel the tight in your pants!</b>"))
 				H.apply_damage(1, BRUTE, target)
 
 	//If they've opted out, then route processing though liver.

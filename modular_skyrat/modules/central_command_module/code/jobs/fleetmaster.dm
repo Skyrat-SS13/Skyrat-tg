@@ -57,7 +57,7 @@
 	belt = /obj/item/pda/nanotrasen_representative
 	glasses = /obj/item/clothing/glasses/eyepatch
 	mask = /obj/item/clothing/mask/cigarette/cigar/cohiba
-	ears = /obj/item/radio/headset/headset_cent/commander
+	ears = /obj/item/radio/headset/headset_cent/fleetmaster
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	uniform = /obj/item/clothing/under/rank/centcom/commander
 	suit = /obj/item/clothing/suit/toggle/armor/vest/centcom_formal
@@ -65,6 +65,7 @@
 	shoes = /obj/item/clothing/shoes/combat/swat
 	head = /obj/item/clothing/head/centhat
 	back = /obj/item/storage/backpack/satchel/leather
+	box = /obj/item/storage/box/survival/security
 	backpack_contents = list(/obj/item/melee/baton/loaded, /obj/item/ammo_box/a357 = 4)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
@@ -90,3 +91,16 @@
 	icon_state = "Captain"
 	delete_after_roundstart = FALSE
 	jobspawn_override = TRUE
+
+/obj/item/radio/headset/headset_cent/fleetmaster
+	name = "\improper CentCom bowman headset"
+	desc = "A headset used by the upper echelons of Nanotrasen."
+	icon_state = "cent_headset_alt"
+	inhand_icon_state = "cent_headset_alt"
+	keyslot = new /obj/item/encryptionkey/heads/captain
+	keyslot2 = new /obj/item/encryptionkey/headset_cent
+	command = TRUE
+
+/obj/item/radio/headset/headset_cent/fleetmaster/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
