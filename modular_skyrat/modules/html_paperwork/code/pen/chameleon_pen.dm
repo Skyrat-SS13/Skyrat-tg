@@ -1,18 +1,18 @@
-/* /obj/item/pen/chameleon
+/obj/item/pen/chameleon
 	var/signature = ""
 
 /obj/item/pen/chameleon/attack_self(mob/user as mob)
-	/*
+
 	// Limit signatures to official crew members
 	var/personnel_list[] = list()
-	for(var/datum/data/record/t in data_core.locked) //Look in data core locked.
+	for(var/datum/data/record/t in GLOB.data_core.locked) //Look in data core locked.
 		personnel_list.Add(t.fields["name"])
 	personnel_list.Add("Anonymous")
 
 	var/new_signature = input("Enter new signature pattern.", "New Signature") as null|anything in personnel_list
 	if(new_signature)
 		signature = new_signature
-	*/
+
 	signature = sanitize(input("Enter new signature. Leave blank for 'Anonymous'", "New Signature", signature))
 
 /obj/item/pen/proc/get_signature(var/mob/user)
@@ -57,4 +57,4 @@
 			else
 				colour = COLOR_BLACK
 				color_description = "black ink"
-		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>") */
+		to_chat(usr, "<span class='info'>You select the [lowertext(selected_type)] ink container.</span>")

@@ -454,8 +454,8 @@
 			return
 
 		var/obj/item/active_item = usr.get_active_held_item() // Check to see if he still got that darn pen, also check what type of pen
-		var/iscrayon = 0
-		var/isfancy = 0
+		var/iscrayon = FALSE
+		var/isfancy = FALSE
 		if(!istype(active_item, /obj/item/pen))
 			/* Rigsuit shit, we don't have -- TODO delete if working
 			if(usr.back && istype(usr.back,/obj/item/rig))
@@ -477,13 +477,13 @@
 				to_chat(usr, span_warning("Something broke, and a non-retractable pen was retracted. Yell at coders."))
 				active_pen.active = TRUE
 
-		if(active_pen.iscrayon)
-			iscrayon = TRUE
+		/*if(active_pen.iscrayon)
+			iscrayon = TRUE */ // TODO -- WRITING CRAYONS
 
-		if(active_pen.isfancy)
+		if(active_pen.font == FOUNTAIN_PEN_FONT)
 			isfancy = TRUE
 
-		var/t =  stripped_input(usr, "Enter what you want to write:", "Write", null)
+		var/t =  stripped_multiline_input(usr, "Enter what you want to write:", "Write", null)
 
 		if(!t)
 			return
