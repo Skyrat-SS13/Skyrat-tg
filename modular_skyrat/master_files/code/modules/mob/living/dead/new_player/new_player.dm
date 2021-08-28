@@ -523,6 +523,9 @@
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
 	if(QDELETED(src) || !client)
 		return // Disconnected while checking for the appearance ban.
+	if(iscyborg(spawning_mob))
+		var/mob/living/silicon/robot/cyborg = spawning_mob
+		cyborg.latejoin_find_parent_ai(destination.z)
 	if(!isAI(spawning_mob)) // Unfortunately there's still snowflake AI code out there.
 		mind.original_character_slot_index = client.prefs.default_slot
 		mind.transfer_to(spawning_mob) //won't transfer key since the mind is not active

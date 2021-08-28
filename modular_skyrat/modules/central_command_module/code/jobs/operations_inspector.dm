@@ -55,6 +55,7 @@
 	suit = /obj/item/clothing/suit/toggle/
 	shoes = /obj/item/clothing/shoes/combat/swat
 	back = /obj/item/storage/backpack/satchel/leather
+	box = /obj/item/storage/box/survival/security
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun)
 
