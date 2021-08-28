@@ -137,3 +137,6 @@
 	. = ..()
 	if(src == C.wear_suit)
 		to_chat(user, span_purple("The shackles are no longer restraining your body. You are free!"))
+
+
+*/
