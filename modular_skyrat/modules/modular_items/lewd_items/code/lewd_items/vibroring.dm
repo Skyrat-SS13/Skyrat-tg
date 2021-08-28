@@ -5,7 +5,7 @@
 
 /obj/item/clothing/sextoy/vibroring
 	name = "vibrating ring"
-	desc = "Used to keep erection"
+	desc = "A ring toy used to keep your erection going strong."
 	icon_state = "vibroring"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	var/toy_on = FALSE
@@ -19,7 +19,7 @@
 
 /obj/item/clothing/sextoy/vibroring/attack_self(mob/user)
 	toy_on = !toy_on
-	to_chat(user, "<span class='notice'>You turned vibroring [toy_on? "on. Brrrr..." : "off."]</span>")
+	to_chat(user, span_notice("You turn the vibroring [toy_on? "on. Brrrr..." : "off."]"))
 	playsound(user, toy_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_icon()

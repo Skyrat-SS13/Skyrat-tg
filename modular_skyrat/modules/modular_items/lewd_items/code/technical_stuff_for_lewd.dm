@@ -42,7 +42,7 @@
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
 
-/datum/looping_sound/vibrator_hard
+/datum/looping_sound/vibrator_high
 	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
 	start_length = 1
 	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
@@ -560,7 +560,7 @@
 			dna.features["body_model"] = ngender
 			if(!silent)
 				var/adj = ngender == MALE ? "masculine" : "feminine"
-				visible_message("<span class='boldnotice'>[src] suddenly looks more [adj]!</span>", "<span class='boldwarning'>You suddenly feel more [adj]!</span>")
+				visible_message(span_boldnotice("[src] suddenly looks more [adj]!"), span_boldwarning("You suddenly feel more [adj]!"))
 		else if(ngender == NEUTER)
 			dna.features["body_model"] = MALE
 	if(update_icon)

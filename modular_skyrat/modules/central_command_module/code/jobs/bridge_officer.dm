@@ -57,6 +57,7 @@
 	shoes = /obj/item/clothing/shoes/combat/swat
 	head = /obj/item/clothing/head/soft/enclaveo
 	back = /obj/item/storage/backpack/satchel/leather
+	box = /obj/item/storage/box/survival/security
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun)
 

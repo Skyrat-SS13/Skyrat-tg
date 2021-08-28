@@ -91,17 +91,10 @@
 	path = /obj/item/clothing/under/rax_turtleneck_gray
 	ckeywhitelist = list("raxraus")
 
-/datum/loadout_item/suit/donator/heparmor
-	name = "HepUnit Standard Underweave"
-	path = /obj/item/clothing/suit/armor/vest/peacekeeper/jax
+/datum/loadout_item/glasses/donator/zentaiglasses
+	name = "Demonic Sunglasses"
+	path = /obj/item/clothing/glasses/zentai
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Vanguard Operative","Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
-
-/datum/loadout_item/suit/donator/hepbelt
-	name = "HepUnit Standard Webbing"
-	path = /obj/item/storage/belt/security/webbing/peacekeeper/jax
-	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Vanguard Operative","Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
 /datum/loadout_item/head/donator/hephelmet
 	name = "HepUnit Standard Helmet"
@@ -109,7 +102,7 @@
 	ckeywhitelist = list("candlejax")
 	restricted_roles = list("Vanguard Operative","Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
-/datum/loadout_item/head/donator/emissiontest
+/datum/loadout_item/head/donator/emissionhelm
 	name = "Emission's Helmet"
 	path = /obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
