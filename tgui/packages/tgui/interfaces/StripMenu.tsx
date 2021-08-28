@@ -207,6 +207,30 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: "inventory-pocket.png",
   },
+/* Removed by Tannhauser-Gate
+  vagina: {
+    displayName: "vagina",
+    gridSpot: getGridSpotKey([5, 1]),
+    image: "inventory-pocket.png",
+  },
+
+  anus: {
+    displayName: "anus",
+    gridSpot: getGridSpotKey([5, 2]),
+    image: "inventory-pocket.png",
+  },
+
+  nipples: {
+    displayName: "nipples",
+    gridSpot: getGridSpotKey([5, 3]),
+    image: "inventory-pocket.png",
+  },
+
+  penis: {
+    displayName: "penis",
+    gridSpot: getGridSpotKey([5, 4]),
+    image: "inventory-pocket.png",
+  }, */
 };
 
 enum ObscuringLevel {
