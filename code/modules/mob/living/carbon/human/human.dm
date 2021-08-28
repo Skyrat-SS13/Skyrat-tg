@@ -111,6 +111,8 @@
 		if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD) && !HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 			return
 		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
+		var/datum/data/record/MED = find_record("name", perpname, GLOB.data_core.medical)
+		var/datum/data/record/SEC = find_record("name", perpname, GLOB.data_core.security)
 		if(href_list["photo_front"] || href_list["photo_side"])
 			if(!R)
 				return
@@ -207,6 +209,10 @@
 					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
+			if(href_list["medrecords"])
+				to_chat(usr, "<b>Medical Record:</b> [MED.fields["past_records"]]")
+			if(href_list["genrecords"])
+				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]")
 			return //Medical HUD ends here.
 
 		if(href_list["hud"] == "s")
@@ -253,7 +259,7 @@
 					sec_hud_set_security_status()
 				return
 
-			if(href_list["view"])
+			if(href_list["viewsec"])
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
@@ -268,7 +274,15 @@
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
+				to_chat(usr, "<b>Security Record:</b> [SEC.fields["past_records"]]")
 				return
+
+			if(href_list["genrecords"])
+				if(!H.canUseHUD())
+					return
+				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
+					return
+				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]")
 
 			if(href_list["add_citation"])
 				var/maxFine = CONFIG_GET(number/maxfine)

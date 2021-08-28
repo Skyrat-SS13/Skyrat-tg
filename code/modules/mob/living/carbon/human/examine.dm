@@ -429,6 +429,8 @@
 			if(R)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1'>\[See quirks\]</a>"
+			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
+			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>"
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
@@ -440,11 +442,13 @@
 					criminal = R.fields["criminal"]
 
 				. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>"
-				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View\]</a>",
+				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;viewsec=1'>\[View security records\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_citation=1'>\[Add citation\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a>",
 					"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
+
+				. += jointext(list("<span class='deptradio'>General record:</span> <a href='?src=[REF(src)];hud=s;genrecords=1'>\[View general records\]</a>"), "")
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
