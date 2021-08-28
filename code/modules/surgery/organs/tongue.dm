@@ -262,6 +262,7 @@
 		else
 			. += span_notice("It is attuned to [mothership].")
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /obj/item/organ/tongue/abductor/handle_speech(datum/source, list/speech_args)
 	//Hacks
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -280,6 +281,7 @@
 		to_chat(dead_mob, "[link] [rendered]")
 
 	speech_args[SPEECH_MESSAGE] = ""
+*/
 
 /obj/item/organ/tongue/zombie
 	name = "rotting tongue"
