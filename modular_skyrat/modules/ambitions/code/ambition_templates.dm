@@ -87,7 +87,7 @@
 	name = "Mind Control Victim"
 	narrative = "My head.... <groans> It keeps hurting, can't think straight... Gotta get a grip. They've done something to me, I know it, it was supposed to just be another medical checkup but somethings wrong, I don't feel like I'm myself anymore."
 	objectives = list("Find out about the station's secret experiments, the documents hidden in the vault might have information on them.", "It happened after I went in for an appointment, perhaps interrogating the CMO will get me more information!", "They used some weird chamber on me, if I can get my hands on some of the disks they use to store technology perhaps I can expose them!", "I need to stay hidden though, they'll never believe me, or worse they'll sedate me and put me back in!")
-	tips = list("The workers, they probably don't know much about this so I should avoid harming them...", "The heads will likely be tough to crack but I know they're hiding it from me, sometimes you have to use force to get what you need", "There might be others like me, I should try to contact them.")
+	tips = list("The workers, they probably don't know much about this so I should avoid harming them...", "The heads will likely be tough to crack, but I know they're hiding it from me, sometimes you have to use force to get what you need.", "There might be others like me, I should try to contact them.")
 	
 /datum/ambition_template/yarrharr
 	name = "Lone Pirate"
