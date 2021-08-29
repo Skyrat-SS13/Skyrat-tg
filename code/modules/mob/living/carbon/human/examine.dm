@@ -487,7 +487,9 @@
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	if(is_special_character(user)/* && (!skipface)*/) //TODO: maybe make this only work with certain antags, like traitors/lings, but not xenos/ashies. maybe add PDA functionality
+	//networked in this context means a person who would feasibly be able to get blackmail material
+	var/isNetworkedAntag = user.mind.special_role == (ROLE_TRAITOR || ROLE_BROTHER || ROLE_OPERATIVE || ROLE_CHANGELING || ROLE_OBSESSED || ROLE_MALF || ROLE_NINJA || ROLE_HERETIC || ROLE_NUCLEAR_OPERATIVE || ROLE_CLOWN_OPERATIVE || ROLE_LONE_OPERATIVE || ROLE_WIZARD) //TODO: dear god this is spaghetti, if i knew how to fix this i would
+	if((is_special_character(user) && isNetworkedAntag)  && (!skipface)) //TODO: maybe add PDA functionality
 		. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>" //SKYRAT EDIT END
 
 		//RP RECORDS FOR OBSERVERS

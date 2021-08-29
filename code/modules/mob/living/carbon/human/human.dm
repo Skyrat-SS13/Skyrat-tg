@@ -278,10 +278,10 @@
 				return
 
 			if(href_list["genrecords"])
-/*				if(!H.canUseHUD())
+				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
-					return */
+					return
 				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]") //SKYRAT EDIT END
 
 			if(href_list["add_citation"])
