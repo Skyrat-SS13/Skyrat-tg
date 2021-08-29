@@ -113,7 +113,7 @@
 /obj/item/hypospray/mkii/attackby(obj/item/used_item, mob/living/user)
 	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial) && vial != null))
 		if(!quickload)
-			to_chat(user, "<span class='warning'>[src] can not hold more than one vial!</span>")
+			to_chat(user, span_warning("[src] can not hold more than one vial!"))
 			return FALSE
 		else
 			insert_vial(used_item, user, vial)
@@ -165,7 +165,7 @@
 	if(iscarbon(injectee))
 		var/obj/item/bodypart/affecting = injectee.get_bodypart(check_zone(user.zone_selected))
 		if(!affecting)
-			to_chat(user, "<span class='warning'>The limb is missing!</span>")
+			to_chat(user, span_warning("The limb is missing!"))
 			return
 	//Always log attemped injections for admins
 	var/contained = vial.reagents.log_list()
@@ -181,16 +181,16 @@
 	var/fp_verb = mode == HYPO_SPRAY ? "spray" : "inject"
 
 	if(injectee != user)
-		injectee.visible_message("<span class='danger'>[user] is trying to [fp_verb] [injectee] with [src]!</span>", \
-						"<span class='userdanger'>[user] is trying to [fp_verb] you with [src]!</span>")
+		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!</span>"), \
+						span_userdanger("is trying to [fp_verb] you with [src]!"))
 	if(!do_mob(user, injectee, inject_wait, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, FALSE, user.zone_selected, penetrates)))
 		return
 	if(!vial.reagents.total_volume)
 		return
 	log_attack("<font color='red'>[user.name] ([user.ckey]) applied [src] to [injectee.name] ([injectee.ckey]), which had [contained] (COMBAT MODE: [uppertext(user.combat_mode)]) (MODE: [mode])</font>")
 	if(injectee != user)
-		injectee.visible_message("<span class='danger'>[user] uses the [src] on [injectee]!</span>", \
-						"<span class='userdanger'>[user] uses the [src] on you!</span>")
+		injectee.visible_message(span_danger("[user] uses the [src] on [injectee]!</span>"), \
+						span_userdanger("[user] uses the [src] on you!"))
 	else
 		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", INDIVIDUAL_ATTACK_LOG)
 
