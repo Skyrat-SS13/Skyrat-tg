@@ -282,7 +282,8 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]") //SKYRAT EDIT END
+				var/datum/data/record/GEN = find_record("name", perpname, GLOB.data_core.general)
+				to_chat(usr, "<b>General Record:</b> [GEN.fields["past_records"]]") //SKYRAT EDIT END
 
 			if(href_list["add_citation"])
 				var/maxFine = CONFIG_GET(number/maxfine)
@@ -381,6 +382,7 @@
 		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.locked)
 		if(href_list["exprecords"])
 			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exp_records"]]") //TODO: add message that explains why you cant see exploitables if someone is a unknown
+//SKYRAT EDIT END
 
 /mob/living/carbon/human/proc/canUseHUD()
 	return (mobility_flags & MOBILITY_USE)
