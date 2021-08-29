@@ -32,7 +32,17 @@
 		"Virology" = /obj/machinery/door/airlock/virology,
 //SKYRAT EDIT ADDITION//
 		"Standard" = /obj/machinery/door/airlock,
-		"Corporate" = /obj/machinery/door/airlock/corporate
+		"Corporate" = /obj/machinery/door/airlock/corporate,
+		"Bathroom" = /obj/machinery/door/airlock/bathroom,
+		"Psychologist" = /obj/machinery/door/airlock/psych,
+		"Asylum" = /obj/machinery/door/airlock/asylum,
+		"Captain" = /obj/machinery/door/airlock/captain,
+		"Head of Personnel" = /obj/machinery/door/airlock/hop,
+		"Head of Security" = /obj/machinery/door/airlock/hos,
+		"Chief Medical Officer" = /obj/machinery/door/airlock/cmo,
+		"Chief Engineer" = /obj/machinery/door/airlock/ce,
+		"Research Director" = /obj/machinery/door/airlock/rd,
+		"Quartermaster" = /obj/machinery/door/airlock/qm
 //SKYRAT EDIT ADDITION END
 	)
 
