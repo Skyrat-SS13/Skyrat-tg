@@ -4,19 +4,19 @@
 	icon_screen = "alert:0"
 	icon_keyboard = "atmos_key"
 	circuit = /obj/item/circuitboard/computer/stationalert
-	///Listens for alarms, provides the alarms list for our ui
-	var/datum/alarm_listener/listener
-
 	light_color = LIGHT_COLOR_CYAN
+	/// Station alert datum for showing alerts UI
+	var/datum/station_alert/alert_control
 
 /obj/machinery/computer/station_alert/Initialize()
-	listener = new(list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER), list(z))
+	alert_control = new(src, list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER), list(z), title = name)
 	return ..()
 
 /obj/machinery/computer/station_alert/Destroy()
-	QDEL_NULL(listener)
+	QDEL_NULL(alert_control)
 	return ..()
 
+<<<<<<< HEAD
 /obj/machinery/computer/station_alert/ui_interact(mob/user, datum/tgui/ui)
 	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
 	if(clicksound && world.time > next_clicksound && isliving(user))
@@ -39,16 +39,24 @@
 			data["alarms"][alarm_type] += area_name
 
 	return data
+=======
+/obj/machinery/computer/station_alert/ui_interact(mob/user)
+	alert_control.ui_interact(user)
+>>>>>>> ccfa0fba7d7 (tgui: Silicon Station Alerts (#61070))
 
 /obj/machinery/computer/station_alert/on_set_machine_stat(old_value)
 	if(machine_stat & BROKEN)
-		listener.prevent_alarm_changes()
+		alert_control.listener.prevent_alarm_changes()
 	else
-		listener.allow_alarm_changes()
+		alert_control.listener.allow_alarm_changes()
 
 /obj/machinery/computer/station_alert/update_overlays()
 	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
+<<<<<<< HEAD
 	if(listener && length(listener.alarms)) //skyrat edit: fix createanddestroy
+=======
+	if(length(alert_control.listener.alarms))
+>>>>>>> ccfa0fba7d7 (tgui: Silicon Station Alerts (#61070))
 		. += "alert:2"
