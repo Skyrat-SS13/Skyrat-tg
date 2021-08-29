@@ -92,7 +92,7 @@
 /datum/ambition_template/yarrharr
 	name = "Lone Pirate"
 	narrative = "I've made it in, my maties are watching and supplying me with gear. The vault, the pearl of the station, just waiting for someone to walk in and take it's treasure. But it's not just riches I'm after, the leaders of this ship have been tyrannical and I think it's time for some justice at sea."
-	objectives = list("Plan a raid on the vault and steal all the valuables inside, the golden belt especially will be a fine trophy.", "Capture a head of staff, maybe even the captain, and have the crew decide their faith, if they have been kind to their peope they will receive mercy.", "Escape alive and with your stolen goods.")
+	objectives = list("Plan a raid on the vault and steal all the valuables inside, the golden belt especially will be a fine trophy.", "Capture a head of staff, maybe even the captain, and have the crew decide their fate, if they have been kind to their peope they will receive mercy.", "Escape alive and with your stolen goods.")
 	tips = list("While the valuables are for me the justice is not, I'm here to enforce the will of the crew and whatever they decide will be the outcome")
 	
 /datum/ambition_template/cyberterror
