@@ -185,6 +185,7 @@
 		/obj/item/stack/medical,
 		/obj/item/sensor_device,
 		/obj/item/storage/pill_bottle,
+		/obj/item/gun/energy/medigun, //SKYRAT EDIT MEDIGUNS
 	)
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 40, RAD = 0, FIRE = 10, ACID = 20)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/medical
