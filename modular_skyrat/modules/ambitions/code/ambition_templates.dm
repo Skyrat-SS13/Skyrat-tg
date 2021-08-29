@@ -28,7 +28,7 @@
 /datum/ambition_template/data_theft
 	name = "Data Theft"
 	narrative = "You have been selected out of Donk. Co's leagues of potential sleeper operatives for one particular task."
-	objectives = list("Steal the Blackbox.", "steal at least 20 technology nodes from the research division.", "Escape on the emergency shuttle alive and out of custody.")
+	objectives = list("Steal the Blackbox.", "Steal at least 20 technology nodes from the research division.", "Escape on the emergency shuttle alive and out of custody.")
 	tips = list("You should add an objective on how you plan to go about this task.", "The Blackbox is located in Telecomms on most Stations.", "The Blackbox doesn't fit in most bags. You'd need a bag of holding to hide it!", "To steal technology we'll have to print a disk from science and sneak our way to a research console and download nodes on the disk!")
 	antag_whitelist = list("Traitor")
 
