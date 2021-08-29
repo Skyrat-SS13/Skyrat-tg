@@ -5,6 +5,5 @@
 	icon_state = "lounge"
 	sound_environment = SOUND_ENVIRONMENT_PADDED_CELL
 
-/area/service/chapel/main/monastery
-	name = "Monastary"
+/area/service/chapel/monastery
 	sound_environment = SOUND_ENVIRONMENT_PADDED_CELL
