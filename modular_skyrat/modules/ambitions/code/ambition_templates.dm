@@ -103,7 +103,7 @@
 	
 /datum/ambition_template/stampman
 	name = "Stamp Collector"
-	narrative = "Stamps, such an underappreciated art! Did you ever stop to take a closer look at one before marking a piece of paper with it? If you did you'd notice all the intricate details that go into them, the beautiful sculpted pieces soaked in the ink... All left to gather dust in the offices of those moronic heads. I think it's time for someone with more appreciation for the art to take care of them!"
+	narrative = "Stamps, such an underappreciated art! Did you ever stop to take a closer look at one before marking a piece of paper with it? If you did, you'd notice all the intricate details that go into them, the beautiful sculpted pieces soaked in the ink... All left to gather dust in the offices of those moronic heads. I think it's time for someone with more appreciation for the art to take care of them!"
 	objectives = list("Break into the office of every head of staff and steal their stamp, they will be fine additions to my collection!", "Leave signs and messages so that they may know the stamp man is coming!", "Try to keep a low profile and avoid open combat, cleanup costs are immense.")
 	tips = list("Getting in is the easy part, an airlock authenticator, perhaps some jaws of lie should do the trick!", "Sure, we could go about it silently but where's the fun in that? A bit of gloating always makes things more interesting.")
 	
