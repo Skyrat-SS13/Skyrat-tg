@@ -247,6 +247,14 @@
 		if(!mind.has_antag_datum(/datum/antagonist/cortical_borer))
 			mind.add_antag_datum(/datum/antagonist/cortical_borer)
 
+/mob/living/simple_animal/cortical_borer/Destroy()
+	human_host = null
+	GLOB.cortical_borers -= src
+	if(mind)
+		mind.remove_all_antag_datums()
+	QDEL_NULL(reagent_holder)
+	return ..()
+
 /mob/living/simple_animal/cortical_borer/death(gibbed)
 	if(inside_human())
 		var/turf/human_turf = get_turf(human_host)
