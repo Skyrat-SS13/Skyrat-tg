@@ -328,6 +328,10 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["features"] = H.dna.features
 		L.fields["image"] = image
 		L.fields["mindref"] = H.mind
+		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD BEGIN - EXAMINE RECORDS
+			L.fields["exp_records"] = C.prefs.exploitable_info //TODO: i think C.prefs.general_record might force you to have gen records
+		else
+			L.fields["exp_records"] = "" // SKYRAT EDIT END
 		locked += L
 	return
 

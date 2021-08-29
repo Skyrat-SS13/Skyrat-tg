@@ -111,8 +111,8 @@
 		if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD) && !HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 			return
 		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
-		var/datum/data/record/MED = find_record("name", perpname, GLOB.data_core.medical)
-		var/datum/data/record/SEC = find_record("name", perpname, GLOB.data_core.security)
+		var/datum/data/record/MED = find_record("name", perpname, GLOB.data_core.medical) //SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+		var/datum/data/record/SEC = find_record("name", perpname, GLOB.data_core.security)//SKYRAT EDIT ADDITION END
 		if(href_list["photo_front"] || href_list["photo_side"])
 			if(!R)
 				return
@@ -209,10 +209,10 @@
 					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
-			if(href_list["medrecords"])
+			if(href_list["medrecords"]) //SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 				to_chat(usr, "<b>Medical Record:</b> [MED.fields["past_records"]]")
 			if(href_list["genrecords"])
-				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]")
+				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]") //SKYRAT EDIT END
 			return //Medical HUD ends here.
 
 		if(href_list["hud"] == "s")
@@ -259,7 +259,7 @@
 					sec_hud_set_security_status()
 				return
 
-			if(href_list["viewsec"])
+			if(href_list["viewsec"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
@@ -274,15 +274,15 @@
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-				to_chat(usr, "<b>Security Record:</b> [SEC.fields["past_records"]]")
+				to_chat(usr, "<b>Security Record:</b> [SEC.fields["past_records"]]") //SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 				return
 
 			if(href_list["genrecords"])
-				if(!H.canUseHUD())
+/*				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
-					return
-				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]")
+					return */
+				to_chat(usr, "<b>General Record:</b> [R.fields["past_records"]]") //SKYRAT EDIT END
 
 			if(href_list["add_citation"])
 				var/maxFine = CONFIG_GET(number/maxfine)
@@ -375,6 +375,12 @@
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
 
+	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
+	if (is_special_character(usr))
+		var/perpname = get_face_name(get_id_name(""))
+		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.locked)
+		if(href_list["exprecords"])
+			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exp_records"]]") //TODO: add message that explains why you cant see exploitables if someone is a unknown
 
 /mob/living/carbon/human/proc/canUseHUD()
 	return (mobility_flags & MOBILITY_USE)
