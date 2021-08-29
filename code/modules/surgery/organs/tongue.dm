@@ -20,10 +20,7 @@
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
-		/datum/language/skrell, //SKYRAT EDIT - I forgot to push the commit!!
 		/datum/language/narsie,
-		/datum/language/machine, //SKYRAT EDIT - Gives synths the abiltiy to speak EAL
-		/datum/language/slime, //SKYRAT EDIT - Gives slimes the ability to speak slime once more.
 		/datum/language/beachbum,
 		/datum/language/aphasia,
 		/datum/language/piratespeak,
@@ -31,16 +28,7 @@
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
-		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
-		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
-		/datum/language/nekomimetic,
-		/datum/language/russian,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
-		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
-		/datum/language/japanese // SKYRAT EDIT - customization - extra languages
+		/datum/language/nekomimetic
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -92,9 +80,7 @@
 	var/static/regex/lizard_hiss = new("s+", "g")
 	var/static/regex/lizard_hiSS = new("S+", "g")
 	var/static/regex/lizard_kss = new(@"(\w)x", "g")
-	/* // SKYRAT EDIT: REMOVAL
 	var/static/regex/lizard_kSS = new(@"(\w)X", "g")
-	*/
 	var/static/regex/lizard_ecks = new(@"\bx([\-|r|R]|\b)", "g")
 	var/static/regex/lizard_eckS = new(@"\bX([\-|r|R]|\b)", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -102,11 +88,17 @@
 		message = lizard_hiss.Replace(message, "sss")
 		message = lizard_hiSS.Replace(message, "SSS")
 		message = lizard_kss.Replace(message, "$1kss")
-		/* // SKYRAT EDIT: REMOVAL
 		message = lizard_kSS.Replace(message, "$1KSS")
-		*/
 		message = lizard_ecks.Replace(message, "ecks$1")
 		message = lizard_eckS.Replace(message, "ECKS$1")
+	//russian adaptation ahead
+		var/static/regex/lizard_hiss_ru = new("с+", "g")
+		var/static/regex/lizard_hiSS_ru = new("С+", "g")
+		message = lizard_hiss_ru.Replace(message, "ссс")
+		message = lizard_hiSS_ru.Replace(message, "ССС")
+		message = replacetext(message, "ж", "ш")
+		message = replacetext(message, "Ж", "Ш")
+	//russian adaptation end
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/lizard/silver
@@ -222,6 +214,14 @@
 		message = fly_buZZ.Replace(message, "ZZZ")
 		message = replacetext(message, "s", "z")
 		message = replacetext(message, "S", "Z")
+	//russian adaptation ahead
+		var/static/regex/fly_buzz_ru = new("з+", "g")
+		var/static/regex/fly_buZZ_ru = new("З+", "g")
+		message = fly_buzz_ru.Replace(message, "ззз")
+		message = fly_buZZ_ru.Replace(message, "ЗЗЗ")
+		message = replacetext(message, "с", "з")
+		message = replacetext(message, "С", "З")
+	//russian adaptation end
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly/Initialize(mapload)
@@ -267,7 +267,7 @@
 	var/message = speech_args[SPEECH_MESSAGE]
 	var/mob/living/carbon/human/user = source
 	var/rendered = span_abductor("<b>[user.real_name]:</b> [message]")
-	user.log_talk(message, LOG_SAY, tag="abductor")
+	user.log_talk(message, LOG_SAY, tag=SPECIES_ABDUCTOR)
 	for(var/mob/living/carbon/human/living_mob in GLOB.alive_mob_list)
 		var/obj/item/organ/tongue/abductor/tongue = living_mob.getorganslot(ORGAN_SLOT_TONGUE)
 		if(!istype(tongue))
