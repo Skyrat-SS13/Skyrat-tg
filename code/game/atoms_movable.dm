@@ -792,6 +792,9 @@
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
 		return TRUE
 
+	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //SKYRAT EDIT: allow walking when vines are around
+		return TRUE
+
 	return FALSE
 
 
