@@ -58,11 +58,24 @@
 /obj/item/hypospray/mkii/Initialize()
 	. = ..()
 	if(!spawnwithvial)
-		update_icon()
+		update_appearance()
 		return
 	if(start_vial)
 		vial = new start_vial
-	update_icon()
+		update_appearance()
+
+/obj/item/hypospray/mkii/update_overlays()
+	. = ..()
+	if(!vial)
+		return
+	if(!vial.reagents.total_volume)
+		return
+	var/vial_spritetype = "chem-color"
+	if(/obj/item/reagent_containers/glass/bottle/vial/large in allowed_containers)
+		vial_spritetype += "-cmo"
+	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
+	chem_loaded.color = vial.chem_color
+	. += chem_loaded
 
 /obj/item/hypospray/mkii/ComponentInitialize()
 	. = ..()
