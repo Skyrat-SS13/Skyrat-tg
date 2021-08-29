@@ -97,7 +97,7 @@
 	
 /datum/ambition_template/cyberterror
 	name = "Cyber Terrorist"
-	narative = "<%Uplink connection established, welcome #Agent#%> We have detected multiple ways to weaken the station through their artificial units, you will be tasked with manipulating the cybernetic elements of the station to greatly hinder it's productivity and teach them a lesson about over-reliance on technology!"
+	narrative = "<%Uplink connection established, welcome #Agent#%> We have detected multiple ways to weaken the station through their artificial units, you will be tasked with manipulating the cybernetic elements of the station to greatly hinder it's productivity and teach them a lesson about over-reliance on technology!"
 	objectives = list("Sabotage the camera feed of the station, make it hard for them to see.", "Hack APCs in strategic locations, this way we can disable their machinery and lights as we see fit.", "Acquire the authentication code for telecommunications and use it to monitor or delete messages, perhaps we can acquire more information or aid another agent this way.", "Our gear allows us to subvert the station borgs, they will be of great use to us.")
 	tips = list("A multitool can be used to mess with the focus of the camera, it also won't trigger it's alert system.", "With a bit of experimentation and some signallers we can remotely turn off power in areas via their APCs", "The ability to read all messages is quite powerful, shame that the Chief Engineer did not bother to hide the paper with the password in his office!")
 	
