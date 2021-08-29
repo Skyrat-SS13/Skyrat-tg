@@ -329,7 +329,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["image"] = image
 		L.fields["mindref"] = H.mind
 		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD BEGIN - EXAMINE RECORDS
-			L.fields["exp_records"] = C.prefs.exploitable_info //TODO: i think C.prefs.general_record might force you to have gen records
+			L.fields["exp_records"] = C.prefs.exploitable_info //TODO: somebody with less coding anxiety please add a field that stores C.prefs.background_info
 		else
 			L.fields["exp_records"] = "" // SKYRAT EDIT END
 		locked += L
