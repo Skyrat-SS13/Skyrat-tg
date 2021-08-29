@@ -143,6 +143,7 @@
 	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
 
 	COOLDOWN_DECLARE(help_grow)
+	COOLDOWN_DECLARE(attack_cooldown)
 
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
@@ -270,6 +271,9 @@
 		else
 			attacked_spacevine.grow()
 			to_chat(src, span_notice("You help [attacked_spacevine] grow..."))
+	if(!COOLDOWN_FINISHED(src, attack_cooldown))
+		return
+	COOLDOWN_START(src, attack_cooldown, 1 SECONDS)
 	var/turf/vine_turf = get_turf(attack_target)
 	var/static/list/break_list = typecacheof(list(
 		/obj/machinery/door,
