@@ -429,8 +429,10 @@
 			if(R)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1'>\[See quirks\]</a>"
-			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>" //SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>" //SKYRAT EDIT END
+			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
+			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>"
+			//SKYRAT EDIT END
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
