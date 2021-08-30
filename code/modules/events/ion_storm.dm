@@ -1,7 +1,7 @@
 /datum/round_event_control/ion_storm
 	name = "Ion Storm"
 	typepath = /datum/round_event/ion_storm
-	weight = 30 // SKYRAT EDIT - ORIGINAL 15
+	weight = 15
 	min_players = 2
 
 /datum/round_event/ion_storm
