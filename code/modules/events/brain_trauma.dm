@@ -2,7 +2,6 @@
 	name = "Spontaneous Brain Trauma"
 	typepath = /datum/round_event/brain_trauma
 	weight = 25
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
 
 /datum/round_event/brain_trauma
 	fakeable = FALSE
@@ -23,10 +22,9 @@
 
 /datum/round_event/brain_trauma/proc/traumatize(mob/living/carbon/human/H)
 	var/resistance = pick(
-		50;TRAUMA_RESILIENCE_BASIC,
+		55;TRAUMA_RESILIENCE_BASIC,
 		30;TRAUMA_RESILIENCE_SURGERY,
-		15;TRAUMA_RESILIENCE_LOBOTOMY,
-		5;TRAUMA_RESILIENCE_MAGIC)
+		15;TRAUMA_RESILIENCE_LOBOTOMY) // SKYRAT EDIT -- FORCED PERMANENT TRAUMAS AREN'T FUN, ORIGINAL HAD 50;TRAUMA_RESILIENCE_BASIC, 5;TRAUMA_RESILIENCE_MAGIC.
 
 	var/trauma_type = pickweight(list(
 		BRAIN_TRAUMA_MILD = 60,
