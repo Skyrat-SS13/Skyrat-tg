@@ -14,11 +14,20 @@
 	var/cmo_case = FALSE
 
 //Code to give hypospray kits selectable paterns.
+/obj/item/storage/hypospraykit/examine(mob/living/user)
+	. = ..()
+	. += span_notice("Ctrl-Shift-Click to reskin this")
 
 /obj/item/storage/hypospraykit/Initialize()
-	..()
+	. = ..()
 	if(!length(case_designs))
 		populate_case_designs()
+	var/datum/component/storage/stored = GetComponent(/datum/component/storage)
+	stored.max_items = 12
+	stored.can_hold = typecacheof(list(
+		/obj/item/hypospray/mkii,
+		/obj/item/reagent_containers/glass/bottle/vial
+	))
 	update_icon_state()
 	update_icon()
 
@@ -63,15 +72,6 @@
 	case_menu(user)
 
 //END OF HYPOSPRAY CASE MENU CODE
-
-/obj/item/storage/hypospraykit/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/stored = GetComponent(/datum/component/storage)
-	stored.max_items = 12
-	stored.can_hold = typecacheof(list(
-	/obj/item/hypospray/mkii,
-	/obj/item/reagent_containers/glass/bottle/vial))
-
 
 /obj/item/storage/hypospraykit/empty
 	desc = "A hypospray kit with general use vials."
