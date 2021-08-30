@@ -661,6 +661,7 @@
 	var/mutativeness = 1
 
 /datum/spacevine_controller/New(turf/location, list/muts, potency, production, datum/round_event/event = null)
+	SSshuttle.registerHostileEnvironment(src, NOSHUTTLE_BIOHAZARD)
 	vines = list()
 	growth_queue = list()
 	var/obj/structure/spacevine/spawned_vine = spawn_spacevine_piece(location, null, muts)
@@ -689,6 +690,7 @@
 	QDEL_LIST(vines) //this will also qdel us
 
 /datum/spacevine_controller/Destroy()
+	SSshuttle.clearHostileEnvironment(src)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
