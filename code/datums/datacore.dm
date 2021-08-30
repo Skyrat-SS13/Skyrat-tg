@@ -334,6 +334,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		else
 			L.fields["exp_records"] = ""
 		// SKYRAT EDIT END
+		locked += L
+	return
 
 /datum/datacore/proc/get_id_photo(mob/living/carbon/human/H, client/C, show_directions = list(SOUTH))
 	var/datum/job/J = H.mind.assigned_role
