@@ -8,7 +8,6 @@
 		mind = new /datum/mind(key)
 		mind.active = TRUE
 		mind.set_current(src)
-	my_client = client //SKYRAT EDIT ADDITION
 
 	. = ..()
 	if(!. || !client)
@@ -41,10 +40,7 @@
 			register_for_interview()
 			return
 
-	show_titlescreen() //SKYRAT EDIT CHANGE - GANDALF FIX THIS!!!
-	/* SKYRAT EDIT REMOVAL
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
 		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
-		*/
 

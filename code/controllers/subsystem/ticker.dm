@@ -158,7 +158,6 @@ SUBSYSTEM_DEF(ticker)
 				discord_alerted = TRUE
 				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role pingcurrent_state = GAME_STATE_PREGAME
 			current_state = GAME_STATE_PREGAME
-			change_lobbyscreen() //SKYRAT EDIT ADDITION
 			//Everyone who wants to be an observer is now spawned
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 			fire()
@@ -343,11 +342,9 @@ SUBSYSTEM_DEF(ticker)
 			GLOB.joined_player_list += player.ckey
 			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
 			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
-				player.show_titlescreen() //SKYRAT EDIT CHANGE - GANDALF FIX THIS!!!
 				continue
 			player.create_character(destination)
-		else
-			player.show_titlescreen() //SKYRAT EDIT ADDITION - GANDALF FIX THIS!!!
+
 		CHECK_TICK
 
 /datum/controller/subsystem/ticker/proc/collect_minds()
