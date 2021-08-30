@@ -1,8 +1,12 @@
+/datum/controller/subsystem/shuttle/
+	var/hostileEnvironmentTypes = list()
+
 /datum/controller/subsystem/shuttle/proc/registerHostileEnvironment(datum/bad, reason)
 	hostileEnvironments[bad] = TRUE
-	checkHostileEnvironment(reason)
+	hostileEnvironmentTypes += reason
+	checkHostileEnvironment()
 
-/datum/controller/subsystem/shuttle/proc/checkHostileEnvironment(reason)
+/datum/controller/subsystem/shuttle/proc/checkHostileEnvironment()
 	for(var/datum/d in hostileEnvironments)
 		if(!istype(d) || QDELETED(d))
 			hostileEnvironments -= d
@@ -12,19 +16,19 @@
 		emergency.mode = SHUTTLE_STRANDED
 		emergency.timer = null
 		emergency.sound_played = FALSE
-		switch(reason)
+		switch(hostileEnvironmentTypes[1])
 			if(NOSHUTTLE_BIOHAZARD)
 				priority_announce("Severe Biohazard detected. \
 					[GLOB.station_name] is under indefinite quarantine \
-					pending biohazard cleanse.", null, 'sound/misc/notice1.ogg', "Priority")
+					pending biohazard cleanse.", "Station Quarantine", 'sound/misc/notice1.ogg', "Priority")
 			if(NOSHUTTLE_DELTA)
 				priority_announce("Station destruction imminent. \
 					All hands of [GLOB.station_name] are expected to prevent \
-					station destruction before leaving.", "Delta Alert Lockdown", 'sound/misc/notice1.ogg', "Priority")
+					station destruction before leaving.", "Destruction Imminent", 'sound/misc/notice1.ogg', "Priority")
 			if(NOSHUTTLE_REVS)
 				priority_announce("Armed 'revolution' detected. \
 					All hands of [GLOB.station_name] are expected to suppress \
-					violent terrorists before leaving.", "NT Anti-Terror Lockdown", 'sound/misc/notice1.ogg', "Priority")
+					violent terrorists before leaving.", "NT Anti-Terror Announcement", 'sound/misc/notice1.ogg', "Priority")
 			if(NOSHUTTLE_GANG)
 				priority_announce("Emergency shuttle under lockdown \
 					on order of Sol Federal Police. Please comply with \
