@@ -11,6 +11,7 @@
 	var/initialized = FALSE //to prevent personalities deleting themselves while we wait for ghosts
 	var/mob/living/split_personality/stranger_backseat //there's two so they can swap without overwriting
 	var/mob/living/split_personality/owner_backseat
+	random_gain = FALSE // SKYRAT EDIT ADD -- FUCK SPLIT PERSONALITY
 
 /datum/brain_trauma/severe/split_personality/on_gain()
 	var/mob/living/M = owner
