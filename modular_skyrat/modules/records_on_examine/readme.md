@@ -25,8 +25,7 @@ acquired by examining. Added a field for exploitables in the locked record secti
 
 ### Master file additions
 
-- N/A
-<!-- Any master file changes you've made to existing master files or if you've added a new master file. Please mark either as #NEW or #CHANGE -->
+- N/A (i dont know what a master file is, and yes, i did ask)
 
 ### Included files that are not contained in this module:
 
