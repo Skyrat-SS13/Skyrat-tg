@@ -488,8 +488,9 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 	//networked in this context means a person who would feasibly be able to get blackmail material
-	var/isNetworkedAntag = user.mind.special_role == (ROLE_TRAITOR || ROLE_REVENANT || ROLE_BROTHER || ROLE_OPERATIVE || ROLE_CHANGELING || ROLE_OBSESSED || ROLE_MALF || ROLE_NINJA || ROLE_HERETIC || ROLE_NUCLEAR_OPERATIVE || ROLE_CLOWN_OPERATIVE || ROLE_LONE_OPERATIVE || ROLE_WIZARD) //TODO: dear god this is spaghetti, if i knew how to fix this i would
-	if((is_special_character(user) && isNetworkedAntag)  && (!skipface)) //TODO: maybe add PDA functionality
+	var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.locked)
+//	var/isNetworkedAntag = user.mind.special_role == (ROLE_TRAITOR || ROLE_REVENANT || ROLE_BROTHER || ROLE_OPERATIVE || ROLE_CHANGELING || ROLE_OBSESSED || ROLE_MALF || ROLE_NINJA || ROLE_HERETIC || ROLE_NUCLEAR_OPERATIVE || ROLE_CLOWN_OPERATIVE || ROLE_LONE_OPERATIVE || ROLE_WIZARD) //TODO: doesnt work. most antags dont even give you this var.
+	if((is_special_character(user) /*&& isNetworkedAntag*/)  && (R)) //TODO: maybe add PDA functionality
 		. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>" //SKYRAT EDIT END
 
 		//RP RECORDS FOR OBSERVERS
