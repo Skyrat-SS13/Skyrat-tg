@@ -429,8 +429,10 @@
 			if(R)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1'>\[See quirks\]</a>"
-			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>" //SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>" //SKYRAT EDIT END
+			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
+			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>"
+			//SKYRAT EDIT END
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
@@ -487,11 +489,11 @@
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	//networked in this context means a person who would feasibly be able to get blackmail material
-	var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.locked)
-//	var/isNetworkedAntag = user.mind.special_role == (ROLE_TRAITOR || ROLE_REVENANT || ROLE_BROTHER || ROLE_OPERATIVE || ROLE_CHANGELING || ROLE_OBSESSED || ROLE_MALF || ROLE_NINJA || ROLE_HERETIC || ROLE_NUCLEAR_OPERATIVE || ROLE_CLOWN_OPERATIVE || ROLE_LONE_OPERATIVE || ROLE_WIZARD) //TODO: doesnt work. most antags dont even give you this var.
-	if((is_special_character(user) /*&& isNetworkedAntag*/)  && (R)) //TODO: maybe add PDA functionality
-		. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>" //SKYRAT EDIT END
+	var/datum/data/record/isonrecord = find_record("name", perpname, GLOB.data_core.general) //i dont know of a better way to do this-it doesnt work on off-station roles. i think. it might. i hope it does.
+	if ((is_special_character(user)) && isonrecord)
+		. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+
+	//SKYRAT EDIT END
 
 		//RP RECORDS FOR OBSERVERS
 	if(client && user.client.holder && isobserver(user))

@@ -328,12 +328,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["features"] = H.dna.features
 		L.fields["image"] = image
 		L.fields["mindref"] = H.mind
-		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD BEGIN - EXAMINE RECORDS
+		// SKYRAT EDIT ADD BEGIN - EXAMINE RECORDS
+		if(C && C.prefs && C.prefs.general_record)
 			L.fields["exp_records"] = C.prefs.exploitable_info //TODO: somebody with less coding anxiety please add a field that stores C.prefs.background_info
 		else
-			L.fields["exp_records"] = "" // SKYRAT EDIT END
-		locked += L
-	return
+			L.fields["exp_records"] = ""
+		// SKYRAT EDIT END
 
 /datum/datacore/proc/get_id_photo(mob/living/carbon/human/H, client/C, show_directions = list(SOUTH))
 	var/datum/job/J = H.mind.assigned_role
