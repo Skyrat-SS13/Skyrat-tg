@@ -28,8 +28,8 @@
 
 /atom/movable/screen/lobby/button/server_swap
 	icon = 'modular_skyrat/master_files/icons/hud/lobby/bottom_buttons.dmi'
-	icon_state = "serverswap"
-	base_icon_state = "serverswap"
+	icon_state = "server_swap"
+	base_icon_state = "server_swap"
 	screen_loc = "TOP:-122,CENTER:-26"
 
 /atom/movable/screen/lobby/button/server_swap/Click(location, control, params)
