@@ -29,7 +29,7 @@
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
-	var/list/possible_spawn_areas = typecacheof(typesof(/area/maintenance, /area/security/prison, /area/construction))
+	var/list/possible_spawn_areas = typecacheof(typesof(/area/maintenance, /area/construction))
 
 	for(var/area/A in world)
 		if(!is_station_level(A.z))
