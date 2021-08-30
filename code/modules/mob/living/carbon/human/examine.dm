@@ -490,7 +490,6 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 	var/datum/data/record/isinworld = find_record("name", perpname, GLOB.data_core.locked) //i dont know of a better way to do this-it doesnt work on off-station roles. please fix this someone better at coding.
-//	var/list/antagtypecache = (/datum/antagonist/heretic/, /datum/antagonist/traitor/, /datum/antagonist/ninja/, /datum/antagonist/brother/, /datum/antagonist/changeling/, /datum/antagonist/malf_ai/, /datum/antagonist/revenant/, /datum/antagonist/wizard/)
 	if ((is_special_character(user)) && isinworld && (user.mind.has_antag_datum(/datum/antagonist/heretic/)) || (user.mind.has_antag_datum(/datum/antagonist/traitor/)) || (user.mind.has_antag_datum(/datum/antagonist/ninja/)) || (user.mind.has_antag_datum(/datum/antagonist/brother/)) || (user.mind.has_antag_datum(/datum/antagonist/changeling/)) || (user.mind.has_antag_datum(/datum/antagonist/malf_ai/)) || (user.mind.has_antag_datum(/datum/antagonist/revenant/)) || (user.mind.has_antag_datum(/datum/antagonist/wizard/))) //this is fucking terrible. i am so sorry. TODO: fix whatever the fuck this is
 		. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
 	//SKYRAT EDIT END
