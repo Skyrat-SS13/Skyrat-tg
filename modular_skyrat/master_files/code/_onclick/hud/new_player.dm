@@ -12,7 +12,7 @@
 	new_player.client.prefs.be_antag = !new_player.client.prefs.be_antag
 	base_icon_state = "be_antag_[new_player.client.prefs.be_antag ? "on" : "off"]"
 	update_appearance(UPDATE_ICON)
-	to_chat(new_player, "<span class='notice'>You will now [new_player.client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
+	to_chat(new_player, span_notice("You will now [new_player.client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences."))
 
 /atom/movable/screen/lobby/button/server_swap
 	icon = 'modular_skyrat/master_files/icons/hud/lobby/bottom_buttons.dmi'
