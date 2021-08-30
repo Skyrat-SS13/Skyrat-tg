@@ -14,18 +14,6 @@
 	update_appearance(UPDATE_ICON)
 	to_chat(new_player, "<span class='notice'>You will now [new_player.client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences.</span>")
 
-/atom/movable/screen/lobby/button/antag_toggle/Initialize(mapload)
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_PREGAME)
-		set_button_status(FALSE)
-	else
-		RegisterSignal(SSticker, COMSIG_TICKER_ENTER_SETTING_UP, .proc/hide_ready_button)
-
-/atom/movable/screen/lobby/button/antag_toggle/proc/hide_ready_button()
-	SIGNAL_HANDLER
-	set_button_status(FALSE)
-	UnregisterSignal(SSticker, COMSIG_TICKER_ENTER_SETTING_UP)
-
 /atom/movable/screen/lobby/button/server_swap
 	icon = 'modular_skyrat/master_files/icons/hud/lobby/bottom_buttons.dmi'
 	icon_state = "server_swap"
