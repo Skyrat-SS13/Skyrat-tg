@@ -1,7 +1,7 @@
 /datum/round_event_control/apc_failure
 	name = "APC Failure"
 	typepath = /datum/round_event/apc_failure
-	weight = 50
+	weight = 20
 	max_occurrences = 5 // want this to be rare, so as to not piss off engies
 	alert_observers = FALSE
 
