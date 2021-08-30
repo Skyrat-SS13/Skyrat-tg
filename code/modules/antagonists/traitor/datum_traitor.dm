@@ -50,6 +50,12 @@
 
 /datum/antagonist/traitor/on_gain()
 	owner.special_role = job_rank
+
+	if(give_uplink)
+		owner.give_uplink(silent = TRUE, antag_datum = src)
+
+	uplink = owner.find_syndicate_uplink()
+
 	if(give_objectives)
 		forge_traitor_objectives()
 		forge_ending_objective()
@@ -60,6 +66,7 @@
 
 	traitor_flavor = strings(TRAITOR_FLAVOR_FILE, employer)
 
+<<<<<<< HEAD
 	/*
 	SKYRAT EDIT START - AMBITIONS
 	if(give_uplink)
@@ -69,6 +76,8 @@
 	SKYRAT EDIT END - AMBITIONS
 	*/
 
+=======
+>>>>>>> 77aac1a518f (Objective-specific equipment will always be given. (#60789))
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
 	return ..()
