@@ -236,7 +236,7 @@
 ///security level and shuttle lockdowns for [/proc/begin_the_end()]
 /proc/narsie_start_destroy_station()
 	set_security_level("gamma") //SKYRAT EDIT CHANGE - ALERTS - ORIGINAL "delta"
-	SSshuttle.registerHostileEnvironment(GLOB.cult_narsie)
+	SSshuttle.registerHostileEnvironment(GLOB.cult_narsie, NOSHUTTLE_NARSIE) // SKYRAT EDIT -- added arg "NOSHUTTLE_NARSIE"
 	SSshuttle.lockdown = TRUE
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/narsie_apocalypse), 1 MINUTES)
 

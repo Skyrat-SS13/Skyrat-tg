@@ -456,7 +456,7 @@
 	if(revolution.members.len)
 		revolution.update_objectives()
 		revolution.update_heads()
-		SSshuttle.registerHostileEnvironment(revolution)
+		SSshuttle.registerHostileEnvironment(revolution, NOSHUTTLE_REVS) //SKYRAT EDIT ADD -- ADDED ARG "NOSHUTTLE_REVS"
 		return TRUE
 	log_game("DYNAMIC: [ruletype] [name] failed to get any eligible headrevs. Refunding [cost] threat.")
 	return FALSE

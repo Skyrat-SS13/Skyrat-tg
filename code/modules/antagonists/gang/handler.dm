@@ -220,7 +220,7 @@ GLOBAL_VAR_INIT(deaths_during_shift, 0)
 		// see /datum/antagonist/gang/create_team() for how the gang team datum gets instantiated and added to our gangs list
 
 	addtimer(CALLBACK(src, .proc/announce_gang_locations), 5 MINUTES)
-	SSshuttle.registerHostileEnvironment(src)
+	SSshuttle.registerHostileEnvironment(src, NOSHUTTLE_GANG) //SKYRAT EDIT ADD -- ADDED ARG "NOSHUTTLE_GANG"
 	return TRUE
 
 /**

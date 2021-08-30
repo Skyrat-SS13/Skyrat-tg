@@ -103,7 +103,7 @@
 	revolution.update_objectives()
 	revolution.update_heads()
 
-	SSshuttle.registerHostileEnvironment(src)
+	SSshuttle.registerHostileEnvironment(src, NOSHUTTLE_REVS) //SKYRAT EDIT ADD -- ADDED ARG "NOSHUTTLE_REVS"
 	..()
 
 

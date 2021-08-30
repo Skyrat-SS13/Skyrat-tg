@@ -380,10 +380,10 @@ SUBSYSTEM_DEF(shuttle)
 			emergency.request(null, set_coefficient = 2.5)
 			log_shuttle("There is no means of calling the emergency shuttle anymore. Shuttle automatically called.")
 			message_admins("All the communications consoles were destroyed and all AIs are inactive. Shuttle called.")
-
+/* SKYRAT EDIT -- MOVED TO MASTER FILES
 /datum/controller/subsystem/shuttle/proc/registerHostileEnvironment(datum/bad)
 	hostileEnvironments[bad] = TRUE
-	checkHostileEnvironment()
+	checkHostileEnvironment() */ // SKYAT EDIT ADD END
 
 /datum/controller/subsystem/shuttle/proc/clearHostileEnvironment(datum/bad)
 	hostileEnvironments -= bad
@@ -412,7 +412,7 @@ SUBSYSTEM_DEF(shuttle)
 	if(!supplyBlocked && (supply.mode == SHUTTLE_STRANDED))
 		supply.mode = SHUTTLE_DOCKED
 		//Make all cargo consoles speak up
-
+/* SKYRAT EDIT -- MOVED TO MASTER FILES
 /datum/controller/subsystem/shuttle/proc/checkHostileEnvironment()
 	for(var/datum/d in hostileEnvironments)
 		if(!istype(d) || QDELETED(d))
@@ -431,7 +431,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.setTimer(emergencyDockTime)
 		priority_announce("Hostile environment resolved. \
 			You have 3 minutes to board the Emergency Shuttle.",
-			null, ANNOUNCER_SHUTTLEDOCK, "Priority")
+			null, ANNOUNCER_SHUTTLEDOCK, "Priority") */ // SKYRAT EDIT ADD END
 
 //try to move/request to dockHome if possible, otherwise dockAway. Mainly used for admin buttons
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)

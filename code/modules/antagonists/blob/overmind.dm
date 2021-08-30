@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	color = blobstrain.complementary_color
 	if(blob_core)
 		blob_core.update_appearance()
-	SSshuttle.registerHostileEnvironment(src)
+	SSshuttle.registerHostileEnvironment(src, NOSHUTTLE_BIOHAZARD) // SKYRAT EDIT ADD -- ADDED ARG "NOSHUTTLE_BIOHAZARD"
 	. = ..()
 	START_PROCESSING(SSobj, src)
 

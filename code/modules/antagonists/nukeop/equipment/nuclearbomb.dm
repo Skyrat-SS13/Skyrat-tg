@@ -492,7 +492,7 @@ GLOBAL_VAR(station_nuke_source)
 		off_station = NUKE_MISS_STATION
 
 	if(off_station < NUKE_MISS_STATION)
-		SSshuttle.registerHostileEnvironment(src)
+		SSshuttle.registerHostileEnvironment(src, NOSHUTTLE_DELTA) //SKYRAT EDIT -- ADDED ARG "NOSHUTTLE_DELTA"
 		SSshuttle.lockdown = TRUE
 
 	KillEveryoneOnZLevel(z) //SKYRAT EDIT ADDITION

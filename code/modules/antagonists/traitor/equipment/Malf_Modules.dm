@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	timing = TRUE
 	countdown.start()
 	START_PROCESSING(SSfastprocess, src)
-	SSshuttle.registerHostileEnvironment(src)
+	SSshuttle.registerHostileEnvironment(src, NOSHUTTLE_DELTA) //SKYRAT EDIT, ADDED ARG "NOSHUTTLE_DELTA"
 	SSmapping.add_nuke_threat(src) //This causes all blue "circuit" tiles on the map to change to animated red icon state.
 	for(var/mob/living/silicon/robot/borg in owner.connected_robots)
 		borg.lamp_doom = TRUE
