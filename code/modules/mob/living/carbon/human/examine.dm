@@ -489,10 +489,9 @@
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	var/datum/data/record/isonrecord = find_record("name", perpname, GLOB.data_core.general) //i dont know of a better way to do this-it doesnt work on off-station roles. i think. it might. i hope it does.
-	if ((is_special_character(user)) && isonrecord)
+	var/datum/data/record/isinworld = find_record("name", perpname, GLOB.data_core.locked) //i dont know of a better way to do this-it doesnt work on off-station roles. i think. it might. i hope it does.
+	if ((is_special_character(user)) && isinworld)
 		. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
-
 	//SKYRAT EDIT END
 
 		//RP RECORDS FOR OBSERVERS
