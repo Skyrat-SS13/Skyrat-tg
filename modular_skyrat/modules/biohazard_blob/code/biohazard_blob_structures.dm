@@ -80,7 +80,6 @@
 	update_overlays()
 
 /obj/structure/biohazard_blob/structure/core/Destroy()
-	SSshuttle.clearHostileEnvironment(src)
 	if(our_controller)
 		our_controller.our_core = null
 	soundloop.stop()
