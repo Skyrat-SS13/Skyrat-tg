@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/7859
 
 ## Title: Enables sec/med huds to view records on examine, as well as antagonists being able to view exploitables.
 
