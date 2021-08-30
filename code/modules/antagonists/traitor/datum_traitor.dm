@@ -116,13 +116,8 @@
 	// for(in...to) loops iterate inclusively, so to reach objective_limit we need to loop to objective_limit - 1
 	// This does not give them 1 fewer objectives than intended.
 	for(var/i in objective_count to objective_limit - 1)
-<<<<<<< HEAD
-		objectives += forge_single_generic_objective()
-	*/
-=======
 		forge_single_generic_objective()
->>>>>>> 7cb4bb59f99 ( Greentexting as a traitor hardcore random now gives you hardcore random points (#60957))
-
+	*/
 
 /**
  * ## forge_ending_objective
