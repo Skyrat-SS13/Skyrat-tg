@@ -7,9 +7,9 @@
 	checkHostileEnvironment()
 
 /datum/controller/subsystem/shuttle/proc/checkHostileEnvironment()
-	for(var/datum/d in hostileEnvironments)
-		if(!istype(d) || QDELETED(d))
-			hostileEnvironments -= d
+	for(var/datum/environment in hostileEnvironments)
+		if(!istype(environment) || QDELETED(environment))
+			hostileEnvironments -= environment
 	emergencyNoEscape = hostileEnvironments.len
 
 	if(emergencyNoEscape && (emergency.mode == SHUTTLE_IGNITING))
