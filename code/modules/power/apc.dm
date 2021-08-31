@@ -499,12 +499,12 @@
 						return
 					else if (obj_flags & EMAGGED)
 						obj_flags &= ~EMAGGED
-						user.visible_message(span_notice("[user.name] discards an emagged power control board from [src.name]!"),\
-							span_notice("You discard the emagged power control board."))
+						user.visible_message(span_notice("[user.name] discards a fried power control board from [src.name]!"),\ // SKYRAT EDIT -- PLAUSIBLE DENIABILITY (emagged/hacked APCs don't reveal their cause)
+							span_notice("You discard the fried power control board."))
 						return
 					else if (malfhack)
-						user.visible_message(span_notice("[user.name] discards a strangely programmed power control board from [src.name]!"),\
-							span_notice("You discard the strangely programmed board."))
+						user.visible_message(span_notice("[user.name] discards a fried power control board from [src.name]!"),\
+							span_notice("You discard the fried programmed board.")) // SKYRAT EDIT END
 						malfai = null
 						malfhack = 0
 						return
