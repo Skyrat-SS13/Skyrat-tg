@@ -43,7 +43,7 @@
 		return
 
 	REMOVE_TRAIT(user, TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION)
-		user.alpha = 255
+	user.alpha = 255
 	to_chat(user, text("Your skin shifts as it shimmers back into its' original colors."))
 
 /datum/mutation/human/chameleon/on_life(delta_time, times_fired)
