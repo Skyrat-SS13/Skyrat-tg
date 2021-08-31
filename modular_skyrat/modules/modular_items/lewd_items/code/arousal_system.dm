@@ -624,110 +624,77 @@
 	pleasure_overlay = update_pleasure()
 
 /atom/movable/screen/alert/aroused_X/proc/update_pain()
-	if(pain_level == "small")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pain_small")
-	if(pain_level == "medium")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pain_medium")
-	if(pain_level == "high")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pain_high")
-	if(pain_level == "max")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pain_max")
+	if(pain_level)
+		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pain_[pain_level]")
 
 /atom/movable/screen/alert/aroused_X/proc/update_pleasure()
-	if(pleasure_level == "small")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pleasure_small")
-	if(pleasure_level == "medium")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pleasure_medium")
-	if(pleasure_level == "high")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pleasure_high")
-	if(pleasure_level == "max")
-		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pleasure_max")
+	if(pleasure_level)
+		return mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_icons.dmi', "pleasure_[pleasure_level]")
 
-/datum/species/proc/handle_arousal(mob/living/carbon/human/H, atom/movable/screen/alert/aroused_X)
-	var/atom/movable/screen/alert/aroused_X/I = H.alerts["aroused"]
-	if(H.client?.prefs.sextoys_pref == "Yes")
-		switch(H.arousal)
+/datum/species/proc/throw_arousalalert(level, atom/movable/screen/alert/aroused_X/arousal_alert, mob/living/carbon/human/targeted_human)
+	targeted_human.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
+	arousal_alert?.icon_state = level
+	arousal_alert?.update_icon()
+
+/datum/species/proc/overlay_pain(level, atom/movable/screen/alert/aroused_X/arousal_alert)
+	arousal_alert?.cut_overlay(arousal_alert.pain_overlay)
+	arousal_alert?.pain_level = level
+	arousal_alert?.pain_overlay = arousal_alert.update_pain()
+	arousal_alert?.add_overlay(arousal_alert.pain_overlay)
+	arousal_alert?.update_overlays()
+
+/datum/species/proc/overlay_pleasure(level, atom/movable/screen/alert/aroused_X/arousal_alert)
+	arousal_alert?.cut_overlay(arousal_alert.pleasure_overlay)
+	arousal_alert?.pleasure_level = level
+	arousal_alert?.pleasure_overlay = arousal_alert.update_pleasure()
+	arousal_alert?.add_overlay(arousal_alert.pleasure_overlay)
+	arousal_alert?.update_overlays()
+
+/datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused_X)
+	var/atom/movable/screen/alert/aroused_X/arousal_alert = target_human.alerts["aroused"]
+	if(target_human.client?.prefs.sextoys_pref == "Yes")
+		switch(target_human.arousal)
 			if(-100 to 1)
-				H.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
+				target_human.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
 			if(1 to 25)
-				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I?.icon_state = "arousal_small"
-				I?.update_icon()
+				throw_arousalalert("arousal_small", arousal_alert, target_human)
 			if(25 to 50)
-				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I?.icon_state = "arousal_medium"
-				I?.update_icon()
+				throw_arousalalert("arousal_medium", arousal_alert, target_human)
 			if(50 to 75)
-				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I?.icon_state = "arousal_high"
-				I?.update_icon()
+				throw_arousalalert("arousal_high", arousal_alert, target_human)
 			if(75 to INFINITY) //to prevent that 101 arousal that can make icon disappear or something.
-				H.throw_alert("aroused", /atom/movable/screen/alert/aroused_X)
-				I?.icon_state = "arousal_max"
-				I?.update_icon()
+				throw_arousalalert("arousal_max", arousal_alert, target_human)
 
-		if(H.arousal > 1)
-			switch(H.pain)
+		if(target_human.arousal > 1)
+			switch(target_human.pain)
 				if(-100 to 1) //to prevent same thing with pain
-					I?.cut_overlay(I.pain_overlay)
+					arousal_alert?.cut_overlay(arousal_alert.pain_overlay)
 				if(1 to 25)
-					I?.cut_overlay(I.pain_overlay)
-					I?.pain_level = "small"
-					I?.pain_overlay = I.update_pain()
-					I?.add_overlay(I.pain_overlay)
-					I?.update_overlays()
+					overlay_pain("small", arousal_alert)
 				if(25 to 50)
-					I?.cut_overlay(I.pain_overlay)
-					I?.pain_level = "medium"
-					I?.pain_overlay = I.update_pain()
-					I?.add_overlay(I.pain_overlay)
-					I?.update_overlays()
+					overlay_pain("medium", arousal_alert)
 				if(50 to 75)
-					I?.cut_overlay(I.pain_overlay)
-					I?.pain_level = "high"
-					I?.pain_overlay = I.update_pain()
-					I?.add_overlay(I.pain_overlay)
-					I?.update_overlays()
+					overlay_pain("high", arousal_alert)
 				if(75 to INFINITY)
-					I?.cut_overlay(I.pain_overlay)
-					I?.pain_level = "max"
-					I?.pain_overlay = I.update_pain()
-					I?.add_overlay(I.pain_overlay)
-					I?.update_overlays()
+					overlay_pain("max", arousal_alert)
 
-		if(H.arousal > 1)
-			switch(H.pleasure)
+		if(target_human.arousal > 1)
+			switch(target_human.pleasure)
 				if(-100 to 1) //to prevent same thing with pleasure
-					I?.cut_overlay(I.pleasure_overlay)
+					arousal_alert?.cut_overlay(arousal_alert.pleasure_overlay)
 				if(1 to 25)
-					I?.cut_overlay(I.pleasure_overlay)
-					I?.pleasure_level = "small"
-					I?.pleasure_overlay = I.update_pleasure()
-					I?.add_overlay(I.pleasure_overlay)
-					I?.update_overlays()
+					overlay_pleasure("small", arousal_alert)
 				if(25 to 60)
-					I?.cut_overlay(I.pleasure_overlay)
-					I?.pleasure_level = "medium"
-					I?.pleasure_overlay = I.update_pleasure()
-					I?.add_overlay(I.pleasure_overlay)
-					I?.update_overlays()
+					overlay_pleasure("medium", arousal_alert)
 				if(60 to 85)
-					I?.cut_overlay(I.pleasure_overlay)
-					I?.pleasure_level = "high"
-					I?.pleasure_overlay = I.update_pleasure()
-					I?.add_overlay(I.pleasure_overlay)
-					I?.update_overlays()
+					overlay_pleasure("high", arousal_alert)
 				if(85 to INFINITY)
-					I?.cut_overlay(I.pleasure_overlay)
-					I?.pleasure_level = "max"
-					I?.pleasure_overlay = I.update_pleasure()
-					I?.add_overlay(I.pleasure_overlay)
-					I?.update_overlays()
+					overlay_pleasure("max", arousal_alert)
 		else
-			if(I?.pleasure_level in list("small", "medium", "high", "max"))
-				I.cut_overlay(I.pleasure_overlay)
-			if(I?.pain_level in list("small", "medium", "high", "max"))
-				I.cut_overlay(I.pain_overlay)
+			if(arousal_alert?.pleasure_level in list("small", "medium", "high", "max"))
+				arousal_alert.cut_overlay(arousal_alert.pleasure_overlay)
+			if(arousal_alert?.pain_level in list("small", "medium", "high", "max"))
+				arousal_alert.cut_overlay(arousal_alert.pain_overlay)
 
 ////////////////////////
 ///CUM.DM ASSIMILATED///
