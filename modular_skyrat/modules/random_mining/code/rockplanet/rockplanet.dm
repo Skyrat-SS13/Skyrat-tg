@@ -7,18 +7,21 @@
 	mob_spawn_chance = 3
 
 	mob_spawn_list = list(
-		/mob/living/simple_animal/hostile/asteroid/goliath = 20,
-		/mob/living/simple_animal/hostile/asteroid/fugu = 30,
-		/mob/living/simple_animal/hostile/asteroid/basilisk = 40,
-		/mob/living/simple_animal/hostile/asteroid/hivelord = 20,	//TODO: hivelord reskin, weaver & mimics from Prey
-		/*/mob/living/simple_animal/hostile/lost_husk = 50, ----- NYI*/
-		/*/mob/living/simple_animal/hostile/slider = 15 ----- NYI, will teleport randomly*/
+		/mob/living/simple_animal/hostile/asteroid/goliath = 20,/*Change?*/
+		/mob/living/simple_animal/hostile/asteroid/fugu = 30,/*Change?*/
+		/mob/living/simple_animal/hostile/asteroid/basilisk = 40,/*Change?*/
+		/mob/living/simple_animal/hostile/asteroid/hivelord/LV669_weaver = 20,	/*NYFI hivelord reskin, weaver & mimics from Prey*/
+		/*/mob/living/simple_animal/hostile/zombie/LV669_lost = 50, /*NYI*/*/
+		/mob/living/simple_animal/hostile/LV669_slider= 15, /*NYFI, will teleport randomly*/
 		SPAWN_MEGAFAUNA = 3,
 		/mob/living/simple_animal/hostile/asteroid/goldgrub = 10
 		)
 	flora_spawn_list = list(
-		/*/obj/structure/flora/rock/jungle = 2,
-		/obj/structure/flora/junglebush = 2, ----- CHANGE TO BE NOT JUNGLE*/
+		/obj/effect/decal/cleanable/ash/cig_trash = 2,
+		/obj/effect/decal/cleanable/wood_trash = 2,
+		/obj/effect/decal/cleanable/brick_rubble = 3,
+		/obj/structure/flora/rock/jungle = 2,
+		/obj/structure/fluff/abandoned/tire = 1,
 		/obj/structure/flora/ash/rockplanet/coyote = 2,
 		/obj/structure/flora/ash/rockplanet/yucca = 2,
 		/obj/structure/flora/ash/rockplanet/agaricus = 2,
