@@ -8,9 +8,11 @@
 /area/centcom
 	name = "CentCom"
 	icon_state = "centcom"
+	/* SKYRAT EDIT REMOVAL
 	static_lighting = FALSE
 	base_lighting_color = COLOR_WHITE
 	base_lighting_alpha = 255
+	*/
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
 	area_flags = UNIQUE_AREA | NOTELEPORT
