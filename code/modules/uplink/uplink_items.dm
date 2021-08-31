@@ -1008,7 +1008,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A box that contains five EMP grenades and an EMP implant with three uses. Useful to disrupt communications, \
 			security's energy weapons and silicon lifeforms when you're in a tight spot."
 	item = /obj/item/storage/box/syndie_kit/emp
-	cost = 4 // SKYRAT EDIT - ORIGINAL: 2 - IPCs and synth players are more common here, I'd say this should be raised a bit.
+	cost = 2
 
 /datum/uplink_item/explosives/virus_grenade
 	name = "Fungal Tuberculosis Grenade"
