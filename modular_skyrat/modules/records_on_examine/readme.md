@@ -7,7 +7,7 @@ MODULE ID: records_on_examine
 ### Description:
 
 This PR allows med/sec huds to view medical/security records on examine, respectively, as well as allowing you to view general records. It
-also allows antags to view exploitables on examine as well.
+also allows certain antags to view exploitables on examine as well.
 
 Originally I planned to add a PDA program to allow all crew to view general 
 records, and a OOC verb to allow antags to view exploitables of the entire crew, as well as a way for background info to be seen, however
@@ -25,7 +25,7 @@ acquired by examining. Added a field for exploitables in the locked record secti
 
 ### Master file additions
 
-- N/A (i dont know what a master file is, and yes, i did ask)
+- code/modules/antagonists/_common/antag_datum.dm
 
 ### Included files that are not contained in this module:
 
