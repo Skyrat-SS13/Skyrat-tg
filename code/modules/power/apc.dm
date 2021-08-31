@@ -499,7 +499,7 @@
 						return
 					else if (obj_flags & EMAGGED)
 						obj_flags &= ~EMAGGED
-						user.visible_message(span_notice("[user.name] discards a fried power control board from [src.name]!"),\ // SKYRAT EDIT -- PLAUSIBLE DENIABILITY (emagged/hacked APCs don't reveal their cause)
+						user.visible_message(span_notice("[user.name] discards a fried power control board from [src.name]!"),\// SKYRAT EDIT -- PLAUSIBLE DENIABILITY (emagged/hacked APCs don't reveal their cause)
 							span_notice("You discard the fried power control board."))
 						return
 					else if (malfhack)
