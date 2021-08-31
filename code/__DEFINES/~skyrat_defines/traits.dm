@@ -34,3 +34,6 @@
 
 // felinid traits
 #define TRAIT_FELINE "feline_aspect"
+
+// chameleon mutation
+#define TRAIT_CHAMELEON_SKIN "chameleon_skin"
