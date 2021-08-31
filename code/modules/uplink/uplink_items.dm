@@ -452,7 +452,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 20 //SKYRAT EDIT CHANGE - ORIGINAL: 18 - Stupidly powerful considering traitors get 35tc now.
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
-	player_minimum = 90 //SKYRAT EDIT CHANGE - ORINGINAL:  - Again: we're always above 40 or so.
+	player_minimum = 25
 	restricted = TRUE
 
 /datum/uplink_item/dangerous/machinegun
@@ -593,7 +593,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat \
 			and gain the ability to swat bullets from the air, but you will also refuse to use dishonorable ranged weaponry."
 	item = /obj/item/book/granter/martial/carp
-	player_minimum = 90 // SKYRAT EDIT - ORIGINAL: 25
+	player_minimum = 50 // SKYRAT EDIT - ORIGINAL: 25
 	cost = 18 // SKYRAT EDIT - ORIGINAL: 13 - 35tc means you can do some way too powerful combos with this at 13tc. Raising it.
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
@@ -1503,14 +1503,18 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/sbeacondrop
 	cost = 10
 
+//SKYRAT EDIT REMOVAL BEGIN:disables powersinks
+/*
 /datum/uplink_item/device_tools/powersink
 	name = "Power Sink"
 	desc = "When screwed to wiring attached to a power grid and activated, this large device lights up and places excessive \
 			load on the grid, causing a station-wide blackout. The sink is large and cannot be stored in most \
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
-	cost = 18 //SKYRAT EDIT: Original value (10)
-	player_minimum = 80 //SKYRAT EDIT: original value 25
+	cost = 10
+	player_minimum = 25
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
