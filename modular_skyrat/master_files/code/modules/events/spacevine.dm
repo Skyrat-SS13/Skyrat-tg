@@ -661,7 +661,7 @@
 	var/mutativeness = 1
 
 /datum/spacevine_controller/New(turf/location, list/muts, potency, production, datum/round_event/event = null)
-    vines = list()
+	vines = list()
 	growth_queue = list()
 	var/obj/structure/spacevine/spawned_vine = spawn_spacevine_piece(location, null, muts)
 	if (event)
