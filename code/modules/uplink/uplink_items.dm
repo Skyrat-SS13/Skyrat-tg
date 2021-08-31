@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A dusty SUPER-SIZED from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
 			but you never know. Contents are sorted to always be worth 125 TC."
 	cost = 50 //SKYRAT EDIT CHANGE - ORIGINAL: 40
-	player_minimum = 40
+	player_minimum = 80 //SKYRAT EDIT CHANGE - ORIGINAL: 40 - We never have less than 50 people.
 	starting_crate_value = 145 //SKYRAT EDIT CHANGE - ORIGINAL: 125
 
 /datum/uplink_item/bundles_tc/surplus/purchase(mob/user, datum/component/uplink/U)
@@ -449,10 +449,10 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
 			organic host as a home base and source of fuel. Holoparasites come in various types and share damage with their host."
 	item = /obj/item/storage/box/syndie_kit/guardian
-	cost = 18
+	cost = 20 //SKYRAT EDIT CHANGE - ORIGINAL: 18 - Stupidly powerful considering traitors get 35tc now.
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
-	player_minimum = 25
+	player_minimum = 90 //SKYRAT EDIT CHANGE - ORINGINAL:  - Again: we're always above 40 or so.
 	restricted = TRUE
 
 /datum/uplink_item/dangerous/machinegun
@@ -593,8 +593,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat \
 			and gain the ability to swat bullets from the air, but you will also refuse to use dishonorable ranged weaponry."
 	item = /obj/item/book/granter/martial/carp
-	player_minimum = 25
-	cost = 13
+	player_minimum = 90 // SKYRAT EDIT - ORIGINAL: 25
+	cost = 18 // SKYRAT EDIT - ORIGINAL: 13 - 35tc means you can do some way too powerful combos with this at 13tc. Raising it.
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
@@ -1008,7 +1008,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A box that contains five EMP grenades and an EMP implant with three uses. Useful to disrupt communications, \
 			security's energy weapons and silicon lifeforms when you're in a tight spot."
 	item = /obj/item/storage/box/syndie_kit/emp
-	cost = 2
+	cost = 4 // SKYRAT EDIT - ORIGINAL: 2 - IPCs and synth players are more common here, I'd say this should be raised a bit.
 
 /datum/uplink_item/explosives/virus_grenade
 	name = "Fungal Tuberculosis Grenade"
@@ -1053,7 +1053,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			The bomb core can be pried out and manually detonated with other explosives."
 	item = /obj/item/sbeacondrop/bomb
 	//cost = 11 //ORIGINAL
-	cost = 18 //SKYRAT EDIT CHANGE
+	cost = 21 //SKYRAT EDIT CHANGE - Raised from 18 to 21 - make traitors less likely to use these every single round and put more thought into their actions.
 	cant_discount = TRUE //SKYRAT EDIT ADDITION
 
 /datum/uplink_item/explosives/syndicate_bomb/emp
@@ -1467,7 +1467,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A disk containing the procedure to perform a brainwashing surgery, allowing you to implant an objective onto a target. \
 	Insert into an Operating Console to enable the procedure."
 	item = /obj/item/disk/surgery/brainwashing
-	cost = 9
+	cost = 5
 //SKYRAT EDIT END
 
 //SKYRAT EDIT REMOVAL BEGIN - Remove Hypnostuff
@@ -1510,7 +1510,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
 	cost = 18 //SKYRAT EDIT: Original value (10)
-	player_minimum = 25
+	player_minimum = 80 //SKYRAT EDIT: original value 25
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
@@ -1587,8 +1587,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A potion recovered at great risk by undercover Syndicate operatives and then subsequently modified with Syndicate technology. \
 			Using it will make any animal sentient, and bound to serve you, as well as implanting an internal radio for communication and an internal ID card for opening doors."
 	cost = 4
-	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
-	restricted = TRUE
+	//purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS - SKYRAT EDIT: lets traitors buy this too.
 
 //SKYRAT EDIT REMOVAL BEGIN
 /*
@@ -1620,7 +1619,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "CNS Rebooter Implant"
 	desc = "This implant will help you get back up on your feet faster after being stunned. Comes with an autosurgeon."
 	item = /obj/item/autosurgeon/organ/syndicate/anti_stun
-	cost = 12
+	cost = 8 // Skyrat edit - ORIGINAL: 12 - Honestly it isn't that good anymore, no point being 12tc.
 	surplus = 0
 	purchasable_from = UPLINK_NUKE_OPS
 
