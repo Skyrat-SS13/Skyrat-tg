@@ -27,24 +27,24 @@
 	RegisterSignal(owner, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, .proc/on_attack_hand)
 
 /obj/effect/proc_holder/spell/self/chameleon_skin_activate/cast(list/targets, mob/user = usr)
-    . = ..()
+	. = ..()
 
-    if(HAS_TRAIT(user,TRAIT_CHAMELEON_SKIN))
-        chameleon_skin_deactivate(user)
-        return
+	if(HAS_TRAIT(user,TRAIT_CHAMELEON_SKIN))
+		chameleon_skin_deactivate(user)
+		return
 
-    ADD_TRAIT(user, TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION)
-    to_chat(user, text("The pigmentation of your skin shifts and starts to take on the colors of your surroundings."))
+	ADD_TRAIT(user, TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION)
+	to_chat(user, text("The pigmentation of your skin shifts and starts to take on the colors of your surroundings."))
 
 /obj/effect/proc_holder/spell/self/chameleon_skin_activate/proc/chameleon_skin_deactivate(mob/user = usr)
 
 
-    if(!HAS_TRAIT_FROM(user,TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION))
-        return
+	if(!HAS_TRAIT_FROM(user,TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION))
+		return
 
-    REMOVE_TRAIT(user, TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION)
-        user.alpha = 255
-    to_chat(user, text("Your skin shifts as it shimmers back into its' original colors."))
+	REMOVE_TRAIT(user, TRAIT_CHAMELEON_SKIN, GENETIC_MUTATION)
+		user.alpha = 255
+	to_chat(user, text("Your skin shifts as it shimmers back into its' original colors."))
 
 /datum/mutation/human/chameleon/on_life(delta_time, times_fired)
 	if(HAS_TRAIT(owner, TRAIT_CHAMELEON_SKIN))
