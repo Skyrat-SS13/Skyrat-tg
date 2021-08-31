@@ -41,4 +41,4 @@
 	name = "\proper Upper Engineering Deck"
 
 /area/engineering/main/lower
-	name = "mproper Lower Engineering Deck"
+	name = "\proper Lower Engineering Deck"
