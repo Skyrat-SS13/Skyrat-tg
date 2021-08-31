@@ -2,6 +2,8 @@
 	name = "Radiation Storm"
 	typepath = /datum/round_event/radiation_storm
 	max_occurrences = 1
+	weight = 5 //SKYRAT EDIT ADD
+	earliest_start = 20 MINUTES // SKYRAT EDIT ADD
 
 /datum/round_event/radiation_storm
 
