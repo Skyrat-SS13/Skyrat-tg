@@ -25,3 +25,4 @@
 				target_apc.locked = FALSE
 			target_apc.update_appearance()
 		iterations *= 2.5
+
