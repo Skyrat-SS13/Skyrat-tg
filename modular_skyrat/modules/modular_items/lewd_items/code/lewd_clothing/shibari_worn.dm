@@ -269,18 +269,18 @@
 	var/tight = "low" //can be low, medium and hard.
 
 //customization stuff
-/obj/item/clothing/under/shibari_hands/update_icon_state()
+/obj/item/clothing/gloves/shibari_hands/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
-/obj/item/clothing/under/shibari_hands/Initialize()
+/obj/item/clothing/gloves/shibari_hands/Initialize()
 	. = ..()
 	update_icon_state()
 	update_icon()
 
 //unequip stuff for adding rope to hands
-/obj/item/clothing/under/shibari_hands/attack_hand(mob/user)
+/obj/item/clothing/gloves/shibari_hands/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/C = user
 		if(src == C.gloves)
@@ -298,14 +298,14 @@
 	. = ..()
 
 //stuff to apply mood event for perverts
-/obj/item/clothing/under/shibari_hands/equipped(mob/user, slot)
+/obj/item/clothing/gloves/shibari_hands/equipped(mob/user, slot)
 	.=..()
 	var/mob/living/carbon/human/C = user
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
 		C.apply_status_effect(/datum/status_effect/ropebunny)
 
 //same stuff as above but for dropping item
-/obj/item/clothing/under/shibari_hands/dropped(mob/user, slot)
+/obj/item/clothing/gloves/shibari_hands/dropped(mob/user, slot)
 	.=..()
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
 		C.remove_status_effect(/datum/status_effect/ropebunny)
@@ -314,7 +314,7 @@
 //LEGS BONDAGE//
 ////////////////
 
-/obj/item/clothing/gloves/shibari_legs
+/obj/item/clothing/shoes/shibari_legs
 	name = "Shibari arms bondage"
 	desc = "Bondage ropes that cover arms"
 	icon_state = "shibari_legs"
@@ -332,18 +332,18 @@
 	var/tight = "low" //can be low, medium and hard.
 
 //customization stuff
-/obj/item/clothing/under/shibari_legs/update_icon_state()
+/obj/item/clothing/shoes/shibari_legs/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
-/obj/item/clothing/under/shibari_legs/Initialize()
+/obj/item/clothing/shoes/shibari_legs/Initialize()
 	. = ..()
 	update_icon_state()
 	update_icon()
 
 //unequip stuff for adding rope to hands
-/obj/item/clothing/under/shibari_legs/attack_hand(mob/user)
+/obj/item/clothing/shoes/shibari_legs/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/C = user
 		if(src == C.gloves)
@@ -361,14 +361,14 @@
 	. = ..()
 
 //stuff to apply mood event for perverts
-/obj/item/clothing/under/shibari_legs/equipped(mob/user, slot)
+/obj/item/clothing/shoes/shibari_legs/equipped(mob/user, slot)
 	.=..()
 	var/mob/living/carbon/human/C = user
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
 		C.apply_status_effect(/datum/status_effect/ropebunny)
 
 //same stuff as above but for dropping item
-/obj/item/clothing/under/shibari_legs/dropped(mob/user, slot)
+/obj/item/clothing/shoes/shibari_legs/dropped(mob/user, slot)
 	.=..()
 	var/mob/living/carbon/human/C = user
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
