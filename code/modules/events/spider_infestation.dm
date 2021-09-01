@@ -2,9 +2,8 @@
 	name = "Spider Infestation"
 	typepath = /datum/round_event/spider_infestation
 	weight = 10
-	//max_occurrences = 1 //ORIGINAL
 	max_occurrences = 0 //SKYRAT EDIT CHANGE
-	//min_players = 20 - SKYRAT EDIT - moved to modular_skyrat/master_files
+	min_players = 60 //SKYRAT EDIT - ORIGINAL: 20
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/spider_infestation
@@ -30,8 +29,9 @@
 	if(spawn_locs.len < amount)
 		message_admins("Not enough valid spawn locations found in GLOB.xeno_spawn, aborting spider spawning...")
 		return MAP_ERROR
+	var/turf/spawn_loc = pick_n_take(spawn_locs)
 	while(amount > 0)
-		var/obj/effect/mob_spawn/spider/midwife/new_eggs = new /obj/effect/mob_spawn/spider/midwife(pick_n_take(spawn_locs))
+		var/obj/effect/mob_spawn/spider/midwife/new_eggs = new /obj/effect/mob_spawn/spider/midwife(spawn_loc)
 		new_eggs.amount_grown = 98
 		amount--
 	log_game("Midwife spider eggs were spawned via an event.")

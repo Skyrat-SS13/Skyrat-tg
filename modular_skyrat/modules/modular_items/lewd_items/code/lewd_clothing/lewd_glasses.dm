@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/nice_goggles
 	name = "surprisingly nice looking goggles"
-	desc = "It seems that the inscription is engraved on the handle. Kubic. How strange"
+	desc = "It has an inscription engraved on the handle. Kubic. How strange."
 	icon_state = "nice_goggles"
 	inhand_icon_state = "nice_goggles"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_eyes.dmi'
