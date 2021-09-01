@@ -291,6 +291,13 @@ structure_check() searches for nearby cultist structures required for the invoca
 		return FALSE
 
 	var/big_sac = FALSE
+	//SKYRAT ADDITION BEGIN -- SOULSTONE_cHANGES
+	if(HAS_TRAIT(sacrificial, TRAIT_SACRIFICED))
+		for(var/M in invokers)
+			to_chat(M, span_cultitalic("This one has already been sacrificed! Find another!"))
+		log_game("Offer rune failed - tried sacrificing already sacrificed target.")
+		return FALSE
+	//SKYRAT ADDITION END
 	if((((ishuman(sacrificial) || iscyborg(sacrificial)) && sacrificial.stat != DEAD) || C.cult_team.is_sacrifice_target(sacrificial.mind)) && invokers.len < 3)
 		for(var/M in invokers)
 			to_chat(M, span_cultitalic("[sacrificial] is too greatly linked to the world! You need three acolytes!"))
@@ -331,10 +338,19 @@ structure_check() searches for nearby cultist structures required for the invoca
 		stone.invisibility = INVISIBILITY_MAXIMUM //so it's not picked up during transfer_soul()
 		stone.transfer_soul("FORCE", sacrificial, usr)
 		stone.invisibility = 0
-
+	//SKYRAT EDIT BEGIN -- SOULSTONE_CHANGES
 	if(sacrificial)
 		playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
-		sacrificial.gib()
+
+		if(iscarbon(sacrificial))
+			var/mob/living/carbon/victim = sacrificial
+			var/obj/item/bodypart/chest/victim_chest = victim.get_bodypart(BODY_ZONE_CHEST)
+			victim_chest.dismember()
+			victim.adjustFireLoss(300)
+			ADD_TRAIT(victim, TRAIT_SACRIFICED, "sacrificed")
+		else
+			sacrificial.gib()
+	//SKYRAT EDIT END
 	return TRUE
 
 
