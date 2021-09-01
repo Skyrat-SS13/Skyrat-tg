@@ -155,6 +155,7 @@
 		if(objective)
 			objective.completed = TRUE
 
+/* SKYRAT EDIT REMOVAL
 //COMMUNICATIONS CONSOLE//
 /obj/machinery/computer/communications/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
 	if(!ninja_suit || !ninja || !ninja_gloves)
@@ -180,7 +181,7 @@
 		var/datum/objective/terror_message/objective = locate() in ninja_antag.objectives
 		if(objective)
 			objective.completed = TRUE
-
+*/
 //AIRLOCK//
 /obj/machinery/door/airlock/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
 	if(!ninja_suit || !ninja || !ninja_gloves)
