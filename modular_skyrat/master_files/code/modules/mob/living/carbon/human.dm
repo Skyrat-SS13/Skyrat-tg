@@ -10,3 +10,4 @@
 	//Nailed it!
 	visible_message(span_notice("[src] lands elegantly on [p_their()] feet!"),
 		span_warning("You fall [levels] level[levels > 1 ? "s" : ""] into [T], perfecting the landing!"))
+Stun(1 SECONDS)
