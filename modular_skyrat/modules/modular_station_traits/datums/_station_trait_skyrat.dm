@@ -8,4 +8,4 @@
 
 /datum/station_trait/announcement_swanson/New()
 	. = ..()
-	SSstation.announcer = /datum/centcom_announcer/announcement_swanson
+	SSstation.announcer = /datum/centcom_announcer/swanson

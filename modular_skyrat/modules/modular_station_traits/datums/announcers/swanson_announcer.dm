@@ -42,7 +42,7 @@
 	event_sounds = list(
 		ANNOUNCER_AIMALF = 'modular_skyrat/modules/modular_station_traits/sound/swanson/events/aimalf.ogg',
 		ANNOUNCER_ALIENS = 'modular_skyrat/modules/modular_station_traits/sound/swanson/events/aliens.ogg',
-		ANNOUNCER_ANIMES = 'modular_skyrat/modules/modular_station_traits/sound/swanson/events/animes.ogg',
+		ANNOUNCER_ANIMES = 'modular_skyrat/modules/modular_station_traits/sound/swanson/events/anime.ogg',
 		ANNOUNCER_GRANOMALIES = 'modular_skyrat/modules/modular_station_traits/sound/swanson/events/granomalies.ogg',
 		ANNOUNCER_INTERCEPT = 'modular_skyrat/modules/modular_station_traits/sound/swanson/events/intercept.ogg',
 		ANNOUNCER_IONSTORM = 'modular_skyrat/modules/modular_station_traits/sound/swanson/events/ionstorm.ogg',
