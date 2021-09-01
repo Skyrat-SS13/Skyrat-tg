@@ -361,7 +361,6 @@
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
 		/obj/item/stack/tile/carpet/executive/thirty,
-		/obj/item/stack/tile/carpet/executive/thirty,
 		)
 	crate_name = "executive carpet crate"
 
