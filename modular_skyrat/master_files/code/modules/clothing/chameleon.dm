@@ -50,7 +50,7 @@
 	. = ..()
 	if(M && (M == owner))
 		if(slowtoggle)
-			slowtoggle.Grant(M)
+			slowtoggle?.Grant(M) /// SKYRAT EDIT - Fixing master (move to upstream if this works)
 
 /datum/action/item_action/chameleon/change/Remove(mob/M)
 	. = ..()
