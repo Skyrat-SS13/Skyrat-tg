@@ -12,5 +12,5 @@
 		if(msg == "")
 			temporary_flavor_text = null
 		else
-			temporary_flavor_text = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+			temporary_flavor_text = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 	return
