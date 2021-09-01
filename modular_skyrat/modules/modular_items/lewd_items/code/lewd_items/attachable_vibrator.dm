@@ -18,9 +18,9 @@
 	var/color_changed = FALSE
 	var/vibration_mode = "off"
 	var/list/modes = list("low" = "medium", "medium" = "high", "high" = "off", "off" = "low")
-	var/datum/looping_sound/vibrator_low/soundloop1
-	var/datum/looping_sound/vibrator_medium/soundloop2
-	var/datum/looping_sound/vibrator_high/soundloop3
+	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/vibrator/high/soundloop3
 	var/mode = "off"
 	var/static/list/eggvib_designs
 	w_class = WEIGHT_CLASS_TINY
@@ -157,9 +157,9 @@
 	var/vibration_mode = "low"
 	var/list/modes = list("low" = "medium", "medium" = "high", "high" = "low")
 	var/mode = "low"
-	var/datum/looping_sound/vibrator_low/soundloop1
-	var/datum/looping_sound/vibrator_medium/soundloop2
-	var/datum/looping_sound/vibrator_high/soundloop3
+	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/vibrator/high/soundloop3
 	var/static/list/signalvib_designs
 	w_class = WEIGHT_CLASS_TINY
 

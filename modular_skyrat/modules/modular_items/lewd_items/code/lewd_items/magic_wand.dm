@@ -12,9 +12,9 @@
 	var/toy_on = FALSE
 	var/vibration_mode = "off"
 	var/list/modes = list("low" = "medium", "medium" = "hard", "hard" = "off", "off" = "low")
-	var/datum/looping_sound/vibrator_low/soundloop1
-	var/datum/looping_sound/vibrator_medium/soundloop2
-	var/datum/looping_sound/vibrator_high/soundloop3
+	var/datum/looping_sound/vibrator/low/soundloop1
+	var/datum/looping_sound/vibrator/medium/soundloop2
+	var/datum/looping_sound/vibrator/high/soundloop3
 	var/mode = "off"
 	var/mutable_appearance/magicwand_overlay
 	w_class = WEIGHT_CLASS_TINY

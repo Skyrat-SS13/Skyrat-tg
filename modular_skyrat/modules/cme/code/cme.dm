@@ -15,9 +15,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /datum/round_event_control/cme
 	name = "Coronal Mass Ejection: Random"
 	typepath = /datum/round_event/cme
-	weight = 10
+	weight = 4
 	min_players = 30
-	max_occurrences = 1 // Why was this allowed to roll three times bruh
+	max_occurrences = 1
 	earliest_start = 25 MINUTES
 
 /datum/round_event/cme
@@ -37,7 +37,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /datum/round_event/cme/unknown
 	cme_intensity = CME_UNKNOWN
-	
+
 /datum/round_event_control/cme/minimal
 	name = "Coronal Mass Ejection: Minimal"
 	typepath = /datum/round_event/cme/minimal
@@ -151,7 +151,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 		intensity = pick(CME_MINIMAL, CME_MODERATE, CME_EXTREME)
 	var/area/loc_area_name = get_area(spawnpoint)
 	minor_announce("WARNING! [uppertext(intensity)] PULSE EXPECTED IN: [loc_area_name.name]", "Solar Flare Log:")
-	alert_sound_to_playing(sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 	switch(intensity)
 		if(CME_MINIMAL)
 			var/obj/effect/cme/spawnedcme = new(spawnpoint)
@@ -248,11 +247,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	explosion(src, 0, 0, 2, flame_range = 3)
-	for(var/i in GLOB.mob_list)
-		var/mob/M = i
-		if(M.client && M.z == z)
-			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme.ogg'))
-			shake_camera(M, 15, 1)
+	playsound(src,'modular_skyrat/modules/cme/sound/cme.ogg', 100)
 	qdel(src)
 
 /obj/effect/cme/armageddon/burst()
@@ -266,11 +261,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	empulse(src, pulse_range_heavy, pulse_range_light)
 	explosion(src, 0, 3, 10, flame_range = 10)
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	for(var/i in GLOB.mob_list)
-		var/mob/M = i
-		if(M.client && M.z == z)
-			SEND_SOUND(M, sound('modular_skyrat/modules/cme/sound/cme.ogg'))
-			shake_camera(M, 15, 1)
+	playsound(src,'modular_skyrat/modules/cme/sound/cme.ogg', 100)
 	qdel(src)
 
 /obj/effect/cme/singularity_pull()
@@ -279,9 +270,6 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /obj/effect/cme/proc/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
-	var/turf/open/T = get_turf(src)
-	if(istype(T))
-		T.atmos_spawn_air("o2=30;TEMP=5778")
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE

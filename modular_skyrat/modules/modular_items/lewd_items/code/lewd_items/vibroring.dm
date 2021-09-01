@@ -12,7 +12,7 @@
 	var/current_color = "pink"
 	var/color_changed = FALSE
 	var/static/list/vibroring_designs
-	var/datum/looping_sound/vibrator_medium/soundloop2
+	var/datum/looping_sound/vibrator/medium/soundloop2
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_PENIS
 	moth_edible = FALSE
