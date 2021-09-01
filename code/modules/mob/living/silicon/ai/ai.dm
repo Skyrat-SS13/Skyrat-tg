@@ -104,6 +104,7 @@
 	var/datum/alarm_listener/listener
 	///remember AI's last location
 	var/atom/lastloc
+	interaction_range = null
 
 
 
@@ -786,6 +787,7 @@
 		new_core.circuit.battery = battery
 		ai_restore_power()//So the AI initially has power.
 		control_disabled = TRUE //Can't control things remotely if you're stuck in a card!
+		interaction_range = 0
 		radio_enabled = FALSE //No talking on the built-in radio for you either!
 		forceMove(card)
 		card.AI = src
