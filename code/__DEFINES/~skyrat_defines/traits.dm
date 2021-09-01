@@ -34,3 +34,6 @@
 
 // felinid traits
 #define TRAIT_FELINE "feline_aspect"
+
+#define TRAIT_SACRIFICED "sacrificed" //Makes sure that people cant be cult sacrificed twice.
+

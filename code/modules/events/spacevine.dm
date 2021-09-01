@@ -251,7 +251,7 @@
 		GM.garbage_collect()
 
 /datum/spacevine_mutation/plasma_eater
-	name = "toxins consuming"
+	name = "plasma consuming"
 	hue = "#ffbbff"
 	severity = 3
 	quality = POSITIVE
