@@ -1,4 +1,4 @@
-/datum/language/russian
+/datum/language/neorusskya
 	name = "Neo-Russkya"
 	desc = "The official language of the Independent Colonial Confederation of Gilgamesh, originally established in 2122 by the short-lived United Slavic Confederation on Earth."
 	key = "r"

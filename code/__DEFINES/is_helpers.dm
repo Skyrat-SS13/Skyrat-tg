@@ -69,9 +69,6 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define iszombie(A) (is_species(A, /datum/species/zombie))
 #define isskeleton(A) (is_species(A, /datum/species/skeleton))
 #define ismoth(A) (is_species(A, /datum/species/moth))
-//SKYRAT add
-#define isinsect(A) (is_species(A, /datum/species/insect))
-//SKYRAT add
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
 #define isfelinid(A) (is_species(A, /datum/species/human/felinid))
 #define isethereal(A) (is_species(A, /datum/species/ethereal))
@@ -81,8 +78,6 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define isandroid(A) (is_species(A, /datum/species/android))
 
 //more carbon mobs
-
-#define iscorticalborer(A) (istype(A, /mob/living/simple_animal/cortical_borer)) //Skyrat Edit Add: Cortical Borers
 
 #define isalien(A) (istype(A, /mob/living/carbon/alien))
 
@@ -108,6 +103,9 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define isAI(A) (istype(A, /mob/living/silicon/ai))
 
 #define ispAI(A) (istype(A, /mob/living/silicon/pai))
+
+// basic mobs
+#define isbasicmob(A) (istype(A, /mob/living/basic))
 
 //Simple animals
 #define isanimal(A) (istype(A, /mob/living/simple_animal))
