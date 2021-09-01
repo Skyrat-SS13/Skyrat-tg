@@ -68,8 +68,6 @@
 	toner = tonermax
 	diag_hud_set_borgcell()
 	logevent("System brought online.")
-
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION BEGIN - Cyborg PDA
 	if(!shell)
 		aiPDA = new/obj/item/pda/ai(src)
@@ -77,18 +75,11 @@
 		aiPDA.ownjob = "Cyborg"
 		aiPDA.name = real_name + " (" + aiPDA.ownjob + ")"
 	//SKYRAT EDIT ADDITION END
-	listener = new(list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER, ALARM_CAMERA, ALARM_BURGLAR, ALARM_MOTION), list(z))
-	RegisterSignal(listener, COMSIG_ALARM_TRIGGERED, .proc/alarm_triggered)
-	RegisterSignal(listener, COMSIG_ALARM_CLEARED, .proc/alarm_cleared)
-	listener.RegisterSignal(src, COMSIG_LIVING_DEATH, /datum/alarm_listener/proc/prevent_alarm_changes)
-	listener.RegisterSignal(src, COMSIG_LIVING_REVIVE, /datum/alarm_listener/proc/allow_alarm_changes)
-=======
 	alert_control = new(src, list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER, ALARM_CAMERA, ALARM_BURGLAR, ALARM_MOTION), list(z))
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_TRIGGERED, .proc/alarm_triggered)
 	RegisterSignal(alert_control.listener, COMSIG_ALARM_CLEARED, .proc/alarm_cleared)
 	alert_control.listener.RegisterSignal(src, COMSIG_LIVING_DEATH, /datum/alarm_listener/proc/prevent_alarm_changes)
 	alert_control.listener.RegisterSignal(src, COMSIG_LIVING_REVIVE, /datum/alarm_listener/proc/allow_alarm_changes)
->>>>>>> ccfa0fba7d7 (tgui: Silicon Station Alerts (#61070))
 
 /mob/living/silicon/robot/model/syndicate/Initialize()
 	. = ..()
