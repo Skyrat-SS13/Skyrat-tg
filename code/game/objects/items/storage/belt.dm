@@ -183,6 +183,7 @@
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/surgical_drapes, //for true paramedics
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
+		/obj/item/medicell, //SKYRAT EDIT MEDIGUNS
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
 		/obj/item/bonesetter,
