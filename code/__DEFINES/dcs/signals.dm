@@ -888,6 +888,14 @@
 	///stops the bible chain from continuing. When all of the effects of the bible smacking have been moved to a signal we can kill this
 	#define COMSIG_END_BIBLE_CHAIN (1<<0)
 
+/// Admin helps
+/// From /datum/admin_help/RemoveActive().
+/// Fired when an adminhelp is made inactive either due to closing or resolving.
+#define COMSIG_ADMIN_HELP_MADE_INACTIVE "admin_help_made_inactive"
+
+/// Called when the player replies. From /client/proc/cmd_admin_pm().
+#define COMSIG_ADMIN_HELP_REPLIED "admin_help_replied"
+
 ///Closets
 ///From base of [/obj/structure/closet/proc/insert]: (atom/movable/inserted)
 #define COMSIG_CLOSET_INSERT "closet_insert"
@@ -1199,9 +1207,9 @@
 // /datum/element/movetype_handler signals
 /// Called when the floating anim has to be temporarily stopped and restarted later: (timer)
 #define COMSIG_PAUSE_FLOATING_ANIM "pause_floating_anim"
-/// From base of datum/element/movetype_handler/on_movement_type_trait_gain: (flag)
+/// From base of datum/element/movetype_handler/on_movement_type_trait_gain: (flag, old_movement_type)
 #define COMSIG_MOVETYPE_FLAG_ENABLED "movetype_flag_enabled"
-/// From base of datum/element/movetype_handler/on_movement_type_trait_loss: (flag)
+/// From base of datum/element/movetype_handler/on_movement_type_trait_loss: (flag, old_movement_type)
 #define COMSIG_MOVETYPE_FLAG_DISABLED "movetype_flag_disabled"
 
 // /datum/action signals

@@ -1467,7 +1467,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A disk containing the procedure to perform a brainwashing surgery, allowing you to implant an objective onto a target. \
 	Insert into an Operating Console to enable the procedure."
 	item = /obj/item/disk/surgery/brainwashing
-	cost = 9
+	cost = 5
 //SKYRAT EDIT END
 
 //SKYRAT EDIT REMOVAL BEGIN - Remove Hypnostuff
