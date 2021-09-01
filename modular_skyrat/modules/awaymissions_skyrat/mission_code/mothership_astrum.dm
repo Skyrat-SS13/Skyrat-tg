@@ -22,14 +22,16 @@
 /area/awaymission/mothership_astrum/deck4
 	name = "Mothership Astrum Xeno Studies Holodeck"
 	icon_state = "away4"
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+	static_lighting = FALSE
+	base_lighting_alpha = 255
+	base_lighting_color = COLOR_WHITE
 	requires_power = FALSE
 
 /area/awaymission/mothership_astrum/deck5
 	name = "Mothership Astrum Beach Holodeck"
 	icon_state = "away5"
 	requires_power = FALSE
-	dynamic_lighting = FALSE
+	static_lighting = FALSE
 
 //Fluff Notes
 /obj/item/paper/fluff/awaymissions/astrum1
@@ -167,8 +169,6 @@
 	name = "lobotomite containment tube"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	mob_name = "Lobotomite"
-	icon = 'icons/obj/machines/nanite_chamber.dmi'
-	icon_state = "nanite_chamber_occupied"
 	density = TRUE
 	roundstart = FALSE
 	death = FALSE
@@ -183,7 +183,6 @@
 	You are meant to work with the exploration team.\
 	Do not attack anything in the gateway except in self-defense.\
 	DO NOT TOUCH ANYTHING IN THE GATEWAY."
-	assignedrole = "Lobotomite"
 
 /datum/outfit/lobotomite
 	name = "Abductor lobotomite"
@@ -313,11 +312,6 @@
 	resistance_flags = INDESTRUCTIBLE
 	use_power = NO_POWER_USE
 	flags_1 = NODECONSTRUCT_1
-
-/obj/machinery/scanner_gate/anti_nanite/perform_scan(mob/living/M)
-	if(SEND_SIGNAL(M, COMSIG_HAS_NANITES))
-		SEND_SIGNAL(M, COMSIG_NANITE_DELETE)
-		to_chat(M, "<span class='warning'>You feel an electrical charge run throughout your entire body as your nanites are vaporized!</span>")
 
 /obj/machinery/scanner_gate/anti_nanite/emag_act(mob/user)
 	to_chat(user, "<span class='notice'>This gate has advanced security measures!</span>")

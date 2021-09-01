@@ -59,6 +59,13 @@
 	///A bitflag var for tagging reagents for the reagent loopup functon
 	var/reaction_tags = NONE
 
+	//SKYRAT EDIT ADDITION
+	///If defined, it'll emitt that pollutant on reaction
+	var/pollutant_type
+	///How much amount per volume of the pollutant shall we emitt if `pollutant_type` is defined
+	var/pollutant_amount = 1
+	//SKYRAT EDIT END
+
 /datum/chemical_reaction/New()
 	. = ..()
 	SSticker.OnRoundstart(CALLBACK(src,.proc/update_info))
@@ -251,15 +258,15 @@
 			C.flash_act()
 
 		for(var/i in 1 to amount_to_spawn)
-			var/mob/living/simple_animal/S
+			var/mob/living/spawned_mob
 			if(random)
-				S = create_random_mob(get_turf(holder.my_atom), mob_class)
+				spawned_mob = create_random_mob(get_turf(holder.my_atom), mob_class)
 			else
-				S = new mob_class(get_turf(holder.my_atom))//Spawn our specific mob_class
-			S.faction |= mob_faction
+				spawned_mob = new mob_class(get_turf(holder.my_atom))//Spawn our specific mob_class
+			spawned_mob.faction |= mob_faction
 			if(prob(50))
 				for(var/j = 1, j <= rand(1, 3), j++)
-					step(S, pick(NORTH,SOUTH,EAST,WEST))
+					step(spawned_mob, pick(NORTH,SOUTH,EAST,WEST))
 
 /**
  * Magical move-wooney that happens sometimes.

@@ -3,7 +3,7 @@
 
 /area/awaymission/black_mesa/outside
 	name = "Black Mesa Outside"
-	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	static_lighting = FALSE
 
 /obj/structure/fluff/server_rack
 	name = "Server Rack"
@@ -351,7 +351,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Stop right there!"
+	speak = list("Stop right there!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -418,7 +418,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Hey, freeman! Over here!"
+	speak = list("Hey, freeman! Over here!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -495,10 +495,10 @@
 	name = "mob placer"
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = "mobspawner"
-	var/list/possible_mobs
+	var/list/possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 
 /obj/effect/random_mob_placer/Initialize(mapload)
-	..()
+	. = ..()
 	var/mob/picked_mob = pick(possible_mobs)
 	new picked_mob(loc)
 	return INITIALIZE_HINT_QDEL
@@ -517,7 +517,6 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
-	assignedrole = "Science Team"
 	short_desc = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	permanent = FALSE
 	can_use_alias = TRUE
@@ -545,7 +544,6 @@
 /obj/effect/mob_spawn/human/black_mesa/guard
 	name = "Research Facility Security Guard"
 	outfit = /datum/outfit/security_guard
-	assignedrole = "Security Team"
 	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
@@ -576,7 +574,6 @@
 /obj/effect/mob_spawn/human/black_mesa/hecu
 	name = "HECU"
 	outfit = /datum/outfit/hecu
-	assignedrole = "HECU"
 	short_desc = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/officer/hecu

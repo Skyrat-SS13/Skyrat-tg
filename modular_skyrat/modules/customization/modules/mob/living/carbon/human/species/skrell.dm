@@ -1,6 +1,6 @@
 /datum/species/skrell
 	name = "Skrell"
-	id = "skrell"
+	id = SPECIES_SKRELL
 	default_color = "4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
@@ -89,7 +89,7 @@
 	name = "skrell lungs"
 	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
 	icon_state = "lungs"
-	safe_toxins_max = 40
+	safe_plasma_max = 40
 	safe_co2_max = 40
 
 	cold_message = "You can't stand the freezing cold with every breath you take!"

@@ -1,10 +1,7 @@
 /datum/round_event_control/alien_infestation
 	name = "Alien Infestation"
 	typepath = /datum/round_event/ghost_role/alien_infestation
-	//SKYRAT EDIT CHANGE BEGIN
-	//weight = 5 - SKYRAT EDIT - ORIGINAL
-	weight = 0
-	//SKYRAT EDIT CHANGE END
+	weight = 0 //SKYRAT EDIT CHANGE, ORIGINAL: 5
 
 	min_players = 10
 
@@ -72,10 +69,14 @@
 
 	while(spawncount > 0 && vents.len && candidates.len)
 		var/obj/vent = pick_n_take(vents)
-		var/client/C = pick_n_take(candidates)
-
+		var/client/candidate_client = pick_n_take(candidates)
+		var/datum/mind/candidate_mind = candidate_client.mob.mind
+		if(!candidate_mind)
+			continue
 		var/mob/living/carbon/alien/larva/new_xeno = new(vent.loc)
-		new_xeno.key = C.key
+		candidate_mind.transfer_to(new_xeno)
+		candidate_mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
+		candidate_mind.special_role = ROLE_ALIEN
 		new_xeno.move_into_vent(vent)
 
 		spawncount--

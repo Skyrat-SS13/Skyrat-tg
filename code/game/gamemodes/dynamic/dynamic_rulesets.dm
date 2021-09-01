@@ -200,6 +200,12 @@
 			candidates.Remove(candidate_player)
 			continue
 
+		//SKYRAT EDIT ADDITION
+		if(!candidate_client.prefs?.be_antag)
+			candidates.Remove(candidate_player)
+			continue
+		//SKYRAT EDIT END
+
 		if(candidate_client.get_remaining_days(minimum_required_age) > 0)
 			candidates.Remove(candidate_player)
 			continue
@@ -222,7 +228,8 @@
 		if(length(exclusive_roles))
 			var/exclusive_candidate = FALSE
 			for(var/role in exclusive_roles)
-				if((role in candidate_client.prefs.job_preferences) && !is_banned_from(candidate_player.ckey, role) && !job_is_xp_locked(candidate_player.ckey, role))
+				var/datum/job/job = SSjob.GetJob(role)
+				if((role in candidate_client.prefs.job_preferences) && !is_banned_from(candidate_player.ckey, role) && !job.required_playtime_remaining(candidate_client))
 					exclusive_candidate = TRUE
 					break
 

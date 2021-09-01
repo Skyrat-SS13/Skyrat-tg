@@ -186,6 +186,8 @@ RLD
 	return .
 
 /obj/item/construction/proc/range_check(atom/A, mob/user)
+	if(A.z != user.z)
+		return
 	if(!(A in view(7, get_turf(user))))
 		to_chat(user, span_warning("The \'Out of Range\' light on [src] blinks red."))
 		return FALSE
@@ -269,6 +271,15 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 	grille_icon.Blend(window_icon, ICON_OVERLAY)
 
 	return getHologramIcon(grille_icon)
+
+/obj/item/construction/rcd/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/openspace_item_click_handler)
+
+/obj/item/construction/rcd/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
+	if(proximity_flag)
+		mode = construction_mode
+		rcd_create(target, user)
 
 /obj/item/construction/rcd/ui_action_click(mob/user, actiontype)
 	if (!COOLDOWN_FINISHED(src, destructive_scan_cooldown))
@@ -472,7 +483,18 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Airtight Hatch" = get_airlock_image(/obj/machinery/door/airlock/hatch),
 //SKYRAT EDIT BEGIN//
 		"Maintenance Hatch" = get_airlock_image(/obj/machinery/door/airlock/maintenance_hatch),
-		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate)
+		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate),
+		"Service" = get_airlock_image(/obj/machinery/door/airlock/service),
+		"Bathroom" = get_airlock_image(/obj/machinery/door/airlock/bathroom),
+		"Psychologist" = get_airlock_image(/obj/machinery/door/airlock/psych),
+		"Asylum" = get_airlock_image(/obj/machinery/door/airlock/asylum),
+		"Captain" = get_airlock_image(/obj/machinery/door/airlock/captain),
+		"Head of Personnel" = get_airlock_image(/obj/machinery/door/airlock/hop),
+		"Head of Security" = get_airlock_image(/obj/machinery/door/airlock/hos),
+		"Chief Medical Officer" = get_airlock_image(/obj/machinery/door/airlock/cmo),
+		"Chief Engineer" = get_airlock_image(/obj/machinery/door/airlock/ce),
+		"Research Director" = get_airlock_image(/obj/machinery/door/airlock/rd),
+		"Quartermaster" = get_airlock_image(/obj/machinery/door/airlock/qm)
 //SKYRAT EDIT END//
 	)
 
@@ -491,7 +513,13 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"External" = get_airlock_image(/obj/machinery/door/airlock/external/glass),
 //SKYRAT EDIT BEGIN//
 		"External Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/external/glass),
-		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate/glass)
+		"Corporate" = get_airlock_image(/obj/machinery/door/airlock/corporate/glass),
+		"Service" = get_airlock_image(/obj/machinery/door/airlock/service/glass),
+		"Head of Security" = get_airlock_image(/obj/machinery/door/airlock/hos/glass),
+		"Chief Medical Officer" = get_airlock_image(/obj/machinery/door/airlock/cmo/glass),
+		"Chief Engineer" = get_airlock_image(/obj/machinery/door/airlock/ce/glass),
+		"Research Director" = get_airlock_image(/obj/machinery/door/airlock/rd/glass),
+		"Quartermaster" = get_airlock_image(/obj/machinery/door/airlock/qm/glass)
 //SKYRAT EDIT END//
 	)
 
@@ -536,6 +564,28 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 //SKYRAT EDIT BEGIN//
 					if("Corporate")
 						airlock_type = /obj/machinery/door/airlock/corporate
+					if("Service")
+						airlock_type = /obj/machinery/door/airlock/service
+					if("Bathroom")
+						airlock_type = /obj/machinery/door/airlock/bathroom
+					if("Psychologist")
+						airlock_type = /obj/machinery/door/airlock/psych
+					if("Asylum")
+						airlock_type = /obj/machinery/door/airlock/asylum
+					if("Captain")
+						airlock_type = /obj/machinery/door/airlock/captain
+					if("Head of Personnel")
+						airlock_type = /obj/machinery/door/airlock/hop
+					if("Head of Security")
+						airlock_type = /obj/machinery/door/airlock/hos
+					if("Chief Medical Officer")
+						airlock_type = /obj/machinery/door/airlock/cmo
+					if("Chief Engineer")
+						airlock_type = /obj/machinery/door/airlock/ce
+					if("Research Director")
+						airlock_type = /obj/machinery/door/airlock/rd
+					if("Quartermaster")
+						airlock_type = /obj/machinery/door/airlock/qm
 //SKYRAT EDIT END//
 				airlock_glass = FALSE
 			else
@@ -575,6 +625,18 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 //SKYRAT EDIT BEGIN//
 					if("Corporate")
 						airlock_type = /obj/machinery/door/airlock/corporate/glass
+					if("Service")
+						airlock_type = /obj/machinery/door/airlock/service/glass
+					if("Head of Security")
+						airlock_type = /obj/machinery/door/airlock/hos/glass
+					if("Chief Medical Officer")
+						airlock_type = /obj/machinery/door/airlock/cmo/glass
+					if("Chief Engineer")
+						airlock_type = /obj/machinery/door/airlock/ce/glass
+					if("Research Director")
+						airlock_type = /obj/machinery/door/airlock/rd/glass
+					if("Quartermaster")
+						airlock_type = /obj/machinery/door/airlock/qm/glass
 //SKYRAT EDIT END//
 				airlock_glass = TRUE
 			else
@@ -881,6 +943,10 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		pre_attack_secondary(target, user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+/obj/item/construction/rcd/arcd/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
+	if(ranged && range_check(target, user))
+		mode = construction_mode
+		rcd_create(target, user)
 
 /obj/item/construction/rcd/arcd/rcd_create(atom/A, mob/user)
 	. = ..()

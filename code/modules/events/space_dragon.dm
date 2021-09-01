@@ -2,8 +2,7 @@
 	name = "Spawn Space Dragon"
 	typepath = /datum/round_event/ghost_role/space_dragon
 	weight = 7
-	//max_occurrences = 1 //ORIGINAL
-	max_occurrences = 0 //SKYRAT EDIT CHANGE - EVENTS
+	max_occurrences = 0 //SKYRAT EDIT CHANGE
 	min_players = 20
 	dynamic_should_hijack = TRUE
 
@@ -35,8 +34,8 @@
 
 	var/mob/living/simple_animal/hostile/space_dragon/dragon = new (pick(spawn_locs))
 	dragon.key = key
-	dragon.mind.assigned_role = "Space Dragon"
-	dragon.mind.special_role = "Space Dragon"
+	dragon.mind.set_assigned_role(SSjob.GetJobType(/datum/job/space_dragon))
+	dragon.mind.special_role = ROLE_SPACE_DRAGON
 	dragon.mind.add_antag_datum(/datum/antagonist/space_dragon)
 	playsound(dragon, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	message_admins("[ADMIN_LOOKUPFLW(dragon)] has been made into a Space Dragon by an event.")

@@ -19,7 +19,7 @@
 		. +=  "It has an <p style='color:red'>Armadyne</p> embroidery on the grip."
 
 //////////////////GLOCK
-/obj/item/gun/ballistic/automatic/pistol/g17       //UNUSED
+/obj/item/gun/ballistic/automatic/pistol/g17
 	name = "\improper Glock-17"
 	desc = "A weapon from bygone times, this has been made to feel and look exactly like the 21st century version. Let's hope it's more reliable. Chambered in 9mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
@@ -33,12 +33,13 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	can_flashlight = TRUE
-	dirt_modifier = 1.7
+	dirt_modifier = 1
 	emp_damageable = TRUE
 	armadyne = TRUE
+	fire_delay = 1.90
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
-	name = "g17 handgun magazine (9mm)"
+	name = "9x19mm double stack magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -60,7 +61,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper Glock-18"
-	desc = "A special anniversary edition of the Glock-18 from Armadyne, it has a 3 round burst mode and accepts extended magazines."
+	desc = "A burst-firing special anniversary edition of the Glock-18 from Armadyne. Its heavier barrel negatively affects firerate minimally."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -71,15 +72,15 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	burst_size = 3
-	fire_delay = 3.50
-	spread = 10
+	fire_delay = 2.10
+	spread = 8
 	realistic = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/g18
-	name = "g18 handgun magazine (9mm)"
+	name = "extended 9x19mm magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -100,7 +101,7 @@
 	round_type = AMMO_TYPE_RUBBER
 
 ////////////////PDH 40x32
-/obj/item/gun/ballistic/automatic/pistol/pdh       //UNUSED
+/obj/item/gun/ballistic/automatic/pistol/pdh
 	name = "\improper PDH-6H 'Osprey'"
 	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match command. It's chambered in 12mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
@@ -122,7 +123,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt
 	name = "\improper PDH-6C 'SOCOM'"
-	desc = "A prestigious 12mm sidearm normally seen in the hands of Sol special operation units due to its reliable and time-tested design. Now's one of those times that pays to be the strong, silent type."
+	desc = "A prestigious 12mm sidearm normally seen in the hands of SolFed special operation units due to its reliable and time-tested design. Now's one of those times that pays to be the strong, silent type."
 	icon_state = "pdh_alt"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh
@@ -137,7 +138,7 @@
 	emp_damageable = FALSE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh
-	name = "pdh handgun magazine (12mm)"
+	name = "12.7x30mm pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b12mm
@@ -170,7 +171,7 @@
 	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
-	name = "pdh handgun magazine (357)"
+	name = ".357 pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/a357
@@ -181,7 +182,7 @@
 
 
 ///////////////////////////PDH PEACEKEEPER
-/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper     //SIDEARM CHOICE #1
+/obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
 	name = "\improper PDH-6B 'Peacekeeper'"
 	desc = "A modern ballistic sidearm, used primarily by law enforcement, however this one has had a paintjob to match the peacekeeper theme."
 	fire_delay = 1.95
@@ -192,7 +193,7 @@
 	can_flashlight = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
-	name = "pdh handgun magazine (9mm)"
+	name = "9x19mm polymer magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -213,7 +214,7 @@
 	round_type = AMMO_TYPE_RUBBER
 
 ///////////////////////LADON 40x32
-/obj/item/gun/ballistic/automatic/pistol/ladon       //UNUSED
+/obj/item/gun/ballistic/automatic/pistol/ladon
 	name = "\improper P-3 'Ladon'"
 	desc = "A modern ballistic sidearm based off the PDH models, chambered in 10mm and quite recent on the market. It has an <p style='color:red'>Armadyne</p> embroidery on the grip."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
@@ -233,9 +234,10 @@
 	dirt_modifier = 0.8
 	emp_damageable = TRUE
 	armadyne = TRUE
+	fire_delay = 4.20
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon
-	name = "ladon handgun magazine (10mm)"
+	name = "10x25mm pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -272,7 +274,7 @@
 	emp_damageable = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
-	name = "makarov handgun magazine (10mm)"
+	name = "small 10x25mm pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -311,7 +313,7 @@
 	emp_damageable = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
-	name = "mk-58 handgun magazine (9mm)"
+	name = "outdated 9x19mm magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -372,7 +374,7 @@
 
 /////////////////////PCR
 
-/obj/item/gun/ballistic/automatic/pcr              //PRIMARY OPTION #1
+/obj/item/gun/ballistic/automatic/pcr
 	name = "\improper PCR-9 SMG"
 	desc = "An accurate, fast-firing SMG chambered in 9x19mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pcr.dmi'
@@ -419,7 +421,7 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/gun/ballistic/automatic/pitbull          //PRIMARY OPTION #2
+/obj/item/gun/ballistic/automatic/pitbull
 	name = "\improper Pitbull PDW"
 	desc = "A sturdy personal defense weapon designed to fire 10mm Auto rounds."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pitbull.dmi'
@@ -432,7 +434,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
-	fire_delay = 5
+	fire_delay = 4.20
 	can_suppress = FALSE
 	burst_size = 3
 	spread = 15
@@ -467,21 +469,23 @@
 	round_type = AMMO_TYPE_RUBBER
 
 /////////////////DTR
-/obj/item/gun/ballistic/automatic/ostwind              //PRIMARY OPTION #3
+/obj/item/gun/ballistic/automatic/ostwind
 	name = "\improper DTR-6 Rifle"
 	desc = "A 6.3mm special-purpose rifle designed for specific situations."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	inhand_icon_state = "pcr"
+	inhand_icon_state = "ostwind"
 	icon_state = "ostwind"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	worn_icon_state = "ostwind_worn"
+	alt_icons = TRUE
+	alt_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind
 	spread = 10
-	fire_delay = 4
+	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 2
 	mag_display = TRUE
@@ -528,7 +532,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	burst_size = 3
-	fire_delay = 2
+	fire_delay = 2.10
 	spread = 25
 	mag_display = FALSE
 	mag_display_ammo = FALSE
@@ -557,9 +561,9 @@
 	round_type = AMMO_TYPE_IHDF
 
 ///////////////////////////Dozer
-/obj/item/gun/ballistic/automatic/dozer       //UNUSED
-	name = "\improper DZR-10 'Dozer'"
-	desc = "The DZR-10, a notorious 10mm PDW that lives up to its nickname. For safety concerns, this peacekeeping model has been locked to semi-automatic."
+/obj/item/gun/ballistic/automatic/dozer
+	name = "\improper DZR-9 'Dozer'"
+	desc = "The DZR-9, a notorious 9mm PDW that lives up to its nickname."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -570,9 +574,9 @@
 	can_suppress = TRUE
 	mag_display = FALSE
 	mag_display_ammo = FALSE
-	burst_size = 1
-	fire_delay = 0
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	burst_size = 2
+	fire_delay = 1.90
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
@@ -582,29 +586,29 @@
 	armadyne = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
-	name = "dozer pdw magazine (10mm)"
+	name = "9x19mm small PDW magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
+	ammo_type = /obj/item/ammo_casing/b9mm
+	caliber = CALIBER_9MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
+	ammo_type = /obj/item/ammo_casing/b9mm/hp
 	round_type = AMMO_TYPE_HOLLOWPOINT
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
 /////////////////////NORWIND
-/obj/item/gun/ballistic/automatic/norwind            //PRIMARY CHOICE #4
-	name = "\improper M112 'Norwind'"      
+/obj/item/gun/ballistic/automatic/norwind
+	name = "\improper M112 'Norwind'"
 	desc = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -655,7 +659,7 @@
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/gun/ballistic/automatic/vintorez       //UNUSED
+/obj/item/gun/ballistic/automatic/vintorez
 	name = "\improper VKC 'Vintorez'"
 	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9mm for peacekeeping work."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/vintorez.dmi'
@@ -664,6 +668,8 @@
 	icon_state = "vintorez"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	worn_icon_state = "norwind_worn"
+	alt_icons = TRUE
+	alt_icon_state = "vintorez_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	inhand_icon_state = "vintorez"
@@ -682,13 +688,14 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
 	emp_damageable = TRUE
 	armadyne = TRUE
+
 /obj/item/ammo_box/magazine/multi_sprite/vintorez
-	name = "vintorez rifle magazine (9mm)"
+	name = "9x19mm carbine magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MM
-	max_ammo = 15
+	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
@@ -704,7 +711,6 @@
 	round_type = AMMO_TYPE_RUBBER
 
 /////////////////DMR 40x32
-
 /obj/item/gun/ballistic/automatic/dmr
 	name = "\improper M557 'Ripper' Gen-2"
 	desc = "An incredibly powerful marksman rifle with an internal stabilization gymbal. It's chambered in .577 Snider."
@@ -737,7 +743,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /////////////////////////////////////////////ZETA
-/obj/item/gun/ballistic/revolver/zeta                //SIDEARM CHOICE #2
+/obj/item/gun/ballistic/revolver/zeta
 	name = "\improper Zeta-6 'Spurchamber'"
 	desc = "A fairly common double-action six-shooter chambered for 10mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
@@ -748,6 +754,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	armadyne = TRUE
+	fire_delay = 3
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	name = "10mm revolver cylinder"
@@ -756,7 +763,7 @@
 	max_ammo = 6
 
 /obj/item/ammo_box/revolver/zeta
-	name = "10mm speedloader"
+	name = "10x25mm speedloader"
 	desc = "Designed to quickly reload the Zeta-6."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -766,7 +773,7 @@
 	start_empty = TRUE
 
 /////////////////////////////////////////////////////////REVOLUTION
-/obj/item/gun/ballistic/revolver/revolution       //UNUSED
+/obj/item/gun/ballistic/revolver/revolution
 	name = "\improper Revolution-8 'Spurmaster'"
 	desc = "The Zeta 6's distant cousin, sporting an eight-round competition grade cylinder chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
@@ -777,6 +784,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
 	armadyne = TRUE
+	fire_delay = 1.90
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
 	name = "revolver cylinder"
@@ -785,7 +793,7 @@
 	max_ammo = 8
 
 /obj/item/ammo_box/revolver/revolution
-	name = "9mm speedloader"
+	name = "9x19mm speedloader"
 	desc = "Designed to quickly reload revolvers."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -852,7 +860,7 @@
 		icon_state = "smartgun_closed"
 
 /obj/item/ammo_box/magazine/smartgun
-	name = "smartgun magazine (smartgun)"
+	name = "rail rifle magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "smartgun"
 	ammo_type = /obj/item/ammo_casing/smartgun
@@ -938,11 +946,11 @@
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	max_ammo = 8
+	ammo_type = /obj/item/ammo_casing/s14gauge
+	max_ammo = 6
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
-	name = "\improper M2 Autoshotgun"
+	name = "\improper M2 Auto-Shotgun"
 	desc = "A revolving automatic shotgun with a six round internal tube."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "as2"
@@ -964,8 +972,40 @@
 
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
-	max_ammo = 6
+	ammo_type = /obj/item/ammo_casing/s14gauge
+	max_ammo = 4
+
+/obj/item/gun/ballistic/shotgun/sas14
+	name = "\improper SAS-14"
+	desc = "A revolving automatic shotgun with a six round box magazine."
+	icon =  'modular_skyrat/modules/sec_haul/icons/guns/sas14.dmi'
+	icon_state = "sas14"
+	inhand_icon_state = "shotgun"
+	worn_icon_state = "shotgun"
+	can_suppress = TRUE
+	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
+	suppressed_volume = 100
+	vary_fire_sound = TRUE
+	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
+	fire_delay = 5
+	mag_type = /obj/item/ammo_box/magazine/sas14
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	weapon_weight = WEAPON_MEDIUM
+	burst_size = 1
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
+	semi_auto = FALSE
+	internal_magazine = FALSE
+	armadyne = TRUE
+
+/obj/item/ammo_box/magazine/sas14
+	name = "14 Gauge box magazine"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
+	icon_state = "sas14"
+	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	caliber = CALIBER_14GAUGE
+	ammo_type = /obj/item/ammo_casing/s14gauge
+	max_ammo = 5
 
 /obj/item/gun/energy/taser/armadyne
 	name = "\improper ATS Taser"

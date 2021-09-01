@@ -3,7 +3,7 @@
 // HEAD OF SECURITY
 
 /obj/item/clothing/under/rank/security/head_of_security/parade
-	name = "head of security's male parade uniform"
+	name = "head of security's male formal uniform"
 	desc = "A luxurious uniform for the head of security, woven in a deep red. On the lapel is a small pin in the shape of a deer's head."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -56,7 +56,7 @@
 
 /obj/item/clothing/under/rank/security/detective/cowboy
 	name = "blond cowboy uniform"
-	desc = "A blue shirt with some cool Cowboy socks. You dig."
+	desc = "A blue shirt with some cool cowboy socks. You dig."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cowboy_uniform"
@@ -68,7 +68,7 @@
 
 /obj/item/clothing/suit/cowboyvest
 	name = "blonde cowboy vest"
-	desc = "A white cream vest lined with...fur, of all things, for desert weather. There's a small Deer head logo sewn in to the vest."
+	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "cowboy_vest"
@@ -79,7 +79,7 @@
 
 /obj/item/clothing/suit/det_suit/cowboyvest
 	name = "blonde cowboy vest"
-	desc = "A white cream vest lined with...fur, of all things, for desert weather. There's a small Deer head logo sewn in to the vest."
+	desc = "A white cream vest lined with... fur, of all things, for desert weather. There's a small deer head logo sewn into the vest."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "cowboy_vest"

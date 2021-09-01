@@ -1,24 +1,76 @@
+/// Fully randomizes everything in the character.
+/datum/preferences/proc/randomise_appearance_prefs(randomise_flags = ALL)
+	if(randomise_flags & RANDOMIZE_GENDER)
+		gender = pick(MALE, FEMALE, PLURAL)
+		switch(gender)
+			if(MALE, FEMALE)
+				body_type = gender
+			else
+				body_type = pick(MALE, FEMALE)
+	if(randomise_flags & RANDOMIZE_SPECIES)
+		var/rando_race = GLOB.species_list[pick(GLOB.roundstart_races)]
+		pref_species = new rando_race()
+	if(randomise_flags & RANDOMIZE_NAME)
+		real_name = pref_species.random_name(gender, TRUE)
+	if(randomise_flags & RANDOMIZE_AGE)
+		age = rand(AGE_MIN, AGE_MAX)
+	if(randomise_flags & RANDOMIZE_UNDERWEAR)
+		underwear = random_underwear(gender)
+	if(randomise_flags & RANDOMIZE_UNDERWEAR_COLOR)
+		underwear_color = random_short_color()
+	if(randomise_flags & RANDOMIZE_UNDERSHIRT)
+		undershirt = random_undershirt(gender)
+	if(randomise_flags & RANDOMIZE_SOCKS)
+		socks = random_socks()
+	if(randomise_flags & RANDOMIZE_BACKPACK)
+		backpack = random_backpack()
+	if(randomise_flags & RANDOMIZE_JUMPSUIT_STYLE)
+		jumpsuit_style = pick(GLOB.jumpsuitlist)
+	if(randomise_flags & RANDOMIZE_HAIRSTYLE)
+		hairstyle = random_hairstyle(gender)
+	if(randomise_flags & RANDOMIZE_FACIAL_HAIRSTYLE)
+		facial_hairstyle = random_facial_hairstyle(gender)
+	if(randomise_flags & RANDOMIZE_HAIR_COLOR)
+		hair_color = random_short_color()
+	if(randomise_flags & RANDOMIZE_FACIAL_HAIR_COLOR)
+		facial_hair_color = random_short_color()
+	if(randomise_flags & RANDOMIZE_SKIN_TONE)
+		skin_tone = random_skin_tone()
+	if(randomise_flags & RANDOMIZE_EYE_COLOR)
+		eye_color = random_eye_color()
+	if(randomise_flags & RANDOMIZE_FEATURES)
+		features = random_features()
+	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
+	for(var/key in new_features)
+		features[key] = new_features[key]
+	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
+	body_markings = pref_species.get_random_body_markings(features)
 
-	//The mob should have a gender you want before running this proc. Will run fine without H
-/datum/preferences/proc/random_character(gender_override, antag_override = FALSE)
+/// Randomizes the character according to preferences.
+/datum/preferences/proc/apply_character_randomization_prefs(antag_override = FALSE)
+	if(!randomise[RANDOM_BODY] && !(antag_override && randomise[RANDOM_BODY_ANTAG]))
+		return // Prefs say "no, thank you"
+	if(randomise[RANDOM_GENDER] || antag_override && randomise[RANDOM_GENDER_ANTAG])
+		gender = pick(MALE, FEMALE, PLURAL)
+		switch(gender)
+			if(MALE, FEMALE)
+				body_type = gender
+			else
+				body_type = pick(MALE, FEMALE)
 	if(randomise[RANDOM_SPECIES])
 		random_species()
-	else if(randomise[RANDOM_NAME])
-		real_name = pref_species.random_name(gender,1)
-	if(gender_override && !(randomise[RANDOM_GENDER] || randomise[RANDOM_GENDER_ANTAG] && antag_override))
-		gender = gender_override
-	else
-		gender = pick(MALE,FEMALE,PLURAL)
-	if(randomise[RANDOM_AGE] || randomise[RANDOM_AGE_ANTAG] && antag_override)
-		age = rand(AGE_MIN,AGE_MAX)
-	/*if(randomise[RANDOM_UNDERWEAR])
+	else if(randomise[RANDOM_NAME] || antag_override && randomise[RANDOM_NAME_ANTAG])
+		real_name = pref_species.random_name(gender, TRUE)
+	if(randomise[RANDOM_AGE] || antag_override && randomise[RANDOM_AGE_ANTAG])
+		age = rand(AGE_MIN, AGE_MAX)
+	if(randomise[RANDOM_UNDERWEAR])
 		underwear = random_underwear(gender)
 	if(randomise[RANDOM_UNDERWEAR_COLOR])
 		underwear_color = random_short_color()
 	if(randomise[RANDOM_UNDERSHIRT])
 		undershirt = random_undershirt(gender)
 	if(randomise[RANDOM_SOCKS])
-		socks = random_socks()*/
+		socks = random_socks()
 	if(randomise[RANDOM_BACKPACK])
 		backpack = random_backpack()
 	if(randomise[RANDOM_JUMPSUIT_STYLE])
@@ -32,22 +84,114 @@
 	if(randomise[RANDOM_FACIAL_HAIR_COLOR])
 		facial_hair_color = random_short_color()
 	if(randomise[RANDOM_SKIN_TONE])
-		set_skin_tone(random_skin_tone())
+		skin_tone = random_skin_tone()
 	if(randomise[RANDOM_EYE_COLOR])
 		eye_color = random_eye_color()
-	if(!pref_species)
-		var/rando_race = pick(GLOB.roundstart_races)
-		set_new_species(rando_race)
-	if(gender in list(MALE, FEMALE))
-		body_type = gender
-	else
-		body_type = pick(MALE, FEMALE)
-	//features = pref_species.get_random_features()
-	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
-	for(var/key in new_features)
-		features[key] = new_features[key]
-	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
-	body_markings = pref_species.get_random_body_markings(features)
+	features = random_features()
+
+
+/datum/preferences/proc/random_species()
+	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
+	set_new_species(random_species_type)
+	if(randomise[RANDOM_NAME])
+		real_name = pref_species.random_name(gender,1)
+
+///Setup the random hardcore quirks and give the character the new score prize.
+/datum/preferences/proc/hardcore_random_setup(mob/living/carbon/human/character)
+	var/next_hardcore_score = select_hardcore_quirks()
+	character.hardcore_survival_score = next_hardcore_score ** 1.2  //30 points would be about 60 score
+
+/**
+ * Goes through all quirks that can be used in hardcore mode and select some based on a random budget.
+ * Returns the new value to be gained with this setup, plus the previously earned score.
+ **/
+/datum/preferences/proc/select_hardcore_quirks()
+	. = 0
+
+	var/quirk_budget = rand(8, 35)
+
+	all_quirks = list() //empty it out
+
+	var/list/available_hardcore_quirks = SSquirks.hardcore_quirks.Copy()
+
+	while(quirk_budget > 0)
+		for(var/i in available_hardcore_quirks) //Remove from available quirks if its too expensive.
+			var/datum/quirk/available_quirk = i
+			if(available_hardcore_quirks[available_quirk] > quirk_budget)
+				available_hardcore_quirks -= available_quirk
+
+		if(!available_hardcore_quirks.len)
+			break
+
+		var/datum/quirk/picked_quirk = pick(available_hardcore_quirks)
+
+		var/picked_quirk_blacklisted = FALSE
+		for(var/bl in SSquirks.quirk_blacklist) //Check if the quirk is blacklisted with our current quirks. quirk_blacklist is a list of lists.
+			var/list/blacklist = bl
+			if(!(picked_quirk in blacklist))
+				continue
+			for(var/iterator_quirk in all_quirks) //Go through all the quirks we've already selected to see if theres a blacklist match
+				if((iterator_quirk in blacklist) && !(iterator_quirk == picked_quirk)) //two quirks have lined up in the list of the list of quirks that conflict with each other, so return (see quirks.dm for more details)
+					picked_quirk_blacklisted = TRUE
+					break
+			if(picked_quirk_blacklisted)
+				break
+
+		if(picked_quirk_blacklisted)
+			available_hardcore_quirks -= picked_quirk
+			continue
+
+		if(initial(picked_quirk.mood_quirk) && CONFIG_GET(flag/disable_human_mood)) //check for moodlet quirks
+			available_hardcore_quirks -= picked_quirk
+			continue
+
+		all_quirks += initial(picked_quirk.name)
+		quirk_budget -= available_hardcore_quirks[picked_quirk]
+		. += available_hardcore_quirks[picked_quirk]
+		available_hardcore_quirks -= picked_quirk
+
+
+/datum/preferences/proc/update_preview_icon()
+	// Determine what job is marked as 'High' priority, and dress them up as such.
+	var/datum/job/previewJob
+	var/highest_pref = 0
+	for(var/job in job_preferences)
+		if(job_preferences[job] > highest_pref)
+			previewJob = SSjob.GetJob(job)
+			highest_pref = job_preferences[job]
+
+	if(previewJob)
+		// Silicons only need a very basic preview since there is no customization for them.
+		if(istype(previewJob,/datum/job/ai))
+			parent.show_character_previews(image('icons/mob/ai.dmi', icon_state = resolve_ai_icon(preferred_ai_core_display), dir = SOUTH))
+			return
+		if(istype(previewJob,/datum/job/cyborg))
+			parent.show_character_previews(image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH))
+			return
+
+	// Set up the dummy for its photoshoot
+	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+	apply_prefs_to(mannequin, TRUE)
+
+	switch(preview_pref)
+		if(PREVIEW_PREF_JOB)
+			if(previewJob)
+				mannequin.job = previewJob.title
+				mannequin.dress_up_as_job(previewJob, TRUE)
+			mannequin.underwear_visibility = NONE
+		if(PREVIEW_PREF_LOADOUT)
+			mannequin.underwear_visibility = NONE
+			equip_preference_loadout(mannequin, TRUE, previewJob)
+			mannequin.underwear_visibility = NONE
+		if(PREVIEW_PREF_NAKED)
+			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
+	mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
+
+	COMPILE_OVERLAYS(mannequin)
+	parent.show_character_previews(new /mutable_appearance(mannequin))
+	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
+
+//SKYRAT SPECIFIC PROCS
 
 //This proc makes sure that we only have the parts that the species should have, add missing ones, remove extra ones(should any be changed)
 //Also, this handles missing color keys
@@ -126,52 +270,6 @@
 			var/datum/body_marking/BM = GLOB.body_markings[key]
 			bml[key] = BM.get_default_color(features, pref_species)
 
-/datum/preferences/proc/random_species()
-	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
-	set_new_species(random_species_type)
-	if(randomise[RANDOM_NAME])
-		real_name = pref_species.random_name(gender,1)
-
-/datum/preferences/proc/update_preview_icon()
-	// Determine what job is marked as 'High' priority, and dress them up as such.
-	var/datum/job/previewJob
-	var/highest_pref = 0
-	for(var/job in job_preferences)
-		if(job_preferences[job] > highest_pref)
-			previewJob = SSjob.GetJob(job)
-			highest_pref = job_preferences[job]
-
-	if(previewJob)
-		// Silicons only need a very basic preview since there is no customization for them.
-		if(istype(previewJob,/datum/job/ai))
-			parent.show_character_previews(image('icons/mob/ai.dmi', icon_state = resolve_ai_icon(preferred_ai_core_display), dir = SOUTH))
-			return
-		if(istype(previewJob,/datum/job/cyborg))
-			parent.show_character_previews(image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH))
-			return
-
-	// Set up the dummy for its photoshoot
-	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
-	copy_to(mannequin, 1, TRUE, TRUE)
-
-	switch(preview_pref)
-		if(PREVIEW_PREF_JOB)
-			if(previewJob)
-				mannequin.job = previewJob.title
-				previewJob.equip(mannequin, TRUE, preference_source = parent)
-			mannequin.underwear_visibility = NONE
-		if(PREVIEW_PREF_LOADOUT)
-			mannequin.underwear_visibility = NONE
-			equip_preference_loadout(mannequin, TRUE, previewJob)
-			mannequin.underwear_visibility = NONE
-		if(PREVIEW_PREF_NAKED)
-			mannequin.underwear_visibility = UNDERWEAR_HIDE_UNDIES | UNDERWEAR_HIDE_SHIRT | UNDERWEAR_HIDE_SOCKS
-	mannequin.update_body() //Unfortunately, due to a certain case we need to update this just in case
-
-	COMPILE_OVERLAYS(mannequin)
-	parent.show_character_previews(new /mutable_appearance(mannequin))
-	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
-
 /datum/preferences/proc/equip_preference_loadout(mob/living/carbon/human/H, just_preview = FALSE, datum/job/choosen_job, blacklist, initial)
 	if(!ishuman(H))
 		return
@@ -193,8 +291,6 @@
 				qdel(ITEM)
 	return items_to_pack
 
-
-
 //This needs to be a seperate proc because the character could not have the proper backpack during the moment of loadout equip
 /datum/preferences/proc/add_packed_items(mob/living/carbon/human/H, list/packed_items, del_on_fail = TRUE)
 	//Here we stick loadout items that couldn't be equipped into a bag.
@@ -207,3 +303,30 @@
 			qdel(ITEM)
 		else
 			ITEM.forceMove(get_turf(H))
+
+//For creating consistent icons for human looking simple animals
+/proc/get_flat_human_icon_skyrat(icon_id, datum/job/job, datum/species/species_to_set, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
+	var/static/list/humanoid_icon_cache = list()
+	if(icon_id && humanoid_icon_cache[icon_id])
+		return humanoid_icon_cache[icon_id]
+
+	var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+
+	if(species_to_set)
+		body.set_species(species_to_set, TRUE)
+
+	var/datum/outfit/outfit = outfit_override || job?.outfit
+	if(job)
+		body.dna.species.pre_equip_species_outfit(job, body, TRUE)
+	if(outfit)
+		body.equipOutfit(outfit, TRUE)
+
+	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+	COMPILE_OVERLAYS(body)
+	for(var/D in showDirs)
+		var/icon/partial = getFlatIcon(body, defdir=D)
+		out_icon.Insert(partial,dir=D)
+
+	humanoid_icon_cache[icon_id] = out_icon
+	dummy_key? unset_busy_human_dummy(dummy_key) : qdel(body)
+	return out_icon

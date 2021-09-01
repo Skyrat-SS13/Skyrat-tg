@@ -9,8 +9,17 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
 	icon_state = "gunvend"
 	use_power = NO_POWER_USE
+	circuit = /obj/item/circuitboard/machine/gun_vendor
 	max_integrity = 2000
 	density = TRUE
+
+/obj/item/circuitboard/machine/gun_vendor
+	name = "Weapons Dispenser (Machine Board)"
+	icon_state = "circuit_map"
+	build_path = /obj/machinery/gun_vendor
+	req_components = list(
+		/obj/item/stock_parts/manipulator = 2,
+		/obj/item/stock_parts/capacitor = 2)
 
 /obj/structure/gun_vendor/wrench_act(mob/living/user, obj/item/item)
 	default_unfasten_wrench(user, item, 120)
@@ -72,14 +81,26 @@
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "pdh_peacekeeper"
 		),
-	/obj/item/storage/box/gunset/proplayer= image(
-		icon = 'icons/obj/guns/energy.dmi',
-		icon_state = "disabler"
+	/obj/item/storage/box/gunset/glock17 = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "g17"
+		),
+	/obj/item/storage/box/gunset/ladon = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "ladon"
 		),
 	/obj/item/storage/box/gunset/zeta = image(
 		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
 		icon_state = "zeta"
-		)
+		),
+	/obj/item/storage/box/gunset/dozer = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "dozer"
+		),
+	/obj/item/storage/box/gunset/revolution = image(
+		icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi',
+		icon_state = "revolution"
+		),
 	)
 
 //BAD BOY!

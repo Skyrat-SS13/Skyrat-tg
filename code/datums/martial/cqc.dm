@@ -126,7 +126,7 @@
 		D.grabbedby(A, 1)
 		if(old_grab_state == GRAB_PASSIVE)
 			D.drop_all_held_items()
-			A.setGrabState(GRAB_AGGRESSIVE) //Instant agressive grab if on grab intent
+			A.setGrabState(GRAB_AGGRESSIVE) //Instant aggressive grab if on grab intent
 			log_combat(A, D, "grabbed", addition="aggressively")
 			D.visible_message(span_warning("[A] violently grabs [D]!"), \
 							span_userdanger("You're grabbed violently by [A]!"), span_hear("You hear sounds of aggressive fondling!"), COMBAT_MESSAGE_RANGE, A)
@@ -227,10 +227,6 @@
 /// Refreshes the valid areas from the cook job singleton, otherwise uses the default kitchen area as a fallback option. See also [/datum/job/cook/New].
 /datum/martial_art/cqc/under_siege/proc/refresh_valid_areas()
 	var/datum/job/cook/cook_job = SSjob.GetJobType(/datum/job/cook)
-	if(!istype(cook_job))
-		kitchen_areas = list(/area/service/kitchen)
-		return
-
 	kitchen_areas = cook_job.kitchen_areas.Copy()
 
 /// Limits where the chef's CQC can be used to only whitelisted areas.

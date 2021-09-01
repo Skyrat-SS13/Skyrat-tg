@@ -325,7 +325,7 @@
 				GLOB.ambitions_to_review[src] = 0
 				log_action("--Requested an admin review--", FALSE)
 				message_admins(span_adminhelp("[ADMIN_TPMONTY(usr)] has requested a review of their ambitions. (<a href='?src=[REF(src)];admin_pref=show_ambitions'>VIEW</a>)"))
-				message_admins(span_adminhelp("THIS WILL BE AUTO-APPROVED IN FIVE MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT"))
+				message_admins(span_adminhelp("THIS WILL BE AUTO-APPROVED IN TEN MINUTES UNLESS YOU <a href='?src=[REF(src)];admin_pref=cancel_autoapp'>CANCEL</a> IT"))
 				if(!auto_approve_honked)
 					auto_approve_honked = TRUE
 					for(var/client/staff as anything in GLOB.admins)
@@ -355,12 +355,12 @@
 			if("edit_admin_note")
 				var/msg = input(usr, "Set your note to admins!", "Note to admins", note_to_admins) as message|null
 				if(msg)
-					note_to_admins = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+					note_to_admins = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 					log_action("NOTE: [note_to_admins]", FALSE)
 			if("set_narrative")
 				var/msg = input(usr, "Set your narrative!", "Narrative", narrative) as message|null
 				if(msg)
-					narrative = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+					narrative = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 					log_action("NARRATIVE - change: [narrative]")
 					un_submit()
 			if("remove_objective")
@@ -379,13 +379,13 @@
 				if(msg)
 					if(length(objectives) < index)
 						return
-					objectives[index] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+					objectives[index] = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 					un_submit()
 					log_action("OBJ - edit: [old_obj] TO-> [objectives[index]]")
 			if("add_objective")
 				var/msg = input(usr, "Add new objective:", "Objectives", "") as message|null
 				if(msg)
-					var/new_obj = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
+					var/new_obj = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
 					objectives += new_obj
 					log_action("OBJ - add: [new_obj]")
 					un_submit()
