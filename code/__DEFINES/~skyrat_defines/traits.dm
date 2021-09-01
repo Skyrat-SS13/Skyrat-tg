@@ -40,4 +40,3 @@
 
 //Makes sure that people cant be cult sacrificed twice.
 #define TRAIT_SACRIFICED "sacrificed"
-
