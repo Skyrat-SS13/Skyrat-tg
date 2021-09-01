@@ -358,7 +358,7 @@
 /datum/supply_pack/service/executive
 	name = "Executive Carpet Crate"
 	desc = "Want to show your love for the Greatest Company in the Universe? Well now you can with a supply of a comfy blue carpet, adorned with NT's beautiful logo."
-	cost = CARGO_CRATE_VALUE * 3
+	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
 		/obj/item/stack/tile/carpet/executive/thirty,
 		/obj/item/stack/tile/carpet/executive/thirty,
