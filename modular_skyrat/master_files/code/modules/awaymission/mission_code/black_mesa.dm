@@ -3,7 +3,7 @@
 
 /area/awaymission/black_mesa/outside
 	name = "Black Mesa Outside"
-	static_lighting = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /obj/structure/fluff/server_rack
 	name = "Server Rack"

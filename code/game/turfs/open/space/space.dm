@@ -16,7 +16,7 @@
 	plane = PLANE_SPACE
 	layer = SPACE_LAYER
 	light_power = 0.25
-	always_lit = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	bullet_bounce_sound = null
 	vis_flags = VIS_INHERIT_ID //when this be added to vis_contents of something it be associated with something on clicking, important for visualisation of turf in openspace and interraction with openspace that show you turf.
 
@@ -28,7 +28,7 @@
 /turf/open/space/mirage
 	blocks_air = TRUE
 	light_power = 0
-	always_lit = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 //SKYRAT EDIT END
 
 /**
@@ -56,6 +56,9 @@
 			smoothing_flags |= SMOOTH_OBJ
 		SET_BITFLAG_LIST(canSmoothWith)
 
+	var/area/A = loc
+	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+		add_overlay(/obj/effect/fullbright)
 
 	if(requires_activation)
 		SSair.add_to_active(src, TRUE)

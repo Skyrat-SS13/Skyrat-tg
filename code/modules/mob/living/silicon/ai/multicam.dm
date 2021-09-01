@@ -91,9 +91,7 @@
 /area/ai_multicam_room
 	name = "ai_multicam_room"
 	icon_state = "ai_camera_room"
-	static_lighting = FALSE
-	base_lighting_color = COLOR_WHITE
-	base_lighting_alpha = 255
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	area_flags = NOTELEPORT | HIDDEN_AREA | UNIQUE_AREA
 	ambientsounds = null
 	flags_1 = NONE
