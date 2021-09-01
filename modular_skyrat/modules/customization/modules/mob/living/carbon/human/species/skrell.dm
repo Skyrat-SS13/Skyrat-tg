@@ -89,7 +89,7 @@
 	name = "skrell lungs"
 	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
 	icon_state = "lungs"
-	safe_toxins_max = 40
+	safe_plasma_max = 40
 	safe_co2_max = 40
 
 	cold_message = "You can't stand the freezing cold with every breath you take!"
