@@ -55,11 +55,34 @@
 							shibarigroin = null
 						else
 							qdel(shibarigroin)
+				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_body))
+					if(do_after(user, 60))
+						shibarigroin = new(src)
+						qdel(w_uniform)
+						if(them.equip_to_slot_if_possible(shibarigroin,ITEM_SLOT_ICLOTHING,0,0,1))
+							use(1)
+							shibarigroin.color = current_color
+							shibarigroin.update_icon_state()
+							shibarigroin.update_icon()
+							shibarigroin = null
+						else
+							qdel(shibarigroin)
 
 			if(BODY_ZONE_CHEST)
 				if(!(them.w_uniform))
 					if(do_after(user, 60))
 						shibaribody = new(src)
+						if(them.equip_to_slot_if_possible(shibaribody,ITEM_SLOT_ICLOTHING,0,0,1))
+							use(1)
+							shibaribody.color = current_color
+							shibaribody.update_icon_state()
+							shibaribody.update_icon()
+						else
+							qdel(shibaribody)
+				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_groin))
+					if(do_after(user, 60))
+						shibaribody = new(src)
+						qdel(w_uniform)
 						if(them.equip_to_slot_if_possible(shibaribody,ITEM_SLOT_ICLOTHING,0,0,1))
 							use(1)
 							shibaribody.color = current_color
