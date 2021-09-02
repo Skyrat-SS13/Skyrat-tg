@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A dusty SUPER-SIZED from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
 			but you never know. Contents are sorted to always be worth 125 TC."
 	cost = 50 //SKYRAT EDIT CHANGE - ORIGINAL: 40
-	player_minimum = 80 //SKYRAT EDIT CHANGE - ORIGINAL: 40 - We never have less than 50 people.
+	player_minimum = 60 //SKYRAT EDIT CHANGE - ORIGINAL: 40 - We don't have super low pop often.
 	starting_crate_value = 145 //SKYRAT EDIT CHANGE - ORIGINAL: 125
 
 /datum/uplink_item/bundles_tc/surplus/purchase(mob/user, datum/component/uplink/U)
@@ -449,7 +449,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
 			organic host as a home base and source of fuel. Holoparasites come in various types and share damage with their host."
 	item = /obj/item/storage/box/syndie_kit/guardian
-	cost = 20 //SKYRAT EDIT CHANGE - ORIGINAL: 18 - Stupidly powerful considering traitors get 35tc now.
+	cost = 19 //SKYRAT EDIT CHANGE - ORIGINAL: 18 - Stupidly powerful considering traitors get 35tc now. You can offset the negatives with decent armor or an esword on top of that.
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 	player_minimum = 25
@@ -480,7 +480,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
 			deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
 	item = /obj/item/melee/powerfist
-	cost = 6
+	cost = 5 //SKYRAT EDIT - Original: 6 - Power Fist is a noob trap. Shaving a single TC of the price seems fair considering it's more gimmicky than anything.
 
 /datum/uplink_item/dangerous/sniper
 	name = "Sniper Rifle"
@@ -572,7 +572,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A miniaturized version of a normal syringe gun. It is very quiet when fired and can fit into any \
 			space a small item can."
 	item = /obj/item/gun/syringe/syndicate
-	cost = 4
+	cost = 2 // Skyrat Edit - Original: 4 - Encouraging chem warfare is bad, but at the same time if someone RPG syringes the HOS they're gonna get banned anyway. I think it's worth lowering this.
 	surplus = 50
 
 /datum/uplink_item/stealthy_weapons/dehy_carp
@@ -593,8 +593,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This scroll contains the secrets of an ancient martial arts technique. You will master unarmed combat \
 			and gain the ability to swat bullets from the air, but you will also refuse to use dishonorable ranged weaponry."
 	item = /obj/item/book/granter/martial/carp
-	player_minimum = 50 // SKYRAT EDIT - ORIGINAL: 25
-	cost = 18 // SKYRAT EDIT - ORIGINAL: 13 - 35tc means you can do some way too powerful combos with this at 13tc. Raising it.
+	player_minimum = 25
+	cost = 16 // SKYRAT EDIT - ORIGINAL: 13 - This was specifically priced to be combo'd with the Gloves of the North Star. Considering how lethal that combo is, and how powerful scarp on it's own it, it's worth bumping this up.
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
@@ -617,7 +617,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
 			perfectly aerodynamic (and potentially lethal) paper airplanes."
 	item = /obj/item/storage/box/syndie_kit/origami_bundle
-	cost = 12 //SKYRAT EDIT: Original value (14)
+	cost = 11 //SKYRAT EDIT: Original value (14, Skyrat Edit was 12) - Shaving a TC off the price here because this is kinda like the Power Fist, gimmicky as hell and not entirely efficient or powerful.
 	surplus = 0
 	purchasable_from = ~UPLINK_NUKE_OPS //clown ops intentionally left in, because that seems like some s-tier shenanigans.
 
@@ -648,14 +648,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			The pen holds one dose of the mixture, and can be refilled with any chemicals. Note that before the target \
 			falls asleep, they will be able to move and act."
 	item = /obj/item/pen/sleepy
-	cost = 4
+	cost = 3 //Skyrat Edit - Original: 4 - Honestly, I've been penned a lot as a secoff. This thing's not worth 4 considering how easy it is to escape most of the time if you're smart, not to mention it's been made more reasonable through nerfs.
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
 /datum/uplink_item/stealthy_weapons/suppressor
 	name = "Suppressor"
 	desc = "This suppressor will silence the shots of the weapon it is attached to for increased stealth and superior ambushing capability. It is compatible with many small ballistic guns including the Makarov, Stechkin APS and C-20r, but not revolvers or energy guns."
 	item = /obj/item/suppressor
-	cost = 3
+	cost = 1 //Skyrat Edit - Original: 3 - Literally nobody buys this anyway, and it's kinda useless since CI exists. Might as well make it 1 cause it's more useful for flavor than anything.
 	surplus = 10
 	purchasable_from = ~UPLINK_CLOWN_OPS
 
@@ -1041,7 +1041,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Slipocalypse Clusterbang"
 	desc = "A traditional clusterbang grenade with a payload consisting entirely of Syndicate soap. Useful in any scenario!"
 	item = /obj/item/grenade/clusterbuster/soap
-	cost = 3
+	cost = 2 //Skyrat Edit - Original: 3 - Another super gimmicky thing. It's pretty slow, and while it is pretty useful and arguably powerful, it doesn't need to be 3tc.
 
 /datum/uplink_item/explosives/syndicate_bomb
 	name = "Syndicate Bomb"
@@ -1241,7 +1241,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "Screwed up and have security on your tail? This handy syringe will give you a completely new identity \
 			and appearance."
 	item = /obj/item/reagent_containers/syringe/mulligan
-	cost = 4
+	cost = 2 //Skyrat Edit - Original: 4 - I dunno, I feel like this thing ain't worth 4 considering it's not very useful, especially if you're not human.
 	surplus = 30
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
@@ -1574,7 +1574,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			of the originals, these inferior copies are still quite useful, being able to provide \
 			both weal and woe on the battlefield, even if they do occasionally bite off a finger."
 	item = /obj/item/storage/book/bible/syndicate
-	cost = 5
+	cost = 3 //Skyrat Edit - Original: 6 - This thing is just absolutely useless and good for gimmicks instead of practicality. 6tc is too much.
 
 /datum/uplink_item/device_tools/thermal
 	name = "Thermal Imaging Glasses"
@@ -1623,7 +1623,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "CNS Rebooter Implant"
 	desc = "This implant will help you get back up on your feet faster after being stunned. Comes with an autosurgeon."
 	item = /obj/item/autosurgeon/organ/syndicate/anti_stun
-	cost = 8 // Skyrat edit - ORIGINAL: 12 - Honestly it isn't that good anymore, no point being 12tc.
+	cost = 6 // Skyrat edit - ORIGINAL: 12 - Honestly it isn't that good anymore, no point being 12tc. Originally considered 8, changing to 6 because maybe then it'll be worth it?
 	surplus = 0
 	purchasable_from = UPLINK_NUKE_OPS
 
