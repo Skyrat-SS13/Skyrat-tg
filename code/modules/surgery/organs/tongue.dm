@@ -34,13 +34,13 @@
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/neorusskya,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/russian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
 		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
-		/datum/language/yangyu // SKYRAT EDIT - customization - extra languages
+		/datum/language/japanese // SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -110,10 +110,12 @@
 		//SKYRAT EDIT START: Adding russian version to autohiss
 		var/static/regex/lizard_hiss_ru = new("с+", "g")
 		var/static/regex/lizard_hiSS_ru = new("С+", "g")
-		message = lizard_hiss_ru.Replace(message, "ссс")
-		message = lizard_hiSS_ru.Replace(message, "ССС")
+		message = replacetext(message, "з", "с")
+		message = replacetext(message, "З", "С")
 		message = replacetext(message, "ж", "ш")
 		message = replacetext(message, "Ж", "Ш")
+		message = lizard_hiss_ru.Replace(message, "ссс")
+		message = lizard_hiSS_ru.Replace(message, "ССС")
 		//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
