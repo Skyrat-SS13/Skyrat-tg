@@ -18,9 +18,15 @@
 	body_parts_covered = NONE
 	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+	item_flags = DROPDEL
 	//some important vars
 	var/current_color = "pink"
 	var/tight = "low" //can be low, medium and hard.
+
+/obj/item/clothing/under/shibari_body/Destroy()
+	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+	R.current_color = current_color
+	. = ..()
 
 //customization stuff
 /obj/item/clothing/under/shibari_body/update_icon_state()
@@ -30,23 +36,19 @@
 
 /obj/item/clothing/under/shibari_body/Initialize()
 	. = ..()
-	update_icon_state()
-	update_icon()
+	update_appearance()
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/under/shibari_body/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/C = user
 		if(src == C.w_uniform)
-			if((do_after(C, 100, target = src)) && (!HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
-
-			if((do_after(C, 20, target = src)) && (HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
+			if(HAS_TRAIT(C, TRAIT_RIGGER))
+				if(do_after(C, 20, target = src))
+					qdel(src)
+			else
+				if(do_after(C, 100, target = src))
+					qdel(src)
 		else
 			return
 	. = ..()
@@ -64,6 +66,7 @@
 /obj/item/clothing/under/shibari_body/dropped(mob/user, slot)
 	.=..()
 	STOP_PROCESSING(SSobj, src)
+	var/mob/living/carbon/human/C = user
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
 		C.remove_status_effect(/datum/status_effect/ropebunny)
 
@@ -101,9 +104,15 @@
 	body_parts_covered = NONE
 	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+	item_flags = DROPDEL
 	//some important vars
 	var/current_color = "pink"
 	var/tight = "low" //can be low, medium and hard.
+
+/obj/item/clothing/under/shibari_groin/Destroy()
+	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+	R.current_color = current_color
+	. = ..()
 
 //customization stuff
 /obj/item/clothing/under/shibari_groin/update_icon_state()
@@ -113,23 +122,19 @@
 
 /obj/item/clothing/under/shibari_groin/Initialize()
 	. = ..()
-	update_icon_state()
-	update_icon()
+	update_appearance()
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/under/shibari_groin/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/C = user
 		if(src == C.w_uniform)
-			if((do_after(C, 100, target = src)) && (!HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
-
-			if((do_after(C, 20, target = src)) && (HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
+			if(HAS_TRAIT(C, TRAIT_RIGGER))
+				if(do_after(C, 20, target = src))
+					qdel(src)
+			else
+				if(do_after(C, 100, target = src))
+					qdel(src)
 		else
 			return
 	. = ..()
@@ -147,6 +152,7 @@
 /obj/item/clothing/under/shibari_groin/dropped(mob/user, slot)
 	.=..()
 	STOP_PROCESSING(SSobj, src)
+	var/mob/living/carbon/human/C = user
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
 		C.remove_status_effect(/datum/status_effect/ropebunny)
 
@@ -183,9 +189,15 @@
 	body_parts_covered = NONE
 	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+	item_flags = DROPDEL
 	//some important vars
 	var/current_color = "pink"
 	var/tight = "low" //can be low, medium and hard.
+
+/obj/item/clothing/under/shibari_fullbody/Destroy()
+	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+	R.current_color = current_color
+	. = ..()
 
 //customization stuff
 /obj/item/clothing/under/shibari_fullbody/update_icon_state()
@@ -195,23 +207,19 @@
 
 /obj/item/clothing/under/shibari_fullbody/Initialize()
 	. = ..()
-	update_icon_state()
-	update_icon()
+	update_appearance()
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/under/shibari_fullbody/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/C = user
 		if(src == C.w_uniform)
-			if((do_after(C, 100, target = src)) && (!HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
-
-			if((do_after(C, 20, target = src)) && (HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
+			if(HAS_TRAIT(C, TRAIT_RIGGER))
+				if(do_after(C, 20, target = src))
+					qdel(src)
+			else
+				if(do_after(C, 100, target = src))
+					qdel(src)
 		else
 			return
 	. = ..()
@@ -229,6 +237,7 @@
 /obj/item/clothing/under/shibari_fullbody/dropped(mob/user, slot)
 	.=..()
 	STOP_PROCESSING(SSobj, src)
+	var/mob/living/carbon/human/C = user
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
 		C.remove_status_effect(/datum/status_effect/ropebunny)
 
@@ -264,9 +273,15 @@
 	body_parts_covered = NONE
 	strip_delay = 100
 	breakouttime = 100
+	item_flags = DROPDEL
 	//some important vars
 	var/current_color = "pink"
 	var/tight = "low" //can be low, medium and hard.
+
+/obj/item/clothing/gloves/shibari_hands/Destroy()
+	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+	R.current_color = current_color
+	. = ..()
 
 //customization stuff
 /obj/item/clothing/gloves/shibari_hands/update_icon_state()
@@ -276,23 +291,19 @@
 
 /obj/item/clothing/gloves/shibari_hands/Initialize()
 	. = ..()
-	update_icon_state()
-	update_icon()
+	update_appearance()
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/gloves/shibari_hands/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/C = user
 		if(src == C.gloves)
-			if((do_after(C, 100, target = src)) && (!HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
-
-			if((do_after(C, 20, target = src)) && (HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
+			if(HAS_TRAIT(C, TRAIT_RIGGER))
+				if(do_after(C, 20, target = src))
+					qdel(src)
+			else
+				if(do_after(C, 100, target = src))
+					qdel(src)
 		else
 			return
 	. = ..()
@@ -307,6 +318,7 @@
 //same stuff as above but for dropping item
 /obj/item/clothing/gloves/shibari_hands/dropped(mob/user, slot)
 	.=..()
+	var/mob/living/carbon/human/C = user
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
 		C.remove_status_effect(/datum/status_effect/ropebunny)
 
@@ -327,9 +339,15 @@
 	strip_delay = 100
 	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 	slowdown = 4
+	item_flags = DROPDEL
 	//some important vars
 	var/current_color = "pink"
 	var/tight = "low" //can be low, medium and hard.
+
+/obj/item/clothing/shoes/shibari_legs/Destroy()
+	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+	R.current_color = current_color
+	. = ..()
 
 //customization stuff
 /obj/item/clothing/shoes/shibari_legs/update_icon_state()
@@ -339,23 +357,19 @@
 
 /obj/item/clothing/shoes/shibari_legs/Initialize()
 	. = ..()
-	update_icon_state()
-	update_icon()
+	update_appearance()
 
 //unequip stuff for adding rope to hands
 /obj/item/clothing/shoes/shibari_legs/attack_hand(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/human/C = user
-		if(src == C.gloves)
-			if((do_after(C, 100, target = src)) && (!HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
-
-			if((do_after(C, 20, target = src)) && (HAS_TRAIT(C, TRAIT_RIGGER)))
-				var/obj/item/shibari_rope/R = new /obj/item/shibari_rope
-				user.put_in_hands(R)
-				qdel(src)
+		if(src == C.shoes)
+			if(HAS_TRAIT(C, TRAIT_RIGGER))
+				if(do_after(C, 20, target = src))
+					qdel(src)
+			else
+				if(do_after(C, 100, target = src))
+					qdel(src)
 		else
 			return
 	. = ..()
