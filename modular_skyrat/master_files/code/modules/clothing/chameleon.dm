@@ -38,13 +38,13 @@
 		T.dynamic_hair_suffix = initial(P.dynamic_hair_suffix)
 		T.dynamic_fhair_suffix = initial(P.dynamic_fhair_suffix)
 		T.slowdown = 0
-		var/slow = initial(P.slowdown)
-		if(slow)
-			slowtoggle = new(T, slow)
-			slowtoggle.Grant(owner)
-			slowtoggle.target = T
-		else if(slowtoggle)
-			qdel(slowtoggle)
+		// var/slow = initial(P.slowdown)
+		// if(slow)
+		// 	slowtoggle = new(T, slow)
+		// 	slowtoggle.Grant(owner)
+		// 	slowtoggle.target = T
+		// else if(slowtoggle)
+		// 	qdel(slowtoggle)
 
 /datum/action/item_action/chameleon/change/Grant(mob/M)
 	. = ..()
