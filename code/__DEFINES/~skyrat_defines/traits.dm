@@ -35,5 +35,8 @@
 // felinid traits
 #define TRAIT_FELINE "feline_aspect"
 
-#define TRAIT_SACRIFICED "sacrificed" //Makes sure that people cant be cult sacrificed twice.
+// chameleon mutation
+#define TRAIT_CHAMELEON_SKIN "chameleon_skin"
 
+//Makes sure that people cant be cult sacrificed twice.
+#define TRAIT_SACRIFICED "sacrificed"
