@@ -97,9 +97,6 @@ GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_sounds, list(/client/proc/play_local_sound, /client/proc/play_direct_mob_sound, /client/proc/play_sound, /client/proc/set_round_end_sound))
 GLOBAL_PROTECT(admin_verbs_sounds)
 GLOBAL_LIST_INIT(admin_verbs_fun, list(
-	/client/proc/change_title_screen, //SKYRAT EDIT ADDITION
-	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
-	/client/proc/change_title_screen_html, //SKYRAT EDIT ADDITION
 	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
