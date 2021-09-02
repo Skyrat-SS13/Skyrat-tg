@@ -56,4 +56,4 @@
 	. = ..()
 	if(M && (M == owner))
 		if(slowtoggle)
-			slowtoggle.Remove(M)
+			slowtoggle?.Remove(M) /// SKYRAT EDIT - Fixing master (move to upstream if this works)
