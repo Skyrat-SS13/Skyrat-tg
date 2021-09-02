@@ -38,7 +38,7 @@
 		T.dynamic_hair_suffix = initial(P.dynamic_hair_suffix)
 		T.dynamic_fhair_suffix = initial(P.dynamic_fhair_suffix)
 		T.slowdown = 0
-		// var/slow = initial(P.slowdown)
+		// var/slow = initial(P.slowdown) /// DISABLED UNTIL YOU CAN MAKE THIS WORK WITH THE BROKEN CHAMELEON CLOTHES!!!
 		// if(slow)
 		// 	slowtoggle = new(T, slow)
 		// 	slowtoggle.Grant(owner)
@@ -50,10 +50,10 @@
 	. = ..()
 	if(M && (M == owner))
 		if(slowtoggle)
-			slowtoggle?.Grant(M) /// SKYRAT EDIT - Fixing master (move to upstream if this works)
+			slowtoggle?.Grant(M)
 
 /datum/action/item_action/chameleon/change/Remove(mob/M)
 	. = ..()
 	if(M && (M == owner))
 		if(slowtoggle)
-			slowtoggle?.Remove(M) /// SKYRAT EDIT - Fixing master (move to upstream if this works)
+			slowtoggle?.Remove(M)
