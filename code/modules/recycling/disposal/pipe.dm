@@ -80,7 +80,17 @@
 	var/obj/structure/disposalholder/H2 = locate() in P
 	if(H2 && !H2.active)
 		H.merge(H2)
-
+	//SKYRAT EDIT: HURTSPOSAL
+	if(dir != P.dir)
+		if(prob(20))
+			for(var/objects_within in H.contents)
+				if(!isliving(objects_within))
+					continue
+				var/mob/living/living_within = objects_within
+				if(living_within.stat == DEAD)
+					continue
+				living_within.adjustBruteLoss(5)
+	//SKYRAT EDIT: HURTSPOSAL
 	H.forceMove(P)
 	return P
 
