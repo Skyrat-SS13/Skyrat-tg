@@ -2154,42 +2154,42 @@ GLOBAL_LIST_INIT(food, list(
 				if("flavor_text")
 					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Flavor Text", features["flavor_text"]) as message|null //Skyrat edit, removed stripped_multiline_input()
 					if(!isnull(msg))
-						features["flavor_text"] = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						features["flavor_text"] = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("silicon_flavor_text")
 					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null
 					if(!isnull(msg))
-						features["silicon_flavor_text"] = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						features["silicon_flavor_text"] = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("ooc_prefs")
 					var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
 					if(!isnull(msg))
-						ooc_prefs = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						ooc_prefs = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("general_record")
 					var/msg = input(usr, "Set your general record. This is more or less public information, available from security, medical and command consoles", "General Record", general_record) as message|null
 					if(!isnull(msg))
-						general_record = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						general_record = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("medical_record")
 					var/msg = input(usr, "Set your medical record. ", "Medical Record", medical_record) as message|null
 					if(!isnull(msg))
-						medical_record = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						medical_record = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("security_record")
 					var/msg = input(usr, "Set your security record. ", "Medical Record", security_record) as message|null
 					if(!isnull(msg))
-						security_record = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						security_record = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("background_info")
 					var/msg = input(usr, "Set your background information. (Where you come from, which culture were you raised in and why you are working here etc.)", "Background Info", background_info) as message|null
 					if(!isnull(msg))
-						background_info = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						background_info = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("exploitable_info")
 					var/msg = input(usr, "Set your exploitable information. This is sensitive informations that antagonists may get to see, recommended for better roleplay experience", "Exploitable Info", exploitable_info) as message|null
 					if(!isnull(msg))
-						exploitable_info = strip_html(msg, MAX_FLAVOR_LEN, TRUE)
+						exploitable_info = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
 				if("uses_skintones")
 					needs_update = TRUE
