@@ -114,6 +114,7 @@
 	// This does not give them 1 fewer objectives than intended.
 	for(var/i in objective_count to objective_limit - 1)
 		objectives += forge_single_generic_objective()
+	*/ //SKYRAT EDIT END
 
 /**
  * ## forge_ending_objective
