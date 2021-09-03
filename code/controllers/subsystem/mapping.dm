@@ -285,8 +285,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
-		//INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
-		add_startupmessage("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") //SKYRAT EDIT CHANGE
+		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
@@ -298,8 +297,7 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	// load the station
 	station_start = world.maxz + 1
-	//INIT_ANNOUNCE("Loading [config.map_name]...") SKYRAT EDIT REMOVAL
-	add_startupmessage("Loading [config.map_name]...")
+	INIT_ANNOUNCE("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())
@@ -320,13 +318,13 @@ Used by the AI doomsday and the self-destruct nuke.
 	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
 	if(config.minetype != "none")
 		if(mining_map_to_load)
-			add_startupmessage("MINING MAP: Loading mining level...")
+			INIT_ANNOUNCE("MINING MAP: Loading mining level...")
 			if(!mining_traits_to_load)
-				add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
+				INIT_ANNOUNCE("MINING MAP ERROR: No z-level traits detected, loading without traits.")
 			LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
-			add_startupmessage("MINING MAP: Loaded successfully.")
+			INIT_ANNOUNCE("MINING MAP: Loaded successfully.")
 		if(!mining_map_to_load)
-			add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+			INIT_ANNOUNCE("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
 			if(config.minetype == "lavaland")
 				LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
 			else if (!isnull(config.minetype) && config.minetype != "none")

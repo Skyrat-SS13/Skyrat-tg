@@ -1427,7 +1427,7 @@
 /obj/item/toy/figure/scientist
 	name = "\improper Scientist action figure"
 	icon_state = "scientist"
-	toysay = "I call toxins."
+	toysay = "I call ordnance."
 	toysound = 'sound/effects/explosionfar.ogg'
 
 /obj/item/toy/figure/syndie
@@ -1474,7 +1474,7 @@
 	if (istype(M))
 		M.log_talk(message, LOG_SAY, tag="dummy toy")
 
-	say(message, language)
+	say(message, language, sanitize = FALSE)
 	return NOPASS
 
 /obj/item/toy/dummy/GetVoice()
