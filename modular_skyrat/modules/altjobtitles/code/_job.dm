@@ -18,7 +18,7 @@
 	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
 
 /datum/job/blueshield
-	alt_titles = list("Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist")
+	alt_titles = list("Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist", "Asset Retention Agent")
 
 //Command
 /datum/job/captain
