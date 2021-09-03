@@ -1,3 +1,4 @@
+/*
 // Flags for what we can change
 #define GAG_SIZABLE 1
 #define GAG_COLORABLE 2
@@ -210,3 +211,4 @@
 #undef GAG_SIZABLE
 #undef GAG_COLORABLE
 #undef GAG_COLORABLE_AND_SIZABLE
+*/
