@@ -17,6 +17,10 @@
 	var/initialize_dirs = NONE // bitflags of pipe directions added on init, see \code\_DEFINES\pipe_construction.dm
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
+	//SKYRAT EDIT: HURTSPOSALS
+	///whether a disposal pipe will hurt if a person changes direction
+	var/fluffy = FALSE
+	//SKYRAT EDIT: HURTSPOSALS
 
 
 /obj/structure/disposalpipe/Initialize(mapload, obj/structure/disposalconstruct/make_from)
@@ -81,7 +85,7 @@
 	if(H2 && !H2.active)
 		H.merge(H2)
 	//SKYRAT EDIT: HURTSPOSAL
-	if(dir != P.dir)
+	if(dir != P.dir && !fluffy)
 		if(prob(20))
 			for(var/objects_within in H.contents)
 				if(!isliving(objects_within))
