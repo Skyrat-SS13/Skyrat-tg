@@ -108,6 +108,24 @@
 /obj/structure/decorative/fluff/holo_band/member/c
 	icon_state = "holo_band_c"
 
+//Blocks non-organics from passing
+/obj/machinery/scanner_gate/no_droids_allowed
+	locked = TRUE
+	//This doesnt actually use many other base scannergate things, it just never allows non-organics thru
+
+/obj/machinery/scanner_gate/no_droids_allowed/CanAllowThrough(atom/movable/mover, border_dir)
+	. = ..()
+	if(ishuman(mover))
+		return CheckForDroid(mover)
+	return FALSE
+
+/obj/machinery/scanner_gate/no_droids_allowed/proc/CheckForDroid(mob/living/carbon/human/no_droids_allowed)
+	if(!(no_droids_allowed.dna.species.inherent_biotypes & MOB_ORGANIC))
+		alarm_beep()
+		say("No droids allowed!")
+		return FALSE
+	return TRUE
+
 /* ----------------- Fluff/Decor ----------------- */
 /obj/structure/decorative/fluff/ai_node //Budding AI's way of interfacing with stuff it couldn't normally do so with. Needed to be placed by a willing human, before borgs were created. Used in any ruins regarding pre-bluespace, self-aware AIs
 	icon = 'modular_skyrat/modules/mapping/icons/obj/fluff/unique_fluff.dmi'
