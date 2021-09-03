@@ -8272,7 +8272,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
 "aMt" = (
-/obj/machinery/atmospherics/components/tank/toxins{
+/obj/machinery/atmospherics/components/tank/plasma{
 	dir = 4
 	},
 /obj/effect/turf_decal/delivery,
@@ -10071,7 +10071,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "aTm" = (
-/obj/machinery/igniter/incinerator_toxmix,
+/obj/machinery/igniter/incinerator_ordmix,
 /mob/living/simple_animal/chicken{
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
 	desc = "A timeless classic.";
@@ -14704,7 +14704,7 @@
 /turf/open/floor/iron/dark,
 /area/hallway/primary/port)
 "bpy" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/bot,
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = -32
@@ -30447,7 +30447,7 @@
 /turf/closed/wall/r_wall,
 /area/security/prison/safe)
 "cWb" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_toxmix{
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix{
 	dir = 8
 	},
 /obj/effect/landmark/blobstart,
@@ -31143,7 +31143,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/research{
-	name = "Toxins Lab";
+	name = "Ordnance Lab";
 	req_access_txt = "8"
 	},
 /turf/open/floor/iron/dark,
@@ -31417,7 +31417,7 @@
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
 "drD" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input{
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input{
 	dir = 1
 	},
 /turf/open/floor/engine/plasma,
@@ -32124,7 +32124,7 @@
 	dir = 1
 	},
 /obj/machinery/camera{
-	c_tag = "Toxins Mixers";
+	c_tag = "Ordnance Lab Mixers";
 	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
@@ -33103,7 +33103,7 @@
 "dUv" = (
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/door/airlock/research{
-	name = "Toxins Lab";
+	name = "Ordnance Lab";
 	req_access_txt = "8"
 	},
 /obj/structure/sign/warning/explosives/alt{
@@ -37391,7 +37391,7 @@
 /turf/open/floor/plating/plasma/rust,
 /area/maintenance/space_hut/plasmaman)
 "fyi" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxin_output{
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output{
 	dir = 1
 	},
 /turf/open/floor/engine/plasma,
@@ -38535,7 +38535,7 @@
 "fRc" = (
 /obj/structure/table/reinforced,
 /obj/item/wrench,
-/obj/item/book/manual/wiki/toxins{
+/obj/item/book/manual/wiki/ordnance{
 	pixel_x = 4;
 	pixel_y = 4
 	},
@@ -38812,7 +38812,7 @@
 /area/hallway/primary/port)
 "fXh" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/dark,
 /area/engineering/main)
@@ -39341,8 +39341,10 @@
 /turf/open/floor/engine,
 /area/ai_monitored/turret_protected/ai_upload)
 "ghE" = (
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_exterior,
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_exterior{
+	name = "Burn Chamber Exterior Airlock"
+	},
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "gik" = (
@@ -42203,11 +42205,11 @@
 /area/maintenance/starboard)
 "hml" = (
 /obj/machinery/atmospherics/components/binary/valve,
-/obj/machinery/button/ignition/incinerator/toxmix{
+/obj/machinery/button/ignition/incinerator/ordmix{
 	pixel_x = -6;
 	pixel_y = 30
 	},
-/obj/machinery/button/door/incinerator_vent_toxmix{
+/obj/machinery/button/door/incinerator_vent_ordmix{
 	pixel_x = 8;
 	pixel_y = 30
 	},
@@ -44688,7 +44690,7 @@
 /turf/open/floor/engine,
 /area/engineering/storage/tech)
 "ijz" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "ikz" = (
@@ -51066,9 +51068,9 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/machinery/requests_console/directional/south{
-	department = "Toxins Lab";
+	department = "Ordnance Lab";
 	departmentType = 2;
-	name = "Toxins Lab Requests Console";
+	name = "Ordnance Lab Requests Console";
 	receive_ore_updates = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -56078,7 +56080,7 @@
 	},
 /obj/machinery/light/small/directional/north,
 /obj/machinery/camera{
-	c_tag = "Toxins Launch Site";
+	c_tag = "Testing Lab";
 	name = "science camera";
 	network = list("ss13","rd")
 	},
@@ -63309,7 +63311,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/structure/rack,
-/obj/item/storage/backpack/satchel/tox,
+/obj/item/storage/backpack/satchel/science,
 /obj/item/analyzer,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -64895,8 +64897,8 @@
 	},
 /area/maintenance/port/fore)
 "phr" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxins_mixing_input,
-/obj/machinery/sparker/toxmix{
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/ordnance_mixing_input,
+/obj/machinery/sparker/ordmix{
 	name = "chamber igniter";
 	pixel_x = -16
 	},
@@ -66340,7 +66342,7 @@
 /turf/open/floor/carpet/green,
 /area/security/detectives_office)
 "pFd" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -66695,11 +66697,11 @@
 /obj/item/cartridge/roboticist{
 	pixel_x = -3
 	},
-/obj/item/cartridge/signal/toxins{
+/obj/item/cartridge/signal/ordnance{
 	pixel_x = 6
 	},
-/obj/item/cartridge/signal/toxins,
-/obj/item/cartridge/signal/toxins,
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
 /obj/item/circuitboard/aicore{
 	pixel_y = 5
 	},
@@ -68597,7 +68599,7 @@
 	dir = 1
 	},
 /obj/machinery/camera{
-	c_tag = "Toxins Burn Chamber";
+	c_tag = "Ordnance Lab Burn Chamber";
 	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
@@ -72438,12 +72440,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
-	req_access_txt = "8"
-	},
 /obj/effect/turf_decal/stripes/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/research{
+	name = "Ordnance Lab Storage";
+	req_access_txt = "8"
+	},
 /turf/open/floor/iron/dark,
 /area/science/storage)
 "rZl" = (
@@ -72970,7 +72972,7 @@
 /turf/open/floor/iron,
 /area/service/hydroponics)
 "shU" = (
-/obj/machinery/air_sensor/atmos/toxin_tank,
+/obj/machinery/air_sensor/atmos/plasma_tank,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "sia" = (
@@ -73361,7 +73363,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/camera/preset/toxins{
+/obj/machinery/camera/preset/ordnance{
 	dir = 8
 	},
 /turf/open/floor/engine/vacuum,
@@ -76615,7 +76617,7 @@
 /turf/open/floor/iron/dark,
 /area/cargo/miningoffice)
 "tzc" = (
-/obj/machinery/air_sensor/atmos/toxins_mixing_tank,
+/obj/machinery/air_sensor/atmos/ordnance_mixing_tank,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
@@ -80780,7 +80782,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible{
 	dir = 4
 	},
-/obj/machinery/computer/atmos_control/tank/toxin_tank{
+/obj/machinery/computer/atmos_control/tank/plasma_tank{
 	dir = 1
 	},
 /turf/open/floor/iron/showroomfloor,
@@ -81348,7 +81350,7 @@
 /area/tcommsat/computer)
 "vlU" = (
 /obj/effect/decal/remains/human,
-/obj/machinery/sparker/toxmix{
+/obj/machinery/sparker/ordmix{
 	name = "chamber igniter";
 	pixel_x = -16
 	},
@@ -82634,7 +82636,7 @@
 	},
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/camera{
-	c_tag = "Toxins Storage";
+	c_tag = "Ordnance Lab Storage";
 	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
@@ -82939,7 +82941,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1
 	},
-/obj/machinery/airlock_sensor/incinerator_toxmix{
+/obj/machinery/airlock_sensor/incinerator_ordmix{
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
@@ -83505,7 +83507,7 @@
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
 "vZL" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -83830,7 +83832,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/research{
-	name = "Toxins Storage";
+	name = "Ordnance Lab Storage";
 	req_access_txt = "8"
 	},
 /obj/structure/cable,
@@ -84225,7 +84227,7 @@
 	},
 /area/hallway/primary/fore)
 "wmH" = (
-/obj/machinery/door/poddoor/incinerator_toxmix,
+/obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "wmK" = (
@@ -85250,7 +85252,7 @@
 /area/maintenance/starboard)
 "wEu" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Toxins Lab Maintenance";
+	name = "Ordnance Lab Maintenance";
 	req_access_txt = "8"
 	},
 /obj/structure/sign/directions/evac{
@@ -88062,10 +88064,12 @@
 /turf/open/floor/iron/dark,
 /area/service/janitor)
 "xCH" = (
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_interior,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_toxmix{
+/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_ordmix{
 	pixel_x = -22
+	},
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_interior{
+	name = "Burn Chamber Interior Airlock"
 	},
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -88353,7 +88357,7 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "xHs" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
