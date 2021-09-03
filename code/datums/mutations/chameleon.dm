@@ -61,7 +61,10 @@
 
 	if(!proximity) //stops tk from breaking chameleon
 		return
-	owner.alpha = CHAMELEON_MUTATION_DEFAULT_TRANSPARENCY
+	if(HAS_TRAIT(owner, TRAIT_CHAMELEON_SKIN))
+		owner.alpha = CHAMELEON_MUTATION_DEFAULT_TRANSPARENCY
+	else
+		owner.alpha = 255
 
 /datum/mutation/human/chameleon/on_losing(mob/living/carbon/human/owner)
 	if(..())
