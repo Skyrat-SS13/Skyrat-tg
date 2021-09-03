@@ -3,7 +3,7 @@
 	if(stage >= 6)
 		return
 
-	if(owner.stat != DEAD)
+	if(owner && owner.stat != DEAD)
 		stage++
 
 	if(stage < 6)
