@@ -955,7 +955,7 @@
 /area/ai_monitored/turret_protected/aisat_interior)
 "adL" = (
 /turf/closed/wall,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "adM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
@@ -1083,7 +1083,7 @@
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "aej" = (
 /obj/machinery/porta_turret/ai{
 	installation = /obj/item/gun/energy/e_gun
@@ -1265,7 +1265,7 @@
 	},
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "aeL" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1286,7 +1286,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "aeO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
@@ -1410,7 +1410,7 @@
 "afd" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "afe" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -4480,7 +4480,7 @@
 /turf/open/floor/iron/dark,
 /area/security/warden)
 "anE" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
@@ -19962,7 +19962,7 @@
 	areastring = "/area/medical/cryo";
 	dir = 4;
 	name = "Cryogenics APC";
-	pixel_x = 25
+	pixel_x = 24
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
@@ -20303,7 +20303,7 @@
 	areastring = "/area/medical/paramedic";
 	dir = 8;
 	name = "Paramedic Dispatch APC";
-	pixel_x = -26
+	pixel_x = -25
 	},
 /turf/open/floor/iron/white,
 /area/medical/paramedic)
@@ -20951,7 +20951,7 @@
 /obj/machinery/power/apc{
 	dir = 1;
 	name = "Medbay APC";
-	pixel_y = 24
+	pixel_y = 23
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -24742,12 +24742,12 @@
 /turf/open/floor/iron/dark,
 /area/hallway/primary/aft)
 "bBC" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/engine,
 /area/engineering/storage_shared)
 "bBE" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/stripes/line{
@@ -25168,7 +25168,7 @@
 /turf/open/floor/plating,
 /area/engineering/storage_shared)
 "bCQ" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -25743,18 +25743,9 @@
 	pixel_x = -8;
 	pixel_y = 14
 	},
-/obj/item/cartridge/signal/toxins{
-	pixel_x = -9;
-	pixel_y = 4
-	},
-/obj/item/cartridge/signal/toxins{
-	pixel_x = -5;
-	pixel_y = 1
-	},
-/obj/item/cartridge/signal/toxins{
-	pixel_x = -9;
-	pixel_y = -1
-	},
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
 /obj/item/paper_bin{
 	pixel_x = 7;
 	pixel_y = 3
@@ -28110,9 +28101,7 @@
 /turf/open/floor/engine/n2o,
 /area/engineering/atmos)
 "bNW" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bNX" = (
@@ -29618,9 +29607,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bSj" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxin_output{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bSk" = (
@@ -29844,9 +29831,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bSV" = (
-/obj/machinery/computer/atmos_control/tank/toxin_tank{
-	dir = 8
-	},
+/obj/machinery/computer/atmos_control/tank/plasma_tank,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
 	dir = 4
 	},
@@ -29856,7 +29841,7 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bSW" = (
-/obj/machinery/air_sensor/atmos/toxin_tank,
+/obj/machinery/air_sensor/atmos/plasma_tank,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bSX" = (
@@ -29867,7 +29852,7 @@
 /area/engineering/atmos)
 "bSY" = (
 /obj/machinery/light/small/directional/east,
-/obj/machinery/atmospherics/miner/toxins,
+/obj/machinery/atmospherics/miner/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bSZ" = (
@@ -34589,6 +34574,7 @@
 	name = "Telecommunications External Access";
 	req_access_txt = "61"
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "clC" = (
@@ -34601,6 +34587,7 @@
 	brightness = 3;
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "clE" = (
@@ -34649,6 +34636,7 @@
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "clN" = (
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "clP" = (
@@ -39037,7 +39025,7 @@
 /turf/open/floor/iron,
 /area/commons/dorms/barracks)
 "dEc" = (
-/obj/machinery/igniter/incinerator_toxmix,
+/obj/machinery/igniter/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "dEr" = (
@@ -40182,9 +40170,7 @@
 /area/ai_monitored/command/nuke_storage)
 "eNl" = (
 /obj/machinery/light/small/directional/west,
-/obj/machinery/airlock_sensor/incinerator_toxmix{
-	pixel_x = -24
-	},
+/obj/machinery/airlock_sensor/incinerator_ordmix,
 /obj/machinery/atmospherics/components/binary/pump/on,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/engine,
@@ -40378,7 +40364,7 @@
 /area/engineering/main)
 "eXJ" = (
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_interior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_interior,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -43264,7 +43250,7 @@
 /area/security/prison)
 "htp" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/toxins,
+/obj/item/book/manual/wiki/ordnance,
 /obj/item/analyzer,
 /obj/item/wrench,
 /obj/item/screwdriver{
@@ -43860,9 +43846,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/machinery/computer/atmos_control/toxinsmix{
-	dir = 1
-	},
+/obj/machinery/computer/atmos_control/ordnancemix,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
@@ -43938,6 +43922,7 @@
 /area/medical/treatment_center)
 "hQz" = (
 /obj/structure/closet/emcloset/anchored,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "hQC" = (
@@ -44339,10 +44324,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/computer/security/telescreen/toxins{
-	dir = 8;
-	pixel_x = 30
-	},
+/obj/machinery/computer/security/telescreen/ordnance,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 10
 	},
@@ -44567,7 +44549,7 @@
 /area/engineering/supermatter/room)
 "izu" = (
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_exterior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_exterior,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
@@ -45859,7 +45841,7 @@
 /turf/open/floor/iron,
 /area/maintenance/disposal)
 "jDb" = (
-/obj/machinery/air_sensor/atmos/toxins_mixing_tank,
+/obj/machinery/air_sensor/atmos/ordnance_mixing_tank,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "jDx" = (
@@ -46218,8 +46200,7 @@
 /obj/item/dualsaber/toy,
 /obj/item/disk/nuclear/fake/obvious,
 /obj/structure/safe/floor{
-	desc = "A large safe bolted into the ground with HONK spraypainted in large, pink letters.\"";
-	name = "Clown Safe"
+	desc = "A large safe bolted into the ground with HONK spraypainted in large, pink letters.\"";name = "Clown Safe"},
 	},
 /obj/item/storage/box/donkpockets/donkpockethonk,
 /obj/item/soap/deluxe,
@@ -46531,7 +46512,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "krb" = (
 /obj/structure/cable,
 /obj/machinery/holopad,
@@ -47938,10 +47919,7 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/components/tank/toxins{
-	dir = 4;
-	initialize_directions = 4
-	},
+/obj/machinery/atmospherics/components/tank/plasma,
 /turf/open/floor/iron/dark,
 /area/maintenance/disposal/incinerator)
 "lzn" = (
@@ -48338,7 +48316,7 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "lQe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -48678,7 +48656,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "mfu" = (
 /obj/machinery/door/window/northleft{
 	base_state = "right";
@@ -48913,7 +48891,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "mqH" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/trinary/filter/critical{
@@ -49273,6 +49251,7 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "mEz" = (
@@ -49468,7 +49447,7 @@
 "mPf" = (
 /obj/structure/sign/poster/official/bless_this_spess,
 /turf/closed/wall,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "mPh" = (
 /obj/machinery/door/firedoor,
 /obj/structure/sign/directions/evac{
@@ -49906,10 +49885,7 @@
 /turf/open/floor/iron/white,
 /area/science/genetics)
 "nif" = (
-/obj/machinery/camera/preset/toxins{
-	c_tag = "Bomb Testing Asteroid Aft";
-	dir = 8
-	},
+/obj/machinery/camera/preset/ordnance,
 /turf/open/floor/plating/asteroid/airless,
 /area/asteroid/nearstation/bomb_site)
 "nih" = (
@@ -50828,7 +50804,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/aft)
 "nUR" = (
-/obj/machinery/door/poddoor/incinerator_toxmix,
+/obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "nVz" = (
@@ -52566,10 +52542,7 @@
 /turf/open/floor/iron/white/corner,
 /area/hallway/secondary/exit/departure_lounge)
 "prB" = (
-/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_toxmix{
-	pixel_x = 6;
-	pixel_y = -26
-	},
+/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_ordmix,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -52580,10 +52553,7 @@
 	pixel_x = 24
 	},
 /obj/structure/cable,
-/obj/machinery/button/ignition/incinerator/toxmix{
-	pixel_x = -6;
-	pixel_y = -24
-	},
+/obj/machinery/button/ignition/incinerator/ordmix,
 /obj/machinery/atmospherics/components/binary/valve,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
@@ -53936,6 +53906,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	name = "Air Out"
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "qxv" = (
@@ -54184,11 +54155,9 @@
 	},
 /area/maintenance/department/cargo)
 "qJL" = (
-/obj/machinery/camera/preset/toxins{
-	dir = 5
-	},
-/turf/open/floor/plating/asteroid/airless,
-/area/asteroid/nearstation/bomb_site)
+/obj/structure/cable,
+/turf/closed/wall/r_wall,
+/area/tcommsat/computer)
 "qKh" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 8
@@ -55422,9 +55391,7 @@
 	},
 /area/maintenance/department/crew_quarters/dorms)
 "rJM" = (
-/obj/machinery/mass_driver/toxins{
-	dir = 4
-	},
+/obj/machinery/mass_driver/ordnance,
 /turf/open/floor/plating,
 /area/science/mixing)
 "rJT" = (
@@ -55606,7 +55573,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "rQA" = (
-/obj/machinery/door/poddoor/massdriver_toxins,
+/obj/machinery/door/poddoor/massdriver_ordnance,
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/science/mixing)
@@ -55635,7 +55602,7 @@
 /area/commons/fitness/recreation)
 "rSl" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/iron/dark,
 /area/science/storage)
 "rSH" = (
@@ -56586,7 +56553,7 @@
 /area/space/nearstation)
 "sPs" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/science/storage)
@@ -57358,7 +57325,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/plating,
 /area/engineering/main)
 "tuM" = (
@@ -59182,7 +59149,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/crew_quarters/cryopod)
+/area/commons/cryopods)
 "uUQ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
@@ -59573,9 +59540,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
 "viN" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_toxmix{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "vjH" = (
@@ -60656,9 +60621,7 @@
 /turf/closed/wall/mineral/iron,
 /area/service/library/artgallery)
 "whK" = (
-/obj/machinery/button/door/incinerator_vent_toxmix{
-	pixel_y = -24
-	},
+/obj/machinery/button/door/incinerator_vent_ordmix,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -61892,7 +61855,7 @@
 	areastring = "/area/medical/morgue";
 	dir = 8;
 	name = "Morgue APC";
-	pixel_x = -24
+	pixel_x = -25
 	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -62081,6 +62044,7 @@
 "xnm" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/tcommsat/computer)
 "xnP" = (
@@ -62284,9 +62248,7 @@
 	req_access_txt = "8"
 	},
 /obj/effect/turf_decal/loading_area,
-/obj/machinery/computer/pod/old/mass_driver_controller/toxinsdriver{
-	pixel_x = -24
-	},
+/obj/machinery/computer/pod/old/mass_driver_controller/ordnancedriver,
 /turf/open/floor/iron,
 /area/science/mixing)
 "xxO" = (
@@ -62860,8 +62822,7 @@
 /area/medical/medbay/central)
 "xUX" = (
 /obj/structure/safe/floor{
-	desc = "A large safe bolted into the ground, it has a small set of unintelligible initials engraved in it. \"";
-	name = "Mime Safe"
+	desc = "A large safe bolted into the ground, it has a small set of unintelligible initials engraved in it. \"";name = "Mime Safe"},
 	},
 /obj/item/seeds/banana/mime,
 /obj/item/gun/magic/wand/nothing,
@@ -63083,7 +63044,7 @@
 	areastring = "/area/medical/medbay/lobby";
 	dir = 4;
 	name = "Medbay Lobby APC";
-	pixel_x = 25
+	pixel_x = 24
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/white,
@@ -63194,7 +63155,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
 "ylO" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "ymb" = (
@@ -91437,8 +91398,8 @@ mVM
 mVM
 mVM
 mVM
-mVM
-mVM
+tue
+tue
 clw
 clw
 clw
@@ -91695,7 +91656,7 @@ aaa
 aaa
 aaa
 aaa
-mVM
+tue
 clA
 clD
 clJ
@@ -92211,7 +92172,7 @@ aaa
 aaa
 bgl
 clw
-clw
+qJL
 clw
 clL
 cma
@@ -92983,10 +92944,10 @@ aaa
 abI
 clw
 clw
-clw
-clw
-clw
-clw
+qJL
+qJL
+qJL
+qJL
 clw
 clw
 clw
@@ -121973,7 +121934,7 @@ vpz
 vpz
 vpz
 faY
-qJL
+nif
 nZF
 tSk
 tSk
