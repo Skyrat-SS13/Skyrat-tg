@@ -18,8 +18,8 @@
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
 	//SKYRAT EDIT: HURTSPOSALS
-	///whether a disposal pipe will hurt if a person changes direction
-	var/fluffy = FALSE
+	/// Whether a disposal pipe will hurt if a person changes direction. `FALSE` for hurting, `TRUE` to prevent making them hurt.
+	var/padded_corners = FALSE
 	//SKYRAT EDIT: HURTSPOSALS
 
 
