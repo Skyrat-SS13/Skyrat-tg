@@ -43,7 +43,6 @@
 	text_lose_indication = "<span class='notice'>You can no longer see the heat rising off of your skin...</span>"
 	time_coeff = 2
 	instability = 25
-	locked = TRUE //SKYRAT EDIT ADDITION
 	synchronizer_coeff = 1
 	power_coeff = 1
 	energy_coeff = 1
