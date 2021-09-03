@@ -4318,9 +4318,7 @@
 /turf/open/floor/iron,
 /area/commons/storage/primary)
 "km" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_toxmix{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "kn" = (
@@ -5586,7 +5584,7 @@
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "nl" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -5643,9 +5641,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/tank/toxins{
-	dir = 4
-	},
+/obj/machinery/atmospherics/components/tank/plasma,
 /turf/open/floor/iron/dark,
 /area/science/explab)
 "nu" = (
@@ -5920,7 +5916,7 @@
 /turf/closed/wall,
 /area/maintenance/central/secondary)
 "oc" = (
-/obj/machinery/igniter/incinerator_toxmix,
+/obj/machinery/igniter/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "od" = (
@@ -8896,9 +8892,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/machinery/airlock_sensor/incinerator_toxmix{
-	pixel_x = -24
-	},
+/obj/machinery/airlock_sensor/incinerator_ordmix,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "vu" = (
@@ -13764,7 +13758,7 @@
 /area/hallway/secondary/exit)
 "GX" = (
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_exterior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_exterior,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
@@ -14857,10 +14851,7 @@
 /area/maintenance/department/medical)
 "Jv" = (
 /obj/machinery/atmospherics/components/binary/valve,
-/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_toxmix{
-	pixel_x = 6;
-	pixel_y = -26
-	},
+/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_ordmix,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -14874,10 +14865,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/button/ignition/incinerator/toxmix{
-	pixel_x = -6;
-	pixel_y = -24
-	},
+/obj/machinery/button/ignition/incinerator/ordmix,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "Jw" = (
@@ -14899,7 +14887,7 @@
 /turf/closed/wall,
 /area/medical/surgery)
 "Jz" = (
-/obj/machinery/air_sensor/atmos/toxins_mixing_tank,
+/obj/machinery/air_sensor/atmos/ordnance_mixing_tank,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "JA" = (
@@ -16008,15 +15996,9 @@
 /area/medical/medbay/central)
 "LZ" = (
 /obj/structure/table,
-/obj/item/cartridge/signal/toxins,
-/obj/item/cartridge/signal/toxins{
-	pixel_x = -4;
-	pixel_y = 2
-	},
-/obj/item/cartridge/signal/toxins{
-	pixel_x = 4;
-	pixel_y = 6
-	},
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
 /obj/machinery/camera{
 	c_tag = "Research Director's Office";
 	dir = 1;
@@ -17390,7 +17372,7 @@
 /area/security/checkpoint/engineering)
 "OR" = (
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_interior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_interior,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -17576,7 +17558,7 @@
 /turf/open/floor/iron,
 /area/command/heads_quarters/ce)
 "Pj" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/engine,
 /area/science/storage)
@@ -17924,7 +17906,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
 "PX" = (
-/obj/machinery/camera/preset/toxins,
+/obj/machinery/camera/preset/ordnance,
 /turf/open/floor/plating/asteroid/airless,
 /area/science/misc_lab/range)
 "PY" = (
@@ -18297,7 +18279,7 @@
 /area/command/heads_quarters/hop)
 "QR" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/toxins,
+/obj/item/book/manual/wiki/ordnance,
 /obj/item/analyzer,
 /obj/item/wrench,
 /obj/item/screwdriver{
@@ -21150,10 +21132,7 @@
 /turf/open/floor/iron,
 /area/science/mixing)
 "XC" = (
-/obj/machinery/camera/preset/toxins{
-	c_tag = "Bomb Testing Asteroid Aft";
-	dir = 1
-	},
+/obj/machinery/camera/preset/ordnance,
 /turf/open/floor/plating/asteroid/airless,
 /area/asteroid/nearstation/bomb_site)
 "XD" = (
@@ -21504,9 +21483,7 @@
 /area/commons/storage/art)
 "Yq" = (
 /obj/machinery/atmospherics/components/binary/valve,
-/obj/machinery/button/door/incinerator_vent_toxmix{
-	pixel_y = -24
-	},
+/obj/machinery/button/door/incinerator_vent_ordmix,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -21651,7 +21628,7 @@
 /turf/open/floor/iron,
 /area/medical/cryo)
 "YF" = (
-/obj/machinery/door/poddoor/incinerator_toxmix,
+/obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "YG" = (
