@@ -17,7 +17,7 @@ MODULAR FOLDER. HANDLES MINDSHIELDS BEING BROKEN
 	..()
 
 /obj/item/implant/mindshield
-	var/health = 3
+	var/health = 1
 	var/broken = FALSE //Not used right now, but included so future people can indeed modify it
 
 
@@ -36,4 +36,5 @@ MODULAR FOLDER. HANDLES MINDSHIELDS BEING BROKEN
 
 /obj/item/implant/mindshield/removed()
 	broken = FALSE //RESET BROKEN STATUS
-	health = 3 //RESET BROKEN STATUS
+	health = 1 //RESET BROKEN STATUS
+	REMOVE_TRAIT(imp_in,TRAIT_BROKEN_MINDSHIELD,IMPLANT_TRAIT)
