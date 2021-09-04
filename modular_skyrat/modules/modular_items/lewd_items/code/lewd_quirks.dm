@@ -109,7 +109,7 @@
 						owner.emote("stumble")
 						owner.Immobilize(2 SECONDS, TRUE)
 				if(5)
-					if(stress >= 100)
+					if(stress <= 100)
 						to_chat(owner, span_purple("You feel like your genitals are burning..."))
 						owner.blur_eyes(10)
 						owner.adjustStaminaLoss(20)
