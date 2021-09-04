@@ -36,7 +36,8 @@
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
 	var/datum/reagent/reagent_name = initial(choice)
 	var/logging_text = "[key_name(cortical_owner)] injected [key_name(cortical_owner.human_host)] with [reagent_name] at [loc_name(human_turf)]"
-	log_game(logging_text)
+	cortical_owner.log_message(logging_text, LOG_GAME)
+	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 	StartCooldown()
 
 /datum/action/cooldown/choose_focus
@@ -96,6 +97,46 @@
 			cortical_owner.human_host.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
 			cortical_owner.human_host.add_quirk(/datum/quirk/light_step)
 
+/datum/action/cooldown/learn_bloodchemical
+	name = "Learn Chemical from Blood (5 stat points)"
+	cooldown_time = 1 SECONDS
+	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
+	button_icon_state = "level"
+
+/datum/action/cooldown/learn_bloodchemical/Trigger()
+	if(!IsAvailable())
+		to_chat(owner, span_warning("This action is still on cooldown!"))
+		return
+	if(!iscorticalborer(owner))
+		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
+		return
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(!cortical_owner.inside_human())
+		to_chat(cortical_owner, span_warning("You require a host to upgrade!"))
+		return
+	if(cortical_owner.host_sugar())
+		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
+		return
+	if(cortical_owner.human_host.reagents.reagent_list.len <= 0)
+		to_chat(owner, span_warning("There are no reagents inside the host!"))
+		return
+	if(cortical_owner.chemical_evolution < 5)
+		to_chat(owner, span_warning("You do not have 5 upgrade points for a focus!"))
+		return
+	cortical_owner.chemical_evolution -= 5
+	var/datum/reagent/reagent_choice = tgui_input_list(cortical_owner, "Choose a chemical to learn.", "Chemical Selection", cortical_owner.human_host.reagents.reagent_list)
+	if(!reagent_choice)
+		to_chat(owner, span_warning("No selection made!"))
+		cortical_owner.chemical_evolution += 5
+		return
+	if(locate(reagent_choice) in cortical_owner.known_chemicals)
+		to_chat(owner, span_warning("You already know this chemical!"))
+		cortical_owner.chemical_evolution += 5
+		return
+	cortical_owner.known_chemicals += reagent_choice.type
+	to_chat(owner, span_notice("You have learned [initial(reagent_choice.name)]"))
+	StartCooldown()
+
 //become stronger by learning new chemicals
 /datum/action/cooldown/upgrade_chemical
 	name = "Learn New Chemical"
@@ -125,15 +166,14 @@
 		to_chat(owner, span_warning("There are no more chemicals!"))
 		cortical_owner.chemical_evolution++
 		return
-	var/reagent_choice = tgui_input_list(cortical_owner, "Choose a chemical to learn.", "Chemical Selection", cortical_owner.potential_chemicals)
+	var/datum/reagent/reagent_choice = tgui_input_list(cortical_owner, "Choose a chemical to learn.", "Chemical Selection", cortical_owner.potential_chemicals)
 	if(!reagent_choice)
 		to_chat(owner, span_warning("No selection made!"))
 		cortical_owner.chemical_evolution++
 		return
 	cortical_owner.known_chemicals += reagent_choice
 	cortical_owner.potential_chemicals -= reagent_choice
-	var/datum/reagent/reagent_name = initial(reagent_choice)
-	to_chat(owner, span_notice("You have learned [reagent_name]"))
+	to_chat(owner, span_notice("You have learned [initial(reagent_choice.name)]"))
 	StartCooldown()
 
 //become stronger by affecting the stats
@@ -230,7 +270,8 @@
 		singular_fear.Paralyze(7 SECONDS)
 		var/turf/human_turfone = get_turf(singular_fear)
 		var/logging_text = "[key_name(cortical_owner)] feared/paralyzed [key_name(singular_fear)] at [loc_name(human_turfone)]"
-		log_game(logging_text)
+		cortical_owner.log_message(logging_text, LOG_GAME)
+		singular_fear.log_message(logging_text, LOG_GAME)
 		StartCooldown()
 		return
 	var/mob/living/carbon/human/choose_fear = tgui_input_list(cortical_owner, "Choose who you will fear!", "Fear Choice", potential_freezers)
@@ -244,7 +285,8 @@
 	choose_fear.Paralyze(7 SECONDS)
 	var/turf/human_turftwo = get_turf(choose_fear)
 	var/logging_text = "[key_name(cortical_owner)] feared/paralyzed [key_name(choose_fear)] at [loc_name(human_turftwo)]"
-	log_game(logging_text)
+	cortical_owner.log_message(logging_text, LOG_GAME)
+	choose_fear.log_message(logging_text, LOG_GAME)
 	StartCooldown()
 
 //to check the health of the human
@@ -304,7 +346,8 @@
 		borer_organ.Remove(cortical_owner.human_host)
 		var/turf/human_turfone = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] left [key_name(cortical_owner.human_host)] at [loc_name(human_turfone)]"
-		log_game(logging_text)
+		cortical_owner.log_message(logging_text, LOG_GAME)
+		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 		StartCooldown()
 		return
 	var/list/usable_hosts = list()
@@ -312,8 +355,6 @@
 		if(!ishuman(listed_human)) //no nonhuman hosts
 			continue
 		if(listed_human.stat == DEAD) //no dead hosts
-			continue
-		if(considered_afk(listed_human.mind)) //no afk hosts
 			continue
 		if(listed_human.has_borer())
 			continue
@@ -341,7 +382,8 @@
 		borer_organ.Insert(cortical_owner.human_host)
 		var/turf/human_turftwo = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turftwo)]"
-		log_game(logging_text)
+		cortical_owner.log_message(logging_text, LOG_GAME)
+		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 		StartCooldown()
 		return
 	var/choose_host = tgui_input_list(cortical_owner, "Choose your host!", "Host Choice", usable_hosts)
@@ -366,7 +408,8 @@
 	borer_organ.Insert(cortical_owner.human_host)
 	var/turf/human_turfthree = get_turf(cortical_owner.human_host)
 	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turfthree)]"
-	log_game(logging_text)
+	cortical_owner.log_message(logging_text, LOG_GAME)
+	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 	StartCooldown()
 
 //you can force your host to speak... dont abuse this
@@ -400,7 +443,8 @@
 	cortical_host.say(message = borer_message, forced = TRUE)
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
 	var/logging_text = "[key_name(cortical_owner)] forced [key_name(cortical_owner.human_host)] to say [borer_message] at [loc_name(human_turf)]"
-	log_game(logging_text)
+	cortical_owner.log_message(logging_text, LOG_GAME)
+	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 	StartCooldown()
 
 //we need a way to produce offspring
@@ -449,7 +493,8 @@
 	playsound(borer_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	to_chat(spawn_borer, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	var/logging_text = "[key_name(cortical_owner)] gave birth to [key_name(spawn_borer)] at [loc_name(borer_turf)]"
-	log_game(logging_text)
+	cortical_owner.log_message(logging_text, LOG_GAME)
+	spawn_borer.log_message(logging_text, LOG_GAME)
 	StartCooldown()
 
 //revive your host
@@ -491,5 +536,6 @@
 	to_chat(cortical_owner.human_host, span_boldwarning("Your heart jumpstarts!"))
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
 	var/logging_text = "[key_name(cortical_owner)] revived [key_name(cortical_owner.human_host)] at [loc_name(human_turf)]"
-	log_game(logging_text)
+	cortical_owner.log_message(logging_text, LOG_GAME)
+	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 	StartCooldown()

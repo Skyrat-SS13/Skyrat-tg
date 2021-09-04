@@ -673,7 +673,6 @@
 	plane = SPLASHSCREEN_PLANE
 	var/client/holder
 
-/* SKYRAT EDIT REMOVAL
 /atom/movable/screen/splash/New(client/C, visible, use_previous_title) //TODO: Make this use INITIALIZE_IMMEDIATE, except its not easy
 	. = ..()
 	if(!istype(C))
@@ -694,7 +693,6 @@
 		icon = SStitle.previous_icon
 
 	holder.screen += src
-*/
 
 /atom/movable/screen/splash/proc/Fade(out, qdel_after = TRUE)
 	if(QDELETED(src))

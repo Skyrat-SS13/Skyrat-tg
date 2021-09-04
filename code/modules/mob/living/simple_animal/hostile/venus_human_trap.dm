@@ -123,7 +123,7 @@
 	deathsound = 'sound/creatures/venus_trap_death.ogg'
 	attack_sound = 'sound/creatures/venus_trap_hit.ogg'
 	unsuitable_heat_damage = 5 //note that venus human traps do not take cold damage, only heat damage- this is because space vines can cause hull breaches
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 0
 	/// copied over from the code from eyeballs (the mob) to make it easier for venus human traps to see in kudzu that doesn't have the transparency mutation
 	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
@@ -143,6 +143,7 @@
 	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
 
 	COOLDOWN_DECLARE(help_grow)
+	COOLDOWN_DECLARE(attack_cooldown)
 
 
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
@@ -270,6 +271,9 @@
 		else
 			attacked_spacevine.grow()
 			to_chat(src, span_notice("You help [attacked_spacevine] grow..."))
+	if(!COOLDOWN_FINISHED(src, attack_cooldown))
+		return
+	COOLDOWN_START(src, attack_cooldown, 1 SECONDS)
 	var/turf/vine_turf = get_turf(attack_target)
 	var/static/list/break_list = typecacheof(list(
 		/obj/machinery/door,

@@ -20,37 +20,24 @@
 //Looping sound for vibrating stuff//
 /////////////////////////////////////
 
-/datum/looping_sound/vibrator_low
+/datum/looping_sound/vibrator
 	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
 	start_length = 1
 	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
 	mid_length = 1
 	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
-	volume = 80
-	falloff_distance = 1
-	falloff_exponent = 5
-	extra_range = SILENCED_SOUND_EXTRARANGE
-/datum/looping_sound/vibrator_medium
-	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
-	start_length = 1
-	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
-	mid_length = 1
-	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
-	volume = 90
 	falloff_distance = 1
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
 
-/datum/looping_sound/vibrator_high
-	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
-	start_length = 1
-	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
-	mid_length = 1
-	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
+/datum/looping_sound/vibrator/low
+	volume = 80
+
+/datum/looping_sound/vibrator/medium
+	volume = 90
+
+/datum/looping_sound/vibrator/high
 	volume = 100
-	falloff_distance = 1
-	falloff_exponent = 5
-	extra_range = SILENCED_SOUND_EXTRARANGE
 
 ////////////////////////////////////////////////////////////////////////////////
 //Boxes for vending machine, to spawn stuff with important cheap tools in pack//
@@ -135,7 +122,7 @@
 	return FALSE
 
 /mob/living/carbon/is_ballgagged()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/mask/ballgag_phallic) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
+	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
 
 //proc for condoms. Need to prevent cum appearing on the floor.
 /mob/proc/wear_condom()

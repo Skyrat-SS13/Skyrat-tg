@@ -28,6 +28,6 @@ SUBSYSTEM_DEF(serverswap)
 		var/server_name = L[1]
 		var/IP = L[2]
 		GLOB.swappable_ips[server_name] = IP
-		add_startupmessage("SERVER SWAP: [server_name] loaded with IP: [IP]!")
+		to_chat(world, span_boldannounce("SERVER SWAP: [server_name] loaded with IP: [IP]!"))
 
 	return ..()
