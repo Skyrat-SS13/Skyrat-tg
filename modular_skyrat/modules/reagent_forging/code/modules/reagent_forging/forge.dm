@@ -35,11 +35,10 @@
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
-	if(isobserver(user))
-		. += span_notice("The forge has [goliath_ore_improvement]/3 goliath hides.")
-		. += span_notice("The forge has [current_sinew]/10 watcher sinews.")
-		. += span_notice("The forge has [current_core]/3 regenerative cores.")
-		. += span_notice("The forge is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
+	. += span_notice("The forge has [goliath_ore_improvement]/3 goliath hides.")
+	. += span_notice("The forge has [current_sinew]/10 watcher sinews.")
+	. += span_notice("The forge has [current_core]/3 regenerative cores.")
+	. += span_notice("The forge is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
 	if(reagent_forging)
 		. += span_notice("The forge has a red tinge, it is ready to imbue chemicals into reagent objects.")
 

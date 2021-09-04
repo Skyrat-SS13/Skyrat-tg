@@ -1340,10 +1340,10 @@
 
 /datum/supply_pack/science/plasma
 	name = "Plasma Assembly Crate"
-	desc = "Everything you need to burn something to the ground, this contains three plasma assembly sets. Each set contains a plasma tank, igniter, proximity sensor, and timer! Warranty void if exposed to high temperatures. Requires Toxins access to open."
+	desc = "Everything you need to burn something to the ground, this contains three plasma assembly sets. Each set contains a plasma tank, igniter, proximity sensor, and timer! Warranty void if exposed to high temperatures. Requires Ordnance access to open."
 	cost = CARGO_CRATE_VALUE * 2
-	access = ACCESS_TOXINS
-	access_view = ACCESS_TOXINS
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
 	contains = list(/obj/item/tank/internals/plasma,
 					/obj/item/tank/internals/plasma,
 					/obj/item/tank/internals/plasma,
@@ -1363,8 +1363,8 @@
 	name = "Raw Flux Anomaly"
 	desc = "The raw core of a flux anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_TOXINS
-	access_view = ACCESS_TOXINS
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
 	contains = list(/obj/item/raw_anomaly_core/flux)
 	crate_name = "raw flux anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1373,8 +1373,8 @@
 	name = "Raw Gravitational Anomaly"
 	desc = "The raw core of a gravitational anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_TOXINS
-	access_view = ACCESS_TOXINS
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
 	contains = list(/obj/item/raw_anomaly_core/grav)
 	crate_name = "raw pyro anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1383,8 +1383,8 @@
 	name = "Raw Vortex Anomaly"
 	desc = "The raw core of a vortex anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_TOXINS
-	access_view = ACCESS_TOXINS
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
 	contains = list(/obj/item/raw_anomaly_core/vortex)
 	crate_name = "raw vortex anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1393,8 +1393,8 @@
 	name = "Raw Bluespace Anomaly"
 	desc = "The raw core of a bluespace anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_TOXINS
-	access_view = ACCESS_TOXINS
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
 	contains = list(/obj/item/raw_anomaly_core/bluespace)
 	crate_name = "raw bluespace anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1403,8 +1403,8 @@
 	name = "Raw Pyro Anomaly"
 	desc = "The raw core of a pyro anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_TOXINS
-	access_view = ACCESS_TOXINS
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
 	contains = list(/obj/item/raw_anomaly_core/pyro)
 	crate_name = "raw pyro anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science

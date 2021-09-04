@@ -34,13 +34,13 @@
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/russian,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/neorusskya,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
 		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
-		/datum/language/japanese // SKYRAT EDIT - customization - extra languages
+		/datum/language/yangyu // SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -107,6 +107,14 @@
 		*/
 		message = lizard_ecks.Replace(message, "ecks$1")
 		message = lizard_eckS.Replace(message, "ECKS$1")
+		//SKYRAT EDIT START: Adding russian version to autohiss
+		var/static/regex/lizard_hiss_ru = new("с+", "g")
+		var/static/regex/lizard_hiSS_ru = new("С+", "g")
+		message = lizard_hiss_ru.Replace(message, "ссс")
+		message = lizard_hiSS_ru.Replace(message, "ССС")
+		message = replacetext(message, "ж", "ш")
+		message = replacetext(message, "Ж", "Ш")
+		//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/lizard/silver
@@ -222,6 +230,14 @@
 		message = fly_buZZ.Replace(message, "ZZZ")
 		message = replacetext(message, "s", "z")
 		message = replacetext(message, "S", "Z")
+	//SKYRAT EDIT START: Adding russian version to autohiss
+		var/static/regex/fly_buzz_ru = new("з+", "g")
+		var/static/regex/fly_buZZ_ru = new("З+", "g")
+		message = fly_buzz_ru.Replace(message, "ззз")
+		message = fly_buZZ_ru.Replace(message, "ЗЗЗ")
+		message = replacetext(message, "с", "з")
+		message = replacetext(message, "С", "З")
+	//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly/Initialize(mapload)
