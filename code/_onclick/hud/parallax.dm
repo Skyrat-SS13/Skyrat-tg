@@ -9,7 +9,7 @@
 		C.parallax_layers_cached = list()
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_1(null, C.view)
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_2(null, C.view)
-		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/planet(null, C.view)
+		//C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/planet(null, C.view) SKYRAT EDIT REMOVAL
 		if(SSparallax.random_layer)
 			C.parallax_layers_cached += new SSparallax.random_layer
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_3(null, C.view)
@@ -85,6 +85,12 @@
 	. = FALSE
 	var/mob/screenmob = viewmob || mymob
 	var/client/C = screenmob.client
+	//SKYRAT EDIT ADDITION
+	//Apply a parallax direction override from z level if any (for z-level shuttles)
+	var/datum/space_level/current_z_level = SSmapping.z_list[screenmob.z]
+	if(current_z_level.parallax_direction_override)
+		new_parallax_movedir = current_z_level.parallax_direction_override
+	//SKYRAT EDIT END
 	if(new_parallax_movedir == C.parallax_movedir)
 		return
 	var/animatedir = new_parallax_movedir
@@ -194,7 +200,7 @@
 		L.update_status(screenmob)
 		if (L.view_sized != C.view)
 			L.update_o(C.view)
-
+		/* SKYRAT EDIT CHANGE - BELOW
 		if(L.absolute)
 			L.offset_x = -(posobj.x - SSparallax.planet_x_offset) * L.speed
 			L.offset_y = -(posobj.y - SSparallax.planet_y_offset) * L.speed
@@ -210,6 +216,22 @@
 				L.offset_y -= 480
 			if(L.offset_y < -240)
 				L.offset_y += 480
+		*/
+		change_x = offset_x * L.speed
+		L.offset_x -= change_x
+		change_y = offset_y * L.speed
+		L.offset_y -= change_y
+
+		if(L.offset_x > 240)
+			L.offset_x -= 480
+		if(L.offset_x < -240)
+			L.offset_x += 480
+		if(L.offset_y > 240)
+			L.offset_y -= 480
+		if(L.offset_y < -240)
+			L.offset_y += 480
+		//SKYRAT EDIT END
+
 
 		L.screen_loc = "CENTER-7:[round(L.offset_x,1)],CENTER-7:[round(L.offset_y,1)]"
 
@@ -230,7 +252,7 @@
 	var/offset_x = 0
 	var/offset_y = 0
 	var/view_sized
-	var/absolute = FALSE
+	//var/absolute = FALSE SKYRAT EDIT REMOVAL
 	blend_mode = BLEND_ADD
 	plane = PLANE_SPACE_PARALLAX
 	screen_loc = "CENTER-7,CENTER-7"
@@ -295,6 +317,7 @@
 /atom/movable/screen/parallax_layer/random/asteroids
 	icon_state = "asteroids"
 
+/* SKYRAT EDIT REMOVAL
 /atom/movable/screen/parallax_layer/planet
 	icon_state = "planet"
 	blend_mode = BLEND_OVERLAY
@@ -311,3 +334,4 @@
 
 /atom/movable/screen/parallax_layer/planet/update_o()
 	return //Shit won't move
+*/

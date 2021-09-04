@@ -16,7 +16,7 @@
 		var/datum/space_level/S = new(I, features[DL_NAME], features[DL_TRAITS])
 		z_list += S
 
-/datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level)
+/datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level, datum/overmap_object/overmap_obj = null) //SKYRAT EDIT CHANGE
 	UNTIL(!adding_new_zlevel)
 	adding_new_zlevel = TRUE
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_Z, args)
@@ -26,6 +26,13 @@
 		CHECK_TICK
 	// TODO: sleep here if the Z level needs to be cleared
 	var/datum/space_level/S = new z_type(new_z, name, traits)
+	//SKYRAT EDIT ADDITION
+	if(overmap_obj)
+		overmap_obj.related_levels += S
+		S.related_overmap_object = overmap_obj
+		if(istype(overmap_obj, /datum/overmap_object/shuttle)) //TODO: better method
+			S.is_overmap_controllable = TRUE
+	//SKYRAT EDIT END
 	z_list += S
 	adding_new_zlevel = FALSE
 	return S

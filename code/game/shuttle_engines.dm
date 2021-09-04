@@ -58,6 +58,7 @@
 				state = ENGINE_WELDED
 				to_chat(user, span_notice("You weld \the [src] to the floor."))
 				alter_engine_power(engine_power)
+				ApplyExtension() //SKYRAT EDIT ADDITION
 
 		if(ENGINE_WELDED)
 			if(!I.tool_start_check(user, amount=0))
@@ -71,11 +72,17 @@
 				state = ENGINE_WRENCHED
 				to_chat(user, span_notice("You cut \the [src] free from the floor."))
 				alter_engine_power(-engine_power)
+				RemoveExtension() //SKYRAT EDIT ADDITION
 	return TRUE
 
 /obj/structure/shuttle/engine/Destroy()
 	if(state == ENGINE_WELDED)
 		alter_engine_power(-engine_power)
+	//SKYRAT EDIT ADDITION
+		RemoveExtension()
+	if(extension)
+		qdel(extension)
+	//SKYRAT EDIT END
 	. = ..()
 
 //Propagates the change to the shuttle.
@@ -92,12 +99,14 @@
 	icon_state = "heater"
 	desc = "Directs energy into compressed particles in order to power engines."
 	engine_power = 0 // todo make these into 2x1 parts
+	extension_type = null //SKYRAT EDIT ADDITION
 
 /obj/structure/shuttle/engine/platform
 	name = "engine platform"
 	icon_state = "platform"
 	desc = "A platform for engine components."
 	engine_power = 0
+	extension_type = null //SKYRAT EDIT ADDITION
 
 /obj/structure/shuttle/engine/propulsion
 	name = "propulsion engine"
@@ -133,6 +142,7 @@
 	name = "engine router"
 	icon_state = "router"
 	desc = "Redirects around energized particles in engine structures."
+	extension_type = null //SKYRAT EDIT ADDITION
 
 /obj/structure/shuttle/engine/large
 	name = "engine"

@@ -14,3 +14,7 @@
 #define ZTRAITS_OCEAN_LEVEL list(ZTRAIT_GRAVITY = TRUE,ZTRAIT_BASETURF = /turf/open/floor/plating/asteroid,ZTRAIT_OCEAN_RUINS = TRUE)
 
 #define ZTRAITS_TRENCH_LEVEL list(ZTRAIT_GRAVITY = TRUE,ZTRAIT_BASETURF = /turf/open/floor/plating/asteroid,ZTRAIT_TRENCH_RUINS = TRUE)
+
+#define ZTRAITS_JUNGLE_PLANET list(\
+	ZTRAIT_MINING = TRUE, \
+	ZTRAIT_BASETURF = /turf/open/floor/plating/dirt/jungle/wasteland)

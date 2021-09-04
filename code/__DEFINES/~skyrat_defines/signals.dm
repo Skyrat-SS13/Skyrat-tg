@@ -65,3 +65,8 @@
 #define COMSIG_FIREALARM_TRIGGERED_OFF "firealarm_triggered_off"
 /// /obj/machinery/door/firedoor/proc/trigger_hot()
 #define COMSIG_FIREDOOR_CLOSED_FIRE "firedoor_closed_fire"
+
+
+///from base of mob/clickon(): (atom/A, params)
+#define COMSIG_CLICKON "any_clickon"
+	#define COMSIG_CANCEL_CLICKON 1

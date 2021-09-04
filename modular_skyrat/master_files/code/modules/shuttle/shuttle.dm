@@ -8,6 +8,14 @@
 	/// The sound range coeff for the landing and take off sound effect
 	var/sound_range = 20
 
+	var/list/all_extensions = list()
+	var/list/engine_extensions = list()
+
+	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
+	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
+
+	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
+
 
 //call the shuttle to destination S
 /obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S, forced = FALSE)
@@ -23,7 +31,7 @@
 
 	switch(mode)
 		if(SHUTTLE_CALL)
-			if(!can_be_called_in_transit) //SKYRAT EDIT ADDITION
+			if(!can_be_called_in_transit)
 				return
 			if(S == destination)
 				if(timeLeft(1) < callTime * engine_coeff)
@@ -76,3 +84,26 @@
 				else
 					if(M.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
 						M.playsound_local(distant_source, landing_sound, vol)
+
+/obj/docking_port/mobile/proc/DrawDockingThrust()
+	var/drawn_power = 0
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		if(!ext.turned_on)
+			continue
+		drawn_power += ext.DrawThrust(5)
+
+	if(drawn_power > 1)
+		return TRUE
+	else
+		return FALSE
+
+/obj/docking_port/mobile/proc/TurnEnginesOn()
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		ext.turned_on = TRUE
+
+/obj/docking_port/mobile/proc/TurnEnginesOff()
+	for(var/i in engine_extensions)
+		var/datum/shuttle_extension/engine/ext = i
+		ext.turned_on = FALSE
