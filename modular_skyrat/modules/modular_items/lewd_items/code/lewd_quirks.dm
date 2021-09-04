@@ -53,7 +53,7 @@
 	name = "Nymphomania"
 
 	desc = "The patient constantly feels sexual arousal and heightened libido."
-	scan_desc = "severly heightened libido"
+	scan_desc = null
 	gain_text = span_purple("You feel much hornier than before...")
 	lose_text = span_notice("A pleasant coolness spreads throughout your body. You are in control of your sexual desires once again.")
 
