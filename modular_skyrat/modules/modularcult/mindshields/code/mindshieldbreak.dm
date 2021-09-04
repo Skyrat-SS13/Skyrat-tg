@@ -33,6 +33,7 @@ MODULAR FOLDER. HANDLES MINDSHIELDS BEING BROKEN
 	var/mob/living/L = target
 	REMOVE_TRAIT(L, TRAIT_MINDSHIELD, IMPLANT_TRAIT)
 	L.sec_hud_set_implants()
+	L.current.visible_message(span_deconversion_message("[L] Looks far dizzier and uncertain than they did moments ago."), null, null, null, L.current)
 
 /obj/item/implant/mindshield/removed()
 	broken = FALSE //RESET BROKEN STATUS
