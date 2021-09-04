@@ -79,7 +79,7 @@
 		if(prob(10))
 			switch(rand(1,6))
 				if(1)
-					if(stress >= 100)
+					if(stress <= 100)
 						to_chat(owner, span_purple("Your breath grows hot and heavy..."))
 						owner.adjustOxyLoss(8)
 						owner.emote("exhale")
