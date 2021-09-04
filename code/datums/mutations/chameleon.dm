@@ -29,8 +29,10 @@
 	RegisterSignal(owner, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, .proc/on_attack_hand)
 
 /datum/mutation/human/chameleon/on_life(delta_time, times_fired)
-	if(HAS_TRAIT(owner, TRAIT_CHAMELEON_SKIN)) //SKYRAT EDIT BEGIN
-		owner.alpha = max(owner.alpha - (12.5 * delta_time), 0) //SKYRAT EDIT END
+	/// SKYRAT EDIT BEGIN
+	if(HAS_TRAIT(owner, TRAIT_CHAMELEON_SKIN))
+		owner.alpha = max(owner.alpha - (12.5 * delta_time), 0)
+	/// SKYRAT EDIT END
 
 /datum/mutation/human/chameleon/proc/on_move()
 	SIGNAL_HANDLER
