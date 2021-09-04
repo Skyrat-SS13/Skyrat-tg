@@ -3,7 +3,7 @@
 	desc = "Used to view and edit personnel's security records."
 	icon_screen = "security"
 	icon_keyboard = "security_key"
-	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS)
+	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS, ACCESS_SECURITY_RECORDS)
 	circuit = /obj/item/circuitboard/computer/secure_data
 	light_color = COLOR_SOFT_RED
 	var/rank = null
@@ -46,8 +46,7 @@
 
 	var/obj/machinery/computer/secure_data/attached_console
 
-/obj/item/circuit_component/arrest_console_data/Initialize()
-	. = ..()
+/obj/item/circuit_component/arrest_console_data/populate_ports()
 	records = add_output_port("Security Records", PORT_TYPE_TABLE)
 	on_fail = add_output_port("Failed", PORT_TYPE_SIGNAL)
 
@@ -75,9 +74,6 @@
 
 
 /obj/item/circuit_component/arrest_console_data/input_received(datum/port/input/port)
-	. = ..()
-	if(.)
-		return
 
 	if(!attached_console || !attached_console.authenticated)
 		on_fail.set_output(COMPONENT_SIGNAL)
@@ -144,25 +140,21 @@
 	)
 	new_status = add_option_port("Arrest Options", component_options)
 
-/obj/item/circuit_component/arrest_console_arrest/Initialize()
-	. = ..()
+/obj/item/circuit_component/arrest_console_arrest/populate_ports()
 	targets = add_input_port("Targets", PORT_TYPE_TABLE)
 	new_status_set = add_output_port("Set Status", PORT_TYPE_STRING)
 	on_fail = add_output_port("Failed", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/arrest_console_arrest/input_received(datum/port/input/port)
-	. = ..()
-	if(.)
-		return
 
 	if(!attached_console || !attached_console.authenticated)
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return
 
-	var/status_to_set = new_status.input_value
+	var/status_to_set = new_status.value
 
 	new_status_set.set_output(status_to_set)
-	var/list/target_table = targets.input_value
+	var/list/target_table = targets.value
 	if(!target_table)
 		on_fail.set_output(COMPONENT_SIGNAL)
 		return

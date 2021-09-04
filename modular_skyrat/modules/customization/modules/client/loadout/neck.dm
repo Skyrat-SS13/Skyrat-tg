@@ -43,6 +43,10 @@
 	name = "Green cowboy poncho"
 	path = /obj/item/clothing/neck/cowboylea
 
+/datum/loadout_item/neck/brownponchocowboy
+	name = "Brown cowboy poncho"
+	path = /obj/item/clothing/neck/ponchoranger
+
 /datum/loadout_item/neck/crosscollar
 	name = "Cross collar"
 	path = /obj/item/clothing/neck/human_petcollar/locked/cross
@@ -151,3 +155,45 @@
 	path = /obj/item/clothing/neck/tie/disco
 	restricted_roles = list("Detective")
 	restricted_desc = "Superstar Detectives"
+
+//MANTLES
+
+/datum/loadout_item/neck/mantle
+	name = "Mantle"
+	path = /obj/item/clothing/neck/mantle
+
+/datum/loadout_item/neck/mantle/hopmantle
+	name = "Head of Personnel's Mantle"
+	path = /obj/item/clothing/neck/mantle/hopmantle
+	restricted_roles = list("Head of Personnel")
+
+/datum/loadout_item/neck/mantle/cmomantle
+	name = "Chief Medical Officer's Mantle"
+	path = /obj/item/clothing/neck/mantle/cmomantle
+	restricted_roles = list("Chief Medical Officer")
+
+/datum/loadout_item/neck/mantle/rdmantle
+	name = "Research Director's Mantle"
+	path = /obj/item/clothing/neck/mantle/rdmantle
+	restricted_roles = list("Research Director")
+
+/datum/loadout_item/neck/mantle/cemantle
+	name = "Chief Engineer's Mantle"
+	path = /obj/item/clothing/neck/mantle/cemantle
+	restricted_roles = list("Chief Engineer")
+
+/datum/loadout_item/neck/mantle/hosmantle
+	name = "Head of Security's Mantle"
+	path = /obj/item/clothing/neck/mantle/hosmantle
+	restricted_roles = list("Head of Security")
+
+/datum/loadout_item/neck/mantle/bsmantle
+	name = "Blueshield's Mantle"
+	path = /obj/item/clothing/neck/mantle/bsmantle
+	restricted_roles = list("Blueshield")
+
+/datum/loadout_item/neck/mantle/capmantle
+	name = "Captain's Mantle"
+	path = /obj/item/clothing/neck/mantle/capmantle
+	restricted_roles = list("Captain")
+

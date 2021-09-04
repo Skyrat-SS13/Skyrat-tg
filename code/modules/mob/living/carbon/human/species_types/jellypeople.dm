@@ -467,7 +467,7 @@
 /datum/species/jelly/luminescent/proc/update_glow(mob/living/carbon/C, intensity)
 	if(intensity)
 		glow_intensity = intensity
-	glow.set_light(glow_intensity, glow_intensity, C.dna.features["mcolor"])
+	glow.set_light_range_power_color(glow_intensity, glow_intensity, C.dna.features["mcolor"])
 
 /obj/effect/dummy/luminescent_glow
 	name = "luminescent glow"
@@ -764,7 +764,7 @@
 		return
 
 	var/mob/living/target = H.pulling
-	var/datum/species/jelly/stargazer/species = target
+	var/datum/species/jelly/stargazer/species = H.dna.species
 
 	to_chat(H, span_notice("You begin linking [target]'s mind to yours..."))
 	to_chat(target, span_warning("You feel a foreign presence within your mind..."))

@@ -188,7 +188,7 @@ There are several things that need to be remembered:
 	apply_overlay(ID_LAYER)
 	//apply_overlay(ID_CARD_LAYER) //SKYRAT EDIT REMOVAL - Ugly ID
 
-
+/*
 /mob/living/carbon/human/update_inv_gloves()
 	remove_overlay(GLOVES_LAYER)
 
@@ -220,7 +220,7 @@ There are several things that need to be remembered:
 			gloves_overlay.pixel_y += dna.species.offset_features[OFFSET_GLOVES][2]
 	overlays_standing[GLOVES_LAYER] = gloves_overlay
 	apply_overlay(GLOVES_LAYER)
-
+*/
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
@@ -454,12 +454,12 @@ There are several things that need to be remembered:
 		apply_overlay(LEGCUFF_LAYER)
 		throw_alert("legcuffed", /atom/movable/screen/alert/restrained/legcuffed, new_master = src.legcuffed)
 
-/proc/wear_female_version(t_color, icon, layer, type)
-	var/index = t_color
+/proc/wear_female_version(t_color, icon, layer, type, greyscale_colors)
+	var/index = "[t_color]-[greyscale_colors]"
 	var/icon/female_clothing_icon = GLOB.female_clothing_icons[index]
 	if(!female_clothing_icon) //Create standing/laying icons if they don't exist
-		generate_female_clothing(index,t_color,icon,type)
-	return mutable_appearance(GLOB.female_clothing_icons[t_color], layer = -layer)
+		generate_female_clothing(index, t_color, icon, type)
+	return mutable_appearance(GLOB.female_clothing_icons[index], layer = -layer)
 
 /mob/living/carbon/human/proc/get_overlays_copy(list/unwantedLayers)
 	var/list/out = new
@@ -548,7 +548,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 	var/mutable_appearance/standing
 	if(femaleuniform)
-		standing = wear_female_version(t_state, file2use, layer2use, femaleuniform) //should layer2use be in sync with the adjusted value below? needs testing - shiz
+		standing = wear_female_version(t_state, file2use, layer2use, femaleuniform, greyscale_colors) //should layer2use be in sync with the adjusted value below? needs testing - shiz
 	if(!standing)
 		standing = mutable_appearance(file2use, t_state, -layer2use)
 
@@ -641,6 +641,9 @@ generate/load female uniform sprites matching all previously decided variables
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"
+
+	if(HAS_TRAIT(src, TRAIT_INVISIBLE_MAN))
+		. += "-invisible"
 
 /mob/living/carbon/human/load_limb_from_cache()
 	..()

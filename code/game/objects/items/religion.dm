@@ -150,7 +150,7 @@
 	inspiration_available = FALSE
 
 /obj/item/banner/science/check_inspiration(mob/living/carbon/human/H)
-	return H.on_fire //Sciencia is pleased by dedication to the art of Toxins
+	return H.on_fire //Sciencia is pleased by dedication to the art of Ordnance
 
 /datum/crafting_recipe/science_banner
 	name = "Sciencia Banner"
@@ -219,7 +219,7 @@
 
 /obj/item/banner/command/Initialize()
 	. = ..()
-	job_loyalties = DEPARTMENT_BITFLAG_COMMAND | DEPARTMENT_BITFLAG_CENTRAL_COMMAND //SKYRAT EDIT ADDITION
+	job_loyalties = DEPARTMENT_BITFLAG_COMMAND | DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND //SKYRAT EDIT ADDITION
 
 /obj/item/banner/command/mundane
 	inspiration_available = FALSE

@@ -792,6 +792,9 @@
 	if(locate(/obj/structure/lattice) in range(1, get_turf(src))) //Not realistic but makes pushing things in space easier
 		return TRUE
 
+	if(locate(/obj/structure/spacevine) in range(1, get_turf(src))) //SKYRAT EDIT: allow walking when vines are around
+		return TRUE
+
 	return FALSE
 
 
@@ -1024,7 +1027,7 @@
 		// Scale the icon.
 		I.transform *= 0.4
 		// The icon should not rotate.
-		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+		I.appearance_flags = APPEARANCE_UI
 
 		// Set the direction of the icon animation.
 		var/direction = get_dir(src, A)
@@ -1208,7 +1211,7 @@
 		return
 
 	if(href_list[VV_HK_DEADCHAT_PLAYS] && check_rights(R_FUN))
-		if(tgui_alert(usr, "Allow deadchat to control [src] via chat commands?", "Deadchat Plays [src]", list("Allow", "Cancel")) == "Cancel")
+		if(tgui_alert(usr, "Allow deadchat to control [src] via chat commands?", "Deadchat Plays [src]", list("Allow", "Cancel")) != "Allow")
 			return
 
 		// Alert is async, so quick sanity check to make sure we should still be doing this.

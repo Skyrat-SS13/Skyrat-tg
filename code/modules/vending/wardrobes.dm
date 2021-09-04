@@ -80,7 +80,8 @@
 					/obj/item/clothing/suit/apron/surgical = 4,
 					/obj/item/clothing/mask/surgical = 4,
 					/obj/item/clothing/gloves/color/latex/nitrile = 2, //SKYRAT EDIT ADDITION
-					/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 4)	//SKYRAT EDIT ADDITION
+					/obj/item/clothing/suit/toggle/labcoat/hospitalgown = 4,	//SKYRAT EDIT ADDITION
+					/obj/item/storage/belt/medbandolier = 2)	// SKYRAT EDIT ADDITION
 	refill_canister = /obj/item/vending_refill/wardrobe/medi_wardrobe
 	payment_department = ACCOUNT_MED
 
@@ -218,8 +219,8 @@
 	vend_reply = "Thank you for using the SciDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 3,
 					/obj/item/storage/backpack/science = 3,
-					/obj/item/storage/backpack/satchel/tox = 3,
-					/obj/item/storage/backpack/duffelbag/toxins = 3,
+					/obj/item/storage/backpack/satchel/science = 3,
+					/obj/item/storage/backpack/duffelbag/science = 3,
 					/obj/item/clothing/head/beret/science = 3,
 					/obj/item/clothing/head/beret/science/fancy = 3,
 					/obj/item/clothing/suit/hooded/wintercoat/science = 3,
@@ -316,7 +317,12 @@
 					/obj/item/clothing/neck/petcollar = 1,
 					/obj/item/storage/belt/bandolier = 1,
 					/obj/item/storage/pill_bottle/dice/hazard = 1,
-					/obj/item/storage/bag/money = 2)
+					/obj/item/storage/bag/money = 2, //SKYRAT EDIT ADDITION
+					/obj/item/storage/fancy/candle_box/vanilla = 1,
+					/obj/item/storage/fancy/candle_box/pear = 1,
+					/obj/item/storage/fancy/candle_box/amber = 1,
+					/obj/item/storage/fancy/candle_box/jasmine = 1,
+					/obj/item/storage/fancy/candle_box/mint = 1) //SKYRAT EDIT END
 	premium = list(/obj/item/storage/box/dishdrive = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/bar_wardrobe
 	payment_department = ACCOUNT_SRV

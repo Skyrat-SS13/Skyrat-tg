@@ -18,7 +18,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/captain
 
 	paycheck = PAYCHECK_COMMAND
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_CMD // SKYRAT EDIT - Original: paycheck_department = ACCOUNT_SEC
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
@@ -35,7 +35,7 @@
 		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
 	)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 	voice_of_god_power = 1.4 //Command staff has authority
 

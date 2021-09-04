@@ -1,5 +1,5 @@
 //IMPORTANT: Multiple animate() calls do not stack well, so try to do them all at once if you can.
-/mob/living/carbon/update_transform()
+/mob/living/carbon/perform_update_transform()
 	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
 	var/final_pixel_y = pixel_y
 	var/final_dir = dir
@@ -174,7 +174,7 @@
 
 /mob/living/carbon/update_inv_handcuffed()
 	remove_overlay(HANDCUFF_LAYER)
-	if(handcuffed)
+	if(handcuffed && !(handcuffed.item_flags & ABSTRACT)) //SKYRAT EDIT ADDED !(handcuffed.item_flags & ABSTRACT)
 		var/mutable_appearance/handcuff_overlay = mutable_appearance('icons/mob/mob.dmi', "handcuff1", -HANDCUFF_LAYER)
 		if(handcuffed.blocks_emissive)
 			var/mutable_appearance/handcuff_blocker = mutable_appearance('icons/mob/mob.dmi', "handcuff1", plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)

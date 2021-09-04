@@ -26,6 +26,8 @@
 
 	var/clothing_flags = NONE
 
+	var/moth_edible = TRUE //Added it because moths were able to eat fucking vibrators. Fucking moths.
+
 	var/can_be_bloody = TRUE
 
 	/// What items can be consumed to repair this clothing (must by an /obj/item/stack)
@@ -125,11 +127,12 @@
 /obj/item/clothing/attack(mob/living/M, mob/living/user, params)
 	if(user.combat_mode || !ismoth(M))
 		return ..()
-	if(isnull(moth_snack))
-		moth_snack = new
-		moth_snack.name = name
-		moth_snack.clothing = WEAKREF(src)
-	moth_snack.attack(M, user, params)
+	if(moth_edible == TRUE)
+		if(isnull(moth_snack))
+			moth_snack = new
+			moth_snack.name = name
+			moth_snack.clothing = WEAKREF(src)
+		moth_snack.attack(M, user, params)
 
 /obj/item/clothing/attackby(obj/item/W, mob/user, params)
 	if(!istype(W, repairable_by))
@@ -167,6 +170,7 @@
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		to_chat(user, span_notice("You fix the damage on [src]."))
+	update_appearance()
 
 /**
  * take_damage_zone() is used for dealing damage to specific bodyparts on a worn piece of clothing, meant to be called from [/obj/item/bodypart/proc/check_woundings_mods]
@@ -437,7 +441,7 @@ SEE_PIXELS// if an object is located on an unlit area, but some of its pixels ar
 BLIND     // can't see anything
 */
 
-/proc/generate_female_clothing(index,t_color,icon,type)
+/proc/generate_female_clothing(index, t_color, icon, type)
 	var/icon/female_clothing_icon = icon("icon"=icon, "icon_state"=t_color)
 	var/icon/female_s = icon("icon"='icons/mob/clothing/under/masking_helpers.dmi', "icon_state"="[(type == FEMALE_UNIFORM_FULL) ? "female_full" : "female_top"]")
 	female_clothing_icon.Blend(female_s, ICON_MULTIPLY)

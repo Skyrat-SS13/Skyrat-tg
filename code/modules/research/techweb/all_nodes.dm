@@ -57,6 +57,7 @@
 		"titaniumglass",
 		"gas_filter",
 		"plasmaman_gas_filter",
+		"oven_tray"
 	)
 
 /datum/techweb_node/mmi
@@ -214,7 +215,6 @@
 		"circuit_multitool",
 		"comp_arithmetic",
 		"comp_clock",
-		"comp_combiner",
 		"comp_comparison",
 		"comp_concat",
 		"comp_concat_list",
@@ -234,9 +234,10 @@
 		"comp_module",
 		"comp_multiplexer",
 		"comp_not",
+		"comp_ntnet_receive",
+		"comp_ntnet_send",
 		"comp_pressuresensor",
 		"comp_radio",
-		"comp_ram",
 		"comp_random",
 		"comp_router",
 		"comp_select_query",
@@ -273,6 +274,7 @@
 		"blood_pack",
 		"chem_dispenser",
 		"chem_heater",
+		"chem_mass_spec",
 		"chem_master",
 		"chem_pack",
 		"crewpinpointerprox",
@@ -698,8 +700,9 @@
 	prereq_ids = list("basic_circuitry", "engineering")
 	design_ids = list(
 		"bot_shell",
-		"door_shell",
 		"controller_shell",
+		"door_shell",
+		"gun_shell",
 		"money_bot_shell",
 		"scanner_gate_shell",
 		"scanner_shell",

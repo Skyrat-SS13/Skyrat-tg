@@ -148,7 +148,7 @@
 	can_be_sawn_off = FALSE
 	projectile_damage_multiplier = 0.75
 
-/obj/item/gun/ballistic/rifle/boltaction/pipegun/process_chamber(empty_chamber, from_firing, chamber_next_round)
+/obj/item/gun/ballistic/rifle/boltaction/pipegun/handle_chamber()
 	. = ..()
 	do_sparks(1, TRUE, src)
 

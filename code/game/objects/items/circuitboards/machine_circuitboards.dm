@@ -568,7 +568,8 @@
 		/obj/machinery/vending/modularpc = "Deluxe Silicate Selections",
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
-		/obj/machinery/vending/dorms = "KinkVend")	//SKYRAT EDIT ADDITION
+		/obj/machinery/vending/dorms = "LustWish",	//SKYRAT EDIT CHANGE - ERP UPDATE - ORIGINAL: /obj/machinery/vending/dorms = "KinkVend"
+		/obj/machinery/vending/access/command = "Command Outfitting Station") //SKYRAT EDIT ADDITION
 
 /obj/item/circuitboard/machine/vendor/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
@@ -682,6 +683,14 @@
 	req_components = list(
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1)
+
+/obj/item/circuitboard/machine/chem_mass_spec
+	name = "High-Performance Liquid Chromatography (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_MEDICAL
+	build_path = /obj/machinery/chem_mass_spec
+	req_components = list(
+	/obj/item/stock_parts/micro_laser = 1,
+	/obj/item/stack/cable_coil = 5)
 
 /obj/item/circuitboard/machine/chem_master
 	name = "ChemMaster 3000 (Machine Board)"
@@ -1033,6 +1042,13 @@
 	name = "circuit board (Griddle)"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/griddle
+	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/oven
+	name = "circuit board (Oven)"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
+	build_path = /obj/machinery/oven
 	req_components = list(/obj/item/stock_parts/micro_laser = 1)
 	needs_anchored = FALSE
 

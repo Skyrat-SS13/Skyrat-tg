@@ -27,3 +27,16 @@
 /obj/item/clothing/neck/cowboylea/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/toggle_clothes, "cowboy_poncho_t")
+
+/obj/item/clothing/neck/ponchoranger
+	name = "brown cowboy ponch"
+	desc = "Aim for the Heart, Ramon."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
+	icon_state = "ranger_cloak"
+	mutant_variants = NONE
+	heat_protection = CHEST
+
+/obj/item/clothing/neck/ponchoranger/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/toggle_clothes, "ranger_cloak_t")

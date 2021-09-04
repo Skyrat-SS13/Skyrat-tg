@@ -3,6 +3,13 @@
 	if(notransform)
 		return
 
+	//SKYRAT EDIT ADDITION
+	if(isopenturf(loc))
+		var/turf/open/my_our_turf = loc
+		if(my_our_turf.pollution)
+			my_our_turf.pollution.TouchAct(src)
+	//SKYRAT EDIT END
+
 	if(damageoverlaytemp)
 		damageoverlaytemp = 0
 		update_damage_hud()
@@ -135,8 +142,8 @@
 			else if(isturf(loc)) //Breathe from loc as turf
 				//SKYRAT EDIT ADDITION
 				//Underwater breathing
-				var/turf/T = loc
-				if(T.liquids && !HAS_TRAIT(src, TRAIT_NOBREATH) && ((body_position == LYING_DOWN && T.liquids.liquid_state >= LIQUID_STATE_WAIST) || (body_position == STANDING_UP && T.liquids.liquid_state >= LIQUID_STATE_FULLTILE)))
+				var/turf/our_turf = loc
+				if(our_turf.liquids && !HAS_TRAIT(src, TRAIT_NOBREATH) && ((body_position == LYING_DOWN && our_turf.liquids.liquid_state >= LIQUID_STATE_WAIST) || (body_position == STANDING_UP && our_turf.liquids.liquid_state >= LIQUID_STATE_FULLTILE)))
 					//Officially trying to breathe underwater
 					if(HAS_TRAIT(src, TRAIT_WATER_BREATHING))
 						failed_last_breath = FALSE
@@ -147,13 +154,20 @@
 					if(oxyloss <= OXYGEN_DAMAGE_CHOKING_THRESHOLD && stat == CONSCIOUS)
 						to_chat(src, "<span class='userdanger'>You hold in your breath!</span>")
 					else
-						//Try and drink water#]
-						var/datum/reagents/tempr = T.liquids.take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_BREATH_AMOUNT)
+						//Try and drink water
+						var/datum/reagents/tempr = our_turf.liquids.take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_BREATH_AMOUNT)
 						tempr.trans_to(src, tempr.total_volume, methods = INGEST)
 						qdel(tempr)
 						visible_message("<span class='warning'>[src] chokes on water!</span>", \
 									"<span class='userdanger'>You're choking on water!</span>")
 					return FALSE
+				if(isopenturf(our_turf))
+					var/turf/open/open_turf = our_turf
+					if(open_turf.pollution)
+						if(next_smell <= world.time)
+							next_smell = world.time + SMELL_COOLDOWN
+							open_turf.pollution.SmellAct(src)
+						open_turf.pollution.BreatheAct(src)
 				//SKYRAT EDIT END
 				var/breath_moles = 0
 				if(environment)
@@ -201,7 +215,7 @@
 
 	var/safe_oxy_min = 16
 	var/safe_co2_max = 10
-	var/safe_tox_max = 0.05
+	var/safe_plas_max = 0.05
 	var/SA_para_min = 1
 	var/SA_sleep_min = 5
 	var/oxygen_used = 0
@@ -210,7 +224,7 @@
 	var/list/breath_gases = breath.gases
 	breath.assert_gases(/datum/gas/oxygen, /datum/gas/plasma, /datum/gas/carbon_dioxide, /datum/gas/nitrous_oxide, /datum/gas/bz)
 	var/O2_partialpressure = (breath_gases[/datum/gas/oxygen][MOLES]/breath.total_moles())*breath_pressure
-	var/Toxins_partialpressure = (breath_gases[/datum/gas/plasma][MOLES]/breath.total_moles())*breath_pressure
+	var/Plasma_partialpressure = (breath_gases[/datum/gas/plasma][MOLES]/breath.total_moles())*breath_pressure
 	var/CO2_partialpressure = (breath_gases[/datum/gas/carbon_dioxide][MOLES]/breath.total_moles())*breath_pressure
 
 
@@ -253,13 +267,13 @@
 	else
 		co2overloadtime = 0
 
-	//TOXINS/PLASMA
-	if(Toxins_partialpressure > safe_tox_max)
-		var/ratio = (breath_gases[/datum/gas/plasma][MOLES]/safe_tox_max) * 10
+	//PLASMA
+	if(Plasma_partialpressure > safe_plas_max)
+		var/ratio = (breath_gases[/datum/gas/plasma][MOLES]/safe_plas_max) * 10
 		adjustToxLoss(clamp(ratio, MIN_TOXIC_GAS_DAMAGE, MAX_TOXIC_GAS_DAMAGE))
-		throw_alert("too_much_tox", /atom/movable/screen/alert/too_much_tox)
+		throw_alert("too_much_plas", /atom/movable/screen/alert/too_much_plas)
 	else
-		clear_alert("too_much_tox")
+		clear_alert("too_much_plas")
 
 	//NITROUS OXIDE
 	if(breath_gases[/datum/gas/nitrous_oxide])

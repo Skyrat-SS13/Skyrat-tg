@@ -230,16 +230,16 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	playsound(user, 'sound/items/screwdriver2.ogg', 50, TRUE)
 
 /obj/item/claymore/highlander/robot //BLOODTHIRSTY BORGS NOW COME IN PLAID
-	icon = 'icons/obj/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
 	icon_state = "claymore_cyborg"
 	var/mob/living/silicon/robot/robot
 
 /obj/item/claymore/highlander/robot/Initialize()
 	var/obj/item/robot_model/kiltkit = loc
 	robot = kiltkit.loc
+	. = ..()
 	if(!istype(robot))
-		qdel(src)
-	return ..()
+		return INITIALIZE_HINT_QDEL
 
 /obj/item/claymore/highlander/robot/process()
 	loc.layer = LARGE_MOB_LAYER
@@ -270,19 +270,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	user.visible_message(span_suicide("[user] is slitting [user.p_their()] stomach open with [src]! It looks like [user.p_theyre()] trying to commit seppuku!"))
 	return(BRUTELOSS)
 
-/obj/item/katana/cursed
+/obj/item/katana/cursed //used by wizard events, see the tendril_loot.dm file for the miner one
 	slot_flags = null
-	item_flags = DROPDEL
-
-/obj/item/katana/cursed/equipped(mob/living/carbon/human/user)
-	. = ..()
-	if(!istype(user))
-		return
-	user.gain_trauma(/datum/brain_trauma/magic/stalker, TRAUMA_RESILIENCE_MAGIC)
-
-/obj/item/katana/cursed/Initialize()
-	. = ..()
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_ITEM_TRAIT(type))
 
 /obj/item/wirerod
 	name = "wired rod"
@@ -748,7 +737,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	strong_against = typecacheof(list(
 					/mob/living/simple_animal/hostile/bee/,
 					/mob/living/simple_animal/butterfly,
-					/mob/living/simple_animal/hostile/cockroach,
+					/mob/living/basic/cockroach,
 					/obj/item/queen_bee,
 					/obj/structure/spider/spiderling
 	))

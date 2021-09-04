@@ -475,10 +475,12 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	inhand_icon_state = "pcr"
+	inhand_icon_state = "ostwind"
 	icon_state = "ostwind"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	worn_icon_state = "ostwind_worn"
+	alt_icons = TRUE
+	alt_icon_state = "ostwind_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind
@@ -666,6 +668,8 @@
 	icon_state = "vintorez"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	worn_icon_state = "norwind_worn"
+	alt_icons = TRUE
+	alt_icon_state = "vintorez_worn"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	inhand_icon_state = "vintorez"
@@ -691,7 +695,7 @@
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MM
-	max_ammo = 15
+	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp

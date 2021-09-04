@@ -20,7 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_MINOR_VERSION 16
+#define DB_MINOR_VERSION 18
 
 
 //! ## Timing subsystem
@@ -133,6 +133,7 @@
 #define INIT_ORDER_ECONOMY 40
 #define INIT_ORDER_OUTPUTS 35
 #define INIT_ORDER_RESTAURANT 34
+#define INIT_ORDER_POLLUTION 32 //SKYRAT EDIT ADDITION - //Needs to be above atoms
 #define INIT_ORDER_ATOMS 30
 #define INIT_ORDER_LANGUAGE 25
 #define INIT_ORDER_MACHINES 20

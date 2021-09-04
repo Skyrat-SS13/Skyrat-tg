@@ -4,7 +4,7 @@
 	name = "bluespace artillery control"
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/computer/bsa_control
-	icon = 'icons/obj/machines/particle_accelerator.dmi'
+	icon = 'modular_skyrat/modules/fixing_missing_icons/particle_accelerator.dmi'
 	icon_state = "control_boxp"
 	var/obj/machinery/bsa_powercore/core //The moveable power core link
 	var/obj/machinery/bsa/full/cannon
@@ -135,7 +135,8 @@
 	return cannon
 
 /obj/machinery/computer/bsa_control/Destroy()
-	cannon.control_unit = null
-	cannon = null
+	if(cannon)
+		cannon.control_unit = null
+		cannon = null
 	core = null
 	. = ..()

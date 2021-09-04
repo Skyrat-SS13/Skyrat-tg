@@ -18,7 +18,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
 	combat_mode = TRUE
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	status_flags = CANPUSH
 	del_on_death = 1
@@ -57,5 +57,8 @@
 
 /mob/living/simple_animal/hostile/zombie/drop_loot()
 	. = ..()
-	corpse.forceMove(drop_location())
-	corpse.create()
+	if(!no_corpse) //SKYRAT EDIT CHANGE
+		corpse.forceMove(drop_location())
+		corpse.create()
+	else //SKYRAT EDIT CHANGE
+		new /obj/effect/gibspawner/human(loc) //SKYRAT EDIT CHANGE

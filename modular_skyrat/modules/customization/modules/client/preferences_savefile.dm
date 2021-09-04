@@ -444,6 +444,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["playtime_reward_cloak"], playtime_reward_cloak)
 	READ_FILE(S["phobia"], phobia)
 	READ_FILE(S["randomise"],  randomise)
+	READ_FILE(S["pda_style"], pda_style)
+	READ_FILE(S["pda_ringer"], pda_ringer)
+	READ_FILE(S["pda_color"], pda_color)
 	/*READ_FILE(S["feature_mcolor"], features["mcolor"])
 	READ_FILE(S["feature_ethcolor"], features["ethcolor"])
 	READ_FILE(S["feature_lizard_tail"], features["tail_lizard"])
@@ -537,6 +540,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	jumpsuit_style = sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list, initial(uplink_spawn_loc))
 	playtime_reward_cloak = sanitize_integer(playtime_reward_cloak)
+	pda_style = sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
+	pda_ringer = sanitize_text(pda_ringer, initial(pda_ringer))
+	pda_color = sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	/*features["mcolor"] = sanitize_hexcolor(features["mcolor"], 3, 0) SKYRAT EDIT
 	features["ethcolor"] = copytext_char(features["ethcolor"], 1, 7)
 	features["tail_lizard"] = sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
@@ -572,6 +578,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	READ_FILE(S["ooc_prefs"], ooc_prefs)
 	READ_FILE(S["erp_pref"], erp_pref)
+	READ_FILE(S["sextoys_pref"], sextoys_pref)
 	READ_FILE(S["noncon_pref"], noncon_pref)
 	READ_FILE(S["vore_pref"], vore_pref)
 	READ_FILE(S["general_record"], general_record)
@@ -625,6 +632,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		noncon_pref = "Ask"
 	if(!length(vore_pref))
 		vore_pref = "Ask"
+	if(!length(sextoys_pref))
+		sextoys_pref = "No"
 
 	general_record = sanitize_text(general_record)
 	security_record = sanitize_text(security_record)
@@ -763,6 +772,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
 	WRITE_FILE(S["erp_pref"] , erp_pref)
+	WRITE_FILE(S["sextoys_pref"], sextoys_pref)
 	WRITE_FILE(S["noncon_pref"] , noncon_pref)
 	WRITE_FILE(S["vore_pref"] , vore_pref)
 	WRITE_FILE(S["general_record"] , general_record)

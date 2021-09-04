@@ -420,6 +420,10 @@
 	name = "Striped Dress"
 	path = /obj/item/clothing/under/dress/striped
 
+/datum/loadout_item/uniform/dress/sailordress
+	name = "Sailor Dress"
+	path = /obj/item/clothing/under/dress/sailor
+
 /datum/loadout_item/uniform/dress/sundresswhite
 	name = "White Sundress"
 	path = /obj/item/clothing/under/dress/sundress/white
@@ -591,6 +595,8 @@
 /datum/loadout_item/uniform/job
 	subcategory = LOADOUT_SUBCATEGORY_JOB
 
+// SKYRAT EDIT REMOVAL BEGIN - COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/uniform/job/humblecaptain
 	name = "Humble Captain Jumpsuit"
 	path = /obj/item/clothing/under/rank/captain/humble
@@ -600,6 +606,7 @@
 	name = "Captain's Dress"
 	path = /obj/item/clothing/under/rank/captain/dress
 	restricted_roles = list("Captain")
+*/ // REMOVAL END
 
 /datum/loadout_item/uniform/job/impcap
 	name = "Captain's Naval Jumpsuit"
@@ -663,20 +670,11 @@
 	restricted_roles = list("Chaplain")
 
 
-/datum/loadout_item/uniform/job/navyblueuniformhos
- 	name = "Head of Security navyblue uniform"
- 	path = /obj/item/clothing/under/rank/security/head_of_security/formal
- 	restricted_roles = list("Head of Security")
-
 /datum/loadout_item/uniform/job/imphos
  	name = "Head of Security's Naval Uniform"
  	path = /obj/item/clothing/under/rank/security/head_of_security/imperial
  	restricted_roles = list("Head of Security")
 
-/datum/loadout_item/uniform/job/solhos
- 	name = "Head of Security Sol uniform"
- 	path = /obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
- 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/uniform/job/navyblueuniformofficer
  	name = "Security officer navyblue uniform"
@@ -721,7 +719,7 @@
 /datum/loadout_item/uniform/job/secskirt
 	name = "Security skirt"
 	path = /obj/item/clothing/under/rank/security/officer/skirt
-	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant") //i want a femboy sergeant to shove a baton up my ass
+	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant") //i want a femboy sergeant to shove a baton up my ass //disgusting
 
 /datum/loadout_item/uniform/job/seccadett
 	name = "Sol Cadet Uniform"
@@ -738,10 +736,13 @@
 	path = /obj/item/clothing/under/rank/security/peacekeeper/sol
 	restricted_roles = list("Security Officer", "Warden", "Head of Security","Security Medic","Security Sergeant")
 
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/uniform/job/hosskirt
 	name = "Head of security's skirt"
 	path = /obj/item/clothing/under/rank/security/head_of_security/skirt
 	restricted_roles = list("Head of Security")
+*/ // END
 
 /datum/loadout_item/uniform/job/disco
 	name = "Superstar Cop Suit"
@@ -856,6 +857,8 @@
 	restricted_roles = list("Cargo Technician", "Miner", "Quartermaster")
 	restricted_desc = "All Cargo Personnel"
 
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/uniform/job/gorka_qm
 	name = "Quartermaster's Gorka"
 	path = /obj/item/clothing/under/utility/cargo/gorka/head
@@ -880,6 +883,7 @@
 	name = "Quartermaster's Casual Suit"
 	path = /obj/item/clothing/under/rank/cargo/qm/casual
 	restricted_roles = list("Quartermaster")
+*/ // END
 
 /datum/loadout_item/uniform/job/engtrous
 	name = "Engineering Trousers"
