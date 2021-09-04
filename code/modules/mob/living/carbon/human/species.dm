@@ -1576,6 +1576,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						if(rev)
 							rev.remove_revolutionary(FALSE, user)
 
+//SKYRAT EDIT BEGIN
+					if(prob(I.force + ((100 - H.health) * 0.5))) // Mindshield Damaging.
+						for(var/obj/item/implant/Implant in user.implants)
+							if(Implant.type == /obj/item/implant/mindshield)
+								var/obj/item/implant/mindshield/MShield = Implant
+								MShield.takedamage()
+//SKYRAT EDIT END
+
 				if(bloody) //Apply blood
 					if(H.wear_mask)
 						H.wear_mask.add_mob_blood(H)
