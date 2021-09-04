@@ -15,7 +15,7 @@
 		return
 	/// SKYRAT EDIT BEGIN
 	if(HAS_TRAIT(owner,TRAIT_CHAMELEON_SKIN))
-		return 
+		return
 	/// SKYRAT EDIT END
 	owner.alpha = CHAMELEON_MUTATION_DEFAULT_TRANSPARENCY
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, .proc/on_move)
