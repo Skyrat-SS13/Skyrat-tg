@@ -102,7 +102,7 @@
 						owner.emote("twitch")
             
 				if(3, 4)
-					if(stress >= 100)
+					if(stress <= 100)
 						to_chat(owner, span_purple("You bring your hips together in lust..."))
 					else
 						to_chat(owner, span_purple("You press your thighs together in lust, stumbling slighty!"))
