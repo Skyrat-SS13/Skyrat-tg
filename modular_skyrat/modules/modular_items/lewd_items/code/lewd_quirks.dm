@@ -89,7 +89,7 @@
 						owner.emote("gasp")
 						
 				if(2)
-					if(stress >= 100)
+					if(stress <= 100)
 						to_chat(owner, span_purple("You can't stop shaking..."))
 						owner.do_jitter_animation(20)
 						owner.emote("shiver")
