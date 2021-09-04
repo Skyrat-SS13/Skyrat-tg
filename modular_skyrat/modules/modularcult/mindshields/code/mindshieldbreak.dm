@@ -28,12 +28,11 @@ MODULAR FOLDER. HANDLES MINDSHIELDS BEING BROKEN
 		broken = TRUE
 		Break()
 
-/obj/item/implant/mindshield/proc/Break(mob/target)
-	ADD_TRAIT(target,TRAIT_BROKEN_MINDSHIELD,IMPLANT_TRAIT)
-	var/mob/living/L = target
-	REMOVE_TRAIT(L, TRAIT_MINDSHIELD, IMPLANT_TRAIT)
-	L.sec_hud_set_implants()
-	L.visible_message(span_deconversion_message("[L] Looks far dizzier and uncertain than they did moments ago."))
+/obj/item/implant/mindshield/proc/Break()
+	ADD_TRAIT(imp_in,TRAIT_BROKEN_MINDSHIELD,IMPLANT_TRAIT)
+	REMOVE_TRAIT(imp_in, TRAIT_MINDSHIELD, IMPLANT_TRAIT)
+	imp_in.sec_hud_set_implants()
+	imp_in.visible_message(span_deconversion_message("[imp_in] Looks far dizzier and uncertain than they did moments ago."))
 
 /obj/item/implant/mindshield/removed()
 	broken = FALSE //RESET BROKEN STATUS
