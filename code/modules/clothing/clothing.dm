@@ -495,12 +495,6 @@ BLIND     // can't see anything
 		//so the shred survives potential turf change from the explosion.
 		addtimer(CALLBACK_NEW(/obj/effect/decal/cleanable/shreds, list(T, name)), 1)
 		deconstruct(FALSE)
-<<<<<<< HEAD
-	//SKYRAT EDIT CHANGE BEGIN
-	//else if(!(damage_flag in list(ACID, FIRE))) - SKYRAT EDIT - ORIGINAL
-	else if(!(damage_flag in list(ACID)))
-	//SKYRAT EDIT CHANGE END
-=======
 	if(damage_flag == CONSUME) //This allows for moths to fully consume clothing, rather than damaging it like other sources like brute
 		var/turf/current_position = get_turf(src)
 		new /obj/effect/decal/cleanable/shreds(current_position, name)
@@ -508,8 +502,10 @@ BLIND     // can't see anything
 			var/mob/living/possessing_mob = loc
 			possessing_mob.visible_message(span_danger("[src] is consumed until naught but shreds remains!"), span_boldwarning("[src] falls apart into little bits!"))
 		deconstruct(FALSE)
-	else if(!(damage_flag in list(ACID, FIRE)))
->>>>>>> 92ceee16329 (Fixes moths infinitely eating most clothing (#61082))
+	//SKYRAT EDIT CHANGE BEGIN
+	//else if(!(damage_flag in list(ACID, FIRE))) - SKYRAT EDIT - ORIGINAL
+	else if(!(damage_flag in list(ACID)))
+	//SKYRAT EDIT CHANGE END
 		body_parts_covered = NONE
 		slot_flags = NONE
 		update_clothes_damaged_state(CLOTHING_SHREDDED)
