@@ -1366,7 +1366,12 @@
 	prereq_ids = list("adv_engi", "weaponry")
 	design_ids = list(
 		"pin_loyalty",
-		"ammo_workbench", //SKYRAT EDIT ADDITION
+		"ammo_workbench", //SKYRAT EDIT START
+		"rocket_sabot",
+		"rocket_smoke",
+		"rocket_smoke_phosphor",
+		"rocket_smoke_sleep",
+		"rocket_emp", //SKYRAT EDIT END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/explosion/medium)
