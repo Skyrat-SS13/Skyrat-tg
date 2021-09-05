@@ -1,4 +1,5 @@
 https://github.com/Skyrat-SS13/Skyrat-tg/pull/7859
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/7981
 
 ## Title: Enables sec/med huds to view records on examine, as well as antagonists being able to view exploitables. Also adds a verb that antags can use to view exploitables.
 
