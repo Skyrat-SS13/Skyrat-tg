@@ -16,7 +16,7 @@
 
 	area_type = /area
 	protect_indoors = FALSE
-	target_trait = ZTRAIT_VOIDSTORM
+	//target_trait = ZTRAIT_VOIDSTORM SKYRAT EDIT REMOVAL
 
 	immunity_type = TRAIT_VOIDSTORM_IMMUNE
 

@@ -17,7 +17,7 @@
 	/// description of weather
 	var/desc = "Heavy gusts of wind blanket the area, periodically knocking down anyone caught in the open."
 	/// The message displayed in chat to foreshadow the weather's beginning
-	var/telegraph_message = SPAN_WARNING("The wind begins to pick up.")
+	var/telegraph_message = span_warning("The wind begins to pick up.")
 	/// In deciseconds, how long from the beginning of the telegraph until the weather begins
 	var/telegraph_duration = 300
 	/// The sound file played to everyone on an affected z-level
@@ -28,7 +28,7 @@
 	var/telegraph_skyblock = 0
 
 	/// Displayed in chat once the weather begins in earnest
-	var/weather_message = SPAN_USERDANGER("The wind begins to blow ferociously!")
+	var/weather_message = span_userdanger("The wind begins to blow ferociously!")
 	/// In deciseconds, how long the weather lasts once it begins
 	var/weather_duration = 1200
 	/// See above - this is the lowest possible duration
@@ -344,7 +344,7 @@
 			N.set_opacity(FALSE)
 		N.layer = overlay_layer
 		N.plane = overlay_plane
-		N.icon = 'modular_skyrat/modules/overmap/icons/weather_effects.dmi'
+		N.icon = 'icons/effects/weather_effects.dmi'
 		N.color = weather_color
 		set_area_icon_state(N)
 		if(stage == END_STAGE)
@@ -371,7 +371,7 @@
 	lightning_in_progress = TRUE
 	addtimer(CALLBACK(src, .proc/end_thunder), 5 SECONDS)
 	addtimer(CALLBACK(src, .proc/do_thunder_sound), 2 SECONDS)
-	var/mutable_appearance/appearance_to_add = mutable_appearance('modular_skyrat/modules/overmap/icons/weather_effects.dmi', "lightning_flash")
+	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/weather_effects.dmi', "lightning_flash")
 	appearance_to_add.plane = LIGHTING_PLANE
 	appearance_to_add.layer = OBJ_LAYER
 	for(var/V in impacted_areas)
@@ -394,7 +394,7 @@
 	if(!lightning_in_progress)
 		return
 	lightning_in_progress = FALSE
-	var/mutable_appearance/appearance_to_remove = mutable_appearance('modular_skyrat/modules/overmap/icons/weather_effects.dmi', "lightning_flash")
+	var/mutable_appearance/appearance_to_remove = mutable_appearance('icons/effects/weather_effects.dmi', "lightning_flash")
 	appearance_to_remove.plane = LIGHTING_PLANE
 	appearance_to_remove.layer = OBJ_LAYER
 	for(var/V in impacted_areas)

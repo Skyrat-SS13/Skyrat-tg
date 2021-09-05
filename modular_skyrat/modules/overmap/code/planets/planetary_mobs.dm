@@ -234,7 +234,7 @@
 	ranged_cooldown = world.time + ranged_cooldown_time
 	var/turf/my_turf = get_turf(src)
 	playsound(my_turf, 'sound/effects/bamf.ogg', 50, 0)
-	visible_message(SPAN_NOTICE("\The [src] burrows into \the [my_turf]!"))
+	visible_message(span_notice("\The [src] burrows into \the [my_turf]!"))
 	burrowed = TRUE
 	invisibility = INVISIBILITY_MAXIMUM
 	AIStatus = AI_OFF
@@ -397,7 +397,7 @@
 /mob/living/simple_animal/hostile/planet/jelly/mega/proc/jelly_split()
 	var/turf/my_turf = get_turf(src)
 	playsound(my_turf, 'sound/effects/bamf.ogg', 100, TRUE)
-	visible_message(SPAN_USERDANGER("\The [src] rumbles briefly before splitting into two!"))
+	visible_message(span_userdanger("\The [src] rumbles briefly before splitting into two!"))
 	for(var/i = 1 to 2)
 		var/mob/living/simple_animal/hostile/planet/jelly/mega/child = new split_type(get_turf(src))
 		child.megajelly_color = megajelly_color

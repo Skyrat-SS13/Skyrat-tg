@@ -1,6 +1,6 @@
 /datum/atmosphere
 	var/gas_string
-	var/id
+	//var/id SKYRAT EDIT REMOVAL
 
 	//SKYRAT EDIT CHANGE
 	var/list/base_gases = list()// A list of gases to always have

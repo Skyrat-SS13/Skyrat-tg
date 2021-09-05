@@ -50,7 +50,7 @@
 /obj/structure/shuttle/engine/can_be_unfasten_wrench(mob/user, silent)
 	if(state == ENGINE_WELDED)
 		if(!silent)
-			to_chat(user, SPAN_WARNING("[src] is welded to the floor!"))
+			to_chat(user, span_warning("[src] is welded to the floor!"))
 		return FAILED_UNFASTEN
 	return ..()
 
@@ -71,18 +71,18 @@
 	. = ..()
 	switch(state)
 		if(ENGINE_UNWRENCHED)
-			to_chat(user, SPAN_WARNING("The [src.name] needs to be wrenched to the floor!"))
+			to_chat(user, span_warning("The [src.name] needs to be wrenched to the floor!"))
 		if(ENGINE_WRENCHED)
 			if(!I.tool_start_check(user, amount=0))
 				return TRUE
 
-			user.visible_message(SPAN_NOTICE("[user.name] starts to weld the [name] to the floor."), \
-				SPAN_NOTICE("You start to weld \the [src] to the floor..."), \
+			user.visible_message(span_notice("[user.name] starts to weld the [name] to the floor."), \
+				span_notice("You start to weld \the [src] to the floor..."), \
 				SPAN_HEAR("You hear welding."))
 
 			if(I.use_tool(src, user, ENGINE_WELDTIME, volume=50))
 				state = ENGINE_WELDED
-				to_chat(user, SPAN_NOTICE("You weld \the [src] to the floor."))
+				to_chat(user, span_notice("You weld \the [src] to the floor."))
 				alter_engine_power(engine_power)
 				ApplyExtension()
 
@@ -90,13 +90,13 @@
 			if(!I.tool_start_check(user, amount=0))
 				return TRUE
 
-			user.visible_message(SPAN_NOTICE("[user.name] starts to cut the [name] free from the floor."), \
-				SPAN_NOTICE("You start to cut \the [src] free from the floor..."), \
+			user.visible_message(span_notice("[user.name] starts to cut the [name] free from the floor."), \
+				span_notice("You start to cut \the [src] free from the floor..."), \
 				SPAN_HEAR("You hear welding."))
 
 			if(I.use_tool(src, user, ENGINE_WELDTIME, volume=50))
 				state = ENGINE_WRENCHED
-				to_chat(user, SPAN_NOTICE("You cut \the [src] free from the floor."))
+				to_chat(user, span_notice("You cut \the [src] free from the floor."))
 				alter_engine_power(-engine_power)
 				RemoveExtension()
 	return TRUE

@@ -217,6 +217,10 @@
 			if(L.offset_y < -240)
 				L.offset_y += 480
 		*/
+
+		var/change_x
+		var/change_y
+
 		change_x = offset_x * L.speed
 		L.offset_x -= change_x
 		change_y = offset_y * L.speed

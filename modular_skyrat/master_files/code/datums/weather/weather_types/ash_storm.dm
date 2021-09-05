@@ -8,7 +8,7 @@
 	telegraph_overlay = "light_ash"
 	telegraph_skyblock = 0.3
 
-	weather_message = SPAN_USERDANGER("<i>Smoldering clouds of scorching ash billow down around you! Get inside!</i>")
+	weather_message = span_userdanger("<i>Smoldering clouds of scorching ash billow down around you! Get inside!</i>")
 	weather_duration_lower = 600
 	weather_duration_upper = 1200
 	weather_overlay = "ash_storm"

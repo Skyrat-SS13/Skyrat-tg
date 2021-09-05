@@ -90,17 +90,17 @@
 
 /obj/machinery/atmospherics/components/unary/engine/proc/can_be_rotated(mob/user, rotation_type)
 	if(is_welded)
-		to_chat(user, SPAN_WARNING("It is welded to the floor!"))
+		to_chat(user, span_warning("It is welded to the floor!"))
 		return FALSE
 	if(anchored)
-		to_chat(user, SPAN_WARNING("It is fastened to the floor!"))
+		to_chat(user, span_warning("It is fastened to the floor!"))
 		return FALSE
 	return TRUE
 
 /obj/machinery/atmospherics/components/unary/engine/can_be_unfasten_wrench(mob/user, silent)
 	if(is_welded)
 		if(!silent)
-			to_chat(user, SPAN_WARNING("[src] is welded to the floor!"))
+			to_chat(user, span_warning("[src] is welded to the floor!"))
 		return FAILED_UNFASTEN
 
 	return ..()
@@ -112,27 +112,27 @@
 /obj/machinery/atmospherics/components/unary/engine/welder_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(!anchored)
-		to_chat(user, SPAN_WARNING("The [src.name] needs to be wrenched to the floor!"))
+		to_chat(user, span_warning("The [src.name] needs to be wrenched to the floor!"))
 		return TRUE
 	if(!is_welded)
 		if(!I.tool_start_check(user, amount=0))
 			return TRUE
-		user.visible_message(SPAN_NOTICE("[user.name] starts to weld the [name] to the floor."), \
-			SPAN_NOTICE("You start to weld \the [src] to the floor..."), \
+		user.visible_message(span_notice("[user.name] starts to weld the [name] to the floor."), \
+			span_notice("You start to weld \the [src] to the floor..."), \
 			SPAN_HEAR("You hear welding."))
 		if(I.use_tool(src, user, 3 SECONDS, volume=50))
 			weld_down()
-			to_chat(user, SPAN_NOTICE("You weld \the [src] to the floor."))
+			to_chat(user, span_notice("You weld \the [src] to the floor."))
 		return TRUE
 	else
 		if(!I.tool_start_check(user, amount=0))
 			return TRUE
-		user.visible_message(SPAN_NOTICE("[user.name] starts to cut the [name] free from the floor."), \
-			SPAN_NOTICE("You start to cut \the [src] free from the floor..."), \
+		user.visible_message(span_notice("[user.name] starts to cut the [name] free from the floor."), \
+			span_notice("You start to cut \the [src] free from the floor..."), \
 			SPAN_HEAR("You hear welding."))
 		if(I.use_tool(src, user, 3 SECONDS, volume=50))
 			unweld()
-			to_chat(user, SPAN_NOTICE("You cut \the [src] free from the floor."))
+			to_chat(user, span_notice("You cut \the [src] free from the floor."))
 		return TRUE
 
 #define ENGINE_MINIMUM_OPERATABLE_MOLES 0.05

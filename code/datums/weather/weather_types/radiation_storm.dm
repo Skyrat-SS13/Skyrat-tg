@@ -19,7 +19,7 @@
 	area_type = /area
 	protected_areas = list(/area/maintenance, /area/ai_monitored/turret_protected/ai_upload, /area/ai_monitored/turret_protected/ai_upload_foyer, /area/ai_monitored/turret_protected/aisat/maint, /area/ai_monitored/command/storage/satellite,
 	/area/ai_monitored/turret_protected/ai, /area/commons/storage/emergency/starboard, /area/commons/storage/emergency/port, /area/shuttle, /area/security/prison/safe, /area/security/prison/toilet)
-	target_trait = ZTRAIT_STATION
+	//target_trait = ZTRAIT_STATION SKYRAT EDIT REMOVAL
 
 	immunity_type = TRAIT_RADSTORM_IMMUNE
 

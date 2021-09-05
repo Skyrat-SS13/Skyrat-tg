@@ -12,4 +12,7 @@
 /datum/round_event/wizard/lava/start()
 	if(!started)
 		started = TRUE
-		SSweather.run_weather(/datum/weather/floor_is_lava)
+		//SKYRAT EDIT ADDITION
+		var/datum/weather_controller/weather = STATION_WEATHER_CONTROLLER
+		weather.RunWeather(/datum/weather/floor_is_lava)
+		//SKYRAT EDIT END

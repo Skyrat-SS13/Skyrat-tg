@@ -1233,7 +1233,10 @@
 		"superresonator",
 		"triggermod",
 		"mecha_kineticgun",
-	)//e a r l y    g a  m e)
+		"mining_drill",
+		"mining_brace",
+		"metal_density_scanner"
+	)//e a r l y    g a  m e) //SKYRAT EDIT ADDITION
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
 /datum/techweb_node/adv_mining
@@ -1246,9 +1249,9 @@
 		"hypermod",
 		"jackhammer",
 		"plasmacutter_adv",
-
 		//SKYRAT EDIT START - RESEARCH DESIGNS
-		"ripleyupgradef"
+		"ripleyupgradef",
+		"adv_metal_density_scanner"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)

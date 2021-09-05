@@ -13,6 +13,7 @@
 	var/parallax_direction_override
 	///Extensions for z levels as overmap objects
 	var/list/all_extensions = list()
+	/// Weather controller for this level
 	var/datum/weather_controller/weather_controller
 	/// An override of rock colors on this level
 	var/rock_color = COLOR_ASTEROID_ROCK
@@ -22,6 +23,13 @@
 	var/grass_color = COLOR_DARK_MODERATE_LIME_GREEN
 	/// An override of water colors on this level
 	var/water_color = COLOR_WHITE
+	/// A list of all ore nodes on this level
+	var/list/ore_nodes = list()
+
+///If something requires a level to have a weather controller, use this
+/datum/space_level/proc/AssertWeatherController()
+	if(!weather_controller)
+		new /datum/weather_controller(list(src))
 	// SKYRAT EDIT END
 
 /datum/space_level/New(new_z, new_name, list/new_traits = list())

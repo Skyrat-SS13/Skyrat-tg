@@ -1,11 +1,11 @@
 /datum/overmap_object/shuttle
 	name = "Shuttle"
 	visual_type = /obj/effect/abstract/overmap/shuttle
-	var/obj/docking_port/mobile/my_shuttle = null
-	var/angle = 0
+	overmap_process = TRUE
 
-	var/partial_x = 0
-	var/partial_y = 0
+	var/obj/docking_port/mobile/my_shuttle
+	var/datum/transit_instance/transit_instance
+	var/angle = 0
 
 	var/velocity_x = 0
 	var/velocity_y = 0
@@ -35,6 +35,7 @@
 	var/helm_pad_engage_immediately = TRUE
 
 	var/open_comms_channel = FALSE
+	var/microphone_muted = FALSE
 
 	var/datum/overmap_lock/lock
 
@@ -42,19 +43,52 @@
 
 	var/datum/overmap_shuttle_controller/shuttle_controller
 	var/uses_rotation = TRUE
+	var/fixed_parallax_dir
 	var/shuttle_capability = ALL_SHUTTLE_CAPABILITY
 
 	//Extensions
 	var/list/all_extensions = list()
 	var/list/engine_extensions = list()
+	var/list/shield_extensions = list()
+	var/list/transporter_extensions = list()
+	var/list/weapon_extensions = list()
 
 	var/speed_divisor_from_mass = 1
 
+	//Turf to which you need access range to access in order to do topics (this is done in this way so I dont need to keep track of consoles being in use)
+	var/turf/control_turf
+
+	var/last_shield_change_state = 0
+
+	var/current_parallax_dir = 0
+
+/datum/overmap_object/shuttle/GetAllAliveClientMobs()
+	. = ..()
+	if(my_shuttle)
+		//About the most efficient way I could think of doing it
+		var/datum/space_level/transit_level = SSmapping.transit
+		for(var/i in SSmobs.clients_by_zlevel[transit_level.z_value])
+			var/mob/iterated_mob = i
+			var/turf/mob_turf = get_turf(iterated_mob)
+			if(my_shuttle.shuttle_areas[mob_turf.loc])
+				. += iterated_mob
+
+/datum/overmap_object/shuttle/GetAllClientMobs()
+	. = ..()
+	if(my_shuttle)
+		//About the most efficient way I could think of doing it
+		var/datum/space_level/transit_level = SSmapping.transit
+		for(var/i in SSmobs.dead_players_by_zlevel[transit_level.z_value])
+			var/mob/iterated_mob = i
+			var/turf/mob_turf = get_turf(iterated_mob)
+			if(my_shuttle.shuttle_areas[mob_turf.loc])
+				. += iterated_mob
 
 /datum/overmap_object/shuttle/proc/GetSensorTargets()
 	var/list/targets = list()
-	for(var/overmap_object in current_system.GetObjectsInRadius(x,y,SENSOR_RADIUS))
-		if(overmap_object != src)
+	for(var/ov_obj in current_system.GetObjectsInRadius(x,y,SENSOR_RADIUS))
+		var/datum/overmap_object/overmap_object = ov_obj
+		if(overmap_object != src && overmap_object.overmap_flags & OV_SHOWS_ON_SENSORS)
 			targets += overmap_object
 	return targets
 
@@ -76,7 +110,9 @@
 		draw_thrust += ext.DrawThrust(impulse_power)
 	return draw_thrust / speed_divisor_from_mass
 
-/datum/overmap_object/shuttle/proc/DisplayUI(mob/user)
+/datum/overmap_object/shuttle/proc/DisplayUI(mob/user, turf/usage_turf)
+	if(usage_turf)
+		control_turf = usage_turf
 	var/list/dat = list()
 
 	dat += "<center><a href='?src=[REF(src)];task=tab;tab=0' [shuttle_ui_tab == 0 ? "class='linkOn'" : ""]>General</a>"
@@ -93,12 +129,16 @@
 
 	switch(shuttle_ui_tab)
 		if(SHUTTLE_TAB_GENERAL)
+			var/shield_engaged = IsShieldOn()
 			dat += "Hull: 100% integrity"
-			dat += "<BR>Shields: Not engaged"
+			if(length(shield_extensions))
+				dat += "<BR>Shields: [GetShieldPercent()*100]% <a href='?src=[REF(src)];task=general;general_control=shields' [shield_engaged ? "class='linkOn'" : ""]>[shield_engaged ? "Engaged" : "Disengaged"]</a>"
+			else
+				dat += "<BR>Shields: Not installed"
 			dat += "<BR>Position: X: [x] , Y: [y]"
 			dat += "<BR>Overmap View: <a href='?src=[REF(src)];task=general;general_control=overmap'>Open</a>"
 			dat += "<BR>Send a Hail: <a href='?src=[REF(src)];task=general;general_control=hail'>Send...</a>"
-			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a>"
+			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a> - Microphone: <a href='?src=[REF(src)];task=general;general_control=microphone_muted' [microphone_muted ? "" : "class='linkOn'"]>[microphone_muted ? "Muted" : "Open"]</a>"
 
 		if(SHUTTLE_TAB_ENGINES)
 			if(engine_extensions.len == 0)
@@ -178,16 +218,15 @@
 				dat += "<td>[overmap_obj.y]</td>"
 				dat += "<td>[dist]</td>"
 				dat += "<td>"
+				var/in_lock_range = IN_LOCK_RANGE(src,overmap_obj)
 				if(shuttle_capability & SHUTTLE_CAN_USE_TARGET)
-					dat += "<a href='?src=[REF(src)];task=sensor;sensor_task=target;target_id=[overmap_obj.id]'[is_target ? "class='linkOn'" : ""]>Target</a>"
+					dat += "<a href='?src=[REF(src)];task=sensor;sensor_task=target;target_id=[overmap_obj.id]'[in_lock_range ? "" : "class='linkOff'"][is_target ? "class='linkOn'" : ""]>Target</a>"
 				if(shuttle_capability & SHUTTLE_CAN_USE_ENGINES)
 					dat += "<a href='?src=[REF(src)];task=sensor;sensor_task=destination;target_id=[overmap_obj.id]' [is_destination ? "class='linkOn'" : ""]>As Dest.</a>"
 				dat += "</td></tr>"
 			dat += "</table>"
 
 		if(SHUTTLE_TAB_TARGET)
-			if(lock)
-				lock.Resolve()
 			var/locked_thing_name = lock ? lock.target.name : "NONE"
 			var/locked_status = "NOT ENGAGED"
 			var/locked_and_calibrated = FALSE
@@ -226,7 +265,7 @@
 				dat += "<B>Cannot safely dock in high velocities!</B>"
 			else
 				var/list/z_levels = list()
-				var/list/nearby_objects = current_system.GetObjectsInRadius(x,y,1)
+				var/list/nearby_objects = current_system.GetObjectsOnCoords(x,y)
 				var/list/freeform_z_levels = list()
 				for(var/i in nearby_objects)
 					var/datum/overmap_object/IO = i
@@ -239,8 +278,13 @@
 				var/list/options = params2list(my_shuttle.possible_destinations)
 				for(var/i in SSshuttle.stationary)
 					var/obj/docking_port/stationary/iterated_dock = i
-					if(z_levels["[iterated_dock.z]"] && (iterated_dock.id in options))
-						docks[iterated_dock.name] = iterated_dock
+					if(!z_levels["[iterated_dock.z]"])
+						continue
+					if(!options.Find(iterated_dock.port_destinations))
+						continue
+					if(!my_shuttle.check_dock(iterated_dock, silent = TRUE))
+						continue
+					docks[iterated_dock.name] = iterated_dock
 
 				dat += "<B>Designated docks:</B>"
 				for(var/key in docks)
@@ -278,10 +322,10 @@
 		destination_y = y
 	if(input_x)
 		destination_x += input_x * helm_pad_range
-		destination_x = clamp(destination_x, 1, world.maxx)
+		destination_x = clamp(destination_x, 1, current_system.maxx)
 	if(input_y)
 		destination_y += input_y * helm_pad_range
-		destination_y = clamp(destination_y, 1, world.maxy)
+		destination_y = clamp(destination_y, 1, current_system.maxy)
 	if(helm_pad_engage_immediately)
 		helm_command = HELM_MOVE_TO_DESTINATION
 	return
@@ -295,10 +339,15 @@
 			return
 		else
 			QDEL_NULL(lock)
-	if(ov_obj)
+	if(ov_obj && IN_LOCK_RANGE(src,ov_obj))
 		lock = new(src, ov_obj)
 
 /datum/overmap_object/shuttle/Topic(href, href_list)
+	if(!control_turf)
+		return
+	var/mob/user = usr
+	if(!isliving(user) || !user.canUseTopic(control_turf, BE_CLOSE, FALSE, NO_TK))
+		return
 	if(href_list["pad_topic"])
 		if(!(shuttle_capability & SHUTTLE_CAN_USE_ENGINES))
 			return
@@ -389,7 +438,7 @@
 					switch(SSshuttle.moveShuttle(my_shuttle.id, dock_id, 1))
 						if(0)
 							shuttle_controller.busy = TRUE
-							shuttle_controller.RemoveCurrentControl(TRUE)
+							shuttle_controller.RemoveCurrentControl()
 				if("freeform_dock")
 					if(shuttle_controller.busy)
 						return
@@ -444,10 +493,19 @@
 					destination_y = ov_obj.y
 		if("general")
 			switch(href_list["general_control"])
+				if("shields")
+					var/shields_engaged = IsShieldOn()
+					if(shields_engaged)
+						TurnShieldsOff()
+					else
+						TurnShieldsOn()
 				if("overmap")
 					GrantOvermapView(usr)
+				if("microphone_muted")
+					microphone_muted = !microphone_muted
 				if("comms")
 					open_comms_channel = !open_comms_channel
+					my_visual.update_appearance()
 				if("hail")
 					var/hail_msg = input(usr, "Compose a hail message:", "Hail Message")  as text|null
 					if(hail_msg)
@@ -474,11 +532,11 @@
 				if("change_x")
 					var/new_x = input(usr, "Choose new X destination", "Helm Control", destination_x) as num|null
 					if(new_x)
-						destination_x = clamp(new_x, 1, world.maxx)
+						destination_x = clamp(new_x, 1, current_system.maxx)
 				if("change_y")
 					var/new_y = input(usr, "Choose new Y destination", "Helm Control", destination_y) as num|null
 					if(new_y)
-						destination_y = clamp(new_y, 1, world.maxy)
+						destination_y = clamp(new_y, 1, current_system.maxy)
 				if("change_impulse_power")
 					var/new_speed = input(usr, "Choose new impulse power (0% - 100%)", "Helm Control", (impulse_power*100)) as num|null
 					if(new_speed)
@@ -489,7 +547,6 @@
 	. = ..()
 	destination_x = x
 	destination_y = y
-	START_PROCESSING(SSfastprocess, src)
 	shuttle_controller = new(src)
 
 /datum/overmap_object/shuttle/proc/RegisterToShuttle(obj/docking_port/mobile/register_shuttle)
@@ -499,157 +556,39 @@
 		var/datum/shuttle_extension/extension = i
 		extension.AddToOvermapObject(src)
 
+	var/obj/docking_port/stationary/transit/my_transit = my_shuttle.assigned_transit
+	transit_instance = my_transit.transit_instance
+	transit_instance.overmap_shuttle = src
+
+	update_perceived_parallax()
+
 /datum/overmap_object/shuttle/Destroy()
+	if(transit_instance)
+		transit_instance.overmap_shuttle = null
+		transit_instance = null
+	control_turf = null
 	QDEL_NULL(shuttle_controller)
 	if(my_shuttle)
 		for(var/i in my_shuttle.all_extensions)
 			var/datum/shuttle_extension/extension = i
 			extension.RemoveFromOvermapObject()
+		my_shuttle.my_overmap_object = null
 		my_shuttle = null
 	engine_extensions = null
+	shield_extensions = null
+	transporter_extensions = null
+	weapon_extensions = null
 	all_extensions = null
 	return ..()
 
-/datum/overmap_object/shuttle/process(delta_time)
-	var/icon_state_to_update_to = SHUTTLE_ICON_IDLE
-	if(shuttle_capability & SHUTTLE_CAN_USE_ENGINES)
-		switch(helm_command)
-			if(HELM_MOVE_TO_DESTINATION)
-				if(x == destination_x && y == destination_y)
-					StopMove()
-				else
-					var/target_angle = ATAN2(((destination_y*32)-((y*32)+partial_y)),((destination_x*32)-((x*32)+partial_x)))
+/datum/overmap_object/shuttle/UpdateVisualOffsets()
+	. = ..()
+	if(shuttle_controller)
+		shuttle_controller.NewVisualOffset(FLOOR(partial_x,1),FLOOR(partial_y,1))
 
-					if(target_angle < 0)
-						target_angle = 360 + target_angle
-
-					var/my_angle = angle
-					if(my_angle < 0)
-						my_angle = 360 + my_angle
-
-					var/diff = target_angle - my_angle
-
-					var/left_turn = FALSE
-					if(diff < 0)
-						diff += 360
-					if(diff > 180)
-						diff = 360 - diff
-						left_turn = TRUE
-
-
-					if(!(diff < 3))
-						if(left_turn)
-							angle -= min(diff,10)
-						else
-							angle += min(diff,10)
-
-					if(angle > 180)
-						angle -= 360
-					else if (angle < -180)
-						angle += 360
-
-					var/target_angle_in_byond_rad = target_angle
-					if(target_angle > 180)
-						target_angle_in_byond_rad -= 360
-
-					var/vector_len = VECTOR_LENGTH(velocity_x, velocity_y)
-					var/speed_cap = GetCapSpeed()
-					if(diff < 180 && vector_len < speed_cap)
-						var/drawn_thrust = DrawThrustFromAllEngines()
-						if(drawn_thrust)
-							var/added_velocity_x = drawn_thrust * sin(target_angle_in_byond_rad)
-							var/added_velocity_y = drawn_thrust * cos(target_angle_in_byond_rad)
-
-							if(diff > 10)
-								var/angle_multiplier = 1-(diff/360)
-								added_velocity_x *= angle_multiplier
-								added_velocity_y *= angle_multiplier
-
-							velocity_x += added_velocity_x
-							velocity_y += added_velocity_y
-
-							icon_state_to_update_to = SHUTTLE_ICON_FORWARD
-					else if (vector_len > speed_cap + SHUTTLE_SLOWDOWN_MARGIN)
-						if(velocity_y)
-							velocity_y *= 0.8
-							icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
-						if(velocity_x)
-							velocity_x *= 0.8
-							icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
-					else
-						icon_state_to_update_to = SHUTTLE_ICON_FORWARD
-
-			if(HELM_FULL_STOP)
-				if(!velocity_x && !velocity_y)
-					helm_command = HELM_IDLE
-				else //Lazy
-					if(velocity_y)
-						velocity_y *= 0.7
-						icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
-					if(velocity_x)
-						velocity_x *= 0.7
-						icon_state_to_update_to = SHUTTLE_ICON_BACKWARD
-
-	var/obj/effect/abstract/overmap/shuttle/shuttle_visual = my_visual
-	switch(icon_state_to_update_to)
-		if(SHUTTLE_ICON_IDLE)
-			shuttle_visual.icon_state = shuttle_visual.shuttle_idle_state
-		if(SHUTTLE_ICON_FORWARD)
-			shuttle_visual.icon_state = shuttle_visual.shuttle_forward_state
-		if(SHUTTLE_ICON_BACKWARD)
-			shuttle_visual.icon_state = shuttle_visual.shuttle_backward_state
-
-	if(velocity_x || velocity_y)
-		var/velocity_length = VECTOR_LENGTH(velocity_x, velocity_y)
-		if(velocity_length < SHUTTLE_MINIMUM_VELOCITY)
-			velocity_x = 0
-			velocity_y = 0
-			if(is_seperate_z_level)
-				update_seperate_z_level_parallax(TRUE)
-		else
-			//"Friction"
-			velocity_x *= 0.95
-			velocity_y *= 0.95
-
-			var/add_partial_x = velocity_x
-			var/add_partial_y = velocity_y
-
-			partial_x += add_partial_x
-			partial_y += add_partial_y
-			var/did_move = FALSE
-			if(partial_y > 16)
-				did_move = TRUE
-				partial_y -= 32
-				y = min(y+1,world.maxy)
-			else if(partial_y < -16)
-				did_move = TRUE
-				partial_y += 32
-				y = max(y-1,1)
-			if(partial_x > 16)
-				did_move = TRUE
-				partial_x -= 32
-				x = min(x+1,world.maxx)
-			else if(partial_x < -16)
-				did_move = TRUE
-				partial_x += 32
-				x = max(x-1,1)
-
-			if(is_seperate_z_level)
-				update_seperate_z_level_parallax()
-
-			if(did_move)
-				update_visual_position()
-				if(shuttle_controller)
-					shuttle_controller.ShuttleMovedOnOvermap()
-
-	if(uses_rotation)
-		var/matrix/M = new
-		M.Turn(angle)
-		my_visual.transform = M
-
-/datum/overmap_object/shuttle/proc/update_seperate_z_level_parallax(reset = FALSE)
-	var/established_direction = null
-	if(!reset)
+/datum/overmap_object/shuttle/proc/update_perceived_parallax()
+	var/established_direction = FALSE
+	if(velocity_y || velocity_x)
 		var/absx = abs(velocity_x)
 		var/absy = abs(velocity_y)
 		if(absy > absx)
@@ -663,16 +602,35 @@
 			else
 				established_direction = WEST
 
-	for(var/i in related_levels)
-		var/datum/space_level/S = i
-		S.parallax_direction_override = established_direction
+	var/changed = FALSE
+	if(my_shuttle)
+		current_parallax_dir = established_direction ? (my_shuttle.preferred_direction ? my_shuttle.preferred_direction : established_direction) : FALSE
+		if(current_parallax_dir != my_shuttle.overmap_parallax_dir)
+			my_shuttle.overmap_parallax_dir = current_parallax_dir
+			changed = TRUE
+			var/area/hyperspace_area = transit_instance.dock.assigned_area
+			hyperspace_area.parallax_movedir = current_parallax_dir
+	else if (is_seperate_z_level && length(related_levels))
+		for(var/i in related_levels)
+			var/datum/space_level/level = i
+			current_parallax_dir = (established_direction && fixed_parallax_dir) ? fixed_parallax_dir : established_direction
+			if(current_parallax_dir != level.parallax_direction_override)
+				level.parallax_direction_override = current_parallax_dir
+				changed = TRUE
 
-/datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user)
+	if(changed)
+		for(var/i in GetAllClientMobs())
+			var/mob/mob = i
+			mob.hud_used.update_parallax()
+
+/datum/overmap_object/shuttle/proc/GrantOvermapView(mob/user, turf/passed_turf)
 	//Camera control
 	if(!shuttle_controller)
 		return
 	if(user.client && !shuttle_controller.busy)
 		shuttle_controller.SetController(user)
+		if(passed_turf)
+			shuttle_controller.control_turf = passed_turf
 		return TRUE
 
 /datum/overmap_object/shuttle/proc/CommandMove(dest_x, dest_y)
@@ -692,24 +650,43 @@
 	is_seperate_z_level = TRUE
 	uses_rotation = FALSE
 	shuttle_capability = STATION_SHUTTLE_CAPABILITY
-	speed_divisor_from_mass = 20 //20 times as harder as a shuttle to move
+	speed_divisor_from_mass = 40
+	clears_hazards_on_spawn = TRUE
+
+/datum/overmap_object/shuttle/ship
+	name = "Ship"
+	visual_type = /obj/effect/abstract/overmap/shuttle/ship
+	is_seperate_z_level = TRUE
+	shuttle_capability = STATION_SHUTTLE_CAPABILITY
+	speed_divisor_from_mass = 20
+	clears_hazards_on_spawn = TRUE
+
+/datum/overmap_object/shuttle/ship/bearcat
+	name = "FTV Bearcat"
+	fixed_parallax_dir = NORTH
 
 /datum/overmap_object/shuttle/planet
 	name = "Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/lavaland
+	visual_type = /obj/effect/abstract/overmap/shuttle/planet
 	is_seperate_z_level = TRUE
 	uses_rotation = FALSE
 	shuttle_capability = PLANET_SHUTTLE_CAPABILITY
 	speed_divisor_from_mass = 1000 //1000 times as harder as a shuttle to move
+	clears_hazards_on_spawn = TRUE
+	var/planet_color = COLOR_WHITE
+
+/datum/overmap_object/shuttle/planet/New()
+	. = ..()
+	my_visual.color = planet_color
 
 /datum/overmap_object/shuttle/planet/lavaland
 	name = "Lavaland"
-	visual_type = /obj/effect/abstract/overmap/shuttle/lavaland
-
-/datum/overmap_object/shuttle/planet/jungle_planet
-	name = "Jungle Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/jungle_planet
+	planet_color = LIGHT_COLOR_BLOOD_MAGIC
 
 /datum/overmap_object/shuttle/planet/icebox
 	name = "Ice Planet"
-	visual_type = /obj/effect/abstract/overmap/shuttle/icebox
+	planet_color = COLOR_TEAL
+
+/datum/overmap_object/shuttle/ess_crow
+	name = "ESS Crow"
+	speed_divisor_from_mass = 4

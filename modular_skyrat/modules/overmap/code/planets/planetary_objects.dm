@@ -53,9 +53,9 @@
 /turf/open/floor/planetary/examine(mob/user)
 	. = ..()
 	if(broken || burnt)
-		. += SPAN_NOTICE("It looks like it had better days.")
+		. += span_notice("It looks like it had better days.")
 	if(can_build_on)
-		. += SPAN_NOTICE("You might be able to build ontop of it with some <i>tiles</i> or reinforcement <i>rods</i>.")
+		. += span_notice("You might be able to build ontop of it with some <i>tiles</i> or reinforcement <i>rods</i>.")
 
 /turf/open/floor/planetary/setup_broken_states()
 	return list(base_icon_state)

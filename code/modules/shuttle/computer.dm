@@ -177,7 +177,7 @@
 /obj/machinery/computer/shuttle/ui_act(action, params)
 	. = ..()
 	//SKYRAT EDIT ADDITION
-if(uses_overmap)
+	if(uses_overmap)
 		return
 	//SKYRAT EDIT END
 	if(.)

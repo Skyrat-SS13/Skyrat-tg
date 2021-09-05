@@ -16,7 +16,7 @@
 
 	area_type = /area
 	protected_areas = list(/area/space)
-	target_trait = ZTRAIT_STATION
+	//target_trait = ZTRAIT_STATION SKYRAT EDIT REMOVAL
 
 	overlay_layer = ABOVE_OPEN_TURF_LAYER //Covers floors only
 	overlay_plane = FLOOR_PLANE

@@ -28,11 +28,11 @@
 /area/planet/snow
 	name = "Snow Planet Surface"
 	ambientsounds = list(
-		'sound/effects/wind/tundra0.ogg',
-		'sound/effects/wind/tundra1.ogg',
-		'sound/effects/wind/tundra2.ogg',
-		'sound/effects/wind/spooky0.ogg',
-		'sound/effects/wind/spooky1.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/tundra0.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/tundra1.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/tundra2.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/spooky0.ogg',
+		'modular_skyrat/modules/overmap/sound/effects/wind/spooky1.ogg',
 	)
 
 /datum/map_generator/planet_gen/snow

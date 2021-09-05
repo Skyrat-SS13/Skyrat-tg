@@ -41,12 +41,12 @@
 /area/planet/chlorine
 	name = "Chlorine Planet Surface"
 	ambientsounds = list(
-		'sound/effects/wind/desert0.ogg',
-		'sound/effects/wind/desert1.ogg',
-		'sound/effects/wind/desert2.ogg',
-		'sound/effects/wind/desert3.ogg',
-		'sound/effects/wind/desert4.ogg',
-		'sound/effects/wind/desert5.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/desert0.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/desert1.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/desert2.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/desert3.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/desert4.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/desert5.ogg',
 	)
 
 /datum/map_generator/planet_gen/chlorine
