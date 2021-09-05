@@ -1,5 +1,5 @@
 /obj/effect/overlay/lock_effect
-	icon = 'icons/overmap/targeted.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/targeted.dmi'
 	icon_state = "locking"
 	layer = FLY_LAYER
 	plane = GAME_PLANE

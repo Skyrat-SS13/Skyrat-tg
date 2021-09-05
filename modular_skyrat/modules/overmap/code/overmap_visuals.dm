@@ -1,7 +1,7 @@
 /obj/effect/abstract/overmap
 	glide_size = 3
 	layer = OVERMAP_LAYER_LOWEST
-	icon = 'icons/overmap/overmap.dmi'
+	icon = 'modular_skyrat/modules/overmap/modular_skyrat/modules/overmap/icons.dmi'
 	icon_state = "event"
 	/// The overmap object this visual effect is representing
 	var/datum/overmap_object/my_overmap_object

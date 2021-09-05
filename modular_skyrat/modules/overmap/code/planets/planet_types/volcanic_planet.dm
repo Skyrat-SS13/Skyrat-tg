@@ -20,7 +20,7 @@
 
 /area/planet/volcanic
 	name = "Volcanic Planet Surface"
-	ambientsounds = list('modular_skyrat/modules/overmap/sound/ambience/magma.ogg')
+	ambientsounds = list('modular_skyrat/master_files/sound/ambience/magma.ogg')
 	min_ambience_cooldown = 2 MINUTES
 	max_ambience_cooldown = 4 MINUTES
 

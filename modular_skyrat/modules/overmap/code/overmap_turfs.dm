@@ -1,7 +1,6 @@
 /turf/open/overmap
-	icon = 'icons/overmap/overmap_turfs.dmi'
+	icon = 'modular_skyrat/modules/overmap/modular_skyrat/modules/overmap/icons_turfs.dmi'
 	plane = FLOOR_PLANE
-	static_lighting = FALSE
 
 /turf/open/overmap/Initalize_Atmos(times_fired)
 	return

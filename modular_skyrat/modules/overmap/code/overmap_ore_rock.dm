@@ -46,3 +46,17 @@
 	icon_state = "smallobject"
 	layer = OVERMAP_LAYER_LOOT
 	color = LIGHT_COLOR_PURPLE
+
+/obj/effect/spawner/lootdrop/ore_rich
+	lootcount = 1
+	loot = list(
+		/obj/item/stack/ore/iron{amount = 34} = 50,
+		/obj/item/stack/ore/glass{amount = 25} = 15,
+		/obj/item/stack/ore/silver{amount = 20} = 15,
+		/obj/item/stack/ore/diamond{amount = 10} = 5,
+		/obj/item/stack/ore/uranium{amount = 15} = 5,
+		/obj/item/stack/ore/plasma{amount = 15} = 5,
+		/obj/item/stack/ore/titanium{amount = 15} = 5,
+		/obj/item/stack/ore/gold{amount = 15} = 5,
+		/obj/item/stack/ore/bluespace_crystal{amount = 6} = 2
+	)

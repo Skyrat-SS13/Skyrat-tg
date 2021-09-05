@@ -1,7 +1,7 @@
 /obj/item/metal_density_scanner
 	name = "metal density scanner"
 	desc = "A handheld device used for detecting and measuring density of nearby metals."
-	icon = 'modular_skyrat/modules/drill_and_ore_nodes/icons/metal_scanner.dmi'
+	icon = 'modular_skyrat/modules/mining_module/icons/metal_scanner.dmi'
 	icon_state = "mds"
 	inhand_icon_state = "multitool"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'

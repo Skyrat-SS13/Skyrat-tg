@@ -15,7 +15,7 @@
 
 /obj/item/anomalous_sliver
 	name = "anomalous sliver"
-	icon = 'modular_skyrat/modules/excavation/modular_skyrat/modules/excavation/icons/excavation/crystal.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/crystal.dmi'
 	icon_state = "sliver"
 	w_class = WEIGHT_CLASS_TINY
 	var/anom_type

@@ -509,7 +509,7 @@
 				if("hail")
 					var/hail_msg = input(usr, "Compose a hail message:", "Hail Message")  as text|null
 					if(hail_msg)
-						hail_msg = strip_html_simple(hail_msg, MAX_BROADCAST_LEN, TRUE)
+						hail_msg = STRIP_HTML_SIMPLE(hail_msg, MAX_BROADCAST_LEN)
 		if("helm")
 			if(!(shuttle_capability & SHUTTLE_CAN_USE_ENGINES))
 				return

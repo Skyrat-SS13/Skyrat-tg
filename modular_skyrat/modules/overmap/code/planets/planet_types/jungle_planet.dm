@@ -19,9 +19,9 @@
 /area/planet/jungle
 	name = "Jungle Planet Surface"
 	ambientsounds = list(
-		'modular_skyrat/modules/overmap/sound/ambience/jungle.ogg',
-		'modular_skyrat/modules/overmap/sound/ambience/eeriejungle1.ogg',
-		'modular_skyrat/modules/overmap/sound/ambience/eeriejungle2.ogg',
+		'modular_skyrat/master_files/sound/ambience/jungle.ogg',
+		'modular_skyrat/master_files/sound/ambience/eeriejungle1.ogg',
+		'modular_skyrat/master_files/sound/ambience/eeriejungle2.ogg',
 	)
 	min_ambience_cooldown = 2 MINUTES
 	max_ambience_cooldown = 3 MINUTES
