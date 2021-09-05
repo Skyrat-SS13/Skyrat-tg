@@ -196,7 +196,8 @@
 
 /obj/item/medicell/utility/clotting
 	name = "Clotting Medicell"
-	desc = "PLACEHOLDER DESCRIPTION" //Change this later.
+	desc = "A medicell designed to help deal with bleeding patients"
+	icon_state = "clotting"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/clotting
 
 /obj/item/medicell/utility/temperature
