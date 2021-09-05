@@ -42,7 +42,7 @@
 
 /obj/item/ammo_casing/caseless/rocket/smoke
 	name = "\improper HVSD"
-	desc = "The acronym stands for high velocty smoke deployment, surely that makes it non-lethal, right?"
+	desc = "The acronym stands for 'high velocity smoke deployment', surely that makes it non-lethal, right?"
 	icon = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-ammo.dmi'
 	icon_state = "84mm-smoke"
 	projectile_type = /obj/projectile/bullet/a84mm/smoke
