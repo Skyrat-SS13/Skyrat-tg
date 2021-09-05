@@ -150,3 +150,4 @@
 	cost = 5
 	suffix = "weather_station.dmm"
 	planet_requirements = PLANET_HABITABLE
+
