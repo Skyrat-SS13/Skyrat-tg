@@ -79,7 +79,7 @@
 /// Tacticool (Useless) ammo for the PML and subtypes
 /obj/projectile/bullet/a84mm/sabot
 	name = "\improper APCBCFSDSGLAT missile"
-	desc = "Pray this isn't coming straigh at you."
+	desc = "Pray this isn't coming straight at you."
 	icon = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-project.dmi'
 	icon_state = "84mm-sabot"
 	damage = 150
