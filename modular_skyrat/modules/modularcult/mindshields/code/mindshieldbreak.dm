@@ -3,7 +3,7 @@
 MODULAR FOLDER. HANDLES MINDSHIELDS BEING BROKEN
 
 */
-#define TRAIT_BROKEN_MINDSHIELD "brokenmindshield"
+
 
 	
 	
