@@ -248,9 +248,9 @@
 	if(landing_clear != SHUTTLE_DOCKER_LANDING_CLEAR)
 		switch(landing_clear)
 			if(SHUTTLE_DOCKER_BLOCKED)
-				to_chat(current_user, SPAN_WARNING("Invalid transit location."))
+				to_chat(current_user, span_warning("Invalid transit location."))
 			if(SHUTTLE_DOCKER_BLOCKED_BY_HIDDEN_PORT)
-				to_chat(current_user, SPAN_WARNING("Unknown object detected in landing zone. Please designate another location."))
+				to_chat(current_user, span_warning("Unknown object detected in landing zone. Please designate another location."))
 		return
 
 	///Make one use port that deleted after fly off, to don't lose info that need on to properly fly off.
@@ -275,7 +275,7 @@
 	my_shuttle.freeform_port.forceMove(locate(eyeobj.x - x_offset, eyeobj.y - y_offset, eyeobj.z))
 
 	if(current_user.client)
-		to_chat(current_user, SPAN_NOTICE("Transit location designated."))
+		to_chat(current_user, span_notice("Transit location designated."))
 
 	//my_shuttle.request(my_shuttle.freeform_port)
 

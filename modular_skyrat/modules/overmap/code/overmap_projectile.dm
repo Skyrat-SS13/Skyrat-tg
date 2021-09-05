@@ -131,7 +131,7 @@
 
 /obj/effect/abstract/overmap/projectile
 	animate_movement = NO_STEPS
-	icon = 'modular_skyrat/modules/overmap/modular_skyrat/modules/overmap/icons_projectiles.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/overmap_projectiles.dmi'
 	icon_state = "white_laser"
 	layer = OVERMAP_LAYER_PROJECTILE
 

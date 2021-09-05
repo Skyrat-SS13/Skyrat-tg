@@ -1,7 +1,7 @@
 /obj/machinery/mining_laser
 	name = "mining laser"
 	desc = "A powerful laser specialized in drilling and breaking down large rocks."
-	icon = 'icons/obj/machines/mining_laser.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/mining_laser.dmi'
 	icon_state = "mining_laser"
 	use_power = ACTIVE_POWER_USE
 	idle_power_usage = 5
@@ -39,7 +39,7 @@
 							/obj/item/stock_parts/manipulator  = 2)
 
 /obj/effect/temp_visual/mining_laser_fire
-	icon = 'icons/obj/machines/mining_laser.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/mining_laser.dmi'
 	icon_state = "laser_fire"
 	light_color = LIGHT_COLOR_FIRE
 	light_system = MOVABLE_LIGHT
