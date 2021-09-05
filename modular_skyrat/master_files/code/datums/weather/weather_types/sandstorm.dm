@@ -18,7 +18,7 @@
 	area_type = /area
 	protect_indoors = TRUE
 
-	immunity_type = "ash"
+	immunity_type = TRAIT_ASHSTORM_IMMUNE
 
 	barometer_predictable = TRUE
 	affects_underground = FALSE

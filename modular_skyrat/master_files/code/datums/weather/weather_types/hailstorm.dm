@@ -17,7 +17,7 @@
 	area_type = /area
 	protect_indoors = TRUE
 
-	immunity_type = "snow"
+	immunity_type = TRAIT_SNOWSTORM_IMMUNE
 
 	barometer_predictable = TRUE
 	affects_underground = FALSE

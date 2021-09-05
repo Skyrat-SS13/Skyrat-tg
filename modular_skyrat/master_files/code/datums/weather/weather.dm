@@ -1,6 +1,6 @@
-#define THUNDER_SOUND pick('sound/effects/thunder/thunder1.ogg', 'sound/effects/thunder/thunder2.ogg', 'sound/effects/thunder/thunder3.ogg', 'sound/effects/thunder/thunder4.ogg', \
-			'sound/effects/thunder/thunder5.ogg', 'sound/effects/thunder/thunder6.ogg', 'sound/effects/thunder/thunder7.ogg', 'sound/effects/thunder/thunder8.ogg', 'sound/effects/thunder/thunder9.ogg', \
-			'sound/effects/thunder/thunder10.ogg')
+#define THUNDER_SOUND pick('modular_skyrat/master_files/sound/effects/thunder/thunder1.ogg', 'modular_skyrat/master_files/sound/effects/thunder/thunder2.ogg', 'modular_skyrat/master_files/sound/effects/thunder/thunder3.ogg', 'modular_skyrat/master_files/sound/effects/thunder/thunder4.ogg', \
+			'modular_skyrat/master_files/sound/effects/thunder/thunder5.ogg', 'modular_skyrat/master_files/sound/effects/thunder/thunder6.ogg', 'modular_skyrat/master_files/sound/effects/thunder/thunder7.ogg', 'modular_skyrat/master_files/sound/effects/thunder/thunder8.ogg', 'modular_skyrat/master_files/sound/effects/thunder/thunder9.ogg', \
+			'modular_skyrat/master_files/sound/effects/thunder/thunder10.ogg')
 
 /**
  * Causes weather to occur on a z level in certain area types
@@ -75,7 +75,7 @@
 	/// If the weather has no purpose other than looks
 	var/aesthetic = FALSE
 	/// Used by mobs to prevent them from being affected by the weather
-	var/immunity_type = "storm"
+	var/immunity_type = TRAIT_ASHSTORM_IMMUNE
 
 	/// The stage of the weather, from 1-4
 	var/stage = END_STAGE
@@ -196,6 +196,7 @@
 				SEND_SOUND(M, sound(telegraph_sound))
 	addtimer(CALLBACK(src, .proc/start), telegraph_duration)
 
+/* TEMPORARY REMOVAL
 	if(sound_active_outside)
 		sound_active_outside.output_atoms = outside_areas
 	if(sound_active_inside)
@@ -206,7 +207,7 @@
 	if(sound_weak_inside)
 		sound_weak_inside.output_atoms = impacted_areas
 		sound_weak_inside.start()
-
+*/
 /**
  * Starts the actual weather and effects from it
  *
@@ -314,7 +315,7 @@
 	var/turf/mob_turf = get_turf(L)
 	if(mob_turf && !(mob_turf.z in impacted_z_levels))
 		return
-	if(immunity_type in L.weather_immunities)
+	if(HAS_TRAIT(L, immunity_type))
 		return
 	if(!(get_area(L) in impacted_areas))
 		return

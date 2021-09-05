@@ -22,7 +22,7 @@
 	area_type = /area
 	protect_indoors = TRUE
 
-	immunity_type = "ash"
+	immunity_type = TRAIT_ASHSTORM_IMMUNE
 
 	barometer_predictable = TRUE
 
@@ -41,10 +41,8 @@
 			var/thermal_protection = H.get_thermal_protection()
 			if(thermal_protection >= FIRE_IMMUNITY_MAX_TEMP_PROTECT)
 				return TRUE
-		if(isliving(L))// if we're a non immune mob inside an immune mob we have to reconsider if that mob is immune to protect ourselves
-			var/mob/living/the_mob = L
-			if("ash" in the_mob.weather_immunities)
-				return TRUE
+		if(HAS_TRAIT(L, TRAIT_ASHSTORM_IMMUNE))
+			return TRUE
 		L = L.loc //Check parent items immunities (recurses up to the turf)
 	return FALSE //RIP you
 

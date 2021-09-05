@@ -451,3 +451,16 @@
 /datum/sold_goods/goliath
 	cost = 500
 	path = /mob/living/simple_animal/hostile/asteroid/goliath
+
+/obj/item/storage/backpack/duffelbag/mining_conscript/basic
+	name = "basic mining kit"
+	desc = "A bare-minimum kit for mining."
+	icon_state = "duffel-explorer"
+	inhand_icon_state = "duffel-explorer"
+
+/obj/item/storage/backpack/duffelbag/mining_conscript/basic/PopulateContents()
+	new /obj/item/clothing/suit/hooded/explorer(src)
+	new /obj/item/clothing/mask/gas/explorer(src)
+	new /obj/item/storage/bag/ore(src)
+	new /obj/item/pickaxe(src)
+	new /obj/item/flashlight/lantern(src)

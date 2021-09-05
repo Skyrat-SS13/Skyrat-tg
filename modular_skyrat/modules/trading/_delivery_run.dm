@@ -123,7 +123,7 @@
 	desc = "Package wrapped with a surprisingly durable material. Probably contains valuable cargo for delivery."
 	icon_state = "normal_package"
 	w_class = WEIGHT_CLASS_NORMAL
-	icon = 'icons/obj/items/delivery_package.dmi'
+	icon = 'modular_skyrat/modules/trading/icons/delivery_package.dmi'
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/datum/delivery_run_instance/delivery_instance
 	var/spooling_delivery = FALSE

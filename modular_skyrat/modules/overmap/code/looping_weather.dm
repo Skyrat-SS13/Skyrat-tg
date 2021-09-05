@@ -1,11 +1,11 @@
 /datum/looping_sound/weather/wind
 	mid_sounds = list(
-		'modular_skyrat/modules/overmap/sound/wind/wind1.ogg' = 1,
-		'modular_skyrat/modules/overmap/sound/wind/wind2.ogg' = 1,
-		'modular_skyrat/modules/overmap/sound/wind/wind3.ogg' = 1,
-		'modular_skyrat/modules/overmap/sound/wind/wind4.ogg' = 1,
-		'modular_skyrat/modules/overmap/sound/wind/wind5.ogg' = 1,
-		'modular_skyrat/modules/overmap/sound/wind/wind6.ogg' = 1
+		'modular_skyrat/master_files/sound/effects/wind/wind1.ogg' = 1,
+		'modular_skyrat/master_files/sound/effects/wind/wind2.ogg' = 1,
+		'modular_skyrat/master_files/sound/effects/wind/wind3.ogg' = 1,
+		'modular_skyrat/master_files/sound/effects/wind/wind4.ogg' = 1,
+		'modular_skyrat/master_files/sound/effects/wind/wind5.ogg' = 1,
+		'modular_skyrat/master_files/sound/effects/wind/wind6.ogg' = 1
 		)
 	mid_length = 10 SECONDS // The lengths for the files vary, but the longest is ten seconds, so this will make it sound like intermittent wind.
 	volume = 50

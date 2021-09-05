@@ -13,6 +13,9 @@
 
 	var/overmap_shuttle_type = /datum/overmap_object/shuttle
 
+	/// The direction override that overmap objects representing this shuttle apply to it. Needs to be tracked seperately to the old method because shuttles should work fine without overmap objects. Null means not overriden, direction means it is (with 0 being stop)
+	var/overmap_parallax_dir
+
 	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
 	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
 
