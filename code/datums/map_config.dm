@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 //used for holding information about unique properties of maps
 //feed it json files that match the datum layout
 //defaults to box
@@ -21,19 +20,16 @@
 
 	var/traits = null
 	var/space_ruin_levels = 3
+	var/space_empty_levels = 1
 
-	var/minetype = "lavaland"
+	var/minetype = "none"
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list(
-		"cargo" = "cargo_box",
+		"cargo" = "cargo_skyrat",
 		"ferry" = "ferry_fancy",
 		"whiteship" = "whiteship_box",
-		"emergency" = "emergency_box")
-
-	var/job_faction = FACTION_STATION
-
-	var/overflow_job = /datum/job/assistant
+		"emergency" = "emergency_skyrat") //SKYRAT EDIT CHANGE
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
@@ -64,34 +60,19 @@
 
 	var/ore_node_seeder_type
 
-/datum/map_config/New()
-	//Make sure that all levels in station have the default station traits, unless they're overriden
-	. = ..()
-	if(islist(traits))
-		for(var/level in traits)
-			var/list/level_traits = level
-			var/base_traits_station = ZTRAITS_STATION
-			for(var/trait_to_validate in base_traits_station)
-				if(!level_traits[trait_to_validate])
-					level_traits[trait_to_validate] = base_traits_station[trait_to_validate]
-
-/datum/map_config/proc/get_map_info()
-	return "You're on board <b>[map_name]</b>, a top of the class NanoTrasen research station."
-
 /proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
-	var/datum/map_config/config
+	var/datum/map_config/config = new
 	if (default_to_box)
-		config = new /datum/map_config/metastation()
 		return config
-	config = LoadConfig(filename, error_if_missing)
-	if (!config)
-		config = new /datum/map_config/metastation()  // Fall back to Box
+	if (!config.LoadConfig(filename, error_if_missing))
+		qdel(config)
+		config = new /datum/map_config  // Fall back to Box
 	if (delete_after)
 		fdel(filename)
 	return config
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world("[##X] missing from json!"); return; }
-/proc/LoadConfig(filename, error_if_missing)
+/datum/map_config/proc/LoadConfig(filename, error_if_missing)
 	if(!fexists(filename))
 		if(error_if_missing)
 			log_world("map_config not found: [filename]")
@@ -112,16 +93,137 @@
 		log_world("map_config is not json: [filename]")
 		return
 
-	if(!json["map_type"])
-		log_world("map_config doesn't have a map_type to point to its config datum!")
+	config_filename = filename
+
+	if(!json["version"])
+		log_world("map_config missing version!")
 		return
 
-	CHECK_EXISTS("map_type")
-	var/type_to_load = text2path(json["map_type"])
-	var/datum/map_config/config = new type_to_load()
-	config.defaulted = FALSE
-	config.config_filename = filename
-	return config
+	if(json["version"] != MAP_CURRENT_VERSION)
+		log_world("map_config has invalid version [json["version"]]!")
+		return
+
+	CHECK_EXISTS("map_name")
+	map_name = json["map_name"]
+	CHECK_EXISTS("map_path")
+	map_path = json["map_path"]
+
+	map_file = json["map_file"]
+	// "map_file": "MetaStation.dmm"
+	if (istext(map_file))
+		if (!fexists("_maps/[map_path]/[map_file]"))
+			log_world("Map file ([map_path]/[map_file]) does not exist!")
+			return
+	// "map_file": ["Lower.dmm", "Upper.dmm"]
+	else if (islist(map_file))
+		for (var/file in map_file)
+			if (!fexists("_maps/[map_path]/[file]"))
+				log_world("Map file ([map_path]/[file]) does not exist!")
+				return
+	else
+		log_world("map_file missing from json!")
+		return
+
+	if (islist(json["shuttles"]))
+		var/list/L = json["shuttles"]
+		for(var/key in L)
+			var/value = L[key]
+			shuttles[key] = value
+	else if ("shuttles" in json)
+		log_world("map_config shuttles is not a list!")
+		return
+
+	shuttles["emergency"] = "emergency_skyrat"
+
+	traits = json["traits"]
+	// "traits": [{"Linkage": "Cross"}, {"Space Ruins": true}]
+	if (islist(traits))
+		// "Station" is set by default, but it's assumed if you're setting
+		// traits you want to customize which level is cross-linked
+		for (var/level in traits)
+			if (!(ZTRAIT_STATION in level))
+				level[ZTRAIT_STATION] = TRUE
+	// "traits": null or absent -> default
+	else if (!isnull(traits))
+		log_world("map_config traits is not a list!")
+		return
+
+	var/temp = json["space_ruin_levels"]
+	if (isnum(temp))
+		space_ruin_levels = temp
+	else if (!isnull(temp))
+		log_world("map_config space_ruin_levels is not a number!")
+		return
+
+	temp = json["space_empty_levels"]
+	if (isnum(temp))
+		space_empty_levels = temp
+	else if (!isnull(temp))
+		log_world("map_config space_empty_levels is not a number!")
+		return
+
+	if ("minetype" in json)
+		minetype = json["minetype"]
+
+	allow_custom_shuttles = json["allow_custom_shuttles"] != FALSE
+
+	if ("job_changes" in json)
+		if(!islist(json["job_changes"]))
+			log_world("map_config \"job_changes\" field is missing or invalid!")
+			return
+		job_changes = json["job_changes"]
+
+	if(json["overmap_object_type"])
+		overmap_object_type = text2path(json["overmap_object_type"])
+
+	if(json["weather_controller_type"])
+		weather_controller_type = text2path(json["weather_controller_type"])
+
+	if(json["day_night_controller_type"])
+		day_night_controller_type = text2path(json["day_night_controller_type"])
+
+	if(json["atmosphere_type"])
+		atmosphere_type = text2path(json["atmosphere_type"])
+
+	if ("rock_color" in json)
+		if(islist(json["rock_color"]))
+			rock_color = json["rock_color"]
+
+	if ("plant_color" in json)
+		if(islist(json["plant_color"]))
+			plant_color = json["plant_color"]
+
+	if ("grass_color" in json)
+		if(islist(json["grass_color"]))
+			grass_color = json["grass_color"]
+
+	if ("water_color" in json)
+		if(islist(json["water_color"]))
+			water_color = json["water_color"]
+
+	if(json["amount_of_planets_spawned"])
+		atmosphere_type = text2path(json["amount_of_planets_spawned"])
+
+	temp = json["amount_of_planets_spawned"]
+	if(isnum(temp))
+		amount_of_planets_spawned = temp
+
+	if(json["ore_node_seeder_type"])
+		ore_node_seeder_type = text2path(json["ore_node_seeder_type"])
+
+	if(json["global_trading_hub_type"])
+		global_trading_hub_type = text2path(json["global_trading_hub_type"])
+
+	if(json["ore_node_seeder_type"])
+		atmosphere_type = text2path(json["ore_node_seeder_type"])
+
+	if(json["localized_trading_hub_types"])
+		var/list/hub_types = json["localized_trading_hub_types"]
+		for(var/hub_type in hub_types)
+			localized_trading_hub_types += text2path(hub_type)
+
+	defaulted = FALSE
+	return TRUE
 #undef CHECK_EXISTS
 
 /datum/map_config/proc/GetFullMapPaths()
@@ -133,4 +235,3 @@
 
 /datum/map_config/proc/MakeNextMap()
 	return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")
-*/
