@@ -57,7 +57,7 @@
 	gender = PLURAL
 	name = "barren rock"
 	baseturfs = /turf/open/floor/planetary/barren
-	icon = 'icons/planet/barren/barren_floor.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/barren/barren_floor.dmi'
 	icon_state = "barren"
 	base_icon_state = "barren"
 	footstep = FOOTSTEP_GENERIC_HEAVY

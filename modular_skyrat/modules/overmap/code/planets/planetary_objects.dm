@@ -18,7 +18,7 @@
 	turf_type = /turf/open/floor/planetary/water
 
 /turf/open/floor/planetary
-	icon = 'icons/planet/planet_floors.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/planet_floors.dmi'
 	broken = FALSE
 	initial_gas_mix = PLANETARY_ATMOS
 	planetary_atmos = TRUE
@@ -91,7 +91,7 @@
 /turf/open/floor/planetary/grass
 	name = "grass"
 	desc = "A patch of grass."
-	icon = 'icons/planet/planet_grass.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/planet_grass.dmi'
 	icon_state = "grass0"
 	base_icon_state = "grass"
 	baseturfs = /turf/open/floor/planetary/dirt
@@ -239,7 +239,7 @@
 /obj/structure/flora/planetary
 	name = "bush"
 	desc = "Some kind of plant."
-	icon = 'icons/planet/grayscale_flora.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/grayscale_flora.dmi'
 	var/variants = 0
 
 /obj/structure/flora/planetary/Initialize()
@@ -289,7 +289,7 @@
 /obj/structure/flora/planetary_grass
 	name = "grass"
 	desc = "Some kind of plant."
-	icon = 'icons/planet/grayscale_flora.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/grayscale_flora.dmi'
 	var/variants = 0
 
 /obj/structure/flora/planetary_grass/Initialize()

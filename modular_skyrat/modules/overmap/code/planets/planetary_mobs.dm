@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/planet
-	icon = 'icons/planet/planetary_mobs.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/planetary_mobs.dmi'
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 
@@ -132,7 +132,7 @@
 /mob/living/simple_animal/yithian
 	name = "yithian"
 	desc = "A friendly creature vaguely resembling an oversized snail without a shell."
-	icon = 'icons/planet/planetary_mobs.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/planetary_mobs.dmi'
 	icon_state = "yithian"
 	icon_living = "yithian"
 	icon_dead = "yithian_dead"
@@ -152,7 +152,7 @@
 /mob/living/simple_animal/tindalos
 	name = "tindalos"
 	desc = "It looks like a large, flightless grasshopper."
-	icon = 'icons/planet/planetary_mobs.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/planetary_mobs.dmi'
 	icon_state = "tindalos"
 	icon_living = "tindalos"
 	icon_dead = "tindalos_dead"
@@ -172,7 +172,7 @@
 /mob/living/simple_animal/thinbug
 	name = "taki"
 	desc = "It looks like a bunch of legs."
-	icon = 'icons/planet/planetary_mobs.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/planetary_mobs.dmi'
 	icon_state = "thinbug"
 	icon_living = "thinbug"
 	icon_dead = "thinbug_dead"
@@ -292,7 +292,7 @@
 	transform = transform.Translate(0, 16)
 
 /obj/effect/temp_visual/burrow_sand_splash
-	icon = 'icons/planet/planetary_mobs_effects.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/planetary_mobs_effects.dmi'
 	icon_state = "splash"
 	color = "#dbc56b"
 

@@ -97,7 +97,7 @@
 	name = "packed sand"
 	desc = "Sand that has been packed into solid earth."
 	baseturfs = /turf/open/floor/planetary/shrouded_sand
-	icon = 'icons/planet/shrouded/shrouded_floor.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/shrouded/shrouded_floor.dmi'
 	icon_state = "sand"
 	base_icon_state = "sand"
 	footstep = FOOTSTEP_SAND

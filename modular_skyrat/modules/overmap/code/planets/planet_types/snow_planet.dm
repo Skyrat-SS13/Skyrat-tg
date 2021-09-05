@@ -121,7 +121,7 @@
 	gender = PLURAL
 	name = "snow"
 	desc = "Looks cold."
-	icon = 'icons/planet/snow/snow_floor.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/snow/snow_floor.dmi'
 	baseturfs = /turf/open/floor/planetary/snow
 	icon_state = "snow"
 	base_icon_state = "snow"

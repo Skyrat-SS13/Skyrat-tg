@@ -121,7 +121,7 @@
 	credits_held -= amount
 	var/obj/item/holochip/holochip = new(loc, amount)
 	if(user)
-		to_chat(user, SPAN_NOTICE("You withdraw [amount] credits."))
+		to_chat(user, span_notice("You withdraw [amount] credits."))
 		user.put_in_hands(holochip)
 		write_log("[station_time_timestamp()]: [user.name] withdrew [amount] cr. (new balance: [credits_held] cr.)")
 
@@ -129,9 +129,9 @@
 	if(istype(I, /obj/item/holochip) || istype(I, /obj/item/stack/spacecash) || istype(I, /obj/item/coin))
 		var/worth = I.get_item_credit_value()
 		if(!worth)
-			to_chat(user, SPAN_WARNING("[I] doesn't seem to be worth anything!"))
+			to_chat(user, span_warning("[I] doesn't seem to be worth anything!"))
 		credits_held += worth
-		to_chat(user, SPAN_NOTICE("You slot [I] into [src] and it reports a total of [credits_held] credits inserted."))
+		to_chat(user, span_notice("You slot [I] into [src] and it reports a total of [credits_held] credits inserted."))
 		qdel(I)
 		write_log("[station_time_timestamp()]: [user.name] deposited [worth] cr. (new balance: [credits_held] cr.)")
 		return

@@ -116,7 +116,7 @@
 	name = "chlorinated sand"
 	desc = "Sand that has been heavily contaminated by chlorine."
 	baseturfs = /turf/open/floor/planetary/chlorine_sand
-	icon = 'icons/planet/chlorine/chlorine_floor.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/planet/chlorine/chlorine_floor.dmi'
 	icon_state = "sand"
 	base_icon_state = "sand"
 	footstep = FOOTSTEP_SAND
