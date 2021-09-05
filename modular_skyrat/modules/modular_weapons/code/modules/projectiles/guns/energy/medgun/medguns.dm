@@ -197,11 +197,11 @@
 /obj/item/medicell/utility/clotting
 	name = "Clotting Medicell"
 	desc = "PLACEHOLDER DESCRIPTION" //Change this later.
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/clotting
 
 /obj/item/medicell/utility/temperature
 	name = "Temperature Readjustment Medicell"
 	desc = "PLACEHOLDER DESCRIPTION"
-
 
 //Medigun Gunsets/
 /obj/item/storage/briefcase/medicalgunset/

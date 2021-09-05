@@ -297,5 +297,29 @@
 	base_disgust = 1
 
 //End of Basic Tiers of cells.//
+//Utility Cells
+//Base of utility
+/obj/projectile/energy/medical/utility
+	name = "utility medical shot"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 
+//CLotting
+/obj/item/ammo_casing/energy/medical/utility/clotting
+	projectile_type = /obj/projectile/energy/medical/utility/clotting
+	select_name = "clotting"
+
+/obj/projectile/energy/medical/utility/clotting
+	name = "clotting agent shot"
+
+/obj/projectile/energy/medical/utility/clotting/on_hit(mob/living/target)
+	if(!IsLivingHuman(target))
+		return FALSE
+	if(target.reagents.get_reagent_amount(/datum/reagent/medicine/coagulant/fabricated) < 5) //injects the target with a weaker coagulant agent
+		target.reagents.add_reagent(/datum/reagent/medicine/coagulant/fabricated, 1)
+		target.reagents.add_reagent(/datum/reagent/iron, 2) //adds in iron to help conpensate for the relatively weaker blood clotting
+	else
+		return
+
+
+//End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
