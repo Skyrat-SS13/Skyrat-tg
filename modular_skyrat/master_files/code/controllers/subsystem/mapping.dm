@@ -13,15 +13,14 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/map_templates = list()
 
+	var/list/planet_templates = list()
+
 	var/list/ruins_templates = list()
 	var/list/space_ruins_templates = list()
 	var/list/lava_ruins_templates = list()
-	var/list/trench_ruins_templates = list()
-	var/list/ocean_ruins_templates = list()
-	var/list/ocean_station_ruins_templates = list()
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
-	var/list/rockplanet_ruins_templates = list() //SKYRAT EDIT - Adds ruins to Rockplanet mining map
+	var/list/planet_ruins_templates = list()
 
 	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
 
@@ -52,7 +51,9 @@ SUBSYSTEM_DEF(mapping)
 	/// True when in the process of adding a new Z-level, global locking
 	var/adding_new_zlevel = FALSE
 
-	var/list/planet_templates = list()
+
+	/// The overmap object of the main loaded station, for easy access
+	var/datum/overmap_object/station_overmap_object
 
 /datum/controller/subsystem/mapping/New()
 	..()
@@ -125,13 +126,6 @@ SUBSYSTEM_DEF(mapping)
 		for (var/ice_z in ice_ruins_underground)
 			spawn_rivers(ice_z, 4, level_trait(ice_z, ZTRAIT_BASETURF), /area/icemoon/underground/unexplored/rivers)
 
-//SKYRAT EDIT START//
-	var/list/rockplanet_ruins = levels_by_trait(ZTRAIT_ROCKPLANET_RUINS)
-	if (rockplanet_ruins.len)
-		seedRuins(rockplanet_ruins, CONFIG_GET(number/rockplanet_budget), list(/area/rockplanet/surface/outdoors/unexplored), rockplanet_ruins_templates)
-		for (var/rockplanet_z in rockplanet_ruins)
-			spawn_rivers(rockplanet_z)
-//SKYRAT EDIT END//
 	// Generate deep space ruins
 	var/list/space_ruins = levels_by_trait(ZTRAIT_SPACE_RUINS)
 	if (space_ruins.len)
@@ -206,15 +200,13 @@ Used by the AI doomsday and the self-destruct nuke.
 	map_templates = SSmapping.map_templates
 	ruins_templates = SSmapping.ruins_templates
 	space_ruins_templates = SSmapping.space_ruins_templates
-	lava_ruins_templates = SSmapping.lava_ruins_templates
-	//SKYRAT EDIT ADDITION
 	trench_ruins_templates = SSmapping.trench_ruins_templates
 	ocean_ruins_templates = SSmapping.ocean_ruins_templates
 	ocean_station_ruins_templates = SSmapping.ocean_station_ruins_templates
-	//SKYRAT EDIT END
+	lava_ruins_templates = SSmapping.lava_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
-	rockplanet_ruins_templates = SSmapping.rockplanet_ruins_templates //SKYRAT EDIT ADDITION
+	planet_ruins_templates = SSmapping.planet_ruins_templates
 	shuttle_templates = SSmapping.shuttle_templates
 	shelter_templates = SSmapping.shelter_templates
 	unused_turfs = SSmapping.unused_turfs
@@ -232,7 +224,24 @@ Used by the AI doomsday and the self-destruct nuke.
 	z_list = SSmapping.z_list
 
 #define INIT_ANNOUNCE(X) to_chat(world, span_boldannounce("[X]")); log_world(X)
-/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, datum/overmap_object/ov_obj = null)
+/datum/controller/subsystem/mapping/proc/LoadGroup(
+		list/errorList,
+		name,
+		path,
+		files,
+		list/traits,
+		list/default_traits,
+		silent = FALSE,
+		datum/overmap_object/ov_obj = null,
+		weather_controller_type,
+		atmosphere_type,
+		day_night_controller_type,
+		rock_color,
+		plant_color,
+		grass_color,
+		water_color,
+		ore_node_seeder_type
+	)
 	. = list()
 	var/start_time = REALTIMEOFDAY
 
@@ -265,9 +274,43 @@ Used by the AI doomsday and the self-destruct nuke.
 	// preload the relevant space_level datums
 	var/start_z = world.maxz + 1
 	var/i = 0
+	var/list/space_levels = list()
 	for (var/level in traits)
-		add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, null, overmap_obj = ov_obj)
+		space_levels += add_new_zlevel("[name][i ? " [i + 1]" : ""]", level, null, overmap_obj = ov_obj)
 		++i
+	var/datum/atmosphere/atmos
+	if(atmosphere_type)
+		atmos = new atmosphere_type()
+	var/datum/ore_node_seeder/ore_node_seeder
+	if(ore_node_seeder_type)
+		ore_node_seeder = new ore_node_seeder_type
+	for(var/c in space_levels)
+		var/datum/space_level/level = c
+		if(ore_node_seeder)
+			ore_node_seeder.SeedToLevel(level.z_value)
+		if(atmos)
+			SSair.register_planetary_atmos(atmos, level.z_value)
+		if(rock_color)
+			level.rock_color = rock_color
+		if(plant_color)
+			level.plant_color = plant_color
+		if(grass_color)
+			level.grass_color = grass_color
+		if(water_color)
+			level.water_color = water_color
+	if(atmos)
+		qdel(atmos)
+	if(ore_node_seeder)
+		qdel(ore_node_seeder)
+	//Apply the weather controller to the levels if able
+	if(weather_controller_type)
+		var/datum/weather_controller/weather_controller = new weather_controller_type(space_levels)
+		if(ov_obj)
+			weather_controller.LinkOvermapObject(ov_obj)
+	if(day_night_controller_type)
+		var/datum/day_night_controller/day_night = new day_night_controller_type(space_levels)
+		day_night.LinkOvermapObject(ov_obj)
+	space_levels = null
 
 	// load the maps
 	for (var/P in parsed_maps)
@@ -291,10 +334,26 @@ Used by the AI doomsday and the self-destruct nuke.
 	// load the station
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [config.map_name]...")
-	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, ov_obj = new config.overmap_object_type(SSovermap.main_system, rand(5,20), rand(5,20)))
-
-	// Create a trade hub
-	new /datum/overmap_object/trade_hub(SSovermap.main_system, rand(5,20), rand(5,20))
+	station_overmap_object = new config.overmap_object_type(SSovermap.main_system, rand(3,10), rand(3,10))
+	var/picked_rock_color = CHECK_AND_PICK_OR_NULL(config.rock_color)
+	var/picked_plant_color = CHECK_AND_PICK_OR_NULL(config.plant_color)
+	var/picked_grass_color = CHECK_AND_PICK_OR_NULL(config.grass_color)
+	var/picked_water_color = CHECK_AND_PICK_OR_NULL(config.water_color)
+	LoadGroup(FailedZs,
+			"Station",
+			config.map_path,
+			config.map_file,
+			config.traits,
+			ZTRAITS_STATION,
+			ov_obj = station_overmap_object,
+			weather_controller_type = config.weather_controller_type,
+			atmosphere_type = config.atmosphere_type,
+			day_night_controller_type = config.day_night_controller_type,
+			rock_color = picked_rock_color,
+			plant_color = picked_plant_color,
+			grass_color = picked_grass_color,
+			water_color = picked_water_color,
+			ore_node_seeder_type = config.ore_node_seeder_type)
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
@@ -305,16 +364,26 @@ Used by the AI doomsday and the self-destruct nuke.
 
 #ifndef LOWMEMORYMODE
 	// TODO: remove this when the DB is prepared for the z-levels getting reordered
-	while (world.maxz < 5 && space_levels_so_far < config.space_ruin_levels)
-		++space_levels_so_far
-		add_new_zlevel("Ruins Area [space_levels_so_far]", ZTRAITS_SPACE, overmap_obj = new /datum/overmap_object/ruins(SSovermap.main_system, rand(5,20), rand(5,20)))
+	if(config.space_ruin_levels)
+		for(var/i in 1 to config.space_ruin_levels)
+			++space_levels_so_far
+			add_new_zlevel("Ruins Area [i]", ZTRAITS_SPACE, overmap_obj = new /datum/overmap_object/ruins(SSovermap.main_system, rand(5,25), rand(5,25)))
 	//Load planets
 	if(config.minetype == "lavaland")
 		var/datum/planet_template/lavaland_template = planet_templates[/datum/planet_template/lavaland]
-		lavaland_template.LoadTemplate(SSovermap.main_system, rand(5,20), rand(5,20))
+		lavaland_template.LoadTemplate(SSovermap.main_system, rand(3,10), rand(3,10))
 	else if (!isnull(config.minetype) && config.minetype != "none")
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 
+	var/list/planet_list = SPAWN_PLANET_WEIGHT_LIST
+	if(config.amount_of_planets_spawned)
+		for(var/i in 1 to config.amount_of_planets_spawned)
+			if(!length(planet_list))
+				break
+			var/picked_planet_type = pickweight(planet_list)
+			planet_list -= picked_planet_type
+			var/datum/planet_template/picked_template = planet_templates[picked_planet_type]
+			picked_template.LoadTemplate(SSovermap.main_system, rand(5,25), rand(5,25))
 #endif
 
 	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
@@ -335,7 +404,7 @@ Used by the AI doomsday and the self-destruct nuke.
 GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/generate_station_area_list()
-	var/static/list/station_areas_blacklist = typecacheof(list(/area/space, /area/mine, /area/ruin, /area/asteroid/nearstation))
+	var/list/station_areas_blacklist = typecacheof(list(/area/space, /area/mine, /area/ruin, /area/asteroid/nearstation))
 	for(var/area/A in world)
 		if (is_type_in_typecache(A, station_areas_blacklist))
 			continue
@@ -466,18 +535,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			ice_ruins_underground_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/icemoon))
 			ice_ruins_templates[R.name] = R
-//SKYRAT EDIT START//
-		else if(istype(R, /datum/map_template/ruin/rockplanet))
-			rockplanet_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
-		else if(istype(R, /datum/map_template/ruin/ocean))
-			ocean_ruins_templates[R.name] = R
-		else if(istype(R, /datum/map_template/ruin/ocean_station))
-			ocean_station_ruins_templates[R.name] = R
-		else if(istype(R, /datum/map_template/ruin/trench))
-			trench_ruins_templates[R.name] = R
-//SKYRAT EDIT END//
+		else if (istype(R, /datum/map_template/ruin/planetary))
+			planet_ruins_templates[R.name] = R
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
 	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")
@@ -649,3 +710,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 		spawner.spawn_loot()
 		spawner.hide()
+
+/datum/controller/subsystem/mapping/proc/GetLevelWeatherController(z_value)
+	var/datum/space_level/level = z_list[z_value]
+	if(!level)
+		return
+	level.AssertWeatherController()
+	return level.weather_controller

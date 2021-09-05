@@ -23,6 +23,8 @@
 	barometer_predictable = FALSE
 	perpetual = TRUE
 
+	multiply_blend_on_main_stage = TRUE//SKYRAT EDIT CHANGE
+
 
 /datum/weather/void_storm/can_weather_act(mob/living/mob_to_check)
 	. = ..()

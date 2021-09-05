@@ -169,9 +169,10 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	. = ..()
 
+	/* SKYRAT EDIT REMOVAL
 	if(!static_lighting)
 		blend_mode = BLEND_MULTIPLY
-
+	*/
 	reg_in_areas_in_z()
 
 	if(!mapload)

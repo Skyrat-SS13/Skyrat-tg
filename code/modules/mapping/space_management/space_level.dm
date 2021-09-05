@@ -13,6 +13,15 @@
 	var/parallax_direction_override
 	///Extensions for z levels as overmap objects
 	var/list/all_extensions = list()
+	var/datum/weather_controller/weather_controller
+	/// An override of rock colors on this level
+	var/rock_color = COLOR_ASTEROID_ROCK
+	/// An override of plant colors on this level
+	var/plant_color = COLOR_DARK_MODERATE_LIME_GREEN
+	/// An override of grass colors on this level
+	var/grass_color = COLOR_DARK_MODERATE_LIME_GREEN
+	/// An override of water colors on this level
+	var/water_color = COLOR_WHITE
 	// SKYRAT EDIT END
 
 /datum/space_level/New(new_z, new_name, list/new_traits = list())
