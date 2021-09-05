@@ -45,7 +45,7 @@
 	var/weather_skyblock = 0
 
 	/// Displayed once the weather is over
-	var/end_message = SPAN_DANGER("The wind relents its assault.")
+	var/end_message = span_danger("The wind relents its assault.")
 	/// In deciseconds, how long the "wind-down" graphic will appear before vanishing entirely
 	var/end_duration = 300
 	/// Sound that plays while weather is ending

@@ -3,7 +3,7 @@
 	name = "ash storm"
 	desc = "An intense atmospheric storm lifts ash off of the planet's surface and billows it down across the area, dealing intense fire damage to the unprotected."
 
-	telegraph_message = SPAN_BOLDWARNING("An eerie moan rises on the wind. Sheets of burning ash blacken the horizon. Seek shelter.")
+	telegraph_message = span_boldwarning("An eerie moan rises on the wind. Sheets of burning ash blacken the horizon. Seek shelter.")
 	telegraph_duration = 300
 	telegraph_overlay = "light_ash"
 	telegraph_skyblock = 0.3
@@ -14,7 +14,7 @@
 	weather_overlay = "ash_storm"
 	weather_skyblock = 0.3
 
-	end_message = SPAN_BOLDANNOUNCE("The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.")
+	end_message = span_boldannounce("The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.")
 	end_duration = 300
 	end_overlay = "light_ash"
 	end_skyblock = 0.3

@@ -2,9 +2,9 @@
 	/// What possible weather types will be rolled naturally here, assoc list of type to weight. You'll still be able to call different weathers by events and such
 	var/list/possible_weathers
 	/// The lowest interval between one naturally occuring weather and another
-	var/wait_interval_low = 5 MINUTES
+	var/wait_interval_low = 6.5 MINUTES
 	/// The highest interval between one naturally occuring weather and another
-	var/wait_interval_high = 10 MINUTES
+	var/wait_interval_high = 13.5 MINUTES
 	/// What will be the next weather type rolled, rolled before initializing it for barometers
 	var/next_weather_type
 	/// When will the next weather will be rolled, also read by barometers
@@ -15,6 +15,10 @@
 	var/list/z_levels
 	/// The linked overmap object of our controller
 	var/datum/overmap_object/linked_overmap_object
+	/// Percentage of how much we're blocking the sky, for the day/night controller to read from
+	var/skyblock = 0
+	/// A simple cache to make sure we dont call updates with no changes
+	var/last_checked_skyblock = 0
 
 /datum/weather_controller/New(list/space_level)
 	. = ..()
@@ -24,6 +28,13 @@
 		level.weather_controller = src
 	SSweather.weather_controllers += src
 	RollNextWeather()
+
+/datum/weather_controller/proc/UpdateSkyblock()
+	if(skyblock == last_checked_skyblock)
+		return
+	last_checked_skyblock = skyblock
+	if(linked_overmap_object && linked_overmap_object.day_night_controller)
+		linked_overmap_object.day_night_controller.update_areas()
 
 /datum/weather_controller/proc/UnlinkOvermapObject()
 	linked_overmap_object.weather_controller = null
@@ -82,4 +93,7 @@
 							/datum/weather/ash_storm/emberfall = 10)
 
 /datum/weather_controller/icebox
-	possible_weathers = list(/datum/weather/snow_storm = 100)
+		possible_weathers = list(/datum/weather/snow_storm = 50,
+							/datum/weather/snowfall = 20,
+							/datum/weather/snowfall/heavy = 20,
+							/datum/weather/hailstorm = 20)
