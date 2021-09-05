@@ -1,7 +1,7 @@
 /obj/machinery/transporter
 	name = "transporter pad"
 	desc = "Machine which sends matter and energy from one place to another."
-	icon = 'icons/obj/machines/transporter.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/transporter.dmi'
 	icon_state = "transporter_on"
 	use_power = ACTIVE_POWER_USE
 	idle_power_usage = 5

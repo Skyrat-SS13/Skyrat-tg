@@ -32,7 +32,7 @@
 		'modular_skyrat/modules/overmap/sound/wind/tundra1.ogg',
 		'modular_skyrat/modules/overmap/sound/wind/tundra2.ogg',
 		'modular_skyrat/modules/overmap/sound/wind/spooky0.ogg',
-		'modular_skyrat/modules/overmap/sound/effects/wind/spooky1.ogg',
+		'modular_skyrat/modules/overmap/sound/wind/spooky1.ogg',
 	)
 
 /datum/map_generator/planet_gen/snow

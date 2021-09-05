@@ -1,7 +1,7 @@
 /obj/machinery/shield_generator
 	name = "shield generator"
 	desc = "A powerful device which can generate a giant protective shield."
-	icon = 'icons/obj/machines/shield_gen.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/shield_gen.dmi'
 	icon_state = "shield_gen_on"
 	use_power = ACTIVE_POWER_USE
 	idle_power_usage = 5

@@ -1,5 +1,6 @@
 SUBSYSTEM_DEF(trading)
 	name = "Trading"
+	init_order = INIT_ORDER_MAPPING - 1 //Always after mapping
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 5 MINUTES
 	///List of all trade hubs
@@ -14,6 +15,8 @@ SUBSYSTEM_DEF(trading)
 	var/next_trade_hub_id = 0
 
 	var/next_trader_id = 0
+
+	var/list/delivery_runs = list()
 
 /datum/controller/subsystem/trading/proc/get_trade_hub_by_id(id)
 	return trade_hubs["[id]"]
@@ -34,20 +37,25 @@ SUBSYSTEM_DEF(trading)
 	var/list/passed_trade_hubs = list()
 	if(global_trade_hub)
 		passed_trade_hubs += global_trade_hub
-	if(position)
-		var/datum/space_level/level = SSmapping.z_list[position.z]
-		if(level && level.related_overmap_object)
-			var/datum/overmap_object/oo = level.related_overmap_object
-			var/list/overmap_objects = level.related_overmap_object.current_system.GetObjectsInRadius(oo.x,oo.y,1)
-			for(var/i in overmap_objects)
-				var/datum/overmap_object/iterated_object = i
-				if(istype(iterated_object, /datum/overmap_object/trade_hub))
-					var/datum/overmap_object/trade_hub/th_obj = iterated_object
-					passed_trade_hubs += th_obj.hub
+	var/datum/overmap_object/overmap_object = GetHousingOvermapObject(position)
+	if(overmap_object)
+		var/list/overmap_objects = overmap_object.current_system.GetObjectsInRadius(overmap_object.x,overmap_object.y,0)
+		for(var/i in overmap_objects)
+			var/datum/overmap_object/iterated_object = i
+			if(istype(iterated_object, /datum/overmap_object/trade_hub))
+				var/datum/overmap_object/trade_hub/th_obj = iterated_object
+				passed_trade_hubs += th_obj.hub
 	return passed_trade_hubs
 
 /datum/controller/subsystem/trading/Initialize(timeofday)
-	global_trade_hub = new /datum/trade_hub/default()
+	var/datum/map_config/config = SSmapping.config
+	// Create global trade hub
+	if(config.global_trading_hub_type)
+		global_trade_hub = new config.global_trading_hub_type()
+	// Create the localized trade hubs
+	if(config.localized_trading_hub_types)
+		for(var/hub_type in config.localized_trading_hub_types)
+			new /datum/overmap_object/trade_hub(SSovermap.main_system, rand(5,20), rand(5,20), hub_type)
 	return ..()
 
 /datum/controller/subsystem/trading/fire(resumed = FALSE)

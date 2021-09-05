@@ -261,7 +261,7 @@
 
 /mob/living/simple_animal/hostile/planet/antlion/proc/emerge()
 	var/turf/my_turf = get_turf(src)
-	visible_message(SPAN_DANGER("\The [src] erupts from \the [my_turf]!"))
+	visible_message(span_danger("\The [src] erupts from \the [my_turf]!"))
 	invisibility = 0
 	burrowed = FALSE
 	AIStatus = AI_ON
@@ -270,7 +270,7 @@
 	new /obj/effect/temp_visual/burrow_sand_splash(my_turf)
 	for(var/mob/living/carbon/human/H in my_turf)
 		attack_hand(H)
-		visible_message(SPAN_DANGER("\The [src] tears into \the [H] from below!"))
+		visible_message(span_danger("\The [src] tears into \the [H] from below!"))
 
 /mob/living/simple_animal/hostile/planet/antlion/mega
 	name = "antlion queen"

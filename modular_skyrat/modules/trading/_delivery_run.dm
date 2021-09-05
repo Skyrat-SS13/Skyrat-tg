@@ -137,7 +137,7 @@
 /obj/item/delivery_cargo/examine(mob/user)
 	. = ..()
 	if(manifest)
-		. += span_notice("There's a manifest on it.")
+		. += SPAN_NOTICE("There's a manifest on it.")
 		. += manifest.examine(user)
 
 /obj/item/delivery_cargo/Initialize(mapload, datum/delivery_run_instance/source_datum, obj/item/paper/passed_paper)
@@ -150,7 +150,7 @@
 /obj/item/delivery_cargo/attack_self(mob/living/user)
 	if(spooling_delivery)
 		return
-	to_chat(user, span_notice("You press a button on \the [src]"))
+	to_chat(user, SPAN_NOTICE("You press a button on \the [src]"))
 	spooling_delivery = TRUE
 	addtimer(CALLBACK(src, .proc/TimedDelivery, user), rand(2 SECONDS, 4 SECONDS))
 
