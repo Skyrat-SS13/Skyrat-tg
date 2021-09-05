@@ -75,6 +75,7 @@
 	var/on_safety = TRUE //Is the safety for the cell on?
 	var/safe_ammo = /obj/item/ammo_casing/energy/medical
 	var/unsafe_ammo = /obj/item/ammo_casing/energy/medical
+	var/utility = FALSE //Is the cell a utility class cell? This isn't used now, but it will be later on with utility only Mediguns.
 
 //MEDIGUN SAFETY
 
@@ -187,6 +188,21 @@
 	icon_state = "Oxy3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III
+//Start of Utility Cells
+/obj/item/medicell/utility
+	utility = TRUE
+	name = "Utility Class Medicell"
+	desc = "You really shouldn't be seeing this, if you do, please yell on GitHub."
+
+/obj/item/medicell/utility/clotting
+	name = "Clotting Medicell"
+	desc = "PLACEHOLDER DESCRIPTION" //Change this later.
+
+/obj/item/medicell/utility/temperature
+	name = "Temperature Readjustment Medicell"
+	desc = "PLACEHOLDER DESCRIPTION"
+
+
 //Medigun Gunsets/
 /obj/item/storage/briefcase/medicalgunset/
 	name = "Medigun Supply Kit"
