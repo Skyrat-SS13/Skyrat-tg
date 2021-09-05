@@ -65,7 +65,7 @@
 /obj/item/ammo_box/magazine/internal/rocketlauncher/smoke
 	ammo_type = /obj/item/ammo_casing/caseless/rocket/smoke
 
-/obj/item/gun/ballistic/rocketlauncher/secuirty
+/obj/item/gun/ballistic/rocketlauncher/security
 	name = "\improper UPL-550"
 	desc = "A nanotrasen made 'utility launcher' which in reality, is just a fancy way to say legalized rocket launcher."
 	icon = 'modular_skyrat/modules/rocket-launcher/icon/rocketlaunchersec.dmi'
