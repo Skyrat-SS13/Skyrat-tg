@@ -330,7 +330,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["mindref"] = H.mind
 		// SKYRAT EDIT ADD BEGIN - EXAMINE RECORDS
 		if(C && C.prefs && C.prefs.general_record)
-			L.fields["exp_records"] = C.prefs.exploitable_info //TODO: somebody with less coding anxiety please add a field that stores C.prefs.background_info
+			L.fields["exp_records"] = C.prefs.exploitable_info
 		else
 			L.fields["exp_records"] = ""
 		// SKYRAT EDIT END
