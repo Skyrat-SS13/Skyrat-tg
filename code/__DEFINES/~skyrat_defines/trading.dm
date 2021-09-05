@@ -8,16 +8,15 @@
 #define TRADER_BUYS_GOODS (1<<4)
 
 //Cash amounts the traders get
-#define DEFAULT_TRADER_CREDIT_AMOUNT 5000
-#define RICH_TRADER_CREDIT_AMOUNT 10000
-#define POOR_TRADER_CREDIT_AMOUNT 3000
-#define VERY_POOR_TRADER_CREDIT_AMOUNT 1000
+#define DEFAULT_TRADER_CREDIT_AMOUNT 7000
+#define RICH_TRADER_CREDIT_AMOUNT 15000
+#define POOR_TRADER_CREDIT_AMOUNT 3500
+#define VERY_POOR_TRADER_CREDIT_AMOUNT 1500
 
-//TODO:
 //Every time SStrading ticks, if the traders have cash below a threshold they'll gain a small injection of cash
-#define TRADER_LOW_CASH_THRESHOLD 2000
-#define TRADER_PAYCHECK_LOW 200
-#define TRADER_PAYCHECK_HIGH 500
+#define TRADER_LOW_CASH_THRESHOLD 50 //In percentage
+#define TRADER_PAYCHECK_LOW 500
+#define TRADER_PAYCHECK_HIGH 1500
 
 // Extra value margin for the user to make barter trades a bit easier
 #define TRADE_BARTER_EXTRA_MARGIN 1.1
@@ -25,6 +24,8 @@
 #define TRADER_SCREEN_NOTHING 0
 #define TRADER_SCREEN_SOLD_GOODS 1
 #define TRADER_SCREEN_BOUGHT_GOODS 2
+#define TRADER_SCREEN_BOUNTIES 3
+#define TRADER_SCREEN_DELIVERIES 4
 
 #define TRADER_THIS_TYPE 1
 #define TRADER_TYPES 2
@@ -86,4 +87,5 @@ too_much_value //When the user tries to sell something for too high of a price
 out_of_stock //The trader is out of stock on an item the user wants to buy
 user_no_money //When the user doesnt have enough money to perform a trade
 only_deal_in_goods //When the user tries to sell items for money, but the trader doesnt deal in money
+bounty_fail_claim //When the user tries to turn in a bounty, but doesn't meet the requirements
 */
