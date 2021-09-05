@@ -131,8 +131,11 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("hygienebot assembly", /obj/item/bot_assembly/hygienebot, 2, time = 5 SECONDS), \
 	new/datum/stack_recipe("shower frame", /obj/structure/showerframe, 2, time= 2 SECONDS), \
 	null, \
+	//SKYRAT EDIT START: REAGENT FORGING & PRIMITIVE CENTRIFUGE
 	new/datum/stack_recipe("anvil", /obj/structure/reagent_anvil, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("forge", /obj/structure/reagent_forge, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE)
+	new/datum/stack_recipe("forge", /obj/structure/reagent_forge, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("primitive centrifuge", /obj/item/reagent_containers/glass/primitive_centrifuge, 10)
+	//SKYRAT EDIT STOP: REAGENT FORGING & PRIMITIVE CENTRIFUGE
 ))
 //the wrestling turnbuckle recipe is a SKYRAT EDIT
 
