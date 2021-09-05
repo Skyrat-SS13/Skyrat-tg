@@ -22,9 +22,6 @@
 		to_chat(usr, "<b>Exploitable information:</b> [exploitable_record.fields["exp_records"]]")
 
 /datum/record_manifest/ui_data(mob/user)
-	//var/perpname = get_face_name(get_id_name())
-//	var/list/exploitables = find_record("name", perpname, GLOB.data_core.locked)
-
 	var/list/positions = list()
 	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
 		var/list/exceptions = list()
