@@ -22,9 +22,7 @@ export const RecordManifest = (props, context) => {
           <Section
             className={"CrewManifest--" + dept}
             key={dept}
-            title={
-              dept + (dept !== "Misc")
-            }
+            title={dept}
           >
             <Table>
               {Object.entries(crew).map(([crewIndex, crewMember]) => (
