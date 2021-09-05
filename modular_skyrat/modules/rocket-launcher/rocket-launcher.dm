@@ -67,7 +67,7 @@
 
 /obj/item/gun/ballistic/rocketlauncher/security
 	name = "\improper UPL-550"
-	desc = "A nanotrasen made 'utility launcher' which in reality, is just a fancy way to say legalized rocket launcher."
+	desc = "A nanotrasen made 'utility launcher' which, in reality, is just a fancy way to say legalized rocket launcher."
 	icon = 'modular_skyrat/modules/rocket-launcher/icon/rocketlaunchersec.dmi'
 	righthand_file = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-right.dmi'
 	lefthand_file = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-left.dmi'
