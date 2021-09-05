@@ -1,5 +1,4 @@
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/hud/proc/create_parallax(mob/viewmob)
 	var/mob/screenmob = viewmob || mymob
 	var/client/C = screenmob.client
@@ -10,7 +9,6 @@
 		C.parallax_layers_cached = list()
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_1(null, C.view)
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_2(null, C.view)
-		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/planet(null, C.view)
 		if(SSparallax.random_layer)
 			C.parallax_layers_cached += new SSparallax.random_layer
 		C.parallax_layers_cached += new /atom/movable/screen/parallax_layer/layer_3(null, C.view)
@@ -86,6 +84,7 @@
 	. = FALSE
 	var/mob/screenmob = viewmob || mymob
 	var/client/C = screenmob.client
+
 	if(new_parallax_movedir == C.parallax_movedir)
 		return
 	var/animatedir = new_parallax_movedir
@@ -167,8 +166,19 @@
 		return
 	var/area/areaobj = posobj.loc
 
+	var/destined_parallax_movedir = areaobj.parallax_movedir
+	var/datum/space_level/my_level
+	if(SSmapping && SSmapping.z_list && screenmob.z)
+		my_level = SSmapping.z_list[screenmob.z]
+	if(my_level && my_level.related_overmap_object)
+		destined_parallax_movedir = my_level.parallax_direction_override
+	else if(SSshuttle.is_in_shuttle_bounds(screenmob))
+		var/obj/docking_port/mobile/mobile_shuttle = SSshuttle.get_containing_shuttle(screenmob)
+		if(mobile_shuttle && !isnull(mobile_shuttle.overmap_parallax_dir))
+			destined_parallax_movedir = mobile_shuttle.overmap_parallax_dir
+
 	// Update the movement direction of the parallax if necessary (for shuttles)
-	set_parallax_movedir(areaobj.parallax_movedir, FALSE, screenmob)
+	set_parallax_movedir(destined_parallax_movedir, FALSE, screenmob)
 
 	var/force
 	if(!C.previous_turf || (C.previous_turf.z != posobj.z))
@@ -196,29 +206,36 @@
 		if (L.view_sized != C.view)
 			L.update_o(C.view)
 
-		if(L.absolute)
-			L.offset_x = -(posobj.x - SSparallax.planet_x_offset) * L.speed
-			L.offset_y = -(posobj.y - SSparallax.planet_y_offset) * L.speed
-		else
-			L.offset_x -= offset_x * L.speed
-			L.offset_y -= offset_y * L.speed
+		var/change_x
+		var/change_y
 
-			if(L.offset_x > 240)
-				L.offset_x -= 480
-			if(L.offset_x < -240)
-				L.offset_x += 480
-			if(L.offset_y > 240)
-				L.offset_y -= 480
-			if(L.offset_y < -240)
-				L.offset_y += 480
+		change_x = offset_x * L.speed
+		L.offset_x -= change_x
+		change_y = offset_y * L.speed
+		L.offset_y -= change_y
+
+		if(L.offset_x > 240)
+			L.offset_x -= 480
+		if(L.offset_x < -240)
+			L.offset_x += 480
+		if(L.offset_y > 240)
+			L.offset_y -= 480
+		if(L.offset_y < -240)
+			L.offset_y += 480
+
+
+		if(!destined_parallax_movedir && C.dont_animate_parallax <= world.time && (offset_x || offset_y) && abs(offset_x) <= max(C.parallax_throttle/world.tick_lag+1,1) && abs(offset_y) <= max(C.parallax_throttle/world.tick_lag+1,1) && (round(abs(change_x)) > 1 || round(abs(change_y)) > 1))
+			L.transform = matrix(1, 0, offset_x*L.speed, 0, 1, offset_y*L.speed)
+			animate(L, transform=matrix(), time = last_delay)
 
 		L.screen_loc = "CENTER-7:[round(L.offset_x,1)],CENTER-7:[round(L.offset_y,1)]"
 
 /atom/movable/proc/update_parallax_contents()
 	if(length(client_mobs_in_contents))
-		for(var/mob/client_mob as anything in client_mobs_in_contents)
-			if(length(client_mob?.client?.parallax_layers) && client_mob.hud_used)
-				client_mob.hud_used.update_parallax()
+		for(var/thing in client_mobs_in_contents)
+			var/mob/M = thing
+			if(M?.client && M.hud_used && length(M.client.parallax_layers))
+				M.hud_used.update_parallax()
 
 /mob/proc/update_parallax_teleport() //used for arrivals shuttle
 	if(client?.eye && hud_used && length(client.parallax_layers))
@@ -231,7 +248,6 @@
 	var/offset_x = 0
 	var/offset_y = 0
 	var/view_sized
-	var/absolute = FALSE
 	blend_mode = BLEND_ADD
 	plane = PLANE_SPACE_PARALLAX
 	screen_loc = "CENTER-7,CENTER-7"
@@ -295,21 +311,3 @@
 
 /atom/movable/screen/parallax_layer/random/asteroids
 	icon_state = "asteroids"
-
-/atom/movable/screen/parallax_layer/planet
-	icon_state = "planet"
-	blend_mode = BLEND_OVERLAY
-	absolute = TRUE //Status of seperation
-	speed = 3
-	layer = 30
-
-/atom/movable/screen/parallax_layer/planet/update_status(mob/M)
-	var/client/C = M.client
-	var/turf/posobj = get_turf(C.eye)
-	if(!posobj)
-		return
-	invisibility = is_station_level(posobj.z) ? 0 : INVISIBILITY_ABSTRACT
-
-/atom/movable/screen/parallax_layer/planet/update_o()
-	return //Shit won't move
-*/
