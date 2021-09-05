@@ -1,5 +1,5 @@
 /obj/effect/abstract/fireplume
-	icon = 'icons/effects/fireblue.dmi'
+	icon = 'modular_skyrat/modules/overmap/icons/fireblue.dmi'
 	icon_state = "fire_plume3"
 	anchored = TRUE
 	animate_movement = NO_STEPS

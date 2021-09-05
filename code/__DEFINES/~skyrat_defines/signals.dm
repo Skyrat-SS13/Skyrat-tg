@@ -70,3 +70,6 @@
 ///from base of mob/clickon(): (atom/A, params)
 #define COMSIG_CLICKON "any_clickon"
 	#define COMSIG_CANCEL_CLICKON 1
+
+/// Called in /obj/machinery/atmospherics/components/unary/engine/DrawThrust(), and in /obj/structure/shuttle/engine/proc/DrawThrust()
+#define COMSIG_ENGINE_DRAWN_POWER "engine_drawn_power"

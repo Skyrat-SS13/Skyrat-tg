@@ -7,10 +7,10 @@
 	volume = 40
 
 /datum/looping_sound/engine
-	start_sound = 'sound/machines/engine/enginestart.ogg'
+	start_sound = 'modular_skyrat/modules/overmap/sound/engine/enginestart.ogg'
 	start_length = 1.4 SECONDS
-	mid_sounds = list('sound/machines/engine/engineloop.ogg'=1)
+	mid_sounds = list('modular_skyrat/modules/overmap/sound/engine/engineloop.ogg'=1)
 	mid_length = 1.4 SECONDS
-	end_sound = 'sound/machines/engine/engineend.ogg'
+	end_sound = 'modular_skyrat/modules/overmap/sound/engine/engineend.ogg'
 	volume = 10
 	falloff_distance = 5

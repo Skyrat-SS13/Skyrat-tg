@@ -1,7 +1,7 @@
 /obj/item/strange_rock
 	name = "strange rock"
 	desc = "It seems like there's something inside, encased with fringe layers of rock that seem like they'd peel away at your touch."
-	icon = 'icons/excavation/strange_rock.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/strange_rock.dmi'
 	icon_state = "strange"
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -22,7 +22,7 @@
 
 /obj/item/fossil
 	name = "fossil"
-	icon = 'icons/excavation/fossils.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/fossils.dmi'
 	icon_state = "rock_fauna_2"
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -36,7 +36,7 @@
 
 /obj/item/excavation_junk
 	name = "ancient artifact"
-	icon = 'icons/excavation/excavation_junk.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/excavation_junk.dmi'
 	icon_state = "bowl"
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -64,7 +64,7 @@
 /obj/item/unknown_artifact
 	name = "unknown artifact"
 	desc = "An intricate artifact, from a glance you can tell that this is way more advanced than pottery."
-	icon = 'icons/excavation/excavation_unknown.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/excavation_unknown.dmi'
 	icon_state = "unknown1"
 	w_class = WEIGHT_CLASS_SMALL
 

@@ -29,7 +29,7 @@
 	current_dig_depth += dug_depth
 	var/atom/A = parent
 	if(!rocky_overlay)
-		rocky_overlay = mutable_appearance('icons/excavation/excavation.dmi', "rock")
+		rocky_overlay = mutable_appearance('modular_skyrat/modules/excavation/icons/excavation/excavation.dmi', "rock")
 		if(A.color)
 			rocky_overlay.icon_state = "rock_greyscale"
 			rocky_overlay.color = A.color
@@ -48,7 +48,7 @@
 			if(current_dig_depth != actual_depth) //not perfect dig
 				var/obj/item/strange_rock = new /obj/item/strange_rock(A)
 				if(A.color)
-					strange_rock.icon = 'icons/excavation/strange_rock_grayscale.dmi'
+					strange_rock.icon = 'modular_skyrat/modules/excavation/icons/excavation/strange_rock_grayscale.dmi'
 					strange_rock.color = A.color
 				our_artifact.forceMove(strange_rock)
 			find_list -= text_depth

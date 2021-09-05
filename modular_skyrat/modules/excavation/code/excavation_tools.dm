@@ -21,7 +21,7 @@
 /obj/item/excavation_pick
 	name = "excavation pick"
 	desc = "Small archeological tool, used for precise excavation."
-	icon = 'icons/excavation/excavation_tools.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/excavation_tools.dmi'
 	icon_state = "pick1"
 	w_class = WEIGHT_CLASS_SMALL
 	usesound = list('sound/items/screwdriver.ogg')
@@ -68,14 +68,14 @@
 /obj/item/excavation_measuring_tape
 	name = "measuring tape"
 	desc = "A coiled metallic tape used to check dimensions and lengths."
-	icon = 'icons/excavation/excavation_tools.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/excavation_tools.dmi'
 	icon_state = "measuring"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/excavation_depth_scanner
 	name = "depth analysis scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
-	icon = 'icons/excavation/excavation_tools.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/excavation_tools.dmi'
 	icon_state = "depthscanner"
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -84,7 +84,7 @@
 /obj/item/excavation_locator
 	name = "dig site locator"
 	desc = "A scanner that checks surrounding location for hidden curiosities."
-	icon = 'icons/excavation/excavation_tools.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/excavation_tools.dmi'
 	icon_state = "digsitelocator"
 	w_class = WEIGHT_CLASS_SMALL
 	var/next_fire = 0
@@ -114,7 +114,7 @@
 /obj/effect/temp_visual/strange_rock_overlay
 	plane = FULLSCREEN_PLANE
 	layer = FLASH_LAYER
-	icon = 'icons/excavation/strange_rock.dmi'
+	icon = 'modular_skyrat/modules/excavation/icons/excavation/strange_rock.dmi'
 	icon_state = "strange"
 	appearance_flags = 0
 	duration = 35

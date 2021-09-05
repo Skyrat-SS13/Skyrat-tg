@@ -94,25 +94,6 @@ SUBSYSTEM_DEF(mapping)
 	// Generate mining ruins
 	loading_ruins = TRUE
 
-	//SKYRAT EDIT ADDITION
-	//Ocean ruins
-	var/list/ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS)
-	if (ocean_ruins.len)
-		seedRuins(ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_ruins_templates)
-		for (var/ocean_z in ocean_ruins)
-			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
-
-	var/list/station_ocean_ruins = levels_by_trait(ZTRAIT_OCEAN_RUINS_NEARSTATION)
-	if (station_ocean_ruins.len)
-		seedRuins(station_ocean_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/generated, /area/ocean/trench/generated), ocean_station_ruins_templates)
-		for (var/ocean_z in station_ocean_ruins)
-			spawn_rivers(ocean_z, 3, /turf/open/openspace/ocean, /area/ocean, new_baseturfs = /turf/open/openspace/ocean)
-
-	var/list/trench_ruins = levels_by_trait(ZTRAIT_TRENCH_RUINS)
-	if (trench_ruins.len)
-		seedRuins(trench_ruins, CONFIG_GET(number/ocean_budget), list(/area/ocean/trench/generated), trench_ruins_templates)
-	//SKYRAT EDIT END
-
 	var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 	if (ice_ruins.len)
 		// needs to be whitelisted for underground too so place_below ruins work
@@ -200,9 +181,6 @@ Used by the AI doomsday and the self-destruct nuke.
 	map_templates = SSmapping.map_templates
 	ruins_templates = SSmapping.ruins_templates
 	space_ruins_templates = SSmapping.space_ruins_templates
-	trench_ruins_templates = SSmapping.trench_ruins_templates
-	ocean_ruins_templates = SSmapping.ocean_ruins_templates
-	ocean_station_ruins_templates = SSmapping.ocean_station_ruins_templates
 	lava_ruins_templates = SSmapping.lava_ruins_templates
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
