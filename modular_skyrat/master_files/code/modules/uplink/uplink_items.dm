@@ -37,7 +37,7 @@
 	desc = "Fishsticks prepared through ritualistic means in honor of the god Carp-sie, capable of binding a holocarp \
 			to act as a servant and guardian to their host."
 	item = /obj/item/guardiancreator/carp/choose
-	cost = 10
+	cost = 19
 	surplus = 0
 	player_minimum = 25
 	restricted = TRUE
@@ -47,21 +47,21 @@
 	desc = "A fully-loaded Scarborough Arms bullpup submachine gun. The C-20r fires .45 rounds with a \
 			24-round magazine and is compatible with suppressors."
 	item = /obj/item/gun/ballistic/automatic/c20r/unrestricted
-	cost = 14
+	cost = 15
 
 /datum/uplink_item/dangerous/shotgun_traitor
 	name = "Bulldog Shotgun"
 	desc = "A fully-loaded semi-automatic drum-fed shotgun. Compatible with all 12g rounds. Designed for close \
 			quarter anti-personnel engagements."
 	item = /obj/item/gun/ballistic/shotgun/bulldog/unrestricted
-	cost = 13
+	cost = 18
 
 /datum/uplink_item/dangerous/shield_traitor
 	name = "Energy Shield"
 	desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
 			against other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
-	cost = 5
+	cost = 3
 
 /datum/uplink_item/dangerous/katana_traitor
 	name = "Katana"
@@ -132,12 +132,14 @@
 	restricted_roles = list("Bartender")
 
 //EXPLOSIVES
+/*
 /datum/uplink_item/explosives/buzzkill_traitor
 	name = "Buzzkill Grenade Box"
 	desc = "A box with three grenades that release a swarm of angry bees upon activation. These bees indiscriminately attack friend or foe \
 			with random toxins. Courtesy of the BLF and Tiger Cooperative."
 	item = /obj/item/storage/box/syndie_kit/bee_grenades
 	cost = 10
+
 
 /datum/uplink_item/explosives/viscerators_traitor
 	name = "Viscerator Delivery Grenade"
@@ -146,12 +148,13 @@
 	item = /obj/item/grenade/spawnergrenade/manhacks
 	cost = 7
 	surplus = 35
+*/
 
 /datum/uplink_item/explosives/nukeop_traitor
 	name = "Nuclear Delivery Grenade"
 	desc = "A very confusing grenade containing 2 dehydrated nuclear operatives. Stand back when primed."
 	item = /obj/item/grenade/spawnergrenade/therealnuke
-	cost = 7
+	cost = 9
 	surplus = 35
 
 /datum/uplink_item/explosives/bonebang
@@ -371,11 +374,13 @@
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/donkshillkit
 	cost = 10
 
+/*
 /datum/uplink_item/loadout_skyrat/downtownspecial
 	name = "Downtown Special bundle"
 	desc = "Ayyy fuggedaboudit! This bundle contains everything to be your own one man mafioso. Including an icon of the Virgin Mary for your own authentic mafia nickname. Gang members not included."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial
 	cost = 25
+*/
 
 /datum/uplink_item/loadout_skyrat/ocelotfoxtrot
 	name = "Snake Eater bundle"

@@ -648,7 +648,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			The pen holds one dose of the mixture, and can be refilled with any chemicals. Note that before the target \
 			falls asleep, they will be able to move and act."
 	item = /obj/item/pen/sleepy
-	cost = 3 //Skyrat Edit - Original: 4 - Honestly, I've been penned a lot as a secoff. This thing's not worth 4 considering how easy it is to escape most of the time if you're smart, not to mention it's been made more reasonable through nerfs.
+	cost = 4
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
 /datum/uplink_item/stealthy_weapons/suppressor
