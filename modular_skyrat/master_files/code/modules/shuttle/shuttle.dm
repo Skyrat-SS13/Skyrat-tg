@@ -11,6 +11,8 @@
 	var/list/all_extensions = list()
 	var/list/engine_extensions = list()
 
+	var/overmap_shuttle_type = /datum/overmap_object/shuttle
+
 	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
 	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
 

@@ -376,39 +376,6 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
-	//SKYRAT EDIT ADDITION
-	var/list/all_extensions = list()
-	var/list/engine_extensions = list()
-
-	var/overmap_shuttle_type = /datum/overmap_object/shuttle
-
-	/// The direction override that overmap objects representing this shuttle apply to it. Needs to be tracked seperately to the old method because shuttles should work fine without overmap objects. Null means not overriden, direction means it is (with 0 being stop)
-	var/overmap_parallax_dir
-
-/obj/docking_port/mobile/proc/DrawDockingThrust()
-	var/drawn_power = 0
-	for(var/i in engine_extensions)
-		var/datum/shuttle_extension/engine/ext = i
-		if(!ext.turned_on)
-			continue
-		drawn_power += ext.DrawThrust(5)
-
-	if(drawn_power > 1)
-		return TRUE
-	else
-		return FALSE
-
-/obj/docking_port/mobile/proc/TurnEnginesOn()
-	for(var/i in engine_extensions)
-		var/datum/shuttle_extension/engine/ext = i
-		ext.turned_on = TRUE
-
-/obj/docking_port/mobile/proc/TurnEnginesOff()
-	for(var/i in engine_extensions)
-		var/datum/shuttle_extension/engine/ext = i
-		ext.turned_on = FALSE
-	//SKYRAT EDIT END
-
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
 	if(!id)
