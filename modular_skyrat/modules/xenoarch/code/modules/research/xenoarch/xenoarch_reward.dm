@@ -82,6 +82,20 @@ GLOBAL_LIST_INIT(illegal_reward, list(
 	/obj/item/disk/tech_disk/spaceloot = 6
 ))
 
+GLOBAL_LIST_INIT(plant_reward, list(
+	/obj/item/food/grown/gelthi = 1,
+	/obj/item/seeds/random = 1,
+	/obj/item/food/grown/amauri = 1,
+	/obj/item/food/grown/jurlmah = 1,
+	/obj/item/food/grown/nofruit = 1,
+	/obj/item/food/grown/shand = 1,
+	/obj/item/food/grown/surik = 1,
+	/obj/item/food/grown/telriis = 1,
+	/obj/item/food/grown/thaadra = 1,
+	/obj/item/food/grown/vale = 1,
+	/obj/item/food/grown/vaporsac = 1,
+))
+
 GLOBAL_LIST_INIT(animal_reward, list(
 	/obj/item/stack/sheet/sinew = 1,
 	/obj/item/stack/sheet/animalhide/goliath_hide = 1,

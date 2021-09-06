@@ -152,7 +152,7 @@
 		qdel(target)
 		return
 	if(istype(target, /obj/item/xenoarch/broken_item/plant))
-		var/spawn_item = /obj/item/seeds/random
+		var/spawn_item = pickweight(GLOB.plant_reward)
 		new spawn_item(target_turf)
 		qdel(target)
 		return
