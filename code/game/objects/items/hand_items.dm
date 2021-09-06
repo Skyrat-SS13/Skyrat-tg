@@ -128,7 +128,7 @@
 	"<span class='hear'>You hear a slap.</span>")
 	return
 
-/obj/item/slapper/attack_obj(obj/O, mob/living/user, params)
+/obj/item/slapper/attack_atom(obj/O, mob/living/user, params)
 	if(!istype(O, /obj/structure/table))
 		return ..()
 

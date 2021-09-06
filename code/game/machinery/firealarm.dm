@@ -214,13 +214,13 @@
 	if(panel_open)
 
 		if(tool.tool_behaviour == TOOL_WELDER && !user.combat_mode)
-			if(obj_integrity < max_integrity)
+			if(atom_integrity < max_integrity)
 				if(!tool.tool_start_check(user, amount=0))
 					return
 
 				to_chat(user, span_notice("You begin repairing [src]..."))
 				if(tool.use_tool(src, user, 40, volume=50))
-					obj_integrity = max_integrity
+					atom_integrity = max_integrity
 					to_chat(user, span_notice("You repair [src]."))
 			else
 				to_chat(user, span_warning("[src] is already in good condition!"))
@@ -325,7 +325,7 @@
 /obj/machinery/firealarm/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
 	. = ..()
 	if(.) //damage received
-		if(obj_integrity > 0 && !(machine_stat & BROKEN) && buildstage != 0)
+		if(atom_integrity > 0 && !(machine_stat & BROKEN) && buildstage != 0)
 			if(prob(33))
 				alarm()
 
@@ -334,8 +334,12 @@
 		deconstruct()
 	..()
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
 /obj/machinery/firealarm/obj_break(damage_flag)
+=======
+/obj/machinery/firealarm/atom_break(damage_flag)
+>>>>>>> d9ee5e72979 (moves obj_integrity and associated procs to the atom level (#61183))
 	if(buildstage == 0) //can't break the electronics if there isn't any inside.
 		return
 	. = ..()
