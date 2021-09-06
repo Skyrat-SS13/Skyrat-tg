@@ -290,3 +290,10 @@
 	new /obj/item/storage/belt/utility/xenoarch(src)
 	new /obj/item/t_scanner/adv_mining_scanner(src)
 	new /obj/item/pickaxe(src)
+
+/obj/structure/closet/xenoarch/ashwalker_version
+	name = "dusty xenoarchaeology equipment locker"
+
+/obj/structure/closet/xenoarch/ashwalker_version/PopulateContents()
+	. = ..()
+	new /obj/item/xenoarch/handheld_recoverer(src)
