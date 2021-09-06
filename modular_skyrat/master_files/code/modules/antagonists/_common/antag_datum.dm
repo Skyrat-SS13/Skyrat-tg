@@ -38,5 +38,5 @@
 /*/datum/antagonist/cortical_borer //come back to borer when its not as new
 	view_exploitables = TRUE */
 
-/datum/antagonist/cultist //cult is adminbus only... im not sure about this but im doing it anyway
+/datum/antagonist/cult //cult is adminbus only... im not sure about this but im doing it anyway
 	view_exploitables = TRUE
