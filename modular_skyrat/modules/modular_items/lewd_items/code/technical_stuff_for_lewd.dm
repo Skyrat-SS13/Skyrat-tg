@@ -122,7 +122,7 @@
 	return FALSE
 
 /mob/living/carbon/is_ballgagged()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/mask/ballgag_phallic) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
+	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
 
 //proc for condoms. Need to prevent cum appearing on the floor.
 /mob/proc/wear_condom()

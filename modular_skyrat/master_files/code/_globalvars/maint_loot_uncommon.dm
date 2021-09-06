@@ -52,7 +52,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/cartridge/roboticist = 50,
 		/obj/item/cartridge/security = 50,
 		/obj/item/cartridge/signal = 100,
-		/obj/item/cartridge/signal/toxins = 50,
 		/obj/item/cartridge/virus/clown = 5,
 		/obj/item/cartridge/virus/mime = 5
 	) = 50,

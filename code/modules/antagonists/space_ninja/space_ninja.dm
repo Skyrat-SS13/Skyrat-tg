@@ -95,11 +95,11 @@
 	//Security Scramble, set to complete upon using your gloves on a security console
 	var/datum/objective/securityobjective = new /datum/objective/security_scramble()
 	objectives += securityobjective
-
+	/* SKYRAT EDIT REMOVAL
 	//Message of Terror, set to complete upon using your gloves a communication console
 	var/datum/objective/communicationobjective = new /datum/objective/terror_message()
 	objectives += communicationobjective
-
+	*/
 	//Survival until end
 	var/datum/objective/survival = new /datum/objective/survive()
 	survival.owner = owner

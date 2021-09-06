@@ -50,7 +50,7 @@
 	icon = 'modular_skyrat/modules/organs/lungs.dmi'
 	desc = "A set of lungs adapted to toxic environments, though more susceptible to extreme temperatures."
 	icon_state = "lungs_toxin"
-	safe_toxins_max = 27
+	safe_plasma_max = 27
 	safe_co2_max = 27
 
 	cold_message = "You can't stand the freezing cold with every breath you take!"

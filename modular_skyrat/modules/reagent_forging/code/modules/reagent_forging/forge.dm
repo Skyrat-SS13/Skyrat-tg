@@ -16,8 +16,8 @@
 	//normal forges are 0; to increase value, use watcher sinew to increase by 10, to a max of 100.
 	var/sinew_lower_chance = 0
 	var/current_sinew = 0
-	///the number of sheets an ore will produce, up to 3 (so you can upgrade 2 times before maxing)
-	var/goliath_ore_improvement = 1
+	///the number of extra sheets an ore will produce, up to 3
+	var/goliath_ore_improvement = 0
 	///the fuel amount (in seconds) that the forge has (wood)
 	var/forge_fuel_weak = 0
 	///the fuel amount (in seconds) that the forge has (stronger than wood)
@@ -35,11 +35,10 @@
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
-	if(isobserver(user))
-		. += span_notice("The forge has [goliath_ore_improvement]/3 goliath hides.")
-		. += span_notice("The forge has [current_sinew]/10 watcher sinews.")
-		. += span_notice("The forge has [current_core]/3 regenerative cores.")
-		. += span_notice("The forge is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
+	. += span_notice("The forge has [goliath_ore_improvement]/3 goliath hides.")
+	. += span_notice("The forge has [current_sinew]/10 watcher sinews.")
+	. += span_notice("The forge has [current_core]/3 regenerative cores.")
+	. += span_notice("The forge is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
 	if(reagent_forging)
 		. += span_notice("The forge has a red tinge, it is ready to imbue chemicals into reagent objects.")
 
@@ -208,13 +207,14 @@
 		return
 
 	if(istype(I, /obj/item/organ/regenerative_core))
-		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
-			to_chat(user, span_warning("This forge is already upgraded."))
-			return
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
+		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
+			to_chat(user, span_warning("This forge is already upgraded."))
+			in_use = FALSE
+			return
 		var/obj/item/organ/regenerative_core/used_core = I
 		if(used_core.inert) //no inert cores allowed
 			to_chat(user, span_warning("You cannot use an inert regenerative core."))
@@ -284,7 +284,8 @@
 			return
 		var/src_turf = get_turf(src)
 		var/spawning_item = ore_stack.refined_type
-		for(var/spawn_ore in 1 to goliath_ore_improvement)
+		var/spawning_amount = max(1, (1 + goliath_ore_improvement) * ore_stack.amount)
+		for(var/spawn_ore in 1 to spawning_amount)
 			new spawning_item(src_turf)
 		in_use = FALSE
 		to_chat(user, span_notice("You successfully smelt [ore_stack]."))
@@ -344,13 +345,17 @@
 			in_use = FALSE
 			to_chat(user, span_notice("You successfully heat up the metal, ready to forge a [user_choice]."))
 			return
+		in_use = FALSE
+		return
 
 	if(I.tool_behaviour == TOOL_WRENCH)
 		new /obj/item/stack/sheet/iron/ten(get_turf(src))
-		for(var/i in 1 to current_core)
+		for(var/loopone in 1 to current_core)
 			new /obj/item/organ/regenerative_core(get_turf(src))
-		for(var/i in 1 to current_sinew)
+		for(var/looptwo in 1 to current_sinew)
 			new /obj/item/stack/sheet/sinew(get_turf(src))
+		for(var/loopthree in 1 to goliath_ore_improvement)
+			new /obj/item/stack/sheet/animalhide/goliath_hide(get_turf(src))
 		qdel(src)
 
 	if(istype(I, /obj/item/forging/reagent_weapon) && reagent_forging)
