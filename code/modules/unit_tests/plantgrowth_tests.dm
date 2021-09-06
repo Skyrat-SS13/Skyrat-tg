@@ -10,6 +10,7 @@
 	states |= icon_states('icons/obj/hydroponics/growing_vegetables.dmi')
 	states |= icon_states('goon/icons/obj/hydroponics.dmi')
 	states |= icon_states('modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi') // SKYRAT ADDITION
+	states |= icon_states('modular_skyrat/modules/xenoarch/icons/growing.dmi') // SKYRAT ADDITION
 	var/list/paths = subtypesof(/obj/item/seeds) - /obj/item/seeds - typesof(/obj/item/seeds/sample) - /obj/item/seeds/lavaland
 
 	for(var/seedpath in paths)
