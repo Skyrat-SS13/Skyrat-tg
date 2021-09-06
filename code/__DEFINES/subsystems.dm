@@ -152,11 +152,7 @@
 #define INIT_ORDER_SHUTTLE -21
 #define INIT_ORDER_MINOR_MAPPING -40
 #define INIT_ORDER_PATH -50
-<<<<<<< HEAD
-#define INIT_ORDER_DISCORD -60
 #define INIT_ORDER_DECAY -61 //SKYRAT EDIT ADDITION
-=======
->>>>>>> c18ca130e50 (Increase SSdiscord init order (#61206))
 #define INIT_ORDER_EXPLOSIONS -69
 #define INIT_ORDER_STATPANELS -98
 #define INIT_ORDER_DEMO -99  // o avoid a bunch of changes related to initialization being written, do this last
