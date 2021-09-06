@@ -316,18 +316,13 @@
 					/obj/item/clothing/glasses/sunglasses/reagent = 1,
 					/obj/item/clothing/neck/petcollar = 1,
 					/obj/item/storage/belt/bandolier = 1,
-<<<<<<< HEAD
-					/obj/item/storage/pill_bottle/dice/hazard = 1,
+					/obj/item/storage/dice/hazard = 1,
 					/obj/item/storage/bag/money = 2, //SKYRAT EDIT ADDITION
 					/obj/item/storage/fancy/candle_box/vanilla = 1,
 					/obj/item/storage/fancy/candle_box/pear = 1,
 					/obj/item/storage/fancy/candle_box/amber = 1,
 					/obj/item/storage/fancy/candle_box/jasmine = 1,
 					/obj/item/storage/fancy/candle_box/mint = 1) //SKYRAT EDIT END
-=======
-					/obj/item/storage/dice/hazard = 1,
-					/obj/item/storage/bag/money = 2)
->>>>>>> 38000dfa10a (partially fixes medical phobia by splitting dice bags off of pillbottles as a subtype (#61015))
 	premium = list(/obj/item/storage/box/dishdrive = 1)
 	refill_canister = /obj/item/vending_refill/wardrobe/bar_wardrobe
 	payment_department = ACCOUNT_SRV
