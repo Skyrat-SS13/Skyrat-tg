@@ -168,8 +168,8 @@
 										/datum/reagent/toxin/formaldehyde,
 										/datum/reagent/impurity/libitoil,
 										/datum/reagent/impurity/mannitol,
-										/datum/reagent/medicine/c2/libital,
-										/datum/reagent/medicine/c2/lenturi,
+										/datum/reagent/medicine/c2/libital/borer_version,
+										/datum/reagent/medicine/c2/lenturi/borer_version,
 										/datum/reagent/medicine/c2/convermol,
 										/datum/reagent/medicine/c2/seiver,
 										/datum/reagent/lithium,
@@ -183,7 +183,7 @@
 										/datum/reagent/toxin/heparin,
 										/datum/reagent/consumable/ethanol/beer,
 										/datum/reagent/medicine/mannitol,
-										/datum/reagent/drug/methamphetamine,
+										/datum/reagent/drug/methamphetamine/borer_version,
 										/datum/reagent/medicine/morphine,
 										/datum/reagent/medicine/inacusiate,
 										/datum/reagent/medicine/oculine,
@@ -207,6 +207,7 @@
 									/datum/action/cooldown/inject_chemical,
 									/datum/action/cooldown/upgrade_chemical,
 									/datum/action/cooldown/choose_focus,
+									/datum/action/cooldown/learn_bloodchemical,
 									/datum/action/cooldown/upgrade_stat,
 									/datum/action/cooldown/force_speak,
 									/datum/action/cooldown/fear_human,
@@ -238,6 +239,13 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT) //they need to be able to move around
 	name = "[initial(name)] ([generation]-[rand(100,999)])" //so their gen and a random. ex 1-288 is first gen named 288, 4-483 if fourth gen named 483
+	if(prob(5))
+		var/switching = rand(1,2)
+		switch(switching)
+			if(1)
+				name = "cortical boner ([generation]-[rand(100,999)])"
+			if(2)
+				name = "cortical vorer ([generation]-[rand(100,999)])"
 	GLOB.cortical_borers += src
 	reagent_holder = new /obj/item/reagent_containers(src)
 	for(var/action_type in known_abilities)

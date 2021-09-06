@@ -2140,7 +2140,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/structure/rack,
-/obj/item/storage/backpack/satchel/tox,
+/obj/item/storage/backpack/satchel/science,
 /obj/item/analyzer,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14875,14 +14875,8 @@
 /area/maintenance/aft)
 "aMN" = (
 /obj/machinery/atmospherics/components/binary/valve,
-/obj/machinery/button/ignition/incinerator/toxmix{
-	pixel_x = -6;
-	pixel_y = 30
-	},
-/obj/machinery/button/door/incinerator_vent_toxmix{
-	pixel_x = 8;
-	pixel_y = 30
-	},
+/obj/machinery/button/ignition/incinerator/ordmix,
+/obj/machinery/button/door/incinerator_vent_ordmix,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -20447,7 +20441,7 @@
 /turf/open/floor/grass,
 /area/science/genetics)
 "aXs" = (
-/obj/machinery/door/poddoor/incinerator_toxmix,
+/obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "aXt" = (
@@ -20620,10 +20614,7 @@
 /area/science/mixing)
 "aXK" = (
 /obj/effect/decal/remains/human,
-/obj/machinery/sparker/toxmix{
-	name = "chamber igniter";
-	pixel_x = -16
-	},
+/obj/machinery/sparker/ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "aXL" = (
@@ -20653,7 +20644,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/science/storage)
 "aXN" = (
-/obj/machinery/igniter/incinerator_toxmix,
+/obj/machinery/igniter/incinerator_ordmix,
 /mob/living/simple_animal/chicken{
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
 	desc = "A timeless classic.";
@@ -20726,9 +20717,7 @@
 /area/science/genetics)
 "aXT" = (
 /obj/machinery/atmospherics/components/binary/valve,
-/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_toxmix{
-	pixel_y = 26
-	},
+/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_ordmix,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -22312,11 +22301,8 @@
 /turf/open/floor/iron/dark,
 /area/science/robotics/mechbay)
 "baX" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxins_mixing_input,
-/obj/machinery/sparker/toxmix{
-	name = "chamber igniter";
-	pixel_x = -16
-	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/ordnance_mixing_input,
+/obj/machinery/sparker/ordmix,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
 "baY" = (
@@ -22510,7 +22496,7 @@
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "bbt" = (
-/obj/machinery/air_sensor/atmos/toxins_mixing_tank,
+/obj/machinery/air_sensor/atmos/ordnance_mixing_tank,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing/chamber)
@@ -22572,18 +22558,14 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1
 	},
-/obj/machinery/airlock_sensor/incinerator_toxmix{
-	pixel_x = -24
-	},
+/obj/machinery/airlock_sensor/incinerator_ordmix,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden{
 	dir = 4
 	},
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "bbD" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_toxmix{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix,
 /obj/effect/landmark/blobstart,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -22662,7 +22644,7 @@
 /turf/open/floor/iron/dark,
 /area/science/research)
 "bbK" = (
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_interior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_interior,
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -22812,7 +22794,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/science/mixing)
 "bca" = (
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_exterior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_exterior,
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -23003,7 +22985,7 @@
 /turf/open/floor/iron/dark,
 /area/science/storage)
 "bcr" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -23043,7 +23025,7 @@
 /turf/open/floor/iron/dark,
 /area/science/storage)
 "bcu" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/neutral{
@@ -23205,10 +23187,7 @@
 "bcL" = (
 /obj/structure/table/reinforced,
 /obj/item/wrench,
-/obj/item/book/manual/wiki/toxins{
-	pixel_x = 4;
-	pixel_y = 4
-	},
+/obj/item/book/manual/wiki/ordnance,
 /obj/item/clothing/mask/gas{
 	pixel_x = 4;
 	pixel_y = 4
@@ -23953,7 +23932,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/science/storage)
 "beh" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -24289,7 +24268,7 @@
 /turf/open/floor/plating,
 /area/science/mixing)
 "beI" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/turf_decal/bot,
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = -32
@@ -40081,9 +40060,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/camera/preset/toxins{
-	dir = 8
-	},
+/obj/machinery/camera/preset/ordnance,
 /turf/open/floor/engine/vacuum,
 /area/science/test_area)
 "ccH" = (
@@ -49710,7 +49687,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/storage/pill_bottle/dice{
+/obj/item/storage/dice{
 	pixel_x = -4
 	},
 /obj/item/pen/red{
@@ -57502,7 +57479,7 @@
 /obj/item/toy/cards/deck{
 	pixel_x = -9
 	},
-/obj/item/storage/pill_bottle/dice{
+/obj/item/storage/dice{
 	pixel_x = -8;
 	pixel_y = 11
 	},
@@ -60332,9 +60309,7 @@
 /turf/open/floor/iron/dark,
 /area/service/bar)
 "gSf" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input{
-	dir = 1
-	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "gSv" = (
@@ -68853,7 +68828,7 @@
 /turf/open/floor/iron/dark,
 /area/commons/fitness/recreation)
 "lwP" = (
-/obj/machinery/air_sensor/atmos/toxin_tank,
+/obj/machinery/air_sensor/atmos/plasma_tank,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "lxB" = (
@@ -70815,7 +70790,7 @@
 /area/cargo/storage)
 "myY" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/dark,
 /area/engineering/main)
@@ -74734,7 +74709,7 @@
 /turf/open/floor/plating/rust,
 /area/security/prison)
 "oCa" = (
-/obj/machinery/atmospherics/miner/toxins,
+/obj/machinery/atmospherics/miner/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "oCP" = (
@@ -81021,9 +80996,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
 	dir = 4
 	},
-/obj/machinery/computer/atmos_control/tank/toxin_tank{
-	dir = 1
-	},
+/obj/machinery/computer/atmos_control/tank/plasma_tank,
 /turf/open/floor/iron/showroomfloor,
 /area/engineering/atmos)
 "rVV" = (
@@ -82408,9 +82381,7 @@
 /turf/open/floor/iron,
 /area/commons/vacant_room/commissary)
 "sGm" = (
-/obj/machinery/atmospherics/components/tank/toxins{
-	dir = 1
-	},
+/obj/machinery/atmospherics/components/tank/plasma,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -86158,9 +86129,7 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "uHv" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxin_output{
-	dir = 1
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "uHC" = (
@@ -90283,11 +90252,9 @@
 /obj/item/cartridge/roboticist{
 	pixel_x = -3
 	},
-/obj/item/cartridge/signal/toxins{
-	pixel_x = 6
-	},
-/obj/item/cartridge/signal/toxins,
-/obj/item/cartridge/signal/toxins,
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
 /obj/item/circuitboard/aicore{
 	pixel_y = 5
 	},
