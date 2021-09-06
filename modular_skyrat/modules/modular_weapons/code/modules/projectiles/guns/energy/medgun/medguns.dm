@@ -203,6 +203,7 @@
 /obj/item/medicell/utility/temperature
 	name = "Temperature Readjustment Medicell"
 	desc = "PLACEHOLDER DESCRIPTION"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/temperature
 
 //Medigun Gunsets/
 /obj/item/storage/briefcase/medicalgunset/
