@@ -1,5 +1,55 @@
 /datum/record_manifest
 
+/datum/datacore/proc/get_exploitable_manifest()
+	var/list/exp_manifest_out = list()
+	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+		exp_manifest_out[department.department_name] = list()
+	exp_manifest_out[DEPARTMENT_UNASSIGNED] = list()
+
+	var/list/departments_by_type = SSjob.joinable_departments_by_type
+	for(var/datum/data/record/locked_record in GLOB.data_core.locked)
+		var/name = locked_record.fields["name"]
+		var/rank = locked_record.fields["rank"]
+		var/truerank = locked_record.fields["truerank"] // SKYRAT EDIT ADD - ALT TITLES
+		var/exploitables = locked_record.fields["exp_records"]
+		var/datum/job/job = SSjob.GetJob(truerank) // SKYRAT EDIT - ORIGINAL CALLED GetJob(rank)
+		var/exploitables_empty = (length(exploitables) < 2)
+		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list) && (!exploitables_empty)) // In case an unlawful custom rank is added.
+			var/list/exp_misc_list = exp_manifest_out[DEPARTMENT_UNASSIGNED]
+			exp_misc_list[++exp_misc_list.len] = list(
+				"name" = name,
+				"rank" = rank,
+				"truerank" = truerank,
+				"exp_records" = exploitables,
+				)
+			continue
+		for(var/department_type as anything in job.departments_list)
+			var/datum/job_department/department = departments_by_type[department_type]
+			if(!department)
+				stack_trace("get_exploitable_manifest() failed to get job department for [department_type] of [job.type]")
+				continue
+			if(exploitables_empty)
+				continue
+			var/list/exp_entry = list(
+				"name" = name,
+				"rank" = rank,
+				"truerank" = truerank,
+				"exp_records" = exploitables,
+				)
+			var/list/exp_department_list = exp_manifest_out[department.department_name]
+			if(istype(job, department.department_head))
+				exp_department_list.Insert(1, null)
+				exp_department_list[1] = exp_entry
+			else
+				exp_department_list[++exp_department_list.len] = exp_entry
+
+	// Trim the empty categories.
+	for (var/department in exp_manifest_out)
+		if(!length(exp_manifest_out[department]))
+			exp_manifest_out -= department
+
+	return exp_manifest_out
+
 /datum/record_manifest/ui_state(mob/user)
 	return GLOB.always_state
 
@@ -32,6 +82,6 @@
 		positions[department.department_name] = list("exceptions" = exceptions)
 
 	return list(
-		"manifest" = GLOB.data_core.get_manifest(),
+		"manifest" = GLOB.data_core.get_exploitable_manifest(),
 		"positions" = positions
 	)

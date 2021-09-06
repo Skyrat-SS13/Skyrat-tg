@@ -16,7 +16,7 @@ export const RecordManifest = (props, context) => {
   const { act } = useBackend(context);
 
   return (
-    <Window title="Exploitable Manifest" width={450} height={500}>
+    <Window title="All crew with exploitables" width={450} height={500}>
       <Window.Content scrollable>
         {Object.entries(manifest).map(([dept, crew]) => (
           <Section
