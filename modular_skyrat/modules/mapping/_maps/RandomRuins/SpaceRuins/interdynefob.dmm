@@ -1175,6 +1175,7 @@
 "em" = (
 /obj/machinery/door/airlock/security/old{
 	hackProof = 1;
+	id_tag = Armory;
 	name = "Armory";
 	req_access_txt = "151"
 	},
@@ -1189,6 +1190,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "eo" = (
@@ -7061,6 +7063,14 @@
 	real_name = null
 	},
 /obj/structure/cable,
+/obj/machinery/button/door/directional/west{
+	desc = "To keep your valuable gear away from prying eyes.";
+	id = Armory;
+	name = "Armory Door bolt";
+	normaldoorcontrol = 1;
+	req_access_txt = "151";
+	specialfunctions = 4
+	},
 /turf/open/floor/iron/dark/smooth_corner,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "yB" = (
@@ -7786,8 +7796,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "Bc" = (
 /obj/machinery/button/door/directional/north{
+	desc = "Keep out the riff-raff.";
 	id = "sadmiral";
+	name = "Admiral's room bolt";
 	normaldoorcontrol = 1;
+	req_access_txt = "151";
 	specialfunctions = 4
 	},
 /obj/effect/turf_decal/siding/wood{
@@ -10585,6 +10598,9 @@
 /obj/item/radio/headset/interdyne/command,
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate_winter,
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate_winter,
+/obj/item/encryptionkey/headset_interdyne,
+/obj/item/encryptionkey/headset_interdyne,
+/obj/item/encryptionkey/headset_interdyne,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Kz" = (
