@@ -191,17 +191,17 @@
 //Start of Utility Cells
 /obj/item/medicell/utility
 	utility = TRUE
-	name = "Utility Class Medicell"
+	name = "utility class medicell"
 	desc = "You really shouldn't be seeing this, if you do, please yell on GitHub."
 
 /obj/item/medicell/utility/clotting
-	name = "Clotting Medicell"
+	name = "clotting medicell"
 	desc = "A medicell designed to help deal with bleeding patients"
 	icon_state = "clotting"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/clotting
 
 /obj/item/medicell/utility/temperature
-	name = "Temperature Readjustment Medicell"
+	name = "temperature readjustment medicell"
 	desc = "A medicell that adjusts the hosts temperature to acceptable levels"
 	icon_state = "temperature"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/temperature

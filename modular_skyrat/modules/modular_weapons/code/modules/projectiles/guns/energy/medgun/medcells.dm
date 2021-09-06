@@ -318,7 +318,7 @@
 		return FALSE
 	if(target.reagents.get_reagent_amount(/datum/reagent/medicine/coagulant/fabricated) < 5) //injects the target with a weaker coagulant agent
 		target.reagents.add_reagent(/datum/reagent/medicine/coagulant/fabricated, 1)
-		target.reagents.add_reagent(/datum/reagent/iron, 2) //adds in iron to help conpensate for the relatively weaker blood clotting
+		target.reagents.add_reagent(/datum/reagent/iron, 2) //adds in iron to help compensate for the relatively weak blood clotting
 	else
 		return
 
@@ -334,7 +334,7 @@
 	if(!IsLivingHuman(target))
 		return FALSE
 	var/ideal_temp = target.get_body_temp_normal(apply_change=FALSE) //Gets the temperature we should be aiming for.
-	var/current_temp = target.bodytemperature //Retrives the targets body temperature
+	var/current_temp = target.bodytemperature //Retrieves the targets body temperature
 	var/difference = ideal_temp - current_temp
 	if(abs(difference) <= MINIMUM_TEMP_DIFFERENCE) //It won't adjust temperature if the difference is too low
 		return FALSE

@@ -90,7 +90,7 @@
 
 //Utility Medicells
 /datum/design/clotmedicell
-	name = "Clotting Medicell"
+	name = "clotting medicell"
 	desc = "A medicell designed to help deal with bleeding patients"
 	id = "clotmedicell"
 	build_type = PROTOLATHE | AWAY_LATHE
@@ -101,7 +101,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/tempmedicell
-	name = "Temperature Adjustment Medicell"
+	name = "temperature adjustment medicell"
 	desc = "A medicell that adjusts the hosts temperature to acceptable levels"
 	id = "tempmedicell"
 	build_type = PROTOLATHE | AWAY_LATHE

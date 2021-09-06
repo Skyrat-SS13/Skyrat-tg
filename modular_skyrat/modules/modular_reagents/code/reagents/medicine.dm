@@ -46,8 +46,8 @@
 
 //Medigun Clotting Medicine
 /datum/reagent/medicine/coagulant/fabricated
-	name = "Fabricated Coagulant"
-	description = "A synthesized cogaulant created by Mediguns."
+	name = "fabricated coagulant"
+	description = "A synthesized coagulant created by Mediguns."
 	color = "#ff7373" //255, 155. 155
 	clot_rate = 0.15 //Half as strong as standard coagulant
 	passive_bleed_modifier = 0.5 // around 2/3 the bleeding reduction
