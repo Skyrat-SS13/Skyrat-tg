@@ -110,9 +110,11 @@
 		var/perpname = get_face_name(get_id_name(""))
 		if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD) && !HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 			return
-		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.general)
+		var/datum/data/record/general_record = find_record("name", perpname, GLOB.data_core.general) //SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+		var/datum/data/record/med_record = find_record("name", perpname, GLOB.data_core.medical)
+		var/datum/data/record/sec_record = find_record("name", perpname, GLOB.data_core.security)//SKYRAT EDIT ADDITION END
 		if(href_list["photo_front"] || href_list["photo_side"])
-			if(!R)
+			if(!general_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				return
 			if(!H.canUseHUD())
 				return
@@ -120,9 +122,9 @@
 				return
 			var/obj/item/photo/P = null
 			if(href_list["photo_front"])
-				P = R.fields["photo_front"]
+				P = general_record.fields["photo_front"] //SKYRAT EDIT CHANGE - EXAMINE RECORDS (note to maintainers: most of these single examine records edits are just me changing R to another variable, in this case, its general_record)
 			else if(href_list["photo_side"])
-				P = R.fields["photo_side"]
+				P = general_record.fields["photo_side"] //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 			if(P)
 				P.show(H)
 			return
@@ -180,26 +182,26 @@
 				to_chat(H, span_warning("ERROR: Invalid access"))
 				return
 			if(href_list["p_stat"])
-				var/health_status = input(usr, "Specify a new physical status for this person.", "Medical HUD", R.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
-				if(!R)
+				var/health_status = input(usr, "Specify a new physical status for this person.", "Medical HUD", general_record.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
+				if(!general_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 					return
 				if(health_status && health_status != "Cancel")
-					R.fields["p_stat"] = health_status
+					general_record.fields["p_stat"] = health_status //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				return
 			if(href_list["m_stat"])
-				var/health_status = input(usr, "Specify a new mental status for this person.", "Medical HUD", R.fields["m_stat"]) in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
-				if(!R)
+				var/health_status = input(usr, "Specify a new mental status for this person.", "Medical HUD", general_record.fields["m_stat"]) in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
+				if(!general_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 					return
 				if(health_status && health_status != "Cancel")
-					R.fields["m_stat"] = health_status
+					general_record.fields["m_stat"] = health_status //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				return
 			if(href_list["quirk"])
 				var/quirkstring = get_quirk_string(TRUE, CAT_QUIRK_ALL)
@@ -207,6 +209,12 @@
 					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
+			if(href_list["medrecords"])
+			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+				to_chat(usr, "<b>Medical Record:</b> [med_record.fields["past_records"]]")
+			if(href_list["genrecords"])
+				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+			//SKYRAT EDIT END
 			return //Medical HUD ends here.
 
 		if(href_list["hud"] == "s")
@@ -235,31 +243,30 @@
 			if(!perpname)
 				to_chat(H, span_warning("ERROR: Can not identify target."))
 				return
-			R = find_record("name", perpname, GLOB.data_core.security)
-			if(!R)
+			if(!sec_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				to_chat(usr, span_warning("ERROR: Unable to locate data core entry for target."))
 				return
 			if(href_list["status"])
-				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", R.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel")
+				var/setcriminal = input(usr, "Specify a new criminal status for this person.", "Security HUD", sec_record.fields["criminal"]) in list("None", "*Arrest*", "Incarcerated", "Paroled", "Discharged", "Cancel") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if(setcriminal != "Cancel")
-					if(!R)
+					if(!sec_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 						return
 					if(!H.canUseHUD())
 						return
 					if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 						return
-					investigate_log("[key_name(src)] has been set from [R.fields["criminal"]] to [setcriminal] by [key_name(usr)].", INVESTIGATE_RECORDS)
-					R.fields["criminal"] = setcriminal
+					investigate_log("[key_name(src)] has been set from [sec_record.fields["criminal"]] to [setcriminal] by [key_name(usr)].", INVESTIGATE_RECORDS) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+					sec_record.fields["criminal"] = setcriminal //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					sec_hud_set_security_status()
 				return
 
-			if(href_list["view"])
+			if(href_list["viewsec"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Criminal Status:</b> [R.fields["criminal"]]")
-				for(var/datum/data/crime/c in R.fields["crim"])
+				to_chat(usr, "<b>Name:</b> [sec_record.fields["name"]] <b>Criminal Status:</b> [sec_record.fields["criminal"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				for(var/datum/data/crime/c in sec_record.fields["crim"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					to_chat(usr, "<b>Crime:</b> [c.crimeName]")
 					if (c.crimeDetails)
 						to_chat(usr, "<b>Details:</b> [c.crimeDetails]")
@@ -267,14 +274,24 @@
 						to_chat(usr, "<b>Details:</b> <A href='?src=[REF(src)];hud=s;add_details=1;cdataid=[c.dataId]'>\[Add details]</A>")
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
-				to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
+				to_chat(usr, "<b>Notes:</b> [sec_record.fields["notes"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
 				return
+
+			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+			if(href_list["genrecords"])
+				if(!H.canUseHUD())
+					return
+				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
+					return
+				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+			//SKYRAT EDIT END
 
 			if(href_list["add_citation"])
 				var/maxFine = CONFIG_GET(number/maxfine)
 				var/t1 = stripped_input("Please input citation crime:", "Security HUD", "", null)
 				var/fine = FLOOR(input("Please input citation fine, up to [maxFine]:", "Security HUD", 50) as num|null, 1)
-				if(!R || !t1 || !fine || !allowed_access)
+				if(!sec_record || !t1 || !fine || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
@@ -287,7 +304,7 @@
 
 				var/datum/data/crime/crime = GLOB.data_core.createCrimeEntry(t1, "", allowed_access, station_time_timestamp(), fine)
 				for (var/obj/item/pda/P in GLOB.PDAs)
-					if(P.owner == R.fields["name"])
+					if(P.owner == sec_record.fields["name"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 						var/message = "You have been fined [fine] credits for '[t1]'. Fines may be paid at security."
 						var/datum/signal/subspace/messaging/pda/signal = new(src, list(
 							"name" = "Security Citation",
@@ -298,36 +315,36 @@
 						))
 						signal.send_to_receivers()
 						usr.log_message("(PDA: Citation Server) sent \"[message]\" to [signal.format_target()]", LOG_PDA)
-				GLOB.data_core.addCitation(R.fields["id"], crime)
-				investigate_log("New Citation: <strong>[t1]</strong> Fine: [fine] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
-				SSblackbox.ReportCitation(crime.dataId, usr.ckey, usr.real_name, R.fields["name"], t1, fine)
+				GLOB.data_core.addCitation(sec_record.fields["id"], crime) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				investigate_log("New Citation: <strong>[t1]</strong> Fine: [fine] | Added to [sec_record.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				SSblackbox.ReportCitation(crime.dataId, usr.ckey, usr.real_name, sec_record.fields["name"], t1, fine) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				return
 
 			if(href_list["add_crime"])
 				var/t1 = stripped_input("Please input crime name:", "Security HUD", "", null)
-				if(!R || !t1 || !allowed_access)
+				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				var/crime = GLOB.data_core.createCrimeEntry(t1, null, allowed_access, station_time_timestamp())
-				GLOB.data_core.addCrime(R.fields["id"], crime)
-				investigate_log("New Crime: <strong>[t1]</strong> | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
+				GLOB.data_core.addCrime(sec_record.fields["id"], crime) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				investigate_log("New Crime: <strong>[t1]</strong> | Added to [sec_record.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				to_chat(usr, span_notice("Successfully added a crime."))
 				return
 
 			if(href_list["add_details"])
 				var/t1 = stripped_input(usr, "Please input crime details:", "Secure. records", "", null)
-				if(!R || !t1 || !allowed_access)
+				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				if(href_list["cdataid"])
-					GLOB.data_core.addCrimeDetails(R.fields["id"], href_list["cdataid"], t1)
-					investigate_log("New Crime details: [t1] | Added to [R.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS)
+					GLOB.data_core.addCrimeDetails(sec_record.fields["id"], href_list["cdataid"], t1) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+					investigate_log("New Crime details: [t1] | Added to [sec_record.fields["name"]] by [key_name(usr)]", INVESTIGATE_RECORDS) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					to_chat(usr, span_notice("Successfully added details."))
 				return
 
@@ -338,29 +355,36 @@
 					return
 				to_chat(usr, "<b>Comments/Log:</b>")
 				var/counter = 1
-				while(R.fields[text("com_[]", counter)])
-					to_chat(usr, R.fields[text("com_[]", counter)])
+				while(sec_record.fields[text("com_[]", counter)]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+					to_chat(usr, sec_record.fields[text("com_[]", counter)]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					to_chat(usr, "----------")
 					counter++
 				return
 
 			if(href_list["add_comment"])
 				var/t1 = stripped_multiline_input("Add Comment:", "Secure. records", null, null)
-				if (!R || !t1 || !allowed_access)
+				if (!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				var/counter = 1
-				while(R.fields[text("com_[]", counter)])
+				while(sec_record.fields[text("com_[]", counter)]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					counter++
-				R.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+540, t1)
+				sec_record.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, station_time_timestamp(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+540, t1) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				to_chat(usr, span_notice("Successfully added comment."))
 				return
 
-	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
+	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
+	if (is_special_character(usr))
+		var/perpname = get_face_name(get_id_name(""))
+		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.locked)
+		if(href_list["exprecords"])
+			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exp_records"]]")
+	//SKYRAT EDIT END
 
+	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
 
 /mob/living/carbon/human/proc/canUseHUD()
 	return (mobility_flags & MOBILITY_USE)
@@ -433,9 +457,10 @@
 	//Check for arrest warrant
 	if(judgement_criteria & JUDGE_RECORDCHECK)
 		var/perpname = get_face_name(get_id_name())
-		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.security)
-		if(R?.fields["criminal"])
-			switch(R.fields["criminal"])
+		var/datum/data/record/sec_record = find_record("name", perpname, GLOB.data_core.security) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+
+		if(sec_record?.fields["criminal"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+			switch(sec_record.fields["criminal"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if("*Arrest*")
 					threatcount += 5
 				if("Incarcerated")
@@ -695,9 +720,9 @@
 
 /mob/living/carbon/human/replace_records_name(oldname,newname) // Only humans have records right now, move this up if changed.
 	for(var/list/L in list(GLOB.data_core.general,GLOB.data_core.medical,GLOB.data_core.security,GLOB.data_core.locked))
-		var/datum/data/record/R = find_record("name", oldname, L)
-		if(R)
-			R.fields["name"] = newname
+		var/datum/data/record/general_record = find_record("name", oldname, L)
+		if(general_record)
+			general_record.fields["name"] = newname
 
 /mob/living/carbon/human/get_total_tint()
 	. = ..()

@@ -430,7 +430,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
-	desc = "A flamethrower, fueled by a portion of highly flammable biotoxins stolen previously from Nanotrasen \
+	desc = "A flamethrower, fueled by a portion of highly flammable plasma stolen previously from Nanotrasen \
 			stations. Make a statement by roasting the filth in their own greed. Use with caution."
 	item = /obj/item/flamethrower/full/tank
 	cost = 4
@@ -1467,7 +1467,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A disk containing the procedure to perform a brainwashing surgery, allowing you to implant an objective onto a target. \
 	Insert into an Operating Console to enable the procedure."
 	item = /obj/item/disk/surgery/brainwashing
-	cost = 9
+	cost = 5
 //SKYRAT EDIT END
 
 //SKYRAT EDIT REMOVAL BEGIN - Remove Hypnostuff
@@ -1842,6 +1842,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 3
 	restricted_roles = list("Roboticist", "Research Director")
 
+/datum/uplink_item/role_restricted/syndimmi
+	name = "Syndicate Brand MMI"
+	desc = "An MMI modified to give cyborgs laws to serve the Syndicate without having their interface damaged by Cryptographic Sequencers, this will not unlock their hidden modules."
+	item = /obj/item/mmi/syndie
+	cost = 2
+	restricted_roles = list("Roboticist", "Research Director", "Scientist", "Medical Doctor", "Chief Medical Officer")
+	surplus = 0
+
 /datum/uplink_item/role_restricted/haunted_magic_eightball
 	name = "Haunted Magic Eightball"
 	desc = "Most magic eightballs are toys with dice inside. Although identical in appearance to the harmless toys, this occult device reaches into the spirit world to find its answers. \
@@ -2065,3 +2073,16 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 1
 	purchasable_from = UPLINK_CLOWN_OPS
 	illegal_tech = FALSE
+
+// Special equipment (Dynamically fills in uplink component)
+/datum/uplink_item/special_equipment
+	category = "Objective-Specific Equipment"
+	name = "Objective-Specific Equipment"
+	desc = "Equipment necessary for accomplishing specific objectives. If you are seeing this, something has gone wrong."
+	limited_stock = 1
+	illegal_tech = FALSE
+
+/datum/uplink_item/special_equipment/purchase(mob/user, datum/component/uplink/U)
+	..()
+	if(user?.mind?.failed_special_equipment)
+		user.mind.failed_special_equipment -= item

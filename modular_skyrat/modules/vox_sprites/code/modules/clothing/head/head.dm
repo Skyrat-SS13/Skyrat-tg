@@ -22,7 +22,7 @@
 /obj/item/clothing/head/beret/sec
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
-/obj/item/clothing/head/beret/science
+/obj/item/clothing/head/beret/science/fancy
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
 
 /obj/item/clothing/head/beret/durathread
@@ -69,6 +69,9 @@
 
 /obj/item/clothing/head/beret/sec/peacekeeper
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge/worn/vox
+
+/obj/item/clothing/head/beret/sec/peacekeeper/white
+	greyscale_config_worn_vox = null
 
 /obj/item/clothing/head/beret/sec/navywarden/peacekeeper
 	greyscale_config_worn_vox = /datum/greyscale_config/beret_badge_fancy/worn/vox
