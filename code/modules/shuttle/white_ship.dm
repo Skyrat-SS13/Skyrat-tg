@@ -3,7 +3,7 @@
 	desc = "Used to control the White Ship."
 	circuit = /obj/item/circuitboard/computer/white_ship
 	shuttleId = "whiteship"
-	possible_destinations = "whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;whiteship_custom"
+	possible_destinations = "whiteship_away;whiteship_home;whiteship_z4;whiteship_lavaland;whiteship_custom;hugedock;largedock" //SKYRAT EDIT CHANGE
 
 /// Console used on the whiteship bridge. Comes with GPS pre-baked.
 /obj/machinery/computer/shuttle/white_ship/bridge

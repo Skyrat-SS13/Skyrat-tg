@@ -91,6 +91,8 @@
 						M.playsound_local(distant_source, landing_sound, vol)
 
 /obj/docking_port/mobile/proc/DrawDockingThrust()
+	if(!uses_engines_fuel)
+		return TRUE
 	var/drawn_power = 0
 	for(var/i in engine_extensions)
 		var/datum/shuttle_extension/engine/ext = i

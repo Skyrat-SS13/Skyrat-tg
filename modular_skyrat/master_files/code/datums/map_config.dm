@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 //used for holding information about unique properties of maps
 //feed it json files that match the datum layout
 //defaults to box
@@ -20,20 +19,46 @@
 	var/map_file = "MetaStation.dmm"
 
 	var/traits = null
-	var/space_ruin_levels = 7
+	var/space_ruin_levels = 5
 	var/space_empty_levels = 1
 
 	var/minetype = "lavaland"
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list(
-		"cargo" = "cargo_box",
+		"cargo" = "cargo_skyrat",
 		"ferry" = "ferry_fancy",
 		"whiteship" = "whiteship_box",
-		"emergency" = "emergency_box")
+		"emergency" = "emergency_skyrat")
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
+
+	/// Type of the global trading hub that will be created
+	var/global_trading_hub_type = /datum/trade_hub/worldwide
+	/// A lazylist of types of trading hubs to be spawned
+	var/localized_trading_hub_types = list(/datum/trade_hub/randomname, /datum/trade_hub/randomname)
+
+	/// The type of the overmap object the station will act as on the overmap
+	var/overmap_object_type = /datum/overmap_object/shuttle/station
+	/// The weather controller the station levels will have
+	var/weather_controller_type = /datum/weather_controller
+	/// Type of our day and night controller, can be left blank for none
+	var/day_night_controller_type
+	/// Type of the atmosphere that will be loaded on station
+	var/atmosphere_type
+	/// Possible rock colors of the loaded map
+	var/list/rock_color
+	/// Possible plant colors of the loaded map
+	var/list/plant_color
+	/// Possible grass colors of the loaded map
+	var/list/grass_color
+	/// Possible water colors of the loaded map
+	var/list/water_color
+
+	var/amount_of_planets_spawned = 1
+
+	var/ore_node_seeder_type
 
 /proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
@@ -108,6 +133,8 @@
 		log_world("map_config shuttles is not a list!")
 		return
 
+	shuttles["emergency"] = "emergency_skyrat"
+
 	traits = json["traits"]
 	// "traits": [{"Linkage": "Cross"}, {"Space Ruins": true}]
 	if (islist(traits))
@@ -146,6 +173,55 @@
 			return
 		job_changes = json["job_changes"]
 
+	if(json["overmap_object_type"])
+		overmap_object_type = text2path(json["overmap_object_type"])
+
+	if(json["weather_controller_type"])
+		weather_controller_type = text2path(json["weather_controller_type"])
+
+	if(json["day_night_controller_type"])
+		day_night_controller_type = text2path(json["day_night_controller_type"])
+
+	if(json["atmosphere_type"])
+		atmosphere_type = text2path(json["atmosphere_type"])
+
+	if ("rock_color" in json)
+		if(islist(json["rock_color"]))
+			rock_color = json["rock_color"]
+
+	if ("plant_color" in json)
+		if(islist(json["plant_color"]))
+			plant_color = json["plant_color"]
+
+	if ("grass_color" in json)
+		if(islist(json["grass_color"]))
+			grass_color = json["grass_color"]
+
+	if ("water_color" in json)
+		if(islist(json["water_color"]))
+			water_color = json["water_color"]
+
+	if(json["amount_of_planets_spawned"])
+		atmosphere_type = text2path(json["amount_of_planets_spawned"])
+
+	temp = json["amount_of_planets_spawned"]
+	if(isnum(temp))
+		amount_of_planets_spawned = temp
+
+	if(json["ore_node_seeder_type"])
+		ore_node_seeder_type = text2path(json["ore_node_seeder_type"])
+
+	if(json["global_trading_hub_type"])
+		global_trading_hub_type = text2path(json["global_trading_hub_type"])
+
+	if(json["ore_node_seeder_type"])
+		atmosphere_type = text2path(json["ore_node_seeder_type"])
+
+	if(json["localized_trading_hub_types"])
+		var/list/hub_types = json["localized_trading_hub_types"]
+		for(var/hub_type in hub_types)
+			localized_trading_hub_types += text2path(hub_type)
+
 	defaulted = FALSE
 	return TRUE
 #undef CHECK_EXISTS
@@ -159,4 +235,3 @@
 
 /datum/map_config/proc/MakeNextMap()
 	return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")
-*/

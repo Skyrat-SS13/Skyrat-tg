@@ -376,6 +376,8 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
+	var/uses_engines_fuel = FALSE //SKYRAT EDIT ADDITION
+
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
 	if(!id)

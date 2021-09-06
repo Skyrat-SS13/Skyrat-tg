@@ -88,6 +88,10 @@ SUBSYSTEM_DEF(shuttle)
 	//SKYRAT EDIT ADDITION
 	/// List of all transit instances
 	var/list/transit_instances = list()
+	/// List of all sold shuttles for consoles to buy them
+	var/list/sold_shuttles = list()
+	/// Assoc list of "[dock_id]-[shuttle_types]" to a list of possible sold shuttles for those
+	var/list/sold_shuttles_cache = list()
 	//SKYRAT EDIT END
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
@@ -121,6 +125,8 @@ SUBSYSTEM_DEF(shuttle)
 		WARNING("No /obj/docking_port/mobile/emergency/backup placed on the map!")
 	if(!supply)
 		WARNING("No /obj/docking_port/mobile/supply placed on the map!")
+
+	init_sold_shuttles()//SKYRAT EDIT ADDITON
 	return ..()
 
 /datum/controller/subsystem/shuttle/proc/initial_load()
