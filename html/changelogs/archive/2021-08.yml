@@ -717,3 +717,190 @@
   - rscadd: Hypospray kits can be now be Ctrl+Shift clicked to change the design.
   thestubborn:
   - bugfix: Fixed the paramedic jacket's sprite.
+2021-08-25:
+  AccountName5:
+  - bugfix: Fixed bug that prevented you from placing vertical bridge pipes on horizontal
+      smart pipes.
+  FlamingLily:
+  - tweak: Made it more clear that combat indicator is an in character state.
+  GoldenAlpharex:
+  - bugfix: Nanotrasen's Linguist Team managed to finally teach the crew about changing
+      language on the fly, which didn't seem to be an universal thing. Now it is!
+  - bugfix: Adds the Sailor dress to the loadout, after it's been missing from there
+      for ages for no reason.
+  SkyratBot:
+  - bugfix: Fixes the lone operative event hardly ever rolling even if the disk is
+      left on the same place for hours because of dynamic.
+  - bugfix: stargazers can now form slime links again.
+  - bugfix: Fixed dash abilities, like from Hiero Club, null owner refs.
+  Snakebittenn:
+  - balance: Medical Bandolier now holds 2x the items. Can't hold beakers or the syndicate
+      syringe gun anymore.
+2021-08-26:
+  Colovorat:
+  - bugfix: Cables from protolathe and autolathe should merge just fine now
+  ORCACommander:
+  - bugfix: fixed a few things Paramedic Overcoats no longer break the space time
+      continuum
+  SkyratBot:
+  - bugfix: Repairing clothing now immediately updates the sprite
+  - bugfix: Fixes monkey being unable to access right click functions on several objects
+      such as stacks and storages.
+  - imageadd: better fish and fish food sprites
+  - admin: Made admin only shells not interactable to non-admins
+  - bugfix: Outgoing comms console messages to allied stations will not be shown again
+      as incoming messages.
+  jjpark-kb:
+  - rscadd: splits serviceborg's shaker into four separate ones; additional reagents
+      to work with.
+  - rscadd: adds the cooking multitool to serviceborg.
+2021-08-27:
+  GoldenAlpharex:
+  - server: SQL database schema updated to have a new `discord_reported` column in
+      the `ban` table.
+  ORCACommander:
+  - bugfix: SQL Versioning
+  - server: Double check to make sure the Database version was properly updated
+  Seris02:
+  - bugfix: fixed the fire doors being invisible
+  SkyratBot:
+  - bugfix: Fixed an exploit
+  - bugfix: Fixed crayon and spraycan text input to behave properly
+  - bugfix: Temperature Control Units now display their color when set or changed,
+      rather than always displaying as grey.
+  - spellcheck: The HFR now correctly describes the recipe cooling modifier as adjusting
+      the maximum cooling, rather than the minimum cooling.
+  - bugfix: fixes heart attack message spam for synthetic organs!
+  - bugfix: Honorbound followers can now perform surgery.
+  - bugfix: Honorbound followers can no longer punch the innocents.
+  - bugfix: Fixes traits added by quirks not being removed when those are deleted
+      (like from eigenstasium).
+  bobbahbrown:
+  - admin: Add Requests Manager to view all prayers/centcom and syndicate requests/and
+      nuke code requests within a round.
+  jjpark-kb:
+  - bugfix: fixed a lavaland farming oversight (item/grown AND item/food/grown)
+2021-08-28:
+  ForrestWick:
+  - balance: Brainwash surgery is no longer restricted to doctors and roboticists,
+      meaning any traitor can get it. The price has gone up to 9TC to make it more
+      fair as well.
+  Nari Harimoto:
+  - bugfix: icebox service has been slightly renovated to ensure disposals runs smoothly
+      without issue, as well as minor changes to the kitchen freezer for usability,
+      and pushed the service hallway wall back a bit.
+  SkyratBot:
+  - bugfix: fixes field generators not being interactable
+  - rscadd: 'TGUI autolathe expansion: You can now input a custom amount to print(hard
+      limit at 50 or maximum stack size) expansion: Can now search and change categories
+      while the autolathe is busy, line up those designs!'
+  jjpark-kb:
+  - bugfix: fixes some of the ash farming
+  tf-4:
+  - bugfix: NSS Journey's disposals got an overhaul, and now no longer break in departures
+2021-08-29:
+  AlinaStarkova:
+  - bugfix: Disposals will no longer spit out trash into the Gateway room on NSS Journey
+  FlamingLily:
+  - tweak: Corpse examine text is more in line with RP.
+  - rscdel: Curtains from metastation's prison
+  - bugfix: Latejoin borgs are synced to the AI again
+  Gandalf2k15:
+  - balance: CME's have yet again been reworked and are now more rewarding and easier
+      to deal with.
+  GoldenAlpharex:
+  - bugfix: Borers should now properly get disposed of.
+  - rscdel: The Nanotrasen Ventilation Experts have finally equipped the vents with
+      anti-clown filters, ensuring that their stations would not get attacked by vent-crawling
+      clown monsters anymore.
+  - bugfix: Fixing CI, a bit.
+  Halcyon:
+  - imageadd: The Syndicate have noticed a severe design flaw in exposing the most
+      vulnerable part of their operative's bodies and has rectified it by covering
+      their operative's faces in their hardsuit's combat mode
+  - imageadd: High command has dished out some new coats for their beloved admirals.
+      Made with real wolf fur.
+  LeonY24:
+  - imageadd: DTR-6 Ostwind, DMR Norwind, Vintorez and PCR-9 now have dual-wielded
+      sprites.
+  ORCACommander , ZephyrTFA:
+  - bugfix: missing entries in jobs lists in jobs subsystem
+  - code_imp: added a stack trace to job list initialization from text file
+  - config: Reorganized jobs.txt and added missing entries
+  SkyratBot:
+  - bugfix: error when typing the mole efficiency (instead of 0.1 it was 0.001, didn't
+      push the change)
+  - bugfix: infinite power consumption (capped)
+  - bugfix: efficiency not being tied to laser tiers (issue connected to infinite
+      power consumption)
+  - refactor: Area based lighting can be varedited and changed now
+  - bugfix: colossus bolts no longer instantly explode you if youre in a car/mech
+  - bugfix: roundstart offstation antagonists such as wizards and nuke ops no longer
+      have quirks (either from preferences or hardcore random) assigned to them or
+      count toward the hardcore random score.
+  Yawet330:
+  - bugfix: Breaching hammers now actually only delay your next action by 5 seconds
+      if you try and breach a door.
+  - tweak: Vintorez now doesn't have the sinful 15 round mags (which don't exist IRL)
+  - tweak: pepperballs no longer inject 50u of reagents (What the fuck?)
+  axietheaxolotl:
+  - rscadd: Readds Peacekeeper lockers with animation
+  - rscadd: adds animation for cc locker
+  - rscadd: new airlocks
+  - rscadd: 'also added a new contraband poster :trollface:'
+  - rscadd: Gave Warden Security Megaphone
+  jjpark-kb:
+  - rscadd: added cortical borer (view https://github.com/Skyrat-SS13/Skyrat-tg/pull/7554
+      for more info)
+  - balance: venus human traps no longer heal upon moving on vines
+  - balance: venus human traps will lose health if not on vines
+  - balance: venus human traps will gain health slowly if on vines
+  - balance: venus human traps cannot pull living mobs
+  - balance: venus human traps are set down a layer, right below vines
+  - balance: venus human traps can help vines grow every second
+  - balance: you are required to buy t3/t4 scythes from cargo
+  - bugfix: vines can no longer infinitely attack fast on vines
+  - balance: ashwalker lair is less, with the same aesthetic
+  lyricalpaws:
+  - balance: Gives the blueshield centcomm comms, like all other NTF crew
+  - balance: Gives the fleetmaster a bowman headset and loudmode
+  - balance: Actually locks the damn armoury
+  softcerv:
+  - balance: Buffs the injection/spray speed on the standard Hypospray.
+  - balance: Standard Hypovials can now inject their entire storage and have more
+      selection modes
+  - balance: Nanotransen Representative now has the same job restricted quirks as
+      a head of staff, instead of having the ones of a security member.
+  - code_imp: Makes the hypospray vial insertion code into a proc.
+  - refactor: refactors a bunch of code pertaining to the healing on medicells.
+  - rscadd: The botany area of the ghost cafe now has a botany chem dispenser along
+      with the kitchen now having an oven.
+  tf-4:
+  - spellcheck: Spelling and grammar has been cleaned up for the Organic Interface
+      Update items.
+2021-08-30:
+  FlamingLily:
+  - code_imp: is helper cleanup, more is helpers
+  GoldenAlpharex:
+  - bugfix: The Oil Shamblers will no longer leave behind napalm upon dying, they
+      will instead evaporate, leaving you to wonder if they were even there to begin
+      with...
+  - code_imp: Changed some spans to span procs in mold mob code.
+  SkyratBot:
+  - balance: 'Spiders have received some slight balance changes to make them less
+      oppressive when they have the upper hand whilst letting them slightly handle
+      atmos changes.  One major change is that broodmothers now take 15 seconds to
+      lay eggs as opposed to 10 seconds. qol: Spiders can see further in the dark
+      now.'
+  - spellcheck: Changed the wording on antag panel policy a little bit.
+  - bugfix: Variables within an SDQL spell list variable can have their names changed
+      without causing a cascade of errors
+  - refactor: SDQL spell query execution has been moved to a component
+  - admin: The parse error handling for SDQL spells has been improved significantly
+  - admin: Projectile SDQL spells can now fire any projectile
+  - admin: Touch SDQL spells can now use any touch attack item
+  jjpark-kb:
+  - bugfix: ashwalking should work for all of the plants now... not just plants with
+      mutations
+  softcerv:
+  - code_imp: replaced some usage of span_class with the newer standard.

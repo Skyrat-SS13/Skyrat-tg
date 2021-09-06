@@ -6,6 +6,7 @@
 	spillable = FALSE
 	volume = 10
 	possible_transfer_amounts = list(1,2,5,10)
+	var/chem_color //Used for hypospray overlay
 
 /obj/item/reagent_containers/glass/bottle/vial/update_overlays()
     . = ..()
@@ -28,6 +29,7 @@
         var/mutable_appearance/filling = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hypospray_fillings.dmi', "[fill_name][fill_overlay]")
 
         filling.color = mix_color_from_reagents(reagents.reagent_list)
+        chem_color = filling.color
         . += filling
 
 /obj/item/reagent_containers/glass/bottle/vial/Initialize()
@@ -42,7 +44,7 @@
 	name = "hypovial"
 	desc = "A small, 60u capacity vial compatible with most hyposprays."
 	volume = 60
-	possible_transfer_amounts = list(1,2,5,10,20)
+	possible_transfer_amounts = list(1,2,5,10,20,30,40,50,60)
 
 //Fit in CMO hypo only
 /obj/item/reagent_containers/glass/bottle/vial/large

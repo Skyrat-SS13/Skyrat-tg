@@ -6,7 +6,7 @@
 
 /obj/item/pillow
 	name = "pillow"
-	desc = "Big and soft pillow."
+	desc = "A big, soft pillow."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -122,33 +122,33 @@
 
 		if(BODY_ZONE_HEAD)
 			var/message = ""
-			message = (user == M) ? pick("hits themselves with a [src]", "hits their head with a pillow ") : pick("hits [M] with a [src]", "hits [M]'s head with a pillow! Lucky the pillow is soft.")
+			message = (user == M) ? pick("hits [M.p_them()]self with [src]", "hits [M.p_their()] head with [src]") : pick("hits [M] with [src]", "hits [M] over the head with [src]! Luckily, [src] is soft.")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<span class='notice'>[user] [message]</font>")
+			user.visible_message(span_notice("[user] [message]!"))
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 		if(BODY_ZONE_CHEST)
 			var/message = ""
-			message = (user == M) ? pick("challenges the pillow battle, hitting themselves with [src].","hits themselves with a [src]") : pick("hits [M]'s chest with a [src]!", "Playfully hits [M]'s chest with a [src].","hits [M]'s chest with a pillow.")
+			message = (user == M) ? pick("has a solo pillow fight, hitting [M.p_them()]self with [src]","hits [M.p_them()]self with [src]") : pick("hits [M] in the chest with [src]", "playfully hits [M]'s chest with [src]")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<span class='notice'>[user] [message]</font>")
+			user.visible_message(span_notice("[user] [message]!"))
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 		else
 			var/message = ""
-			message = (user == M) ? pick("hits themselves with [src].","Playfully hits themselves with a [src]", "grabs a pillow, then hitting themselves with it.") : pick("hits [M] with a [src]!", "Playfully hits [M] with a [src].","hits [M] with a pillow. They having fun!")
+			message = (user == M) ? pick("hits [M.p_them()]self with [src]","playfully hits [M.p_them()]self with a [src]", "grabs [src], hitting [M.p_them()]self with it") : pick("hits [M] with [src]", "playfully hits [M] with [src].","hits [M] with [src]. Looks like fun")
 			if(prob(30))
 				M.emote(pick("laugh","giggle"))
-			user.visible_message("<span class='notice'>[user] [message]</font>")
+			user.visible_message(span_notice("[user] [message]!"))
 			playsound(loc,'modular_skyrat/modules/modular_items/lewd_items/sounds/hug.ogg', 50, 1, -1)
 
 //spawning pillow on the ground when clicking on pillow	by LBM
 
 /obj/item/pillow/attack_self(mob/user)
 	if(IN_INVENTORY)
-		to_chat(user, "<span class='notice'>You put pillow on the floor.</span>")
+		to_chat(user, span_notice("You set [src] down on the floor."))
 		var/obj/structure/bed/pillow_tiny/C = new(get_turf(src))
 		C.current_color = current_color
 		C.current_form = current_form
@@ -165,7 +165,7 @@
 
 /obj/structure/bed/pillow_tiny
 	name = "pillow"
-	desc = "Large pillow lying on the floor"
+	desc = "A tiny pillow, for tiny heads."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillow"
 	var/current_color = "pink"
@@ -188,7 +188,7 @@
 //picking up the pillow
 
 /obj/structure/bed/pillow_tiny/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>You lifted pillow off the floor.</span>")
+	to_chat(user, span_notice("You pick up [src]."))
 	var/obj/item/pillow/W = new()
 	user.put_in_hands(W)
 
@@ -221,7 +221,7 @@
 		var/obj/item/pillow/P = I
 		var/obj/structure/chair/pillow_small/C
 		if(P.current_color == current_color)
-			to_chat(user, "<span class='notice'>You added a pillow to a pile.</span>")
+			to_chat(user, span_notice("You add [src] to a pile."))
 			C = new(get_turf(src))
 			C.current_color = current_color
 			C.pillow2_color = P.current_color
@@ -239,7 +239,7 @@
 			qdel(src)
 			qdel(P)
 		else
-			to_chat(user, "<span class='notice'>You feel like you don't want to combine pillows of different colors.</span>") //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -250,7 +250,7 @@
 
 /obj/structure/chair/pillow_small
 	name = "small pillow pile"
-	desc = "Small pile of pillows. Looks as comfortable seat, especially for taurs and nagas."
+	desc = "A small pile of pillows. A comfortable seat, especially for taurs or nagas."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_small"
 	pseudo_z_axis = 4
@@ -310,7 +310,7 @@
 
 //Removing pillow from a pile
 /obj/structure/chair/pillow_small/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>You took pillow from a pile.</span>")
+	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/pillow/W = new()
 	var/obj/structure/bed/pillow_tiny/C = new(get_turf(src))
 	user.put_in_hands(W)
@@ -338,7 +338,7 @@
 		var/obj/item/pillow/P = I
 		var/obj/structure/bed/pillow_large/C
 		if(P.current_color == current_color)
-			to_chat(user, "<span class='notice'>You added a pillow to a pile.</span>")
+			to_chat(user, span_notice("You add [src] to the pile."))
 			C = new(get_turf(src))
 			C.current_color = current_color
 			C.pillow3_color = P.current_color
@@ -360,7 +360,7 @@
 			qdel(src)
 			qdel(P)
 		else
-			to_chat(user, "<span class='notice'>You feel like you don't want to combine pillows of different colors.</span>") //Too lazy to add multicolor pillow pile sprites.
+			to_chat(user, span_notice("You feel that those colours would clash...")) //Too lazy to add multicolor pillow pile sprites.
 			return
 	else
 		return ..()
@@ -375,7 +375,7 @@
 
 /obj/structure/bed/pillow_large
 	name = "large pillow pile"
-	desc = "Large pile of pillows. Jump on it!"
+	desc = "A large pile of pillows. Jump on it!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/pillows.dmi'
 	icon_state = "pillowpile_large"
 	pseudo_z_axis = 4
@@ -438,7 +438,7 @@
 
 //Removing pillow from a pile
 /obj/structure/bed/pillow_large/AltClick(mob/user)
-	to_chat(user, "<span class='notice'>You took pillow from a pile.</span>")
+	to_chat(user, span_notice("You take [src] from the pile."))
 	var/obj/item/pillow/W = new()
 	var/obj/structure/chair/pillow_small/C = new(get_turf(src))
 	user.put_in_hands(W)

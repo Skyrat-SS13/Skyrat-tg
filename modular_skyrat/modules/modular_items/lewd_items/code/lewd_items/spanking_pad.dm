@@ -1,6 +1,6 @@
 /obj/item/spanking_pad
 	name = "spanking pad"
-	desc = "Leather pad with a handle."
+	desc = "A leather pad with a handle."
 	icon_state = "spankpad"
 	inhand_icon_state = "spankpad"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -66,7 +66,7 @@
 		switch(user.zone_selected) //to let code know what part of body we gonna spank.
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(M.is_bottomless())
-					message = (user == M) ? pick("spanks themselves with [src]","uses [src] to slap their hips") : pick("Slaps [M]'s hips with [src]", "Uses [src] to slap [M]'s butt","Spanks [M] with [src], making a savory slap","slaps [M]'s thighs")
+					message = (user == M) ? pick("spanks themselves with [src]","uses [src] to slap their hips") : pick("slaps [M]'s hips with [src]", "uses [src] to slap [M]'s butt","spanks [M] with [src], making a loud slapping noise","slaps [M]'s thighs with [src]")
 					if(M.client?.prefs.sextoys_pref == "Yes")
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan","blush","gasp"))
@@ -77,13 +77,13 @@
 							SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
 						if(prob(10) && (M.stat != DEAD))
 							M.apply_status_effect(/datum/status_effect/subspace)
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/slap.ogg', 100, 1, -1)
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s butt is covered!</span>")
+					to_chat(user, span_danger("[M]'s butt is covered!"))
 					return
 			else
 				return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return

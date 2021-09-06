@@ -93,6 +93,7 @@ CREATE TABLE `ban` (
   `unbanned_ip` INT(10) UNSIGNED NULL DEFAULT NULL,
   `unbanned_computerid` VARCHAR(32) NULL DEFAULT NULL,
   `unbanned_round_id` INT(11) UNSIGNED NULL DEFAULT NULL,
+  `discord_reported` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0', /* SKYRAT EDIT - Labelling bans for ease of reporting them over Discord. */
   PRIMARY KEY (`id`),
   KEY `idx_ban_isbanned` (`ckey`,`role`,`unbanned_datetime`,`expiration_time`),
   KEY `idx_ban_isbanned_details` (`ckey`,`ip`,`computerid`,`role`,`unbanned_datetime`,`expiration_time`),

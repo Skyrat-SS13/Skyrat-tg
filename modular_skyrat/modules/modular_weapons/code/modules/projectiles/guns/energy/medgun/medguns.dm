@@ -61,8 +61,8 @@
 	desc = "Upgardes the internal battery inside of the medigun, allowing for faster charging and a higher cell capacity. Any cells inside of the origingal medigun during the upgrade process will be lost!"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "plasticbox"
-//
-	//Medigun Cells// Spritework is done by Arctaisia!
+
+//Medigun Cells - Spritework is done by Arctaisia!
 //Default Cell//
 /obj/item/medicell
 	name = "Default Medicell"
@@ -71,6 +71,27 @@
 	icon_state = "Oxy1"
 	w_class = WEIGHT_CLASS_SMALL
 	var/ammo_type = /obj/item/ammo_casing/energy/medical //This is the ammo type that all mediguns come with.
+	var/has_safety = FALSE //Can the cell be toggled between safe and unsafe?
+	var/on_safety = TRUE //Is the safety for the cell on?
+	var/safe_ammo = /obj/item/ammo_casing/energy/medical
+	var/unsafe_ammo = /obj/item/ammo_casing/energy/medical
+
+//MEDIGUN SAFETY
+
+/obj/item/medicell/examine(mob/user)
+	. = ..()
+	if(!has_safety)
+		return
+	. += span_notice("[src] has the safety turned [on_safety ? "on" : "off"].")
+	return .
+
+/obj/item/medicell/attack_self(mob/living/user)
+	if(!has_safety)
+		return
+	on_safety = !on_safety
+	to_chat(user, span_notice("The safety on the Medicell is now [on_safety ? "on, you can't" : "off, you can"] use it to heal when it would cause clone damage to the patient."))
+	src.ammo_type = on_safety ? safe_ammo : unsafe_ammo
+	return
 
 /obj/item/medicell/Initialize()
 	. =..()
@@ -79,19 +100,26 @@
 //Brute I//
 /obj/item/medicell/brute1
 	name = "Brute I Medicell"
-	desc = "A small cell with a red glow. Can be used on Mediguns to unlock the Brute I Functoinality"
+	desc = "A small cell with a red glow. Can be used on Mediguns to unlock the Brute I Functionality."
 	icon_state = "Brute1"
-	ammo_type = /obj/item/ammo_casing/energy/medical/brute1
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute1/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/brute1
+	safe_ammo = /obj/item/ammo_casing/energy/medical/brute1/safe
+	has_safety = TRUE
+
 //Burn I//
 /obj/item/medicell/burn1
 	name = "Burn I Medicell"
-	desc = "A small cell with a yellow glow. Can be used on Mediguns to unlock the Burn I Functoinality"
+	desc = "A small cell with a yellow glow. Can be used on Mediguns to unlock the Burn I Functionality."
 	icon_state = "Burn1"
-	ammo_type = /obj/item/ammo_casing/energy/medical/burn1
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn1/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/burn1
+	safe_ammo = /obj/item/ammo_casing/energy/medical/burn1/safe
+	has_safety = TRUE
 //Toxin I//
 /obj/item/medicell/toxin1
 	name = "Toxin I Medicell"
-	desc = "A small cell with a green glow. Can be used on Mediguns to unlock the Toxin I Functoinality"
+	desc = "A small cell with a green glow. Can be used on Mediguns to unlock the Toxin I Functionality."
 	icon_state = "Toxin1"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin1
 //End of Tier I Cells/
@@ -99,25 +127,31 @@
 //Brute II//
 /obj/item/medicell/brute2
 	name = "Brute II Medicell"
-	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
+	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functionality."
 	icon_state = "Brute2"
-	ammo_type = /obj/item/ammo_casing/energy/medical/brute2
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute2/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/brute2
+	safe_ammo = /obj/item/ammo_casing/energy/medical/brute2/safe
+	has_safety = TRUE
 //Burn II//
 /obj/item/medicell/burn2
 	name = "Burn II Medicell"
-	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
+	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functionality."
 	icon_state = "Burn2"
-	ammo_type = /obj/item/ammo_casing/energy/medical/burn2
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn2/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/burn2
+	safe_ammo = /obj/item/ammo_casing/energy/medical/burn2/safe
+	has_safety = TRUE
 //Toxin II//
 /obj/item/medicell/toxin2
 	name = "Toxin II Medicell"
-	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
+	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functionality."
 	icon_state = "Toxin2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin2
 //Oxygen II//
 /obj/item/medicell/oxy2
 	name = "Oxygen II Medicell"
-	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
+	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functionality."
 	icon_state = "Oxy2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy2
 //End of Tier II
@@ -125,25 +159,31 @@
 //Brute III//
 /obj/item/medicell/brute3
 	name = "Brute III Medicell"
-	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functoinality"
+	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute III Functoinality"
 	icon_state = "Brute3"
-	ammo_type = /obj/item/ammo_casing/energy/medical/brute3
+	ammo_type = /obj/item/ammo_casing/energy/medical/brute3/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/brute3
+	safe_ammo = /obj/item/ammo_casing/energy/medical/brute3/safe
+	has_safety = TRUE
 //Burn III//
 /obj/item/medicell/burn3
 	name = "Burn III Medicell"
-	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functoinality"
+	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn III Functoinality"
 	icon_state = "Burn3"
-	ammo_type = /obj/item/ammo_casing/energy/medical/burn3
+	ammo_type = /obj/item/ammo_casing/energy/medical/burn3/safe
+	unsafe_ammo = /obj/item/ammo_casing/energy/medical/burn3
+	safe_ammo = /obj/item/ammo_casing/energy/medical/burn3/safe
+	has_safety = TRUE
 //Toxin III//
 /obj/item/medicell/toxin3
 	name = "Toxin III Medicell"
-	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functoinality"
+	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functionality."
 	icon_state = "Toxin3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin3
 //Oxygen III//
 /obj/item/medicell/oxy3
 	name = "Oxygen III Medicell"
-	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functoinality"
+	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functionality."
 	icon_state = "Oxy3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III

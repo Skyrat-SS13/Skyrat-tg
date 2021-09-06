@@ -8,7 +8,7 @@
 
 /obj/item/clothing/mask/gas/bdsm_mask
 	name = "latex gasmask"
-	desc = "Toned gas mask. Completely muffles the wearer, making even breathing really hard with this on."
+	desc = "A toned gas mask that completely muffles the wearer. Wearing this makes even breathing difficult."
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -30,7 +30,7 @@
 	actions_types = list(/datum/action/item_action/toggle_breathcontrol,
 						 /datum/action/item_action/mask_inhale)
 	var/list/moans = list("Mmmph...", "Hmmphh", "Mmmfhg", "Gmmmh...") // Phrases to be said when the player attempts to talk when speech modification / voicebox is enabled.
-	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "GMmmhp!") // Power probability phrases to be said when talking.
+	var/list/moans_alt = list("Mhgm...", "Hmmmp!...", "Gmmmhp!") // Power probability phrases to be said when talking.
 	var/moans_alt_probability = 5 // Probability for alternative sounds to play.
 	var/temp_check = TRUE //Used to check if user unconsious to prevent choking him until he wakes up
 
@@ -116,10 +116,10 @@
 			var/mob/living/carbon/C = user
 			if(C.wear_mask == src)
 				if(!do_after(C, 600, target = src))
-					to_chat(C, "<span class='warning'>You failed to take the gas mask off!</span>")
+					to_chat(C, span_warning("You fail to remove the gas mask!"))
 					return
 				else
-					to_chat(C, "<span class ='notice'>You took the gas mask off.</span>")
+					to_chat(C, span_notice("You remove the gas mask."))
 	add_fingerprint(usr)
 	. = ..()
 
@@ -137,10 +137,10 @@
 					if(mask_on == TRUE)
 						if(src == C.wear_mask || . == C.wear_mask)
 							if(!do_after(C, 600, target = src))
-								to_chat(M, "<span class='warning'>You failed to take the gas mask off!</span>")
+								to_chat(M, span_warning("You fail to remove the gas mask!"))
 								return
 							else
-								to_chat(M, "<span class ='notice'>You took the gas mask off.</span>")
+								to_chat(M, span_notice("You remove the gas mask."))
 				if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 					add_fingerprint(usr)
 				. = ..()
@@ -154,13 +154,13 @@
 			if(istype(B, /obj/item/clothing/mask/gas/bdsm_mask)) // Check that the mask is of the correct type
 				if(B.mask_on == TRUE)
 					// Place for text about the impossibility to attach a filter
-					to_chat(usr,"<span class='warning'>You can't attach filter while mask is locked!</span>")
+					to_chat(usr, span_warning("You can't attach a filter while the mask is locked!"))
 					return
 
 // Breathing valve control button
 /datum/action/item_action/toggle_breathcontrol
-    name = "Toggle breath controlling filter"
-    desc = "Makes incredebly hard to breath in this mask. Use with caution"
+    name = "Toggle breath control filter"
+    desc = "Makes breathing through this mask far harder. Use with caution."
 
 // Trigger thing for manual breath
 /datum/action/item_action/toggle_breathcontrol/Trigger()
@@ -197,7 +197,7 @@
 				time_to_choke_left = time_to_choke
 				breath_status = TRUE
 				C.emote("inhale")
-			to_chat(C,"<font color=purple>You suddenly realize that breathing has become much harder!.</font>")
+			to_chat(C, span_purple("You suddenly find it much harder to breathe!."))
 			START_PROCESSING(SSobj, src)
 			time_to_choke_left = time_to_choke
 
@@ -212,14 +212,14 @@
 /obj/item/clothing/mask/gas/bdsm_mask/proc/check()
 	var/mob/living/carbon/C = usr
 	if(src == C.wear_mask)
-		to_chat(usr, "<span class ='notice'> You can't reach the air filter switch! </span>")
+		to_chat(usr, span_notice("You can't reach the air filter switch!"))
 	else
 		toggle(C)
 
 // Switch the mask valve to the opposite state
 /obj/item/clothing/mask/gas/bdsm_mask/proc/toggle(user)
 	mask_on = !mask_on
-	to_chat(user, "<span class='notice'>You turn the air filter [mask_on? "on. Use with caution!" : "off. Now it's safe to wear"]</span>")
+	to_chat(user, span_notice("You turn the air filter [mask_on ? "on. Use with caution!" : "off. Now it's safe to wear."]"))
 	playsound(user, mask_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	update_icon_state()
 	update_action_buttons_icons()
@@ -271,7 +271,7 @@
 // Here goes code for lewd gasmask filter
 /obj/item/reagent_containers/glass/lewd_filter
 	name = "gasmask filter"
-	desc = "Strange looking air filter. Maybe it's not good idea to put it on..."
+	desc = "A strange looking air filter. It may not be a good idea to put it on..."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "filter_pink"
 	unique_reskin = list("pink" = "filter_pink",
@@ -309,7 +309,7 @@
 			if(istype(B, /obj/item/clothing/mask/gas/bdsm_mask))
 				if(B.mask_on == TRUE)
 					if(istype(src, /obj/item/reagent_containers/glass/lewd_filter))
-						to_chat(user, "<span class='warning'>You can't change the flow rate of the valve while the mask is on!</span>")
+						to_chat(user, span_warning("You can't change the flow rate of the valve while the mask is on!"))
 						return
 	. = ..()
 
@@ -322,7 +322,7 @@
 				if(B.mask_on == TRUE)
 					if(istype(src, /obj/item/reagent_containers/glass/lewd_filter))
 						// Place for text about the impossibility of detaching the filter
-						to_chat(user, "<span class='warning'>You can't detach filter while mask is locked!</span>")
+						to_chat(user, span_warning("You can't detach the filter while the mask is locked!"))
 						return
 
 	. = ..()
@@ -347,11 +347,11 @@
 				if(B.mask_on == TRUE)
 					if(istype(over_object, /atom/movable/screen/inventory/hand))
 						// Place for text about the impossibility of detaching the filter
-						to_chat(usr, "<span class='warning'>You can't detach filter while mask is locked!</span>")
+						to_chat(usr, span_warning("You can't detach the filter while the mask is locked!"))
 						return
 					else
 						// Place for text about the impossibility to attach a filter
-						to_chat(usr, "<span class='warning'>You can't attach filter while mask is locked!</span>")
+						to_chat(usr, span_warning("You can't attach a filter while the mask is locked!"))
 						return
 			add_fingerprint(usr)
 		. = ..()

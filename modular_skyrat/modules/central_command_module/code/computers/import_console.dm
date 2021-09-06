@@ -25,6 +25,8 @@ GLOBAL_LIST_EMPTY(cargo_control_consoles)
 /obj/machinery/computer/cargo_control_console/Destroy()
 	if(radio)
 		QDEL_NULL(radio)
+	GLOB.cargo_control_consoles -= src
+	possible_floors = null
 	. = ..()
 
 

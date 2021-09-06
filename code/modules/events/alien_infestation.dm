@@ -1,10 +1,7 @@
 /datum/round_event_control/alien_infestation
 	name = "Alien Infestation"
 	typepath = /datum/round_event/ghost_role/alien_infestation
-	//SKYRAT EDIT CHANGE BEGIN
-	//weight = 5 - SKYRAT EDIT - ORIGINAL
-	weight = 0
-	//SKYRAT EDIT CHANGE END
+	weight = 0 //SKYRAT EDIT CHANGE, ORIGINAL: 5
 
 	min_players = 10
 

@@ -4,7 +4,7 @@
 
 /obj/item/clothing/sextoy/dildo
 	name = "dildo"
-	desc = "Uhh... What a jiggly thing."
+	desc = "A large plastic penis, much like the one in your mother's bedside drawer."
 	icon_state = "dildo"
 	inhand_icon_state = "dildo"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -89,12 +89,12 @@
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
 					if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-						message = (user == M) ? pick("rubs their vagina with the [src]","gently jams their pussy with [src]","fucks their vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "teasing [M]'s pussy with a [src]")
+						message = (user == M) ? pick("rubs [M.p_their()] vagina with [src]","gently jams [M.p_their()] pussy with [src]","fucks [M.p_their()] vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with [src]", "teasing [M]'s pussy with [src]")
 						M.adjustArousal(6)
 						M.adjustPleasure(8)
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
-						user.visible_message("<font color=purple>[user] [message].</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -102,21 +102,21 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>Looks like [M] don't have suitable organs for that!</span>")
+					to_chat(user, span_danger("[M] don't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!M.is_mouth_covered())
-					message = (user == M) ? pick("sucks [src] with their mouth","licks [src], then slowly inserting it into their throat") : pick("fucks [M]'s mouth with [src]", "choking [M] by inserting [src] into [M]'s throat", "forcing [M] to suck a [src]", "inserts [src] into [M]'s throat")
+					message = (user == M) ? pick("licks [src] erotically","sucks on [src], slowly inserting it into [M.p_their()] throat") : pick("fucks [M]'s mouth with [src]", "inserts [src] into [M]'s throat, choking [M.p_them()]", "forces [M] to suck [src]", "inserts [src] into [M]'s throat")
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -125,17 +125,17 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("Looks like [M]'s mouth is covered!"))
 					return
 
 			else
 				if(M.is_bottomless())
-					message = (user == M) ? pick("puts [src] into their anus","slowly inserts [src] into their ass") : pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
+					message = (user == M) ? pick("puts [src] into [M.p_their()] anus","slowly inserts [src] into [M.p_their()] ass") : pick("fucks [M]'s ass with [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with [src]", "roughly fucks [M]'s ass with [src], making [M.p_their()] eyes roll back")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -144,10 +144,10 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
 
 ///////////////////////
@@ -170,7 +170,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/custom_dildo
 	name = "custom dildo"
-	desc = "Dildo that can be customized individually."
+	desc = "A dildo that can be customized to your specification."
 	icon_state = "polydildo"
 	inhand_icon_state = "polydildo"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 /obj/item/clothing/sextoy/custom_dildo/examine(mob/user)
 	. = ..()
 	if(can_customize)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+		. += span_notice("Alt-Click \the [src.name] to customize it.")
 
 //to check if we can change dildo's model
 /obj/item/clothing/sextoy/custom_dildo/proc/check_menu(mob/living/user)
@@ -293,7 +293,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
 					if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-						message = (user == M) ? pick("rubs their vagina with the [src]","gently jams their pussy with [src]","fucks their vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "teasing [M]'s pussy with a [src]")
+						message = (user == M) ? pick("rubs [M.p_their()] vagina with [src]","gently jams [M.p_their()] pussy with [src]","fucks [M.p_their()] vagina with [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with [src]", "teasing [M]'s pussy with [src]")
 						if(poly_size == "small")
 							M.adjustArousal(4)
 							M.adjustPleasure(5)
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 							if(prob(60) && (M.stat != DEAD))
 								M.emote(pick("twitch_s","moan","gasp"))
 
-						user.visible_message("<font color=purple>[user] [message].</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -319,21 +319,21 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>Looks like [M] don't have suitable organs for that!</span>")
+					to_chat(user, span_danger("[M] doesn't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!M.is_mouth_covered())
-					message = (user == M) ? pick("sucks [src] with their mouth","licks [src], then slowly inserting it into their throat") : pick("fucks [M]'s mouth with [src]", "choking [M] by inserting [src] into [M]'s throat", "forcing [M] to suck a [src]", "inserts [src] into [M]'s throat")
+					message = (user == M) ? pick("licks [src] erotically","sucks on [src], slowly inserting it into [M.p_their()] throat") : pick("fucks [M]'s mouth with [src]", "inserts [src] into [M]'s throat, choking [M.p_them()]", "forces [M] to suck [src]", "inserts [src] into [M]'s throat")
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -342,17 +342,17 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("[M]'s mouth is covered!"))
 					return
 
 			else
 				if(M.is_bottomless())
-					message = (user == M) ? pick("puts [src] into their anus","slowly inserts [src] into their ass") : pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
+					message = (user == M) ? pick("puts [src] into [M.p_their()] anus","slowly inserts [src] into [M.p_their()] ass") : pick("fucks [M]'s ass with [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with [src]", "roughly fucks [M]'s ass with [src], making [M.p_their()] eyes roll back")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -361,10 +361,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
 
 //////////////////
@@ -373,7 +373,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/double_dildo
 	name = "double dildo"
-	desc = "Uhh... What a jiggly thing."
+	desc = "You'll have to be a real glizzy gladiator to contend with this."
 	icon_state = "dildo_double"
 	inhand_icon_state = "dildo_double"
 	worn_icon_state = "dildo_side"
@@ -406,7 +406,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 //button stuff
 /datum/action/item_action/take_dildo
-    name = "Take other side of double dildo in hand"
+    name = "Take the other side of the double dildo in hand"
     desc = "You can feel one side inside you, time to share this feeling with someone..."
 
 /datum/action/item_action/take_dildo/Trigger()
@@ -419,13 +419,13 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(src == C.vagina)
 		toggle(C)
 	else if(src == C.anus)
-		to_chat(C, "<span class='warning'>You can't use it properly while it's in your anus!</span>")
+		to_chat(C, span_warning("You can't use [src] from this angle!"))
 	else
-		to_chat(C, "<span class='warning'>You need to equip dildo before using!</span>")
+		to_chat(C, span_warning("You need to equip [src] before you can use it!"))
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/obj/item/clothing/sextoy/double_dildo/proc/toggle(user)
+/obj/item/clothing/sextoy/double_dildo/proc/toggle(mob/living/carbon/user)
 	var/mob/living/carbon/human/C = usr
 	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
 	var/obj/item/held = C.get_active_held_item()
@@ -434,13 +434,13 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	if(in_hands == TRUE)
 		if(held?.name == "dildo side" && held?.item_flags == ABSTRACT | HAND_ITEM)
 			qdel(held)
-			C.visible_message("<span class='notice'>[user] put dildo side back</span>")
+			C.visible_message(span_notice("[user] puts one end of [src] back.")) // I tried to work out what this message is trying to say, but I can't quite get it.
 			in_hands = FALSE
 			return
 
 		else if(unheld?.name == "dildo side" && unheld?.item_flags == ABSTRACT | HAND_ITEM)
 			qdel(unheld)
-			C.visible_message("<span class='notice'>[user] put dildo side back</span>")
+			C.visible_message(span_notice("[user] puts one end of [src] back."))
 			in_hands = FALSE
 			return
 
@@ -453,18 +453,18 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					C.put_in_hands(W)
 					W.update_icon_state()
 					W.update_icon()
-					C.visible_message("<span class='notice'>[user] takes a dildo side in their hand. Looks menacingly</span>")
+					C.visible_message(span_notice("[C] holds one end of [src] in [C.p_their()] hand."))
 					in_hands = TRUE
 					return
 		else
-			C.visible_message("<span class='notice'>[user]'s hand not empty. Can't take dildo side in hand</span>")
+			C.visible_message(span_notice("[C] tries to hold one end of [src] in [C.p_their()] hand, but [C.p_their()] hand isn't empty!"))
 			return
 	else
 		W = new()
 		C.put_in_hands(W)
 		W.update_icon_state()
 		W.update_icon()
-		C.visible_message("<span class='notice'>[user] takes a dildo side in their hand. Looks menacingly</span>")
+		C.visible_message(span_notice("[C] holds one end of [src] in [C.p_their()] hand."))
 		in_hands = TRUE
 		return
 
@@ -534,12 +534,12 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
 					if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-						message = (user == M) ? pick("rubs their vagina with the [src]","gently jams their pussy with [src]","fucks their vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "teasing [M]'s pussy with a [src]")
+						message = (user == M) ? pick("rubs [M.p_their()] vagina with [src]","gently jams [M.p_their()] pussy with [src]","fucks [M.p_their()] vagina with [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with [src]", "teases [M]'s pussy with [src]")
 						M.adjustArousal(6)
 						M.adjustPleasure(8)
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
-						user.visible_message("<font color=purple>[user] [message].</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -547,21 +547,21 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>Looks like [M] don't have suitable organs for that!</span>")
+					to_chat(user, span_danger("[M] don't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!M.is_mouth_covered())
-					message = (user == M) ? pick("sucks [src] with their mouth","licks [src], then slowly inserting it into their throat") : pick("fucks [M]'s mouth with [src]", "choking [M] by inserting [src] into [M]'s throat", "forcing [M] to suck a [src]", "inserts [src] into [M]'s throat")
+					message = (user == M) ? pick("licks [src] erotically","sucks on [src], slowly inserting it into [M.p_their()] throat") : pick("fucks [M]'s mouth with [src]", "inserts [src] into [M]'s throat, choking [M.p_them()]", "forces [M] to suck [src]", "inserts [src] into [M]'s throat")
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -570,17 +570,17 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("Looks like [M]'s mouth is covered!"))
 					return
 
 			else
 				if(M.is_bottomless())
-					message = (user == M) ? pick("puts [src] into their anus","slowly inserts [src] into their ass") : pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
+					message = (user == M) ? pick("puts [src] into [M.p_their()] anus","slowly inserts [src] into [M.p_their()] ass") : pick("fucks [M]'s ass with [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with [src]", "roughly fucks [M]'s ass with [src], making [M.p_their()] eyes roll back")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -589,10 +589,10 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
 
 /obj/item/clothing/sextoy/dildo_side
@@ -605,7 +605,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	throwforce = 0
 	item_flags = ABSTRACT | HAND_ITEM
 	moth_edible = FALSE
-	
+
 /obj/item/clothing/sextoy/dildo_side/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
@@ -622,14 +622,14 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
 					if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-						message = (user == M) ? pick("rubs their vagina with the [src]","gently jams their pussy with [src]","fucks their vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "teasing [M]'s pussy with a [src]")
+						message = (user == M) ? pick("rubs [M.p_their()] vagina with the [src]","gently jams [M.p_their()] pussy with [src]","fucks [M.p_their()] vagina with a [src]") : pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with [src]", "teasing [M]'s pussy with [src]")
 						M.adjustArousal(6)
 						M.adjustPleasure(8)
 						user.adjustArousal(6)
 						user.adjustPleasure(8)
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan"))
-						user.visible_message("<font color=purple>[user] [message].</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -637,15 +637,15 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>Looks like [M] don't have suitable organs for that!</span>")
+					to_chat(user, span_danger("[M] doesn't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!M.is_mouth_covered())
-					message = (user == M) ? pick("sucks [src] with their mouth","licks [src], then slowly inserting it into their throat") : pick("fucks [M]'s mouth with [src]", "choking [M] by inserting [src] into [M]'s throat", "forcing [M] to suck a [src]", "inserts [src] into [M]'s throat")
+					message = (user == M) ? pick("licks [src] erotically","sucks on [src], slowly inserting it into [M.p_their()] throat") : pick("fucks [M]'s mouth with [src]", "inserts [src] into [M]'s throat, choking [M.p_them()]", "forces [M] to suck [src]", "inserts [src] into [M]'s throat")
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
@@ -653,7 +653,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 					user.adjustPleasure(8)
 					if(prob(70) && (M.stat != DEAD))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -662,19 +662,19 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("[M]'s mouth is covered!"))
 					return
 
 			else
 				if(M.is_bottomless())
-					message = (user == M) ? pick("puts [src] into their anus","slowly inserts [src] into their ass") : pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making [M] roll eyes up")
+					message = (user == M) ? pick("puts [src] into [M.p_their()] anus","slowly inserts [src] into [M.p_their()] ass") : pick("fucks [M]'s ass with [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with [src]", "roughly fucks [M]'s ass with [src], making [M.p_their()] eyes roll back")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
 					user.adjustArousal(6)
 					user.adjustPleasure(8)
 					if(prob(60) && (M.stat != DEAD))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -683,8 +683,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return

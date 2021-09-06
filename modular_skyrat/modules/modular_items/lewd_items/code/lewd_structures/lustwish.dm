@@ -1,6 +1,6 @@
 /obj/machinery/vending/dorms
 	name = "LustWish"
-	desc = "A vending machine with various toys from light erotic to BDSM"
+	desc = "A vending machine with various toys. Not for the faint of heart."
 	icon_state = "lustwish"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/lustwish.dmi'
 	light_mask = "lustwish-light-mask"
@@ -8,8 +8,8 @@
 	var/card_used = FALSE
 	var/current_color = "pink"
 	var/static/list/vend_designs
-	product_ads = "Try me!;Kinky!;Lewd and fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!;You might want to buy a protection"
-	vend_reply = "Enjoy!;We glad to satisfly your desires!"
+	product_ads = "Try me!;Kinky!;Lewd and fun!;Hey you, yeah you... wanna take a look at my collection?;Come on, take a look!;Remember, always adhere to Nanotrasen corporate policy!;Don't forget to use protection!"
+	vend_reply = "Enjoy!;We're glad to satisfy your desires!"
 
 	//STUFF SOLD HERE//
 	products = list(//Sex toys
@@ -122,7 +122,7 @@
 //Changing special secret var
 /obj/machinery/vending/dorms/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/lustwish_discount))
-		user.visible_message("<span class='boldnotice'>After clicking something changes in the LustWish vending machine</span>")
+		user.visible_message(span_boldnotice("Something changes in [src] with a loud clunk."))
 		card_used = !card_used
 		switch(card_used)
 			if(TRUE)

@@ -1,6 +1,6 @@
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
-	desc = "Uhh... Again, WHERE i supposed to put that?!"
+	desc = "I'm meant to put that WHERE?!"
 	icon_state = "buttplug"
 	worn_icon_state = "buttplug"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
