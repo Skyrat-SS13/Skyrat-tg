@@ -25,8 +25,8 @@
 	), src)
 
 /obj/item/ammo_casing/caseless/rocket/sabot
-	name = "\improper APCBCFSDSGLATM"
-	desc = "Why anyone would name a rocket 'Armour Piercing Capped Ballistic Capped Fin Stabilized Discarding Sabot Gun Launched Anti Tank Missile' is beyond your understanding."
+	name = "\improper BLUNT"
+	desc = "One step away from an immovable rod."
 	icon = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-ammo.dmi'
 	icon_state = "84mm-sabot"
 	projectile_type = /obj/projectile/bullet/a84mm/sabot
@@ -66,8 +66,8 @@
 	ammo_type = /obj/item/ammo_casing/caseless/rocket/smoke
 
 /obj/item/gun/ballistic/rocketlauncher/security
-	name = "\improper UPL-550"
-	desc = "A nanotrasen made 'utility launcher' which, in reality, is just a fancy way to say legalized rocket launcher."
+	name = "\improper Panzerfaust-99"
+	desc = "A futuristic recreation of a classic problem solver..."
 	icon = 'modular_skyrat/modules/rocket-launcher/icon/rocketlaunchersec.dmi'
 	righthand_file = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-right.dmi'
 	lefthand_file = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-left.dmi'
@@ -78,7 +78,7 @@
 
 /// Tacticool (Useless) ammo for the PML and subtypes
 /obj/projectile/bullet/a84mm/sabot
-	name = "\improper APCBCFSDSGLAT missile"
+	name = "\improper Panzerfaust-BLUNT"
 	desc = "Pray this isn't coming straight at you."
 	icon = 'modular_skyrat/modules/rocket-launcher/icon/rocketsec-project.dmi'
 	icon_state = "84mm-sabot"
@@ -153,8 +153,8 @@
 	qdel(smoke)
 
 /datum/design/rocket
-	name = "APCBCFSDSGLATM"
-	desc = "A special missile that fires a plasteel core rod at high speeds."
+	name = "Panzerfaust-BLUNT"
+	desc = "A special missile that doesn't need to explode."
 	id = "rocket_sabot"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 7000, /datum/material/glass = 2000, /datum/material/plasma = 5000, /datum/material/silver = 3000)
