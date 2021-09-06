@@ -91,7 +91,12 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plasmaglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
+<<<<<<< HEAD
 	material_flags = MATERIAL_NO_EFFECTS
+=======
+	material_flags = NONE
+	tableVariant = /obj/structure/table/glass/plasmaglass
+>>>>>>> 00124b7355a (Adds some new (proper) tables. Also fixes the old reinforced glass table just making a regular metal table bug for the alloys included. (#61153))
 
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
@@ -144,6 +149,7 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/iron = 10)
 	point_value = 4
 	matter_amount = 6
+	tableVariant = /obj/structure/table/reinforced/rglass
 
 /obj/item/stack/sheet/rglass/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
@@ -196,6 +202,7 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10, /datum/reagent/iron = 10)
 	point_value = 23
 	matter_amount = 8
+	tableVariant = /obj/structure/table/reinforced/plasmarglass
 
 /obj/item/stack/sheet/plasmarglass/get_main_recipes()
 	. = ..()
@@ -217,6 +224,7 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/titaniumglass
+	tableVariant = /obj/structure/table/reinforced/titaniumglass
 
 /obj/item/stack/sheet/titaniumglass/get_main_recipes()
 	. = ..()
@@ -239,6 +247,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	material_flags = MATERIAL_NO_EFFECTS
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plastitaniumglass
+	tableVariant = /obj/structure/table/reinforced/plastitaniumglass
 
 /obj/item/stack/sheet/plastitaniumglass/get_main_recipes()
 	. = ..()
