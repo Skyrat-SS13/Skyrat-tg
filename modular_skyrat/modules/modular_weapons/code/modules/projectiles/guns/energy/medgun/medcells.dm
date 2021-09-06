@@ -1,5 +1,5 @@
 #define UPGRADED_MEDICELL_PASSFLAGS PASSTABLE | PASSGLASS | PASSGRILLE
-#define MINIMUM_TEMP_DIFFERENCE 40
+#define MINIMUM_TEMP_DIFFERENCE 25
 #define TEMP_PER_SHOT 30
 
 //Medigun Cells/
@@ -338,14 +338,7 @@
 	var/difference = ideal_temp - current_temp
 	if(abs(difference) <= MINIMUM_TEMP_DIFFERENCE) //It won't adjust temperature if the difference is too low
 		return FALSE
-	if(difference < 0) //If the current temp is higher, then this will lower it.
-		target.adjust_bodytemperature(-TEMP_PER_SHOT)
-		return
-	if(difference >= 0) //If the current temp is higher, then this will increase it.
-		target.adjust_bodytemperature(TEMP_PER_SHOT)
-		return
-	else
-		return
+	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
 #undef MINIMUM_TEMP_DIFFERENCE
