@@ -116,15 +116,18 @@
 	return new_paper
 
 
-/obj/item/paper/proc/set_language(datum/language/new_language, force = FALSE)
+/obj/item/paper/proc/set_language(new_lang, force = FALSE)
+	var/datum/language/new_language = new_lang
 	if (!new_language || (info && !force))
 		return FALSE
 
-	if (!istype(new_language))
-		new_language = GLOB.all_languages[new_language]
-	if (!istype(new_language))
+	if (!ispath(new_language, /datum/language))
+		if(istext(new_language))
+			for(var/datum/language/langpath as anything in GLOB.language_datum_instances)
+				if(new_language == langpath.name)
+					new_language = langpath
+	if (!ispath(new_language, /datum/language))
 		return FALSE
-
 	language = new_language
 	return TRUE
 
@@ -167,23 +170,26 @@
 
 	var/list/selectable_languages = list()
 	if(admin_force)
-		for(var/key in GLOB.all_languages)
-			var/datum/language/langdatum = GLOB.all_languages[key]
-			if (langdatum.has_written_form)
+		for(var/key in GLOB.language_datum_instances)
+			var/datum/language/langdatum = GLOB.language_datum_instances[key]
+			if (initial(langdatum.has_written_form))
 				selectable_languages += langdatum
 	else
 		var/datum/language_holder/langholder = user.get_language_holder()
-		for(var/datum/language/langdatum in langholder.understood_languages)
-			if(langdatum.has_written_form)
-				selectable_languages += langdatum
+		for(var/datum/language/langpath as anything in langholder.understood_languages)
+			to_chat(world, "[initial(langpath.name)] = [langpath]")
+			selectable_languages["[initial(langpath.name)]"] = langpath
 
-	var/new_language = tgui_input_list(user, "What language do you want to write in?", "Change language", selectable_languages)
+	var/datum/language/new_language = tgui_input_list(user, "What language do you want to write in?", "Change language", selectable_languages)
+	if(!istype(new_language))
+		new_language = selectable_languages[new_language]
 	if(!new_language || new_language == language)
-		to_chat(user, span_notice("You decide to leave the language as [language]."))
+		to_chat(user, span_notice("You decide to keep writing in [initial(language.name)]."))
 		return
 	if(!admin_force && !Adjacent(user) && !can_interact(user, GLOB.deep_inventory_state))
 		to_chat(user, span_warning("You must remain next to or continue holding \the [src] to do that."))
 		return
+	to_chat(user, span_notice("You start writing in [initial(new_language.name)]."))
 	set_language(new_language)
 
 
@@ -209,21 +215,25 @@
 	var/has_content = length(info)
 	var/has_language = forced || user.has_language(language, FALSE)
 	if(has_content && !has_language && !isobserver(user))
-		html += PAPER_META_BAD("The paper is written in a language you don't understand.")
-		html += "<hr/>" + language.scramble(info)
+		if(language == /datum/language/codespeak)
+			html += PAPER_META("The paper is written in Galactic Common")
+		else
+			html += PAPER_META_BAD("The paper is written in a language you don't understand.")
+		var/datum/language/langdatum = GLOB.language_datum_instances[language]
+		html += "<hr/>" + langdatum.scramble(info)
 	else if(editable)
 		if(has_content)
-			html += PAPER_META("The paper is written in [language].")
+			html += PAPER_META("The paper is written in [initial(language.name)].")
 			html += "<hr/>" + info_links
 		else if(forced || user.get_random_understood_language()) // checks if any languages exist
 			if(!has_language)
 				language = user.get_selected_language()
-			html += PAPER_META("You are writing in <a href='?src=\ref[src];change_language=1'>[language]</a>.")
+			html += PAPER_META("You are writing in <a href='?src=\ref[src];change_language=1'>[initial(language.name)]</a>.")
 			html += "<hr/>" + info_links
 		else
 			html += PAPER_META_BAD("You can't write without knowing a language.")
 	else if(has_content)
-		html += PAPER_META("The paper is written in [language].")
+		html += PAPER_META("The paper is written in [initial(language.name)].")
 		html += "<hr/>" + info
 	html += "[stamps]</body></html>"
 	show_browser(user, html, "window=[name]") //todo - figure out what this does
