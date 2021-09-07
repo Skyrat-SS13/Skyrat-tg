@@ -187,6 +187,17 @@
 	icon_state = "Oxy3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III
+
+//Medigun Manual
+/obj/item/book/manual/wiki/mediguns
+	name = "Medigun Operating Manual"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon_state = "manual"
+	author = "VeyMedical"
+	title = "Medigun Operating Manual"
+	page_link = "Guide_to_Mediguns"
+	skyrat_wiki = TRUE
+
 //Medigun Gunsets/
 /obj/item/storage/briefcase/medicalgunset/
 	name = "Medigun Supply Kit"
