@@ -343,6 +343,11 @@
 		return
 	if(stat == DEAD)
 		return
+	var/choice = tgui_input_list(usr, "Do you want to control [src]?", "Confirmation", list("Yes", "No"))
+	if(choice != "Yes")
+		return
+	if(ckey || key)
+		return
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
 	to_chat(user, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
 	ckey = user.ckey
