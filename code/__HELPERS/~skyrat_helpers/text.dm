@@ -5,6 +5,33 @@
 /datum/language
 	var/has_written_form = TRUE
 
+/datum/language/aphasia
+	has_written_form = FALSE
+
+/datum/language/beachbum
+	has_written_form = FALSE
+
+/datum/language/drone
+	has_written_form = FALSE
+
+/datum/language/machine
+	has_written_form = FALSE
+
+/datum/language/monkey
+	has_written_form = FALSE
+
+/datum/language/mushroom
+	has_written_form = FALSE
+
+/datum/language/swarmer
+	has_written_form = FALSE
+
+/datum/language/xenocommon
+	has_written_form = FALSE
+
+/datum/language/xenoknockoff
+	has_written_form = FALSE
+
 //This proc strips html properly, remove < > and all text between
 //for complete text sanitizing should be used sanitize()
 /proc/strip_html_properly(input)
