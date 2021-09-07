@@ -177,7 +177,6 @@
 	else
 		var/datum/language_holder/langholder = user.get_language_holder()
 		for(var/datum/language/langpath as anything in langholder.understood_languages)
-			to_chat(world, "[initial(langpath.name)] = [langpath]")
 			selectable_languages["[initial(langpath.name)]"] = langpath
 
 	var/datum/language/new_language = tgui_input_list(user, "What language do you want to write in?", "Change language", selectable_languages)
