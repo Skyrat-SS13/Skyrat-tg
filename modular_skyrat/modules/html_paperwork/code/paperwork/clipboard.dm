@@ -1,195 +1,202 @@
-/obj/item/material/clipboard
+/**
+ * Clipboard
+ */
+/obj/item/clipboard
 	name = "clipboard"
-	desc = "It's a board with a clip used to organise papers."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "clipboard"
-	item_state = "clipboard"
+	inhand_icon_state = "clipboard"
+	worn_icon_state = "clipboard"
 	throwforce = 0
-	w_class = ITEM_SIZE_SMALL
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
-	throw_range = 10
-	var/obj/item/pen/haspen		//The stored pen.
-	var/obj/item/toppaper	//The topmost piece of paper.
-	slot_flags = SLOT_BELT
-	default_material = MATERIAL_WOOD
-	applies_material_name = FALSE
-	matter = list(MATERIAL_WOOD = 70)
+	throw_range = 7
+	slot_flags = ITEM_SLOT_BELT
+	resistance_flags = FLAMMABLE
+	/// The stored pen
+	var/obj/item/pen/pen
+	/// Is the pen integrated?
+	var/integrated_pen = FALSE
+	/**
+	 * Weakref of the topmost piece of paper
+	 *
+	 * This is used for the paper displayed on the clipboard's icon
+	 * and it is the one attacked, when attacking the clipboard.
+	 * (As you can't organise contents directly in BYOND)
+	 */
+	var/datum/weakref/toppaper_ref
 
-/obj/item/material/clipboard/New(newloc, material_key)
-	..()
+/obj/item/clipboard/suicide_act(mob/living/carbon/user)
+	user.visible_message(span_suicide("[user] begins putting [user.p_their()] head into the clip of \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	return BRUTELOSS //The clipboard's clip is very strong. Industrial duty. Can kill a man easily.
+
+/obj/item/clipboard/Initialize()
+	update_appearance()
+	. = ..()
+
+/obj/item/clipboard/Destroy()
+	QDEL_NULL(pen)
+	return ..()
+
+/obj/item/clipboard/examine()
+	. = ..()
+	if(!integrated_pen && pen)
+		. += span_notice("Alt-click to remove [pen].")
+	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
+	if(toppaper)
+		. += span_notice("Right-click to remove [toppaper].")
+
+/// Take out the topmost paper
+/obj/item/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
+	if(!istype(paper))
+		return
+	paper.forceMove(user.loc)
+	user.put_in_hands(paper)
+	to_chat(user, span_notice("You remove [paper] from [src]."))
+	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
+	if(paper == toppaper)
+		UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
+		toppaper_ref = null
+		var/obj/item/paper/newtop = locate(/obj/item/paper) in src
+		if(newtop && (newtop != paper))
+			toppaper_ref = WEAKREF(newtop)
+		else
+			toppaper_ref = null
 	update_icon()
-	if(material)
-		desc = initial(desc)
-		desc += " It's made of [material.use_name]."
 
-/obj/item/material/clipboard/MouseDrop(obj/over_object as obj) //Quick clipboard fix. -Agouri
-	if(ishuman(usr))
-		var/mob/M = usr
-		if(!(istype(over_object, /obj/screen) ))
-			return ..()
+/obj/item/clipboard/proc/remove_pen(mob/user)
+	pen.forceMove(user.loc)
+	user.put_in_hands(pen)
+	to_chat(user, span_notice("You remove [pen] from [src]."))
+	pen = null
+	update_icon()
 
-		if(!M.restrained() && !M.stat)
-			switch(over_object.name)
-				if("r_hand")
-					if(M.unEquip(src))
-						M.put_in_r_hand(src)
-				if("l_hand")
-					if(M.unEquip(src))
-						M.put_in_l_hand(src)
-
-			add_fingerprint(usr)
-			return
-
-/obj/item/material/clipboard/on_update_icon()
+/obj/item/clipboard/AltClick(mob/user)
 	..()
+	if(pen)
+		if(integrated_pen)
+			to_chat(user, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
+		else
+			remove_pen(user)
+
+/obj/item/clipboard/update_overlays()
+	. = ..()
+	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(toppaper)
-		overlays += overlay_image(toppaper.icon, toppaper.icon_state, flags=RESET_COLOR)
-		overlays += toppaper.overlays
-	if(haspen)
-		overlays += overlay_image(icon, "clipboard_pen", flags=RESET_COLOR)
-	overlays += overlay_image(icon, "clipboard_over", flags=RESET_COLOR)
-	return
+		. += toppaper.icon_state
+		. += toppaper.overlays
+	if(pen)
+		. += "clipboard_pen"
+	. += "clipboard_over"
 
-/obj/item/material/clipboard/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clipboard/attack_hand(mob/user, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		var/obj/item/paper/toppaper = toppaper_ref?.resolve()
+		remove_paper(toppaper, user)
+		return TRUE
+	. = ..()
 
-	if(istype(W, /obj/item/paper) || istype(W, /obj/item/photo))
-		if(!user.unEquip(W, src))
+/obj/item/clipboard/attackby(obj/item/weapon, mob/user, params)
+	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
+	if(istype(weapon, /obj/item/paper))
+		//Add paper into the clipboard
+		if(!user.transferItemToLoc(weapon, src))
 			return
-		if(istype(W, /obj/item/paper))
-			toppaper = W
-		to_chat(user, "<span class='notice'>You clip the [W] onto \the [src].</span>")
-		update_icon()
+		if(toppaper)
+			UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
+		RegisterSignal(weapon, COMSIG_ATOM_UPDATED_ICON, .proc/on_top_paper_change)
+		toppaper_ref = WEAKREF(weapon)
+		to_chat(user, span_notice("You clip [weapon] onto [src]."))
+	else if(istype(weapon, /obj/item/pen) && !pen)
+		//Add a pen into the clipboard, attack (write) if there is already one
+		if(!usr.transferItemToLoc(weapon, src))
+			return
+		pen = weapon
+		to_chat(usr, span_notice("You slot [weapon] into [src]."))
+	else if(toppaper)
+		toppaper.attackby(user.get_active_held_item(), user)
+	update_appearance()
 
-	else if(istype(toppaper) && istype(W, /obj/item/pen))
-		toppaper.attackby(W, usr)
-		update_icon()
-
-	return
-
-/obj/item/material/clipboard/attack_self(mob/user as mob)
-	var/dat = "<title>Clipboard</title>"
-	if(haspen)
-		dat += "<A href='?src=\ref[src];pen=1'>Remove Pen</A><BR><HR>"
-	else
-		dat += "<A href='?src=\ref[src];addpen=1'>Add Pen</A><BR><HR>"
-
-	//The topmost paper. I don't think there's any way to organise contents in byond, so this is what we're stuck with.	-Pete
-	if(toppaper)
-		var/obj/item/paper/P = toppaper
-		dat += "<A href='?src=\ref[src];write=\ref[P]'>Write</A> <A href='?src=\ref[src];remove=\ref[P]'>Remove</A> <A href='?src=\ref[src];rename=\ref[P]'>Rename</A> - <A href='?src=\ref[src];read=\ref[P]'>[P.name]</A><BR><HR>"
-
-	for(var/obj/item/paper/P in src)
-		if(P==toppaper)
-			continue
-		dat += "<A href='?src=\ref[src];remove=\ref[P]'>Remove</A> <A href='?src=\ref[src];rename=\ref[P]'>Rename</A> - <A href='?src=\ref[src];read=\ref[P]'>[P.name]</A><BR>"
-	for(var/obj/item/photo/Ph in src)
-		dat += "<A href='?src=\ref[src];remove=\ref[Ph]'>Remove</A> <A href='?src=\ref[src];rename=\ref[Ph]'>Rename</A> - <A href='?src=\ref[src];look=\ref[Ph]'>[Ph.name]</A><BR>"
-
-	show_browser(user, dat, "window=clipboard")
-	onclose(user, "clipboard")
+/obj/item/clipboard/attack_self(mob/user)
 	add_fingerprint(usr)
+	ui_interact(user)
 	return
 
-/obj/item/material/clipboard/Topic(href, href_list)
-	..()
-	if((usr.stat || usr.restrained()))
+/obj/item/clipboard/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Clipboard")
+		ui.open()
+
+/obj/item/clipboard/ui_data(mob/user)
+	// prepare data for TGUI
+	var/list/data = list()
+	data["pen"] = "[pen]"
+	data["integrated_pen"] = integrated_pen
+
+	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
+	data["top_paper"] = "[toppaper]"
+	data["top_paper_ref"] = "[REF(toppaper)]"
+
+	data["paper"] = list()
+	data["paper_ref"] = list()
+	for(var/obj/item/paper/paper in src)
+		if(paper == toppaper)
+			continue
+		data["paper"] += "[paper]"
+		data["paper_ref"] += "[REF(paper)]"
+
+	return data
+
+/obj/item/clipboard/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
 
-	if(src.loc == usr)
+	if(usr.stat != CONSCIOUS || HAS_TRAIT(usr, TRAIT_HANDS_BLOCKED))
+		return
 
-		if(href_list["pen"])
-			if(istype(haspen) && (haspen.loc == src))
-				usr.put_in_hands(haspen)
-				haspen = null
-
-		else if(href_list["addpen"])
-			if(!haspen)
-				var/obj/item/pen/W = usr.get_active_hand()
-				if(istype(W, /obj/item/pen))
-					if(!usr.unEquip(W, src))
-						return
-					haspen = W
-					to_chat(usr, "<span class='notice'>You slot the pen into \the [src].</span>")
-
-		else if(href_list["write"])
-			var/obj/item/P = locate(href_list["write"])
-
-			if(P && (P.loc == src) && istype(P, /obj/item/paper) && (P == toppaper) )
-
-				var/obj/item/I = usr.get_active_hand()
-
-				if(istype(I, /obj/item/pen))
-
-					P.attackby(I, usr)
-
-		else if(href_list["remove"])
-			var/obj/item/P = locate(href_list["remove"])
-
-			if(P && (P.loc == src) && (istype(P, /obj/item/paper) || istype(P, /obj/item/photo)) )
-				usr.put_in_hands(P)
-				if(P == toppaper)
-					toppaper = null
-					var/obj/item/paper/newtop = locate(/obj/item/paper) in src
-					if(newtop && (newtop != P))
-						toppaper = newtop
-					else
-						toppaper = null
-
-		else if(href_list["rename"])
-			var/obj/item/O = locate(href_list["rename"])
-
-			if(O && (O.loc == src))
-				if(istype(O, /obj/item/paper))
-					var/obj/item/paper/to_rename = O
-					to_rename.rename()
-
-				else if(istype(O, /obj/item/photo))
-					var/obj/item/photo/to_rename = O
-					to_rename.rename()
-
-		else if(href_list["read"])
-			var/obj/item/paper/P = locate(href_list["read"])
-
-			if(P && (P.loc == src) && istype(P, /obj/item/paper) )
-
-				if(!(istype(usr, /mob/living/carbon/human) || isghost(usr) || istype(usr, /mob/living/silicon)))
-					show_browser(usr, "<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[stars(P.info)][P.stamps]</BODY></HTML>", "window=[P.name]")
-					onclose(usr, "[P.name]")
+	switch(action)
+		// Take the pen out
+		if("remove_pen")
+			if(pen)
+				if(!integrated_pen)
+					remove_pen(usr)
 				else
-					show_browser(usr, "<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[P.info][P.stamps]</BODY></HTML>", "window=[P.name]")
-					onclose(usr, "[P.name]")
+					to_chat(usr, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
+				. = TRUE
+		// Take paper out
+		if("remove_paper")
+			var/obj/item/paper/paper = locate(params["ref"]) in src
+			if(istype(paper))
+				remove_paper(paper, usr)
+				. = TRUE
+		// Look at (or edit) the paper
+		if("edit_paper")
+			var/obj/item/paper/paper = locate(params["ref"]) in src
+			if(istype(paper))
+				paper.show_content(usr, editable = pen)
+				update_icon()
+				. = TRUE
+		// Move paper to the top
+		if("move_top_paper")
+			var/obj/item/paper/paper = locate(params["ref"]) in src
+			if(istype(paper))
+				toppaper_ref = WEAKREF(paper)
+				to_chat(usr, span_notice("You move [paper] to the top."))
+				update_icon()
+				. = TRUE
+		// Rename the paper (it's a verb)
+		if("rename_paper")
+			var/obj/item/paper/paper = locate(params["ref"]) in src
+			if(istype(paper))
+				paper.rename()
+				update_icon()
+				. = TRUE
 
-		else if(href_list["look"])
-			var/obj/item/photo/P = locate(href_list["look"])
-			if(P && (P.loc == src) && istype(P, /obj/item/photo) )
-				P.show(usr)
-
-		else if(href_list["top"]) // currently unused
-			var/obj/item/P = locate(href_list["top"])
-			if(P && (P.loc == src) && istype(P, /obj/item/paper) )
-				toppaper = P
-				to_chat(usr, "<span class='notice'>You move [P.name] to the top.</span>")
-
-		//Update everything
-		attack_self(usr)
-		update_icon()
-	return
-
-/obj/item/material/clipboard/ebony
-	default_material = MATERIAL_EBONY
-
-/obj/item/material/clipboard/steel
-	default_material = MATERIAL_STEEL
-	matter = list(MATERIAL_STEEL = 70)
-
-/obj/item/material/clipboard/aluminium
-	default_material = MATERIAL_ALUMINIUM
-	matter = list(MATERIAL_ALUMINIUM = 70)
-
-/obj/item/material/clipboard/glass
-	default_material = MATERIAL_GLASS
-	matter = list(MATERIAL_GLASS = 70)
-
-/obj/item/material/clipboard/plastic
-	default_material = MATERIAL_PLASTIC
-	matter = list(MATERIAL_PLASTIC = 70)
+/**
+ * This is a simple proc to handle calling update_icon() upon receiving the top paper's `COMSIG_ATOM_UPDATE_APPEARANCE`.
+ */
+/obj/item/clipboard/proc/on_top_paper_change()
+	SIGNAL_HANDLER
+	update_appearance()

@@ -79,12 +79,12 @@
 	set_content(text ? text : info, title)
 	metadata = md
 
-	if (langdatum)
-		language = langdatum
-	var/old_language = language
-	if (!set_language(language, TRUE))
-		log_paper("[src] ([type]) initialized with invalid or missing language `[old_language]` defined.")
+	if(!set_language(langdatum, TRUE))
+		log_paper("[src] ([type]) initialized with invalid or missing language `[langdatum]` defined.")
 		set_language(LANGUAGE_COMMON, TRUE)
+	if(langdatum)
+		set_language(langdatum, TRUE)
+
 
 /obj/item/paper/proc/set_content(text,title) // Replace SetText() w/ set_content
 	if(title)
@@ -112,19 +112,20 @@
 	new_paper.ico = ico
 	new_paper.offset_x = offset_x
 	new_paper.offset_y = offset_y
+	new_paper.language = language
 	copy_overlays(new_paper, TRUE)
 	return new_paper
 
 
 /obj/item/paper/proc/set_language(new_lang, force = FALSE)
 	var/datum/language/new_language = new_lang
-	if (!new_language || (info && !force))
+	if (!new_lang || (info && !force))
 		return FALSE
 
 	if (!ispath(new_language, /datum/language))
 		if(istext(new_language))
 			for(var/datum/language/langpath as anything in GLOB.language_datum_instances)
-				if(new_language == langpath.name)
+				if(new_language == initial(langpath.name))
 					new_language = langpath
 	if (!ispath(new_language, /datum/language))
 		return FALSE
@@ -216,10 +217,13 @@
 	if(has_content && !has_language && !isobserver(user))
 		if(language == /datum/language/codespeak)
 			html += PAPER_META("The paper is written in Galactic Common")
+			if(!user.has_language(/datum/language/common, FALSE))
+				var/datum/language/langdatum = GLOB.language_datum_instances[/datum/language/common]
+				html += "<hr/>" + langdatum.scramble(info)
 		else
 			html += PAPER_META_BAD("The paper is written in a language you don't understand.")
-		var/datum/language/langdatum = GLOB.language_datum_instances[language]
-		html += "<hr/>" + langdatum.scramble(info)
+			var/datum/language/langdatum = GLOB.language_datum_instances[language]
+			html += "<hr/>" + langdatum.scramble(info)
 	else if(editable)
 		if(has_content)
 			html += PAPER_META("The paper is written in [initial(language.name)].")
@@ -253,13 +257,15 @@
 			human_user.damageoverlaytemp = 9001
 			human_user.update_damage_hud()
 			return
-	if(is_memo)
+
+	var/new_name = stripped_input(usr, "What would you like to label the paper?", "Paper Labelling", null, MAX_NAME_LEN)
+	if(is_memo || !new_name)
 		to_chat(usr, span_notice("You decide not to alter the name of \the [src]."))
 		return
-	var/new_name = stripped_input(usr, "What would you like to label the paper?", "Paper Labelling", null, MAX_NAME_LEN)
-	if((!new_name && (loc == usr || istype(loc, /obj/item/clipboard)) && usr.stat == CONSCIOUS))
+	if((new_name && (loc == usr || istype(loc, /obj/item/clipboard)) && usr.stat == CONSCIOUS))
 		SetName(new_name)
 		add_fingerprint(usr)
+
 
 /obj/item/paper/attack_self(mob/living/user)
 	if(user.combat_mode == TRUE)
@@ -476,15 +482,13 @@
 					return
 			else
 				return */
-
 		var/obj/item/pen/active_pen = active_item
-		if(!active_pen.active)
-			var/obj/item/pen/retractable/active_rpen = active_pen
-			if(istype(active_rpen))
-				active_rpen.toggle()
-			else
-				to_chat(usr, span_warning("Something broke, and a non-retractable pen was retracted. Yell at coders."))
-				active_pen.active = TRUE
+		var/obj/item/clipboard/attached_board = src.loc
+		if(!istype(active_pen))
+			if(istype(attached_board)) // Prioritise the pen the person is holding, but if none, use the clipboard pen
+				active_pen = attached_board.pen
+		if(!active_pen || !istype(active_pen))
+			return
 
 		/*if(active_pen.iscrayon)
 			iscrayon = TRUE */ // TODO -- WRITING CRAYONS
@@ -507,7 +511,7 @@
 
 
 		if(fields > MAX_FIELDS)
-			to_chat(usr, "<span class='warning'>Too many fields. Sorry, you can't do this.</span>")
+			to_chat(usr, span_warning("Too many fields. Sorry, you can't do this."))
 			fields = last_fields_value
 			return
 

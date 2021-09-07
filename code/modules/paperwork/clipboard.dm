@@ -1,3 +1,4 @@
+/* SKYRAT EDIT MOVAL -- MOVED TO HTML_PAPERWORK
 /**
  * Clipboard
  */
@@ -200,3 +201,4 @@
 /obj/item/clipboard/proc/on_top_paper_change()
 	SIGNAL_HANDLER
 	update_appearance()
+*/
