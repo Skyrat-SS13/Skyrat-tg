@@ -19,7 +19,7 @@
 /obj/machinery/computer/market_link/Initialize()
 	. = ..()
 	radio = new /obj/item/radio/headset/headset_cargo(src)
-	for(var/area/centcom/ncvtitan/export_bay/iterating_export_bay in world)
+	for(var/area/shuttle/ncvtitan/export_bay/iterating_export_bay in world)
 		possible_areas += iterating_export_bay
 
 /obj/item/circuitboard/computer/market_link
@@ -72,7 +72,7 @@
 				return
 			bay_items.Cut()
 			for(var/place in possible_areas)
-				var/area/centcom/ncvtitan/export_bay/exporting_bay = place
+				var/area/shuttle/ncvtitan/export_bay/exporting_bay = place
 				for(var/atom/movable/moveable_atom in exporting_bay)
 					bay_items += moveable_atom
 
@@ -97,7 +97,7 @@
 
 	var/datum/export_report/ex = new
 	for(var/place in possible_areas)
-		var/area/centcom/ncvtitan/export_bay/exporting_bay = place
+		var/area/shuttle/ncvtitan/export_bay/exporting_bay = place
 		for(var/atom/movable/AM in exporting_bay)
 			if(isliving(AM))
 				say("Biological material detected in export area. Halting.")

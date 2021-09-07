@@ -140,8 +140,11 @@
 		// "Station" is set by default, but it's assumed if you're setting
 		// traits you want to customize which level is cross-linked
 		for (var/level in traits)
-			if (!(ZTRAIT_STATION in level))
-				level[ZTRAIT_STATION] = TRUE
+			var/list/level_traits = level
+			var/base_traits_station = ZTRAITS_STATION
+			for(var/trait_to_validate in base_traits_station)
+				if(!level_traits[trait_to_validate])
+					level_traits[trait_to_validate] = base_traits_station[trait_to_validate]
 	// "traits": null or absent -> default
 	else if (!isnull(traits))
 		log_world("map_config traits is not a list!")

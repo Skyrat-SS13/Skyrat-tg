@@ -106,10 +106,25 @@
 			NT.contents_explosion(severity, target)
 			return
 		if(EXPLODE_HEAVY)
-			dismantle_wall(prob(50), TRUE)
+			//dismantle_wall(prob(50), TRUE)
+			//SKYRAT EDIT CHANGE
+			var/make_rubble = prob(50) ? TRUE : FALSE
+			if(prob(50))
+				dismantle_wall(TRUE, TRUE)
+				if(make_rubble)
+					create_rubble()
+			else
+				dismantle_wall(FALSE, TRUE)
+				if(make_rubble)
+					create_rubble(TRUE)
+			//SKYRAT EDIT END
 		if(EXPLODE_LIGHT)
 			if (prob(hardness))
 				dismantle_wall(0,1)
+				//SKYRAT EDIT ADDITION
+				if(make_rubble)
+					create_rubble(TRUE)
+				//SKYRAT EDIT END
 	if(!density)
 		..()
 
