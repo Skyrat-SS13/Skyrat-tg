@@ -5,6 +5,12 @@
 	max_occurrences = 1
 	min_players = 10
 
+/datum/round_event_control/mold/canSpawnEvent(players)
+	if(EMERGENCY_PAST_POINT_OF_NO_RETURN) // no molds if the shuttle is past the point of no return
+		return FALSE
+
+	return ..()
+
 /datum/round_event/mold
 	fakeable = FALSE
 	var/list/available_molds_t1 = list(
@@ -18,6 +24,9 @@
 		/obj/structure/biohazard_blob/structure/core/emp,
 		/obj/structure/biohazard_blob/structure/core/fungus
 	)
+
+/datum/round_event/mold/announce(fake)
+	priority_announce("Confirmed outbreak of level 6 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
 
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
