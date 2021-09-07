@@ -334,12 +334,8 @@
 		deconstruct()
 	..()
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-/obj/machinery/firealarm/obj_break(damage_flag)
-=======
 /obj/machinery/firealarm/atom_break(damage_flag)
->>>>>>> d9ee5e72979 (moves obj_integrity and associated procs to the atom level (#61183))
 	if(buildstage == 0) //can't break the electronics if there isn't any inside.
 		return
 	. = ..()
