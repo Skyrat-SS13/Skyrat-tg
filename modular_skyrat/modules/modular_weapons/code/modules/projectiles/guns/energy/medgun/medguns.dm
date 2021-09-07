@@ -216,6 +216,7 @@
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/medigun/standard(src)
+	new /obj/item/book/manual/wiki/mediguns(src)
 
 /obj/item/storage/briefcase/medicalgunset/cmo
 	name = "VeyMedical CWM-479-CC Cell Powered Medigun case"
@@ -227,6 +228,7 @@
 	new /obj/item/medicell/brute1(src)
 	new /obj/item/medicell/burn1(src)
 	new /obj/item/medicell/toxin1(src)
+	new /obj/item/book/manual/wiki/mediguns(src)
 
 //Medigun Cell Insertion and Removal//
 /obj/item/gun/energy/medigun/attackby(obj/item/medicell/M, mob/user)
