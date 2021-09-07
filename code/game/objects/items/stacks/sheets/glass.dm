@@ -91,12 +91,8 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plasmaglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
-<<<<<<< HEAD
-	material_flags = MATERIAL_NO_EFFECTS
-=======
 	material_flags = NONE
 	tableVariant = /obj/structure/table/glass/plasmaglass
->>>>>>> 00124b7355a (Adds some new (proper) tables. Also fixes the old reinforced glass table just making a regular metal table bug for the alloys included. (#61153))
 
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
