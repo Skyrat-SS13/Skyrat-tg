@@ -999,7 +999,7 @@
 			var/datum/weather/weather = V
 			if(weather.stage != MAIN_STAGE)
 				continue
-			if((user_turf.z in weather.impacted_z_levels) && ispath(target_area.type, weather.area_type))
+			if((target_turf.z in weather.impacted_z_levels) && ispath(target_area.type, weather.area_type))
 				power_boosted = TRUE
 				break
 	//SKYRAT EDIT END
