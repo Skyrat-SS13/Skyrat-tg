@@ -376,8 +376,6 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
-	var/uses_engines_fuel = FALSE //SKYRAT EDIT ADDITION
-
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
 	if(!id)
@@ -394,11 +392,14 @@
 			id = "[id]_[counter]"
 			name = "[name] [counter]"
 			//Re link machinery to new shuttle id
-			linkup()
+			//linkup() SKYRAT EDIT REMOVAL
 		else
 			SSshuttle.assoc_mobile[id] = 1
 
 	SSshuttle.mobile += src
+
+	//Link machinery to new shuttle
+	linkup()
 
 /obj/docking_port/mobile/unregister()
 	. = ..()
@@ -419,6 +420,11 @@
 		QDEL_NULL(assigned_transit) //don't need it where we're goin'!
 		shuttle_areas = null
 		remove_ripples()
+		//SKYRAT EDIT ADDITION
+		if(freeform_port)
+			qdel(freeform_port, TRUE)
+			freeform_port = null
+		//SKYRAT EDIT END
 	. = ..()
 
 /obj/docking_port/mobile/Initialize(mapload)
@@ -561,6 +567,9 @@
 		return
 	previous = null
 	//SKYRAT EDIT ADDITION
+	if(freeform_port)
+		qdel(freeform_port, TRUE)
+		freeform_port = null
 	if(destination == "overmap")
 		destination = null
 		timer = INFINITY
@@ -584,14 +593,6 @@
 		spawned_shuttle.RegisterToShuttle(src)
 		if(my_overmap_object.shuttle_controller)
 			my_overmap_object.shuttle_controller.busy = FALSE
-		if(freeform_port)
-			if(freeform_port?.get_docked())
-				freeform_port.delete_after = TRUE
-				freeform_port.id = null
-				freeform_port.name = "Old [freeform_port.name]"
-				freeform_port = null
-			else
-				QDEL_NULL(freeform_port)
 	else if(!destination)
 	//SKYRAT EDIT END
 		// sent to transit with no destination -> unlimited timer

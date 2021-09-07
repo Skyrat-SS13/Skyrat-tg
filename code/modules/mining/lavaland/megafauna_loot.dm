@@ -930,10 +930,21 @@
 		to_chat(user, span_warning("Something is preventing you from using the staff here."))
 		return
 	var/datum/weather/affected_weather
-	for(var/datum/weather/weather as anything in SSweather.processing)
+	/* SKYRAT EDIT CHANGE
+	for(var/datum/weather/weather as anything in SSweather.processing) TEMPORARY REMOVAL
 		if((user_turf.z in weather.impacted_z_levels) && ispath(user_area.type, weather.area_type))
 			affected_weather = weather
 			break
+	*/
+	var/datum/weather_controller/weather_controller = SSmapping.GetLevelWeatherController(user_turf.z)
+	if(weather_controller.current_weathers)
+		for(var/V in weather_controller.current_weathers)
+			var/datum/weather/weather = V
+			if((user_turf.z in weather.impacted_z_levels) && ispath(user_area.type, weather.area_type))
+				affected_weather = weather
+				break
+	//SKYRAT EDIT END
+
 	if(!affected_weather)
 		return
 	if(affected_weather.stage == END_STAGE)
@@ -974,12 +985,24 @@
 		balloon_alert(user, "you don't want to harm!")
 		return
 	var/power_boosted = FALSE
+	/* SKYRAT EDIT CHANGE
 	for(var/datum/weather/weather as anything in SSweather.processing)
 		if(weather.stage != MAIN_STAGE)
 			continue
 		if((target_turf.z in weather.impacted_z_levels) && ispath(target_area.type, weather.area_type))
 			power_boosted = TRUE
 			break
+	*/
+	var/datum/weather_controller/weather_controller = SSmapping.GetLevelWeatherController(target_turf.z)
+	if(weather_controller.current_weathers)
+		for(var/V in weather_controller.current_weathers)
+			var/datum/weather/weather = V
+			if(weather.stage != MAIN_STAGE)
+				continue
+			if((user_turf.z in weather.impacted_z_levels) && ispath(target_area.type, weather.area_type))
+				power_boosted = TRUE
+				break
+	//SKYRAT EDIT END
 	playsound(src, 'sound/magic/lightningshock.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 	targeted_turfs += target_turf
 	balloon_alert(user, "you aim at [target_turf]...")

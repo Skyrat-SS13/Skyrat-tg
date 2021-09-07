@@ -141,7 +141,7 @@
 			dat += "<BR>Communications Channel: <a href='?src=[REF(src)];task=general;general_control=comms' [open_comms_channel ? "class='linkOn'" : ""]>[open_comms_channel ? "Open" : "Closed"]</a> - Microphone: <a href='?src=[REF(src)];task=general;general_control=microphone_muted' [microphone_muted ? "" : "class='linkOn'"]>[microphone_muted ? "Muted" : "Open"]</a>"
 
 		if(SHUTTLE_TAB_ENGINES)
-			if(engine_extensions.len == 0 && my_shuttle.uses_engines_fuel)
+			if(engine_extensions.len == 0)
 				dat += "<B>No engines installed.</B>"
 			else
 				dat += "<a href='?src=[REF(src)];task=engines;engines_control=all_on'>All On</a><a href='?src=[REF(src)];task=engines;engines_control=all_off'>All Off</a><a href='?src=[REF(src)];task=engines;engines_control=all_efficiency'>Set All Efficiency</a><HR>"
@@ -183,7 +183,7 @@
 			dat += "<BR>Current speed: [cur_speed]"
 			dat += "<BR> - Impulse Power: <a href='?src=[REF(src)];task=helm;helm_control=change_impulse_power'>[impulse_power*100]%</a>"
 			dat += "<BR> - Top speed: [GetCapSpeed()]"
-			if(engine_extensions.len == 0 && my_shuttle.uses_engines_fuel)
+			if(engine_extensions.len == 0)
 				dat += "<BR><B>No engines installed.</B>"
 			else
 				dat += "<BR>Commands:"

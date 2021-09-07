@@ -19,8 +19,7 @@
 	var/map_file = "MetaStation.dmm"
 
 	var/traits = null
-	var/space_ruin_levels = 5
-	var/space_empty_levels = 1
+	var/space_ruin_levels = 3
 
 	var/minetype = "lavaland"
 
@@ -153,13 +152,6 @@
 		space_ruin_levels = temp
 	else if (!isnull(temp))
 		log_world("map_config space_ruin_levels is not a number!")
-		return
-
-	temp = json["space_empty_levels"]
-	if (isnum(temp))
-		space_empty_levels = temp
-	else if (!isnull(temp))
-		log_world("map_config space_empty_levels is not a number!")
 		return
 
 	if ("minetype" in json)

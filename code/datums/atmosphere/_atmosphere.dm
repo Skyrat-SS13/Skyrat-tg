@@ -66,6 +66,8 @@
 	gaslist[gastype][MOLES] = FLOOR(gaslist[gastype][MOLES], 0.1)
 	*/
 
+	gasmix.garbage_collect()
+
 	// Now finally lets make that string
 	var/list/gas_string_builder = list()
 	for(var/i in gaslist)
