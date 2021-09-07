@@ -339,6 +339,7 @@
 	if(abs(difference) <= MINIMUM_TEMP_DIFFERENCE) //It won't adjust temperature if the difference is too low
 		return FALSE
 	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
+
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
 #undef MINIMUM_TEMP_DIFFERENCE

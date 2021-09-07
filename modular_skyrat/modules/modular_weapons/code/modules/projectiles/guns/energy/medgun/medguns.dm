@@ -192,7 +192,7 @@
 /obj/item/medicell/utility
 	utility = TRUE
 	name = "utility class medicell"
-	desc = "You really shouldn't be seeing this, if you do, please yell on GitHub."
+	desc = "You really shouldn't be seeing this, if you do, please yell at your local coders."
 
 /obj/item/medicell/utility/clotting
 	name = "clotting medicell"
