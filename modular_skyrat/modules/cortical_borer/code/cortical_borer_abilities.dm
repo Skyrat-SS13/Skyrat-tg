@@ -64,51 +64,38 @@
 		to_chat(owner, span_warning("You do not have 5 upgrade points for a focus!"))
 		return
 	cortical_owner.stat_evolution -= 5
-	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", list("Head-focus", "Chest-focus", "Arm-focus", "Leg-focus"))
+	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", list("Head focus", "Chest focus", "Arm focus", "Leg focus"))
 	if(!focus_choice)
 		to_chat(owner, span_warning("You did not choose a focus"))
 		cortical_owner.stat_evolution += 5
 		return
 	switch(focus_choice)
-		if("Head-focus")
+		if("Head focus")
 			if(cortical_owner.body_focus & FOCUS_HEAD)
 				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
 				return
 			cortical_owner.body_focus |= FOCUS_HEAD
-			to_chat(cortical_owner.human_host, span_notice("Your eyes begin to feel strange..."))
-			var/obj/item/organ/eyes/my_eyes = cortical_owner.human_host.getorgan(/obj/item/organ/eyes)
-			if(my_eyes)
-				my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-				my_eyes.see_in_dark = 11
-				my_eyes.flash_protect = FLASH_PROTECTION_WELDER
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_KNOW_ENGI_WIRES, src)
-		if("Chest-focus")
+		if("Chest focus")
 			if(cortical_owner.body_focus & FOCUS_CHEST)
 				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
 				return
 			cortical_owner.body_focus |= FOCUS_CHEST
-			to_chat(cortical_owner.human_host, span_notice("Your chest begins to slow down..."))
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_NOBREATH, src)
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_NOHUNGER, src)
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_STABLEHEART, src)
-		if("Arm-focus")
+		if("Arm focus")
 			if(cortical_owner.body_focus & FOCUS_ARMS)
 				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
 				return
 			cortical_owner.body_focus |= FOCUS_ARMS
-			to_chat(cortical_owner.human_host, span_notice("Your arm starts to feel funny..."))
-			var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
-			give_owner.Grant(cortical_owner.human_host)
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_SHOCKIMMUNE, src)
-		if("Leg-focus")
+		if("Leg focus")
 			if(cortical_owner.body_focus & FOCUS_LEGS)
 				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
 				return
 			cortical_owner.body_focus |= FOCUS_LEGS
-			to_chat(cortical_owner.human_host, span_notice("You feel faster..."))
-			cortical_owner.human_host.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-			cortical_owner.human_host.add_quirk(/datum/quirk/light_step)
-			cortical_owner.human_host.add_quirk(/datum/quirk/freerunning)
+	borer_focus_remove(cortical_owner.human_host)
+	borer_focus_add(cortical_owner.human_host)
 
 /datum/action/cooldown/learn_bloodchemical
 	name = "Learn Chemical from Blood (5 stat points)"
