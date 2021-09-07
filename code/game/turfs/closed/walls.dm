@@ -99,6 +99,8 @@
 		dismantle_wall(1,1)
 		return
 
+	var/make_rubble = prob(50) ? TRUE : FALSE //SKYRAT EDIT ADDITION
+
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
 			//SN src = null
@@ -108,7 +110,6 @@
 		if(EXPLODE_HEAVY)
 			//dismantle_wall(prob(50), TRUE)
 			//SKYRAT EDIT CHANGE
-			var/make_rubble = prob(50) ? TRUE : FALSE
 			if(prob(50))
 				dismantle_wall(TRUE, TRUE)
 				if(make_rubble)

@@ -1,6 +1,6 @@
 /obj/structure/rubble //Abstract parent type
 	name = "rubble"
-	icon = 'icons/obj/structures/rubble.dmi'
+	icon = 'modular_skyrat/modules/rubble/icons/rubble.dmi'
 	anchored = FALSE
 	move_resist = MOVE_FORCE_EXTREMELY_STRONG
 	density = TRUE

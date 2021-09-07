@@ -36,3 +36,21 @@
 	suffix = "crow"
 	name = "ESS Crow"
 	who_can_purchase = null
+
+/datum/map_template/shuttle/titan
+	port_id = "ncv"
+	suffix = "titan"
+	name = "NCV Titan"
+	who_can_purchase = null
+
+/obj/machinery/computer/shuttle/ncv_titan
+	name = "NCV Titan NAVCOM"
+	desc = "Used to control the NCV Titan."
+	circuit = /obj/item/circuitboard/computer/ncv_titan
+	shuttleId = "ncv_titan"
+	possible_destinations = "ncv_titan_dock"
+
+/obj/item/circuitboard/computer/ncv_titan
+	name = "ESS Crow Ship Console (Computer Board)"
+	greyscale_colors = CIRCUIT_COLOR_GENERIC
+	build_path = /obj/machinery/computer/shuttle/ncv_titan

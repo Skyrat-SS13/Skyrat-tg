@@ -1,26 +1,38 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ar" = (
-/obj/structure/closet/secure_closet/ert_med,
-/obj/machinery/vending/wallmed/directional/south{
-	use_power = 0
+"aa" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	name = "Brig";
+	req_access_txt = "101"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "au" = (
-/obj/structure/chair/sofa/corp/left,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/carpet/neon/simple/cyan,
+/area/shuttle/ncvtitan)
+"aG" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/poster/official/safety_internals{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"aH" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/syringes,
+/obj/item/gun/syringe/rapidsyringe,
+/turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "aJ" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/regular,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"aX" = (
+/obj/machinery/light/floor,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "aY" = (
 /obj/structure/table/reinforced,
@@ -31,23 +43,31 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "ba" = (
-/obj/structure/table,
-/obj/item/storage/box/donkpockets/donkpocketberry,
-/obj/item/storage/box/donkpockets/donkpocketberry,
-/obj/item/storage/box/donkpockets/donkpocketberry,
-/obj/item/storage/box/donkpockets/donkpocketberry,
+/obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/ncvtitan)
+"bk" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "NCVTITUNLOAD1";
+	pixel_x = -10
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "br" = (
-/obj/structure/closet/secure_closet/ert_sec,
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	name = "NCV Titan";
+	req_access_txt = "101"
 	},
-/obj/machinery/status_display/ai/directional/south,
-/obj/structure/railing{
-	dir = 8
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"bA" = (
+/obj/machinery/door/airlock{
+	name = "Dorm 1"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/carpet/purple,
 /area/shuttle/ncvtitan)
 "bC" = (
 /obj/structure/extinguisher_cabinet/directional/south,
@@ -55,8 +75,8 @@
 /area/shuttle/ncvtitan)
 "bI" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/sign/poster/official/safety_internals{
-	pixel_y = 32
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 1
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
@@ -82,20 +102,27 @@
 /obj/effect/spawner/armory_spawn/centcom_lasers,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
-"bY" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/carpet/red,
+"bX" = (
+/obj/machinery/vending/boozeomat/all_access,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
-"cd" = (
-/obj/effect/turf_decal/trimline/green/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/green/line{
-	dir = 8
-	},
+"bY" = (
+/obj/machinery/computer/market_link,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
+"cd" = (
+/obj/effect/turf_decal/bot,
+/obj/item/stack/sheet/iron/fifty,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan/export_bay)
 "cf" = (
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"cp" = (
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "cJ" = (
@@ -103,6 +130,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/caution,
+/obj/machinery/light/directional/south,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "cQ" = (
@@ -110,6 +140,18 @@
 	dir = 8
 	},
 /turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"cS" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 8;
+	height = 7;
+	id = "supply_away";
+	name = "NCV Titan Dock 2";
+	roundstart_template = /datum/map_template/shuttle/cargo;
+	width = 20
+	},
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "cT" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -120,19 +162,21 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "db" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"dk" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
 "dy" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "dB" = (
-/obj/machinery/light/directional/south,
-/turf/open/floor/iron/dark/red,
+/obj/effect/landmark/ert_spawn,
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "dD" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -141,11 +185,28 @@
 /obj/machinery/vending/drugs,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"dH" = (
+/obj/machinery/light/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
 "dL" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"dO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"dR" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "dU" = (
 /obj/structure/artilleryplaceholder{
@@ -158,25 +219,42 @@
 /area/shuttle/ncvtitan)
 "em" = (
 /obj/structure/sign/logo,
-/turf/open/floor/glass,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/ncvtitan)
+"eo" = (
+/obj/effect/turf_decal/trimline/green/filled/warning{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "eJ" = (
-/obj/machinery/door/airlock/multi_tile/metal{
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/machinery/door/poddoor/ert,
-/turf/open/floor/iron/dark/smooth_large,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"eW" = (
+/obj/machinery/bsa_powercore,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "eY" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "fd" = (
-/obj/structure/extinguisher_cabinet/directional/north,
-/obj/machinery/vending/security,
-/turf/open/floor/iron/dark,
+/obj/machinery/status_display/supply{
+	pixel_y = -32
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "fh" = (
 /obj/effect/turf_decal/siding/thinplating{
@@ -197,17 +275,17 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "fC" = (
-/obj/docking_port/stationary{
-	dheight = 3;
-	dir = 2;
-	dwidth = 8;
-	height = 11;
-	id = "ferry_ntf";
-	name = "NTF Ferry Dock";
-	roundstart_template = null;
-	width = 20
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/machinery/power/smes/magical,
+/obj/structure/cable,
 /turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"fP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/caution,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "fT" = (
 /obj/structure/awaymissions/wildwest/masterclock,
@@ -230,9 +308,38 @@
 /obj/effect/landmark/start/bridge_officer,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
-"gf" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet/cyan,
+"gj" = (
+/obj/machinery/light/red/directional/east,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"gk" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"gr" = (
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 8
+	},
+/area/shuttle/ncvtitan)
+"gv" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"gx" = (
+/obj/structure/table/reinforced,
+/obj/item/grenade/c4{
+	pixel_x = -4
+	},
+/obj/item/grenade/c4{
+	pixel_x = 6
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "gz" = (
 /obj/structure/table/glass,
@@ -255,10 +362,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/storage/secure/safe{
+	pixel_x = -23
+	},
 /turf/open/floor/carpet/royalblue,
-/area/shuttle/ncvtitan)
-"gU" = (
-/turf/open/floor/carpet/blue,
 /area/shuttle/ncvtitan)
 "gX" = (
 /obj/structure/chair/office{
@@ -277,7 +384,9 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "hb" = (
-/obj/machinery/door/airlock/service,
+/obj/machinery/door/airlock/service{
+	name = "Kitchen"
+	},
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/ncvtitan)
 "he" = (
@@ -296,12 +405,19 @@
 /obj/effect/turf_decal/caution{
 	dir = 1
 	},
-/obj/machinery/light/directional/north,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "hp" = (
 /obj/machinery/light/directional/north,
-/turf/open/floor/carpet/blue,
+/obj/effect/turf_decal/trimline/green/end{
+	dir = 1
+	},
+/obj/machinery/computer/cryopod{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "ht" = (
 /obj/effect/turf_decal/tile/yellow,
@@ -328,17 +444,16 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "hu" = (
-/obj/machinery/shower{
-	pixel_y = 16
-	},
-/turf/open/floor/iron/freezer,
+/obj/structure/dresser,
+/turf/open/floor/carpet/orange,
 /area/shuttle/ncvtitan)
 "hw" = (
-/turf/open/floor/carpet/cyan,
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "hz" = (
 /obj/machinery/light/directional/north,
-/turf/open/floor/carpet/cyan,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
 "hB" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -371,10 +486,17 @@
 /obj/effect/spawner/randomsnackvend,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
-"ib" = (
-/obj/effect/turf_decal/trimline/green/filled/warning,
-/turf/open/floor/iron/dark,
+"ia" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Imports"
+	},
+/turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"ib" = (
+/obj/effect/turf_decal/bot,
+/obj/item/stack/sheet/glass/fifty,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan/export_bay)
 "ic" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/light/directional/south,
@@ -386,6 +508,11 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
+"if" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "ig" = (
 /obj/effect/turf_decal/siding/red{
 	dir = 10
@@ -396,9 +523,8 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "io" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/wardrobe/cargotech,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "iu" = (
@@ -414,33 +540,64 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "iz" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/iron/dark/smooth_large,
+/obj/structure/bed,
+/turf/open/floor/iron/dark/red,
+/area/shuttle/ncvtitan)
+"iK" = (
+/obj/item/storage/box/donkpockets/donkpocketgondola,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "iR" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
+"iW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "iX" = (
-/turf/open/floor/iron/dark/textured_edge{
+/obj/effect/landmark/start/deck_crew,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"iY" = (
+/obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"jb" = (
+/obj/machinery/light/red/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "jf" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/iron/dark/smooth_large,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark/red,
+/area/shuttle/ncvtitan)
+"jo" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/wood,
 /area/shuttle/ncvtitan)
 "jp" = (
-/obj/structure/chair/comfy/brown{
+/obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/open/floor/carpet/cyan,
-/area/shuttle/ncvtitan)
-"jx" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/open/floor/iron/smooth_large,
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
+	},
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "jE" = (
 /obj/machinery/oven,
@@ -452,28 +609,53 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
-"jS" = (
+"jN" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 6
+	dir = 8
+	},
+/obj/machinery/conveyor/inverted{
+	dir = 10;
+	id = "NCVTITUNLOAD1"
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"jS" = (
+/obj/effect/turf_decal/siding/brown/corner{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"jY" = (
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/brown{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"ka" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
+/obj/machinery/recharger,
+/turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "kb" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/gun/grenadelauncher,
+/obj/item/gun/grenadelauncher{
+	pixel_y = -10
+	},
+/obj/machinery/recharger,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "ke" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = 2
-	},
-/obj/structure/mirror/directional/east,
-/turf/open/floor/iron/freezer,
+/obj/structure/bed,
+/obj/item/bedsheet/dorms,
+/turf/open/floor/carpet/orange,
 /area/shuttle/ncvtitan)
 "kg" = (
 /obj/machinery/computer/crew{
@@ -481,27 +663,36 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
-"kw" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/sign/poster/official/anniversary_vintage_reprint{
-	pixel_y = 32
+"kA" = (
+/mob/living/simple_animal/pet/gondola{
+	desc = "Gondola is the silent walker. Having no hands he embodies the Taoist principle of wu-wei (non-action) while his smiling facial expression shows his utter and complete acceptance of the world as it is. This one defends a box of gondola flavoured donks.";
+	name = "Guardian of the Gondola Pockets";
+	real_name = "Guardian of the Gondola Pockets"
 	},
-/turf/open/floor/iron/smooth_large,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "kJ" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/red,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "kM" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
 /turf/open/floor/carpet/executive,
 /area/shuttle/ncvtitan)
+"kS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "lf" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/carpet/orange,
+/obj/machinery/door/airlock/maintenance,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "lk" = (
 /obj/structure/chair/sofa/corp{
@@ -523,22 +714,36 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "lo" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
-/turf/open/floor/carpet/cyan,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/machinery/meter,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "lA" = (
 /obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/door/airlock/external{
-	name = "NSS Titan";
+	name = "NCV Titan";
 	req_access_txt = "101"
 	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/docking_port/mobile{
+	dir = 2;
+	dwidth = 46;
+	height = 37;
+	id = "titan";
+	launch_status = 0;
+	name = "NCV Titan";
+	overmap_shuttle_type = /datum/overmap_object/shuttle/ess_crow;
+	port_direction = 8;
+	preferred_direction = 4;
+	width = 84
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "lB" = (
-/turf/open/floor/carpet/orange,
+/obj/structure/chair/office,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "lG" = (
 /obj/structure/artilleryplaceholder/decorative{
@@ -548,13 +753,8 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "lQ" = (
-/obj/machinery/vending/toyliberationstation,
-/turf/open/floor/plating,
-/area/shuttle/ncvtitan)
-"lU" = (
-/turf/open/floor/iron/dark/textured_edge{
-	dir = 4
-	},
+/obj/structure/lattice,
+/turf/closed/wall/mineral/titanium,
 /area/shuttle/ncvtitan)
 "lY" = (
 /obj/effect/mapping_helpers/airlock/locked,
@@ -564,13 +764,28 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
+"mc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"mo" = (
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/ncvtitan)
+"mp" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/freezer,
+/area/shuttle/ncvtitan)
 "ms" = (
 /obj/machinery/shuttle_manipulator,
+/obj/structure/cable,
 /turf/open/floor/circuit/green,
 /area/shuttle/ncvtitan)
-"mw" = (
-/obj/structure/chair/comfy/brown,
-/turf/open/floor/carpet/blue,
+"mz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "mD" = (
 /obj/effect/turf_decal/trimline/green/filled/warning{
@@ -588,6 +803,7 @@
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "mJ" = (
@@ -608,11 +824,29 @@
 /obj/machinery/light/cold/directional/south,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
+"mT" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/carpet/royalblue,
+/area/shuttle/ncvtitan)
 "nd" = (
 /obj/structure/chair/sofa/corp{
 	dir = 1
 	},
 /turf/open/floor/carpet/neon/simple/cyan,
+/area/shuttle/ncvtitan)
+"ng" = (
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/brown{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"ni" = (
+/obj/machinery/autolathe/hacked,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "nm" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -639,16 +873,39 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/shuttle/ncvtitan)
-"nG" = (
-/turf/open/space/basic,
-/area/space)
+"nt" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/airlock/multi_tile/metal{
+	name = "Exports";
+	req_access_txt = "101"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"nw" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "nK" = (
 /obj/structure/filingcabinet/medical,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "nM" = (
-/obj/structure/chair/sofa/corp,
-/turf/open/floor/carpet/neon/simple/cyan,
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
+	},
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "nP" = (
 /obj/machinery/computer/shuttle/ferry{
@@ -660,7 +917,11 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/turf_decal/caution/stand_clear,
+/obj/structure/sign/poster/official/obey{
+	pixel_y = -32
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "nZ" = (
@@ -679,6 +940,11 @@
 	},
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"oc" = (
+/obj/item/clothing/under/costume/gondola,
+/obj/item/clothing/mask/gondola,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
 "od" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -687,17 +953,25 @@
 /turf/open/floor/carpet/executive,
 /area/shuttle/ncvtitan)
 "oe" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
-/turf/open/floor/carpet/orange,
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Dorms"
+	},
+/turf/open/floor/glass,
+/area/shuttle/ncvtitan)
+"of" = (
+/obj/machinery/computer/security,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"oi" = (
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
 "ok" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/caution,
-/obj/machinery/light/directional/south,
-/turf/open/floor/iron/smooth_large,
+/obj/structure/lattice,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/ncvtitan)
 "om" = (
 /obj/structure/table/reinforced,
@@ -707,12 +981,20 @@
 /obj/item/flashlight/lamp,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
+"oq" = (
+/obj/machinery/conveyor_switch/oneway{
+	id = "NCVTITLOAD1";
+	pixel_x = -10
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "oz" = (
 /obj/effect/turf_decal/siding/green{
 	dir = 4
 	},
 /obj/structure/table/reinforced,
 /obj/item/flashlight/seclite,
+/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "oC" = (
@@ -725,13 +1007,26 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "oD" = (
-/turf/open/floor/iron/dark/red,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/template_noop)
+"oG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "oO" = (
 /obj/structure/artilleryplaceholder{
 	icon_state = "18"
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/ncvtitan)
+"oZ" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/sign/poster/official/anniversary_vintage_reprint{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "pb" = (
 /obj/structure/shuttle/engine/propulsion/burst{
@@ -740,9 +1035,18 @@
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "pv" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
+/obj/item/stack/package_wrap,
+/obj/item/hand_labeler,
+/obj/structure/table,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"pK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
+/obj/effect/turf_decal/caution,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "pM" = (
@@ -766,37 +1070,52 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
+"pX" = (
+/obj/effect/turf_decal/trimline/green/filled/warning,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"pY" = (
+/obj/structure/filingcabinet/security,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"qa" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "qo" = (
-/obj/structure/fireplace,
+/obj/structure/closet/secure_closet/personal/cabinet,
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "qp" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
+/obj/effect/turf_decal/siding/brown/corner{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
+"qr" = (
+/obj/effect/turf_decal/stripes/corner,
+/obj/machinery/light/floor,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "qC" = (
-/obj/effect/turf_decal/trimline/green/filled/warning{
-	dir = 5
+/obj/machinery/shower{
+	pixel_y = 16
 	},
-/turf/open/floor/iron/textured,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/freezer,
 /area/shuttle/ncvtitan)
 "qD" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = 2
+/obj/machinery/shower{
+	pixel_y = 16
 	},
-/obj/structure/mirror/directional/east,
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron/freezer,
 /area/shuttle/ncvtitan)
 "qG" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 4
-	},
-/turf/open/floor/carpet/neon/simple/cyan,
+/turf/open/floor/iron/freezer,
 /area/shuttle/ncvtitan)
 "qN" = (
 /obj/structure/artilleryplaceholder{
@@ -812,18 +1131,49 @@
 /turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
 "rd" = (
-/obj/machinery/vending/games,
-/turf/open/floor/glass,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/obj/structure/mirror/directional/east,
+/turf/open/floor/iron/freezer,
 /area/shuttle/ncvtitan)
 "rf" = (
 /obj/machinery/light/directional/south,
-/turf/open/floor/glass,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
-"rv" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/syringes,
-/obj/item/gun/syringe/rapidsyringe,
-/turf/open/floor/iron/dark/textured_large,
+"rg" = (
+/obj/machinery/door/window/brigdoor/security/cell{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/red,
+/area/shuttle/ncvtitan)
+"ro" = (
+/obj/machinery/vending/access/command,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
+/area/shuttle/ncvtitan)
+"rp" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"rt" = (
+/obj/structure/closet/secure_closet/ert_med,
+/obj/structure/sign/directions/medical{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/shuttle/ncvtitan)
 "rB" = (
 /obj/structure/chair/comfy/brown{
@@ -833,6 +1183,12 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
+/area/shuttle/ncvtitan)
+"rE" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
 "rG" = (
 /obj/effect/turf_decal/tile/yellow,
@@ -846,35 +1202,70 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "rP" = (
-/obj/machinery/computer/security,
-/turf/open/floor/iron/dark,
+/obj/structure/table,
+/obj/item/folder/red{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/stamp{
+	pixel_x = -7
+	},
+/obj/item/stamp/denied{
+	pixel_x = 5
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "rQ" = (
 /obj/machinery/light/directional/west,
+/obj/effect/spawner/randomsnackvend,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"rS" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/emps,
+/obj/item/gun/energy/ionrifle,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/ncvtitan)
+"rY" = (
+/obj/machinery/light/directional/north,
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "sd" = (
-/turf/open/floor/iron/freezer,
+/obj/machinery/light/directional/north,
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/carpet/orange,
 /area/shuttle/ncvtitan)
 "sn" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/west,
+/obj/item/storage/lockbox/medal{
+	pixel_x = -1;
+	pixel_y = 6
+	},
 /turf/open/floor/wood,
 /area/shuttle/ncvtitan)
-"sH" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+"sr" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	dir = 4;
+	name = "ERT Equipment"
+	},
+/obj/machinery/door/poddoor/ert,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/ncvtitan)
-"sL" = (
-/obj/structure/table/reinforced,
-/obj/item/grenade/c4{
-	pixel_x = -4
-	},
-/obj/item/grenade/c4{
-	pixel_x = 6
-	},
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/dark/textured_large,
+"sH" = (
+/obj/structure/dresser,
+/turf/open/floor/carpet/purple,
+/area/shuttle/ncvtitan)
+"sR" = (
+/obj/effect/turf_decal/trimline/green/filled/warning,
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"sU" = (
+/obj/structure/cable,
+/turf/open/floor/glass,
 /area/shuttle/ncvtitan)
 "tb" = (
 /obj/effect/turf_decal/stripes/line{
@@ -884,13 +1275,14 @@
 /obj/effect/spawner/armory_spawn/centcom_rifles,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
-"tc" = (
-/obj/effect/landmark/ert_spawn,
-/obj/effect/turf_decal/stripes/box,
-/turf/open/floor/iron/dark,
-/area/shuttle/ncvtitan)
 "tf" = (
 /turf/open/floor/carpet/neon/simple/cyan/nodots,
+/area/shuttle/ncvtitan)
+"th" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "tk" = (
 /obj/structure/artilleryplaceholder{
@@ -906,14 +1298,12 @@
 /obj/effect/turf_decal/caution{
 	dir = 1
 	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "ts" = (
 /obj/structure/chair/office,
 /turf/open/floor/iron/smooth_large,
-/area/shuttle/ncvtitan)
-"tA" = (
-/turf/open/floor/carpet/red,
 /area/shuttle/ncvtitan)
 "tD" = (
 /obj/structure/artilleryplaceholder{
@@ -922,12 +1312,10 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "tG" = (
-/obj/structure/closet/secure_closet/ert_engi,
-/obj/structure/sign/directions/engineering{
-	pixel_y = 24
-	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron,
+/obj/structure/table/reinforced,
+/obj/item/storage/box/zipties,
+/obj/item/storage/box/zipties,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "tI" = (
 /obj/machinery/light/directional/south,
@@ -950,10 +1338,14 @@
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/ncvtitan)
 "tY" = (
-/obj/machinery/computer/emergency_shuttle{
+/obj/machinery/computer/communications{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"uf" = (
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
 "uk" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -962,11 +1354,17 @@
 /obj/structure/bed/roller,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"um" = (
+/obj/machinery/mining_laser{
+	dir = 4
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ncvtitan)
 "uo" = (
 /obj/structure/sign/logo{
 	icon_state = "nanotrasen_sign2"
 	},
-/turf/open/floor/glass,
+/turf/open/floor/iron/textured_large,
 /area/shuttle/ncvtitan)
 "ur" = (
 /obj/machinery/chem_heater/withbuffer,
@@ -996,21 +1394,17 @@
 /obj/structure/table/glass,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
-"uC" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/donkpockets/donkpocketpizza,
-/obj/item/storage/box/donkpockets/donkpocketpizza,
-/obj/item/storage/box/donkpockets/donkpocketpizza,
-/obj/item/storage/box/donkpockets/donkpocketpizza,
-/obj/item/storage/box/donkpockets/donkpocketpizza,
-/turf/open/floor/iron/cafeteria,
-/area/shuttle/ncvtitan)
 "uD" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/ncvtitan)
-"uF" = (
-/obj/structure/extinguisher_cabinet/directional/north,
-/turf/open/floor/glass,
+"uG" = (
+/obj/machinery/status_display/supply{
+	pixel_y = -32
+	},
+/obj/machinery/computer/cargo_control_console{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "uO" = (
 /obj/machinery/light/directional/north,
@@ -1020,13 +1414,13 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 9
 	},
+/obj/machinery/computer/station_goal,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "vr" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
+/obj/machinery/light/directional/north,
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/carpet/purple,
 /area/shuttle/ncvtitan)
 "vy" = (
 /obj/structure/sign/warning/securearea,
@@ -1040,24 +1434,26 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "vL" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet/orange,
+/obj/machinery/status_display/supply{
+	pixel_y = 30
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"vM" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "vQ" = (
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "vR" = (
-/obj/structure/chair/sofa/corp/corner{
-	dir = 4
-	},
-/obj/structure/extinguisher_cabinet/directional/north,
-/turf/open/floor/carpet/neon/simple/cyan,
+/obj/structure/bed,
+/obj/item/bedsheet/dorms,
+/turf/open/floor/carpet/purple,
 /area/shuttle/ncvtitan)
 "vU" = (
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 4
-	},
-/turf/open/floor/glass,
+/obj/structure/dresser,
+/turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "wb" = (
 /obj/structure/artilleryplaceholder{
@@ -1093,9 +1489,11 @@
 /obj/structure/chair/comfy/brown,
 /turf/open/floor/wood,
 /area/shuttle/ncvtitan)
-"wJ" = (
-/obj/structure/chair/comfy/brown,
-/turf/open/floor/carpet/red,
+"wW" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
 "wZ" = (
 /obj/structure/table/wood,
@@ -1110,9 +1508,19 @@
 	},
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"xl" = (
+/obj/effect/turf_decal/siding/red,
+/turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"xr" = (
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 4
+	},
+/area/shuttle/ncvtitan)
 "xw" = (
-/obj/structure/bed,
-/turf/open/floor/iron/dark/red,
+/obj/machinery/light/directional/north,
+/obj/structure/closet/secure_closet/personal/cabinet,
+/turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "xy" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -1127,17 +1535,14 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
 	},
-/obj/effect/spawner/randomsnackvend,
 /obj/machinery/light/directional/north,
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "xI" = (
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "xJ" = (
-/obj/structure/chair/office{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 4
 	},
@@ -1149,6 +1554,13 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
+"xP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/caution/stand_clear,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "xQ" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/iron/dark,
@@ -1158,6 +1570,7 @@
 	name = "Administrative Office";
 	req_access_txt = "109"
 	},
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/shuttle/ncvtitan)
 "ya" = (
@@ -1170,16 +1583,19 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "yi" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/sign/poster/official/obey{
-	pixel_y = -32
-	},
-/turf/open/floor/iron/smooth_large,
+/obj/structure/closet/secure_closet/quartermaster,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "yj" = (
-/turf/open/floor/iron/dark/smooth_large,
+/obj/machinery/vending/wardrobe/sec_wardrobe,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"yp" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "yv" = (
 /obj/effect/turf_decal/trimline/green/filled/warning{
@@ -1198,16 +1614,18 @@
 /obj/structure/sign/logo{
 	icon_state = "nanotrasen_sign3"
 	},
-/turf/open/floor/glass,
+/turf/open/floor/iron/textured_large,
 /area/shuttle/ncvtitan)
 "yY" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
-"zl" = (
-/obj/effect/spawner/structure/window,
+"zk" = (
+/obj/machinery/light/red/directional/north,
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "zp" = (
@@ -1240,22 +1658,37 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "zC" = (
-/obj/structure/fans/tiny/forcefield{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
+/obj/docking_port/stationary{
+	dheight = 3;
+	dir = 2;
+	dwidth = 8;
+	height = 11;
+	id = "ferry_ntf";
+	name = "NCV Titan Dock 1";
+	width = 20
 	},
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "zE" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/structure/bed/double,
+/obj/item/bedsheet/centcom/double,
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "zJ" = (
-/obj/machinery/door/airlock,
-/turf/open/floor/carpet/orange,
+/obj/machinery/vending/wardrobe/cargo_wardrobe,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"zU" = (
+/obj/structure/closet/secure_closet/ert_sec,
+/obj/structure/sign/directions/security{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/peppertank/directional/east,
+/turf/open/floor/iron,
 /area/shuttle/ncvtitan)
 "zV" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -1274,15 +1707,9 @@
 /turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
 "Aa" = (
-/obj/structure/closet/secure_closet/ert_engi,
-/obj/machinery/airalarm/directional/north,
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/floor/iron,
+/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/vending/security,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Ai" = (
 /obj/structure/artilleryplaceholder{
@@ -1294,7 +1721,14 @@
 /obj/structure/sign/logo{
 	icon_state = "nanotrasen_sign4"
 	},
-/turf/open/floor/glass,
+/turf/open/floor/iron/textured_large,
+/area/shuttle/ncvtitan)
+"Ap" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Aq" = (
 /obj/structure/chair/office,
@@ -1303,19 +1737,13 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
-"As" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/donkpockets/donkpocketgondola,
-/obj/item/storage/box/donkpockets/donkpocketgondola,
-/obj/item/storage/box/donkpockets/donkpocketgondola,
-/obj/item/storage/box/donkpockets/donkpocketgondola,
-/turf/open/floor/iron/cafeteria,
+"Av" = (
+/obj/effect/landmark/start/deck_crew,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Aw" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/iron/smooth_large,
+/obj/structure/cable,
+/turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
 "Ay" = (
 /obj/structure/artilleryplaceholder/decorative{
@@ -1325,10 +1753,18 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "AA" = (
-/obj/machinery/door/airlock/silver{
-	name = "Bathroom"
+/obj/machinery/shower{
+	dir = 1
 	},
 /turf/open/floor/iron/freezer,
+/area/shuttle/ncvtitan)
+"AD" = (
+/obj/structure/sign/warning/securearea,
+/turf/closed/indestructible/titanium/nodiagonal,
+/area/shuttle/ncvtitan)
+"AS" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/ncvtitan)
 "Bh" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1343,6 +1779,11 @@
 /obj/item/storage/belt/military,
 /obj/item/storage/belt/military,
 /turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Bn" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Bp" = (
 /obj/structure/table/wood,
@@ -1361,6 +1802,20 @@
 	pixel_y = 8
 	},
 /turf/open/floor/carpet/executive,
+/area/shuttle/ncvtitan)
+"Bs" = (
+/obj/structure/closet/crate,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"BA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "NCVTITUNLOAD1"
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "BB" = (
 /obj/structure/table/reinforced,
@@ -1389,6 +1844,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
+"BL" = (
+/obj/machinery/computer/shuttle/ncv_titan{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
 "BT" = (
 /obj/structure/rack/shelf,
 /obj/item/clothing/suit/armor/riot,
@@ -1401,11 +1862,29 @@
 /obj/item/clothing/head/helmet/riot,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
-"BZ" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/toolbox/mechanical,
-/turf/open/floor/iron/dark/textured_large,
+"BX" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Cl" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"Cr" = (
+/obj/structure/closet/secure_closet/ert_engi,
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/shuttle/ncvtitan)
 "Ct" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -1416,47 +1895,42 @@
 /area/shuttle/ncvtitan)
 "CD" = (
 /obj/structure/table/wood,
-/obj/item/folder/red{
-	pixel_x = -3;
-	pixel_y = 2
-	},
 /obj/item/stamp/centcom{
 	pixel_x = 8
 	},
-/obj/item/pen/red{
-	pixel_x = 6;
-	pixel_y = 11
-	},
 /obj/machinery/light/directional/east,
+/obj/item/clipboard{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/pen{
+	pixel_x = 6;
+	pixel_y = 10
+	},
 /turf/open/floor/carpet/executive,
-/area/shuttle/ncvtitan)
-"CI" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/lockbox/loyalty,
-/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "CW" = (
 /obj/machinery/artillerycontrol,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "CY" = (
-/obj/machinery/door/airlock/multi_tile/metal{
-	req_access_txt = "101"
-	},
-/turf/open/floor/iron/smooth_large,
+/obj/structure/chair/comfy/brown,
+/turf/open/floor/carpet/purple,
 /area/shuttle/ncvtitan)
 "Dr" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/red{
 	dir = 8
 	},
+/obj/machinery/recharger,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"Dt" = (
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "DI" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
-	},
-/turf/open/floor/carpet/red,
+/turf/open/floor/carpet/purple,
 /area/shuttle/ncvtitan)
 "DO" = (
 /obj/effect/turf_decal/siding/green{
@@ -1466,11 +1940,19 @@
 /obj/item/clipboard,
 /obj/item/folder/red,
 /obj/item/pen/red,
+/obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "Ea" = (
-/obj/machinery/light/floor,
-/turf/open/floor/plating,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Ek" = (
+/obj/effect/turf_decal/siding/red{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/glass,
 /area/shuttle/ncvtitan)
 "El" = (
 /obj/structure/artilleryplaceholder{
@@ -1489,21 +1971,48 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "Er" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Ew" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/turf_decal/caution,
-/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"EH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"EM" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"EU" = (
+/obj/machinery/vending/clothing,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
 "Fh" = (
 /obj/machinery/light/directional/north,
-/obj/effect/turf_decal/trimline/green/end{
-	dir = 1
+/obj/machinery/status_display/supply{
+	pixel_y = 30
 	},
-/obj/machinery/computer/cryopod{
-	pixel_y = 24
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Fk" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Fm" = (
@@ -1545,12 +2054,28 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
+"FH" = (
+/obj/structure/table,
+/obj/item/clipboard,
+/obj/item/pen/red,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
 "FI" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/smooth,
 /area/shuttle/ncvtitan)
 "FM" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"FP" = (
+/obj/effect/turf_decal/siding/red/corner{
 	dir = 4
 	},
 /turf/open/floor/iron/textured,
@@ -1577,15 +2102,22 @@
 /area/shuttle/ncvtitan)
 "FZ" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/box/donkpockets/donkpocketberry,
-/obj/item/storage/box/donkpockets/donkpocketberry,
-/obj/item/storage/box/donkpockets/donkpocketberry,
-/obj/item/storage/box/donkpockets/donkpocketberry,
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/ncvtitan)
+"Gq" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/carpet/orange,
+/area/shuttle/ncvtitan)
 "Gu" = (
-/obj/machinery/door/airlock,
-/turf/open/floor/carpet/blue,
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"Gy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "GB" = (
 /obj/structure/artilleryplaceholder/decorative{
@@ -1595,13 +2127,33 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "GH" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/sign/poster/official/get_your_legs{
-	pixel_x = 32
-	},
+/obj/structure/filingcabinet/filingcabinet,
+/obj/effect/turf_decal/bot,
+/obj/structure/cable,
 /turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"GJ" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/iron/freezer,
+/area/shuttle/ncvtitan)
+"GL" = (
+/obj/machinery/door/airlock/mining/glass{
+	name = "Docking Control"
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"GM" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/ncvtitan)
+"GO" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/red,
 /area/shuttle/ncvtitan)
 "GQ" = (
 /obj/structure/artilleryplaceholder/decorative{
@@ -1610,10 +2162,21 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
+"GU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "NCVTITLOAD1"
+	},
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "GX" = (
 /obj/effect/turf_decal/trimline/green/filled/warning{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "Hc" = (
@@ -1628,9 +2191,9 @@
 /obj/item/clothing/head/helmet/riot,
 /turf/open/floor/iron/dark/textured_edge,
 /area/shuttle/ncvtitan)
-"Ho" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/iron/dark,
+"Hd" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Hu" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -1642,13 +2205,14 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "HB" = (
-/obj/machinery/door/airlock,
-/turf/open/floor/carpet/red,
+/obj/structure/chair/comfy/brown,
+/turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "HC" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
-/turf/open/floor/carpet/orange,
+/obj/machinery/computer/cargo{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "HE" = (
 /obj/machinery/vending/dinnerware,
@@ -1660,9 +2224,12 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "HI" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/zipties,
-/obj/item/storage/box/zipties,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "HN" = (
@@ -1670,6 +2237,10 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/regular,
 /turf/open/floor/iron/dark/textured_large,
+/area/shuttle/ncvtitan)
+"HT" = (
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "Ib" = (
 /obj/structure/table/wood,
@@ -1681,6 +2252,11 @@
 	},
 /obj/item/lighter,
 /turf/open/floor/carpet/royalblue,
+/area/shuttle/ncvtitan)
+"Id" = (
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/brown,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Ie" = (
 /obj/effect/turf_decal/siding/green/corner{
@@ -1696,11 +2272,16 @@
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/ncvtitan)
 "Is" = (
+/obj/structure/cable,
 /turf/open/floor/wood,
 /area/shuttle/ncvtitan)
-"Iv" = (
-/obj/machinery/computer/communications{
-	dir = 8
+"It" = (
+/obj/machinery/vending/games,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
+/area/shuttle/ncvtitan)
+"Iu" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
@@ -1721,15 +2302,35 @@
 	dir = 8
 	},
 /area/shuttle/ncvtitan)
+"IW" = (
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/machinery/door/airlock/external{
+	name = "NCV Titan";
+	req_access_txt = "101"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
 "Jb" = (
-/obj/machinery/door/poddoor/ert,
-/turf/open/floor/iron/dark/smooth_large,
+/obj/structure/table,
+/obj/item/stamp/denied{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/stamp{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Jh" = (
 /obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark/textured_edge{
-	dir = 1
-	},
+/obj/structure/table/reinforced,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Ji" = (
 /obj/structure/chair/sofa/corp/left{
@@ -1741,39 +2342,69 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
+"Jn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/ncvtitan)
+"Jq" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/textured_large,
+/area/shuttle/ncvtitan)
 "Jw" = (
-/obj/machinery/shower{
+/turf/open/floor/carpet/orange,
+/area/shuttle/ncvtitan)
+"Jy" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
 	},
-/turf/open/floor/iron/freezer,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "JC" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "JH" = (
-/obj/machinery/shower{
-	pixel_y = 16
-	},
-/obj/machinery/light/directional/west,
-/turf/open/floor/iron/freezer,
+/obj/structure/bed,
+/obj/item/bedsheet/dorms,
+/turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
-"JX" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
-/turf/open/floor/carpet/blue,
+"JK" = (
+/obj/structure/closet/secure_closet/ert_com,
+/obj/structure/sign/directions/command{
+	pixel_y = 24
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/shuttle/ncvtitan)
+"JL" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/carpet/purple,
 /area/shuttle/ncvtitan)
 "Kc" = (
-/obj/machinery/cryopod{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Kf" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
 /turf/open/floor/wood,
+/area/shuttle/ncvtitan)
+"Kn" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "Kp" = (
 /obj/structure/artilleryplaceholder{
@@ -1808,11 +2439,39 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"KQ" = (
+/obj/machinery/door/airlock/silver{
+	name = "Bathroom"
+	},
+/turf/open/floor/iron/freezer,
+/area/shuttle/ncvtitan)
+"KS" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/turf/open/floor/carpet/orange,
+/area/shuttle/ncvtitan)
 "KV" = (
-/obj/machinery/door/airlock/multi_tile/metal{
+/obj/machinery/door/airlock/external{
+	name = "NCV Titan";
 	req_access_txt = "101"
 	},
-/turf/open/floor/iron/dark,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"Lb" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/carpet/royalblue,
+/area/shuttle/ncvtitan)
+"Lf" = (
+/obj/structure/fans/tiny/forcefield{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "Lh" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -1824,11 +2483,6 @@
 	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/textured,
-/area/shuttle/ncvtitan)
-"Lo" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
-/turf/open/floor/carpet/cyan,
 /area/shuttle/ncvtitan)
 "Ls" = (
 /obj/effect/spawner/structure/window/shuttle,
@@ -1877,11 +2531,18 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
-"Mb" = (
-/obj/machinery/door/window/brigdoor/security/cell{
+"LY" = (
+/obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/iron/dark/red,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Mb" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Md" = (
 /obj/effect/turf_decal/stripes/line,
@@ -1894,8 +2555,10 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
 "Mj" = (
-/obj/machinery/light/directional/south,
-/turf/open/floor/iron/freezer,
+/obj/structure/chair/sofa/corp/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
 "Mk" = (
 /obj/effect/turf_decal/siding/green{
@@ -1908,12 +2571,37 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "Ml" = (
-/obj/machinery/vending/tool,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
+"Mm" = (
+/obj/effect/turf_decal/siding/red{
+	dir = 1
+	},
+/turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"Mr" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/light/floor,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "Ms" = (
-/obj/machinery/vending/engivend,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"Mu" = (
+/obj/machinery/light/directional/west,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"Mx" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
 /area/shuttle/ncvtitan)
 "MF" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1925,6 +2613,14 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 1
 	},
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"Na" = (
+/obj/effect/turf_decal/siding/red/corner{
+	dir = 1
+	},
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "Nj" = (
@@ -1936,21 +2632,40 @@
 	},
 /area/shuttle/ncvtitan)
 "Nu" = (
-/obj/structure/toilet{
+/obj/machinery/door/airlock{
+	name = "Dorm 2"
+	},
+/turf/open/floor/carpet/royalblue,
+/area/shuttle/ncvtitan)
+"Nv" = (
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/open/floor/iron/freezer,
+/obj/structure/window/reinforced,
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "NE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "NI" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/ammo_workbench/unlocked,
 /turf/open/floor/iron/dark/textured_large,
+/area/shuttle/ncvtitan)
+"NN" = (
+/obj/machinery/status_display/supply{
+	pixel_y = 2
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/ncvtitan)
 "NP" = (
 /obj/structure/artilleryplaceholder{
@@ -1977,27 +2692,45 @@
 	name = "Administrative Office";
 	req_access_txt = "109"
 	},
+/obj/structure/cable,
 /turf/open/floor/carpet/executive,
+/area/shuttle/ncvtitan)
+"Og" = (
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Dorms"
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Ol" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/ncvtitan)
 "Oq" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
-/turf/open/floor/carpet/red,
+/obj/structure/chair/sofa/corp,
+/turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
 "Ot" = (
-/obj/machinery/cryopod,
-/turf/open/floor/iron/dark,
+/obj/structure/chair/sofa/corp/left,
+/turf/open/floor/carpet/neon/simple/cyan,
+/area/shuttle/ncvtitan)
+"OB" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "OF" = (
 /turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
+"Pp" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/turf/open/floor/iron/smooth,
+/area/shuttle/ncvtitan)
 "Py" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
+/obj/effect/turf_decal/siding/brown/corner{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
@@ -2008,13 +2741,28 @@
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "PA" = (
-/obj/effect/landmark/start/deck_crew,
+/obj/structure/cable,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
+/area/shuttle/ncvtitan)
+"PG" = (
+/obj/machinery/door/poddoor/ert,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/ncvtitan)
+"PJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "PK" = (
-/obj/machinery/light/directional/north,
-/obj/structure/table/reinforced,
-/turf/open/floor/iron/dark,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"PP" = (
+/obj/machinery/door/airlock{
+	name = "Dorm 3"
+	},
+/turf/open/floor/carpet/orange,
 /area/shuttle/ncvtitan)
 "PT" = (
 /obj/effect/turf_decal/stripes/line,
@@ -2027,20 +2775,32 @@
 /obj/effect/landmark/start/deck_crew,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"Qd" = (
+/obj/structure/closet/secure_closet/ert_engi,
+/obj/structure/sign/directions/engineering{
+	pixel_y = 24
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/shuttle/ncvtitan)
 "Qp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Qz" = (
-/obj/structure/table,
-/obj/item/storage/box/donkpockets/donkpocketteriyaki,
-/obj/item/storage/box/donkpockets/donkpocketteriyaki,
-/obj/item/storage/box/donkpockets/donkpocketteriyaki,
-/obj/item/storage/box/donkpockets/donkpocketteriyaki,
+/obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/open/floor/iron/cafeteria,
+/area/shuttle/ncvtitan)
+"QA" = (
+/obj/effect/turf_decal/siding/red{
+	dir = 4
+	},
+/turf/open/floor/glass,
 /area/shuttle/ncvtitan)
 "QC" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2056,18 +2816,18 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
+"QE" = (
+/obj/machinery/light/directional/west,
+/obj/machinery/vending/cigarette,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
 "QI" = (
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 4
-	},
-/obj/machinery/light/directional/east,
-/turf/open/floor/glass,
+/obj/structure/sign/nanotrasen,
+/obj/structure/cable,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/ncvtitan)
 "QQ" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/emps,
-/obj/item/gun/energy/ionrifle,
-/turf/open/floor/iron/dark/textured_large,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/ncvtitan)
 "QS" = (
 /turf/open/floor/carpet/executive,
@@ -2093,8 +2853,24 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "QZ" = (
-/obj/effect/turf_decal/trimline/green/end,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan/export_bay)
+"Ra" = (
+/obj/machinery/light/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Rb" = (
+/obj/structure/closet/secure_closet/ert_sec,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/status_display/ai/directional/south,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/shuttle/ncvtitan)
 "Rh" = (
 /obj/structure/artilleryplaceholder{
@@ -2128,30 +2904,22 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "RO" = (
-/obj/structure/rack,
-/obj/item/gun/energy/e_gun{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/e_gun,
-/obj/structure/sign/nanotrasen{
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/iron,
+/obj/structure/table/reinforced,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "RP" = (
-/obj/structure/closet/secure_closet/ert_com,
-/obj/structure/sign/directions/command{
-	pixel_y = 24
+/obj/structure/table/reinforced,
+/obj/item/flashlight/seclite,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"RT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
 	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron,
+/obj/structure/cable,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "RV" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -2160,6 +2928,42 @@
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/machinery/smartfridge/organ,
 /turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"RZ" = (
+/obj/machinery/door/airlock/multi_tile/metal{
+	dir = 4;
+	name = "Auxillery Construction";
+	req_access_txt = "101"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"Sc" = (
+/obj/effect/turf_decal/siding/red/corner{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"Sg" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/caution,
+/obj/structure/extinguisher_cabinet/directional/south,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"Sl" = (
+/obj/structure/table/wood,
+/obj/machinery/light/directional/west,
+/obj/machinery/recharger,
+/turf/open/floor/wood,
+/area/shuttle/ncvtitan)
+"Sn" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/obj/machinery/meter,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "So" = (
 /obj/structure/artilleryplaceholder{
@@ -2170,20 +2974,35 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
+"SB" = (
+/obj/machinery/mining_laser{
+	dir = 4
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/ncvtitan)
 "SD" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet/blue,
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "SG" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
-"SL" = (
-/obj/effect/turf_decal/trimline/green/filled/warning{
-	dir = 6
-	},
-/turf/open/floor/iron/textured,
+"SX" = (
+/obj/machinery/rnd/production/techfab,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"Te" = (
+/turf/closed/indestructible/titanium/nodiagonal,
+/area/shuttle/ncvtitan)
+"Tf" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Th" = (
 /obj/structure/table/reinforced,
@@ -2199,6 +3018,16 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
+"Tn" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 12;
+	pixel_y = 2
+	},
+/obj/structure/mirror/directional/east,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/freezer,
+/area/shuttle/ncvtitan)
 "To" = (
 /obj/machinery/iv_drip,
 /turf/open/floor/iron/textured,
@@ -2206,19 +3035,41 @@
 "Tv" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 4;
+	name = "ERT Drop Bay";
 	req_access_txt = "101"
 	},
 /turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"Ty" = (
+/obj/machinery/light/directional/south,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/ncvtitan)
+"TA" = (
+/obj/structure/cable,
+/turf/open/floor/carpet/executive,
 /area/shuttle/ncvtitan)
 "TC" = (
 /obj/machinery/photocopier,
 /turf/open/floor/carpet/green,
 /area/shuttle/ncvtitan)
-"TK" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
+"TI" = (
+/obj/machinery/light/directional/east,
+/obj/machinery/deepfryer,
+/turf/open/floor/iron/cafeteria,
+/area/shuttle/ncvtitan)
+"TJ" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
 	},
-/turf/open/floor/carpet/orange,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"TK" = (
+/obj/structure/table,
+/obj/machinery/cell_charger_multi,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "TM" = (
 /obj/effect/turf_decal/siding/wood{
@@ -2270,9 +3121,7 @@
 /area/shuttle/ncvtitan)
 "Ue" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/caution/stand_clear{
-	dir = 1
-	},
+/obj/structure/cable,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Ui" = (
@@ -2289,8 +3138,22 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "UD" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/service{
+	name = "Dorms"
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"UE" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
 /turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"UG" = (
+/obj/machinery/light/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "UI" = (
 /obj/structure/extinguisher_cabinet/directional/north,
@@ -2309,13 +3172,12 @@
 	name = "Office";
 	req_access_txt = "101"
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "UO" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "UQ" = (
 /obj/machinery/modular_computer/console/preset/id/centcom{
@@ -2331,10 +3193,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
-/area/shuttle/ncvtitan)
-"Vb" = (
-/obj/machinery/light/directional/south,
-/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/ncvtitan)
 "Vc" = (
 /obj/structure/chair/comfy/brown{
@@ -2359,34 +3217,58 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
+"Vs" = (
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/turf/open/floor/carpet/neon/simple/cyan,
+/area/shuttle/ncvtitan)
 "Vw" = (
 /obj/machinery/door/airlock/vault{
 	name = "armory";
 	req_access_txt = "103"
 	},
-/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Vy" = (
-/obj/structure/chair/comfy/brown,
-/turf/open/floor/carpet/cyan,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/shuttle/ncvtitan)
 "VA" = (
 /obj/effect/turf_decal/trimline/green/filled/warning{
 	dir = 9
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "VD" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	dir = 4
+	dir = 4;
+	name = "Docks"
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
+"VF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/directional/south,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
+"VK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/iron/smooth_large,
+/area/shuttle/ncvtitan)
 "VL" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space)
+/turf/template_noop,
+/area/template_noop)
 "VU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -2402,36 +3284,68 @@
 	name = "Medbay";
 	req_access_txt = "101"
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
+"VX" = (
+/obj/machinery/atmospherics/components/binary/volume_pump{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
 "Wb" = (
-/obj/machinery/door/airlock/multi_tile/metal{
+/obj/machinery/door/airlock/external{
+	name = "NCV Titan";
 	req_access_txt = "101"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "Wh" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
 	},
+/obj/effect/turf_decal/siding/brown/corner,
 /turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"Ws" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Wt" = (
 /obj/structure/sign/logo{
 	icon_state = "nanotrasen_sign5"
 	},
-/turf/open/floor/glass,
+/turf/open/floor/iron/textured_large,
 /area/shuttle/ncvtitan)
 "Wu" = (
 /turf/open/floor/carpet/neon/simple/cyan,
 /area/shuttle/ncvtitan)
+"WG" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
 "WQ" = (
+/obj/structure/cable,
 /turf/open/floor/circuit/green,
 /area/shuttle/ncvtitan)
 "WT" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
-/turf/open/floor/carpet/blue,
+/obj/machinery/cryopod,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"WX" = (
+/obj/effect/turf_decal/siding/brown,
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"WZ" = (
+/obj/machinery/light/red/directional/west,
+/turf/open/floor/plating,
 /area/shuttle/ncvtitan)
 "Xa" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -2461,31 +3375,22 @@
 /area/shuttle/ncvtitan)
 "Xr" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
-/obj/machinery/vending/coffee,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/textured,
-/area/shuttle/ncvtitan)
-"Xt" = (
-/obj/structure/closet/secure_closet/ert_sec,
-/obj/structure/sign/directions/security{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/reagent_dispensers/peppertank/directional/east,
-/turf/open/floor/iron,
 /area/shuttle/ncvtitan)
 "Xy" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 1
 	},
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "Xz" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Diner"
+	},
+/obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "XA" = (
@@ -2525,10 +3430,8 @@
 /turf/open/floor/iron/textured,
 /area/shuttle/ncvtitan)
 "XF" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
-	},
-/turf/open/floor/carpet/blue,
+/obj/effect/turf_decal/trimline/green/end,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "XG" = (
 /obj/machinery/door/airlock/hatch{
@@ -2547,9 +3450,54 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ncvtitan)
+"XT" = (
+/obj/structure/window/reinforced,
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
+/turf/open/floor/plating,
+/area/shuttle/ncvtitan)
+"XV" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/ncvtitan)
+"XZ" = (
+/obj/structure/closet/secure_closet/ert_med,
+/obj/machinery/vending/wallmed/directional/south{
+	use_power = 0
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/shuttle/ncvtitan)
+"Yi" = (
+/obj/structure/rack,
+/obj/item/gun/energy/e_gun{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/gun/energy/e_gun,
+/obj/structure/sign/nanotrasen{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/shuttle/ncvtitan)
 "Yp" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
@@ -2575,21 +3523,25 @@
 /obj/effect/landmark/start/bridge_officer,
 /turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
+"Yt" = (
+/obj/effect/turf_decal/siding/red/corner,
+/turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
 "Yy" = (
-/obj/structure/table/reinforced,
-/obj/item/flashlight/seclite,
-/turf/open/floor/iron/dark,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/carpet/royalblue,
 /area/shuttle/ncvtitan)
 "YG" = (
-/obj/effect/turf_decal/stripes/box,
-/obj/effect/landmark/ert_spawn,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
-/area/shuttle/ncvtitan)
+/area/shuttle/ncvtitan/import_bay)
 "YK" = (
-/obj/effect/turf_decal/trimline/green/filled/warning{
-	dir = 4
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 4;
+	name = "Bridge"
 	},
-/turf/open/floor/iron/textured,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "YO" = (
 /obj/structure/table/wood,
@@ -2610,42 +3562,61 @@
 /area/shuttle/ncvtitan)
 "YU" = (
 /obj/machinery/light/directional/east,
+/obj/structure/table,
+/obj/item/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets/donkpocketberry,
+/obj/item/storage/box/donkpockets/donkpocketpizza,
+/obj/item/storage/box/donkpockets/donkpocketspicy,
+/obj/item/storage/box/donkpockets/donkpocketteriyaki,
 /turf/open/floor/iron/cafeteria,
 /area/shuttle/ncvtitan)
 "Za" = (
-/obj/machinery/door/airlock,
-/turf/open/floor/carpet/cyan,
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/carpet/purple,
+/area/shuttle/ncvtitan)
+"Zc" = (
+/turf/closed/indestructible/titanium,
 /area/shuttle/ncvtitan)
 "Zg" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet/red,
+/obj/structure/table,
+/obj/machinery/light/directional/north,
+/obj/item/clipboard,
+/obj/item/encryptionkey/headset_cargo,
+/obj/item/encryptionkey/headset_cargo,
+/obj/item/encryptionkey/headset_cargo,
+/obj/item/encryptionkey/headset_cargo,
+/obj/item/encryptionkey/headset_cargo,
+/obj/item/encryptionkey/headset_cargo,
+/obj/item/encryptionkey/headset_cargo,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "Zn" = (
 /obj/effect/turf_decal/trimline/green/filled/line,
 /turf/open/floor/iron/textured,
+/area/shuttle/ncvtitan)
+"Zs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/conveyor/inverted{
+	dir = 6;
+	id = "NCVTITLOAD1"
+	},
+/turf/open/floor/iron/smooth_large,
 /area/shuttle/ncvtitan)
 "Zt" = (
 /obj/effect/turf_decal/siding/thinplating,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/ncvtitan)
 "Zx" = (
-/obj/structure/closet/secure_closet/ert_med,
-/obj/structure/sign/directions/medical{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/dark/red,
 /area/shuttle/ncvtitan)
 "ZB" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green,
-/turf/open/floor/carpet/red,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
 /area/shuttle/ncvtitan)
 "ZF" = (
 /obj/structure/artilleryplaceholder{
@@ -2664,913 +3635,913 @@
 
 (1,1,1) = {"
 zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 zq
 "}
 (2,1,1) = {"
 zq
 pb
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 pb
 zq
 "}
 (3,1,1) = {"
 zq
-zq
+eJ
 pb
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 pb
-zq
+Kn
 zq
 "}
 (4,1,1) = {"
 zq
-uD
-zq
+fC
+jp
 pb
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 pb
-zq
-uD
+Nv
+Ms
 uD
 "}
 (5,1,1) = {"
 uD
-xI
-uD
-zq
+hw
+Ms
+jp
 pb
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+oD
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+oD
 pb
-zq
-uD
-xI
+Nv
+Ms
+iK
 uD
 "}
 (6,1,1) = {"
 uD
+hw
 xI
-xI
-uD
-zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-zq
-uD
-xI
-xI
-uD
-"}
-(7,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(8,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(9,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(10,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(11,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(12,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(13,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(14,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(15,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(16,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(17,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-xI
-xI
-xI
-uD
-"}
-(18,1,1) = {"
-uD
-xI
-xI
-xI
-uD
+Ms
+nM
 uD
 Ls
 uD
 uD
 zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-zq
-uD
-uD
-uD
-uD
-uD
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+Zc
+Te
+Te
+Te
+Te
+XT
+Ms
 xI
-xI
-xI
+oc
 uD
 "}
-(19,1,1) = {"
+(7,1,1) = {"
 uD
-xI
-xI
-xI
+hw
+hw
+Ms
 uD
-JH
-Jw
-uD
-Nu
-uD
-zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-zq
-uD
-BZ
-sL
-QQ
-rv
-uD
-xI
-xI
-xI
-uD
-"}
-(20,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-hu
-Jw
-uD
-sd
-qD
-uD
-zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-zq
-uD
-Ku
-Ku
-Ku
-Ku
-Ku
-uD
-xI
-xI
-xI
-uD
-"}
-(21,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-hu
-Jw
-uD
+qC
 AA
 uD
+GJ
 uD
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-tG
-Ku
-Ku
-Ku
-Ku
-Zx
-uD
-xI
-xI
-xI
-uD
-"}
-(22,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-sd
-sd
-sd
-sd
-sd
-Mj
-uD
-zC
-zC
-zC
-zC
-zC
-zC
-zC
-zC
-zC
-zC
-zC
-zC
-zC
-uD
-Aa
-iX
-iX
-iX
-iX
-ar
-uD
-xI
-xI
+zq
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+Zc
+Te
+ka
+gx
+rS
+aH
+Te
+Ms
+kA
 xI
 uD
 "}
-(23,1,1) = {"
+(8,1,1) = {"
 uD
-xI
-xI
+uD
+hw
+kJ
+uD
+qD
+AA
+uD
+qG
+Tn
+uD
+zq
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+Zc
+Te
+Ku
+Ku
+Ku
+Ku
+Ku
+Te
+Ms
 xI
 uD
-ke
-ke
-ke
-sd
-sd
-sd
 uD
-Aw
-Ea
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-Ea
-jx
+"}
+(9,1,1) = {"
+VL
 uD
-Jh
+uD
+kJ
+uD
+qD
+AA
+uD
+KQ
+uD
+uD
+uD
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+Te
+Qd
+Ku
+Ku
+Ku
+Ku
+rt
+Te
+jb
+uD
+uD
+VL
+"}
+(10,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+qG
+qG
+qG
+qG
+qG
+mp
+uD
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Lf
+Te
+Cr
+gr
+gr
+gr
+gr
+XZ
+Te
+Ms
+uD
+VL
+VL
+"}
+(11,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+rd
+rd
+rd
+qG
+qG
+qG
+uD
+Ws
+aX
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+aX
+EH
+Te
+Mx
 vQ
 vQ
 vQ
 vQ
 iR
+Te
+Ms
 uD
-xI
-xI
-xI
+VL
+VL
+"}
+(12,1,1) = {"
+VL
+VL
 uD
+kJ
+uD
+uD
+uD
+uD
+uD
+KQ
+uD
+uD
+OB
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+fP
+Te
+Yi
+xr
+xr
+xr
+xr
+Rb
+Te
+Ms
+uD
+VL
+VL
+"}
+(13,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+sH
+CY
+Za
+uD
+tf
+It
+uD
+Md
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+Ew
+Te
+JK
+Ku
+Ku
+Ku
+Ku
+zU
+Te
+Ms
+uD
+VL
+VL
+"}
+(14,1,1) = {"
+VL
+VL
+Ls
+kJ
+Ls
+vr
+DI
+JL
+uD
+tf
+ro
+uD
+bI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xP
+Te
+Te
+AD
+PG
+sr
+AD
+Te
+Te
+Ms
+uD
+VL
+VL
+"}
+(15,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+vR
+DI
+DI
+bA
+tf
+EU
+uD
+aG
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+LY
+uD
+QQ
+QQ
+QQ
+QQ
+mo
+mo
+uD
+Ms
+uD
+VL
+VL
+"}
+(16,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+uD
+uD
+uD
+uD
+tf
+dk
+uD
+Md
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+Ew
+aa
+QQ
+QQ
+QQ
+QQ
+mo
+Ty
+uD
+Ms
+uD
+VL
+VL
+"}
+(17,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+vU
+HB
+Lb
+uD
+uf
+tf
+uD
+tm
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+pK
+mz
+Jn
+Jn
+Jn
+Jn
+Jn
+Jn
+Tf
+dO
+uD
+VL
+VL
+"}
+(18,1,1) = {"
+VL
+VL
+Ls
+kJ
+Ls
+xw
+OF
+mT
+uD
+tf
+tf
+Og
+Md
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+VK
+aa
+QQ
+QQ
+QQ
+QQ
+QQ
+AS
+uD
+Ms
+uD
+VL
+VL
+"}
+(19,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+JH
+OF
+OF
+Nu
+tf
+tf
+cf
+Md
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+NE
+Ea
+GM
+GM
+QQ
+QQ
+QQ
+QQ
+uD
+Ms
+uD
+VL
+VL
+"}
+(20,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+uD
+uD
+uD
+uD
+tf
+dk
+uD
+Md
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+VF
+uD
+iY
+Fk
+iY
+iY
+Ls
+Ls
+uD
+Ms
+uD
+VL
+VL
+"}
+(21,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+hu
+Jw
+Gq
+uD
+tf
+tf
+uD
+oZ
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+NE
+uD
+tG
+ZB
+vQ
+vQ
+GO
+Zx
+uD
+jb
+uD
+VL
+VL
+"}
+(22,1,1) = {"
+VL
+VL
+Ls
+kJ
+Ls
+sd
+Jw
+KS
+uD
+tf
+tf
+uD
+Md
+xI
+xI
+xI
+zC
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+NE
+uD
+Aa
+iX
+vQ
+vQ
+rg
+jf
+uD
+Ms
+uD
+VL
+VL
+"}
+(23,1,1) = {"
+VL
+VL
+uD
+kJ
+uD
+ke
+Jw
+Jw
+PP
+tf
+tf
+uD
+Md
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+NE
+uD
+Jh
+ZB
+vQ
+vQ
+GO
+iz
+uD
+Ms
+uD
+VL
+VL
 "}
 (24,1,1) = {"
+VL
+VL
 uD
-xI
-xI
-xI
-uD
-uD
+kJ
 uD
 uD
 uD
-AA
 uD
+uD
+tf
+dk
 uD
 tm
 xI
@@ -3587,29 +4558,29 @@ xI
 cJ
 uD
 RO
-lU
-lU
-lU
-lU
-br
+ZB
+vQ
+vQ
+Ls
+Ls
 uD
-xI
-xI
-xI
+Ms
 uD
+VL
+VL
 "}
 (25,1,1) = {"
+VL
 uD
-xI
-xI
-xI
+uD
+kJ
 uD
 SD
-mw
-JX
-uD
-mK
-rd
+SD
+SD
+Gu
+tf
+tf
 uD
 Md
 xI
@@ -3626,31 +4597,31 @@ xI
 NE
 uD
 RP
-Ku
-Ku
-Ku
-Ku
-Xt
+vQ
+vQ
+vQ
+GO
+Zx
 uD
-xI
-xI
-xI
+Sn
 uD
+uD
+VL
 "}
 (26,1,1) = {"
-Ls
-mK
-mK
-mK
-sH
+uD
+uD
+xI
+lo
+uD
 hp
-gU
+HI
 XF
+pX
+tf
+tf
 uD
-mK
-mK
-uD
-Ue
+Md
 xI
 xI
 xI
@@ -3664,31 +4635,31 @@ xI
 xI
 nT
 uD
+Dt
+vQ
+vQ
+vQ
+rg
+jf
 uD
-vy
-Jb
-eJ
-vy
+VX
+xI
 uD
-uD
-xI
-xI
-xI
 uD
 "}
 (27,1,1) = {"
 uD
 xI
-xI
-xI
+kJ
+kJ
 uD
-gU
 WT
-gU
+WT
+WT
 Gu
-mK
-mK
-uD
+tf
+tf
+Og
 bI
 xI
 xI
@@ -3704,31 +4675,31 @@ xI
 Qp
 uD
 yj
-yj
-yj
-yj
-yj
+Av
+vQ
+vQ
+GO
 iz
 uD
 Ms
-xI
-xI
+Ms
+Jy
 uD
 "}
 (28,1,1) = {"
 uD
-xI
-xI
-xI
+uD
+lf
 uD
 uD
 uD
 uD
 uD
-mK
+uD
+rE
 rf
-uD
-Md
+if
+rp
 xI
 xI
 xI
@@ -3741,31 +4712,31 @@ xI
 xI
 xI
 NE
-CY
-yj
-yj
-yj
-yj
-yj
-iz
+uD
+rY
+vQ
+vQ
+vQ
+Ls
+Ls
 uD
 xI
-xI
-xI
+Ms
+Jy
 uD
 "}
 (29,1,1) = {"
 uD
-xI
-xI
-xI
-uD
-gf
+tf
 Vy
-Lo
-uD
-uF
-mK
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+tf
 uD
 ho
 xI
@@ -3779,34 +4750,35 @@ xI
 xI
 xI
 xI
-cJ
-cf
-yj
-yj
-yj
-yj
-yj
-Vb
+Sg
 uD
+of
+vQ
+vQ
+vQ
+GO
+Zx
+uD
+xI
 Ms
-xI
-xI
+Jy
 uD
 "}
 (30,1,1) = {"
 Ls
-mK
-mK
-mK
-sH
-hz
-hw
-jp
+tf
+Ud
+tf
+tf
+tf
+tf
+tf
+tf
+tf
+tf
 uD
-mK
-mK
-uD
-Md
+rp
+aX
 xI
 xI
 xI
@@ -3816,15 +4788,14 @@ xI
 xI
 xI
 xI
-xI
-xI
+aX
 NE
-CY
-yj
-yj
-yj
-yj
-yj
+uD
+uD
+uD
+vQ
+vQ
+rg
 jf
 uD
 xI
@@ -3834,37 +4805,37 @@ uD
 "}
 (31,1,1) = {"
 uD
-xI
-xI
-xI
+tf
+tf
+tf
 uD
-hw
-lo
-hw
-Za
-mK
-mK
 uD
-Md
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-NE
+uD
+uD
+uD
+uD
+uD
+uD
+nw
+qa
+qa
+qa
+qa
+qa
+qa
+qa
+qa
+qa
+qa
+qa
+TJ
 cf
-yj
-yj
-yj
-yj
-yj
-jf
+Hd
+uD
+vQ
+vQ
+GO
+iz
 uD
 Ml
 xI
@@ -3873,290 +4844,56 @@ uD
 "}
 (32,1,1) = {"
 uD
-xI
-xI
-xI
+hz
+tf
+tf
 uD
-uD
-uD
-uD
-uD
-mK
-rf
-uD
-Md
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-Qp
-uD
-UO
-UO
-UO
-UO
+yi
+vQ
+FH
+SX
+ni
 Ls
-Ls
+Ap
+qr
+RT
+RT
+RT
+RT
+RT
+RT
+RT
+RT
+RT
+RT
+RT
+RT
+yp
+UO
 uD
-xI
+vQ
+Tv
+uD
+uD
+uD
+uD
 xI
 xI
 uD
 "}
 (33,1,1) = {"
 uD
-xI
-xI
-xI
+tf
+tf
+tf
 uD
 vL
 lB
 HC
-uD
-mK
-mK
-uD
-kw
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-NE
-uD
-Ho
-vQ
-vQ
-vQ
-kJ
-oD
-uD
-Ml
-xI
-xI
-uD
-"}
-(34,1,1) = {"
+XV
+XV
 Ls
-mK
-mK
-mK
-sH
-lf
-lB
-TK
-uD
-mK
-mK
-uD
-Md
-xI
-xI
-xI
-fC
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-NE
-uD
-fd
-PA
-vQ
-vQ
-Mb
-dB
-uD
-xI
-xI
-xI
-uD
-"}
-(35,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-lB
-oe
-lB
-zJ
-mK
-mK
-uD
-Md
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-NE
-uD
-PK
-vQ
-vQ
-vQ
-kJ
-xw
-uD
-xI
-xI
-xI
-uD
-"}
-(36,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-uD
-uD
-uD
-uD
-mK
-rf
-uD
-ho
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-ok
-uD
-Ho
-vQ
-vQ
-vQ
-Ls
-Ls
-uD
-xI
-xI
-xI
-uD
-"}
-(37,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-Zg
-wJ
-ZB
-uD
-uF
-mK
-uD
-Md
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-NE
-uD
-Yy
-vQ
-vQ
-vQ
-kJ
-oD
-uD
-xI
-xI
-xI
-uD
-"}
-(38,1,1) = {"
-Ls
-mK
-mK
-mK
-sH
-bY
-tA
-DI
-uD
-mK
-mK
-uD
-Md
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-yi
-uD
-HI
-vQ
-vQ
-vQ
-Mb
-dB
-uD
-xI
-xI
-xI
-uD
-"}
-(39,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-tA
-Oq
-tA
-HB
-mK
-mK
-uD
+iW
 Ue
 xI
 xI
@@ -4169,228 +4906,462 @@ xI
 xI
 xI
 xI
-nT
+xI
+Ew
+cf
 uD
+mc
 vQ
-PA
 vQ
 vQ
-kJ
-xw
+Gy
 uD
 xI
+xI
+uD
+"}
+(34,1,1) = {"
+Ls
+tf
+Ud
+tf
+uD
+uO
+Jb
+TK
+vQ
+vQ
+Ls
+Ew
+Ue
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+Ew
+fd
+uD
+uO
+dB
+vQ
+dB
+iR
+uD
+xI
+xI
+uD
+"}
+(35,1,1) = {"
+uD
+tf
+tf
+tf
+uD
+vQ
+vQ
+vQ
+vQ
+Bs
+Ls
+Ew
+Ue
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+Ew
+cf
+uD
+vQ
+vQ
+vQ
+vQ
+vQ
+uD
+xI
+xI
+uD
+"}
+(36,1,1) = {"
+uD
+hz
+tf
+tf
+uD
+zJ
+vQ
+vQ
+vQ
+Bs
+Ls
+Ew
+Ue
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+Ew
+PK
+uD
+uO
+dB
+vQ
+dB
+iR
+uD
+zk
+xI
+uD
+"}
+(37,1,1) = {"
+uD
+tf
+tf
+tf
+uD
+Zg
+ZB
+ZB
+ZB
+ZB
+GL
+gk
+Ue
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+Ew
+cf
+uD
+vQ
+vQ
+vQ
+vQ
+vQ
+uD
+xI
+xI
+uD
+"}
+(38,1,1) = {"
+Ls
+tf
+Ud
+tf
+uD
+bY
+Mb
+vQ
+vQ
+vQ
+Ls
+Ew
+Ue
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+xI
+Ew
+cf
+uD
+uO
+dB
+vQ
+dB
+iR
+uD
+xI
+xI
+uD
+"}
+(39,1,1) = {"
+uD
+tf
+tf
+tf
+uD
+Yp
+cf
+Yp
+cf
+Yp
+NN
+Ew
+Ue
+xI
+xI
+xI
+xI
+xI
+xI
+cS
+xI
+xI
+xI
+xI
+xI
+Ew
+cf
+uD
+vQ
+vQ
+vQ
+vQ
+vQ
+uD
 xI
 xI
 uD
 "}
 (40,1,1) = {"
 uD
-xI
-xI
-xI
+hz
+tf
+tf
 uD
-uD
-uD
-uD
-uD
-mK
-rf
-uD
-Md
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-NE
-uD
+cf
+QZ
+QZ
+QZ
+cf
+nt
+cp
+Mr
+kS
+kS
+BA
+jN
+oG
+oG
+oG
+Zs
+GU
+GU
+kS
+kS
+BX
 PK
-vQ
-vQ
-vQ
-Ls
-Ls
 uD
-xI
+uO
+dB
+vQ
+dB
+iR
+uD
 xI
 xI
 uD
 "}
 (41,1,1) = {"
 uD
-xI
-xI
-xI
+tf
+tf
+tf
 uD
 Kc
-Kc
-Kc
-zl
-mK
-mK
-uD
-tm
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
+QZ
+cd
+QZ
+cf
+UE
+Ew
+Ea
+gv
+gv
+bk
+cf
+cf
+cf
+cf
+cf
+oq
+cf
 Er
-uD
+Er
+cf
 rP
-vQ
-vQ
-vQ
-kJ
-oD
 uD
-xI
+vQ
+vQ
+vQ
+vQ
+vQ
+uD
 xI
 xI
 uD
 "}
 (42,1,1) = {"
-uD
-lQ
-xI
-xI
+Ls
+tf
+Ud
+tf
 uD
 Fh
 cd
 QZ
 ib
-mK
-mK
-uD
-Md
+cf
+nt
+Ew
 Ea
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
-xI
 Ea
-NE
+Ea
+cf
+cf
+cf
+cf
+cf
+cf
+cf
+cf
+cf
+cf
+ts
+uG
 uD
-Ho
-vQ
-vQ
-vQ
-Mb
+uO
 dB
+vQ
+dB
+iR
 uD
-xI
 xI
 xI
 uD
 "}
 (43,1,1) = {"
 uD
-xI
-xI
-xI
+tf
+tf
+tf
 uD
-Ot
-Ot
-Ot
-zl
-mK
-mK
-uD
+cf
+cf
+cf
+cf
+cf
+UE
+cp
 pv
 io
 GH
-io
-io
-io
+Ra
+Ea
+cf
 db
-io
-io
-io
-io
-io
+cf
+cf
+db
+Yp
+cf
+Yp
+cf
 Yp
 uD
-CI
+PJ
 vQ
 vQ
 vQ
-kJ
-xw
+th
 uD
-xI
 xI
 xI
 uD
 "}
 (44,1,1) = {"
 uD
-xI
-xI
-xI
+hz
+tf
+tf
 uD
 uD
 uD
 uD
 uD
-mK
-vU
 uD
 uD
 uD
 uD
 uD
-cf
+uD
+uD
+Ea
 VD
 Ol
 cf
 VD
 uD
-uD
-uD
-uD
-uD
-uD
+EM
+EM
+EM
+EM
+EM
 uD
 vQ
 Tv
 uD
 uD
 uD
+uD
 xI
-xI
-xI
+RZ
 uD
 "}
 (45,1,1) = {"
-uD
-xI
-xI
-xI
-uD
-vR
+Ls
+tf
+Ud
+tf
+oe
+Wu
+Mj
 lk
-qG
-Wu
-Wu
-Wu
-Wu
+wW
+Vs
+bX
+oi
 Ji
 lk
 zY
@@ -4402,31 +5373,31 @@ mD
 yv
 uD
 Wh
-vQ
-vQ
-vQ
-vQ
-vQ
-vQ
-vQ
-vQ
+WG
+jY
+WG
+jY
+WG
+WG
+WG
+WG
 qp
-uD
+KV
 xI
 xI
 xI
-uD
+IW
 "}
 (46,1,1) = {"
 uD
-xI
-xI
-xI
-uD
-nM
-qW
-qW
 tf
+tf
+tf
+mK
+Wu
+Oq
+qW
+qW
 tf
 tf
 tf
@@ -4434,27 +5405,27 @@ qW
 qW
 nd
 uD
-BJ
+dR
 RF
 mK
 RF
 Zn
 uD
-vQ
-tc
-vQ
-tc
-vQ
-tc
-vQ
+Id
 YG
-vQ
-vQ
-uD
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+Iu
+KV
 xI
+gj
 xI
-xI
-uD
+IW
 "}
 (47,1,1) = {"
 uD
@@ -4463,9 +5434,9 @@ UD
 uD
 uD
 au
+Ot
 qW
 Ud
-tf
 tf
 tf
 tf
@@ -4474,104 +5445,104 @@ qW
 pM
 uD
 Xy
-RF
-mK
-RF
+Yt
+QA
+FP
 Ks
-Xz
-vQ
-vQ
-vQ
-vQ
-vQ
-vQ
-vQ
-vQ
-vQ
-iR
+ia
+WX
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+Iu
 uD
 uD
-UD
+uD
 uD
 uD
 "}
 (48,1,1) = {"
 lA
-xI
-xI
-xI
+vQ
+vQ
+vQ
 Wb
-Wu
-tf
-tf
-tf
-tf
-tf
-tf
-tf
-tf
-Wu
+Aw
+PA
+PA
+PA
+PA
+PA
+PA
+PA
+PA
+Aw
 Xz
 GX
-RF
+xl
 em
-RF
+Mm
 Ks
 RF
-vQ
-tc
-vQ
-tc
-vQ
-tc
-vQ
+WX
 YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+Iu
+KV
+xI
+WZ
+xI
+IW
+"}
+(49,1,1) = {"
+br
 vQ
 vQ
+vQ
+Wb
+Wu
+Wu
+Wu
+Wu
+Jl
+Wu
+Wu
+Wu
+Jl
+Wu
+RF
+GX
+xl
+uo
+Mm
+Zn
+uD
+Py
+Cl
+ng
+Cl
+Cl
+ng
+Cl
+Cl
+ng
+jS
 KV
 xI
 xI
 xI
-lA
-"}
-(49,1,1) = {"
-lA
-xI
-xI
-xI
-xI
-Wu
-Wu
-Wu
-Wu
-Jl
-Wu
-Wu
-Wu
-Jl
-Wu
-RF
-GX
-RF
-uo
-RF
-Zn
-uD
-Py
-dy
-vQ
-dy
-vQ
-dy
-vQ
-dy
-vQ
-jS
-vQ
-xI
-xI
-xI
-lA
+IW
 "}
 (50,1,1) = {"
 zq
@@ -4581,8 +5552,8 @@ uD
 uD
 uD
 FZ
-As
-uC
+FZ
+FZ
 uD
 hb
 uD
@@ -4591,9 +5562,9 @@ uD
 uD
 uD
 xC
-RF
+xl
 yP
-RF
+Mm
 Xr
 uD
 uD
@@ -4613,7 +5584,7 @@ uD
 zq
 "}
 (51,1,1) = {"
-nG
+VL
 zq
 uD
 uD
@@ -4625,14 +5596,14 @@ us
 us
 bC
 uD
-nK
-nK
+vM
+pY
 nK
 uD
 Xy
-RF
+xl
 An
-RF
+Mm
 SG
 uD
 no
@@ -4649,12 +5620,12 @@ uD
 uD
 uD
 zq
-nG
+VL
 "}
 (52,1,1) = {"
-nG
-nG
+VL
 zq
+uD
 uD
 uD
 ba
@@ -4664,14 +5635,14 @@ us
 us
 us
 uD
-vQ
-vQ
+Bn
+ZB
 iR
 uD
-BJ
-RF
+dR
+xl
 Wt
-RF
+Mm
 Zn
 uD
 yY
@@ -4686,32 +5657,32 @@ RF
 Ri
 uD
 uD
+uD
 zq
-nG
-nG
+VL
 "}
 (53,1,1) = {"
-nG
-nG
-nG
+VL
+VL
 zq
+uD
 uD
 mQ
 YU
 jE
-YU
+TI
 wr
 HE
 uD
 fT
-vQ
-vQ
+ZB
+ZB
 UM
-GX
-RF
-mK
-RF
-Ks
+eo
+Sc
+Ek
+Na
+sR
 VV
 MP
 RF
@@ -4724,17 +5695,17 @@ ur
 wv
 XA
 uD
+uD
 zq
-nG
-nG
-nG
+VL
+VL
 "}
 (54,1,1) = {"
-nG
-nG
-nG
-nG
+VL
+VL
 zq
+uD
+uD
 uD
 uD
 uD
@@ -4748,7 +5719,7 @@ vQ
 uD
 BJ
 RF
-mK
+sU
 RF
 Zn
 uD
@@ -4762,18 +5733,18 @@ rG
 ht
 KP
 zq
+uD
+uD
 zq
-nG
-nG
-nG
-nG
+VL
+VL
 "}
 (55,1,1) = {"
-nG
-nG
-nG
-nG
 VL
+VL
+VL
+zq
+ok
 zq
 Ib
 wZ
@@ -4787,7 +5758,7 @@ vQ
 uD
 BJ
 RF
-mK
+sU
 RF
 Zn
 uD
@@ -4801,22 +5772,22 @@ RF
 RF
 KP
 zq
-nG
-nG
-nG
-nG
-nG
+uD
+zq
+VL
+VL
+VL
 "}
 (56,1,1) = {"
-nG
-nG
-nG
 VL
 VL
+VL
+lQ
+ok
 zq
-OF
+Yy
 eY
-OF
+HT
 uD
 Xm
 fm
@@ -4824,11 +5795,11 @@ fm
 hY
 xQ
 uD
-qC
+vQ
 YK
 QI
+vQ
 YK
-SL
 uD
 Fu
 nm
@@ -4840,22 +5811,22 @@ RF
 RF
 ic
 zq
-nG
-nG
-nG
-nG
-nG
+uD
+zq
+VL
+VL
+VL
 "}
 (57,1,1) = {"
-nG
 VL
 VL
 VL
-nG
+VL
+zq
 zq
 qo
 OF
-OF
+HT
 uD
 LN
 NQ
@@ -4864,10 +5835,10 @@ uD
 uD
 uD
 vQ
-vr
-Ol
 vQ
-vr
+Mu
+vQ
+vQ
 uD
 uD
 uD
@@ -4879,22 +5850,22 @@ To
 RF
 HF
 zq
-nG
-nG
-nG
-nG
-nG
+zq
+VL
+VL
+VL
+VL
 "}
 (58,1,1) = {"
 VL
 VL
-nG
-nG
-nG
+VL
+VL
+zq
 uD
-zE
-zE
 OF
+zE
+HT
 uD
 FU
 TT
@@ -4904,11 +5875,11 @@ rQ
 vQ
 vQ
 vQ
-rQ
+ZB
 vQ
 vQ
 vQ
-rQ
+QE
 uD
 uD
 zV
@@ -4918,18 +5889,18 @@ ut
 Vl
 Ct
 uD
-nG
-nG
-nG
-nG
-nG
+zq
+VL
+VL
+VL
+VL
 "}
 (59,1,1) = {"
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 uD
 uD
 uD
@@ -4957,24 +5928,24 @@ uD
 uD
 uD
 uD
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 "}
 (60,1,1) = {"
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 uD
 sn
 Vc
 Is
 ww
-sn
+Sl
 uD
 UI
 vQ
@@ -4996,22 +5967,22 @@ tb
 tb
 Yq
 uD
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 "}
 (61,1,1) = {"
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 Ls
 rB
 Kf
-Kf
+jo
 Kf
 rB
 uD
@@ -5035,26 +6006,26 @@ fv
 Ku
 QC
 uD
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 "}
 (62,1,1) = {"
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 Ls
 QS
 QS
-QS
-QS
-QS
+TA
+TA
+TA
 NZ
-vQ
+ZB
 om
 tQ
 vQ
@@ -5074,18 +6045,18 @@ Hc
 Ku
 NI
 uD
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 "}
 (63,1,1) = {"
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 Ls
 od
 QS
@@ -5093,7 +6064,7 @@ QS
 od
 QS
 uD
-uO
+UG
 vQ
 vQ
 vQ
@@ -5113,18 +6084,18 @@ fv
 Ku
 Bh
 uD
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 "}
 (64,1,1) = {"
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 uD
 UQ
 YO
@@ -5132,13 +6103,13 @@ kM
 CD
 Bp
 uD
-vQ
-vQ
-dy
-vQ
+ZB
+ZB
+dH
+ZB
 IK
 xJ
-xJ
+Jq
 xJ
 UK
 vQ
@@ -5152,19 +6123,19 @@ he
 bP
 kb
 uD
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 "}
 (65,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-uD
+VL
+VL
+VL
+VL
+VL
+zq
 uD
 uD
 uD
@@ -5174,10 +6145,10 @@ uD
 wi
 vy
 uD
-vQ
-vQ
-vQ
-vQ
+Bn
+ZB
+ZB
+ZB
 vQ
 vQ
 vQ
@@ -5191,19 +6162,19 @@ uD
 uD
 uD
 zq
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
 "}
 (66,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 tJ
 tJ
@@ -5229,20 +6200,20 @@ tJ
 tJ
 tJ
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (67,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 FI
 tJ
@@ -5255,7 +6226,7 @@ uD
 BK
 nP
 tY
-Iv
+BL
 ix
 kg
 aJ
@@ -5268,20 +6239,20 @@ tJ
 tJ
 BE
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (68,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 tJ
 tJ
@@ -5307,20 +6278,20 @@ tJ
 tJ
 tI
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (69,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 tJ
 tJ
@@ -5328,17 +6299,17 @@ tJ
 Ui
 ns
 Th
-Ui
+Pp
 uD
-zq
-nG
-nG
-nG
-nG
-nG
-zq
+SB
+VL
+VL
+VL
+VL
+VL
+SB
 uD
-Ui
+Pp
 Th
 ns
 Ui
@@ -5346,20 +6317,20 @@ tJ
 tJ
 tJ
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (70,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 uD
 lY
@@ -5369,13 +6340,13 @@ Ls
 Ls
 uD
 zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 zq
 uD
 Ls
@@ -5385,59 +6356,59 @@ zq
 XG
 zq
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (71,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 cf
 cf
 cf
 cf
 cf
+eW
+uD
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+uD
+eW
+cf
+cf
+cf
+cf
 cf
 uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
-cf
-cf
-cf
-cf
-cf
-cf
-uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (72,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 NR
 cf
@@ -5446,15 +6417,15 @@ dL
 ie
 MF
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 dL
 ie
@@ -5463,20 +6434,20 @@ cf
 cf
 mR
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (73,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 cf
 cf
@@ -5485,15 +6456,15 @@ tk
 Ai
 vz
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 tk
 Ai
@@ -5502,20 +6473,20 @@ cf
 cf
 cf
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (74,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 NR
 cf
@@ -5524,15 +6495,15 @@ Tk
 tD
 PT
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 Tk
 tD
@@ -5541,20 +6512,20 @@ cf
 cf
 mR
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (75,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 cf
 cf
@@ -5563,15 +6534,15 @@ XN
 xM
 bM
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 XN
 xM
@@ -5580,20 +6551,20 @@ cf
 cf
 cf
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (76,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 NR
 cf
@@ -5602,15 +6573,15 @@ UY
 KM
 Vo
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 UY
 KM
@@ -5619,20 +6590,20 @@ cf
 cf
 mR
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (77,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 cf
 ts
@@ -5641,15 +6612,15 @@ NP
 wm
 Ay
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 NP
 wm
@@ -5658,20 +6629,20 @@ CW
 Pz
 cf
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (78,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 NR
 FG
@@ -5680,15 +6651,15 @@ qN
 oO
 GB
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 qN
 oO
@@ -5697,20 +6668,20 @@ FG
 FG
 mR
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (79,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 cf
 cf
@@ -5719,15 +6690,15 @@ So
 Rh
 GQ
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 So
 Rh
@@ -5736,20 +6707,20 @@ cf
 cf
 cf
 uD
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (80,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 zq
 uD
 cf
@@ -5758,15 +6729,15 @@ gZ
 Kp
 bO
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 gZ
 Kp
@@ -5775,21 +6746,21 @@ cf
 cf
 uD
 zq
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (81,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 cf
 cf
@@ -5797,15 +6768,15 @@ dU
 ZF
 lG
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 dU
 ZF
@@ -5813,22 +6784,22 @@ lG
 cf
 cf
 uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (82,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 zq
 uD
 cf
@@ -5836,15 +6807,15 @@ wb
 jH
 Xf
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 wb
 jH
@@ -5852,128 +6823,128 @@ Xf
 cf
 uD
 zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (83,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 uD
 cf
 ya
 fw
 TW
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 ya
 fw
 TW
 cf
 uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (84,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 zq
 uD
 Eq
 Me
 El
 Ls
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 Ls
 Eq
 Me
 El
 uD
 zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 "}
 (85,1,1) = {"
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-zq
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+um
 VU
 pW
 LQ
-uD
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-uD
+SB
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+SB
 VU
 pW
 LQ
-zq
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
-nG
+um
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
+VL
 "}

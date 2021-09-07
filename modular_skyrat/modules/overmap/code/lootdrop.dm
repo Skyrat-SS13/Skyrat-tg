@@ -297,8 +297,8 @@
 		/obj/item/toy/plush/moth = 1,
 		/obj/item/toy/plush/borbplushie = 1,
 		/obj/item/toy/plush/snakeplushie = 1,
-		/obj/item/toy/plush/lizardplushie/space = 1,
-		/obj/item/toy/plush/lizardplushie = 1,
+		/obj/item/toy/plush/lizard_plushie/green = 1,
+		/obj/item/toy/plush/lizard_plushie = 1,
 		/obj/item/toy/plush/carpplushie = 1
 	)
 
