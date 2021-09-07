@@ -1,5 +1,5 @@
 /obj/machinery/computer/overmap_console
-	name = "overmap ops console"
+	name = "navigation ops console"
 	desc = "An advanced operations control computer."
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"

@@ -18,6 +18,11 @@
 	var/list/created_atoms = list()
 	//make sure this list is accounted for/cleared if you request it from ssatoms!
 
+	//SKYRAT EDIT ADDITION
+	/// The type of the overmap object that will be created
+	var/datum/overmap_object/overmap_type = /datum/overmap_object/shuttle/planet
+	//SKYRAT EDIT END
+
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
 	if(path)
 		mappath = path

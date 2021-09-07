@@ -10,7 +10,7 @@
 	name = "ESS Crow Ship Console (Computer Board)"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/computer/shuttle/exploration_crow
-
+/datum/overmap_object/shuttle/ship
 /datum/map_template/shuttle/common
 	port_id = "common"
 	who_can_purchase = null
@@ -54,3 +54,4 @@
 	name = "ESS Crow Ship Console (Computer Board)"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/computer/shuttle/ncv_titan
+/obj/machinery/computer/overmap_console
