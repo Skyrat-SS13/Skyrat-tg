@@ -1,6 +1,6 @@
 //we need a way of buffing leg speed... here
 /datum/movespeed_modifier/borer_speed
-	multiplicative_slowdown = -0.30
+	multiplicative_slowdown = -0.40
 
 //so that we know if a mob has a borer (only humans should have one, but in case)
 /mob/proc/has_borer()
@@ -37,62 +37,60 @@
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
 	if(!cb_inside)
 		return
-	if(cb_inside.body_focus)
-		switch(cb_inside.body_focus)
-			if(FOCUS_HEAD)
-				to_chat(carbon_target, span_notice("Your eyes begin to feel strange..."))
-				var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-				if(my_eyes)
-					my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-					my_eyes.see_in_dark = 8
-					my_eyes.flash_protect = FLASH_PROTECTION_WELDER
-				carbon_target.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
-			if(FOCUS_CHEST)
-				to_chat(carbon_target, span_notice("Your chest begins to slow down..."))
-				ADD_TRAIT(carbon_target, TRAIT_NOBREATH, src)
-				ADD_TRAIT(carbon_target, TRAIT_NOHUNGER, src)
-				ADD_TRAIT(carbon_target, TRAIT_STABLEHEART, src)
-				ADD_TRAIT(carbon_target, TRAIT_HARDLY_WOUNDED, src)
-			if(FOCUS_ARMS)
-				to_chat(carbon_target, span_notice("Your arm starts to feel funny..."))
-				var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
-				give_owner.Grant(cb_inside.human_host)
-			if(FOCUS_LEGS)
-				to_chat(carbon_target, span_notice("You feel faster..."))
-				carbon_target.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-				carbon_target.add_quirk(/datum/quirk/light_step)
+	if(cb_inside & FOCUS_HEAD)
+		to_chat(carbon_target, span_notice("Your eyes begin to feel strange..."))
+		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
+		if(my_eyes)
+			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			my_eyes.see_in_dark = 11
+			my_eyes.flash_protect = FLASH_PROTECTION_WELDER
+		ADD_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, src)
+	if(cb_inside & FOCUS_CHEST)
+		to_chat(carbon_target, span_notice("Your chest begins to slow down..."))
+		ADD_TRAIT(carbon_target, TRAIT_NOBREATH, src)
+		ADD_TRAIT(carbon_target, TRAIT_NOHUNGER, src)
+		ADD_TRAIT(carbon_target, TRAIT_STABLEHEART, src)
+	if(cb_inside & FOCUS_ARMS)
+		to_chat(carbon_target, span_notice("Your arm starts to feel funny..."))
+		var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
+		give_owner.Grant(cb_inside.human_host)
+		ADD_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, src)
+	if(cb_inside & FOCUS_LEGS)
+		to_chat(carbon_target, span_notice("You feel faster..."))
+		carbon_target.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
+		carbon_target.add_quirk(/datum/quirk/light_step)
+		carbon_target.add_quirk(/datum/quirk/freerunning)
 
 //on removal, force the borer out
 /obj/item/organ/borer_body/Remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
-	if(cb_inside?.body_focus)
-		switch(cb_inside.body_focus)
-			if(FOCUS_HEAD)
-				to_chat(carbon_target, span_notice("Your eyes begin to return to normal..."))
-				var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-				if(my_eyes)
-					my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-					my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
-					my_eyes.flash_protect = initial(my_eyes.flash_protect)
-				carbon_target.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
-				carbon_target.update_sight()
-			if(FOCUS_CHEST)
-				to_chat(carbon_target, span_notice("Your chest begins to heave again..."))
-				REMOVE_TRAIT(carbon_target, TRAIT_NOBREATH, src)
-				REMOVE_TRAIT(carbon_target, TRAIT_NOHUNGER, src)
-				REMOVE_TRAIT(carbon_target, TRAIT_STABLEHEART, src)
-				REMOVE_TRAIT(carbon_target, TRAIT_HARDLY_WOUNDED, src)
-			if(FOCUS_ARMS)
-				to_chat(carbon_target, span_notice("Your arm starts to feel normal again..."))
-				for(var/datum/action/listed_actions in cb_inside.human_host.actions)
-					if(!istype(listed_actions, /datum/action/cooldown/borer_armblade))
-						continue
-					listed_actions.Remove(cb_inside.human_host)
-			if(FOCUS_LEGS)
-				to_chat(carbon_target, span_notice("You feel slower..."))
-				carbon_target.remove_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-				carbon_target.remove_quirk(/datum/quirk/light_step)
+	if(cb_inside & FOCUS_HEAD)
+		to_chat(carbon_target, span_notice("Your eyes begin to return to normal..."))
+		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
+		if(my_eyes)
+			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
+			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
+			my_eyes.flash_protect = initial(my_eyes.flash_protect)
+		carbon_target.update_sight()
+		REMOVE_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, src)
+	if(cb_inside & FOCUS_CHEST)
+		to_chat(carbon_target, span_notice("Your chest begins to heave again..."))
+		REMOVE_TRAIT(carbon_target, TRAIT_NOBREATH, src)
+		REMOVE_TRAIT(carbon_target, TRAIT_NOHUNGER, src)
+		REMOVE_TRAIT(carbon_target, TRAIT_STABLEHEART, src)
+	if(cb_inside & FOCUS_ARMS)
+		to_chat(carbon_target, span_notice("Your arm starts to feel normal again..."))
+		for(var/datum/action/listed_actions in cb_inside.human_host.actions)
+			if(!istype(listed_actions, /datum/action/cooldown/borer_armblade))
+				continue
+			listed_actions.Remove(cb_inside.human_host)
+		REMOVE_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, src)
+	if(cb_inside & FOCUS_LEGS)
+		to_chat(carbon_target, span_notice("You feel slower..."))
+		carbon_target.remove_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
+		carbon_target.remove_quirk(/datum/quirk/light_step)
+		carbon_target.remove_quirk(/datum/quirk/freerunning)
 	if(cb_inside)
 		cb_inside.leave_host()
 	qdel(src)
@@ -310,13 +308,12 @@
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-		if(maturity_age == 30)
+		if(maturity_age == 20)
 			chemical_evolution++
 			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-		if(maturity_age == 60)
+		if(maturity_age == 40)
 			stat_evolution++
 			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
-		if(maturity_age >= 90)
 			maturity_age = 0
 
 //if it doesnt have a ckey, let ghosts have it
