@@ -235,6 +235,18 @@
 		recover_item(spawn_item, content_obj)
 		return
 	if(istype(content_obj, /obj/item/xenoarch/broken_item/plant))
-		var/spawn_item = /obj/item/seeds/random
+		var/spawn_item = pickweight(GLOB.plant_reward)
+		recover_item(spawn_item, content_obj)
+		return
+	if(istype(content_obj, /obj/item/xenoarch/broken_item/clothing))
+		var/spawn_item = pickweight(GLOB.clothing_reward)
+		recover_item(spawn_item, content_obj)
+		return
+	if(istype(content_obj, /obj/item/xenoarch/broken_item/animal))
+		var/spawn_item
+		var/turf/src_turf = get_turf(src)
+		for(var/looptime in 1 to rand(1,4))
+			spawn_item = pickweight(GLOB.animal_reward)
+			new spawn_item(src_turf)
 		recover_item(spawn_item, content_obj)
 		return
