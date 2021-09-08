@@ -317,7 +317,7 @@
 	dwidth = 11
 	height = 22
 	width = 35
-	shuttlekeys = list("whiteship_meta", "whiteship_pubby", "whiteship_box", "whiteship_cere", "whiteship_kilo", "whiteship_donut", "whiteship_delta", "whiteship_tram")
+	shuttlekeys = list("whiteship_meta", "whiteship_pubby", "whiteship_box", "whiteship_cere", "whiteship_kilo", "whiteship_donut", "whiteship_delta")
 
 /obj/docking_port/mobile
 	name = "shuttle"
@@ -364,11 +364,6 @@
 	///if this shuttle can move docking ports other than the one it is docked at
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
-
-	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
-	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
-
-	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
 
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
@@ -498,7 +493,6 @@
 /obj/docking_port/mobile/proc/transit_failure()
 	message_admins("Shuttle [src] repeatedly failed to create transit zone.")
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 //call the shuttle to destination S
 /obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S)
 	if(!check_dock(S))
@@ -527,8 +521,6 @@
 			destination = S
 			mode = SHUTTLE_IGNITING
 			setTimer(ignitionTime)
-
-*/ //SKYRAT EDIT END
 
 //recall the shuttle to where it was previously
 /obj/docking_port/mobile/proc/cancel()
@@ -680,7 +672,6 @@
 				return
 			if(rechargeTime)
 				mode = SHUTTLE_RECHARGING
-				unbolt_all_doors() //SKYRAT EDIT ADDITION
 				setTimer(rechargeTime)
 				return
 		if(SHUTTLE_RECALL)
@@ -697,8 +688,6 @@
 				enterTransit()
 				return
 
-	admin_forced = FALSE //SKYRAT EDIT ADDITION
-	unbolt_all_doors() //SKYRAT EDIT ADDITION
 	mode = SHUTTLE_IDLE
 	timer = 0
 	destination = null
@@ -709,8 +698,6 @@
 			var/tl = timeLeft(1)
 			if(tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)
-				play_engine_sound(src, FALSE) //SKYRAT EDIT ADDITION
-				play_engine_sound(destination, FALSE) //SKYRAT EDIT ADDITION
 
 	var/obj/docking_port/stationary/S0 = get_docked()
 	if(istype(S0, /obj/docking_port/stationary/transit) && timeLeft(1) <= PARALLAX_LOOP_TIME)
@@ -730,9 +717,10 @@
 		var/turf/T = thing
 		if(!T || !istype(T.loc, area_type))
 			continue
-		for (var/atom/movable/movable as anything in T)
-			if (length(movable.client_mobs_in_contents))
-				movable.update_parallax_contents()
+		for (var/thing2 in T)
+			var/atom/movable/AM = thing2
+			if (length(AM.client_mobs_in_contents))
+				AM.update_parallax_contents()
 
 /obj/docking_port/mobile/proc/check_transit_zone()
 	if(assigned_transit)
@@ -891,16 +879,8 @@
 	var/range = (engine_coeff * max(width, height))
 	var/long_range = range * 2.5
 	var/atom/distant_source
-	var/list/engines = list()
-	for(var/datum/weakref/engine in engine_list)
-		var/obj/structure/shuttle/engine/real_engine = engine.resolve()
-		if(!real_engine)
-			engine_list -= engine
-			continue
-		engines += real_engine
-
-	if(engines[1])
-		distant_source = engines[1]
+	if(engine_list[1])
+		distant_source = engine_list[1]
 	else
 		for(var/A in areas)
 			distant_source = locate(/obj/machinery/door) in A
@@ -914,11 +894,11 @@
 				M.playsound_local(distant_source, "sound/runtime/hyperspace/[selected_sound]_distance.ogg", 100)
 			else if(dist_far <= range)
 				var/source
-				if(engines.len == 0)
+				if(engine_list.len == 0)
 					source = distant_source
 				else
 					var/closest_dist = 10000
-					for(var/obj/O in engines)
+					for(var/obj/O in engine_list)
 						var/dist_near = get_dist(M, O)
 						if(dist_near < closest_dist)
 							source = O
@@ -943,7 +923,7 @@
 		var/area/shuttle/areaInstance = thing
 		for(var/obj/structure/shuttle/engine/E in areaInstance.contents)
 			if(!QDELETED(E))
-				engine_list += WEAKREF(E)
+				engine_list += E
 				. += E.engine_power
 
 // Double initial engines to get to 0.5 minimum

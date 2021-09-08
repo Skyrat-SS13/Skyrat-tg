@@ -3,8 +3,7 @@
 	access = NONE
 	group = "Goodies"
 	goody = TRUE
-//SKYRAT EDIT REMOVAL BEGIN
-/*
+
 /datum/supply_pack/goody/dumdum38
 	name = ".38 DumDum Speedloader"
 	desc = "Contains one speedloader of .38 DumDum ammunition, good for embedding in soft targets."
@@ -74,11 +73,6 @@
 	access_view = ACCESS_ARMORY
 	contains = list(/obj/item/ammo_box/magazine/wt550m9)
 
-*/
-//SKYRAT EDIT REMOVAL END
-
-/datum/supply_pack/goody/techbox //SKYRAT EDIT ADDITION
-
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
 	desc = "The backbone of modern society. Barely ever ordered for actual engineering."
@@ -139,22 +133,11 @@
 	cost = PAYCHECK_EASY * 4
 	contains = list(/obj/item/toy/plush/beeplushie)
 
-/datum/supply_pack/goody/dyespray
-	name = "Hair Dye Spray"
-	desc = "A cool spray to dye your hair with awesome colors!"
-	cost = PAYCHECK_EASY * 2
-	contains = list(/obj/item/dyespray)
-
 /datum/supply_pack/goody/beach_ball
 	name = "Beach Ball"
-	// uses desc from item
+	desc = "The simple beach ball is one of Nanotrasen's most popular products. 'Why do we make beach balls? Because we can! (TM)' - Nanotrasen"
 	cost = PAYCHECK_MEDIUM
-	contains = list(/obj/item/toy/beach_ball/branded)
-
-/datum/supply_pack/goody/beach_ball/New()
-	..()
-	var/obj/item/toy/beach_ball/branded/beachball_type = /obj/item/toy/beach_ball/branded
-	desc = initial(beachball_type.desc)
+	contains = list(/obj/item/toy/beach_ball)
 
 /datum/supply_pack/goody/medipen_twopak
 	name = "Medipen Two-Pak"

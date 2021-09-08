@@ -6,7 +6,6 @@
 /mob/living/carbon/IsParalyzed(include_stamcrit = TRUE)
 	return ..() || (include_stamcrit && HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 
-/* SKYRAT EDIT REMOVAL BEGNG
 /mob/living/carbon/proc/enter_stamcrit()
 	if(!(status_flags & CANKNOCKDOWN) || HAS_TRAIT(src, TRAIT_STUNIMMUNE))
 		return
@@ -14,13 +13,12 @@
 		return
 	if(absorb_stun(0)) //continuous effect, so we don't want it to increment the stuns absorbed.
 		return
-	to_chat(src, span_notice("You're too exhausted to keep going..."))
+	to_chat(src, "<span class='notice'>You're too exhausted to keep going...</span>")
 	ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 	ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
 	if(getStaminaLoss() < 120) // Puts you a little further into the initial stamcrit, makes stamcrit harder to outright counter with chems.
 		adjustStaminaLoss(30, FALSE)
-*/ //SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/adjust_drugginess(amount)

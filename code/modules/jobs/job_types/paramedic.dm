@@ -1,12 +1,11 @@
 /datum/job/paramedic
 	title = "Paramedic"
 	department_head = list("Chief Medical Officer")
-	faction = FACTION_STATION
+	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
-	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/paramedic
 	plasmaman_outfit = /datum/outfit/plasmaman/paramedic
@@ -18,9 +17,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_PARAMEDIC
 	bounty_types = CIV_JOB_MED
-	departments_list = list(
-		/datum/job_department/medical,
-		)
+	departments = DEPARTMENT_MEDICAL
 
 	family_heirlooms = list(/obj/item/storage/firstaid/ancient/heirloom)
 
@@ -32,9 +29,6 @@
 		/obj/item/reagent_containers/hypospray/medipen/penacid = 10,
 		/obj/item/reagent_containers/hypospray/medipen/survival/luxury = 5
 	)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
-
 
 /datum/outfit/job/paramedic
 	name = "Paramedic"

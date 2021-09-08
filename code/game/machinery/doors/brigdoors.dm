@@ -2,14 +2,13 @@
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
 #define FONT_STYLE "Small Fonts"
-//#define MAX_TIMER 15 MINUTES //ORIGINAL
-#define MAX_TIMER 60 MINUTES //SKYRAT EDIT CHANGE
-//#define PRESET_SHORT 2 MINUTES //ORIGINAL
-#define PRESET_SHORT 5 MINUTES //SKYRAT EDIT CHANGE
-//#define PRESET_MEDIUM 3 MINUTES //ORIGINAL
-#define PRESET_MEDIUM 10 MINUTES //SKYRAT EDIT CHANGE
-//#define PRESET_LONG 5 MINUTES //ORIGINAL
-#define PRESET_LONG 15 MINUTES //SKYRAT EDIT CHANGE
+#define MAX_TIMER 15 MINUTES
+
+#define PRESET_SHORT 2 MINUTES
+#define PRESET_MEDIUM 3 MINUTES
+#define PRESET_LONG 5 MINUTES
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // Brig Door control displays.
@@ -32,13 +31,7 @@
 	var/timer_duration = 0
 
 	var/timing = FALSE // boolean, true/1 timer is on, false/0 means it's not timing
-	///List of weakrefs to nearby doors
-	var/list/doors = list()
-	///List of weakrefs to nearby flashers
-	var/list/flashers = list()
-	///List of weakrefs to nearby closets
-	var/list/closets = list()
-
+	var/list/obj/machinery/targets = list()
 	var/obj/item/radio/Radio //needed to send messages to sec radio
 
 	maptext_height = 26
@@ -56,17 +49,17 @@
 	if(id != null)
 		for(var/obj/machinery/door/window/brigdoor/M in urange(20, src))
 			if (M.id == id)
-				doors += WEAKREF(M)
+				targets += M
 
 		for(var/obj/machinery/flasher/F in urange(20, src))
 			if(F.id == id)
-				flashers += WEAKREF(F)
+				targets += F
 
 		for(var/obj/structure/closet/secure_closet/brig/C in urange(20, src))
 			if(C.id == id)
-				closets += WEAKREF(C)
+				targets += C
 
-	if(!length(doors) && !length(flashers) && length(closets))
+	if(!targets.len)
 		obj_break()
 	update_appearance()
 
@@ -79,8 +72,7 @@
 		return
 
 	if(timing)
-		//if(world.time - activation_time >= timer_duration) //ORIGINAL
-		if(world.realtime - activation_time >= timer_duration) //SKYRAT EDIT CHANGE
+		if(world.time - activation_time >= timer_duration)
 			timer_end() // open doors, reset timer, clear status screen
 		update_appearance()
 
@@ -90,30 +82,21 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 
-	//activation_time = world.time //ORIGINAL
-	activation_time = world.realtime //SKYRAT EDIT CHANGE
+	activation_time = world.time
 	timing = TRUE
 
-	for(var/datum/weakref/door_ref as anything in doors)
-		var/obj/machinery/door/window/brigdoor/door = door_ref.resolve()
-		if(!door)
-			doors -= door_ref
-			continue
+	for(var/obj/machinery/door/window/brigdoor/door in targets)
 		if(door.density)
 			continue
 		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/close)
 
-	for(var/datum/weakref/closet_ref as anything in closets)
-		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
-		if(!closet)
-			closets -= closet_ref
+	for(var/obj/structure/closet/secure_closet/brig/C in targets)
+		if(C.broken)
 			continue
-		if(closet.broken)
+		if(C.opened && !C.close())
 			continue
-		if(closet.opened && !closet.close())
-			continue
-		closet.locked = TRUE
-		closet.update_appearance()
+		C.locked = TRUE
+		C.update_appearance()
 	return 1
 
 
@@ -131,33 +114,24 @@
 	set_timer(0)
 	update_appearance()
 
-	for(var/datum/weakref/door_ref as anything in doors)
-		var/obj/machinery/door/window/brigdoor/door = door_ref.resolve()
-		if(!door)
-			doors -=  door_ref
-			continue
+	for(var/obj/machinery/door/window/brigdoor/door in targets)
 		if(!door.density)
 			continue
 		INVOKE_ASYNC(door, /obj/machinery/door/window/brigdoor.proc/open)
 
-	for(var/datum/weakref/closet_ref as anything in closets)
-		var/obj/structure/closet/secure_closet/brig/closet = closet_ref.resolve()
-		if(!closet)
-			closets -= closet_ref
+	for(var/obj/structure/closet/secure_closet/brig/C in targets)
+		if(C.broken)
 			continue
-		if(closet.broken)
+		if(C.opened)
 			continue
-		if(closet.opened)
-			continue
-		closet.locked = FALSE
-		closet.update_appearance()
+		C.locked = FALSE
+		C.update_appearance()
 
 	return 1
 
 
 /obj/machinery/door_timer/proc/time_left(seconds = FALSE)
-	//. = max(0,timer_duration - (activation_time ? world.time - activation_time : 0)) //ORIGINAL
-	. = max(0,timer_duration - (activation_time ? world.realtime - activation_time : 0)) //SKYRAT EDIT CHANGE
+	. = max(0,timer_duration - (activation_time ? world.time - activation_time : 0))
 	if(seconds)
 		. /= 10
 
@@ -222,12 +196,8 @@
 	data["minutes"] = round((time_left - data["seconds"]) / 60)
 	data["timing"] = timing
 	data["flash_charging"] = FALSE
-	for(var/datum/weakref/flash_ref as anything in flashers)
-		var/obj/machinery/flasher/flasher = flash_ref.resolve()
-		if(!flasher)
-			flashers -= flash_ref
-			continue
-		if(flasher.last_flash && (flasher.last_flash + 15 SECONDS) > world.time)
+	for(var/obj/machinery/flasher/F in targets)
+		if(F.last_flash && (F.last_flash + 15 SECONDS) > world.time)
 			data["flash_charging"] = TRUE
 			break
 	return data
@@ -243,7 +213,7 @@
 	var/mob/user = usr
 
 	if(!allowed(usr))
-		to_chat(usr, span_warning("Access denied."))
+		to_chat(usr, "<span class='warning'>Access denied.</span>")
 		return FALSE
 
 	switch(action)
@@ -264,12 +234,8 @@
 		if("flash")
 			investigate_log("[key_name(usr)] has flashed cell [id]", INVESTIGATE_RECORDS)
 			user.log_message("[key_name(usr)] has flashed cell [id]", LOG_ATTACK)
-			for(var/datum/weakref/flash_ref as anything in flashers)
-				var/obj/machinery/flasher/flasher = flash_ref.resolve()
-				if(!flasher)
-					flashers -= flash_ref
-					continue
-				flasher.flash()
+			for(var/obj/machinery/flasher/F in targets)
+				F.flash()
 		if("preset")
 			var/preset = params["preset"]
 			var/preset_time = time_left()
@@ -284,8 +250,7 @@
 			investigate_log("[key_name(usr)] set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
 			user.log_message("set cell [id]'s timer to [preset_time/10] seconds", LOG_ATTACK)
 			if(timing)
-				//activation_time = world.time //ORIGINAL
-				activation_time = world.realtime
+				activation_time = world.time
 		else
 			. = FALSE
 

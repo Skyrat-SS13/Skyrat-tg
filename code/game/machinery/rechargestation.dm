@@ -36,9 +36,9 @@
 /obj/machinery/recharge_station/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += span_notice("The status display reads: Recharging <b>[recharge_speed]J</b> per cycle.")
+		. += "<span class='notice'>The status display reads: Recharging <b>[recharge_speed]J</b> per cycle.</span>"
 		if(repairs)
-			. += span_notice("[src] has been upgraded to support automatic repairs.")
+			. += "<span class='notice'>[src] has been upgraded to support automatic repairs.</span>"
 
 
 /obj/machinery/recharge_station/on_set_is_operational(old_value)
@@ -90,12 +90,12 @@
 
 /obj/machinery/recharge_station/open_machine()
 	. = ..()
-	update_use_power(IDLE_POWER_USE)
+	use_power = IDLE_POWER_USE
 
 /obj/machinery/recharge_station/close_machine()
 	. = ..()
 	if(occupant)
-		update_use_power(ACTIVE_POWER_USE) //It always tries to charge, even if it can't.
+		use_power = ACTIVE_POWER_USE //It always tries to charge, even if it can't.
 		add_fingerprint(occupant)
 
 /obj/machinery/recharge_station/update_icon_state()

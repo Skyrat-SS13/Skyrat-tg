@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(cursed_minds)
+
 /**
  * Turns whoever enters into a mob or random person
  *
@@ -15,23 +17,23 @@
 	planetary_atmos = TRUE
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
-/turf/open/water/cursed_spring/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/turf/open/water/cursed_spring/Entered(atom/movable/thing, atom/oldLoc)
 	. = ..()
-	if(!isliving(arrived))
+	if(!isliving(thing))
 		return
-	var/mob/living/L = arrived
-	if(!L.client || L.incorporeal_move || !L.mind)
+	var/mob/living/L = thing
+	if(!L.client || L.incorporeal_move)
 		return
-	if(HAS_TRAIT(L.mind, TRAIT_HOT_SPRING_CURSED)) // no double dipping
+	if(GLOB.cursed_minds[L.mind])
 		return
-
-	ADD_TRAIT(L.mind, TRAIT_HOT_SPRING_CURSED, TRAIT_GENERIC)
+	GLOB.cursed_minds[L.mind] = TRUE
+	RegisterSignal(L.mind, COMSIG_PARENT_QDELETING, .proc/remove_from_cursed)
 	var/random_choice = pick("Mob", "Appearance")
 	switch(random_choice)
 		if("Mob")
-			L = L.wabbajack("animal")
+			L = wabbajack(L, "animal")
 		if("Appearance")
-			var/mob/living/carbon/human/H = L.wabbajack("humanoid")
+			var/mob/living/carbon/human/H = wabbajack(L, "humanoid")
 			randomize_human(H)
 			var/list/all_species = list()
 			for(var/stype in subtypesof(/datum/species))
@@ -40,8 +42,16 @@
 					all_species += stype
 			var/random_race = pick(all_species)
 			H.set_species(random_race)
-			H.dna.update_dna_identity()
+			H.dna.unique_enzymes = H.dna.generate_unique_enzymes()
 			L = H
-	var/turf/T = find_safe_turf(extended_safety_checks = TRUE, dense_atoms = FALSE)
+	var/turf/T = find_safe_turf()
 	L.forceMove(T)
-	to_chat(L, span_notice("You blink and find yourself in [get_area_name(T)]."))
+	to_chat(L, "<span class='notice'>You blink and find yourself in [get_area_name(T)].</span>")
+
+/**
+ * Deletes minds from the cursed minds list after their deletion
+ *
+ */
+/turf/open/water/cursed_spring/proc/remove_from_cursed(datum/mind/M)
+	SIGNAL_HANDLER
+	GLOB.cursed_minds -= M

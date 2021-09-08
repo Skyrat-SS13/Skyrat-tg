@@ -5,7 +5,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Icon, Stack } from "../components";
 import { Window } from "../layouts";
 
-const ROWS = 6;
+const ROWS = 5;
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = "50px";
@@ -58,12 +58,12 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
-    icon: "lungs", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
+    icon: "tg-air-tank",
     text: "Enable internals",
   },
 
   disable_internals: {
-    icon: "lungs-virus", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
+    icon: "tg-air-tank-slash",
     text: "Disable internals",
   },
 
@@ -207,30 +207,6 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: "inventory-pocket.png",
   },
-
-  vagina: {
-    displayName: "vagina",
-    gridSpot: getGridSpotKey([5, 1]),
-    image: "inventory-pocket.png",
-  },
-
-  anus: {
-    displayName: "anus",
-    gridSpot: getGridSpotKey([5, 2]),
-    image: "inventory-pocket.png",
-  },
-
-  nipples: {
-    displayName: "nipples",
-    gridSpot: getGridSpotKey([5, 3]),
-    image: "inventory-pocket.png",
-  },
-
-  penis: {
-    displayName: "penis",
-    gridSpot: getGridSpotKey([5, 4]),
-    image: "inventory-pocket.png",
-  },
 };
 
 enum ObscuringLevel {
@@ -314,9 +290,7 @@ export const StripMenu = (props, context) => {
                   if (item === null) {
                     tooltip = slot.displayName;
                   } else if ("name" in item) {
-                    if (item.alternate) {
-                      alternateAction = ALTERNATE_ACTIONS[item.alternate];
-                    }
+                    alternateAction = ALTERNATE_ACTIONS[item.alternate];
 
                     content = (
                       <Box

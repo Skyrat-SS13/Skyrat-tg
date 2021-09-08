@@ -45,7 +45,7 @@
 					var/mob/living/carbon/human/H = L
 					category = "humans"
 					if(H.mind)
-						mob_data["job"] = H.mind.assigned_role.title
+						mob_data["job"] = H.mind.assigned_role
 					else
 						mob_data["job"] = "Unknown"
 					mob_data["species"] = H.dna.species.name
@@ -183,21 +183,23 @@
 /datum/controller/subsystem/ticker/proc/HandleRandomHardcoreScore(client/player_client)
 	if(!ishuman(player_client?.mob))
 		return FALSE
-	var/mob/living/carbon/human/human_mob = player_client.mob
+	var/mob/living/carbon/human/human_mob = player_client?.mob
 	if(!human_mob.hardcore_survival_score) ///no score no glory
 		return FALSE
 
 	if(human_mob.mind && (human_mob.mind.special_role || length(human_mob.mind.antag_datums) > 0))
 		var/didthegamerwin = TRUE
-		for(var/datum/antagonist/antag_datums as anything in human_mob.mind.antag_datums)
-			for(var/datum/objective/objective_datum as anything in antag_datums.objectives)
+		for(var/a in human_mob.mind.antag_datums)
+			var/datum/antagonist/antag_datum = a
+			for(var/i in antag_datum.objectives)
+				var/datum/objective/objective_datum = i
 				if(!objective_datum.check_completion())
 					didthegamerwin = FALSE
 		if(!didthegamerwin)
 			return FALSE
-		player_client.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score * 2))
+		player_client?.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score * 2))
 	else if(human_mob.onCentCom())
-		player_client.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score))
+		player_client?.give_award(/datum/award/score/hardcore_random, human_mob, round(human_mob.hardcore_survival_score))
 
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
@@ -241,19 +243,13 @@
 
 	send2adminchat("Server", "Round just ended.")
 
-	/* //SKYRAT EDIT - START (DISCORD Updates)
-	MOVED CHECK INTO TICKER.DM
 	if(length(CONFIG_GET(keyed_list/cross_server)))
 		send_news_report()
-	*/
-	send2chat("The current round has ended. Please standby for your shift interlude Nanotrasen News Network's report!", CONFIG_GET(string/chat_announce_new_game))
-	send2chat(send_news_report(), CONFIG_GET(string/chat_announce_new_game))
-	//SKYRAT EDIT - END
 
 	CHECK_TICK
 
 	handle_hearts()
-	set_observer_default_invisibility(0, span_warning("The round is over! You are now visible to the living."))
+	set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
 
 	CHECK_TICK
 
@@ -279,7 +275,8 @@
 	CHECK_TICK
 	SSdbcore.SetRoundEnd()
 	//Collects persistence features
-	SSpersistence.CollectData()
+	if(mode.allow_persistence_save)
+		SSpersistence.CollectData()
 
 	//stop collecting feedback during grifftime
 	SSblackbox.Seal()
@@ -290,7 +287,7 @@
 
 /datum/controller/subsystem/ticker/proc/standard_reboot()
 	if(ready_for_reboot)
-		if(GLOB.station_was_nuked)
+		if(mode.station_was_nuked)
 			Reboot("Station destroyed by Nuclear Device.", "nuke")
 		else
 			Reboot("Round ended.", "proper completion")
@@ -300,6 +297,11 @@
 //Common part of the report
 /datum/controller/subsystem/ticker/proc/build_roundend_report()
 	var/list/parts = list()
+
+	//Gamemode specific things. Should be empty most of the time.
+	parts += mode.special_report()
+
+	CHECK_TICK
 
 	//AI laws
 	parts += law_report()
@@ -332,7 +334,7 @@
 		var/info = statspage ? "<a href='?action=openLink&link=[url_encode(statspage)][GLOB.round_id]'>[GLOB.round_id]</a>" : GLOB.round_id
 		parts += "[FOURSPACES]Round ID: <b>[info]</b>"
 	parts += "[FOURSPACES]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
-	parts += "[FOURSPACES]Station Integrity: <B>[GLOB.station_was_nuked ? span_redtext("Destroyed") : "[popcount["station_integrity"]]%"]</B>"
+	parts += "[FOURSPACES]Station Integrity: <B>[mode.station_was_nuked ? "<span class='redtext'>Destroyed</span>" : "[popcount["station_integrity"]]%"]</B>"
 	var/total_players = GLOB.joined_player_list.len
 	if(total_players)
 		parts+= "[FOURSPACES]Total Population: <B>[total_players]</B>"
@@ -417,14 +419,14 @@
 					parts += "<span class='marooned'>You managed to survive, but were marooned on [station_name()]...</span>"
 				else
 					parts += "<div class='panel greenborder'>"
-					parts += span_greentext("You managed to survive the events on [station_name()] as [M.real_name].")
+					parts += "<span class='greentext'>You managed to survive the events on [station_name()] as [M.real_name].</span>"
 			else
 				parts += "<div class='panel greenborder'>"
-				parts += span_greentext("You managed to survive the events on [station_name()] as [M.real_name].")
+				parts += "<span class='greentext'>You managed to survive the events on [station_name()] as [M.real_name].</span>"
 
 		else
 			parts += "<div class='panel redborder'>"
-			parts += span_redtext("You did not survive the events on [station_name()]...")
+			parts += "<span class='redtext'>You did not survive the events on [station_name()]...</span>"
 	else
 		parts += "<div class='panel stationborder'>"
 	parts += "<br>"
@@ -450,7 +452,7 @@
 		var/mob/living/silicon/ai/aiPlayer = i
 		var/datum/mind/aiMind = aiPlayer.deployed_shell?.mind || aiPlayer.mind
 		if(aiMind)
-			parts += "<b>[aiPlayer.name]</b>'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was [span_redtext("deactivated")]"] were:" //SKYRAT EDIT CHANGE
+			parts += "<b>[aiPlayer.name]</b> (Played by: <b>[aiMind.key]</b>)'s laws [aiPlayer.stat != DEAD ? "at the end of the round" : "when it was <span class='redtext'>deactivated</span>"] were:"
 			parts += aiPlayer.laws.get_law_list(include_zeroth=TRUE)
 
 		parts += "<b>Total law changes: [aiPlayer.law_change_counter]</b>"
@@ -461,19 +463,13 @@
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				borg_num--
 				if(robo.mind)
-					//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
-					//parts += "<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " [span_redtext("(Deactivated)")]" : ""][borg_num ?", ":""]" - SKYRAT EDIT - ORIGINAL
-					parts += "<b>[robo.name]</b> [robo.stat == DEAD ? " [span_redtext("(Deactivated)")]" : ""][borg_num ?", ":""]"
-					//SKYRAT EDIT CHANGE END
+					parts += "<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>)[robo.stat == DEAD ? " <span class='redtext'>(Deactivated)</span>" : ""][borg_num ?", ":""]"
 		if(!borg_spacer)
 			borg_spacer = TRUE
 
 	for (var/mob/living/silicon/robot/robo in GLOB.silicon_mobs)
 		if (!robo.connected_ai && robo.mind)
-			//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
-			//parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>) [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:"
-			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> [(robo.stat != DEAD)? "[span_greentext("survived")] as an AI-less borg!" : "was [span_redtext("unable to survive")] the rigors of being a cyborg without an AI."] Its laws were:"
-			//SKYRAT EDIT CHANGE END
+			parts += "[borg_spacer?"<br>":""]<b>[robo.name]</b> (Played by: <b>[robo.mind.key]</b>) [(robo.stat != DEAD)? "<span class='greentext'>survived</span> as an AI-less borg!" : "was <span class='redtext'>unable to survive</span> the rigors of being a cyborg without an AI."] Its laws were:"
 
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				parts += robo.laws.get_law_list(include_zeroth=TRUE)
@@ -488,9 +484,10 @@
 
 /datum/controller/subsystem/ticker/proc/goal_report()
 	var/list/parts = list()
-	if(GLOB.station_goals.len)
-		for(var/datum/station_goal/goal as anything in GLOB.station_goals)
-			parts += goal.get_result()
+	if(mode.station_goals.len)
+		for(var/V in mode.station_goals)
+			var/datum/station_goal/G = V
+			parts += G.get_result()
 		return "<div class='panel stationborder'><ul>[parts.Join()]</ul></div>"
 
 ///Generate a report for how much money is on station, as well as the richest crewmember on the station.
@@ -505,7 +502,7 @@
 	var/station_vault = 0
 	///How many players joined the round.
 	var/total_players = GLOB.joined_player_list.len
-	var/static/list/typecache_bank = typecacheof(list(/datum/bank_account/department, /datum/bank_account/remote))
+	var/list/typecache_bank = typecacheof(list(/datum/bank_account/department, /datum/bank_account/remote))
 	for(var/i in SSeconomy.bank_accounts_by_id)
 		var/datum/bank_account/current_acc = SSeconomy.bank_accounts_by_id[i]
 		if(typecache_bank[current_acc.type])
@@ -523,12 +520,12 @@
 	log_econ("Roundend service income: [tourist_income] credits.")
 	switch(tourist_income)
 		if(0)
-			parts += "[span_redtext("Service did not earn any credits...")]<br>"
+			parts += "<span class='redtext'>Service did not earn any credits...</span><br>"
 		if(1 to 2000)
-			parts += "[span_redtext("Centcom is displeased. Come on service, surely you can do better than that.")]<br>"
+			parts += "<span class='redtext'>Centcom is displeased. Come on service, surely you can do better than that.</span><br>"
 			award_service(/datum/award/achievement/jobs/service_bad)
 		if(2001 to 4999)
-			parts += "[span_greentext("Centcom is satisfied with service's job today.")]<br>"
+			parts += "<span class='greentext'>Centcom is satisfied with service's job today.</span><br>"
 			award_service(/datum/award/achievement/jobs/service_okay)
 		else
 			parts += "<span class='reallybig greentext'>Centcom is incredibly impressed with service today! What a team!</span><br>"
@@ -552,14 +549,31 @@
  * * award: Achievement to give service department
  */
 /datum/controller/subsystem/ticker/proc/award_service(award)
-	for(var/mob/living/carbon/human/human as anything in GLOB.human_list)
-		if(!human.client || !human.mind)
+	for(var/mob/living/carbon/human/service_member as anything in GLOB.human_list)
+		if(!service_member.mind)
 			continue
-		var/datum/job/human_job = human.mind.assigned_role
-		if(!(human_job.departments_bitflags & DEPARTMENT_BITFLAG_SERVICE))
+		var/datum/mind/service_mind = service_member.mind
+		if(!service_mind.assigned_role)
 			continue
-		human_job.award_service(human.client, award)
-
+		for(var/job in GLOB.service_food_positions)
+			if(service_mind.assigned_role != job)
+				continue
+			//general awards
+			service_member.client?.give_award(award, service_member)
+			if(service_mind.assigned_role == "Cook")
+				var/datum/venue/restaurant = SSrestaurant.all_venues[/datum/venue/restaurant]
+				var/award_score = restaurant.total_income
+				var/award_status = service_member.client.get_award_status(/datum/award/score/chef_tourist_score)
+				if(award_score > award_status)
+					award_score -= award_status
+				service_member.client?.give_award(/datum/award/score/chef_tourist_score, service_member, award_score)
+			if(service_mind.assigned_role == "Bartender")
+				var/datum/venue/bar = SSrestaurant.all_venues[/datum/venue/bar]
+				var/award_score = bar.total_income
+				var/award_status = service_member.client.get_award_status(/datum/award/score/bartender_tourist_score)
+				if(award_score - award_status > 0)
+					award_score -= award_status
+				service_member.client?.give_award(/datum/award/score/bartender_tourist_score, service_member, award_score)
 
 /datum/controller/subsystem/ticker/proc/medal_report()
 	if(GLOB.commendations.len)
@@ -629,27 +643,6 @@
 			currrent_category = A.roundend_category
 			previous_category = A
 		result += A.roundend_report()
-		//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
-		if(A.owner && A.owner.my_ambitions)
-			var/datum/ambitions/AMB = A.owner.my_ambitions
-			result += "<br>Narrative: [AMB.narrative]"
-			result += "<br>Objectives:"
-			for(var/stri in AMB.objectives)
-				result += "<br>* [stri]"
-			var/intensity = "NOT SET"
-			switch(AMB.intensity)
-				if(AMBITION_INTENSITY_STEALTH)
-					intensity = "Stealth"
-				if(AMBITION_INTENSITY_MILD)
-					intensity = "Mild"
-				if(AMBITION_INTENSITY_MEDIUM)
-					intensity = "Medium"
-				if(AMBITION_INTENSITY_SEVERE)
-					intensity = "Severe"
-				if(AMBITION_INTENSITY_EXTREME)
-					intensity = "Extreme"
-			result += "<br>Intensity: [intensity]"
-		//SKYRAT EDIT ADDITION END - AMBITIONS
 		result += "<br><br>"
 		CHECK_TICK
 
@@ -691,25 +684,22 @@
 
 /proc/printplayer(datum/mind/ply, fleecheck)
 	var/jobtext = ""
-	if(!is_unassigned_job(ply.assigned_role))
-		jobtext = " the <b>[ply.assigned_role.title]</b>"
-		//SKYRAT EDIT CHANGE BEGIN - ROUNDEND
-	//var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and" - SKYRAT EDIT - ORIGINAL
-	var/text = "<b>[ply.name]</b>[jobtext]"
-	//SKYRAT EDIT CHANGE END
+	if(ply.assigned_role)
+		jobtext = " the <b>[ply.assigned_role]</b>"
+	var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and"
 	if(ply.current)
 		if(ply.current.stat == DEAD)
-			text += " [span_redtext("died")]"
+			text += " <span class='redtext'>died</span>"
 		else
-			text += " [span_greentext("survived")]"
+			text += " <span class='greentext'>survived</span>"
 		if(fleecheck)
 			var/turf/T = get_turf(ply.current)
 			if(!T || !is_station_level(T.z))
-				text += " while [span_redtext("fleeing the station")]"
+				text += " while <span class='redtext'>fleeing the station</span>"
 		if(ply.current.real_name != ply.name)
 			text += " as <b>[ply.current.real_name]</b>"
 	else
-		text += " [span_redtext("had their body destroyed")]"
+		text += " <span class='redtext'>had their body destroyed</span>"
 	return text
 
 /proc/printplayerlist(list/players,fleecheck)
@@ -729,9 +719,9 @@
 	var/count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			objective_parts += "<b>[objective.objective_name] #[count]</b>: [objective.explanation_text] [span_greentext("Success!")]"
+			objective_parts += "<b>[objective.objective_name] #[count]</b>: [objective.explanation_text] <span class='greentext'>Success!</span>"
 		else
-			objective_parts += "<b>[objective.objective_name] #[count]</b>: [objective.explanation_text] [span_redtext("Fail.")]"
+			objective_parts += "<b>[objective.objective_name] #[count]</b>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
 		count++
 	return objective_parts.Join("<br>")
 
@@ -755,33 +745,19 @@
 
 	//json format backup file generation stored per server
 	var/json_file = file("data/admins_backup.json")
-	var/list/file_data = list(
-		"ranks" = list(),
-		"admins" = list(),
-		"connections" = list(),
-	)
+	var/list/file_data = list("ranks" = list(), "admins" = list())
 	for(var/datum/admin_rank/R in GLOB.admin_ranks)
 		file_data["ranks"]["[R.name]"] = list()
 		file_data["ranks"]["[R.name]"]["include rights"] = R.include_rights
 		file_data["ranks"]["[R.name]"]["exclude rights"] = R.exclude_rights
 		file_data["ranks"]["[R.name]"]["can edit rights"] = R.can_edit_rights
-
-	for(var/admin_ckey in GLOB.admin_datums + GLOB.deadmins)
-		var/datum/admins/admin = GLOB.admin_datums[admin_ckey]
-
-		if(!admin)
-			admin = GLOB.deadmins[admin_ckey]
-			if (!admin)
+	for(var/i in GLOB.admin_datums+GLOB.deadmins)
+		var/datum/admins/A = GLOB.admin_datums[i]
+		if(!A)
+			A = GLOB.deadmins[i]
+			if (!A)
 				continue
-
-		file_data["admins"][admin_ckey] = admin.rank.name
-
-		if (admin.owner)
-			file_data["connections"][admin_ckey] = list(
-				"cid" = admin.owner.computer_id,
-				"ip" = admin.owner.address,
-			)
-
+		file_data["admins"]["[i]"] = A.rank.name
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(file_data))
 

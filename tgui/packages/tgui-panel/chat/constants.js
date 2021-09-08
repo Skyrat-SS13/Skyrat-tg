@@ -36,7 +36,6 @@ export const MESSAGE_TYPE_EVENTCHAT = 'eventchat';
 export const MESSAGE_TYPE_ADMINLOG = 'adminlog';
 export const MESSAGE_TYPE_ATTACKLOG = 'attacklog';
 export const MESSAGE_TYPE_DEBUG = 'debug';
-export const MESSAGE_TYPE_MENTOR = 'mentor'; // SKYRAT EDIT ADDITION
 
 // Metadata for each message type
 export const MESSAGE_TYPES = [
@@ -53,7 +52,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_LOCALCHAT,
     name: 'Local',
     description: 'In-character local messages (say, emote, etc)',
-    selector: '.say, .emote, .looc',
+    selector: '.say, .emote',
   },
   {
     type: MESSAGE_TYPE_RADIO,
@@ -83,7 +82,7 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_OOC,
     name: 'OOC',
     description: 'The bluewall of global OOC messages',
-    selector: '.ooc, .adminooc, .oocplain, .looc, .rlooc',
+    selector: '.ooc, .adminooc, .oocplain',
   },
   {
     type: MESSAGE_TYPE_ADMINPM,
@@ -135,11 +134,5 @@ export const MESSAGE_TYPES = [
     name: 'Debug Log',
     description: 'DEBUG: SSPlanets subsystem Recover().',
     admin: true,
-  },
-  {
-    type: MESSAGE_TYPE_MENTOR, // SKYRAT EDIT
-    name: 'Mentor Log',
-    description: 'Mentor PMs and other mentor things.',
-    selector: '.mentor, .mentornotice',
   },
 ];

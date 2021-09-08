@@ -1,6 +1,6 @@
 import { decodeHtmlEntities } from 'common/string';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, Stack } from '../components';
+import { Box, Button, Grid, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
 export const EngravedMessage = (props, context) => {
@@ -30,8 +30,8 @@ export const EngravedMessage = (props, context) => {
             mb={2}>
             {decodeHtmlEntities(hidden_message)}
           </Box>
-          <Stack>
-            <Stack.Item grow={1.05}>
+          <Grid>
+            <Grid.Column>
               <Button
                 fluid
                 icon="arrow-up"
@@ -42,8 +42,8 @@ export const EngravedMessage = (props, context) => {
                 fontSize="16px"
                 lineHeight="24px"
                 onClick={() => act('like')} />
-            </Stack.Item>
-            <Stack.Item grow={1}>
+            </Grid.Column>
+            <Grid.Column>
               <Button
                 fluid
                 icon="circle"
@@ -53,8 +53,8 @@ export const EngravedMessage = (props, context) => {
                 fontSize="16px"
                 lineHeight="24px"
                 onClick={() => act('neutral')} />
-            </Stack.Item>
-            <Stack.Item grow={1.05}>
+            </Grid.Column>
+            <Grid.Column>
               <Button
                 fluid
                 icon="arrow-down"
@@ -65,8 +65,8 @@ export const EngravedMessage = (props, context) => {
                 fontSize="16px"
                 lineHeight="24px"
                 onClick={() => act('dislike')} />
-            </Stack.Item>
-          </Stack>
+            </Grid.Column>
+          </Grid>
         </Section>
         <Section>
           <LabeledList>
@@ -75,6 +75,7 @@ export const EngravedMessage = (props, context) => {
             </LabeledList.Item>
           </LabeledList>
         </Section>
+        <Section />
         {!!admin_mode && (
           <Section
             title="Admin Panel"

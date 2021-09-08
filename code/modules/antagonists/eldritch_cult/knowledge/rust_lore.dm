@@ -21,6 +21,7 @@
 		/turf/open/space,
 		/turf/open/lava,
 		/turf/open/chasm,
+		/turf/open/floor/plating/rust
 	))
 	route = PATH_RUST
 
@@ -47,7 +48,7 @@
 			victim.adjustOrganLoss(pick(ORGAN_SLOT_BRAIN,ORGAN_SLOT_EARS,ORGAN_SLOT_EYES,ORGAN_SLOT_LIVER,ORGAN_SLOT_LUNGS,ORGAN_SLOT_STOMACH,ORGAN_SLOT_HEART),25)
 
 /datum/eldritch_knowledge/spell/area_conversion
-	name = "Aggressive Spread"
+	name = "Agressive Spread"
 	desc = "Spreads rust to nearby surfaces. Already rusted surfaces are destroyed."
 	gain_text = "All wise men know well not to touch the Bound King."
 	cost = 1
@@ -67,30 +68,27 @@
 	next_knowledge = list(
 		/datum/eldritch_knowledge/rust_mark,
 		/datum/eldritch_knowledge/armor,
-		/datum/eldritch_knowledge/essence,
+		/datum/eldritch_knowledge/essence
 	)
 	route = PATH_RUST
 
 /datum/eldritch_knowledge/rust_regen/on_gain(mob/user)
 	. = ..()
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/on_move)
+	RegisterSignal(user,COMSIG_MOVABLE_MOVED,.proc/on_move)
 
 /datum/eldritch_knowledge/rust_regen/proc/on_move(mob/mover)
 	SIGNAL_HANDLER
 
-	var/turf/mover_turf = get_turf(mover)
-	if(HAS_TRAIT(mover_turf, TRAIT_RUSTY))
-		ADD_TRAIT(mover, TRAIT_STUNRESISTANCE, type)
-		return
-
-	REMOVE_TRAIT(mover, TRAIT_STUNRESISTANCE, type)
+	if(istype(get_turf(mover),/turf/open/floor/plating/rust))
+		ADD_TRAIT(mover,TRAIT_STUNRESISTANCE,type)
+	else
+		REMOVE_TRAIT(mover,TRAIT_STUNRESISTANCE,type)
 
 /datum/eldritch_knowledge/rust_regen/on_life(mob/user)
 	. = ..()
-	var/turf/our_turf = get_turf(user)
-	if(!HAS_TRAIT(our_turf, TRAIT_RUSTY) || !isliving(user))
+	var/turf/user_loc_turf = get_turf(user)
+	if(!istype(user_loc_turf, /turf/open/floor/plating/rust) || !isliving(user))
 		return
-
 	var/mob/living/living_user = user
 	living_user.adjustBruteLoss(-2, FALSE)
 	living_user.adjustFireLoss(-2, FALSE)
@@ -174,14 +172,13 @@
 	H.physiology.burn_mod *= 0.5
 	H.client?.give_award(/datum/award/achievement/misc/rust_ascension, H)
 	RegisterSignal(H,COMSIG_MOVABLE_MOVED,.proc/on_move)
-	priority_announce("$^@&#*$^@(#&$(@&#^$&#^@# Fear the decay, for the Rustbringer, [user.real_name] has ascended! None shall escape the corrosion! $^@&#*$^@(#&$(@&#^$&#^@#","#$^@&#*$^@(#&$(@&#^$&#^@#", ANNOUNCER_SPOOKY) //SKYRAT EDIT - Original: ANNOUNCER_SPANOMALIES
+	priority_announce("$^@&#*$^@(#&$(@&#^$&#^@# Fear the decay, for the Rustbringer, [user.real_name] has ascended! None shall escape the corrosion! $^@&#*$^@(#&$(@&#^$&#^@#","#$^@&#*$^@(#&$(@&#^$&#^@#", ANNOUNCER_SPANOMALIES)
 	new /datum/rust_spread(loc)
 	return ..()
 
 /datum/eldritch_knowledge/final/rust_final/proc/on_move(mob/mover)
 	SIGNAL_HANDLER
-	var/atom/mover_turf = get_turf(mover)
-	var/mover_on_rust = HAS_TRAIT(mover_turf, TRAIT_RUSTY)
+	var/mover_on_rust = istype(get_turf(mover),/turf/open/floor/plating/rust)
 
 	//We check if we are currently standing on a rust tile, but the immunities are not active, if so apply immunities, set immunities_active to TRUE
 	if(mover_on_rust && !immunities_active)
@@ -200,7 +197,7 @@
 /datum/eldritch_knowledge/final/rust_final/on_life(mob/user)
 	. = ..()
 	var/turf/user_loc_turf = get_turf(user)
-	if(!HAS_TRAIT(user_loc_turf, TRAIT_RUSTY) || !isliving(user) || !finished)
+	if(!istype(user_loc_turf, /turf/open/floor/plating/rust) || !isliving(user) || !finished)
 		return
 	var/mob/living/carbon/human/human_user = user
 	human_user.adjustBruteLoss(-4, FALSE)
@@ -265,8 +262,8 @@
 	edge_turfs = list()
 	var/list/removal_list = list()
 	var/max_dist = 1
-	for(var/atom/turfie as anything in turfs)
-		if(!HAS_TRAIT(turfie, TRAIT_RUSTY))
+	for(var/turfie in turfs)
+		if(!istype(turfie,/turf/closed/wall/rust) && !istype(turfie,/turf/closed/wall/r_wall/rust) && !istype(turfie,/turf/open/floor/plating/rust))
 			removal_list += turfie
 		max_dist = max(max_dist, get_dist(turfie,centre) +1)
 	turfs -= removal_list

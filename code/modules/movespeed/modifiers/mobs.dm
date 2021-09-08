@@ -123,6 +123,3 @@
 
 /datum/movespeed_modifier/dragon_depression
 	multiplicative_slowdown = 5
-
-/datum/movespeed_modifier/morph_disguised
-	multiplicative_slowdown = 1

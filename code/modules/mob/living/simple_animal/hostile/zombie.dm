@@ -18,7 +18,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
 	combat_mode = TRUE
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	status_flags = CANPUSH
 	del_on_death = 1
@@ -30,7 +30,6 @@
 	. = ..()
 	INVOKE_ASYNC(src, .proc/setup_visuals)
 
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR ZOMBIE.DM
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
 	var/datum/preferences/dummy_prefs = new
 	dummy_prefs.pref_species = new /datum/species/zombie
@@ -49,7 +48,7 @@
 	corpse.outfit = O
 	corpse.mob_species = /datum/species/zombie
 	corpse.mob_name = name
-*/
+
 /mob/living/simple_animal/hostile/zombie/AttackingTarget()
 	. = ..()
 	if(. && ishuman(target) && prob(infection_chance))
@@ -57,8 +56,5 @@
 
 /mob/living/simple_animal/hostile/zombie/drop_loot()
 	. = ..()
-	if(!no_corpse) //SKYRAT EDIT CHANGE
-		corpse.forceMove(drop_location())
-		corpse.create()
-	else //SKYRAT EDIT CHANGE
-		new /obj/effect/gibspawner/human(loc) //SKYRAT EDIT CHANGE
+	corpse.forceMove(drop_location())
+	corpse.create()

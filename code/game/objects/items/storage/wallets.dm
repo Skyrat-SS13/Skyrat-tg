@@ -14,9 +14,8 @@
 /obj/item/storage/wallet/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete/wallet)
-	STR.max_items = 5
+	STR.max_items = 4
 	STR.set_holdable(list(
-		/obj/item/reagent_containers/hypospray/medipen,
 		/obj/item/stack/spacecash,
 		/obj/item/holochip,
 		/obj/item/card,
@@ -37,32 +36,34 @@
 		/obj/item/photo,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/reagent_containers/pill,
 		/obj/item/screwdriver,
 		/obj/item/stamp),
 		list(/obj/item/screwdriver/power))
 
-/obj/item/storage/wallet/Exited(atom/movable/gone, direction)
+/obj/item/storage/wallet/Exited(atom/movable/AM)
 	. = ..()
-	if(istype(gone, /obj/item/card/id))
-		refreshID()
+	refreshID(removed = TRUE)
 
 /**
  * Calculates the new front ID.
  *
  * Picks the ID card that has the most combined command or higher tier accesses.
+ * Arguments:
+ * * removed - If this proc was called because a card was removed. There's a chance we don't need to calculate the new front ID if a card was removed.
  */
-/obj/item/storage/wallet/proc/refreshID()
+/obj/item/storage/wallet/proc/refreshID(removed = FALSE)
 	LAZYCLEARLIST(combined_access)
+
+	// If the front_id is still in our wallet an we removed a card, we can return early.
+	if((front_id in src) && removed)
+		return
 
 	front_id = null
 	var/winning_tally = 0
-	for(var/obj/item/card/id/id_card in contents)
-		// Certain IDs can forcibly jump to the front so they can disguise other cards in wallets. Chameleon/Agent ID cards are an example of this.
-		if(HAS_TRAIT(id_card, TRAIT_MAGNETIC_ID_CARD))
-			front_id = id_card
-			break
-
+	for(var/card in contents)
+		var/obj/item/card/id/id_card = card
+		if(!istype(id_card))
+			continue
 		var/card_tally = SSid_access.tally_access(id_card, ACCESS_FLAG_COMMAND)
 		if(card_tally > winning_tally)
 			winning_tally = card_tally
@@ -84,17 +85,15 @@
 	update_appearance(UPDATE_ICON)
 	update_slot_icon()
 
-/obj/item/storage/wallet/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/obj/item/storage/wallet/Entered(atom/movable/AM)
 	. = ..()
-	if(istype(arrived, /obj/item/card/id))
-		refreshID()
+	refreshID(removed = FALSE)
 
 /obj/item/storage/wallet/update_overlays()
 	. = ..()
 	cached_flat_icon = null
 	if(!front_id)
 		return
-	COMPILE_OVERLAYS(front_id)
 	. += mutable_appearance(front_id.icon, front_id.icon_state)
 	. += front_id.overlays
 	. += mutable_appearance(icon, "wallet_overlay")
@@ -118,7 +117,7 @@
 /obj/item/storage/wallet/examine()
 	. = ..()
 	if(front_id)
-		. += span_notice("Alt-click to remove the id.")
+		. += "<span class='notice'>Alt-click to remove the id.</span>"
 
 /obj/item/storage/wallet/get_id_examine_strings(mob/user)
 	. = ..()
@@ -150,12 +149,8 @@
 		return ..()
 
 /obj/item/storage/wallet/random
-	icon_state = "random_wallet" // for mapping purposes
-
-/obj/item/storage/wallet/random/Initialize()
-	. = ..()
-	icon_state = "wallet"
+	icon_state = "random_wallet"
 
 /obj/item/storage/wallet/random/PopulateContents()
-	new /obj/item/holochip(src, rand(5, 30))
-	new /obj/effect/spawner/lootdrop/wallet_loot(src)
+	new /obj/item/holochip(src, rand(5,30))
+	icon_state = "wallet"

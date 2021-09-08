@@ -61,7 +61,6 @@
 		else
 			qdel(replaced)
 
-	SEND_SIGNAL(src, COMSIG_ORGAN_IMPLANTED, reciever)
 	SEND_SIGNAL(reciever, COMSIG_CARBON_GAIN_ORGAN, src, special)
 
 	owner = reciever
@@ -93,7 +92,6 @@
 	for(var/datum/action/action as anything in actions)
 		action.Remove(organ_owner)
 
-	SEND_SIGNAL(src, COMSIG_ORGAN_REMOVED, organ_owner)
 	SEND_SIGNAL(organ_owner, COMSIG_CARBON_LOSE_ORGAN, src, special)
 
 	START_PROCESSING(SSobj, src)
@@ -134,17 +132,17 @@
 /obj/item/organ/examine(mob/user)
 	. = ..()
 
-	. += span_notice("It should be inserted in the [parse_zone(zone)].")
+	. += "<span class='notice'>It should be inserted in the [parse_zone(zone)].</span>"
 
 	if(organ_flags & ORGAN_FAILING)
 		if(status == ORGAN_ROBOTIC)
-			. += span_warning("[src] seems to be broken.")
+			. += "<span class='warning'>[src] seems to be broken.</span>"
 			return
-		. += span_warning("[src] has decayed for too long, and has turned a sickly color. It probably won't work without repairs.")
+		. += "<span class='warning'>[src] has decayed for too long, and has turned a sickly color. It probably won't work without repairs.</span>"
 		return
 
 	if(damage > high_threshold)
-		. += span_warning("[src] is starting to look discolored.")
+		. += "<span class='warning'>[src] is starting to look discolored.</span>"
 
 /obj/item/organ/Initialize()
 	. = ..()
@@ -174,7 +172,7 @@
 	damage = clamp(damage + damage_amount, 0, maximum)
 	var/mess = check_damage_thresholds(owner)
 	prev_damage = damage
-	if(mess && owner && owner.stat <= SOFT_CRIT)
+	if(mess && owner)
 		to_chat(owner, mess)
 
 ///SETS an organ's damage to the amount "damage_amount", and in doing so clears or sets the failing flag, good for when you have an effect that should fix an organ if broken
@@ -281,17 +279,3 @@
 /// Called before organs are replaced in regenerate_organs with new ones
 /obj/item/organ/proc/before_organ_replacement(obj/item/organ/replacement)
 	return
-
-/// Called by medical scanners to get a simple summary of how healthy the organ is. Returns an empty string if things are fine.
-/obj/item/organ/proc/get_status_text()
-	var/status = ""
-	if(owner.has_reagent(/datum/reagent/inverse/technetium))
-		status = "<font color='#E42426'> organ is [round((damage/maxHealth)*100, 1)]% damaged.</font>"
-	else if(organ_flags & ORGAN_FAILING)
-		status = "<font color='#cc3333'>Non-Functional</font>"
-	else if(damage > high_threshold)
-		status = "<font color='#ff9933'>Severely Damaged</font>"
-	else if (damage > low_threshold)
-		status = "<font color='#ffcc33'>Mildly Damaged</font>"
-
-	return status

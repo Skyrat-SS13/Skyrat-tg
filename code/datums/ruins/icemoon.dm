@@ -39,7 +39,7 @@
 	suffix = "fountain_hall.dmm"
 
 // above and below ground together
-/* SKYRAT EDIT REMOVAL - Mapping
+
 /datum/map_template/ruin/icemoon/mining_site
 	name = "Mining Site"
 	id = "miningsite"
@@ -54,7 +54,7 @@
 	description = "Who knew ladders could be so useful?"
 	suffix = "icemoon_underground_mining_site.dmm"
 	unpickable = TRUE
-*/ // SKYRAT EDIT REMOVAL End
+
 // below ground only
 
 /datum/map_template/ruin/icemoon/underground
@@ -115,9 +115,3 @@
 	Seem very intent on research and individual liberty, and also geology-based naming?"
 	prefix = "_maps/RandomRuins/AnywhereRuins/"
 	suffix = "golem_ship.dmm"
-
-/datum/map_template/ruin/icemoon/underground/mailroom
-	name = "Frozen-over Post Office"
-	id = "mailroom"
-	description = "This is where all of your paychecks went. Signed, the management."
-	suffix = "icemoon_underground_mailroom.dmm"

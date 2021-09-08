@@ -1,11 +1,10 @@
 /obj/structure/closet/secure_closet/freezer
 	icon_state = "freezer"
-	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	var/jones = FALSE
 
 /obj/structure/closet/secure_closet/freezer/Destroy()
 	recursive_organ_check(src)
-	return ..()
+	..()
 
 /obj/structure/closet/secure_closet/freezer/Initialize()
 	. = ..()
@@ -25,7 +24,6 @@
 	if(jones)
 		return ..()
 	jones = TRUE
-	flags_1 &= ~PREVENT_CONTENTS_EXPLOSION_1
 
 /obj/structure/closet/secure_closet/freezer/kitchen
 	name = "kitchen cabinet"

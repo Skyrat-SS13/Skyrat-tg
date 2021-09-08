@@ -643,54 +643,6 @@ Proc variables, static variables, and global variables are resolved at compile t
 
 Note: While there has historically been a strong impulse to use associated lists for caching of computed values, this is the easy way out and leaves a lot of hidden overhead. Please keep this in mind when designing core/root systems that are intended for use by other code/coders. It's normally better for consumers of such systems to handle their own caching using vars and number indexed lists, than for you to do it using associated lists.
 
-### When passing vars through New() or Initialize()'s arguments, use src.var
-Using src.var + naming the arguments the same as the var is the most readable and intuitive way to pass arguments into a new instance's vars. The main benefit is that you do not need to give arguments odd names with prefixes and suffixes that are easily forgotten in `new()` when sending named args.
-
-This is very bad:
-```DM
-/atom/thing
-	var/is_red
-
-/atom/thing/Initialize(mapload, enable_red)
-	is_red = enable_red
-
-/proc/make_red_thing()
-	new /atom/thing(null, enable_red = TRUE)
-```
-
-Future coders using this code will have to remember two differently named variables which are near-synonyms of eachother. One of them is only used in Initialize for one line.
-
-This is bad:
-```DM
-/atom/thing
-	var/is_red
-
-/atom/thing/Initialize(mapload, _is_red)
-	is_red = _is_red
-
-/proc/make_red_thing()
-	new /atom/thing(null, _is_red = TRUE)
-```
-
-`_is_red` is being used to set `is_red` and yet means a random '_' needs to be appended to the front of the arg, same as all other args like this.
-
-This is good:
-```DM
-/atom/thing
-	var/is_red
-
-/atom/thing/Initialize(mapload, is_red)
-	src.is_red = is_red
-
-/proc/make_red_thing()
-	new /atom/thing(null, is_red = TRUE)
-```
-
-Setting `is_red` in args is simple, and directly names the variable the argument sets.
-
-### Don't create code that hangs references
-
-This is part of the larger issue of hard deletes, read this file for more info: [Guide to Harddels](HARDDEL_GUIDE.md))
 
 ### Other Notes
 * Code should be modular where possible; if you are working on a new addition, then strongly consider putting it in its own file unless it makes sense to put it with similar ones (i.e. a new tool would go in the "tools.dm" file)
@@ -781,13 +733,6 @@ Isn't that confusing?
 
 There is also an undocumented keyword called `static` that has the same behaviour as global but more correctly describes BYOND's behaviour. Therefore, we always use static instead of global where we need it, as it reduces suprise when reading BYOND code.
 
-### Byond Hellspawn 
-
-Put stuff that shouldn’t work but does, or should work but doesn’t here so we don’t forget about it.
-#### Icon hell
-
-The ‘transparent’ icon state causes fucked behavior when used on turfs, for reasons unknown and unknowable
-
 ## Pull Request Process
 
 There is no strict process when it comes to merging pull requests. Pull requests will sometimes take a while before they are looked at by a maintainer; the bigger the change, the more time it will take before they are accepted into the code. Every team member is a volunteer who is giving up their own time to help maintain and contribute, so please be courteous and respectful. Here are some helpful ways to make it easier for you and for the maintainers when making a pull request.
@@ -812,15 +757,11 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
-* **Pull requests that include sprites must have in-game screenshots that were taken on your own test-server in the PR body.** For instance, if you're adding new clothes, a screenshot of those clothes being worn is expected in the PR body. Not every single direction needs to be displayed, but each icon that's actually being used in-game should be showcased.
-
 ## Porting features/sprites/sounds/tools from other codebases
 
 If you are porting features/tools from other codebases, you must give them credit where it's due. Typically, crediting them in your pull request and the changelog is the recommended way of doing it. Take note of what license they use though, porting stuff from AGPLv3 and GPLv3 codebases are allowed.
 
 Regarding sprites & sounds, you must credit the artist and possibly the codebase. All /tg/station assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. However if you are porting assets from GoonStation or usually any assets under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0/) are to go into the 'goon' folder of the /tg/station codebase.
-
-Regarding sprites in particular, you still need to take your own screenshots of the sprites in-game on your Skyrat code in your PR body, not just re-use the screenshots provided in the original PR.
 
 ## Banned content
 Do not add any of the following in a Pull Request or risk getting the PR closed:

@@ -15,7 +15,7 @@
 		return
 	var/mob/M = user.mob
 	if(!M.pulling)
-		to_chat(user, span_notice("You are not pulling anything."))
+		to_chat(user, "<span class='notice'>You are not pulling anything.</span>")
 	else
 		M.stop_pulling()
 	return TRUE
@@ -66,13 +66,13 @@
 	var/mob/M = user.mob
 	var/obj/item/I = M.get_active_held_item()
 	if(!I)
-		to_chat(user, span_warning("You have nothing to drop in your hand!"))
+		to_chat(user, "<span class='warning'>You have nothing to drop in your hand!</span>")
 	else
 		user.mob.dropItemToGround(I)
 	return TRUE
 
 /datum/keybinding/mob/toggle_move_intent
-	hotkey_keys = list("Alt") //SKYRAT EDIT CHANGE - COMBAT_INDICATOR
+	hotkey_keys = list("C")
 	name = "toggle_move_intent"
 	full_name = "Hold to toggle move intent"
 	description = "Held down to cycle to the other move intent, release to cycle back"
@@ -233,7 +233,7 @@
 	return TRUE
 
 /datum/keybinding/mob/prevent_movement
-	hotkey_keys = list("Ctrl") //SKYRAT EDIT CHANGE ALT > CTRL - PIXEL_SHIFT
+	hotkey_keys = list("Alt")
 	name = "block_movement"
 	full_name = "Block movement"
 	description = "Prevents you from moving"

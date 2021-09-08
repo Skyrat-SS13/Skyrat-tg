@@ -2,26 +2,23 @@
 	title = "Detective"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
-	faction = FACTION_STATION
+	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 300
-	exp_required_type = EXP_TYPE_CREW
-	exp_granted_type = EXP_TYPE_CREW
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/detective
 	plasmaman_outfit = /datum/outfit/plasmaman/detective
-	departments_list = list(
-		/datum/job_department/security,
-		)
+	departments = DEPARTMENT_SECURITY
 
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SEC
 
-	mind_traits = list(TRAIT_DONUT_LOVER, TRAIT_DETECTIVE) //SKYRAT EDIT CHANGE: EXAMINEMORE
+	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
 	display_order = JOB_DISPLAY_ORDER_DETECTIVE
@@ -38,9 +35,6 @@
 	)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/bottle/whiskey)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
-
 
 /datum/outfit/job/detective
 	name = "Detective"

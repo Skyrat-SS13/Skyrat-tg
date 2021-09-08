@@ -18,7 +18,6 @@
 	animate_movement = FORWARD_STEPS
 	health = 50
 	maxHealth = 50
-	speed = 3
 	damage_coeff = list(BRUTE = 0.5, BURN = 0.7, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	combat_mode = TRUE //No swapping
 	buckle_lying = 0
@@ -105,16 +104,16 @@
 	. = ..()
 	if(open)
 		if(cell)
-			. += span_notice("It has \a [cell] installed.")
-			. += span_info("You can use a <b>crowbar</b> to remove it.")
+			. += "<span class='notice'>It has \a [cell] installed.</span>"
+			. += "<span class='info'>You can use a <b>crowbar</b> to remove it.</span>"
 		else
-			. += span_notice("It has an empty compartment where a <b>power cell</b> can be installed.")
+			. += "<span class='notice'>It has an empty compartment where a <b>power cell</b> can be installed.</span>"
 	if(load) //observer check is so we don't show the name of the ghost that's sitting on it to prevent metagaming who's ded.
-		. += span_notice("\A [isobserver(load) ? "ghostly figure" : load] is on its load platform.")
+		. += "<span class='notice'>\A [isobserver(load) ? "ghostly figure" : load] is on its load platform.</span>"
 
 
 /mob/living/simple_animal/bot/mulebot/Destroy()
-	UnregisterSignal(src, list(COMSIG_MOB_BOT_PRE_STEP, COMSIG_MOB_CLIENT_PRE_MOVE, COMSIG_MOB_BOT_STEP, COMSIG_MOB_CLIENT_MOVED))
+	UnregisterSignal(src, COMSIG_MOB_BOT_PRE_STEP, COMSIG_MOB_CLIENT_PRE_MOVE, COMSIG_MOB_BOT_STEP, COMSIG_MOB_CLIENT_MOVED)
 	unload(0)
 	QDEL_NULL(wires)
 	QDEL_NULL(cell)
@@ -129,8 +128,8 @@
 	return ..()
 
 /// returns true if the bot is fully powered.
-/mob/living/simple_animal/bot/mulebot/proc/has_power()
-	return cell && cell.charge > 0 && (!wires.is_cut(WIRE_POWER1) && !wires.is_cut(WIRE_POWER2))
+/mob/living/simple_animal/bot/mulebot/proc/has_power(bypass_open_check)
+	return (!open || bypass_open_check) && cell && cell.charge > 0 && (!wires.is_cut(WIRE_POWER1) && !wires.is_cut(WIRE_POWER2))
 
 
 /mob/living/simple_animal/bot/mulebot/proc/set_id(new_id)
@@ -147,28 +146,31 @@
 /mob/living/simple_animal/bot/mulebot/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		. = ..()
-		update_appearance()
+		if(open)
+			turn_off()
+		else
+			update_appearance() //this is also handled by turn_off(), so no need to call this twice.
 	else if(istype(I, /obj/item/stock_parts/cell) && open)
 		if(cell)
-			to_chat(user, span_warning("[src] already has a power cell!"))
+			to_chat(user, "<span class='warning'>[src] already has a power cell!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		cell = I
 		diag_hud_set_mulebotcell()
-		visible_message(span_notice("[user] inserts \a [cell] into [src]."),
-						span_notice("You insert [cell] into [src]."))
+		visible_message("<span class='notice'>[user] inserts \a [cell] into [src].</span>",
+						"<span class='notice'>You insert [cell] into [src].</span>")
 	else if(I.tool_behaviour == TOOL_CROWBAR && open && !user.combat_mode)
 		if(!cell)
-			to_chat(user, span_warning("[src] doesn't have a power cell!"))
+			to_chat(user, "<span class='warning'>[src] doesn't have a power cell!</span>")
 			return
 		cell.add_fingerprint(user)
 		if(Adjacent(user) && !issilicon(user))
 			user.put_in_hands(cell)
 		else
 			cell.forceMove(drop_location())
-		visible_message(span_notice("[user] crowbars [cell] out from [src]."),
-						span_notice("You pry [cell] out of [src]."))
+		visible_message("<span class='notice'>[user] crowbars [cell] out from [src].</span>",
+						"<span class='notice'>You pry [cell] out of [src].</span>")
 		cell = null
 		diag_hud_set_mulebotcell()
 	else if(is_wire_tool(I) && open)
@@ -176,10 +178,10 @@
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1 + I.force * 2))
 			unload(0)
-			user.visible_message(span_danger("[user] knocks [load] off [src] with \the [I]!"),
-									span_danger("You knock [load] off [src] with \the [I]!"))
+			user.visible_message("<span class='danger'>[user] knocks [load] off [src] with \the [I]!</span>",
+									"<span class='danger'>You knock [load] off [src] with \the [I]!</span>")
 		else
-			to_chat(user, span_warning("You hit [src] with \the [I] but to no effect!"))
+			to_chat(user, "<span class='warning'>You hit [src] with \the [I] but to no effect!</span>")
 			return ..()
 	else
 		return ..()
@@ -189,7 +191,7 @@
 		emagged = TRUE
 	if(!open)
 		locked = !locked
-		to_chat(user, span_notice("You [locked ? "lock" : "unlock"] [src]'s controls!"))
+		to_chat(user, "<span class='notice'>You [locked ? "lock" : "unlock"] [src]'s controls!</span>")
 	flick("[base_icon]-emagged", src)
 	playsound(src, "sparks", 100, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 
@@ -225,7 +227,7 @@
 		if(prob(50) && !isnull(load))
 			unload(0)
 		if(prob(25))
-			visible_message(span_danger("Something shorts out inside [src]!"))
+			visible_message("<span class='danger'>Something shorts out inside [src]!</span>")
 			wires.cut_random()
 
 /mob/living/simple_animal/bot/mulebot/interact(mob/user)
@@ -284,11 +286,11 @@
 			if(on)
 				turn_off()
 			else if(open)
-				to_chat(usr, span_warning("[name]'s maintenance panel is open!"))
+				to_chat(usr, "<span class='warning'>[name]'s maintenance panel is open!</span>")
 				return
 			else if(cell)
 				if(!turn_on())
-					to_chat(usr, span_warning("You can't switch on [src]!"))
+					to_chat(usr, "<span class='warning'>You can't switch on [src]!</span>")
 					return
 			. = TRUE
 		else
@@ -401,16 +403,16 @@
 /mob/living/simple_animal/bot/mulebot/proc/buzz(type)
 	switch(type)
 		if(SIGH)
-			audible_message(span_hear("[src] makes a sighing buzz."))
+			audible_message("<span class='hear'>[src] makes a sighing buzz.</span>")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
 		if(ANNOYED)
-			audible_message(span_hear("[src] makes an annoyed buzzing sound."))
+			audible_message("<span class='hear'>[src] makes an annoyed buzzing sound.</span>")
 			playsound(src, 'sound/machines/buzz-two.ogg', 50, FALSE)
 		if(DELIGHT)
-			audible_message(span_hear("[src] makes a delighted ping!"))
+			audible_message("<span class='hear'>[src] makes a delighted ping!</span>")
 			playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
 		if(CHIME)
-			audible_message(span_hear("[src] makes a chiming sound!"))
+			audible_message("<span class='hear'>[src] makes a chiming sound!</span>")
 			playsound(src, 'sound/machines/chime.ogg', 50, FALSE)
 	flick("[base_icon]1", src)
 
@@ -556,8 +558,6 @@
 		return
 	if(mode == BOT_IDLE)
 		return
-	if(HAS_TRAIT(src, TRAIT_IMMOBILIZED))
-		return
 
 	var/speed = (wires.is_cut(WIRE_MOTOR1) ? 0 : 1) + (wires.is_cut(WIRE_MOTOR2) ? 0 : 2)
 	if(!speed)//Devide by zero man bad
@@ -688,7 +688,7 @@
 		if(pathset) //The AI called us here, so notify it of our arrival.
 			loaddir = dir //The MULE will attempt to load a crate in whatever direction the MULE is "facing".
 			if(calling_ai)
-				to_chat(calling_ai, span_notice("[icon2html(src, calling_ai)] [src] wirelessly plays a chiming sound!"))
+				to_chat(calling_ai, "<span class='notice'>[icon2html(src, calling_ai)] [src] wirelessly plays a chiming sound!</span>")
 				calling_ai.playsound_local(calling_ai, 'sound/machines/chime.ogg', 40, FALSE)
 				calling_ai = null
 				radio_channel = RADIO_CHANNEL_AI_PRIVATE //Report on AI Private instead if the AI is controlling us.
@@ -728,17 +728,17 @@
 	var/mob/living/L = M
 	if(wires.is_cut(WIRE_AVOIDANCE)) // usually just bumps, but if the avoidance wire is cut, knocks them over.
 		if(iscyborg(L))
-			visible_message(span_danger("[src] bumps into [L]!"))
+			visible_message("<span class='danger'>[src] bumps into [L]!</span>")
 		else if(L.Knockdown(8 SECONDS))
 			log_combat(src, L, "knocked down")
-			visible_message(span_danger("[src] knocks over [L]!"))
+			visible_message("<span class='danger'>[src] knocks over [L]!</span>")
 	return ..()
 
 // when mulebot is in the same loc
 /mob/living/simple_animal/bot/mulebot/proc/run_over(mob/living/carbon/human/H)
 	log_combat(src, H, "run over", null, "(DAMTYPE: [uppertext(BRUTE)])")
-	H.visible_message(span_danger("[src] drives over [H]!"), \
-					span_userdanger("[src] drives over you!"))
+	H.visible_message("<span class='danger'>[src] drives over [H]!</span>", \
+					"<span class='userdanger'>[src] drives over you!</span>")
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 
 	var/damage = rand(5,15)
@@ -791,7 +791,7 @@
 
 
 /mob/living/simple_animal/bot/mulebot/explode()
-	visible_message(span_boldannounce("[src] blows apart!"))
+	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
 	var/atom/Tsec = drop_location()
 
 	new /obj/item/assembly/prox_sensor(Tsec)
@@ -827,7 +827,7 @@
 /mob/living/simple_animal/bot/mulebot/insertpai(mob/user, obj/item/paicard/card)
 	. = ..()
 	if(.)
-		visible_message(span_notice("[src]'s safeties are locked on."))
+		visible_message("<span class='notice'>[src]'s safeties are locked on.</span>")
 
 /// Checks whether the bot can complete a step_towards, checking whether the bot is on and has the charge to do the move. Returns COMPONENT_MOB_BOT_CANCELSTEP if the bot should not step.
 /mob/living/simple_animal/bot/mulebot/proc/check_pre_step(datum/source)
@@ -836,7 +836,7 @@
 	if(!on)
 		return COMPONENT_MOB_BOT_BLOCK_PRE_STEP
 
-	if((cell && (cell.charge < cell_move_power_usage)) || !has_power())
+	if((cell && (cell.charge < cell_move_power_usage)) || !has_power((client || paicard)))
 		turn_off()
 		return COMPONENT_MOB_BOT_BLOCK_PRE_STEP
 
@@ -872,7 +872,7 @@
 		return
 
 	if(isobserver(AM))
-		visible_message(span_warning("A ghostly figure appears on [src]!"))
+		visible_message("<span class='warning'>A ghostly figure appears on [src]!</span>")
 		RegisterSignal(AM, COMSIG_MOVABLE_MOVED, .proc/ghostmoved)
 		AM.forceMove(src)
 
@@ -915,7 +915,7 @@
 
 /mob/living/simple_animal/bot/mulebot/paranormal/proc/ghostmoved()
 	SIGNAL_HANDLER
-	visible_message(span_notice("The ghostly figure vanishes..."))
+	visible_message("<span class='notice'>The ghostly figure vanishes...</span>")
 	UnregisterSignal(load, COMSIG_MOVABLE_MOVED)
 	unload(0)
 
@@ -926,3 +926,4 @@
 
 /obj/machinery/bot_core/mulebot
 	req_access = list(ACCESS_CARGO)
+

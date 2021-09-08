@@ -55,15 +55,14 @@
 	animate(src, alpha = 255, time = CREDIT_EASE_DURATION, flags = ANIMATION_PARALLEL)
 	addtimer(CALLBACK(src, .proc/FadeOut), CREDIT_ROLL_SPEED - CREDIT_EASE_DURATION)
 	QDEL_IN(src, CREDIT_ROLL_SPEED)
-	if(parent)
-		parent.screen += src
+	P.screen += src
 
 /atom/movable/screen/credit/Destroy()
+	var/client/P = parent
+	P.screen -= src
 	icon = null
-	if(parent)
-		parent.screen -= src
-		LAZYREMOVE(parent.credits, src)
-		parent = null
+	LAZYREMOVE(P.credits, src)
+	parent = null
 	return ..()
 
 /atom/movable/screen/credit/proc/FadeOut()

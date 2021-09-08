@@ -22,7 +22,6 @@ const icons = {
   soundadd: { icon: 'tg-sound-plus', color: 'green' },
   sounddel: { icon: 'tg-sound-minus', color: 'red' },
   add: { icon: 'check-circle', color: 'green' },
-  expansion: { icon: 'check-circle', color: 'green' },
   rscadd: { icon: 'check-circle', color: 'green' },
   rscdel: { icon: 'times-circle', color: 'red' },
   imageadd: { icon: 'tg-image-plus', color: 'green' },
@@ -99,7 +98,7 @@ export class Changelog extends Component {
 
     if (dates) {
       dates.forEach(
-        date => this.dateChoices.push(dateformat(date, 'mmmm yyyy', true))
+        date => this.dateChoices.push(dateformat(date, 'mmmm yyyy'))
       );
       this.setSelectedDate(this.dateChoices[0]);
       this.getData(dates[0]);
@@ -176,27 +175,27 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
-        <h1>Skyrat Space Station 13</h1>
+        <h1>Traditional Games Space Station 13</h1>
         <p>
           <b>Thanks to: </b>
-          Traditional Games 13, Baystation 12, /vg/station, NTstation,
-          CDK Station devs,FacepunchStation, GoonStation devs, the original
-          Space Station 13 developers, Invisty for the title image and the
-          countless others who have contributed to the game.
+          Baystation 12, /vg/station, NTstation, CDK Station devs,
+          FacepunchStation, GoonStation devs, the original Space Station 13
+          developers, Invisty for the title image and the countless others who
+          have contributed to the game, issue tracker or wiki over the years.
         </p>
         <p>
           {'Current project maintainers can be found '}
-          <a href="https://github.com/skyrat-ss13?tab=members">
+          <a href="https://github.com/tgstation?tab=members">
             here
           </a>
           {', recent GitHub contributors can be found '}
-          <a href="https://github.com/Skyrat-SS13/Skyrat-tg/pulse/monthly">
+          <a href="https://github.com/tgstation/tgstation/pulse/monthly">
             here
           </a>.
         </p>
         <p>
-          {'You can also join our forums '}
-          <a href="https://forum.skyrat13.tk/">
+          {'You can also join our discord '}
+          <a href="https://tgstation13.org/phpBB/viewforum.php?f=60">
             here
           </a>.
         </p>
@@ -289,7 +288,7 @@ export class Changelog extends Component {
 
     const changes = typeof data === 'object' && Object.keys(data).length > 0 && (
       Object.entries(data).reverse().map(([date, authors]) => (
-        <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)}>
+        <Section key={date} title={dateformat(date, 'd mmmm yyyy')}>
           <Box ml={3}>
             {Object.entries(authors).map(([name, changes]) => (
               <Fragment key={name}>

@@ -131,7 +131,7 @@
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, loc_connections)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
 
 /obj/effect/meatgrinder/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -147,7 +147,7 @@
 	var/mob/living/carbon/human/M = AM
 
 	if(M.stat != DEAD && M.ckey)
-		visible_message(span_warning("[M] triggered [src]!"))
+		visible_message("<span class='warning'>[M] triggered [src]!</span>")
 		triggered = 1
 
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -164,10 +164,10 @@
 
 	var/mob/living/carbon/C = usr
 	if(!C.stat)
-		to_chat(C, span_notice("You're not dead yet!"))
+		to_chat(C, "<span class='notice'>You're not dead yet!</span>")
 		return
 	if(C.has_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT))
-		to_chat(C, span_warning("You're already resurrecting!"))
+		to_chat(C, "<span class='warning'>You're already resurrecting!</span>")
 		return
 	C.apply_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT)
 	return 1

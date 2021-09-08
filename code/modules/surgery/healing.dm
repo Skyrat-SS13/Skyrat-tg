@@ -63,7 +63,6 @@
 			display_results(user, target, "<span class='notice'>You attempt to patch some of [target]'s [woundtype].</span>",
 		"<span class='notice'>[user] attempts to patch some of [target]'s [woundtype].</span>",
 		"<span class='notice'>[user] attempts to patch some of [target]'s [woundtype].</span>")
-			display_pain(target, "<span class='userdanger'>Your [woundtype] sting like hell!</span>") // SKYRAT EDIT ADD - Done non-modularly to properly get woundtype without modularising the whole proc because that's liable to cause problems in future.
 
 /datum/surgery_step/heal/initiate(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	if(!..())
@@ -92,7 +91,7 @@
 
 	user_msg += get_progress(user, target, brute_healed, burn_healed)
 
-	display_results(user, target, span_notice("[user_msg]."),
+	display_results(user, target, "<span class='notice'>[user_msg].</span>",
 		"[target_msg].",
 		"[target_msg].")
 	if(istype(surgery, /datum/surgery/healing))
@@ -101,9 +100,9 @@
 	return ..()
 
 /datum/surgery_step/heal/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_warning("You screwed up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] fixes some of [target]'s wounds."), TRUE)
+	display_results(user, target, "<span class='warning'>You screwed up!</span>",
+		"<span class='warning'>[user] screws up!</span>",
+		"<span class='notice'>[user] fixes some of [target]'s wounds.</span>", TRUE)
 	var/brute_dealt = brutehealing * 0.8
 	var/burn_dealt = burnhealing * 0.8
 	brute_dealt += round((target.getBruteLoss() * (brute_multiplier * 0.5)),0.1)
@@ -209,7 +208,7 @@
 	var/progress_text
 
 	if(locate(/obj/item/healthanalyzer) in user.held_items)
-		progress_text = ". Remaining burn: <font color='#ff9933'>[target.getFireLoss()]</font>"
+		progress_text = ". Remaining brute: <font color='#ff9933'>[target.getFireLoss()]</font>"
 	else
 		switch(estimated_remaining_steps)
 			if(-INFINITY to 1)
@@ -321,7 +320,7 @@
 	burn_multiplier = 0.4
 
 /datum/surgery_step/heal/combo/upgraded/femto/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, span_warning("You screwed up!"),
-		span_warning("[user] screws up!"),
-		span_notice("[user] fixes some of [target]'s wounds."), TRUE)
+	display_results(user, target, "<span class='warning'>You screwed up!</span>",
+		"<span class='warning'>[user] screws up!</span>",
+		"<span class='notice'>[user] fixes some of [target]'s wounds.</span>", TRUE)
 	target.take_bodypart_damage(5,5)

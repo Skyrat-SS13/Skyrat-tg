@@ -25,7 +25,6 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	mutantrace_variation = MUTANTRACE_VARIATION
 	alt_covers_chest = TRUE
-	mutant_variants = NONE // SKYRAT EDIT ADD
 
 /obj/item/clothing/under/rank/cargo/tech/skirt
 	name = "cargo technician's jumpskirt"

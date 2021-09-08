@@ -3,17 +3,14 @@
 	icon_state = "spark"
 	color = "#FFFF00"
 	nodamage = FALSE
-	//paralyze = 100 //SKYRAT EDIT REMOVAL - COMBAT
-	stamina = 80  //SKYRAT EDIT ADDITION - COMBAT
+	paralyze = 100
 	stutter = 5
 	jitter = 20
 	hitsound = 'sound/weapons/taserhit.ogg'
-	//range = 7 //ORIGINAL
-	range = 5  //SKYRAT EDIT CHANGE - COMBAT
+	range = 7
 	tracer_type = /obj/effect/projectile/tracer/stun
 	muzzle_type = /obj/effect/projectile/muzzle/stun
 	impact_type = /obj/effect/projectile/impact/stun
-	var/confused_amount = 5 //SKYRAT EDIT ADDITION
 
 /obj/projectile/energy/electrode/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -21,7 +18,6 @@
 		do_sparks(1, TRUE, src)
 	else if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.set_confusion(max(C.get_confusion(), confused_amount)) //SKYRAT EDIT ADDITION
 		SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "tased", /datum/mood_event/tased)
 		SEND_SIGNAL(C, COMSIG_LIVING_MINOR_SHOCK)
 		if(C.dna && C.dna.check_mutation(HULK))

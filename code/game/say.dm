@@ -14,10 +14,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_AI_PRIVATE]" = "aiprivradio",
 	"[FREQ_SYNDICATE]" = "syndradio",
 	"[FREQ_CENTCOM]" = "centcomradio",
-	"[FREQ_FACTION]" = "suppradio", //SKYRAT EDIT ADDITIION - FACTION
-	"[FREQ_CYBERSUN]" = "syndradio", //SKYRAT EDIT ADDITION - MAPPING
-	"[FREQ_INTERDYNE]" = "syndradio", //SKYRAT EDIT ADDITION - MAPPING
-	"[FREQ_GUILD]" = "syndradio", //SKYRAT EDIT ADDITION - MAPPING
 	"[FREQ_CTF_RED]" = "redteamradio",
 	"[FREQ_CTF_BLUE]" = "blueteamradio",
 	"[FREQ_CTF_GREEN]" = "greenteamradio",
@@ -27,8 +23,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(!can_speak())
 		return
-	if(sanitize)
-		message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 	if(message == "" || !message)
 		return
 	spans |= speech_span
@@ -41,11 +35,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /atom/movable/proc/can_speak()
 	//SHOULD_BE_PURE(TRUE)
-	return TRUE
+	return 1
 
 /atom/movable/proc/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language = null, list/message_mods = list())
 	var/rendered = compose_message(src, message_language, message, , spans, message_mods)
-	for(var/atom/movable/AM as anything in get_hearers_in_view(range, source))
+	for(var/_AM in get_hearers_in_view(range, source))
+		var/atom/movable/AM = _AM
 		AM.Hear(rendered, src, message_language, message, , spans, message_mods)
 
 /atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), face_name = FALSE)
@@ -65,10 +60,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/endspanpart = "</span>"
 
 	//Message
-	//SKYRAT EDIT CHANGE - EMOTES
-	// var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mods)]</span></span>" - ORIGINAL
-	var/messagepart = " <span class='message'>[say_emphasis(lang_treat(speaker, message_language, raw_message, spans, message_mods))]</span></span>"
-	//SKYRAT EDIT END
+	var/messagepart = " <span class='message'>[lang_treat(speaker, message_language, raw_message, spans, message_mods)]</span></span>"
+
 	var/languageicon = ""
 	var/datum/language/D = GLOB.language_datum_instances[message_language]
 	if(istype(D) && D.display_icon(src))
@@ -82,7 +75,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 /atom/movable/proc/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
 
-/atom/movable/proc/say_mod(input, message_mods) //SKYRAT custom sayverb old code: /atom/movable/proc/say_mod(input, list/message_mods = list())
+/atom/movable/proc/say_mod(input, list/message_mods = list())
 	var/ending = copytext_char(input, -1)
 	if(copytext_char(input, -2) == "!!")
 		return verb_yell
@@ -103,32 +96,23 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		spans |= SPAN_YELL
 
 	var/spanned = attach_spans(input, spans)
-	return "[say_mod(input, message_mods)][spanned ? ", \"[spanned]\"" : ""]"
-//SKYRAT custom verb edit. [spanned ? ", \"[spanned]\"" : ""]"
-
-//SKYRAT custom sayverb
-/atom/movable/proc/quoteless_say_quote(input, list/spans = list(speech_span), message_mods)
-	if((input[1] == "!") && (length_char(input) > 1))
-		return ""
-	var/pos = findtext(input, "*")
-	return pos? copytext(input, pos + 1) : input
-//SKYRAT custom sayverb end.
+	return "[say_mod(input, message_mods)], \"[spanned]\""
 
 /atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, list/message_mods = list(), no_quote = FALSE)
 	if(has_language(language))
 		var/atom/movable/AM = speaker.GetSource()
 		if(AM) //Basically means "if the speaker is virtual"
-			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mods) : AM.say_quote(raw_message, spans, message_mods) //SKYRAT custom sayverb old code: return no_quote ? raw_message : AM.say_quote(raw_message, spans, message_mods)
+			return no_quote ? raw_message : AM.say_quote(raw_message, spans, message_mods)
 		else
-			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mods) : speaker.say_quote(raw_message, spans, message_mods) //SKYRAT custom sayverb old code: return no_quote ? raw_message : speaker.say_quote(raw_message, spans, message_mods)
+			return no_quote ? raw_message : speaker.say_quote(raw_message, spans, message_mods)
 	else if(language)
 		var/atom/movable/AM = speaker.GetSource()
 		var/datum/language/D = GLOB.language_datum_instances[language]
 		raw_message = D.scramble(raw_message)
 		if(AM)
-			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mods) : AM.say_quote(raw_message, spans, message_mods) //SKYRAT custom sayverb old code: return no_quote ? raw_message : AM.say_quote(raw_message, spans, message_mods)
+			return no_quote ? raw_message : AM.say_quote(raw_message, spans, message_mods)
 		else
-			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mods) : speaker.say_quote(raw_message, spans, message_mods) //SKYRAT custom sayverb old code: return no_quote ? raw_message : speaker.say_quote(raw_message, spans, message_mods)
+			return no_quote ? raw_message : speaker.say_quote(raw_message, spans, message_mods)
 	else
 		return "makes a strange sound."
 
@@ -144,22 +128,8 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return returntext
 	return "[copytext_char("[freq]", 1, 4)].[copytext_char("[freq]", 4, 5)]"
 
-//SKYRAT custom sayverb
-/atom/movable/proc/attach_spans(input, list/spans)
-	if((input[1] == "!") && (length(input) > 2))
-		return
-	var/customsayverb = findtext(input, "*")
-	if(customsayverb)
-		input = capitalize(copytext(input, customsayverb + length(input[customsayverb])))
-	if(input)
-		return "[message_spans_start(spans)][input]</span>"
-	else
-		return
-//SKYRAT custom sayverb end.
-/* Old code:
 /proc/attach_spans(input, list/spans)
 	return "[message_spans_start(spans)][input]</span>"
-*/
 
 /proc/message_spans_start(list/spans)
 	var/output = "<span class='"

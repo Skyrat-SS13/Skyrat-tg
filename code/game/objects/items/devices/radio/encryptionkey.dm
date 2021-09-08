@@ -21,7 +21,7 @@
 		for(var/i in channels)
 			examine_text_list += "[GLOB.channel_tokens[i]] - [lowertext(i)]"
 
-		. += span_notice("It can access the following channels; [jointext(examine_text_list, ", ")].")
+		. += "<span class='notice'>It can access the following channels; [jointext(examine_text_list, ", ")].</span>"
 
 /obj/item/encryptionkey/syndicate
 	name = "syndicate encryption key"
@@ -107,8 +107,7 @@
 /obj/item/encryptionkey/heads/hop
 	name = "\proper the head of personnel's encryption key"
 	icon_state = "hop_cypherkey"
-	//channels = list(RADIO_CHANNEL_SUPPLY = 1, RADIO_CHANNEL_SERVICE = 1, RADIO_CHANNEL_COMMAND = 1) //ORIGINAL
-	channels = list(RADIO_CHANNEL_SERVICE = 1, RADIO_CHANNEL_COMMAND = 1) //SKYRAT EDIT CHANGE
+	channels = list(RADIO_CHANNEL_SUPPLY = 1, RADIO_CHANNEL_SERVICE = 1, RADIO_CHANNEL_COMMAND = 1)
 
 /obj/item/encryptionkey/headset_cargo
 	name = "supply radio encryption key"

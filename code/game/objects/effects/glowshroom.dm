@@ -1,6 +1,6 @@
-
-GLOBAL_VAR_INIT(glowshrooms, 0)
-
+#define GLOWSHROOM_SPREAD_BASE_DIMINISH_FACTOR 10
+#define GLOWSHROOM_SPREAD_DIMINISH_FACTOR_PER_GLOWSHROOM 0.2
+#define GLOWSHROOM_BASE_INTEGRITY 60
 /obj/structure/glowshroom
 	name = "glowshroom"
 	desc = "Mycena Bregprox, a species of mushroom that glows in the dark."
@@ -175,7 +175,7 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 		if(shroom_count >= place_count)
 			continue
 
-		var/obj/structure/glowshroom/child = new type(new_loc, myseed.Copy())
+		var/obj/structure/glowshroom/child = new type(new_loc, newseed = myseed.Copy())
 		child.generation = generation + 1
 
 /obj/structure/glowshroom/proc/calc_dir(turf/location = loc)
@@ -233,7 +233,7 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 	take_damage(5, BURN, 0, 0)
 
 /obj/structure/glowshroom/acid_act(acidpwr, acid_volume)
-	visible_message(span_danger("[src] melts away!"))
+	visible_message("<span class='danger'>[src] melts away!</span>")
 	var/obj/effect/decal/cleanable/molten_object/I = new (get_turf(src))
 	I.desc = "Looks like this was \an [src] some time ago."
 	qdel(src)
@@ -252,3 +252,9 @@ GLOBAL_VAR_INIT(glowshrooms, 0)
 		myseed.potency = 50
 		myseed.endurance = 50
 		myseed.yield = 5
+
+
+
+#undef GLOWSHROOM_SPREAD_BASE_DIMINISH_FACTOR
+#undef GLOWSHROOM_SPREAD_DIMINISH_FACTOR_PER_GLOWSHROOM
+#undef GLOWSHROOM_BASE_INTEGRITY

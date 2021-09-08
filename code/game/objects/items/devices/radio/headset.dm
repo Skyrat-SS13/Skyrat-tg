@@ -7,10 +7,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	RADIO_CHANNEL_ENGINEERING = RADIO_TOKEN_ENGINEERING,
 	RADIO_CHANNEL_SECURITY = RADIO_TOKEN_SECURITY,
 	RADIO_CHANNEL_CENTCOM = RADIO_TOKEN_CENTCOM,
-	RADIO_CHANNEL_FACTION = RADIO_TOKEN_FACTION, //SKYRAT EDIT ADDITION - Faction
-	RADIO_CHANNEL_CYBERSUN = RADIO_TOKEN_CYBERSUN, //SKYRAT EDIT ADDITION - Mapping
-	RADIO_CHANNEL_INTERDYNE = RADIO_TOKEN_INTERDYNE, //SKYRAT EDIT ADDITION - Mapping
-	RADIO_CHANNEL_GUILD = RADIO_TOKEN_GUILD, //SKYRAT EDIT ADDITION - Mapping
 	RADIO_CHANNEL_SYNDICATE = RADIO_TOKEN_SYNDICATE,
 	RADIO_CHANNEL_SUPPLY = RADIO_TOKEN_SUPPLY,
 	RADIO_CHANNEL_SERVICE = RADIO_TOKEN_SERVICE,
@@ -33,7 +29,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	dog_fashion = null
 
 /obj/item/radio/headset/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins putting \the [src]'s antenna up [user.p_their()] nose! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer!"))
+	user.visible_message("<span class='suicide'>[user] begins putting \the [src]'s antenna up [user.p_their()] nose! It looks like [user.p_theyre()] trying to give [user.p_them()]self cancer!</span>")
 	return TOXLOSS
 
 /obj/item/radio/headset/examine(mob/user)
@@ -50,12 +46,12 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 					avail_chans += "use [MODE_TOKEN_DEPARTMENT] or [GLOB.channel_tokens[channels[i]]] for [lowertext(channels[i])]"
 				else
 					avail_chans += "use [GLOB.channel_tokens[channels[i]]] for [lowertext(channels[i])]"
-		. += span_notice("A small screen on the headset displays the following available frequencies:\n[english_list(avail_chans)].")
+		. += "<span class='notice'>A small screen on the headset displays the following available frequencies:\n[english_list(avail_chans)].</span>"
 
 		if(command)
-			. += span_info("Alt-click to toggle the high-volume mode.")
+			. += "<span class='info'>Alt-click to toggle the high-volume mode.</span>"
 	else
-		. += span_notice("A small screen on the headset flashes, it's too small to read without holding or wearing the headset.")
+		. += "<span class='notice'>A small screen on the headset flashes, it's too small to read without holding or wearing the headset.</span>"
 
 /obj/item/radio/headset/Initialize()
 	. = ..()
@@ -65,8 +61,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	QDEL_NULL(keyslot2)
 	return ..()
 
-///obj/item/radio/headset/talk_into(mob/living/M, message, channel, list/spans, datum/language/language, list/message_mods) - ORIGINAL
-/obj/item/radio/headset/talk_into(mob/living/M, message, channel, list/spans, datum/language/language, list/message_mods, direct = TRUE) //SKYRAT EDIT CHANGE - GUNPOINT
+/obj/item/radio/headset/talk_into(mob/living/M, message, channel, list/spans, datum/language/language, list/message_mods)
 	if (!listening)
 		return ITALICS | REDUCE_RANGE
 	return ..()
@@ -307,14 +302,14 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 				keyslot2 = null
 
 			recalculateChannels()
-			to_chat(user, span_notice("You pop out the encryption keys in the headset."))
+			to_chat(user, "<span class='notice'>You pop out the encryption keys in the headset.</span>")
 
 		else
-			to_chat(user, span_warning("This headset doesn't have any unique encryption keys! How useless..."))
+			to_chat(user, "<span class='warning'>This headset doesn't have any unique encryption keys! How useless...</span>")
 
 	else if(istype(W, /obj/item/encryptionkey))
 		if(keyslot && keyslot2)
-			to_chat(user, span_warning("The headset can't hold another key!"))
+			to_chat(user, "<span class='warning'>The headset can't hold another key!</span>")
 			return
 
 		if(!keyslot)
@@ -355,4 +350,4 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		return
 	if (command)
 		use_command = !use_command
-		to_chat(user, span_notice("You toggle high-volume mode [use_command ? "on" : "off"]."))
+		to_chat(user, "<span class='notice'>You toggle high-volume mode [use_command ? "on" : "off"].</span>")

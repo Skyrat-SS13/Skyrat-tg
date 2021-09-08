@@ -61,22 +61,8 @@
 /// Legcuff slot (bolas, beartraps)
 #define ITEM_SLOT_LEGCUFFED (1<<19)
 
-//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
-/// Penis slot
-#define ITEM_SLOT_PENIS (1<<20)
-/// Vagina slot
-#define ITEM_SLOT_VAGINA (1<<21)
-/// Anus slot
-#define ITEM_SLOT_ANUS (1<<22)
-/// Nipples slot
-#define ITEM_SLOT_NIPPLES (1<<23)
-//SKYRATE EDIT ADDITION END
-
 /// Total amount of slots
-//SKYRAT EDIT CHANGE BEGIN
-// #define SLOTS_AMT 20 // Keep this up to date! - SKYRAT EDIT - ORIGINAL
-#define SLOTS_AMT 24 // Keep this up to date!
-//SKYRAT EDIT CHANGE END
+#define SLOTS_AMT 20 // Keep this up to date!
 
 //SLOT GROUP HELPERS
 #define ITEM_SLOT_POCKETS (ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET)
@@ -98,9 +84,6 @@
 #define HIDEHEADGEAR (1<<11)
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
-//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
-#define HIDESEXTOY (1<<13)
-//SKYRAT EDIT ADDITION END
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD (1<<0)
@@ -209,8 +192,6 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/taperecorder,
 	/obj/item/tank/internals/emergency_oxygen,
 	/obj/item/tank/internals/plasmaman,
-	/obj/item/storage/belt/holster/detective,
-	/obj/item/storage/belt/holster/nukie,
 	)))
 
 GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
@@ -226,8 +207,6 @@ GLOBAL_LIST_INIT(security_vest_allowed, typecacheof(list(
 	/obj/item/restraints/handcuffs,
 	/obj/item/tank/internals/emergency_oxygen,
 	/obj/item/tank/internals/plasmaman,
-	/obj/item/storage/belt/holster/detective,
-	/obj/item/storage/belt/holster/nukie,
 	)))
 
 GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
@@ -239,23 +218,4 @@ GLOBAL_LIST_INIT(security_wintercoat_allowed, typecacheof(list(
 	/obj/item/melee/classic_baton,
 	/obj/item/reagent_containers/spray/pepper,
 	/obj/item/restraints/handcuffs,
-	/obj/item/storage/belt/holster/detective,
-	/obj/item/storage/belt/holster/nukie,
 	)))
-
-/// String for items placed into the left pocket.
-#define LOCATION_LPOCKET "in your left pocket"
-/// String for items placed into the right pocket
-#define LOCATION_RPOCKET "in your right pocket"
-/// String for items placed into the backpack.
-#define LOCATION_BACKPACK "in your backpack"
-/// String for items placed into the hands.
-#define LOCATION_HANDS "in your hands"
-/// String for items placed in the glove slot.
-#define LOCATION_GLOVES "on your hands"
-/// String for items placed in the eye/glasses slot.
-#define LOCATION_EYES "covering your eyes"
-/// String for items placed on the head/hat slot.
-#define LOCATION_HEAD "on your head"
-/// String for items placed in the neck slot.
-#define LOCATION_NECK "around your neck"

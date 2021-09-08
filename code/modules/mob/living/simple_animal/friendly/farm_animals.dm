@@ -8,7 +8,7 @@
 	speak = list("EHEHEHEHEH","eh?")
 	speak_emote = list("brays")
 	emote_hear = list("brays.")
-	emote_see = list("shakes their head.", "stamps a foot.", "glares around.")
+	emote_see = list("shakes its head.", "stamps a foot.", "glares around.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -49,9 +49,9 @@
 			Retaliate()
 
 		if(enemies.len && DT_PROB(5, delta_time))
-			enemies.Cut()
+			enemies = list()
 			LoseTarget()
-			src.visible_message(span_notice("[src] calms down."))
+			src.visible_message("<span class='notice'>[src] calms down.</span>")
 	if(stat != CONSCIOUS)
 		return
 
@@ -66,7 +66,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/goat/Retaliate()
 	..()
-	src.visible_message(span_danger("[src] gets an evil-looking gleam in [p_their()] eye."))
+	src.visible_message("<span class='danger'>[src] gets an evil-looking gleam in [p_their()] eye.</span>")
 
 /mob/living/simple_animal/hostile/retaliate/goat/Move()
 	. = ..()
@@ -94,8 +94,8 @@
 		var/mob/living/carbon/human/H = target
 		if(istype(H.dna.species, /datum/species/pod))
 			var/obj/item/bodypart/NB = pick(H.bodyparts)
-			H.visible_message(span_warning("[src] takes a big chomp out of [H]!"), \
-								  span_userdanger("[src] takes a big chomp out of your [NB]!"))
+			H.visible_message("<span class='warning'>[src] takes a big chomp out of [H]!</span>", \
+								  "<span class='userdanger'>[src] takes a big chomp out of your [NB]!</span>")
 			NB.dismember()
 //cow
 /mob/living/simple_animal/cow
@@ -110,7 +110,7 @@
 	speak = list("moo?","moo","MOOOOOO")
 	speak_emote = list("moos","moos hauntingly")
 	emote_hear = list("brays.")
-	emote_see = list("shakes her head.")
+	emote_see = list("shakes its head.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -133,11 +133,6 @@
 
 /mob/living/simple_animal/cow/Initialize()
 	AddComponent(/datum/component/udder)
-	AddComponent(/datum/component/tippable, \
-		tip_time = 0.5 SECONDS, \
-		untip_time = 0.5 SECONDS, \
-		self_right_time = rand(25 SECONDS, 50 SECONDS), \
-		post_tipped_callback = CALLBACK(src, .proc/after_cow_tipped))
 	AddElement(/datum/element/pet_bonus, "moos happily!")
 	add_cell_sample()
 	make_tameable()
@@ -155,43 +150,34 @@
 	buckle_lying = 0
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cow)
 
-/*
- * Proc called via callback after the cow is tipped by the tippable component.
- * Begins a timer for us pleading for help.
- *
- * tipper - the mob who tipped us
- */
-/mob/living/simple_animal/cow/proc/after_cow_tipped(mob/living/carbon/tipper)
-	addtimer(CALLBACK(src, .proc/look_for_help, tipper), rand(10 SECONDS, 20 SECONDS))
+/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/user, list/modifiers)
+	if(!stat && LAZYACCESS(modifiers, RIGHT_CLICK) && icon_state != icon_dead)
+		user.visible_message("<span class='warning'>[user] tips over [src].</span>",
+			"<span class='notice'>You tip over [src].</span>")
+		to_chat(src, "<span class='userdanger'>You are tipped over by [user]!</span>")
+		Paralyze(60, ignore_canstun = TRUE)
+		icon_state = icon_dead
+		addtimer(CALLBACK(src, .proc/cow_tipped, user), rand(20,50))
 
-/*
- * Find a mob in a short radius around us (prioritizing the person who originally tipped us)
- * and either look at them for help, or give up. No actual mechanical difference between the two.
- *
- * tipper - the mob who originally tipped us
- */
-/mob/living/simple_animal/cow/proc/look_for_help(mob/living/carbon/tipper)
-	// visible part of the visible message
-	var/seen_message = ""
-	// self part of the visible message
-	var/self_message = ""
-	// the mob we're looking to for aid
-	var/mob/living/carbon/savior
-	// look for someone in a radius around us for help. If our original tipper is in range, prioritize them
-	for(var/mob/living/carbon/potential_aid in oview(3, get_turf(src)))
-		if(potential_aid == tipper)
-			savior = tipper
-			break
-		savior = potential_aid
-
-	if(prob(75) && savior)
-		var/text = pick("imploringly", "pleadingly", "with a resigned expression")
-		seen_message = "[src] looks at [savior] [text]."
-		self_message = "You look at [savior] [text]."
 	else
-		seen_message = "[src] seems resigned to its fate."
-		self_message = "You resign yourself to your fate."
-	visible_message(span_notice("[seen_message]"), span_notice("[self_message]"))
+		..()
+
+/mob/living/simple_animal/cow/proc/cow_tipped(mob/living/carbon/M)
+	if(QDELETED(M) || stat)
+		return
+	icon_state = icon_living
+	var/external
+	var/internal
+	if(prob(75))
+		var/text = pick("imploringly.", "pleadingly.",
+			"with a resigned expression.")
+		external = "[src] looks at [M] [text]"
+		internal = "You look at [M] [text]"
+	else
+		external = "[src] seems resigned to its fate."
+		internal = "You resign yourself to your fate."
+	visible_message("<span class='notice'>[external]</span>",
+		"<span class='revennotice'>[internal]</span>")
 
 ///Wisdom cow, gives XP to a random skill and speaks wisdoms
 /mob/living/simple_animal/cow/wisdom
@@ -210,7 +196,7 @@
 ///Give intense wisdom to the attacker if they're being friendly about it
 /mob/living/simple_animal/cow/wisdom/attack_hand(mob/living/carbon/user, list/modifiers)
 	if(!stat && !user.combat_mode)
-		to_chat(user, span_nicegreen("[src] whispers you some intense wisdoms and then disappears!"))
+		to_chat(user, "<span class='nicegreen'>[src] whispers you some intense wisdoms and then disappears!</span>")
 		user.mind?.adjust_experience(pick(GLOB.skill_types), 500)
 		do_smoke(1, get_turf(src))
 		qdel(src)
@@ -230,7 +216,7 @@
 	speak = list("Cherp.","Cherp?","Chirrup.","Cheep!")
 	speak_emote = list("cheeps")
 	emote_hear = list("cheeps.")
-	emote_see = list("pecks at the ground.","flaps her tiny wings.")
+	emote_see = list("pecks at the ground.","flaps its tiny wings.")
 	density = FALSE
 	speak_chance = 2
 	turns_per_move = 2
@@ -289,7 +275,7 @@
 	speak = list("Cluck!","BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
 	speak_emote = list("clucks","croons")
 	emote_hear = list("clucks.")
-	emote_see = list("pecks at the ground.","flaps her wings viciously.")
+	emote_see = list("pecks at the ground.","flaps its wings viciously.")
 	density = FALSE
 	speak_chance = 2
 	turns_per_move = 3
@@ -321,7 +307,7 @@
 	AddComponent(/datum/component/egg_layer,\
 		/obj/item/food/egg,\
 		list(/obj/item/food/grown/wheat),\
-		feed_messages = list("She clucks happily."),\
+		feed_messages = list("[p_they()] clucks happily."),\
 		lay_messages = EGG_LAYING_MESSAGES,\
 		eggs_left = 0,\
 		eggs_added_from_eating = rand(1, 4),\
@@ -347,7 +333,7 @@
 	if(isturf(loc))
 		amount_grown += rand(1,2) * delta_time
 		if(amount_grown >= 200)
-			visible_message(span_notice("[src] hatches with a quiet cracking sound."))
+			visible_message("<span class='notice'>[src] hatches with a quiet cracking sound.</span>")
 			new /mob/living/simple_animal/chick(get_turf(src))
 			STOP_PROCESSING(SSobj, src)
 			qdel(src)
@@ -365,7 +351,7 @@
 	speak = list("Weeeeeeee?","Weeee","WEOOOOOOOOOO")
 	speak_emote = list("grunts","grunts lowly")
 	emote_hear = list("brays.")
-	emote_see = list("shakes her head.")
+	emote_see = list("shakes its head.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6

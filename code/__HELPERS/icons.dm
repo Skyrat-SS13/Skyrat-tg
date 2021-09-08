@@ -1,14 +1,22 @@
 /*
 IconProcs README
+
 A BYOND library for manipulating icons and colors
+
 by Lummox JR
+
 version 1.0
+
 The IconProcs library was made to make a lot of common icon operations much easier. BYOND's icon manipulation
 routines are very capable but some of the advanced capabilities like using alpha transparency can be unintuitive to beginners.
+
 CHANGING ICONS
+
 Several new procs have been added to the /icon datum to simplify working with icons. To use them,
 remember you first need to setup an /icon var like so:
+
 GLOBAL_DATUM_INIT(my_icon, /icon, new('iconfile.dmi'))
+
 icon/ChangeOpacity(amount = 1)
 	A very common operation in DM is to try to make an icon more or less transparent. Making an icon more
 	transparent is usually much easier than making it less so, however. This proc basically is a frontend
@@ -40,26 +48,35 @@ icon/UseAlphaMask(mask, mode)
 	Sometimes you may want to take the alpha values from one icon and use them on a different icon.
 	This proc will do that. Just supply the icon whose alpha mask you want to use, and src will change
 	so it has the same colors as before but uses the mask for opacity.
+
 COLOR MANAGEMENT AND HSV
+
 RGB isn't the only way to represent color. Sometimes it's more useful to work with a model called HSV, which stands for hue, saturation, and value.
+
 	* The hue of a color describes where it is along the color wheel. It goes from red to yellow to green to
 	cyan to blue to magenta and back to red.
 	* The saturation of a color is how much color is in it. A color with low saturation will be more gray,
 	and with no saturation at all it is a shade of gray.
 	* The value of a color determines how bright it is. A high-value color is vivid, moderate value is dark,
 	and no value at all is black.
+
 Just as BYOND uses "#rrggbb" to represent RGB values, a similar format is used for HSV: "#hhhssvv". The hue is three
 hex digits because it ranges from 0 to 0x5FF.
+
 	* 0 to 0xFF - red to yellow
 	* 0x100 to 0x1FF - yellow to green
 	* 0x200 to 0x2FF - green to cyan
 	* 0x300 to 0x3FF - cyan to blue
 	* 0x400 to 0x4FF - blue to magenta
 	* 0x500 to 0x5FF - magenta to red
+
 Knowing this, you can figure out that red is "#000ffff" in HSV format, which is hue 0 (red), saturation 255 (as colorful as possible),
 value 255 (as bright as possible). Green is "#200ffff" and blue is "#400ffff".
+
 More than one HSV color can match the same RGB color.
+
 Here are some procs you can use for color management:
+
 ReadRGB(rgb)
 	Takes an RGB string like "#ffaa55" and converts it to a list such as list(255,170,85). If an RGBA format is used
 	that includes alpha, the list will have a fourth item for the alpha value.
@@ -101,33 +118,42 @@ ColorTone(rgb, tone)
 
 /*
 Get Flat Icon DEMO by DarkCampainger
+
 This is a test for the get flat icon proc, modified approprietly for icons and their states.
 Probably not a good idea to run this unless you want to see how the proc works in detail.
 mob
 	icon = 'old_or_unused.dmi'
 	icon_state = "green"
+
 	Login()
 		// Testing image underlays
 		underlays += image(icon='old_or_unused.dmi',icon_state="red")
 		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = 32)
 		underlays += image(icon='old_or_unused.dmi',icon_state="red", pixel_x = -32)
+
 		// Testing image overlays
 		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = -32))
 		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = 32, pixel_y = 32))
 		add_overlay(image(icon='old_or_unused.dmi',icon_state="green", pixel_x = -32, pixel_y = -32))
+
 		// Testing icon file overlays (defaults to mob's state)
 		add_overlay('_flat_demoIcons2.dmi')
+
 		// Testing icon_state overlays (defaults to mob's icon)
 		add_overlay("white")
+
 		// Testing dynamic icon overlays
 		var/icon/I = icon('old_or_unused.dmi', icon_state="aqua")
 		I.Shift(NORTH,16,1)
 		add_overlay(I)
+
 		// Testing dynamic image overlays
 		I=image(icon=I,pixel_x = -32, pixel_y = 32)
 		add_overlay(I)
+
 		// Testing object types (and layers)
 		add_overlay(/obj/effect/overlay_test)
+
 		loc = locate (10,10,1)
 	verb
 		Browse_Icon()
@@ -138,9 +164,11 @@ mob
 			src<<browse_rsc(getFlatIcon(src), iconName)
 			// Display the icon in their browser
 			src<<browse("<body bgcolor='#000000'><p><img src='[iconName]'></p></body>")
+
 		Output_Icon()
 			set name = "2. Output Icon"
 			to_chat(src, "Icon is: [icon2base64html(getFlatIcon(src))]")
+
 		Label_Icon()
 			set name = "3. Label Icon"
 			// Give it a name for the cache
@@ -151,9 +179,11 @@ mob
 			src<<browse_rsc(I, iconName)
 			// Update the label to show it
 			winset(src,"imageLabel","image='[REF(I)]'");
+
 		Add_Overlay()
 			set name = "4. Add Overlay"
 			add_overlay(image(icon='old_or_unused.dmi',icon_state="yellow",pixel_x = rand(-64,32), pixel_y = rand(-64,32))
+
 		Stress_Test()
 			set name = "5. Stress Test"
 			for(var/i = 0 to 1000)
@@ -162,17 +192,20 @@ mob
 				if(prob(5))
 					Add_Overlay()
 			Browse_Icon()
+
 		Cache_Test()
 			set name = "6. Cache Test"
 			for(var/i = 0 to 1000)
 				getFlatIcon(src)
 			Browse_Icon()
+
 /obj/effect/overlay_test
 	icon = 'old_or_unused.dmi'
 	icon_state = "blue"
 	pixel_x = -24
 	pixel_y = 24
 	layer = TURF_LAYER // Should appear below the rest of the overlays
+
 world
 	view = "7x7"
 	maxx = 20
@@ -254,17 +287,23 @@ world
 
 /*
 	HSV format is represented as "#hhhssvv" or "#hhhssvvaa"
+
 	Hue ranges from 0 to 0x5ff (1535)
+
 		0x000 = red
 		0x100 = yellow
 		0x200 = green
 		0x300 = cyan
 		0x400 = blue
 		0x500 = magenta
+
 	Saturation is from 0 to 0xff (255)
+
 		More saturation = more color
 		Less saturation = more gray
+
 	Value ranges from 0 to 0xff (255)
+
 		Higher value means brighter color
  */
 
@@ -485,9 +524,11 @@ world
 
 /*
 	Smooth blend between HSV colors
+
 	amount=0 is the first color
 	amount=1 is the second color
 	amount=0.5 is directly between the two colors
+
 	amount<0 or amount>1 are allowed
  */
 /proc/BlendHSV(hsv1, hsv2, amount)
@@ -551,9 +592,11 @@ world
 
 /*
 	Smooth blend between RGB colors
+
 	amount=0 is the first color
 	amount=1 is the second color
 	amount=0.5 is directly between the two colors
+
 	amount<0 or amount>1 are allowed
  */
 /proc/BlendRGB(rgb1, rgb2, amount)
@@ -669,179 +712,206 @@ world
 /// appearance system (overlays/underlays, etc.) is not available.
 ///
 /// Only the first argument is required.
-/proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE)
-	// Loop through the underlays, then overlays, sorting them into the layers list
-	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
-		for (var/i in 1 to process.len) { \
-			var/image/current = process[i]; \
-			if (!current) { \
-				continue; \
-			} \
-			if (current.plane != FLOAT_PLANE && current.plane != appearance.plane) { \
-				continue; \
-			} \
-			var/current_layer = current.layer; \
-			if (current_layer < 0) { \
-				if (current_layer <= -1000) { \
-					return flat; \
-				} \
-				current_layer = base_layer + appearance.layer + current_layer / 1000; \
-			} \
-			for (var/index_to_compare_to in 1 to layers.len) { \
-				var/compare_to = layers[index_to_compare_to]; \
-				if (current_layer < layers[compare_to]) { \
-					layers.Insert(index_to_compare_to, current); \
-					break; \
-				} \
-			} \
-			layers[current] = current_layer; \
-		}
-
+/proc/getFlatIcon(image/A, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE)
+	//Define... defines.
 	var/static/icon/flat_template = icon('icons/blanks/32x32.dmi', "nothing")
 
-	if(!appearance || appearance.alpha <= 0)
-		return icon(flat_template)
+	#define BLANK icon(flat_template)
+	#define SET_SELF(SETVAR) do { \
+		var/icon/SELF_ICON=icon(icon(curicon, curstate, base_icon_dir),"",SOUTH,no_anim?1:null); \
+		if(A.alpha<255) { \
+			SELF_ICON.Blend(rgb(255,255,255,A.alpha),ICON_MULTIPLY);\
+		} \
+		if(A.color) { \
+			if(islist(A.color)){ \
+				SELF_ICON.MapColors(arglist(A.color))} \
+			else{ \
+				SELF_ICON.Blend(A.color,ICON_MULTIPLY)} \
+		} \
+		##SETVAR=SELF_ICON;\
+		} while (0)
+	#define INDEX_X_LOW 1
+	#define INDEX_X_HIGH 2
+	#define INDEX_Y_LOW 3
+	#define INDEX_Y_HIGH 4
 
+	#define flatX1 flat_size[INDEX_X_LOW]
+	#define flatX2 flat_size[INDEX_X_HIGH]
+	#define flatY1 flat_size[INDEX_Y_LOW]
+	#define flatY2 flat_size[INDEX_Y_HIGH]
+	#define addX1 add_size[INDEX_X_LOW]
+	#define addX2 add_size[INDEX_X_HIGH]
+	#define addY1 add_size[INDEX_Y_LOW]
+	#define addY2 add_size[INDEX_Y_HIGH]
+
+	if(!A || A.alpha <= 0)
+		return BLANK
+
+	var/noIcon = FALSE
 	if(start)
 		if(!defdir)
-			defdir = appearance.dir
+			defdir = A.dir
 		if(!deficon)
-			deficon = appearance.icon
+			deficon = A.icon
 		if(!defstate)
-			defstate = appearance.icon_state
+			defstate = A.icon_state
 		if(!defblend)
-			defblend = appearance.blend_mode
+			defblend = A.blend_mode
 
-	var/curicon = appearance.icon || deficon
-	var/curstate = appearance.icon_state || defstate
-	var/curdir = (!appearance.dir || appearance.dir == SOUTH) ? defdir : appearance.dir
+	var/curicon = A.icon || deficon
+	var/curstate = A.icon_state || defstate
 
-	var/render_icon = curicon
-
-	if (render_icon)
+	if(!((noIcon = (!curicon))))
 		var/curstates = icon_states(curicon)
 		if(!(curstate in curstates))
-			if ("" in curstates)
+			if("" in curstates)
 				curstate = ""
 			else
-				render_icon = FALSE
+				noIcon = TRUE // Do not render this object.
 
+	var/curdir
 	var/base_icon_dir //We'll use this to get the icon state to display if not null BUT NOT pass it to overlays as the dir we have
+
+	//These should use the parent's direction (most likely)
+	if(!A.dir || A.dir == SOUTH)
+		curdir = defdir
+	else
+		curdir = A.dir
 
 	//Try to remove/optimize this section ASAP, CPU hog.
 	//Determines if there's directionals.
-	if(render_icon && curdir != SOUTH)
-		if (
-			!length(icon_states(icon(curicon, curstate, NORTH))) \
-			&& !length(icon_states(icon(curicon, curstate, EAST))) \
-			&& !length(icon_states(icon(curicon, curstate, WEST))) \
-		)
+	if(!noIcon && curdir != SOUTH)
+		var/exist = FALSE
+		var/static/list/checkdirs = list(NORTH, EAST, WEST)
+		for(var/i in checkdirs) //Not using GLOB for a reason.
+			if(length(icon_states(icon(curicon, curstate, i))))
+				exist = TRUE
+				break
+		if(!exist)
 			base_icon_dir = SOUTH
+	//
 
 	if(!base_icon_dir)
 		base_icon_dir = curdir
 
-	var/curblend = appearance.blend_mode || defblend
+	ASSERT(!BLEND_DEFAULT) //I might just be stupid but lets make sure this define is 0.
 
-	if(appearance.overlays.len || appearance.underlays.len)
-		var/icon/flat = icon(flat_template)
+	var/curblend = A.blend_mode || defblend
+
+	if(A.overlays.len || A.underlays.len)
+		var/icon/flat = BLANK
 		// Layers will be a sorted list of icons/overlays, based on the order in which they are displayed
 		var/list/layers = list()
 		var/image/copy
 		// Add the atom's icon itself, without pixel_x/y offsets.
-		if(render_icon)
-			copy = image(icon=curicon, icon_state=curstate, layer=appearance.layer, dir=base_icon_dir)
-			copy.color = appearance.color
-			copy.alpha = appearance.alpha
+		if(!noIcon)
+			copy = image(icon=curicon, icon_state=curstate, layer=A.layer, dir=base_icon_dir)
+			copy.color = A.color
+			copy.alpha = A.alpha
 			copy.blend_mode = curblend
-			layers[copy] = appearance.layer
+			layers[copy] = A.layer
 
-		PROCESS_OVERLAYS_OR_UNDERLAYS(flat, appearance.underlays, 0)
-		PROCESS_OVERLAYS_OR_UNDERLAYS(flat, appearance.overlays, 1)
+		// Loop through the underlays, then overlays, sorting them into the layers list
+		for(var/process_set in 0 to 1)
+			var/list/process = process_set? A.overlays : A.underlays
+			for(var/i in 1 to process.len)
+				var/image/current = process[i]
+				if(!current)
+					continue
+				if(current.plane != FLOAT_PLANE && current.plane != A.plane)
+					continue
+				var/current_layer = current.layer
+				if(current_layer < 0)
+					if(current_layer <= -1000)
+						return flat
+					current_layer = process_set + A.layer + current_layer / 1000
+
+				for(var/p in 1 to layers.len)
+					var/image/cmp = layers[p]
+					if(current_layer < layers[cmp])
+						layers.Insert(p, current)
+						break
+				layers[current] = current_layer
+
+		//sortTim(layers, /proc/cmp_image_layer_asc)
 
 		var/icon/add // Icon of overlay being added
 
-		var/flatX1 = 1
-		var/flatX2 = flat.Width()
-		var/flatY1 = 1
-		var/flatY2 = flat.Height()
+		// Current dimensions of flattened icon
+		var/list/flat_size = list(1, flat.Width(), 1, flat.Height())
+		// Dimensions of overlay being added
+		var/list/add_size[4]
 
-		var/addX1 = 0
-		var/addX2 = 0
-		var/addY1 = 0
-		var/addY2 = 0
-
-		for(var/image/layer_image as anything in layers)
-			if(layer_image.alpha == 0)
+		for(var/V in layers)
+			var/image/I = V
+			if(I.alpha == 0)
 				continue
 
-			if(layer_image == copy) // 'layer_image' is an /image based on the object being flattened.
+			if(I == copy) // 'I' is an /image based on the object being flattened.
 				curblend = BLEND_OVERLAY
-				add = icon(layer_image.icon, layer_image.icon_state, base_icon_dir)
+				add = icon(I.icon, I.icon_state, base_icon_dir)
 			else // 'I' is an appearance object.
-				add = getFlatIcon(image(layer_image), curdir, curicon, curstate, curblend, FALSE, no_anim)
+				add = getFlatIcon(image(I), curdir, curicon, curstate, curblend, FALSE, no_anim)
 			if(!add)
 				continue
-
 			// Find the new dimensions of the flat icon to fit the added overlay
-			addX1 = min(flatX1, layer_image.pixel_x + 1)
-			addX2 = max(flatX2, layer_image.pixel_x + add.Width())
-			addY1 = min(flatY1, layer_image.pixel_y + 1)
-			addY2 = max(flatY2, layer_image.pixel_y + add.Height())
-
-			if (
-				addX1 != flatX1 \
-				&& addX2 != flatX2 \
-				&& addY1 != flatY1 \
-				&& addY2 != flatY2 \
+			add_size = list(
+				min(flatX1, I.pixel_x+1),
+				max(flatX2, I.pixel_x+add.Width()),
+				min(flatY1, I.pixel_y+1),
+				max(flatY2, I.pixel_y+add.Height())
 			)
+
+			if(flat_size ~! add_size)
 				// Resize the flattened icon so the new icon fits
 				flat.Crop(
-					addX1 - flatX1 + 1,
-					addY1 - flatY1 + 1,
-					addX2 - flatX1 + 1,
-					addY2 - flatY1 + 1
+				addX1 - flatX1 + 1,
+				addY1 - flatY1 + 1,
+				addX2 - flatX1 + 1,
+				addY2 - flatY1 + 1
 				)
-
-				flatX1 = addX1
-				flatX2 = addY1
-				flatY1 = addX2
-				flatY2 = addY2
+				flat_size = add_size.Copy()
 
 			// Blend the overlay into the flattened icon
-			flat.Blend(add, blendMode2iconMode(curblend), layer_image.pixel_x + 2 - flatX1, layer_image.pixel_y + 2 - flatY1)
+			flat.Blend(add, blendMode2iconMode(curblend), I.pixel_x + 2 - flatX1, I.pixel_y + 2 - flatY1)
 
-		if(appearance.color)
-			if(islist(appearance.color))
-				flat.MapColors(arglist(appearance.color))
+		if(A.color)
+			if(islist(A.color))
+				flat.MapColors(arglist(A.color))
 			else
-				flat.Blend(appearance.color, ICON_MULTIPLY)
+				flat.Blend(A.color, ICON_MULTIPLY)
 
-		if(appearance.alpha < 255)
-			flat.Blend(rgb(255, 255, 255, appearance.alpha), ICON_MULTIPLY)
+		if(A.alpha < 255)
+			flat.Blend(rgb(255, 255, 255, A.alpha), ICON_MULTIPLY)
 
 		if(no_anim)
 			//Clean up repeated frames
 			var/icon/cleaned = new /icon()
 			cleaned.Insert(flat, "", SOUTH, 1, 0)
-			return cleaned
+			. = cleaned
 		else
-			return icon(flat, "", SOUTH)
-	else if (render_icon) // There's no overlays.
-		var/icon/final_icon = icon(icon(curicon, curstate, base_icon_dir), "", SOUTH, no_anim ? TRUE : null)
+			. = icon(flat, "", SOUTH)
+	else //There's no overlays.
+		if(!noIcon)
+			SET_SELF(.)
 
-		if (appearance.alpha < 255)
-			final_icon.Blend(rgb(255,255,255, appearance.alpha), ICON_MULTIPLY)
+	//Clear defines
+	#undef flatX1
+	#undef flatX2
+	#undef flatY1
+	#undef flatY2
+	#undef addX1
+	#undef addX2
+	#undef addY1
+	#undef addY2
 
-		if (appearance.color)
-			if (islist(appearance.color))
-				final_icon.MapColors(arglist(appearance.color))
-			else
-				final_icon.Blend(appearance.color, ICON_MULTIPLY)
+	#undef INDEX_X_LOW
+	#undef INDEX_X_HIGH
+	#undef INDEX_Y_LOW
+	#undef INDEX_Y_HIGH
 
-		return final_icon
-
-	#undef PROCESS_OVERLAYS_OR_UNDERLAYS
+	#undef BLANK
+	#undef SET_SELF
 
 /proc/getIconMask(atom/A)//By yours truly. Creates a dynamic mask for a mob/whatever. /N
 	var/icon/alpha_mask = new(A.icon,A.icon_state)//So we want the default icon and icon state of A.
@@ -977,32 +1047,30 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	return 0
 
 //For creating consistent icons for human looking simple animals
-/proc/get_flat_human_icon(icon_id, datum/job/job, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
+/proc/get_flat_human_icon(icon_id, datum/job/J, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
 	var/static/list/humanoid_icon_cache = list()
-	if(icon_id && humanoid_icon_cache[icon_id])
+	if(!icon_id || !humanoid_icon_cache[icon_id])
+		var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
+
+		if(prefs)
+			prefs.copy_to(body,TRUE,FALSE)
+		if(J)
+			J.equip(body, TRUE, FALSE, outfit_override = outfit_override)
+		else if (outfit_override)
+			body.equipOutfit(outfit_override,visualsOnly = TRUE)
+
+
+		var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
+		COMPILE_OVERLAYS(body)
+		for(var/D in showDirs)
+			var/icon/partial = getFlatIcon(body, defdir=D)
+			out_icon.Insert(partial,dir=D)
+
+		humanoid_icon_cache[icon_id] = out_icon
+		dummy_key? unset_busy_human_dummy(dummy_key) : qdel(body)
+		return out_icon
+	else
 		return humanoid_icon_cache[icon_id]
-
-	var/mob/living/carbon/human/dummy/body = generate_or_wait_for_human_dummy(dummy_key)
-
-	if(prefs)
-		prefs.apply_prefs_to(body, TRUE)
-
-	var/datum/outfit/outfit = outfit_override || job?.outfit
-	if(job)
-		body.dna.species.pre_equip_species_outfit(job, body, TRUE)
-	if(outfit)
-		body.equipOutfit(outfit, TRUE)
-
-	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-	COMPILE_OVERLAYS(body)
-	for(var/D in showDirs)
-		var/icon/partial = getFlatIcon(body, defdir=D)
-		out_icon.Insert(partial,dir=D)
-
-	humanoid_icon_cache[icon_id] = out_icon
-	dummy_key? unset_busy_human_dummy(dummy_key) : qdel(body)
-	return out_icon
-
 
 //Hook, override to run code on- wait this is images
 //Images have dir without being an atom, so they get their own definition.
@@ -1053,15 +1121,8 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	dummySave = null
 	fdel("tmp/dummySave.sav") //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
 
-/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, override_skyrat = FALSE) /// SKYRAT EDIT - icon2html override instead of fully disabling it - Original: /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
-	// SKYRAT EDIT START - icon2html override instead of fully disabling it
-	if(!override_skyrat)
-		return "" //SKYRAT EDIT DISABLE - ICON2HTML
-	// SKYRAT EDIT END
-
+/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
 	if (!thing)
-		return
-	if(SSlag_switch.measures[DISABLE_USR_ICON2HTML] && usr && !HAS_TRAIT(usr, TRAIT_BYPASS_MEASURES))
 		return
 
 	var/key
@@ -1082,7 +1143,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
-			var/name = SANITIZE_FILENAME("[generate_asset_name(thing)].png")
+			var/name = sanitize_filename("[generate_asset_name(thing)].png")
 			if (!SSassets.cache[name])
 				SSassets.transport.register_asset(name, thing)
 			for (var/thing2 in targets)
@@ -1127,7 +1188,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 		return SSassets.transport.get_asset_url(key)
 	return "<img class='[extra_classes] icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
 
-
 /proc/icon2base64html(thing)
 	if (!thing)
 		return
@@ -1163,11 +1223,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 //Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target, sourceonly = FALSE)
-	return ""
-	/* SKYRAT EDIT REMOVAL
 	if (!thing)
-		return
-	if(SSlag_switch.measures[DISABLE_USR_ICON2HTML] && usr && !HAS_TRAIT(usr, TRAIT_BYPASS_MEASURES))
 		return
 
 	if (isicon(thing))
@@ -1175,9 +1231,9 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	var/icon/I = getFlatIcon(thing)
 	return icon2html(I, target, sourceonly = sourceonly)
-*/
 
 GLOBAL_LIST_EMPTY(transformation_animation_objects)
+
 
 /*
  * Creates animation that turns current icon into result appearance from top down.

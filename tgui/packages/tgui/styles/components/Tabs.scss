@@ -4,7 +4,6 @@
  */
 
 @use 'sass:color';
-@use 'sass:math';
 @use '../base.scss';
 @use '../colors.scss';
 
@@ -71,10 +70,12 @@ $fg-map: colors.$fg-map !default;
   color: $text-color;
   min-height: 2.25em;
   min-width: 4em;
+  transition: background-color 50ms ease-out;
 }
 
 .Tab:not(.Tab--selected):hover {
   background-color: $tab-color-hovered;
+  transition: background-color 0;
 }
 
 .Tab--selected {
@@ -101,28 +102,28 @@ $fg-map: colors.$fg-map !default;
 
 .Tabs--horizontal {
   .Tab {
-    border-top: math.div(1em, 6) solid transparent;
-    border-bottom: math.div(1em, 6) solid transparent;
+    border-top: (1em / 6) solid transparent;
+    border-bottom: (1em / 6) solid transparent;
     border-top-left-radius: 0.25em;
     border-top-right-radius: 0.25em;
   }
 
   .Tab--selected {
-    border-bottom: math.div(1em, 6) solid $color-default;
+    border-bottom: (1em / 6) solid $color-default;
   }
 }
 
 .Tabs--vertical {
   .Tab {
     min-height: 2em;
-    border-left: math.div(1em, 6) solid transparent;
-    border-right: math.div(1em, 6) solid transparent;
+    border-left: (1em / 6) solid transparent;
+    border-right: (1em / 6) solid transparent;
     border-top-left-radius: 0.25em;
     border-bottom-left-radius: 0.25em;
   }
 
   .Tab--selected {
-    border-right: math.div(1em, 6) solid $color-default;
+    border-right: (1em / 6) solid $color-default;
   }
 }
 

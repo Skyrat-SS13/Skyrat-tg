@@ -3,7 +3,7 @@
 	desc = "Didn't make sense not to live for fun, your brain gets smart but your head gets dumb."
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = "default_human_head"
-	max_damage = 250 //SKYRAT EDIT CHANGE: max_damage = 200
+	max_damage = 200
 	body_zone = BODY_ZONE_HEAD
 	body_part = HEAD
 	w_class = WEIGHT_CLASS_BULKY //Quite a hefty load
@@ -71,29 +71,29 @@
 	. = ..()
 	if(status == BODYPART_ORGANIC)
 		if(!brain)
-			. += span_info("The brain has been removed from [src].")
+			. += "<span class='info'>The brain has been removed from [src].</span>"
 		else if(brain.suicided || brainmob?.suiciding)
-			. += span_info("There's a miserable expression on [real_name]'s face; they must have really hated life. There's no hope of recovery.")
+			. += "<span class='info'>There's a miserable expression on [real_name]'s face; they must have really hated life. There's no hope of recovery.</span>"
 		else if(brainmob?.health <= HEALTH_THRESHOLD_DEAD)
-			. += span_info("It's leaking some kind of... clear fluid? The brain inside must be in pretty bad shape.")
+			. += "<span class='info'>It's leaking some kind of... clear fluid? The brain inside must be in pretty bad shape.</span>"
 		else if(brainmob)
 			if(brainmob.key || brainmob.get_ghost(FALSE, TRUE))
-				. += span_info("Its muscles are twitching slightly... It seems to have some life still in it.")
+				. += "<span class='info'>Its muscles are twitching slightly... It seems to have some life still in it.</span>"
 			else
-				. += span_info("It's completely lifeless. Perhaps there'll be a chance for them later.")
+				. += "<span class='info'>It's completely lifeless. Perhaps there'll be a chance for them later.</span>"
 		else if(brain?.decoy_override)
-			. += span_info("It's completely lifeless. Perhaps there'll be a chance for them later.")
+			. += "<span class='info'>It's completely lifeless. Perhaps there'll be a chance for them later.</span>"
 		else
-			. += span_info("It's completely lifeless.")
+			. += "<span class='info'>It's completely lifeless.</span>"
 
 		if(!eyes)
-			. += span_info("[real_name]'s eyes have been removed.")
+			. += "<span class='info'>[real_name]'s eyes have been removed.</span>"
 
 		if(!ears)
-			. += span_info("[real_name]'s ears have been removed.")
+			. += "<span class='info'>[real_name]'s ears have been removed.</span>"
 
 		if(!tongue)
-			. += span_info("[real_name]'s tongue has been removed.")
+			. += "<span class='info'>[real_name]'s tongue has been removed.</span>"
 
 
 /obj/item/bodypart/head/can_dismember(obj/item/item)
@@ -108,14 +108,14 @@
 	for(var/obj/item/head_item in src)
 		if(head_item == brain)
 			if(user)
-				user.visible_message(span_warning("[user] saws [src] open and pulls out a brain!"), span_notice("You saw [src] open and pull out a brain."))
+				user.visible_message("<span class='warning'>[user] saws [src] open and pulls out a brain!</span>", "<span class='notice'>You saw [src] open and pull out a brain.</span>")
 			if(brainmob)
 				brainmob.container = null
 				brainmob.forceMove(brain)
 				brain.brainmob = brainmob
 				brainmob = null
 			if(violent_removal && prob(rand(80, 100))) //ghetto surgery can damage the brain.
-				to_chat(user, span_warning("[brain] was damaged in the process!"))
+				to_chat(user, "<span class='warning'>[brain] was damaged in the process!</span>")
 				brain.setOrganDamage(brain.maxHealth)
 			brain.forceMove(head_turf)
 			brain = null
@@ -124,10 +124,6 @@
 			if(istype(head_item, /obj/item/reagent_containers/pill))
 				for(var/datum/action/item_action/hands_free/activate_pill/pill_action in head_item.actions)
 					qdel(pill_action)
-			else if(istype(head_item, /obj/item/organ))
-				var/obj/item/organ/organ = head_item
-				if(organ.organ_flags & ORGAN_UNREMOVABLE)
-					continue
 			head_item.forceMove(head_turf)
 	eyes = null
 	ears = null

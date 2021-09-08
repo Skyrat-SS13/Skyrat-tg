@@ -8,9 +8,6 @@
 #define Z_TURFS(ZLEVEL) block(locate(1,1,ZLEVEL), locate(world.maxx, world.maxy, ZLEVEL))
 #define CULT_POLL_WAIT 2400
 
-/// Returns either the error landmark or the location of the room. Needless to say, if this is used, it means things have gone awry.
-#define GET_ERROR_ROOM ((locate(/obj/effect/landmark/error) in GLOB.landmarks_list) || locate(4,4,1))
-
 /proc/get_area_name(atom/X, format_text = FALSE)
 	var/area/A = isarea(X) ? X : get_area(X)
 	if(!A)
@@ -165,6 +162,20 @@
 			turfs += T
 	return turfs
 
+
+//This is the new version of recursive_mob_check, used for say().
+//The other proc was left intact because morgue trays use it.
+//Sped this up again for real this time
+/proc/recursive_hear_check(O)
+	var/list/processing_list = list(O)
+	. = list()
+	var/i = 0
+	while(i < length(processing_list))
+		var/atom/A = processing_list[++i]
+		if(A.flags_1 & HEAR_1)
+			. += A
+		processing_list += A.contents
+
 /** recursive_organ_check
  * inputs: O (object to start with)
  * outputs:
@@ -202,26 +213,38 @@
 
 	return
 
-/// Returns a list of hearers in view(view_radius) from source (ignoring luminosity). uses important_recursive_contents[RECURSIVE_CONTENTS_HEARING_SENSITIVE]
-/proc/get_hearers_in_view(view_radius, atom/source)
-	var/turf/center_turf = get_turf(source)
+/proc/get_hearers_in_view(R, atom/source)
+	// Returns a list of hearers in view(R) from source (ignoring luminosity). Used in saycode.
+	var/turf/T = get_turf(source)
 	. = list()
-	if(!center_turf)
+	if(!T)
 		return
-	var/lum = center_turf.luminosity
-	center_turf.luminosity = 6 // This is the maximum luminosity
-	for(var/atom/movable/movable in view(view_radius, center_turf))
-		var/list/recursive_contents = LAZYACCESS(movable.important_recursive_contents, RECURSIVE_CONTENTS_HEARING_SENSITIVE)
-		if(recursive_contents)
-			. += recursive_contents
-			SEND_SIGNAL(movable, COMSIG_ATOM_HEARER_IN_VIEW, .)
-	center_turf.luminosity = lum
+	var/list/processing_list = list()
+	if (R == 0) // if the range is zero, we know exactly where to look for, we can skip view
+		processing_list += T.contents // We can shave off one iteration by assuming turfs cannot hear
+	else  // A variation of get_hear inlined here to take advantage of the compiler's fastpath for obj/mob in view
+		var/lum = T.luminosity
+		T.luminosity = 6 // This is the maximum luminosity
+		for(var/mob/M in view(R, T))
+			processing_list += M
+		for(var/obj/O in view(R, T))
+			processing_list += O
+		T.luminosity = lum
+
+	var/i = 0
+	while(i < length(processing_list)) // recursive_hear_check inlined here
+		var/atom/A = processing_list[++i]
+		if(A.flags_1 & HEAR_1)
+			. += A
+			SEND_SIGNAL(A, COMSIG_ATOM_HEARER_IN_VIEW, processing_list, .)
+		processing_list += A.contents
 
 /proc/get_mobs_in_radio_ranges(list/obj/item/radio/radios)
 	. = list()
 	// Returns a list of mobs who can hear any of the radios given in @radios
 	for(var/obj/item/radio/R in radios)
-		. |= get_hearers_in_view(R.canhear_range, R)
+		if(R)
+			. |= get_hearers_in_view(R.canhear_range, R)
 
 #define SIGNV(X) ((X<0)?-1:1)
 
@@ -290,7 +313,7 @@
 			var/mob/living/carbon/human/H
 			if(ishuman(M.current))
 				H = M.current
-			return M.current.stat != DEAD && !issilicon(M.current) && !isbrain(M.current) && (!H || H.dna.species.id != SPECIES_ZOMBIE)
+			return M.current.stat != DEAD && !issilicon(M.current) && !isbrain(M.current) && (!H || H.dna.species.id != "memezombies")
 		else if(isliving(M.current))
 			return M.current.stat != DEAD
 	return FALSE
@@ -369,24 +392,24 @@
 	if(flashwindow)
 		window_flash(M.client)
 	var/list/answers = ignore_category ? list("Yes", "No", "Never for this round") : list("Yes", "No")
-	switch(tgui_alert(M, Question, "A limited-time offer!", answers, poll_time, autofocus = FALSE))
+	switch(tgui_alert(M, Question, "A limited-time offer!", answers, timeout=poll_time))
 		if("Yes")
-			to_chat(M, span_notice("Choice registered: Yes."))
+			to_chat(M, "<span class='notice'>Choice registered: Yes.</span>")
 			if(time_passed + poll_time <= world.time)
-				to_chat(M, span_danger("Sorry, you answered too late to be considered!"))
+				to_chat(M, "<span class='danger'>Sorry, you answered too late to be considered!</span>")
 				SEND_SOUND(M, 'sound/machines/buzz-sigh.ogg')
 				candidates -= M
 			else
 				candidates += M
 		if("No")
-			to_chat(M, span_danger("Choice registered: No."))
+			to_chat(M, "<span class='danger'>Choice registered: No.</span>")
 			candidates -= M
 		if("Never for this round")
 			var/list/L = GLOB.poll_ignore[ignore_category]
 			if(!L)
 				GLOB.poll_ignore[ignore_category] = list()
 			GLOB.poll_ignore[ignore_category] += M.ckey
-			to_chat(M, span_danger("Choice registered: Never for this round."))
+			to_chat(M, "<span class='danger'>Choice registered: Never for this round.</span>")
 			candidates -= M
 		else
 			candidates -= M
@@ -410,11 +433,6 @@
 		var/mob/M = m
 		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (M.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
-		//SKYRAT EDIT ADDITION BEGIN
-		if(is_banned_from(M.ckey, BAN_GHOST_TAKEOVER))
-			to_chat(M, "There was a ghost prompt for: [Question], unfortunately you are banned from ghost takeovers.")
-			continue
-		//SKYRAT EDIT END
 		if(be_special_flag)
 			if(!(M.client.prefs) || !(be_special_flag in M.client.prefs.be_special))
 				continue
@@ -438,55 +456,22 @@
 
 	return result
 
-/**
- * Returns a list of ghosts that are eligible to take over and wish to be considered for a mob.
- *
- * Arguments:
- * * question - Question to show players as part of poll
- * * jobban_type - Type of jobban to use to filter out potential candidates.
- * * be_special_flag - Unknown/needs further documentation.
- * * poll_time - Length of time in deciseconds that the poll input box exists before closing.
- * * target_mob - The mob that is being polled for.
- * * ignore_category - Unknown/needs further documentation.
- */
-/proc/poll_candidates_for_mob(question, jobban_type, be_special_flag = 0, poll_time = 30 SECONDS, mob/target_mob, ignore_category = null)
-	var/static/list/mob/currently_polling_mobs = list()
-
-	if(currently_polling_mobs.Find(target_mob))
+/proc/pollCandidatesForMob(Question, jobbanType, be_special_flag = 0, poll_time = 300, mob/M, ignore_category = null)
+	var/list/L = pollGhostCandidates(Question, jobbanType, be_special_flag, poll_time, ignore_category)
+	if(!M || QDELETED(M) || !M.loc)
 		return list()
+	return L
 
-	currently_polling_mobs += target_mob
-
-	var/list/possible_candidates = pollGhostCandidates(question, jobban_type, be_special_flag, poll_time, ignore_category)
-
-	currently_polling_mobs -= target_mob
-	if(!target_mob || QDELETED(target_mob) || !target_mob.loc)
-		return list()
-
-	return possible_candidates
-
-/**
- * Returns a list of ghosts that are eligible to take over and wish to be considered for a mob.
- *
- * Arguments:
- * * question - Question to show players as part of poll
- * * jobban_type - Type of jobban to use to filter out potential candidates.
- * * be_special_flag - Unknown/needs further documentation.
- * * poll_time - Length of time in deciseconds that the poll input box exists before closing.
- * * mobs - The list of mobs being polled for. This list is mutated and invalid mobs are removed from it before the proc returns.
- * * ignore_category - Unknown/needs further documentation.
- */
-/proc/poll_candidates_for_mobs(question, jobban_type, be_special_flag = 0, poll_time = 30 SECONDS, list/mobs, ignore_category = null)
-	var/list/candidate_list = pollGhostCandidates(question, jobban_type, be_special_flag, poll_time, ignore_category)
-
-	for(var/mob/potential_mob as anything in mobs)
-		if(QDELETED(potential_mob) || !potential_mob.loc)
-			mobs -= potential_mob
-
-	if(!length(mobs))
-		return list()
-
-	return candidate_list
+/proc/pollCandidatesForMobs(Question, jobbanType, be_special_flag = 0, poll_time = 300, list/mobs, ignore_category = null)
+	var/list/L = pollGhostCandidates(Question, jobbanType, be_special_flag, poll_time, ignore_category)
+	var/i=1
+	for(var/v in mobs)
+		var/atom/A = v
+		if(!A || QDELETED(A) || !A.loc)
+			mobs.Cut(i,i+1)
+		else
+			++i
+	return L
 
 /proc/makeBody(mob/dead/observer/G_found) // Uses stripped down and bastardized code from respawn character
 	if(!G_found || !G_found.key)
@@ -496,7 +481,7 @@
 	var/mob/living/carbon/human/new_character = new//The mob being spawned.
 	SSjob.SendToLateJoin(new_character)
 
-	G_found.client.prefs.safe_transfer_prefs_to(new_character)
+	G_found.client.prefs.copy_to(new_character)
 	new_character.dna.update_dna_identity()
 	new_character.key = G_found.key
 
@@ -528,7 +513,7 @@
 		A = A.loc
 
 	return A.loc
-/* - SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
+
 /proc/AnnounceArrival(mob/living/carbon/human/character, rank)
 	if(!SSticker.IsRoundInProgress() || QDELETED(character))
 		return
@@ -538,12 +523,12 @@
 		return
 	if(!GLOB.announcement_systems.len)
 		return
-	if(!(character.mind.assigned_role.job_flags & JOB_ANNOUNCE_ARRIVAL))
+	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role))
 		return
 
 	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
-*/
+
 /proc/lavaland_equipment_pressure_check(turf/T)
 	. = FALSE
 	if(!istype(T))
@@ -565,16 +550,21 @@
 
 // Find an obstruction free turf that's within the range of the center. Can also condition on if it is of a certain area type.
 /proc/find_obstruction_free_location(range, atom/center, area/specific_area)
+	var/list/turfs = RANGE_TURFS(range, center)
 	var/list/possible_loc = list()
 
-	for(var/turf/found_turf in RANGE_TURFS(range, center))
+	for(var/turf/found_turf in turfs)
+		var/area/turf_area = get_area(found_turf)
+
 		// We check if both the turf is a floor, and that it's actually in the area.
 		// We also want a location that's clear of any obstructions.
-		if (specific_area && !istype(get_area(found_turf), specific_area))
-			continue
+		if (specific_area)
+			if (!istype(turf_area, specific_area))
+				continue
 
-		if (!isgroundlessturf(found_turf) && !found_turf.is_blocked_turf())
-			possible_loc.Add(found_turf)
+		if (!isspaceturf(found_turf))
+			if (!found_turf.is_blocked_turf())
+				possible_loc.Add(found_turf)
 
 	// Need at least one free location.
 	if (possible_loc.len < 1)

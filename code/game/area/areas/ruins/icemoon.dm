@@ -1,11 +1,11 @@
 // Icemoon Ruins
 
 /area/ruin/unpowered/buried_library
-	name = "\improper Buried Library"
+	name = "Buried Library"
 	icon_state = "dk_yellow"
 
 /area/ruin/powered/bathhouse
-	name = "\improper Bath House"
+	name = "Bath House"
 	icon_state = "dk_yellow"
 	mood_bonus = 10
 	mood_message = "<span class='nicegreen'>I wish I could stay here forever.</span>\n"
@@ -17,7 +17,3 @@
 	base_icon_state = "block"
 	smoothing_flags = NONE
 	canSmoothWith = null
-
-/area/ruin/powered/mailroom
-	name = "\improper Abandoned Post Office"
-	icon_state = "dk_yellow"

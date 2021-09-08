@@ -1,6 +1,7 @@
 /obj/item/melee/baton
 	name = "stun baton"
 	desc = "A stun baton for incapacitating people with. Left click to stun, right click to harm."
+
 	icon_state = "stunbaton"
 	inhand_icon_state = "baton"
 	worn_icon_state = "baton"
@@ -20,18 +21,18 @@
 
 	var/obj/item/stock_parts/cell/cell
 	var/preload_cell_type //if not empty the baton starts with this type of cell
-	var/cell_hit_cost = 650 //SKYRAT EDIT CHANGE - ORIGINAL: 1000
+	var/cell_hit_cost = 1000
 	var/can_remove_cell = TRUE
 
 	var/turned_on = FALSE
 	var/activate_sound = "sparks"
 
 	var/attack_cooldown_check = 0 SECONDS
-	var/attack_cooldown = 1 SECONDS //SKYRAT EDIT CHANGE - ORIGINAL: 2.5 SECONDS
+	var/attack_cooldown = 2.5 SECONDS
 	var/stun_sound = 'sound/weapons/egloves.ogg'
 
 	var/confusion_amt = 10
-	var/stamina_loss_amt = 45 //SKYRAT EDIT CHANGE - ORIGINAL: 60
+	var/stamina_loss_amt = 60
 	var/apply_stun_delay = 2 SECONDS
 	var/stun_time = 5 SECONDS
 
@@ -42,18 +43,18 @@
 
 /obj/item/melee/baton/suicide_act(mob/user)
 	if(cell?.charge && turned_on)
-		user.visible_message(span_suicide("[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message("<span class='suicide'>[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 		. = (FIRELOSS)
 		attack(user,user)
 	else
-		user.visible_message(span_suicide("[user] is shoving the [name] down their throat! It looks like [user.p_theyre()] trying to commit suicide!"))
+		user.visible_message("<span class='suicide'>[user] is shoving the [name] down their throat! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 		. = (OXYLOSS)
 
 /obj/item/melee/baton/Initialize()
 	. = ..()
 	// Adding an extra break for the sake of presentation
 	if(stamina_loss_amt != 0)
-		offensive_notes = "\nVarious interviewed security forces report being able to beat criminals into exhaustion with only [span_warning("[round(100 / stamina_loss_amt, 0.1)] hit\s!")]"
+		offensive_notes = "\nVarious interviewed security forces report being able to beat criminals into exhaustion with only <span class='warning'>[round(100 / stamina_loss_amt, 0.1)] hit\s!</span>"
 	if(preload_cell_type)
 		if(!ispath(preload_cell_type,/obj/item/stock_parts/cell))
 			log_mapping("[src] at [AREACOORD(src)] had an invalid preload_cell_type: [preload_cell_type].")
@@ -123,23 +124,23 @@
 /obj/item/melee/baton/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("\The [src] is [round(cell.percent())]% charged.")
+		. += "<span class='notice'>\The [src] is [round(cell.percent())]% charged.</span>"
 	else
-		. += span_warning("\The [src] does not have a power source installed.")
+		. += "<span class='warning'>\The [src] does not have a power source installed.</span>"
 
 /obj/item/melee/baton/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stock_parts/cell))
 		var/obj/item/stock_parts/cell/C = W
 		if(cell)
-			to_chat(user, span_warning("[src] already has a cell!"))
+			to_chat(user, "<span class='warning'>[src] already has a cell!</span>")
 		else
 			if(C.maxcharge < cell_hit_cost)
-				to_chat(user, span_notice("[src] requires a higher capacity cell."))
+				to_chat(user, "<span class='notice'>[src] requires a higher capacity cell.</span>")
 				return
 			if(!user.transferItemToLoc(W, src))
 				return
 			cell = W
-			to_chat(user, span_notice("You install a cell in [src]."))
+			to_chat(user, "<span class='notice'>You install a cell in [src].</span>")
 			update_appearance()
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER)
@@ -152,7 +153,7 @@
 		cell.update_appearance()
 		cell.forceMove(get_turf(src))
 		cell = null
-		to_chat(user, span_notice("You remove the cell from [src]."))
+		to_chat(user, "<span class='notice'>You remove the cell from [src].</span>")
 		turned_on = FALSE
 		update_appearance()
 
@@ -162,22 +163,22 @@
 /obj/item/melee/baton/proc/toggle_on(mob/user)
 	if(cell && cell.charge >= cell_hit_cost)
 		turned_on = !turned_on
-		to_chat(user, span_notice("[src] is now [turned_on ? "on" : "off"]."))
+		to_chat(user, "<span class='notice'>[src] is now [turned_on ? "on" : "off"].</span>")
 		playsound(src, activate_sound, 75, TRUE, -1)
 	else
 		turned_on = FALSE
 		if(!cell)
-			to_chat(user, span_warning("[src] does not have a power source!"))
+			to_chat(user, "<span class='warning'>[src] does not have a power source!</span>")
 		else
-			to_chat(user, span_warning("[src] is out of charge."))
+			to_chat(user, "<span class='warning'>[src] is out of charge.</span>")
 	update_appearance()
 	add_fingerprint(user)
 
 /obj/item/melee/baton/proc/clumsy_check(mob/living/carbon/human/user)
 	if(turned_on && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
 		playsound(src, stun_sound, 75, TRUE, -1)
-		user.visible_message(span_danger("[user] accidentally hits [user.p_them()]self with [src]!"), \
-							span_userdanger("You accidentally hit yourself with [src]!"))
+		user.visible_message("<span class='danger'>[user] accidentally hits [user.p_them()]self with [src]!</span>", \
+							"<span class='userdanger'>You accidentally hit yourself with [src]!</span>")
 		user.Knockdown(stun_time*3) //should really be an equivalent to attack(user,user)
 		deductcharge(cell_hit_cost)
 		return TRUE
@@ -201,7 +202,7 @@
 	if(LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(turned_on)
 			if(attack_cooldown_check <= world.time)
-				baton_effect(M, user, TRUE) //SKYRAT EDIT CHANGE - ORIGINAL: baton_effect(M, user)
+				baton_effect(M, user)
 		..()
 		return
 	else if(turned_on)
@@ -210,24 +211,19 @@
 				user.do_attack_animation(M)
 				return
 		else
-			to_chat(user, span_danger("The baton is still charging!"))
+			to_chat(user, "<span class='danger'>The baton is still charging!</span>")
 			return
-	else if(user.combat_mode && !turned_on)
-		..()
-		return
 	else
-		M.visible_message(span_warning("[user] prods [M] with [src]. Luckily it was off."), \
-					span_warning("[user] prods you with [src]. Luckily it was off."))
+		M.visible_message("<span class='warning'>[user] prods [M] with [src]. Luckily it was off.</span>", \
+					"<span class='warning'>[user] prods you with [src]. Luckily it was off.</span>")
 		return
 
-/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user, harmy = FALSE) //SKYRAT EDIT CHANGE  - ORIGINAL: /obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
+/obj/item/melee/baton/proc/baton_effect(mob/living/L, mob/user)
 	if(shields_blocked(L, user))
 		return FALSE
-	/* SKYRAT EDIT REMOVAL BEGIN
 	if(HAS_TRAIT_FROM(L, TRAIT_IWASBATONED, user)) //no doublebaton abuse anon!
-		to_chat(user, span_danger("[L] manages to avoid the attack!"))
+		to_chat(user, "<span class='danger'>[L] manages to avoid the attack!</span>")
 		return FALSE
-	*/ //SKYRAT EDIT REMOVAL END
 	if(iscyborg(loc))
 		var/mob/living/silicon/robot/R = loc
 		if(!R || !R.cell || !R.cell.use(cell_hit_cost))
@@ -238,34 +234,26 @@
 	/// After a target is hit, we do a chunk of stamina damage, along with other effects.
 	/// After a period of time, we then check to see what stun duration we give.
 	L.Jitter(20)
-	//L.set_confusion(max(confusion_amt, L.get_confusion())) //SKYRAT EDIT REMOVAL
+	L.set_confusion(max(confusion_amt, L.get_confusion()))
 	L.stuttering = max(8, L.stuttering)
-	//L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST) - SKYRAT EDIT REMOVAL
-	//SKYRAT EDIT CHANGE BEGIN
-	if(harmy) //Less extra stamina damage for harm batons
-		L.StaminaKnockdown(5)
-	else
-		L.StaminaKnockdown(stamina_loss_amt)
-		//SKYRAT EDIT CHANGE END
+	L.apply_damage(stamina_loss_amt, STAMINA, BODY_ZONE_CHEST)
 
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
-	//addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay) SKYRAT EDIT REMOVAL
+	addtimer(CALLBACK(src, .proc/apply_stun_effect_end, L), apply_stun_delay)
 
 	if(user)
 		L.lastattacker = user.real_name
 		L.lastattackerckey = user.ckey
-		L.visible_message(span_danger("[user] stuns [L] with [src]!"), \
-								span_userdanger("[user] stuns you with [src]!"))
+		L.visible_message("<span class='danger'>[user] stuns [L] with [src]!</span>", \
+								"<span class='userdanger'>[user] stuns you with [src]!</span>")
 		log_combat(user, L, "stunned")
 
 	playsound(src, stun_sound, 50, TRUE, -1)
 
 	attack_cooldown_check = world.time + attack_cooldown
 
-	/* SKYRAT EDIT REMOVAL
 	ADD_TRAIT(L, TRAIT_IWASBATONED, STATUS_EFFECT_TRAIT)
 	addtimer(TRAIT_CALLBACK_REMOVE(L, TRAIT_IWASBATONED, STATUS_EFFECT_TRAIT), attack_cooldown)
-	*/
 
 	return 1
 
@@ -273,7 +261,7 @@
 /obj/item/melee/baton/proc/apply_stun_effect_end(mob/living/target)
 	var/trait_check = HAS_TRAIT(target, TRAIT_STUNRESISTANCE) //var since we check it in out to_chat as well as determine stun duration
 	if(!target.IsKnockdown())
-		to_chat(target, span_warning("Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]"))
+		to_chat(target, "<span class='warning'>Your muscles seize, making you collapse[trait_check ? ", but your body quickly recovers..." : "!"]</span>")
 
 	if(trait_check)
 		target.Knockdown(stun_time * 0.1)
@@ -351,9 +339,8 @@
 		var/caught = hit_atom.hitby(src, FALSE, FALSE, throwingdatum=throwingdatum)
 		if(isliving(hit_atom) && !iscyborg(hit_atom) && !caught && prob(throw_stun_chance))//if they are a living creature and they didn't catch it
 			baton_effect(hit_atom)
-		var/mob/thrown_by = thrownby?.resolve()
-		if(thrown_by && !caught)
-			addtimer(CALLBACK(src, /atom/movable.proc/throw_at, thrown_by, throw_range+2, throw_speed, null, TRUE), 1)
+		if(thrownby && !caught)
+			addtimer(CALLBACK(src, /atom/movable.proc/throw_at, thrownby, throw_range+2, throw_speed, null, TRUE), 1)
 	else
 		return ..()
 

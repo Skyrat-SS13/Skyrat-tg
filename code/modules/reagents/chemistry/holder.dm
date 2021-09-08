@@ -261,18 +261,14 @@
 	return TRUE
 
 /// Like add_reagent but you can enter a list. Format it like this: list(/datum/reagent/toxin = 10, "beer" = 15)
-/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null, no_react = FALSE) //SKYRAT EDIT CHANGE
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
-	//SKYRAT EDIT CHANGE BEGIN
-		add_reagent(r_id, amt, data, no_react = TRUE)
-	if(!no_react)
-		handle_reactions()
-	//SKYRAT EDIT CHANGE END
+		add_reagent(r_id, amt, data)
 
 
 /// Remove a specific reagent
-/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE, no_react = FALSE)//Added a safety check for the trans_id_to
+/datum/reagents/proc/remove_reagent(reagent, amount, safety = TRUE)//Added a safety check for the trans_id_to
 	if(isnull(amount))
 		amount = 0
 		CRASH("null amount passed to reagent code")
@@ -291,7 +287,7 @@
 			amount = clamp(amount, 0, cached_reagent.volume)
 			cached_reagent.volume -= amount
 			update_total()
-			if(!safety || !no_react)//So it does not handle reactions when it need not to //SKYRAT EDIT CHANGE
+			if(!safety)//So it does not handle reactions when it need not to
 				handle_reactions()
 			SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, QDELING(cached_reagent) ? reagent : cached_reagent, amount)
 
@@ -494,7 +490,7 @@
 				else
 					R.expose_single(reagent, target_atom, methods, part, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -520,7 +516,7 @@
 				else
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
 				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
+			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -574,7 +570,7 @@
 	return amount
 
 /// Copies the reagents to the target object
-/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1, no_react=0) //SKYRAT EDIT CHANGE
+/datum/reagents/proc/copy_to(obj/target, amount=1, multiplier=1, preserve_data=1)
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -604,11 +600,8 @@
 
 	src.update_total()
 	R.update_total()
-	//SKYRAT EDIT CHANGE BEGIN
-	if(!no_react)
-		R.handle_reactions()
-		src.handle_reactions()
-	//SKYRAT EDIT CHANGE END
+	R.handle_reactions()
+	src.handle_reactions()
 	return amount
 
 ///Multiplies the reagents inside this holder by a specific amount
@@ -703,30 +696,6 @@
 
 	if(!owner)
 		owner = reagent.holder.my_atom
-
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(ishuman(owner))
-		var/mob/living/carbon/human/H = owner
-		//Check if this mob's species is set and can process this type of reagent
-		var/can_process = FALSE
-		//If we somehow avoided getting a species or reagent_flags set, we'll assume we aren't meant to process ANY reagents
-		if(H.dna && H.dna.species.reagent_flags)
-			var/owner_flags = H.dna.species.reagent_flags
-			if((reagent.process_flags & REAGENT_SYNTHETIC) && (owner_flags & PROCESS_SYNTHETIC))		//SYNTHETIC-oriented reagents require PROCESS_SYNTHETIC
-				can_process = TRUE
-			if((reagent.process_flags & REAGENT_ORGANIC) && (owner_flags & PROCESS_ORGANIC))		//ORGANIC-oriented reagents require PROCESS_ORGANIC
-				can_process = TRUE
-
-		//If the mob can't process it, remove the reagent at it's normal rate without doing any addictions, overdoses, or on_mob_life() for the reagent
-		if(!can_process)
-			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-			return
-	//We'll assume that non-human mobs lack the ability to process synthetic-oriented reagents (adjust this if we need to change that assumption)
-	else
-		if(reagent.process_flags == REAGENT_SYNTHETIC)
-			reagent.holder.remove_reagent(reagent.type, reagent.metabolization_rate)
-			return
-	//SKYRAT EDIT ADDITION END
 
 	if(owner && reagent)
 		if(!owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
@@ -995,7 +964,7 @@
 		SEND_SIGNAL(src, COMSIG_REAGENTS_REACTION_STEP, num_reactions, delta_time)
 
 	if(length(mix_message)) //This is only at the end
-		my_atom.audible_message(span_notice("[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] [mix_message.Join()]"))
+		my_atom.audible_message("<span class='notice'>[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] [mix_message.Join()]</span>")
 
 	if(!LAZYLEN(reaction_list))
 		finish_reacting()
@@ -1025,12 +994,6 @@
 	var/reaction_message = equilibrium.reaction.mix_message
 	if(equilibrium.reaction.mix_sound)
 		playsound(get_turf(my_atom), equilibrium.reaction.mix_sound, 80, TRUE)
-	//SKYRAT EDIT ADDITION
-	//If the reaction pollutes, pollute it here if we have an atom
-	if(equilibrium.reaction.pollutant_type && my_atom)
-		var/turf/my_turf = get_turf(my_atom)
-		my_turf.PolluteTurf(equilibrium.reaction.pollutant_type, equilibrium.reaction.pollutant_amount * equilibrium.reacted_vol)
-	//SKYRAT EDIT END
 	qdel(equilibrium)
 	update_total()
 	SEND_SIGNAL(src, COMSIG_REAGENTS_REACTED, .)
@@ -1063,7 +1026,7 @@
 	for(var/datum/equilibrium/equilibrium as anything in reaction_list)
 		mix_message += end_reaction(equilibrium)
 	if(length(mix_message))
-		my_atom.audible_message(span_notice("[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] [mix_message.Join()]"))
+		my_atom.audible_message("<span class='notice'>[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] [mix_message.Join()]</span>")
 	finish_reacting()
 
 /*
@@ -1084,7 +1047,7 @@
 				mix_message += end_reaction(equilibrium)
 				any_stopped = TRUE
 	if(length(mix_message))
-		my_atom.audible_message(span_notice("[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))][mix_message.Join()]"))
+		my_atom.audible_message("<span class='notice'>[icon2html(my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))][mix_message.Join()]</span>")
 	return any_stopped
 
 /*
@@ -1175,22 +1138,15 @@
 			if(selected_reaction.mix_sound)
 				playsound(get_turf(cached_my_atom), selected_reaction.mix_sound, 80, TRUE)
 
-			my_atom.audible_message(span_notice("[iconhtml] [selected_reaction.mix_message]"))
+			my_atom.audible_message("<span class='notice'>[iconhtml] [selected_reaction.mix_message]</span>")
 
 		if(istype(cached_my_atom, /obj/item/slime_extract))
 			var/obj/item/slime_extract/extract = my_atom
 			extract.Uses--
 			if(extract.Uses <= 0) // give the notification that the slime core is dead
-				my_atom.visible_message(span_notice("[iconhtml] \The [my_atom]'s power is consumed in the reaction."))
+				my_atom.visible_message("<span class='notice'>[iconhtml] \The [my_atom]'s power is consumed in the reaction.</span>")
 				extract.name = "used slime extract"
 				extract.desc = "This extract has been used up."
-
-	//SKYRAT EDIT ADDITION
-	//If the reaction pollutes, pollute it here if we have an atom
-	if(selected_reaction.pollutant_type && my_atom)
-		var/turf/my_turf = get_turf(my_atom)
-		my_turf.PolluteTurf(selected_reaction.pollutant_type, selected_reaction.pollutant_amount * multiplier)
-	//SKYRAT EDIT END
 
 	selected_reaction.on_reaction(src, null, multiplier)
 
@@ -1213,15 +1169,14 @@
 /// Updates [/datum/reagents/var/total_volume]
 /datum/reagents/proc/update_total()
 	var/list/cached_reagents = reagent_list
-	. = 0 // This is a relatively hot proc.
+	total_volume = 0
 	for(var/datum/reagent/reagent as anything in cached_reagents)
 		if((reagent.volume < 0.05) && !is_reacting)
 			del_reagent(reagent.type)
 		else if(reagent.volume <= CHEMICAL_VOLUME_MINIMUM)//For clarity
 			del_reagent(reagent.type)
 		else
-			. += reagent.volume
-	total_volume = .
+			total_volume += reagent.volume
 	recalculate_sum_ph()
 
 /**

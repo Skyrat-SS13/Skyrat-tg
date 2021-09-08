@@ -136,7 +136,7 @@
 				<h2>Basic ingredients preparation:</h2>
 
 				<b>Dough:</b> 10u water + 15u flour for simple dough.<br>
-				6u egg yolk + 12 egg white + 15u flour + 5u sugar for cake batter.<br>
+				15u egg yolk + 15u flour + 5u sugar for cake batter.<br>
 				Doughs can be transformed by using a knife and rolling pin.<br>
 				All doughs can be microwaved.<br>
 				<b>Bowl:</b> Add water to it for soup preparation.<br>
@@ -239,7 +239,6 @@
 /obj/item/book/manual/wiki
 	var/page_link = ""
 	window_size = "970x710"
-	var/skyrat_wiki = FALSE //SKYRAT EDIT ADDITION - will point someone to skyrat wiki instead of TG one if enabled
 
 /obj/item/book/manual/wiki/attack_self()
 	if(!dat)
@@ -247,14 +246,7 @@
 	return ..()
 
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
-	//var/wikiurl = CONFIG_GET(string/wikiurl) //ORIGINAL
-	//SKYRAT EDIT CHANGE BEGIN
-	var/wikiurl
-	if(skyrat_wiki)
-		wikiurl = CONFIG_GET(string/wikiurlskyrat)
-	else
-		wikiurl = CONFIG_GET(string/wikiurl)
-	//SKYRAT EDIT CHANGE END
+	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
 		dat = {"
 
@@ -311,20 +303,15 @@
 	page_link = "Singularity_and_Tesla_engines"
 
 /obj/item/book/manual/wiki/security_space_law
-	//name = "Space Law" //ORIGINAL
-	name = "Corporate Regulations" //SKYRAT EDIT CHANGE
-	//desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations." //ORIGINAL
-	desc = "A set of Nanotrasen regulations for keeping law and order on their space stations." //SKYRAT EDIT CHANGE
+	name = "Space Law"
+	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
-	//title = "Space Law" //ORIGINAL
-	title = "Corporate Regulations" //SKYRAT EDIT CHANGE
-	//page_link = "Space_Law" //ORIGINAL
-	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
-	skyrat_wiki = TRUE //SKYRAT EDIT ADDITION
+	title = "Space Law"
+	page_link = "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
+	user.visible_message("<span class='suicide'>[user] pretends to read \the [src] intently... then promptly dies of laughter!</span>")
 	return OXYLOSS
 
 /obj/item/book/manual/wiki/infections
@@ -360,7 +347,7 @@
 	icon_state = "barbook"
 	author = "Sir John Rose"
 	title = "Barman Recipes: Mixing Drinks and Changing Lives"
-	page_link = "Guide_to_drinks"
+	page_link = "Guide_to_food_and_drinks"
 
 /obj/item/book/manual/wiki/robotics_cyborgs
 	name = "Robotics for Dummies"
@@ -389,7 +376,7 @@
 	icon_state ="cooked_book"
 	author = "the Kanamitan Empire"
 	title = "To Serve Man"
-	page_link = "Guide_to_food"
+	page_link = "Guide_to_food_and_drinks"
 
 /obj/item/book/manual/wiki/tcomms
 	name = "Subspace Telecommunications And You"
@@ -426,16 +413,16 @@
 	title = "DIY Chemical Grenades"
 	page_link = "Grenade"
 
-/obj/item/book/manual/wiki/ordnance
-	name = "Ordnance for Dummies or: How I Learned to Stop Worrying and Love the Maxcap"
+/obj/item/book/manual/wiki/toxins
+	name = "Toxins or: How I Learned to Stop Worrying and Love the Maxcap"
 	icon_state = "book6"
 	author = "Cuban Pete"
-	title = "Ordnance for Dummies or: How I Learned to Stop Worrying and Love the Maxcap"
+	title = "Toxins or: How I Learned to Stop Worrying and Love the Maxcap"
 	page_link = "Guide_to_toxins"
 
-/obj/item/book/manual/wiki/ordnance/suicide_act(mob/user)
+/obj/item/book/manual/wiki/toxins/suicide_act(mob/user)
 	var/mob/living/carbon/human/H = user
-	user.visible_message(span_suicide("[user] starts dancing to the Rhumba Beat! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] starts dancing to the Rhumba Beat! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	playsound(loc, 'sound/effects/spray.ogg', 10, TRUE, -3)
 	if (!QDELETED(H))
 		H.emote("spin")

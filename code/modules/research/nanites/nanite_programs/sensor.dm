@@ -247,7 +247,7 @@
 	RegisterSignal(host_mob, COMSIG_MOVABLE_HEAR, .proc/on_hear)
 
 /datum/nanite_program/sensor/voice/on_mob_remove()
-	UnregisterSignal(host_mob, COMSIG_MOVABLE_HEAR)
+	UnregisterSignal(host_mob, COMSIG_MOVABLE_HEAR, .proc/on_hear)
 
 /datum/nanite_program/sensor/voice/proc/on_hear(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
@@ -278,23 +278,6 @@
 		"Fly" = /datum/species/fly,
 		"Felinid" = /datum/species/human/felinid,
 		"Jelly" = /datum/species/jelly,
-		"Skrell" = /datum/species/skrell, // SKYRAT EDIT - START
-		"Anthromorph" = /datum/species/mammal,
-		"Slime Person" = /datum/species/jelly/roundstartslime,
-		"Vox" = /datum/species/vox,
-		"Humanoid" = /datum/species/humanoid,
-		"Insect" = /datum/species/insect,
-		"Xeno-Hybrid" = /datum/species/xeno,
-		"Aquatic" = /datum/species/aquatic,
-		"Akula" = /datum/species/akula,
-		"Vulpkanin" = /datum/species/vulpkanin,
-		"Unathi" = /datum/species/unathi,
-		"Tajaran" = /datum/species/tajaran,
-		"Dwarf" = /datum/species/dwarf,
-		"IPC" = /datum/species/robotic/ipc,
-		"Synthetic Lizard" = /datum/species/robotic/synthliz,
-		"Synthetic Mammal" = /datum/species/robotic/synthetic_mammal,
-		"Synthetic Human" = /datum/species/robotic/synthetic_human, // SKYRAT EDIT - END
 	)
 
 /datum/nanite_program/sensor/species/register_extra_settings()

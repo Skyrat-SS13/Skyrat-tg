@@ -3,7 +3,6 @@
 	desc = "This cuts wires."
 	icon = 'icons/obj/tools.dmi'
 	icon_state = "cutters_map"
-	worn_icon_state = "cutters"
 	inhand_icon_state = "cutters"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
@@ -47,25 +46,23 @@
 
 /obj/item/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if(istype(C) && C.handcuffed && istype(C.handcuffed, /obj/item/restraints/handcuffs/cable))
-		user.visible_message(span_notice("[user] cuts [C]'s restraints with [src]!"))
+		user.visible_message("<span class='notice'>[user] cuts [C]'s restraints with [src]!</span>")
 		qdel(C.handcuffed)
 		return
 	else if(istype(C) && C.has_status_effect(STATUS_EFFECT_CHOKINGSTRAND))
-		user.visible_message(span_notice("[user] attempts to cut the durathread strand from around [C]'s neck."))
+		to_chat(C, "<span class='notice'>You attempt to remove the durathread strand from around your neck.</span>")
 		if(do_after(user, 1.5 SECONDS, C))
-			user.visible_message(span_notice("[user] succesfully cuts the durathread strand from around [C]'s neck."))
+			to_chat(C, "<span class='notice'>You succesfuly remove the durathread strand.</span>")
 			C.remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
-			playsound(loc, usesound, 50, TRUE, -1)
-		return
 	else
 		..()
 
 /obj/item/wirecutters/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] is cutting at [user.p_their()] arteries with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] is cutting at [user.p_their()] arteries with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	playsound(loc, usesound, 50, TRUE, -1)
 	return (BRUTELOSS)
 
-/obj/item/wirecutters/abductor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/wirecutters/abductor
 	name = "alien wirecutters"
 	desc = "Extremely sharp wirecutters, made out of a silvery-green metal."
 	icon = 'icons/obj/abductor.dmi'
@@ -73,10 +70,10 @@
 	toolspeed = 0.1
 	random_color = FALSE
 
-/obj/item/wirecutters/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/wirecutters/cyborg
 	name = "powered wirecutters"
 	desc = "Cuts wires with the power of ELECTRICITY. Faster than normal wirecutters."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "wirecutters_cyborg"
 	worn_icon_state = "cutters"
 	toolspeed = 0.5

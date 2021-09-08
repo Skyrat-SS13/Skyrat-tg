@@ -38,11 +38,11 @@ require only minor tweaks.
 #define ZTRAIT_ICE_RUINS "Ice Ruins"
 #define ZTRAIT_ICE_RUINS_UNDERGROUND "Ice Ruins Underground"
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
-#define ZTRAIT_ROCKPLANET_RUINS "Rockplanet Ruins" //SKYRAT EDIT - Adds Ruins to Rockplanet mining map
 
 // boolean - weather types that occur on the level
 #define ZTRAIT_SNOWSTORM "Weather_Snowstorm"
 #define ZTRAIT_ASHSTORM "Weather_Ashstorm"
+#define ZTRAIT_ACIDRAIN "Weather_Acidrain"
 #define ZTRAIT_VOIDSTORM "Weather_Voidstorm"
 
 // number - bombcap is multiplied by this before being applied to bombs
@@ -85,9 +85,6 @@ require only minor tweaks.
 // must correspond to _basemap.dm for things to work correctly
 #define DEFAULT_MAP_TRAITS list(\
 	DECLARE_LEVEL("CentCom", ZTRAITS_CENTCOM),\
-	/* SKYRAT EDIT ADDITION BEGIN - MODULAR_MAPS */\
-	DECLARE_LEVEL("Offstation_skyrat", ZTRAITS_CENTCOM),\
-	/* SKYRAT EDIT ADDITION END - MODULAR_MAPS */\
 )
 
 // Camera lock flags

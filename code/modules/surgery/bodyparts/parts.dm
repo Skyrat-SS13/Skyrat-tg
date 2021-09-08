@@ -3,7 +3,7 @@
 	name = BODY_ZONE_CHEST
 	desc = "It's impolite to stare at a person's chest."
 	icon_state = "default_human_chest"
-	max_damage = 250 //SKYRAT EDIT CHANGE: max_damage = 200
+	max_damage = 200
 	body_zone = BODY_ZONE_CHEST
 	body_part = CHEST
 	px_x = 0
@@ -33,7 +33,6 @@
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "default_monkey_chest"
 	animal_origin = MONKEY_BODYPART
-	part_origin = MONKEY_BODY
 	wound_resistance = -10
 
 /obj/item/bodypart/chest/alien
@@ -42,7 +41,6 @@
 	dismemberable = 0
 	max_damage = 500
 	animal_origin = ALIEN_BODYPART
-	part_origin = ALIEN_BODY
 
 /obj/item/bodypart/chest/larva
 	icon = 'icons/mob/animal_parts.dmi'
@@ -50,7 +48,6 @@
 	dismemberable = 0
 	max_damage = 50
 	animal_origin = LARVA_BODYPART
-	part_origin = LARVA_BODY
 
 /obj/item/bodypart/l_arm
 	name = "left arm"
@@ -61,10 +58,8 @@
 	icon_state = "default_human_l_arm"
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
-	//max_damage = 50 //ORIGINAL
-	//max_stamina_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
+	max_damage = 50
+	max_stamina_damage = 50
 	body_zone = BODY_ZONE_L_ARM
 	body_part = ARM_LEFT
 	aux_zone = BODY_ZONE_PRECISE_L_HAND
@@ -122,7 +117,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_hands(owner.usable_hands - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("Your lose control of your [name]!"))
+				to_chat(owner, "<span class='userdanger'>Your lose control of your [name]!</span>")
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(!bodypart_disabled)
@@ -137,7 +132,6 @@
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "default_monkey_l_arm"
 	animal_origin = MONKEY_BODYPART
-	part_origin = MONKEY_BODY
 	wound_resistance = -10
 	px_x = -5
 	px_y = -3
@@ -151,7 +145,6 @@
 	can_be_disabled = FALSE
 	max_damage = 100
 	animal_origin = ALIEN_BODYPART
-	part_origin = ALIEN_BODY
 
 /obj/item/bodypart/r_arm
 	name = "right arm"
@@ -160,8 +153,7 @@
 	icon_state = "default_human_r_arm"
 	attack_verb_continuous = list("slaps", "punches")
 	attack_verb_simple = list("slap", "punch")
-	//max_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
+	max_damage = 50
 	body_zone = BODY_ZONE_R_ARM
 	body_part = ARM_RIGHT
 	aux_zone = BODY_ZONE_PRECISE_R_HAND
@@ -170,8 +162,7 @@
 	held_index = 2
 	px_x = 6
 	px_y = 0
-	//max_stamina_damage = 50 //ORIGINAL
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
+	max_stamina_damage = 50
 	can_be_disabled = TRUE
 
 
@@ -221,7 +212,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_hands(owner.usable_hands - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("Your lose control of your [name]!"))
+				to_chat(owner, "<span class='userdanger'>Your lose control of your [name]!</span>")
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(!bodypart_disabled)
@@ -236,7 +227,6 @@
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "default_monkey_r_arm"
 	animal_origin = MONKEY_BODYPART
-	part_origin = MONKEY_BODY
 	wound_resistance = -10
 	px_x = 5
 	px_y = -3
@@ -250,8 +240,6 @@
 	can_be_disabled = FALSE
 	max_damage = 100
 	animal_origin = ALIEN_BODYPART
-	part_origin = ALIEN_BODY
-
 
 /obj/item/bodypart/l_leg
 	name = "left leg"
@@ -260,15 +248,13 @@
 	icon_state = "default_human_l_leg"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	//max_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
+	max_damage = 50
 	body_zone = BODY_ZONE_L_LEG
 	body_part = LEG_LEFT
 	body_damage_coeff = 0.75
 	px_x = -2
 	px_y = 12
-	//max_stamina_damage = 50 //ORIGINAL
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
+	max_stamina_damage = 50
 	can_be_disabled = TRUE
 
 
@@ -318,7 +304,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_legs(owner.usable_legs - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("Your lose control of your [name]!"))
+				to_chat(owner, "<span class='userdanger'>Your lose control of your [name]!</span>")
 	else if(!bodypart_disabled)
 		owner.set_usable_legs(owner.usable_legs + 1)
 
@@ -331,7 +317,6 @@
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "default_monkey_l_leg"
 	animal_origin = MONKEY_BODYPART
-	part_origin = MONKEY_BODY
 	wound_resistance = -10
 	px_y = 4
 
@@ -344,7 +329,6 @@
 	can_be_disabled = FALSE
 	max_damage = 100
 	animal_origin = ALIEN_BODYPART
-	part_origin = ALIEN_BODY
 
 /obj/item/bodypart/r_leg
 	name = "right leg"
@@ -355,15 +339,13 @@
 	icon_state = "default_human_r_leg"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	//max_damage = 50 //ORIGINAL
-	max_damage = 60 //SKYRAT EDIT CHANGE
+	max_damage = 50
 	body_zone = BODY_ZONE_R_LEG
 	body_part = LEG_RIGHT
 	body_damage_coeff = 0.75
 	px_x = 2
 	px_y = 12
-	//max_stamina_damage = 50 //ORIGINAL
-	max_stamina_damage = 60 //SKYRAT EDIT CHANGE
+	max_stamina_damage = 50
 	can_be_disabled = TRUE
 
 
@@ -413,7 +395,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_legs(owner.usable_legs - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("Your lose control of your [name]!"))
+				to_chat(owner, "<span class='userdanger'>Your lose control of your [name]!</span>")
 	else if(!bodypart_disabled)
 		owner.set_usable_legs(owner.usable_legs + 1)
 
@@ -426,7 +408,6 @@
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "default_monkey_r_leg"
 	animal_origin = MONKEY_BODYPART
-	part_origin = MONKEY_BODY
 	wound_resistance = -10
 	px_y = 4
 
@@ -439,4 +420,3 @@
 	can_be_disabled = FALSE
 	max_damage = 100
 	animal_origin = ALIEN_BODYPART
-	part_origin = ALIEN_BODY

@@ -34,10 +34,6 @@ const TOOLS = [
     name: 'Destroy',
     bitmask: 4,
   },
-  {
-    name: 'Reprogram',
-    bitmask: 8,
-  },
 ];
 
 const SelectionSection = (props, context) => {

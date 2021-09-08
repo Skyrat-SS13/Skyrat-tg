@@ -1,7 +1,6 @@
 //Penguins
 
 /mob/living/simple_animal/pet/penguin
-	gender = MALE
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "bops"
@@ -11,7 +10,7 @@
 	speak = list("Gah Gah!", "NOOT NOOT!", "NOOT!", "Noot", "noot", "Prah!", "Grah!")
 	speak_emote = list("squawks", "gakkers")
 	emote_hear = list("squawk!", "gakkers!", "noots.","NOOTS!")
-	emote_see = list("shakes his beak.", "flaps his wings.","preens himself.")
+	emote_see = list("shakes its beak.", "flaps it's wings.","preens itself.")
 	faction = list("penguin")
 	minbodytemp = 0
 	see_in_dark = 5
@@ -30,7 +29,7 @@
 /mob/living/simple_animal/pet/penguin/emperor
 	name = "Emperor penguin"
 	real_name = "penguin"
-	desc = "Emperor of all he surveys."
+	desc = "Emperor of all they survey."
 	icon_state = "penguin"
 	icon_living = "penguin"
 	icon_dead = "penguin_dead"

@@ -1,7 +1,3 @@
-
-///assoc list of ckey -> /datum/player_details
-GLOBAL_LIST_EMPTY(player_details)
-
 /datum/player_details
 	var/list/player_actions = list()
 	var/list/logging = list()

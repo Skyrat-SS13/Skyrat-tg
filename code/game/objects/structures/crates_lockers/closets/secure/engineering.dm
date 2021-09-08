@@ -6,12 +6,12 @@
 /obj/structure/closet/secure_closet/engineering_chief/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/ce(src)
-	// new /obj/item/clothing/under/rank/engineering/chief_engineer(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	// new /obj/item/clothing/under/rank/engineering/chief_engineer/skirt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	new /obj/item/clothing/under/rank/engineering/chief_engineer(src)
+	new /obj/item/clothing/under/rank/engineering/chief_engineer/skirt(src)
 	new /obj/item/clothing/head/hardhat/white(src)
 	new /obj/item/clothing/head/hardhat/weldhat/white(src)
 	new /obj/item/clothing/gloves/color/chief_engineer(src)
-	// new /obj/item/clothing/shoes/sneakers/brown(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/tank/jetpack/suit(src)
 	new /obj/item/cartridge/ce(src)
 	new /obj/item/radio/headset/heads/ce(src)
@@ -21,14 +21,12 @@
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/clothing/glasses/meson/engine(src)
 	new /obj/item/door_remote/chief_engineer(src)
-	new /obj/item/pipe_dispenser/bluespace(src) // SKYRAT EDIT -- BLUESPACE RPD -- ORIGINAL: new /obj/item/pipe_dispenser(src)
+	new /obj/item/pipe_dispenser(src)
 	new /obj/item/circuitboard/machine/techfab/department/engineering(src)
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/engineering/ce(src)
-	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
-	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"
@@ -74,7 +72,6 @@
 	new /obj/item/clothing/glasses/meson/engine(src)
 	new /obj/item/storage/box/emptysandbags(src)
 	new /obj/item/storage/bag/construction(src)
-	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 
 
 /obj/structure/closet/secure_closet/atmospherics

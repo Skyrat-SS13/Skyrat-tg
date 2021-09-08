@@ -114,12 +114,6 @@
 /// Read the documentation for /datum/status_effect/confusion for more information.
 #define STATUS_EFFECT_CONFUSION /datum/status_effect/confusion
 
-//Deals with covering the target in ants.
-#define STATUS_EFFECT_ANTS /datum/status_effect/ants
-
-/// Doubles attack cooldowns on simplemobs and recovery time on megafauna.
-#define STATUS_EFFECT_STAGGER /datum/status_effect/stagger
-
 /////////////
 // NEUTRAL //
 /////////////
@@ -141,9 +135,6 @@
 #define STATUS_EFFECT_SURRENDER /datum/status_effect/grouped/surrender // gives an alert to quickly surrender
 
 #define STATUS_EFFECT_EIGEN /datum/status_effect/eigenstasium
-
-#define STATUS_EFFECT_STONED /datum/status_effect/stoned
-
 /////////////
 //  SLIME  //
 /////////////

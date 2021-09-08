@@ -54,25 +54,25 @@
 		H.set_machine(src)
 		if(href_list["school"])
 			if(used)
-				to_chat(H, span_warning("You already used this contract!"))
+				to_chat(H, "<span class='warning'>You already used this contract!</span>")
 				return
-			var/list/candidates = poll_candidates_for_mob("Do you want to play as a wizard's [href_list["school"]] apprentice?", ROLE_WIZARD, ROLE_WIZARD, 15 SECONDS, src)
+			var/list/candidates = pollCandidatesForMob("Do you want to play as a wizard's [href_list["school"]] apprentice?", ROLE_WIZARD, ROLE_WIZARD, 150, src)
 			if(LAZYLEN(candidates))
 				if(QDELETED(src))
 					return
 				if(used)
-					to_chat(H, span_warning("You already used this contract!"))
+					to_chat(H, "<span class='warning'>You already used this contract!</span>")
 					return
 				used = TRUE
 				var/mob/dead/observer/C = pick(candidates)
 				spawn_antag(C.client, get_turf(src), href_list["school"],H.mind)
 			else
-				to_chat(H, span_warning("Unable to reach your apprentice! You can either attack the spellbook with the contract to refund your points, or wait and try again later."))
+				to_chat(H, "<span class='warning'>Unable to reach your apprentice! You can either attack the spellbook with the contract to refund your points, or wait and try again later.</span>")
 
 /obj/item/antag_spawner/contract/spawn_antag(client/C, turf/T, kind ,datum/mind/user)
 	new /obj/effect/particle_effect/smoke(T)
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(T)
-	C.prefs.safe_transfer_prefs_to(M, is_antag = TRUE)
+	C.prefs.copy_to(M)
 	M.key = C.key
 	var/datum/mind/app_mind = M.mind
 
@@ -87,8 +87,10 @@
 		app.wiz_team = master_wizard.wiz_team
 		master_wizard.wiz_team.add_member(app_mind)
 	app_mind.add_antag_datum(app)
-	app_mind.set_assigned_role(SSjob.GetJobType(/datum/job/wizard_apprentice))
-	app_mind.special_role = ROLE_WIZARD_APPRENTICE
+	//TODO Kill these if possible
+	app_mind.assigned_role = "Apprentice"
+	app_mind.special_role = "apprentice"
+	//
 	SEND_SOUND(M, sound('sound/effects/magic.ogg'))
 
 ///////////BORGS AND OPERATIVES
@@ -103,7 +105,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "locator"
 	var/borg_to_spawn
-	var/special_role_name = ROLE_NUCLEAR_OPERATIVE ///The name of the special role given to the recruit
+	var/special_role_name = "Nuclear Operative" ///The name of the special role given to the recruit
 	var/datum/outfit/syndicate/outfit = /datum/outfit/syndicate/no_crystals ///The applied outfit
 	var/datum/antagonist/nukeop/antag_datum = /datum/antagonist/nukeop ///The antag datam applied
 	/// Style used by the droppod
@@ -111,10 +113,10 @@
 
 /obj/item/antag_spawner/nuke_ops/proc/check_usability(mob/user)
 	if(used)
-		to_chat(user, span_warning("[src] is out of power!"))
+		to_chat(user, "<span class='warning'>[src] is out of power!</span>")
 		return FALSE
 	if(!user.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE))
-		to_chat(user, span_danger("AUTHENTICATION FAILURE. ACCESS DENIED."))
+		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
 		return FALSE
 	return TRUE
 
@@ -129,7 +131,7 @@
 	if(!(check_usability(user)))
 		return
 
-	to_chat(user, span_notice("You activate [src] and wait for confirmation."))
+	to_chat(user, "<span class='notice'>You activate [src] and wait for confirmation.</span>")
 	var/list/nuke_candidates = pollGhostCandidates("Do you want to play as a syndicate [borg_to_spawn ? "[lowertext(borg_to_spawn)] cyborg":"operative"]?", ROLE_OPERATIVE, ROLE_OPERATIVE, 150, POLL_IGNORE_SYNDICATE)
 	if(LAZYLEN(nuke_candidates))
 		if(QDELETED(src) || !check_usability(user))
@@ -140,12 +142,12 @@
 		do_sparks(4, TRUE, src)
 		qdel(src)
 	else
-		to_chat(user, span_warning("Unable to connect to Syndicate command. Please wait and try again later or use the beacon on your uplink to get your points refunded."))
+		to_chat(user, "<span class='warning'>Unable to connect to Syndicate command. Please wait and try again later or use the beacon on your uplink to get your points refunded.</span>")
 
 /obj/item/antag_spawner/nuke_ops/spawn_antag(client/C, turf/T, kind, datum/mind/user)
 	var/mob/living/carbon/human/nukie = new()
 	var/obj/structure/closet/supplypod/pod = setup_pod()
-	C.prefs.safe_transfer_prefs_to(nukie, is_antag = TRUE)
+	C.prefs.copy_to(nukie)
 	nukie.ckey = C.key
 	var/datum/mind/op_mind = nukie.mind
 
@@ -163,7 +165,7 @@
 /obj/item/antag_spawner/nuke_ops/clown
 	name = "clown operative beacon"
 	desc = "A single-use beacon designed to quickly launch reinforcement clown operatives into the field."
-	special_role_name = ROLE_CLOWN_OPERATIVE
+	special_role_name = "Clown Operative"
 	outfit = /datum/outfit/syndicate/clownop/no_crystals
 	antag_datum = /datum/antagonist/nukeop/clownop
 	pod_style = STYLE_HONK
@@ -240,11 +242,11 @@
 
 /obj/item/antag_spawner/slaughter_demon/attack_self(mob/user)
 	if(!is_station_level(user.z))
-		to_chat(user, span_warning("You should probably wait until you reach the station."))
+		to_chat(user, "<span class='warning'>You should probably wait until you reach the station.</span>")
 		return
 	if(used)
 		return
-	var/list/candidates = poll_candidates_for_mob("Do you want to play as a [initial(demon_type.name)]?", ROLE_ALIEN, ROLE_ALIEN, 5 SECONDS, src)
+	var/list/candidates = pollCandidatesForMob("Do you want to play as a [initial(demon_type.name)]?", ROLE_ALIEN, ROLE_ALIEN, 50, src)
 	if(LAZYLEN(candidates))
 		if(used || QDELETED(src))
 			return
@@ -256,15 +258,15 @@
 		playsound(user.loc, 'sound/effects/glassbr1.ogg', 100, TRUE)
 		qdel(src)
 	else
-		to_chat(user, span_warning("You can't seem to work up the nerve to shatter the bottle! Perhaps you should try again later."))
+		to_chat(user, "<span class='warning'>You can't seem to work up the nerve to shatter the bottle! Perhaps you should try again later.</span>")
 
 
 /obj/item/antag_spawner/slaughter_demon/spawn_antag(client/C, turf/T, kind = "", datum/mind/user)
 	var/obj/effect/dummy/phased_mob/holder = new /obj/effect/dummy/phased_mob(T)
 	var/mob/living/simple_animal/hostile/imp/slaughter/S = new demon_type(holder)
 	S.key = C.key
-	S.mind.set_assigned_role(SSjob.GetJobType(/datum/job/slaughter_demon))
-	S.mind.special_role = ROLE_SLAUGHTER_DEMON
+	S.mind.assigned_role = S.name
+	S.mind.special_role = S.name
 	S.mind.add_antag_datum(antag_type)
 	to_chat(S, S.playstyle_string)
 	to_chat(S, "<B>You are currently not currently in the same plane of existence as the station. \

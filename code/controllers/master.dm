@@ -7,11 +7,6 @@
  *
  **/
 
-//Init the debugger datum first so we can debug Master
-//You might wonder why not just create the debugger datum global in its own file, since its loaded way earlier than this DM file
-//Well for whatever reason then the Master gets created first and then the debugger when doing that
-//So thats why this code lives here now, until someone finds out how Byond inits globals
-GLOBAL_REAL(Debugger, /datum/debugger) = new
 //This is the ABSOLUTE ONLY THING that should init globally like this
 //2019 update: the failsafe,config and Global controllers also do it
 GLOBAL_REAL(Master, /datum/controller/master) = new
@@ -90,27 +85,15 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/list/_subsystems = list()
 	subsystems = _subsystems
 	if (Master != src)
-		if (istype(Master)) //If there is an existing MC take over his stuff and delete it
+		if (istype(Master))
 			Recover()
 			qdel(Master)
-			Master = src
 		else
-			//Code used for first master on game boot or if existing master got deleted
-			Master = src
 			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
 			sortTim(subsytem_types, /proc/cmp_subsystem_init)
-			//Find any abandoned subsystem from the previous master (if there was any)
-			var/list/existing_subsystems = list()
-			for(var/global_var in global.vars)
-				if (istype(global.vars[global_var], /datum/controller/subsystem))
-					existing_subsystems += global.vars[global_var]
-			//Either init a new SS or if an existing one was found use that
 			for(var/I in subsytem_types)
-				var/datum/controller/subsystem/existing_subsystem = locate(I) in existing_subsystems
-				if (istype(existing_subsystem))
-					_subsystems += existing_subsystem
-				else
-					_subsystems += new I
+				_subsystems += new I
+		Master = src
 
 	if(!GLOB)
 		new /datum/controller/global_vars
@@ -141,8 +124,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/delay = 50 * ++Master.restart_count
 	Master.restart_timeout = world.time + delay
 	Master.restart_clear = world.time + (delay * 2)
-	if (Master) //Can only do this if master hasn't been deleted
-		Master.processing = FALSE //stop ticking this one
+	Master.processing = FALSE //stop ticking this one
 	try
 		new/datum/controller/master()
 	catch
@@ -178,7 +160,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be offlined."
 				BadBoy.flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, span_boldannounce("[msg]"))
+			to_chat(GLOB.admins, "<span class='boldannounce'>[msg]</span>")
 			log_world(msg)
 
 	if (istype(Master.subsystems))
@@ -188,7 +170,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		current_runlevel = Master.current_runlevel
 		StartProcessing(10)
 	else
-		to_chat(world, span_boldannounce("The Master Controller is having some issues, we will need to re-initialize EVERYTHING"))
+		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
 		Initialize(20, TRUE)
 
 
@@ -203,7 +185,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
-	to_chat(world, span_boldannounce("Initializing subsystems..."))
+	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
@@ -212,7 +194,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Initialize subsystems.
 	current_ticklimit = CONFIG_GET(number/tick_limit_mc_init)
 	for (var/datum/controller/subsystem/SS in subsystems)
-		if (SS.flags & SS_NO_INIT || SS.initialized) //Don't init SSs with the correspondig flag or if they already are initialzized
+		if (SS.flags & SS_NO_INIT)
 			continue
 		SS.Initialize(REALTIMEOFDAY)
 		CHECK_TICK
@@ -220,7 +202,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
 	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
-	to_chat(world, span_boldannounce("[msg]"))
+	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 	log_world(msg)
 
 	if (!current_runlevel)
@@ -449,10 +431,6 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			continue
 		if ((SS_flags & (SS_TICKER|SS_KEEP_TIMING)) == SS_KEEP_TIMING && SS.last_fire + (SS.wait * 0.75) > world.time)
 			continue
-		if (SS.postponed_fires >= 1)
-			SS.postponed_fires--
-			SS.update_nextfire()
-			continue
 		SS.enqueue()
 	. = 1
 
@@ -496,8 +474,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			tick_remaining = TICK_LIMIT_RUNNING - TICK_USAGE
 
 			if (current_tick_budget > 0 && queue_node_priority > 0)
-				//Give the subsystem a precentage of the remaining tick based on the remaning priority
-				tick_precentage = tick_remaining * (queue_node_priority / current_tick_budget)
+				tick_precentage = tick_remaining / (current_tick_budget / queue_node_priority)
 			else
 				tick_precentage = tick_remaining
 
@@ -549,7 +526,14 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			queue_node.last_fire = world.time
 			queue_node.times_fired++
 
-			queue_node.update_nextfire()
+			if (queue_node_flags & SS_TICKER)
+				queue_node.next_fire = world.time + (world.tick_lag * queue_node.wait)
+			else if (queue_node_flags & SS_POST_FIRE_TIMING)
+				queue_node.next_fire = world.time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
+			else if (queue_node_flags & SS_KEEP_TIMING)
+				queue_node.next_fire += queue_node.wait
+			else
+				queue_node.next_fire = queue_node.queued_time + queue_node.wait + (world.tick_lag * (queue_node.tick_overrun/100))
 
 			queue_node.queued_time = 0
 

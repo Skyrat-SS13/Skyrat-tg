@@ -1,17 +1,18 @@
 /datum/element/decal/blood
 
-/datum/element/decal/blood/Attach(datum/target, _icon, _icon_state, _dir, _plane, _layer, _alpha, _color, _smoothing, _cleanable=CLEAN_TYPE_BLOOD, _description, mutable_appearance/_pic)
+/datum/element/decal/blood/Attach(datum/target, _icon, _icon_state, _dir, _cleanable=CLEAN_TYPE_BLOOD, _color, _layer=ABOVE_OBJ_LAYER)
 	if(!isitem(target))
 		return ELEMENT_INCOMPATIBLE
 
 	. = ..()
+
 	RegisterSignal(target, COMSIG_ATOM_GET_EXAMINE_NAME, .proc/get_examine_name, TRUE)
 
 /datum/element/decal/blood/Detach(atom/source)
 	UnregisterSignal(source, COMSIG_ATOM_GET_EXAMINE_NAME)
 	return ..()
 
-/datum/element/decal/blood/generate_appearance(_icon, _icon_state, _dir, _plane, _layer, _color, _alpha, _smoothing, source)
+/datum/element/decal/blood/generate_appearance(_icon, _icon_state, _dir, _layer, _color, _alpha, source)
 	var/obj/item/I = source
 	if(!_icon)
 		_icon = 'icons/effects/blood.dmi'

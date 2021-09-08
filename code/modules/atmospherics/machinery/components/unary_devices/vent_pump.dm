@@ -167,17 +167,12 @@
 	if(!GLOB.air_vent_names[id_tag])
 		// If we do not have a name, assign one.
 		// Produces names like "Port Quarter Solar vent pump hZ2l6".
-		update_name()
+		name = "\proper [vent_area.name] vent pump [id_tag]"
 		GLOB.air_vent_names[id_tag] = name
 
 	vent_area.air_vent_info[id_tag] = signal.data
 
 	radio_connection.post_signal(src, signal, radio_filter_out)
-
-/obj/machinery/atmospherics/components/unary/vent_pump/update_name()
-	..()
-	var/area/vent_area = get_area(src)
-	name = "\proper [vent_area.name] [name] [id_tag]"
 
 
 /obj/machinery/atmospherics/components/unary/vent_pump/atmosinit()
@@ -264,13 +259,13 @@
 	..()
 	if(!I.tool_start_check(user, amount=0))
 		return TRUE
-	to_chat(user, span_notice("You begin welding the vent..."))
+	to_chat(user, "<span class='notice'>You begin welding the vent...</span>")
 	if(I.use_tool(src, user, 20, volume=50))
 		if(!welded)
-			user.visible_message(span_notice("[user] welds the vent shut."), span_notice("You weld the vent shut."), span_hear("You hear welding."))
+			user.visible_message("<span class='notice'>[user] welds the vent shut.</span>", "<span class='notice'>You weld the vent shut.</span>", "<span class='hear'>You hear welding.</span>")
 			welded = TRUE
 		else
-			user.visible_message(span_notice("[user] unwelded the vent."), span_notice("You unweld the vent."), span_hear("You hear welding."))
+			user.visible_message("<span class='notice'>[user] unwelded the vent.</span>", "<span class='notice'>You unweld the vent.</span>", "<span class='hear'>You hear welding.</span>")
 			welded = FALSE
 		update_appearance()
 		pipe_vision_img = image(src, loc, dir = dir)
@@ -282,7 +277,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, span_warning("You cannot unwrench [src], turn it off first!"))
+		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_pump/examine(mob/user)
@@ -297,7 +292,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/attack_alien(mob/user, list/modifiers)
 	if(!welded || !(do_after(user, 20, target = src)))
 		return
-	user.visible_message(span_warning("[user] furiously claws at [src]!"), span_notice("You manage to clear away the stuff blocking the vent."), span_hear("You hear loud scraping noises."))
+	user.visible_message("<span class='warning'>[user] furiously claws at [src]!</span>", "<span class='notice'>You manage to clear away the stuff blocking the vent.</span>", "<span class='hear'>You hear loud scraping noises.</span>")
 	welded = FALSE
 	update_appearance()
 	pipe_vision_img = image(src, loc, dir = dir)
@@ -366,9 +361,9 @@
 	on = TRUE
 	icon_state = "vent_map_siphon_on-3"
 
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxin_output
 	name = "plasma tank output inlet"
-	id_tag = ATMOS_GAS_MONITOR_OUTPUT_PLAS
+	id_tag = ATMOS_GAS_MONITOR_OUTPUT_TOX
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/oxygen_output
 	name = "oxygen tank output inlet"
 	id_tag = ATMOS_GAS_MONITOR_OUTPUT_O2
@@ -436,9 +431,9 @@
 	name = "incinerator chamber output inlet"
 	id_tag = ATMOS_GAS_MONITOR_OUTPUT_INCINERATOR
 	frequency = FREQ_ATMOS_CONTROL
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/ordnance_mixing_output
-	name = "ordnance mixing output inlet"
-	id_tag = ATMOS_GAS_MONITOR_OUTPUT_ORDNANCE_LAB
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxins_mixing_output
+	name = "toxins mixing output inlet"
+	id_tag = ATMOS_GAS_MONITOR_OUTPUT_TOXINS_LAB
 	frequency = FREQ_ATMOS_CONTROL
 
 /obj/machinery/atmospherics/components/unary/vent_pump/high_volume/layer2
@@ -490,7 +485,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos
 	frequency = FREQ_ATMOS_STORAGE
 	on = TRUE
-	icon_state = "vent_map_siphon_on-3"
+	icon_state = "vent_map_siphon_on-2"
 
 /obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/atmos/air_output
 	name = "air mix tank output inlet"

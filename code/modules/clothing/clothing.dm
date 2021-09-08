@@ -26,8 +26,6 @@
 
 	var/clothing_flags = NONE
 
-	var/moth_edible = TRUE //Added it because moths were able to eat fucking vibrators. Fucking moths.
-
 	var/can_be_bloody = TRUE
 
 	/// What items can be consumed to repair this clothing (must by an /obj/item/stack)
@@ -120,19 +118,18 @@
 /obj/item/food/clothing/proc/after_eat(mob/eater)
 	var/obj/item/clothing/resolved_clothing = clothing.resolve()
 	if (resolved_clothing)
-		resolved_clothing.take_damage(MOTH_EATING_CLOTHING_DAMAGE, sound_effect = FALSE, damage_flag = CONSUME)
+		resolved_clothing.take_damage(MOTH_EATING_CLOTHING_DAMAGE, sound_effect = FALSE)
 	else
 		qdel(src)
 
 /obj/item/clothing/attack(mob/living/M, mob/living/user, params)
 	if(user.combat_mode || !ismoth(M))
 		return ..()
-	if(moth_edible == TRUE)
-		if(isnull(moth_snack))
-			moth_snack = new
-			moth_snack.name = name
-			moth_snack.clothing = WEAKREF(src)
-		moth_snack.attack(M, user, params)
+	if(isnull(moth_snack))
+		moth_snack = new
+		moth_snack.name = name
+		moth_snack.clothing = WEAKREF(src)
+	moth_snack.attack(M, user, params)
 
 /obj/item/clothing/attackby(obj/item/W, mob/user, params)
 	if(!istype(W, repairable_by))
@@ -149,9 +146,9 @@
 		if(CLOTHING_SHREDDED)
 			var/obj/item/stack/cloth_repair = W
 			if(cloth_repair.amount < 3)
-				to_chat(user, span_warning("You require 3 [cloth_repair.name] to repair [src]."))
+				to_chat(user, "<span class='warning'>You require 3 [cloth_repair.name] to repair [src].</span>")
 				return TRUE
-			to_chat(user, span_notice("You begin fixing the damage to [src] with [cloth_repair]..."))
+			to_chat(user, "<span class='notice'>You begin fixing the damage to [src] with [cloth_repair]...</span>")
 			if(!do_after(user, 6 SECONDS, src) || !cloth_repair.use(3))
 				return TRUE
 			repair(user, params)
@@ -169,8 +166,7 @@
 	damage_by_parts = null
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
-		to_chat(user, span_notice("You fix the damage on [src]."))
-	update_appearance()
+		to_chat(user, "<span class='notice'>You fix the damage on [src].</span>")
 
 /**
  * take_damage_zone() is used for dealing damage to specific bodyparts on a worn piece of clothing, meant to be called from [/obj/item/bodypart/proc/check_woundings_mods]
@@ -219,7 +215,7 @@
 
 	if(iscarbon(loc))
 		var/mob/living/carbon/C = loc
-		C.visible_message(span_danger("The [zone_name] on [C]'s [src.name] is [break_verb] away!"), span_userdanger("The [zone_name] on your [src.name] is [break_verb] away!"), vision_distance = COMBAT_MESSAGE_RANGE)
+		C.visible_message("<span class='danger'>The [zone_name] on [C]'s [src.name] is [break_verb] away!</span>", "<span class='userdanger'>The [zone_name] on your [src.name] is [break_verb] away!</span>", vision_distance = COMBAT_MESSAGE_RANGE)
 		RegisterSignal(C, COMSIG_MOVABLE_MOVED, .proc/bristle, override = TRUE)
 
 	zones_disabled++
@@ -279,7 +275,7 @@
 /obj/item/clothing/examine(mob/user)
 	. = ..()
 	if(damaged_clothes == CLOTHING_SHREDDED)
-		. += span_warning("<b>[p_theyre(TRUE)] completely shredded and require[p_s()] mending before [p_they()] can be worn again!</b>")
+		. += "<span class='warning'><b>[p_theyre(TRUE)] completely shredded and require[p_s()] mending before [p_they()] can be worn again!</b></span>"
 		return
 
 	switch (max_heat_protection_temperature)
@@ -295,11 +291,11 @@
 		var/zone_name = parse_zone(zone)
 		switch(pct_damage_part)
 			if(100 to INFINITY)
-				. += span_warning("<b>The [zone_name] is useless and requires mending!</b>")
+				. += "<span class='warning'><b>The [zone_name] is useless and requires mending!</b></span>"
 			if(60 to 99)
-				. += span_warning("The [zone_name] is heavily shredded!")
+				. += "<span class='warning'>The [zone_name] is heavily shredded!</span>"
 			if(30 to 59)
-				. += span_danger("The [zone_name] is partially shredded.")
+				. += "<span class='danger'>The [zone_name] is partially shredded.</span>"
 
 	var/datum/component/storage/pockets = GetComponent(/datum/component/storage)
 	if(pockets)
@@ -308,12 +304,12 @@
 			how_cool_are_your_threads += "[src]'s storage opens when clicked.\n"
 		else
 			how_cool_are_your_threads += "[src]'s storage opens when dragged to yourself.\n"
-		if (pockets.can_hold?.len) // If pocket type can hold anything, vs only specific itemss
+		if (pockets.can_hold?.len) // If pocket type can hold anything, vs only specific items
 			how_cool_are_your_threads += "[src] can store [pockets.max_items] <a href='?src=[REF(src)];show_valid_pocket_items=1'>item\s</a>.\n"
 		else
 			how_cool_are_your_threads += "[src] can store [pockets.max_items] item\s that are [weightclass2text(pockets.max_w_class)] or smaller.\n"
 		if(pockets.quickdraw)
-			how_cool_are_your_threads += "You can quickly remove an item from [src] using Right-Click.\n"
+			how_cool_are_your_threads += "You can quickly remove an item from [src] using Alt-Click.\n"
 		if(pockets.silent)
 			how_cool_are_your_threads += "Adding or removing items from [src] makes no noise.\n"
 		how_cool_are_your_threads += "</span>"
@@ -346,7 +342,7 @@
 		durability_list += list("ACID" = armor.acid)
 
 	if(LAZYLEN(armor_list) || LAZYLEN(durability_list))
-		. += span_notice("It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.")
+		. += "<span class='notice'>It has a <a href='?src=[REF(src)];list_armor=1'>tag</a> listing its protection classes.</span>"
 
 /obj/item/clothing/Topic(href, href_list)
 	. = ..()
@@ -407,9 +403,9 @@
 	if(isliving(loc)) //It's not important enough to warrant a message if it's not on someone
 		var/mob/living/M = loc
 		if(src in M.get_equipped_items(FALSE))
-			to_chat(M, span_warning("Your [name] start[p_s()] to fall apart!"))
+			to_chat(M, "<span class='warning'>Your [name] start[p_s()] to fall apart!</span>")
 		else
-			to_chat(M, span_warning("[src] start[p_s()] to fall apart!"))
+			to_chat(M, "<span class='warning'>[src] start[p_s()] to fall apart!</span>")
 
 //This mostly exists so subtypes can call appriopriate update icon calls on the wearer.
 /obj/item/clothing/proc/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
@@ -441,7 +437,7 @@ SEE_PIXELS// if an object is located on an unlit area, but some of its pixels ar
 BLIND     // can't see anything
 */
 
-/proc/generate_female_clothing(index, t_color, icon, type)
+/proc/generate_female_clothing(index,t_color,icon,type)
 	var/icon/female_clothing_icon = icon("icon"=icon, "icon_state"=t_color)
 	var/icon/female_s = icon("icon"='icons/mob/clothing/under/masking_helpers.dmi', "icon_state"="[(type == FEMALE_UNIFORM_FULL) ? "female_full" : "female_top"]")
 	female_clothing_icon.Blend(female_s, ICON_MULTIPLY)
@@ -454,12 +450,14 @@ BLIND     // can't see anything
 
 	visor_toggling()
 
-	to_chat(user, span_notice("You adjust \the [src] [up ? "up" : "down"]."))
+	to_chat(user, "<span class='notice'>You adjust \the [src] [up ? "up" : "down"].</span>")
 
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.head_update(src, forced = 1)
-	update_action_buttons()
+	for(var/X in actions)
+		var/datum/action/A = X
+		A.UpdateButtonIcon()
 	return TRUE
 
 /obj/item/clothing/proc/visor_toggling() //handles all the actual toggling of flags
@@ -495,27 +493,17 @@ BLIND     // can't see anything
 		//so the shred survives potential turf change from the explosion.
 		addtimer(CALLBACK_NEW(/obj/effect/decal/cleanable/shreds, list(T, name)), 1)
 		deconstruct(FALSE)
-	if(damage_flag == CONSUME) //This allows for moths to fully consume clothing, rather than damaging it like other sources like brute
-		var/turf/current_position = get_turf(src)
-		new /obj/effect/decal/cleanable/shreds(current_position, name)
-		if(isliving(loc))
-			var/mob/living/possessing_mob = loc
-			possessing_mob.visible_message(span_danger("[src] is consumed until naught but shreds remains!"), span_boldwarning("[src] falls apart into little bits!"))
-		deconstruct(FALSE)
-	//SKYRAT EDIT CHANGE BEGIN
-	//else if(!(damage_flag in list(ACID, FIRE))) - SKYRAT EDIT - ORIGINAL
-	else if(!(damage_flag in list(ACID)))
-	//SKYRAT EDIT CHANGE END
+	else if(!(damage_flag in list(ACID, FIRE)))
 		body_parts_covered = NONE
 		slot_flags = NONE
 		update_clothes_damaged_state(CLOTHING_SHREDDED)
 		if(isliving(loc))
 			var/mob/living/M = loc
-			if(src in M.get_equipped_items(FALSE)) //make sure they were wearing it and not attacking the item in their hands
-				M.visible_message(span_danger("[M]'s [src.name] fall[p_s()] off, [p_theyre()] completely shredded!"), span_warning("<b>Your [src.name] fall[p_s()] off, [p_theyre()] completely shredded!</b>"), vision_distance = COMBAT_MESSAGE_RANGE)
+			if(src in M.get_equipped_items(FALSE)) //make sure they were wearing it and not attacking the item in their hands / eating it if they were a moth.
+				M.visible_message("<span class='danger'>[M]'s [src.name] fall[p_s()] off, [p_theyre()] completely shredded!</span>", "<span class='warning'><b>Your [src.name] fall[p_s()] off, [p_theyre()] completely shredded!</b></span>", vision_distance = COMBAT_MESSAGE_RANGE)
 				M.dropItemToGround(src)
 			else
-				M.visible_message(span_danger("[src] fall[p_s()] apart, completely shredded!"), vision_distance = COMBAT_MESSAGE_RANGE)
+				M.visible_message("<span class='danger'>[src] fall[p_s()] apart, completely shredded!</span>", vision_distance = COMBAT_MESSAGE_RANGE)
 		name = "shredded [initial(name)]" // change the name -after- the message, not before.
 		update_appearance()
 	else
@@ -528,6 +516,6 @@ BLIND     // can't see anything
 	if(!istype(L))
 		return
 	if(prob(0.2))
-		to_chat(L, span_warning("The damaged threads on your [src.name] chafe!"))
+		to_chat(L, "<span class='warning'>The damaged threads on your [src.name] chafe!</span>")
 
 #undef MOTH_EATING_CLOTHING_DAMAGE

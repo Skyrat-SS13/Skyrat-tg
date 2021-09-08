@@ -1,6 +1,4 @@
 //This is the lowest supported version, anything below this is completely obsolete and the entire savefile will be wiped.
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 #define SAVEFILE_VERSION_MIN 32
 
 //This is the current version, anything below this will attempt to update (if it's not obsolete)
@@ -113,18 +111,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			continue // key is unbound and or bound to something
 		var/addedbind = FALSE
 		if(hotkeys)
-			for(var/hotkeytobind in kb.hotkey_keys)
-				if(!length(key_bindings[hotkeytobind]) || hotkeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
+			for(var/hotkeytobind in kb.classic_keys)
+				if(!length(key_bindings[hotkeytobind]))
 					LAZYADD(key_bindings[hotkeytobind], kb.name)
 					addedbind = TRUE
 		else
 			for(var/classickeytobind in kb.classic_keys)
-				if(!length(key_bindings[classickeytobind]) || classickeytobind == "Unbound") //Only bind to the key if nothing else is bound expect for Unbound
+				if(!length(key_bindings[classickeytobind]))
 					LAZYADD(key_bindings[classickeytobind], kb.name)
 					addedbind = TRUE
 		if(!addedbind)
 			notadded += kb
-	save_preferences() //Save the players pref so that new keys that were set to Unbound as default are permanently stored
 	if(length(notadded))
 		addtimer(CALLBACK(src, .proc/announce_conflict, notadded), 5 SECONDS)
 
@@ -133,9 +130,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 					<span class='warningplain'><b>There are new <a href='?_src_=prefs;preference=tab;tab=3'>keybindings</a> that default to keys you've already bound. The new ones will be unbound.</b></span>")
 	for(var/item in notadded)
 		var/datum/keybinding/conflicted = item
-		to_chat(parent, span_danger("[conflicted.category]: [conflicted.full_name] needs updating"))
+		to_chat(parent, "<span class='danger'>[conflicted.category]: [conflicted.full_name] needs updating</span>")
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
-		save_preferences()
 
 
 
@@ -210,9 +206,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["tip_delay"], tip_delay)
 	READ_FILE(S["pda_style"], pda_style)
 	READ_FILE(S["pda_color"], pda_color)
-	READ_FILE(S["darkened_flash"], darkened_flash)
 
-	// OOC commendations
+	// Custom hotkeys
+	READ_FILE(S["key_bindings"], key_bindings)
+	check_keybindings()
+	// hearted
 	READ_FILE(S["hearted_until"], hearted_until)
 	if(hearted_until > world.realtime)
 		hearted = TRUE
@@ -225,10 +223,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(ispath(path)) //whatever typepath fails this check probably doesn't exist anymore
 			parsed_favs += path
 	favorite_outfits = uniqueList(parsed_favs)
-
-	// Custom hotkeys
-	READ_FILE(S["key_bindings"], key_bindings)
-	check_keybindings() // this apparently fails every time and overwrites any unloaded prefs with the default values, so don't load anything after this line or it won't actually save
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -278,7 +272,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	pda_color = sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
-	darkened_flash = sanitize_integer(darkened_flash, FALSE, TRUE, initial(darkened_flash))
 
 	if(needs_update >= 0) //save the updated version
 		var/old_default_slot = default_slot
@@ -357,7 +350,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["hearted_until"], (hearted_until > world.realtime ? hearted_until : null))
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
-	WRITE_FILE(S["darkened_flash"], darkened_flash)
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -616,5 +608,3 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S.ImportText("/",file("[path].txt"))
 
 #endif
-*/
-//SKYRAT EDIT REMOVAL END

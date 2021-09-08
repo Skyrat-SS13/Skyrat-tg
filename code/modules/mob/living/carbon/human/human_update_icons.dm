@@ -52,13 +52,9 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_hair()
 	dna.species.handle_hair(src)
 
-// SKYRAT EDIT REMOVAL - FIXING CUSTOMIZATION(?) (moved to modular)
-/*
 //used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
 /mob/living/carbon/human/proc/update_mutant_bodyparts()
 	dna.species.handle_mutant_bodyparts(src)
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_body()
@@ -100,8 +96,6 @@ There are several things that need to be remembered:
 /* --------------------------------------- */
 //vvvvvv UPDATE_INV PROCS vvvvvv
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/human/update_inv_w_uniform()
 	remove_overlay(UNIFORM_LAYER)
 
@@ -144,19 +138,17 @@ There are several things that need to be remembered:
 
 	apply_overlay(UNIFORM_LAYER)
 	update_mutant_bodyparts()
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_wear_id()
 	remove_overlay(ID_LAYER)
-	//remove_overlay(ID_CARD_LAYER) //SKYRAT EDIT REMOVAL - Ugly ID
+	remove_overlay(ID_CARD_LAYER)
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ID) + 1]
 		inv.update_appearance()
 
-	//var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER] //SKYRAT EDIT REMOVAL - Ugly ID
+	var/mutable_appearance/id_overlay = overlays_standing[ID_LAYER]
 
 	if(wear_id)
 		wear_id.screen_loc = ui_id
@@ -164,8 +156,6 @@ There are several things that need to be remembered:
 			client.screen += wear_id
 		update_observer_view(wear_id)
 
-		//SKYRAT EDIT REMOVAL BEGIN - Ugly ID
-		/*
 		//TODO: add an icon file for ID slot stuff, so it's less snowflakey
 		id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = 'icons/mob/clothing/id.dmi')
 		if(OFFSET_ID in dna.species.offset_features)
@@ -182,13 +172,11 @@ There are several things that need to be remembered:
 				id_card_overlay.pixel_y += dna.species.offset_features[OFFSET_ID][2]
 
 			overlays_standing[ID_CARD_LAYER] = id_card_overlay
-		*/
-		//SKYRAT EDIT REMOVAL END - Ugly ID
 
 	apply_overlay(ID_LAYER)
-	//apply_overlay(ID_CARD_LAYER) //SKYRAT EDIT REMOVAL - Ugly ID
+	apply_overlay(ID_CARD_LAYER)
 
-/*
+
 /mob/living/carbon/human/update_inv_gloves()
 	remove_overlay(GLOVES_LAYER)
 
@@ -220,10 +208,8 @@ There are several things that need to be remembered:
 			gloves_overlay.pixel_y += dna.species.offset_features[OFFSET_GLOVES][2]
 	overlays_standing[GLOVES_LAYER] = gloves_overlay
 	apply_overlay(GLOVES_LAYER)
-*/
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
+
 /mob/living/carbon/human/update_inv_glasses()
 	remove_overlay(GLASSES_LAYER)
 
@@ -250,8 +236,6 @@ There are several things that need to be remembered:
 				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 			overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_ears()
@@ -279,8 +263,6 @@ There are several things that need to be remembered:
 	apply_overlay(EARS_LAYER)
 
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/human/update_inv_shoes()
 	remove_overlay(SHOES_LAYER)
 
@@ -305,8 +287,6 @@ There are several things that need to be remembered:
 		overlays_standing[SHOES_LAYER] = shoes_overlay
 
 	apply_overlay(SHOES_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_s_store()
@@ -365,8 +345,6 @@ There are several things that need to be remembered:
 
 
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/human/update_inv_wear_suit()
 	remove_overlay(SUIT_LAYER)
 
@@ -390,8 +368,6 @@ There are several things that need to be remembered:
 	update_mutant_bodyparts()
 
 	apply_overlay(SUIT_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/human/update_inv_pockets()
@@ -444,20 +420,16 @@ There are several things that need to be remembered:
 	remove_overlay(LEGCUFF_LAYER)
 	clear_alert("legcuffed")
 	if(legcuffed)
-		var/mutable_appearance/legcuff_overlay = mutable_appearance('icons/mob/mob.dmi', "legcuff1", -LEGCUFF_LAYER)
-		if(legcuffed.blocks_emissive)
-			legcuff_overlay.overlays += emissive_blocker(legcuff_overlay.icon, legcuff_overlay.icon_state, alpha = legcuff_overlay.alpha)
-
-		overlays_standing[LEGCUFF_LAYER] = legcuff_overlay
+		overlays_standing[LEGCUFF_LAYER] = mutable_appearance('icons/mob/mob.dmi', "legcuff1", -LEGCUFF_LAYER)
 		apply_overlay(LEGCUFF_LAYER)
 		throw_alert("legcuffed", /atom/movable/screen/alert/restrained/legcuffed, new_master = src.legcuffed)
 
-/proc/wear_female_version(t_color, icon, layer, type, greyscale_colors)
-	var/index = "[t_color]-[greyscale_colors]"
+/proc/wear_female_version(t_color, icon, layer, type)
+	var/index = t_color
 	var/icon/female_clothing_icon = GLOB.female_clothing_icons[index]
 	if(!female_clothing_icon) //Create standing/laying icons if they don't exist
-		generate_female_clothing(index, t_color, icon, type)
-	return mutable_appearance(GLOB.female_clothing_icons[index], layer = -layer)
+		generate_female_clothing(index,t_color,icon,type)
+	return mutable_appearance(GLOB.female_clothing_icons[t_color], layer = -layer)
 
 /mob/living/carbon/human/proc/get_overlays_copy(list/unwantedLayers)
 	var/list/out = new
@@ -527,8 +499,6 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 */
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, femaleuniform = NO_FEMALE_UNIFORM, override_state = null)
 
 	//Find a valid icon_state from variables+arguments
@@ -546,13 +516,13 @@ generate/load female uniform sprites matching all previously decided variables
 
 	var/mutable_appearance/standing
 	if(femaleuniform)
-		standing = wear_female_version(t_state, file2use, layer2use, femaleuniform, greyscale_colors) //should layer2use be in sync with the adjusted value below? needs testing - shiz
+		standing = wear_female_version(t_state,file2use,layer2use,femaleuniform) //should layer2use be in sync with the adjusted value below? needs testing - shiz
 	if(!standing)
 		standing = mutable_appearance(file2use, t_state, -layer2use)
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
-	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use)
+	var/list/worn_overlays = worn_overlays(isinhands, file2use)
 	if(worn_overlays?.len)
 		standing.overlays.Add(worn_overlays)
 
@@ -567,8 +537,6 @@ generate/load female uniform sprites matching all previously decided variables
 	standing.color = color
 
 	return standing
-*/
-//SKYRAT EDIT REMOVAL END
 
 /// Returns offsets used for equipped item overlays in list(px_offset,py_offset) form.
 /obj/item/proc/get_worn_offsets(isinhands)
@@ -604,10 +572,8 @@ generate/load female uniform sprites matching all previously decided variables
 		. += "-coloured-[skin_tone]"
 	else if(dna.species.fixed_mut_color)
 		. += "-coloured-[dna.species.fixed_mut_color]"
-	//else if(dna.features["mcolor"]) - ORIGINAL
-	//	. += "-coloured-[dna.features["mcolor"]]" - ORIGINAL
-	else if(MUTCOLORS in dna.species.species_traits) //SKYRAT EDIT CHANGE - CUSTOMIZATION
-		. += "-coloured-[dna.features["mcolor"]]" //SKYRAT EDIT CHANGE - CUSTOMIZATION
+	else if(dna.features["mcolor"])
+		. += "-coloured-[dna.features["mcolor"]]"
 	else
 		. += "-not_coloured"
 
@@ -616,32 +582,19 @@ generate/load female uniform sprites matching all previously decided variables
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		. += "-[BP.body_zone]"
-		//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
-		/*
 		if(BP.status == BODYPART_ORGANIC)
 			. += "-organic"
 		else
 			. += "-robotic"
-		*/
-		//SKYRAT EDIT REMOVAL END
 		if(BP.use_digitigrade)
 			. += "-digitigrade[BP.use_digitigrade]"
 		if(BP.dmg_overlay_type)
 			. += "-[BP.dmg_overlay_type]"
-
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(BP.organic_render)
-			. += "-OR"
-		//SKYRAT EDIT ADDITION END
-
 		if(HAS_TRAIT(BP, TRAIT_PLASMABURNT))
 			. += "-plasmaburnt"
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"
-
-	if(HAS_TRAIT(src, TRAIT_INVISIBLE_MAN))
-		. += "-invisible"
 
 /mob/living/carbon/human/load_limb_from_cache()
 	..()
@@ -650,7 +603,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 
 /mob/living/carbon/human/proc/update_observer_view(obj/item/I, inventory)
-	if(observers && observers.len)
+	if(observers?.len)
 		for(var/M in observers)
 			var/mob/dead/observe = M
 			if(observe.client && observe.client.eye == src)

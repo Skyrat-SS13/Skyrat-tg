@@ -80,7 +80,7 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 /obj/item/emptysandbag/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/G = W
-		to_chat(user, span_notice("You fill the sandbag."))
+		to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
 		var/obj/item/stack/sheet/mineral/sandbags/I = new /obj/item/stack/sheet/mineral/sandbags(drop_location())
 		qdel(src)
 		if (Adjacent(user) && !issilicon(user))
@@ -147,7 +147,7 @@ GLOBAL_LIST_INIT(uranium_recipes, list ( \
 /*
  * Plasma
  */
-/obj/item/stack/sheet/mineral/plasma//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/mineral/plasma
 	name = "solid plasma"
 	icon_state = "sheet-plasma"
 	inhand_icon_state = "sheet-plasma"
@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT(uranium_recipes, list ( \
 	walltype = /turf/closed/wall/mineral/plasma
 
 /obj/item/stack/sheet/mineral/plasma/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins licking \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] begins licking \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return TOXLOSS//dont you kids know that stuff is toxic?
 
 GLOBAL_LIST_INIT(plasma_recipes, list ( \
@@ -298,9 +298,7 @@ GLOBAL_LIST_INIT(bananium_recipes, list ( \
 GLOBAL_LIST_INIT(titanium_recipes, list ( \
 	new/datum/stack_recipe("titanium tile", /obj/item/stack/tile/mineral/titanium, 1, 4, 20), \
 	new/datum/stack_recipe("shuttle seat", /obj/structure/chair/comfy/shuttle, 2, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("spaceship plating", /obj/item/stack/sheet/spaceship, 1, time = 5), \
 	))
-//(Comment down here because it breaks the list) - SKYRAT EDIT ADDITION: added "spaceship plating" for crafting spaceship walls
 
 /obj/item/stack/sheet/mineral/titanium/get_main_recipes()
 	. = ..()
@@ -327,7 +325,7 @@ GLOBAL_LIST_INIT(titanium_recipes, list ( \
 	point_value = 45
 	material_type = /datum/material/alloy/plastitanium
 	merge_type = /obj/item/stack/sheet/mineral/plastitanium
-	material_flags = NONE
+	material_flags = MATERIAL_NO_EFFECTS
 	walltype = /turf/closed/wall/mineral/plastitanium
 
 GLOBAL_LIST_INIT(plastitanium_recipes, list ( \
@@ -482,8 +480,8 @@ GLOBAL_LIST_INIT(abductor_recipes, list ( \
 //Metal Hydrogen
 GLOBAL_LIST_INIT(metalhydrogen_recipes, list(
 	new /datum/stack_recipe("incomplete servant golem shell", /obj/item/golem_shell/servant, req_amount=20, res_amount=1),
-	new /datum/stack_recipe("ancient armor", /obj/item/clothing/suit/armor/elder_atmosian, req_amount = 5, res_amount = 1),
-	new /datum/stack_recipe("ancient helmet", /obj/item/clothing/head/helmet/elder_atmosian, req_amount = 3, res_amount = 1),
+	new /datum/stack_recipe("ancient armor", /obj/item/clothing/suit/armor/elder_atmosian, req_amount = 8, res_amount = 1),
+	new /datum/stack_recipe("ancient helmet", /obj/item/clothing/head/helmet/elder_atmosian, req_amount = 5, res_amount = 1),
 	new /datum/stack_recipe("metallic hydrogen axe", /obj/item/fireaxe/metal_h2_axe, req_amount = 15, res_amount = 1),
 	))
 

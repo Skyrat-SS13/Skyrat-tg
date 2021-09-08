@@ -161,17 +161,15 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
 
-/* //SKYRAT EDIT CHANGE - OVERRIDDEN BY modular_skyrat/modules/customization/modules/clothing/under/security.dm
 /obj/item/clothing/under/rank/security/head_of_security/parade
 	name = "head of security's parade uniform"
 	desc = "A male head of security's luxury-wear, for special occasions."
 	icon_state = "hos_parade_male"
 	inhand_icon_state = "r_suit"
 	can_adjust = FALSE
-*/
 
 /obj/item/clothing/under/rank/security/head_of_security/parade/female
-	name = "head of security's formal uniform"
+	name = "head of security's parade uniform"
 	desc = "A female head of security's luxury-wear, for special occasions."
 	icon_state = "hos_parade_fem"
 	inhand_icon_state = "r_suit"
@@ -199,13 +197,11 @@
 	name = "prison jumpsuit"
 	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
 	icon_state = "jumpsuit"
-	inhand_icon_state = "jumpsuit"
 	greyscale_colors = "#ff8300"
 	greyscale_config = /datum/greyscale_config/jumpsuit_prison
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn_digi
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -219,11 +215,9 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = null
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	fitted = FEMALE_UNIFORM_TOP
-	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/security/officer/beatcop
 	name = "space police uniform"

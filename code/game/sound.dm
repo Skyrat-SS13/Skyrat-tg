@@ -176,10 +176,8 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 			S.environment = A.sound_environment
 
 		if(use_reverb && S.environment != SOUND_ENVIRONMENT_NONE) //We have reverb, reset our echo setting
-			//S.echo[3] = 0 //Room setting, 0 means normal reverb //ORIGINAL
-			//S.echo[4] = 0 //RoomHF setting, 0 means normal reverb. //ORIGINAL
-			S.echo[3] = -1300 //Room setting, 0 means normal reverb //SKYRAT EDIT CHANGE
-			S.echo[4] = -1300 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
+			S.echo[3] = 0 //Room setting, 0 means normal reverb
+			S.echo[4] = 0 //RoomHF setting, 0 means normal reverb.
 
 	SEND_SOUND(src, S)
 
@@ -215,11 +213,7 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 			if ("shatter")
 				soundin = pick('sound/effects/glassbr1.ogg','sound/effects/glassbr2.ogg','sound/effects/glassbr3.ogg')
 			if ("explosion")
-				soundin = pick(
-					'modular_skyrat/master_files/sound/blackmesa/explosions/explode1.ogg', 'modular_skyrat/master_files/sound/blackmesa/explosions/explode2.ogg',
-					'modular_skyrat/master_files/sound/blackmesa/explosions/explode3.ogg', 'modular_skyrat/master_files/sound/blackmesa/explosions/explode4.ogg',
-					'modular_skyrat/master_files/sound/blackmesa/explosions/explode5.ogg', 'modular_skyrat/master_files/sound/blackmesa/explosions/explode6.ogg',
-					'modular_skyrat/master_files/sound/blackmesa/explosions/explode7.ogg')//soundin = pick('sound/effects/explosion1.ogg','sound/effects/explosion2.ogg') SKYRAT EDIT CHANGE
+				soundin = pick('sound/effects/explosion1.ogg','sound/effects/explosion2.ogg')
 			if ("explosion_creaking")
 				soundin = pick('sound/effects/explosioncreak1.ogg', 'sound/effects/explosioncreak2.ogg')
 			if ("hull_creaking")

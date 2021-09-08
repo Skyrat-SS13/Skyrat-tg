@@ -60,7 +60,6 @@ Contains:
 	name = "officer's beret"
 	desc = "An armored beret commonly used by special operations officers. Uses advanced force field technology to protect the head from space."
 	icon_state = "beret_badge"
-	greyscale_colors = "#972A2A#F2F2F2"
 	dynamic_hair_suffix = "+generic"
 	dynamic_fhair_suffix = "+generic"
 	flags_inv = 0
@@ -283,24 +282,6 @@ Contains:
 	flash_protect = FLASH_PROTECTION_NONE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 100, RAD = 20, FIRE = 50, ACID = 65)
 
-/obj/item/clothing/head/helmet/space/eva/examine(mob/user)
-	. = ..()
-	. += span_notice("You can start constructing a critter sized mecha with a [span_bold("cyborg leg")].")
-
-/obj/item/clothing/head/helmet/space/eva/attackby(obj/item/attacked_with, mob/user, params)
-	. = ..()
-	if(.)
-		return
-	if(!istype(attacked_with, /obj/item/bodypart/l_leg/robot) && !istype(attacked_with, /obj/item/bodypart/r_leg/robot))
-		return
-	if(ismob(loc))
-		user.balloon_alert(user, "drop the helmet first!")
-		return
-	user.balloon_alert(user, "leg attached")
-	new /obj/item/bot_assembly/vim(loc)
-	qdel(attacked_with)
-	qdel(src)
-
 /obj/item/clothing/head/helmet/space/freedom
 	name = "eagle helmet"
 	desc = "An advanced, space-proof helmet. It appears to be modeled after an old-world eagle."
@@ -370,7 +351,6 @@ Contains:
 	icon_state = "hardsuit0-prt"
 	inhand_icon_state = "hardsuit0-prt"
 	hardsuit_type = "prt"
-	mutant_variants = NONE //SKYRAT EDIT ADDITION
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	actions_types = list()
 	resistance_flags = FIRE_PROOF
@@ -451,7 +431,7 @@ Contains:
 
 /obj/item/clothing/head/helmet/space/hardsuit/berserker/examine()
 	. = ..()
-	. += span_notice("Berserk mode is [berserk_charge]% charged.")
+	. += "<span class='notice'>Berserk mode is [berserk_charge]% charged.</span>"
 
 /obj/item/clothing/head/helmet/space/hardsuit/berserker/process(delta_time)
 	. = ..()
@@ -473,11 +453,11 @@ Contains:
 		berserk_value *= PROJECTILE_HIT_MULTIPLIER
 	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, MAX_BERSERK_CHARGE)
 	if(berserk_charge >= MAX_BERSERK_CHARGE)
-		to_chat(owner, span_notice("Berserk mode is fully charged."))
+		to_chat(owner, "<span class='notice'>Berserk mode is fully charged.</span>")
 
 /// Starts berserk, giving the wearer 50 melee armor, doubled attacking speed, NOGUNS trait, adding a color and giving them the berserk movespeed modifier
 /obj/item/clothing/head/helmet/space/hardsuit/berserker/proc/berserk_mode(mob/living/carbon/human/user)
-	to_chat(user, span_warning("You enter berserk mode."))
+	to_chat(user, "<span class='warning'>You enter berserk mode.</span>")
 	playsound(user, 'sound/magic/staff_healing.ogg', 50)
 	user.add_movespeed_modifier(/datum/movespeed_modifier/berserk)
 	user.physiology.armor.melee += BERSERK_MELEE_ARMOR_ADDED
@@ -491,7 +471,7 @@ Contains:
 /obj/item/clothing/head/helmet/space/hardsuit/berserker/proc/end_berserk(mob/living/carbon/human/user)
 	if(!berserk_active)
 		return
-	to_chat(user, span_warning("You exit berserk mode."))
+	to_chat(user, "<span class='warning'>You exit berserk mode.</span>")
 	playsound(user, 'sound/magic/summonitems_generic.ogg', 50)
 	user.remove_movespeed_modifier(/datum/movespeed_modifier/berserk)
 	user.physiology.armor.melee -= BERSERK_MELEE_ARMOR_ADDED
@@ -528,7 +508,7 @@ Contains:
 
 /obj/item/clothing/suit/space/fragile/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!torn && prob(50))
-		to_chat(owner, span_warning("[src] tears from the damage, breaking the air-tight seal!"))
+		to_chat(owner, "<span class='warning'>[src] tears from the damage, breaking the air-tight seal!</span>")
 		clothing_flags &= ~STOPSPRESSUREDAMAGE
 		name = "torn [src]."
 		desc = "A bulky suit meant to protect the user during emergency situations, at least until someone tore a hole in the suit."

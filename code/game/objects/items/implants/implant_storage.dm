@@ -16,7 +16,7 @@
 		for (var/obj/item/I in lostimplant.contents())
 			I.add_mob_blood(implantee)
 		lostimplant.do_quick_empty()
-		implantee.visible_message(span_warning("A bluespace pocket opens around [src] as it exits [implantee], spewing out its contents and rupturing the surrounding tissue!"))
+		implantee.visible_message("<span class='warning'>A bluespace pocket opens around [src] as it exits [implantee], spewing out its contents and rupturing the surrounding tissue!</span>")
 		implantee.apply_damage(20, BRUTE, BODY_ZONE_CHEST)
 		qdel(lostimplant)
 	return ..()
@@ -36,7 +36,5 @@
 	return ..()
 
 /obj/item/implanter/storage
-	name = "implanter" // Skyrat edit , original was implanter (storage)
+	name = "implanter (storage)"
 	imp_type = /obj/item/implant/storage
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A Syndicate implanter used for a storage implant" // Skyrat edit

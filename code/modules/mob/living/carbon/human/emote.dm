@@ -44,7 +44,6 @@
 	message = "mumbles!"
 	emote_type = EMOTE_AUDIBLE
 
-
 /datum/emote/living/carbon/human/scream
 	key = "scream"
 	key_third_person = "screams"
@@ -54,7 +53,6 @@
 	only_forced_audio = TRUE
 	vary = TRUE
 
-/* - SKYRAT EDIT REMOVAL: EMOTES
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
@@ -82,7 +80,6 @@
 					'sound/creatures/monkey/monkey_screech_5.ogg',
 					'sound/creatures/monkey/monkey_screech_6.ogg',
 					'sound/creatures/monkey/monkey_screech_7.ogg')
-*/
 
 /datum/emote/living/carbon/human/scream/screech //If a human tries to screech it'll just scream.
 	key = "screech"
@@ -125,8 +122,7 @@
 	var/mob/living/carbon/human/H = user
 	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
 		return
-	//if(!H.dna.species.is_wagging_tail()) - ORIGINAL
-	if(!H.dna.species.is_wagging_tail(H)) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+	if(!H.dna.species.is_wagging_tail())
 		H.dna.species.start_wagging_tail(H)
 	else
 		H.dna.species.stop_wagging_tail(H)
@@ -142,8 +138,7 @@
 	var/mob/living/carbon/human/H = user
 	if(!H.dna || !H.dna.species)
 		return
-	//if(H.dna.species.is_wagging_tail()) - ORIGINAL
-	if(H.dna.species.is_wagging_tail(H)) //SKYRAT EDIT CHANGE - CUSTOMIZATION
+	if(H.dna.species.is_wagging_tail())
 		. = null
 
 /datum/emote/living/carbon/human/wing
@@ -192,7 +187,7 @@
 	update_body()
 	if(isturf(loc))
 		var/turf/T = loc
-		T.Entered(src, null)
+		T.Entered(src)
 
 //Ayy lmao
 

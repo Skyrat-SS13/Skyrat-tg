@@ -163,7 +163,7 @@
 	if(!iscarbon(user))
 		return
 	var/mob/living/carbon/jedi = user
-	to_chat(jedi, span_userdanger("That was a shockingly dumb idea."))
+	to_chat(jedi, "<span class='userdanger'>That was a shockingly dumb idea.</span>")
 	var/obj/item/organ/brain/rip_u = locate(/obj/item/organ/brain) in jedi.internal_organs
 	jedi.ghostize(jedi)
 	if(rip_u)
@@ -212,20 +212,11 @@
 	*/
 	var/atom/closest_atom
 	var/closest_type = 0
-	var/static/list/things_to_shock = typecacheof(list(/obj/machinery, /mob/living, /obj/structure, /obj/vehicle/ridden))
-	var/static/list/blacklisted_tesla_types = typecacheof(list(/obj/machinery/atmospherics,
+	var/static/things_to_shock = typecacheof(list(/obj/machinery, /mob/living, /obj/structure, /obj/vehicle/ridden))
+	var/static/blacklisted_tesla_types = typecacheof(list(/obj/machinery/atmospherics,
 										/obj/machinery/portable_atmospherics,
 										/obj/machinery/power/emitter,
 										/obj/machinery/field/generator,
-										//SKYRAT EDIT ADDITION BEGIN
-										/obj/machinery/particle_accelerator/control_box,
-										/obj/structure/particle_accelerator/fuel_chamber,
-										/obj/structure/particle_accelerator/particle_emitter/center,
-										/obj/structure/particle_accelerator/particle_emitter/left,
-										/obj/structure/particle_accelerator/particle_emitter/right,
-										/obj/structure/particle_accelerator/power_box,
-										/obj/structure/particle_accelerator/end_cap,
-										//SKYRAT EDIT END
 										/mob/living/simple_animal,
 										/obj/machinery/field/containment,
 										/obj/structure/disposalpipe,

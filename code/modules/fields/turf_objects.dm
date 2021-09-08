@@ -23,10 +23,10 @@
 	name = "energy field"
 	desc = "Get off my turf!"
 
-/obj/effect/abstract/proximity_checker/advanced/field_turf/CanAllowThrough(atom/movable/mover, border_dir)
+/obj/effect/abstract/proximity_checker/advanced/field_turf/CanAllowThrough(atom/movable/AM, turf/target)
 	. = ..()
 	if(parent)
-		return parent.field_turf_canpass(mover, src, border_dir)
+		return parent.field_turf_canpass(AM, src, target)
 
 /obj/effect/abstract/proximity_checker/advanced/field_turf/on_entered(datum/source, atom/movable/AM)
 	. = ..()
@@ -34,20 +34,20 @@
 		return parent.field_turf_crossed(AM, src)
 	return TRUE
 
-/obj/effect/abstract/proximity_checker/advanced/field_turf/on_uncrossed(datum/source, atom/movable/gone, direction)
+/obj/effect/abstract/proximity_checker/advanced/field_turf/on_uncrossed(datum/source, atom/movable/AM)
 	. = ..()
 	if(parent)
-		return parent.field_turf_uncrossed(gone, src)
+		return parent.field_turf_uncrossed(AM, src)
 	return TRUE
 
 /obj/effect/abstract/proximity_checker/advanced/field_edge
 	name = "energy field edge"
 	desc = "Edgy description here."
 
-/obj/effect/abstract/proximity_checker/advanced/field_edge/CanAllowThrough(atom/movable/mover, border_dir)
+/obj/effect/abstract/proximity_checker/advanced/field_edge/CanAllowThrough(atom/movable/AM, turf/target)
 	. = ..()
 	if(parent)
-		return parent.field_edge_canpass(mover, src, border_dir)
+		return parent.field_edge_canpass(AM, src, target)
 
 /obj/effect/abstract/proximity_checker/advanced/field_edge/on_entered(datum/source, atom/movable/AM)
 	. = ..()
@@ -55,9 +55,9 @@
 		return parent.field_edge_crossed(AM, src)
 	return TRUE
 
-/obj/effect/abstract/proximity_checker/advanced/field_edge/on_uncrossed(datum/source, atom/movable/gone, direction)
+/obj/effect/abstract/proximity_checker/advanced/field_edge/on_uncrossed(datum/source, atom/movable/AM)
 	if(parent)
-		return parent.field_edge_uncrossed(gone, src)
+		return parent.field_edge_uncrossed(AM, src)
 	return TRUE
 
 /proc/is_turf_in_field(turf/T, datum/proximity_monitor/advanced/F) //Looking for ways to optimize this!

@@ -13,20 +13,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - name: Restore SpacemanDMM cache
+      - name: Setup cache
         uses: actions/cache@v2
         with:
-          path: ~/SpacemanDMM
-          key: ${{ runner.os }}-spacemandmm-${{ secrets.CACHE_PURGE_KEY }}
-      - name: Restore Yarn cache
-        uses: actions/cache@v2
-        with:
-          path: tgui/.yarn/cache
-          key: ${{ runner.os }}-yarn-${{ secrets.CACHE_PURGE_KEY }}-${{ hashFiles('tgui/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ secrets.CACHE_PURGE_KEY }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          path: $HOME/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm
       - name: Install Tools
         run: |
           pip3 install setuptools
@@ -37,9 +28,11 @@ jobs:
         run: |
           bash tools/ci/check_filedirs.sh tgstation.dme
           bash tools/ci/check_changelogs.sh
+          find . -name "*.php" -print0 | xargs -0 -n1 php -l
+          find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python3 ./tools/json_verifier.py
+          tgui/bin/tgui --lint
+          tgui/bin/tgui --test
           bash tools/ci/check_grep.sh
-          bash tools/ci/check_misc.sh
-          tools/build/build --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
@@ -55,16 +48,19 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - name: Restore BYOND cache
+      - name: Setup cache
         uses: actions/cache@v2
         with:
-          path: ~/BYOND
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+          path: $HOME/BYOND
+          key: ${{ runner.os }}-byond
       - name: Compile All Maps
         run: |
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
+          python3 tools/ci/template_dm_generator.py
+          tools/build/build
+        env:
+          CBT_BUILD_MODE : ALL_MAPS
 
   run_all_tests:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
@@ -80,11 +76,11 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v2
-      - name: Restore BYOND cache
+      - name: Setup cache
         uses: actions/cache@v2
         with:
-          path: ~/BYOND
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+          path: $HOME/BYOND
+          key: ${{ runner.os }}-byond
       - name: Setup database
         run: |
           sudo systemctl start mysql
@@ -102,8 +98,10 @@ jobs:
         run: |
           bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build --ci dm -DCIBUILDING
+          tools/build/build
           bash tools/ci/run_server.sh
+        env:
+          CBT_BUILD_MODE: TEST_RUN
 
   test_windows:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
@@ -111,15 +109,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Restore Yarn cache
-        uses: actions/cache@v2
-        with:
-          path: tgui/.yarn/cache
-          key: ${{ runner.os }}-yarn-${{ secrets.CACHE_PURGE_KEY }}-${{ hashFiles('tgui/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ secrets.CACHE_PURGE_KEY }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
       - name: Compile
         run: pwsh tools/ci/build.ps1
         env:

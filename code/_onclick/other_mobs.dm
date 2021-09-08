@@ -23,10 +23,10 @@
 	if(!has_active_hand()) //can't attack without a hand.
 		var/obj/item/bodypart/check_arm = get_active_hand()
 		if(check_arm?.bodypart_disabled)
-			to_chat(src, span_warning("Your [check_arm.name] is in no condition to be used."))
+			to_chat(src, "<span class='warning'>Your [check_arm.name] is in no condition to be used.</span>")
 			return
 
-		to_chat(src, span_notice("You look at your arm and sigh."))
+		to_chat(src, "<span class='notice'>You look at your arm and sigh.</span>")
 		return
 
 	// Special glove functions:
@@ -40,7 +40,10 @@
 		return
 	SEND_SIGNAL(src, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, A, proximity_flag, modifiers)
 
-	if(!right_click_attack_chain(A, modifiers) && !dna?.species?.spec_unarmedattack(src, A, modifiers)) //Because species like monkeys dont use attack hand
+	if(dna?.species?.spec_unarmedattack(src, A, modifiers)) //Because species like monkeys dont use attack hand
+		return
+
+	if(!right_click_attack_chain(A, modifiers))
 		A.attack_hand(src, modifiers)
 
 
@@ -57,9 +60,7 @@
 
 /// When the user uses their hand on an item while holding right-click
 /// Returns a SECONDARY_ATTACK_* value.
-/atom/proc/attack_hand_secondary(mob/user, list/modifiers)
-	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND_SECONDARY, user, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+/atom/proc/attack_hand_secondary(mob/user, modifiers)
 	return SECONDARY_ATTACK_CALL_NORMAL
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
@@ -74,7 +75,7 @@
 	if(!user.can_interact_with(src))
 		return FALSE
 	if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !ISADVANCEDTOOLUSER(user))
-		to_chat(user, span_warning("You don't have the dexterity to do this!"))
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return FALSE
 	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED) && user.incapacitated((interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED), !(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB)))
 		return FALSE
@@ -131,9 +132,6 @@
 
 /atom/proc/attack_animal(mob/user, list/modifiers)
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_ANIMAL, user)
-
-/atom/proc/attack_basic_mob(mob/user, list/modifiers)
-	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_BASIC_MOB, user)
 
 ///Attacked by monkey
 /atom/proc/attack_paw(mob/user, list/modifiers)

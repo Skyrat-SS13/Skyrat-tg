@@ -36,7 +36,7 @@ effective or pretty fucking useless.
 /obj/item/batterer/attack_self(mob/living/carbon/user, flag = 0, emp = 0)
 	if(!user) return
 	if(times_used >= max_uses)
-		to_chat(user, span_danger("The mind batterer has been burnt out!"))
+		to_chat(user, "<span class='danger'>The mind batterer has been burnt out!</span>")
 		return
 
 	log_combat(user, null, "knocked down people in the area", src)
@@ -45,13 +45,13 @@ effective or pretty fucking useless.
 		if(prob(50))
 
 			M.Paralyze(rand(200,400))
-			to_chat(M, span_userdanger("You feel a tremendous, paralyzing wave flood your mind."))
+			to_chat(M, "<span class='userdanger'>You feel a tremendous, paralyzing wave flood your mind.</span>")
 
 		else
-			to_chat(M, span_userdanger("You feel a sudden, electric jolt travel through your head."))
+			to_chat(M, "<span class='userdanger'>You feel a sudden, electric jolt travel through your head.</span>")
 
 	playsound(src.loc, 'sound/misc/interference.ogg', 50, TRUE)
-	to_chat(user, span_notice("You trigger [src]."))
+	to_chat(user, "<span class='notice'>You trigger [src].</span>")
 	times_used += 1
 	if(times_used >= max_uses)
 		icon_state = "battererburnt"
@@ -69,8 +69,6 @@ effective or pretty fucking useless.
 */
 
 /obj/item/healthanalyzer/rad_laser
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
-	special_desc = "This syndicate-modified health analyzer can emit delayed bursts of radiation to those it scans." //SKYRAT EDIT
 	var/irradiate = TRUE
 	var/stealth = FALSE
 	var/used = FALSE // is it cooling down?
@@ -89,10 +87,10 @@ effective or pretty fucking useless.
 		icon_state = "health1"
 		addtimer(VARSET_CALLBACK(src, used, FALSE), cooldown)
 		addtimer(VARSET_CALLBACK(src, icon_state, "health"), cooldown)
-		to_chat(user, span_warning("Successfully irradiated [M]."))
+		to_chat(user, "<span class='warning'>Successfully irradiated [M].</span>")
 		addtimer(CALLBACK(src, .proc/radiation_aftereffect, M, intensity), (wavelength+(intensity*4))*5)
 	else
-		to_chat(user, span_warning("The radioactive microlaser is still recharging."))
+		to_chat(user, "<span class='warning'>The radioactive microlaser is still recharging.</span>")
 
 /obj/item/healthanalyzer/rad_laser/proc/radiation_aftereffect(mob/living/M, passed_intensity)
 	if(QDELETED(M) || !ishuman(M) || HAS_TRAIT(M, TRAIT_RADIMMUNE))
@@ -215,14 +213,14 @@ effective or pretty fucking useless.
 /obj/item/shadowcloak/proc/Activate(mob/living/carbon/human/user)
 	if(!user)
 		return
-	to_chat(user, span_notice("You activate [src]."))
+	to_chat(user, "<span class='notice'>You activate [src].</span>")
 	src.user = user
 	START_PROCESSING(SSobj, src)
 	old_alpha = user.alpha
 	on = TRUE
 
 /obj/item/shadowcloak/proc/Deactivate()
-	to_chat(user, span_notice("You deactivate [src]."))
+	to_chat(user, "<span class='notice'>You deactivate [src].</span>")
 	STOP_PROCESSING(SSobj, src)
 	if(user)
 		user.alpha = old_alpha
@@ -249,57 +247,20 @@ effective or pretty fucking useless.
 
 
 /obj/item/jammer
-	name = "suspicious transmitter" //SKYRAT CHANGE
-	desc = "A suspicious device vaguely resembling a radio, but without a speaker or microphone." //SKYRAT CHANGE
+	name = "radio jammer"
+	desc = "Device used to disrupt nearby radio communication."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "jammer"
-	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
-	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
-	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
-	var/range = 20 //SKYRAT EDIT CHANGE - ORIGINAL:12
-
-	//SKYRAT EDIT ADDITION BEGIN
-/obj/item/jammer/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/cell, null, CALLBACK(src, .proc/turn_off))
-
-/obj/item/jammer/proc/turn_on()
-	active = TRUE
-	GLOB.active_jammers |= src
-	START_PROCESSING(SSobj, src)
-
-/obj/item/jammer/proc/turn_off()
-	active = FALSE
-	GLOB.active_jammers -= src
-	STOP_PROCESSING(SSobj, src)
-
-/obj/item/jammer/process(delta_time)
-	if(!active)
-		STOP_PROCESSING(SSobj, src)
-		return
-	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
-		turn_off()
-		return
-
-/obj/item/jammer/examine(mob/user)
-	. = ..()
-	. += "[src] is currently [active ? "on" : "off"]."
-	//SKYRAT EDIT END
+	var/range = 12
 
 /obj/item/jammer/attack_self(mob/user)
-	//SKYRAT EDIT ADDITON
-	if(!active && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		return
-	//SKYRAT EDIT END
-	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
+	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>")
 	active = !active
 	if(active)
-		turn_on() //SKYRAT EDIT CHANGE
+		GLOB.active_jammers |= src
 	else
-		turn_off() //SKYRAT EDIT CHANGE
-
-	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") //SKYRAT EDIT MOVE
+		GLOB.active_jammers -= src
 	update_appearance()
 
 /obj/item/storage/toolbox/emergency/turret
@@ -315,8 +276,8 @@ effective or pretty fucking useless.
 
 /obj/item/storage/toolbox/emergency/turret/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WRENCH && user.combat_mode)
-		user.visible_message(span_danger("[user] bashes [src] with [I]!"), \
-			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
+		user.visible_message("<span class='danger'>[user] bashes [src] with [I]!</span>", \
+			"<span class='danger'>You bash [src] with [I]!</span>", null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/turret = new(get_turf(loc))
 		turret.faction = list("[REF(user)]")

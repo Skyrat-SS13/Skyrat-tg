@@ -31,7 +31,7 @@
 
 /datum/component/technointrovert/proc/is_in_whitelist(datum/source, obj/machinery/machine)
 	if(!is_type_in_typecache(machine, whitelist))
-		to_chat(source, span_warning("[replacetext(message, "%TARGET", machine)]"))
+		to_chat(source, "<span class='warning'>[replacetext(message, "%TARGET", machine)]</span>")
 		return FALSE
 	return TRUE
 

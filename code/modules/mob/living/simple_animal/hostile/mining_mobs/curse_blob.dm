@@ -57,8 +57,7 @@
 
 /mob/living/simple_animal/hostile/asteroid/curseblob/proc/check_for_target()
 	if(QDELETED(set_target) || set_target.stat != CONSCIOUS || z != set_target.z)
-		if(!QDELETED(src))
-			qdel(src)
+		qdel(src)
 		return TRUE
 
 /mob/living/simple_animal/hostile/asteroid/curseblob/GiveTarget(new_target)
@@ -73,7 +72,7 @@
 		return
 
 //if it's not our target, we ignore it
-/mob/living/simple_animal/hostile/asteroid/curseblob/CanAllowThrough(atom/movable/mover, border_dir)
+/mob/living/simple_animal/hostile/asteroid/curseblob/CanAllowThrough(atom/movable/mover, turf/target)
 	. = ..()
 	if(mover == set_target)
 		return FALSE

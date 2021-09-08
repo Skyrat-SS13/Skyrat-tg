@@ -1,20 +1,15 @@
 /datum/species/lizard
 	// Reptilian humanoids with scaled skin and tails.
 	name = "Lizardperson"
-	id = SPECIES_LIZARD
+	id = "lizard"
 	say_mod = "hisses"
 	default_color = "00FF00"
-	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAS_FLESH, HAS_BONE)
-	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
-		TRAIT_CAN_USE_FLIGHT_POTION,
-	)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("tail_lizard" = "Smooth", "snout" = "Round", "horns" = "None",
 						"frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
 	mutanttongue = /obj/item/organ/tongue/lizard
-	//mutant_organs = list(/obj/item/organ/tail/lizard) //SKYRAT EDIT REMOVAL - CUSTOMIZATION
+	mutant_organs = list(/obj/item/organ/tail/lizard)
 	coldmod = 1.5
 	heatmod = 0.67
 	payday_modifier = 0.75
@@ -53,9 +48,7 @@
 
 	return randname
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-//I wag in death SKYRAT EDIT - customization
+//I wag in death
 /datum/species/lizard/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
 		stop_wagging_tail(H)
@@ -108,32 +101,26 @@
 		// organ.Insert will qdel any existing organs in the same slot, so
 		// we don't need to manage that.
 		new_tail.Insert(C, TRUE, FALSE)
-*/
-//SKYRAT EDIT REMOVAL END
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/species/lizard/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
 	var/tail = pick(GLOB.tails_list_lizard)
 	human_mob.dna.features["tail_lizard"] = tail
 	mutant_bodyparts["tail_lizard"] = tail
 	human_mob.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
 
 /*
 Lizard subspecies: ASHWALKERS
 */
 /datum/species/lizard/ashwalker
 	name = "Ash Walker"
-	id = SPECIES_LIZARD_ASH
-	limbs_id = SPECIES_LIZARD
+	id = "ashlizard"
+	limbs_id = "lizard"
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE)
-	mutantlungs = /obj/item/organ/lungs/ashwalker
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
+		TRAIT_NOBREATH,
 		TRAIT_VIRUSIMMUNE,
 	)
 	species_language_holder = /datum/language_holder/lizard/ash
@@ -143,8 +130,8 @@ Lizard subspecies: SILVER SCALED
 */
 /datum/species/lizard/silverscale
 	name = "Silver Scale"
-	id = SPECIES_LIZARD_SILVER
-	limbs_id = SPECIES_LIZARD
+	id = "silverlizard"
+	limbs_id = "lizard"
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -154,8 +141,8 @@ Lizard subspecies: SILVER SCALED
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_WINE_TASTER,
 	)
-	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE
-	mutanttongue = /obj/item/organ/tongue/lizard //SKYRAT EDIT CHANGE
+	species_language_holder = /datum/language_holder/lizard/silver
+	mutanttongue = /obj/item/organ/tongue/lizard/silver
 	armor = 10 //very light silvery scales soften blows
 	changesource_flags = MIRROR_BADMIN | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	///stored mutcolor for when we turn back off of a silverscale.

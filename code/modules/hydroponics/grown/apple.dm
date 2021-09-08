@@ -12,7 +12,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
 	icon_grow = "apple-grow"
 	icon_dead = "apple-dead"
-	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/one_bite)
+	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/apple/gold)
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 
@@ -21,6 +21,7 @@
 	name = "apple"
 	desc = "It's a little piece of Eden."
 	icon_state = "apple"
+	bite_consumption_mod = 100 // Always eat apples in one bite
 	foodtypes = FRUIT
 	juice_results = list(/datum/reagent/consumable/applejuice = 0)
 	tastes = list("apple" = 1)
@@ -36,8 +37,7 @@
 	product = /obj/item/food/grown/apple/gold
 	maturation = 10
 	production = 10
-	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	mutatelist = null
+	mutatelist = list()
 	reagents_add = list(/datum/reagent/gold = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 	rarity = 40 // Alchemy!
 

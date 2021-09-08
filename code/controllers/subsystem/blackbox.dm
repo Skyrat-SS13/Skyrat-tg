@@ -42,14 +42,13 @@ SUBSYSTEM_DEF(blackbox)
 		return
 	var/playercount = LAZYLEN(GLOB.player_list)
 	var/admincount = GLOB.admins.len
-	var/datum/db_query/query_record_playercount = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
-		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_name, server_ip, server_port, round_id)
-		VALUES (:playercount, :admincount, :time, :server_name, INET_ATON(:server_ip), :server_port, :round_id)
+	var/datum/db_query/query_record_playercount = SSdbcore.NewQuery({"
+		INSERT INTO [format_table_name("legacy_population")] (playercount, admincount, time, server_ip, server_port, round_id)
+		VALUES (:playercount, :admincount, :time, INET_ATON(:server_ip), :server_port, :round_id)
 	"}, list(
 		"playercount" = playercount,
 		"admincount" = admincount,
 		"time" = SQLtime(),
-		"server_name" = CONFIG_GET(string/serversqlname), // SKYRAT EDIT ADDITION - MULTISERVER
 		"server_ip" = world.internet_address || "0",
 		"server_port" = "[world.port]",
 		"round_id" = GLOB.round_id,
@@ -310,7 +309,8 @@ Versioning
 	if(!L.suiciding && !first_death.len)
 		first_death["name"] = "[(L.real_name == L.name) ? L.real_name : "[L.real_name] as [L.name]"]"
 		first_death["role"] = null
-		first_death["role"] = L.mind.assigned_role.title
+		if(L.mind.assigned_role)
+			first_death["role"] = L.mind.assigned_role
 		first_death["area"] = "[AREACOORD(L)]"
 		first_death["damage"] = "<font color='#FF5555'>[L.getBruteLoss()]</font>/<font color='orange'>[L.getFireLoss()]</font>/<font color='lightgreen'>[L.getToxLoss()]</font>/<font color='lightblue'>[L.getOxyLoss()]</font>/<font color='pink'>[L.getCloneLoss()]</font>"
 		first_death["last_words"] = L.last_words
@@ -318,13 +318,13 @@ Versioning
 	if(!SSdbcore.Connect())
 		return
 
-	var/datum/db_query/query_report_death = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
-		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_name, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, cloneloss, staminaloss, last_words, suicide)
-		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, :server_name, INET_ATON(:internet_address), :port, :round_id, :time, :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :clone, :stamina, :last_words, :suicide)
+	var/datum/db_query/query_report_death = SSdbcore.NewQuery({"
+		INSERT INTO [format_table_name("death")] (pod, x_coord, y_coord, z_coord, mapname, server_ip, server_port, round_id, tod, job, special, name, byondkey, laname, lakey, bruteloss, fireloss, brainloss, oxyloss, toxloss, cloneloss, staminaloss, last_words, suicide)
+		VALUES (:pod, :x_coord, :y_coord, :z_coord, :map, INET_ATON(:internet_address), :port, :round_id, :time, :job, :special, :name, :key, :laname, :lakey, :brute, :fire, :brain, :oxy, :tox, :clone, :stamina, :last_words, :suicide)
 	"}, list(
 		"name" = L.real_name,
 		"key" = L.ckey,
-		"job" = L.mind.assigned_role.title,
+		"job" = L.mind.assigned_role,
 		"special" = L.mind.special_role,
 		"pod" = get_area_name(L, TRUE),
 		"laname" = L.lastattacker,
@@ -342,7 +342,6 @@ Versioning
 		"last_words" = L.last_words,
 		"suicide" = L.suiciding,
 		"map" = SSmapping.config.map_name,
-		"server_name" = CONFIG_GET(string/serversqlname),  // SKYRAT EDIT ADDITION - MULTISERVER
 		"internet_address" = world.internet_address || "0",
 		"port" = "[world.port]",
 		"round_id" = GLOB.round_id,

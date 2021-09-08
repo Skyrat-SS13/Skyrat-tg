@@ -54,67 +54,6 @@ const TARGET_SPECIES_LIST = [
     name: 'Zombie',
     value: 'zombie',
   },
-  //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
-  {
-    name: 'Anthromorph',
-    value: 'mammal',
-  },
-  {
-    name: 'Vox',
-    value: 'vox',
-  },
-  {
-    name: 'Aquatic',
-    value: 'aquatic',
-  },
-  {
-    name: 'Anthromorphic Insect',
-    value: 'insect',
-  },
-  {
-    name: 'Xenomorph',
-    value: 'xeno',
-  },
-  {
-    name: 'Unathi',
-    value: 'unathi',
-  },
-  {
-    name: 'Tajaran',
-    value: 'tajaran',
-  },
-  {
-    name: 'Vulpkanin',
-    value: 'vulpkanin',
-  },
-  {
-    name: 'I.P.C.',
-    value: 'ipc',
-  },
-  {
-    name: 'Synthetic Lizardperson',
-    value: 'synthliz',
-  },
-  {
-    name: 'Synthetic Anthromorph',
-    value: 'synthmammal',
-  },
-  {
-    name: 'Synthetic Human',
-    value: 'synthhuman',
-  },
-];
-
-const TARGET_GENDER_LIST = [
-  {
-    name: 'Male',
-    value: 'male',
-  },
-  {
-    name: 'Female',
-    value: 'female',
-  },
-  //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 ];
 
 const TARGET_NUTRITION_LIST = [
@@ -174,12 +113,10 @@ const SCANNER_GATE_ROUTES = {
     title: 'Scanner Mode: Nutrition',
     component: () => ScannerGateNutrition,
   },
-  //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
-  Gender: {
-    title: 'Scanner Mode: Gender',
-    component: () => ScannerGateGender,
+  Nanites: {
+    title: 'Scanner Mode: Nanites',
+    component: () => ScannerGateNanites,
   },
-  //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 };
 
 const ScannerGateControl = (props, context) => {
@@ -225,13 +162,12 @@ const ScannerGateOff = (props, context) => {
         <Button
           content="Species"
           onClick={() => act('set_mode', { new_mode: 'Species' })} />
-        <Button //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
-          content="Gender"
-          onClick={() => act('set_mode', { new_mode: 'Gender' })}//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-        />
         <Button
           content="Nutrition"
           onClick={() => act('set_mode', { new_mode: 'Nutrition' })} />
+        <Button
+          content="Nanites"
+          onClick={() => act('set_mode', { new_mode: 'Nanites' })} />
       </Box>
     </>
   );
@@ -363,35 +299,34 @@ const ScannerGateNutrition = (props, context) => {
   );
 };
 
-//  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
-const ScannerGateGender = (props, context) => {
+const ScannerGateNanites = (props, context) => {
   const { act, data } = useBackend(context);
-  const { reverse, target_gender } = data;
-  const gender = TARGET_GENDER_LIST.find(gender => {
-    return gender.value === target_gender;
-  });
+  const { reverse, nanite_cloud } = data;
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned is {reverse ? 'not' : ''}
-        {' '}a {gender.name}.
+        Trigger if the person scanned {reverse ? 'does not have' : 'has'}
+        {' '}nanite cloud {nanite_cloud}.
       </Box>
       <Box mb={2}>
-        {TARGET_GENDER_LIST.map(gender => (
-          <Button.Checkbox
-            key={gender.name}
-            checked={gender.value === target_gender}
-            content={gender.name}
-            onClick={() => act('set_target_gender', {
-              new_gender: gender.name,
-            })} />
-        ))}
+        <LabeledList>
+          <LabeledList.Item label="Cloud ID">
+            <NumberInput
+              value={nanite_cloud}
+              width="65px"
+              minValue={1}
+              maxValue={100}
+              stepPixelSize={2}
+              onChange={(e, value) => act('set_nanite_cloud', {
+                new_cloud: value,
+              })} />
+          </LabeledList.Item>
+        </LabeledList>
       </Box>
       <ScannerGateMode />
     </>
   );
 };
-//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
 
 const ScannerGateMode = (props, context) => {
   const { act, data } = useBackend(context);

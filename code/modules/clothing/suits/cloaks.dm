@@ -11,71 +11,43 @@
 	flags_inv = HIDESUITSTORAGE
 
 /obj/item/clothing/neck/cloak/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return(OXYLOSS)
 
 /obj/item/clothing/neck/cloak/hos
 	name = "head of security's cloak"
 	desc = "Worn by Securistan, ruling the station with an iron fist."
 	icon_state = "hoscloak"
-	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/qm
 	name = "quartermaster's cloak"
 	desc = "Worn by Cargonia, supplying the station with the necessary tools for survival."
-	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/cmo
 	name = "chief medical officer's cloak"
 	desc = "Worn by Meditopia, the valiant men and women keeping pestilence at bay."
 	icon_state = "cmocloak"
-	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/ce
 	name = "chief engineer's cloak"
 	desc = "Worn by Engitopia, wielders of an unlimited power."
 	icon_state = "cecloak"
 	resistance_flags = FIRE_PROOF
-	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/rd
 	name = "research director's cloak"
 	desc = "Worn by Sciencia, thaumaturges and researchers of the universe."
 	icon_state = "rdcloak"
-	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/cap
 	name = "captain's cloak"
 	desc = "Worn by the commander of Space Station 13."
 	icon_state = "capcloak"
-	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/neck/cloak/hop
 	name = "head of personnel's cloak"
 	desc = "Worn by the Head of Personnel. It smells faintly of bureaucracy."
 	icon_state = "hopcloak"
-	// SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/goliath
 	name = "goliath cloak"
@@ -85,9 +57,6 @@
 	armor = list(MELEE = 35, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 60, ACID = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/goliath
 	body_parts_covered = CHEST|GROIN|ARMS
-	//SKYRAT ADDITION START -GOLIATH CLOAK EDIT
-	cold_protection = CHEST|GROIN|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/head/hooded/cloakhood/goliath
 	name = "goliath cloak hood"
@@ -97,16 +66,13 @@
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	transparent_protection = HIDEMASK
-	cold_protection = CHEST|GROIN|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	//SKYRAT ADDITION END
 
 /obj/item/clothing/suit/hooded/cloak/drake
 	name = "drake armour"
 	icon_state = "dragon"
 	desc = "A suit of armour fashioned from the remains of an ash drake."
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/spear)
-	armor = list(MELEE = 65, BULLET = 15, LASER = 40, ENERGY = 40, BOMB = 70, BIO = 60, RAD = 50, FIRE = 100, ACID = 100)
+	armor = list(MELEE = 70, BULLET = 30, LASER = 50, ENERGY = 50, BOMB = 70, BIO = 60, RAD = 50, FIRE = 100, ACID = 100)
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/drake
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -120,7 +86,7 @@
 	name = "drake helm"
 	icon_state = "dragon"
 	desc = "The skull of a dragon."
-	armor = list(MELEE = 65, BULLET = 15, LASER = 40, ENERGY = 40, BOMB = 70, BIO = 60, RAD = 50, FIRE = 100, ACID = 100)
+	armor = list(MELEE = 70, BULLET = 30, LASER = 50, ENERGY = 50, BOMB = 70, BIO = 60, RAD = 50, FIRE = 100, ACID = 100)
 	clothing_flags = SNUG_FIT
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
@@ -133,7 +99,7 @@
 	icon_state = "godslayer"
 	desc = "A suit of armour fashioned from the remnants of a knight's armor, and parts of a wendigo."
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe, /obj/item/spear)
-	armor = list(MELEE = 50, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 50, BIO = 50, RAD = 100, FIRE = 100, ACID = 100)
+	armor = list("melee" = 50, "bullet" = 25, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 50, "rad" = 100, "fire" = 100, "acid" = 100)
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
 	hoodtype = /obj/item/clothing/head/hooded/cloakhood/godslayer
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -155,7 +121,7 @@
 	name = "godslayer helm"
 	icon_state = "godslayer"
 	desc = "The horns and skull of a wendigo, held together by the remaining icey energy of a demonic miner."
-	armor = list(MELEE = 50, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 50, BIO = 50, RAD = 100, FIRE = 100, ACID = 100)
+	armor = list("melee" = 50, "bullet" = 25, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 50, "rad" = 100, "fire" = 100, "acid" = 100)
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
@@ -175,17 +141,17 @@
 	if(slot & ITEM_SLOT_OCLOTHING)
 		RegisterSignal(user, COMSIG_MOB_STATCHANGE, .proc/resurrect)
 		return
-	UnregisterSignal(user, COMSIG_MOB_STATCHANGE)
+	UnregisterSignal(user, COMSIG_MOB_STATCHANGE, .proc/resurrect)
 
 /obj/item/clothing/suit/hooded/cloak/godslayer/dropped(mob/user)
 	..()
-	UnregisterSignal(user, COMSIG_MOB_STATCHANGE)
+	UnregisterSignal(user, COMSIG_MOB_STATCHANGE, .proc/resurrect)
 
 /obj/item/clothing/suit/hooded/cloak/godslayer/proc/resurrect(mob/living/carbon/user, new_stat)
 	SIGNAL_HANDLER
 	if(new_stat > CONSCIOUS && new_stat < DEAD && COOLDOWN_FINISHED(src, effect_cooldown))
 		user.heal_ordered_damage(heal_amount, damage_heal_order)
-		user.visible_message(span_notice("[user] suddenly revives, as their armor swirls with demonic energy!"), span_notice("You suddenly feel invigorated!"))
+		user.visible_message("<span class='notice'>[user] suddenly revives, as their armor swirls with demonic energy!</span>", "<span class='notice'>You suddenly feel invigorated!</span>")
 		playsound(user.loc, 'sound/magic/clockwork/ratvar_attack.ogg', 50)
 		COOLDOWN_START(src, effect_cooldown, effect_cooldown_time)
 
@@ -195,7 +161,7 @@
 
 /obj/item/clothing/neck/cloak/skill_reward/examine(mob/user)
 	. = ..()
-	. += span_notice("You notice a powerful aura about this cloak, suggesting that only the truly experienced may wield it.")
+	. += "<span class='notice'>You notice a powerful aura about this cloak, suggesting that only the truly experienced may wield it.</span>"
 
 /obj/item/clothing/neck/cloak/skill_reward/proc/check_wearable(mob/user)
 	return user.mind?.get_skill_level(associated_skill_path) < SKILL_LEVEL_LEGENDARY

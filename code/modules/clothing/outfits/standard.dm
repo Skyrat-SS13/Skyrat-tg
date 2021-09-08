@@ -125,9 +125,6 @@
 	head = /obj/item/clothing/head/bandana/armored
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 
-	back = /obj/item/storage/backpack/satchel/leather //SKYRAT EDIT ADDITION
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/m1911, /obj/item/ammo_box/magazine/m45 = 3) //SKYRAT EDIT ADDITION
-
 /datum/outfit/pirate/post_equip(mob/living/carbon/human/equipped)
 	equipped.faction |= "pirate"
 
@@ -156,9 +153,6 @@
 	head = /obj/item/clothing/head/helmet/space/pirate/bandana
 	mask = /obj/item/clothing/mask/breath
 
-	back = /obj/item/storage/backpack/satchel/leather //SKYRAT EDIT ADDITION
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/m1911, /obj/item/ammo_box/magazine/m45 = 3) //SKYRAT EDIT ADDITION
-
 /datum/outfit/pirate/space/captain
 	name = "Space Pirate Captain (EVA)"
 
@@ -175,9 +169,6 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/collectable/tophat
 	shoes = /obj/item/clothing/shoes/laceup
-
-	back = /obj/item/storage/backpack/satchel/leather //SKYRAT EDIT ADDITION
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/m1911, /obj/item/ammo_box/magazine/m45 = 3) //SKYRAT EDIT ADDITION
 
 /datum/outfit/pirate/silverscale/captain
 	name = "Silver Scale Captain"
@@ -320,19 +311,19 @@
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
-		/obj/item/spellbook = 1,
 )
 	ears = /obj/item/radio/headset
 	head = /obj/item/clothing/head/wizard
 	shoes = /obj/item/clothing/shoes/sandal/magic
 	r_pocket = /obj/item/teleportation_scroll
 	l_hand = /obj/item/staff
+	r_hand = /obj/item/spellbook
 
 /datum/outfit/wizard/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/spellbook/S = locate() in H.back
+	var/obj/item/spellbook/S = locate() in H.held_items
 	if(S)
 		S.owner = H
 
@@ -342,7 +333,6 @@
 	r_pocket = /obj/item/teleportation_scroll/apprentice
 	r_hand = null
 	l_hand = null
-	backpack_contents = list(/obj/item/storage/box/survival = 1)
 
 /datum/outfit/wizard/red
 	name = "Red Wizard"

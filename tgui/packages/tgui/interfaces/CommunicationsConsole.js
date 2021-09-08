@@ -299,6 +299,7 @@ const PageMain = (props, context) => {
   const {
     alertLevel,
     alertLevelTick,
+    aprilFools,
     callShuttleReasonMinLength,
     canBuyShuttles,
     canMakeAnnouncement,
@@ -399,26 +400,6 @@ const PageMain = (props, context) => {
                 showAlertLevelConfirm={showAlertLevelConfirm}
                 setShowAlertLevelConfirm={setShowAlertLevelConfirm}
               />
-
-              <AlertButton
-                // SKYRAT EDIT ADDTION BEGIN - ALERTS
-                alertLevel="violet"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-              />
-
-              <AlertButton
-                alertLevel="orange"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-              />
-
-              <AlertButton
-                alertLevel="amber"
-                showAlertLevelConfirm={showAlertLevelConfirm}
-                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
-                // SKYRAT EDIT END
-              />
             </Flex.Item>
           </Flex>
         </Section>
@@ -431,6 +412,12 @@ const PageMain = (props, context) => {
             icon="bullhorn"
             content="Make Priority Announcement"
             onClick={() => act("makePriorityAnnouncement")}
+          />}
+
+          {!!aprilFools && !!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Emergency Meeting"
+            onClick={() => act("emergency_meeting")}
           />}
 
           {!!canToggleEmergencyAccess && <Button.Confirm

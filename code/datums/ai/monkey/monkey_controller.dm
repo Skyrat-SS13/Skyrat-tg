@@ -6,9 +6,8 @@ have ways of interacting with a specific mob and control it.
 
 /datum/ai_controller/monkey
 	movement_delay = 0.4 SECONDS
-	planning_subtrees = list(/datum/ai_planning_subtree/monkey_tree)
 	blackboard = list(
-		BB_MONKEY_AGGRESSIVE = FALSE,
+		BB_MONKEY_AGRESSIVE = FALSE,
 		BB_MONKEY_BEST_FORCE_FOUND = 0,
 		BB_MONKEY_ENEMIES = list(),
 		BB_MONKEY_BLACKLISTITEMS = list(),
@@ -21,9 +20,6 @@ have ways of interacting with a specific mob and control it.
 		BB_MONKEY_GUN_WORKED = TRUE,
 		BB_MONKEY_NEXT_HUNGRY = 0
 	)
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
-	)
 
 /datum/ai_controller/monkey/angry
 
@@ -31,7 +27,7 @@ have ways of interacting with a specific mob and control it.
 	. = ..()
 	if(. & AI_CONTROLLER_INCOMPATIBLE)
 		return
-	blackboard[BB_MONKEY_AGGRESSIVE] = TRUE //Angry cunt
+	blackboard[BB_MONKEY_AGRESSIVE] = TRUE //Angry cunt
 
 /datum/ai_controller/monkey/TryPossessPawn(atom/new_pawn)
 	if(!isliving(new_pawn))
@@ -43,8 +39,6 @@ have ways of interacting with a specific mob and control it.
 	RegisterSignal(new_pawn, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
 	RegisterSignal(new_pawn, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
 	RegisterSignal(new_pawn, COMSIG_ATOM_ATTACK_PAW, .proc/on_attack_paw)
-	RegisterSignal(new_pawn, COMSIG_ATOM_ATTACK_ANIMAL, .proc/on_attack_animal)
-	RegisterSignal(new_pawn, COMSIG_MOB_ATTACK_ALIEN, .proc/on_attack_alien)
 	RegisterSignal(new_pawn, COMSIG_ATOM_BULLET_ACT, .proc/on_bullet_act)
 	RegisterSignal(new_pawn, COMSIG_ATOM_HITBY, .proc/on_hitby)
 	RegisterSignal(new_pawn, COMSIG_LIVING_START_PULL, .proc/on_startpulling)
@@ -53,26 +47,19 @@ have ways of interacting with a specific mob and control it.
 	RegisterSignal(new_pawn, COMSIG_CARBON_CUFF_ATTEMPTED, .proc/on_attempt_cuff)
 	RegisterSignal(new_pawn, COMSIG_MOB_MOVESPEED_UPDATED, .proc/update_movespeed)
 	RegisterSignal(new_pawn, COMSIG_FOOD_EATEN, .proc/on_eat)
-
-	AddComponent(/datum/component/connect_loc_behalf, new_pawn, loc_connections)
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, new_pawn, loc_connections)
 	movement_delay = living_pawn.cached_multiplicative_slowdown
 	return ..() //Run parent at end
 
 /datum/ai_controller/monkey/UnpossessPawn(destroy)
 	UnregisterSignal(pawn, list(COMSIG_PARENT_ATTACKBY, COMSIG_ATOM_ATTACK_HAND, COMSIG_ATOM_ATTACK_PAW, COMSIG_ATOM_BULLET_ACT, COMSIG_ATOM_HITBY, COMSIG_LIVING_START_PULL,\
-	COMSIG_LIVING_TRY_SYRINGE, COMSIG_ATOM_HULK_ATTACK, COMSIG_CARBON_CUFF_ATTEMPTED, COMSIG_MOB_MOVESPEED_UPDATED, COMSIG_ATOM_ATTACK_ANIMAL, COMSIG_MOB_ATTACK_ALIEN))
-	qdel(GetComponent(/datum/component/connect_loc_behalf))
+	COMSIG_LIVING_TRY_SYRINGE, COMSIG_ATOM_HULK_ATTACK, COMSIG_CARBON_CUFF_ATTEMPTED, COMSIG_MOB_MOVESPEED_UPDATED))
+	pawn.RemoveElement(/datum/element/connect_loc)
 
 	return ..() //Run parent at end
-
-// Stops sentient monkeys from being knocked over like weak dunces.
-/datum/ai_controller/monkey/on_sentience_gained()
-	. = ..()
-	qdel(GetComponent(/datum/component/connect_loc_behalf))
-
-/datum/ai_controller/monkey/on_sentience_lost()
-	. = ..()
-	AddComponent(/datum/component/connect_loc_behalf, pawn, loc_connections)
 
 /datum/ai_controller/monkey/able_to_run()
 	. = ..()
@@ -80,6 +67,92 @@ have ways of interacting with a specific mob and control it.
 
 	if(IS_DEAD_OR_INCAP(living_pawn))
 		return FALSE
+
+/datum/ai_controller/monkey/SelectBehaviors(delta_time)
+	current_behaviors = list()
+	var/mob/living/living_pawn = pawn
+
+	if(SHOULD_RESIST(living_pawn) && DT_PROB(MONKEY_RESIST_PROB, delta_time))
+		current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/resist) //BRO IM ON FUCKING FIRE BRO
+		return //IM NOT DOING ANYTHING ELSE BUT EXTUINGISH MYSELF, GOOD GOD HAVE MERCY.
+
+	var/list/enemies = blackboard[BB_MONKEY_ENEMIES]
+
+	if(HAS_TRAIT(pawn, TRAIT_PACIFISM)) //Not a pacifist? lets try some combat behavior.
+		return
+
+	var/mob/living/selected_enemy
+	if(length(enemies) || blackboard[BB_MONKEY_AGRESSIVE]) //We have enemies or are pissed
+		var/list/valids = list()
+		for(var/mob/living/possible_enemy in view(MONKEY_ENEMY_VISION, living_pawn))
+			if(possible_enemy == living_pawn || (!enemies[possible_enemy] && (!blackboard[BB_MONKEY_AGRESSIVE] || HAS_AI_CONTROLLER_TYPE(possible_enemy, /datum/ai_controller/monkey)))) //Are they an enemy? (And do we even care?)
+				continue
+			// Weighted list, so the closer they are the more likely they are to be chosen as the enemy
+			valids[possible_enemy] = CEILING(100 / (get_dist(living_pawn, possible_enemy) || 1), 1)
+
+		selected_enemy = pickweight(valids)
+
+		if(selected_enemy)
+			if(!selected_enemy.stat) //He's up, get him!
+				if(living_pawn.health < MONKEY_FLEE_HEALTH) //Time to skeddadle
+					blackboard[BB_MONKEY_CURRENT_ATTACK_TARGET] = selected_enemy
+					current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/monkey_flee)
+					return //I'm running fuck you guys
+
+				if(TryFindWeapon()) //Getting a weapon is higher priority if im not fleeing.
+					return
+
+				blackboard[BB_MONKEY_CURRENT_ATTACK_TARGET] = selected_enemy
+				current_movement_target = selected_enemy
+				if(blackboard[BB_MONKEY_RECRUIT_COOLDOWN] < world.time)
+					current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/recruit_monkeys)
+				current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/battle_screech/monkey)
+				current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/monkey_attack_mob)
+				return //Focus on this
+
+			else //He's down, can we disposal him?
+				var/obj/machinery/disposal/bodyDisposal = locate(/obj/machinery/disposal/) in view(MONKEY_ENEMY_VISION, living_pawn)
+				if(bodyDisposal)
+					blackboard[BB_MONKEY_CURRENT_ATTACK_TARGET] = selected_enemy
+					blackboard[BB_MONKEY_TARGET_DISPOSAL] = bodyDisposal
+					current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/disposal_mob)
+					return
+
+	if(prob(5))
+		current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/use_in_hand)
+
+	if(selected_enemy || !DT_PROB(MONKEY_SHENANIGAN_PROB, delta_time))
+		return
+
+	if(world.time >= blackboard[BB_MONKEY_NEXT_HUNGRY] && TryFindFood())
+		return
+
+	if(prob(50))
+		var/list/possible_targets = list()
+		for(var/atom/thing in view(2, living_pawn))
+			if(!thing.mouse_opacity)
+				continue
+			if(thing.IsObscured())
+				continue
+			possible_targets += thing
+		var/atom/target = pick(possible_targets)
+		if(target)
+			current_movement_target = target
+			current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/use_on_object)
+			return
+
+	if(prob(5) && (locate(/obj/item) in living_pawn.held_items))
+		var/list/possible_receivers = list()
+		for(var/mob/living/candidate in oview(2, pawn))
+			possible_receivers += candidate
+
+		if(length(possible_receivers))
+			var/mob/living/target = pick(possible_receivers)
+			current_movement_target = target
+			current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/give)
+			return
+
+	TryFindWeapon()
 
 ///re-used behavior pattern by monkeys for finding a weapon
 /datum/ai_controller/monkey/proc/TryFindWeapon()
@@ -113,9 +186,9 @@ have ways of interacting with a specific mob and control it.
 	blackboard[BB_MONKEY_PICKUPTARGET] = weapon
 	current_movement_target = weapon
 	if(pickpocket)
-		queue_behavior(/datum/ai_behavior/monkey_equip/pickpocket)
+		current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/monkey_equip/pickpocket)
 	else
-		queue_behavior(/datum/ai_behavior/monkey_equip/ground)
+		current_behaviors += GET_AI_BEHAVIOR(/datum/ai_behavior/monkey_equip/ground)
 	return TRUE
 
 /// Returns either the best weapon from the given choices or null if held weapons are better
@@ -150,6 +223,33 @@ have ways of interacting with a specific mob and control it.
 
 	return top_force_item
 
+/datum/ai_controller/monkey/proc/TryFindFood()
+	. = FALSE
+	var/mob/living/living_pawn = pawn
+
+	// Held items
+
+	var/list/food_candidates = list()
+	for(var/obj/item as anything in living_pawn.held_items)
+		if(!item || !IsEdible(item))
+			continue
+		food_candidates += item
+
+	for(var/obj/item/candidate in oview(2, living_pawn))
+		if(!IsEdible(candidate))
+			continue
+		food_candidates += candidate
+
+	if(length(food_candidates))
+		var/obj/item/best_held = GetBestWeapon(null, living_pawn.held_items)
+		for(var/obj/item/held as anything in living_pawn.held_items)
+			if(!held || held == best_held)
+				continue
+			living_pawn.dropItemToGround(held)
+
+		AddBehavior(/datum/ai_behavior/consume, pick(food_candidates))
+		return TRUE
+
 /datum/ai_controller/monkey/proc/IsEdible(obj/item/thing)
 	if(IS_EDIBLE(thing))
 		return TRUE
@@ -181,25 +281,16 @@ have ways of interacting with a specific mob and control it.
 	if(I.force && I.damtype != STAMINA)
 		retaliate(user)
 
-/datum/ai_controller/monkey/proc/on_attack_hand(datum/source, mob/living/user)
+/datum/ai_controller/monkey/proc/on_attack_hand(datum/source, mob/living/L)
 	SIGNAL_HANDLER
 	if(prob(MONKEY_RETALIATE_PROB))
-		retaliate(user)
+		retaliate(L)
 
-/datum/ai_controller/monkey/proc/on_attack_paw(datum/source, mob/living/user)
+
+/datum/ai_controller/monkey/proc/on_attack_paw(datum/source, mob/living/L)
 	SIGNAL_HANDLER
 	if(prob(MONKEY_RETALIATE_PROB))
-		retaliate(user)
-
-/datum/ai_controller/monkey/proc/on_attack_animal(datum/source, mob/living/user)
-	SIGNAL_HANDLER
-	if(user.melee_damage_upper > 0 && prob(MONKEY_RETALIATE_PROB))
-		retaliate(user)
-
-/datum/ai_controller/monkey/proc/on_attack_alien(datum/source, mob/living/user)
-	SIGNAL_HANDLER
-	if(prob(MONKEY_RETALIATE_PROB))
-		retaliate(user)
+		retaliate(L)
 
 /datum/ai_controller/monkey/proc/on_bullet_act(datum/source, obj/projectile/Proj)
 	SIGNAL_HANDLER
@@ -214,16 +305,15 @@ have ways of interacting with a specific mob and control it.
 	if(istype(AM, /obj/item))
 		var/mob/living/living_pawn = pawn
 		var/obj/item/I = AM
-		var/mob/thrown_by = I.thrownby?.resolve()
-		if(I.throwforce < living_pawn.health && ishuman(thrown_by))
-			var/mob/living/carbon/human/H = thrown_by
+		if(I.throwforce < living_pawn.health && ishuman(I.thrownby))
+			var/mob/living/carbon/human/H = I.thrownby
 			retaliate(H)
 
-/datum/ai_controller/monkey/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/datum/ai_controller/monkey/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
 	var/mob/living/living_pawn = pawn
-	if(!IS_DEAD_OR_INCAP(living_pawn) && isliving(arrived))
-		var/mob/living/in_the_way_mob = arrived
+	if(!IS_DEAD_OR_INCAP(living_pawn) && ismob(AM))
+		var/mob/living/in_the_way_mob = AM
 		in_the_way_mob.knockOver(living_pawn)
 		return
 

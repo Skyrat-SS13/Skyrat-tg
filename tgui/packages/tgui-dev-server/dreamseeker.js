@@ -4,12 +4,11 @@
  * @license MIT
  */
 
+import axios from 'axios';
 import { exec } from 'child_process';
+import { createLogger } from 'common/logging.js';
 import { promisify } from 'util';
-import { createLogger } from './logging.js';
-import { require } from './require.js';
 
-const axios = require('axios');
 const logger = createLogger('dreamseeker');
 
 const instanceByPid = new Map();

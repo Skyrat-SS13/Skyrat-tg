@@ -24,47 +24,19 @@
 	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "traitor"
 	hijack_speed = 0.5 //10 seconds per hijack stage by default
-	ui_name = "AntagInfoTraitor"
-	suicide_cry = "FOR THE SYNDICATE!!"
+	var/employer = "The Syndicate"
 	var/give_objectives = TRUE
 	var/should_give_codewords = TRUE
 	var/should_equip = TRUE
-	///give this traitor an uplink?
-	var/give_uplink = TRUE
-	///if TRUE, this traitor will always get hijacking as their final objective
-	var/is_hijacker = FALSE
-
-	///the name of the antag flavor this traitor has.
-	var/employer
-
-	///assoc list of strings set up after employer is given
-	var/list/traitor_flavor
-
-	///reference to the uplink this traitor was given, if they were.
-	var/datum/component/uplink/uplink
 
 	var/datum/contractor_hub/contractor_hub
 
-	///the final objective the traitor has to accomplish, be it escaping, hijacking, or just martyrdom.
-	var/datum/objective/ending_objective
-
 /datum/antagonist/traitor/on_gain()
 	owner.special_role = job_rank
-
-	if(give_uplink)
-		owner.give_uplink(silent = TRUE, antag_datum = src)
-
-	uplink = owner.find_syndicate_uplink()
-
 	if(give_objectives)
 		forge_traitor_objectives()
-		forge_ending_objective()
 
-	var/faction = prob(75) ? FACTION_SYNDICATE : FACTION_NANOTRASEN
-
-	pick_employer(faction)
-
-	traitor_flavor = strings(TRAITOR_FLAVOR_FILE, employer)
+	equip()
 
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
@@ -72,39 +44,25 @@
 
 /datum/antagonist/traitor/on_removal()
 	if(!silent && owner.current)
-		to_chat(owner.current,span_userdanger("You are no longer the [job_rank]!"))
+		to_chat(owner.current,"<span class='userdanger'>You are no longer the [job_rank]!</span>")
 
 	owner.special_role = null
 
 	return ..()
 
-/datum/antagonist/traitor/proc/pick_employer(faction)
-	var/list/possible_employers = list()
-	possible_employers.Add(GLOB.syndicate_employers, GLOB.nanotrasen_employers)
-
-	if(istype(ending_objective, /datum/objective/hijack))
-		possible_employers -= GLOB.normal_employers
-	else //escape or martyrdom
-		possible_employers -= GLOB.hijack_employers
-
-	switch(faction)
-		if(FACTION_SYNDICATE)
-			possible_employers -= GLOB.nanotrasen_employers
-		if(FACTION_NANOTRASEN)
-			possible_employers -= GLOB.syndicate_employers
-	employer = pick(possible_employers)
+/// Simple helper proc that handles equipping the traitor if necessary.
+/datum/antagonist/traitor/proc/equip()
+	if(should_equip)
+		owner.equip_traitor(employer, silent, src)
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
 
-	//SKYRAT EDIT ADDITION - AMBITIONS
-	var/datum/objective/ambitions/objective = new
-	objectives += objective
-	/* SKYRAT EDIT REMOVAL
+	var/is_hijacker = FALSE
 	var/objective_count = 0
 
-	if((GLOB.joined_player_list.len >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
+	if ((GLOB.joined_player_list.len >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
 		is_hijacker = TRUE
 		objective_count++
 
@@ -113,38 +71,15 @@
 	// for(in...to) loops iterate inclusively, so to reach objective_limit we need to loop to objective_limit - 1
 	// This does not give them 1 fewer objectives than intended.
 	for(var/i in objective_count to objective_limit - 1)
-		objectives += forge_single_generic_objective()
-	*/ //SKYRAT EDIT END
+		forge_single_generic_objective()
 
-/**
- * ## forge_ending_objective
- *
- * Forges the endgame objective and adds it to this datum's objective list.
- */
-/datum/antagonist/traitor/proc/forge_ending_objective()
-	return
-	/* SKYRAT EDIT  - AMBITIONS
 	if(is_hijacker)
-		ending_objective = new /datum/objective/hijack
-		ending_objective.owner = owner
+		var/datum/objective/hijack/hijack_objective = new
+		hijack_objective.owner = owner
+		objectives += hijack_objective
 		return
 
-	var/martyr_compatibility = TRUE
-
-	for(var/datum/objective/traitor_objective in objectives)
-		if(!traitor_objective.martyr_compatible)
-			martyr_compatibility = FALSE
-			break
-
-		ending_objective = new /datum/objective/martyr
-		ending_objective.owner = owner
-		objectives += ending_objective
-		return
-
-	ending_objective = new /datum/objective/escape
-	ending_objective.owner = owner
-	objectives += ending_objective
-	*/
+	forge_escape_objective()
 
 /// Forges a single escape objective and adds it to this datum's objective list.
 /datum/antagonist/traitor/proc/forge_escape_objective()
@@ -174,29 +109,39 @@
 			var/datum/objective/destroy/destroy_objective = new
 			destroy_objective.owner = owner
 			destroy_objective.find_target()
-			return destroy_objective
+			objectives += destroy_objective
+			return
 
 		if(prob(MAROON_PROB))
 			var/datum/objective/maroon/maroon_objective = new
 			maroon_objective.owner = owner
 			maroon_objective.find_target()
-			return maroon_objective
+			objectives += maroon_objective
+			return
 
 		var/datum/objective/assassinate/kill_objective = new
 		kill_objective.owner = owner
 		kill_objective.find_target()
-		return kill_objective
+		objectives += kill_objective
+		return
 
-	if(prob(DOWNLOAD_PROB) && !(locate(/datum/objective/download) in objectives) && !(owner.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_SCIENCE))
+	if(prob(DOWNLOAD_PROB) && !(locate(/datum/objective/download) in objectives) && !(owner.assigned_role in list("Research Director", "Scientist", "Roboticist", "Geneticist")))
 		var/datum/objective/download/download_objective = new
 		download_objective.owner = owner
 		download_objective.gen_amount_goal()
-		return download_objective
+		objectives += download_objective
+		return
 
 	var/datum/objective/steal/steal_objective = new
 	steal_objective.owner = owner
 	steal_objective.find_target()
-	return steal_objective
+	objectives += steal_objective
+
+/datum/antagonist/traitor/greet()
+	to_chat(owner.current, "<span class='alertsyndie'>You are the [owner.special_role].</span>")
+	owner.announce_objectives()
+	if(should_give_codewords)
+		give_codewords()
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -216,22 +161,6 @@
 	for(var/datum/component/codeword_hearing/component as anything in datum_owner.GetComponents(/datum/component/codeword_hearing))
 		component.delete_if_from_source(src)
 
-/datum/antagonist/traitor/ui_static_data(mob/user)
-	var/list/data = list()
-	data["phrases"] = jointext(GLOB.syndicate_code_phrase, ", ")
-	data["responses"] = jointext(GLOB.syndicate_code_response, ", ")
-	data["theme"] = traitor_flavor["ui_theme"]
-	data["code"] = uplink?.unlock_code
-	data["intro"] = traitor_flavor["introduction"]
-	data["allies"] = traitor_flavor["allies"]
-	data["goal"] = traitor_flavor["goal"]
-	data["has_uplink"] = uplink ? TRUE : FALSE
-	if(uplink)
-		data["uplink_intro"] = traitor_flavor["uplink"]
-		data["uplink_unlock_info"] = uplink.unlock_text
-	data["objectives"] = get_objectives()
-	return data
-
 /// Outputs this shift's codewords and responses to the antag's chat and copies them to their memory.
 /datum/antagonist/traitor/proc/give_codewords()
 	if(!owner.current)
@@ -243,14 +172,14 @@
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
 	to_chat(traitor_mob, "<U><B>The Syndicate have provided you with the following codewords to identify fellow agents:</B></U>")
-	to_chat(traitor_mob, "<B>Code Phrase</B>: [span_blue("[phrases]")]")
-	to_chat(traitor_mob, "<B>Code Response</B>: [span_red("[responses]")]")
+	to_chat(traitor_mob, "<B>Code Phrase</B>: <span class='blue'>[phrases]</span>")
+	to_chat(traitor_mob, "<B>Code Response</B>: <span class='red'>[responses]</span>")
 
-	antag_memory += "<b>Code Phrase</b>: [span_blue("[phrases]")]<br>"
-	antag_memory += "<b>Code Response</b>: [span_red("[responses]")]<br>"
+	antag_memory += "<b>Code Phrase</b>: <span class='blue'>[phrases]</span><br>"
+	antag_memory += "<b>Code Response</b>: <span class='red'>[responses]</span><br>"
 
 	to_chat(traitor_mob, "Use the codewords during regular conversation to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
-	to_chat(traitor_mob, span_alertwarning("You memorize the codewords, allowing you to recognise them when heard."))
+	to_chat(traitor_mob, "<span class='alertwarning'>You memorize the codewords, allowing you to recognise them when heard.</span>")
 
 /datum/antagonist/traitor/roundend_report()
 	var/list/result = list()
@@ -276,9 +205,9 @@
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
 			if(objective.check_completion())
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
+				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
 			else
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
+				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
 				traitor_won = FALSE
 			count++
 
@@ -297,9 +226,9 @@
 		result += contractor_round_end()
 
 	if(traitor_won)
-		result += span_greentext("The [special_role_text] was successful!")
+		result += "<span class='greentext'>The [special_role_text] was successful!</span>"
 	else
-		result += span_redtext("The [special_role_text] has failed!")
+		result += "<span class='redtext'>The [special_role_text] has failed!</span>"
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
 
 	return result.Join("<br>")
@@ -335,8 +264,8 @@
 		if (completed_contracts > 1)
 			pluralCheck = "contracts"
 
-		result += "Completed [span_greentext("[completed_contracts]")] [pluralCheck] for a total of \
-					[span_greentext("[tc_total] TC")]![contractor_support_unit]<br>"
+		result += "Completed <span class='greentext'>[completed_contracts]</span> [pluralCheck] for a total of \
+					<span class='greentext'>[tc_total] TC</span>![contractor_support_unit]<br>"
 
 	return result
 
@@ -345,9 +274,13 @@
 	var/responses = jointext(GLOB.syndicate_code_response, ", ")
 
 	var/message = "<br><b>The code phrases were:</b> <span class='bluetext'>[phrases]</span><br>\
-					<b>The code responses were:</b> [span_redtext("[responses]")]<br>"
+					<b>The code responses were:</b> <span class='redtext'>[responses]</span><br>"
 
 	return message
+
+
+/datum/antagonist/traitor/is_gamemode_hero()
+	return SSticker.mode.name == "traitor"
 
 #undef HIJACK_PROB
 #undef HIJACK_MIN_PLAYERS

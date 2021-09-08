@@ -37,10 +37,6 @@
 ///Amount of synthflesh required to unhusk someone
 #define SYNTHFLESH_UNHUSK_AMOUNT 100
 
-//SKYRAT EDIT ADD
-///Amount of synthflesh required to unhusk someone
-#define SYNTHFLESH_LING_UNHUSK_AMOUNT 150
-
 //used by chem masters and pill presses
 #define PILL_STYLE_COUNT 22 //Update this if you add more pill icons or you die
 #define RANDOM_PILL_STYLE 22 //Dont change this one though
@@ -176,9 +172,3 @@
 #define GOLDSCHLAGER_GOLD (1)
 
 #define GOLDSCHLAGER_GOLD_RATIO (GOLDSCHLAGER_GOLD/(GOLDSCHLAGER_VODKA+GOLDSCHLAGER_GOLD))
-
-#define BLASTOFF_DANCE_MOVE_CHANCE_PER_UNIT 3
-#define BLASTOFF_DANCE_MOVES_PER_SUPER_MOVE 3
-
-///This is the center of a 1 degree deadband in which water will neither freeze to ice nor melt to liquid
-#define WATER_MATTERSTATE_CHANGE_TEMP 245.5 

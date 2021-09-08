@@ -1,4 +1,4 @@
-/obj/item/stack/telecrystal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/telecrystal
 	name = "telecrystal"
 	desc = "It seems to be pulsing with suspiciously enticing energies."
 	singular_name = "telecrystal"
@@ -18,7 +18,7 @@
 				if(hidden_uplink)
 					hidden_uplink.telecrystals += amount
 					use(amount)
-					to_chat(user, span_notice("You press [src] onto yourself and charge your hidden uplink."))
+					to_chat(user, "<span class='notice'>You press [src] onto yourself and charge your hidden uplink.</span>")
 	else
 		return ..()
 

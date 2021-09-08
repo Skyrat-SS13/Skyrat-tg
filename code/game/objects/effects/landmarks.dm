@@ -64,13 +64,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/prisoner
 	name = "Prisoner"
 	icon_state = "Prisoner"
-	//SKYRAT EDIT: Start - Makes latejoin prisoners spawn in the prison instead of on the interlink.
-	jobspawn_override = TRUE
-	delete_after_roundstart = FALSE
-	//SKYRAT EDIT: End - Makes latejoin prisoners spawn in the prison instead of on the interlink.
-
-/obj/effect/landmark/start/prisoner/after_round_start()
-	return
 
 /obj/effect/landmark/start/janitor
 	name = "Janitor"
@@ -199,10 +192,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
 	icon_state = "Cyborg"
-	//SKYRAT EDIT: Start - Makes latejoin cyborgs spawn in the station instead of on the interlink.
-	jobspawn_override = TRUE
-	delete_after_roundstart = FALSE
-	//SKYRAT EDIT: End - Makes latejoin cyborgs spawn in the station instead of on the interlink.
 
 /obj/effect/landmark/start/ai
 	name = "AI"
@@ -501,19 +490,19 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	if(spawned_carbon.head)
 		return
 
-/obj/effect/landmark/start/hangover/JoinPlayerHere(mob/joining_mob, buckle)
+/obj/effect/landmark/start/hangover/JoinPlayerHere(mob/M, buckle)
 	. = ..()
-	make_hungover(joining_mob)
+	make_hungover(M)
 
 /obj/effect/landmark/start/hangover/closet
 	name = "hangover spawn closet"
 	icon_state = "hangover_spawn_closet"
 
-/obj/effect/landmark/start/hangover/closet/JoinPlayerHere(mob/joining_mob, buckle)
-	make_hungover(joining_mob)
+/obj/effect/landmark/start/hangover/closet/JoinPlayerHere(mob/M, buckle)
+	make_hungover(M)
 	for(var/obj/structure/closet/closet in contents)
 		if(closet.opened)
 			continue
-		joining_mob.forceMove(closet)
+		M.forceMove(closet)
 		return
-	return ..() //Call parent as fallback
+	..() //Call parent as fallback

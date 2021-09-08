@@ -20,7 +20,7 @@
 	canSmoothWith = null
 	smoothing_flags = NONE
 	/// The amount of time it takes to create a venus human trap.
-	var/growth_time = 1 MINUTES //SKYRAT EDIT CHANGE
+	var/growth_time = 120 SECONDS
 	var/growth_icon = 0
 
 	/// Used by countdown to check time, this is when the timer will complete and the venus trap will spawn.
@@ -29,7 +29,6 @@
 	var/obj/effect/countdown/flower_bud/countdown
 
 	var/list/vines = list()
-
 
 /obj/structure/alien/resin/flower_bud/Initialize()
 	. = ..()
@@ -57,7 +56,7 @@
  * Displays a message, spawns a human venus trap, then qdels itself.
  */
 /obj/structure/alien/resin/flower_bud/proc/bear_fruit()
-	visible_message(span_danger("The plant has borne fruit!"))
+	visible_message("<span class='danger'>The plant has borne fruit!</span>")
 	new /mob/living/simple_animal/hostile/venus_human_trap(get_turf(src))
 	qdel(src)
 
@@ -78,7 +77,7 @@
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	AddElement(/datum/element/connect_loc, loc_connections)
+	AddElement(/datum/element/connect_loc, src, loc_connections)
 
 /obj/effect/ebeam/vine/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -86,7 +85,7 @@
 		var/mob/living/L = AM
 		if(!isvineimmune(L))
 			L.adjustBruteLoss(5)
-			to_chat(L, span_alert("You cut yourself on the thorny vines."))
+			to_chat(L, "<span class='alert'>You cut yourself on the thorny vines.</span>")
 
 /**
  * Venus Human Trap
@@ -107,30 +106,28 @@
 	icon_state = "venus_human_trap"
 	health_doll_icon = "venus_human_trap"
 	mob_biotypes = MOB_ORGANIC | MOB_PLANT
-	layer = ABOVE_ALL_MOB_LAYER //SKYRAT EDIT CHANGE Venus should be able to hide within the vines...
-	health = 60 //SKYRAT EDIT CHANGE
-	maxHealth = 60 //SKYRAT EDIT CHANGE
+	layer = SPACEVINE_MOB_LAYER
+	health = 50
+	maxHealth = 50
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
 	melee_damage_lower = 25
 	melee_damage_upper = 25
 	combat_mode = TRUE
-	//del_on_death = TRUE //SKYRAT EDIT REMOVAL
-	flip_on_death = TRUE
+	del_on_death = TRUE
 	deathmessage = "collapses into bits of plant matter."
 	attacked_sound = 'sound/creatures/venus_trap_hurt.ogg'
 	deathsound = 'sound/creatures/venus_trap_death.ogg'
 	attack_sound = 'sound/creatures/venus_trap_hit.ogg'
 	unsuitable_heat_damage = 5 //note that venus human traps do not take cold damage, only heat damage- this is because space vines can cause hull breaches
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 0
 	/// copied over from the code from eyeballs (the mob) to make it easier for venus human traps to see in kudzu that doesn't have the transparency mutation
 	sight = SEE_SELF|SEE_MOBS|SEE_OBJS|SEE_TURFS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	faction = list("hostile","vines","plants")
 	initial_language_holder = /datum/language_holder/venus
-	unique_name = TRUE
 	/// A list of all the plant's vines
 	var/list/vines = list()
 	/// The maximum amount of vines a plant can have at one time
@@ -140,23 +137,9 @@
 	/// Whether or not this plant is ghost possessable
 	var/playable_plant = TRUE
 
-	ghost_controllable = TRUE //SKYRAT EDIT ADDITION
-
-	COOLDOWN_DECLARE(help_grow)
-	COOLDOWN_DECLARE(attack_cooldown)
-
-
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
 	pull_vines()
-	//SKYRAT EDIT CHANGE
-	var/turf/src_turf = get_turf(src)
-	var/obj/structure/spacevine/find_vine = locate() in src_turf.contents
-	if(!find_vine)
-		adjustHealth(maxHealth * 0.05)
-	else
-		adjustHealth(maxHealth * -0.05)
-	//SKYRAT EDIT CHANGE
 
 /mob/living/simple_animal/hostile/venus_human_trap/Moved(atom/OldLoc, Dir)
 	. = ..()
@@ -189,18 +172,18 @@
 	vines += newVine
 	if(isliving(the_target))
 		var/mob/living/L = the_target
-		L.Knockdown(2 SECONDS) //Skyrat EDIT - Removes hardstun, bye!
+		L.Paralyze(20)
 	ranged_cooldown = world.time + ranged_cooldown_time
 
 /mob/living/simple_animal/hostile/venus_human_trap/Login()
 	. = ..()
-	to_chat(src, span_boldwarning("You are a venus human trap!  Protect the kudzu at all costs, and feast on those who oppose you!"))
+	to_chat(src, "<span class='boldwarning'>You are a venus human trap!  Protect the kudzu at all costs, and feast on those who oppose you!</span>")
 
 /mob/living/simple_animal/hostile/venus_human_trap/attack_ghost(mob/user)
 	. = ..()
 	if(. || !(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
 		return
-	//humanize_plant(user) SKYRAT EDIT REMOVAL
+	humanize_plant(user)
 
 /**
  * Sets a ghost to control the plant if the plant is eligible
@@ -217,7 +200,7 @@
 	if(plant_ask == "No" || QDELETED(src))
 		return
 	if(key)
-		to_chat(user, span_warning("Someone else already took this plant!"))
+		to_chat(user, "<span class='warning'>Someone else already took this plant!</span>")
 		return
 	key = user.key
 	log_game("[key_name(src)] took control of [name].")
@@ -247,53 +230,4 @@
  * * datum/beam/vine - The vine to be removed from the list.
  */
 /mob/living/simple_animal/hostile/venus_human_trap/proc/remove_vine(datum/beam/vine)
-	SIGNAL_HANDLER
-
 	vines -= vine
-
-//SKYRAT EDIT ADDITION
-/mob/living/simple_animal/hostile/venus_human_trap/death(gibbed)
-	for(var/i in vines)
-		qdel(i)
-	return ..()
-
-/mob/living/simple_animal/hostile/venus_human_trap/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)
-	if(!istype(attack_target, /obj/structure/spacevine))
-		return ..()
-	if(!proximity_flag)
-		return
-	var/obj/structure/spacevine/attacked_spacevine = attack_target
-	if(COOLDOWN_FINISHED(src, help_grow))
-		COOLDOWN_START(src, help_grow, 1 SECONDS)
-		if(attacked_spacevine.energy >= 2)
-			attacked_spacevine.spread()
-			to_chat(src, span_notice("You help [attacked_spacevine] expand..."))
-		else
-			attacked_spacevine.grow()
-			to_chat(src, span_notice("You help [attacked_spacevine] grow..."))
-	if(!COOLDOWN_FINISHED(src, attack_cooldown))
-		return
-	COOLDOWN_START(src, attack_cooldown, 1 SECONDS)
-	var/turf/vine_turf = get_turf(attack_target)
-	var/static/list/break_list = typecacheof(list(
-		/obj/machinery/door,
-		/obj/structure/table,
-		/obj/structure/window,
-		/obj/structure/girder,
-		/obj/structure/grille,
-		/obj/structure/rack,
-		/obj/structure/door_assembly,
-		/obj/structure/closet,
-	))
-	for(var/check_contents in vine_turf.contents)
-		if(isliving(check_contents) && !istype(check_contents, /mob/living/simple_animal/hostile/venus_human_trap))
-			UnarmedAttack(check_contents)
-		if(is_type_in_typecache(check_contents, break_list))
-			UnarmedAttack(check_contents)
-
-/mob/living/simple_animal/hostile/venus_human_trap/start_pulling(atom/movable/AM, state, force, supress_message)
-	if(isliving(AM))
-		to_chat(src, span_warning("You are unable to pull living creatures, they are too heavy!"))
-		return FALSE
-	return ..()
-//SKYRAT EDIT END

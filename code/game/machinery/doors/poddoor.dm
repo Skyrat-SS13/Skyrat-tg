@@ -1,7 +1,13 @@
+
+//blast door (de)construction states
+#define BLASTDOOR_NEEDS_WIRES 0
+#define BLASTDOOR_NEEDS_ELECTRONICS 1
+#define BLASTDOOR_FINISHED 2
+
 /obj/machinery/door/poddoor
 	name = "blast door"
 	desc = "A heavy duty blast door that opens mechanically."
-	icon = 'icons/obj/doors/blastdoor.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/doors/blastdoor.dmi'
 	icon_state = "closed"
 	var/id = 1
 	layer = BLASTDOOR_LAYER
@@ -22,9 +28,10 @@
 
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
 		if(density)
-			balloon_alert(user, "open the door first!")
+			to_chat(user, "<span class='warning'>You need to open [src] before opening its maintenance panel.</span>")
 			return
 		else if(default_deconstruction_screwdriver(user, icon_state, icon_state, W))
+			to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
 			return TRUE
 
 	if(panel_open)
@@ -32,50 +39,44 @@
 			var/change_id = input("Set the shutters/blast door/blast door controllers ID. It must be a number between 1 and 100.", "ID", id) as num|null
 			if(change_id)
 				id = clamp(round(change_id, 1), 1, 100)
-				to_chat(user, span_notice("You change the ID to [id]."))
-				balloon_alert(user, "ID changed")
+				to_chat(user, "<span class='notice'>You change the ID to [id].</span>")
 
 		else if(W.tool_behaviour == TOOL_CROWBAR && deconstruction == BLASTDOOR_FINISHED)
-			balloon_alert(user, "removing airlock electronics...")
-			if(W.use_tool(src, user, 100, volume=50))
+			to_chat(user, "<span class='notice'>You start to remove the airlock electronics.</span>")
+			if(do_after(user, 10 SECONDS, target = src))
 				new /obj/item/electronics/airlock(loc)
 				id = null
 				deconstruction = BLASTDOOR_NEEDS_ELECTRONICS
-				balloon_alert(user, "removed airlock electronics")
-			return TRUE
 
 		else if(W.tool_behaviour == TOOL_WIRECUTTER && deconstruction == BLASTDOOR_NEEDS_ELECTRONICS)
-			balloon_alert(user, "removing internal cables...")
-			if(W.use_tool(src, user, 100, volume=50))
+			to_chat(user, "<span class='notice'>You start to remove the internal cables.</span>")
+			if(do_after(user, 10 SECONDS, target = src))
 				var/datum/crafting_recipe/recipe = locate(recipe_type) in GLOB.crafting_recipes
 				var/amount = recipe.reqs[/obj/item/stack/cable_coil]
 				new /obj/item/stack/cable_coil(loc, amount)
 				deconstruction = BLASTDOOR_NEEDS_WIRES
-				balloon_alert(user, "removed internal cables")
-			return TRUE
 
 		else if(W.tool_behaviour == TOOL_WELDER && deconstruction == BLASTDOOR_NEEDS_WIRES)
 			if(!W.tool_start_check(user, amount=0))
 				return
 
-			balloon_alert(user, "tearing apart...") //You're tearing me apart, Lisa!
-			if(W.use_tool(src, user, 150, volume=50))
+			to_chat(user, "<span class='notice'>You start tearing apart the [src].</span>")
+			playsound(src.loc, 'sound/items/welder.ogg', 50, 1)
+			if(do_after(user, 15 SECONDS, target = src))
 				var/datum/crafting_recipe/recipe = locate(recipe_type) in GLOB.crafting_recipes
 				var/amount = recipe.reqs[/obj/item/stack/sheet/plasteel]
 				new /obj/item/stack/sheet/plasteel(loc, amount)
-				user.balloon_alert(user, "torn apart")
 				qdel(src)
-			return TRUE
 
 /obj/machinery/door/poddoor/examine(mob/user)
 	. = ..()
 	if(panel_open)
 		if(deconstruction == BLASTDOOR_FINISHED)
-			. += span_notice("The maintenance panel is opened and the electronics could be <b>pried</b> out.")
+			. += "<span class='notice'>The maintenance panel is opened and the electronics could be <b>pried</b> out.</span>"
 		else if(deconstruction == BLASTDOOR_NEEDS_ELECTRONICS)
-			. += span_notice("The <i>electronics</i> are missing and there are some <b>wires</b> sticking out.")
+			. += "<span class='notice'>The <i>electronics</i> are missing and there are some <b>wires</b> sticking out.</span>"
 		else if(deconstruction == BLASTDOOR_NEEDS_WIRES)
-			. += span_notice("The <i>wires</i> have been removed and it's ready to be <b>sliced apart</b>.")
+			. += "<span class='notice'>The <i>wires</i> have been removed and it's ready to be <b>sliced apart</b>.</span>"
 
 /obj/machinery/door/poddoor/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	id = "[port.id]_[id]"
@@ -102,9 +103,9 @@
 	else
 		INVOKE_ASYNC(src, .proc/close)
 
-/obj/machinery/door/poddoor/incinerator_ordmix
+/obj/machinery/door/poddoor/incinerator_toxmix
 	name = "combustion chamber vent"
-	id = INCINERATOR_ORDMIX_VENT
+	id = INCINERATOR_TOXMIX_VENT
 
 /obj/machinery/door/poddoor/incinerator_atmos_main
 	name = "turbine vent"
@@ -130,9 +131,9 @@
 	name = "combustion chamber vent"
 	id = INCINERATOR_SYNDICATELAVA_AUXVENT
 
-/obj/machinery/door/poddoor/massdriver_ordnance
-	name = "Ordnance Launcher Bay Door"
-	id = MASSDRIVER_ORDNANCE
+/obj/machinery/door/poddoor/massdriver_toxins
+	name = "Toxins Launcher Bay Door"
+	id = MASSDRIVER_TOXINS
 
 /obj/machinery/door/poddoor/massdriver_chapel
 	name = "Chapel Launcher Bay Door"
@@ -158,12 +159,10 @@
 	switch(animation)
 		if("opening")
 			flick("opening", src)
-			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
-			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
+			playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE)
 		if("closing")
 			flick("closing", src)
-			//playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE) ORIGINAL
-			playsound(src, door_sound, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
+			playsound(src, 'sound/machines/blastdoor.ogg', 30, TRUE)
 
 /obj/machinery/door/poddoor/update_icon_state()
 	. = ..()
@@ -179,9 +178,9 @@
 /obj/machinery/door/poddoor/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
 	if(density & !(resistance_flags & INDESTRUCTIBLE))
 		add_fingerprint(user)
-		user.visible_message(span_warning("[user] begins prying open [src]."),\
-					span_noticealien("You begin digging your claws into [src] with all your might!"),\
-					span_warning("You hear groaning metal..."))
+		user.visible_message("<span class='warning'>[user] begins prying open [src].</span>",\
+					"<span class='noticealien'>You begin digging your claws into [src] with all your might!</span>",\
+					"<span class='warning'>You hear groaning metal...</span>")
 		playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, TRUE)
 
 		var/time_to_open = 5 SECONDS
@@ -190,7 +189,7 @@
 
 		if(do_after(user, time_to_open, src))
 			if(density && !open(TRUE)) //The airlock is still closed, but something prevented it opening. (Another player noticed and bolted/welded the airlock in time!)
-				to_chat(user, span_warning("Despite your efforts, [src] managed to resist your attempts to open it!"))
+				to_chat(user, "<span class='warning'>Despite your efforts, [src] managed to resist your attempts to open it!</span>")
 
 	else
 		return ..()

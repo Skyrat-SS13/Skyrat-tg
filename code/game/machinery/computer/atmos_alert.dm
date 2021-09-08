@@ -20,11 +20,6 @@
 	return ..()
 
 /obj/machinery/computer/atmos_alert/ui_interact(mob/user, datum/tgui/ui)
-	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
-	if(clicksound && world.time > next_clicksound && isliving(user))
-		next_clicksound = world.time + rand(50, 100)
-		playsound(src, get_sfx_skyrat(clicksound), clickvol)
-	//SKYRAT EDIT END
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosAlertConsole", name)
@@ -51,11 +46,11 @@
 		if("clear")
 			var/zone = params["zone"]
 			if(zone in priority_alarms)
-				to_chat(usr, span_notice("Priority alarm for [zone] cleared."))
+				to_chat(usr, "<span class='notice'>Priority alarm for [zone] cleared.</span>")
 				priority_alarms -= zone
 				. = TRUE
 			if(zone in minor_alarms)
-				to_chat(usr, span_notice("Minor alarm for [zone] cleared."))
+				to_chat(usr, "<span class='notice'>Minor alarm for [zone] cleared.</span>")
 				minor_alarms -= zone
 				. = TRUE
 	update_appearance()

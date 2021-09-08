@@ -26,12 +26,13 @@
 /turf/open/space/transit/east
 	dir = EAST
 
-/turf/open/space/transit/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
-	. = ..()
+/turf/open/space/transit/Entered(atom/movable/AM, atom/OldLoc)
+	..()
 	if(!locate(/obj/structure/lattice) in src)
-		throw_atom(arrived)
+		throw_atom(AM)
 
 /turf/open/space/transit/proc/throw_atom(atom/movable/AM)
+	set waitfor = FALSE
 	if(!AM || istype(AM, /obj/docking_port) || istype(AM, /obj/effect/abstract))
 		return
 	if(AM.loc != src) // Multi-tile objects are "in" multiple locs but its loc is it's true placement.

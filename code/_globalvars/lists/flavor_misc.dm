@@ -6,7 +6,6 @@ GLOBAL_LIST_EMPTY(hairstyles_female_list) //stores only hair names
 GLOBAL_LIST_EMPTY(facial_hairstyles_list) //stores /datum/sprite_accessory/facial_hair indexed by name
 GLOBAL_LIST_EMPTY(facial_hairstyles_male_list) //stores only hair names
 GLOBAL_LIST_EMPTY(facial_hairstyles_female_list) //stores only hair names
-GLOBAL_LIST_EMPTY(hair_gradients_list) //stores /datum/sprite_accessory/hair_gradient indexed by name
 	//Underwear
 GLOBAL_LIST_EMPTY(underwear_list) //stores /datum/sprite_accessory/underwear indexed by name
 GLOBAL_LIST_EMPTY(underwear_m) //stores only underwear name
@@ -18,8 +17,6 @@ GLOBAL_LIST_EMPTY(undershirt_f)  //stores only undershirt name
 	//Socks
 GLOBAL_LIST_EMPTY(socks_list) //stores /datum/sprite_accessory/socks indexed by name
 	//Lizard Bits (all datum lists indexed by name)
-//SKYRAT EDIT REMOVAL - CUSTOMIZATION
-/*
 GLOBAL_LIST_EMPTY(body_markings_list)
 GLOBAL_LIST_EMPTY(tails_list_lizard)
 GLOBAL_LIST_EMPTY(animated_tails_list_lizard)
@@ -42,8 +39,6 @@ GLOBAL_LIST_EMPTY(moth_antennae_list)
 GLOBAL_LIST_EMPTY(moth_markings_list)
 GLOBAL_LIST_EMPTY(caps_list)
 GLOBAL_LIST_EMPTY(tails_list_monkey)
-*/
-//SKYRAT EDIT REMOVAL END
 
 GLOBAL_LIST_INIT(color_list_ethereal, list(
 	"Red" = "ff4d4d",
@@ -96,32 +91,7 @@ GLOBAL_LIST_INIT(ghost_forms_with_directions_list, list(
 	"ghost_camo",
 	"catghost")) //stores the ghost forms that support directional sprites
 
-GLOBAL_LIST_INIT(ghost_forms_with_accessories_list, list(
-	"ghost",
-	"ghost_red",
-	"ghost_black",
-	"ghost_blue",
-	"ghost_yellow",
-	"ghost_green",
-	"ghost_pink",
-	"ghost_cyan",
-	"ghost_dblue",
-	"ghost_dred",
-	"ghost_dgreen",
-	"ghost_dcyan",
-	"ghost_grey",
-	"ghost_dyellow",
-	"ghost_dpink",
-	"skeleghost",
-	"ghost_purpleswirl",
-	"ghost_rainbow",
-	"ghost_fire",
-	"ghost_funkypurp",
-	"ghost_pinksherbert",
-	"ghost_blazeit",
-	"ghost_mellow",
-	"ghost_camo",))
-	//stores the ghost forms that support hair and other such things
+GLOBAL_LIST_INIT(ghost_forms_with_accessories_list, list("ghost")) //stores the ghost forms that support hair and other such things
 
 GLOBAL_LIST_INIT(ai_core_display_screens, sortList(list(
 	":thinking:",
@@ -246,7 +216,7 @@ GLOBAL_LIST_INIT(scarySounds, list('sound/weapons/thudswoosh.ogg','sound/weapons
 22 Janitor
 23 Genetics
 24 Experimentor Lab
-25 Ordnance
+25 Toxins
 26 Dormitories
 27 Virology
 28 Xenobiology
@@ -266,7 +236,7 @@ GLOBAL_LIST_INIT(TAGGERLOCATIONS, list("Disposals",
 	"CMO Office", "Chemistry", "Research", "RD Office",
 	"Robotics", "HoP Office", "Library", "Chapel", "Theatre",
 	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics",
-	"Experimentor Lab", "Ordnance", "Dormitories", "Virology",
+	"Experimentor Lab", "Toxins", "Dormitories", "Virology",
 	"Xenobiology", "Law Office","Detective's Office"))
 
 GLOBAL_LIST_INIT(station_prefixes, world.file2list("strings/station_prefixes.txt"))

@@ -20,7 +20,7 @@ Difficulty: Extremely Hard
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	light_color = COLOR_LIGHT_GRAYISH_RED
 	movement_type = GROUND
-	weather_immunities = list(TRAIT_SNOWSTORM_IMMUNE)
+	weather_immunities = list("snow")
 	speak_emote = list("roars")
 	armour_penetration = 100
 	melee_damage_lower = 10
@@ -56,8 +56,8 @@ Difficulty: Extremely Hard
 	. = ..()
 	for(var/obj/structure/frost_miner_prism/prism_to_set in GLOB.frost_miner_prisms)
 		prism_to_set.set_prism_light(LIGHT_COLOR_BLUE, 5)
-	AddElement(/datum/element/knockback, 7, FALSE, TRUE)
-	AddElement(/datum/element/lifesteal, 50)
+	AddComponent(/datum/component/knockback, 7, FALSE, TRUE)
+	AddComponent(/datum/component/lifesteal, 50)
 
 /datum/action/innate/megafauna_attack/frost_orbs
 	name = "Fire Frost Orbs"
@@ -75,7 +75,7 @@ Difficulty: Extremely Hard
 
 /datum/action/innate/megafauna_attack/ice_shotgun
 	name = "Fire Ice Shotgun"
-	icon_icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
+	icon_icon = 'icons/obj/guns/ballistic.dmi'
 	button_icon_state = "shotgun"
 	chosen_message = "<span class='colossus'>You are now firing shotgun ice blasts.</span>"
 	chosen_attack_num = 3
@@ -83,7 +83,7 @@ Difficulty: Extremely Hard
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/OpenFire()
 	check_enraged()
 	projectile_speed_multiplier = 1 - enraged * 0.5
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 10 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 10 SECONDS))
+	SetRecoveryTime(100, 100)
 
 	if(client)
 		switch(chosen_attack)
@@ -115,7 +115,7 @@ Difficulty: Extremely Hard
 			else
 				ice_shotgun(5, list(list(0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330), list(-30, -15, 0, 15, 30)))
 
-/obj/projectile/colossus/frost_orb
+/obj/projectile/frost_orb
 	name = "frost orb"
 	icon_state = "ice_1"
 	damage = 20
@@ -124,21 +124,20 @@ Difficulty: Extremely Hard
 	homing_turn_speed = 30
 	damage_type = BURN
 
-/obj/projectile/colossus/frost_orb/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/frost_orb/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(isturf(target) || isobj(target))
 		target.ex_act(EXPLODE_HEAVY)
 
-/obj/projectile/colossus/snowball
+/obj/projectile/snowball
 	name = "machine-gun snowball"
 	icon_state = "nuclear_particle"
 	damage = 5
 	armour_penetration = 100
 	speed = 3
 	damage_type = BRUTE
-	explode_hit_objects = FALSE
 
-/obj/projectile/colossus/ice_blast
+/obj/projectile/ice_blast
 	name = "ice blast"
 	icon_state = "ice_2"
 	damage = 15
@@ -146,14 +145,14 @@ Difficulty: Extremely Hard
 	speed = 3
 	damage_type = BRUTE
 
-/obj/projectile/colossus/ice_blast/on_hit(atom/target, blocked = FALSE)
+/obj/projectile/ice_blast/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(isturf(target) || isobj(target))
 		target.ex_act(EXPLODE_HEAVY)
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/ex_act(severity, target)
 	adjustBruteLoss(-30 * severity)
-	visible_message(span_danger("[src] absorbs the explosion!"), span_userdanger("You absorb the explosion!"))
+	visible_message("<span class='danger'>[src] absorbs the explosion!</span>", "<span class='userdanger'>You absorb the explosion!</span>")
 
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/Goto(target, delay, minimum_distance)
 	if(enraging)
@@ -177,26 +176,26 @@ Difficulty: Extremely Hard
 		var/turf/endloc = get_turf(target)
 		if(!endloc)
 			break
-		var/obj/projectile/colossus/frost_orb/P = new(startloc)
+		var/obj/projectile/frost_orb/P = new(startloc)
 		P.preparePixelProjectile(endloc, startloc)
 		P.firer = src
 		if(target)
 			P.original = target
 		P.set_homing_target(target)
 		P.fire(rand(0, 360))
-		addtimer(CALLBACK(P, /obj/projectile/colossus/frost_orb/proc/orb_explosion, projectile_speed_multiplier), 20) // make the orbs home in after a second
+		addtimer(CALLBACK(P, /obj/projectile/frost_orb/proc/orb_explosion, projectile_speed_multiplier), 20) // make the orbs home in after a second
 		SLEEP_CHECK_DEATH(added_delay)
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 4 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 6 SECONDS))
+	SetRecoveryTime(40, 60)
 
 /// Called when the orb is exploding, shoots out projectiles
-/obj/projectile/colossus/frost_orb/proc/orb_explosion(projectile_speed_multiplier)
+/obj/projectile/frost_orb/proc/orb_explosion(projectile_speed_multiplier)
 	for(var/i in 0 to 5)
 		var/angle = i * 60
 		var/turf/startloc = get_turf(src)
 		var/turf/endloc = get_turf(original)
 		if(!startloc || !endloc)
 			break
-		var/obj/projectile/colossus/ice_blast/P = new(startloc)
+		var/obj/projectile/ice_blast/P = new(startloc)
 		P.speed *= projectile_speed_multiplier
 		P.preparePixelProjectile(endloc, startloc, null, angle + rand(-10, 10))
 		P.firer = firer
@@ -212,7 +211,7 @@ Difficulty: Extremely Hard
 		var/turf/endloc = get_turf(target)
 		if(!endloc)
 			break
-		var/obj/projectile/P = new /obj/projectile/colossus/snowball(startloc)
+		var/obj/projectile/P = new /obj/projectile/snowball(startloc)
 		P.speed *= projectile_speed_multiplier
 		P.preparePixelProjectile(endloc, startloc, null, rand(-spread, spread))
 		P.firer = src
@@ -220,7 +219,7 @@ Difficulty: Extremely Hard
 			P.original = target
 		P.fire()
 		SLEEP_CHECK_DEATH(1)
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 1.5 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 1.5 SECONDS))
+	SetRecoveryTime(15, 15)
 
 /// Shoots out ice blasts in a shotgun like pattern
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/proc/ice_shotgun(shots = 5, list/patterns = list(list(-40, -20, 0, 20, 40), list(-30, -10, 10, 30)))
@@ -231,7 +230,7 @@ Difficulty: Extremely Hard
 			var/turf/endloc = get_turf(target)
 			if(!endloc)
 				break
-			var/obj/projectile/P = new /obj/projectile/colossus/ice_blast(startloc)
+			var/obj/projectile/P = new /obj/projectile/ice_blast(startloc)
 			P.speed *= projectile_speed_multiplier
 			P.preparePixelProjectile(endloc, startloc, null, spread)
 			P.firer = src
@@ -239,7 +238,7 @@ Difficulty: Extremely Hard
 				P.original = target
 			P.fire()
 		SLEEP_CHECK_DEATH(8)
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 1.5 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 2 SECONDS))
+	SetRecoveryTime(15, 20)
 
 /// Checks if the demonic frost miner is ready to be enraged
 /mob/living/simple_animal/hostile/megafauna/demonic_frost_miner/proc/check_enraged()
@@ -247,7 +246,7 @@ Difficulty: Extremely Hard
 		return
 	if(health > maxHealth*0.25)
 		return
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 8 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 8 SECONDS))
+	SetRecoveryTime(80, 80)
 	adjustHealth(-maxHealth)
 	enraged = TRUE
 	enraging = TRUE
@@ -292,19 +291,19 @@ Difficulty: Extremely Hard
 
 /obj/item/resurrection_crystal/attack_self(mob/living/user)
 	if(!iscarbon(user))
-		to_chat(user, span_notice("A dark presence stops you from absorbing the crystal."))
+		to_chat(user, "<span class='notice'>A dark presence stops you from absorbing the crystal.</span>")
 		return
 	forceMove(user)
-	to_chat(user, span_notice("You feel a bit safer... but a demonic presence lurks in the back of your head..."))
+	to_chat(user, "<span class='notice'>You feel a bit safer... but a demonic presence lurks in the back of your head...</span>")
 	RegisterSignal(user, COMSIG_LIVING_DEATH, .proc/resurrect)
 
 /// Resurrects the target when they die by moving them and dusting a clone in their place, one life for another
 /obj/item/resurrection_crystal/proc/resurrect(mob/living/carbon/user, gibbed)
 	SIGNAL_HANDLER
 	if(gibbed)
-		to_chat(user, span_notice("This power cannot be used if your entire mortal body is disintegrated..."))
+		to_chat(user, "<span class='notice'>This power cannot be used if your entire mortal body is disintegrated...</span>")
 		return
-	user.visible_message(span_notice("You see [user]'s soul dragged out of their body!"), span_notice("You feel your soul dragged away to a fresh body!"))
+	user.visible_message("<span class='notice'>You see [user]'s soul dragged out of their body!</span>", "<span class='notice'>You feel your soul dragged away to a fresh body!</span>")
 	var/typepath = user.type
 	var/mob/living/carbon/clone = new typepath(user.loc)
 	clone.real_name = user.real_name
@@ -314,7 +313,7 @@ Difficulty: Extremely Hard
 	user.forceMove(T)
 	user.revive(full_heal = TRUE, admin_revive = TRUE)
 	INVOKE_ASYNC(user, /mob/living/carbon.proc/set_species, /datum/species/shadow)
-	to_chat(user, span_notice("You blink and find yourself in [get_area_name(T)]... feeling a bit darker."))
+	to_chat(user, "<span class='notice'>You blink and find yourself in [get_area_name(T)]... feeling a bit darker.</span>")
 	clone.dust()
 	qdel(src)
 
@@ -342,11 +341,11 @@ Difficulty: Extremely Hard
 
 /obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/ui_action_click(mob/user)
 	on = !on
-	to_chat(user, span_notice("You [on ? "activate" : "deactivate"] [src]."))
+	to_chat(user, "<span class='notice'>You [on ? "activate" : "deactivate"] [src].</span>")
 
 /obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/examine(mob/user)
 	. = ..()
-	. += span_notice("The shoes are [on ? "enabled" : "disabled"].")
+	. += "<span class='notice'>The shoes are [on ? "enabled" : "disabled"].</span>"
 
 /obj/item/clothing/shoes/winterboots/ice_boots/ice_trail/proc/on_step()
 	SIGNAL_HANDLER
@@ -365,8 +364,8 @@ Difficulty: Extremely Hard
 
 /obj/item/pickaxe/drill/jackhammer/demonic/Initialize()
 	. = ..()
-	AddElement(/datum/element/knockback, 4, TRUE, FALSE)
-	AddElement(/datum/element/lifesteal, 5)
+	AddComponent(/datum/component/knockback, 4, TRUE, FALSE)
+	AddComponent(/datum/component/lifesteal, 5)
 
 /obj/item/pickaxe/drill/jackhammer/demonic/use_tool(atom/target, mob/living/user, delay, amount=0, volume=0, datum/callback/extra_checks)
 	var/turf/T = get_turf(target)
@@ -406,7 +405,7 @@ Difficulty: Extremely Hard
 /datum/status_effect/ice_block_talisman/on_apply()
 	RegisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE, .proc/owner_moved)
 	if(!owner.stat)
-		to_chat(owner, span_userdanger("You become frozen in a cube!"))
+		to_chat(owner, "<span class='userdanger'>You become frozen in a cube!</span>")
 	cube = icon('icons/effects/freeze.dmi', "ice_cube")
 	var/icon/size_check = icon(owner.icon, owner.icon_state)
 	cube.Scale(size_check.Width(), size_check.Height())
@@ -420,7 +419,7 @@ Difficulty: Extremely Hard
 
 /datum/status_effect/ice_block_talisman/on_remove()
 	if(!owner.stat)
-		to_chat(owner, span_notice("The cube melts!"))
+		to_chat(owner, "<span class='notice'>The cube melts!</span>")
 	owner.cut_overlay(cube)
 	UnregisterSignal(owner, COMSIG_MOVABLE_PRE_MOVE)
 
@@ -445,10 +444,6 @@ Difficulty: Extremely Hard
 	. = ..()
 	GLOB.frost_miner_prisms |= src
 	set_prism_light(LIGHT_COLOR_BLUE, 5)
-
-/obj/structure/frost_miner_prism/Destroy()
-	GLOB.frost_miner_prisms -= src
-	return ..()
 
 /obj/structure/frost_miner_prism/proc/set_prism_light(new_color, new_range)
 	color = new_color

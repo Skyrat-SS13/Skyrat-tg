@@ -38,15 +38,14 @@
 #define GLAND_HUD "17"
 #define SENTIENT_DISEASE_HUD "18"
 #define AI_DETECT_HUD "19"
+#define NANITE_HUD "20"
+#define DIAG_NANITE_FULL_HUD "21"
 /// Displays launchpads' targeting reticle
 #define DIAG_LAUNCHPAD_HUD "22"
 //for antag huds. these are used at the /mob level
 #define ANTAG_HUD "23"
 // for fans to identify pins
 #define FAN_HUD "24"
-//SKYRAT EDIT ADDITION - GUNHUD
-// ammo of guns
-#define AMMO_HUD	"25"
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
@@ -81,7 +80,6 @@
 #define ANTAG_HUD_GANGSTER 23
 #define ANTAG_HUD_SPACECOP 24
 #define ANTAG_HUD_HERETIC 25
-#define ANTAG_HUD_BRAINWASHED 26
 
 // Notification action types
 #define NOTIFY_JUMP "jump"

@@ -44,7 +44,7 @@
 /obj/item/food/cheese/proc/on_rat_eat(mob/living/simple_animal/hostile/regalrat/king)
 	SIGNAL_HANDLER
 
-	king.cheese_heal(src, rat_heal, span_green("You eat [src], restoring some health."))
+	king.cheese_heal(src, rat_heal, "<span class='green'>You eat [src], restoring some health.</span>")
 
 /obj/item/food/watermelonslice
 	name = "watermelon slice"
@@ -122,7 +122,7 @@
 
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	tastes = list("fries" = 3, "salt" = 1)
-	foodtypes = VEGETABLES | FRIED
+	foodtypes = VEGETABLES | GRAIN | FRIED
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
 
@@ -161,25 +161,11 @@
 
 	food_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("fries" = 3, "cheese" = 1)
-	foodtypes = VEGETABLES | DAIRY
+	foodtypes = VEGETABLES | GRAIN | DAIRY
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
 
 /obj/item/food/cheesyfries/Initialize()
-	. = ..()
-	AddElement(/datum/element/dunkable, 10)
-
-/obj/item/food/poutine
-	name = "poutine"
-	desc = "Fries covered in cheese curds and gravy."
-	icon_state = "poutine"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 7, /datum/reagent/medicine/antihol = 4)
-	tastes = list("potato" = 3, "gravy" = 1, "squeaky cheese" = 1)
-	foodtypes = VEGETABLES | FRIED | MEAT
-	w_class = WEIGHT_CLASS_SMALL
-	venue_value = FOOD_PRICE_CHEAP
-
-/obj/item/food/poutine/Initialize()
 	. = ..()
 	AddElement(/datum/element/dunkable, 10)
 
@@ -190,7 +176,6 @@
 	food_reagents = list(/datum/reagent/toxin/bad_food = 30)
 	foodtypes = GROSS
 	w_class = WEIGHT_CLASS_SMALL
-	preserved_food = TRUE //Can't decompose any more than this
 
 /obj/item/food/badrecipe/Initialize()
 	. = ..()
@@ -198,7 +183,7 @@
 
 /obj/item/food/badrecipe/moldy
 	name = "moldy mess"
-	desc = "A rancid, disgusting culture of mold and ants. Somewhere under there, at <i>some point,</i> there was food."
+	desc = "A rancid, living culture of mold. Somewhere, under there, at SOME POINT... there was food."
 	food_reagents = list(/datum/reagent/consumable/mold = 30)
 
 /obj/item/food/badrecipe/moldy/Initialize()
@@ -326,7 +311,7 @@
 
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("sweet potato" = 1)
-	foodtypes = VEGETABLES | SUGAR
+	foodtypes = GRAIN | VEGETABLES | SUGAR
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/roastparsnip
@@ -489,9 +474,9 @@
 		return
 	if(prob(15))
 		new /datum/hallucination/oh_yeah(victim)
-		to_chat(victim, span_colossus("<b>[pick("I AM IMMORTAL.","I SHALL TAKE YOUR WORLD.","I SEE YOU.","YOU CANNOT ESCAPE ME FOREVER.","NOTHING CAN HOLD ME.")]</b>"))
+		to_chat(victim, "<span class='colossus'><b>[pick("I AM IMMORTAL.","I SHALL TAKE YOUR WORLD.","I SEE YOU.","YOU CANNOT ESCAPE ME FOREVER.","NOTHING CAN HOLD ME.")]</b></span>")
 	else
-		to_chat(victim, span_warning("[pick("You hear faint whispers.","You smell ash.","You feel hot.","You hear a roar in the distance.")]"))
+		to_chat(victim, "<span class='warning'>[pick("You hear faint whispers.","You smell ash.","You feel hot.","You hear a roar in the distance.")]</span>")
 
 /obj/item/food/gumball
 	name = "gumball"
@@ -531,15 +516,15 @@
 
 /obj/item/food/butter/examine(mob/user)
 	. = ..()
-	. += span_notice("If you had a rod you could make <b>butter on a stick</b>.")
+	. += "<span class='notice'>If you had a rod you could make <b>butter on a stick</b>.</span>"
 
 /obj/item/food/butter/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stack/rods))
 		var/obj/item/stack/rods/R = W
 		if(!R.use(1))//borgs can still fail this if they have no metal
-			to_chat(user, span_warning("You do not have enough iron to put [src] on a stick!"))
+			to_chat(user, "<span class='warning'>You do not have enough iron to put [src] on a stick!</span>")
 			return ..()
-		to_chat(user, span_notice("You stick the rod into the stick of butter."))
+		to_chat(user, "<span class='notice'>You stick the rod into the stick of butter.</span>")
 		var/obj/item/food/butter/on_a_stick/new_item = new(usr.loc)
 		var/replace = (user.get_inactive_held_item() == R)
 		if(!R && replace)
@@ -593,15 +578,12 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	max_volume = 30
 	w_class = WEIGHT_CLASS_SMALL
-	preserved_food = TRUE
 
 
 /obj/item/food/canned/proc/open_can(mob/user)
-	to_chat(user, span_notice("You pull back the tab of \the [src]."))
+	to_chat(user, "<span class='notice'>You pull back the tab of \the [src].</span>")
 	playsound(user.loc, 'sound/items/foodcanopen.ogg', 50)
 	reagents.flags |= OPENCONTAINER
-	preserved_food = FALSE
-	MakeDecompose()
 
 /obj/item/food/canned/attack_self(mob/user)
 	if(!is_drainable())
@@ -611,7 +593,7 @@
 
 /obj/item/food/canned/attack(mob/living/M, mob/user, def_zone)
 	if (!is_drainable())
-		to_chat(user, span_warning("[src]'s lid hasn't been opened!"))
+		to_chat(user, "<span class='warning'>[src]'s lid hasn't been opened!</span>")
 		return FALSE
 	return ..()
 
@@ -695,13 +677,3 @@
 
 /obj/item/food/rationpack/proc/check_liked(fraction, mob/M) //Nobody likes rationpacks. Nobody.
 	return FOOD_DISLIKED
-
-/obj/item/food/ant_candy
-	name = "ant candy"
-	desc = "A colony of ants suspended in hardened sugar. Those things are dead, right?"
-	icon_state = "ant_pop"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/sugar = 5, /datum/reagent/ants = 3)
-	tastes = list("candy" = 1, "insects" = 1)
-	foodtypes = JUNKFOOD | SUGAR | GROSS
-	food_flags = FOOD_FINGER_FOOD
-	w_class = WEIGHT_CLASS_TINY

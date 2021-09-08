@@ -2,7 +2,7 @@ import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
 import { Material, MaterialAmount, MaterialFormatting, Materials, MATERIAL_KEYS } from './common/Materials';
 import { Window } from '../layouts';
-import { Box, Button, Input, Section, Stack, Tabs } from '../components';
+import { Button, Input, Section, Stack, Tabs } from '../components';
 
 const CATEGORY_ALL = "All";
 
@@ -75,8 +75,8 @@ export const ComponentPrinter = (props, context) => {
   return (
     <Window title="Component Printer" width={900} height={700}>
       <Window.Content scrollable>
-        <Stack vertical>
-          <Stack.Item>
+        <Stack fill vertical>
+          <Stack.Item grow>
             <Section title="Materials">
               <Materials
                 materials={data.materials || []}
@@ -88,12 +88,11 @@ export const ComponentPrinter = (props, context) => {
                 }}
               />
             </Section>
-          </Stack.Item>
-          <Stack.Item>
-            <Stack>
+
+            <Stack fill>
               <Stack.Item>
-                <Section title="Categories" fill>
-                  <Tabs vertical fill>
+                <Section fill title="Categories">
+                  <Tabs vertical>
                     {Object.values(data.designs)
                       .reduce<string[]>((categories, design) => {
                         const category = getCategory(design.categories);
@@ -117,9 +116,9 @@ export const ComponentPrinter = (props, context) => {
                 </Section>
               </Stack.Item>
 
-              <Stack.Item basis="100%">
-                <Section title="Parts">
-                  <Stack vertical>
+              <Stack.Item fill grow>
+                <Section fill title="Parts">
+                  <Stack fill vertical>
                     <Stack.Item>
                       <Input
                         placeholder="Search..."
@@ -151,9 +150,8 @@ export const ComponentPrinter = (props, context) => {
                                 Print
                               </Button>
                             )}>
-                              <Box inline width="100%">
-                                {design.description}
-                              </Box>
+                              {design.description}
+
                               <MaterialCost materials={design.materials} />
                             </Section>
                           </Stack.Item>

@@ -1,12 +1,11 @@
 /datum/job/shaft_miner
 	title = "Shaft Miner"
 	department_head = list("Head of Personnel")
-	faction = FACTION_STATION
+	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
-	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/miner
 	plasmaman_outfit = /datum/outfit/plasmaman/mining
@@ -16,14 +15,9 @@
 
 	display_order = JOB_DISPLAY_ORDER_SHAFT_MINER
 	bounty_types = CIV_JOB_MINE
-	departments_list = list(
-		/datum/job_department/cargo,
-		)
+	departments = DEPARTMENT_CARGO
 
 	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
-
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"
@@ -40,8 +34,7 @@
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,\
 		/obj/item/mining_voucher=1,\
-		/obj/item/suit_voucher=1,\
-		/obj/item/stack/marker_beacon/ten=1) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
+		/obj/item/stack/marker_beacon/ten=1)
 
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer

@@ -15,12 +15,13 @@
 	if(!Adjacent(usr) || !over.Adjacent(usr))
 		return // should stop you from dragging through windows
 
-	over.MouseDrop_T(src,usr, params)
+	over.MouseDrop_T(src,usr)
 	return
 
 // receive a mousedrop
-/atom/proc/MouseDrop_T(atom/dropping, mob/user, params)
-	SEND_SIGNAL(src, COMSIG_MOUSEDROPPED_ONTO, dropping, user, params)
+/atom/proc/MouseDrop_T(atom/dropping, mob/user)
+	SEND_SIGNAL(src, COMSIG_MOUSEDROPPED_ONTO, dropping, user)
+	return
 
 
 /client/MouseDown(datum/object, location, control, params)

@@ -146,7 +146,7 @@
 
 /datum/map_template/ruin/space/spacehotel
 	id = "spacehotel"
-	suffix = "spacehotel_skyrat.dmm"	// SKYRAT EDIT CHANGE - ORIGINAL: suffix = "spacehotel.dmm"
+	suffix = "spacehotel.dmm"
 	name = "The Twin-Nexus Hotel"
 	description = "An interstellar hotel, where the weary spaceman can rest their head and relax, assured that the residental staff will not murder them in their sleep. Probably."
 
@@ -250,16 +250,9 @@
 	name = "Gondoland"
 	description = "Just an ordinary rock- wait, what's that thing?"
 
-// SKYRAT EDIT CHANGE START -- Reworked whiteship ruin
-/* SKYRAT EDIT CHANGE -- ORIGINAL COMMENTED OUT
 /datum/map_template/ruin/space/whiteshipruin_box
-id = "whiteshipruin_box"
-suffix = "whiteshipruin_box.dmm"*/
-
-/datum/map_template/ruin/space/whiteshipruin_box_skyrat//Skyrat Edit
-	id = "whiteshipruin_box_skyrat"
-	suffix = "whiteshipruin_box_skyrat.dmm"
-	// SKYRAT EDIT CHANGE END
+	id = "whiteshipruin_box"
+	suffix = "whiteshipruin_box.dmm"
 	name = "NT Medical Ship"
 	description = "An ancient ship, said to be among the first discovered derelicts near Space Station 13 that was still in working order. \
 	Aged and deprecated by time, this relic of a vessel is now broken beyond repair."
@@ -294,24 +287,15 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "clericden.dmm"
 	name = "Cleric's Den"
 	description = "Once part of a larger monastery, this holy order of long dead clerics practiced far less non-violence than they preached. Appears to have been untouched by looters, however. Odd."
-//SKYRAT EDIT REMOVAL BEGIN - MAPPING
-/*
+
 /datum/map_template/ruin/space/forgottenship
 	id = "forgottenship"
 	suffix = "forgottenship.dmm"
 	name = "Syndicate Forgotten Ship"
 	description = "Seemingly abandoned ship went of course right into NT controlled space. It seems that malfunction caused most systems to turn off, except for sleepers."
-*/
-//SKYRAT EDIT REMOVAL END
+
 /datum/map_template/ruin/space/hellfactory
 	id = "hellfactory"
 	suffix = "hellfactory.dmm"
 	name = "Heck Brewery"
 	description = "An abandoned warehouse and brewing facility, which has been recently rediscovered. Reports claim that the security system entered an ultra-hard lockdown, but these reports are inconclusive."
-
-/datum/map_template/ruin/space/medieval1 //SKYRAT ADDITION CHANGE
-	id = "medieval1"
-	suffix = "medieval1.dmm"
-	name = "Medieval 1"
-	description = "A forgotten peice of history left overrun with a reminder of what brought its destruction"
-	//SKYRAT ADDITION CHANGE END

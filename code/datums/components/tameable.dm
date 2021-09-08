@@ -35,10 +35,10 @@
 	if(isliving(source))
 		var/mob/living/potentially_dead_horse = source
 		if(potentially_dead_horse.stat == DEAD)
-			to_chat(attacker, span_warning("[parent] is dead!"))
+			to_chat(attacker, "<span class='warning'>[parent] is dead!</span>")
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
-	attacker.visible_message(span_notice("[attacker] hand-feeds [food] to [parent]."), span_notice("You hand-feed [food] to [parent]."))
+	attacker.visible_message("<span class='notice'>[attacker] hand-feeds [food] to [parent].</span>", "<span class='notice'>You hand-feed [food] to [parent].</span>")
 	qdel(food)
 	if(tame)
 		return COMPONENT_CANCEL_ATTACK_CHAIN
@@ -60,4 +60,4 @@
 		evil_but_now_not_evil.friends = tamer
 		evil_but_now_not_evil.faction = tamer.faction.Copy()
 
-	qdel(src)
+	RemoveComponent()

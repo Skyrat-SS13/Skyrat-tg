@@ -39,7 +39,7 @@
 
 // RIOT SHOTGUN //
 
-/obj/item/gun/ballistic/shotgun/riot //for spawn in the armory //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/ballistic/shotgun/riot //for spawn in the armory
 	name = "riot shotgun"
 	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
 	icon_state = "riotshotgun"
@@ -55,7 +55,7 @@
 	..()
 	rack()
 
-/obj/item/gun/ballistic/shotgun/automatic/combat        //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/ballistic/shotgun/automatic/combat
 	name = "combat shotgun"
 	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
 	icon_state = "cshotgun"
@@ -80,7 +80,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
 	. = ..()
-	. += span_notice("Alt-click to pump it.")
+	. += "<span class='notice'>Alt-click to pump it.</span>"
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize()
 	. = ..()
@@ -100,9 +100,9 @@
 	alternate_magazine = current_mag
 	toggled = !toggled
 	if(toggled)
-		to_chat(user, span_notice("You switch to tube B."))
+		to_chat(user, "<span class='notice'>You switch to tube B.</span>")
 	else
-		to_chat(user, span_notice("You switch to tube A."))
+		to_chat(user, "<span class='notice'>You switch to tube A.</span>")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/AltClick(mob/living/user)
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
@@ -128,7 +128,7 @@
 	fire_delay = 0
 	pin = /obj/item/firing_pin/implant/pindicate
 	fire_sound = 'sound/weapons/gun/shotgun/shot_alt.ogg'
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
+	actions_types = list()
 	mag_display = TRUE
 	empty_indicator = TRUE
 	empty_alarm = TRUE
@@ -208,7 +208,7 @@
 
 /obj/item/gun/ballistic/shotgun/hook/examine(mob/user)
 	. = ..()
-	. += span_notice("Right-click to shoot the hook.")
+	. += "<span class='notice'>Right-click to shoot the hook.</span>"
 
 /obj/item/gun/ballistic/shotgun/hook/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	hook.afterattack(target, user, proximity_flag, click_parameters)

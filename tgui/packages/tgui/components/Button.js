@@ -243,7 +243,7 @@ export class ButtonInput extends Component {
       ...rest
     } = this.props;
 
-    let buttonContent = (
+    let buttonInput = (
       <Box
         className={classes([
           'Button',

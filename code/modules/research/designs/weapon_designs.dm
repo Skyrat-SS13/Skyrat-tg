@@ -329,8 +329,6 @@
 	build_path = /obj/item/melee/cleric_mace
 	category = list("Imported")
 
-//SKYRAT EDIT REMOVAL BEGIN - boomerang nerf
-/*
 /datum/design/stun_boomerang
 	name = "OZtek Boomerang"
 	desc = "Uses reverse flow gravitodynamics to flip its personal gravity back to the thrower mid-flight. Also functions similar to a stun baton."
@@ -340,17 +338,3 @@
 	build_path = /obj/item/melee/baton/boomerang
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-*/
-//SKYRAT EDIT REMOVAL END - boomerang nerf
-
-//SKYRAT EDIT ADDITION BEGIN - boomerang nerf
-/datum/design/stun_boomerang
-	name = "Peacekeeper Boomerang"
-	desc = "Uses reverse flow gravitodynamics to flip its personal gravity back to the thrower mid-flight. Also functions similar to a baton."
-	id = "stun_boomerang"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2000, /datum/material/silver = 1000, /datum/material/gold = 500)
-	build_path = /obj/item/melee/classic_baton/peacekeeper/boomerang
-	category = list("Weapons")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-//SKYRAT EDIT ADDITION END - boomerang nerf

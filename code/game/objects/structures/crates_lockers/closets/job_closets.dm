@@ -69,10 +69,6 @@
 	new /obj/item/watertank/janitor(src)
 	new /obj/item/storage/belt/janitor(src)
 
-	//SKYRAT EDIT ADDITION
-	new /obj/item/air_refresher(src)
-	new /obj/item/air_refresher(src)
-	//SKYRAT EDIT END
 
 /obj/structure/closet/lawcloset
 	name = "legal closet"
@@ -282,14 +278,14 @@
 	var/static/items_inside = list(
 		/obj/item/clothing/accessory/pocketprotector = 1,
 		/obj/item/storage/backpack/science = 2,
-		/obj/item/storage/backpack/satchel/science = 2,
-		/obj/item/storage/backpack/duffelbag/science = 2,
+		/obj/item/storage/backpack/satchel/tox = 2,
+		/obj/item/storage/backpack/duffelbag/toxins = 2,
 		/obj/item/clothing/suit/hooded/wintercoat/science = 1,
 		/obj/item/clothing/under/rank/rnd/scientist = 3,
 		/obj/item/clothing/suit/toggle/labcoat/science = 3,
 		/obj/item/clothing/shoes/sneakers/white = 3,
 		/obj/item/radio/headset/headset_sci = 2,
-		/obj/item/clothing/mask/gas/alt = 3) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas = 3)
+		/obj/item/clothing/mask/gas = 3)
 	generate_items_inside(items_inside,src)
 	return
 

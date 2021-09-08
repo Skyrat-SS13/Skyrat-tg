@@ -210,7 +210,7 @@
 	bluespace = TRUE //Make it so that the pod doesn't stay in centcom forever
 	pod_flags &= ~FIRST_SOUNDS //Make it so we play sounds now
 	if (!effectQuiet && style != STYLE_SEETHROUGH)
-		audible_message(span_notice("The pod hisses, closing and launching itself away from the station."), span_notice("The ground vibrates, and you hear the sound of engines firing."))
+		audible_message("<span class='notice'>The pod hisses, closing and launching itself away from the station.</span>", "<span class='notice'>The ground vibrates, and you hear the sound of engines firing.</span>")
 	stay_after_drop = FALSE
 	holder.pixel_z = initial(holder.pixel_z)
 	holder.alpha = initial(holder.alpha)
@@ -229,7 +229,7 @@
 /obj/structure/closet/supplypod/proc/preOpen() //Called before the open_pod() proc. Handles anything that occurs right as the pod lands.
 	var/turf/turf_underneath = get_turf(src)
 	var/list/B = explosionSize //Mostly because B is more readable than explosionSize :p
-	set_density(TRUE) //Density is originally false so the pod doesn't block anything while it's still falling through the air
+	density = TRUE //Density is originally false so the pod doesn't block anything while it's still falling through the air
 	AddComponent(/datum/component/pellet_cloud, projectile_type=shrapnel_type, magnitude=shrapnel_magnitude)
 	if(effectShrapnel)
 		SEND_SIGNAL(src, COMSIG_SUPPLYPOD_LANDED)
@@ -417,17 +417,17 @@
 
 /obj/structure/closet/supplypod/setOpened() //Proc exists here, as well as in any atom that can assume the role of a "holder" of a supplypod. Check the open_pod() proc for more details
 	opened = TRUE
-	set_density(FALSE)
+	density = FALSE
 	update_appearance()
 
 /obj/structure/closet/supplypod/extractionpod/setOpened()
 	opened = TRUE
-	set_density(TRUE)
+	density = TRUE
 	update_appearance()
 
 /obj/structure/closet/supplypod/setClosed() //Ditto
 	opened = FALSE
-	set_density(TRUE)
+	density = TRUE
 	update_appearance()
 
 /obj/structure/closet/supplypod/proc/tryMakeRubble(turf/T) //Ditto
@@ -466,18 +466,16 @@
 		return
 	glow_effect.layer = LOW_ITEM_LAYER
 	glow_effect.fadeAway(delays[POD_OPENING])
-	//Trust the signals
+	remove_glow()
 
 /obj/structure/closet/supplypod/proc/remove_glow()
 	SIGNAL_HANDLER
 	UnregisterSignal(glow_effect, COMSIG_PARENT_QDELETING)
-	vis_contents -= glow_effect
 	glow_effect = null
 
 /obj/structure/closet/supplypod/Destroy()
 	deleteRubble()
-	//Trust the signals even harder
-	qdel(glow_effect)
+	endGlow()
 	open_pod(src, broken = TRUE) //Lets dump our contents by opening up
 	return ..()
 
@@ -552,9 +550,6 @@
 
 /obj/effect/pod_landingzone_effect/Initialize(mapload, obj/structure/closet/supplypod/pod)
 	. = ..()
-	if(!pod)
-		stack_trace("Pod landingzone effect created with no pod")
-		return INITIALIZE_HINT_QDEL
 	transform = matrix() * 1.5
 	animate(src, transform = matrix()*0.01, time = pod.delays[POD_TRANSIT]+pod.delays[POD_FALLING])
 
@@ -573,9 +568,6 @@
 
 /obj/effect/pod_landingzone/Initialize(mapload, podParam, single_order = null, clientman)
 	. = ..()
-	if(!podParam)
-		stack_trace("Pod landingzone created with no pod")
-		return INITIALIZE_HINT_QDEL
 	if (ispath(podParam)) //We can pass either a path for a pod (as expressconsoles do), or a reference to an instantiated pod (as the centcom_podlauncher does)
 		podParam = new podParam() //If its just a path, instantiate it
 	pod = podParam

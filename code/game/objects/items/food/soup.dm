@@ -96,17 +96,7 @@
 /obj/item/food/soup/mystery/Initialize()
 	. = ..()
 	var/extra_reagent = null
-	extra_reagent = pick(
-		/datum/reagent/blood,
-		/datum/reagent/carbon,
-		/datum/reagent/consumable/banana,
-		/datum/reagent/consumable/capsaicin,
-		/datum/reagent/consumable/frostoil,
-		/datum/reagent/medicine/oculine,
-		/datum/reagent/medicine/omnizine,
-		/datum/reagent/toxin,
-		/datum/reagent/toxin/slimejelly,
-		)
+	extra_reagent = pick(/datum/reagent/consumable/capsaicin, /datum/reagent/consumable/frostoil, /datum/reagent/medicine/omnizine, /datum/reagent/consumable/banana, /datum/reagent/blood, /datum/reagent/toxin/slimejelly, /datum/reagent/toxin, /datum/reagent/consumable/banana, /datum/reagent/carbon, /datum/reagent/medicine/oculine)
 	reagents.add_reagent(extra_reagent, 5)
 	reagents.add_reagent(/datum/reagent/consumable/nutriment, 6)
 
@@ -174,7 +164,7 @@
 	icon_state = "mushroomsoup"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 9, /datum/reagent/consumable/nutriment/vitamin = 6)
 	tastes = list("mushroom" = 1)
-	foodtypes = VEGETABLES | DAIRY
+	foodtypes = VEGETABLES
 
 /obj/item/food/soup/beet
 	name = "beet soup"
@@ -215,7 +205,7 @@
 	bite_consumption = 7
 	max_volume = 100
 	tastes = list("tomato" = 1, "carrot" = 1)
-	foodtypes = VEGETABLES | MEAT
+	foodtypes = VEGETABLES
 	venue_value = FOOD_PRICE_NORMAL
 
 /obj/item/food/soup/sweetpotato
@@ -241,7 +231,7 @@
 	icon_state = "onionsoup"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 7, /datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/medicine/oculine = 5, /datum/reagent/consumable/tomatojuice = 8, /datum/reagent/consumable/nutriment/vitamin = 5)
 	tastes = list("caramelized onions" = 1)
-	foodtypes = VEGETABLES | DAIRY
+	foodtypes = VEGETABLES
 
 /obj/item/food/soup/bisque
 	name = "bisque"
@@ -256,7 +246,7 @@
 	name = "electron soup"
 	desc = "A gastronomic curiosity of ethereal origin. It is famed for the minature weather system formed over a properly prepared soup."
 	icon_state = "electronsoup"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/liquidelectricity/enriched = 12)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/liquidelectricity/enriched = 5)
 	tastes = list("mushroom" = 1, "electrons" = 4)
 	foodtypes = VEGETABLES | TOXIC
 

@@ -4,7 +4,7 @@
 	icon_state = "blob_shield"
 	desc = "A solid wall of slightly twitching tendrils."
 	var/damaged_desc = "A wall of twitching tendrils."
-	max_integrity = BLOB_STRONG_MAX_HP
+	max_integrity = 150
 	health_regen = BLOB_STRONG_HP_REGEN
 	brute_resist = BLOB_BRUTE_RESIST * 0.5
 	explosion_block = 3
@@ -43,9 +43,7 @@
 	desc = "A solid wall of slightly twitching tendrils with a reflective glow."
 	damaged_desc = "A wall of twitching tendrils with a reflective glow."
 	icon_state = "blob_glow"
-	// flags_ricochet = RICOCHET_SHINY // SKYRAT EDIT ORIGINAL
-	flags_ricochet = RICOCHET_SHINY | RICOCHET_HARD // SKYRAT EDIT CHANGE -- BLOB BUFF 
-	receive_ricochet_chance_mod = 2					// SKYRAT EDIT ADDITION -- BLOB BUFF
+	flags_ricochet = RICOCHET_SHINY
 	point_return = BLOB_REFUND_REFLECTOR_COST
 	explosion_block = 2
 	max_integrity = BLOB_REFLECTOR_MAX_HP

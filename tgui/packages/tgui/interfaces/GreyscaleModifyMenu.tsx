@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Flex, Stack, Icon, Input, LabeledList, Section, Table, Divider } from '../components';
+import { Box, Button, ColorBox, Flex, Stack, Icon, Input, LabeledList, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 type ColorEntry = {
@@ -11,13 +11,11 @@ type SpriteData = {
   icon_states: string[];
   finished: string;
   steps: SpriteEntry[];
-  time_spent: Number;
 }
 
 type SpriteEntry = {
   layer: string;
   result: string;
-  config_name: string;
 }
 
 type GreyscaleMenuData = {
@@ -81,11 +79,6 @@ const ColorDisplay = (props, context) => {
       <LabeledList>
         <LabeledList.Item
           label="Full Color String">
-          <Button
-            icon="dice"
-            onClick={() => act("random_all_colors")}
-            tooltip="Randomizes all color groups."
-          />
           <Input
             value={colors.map(item => item.value).join('')}
             onChange={(_, value) => act("recolor_from_string", { color_string: value })}
@@ -104,16 +97,9 @@ const ColorDisplay = (props, context) => {
             <Button
               icon="palette"
               onClick={() => act("pick_color", { color_index: item.index })}
-              tooltip="Brings up a color pick window to replace this color group."
-            />
-            <Button
-              icon="dice"
-              onClick={() => act("random_color", { color_index: item.index })}
-              tooltip="Randomizes the color for this color group."
             />
             <Input
               value={item.value}
-              width={7}
               onChange={(_, value) => act("recolor", { color_index: item.index, new_color: value })}
             />
           </LabeledList.Item>
@@ -159,7 +145,6 @@ const SingleDirection = (props, context) => {
     <Flex.Item grow={1} basis={0}>
       <Button
         content={DirectionAbbreviation[dir]}
-        tooltip={`Sets the direction of the preview sprite to ${dir}`}
         disabled={`${dir}` === data.sprites_dir ? true : false}
         textAlign="center"
         onClick={() => act("change_dir", { new_sprite_dir: dir })}
@@ -206,24 +191,19 @@ const PreviewDisplay = (props, context) => {
             data.sprites?.finished
               ? (
                 <Table.Cell>
-                  <Box as="img" src={data.sprites.finished} m={0} width="75%" mx="10%" style={{ "-ms-interpolation-mode": "nearest-neighbor" }} />
+                  <Box as="img" src={data.sprites.finished} m={0} width="75%" mx="10%" />
                 </Table.Cell>
               )
               : (
                 <Table.Cell>
                   <Box grow>
-                    <Icon name="image" ml="25%" size={5} style={{ "-ms-interpolation-mode": "nearest-neighbor" }} />
+                    <Icon name="image" ml="25%" size={5} />
                   </Box>
                 </Table.Cell>
               )
           }
         </Table.Row>
       </Table>
-      {
-        !!data.generate_full_preview
-          && `Time Spent: ${data.sprites.time_spent}ms`
-      }
-      <Divider />
       {
         !data.refreshing
           && (
@@ -232,9 +212,8 @@ const PreviewDisplay = (props, context) => {
                 !!data.generate_full_preview && data.sprites.steps !== null
                   && (
                     <Table.Row header>
-                      <Table.Cell width="50%" textAlign="center">Layer Source</Table.Cell>
-                      <Table.Cell width="25%" textAlign="center">Step Layer</Table.Cell>
-                      <Table.Cell width="25%" textAlign="center">Step Result</Table.Cell>
+                      <Table.Cell textAlign="center">Step Layer</Table.Cell>
+                      <Table.Cell textAlign="center">Step Result</Table.Cell>
                     </Table.Row>
                   )
               }
@@ -242,13 +221,8 @@ const PreviewDisplay = (props, context) => {
                 !!data.generate_full_preview && data.sprites.steps !== null
                   && data.sprites.steps.map(item => (
                     <Table.Row key={`${item.result}|${item.layer}`}>
-                      <Table.Cell verticalAlign="middle">{item.config_name}</Table.Cell>
-                      <Table.Cell>
-                        <SingleSprite source={item.layer} />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <SingleSprite source={item.result} />
-                      </Table.Cell>
+                      <Table.Cell width="50%"><SingleSprite source={item.result} /></Table.Cell>
+                      <Table.Cell width="50%"><SingleSprite source={item.layer} /></Table.Cell>
                     </Table.Row>
                   ))
               }
@@ -268,7 +242,6 @@ const SingleSprite = (props) => {
       as="img"
       src={source}
       width="100%"
-      style={{ "-ms-interpolation-mode": "nearest-neighbor" }}
     />
   );
 };

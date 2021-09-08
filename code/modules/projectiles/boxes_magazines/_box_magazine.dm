@@ -14,7 +14,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
-	override_notes = TRUE
 	///list containing the actual ammo within the magazine
 	var/list/stored_ammo = list()
 	///type that the magazine will be searching for, rejects if not a subtype of
@@ -42,23 +41,6 @@
 	if(!start_empty)
 		top_off(starting=TRUE)
 
-/obj/item/ammo_box/add_weapon_description()
-	AddElement(/datum/element/weapon_description, attached_proc = .proc/add_notes_box)
-
-/obj/item/ammo_box/proc/add_notes_box()
-	var/list/readout = list()
-
-	if(caliber && max_ammo) // Text references a 'magazine' as only magazines generally have the caliber variable initialized
-		readout += "Up to [span_warning("[max_ammo] [caliber] rounds")] can be found within this magazine. \
-		\nAccidentally discharging any of these projectiles may void your insurance contract."
-
-	var/obj/item/ammo_casing/mag_ammo = get_round(TRUE)
-
-	if(istype(mag_ammo))
-		readout += "\n[mag_ammo.add_notes_ammo()]"
-
-	return readout.Join("\n")
-
 /**
  * top_off is used to refill the magazine to max, in case you want to increase the size of a magazine with VV then refill it at once
  *
@@ -76,7 +58,7 @@
 		return
 
 	for(var/i = max(1, stored_ammo.len), i <= max_ammo, i++)
-		stored_ammo += new round_check() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+		stored_ammo += new round_check(src)
 	update_ammo_count()
 
 ///gets a round from the magazine, if keep is TRUE the round will stay in the gun
@@ -98,7 +80,7 @@
 
 	if (stored_ammo.len < max_ammo)
 		stored_ammo += R
-		R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+		R.forceMove(src)
 		return TRUE
 
 	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
@@ -109,7 +91,7 @@
 				AC.forceMove(get_turf(src.loc))
 
 				stored_ammo += R
-				R.moveToNullspace() //SKYRAT EDTI CHANGE - SEC_HUAL - Moving to nullspace seems to help with lag.
+				R.forceMove(src)
 				return TRUE
 	return FALSE
 
@@ -141,7 +123,7 @@
 
 	if(num_loaded)
 		if(!silent)
-			to_chat(user, span_notice("You load [num_loaded] shell\s into \the [src]!"))
+			to_chat(user, "<span class='notice'>You load [num_loaded] shell\s into \the [src]!</span>")
 			playsound(src, 'sound/weapons/gun/general/mag_bullet_insert.ogg', 60, TRUE)
 		update_ammo_count()
 
@@ -156,7 +138,7 @@
 	if(!user.is_holding(src) || !user.put_in_hands(A)) //incase they're using TK
 		A.bounce_away(FALSE, NONE)
 	playsound(src, 'sound/weapons/gun/general/mag_bullet_insert.ogg', 60, TRUE)
-	to_chat(user, span_notice("You remove a round from [src]!"))
+	to_chat(user, "<span class='notice'>You remove a round from [src]!</span>")
 	update_ammo_count()
 
 /// Updates the materials and appearance of this ammo box
@@ -176,12 +158,6 @@
 			icon_state = "[initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
-		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
-		if(AMMO_BOX_FULL_EMPTY_BASIC)
-			icon_state = "[initial(icon_state)]-[shells_left ? "full" : "empty"]"
-		//SKYRAT EDIT END
-	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	update_custom_materials()
 	return ..()
 
 /// Updates the amount of material in this ammo box according to how many bullets are left in it.
@@ -216,10 +192,3 @@
 /obj/item/ammo_box/magazine/handle_atom_del(atom/A)
 	stored_ammo -= A
 	update_ammo_count()
-
-//SKRYAT EDIT ADDITION BEGIN - SEC_HAUL
-/obj/item/ammo_box/Destroy()
-	. = ..()
-	for(var/i in stored_ammo)
-		qdel(i)
-//SKYRAT EDIT END

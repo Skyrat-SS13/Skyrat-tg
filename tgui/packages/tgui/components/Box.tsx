@@ -38,7 +38,6 @@ export interface BoxProps {
   bold?: BooleanLike;
   italic?: BooleanLike;
   nowrap?: BooleanLike;
-  preserveWhitespace?: BooleanLike;
   m?: string | BooleanLike;
   mx?: string | BooleanLike;
   my?: string | BooleanLike;
@@ -93,7 +92,9 @@ export const halfUnit = (value: unknown): string | undefined => {
 const isColorCode = (str: unknown) => !isColorClass(str);
 
 const isColorClass = (str: unknown): boolean => {
-  return typeof str === "string" && CSS_COLORS.includes(str);
+  if (typeof str === 'string') {
+    return CSS_COLORS.includes(str);
+  }
 };
 
 const mapRawPropTo = attrName => (style, value) => {
@@ -162,7 +163,6 @@ const styleMapperByPropName = {
   bold: mapBooleanPropTo('font-weight', 'bold'),
   italic: mapBooleanPropTo('font-style', 'italic'),
   nowrap: mapBooleanPropTo('white-space', 'nowrap'),
-  preserveWhitespace: mapBooleanPropTo('white-space', 'pre-wrap'),
   // Margins
   m: mapDirectionalUnitPropTo('margin', halfUnit, [
     'top', 'bottom', 'left', 'right',

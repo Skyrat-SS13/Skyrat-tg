@@ -114,14 +114,14 @@
 
 	. = DRAIN_RD_HACK_FAILED
 
-	to_chat(ninja, span_notice("Hacking \the [src]..."))
+	to_chat(ninja, "<span class='notice'>Hacking \the [src]...</span>")
 	AI_notify_hack()
 
 	if(stored_research)
-		to_chat(ninja, span_notice("Copying files..."))
+		to_chat(ninja, "<span class='notice'>Copying files...</span>")
 		if(do_after(ninja, ninja_suit.s_delay, target = src) && src)
 			stored_research.copy_research_to(ninja_suit.stored_research)
-	to_chat(ninja, span_notice("Data analyzed. Process finished."))
+	to_chat(ninja, "<span class='notice'>Data analyzed. Process finished.</span>")
 
 //RD SERVER//
 /obj/machinery/rnd/server/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
@@ -130,14 +130,14 @@
 
 	. = DRAIN_RD_HACK_FAILED
 
-	to_chat(ninja, span_notice("Hacking \the [src]..."))
+	to_chat(ninja, "<span class='notice'>Hacking \the [src]...</span>")
 	AI_notify_hack()
 
 	if(stored_research)
-		to_chat(ninja, span_notice("Copying files..."))
+		to_chat(ninja, "<span class='notice'>Copying files...</span>")
 		if(do_after(ninja, ninja_suit.s_delay, target = src) && src)
 			stored_research.copy_research_to(ninja_suit.stored_research)
-	to_chat(ninja, span_notice("Data analyzed. Process finished."))
+	to_chat(ninja, "<span class='notice'>Data analyzed. Process finished.</span>")
 
 //SECURITY CONSOLE//
 /obj/machinery/computer/secure_data/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
@@ -155,7 +155,6 @@
 		if(objective)
 			objective.completed = TRUE
 
-/* SKYRAT EDIT REMOVAL
 //COMMUNICATIONS CONSOLE//
 /obj/machinery/computer/communications/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
 	if(!ninja_suit || !ninja || !ninja_gloves)
@@ -181,7 +180,7 @@
 		var/datum/objective/terror_message/objective = locate() in ninja_antag.objectives
 		if(objective)
 			objective.completed = TRUE
-*/
+
 //AIRLOCK//
 /obj/machinery/door/airlock/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
 	if(!ninja_suit || !ninja || !ninja_gloves)
@@ -244,7 +243,7 @@
 	var/drain = 0 //Drain amount
 	var/drain_total = 0
 
-	to_chat(occupants, "[icon2html(src, occupants)][span_danger("Warning: Unauthorized access through sub-route 4, block H, detected.")]")
+	to_chat(occupants, "[icon2html(src, occupants)]<span class='danger'>Warning: Unauthorized access through sub-route 4, block H, detected.</span>")
 	if(get_charge())
 		while(cell.charge > 0 && !maxcapacity)
 			drain = rand(ninja_gloves.mindrain, ninja_gloves.maxdrain)
@@ -266,31 +265,20 @@
 
 //BORG//
 /mob/living/silicon/robot/ninjadrain_act(obj/item/clothing/suit/space/space_ninja/ninja_suit, mob/living/carbon/human/ninja, obj/item/clothing/gloves/space_ninja/ninja_gloves)
-	//SKYRAT EDIT: ADDITION START
-	var/list/modelselected = list()
-	modelselected["Assault"] = "/obj/item/robot_model/ninja"
-	modelselected["Medical"] = "/obj/item/robot_model/ninja/ninja_medical"
-	modelselected["Saboteur"] = "/obj/item/robot_model/ninja_saboteur"
-	//SKYRAT EDIT: ADDITION END
-
 	if(!ninja_suit || !ninja || !ninja_gloves || (ROLE_NINJA in faction))
 		return INVALID_DRAIN
 
-	to_chat(src, span_danger("Warni-***BZZZZZZZZZRT*** UPLOADING SPYDERPATCHER VERSION 9.5.2..."))
+	to_chat(src, "<span class='danger'>Warni-***BZZZZZZZZZRT*** UPLOADING SPYDERPATCHER VERSION 9.5.2...</span>")
 	if (do_after(ninja, 60, target = src))
 		spark_system.start()
 		playsound(loc, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		to_chat(src, span_danger("UPLOAD COMPLETE. NEW CYBORG MODEL DETECTED.  INSTALLING..."))
+		to_chat(src, "<span class='danger'>UPLOAD COMPLETE. NEW CYBORG MODEL DETECTED.  INSTALLING...</span>")
 		faction = list(ROLE_NINJA)
 		bubble_icon = "syndibot"
 		UnlinkSelf()
 		ionpulse = TRUE
 		laws = new /datum/ai_laws/ninja_override()
-		//SKYRAT EDIT CHANGE BEGIN - Role Selection
-		//model.transform_to(pick(/obj/item/robot_model/syndicate, /obj/item/robot_model/syndicate_medical, /obj/item/robot_model/saboteur)) - SKYRAT EDIT - ORIGINAL
-		var/choice = input(src,"What role do you wish to become?","Select Role") in sortList(modelselected)
-		model.transform_to(modelselected[choice])
-		//SKYRAT EDIT CHANGE END
+		model.transform_to(pick(/obj/item/robot_model/syndicate, /obj/item/robot_model/syndicate_medical, /obj/item/robot_model/saboteur))
 
 		var/datum/antagonist/ninja/ninja_antag = ninja.mind.has_antag_datum(/datum/antagonist/ninja)
 		if(!ninja_antag)
@@ -313,5 +301,5 @@
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, loc)
 		playsound(src, "sparks", 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-		visible_message(span_danger("[ninja] electrocutes [src] with [ninja.p_their()] touch!"), span_userdanger("[ninja] electrocutes you with [ninja.p_their()] touch!"))
+		visible_message("<span class='danger'>[ninja] electrocutes [src] with [ninja.p_their()] touch!</span>", "<span class='userdanger'>[ninja] electrocutes you with [ninja.p_their()] touch!</span>")
 		Knockdown(3 SECONDS)

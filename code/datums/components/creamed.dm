@@ -23,9 +23,9 @@ GLOBAL_LIST_INIT(creamable, typecacheof(list(
 
 	if(ishuman(parent))
 		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.limbs_id == SPECIES_LIZARD)
+		if(H.dna.species.limbs_id == "lizard")
 			creamface.icon_state = "creampie_lizard"
-		else if(H.dna.species.limbs_id == SPECIES_MONKEY)
+		else if(H.dna.species.limbs_id == "monkey")
 			creamface.icon_state = "creampie_monkey"
 		else
 			creamface.icon_state = "creampie_human"

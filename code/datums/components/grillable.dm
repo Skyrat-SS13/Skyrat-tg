@@ -16,10 +16,7 @@
 	///Do we use the large steam sprite?
 	var/use_large_steam_sprite = FALSE
 
-	/// What type of pollutant we spread around as we are grilleed, can be none  // SKYRAT EDIT ADDITION
-	var/pollutant_type // SKYRAT EDIT ADDITION
-
-/datum/component/grillable/Initialize(cook_result, required_cook_time, positive_result, use_large_steam_sprite, pollutant_type) //SKYRAT EDIT CHANGE
+/datum/component/grillable/Initialize(cook_result, required_cook_time, positive_result, use_large_steam_sprite)
 	. = ..()
 	if(!isitem(parent)) //Only items support grilling at the moment
 		return COMPONENT_INCOMPATIBLE
@@ -28,7 +25,6 @@
 	src.required_cook_time = required_cook_time
 	src.positive_result = positive_result
 	src.use_large_steam_sprite = use_large_steam_sprite
-	src.pollutant_type = pollutant_type //SKYRAT EDIT ADDITION
 
 	RegisterSignal(parent, COMSIG_ITEM_GRILLED, .proc/OnGrill)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/OnExamine)
@@ -51,11 +47,6 @@
 	SIGNAL_HANDLER
 
 	. = COMPONENT_HANDLED_GRILLING
-	//SKYRAT EDIT ADDITION
-	if(pollutant_type)
-		var/turf/parent_turf = get_turf(parent)
-		parent_turf.PolluteTurf(pollutant_type, 10)
-	//SKYRAT EDIT END
 
 	current_cook_time += delta_time * 10 //turn it into ds
 	if(current_cook_time >= required_cook_time)
@@ -79,9 +70,6 @@
 	var/atom/original_object = parent
 	var/atom/grilled_result = new cook_result(original_object.loc)
 
-	if(original_object.custom_materials)
-		grilled_result.set_custom_materials(original_object.custom_materials, 1)
-
 	grilled_result.pixel_x = original_object.pixel_x
 	grilled_result.pixel_y = original_object.pixel_y
 
@@ -96,16 +84,16 @@
 
 	if(!current_cook_time) //Not grilled yet
 		if(positive_result)
-			examine_list += span_notice("[parent] can be <b>grilled</b> into \a [initial(cook_result.name)].")
+			examine_list += "<span class='notice'>[parent] can be <b>grilled</b> into \a [initial(cook_result.name)].</span>"
 		return
 
 	if(positive_result)
 		if(current_cook_time <= required_cook_time * 0.75)
-			examine_list += span_notice("[parent] probably needs to be cooked a bit longer!")
+			examine_list += "<span class='notice'>[parent] probably needs to be cooked a bit longer!</span>"
 		else if(current_cook_time <= required_cook_time)
-			examine_list += span_notice("[parent] seems to be almost finished cooking!")
+			examine_list += "<span class='notice'>[parent] seems to be almost finished cooking!</span>"
 	else
-		examine_list += span_danger("[parent] should probably not be cooked for much longer!")
+		examine_list += "<span class='danger'>[parent] should probably not be cooked for much longer!</span>"
 
 ///Ran when an object moves from the grill
 /datum/component/grillable/proc/OnMoved(atom/A, atom/OldLoc, Dir, Forced)

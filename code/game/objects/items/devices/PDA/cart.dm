@@ -1,4 +1,4 @@
-/obj/item/cartridge //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/cartridge
 	name = "generic cartridge"
 	desc = "A data cartridge for portable microcomputers."
 	icon = 'icons/obj/pda.dmi'
@@ -98,14 +98,14 @@
 	bot_access_flags = FLOOR_BOT | CLEAN_BOT | MED_BOT | FIRE_BOT | VIBE_BOT
 	access = CART_DRONEPHONE
 
-/obj/item/cartridge/signal//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/cartridge/signal
 	name = "generic signaler cartridge"
 	desc = "A data cartridge with an integrated radio signaler module."
 
-/obj/item/cartridge/signal/ordnance
+/obj/item/cartridge/signal/toxins
 	name = "\improper Signal Ace 2 cartridge"
 	desc = "Complete with integrated radio signaler!"
-	icon_state = "cart-ord"
+	icon_state = "cart-tox"
 	access = CART_REAGENT_SCANNER | CART_ATMOS
 
 /obj/item/cartridge/signal/Initialize()
@@ -251,7 +251,7 @@ Code:
 
 
 			if(!powercount)
-				menu += span_danger("No connection<BR>")
+				menu += "<span class='danger'>No connection<BR></span>"
 			else
 
 				menu += "<FONT SIZE=-1>"
@@ -265,7 +265,7 @@ Code:
 		if (433)
 			menu = "<h4>[PDAIMG(power)] Power Monitor </h4><BR>"
 			if(!powmonitor || !powmonitor.get_powernet())
-				menu += span_danger("No connection<BR>")
+				menu += "<span class='danger'>No connection<BR></span>"
 			else
 				var/list/L = list()
 				var/datum/powernet/connected_powernet = powmonitor.get_powernet()

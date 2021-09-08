@@ -1,5 +1,4 @@
 #define IMPORTANT_ACTION_COOLDOWN (60 SECONDS)
-#define EMERGENCY_ACCESS_COOLDOWN (30 SECONDS)
 #define MAX_STATUS_LINE_LENGTH 40
 
 #define STATE_BUYING_SHUTTLE "buying_shuttle"
@@ -19,7 +18,6 @@
 
 	/// Cooldown for important actions, such as messaging CentCom or other sectors
 	COOLDOWN_DECLARE(static/important_action_cooldown)
-	COOLDOWN_DECLARE(static/emergency_access_cooldown)
 
 	/// The current state of the UI
 	var/state = STATE_MAIN
@@ -42,13 +40,6 @@
 
 	/// The last lines used for changing the status display
 	var/static/last_status_display
-
-	///how many uses the console has done of toggling the emergency access
-	var/toggle_uses = 0
-	///how many uses can you toggle emergency access with before cooldowns start occuring BOTH ENABLE/DISABLE
-	var/toggle_max_uses = 3
-	///when was emergency access last toggled
-	var/last_toggled
 
 /obj/machinery/computer/communications/Initialize()
 	. = ..()
@@ -73,12 +64,6 @@
 		return TRUE
 	return authenticated
 
-/// Skyrat Edit Start - Are we the AI?
-/obj/machinery/computer/communications/proc/authenticated_as_ai_or_captain(mob/user)
-	if (isAI(user))
-		return TRUE
-	return ACCESS_CAPTAIN in authorize_access //Skyrat Edit End
-
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/card/id))
 		attack_hand(user)
@@ -91,7 +76,7 @@
 	obj_flags |= EMAGGED
 	if (authenticated)
 		authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
-	to_chat(user, span_danger("You scramble the communication routing circuits!"))
+	to_chat(user, "<span class='danger'>You scramble the communication routing circuits!</span>")
 	playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 
 /obj/machinery/computer/communications/ui_act(action, list/params)
@@ -144,30 +129,29 @@
 				var/obj/item/held_item = usr.get_active_held_item()
 				var/obj/item/card/id/id_card = held_item?.GetID()
 				if (!istype(id_card))
-					to_chat(usr, span_warning("You need to swipe your ID!"))
+					to_chat(usr, "<span class='warning'>You need to swipe your ID!</span>")
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
 				if (!(ACCESS_CAPTAIN in id_card.access))
-					to_chat(usr, span_warning("You are not authorized to do this!"))
+					to_chat(usr, "<span class='warning'>You are not authorized to do this!</span>")
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
 
 			var/new_sec_level = seclevel2num(params["newSecurityLevel"])
-			//if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE) - ORIGINAL
-			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_AMBER) //SKYRAT EDIT CHANGE - ALERTS
+			if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE)
 				return
 			if (SSsecurity_level.current_level == new_sec_level)
 				return
 
 			set_security_level(new_sec_level)
 
-			to_chat(usr, span_notice("Authorization confirmed. Modifying security level."))
+			to_chat(usr, "<span class='notice'>Authorization confirmed. Modifying security level.</span>")
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 			// Only notify people if an actual change happened
 			log_game("[key_name(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
-			deadchat_broadcast(" has changed the security level to [params["newSecurityLevel"]] with [src] at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+			deadchat_broadcast(" has changed the security level to [params["newSecurityLevel"]] with [src] at <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[usr.real_name]</span>", usr, message_type=DEADCHAT_ANNOUNCEMENT)
 
 			alert_level_tick += 1
 		if ("deleteMessage")
@@ -177,12 +161,18 @@
 			if (!message_index)
 				return
 			LAZYREMOVE(messages, LAZYACCESS(messages, message_index))
+		if ("emergency_meeting")
+			if(!(SSevents.holidays && SSevents.holidays[APRIL_FOOLS]))
+				return
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+			emergency_meeting(usr)
 		if ("makePriorityAnnouncement")
 			if (!authenticated_as_silicon_or_captain(usr))
 				return
 			make_announcement(usr)
 		if ("messageAssociates")
-			if (!authenticated_as_ai_or_captain(usr)) //Skyrat edit | Allows AI and Captain to send messages
+			if (!authenticated_as_non_silicon_captain(usr))
 				return
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
@@ -193,20 +183,20 @@
 			var/emagged = obj_flags & EMAGGED
 			if (emagged)
 				message_syndicate(message, usr)
-				to_chat(usr, span_danger("SYSERR @l(19833)of(transmit.dm): !@$ MESSAGE TRANSMITTED TO SYNDICATE COMMAND."))
+				to_chat(usr, "<span class='danger'>SYSERR @l(19833)of(transmit.dm): !@$ MESSAGE TRANSMITTED TO SYNDICATE COMMAND.</span>")
 			else
 				message_centcom(message, usr)
-				to_chat(usr, span_notice("Message transmitted to Central Command."))
+				to_chat(usr, "<span class='notice'>Message transmitted to Central Command.</span>")
 
 			var/associates = emagged ? "the Syndicate": "CentCom"
 			usr.log_talk(message, LOG_SAY, tag = "message to [associates]")
-			deadchat_broadcast(" has messaged [associates], \"[message]\" at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+			deadchat_broadcast(" has messaged [associates], \"[message]\" at <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[usr.real_name]</span>", usr, message_type = DEADCHAT_ANNOUNCEMENT)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("purchaseShuttle")
 			var/can_buy_shuttles_or_fail_reason = can_buy_shuttles(usr)
 			if (can_buy_shuttles_or_fail_reason != TRUE)
 				if (can_buy_shuttles_or_fail_reason != FALSE)
-					to_chat(usr, span_alert("[can_buy_shuttles_or_fail_reason]"))
+					to_chat(usr, "<span class='alert'>[can_buy_shuttles_or_fail_reason]</span>")
 				return
 			var/list/shuttles = flatten_list(SSmapping.shuttle_templates)
 			var/datum/map_template/shuttle/shuttle = locate(params["shuttle"]) in shuttles
@@ -215,14 +205,12 @@
 			if (!can_purchase_this_shuttle(shuttle))
 				return
 			if (!shuttle.prerequisites_met())
-				to_chat(usr, span_alert("You have not met the requirements for purchasing this shuttle."))
+				to_chat(usr, "<span class='alert'>You have not met the requirements for purchasing this shuttle.</span>")
 				return
 			var/datum/bank_account/bank_account = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			if (bank_account.account_balance < shuttle.credit_cost)
 				return
 			SSshuttle.shuttle_purchased = SHUTTLEPURCHASE_PURCHASED
-			for(var/datum/round_event_control/shuttle_insurance/insurance_event in SSevents.control)
-				insurance_event.weight *= 20
 			SSshuttle.unload_preview()
 			SSshuttle.existing_shuttle = SSshuttle.emergency
 			SSshuttle.action_load(shuttle, replace = TRUE)
@@ -244,7 +232,7 @@
 				return
 			var/reason = trim(html_encode(params["reason"]), MAX_MESSAGE_LEN)
 			nuke_request(reason, usr)
-			to_chat(usr, span_notice("Request sent."))
+			to_chat(usr, "<span class='notice'>Request sent.</span>")
 			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
 			priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self-Destruct Codes Requested", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
@@ -254,7 +242,7 @@
 				return
 			if (!(obj_flags & EMAGGED))
 				return
-			to_chat(usr, span_notice("Backup routing data restored."))
+			to_chat(usr, "<span class='notice'>Backup routing data restored.</span>")
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 			obj_flags &= ~EMAGGED
 		if ("sendToOtherSector")
@@ -265,7 +253,7 @@
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
 
-			var/message = trim(params["message"], MAX_MESSAGE_LEN)
+			var/message = trim(html_encode(params["message"]), MAX_MESSAGE_LEN)
 			if (!message)
 				return
 
@@ -279,7 +267,7 @@
 				payload["network"] = network_name
 			payload["sender_ckey"] = usr.ckey
 
-			send2otherserver(html_decode(station_name()), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload)
+			send2otherserver(station_name(), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload)
 			minor_announce(message, title = "Outgoing message to allied station")
 			usr.log_talk(message, LOG_SAY, tag = "message to the other server")
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server\[s].")
@@ -325,7 +313,7 @@
 				authenticated = TRUE
 				authorize_access = SSid_access.get_region_access_list(list(REGION_ALL_STATION))
 				authorize_name = "Unknown"
-				to_chat(usr, span_warning("[src] lets out a quiet alarm as its login is overridden."))
+				to_chat(usr, "<span class='warning'>[src] lets out a quiet alarm as its login is overridden.</span>")
 				playsound(src, 'sound/machines/terminal_alert.ogg', 25, FALSE)
 			else if(isliving(usr))
 				var/mob/living/L = usr
@@ -338,36 +326,34 @@
 			state = STATE_MAIN
 			playsound(src, 'sound/machines/terminal_on.ogg', 50, FALSE)
 		if ("toggleEmergencyAccess")
-			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
-				return
 			if (!authenticated_as_silicon_or_captain(usr))
 				return
 			if (GLOB.emergency_access)
 				revoke_maint_all_access()
 				log_game("[key_name(usr)] disabled emergency maintenance access.")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] disabled emergency maintenance access.")
-				deadchat_broadcast(" disabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+				deadchat_broadcast(" disabled emergency maintenance access at <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[usr.real_name]</span>", usr, message_type = DEADCHAT_ANNOUNCEMENT)
 			else
 				make_maint_all_access()
 				log_game("[key_name(usr)] enabled emergency maintenance access.")
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
-				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
+				deadchat_broadcast(" enabled emergency maintenance access at <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[usr.real_name]</span>", usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
 		if("requestSafeCodes")
 			if(SSjob.assigned_captain)
-				to_chat(usr, span_warning("There is already an assigned Captain or Acting Captain on deck!"))
+				to_chat(usr, "<span class='warning'>There is already an assigned Captain or Acting Captain on deck!</span>")
 				return
 
 			if(SSjob.safe_code_timer_id)
-				to_chat(usr, span_warning("The safe code has already been requested and is being delivered to your station!"))
+				to_chat(usr, "<span class='warning'>The safe code has already been requested and is being delivered to your station!</span>")
 				return
 
 			if(SSjob.safe_code_requested)
-				to_chat(usr, span_warning("The safe code has already been requested and delivered to your station!"))
+				to_chat(usr, "<span class='warning'>The safe code has already been requested and delivered to your station!</span>")
 				return
 
 			if(!SSid_access.spare_id_safe_code)
-				to_chat(usr, span_warning("There is no safe code to deliver to your station!"))
+				to_chat(usr, "<span class='warning'>There is no safe code to deliver to your station!</span>")
 				return
 
 			var/turf/pod_location = get_turf(src)
@@ -376,24 +362,6 @@
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, /datum/controller/subsystem/job.proc/send_spare_id_safe_code, pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
-
-/obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
-	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
-		to_chat(user, span_warning("This was your last free use without cooldown, you will not be able to use this again for [DisplayTimeText(EMERGENCY_ACCESS_COOLDOWN)]."))
-		COOLDOWN_START(src, emergency_access_cooldown, EMERGENCY_ACCESS_COOLDOWN)
-		++toggle_uses //add a use so that this if() is false the next time you try this button
-		return FALSE
-
-	if(!COOLDOWN_FINISHED(src, emergency_access_cooldown))
-		var/time_left = DisplayTimeText(COOLDOWN_TIMELEFT(src, emergency_access_cooldown), 1)
-		to_chat(user, span_warning("Emergency Access is still in cooldown for [time_left]!"))
-		return TRUE //dont use the button, we are in cooldown
-	else if((last_toggled + EMERGENCY_ACCESS_COOLDOWN) < world.time)
-		toggle_uses = 0 //either cooldown is done, or we just havent touched it in 30 seconds, either way reset uses
-
-	++toggle_uses //add a use
-	last_toggled = world.time
-	return FALSE //if we are not in cooldown, allow using the button
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
@@ -439,7 +407,7 @@
 				data["importantActionReady"] = COOLDOWN_FINISHED(src, important_action_cooldown)
 				data["shuttleCalled"] = FALSE
 				data["shuttleLastCalled"] = FALSE
-
+				data["aprilFools"] = SSevents.holidays && SSevents.holidays[APRIL_FOOLS]
 				data["alertLevel"] = get_security_level()
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
@@ -469,9 +437,6 @@
 					data["alertLevelTick"] = alert_level_tick
 					data["canMakeAnnouncement"] = TRUE
 					data["canSetAlertLevel"] = issilicon(user) ? "NO_SWIPE_NEEDED" : "SWIPE_NEEDED"
-
-				if (authenticated_as_ai_or_captain(user))
-					data["canMessageAssociates"] = TRUE //Skyrat Edit | Allows AI to report to CC in the event of there being no command alive/to begin with
 
 				if (SSshuttle.emergency.mode != SHUTTLE_IDLE && SSshuttle.emergency.mode != SHUTTLE_RECALL)
 					data["shuttleCalled"] = TRUE
@@ -600,7 +565,7 @@
 		return
 
 	return length(CONFIG_GET(keyed_list/cross_server)) > 0
-/*
+
 /**
  * Call an emergency meeting
  *
@@ -613,27 +578,26 @@
  */
 /obj/machinery/computer/communications/proc/emergency_meeting(mob/living/user)
 	if(!SScommunications.can_make_emergency_meeting(user))
-		to_chat(user, span_alert("The emergency meeting button doesn't seem to work right now. Please stand by."))
+		to_chat(user, "<span class='alert'>The emergency meeting button doesn't seem to work right now. Please stand by.</span>")
 		return
 	SScommunications.emergency_meeting(user)
-	deadchat_broadcast(" called an emergency meeting from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
-*/
+	deadchat_broadcast(" called an emergency meeting from <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[user.real_name]</span>", user, message_type=DEADCHAT_ANNOUNCEMENT)
 
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user)
 	var/is_ai = issilicon(user)
 	if(!SScommunications.can_announce(user, is_ai))
-		to_chat(user, span_alert("Intercomms recharging. Please stand by."))
+		to_chat(user, "<span class='alert'>Intercomms recharging. Please stand by.</span>")
 		return
 	var/input = stripped_input(user, "Please choose a message to announce to the station crew.", "What?")
 	if(!input || !user.canUseTopic(src, !issilicon(usr)))
 		return
 	if(!(user.can_speak())) //No more cheating, mime/random mute guy!
 		input = "..."
-		to_chat(user, span_warning("You find yourself unable to speak."))
+		to_chat(user, "<span class='warning'>You find yourself unable to speak.</span>")
 	else
 		input = user.treat_message(input) //Adds slurs and so on. Someone should make this use languages too.
 	SScommunications.make_announcement(user, is_ai, input)
-	deadchat_broadcast(" made a priority announcement from [span_name("[get_area_name(usr, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
+	deadchat_broadcast(" made a priority announcement from <span class='name'>[get_area_name(usr, TRUE)]</span>.", "<span class='name'>[user.real_name]</span>", user, message_type=DEADCHAT_ANNOUNCEMENT)
 
 /obj/machinery/computer/communications/proc/post_status(command, data1, data2)
 
@@ -682,7 +646,6 @@
 		possible_answers = new_possible_answers
 
 #undef IMPORTANT_ACTION_COOLDOWN
-#undef EMERGENCY_ACCESS_COOLDOWN
 #undef MAX_STATUS_LINE_LENGTH
 #undef STATE_BUYING_SHUTTLE
 #undef STATE_CHANGING_STATUS

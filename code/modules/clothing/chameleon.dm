@@ -57,7 +57,7 @@
 	else if(istype(old_headgear, /obj/item/clothing/mask/chameleon/drone))
 		new_headgear = new /obj/item/clothing/head/chameleon/drone()
 	else
-		to_chat(owner, span_warning("You shouldn't be able to toggle a camogear helmetmask if you're not wearing it."))
+		to_chat(owner, "<span class='warning'>You shouldn't be able to toggle a camogear helmetmask if you're not wearing it.</span>")
 	if(new_headgear)
 		// Force drop the item in the headslot, even though
 		// it's has TRAIT_NODROP
@@ -379,8 +379,6 @@
 	random_sensor = FALSE
 	resistance_flags = NONE
 	can_adjust = FALSE
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A chameleon jumpsuit employed by the Syndicate in infiltration operations." // Skyrat edit
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
@@ -411,8 +409,6 @@
 	blood_overlay_type = "armor"
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit 
-	special_desc = "A chameleon vest employed by the Syndicate in infiltration operations." // Skyrat edit
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
@@ -441,8 +437,6 @@
 	inhand_icon_state = "meson"
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "Chameleon glasses employed by the Syndicate in infiltration operations." // Skyrat edit
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
@@ -469,8 +463,6 @@
 	name = "insulated gloves"
 	icon_state = "yellow"
 	inhand_icon_state = "ygloves"
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A pair of chameleon gloves employed by the Syndicate in infiltration operations." // Skyrat edit
 
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
@@ -499,8 +491,6 @@
 	name = "grey cap"
 	desc = "It's a baseball hat in a tasteful grey colour."
 	icon_state = "greysoft"
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
-	special_desc = "A chameleon hat employed by the Syndicate in infiltration operations."
 
 	resistance_flags = NONE
 	armor = list(MELEE = 5, BULLET = 5, LASER = 5, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
@@ -553,8 +543,6 @@
 	permeability_coefficient = 0.01
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A chameleon mask employed by the Syndicate in infiltration operations, frequently used to mimic the voice of other crewmembers using fake id's." // Skyrat edit
 
 	var/voice_change = 1 ///This determines if the voice changer is on or off.
 
@@ -580,7 +568,7 @@
 
 /obj/item/clothing/mask/chameleon/attack_self(mob/user)
 	voice_change = !voice_change
-	to_chat(user, span_notice("The voice changer is now [voice_change ? "on" : "off"]!"))
+	to_chat(user, "<span class='notice'>The voice changer is now [voice_change ? "on" : "off"]!</span>")
 
 
 /obj/item/clothing/mask/chameleon/drone
@@ -599,7 +587,7 @@
 	randomise_action.UpdateButtonIcon()
 
 /obj/item/clothing/mask/chameleon/drone/attack_self(mob/user)
-	to_chat(user, span_notice("[src] does not have a voice changer."))
+	to_chat(user, "<span class='notice'>[src] does not have a voice changer.</span>")
 
 /obj/item/clothing/shoes/chameleon
 	name = "black shoes"
@@ -612,9 +600,6 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A pair of chameleon shoes employed by the Syndicate in infiltration operations." // Skyrat edit
-
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
@@ -635,9 +620,6 @@
 /obj/item/clothing/shoes/chameleon/noslip
 	clothing_flags = NOSLIP
 	can_be_bloody = FALSE
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
-	special_desc = "A pair of chameleon shoes with an anti-slip coating employed by the Syndicate in infiltration operations."  // Skyrat edit
-
 
 /obj/item/clothing/shoes/chameleon/noslip/broken/Initialize()
 	. = ..()
@@ -645,9 +627,6 @@
 
 /obj/item/storage/backpack/chameleon
 	name = "backpack"
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
-	special_desc = "A chameleon backpack employed by the Syndicate in infiltration operations."  // Skyrat edit
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /obj/item/storage/backpack/chameleon/Initialize()
@@ -670,9 +649,6 @@
 /obj/item/storage/belt/chameleon
 	name = "toolbelt"
 	desc = "Holds tools."
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
-	special_desc = "A chameleon belt employed by the Syndicate in infiltration operations."  // Skyrat edit
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /obj/item/storage/belt/chameleon/Initialize()
@@ -700,9 +676,6 @@
 
 /obj/item/radio/headset/chameleon
 	name = "radio headset"
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
-	special_desc = "A chameleon headset employed by the Syndicate in infiltration operations."  // Skyrat edit
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /obj/item/radio/headset/chameleon/Initialize()
@@ -765,9 +738,6 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	w_class = WEIGHT_CLASS_SMALL
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE  // Skyrat edit
-	special_desc = "A chameleon tie employed by the Syndicate in infiltration operations."  // Skyrat edit
-
 
 /obj/item/clothing/neck/chameleon
 	var/datum/action/item_action/chameleon/change/chameleon_action

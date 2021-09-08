@@ -70,12 +70,10 @@ DROP TABLE IF EXISTS `SS13_ban`;
 CREATE TABLE `SS13_ban` (
   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `bantime` DATETIME NOT NULL,
-  `server_name` VARCHAR(32) DEFAULT NULL,
   `server_ip` INT(10) UNSIGNED NOT NULL,
   `server_port` SMALLINT(5) UNSIGNED NOT NULL,
   `round_id` INT(11) UNSIGNED NOT NULL,
   `role` VARCHAR(32) NULL DEFAULT NULL,
-  `global_ban` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1',
   `expiration_time` DATETIME NULL DEFAULT NULL,
   `applies_to_admins` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0',
   `reason` VARCHAR(2048) NOT NULL,
@@ -135,7 +133,6 @@ DROP TABLE IF EXISTS `SS13_connection_log`;
 CREATE TABLE `SS13_connection_log` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datetime` datetime DEFAULT NULL,
-  `server_name` VARCHAR(32) DEFAULT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
   `round_id` int(11) unsigned NOT NULL,
@@ -160,7 +157,6 @@ CREATE TABLE `SS13_death` (
   `y_coord` smallint(5) unsigned NOT NULL,
   `z_coord` smallint(5) unsigned NOT NULL,
   `mapname` varchar(32) NOT NULL,
-  `server_name` varchar(32) DEFAULT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
   `round_id` int(11) NOT NULL,
@@ -231,7 +227,6 @@ CREATE TABLE `SS13_legacy_population` (
   `playercount` int(11) DEFAULT NULL,
   `admincount` int(11) DEFAULT NULL,
   `time` datetime NOT NULL,
-  `server_name` varchar(32) DEFAULT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
   `round_id` int(11) unsigned NOT NULL,
@@ -265,25 +260,6 @@ CREATE TABLE `SS13_library` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `SS13_library_action`
---
-
-DROP TABLE IF EXISTS `SS13_library_action`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `SS13_library_action` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `book` int(10) unsigned NOT NULL,
-  `reason` longtext DEFAULT NULL,
-  `ckey` varchar(11) NOT NULL DEFAULT '',
-  `datetime` datetime NOT NULL DEFAULT current_timestamp(),
-  `action` varchar(11) NOT NULL DEFAULT '',
-  `ip_addr` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `SS13_messages`
 --
 
@@ -297,7 +273,6 @@ CREATE TABLE `SS13_messages` (
   `adminckey` varchar(32) NOT NULL,
   `text` varchar(2048) NOT NULL,
   `timestamp` datetime NOT NULL,
-  `server_name` varchar(32) DEFAULT NULL,
   `server` varchar(32) DEFAULT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
@@ -487,7 +462,6 @@ CREATE TABLE `SS13_round` (
   `start_datetime` DATETIME NULL,
   `shutdown_datetime` DATETIME NULL,
   `end_datetime` DATETIME NULL,
-  `server_name` VARCHAR(32) DEFAULT NULL,
   `server_ip` INT(10) UNSIGNED NOT NULL,
   `server_port` SMALLINT(5) UNSIGNED NOT NULL,
   `commit_hash` CHAR(40) NULL,
@@ -654,20 +628,6 @@ CREATE TABLE `SS13_text_adventures` (
 	`timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`approved` TINYINT(1) NOT NULL DEFAULT FALSE,
 	PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `admin_connections`
---
-DROP TABLE IF EXISTS `SS13_admin_connections`;
-CREATE TABLE `SS13_admin_connections` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `ckey` VARCHAR(32) NOT NULL,
-  `ip` INT(11) UNSIGNED NOT NULL,
-  `cid` VARCHAR(32) NOT NULL,
-  `verification_time` DATETIME NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `unique_constraints` (`ckey`, `ip`, `cid`)
 ) ENGINE=InnoDB;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

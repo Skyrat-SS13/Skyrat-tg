@@ -4,12 +4,12 @@
 	icon_state = "dk_yellow"
 
 /area/ruin/powered/clownplanet
-	name = "\improper Clown Planet"
+	name = "Clown Planet"
 	icon_state = "dk_yellow"
 	ambientsounds = list('sound/ambience/clown.ogg')
 
 /area/ruin/unpowered/gaia
-	name = "\improper Patch of Eden"
+	name = "Patch of Eden"
 	icon_state = "dk_yellow"
 
 /area/ruin/powered/snow_biodome
@@ -19,14 +19,14 @@
 	icon_state = "dk_yellow"
 
 /area/ruin/powered/golem_ship
-	name = "\improper Free Golem Ship"
+	name = "Free Golem Ship"
 	icon_state = "dk_yellow"
 
 /area/ruin/powered/greed
 	icon_state = "dk_yellow"
 
 /area/ruin/unpowered/hierophant
-	name = "\improper Hierophant's Arena"
+	name = "Hierophant's Arena"
 	icon_state = "dk_yellow"
 
 /area/ruin/powered/pride
@@ -36,20 +36,20 @@
 	icon_state = "dk_yellow"
 
 /area/ruin/unpowered/elephant_graveyard
-	name = "\improper Elephant Graveyard"
+	name = "Elephant Graveyard"
 	icon_state = "dk_yellow"
 
 /area/ruin/powered/graveyard_shuttle
-	name = "\improper Elephant Graveyard"
+	name = "Elephant Graveyard"
 	icon_state = "green"
 
 /area/ruin/unpowered/syndicate_lava_base
-	name = "\improper Secret Base"
+	name = "Secret Base"
 	icon_state = "dk_yellow"
 	ambience_index = AMBIENCE_DANGER
 
 /area/ruin/unpowered/cultaltar
-	name = "\improper Cult Altar"
+	name = "Cult Altar"
 	area_flags = CULT_PERMITTED
 	ambience_index = AMBIENCE_SPOOKY
 
@@ -65,13 +65,13 @@
 	name = "Syndicate Lavaland Arrivals"
 
 /area/ruin/unpowered/syndicate_lava_base/bar
-	name = "\improper Syndicate Lavaland Bar"
+	name = "Syndicate Lavaland Bar"
 
 /area/ruin/unpowered/syndicate_lava_base/main
-	name = "\improper Syndicate Lavaland Primary Hallway"
+	name = "Syndicate Lavaland Primary Hallway"
 
 /area/ruin/unpowered/syndicate_lava_base/cargo
-	name = "\improper Syndicate Lavaland Cargo Bay"
+	name = "Syndicate Lavaland Cargo Bay"
 
 /area/ruin/unpowered/syndicate_lava_base/chemistry
 	name = "Syndicate Lavaland Chemistry"
@@ -80,14 +80,13 @@
 	name = "Syndicate Lavaland Virology"
 
 /area/ruin/unpowered/syndicate_lava_base/testlab
-	name = "\improper Syndicate Lavaland Experimentation Lab"
-	area_flags = XENOBIOLOGY_COMPATIBLE //SKYRAT EDIT ADDITION - MAPPING
+	name = "Syndicate Lavaland Experimentation Lab"
 
 /area/ruin/unpowered/syndicate_lava_base/dormitories
-	name = "\improper Syndicate Lavaland Dormitories"
+	name = "Syndicate Lavaland Dormitories"
 
 /area/ruin/unpowered/syndicate_lava_base/telecomms
-	name = "\improper Syndicate Lavaland Telecommunications"
+	name = "Syndicate Lavaland Telecommunications"
 
 //Xeno Nest
 

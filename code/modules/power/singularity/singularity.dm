@@ -2,7 +2,7 @@
 /obj/singularity
 	name = "gravitational singularity"
 	desc = "A gravitational singularity."
-	icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE
+	icon = 'icons/obj/singularity.dmi'
 	icon_state = "singularity_s1"
 	anchored = TRUE
 	density = TRUE
@@ -12,32 +12,23 @@
 	light_range = 6
 	appearance_flags = LONG_GLIDE
 
-	invisibility = INVISIBILITY_MAXIMUM //SKYRAT EDIT ADDITION
-
 	/// The singularity component itself.
 	/// A weak ref in case an admin removes the component to preserve the functionality.
 	var/datum/weakref/singularity_component
 
-	///Current singularity size, from 1 to 6
 	var/current_size = 1
-	///Current allowed size for the singulo
 	var/allowed_size = 1
-	///How strong are we?
-	var/energy = 100
-	///Do we lose energy over time?
-	var/dissipate = TRUE
+	var/energy = 100 //How strong are we?
+	var/dissipate = TRUE //Do we lose energy over time?
 	/// How long should it take for us to dissipate in seconds?
 	var/dissipate_delay = 20
 	/// How much energy do we lose every dissipate_delay?
 	var/dissipate_strength = 1
 	/// How long its been (in seconds) since the last dissipation
 	var/time_since_last_dissipiation = 0
-	///Prob for event each tick
-	var/event_chance = 10
-	///Can i move by myself?
+	var/event_chance = 10 //Prob for event each tick
 	var/move_self = TRUE
-	///If the singularity has eaten a supermatter shard and can go to stage six
-	var/consumed_supermatter = FALSE
+	var/consumed_supermatter = FALSE //If the singularity has eaten a supermatter shard and can go to stage six
 
 	flags_1 = SUPERMATTER_IGNORES_1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
@@ -45,16 +36,12 @@
 
 /obj/singularity/Initialize(mapload, starting_energy = 50)
 	. = ..()
-	//SKYRAT EDIT ADDITION BEGIN
-	new /obj/effect/singularity_creation(loc)
-
-	addtimer(CALLBACK(src, .proc/make_visible), 62)
 
 	energy = starting_energy
-	//SKYRAT EDIT END
 
 	START_PROCESSING(SSobj, src)
 	AddElement(/datum/element/point_of_interest)
+	GLOB.singularities |= src
 
 	var/datum/component/singularity/new_component = AddComponent(
 		/datum/component/singularity, \
@@ -65,24 +52,17 @@
 
 	expand(current_size)
 
-	for (var/obj/machinery/power/singularity_beacon/singu_beacon in GLOB.machines)
-		if (singu_beacon.active)
-			new_component.target = singu_beacon
+	for (var/obj/machinery/power/singularity_beacon/singubeacon in GLOB.machines)
+		if (singubeacon.active)
+			new_component.target = singubeacon
 			break
 
 	if (!mapload)
-		notify_ghosts(
-			"IT'S LOOSE",
-			source = src,
-			action = NOTIFY_ORBIT,
-			flashwindow = FALSE,
-			ghost_sound = 'sound/machines/warning-buzzer.ogg',
-			header = "IT'S LOOSE",
-			notify_volume = 75
-		)
+		notify_ghosts("IT'S LOOSE", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, ghost_sound = 'sound/machines/warning-buzzer.ogg', header = "IT'S LOOSE", notify_volume = 75)
 
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	GLOB.singularities.Remove(src)
 	return ..()
 
 /obj/singularity/attack_tk(mob/user)
@@ -91,9 +71,9 @@
 	. = COMPONENT_CANCEL_ATTACK_CHAIN
 	var/mob/living/carbon/jedi = user
 	jedi.visible_message(
-		span_danger("[jedi]'s head begins to collapse in on itself!"),
-		span_userdanger("Your head feels like it's collapsing in on itself! This was really not a good idea!"),
-		span_hear("You hear something crack and explode in gore.")
+		"<span class='danger'>[jedi]'s head begins to collapse in on itself!</span>",
+		"<span class='userdanger'>Your head feels like it's collapsing in on itself! This was really not a good idea!</span>",
+		"<span class='hear'>You hear something crack and explode in gore.</span>"
 		)
 	jedi.Stun(3 SECONDS)
 	new /obj/effect/gibspawner/generic(get_turf(jedi), jedi)
@@ -107,6 +87,7 @@
 		qdel(rip_u)
 		return
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/carbon_tk_part_two, jedi), 0.1 SECONDS)
+
 
 /obj/singularity/proc/carbon_tk_part_two(mob/living/carbon/jedi)
 	if(QDELETED(jedi))
@@ -123,6 +104,7 @@
 			qdel(rip_u)
 		return
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/carbon_tk_part_three, jedi), 0.1 SECONDS)
+
 
 /obj/singularity/proc/carbon_tk_part_three(mob/living/carbon/jedi)
 	if(QDELETED(jedi))
@@ -153,7 +135,6 @@
 
 /obj/singularity/process(delta_time)
 	if(current_size >= STAGE_TWO)
-		radiation_pulse(src, min(5000, (energy*4.5)+1000), RAD_DISTANCE_COEFFICIENT*0.5)
 		if(prob(event_chance))//Chance for it to run a special event TODO:Come up with one or two more that fit
 			event()
 	dissipate(delta_time)
@@ -171,7 +152,7 @@
 		time_since_last_dissipiation -= dissipate_delay
 
 /obj/singularity/proc/expand(force_size)
-	var/temp_allowed_size = allowed_size
+	var/temp_allowed_size = src.allowed_size
 
 	if(force_size)
 		temp_allowed_size = force_size
@@ -185,7 +166,7 @@
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
 			current_size = STAGE_ONE
-			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE
+			icon = 'icons/obj/singularity.dmi'
 			icon_state = "singularity_s1"
 			pixel_x = 0
 			pixel_y = 0
@@ -197,7 +178,7 @@
 		if(STAGE_TWO)
 			if(check_cardinals_range(1, TRUE))
 				current_size = STAGE_TWO
-				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s3.dmi' //SKYRAT EDIT CHANGE
+				icon = 'icons/effects/96x96.dmi'
 				icon_state = "singularity_s3"
 				pixel_x = -32
 				pixel_y = -32
@@ -209,7 +190,7 @@
 		if(STAGE_THREE)
 			if(check_cardinals_range(2, TRUE))
 				current_size = STAGE_THREE
-				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s5.dmi' //SKYRAT EDIT CHANGE
+				icon = 'icons/effects/160x160.dmi'
 				icon_state = "singularity_s5"
 				pixel_x = -64
 				pixel_y = -64
@@ -221,7 +202,7 @@
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				current_size = STAGE_FOUR
-				icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s7.dmi' //SKYRAT EDIT CHANGE
+				icon = 'icons/effects/224x224.dmi'
 				icon_state = "singularity_s7"
 				pixel_x = -96
 				pixel_y = -96
@@ -232,7 +213,7 @@
 				dissipate_strength = 10
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
-			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s9.dmi' //SKYRAT EDIT CHANGE
+			icon = 'icons/effects/288x288.dmi'
 			icon_state = "singularity_s9"
 			pixel_x = -128
 			pixel_y = -128
@@ -264,6 +245,7 @@
 		expand(temp_allowed_size)
 	else
 		return FALSE
+
 
 /obj/singularity/proc/check_energy()
 	if(energy <= 0)
@@ -327,12 +309,12 @@
 	else
 		steps = step
 	var/list/turfs = list()
-	var/turf/considered_turf = loc
-	for(var/i in 1 to steps)
-		considered_turf = get_step(considered_turf,direction)
-	if(!isturf(considered_turf))
+	var/turf/T = src.loc
+	for(var/i = 1 to steps)
+		T = get_step(T,direction)
+	if(!isturf(T))
 		return FALSE
-	turfs.Add(considered_turf)
+	turfs.Add(T)
 	var/dir2 = 0
 	var/dir3 = 0
 	switch(direction)
@@ -342,38 +324,40 @@
 		if(EAST||WEST)
 			dir2 = 1
 			dir3 = 2
-	var/turf/other_turf = considered_turf
+	var/turf/T2 = T
 	for(var/j = 1 to steps-1)
-		other_turf = get_step(other_turf,dir2)
-		if(!isturf(other_turf))
+		T2 = get_step(T2,dir2)
+		if(!isturf(T2))
 			return FALSE
-		turfs.Add(other_turf)
+		turfs.Add(T2)
 	for(var/k = 1 to steps-1)
-		considered_turf = get_step(considered_turf,dir3)
-		if(!isturf(considered_turf))
+		T = get_step(T,dir3)
+		if(!isturf(T))
 			return FALSE
-		turfs.Add(considered_turf)
-	for(var/turf/check_turf in turfs)
-		if(isnull(check_turf))
+		turfs.Add(T)
+	for(var/turf/T3 in turfs)
+		if(isnull(T3))
 			continue
-		if(!can_move(check_turf))
+		if(!can_move(T3))
 			return FALSE
 	return TRUE
 
-/obj/singularity/proc/can_move(turf/considered_turf)
-	if(!considered_turf)
+
+/obj/singularity/proc/can_move(turf/T)
+	if(!T)
 		return FALSE
-	if((locate(/obj/machinery/field/containment) in considered_turf)||(locate(/obj/machinery/shieldwall) in considered_turf))
+	if((locate(/obj/machinery/field/containment) in T)||(locate(/obj/machinery/shieldwall) in T))
 		return FALSE
-	else if(locate(/obj/machinery/field/generator) in considered_turf)
-		var/obj/machinery/field/generator/check_generator = locate(/obj/machinery/field/generator) in considered_turf
-		if(check_generator?.active)
+	else if(locate(/obj/machinery/field/generator) in T)
+		var/obj/machinery/field/generator/G = locate(/obj/machinery/field/generator) in T
+		if(G?.active)
 			return FALSE
-	else if(locate(/obj/machinery/power/shieldwallgen) in considered_turf)
-		var/obj/machinery/power/shieldwallgen/check_shield = locate(/obj/machinery/power/shieldwallgen) in considered_turf
-		if(check_shield?.active)
+	else if(locate(/obj/machinery/power/shieldwallgen) in T)
+		var/obj/machinery/power/shieldwallgen/S = locate(/obj/machinery/power/shieldwallgen) in T
+		if(S?.active)
 			return FALSE
 	return TRUE
+
 
 /obj/singularity/proc/event()
 	var/numb = rand(1,4)
@@ -390,40 +374,35 @@
 			return FALSE
 	return TRUE
 
+
 /obj/singularity/proc/combust_mobs()
-	for(var/mob/living/carbon/burned_mob in urange(20, src, 1))
-		burned_mob.visible_message(
-			span_warning("[burned_mob]'s skin bursts into flame!"),
-			span_userdanger("You feel an inner fire as your skin bursts into flames!")
-		)
-		burned_mob.adjust_fire_stacks(5)
-		burned_mob.IgniteMob()
+	for(var/mob/living/carbon/C in urange(20, src, 1))
+		C.visible_message("<span class='warning'>[C]'s skin bursts into flame!</span>", \
+						  "<span class='userdanger'>You feel an inner fire as your skin bursts into flames!</span>")
+		C.adjust_fire_stacks(5)
+		C.IgniteMob()
 	return
 
+
 /obj/singularity/proc/mezzer()
-	for(var/mob/living/carbon/stunned_mob in oviewers(8, src))
-		if(isbrain(stunned_mob)) //Ignore brains
+	for(var/mob/living/carbon/M in oviewers(8, src))
+		if(isbrain(M)) //Ignore brains
 			continue
 
-		if(stunned_mob.stat != CONSCIOUS || !ishuman(stunned_mob))
-			apply_stun(stunned_mob)
-			continue
+		if(M.stat == CONSCIOUS)
+			if (ishuman(M))
+				var/mob/living/carbon/human/H = M
+				if(istype(H.glasses, /obj/item/clothing/glasses/meson))
+					var/obj/item/clothing/glasses/meson/MS = H.glasses
+					if(MS.vision_flags == SEE_TURFS)
+						to_chat(H, "<span class='notice'>You look directly into the [src.name], good thing you had your protective eyewear on!</span>")
+						return
 
-		var/mob/living/carbon/human/stunned_human = stunned_mob
-		if(istype(stunned_human.glasses, /obj/item/clothing/glasses/meson))
-			var/obj/item/clothing/glasses/meson/check_meson = stunned_human.glasses
-			if(check_meson.vision_flags == SEE_TURFS)
-				to_chat(stunned_human, span_notice("You look directly into the [name], good thing you had your protective eyewear on!"))
-				continue
+		M.apply_effect(60, EFFECT_STUN)
+		M.visible_message("<span class='danger'>[M] stares blankly at the [src.name]!</span>", \
+						"<span class='userdanger'>You look directly into the [src.name] and feel weak.</span>")
+	return
 
-		apply_stun(stunned_mob)
-
-/obj/singularity/proc/apply_stun(mob/living/carbon/stunned_mob)
-	stunned_mob.apply_effect(60, EFFECT_STUN)
-	stunned_mob.visible_message(
-		span_danger("[stunned_mob] stares blankly at the [name]!"),
-		span_userdanger("You look directly into the [name] and feel weak.")
-	)
 
 /obj/singularity/proc/emp_area()
 	empulse(src, 8, 10)
@@ -432,12 +411,7 @@
 	var/gain = (energy/2)
 	var/dist = max((current_size - 2),1)
 	investigate_log("has been destroyed by another singularity.", INVESTIGATE_SINGULO)
-	explosion(
-		src,
-		devastation_range = dist,
-		heavy_impact_range = dist * 2,
-		light_impact_range = dist * 4
-	)
+	explosion(src, devastation_range = (dist), heavy_impact_range = (dist*2), light_impact_range = (dist*4))
 	qdel(src)
 	return gain
 
@@ -455,3 +429,4 @@
 /obj/singularity/deadchat_controlled/Initialize(mapload, starting_energy)
 	. = ..()
 	deadchat_plays(mode = DEMOCRACY_MODE)
+

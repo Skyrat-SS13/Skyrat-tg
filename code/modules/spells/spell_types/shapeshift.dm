@@ -73,7 +73,7 @@
 		else
 			ourpipeline = pipenets
 
-		to_chat(M, span_userdanger("Casting [src] inside of [pipeyoudiein] quickly turns you into a bloody mush!"))
+		to_chat(M, "<span class='userdanger'>Casting [src] inside of [pipeyoudiein] quickly turns you into a bloody mush!</span>")
 		var/gibtype = /obj/effect/gibspawner/generic
 		if(isalien(M))
 			gibtype = /obj/effect/gibspawner/xeno
@@ -101,7 +101,7 @@
 /obj/effect/proc_holder/spell/targeted/shapeshift/proc/Shapeshift(mob/living/caster)
 	var/obj/shapeshift_holder/H = locate() in caster
 	if(H)
-		to_chat(caster, span_warning("You're already shapeshifted!"))
+		to_chat(caster, "<span class='warning'>You're already shapeshifted!</span>")
 		return
 
 	var/mob/living/shape = new shapeshift_type(caster.loc)
@@ -145,8 +145,7 @@
 	source = _source
 	shape = loc
 	if(!istype(shape))
-		stack_trace("shapeshift holder created outside mob/living")
-		return INITIALIZE_HINT_QDEL
+		CRASH("shapeshift holder created outside mob/living")
 	stored = caster
 	if(stored.mind)
 		stored.mind.transfer_to(shape)
@@ -180,8 +179,8 @@
 	if(A == stored && !restoring)
 		restore()
 
-/obj/shapeshift_holder/Exited(atom/movable/gone, direction)
-	if(stored == gone && !restoring)
+/obj/shapeshift_holder/Exited(atom/movable/AM)
+	if(AM == stored && !restoring)
 		restore()
 
 /obj/shapeshift_holder/proc/caster_death()

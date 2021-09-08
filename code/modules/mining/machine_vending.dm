@@ -3,7 +3,7 @@
 /obj/machinery/mineral/equipment_vendor
 	name = "mining equipment vendor"
 	desc = "An equipment vendor for miners, points collected at an ore redemption machine can be spent here."
-	icon = 'icons/obj/machines/mining_machines.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/machines/mining_machines.dmi'
 	icon_state = "mining"
 	density = TRUE
 	circuit = /obj/item/circuitboard/machine/mining_equipment_vendor
@@ -24,7 +24,6 @@
 		new /datum/data/mining_equipment("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
 		new /datum/data/mining_equipment("Fulton Beacon", /obj/item/fulton_core, 400),
 		new /datum/data/mining_equipment("Shelter Capsule", /obj/item/survivalcapsule, 400),
-		new /datum/data/mining_equipment("Environment Proof Bodybag", /obj/item/bodybag/environmental, 500), //SKYRAT EDIT - ADDITION
 		new /datum/data/mining_equipment("GAR Meson Scanners", /obj/item/clothing/glasses/meson/gar, 500),
 		new /datum/data/mining_equipment("Explorer's Webbing", /obj/item/storage/belt/mining, 500),
 		new /datum/data/mining_equipment("Point Transfer Card", /obj/item/card/mining_point_card, 500),
@@ -54,7 +53,6 @@
 		new /datum/data/mining_equipment("Minebot Melee Upgrade", /obj/item/mine_bot_upgrade, 400),
 		new /datum/data/mining_equipment("Minebot Armor Upgrade", /obj/item/mine_bot_upgrade/health, 400),
 		new /datum/data/mining_equipment("Minebot Cooldown Upgrade", /obj/item/borg/upgrade/modkit/cooldown/minebot, 600),
-		new /datum/data/mining_equipment("Spare Suit Voucher", /obj/item/suit_voucher, 2000), //SKYRAT EDIT: ADDITION WITH SEVA SUIT
 		new /datum/data/mining_equipment("Minebot AI Upgrade", /obj/item/slimepotion/slime/sentience/mining, 1000),
 		new /datum/data/mining_equipment("KA Minebot Passthrough", /obj/item/borg/upgrade/modkit/minebot_passthrough, 100),
 		new /datum/data/mining_equipment("KA White Tracer Rounds", /obj/item/borg/upgrade/modkit/tracer, 100),
@@ -141,20 +139,20 @@
 				var/mob/living/L = usr
 				I = L.get_idcard(TRUE)
 			if(!istype(I))
-				to_chat(usr, span_alert("Error: An ID is required!"))
+				to_chat(usr, "<span class='alert'>Error: An ID is required!</span>")
 				flick(icon_deny, src)
 				return
 			var/datum/data/mining_equipment/prize = locate(params["ref"]) in prize_list
 			if(!prize || !(prize in prize_list))
-				to_chat(usr, span_alert("Error: Invalid choice!"))
+				to_chat(usr, "<span class='alert'>Error: Invalid choice!</span>")
 				flick(icon_deny, src)
 				return
 			if(prize.cost > I.mining_points)
-				to_chat(usr, span_alert("Error: Insufficient points for [prize.equipment_name] on [I]!"))
+				to_chat(usr, "<span class='alert'>Error: Insufficient points for [prize.equipment_name] on [I]!</span>")
 				flick(icon_deny, src)
 				return
 			I.mining_points -= prize.cost
-			to_chat(usr, span_notice("[src] clanks to life briefly before vending [prize.equipment_name]!"))
+			to_chat(usr, "<span class='notice'>[src] clanks to life briefly before vending [prize.equipment_name]!</span>")
 			new prize.equipment_path(loc)
 			SSblackbox.record_feedback("nested tally", "mining_equipment_bought", 1, list("[type]", "[prize.equipment_path]"))
 			. = TRUE
@@ -163,9 +161,6 @@
 	if(istype(I, /obj/item/mining_voucher))
 		RedeemVoucher(I, user)
 		return
-	if(istype(I, /obj/item/suit_voucher)) //skyrat edit addition start
-		RedeemSVoucher(I, user) //addition
-		return //skyrat edit addition end
 	if(default_deconstruction_screwdriver(user, "mining-open", "mining", I))
 		return
 	if(default_deconstruction_crowbar(I))
@@ -173,7 +168,7 @@
 	return ..()
 
 /obj/machinery/mineral/equipment_vendor/proc/RedeemVoucher(obj/item/mining_voucher/voucher, mob/redeemer)
-	var/items = list("Survival Capsule and Explorer's Webbing", "Resonator Kit", "Minebot Kit", "Extraction and Rescue Kit", "Crusher Kit", "Mining Conscription Kit", "Neural Lace Kit") //SKYRAT EDIT - Neural Laces
+	var/items = list("Survival Capsule and Explorer's Webbing", "Resonator Kit", "Minebot Kit", "Extraction and Rescue Kit", "Crusher Kit", "Mining Conscription Kit")
 
 	var/selection = input(redeemer, "Pick your equipment", "Mining Voucher Redemption") as null|anything in sortList(items)
 	if(!selection || !Adjacent(redeemer) || QDELETED(voucher) || voucher.loc != redeemer)
@@ -185,8 +180,6 @@
 		if("Resonator Kit")
 			new /obj/item/extinguisher/mini(drop_location)
 			new /obj/item/resonator(drop_location)
-		if("Neural Lace Kit") // Skyrat edit
-			new /obj/item/autosurgeon/organ/corticalstack(drop_location)
 		if("Minebot Kit")
 			new /mob/living/simple_animal/hostile/mining_drone(drop_location)
 			new /obj/item/weldingtool/hugetank(drop_location)
@@ -254,15 +247,15 @@
 		if(points)
 			var/obj/item/card/id/C = I
 			C.mining_points += points
-			to_chat(user, span_info("You transfer [points] points to [C]."))
+			to_chat(user, "<span class='info'>You transfer [points] points to [C].</span>")
 			points = 0
 		else
-			to_chat(user, span_alert("There's no points left on [src]."))
+			to_chat(user, "<span class='alert'>There's no points left on [src].</span>")
 	..()
 
 /obj/item/card/mining_point_card/examine(mob/user)
-	. = ..()
-	. += span_alert("There's [points] point\s on the card.")
+	..()
+	to_chat(user, "<span class='alert'>There's [points] point\s on the card.</span>")
 
 /obj/item/storage/backpack/duffelbag/mining_conscript
 	name = "mining conscription kit"

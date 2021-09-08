@@ -71,22 +71,12 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 /mob/camera/blob/proc/validate_location()
 	var/turf/T = get_turf(src)
-	if(is_valid_turf(T))
-		return
-
-	if(LAZYLEN(GLOB.blobstart))
+	if(!is_valid_turf(T) && LAZYLEN(GLOB.blobstart))
 		var/list/blobstarts = shuffle(GLOB.blobstart)
 		for(var/_T in blobstarts)
 			if(is_valid_turf(_T))
 				T = _T
 				break
-	else // no blob starts so look for an alternate
-		for(var/i in 1 to 16)
-			var/turf/picked_safe = find_safe_turf()
-			if(is_valid_turf(picked_safe))
-				T = picked_safe
-				break
-
 	if(!T)
 		CRASH("No blobspawnpoints and blob spawned in nullspace.")
 	forceMove(T)
@@ -106,13 +96,10 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 			if(blobstrain.effectdesc)
 				to_chat(src, "The <b><font color=\"[blobstrain.color]\">[blobstrain.name]</b></font> strain [blobstrain.effectdesc]")
 
-/mob/camera/blob/can_zFall(turf/source, levels)
-	// Prevent blob from falling through zlevels
-	return FALSE
 
 /mob/camera/blob/proc/is_valid_turf(turf/T)
 	var/area/A = get_area(T)
-	if((A && !(A.area_flags & BLOBS_ALLOWED)) || !T || !is_station_level(T.z) || isgroundlessturf(T))
+	if((A && !(A.area_flags & BLOBS_ALLOWED)) || !T || !is_station_level(T.z) || isspaceturf(T))
 		return FALSE
 	return TRUE
 
@@ -120,11 +107,11 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	if(!blob_core)
 		if(!placed)
 			if(manualplace_min_time && world.time >= manualplace_min_time)
-				to_chat(src, "<b>[span_big("<font color=\"#EE4000\">You may now place your blob core.</font>")]</b>")
-				to_chat(src, span_big("<font color=\"#EE4000\">You will automatically place your blob core in [DisplayTimeText(autoplace_max_time - world.time)].</font>"))
+				to_chat(src, "<b><span class='big'><font color=\"#EE4000\">You may now place your blob core.</font></span></b>")
+				to_chat(src, "<span class='big'><font color=\"#EE4000\">You will automatically place your blob core in [DisplayTimeText(autoplace_max_time - world.time)].</font></span>")
 				manualplace_min_time = 0
 			if(autoplace_max_time && world.time >= autoplace_max_time)
-				place_blob_core(BLOB_RANDOM_PLACEMENT)
+				place_blob_core(1)
 		else
 			qdel(src)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
@@ -135,7 +122,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		blob_points = INFINITY
 		addtimer(CALLBACK(src, .proc/victory), 450)
 	else if(!free_strain_rerolls && (last_reroll_time + BLOB_POWER_REROLL_FREE_TIME<world.time))
-		to_chat(src, "<b>[span_big("<font color=\"#EE4000\">You have gained another free strain re-roll.</font>")]</b>")
+		to_chat(src, "<b><span class='big'><font color=\"#EE4000\">You have gained another free strain re-roll.</font></span></b>")
 		free_strain_rerolls = 1
 
 	if(!victory_in_progress && max_count < blobs_legit.len)
@@ -191,7 +178,6 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	SSticker.force_ending = 1
 
 /mob/camera/blob/Destroy()
-	QDEL_NULL(blobstrain)
 	for(var/BL in GLOB.blobs)
 		var/obj/structure/blob/B = BL
 		if(B && B.overmind == src)
@@ -221,7 +207,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	. = ..()
 	if(!. || !client)
 		return FALSE
-	to_chat(src, span_notice("You are the overmind!"))
+	to_chat(src, "<span class='notice'>You are the overmind!</span>")
 	blob_help()
 	update_health_hud()
 	add_points(0)
@@ -233,7 +219,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 /mob/camera/blob/update_health_hud()
 	if(blob_core)
-		var/current_health = round((blob_core.get_integrity() / blob_core.max_integrity) * 100)
+		var/current_health = round((blob_core.obj_integrity / blob_core.max_integrity) * 100)
 		hud_used.healths.maptext = MAPTEXT("<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='#82ed00'>[current_health]%</font></div>")
 		for(var/mob/living/simple_animal/hostile/blob/blobbernaut/B in blob_mobs)
 			if(B.hud_used && B.hud_used.blobpwrdisplay)
@@ -249,7 +235,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, span_boldwarning("You cannot send IC messages (muted)."))
+			to_chat(src, "<span class='boldwarning'>You cannot send IC messages (muted).</span>")
 			return
 		if (!(ignore_spam || forced) && src.client.handle_spam_prevention(message,MUTE_IC))
 			return
@@ -269,7 +255,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	src.log_talk(message, LOG_SAY)
 
 	var/message_a = say_quote(message)
-	var/rendered = span_big("<font color=\"#EE4000\"><b>\[Blob Telepathy\] [name](<font color=\"[blobstrain.color]\">[blobstrain.name]</font>)</b> [message_a]</font>")
+	var/rendered = "<span class='big'><font color=\"#EE4000\"><b>\[Blob Telepathy\] [name](<font color=\"[blobstrain.color]\">[blobstrain.name]</font>)</b> [message_a]</font></span>"
 
 	for(var/mob/M in GLOB.mob_list)
 		if(isovermind(M) || istype(M, /mob/living/simple_animal/hostile/blob))
@@ -284,7 +270,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /mob/camera/blob/get_status_tab_items()
 	. = ..()
 	if(blob_core)
-		. += "Core Health: [blob_core.get_integrity()]"
+		. += "Core Health: [blob_core.obj_integrity]"
 		. += "Power Stored: [blob_points]/[max_blob_points]"
 		. += "Blobs to Win: [blobs_legit.len]/[blobwincount]"
 	if(free_strain_rerolls)
@@ -303,7 +289,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 			return FALSE
 	else
 		var/area/A = get_area(NewLoc)
-		if(isgroundlessturf(NewLoc) || istype(A, /area/shuttle)) //if unplaced, can't go on shuttles or goundless tiles
+		if(isspaceturf(NewLoc) || istype(A, /area/shuttle)) //if unplaced, can't go on shuttles or space tiles
 			return FALSE
 		forceMove(NewLoc)
 		return TRUE

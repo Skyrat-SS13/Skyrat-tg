@@ -3,7 +3,6 @@
 	name = "chemical press"
 	desc = "A press that makes pills, patches and bottles."
 	icon_state = "pill_press"
-	buffer = 60 //SKYRAT EDIT HYPOVIALS. This is needed so it can completely fill the vials up.
 
 	///maximum size of a pill
 	var/max_pill_volume = 50
@@ -11,8 +10,6 @@
 	var/max_patch_volume = 40
 	///maximum size of a bottle
 	var/max_bottle_volume = 30
-	//SKYRAT EDIT HYPOVIALS maximum size of a vial
-	var/max_vial_volume = 60
 	///current operating product (pills or patches)
 	var/product = "pill"
 	///the minimum size a pill or patch can be
@@ -34,7 +31,7 @@
 
 /obj/machinery/plumbing/pill_press/examine(mob/user)
 	. = ..()
-	. += span_notice("The [name] currently has [stored_products.len] stored. There needs to be less than [max_floor_products] on the floor to continue dispensing.")
+	. += "<span class='notice'>The [name] currently has [stored_products.len] stored. There needs to be less than [max_floor_products] on the floor to continue dispensing.</span>"
 
 /obj/machinery/plumbing/pill_press/Initialize(mapload, bolt, layer)
 	. = ..()
@@ -75,13 +72,6 @@
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] bottle")
 			stored_products += P
-		//SKYRAT EDIT HYPOVIALS
-		else if (product == "vial")
-			var/obj/item/reagent_containers/glass/bottle/vial/small/P = new(src)
-			reagents.trans_to(P, current_volume)
-			P.name = trim("[product_name] vial")
-			stored_products += P
-		//SKYRAT EDIT HYPOVIALS END 
 	if(stored_products.len)
 		var/pill_amount = 0
 		for(var/thing in loc)
@@ -138,8 +128,4 @@
 				max_volume = max_patch_volume
 			else if (product == "bottle")
 				max_volume = max_bottle_volume
-			//SKYRAT EDIT HYPOVIALS
-			else if (product == "vial")
-				max_volume = max_vial_volume
-			//SKYRAT EDIT HPYOVIALS END
 			current_volume = clamp(current_volume, min_volume, max_volume)

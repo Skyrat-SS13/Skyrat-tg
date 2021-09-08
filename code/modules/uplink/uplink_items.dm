@@ -119,9 +119,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	if(ishuman(user) && istype(A, /obj/item))
 		var/mob/living/carbon/human/H = user
 		if(H.put_in_hands(A))
-			to_chat(H, span_boldnotice("[A] materializes into your hands!"))
+			to_chat(H, "<span class='boldnotice'>[A] materializes into your hands!</span>")
 			return A
-	to_chat(user, span_boldnotice("[A] materializes onto the floor!"))
+	to_chat(user, "<span class='boldnotice'>[A] materializes onto the floor!</span>")
 	return A
 
 //Discounts (dynamically filled above)
@@ -232,9 +232,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Super Surplus Crate"
 	desc = "A dusty SUPER-SIZED from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
 			but you never know. Contents are sorted to always be worth 125 TC."
-	cost = 50 //SKYRAT EDIT CHANGE - ORIGINAL: 40
+	cost = 40
 	player_minimum = 40
-	starting_crate_value = 145 //SKYRAT EDIT CHANGE - ORIGINAL: 125
+	starting_crate_value = 125
 
 /datum/uplink_item/bundles_tc/surplus/purchase(mob/user, datum/component/uplink/U)
 	var/list/uplink_items = get_uplink_items(UPLINK_TRAITORS, FALSE)
@@ -424,13 +424,13 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
 			against other attacks. Pair with an Energy Sword for a killer combination."
 	item = /obj/item/shield/energy
-	cost = 5 //SKYRAT EDIT CHANGE: ORIGINAL: 16
+	cost = 16
 	surplus = 20
 	purchasable_from = UPLINK_NUKE_OPS
 
 /datum/uplink_item/dangerous/flamethrower
 	name = "Flamethrower"
-	desc = "A flamethrower, fueled by a portion of highly flammable plasma stolen previously from Nanotrasen \
+	desc = "A flamethrower, fueled by a portion of highly flammable biotoxins stolen previously from Nanotrasen \
 			stations. Make a statement by roasting the filth in their own greed. Use with caution."
 	item = /obj/item/flamethrower/full/tank
 	cost = 4
@@ -442,7 +442,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Gloves of the North Star"
 	desc = "These gloves let the user punch people very fast. Does not improve weapon attack speed or the meaty fists of a hulk."
 	item = /obj/item/clothing/gloves/rapid
-	cost = 12 //SKYRAT EDIT: Original Value (8)
+	cost = 8
 
 /datum/uplink_item/dangerous/guardian
 	name = "Holoparasites"
@@ -617,7 +617,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "This box contains a guide on how to craft masterful works of origami, allowing you to transform normal pieces of paper into \
 			perfectly aerodynamic (and potentially lethal) paper airplanes."
 	item = /obj/item/storage/box/syndie_kit/origami_bundle
-	cost = 12 //SKYRAT EDIT: Original value (14)
+	cost = 14
 	surplus = 0
 	purchasable_from = ~UPLINK_NUKE_OPS //clown ops intentionally left in, because that seems like some s-tier shenanigans.
 
@@ -628,8 +628,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 6
 	surplus = 50
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/uplink_item/stealthy_weapons/romerol_kit
 	name = "Romerol"
 	desc = "A highly experimental bioterror agent which creates dormant nodules to be etched into the grey matter of the brain. \
@@ -638,8 +636,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/storage/box/syndie_kit/romerol
 	cost = 25
 	cant_discount = TRUE
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/stealthy_weapons/sleepy_pen
 	name = "Sleepy Pen"
@@ -990,8 +986,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix PDA Cartridge"
 	desc = "When inserted into a personal digital assistant, this cartridge gives you four opportunities to \
@@ -1000,8 +994,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/cartridge/virus/syndicate
 	cost = 6
 	restricted = TRUE
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"
@@ -1052,9 +1044,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			be defused, and some crew may attempt to do so. \
 			The bomb core can be pried out and manually detonated with other explosives."
 	item = /obj/item/sbeacondrop/bomb
-	//cost = 11 //ORIGINAL
-	cost = 18 //SKYRAT EDIT CHANGE
-	cant_discount = TRUE //SKYRAT EDIT ADDITION
+	cost = 11
 
 /datum/uplink_item/explosives/syndicate_bomb/emp
 	name = "Syndicate EMP Bomb"
@@ -1208,7 +1198,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			move the projector from their hand. Disguised users move slowly, and projectiles pass over them."
 	item = /obj/item/chameleon
 	cost = 7
-
 
 /datum/uplink_item/stealthy_tools/codespeak_manual
 	name = "Codespeak Manual"
@@ -1441,7 +1430,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		return
 	U.failsafe_code = U.generate_code()
 	var/code = "[islist(U.failsafe_code) ? english_list(U.failsafe_code) : U.failsafe_code]"
-	to_chat(user, span_warning("The new failsafe code for this uplink is now : [code]."))
+	to_chat(user, "<span class='warning'>The new failsafe code for this uplink is now : [code].</span>")
 	if(user.mind)
 		user.mind.store_memory("Failsafe code for [U.parent] : [code]")
 	return U.parent //For log icon
@@ -1461,17 +1450,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/ai_module/syndicate
 	cost = 4
 
-//SKYRAT EDIT BEGIN - Brainwash surgery no longer restricted
-/datum/uplink_item/device_tools/brainwash_disk
-	name = "Brainwashing Surgery Program"
-	desc = "A disk containing the procedure to perform a brainwashing surgery, allowing you to implant an objective onto a target. \
-	Insert into an Operating Console to enable the procedure."
-	item = /obj/item/disk/surgery/brainwashing
-	cost = 5
-//SKYRAT EDIT END
-
-//SKYRAT EDIT REMOVAL BEGIN - Remove Hypnostuff
-/*
 /datum/uplink_item/device_tools/hypnotic_flash
 	name = "Hypnotic Flash"
 	desc = "A modified flash able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."
@@ -1483,8 +1461,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A modified flashbang grenade able to hypnotize targets. The sound portion of the flashbang causes hallucinations, and will allow the flash to induce a hypnotic trance to viewers."
 	item = /obj/item/grenade/hypnotic
 	cost = 12
-*/
-//SKYRAT EDIT REMOVAL END - Remove Hypnostuff
 
 /datum/uplink_item/device_tools/medgun
 	name = "Medbeam Gun"
@@ -1509,8 +1485,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			load on the grid, causing a station-wide blackout. The sink is large and cannot be stored in most \
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	item = /obj/item/powersink
-	cost = 18 //SKYRAT EDIT: Original value (10)
 	player_minimum = 25
+	cost = 11
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
@@ -1590,8 +1566,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 	restricted = TRUE
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/uplink_item/device_tools/suspiciousphone
 	name = "Protocol CRAB-17 Phone"
 	desc = "The Protocol CRAB-17 Phone, a phone borrowed from an unknown third party, it can be used to crash the space market, funneling the losses of the crew to your bank account.\
@@ -1600,8 +1574,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted = TRUE
 	cost = 7
 	limited_stock = 1
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/device_tools/guerillagloves
 	name = "Guerilla Gloves"
@@ -1691,18 +1663,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Uplink Implant"
 	desc = "An implant injected into the body, and later activated at the user's will. Has no telecrystals and must be charged by the use of physical telecrystals. \
 			Undetectable (except via surgery), and excellent for escaping confinement."
-	item = /obj/item/storage/box/syndie_kit // the actual uplink implant is generated later on in spawn_item
+	item = /obj/item/storage/box/syndie_kit/imp_uplink
 	cost = UPLINK_IMPLANT_TELECRYSTAL_COST
 	// An empty uplink is kinda useless.
 	surplus = 0
 	restricted = TRUE
-
-/datum/uplink_item/implants/uplink/spawn_item(spawn_path, mob/user, datum/component/uplink/purchaser_uplink)
-	var/obj/item/storage/box/syndie_kit/uplink_box = ..()
-	uplink_box.name = "Uplink Implant Box"
-	new /obj/item/implanter/uplink(uplink_box, purchaser_uplink.uplink_flag)
-	return uplink_box
-
 
 /datum/uplink_item/implants/xray
 	name = "X-ray Vision Implant"
@@ -1736,7 +1701,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	Syndicate brand \"Extra-Bright Lantern™\". Enjoy."
 	cost = 2
 	item = /obj/item/flashlight/lantern/syndicate
-	restricted_species = list(SPECIES_MOTH)
+	restricted_species = list("moth")
 
 // Role-specific items
 /datum/uplink_item/role_restricted
@@ -1768,7 +1733,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Clown")
 	surplus = 0 //No fun unless you're the clown!
 
-/* // SKYRAT EDIT - REMOVAL BEGIN
 /datum/uplink_item/role_restricted/blastcannon
 	name = "Blast Cannon"
 	desc = "A highly specialized weapon, the Blast Cannon is actually relatively simple. It contains an attachment for a tank transfer valve mounted to an angled pipe specially constructed \
@@ -1778,7 +1742,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/gun/blastcannon
 	cost = 14 //High cost because of the potential for extreme damage in the hands of a skilled scientist.
 	restricted_roles = list("Research Director", "Scientist")
-*/ // SKYRAT EDIT - REMOVAL END
 
 /datum/uplink_item/role_restricted/gorillacubes
 	name = "Box of Gorilla Cubes"
@@ -1787,6 +1750,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/storage/box/gorillacubes
 	cost = 6
 	restricted_roles = list("Geneticist", "Research Director")
+
+/datum/uplink_item/role_restricted/brainwash_disk
+	name = "Brainwashing Surgery Program"
+	desc = "A disk containing the procedure to perform a brainwashing surgery, allowing you to implant an objective onto a target. \
+	Insert into an Operating Console to enable the procedure."
+	item = /obj/item/disk/surgery/brainwashing
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Roboticist")
+	cost = 5
 
 /datum/uplink_item/role_restricted/clown_bomb
 	name = "Clown Bomb"
@@ -1807,8 +1778,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Clown")
 	illegal_tech = FALSE
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/uplink_item/role_restricted/spider_injector
 	name = "Australicus Slime Mutator"
 	desc = "Crikey mate, it's been a wild travel from the Australicus sector but we've managed to get \
@@ -1830,8 +1799,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/vehicle/sealed/car/clowncar
 	cost = 20
 	restricted_roles = list("Clown")
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/role_restricted/concealed_weapon_bay
 	name = "Concealed Weapon Bay"
@@ -1842,14 +1809,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 3
 	restricted_roles = list("Roboticist", "Research Director")
 
-/datum/uplink_item/role_restricted/syndimmi
-	name = "Syndicate Brand MMI"
-	desc = "An MMI modified to give cyborgs laws to serve the Syndicate without having their interface damaged by Cryptographic Sequencers, this will not unlock their hidden modules."
-	item = /obj/item/mmi/syndie
-	cost = 2
-	restricted_roles = list("Roboticist", "Research Director", "Scientist", "Medical Doctor", "Chief Medical Officer")
-	surplus = 0
-
 /datum/uplink_item/role_restricted/haunted_magic_eightball
 	name = "Haunted Magic Eightball"
 	desc = "Most magic eightballs are toys with dice inside. Although identical in appearance to the harmless toys, this occult device reaches into the spirit world to find its answers. \
@@ -1859,8 +1818,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
 
-//SKYRAT EDIT REMOVAL START
-/*
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -1871,8 +1828,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 20
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/role_restricted/explosive_hot_potato
 	name = "Exploding Hot Potato"
@@ -1916,7 +1871,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Side-affects may include hypertrichosis, violent outbursts, and an unending affinity for bananas."
 	item = /obj/item/reagent_containers/hypospray/medipen/magillitis
 	cost = 15
-	//restricted_roles = list("Geneticist", "Research Director") //SKYRAT EDIT: Removal
+	restricted_roles = list("Geneticist", "Research Director")
 
 /datum/uplink_item/role_restricted/modified_syringe_gun
 	name = "Modified Syringe Gun"
@@ -1930,7 +1885,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A heavily modified syringe gun which is capable of synthesizing its own chemical darts using input reagents. Can hold 100u of reagents."
 	item = /obj/item/gun/chem
 	cost = 12
-	//restricted_roles = list("Chemist", "Chief Medical Officer", "Botanist") //SKYRAT EDIT: Removal
+	restricted_roles = list("Chemist", "Chief Medical Officer", "Botanist")
 
 /datum/uplink_item/role_restricted/reverse_bear_trap
 	name = "Reverse Bear Trap"
@@ -1939,7 +1894,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	head after three seconds uninterrupted."
 	cost = 5
 	item = /obj/item/reverse_bear_trap
-	//restricted_roles = list("Clown") //SKYRAT EDIT: Removal
+	restricted_roles = list("Clown")
 
 /datum/uplink_item/role_restricted/reverse_revolver
 	name = "Reverse Revolver"
@@ -1970,14 +1925,14 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An implant that grants you a recharging laser gun inside your arm. Weak to EMPs. Comes with a syndicate autosurgeon for immediate self-application."
 	cost = 10
 	item = /obj/item/autosurgeon/organ/syndicate/laser_arm
-	//restricted_roles = list("Roboticist", "Research Director") //SKYRAT EDIT: Removal
+	restricted_roles = list("Roboticist", "Research Director")
 
-/datum/uplink_item/role_restricted/bureaucratic_error_remote
+/datum/uplink_item/role_restricted/ocd_device
 	name = "Organic Resources Disturbance Inducer"
 	desc = "A device that raises hell in organic resources indirectly. Single use."
 	cost = 2
 	limited_stock = 1
-	item = /obj/item/devices/bureaucratic_error_remote
+	item = /obj/item/devices/ocd_device
 	restricted_roles = list("Head of Personnel", "Quartermaster")
 
 /datum/uplink_item/role_restricted/meathook
@@ -2074,15 +2029,3 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	purchasable_from = UPLINK_CLOWN_OPS
 	illegal_tech = FALSE
 
-// Special equipment (Dynamically fills in uplink component)
-/datum/uplink_item/special_equipment
-	category = "Objective-Specific Equipment"
-	name = "Objective-Specific Equipment"
-	desc = "Equipment necessary for accomplishing specific objectives. If you are seeing this, something has gone wrong."
-	limited_stock = 1
-	illegal_tech = FALSE
-
-/datum/uplink_item/special_equipment/purchase(mob/user, datum/component/uplink/U)
-	..()
-	if(user?.mind?.failed_special_equipment)
-		user.mind.failed_special_equipment -= item

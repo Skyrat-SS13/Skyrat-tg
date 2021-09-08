@@ -17,7 +17,7 @@
 	hitsound = 'sound/weapons/smash.ogg'
 	drop_sound = 'sound/items/handling/toolbox_drop.ogg'
 	pickup_sound =  'sound/items/handling/toolbox_pickup.ogg'
-	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
+	material_flags = MATERIAL_COLOR
 	var/latches = "single_latch"
 	var/has_latches = TRUE
 	wound_bonus = 5
@@ -38,7 +38,7 @@
 
 
 /obj/item/storage/toolbox/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] robusts [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] robusts [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return (BRUTELOSS)
 
 /obj/item/storage/toolbox/emergency
@@ -150,14 +150,12 @@
 		new /obj/item/stack/cable_coil(src,MAXCOIL,pickedcolor)
 
 /obj/item/storage/toolbox/syndicate
-	name = "tactical toolbox" //SKYRAT EDIT
+	name = "suspicious looking toolbox"
 	icon_state = "syndicate"
 	inhand_icon_state = "toolbox_syndi"
 	force = 15
 	throwforce = 18
 	material_flags = NONE
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A toolbox manufactured by the Syndicate containing extra tactical tools. Made of more robust materials than the average toolbox." // Skyrat edit
 
 /obj/item/storage/toolbox/syndicate/ComponentInitialize()
 	. = ..()
@@ -294,7 +292,7 @@
 	if(!is_type_in_list(src, allowed_toolbox) && (type != /obj/item/storage/toolbox))
 		return
 	if(contents.len >= 1)
-		to_chat(user, span_warning("They won't fit in, as there is already stuff inside!"))
+		to_chat(user, "<span class='warning'>They won't fit in, as there is already stuff inside!</span>")
 		return
 	if(T.use(10))
 		var/obj/item/bot_assembly/floorbot/B = new
@@ -312,10 +310,10 @@
 				B.toolbox_color = "s"
 		user.put_in_hands(B)
 		B.update_appearance()
-		to_chat(user, span_notice("You add the tiles into the empty [name]. They protrude from the top."))
+		to_chat(user, "<span class='notice'>You add the tiles into the empty [name]. They protrude from the top.</span>")
 		qdel(src)
 	else
-		to_chat(user, span_warning("You need 10 floor tiles to start building a floorbot!"))
+		to_chat(user, "<span class='warning'>You need 10 floor tiles to start building a floorbot!</span>")
 		return
 
 

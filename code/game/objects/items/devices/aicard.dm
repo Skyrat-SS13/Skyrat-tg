@@ -24,7 +24,7 @@
 	icon_state = "aispook"
 
 /obj/item/aicard/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is trying to upload [user.p_them()]self into [src]! That's not going to work out well!"))
+	user.visible_message("<span class='suicide'>[user] is trying to upload [user.p_them()]self into [src]! That's not going to work out well!</span>")
 	return BRUTELOSS
 
 /obj/item/aicard/afterattack(atom/target, mob/user, proximity)
@@ -91,7 +91,7 @@
 				if(confirm == "Yes" && !..())
 					flush = TRUE
 					if(AI && AI.loc == src)
-						to_chat(AI, span_userdanger("Your core files are being wiped!"))
+						to_chat(AI, "<span class='userdanger'>Your core files are being wiped!</span>")
 						while(AI.stat != DEAD && flush)
 							AI.adjustOxyLoss(5)
 							AI.updatehealth()
@@ -100,14 +100,10 @@
 			. = TRUE
 		if("wireless")
 			AI.control_disabled = !AI.control_disabled
-			if(!AI.control_disabled)
-				AI.interaction_range = null
-			else
-				AI.interaction_range = 0
-			to_chat(AI, span_warning("[src]'s wireless port has been [AI.control_disabled ? "disabled" : "enabled"]!"))
+			to_chat(AI, "<span class='warning'>[src]'s wireless port has been [AI.control_disabled ? "disabled" : "enabled"]!</span>")
 			. = TRUE
 		if("radio")
 			AI.radio_enabled = !AI.radio_enabled
-			to_chat(AI, span_warning("Your Subspace Transceiver has been [AI.radio_enabled ? "enabled" : "disabled"]!"))
+			to_chat(AI, "<span class='warning'>Your Subspace Transceiver has been [AI.radio_enabled ? "enabled" : "disabled"]!</span>")
 			. = TRUE
 	update_appearance()

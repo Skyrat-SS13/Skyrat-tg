@@ -8,17 +8,6 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	plane = ABOVE_HUD_PLANE
 	var/datum/radial_menu/parent
 
-/atom/movable/screen/radial/proc/set_parent(new_value)
-	if(parent)
-		UnregisterSignal(parent, COMSIG_PARENT_QDELETING)
-	parent = new_value
-	if(parent)
-		RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/handle_parent_del)
-
-/atom/movable/screen/radial/proc/handle_parent_del()
-	SIGNAL_HANDLER
-	set_parent(null)
-
 /atom/movable/screen/radial/slice
 	icon_state = "radial_slice"
 	var/choice
@@ -99,7 +88,6 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	var/hudfix_method = TRUE //TRUE to change anchor to user, FALSE to shift by py_shift
 	var/py_shift = 0
 	var/entry_animation = TRUE
-	var/icon_path = 'icons/hud/radial.dmi' //SKYRAT EDIT ADDITION - GUNPOINT
 
 //If we swap to vis_contens inventory these will need a redo
 /datum/radial_menu/proc/check_screen_border(mob/user)
@@ -142,9 +130,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		var/elements_to_add = max_elements - elements.len
 		for(var/i in 1 to elements_to_add) //Create all elements
 			var/atom/movable/screen/radial/slice/new_element = new /atom/movable/screen/radial/slice
-			new_element.icon = icon_path //SKYRAT EDIT ADDITION - GUNPOINT
 			new_element.tooltips = use_tooltips
-			new_element.set_parent(src)
+			new_element.parent = src
 			elements += new_element
 
 	var/page = 1
@@ -233,12 +220,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			if (choice_datum.info)
 				var/obj/effect/abstract/info/info_button = new(E, choice_datum.info)
 				info_button.plane = ABOVE_HUD_PLANE
-				info_button.layer = RADIAL_CONTENT_LAYER
+				info_button.layer = RADIAL_BACKGROUND_LAYER
 				E.vis_contents += info_button
 
 /datum/radial_menu/New()
 	close_button = new
-	close_button.set_parent(src)
+	close_button.parent = src
 
 /datum/radial_menu/proc/Reset()
 	choices.Cut()

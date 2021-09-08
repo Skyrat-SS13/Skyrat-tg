@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR FULLAUTO.DM
 #define AUTOFIRE_MOUSEUP 0
 #define AUTOFIRE_MOUSEDOWN 1
 
@@ -247,7 +246,7 @@
 		return FALSE
 	var/obj/item/bodypart/other_hand = shooter.has_hand_for_held_index(shooter.get_inactive_hand_index())
 	if(weapon_weight == WEAPON_HEAVY && (shooter.get_inactive_held_item() || !other_hand))
-		to_chat(shooter, span_warning("You need two hands to fire [src]!"))
+		to_chat(shooter, "<span class='warning'>You need two hands to fire [src]!</span>")
 		return FALSE
 	return TRUE
 
@@ -280,4 +279,3 @@
 
 #undef AUTOFIRE_MOUSEUP
 #undef AUTOFIRE_MOUSEDOWN
-*/

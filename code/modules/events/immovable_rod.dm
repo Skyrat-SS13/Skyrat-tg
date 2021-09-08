@@ -7,7 +7,6 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 --NEOFite
 */
 
-#define MAXHP_RESTING 0.80 // SKYRAT ADDITION - SEE BELOW
 /datum/round_event_control/immovable_rod
 	name = "Immovable Rod"
 	typepath = /datum/round_event/immovable_rod
@@ -73,12 +72,6 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	var/dnd_style_level_up = TRUE
 	/// Whether the rod can loop across other z-levels. The rod will still loop when the z-level is self-looping even if this is FALSE.
 	var/loopy_rod = FALSE
-	//SKYRAT ADDITION - RODS DEAL LESS DAMAGE TO MOBS LAYING DOWN
-	/// The percentage of maxhp to apply as damage to a mob laying down on Bump
-	var/maxhp_damage_resting = MAXHP_RESTING
-	///Who have we already hit so far
-	var/list/client/already_hit = list()
-	//SKYRAT ADDITION - END
 
 /obj/effect/immovablerod/New(atom/start, atom/end, aimed_at, force_looping)
 	. = ..()
@@ -101,7 +94,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	UnregisterSignal(src, COMSIG_ATOM_ENTERING)
 	RemoveElement(/datum/element/point_of_interest)
 	SSaugury.unregister_doom(src)
-	already_hit = null //Skyrat Addition
+
 	return ..()
 
 /obj/effect/immovablerod/examine(mob/user)
@@ -110,7 +103,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 		return
 
 	if(!num_mobs_hit)
-		. += span_notice("So far, this rod has not hit any mobs.")
+		. += "<span class='notice'>So far, this rod has not hit any mobs.</span>"
 		return
 
 	. += "\t<span class='notice'>So far, this rod has hit: \n\
@@ -129,14 +122,12 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	if((atom_crossed_over.density || isliving(atom_crossed_over)) && !QDELETED(atom_crossed_over))
 		Bump(atom_crossed_over)
 
-/obj/effect/immovablerod/proc/on_entering_atom(datum/source, atom/destination, atom/old_loc, list/atom/old_locs)
+/obj/effect/immovablerod/proc/on_entering_atom(datum/source, atom/atom_entered)
 	SIGNAL_HANDLER
-	if(destination.density && isturf(destination))
-		Bump(destination)
+	if(atom_entered.density && isturf(atom_entered))
+		Bump(atom_entered)
 
 /obj/effect/immovablerod/Moved()
-	if(!loc)
-		return ..()
 
 	for(var/atom/movable/to_bump in loc)
 		if((to_bump != src) && !QDELETED(to_bump) && (to_bump.density || isliving(to_bump)))
@@ -153,14 +144,14 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 			var/direction = z_diff > 0 ? UP : DOWN
 			var/turf/target_z_turf = get_step_multiz(src, direction)
 
-			visible_message(span_danger("[src] phases out of reality."))
+			visible_message("<span class='danger'>[src] phases out of reality.</span>")
 
 			if(!do_teleport(src, target_z_turf))
 				// We failed to teleport. Might as well admit defeat.
 				qdel(src)
 				return
 
-			visible_message(span_danger("[src] phases into reality."))
+			visible_message("<span class='danger'>[src] phases into reality.</span>")
 			walk_towards(src, special_target, 1)
 
 		if(loc == target_turf)
@@ -205,7 +196,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 /obj/effect/immovablerod/Bump(atom/clong)
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-		audible_message(span_danger("You hear a CLANG!"))
+		audible_message("<span class='danger'>You hear a CLANG!</span>")
 
 	if(special_target && clong == special_target)
 		complete_trajectory()
@@ -213,7 +204,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	// If rod meets rod, they collapse into a singularity. Yes, this means that if two wizard rods collide,
 	// they ALSO collapse into a singulo.
 	if(istype(clong, /obj/effect/immovablerod))
-		visible_message(span_danger("[src] collides with [clong]! This cannot end well."))
+		visible_message("<span class='danger'>[src] collides with [clong]! This cannot end well.</span>")
 		var/datum/effect_system/smoke_spread/smoke = new
 		smoke.set_up(2, get_turf(src))
 		smoke.start()
@@ -246,7 +237,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	CRASH("[src] Bump()ed into non-atom thing [clong] ([clong.type])")
 
 /obj/effect/immovablerod/proc/penetrate(mob/living/smeared_mob)
-	smeared_mob.visible_message(span_danger("[smeared_mob] is penetrated by an immovable rod!") , span_userdanger("The rod penetrates you!") , span_danger("You hear a CLANG!"))
+	smeared_mob.visible_message("<span class='danger'>[smeared_mob] is penetrated by an immovable rod!</span>" , "<span class='userdanger'>The rod penetrates you!</span>" , "<span class='danger'>You hear a CLANG!</span>")
 
 	if(smeared_mob.stat != DEAD)
 		num_mobs_hit++
@@ -260,24 +251,6 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 	if(iscarbon(smeared_mob))
 		var/mob/living/carbon/smeared_carbon = smeared_mob
-		//SKYRAT ADDITION - RODS DEAL LESS DAMAGE TO MOBS LAYING DOWN
-		var/first_time_around = TRUE
-		if(smeared_carbon.client)
-			var/client/cli = smeared_carbon.client
-			if(cli in already_hit)
-				first_time_around = FALSE
-			else
-				already_hit |= cli
-		if(smeared_carbon.resting && first_time_around)
-			var/cur_damage = smeared_carbon.getBruteLoss() + smeared_carbon.getFireLoss()
-			var/damage = (smeared_carbon.maxHealth * maxhp_damage_resting) - cur_damage
-			if(damage > 0)
-				smeared_carbon.adjustBruteLoss(damage)
-			// This copies functionality from below, essentially a 10% chance you just get fucked big time
-			if(smeared_mob.density || prob(10))
-				smeared_mob.ex_act(EXPLODE_HEAVY)
-			return
-		//SKYRAT ADDITION - END
 		smeared_carbon.adjustBruteLoss(100)
 		var/obj/item/bodypart/penetrated_chest = smeared_carbon.get_bodypart(BODY_ZONE_CHEST)
 		penetrated_chest?.receive_damage(60, wound_bonus = 20, sharpness=SHARP_POINTY)
@@ -300,14 +273,14 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 		shake_camera(M, 2, 3)
 
 	if(wizard)
-		user.visible_message(span_boldwarning("[src] transforms into [wizard] as [user] suplexes them!"), span_warning("As you grab [src], it suddenly turns into [wizard] as you suplex them!"))
-		to_chat(wizard, span_boldwarning("You're suddenly jolted out of rod-form as [user] somehow manages to grab you, slamming you into the ground!"))
+		user.visible_message("<span class='boldwarning'>[src] transforms into [wizard] as [user] suplexes them!</span>", "<span class='warning'>As you grab [src], it suddenly turns into [wizard] as you suplex them!</span>")
+		to_chat(wizard, "<span class='boldwarning'>You're suddenly jolted out of rod-form as [user] somehow manages to grab you, slamming you into the ground!</span>")
 		wizard.Stun(60)
 		wizard.apply_damage(25, BRUTE)
 		qdel(src)
 	else
 		user.client.give_award(/datum/award/achievement/misc/feat_of_strength, user) //rod-form wizards would probably make this a lot easier to get so keep it to regular rods only
-		user.visible_message(span_boldwarning("[user] suplexes [src] into the ground!"), span_warning("You suplex [src] into the ground!"))
+		user.visible_message("<span class='boldwarning'>[user] suplexes [src] into the ground!</span>", "<span class='warning'>You suplex [src] into the ground!</span>")
 		new /obj/structure/festivus/anchored(drop_location())
 		new /obj/effect/anomaly/flux(drop_location())
 		qdel(src)
@@ -350,5 +323,3 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 /obj/effect/immovablerod/proc/walk_in_direction(direction)
 	destination = get_edge_target_turf(src, direction)
 	walk_towards(src, destination, 1)
-
-#undef MAXHP_RESTING //SKYRAT ADDITION - SEE ABOVE

@@ -1,9 +1,10 @@
 /mob/living/simple_animal/hostile/regalrat
 	name = "feral regal rat"
-	desc = "An evolved rat, created through some strange science. They lead nearby rats with deadly efficiency to protect their kingdom. Not technically a king."
+	desc = "An evolved rat, created through some strange science. It leads nearby rats with deadly efficiency to protect its kingdom. Not technically a king."
 	icon_state = "regalrat"
 	icon_living = "regalrat"
 	icon_dead = "regalrat_dead"
+	gender = NEUTER
 	speak_chance = 0
 	turns_per_move = 5
 	maxHealth = 70
@@ -46,12 +47,12 @@
 	QDEL_NULL(riot)
 
 /mob/living/simple_animal/hostile/regalrat/proc/get_player()
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the Royal Rat, cheesey be their crown?", ROLE_SENTIENCE, FALSE, 100, POLL_IGNORE_SENTIENCE_POTION)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the Royal Rat, cheesey be his crown?", ROLE_SENTIENCE, FALSE, 100, POLL_IGNORE_SENTIENCE_POTION)
 	if(LAZYLEN(candidates) && !mind)
 		var/mob/dead/observer/C = pick(candidates)
 		key = C.key
 		notify_ghosts("All rise for the rat king, ascendant to the throne in \the [get_area(src)].", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Sentient Rat Created")
-	to_chat(src, span_notice("You are an independent, invasive force on the station! Horde coins, trash, cheese, and the like from the safety of darkness!"))
+	to_chat(src, "<span class='notice'>You are an independent, invasive force on the station! Horde coins, trash, cheese, and the like from the safety of darkness!</span>")
 
 /mob/living/simple_animal/hostile/regalrat/handle_automated_action()
 	if(prob(20))
@@ -78,11 +79,11 @@
 	if(istype(user,/mob/living/simple_animal/hostile/rat))
 		var/mob/living/simple_animal/hostile/rat/ratself = user
 		if(ratself.faction_check_mob(src, TRUE))
-			. += span_notice("This is your king. Long live their majesty!")
+			. += "<span class='notice'>This is your king. Long live his majesty!</span>"
 		else
-			. += span_warning("This is a false king! Strike them down!")
+			. += "<span class='warning'>This is a false king! Strike him down!</span>"
 	else if(user != src && istype(user,/mob/living/simple_animal/hostile/regalrat))
-		. += span_warning("Who is this foolish false king? This will not stand!")
+		. += "<span class='warning'>Who is this foolish false king? This will not stand!</span>"
 
 /mob/living/simple_animal/hostile/regalrat/handle_environment(datum/gas_mixture/environment)
 	. = ..()
@@ -102,10 +103,10 @@
 		return
 
 	if (target.reagents && target.is_injectable(src, allowmobs = TRUE))
-		src.visible_message(span_warning("[src] starts licking [target] passionately!"),span_notice("You start licking [target]..."))
+		src.visible_message("<span class='warning'>[src] starts licking [target] passionately!</span>","<span class='notice'>You start licking [target]...</span>")
 		if (do_mob(src, target, 2 SECONDS, interaction_key = "regalrat"))
 			target.reagents.add_reagent(/datum/reagent/rat_spit,rand(1,3),no_react = TRUE)
-			to_chat(src, span_notice("You finish licking [target]."))
+			to_chat(src, "<span class='notice'>You finish licking [target].</span>")
 	else
 		SEND_SIGNAL(target, COMSIG_RAT_INTERACT, src)
 
@@ -123,7 +124,7 @@
 		heal_bodypart_damage(amount)
 		qdel(target)
 	else
-		to_chat(src, span_warning("You feel fine, no need to eat anything!"))
+		to_chat(src, "<span class='warning'>You feel fine, no need to eat anything!</span>")
 
 /mob/living/simple_animal/hostile/regalrat/controlled/Initialize()
 	. = ..()
@@ -140,7 +141,6 @@
 /datum/action/cooldown/domain
 	name = "Rat King's Domain"
 	desc = "Corrupts this area to be more suitable for your rat army."
-	check_flags = AB_CHECK_CONSCIOUS
 	cooldown_time = 60
 	icon_icon = 'icons/mob/actions/actions_animal.dmi'
 	background_icon_state = "bg_clock"
@@ -148,8 +148,6 @@
 
 /datum/action/cooldown/domain/Trigger()
 	. = ..()
-	if(!.)
-		return
 	var/turf/T = get_turf(owner)
 	T.atmos_spawn_air("miasma=4;TEMP=[T20C]")
 	switch (rand(1,10))
@@ -170,7 +168,6 @@
 /datum/action/cooldown/riot
 	name = "Raise Army"
 	desc = "Raise an army out of the hordes of mice and pests crawling around the maintenance shafts."
-	check_flags = AB_CHECK_CONSCIOUS
 	icon_icon = 'icons/mob/actions/actions_animal.dmi'
 	button_icon_state = "riot"
 	background_icon_state = "bg_clock"
@@ -194,24 +191,24 @@
 		qdel(M)
 	if(!something_from_nothing)
 		if(LAZYLEN(SSmobs.cheeserats) >= cap)
-			to_chat(owner,span_warning("There's too many mice on this station to beckon a new one! Find them first!"))
+			to_chat(owner,"<span class='warning'>There's too many mice on this station to beckon a new one! Find them first!</span>")
 			return
 		new /mob/living/simple_animal/mouse(owner.loc)
-		owner.visible_message(span_warning("[owner] commands a mouse to their side!"))
+		owner.visible_message("<span class='warning'>[owner] commands a mouse to its side!</span>")
 	else
-		owner.visible_message(span_warning("[owner] commands their army to action, mutating them into rats!"))
+		owner.visible_message("<span class='warning'>[owner] commands its army to action, mutating them into rats!</span>")
 	StartCooldown()
 
 /mob/living/simple_animal/hostile/rat
 	name = "rat"
-	desc = "They're a nasty, ugly, evil, disease-ridden rodent with anger issues."
+	desc = "It's a nasty, ugly, evil, disease-ridden rodent with anger issues."
 	icon_state = "mouse_gray"
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	speak = list("Skree!","SKREEE!","Squeak?")
 	speak_emote = list("squeaks")
 	emote_hear = list("Hisses.")
-	emote_see = list("runs in a circle.", "stands on their hind legs.")
+	emote_see = list("runs in a circle.", "stands on its hind legs.")
 	melee_damage_lower = 3
 	melee_damage_upper = 5
 	obj_damage = 5
@@ -250,7 +247,7 @@
 /mob/living/simple_animal/hostile/rat/revive(full_heal = FALSE, admin_revive = FALSE)
 	var/cap = CONFIG_GET(number/ratcap)
 	if(!admin_revive && !ckey && LAZYLEN(SSmobs.cheeserats) >= cap)
-		visible_message(span_warning("[src] twitched but does not continue moving due to the overwhelming rodent population on the station!"))
+		visible_message("<span class='warning'>[src] twitched but does not continue moving due to the overwhelming rodent population on the station!</span>")
 		return FALSE
 	. = ..()
 	if(.)
@@ -261,15 +258,15 @@
 	if(istype(user,/mob/living/simple_animal/hostile/rat))
 		var/mob/living/simple_animal/hostile/rat/ratself = user
 		if(ratself.faction_check_mob(src, TRUE))
-			. += span_notice("You both serve the same king.")
+			. += "<span class='notice'>You both serve the same king.</span>"
 		else
-			. += span_warning("This fool serves a different king!")
+			. += "<span class='warning'>This fool serves a different king!</span>"
 	else if(istype(user,/mob/living/simple_animal/hostile/regalrat))
 		var/mob/living/simple_animal/hostile/regalrat/ratking = user
 		if(ratking.faction_check_mob(src, TRUE))
-			. += span_notice("This rat serves under you.")
+			. += "<span class='notice'>This rat serves under you.</span>"
 		else
-			. += span_warning("This peasant serves a different king! Strike them down!")
+			. += "<span class='warning'>This peasant serves a different king! Strike him down!</span>"
 
 /mob/living/simple_animal/hostile/rat/CanAttack(atom/the_target)
 	if(istype(the_target,/mob/living/simple_animal))
@@ -296,12 +293,12 @@
 			var/obj/structure/cable/C = locate() in F
 			if(C && prob(15))
 				if(C.avail())
-					visible_message(span_warning("[src] chews through the [C]. It's toast!"))
+					visible_message("<span class='warning'>[src] chews through the [C]. It's toast!</span>")
 					playsound(src, 'sound/effects/sparks2.ogg', 100, TRUE)
 					C.deconstruct()
 					death()
 			else if(C?.avail())
-				visible_message(span_warning("[src] chews through the [C]. It looks unharmed!"))
+				visible_message("<span class='warning'>[src] chews through the [C]. It looks unharmed!</span>")
 				playsound(src, 'sound/effects/sparks2.ogg', 100, TRUE)
 				C.deconstruct()
 
@@ -309,9 +306,9 @@
 	. = ..()
 	if(istype(target, /obj/item/food/cheese))
 		if (health >= maxHealth)
-			to_chat(src, span_warning("You feel fine, no need to eat anything!"))
+			to_chat(src, "<span class='warning'>You feel fine, no need to eat anything!</span>")
 			return
-		to_chat(src, span_green("You eat \the [src], restoring some health."))
+		to_chat(src, "<span class='green'>You eat \the [src], restoring some health.</span>")
 		heal_bodypart_damage(maxHealth)
 		qdel(target)
 
@@ -333,23 +330,23 @@
 	..()
 	if(HAS_TRAIT(L, TRAIT_AGEUSIA))
 		return
-	to_chat(L, span_notice("This food has a funny taste!"))
+	to_chat(L, "<span class='notice'>This food has a funny taste!</span>")
 
 /datum/reagent/rat_spit/overdose_start(mob/living/M)
 	..()
 	var/mob/living/carbon/victim = M
 	if (istype(victim))
-		to_chat(victim, span_userdanger("With this last sip, you feel your body convulsing horribly from the contents you've ingested. As you contemplate your actions, you sense an awakened kinship with rat-kind and their newly risen leader!"))
+		to_chat(victim, "<span class='userdanger'>With this last sip, you feel your body convulsing horribly from the contents you've ingested. As you contemplate your actions, you sense an awakened kinship with rat-kind and their newly risen leader!</span>")
 		victim.faction |= "rat"
 		victim.vomit()
 	metabolization_rate = 10 * REAGENTS_METABOLISM
 
 /datum/reagent/rat_spit/on_mob_life(mob/living/carbon/C)
 	if(prob(15))
-		to_chat(C, span_notice("You feel queasy!"))
+		to_chat(C, "<span class='notice'>You feel queasy!</span>")
 		C.adjust_disgust(3)
 	else if(prob(10))
-		to_chat(C, span_warning("That food does not sit up well!"))
+		to_chat(C, "<span class='warning'>That food does not sit up well!</span>")
 		C.adjust_disgust(5)
 	else if(prob(5))
 		C.vomit()

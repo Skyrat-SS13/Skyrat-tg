@@ -41,8 +41,7 @@
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_SNAKE, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
 
 /mob/living/simple_animal/hostile/retaliate/snake/ListTargets(atom/the_target)
-	var/atom/target_from = GET_TARGETS_FROM(src)
-	. = oview(vision_range, target_from) //get list of things in vision range
+	. = oview(vision_range, targets_from) //get list of things in vision range
 	var/list/living_mobs = list()
 	var/list/mice = list()
 	for (var/HM in .)
@@ -53,23 +52,14 @@
 			living_mobs += HM
 
 	// if no tasty mice to chase, lets chase any living mob enemies in our vision range
-	if(length(mice))
-		return mice
-
-	var/list/actual_enemies = list()
-	for(var/datum/weakref/enemy as anything in enemies)
-		var/mob/flesh_and_blood = enemy.resolve()
-		if(!flesh_and_blood)
-			enemies -= enemy
-			continue
-		actual_enemies += flesh_and_blood
-
-	//Filter living mobs (in range mobs) by those we consider enemies (retaliate behaviour)
-	return  living_mobs & actual_enemies
+	if(length(mice) == 0)
+		//Filter living mobs (in range mobs) by those we consider enemies (retaliate behaviour)
+		return  living_mobs & enemies
+	return mice
 
 /mob/living/simple_animal/hostile/retaliate/snake/AttackingTarget()
 	if(istype(target, /mob/living/simple_animal/mouse))
-		visible_message(span_notice("[name] consumes [target] in a single gulp!"), span_notice("You consume [target] in a single gulp!"))
+		visible_message("<span class='notice'>[name] consumes [target] in a single gulp!</span>", "<span class='notice'>You consume [target] in a single gulp!</span>")
 		QDEL_NULL(target)
 		adjustBruteLoss(-2)
 	else

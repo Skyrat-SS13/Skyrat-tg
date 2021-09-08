@@ -22,10 +22,11 @@
 	RegisterSignal(parent, COMSIG_CLEAR_MOOD_EVENT, .proc/clear_event)
 	RegisterSignal(parent, COMSIG_ENTER_AREA, .proc/check_area_mood)
 	RegisterSignal(parent, COMSIG_LIVING_REVIVE, .proc/on_revive)
+
 	RegisterSignal(parent, COMSIG_MOB_HUD_CREATED, .proc/modify_hud)
 	RegisterSignal(parent, COMSIG_JOB_RECEIVED, .proc/register_job_signals)
+
 	RegisterSignal(parent, COMSIG_VOID_MASK_ACT, .proc/direct_sanity_drain)
-	RegisterSignal(parent, COMSIG_ON_CARBON_SLIP, .proc/on_slip)
 
 	var/mob/living/owner = parent
 	owner.become_area_sensitive(MOOD_COMPONENT_TRAIT)
@@ -47,98 +48,50 @@
 		RegisterSignal(parent, COMSIG_ADD_MOOD_EVENT_RND, .proc/add_event) //Mood events that are only for RnD members
 
 /datum/component/mood/proc/print_mood(mob/user)
-	var/msg = "[span_info("*---------*\n<EM>My current mental status:</EM>")]\n"
-	msg += span_notice("My current sanity: ") //Long term
-	//ORIGINAL
-	/*
+	var/msg = "<span class='info'>*---------*\n<EM>My current mental status:</EM></span>\n"
+	msg += "<span class='notice'>My current sanity: </span>" //Long term
 	switch(sanity)
 		if(SANITY_GREAT to INFINITY)
-			msg += "[span_nicegreen("My mind feels like a temple!")]\n"
+			msg += "<span class='nicegreen'>My mind feels like a temple!</span>\n"
 		if(SANITY_NEUTRAL to SANITY_GREAT)
-			msg += "[span_nicegreen("I have been feeling great lately!")]\n"
+			msg += "<span class='nicegreen'>I have been feeling great lately!</span>\n"
 		if(SANITY_DISTURBED to SANITY_NEUTRAL)
-			msg += "[span_nicegreen("I have felt quite decent lately.")]\n"
+			msg += "<span class='nicegreen'>I have felt quite decent lately.</span>\n"
 		if(SANITY_UNSTABLE to SANITY_DISTURBED)
-			msg += "[span_warning("I'm feeling a little bit unhinged...")]\n"
+			msg += "<span class='warning'>I'm feeling a little bit unhinged...</span>\n"
 		if(SANITY_CRAZY to SANITY_UNSTABLE)
-			msg += "[span_boldwarning("I'm freaking out!!")]\n"
+			msg += "<span class='boldwarning'>I'm freaking out!!</span>\n"
 		if(SANITY_INSANE to SANITY_CRAZY)
 			msg += "<span class='boldwarning'>AHAHAHAHAHAHAHAHAHAH!!</span>\n"
-	*/
-	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
-	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
-		switch(sanity)
-			if(SANITY_GREAT to INFINITY)
-				msg += "[span_nicegreen("My mind feels like a temple!")]\n"
-			if(SANITY_NEUTRAL to SANITY_GREAT)
-				msg += "[span_nicegreen("I have been feeling great lately!")]\n"
-			if(SANITY_DISTURBED to SANITY_NEUTRAL)
-				msg += "[span_nicegreen("I have felt quite decent lately.")]\n"
-			if(SANITY_UNSTABLE to SANITY_DISTURBED)
-				msg += "[span_warning("I'm feeling a little bit unhinged...")]\n"
-			if(SANITY_CRAZY to SANITY_UNSTABLE)
-				msg += "[span_boldwarning("I'm freaking out!!")]\n"
-			if(SANITY_INSANE to SANITY_CRAZY)
-				msg += "<span class='boldwarning'>AHAHAHAHAHAHAHAHAHAH!!</span>\n"
-	else
-		msg += span_notice("I don't really know.")
-	//SKYRAT EDIT CHANGE END
 
-	msg += span_notice("My current mood: ") //Short term
-	//ORIGINAL
-	/*
+	msg += "<span class='notice'>My current mood: </span>" //Short term
 	switch(mood_level)
 		if(1)
-			msg += "[span_boldwarning("I wish I was dead!")]\n"
+			msg += "<span class='boldwarning'>I wish I was dead!</span>\n"
 		if(2)
-			msg += "[span_boldwarning("I feel terrible...")]\n"
+			msg += "<span class='boldwarning'>I feel terrible...</span>\n"
 		if(3)
-			msg += "[span_boldwarning("I feel very upset.")]\n"
+			msg += "<span class='boldwarning'>I feel very upset.</span>\n"
 		if(4)
-			msg += "[span_boldwarning("I'm a bit sad.")]\n"
+			msg += "<span class='boldwarning'>I'm a bit sad.</span>\n"
 		if(5)
-			msg += "[span_nicegreen("I'm alright.")]\n"
+			msg += "<span class='nicegreen'>I'm alright.</span>\n"
 		if(6)
-			msg += "[span_nicegreen("I feel pretty okay.")]\n"
+			msg += "<span class='nicegreen'>I feel pretty okay.</span>\n"
 		if(7)
-			msg += "[span_nicegreen("I feel pretty good.")]\n"
+			msg += "<span class='nicegreen'>I feel pretty good.</span>\n"
 		if(8)
-			msg += "[span_nicegreen("I feel amazing!")]\n"
+			msg += "<span class='nicegreen'>I feel amazing!</span>\n"
 		if(9)
 			msg += "<span class='nicegreen'>I love life!</span>\n"
-	*/
-	//SKYRAT EDIT CHANGE BEGIN - ALEXITHYMIA
-	if(!HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE))
-		switch(mood_level)
-			if(1)
-				msg += "[span_boldwarning("I wish I was dead!")]\n"
-			if(2)
-				msg += "[span_boldwarning("I feel terrible...")]\n"
-			if(3)
-				msg += "[span_boldwarning("I feel very upset.")]\n"
-			if(4)
-				msg += "[span_boldwarning("I'm a bit sad.")]\n"
-			if(5)
-				msg += "[span_nicegreen("I'm alright.")]\n"
-			if(6)
-				msg += "[span_nicegreen("I feel pretty okay.")]\n"
-			if(7)
-				msg += "[span_nicegreen("I feel pretty good.")]\n"
-			if(8)
-				msg += "[span_nicegreen("I feel amazing!")]\n"
-			if(9)
-				msg += "[span_nicegreen("I love life!")]\n"
-	else
-		msg += "[span_notice("No clue.")]\n"
-	//SKYRAT EDIT CHANGE END
-	msg += "[span_notice("Moodlets:")]\n"//All moodlets
-	//if(mood_events.len) //ORIGINAL
-	if(mood_events.len && !HAS_TRAIT(user, TRAIT_MOOD_NOEXAMINE)) //SKYRAT EDIT CHANGE - ALEXITHYMIA
+
+	msg += "<span class='notice'>Moodlets:</span>\n"//All moodlets
+	if(mood_events.len)
 		for(var/i in mood_events)
 			var/datum/mood_event/event = mood_events[i]
 			msg += event.description
 	else
-		msg += "[span_nicegreen("I don't have much of a reaction to anything right now.")]\n"
+		msg += "<span class='nicegreen'>I don't have much of a reaction to anything right now.</span>\n"
 	to_chat(user, msg)
 
 ///Called after moodevent/s have been added/removed.
@@ -211,12 +164,6 @@
 			screen_obj.color = "#f15d36"
 
 	if(!conflicting_moodies.len) //no special icons- go to the normal icon states
-		//SKYRAT EDIT ADDITION BEGIN - ALEXITHYMIA
-		if(HAS_TRAIT(owner, TRAIT_MOOD_NOEXAMINE))
-			screen_obj.icon_state = "mood5"
-			screen_obj.color = "#4b96c4"
-			return
-		//SKYRAT EDIT ADDITION END
 		screen_obj.icon_state = "mood[mood_level]"
 		return
 
@@ -394,6 +341,8 @@
 
 /datum/component/mood/proc/HandleNutrition()
 	var/mob/living/L = parent
+	if(isethereal(L))
+		HandleCharge(L)
 	if(HAS_TRAIT(L, TRAIT_NOHUNGER))
 		return FALSE //no mood events for nutrition
 	switch(L.nutrition)
@@ -412,6 +361,22 @@
 			add_event(null, "nutrition", /datum/mood_event/hungry)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			add_event(null, "nutrition", /datum/mood_event/starving)
+
+/datum/component/mood/proc/HandleCharge(mob/living/carbon/human/H)
+	var/datum/species/ethereal/E = H.dna.species
+	switch(E.get_charge(H))
+		if(ETHEREAL_CHARGE_NONE to ETHEREAL_CHARGE_LOWPOWER)
+			add_event(null, "charge", /datum/mood_event/decharged)
+		if(ETHEREAL_CHARGE_LOWPOWER to ETHEREAL_CHARGE_NORMAL)
+			add_event(null, "charge", /datum/mood_event/lowpower)
+		if(ETHEREAL_CHARGE_NORMAL to ETHEREAL_CHARGE_ALMOSTFULL)
+			clear_event(null, "charge")
+		if(ETHEREAL_CHARGE_ALMOSTFULL to ETHEREAL_CHARGE_FULL)
+			add_event(null, "charge", /datum/mood_event/charged)
+		if(ETHEREAL_CHARGE_FULL to ETHEREAL_CHARGE_OVERLOAD)
+			add_event(null, "charge", /datum/mood_event/overcharged)
+		if(ETHEREAL_CHARGE_OVERLOAD to ETHEREAL_CHARGE_DANGEROUS)
+			add_event(null, "charge", /datum/mood_event/supercharged)
 
 /datum/component/mood/proc/check_area_mood(datum/source, area/A)
 	SIGNAL_HANDLER
@@ -481,3 +446,4 @@
 
 #undef MINOR_INSANITY_PEN
 #undef MAJOR_INSANITY_PEN
+

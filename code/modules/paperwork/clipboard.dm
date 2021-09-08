@@ -15,8 +15,6 @@
 	resistance_flags = FLAMMABLE
 	/// The stored pen
 	var/obj/item/pen/pen
-	/// Is the pen integrated?
-	var/integrated_pen = FALSE
 	/**
 	 * Weakref of the topmost piece of paper
 	 *
@@ -27,7 +25,7 @@
 	var/datum/weakref/toppaper_ref
 
 /obj/item/clipboard/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins putting [user.p_their()] head into the clip of \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] begins putting [user.p_their()] head into the clip of \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return BRUTELOSS //The clipboard's clip is very strong. Industrial duty. Can kill a man easily.
 
 /obj/item/clipboard/Initialize()
@@ -40,11 +38,11 @@
 
 /obj/item/clipboard/examine()
 	. = ..()
-	if(!integrated_pen && pen)
-		. += span_notice("Alt-click to remove [pen].")
+	if(pen)
+		. += "<span class='notice'>Alt-click to remove [pen].</span>"
 	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(toppaper)
-		. += span_notice("Right-click to remove [toppaper].")
+		. += "<span class='notice'>Right-click to remove [toppaper].</span>"
 
 /// Take out the topmost paper
 /obj/item/clipboard/proc/remove_paper(obj/item/paper/paper, mob/user)
@@ -52,10 +50,9 @@
 		return
 	paper.forceMove(user.loc)
 	user.put_in_hands(paper)
-	to_chat(user, span_notice("You remove [paper] from [src]."))
+	to_chat(user, "<span class='notice'>You remove [paper] from [src].</span>")
 	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	if(paper == toppaper)
-		UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
 		toppaper_ref = null
 		var/obj/item/paper/newtop = locate(/obj/item/paper) in src
 		if(newtop && (newtop != paper))
@@ -67,17 +64,14 @@
 /obj/item/clipboard/proc/remove_pen(mob/user)
 	pen.forceMove(user.loc)
 	user.put_in_hands(pen)
-	to_chat(user, span_notice("You remove [pen] from [src]."))
+	to_chat(user, "<span class='notice'>You remove [pen] from [src].</span>")
 	pen = null
 	update_icon()
 
 /obj/item/clipboard/AltClick(mob/user)
 	..()
 	if(pen)
-		if(integrated_pen)
-			to_chat(user, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
-		else
-			remove_pen(user)
+		remove_pen(user)
 
 /obj/item/clipboard/update_overlays()
 	. = ..()
@@ -102,17 +96,14 @@
 		//Add paper into the clipboard
 		if(!user.transferItemToLoc(weapon, src))
 			return
-		if(toppaper)
-			UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
-		RegisterSignal(weapon, COMSIG_ATOM_UPDATED_ICON, .proc/on_top_paper_change)
 		toppaper_ref = WEAKREF(weapon)
-		to_chat(user, span_notice("You clip [weapon] onto [src]."))
+		to_chat(user, "<span class='notice'>You clip [weapon] onto [src].</span>")
 	else if(istype(weapon, /obj/item/pen) && !pen)
 		//Add a pen into the clipboard, attack (write) if there is already one
 		if(!usr.transferItemToLoc(weapon, src))
 			return
 		pen = weapon
-		to_chat(usr, span_notice("You slot [weapon] into [src]."))
+		to_chat(usr, "<span class='notice'>You slot [weapon] into [src].</span>")
 	else if(toppaper)
 		toppaper.attackby(user.get_active_held_item(), user)
 	update_appearance()
@@ -132,7 +123,6 @@
 	// prepare data for TGUI
 	var/list/data = list()
 	data["pen"] = "[pen]"
-	data["integrated_pen"] = integrated_pen
 
 	var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 	data["top_paper"] = "[toppaper]"
@@ -160,10 +150,7 @@
 		// Take the pen out
 		if("remove_pen")
 			if(pen)
-				if(!integrated_pen)
-					remove_pen(usr)
-				else
-					to_chat(usr, span_warning("You can't seem to find a way to remove [src]'s [pen]."))
+				remove_pen(usr)
 				. = TRUE
 		// Take paper out
 		if("remove_paper")
@@ -183,7 +170,7 @@
 			var/obj/item/paper/paper = locate(params["ref"]) in src
 			if(istype(paper))
 				toppaper_ref = WEAKREF(paper)
-				to_chat(usr, span_notice("You move [paper] to the top."))
+				to_chat(usr, "<span class='notice'>You move [paper] to the top.</span>")
 				update_icon()
 				. = TRUE
 		// Rename the paper (it's a verb)
@@ -193,10 +180,3 @@
 				paper.rename()
 				update_icon()
 				. = TRUE
-
-/**
- * This is a simple proc to handle calling update_icon() upon receiving the top paper's `COMSIG_ATOM_UPDATE_APPEARANCE`.
- */
-/obj/item/clipboard/proc/on_top_paper_change()
-	SIGNAL_HANDLER
-	update_appearance()

@@ -15,8 +15,7 @@
 								"Research Machinery",
 								"Misc. Machinery",
 								"Computer Parts",
-								"Circuitry",
-								"Weapons Machinery" //SKYRAT EDIT CHANGE
+								"Circuitry"
 								)
 	production_animation = "circuit_imprinter_ani"
 	allowed_buildtypes = IMPRINTER

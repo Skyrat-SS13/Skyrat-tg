@@ -9,7 +9,7 @@
 	speak = list("Meow!", "Esp!", "Purr!", "HSSSSS")
 	speak_emote = list("purrs", "meows")
 	emote_hear = list("meows.", "mews.")
-	emote_see = list("shakes their head.", "shivers.")
+	emote_see = list("shakes its head.", "shivers.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -29,7 +29,12 @@
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
+	var/turns_since_scan = 0
 	var/mob/living/simple_animal/mouse/movement_target
+	///Limits how often cats can spam chasing mice.
+	COOLDOWN_DECLARE(emote_cooldown)
+	///Can this cat catch special mice?
+	var/inept_hunter = FALSE
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_type = "cat"
 	can_be_held = TRUE
@@ -55,7 +60,7 @@
 
 /mob/living/simple_animal/pet/cat/space
 	name = "space cat"
-	desc = "They're a cat... in space!"
+	desc = "It's a cat... in space!"
 	icon_state = "spacecat"
 	icon_living = "spacecat"
 	icon_dead = "spacecat_dead"
@@ -66,7 +71,7 @@
 
 /mob/living/simple_animal/pet/cat/breadcat
 	name = "bread cat"
-	desc = "They're a cat... with a bread!"
+	desc = "It's a cat... with a bread!"
 	icon_state = "breadcat"
 	icon_living = "breadcat"
 	icon_dead = "breadcat_dead"
@@ -204,10 +209,10 @@
 /mob/living/simple_animal/pet/cat/Life(delta_time = SSMOBS_DT, times_fired)
 	if(!stat && !buckled && !client)
 		if(DT_PROB(0.5, delta_time))
-			manual_emote(pick("stretches out for a belly rub.", "wags [p_their()] tail.", "lies down."))
+			manual_emote(pick("stretches out for a belly rub.", "wags its tail.", "lies down."))
 			set_resting(TRUE)
 		else if(DT_PROB(0.5, delta_time))
-			manual_emote(pick("sits down.", "crouches on [p_their()] hind legs.", "looks alert."))
+			manual_emote(pick("sits down.", "crouches on its hind legs.", "looks alert."))
 			set_resting(TRUE)
 			icon_state = "[icon_living]_sit"
 			collar_type = "[initial(collar_type)]_sit"
@@ -216,7 +221,7 @@
 				manual_emote(pick("gets up and meows.", "walks around.", "stops resting."))
 				set_resting(FALSE)
 			else
-				manual_emote(pick("grooms [p_their()] fur.", "twitches [p_their()] whiskers.", "shakes out [p_their()] coat."))
+				manual_emote(pick("grooms its fur.", "twitches its whiskers.", "shakes out its coat."))
 
 	//MICE!
 	if((src.loc) && isturf(src.loc))
@@ -224,7 +229,7 @@
 			for(var/mob/living/simple_animal/mouse/M in view(1,src))
 				if(istype(M, /mob/living/simple_animal/mouse/brown/tom) && inept_hunter)
 					if(COOLDOWN_FINISHED(src, emote_cooldown))
-						visible_message(span_warning("[src] chases [M] around, to no avail!"))
+						visible_message("<span class='warning'>[src] chases [M] around, to no avail!</span>")
 						step(M, pick(GLOB.cardinals))
 						COOLDOWN_START(src, emote_cooldown, 1 MINUTES)
 					break
@@ -236,7 +241,7 @@
 					break
 			for(var/obj/item/toy/cattoy/T in view(1,src))
 				if (T.cooldown < (world.time - 400))
-					manual_emote("bats \the [T] around with \his paw!")
+					manual_emote("bats \the [T] around with its paw!")
 					T.cooldown = world.time
 
 	..()
@@ -270,7 +275,7 @@
 
 /mob/living/simple_animal/pet/cat/cak //I told you I'd do it, Remie
 	name = "Keeki"
-	desc = "She is a cat made out of cake."
+	desc = "It's a cat made out of cake."
 	icon_state = "cak"
 	icon_living = "cak"
 	icon_dead = "cak_dead"
@@ -283,7 +288,7 @@
 	response_harm_continuous = "takes a bite out of"
 	response_harm_simple = "take a bite out of"
 	attacked_sound = 'sound/items/eatfood.ogg'
-	deathmessage = "loses her false life and collapses!"
+	deathmessage = "loses its false life and collapses!"
 	deathsound = "bodyfall"
 	held_state = "cak"
 
@@ -301,7 +306,7 @@
 	free cake to the station!</b>")
 	var/new_name = stripped_input(src, "Enter your name, or press \"Cancel\" to stick with Keeki.", "Name Change")
 	if(new_name)
-		to_chat(src, span_notice("Your name is now <b>\"new_name\"</b>!"))
+		to_chat(src, "<span class='notice'>Your name is now <b>\"new_name\"</b>!</span>")
 		name = new_name
 
 /mob/living/simple_animal/pet/cat/cak/Life(delta_time = SSMOBS_DT, times_fired)

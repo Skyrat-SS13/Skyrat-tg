@@ -1,5 +1,5 @@
 //IMPORTANT: Multiple animate() calls do not stack well, so try to do them all at once if you can.
-/mob/living/carbon/perform_update_transform()
+/mob/living/carbon/update_transform()
 	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
 	var/final_pixel_y = pixel_y
 	var/final_dir = dir
@@ -57,8 +57,9 @@
 		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
 			I.screen_loc = ui_hand_position(get_held_index_of_item(I))
 			client.screen += I
-			if(length(observers))
-				for(var/mob/dead/observe as anything in observers)
+			if(observers?.len)
+				for(var/M in observers)
+					var/mob/dead/observe = M
 					if(observe.client && observe.client.eye == src)
 						observe.client.screen += I
 					else
@@ -103,8 +104,6 @@
 	apply_overlay(DAMAGE_LAYER)
 
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/update_inv_wear_mask()
 	remove_overlay(FACEMASK_LAYER)
 
@@ -121,8 +120,6 @@
 		update_hud_wear_mask(wear_mask)
 
 	apply_overlay(FACEMASK_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /mob/living/carbon/update_inv_neck()
 	remove_overlay(NECK_LAYER)
@@ -151,8 +148,6 @@
 
 	apply_overlay(BACK_LAYER)
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/update_inv_head()
 	remove_overlay(HEAD_LAYER)
 
@@ -168,18 +163,12 @@
 		update_hud_head(head)
 
 	apply_overlay(HEAD_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 /mob/living/carbon/update_inv_handcuffed()
 	remove_overlay(HANDCUFF_LAYER)
-	if(handcuffed && !(handcuffed.item_flags & ABSTRACT)) //SKYRAT EDIT ADDED !(handcuffed.item_flags & ABSTRACT)
-		var/mutable_appearance/handcuff_overlay = mutable_appearance('icons/mob/mob.dmi', "handcuff1", -HANDCUFF_LAYER)
-		if(handcuffed.blocks_emissive)
-			handcuff_overlay.overlays += emissive_blocker(handcuff_overlay.icon, handcuff_overlay.icon_state, alpha = handcuff_overlay.alpha)
-
-		overlays_standing[HANDCUFF_LAYER] = handcuff_overlay
+	if(handcuffed)
+		overlays_standing[HANDCUFF_LAYER] = mutable_appearance('icons/mob/mob.dmi', "handcuff1", -HANDCUFF_LAYER)
 		apply_overlay(HANDCUFF_LAYER)
 
 
@@ -214,17 +203,9 @@
 //Overlays for the worn overlay so you can overlay while you overlay
 //eg: ammo counters, primed grenade flashing, etc.
 //"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
-//SKYRAT EDIT CHANGE - CUSTOMIZATION
-///obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file) (original)
-/obj/item/proc/worn_overlays(mutable_appearance/standing, isinhands = FALSE, icon_file, mutant_styles = NONE)
-	SHOULD_CALL_PARENT(TRUE)
-	RETURN_TYPE(/list)
-
+/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file)
 	. = list()
-	if(!blocks_emissive)
-		return
 
-	. += emissive_blocker(standing.icon, standing.icon_state, alpha = standing.alpha)
 
 /mob/living/carbon/update_body()
 	update_body_parts()
@@ -234,8 +215,6 @@
 		var/obj/item/bodypart/BP = X
 		BP.original_owner = WEAKREF(src)
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/proc/update_body_parts()
 	//CHECK FOR UPDATE
 	var/oldkey = icon_render_key
@@ -265,8 +244,6 @@
 
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 
@@ -286,8 +263,6 @@
 
 //produces a key based on the mob's limbs
 
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /mob/living/carbon/proc/generate_icon_render_key()
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
@@ -303,8 +278,6 @@
 
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "-husk"
-*/
-//SKYRAT EDIT REMOVAL END
 
 
 //change the mob's icon to the one matching its key

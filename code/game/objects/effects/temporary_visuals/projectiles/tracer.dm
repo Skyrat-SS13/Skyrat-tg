@@ -55,10 +55,6 @@
 	name = "heavy laser"
 	icon_state = "beam_heavy"
 
-/obj/effect/projectile/tracer/solar
-	name = "solar beam"
-	icon_state = "solar"
-
 //BEAM RIFLE
 /obj/effect/projectile/tracer/tracer/beam_rifle
 	icon_state = "tracer_beam"

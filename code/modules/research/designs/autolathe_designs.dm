@@ -414,31 +414,26 @@
 /datum/design/bowl
 	name = "Bowl"
 	id = "bowl"
-	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
+	build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/glass/bowl
-	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
+	category = list("initial","Dinnerware")
 
 /datum/design/drinking_glass
 	name = "Drinking Glass"
 	id = "drinking_glass"
-	//build_type = AUTOLATHE	SKYRAT EDIT: Original Line
-	build_type = AUTOLATHE | PROTOLATHE	// SKRAT EDIT
+	build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass
-	//category = list("initial","Dinnerware")	SKYRAT EDIT: Original line
-	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
+	category = list("initial","Dinnerware")
 
 /datum/design/shot_glass
 	name = "Shot Glass"
 	id = "shot_glass"
-	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
+	build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 100)
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
-	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE //SKYRAT EDIT: added to service techfab
+	category = list("initial","Dinnerware")
 
 /datum/design/shaker
 	name = "Shaker"
@@ -894,8 +889,7 @@
 	category = list("hacked", "Security")
 
 /datum/design/c10mm
-//	name = "Ammo Box (10mm)"			// SKYRAT EDIT: Original
-	name = "Ammo Box (10mm Magnum)"		// SKYRAT EDIT: Calibre rename
+	name = "Ammo Box (10mm)"
 	id = "c10mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)
@@ -911,8 +905,7 @@
 	category = list("hacked", "Security")
 
 /datum/design/c9mm
-//	name = "Ammo Box (9mm)"				// SKYRAT EDIT: Original
-	name = "Ammo Box (9x25mm Mk.12)"	// SKYRAT EDIT: Calibre rename
+	name = "Ammo Box (9mm)"
 	id = "c9mm"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 30000)

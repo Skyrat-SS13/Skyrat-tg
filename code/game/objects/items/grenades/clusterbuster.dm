@@ -70,8 +70,7 @@
 /////////////////////////////////
 /obj/effect/payload_spawner/Initialize(mapload, type, numspawned)
 	..()
-	if(type && isnum(numspawned))
-		spawn_payload(type, numspawned)
+	spawn_payload(type, numspawned)
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/payload_spawner/proc/spawn_payload(type, numspawned)

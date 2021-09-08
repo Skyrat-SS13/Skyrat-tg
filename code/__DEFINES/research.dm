@@ -22,12 +22,14 @@
 
 //! Techweb names for new point types. Can be used to define specific point values for specific types of research (science, security, engineering, etc.)
 #define TECHWEB_POINT_TYPE_GENERIC "General Research"
+#define TECHWEB_POINT_TYPE_NANITES "Nanite Research"
 
 #define TECHWEB_POINT_TYPE_DEFAULT TECHWEB_POINT_TYPE_GENERIC
 
 //! Associative names for techweb point values, see: [all_nodes][code/modules/research/techweb/all_nodes.dm]
 #define TECHWEB_POINT_TYPE_LIST_ASSOCIATIVE_NAMES list(\
 	TECHWEB_POINT_TYPE_GENERIC = "General Research",\
+	TECHWEB_POINT_TYPE_NANITES = "Nanite Research"\
 	)
 
 /// Amount of cash you can get from a maxcap
@@ -41,7 +43,7 @@
 #define CELL_LINE_TABLE_MOLD "cell_line_mold_table"
 #define CELL_LINE_TABLE_MOIST "cell_line_moist_table"
 #define CELL_LINE_TABLE_BLOB "cell_line_blob_table"
-//#define CELL_LINE_TABLE_CLOWN "cell_line_clown_table" //SKYRAT EDIT REMOVAL - if lack of this fails the travis, comment whatever uses this
+#define CELL_LINE_TABLE_CLOWN "cell_line_clown_table"
 
 //! Biopsy cell line types
 #define CELL_LINE_TABLE_BEAR "cell_line_bear_table"

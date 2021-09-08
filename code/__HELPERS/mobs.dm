@@ -50,8 +50,6 @@
 /proc/random_backpack()
 	return pick(GLOB.backpacklist)
 
-//SKYRAT EDIT REMOVAL - CUSTOMIZATION (moved to modular)
-/*
 /proc/random_features()
 	if(!GLOB.tails_list_human.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
@@ -81,9 +79,6 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
 	//For now we will always return none for tail_human and ears.
 	return(list("mcolor" = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),"ethcolor" = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)], "tail_lizard" = pick(GLOB.tails_list_lizard), "tail_human" = "None", "wings" = "None", "snout" = pick(GLOB.snouts_list), "horns" = pick(GLOB.horns_list), "ears" = "None", "frills" = pick(GLOB.frills_list), "spines" = pick(GLOB.spines_list), "body_markings" = pick(GLOB.body_markings_list), "legs" = "Normal Legs", "caps" = pick(GLOB.caps_list), "moth_wings" = pick(GLOB.moth_wings_list), "moth_antennae" = pick(GLOB.moth_antennae_list), "moth_markings" = pick(GLOB.moth_markings_list), "tail_monkey" = "None"))
-*/
-//SKYRAT EDIT REMOVAL END
-
 
 /proc/random_hairstyle(gender)
 	switch(gender)
@@ -163,7 +158,15 @@ GLOBAL_LIST_EMPTY(species_list)
 
 /proc/age2agedescription(age)
 	switch(age)
-		if(0 to 30) //SKYRAT EDIT CHANGE - NO
+		if(0 to 1)
+			return "infant"
+		if(1 to 3)
+			return "toddler"
+		if(3 to 13)
+			return "child"
+		if(13 to 19)
+			return "teenager"
+		if(19 to 30)
 			return "young adult"
 		if(30 to 45)
 			return "adult"
@@ -203,9 +206,6 @@ GLOBAL_LIST_EMPTY(species_list)
 		progbar = new(user, time, target)
 	if(target.pixel_x != 0) //shifts the progress bar if target has an offset sprite
 		progbar.bar.pixel_x -= target.pixel_x
-
-	if(!(timed_action_flags & IGNORE_SLOWDOWNS))
-		time *= user.cached_multiplicative_actions_slowdown
 
 	var/endtime = world.time+time
 	var/starttime = world.time
@@ -284,8 +284,7 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	var/holding = user.get_active_held_item()
 
-	if(!(timed_action_flags & IGNORE_SLOWDOWNS))
-		delay *= user.cached_multiplicative_actions_slowdown
+	delay *= user.cached_multiplicative_actions_slowdown
 
 	var/datum/progressbar/progbar
 	if(progress)
@@ -341,8 +340,7 @@ GLOBAL_LIST_EMPTY(species_list)
 		return FALSE
 	var/user_loc = user.loc
 
-	if(!(timed_action_flags & IGNORE_SLOWDOWNS))
-		time *= user.cached_multiplicative_actions_slowdown
+	time *= user.cached_multiplicative_actions_slowdown
 
 	var/drifting = FALSE
 	if(!user.Process_Spacemove(0) && user.inertia_dir)
@@ -356,7 +354,7 @@ GLOBAL_LIST_EMPTY(species_list)
 	if(interaction_key)
 		var/current_interaction_count = LAZYACCESS(user.do_afters, interaction_key) || 0
 		if(current_interaction_count >= max_interact_count) //We are at our peak
-			to_chat(user, span_warning("You can't do this at the moment!"))
+			to_chat(user, "<span class='warning'>You can't do this at the moment!</span>")
 			return
 		LAZYSET(user.do_afters, interaction_key, current_interaction_count + 1)
 
@@ -467,7 +465,7 @@ GLOBAL_LIST_EMPTY(species_list)
 // Displays a message in deadchat, sent by source. source is not linkified, message is, to avoid stuff like character names to be linkified.
 // Automatically gives the class deadsay to the whole message (message + source)
 /proc/deadchat_broadcast(message, source=null, mob/follow_target=null, turf/turf_target=null, speaker_key=null, message_type=DEADCHAT_REGULAR, admin_only=FALSE)
-	message = span_deadsay("[source]<span class='linkify'>[message]</span>")
+	message = "<span class='deadsay'>[source]<span class='linkify'>[message]</span></span>"
 
 	for(var/mob/M in GLOB.player_list)
 		var/chat_toggles = TOGGLES_DEFAULT_CHAT
@@ -482,7 +480,7 @@ GLOBAL_LIST_EMPTY(species_list)
 			if (!M.client.holder)
 				return
 			else
-				message += span_deadsay(" (This is viewable to admins only).")
+				message += "<span class='deadsay'> (This is viewable to admins only).</span>"
 		var/override = FALSE
 		if(M.client.holder && (chat_toggles & CHAT_DEAD))
 			override = TRUE
@@ -525,9 +523,9 @@ GLOBAL_LIST_EMPTY(species_list)
 				var/turf_link = TURF_LINK(M, turf_target)
 				rendered_message = "[turf_link] [message]"
 
-			to_chat(M, rendered_message, avoid_highlighting = speaker_key == M.key)
+			to_chat(M, rendered_message)
 		else
-			to_chat(M, message, avoid_highlighting = speaker_key == M.key)
+			to_chat(M, message)
 
 //Used in chemical_mob_spawn. Generates a random mob based on a given gold_core_spawnable value.
 /proc/create_random_mob(spawn_location, mob_class = HOSTILE_SPAWN)
@@ -542,20 +540,14 @@ GLOBAL_LIST_EMPTY(species_list)
 					mob_spawn_meancritters += T
 				if(FRIENDLY_SPAWN)
 					mob_spawn_nicecritters += T
-		for(var/mob/living/basic/basic_mob as anything in typesof(/mob/living/basic))
-			switch(initial(basic_mob.gold_core_spawnable))
-				if(HOSTILE_SPAWN)
-					mob_spawn_meancritters += basic_mob
-				if(FRIENDLY_SPAWN)
-					mob_spawn_nicecritters += basic_mob
 
 	var/chosen
 	if(mob_class == FRIENDLY_SPAWN)
 		chosen = pick(mob_spawn_nicecritters)
 	else
 		chosen = pick(mob_spawn_meancritters)
-	var/mob/living/spawned_mob = new chosen(spawn_location)
-	return spawned_mob
+	var/mob/living/simple_animal/C = new chosen(spawn_location)
+	return C
 
 /proc/passtable_on(target, source)
 	var/mob/living/L = target

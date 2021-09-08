@@ -2,7 +2,7 @@
 /**
  * Applies damage to this mob
  *
- * Sends [COMSIG_MOB_APPLY_DAMAGE]
+ * Sends [COMSIG_MOB_APPLY_DAMGE]
  *
  * Arguuments:
  * * damage - amount of damage
@@ -15,7 +15,7 @@
  * Returns TRUE if damage applied
  */
 /mob/living/proc/apply_damage(damage = 0,damagetype = BRUTE, def_zone = null, blocked = FALSE, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE)
-	SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMAGE, damage, damagetype, def_zone)
+	SEND_SIGNAL(src, COMSIG_MOB_APPLY_DAMGE, damage, damagetype, def_zone)
 	var/hit_percent = (100-blocked)/100
 	if(!damage || (!forced && hit_percent <= 0))
 		return FALSE
@@ -156,7 +156,6 @@
 	return bruteloss
 
 /mob/living/proc/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE, required_status)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_BRUTE, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	bruteloss = clamp((bruteloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
@@ -168,7 +167,6 @@
 	return oxyloss
 
 /mob/living/proc/adjustOxyLoss(amount, updating_health = TRUE, forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_OXY, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return
 	. = oxyloss
@@ -190,7 +188,6 @@
 	return toxloss
 
 /mob/living/proc/adjustToxLoss(amount, updating_health = TRUE, forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_TOX, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	toxloss = clamp((toxloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
@@ -210,7 +207,6 @@
 	return fireloss
 
 /mob/living/proc/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_FIRE, amount) //SKYRAT EDIT ADDITION
 	if(!forced && (status_flags & GODMODE))
 		return FALSE
 	fireloss = clamp((fireloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
@@ -222,7 +218,6 @@
 	return cloneloss
 
 /mob/living/proc/adjustCloneLoss(amount, updating_health = TRUE, forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_CLONE, amount) //SKYRAT EDIT ADDITION
 	if(!forced && ( (status_flags & GODMODE) || HAS_TRAIT(src, TRAIT_NOCLONELOSS)) )
 		return FALSE
 	cloneloss = clamp((cloneloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
@@ -239,7 +234,6 @@
 	return amount
 
 /mob/living/proc/adjustOrganLoss(slot, amount, maximum)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_ORGAN, slot, amount) //SKYRAT EDIT ADDITION
 	return
 
 /mob/living/proc/setOrganLoss(slot, amount, maximum)
@@ -252,7 +246,6 @@
 	return staminaloss
 
 /mob/living/proc/adjustStaminaLoss(amount, updating_health = TRUE, forced = FALSE)
-	SEND_SIGNAL(src, COMSIG_MOB_LOSS_STAMINA, amount) //SKYRAT EDIT ADDITION
 	return
 
 /mob/living/proc/setStaminaLoss(amount, updating_health = TRUE, forced = FALSE)

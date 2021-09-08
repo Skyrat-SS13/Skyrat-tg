@@ -1,4 +1,4 @@
-/obj/item/gun/energy/laser //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/energy/laser
 	name = "laser gun"
 	desc = "A basic energy-based laser gun that fires concentrated beams of light which pass through glass and thin metal."
 	icon_state = "laser"
@@ -12,7 +12,6 @@
 /obj/item/gun/energy/laser/practice
 	name = "practice laser gun"
 	desc = "A modified version of the basic laser gun, this one fires less concentrated energy bolts designed for target practice."
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/practice)
 	clumsy_check = FALSE
 	item_flags = NONE
@@ -21,7 +20,6 @@
 	name ="retro laser gun"
 	icon_state = "retro"
 	desc = "An older model of the basic lasergun, no longer used by Nanotrasen's private security or military forces. Nevertheless, it is still quite deadly and easy to maintain, making it a favorite amongst pirates and other outlaws."
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	ammo_x_offset = 3
 
 /obj/item/gun/energy/laser/retro/old
@@ -29,7 +27,6 @@
 	icon_state = "retro"
 	desc = "First generation lasergun, developed by Nanotrasen. Suffers from ammo issues but its unique ability to recharge its ammo without the need of a magazine helps compensate. You really hope someone has developed a better lasergun while you were in cryo."
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun/old)
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	ammo_x_offset = 3
 
 /obj/item/gun/energy/laser/hellgun
@@ -71,23 +68,20 @@
 	name = "scatter laser gun"
 	desc = "A laser gun equipped with a refraction kit that spreads bolts."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 
 /obj/item/gun/energy/laser/scatter/shotty
 	name = "energy shotgun"
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
+	icon = 'icons/obj/guns/ballistic.dmi'
 	icon_state = "cshotgun"
 	inhand_icon_state = "shotgun"
 	desc = "A combat shotgun gutted and refitted with an internal laser system. Can switch between taser and scattered disabler shots."
 	shaded_charge = 0
 	pin = /obj/item/firing_pin/implant/mindshield
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter/disabler, /obj/item/ammo_casing/energy/electrode)
-	automatic_charge_overlays = FALSE
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 
 ///Laser Cannon
 
-/obj/item/gun/energy/lasercannon//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/energy/lasercannon
 	name = "accelerator laser cannon"
 	desc = "An advanced laser cannon that does more damage the farther away the target is."
 	icon_state = "lasercannon"
@@ -127,7 +121,7 @@
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/xray)
 	ammo_x_offset = 3
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
+
 ////////Laser Tag////////////////////
 
 /obj/item/gun/energy/laser/bluetag

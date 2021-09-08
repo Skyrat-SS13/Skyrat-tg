@@ -40,9 +40,9 @@
 	name = "Incinerator Air Control (Computer Board)"
 	build_path = /obj/machinery/computer/atmos_control/incinerator
 
-/obj/item/circuitboard/computer/atmos_control/ordnancemix
-	name = "Ordnance Mixing Air Control (Computer Board)"
-	build_path = /obj/machinery/computer/atmos_control/ordnancemix
+/obj/item/circuitboard/computer/atmos_control/toxinsmix
+	name = "Toxins Mixing Air Control (Computer Board)"
+	build_path = /obj/machinery/computer/atmos_control/toxinsmix
 
 /obj/item/circuitboard/computer/atmos_control/tank
 	name = "Tank Control (Computer Board)"
@@ -52,9 +52,9 @@
 	name = "Oxygen Supply Control (Computer Board)"
 	build_path = /obj/machinery/computer/atmos_control/tank/oxygen_tank
 
-/obj/item/circuitboard/computer/atmos_control/tank/plasma_tank
+/obj/item/circuitboard/computer/atmos_control/tank/toxin_tank
 	name = "Plasma Supply Control (Computer Board)"
-	build_path = /obj/machinery/computer/atmos_control/tank/plasma_tank
+	build_path = /obj/machinery/computer/atmos_control/tank/toxin_tank
 
 /obj/item/circuitboard/computer/atmos_control/tank/air_tank
 	name = "Mixed Air Supply Control (Computer Board)"
@@ -210,6 +210,11 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/computer/turbine_computer
 
+/obj/item/circuitboard/computer/turbine_control
+	name = "Turbine control (Computer Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/computer/turbine_computer
+
 //Generic
 
 /obj/item/circuitboard/computer/arcade/amputation
@@ -241,11 +246,11 @@
 		if(build_path == /obj/machinery/computer/bookmanagement)
 			name = "Library Visitor Console (Computer Board)"
 			build_path = /obj/machinery/computer/libraryconsole
-			to_chat(user, span_notice("Defaulting access protocols."))
+			to_chat(user, "<span class='notice'>Defaulting access protocols.</span>")
 		else
 			name = "Book Inventory Management Console (Computer Board)"
 			build_path = /obj/machinery/computer/bookmanagement
-			to_chat(user, span_notice("Access protocols successfully updated."))
+			to_chat(user, "<span class='notice'>Access protocols successfully updated.</span>")
 	else
 		return ..()
 
@@ -364,6 +369,16 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/computer/mecha
 
+/obj/item/circuitboard/computer/nanite_chamber_control
+	name = "Nanite Chamber Control (Computer Board)"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/computer/nanite_chamber_control
+
+/obj/item/circuitboard/computer/nanite_cloud_controller
+	name = "Nanite Cloud Control (Computer Board)"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/computer/nanite_cloud_controller
+
 /obj/item/circuitboard/computer/rdconsole
 	name = "R&D Console (Computer Board)"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
@@ -465,15 +480,15 @@
 	. = ..()
 	if(!(obj_flags & EMAGGED))
 		contraband = !contraband
-		to_chat(user, span_notice("Receiver spectrum set to [contraband ? "Broad" : "Standard"]."))
+		to_chat(user, "<span class='notice'>Receiver spectrum set to [contraband ? "Broad" : "Standard"].</span>")
 	else
-		to_chat(user, span_alert("The spectrum chip is unresponsive."))
+		to_chat(user, "<span class='alert'>The spectrum chip is unresponsive.</span>")
 
 /obj/item/circuitboard/computer/cargo/emag_act(mob/living/user)
 	if(!(obj_flags & EMAGGED))
 		contraband = TRUE
 		obj_flags |= EMAGGED
-		to_chat(user, span_notice("You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband."))
+		to_chat(user, "<span class='notice'>You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband.</span>")
 
 /obj/item/circuitboard/computer/cargo/configure_machine(obj/machinery/computer/cargo/machine)
 	if(!istype(machine))
@@ -493,14 +508,14 @@
 	if(!(obj_flags & EMAGGED))
 		contraband = TRUE
 		obj_flags |= EMAGGED
-		to_chat(user, span_notice("You change the routing protocols, allowing the Drop Pod to land anywhere on the station."))
+		to_chat(user, "<span class='notice'>You change the routing protocols, allowing the Drop Pod to land anywhere on the station.</span>")
 
 /obj/item/circuitboard/computer/cargo/express/multitool_act(mob/living/user)
 	if (!(obj_flags & EMAGGED))
 		contraband = !contraband
-		to_chat(user, span_notice("Receiver spectrum set to [contraband ? "Broad" : "Standard"]."))
+		to_chat(user, "<span class='notice'>Receiver spectrum set to [contraband ? "Broad" : "Standard"].</span>")
 	else
-		to_chat(user, span_notice("You reset the destination-routing protocols and receiver spectrum to factory defaults."))
+		to_chat(user, "<span class='notice'>You reset the destination-routing protocols and receiver spectrum to factory defaults.</span>")
 		contraband = FALSE
 		obj_flags &= ~EMAGGED
 

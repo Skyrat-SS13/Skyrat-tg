@@ -24,7 +24,7 @@
 	desc = "A first aid kit with the ability to heal common types of injuries."
 
 /obj/item/storage/firstaid/regular/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins giving [user.p_them()]self aids with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] begins giving [user.p_them()]self aids with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return BRUTELOSS
 
 /obj/item/storage/firstaid/regular/PopulateContents()
@@ -32,13 +32,12 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
 		/obj/item/reagent_containers/hypospray/medipen = 1)
 	generate_items_inside(items_inside,src)
 
-/obj/item/storage/firstaid/emergency//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/storage/firstaid/emergency
 	icon_state = "medbriefcase"
 	name = "emergency first-aid kit"
 	desc = "A very simple first aid kit meant to secure and stabilize serious wounds for later treatment."
@@ -49,7 +48,6 @@
 	var/static/items_inside = list(
 		/obj/item/healthanalyzer/wound = 1,
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/suture/emergency = 1,
 		/obj/item/stack/medical/ointment = 1,
 		/obj/item/reagent_containers/hypospray/medipen/ekit = 2,
@@ -126,7 +124,6 @@
 	var/static/items_inside = list(
 		/obj/item/healthanalyzer = 1,
 		/obj/item/stack/medical/gauze/twelve = 1,
-		/obj/item/stack/medical/splint/twelve = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
 		/obj/item/reagent_containers/hypospray/medipen = 1,
@@ -145,7 +142,6 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/stack/medical/bruise_pack = 3,
 		/obj/item/stack/medical/ointment= 3)
 	generate_items_inside(items_inside,src)
@@ -156,13 +152,13 @@
 
 /obj/item/storage/firstaid/fire
 	name = "burn treatment kit"
-	desc = "A specialized medical kit for when the ordnance lab <i>-spontaneously-</i> burns down."
+	desc = "A specialized medical kit for when the toxins lab <i>-spontaneously-</i> burns down."
 	icon_state = "ointment"
 	inhand_icon_state = "firstaid-ointment"
 	damagetype_healed = BURN
 
 /obj/item/storage/firstaid/fire/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins rubbing \the [src] against [user.p_them()]self! It looks like [user.p_theyre()] trying to start a fire!"))
+	user.visible_message("<span class='suicide'>[user] begins rubbing \the [src] against [user.p_them()]self! It looks like [user.p_theyre()] trying to start a fire!</span>")
 	return FIRELOSS
 
 /obj/item/storage/firstaid/fire/Initialize(mapload)
@@ -187,7 +183,7 @@
 	damagetype_healed = TOX
 
 /obj/item/storage/firstaid/toxin/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins licking the lead paint off \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] begins licking the lead paint off \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return TOXLOSS
 
 /obj/item/storage/firstaid/toxin/Initialize(mapload)
@@ -212,7 +208,7 @@
 	damagetype_healed = OXY
 
 /obj/item/storage/firstaid/o2/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins hitting [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] begins hitting [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return OXYLOSS
 
 /obj/item/storage/firstaid/o2/Initialize(mapload)
@@ -237,7 +233,7 @@
 	damagetype_healed = BRUTE
 
 /obj/item/storage/firstaid/brute/suicide_act(mob/living/carbon/user)
-	user.visible_message(span_suicide("[user] begins beating [user.p_them()]self over the head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] begins beating [user.p_them()]self over the head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return BRUTELOSS
 
 /obj/item/storage/firstaid/brute/Initialize(mapload)
@@ -250,7 +246,6 @@
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/pill/patch/libital = 3,
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/storage/pill_bottle/probital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/salacid = 1)
 	generate_items_inside(items_inside,src)
@@ -270,7 +265,6 @@
 		/obj/item/reagent_containers/pill/patch/synthflesh = 3,
 		/obj/item/reagent_containers/hypospray/medipen/atropine = 2,
 		/obj/item/stack/medical/gauze = 1,
-		/obj/item/stack/medical/splint = 1, //SKYRAT EDIT ADDITION - MEDICAL
 		/obj/item/storage/pill_bottle/penacid = 1)
 	generate_items_inside(items_inside,src)
 
@@ -289,7 +283,6 @@
 	if(empty)
 		return
 	new /obj/item/stack/medical/gauze(src)
-	new /obj/item/stack/medical/splint(src) //SKYRAT EDIT ADDITION - MEDICAL
 	new /obj/item/defibrillator/compact/combat/loaded(src)
 	new /obj/item/reagent_containers/hypospray/combat(src)
 	new /obj/item/reagent_containers/pill/patch/libital(src)
@@ -305,7 +298,7 @@
 
 	//Making a medibot!
 	if(contents.len >= 1)
-		to_chat(user, span_warning("You need to empty [src] out first!"))
+		to_chat(user, "<span class='warning'>You need to empty [src] out first!</span>")
 		return
 
 	var/obj/item/bot_assembly/medbot/A = new
@@ -320,7 +313,7 @@
 	else if (istype(src, /obj/item/storage/firstaid/advanced))
 		A.set_skin("advanced")
 	user.put_in_hands(A)
-	to_chat(user, span_notice("You add [S] to [src]."))
+	to_chat(user, "<span class='notice'>You add [S] to [src].</span>")
 	A.robot_arm = S.type
 	A.firstaid = type
 	qdel(S)
@@ -345,10 +338,10 @@
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.allow_quick_gather = TRUE
 	STR.click_gather = TRUE
-	STR.set_holdable(list(/obj/item/reagent_containers/pill))
+	STR.set_holdable(list(/obj/item/reagent_containers/pill, /obj/item/dice))
 
 /obj/item/storage/pill_bottle/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] is trying to get the cap off [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] is trying to get the cap off [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return (TOXLOSS)
 
 /obj/item/storage/pill_bottle/multiver
@@ -629,28 +622,18 @@
 		var/obj/item/reagent_containers/RC = I
 		var/units = RC.reagents.trans_to(src, RC.amount_per_transfer_from_this, transfered_by = user)
 		if(units)
-			to_chat(user, span_notice("You transfer [units] units of the solution to [src]."))
+			to_chat(user, "<span class='notice'>You transfer [units] units of the solution to [src].</span>")
 			return
 	if(istype(I, /obj/item/plunger))
-		to_chat(user, span_notice("You start furiously plunging [name]."))
+		to_chat(user, "<span class='notice'>You start furiously plunging [name].</span>")
 		if(do_after(user, 10, target = src))
-			to_chat(user, span_notice("You finish plunging the [name]."))
+			to_chat(user, "<span class='notice'>You finish plunging the [name].</span>")
 			reagents.clear_reagents()
 		return
 	return ..()
 
 /obj/item/storage/organbox/suicide_act(mob/living/carbon/user)
-	if(HAS_TRAIT(user, TRAIT_RESISTCOLD)) //if they're immune to cold, just do the box suicide
-		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
-		if(myhead)
-			user.visible_message(span_suicide("[user] puts [user.p_their()] head into \the [src] and begins closing it! It looks like [user.p_theyre()] trying to commit suicide!"))
-			myhead.dismember()
-			myhead.forceMove(src) //force your enemies to kill themselves with your head collection box!
-			playsound(user, "desecration-01.ogg", 50, TRUE, -1)
-			return BRUTELOSS
-		user.visible_message(span_suicide("[user] is beating [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
-		return BRUTELOSS
-	user.visible_message(span_suicide("[user] is putting [user.p_their()] head inside the [src], it looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] is putting [user.p_theyre()] head inside the [src], it looks like [user.p_theyre()] trying to commit suicide!</span>")
 	user.adjust_bodytemperature(-300)
 	user.apply_status_effect(/datum/status_effect/freon)
-	return FIRELOSS
+	return (OXYLOSS)

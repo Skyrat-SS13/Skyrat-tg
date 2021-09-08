@@ -4,8 +4,7 @@
 	weight = 5
 
 	min_players = 15
-	//max_occurrences = 1 //ORIGINAL
-	max_occurrences = 0 //SKYRAT EDIT CHANGE
+	max_occurrences = 1
 
 /datum/round_event/brand_intelligence
 	announceWhen = 21
@@ -30,7 +29,7 @@
 		source = initial(example.name)
 	else if(originMachine)
 		source = originMachine.name
-	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please stand by. The origin is believed to be \a [source].", "Machine Learning Alert", ANNOUNCER_BRANDINTELLIGENCE) //SKYRAT EDIT CHANGE
+	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please stand by. The origin is believed to be \a [source].", "Machine Learning Alert")
 
 /datum/round_event/brand_intelligence/start()
 	for(var/obj/machinery/vending/V in GLOB.machines)
@@ -52,7 +51,7 @@
 			saved.shoot_inventory = 0
 		if(originMachine)
 			originMachine.speak("I am... vanquished. My people will remem...ber...meeee.")
-			originMachine.visible_message(span_notice("[originMachine] beeps and seems lifeless."))
+			originMachine.visible_message("<span class='notice'>[originMachine] beeps and seems lifeless.</span>")
 		kill()
 		return
 	vendingMachines = removeNullsFromList(vendingMachines)

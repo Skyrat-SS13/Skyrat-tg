@@ -2,9 +2,6 @@
 /obj/docking_port/mobile/proc/initiate_docking(obj/docking_port/stationary/new_dock, movement_direction, force=FALSE)
 	// Crashing this ship with NO SURVIVORS
 
-	if(admin_forced)
-		force = admin_forced
-
 	if(new_dock.get_docked() == src)
 		remove_ripples()
 		return DOCKING_SUCCESS

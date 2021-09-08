@@ -3,7 +3,7 @@
 	department_head = list("Captain")
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	head_announce = list(RADIO_CHANNEL_MEDICAL)
-	faction = FACTION_STATION
+	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
@@ -11,16 +11,12 @@
 	req_admin_notify = 1
 	minimal_player_age = 7
 	exp_requirements = 180
-	exp_required_type = EXP_TYPE_CREW
-	exp_required_type_department = EXP_TYPE_MEDICAL
-	exp_granted_type = EXP_TYPE_CREW
+	exp_type = EXP_TYPE_CREW
+	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/cmo
 	plasmaman_outfit = /datum/outfit/plasmaman/chief_medical_officer
-	departments_list = list(
-		/datum/job_department/medical,
-		/datum/job_department/command,
-		)
+	departments = DEPARTMENT_MEDICAL | DEPARTMENT_COMMAND
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_MED
@@ -38,14 +34,10 @@
 	)
 	family_heirlooms = list(/obj/item/storage/firstaid/ancient/heirloom)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
-
-	voice_of_god_power = 1.4 //Command staff has authority
-
-
-/datum/job/chief_medical_officer/get_captaincy_announcement(mob/living/captain)
-	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
-
+/datum/job/chief_medical_officer/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
+	..()
+	if(announce_captaincy)
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"

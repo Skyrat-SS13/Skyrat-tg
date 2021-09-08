@@ -1,10 +1,7 @@
 /obj/structure/sign/barsign // All Signs are 64 by 32 pixels, they take two tiles
 	name = "bar sign"
 	desc = "A bar sign which has not been initialized, somehow. Complain at a coder!"
-	//SKYRAT EDIT CHANGE BEGIN - BARSIGNS
-	//icon = 'icons/obj/barsigns.dmi'
-	icon = 'modular_skyrat/modules/barsigns/icons/obj/barsigns.dmi'
-	//SKYRAT EDIT CHANGE END
+	icon = 'icons/obj/barsigns.dmi'
 	icon_state = "empty"
 	req_access = list(ACCESS_BAR)
 	max_integrity = 500
@@ -70,21 +67,21 @@
 	if(.)
 		return
 	if(!allowed(user))
-		to_chat(user, span_info("Access denied."))
+		to_chat(user, "<span class='info'>Access denied.</span>")
 		return
 	if(broken)
-		to_chat(user, span_danger("The controls seem unresponsive."))
+		to_chat(user, "<span class='danger'>The controls seem unresponsive.</span>")
 		return
 	pick_sign(user)
 
 /obj/structure/sign/barsign/attackby(obj/item/I, mob/user)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(!panel_open)
-			to_chat(user, span_notice("You open the maintenance panel."))
+			to_chat(user, "<span class='notice'>You open the maintenance panel.</span>")
 			set_sign(new /datum/barsign/hiddensigns/signoff)
 			panel_open = TRUE
 		else
-			to_chat(user, span_notice("You close the maintenance panel."))
+			to_chat(user, "<span class='notice'>You close the maintenance panel.</span>")
 			if(!broken)
 				if(!chosen_sign)
 					set_sign(new /datum/barsign/hiddensigns/signoff)
@@ -97,14 +94,14 @@
 	else if(istype(I, /obj/item/stack/cable_coil) && panel_open)
 		var/obj/item/stack/cable_coil/C = I
 		if(!broken)
-			to_chat(user, span_warning("This sign is functioning properly!"))
+			to_chat(user, "<span class='warning'>This sign is functioning properly!</span>")
 			return
 
 		if(C.use(2))
-			to_chat(user, span_notice("You replace the burnt wiring."))
+			to_chat(user, "<span class='notice'>You replace the burnt wiring.</span>")
 			broken = FALSE
 		else
-			to_chat(user, span_warning("You need at least two lengths of cable!"))
+			to_chat(user, "<span class='warning'>You need at least two lengths of cable!</span>")
 	else
 		return ..()
 
@@ -118,9 +115,9 @@
 
 /obj/structure/sign/barsign/emag_act(mob/user)
 	if(broken)
-		to_chat(user, span_warning("Nothing interesting happens!"))
+		to_chat(user, "<span class='warning'>Nothing interesting happens!</span>")
 		return
-	to_chat(user, span_notice("You load an illegal barsign into the memory buffer..."))
+	to_chat(user, "<span class='notice'>You load an illegal barsign into the memory buffer...</span>")
 	sleep(10 SECONDS)
 	chosen_sign = set_sign(new /datum/barsign/hiddensigns/syndibarsign)
 

@@ -41,8 +41,6 @@
 #define MAGIC "magic"
 /// Involved in checking the likelyhood of applying a wound to a mob.
 #define WOUND "wound"
-/// Involves being eaten
-#define CONSUME "consume"
 
 //bitflag damage defines used for suicide_act
 #define BRUTELOSS (1<<0)
@@ -216,10 +214,6 @@ GLOBAL_LIST_INIT(shove_disarming_types, typecacheof(list(
 #define AMMO_BOX_PER_BULLET 1
 ///ammo box will have a different state for full and empty; <icon_state>-max_ammo and <icon_state>-0
 #define AMMO_BOX_FULL_EMPTY 2
-//SKYRAT EDIT ADDITON BEGIN - SEC_HAUL
-///ammo box will have a different state for full and empty; <icon_state>-full and <icon_state>-0
-#define AMMO_BOX_FULL_EMPTY_BASIC 3
-//SKYRAT EDIT END
 
 #define SUPPRESSED_NONE 0
 #define SUPPRESSED_QUIET 1 ///standard suppressed

@@ -118,20 +118,6 @@ SUBSYSTEM_DEF(vote)
 			if("map")
 				SSmapping.changemap(global.config.maplist[.])
 				SSmapping.map_voted = TRUE
-			//SKYRAT EDIT ADDITION BEGIN
-			if("mining_map")
-				SSrandommining.voted_next_map = TRUE
-				if(fexists("data/next_mining.dat"))
-					fdel("data/next_mining.dat")
-				var/F = file("data/next_mining.dat")
-				WRITE_FILE(F, .)
-			if("transfer")
-				if(. == "Initiate Crew Transfer")
-					SSshuttle.autoEnd()
-					var/obj/machinery/computer/communications/C = locate() in GLOB.machines
-					if(C)
-						C.post_status("shuttle")
-			//SKYRAT EDIT ADDITION END
 	if(restart)
 		var/active_admins = FALSE
 		for(var/client/C in GLOB.admins + GLOB.deadmins)
@@ -166,7 +152,7 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key)
 	//Server is still intializing.
 	if(!Master.current_runlevel)
-		to_chat(usr, span_warning("Cannot start vote, server is not done initializing."))
+		to_chat(usr, "<span class='warning'>Cannot start vote, server is not done initializing.</span>")
 		return FALSE
 	var/lower_admin = FALSE
 	var/ckey = ckey(initiator_key)
@@ -177,10 +163,10 @@ SUBSYSTEM_DEF(vote)
 		if(started_time)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
 			if(mode)
-				to_chat(usr, span_warning("There is already a vote in progress! please wait for it to finish."))
+				to_chat(usr, "<span class='warning'>There is already a vote in progress! please wait for it to finish.</span>")
 				return FALSE
 			if(next_allowed_time > world.time && !lower_admin)
-				to_chat(usr, span_warning("A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!"))
+				to_chat(usr, "<span class='warning'>A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!</span>")
 				return FALSE
 
 		reset()
@@ -189,31 +175,18 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Restart Round","Continue Playing")
 			if("map")
 				if(!lower_admin && SSmapping.map_voted)
-					to_chat(usr, span_warning("The next map has already been selected."))
+					to_chat(usr, "<span class='warning'>The next map has already been selected.</span>")
 					return FALSE
 				// Randomizes the list so it isn't always METASTATION
 				var/list/maps = list()
 				for(var/map in global.config.maplist)
 					var/datum/map_config/VM = config.maplist[map]
-					if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps) || GLOB.clients.len >= VM.config_max_users || GLOB.clients.len <= VM.config_min_users) //SKYRAT EDIT CHANGE - ORIGINAL: if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps))
+					if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps))
 						continue
 					maps += VM.map_name
 					shuffle_inplace(maps)
 				for(var/valid_map in maps)
 					choices.Add(valid_map)
-			//SKYRAT EDIT ADDITION
-			if("mining_map")
-				if(!lower_admin && SSrandommining.voted_next_map)
-					to_chat(usr, "<span class='warning'>The next map has already been selected.</span>")
-					return FALSE
-				var/list/maps = list()
-				for(var/map in SSrandommining.possible_names)
-					if(SSrandommining.previous_map == map)
-						continue
-					maps += map
-				for(var/valid_map in maps)
-					choices.Add(valid_map)
-			//SKYRAT EDIT ADDITON END
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
@@ -223,10 +196,6 @@ SUBSYSTEM_DEF(vote)
 					if(!option || mode || !usr.client)
 						break
 					choices.Add(option)
-			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
-			if("transfer")
-				choices.Add("Initiate Crew Transfer","Continue Playing")
-			//SKYRAT EDIT ADDITION END - AUTOTRANSFER
 			else
 				return FALSE
 		mode = vote_type
@@ -248,12 +217,7 @@ SUBSYSTEM_DEF(vote)
 			V.Grant(C.mob)
 			generated_actions += V
 			if(C.prefs.toggles & SOUND_ANNOUNCEMENTS)
-			//SKYRAT EDIT START
-			/*
 				SEND_SOUND(C, sound('sound/misc/bloop.ogg'))
-			*/
-				SEND_SOUND(C, sound('sound/misc/announce_dig.ogg'))
-			//SKYRAT EDIT END
 		return TRUE
 	return FALSE
 
@@ -327,19 +291,9 @@ SUBSYSTEM_DEF(vote)
 		if("map")
 			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
 				initiate_vote("map",usr.key)
-		//SKYRAT EDIT ADDITION
-		if("mining_map")
-			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
-				initiate_vote("mining_map",usr.key)
-		//SKYRAT EDIT END
 		if("custom")
 			if(usr.client.holder)
 				initiate_vote("custom",usr.key)
-		//SKYRAT EDIT ADDITION BEGIN - autotransfer
-		if("transfer")
-			if(usr.client.holder && upper_admin)
-				initiate_vote("transfer",usr.key)
-		//SKYRAT EDIT ADDITION END
 		if("vote")
 			submit_vote(round(text2num(params["index"])))
 	return TRUE

@@ -13,21 +13,14 @@
 #define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )
 
 //Human Overlays Indexes/////////
-#define MUTATIONS_LAYER 34 //mutations. Tk headglows, cold resistance glow, etc
-#define BODY_BEHIND_LAYER 33 //certain mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODYPARTS_LAYER 32 //Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define BODY_ADJ_LAYER 31 //certain mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_LAYER 30 //underwear, undershirts, socks, eyes, lips(makeup)
-#define FRONT_MUTATIONS_LAYER 29 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define DAMAGE_LAYER 28 //damage indicators (cuts and burns)
-#define UNIFORM_LAYER 27
-//SKYRAT EDIT ADDITION BEGIN - ERP UPDATE
-#define ANUS_LAYER 26
-#define VAGINA_LAYER 25
-#define PENIS_LAYER 24
-#define NIPPLES_LAYER 23
-//SKYRAT EDIT ADDITION END
-#define BANDAGE_LAYER 22 //Overlays related to wounds, bandages and splints too //SKYRAT EDIT ADDITION - MEDICAL
+#define MUTATIONS_LAYER 29 //mutations. Tk headglows, cold resistance glow, etc
+#define BODY_BEHIND_LAYER 28 //certain mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODYPARTS_LAYER 27 //Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
+#define BODY_ADJ_LAYER 26 //certain mutantrace features (snout, body markings) that must appear above the body parts
+#define BODY_LAYER 25 //underwear, undershirts, socks, eyes, lips(makeup)
+#define FRONT_MUTATIONS_LAYER 24 //mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define DAMAGE_LAYER 23 //damage indicators (cuts and burns)
+#define UNIFORM_LAYER 22
 #define ID_LAYER 21
 #define ID_CARD_LAYER 20
 #define HANDS_PART_LAYER 19
@@ -49,8 +42,7 @@
 #define BODY_FRONT_LAYER 3
 #define HALO_LAYER 2 //blood cult ascended halo, because there's currently no better solution for adding/removing
 #define FIRE_LAYER 1 //If you're on fire
-#define TOTAL_LAYERS 34	//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; //SKYRAT EDIT CHANGE - 30 from 29. Added BANDAGE_LAYER //SKYRAT EDIT ADDITION - ERP UPDATE - value changed to 34 from 30. Added layers for ERP items.
-
+#define TOTAL_LAYERS 29 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"
@@ -63,15 +55,12 @@
 #define ABOVE_BODY_FRONT_LAYER (BODY_FRONT_LAYER-1)
 
 
-//SKYRAT EDIT REMOVAL BEGIN - ALERTS (moved to modular defines)
-/*
 //Security levels
 #define SEC_LEVEL_GREEN 0
 #define SEC_LEVEL_BLUE 1
 #define SEC_LEVEL_RED 2
 #define SEC_LEVEL_DELTA 3
-*/
-//SKYRAT EDIT END
+
 //some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL 26 //Used to trigger removal from a processing list
 
@@ -184,6 +173,15 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 
 //Maximum amount of time, (in deciseconds) a tile can be wet for.
 #define MAXIMUM_WET_TIME 5 MINUTES
+
+//unmagic-strings for types of polls
+#define POLLTYPE_OPTION "OPTION"
+#define POLLTYPE_TEXT "TEXT"
+#define POLLTYPE_RATING "NUMVAL"
+#define POLLTYPE_MULTI "MULTICHOICE"
+#define POLLTYPE_IRV "IRV"
+
+
 
 //subtypesof(), typesof() without the parent path
 #define subtypesof(typepath) ( typesof(typepath) - typepath )
@@ -395,7 +393,6 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define DUMMY_HUMAN_SLOT_PREFERENCES "dummy_preference_preview"
 #define DUMMY_HUMAN_SLOT_ADMIN "admintools"
 #define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"
-#define DUMMY_HUMAN_SLOT_CTF "dummy_ctf_preview_generation"
 
 #define PR_ANNOUNCEMENTS_PER_ROUND 5 //The number of unique PR announcements allowed per round
 									//This makes sure that a single person can only spam 3 reopens and 3 closes before being ignored
@@ -433,7 +430,6 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define BONE_SCAR_FILE "wounds/bone_scar_desc.json"
 #define SCAR_LOC_FILE "wounds/scar_loc.json"
 #define EXODRONE_FILE "exodrone.json"
-#define CLOWN_NONSENSE_FILE "clown_nonsense.json"
 
 //Fullscreen overlay resolution in tiles.
 #define FULLSCREEN_OVERLAY_RESOLUTION_X 15
@@ -490,6 +486,7 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 
 #define VOMIT_TOXIC 1
 #define VOMIT_PURPLE 2
+#define VOMIT_NANITE 3
 
 //chem grenades defines
 #define GRENADE_EMPTY 1
@@ -542,8 +539,6 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define IGNORE_TARGET_LOC_CHANGE (1<<1)
 #define IGNORE_HELD_ITEM (1<<2)
 #define IGNORE_INCAPACITATED (1<<3)
-///Used to prevent important slowdowns from being abused by drugs like kronkaine
-#define IGNORE_SLOWDOWNS (1<<4)
 
 // Skillchip categories
 //Various skillchip categories. Use these when setting which categories a skillchip restricts being paired with
@@ -552,4 +547,4 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 #define SKILLCHIP_CATEGORY_JOB "job"
 
 /// Emoji icon set
-#define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT
+#define EMOJI_SET 'icons/emoji.dmi'

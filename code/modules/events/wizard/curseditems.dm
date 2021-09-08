@@ -10,7 +10,7 @@
 //item you want to equip to the hand, and set its slots_flags = null. Only items equiped to hands need do this.
 
 /datum/round_event/wizard/cursed_items/start()
-	var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators") 		//SKYRAT EDIT - WIZARD CHANGES - ORIGINAL - var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators", "catgirls2015")
+	var/item_set = pick("wizardmimic", "swords", "bigfatdoobie", "boxing", "voicemodulators", "catgirls2015")
 	var/list/loadout[SLOTS_AMT]
 	var/ruins_spaceworthiness
 	var/ruins_wizard_loadout
@@ -36,7 +36,6 @@
 			loadout[ITEM_SLOT_HEAD] = /obj/item/clothing/head/kitty
 			ruins_spaceworthiness = 1
 			ruins_wizard_loadout = 1
-
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		if(ruins_spaceworthiness && !is_station_level(H.z) || isspaceturf(H.loc) || isplasmaman(H))

@@ -6,7 +6,7 @@
 	armor = list(MELEE = 15, BULLET = 5, LASER = 20, ENERGY = 10, BOMB = 20, BIO = 10, RAD = 20, FIRE = 100, ACID = 50, WOUND = 10) // surprisingly robust against head trauma
 	flags_inv = 0
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
-	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
+	clothing_flags = SNUG_FIT
 	resistance_flags = FIRE_PROOF
 	dynamic_hair_suffix = "+generic"
 	light_system = MOVABLE_LIGHT_DIRECTIONAL
@@ -58,7 +58,7 @@
 	hat_type = "red"
 	dog_fashion = null
 	name = "firefighter helmet"
-	clothing_flags = STOPSPRESSUREDAMAGE | PLASMAMAN_HELMET_EXEMPT
+	clothing_flags = STOPSPRESSUREDAMAGE
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
 	cold_protection = HEAD
@@ -78,7 +78,7 @@
 	icon_state = "hardhat0_white"
 	inhand_icon_state = "hardhat0_white"
 	hat_type = "white"
-	clothing_flags = STOPSPRESSUREDAMAGE | PLASMAMAN_HELMET_EXEMPT
+	clothing_flags = STOPSPRESSUREDAMAGE
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
 	cold_protection = HEAD
@@ -98,7 +98,7 @@
 	dog_fashion = null
 	name = "atmospheric technician's firefighting helmet"
 	desc = "A firefighter's helmet, able to keep the user cool in any situation."
-	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | PLASMAMAN_HELMET_EXEMPT
+	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
@@ -119,7 +119,6 @@
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	visor_flags_inv = HIDEEYES | HIDEFACE | HIDESNOUT
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	var/visor_sprite_path	//SKYRAT EDIT --- Lets the visor not smush the snout
 
 /obj/item/clothing/head/hardhat/weldhat/Initialize()
 	. = ..()
@@ -135,21 +134,14 @@
 /obj/item/clothing/head/hardhat/weldhat/proc/toggle_welding_screen(mob/living/user)
 	if(weldingvisortoggle(user))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 50, TRUE) //Visors don't just come from nothing
-	var/mob/living/carbon/carbon_user = user	//SKYRAT EDIT --- Lets the visor not smush the snout
-	if(carbon_user.dna.species.mutant_bodyparts["snout"])
-		visor_sprite_path = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
-	else
-		visor_sprite_path = 'icons/mob/clothing/head.dmi'	//END SKYRAT EDIT
 	update_appearance()
 
-/obj/item/clothing/head/hardhat/weldhat/worn_overlays(mutable_appearance/standing, isinhands)
+/obj/item/clothing/head/hardhat/weldhat/worn_overlays(isinhands)
 	. = ..()
-	if(isinhands)
-		return
-
-	. += mutable_appearance(visor_sprite_path, "weldhelmet")	//Changed first variable from 'icons/mob/clothing/head.dmi'
-	if(!up)
-		. += mutable_appearance(visor_sprite_path, "weldvisor")	//Changed first variable from 'icons/mob/clothing/head.dmi'
+	if(!isinhands)
+		. += mutable_appearance('icons/mob/clothing/head.dmi', "weldhelmet")
+		if(!up)
+			. += mutable_appearance('icons/mob/clothing/head.dmi', "weldvisor")
 
 /obj/item/clothing/head/hardhat/weldhat/update_overlays()
 	. = ..()
@@ -167,7 +159,7 @@
 	inhand_icon_state = "hardhat0_white"
 	light_range = 4 //Boss always takes the best stuff
 	hat_type = "white"
-	clothing_flags = STOPSPRESSUREDAMAGE | PLASMAMAN_HELMET_EXEMPT
+	clothing_flags = STOPSPRESSUREDAMAGE
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
 	cold_protection = HEAD
@@ -177,54 +169,3 @@
 	icon_state = "hardhat0_dblue"
 	inhand_icon_state = "hardhat0_dblue"
 	hat_type = "dblue"
-
-/obj/item/clothing/head/hardhat/pumpkinhead
-	name = "carved pumpkin"
-	desc = "A jack o' lantern! Believed to ward off evil spirits."
-	icon_state = "hardhat0_pumpkin"
-	inhand_icon_state = "hardhat0_pumpkin"
-	hat_type = "pumpkin"
-	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
-	light_range = 2 //luminosity when on
-	flags_cover = HEADCOVERSEYES
-	light_color = "#fff2bf"
-	worn_y_offset = 1
-
-/obj/item/clothing/head/hardhat/pumpkinhead/set_light_on(new_value)
-	. = ..()
-	if(isnull(.))
-		return
-	update_icon(UPDATE_OVERLAYS)
-
-/obj/item/clothing/head/hardhat/pumpkinhead/update_overlays()
-	. = ..()
-	if(light_on)
-		. += emissive_appearance(icon, "carved_pumpkin-emissive", alpha = src.alpha)
-
-/obj/item/clothing/head/hardhat/pumpkinhead/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
-	. = ..()
-	if(light_on && !isinhands)
-		. += emissive_appearance(icon_file, "carved_pumpkin-emissive", alpha = src.alpha)
-
-/obj/item/clothing/head/hardhat/pumpkinhead/blumpkin
-	name = "carved blumpkin"
-	desc = "A very blue jack o' lantern! Believed to ward off vengeful chemists."
-	icon_state = "hardhat0_blumpkin"
-	inhand_icon_state = "hardhat0_blumpkin"
-	hat_type = "blumpkin"
-	light_color = "#76ff8e"
-
-/obj/item/clothing/head/hardhat/reindeer
-	name = "novelty reindeer hat"
-	desc = "Some fake antlers and a very fake red nose."
-	icon_state = "hardhat0_reindeer"
-	inhand_icon_state = "hardhat0_reindeer"
-	hat_type = "reindeer"
-	flags_inv = 0
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
-	light_range = 1 //luminosity when on
-	dynamic_hair_suffix = ""
-
-	dog_fashion = /datum/dog_fashion/head/reindeer

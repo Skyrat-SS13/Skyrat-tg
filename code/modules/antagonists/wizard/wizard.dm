@@ -7,8 +7,6 @@
 	antag_hud_name = "wizard"
 	antag_moodlet = /datum/mood_event/focused
 	hijack_speed = 0.5
-	ui_name = "AntagInfoWizard"
-	suicide_cry = "FOR THE FEDERATION!!"
 	var/give_objectives = TRUE
 	var/strip = TRUE //strip before equipping
 	var/allow_rename = TRUE
@@ -19,12 +17,7 @@
 	show_to_ghosts = TRUE
 
 /datum/antagonist/wizard/on_gain()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
-	register()
 	equip_wizard()
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(give_objectives)
 		create_objectives()
 	if(move_to_lair)
@@ -64,9 +57,6 @@
 	owner.current.forceMove(pick(GLOB.wizardstart))
 
 /datum/antagonist/wizard/proc/create_objectives()
-	objectives += new /datum/objective/ambitions() //SKYRAT EDIT ADDITION - WIZARD CHANGES
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	switch(rand(1,100))
 		if(1 to 30)
 			var/datum/objective/assassinate/kill_objective = new
@@ -111,16 +101,9 @@
 				var/datum/objective/hijack/hijack_objective = new
 				hijack_objective.owner = owner
 				objectives += hijack_objective
-	*/
-	//SKYRAT EDIT REMOVAL END
 
 /datum/antagonist/wizard/on_removal()
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
-	unregister()
 	owner.RemoveAllSpells() // TODO keep track which spells are wizard spells which innate stuff
-	*/
-	//SKYRAT EDIT REMOVAL END
 	return ..()
 
 /datum/antagonist/wizard/proc/equip_wizard()
@@ -132,23 +115,24 @@
 	if(strip)
 		H.delete_equipment()
 	//Wizards are human by default. Use the mirror if you want something else.
-	//SKYRAT EDIT REMOVAL BEGIN - WIZARD CHANGES
-	/*
 	H.set_species(/datum/species/human)
-	*/
-	//SKYRAT EDIT REMOVAL END
 	if(H.age < wiz_age)
 		H.age = wiz_age
 	H.equipOutfit(outfit_type)
 
-/datum/antagonist/wizard/ui_static_data(mob/user)
-	. = ..()
-	var/list/data = list()
-	data["objectives"] = get_objectives()
-	return data
+/datum/antagonist/wizard/greet()
+	to_chat(owner, "<span class='warningplain'><font color=red><B>You are the Space Wizard!</B></font></span>")
+	to_chat(owner, "<span class='warningplain'><B>The Space Wizards Federation has given you the following tasks:</B></span>")
+	owner.announce_objectives()
+	var/message = "<span class='warningplain'>"
+	message += "<BR>You will find a list of available spells in your spell book. Choose your magic arsenal carefully."
+	message += "<BR>The spellbook is bound to you, and others cannot use it."
+	message += "<BR>In your pockets you will find a teleport scroll. Use it as needed."
+	message += "<BR><B>Remember:</B> Do not forget to prepare your spells.</span>"
+	to_chat(owner, message)
 
 /datum/antagonist/wizard/farewell()
-	to_chat(owner, span_userdanger("You have been brainwashed! You are no longer a wizard!"))
+	to_chat(owner, "<span class='userdanger'>You have been brainwashed! You are no longer a wizard!</span>")
 
 /datum/antagonist/wizard/proc/rename_wizard()
 	set waitfor = FALSE
@@ -230,7 +214,6 @@
 //Random event wizard
 /datum/antagonist/wizard/apprentice/imposter
 	name = "Wizard Imposter"
-	show_in_antagpanel = FALSE
 	allow_rename = FALSE
 	move_to_lair = FALSE
 
@@ -263,7 +246,6 @@
 
 /datum/antagonist/wizard/academy
 	name = "Academy Teacher"
-	show_in_antagpanel = FALSE
 	outfit_type = /datum/outfit/wizard/academy
 	move_to_lair = FALSE
 
@@ -296,16 +278,16 @@
 	var/wizardwin = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			parts += "<B>Objective #[count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
+			parts += "<B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
 		else
-			parts += "<B>Objective #[count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
+			parts += "<B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
 			wizardwin = 0
 		count++
 
 	if(wizardwin)
-		parts += span_greentext("The wizard was successful!")
+		parts += "<span class='greentext'>The wizard was successful!</span>"
 	else
-		parts += span_redtext("The wizard has failed!")
+		parts += "<span class='redtext'>The wizard has failed!</span>"
 
 	if(owner.spell_list.len>0)
 		parts += "<B>[owner.name] used the following spells: </B>"

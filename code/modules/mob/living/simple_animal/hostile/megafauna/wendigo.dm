@@ -25,7 +25,7 @@ Difficulty: Hard
 	attack_verb_simple = "claw"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
-	weather_immunities = list(TRAIT_SNOWSTORM_IMMUNE)
+	weather_immunities = list("snow")
 	speak_emote = list("roars")
 	armour_penetration = 40
 	melee_damage_lower = 40
@@ -95,7 +95,7 @@ Difficulty: Hard
 	starting = get_turf(src)
 
 /mob/living/simple_animal/hostile/megafauna/wendigo/OpenFire()
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 10 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 10 SECONDS))
+	SetRecoveryTime(10 SECONDS)
 	if(WENDIGO_ENRAGED)
 		speed = 4
 		move_to_delay = 4
@@ -142,8 +142,6 @@ Difficulty: Hard
 /// Slams the ground around the source throwing back enemies caught nearby, delay is for the radius increase
 /proc/wendigo_slam(atom/source, range, delay, throw_range)
 	var/turf/orgin = get_turf(source)
-	if(!orgin)
-		return
 	var/list/all_turfs = RANGE_TURFS(range, orgin)
 	for(var/i = 0 to range)
 		playsound(orgin,'sound/effects/bamf.ogg', 600, TRUE, 10)
@@ -154,7 +152,7 @@ Difficulty: Hard
 			for(var/mob/living/L in stomp_turf)
 				if(L == source || L.throwing)
 					continue
-				to_chat(L, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
+				to_chat(L, "<span class='userdanger'>[source]'s ground slam shockwave sends you flying!</span>")
 				var/turf/thrownat = get_ranged_target_turf_direct(source, L, throw_range, rand(-10, 10))
 				L.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 				L.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
@@ -166,7 +164,7 @@ Difficulty: Hard
 /mob/living/simple_animal/hostile/megafauna/wendigo/proc/heavy_stomp()
 	can_move = FALSE
 	wendigo_slam(src, 5, 3 - WENDIGO_ENRAGED, 8)
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 0 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 0 SECONDS))
+	SetRecoveryTime(0 SECONDS)
 	can_move = TRUE
 
 /// Teleports to a location 4 turfs away from the enemy in view
@@ -180,14 +178,14 @@ Difficulty: Hard
 			var/turf/endloc = get_turf(target)
 			if(!endloc)
 				break
-			var/obj/projectile/colossus/wendigo_shockwave/shockwave = new /obj/projectile/colossus/wendigo_shockwave(loc)
+			var/obj/projectile/wendigo_shockwave/shockwave = new /obj/projectile/wendigo_shockwave(loc)
 			shockwave.speed = 8
 			shockwave.preparePixelProjectile(endloc, startloc, null, spread)
 			shockwave.firer = src
 			if(target)
 				shockwave.original = target
 			shockwave.fire()
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 0 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 0 SECONDS))
+	SetRecoveryTime(0 SECONDS)
 
 /mob/living/simple_animal/hostile/megafauna/wendigo/proc/teleport(range = 6)
 	var/list/possible_ends = view(range, target.loc) - view(range - 1, target.loc)
@@ -208,10 +206,10 @@ Difficulty: Hard
 	animate(pixel_z = 0, time = 1)
 	for(var/mob/living/dizzy_target in get_hearers_in_view(7, src) - src)
 		dizzy_target.Dizzy(6)
-		to_chat(dizzy_target, span_danger("The wendigo screams loudly!"))
+		to_chat(dizzy_target, "<span class='danger'>The wendigo screams loudly!</span>")
 	SLEEP_CHECK_DEATH(1 SECONDS)
 	spiral_attack()
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 3 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 3 SECONDS))
+	SetRecoveryTime(3 SECONDS)
 	SLEEP_CHECK_DEATH(3 SECONDS)
 	can_move = TRUE
 
@@ -228,7 +226,7 @@ Difficulty: Hard
 				var/offset = shoot_times % 2
 				for(var/shot in 1 to shots_per)
 					var/angle = shot * 360 / shots_per + (offset * 360 / shots_per) * 0.5
-					var/obj/projectile/colossus/wendigo_shockwave/shockwave = new /obj/projectile/colossus/wendigo_shockwave(loc)
+					var/obj/projectile/wendigo_shockwave/shockwave = new /obj/projectile/wendigo_shockwave(loc)
 					shockwave.firer = src
 					shockwave.speed = 3 - WENDIGO_ENRAGED
 					shockwave.fire(angle)
@@ -242,7 +240,7 @@ Difficulty: Hard
 				var/angle_change = (5 + WENDIGO_ENRAGED * shot / 6) * spiral_direction
 				for(var/count in 1 to shots_per_tick)
 					var/angle = angle_to_target + shot * angle_change + count * 360 / shots_per_tick
-					var/obj/projectile/colossus/wendigo_shockwave/shockwave = new /obj/projectile/colossus/wendigo_shockwave(loc)
+					var/obj/projectile/wendigo_shockwave/shockwave = new /obj/projectile/wendigo_shockwave(loc)
 					shockwave.firer = src
 					shockwave.damage = 15
 					shockwave.fire(angle)
@@ -254,7 +252,7 @@ Difficulty: Hard
 			for(var/shoot_times in 1 to WENDIGO_WAVE_REPEATCOUNT)
 				for(var/shot in 1 to shots_per)
 					var/angle = shot * difference + shoot_times * 5 * wave_direction * -1
-					var/obj/projectile/colossus/wendigo_shockwave/shockwave = new /obj/projectile/colossus/wendigo_shockwave(loc)
+					var/obj/projectile/wendigo_shockwave/shockwave = new /obj/projectile/wendigo_shockwave(loc)
 					shockwave.firer = src
 					shockwave.wave_movement = TRUE
 					shockwave.speed = 8
@@ -271,8 +269,15 @@ Difficulty: Hard
 	exit.set_light(20, 1, COLOR_SOFT_RED)
 	return ..()
 
-/obj/projectile/colossus/wendigo_shockwave
-	name = "wendigo shockwave"
+/obj/projectile/wendigo_shockwave
+	name ="wendigo shockwave"
+	icon_state= "chronobolt"
+	damage = 25
+	armour_penetration = 100
+	speed = 2
+	eyeblur = 5
+	damage_type = BRUTE
+	pass_flags = PASSTABLE
 	/// If wave movement is enabled
 	var/wave_movement = FALSE
 	/// Amount the angle changes every pixel move
@@ -280,7 +285,7 @@ Difficulty: Hard
 	/// Amount of movements this projectile has made
 	var/pixel_moves = 0
 
-/obj/projectile/colossus/wendigo_shockwave/pixel_move(trajectory_multiplier, hitscanning = FALSE)
+/obj/projectile/wendigo_shockwave/pixel_move(trajectory_multiplier, hitscanning = FALSE)
 	. = ..()
 	if(wave_movement)
 		pixel_moves++
@@ -298,7 +303,7 @@ Difficulty: Hard
 	var/mob/living/carbon/human/human_user = user
 	if(!human_user.mind)
 		return
-	to_chat(human_user, span_danger("Power courses through you! You can now shift your form at will."))
+	to_chat(human_user, "<span class='danger'>Power courses through you! You can now shift your form at will.</span>")
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/polar_bear/transformation_spell = new
 	human_user.mind.AddSpell(transformation_spell)
 	playsound(human_user.loc, 'sound/items/drink.ogg', rand(10,50), TRUE)

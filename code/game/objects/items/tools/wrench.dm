@@ -23,11 +23,11 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 30)
 
 /obj/item/wrench/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] is beating [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] is beating [user.p_them()]self to death with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	playsound(loc, 'sound/weapons/genhit.ogg', 50, TRUE, -1)
 	return (BRUTELOSS)
 
-/obj/item/wrench/abductor//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/wrench/abductor
 	name = "alien wrench"
 	desc = "A polarized wrench. It causes anything placed between the jaws to turn."
 	icon = 'icons/obj/abductor.dmi'
@@ -50,10 +50,10 @@
 /obj/item/wrench/medical/examine(mob/user)
 	. = ..()
 	if(suicider)
-		. += span_notice("For some reason, it reminds you of [suicider].")
+		. += "<span class='notice'>For some reason, it reminds you of [suicider].</span>"
 
 /obj/item/wrench/medical/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is praying to the medical wrench to take [user.p_their()] soul. It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] is praying to the medical wrench to take [user.p_their()] soul. It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	user.Stun(100, ignore_canstun = TRUE)// Stun stops them from wandering off
 	user.set_light_color(COLOR_VERY_SOFT_YELLOW)
 	user.set_light(2)
@@ -71,10 +71,10 @@
 	user.dust()
 	return OXYLOSS
 
-/obj/item/wrench/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/wrench/cyborg
 	name = "hydraulic wrench"
 	desc = "An advanced robotic wrench, powered by internal hydraulics. Twice as fast as the handheld version."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "wrench_cyborg"
 	toolspeed = 0.5
 
@@ -102,7 +102,7 @@
 		tool_behaviour = initial(tool_behaviour)
 		toolspeed = initial(toolspeed)
 		playsound(user, 'sound/weapons/saberoff.ogg', 5, TRUE)
-		to_chat(user, span_warning("[src] can now be kept at bay."))
+		to_chat(user, "<span class='warning'>[src] can now be kept at bay.</span>")
 	else
 		on = TRUE
 		force = 6
@@ -111,7 +111,7 @@
 		tool_behaviour = TOOL_WRENCH
 		toolspeed = 1
 		playsound(user, 'sound/weapons/saberon.ogg', 5, TRUE)
-		to_chat(user, span_warning("[src] is now active. Woe onto your enemies!"))
+		to_chat(user, "<span class='warning'>[src] is now active. Woe onto your enemies!</span>")
 	update_appearance()
 
 /obj/item/wrench/combat/update_icon_state()

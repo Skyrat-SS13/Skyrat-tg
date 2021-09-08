@@ -1,7 +1,7 @@
 /// The light switch. Can have multiple per area.
 /obj/machinery/light_switch
 	name = "light switch"
-	icon = 'icons/obj/power.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	icon = 'icons/obj/power.dmi'
 	icon_state = "light1"
 	base_icon_state = "light"
 	desc = "Make dark."

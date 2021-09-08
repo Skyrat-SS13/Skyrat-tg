@@ -1,14 +1,13 @@
 /obj/item/gun/ballistic/automatic/pistol
 	name = "makarov pistol"
-//	desc = "A small, easily concealable 9mm handgun. Has a threaded barrel for suppressors."	// SKYRAT EDIT: Original
-	desc = "A small, easily concealable 9x25mm Mk.12 handgun. Has a threaded barrel for suppressors."	// SKYRAT EDIT: Calibre rename
+	desc = "A small, easily concealable 9mm handgun. Has a threaded barrel for suppressors."
 	icon_state = "pistol"
 	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/m9mm
 	can_suppress = TRUE
 	burst_size = 1
 	fire_delay = 0
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
+	actions_types = list()
 	bolt_type = BOLT_TYPE_LOCKING
 	fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
 	dry_fire_sound = 'sound/weapons/gun/pistol/dry_fire.ogg'
@@ -33,7 +32,7 @@
 	var/obj/item/suppressor/S = new(src)
 	install_suppressor(S)
 
-/obj/item/gun/ballistic/automatic/pistol/m1911 //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/ballistic/automatic/pistol/m1911
 	name = "\improper M1911"
 	desc = "A classic .45 handgun with a small magazine capacity."
 	icon_state = "m1911"
@@ -70,9 +69,6 @@
 	desc = "A Deagle brand Deagle for operators operating operationally. Uses .50 AE ammo."
 	icon_state = "deaglecamo"
 	inhand_icon_state = "deagleg"
-	// SKYRAT EDIT - We don't actually have the right icons for this. When you add the icons you can remove this line!
-	show_bolt_icon = FALSE
-	// SKYRAT EDIT END
 
 /obj/item/gun/ballistic/automatic/pistol/aps
 	name = "stechkin APS machine pistol"
@@ -84,24 +80,22 @@
 	burst_size = 3
 	fire_delay = 1
 	spread = 10
-	//actions_types = list(/datum/action/item_action/toggle_firemode) SKYRAT EDIT REMOVAL
+	actions_types = list(/datum/action/item_action/toggle_firemode)
 	suppressor_x_offset = 6
 
 /obj/item/gun/ballistic/automatic/pistol/stickman
 	name = "flat gun"
 	desc = "A 2 dimensional gun.. what?"
 	icon_state = "flatgun"
-	mag_display = FALSE
-	show_bolt_icon = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/stickman/pickup(mob/living/user)
 	SHOULD_CALL_PARENT(FALSE)
-	to_chat(user, span_notice("As you try to pick up [src], it slips out of your grip.."))
+	to_chat(user, "<span class='notice'>As you try to pick up [src], it slips out of your grip..</span>")
 	if(prob(50))
-		to_chat(user, span_notice("..and vanishes from your vision! Where the hell did it go?"))
+		to_chat(user, "<span class='notice'>..and vanishes from your vision! Where the hell did it go?</span>")
 		qdel(src)
 		user.update_icons()
 	else
-		to_chat(user, span_notice("..and falls into view. Whew, that was a close one."))
+		to_chat(user, "<span class='notice'>..and falls into view. Whew, that was a close one.</span>")
 		user.dropItemToGround(src)
 

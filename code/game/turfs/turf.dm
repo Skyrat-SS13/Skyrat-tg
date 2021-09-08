@@ -3,9 +3,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	icon = 'icons/turf/floors.dmi'
-	vis_flags = VIS_INHERIT_ID | VIS_INHERIT_PLANE// Important for interaction with and visualization of openspace.
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE // Important for interaction with and visualization of openspace.
 	luminosity = 1
-
 	/// Turf bitflags, see code/__DEFINES/flags.dm
 	var/turf_flags = NONE
 	var/intact = 1
@@ -42,19 +41,15 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	///Lumcount added by sources other than lighting datum objects, such as the overlay lighting component.
 	var/dynamic_lumcount = 0
 
-	///Bool, whether this turf will always be illuminated no matter what area it is in
-	var/always_lit = FALSE
+	var/dynamic_lighting = TRUE
 
 	var/tmp/lighting_corners_initialised = FALSE
 
+	///List of light sources affecting this turf.
+	var/tmp/list/datum/light_source/affecting_lights
 	///Our lighting object.
-	var/tmp/datum/lighting_object/lighting_object
-	///Lighting Corner datums.
-	var/tmp/datum/lighting_corner/lighting_corner_NE
-	var/tmp/datum/lighting_corner/lighting_corner_SE
-	var/tmp/datum/lighting_corner/lighting_corner_SW
-	var/tmp/datum/lighting_corner/lighting_corner_NW
-
+	var/tmp/atom/movable/lighting_object/lighting_object
+	var/tmp/list/datum/lighting_corner/corners
 
 	///Which directions does this turf block the vision of, taking into account both the turf's opacity and the movable opacity_sources.
 	var/directional_opacity = NONE
@@ -106,11 +101,12 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 	visibilityChanged()
 
-	for(var/atom/movable/content as anything in src)
-		Entered(content, null)
+	for(var/atom/movable/AM in src)
+		Entered(AM)
 
-	if(always_lit)
-		add_overlay(GLOB.fullbright_overlay)
+	var/area/A = loc
+	if(!IS_DYNAMIC_LIGHTING(src) && IS_DYNAMIC_LIGHTING(A))
+		add_overlay(/obj/effect/fullbright)
 
 	if(requires_activation)
 		CALCULATE_ADJACENT_TURFS(src, KILL_EXCITED)
@@ -164,13 +160,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 	vis_contents.Cut()
 
-/// WARNING WARNING
-/// Turfs DO NOT lose their signals when they get replaced, REMEMBER THIS
-/// It's possible because turfs are fucked, and if you have one in a list and it's replaced with another one, the list ref points to the new turf
-/// We do it because moving signals over was needlessly expensive, and bloated a very commonly used bit of code
-/turf/clear_signal_refs()
-	return
-
 /turf/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
@@ -200,29 +189,16 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(density)
 		return TRUE
 
-	for(var/atom/movable/movable_content as anything in contents)
+	for(var/content in contents)
 		// We don't want to block ourselves or consider any ignored atoms.
-		if((movable_content == source_atom) || (movable_content in ignore_atoms))
+		if((content == source_atom) || (content in ignore_atoms))
 			continue
+		var/atom/atom_content = content
 		// If the thing is dense AND we're including mobs or the thing isn't a mob AND if there's a source atom and
 		// it cannot pass through the thing on the turf,  we consider the turf blocked.
-		if(movable_content.density && (!exclude_mobs || !ismob(movable_content)))
-			if(source_atom && movable_content.CanPass(source_atom, get_dir(src, source_atom)))
+		if(atom_content.density && (!exclude_mobs || !ismob(atom_content)))
+			if(source_atom && atom_content.CanPass(source_atom, src))
 				continue
-			return TRUE
-	return FALSE
-
-/**
- * Checks whether the specified turf is blocked by something dense inside it, but ignores anything with the climbable trait
- *
- * Works similar to is_blocked_turf(), but ignores climbables and has less options. Primarily added for jaunting checks
- */
-/turf/proc/is_blocked_turf_ignore_climbable()
-	if(density)
-		return TRUE
-
-	for(var/atom/movable/atom_content as anything in contents)
-		if(atom_content.density && !(atom_content.flags_1 & ON_BORDER_1) && !HAS_TRAIT(atom_content, TRAIT_CLIMBABLE))
 			return TRUE
 	return FALSE
 
@@ -252,12 +228,12 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		if(flags & FALL_STOP_INTERCEPTING)
 			break
 	if(prev_turf && !(flags & FALL_NO_MESSAGE))
-		prev_turf.visible_message(span_danger("[mov_name] falls through [prev_turf]!"))
+		prev_turf.visible_message("<span class='danger'>[mov_name] falls through [prev_turf]!</span>")
 	if(flags & FALL_INTERCEPTED)
 		return
 	if(zFall(A, levels + 1))
 		return FALSE
-	A.visible_message(span_danger("[A] crashes into [src]!"))
+	A.visible_message("<span class='danger'>[A] crashes into [src]!</span>")
 	A.onZImpact(src, levels)
 	return TRUE
 
@@ -310,13 +286,13 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	return FALSE
 
 //There's a lot of QDELETED() calls here if someone can figure out how to optimize this but not runtime when something gets deleted by a Bump/CanPass/Cross call, lemme know or go ahead and fix this mess - kevinz000
-/turf/Enter(atom/movable/mover)
+/turf/Enter(atom/movable/mover, atom/oldloc)
 	// Do not call ..()
 	// Byond's default turf/Enter() doesn't have the behaviour we want with Bump()
 	// By default byond will call Bump() on the first dense object in contents
 	// Here's hoping it doesn't stay like this for years before we finish conversion to step_
 	var/atom/firstbump
-	var/canPassSelf = CanPass(mover, get_dir(src, mover))
+	var/canPassSelf = CanPass(mover, src)
 	if(canPassSelf || (mover.movement_type & PHASING))
 		for(var/i in contents)
 			if(QDELETED(mover))
@@ -342,16 +318,26 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		return (mover.movement_type & PHASING)
 	return TRUE
 
+/turf/Exit(atom/movable/mover, atom/newloc)
+	. = ..()
+	if(!. || QDELETED(mover))
+		return FALSE
+	for(var/i in contents)
+		if(i == mover)
+			continue
+		if(QDELETED(mover))
+			return FALSE //We were deleted.
 
-/turf/open/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+
+/turf/open/Entered(atom/movable/AM)
 	..()
 	//melting
-	if(isobj(arrived) && air && air.temperature > T0C)
-		var/obj/O = arrived
+	if(isobj(AM) && air && air.temperature > T0C)
+		var/obj/O = AM
 		if(O.obj_flags & FROZEN)
 			O.make_unfrozen()
-	if(!arrived.zfalling)
-		zFall(arrived)
+	if(!AM.zfalling)
+		zFall(AM)
 
 // A proc in case it needs to be recreated or badmins want to change the baseturfs
 /turf/proc/assemble_baseturfs(turf/fake_baseturf_type)
@@ -425,7 +411,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	if(.)
 		return
 	if(length(src_object.contents()))
-		to_chat(usr, span_notice("You start dumping out the contents..."))
+		to_chat(usr, "<span class='notice'>You start dumping out the contents...</span>")
 		if(!do_after(usr,20,target=src_object.parent))
 			return FALSE
 
@@ -524,7 +510,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	LAZYADD(blueprint_data, I)
 
 /turf/proc/add_blueprints_preround(atom/movable/AM)
-	if(!SSicon_smooth.initialized)
+	if(!SSticker.HasRoundStarted())
 		if(AM.layer == WIRE_LAYER) //wires connect to adjacent positions after its parent init, meaning we need to wait (in this case, until smoothing) to take its image
 			SSicon_smooth.blueprint_queue += AM
 		else
@@ -537,8 +523,7 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	. = ..()
 	if((acidpwr <= 0) || (acid_volume <= 0))
 		return FALSE
-	if(QDELETED(src)) //skyrat edit: fix createanddestroy
-		return FALSE
+
 	AddComponent(/datum/component/acid, acidpwr, acid_volume)
 	for(var/obj/O in src)
 		if(intact && HAS_TRAIT(O, TRAIT_T_RAY_VISIBLE))
@@ -552,14 +537,9 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	return
 
 /turf/handle_fall(mob/faller)
-	SEND_SIGNAL(src, COMSIG_TURF_MOB_FALL, faller) //SKYRAT EDIT ADDITION
-	//SKYRAT EDIT REMOVAL BEGIN - SOUNDS - moved to other place, to make you thud when you voluntairly rest
-	/* SKYRAT EDIT REMOVAL BEGIN
 	if(has_gravity(src))
 		playsound(src, "bodyfall", 50, TRUE)
-	//faller.drop_all_held_items()
-	*/
-	//SKYRAT EDIT END
+	faller.drop_all_held_items()
 
 /turf/proc/photograph(limit=20)
 	var/image/I = new()
@@ -592,6 +572,10 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		V.icon_state = "vomitpurp_[pick(1,4)]"
 	else if (toxvomit == VOMIT_TOXIC)
 		V.icon_state = "vomittox_[pick(1,4)]"
+	else if (toxvomit == VOMIT_NANITE)
+		V.name = "metallic slurry"
+		V.desc = "A puddle of metallic slurry that looks vaguely like very fine sand. It almost seems like it's moving..."
+		V.icon_state = "vomitnanite_[pick(1,4)]"
 	if (purge_ratio && iscarbon(M))
 		clear_reagents_to_vomit_pool(M, V, purge_ratio)
 

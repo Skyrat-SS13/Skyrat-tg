@@ -21,10 +21,7 @@
 	. = ..()
 	var/mob/M = target
 	if(istype(M))
-		if(M.anti_magic_check())
-			return BULLET_ACT_BLOCK
-		else
-			M.slip(100, M.loc, GALOSHES_DONT_HELP|SLIDE, 0, FALSE)
+		M.slip(100, M.loc, GALOSHES_DONT_HELP|SLIDE, 0, FALSE)
 
 // Mime
 

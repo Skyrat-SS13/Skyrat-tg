@@ -32,7 +32,7 @@
 
 /obj/machinery/computer/apc_control/attack_ai(mob/user)
 	if(!isAdminGhostAI(user))
-		to_chat(user,span_warning("[src] does not support AI control.")) //You already have APC access, cheater!
+		to_chat(user,"<span class='warning'>[src] does not support AI control.</span>") //You already have APC access, cheater!
 		return
 	..()
 
@@ -40,11 +40,6 @@
 	return APC.z == z && !APC.malfhack && !APC.aidisabled && !(APC.obj_flags & EMAGGED) && !APC.machine_stat && !istype(APC.area, /area/ai_monitored) && !(APC.area.area_flags & NO_ALERTS)
 
 /obj/machinery/computer/apc_control/ui_interact(mob/user, datum/tgui/ui)
-	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
-	if(clicksound && world.time > next_clicksound && isliving(user))
-		next_clicksound = world.time + rand(50, 100)
-		playsound(src, get_sfx_skyrat(clicksound), clickvol)
-	//SKYRAT EDIT END
 	operator = user
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

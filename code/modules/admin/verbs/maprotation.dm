@@ -50,7 +50,7 @@
 			return
 
 		if(copytext("[map_file]", -4) != ".dmm")//4 == length(".dmm")
-			to_chat(src, span_warning("Filename must end in '.dmm': [map_file]"))
+			to_chat(src, "<span class='warning'>Filename must end in '.dmm': [map_file]</span>")
 			return
 
 		if(!fcopy(map_file, "_maps/custom/[map_file]"))
@@ -59,11 +59,11 @@
 		// This is to make sure the map works so the server does not start without a map.
 		var/datum/parsed_map/M = new (map_file)
 		if(!M)
-			to_chat(src, span_warning("Map '[map_file]' failed to parse properly."))
+			to_chat(src, "<span class='warning'>Map '[map_file]' failed to parse properly.</span>")
 			return
 
 		if(!M.bounds)
-			to_chat(src, span_warning("Map '[map_file]' has non-existant bounds."))
+			to_chat(src, "<span class='warning'>Map '[map_file]' has non-existant bounds.</span>")
 			qdel(M)
 			return
 
@@ -76,7 +76,7 @@
 				if(!shuttle)
 					continue
 				if(!SSmapping.shuttle_templates[shuttle])
-					to_chat(usr, span_warning("No such shuttle as '[shuttle]' exists, using default."))
+					to_chat(usr, "<span class='warning'>No such shuttle as '[shuttle]' exists, using default.</span>")
 					continue
 				VM.shuttles[s] = shuttle
 

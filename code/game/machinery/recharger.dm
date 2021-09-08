@@ -12,8 +12,6 @@
 	var/obj/item/charging = null
 	var/recharge_coeff = 1
 	var/using_power = FALSE //Did we put power into "charging" last process()?
-	///Did we finish recharging the currently inserted item?
-	var/finished_recharging = FALSE
 
 	var/static/list/allowed_devices = typecacheof(list(
 		/obj/item/gun/energy,
@@ -28,42 +26,41 @@
 /obj/machinery/recharger/examine(mob/user)
 	. = ..()
 	if(!in_range(user, src) && !issilicon(user) && !isobserver(user))
-		. += span_warning("You're too far away to examine [src]'s contents and display!")
+		. += "<span class='warning'>You're too far away to examine [src]'s contents and display!</span>"
 		return
 
 	if(charging)
-		. += {"[span_notice("\The [src] contains:")]
-		[span_notice("- \A [charging].")]"}
+		. += {"<span class='notice'>\The [src] contains:</span>
+		<span class='notice'>- \A [charging].</span>"}
 
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		. += span_notice("The status display reads:")
-		. += span_notice("- Recharging <b>[recharge_coeff*10]%</b> cell charge per cycle.")
+		. += "<span class='notice'>The status display reads:</span>"
+		. += "<span class='notice'>- Recharging <b>[recharge_coeff*10]%</b> cell charge per cycle.</span>"
 		if(charging)
 			var/obj/item/stock_parts/cell/C = charging.get_cell()
-			. += span_notice("- \The [charging]'s cell is at <b>[C.percent()]%</b>.")
+			. += "<span class='notice'>- \The [charging]'s cell is at <b>[C.percent()]%</b>.</span>"
 
 
 /obj/machinery/recharger/proc/setCharging(new_charging)
 	charging = new_charging
 	if (new_charging)
 		START_PROCESSING(SSmachines, src)
-		update_use_power(ACTIVE_POWER_USE)
-		finished_recharging = FALSE
+		use_power = ACTIVE_POWER_USE
 		using_power = TRUE
 		update_appearance()
 	else
-		update_use_power(IDLE_POWER_USE)
+		use_power = IDLE_POWER_USE
 		using_power = FALSE
 		update_appearance()
 
 /obj/machinery/recharger/attackby(obj/item/G, mob/user, params)
 	if(G.tool_behaviour == TOOL_WRENCH)
 		if(charging)
-			to_chat(user, span_notice("Remove the charging item first!"))
+			to_chat(user, "<span class='notice'>Remove the charging item first!</span>")
 			return
 		set_anchored(!anchored)
 		power_change()
-		to_chat(user, span_notice("You [anchored ? "attached" : "detached"] [src]."))
+		to_chat(user, "<span class='notice'>You [anchored ? "attached" : "detached"] [src].</span>")
 		G.play_tool_sound(src)
 		return
 
@@ -77,13 +74,13 @@
 			//Checks to make sure he's not in space doing it, and that the area got proper power.
 			var/area/a = get_area(src)
 			if(!isarea(a) || a.power_equip == 0)
-				to_chat(user, span_notice("[src] blinks red as you try to insert [G]."))
+				to_chat(user, "<span class='notice'>[src] blinks red as you try to insert [G].</span>")
 				return 1
 
 			if (istype(G, /obj/item/gun/energy))
 				var/obj/item/gun/energy/E = G
 				if(!E.can_charge)
-					to_chat(user, span_notice("Your gun has no external power connector."))
+					to_chat(user, "<span class='notice'>Your gun has no external power connector.</span>")
 					return 1
 
 			if(!user.transferItemToLoc(G, src))
@@ -91,7 +88,7 @@
 			setCharging(G)
 
 		else
-			to_chat(user, span_notice("[src] isn't connected to anything!"))
+			to_chat(user, "<span class='notice'>[src] isn't connected to anything!</span>")
 		return 1
 
 	if(anchored && !charging)
@@ -149,11 +146,6 @@
 				using_power = TRUE
 			update_appearance()
 			return
-		if(!using_power && !finished_recharging) //Inserted thing is at max charge/ammo, notify those around us
-			finished_recharging = TRUE
-			playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
-			say("[charging] has finished recharging!")
-
 	else
 		return PROCESS_KILL
 
@@ -183,7 +175,6 @@
 	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN) || !anchored)
 		return
-
 	if(panel_open)
 		. += mutable_appearance(icon, "[base_icon_state]-open", alpha = src.alpha)
 		return
@@ -192,7 +183,6 @@
 		. += mutable_appearance(icon, "[base_icon_state]-empty", alpha = src.alpha)
 		. += emissive_appearance(icon, "[base_icon_state]-empty", alpha = src.alpha)
 		return
-
 	if(using_power)
 		. += mutable_appearance(icon, "[base_icon_state]-charging", alpha = src.alpha)
 		. += emissive_appearance(icon, "[base_icon_state]-charging", alpha = src.alpha)

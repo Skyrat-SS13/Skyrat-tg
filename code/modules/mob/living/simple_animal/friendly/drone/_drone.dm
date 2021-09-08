@@ -1,4 +1,29 @@
 
+#define DRONE_HANDS_LAYER 1
+#define DRONE_HEAD_LAYER 2
+#define DRONE_TOTAL_LAYERS 2
+
+/// Message displayed when new drone spawns in drone network
+#define DRONE_NET_CONNECT "<span class='notice'>DRONE NETWORK: [name] connected.</span>"
+/// Message displayed when drone in network dies
+#define DRONE_NET_DISCONNECT "<span class='danger'>DRONE NETWORK: [name] is not responding.</span>"
+
+/// Maintenance Drone icon_state (multiple colors)
+#define MAINTDRONE "drone_maint"
+/// Repair Drone icon_state
+#define REPAIRDRONE "drone_repair"
+/// Scout Drone icon_state
+#define SCOUTDRONE "drone_scout"
+/// Clockwork Drone icon_state
+#define CLOCKDRONE "drone_clock"
+
+/// [MAINTDRONE] hacked icon_state
+#define MAINTDRONE_HACKED "drone_maint_red"
+/// [REPAIRDRONE] hacked icon_state
+#define REPAIRDRONE_HACKED "drone_repair_hacked"
+/// [SCOUTDRONE] hacked icon_state
+#define SCOUTDRONE_HACKED "drone_scout_hacked"
+
 /**
  * # Maintenance Drone
  *
@@ -63,8 +88,8 @@
 	"3. Your goals are to actively build, maintain, repair, improve, and provide power to the best of your abilities within the facility that housed your activation." //for derelict drones so they don't go to station.
 	/// Amount of damage sustained if hit by a heavy EMP pulse
 	var/heavy_emp_damage = 25
-	///Alarm listener datum, handes caring about alarm events and such
-	var/datum/alarm_listener/listener
+	/// List of active alarms. See [/mob/living/simple_animal/drone/proc/triggerAlarm] and [/mob/living/simple_animal/drone/proc/cancelAlarm]
+	var/alarms = list("Atmosphere" = list(), "Fire" = list(), "Power" = list())
 	/// Internal storage slot. Fits any item
 	var/obj/item/internal_storage
 	/// Headwear slot
@@ -181,12 +206,6 @@
 
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
-	listener = new(list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER), list(z))
-	RegisterSignal(listener, COMSIG_ALARM_TRIGGERED, .proc/alarm_triggered)
-	RegisterSignal(listener, COMSIG_ALARM_CLEARED, .proc/alarm_cleared)
-	listener.RegisterSignal(src, COMSIG_LIVING_DEATH, /datum/alarm_listener/proc/prevent_alarm_changes)
-	listener.RegisterSignal(src, COMSIG_LIVING_REVIVE, /datum/alarm_listener/proc/allow_alarm_changes)
-
 /mob/living/simple_animal/drone/med_hud_set_health()
 	var/image/holder = hud_list[DIAG_HUD]
 	var/icon/I = icon(icon, icon_state, dir)
@@ -206,8 +225,7 @@
 
 /mob/living/simple_animal/drone/Destroy()
 	GLOB.drones_list -= src
-	QDEL_NULL(access_card) //Otherwise it ends up on the floor!
-	QDEL_NULL(listener)
+	qdel(access_card) //Otherwise it ends up on the floor!
 	return ..()
 
 /mob/living/simple_animal/drone/Login()
@@ -264,21 +282,21 @@
 
 	//Hacked
 	if(hacked)
-		. += span_warning("Its display is glowing red!")
+		. += "<span class='warning'>Its display is glowing red!</span>"
 
 	//Damaged
 	if(health != maxHealth)
 		if(health > maxHealth * 0.33) //Between maxHealth and about a third of maxHealth, between 30 and 10 for normal drones
-			. += span_warning("Its screws are slightly loose.")
+			. += "<span class='warning'>Its screws are slightly loose.</span>"
 		else //otherwise, below about 33%
-			. += span_boldwarning("Its screws are very loose!")
+			. += "<span class='boldwarning'>Its screws are very loose!</span>"
 
 	//Dead
 	if(stat == DEAD)
 		if(client)
-			. += span_deadsay("A message repeatedly flashes on its display: \"REBOOT -- REQUIRED\".")
+			. += "<span class='deadsay'>A message repeatedly flashes on its display: \"REBOOT -- REQUIRED\".</span>"
 		else
-			. += span_deadsay("A message repeatedly flashes on its display: \"ERROR -- OFFLINE\".")
+			. += "<span class='deadsay'>A message repeatedly flashes on its display: \"ERROR -- OFFLINE\".</span>"
 	. += "*---------*</span>"
 
 
@@ -291,29 +309,76 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	Stun(100)
-	to_chat(src, span_danger("<b>ER@%R: MME^RY CO#RU9T!</b> R&$b@0tin)..."))
+	to_chat(src, "<span class='danger'><b>ER@%R: MME^RY CO#RU9T!</b> R&$b@0tin)...</span>")
 	if(severity == 1)
 		adjustBruteLoss(heavy_emp_damage)
-		to_chat(src, span_userdanger("HeAV% DA%^MMA+G TO I/O CIR!%UUT!"))
+		to_chat(src, "<span class='userdanger'>HeAV% DA%^MMA+G TO I/O CIR!%UUT!</span>")
 
-/mob/living/simple_animal/drone/proc/alarm_triggered(datum/source, alarm_type, area/source_area)
-	SIGNAL_HANDLER
-	to_chat(src, "--- [alarm_type] alarm detected in [source_area.name]!")
 
-/mob/living/simple_animal/drone/proc/alarm_cleared(datum/source, alarm_type, area/source_area)
-	SIGNAL_HANDLER
-	to_chat(src, "--- [alarm_type] alarm in [source_area.name] has been cleared.")
+/**
+ * Alerts drones about different priorities of alarms
+ *
+ * Arguments:
+ * * class - One of the keys listed in [/mob/living/simple_animal/drone/var/alarms]
+ * * A - [/area] the alarm occurs
+ * * O - unused argument, see [/mob/living/silicon/robot/triggerAlarm]
+ * * alarmsource - [/atom] source of the alarm
+ */
+/mob/living/simple_animal/drone/proc/triggerAlarm(class, area/home, cameras, obj/source)
+	if(source.z != z)
+		return
+	if(stat == DEAD)
+		return
+	var/list/our_sort = alarms[class]
+	for(var/areaname in our_sort)
+		if (areaname == home.name)
+			var/list/alarm = our_sort[areaname]
+			var/list/sources = alarm[2]
+			if (!(source in sources))
+				sources += source
+			return TRUE
+
+	our_sort[home.name] = list(home, list(source))
+	to_chat(src, "--- [class] alarm detected in [home.name]!")
+
+///This isn't currently needed since drones do jack shit with cameras. I hate this code so much
+/mob/living/simple_animal/drone/proc/freeCamera(area/home, obj/machinery/camera/cam)
+	return
+
+/**
+ * Clears alarm and alerts drones
+ *
+ * Arguments:
+ * * class - One of the keys listed in [/mob/living/simple_animal/drone/var/alarms]
+ * * A - [/area] the alarm occurs
+ * * alarmsource - [/atom] source of the alarm
+ */
+/mob/living/simple_animal/drone/proc/cancelAlarm(class, area/A, obj/origin)
+	if(stat != DEAD)
+		var/list/L = alarms[class]
+		var/cleared = 0
+		for (var/I in L)
+			if (I == A.name)
+				var/list/alarm = L[I]
+				var/list/srcs  = alarm[2]
+				if (origin in srcs)
+					srcs -= origin
+				if (srcs.len == 0)
+					cleared = 1
+					L -= I
+		if(cleared)
+			to_chat(src, "--- [class] alarm in [A.name] has been cleared.")
 
 /mob/living/simple_animal/drone/proc/blacklist_on_try_use_machine(datum/source, obj/machinery/machine)
 	SIGNAL_HANDLER
 	if(GLOB.drone_machine_blacklist_enabled && is_type_in_typecache(machine, drone_machinery_blacklist_compiled))
-		to_chat(src, span_warning("Using [machine] could break your laws."))
+		to_chat(src, "<span class='warning'>Using [machine] could break your laws.</span>")
 		return COMPONENT_CANT_USE_MACHINE_INTERACT | COMPONENT_CANT_USE_MACHINE_TOOLS
 
 /mob/living/simple_animal/drone/proc/blacklist_on_try_wires_interact(datum/source, atom/machine)
 	SIGNAL_HANDLER
 	if(GLOB.drone_machine_blacklist_enabled && is_type_in_typecache(machine, drone_machinery_blacklist_compiled))
-		to_chat(src, span_warning("Using [machine] could break your laws."))
+		to_chat(src, "<span class='warning'>Using [machine] could break your laws.</span>")
 		return COMPONENT_CANT_INTERACT_WIRES
 
 

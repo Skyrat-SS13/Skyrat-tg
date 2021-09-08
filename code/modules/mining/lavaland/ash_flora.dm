@@ -41,7 +41,7 @@
 				msg = harvest_message_low
 			else if(rand_harvested == harvest_amount_high)
 				msg = harvest_message_high
-			to_chat(user, span_notice("[msg]"))
+			to_chat(user, "<span class='notice'>[msg]</span>")
 		for(var/i in 1 to rand_harvested)
 			new harvest(get_turf(src))
 
@@ -60,7 +60,7 @@
 
 /obj/structure/flora/ash/attackby(obj/item/W, mob/user, params)
 	if(!harvested && needs_sharp_harvest && W.get_sharpness())
-		user.visible_message(span_notice("[user] starts to harvest from [src] with [W]."),span_notice("You begin to harvest from [src] with [W]."))
+		user.visible_message("<span class='notice'>[user] starts to harvest from [src] with [W].</span>","<span class='notice'>You begin to harvest from [src] with [W].</span>")
 		if(do_after(user, harvest_time, target = src))
 			harvest(user)
 	else
@@ -71,7 +71,7 @@
 	if(.)
 		return
 	if(!harvested && !needs_sharp_harvest)
-		user.visible_message(span_notice("[user] starts to harvest from [src]."),span_notice("You begin to harvest from [src]."))
+		user.visible_message("<span class='notice'>[user] starts to harvest from [src].</span>","<span class='notice'>You begin to harvest from [src].</span>")
 		if(do_after(user, harvest_time, target = src))
 			harvest(user)
 
@@ -144,24 +144,7 @@
 
 /obj/structure/flora/ash/cacti/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/caltrop, min_damage = 3, max_damage = 6, probability = 70)
-
-/obj/structure/flora/ash/seraka
-	icon_state = "seraka_mushroom"
-	name = "seraka mushrooms"
-	desc = "A small cluster of seraka mushrooms. These must have come with the ashlizards."
-	needs_sharp_harvest = FALSE
-	harvested_name = "harvested seraka mushrooms"
-	harvested_desc = "A couple of small seraka mushrooms, with the larger ones clearly having been recently removed. They'll grow back... eventually."
-	harvest = /obj/item/food/grown/ash_flora/seraka
-	harvest_amount_high = 6
-	harvest_time = 25
-	harvest_message_low = "You pluck a few choice tasty mushrooms."
-	harvest_message_med = "You grab a good haul of mushrooms."
-	harvest_message_high = "You hit the mushroom motherlode and make off with a bunch of tasty mushrooms."
-	regrowth_time_low = 3000
-	regrowth_time_high = 5400
-	number_of_variants = 2
+	AddElement(/datum/element/caltrop, min_damage = 3, max_damage = 6, probability = 70)
 
 ///Snow flora to exist on icebox.
 /obj/structure/flora/ash/chilly
@@ -200,10 +183,6 @@
 	pixel_y = base_pixel_y + rand(-4, 4)
 
 /obj/item/food/grown/ash_flora/shavings //So we can't craft bowls from everything.
-	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
-	special_desc_jobs = list("Botanist") //SKYRAT EDIT
-	special_desc = "You feel this flora would be unwise to consume while already full." //SKYRAT EDIT
-	grind_results = list(/datum/reagent/toxin/mushroom_powder = 5)
 
 /obj/item/food/grown/ash_flora/mushroom_leaf
 	name = "mushroom leaf"
@@ -211,9 +190,6 @@
 	icon_state = "mushroom_leaf"
 	seed = /obj/item/seeds/lavaland/porcini
 	wine_power = 40
-	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
-	special_desc_jobs = list("Botanist") //SKYRAT EDIT
-	special_desc = "This flora is nutritious and healthy to eat, though slightly laced with nicotine." //SKYRAT EDIT
 
 /obj/item/food/grown/ash_flora/mushroom_cap
 	name = "mushroom cap"
@@ -221,9 +197,6 @@
 	icon_state = "mushroom_cap"
 	seed = /obj/item/seeds/lavaland/inocybe
 	wine_power = 70
-	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
-	special_desc_jobs = list("Botanist") //SKYRAT EDIT
-	special_desc = "This flora is poisonous and hallucinogenic." //SKYRAT EDIT
 
 /obj/item/food/grown/ash_flora/mushroom_stem
 	name = "mushroom stem"
@@ -231,9 +204,6 @@
 	icon_state = "mushroom_stem"
 	seed = /obj/item/seeds/lavaland/ember
 	wine_power = 60
-	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
-	special_desc_jobs = list("Botanist") //SKYRAT EDIT
-	special_desc = "This flora contains psychoactive drugs and will also make you glow." //SKYRAT EDIT
 
 /obj/item/food/grown/ash_flora/cactus_fruit
 	name = "cactus fruit"
@@ -241,16 +211,6 @@
 	icon_state = "cactus_fruit"
 	seed = /obj/item/seeds/lavaland/cactus
 	wine_power = 50
-	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
-	special_desc_jobs = list("Botanist") //SKYRAT EDIT
-	special_desc = "This flora is very nutritious and medicinal." //SKYRAT EDIT
-
-/obj/item/food/grown/ash_flora/seraka
-	name = "seraka cap"
-	desc = "Small, deeply flavourful mushrooms originally native to Tizira."
-	icon_state = "seraka_cap"
-	seed = /obj/item/seeds/lavaland/seraka
-	wine_power = 40
 
 //SEEDS
 
@@ -357,17 +317,6 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow, /datum/plant_gene/trait/fire_resistance)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/consumable/tinlux = 0.04, /datum/reagent/consumable/nutriment/vitamin = 0.02, /datum/reagent/drug/space_drugs = 0.02)
-
-/obj/item/seeds/lavaland/seraka
-	name = "pack of seraka mycelium"
-	desc = "This mycelium grows into seraka mushrooms, a species of savoury mushrooms originally native to Tizira used in food and traditional medicine."
-	icon_state = "mycelium-seraka"
-	species = "seraka"
-	plantname = "Seraka Mushrooms"
-	product = /obj/item/food/grown/ash_flora/seraka
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/fire_resistance)
-	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	reagents_add = list(/datum/reagent/toxin/mushroom_powder = 0.1, /datum/reagent/medicine/coagulant/seraka_extract = 0.02)
 
 //CRAFTING
 

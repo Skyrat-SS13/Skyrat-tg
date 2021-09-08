@@ -5,7 +5,6 @@
 	antag_hud_name = "hud_gangster"
 	antagpanel_category = "Family"
 	show_in_antagpanel = FALSE // i don't *think* this base class is buggy but it's too worthless to test
-	suicide_cry = "FOR THE FAMILY!!"
 	/// The overarching family that the owner of this datum is a part of. Family teams are generic and imprinted upon by the per-person antagonist datums.
 	var/datum/team/gang/my_gang
 	/// The name of the family corresponding to this family member datum.
@@ -156,9 +155,9 @@
 	var/list/report = list()
 	report += "<span class='header'>[name]:</span>"
 	if(!members.len)
-		report += span_redtext("The family was wiped out!")
+		report += "<span class='redtext'>The family was wiped out!</span>"
 	else if(my_gang_datum.check_gang_objective())
-		report += span_greentext("The family completed their objective!")
+		report += "<span class='greentext'>The family completed their objective!</span>"
 	else
 		report += "<span class='redtext big'>The family failed their objective!</span>"
 	report += "Objective: [my_gang_datum.gang_objective]"
@@ -267,15 +266,15 @@
 	free_clothes = list(/obj/item/clothing/head/beanie/purple,
 						/obj/item/clothing/under/color/lightpurple,
 						/obj/item/toy/crayon/spraycan)
+	var/list/cop_roles = list("Security Officer", "Warden", "Detective", "Head of Security")
 	gang_objective = "We're looking to make a deal with the security pigs on this station after the shift. We scratch their back, they scratch ours. You feel me? Keep all of security safe from any trouble, and make sure they get out alive."
 	antag_hud_name = "Ballas"
 
 /datum/antagonist/gang/purple/check_gang_objective()
-	for(var/mob/player as anything in GLOB.player_list)
-		if(!(player.mind.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY))
-			continue
-		if(!player.suiciding && !considered_alive(player))
-			return FALSE
+	for(var/mob/M in GLOB.player_list)
+		if(M.mind.assigned_role in cop_roles)
+			if(!considered_alive(M) && !M.suiciding)
+				return FALSE
 	return TRUE
 
 /datum/antagonist/gang/green
@@ -361,11 +360,10 @@
 			if(istype(M.current.loc, /obj/structure/closet/crate/coffin))
 				continue
 			return FALSE
-	for(var/mob/player as anything in GLOB.player_list)
-		if(!is_chaplain_job(player.mind.assigned_role))
-			continue
-		if(!player.suiciding && !considered_alive(player))
-			return FALSE
+	for(var/mob/M in GLOB.player_list)
+		if(M.mind.assigned_role == "Chaplain")
+			if(!considered_alive(M) && !M.suiciding)
+				return FALSE
 	return TRUE
 
 /datum/antagonist/gang/tunnel_snakes
@@ -450,11 +448,10 @@
 	antag_hud_name = "Monarch"
 
 /datum/antagonist/gang/henchmen/check_gang_objective() // gotta arch dr. venture indirectly
-	for(var/mob/player as anything in GLOB.player_list)
-		if(!is_research_director_job(player.mind.assigned_role))
-			continue
-		if(!player.suiciding && considered_alive(player))
-			return FALSE
+	for(var/mob/M in GLOB.player_list)
+		if(M.mind.assigned_role == "Research Director")
+			if(considered_alive(M))
+				return FALSE
 	return TRUE
 
 /datum/antagonist/gang/yakuza

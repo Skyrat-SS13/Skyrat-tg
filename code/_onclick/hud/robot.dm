@@ -177,20 +177,6 @@
 	zone_select.update_appearance()
 	static_inventory += zone_select
 
-// SKYRAT EDIT ADDITION BEGIN: Cyborg PDA
-//PDA message
-	using = new /atom/movable/screen/robot/pda_msg_send
-	using.screen_loc = ui_borg_pda_send
-	using.hud = src
-	static_inventory += using
-
-//PDA log
-	using = new /atom/movable/screen/robot/pda_msg_show
-	using.screen_loc = ui_borg_pda_log
-	using.hud = src
-	static_inventory += using
-// SKYRAT EDIT ADDITION END
-
 
 /datum/hud/proc/toggle_show_robot_modules()
 	if(!iscyborg(mymob))
@@ -220,7 +206,7 @@
 		screenmob.client.screen += module_store_icon //"store" icon
 
 		if(!R.model.modules)
-			to_chat(usr, span_warning("Selected model has no modules to select!"))
+			to_chat(usr, "<span class='warning'>Selected model has no modules to select!</span>")
 			return
 
 		if(!R.robot_modules_background)
@@ -300,12 +286,6 @@
 	icon_state = "[base_icon_state]_[robot?.lamp_enabled ? "on" : "off"]"
 	return ..()
 
-/atom/movable/screen/robot/lamp/Destroy()
-	if(robot)
-		robot.lampButton = null
-		robot = null
-	return ..()
-
 /atom/movable/screen/robot/modPC
 	name = "Modular Interface"
 	icon_state = "template"
@@ -317,12 +297,6 @@
 		return
 	robot.modularInterface?.interact(robot)
 
-/atom/movable/screen/robot/modPC/Destroy()
-	if(robot)
-		robot.interfaceButton = null
-		robot = null
-	return ..()
-
 /atom/movable/screen/robot/alerts
 	name = "Alert Panel"
 	icon = 'icons/hud/screen_ai.dmi'
@@ -333,4 +307,4 @@
 	if(.)
 		return
 	var/mob/living/silicon/robot/borgo = usr
-	borgo.alert_control.ui_interact(borgo)
+	borgo.robot_alerts()

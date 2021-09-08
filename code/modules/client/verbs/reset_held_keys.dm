@@ -13,5 +13,3 @@
 	//In case one got stuck and the previous loop didn't clean it, somehow.
 	for(var/key in key_combos_held)
 		keyUp(key_combos_held[key])
-
-	winset(src, "input", "text=[null]") //SKYRAT EDIT ADDITION - QOL

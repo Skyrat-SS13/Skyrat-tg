@@ -12,7 +12,7 @@
 	var/mob/living/carbon/owner
 	var/datum/weakref/original_owner
 	var/status = BODYPART_ORGANIC
-	//var/needs_processing = FALSE SKYRAT EDIT REMOVAL
+	var/needs_processing = FALSE
 
 	/// BODY_ZONE_CHEST, BODY_ZONE_L_ARM, etc , used for def_zone
 	var/body_zone
@@ -31,8 +31,7 @@
 	///If disabled, limb is as good as missing.
 	var/bodypart_disabled = FALSE
 	///Multiplied by max_damage it returns the threshold which defines a limb being disabled or not. From 0 to 1. 0 means no disable thru damage
-	//var/disable_threshold = 0 //ORIGINAL
-	var/disable_threshold = 1 //SKYRAT EDIT CHANGE - COMBAT
+	var/disable_threshold = 0
 	///Controls whether bodypart_disabled makes sense or not for this limb.
 	var/can_be_disabled = FALSE
 	///Multiplier of the limb's damage that gets applied to the mob
@@ -63,8 +62,6 @@
 
 	///for nonhuman bodypart (e.g. monkey)
 	var/animal_origin
-	//for all bodyparts
-	var/part_origin = HUMAN_BODY
 	///whether it can be dismembered with a weapon.
 	var/dismemberable = 1
 
@@ -103,20 +100,10 @@
 	var/last_maxed
 	/// How much generic bleedstacks we have on this bodypart
 	var/generic_bleedstacks
-	//SKYRAT EDIT CHANGE BEGIN - MEDICAL
-	/*
 	/// If we have a gauze wrapping currently applied (not including splints)
 	var/obj/item/stack/current_gauze
-	*/
-	/// If we have a gauze wrapping currently applied
-	var/datum/bodypart_aid/gauze/current_gauze
-	/// If we have a splint currently applied
-	var/datum/bodypart_aid/splint/current_splint
-	//SKYRAT EDIT CHANGE END
 	/// If something is currently grasping this bodypart and trying to staunch bleeding (see [/obj/item/self_grasp])
 	var/obj/item/self_grasp/grasped_by
-	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
-	var/organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -136,30 +123,24 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
-	//SKYRAT EDIT ADDITION BEGIN - MEDICAL
-	if(current_gauze)
-		qdel(current_gauze)
-	if(current_splint)
-		qdel(current_splint)
-	//SKYRAT EDIT ADDITION END
 	return ..()
 
 
 /obj/item/bodypart/examine(mob/user)
 	. = ..()
 	if(brute_dam > DAMAGE_PRECISION)
-		. += span_warning("This limb has [brute_dam > 30 ? "severe" : "minor"] bruising.")
+		. += "<span class='warning'>This limb has [brute_dam > 30 ? "severe" : "minor"] bruising.</span>"
 	if(burn_dam > DAMAGE_PRECISION)
-		. += span_warning("This limb has [burn_dam > 30 ? "severe" : "minor"] burns.")
+		. += "<span class='warning'>This limb has [burn_dam > 30 ? "severe" : "minor"] burns.</span>"
 
 	if(locate(/datum/wound/blunt) in wounds)
-		. += span_warning("The bones in this limb appear badly cracked.")
+		. += "<span class='warning'>The bones in this limb appear badly cracked.</span>"
 	if(locate(/datum/wound/slash) in wounds)
-		. += span_warning("The flesh on this limb appears badly lacerated.")
+		. += "<span class='warning'>The flesh on this limb appears badly lacerated.</span>"
 	if(locate(/datum/wound/pierce) in wounds)
-		. += span_warning("The flesh on this limb appears badly perforated.")
+		. += "<span class='warning'>The flesh on this limb appears badly perforated.</span>"
 	if(locate(/datum/wound/burn) in wounds)
-		. += span_warning("The flesh on this limb appears badly cooked.")
+		. += "<span class='warning'>The flesh on this limb appears badly cooked.</span>"
 
 /obj/item/bodypart/blob_act()
 	take_damage(max_damage)
@@ -172,14 +153,14 @@
 			if(!human_victim.get_bodypart(body_zone) && !animal_origin)
 				user.temporarilyRemoveItemFromInventory(src, TRUE)
 				if(!attach_limb(victim))
-					to_chat(user, span_warning("[human_victim]'s body rejects [src]!"))
+					to_chat(user, "<span class='warning'>[human_victim]'s body rejects [src]!</span>")
 					forceMove(human_victim.loc)
 				if(human_victim == user)
-					human_victim.visible_message(span_warning("[human_victim] jams [src] into [human_victim.p_their()] empty socket!"),\
-					span_notice("You force [src] into your empty socket, and it locks into place!"))
+					human_victim.visible_message("<span class='warning'>[human_victim] jams [src] into [human_victim.p_their()] empty socket!</span>",\
+					"<span class='notice'>You force [src] into your empty socket, and it locks into place!</span>")
 				else
-					human_victim.visible_message(span_warning("[user] jams [src] into [human_victim]'s empty socket!"),\
-					span_notice("[user] forces [src] into your empty socket, and it locks into place!"))
+					human_victim.visible_message("<span class='warning'>[user] jams [src] into [human_victim]'s empty socket!</span>",\
+					"<span class='notice'>[user] forces [src] into your empty socket, and it locks into place!</span>")
 				return
 	..()
 
@@ -187,11 +168,11 @@
 	if(weapon.get_sharpness())
 		add_fingerprint(user)
 		if(!contents.len)
-			to_chat(user, span_warning("There is nothing left inside [src]!"))
+			to_chat(user, "<span class='warning'>There is nothing left inside [src]!</span>")
 			return
 		playsound(loc, 'sound/weapons/slice.ogg', 50, TRUE, -1)
-		user.visible_message(span_warning("[user] begins to cut open [src]."),\
-			span_notice("You begin to cut open [src]..."))
+		user.visible_message("<span class='warning'>[user] begins to cut open [src].</span>",\
+			"<span class='notice'>You begin to cut open [src]...</span>")
 		if(do_after(user, 54, target = src))
 			drop_organs(user, TRUE)
 	else
@@ -209,11 +190,7 @@
 	var/turf/bodypart_turf = get_turf(src)
 	if(status != BODYPART_ROBOTIC)
 		playsound(bodypart_turf, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	//seep_gauze(9999) // destroy any existing gauze if any exists
-	if(current_gauze)
-		qdel(current_gauze)
-	if(current_splint)
-		qdel(current_splint)
+	seep_gauze(9999) // destroy any existing gauze if any exists
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/item_in_bodypart in src)
@@ -232,13 +209,11 @@
 	return bodypart_organs
 
 
-/* SKYRAT EDIT REMOVAL
 //Return TRUE to get whatever mob this is in to update health.
 /obj/item/bodypart/proc/on_life(delta_time, times_fired, stam_regen)
 	if(stamina_dam > DAMAGE_PRECISION && stam_regen) //DO NOT update health here, it'll be done in the carbon's life.
 		heal_damage(0, 0, INFINITY, null, FALSE)
 		. |= BODYPART_LIFE_UPDATE_HEALTH
-*/ //SKYRAT REMOVAL END
 
 //Applies brute and burn damage to the organ. Returns 1 if the damage-icon states changed at all.
 //Damage will not exceed max_damage using this proc
@@ -304,11 +279,6 @@
 		// note that there's no handling for BIO_JUST_FLESH since we don't have any that are that right now (slimepeople maybe someday)
 		// standard humanoids
 		if(BIO_FLESH_BONE)
-			//SKYRAT EDIT ADDITION BEGIN - MEDICAL
-			//We do a body zone check here because muscles dont have any variants for head or chest, and rolling a muscle wound on them wound end up on a wasted wound roll
-			if(body_zone != BODY_ZONE_CHEST && body_zone != BODY_ZONE_HEAD && prob(35))
-				wounding_type = WOUND_MUSCLE
-			//SKYRAT EDIT ADDITION END
 			// if we've already mangled the skin (critical slash or piercing wound), then the bone is exposed, and we can damage it with sharp weapons at a reduced rate
 			// So a big sharp weapon is still all you need to destroy a limb
 			if(mangled_state == BODYPART_MANGLED_FLESH && sharpness)
@@ -323,20 +293,6 @@
 
 	// now we have our wounding_type and are ready to carry on with wounds and dealing the actual damage
 	if(owner && wounding_dmg >= WOUND_MINIMUM_DAMAGE && wound_bonus != CANT_WOUND)
-		//SKYRAT EDIT ADDITION - MEDICAL
-		//This makes it so the more damaged bodyparts are, the more likely they are to get wounds
-		//However, this bonus isn't applied when the object doesn't pass the initial wound threshold, nor is it when it already has enough wounding dmg
-		if(wounding_dmg < DAMAGED_BODYPART_BONUS_WOUNDING_BONUS)
-			var/damaged_percent = (brute_dam + burn_dam)/max_damage
-			if(damaged_percent > DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD)
-				damaged_percent = DAMAGED_BODYPART_BONUS_WOUNDING_THRESHOLD
-			wounding_dmg = min(DAMAGED_BODYPART_BONUS_WOUNDING_BONUS, wounding_dmg+(damaged_percent*DAMAGED_BODYPART_BONUS_WOUNDING_COEFF))
-
-		if(current_gauze)
-			current_gauze.take_damage()
-		if(current_splint)
-			current_splint.take_damage()
-		//SKYRAT EDIT ADDITION - MEDICAL
 		check_wounding(wounding_type, wounding_dmg, wound_bonus, bare_wound_bonus)
 
 	for(var/datum/wound/iter_wound as anything in wounds)
@@ -561,12 +517,6 @@
 			update_disabled()
 		if(updating_health)
 			owner.updatehealth()
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		//Consider moving this to a new species proc "spec_heal" maybe?
-		if(owner.stat == DEAD && owner?.dna?.species && (REVIVES_BY_HEALING in owner.dna.species.species_traits))
-			if(owner.health > 50)
-				owner.revive(FALSE)
-		//SKYRAT EDIT ADDITION END
 	cremation_progress = min(0, cremation_progress - ((brute_dam + burn_dam)*(100/max_damage)))
 	return update_bodypart_damage_state()
 
@@ -593,12 +543,10 @@
 		return
 	. = stamina_dam
 	stamina_dam = new_value
-	/* SKYRAT EDIT REMOVAL BEGIN
 	if(stamina_dam > DAMAGE_PRECISION)
 		needs_processing = TRUE
 	else
 		needs_processing = FALSE
-	*/ //SKYRAT EDIT END
 
 
 //Returns total damage.
@@ -761,10 +709,8 @@
 	if(change_icon_to_default)
 		if(status == BODYPART_ORGANIC)
 			icon = DEFAULT_BODYPART_ICON_ORGANIC
-			organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		else if(status == BODYPART_ROBOTIC)
 			icon = DEFAULT_BODYPART_ICON_ROBOTIC
-			organic_render = FALSE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 	if(owner)
 		owner.updatehealth()
@@ -797,15 +743,8 @@
 		no_update = TRUE
 
 	if(HAS_TRAIT(src, TRAIT_PLASMABURNT) && is_organic_limb())
-		species_id = SPECIES_PLASMAMAN
+		species_id = "plasmaman"
 		dmg_overlay_type = ""
-		should_draw_gender = FALSE
-		should_draw_greyscale = FALSE
-		no_update = TRUE
-
-	if(HAS_TRAIT(limb_owner, TRAIT_INVISIBLE_MAN) && is_organic_limb())
-		species_id = "invisible" //overrides species_id
-		dmg_overlay_type = "" //no damage overlay shown when invisible since the wounds themselves are invisible.
 		should_draw_gender = FALSE
 		should_draw_greyscale = FALSE
 		no_update = TRUE
@@ -818,10 +757,6 @@
 		should_draw_greyscale = FALSE
 
 		var/datum/species/owner_species = human_owner.dna.species
-		if(organic_render) //SKYRAT EDIT ADDITION - CUSTOMIZATION
-			species_id = owner_species.limbs_id
-			alpha = owner_species.specific_alpha
-			rendered_bp_icon = owner_species.limbs_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		species_id = owner_species.limbs_id
 		species_flags_list = human_owner.dna.species.species_traits
 
@@ -872,8 +807,6 @@
 	add_overlay(standing)
 
 //Gives you a proper icon appearance for the dismembered limb
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
 /obj/item/bodypart/proc/get_limb_icon(dropped)
 	icon_state = "" //to erase the default sprite, we're building the visual aspects of the bodypart through overlays alone.
 
@@ -902,11 +835,6 @@
 		else
 			limb.icon = 'icons/mob/augmentation/augments.dmi'
 			limb.icon_state = "[animal_origin]_[body_zone]"
-
-		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
-			limb_em_block.dir = image_dir
-			limb.overlays += limb_em_block
 		return
 
 	var/icon_gender = (body_gender == FEMALE) ? "f" : "m" //gender of the icon, if applicable
@@ -914,44 +842,33 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
-	if(!is_organic_limb())
+	if(is_organic_limb())
+		if(should_draw_greyscale)
+			limb.icon = 'icons/mob/human_parts_greyscale.dmi'
+			if(should_draw_gender)
+				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+			else if(use_digitigrade)
+				limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
+			else
+				limb.icon_state = "[species_id]_[body_zone]"
+		else
+			limb.icon = 'icons/mob/human_parts.dmi'
+			if(should_draw_gender)
+				limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+			else
+				limb.icon_state = "[species_id]_[body_zone]"
+		if(aux_zone)
+			aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
+			. += aux
+
+	else
 		limb.icon = icon
 		limb.icon_state = "[body_zone]" //Inorganic limbs are agender
-
-		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
-			limb_em_block.dir = image_dir
-			limb.overlays += limb_em_block
-
 		if(aux_zone)
 			aux = image(limb.icon, "[aux_zone]", -aux_layer, image_dir)
 			. += aux
-
-			if(blocks_emissive)
-				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
-				aux_em_block.dir = image_dir
-				aux.overlays += aux_em_block
-
 		return
 
-	if(should_draw_greyscale)
-		limb.icon = 'icons/mob/human_parts_greyscale.dmi'
-		if(should_draw_gender)
-			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
-		else if(use_digitigrade)
-			limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
-		else
-			limb.icon_state = "[species_id]_[body_zone]"
-	else
-		limb.icon = 'icons/mob/human_parts.dmi'
-		if(should_draw_gender)
-			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
-		else
-			limb.icon_state = "[species_id]_[body_zone]"
-
-	if(aux_zone)
-		aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
-		. += aux
 
 	if(should_draw_greyscale)
 		var/draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
@@ -959,19 +876,6 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
-	if(blocks_emissive)
-		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
-		limb_em_block.dir = image_dir
-		limb.overlays += limb_em_block
-
-		if(aux_zone)
-			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
-			aux_em_block.dir = image_dir
-			aux.overlays += aux_em_block
-*/
-//SKYRAT EDIT REMOVAL END
-
-
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()
@@ -1001,11 +905,9 @@
 	for(var/datum/wound/iter_wound as anything in wounds)
 		dam_mul *= iter_wound.damage_mulitplier_penalty
 
-	/*
 	if(!LAZYLEN(wounds) && current_gauze && !replaced) // no more wounds = no need for the gauze anymore
-		owner.visible_message(span_notice("\The [current_gauze] on [owner]'s [name] falls away."), span_notice("The [current_gauze] on your [name] falls away."))
+		owner.visible_message("<span class='notice'>\The [current_gauze] on [owner]'s [name] falls away.</span>", "<span class='notice'>The [current_gauze] on your [name] falls away.</span>")
 		QDEL_NULL(current_gauze)
-	*/
 
 	wound_damage_multiplier = dam_mul
 
@@ -1051,7 +953,6 @@
  * Arguments:
  * * gauze- Just the gauze stack we're taking a sheet from to apply here
  */
-/*
 /obj/item/bodypart/proc/apply_gauze(obj/item/stack/gauze)
 	if(!istype(gauze) || !gauze.absorption_capacity)
 		return
@@ -1063,7 +964,6 @@
 	gauze.use(1)
 	if(newly_gauzed)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZED, gauze)
-*/
 
 /**
  * seep_gauze() is for when a gauze wrapping absorbs blood or pus from wounds, lowering its absorption capacity.
@@ -1073,16 +973,14 @@
  * Arguments:
  * * seep_amt - How much absorption capacity we're removing from our current bandages (think, how much blood or pus are we soaking up this tick?)
  */
-/*
 /obj/item/bodypart/proc/seep_gauze(seep_amt = 0)
 	if(!current_gauze)
 		return
 	current_gauze.absorption_capacity -= seep_amt
 	if(current_gauze.absorption_capacity <= 0)
-		owner.visible_message(span_danger("\The [current_gauze] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
+		owner.visible_message("<span class='danger'>\The [current_gauze] on [owner]'s [name] falls away in rags.</span>", "<span class='warning'>\The [current_gauze] on your [name] falls away in rags.</span>", vision_distance=COMBAT_MESSAGE_RANGE)
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
-*/
 
 
 ///Proc to turn bodypart into another.

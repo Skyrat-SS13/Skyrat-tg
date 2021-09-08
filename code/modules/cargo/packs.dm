@@ -285,7 +285,6 @@
 					/obj/item/ammo_box/c38/iceblox)
 	crate_name = "ammo crate"
 
-/* SKYRAT EDIT: Moved to Bloat.dm	name = "Armor Crate"
 /datum/supply_pack/security/armor
 	name = "Armor Crate"
 	desc = "Three vests of well-rounded, decently-protective armor. Requires Security access to open."
@@ -294,9 +293,8 @@
 	contains = list(/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest)
-	crate_name = "armor crate" */
+	crate_name = "armor crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL
 /datum/supply_pack/security/disabler
 	name = "Disabler Crate"
 	desc = "Three stamina-draining disabler weapons. Requires Security access to open."
@@ -306,7 +304,6 @@
 					/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler)
 	crate_name = "disabler crate"
-*/
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
@@ -330,7 +327,6 @@
 					/obj/item/clothing/head/helmet/sec)
 	crate_name = "helmet crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL
 /datum/supply_pack/security/laser
 	name = "Lasers Crate"
 	desc = "Contains three lethal, high-energy laser guns. Requires Security access to open."
@@ -340,7 +336,6 @@
 					/obj/item/gun/energy/laser,
 					/obj/item/gun/energy/laser)
 	crate_name = "laser crate"
-*/
 
 /datum/supply_pack/security/securitybarriers
 	name = "Security Barrier Grenades"
@@ -353,7 +348,6 @@
 	cost = CARGO_CRATE_VALUE * 2
 	crate_name = "security barriers crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HUAL
 /datum/supply_pack/security/securityclothes
 	name = "Security Clothing Crate"
 	desc = "Contains appropriate outfits for the station's private security force. Contains outfits for the Warden, Head of Security, and two Security Officers. Each outfit comes with a rank-appropriate jumpsuit, suit, and beret. Requires Security access to open."
@@ -370,9 +364,8 @@
 					/obj/item/clothing/head/beret/sec/navywarden,
 					/obj/item/clothing/under/rank/security/head_of_security/formal,
 					/obj/item/clothing/suit/security/hos,
-					/obj/item/clothing/head/hos/beret/navyhos)
+					/obj/item/clothing/head/beret/sec/navyhos)
 	crate_name = "security clothing crate"
-*/
 
 /datum/supply_pack/security/stingpack
 	name = "Stingbang Grenade Pack"
@@ -420,8 +413,6 @@
 					/obj/item/clothing/mask/gas/sechailer)
 	crate_name = "security clothing crate"
 
-//SKYRAT EDIT REMOVAL BEGIN - No stunbaton
-/*
 /datum/supply_pack/security/baton
 	name = "Stun Batons Crate"
 	desc = "Arm the Civil Protection Forces with three stun batons. Batteries included. Requires Security access to open."
@@ -431,8 +422,6 @@
 					/obj/item/melee/baton/loaded,
 					/obj/item/melee/baton/loaded)
 	crate_name = "stun baton crate"
-*/
-//SKYRAT EDIT REMOVAL END - No stunbaton
 
 /datum/supply_pack/security/wall_flash
 	name = "Wall-Mounted Flash Crate"
@@ -520,7 +509,6 @@
 					/obj/item/gun/energy/e_gun/dragnet)
 	crate_name = "\improper DRAGnet crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HUAL
 /datum/supply_pack/security/armory/energy
 	name = "Energy Guns Crate"
 	desc = "Contains two Energy Guns, capable of firing both nonlethal and lethal blasts of light. Requires Armory access to open."
@@ -529,7 +517,6 @@
 					/obj/item/gun/energy/e_gun)
 	crate_name = "energy gun crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
-*/
 
 /datum/supply_pack/security/armory/exileimp
 	name = "Exile Implants Crate"
@@ -570,8 +557,6 @@
 					/obj/item/ammo_box/c38/trac,
 					/obj/item/ammo_box/c38/trac)
 	crate_name = "tracking implant crate"
-
-/datum/supply_pack/security/armory/riotshotguns //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/security/armory/laserarmor
 	name = "Reflector Vest Crate"
@@ -636,8 +621,6 @@
 		var/item = pick(contains)
 		new item(C)
 
-/datum/supply_pack/security/armory/mafia //SKYRAT EDIT ADDITION
-
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
 	desc = "Contains two fullbody sets of tough, fireproof, pressurized suits designed in a joint effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
@@ -653,8 +636,6 @@
 					/obj/item/clothing/gloves/tackler/combat,
 					/obj/item/clothing/gloves/tackler/combat)
 	crate_name = "swat crate"
-
-/datum/supply_pack/security/armory/woodstock //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/security/armory/wt550
 	name = "WT-550 Auto Rifle Crate"
@@ -673,7 +654,6 @@
 					/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9)
 
-/datum/supply_pack/security/armory/wt550ammovariety //SKYRAT EDIT ADDITION
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Engineering /////////////////////////////////////
@@ -847,7 +827,6 @@
 	contains = list(/obj/item/circuitboard/machine/bsa/front,
 					/obj/item/circuitboard/machine/bsa/middle,
 					/obj/item/circuitboard/machine/bsa/back,
-					/obj/item/circuitboard/machine/bsa/powercore, //SKYRAT EDIT ADDITION
 					/obj/item/circuitboard/computer/bsa_control
 					)
 	crate_name= "bluespace artillery parts crate"
@@ -1016,10 +995,10 @@
 					/obj/item/hfr_box/corner,
 					/obj/item/hfr_box/corner,
 					/obj/item/hfr_box/corner,
-					/obj/item/hfr_box/body/fuel_input,
-					/obj/item/hfr_box/body/moderator_input,
-					/obj/item/hfr_box/body/waste_output,
-					/obj/item/hfr_box/body/interface,
+					/obj/item/hfr_box/body,
+					/obj/item/hfr_box/body,
+					/obj/item/hfr_box/body,
+					/obj/item/hfr_box/body,
 					/obj/item/hfr_box/core)
 	crate_name = "HFR crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
@@ -1340,10 +1319,10 @@
 
 /datum/supply_pack/science/plasma
 	name = "Plasma Assembly Crate"
-	desc = "Everything you need to burn something to the ground, this contains three plasma assembly sets. Each set contains a plasma tank, igniter, proximity sensor, and timer! Warranty void if exposed to high temperatures. Requires Ordnance access to open."
+	desc = "Everything you need to burn something to the ground, this contains three plasma assembly sets. Each set contains a plasma tank, igniter, proximity sensor, and timer! Warranty void if exposed to high temperatures. Requires Toxins access to open."
 	cost = CARGO_CRATE_VALUE * 2
-	access = ACCESS_ORDNANCE
-	access_view = ACCESS_ORDNANCE
+	access = ACCESS_TOXINS
+	access_view = ACCESS_TOXINS
 	contains = list(/obj/item/tank/internals/plasma,
 					/obj/item/tank/internals/plasma,
 					/obj/item/tank/internals/plasma,
@@ -1363,8 +1342,8 @@
 	name = "Raw Flux Anomaly"
 	desc = "The raw core of a flux anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_ORDNANCE
-	access_view = ACCESS_ORDNANCE
+	access = ACCESS_TOXINS
+	access_view = ACCESS_TOXINS
 	contains = list(/obj/item/raw_anomaly_core/flux)
 	crate_name = "raw flux anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1373,8 +1352,8 @@
 	name = "Raw Gravitational Anomaly"
 	desc = "The raw core of a gravitational anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_ORDNANCE
-	access_view = ACCESS_ORDNANCE
+	access = ACCESS_TOXINS
+	access_view = ACCESS_TOXINS
 	contains = list(/obj/item/raw_anomaly_core/grav)
 	crate_name = "raw pyro anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1383,8 +1362,8 @@
 	name = "Raw Vortex Anomaly"
 	desc = "The raw core of a vortex anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_ORDNANCE
-	access_view = ACCESS_ORDNANCE
+	access = ACCESS_TOXINS
+	access_view = ACCESS_TOXINS
 	contains = list(/obj/item/raw_anomaly_core/vortex)
 	crate_name = "raw vortex anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1393,8 +1372,8 @@
 	name = "Raw Bluespace Anomaly"
 	desc = "The raw core of a bluespace anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_ORDNANCE
-	access_view = ACCESS_ORDNANCE
+	access = ACCESS_TOXINS
+	access_view = ACCESS_TOXINS
 	contains = list(/obj/item/raw_anomaly_core/bluespace)
 	crate_name = "raw bluespace anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1403,8 +1382,8 @@
 	name = "Raw Pyro Anomaly"
 	desc = "The raw core of a pyro anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
-	access = ACCESS_ORDNANCE
-	access_view = ACCESS_ORDNANCE
+	access = ACCESS_TOXINS
+	access_view = ACCESS_TOXINS
 	contains = list(/obj/item/raw_anomaly_core/pyro)
 	crate_name = "raw pyro anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
@@ -1452,8 +1431,6 @@
 					/obj/machinery/power/shieldwallgen)
 	crate_name = "shield generators crate"
 	crate_type = /obj/structure/closet/crate/secure/science
-
-/datum/supply_pack/science/techshellpack //SKYRAT EDIT ADDITION
 
 /datum/supply_pack/science/transfer_valves
 	name = "Tank Transfer Valves Crate"
@@ -1613,40 +1590,6 @@
 					/obj/item/stack/tile/carpet/royalblack/fifty,
 					/obj/item/stack/tile/carpet/royalblack/fifty)
 	crate_name = "exotic carpet crate"
-
-/datum/supply_pack/service/carpet_neon
-	name = "Simple Neon Carpet Crate"
-	desc = "Simple rubbery mats with phosphorescent lining. Contains 120 tiles each of 13 color variants. Limited edition release."
-	cost = CARGO_CRATE_VALUE * 15
-	contains = list(
-		/obj/item/stack/tile/carpet/neon/simple/white/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/white/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/black/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/black/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/red/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/red/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/orange/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/orange/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/yellow/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/yellow/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/lime/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/lime/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/green/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/green/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/teal/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/teal/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/cyan/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/cyan/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/blue/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/blue/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/purple/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/purple/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/violet/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/violet/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/pink/sixty,
-		/obj/item/stack/tile/carpet/neon/simple/pink/sixty,
-	)
-	crate_name = "neon carpet crate"
 
 /datum/supply_pack/service/lightbulbs
 	name = "Replacement Lights"
@@ -2478,7 +2421,7 @@
 /datum/supply_pack/misc/aquarium_kit
 	name = "Aquarium Kit"
 	desc = "Everything you need to start your own aquarium. Contains aquarium construction kit, fish catalog, feed can and three freshwater fish from our collection."
-	cost = CARGO_CRATE_VALUE * 5
+	cost = CARGO_CRATE_VALUE * 10
 	contains = list(/obj/item/book/fish_catalog,
 					/obj/item/storage/fish_case/random/freshwater,
 					/obj/item/storage/fish_case/random/freshwater,
@@ -2493,10 +2436,9 @@
 	name = "Aquarium Fish Case"
 	desc = "An aquarium fish handpicked by monkeys from our collection."
 	cost = CARGO_CRATE_VALUE * 2
-	contains = list(/obj/item/storage/fish_case/random,
-					/obj/item/storage/fish_case/random)
+	contains = list(/obj/item/storage/fish_case/random)
 	crate_name = "aquarium fish crate"
-/* - SKYRAT EDIT: rest tight bikey
+
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
@@ -2504,7 +2446,7 @@
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
-*/
+
 /datum/supply_pack/misc/bigband
 	name = "Big Band Instrument Collection"
 	desc = "Get your sad station movin' and groovin' with this fine collection! Contains nine different instruments!"
@@ -2776,7 +2718,6 @@
 	contains = list(/obj/item/vending_refill/cart)
 	crate_name = "ptech supply crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL - MOVED TO PACKS.DM
 /datum/supply_pack/vending/sectech
 	name = "SecTech Supply Crate"
 	desc = "Officer Paul bought all the donuts? Then refill the security vendor with ths crate."
@@ -2785,7 +2726,6 @@
 	contains = list(/obj/item/vending_refill/security)
 	crate_name = "SecTech supply crate"
 	crate_type = /obj/structure/closet/crate/secure/gear
-*/
 
 /datum/supply_pack/vending/snack
 	name = "Snack Supply Crate"
@@ -2878,7 +2818,6 @@
 					/obj/item/vending_refill/wardrobe/science_wardrobe)
 	crate_name = "science department wardrobe supply crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL - MOVED TO PACKS.DM
 /datum/supply_pack/vending/wardrobes/security
 	name = "Security Wardrobe Supply Crate"
 	desc = "This crate contains refills for the SecDrobe, DetDrobe and LawDrobe."
@@ -2887,7 +2826,7 @@
 					/obj/item/vending_refill/wardrobe/det_wardrobe,
 					/obj/item/vending_refill/wardrobe/law_wardrobe)
 	crate_name = "security department supply crate"
-*/
+
 
 /// Exploration drone unlockables ///
 

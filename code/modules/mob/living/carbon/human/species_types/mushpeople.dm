@@ -1,6 +1,6 @@
 /datum/species/mush //mush mush codecuck
 	name = "Mushroomperson"
-	id = SPECIES_MUSHROOM
+	id = "mush"
 	mutant_bodyparts = list("caps" = "Round")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 
@@ -57,6 +57,6 @@
 		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * delta_time)
 		return TRUE
 
-/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE) //SKYRAT EDIT - ORIGINAL: /datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour) (one parameter added)
+/datum/species/mush/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour)
 	forced_colour = FALSE
 	..()

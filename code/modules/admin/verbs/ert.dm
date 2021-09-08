@@ -85,8 +85,7 @@
 		"open_armory" = list("desc" = "Open armory doors", "type" = "boolean", "value" = "[(ertemplate.opendoors ? "Yes" : "No")]"),
 		"leader_experience" = list("desc" = "Pick an experienced leader", "type" = "boolean", "value" = "[(ertemplate.leader_experience ? "Yes" : "No")]"),
 		"random_names" = list("desc" = "Randomize names", "type" = "boolean", "value" = "[(ertemplate.random_names ? "Yes" : "No")]"),
-		"spawn_admin" = list("desc" = "Spawn yourself as briefing officer", "type" = "boolean", "value" = "[(ertemplate.spawn_admin ? "Yes" : "No")]"),
-		"notify_players" = list("desc" = "Notify players that you have sent an ERT", "type" = "boolean", "value" = "[(ertemplate.notify_players ? "Yes" : "No")]") //SKYRAT EDIT ADDITION
+		"spawn_admin" = list("desc" = "Spawn yourself as briefing officer", "type" = "boolean", "value" = "[(ertemplate.spawn_admin ? "Yes" : "No")]")
 		)
 	)
 
@@ -113,7 +112,6 @@
 		ertemplate.leader_experience = prefs["leader_experience"]["value"] == "Yes"
 		ertemplate.random_names = prefs["random_names"]["value"] == "Yes"
 		ertemplate.spawn_admin = prefs["spawn_admin"]["value"] == "Yes"
-		ertemplate.notify_players = prefs["notify_players"]["value"] == "Yes" //SKYRAT EDIT ADDITION
 
 		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		var/index = 0
@@ -122,7 +120,7 @@
 			if(isobserver(usr))
 				var/mob/living/carbon/human/admin_officer = new (spawnpoints[1])
 				var/chosen_outfit = usr.client?.prefs?.brief_outfit
-				usr.client.prefs.safe_transfer_prefs_to(admin_officer, is_antag = TRUE)
+				usr.client.prefs.copy_to(admin_officer)
 				admin_officer.equipOutfit(chosen_outfit)
 				admin_officer.key = usr.key
 			else
@@ -177,7 +175,7 @@
 
 			//Spawn the body
 			var/mob/living/carbon/human/ert_operative = new ertemplate.mobtype(spawnloc)
-			chosen_candidate.client.prefs.safe_transfer_prefs_to(ert_operative, is_antag = TRUE)
+			chosen_candidate.client.prefs.copy_to(ert_operative)
 			ert_operative.key = chosen_candidate.key
 
 			if(ertemplate.enforce_human || !(ert_operative.dna.species.changesource_flags & ERT_SPAWN)) // Don't want any exploding plasmemes
@@ -196,7 +194,7 @@
 			ert_antag.random_names = ertemplate.random_names
 
 			ert_operative.mind.add_antag_datum(ert_antag,ert_team)
-			ert_operative.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
+			ert_operative.mind.assigned_role = ert_antag.name
 
 			//Logging and cleanup
 			log_game("[key_name(ert_operative)] has been selected as an [ert_antag.name]")
@@ -205,10 +203,7 @@
 
 		if (teamSpawned)
 			message_admins("[ertemplate.polldesc] has spawned with the mission: [ertemplate.mission]")
-			//SKYRAT EDIT ADDITION BEGIN
-			if(ertemplate.notify_players)
-				priority_announce("Central command has responded to your request for a CODE [uppertext(ertemplate.code)] Emergency Response Team and have confirmed one to be enroute.", "ERT Request", ANNOUNCER_ERTYES)
-			//SKYRAT EDIT END
+
 		//Open the Armory doors
 		if(ertemplate.opendoors)
 			for(var/obj/machinery/door/poddoor/ert/door in GLOB.airlocks)

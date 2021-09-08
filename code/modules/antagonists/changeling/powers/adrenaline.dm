@@ -11,9 +11,8 @@
 //Recover from stuns.
 /datum/action/changeling/adrenaline/sting_action(mob/living/user)
 	..()
-	to_chat(user, span_notice("Energy rushes through us."))
+	to_chat(user, "<span class='notice'>Energy rushes through us.</span>")
 	user.SetKnockdown(0)
-	user.setStaminaLoss(0) //SKYRAT EDIT ADDITION
 	user.set_resting(FALSE)
 	user.reagents.add_reagent(/datum/reagent/medicine/changelingadrenaline, 4) //20 seconds
 	user.reagents.add_reagent(/datum/reagent/medicine/changelinghaste, 3) //6 seconds, for a really quick burst of speed

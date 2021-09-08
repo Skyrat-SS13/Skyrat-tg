@@ -28,7 +28,7 @@
 	for(var/i in 1 to 3)
 		new /obj/item/tank/internals/anesthetic(src)
 	for(var/i in 1 to 3)
-		new /obj/item/clothing/mask/muzzle/breath(src)
+		new /obj/item/clothing/mask/breathmuzzle(src)
 
 /obj/structure/closet/secure_closet/medical3
 	name = "medical doctor's locker"
@@ -77,14 +77,9 @@
 	new /obj/item/clothing/suit/bio_suit/cmo(src)
 	new /obj/item/clothing/head/bio_hood/cmo(src)
 	new /obj/item/clothing/suit/toggle/labcoat/cmo(src)
-	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-	/*
-	new /obj/item/clothing/under/rank/medical/chief_medical_officer(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	new /obj/item/clothing/under/rank/medical/chief_medical_officer/skirt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	new /obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck(src) // SKYRAT EDIT ADDITION // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	new /obj/item/clothing/shoes/sneakers/brown (src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	*/
-	// SKYRAT EDIT END
+	new /obj/item/clothing/under/rank/medical/chief_medical_officer(src)
+	new /obj/item/clothing/under/rank/medical/chief_medical_officer/skirt(src)
+	new /obj/item/clothing/shoes/sneakers/brown (src)
 	new /obj/item/cartridge/cmo(src)
 	new /obj/item/radio/headset/heads/cmo(src)
 	new /obj/item/megaphone/command(src)
@@ -92,9 +87,7 @@
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/healthanalyzer/advanced(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/storage/briefcase/medicalgunset/cmo(src) //SKYRAT ADDITON MEDIGUNS//
-	// new /obj/item/reagent_containers/hypospray/cmo(src) - SKYRAT REMOVAL - New Hyposprays
-	new /obj/item/storage/hypospraykit/cmo(src) //SKYRAT ADDITION - New Hyposprays
+	new /obj/item/reagent_containers/hypospray/cmo(src)
 	new /obj/item/autosurgeon/organ/cmo(src)
 	new /obj/item/door_remote/chief_medical_officer(src)
 	new /obj/item/clothing/neck/petcollar(src)
@@ -126,8 +119,6 @@
 	new /obj/item/storage/box/pillbottles(src)
 	new /obj/item/storage/box/medigels(src)
 	new /obj/item/storage/box/medigels(src)
-	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
-	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
 	new /obj/item/ph_booklet(src)
 	new /obj/item/reagent_containers/dropper(src)
 	new /obj/item/reagent_containers/glass/bottle/acidic_buffer(src) //hopefully they get the hint

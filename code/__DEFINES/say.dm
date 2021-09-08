@@ -29,10 +29,6 @@
 #define MODE_WHISPER "whisper"
 #define MODE_WHISPER_CRIT "whispercrit"
 
-//SKYRAT custom verb
-#define MODE_CUSTOM_SAY "custom_say"
-//SKYRAT custom sayverb end.
-
 #define MODE_DEPARTMENT "department"
 #define MODE_KEY_DEPARTMENT "h"
 #define MODE_TOKEN_DEPARTMENT ":h"
@@ -42,9 +38,6 @@
 
 #define MODE_DEADMIN "deadmin"
 #define MODE_KEY_DEADMIN "d"
-
-#define MODE_PUPPET "puppet"
-#define MODE_KEY_PUPPET "j"
 
 #define MODE_ALIEN "alientalk"
 #define MODE_HOLOPAD "holopad"
@@ -87,7 +80,7 @@
 #define FOLLOW_OR_TURF_LINK(alice, bob, turfy) "<a href=?src=[REF(alice)];follow=[REF(bob)];x=[turfy.x];y=[turfy.y];z=[turfy.z]>(F)</a>"
 
 //Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
-#define MAX_MESSAGE_LEN 2048 //SKYRAT EDIT CHANGE - ORIGINAL 1024 - I SAID DOUBLE IT!! FUCK THE WARNING!
+#define MAX_MESSAGE_LEN 1024
 #define MAX_NAME_LEN 42
 #define MAX_BROADCAST_LEN 512
 #define MAX_CHARTER_LEN 80

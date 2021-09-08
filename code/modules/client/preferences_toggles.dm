@@ -20,7 +20,6 @@
 	set category = "Preferences"
 	set desc = "Open Game Preferences Window"
 	usr.client.prefs.current_tab = 1
-	usr.client.prefs.needs_update = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	usr.client.prefs.ShowChoices(usr)
 
 /datum/verbs/menu/settings/ghost
@@ -405,9 +404,9 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 	prefs.inquisitive_ghost = !prefs.inquisitive_ghost
 	prefs.save_preferences()
 	if(prefs.inquisitive_ghost)
-		to_chat(src, span_notice("You will now examine everything you click on."))
+		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
 	else
-		to_chat(src, span_notice("You will no longer examine things you click on."))
+		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Inquisitiveness", "[prefs.inquisitive_ghost ? "Enabled" : "Disabled"]"))
 
 //Admin Preferences

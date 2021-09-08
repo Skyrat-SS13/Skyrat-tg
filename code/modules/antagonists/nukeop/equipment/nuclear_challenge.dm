@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		war_declaration = stripped_input(usr, "Insert your custom declaration", "Declaration")
 
 	if(!war_declaration)
-		to_chat(usr, span_warning("Invalid war declaration."))
+		to_chat(usr, "<span class='warning'>Invalid war declaration.</span>")
 		return
 
 	priority_announce(war_declaration, title = "Declaration of War", sound = 'sound/machines/alarm.ogg', has_important_message = TRUE)
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 
 	for (var/mob/living/L in orphans)
 		var/TC = new /obj/item/stack/telecrystal(L.drop_location(), tc_per_nukie)
-		to_chat(L, span_warning("Your uplink could not be found so your share of the team's bonus telecrystals has been bluespaced to your [L.put_in_hands(TC) ? "hands" : "feet"]."))
+		to_chat(L, "<span class='warning'>Your uplink could not be found so your share of the team's bonus telecrystals has been bluespaced to your [L.put_in_hands(TC) ? "hands" : "feet"].</span>")
 		tc_to_distribute -= tc_per_nukie
 
 	if (tc_to_distribute > 0) // What shall we do with the remainder...
@@ -131,27 +131,27 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 			if (C.stat != DEAD)
 				var/obj/item/stack/telecrystal/TC = new(C.drop_location(), tc_to_distribute)
 				TC.throw_at(get_step(C, C.dir), 3, 3)
-				C.visible_message(span_notice("[C] coughs up a half-digested telecrystal"),span_notice("You cough up a half-digested telecrystal!"))
+				C.visible_message("<span class='notice'>[C] coughs up a half-digested telecrystal</span>","<span class='notice'>You cough up a half-digested telecrystal!</span>")
 				break
 
 
 /obj/item/nuclear_challenge/proc/check_allowed(mob/living/user)
 	if(declaring_war)
-		to_chat(user, span_boldwarning("You are already in the process of declaring war! Make your mind up."))
+		to_chat(user, "<span class='boldwarning'>You are already in the process of declaring war! Make your mind up.</span>")
 		return FALSE
 	if(GLOB.player_list.len < CHALLENGE_MIN_PLAYERS)
-		to_chat(user, span_boldwarning("The enemy crew is too small to be worth declaring war on."))
+		to_chat(user, "<span class='boldwarning'>The enemy crew is too small to be worth declaring war on.</span>")
 		return FALSE
 	if(!user.onSyndieBase())
-		to_chat(user, span_boldwarning("You have to be at your base to use this."))
+		to_chat(user, "<span class='boldwarning'>You have to be at your base to use this.</span>")
 		return FALSE
 	if(world.time-SSticker.round_start_time > CHALLENGE_TIME_LIMIT)
-		to_chat(user, span_boldwarning("It's too late to declare hostilities. Your benefactors are already busy with other schemes. You'll have to make do with what you have on hand."))
+		to_chat(user, "<span class='boldwarning'>It's too late to declare hostilities. Your benefactors are already busy with other schemes. You'll have to make do with what you have on hand.</span>")
 		return FALSE
 	for(var/V in GLOB.syndicate_shuttle_boards)
 		var/obj/item/circuitboard/computer/syndicate_shuttle/board = V
 		if(board.moved)
-			to_chat(user, span_boldwarning("The shuttle has already been moved! You have forfeit the right to declare war."))
+			to_chat(user, "<span class='boldwarning'>The shuttle has already been moved! You have forfeit the right to declare war.</span>")
 			return FALSE
 	return TRUE
 

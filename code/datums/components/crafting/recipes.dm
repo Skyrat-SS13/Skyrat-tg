@@ -544,32 +544,6 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-/datum/crafting_recipe/trash_cannon
-	name = "Trash Cannon"
-	always_available = FALSE
-	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER)
-	result = /obj/structure/cannon/trash
-	reqs = list(
-		/obj/item/melee/skateboard/improvised = 1,
-		/obj/item/tank/internals/oxygen = 1,
-		/datum/reagent/drug/maint/tar = 15,
-		/obj/item/restraints/handcuffs/cable = 1,
-		/obj/item/storage/toolbox = 1,
-	)
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
-/datum/crafting_recipe/trashball
-	name = "Trashball"
-	always_available = FALSE
-	result = /obj/item/stack/cannonball/trashball
-	reqs = list(
-		/obj/item/stack/sheet = 5,
-		/datum/reagent/consumable/space_cola = 10,
-	)
-	category = CAT_WEAPONRY
-	subcategory = CAT_AMMO
-
 /datum/crafting_recipe/chainsaw
 	name = "Chainsaw"
 	result = /obj/item/chainsaw
@@ -1027,7 +1001,7 @@
 	if(!aicard.AI)
 		return TRUE
 
-	to_chat(user, span_boldwarning("You can't craft an intelliTater with an AI in the card!"))
+	to_chat(user, "<span class='boldwarning'>You can't craft an intelliTater with an AI in the card!</span>")
 	return FALSE
 
 /datum/crafting_recipe/aispook
@@ -1125,17 +1099,6 @@
 	)
 	result = /obj/item/pickaxe/improvised
 	category = CAT_MISC
-
-// Skryat addition start
-/datum/crafting_recipe/doubletank
-	name = "Double emergency oxygen tank"
-	reqs = list(
-		/obj/item/tank/internals/emergency_oxygen/engi = 2,
-		/obj/item/stack/sticky_tape = 1,
-	)
-	result = /obj/item/tank/internals/emergency_oxygen/double/empty
-	category = CAT_MISC
-// Skyrat addition end
 
 /datum/crafting_recipe/underwater_basket
 	name = "Underwater Basket (Bamboo)"
@@ -1325,17 +1288,6 @@
 			/datum/reagent/consumable/ice = 10
 			)
 	category = CAT_CHEMISTRY
-
-/**
- * Recipe used for upgrading fake N-spect scanners to bananium HONK-spect scanners
- */
-/datum/crafting_recipe/clown_scanner_upgrade
-	name = "Bananium HONK-spect scanner"
-	result = /obj/item/inspector/clown/bananium
-	reqs = list(/obj/item/inspector/clown = 1, /obj/item/stack/sticky_tape = 3, /obj/item/stack/sheet/mineral/bananium = 5) //the chainsaw of prank tools
-	tool_paths = list(/obj/item/bikehorn)
-	time = 40 SECONDS
-	category = CAT_MISC
 
 #undef CRAFTING_MACHINERY_CONSUME
 #undef CRAFTING_MACHINERY_USE

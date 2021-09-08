@@ -71,12 +71,8 @@
 
 /datum/fantasy_affix/vampiric/apply(datum/component/fantasy/comp, newName)
 	var/obj/item/master = comp.parent
-	master.AddElement(/datum/element/lifesteal, comp.quality)
+	comp.appliedComponents += master.AddComponent(/datum/component/lifesteal, comp.quality)
 	return "vampiric [newName]"
-
-/datum/fantasy_affix/vampiric/remove(datum/component/fantasy/comp)
-	var/obj/item/master = comp.parent
-	master.RemoveElement(/datum/element/lifesteal, comp.quality)
 
 /datum/fantasy_affix/beautiful
 	name = "beautiful"
@@ -107,6 +103,7 @@
 	master.RemoveElement(/datum/element/beauty, min(comp.quality, -1) * 250)
 
 /datum/fantasy_affix/venomous
+	name = "<poisonname>-laced (picked from small pool of toxins)"
 	placement = AFFIX_PREFIX
 	alignment = AFFIX_GOOD
 

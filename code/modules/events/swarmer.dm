@@ -2,7 +2,7 @@
 	name = "Spawn Swarmer Beacon"
 	typepath = /datum/round_event/spawn_swarmer
 	weight = 10
-	max_occurrences = 0 //Only once okay fam //SKYRAT EDIT CHANGE
+	max_occurrences = 1 //Only once okay fam
 	min_players = 20
 	dynamic_should_hijack = TRUE
 

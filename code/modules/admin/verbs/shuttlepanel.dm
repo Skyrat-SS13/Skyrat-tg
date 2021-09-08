@@ -11,22 +11,13 @@
 
 /obj/docking_port/mobile/proc/admin_fly_shuttle(mob/user)
 	var/list/options = list()
-	options += "-----COMPATABLE DOCKS:" //SKYRAT EDIT ADDITION
+
 	for(var/port in SSshuttle.stationary)
 		if (istype(port, /obj/docking_port/stationary/transit))
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
 			options[S.name || S.id] = S
-	//SKYRAT EDIT ADDITION START
-	options += "-----INCOMPATABLE DOCKS:" //I WILL CRASH THIS SHIP WITH NO SURVIVORS!
-	for(var/port in SSshuttle.stationary)
-		if (istype(port, /obj/docking_port/stationary/transit))
-			continue  // please don't do this
-		var/obj/docking_port/stationary/S = port
-		if(!(canDock(S) == SHUTTLE_CAN_DOCK))
-			options[S.name || S.id] = S
-	//SKYRAT EDIT END
 
 	options += "--------"
 	options += "Infinite Transit"
@@ -55,8 +46,7 @@
 
 		else
 			if(options[selection])
-				request(options[selection], TRUE) //SKYRAT EDIT CHANGE
-				message_admins("[user.ckey] has admin FORCED [name || id] to dock at [options[selection]], this is ignoring all safety measures.") //SKYRAT EDIT ADDITION
+				request(options[selection])
 
 /obj/docking_port/mobile/emergency/admin_fly_shuttle(mob/user)
 	return  // use the existing verbs for this

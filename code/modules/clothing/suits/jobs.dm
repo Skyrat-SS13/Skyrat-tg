@@ -23,7 +23,7 @@
 
 //Captain
 /obj/item/clothing/suit/captunic
-	name = "captain's formal tunic"
+	name = "captain's parade tunic"
 	desc = "Worn by a Captain to show their class."
 	icon_state = "captunic"
 	inhand_icon_state = "bio_suit"
@@ -127,22 +127,6 @@
 	blood_overlay_type = "armor" //it's the less thing that I can put here
 	togglename = "straps"
 	species_exception = list(/datum/species/golem)
-	greyscale_config = /datum/greyscale_config/suspenders
-	greyscale_config_worn = /datum/greyscale_config/suspenders/worn
-	greyscale_colors = "#ff0000"
-	flags_1 = IS_PLAYER_COLORABLE_1
-
-/obj/item/clothing/suit/toggle/suspenders/blue
-	name = "blue suspenders"
-	desc = "The symbol of hard labor and dirty jobs."
-	icon = 'icons/obj/clothing/belts.dmi'
-	greyscale_colors = "#0000ff"
-
-/obj/item/clothing/suit/toggle/suspenders/gray
-	name = "gray suspenders"
-	desc = "The symbol of hard labor and dirty jobs."
-	icon = 'icons/obj/clothing/belts.dmi'
-	greyscale_colors = "#888888"
 
 //Security
 /obj/item/clothing/suit/security/officer
@@ -151,9 +135,6 @@
 	icon_state = "officerbluejacket"
 	inhand_icon_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
-	//SKYRAT EDIT. Weh.
-	mutant_variants = NONE
-	//SKYRAT EDIT END.
 
 /obj/item/clothing/suit/security/warden
 	name = "warden's jacket"
@@ -174,23 +155,7 @@
 	name = "surgical apron"
 	desc = "A sterile blue surgical apron."
 	icon_state = "surgical"
-	allowed = list(
-		/obj/item/hemostat,
-		/obj/item/cautery,
-		/obj/item/scalpel,
-		/obj/item/surgical_drapes,
-		/obj/item/retractor,
-		/obj/item/bonesetter,
-		/obj/item/flashlight/pen,
-		/obj/item/healthanalyzer,
-		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/reagent_containers/hypospray,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/storage/pill_bottle,
-		/obj/item/tank/internals/emergency_oxygen,
-		)
+	allowed = list(/obj/item/scalpel, /obj/item/surgical_drapes, /obj/item/cautery, /obj/item/hemostat, /obj/item/retractor)
 
 //Curator
 /obj/item/clothing/suit/curator

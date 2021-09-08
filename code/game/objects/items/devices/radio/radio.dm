@@ -9,7 +9,7 @@
 	desc = "A basic handheld radio that communicates with local telecommunication networks."
 	dog_fashion = /datum/dog_fashion/back
 
-	flags_1 = CONDUCT_1
+	flags_1 = CONDUCT_1 | HEAR_1
 	slot_flags = ITEM_SLOT_BELT
 	throw_speed = 3
 	throw_range = 7
@@ -45,7 +45,7 @@
 	var/list/secure_radio_connections
 
 /obj/item/radio/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] starts bouncing [src] off [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] starts bouncing [src] off [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return BRUTELOSS
 
 /obj/item/radio/proc/set_frequency(new_frequency)
@@ -101,8 +101,6 @@
 
 	for(var/ch_name in channels)
 		secure_radio_connections[ch_name] = add_radio(src, GLOB.radiochannels[ch_name])
-
-	become_hearing_sensitive(ROUNDSTART_TRAIT)
 
 /obj/item/radio/ComponentInitialize()
 	. = ..()
@@ -191,8 +189,7 @@
 					recalculateChannels()
 				. = TRUE
 
-///obj/item/radio/talk_into(atom/movable/M, message, channel, list/spans, datum/language/language, list/message_mods) - ORIGINAL
-/obj/item/radio/talk_into(atom/movable/M, message, channel, list/spans, datum/language/language, list/message_mods, direct = TRUE) //SKYRAT EDIT CHANGE - GUNPOINT
+/obj/item/radio/talk_into(atom/movable/M, message, channel, list/spans, datum/language/language, list/message_mods)
 	if(HAS_TRAIT(M, TRAIT_SIGN_LANG)) //Forces Sign Language users to wear the translation gloves to speak over radios
 		var/mob/living/carbon/mute = M
 		if(istype(mute))
@@ -212,7 +209,6 @@
 		spans = list(M.speech_span)
 	if(!language)
 		language = M.get_selected_language()
-	SEND_SIGNAL(M, COMSIG_MOVABLE_RADIO_TALK_INTO, src, message, channel, spans, language, direct) //SKYRAT EDIT ADDITION - GUNPOINT
 	INVOKE_ASYNC(src, .proc/talk_into_impl, M, message, channel, spans.Copy(), language, message_mods)
 	return ITALICS | REDUCE_RANGE
 
@@ -265,8 +261,7 @@
 	var/datum/signal/subspace/vocal/signal = new(src, freq, speaker, language, message, spans, message_mods)
 
 	// Independent radios, on the CentCom frequency, reach all independent radios
-	//if (independent && (freq == FREQ_CENTCOM || freq == FREQ_CTF_RED || freq == FREQ_CTF_BLUE || freq == FREQ_CTF_GREEN || freq == FREQ_CTF_YELLOW)) ORIGINAL
-	if (independent && (freq == FREQ_CENTCOM || freq == FREQ_CTF_RED || freq == FREQ_CTF_BLUE || freq == FREQ_CTF_GREEN || freq == FREQ_CTF_YELLOW || freq == FREQ_FACTION || freq == FREQ_CYBERSUN || freq == FREQ_INTERDYNE || freq == FREQ_GUILD)) //SKYRAT EDIT CHANGE - FACTION, MAPPING
+	if (independent && (freq == FREQ_CENTCOM || freq == FREQ_CTF_RED || freq == FREQ_CTF_BLUE || freq == FREQ_CTF_GREEN || freq == FREQ_CTF_YELLOW))
 		signal.data["compression"] = 0
 		signal.transmission_method = TRANSMISSION_SUPERSPACE
 		signal.levels = list(0)  // reaches all Z-levels
@@ -309,7 +304,7 @@
 			if (idx && (idx % 2) == (message_mods[RADIO_EXTENSION] == MODE_L_HAND))
 				return
 
-	talk_into(speaker, raw_message, , spans, language=message_language, direct=FALSE) //SKYRAT EDIT CHANGE - GUNPOINT
+	talk_into(speaker, raw_message, , spans, language=message_language)
 
 // Checks if this radio can receive on the given frequency.
 /obj/item/radio/proc/can_receive(freq, level)
@@ -339,20 +334,20 @@
 /obj/item/radio/examine(mob/user)
 	. = ..()
 	if (frequency && in_range(src, user))
-		. += span_notice("It is set to broadcast over the [frequency/10] frequency.")
+		. += "<span class='notice'>It is set to broadcast over the [frequency/10] frequency.</span>"
 	if (unscrewed)
-		. += span_notice("It can be attached and modified.")
+		. += "<span class='notice'>It can be attached and modified.</span>"
 	else
-		. += span_notice("It cannot be modified or attached.")
+		. += "<span class='notice'>It cannot be modified or attached.</span>"
 
 /obj/item/radio/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
 		unscrewed = !unscrewed
 		if(unscrewed)
-			to_chat(user, span_notice("The radio can now be attached and modified!"))
+			to_chat(user, "<span class='notice'>The radio can now be attached and modified!</span>")
 		else
-			to_chat(user, span_notice("The radio can no longer be modified or attached!"))
+			to_chat(user, "<span class='notice'>The radio can no longer be modified or attached!</span>")
 	else
 		return ..()
 
@@ -363,7 +358,7 @@
 	emped++ //There's been an EMP; better count it
 	var/curremp = emped //Remember which EMP this was
 	if (listening && ismob(loc)) // if the radio is turned on and on someone's person they notice
-		to_chat(loc, span_warning("\The [src] overloads."))
+		to_chat(loc, "<span class='warning'>\The [src] overloads.</span>")
 	broadcasting = FALSE
 	listening = FALSE
 	for (var/ch_name in channels)
@@ -388,7 +383,6 @@
 	subspace_transmission = TRUE
 	subspace_switchable = TRUE
 	dog_fashion = null
-	canhear_range = 0 // Skyrat Edit - Stops borgs being a loudspeaker and contains it to the tile they're on
 
 /obj/item/radio/borg/resetChannels()
 	. = ..()
@@ -422,14 +416,14 @@
 					keyslot = null
 
 			recalculateChannels()
-			to_chat(user, span_notice("You pop out the encryption key in the radio."))
+			to_chat(user, "<span class='notice'>You pop out the encryption key in the radio.</span>")
 
 		else
-			to_chat(user, span_warning("This radio doesn't have any encryption keys!"))
+			to_chat(user, "<span class='warning'>This radio doesn't have any encryption keys!</span>")
 
 	else if(istype(W, /obj/item/encryptionkey/))
 		if(keyslot)
-			to_chat(user, span_warning("The radio can't hold another key!"))
+			to_chat(user, "<span class='warning'>The radio can't hold another key!</span>")
 			return
 
 		if(!keyslot)

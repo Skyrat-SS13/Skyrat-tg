@@ -27,7 +27,6 @@
 
 /obj/item/circuit_component/bot_circuit
 	display_name = "Drone"
-	desc = "Used to send movement output signals to the drone shell."
 
 	/// The inputs to allow for the drone to move
 	var/datum/port/input/north
@@ -35,22 +34,17 @@
 	var/datum/port/input/south
 	var/datum/port/input/west
 
-	// Done like this so that travelling diagonally is more simple
-	COOLDOWN_DECLARE(north_delay)
-	COOLDOWN_DECLARE(east_delay)
-	COOLDOWN_DECLARE(south_delay)
-	COOLDOWN_DECLARE(west_delay)
-
-	/// Delay between each movement
-	var/move_delay = 0.2 SECONDS
-
-/obj/item/circuit_component/bot_circuit/populate_ports()
+/obj/item/circuit_component/bot_circuit/Initialize()
+	. = ..()
 	north = add_input_port("Move North", PORT_TYPE_SIGNAL)
 	east = add_input_port("Move East", PORT_TYPE_SIGNAL)
 	south = add_input_port("Move South", PORT_TYPE_SIGNAL)
 	west = add_input_port("Move West", PORT_TYPE_SIGNAL)
 
 /obj/item/circuit_component/bot_circuit/input_received(datum/port/input/port)
+	. = ..()
+	if(.)
+		return
 
 	var/mob/living/shell = parent.shell
 	if(!istype(shell) || shell.stat)
@@ -58,18 +52,14 @@
 
 	var/direction
 
-	if(COMPONENT_TRIGGERED_BY(north, port) && COOLDOWN_FINISHED(src, north_delay))
+	if(COMPONENT_TRIGGERED_BY(north, port))
 		direction = NORTH
-		COOLDOWN_START(src, north_delay, move_delay)
-	else if(COMPONENT_TRIGGERED_BY(east, port) && COOLDOWN_FINISHED(src, east_delay))
+	else if(COMPONENT_TRIGGERED_BY(east, port))
 		direction = EAST
-		COOLDOWN_START(src, east_delay, move_delay)
-	else if(COMPONENT_TRIGGERED_BY(south, port) && COOLDOWN_FINISHED(src, south_delay))
+	else if(COMPONENT_TRIGGERED_BY(south, port))
 		direction = SOUTH
-		COOLDOWN_START(src, south_delay, move_delay)
-	else if(COMPONENT_TRIGGERED_BY(west, port) && COOLDOWN_FINISHED(src, west_delay))
+	else if(COMPONENT_TRIGGERED_BY(west, port))
 		direction = WEST
-		COOLDOWN_START(src, west_delay, move_delay)
 
 	if(!direction)
 		return

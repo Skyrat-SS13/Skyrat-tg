@@ -1,11 +1,11 @@
-/obj/item/gun/energy/e_gun //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/energy/e_gun
 	name = "energy gun"
 	desc = "A basic hybrid energy gun with two settings: disable and kill."
 	icon_state = "energy"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
-	modifystate = TRUE
+	modifystate = 1
 	can_flashlight = TRUE
 	ammo_x_offset = 3
 	flight_x_offset = 15
@@ -25,7 +25,6 @@
 	gunlight_state = "mini-light"
 	flight_x_offset = 19
 	flight_y_offset = 13
-	single_shot_type_overlay = FALSE
 
 /obj/item/gun/energy/e_gun/mini/Initialize()
 	set_gun_light(new /obj/item/flashlight/seclite(src))
@@ -42,7 +41,6 @@
 	name = "prototype energy gun"
 	desc = "NT-P:01 Prototype Energy Gun. Early stage development of a unique laser rifle that has multifaceted energy lens allowing the gun to alter the form of projectile it fires on command."
 	icon_state = "protolaser"
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	ammo_x_offset = 2
 	ammo_type = list(/obj/item/ammo_casing/energy/laser, /obj/item/ammo_casing/energy/electrode/old)
 
@@ -51,14 +49,12 @@
 	desc = "A modified version of the basic phaser gun, this one fires less concentrated energy bolts designed for target practice."
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser/practice)
 	icon_state = "decloner"
-	//You have no icons for energy types, you're a decloner
-	modifystate = FALSE
 
 /obj/item/gun/energy/e_gun/hos
 	name = "\improper X-01 MultiPhase Energy Gun"
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
+	cell_type = /obj/item/stock_parts/cell/hos_gun
 	icon_state = "hoslaser"
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	w_class = WEIGHT_CLASS_NORMAL
 	force = 10
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/hos, /obj/item/ammo_casing/energy/laser/hos, /obj/item/ammo_casing/energy/ion/hos)
@@ -72,9 +68,7 @@
 	inhand_icon_state = "dragnet"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	ammo_type = list(/obj/item/ammo_casing/energy/net, /obj/item/ammo_casing/energy/trap)
-	modifystate = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
 	can_flashlight = FALSE
 	ammo_x_offset = 1
@@ -90,7 +84,6 @@
 	icon_state = "turretlaser"
 	inhand_icon_state = "turretlaser"
 	slot_flags = null
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	w_class = WEIGHT_CLASS_HUGE
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/laser)
 	weapon_weight = WEAPON_HEAVY
@@ -98,12 +91,11 @@
 	trigger_guard = TRIGGER_GUARD_NONE
 	ammo_x_offset = 2
 
-/obj/item/gun/energy/e_gun/nuclear //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+/obj/item/gun/energy/e_gun/nuclear
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
 	icon_state = "nucgun"
 	inhand_icon_state = "nucgun"
-	cell_type = /obj/item/stock_parts/cell //SKYRAT EDIT ADDITION - GUNSGALORE
 	charge_delay = 10
 	can_charge = FALSE
 	ammo_x_offset = 1
@@ -130,12 +122,12 @@
 			if(0 to 200)
 				fail_tick += (2*(fail_chance))
 				M.rad_act(40)
-				to_chat(M, span_userdanger("Your [name] feels warmer."))
+				to_chat(M, "<span class='userdanger'>Your [name] feels warmer.</span>")
 			if(201 to INFINITY)
 				SSobj.processing.Remove(src)
 				M.rad_act(80)
 				reactor_overloaded = TRUE
-				to_chat(M, span_userdanger("Your [name]'s reactor overloads!"))
+				to_chat(M, "<span class='userdanger'>Your [name]'s reactor overloads!</span>")
 
 /obj/item/gun/energy/e_gun/nuclear/emp_act(severity)
 	. = ..()

@@ -14,17 +14,13 @@
 	action_background_icon_state = "bg_demon"
 	var/phased = FALSE
 
-/obj/effect/proc_holder/spell/bloodcrawl/on_lose(mob/living/user)
-	if(phased)
-		user.phasein(get_turf(user), TRUE)
-
 /obj/effect/proc_holder/spell/bloodcrawl/cast_check(skipcharge = 0,mob/user = usr)
 	. = ..()
 	if(!.)
 		return FALSE
 	var/area/noteleport_check = get_area(user)
 	if(noteleport_check && noteleport_check.area_flags & NOTELEPORT)
-		to_chat(user, span_danger("Some dull, universal force is between you and your other existence, preventing you from blood crawling."))
+		to_chat(user, "<span class='danger'>Some dull, universal force is between you and your other existence, preventing you from blood crawling.</span>")
 		return FALSE
 
 /obj/effect/proc_holder/spell/bloodcrawl/choose_targets(mob/user = usr)
@@ -33,7 +29,7 @@
 			perform(target)
 			return
 	revert_cast()
-	to_chat(user, span_warning("There must be a nearby source of blood!"))
+	to_chat(user, "<span class='warning'>There must be a nearby source of blood!</span>")
 
 /obj/effect/proc_holder/spell/bloodcrawl/perform(obj/effect/decal/cleanable/target, recharge = 1, mob/living/user = usr)
 	if(istype(user))
@@ -51,4 +47,4 @@
 		start_recharge()
 		return
 	revert_cast()
-	to_chat(user, span_warning("You are unable to blood crawl!"))
+	to_chat(user, "<span class='warning'>You are unable to blood crawl!</span>")

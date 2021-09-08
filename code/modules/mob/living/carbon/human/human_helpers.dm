@@ -52,7 +52,7 @@
 	if( head && (head.flags_inv&HIDEFACE) )
 		return if_no_face //Likewise for hats
 	var/obj/item/bodypart/O = get_bodypart(BODY_ZONE_HEAD)
-	if( !O || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || (O.brutestate+O.burnstate)>2 || cloneloss>50 || !real_name || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)) //disfigured. use id-name if possible
+	if( !O || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || (O.brutestate+O.burnstate)>2 || cloneloss>50 || !real_name ) //disfigured. use id-name if possible
 		return if_no_face
 	return real_name
 
@@ -101,10 +101,10 @@
 	. = ..()
 	if(G.trigger_guard == TRIGGER_GUARD_NORMAL)
 		if(HAS_TRAIT(src, TRAIT_CHUNKYFINGERS))
-			balloon_alert(src, "fingers are too big!")
+			to_chat(src, "<span class='warning'>Your meaty finger is much too large for the trigger guard!</span>")
 			return FALSE
 	if(HAS_TRAIT(src, TRAIT_NOGUNS))
-		to_chat(src, span_warning("You can't bring yourself to use a ranged weapon!"))
+		to_chat(src, "<span class='warning'>You can't bring yourself to use a ranged weapon!</span>")
 		return FALSE
 
 /mob/living/carbon/human/get_policy_keywords()
@@ -218,7 +218,7 @@
 
 /mob/living/carbon/human/get_biological_state()
 	return dna.species.get_biological_state()
-/* SKYRAT EDIT MOVAL - MOVED TO MASTER FILES
+
 ///Returns death message for mob examine text
 /mob/living/carbon/human/proc/generate_death_examine_text()
 	var/mob/dead/observer/ghost = get_ghost(TRUE, TRUE)
@@ -227,9 +227,9 @@
 	var/t_is = p_are()
 	//This checks to see if the body is revivable
 	if(key || !getorgan(/obj/item/organ/brain) || ghost?.can_reenter_corpse)
-		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life...")
+		return "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life...</span>"
 	else
-		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...") */ // SKYRAT EDIT MOVAL END
+		return "<span class='deadsay'>[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...</span>"
 
 ///copies over clothing preferences like underwear to another human
 /mob/living/carbon/human/proc/copy_clothing_prefs(mob/living/carbon/human/destination)
@@ -238,53 +238,3 @@
 	destination.undershirt = undershirt
 	destination.socks = socks
 	destination.jumpsuit_style = jumpsuit_style
-
-
-/// Fully randomizes everything according to the given flags.
-/mob/living/carbon/human/proc/randomize_human_appearance(randomise_flags = ALL)
-	if(randomise_flags & RANDOMIZE_GENDER)
-		gender = pick(MALE, FEMALE, PLURAL)
-		switch(gender)
-			if(MALE, FEMALE)
-				body_type = gender
-			else
-				body_type = pick(MALE, FEMALE)
-	if(randomise_flags & RANDOMIZE_SPECIES)
-		set_species(GLOB.species_list[pick(GLOB.roundstart_races)], FALSE)
-	if(randomise_flags & RANDOMIZE_NAME)
-		var/new_name = dna.species.random_name(gender, TRUE)
-		name = new_name
-		real_name = new_name
-	if(randomise_flags & RANDOMIZE_AGE)
-		age = rand(AGE_MIN, AGE_MAX)
-	if(randomise_flags & RANDOMIZE_UNDERWEAR)
-		underwear = random_underwear(gender)
-	if(randomise_flags & RANDOMIZE_UNDERWEAR_COLOR)
-		underwear_color = random_short_color()
-	if(randomise_flags & RANDOMIZE_UNDERSHIRT)
-		undershirt = random_undershirt(gender)
-	if(randomise_flags & RANDOMIZE_SOCKS)
-		socks = random_socks()
-	if(randomise_flags & RANDOMIZE_BACKPACK)
-		backpack = random_backpack()
-	if(randomise_flags & RANDOMIZE_JUMPSUIT_STYLE)
-		jumpsuit_style = pick(GLOB.jumpsuitlist)
-	if(randomise_flags & RANDOMIZE_HAIRSTYLE)
-		hairstyle = random_hairstyle(gender)
-	if(randomise_flags & RANDOMIZE_FACIAL_HAIRSTYLE)
-		facial_hairstyle = random_facial_hairstyle(gender)
-	if(randomise_flags & RANDOMIZE_HAIR_COLOR)
-		hair_color = random_short_color()
-	if(randomise_flags & RANDOMIZE_FACIAL_HAIR_COLOR)
-		facial_hair_color = random_short_color()
-	if(randomise_flags & RANDOMIZE_SKIN_TONE)
-		skin_tone = random_skin_tone()
-	if(randomise_flags & RANDOMIZE_EYE_COLOR)
-		eye_color = random_eye_color()
-		var/obj/item/organ/eyes/organ_eyes = getorgan(/obj/item/organ/eyes)
-		if(organ_eyes)
-			if(!initial(organ_eyes.eye_color))
-				organ_eyes.eye_color = eye_color
-			organ_eyes.old_eye_color = eye_color
-	if(randomise_flags & RANDOMIZE_FEATURES)
-		dna.features = random_features()

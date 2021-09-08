@@ -1,4 +1,4 @@
-/obj/structure/mopbucket//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/structure/mopbucket
 	name = "mop bucket"
 	desc = "Fill it with water, but don't forget a mop!"
 	icon = 'icons/obj/janitor.dmi'
@@ -14,10 +14,10 @@
 /obj/structure/mopbucket/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/mop))
 		if(reagents.total_volume < 1)
-			to_chat(user, span_warning("[src] is out of water!"))
+			to_chat(user, "<span class='warning'>[src] is out of water!</span>")
 		else
 			reagents.trans_to(I, 5, transfered_by = user)
-			to_chat(user, span_notice("You wet [I] in [src]."))
+			to_chat(user, "<span class='notice'>You wet [I] in [src].</span>")
 			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 			update_appearance()
 	else

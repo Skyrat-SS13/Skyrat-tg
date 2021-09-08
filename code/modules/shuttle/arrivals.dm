@@ -22,8 +22,6 @@
 	var/perma_docked = FALSE //highlander with RESPAWN??? OH GOD!!!
 	var/obj/docking_port/stationary/target_dock  // for badminry
 
-	shuttle_sounds = FALSE //SKYRAT EDIT ADDITION
-
 /obj/docking_port/mobile/arrivals/Initialize(mapload)
 	. = ..()
 	preferred_direction = dir
@@ -192,7 +190,7 @@
 
 	Launch(TRUE)
 
-	to_chat(user, span_notice("Calling your shuttle. One moment..."))
+	to_chat(user, "<span class='notice'>Calling your shuttle. One moment...</span>")
 	while(mode != SHUTTLE_CALL && !damaged)
 		stoplag()
 

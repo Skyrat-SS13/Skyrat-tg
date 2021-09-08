@@ -199,14 +199,14 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/loop = 1
 	var/safety = 0
 
-	var/random = CONFIG_GET(flag/force_random_names) || (C ? is_banned_from(C.ckey, "Appearance") : FALSE)
+	var/banned = C ? is_banned_from(C.ckey, "Appearance") : null
 
 	while(loop && safety < 5)
-		if(!safety && !random && C?.prefs.custom_names[role])
+		if(C?.prefs.custom_names[role] && !safety && !banned)
 			newname = C.prefs.custom_names[role]
 		else
 			switch(role)
-				if(SPECIES_HUMAN)
+				if("human")
 					newname = random_unique_name(gender)
 				if("clown")
 					newname = pick(GLOB.clown_names)
@@ -315,10 +315,10 @@ Turf and target are separate in case you want to teleport some distance from a t
 // Format an energy value measured in Power Cell units.
 /proc/DisplayEnergy(units)
 	// APCs process every (SSmachines.wait * 0.1) seconds, and turn 1 W of
-	// excess power into watts when charging cells.
+	// excess power into GLOB.CELLRATE energy units when charging cells.
 	// With the current configuration of wait=20 and CELLRATE=0.002, this
 	// means that one unit is 1 kJ.
-	return DisplayJoules(units * SSmachines.wait * 0.1 WATTS)
+	return DisplayJoules(units * SSmachines.wait * 0.1 / GLOB.CELLRATE)
 
 /proc/get_mob_by_ckey(key)
 	if(!key)
@@ -511,13 +511,15 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/areas = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(cache[area_to_check.type])
-				areas += area_to_check
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(cache[A.type])
+				areas += V
 	else
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(area_to_check.type == areatype)
-				areas += area_to_check
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(A.type == areatype)
+				areas += V
 	return areas
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
@@ -534,19 +536,21 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/list/turfs = list()
 	if(subtypes)
 		var/list/cache = typecacheof(areatype)
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(!cache[area_to_check.type])
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(!cache[A.type])
 				continue
-			for(var/turf/turf_in_area in area_to_check)
-				if(target_z == 0 || target_z == turf_in_area.z)
-					turfs += turf_in_area
+			for(var/turf/T in A)
+				if(target_z == 0 || target_z == T.z)
+					turfs += T
 	else
-		for(var/area/area_to_check as anything in GLOB.sortedAreas)
-			if(area_to_check.type != areatype)
+		for(var/V in GLOB.sortedAreas)
+			var/area/A = V
+			if(A.type != areatype)
 				continue
-			for(var/turf/turf_in_area in area_to_check)
-				if(target_z == 0 || target_z == turf_in_area.z)
-					turfs += turf_in_area
+			for(var/turf/T in A)
+				if(target_z == 0 || target_z == T.z)
+					turfs += T
 	return turfs
 
 /proc/get_cardinal_dir(atom/A, atom/B)
@@ -1504,10 +1508,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		path = new path(pod)
 
 	//remove non var edits from specifications
-	specifications -= "target"
-	specifications -= "style"
-	specifications -= "path"
-	specifications -= "spawn" //list, we remove the key
+	specifications -= landing_location
+	specifications -= style
+	specifications -= spawn_type
+	specifications -= "paths_to_spawn" //list, we remove the key
 
 	//rest of specificiations are edits on the pod
 	for(var/variable_name in specifications)

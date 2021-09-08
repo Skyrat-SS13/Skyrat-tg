@@ -8,10 +8,8 @@ SUBSYSTEM_DEF(events)
 	var/list/currentrun = list()
 
 	var/scheduled = 0 //The next world.time that a naturally occuring random event can be selected.
-	//var/frequency_lower = 1800 //3 minutes lower bound. //ORIGINAL
-	var/frequency_lower = 10 MINUTES //SKYRAT EDIT CHANGE - EVENTS LESS OFTEN
-	//var/frequency_upper = 6000 //10 minutes upper bound. Basically an event will happen every 3 to 10 minutes. //ORIGINAL
-	var/frequency_upper = 15 MINUTES //SKYRAT EDIT CHANGE - EVENTS LESS OFTEN
+	var/frequency_lower = 1800 //3 minutes lower bound.
+	var/frequency_upper = 6000 //10 minutes upper bound. Basically an event will happen every 3 to 10 minutes.
 
 	var/list/holidays //List of all holidays occuring today or null if no holidays
 	var/wizardmode = FALSE
@@ -61,12 +59,13 @@ SUBSYSTEM_DEF(events)
 	if(!CONFIG_GET(flag/allow_random_events))
 		return
 
+	var/gamemode = SSticker.mode.config_tag
 	var/players_amt = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	// Only alive, non-AFK human players count towards this.
 
 	var/sum_of_weights = 0
 	for(var/datum/round_event_control/E in control)
-		if(!E.canSpawnEvent(players_amt))
+		if(!E.canSpawnEvent(players_amt, gamemode))
 			continue
 		if(E.weight < 0) //for round-start events etc.
 			var/res = TriggerEvent(E)
@@ -79,7 +78,7 @@ SUBSYSTEM_DEF(events)
 	sum_of_weights = rand(0,sum_of_weights) //reusing this variable. It now represents the 'weight' we want to select
 
 	for(var/datum/round_event_control/E in control)
-		if(!E.canSpawnEvent(players_amt))
+		if(!E.canSpawnEvent(players_amt, gamemode))
 			continue
 		sum_of_weights -= E.weight
 

@@ -63,7 +63,6 @@ h1.alert, h2.alert		{color: #000000;}
 
 .emote					{}
 .infoplain				{}
-.mentor					{}
 
 .userdanger				{color: #ff0000;	font-weight: bold;	font-size: 3;}
 .danger					{color: #ff0000;	font-weight: bold;}
@@ -146,26 +145,6 @@ h1.alert, h2.alert		{color: #000000;}
 		75%		{color: #410194;}
 		100%	{color: #3bb5d3;}
 }
-
-// SKYRAT ADDITION BEGIN
-.velvet					{color: #660015; 	font-weight: bold; animation: velvet 5000ms infinite;}
-	@keyframes velvet {
-		0% 		{color: #400020; }
-		40% 	{color: #FF0000; }
-		50% 	{color: #FF8888; }
-		60% 	{color: #FF0000; }
-		100% 	{color: #400020; }
-}
-
-.hexnut 				{color: #0099ff;	font-weight: bold;	animation: hexnut 5000ms infinite;	animation-direction: alternate;}
-	@keyframes hexnut {
-		0% 	{color: #0099ff;}
-		35% 	{color: #a64dff;}
-		50% 	{color: #00997a;}
-		60% 	{color: #ffb31a;}
-		100% 	{color: #ff33cc;}
-}
-// SKYRAT ADDITION END
 
 .phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}
 	@keyframes phobia {

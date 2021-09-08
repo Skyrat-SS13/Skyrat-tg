@@ -38,7 +38,7 @@ Difficulty: Medium
 	projectiletype = /obj/projectile/kinetic/miner
 	projectilesound = 'sound/weapons/kenetic_accel.ogg'
 	ranged = TRUE
-	ranged_cooldown_time = 1.6 SECONDS
+	ranged_cooldown_time = 16
 	pixel_x = -16
 	base_pixel_x = -16
 	crusher_loot = list(/obj/item/melee/transforming/cleaving_saw, /obj/item/gun/energy/kinetic_accelerator, /obj/item/crusher_trophy/miner_eye)
@@ -53,8 +53,7 @@ Difficulty: Medium
 	var/obj/item/melee/transforming/cleaving_saw/miner/miner_saw
 	var/time_until_next_transform = 0
 	var/dashing = FALSE
-	var/dash_cooldown = 0
-	var/dash_cooldown_time = 1.5 SECONDS
+	var/dash_cooldown = 15
 	var/guidance = FALSE
 	var/transform_stop_attack = FALSE // stops the blood drunk miner from attacking after transforming his weapon until the next attack chain
 	deathmessage = "falls to the ground, decaying into glowing particles."
@@ -89,17 +88,6 @@ Difficulty: Medium
 	button_icon_state = "cleaving_saw"
 	chosen_message = "<span class='colossus'>You are now transforming your weapon.</span>"
 	chosen_attack_num = 3
-
-/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/update_cooldowns(list/cooldown_updates, ignore_staggered = FALSE)
-	. = ..()
-	if(cooldown_updates[COOLDOWN_UPDATE_SET_DASH])
-		dash_cooldown = world.time + cooldown_updates[COOLDOWN_UPDATE_SET_DASH]
-	if(cooldown_updates[COOLDOWN_UPDATE_ADD_DASH])
-		dash_cooldown += cooldown_updates[COOLDOWN_UPDATE_ADD_DASH]
-	if(cooldown_updates[COOLDOWN_UPDATE_SET_TRANSFORM])
-		time_until_next_transform = world.time + cooldown_updates[COOLDOWN_UPDATE_SET_TRANSFORM]
-	if(cooldown_updates[COOLDOWN_UPDATE_ADD_TRANSFORM])
-		time_until_next_transform += cooldown_updates[COOLDOWN_UPDATE_ADD_TRANSFORM]
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/OpenFire()
 	if(client)
@@ -168,8 +156,8 @@ Difficulty: Medium
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.stat == DEAD)
-			visible_message(span_danger("[src] butchers [L]!"),
-			span_userdanger("You butcher [L], restoring your health!"))
+			visible_message("<span class='danger'>[src] butchers [L]!</span>",
+			"<span class='userdanger'>You butcher [L], restoring your health!</span>")
 			if(!is_station_level(z) || client) //NPC monsters won't heal while on station
 				if(guidance)
 					adjustHealth(-L.maxHealth)
@@ -200,8 +188,8 @@ Difficulty: Medium
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/proc/shoot_ka()
 	if(ranged_cooldown <= world.time && get_dist(src, target) <= MINER_DASH_RANGE && !Adjacent(target))
-		update_cooldowns(list(COOLDOWN_UPDATE_SET_RANGED = ranged_cooldown_time), ignore_staggered = TRUE)
-		visible_message(span_danger("[src] fires the proto-kinetic accelerator!"))
+		ranged_cooldown = world.time + ranged_cooldown_time
+		visible_message("<span class='danger'>[src] fires the proto-kinetic accelerator!</span>")
 		face_atom(target)
 		new /obj/effect/temp_visual/dir_setting/firing_effect(loc, dir)
 		Shoot(target)
@@ -238,7 +226,7 @@ Difficulty: Medium
 				accessable_turfs -= t
 	if(!LAZYLEN(accessable_turfs))
 		return
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_DASH = dash_cooldown_time))
+	dash_cooldown = world.time + initial(dash_cooldown)
 	target_turf = pick(accessable_turfs)
 	var/turf/step_back_turf = get_step(target_turf, get_cardinal_dir(target_turf, own_turf))
 	var/turf/step_forward_turf = get_step(own_turf, get_cardinal_dir(own_turf, target_turf))
@@ -269,7 +257,7 @@ Difficulty: Medium
 		transform_stop_attack = TRUE
 		icon_state = "miner[miner_saw.active ? "_transformed":""]"
 		icon_living = "miner[miner_saw.active ? "_transformed":""]"
-		update_cooldowns(list(COOLDOWN_UPDATE_SET_TRANSFORM = rand(5 SECONDS, 10 SECONDS)))
+		time_until_next_transform = world.time + rand(50, 100)
 
 /obj/effect/temp_visual/dir_setting/miner_death
 	icon_state = "miner_death"
@@ -305,7 +293,7 @@ Difficulty: Medium
 	desc = "A miner destined to hop across dimensions for all eternity, hunting anomalous creatures."
 	speed = 8
 	move_to_delay = 8
-	ranged_cooldown_time = 0.8 SECONDS
-	dash_cooldown = 0.8 SECONDS
+	ranged_cooldown_time = 8
+	dash_cooldown = 8
 
 #undef MINER_DASH_RANGE

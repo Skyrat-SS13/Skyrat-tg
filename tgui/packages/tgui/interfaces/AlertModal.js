@@ -27,7 +27,7 @@ export class AlertModal extends Component {
 
   componentDidMount() {
     const { data } = useBackend(this.context);
-    const { buttons, autofocus } = data;
+    const { buttons } = data;
     const { current } = this.state;
     const button = this.buttonRefs[current].current;
 
@@ -36,9 +36,7 @@ export class AlertModal extends Component {
       this.buttonRefs.push(createRef());
     }
 
-    if (autofocus) {
-      setTimeout(() => button.focus(), 1);
-    }
+    setTimeout(() => button.focus(), 1);
   }
 
   setCurrent(current, isArrowKey) {
@@ -71,7 +69,8 @@ export class AlertModal extends Component {
       <Window
         title={title}
         width={350}
-        height={150}>
+        height={150}
+        canClose={timeout > 0}>
         {timeout && <Loader value={timeout} />}
         <Window.Content
           onFocus={focusCurrentButton}

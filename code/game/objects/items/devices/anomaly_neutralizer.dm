@@ -11,23 +11,12 @@
 	slot_flags = ITEM_SLOT_BELT
 	item_flags = NOBLUDGEON
 
-/obj/item/anomaly_neutralizer/afterattack(atom/target, mob/living/user, proximity) //SKYRAT EDIT - MOB/LIVING
+/obj/item/anomaly_neutralizer/afterattack(atom/target, mob/user, proximity)
 	..()
 	if(!proximity || !target)
 		return
 	if(istype(target, /obj/effect/anomaly))
 		var/obj/effect/anomaly/A = target
-		to_chat(user, span_notice("The circuitry of [src] fries from the strain of neutralizing [A]!"))
+		to_chat(user, "<span class='notice'>The circuitry of [src] fries from the strain of neutralizing [A]!</span>")
 		A.anomalyNeutralize()
 		qdel(src)
-	//SKYRAT EDIT ADDITON START - CME
-	if(istype(target, /obj/effect/cme))
-		var/obj/effect/cme/C = target
-		to_chat(user, "<span class='danger'>The circuitry of [src] fries from the strain of neutralizing [C] causing you to absorb the shock!</span>")
-		do_sparks(5, FALSE, src)
-		electrocute_mob(user, get_area(src), src, 1, TRUE)
-		user.adjust_fire_stacks(5)
-		user.IgniteMob()
-		C.anomalyNeutralize()
-		qdel(src)
-	//SKYRAT EDIT END

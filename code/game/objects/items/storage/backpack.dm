@@ -67,7 +67,7 @@
 	STR.max_combined_w_class = 35
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide."))
+	user.visible_message("<span class='suicide'>[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide.</span>")
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(20)
@@ -92,7 +92,7 @@
 	STR.max_combined_w_class = 60
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/user)
-	user.visible_message(span_suicide("[user] places [src] over [user.p_their()] head and pulls it tight! It looks like [user.p_they()] [user.p_are()]n't in the Christmas spirit..."))
+	user.visible_message("<span class='suicide'>[user] places [src] over [user.p_their()] head and pulls it tight! It looks like [user.p_they()] [user.p_are()]n't in the Christmas spirit...</span>")
 	return (OXYLOSS)
 
 /obj/item/storage/backpack/santabag/proc/regenerate_presents()
@@ -181,8 +181,8 @@
 /obj/item/storage/backpack/science
 	name = "science backpack"
 	desc = "A specially designed backpack. It's fire resistant and smells vaguely of plasma."
-	icon_state = "scipack"
-	inhand_icon_state = "scipack"
+	icon_state = "toxpack"
+	inhand_icon_state = "toxpack"
 
 /obj/item/storage/backpack/virology
 	name = "virology backpack"
@@ -274,11 +274,11 @@
 	icon_state = "satchel-gen"
 	inhand_icon_state = "satchel-gen"
 
-/obj/item/storage/backpack/satchel/science
+/obj/item/storage/backpack/satchel/tox
 	name = "scientist satchel"
 	desc = "Useful for holding research materials."
-	icon_state = "satchel-sci"
-	inhand_icon_state = "satchel-sci"
+	icon_state = "satchel-tox"
+	inhand_icon_state = "satchel-tox"
 
 /obj/item/storage/backpack/satchel/hyd
 	name = "botanist satchel"
@@ -322,28 +322,18 @@
 	STR.set_holdable(null, list(/obj/item/storage/backpack/satchel/flat)) //muh recursive backpacks)
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
-	//SKYRAT EDIT CHANGE BEGIN
-	/*
-	/datum/supply_pack/costumes_toys/randomised/contraband/C = new
+	var/datum/supply_pack/costumes_toys/randomised/contraband/C = new
 	for(var/i in 1 to 2)
 		var/ctype = pick(C.contains)
 		new ctype(src)
 
 	qdel(C)
-	*/
-	var/contraband_list = list(/obj/item/storage/bag/ammo=4, /obj/item/storage/belt/utility/syndicate=1, /obj/item/storage/toolbox/syndicate=7, /obj/item/card/id/advanced/chameleon=6, /obj/item/storage/secure/briefcase/syndie=3, /obj/item/stack/telecrystal=2, /obj/item/storage/belt/military=12, /obj/item/storage/pill_bottle/aranesp=11, /obj/item/storage/pill_bottle/happy=12, /obj/item/storage/pill_bottle/stimulant=9, /obj/item/storage/pill_bottle/lsd=10, /obj/item/storage/fancy/cigarettes/cigpack_syndicate=8, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims=10, /obj/item/reagent_containers/food/drinks/bottle/absinthe=12, /obj/item/storage/box/fireworks/dangerous=11, /obj/item/food/grown/cannabis/white=9, /obj/item/food/grown/cannabis=13, /obj/item/food/grown/cannabis/rainbow=8, /obj/item/food/grown/mushroom/libertycap=11, /obj/item/clothing/mask/gas/syndicate=10, /obj/item/vending_refill/donksoft=13, /obj/item/ammo_box/foambox/riot=11, /obj/item/soap/syndie=7)
-	for(var/i in 1 to 3)
-		var/contraband_type = pickweight(contraband_list)
-		contraband_list -= contraband_type
-		new contraband_type(src)
-
-	//SKYRAT EDIT CHANGE END
 
 /obj/item/storage/backpack/satchel/flat/with_tools/PopulateContents()
 	new /obj/item/stack/tile/iron/base(src)
 	new /obj/item/crowbar(src)
 
-//	..() SKYRAT EDIT REMOVAL
+	..()
 
 /obj/item/storage/backpack/satchel/flat/empty/PopulateContents()
 	return
@@ -353,8 +343,7 @@
 	desc = "A large duffel bag for holding extra things."
 	icon_state = "duffel"
 	inhand_icon_state = "duffel"
-	//slowdown = 1 //ORIGINAL
-	slowdown = 0.5 //SKYRAT EDIT CHANGE
+	slowdown = 1
 
 /obj/item/storage/backpack/duffelbag/ComponentInitialize()
 	. = ..()
@@ -417,11 +406,11 @@
 	icon_state = "duffel-genetics"
 	inhand_icon_state = "duffel-genetics"
 
-/obj/item/storage/backpack/duffelbag/science
+/obj/item/storage/backpack/duffelbag/toxins
 	name = "scientist's duffel bag"
 	desc = "A large duffel bag for holding extra scientific components."
-	icon_state = "duffel-sci"
-	inhand_icon_state = "duffel-sci"
+	icon_state = "duffel-toxins"
+	inhand_icon_state = "duffel-toxins"
 
 /obj/item/storage/backpack/duffelbag/virology
 	name = "virologist's duffel bag"
@@ -440,7 +429,6 @@
 	new /obj/item/cautery(src)
 	new /obj/item/bonesetter(src)
 	new /obj/item/surgical_drapes(src)
-	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/razor(src)
 	new /obj/item/blood_filter(src)
@@ -464,7 +452,6 @@
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
 	new /obj/item/surgical_drapes(src)
-	new /obj/item/clothing/suit/toggle/labcoat/hospitalgown(src)	//SKYRAT EDIT ADDITION
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/blood_filter(src)
 
@@ -505,14 +492,12 @@
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/duffelbag/syndie
-	name = "tactical duffel bag" //SKYRAT EDIT, was "suspicious-looking duffel bag". It's just a black duffel.
+	name = "suspicious looking duffel bag"
 	desc = "A large duffel bag for holding extra tactical supplies."
 	icon_state = "duffel-syndie"
 	inhand_icon_state = "duffel-syndieammo"
 	slowdown = 0
 	resistance_flags = FIRE_PROOF
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "This duffel bag has the Syndicate logo stiched on the inside. It appears to be made from lighter yet sturdier materials." // Skyrat edit
 
 /obj/item/storage/backpack/duffelbag/syndie/ComponentInitialize()
 	. = ..()
@@ -541,7 +526,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/surgery
 	name = "surgery duffel bag"
-	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools." //SKYRAT EDIT, to match the security surgery bag
+	desc = "A suspicious looking duffel bag for holding surgery tools."
 	icon_state = "duffel-syndiemed"
 	inhand_icon_state = "duffel-syndiemed"
 

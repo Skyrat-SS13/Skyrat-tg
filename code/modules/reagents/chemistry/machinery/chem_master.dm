@@ -122,24 +122,24 @@
 	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		. = TRUE // no afterattack
 		if(panel_open)
-			to_chat(user, span_warning("You can't use the [src.name] while its panel is opened!"))
+			to_chat(user, "<span class='warning'>You can't use the [src.name] while its panel is opened!</span>")
 			return
 		var/obj/item/reagent_containers/B = I
 		. = TRUE // no afterattack
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, span_notice("You add [B] to [src]."))
+		to_chat(user, "<span class='notice'>You add [B] to [src].</span>")
 		updateUsrDialog()
 		update_appearance()
 	else if(!condi && istype(I, /obj/item/storage/pill_bottle))
 		if(bottle)
-			to_chat(user, span_warning("A pill bottle is already loaded into [src]!"))
+			to_chat(user, "<span class='warning'>A pill bottle is already loaded into [src]!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		bottle = I
-		to_chat(user, span_notice("You add [I] into the dispenser slot."))
+		to_chat(user, "<span class='notice'>You add [I] into the dispenser slot.</span>")
 		updateUsrDialog()
 	else
 		return ..()
@@ -312,10 +312,6 @@
 			vol_each_max = min(40, vol_each_max)
 		else if (item_type == "bottle")
 			vol_each_max = min(30, vol_each_max)
-		//SKYRAT EDIT ADDITION START - HYPOVIALS
-		else if (item_type == "vial")
-			vol_each_max = min(60, vol_each_max)
-		//SKYRAT EDIT ADDITION END - HYPOVIALS
 		else if (item_type == "condimentPack")
 			vol_each_max = min(10, vol_each_max)
 		else if (item_type == "condimentBottle")
@@ -396,15 +392,6 @@
 				P.name = trim("[name] bottle")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
-		//SKYRAT EDIT ADDTION HYPOVIALS START
-		if(item_type == "vial")
-			var/obj/item/reagent_containers/glass/bottle/vial/small/P
-			for(var/i = 0; i < amount; i++)
-				P = new/obj/item/reagent_containers/glass/bottle/vial/small(drop_location())
-				P.name = trim("[name] vial")
-				adjust_item_drop_location(P)
-				reagents.trans_to(P, vol_each, transfered_by = usr)
-		//SKYRAT EDIT ADDTION HYPOVIALS END
 			return TRUE
 		if(item_type == "condimentPack")
 			var/obj/item/reagent_containers/food/condiment/pack/P

@@ -9,7 +9,7 @@
 /obj/item/implant/freedom/activate()
 	. = ..()
 	uses--
-	to_chat(imp_in, span_hear("You feel a faint click."))
+	to_chat(imp_in, "<span class='hear'>You feel a faint click.</span>")
 	if(iscarbon(imp_in))
 		var/mob/living/carbon/C_imp_in = imp_in
 		C_imp_in.uncuff()
@@ -35,10 +35,8 @@ No Implant Specifics"}
 
 
 /obj/item/implanter/freedom
-	name = "implanter" // Skyrat edit , was implanter (freedom)
+	name = "implanter (freedom)"
 	imp_type = /obj/item/implant/freedom
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A Syndicate implanter used for a freedom implant" // Skyrat edit
 
 /obj/item/implantcase/freedom
 	name = "implant case - 'Freedom'"

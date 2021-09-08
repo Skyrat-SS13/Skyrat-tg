@@ -14,7 +14,7 @@
 	var/bare_wound_bonus = 0
 
 	var/datum/armor/armor
-	VAR_PRIVATE/obj_integrity //defaults to max_integrity
+	var/obj_integrity //defaults to max_integrity
 	var/max_integrity = 500
 	var/integrity_failure = 0 //0 if we have no special broken behavior, otherwise is a percentage of at what point the obj breaks. 0.5 being 50%
 	///Damage under this value will be completely ignored
@@ -59,7 +59,8 @@
 		armor = getArmor()
 	else if (!istype(armor, /datum/armor))
 		stack_trace("Invalid type [armor.type] found in .armor during /obj Initialize()")
-	obj_integrity = max_integrity
+	if(obj_integrity == null)
+		obj_integrity = max_integrity
 
 	. = ..() //Do this after, else mat datums is mad.
 
@@ -72,7 +73,6 @@
 				obj_flags &= ~string_to_objflag[flag]
 			else
 				obj_flags |= string_to_objflag[flag]
-				
 	if((obj_flags & ON_BLUEPRINTS) && isturf(loc))
 		var/turf/T = loc
 		T.add_blueprints_preround(src)
@@ -101,7 +101,7 @@
 /obj/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
 	. = ..()
 	if(obj_flags & FROZEN)
-		visible_message(span_danger("[src] shatters into a million pieces!"))
+		visible_message("<span class='danger'>[src] shatters into a million pieces!</span>")
 		qdel(src)
 
 
@@ -278,7 +278,7 @@
 			                  fire = text2num(result["values"][FIRE]),\
 			                  acid = text2num(result["values"][ACID]))
 				log_admin("[key_name(usr)] modified the armor on [src] ([type]) to melee: [armor.melee], bullet: [armor.bullet], laser: [armor.laser], energy: [armor.energy], bomb: [armor.bomb], bio: [armor.bio], rad: [armor.rad], fire: [armor.fire], acid: [armor.acid]")
-				message_admins(span_notice("[key_name_admin(usr)] modified the armor on [src] ([type]) to melee: [armor.melee], bullet: [armor.bullet], laser: [armor.laser], energy: [armor.energy], bomb: [armor.bomb], bio: [armor.bio], rad: [armor.rad], fire: [armor.fire], acid: [armor.acid]"))
+				message_admins("<span class='notice'>[key_name_admin(usr)] modified the armor on [src] ([type]) to melee: [armor.melee], bullet: [armor.bullet], laser: [armor.laser], energy: [armor.energy], bomb: [armor.bomb], bio: [armor.bio], rad: [armor.rad], fire: [armor.fire], acid: [armor.acid]</span>")
 	if(href_list[VV_HK_MASS_DEL_TYPE])
 		if(check_rights(R_DEBUG|R_SERVER))
 			var/action_type = tgui_alert(usr, "Strict type ([type]) or type and all subtypes?",,list("Strict type","Type and subtypes","Cancel"))
@@ -304,7 +304,7 @@
 						to_chat(usr, "No objects of this type exist")
 						return
 					log_admin("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
-					message_admins(span_notice("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
+					message_admins("<span class='notice'>[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) </span>")
 				if("Type and subtypes")
 					var/i = 0
 					for(var/obj/Obj in world)
@@ -316,14 +316,14 @@
 						to_chat(usr, "No objects of this type exist")
 						return
 					log_admin("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
-					message_admins(span_notice("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
+					message_admins("<span class='notice'>[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) </span>")
 
 /obj/examine(mob/user)
 	. = ..()
 	if(obj_flags & UNIQUE_RENAME)
-		. += span_notice("Use a pen on it to rename it or change its description.")
+		. += "<span class='notice'>Use a pen on it to rename it or change its description.</span>"
 	if(unique_reskin && !current_skin)
-		. += span_notice("Alt-click it to reskin it.")
+		. += "<span class='notice'>Alt-click it to reskin it.</span>"
 
 /obj/AltClick(mob/user)
 	. = ..()

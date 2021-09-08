@@ -48,25 +48,25 @@
 		return
 
 	if(H.internal == src)
-		to_chat(H, span_notice("You close [src] valve."))
+		to_chat(H, "<span class='notice'>You close [src] valve.</span>")
 		H.internal = null
 		H.update_internals_hud_icon(0)
 	else
 		if(!H.getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 			if(!H.wear_mask)
-				to_chat(H, span_warning("You need a mask!"))
+				to_chat(H, "<span class='warning'>You need a mask!</span>")
 				return
 			var/is_clothing = isclothing(H.wear_mask)
 			if(is_clothing && H.wear_mask.mask_adjusted)
 				H.wear_mask.adjustmask(H)
 			if(!is_clothing || !(H.wear_mask.clothing_flags & MASKINTERNALS))
-				to_chat(H, span_warning("[H.wear_mask] can't use [src]!"))
+				to_chat(H, "<span class='warning'>[H.wear_mask] can't use [src]!</span>")
 				return
 
 		if(H.internal)
-			to_chat(H, span_notice("You switch your internals to [src]."))
+			to_chat(H, "<span class='notice'>You switch your internals to [src].</span>")
 		else
-			to_chat(H, span_notice("You open [src] valve."))
+			to_chat(H, "<span class='notice'>You open [src] valve.</span>")
 		H.internal = src
 		H.update_internals_hud_icon(1)
 	H.update_action_buttons_icon()
@@ -86,7 +86,9 @@
 	return
 
 /obj/item/tank/Destroy()
-	air_contents = null
+	if(air_contents)
+		QDEL_NULL(air_contents)
+
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -102,10 +104,10 @@
 		icon = src.loc
 	if(!in_range(src, user) && !isobserver(user))
 		if(icon == src)
-			. += span_notice("If you want any more information you'll need to get closer.")
+			. += "<span class='notice'>If you want any more information you'll need to get closer.</span>"
 		return
 
-	. += span_notice("The pressure gauge reads [round(src.air_contents.return_pressure(),0.01)] kPa.")
+	. += "<span class='notice'>The pressure gauge reads [round(src.air_contents.return_pressure(),0.01)] kPa.</span>"
 
 	var/celsius_temperature = air_contents.temperature-T0C
 	var/descriptive
@@ -123,7 +125,7 @@
 	else
 		descriptive = "furiously hot"
 
-	. += span_notice("It feels [descriptive].")
+	. += "<span class='notice'>It feels [descriptive].</span>"
 
 /obj/item/tank/deconstruct(disassembled = TRUE)
 	var/atom/location = loc
@@ -134,14 +136,14 @@
 
 /obj/item/tank/suicide_act(mob/user)
 	var/mob/living/carbon/human/H = user
-	user.visible_message(span_suicide("[user] is putting [src]'s valve to [user.p_their()] lips! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.visible_message("<span class='suicide'>[user] is putting [src]'s valve to [user.p_their()] lips! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	playsound(loc, 'sound/effects/spray.ogg', 10, TRUE, -3)
 	if(!QDELETED(H) && air_contents && air_contents.return_pressure() >= 1000)
 		ADD_TRAIT(H, TRAIT_DISFIGURED, TRAIT_GENERIC)
 		H.inflate_gib()
 		return MANUAL_SUICIDE
 	else
-		to_chat(user, span_warning("There isn't enough pressure in [src] to commit suicide with..."))
+		to_chat(user, "<span class='warning'>There isn't enough pressure in [src] to commit suicide with...</span>")
 	return SHAME
 
 /obj/item/tank/attackby(obj/item/W, mob/user, params)
@@ -301,7 +303,7 @@
 
 	if(obj_integrity < 0) // So we don't play the alerts while we are exploding or rupturing.
 		return
-	visible_message(span_warning("[src] springs a leak!"))
+	visible_message("<span class='warning'>[src] springs a leak!</span>")
 	playsound(src, 'sound/effects/spray.ogg', 10, TRUE, -3)
 
 /// Handles rupturing and fragmenting

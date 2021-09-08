@@ -73,6 +73,7 @@
 			if(NAMEOF(src, icon))
 				SStitle.icon = icon
 
+
 /turf/closed/indestructible/reinforced
 	name = "reinforced wall"
 	desc = "A huge chunk of reinforced metal used to separate rooms. Effectively impervious to conventional methods of destruction."

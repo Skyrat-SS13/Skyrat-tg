@@ -65,7 +65,7 @@
 	short_desc = "You are a Syndicate Maintenance Drone."
 	flavour_text = "In a prior life, you maintained a Nanotrasen Research Station. Abducted from your home, you were given some upgrades... and now serve an enemy of your former masters."
 	important_info = ""
-	spawner_job_path = /datum/job/ghost_role
+	assignedrole = null
 
 /obj/effect/mob_spawn/drone/syndrone/badass
 	name = "badass syndrone shell"
@@ -117,7 +117,7 @@
 	short_desc = "You are a drone on Kosmicheskaya Stantsiya 13."
 	flavour_text = "Something has brought you out of hibernation, and the station is in gross disrepair."
 	important_info = "Build, repair, maintain and improve the station that housed you on activation."
-	spawner_job_path = /datum/job/ghost_role
+	assignedrole = null
 
 /mob/living/simple_animal/drone/derelict
 	name = "derelict drone"

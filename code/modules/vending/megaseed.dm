@@ -23,7 +23,6 @@
 					/obj/item/seeds/garlic = 3,
 					/obj/item/seeds/grape = 3,
 					/obj/item/seeds/grass = 3,
-					/obj/item/seeds/korta_nut = 3,
 					/obj/item/seeds/lemon = 3,
 					/obj/item/seeds/lime = 3,
 					/obj/item/seeds/onion = 3,
@@ -46,7 +45,6 @@
 					/obj/item/seeds/wheat = 3,
 					/obj/item/seeds/whitebeet = 3)
 	contraband = list(/obj/item/seeds/amanita = 2,
-					/obj/item/seeds/tea/catnip = 3, // SKYRAT ADDITION
 					/obj/item/seeds/glowshroom = 2,
 					/obj/item/seeds/liberty = 2,
 					/obj/item/seeds/nettle = 2,
@@ -54,8 +52,6 @@
 					/obj/item/seeds/reishi = 2,
 					/obj/item/seeds/cannabis = 3,
 					/obj/item/seeds/starthistle = 2,
-					/obj/item/seeds/cocaleaf = 3, // SKYRAT ADDITION
-					/obj/item/seeds/poppy/opiumpoppy = 3, // SKYRAT ADDITION
 					/obj/item/seeds/random = 2)
 	premium = list(/obj/item/reagent_containers/spray/waterflower = 1)
 	refill_canister = /obj/item/vending_refill/hydroseeds

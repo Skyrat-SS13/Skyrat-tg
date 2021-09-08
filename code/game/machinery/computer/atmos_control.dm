@@ -13,12 +13,12 @@
 	var/frequency = FREQ_ATMOS_STORAGE
 	var/datum/radio_frequency/radio_connection
 
-/obj/machinery/air_sensor/atmos/plasma_tank
+/obj/machinery/air_sensor/atmos/toxin_tank
 	name = "plasma tank gas sensor"
-	id_tag = ATMOS_GAS_MONITOR_SENSOR_PLAS
-/obj/machinery/air_sensor/atmos/ordnance_mixing_tank
-	name = "ordnance mixing gas sensor"
-	id_tag = ATMOS_GAS_MONITOR_SENSOR_ORDNANCE_LAB
+	id_tag = ATMOS_GAS_MONITOR_SENSOR_TOX
+/obj/machinery/air_sensor/atmos/toxins_mixing_tank
+	name = "toxins mixing gas sensor"
+	id_tag = ATMOS_GAS_MONITOR_SENSOR_TOXINS_LAB
 /obj/machinery/air_sensor/atmos/oxygen_tank
 	name = "oxygen tank gas sensor"
 	id_tag = ATMOS_GAS_MONITOR_SENSOR_O2
@@ -147,7 +147,7 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 		ATMOS_GAS_MONITOR_SENSOR_N2 = "Nitrogen Tank",
 		ATMOS_GAS_MONITOR_SENSOR_O2 = "Oxygen Tank",
 		ATMOS_GAS_MONITOR_SENSOR_CO2 = "Carbon Dioxide Tank",
-		ATMOS_GAS_MONITOR_SENSOR_PLAS = "Plasma Tank",
+		ATMOS_GAS_MONITOR_SENSOR_TOX = "Plasma Tank",
 		ATMOS_GAS_MONITOR_SENSOR_N2O = "Nitrous Oxide Tank",
 		ATMOS_GAS_MONITOR_SENSOR_AIR = "Mixed Air Tank",
 		ATMOS_GAS_MONITOR_SENSOR_MIX = "Mix Tank",
@@ -168,7 +168,7 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 		ATMOS_GAS_MONITOR_LOOP_DISTRIBUTION = "Distribution Loop",
 		ATMOS_GAS_MONITOR_LOOP_ATMOS_WASTE = "Atmos Waste Loop",
 		ATMOS_GAS_MONITOR_SENSOR_INCINERATOR = "Incinerator Chamber",
-		ATMOS_GAS_MONITOR_SENSOR_ORDNANCE_LAB = "Ordnance Mixing Chamber"
+		ATMOS_GAS_MONITOR_SENSOR_TOXINS_LAB = "Toxins Mixing Chamber"
 	)
 	var/list/sensor_information = list()
 	var/datum/radio_frequency/radio_connection
@@ -185,11 +185,6 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 	return ..()
 
 /obj/machinery/computer/atmos_control/ui_interact(mob/user, datum/tgui/ui)
-	//SKYRAT EDIT ADDITON BEGIN - AESTHETICS
-	if(clicksound && world.time > next_clicksound && isliving(user))
-		next_clicksound = world.time + rand(50, 100)
-		playsound(src, get_sfx_skyrat(clicksound), clickvol)
-	//SKYRAT EDIT END
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AtmosControlConsole", name)
@@ -234,11 +229,11 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 	sensors = list(ATMOS_GAS_MONITOR_SENSOR_INCINERATOR = "Incinerator Chamber")
 	circuit = /obj/item/circuitboard/computer/atmos_control/incinerator
 
-//Ordnance mix sensor only
-/obj/machinery/computer/atmos_control/ordnancemix
-	name = "Ordnance Mixing Air Control"
-	sensors = list(ATMOS_GAS_MONITOR_SENSOR_ORDNANCE_LAB = "Ordnance Mixing Chamber")
-	circuit = /obj/item/circuitboard/computer/atmos_control/ordnancemix
+//Toxins mix sensor only
+/obj/machinery/computer/atmos_control/toxinsmix
+	name = "Toxins Mixing Air Control"
+	sensors = list(ATMOS_GAS_MONITOR_SENSOR_TOXINS_LAB = "Toxins Mixing Chamber")
+	circuit = /obj/item/circuitboard/computer/atmos_control/toxinsmix
 
 /////////////////////////////////////////////////////////////
 // LARGE TANK CONTROL
@@ -259,12 +254,12 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 	sensors = list(ATMOS_GAS_MONITOR_SENSOR_O2 = "Oxygen Tank")
 	circuit = /obj/item/circuitboard/computer/atmos_control/tank/oxygen_tank
 
-/obj/machinery/computer/atmos_control/tank/plasma_tank
+/obj/machinery/computer/atmos_control/tank/toxin_tank
 	name = "Plasma Supply Control"
-	input_tag = ATMOS_GAS_MONITOR_INPUT_PLAS
-	output_tag = ATMOS_GAS_MONITOR_OUTPUT_PLAS
-	sensors = list(ATMOS_GAS_MONITOR_SENSOR_PLAS = "Plasma Tank")
-	circuit = /obj/item/circuitboard/computer/atmos_control/tank/plasma_tank
+	input_tag = ATMOS_GAS_MONITOR_INPUT_TOX
+	output_tag = ATMOS_GAS_MONITOR_OUTPUT_TOX
+	sensors = list(ATMOS_GAS_MONITOR_SENSOR_TOX = "Plasma Tank")
+	circuit = /obj/item/circuitboard/computer/atmos_control/tank/toxin_tank
 
 /obj/machinery/computer/atmos_control/tank/air_tank
 	name = "Mixed Air Supply Control"
@@ -417,16 +412,7 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 /obj/machinery/computer/atmos_control/tank/proc/reconnect(mob/user)
 	var/list/IO = list()
 	var/datum/radio_frequency/freq = SSradio.return_frequency(frequency)
-
-	var/list/devices = list()
-	var/list/device_refs = freq.devices["_default"]
-	for(var/datum/weakref/device_ref as anything in device_refs)
-		var/atom/device = device_ref.resolve()
-		if(!device)
-			device_refs -= device_ref
-			continue
-		devices += device
-
+	var/list/devices = freq.devices["_default"]
 	for(var/obj/machinery/atmospherics/components/unary/vent_pump/U in devices)
 		var/list/text = splittext(U.id_tag, "_")
 		IO |= text[1]
@@ -434,7 +420,7 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 		var/list/text = splittext(U.id, "_")
 		IO |= text[1]
 	if(!IO.len)
-		to_chat(user, span_alert("No machinery detected."))
+		to_chat(user, "<span class='alert'>No machinery detected.</span>")
 	var/S = input("Select the device set: ", "Selection", IO[1]) as anything in sortList(IO)
 	if(src)
 		src.input_tag = "[S]_in"

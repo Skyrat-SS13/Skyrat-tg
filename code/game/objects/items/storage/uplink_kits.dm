@@ -481,8 +481,7 @@
 	new /obj/item/reagent_containers/syringe(src)
 
 /obj/item/storage/box/syndie_kit/nuke
-	name = "nuke core extraction kit"
-	desc = "A box containing the equipment and instructions for extracting the plutonium cores of most Nanotrasen nuclear explosives."
+	name = "box"
 
 /obj/item/storage/box/syndie_kit/nuke/PopulateContents()
 	new /obj/item/screwdriver/nuke(src)
@@ -490,8 +489,7 @@
 	new /obj/item/paper/guides/antag/nuke_instructions(src)
 
 /obj/item/storage/box/syndie_kit/supermatter
-	name = "supermatter sliver extraction kit"
-	desc = "A box containing the equipment and instructions for extracting a sliver of supermatter."
+	name = "box"
 
 /obj/item/storage/box/syndie_kit/supermatter/PopulateContents()
 	new /obj/item/scalpel/supermatter(src)
@@ -543,7 +541,7 @@
 	new/obj/item/toy/crayon/rainbow(src)
 
 /obj/item/storage/box/syndie_kit/romerol/PopulateContents()
-	new /obj/item/reagent_containers/glass/bottle/hnz(src) //SKRYAT EDIT CHANGE
+	new /obj/item/reagent_containers/glass/bottle/romerol(src)
 	new /obj/item/reagent_containers/syringe(src)
 	new /obj/item/reagent_containers/dropper(src)
 

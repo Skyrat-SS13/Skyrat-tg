@@ -104,9 +104,7 @@
 //Borg Built-in tablet
 /obj/item/modular_computer/tablet/integrated/Initialize()
 	. = ..()
-	var/obj/item/computer_hardware/hard_drive/small/integrated/hard_drive = new // SKYRAT EDIT ADD
 	install_component(new /obj/item/computer_hardware/processor_unit/small)
-	install_component(hard_drive) // SKYRAT EDIT -- ORIGINAL install_component(new /obj/item/computer_hardware/hard_drive/small/integrated/)
+	install_component(new /obj/item/computer_hardware/hard_drive/small/integrated)
 	install_component(new /obj/item/computer_hardware/recharger/cyborg)
 	install_component(new /obj/item/computer_hardware/network_card/integrated)
-	hard_drive.store_file(new /datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD

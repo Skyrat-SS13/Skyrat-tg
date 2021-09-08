@@ -9,7 +9,7 @@ Nothing to do with hydroponics in here. Sorry to dissapoint you.
 /*
 Borg Hypospray
 */
-/obj/item/reagent_containers/borghypo//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/reagent_containers/borghypo
 	name = "cyborg hypospray"
 	desc = "An advanced chemical synthesizer and injection system, designed for heavy-duty medical equipment."
 	icon = 'icons/obj/syringe.dmi'
@@ -19,7 +19,7 @@ Borg Hypospray
 	icon_state = "borghypo"
 	amount_per_transfer_from_this = 5
 	volume = 30
-	possible_transfer_amounts = list(5)
+	possible_transfer_amounts = list()
 	var/mode = 1
 	var/charge_cost = 50
 	var/charge_timer = 0
@@ -28,7 +28,7 @@ Borg Hypospray
 	var/bypass_protection = 0 //If the hypospray can go through armor or thick material
 
 	var/list/datum/reagents/reagent_list = list()
-	var/list/reagent_ids = list(/datum/reagent/medicine/c2/convermol, /datum/reagent/medicine/c2/libital, /datum/reagent/medicine/c2/multiver, /datum/reagent/medicine/c2/aiuri, /datum/reagent/medicine/epinephrine, /datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/salglu_solution, /datum/reagent/medicine/lidocaine) // SKYRAT EDIT ADDITION
+	var/list/reagent_ids = list(/datum/reagent/medicine/c2/convermol, /datum/reagent/medicine/c2/libital, /datum/reagent/medicine/c2/multiver, /datum/reagent/medicine/c2/aiuri, /datum/reagent/medicine/epinephrine, /datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/salglu_solution)
 	var/accepts_reagent_upgrades = TRUE //If upgrades can increase number of reagents dispensed.
 	var/list/modes = list() //Basically the inverse of reagent_ids. Instead of having numbers as "keys" and strings as values it has strings as keys and numbers as values.
 								//Used as list for input() in shakers.
@@ -46,8 +46,8 @@ Borg Hypospray
 
 /obj/item/reagent_containers/borghypo/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	QDEL_LIST(reagent_list)
 	return ..()
+
 
 /obj/item/reagent_containers/borghypo/process(delta_time) //Every [recharge_time] seconds, recharge some reagents for the cyborg
 	charge_timer += delta_time
@@ -106,16 +106,16 @@ Borg Hypospray
 /obj/item/reagent_containers/borghypo/attack(mob/living/carbon/M, mob/user)
 	var/datum/reagents/R = reagent_list[mode]
 	if(!R.total_volume)
-		to_chat(user, span_warning("The injector is empty!"))
+		to_chat(user, "<span class='warning'>The injector is empty!</span>")
 		return
 	if(!istype(M))
 		return
 	if(R.total_volume && M.try_inject(user, user.zone_selected, injection_flags = INJECT_TRY_SHOW_ERROR_MESSAGE | (bypass_protection ? INJECT_CHECK_PENETRATE_THICK : 0)))
-		to_chat(M, span_warning("You feel a tiny prick!"))
-		to_chat(user, span_notice("You inject [M] with the injector."))
+		to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
+		to_chat(user, "<span class='notice'>You inject [M] with the injector.</span>")
 		if(M.reagents)
 			var/trans = R.trans_to(M, amount_per_transfer_from_this, transfered_by = user, methods = INJECT)
-			to_chat(user, span_notice("[trans] unit\s injected. [R.total_volume] unit\s remaining."))
+			to_chat(user, "<span class='notice'>[trans] unit\s injected. [R.total_volume] unit\s remaining.</span>")
 
 	var/list/injected = list()
 	for(var/datum/reagent/RG in R.reagent_list)
@@ -129,7 +129,7 @@ Borg Hypospray
 	mode = chosen_reagent
 	playsound(loc, 'sound/effects/pop.ogg', 50, FALSE)
 	var/datum/reagent/R = GLOB.chemical_reagents_list[reagent_ids[mode]]
-	to_chat(user, span_notice("[src] is now dispensing '[R.name]'."))
+	to_chat(user, "<span class='notice'>[src] is now dispensing '[R.name]'.</span>")
 	return
 
 /obj/item/reagent_containers/borghypo/examine(mob/user)
@@ -137,7 +137,7 @@ Borg Hypospray
 	. += DescribeContents() //Because using the standardized reagents datum was just too cool for whatever fuckwit wrote this
 	var/datum/reagent/loaded = modes[mode]
 	. += "Currently loaded: [initial(loaded.name)]. [initial(loaded.description)]"
-	. += span_notice("<i>Alt+Click</i> to change transfer amount. Currently set to [amount_per_transfer_from_this == 5 ? "dose normally (5u)" : "microdose (2u)"].")
+	. += "<span class='notice'><i>Alt+Click</i> to change transfer amount. Currently set to [amount_per_transfer_from_this == 5 ? "dose normally (5u)" : "microdose (2u)"].</span>"
 
 /obj/item/reagent_containers/borghypo/proc/DescribeContents()
 	. = list()
@@ -146,11 +146,11 @@ Borg Hypospray
 	for(var/datum/reagents/RS in reagent_list)
 		var/datum/reagent/R = locate() in RS.reagent_list
 		if(R)
-			. += span_notice("It currently has [R.volume] unit\s of [R.name] stored.")
+			. += "<span class='notice'>It currently has [R.volume] unit\s of [R.name] stored.</span>"
 			empty = FALSE
 
 	if(empty)
-		. += span_warning("It is currently empty! Allow some time for the internal synthesizer to produce more.")
+		. += "<span class='warning'>It is currently empty! Allow some time for the internal synthesizer to produce more.</span>"
 
 /obj/item/reagent_containers/borghypo/AltClick(mob/living/user)
 	. = ..()
@@ -160,7 +160,7 @@ Borg Hypospray
 		amount_per_transfer_from_this = 2
 	else
 		amount_per_transfer_from_this = 5
-	to_chat(user,span_notice("[src] is now set to [amount_per_transfer_from_this == 5 ? "dose normally" : "microdose"]."))
+	to_chat(user,"<span class='notice'>[src] is now set to [amount_per_transfer_from_this == 5 ? "dose normally" : "microdose"].</span>")
 
 /obj/item/reagent_containers/borghypo/hacked
 	icon_state = "borghypo_s"
@@ -206,7 +206,7 @@ Borg Shaker
 	charge_cost = 20 //Lots of reagents all regenerating at once, so the charge cost is lower. They also regenerate faster.
 	recharge_time = 3
 	accepts_reagent_upgrades = FALSE
-	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP //Water stays wet, ice stays ice
+	dispensed_temperature = T0C + 1.35
 
 	reagent_ids = list(/datum/reagent/consumable/applejuice, /datum/reagent/consumable/banana, /datum/reagent/consumable/coffee,
 	/datum/reagent/consumable/cream, /datum/reagent/consumable/dr_gibb, /datum/reagent/consumable/grenadine,
@@ -223,11 +223,7 @@ Borg Shaker
 	/datum/reagent/consumable/ethanol/creme_de_cacao, /datum/reagent/consumable/ethanol/gin, /datum/reagent/consumable/ethanol/kahlua,
 	/datum/reagent/consumable/ethanol/rum, /datum/reagent/consumable/ethanol/sake, /datum/reagent/consumable/ethanol/tequila,
 	/datum/reagent/consumable/ethanol/triple_sec, /datum/reagent/consumable/ethanol/vermouth, /datum/reagent/consumable/ethanol/vodka,
-	/datum/reagent/consumable/ethanol/whiskey, /datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/creme_de_coconut,
-	//SKYRAT EDIT ADDITION BEGIN
-	/datum/reagent/consumable/berryjuice, /datum/reagent/consumable/blumpkinjuice, /datum/reagent/consumable/watermelonjuice,
-	/datum/reagent/consumable/pumpkinjuice, /datum/reagent/consumable/vanilla)
-	//SKYRAT EDIT ADDITION END
+	/datum/reagent/consumable/ethanol/whiskey, /datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/creme_de_coconut)
 
 /obj/item/reagent_containers/borghypo/borgshaker/attack(mob/M, mob/user)
 	return //Can't inject stuff with a shaker, can we? //not with that attitude
@@ -251,23 +247,23 @@ Borg Shaker
 	else if(target.is_refillable())
 		var/datum/reagents/R = reagent_list[mode]
 		if(!R.total_volume)
-			to_chat(user, span_warning("[src] is currently out of this ingredient! Please allow some time for the synthesizer to produce more."))
+			to_chat(user, "<span class='warning'>[src] is currently out of this ingredient! Please allow some time for the synthesizer to produce more.</span>")
 			return
 
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)
-			to_chat(user, span_notice("[target] is full."))
+			to_chat(user, "<span class='notice'>[target] is full.</span>")
 			return
 
 		var/trans = R.trans_to(target, amount_per_transfer_from_this, transfered_by = user)
-		to_chat(user, span_notice("You transfer [trans] unit\s of the solution to [target]."))
+		to_chat(user, "<span class='notice'>You transfer [trans] unit\s of the solution to [target].</span>")
 
 /obj/item/reagent_containers/borghypo/borgshaker/DescribeContents()
 	var/datum/reagents/RS = reagent_list[mode]
 	var/datum/reagent/R = locate() in RS.reagent_list
 	if(R)
-		return span_notice("It currently has [R.volume] unit\s of [R.name] stored.")
+		return "<span class='notice'>It currently has [R.volume] unit\s of [R.name] stored.</span>"
 	else
-		return span_warning("It is currently empty! Please allow some time for the synthesizer to produce more.")
+		return "<span class='warning'>It is currently empty! Please allow some time for the synthesizer to produce more.</span>"
 
 /obj/item/reagent_containers/borghypo/borgshaker/hacked
 	name = "cyborg shaker"
@@ -278,7 +274,7 @@ Borg Shaker
 	charge_cost = 20 //Lots of reagents all regenerating at once, so the charge cost is lower. They also regenerate faster.
 	recharge_time = 3
 	accepts_reagent_upgrades = FALSE
-	dispensed_temperature = WATER_MATTERSTATE_CHANGE_TEMP
+	dispensed_temperature = T0C + 1.35
 
 	reagent_ids = list(/datum/reagent/toxin/fakebeer, /datum/reagent/consumable/ethanol/fernet)
 

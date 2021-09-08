@@ -11,15 +11,13 @@
 
 /turf/open/floor/iron/examine(mob/user)
 	. = ..()
-	. += span_notice("There's a <b>small crack</b> on the edge of it.")
+	. += "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>"
 
 
 /turf/open/floor/iron/rust_heretic_act()
 	if(prob(70))
 		new /obj/effect/temp_visual/glowing_rune(src)
-	var/atom/changed_turf = ChangeTurf(/turf/open/floor/plating)
-	changed_turf.AddElement(/datum/element/rust)
-	return ..()
+	ChangeTurf(/turf/open/floor/plating/rust)
 
 
 /turf/open/floor/iron/update_icon_state()
@@ -370,3 +368,11 @@
 	base_icon_state = "sepia"
 	desc = "Well, the flow of time is normal on these tiles, weird."
 	floor_tile = /obj/item/stack/tile/iron/sepia
+
+/turf/open/floor/iron/yellowsiding
+	icon_state = "yellowsiding"
+	base_icon_state = "yellowsiding"
+
+/turf/open/floor/iron/yellowsiding/corner
+	icon_state = "yellowcornersiding"
+	base_icon_state = "yellowcornersiding"

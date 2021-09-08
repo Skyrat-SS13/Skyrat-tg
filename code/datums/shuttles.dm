@@ -108,10 +108,8 @@
 
 /datum/map_template/shuttle/emergency
 	port_id = "emergency"
-	suffix = "skyrat" //SKYRAT EDIT CHANGE
 	name = "Base Shuttle Template (Emergency)"
 
-/* //SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /datum/map_template/shuttle/cargo
 	port_id = "cargo"
 	name = "Base Shuttle Template (Cargo)"
@@ -120,7 +118,6 @@
 /datum/map_template/shuttle/ferry
 	port_id = "ferry"
 	name = "Base Shuttle Template (Ferry)"
-*/
 
 /datum/map_template/shuttle/whiteship
 	port_id = "whiteship"
@@ -238,7 +235,6 @@
 	admin_notes = "WARNING: This shuttle WILL destroy a fourth of the station, likely picking up a lot of objects with it."
 	credit_cost = CARGO_CRATE_VALUE * 250
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
-	who_can_purchase = null //SKYRAT EDIT CHANGE
 
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
@@ -452,13 +448,6 @@
 	admin_notes = "Pretty freakin' large, almost as big as Raven or Cere. Excercise caution with it."
 	credit_cost = CARGO_CRATE_VALUE * 16
 
-/datum/map_template/shuttle/emergency/casino
-	suffix = "casino"
-	name = "Lucky Jackpot Casino Shuttle"
-	description = "A luxurious casino packed to the brim with everything you need to start new gambling addicitions!"
-	admin_notes = "The ship is a bit chunky, so watch where you park it."
-	credit_cost = 7777
-
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"
 	name = "transport ferry"
@@ -654,11 +643,9 @@
 	suffix = "small"
 	name = "auxilliary base (Small)"
 
-/* SKYRAT EDIT REMOVAL
 /datum/map_template/shuttle/escape_pod/default
 	suffix = "default"
 	name = "escape pod (Default)"
-*/
 
 /datum/map_template/shuttle/escape_pod/large
 	suffix = "large"

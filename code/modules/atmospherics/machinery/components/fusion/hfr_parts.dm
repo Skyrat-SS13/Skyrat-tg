@@ -22,8 +22,6 @@
 	var/active = FALSE
 	///Check if fusion has started
 	var/fusion_started = FALSE
-	///Check if the machine is cracked open
-	var/cracked = FALSE
 
 /obj/machinery/atmospherics/components/unary/hypertorus/Initialize()
 	. = ..()
@@ -31,7 +29,7 @@
 
 /obj/machinery/atmospherics/components/unary/hypertorus/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] can be rotated by first opening the panel with a screwdriver and then using a wrench on it.")
+	. += "<span class='notice'>[src] can be rotated by first opening the panel with a screwdriver and then using a wrench on it.</span>"
 
 /obj/machinery/atmospherics/components/unary/hypertorus/attackby(obj/item/I, mob/user, params)
 	if(!fusion_started)
@@ -43,17 +41,6 @@
 		return
 	return ..()
 
-/obj/machinery/atmospherics/components/unary/hypertorus/welder_act(mob/living/user, obj/item/tool)
-	if(!cracked)
-		return FALSE
-	if(user.combat_mode)
-		return FALSE
-	balloon_alert(user, "You start repairing the crack...")
-	if(tool.use_tool(src, user, 10 SECONDS, volume=30, amount=5))
-		balloon_alert(user, "You repaired the crack.")
-		cracked = FALSE
-		update_appearance()
-
 /obj/machinery/atmospherics/components/unary/hypertorus/default_change_direction_wrench(mob/user, obj/item/I)
 	. = ..()
 	if(.)
@@ -62,8 +49,7 @@
 		if(node)
 			node.disconnect(src)
 			nodes[1] = null
-			if(parents[1])
-				nullifyPipenet(parents[1])
+			nullifyPipenet(parents[1])
 		atmosinit()
 		node = nodes[1]
 		if(node)
@@ -80,14 +66,6 @@
 		return ..()
 	icon_state = icon_state_off
 	return ..()
-
-/obj/machinery/atmospherics/components/unary/hypertorus/update_overlays()
-	. = ..()
-	if(!cracked)
-		return
-	var/image/crack = image(icon, icon_state = "crack")
-	crack.dir = dir
-	. += crack
 
 /obj/machinery/atmospherics/components/unary/hypertorus/fuel_input
 	name = "HFR fuel input port"
@@ -137,7 +115,7 @@
 
 /obj/machinery/hypertorus/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] can be rotated by first opening the panel with a screwdriver and then using a wrench on it.")
+	. += "<span class='notice'>[src] can be rotated by first opening the panel with a screwdriver and then using a wrench on it.</span>"
 
 /obj/machinery/hypertorus/attackby(obj/item/I, mob/user, params)
 	if(!fusion_started)
@@ -180,7 +158,7 @@
 	var/obj/machinery/atmospherics/components/unary/hypertorus/core/centre = locate() in T
 
 	if(!centre || !centre.check_part_connectivity())
-		to_chat(user, span_notice("Check all parts and then try again."))
+		to_chat(user, "<span class='notice'>Check all parts and then try again.</span>")
 		return TRUE
 	new/obj/item/paper/guides/jobs/atmos/hypertorus(loc)
 	connected_core = centre
@@ -195,7 +173,7 @@
 			ui = new(user, src, "Hypertorus", name)
 			ui.open()
 	else
-		to_chat(user, span_notice("Activate the machine first by using a multitool on the interface."))
+		to_chat(user, "<span class='notice'>Activate the machine first by using a multitool on the interface.</span>")
 
 /obj/machinery/hypertorus/interface/ui_static_data()
 	var/data = list()
@@ -224,13 +202,13 @@
 		var/minimum_temp = connected_core.selected_fuel.negative_temperature_multiplier < 1 ? "Decrease" : "Increase"
 		var/maximum_temp = connected_core.selected_fuel.positive_temperature_multiplier < 1 ? "Decrease" : "Increase"
 		var/energy = connected_core.selected_fuel.energy_concentration_multiplier > 1 ? "Decrease" : "Increase"
-		var/fuel_consumption = connected_core.selected_fuel.fuel_consumption_multiplier < 1 ? "Decrease" : "Increase"
+		var/fuel_consumption = connected_core.selected_fuel.fuel_consumption_multiplier > 1 ? "Decrease" : "Increase"
 		var/fuel_production = connected_core.selected_fuel.gas_production_multiplier < 1 ? "Decrease" : "Increase"
 		product_gases += "The fuel mix will"
-		product_gases += "-[minimum_temp] the maximum cooling by a factor of [connected_core.selected_fuel.negative_temperature_multiplier]"
+		product_gases += "-[minimum_temp] the minimum cooling by a factor of [connected_core.selected_fuel.negative_temperature_multiplier]"
 		product_gases += "-[maximum_temp] the maximum heating by a factor of [connected_core.selected_fuel.positive_temperature_multiplier]"
 		product_gases += "-[energy] the energy output consumption by a factor of [1 / connected_core.selected_fuel.energy_concentration_multiplier]"
-		product_gases += "-[fuel_consumption] the fuel consumption by a factor of [connected_core.selected_fuel.fuel_consumption_multiplier]"
+		product_gases += "-[fuel_consumption] the fuel consumption by a factor of [1 / connected_core.selected_fuel.fuel_consumption_multiplier]"
 		product_gases += "-[fuel_production] the gas production by a factor of [connected_core.selected_fuel.gas_production_multiplier]"
 		product_gases += "-Maximum fusion temperature with this mix: [FUSION_MAXIMUM_TEMPERATURE * connected_core.selected_fuel.temperature_change_multiplier] K."
 
@@ -281,7 +259,7 @@
 
 	data["power_level"] = connected_core.power_level
 	data["iron_content"] = connected_core.iron_content
-	data["integrity"] = connected_core.get_integrity_percent()
+	data["integrity"] = connected_core.get_integrity()
 
 	data["start_power"] = connected_core.start_power
 	data["start_cooling"] = connected_core.start_cooling
@@ -299,8 +277,6 @@
 		var/list/gas = GLOB.meta_gas_info[path]
 		data["filter_types"] += list(list("name" = gas[META_GAS_NAME], "id" = gas[META_GAS_ID], "selected" = (path == gas_id2path(connected_core.filter_type))))
 
-	data["cooling_volume"] = connected_core.airs[1].volume
-
 	return data
 
 /obj/machinery/hypertorus/interface/ui_act(action, params)
@@ -310,7 +286,7 @@
 	switch(action)
 		if("start_power")
 			connected_core.start_power = !connected_core.start_power
-			connected_core.update_use_power(connected_core.start_power ? ACTIVE_POWER_USE : IDLE_POWER_USE)
+			connected_core.use_power = connected_core.start_power ? ACTIVE_POWER_USE : IDLE_POWER_USE
 			. = TRUE
 		if("start_cooling")
 			connected_core.start_cooling = !connected_core.start_cooling
@@ -382,13 +358,6 @@
 			connected_core.linked_moderator.update_parents()
 			investigate_log("was set to recipe [fuel_mix ? fuel_mix : "null"] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			. = TRUE
-		if("cooling_volume")
-			var/cooling_volume = params["cooling_volume"]
-			if(text2num(cooling_volume) != null)
-				cooling_volume = text2num(cooling_volume)
-				. = TRUE
-			if(.)
-				connected_core.airs[1].volume = clamp(cooling_volume, 50, 2000)
 
 /obj/machinery/hypertorus/corner
 	name = "HFR corner"
@@ -483,7 +452,7 @@
 			continue
 		if(box.box_type == "body")
 			if(direction in GLOB.cardinals)
-				box.dir = direction
+				box.dir = DIRFLIP(direction)
 				parts |= box
 			continue
 	if(parts.len == 8)

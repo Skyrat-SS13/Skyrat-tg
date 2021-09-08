@@ -75,8 +75,6 @@
 #define VV_HK_CALLPROC "proc_call"
 #define VV_HK_MARK "mark"
 #define VV_HK_ADDCOMPONENT "addcomponent"
-#define VV_HK_REMOVECOMPONENT "removecomponent"
-#define VV_HK_MASS_REMOVECOMPONENT "massremovecomponent"
 #define VV_HK_MODIFY_TRAITS "modtraits"
 
 // /atom
