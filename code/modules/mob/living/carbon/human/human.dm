@@ -379,7 +379,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
 	if (is_special_character(usr))
 		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/exploitable_record = find_record("name", perpname, GLOB.data_core.locked)
+		var/datum/data/record/exploitable_record = find_record("name", perpname, GLOB.data_core.general)
 		if(href_list["exprecords"])
 			to_chat(usr, "<b>Exploitable information:</b> [exploitable_record.fields["exp_records"]]")
 	//SKYRAT EDIT END

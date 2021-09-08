@@ -269,8 +269,10 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["photo_side"] = photo_side
 		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD - RP RECORDS
 			G.fields["past_records"] = C.prefs.general_record
+			G.fields["exp_records"] = C.prefs.exploitable_info
 		else
-			G.fields["past_records"] = "" // SKYRAT EDIT END
+			G.fields["past_records"] = ""
+			G.fields["exp_records"] = "" // SKYRAT EDIT END
 		general += G
 
 		//Medical Record
@@ -329,10 +331,10 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["image"] = image
 		L.fields["mindref"] = H.mind
 		// SKYRAT EDIT ADD BEGIN - EXAMINE RECORDS
-		if(C && C.prefs && C.prefs.general_record)
+/*		if(C && C.prefs && C.prefs.general_record)
 			L.fields["exp_records"] = C.prefs.exploitable_info
 		else
-			L.fields["exp_records"] = ""
+			L.fields["exp_records"] = "" */
 		// SKYRAT EDIT END
 		locked += L
 	return

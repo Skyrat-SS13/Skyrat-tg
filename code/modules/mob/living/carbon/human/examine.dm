@@ -488,7 +488,7 @@
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	var/datum/data/record/isinworld = find_record("name", perpname, GLOB.data_core.locked) //i dont know of a better way to do this-it doesnt work on off-station roles. please fix this someone better at coding.
+	var/datum/data/record/isinworld = find_record("name", perpname, GLOB.data_core.general) //i dont know of a better way to do this-it doesnt work on off-station roles. please fix this someone better at coding.
 	for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
 		if ((is_special_character(user)) && isinworld && (antag_datum.view_exploitables))
 			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
