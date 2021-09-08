@@ -9,7 +9,7 @@
 /datum/component/engine_effect/Initialize()
 	if(!ismovable(parent))
 		return COMPONENT_INCOMPATIBLE
-	looped_sound = new(list(parent), FALSE)
+	looped_sound = new(parent, FALSE)
 
 /datum/component/engine_effect/Destroy()
 	if(is_flaming)
