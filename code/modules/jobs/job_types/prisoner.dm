@@ -36,6 +36,7 @@
 
 	id_trim = /datum/id_trim/job/prisoner
 
+<<<<<<< HEAD
 // SKYRAT EDIT: Start - Adds spawn text to prisoners.
 /datum/job/prisoner/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -45,3 +46,13 @@
 	to_chat(M, "It's up to you to decide why you're in here. Chances are, the case against you might not be strong enough to convict you. Or is it?<br>")
 // SKYRAT EDIT : End - Adds spawn text to prisoners.
 
+=======
+/datum/outfit/job/prisoner/post_equip(mob/living/carbon/human/new_prisoner, visualsOnly)
+	. = ..()
+	if(!length(SSpersistence.prison_tattoos_to_use) || visualsOnly)
+		return
+	var/obj/item/bodypart/tatted_limb = pick(new_prisoner.bodyparts)
+	var/list/tattoo = pick(SSpersistence.prison_tattoos_to_use)
+	tatted_limb.AddComponent(/datum/component/tattoo, tattoo["story"])
+	SSpersistence.prison_tattoos_to_use -= tattoo
+>>>>>>> 4d7f2952e40 ([READY] Adds memory system, and engraving walls with chisels (#60302))
