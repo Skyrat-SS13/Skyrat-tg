@@ -31,7 +31,7 @@
 /obj/machinery/computer/shuttle/attacked_by(obj/item/smacking_object, mob/living/user)
 	if(istype(smacking_object, /obj/item/navigation_datacard))
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-		if(M.mode == SHUTTLE_NAV_ERROR)
+		if(M.gateway_stranded)
 			to_chat(user, span_notice("You insert [smacking_object] into [src] loading the navigational data!"))
 			say("Navigational data loaded.")
 			playsound(loc, 'sound/machines/terminal_insert_disc.ogg', 35, 1)
@@ -54,7 +54,7 @@
 			status_info = "Unauthorized Access"
 		else if(locked)
 			status_info = "Locked"
-		else if(M.mode == SHUTTLE_NAV_ERROR)
+		else if(M.gateway_stranded)
 			status_info = "NAVIGATIONAL SYSTEM ERROR, RECALIBRATION REQUIRED!"
 		else
 			switch(M.mode)
@@ -92,7 +92,7 @@
 	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
-	if(M.mode == SHUTTLE_NAV_ERROR)
+	if(M.gateway_stranded)
 		to_chat(usr, span_warning("Shuttle navigation systems are inoperable. Contact your IT supervisor immediately."))
 		say("Navigational systems error.")
 		playsound(src, 'sound/machines/buzz-two.ogg', 20)

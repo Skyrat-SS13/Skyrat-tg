@@ -29,6 +29,8 @@
 	/// Linked day and night controller, expect this to apply to all related_levels
 	var/datum/day_night_controller/day_night_controller
 
+	var/allow_freeform_docking = TRUE
+
 /datum/overmap_object/proc/ProcessPartials()
 	var/did_move = FALSE
 	var/new_x
@@ -66,7 +68,7 @@
 /datum/overmap_object/proc/GetAllAliveClientMobs()
 	var/list/compiled_list = list()
 	for(var/i in related_levels)
-		var/datum/space_level/level = i 
+		var/datum/space_level/level = i
 		compiled_list += SSmobs.clients_by_zlevel[level.z_value]
 	return compiled_list
 
@@ -74,7 +76,7 @@
 /datum/overmap_object/proc/GetAllClientMobs()
 	var/list/compiled_list = GetAllAliveClientMobs()
 	for(var/i in related_levels)
-		var/datum/space_level/level = i 
+		var/datum/space_level/level = i
 		compiled_list += SSmobs.dead_players_by_zlevel[level.z_value]
 	return compiled_list
 

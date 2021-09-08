@@ -17,9 +17,11 @@
 	var/overmap_parallax_dir
 
 	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
-	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
+	var/can_be_called_in_transit = TRUE
 
-	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
+	var/admin_forced = FALSE
+
+	var/gateway_stranded = FALSE
 
 
 //call the shuttle to destination S

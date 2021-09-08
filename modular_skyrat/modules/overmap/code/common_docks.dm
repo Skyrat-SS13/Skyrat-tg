@@ -39,7 +39,7 @@
 	build_path = /obj/machinery/computer/shuttle/common_docks
 
 /obj/docking_port/stationary/gateway
-	name = "landing zone"
+	name = "Unknown Destination"
 	id = "gateway"
 	width = 35
 	dwidth = 11

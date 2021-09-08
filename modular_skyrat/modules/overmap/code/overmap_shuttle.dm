@@ -272,7 +272,8 @@
 					for(var/level in IO.related_levels)
 						var/datum/space_level/iterated_space_level = level
 						z_levels["[iterated_space_level.z_value]"] = TRUE
-						freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
+						if(IO.allow_freeform_docking)
+							freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
 
 				var/list/obj/docking_port/stationary/docks = list()
 				var/list/obj/docking_port/stationary/gateway/gateways = list()
@@ -294,9 +295,10 @@
 				for(var/key in docks)
 					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=normal_dock;dock_id=[docks[key].id]'>Dock</a>"
 
-				dat += "<BR><BR><B>Freeform docking spaces:</B>"
-				for(var/key in freeform_z_levels)
-					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=freeform_dock;z_value=[freeform_z_levels[key]]'>Designate Location</a>"
+				if(freeform_z_levels.len)
+					dat += "<BR><BR><B>Freeform docking spaces:</B>"
+					for(var/key in freeform_z_levels)
+						dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=freeform_dock;z_value=[freeform_z_levels[key]]'>Designate Location</a>"
 
 				if(gateways.len)
 					dat += "<BR><BR><B>Wormhole Entries:</B>"
@@ -464,6 +466,8 @@
 						return
 					if(!current_system.ObjectsAdjacent(src, level_overmap_object))
 						return
+					if(!level_overmap_object.allow_freeform_docking)
+						return
 					shuttle_controller.SetController(usr)
 					shuttle_controller.freeform_docker = new /datum/shuttle_freeform_docker(shuttle_controller, usr, z_level)
 				if("gateway_dock")
@@ -483,7 +487,7 @@
 						if(0)
 							shuttle_controller.busy = TRUE
 							shuttle_controller.RemoveCurrentControl()
-							my_shuttle.mode = SHUTTLE_NAV_ERROR
+							my_shuttle.gateway_stranded = TRUE
 
 		if("target")
 			if(!(shuttle_capability & SHUTTLE_CAN_USE_TARGET))
@@ -726,6 +730,7 @@
 	name = "Wormhole"
 	visual_type = /obj/effect/abstract/overmap/shuttle/gateway
 	planet_color = COLOR_CYAN
+	allow_freeform_docking = FALSE
 
 /datum/overmap_object/shuttle/planet/gateway/New()
 	. = ..()
