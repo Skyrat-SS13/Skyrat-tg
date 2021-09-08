@@ -273,7 +273,8 @@
 						var/datum/space_level/iterated_space_level = level
 						z_levels["[iterated_space_level.z_value]"] = TRUE
 						if(IO.allow_freeform_docking)
-							freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
+							to_chat(world, "freeform not allowed")
+						freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
 
 				var/list/obj/docking_port/stationary/docks = list()
 				var/list/obj/docking_port/stationary/gateway/gateways = list()
@@ -291,19 +292,22 @@
 						continue
 					docks[iterated_dock.name] = iterated_dock
 
+				to_chat(world, "gateway [gateways.len]")
+
 				dat += "<B>Designated docks:</B>"
 				for(var/key in docks)
 					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=normal_dock;dock_id=[docks[key].id]'>Dock</a>"
+
+				if(gateways.len)
+					dat += "<BR><BR><B>Wormhole Entries:</B>"
+					for(var/key in gateways)
+						dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=gateway_dock;dock_id=[gateways[key].id]'>Enter Wormhole</a>"
 
 				if(freeform_z_levels.len)
 					dat += "<BR><BR><B>Freeform docking spaces:</B>"
 					for(var/key in freeform_z_levels)
 						dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=freeform_dock;z_value=[freeform_z_levels[key]]'>Designate Location</a>"
 
-				if(gateways.len)
-					dat += "<BR><BR><B>Wormhole Entries:</B>"
-					for(var/key in gateways)
-						dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=gateway_dock;dock_id=[gateways[key].id]'>Enter Wormhole</a>"
 
 	var/datum/browser/popup = new(user, "overmap_shuttle_control", "Shuttle Control", 400, 440)
 	popup.set_content(dat.Join())
