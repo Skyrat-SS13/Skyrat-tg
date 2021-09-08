@@ -19,6 +19,9 @@
 		#include "map_files\tramstation\tramstation.dmm"
 		#include "map_files\NSSJourney\NSSJourney.dmm" //SKYRAT EDIT ADDITON
 		#include "map_files\Mining\TidalLock.dmm" //SKYRAT EDIT ADDITION
+		#include "map_files\NSSEcho\echostation_core.dmm"
+		#include "map_files\PubbyStation\PubbyStation.dmm"
+		#include "map_files\ManaForge\manaforge.dmm"
 
 		#ifdef CIBUILDING
 			#include "templates.dm"
