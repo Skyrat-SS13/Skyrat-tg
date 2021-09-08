@@ -1450,7 +1450,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			Be careful with wording, as artificial intelligences may look for loopholes to exploit."
 	item = /obj/item/ai_module/syndicate
 	cost = 4
-
+/* Skyrat Edit: Rumored to be bugged and non-functional. Need to check.
 /datum/uplink_item/device_tools/hypnotic_flash
 	name = "Hypnotic Flash"
 	desc = "A modified flash able to hypnotize targets. If the target is not in a mentally vulnerable state, it will only confuse and pacify them temporarily."
@@ -1462,7 +1462,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "A modified flashbang grenade able to hypnotize targets. The sound portion of the flashbang causes hallucinations, and will allow the flash to induce a hypnotic trance to viewers."
 	item = /obj/item/grenade/hypnotic
 	cost = 12
-
+*/
 /datum/uplink_item/device_tools/medgun
 	name = "Medbeam Gun"
 	desc = "A wonder of Syndicate engineering, the Medbeam gun, or Medi-Gun enables a medic to keep his fellow \
