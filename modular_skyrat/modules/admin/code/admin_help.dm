@@ -14,7 +14,7 @@
 			return
 	//SKYRAT EDIT ADDITION END
 
-	var/msg = "<span class ='adminhelp'>Your ticket is now being handled by [usr?.client?.holder?.fakekey? usr.client.holder.fakekey : "an administrator"]! Please wait while they type their response and/or gather relevant information.</span>"
+	var/msg = span_adminhelp("Your ticket is now being handled by [usr?.client?.holder?.fakekey? usr.client.holder.fakekey : "an administrator"]! Please wait while they type their response and/or gather relevant information.")
 
 	if(initiator)
 		to_chat(initiator, msg)

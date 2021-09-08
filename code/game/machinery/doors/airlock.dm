@@ -33,7 +33,7 @@
 	var/em_block_key = "[base_icon_key][em_block]"
 	var/mutable_appearance/em_blocker = airlock_overlays[em_block_key]
 	if(!em_blocker)
-		em_blocker = airlock_overlays[em_block_key] = mutable_appearance(icon_file, icon_state, plane = EMISSIVE_PLANE)
+		em_blocker = airlock_overlays[em_block_key] = mutable_appearance(icon_file, icon_state, plane = EMISSIVE_PLANE, appearance_flags = EMISSIVE_APPEARANCE_FLAGS)
 		em_blocker.color = em_block ? GLOB.em_block_color : GLOB.emissive_color
 
 	return list(., em_blocker)
@@ -232,7 +232,10 @@
 /obj/machinery/door/airlock/proc/update_other_id()
 	for(var/obj/machinery/door/airlock/Airlock in GLOB.airlocks)
 		if(Airlock.closeOtherId == closeOtherId && Airlock != src)
-			close_others += Airlock
+			if(!(Airlock in close_others))
+				close_others += Airlock
+			if(!(src in Airlock.close_others))
+				Airlock.close_others += src
 
 /obj/machinery/door/airlock/proc/cyclelinkairlock()
 	if (cyclelinkedairlock)
@@ -616,6 +619,10 @@
 
 /obj/machinery/door/airlock/examine(mob/user)
 	. = ..()
+	if(closeOtherId)
+		. += span_warning("This airlock cycles on ID: [sanitize(closeOtherId)].")
+	else if(!closeOtherId)
+		. += span_warning("This airlock does not cycle.")
 	if(obj_flags & EMAGGED)
 		. += span_warning("Its access panel is smoking slightly.")
 	if(note)
