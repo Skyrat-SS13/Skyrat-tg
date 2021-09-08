@@ -629,8 +629,8 @@
 		/datum/reagent/consumable/ethanol/creme_de_coconut,
 		/datum/reagent/consumable/ethanol/triple_sec,
 		/datum/reagent/consumable/ethanol/sake,
-		/datum/reagent/consumable/ethanol/applejack,
-		/datum/reagent/consumable/ethanol/synthanol
+		/datum/reagent/consumable/ethanol/applejack, // SKYRAT EDIT
+		/datum/reagent/consumable/ethanol/synthanol // SKYRAT EDIT
 	)
 	upgrade_reagents = null
 	emagged_reagents = list(
