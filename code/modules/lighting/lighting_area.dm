@@ -29,4 +29,10 @@
 		if(NAMEOF(src, dynamic_lighting))
 			set_dynamic_lighting(var_value)
 			return TRUE
+		if("static_lighting")
+			if(!static_lighting)
+				create_area_lighting_objects()
+			else
+				remove_area_lighting_objects()
+
 	return ..()
