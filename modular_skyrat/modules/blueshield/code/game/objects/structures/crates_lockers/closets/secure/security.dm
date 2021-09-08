@@ -22,3 +22,5 @@
 	new /obj/item/clothing/suit/armor/vest/blueshield(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/clothing/under/rank/security/blueshield(src)
+	new /obj/item/clothing/suit/armor/vest/blueshieldarmor(src)
+	new /obj/item/clothing/under/rank/security/blueshieldskirt(src)

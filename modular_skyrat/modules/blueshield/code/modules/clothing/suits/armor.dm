@@ -8,3 +8,12 @@
 	icon_state = "blueshield"
 	body_parts_covered = CHEST|ARMS
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 75)
+
+/obj/item/clothing/suit/armor/vest/blueshieldarmor
+	name = "Blueshield's Armor"
+	desc = "A tight-fitting kevlar-lined vest with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "blueshieldarmor"
+	body_parts_covered = CHEST
+	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 75)
