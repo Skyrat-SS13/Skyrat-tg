@@ -20,7 +20,7 @@
 
 	//SKYRAT EDIT ADDITION
 	/// The type of the overmap object that will be created
-	var/datum/overmap_object/overmap_type = /datum/overmap_object/shuttle/planet
+	var/datum/overmap_object/overmap_type
 	//SKYRAT EDIT END
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
@@ -112,8 +112,10 @@
 /datum/map_template/proc/load_new_z()
 	var/x = round((world.maxx - width) * 0.5) + 1
 	var/y = round((world.maxy - height) * 0.5) + 1
-
-	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE, ZTRAIT_CENTCOM = TRUE)) //SKYRAT EDIT CHANGE
+	var/coordinate_x = rand(5, 25)
+	var/coordinate_y = rand(5, 25)
+	var/datum/overmap_object/linked_overmap_object = new /datum/overmap_object/shuttle/planet/gateway(SSovermap.main_system, coordinate_x, coordinate_y)
+	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE, ZTRAIT_CENTCOM = TRUE), overmap_obj = linked_overmap_object) //SKYRAT EDIT CHANGE
 	var/datum/parsed_map/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=should_place_on_top)
 	var/list/bounds = parsed.bounds
 	if(!bounds)

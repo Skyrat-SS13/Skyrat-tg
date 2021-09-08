@@ -13,8 +13,6 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/map_templates = list()
 
-	var/list/misc_templates = list()
-
 	var/list/planet_templates = list()
 
 	var/list/ruins_templates = list()
@@ -356,8 +354,8 @@ Used by the AI doomsday and the self-destruct nuke.
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 
 	//Load the NCV Titan
-	var/datum/misc_template/titan_template = misc_templates[/datum/misc_template/ncv_titan]
-	titan_template.LoadTemplate(SSovermap.main_system, rand(3,10), rand(3,10))
+	var/datum/misc_template/ncv_titan/titan_template = new /datum/misc_template/ncv_titan
+	titan_template.LoadTemplate(SSovermap.main_system, rand(5, 25), rand(5, 25))
 
 	var/list/planet_list = SPAWN_PLANET_WEIGHT_LIST
 	if(config.amount_of_planets_spawned)
@@ -485,7 +483,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		map_templates[T.name] = T
 
 	preloadPlanetTemplates()
-	preloadMiscTemplates()
 	preloadRuinTemplates()
 	preloadShuttleTemplates()
 	preloadShelterTemplates()
@@ -493,10 +490,6 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/preloadPlanetTemplates()
 	for(var/path in subtypesof(/datum/planet_template))
-		planet_templates[path] = new path()
-
-/datum/controller/subsystem/mapping/proc/preloadMiscTemplates()
-	for(var/path in subtypesof(/datum/misc_template))
 		planet_templates[path] = new path()
 
 /datum/controller/subsystem/mapping/proc/preloadRuinTemplates()

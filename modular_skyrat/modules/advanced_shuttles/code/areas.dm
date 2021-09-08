@@ -1,13 +1,13 @@
 /area/centcom/interlink
 	name = "The Interlink"
 
-/area/shuttle/ncvtitan
+/area/centcom/ncvtitan
 	name = "NCV Titan"
 
-/area/shuttle/ncvtitan/import_bay
+/area/centcom/ncvtitan/import_bay
 	name = "NCV Titan Import Bay"
 
-/area/shuttle/ncvtitan/export_bay
+/area/centcom/ncvtitan/export_bay
 	name = "NCV Titan Export Bay"
 
 /area/shuttle/supply/cockpit

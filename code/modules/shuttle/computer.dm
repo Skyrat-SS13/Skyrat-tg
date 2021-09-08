@@ -27,6 +27,21 @@
 	if(!mapload)
 		connect_to_shuttle(SSshuttle.get_containing_shuttle(src))
 
+//SKYRAT EDIT ADDITION
+/obj/machinery/computer/shuttle/attacked_by(obj/item/smacking_object, mob/living/user)
+	if(istype(smacking_object, /obj/item/navigation_datacard))
+		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
+		if(M.mode == SHUTTLE_NAV_ERROR)
+			to_chat(user, span_notice("You insert [smacking_object] into [src] loading the navigational data!"))
+			say("Navigational data loaded.")
+			playsound(loc, 'sound/machines/terminal_insert_disc.ogg', 35, 1)
+			M.mode = SHUTTLE_IDLE
+			qdel(smacking_object)
+		else
+			to_chat(user, span_notice("[src] does not have a corrupted navigations system!"))
+			say("Error loading navigational disk.")
+//SKYRAT EDIT END
+
 /obj/machinery/computer/shuttle/ui_interact(mob/user, datum/tgui/ui)
 	//SKYRAT EDIT ADDITION/CHANGE
 	if(uses_overmap)
@@ -39,6 +54,8 @@
 			status_info = "Unauthorized Access"
 		else if(locked)
 			status_info = "Locked"
+		else if(M.mode == SHUTTLE_NAV_ERROR)
+			status_info = "NAVIGATIONAL SYSTEM ERROR, RECALIBRATION REQUIRED!"
 		else
 			switch(M.mode)
 				if(SHUTTLE_IGNITING)
@@ -75,6 +92,11 @@
 	if(!isliving(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
+	if(M.mode == SHUTTLE_NAV_ERROR)
+		to_chat(usr, span_warning("Shuttle navigation systems are inoperable. Contact your IT supervisor immediately."))
+		say("Navigational systems error.")
+		playsound(src, 'sound/machines/buzz-two.ogg', 20)
+		return
 	switch(href_list["task"])
 		if("engines_off")
 			M.TurnEnginesOff()

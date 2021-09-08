@@ -78,3 +78,10 @@
 	shuttle_idle_state = "globe"
 	shuttle_forward_state = "globe"
 	shuttle_backward_state = "globe"
+
+/obj/effect/abstract/overmap/shuttle/gateway
+	icon_state = "gateway"
+	layer = OVERMAP_LAYER_PLANET
+	shuttle_idle_state = "gateway"
+	shuttle_forward_state = "gateway"
+	shuttle_backward_state = "gateway"

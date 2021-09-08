@@ -38,3 +38,9 @@
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/computer/shuttle/common_docks
 
+/obj/docking_port/stationary/gateway
+	name = "landing zone"
+	id = "gateway"
+	width = 35
+	dwidth = 11
+	height = 22

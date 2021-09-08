@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(cargo_control_consoles)
 	. = ..()
 	radio = new /obj/item/radio/headset/headset_cargo(src)
 	GLOB.cargo_control_consoles += src
-	for(var/area/shuttle/ncvtitan/import_bay/iterating_import_bay in world)
+	for(var/area/centcom/ncvtitan/import_bay/iterating_import_bay in world)
 		for(var/turf/open/floor/iterating_floor in iterating_import_bay)
 			possible_floors += iterating_floor
 

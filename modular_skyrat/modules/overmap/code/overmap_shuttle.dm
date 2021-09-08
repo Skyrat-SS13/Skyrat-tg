@@ -275,6 +275,7 @@
 						freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
 
 				var/list/obj/docking_port/stationary/docks = list()
+				var/list/obj/docking_port/stationary/gateway/gateways = list()
 				var/list/options = params2list(my_shuttle.possible_destinations)
 				for(var/i in SSshuttle.stationary)
 					var/obj/docking_port/stationary/iterated_dock = i
@@ -283,6 +284,9 @@
 					if(!options.Find(iterated_dock.port_destinations))
 						continue
 					if(!my_shuttle.check_dock(iterated_dock, silent = TRUE))
+						continue
+					if(istype(iterated_dock, /obj/docking_port/stationary/gateway))
+						gateways[iterated_dock.name] = iterated_dock
 						continue
 					docks[iterated_dock.name] = iterated_dock
 
@@ -293,6 +297,11 @@
 				dat += "<BR><BR><B>Freeform docking spaces:</B>"
 				for(var/key in freeform_z_levels)
 					dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=freeform_dock;z_value=[freeform_z_levels[key]]'>Designate Location</a>"
+
+				if(gateways.len)
+					dat += "<BR><BR><B>Wormhole Entries:</B>"
+					for(var/key in gateways)
+						dat += "<BR> - [key] - <a href='?src=[REF(src)];task=dock;dock_control=gateway_dock;dock_id=[gateways[key].id]'>Enter Wormhole</a>"
 
 	var/datum/browser/popup = new(user, "overmap_shuttle_control", "Shuttle Control", 400, 440)
 	popup.set_content(dat.Join())
@@ -457,6 +466,24 @@
 						return
 					shuttle_controller.SetController(usr)
 					shuttle_controller.freeform_docker = new /datum/shuttle_freeform_docker(shuttle_controller, usr, z_level)
+				if("gateway_dock")
+					if(shuttle_controller.busy)
+						return
+					var/dock_id = href_list["dock_id"]
+					var/obj/docking_port/stationary/target_dock = SSshuttle.getDock(dock_id)
+					if(!target_dock)
+						return
+					var/datum/space_level/level_of_dock = SSmapping.z_list[target_dock.z]
+					var/datum/overmap_object/dock_overmap_object = level_of_dock.related_overmap_object
+					if(!dock_overmap_object)
+						return
+					if(!current_system.ObjectsAdjacent(src, dock_overmap_object))
+						return
+					switch(SSshuttle.moveShuttle(my_shuttle.id, dock_id, 1))
+						if(0)
+							shuttle_controller.busy = TRUE
+							shuttle_controller.RemoveCurrentControl()
+							my_shuttle.mode = SHUTTLE_NAV_ERROR
 
 		if("target")
 			if(!(shuttle_capability & SHUTTLE_CAN_USE_TARGET))
@@ -693,3 +720,13 @@
 
 /datum/overmap_object/shuttle/ncv_titan
 	name = "NCV Titan"
+	speed_divisor_from_mass = 20
+
+/datum/overmap_object/shuttle/planet/gateway
+	name = "Wormhole"
+	visual_type = /obj/effect/abstract/overmap/shuttle/gateway
+	planet_color = COLOR_CYAN
+
+/datum/overmap_object/shuttle/planet/gateway/New()
+	. = ..()
+	my_visual.color = planet_color
