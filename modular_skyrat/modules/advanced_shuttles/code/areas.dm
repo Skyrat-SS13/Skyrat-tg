@@ -10,6 +10,15 @@
 /area/centcom/ncvtitan/export_bay
 	name = "NCV Titan Export Bay"
 
+/area/shuttle/ncvtitan
+	name = "NCV Titan"
+
+/area/shuttle/ncvtitan/import_bay
+	name = "NCV Titan Import Bay"
+
+/area/shuttle/ncvtitan/export_bay
+	name = "NCV Titan Export Bay"
+
 /area/shuttle/supply/cockpit
 	name = "NLV Consign Cockpit"
 

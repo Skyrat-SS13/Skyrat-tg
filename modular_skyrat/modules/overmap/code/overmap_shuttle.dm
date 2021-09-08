@@ -272,8 +272,7 @@
 					for(var/level in IO.related_levels)
 						var/datum/space_level/iterated_space_level = level
 						z_levels["[iterated_space_level.z_value]"] = TRUE
-						if(IO.allow_freeform_docking)
-							freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
+						freeform_z_levels["[iterated_space_level.name] - Freeform"] = iterated_space_level.z_value
 
 				var/list/obj/docking_port/stationary/docks = list()
 				var/list/obj/docking_port/stationary/gateway/gateways = list()

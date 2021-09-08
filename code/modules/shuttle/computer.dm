@@ -35,7 +35,7 @@
 			to_chat(user, span_notice("You insert [smacking_object] into [src] loading the navigational data!"))
 			say("Navigational data loaded.")
 			playsound(loc, 'sound/machines/terminal_insert_disc.ogg', 35, 1)
-			M.mode = SHUTTLE_IDLE
+			M.gateway_stranded = FALSE
 			qdel(smacking_object)
 		else
 			to_chat(user, span_notice("[src] does not have a corrupted navigations system!"))
