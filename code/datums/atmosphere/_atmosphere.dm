@@ -59,7 +59,7 @@
 		//SKYRAT EDIT END
 		gaslist[gastype][MOLES] += amount
 
-	/* CURRENTLY DISABLED AS I DONT KNOW WHY THIS RUNTIMES AND BREAKS A LOT OF THINGS (cannot read list)
+	/* CURRENTLY DISABLED AS I DONT KNOW WHY THIS RUNTIMES AND BREAKS A LOT OF THINGS (cannot read list) //SKYRAT EDIT REMOVAL
 	// That last one put us over the limit, remove some of it
 	while(gasmix.return_pressure() > target_pressure)
 		gaslist[gastype][MOLES] -= 1
