@@ -109,6 +109,11 @@
 		qdel(extension)
 	. = ..()
 
+/obj/structure/shuttle/engine/obj_destruction(damage_flag)
+	explosion(src, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 4)
+	return ..()
+
+
 //Propagates the change to the shuttle.
 /obj/structure/shuttle/engine/proc/alter_engine_power(mod)
 	if(mod == 0)

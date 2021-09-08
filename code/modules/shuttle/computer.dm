@@ -132,6 +132,7 @@
 					M.possible_destinations = possible_destinations
 					M.destination = "overmap"
 					M.mode = SHUTTLE_IGNITING
+					M.play_engine_sound(src, TRUE)
 					M.setTimer(5 SECONDS)
 					say("Shuttle departing. Please stand away from the doors.")
 					log_shuttle("[key_name(usr)] has sent shuttle \"[M]\" into the overmap.")
