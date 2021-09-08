@@ -543,6 +543,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if("reject")
 			Reject()
 		if("reply")
+			HandleIssue() /// SKYRAT EDIT ADDITION - ADMIN HANDLE
 			usr.client.cmd_ahelp_reply(initiator)
 		if("icissue")
 			ICIssue()
