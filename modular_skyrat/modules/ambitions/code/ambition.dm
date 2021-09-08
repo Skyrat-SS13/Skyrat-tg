@@ -63,6 +63,7 @@
 	dat += "<b>Antagonists are supposed to provide excitement and intrigue, drive a story with the crew, and provide fun and interesting experience for people involved. <BR> Remember, it's not about winning or losing, but about the story and interactions, this is a roleplay server.</b><BR><BR>"
 	dat += "<i>Here you write your ambitions for your antagonist round! Ambitions are your motive and what you plan to accomplish throught the round.</i>"
 	dat += "<BR><i>After filling all things out and submitting your ambition, your uplink/powers will unlock.</i>"
+	dat += "<BR><i>For your narrative, you could try thinking about your character's current conflicts, use the View Crew Exploitables verb in the OOC tab, or many other things.</i>"
 	dat += "<BR><i>If you can't come up with anything, use a <b>template</b>, and if you don't know if your ambition are proper, or too extreme, <b>request admin review</b>.</i>"
 	dat += "<BR><i>You can still edit them post submission.</i>"
 	dat += "<BR><b><font color='#FF0000'>If your ambitions are nonsensical, you may be subjected to an antagonist ban.</font></b>"
@@ -84,7 +85,7 @@
 		dat += "<BR><b><font color='#ffd500'>[last_requested_change]</font></b>"
 		dat += "<BR><a href='?src=[REF(src)];pref=requested_done'>Notify admin that you've done them!</a></b>"
 	dat += "<h3>Narrative:</h3>"
-	dat += "<i>Here you set your narrative. It's the reason on why you're doing antagonistic things. Perhaps you need money for personal reasons, or you were contracted to do someone's dirty work, or want to take down the BigPharma.</i>"
+	dat += "<i>Here you set your narrative. It's the reason on why you're doing antagonistic things. Perhaps you need money for personal reasons, or you were contracted to do someone's dirty work, or want to take down the BigPharma? And if you're stumped, you can always view the exploitables of your fellow crew via the <b>View Crew Exploitables</b> verb in the OOC tab!</i>"
 	dat += "<BR><table align='center'; width='100%'; style='background-color:#13171C'><tr><td><center>"
 	if(narrative == "")
 		dat += "<font color='#CCCCFF'><b>Please set your narrative!</b></font>"

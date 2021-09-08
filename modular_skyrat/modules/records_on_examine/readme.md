@@ -25,6 +25,8 @@ acquired by examining. Added a field for exploitables in the locked record secti
 EXPLOITABLE VERB EDIT: tgui.dm (code\_globalvars)
 Adds a new var
 
+Also changes Ambition.dm, changing a few of the text lines to show the new verb.
+
 ### Defines:
 
 - N/A
