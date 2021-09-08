@@ -808,6 +808,11 @@
 /// from /obj/machinery/atmospherics/components/binary/valve/toggle(): (on)
 #define COMSIG_VALVE_SET_OPEN "valve_toggled"
 
+// /obj access signals
+
+#define COMSIG_OBJ_ALLOWED "door_try_to_activate"
+	#define COMPONENT_OBJ_ALLOW (1<<0)
+
 // /obj/machinery/door/airlock signals
 
 //from /obj/machinery/door/airlock/open(): (forced)
@@ -1380,6 +1385,9 @@
 
 /// Called when the integrated circuit's shell is set.
 #define COMSIG_CIRCUIT_SET_SHELL "circuit_set_shell"
+
+/// Called when the integrated circuit's is locked.
+#define COMSIG_CIRCUIT_SET_LOCKED "circuit_set_locked"
 
 /// Sent to an atom when a [/obj/item/usb_cable] attempts to connect to something. (/obj/item/usb_cable/usb_cable, /mob/user)
 #define COMSIG_ATOM_USB_CABLE_TRY_ATTACH "usb_cable_try_attach"

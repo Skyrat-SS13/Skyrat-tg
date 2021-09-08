@@ -5254,13 +5254,6 @@
 /obj/effect/turf_decal/loading_area,
 /turf/open/floor/iron,
 /area/tdome/arena)
-"avd" = (
-/obj/structure/table/wood/fancy,
-/obj/item/storage/pill_bottle/dice{
-	icon_state = "magicdicebag"
-	},
-/turf/open/floor/carpet,
-/area/wizard_station)
 "avg" = (
 /obj/machinery/abductor/console{
 	team_number = 3
@@ -9129,11 +9122,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/control)
-"aGZ" = (
-/obj/structure/table/wood,
-/obj/item/storage/pill_bottle/dice,
-/turf/open/floor/iron/grimy,
-/area/centcom/ferry)
 "aHb" = (
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/wood,
@@ -14817,6 +14805,20 @@
 	},
 /turf/open/floor/iron,
 /area/tdome/arena_source)
+"eRc" = (
+/obj/docking_port/stationary{
+	dheight = 3;
+	dir = 8;
+	dwidth = 8;
+	height = 11;
+	id = "ferry_away";
+	json_key = null;
+	name = "CentCom Ferry Dock";
+	roundstart_template = /datum/map_template/shuttle/ferry;
+	width = 20
+	},
+/turf/open/space,
+/area/space)
 "fqI" = (
 /obj/machinery/door/poddoor{
 	id = "thunderdomegen";
@@ -14917,6 +14919,13 @@
 	},
 /turf/open/floor/iron,
 /area/tdome/arena_source)
+"kht" = (
+/obj/structure/table/wood/fancy,
+/obj/item/storage/dice{
+	icon_state = "magicdicebag"
+	},
+/turf/open/floor/carpet,
+/area/wizard_station)
 "kOX" = (
 /turf/open/floor/iron,
 /area/centcom/ferry)
@@ -15060,20 +15069,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/tdome/arena_source)
-"rTn" = (
-/obj/docking_port/stationary{
-	dheight = 3;
-	dir = 8;
-	dwidth = 8;
-	height = 11;
-	id = "ferry_away";
-	json_key = null;
-	name = "CentCom Ferry Dock";
-	roundstart_template = /datum/map_template/shuttle/ferry;
-	width = 20
-	},
-/turf/open/space,
-/area/space)
 "rZC" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -15179,6 +15174,11 @@
 	},
 /turf/open/floor/iron,
 /area/tdome/arena_source)
+"wHS" = (
+/obj/structure/table/wood,
+/obj/item/storage/dice,
+/turf/open/floor/iron/grimy,
+/area/centcom/ferry)
 "wQu" = (
 /obj/machinery/light{
 	dir = 4
@@ -22819,7 +22819,7 @@ aSX
 afp
 aSX
 aRY
-avd
+kht
 aMS
 aEt
 asv
@@ -48004,7 +48004,7 @@ aaa
 aaa
 aaa
 aaa
-rTn
+eRc
 aaa
 aaa
 aaa
@@ -52368,7 +52368,7 @@ aLs
 aWA
 ana
 ats
-aGZ
+wHS
 aMv
 awx
 aWA

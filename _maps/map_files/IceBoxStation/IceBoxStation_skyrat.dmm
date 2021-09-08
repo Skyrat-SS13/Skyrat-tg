@@ -769,18 +769,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/processing)
-"afa" = (
-/obj/machinery/firealarm/directional/west,
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/turf/open/floor/planetary/dirt/planet,
-/area/security/prison)
 "afh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 4
@@ -2759,17 +2747,6 @@
 	},
 /turf/open/floor/plating,
 /area/security/processing)
-"anO" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/turf/open/floor/planetary/dirt/planet,
-/area/security/prison)
 "anP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
@@ -7904,6 +7881,15 @@
 	},
 /turf/open/floor/engine,
 /area/science/misc_lab)
+"bcH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/computer/shuttle_purchase{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/hallway/secondary/entry)
 "bcI" = (
 /obj/structure/tank_holder/oxygen,
 /turf/open/floor/plating,
@@ -8574,13 +8560,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science/research)
-"bgs" = (
-/obj/docking_port/stationary/huge{
-	dir = 2;
-	name = "SS13: Auxiliary Dock, Station-Port"
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/icemoon/surface/outdoors)
 "bgw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14562,15 +14541,6 @@
 /obj/structure/cable,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
-"bOg" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/computer/shuttle_purchase{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/hallway/secondary/entry)
 "bOh" = (
 /obj/structure/railing{
 	dir = 4
@@ -21946,21 +21916,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/maintenance/port/fore)
-"ehI" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/item/seeds/tomato,
-/turf/open/floor/planetary/dirt/planet,
-/area/security/prison)
 "ehY" = (
 /obj/machinery/light/small/directional/south,
 /obj/effect/turf_decal/vg_decals/atmos/oxygen{
@@ -23798,21 +23753,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
-"fgk" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/item/reagent_containers/glass/bottle/nutrient/ez,
-/turf/open/floor/planetary/dirt/planet,
-/area/security/prison)
 "fgs" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -24262,6 +24202,23 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/maintenance/fore)
+"fue" = (
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/structure/water_source{
+	dir = 8;
+	name = "sink";
+	pixel_x = 12;
+	pixel_y = -6
+	},
+/turf/open/floor/planetary/dirt/planet,
+/area/security/prison)
 "fum" = (
 /obj/machinery/light/directional/south,
 /obj/machinery/door_timer{
@@ -25329,20 +25286,6 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/commons/toilet/locker)
-"fWP" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/turf/open/floor/planetary/dirt/planet,
-/area/security/prison)
 "fWQ" = (
 /obj/structure/chair/comfy/brown{
 	dir = 4
@@ -29325,6 +29268,48 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/vault/rock,
 /area/security/prison)
+"iep" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/seeds/aloe,
+/obj/item/seeds/apple,
+/obj/item/seeds/cabbage,
+/obj/item/seeds/whitebeet,
+/obj/item/seeds/redbeet,
+/obj/item/seeds/sugarcane,
+/obj/item/seeds/sunflower,
+/obj/item/seeds/tea,
+/obj/item/seeds/tea/astra,
+/obj/item/seeds/tobacco,
+/obj/item/seeds/tomato/blood,
+/obj/item/seeds/cocoapod/vanillapod,
+/obj/item/seeds/cocoapod,
+/obj/item/seeds/coffee/robusta,
+/obj/item/seeds/coffee,
+/obj/item/seeds/corn,
+/obj/item/seeds/cotton,
+/obj/item/seeds/cotton/durathread,
+/obj/item/seeds/potato/sweet,
+/obj/item/grown/cotton,
+/obj/item/food/grown/poppy,
+/obj/item/food/grown/poppy/geranium,
+/obj/item/food/grown/poppy/lily,
+/obj/item/food/grown/harebell,
+/obj/item/food/grown/garlic,
+/obj/item/food/grown/onion,
+/obj/item/food/grown/peas,
+/obj/item/grown/log,
+/obj/item/food/grown/mushroom/chanterelle,
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/item/food/grown/wheat,
+/turf/open/floor/planetary/dirt/planet,
+/area/security/prison)
 "ieu" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -31478,6 +31463,17 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/openspace,
 /area/science/xenobiology)
+"joY" = (
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/turf/open/floor/planetary/dirt/planet,
+/area/security/prison)
 "joZ" = (
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
@@ -33787,48 +33783,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/checkpoint/supply)
-"kBU" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/seeds/aloe,
-/obj/item/seeds/apple,
-/obj/item/seeds/cabbage,
-/obj/item/seeds/whitebeet,
-/obj/item/seeds/redbeet,
-/obj/item/seeds/sugarcane,
-/obj/item/seeds/sunflower,
-/obj/item/seeds/tea,
-/obj/item/seeds/tea/astra,
-/obj/item/seeds/tobacco,
-/obj/item/seeds/tomato/blood,
-/obj/item/seeds/cocoapod/vanillapod,
-/obj/item/seeds/cocoapod,
-/obj/item/seeds/coffee/robusta,
-/obj/item/seeds/coffee,
-/obj/item/seeds/corn,
-/obj/item/seeds/cotton,
-/obj/item/seeds/cotton/durathread,
-/obj/item/seeds/potato/sweet,
-/obj/item/grown/cotton,
-/obj/item/food/grown/poppy,
-/obj/item/food/grown/poppy/geranium,
-/obj/item/food/grown/poppy/lily,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/garlic,
-/obj/item/food/grown/onion,
-/obj/item/food/grown/peas,
-/obj/item/grown/log,
-/obj/item/food/grown/mushroom/chanterelle,
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/item/food/grown/wheat,
-/turf/open/floor/planetary/dirt/planet,
-/area/security/prison)
 "kCr" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
@@ -42152,6 +42106,20 @@
 /obj/item/radio/intercom/directional/west,
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"oSu" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/turf/open/floor/planetary/dirt/planet,
+/area/security/prison)
 "oSy" = (
 /obj/machinery/light_switch/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -42226,6 +42194,21 @@
 	},
 /turf/open/floor/iron,
 /area/medical/medbay/central)
+"oTU" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/item/reagent_containers/glass/bottle/nutrient/ez,
+/turf/open/floor/planetary/dirt/planet,
+/area/security/prison)
 "oTY" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -44324,11 +44307,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"pVh" = (
-/obj/structure/table/wood,
-/obj/item/storage/pill_bottle/dice,
-/turf/open/floor/iron,
-/area/commons/dorms)
 "pVz" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -47343,6 +47321,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/construction)
+"rEJ" = (
+/obj/structure/table/wood,
+/obj/item/storage/dice,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "rEK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/purple/visible{
 	dir = 4
@@ -50333,6 +50316,18 @@
 /obj/item/wrench,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"tgR" = (
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/turf/open/floor/planetary/dirt/planet,
+/area/security/prison)
 "thg" = (
 /obj/structure/chair/office{
 	dir = 1
@@ -52328,23 +52323,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/surface/outdoors)
-"ufz" = (
-/obj/machinery/hydroponics/soil{
-	desc = "A patch of fertile soil that you can plant stuff in.";
-	icon = 'icons/turf/floors.dmi';
-	icon_state = "dirt";
-	layer = 2.0001;
-	plane = -7;
-	self_sustaining = 1
-	},
-/obj/structure/water_source{
-	dir = 8;
-	name = "sink";
-	pixel_x = 12;
-	pixel_y = -6
-	},
-/turf/open/floor/planetary/dirt/planet,
-/area/security/prison)
 "ufF" = (
 /obj/structure/table,
 /obj/item/stock_parts/subspace/transmitter,
@@ -52943,6 +52921,21 @@
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
+"uuq" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/hydroponics/soil{
+	desc = "A patch of fertile soil that you can plant stuff in.";
+	icon = 'icons/turf/floors.dmi';
+	icon_state = "dirt";
+	layer = 2.0001;
+	plane = -7;
+	self_sustaining = 1
+	},
+/obj/item/seeds/tomato,
+/turf/open/floor/planetary/dirt/planet,
+/area/security/prison)
 "uuO" = (
 /obj/effect/spawner/structure/window,
 /obj/structure/curtain/cloth/fancy/mechanical{
@@ -54554,6 +54547,13 @@
 /obj/structure/flora/tree/dead,
 /turf/open/floor/plating/asteroid/snow/standard_air,
 /area/science/research)
+"vmE" = (
+/obj/docking_port/stationary/huge{
+	dir = 2;
+	name = "SS13: Auxiliary Dock, Station-Port"
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors)
 "vnb" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/corner{
@@ -69660,7 +69660,7 @@ boP
 awW
 awZ
 ayn
-bOg
+bcH
 aAC
 boP
 boP
@@ -70177,7 +70177,7 @@ ayl
 beK
 auP
 cyt
-bgs
+vmE
 boP
 boP
 boP
@@ -84757,10 +84757,10 @@ abf
 azH
 acd
 suc
-fWP
-afa
-anO
-anO
+oSu
+tgR
+joY
+joY
 azv
 xto
 asw
@@ -85014,10 +85014,10 @@ abf
 lbB
 acd
 ady
-ehI
-anO
-anO
-anO
+uuq
+joY
+joY
+joY
 azv
 aaP
 sdI
@@ -85271,10 +85271,10 @@ abf
 arS
 hbC
 adB
-fWP
-anO
-anO
-kBU
+oSu
+joY
+joY
+iep
 acd
 lMO
 gpK
@@ -85528,10 +85528,10 @@ vdG
 abY
 acd
 uAZ
-fWP
-anO
-anO
-anO
+oSu
+joY
+joY
+joY
 azv
 xOe
 pNO
@@ -85785,10 +85785,10 @@ eMG
 aeL
 acd
 hZN
-fgk
-ufz
-anO
-anO
+oTU
+fue
+joY
+joY
 azv
 xto
 asw
@@ -92763,7 +92763,7 @@ xHC
 uwx
 nCI
 xWL
-pVh
+rEJ
 dNW
 jSk
 hme
