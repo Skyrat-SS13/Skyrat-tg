@@ -206,6 +206,16 @@
 	icon_state = "temperature"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/temperature
 
+//MEDIGUN WIKI BOOK
+/obj/item/book/manual/wiki/mediguns
+	name = "Medigun Operating Manual"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon_state = "manual"
+	author = "VeyMedical"
+	title = "Medigun Operating Manual"
+	page_link = "Guide_to_Mediguns"
+	skyrat_wiki = TRUE
+
 //Medigun Gunsets/
 /obj/item/storage/briefcase/medicalgunset/
 	name = "Medigun Supply Kit"
