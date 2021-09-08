@@ -187,6 +187,17 @@
 	icon_state = "Oxy3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III
+
+//Medigun Manual
+/obj/item/book/manual/wiki/mediguns
+	name = "Medigun Operating Manual"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon_state = "manual"
+	author = "VeyMedical"
+	title = "Medigun Operating Manual"
+	page_link = "Guide_to_Mediguns"
+	skyrat_wiki = TRUE
+
 //Medigun Gunsets/
 /obj/item/storage/briefcase/medicalgunset/
 	name = "Medigun Supply Kit"
@@ -205,6 +216,7 @@
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/medigun/standard(src)
+	new /obj/item/book/manual/wiki/mediguns(src)
 
 /obj/item/storage/briefcase/medicalgunset/cmo
 	name = "VeyMedical CWM-479-CC Cell Powered Medigun case"
@@ -216,6 +228,7 @@
 	new /obj/item/medicell/brute1(src)
 	new /obj/item/medicell/burn1(src)
 	new /obj/item/medicell/toxin1(src)
+	new /obj/item/book/manual/wiki/mediguns(src)
 
 //Medigun Cell Insertion and Removal//
 /obj/item/gun/energy/medigun/attackby(obj/item/medicell/M, mob/user)

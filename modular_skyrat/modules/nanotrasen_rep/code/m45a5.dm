@@ -12,7 +12,7 @@
 	fire_sound_volume = 60
 	spread = 2
 	force = 8 //There's heavier guns that dealt less damage on melee than this so we're reducing it from the original 12
-	recoil = 1
+	recoil = 0
 	realistic = TRUE
 	dirt_modifier = 0.1
 	can_flashlight = TRUE

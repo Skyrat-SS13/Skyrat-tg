@@ -513,3 +513,13 @@
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant","Civil Disputes Officer","Corrections Officer")
 	restricted_desc = "All Security Personnel"
+
+/datum/loadout_item/suit/bltrench
+	name = "Black Trenchcoat"
+	path = /obj/item/clothing/suit/trenchblack
+	cost = 2
+
+/datum/loadout_item/suit/brtrench
+	name = "Brown Trenchcoat"
+	path = /obj/item/clothing/suit/trenchbrown
+	cost = 2
