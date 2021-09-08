@@ -59,8 +59,6 @@
 	SEND_SIGNAL(src, COMSIG_FIREDOOR_CLOSED_FIRE)
 
 /obj/machinery/door/firedoor/proc/CalculateAffectingAreas()
-	SIGNAL_HANDLER
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/CalculateAffectingAreas)
 	for(var/turf/adjacent_turf in range(1, src))
 		RegisterSignal(adjacent_turf, COMSIG_TURF_EXPOSE, .proc/atmos_changed, override = TRUE)
 
