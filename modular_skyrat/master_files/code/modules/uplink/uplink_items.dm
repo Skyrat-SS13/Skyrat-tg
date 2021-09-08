@@ -39,13 +39,13 @@
 	name = "Hacker bundle"
 	desc = "Subvert everything in sight using some of the most advanced tools available to operatives. If it’s powered, it’s already under your thumb."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/hacker
-	cost = 15
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/metaops
 	name = "Bulldog Operative bundle"
 	desc = "Fight the power with this frontline combatant kit, featuring armor and armaments commonly utilized by assault operative teams."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops
-	cost = 23
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/bond
 	name = "Classic Spy bundle"
@@ -87,7 +87,7 @@
 	name = "Doctor Death bundle"
 	desc = "Be your very own mad scientist with this toxic bundle! Warning, license void if poisons used on self. Read bottom of bag for more information."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/doctordeath
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/donkcoshill
 	name = "Donk Co. Shill bundle"
@@ -99,7 +99,7 @@
 	name = "Downtown Special bundle"
 	desc = "Ayyy fuggedaboudit! This bundle contains everything to be your own one man mafioso. Including an icon of the Virgin Mary for your own authentic mafia nickname. Gang members not included."
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial
-	cost = 25
+	cost = 20
 
 /datum/uplink_item/loadout_skyrat/ocelotfoxtrot
 	name = "Snake Eater bundle"

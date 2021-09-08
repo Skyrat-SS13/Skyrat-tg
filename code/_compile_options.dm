@@ -57,7 +57,7 @@
 #if (DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD) && !defined(SPACEMAN_DMM)
 //Don't forget to update this part
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
-#error You need version 514.1556 or higher
+#error You need version 514.1557 or higher
 #endif
 
 //Additional code for the above flags.

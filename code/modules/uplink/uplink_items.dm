@@ -342,7 +342,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Bananium Energy Sword"
 	desc = "An energy sword that deals no damage, but will slip anyone it contacts, be it by melee attack, thrown \
 	impact, or just stepping on it. Beware friendly fire, as even anti-slip shoes will not protect against it."
-	item = /obj/item/melee/transforming/sword/bananium
+	item = /obj/item/melee/transforming/energy/sword/bananium
 	cost = 3
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
@@ -415,7 +415,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Energy Sword"
 	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
 			pocketed when inactive. Activating it produces a loud, distinctive noise."
-	item = /obj/item/melee/transforming/sword/saber
+	item = /obj/item/melee/transforming/energy/sword/saber
 	cost = 8
 	purchasable_from = ~UPLINK_CLOWN_OPS
 
@@ -627,7 +627,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/storage/box/syndie_kit/chemical
 	cost = 6
 	surplus = 50
-
+/*
 /datum/uplink_item/stealthy_weapons/romerol_kit
 	name = "Romerol"
 	desc = "A highly experimental bioterror agent which creates dormant nodules to be etched into the grey matter of the brain. \
@@ -636,7 +636,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/storage/box/syndie_kit/romerol
 	cost = 25
 	cant_discount = TRUE
-
+*/
 /datum/uplink_item/stealthy_weapons/sleepy_pen
 	name = "Sleepy Pen"
 	desc = "A syringe disguised as a functional pen, filled with a potent mix of drugs, including a \
@@ -985,7 +985,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 15
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
-
+/* Skyrat Edit: Disabled pending upstream rework. Extremely boring attack method, and technically bypasses the CI.
 /datum/uplink_item/explosives/detomatix
 	name = "Detomatix PDA Cartridge"
 	desc = "When inserted into a personal digital assistant, this cartridge gives you four opportunities to \
@@ -994,6 +994,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/cartridge/virus/syndicate
 	cost = 6
 	restricted = TRUE
+*/
 
 /datum/uplink_item/explosives/emp
 	name = "EMP Grenades and Implanter Kit"
@@ -1766,6 +1767,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Roboticist")
 	cost = 5
 
+/* Skyrat Edit: Spawns 50 clowns. Skyrat players are too unrobust to handle this.
 /datum/uplink_item/role_restricted/clown_bomb
 	name = "Clown Bomb"
 	desc = "The Clown bomb is a hilarious device capable of massive pranks. It has an adjustable timer, \
@@ -1776,6 +1778,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/sbeacondrop/clownbomb
 	cost = 15
 	restricted_roles = list("Clown")
+*/
 
 /datum/uplink_item/role_restricted/clumsinessinjector //clown ops can buy this too, but it's in the pointless badassery section for them
 	name = "Clumsiness Injector"
@@ -1794,7 +1797,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/reagent_containers/syringe/spider_extract
 	cost = 10
 	restricted_roles = list("Research Director", "Scientist", "Roboticist")
-
+/* Skyrat Edit: Disabled because it's really easy to just mass RDM with this thing.
 /datum/uplink_item/role_restricted/clowncar
 	name = "Clown Car"
 	desc = "The Clown Car is the ultimate transportation method for any worthy clown! \
@@ -1806,7 +1809,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/vehicle/sealed/car/clowncar
 	cost = 20
 	restricted_roles = list("Clown")
-
+*/
 /datum/uplink_item/role_restricted/concealed_weapon_bay
 	name = "Concealed Weapon Bay"
 	desc = "A modification for non-combat mechas that allows them to equip one piece of equipment designed for combat mechs. \
@@ -1833,6 +1836,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
 
+/* Skyrat Edit: Disabled due to being really, really deadly and requiring constant murder to keep active.
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -1843,6 +1847,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 20
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
+*/
 
 /datum/uplink_item/role_restricted/explosive_hot_potato
 	name = "Exploding Hot Potato"
@@ -1909,7 +1914,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	head after three seconds uninterrupted."
 	cost = 5
 	item = /obj/item/reverse_bear_trap
-	restricted_roles = list("Clown")
+	// Skyrat Edit: Allowed this for everyone.
+	//restricted_roles = list("Clown")
 
 /datum/uplink_item/role_restricted/reverse_revolver
 	name = "Reverse Revolver"
