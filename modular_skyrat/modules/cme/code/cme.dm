@@ -270,6 +270,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /obj/effect/cme/proc/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
 	new /obj/effect/particle_effect/smoke/bad(loc)
+	var/turf/open/T = get_turf(src)
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
