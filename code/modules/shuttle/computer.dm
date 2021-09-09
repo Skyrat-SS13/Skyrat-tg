@@ -96,7 +96,6 @@
 		to_chat(usr, span_warning("Shuttle navigation systems are inoperable. Contact your IT supervisor immediately."))
 		say("Navigational systems error.")
 		playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/error_navigation.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
-		playsound(src, 'sound/machines/buzz-two.ogg', 20)
 		return
 	switch(href_list["task"])
 		if("engines_off")
