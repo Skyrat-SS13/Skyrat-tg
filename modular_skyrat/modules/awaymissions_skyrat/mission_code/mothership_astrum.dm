@@ -22,16 +22,14 @@
 /area/awaymission/mothership_astrum/deck4
 	name = "Mothership Astrum Xeno Studies Holodeck"
 	icon_state = "away4"
-	static_lighting = FALSE
-	base_lighting_alpha = 255
-	base_lighting_color = COLOR_WHITE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = FALSE
 
 /area/awaymission/mothership_astrum/deck5
 	name = "Mothership Astrum Beach Holodeck"
 	icon_state = "away5"
 	requires_power = FALSE
-	static_lighting = FALSE
+	dynamic_lighting = FALSE
 
 //Fluff Notes
 /obj/item/paper/fluff/awaymissions/astrum1

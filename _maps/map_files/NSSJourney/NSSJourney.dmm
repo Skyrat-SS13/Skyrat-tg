@@ -35987,7 +35987,7 @@
 /obj/item/storage/backpack/henchmen,
 /obj/item/clothing/under/suit/henchmen,
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "cOx" = (
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -36963,8 +36963,10 @@
 /area/science/misc_lab)
 "dAi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable,
+/obj/machinery/power/apc/highcap/ten_k{
+	pixel_x = -25
+	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "dAm" = (
@@ -37643,14 +37645,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/command/heads_quarters/hos)
-"emp" = (
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "briggate";
-	name = "security shutters"
-	},
-/turf/open/floor/iron,
-/area/security/prison)
 "emq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 4
@@ -38759,7 +38753,6 @@
 /obj/item/wrench,
 /obj/item/secateurs,
 /obj/item/secateurs,
-/obj/machinery/light/directional/north,
 /obj/item/plant_analyzer,
 /obj/item/plant_analyzer,
 /turf/open/floor/wood,
@@ -39318,12 +39311,6 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/security/office)
-"fTd" = (
-/obj/structure/grille,
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "fUn" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -42566,7 +42553,7 @@
 /obj/item/stack/sheet/iron/twenty,
 /obj/item/radio,
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "jgL" = (
 /turf/open/floor/iron/smooth,
 /area/ai_monitored/security/armory)
@@ -46094,14 +46081,6 @@
 /obj/machinery/vending/autodrobe/all_access,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
-"msM" = (
-/obj/machinery/firealarm/directional/north,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "briggate";
-	name = "security shutters"
-	},
-/turf/open/floor/iron,
-/area/security/prison)
 "msO" = (
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
@@ -48501,6 +48480,8 @@
 	pixel_x = 5;
 	pixel_y = 25
 	},
+/obj/machinery/power/apc/auto_name/east,
+/obj/structure/cable,
 /turf/open/floor/iron/dark/purple/side{
 	dir = 5
 	},
@@ -48579,6 +48560,9 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
+"oHB" = (
+/turf/open/floor/plating,
+/area/security/prison/safe)
 "oHU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset,
@@ -49119,9 +49103,6 @@
 /obj/item/food/meat/slab/chicken,
 /obj/item/food/meat/slab/chicken,
 /obj/item/food/meat/slab/chicken,
-/obj/machinery/light{
-	dir = 1
-	},
 /turf/open/floor/iron/freezer,
 /area/security/prison)
 "pjA" = (
@@ -49516,15 +49497,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
-"pBe" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "briggate";
-	name = "security shutters"
-	},
-/turf/open/floor/iron,
-/area/security/prison)
 "pBl" = (
 /obj/machinery/atmospherics/pipe/bridge_pipe/cyan/visible{
 	dir = 4
@@ -52252,7 +52224,7 @@
 /obj/item/grown/log/bamboo,
 /obj/effect/spawner/lootdrop/prison_contraband,
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "soA" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/bridge_pipe/yellow/visible,
@@ -52267,7 +52239,7 @@
 	name = "Evidence Closet"
 	},
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "soI" = (
 /obj/structure/table,
 /obj/machinery/camera/autoname,
@@ -52392,7 +52364,7 @@
 /obj/effect/spawner/lootdrop/prison_contraband,
 /obj/effect/spawner/lootdrop/prison_contraband,
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "sxQ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -54866,6 +54838,12 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/security/prison)
+"uNi" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 1
+	},
+/area/brigofficer)
 "uOx" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/window/reinforced/spawner/west,
@@ -55081,7 +55059,7 @@
 "uWg" = (
 /obj/item/pda/clear,
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "uWp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -55099,7 +55077,7 @@
 "uWt" = (
 /obj/effect/spawner/lootdrop/gloves,
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "uXh" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
@@ -55853,6 +55831,86 @@
 /obj/machinery/holopad,
 /turf/open/floor/iron/white,
 /area/medical/pharmacy)
+"vGZ" = (
+/obj/structure/rack,
+/obj/item/tank/internals/nitrogen/belt,
+/obj/item/tank/internals/nitrogen/belt,
+/obj/item/tank/internals/nitrogen/belt,
+/obj/item/tank/internals/nitrogen/belt,
+/obj/item/tank/internals/nitrogen/belt,
+/obj/item/tank/internals/nitrogen/belt,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/clothing/mask/breath/vox,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 8
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/obj/item/tank/internals/plasmaman/belt{
+	pixel_x = -6
+	},
+/turf/open/floor/plating,
+/area/security/prison/safe)
 "vHb" = (
 /obj/effect/turf_decal/bot_blue,
 /obj/structure/closet/secure_closet/security/sec,
@@ -55869,8 +55927,10 @@
 	dir = 1;
 	network = list("ss13","prison")
 	},
-/obj/machinery/power/apc/auto_name/south,
 /obj/structure/cable,
+/obj/machinery/power/apc/highcap/ten_k{
+	pixel_y = -25
+	},
 /turf/open/floor/iron/dark/side,
 /area/security/prison)
 "vIU" = (
@@ -56507,7 +56567,7 @@
 "wmp" = (
 /obj/machinery/vending/dorms,
 /turf/open/floor/plating,
-/area/security/prison)
+/area/security/prison/safe)
 "wnD" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -73152,11 +73212,11 @@ xzh
 xzh
 xzh
 xzh
-fTd
+skO
 xWd
 heL
 xWd
-fTd
+skO
 xzh
 xzh
 xzh
@@ -78189,7 +78249,7 @@ cOG
 iUH
 cOG
 lIO
-aai
+aaJ
 xzh
 xzh
 sUX
@@ -78446,7 +78506,7 @@ bPz
 bPz
 gAm
 vWp
-aai
+aaJ
 xzh
 xzh
 sUX
@@ -78703,7 +78763,7 @@ kLu
 kLu
 bna
 nQU
-aai
+aaJ
 xzh
 xzh
 sUX
@@ -78960,7 +79020,7 @@ kLu
 kLu
 bna
 bIF
-aai
+aaJ
 xzh
 xzh
 sUX
@@ -79217,7 +79277,7 @@ kLu
 kLu
 bna
 vWp
-aai
+aaJ
 xzh
 xzh
 sUX
@@ -79461,7 +79521,7 @@ aaJ
 aaJ
 aaJ
 sxl
-acd
+abz
 nYj
 wKv
 sJB
@@ -79713,12 +79773,12 @@ xzh
 xzh
 xzh
 xzh
-aai
+aaJ
 soD
-bqc
+vGZ
 soz
 uWg
-acd
+abz
 fqH
 wKv
 fjY
@@ -79970,12 +80030,12 @@ aai
 aai
 aai
 aai
-aai
+aaJ
 soD
 sxl
 jgi
 uWt
-acd
+abz
 rmG
 sHX
 sgJ
@@ -80227,12 +80287,12 @@ acd
 aaw
 aaw
 aaw
-aai
+aaJ
 wmp
 cOf
-hnO
-hnO
-acd
+oHB
+oHB
+abz
 rmG
 oyO
 jri
@@ -80484,12 +80544,12 @@ acd
 aaw
 aaw
 seW
-aai
-acd
-acd
-acd
-acd
-acd
+aaJ
+abz
+abz
+abz
+abz
+abz
 ycI
 oyO
 mJI
@@ -81013,9 +81073,9 @@ jNa
 jNa
 jNa
 acd
-msM
-emp
-pBe
+msO
+mWy
+aGS
 wwk
 iuR
 gxj
@@ -82302,7 +82362,7 @@ azJ
 dJo
 mLM
 uMS
-jud
+uNi
 nyx
 wxo
 uMS
