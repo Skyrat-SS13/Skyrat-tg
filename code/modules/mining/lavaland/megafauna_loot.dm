@@ -931,7 +931,7 @@
 		return
 	var/datum/weather/affected_weather
 	/* SKYRAT EDIT CHANGE
-	for(var/datum/weather/weather as anything in SSweather.processing) TEMPORARY REMOVAL
+	for(var/datum/weather/weather as anything in SSweather.processing)
 		if((user_turf.z in weather.impacted_z_levels) && ispath(user_area.type, weather.area_type))
 			affected_weather = weather
 			break

@@ -93,13 +93,13 @@
 	/// Reference to the weather controller
 	var/datum/weather_controller/my_controller
 	/// A type of looping sound to be played for people outside the active weather
-	var/datum/looping_sound/sound_active_outside
+	var/datum/looping_sound_skyrat/sound_active_outside
 	/// A type of looping sound to be played for people inside the active weather
-	var/datum/looping_sound/sound_active_inside
+	var/datum/looping_sound_skyrat/sound_active_inside
 	/// A type of looping sound to be played for people outside the winding up/ending weather
-	var/datum/looping_sound/sound_weak_outside
+	var/datum/looping_sound_skyrat/sound_weak_outside
 	/// A type of looping sound to be played for people inside the winding up/ending weather
-	var/datum/looping_sound/sound_weak_inside
+	var/datum/looping_sound_skyrat/sound_weak_inside
 	/// Whether the areas should use a blend multiplication during the main weather, for stuff like fulltile storms
 	var/multiply_blend_on_main_stage = FALSE
 	/// Whether currently theres a lightning displayed
@@ -196,7 +196,6 @@
 				SEND_SOUND(M, sound(telegraph_sound))
 	addtimer(CALLBACK(src, .proc/start), telegraph_duration)
 
-/* TEMPORARY REMOVAL
 	if(sound_active_outside)
 		sound_active_outside.output_atoms = outside_areas
 	if(sound_active_inside)
@@ -207,7 +206,7 @@
 	if(sound_weak_inside)
 		sound_weak_inside.output_atoms = impacted_areas
 		sound_weak_inside.start()
-*/
+
 /**
  * Starts the actual weather and effects from it
  *

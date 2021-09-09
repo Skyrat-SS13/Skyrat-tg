@@ -2,6 +2,7 @@
 #define VALUES_PER_TRANSITION 5
 #define TRANSITION_VALUE (1 / VALUES_PER_TRANSITION)
 #define ALL_TRANSITIONS (VALUES_PER_TRANSITION * 6)
+#define TWEAK_HOUR_SHIFT -1.5 //The amount of hours we tweak forwards to make the cycle more earth-like
 
 /datum/day_night_controller
 	/// YOU NEED TO FILL OUT ALL OF THEM
@@ -39,10 +40,23 @@
 	var/datum/overmap_object/linked_overmap_object
 	/// All the areas that are affected by day/night
 	var/list/affected_areas = list()
-	/// The effect we apply and cut to the area's overlays
-	var/obj/effect/fullbright/effect
 	/// Whether we have applied luminosity to the areas
 	var/has_applied_luminosity = FALSE
+	var/last_color = "#FFFFFF"
+	var/last_alpha = 1
+	var/list/subscribed_blend_areas = list()
+
+/datum/day_night_controller/proc/subscribe_blend_area(area/area_to_sub)
+	subscribed_blend_areas[area_to_sub] = TRUE
+	area_to_sub.subbed_day_night_controller = src
+	area_to_sub.last_day_night_luminosity = FALSE
+
+/datum/day_night_controller/proc/unsubscribe_blend_area(area/area_to_unsub)
+	subscribed_blend_areas -= area_to_unsub
+	area_to_unsub.subbed_day_night_controller = null
+	area_to_unsub.last_day_night_color = null
+	area_to_unsub.last_day_night_alpha = null
+	area_to_unsub.last_day_night_luminosity = null
 
 /datum/day_night_controller/process()
 	update_areas()
@@ -52,13 +66,15 @@
 		GetAreas() //Need to get it later because otherwise it wont get the areas, quirky stuff
 	//Station time goes from 0 to 864000, which makes 600 a 1 minute
 	var/time = station_time() / 600 / 60 //600 - minutes //60 - hours. We get from 0 to 24 here
+
+	//We add a "tweak" offset to make the cycle more earth-like
+	time += TWEAK_HOUR_SHIFT
+	if(time < 0)
+		time += 24
+
 	time = time / 4 * VALUES_PER_TRANSITION //4 hours per transition and 5 transitions
-	time = FLOOR(time, 1)
-	if(time > ALL_TRANSITIONS || time <= 0)
-		CRASH("Tried to set an invalid day/night transition of [time]. Bad time calculation.")
-	for(var/i in affected_areas)
-		var/area/my_area = i
-		my_area.cut_overlay(effect)
+	time = CEILING(time, 1)
+	time = clamp(time, 1, ALL_TRANSITIONS)
 
 	var/target_color = color_lookup_table["[time]"]
 	var/target_light = light_lookup_table["[time]"]
@@ -68,8 +84,25 @@
 		if(target_light < 0)
 			target_light = 0
 
-	effect.color = target_color
-	effect.alpha = 255 * target_light
+	target_light *= 255
+
+	if(target_color == last_color && target_light == last_alpha)
+		return
+
+	var/mutable_appearance/appearance_to_add = mutable_appearance('modular_skyrat/modules/overmap/icons/daynight_blend.dmi', "white")
+	appearance_to_add.plane = LIGHTING_PLANE
+	appearance_to_add.layer = DAY_NIGHT_LIGHTING_LAYER
+	appearance_to_add.color = last_color
+	appearance_to_add.alpha = last_alpha
+	for(var/i in affected_areas)
+		var/area/my_area = i
+		my_area.underlays -= appearance_to_add
+
+	last_color = target_color
+	last_alpha = target_light
+
+	appearance_to_add.color = target_color
+	appearance_to_add.alpha = target_light
 	var/do_luminosity = (target_light > MINIMUM_LIGHT_FOR_LUMINOSITY) ? TRUE : FALSE
 
 	for(var/i in affected_areas)
@@ -79,24 +112,32 @@
 				my_area.luminosity++
 			else
 				my_area.luminosity--
-		my_area.add_overlay(effect)
+		my_area.underlays += appearance_to_add
 	has_applied_luminosity = do_luminosity
+
+	for(var/i in subscribed_blend_areas)
+		var/area/iterated_area = i
+		iterated_area.UpdateDayNightTurfsSimple()
 
 /datum/day_night_controller/proc/GetAreas()
 	//Get the areas
+	var/list/possible_blending_areas = list()
 	for(var/i in get_areas(/area))
 		var/area/my_area = i
 		if(!z_level_lookup["[my_area.z]"])
 			continue
 		if(!my_area.outdoors)
+			possible_blending_areas += my_area
 			continue
 		if(my_area.underground)
 			continue
 		affected_areas += my_area
+	for(var/i in possible_blending_areas)
+		var/area/my_area = i
+		my_area.UpdateDayNightTurfs(TRUE, src)
 
 /datum/day_night_controller/New(list/space_level)
 	. = ..()
-	effect = new
 	z_levels = space_level
 	for(var/i in z_levels)
 		var/datum/space_level/level = i
@@ -137,7 +178,6 @@
 
 /// In theory this should never be destroyed, unless you plan to dynamically change existing z levels
 /datum/day_night_controller/Destroy()
-	qdel(effect)
 	if(linked_overmap_object)
 		UnlinkOvermapObject()
 	for(var/i in z_levels)

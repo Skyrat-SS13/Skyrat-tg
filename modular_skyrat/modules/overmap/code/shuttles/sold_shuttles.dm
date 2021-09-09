@@ -41,7 +41,7 @@
 ////////////////////////
 /datum/sold_shuttle/crow
 	name = "NXV Crow - sister"
-	desc = "A medium sized exploration shuttle, sister to the ESS Crow, named the same oddly."
+	desc = "A medium sized exploration shuttle, sister to the NXV Crow, named the same oddly."
 	detailed_desc = "It's medium sized and is equipped with four propulsion engines, canisters of co2 and oxygen, a portable generator, excavation gear and some emergency supplies."
 	shuttle_id = "exploration_crow"
 	cost = 10000
@@ -52,11 +52,10 @@
 	name = "NXV Nexus"
 	desc = "A large sized luxury exploration shuttle, well equipped. You must be rich."
 	detailed_desc = "It's rather large and is equipped with three RS 2000 Sublight thrusters, capable of low speeds, however, it is very well equipped for excavation, mining and exploration. Your go-to reliable yet luxurious shuttle. It has a mining drill, medbay, kitchen and lots of supplies. Good luck, explorer."
-	shuttle_id = "exploration_crow"
+	shuttle_id = "exploration_nexus"
 	cost = 20000
 	allowed_docks = list(DOCKS_HUGE_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
-
 
 ///////////////////////////
 //BUILD YOUR OWN SHUTTLES//
