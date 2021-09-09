@@ -42,3 +42,12 @@
 
 /area/engineering/main/lower
 	name = "\proper Lower Engineering Deck"
+
+/area/maintenance/department/electrical/utility_a
+	name = "\improper Utility Closet A"
+
+/area/maintenance/department/electrical/utility_b
+	name = "\improper Utility Closet B"
+
+/area/maintenance/department/electrical/utility_c
+	name = "\improper Utility Closet C"
