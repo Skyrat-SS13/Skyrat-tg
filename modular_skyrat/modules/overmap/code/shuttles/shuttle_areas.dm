@@ -1,21 +1,23 @@
 //Exploration shuttles
 
-
-//Exploration shuttles
-
 /area/shuttle/crow
 	name = "ESS Crow"
 	requires_power = TRUE
 	area_limited_icon_smoothing = /area/shuttle/crow
 
 /area/shuttle/crow/cargo
-	name = "ESS Crow Cargo Bay"
+	name = "NXV Crow Cargo Bay"
 
 /area/shuttle/crow/engineering
-	name = "ESS Crow Engineering"
+	name = "NXV Crow Engineering"
 
 /area/shuttle/crow/helm
-	name = "ESS Crow Helm"
+	name = "NXV Crow Helm"
+
+/area/shuttle/nexus
+	name = "NXV Nexus"
+	requires_power = TRUE
+	area_limited_icon_smoothing = /area/shuttle/crow
 
 //Common shuttles
 

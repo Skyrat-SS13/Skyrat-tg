@@ -19,7 +19,7 @@
 	id = "largedock"
 	width = 31
 	dwidth = 8
-	height = 19
+	height = 20
 
 //Modelled after the SS13 standard auxilliary dock
 /obj/docking_port/stationary/huge

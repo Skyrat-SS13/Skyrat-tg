@@ -1,3 +1,5 @@
+#define SHUTTLE_MASS_DIVISOR 10 //The shuttle mass is divided by this when calculating mass.
+
 /datum/overmap_object/shuttle
 	name = "Shuttle"
 	visual_type = /obj/effect/abstract/overmap/shuttle
@@ -94,12 +96,21 @@
 
 /datum/overmap_object/shuttle/proc/GetCapSpeed()
 	var/cap_speed = 0
+	var/shuttle_mass = GetShuttleMass()
 	for(var/i in engine_extensions)
 		var/datum/shuttle_extension/engine/ext = i
 		if(!ext.CanOperate())
 			continue
 		cap_speed += ext.GetCapSpeed(impulse_power)
-	return cap_speed / speed_divisor_from_mass
+	return cap_speed / shuttle_mass
+
+/datum/overmap_object/shuttle/proc/GetShuttleMass()
+	var/shuttle_mass = 0
+	if(my_shuttle)
+		for(var/area/iterating_area as anything in my_shuttle.shuttle_areas)
+			for(var/turf/closed/wall in iterating_area)
+				shuttle_mass += 1
+	return shuttle_mass / SHUTTLE_MASS_DIVISOR
 
 /datum/overmap_object/shuttle/proc/DrawThrustFromAllEngines()
 	var/draw_thrust = 0
@@ -693,10 +704,6 @@
 	speed_divisor_from_mass = 20
 	clears_hazards_on_spawn = TRUE
 
-/datum/overmap_object/shuttle/ship/ncv_titan
-	name = "NCV Titan"
-	fixed_parallax_dir = EAST
-
 /datum/overmap_object/shuttle/planet
 	name = "Planet"
 	visual_type = /obj/effect/abstract/overmap/shuttle/planet
@@ -719,14 +726,6 @@
 	name = "Ice Planet"
 	planet_color = COLOR_TEAL
 
-/datum/overmap_object/shuttle/ess_crow
-	name = "ESS Crow"
-	speed_divisor_from_mass = 4
-
-/datum/overmap_object/shuttle/ncv_titan
-	name = "NCV Titan"
-	speed_divisor_from_mass = 20
-
 /datum/overmap_object/shuttle/planet/gateway
 	name = "Wormhole"
 	visual_type = /obj/effect/abstract/overmap/shuttle/gateway
@@ -736,3 +735,5 @@
 /datum/overmap_object/shuttle/planet/gateway/New()
 	. = ..()
 	my_visual.color = planet_color
+
+#undef SHUTTLE_MASS_DIVISOR

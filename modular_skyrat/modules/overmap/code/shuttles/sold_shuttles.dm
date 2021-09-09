@@ -16,7 +16,10 @@
 	/// Associative to TRUE list of dock id's that this template can fit into
 	var/allowed_docks = list()
 
-/datum/sold_shuttle/mining_common
+///////////////////
+//Common shuttles//
+///////////////////
+/datum/sold_shuttle/common_mining
 	name = "Small Travel Shuttle"
 	desc = "Small shuttle fitted for up to 4 people. Perfect for travel, but not much else"
 	detailed_desc = "It's small sized and it's equipped with 1 burst engine"
@@ -24,7 +27,7 @@
 	shuttle_id = "mining_common_meta"
 	allowed_docks = list(DOCKS_SMALL_UPWARDS)
 
-/datum/sold_shuttle/vulture
+/datum/sold_shuttle/common_vulture
 	name = "MS Vulture"
 	desc = "A medium sized mining shuttle, equipped with living quarters."
 	detailed_desc = "It's medium sized and is equipped with three propulsion engines, canisters of co2 and oxygen, a portable generator, two mining lasers, a transporter and some emergency supplies. It has quarters and a restroom"
@@ -33,14 +36,31 @@
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_MINING
 
+////////////////////////
+//Exploration shuttles//
+////////////////////////
 /datum/sold_shuttle/crow
-	name = "ESS Crow - sister"
+	name = "NXV Crow - sister"
 	desc = "A medium sized exploration shuttle, sister to the ESS Crow, named the same oddly."
 	detailed_desc = "It's medium sized and is equipped with four propulsion engines, canisters of co2 and oxygen, a portable generator, excavation gear and some emergency supplies."
 	shuttle_id = "exploration_crow"
 	cost = 10000
 	allowed_docks = list(DOCKS_MEDIUM_UPWARDS)
 	shuttle_type = SHUTTLE_EXPLORATION
+
+/datum/sold_shuttle/nexus
+	name = "NXV Nexus"
+	desc = "A large sized luxury exploration shuttle, well equipped. You must be rich."
+	detailed_desc = "It's rather large and is equipped with three RS 2000 Sublight thrusters, capable of low speeds, however, it is very well equipped for excavation, mining and exploration. Your go-to reliable yet luxurious shuttle. It has a mining drill, medbay, kitchen and lots of supplies. Good luck, explorer."
+	shuttle_id = "exploration_crow"
+	cost = 20000
+	allowed_docks = list(DOCKS_HUGE_UPWARDS)
+	shuttle_type = SHUTTLE_EXPLORATION
+
+
+///////////////////////////
+//BUILD YOUR OWN SHUTTLES//
+///////////////////////////
 
 /datum/sold_shuttle/platform_small
 	name = "Small Shuttle Platform"
