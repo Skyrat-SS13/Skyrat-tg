@@ -627,7 +627,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/storage/box/syndie_kit/chemical
 	cost = 6
 	surplus = 50
-/*
+/* Skyrat Edit: Removed due to changes to how zombies work on Skyrat.
 /datum/uplink_item/stealthy_weapons/romerol_kit
 	name = "Romerol"
 	desc = "A highly experimental bioterror agent which creates dormant nodules to be etched into the grey matter of the brain. \
