@@ -321,6 +321,8 @@
 		"burn2medicell",
 		"toxin2medicell",
 		"oxy2medicell",
+		"tempmedicell",
+		"clotmedicell",
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
