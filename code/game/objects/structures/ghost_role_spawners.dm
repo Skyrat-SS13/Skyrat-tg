@@ -518,8 +518,13 @@
 
 /datum/outfit/syndicate_empty/battlecruiser/assault/captain
 	name = "Syndicate Battlecruiser Captain"
+<<<<<<< HEAD
 	l_pocket = /obj/item/melee/transforming/energy/sword/saber/red
 	r_pocket = /obj/item/melee/classic_baton/telescopic
+=======
+	l_pocket = /obj/item/melee/energy/sword/saber/red
+	r_pocket = /obj/item/melee/baton/telescopic
+>>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	suit_store = /obj/item/gun/ballistic/revolver/mateba
 	back = /obj/item/storage/backpack/satchel/leather

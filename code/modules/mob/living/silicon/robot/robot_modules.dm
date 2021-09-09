@@ -101,10 +101,9 @@
 			F.times_used = 0
 			F.burnt_out = FALSE
 			F.update_appearance()
-		else if(istype(I, /obj/item/melee/baton))
-			var/obj/item/melee/baton/B = I
-			if(B.cell)
-				B.cell.charge = B.cell.maxcharge
+		else if(istype(I, /obj/item/melee/baton/security))
+			var/obj/item/melee/baton/security/baton = I
+			baton.cell?.charge = baton.cell.maxcharge
 		else if(istype(I, /obj/item/gun/energy))
 			var/obj/item/gun/energy/EG = I
 			if(!EG.chambered)
@@ -425,7 +424,11 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
+<<<<<<< HEAD
 		/obj/item/melee/classic_baton/peacekeeper, //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/melee/baton/loaded
+=======
+		/obj/item/melee/baton/security/loaded,
+>>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/extinguisher/mini)

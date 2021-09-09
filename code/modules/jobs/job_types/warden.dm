@@ -57,6 +57,10 @@
 	l_pocket = /obj/item/megaphone/sec //SKYRAT EDIT CHANGE
 
 	suit_store = /obj/item/gun/energy/disabler
+<<<<<<< HEAD
+=======
+	backpack_contents = list(/obj/item/melee/baton/security/loaded=1)
+>>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 
 	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/clothing/head/beret/sec/peacekeeper, /obj/item/armament_token/sidearm) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
 

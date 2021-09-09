@@ -82,7 +82,7 @@
 	inhand_icon_state = "coathop"
 	armor = list(MELEE = 10, BULLET = 15, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 35)
 	allowed = list(
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 	)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/hop
 
@@ -206,8 +206,12 @@
 /obj/item/clothing/suit/hooded/wintercoat/medical/cmo/Initialize()
 	. = ..()
 	allowed += list(
+<<<<<<< HEAD
 		/obj/item/melee/classic_baton/telescopic,
 		/obj/item/gun/energy/medigun, //SKYRAT EDIT MEDIGUNS
+=======
+		/obj/item/melee/baton/telescopic,
+>>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 	)
 
 /obj/item/clothing/head/hooded/winterhood/medical/cmo
@@ -290,7 +294,7 @@
 /obj/item/clothing/suit/hooded/wintercoat/science/rd/Initialize()
 	. = ..()
 	allowed += list(
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 	)
 
 /obj/item/clothing/head/hooded/winterhood/science/rd
@@ -355,7 +359,7 @@
 /obj/item/clothing/suit/hooded/wintercoat/engineering/ce/Initialize()
 	. = ..()
 	allowed += list(
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 	)
 
 /obj/item/clothing/head/hooded/winterhood/engineering/ce
