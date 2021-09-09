@@ -522,7 +522,9 @@
 /turf/open/floor/pod,
 /area/shuttle/nexus)
 "Pp" = (
-/obj/machinery/porta_turret,
+/obj/machinery/porta_turret/centcom_shuttle{
+	dir = 4
+	},
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/nexus)
 "PC" = (
@@ -542,9 +544,11 @@
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/nexus)
 "PV" = (
-/obj/structure/table/reinforced,
 /obj/machinery/turretid{
 	pixel_x = 25
+	},
+/obj/structure/chair/office{
+	dir = 8
 	},
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/nexus)
