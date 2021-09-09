@@ -479,6 +479,7 @@
 	if(istype(S, /obj/docking_port/stationary/transit))
 		return SHUTTLE_CAN_DOCK
 
+	/* SKYRAT EDIT REMOVAl - TEMPORARY
 	if(dwidth > S.dwidth)
 		return SHUTTLE_DWIDTH_TOO_LARGE
 
@@ -490,7 +491,7 @@
 
 	if(height-dheight > S.height-S.dheight)
 		return SHUTTLE_HEIGHT_TOO_LARGE
-
+	*/
 	//check the dock isn't occupied
 	var/currently_docked = S.get_docked()
 	if(currently_docked)
