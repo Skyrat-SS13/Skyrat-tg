@@ -1,4 +1,6 @@
 #define UPGRADED_MEDICELL_PASSFLAGS PASSTABLE | PASSGLASS | PASSGRILLE
+#define MINIMUM_TEMP_DIFFERENCE 25
+#define TEMP_PER_SHOT 30
 
 //Medigun Cells/
 /obj/item/stock_parts/cell/medigun/ //This is the cell that mediguns from cargo will come with//
@@ -297,5 +299,48 @@
 	base_disgust = 1
 
 //End of Basic Tiers of cells.//
+//Utility Cells
+//Base of utility
+/obj/projectile/energy/medical/utility
+	name = "utility medical shot"
+	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 
+//CLotting
+/obj/item/ammo_casing/energy/medical/utility/clotting
+	projectile_type = /obj/projectile/energy/medical/utility/clotting
+	select_name = "clotting"
+
+/obj/projectile/energy/medical/utility/clotting
+	name = "clotting agent shot"
+
+/obj/projectile/energy/medical/utility/clotting/on_hit(mob/living/target)
+	if(!IsLivingHuman(target))
+		return FALSE
+	if(target.reagents.get_reagent_amount(/datum/reagent/medicine/coagulant/fabricated) < 5) //injects the target with a weaker coagulant agent
+		target.reagents.add_reagent(/datum/reagent/medicine/coagulant/fabricated, 1)
+		target.reagents.add_reagent(/datum/reagent/iron, 2) //adds in iron to help compensate for the relatively weak blood clotting
+	else
+		return
+
+//Temprature Adjustment
+/obj/item/ammo_casing/energy/medical/utility/temperature
+	projectile_type = /obj/projectile/energy/medical/utility/temperature
+	select_name = "temperature"
+
+/obj/projectile/energy/medical/utility/temperature
+	name = "temperature adjustment shot"
+
+/obj/projectile/energy/medical/utility/temperature/on_hit(mob/living/target)
+	if(!IsLivingHuman(target))
+		return FALSE
+	var/ideal_temp = target.get_body_temp_normal(apply_change=FALSE) //Gets the temperature we should be aiming for.
+	var/current_temp = target.bodytemperature //Retrieves the targets body temperature
+	var/difference = ideal_temp - current_temp
+	if(abs(difference) <= MINIMUM_TEMP_DIFFERENCE) //It won't adjust temperature if the difference is too low
+		return FALSE
+	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
+
+//End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
+#undef MINIMUM_TEMP_DIFFERENCE
+#undef TEMP_PER_SHOT

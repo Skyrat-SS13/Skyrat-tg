@@ -14,17 +14,17 @@
 	name = "NLV Consign Cockpit"
 
 /area/shuttle/escape/no_light
-	area_flags = UNIQUE_AREA | NO_ALERTS | AREA_USES_STARLIGHT
+	dynamic_lighting = DYNAMIC_LIGHTING_IFSTARLIGHT
 
 /area/shuttle/arrival/no_light
-	static_lighting = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/shuttle/mining/no_light
-	static_lighting = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/shuttle/supply/no_light
-	static_lighting = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/shuttle/transport/no_light
-	static_lighting = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
