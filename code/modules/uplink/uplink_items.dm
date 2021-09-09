@@ -705,7 +705,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An additional 15-round 9mm magazine, compatible with the Stechkin APS machine pistol."
 	item = /obj/item/ammo_box/magazine/m9mm_aps
 	cost = 2
-	purchasable_from = UPLINK_NUKE_OPS
+	//Skyrat Edit: Makes this purchasable for traitors because they can buy the APS now.
+	//purchasable_from = UPLINK_NUKE_OPS
 
 /datum/uplink_item/ammo/shotgun
 	cost = 2
