@@ -12,6 +12,23 @@
 	cost = 30 //40 tc would have been better
 */ //To be balanced
 
+/datum/uplink_item/stealthy_tools/syndieshotglasses
+	name = "Extra Large Syndicate Shotglasses"
+	desc = "These modified shot glasses can hold up to 50 units of booze while looking like a regular 15 unit model \
+	guaranteed to knock someone on their ass with a hearty dose of bacchus blessing. Look for the Snake underneath \
+	to tell these are the real deal. Box of 7."
+	item = /obj/item/storage/box/syndieshotglasses
+	cost = 2 //These are taken nearly exactly from Goon, very fun tool.
+	restricted_roles = list("Bartender")
+
+/datum/uplink_item/device_tools/syndie_glue
+	name = "Glue"
+	desc = "A cheap bottle of one use syndicate brand super glue. \
+			Use on any item to make it undroppable. \
+			Be careful not to glue an item you're already holding!"
+	item = /obj/item/syndie_glue
+	cost = 3
+
 /datum/uplink_item/loadout_skyrat
 	category = "Loadout"
 	surplus = 0
