@@ -75,6 +75,7 @@
 	var/on_safety = TRUE //Is the safety for the cell on?
 	var/safe_ammo = /obj/item/ammo_casing/energy/medical
 	var/unsafe_ammo = /obj/item/ammo_casing/energy/medical
+	var/utility = FALSE //Is the cell a utility class cell? This isn't used now, but it will be later on with utility only Mediguns.
 
 //MEDIGUN SAFETY
 
@@ -187,6 +188,34 @@
 	icon_state = "Oxy3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/oxy3
 //End of Tier III
+//Start of Utility Cells
+/obj/item/medicell/utility
+	utility = TRUE
+	name = "utility class medicell"
+	desc = "You really shouldn't be seeing this, if you do, please yell at your local coders."
+
+/obj/item/medicell/utility/clotting
+	name = "clotting medicell"
+	desc = "A medicell designed to help deal with bleeding patients"
+	icon_state = "clotting"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/clotting
+
+/obj/item/medicell/utility/temperature
+	name = "temperature readjustment medicell"
+	desc = "A medicell that adjusts the hosts temperature to acceptable levels"
+	icon_state = "temperature"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/temperature
+
+//MEDIGUN WIKI BOOK
+/obj/item/book/manual/wiki/mediguns
+	name = "Medigun Operating Manual"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon_state = "manual"
+	author = "VeyMedical"
+	title = "Medigun Operating Manual"
+	page_link = "Guide_to_Mediguns"
+	skyrat_wiki = TRUE
+
 //Medigun Gunsets/
 /obj/item/storage/briefcase/medicalgunset/
 	name = "Medigun Supply Kit"
@@ -205,6 +234,7 @@
 
 /obj/item/storage/briefcase/medicalgunset/standard/PopulateContents()
 	new /obj/item/gun/energy/medigun/standard(src)
+	new /obj/item/book/manual/wiki/mediguns(src)
 
 /obj/item/storage/briefcase/medicalgunset/cmo
 	name = "VeyMedical CWM-479-CC Cell Powered Medigun case"
@@ -216,6 +246,7 @@
 	new /obj/item/medicell/brute1(src)
 	new /obj/item/medicell/burn1(src)
 	new /obj/item/medicell/toxin1(src)
+	new /obj/item/book/manual/wiki/mediguns(src)
 
 //Medigun Cell Insertion and Removal//
 /obj/item/gun/energy/medigun/attackby(obj/item/medicell/M, mob/user)

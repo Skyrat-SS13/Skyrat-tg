@@ -153,10 +153,6 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	icon_state = ""
 	if(!ambientsounds)
 		ambientsounds = GLOB.ambience_assoc[ambience_index]
-
-	if(area_flags & AREA_USES_STARLIGHT)
-		static_lighting = CONFIG_GET(flag/starlight)
-
 	if(requires_power)
 		luminosity = 0
 	else
@@ -164,13 +160,20 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		power_equip = TRUE
 		power_environ = TRUE
 
-		if(static_lighting)
+		if(dynamic_lighting == DYNAMIC_LIGHTING_FORCED)
+			dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 			luminosity = 0
+		else if(dynamic_lighting != DYNAMIC_LIGHTING_IFSTARLIGHT)
+			dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	if(dynamic_lighting == DYNAMIC_LIGHTING_IFSTARLIGHT)
+		dynamic_lighting = CONFIG_GET(flag/starlight) ? DYNAMIC_LIGHTING_ENABLED : DYNAMIC_LIGHTING_DISABLED
+
 
 	. = ..()
 
-	if(!static_lighting)
+	if(!IS_DYNAMIC_LIGHTING(src))
 		blend_mode = BLEND_MULTIPLY
+		add_overlay(/obj/effect/fullbright)
 
 	reg_in_areas_in_z()
 
@@ -178,8 +181,6 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		if(!network_root_id)
 			network_root_id = STATION_NETWORK_ROOT // default to station root because this might be created with a blueprint
 		SSnetworks.assign_area_network_id(src)
-
-	update_base_lighting()
 
 	return INITIALIZE_HINT_LATELOAD
 
