@@ -87,6 +87,30 @@
 	reagents_list = list(/datum/reagent/medicine/salbutamol = 10)
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+//Utility Medicells
+/datum/design/clotmedicell
+	name = "clotting medicell"
+	desc = "A medicell designed to help deal with bleeding patients"
+	id = "clotmedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
+	build_path = /obj/item/medicell/utility/clotting
+	reagents_list = list(/datum/reagent/medicine/salglu_solution = 5, /datum/reagent/blood = 5)
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/tempmedicell
+	name = "temperature adjustment medicell"
+	desc = "A medicell that adjusts the hosts temperature to acceptable levels"
+	id = "tempmedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
+	build_path = /obj/item/medicell/utility/temperature
+	reagents_list = list(/datum/reagent/medicine/leporazine = 10)
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 //Upgrade Kit//
 /datum/design/medigunspeedkit
 	name = "VeyMedical CWM-479 Upgrade kit"
