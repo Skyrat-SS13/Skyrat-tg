@@ -261,7 +261,7 @@
 	attack_sound = 'sound/weapons/punch1.ogg'
 	status_flags = NONE
 	del_on_death = TRUE
-	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway)
+	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/navigation_datacard)
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
 	amount = 50
