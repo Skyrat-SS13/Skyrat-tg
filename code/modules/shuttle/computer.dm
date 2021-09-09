@@ -95,15 +95,18 @@
 	if(M.gateway_stranded)
 		to_chat(usr, span_warning("Shuttle navigation systems are inoperable. Contact your IT supervisor immediately."))
 		say("Navigational systems error.")
+		playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/error_navigation.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 		playsound(src, 'sound/machines/buzz-two.ogg', 20)
 		return
 	switch(href_list["task"])
 		if("engines_off")
 			M.TurnEnginesOff()
 			say("Engines offline.")
+			playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/engines_off.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 		if("engines_on")
 			M.TurnEnginesOn()
 			say("Engines online.")
+			playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/engines_on.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 		if("overmap_view")
 			if(M.my_overmap_object)
 				M.my_overmap_object.GrantOvermapView(usr, get_turf(src))
@@ -135,11 +138,13 @@
 					M.play_engine_sound(src, TRUE)
 					M.setTimer(5 SECONDS)
 					say("Shuttle departing. Please stand away from the doors.")
+					playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/launch.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 					log_shuttle("[key_name(usr)] has sent shuttle \"[M]\" into the overmap.")
 					ui_interact(usr)
 					return
 				else
 					say("Engine power insufficient to take off.")
+					playsound(src, 'modular_skyrat/modules/overmap/sound/shuttle_voice/error_engines.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 	ui_interact(usr)
 //SKYRAT EDIT END
 /obj/machinery/computer/shuttle/ui_data(mob/user)

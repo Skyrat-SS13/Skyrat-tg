@@ -11,6 +11,8 @@
 	var/list/affected_shuttles
 	/// Color of our hazard object. Just so I dont have to make special code for the visuals too
 	var/hazard_color = COLOR_PINK
+	/// Sound to be played upon entering the hazard
+	var/sound/alert_sound
 
 /datum/overmap_object/hazard/proc/get_random_icon_state()
 	return "event"
@@ -42,7 +44,13 @@
 
 /datum/overmap_object/hazard/Entered(datum/overmap_object/entering, spawned = FALSE)
 	if(istype(entering,/datum/overmap_object/shuttle))
-		AddAffected(entering)
+		var/datum/overmap_object/shuttle/entering_shuttle = entering
+		if(alert_sound)
+			var/list/shuttle_consoles = entering_shuttle.GetAllControlConsoles()
+			if(shuttle_consoles.len)
+				for(var/atom/iterating_atom as anything in shuttle_consoles)
+					playsound(iterating_atom, alert_sound, OVERMAP_SHUTTLE_ALERT_VOLUME)
+		AddAffected(entering_shuttle)
 	. = ..()
 
 /datum/overmap_object/hazard/Exited(datum/overmap_object/exiting, deleted = FALSE)
@@ -63,6 +71,7 @@
 	name = "asteroid field"
 	hazard_color = COLOR_RED
 	visual_type = /obj/effect/abstract/overmap/hazard/opaque
+	alert_sound = 'modular_skyrat/modules/overmap/sound/shuttle_voice/alert_asteroids.ogg'
 
 /datum/overmap_object/hazard/asteroid/process(delta_time)
 	for(var/i in affected_shuttles)
@@ -115,6 +124,7 @@
 	name = "space dust"
 	hazard_color = COLOR_FLOORTILE_GRAY
 	visual_type = /obj/effect/abstract/overmap/hazard/opaque
+	alert_sound = 'modular_skyrat/modules/overmap/sound/shuttle_voice/alert_spacedust.ogg'
 
 /datum/overmap_object/hazard/dust/process(delta_time)
 	for(var/i in affected_shuttles)
@@ -162,6 +172,7 @@
 /datum/overmap_object/hazard/electrical_storm
 	name = "electrical storm"
 	hazard_color = COLOR_YELLOW
+	alert_sound = 'modular_skyrat/modules/overmap/sound/shuttle_voice/alert_electrical_storm.ogg'
 
 #define ELECTRICAL_STORM_ACT_PROB 6
 #define ELECTRICAL_STORM_SHIELD_DAMAGE 10
@@ -215,6 +226,7 @@
 /datum/overmap_object/hazard/ion_storm
 	name = "ion storm"
 	hazard_color = LIGHT_COLOR_ELECTRIC_CYAN
+	alert_sound = 'modular_skyrat/modules/overmap/sound/shuttle_voice/alert_ion_cloud.ogg'
 
 #define ION_STORM_SHIELD_DRAIN_PER_PROCESS 0.75
 
@@ -232,6 +244,7 @@
 /datum/overmap_object/hazard/carp_school
 	name = "carp school"
 	hazard_color = LIGHT_COLOR_PURPLE
+	alert_sound = 'modular_skyrat/modules/overmap/sound/shuttle_voice/alert_debris.ogg'
 
 /datum/overmap_object/hazard/carp_school/process(delta_time)
 	for(var/i in affected_shuttles)

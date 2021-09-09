@@ -121,6 +121,15 @@
 		draw_thrust += ext.DrawThrust(impulse_power)
 	return draw_thrust / speed_divisor_from_mass
 
+/datum/overmap_object/shuttle/proc/GetAllControlConsoles()
+	var/list/control_consoles = list()
+	if(my_shuttle)
+		for(var/area/iterating_area as anything in my_shuttle.shuttle_areas)
+			for(var/obj/machinery/computer/shuttle/iterating_console in iterating_area)
+				if(iterating_console.is_operational)
+					control_consoles += iterating_console
+	return control_consoles
+
 /datum/overmap_object/shuttle/proc/DisplayUI(mob/user, turf/usage_turf)
 	if(usage_turf)
 		control_turf = usage_turf
@@ -462,6 +471,7 @@
 						if(0)
 							shuttle_controller.busy = TRUE
 							shuttle_controller.RemoveCurrentControl()
+							playsound(control_turf, 'modular_skyrat/modules/overmap/sound/shuttle_voice/landing.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 				if("freeform_dock")
 					if(shuttle_controller.busy)
 						return
@@ -482,6 +492,7 @@
 						return
 					shuttle_controller.SetController(usr)
 					shuttle_controller.freeform_docker = new /datum/shuttle_freeform_docker(shuttle_controller, usr, z_level)
+					playsound(control_turf, 'modular_skyrat/modules/overmap/sound/shuttle_voice/landing.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 				if("gateway_dock")
 					if(shuttle_controller.busy)
 						return
@@ -500,6 +511,7 @@
 							shuttle_controller.busy = TRUE
 							shuttle_controller.RemoveCurrentControl()
 							my_shuttle.gateway_stranded = TRUE
+							playsound(control_turf, 'modular_skyrat/modules/overmap/sound/shuttle_voice/error_navigation.ogg', OVERMAP_SHUTTLE_ALERT_VOLUME)
 
 		if("target")
 			if(!(shuttle_capability & SHUTTLE_CAN_USE_TARGET))

@@ -100,8 +100,9 @@
 
 /datum/action/innate/quit_control
 	name = "Quit Control"
-	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
-	button_icon_state = "slime_down"
+	icon_icon = 'modular_skyrat/modules/overmap/icons/overmap_action_icons.dmi'
+	button_icon_state = "exit"
+	background_icon_state = "bg_spell"
 
 /datum/action/innate/quit_control/Trigger()
 	var/datum/overmap_shuttle_controller/OSC = target
@@ -109,8 +110,9 @@
 
 /datum/action/innate/stop_shuttle
 	name = "Stop Shuttle"
-	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
-	button_icon_state = "slime_down"
+	icon_icon = 'modular_skyrat/modules/overmap/icons/overmap_action_icons.dmi'
+	button_icon_state = "stop"
+	background_icon_state = "bg_spell"
 
 /datum/action/innate/stop_shuttle/Trigger()
 	var/datum/overmap_shuttle_controller/OSC = target
@@ -118,8 +120,9 @@
 
 /datum/action/innate/open_shuttle_control
 	name = "Shuttle Controls"
-	icon_icon = 'icons/mob/actions/actions_silicon.dmi'
-	button_icon_state = "slime_down"
+	icon_icon = 'modular_skyrat/modules/overmap/icons/overmap_action_icons.dmi'
+	button_icon_state = "control"
+	background_icon_state = "bg_spell"
 
 /datum/action/innate/open_shuttle_control/Trigger()
 	var/datum/overmap_shuttle_controller/OSC = target

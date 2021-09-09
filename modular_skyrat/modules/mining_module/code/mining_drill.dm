@@ -187,7 +187,7 @@
 	. = ..()
 	if(starting_cell)
 		cell = new starting_cell
-	soundloop = new(list(src), FALSE)
+	soundloop = new(src, FALSE)
 	update_icon()
 
 /obj/machinery/power/mining_drill/proc/pass_power_check()
