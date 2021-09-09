@@ -23,10 +23,10 @@
 	affects_underground = FALSE
 	thunder_chance = 4
 
-	sound_active_outside = /datum/looping_sound/weather/wind/indoors
-	sound_active_inside = /datum/looping_sound/weather/wind
-	sound_weak_outside = /datum/looping_sound/weather/wind/indoors
-	sound_weak_inside = /datum/looping_sound/weather/wind
+	sound_active_outside = /datum/looping_sound_skyrat/weather/wind/indoors
+	sound_active_inside = /datum/looping_sound_skyrat/weather/wind
+	sound_weak_outside = /datum/looping_sound_skyrat/weather/wind/indoors
+	sound_weak_inside = /datum/looping_sound_skyrat/weather/wind
 
 /datum/weather/hailstorm/weather_act(mob/living/L)
 	L.adjust_bodytemperature(-rand(3,6))

@@ -4,23 +4,6 @@
 /obj/machinery/microwave,
 /turf/open/floor/pod,
 /area/shuttle/nexus)
-"aF" = (
-/obj/machinery/door/airlock/external,
-/obj/structure/fans/tiny/forcefield,
-/obj/docking_port/mobile{
-	dir = 2;
-	dwidth = 7;
-	height = 17;
-	id = "nexus";
-	launch_status = 0;
-	name = "NXV Nexus";
-	overmap_shuttle_type = /datum/overmap_object/shuttle/exploration_nexus;
-	port_direction = 8;
-	preferred_direction = 4;
-	width = 27
-	},
-/turf/open/floor/plating,
-/area/shuttle/nexus)
 "aH" = (
 /obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/pod,
@@ -75,6 +58,22 @@
 /obj/structure/bed,
 /obj/item/bedsheet/random,
 /turf/open/floor/pod,
+/area/shuttle/nexus)
+"fC" = (
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny/forcefield,
+/obj/docking_port/mobile{
+	dir = 2;
+	dwidth = 12;
+	height = 17;
+	id = "nexus";
+	launch_status = 0;
+	name = "NXV Nexus";
+	port_direction = 8;
+	preferred_direction = 4;
+	width = 27
+	},
+/turf/open/floor/plating,
 /area/shuttle/nexus)
 "fQ" = (
 /obj/structure/ore_box,
@@ -132,17 +131,6 @@
 	},
 /turf/open/floor/pod,
 /area/shuttle/nexus)
-"ks" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 4;
-	pixel_x = 2
-	},
-/turf/open/floor/pod,
-/area/shuttle/nexus)
-"ku" = (
-/obj/structure/curtain,
-/turf/open/floor/pod,
-/area/shuttle/nexus)
 "lS" = (
 /obj/structure/ore_box,
 /obj/machinery/light/red/directional/west,
@@ -163,7 +151,7 @@
 /obj/machinery/mining_laser{
 	dir = 4
 	},
-/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/nexus)
 "nJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
@@ -175,10 +163,6 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/shuttle/nexus)
-"or" = (
-/obj/machinery/light/warm/directional/east,
-/turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/nexus)
 "oV" = (
 /obj/machinery/computer/atmos_alert{
@@ -224,6 +208,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/nexus)
+"ur" = (
+/obj/machinery/transporter,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/shuttle/ferry,
+/area/shuttle/nexus)
 "uK" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
@@ -257,14 +246,6 @@
 	},
 /turf/open/floor/pod,
 /area/shuttle/nexus)
-"vB" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 4;
-	pixel_x = 2
-	},
-/obj/structure/curtain,
-/turf/open/floor/pod,
-/area/shuttle/nexus)
 "wL" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
@@ -284,12 +265,6 @@
 /area/shuttle/nexus)
 "yf" = (
 /obj/structure/table/reinforced,
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/rglass{
-	amount = 30;
-	pixel_x = 2;
-	pixel_y = -2
-	},
 /obj/item/stack/rods/fifty,
 /obj/item/stack/sheet/cloth/ten,
 /obj/item/stack/sheet/iron/twenty,
@@ -389,6 +364,14 @@
 	},
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/nexus)
+"EE" = (
+/obj/structure/curtain,
+/obj/structure/window/reinforced/tinted{
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/pod,
+/area/shuttle/nexus)
 "EN" = (
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
@@ -475,9 +458,7 @@
 /area/shuttle/nexus)
 "Mk" = (
 /obj/structure/cable,
-/obj/machinery/power/apc/unlocked{
-	pixel_x = 25
-	},
+/obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/plating,
 /area/shuttle/nexus)
 "Mq" = (
@@ -550,6 +531,10 @@
 /obj/item/modular_computer/tablet/preset/advanced,
 /turf/open/floor/pod,
 /area/shuttle/nexus)
+"Pp" = (
+/obj/machinery/porta_turret,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/nexus)
 "PC" = (
 /obj/machinery/door/airlock/shuttle/glass,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -563,6 +548,13 @@
 "PS" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
+	},
+/turf/open/floor/iron/shuttle/ferry,
+/area/shuttle/nexus)
+"PV" = (
+/obj/structure/table/reinforced,
+/obj/machinery/turretid{
+	pixel_x = 25
 	},
 /turf/open/floor/iron/shuttle/ferry,
 /area/shuttle/nexus)
@@ -781,7 +773,7 @@ LR
 Gz
 Mj
 sf
-Mj
+ur
 Gz
 ME
 in
@@ -794,9 +786,9 @@ sM
 sM
 "}
 (7,1,1) = {"
+sM
 Ne
-LR
-LR
+ka
 Gz
 Mj
 tf
@@ -813,9 +805,9 @@ sM
 sM
 "}
 (8,1,1) = {"
-aF
-by
-eJ
+sM
+Ne
+ka
 Gz
 Gz
 Gz
@@ -832,10 +824,10 @@ sM
 sM
 "}
 (9,1,1) = {"
-Ne
-LR
-LR
-gA
+sM
+EN
+dH
+EE
 Mj
 Mj
 yf
@@ -852,9 +844,9 @@ sM
 "}
 (10,1,1) = {"
 sM
-Ne
-ka
-Gz
+EN
+dH
+EE
 Mj
 Mj
 Mj
@@ -871,9 +863,9 @@ sM
 "}
 (11,1,1) = {"
 sM
-Ne
-ka
-ks
+EN
+eT
+EE
 eO
 tU
 tU
@@ -889,10 +881,10 @@ Ne
 sM
 "}
 (12,1,1) = {"
-sM
-EN
-dH
-vB
+Ne
+LR
+LR
+gA
 Mj
 Mj
 Mj
@@ -908,10 +900,10 @@ EN
 sM
 "}
 (13,1,1) = {"
-sM
-EN
-dH
-vB
+fC
+by
+eJ
+Gz
 Mj
 Mj
 Mj
@@ -927,11 +919,11 @@ EN
 sM
 "}
 (14,1,1) = {"
-sM
-EN
-eT
-ku
-or
+Ne
+LR
+LR
+gA
+Mj
 Mj
 Mj
 Dv
@@ -1100,7 +1092,7 @@ sM
 (23,1,1) = {"
 sM
 sM
-Ne
+Pp
 LR
 rv
 LR
@@ -1112,7 +1104,7 @@ LR
 LR
 Rx
 LR
-Ne
+Pp
 sM
 sM
 "}
@@ -1146,7 +1138,7 @@ zb
 Mj
 PS
 Mj
-ME
+PV
 Ne
 sM
 sM

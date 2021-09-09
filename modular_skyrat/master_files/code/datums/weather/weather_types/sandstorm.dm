@@ -23,10 +23,10 @@
 	barometer_predictable = TRUE
 	affects_underground = FALSE
 
-	sound_active_outside = /datum/looping_sound/weather/wind/indoors
-	sound_active_inside = /datum/looping_sound/weather/wind
-	sound_weak_outside = /datum/looping_sound/weather/wind/indoors
-	sound_weak_inside = /datum/looping_sound/weather/wind
+	sound_active_outside = /datum/looping_sound_skyrat/weather/wind/indoors
+	sound_active_inside = /datum/looping_sound_skyrat/weather/wind
+	sound_weak_outside = /datum/looping_sound_skyrat/weather/wind/indoors
+	sound_weak_inside = /datum/looping_sound_skyrat/weather/wind
 
 	opacity_in_main_stage = TRUE
 	multiply_blend_on_main_stage = TRUE

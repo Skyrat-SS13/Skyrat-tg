@@ -26,10 +26,10 @@
 
 	barometer_predictable = TRUE
 
-	sound_active_outside = /datum/looping_sound/active_outside_ashstorm
-	sound_active_inside = /datum/looping_sound/active_inside_ashstorm
-	sound_weak_outside = /datum/looping_sound/weak_outside_ashstorm
-	sound_weak_inside = /datum/looping_sound/weak_inside_ashstorm
+	sound_active_outside = /datum/looping_sound_skyrat/active_outside_ashstorm
+	sound_active_inside = /datum/looping_sound_skyrat/active_inside_ashstorm
+	sound_weak_outside = /datum/looping_sound_skyrat/weak_outside_ashstorm
+	sound_weak_inside = /datum/looping_sound_skyrat/weak_inside_ashstorm
 	multiply_blend_on_main_stage = TRUE
 
 /datum/weather/ash_storm/proc/is_ash_immune(atom/L)

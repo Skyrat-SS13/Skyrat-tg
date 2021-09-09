@@ -19,8 +19,8 @@
 	affects_underground = FALSE
 	aesthetic = TRUE
 
-	sound_active_outside = /datum/looping_sound/weather/rain/indoors
-	sound_active_inside = /datum/looping_sound/weather/rain
+	sound_active_outside = /datum/looping_sound_skyrat/weather/rain/indoors
+	sound_active_inside = /datum/looping_sound_skyrat/weather/rain
 
 /datum/weather/rain/heavy
 	name = "heavy rain"
@@ -35,10 +35,10 @@
 	end_message = "<span class='notice'>The downpour dies down...</span>"
 	end_overlay = "rain"
 
-	sound_active_outside = /datum/looping_sound/weather/rain/indoors
-	sound_active_inside = /datum/looping_sound/weather/rain
-	sound_weak_outside = /datum/looping_sound/weather/rain/indoors
-	sound_weak_inside = /datum/looping_sound/weather/rain
+	sound_active_outside = /datum/looping_sound_skyrat/weather/rain/indoors
+	sound_active_inside = /datum/looping_sound_skyrat/weather/rain
+	sound_weak_outside = /datum/looping_sound_skyrat/weather/rain/indoors
+	sound_weak_inside = /datum/looping_sound_skyrat/weather/rain
 
 	thunder_chance = 2
 

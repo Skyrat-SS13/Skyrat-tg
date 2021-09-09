@@ -41,6 +41,5 @@
 /obj/docking_port/stationary/gateway
 	name = "Unknown Destination"
 	id = "gateway"
-	width = 35
-	dwidth = 11
-	height = 22
+	width = 40
+	height = 40

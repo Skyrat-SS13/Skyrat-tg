@@ -39,10 +39,10 @@
 	end_message = span_notice("The blizzard dies down...")
 	end_skyblock = 0.2
 
-	sound_active_outside = /datum/looping_sound/weather/wind/indoors
-	sound_active_inside = /datum/looping_sound/weather/wind
-	sound_weak_outside = /datum/looping_sound/weather/wind/indoors
-	sound_weak_inside = /datum/looping_sound/weather/wind
+	sound_active_outside = /datum/looping_sound_skyrat/weather/wind/indoors
+	sound_active_inside = /datum/looping_sound_skyrat/weather/wind
+	sound_weak_outside = /datum/looping_sound_skyrat/weather/wind/indoors
+	sound_weak_inside = /datum/looping_sound_skyrat/weather/wind
 
 	immunity_type = TRAIT_SNOWSTORM_IMMUNE
 	aesthetic = FALSE

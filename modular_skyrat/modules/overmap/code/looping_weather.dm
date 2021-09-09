@@ -1,4 +1,4 @@
-/datum/looping_sound/weather/wind
+/datum/looping_sound_skyrat/weather/wind
 	mid_sounds = list(
 		'modular_skyrat/master_files/sound/effects/wind/wind1.ogg' = 1,
 		'modular_skyrat/master_files/sound/effects/wind/wind2.ogg' = 1,
@@ -11,10 +11,10 @@
 	volume = 50
 
 // Don't have special sounds so we just make it quieter indoors.
-/datum/looping_sound/weather/wind/indoors
+/datum/looping_sound_skyrat/weather/wind/indoors
 	volume = 30
 
-/datum/looping_sound/weather/rain
+/datum/looping_sound_skyrat/weather/rain
 	mid_sounds = list(
 		'sound/ambience/acidrain_mid.ogg' = 1
 		)
@@ -24,5 +24,5 @@
 	end_sound = 'sound/ambience/acidrain_end.ogg'
 	volume = 50
 
-/datum/looping_sound/weather/rain/indoors
+/datum/looping_sound_skyrat/weather/rain/indoors
 	volume = 30
