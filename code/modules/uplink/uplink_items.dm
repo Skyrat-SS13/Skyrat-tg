@@ -503,8 +503,10 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	desc = "An ancient Soviet machine pistol, refurbished for the modern age. Uses 9mm auto rounds in 15-round magazines and is compatible \
 			with suppressors. The gun fires in three round bursts."
 	item = /obj/item/gun/ballistic/automatic/pistol/aps
-	cost = 10
-	purchasable_from = UPLINK_NUKE_OPS
+	//Skyrat Edit: Upped the price from 10 to 14 given the fact burst fire guns are some of the best in the game.
+	cost = 14
+	//Skyrat Edit: Cobalt demanded this be available for all traitors. Need to check the damage on it and how it stacks up.
+	//purchasable_from = UPLINK_NUKE_OPS
 
 /datum/uplink_item/dangerous/surplus_smg
 	name = "Surplus SMG"
