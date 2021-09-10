@@ -1,41 +1,35 @@
+GLOBAL_LIST_INIT(fishing_weights, list(
+	/obj/item/stack/ore/diamond = 1,
+	/obj/item/stack/ore/bluespace_crystal = 1,
+	/obj/item/stack/ore/gold = 3,
+	/obj/item/stack/ore/uranium = 3,
+	/obj/item/stack/ore/titanium = 3,
+	/obj/item/stack/ore/silver = 5,
+	/obj/item/stack/ore/iron = 5,
+	/obj/item/xenoarch/strange_rock = 5,
+))
+
 /turf/open
 	///If fishes are able to be fished from this open turf
 	var/fishspawn_possible = FALSE
-	///What are the weights of items that can be fished from this open turf.
-	var/list/fishing_weights = list()
-
-//lava will have ores
-/turf/open/lava
-	fishing_weights = list(
-		/obj/item/stack/ore/diamond = 1,
-		/obj/item/stack/ore/bluespace_crystal = 1,
-		/obj/item/stack/ore/gold = 3,
-		/obj/item/stack/ore/uranium = 3,
-		/obj/item/stack/ore/titanium = 3,
-		/obj/item/stack/ore/silver = 5,
-		/obj/item/stack/ore/iron = 5,
-		/obj/item/xenoarch/strange_rock = 5,
-	)
 
 //water will have ores and fish
 /turf/open/water
 	fishspawn_possible = TRUE
-	fishing_weights = list(
-		/obj/item/stack/ore/diamond = 1,
-		/obj/item/stack/ore/bluespace_crystal = 1,
-		/obj/item/stack/ore/gold = 3,
-		/obj/item/stack/ore/uranium = 3,
-		/obj/item/stack/ore/titanium = 3,
-		/obj/item/stack/ore/silver = 5,
-		/obj/item/stack/ore/iron = 5,
-		/obj/item/xenoarch/strange_rock = 5,
-	)
+
+/turf/open/water/lava_land_surface
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/water/lava_land_surface
 
 /obj/item/fishing_rod
 	name = "fishing rod"
 	desc = "A rod that allows you to fish."
 	icon = 'modular_skyrat/modules/fishing/icons/fishing.dmi'
 	icon_state = "normal_rod"
+	inhand_icon_state = "normal_rod"
+	lefthand_file = 'modular_skyrat/modules/fishing/icons/fishing_left.dmi'
+	righthand_file = 'modular_skyrat/modules/fishing/icons/fishing_right.dmi'
 	//normal_rod and lava_rod
 	///which turfs are allowed within that rod type
 	var/list/allowed_fishing_turfs = list()
@@ -59,9 +53,24 @@
 /obj/item/fishing_rod/water_rod
 	allowed_fishing_turfs = list(/turf/open/water)
 
+/datum/crafting_recipe/water_rod
+	name = "Water Fishing Rod"
+	result = /obj/item/fishing_rod/water_rod
+	reqs = list(/obj/item/stack/rods = 2,
+				/obj/item/stack/cable_coil = 2)
+	category = CAT_MISC
+
 /obj/item/fishing_rod/lava_rod
 	icon_state = "lava_rod"
+	inhand_icon_state = "lava_rod"
 	allowed_fishing_turfs = list(/turf/open/lava)
+
+/datum/crafting_recipe/lava_rod
+	name = "Lava Fishing Rod"
+	result = /obj/item/fishing_rod/lava_rod
+	reqs = list(/obj/item/stack/sheet/animalhide/goliath_hide = 2,
+				/obj/item/stack/sheet/sinew = 2)
+	category = CAT_MISC
 
 /obj/item/fishing_rod/admin_rod
 	allowed_fishing_turfs = list(/turf/open/water, /turf/open/lava)
@@ -83,7 +92,7 @@
 
 /obj/effect/fishing_bobber/process(delta_time)
 	if(world.time > timed_fishing && world.time < timed_fishing + 2 SECONDS)
-		pixel_y = rand(-2, 2)
+		pixel_y = pick(-2,2)
 
 /obj/item/fishing_rod/equipped(mob/user, slot, initial)
 	. = ..()
@@ -129,12 +138,12 @@
 				if(1)
 					generate_fish(get_turf(user), random_fish_type())
 				if(2 to 3)
-					var/obj/spawn_objone = pickweight(fishing_spot.fishing_weights)
+					var/obj/spawn_objone = pickweight(GLOB.fishing_weights)
 					new spawn_objone(get_turf(user))
 			fishing_spot = null
 			QDEL_NULL(spawned_bobber)
 			return
-		var/obj/spawn_objtwo = pickweight(fishing_spot.fishing_weights)
+		var/obj/spawn_objtwo = pickweight(GLOB.fishing_weights)
 		new spawn_objtwo(get_turf(user))
 		fishing_spot = null
 		QDEL_NULL(spawned_bobber)
@@ -145,7 +154,7 @@
 	if(get_dist(target, user) >= 4) //not using proximity because I want you to be able to cast the line
 		return
 	to_chat(user, span_notice("You throw out the line to [open_turf]..."))
-	var/choose_timer = (rand(5, 10)) SECONDS
+	var/choose_timer = (rand(3, 7)) SECONDS
 	allowed_fishing = world.time + choose_timer
 	fishing_spot = open_turf
 	spawned_bobber =  new /obj/effect/fishing_bobber(open_turf)
