@@ -344,7 +344,7 @@
 			N.set_opacity(FALSE)
 		N.layer = overlay_layer
 		N.plane = overlay_plane
-		N.icon = 'icons/effects/weather_effects.dmi'
+		N.icon = 'modular_skyrat/modules/overmap/icons/weather_effects.dmi'
 		N.color = weather_color
 		set_area_icon_state(N)
 		if(stage == END_STAGE)
@@ -371,7 +371,7 @@
 	lightning_in_progress = TRUE
 	addtimer(CALLBACK(src, .proc/end_thunder), 5 SECONDS)
 	addtimer(CALLBACK(src, .proc/do_thunder_sound), 2 SECONDS)
-	var/mutable_appearance/appearance_to_add = mutable_appearance('icons/effects/weather_effects.dmi', "lightning_flash")
+	var/mutable_appearance/appearance_to_add = mutable_appearance('modular_skyrat/modules/overmap/icons/weather_effects.dmi', "lightning_flash")
 	appearance_to_add.plane = LIGHTING_PLANE
 	appearance_to_add.layer = OBJ_LAYER
 	for(var/V in impacted_areas)
@@ -394,7 +394,7 @@
 	if(!lightning_in_progress)
 		return
 	lightning_in_progress = FALSE
-	var/mutable_appearance/appearance_to_remove = mutable_appearance('icons/effects/weather_effects.dmi', "lightning_flash")
+	var/mutable_appearance/appearance_to_remove = mutable_appearance('modular_skyrat/modules/overmap/icons/weather_effects.dmi', "lightning_flash")
 	appearance_to_remove.plane = LIGHTING_PLANE
 	appearance_to_remove.layer = OBJ_LAYER
 	for(var/V in impacted_areas)

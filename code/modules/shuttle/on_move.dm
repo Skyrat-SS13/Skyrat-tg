@@ -168,7 +168,7 @@ All ShuttleMove procs go here
 /area/proc/onShuttleMove(turf/oldT, turf/newT, area/underlying_old_area)
 	if(newT == oldT) // In case of in place shuttle rotation shenanigans.
 		return TRUE
-	var/area/target_area = oldT.underlying_area ? oldT.underlying_area : underlying_old_are //SKYRAT EDIT ADDITION
+	var/area/target_area = oldT.underlying_area ? oldT.underlying_area : underlying_old_area //SKYRAT EDIT ADDITION
 	contents -= oldT
 	//underlying_old_area.contents += oldT //SKYRAT EDIT CHANGE
 	//oldT.change_area(src, underlying_old_area)
