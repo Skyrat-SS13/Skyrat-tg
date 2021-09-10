@@ -15,3 +15,7 @@
 	use_power = NO_POWER_USE
 	circuit = /obj/item/circuitboard/machine/rodstopper
 	layer = BELOW_OBJ_LAYER
+
+/obj/machinery/rodstopper/examine(mob/user)
+	. = ..()
+	. += span_warning("It will create a localized reality-collapse when stopping a rod, keep your distance!")
