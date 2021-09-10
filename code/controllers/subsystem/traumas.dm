@@ -98,16 +98,10 @@ SUBSYSTEM_DEF(traumas)
 			/obj/item/gun/magic/staff/honk, /obj/item/clothing/suit/chaplainsuit/clownpriest, /obj/item/clothing/head/clownmitre,
 			/obj/item/clothing/under/plasmaman/clown
 		)),
-<<<<<<< HEAD
-
-		"greytide" = typecacheof(list(/obj/item/clothing/under/color/grey, /obj/item/melee/baton/cattleprod,
-			/obj/item/spear, /obj/item/clothing/mask/gas,
-=======
 		"greytide" = typecacheof(list(
 			/obj/item/clothing/under/color/grey, /obj/item/melee/baton/security/cattleprod,
 			/obj/item/spear, /obj/item/clothing/mask/gas, /obj/item/toy/figure/assistant,
 			/obj/structure/statue/sandstone/assistant
->>>>>>> aa33bd47fca (Phobia DLC - Spooky Pack (#61311))
 		)),
 		"lizards" = typecacheof(list(
 			/obj/item/toy/plush/lizard_plushie, /obj/item/food/kebab/tail, /obj/item/organ/tail/lizard,
