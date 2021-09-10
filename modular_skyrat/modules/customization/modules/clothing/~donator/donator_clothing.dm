@@ -454,7 +454,7 @@
 			visible_message(span_warning("[crusher] steps on the [src], crushing it with ease."))
 			take_damage(200, sound_effect = FALSE)
 
-/obj/item/clothing/mask/kindle/obj_destruction(damage_flag)
+/obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
 	. = ..()
 	name = "broken mask of Kindle"
 	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
