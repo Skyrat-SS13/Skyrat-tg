@@ -96,6 +96,9 @@
 	name = "MG34 UBER"
 	desc = "Here, there, seems like everywhere. Nasty things are happening, now everyone is scared. Old Jeb Brown the Blacksmith, he saw his mother die. A critter took a bite from her and now she's in the sky. "
 	icon_state = "mg34_packapunch"
+	base_icon_state = "mg34_packapunch"
+	worn_icon_state = "mg34_packapunch"
+	inhand_icon_state = "mg34_packapunch"
 	fire_delay = 0.04
 	burst_size = 5
 	spread = 5
@@ -107,6 +110,6 @@
 	max_ammo = 999
 	multiple_sprites = AMMO_BOX_ONE_SPRITE
 
-/obj/item/gun/ballistic/automatic/mg34/packapunch/afterattack(atom/target, mob/living/user, flag, params)
+/obj/item/gun/ballistic/automatic/mg34/packapunch/process_chamber(empty_chamber, from_firing, chamber_next_round)
 	. = ..()
 	magazine.top_off()
