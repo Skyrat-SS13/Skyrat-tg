@@ -10,7 +10,7 @@
 	// launchers.dm parameters
 	desc = "Sprayer for firing special living latex mass" //LAMELLA TODO: Need a description of the Living latex sprayer
 	name = "Nanite latex sprayer"
-	//icon = "modular_skyrat/modules/fixing_missing_icons/ballistic.dmi" // LAMELLA TODO: Living latex sprayer image file needed
+	icon = "'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi'" // LAMELLA TODO: Living latex sprayer image file needed
 	icon_state = "living_latex_gun"
 	worn_icon = "" // LAMELLA TODO: We need a file with an image of a sprayer in the hands of a character
 	inhand_icon_state = "living_latex_gun"
@@ -22,7 +22,6 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	pin = /obj/item/firing_pin/latexnanitechip // Special type of firing_pin for living latex gun.
 	bolt_type = BOLT_TYPE_NO_BOLT
-	can_misfire = FALSE
 	// LAMELA TODO: Files for the sound operation
 	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
 	vary_fire_sound = TRUE
@@ -69,22 +68,13 @@
 
 	// LAMELLA TODO:
 	///Phrasing of the magazine in examine and notification messages; ex: magazine, box, etx
-	magazine_wording = "living latex canister"
+	var/magazine_wording = "living latex canister"
 	///Phrasing of the cartridge in examine and notification messages; ex: bullet, shell, dart, etc.
-	cartridge_wording = "living latex ball"
+	var/cartridge_wording = "living latex ball"
 
-	/// LAMELLA TODO: You need to set verbs to describe attacks
+	/// LAMELA TODO: You need to set verbs to describe attacks
 	attack_verb_continuous = list("strikes", "hits", "bashes")
 	attack_verb_simple = list("strike", "hit", "bash")
-
-	/// ERP properties section
-	//
-	var/list/latexsprayerstates = list("open", "closed", "handed")
-	//var/currentlatexsprayerstate = latexsprayerstates[1]
-	//
-	var/chipslotisclosed = TRUE
-
-
 
 // Definition of the firing pin class
 /obj/item/firing_pin/latexnanitechip
@@ -99,13 +89,10 @@
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb_continuous = list("pokes")
 	attack_verb_simple = list("poke")
-	fail_message = "<span class='warning'>INVALID USER.</span>"
-	selfdestruct = FALSE // Explode when user check is failed.
-	force_replace = FALSE // Can forcefully replace other pins.
-	pin_removeable = FALSE // Can be replaced by any pin.
-	var/list/latexprogram = list(/obj/item/clothing/shoes/ll_socks,
-									/obj/item/clothing/gloves/ll_gloves
-								) // Default latex program
+	var/fail_message = "<span class='warning'>INVALID USER.</span>"
+	var/selfdestruct = FALSE // Explode when user check is failed.
+	var/force_replace = FALSE // Can forcefully replace other pins.
+	var/pin_removeable = FALSE // Can be replaced by any pin.
 
 // Latex Canister Receiver Class definition for Living latex sprayer
 /obj/item/ammo_box/magazine/internal/livinglatexcanisterreciever
@@ -142,7 +129,6 @@
 	ricochets = 0
 	ricochets_max = 0
 	ricochet_chance = 0
-	var/list/latexprogram = list() // List of item types that are recorded in the latex program
 
 //LAMELLA TODO: Need a general special effect setting
 //Defines of the special effect of being hit by live latex
@@ -165,163 +151,22 @@
 
 
 // GEMINEE TODO: Overriding the default grenade on-hit behavior for living latex ball
-/obj/projectile/bullet/latexball/on_hit(mob/target, blocked = FALSE)
-	..() // Standard hit tests.
+/obj/projectile/bullet/latexball/on_hit(atom/target, blocked = FALSE)
+	..() //GEMINEE TODO: Check the operation of the nodamage parameter. If you need to track checks in a superfunction
 
-	if(isliving(target))
-		// Let's throw off all the objects from the character before applying the latex.
-		// Standard admin drop all cycle
-		for(var/obj/item/W in target)
-			if(!target.dropItemToGround(W))
-				qdel(W)
-				target.regenerate_icons()
+	//Disable the standard grenade handling.
+	//explosion(target, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 1, adminlog = FALSE)
 
-		// Apply latex garments to the character
-		if(ishuman(target))
-			livinglatexspread(target)
+	// GEMINEE TODO: Implement your own livning latex ball hit handler
 
 	return BULLET_ACT_HIT
 
 
 
-//////////////////////////////////////////
-/// LIVING LATEX SPRAYER LOGIC SECTION ///
-//////////////////////////////////////////
-// Chip slot open and close handler
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/AltClick(mob/user)
-	if(!ishuman(user))
-		return
-
-	if(!chipslotisclosed)
-		chipslotisclosed = TRUE
-		user.visible_message("You close chip reciever.", "[user.name] close chip reciever.")
-		return
-	else
-		chipslotisclosed = FALSE
-		user.visible_message("You open chip reciever. It is [pin ? "has chip" : "empty"]" , "[user.name] open chip reciever. It is [pin ? "has chip" : "empty"]")
-		return
-
-// Empty Hand Attack Handler
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/attack_hand(mob/user)
-	if(ishuman(user))
-		if(!can_trigger_gun(user))
-			return
-	else
-		return
-
-	// If the chip slot is open, then we take the chip into an empty hand.
-	if(!chipslotisclosed && pin)
-		user.put_in_hands(pin)
-		pin.add_fingerprint(user)
-		user.visible_message(span_notice("[user] removes [pin] from [src]."), span_notice("You remove [pin] from [src]."))
-		pin = null
-		//update_all_visuals()
-		return
-	// If the panel is closed or there is no chip in the slot, then pull out the canister
-	if(!internal_magazine && loc == user && user.is_holding(src) && magazine)
-		if(bolt_type == BOLT_TYPE_OPEN)
-			chambered = null
-		if (magazine.ammo_count())
-			playsound(src, load_sound, load_sound_volume, load_sound_vary)
-		else
-			playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
-		magazine.forceMove(drop_location())
-		var/obj/item/ammo_box/magazine/old_mag = magazine
-
-		var/obj/item/ammo_box/magazine/tac_load = null //TODO: check logic
-		if (tac_load)
-			if (insert_magazine(user, tac_load, FALSE))
-				to_chat(user, span_notice("You perform a tactical reload on [src]."))
-			else
-				to_chat(user, span_warning("You dropped the old [magazine_wording], but the new one doesn't fit. How embarassing."))
-				magazine = null
-		else
-			magazine = null
-		user.put_in_hands(old_mag)
-		old_mag.update_appearance()
-		var/display_message = TRUE //TODO: check logic
-		if (display_message)
-			to_chat(user, span_notice("You pull the [magazine_wording] out of [src]."))
-		update_appearance()
-		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
-		return
-
-// Chip and canister action handler
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/attackby(obj/item/A, mob/user, params)
-	// Blocking the default behavior of the weapon
-	//..()
-
-	// Canister click handler is a copy of the standard ammo click handler
-	if(istype(A, /obj/item/ammo_casing/livinglatexcanister))
-		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
-			if (chambered && !chambered.loaded_projectile)
-				chambered.forceMove(drop_location())
-				chambered = null
-			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
-			if (num_loaded)
-				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src]."))
-				playsound(src, load_sound, load_sound_volume, load_sound_vary)
-				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
-					chamber_round()
-				A.update_appearance()
-				update_appearance()
-			return
-
-	// Chip click handler
-	if(istype(A, /obj/item/firing_pin/latexnanitechip))
-		if(!chipslotisclosed)
-			if(pin)
-				to_chat(user, span_warning("There is already a chip in [src]!"))
-				return
-			else
-				var/area/a = loc.loc // Gets our locations location, like a dream within a dream
-				if(!isarea(a))
-					return
-				if(!user.transferItemToLoc(A,src))
-					//cut_overlay(cell_overlay)
-					//cell_overlay.icon_state = "milking_cell_empty"
-					//update_all_visuals()
-					return
-
-				pin = A
-				//cut_overlay(cell_overlay)
-				//cell_overlay.icon_state = "milking_cell"
-				//add_overlay(cell_overlay)
-				user.visible_message(span_notice("[user] inserts a chip into [src]."), span_notice("You insert a chip into [src]."))
-				//update_all_visuals()
-				return
-	else
-		to_chat(user, span_warning("[src]'s chip slot isn't opened!"))
-		return
-
-	// Space for other handlers, for example emag
-
-	update_appearance()
-	A.update_appearance()
-	return
-
-/obj/projectile/bullet/latexball/proc/livinglatexspread(mob/target, list/latexprogram)
-	to_chat(world, "DBG latex hit - in hit proc executed| target=[target] | program=[latexprogram]")
-	var/list/items = list()
-	for (var/T, latexprogram)
-		// T = new()
-		// items.Add(T)
 
 
 
-	for(var/obj/item/W in target)
 
-		if(!target.dropItemToGround(W))
-			qdel(W)
-			target.regenerate_icons()
-
-
-//The event just before the shot is fired. The moment of recording the program in the projectile
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/before_firing(atom/target,mob/user)
-	//Здесь будет выполняться запись программы в сам выстрел латекса
-	// if(.chambered.contents[0])
-	// 	.chambered.contents[0].program = .program
-	// return
 
 /////////////////////////////////
 ///	FUNCTION OVERRIDE SECTION ///
@@ -371,22 +216,3 @@
 	to_chat(user, span_notice("You remove a round from [src]!"))
 	update_ammo_count()
 
-// Blocking the action with a wrench
-/obj/item/gun/ballistic/wrench_act(mob/living/user, obj/item/I)
-	to_chat(user, "You cannot find any way to accept the wrench to [src]. It doesn't fit anywhere.")
-	return
-
-// Blocking the action with a screwdriver
-/obj/item/gun/screwdriver_act(mob/living/user, obj/item/I)
-	to_chat(user, "It seems there is nothing to unscrew. You don't see a single screw.")
-	return
-
-//Blocking the action with a welder
-/obj/item/gun/welder_act(mob/living/user, obj/item/I)
-	to_chat(user, "Nothing to weld here...")
-	return
-
-// Blocking the action with a wirecutter
-/obj/item/gun/wirecutter_act(mob/living/user, obj/item/I)
-	to_chat(user, "You don't see any wires or anything like that.")
-	return
