@@ -232,7 +232,7 @@
 
 /datum/loadout_item/backpack/donator/brightcosmos
 	name = "Case of Bright Cosmos cigars"
-	path = /obj/item/storage/fancy/cigarettes/cigars/lyricalpaws
+	path = /obj/item/storage/fancy/cigarettes/cigars/havana/lyricalpaws
 	ckeywhitelist = list("lyricalpaws")
 
 /datum/loadout_item/uniform/donator/lannese
