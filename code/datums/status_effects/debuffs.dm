@@ -700,8 +700,8 @@
 	var/mob/living/carbon/C = owner
 	C.cure_trauma_type(/datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_SURGERY) //clear previous hypnosis
 	// The brain trauma itself does its own set of logging, but this is the only place the source of the hypnosis phrase can be found.
-	C.log_message("has been hypnotised by the phrase '[hearing_args[HEARING_RAW_MESSAGE]]' spoken by [key_name(hearing_speaker)]", LOG_ATTACK)
-	hearing_speaker.log_message("has hypnotised [key_name(C)] with the phrase '[hearing_args[HEARING_RAW_MESSAGE]]'", LOG_ATTACK, log_globally = FALSE)
+	hearing_speaker.log_message("has hypnotised [key_name(C)] with the phrase '[hearing_args[HEARING_RAW_MESSAGE]]'", LOG_ATTACK)
+	C.log_message("has been hypnotised by the phrase '[hearing_args[HEARING_RAW_MESSAGE]]' spoken by [key_name(hearing_speaker)]", LOG_VICTIM, log_globally = FALSE)
 	addtimer(CALLBACK(C, /mob/living/carbon.proc/gain_trauma, /datum/brain_trauma/hypnosis, TRAUMA_RESILIENCE_SURGERY, hearing_args[HEARING_RAW_MESSAGE]), 10)
 	addtimer(CALLBACK(C, /mob/living.proc/Stun, 60, TRUE, TRUE), 15) //Take some time to think about it
 	qdel(src)
@@ -1090,3 +1090,24 @@
 	if(ishostile(owner))
 		var/mob/living/simple_animal/hostile/simple_owner = owner
 		simple_owner.ranged_cooldown_time /= 2.5
+
+/datum/status_effect/freezing_blast
+	id = "freezing_blast"
+	alert_type = /atom/movable/screen/alert/status_effect/freezing_blast
+	duration = 5 SECONDS
+	status_type = STATUS_EFFECT_REPLACE
+
+/atom/movable/screen/alert/status_effect/freezing_blast
+	name = "Freezing Blast"
+	desc = "You've been struck by a freezing blast! Your body moves more slowly!"
+	icon_state = "frozen"
+
+/datum/status_effect/freezing_blast/on_apply()
+	owner.add_movespeed_modifier(/datum/movespeed_modifier/freezing_blast, update = TRUE)
+	return ..()
+
+/datum/status_effect/freezing_blast/on_remove()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/freezing_blast, update = TRUE)
+
+/datum/movespeed_modifier/freezing_blast
+	multiplicative_slowdown = 1

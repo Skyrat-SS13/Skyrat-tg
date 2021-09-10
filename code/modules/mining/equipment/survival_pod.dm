@@ -2,7 +2,7 @@
 /area/survivalpod
 	name = "\improper Emergency Shelter"
 	icon_state = "away"
-	static_lighting = TRUE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA | CULT_PERMITTED
@@ -210,7 +210,7 @@
 		var/obj/item/food/donkpocket/warm/W = new(src)
 		load(W)
 	if(prob(50))
-		var/obj/item/storage/pill_bottle/dice/D = new(src)
+		var/obj/item/storage/dice/D = new(src)
 		load(D)
 	else
 		var/obj/item/instrument/guitar/G = new(src)
