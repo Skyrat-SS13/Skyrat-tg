@@ -13,7 +13,7 @@
 	species_language_holder = /datum/language_holder/felinid
 	disliked_food = GROSS | RAW | CLOTH
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
-	payday_modifier = 0.75
+	//SKYRAT EDIT - EQUAL PAY payday_modifier = 0.75
 	ass_image = 'icons/ass/asscat.png'
 	family_heirlooms = list(/obj/item/toy/cattoy)
 

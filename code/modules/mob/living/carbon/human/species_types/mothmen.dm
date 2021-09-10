@@ -24,7 +24,7 @@
 	species_language_holder = /datum/language_holder/moth
 	wings_icons = list("Megamoth", "Mothra")
 	has_innate_wings = TRUE
-	payday_modifier = 0.75
+	//SKYRAT EDIT - EQUAL PAY payday_modifier = 0.75
 	family_heirlooms = list(/obj/item/flashlight/lantern/heirloom_moth)
 
 /datum/species/moth/regenerate_organs(mob/living/carbon/C,datum/species/old_species,replace_current=TRUE,list/excluded_zones)

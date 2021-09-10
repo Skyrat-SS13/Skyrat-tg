@@ -21,7 +21,7 @@
 	inherent_biotypes = MOB_HUMANOID|MOB_MINERAL
 	mutant_organs = list(/obj/item/organ/adamantine_resonator)
 	speedmod = 2
-	payday_modifier = 0.75
+	//SKYRAT EDIT - EQUAL PAY payday_modifier = 0.75
 	armor = 55
 	siemens_coeff = 0
 	punchdamagelow = 5

@@ -7,7 +7,6 @@
 	locations = list(/datum/cultural_info/location/stateless)
 	factions = list(/datum/cultural_info/faction/none)
 	learnable_languages = list(/datum/language/common, /datum/language/sylvan) //I guess plants are smart and they can speak common
-	payday_modifier = 0.75
 
 /datum/species/pod/podweak
 	name = "Podperson"
