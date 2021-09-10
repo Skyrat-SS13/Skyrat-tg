@@ -14,4 +14,4 @@
 				/obj/item/stack/sheet/cloth = 2,
 				/obj/item/stack/sheet/sinew = 1)
 	time = 30
-	category = CAT_MISC
+	category = CAT_PRIMAL
