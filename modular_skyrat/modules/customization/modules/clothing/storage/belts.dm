@@ -97,7 +97,8 @@
 		/obj/item/nullrod/fedora,
 		/obj/item/nullrod/godhand,
 		/obj/item/nullrod/staff,
-		/obj/item/nullrod/whip
+		/obj/item/nullrod/whip,
+		/obj/item/forging/reagent_weapon/sword
 		))
 
 /obj/item/storage/belt/crusader/PopulateContents()
