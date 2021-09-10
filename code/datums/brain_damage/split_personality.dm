@@ -14,13 +14,13 @@
 
 /datum/brain_trauma/severe/split_personality/on_gain()
 	var/mob/living/M = owner
-	if(M.stat == DEAD)	//No use assigning people to a corpse
+	if(M.stat == DEAD)	//No use assigning people to a corpse //SKYRAT EDIT
 		qdel(src)
 		return
 	..()
 	make_backseats()
 	get_ghost()
-	RegisterSignal(M, COMSIG_LIVING_DEATH, .proc/revert_to_normal)
+	RegisterSignal(M, COMSIG_LIVING_DEATH, .proc/revert_to_normal) //SKYRAT EDIT
 
 /datum/brain_trauma/severe/split_personality/proc/make_backseats()
 	stranger_backseat = new(owner, src)
@@ -35,15 +35,15 @@
 	set waitfor = FALSE
 	var/list/mob/dead/observer/candidates = poll_candidates_for_mob("Do you want to play as [owner.real_name]'s split personality?", ROLE_PAI, null, 7.5 SECONDS, stranger_backseat, POLL_IGNORE_SPLITPERSONALITY)
 	if(LAZYLEN(candidates))
-		var/mob/C = pick(candidates)
-		C.transfer_ckey(stranger_backseat, FALSE)
+		var/mob/C = pick(candidates) //SKYRAT EDIT
+		C.transfer_ckey(stranger_backseat, FALSE) //SKYRAT EDIT
 		log_game("[key_name(stranger_backseat)] became [key_name(owner)]'s split personality.")
 		message_admins("[ADMIN_LOOKUPFLW(stranger_backseat)] became [ADMIN_LOOKUPFLW(owner)]'s split personality.")
 	else
 		qdel(src)
 
-/datum/brain_trauma/severe/split_personality/on_life()
-	if(prob(3))
+/datum/brain_trauma/severe/split_personality/on_life() //SKYRAT EDIT
+	if(prob(3)) //SKYRAT EDIT
 		switch_personalities()
 	..()
 
@@ -52,28 +52,28 @@
 		switch_personalities(TRUE)
 	QDEL_NULL(stranger_backseat)
 	QDEL_NULL(owner_backseat)
-	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
+	UnregisterSignal(owner, COMSIG_LIVING_DEATH) //SKYRAT EDIT
 	..()
 
-/datum/brain_trauma/severe/split_personality/proc/revert_to_normal()
-	qdel(src)
+/datum/brain_trauma/severe/split_personality/proc/revert_to_normal() //SKYRAT EDIT
+	qdel(src) //SKYRAT EDIT
 
-/datum/brain_trauma/severe/split_personality/proc/switch_personalities(forced = FALSE)
-	if(QDELETED(owner) || (owner.stat == DEAD && !forced) || QDELETED(stranger_backseat) || QDELETED(owner_backseat))
+/datum/brain_trauma/severe/split_personality/proc/switch_personalities(forced = FALSE) //SKYRAT EDIT
+	if(QDELETED(owner) || (owner.stat == DEAD && !forced) || QDELETED(stranger_backseat) || QDELETED(owner_backseat)) //SKYRAT EDIT
 		return
 
 	var/mob/living/split_personality/current_backseat
-	var/mob/living/split_personality/free_backseat
-	if(current_controller == OWNER)
+	var/mob/living/split_personality/free_backseat //SKYRAT EDIT
+	if(current_controller == OWNER) //SKYRAT EDIT
 		current_backseat = stranger_backseat
-		free_backseat = owner_backseat
-	else
-		current_backseat = owner_backseat
-		free_backseat = stranger_backseat
+		free_backseat = owner_backseat //SKYRAT EDIT
+	else //SKYRAT EDIT
+		current_backseat = owner_backseat //SKYRAT EDIT
+		free_backseat = stranger_backseat //SKYRAT EDIT
 
 	log_game("[key_name(current_backseat)] assumed control of [key_name(owner)] due to [src]. (Original owner: [current_controller == OWNER ? owner.key : current_backseat.key])")
-	to_chat(owner, "<span class='userdanger'>You feel your control being taken away... your other personality is in charge now!</span>")
-	to_chat(current_backseat, "<span class='userdanger'>You manage to take control of your body!</span>")
+	to_chat(owner, span_userdanger("You feel your control being taken away... your other personality is in charge now!")) //SKYRAT EDIT
+	to_chat(current_backseat, span_userdanger("You manage to take control of your body!")) //SKYRAT EDIT
 
 	//Body to backseat
 
@@ -82,18 +82,18 @@
 	owner.computer_id = null
 	owner.lastKnownIP = null
 
-	free_backseat.ckey = owner.ckey
+	free_backseat.ckey = owner.ckey //SKYRAT EDIT
 
-	free_backseat.name = owner.name
+	free_backseat.name = owner.name //SKYRAT EDIT
 
 	if(owner.mind)
-		free_backseat.mind = owner.mind
+		free_backseat.mind = owner.mind //SKYRAT EDIT
 
-	if(!free_backseat.computer_id)
-		free_backseat.computer_id = h2b_id
+	if(!free_backseat.computer_id) //SKYRAT EDIT
+		free_backseat.computer_id = h2b_id //SKYRAT EDIT
 
-	if(!free_backseat.lastKnownIP)
-		free_backseat.lastKnownIP = h2b_ip
+	if(!free_backseat.lastKnownIP) //SKYRAT EDIT
+		free_backseat.lastKnownIP = h2b_ip //SKYRAT EDIT
 
 	//Backseat to body
 
@@ -128,28 +128,29 @@
 		trauma = _trauma
 	return ..()
 
-/mob/living/split_personality/Life(seconds, times_fired)
-	if(!(. = ..()))
-		return
+/mob/living/split_personality/Life(seconds, times_fired) //SKYRAT EDIT
+	if(!(. = ..())) //SKYRAT EDIT
+		return //SKYRAT EDIT
 	if(QDELETED(body))
 		qdel(src) //in case trauma deletion doesn't already do it
-
+/* 	if((body.stat == DEAD && trauma.owner_backseat == src)) // SKYRAT EDIT
+		trauma.switch_personalities()
+		qdel(trauma) */
 	//if one of the two ghosts, the other one stays permanently
 	if(!body.client && trauma.initialized)
 		trauma.switch_personalities()
 		qdel(trauma)
 
 /mob/living/split_personality/Login()
-	..()
-	to_chat(src, "<span class='notice'>As a split personality, you cannot do anything but observe. However, you will eventually gain control of your body, switching places with the current personality.</span>")
-	to_chat(src, "<span class='warning'><b>Do not commit suicide or put the body in a deadly position. Behave like you care about it as much as the owner.</b></span>")
-
-/mob/living/split_personality/say(message, bubble_type, var/list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
-	to_chat(src, "<span class='warning'>You cannot speak, your other self is controlling your body!</span>")
+	..() //SKYRAT EDIT
+	to_chat(src, span_notice("As a split personality, you cannot do anything but observe. However, you will eventually gain control of your body, switching places with the current personality.")) //SKYRAT EDIT
+	to_chat(src, span_warning("<b>Do not commit suicide or put the body in a deadly position. Behave like you care about it as much as the owner.</b>")) //SKYRAT EDIT
+/mob/living/split_personality/say(message, bubble_type, var/list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null) //SKYRAT EDIT
+	to_chat(src, span_warning("You cannot speak, your other self is controlling your body!")) //SKYRAT EDIT
 	return FALSE
 
-/mob/living/split_personality/emote(act, m_type = null, message = null, intentional = FALSE)
-	return
+/mob/living/split_personality/emote(act, m_type = null, message = null, intentional = FALSE) //SKYRAT EDIT
+	return //SKYRAT EDIT
 
 ///////////////BRAINWASHING////////////////////
 
@@ -190,11 +191,11 @@
 	var/list/mob/dead/observer/candidates = poll_candidates_for_mob("Do you want to play as [owner.real_name]'s brainwashed mind?", null, null, 7.5 SECONDS, stranger_backseat)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
-		C.transfer_ckey(stranger_backseat, FALSE)
+		C.transfer_ckey(stranger_backseat, FALSE) //SKYRAT EDIT
 	else
 		qdel(src)
 
-/datum/brain_trauma/severe/split_personality/brainwashing/on_life()
+/datum/brain_trauma/severe/split_personality/brainwashing/on_life() //SKYRAT EDIT
 	return //no random switching
 
 /datum/brain_trauma/severe/split_personality/brainwashing/handle_hearing(datum/source, list/hearing_args)
@@ -202,7 +203,7 @@
 		return
 	var/message = hearing_args[HEARING_RAW_MESSAGE]
 	if(findtext(message, codeword))
-		hearing_args[HEARING_RAW_MESSAGE] = replacetext(message, codeword, "<span class='warning'>[codeword]</span>")
+		hearing_args[HEARING_RAW_MESSAGE] = replacetext(message, codeword, "<span class='warning'>[codeword]</span>") //SKYRAT EDIT
 		addtimer(CALLBACK(src, /datum/brain_trauma/severe/split_personality.proc/switch_personalities), 10)
 
 /datum/brain_trauma/severe/split_personality/brainwashing/handle_speech(datum/source, list/speech_args)
@@ -216,11 +217,11 @@
 	var/codeword
 
 /mob/living/split_personality/traitor/Login()
-	..()
-	to_chat(src, "<span class='notice'>As a brainwashed personality, you cannot do anything yet but observe. However, you may gain control of your body if you hear the special codeword, switching places with the current personality.</span>")
-	to_chat(src, "<span class='notice'>Your activation codeword is: <b>[codeword]</b></span>")
+	..() //SKYRAT EDIT
+	to_chat(src, span_notice("As a brainwashed personality, you cannot do anything yet but observe. However, you may gain control of your body if you hear the special codeword, switching places with the current personality.")) //SKYRAT EDIT
+	to_chat(src, span_notice("Your activation codeword is: <b>[codeword]</b>")) //SKYRAT EDIT
 	if(objective)
-		to_chat(src, "<span class='notice'>Your master left you an objective: <b>[objective]</b>. Follow it at all costs when in control.</span>")
+		to_chat(src, span_notice("Your master left you an objective: <b>[objective]</b>. Follow it at all costs when in control.")) //SKYRAT EDIT
 
 #undef OWNER
 #undef STRANGER
