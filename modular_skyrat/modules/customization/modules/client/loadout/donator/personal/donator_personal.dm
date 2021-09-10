@@ -230,9 +230,9 @@
 	path = /obj/item/clothing/suit/hooded/cloak/zuliecloak
 	ckeywhitelist = list("asky")
 
-/datum/loadout_item/neck/donator/healercloak
-	name = "Legendary Healer's Cloak"
-	path = /obj/item/clothing/neck/cloak/healercloak
+/datum/loadout_item/backpack/donator/brightcosmos
+	name = "Case of Bright Cosmos cigars"
+	path = /obj/item/storage/fancy/cigarettes/cigars/lyricalpaws
 	ckeywhitelist = list("lyricalpaws")
 
 /datum/loadout_item/uniform/donator/lannese
