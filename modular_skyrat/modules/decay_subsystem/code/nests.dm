@@ -36,7 +36,7 @@
 		registered_turfs += seen_turf
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
-/obj/structure/mob_spawner/obj_destruction(damage_flag)
+/obj/structure/mob_spawner/atom_destruction(damage_flag)
 	if(loot)
 		for(var/path in loot)
 			var/number = loot[path]
@@ -197,7 +197,7 @@
 	monster_types = list(/mob/living/simple_animal/hostile/ooze/grapes)
 	loot = list(/obj/item/resurrection_crystal)
 
-/obj/structure/mob_spawner/grapes/obj_destruction(damage_flag)
+/obj/structure/mob_spawner/grapes/atom_destruction(damage_flag)
 	if(loot)
 		for(var/path in loot)
 			var/number = loot[path]
