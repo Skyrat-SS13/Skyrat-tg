@@ -190,6 +190,9 @@
 			return
 	else
 		return
+	if(isliving(user))
+		if(!can_trigger_gun(user))
+			return
 
 	if(!chipslotisclosed)
 		chipslotisclosed = TRUE
@@ -262,6 +265,59 @@
 				A.update_appearance()
 				update_appearance()
 			return
+// Обработчики действий чипом и канистрой
+/obj/item/gun/ballistic/revolver/livinglatexsprayer/attackby(obj/item/A, mob/user, params)
+	// Блокируем прочее стандартное поведение оружия
+	//..()
+
+	// обработка клика канистрой - это стандартная обработка клика боеприпасом по пушке
+	if(istype(A, /obj/item/ammo_casing/livinglatexcanister))
+		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
+			if (chambered && !chambered.loaded_projectile)
+				chambered.forceMove(drop_location())
+				chambered = null
+			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
+			if (num_loaded)
+				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src]."))
+				playsound(src, load_sound, load_sound_volume, load_sound_vary)
+				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
+					chamber_round()
+				A.update_appearance()
+				update_appearance()
+			return
+
+	// обработка клика чипом
+	if(istype(A, /obj/item/firing_pin/latexnanitechip))
+		if(!chipslotisclosed)
+			if(pin)
+				to_chat(user, span_warning("There is already a chip in [src]!"))
+				return
+			else
+				var/area/a = loc.loc // Gets our locations location, like a dream within a dream
+				if(!isarea(a))
+					return
+				if(!user.transferItemToLoc(W,src))
+					//cut_overlay(cell_overlay)
+					//cell_overlay.icon_state = "milking_cell_empty"
+					//update_all_visuals()
+					return
+
+				pin = W
+				//cut_overlay(cell_overlay)
+				//cell_overlay.icon_state = "milking_cell"
+				//add_overlay(cell_overlay)
+				user.visible_message(span_notice("[user] inserts a chip into [src]."), span_notice("You insert a chip into [src]."))
+				//update_all_visuals()
+				return
+	else
+		to_chat(user, span_warning("[src]'s chip slot isn't opened!"))
+		return
+
+	// место под прочие обработчики (емаг?)
+
+	update_appearance()
+	A.update_appearance()
+	return
 
 	// Chip click handler
 	if(istype(A, /obj/item/firing_pin/latexnanitechip))
