@@ -668,7 +668,14 @@
 		if(tgui_alert(usr, "Send [key_name(M)] to Prison?", "Message", list("Yes", "No")) != "Yes")
 			return
 
+		/// SKYRAT EDIT START - Immersion-friendly Admin Prison
+		var/datum/effect_system/spark_spread/quantum/sparks = new
+		sparks.set_up(10, 1, M)
+		sparks.attach(M.loc)
+		sparks.start()
 		M.forceMove(pick(GLOB.prisonwarp))
+		/// SKYRAT EDIT END
+
 		to_chat(M, span_adminnotice("You have been sent to Prison!"), confidential = TRUE)
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to Prison!")
