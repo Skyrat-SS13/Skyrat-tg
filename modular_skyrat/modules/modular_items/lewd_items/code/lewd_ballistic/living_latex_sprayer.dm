@@ -191,12 +191,12 @@
 		user.visible_message("You open chip reciever. It is [pin ? "has chip" : "empty"]" , "[user.name] open chip reciever. It is [pin ? "has chip" : "empty"]")
 		return
 
-// Обработчики действий чипом и канистрой
+// Chip and canister action handler
 /obj/item/gun/ballistic/revolver/livinglatexsprayer/attackby(obj/item/A, mob/user, params)
-	// Блокируем прочее стандартное поведение оружия
+	// Blocking the default behavior of the weapon
 	//..()
 
-	// обработка клика канистрой - это стандартная обработка клика боеприпасом по пушке
+	// Canister click handler is a copy of the standard ammo click handler
 	if(istype(A, /obj/item/ammo_casing/livinglatexcanister))
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
@@ -212,7 +212,7 @@
 				update_appearance()
 			return
 
-	// обработка клика чипом
+	// Chip click handler
 	if(istype(A, /obj/item/firing_pin/latexnanitechip))
 		if(!chipslotisclosed)
 			if(pin)
@@ -239,7 +239,7 @@
 		to_chat(user, span_warning("[src]'s chip slot isn't opened!"))
 		return
 
-	// место под прочие обработчики (емаг?)
+	// Space for other handlers, for example emag
 
 	update_appearance()
 	A.update_appearance()
@@ -298,16 +298,20 @@
 
 // Blocking the action with a wrench
 /obj/item/gun/ballistic/wrench_act(mob/living/user, obj/item/I)
+	to_chat(user, "You cannot find any way to accept the wrench to [src]. It doesn't fit anywhere.")
 	return
 
 // Blocking the action with a screwdriver
 /obj/item/gun/screwdriver_act(mob/living/user, obj/item/I)
+	to_chat(user, "It seems there is nothing to unscrew. You don't see a single screw.")
 	return
 
 //Blocking the action with a welder
 /obj/item/gun/welder_act(mob/living/user, obj/item/I)
+	to_chat(user, "Nothing to weld here...")
 	return
 
 // Blocking the action with a wirecutter
 /obj/item/gun/wirecutter_act(mob/living/user, obj/item/I)
+	to_chat(user, "You don't see any wires or anything like that.")
 	return
