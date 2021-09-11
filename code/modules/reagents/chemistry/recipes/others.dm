@@ -911,11 +911,7 @@
 
 /datum/chemical_reaction/ants // Breeding ants together, high sugar cost makes this take a while to farm.
 	results = list(/datum/reagent/ants = 3)
-<<<<<<< HEAD
-	required_reagents = list(/datum/reagent/ants = 2, /datum/reagent/consumable/sugar = 10) //SKYRAT CHANGE, SUGAR FROM 6 TO 10.
-=======
 	required_reagents = list(/datum/reagent/ants = 2, /datum/reagent/consumable/sugar = 8)
->>>>>>> 23ef1c255a6 (Re-balances ant damage values & lets you pour ants on the floor (#60543))
 	//FermiChem vars:
 	optimal_ph_min = 3
 	optimal_ph_max = 12
