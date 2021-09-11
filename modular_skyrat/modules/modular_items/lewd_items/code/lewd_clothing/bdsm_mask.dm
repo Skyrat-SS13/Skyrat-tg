@@ -331,7 +331,7 @@
 
 // Processing a click with a mask filter on the mask. Needed to intercept call at the object class level. Returns automatically to attack_hand(mob/user) method.
 /obj/item/clothing/mask/gas/bdsm_mask/attackby(obj/item/I, mob/living/user, params)
-	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
+	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_atom(src, user))
 
 // Mouse drop handler
 /obj/item/reagent_containers/glass/lewd_filter/MouseDrop(atom/over_object)

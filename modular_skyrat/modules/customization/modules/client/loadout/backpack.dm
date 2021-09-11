@@ -121,7 +121,7 @@
 
 /datum/loadout_item/backpack/toy/dice
 	name = "Dice bag"
-	path = /obj/item/storage/pill_bottle/dice
+	path = /obj/item/storage/dice
 
 /datum/loadout_item/backpack/toy/eightball
 	name = "Magic eightball"

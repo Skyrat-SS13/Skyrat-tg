@@ -505,7 +505,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 				continue
 			dat += "[related_ticket.TicketHref("#[related_ticket.id]")] ([related_ticket.ticket_status()]): [related_ticket.name]<br/>"
 
-	usr << browse(dat.Join(), "window=ahelp[id];size=620x480")
+	usr << browse(dat.Join(), "window=ahelp[id];size=700x480")
 
 /**
  * Renders the current status of the ticket into a displayable string
@@ -543,6 +543,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if("reject")
 			Reject()
 		if("reply")
+			HandleIssue() /// SKYRAT EDIT ADDITION - ADMIN HANDLE
 			usr.client.cmd_ahelp_reply(initiator)
 		if("icissue")
 			ICIssue()

@@ -34213,11 +34213,6 @@
 /obj/machinery/holopad/secure,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/ai_upload_foyer)
-"jld" = (
-/obj/structure/table,
-/obj/item/storage/pill_bottle/dice,
-/turf/open/floor/iron,
-/area/security/prison)
 "jlf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -34990,22 +34985,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/brig)
-"jBG" = (
-/obj/machinery/flasher/directional/south{
-	id = "AI";
-	pixel_x = 20
-	},
-/obj/structure/cable,
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 1;
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	obj_integrity = 300;
-	req_access_txt = "16"
-	},
-/turf/open/floor/iron/dark,
-/area/ai_monitored/turret_protected/ai)
 "jBO" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -38273,6 +38252,22 @@
 	},
 /turf/open/floor/plating/airless,
 /area/engineering/supermatter/room)
+"kIS" = (
+/obj/machinery/flasher/directional/south{
+	id = "AI";
+	pixel_x = 20
+	},
+/obj/structure/cable,
+/obj/machinery/door/window{
+	base_state = "rightsecure";
+	dir = 1;
+	icon_state = "rightsecure";
+	name = "Primary AI Core Access";
+	atom_integrity = 300;
+	req_access_txt = "16"
+	},
+/turf/open/floor/iron/dark,
+/area/ai_monitored/turret_protected/ai)
 "kIT" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
@@ -53225,6 +53220,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/port/central)
+"qEL" = (
+/obj/structure/table/wood,
+/obj/item/storage/dice,
+/obj/item/pen/fourcolor,
+/turf/open/floor/iron/grimy,
+/area/service/library)
 "qEV" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
@@ -58780,6 +58781,11 @@
 /obj/item/banner/cargo/mundane,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"sPA" = (
+/obj/structure/table,
+/obj/item/storage/dice,
+/turf/open/floor/iron,
+/area/security/prison)
 "sPP" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
@@ -63942,12 +63948,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/security/office)
-"uLI" = (
-/obj/structure/table/wood,
-/obj/item/storage/pill_bottle/dice,
-/obj/item/pen/fourcolor,
-/turf/open/floor/iron/grimy,
-/area/service/library)
 "uLN" = (
 /obj/structure/table,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -89328,7 +89328,7 @@ amU
 hlW
 aMr
 unq
-uLI
+qEL
 jKs
 aMr
 fHH
@@ -107515,7 +107515,7 @@ nTn
 hxy
 fnk
 mfo
-jld
+sPA
 gOk
 gJE
 abx
@@ -184487,7 +184487,7 @@ xLA
 vRe
 myx
 hQb
-jBG
+kIS
 byy
 xnP
 tdP
