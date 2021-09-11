@@ -34,8 +34,14 @@
 */
 /obj/item/organ/external/Initialize(mapload, mob_sprite)
 	. = ..()
+
 	if(mob_sprite)
 		set_sprite(mob_sprite)
+
+	cache_key = generate_icon_cache()
+	// SKYRAT EDIT: we have like 145+ fucking dna blocks lmao
+	dna_block = GLOB.dna_mutant_bodypart_blocks[preference]
+
 
 /obj/item/organ/external/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	var/obj/item/bodypart/limb = reciever.get_bodypart(zone)
@@ -72,8 +78,7 @@
 /obj/item/organ/external/proc/get_overlays(list/overlay_list, image_dir, image_layer, body_type, image_color)
 	if(!sprite_datum)
 		return
-	if(owner && HAS_TRAIT(owner, TRAIT_INVISIBLE_MAN))
-		return
+
 	var/gender = (body_type == FEMALE) ? "f" : "m"
 	var/finished_icon_state = (sprite_datum.gender_specific ? gender : "m") + "_" + preference + "_" + sprite_datum.icon_state + mutant_bodyparts_layertext(image_layer)
 	var/mutable_appearance/appearance = mutable_appearance(sprite_datum.icon, finished_icon_state, layer = -image_layer)
@@ -100,22 +105,22 @@
 */
 /obj/item/organ/external/proc/mutant_bodyparts_layertext(layer)
 	switch(layer)
-		if(BODY_BEHIND_LAYER)
+		if(EXTERNAL_BEHIND_LAYER)
 			return "_BEHIND"
-		if(BODY_ADJ_LAYER)
+		if(EXTERNAL_ADJACENT_LAYER)
 			return "_ADJ"
-		if(BODY_FRONT_LAYER)
+		if(EXTERNAL_FRONT_LAYER)
 			return "_FRONT"
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
 /obj/item/organ/external/proc/bitflag_to_layer(layer)
 	switch(layer)
 		if(EXTERNAL_BEHIND)
-			return BODY_BEHIND_LAYER
+			return EXTERNAL_BEHIND_LAYER
 		if(EXTERNAL_ADJACENT)
-			return BODY_ADJ_LAYER
+			return EXTERNAL_ADJACENT_LAYER
 		if(EXTERNAL_FRONT)
-			return BODY_FRONT_LAYER
+			return EXTERNAL_FRONT_LAYER
 
 ///Because all the preferences have names like "Beautiful Sharp Snout" we need to get the sprite datum with the actual important info
 /obj/item/organ/external/proc/get_sprite_datum(sprite)
@@ -141,13 +146,12 @@
 
 ///The horns of a lizard!
 /obj/item/organ/external/horns
+	name = "horns"
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_HORNS
 	layers = EXTERNAL_ADJACENT
 
 	preference = "horns"
-
-	dna_block = DNA_HORNS_BLOCK
 
 /obj/item/organ/external/horns/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
@@ -155,17 +159,16 @@
 	return FALSE
 
 /obj/item/organ/external/horns/get_global_feature_list()
-	return GLOB.horns_list
+	return GLOB.sprite_accessories["horns"]
 
 ///The frills of a lizard (like weird fin ears)
 /obj/item/organ/external/frills
+	name = "frills"
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_FRILLS
 	layers = EXTERNAL_ADJACENT
 
 	preference = "frills"
-
-	dna_block = DNA_FRILLS_BLOCK
 
 /obj/item/organ/external/frills/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEEARS))
@@ -174,17 +177,16 @@
 
 
 /obj/item/organ/external/frills/get_global_feature_list()
-	return GLOB.frills_list
+	return GLOB.sprite_accessories["frills"]
 
 ///Guess what part of the lizard this is?
 /obj/item/organ/external/snout
+	name = "snout"
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_SNOUT
 	layers = EXTERNAL_ADJACENT
 
 	preference = "snout"
-
-	dna_block = DNA_SNOUT_BLOCK
 
 /obj/item/organ/external/snout/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.wear_mask?.flags_inv & HIDESNOUT) && !(human.head?.flags_inv & HIDESNOUT))
@@ -192,17 +194,16 @@
 	return FALSE
 
 /obj/item/organ/external/snout/get_global_feature_list()
-	return GLOB.snouts_list
+	return GLOB.sprite_accessories["snouts"]
 
 ///A moth's antennae
 /obj/item/organ/external/antennae
+	name = "antennae"
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_ANTENNAE
 	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
 
 	preference = "moth_antennae"
-
-	dna_block = DNA_MOTH_ANTENNAE_BLOCK
 
 	///Are we burned?
 	var/burnt = FALSE
@@ -221,10 +222,12 @@
 	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL))
 
 /obj/item/organ/external/antennae/get_global_feature_list()
-	return GLOB.moth_antennae_list
+	return GLOB.sprite_accessories["moth_antennae"]
 
 /obj/item/organ/external/antennae/can_draw_on_bodypart(mob/living/carbon/human/human)
-	return TRUE
+	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
+		return TRUE
+	return FALSE
 
 ///For moth antennae and wings we make an exception. If their features are burnt, we only update our original sprite
 /obj/item/organ/external/antennae/set_sprite(sprite)
