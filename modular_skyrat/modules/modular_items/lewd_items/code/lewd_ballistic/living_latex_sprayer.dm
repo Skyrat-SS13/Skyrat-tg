@@ -22,6 +22,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	pin = /obj/item/firing_pin/latexnanitechip // Special type of firing_pin for living latex gun.
 	bolt_type = BOLT_TYPE_NO_BOLT
+	can_misfire = FALSE
 	// LAMELA TODO: Files for the sound operation
 	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
 	vary_fire_sound = TRUE
@@ -72,9 +73,18 @@
 	///Phrasing of the cartridge in examine and notification messages; ex: bullet, shell, dart, etc.
 	var/cartridge_wording = "living latex ball"
 
-	/// LAMELA TODO: You need to set verbs to describe attacks
+	/// LAMELLA TODO: You need to set verbs to describe attacks
 	attack_verb_continuous = list("strikes", "hits", "bashes")
 	attack_verb_simple = list("strike", "hit", "bash")
+
+	/// ERP properties section
+	//
+	var/list/latexsprayerstates = list("open", "closed", "handed")
+	var/curentlatexsprayerstate = latexsprayerstates[1]
+	//
+	var/chipslotisclosed = TRUE
+
+
 
 // Definition of the firing pin class
 /obj/item/firing_pin/latexnanitechip
@@ -163,7 +173,77 @@
 
 
 
+//////////////////////////////////////////
+/// LIVING LATEX SPRAYER LOGIC SECTION ///
+//////////////////////////////////////////
+// Chip slot open and close handler
+/obj/item/gun/ballistic/revolver/livinglatexsprayer/AltClick(mob/user)
+	if(isliving(user))
+		if(!can_trigger_gun(user))
+			return
 
+	if(!chipslotisclosed)
+		chipslotisclosed = TRUE
+		user.visible_message("You close chip reciever.", "[user.name] close chip reciever.")
+		return
+	else
+		chipslotisclosed = FALSE
+		user.visible_message("You open chip reciever. It is [pin ? "has chip" : "empty"]" , "[user.name] open chip reciever. It is [pin ? "has chip" : "empty"]")
+		return
+
+// Обработчики действий чипом и канистрой
+/obj/item/gun/ballistic/revolver/livinglatexsprayer/attackby(obj/item/A, mob/user, params)
+	// Блокируем прочее стандартное поведение оружия
+	//..()
+
+	// обработка клика канистрой - это стандартная обработка клика боеприпасом по пушке
+	if(istype(A, /obj/item/ammo_casing/livinglatexcanister))
+		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
+			if (chambered && !chambered.loaded_projectile)
+				chambered.forceMove(drop_location())
+				chambered = null
+			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
+			if (num_loaded)
+				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src]."))
+				playsound(src, load_sound, load_sound_volume, load_sound_vary)
+				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
+					chamber_round()
+				A.update_appearance()
+				update_appearance()
+			return
+
+	// обработка клика чипом
+	if(istype(A, /obj/item/firing_pin/latexnanitechip))
+		if(!chipslotisclosed)
+			if(pin)
+				to_chat(user, span_warning("There is already a chip in [src]!"))
+				return
+			else
+				var/area/a = loc.loc // Gets our locations location, like a dream within a dream
+				if(!isarea(a))
+					return
+				if(!user.transferItemToLoc(W,src))
+					//cut_overlay(cell_overlay)
+					//cell_overlay.icon_state = "milking_cell_empty"
+					//update_all_visuals()
+					return
+
+				pin = W
+				//cut_overlay(cell_overlay)
+				//cell_overlay.icon_state = "milking_cell"
+				//add_overlay(cell_overlay)
+				user.visible_message(span_notice("[user] inserts a chip into [src]."), span_notice("You insert a chip into [src]."))
+				//update_all_visuals()
+				return
+	else
+		to_chat(user, span_warning("[src]'s chip slot isn't opened!"))
+		return
+
+	// место под прочие обработчики (емаг?)
+
+	update_appearance()
+	A.update_appearance()
+	return
 
 
 
@@ -216,3 +296,18 @@
 	to_chat(user, span_notice("You remove a round from [src]!"))
 	update_ammo_count()
 
+// Blocking the action with a wrench
+/obj/item/gun/ballistic/wrench_act(mob/living/user, obj/item/I)
+	return
+
+// Blocking the action with a screwdriver
+/obj/item/gun/screwdriver_act(mob/living/user, obj/item/I)
+	return
+
+//Blocking the action with a welder
+/obj/item/gun/welder_act(mob/living/user, obj/item/I)
+	return
+
+// Blocking the action with a wirecutter
+/obj/item/gun/wirecutter_act(mob/living/user, obj/item/I)
+	return
