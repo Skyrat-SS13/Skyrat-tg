@@ -1,6 +1,5 @@
 ///Wing base type. doesn't really do anything
 /obj/item/organ/external/wings
-	name = "wings"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_WINGS
 	layers = EXTERNAL_BEHIND | EXTERNAL_ADJACENT | EXTERNAL_FRONT
@@ -10,13 +9,13 @@
 /obj/item/organ/external/wings/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!human.wear_suit)
 		return TRUE
-	if(human.wear_suit.flags_inv & ~HIDEJUMPSUIT)
+	if(!(human.wear_suit.flags_inv & HIDEJUMPSUIT))
 		return TRUE
 	if(human.wear_suit.species_exception && is_type_in_list(src, human.wear_suit.species_exception))
 		return TRUE
 	return FALSE
 
-///The true wings that you can use to fly and shit (you cant actually shit with them, but it does wing stuff)
+///The true wings that you can use to fly and shit (you cant actually shit with them)
 /obj/item/organ/external/wings/functional
 	///The flight action object
 	var/datum/action/innate/flight/fly
@@ -30,7 +29,7 @@
 	var/wings_open = FALSE
 
 /obj/item/organ/external/wings/functional/get_global_feature_list()
-	// SKYRAT TODO: Add support for wings_open
+	// SKYRAT EDIT TODO: Add support for wings_open
 	return GLOB.sprite_accessories["wings"]
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
@@ -109,12 +108,32 @@
 		ADD_TRAIT(human, TRAIT_NO_FLOATING_ANIM, SPECIES_FLIGHT_TRAIT)
 		ADD_TRAIT(human, TRAIT_MOVE_FLYING, SPECIES_FLIGHT_TRAIT)
 		passtable_on(human, SPECIES_TRAIT)
+		open_wings()
 	else
 		human.physiology.stun_mod *= 0.5
 		REMOVE_TRAIT(human, TRAIT_NO_FLOATING_ANIM, SPECIES_FLIGHT_TRAIT)
 		REMOVE_TRAIT(human, TRAIT_MOVE_FLYING, SPECIES_FLIGHT_TRAIT)
 		passtable_off(human, SPECIES_TRAIT)
+		close_wings()
 
+///SPREAD OUR WINGS AND FLLLLLYYYYYY
+/obj/item/organ/external/wings/functional/proc/open_wings()
+	preference = wings_open_preference
+	wings_open = TRUE
+
+	cache_key = generate_icon_cache() //we've changed preference to open, so we only need to update the key and ask for an update to change our sprite
+	owner.update_body_parts()
+
+///close our wings
+/obj/item/organ/external/wings/functional/proc/close_wings()
+	preference = wings_closed_preference
+	wings_open = FALSE
+
+	cache_key = generate_icon_cache()
+	owner.update_body_parts()
+	if(isturf(owner?.loc))
+		var/turf/location = loc
+		location.Entered(src, NONE)
 
 ///hud action for starting and stopping flight
 /datum/action/innate/flight
@@ -136,9 +155,10 @@
 
 ///Moth wings! They can flutter in low-grav and burn off in heat
 /obj/item/organ/external/wings/moth
-	name = "moth wings"
-	preference = "wings"
+	preference = "moth_wings"
 	layers = EXTERNAL_BEHIND | EXTERNAL_FRONT
+
+	//dna_block = DNA_MOTH_WINGS_BLOCK SKYRAT EDIT REMOVAL
 
 	///Are we burned?
 	var/burnt = FALSE
@@ -146,7 +166,10 @@
 	var/original_sprite = ""
 
 /obj/item/organ/external/wings/moth/get_global_feature_list()
-	return GLOB.sprite_accessories["wings"]
+	return GLOB.sprite_accessories["wings"] //SKYRAT EDIT CHANGE
+
+/obj/item/organ/external/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
+	return TRUE
 
 /obj/item/organ/external/wings/moth/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
@@ -160,13 +183,6 @@
 
 	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL, COMSIG_MOVABLE_PRE_MOVE))
 	REMOVE_TRAIT(organ_owner, TRAIT_FREE_FLOAT_MOVEMENT, src)
-
-///For moth antennae and wings we make an exception. If their features are burnt, we only update our original sprite
-/obj/item/organ/external/wings/moth/set_sprite(sprite)
-	if(!burnt)
-		return ..() //no one listens to the return value, I just need to call the parent proc and end the code
-
-	original_sprite = sprite
 
 ///Check if we can flutter around
 /obj/item/organ/external/wings/moth/proc/update_float_move()
