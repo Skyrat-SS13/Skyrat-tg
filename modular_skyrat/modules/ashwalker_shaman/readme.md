@@ -10,6 +10,8 @@ Obtainaing and maintaining it though will be the challenge.
 
 Adds primal tools (surgery and engineering)
 
+Adds some more ashwalker clothing
+
 ### TG Proc Changes:
 
 ### Defines:
@@ -24,4 +26,5 @@ Adds primal tools (surgery and engineering)
 
 ### Credits:
 
-Jake Park
+Jake Park - Code
+Dragonfruits - Sprite

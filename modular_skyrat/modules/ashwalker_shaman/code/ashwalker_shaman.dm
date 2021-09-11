@@ -29,6 +29,8 @@
 	return ..()
 
 /obj/item/ash_staff/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(istype(target, /obj/structure/lavaland/ash_walker))
+		return ..()
 	if(istype(target, /obj/item/xenoarch/useless_relic))
 		essence_left += 10
 		to_chat(user, span_notice("[src] absorbs the essence from [target] from afar, granting it the ability to spread the ash further."))
