@@ -15,7 +15,7 @@
 		return TRUE
 	return FALSE
 
-///The true wings that you can use to fly and shit (you cant actually shit with them, but it does wing stuff)
+///The true wings that you can use to fly and shit (you cant actually shit with them)
 /obj/item/organ/external/wings/functional
 	///The flight action object
 	var/datum/action/innate/flight/fly
@@ -29,10 +29,8 @@
 	var/wings_open = FALSE
 
 /obj/item/organ/external/wings/functional/get_global_feature_list()
-	if(wings_open)
-		return GLOB.wings_open_list
-	else
-		return GLOB.wings_list
+	// SKYRAT EDIT TODO: Add support for wings_open
+	return GLOB.sprite_accessories["wings"]
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
@@ -160,7 +158,7 @@
 	preference = "moth_wings"
 	layers = EXTERNAL_BEHIND | EXTERNAL_FRONT
 
-	dna_block = DNA_MOTH_WINGS_BLOCK
+	//dna_block = DNA_MOTH_WINGS_BLOCK SKYRAT EDIT REMOVAL
 
 	///Are we burned?
 	var/burnt = FALSE
@@ -168,7 +166,7 @@
 	var/original_sprite = ""
 
 /obj/item/organ/external/wings/moth/get_global_feature_list()
-	return GLOB.moth_wings_list
+	return GLOB.sprite_accessories["wings"] //SKYRAT EDIT CHANGE
 
 /obj/item/organ/external/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
 	return TRUE
@@ -185,13 +183,6 @@
 
 	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL, COMSIG_MOVABLE_PRE_MOVE))
 	REMOVE_TRAIT(organ_owner, TRAIT_FREE_FLOAT_MOVEMENT, src)
-
-///For moth antennae and wings we make an exception. If their features are burnt, we only update our original sprite
-/obj/item/organ/external/wings/moth/set_sprite(sprite)
-	if(!burnt)
-		return ..() //no one listens to the return value, I just need to call the parent proc and end the code
-
-	original_sprite = sprite
 
 ///Check if we can flutter around
 /obj/item/organ/external/wings/moth/proc/update_float_move()
