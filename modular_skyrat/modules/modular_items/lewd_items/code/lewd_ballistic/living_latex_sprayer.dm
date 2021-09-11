@@ -191,6 +191,42 @@
 		user.visible_message("You open chip reciever. It is [pin ? "has chip" : "empty"]" , "[user.name] open chip reciever. It is [pin ? "has chip" : "empty"]")
 		return
 
+// Empty Hand Attack Handler
+/obj/item/gun/ballistic/revolver/livinglatexsprayer/attack_hand(mob/user)
+	// If the chip slot is open, then we take the chip into an empty hand.
+	if(!chipslotisclosed && pin)
+		user.put_in_hands(pin)
+		pin.add_fingerprint(user)
+		user.visible_message(span_notice("[user] removes [pin] from [src]."), span_notice("You remove [pin] from [src]."))
+		cell = null
+		//update_all_visuals()
+		return
+	// If the panel is closed or there is no chip in the slot, then pull out the canister
+	if(!internal_magazine && loc == user && user.is_holding(src) && magazine)
+			if(bolt_type == BOLT_TYPE_OPEN)
+				chambered = null
+			if (magazine.ammo_count())
+				playsound(src, load_sound, load_sound_volume, load_sound_vary)
+			else
+				playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+			magazine.forceMove(drop_location())
+			var/obj/item/ammo_box/magazine/old_mag = magazine
+			if (tac_load)
+				if (insert_magazine(user, tac_load, FALSE))
+					to_chat(user, span_notice("You perform a tactical reload on [src]."))
+				else
+					to_chat(user, span_warning("You dropped the old [magazine_wording], but the new one doesn't fit. How embarassing."))
+					magazine = null
+			else
+				magazine = null
+			user.put_in_hands(old_mag)
+			old_mag.update_appearance()
+			if (display_message)
+				to_chat(user, span_notice("You pull the [magazine_wording] out of [src]."))
+			update_appearance()
+			SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+		return
+
 // Chip and canister action handler
 /obj/item/gun/ballistic/revolver/livinglatexsprayer/attackby(obj/item/A, mob/user, params)
 	// Blocking the default behavior of the weapon
