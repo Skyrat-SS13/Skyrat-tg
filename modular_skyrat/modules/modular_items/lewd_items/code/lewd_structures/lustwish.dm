@@ -134,7 +134,6 @@
 	premium = list(
 		/obj/item/clothing/under/dress/corset = 4,
 		/obj/item/clothing/under/pants/chaps = 4,
-		/obj/item/clothing/accessory/skullcodpiece/fake = 4,
 		/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3)
 
 	refill_canister = /obj/item/vending_refill/lustwish
