@@ -267,10 +267,10 @@
 			return
 // Обработчики действий чипом и канистрой
 /obj/item/gun/ballistic/revolver/livinglatexsprayer/attackby(obj/item/A, mob/user, params)
-	// Блокируем прочее стандартное поведение оружия
+	// Blocking the default behavior of the weapon
 	//..()
 
-	// обработка клика канистрой - это стандартная обработка клика боеприпасом по пушке
+	// Canister click handler is a copy of the standard ammo click handler
 	if(istype(A, /obj/item/ammo_casing/livinglatexcanister))
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
@@ -286,7 +286,7 @@
 				update_appearance()
 			return
 
-	// обработка клика чипом
+	// Chip click handler
 	if(istype(A, /obj/item/firing_pin/latexnanitechip))
 		if(!chipslotisclosed)
 			if(pin)
@@ -313,7 +313,7 @@
 		to_chat(user, span_warning("[src]'s chip slot isn't opened!"))
 		return
 
-	// место под прочие обработчики (емаг?)
+	// Space for other handlers, for example emag
 
 	update_appearance()
 	A.update_appearance()
