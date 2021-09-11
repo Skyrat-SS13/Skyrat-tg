@@ -105,22 +105,22 @@
 */
 /obj/item/organ/external/proc/mutant_bodyparts_layertext(layer)
 	switch(layer)
-		if(EXTERNAL_BEHIND_LAYER)
+		if(BODY_BEHIND_LAYER)
 			return "_BEHIND"
-		if(EXTERNAL_ADJACENT_LAYER)
+		if(BODY_ADJ_LAYER)
 			return "_ADJ"
-		if(EXTERNAL_FRONT_LAYER)
+		if(BODY_FRONT_LAYER)
 			return "_FRONT"
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
 /obj/item/organ/external/proc/bitflag_to_layer(layer)
 	switch(layer)
 		if(EXTERNAL_BEHIND)
-			return EXTERNAL_BEHIND_LAYER
+			return BODY_BEHIND_LAYER
 		if(EXTERNAL_ADJACENT)
-			return EXTERNAL_ADJACENT_LAYER
+			return BODY_ADJ_LAYER
 		if(EXTERNAL_FRONT)
-			return EXTERNAL_FRONT_LAYER
+			return BODY_FRONT_LAYER
 
 ///Because all the preferences have names like "Beautiful Sharp Snout" we need to get the sprite datum with the actual important info
 /obj/item/organ/external/proc/get_sprite_datum(sprite)
@@ -154,9 +154,7 @@
 	preference = "horns"
 
 /obj/item/organ/external/horns/can_draw_on_bodypart(mob/living/carbon/human/human)
-	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
-		return TRUE
-	return FALSE
+	return TRUE
 
 /obj/item/organ/external/horns/get_global_feature_list()
 	return GLOB.sprite_accessories["horns"]
@@ -228,13 +226,6 @@
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
 		return TRUE
 	return FALSE
-
-///For moth antennae and wings we make an exception. If their features are burnt, we only update our original sprite
-/obj/item/organ/external/antennae/set_sprite(sprite)
-	if(!burnt)
-		return ..() //no one listens to the return value, I just need to call the parent proc and end the code
-
-	original_sprite = sprite
 
 ///check if our antennae can burn off ;_;
 /obj/item/organ/external/antennae/proc/try_burn_antennae(mob/living/carbon/human/human)
