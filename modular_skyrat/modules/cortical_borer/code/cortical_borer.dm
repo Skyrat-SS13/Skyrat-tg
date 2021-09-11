@@ -1,6 +1,6 @@
 //we need a way of buffing leg speed... here
 /datum/movespeed_modifier/borer_speed
-	multiplicative_slowdown = -0.30
+	multiplicative_slowdown = -0.40
 
 //so that we know if a mob has a borer (only humans should have one, but in case)
 /mob/proc/has_borer()
@@ -32,67 +32,85 @@
 	desc = "the body of a cortical borer, full of human viscera, blood, and more."
 	zone = BODY_ZONE_HEAD
 
-/obj/item/organ/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
-	. = ..()
+/proc/borer_focus_add(mob/living/carbon/carbon_target)
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
 	if(!cb_inside)
 		return
-	if(cb_inside.body_focus)
-		switch(cb_inside.body_focus)
-			if(FOCUS_HEAD)
-				to_chat(carbon_target, span_notice("Your eyes begin to feel strange..."))
-				var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-				if(my_eyes)
-					my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-					my_eyes.see_in_dark = 8
-					my_eyes.flash_protect = FLASH_PROTECTION_WELDER
-				carbon_target.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
-			if(FOCUS_CHEST)
-				to_chat(carbon_target, span_notice("Your chest begins to slow down..."))
-				ADD_TRAIT(carbon_target, TRAIT_NOBREATH, src)
-				ADD_TRAIT(carbon_target, TRAIT_NOHUNGER, src)
-				ADD_TRAIT(carbon_target, TRAIT_STABLEHEART, src)
-				ADD_TRAIT(carbon_target, TRAIT_HARDLY_WOUNDED, src)
-			if(FOCUS_ARMS)
-				to_chat(carbon_target, span_notice("Your arm starts to feel funny..."))
-				var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
-				give_owner.Grant(cb_inside.human_host)
-			if(FOCUS_LEGS)
-				to_chat(carbon_target, span_notice("You feel faster..."))
-				carbon_target.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-				carbon_target.add_quirk(/datum/quirk/light_step)
+	if(cb_inside.body_focus & FOCUS_HEAD)
+		to_chat(carbon_target, span_notice("Your eyes begin to feel strange..."))
+		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
+		if(my_eyes)
+			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			my_eyes.see_in_dark = 11
+			my_eyes.flash_protect = FLASH_PROTECTION_WELDER
+		if(!HAS_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES))
+			ADD_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
+	if(cb_inside.body_focus & FOCUS_CHEST)
+		to_chat(carbon_target, span_notice("Your chest begins to slow down..."))
+		if(!HAS_TRAIT(carbon_target, TRAIT_NOBREATH))
+			ADD_TRAIT(carbon_target, TRAIT_NOBREATH, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_NOHUNGER))
+			ADD_TRAIT(carbon_target, TRAIT_NOHUNGER, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_STABLEHEART))
+			ADD_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
+	if(cb_inside.body_focus & FOCUS_ARMS)
+		to_chat(carbon_target, span_notice("Your arm starts to feel funny..."))
+		var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
+		give_owner.Grant(cb_inside.human_host)
+		if(!HAS_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE))
+			ADD_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
+	if(cb_inside.body_focus & FOCUS_LEGS)
+		to_chat(carbon_target, span_notice("You feel faster..."))
+		carbon_target.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
+		if(!HAS_TRAIT(carbon_target, TRAIT_LIGHT_STEP))
+			ADD_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
+		if(!HAS_TRAIT(carbon_target, TRAIT_FREERUNNING))
+			ADD_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
+
+/proc/borer_focus_remove(mob/living/carbon/carbon_target)
+	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
+	if(cb_inside.body_focus & FOCUS_HEAD)
+		to_chat(carbon_target, span_notice("Your eyes begin to return to normal..."))
+		var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
+		if(my_eyes)
+			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
+			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
+			my_eyes.flash_protect = initial(my_eyes.flash_protect)
+		carbon_target.update_sight()
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
+	if(cb_inside.body_focus & FOCUS_CHEST)
+		to_chat(carbon_target, span_notice("Your chest begins to heave again..."))
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOBREATH, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_NOBREATH, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOHUNGER, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_NOHUNGER, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_STABLEHEART, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
+	if(cb_inside.body_focus & FOCUS_ARMS)
+		to_chat(carbon_target, span_notice("Your arm starts to feel normal again..."))
+		for(var/datum/action/listed_actions in cb_inside.human_host.actions)
+			if(istype(listed_actions, /datum/action/cooldown/borer_armblade))
+				listed_actions.Remove(cb_inside.human_host)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
+	if(cb_inside.body_focus & FOCUS_LEGS)
+		to_chat(carbon_target, span_notice("You feel slower..."))
+		carbon_target.remove_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_LIGHT_STEP, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
+		if(HAS_TRAIT_FROM(carbon_target, TRAIT_FREERUNNING, cb_inside))
+			REMOVE_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
+
+/obj/item/organ/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
+	. = ..()
+	borer_focus_add(carbon_target)
 
 //on removal, force the borer out
 /obj/item/organ/borer_body/Remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
-	if(cb_inside?.body_focus)
-		switch(cb_inside.body_focus)
-			if(FOCUS_HEAD)
-				to_chat(carbon_target, span_notice("Your eyes begin to return to normal..."))
-				var/obj/item/organ/eyes/my_eyes = carbon_target.getorgan(/obj/item/organ/eyes)
-				if(my_eyes)
-					my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
-					my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
-					my_eyes.flash_protect = initial(my_eyes.flash_protect)
-				carbon_target.remove_client_colour(/datum/client_colour/glass_colour/lightgreen)
-				carbon_target.update_sight()
-			if(FOCUS_CHEST)
-				to_chat(carbon_target, span_notice("Your chest begins to heave again..."))
-				REMOVE_TRAIT(carbon_target, TRAIT_NOBREATH, src)
-				REMOVE_TRAIT(carbon_target, TRAIT_NOHUNGER, src)
-				REMOVE_TRAIT(carbon_target, TRAIT_STABLEHEART, src)
-				REMOVE_TRAIT(carbon_target, TRAIT_HARDLY_WOUNDED, src)
-			if(FOCUS_ARMS)
-				to_chat(carbon_target, span_notice("Your arm starts to feel normal again..."))
-				for(var/datum/action/listed_actions in cb_inside.human_host.actions)
-					if(!istype(listed_actions, /datum/action/cooldown/borer_armblade))
-						continue
-					listed_actions.Remove(cb_inside.human_host)
-			if(FOCUS_LEGS)
-				to_chat(carbon_target, span_notice("You feel slower..."))
-				carbon_target.remove_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-				carbon_target.remove_quirk(/datum/quirk/light_step)
+	borer_focus_remove(carbon_target)
 	if(cb_inside)
 		cb_inside.leave_host()
 	qdel(src)
@@ -310,24 +328,25 @@
 		timed_maturity = world.time + 1 SECONDS
 		maturity_age++
 
-		if(maturity_age == 30)
+		if(maturity_age == 20)
 			chemical_evolution++
 			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-		if(maturity_age == 60)
+		if(maturity_age == 40)
 			stat_evolution++
 			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
-		if(maturity_age >= 90)
 			maturity_age = 0
 
 //if it doesnt have a ckey, let ghosts have it
 /mob/living/simple_animal/cortical_borer/attack_ghost(mob/dead/observer/user)
 	. = ..()
-	if(ckey)
+	if(ckey || key)
 		return
 	if(stat == DEAD)
 		return
 	var/choice = tgui_input_list(usr, "Do you want to control [src]?", "Confirmation", list("Yes", "No"))
 	if(choice != "Yes")
+		return
+	if(ckey || key)
 		return
 	to_chat(user, span_warning("As a borer, you have the option to be friendly or not. Note that how you act will determine how a host responds!"))
 	to_chat(user, span_warning("You are a cortical borer! You can fear someone to make them stop moving, but make sure to inhabit them! You only grow/heal/talk when inside a host!"))
