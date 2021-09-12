@@ -89,7 +89,7 @@
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
 
 	// Skyrat Edit Addition - reward for doing surgery in surgery
-	if(was_sleeping || target.reagents.has_reagent(/datum/reagent/medicine/mine_salve))
+	if(was_sleeping || target.reagents.has_reagent(/datum/reagent/medicine/mine_salve) || target.reagents.has_reagent(/datum/reagent/medicine/lidocaine) || target.stat == DEAD)
 		modded_time *= SURGERY_SPEEDUP_AREA
 		to_chat(user, "<span class='notice'>You are able to work faster due to the patient's calm attitude!</span>")
 	// Skyrat Edit End
