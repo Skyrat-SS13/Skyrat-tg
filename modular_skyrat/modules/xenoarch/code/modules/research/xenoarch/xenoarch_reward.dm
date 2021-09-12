@@ -1,5 +1,9 @@
 GLOBAL_LIST_INIT(tier1_reward, list(
 	/obj/item/xenoarch/useless_relic = 5,
+	/obj/item/stack/sheet/sinew = 1,
+	/obj/item/stack/sheet/animalhide/goliath_hide = 1,
+	/obj/item/stack/sheet/bone = 1,
+	/obj/item/organ/regenerative_core/legion = 1,
 	/obj/item/candle = 1,
 	/obj/item/trash/chips = 1,
 	/obj/item/trash/raisins = 1,
@@ -10,6 +14,8 @@ GLOBAL_LIST_INIT(tier1_reward, list(
 GLOBAL_LIST_INIT(tier2_reward, list(
 	/obj/item/xenoarch/broken_item/tech = 1,
 	/obj/item/xenoarch/broken_item/plant = 1,
+	/obj/item/xenoarch/broken_item/clothing = 1,
+	/obj/item/xenoarch/broken_item/animal = 1,
 	/obj/item/xenoarch/useless_relic = 5,
 ))
 
@@ -39,6 +45,8 @@ GLOBAL_LIST_INIT(tech_reward, list(
 
 GLOBAL_LIST_INIT(weapon_reward, list(
 	/obj/item/spear/bonespear = 6,
+	/obj/item/gun/ballistic/tribalbow/ashen = 2,
+	/obj/item/ammo_casing/caseless/arrow/ash = 1,
 	/obj/item/claymore/cutlass = 1,
 	/obj/item/gun/ballistic/automatic/pistol = 1,
 	/obj/item/shield/riot = 1,
@@ -47,10 +55,52 @@ GLOBAL_LIST_INIT(weapon_reward, list(
 	/obj/item/gun/syringe/rapidsyringe = 1,
 ))
 
+GLOBAL_LIST_INIT(clothing_reward, list(
+	/obj/item/clothing/gloves/military/ashwalk = 1,
+	/obj/item/clothing/gloves/military/claw = 1,
+	/obj/item/clothing/head/shamanash = 1,
+	/obj/item/clothing/shoes/jackboots/ashwalker = 1,
+	/obj/item/clothing/shoes/jackboots/ashwalker/legate = 1,
+	/obj/item/clothing/shoes/wraps/ashwalker = 1,
+	/obj/item/clothing/suit/ashwalkermantle = 1,
+	/obj/item/clothing/suit/ashwalkermantle/cape = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker/greentrib = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker/yellow = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker/chiefrags = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker/shaman = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker/robe = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker/tribal = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker/white = 1,
+	/obj/item/clothing/neck/necklace/ashwalker = 1,
+	/obj/item/clothing/head/helmet/gladiator = 1,
+	/obj/item/clothing/under/costume/gladiator/ash_walker = 1,
+))
+
 GLOBAL_LIST_INIT(illegal_reward, list(
 	/obj/item/stack/telecrystal = 1,
 	/obj/item/storage/box/rndboards = 1,
 	/obj/item/disk/tech_disk/spaceloot = 6
+))
+
+GLOBAL_LIST_INIT(plant_reward, list(
+	/obj/item/food/grown/gelthi = 1,
+	/obj/item/seeds/random = 1,
+	/obj/item/food/grown/amauri = 1,
+	/obj/item/food/grown/jurlmah = 1,
+	/obj/item/food/grown/nofruit = 1,
+	/obj/item/food/grown/shand = 1,
+	/obj/item/food/grown/surik = 1,
+	/obj/item/food/grown/telriis = 1,
+	/obj/item/food/grown/thaadra = 1,
+	/obj/item/food/grown/vale = 1,
+	/obj/item/food/grown/vaporsac = 1,
+))
+
+GLOBAL_LIST_INIT(animal_reward, list(
+	/obj/item/stack/sheet/sinew = 1,
+	/obj/item/stack/sheet/animalhide/goliath_hide = 1,
+	/obj/item/stack/sheet/bone = 1,
+	/obj/item/organ/regenerative_core/legion = 1,
 ))
 
 GLOBAL_LIST_INIT(alien_reward, list(

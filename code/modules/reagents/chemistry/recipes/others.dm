@@ -909,14 +909,14 @@
 	clear_products(holder, step_volume_added)
 	holder.my_atom.audible_message(span_notice("[icon2html(holder.my_atom, viewers(DEFAULT_MESSAGE_RANGE, src))] The reaction gives out a fizz, teleporting items everywhere!"))
 
-/datum/chemical_reaction/ants
+/datum/chemical_reaction/ants // Breeding ants together, high sugar cost makes this take a while to farm.
 	results = list(/datum/reagent/ants = 3)
-	required_reagents = list(/datum/reagent/ants = 2, /datum/reagent/consumable/sugar = 6)
+	required_reagents = list(/datum/reagent/ants = 2, /datum/reagent/consumable/sugar = 8)
 	//FermiChem vars:
 	optimal_ph_min = 3
 	optimal_ph_max = 12
 	required_temp = 50
-	reaction_flags = REACTION_INSTANT
+	reaction_flags = NONE //SKYRAT CHANGE, REACTION_INSTANT TO NONE
 	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
 
 /datum/chemical_reaction/ant_slurry // We're basically gluing ants together with synthflesh & maint sludge to make a bigger ant.

@@ -316,7 +316,7 @@
 					/obj/item/clothing/glasses/sunglasses/reagent = 1,
 					/obj/item/clothing/neck/petcollar = 1,
 					/obj/item/storage/belt/bandolier = 1,
-					/obj/item/storage/pill_bottle/dice/hazard = 1,
+					/obj/item/storage/dice/hazard = 1,
 					/obj/item/storage/bag/money = 2, //SKYRAT EDIT ADDITION
 					/obj/item/storage/fancy/candle_box/vanilla = 1,
 					/obj/item/storage/fancy/candle_box/pear = 1,

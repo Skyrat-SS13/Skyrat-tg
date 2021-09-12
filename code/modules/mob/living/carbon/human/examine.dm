@@ -100,11 +100,10 @@
 	if(!(obscured & ITEM_SLOT_EYES) )
 		if(glasses  && !(glasses.item_flags & EXAMINE_SKIP))
 			. += "[t_He] [t_has] [glasses.get_examine_string(user)] covering [t_his] eyes."
-		else if(eye_color == BLOODCULT_EYE)
-			if(IS_CULTIST(src) && HAS_TRAIT(src, TRAIT_CULT_EYES))
-				. += "<span class='warning'><B>[t_His] eyes are glowing an unnatural red!</B></span>"
-			else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
-				. += "<span class='warning'><B>[t_His] eyes are bloodshot!</B></span>"
+		else if(HAS_TRAIT(src, TRAIT_UNNATURAL_RED_GLOWY_EYES))
+			. += "<span class='warning'><B>[t_His] eyes are glowing with an unnatural red aura!</B></span>"
+		else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
+			. += "<span class='warning'><B>[t_His] eyes are bloodshot!</B></span>"
 
 	//ears
 	if(ears && !(obscured & ITEM_SLOT_EARS) && !(ears.item_flags & EXAMINE_SKIP))
@@ -528,3 +527,25 @@
 			dat += "[new_text]\n" //dat.Join("\n") doesn't work here, for some reason
 	if(dat.len)
 		return dat.Join()
+
+/mob/living/carbon/human/examine_more(mob/user)
+	. = ..()
+	if ((wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE)))
+		return
+	var/age_text
+	switch(age)
+		if(-INFINITY to 17) // SKYRAT EDIT ADD START -- AGE EXAMINE
+			age_text = "too young to be here"
+		if(18 to 25) 
+			age_text = "a young adult" // SKYRAT EDIT END
+		if(26 to 35)
+			age_text = "of adult age"
+		if(36 to 55)
+			age_text = "middle-aged"
+		if(56 to 75)
+			age_text = "rather old"
+		if(76 to 100)
+			age_text = "very old"
+		if(101 to INFINITY)
+			age_text = "withering away"
+	. += list(span_notice("[p_they(TRUE)] appear[p_s()] to be [age_text]."))

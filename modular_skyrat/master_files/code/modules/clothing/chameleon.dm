@@ -38,22 +38,22 @@
 		T.dynamic_hair_suffix = initial(P.dynamic_hair_suffix)
 		T.dynamic_fhair_suffix = initial(P.dynamic_fhair_suffix)
 		T.slowdown = 0
-		var/slow = initial(P.slowdown)
-		if(slow)
-			slowtoggle = new(T, slow)
-			slowtoggle.Grant(owner)
-			slowtoggle.target = T
-		else if(slowtoggle)
-			qdel(slowtoggle)
+		// var/slow = initial(P.slowdown) /// DISABLED UNTIL YOU CAN MAKE THIS WORK WITH THE BROKEN CHAMELEON CLOTHES!!!
+		// if(slow)
+		// 	slowtoggle = new(T, slow)
+		// 	slowtoggle.Grant(owner)
+		// 	slowtoggle.target = T
+		// else if(slowtoggle)
+		// 	qdel(slowtoggle)
 
 /datum/action/item_action/chameleon/change/Grant(mob/M)
 	. = ..()
 	if(M && (M == owner))
 		if(slowtoggle)
-			slowtoggle.Grant(M)
+			slowtoggle?.Grant(M)
 
 /datum/action/item_action/chameleon/change/Remove(mob/M)
 	. = ..()
 	if(M && (M == owner))
 		if(slowtoggle)
-			slowtoggle.Remove(M)
+			slowtoggle?.Remove(M)

@@ -438,3 +438,13 @@
 	restricted_desc = "Head of Personnel"
 */
 // SKYRAT EDIT REMOVAL END
+
+/datum/loadout_item/head/brfed
+	name = "Brown Fedora"
+	path = /obj/item/clothing/head/fedora/fedbrown
+	cost = 2
+
+/datum/loadout_item/head/blfed
+	name = "Black Fedora"
+	path = /obj/item/clothing/head/fedora/fedblack
+	cost = 2

@@ -879,35 +879,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/brig)
-"agV" = (
-/obj/machinery/turretid{
-	icon_state = "control_stun";
-	name = "AI Chamber turret control";
-	pixel_x = 3;
-	pixel_y = -23
-	},
-/obj/machinery/door/window{
-	base_state = "leftsecure";
-	dir = 8;
-	icon_state = "leftsecure";
-	name = "Primary AI Core Access";
-	obj_integrity = 300;
-	req_access_txt = "16"
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/north,
-/turf/open/floor/iron/dark,
-/area/ai_monitored/turret_protected/ai)
 "ahd" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -9815,6 +9786,38 @@
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
+"bSP" = (
+/obj/effect/landmark/start/ai/secondary,
+/obj/item/radio/intercom/directional/north{
+	freerange = 1;
+	listening = 0;
+	name = "Custom Channel";
+	pixel_x = 8
+	},
+/obj/item/radio/intercom/directional/east{
+	freerange = 1;
+	listening = 0;
+	name = "Common Channel"
+	},
+/obj/item/radio/intercom/directional/south{
+	freerange = 1;
+	frequency = 1447;
+	listening = 0;
+	name = "Private Channel";
+	pixel_x = 8
+	},
+/obj/machinery/door/window{
+	base_state = "leftsecure";
+	dir = 8;
+	icon_state = "leftsecure";
+	layer = 4.1;
+	name = "Tertiary AI Core Access";
+	atom_integrity = 300;
+	pixel_x = -3;
+	req_access_txt = "16"
+	},
+/turf/open/floor/circuit/green,
+/area/ai_monitored/turret_protected/ai)
 "bSR" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/bot,
@@ -10457,38 +10460,6 @@
 	},
 /turf/open/floor/iron/dark/blue/side,
 /area/security/prison)
-"bYl" = (
-/obj/effect/landmark/start/ai/secondary,
-/obj/item/radio/intercom/directional/north{
-	freerange = 1;
-	listening = 0;
-	name = "Custom Channel";
-	pixel_x = 8
-	},
-/obj/item/radio/intercom/directional/east{
-	freerange = 1;
-	listening = 0;
-	name = "Common Channel"
-	},
-/obj/item/radio/intercom/directional/south{
-	freerange = 1;
-	frequency = 1447;
-	listening = 0;
-	name = "Private Channel";
-	pixel_x = 8
-	},
-/obj/machinery/door/window{
-	base_state = "leftsecure";
-	dir = 8;
-	icon_state = "leftsecure";
-	layer = 4.1;
-	name = "Tertiary AI Core Access";
-	obj_integrity = 300;
-	pixel_x = -3;
-	req_access_txt = "16"
-	},
-/turf/open/floor/circuit/green,
-/area/ai_monitored/turret_protected/ai)
 "bYr" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
@@ -13061,12 +13032,6 @@
 /obj/item/gun/syringe,
 /turf/open/floor/iron/dark,
 /area/medical/storage)
-"cxh" = (
-/obj/structure/table,
-/obj/item/instrument/piano_synth,
-/obj/item/storage/pill_bottle/dice,
-/turf/open/floor/wood,
-/area/security/prison)
 "cxl" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible,
@@ -15170,9 +15135,7 @@
 /turf/open/floor/iron/white,
 /area/medical/virology)
 "cRK" = (
-/obj/machinery/computer/atmos_control/tank/toxin_tank{
-	dir = 8
-	},
+/obj/machinery/computer/atmos_control/tank/plasma_tank,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -17332,9 +17295,7 @@
 /area/medical/cryo)
 "dvM" = (
 /obj/item/target/alien/anchored,
-/obj/machinery/camera/preset/toxins{
-	dir = 10
-	},
+/obj/machinery/camera/preset/ordnance,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless{
 	luminosity = 2
@@ -20180,7 +20141,7 @@
 /turf/open/floor/iron/dark,
 /area/security/brig)
 "eoI" = (
-/obj/machinery/igniter/incinerator_toxmix,
+/obj/machinery/igniter/incinerator_ordmix,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "eoJ" = (
@@ -20770,7 +20731,7 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "eyf" = (
-/obj/machinery/air_sensor/atmos/toxin_tank,
+/obj/machinery/air_sensor/atmos/plasma_tank,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "eyv" = (
@@ -21095,6 +21056,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white/corner,
 /area/hallway/primary/aft)
+"eDr" = (
+/obj/structure/table,
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/item/storage/dice,
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/cargo/miningoffice)
 "eDt" = (
 /obj/machinery/computer/slot_machine{
 	pixel_y = 2
@@ -24221,9 +24194,7 @@
 	},
 /obj/structure/table,
 /obj/effect/turf_decal/bot,
-/obj/machinery/computer/security/telescreen/toxins{
-	dir = 1
-	},
+/obj/machinery/computer/security/telescreen/ordnance,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "fzU" = (
@@ -25800,7 +25771,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/iron/dark,
 /area/science/storage)
 "geq" = (
@@ -27843,21 +27814,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"gOT" = (
-/obj/item/dice/d20,
-/obj/item/dice,
-/obj/structure/table/wood,
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/storage/pill_bottle/dice,
-/obj/effect/turf_decal/stripes/line{
-	dir = 9
-	},
-/obj/structure/light_construct/small/directional/south,
-/turf/open/floor/plating,
-/area/maintenance/port/aft)
 "gPm" = (
 /obj/machinery/light/directional/north,
 /obj/structure/sign/map/right{
@@ -31430,7 +31386,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/iron/dark,
 /area/science/storage)
 "ido" = (
@@ -32200,11 +32156,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
-"ipV" = (
-/obj/structure/table,
-/obj/item/storage/pill_bottle/dice,
-/turf/open/floor/iron,
-/area/commons/locker)
 "ipW" = (
 /obj/machinery/door/window/northleft{
 	dir = 8;
@@ -33367,37 +33318,6 @@
 /obj/machinery/power/apc/auto_name/north,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
-"iKw" = (
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 4;
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	obj_integrity = 300;
-	req_access_txt = "16"
-	},
-/obj/machinery/camera{
-	c_tag = "AI Chamber - Core";
-	network = list("aicore")
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/requests_console/directional/north{
-	department = "AI";
-	departmentType = 5;
-	name = "AI Requests Console"
-	},
-/turf/open/floor/iron/dark,
-/area/ai_monitored/turret_protected/ai)
 "iKy" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/cable,
@@ -33897,7 +33817,7 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "iSy" = (
-/obj/machinery/door/poddoor/incinerator_toxmix,
+/obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "iSE" = (
@@ -33977,6 +33897,12 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"iTd" = (
+/obj/structure/table,
+/obj/item/instrument/piano_synth,
+/obj/item/storage/dice,
+/turf/open/floor/wood,
+/area/security/prison)
 "iTg" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -40491,38 +40417,6 @@
 	},
 /turf/open/floor/iron,
 /area/service/bar)
-"ldh" = (
-/obj/effect/landmark/start/ai/secondary,
-/obj/item/radio/intercom/directional/north{
-	freerange = 1;
-	listening = 0;
-	name = "Custom Channel";
-	pixel_x = -8
-	},
-/obj/item/radio/intercom/directional/west{
-	freerange = 1;
-	listening = 0;
-	name = "Common Channel"
-	},
-/obj/item/radio/intercom/directional/south{
-	freerange = 1;
-	frequency = 1447;
-	listening = 0;
-	name = "Private Channel";
-	pixel_x = -8
-	},
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 4;
-	icon_state = "rightsecure";
-	layer = 4.1;
-	name = "Secondary AI Core Access";
-	obj_integrity = 300;
-	pixel_x = 4;
-	req_access_txt = "16"
-	},
-/turf/open/floor/circuit/green,
-/area/ai_monitored/turret_protected/ai)
 "ldD" = (
 /obj/effect/spawner/randomcolavend,
 /turf/open/floor/wood,
@@ -41044,7 +40938,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
 	},
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "llr" = (
@@ -42024,6 +41918,37 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
+"lCu" = (
+/obj/machinery/door/window{
+	base_state = "rightsecure";
+	dir = 4;
+	icon_state = "rightsecure";
+	name = "Primary AI Core Access";
+	atom_integrity = 300;
+	req_access_txt = "16"
+	},
+/obj/machinery/camera{
+	c_tag = "AI Chamber - Core";
+	network = list("aicore")
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/requests_console/directional/north{
+	department = "AI";
+	departmentType = 5;
+	name = "AI Requests Console"
+	},
+/turf/open/floor/iron/dark,
+/area/ai_monitored/turret_protected/ai)
 "lCF" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white,
@@ -43791,12 +43716,7 @@
 /turf/open/floor/plating,
 /area/cargo/qm)
 "mgc" = (
-/obj/machinery/button/door/incinerator_vent_toxmix{
-	id = "toxinsaccess";
-	name = "Toxins Access";
-	pixel_x = -26;
-	pixel_y = -24
-	},
+/obj/machinery/button/door/incinerator_vent_ordmix,
 /turf/open/floor/iron/white,
 /area/science/storage)
 "mge" = (
@@ -44366,18 +44286,6 @@
 	dir = 8
 	},
 /area/security/prison)
-"moL" = (
-/obj/structure/table,
-/obj/structure/extinguisher_cabinet/directional/east,
-/obj/item/storage/pill_bottle/dice,
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/cargo/miningoffice)
 "moM" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet,
@@ -45145,7 +45053,7 @@
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "mBC" = (
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_exterior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_exterior,
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
@@ -45743,9 +45651,7 @@
 "mKO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
-/obj/machinery/atmospherics/components/tank/toxins{
-	dir = 4
-	},
+/obj/machinery/atmospherics/components/tank/plasma,
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
 "mKT" = (
@@ -48677,7 +48583,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/iron/dark,
 /area/science/storage)
 "nFK" = (
@@ -49599,10 +49505,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"nSn" = (
+/obj/structure/table,
+/obj/item/storage/dice,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "nSp" = (
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_toxmix{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "nSs" = (
@@ -49904,14 +49813,8 @@
 /area/maintenance/port/aft)
 "nXE" = (
 /obj/machinery/atmospherics/components/binary/valve,
-/obj/machinery/button/door/incinerator_vent_toxmix{
-	pixel_x = 8;
-	pixel_y = -30
-	},
-/obj/machinery/button/ignition/incinerator/toxmix{
-	pixel_x = -6;
-	pixel_y = -30
-	},
+/obj/machinery/button/door/incinerator_vent_ordmix,
+/obj/machinery/button/ignition/incinerator/ordmix,
 /turf/open/floor/iron,
 /area/science/mixing)
 "nXX" = (
@@ -51409,11 +51312,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
-"oyB" = (
-/obj/structure/table,
-/obj/item/storage/pill_bottle/dice,
-/turf/open/floor/iron,
-/area/commons/dorms)
 "oyN" = (
 /obj/machinery/suit_storage_unit/engine,
 /obj/effect/turf_decal/bot{
@@ -51946,6 +51844,11 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
 /turf/open/space,
 /area/space/nearstation)
+"oIg" = (
+/obj/structure/table,
+/obj/item/storage/dice,
+/turf/open/floor/iron,
+/area/commons/locker)
 "oII" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -51977,7 +51880,7 @@
 	},
 /area/maintenance/starboard/fore)
 "oJk" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/plating,
 /area/engineering/main)
 "oJo" = (
@@ -52511,15 +52414,9 @@
 /obj/effect/turf_decal/siding{
 	dir = 4
 	},
-/obj/item/cartridge/signal/toxins{
-	pixel_x = 6
-	},
-/obj/item/cartridge/signal/toxins{
-	pixel_x = -6
-	},
-/obj/item/cartridge/signal/toxins{
-	pixel_y = 6
-	},
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
+/obj/item/cartridge/signal/ordnance,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/rd)
 "oRu" = (
@@ -52816,9 +52713,7 @@
 /turf/open/floor/wood,
 /area/commons/dorms)
 "oUO" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/toxin_output{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "oUQ" = (
@@ -54043,7 +53938,7 @@
 	},
 /area/engineering/atmos)
 "ppi" = (
-/obj/machinery/door/poddoor/massdriver_toxins,
+/obj/machinery/door/poddoor/massdriver_ordnance,
 /turf/open/floor/plating,
 /area/science/mixing)
 "ppk" = (
@@ -55400,9 +55295,7 @@
 /turf/open/floor/iron/grimy,
 /area/service/chapel/office)
 "pOT" = (
-/obj/machinery/airlock_sensor/incinerator_toxmix{
-	pixel_x = -24
-	},
+/obj/machinery/airlock_sensor/incinerator_ordmix,
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1
 	},
@@ -55443,9 +55336,7 @@
 /turf/open/floor/wood,
 /area/service/library)
 "pPt" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input{
-	dir = 8
-	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "pPx" = (
@@ -55689,11 +55580,6 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
-"pTE" = (
-/obj/structure/table/wood/poker,
-/obj/item/storage/pill_bottle/dice,
-/turf/open/floor/wood,
-/area/service/bar)
 "pTP" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -56492,11 +56378,9 @@
 /turf/open/floor/iron,
 /area/service/hydroponics)
 "qhS" = (
-/obj/machinery/door/airlock/research/glass/incinerator/toxmix_interior,
+/obj/machinery/door/airlock/research/glass/incinerator/ordmix_interior,
 /obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_toxmix{
-	pixel_x = -22
-	},
+/obj/machinery/embedded_controller/radio/airlock_controller/incinerator_ordmix,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "qhU" = (
@@ -56611,6 +56495,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
+"qjq" = (
+/obj/structure/table/wood/poker,
+/obj/item/storage/dice,
+/turf/open/floor/wood,
+/area/service/bar)
 "qjz" = (
 /obj/structure/rack,
 /obj/machinery/light/directional/east,
@@ -56699,9 +56588,7 @@
 /turf/open/floor/iron,
 /area/security/courtroom)
 "qkq" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxins_mixing_input{
-	dir = 1
-	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/ordnance_mixing_input,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "qks" = (
@@ -60333,6 +60220,35 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"rtE" = (
+/obj/machinery/turretid{
+	icon_state = "control_stun";
+	name = "AI Chamber turret control";
+	pixel_x = 3;
+	pixel_y = -23
+	},
+/obj/machinery/door/window{
+	base_state = "leftsecure";
+	dir = 8;
+	icon_state = "leftsecure";
+	name = "Primary AI Core Access";
+	atom_integrity = 300;
+	req_access_txt = "16"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/north,
+/turf/open/floor/iron/dark,
+/area/ai_monitored/turret_protected/ai)
 "rtK" = (
 /obj/structure/window/reinforced,
 /obj/machinery/computer/atmos_control/tank/air_tank{
@@ -67615,9 +67531,7 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/machinery/computer/security/telescreen/toxins{
-	dir = 1
-	},
+/obj/machinery/computer/security/telescreen/ordnance,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "tKh" = (
@@ -68235,7 +68149,7 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/aisat/exterior)
 "tTJ" = (
-/obj/machinery/mass_driver/toxins,
+/obj/machinery/mass_driver/ordnance,
 /turf/open/floor/plating,
 /area/science/mixing)
 "tTK" = (
@@ -70767,10 +70681,7 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/book/manual/wiki/toxins{
-	pixel_x = 4;
-	pixel_y = 1
-	},
+/obj/item/book/manual/wiki/ordnance,
 /turf/open/floor/iron/white,
 /area/science/mixing)
 "uGS" = (
@@ -71788,6 +71699,21 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"uXB" = (
+/obj/item/dice/d20,
+/obj/item/dice,
+/obj/structure/table/wood,
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/storage/dice,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/structure/light_construct/small/directional/south,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "uXM" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -73888,9 +73814,7 @@
 	c_tag = "Science Toxins Launch";
 	dir = 1
 	},
-/obj/machinery/computer/pod/old/mass_driver_controller/toxinsdriver{
-	pixel_y = -24
-	},
+/obj/machinery/computer/pod/old/mass_driver_controller/ordnancedriver,
 /turf/open/floor/iron/dark,
 /area/science/mixing)
 "vEJ" = (
@@ -78629,6 +78553,38 @@
 /obj/effect/turf_decal,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
+"xjb" = (
+/obj/effect/landmark/start/ai/secondary,
+/obj/item/radio/intercom/directional/north{
+	freerange = 1;
+	listening = 0;
+	name = "Custom Channel";
+	pixel_x = -8
+	},
+/obj/item/radio/intercom/directional/west{
+	freerange = 1;
+	listening = 0;
+	name = "Common Channel"
+	},
+/obj/item/radio/intercom/directional/south{
+	freerange = 1;
+	frequency = 1447;
+	listening = 0;
+	name = "Private Channel";
+	pixel_x = -8
+	},
+/obj/machinery/door/window{
+	base_state = "rightsecure";
+	dir = 4;
+	icon_state = "rightsecure";
+	layer = 4.1;
+	name = "Secondary AI Core Access";
+	atom_integrity = 300;
+	pixel_x = 4;
+	req_access_txt = "16"
+	},
+/turf/open/floor/circuit/green,
+/area/ai_monitored/turret_protected/ai)
 "xjq" = (
 /obj/effect/turf_decal/bot_white/left,
 /obj/structure/closet/crate/silvercrate,
@@ -79343,7 +79299,7 @@
 	},
 /area/security/prison)
 "xuL" = (
-/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/portable_atmospherics/canister/plasma,
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "xuW" = (
@@ -79645,7 +79601,7 @@
 /turf/open/floor/plating,
 /area/security/checkpoint/customs)
 "xzs" = (
-/obj/machinery/computer/atmos_control/toxinsmix,
+/obj/machinery/computer/atmos_control/ordnancemix,
 /obj/effect/turf_decal/bot,
 /obj/machinery/light/small/directional/east,
 /obj/effect/turf_decal/siding{
@@ -80177,7 +80133,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "xHV" = (
-/obj/machinery/air_sensor/atmos/toxins_mixing_tank,
+/obj/machinery/air_sensor/atmos/ordnance_mixing_tank,
 /turf/open/floor/engine,
 /area/science/mixing/chamber)
 "xIm" = (
@@ -96933,7 +96889,7 @@ ckP
 ckP
 ckP
 ckP
-gOT
+uXB
 dux
 dux
 dux
@@ -100470,7 +100426,7 @@ dne
 eze
 sje
 liP
-moL
+eDr
 pBD
 aJK
 dAQ
@@ -101967,7 +101923,7 @@ aaa
 aaa
 aax
 acM
-cxh
+iTd
 eVR
 iwG
 hpn
@@ -115386,7 +115342,7 @@ eEk
 oQr
 eGq
 isd
-ipV
+oIg
 rDa
 hWi
 fic
@@ -116689,7 +116645,7 @@ tFU
 hkR
 otW
 kLo
-pTE
+qjq
 rNI
 qWv
 imL
@@ -117690,7 +117646,7 @@ dqy
 neg
 bpa
 mDK
-oyB
+nSn
 oyS
 uWp
 xIL
@@ -135952,7 +135908,7 @@ gfU
 aTV
 aTV
 aTV
-ldh
+xjb
 aTV
 aTV
 aTV
@@ -136723,7 +136679,7 @@ vnm
 aVn
 aWN
 aTV
-agV
+rtE
 aTV
 aTV
 tfz
@@ -137237,7 +137193,7 @@ vnm
 cCD
 lHl
 aTV
-iKw
+lCu
 aTV
 aTV
 aWN
@@ -138008,7 +137964,7 @@ gfU
 aTV
 aTV
 aTV
-bYl
+bSP
 aTV
 aTV
 aTV
