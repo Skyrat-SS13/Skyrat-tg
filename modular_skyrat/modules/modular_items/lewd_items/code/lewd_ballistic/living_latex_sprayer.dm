@@ -193,6 +193,8 @@
 	if(isliving(user))
 		if(!can_trigger_gun(user))
 			return
+	else
+		return
 
 	if(!chipslotisclosed)
 		chipslotisclosed = TRUE
