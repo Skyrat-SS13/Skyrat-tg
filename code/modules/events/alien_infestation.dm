@@ -25,14 +25,15 @@
 	role_name = "alien larva"
 
 	// 50% chance of being incremented by one
-	var/spawncount = 1
+//	var/spawncount = 1
+	var/spawncount = 2	//SKYRAT EDIT
 	fakeable = TRUE
 
 
 /datum/round_event/ghost_role/alien_infestation/setup()
 	announceWhen = rand(announceWhen, announceWhen + 50)
-	if(prob(50))
-		spawncount++
+//	if(prob(50))	//SKYRAT EDIT
+//		spawncount++	//SKYRAT EDIT
 
 /datum/round_event/ghost_role/alien_infestation/announce(fake)
 	var/living_aliens = FALSE

@@ -75,7 +75,11 @@
 					blocked = TRUE
 			if(!blocked)
 				L.visible_message(span_danger("[src] pounces on [L]!"), span_userdanger("[src] pounces on you!"))
-				L.Paralyze(100)
+				//	SKYRAT EDIT: START
+				//	L.Paralyze(100)	// Original Line
+				L.Knockdown(100)
+				L.apply_damage(75, STAMINA)
+				//	SKYRAT EDIT: END
 				sleep(2)//Runtime prevention (infinite bump() calls on hulks)
 				step_towards(src,L)
 			else

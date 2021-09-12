@@ -283,7 +283,16 @@
 			to_chat(user, span_danger("You disarm [src]!"))
 		else
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, TRUE, -1)
-			Paralyze(100)
+			//Paralyze(100)	//SKYRAT EDIT: Original Line
+			//SKYRAT EDIT START
+			Paralyze(10)
+			Knockdown(50)
+			var/obj/item/bodypart/affecting = get_bodypart(ran_zone(user.zone_selected))
+			if(!affecting)
+				affecting = get_bodypart(BODY_ZONE_CHEST)
+			var/armor_block = run_armor_check(affecting, MELEE,"","",10)//10 armor penetration
+			apply_damage((rand(user.melee_damage_lower, user.melee_damage_upper)), STAMINA, affecting, armor_block)
+			//SKYRAT EDIT END
 			log_combat(user, src, "tackled")
 			visible_message(span_danger("[user] tackles [src] down!"), \
 							span_userdanger("[user] tackles you down!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), null, user)

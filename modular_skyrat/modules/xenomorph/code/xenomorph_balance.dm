@@ -3,8 +3,8 @@
 	key_mode = KEY_MODE_TYPE
 	value_mode = VALUE_MODE_NUM
 	config_entry_value = list(			//DEFAULTS
-	/mob/living/carbon/alien/humanoid/drone = -0.2,
-	/mob/living/carbon/alien/humanoid/hunter = -0.5,
+	/mob/living/carbon/alien/humanoid/drone = -0.1,
+	/mob/living/carbon/alien/humanoid/hunter = -0.4,
 	/mob/living/carbon/alien/humanoid/royal/praetorian = 1,
 	/mob/living/carbon/alien/humanoid/royal/queen = 1.5
 	)
@@ -49,8 +49,8 @@
 ///////////////////////////////////////////
 /////////////     HUNTER      /////////////
 /mob/living/carbon/alien/humanoid/hunter
-	maxHealth = 150				//TG: 125
-	health = 150				//TG: 125
+	maxHealth = 125				//TG: 125
+	health = 125				//TG: 125
 	melee_damage_lower = 25		//TG: 20
 	melee_damage_upper = 25		//TG: 20
 	next_move_modifier = 0.75
@@ -58,11 +58,11 @@
 ///////////////////////////////////////////
 /////////////   XENO  DRONE   /////////////
 /mob/living/carbon/alien/humanoid/drone
-	maxHealth = 150				//TG: 125
-	health = 150				//TG: 125
+	maxHealth = 125				//TG: 125
+	health = 125				//TG: 125
 	melee_damage_lower = 20		//TG: 20
 	melee_damage_upper = 20		//TG: 20
-	next_move_modifier = 0.75
+	next_move_modifier = 1
 /////////////   XENO  DRONE   /////////////
 ///////////////////////////////////////////
 /////////////   FLAVOR TEXT   /////////////
