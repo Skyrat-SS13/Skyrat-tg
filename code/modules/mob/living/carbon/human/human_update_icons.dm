@@ -616,6 +616,9 @@ generate/load female uniform sprites matching all previously decided variables
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		. += "-[BP.body_zone]"
+		for(var/obj/item/organ/external/organ in BP.external_organs)
+			if(organ.can_draw_on_bodypart(src)) //make sure we're drawn before generating a key
+				. += "([organ.cache_key])"
 		//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 		/*
 		if(BP.status == BODYPART_ORGANIC)
