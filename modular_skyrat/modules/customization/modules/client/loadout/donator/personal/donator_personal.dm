@@ -231,8 +231,8 @@
 	ckeywhitelist = list("asky")
 
 /datum/loadout_item/backpack/donator/brightcosmos
-	name = "Case of Bright Cosmos Cigars"
-	path = /obj/item/storage/fancy/cigarettes/cigars/havana/lyricalpaws
+	name = "Bright Cosmos cigar"
+	path = /obj/item/clothing/mask/holocigarette/cigar
 	ckeywhitelist = list("lyricalpaws")
 
 /datum/loadout_item/uniform/donator/lannese
