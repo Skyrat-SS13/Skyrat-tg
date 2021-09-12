@@ -1,23 +1,11 @@
 ////////////////////////////
 /// LIVING LATEX CLOTHES ///
 ////////////////////////////
-/// Общее описание свойств живого латекса
-/obj/item/clothing/livinglatex
-	name = ""
-	desc = ""
-	icon_state = ""
-	inhand_icon_state = ""
-	// icon = ''
-	// worn_icon = ''
-	// worn_icon_digi = ''
-	// worn_icon_taur_hoof = ''
-	// worn_icon_taur_paw = ''
-	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 /// Тело:
 // Модуль липкости. Не позволяет пользователю покинуть объекты, к которым он прикован без посторонней помощи. После определенного промежутка времени, пользователь может покинуть объект с долгим к/д. Не может вырваться из хватки любого уровня.
-/obj/item/clothing/livinglatex/stickybody
+/obj/item/clothing/suit/ll_stickybody
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -28,10 +16,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Модуль чувствительности. Каждое взаимодействие с пользователем, будет сопровождаться щекоткой
-/obj/item/clothing/livinglatex/sensetivebody
+/obj/item/clothing/suit/ll_sensetivebody
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -42,12 +30,12 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 
 /// Ноги:
 // Обычные носочки с раздельными пальцами. (DEFAULT)
-/obj/item/clothing/livinglatex/socks
+/obj/item/clothing/shoes/ll_socks
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -58,10 +46,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Каблуки, замедляющие ходьбу и издающие цокающие звуки.
-/obj/item/clothing/livinglatex/heels
+/obj/item/clothing/shoes/ll_heels
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -72,10 +60,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Надувные шары, которые издают скрипящие звуки и с случайным шансом роняют пользователя на пол. Замедляют.
-/obj/item/clothing/livinglatex/creakingballs
+/obj/item/clothing/shoes/ll_creakingballs
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -86,10 +74,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Ботинки, накидывающие эфект щекотки при ходьбе.
-/obj/item/clothing/livinglatex/ticklingboots
+/obj/item/clothing/shoes/ll_ticklingboots
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -100,10 +88,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Связывающие в коленях штуки.
-/obj/item/clothing/livinglatex/kneecord
+/obj/item/clothing/shoes/ll_kneecord
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -114,13 +102,11 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
-
 
 
 /// Руки:
 // Перчатки (DEFAULT)
-/obj/item/clothing/livinglatex/gloves
+/obj/item/clothing/gloves/ll_gloves
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -131,10 +117,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Надувные рукавицы, делающие руки бесполезными.
-/obj/item/clothing/livinglatex/inflateblagloves
+/obj/item/clothing/gloves/ll_inflateblegloves
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -145,14 +131,13 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 
 
 
 /// Маска:
 // Ничего (DEFAULT)
 // Кляп, заполняющий ротовую полость, питающий носителя, но снижающий уровень психического здоровья
-/obj/item/clothing/livinglatex/feedinggag
+/obj/item/clothing/mask/ll_feedinggag
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -163,10 +148,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Противогаз, постоянно накачивающий носителя кроцином и питательными веществами, но снижающий уровень психического здоровья
-/obj/item/clothing/livinglatex/feedenggasmask
+/obj/item/clothing/mask/gas/ll_feedenggasmask
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -177,14 +162,13 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 
 
 
 /// Шлем:
 // Ничего (DEFAULT)
 // Закрывающий волосы капюшон и крепко прилегающий к голове
-/obj/item/clothing/livinglatex/hood
+/obj/item/clothing/head/helmet/ll_hood
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -195,14 +179,13 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 
 
 
 /// Пах:
 // Ничего (DEFAULT)
 // Присоски, которые постоянно удерживают цель на грани и повышают возбуждения до максимума.
-/obj/item/clothing/livinglatex/arrousalsuckers
+/obj/item/clothing/ll_arrousalsuckers
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -213,14 +196,14 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
-
+	slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS
+	var/mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 
 /// Грудь:
 // Ничего (DEFAULT)
 // Тентакли, разминающие эту часть тела и повышающие настроение цели, однако снижающие скорость передвижения.
-/obj/item/clothing/livinglatex/tentacles
+/obj/item/clothing/suit/ll_tentacles
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -231,13 +214,12 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 
 
 
 /// Ошейник:
 // Мягкий надувной ошейник, закрепляющий костюм на персонаже (DEFAULT)
-/obj/item/clothing/livinglatex/softinflatablecollar
+/obj/item/clothing/neck/ll_softinflatablecollar
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -248,10 +230,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Ошейник, не позволяющий пользователю взаимодействовать с вещами в ЕРП слотах.
-/obj/item/clothing/livinglatex/erpslotblockcollar
+/obj/item/clothing/neck/ll_erpslotblockcollar
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -262,13 +244,12 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
 
 
 
 /// Очки:
 // Очки, накладывающие эффект влюбленности в первого обнявшего пользователя человека (Механ зелья любви из ксенобиологии. Смотри заряженный розовый экстракт)
-/obj/item/clothing/livinglatex/lovinggoggles
+/obj/item/clothing/glasses/ll_lovinggoggles
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -279,10 +260,10 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
+
 
 // Гипноочки
-/obj/item/clothing/livinglatex/hypnogoggles
+/obj/item/clothing/glasses/ll_hypnogoggles
 	name = ""
 	desc = ""
 	icon_state = ""
@@ -293,6 +274,3 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL
-
-
