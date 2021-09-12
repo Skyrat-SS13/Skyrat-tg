@@ -211,7 +211,7 @@
 	new /obj/item/ammo_box/magazine/akm(src)
 	new /obj/item/gun/ballistic/automatic/assault_rifle/m16(src)
 	new /obj/item/ammo_box/magazine/m16(src)
-	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted/mg34(src)
+	new /obj/item/gun/ballistic/automatic/mg34(src)
 	new /obj/item/ammo_box/magazine/mg34(src)
 	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40(src)
 	new /obj/item/ammo_box/magazine/mp40(src)
