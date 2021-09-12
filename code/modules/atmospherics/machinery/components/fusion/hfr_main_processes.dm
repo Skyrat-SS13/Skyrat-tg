@@ -512,8 +512,8 @@
 	//High power fusion might create other matter other than helium, iron is dangerous inside the machine, damage can be seen
 	if(moderator_internal.total_moles() > 0)
 		moderator_internal.remove(moderator_internal.total_moles() * (1 - (1 - 0.0005 * power_level) ** delta_time))
-	if(power_level > 4 && prob(17 * power_level))//at power level 6 is 100%
-		iron_content += 0.005 * delta_time
+	if(power_level > 4 && prob(IRON_CHANCE_PER_FUSION_LEVEL * power_level))//at power level 6 is 100%
+		iron_content += IRON_ACCUMULATED_PER_SECOND * delta_time
 	if(iron_content > 0 && power_level <= 4 && prob(25 / (power_level + 1)))
 		iron_content = max(iron_content - 0.01 * delta_time, 0)
 	iron_content = clamp(iron_content, 0, 1)
@@ -548,8 +548,10 @@
 
 	if(moderator_list[/datum/gas/oxygen] > 150)
 		if(iron_content > 0)
-			iron_content = max(iron_content - 0.5, 0)
-			moderator_internal.gases[/datum/gas/oxygen] -= 10
+			var/max_iron_removable = IRON_OXYGEN_HEAL_PER_SECOND
+			var/iron_removed = min(max_iron_removable * delta_time, iron_content)
+			iron_content -= iron_removed
+			moderator_internal.gases[/datum/gas/oxygen] -= iron_removed * OXYGEN_MOLES_CONSUMED_PER_IRON_HEAL
 
 	if(prob(critical_threshold_proximity / 15))
 		var/grav_range = round(log(2.5, critical_threshold_proximity))
@@ -558,16 +560,11 @@
 				continue
 			step_towards(alive_mob, loc)
 
-	//Gases can be removed from the moderator internal by using the interface. Helium and antinoblium inside the fusion mix will get always removed at a fixed rate
-	if(waste_remove && power_level <= 5)
-		var/filtering = TRUE
-		if(!ispath(filter_type))
-			if(filter_type)
-				filter_type = gas_id2path(filter_type)
-			else
-				filtering = FALSE
-		if(filtering && moderator_internal.gases[filter_type])
-			var/datum/gas_mixture/removed = moderator_internal.remove_specific(filter_type, 100 * delta_time)
+	//Gases can be removed from the moderator internal by using the interface.
+	if(waste_remove)
+		var/filtering_amount = moderator_scrubbing.len
+		for(var/gas in moderator_internal.gases & moderator_scrubbing)
+			var/datum/gas_mixture/removed = moderator_internal.remove_specific(gas, (moderator_filtering_rate / filtering_amount) * delta_time)
 			if(removed)
 				linked_output.airs[1].merge(removed)
 
@@ -576,9 +573,6 @@
 			if(internal_fusion.gases[gas_id][MOLES] > 0)
 				internal_remove = internal_fusion.remove_specific(gas_id, internal_fusion.gases[gas_id][MOLES] * (1 - (1 - 0.25) ** delta_time))
 				linked_output.airs[1].merge(internal_remove)
-		if(internal_fusion.gases[/datum/gas/antinoblium][MOLES] > 0)
-			internal_remove = internal_fusion.remove_specific(/datum/gas/antinoblium, internal_fusion.gases[/datum/gas/antinoblium][MOLES] * (1 - (1 - 0.25) ** delta_time))
-			linked_output.airs[1].merge(internal_remove)
 		internal_fusion.garbage_collect()
 		moderator_internal.garbage_collect()
 

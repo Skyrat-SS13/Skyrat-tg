@@ -543,8 +543,7 @@
 	if(dna.features["moth_wings"])
 		var/genetic_value = GLOB.moth_wings_list[deconstruct_block(getblock(features, DNA_MOTH_WINGS_BLOCK), GLOB.moth_wings_list.len)]
 		dna.features["original_moth_wings"] = genetic_value
-		if(dna.features["moth_wings"] != "Burnt Off")
-			dna.features["moth_wings"] = genetic_value
+		dna.features["moth_wings"] = genetic_value
 	if(dna.features["moth_antennae"])
 		var/genetic_value = GLOB.moth_antennae_list[deconstruct_block(getblock(features, DNA_MOTH_ANTENNAE_BLOCK), GLOB.moth_antennae_list.len)]
 		dna.features["original_moth_antennae"] = genetic_value
