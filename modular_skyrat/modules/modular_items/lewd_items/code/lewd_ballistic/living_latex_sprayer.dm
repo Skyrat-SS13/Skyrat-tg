@@ -162,12 +162,18 @@
 
 // GEMINEE TODO: Overriding the default grenade on-hit behavior for living latex ball
 /obj/projectile/bullet/latexball/on_hit(atom/target, blocked = FALSE)
-	..() //GEMINEE TODO: Check the operation of the nodamage parameter. If you need to track checks in a superfunction
+	..() // Standard hit tests.
 
-	//Disable the standard grenade handling.
-	//explosion(target, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 1, adminlog = FALSE)
+	if(isliving(target))
+		// Let's throw off all the objects from the character before applying the latex.
+		// Standard admin drop all cycle
+		for(var/obj/item/W in M)
+			if(!M.dropItemToGround(W))
+				qdel(W)
+				M.regenerate_icons()
 
-	// GEMINEE TODO: Implement your own livning latex ball hit handler
+		// Apply latex garments to the character
+
 
 	return BULLET_ACT_HIT
 
@@ -178,9 +184,11 @@
 //////////////////////////////////////////
 // Chip slot open and close handler
 /obj/item/gun/ballistic/revolver/livinglatexsprayer/AltClick(mob/user)
-	if(isliving(user))
+	if(ishuman(user))
 		if(!can_trigger_gun(user))
 			return
+	else
+		return
 
 	if(!chipslotisclosed)
 		chipslotisclosed = TRUE
@@ -193,6 +201,12 @@
 
 // Empty Hand Attack Handler
 /obj/item/gun/ballistic/revolver/livinglatexsprayer/attack_hand(mob/user)
+	if(ishuman(user))
+		if(!can_trigger_gun(user))
+			return
+	else
+		return
+
 	// If the chip slot is open, then we take the chip into an empty hand.
 	if(!chipslotisclosed && pin)
 		user.put_in_hands(pin)
