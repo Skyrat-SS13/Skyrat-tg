@@ -44,8 +44,8 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 110
-	health = 110
+	maxHealth = 80
+	health = 80
 	obj_damage = 50
 	harm_intent_damage = 15
 	melee_damage_lower = 15
@@ -71,7 +71,7 @@
 	damage = 5
 	damage_type = BURN
 	nodamage = FALSE
-	knockdown = 20
+	knockdown = 10
 	flag = BIO
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
 	hitsound = 'modular_skyrat/master_files/sound/blackmesa/bullsquid/splat1.ogg'
@@ -97,12 +97,12 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 110
-	health = 110
+	maxHealth = 80
+	health = 80
 	obj_damage = 50
 	harm_intent_damage = 10
-	melee_damage_lower = 20
-	melee_damage_upper = 20
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	//Since those can survive on Xen, I'm pretty sure they can thrive on any atmosphere
@@ -142,15 +142,15 @@
 	emote_taunt = list("growls", "snarls", "grumbles")
 	taunt_chance = 100
 	turns_per_move = 7
-	maxHealth = 100
-	health = 100
-	harm_intent_damage = 15
-	melee_damage_lower = 17
-	melee_damage_upper = 17
+	maxHealth = 50
+	health = 50
+	harm_intent_damage = 8
+	melee_damage_lower = 10
+	melee_damage_upper = 10
 	attack_sound = 'sound/weapons/bite.ogg'
 	gold_core_spawnable = HOSTILE_SPAWN
 	charger = TRUE
-	charge_frequency = 3 SECONDS
+	charge_frequency = 5 SECONDS
 	loot = list(/obj/item/stack/sheet/bone)
 	alert_sounds = list(
 		'modular_skyrat/master_files/sound/blackmesa/headcrab/alert1.ogg'
@@ -196,9 +196,9 @@
 	name = "zombie"
 	desc = "A shambling corpse animated by a headcrab!"
 	mob_biotypes |= MOB_HUMANOID
-	melee_damage_lower += 8
-	melee_damage_upper += 11
-	obj_damage = 21 //now that it has a corpse to puppet, it can properly attack structures
+	melee_damage_lower += 12
+	melee_damage_upper += 15
+	obj_damage = 30 //now that it has a corpse to puppet, it can properly attack structures
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	movement_type = GROUND
 	icon_state = ""
