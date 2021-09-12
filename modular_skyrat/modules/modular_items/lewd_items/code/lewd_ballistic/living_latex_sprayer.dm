@@ -173,7 +173,8 @@
 				M.regenerate_icons()
 
 		// Apply latex garments to the character
-
+		if(ishuman(target))
+			livinglatexspread(target,latexprogram)
 
 	return BULLET_ACT_HIT
 
@@ -295,8 +296,9 @@
 	A.update_appearance()
 	return
 
-
-
+/obj/projectile/bullet/latexball/proc/livinglatexspread(mob/target, list/latexprogram)
+	to_chat(world, "DBG latex hit - in hit proc executed| target=[target] | program=[latexprogram]")
+	return
 
 /////////////////////////////////
 ///	FUNCTION OVERRIDE SECTION ///
