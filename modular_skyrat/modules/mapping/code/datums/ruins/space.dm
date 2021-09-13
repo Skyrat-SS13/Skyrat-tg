@@ -138,3 +138,16 @@
 	suffix = "wreckedhomestead.dmm"
 	name = "NTSS Homestead"
 	description = "A wrecked ship."
+
+/datum/map_template/ruin/space/medieval1
+	id = "medieval1"
+	suffix = "medieval1.dmm"
+	name = "Medieval 1"
+	description = "A forgotten peice of history left overrun with a reminder of what brought its destruction"
+
+/datum/map_template/ruin/space/cargodiselost
+	id = "CargodiseLost"
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "cargodiselost.dmm"
+	name = "Cargodise Lost"
+	description = "A small crew of freight-haulers are marooned in space after pirates knock out their engines. They must survive off of the cargo on board their ship and fend off the pirate boarders on their ship."

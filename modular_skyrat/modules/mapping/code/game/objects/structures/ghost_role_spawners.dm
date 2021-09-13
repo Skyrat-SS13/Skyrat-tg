@@ -163,6 +163,8 @@
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/H)
 	H.faction |= ROLE_SYNDICATE
 
+//Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
+
 /obj/effect/mob_spawn/human/lostcargo
     name = "cryogenics pod"
     desc = "A humming cryo pod. There's a freight hauler inside."
@@ -174,8 +176,8 @@
     random = TRUE
     mob_species = /datum/species/human
     short_desc = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew."
-    uniform = obj/item/clothing/under/rank/cargo/casualman
+    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for a small mom-and-pop business. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
+    uniform = /obj/item/clothing/under/rank/cargo/casualman
     shoes = /obj/item/clothing/shoes/workboots
     back = /obj/item/storage/backpack
     backpack_contents = list(/obj/item/armament_token/sidearm_blackmarket)
@@ -194,19 +196,18 @@
     random = TRUE
     mob_species = /datum/species/human
     short_desc = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew."
+    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for a small mom-and-pop business. Your role was to be an excavation and salvage worker for the ship."
     uniform = /obj/item/clothing/under/utility/cargo/gorka
     shoes = /obj/item/clothing/shoes/workboots/mining
     back = /obj/item/storage/backpack
-    r_pocket = /obj/item/storage/bag/ore
-	backpack_contents = list(
-		/obj/item/flashlight/seclite=1,\
+    backpack_contents = list(/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
 		/obj/item/gun/energy/kinetic_accelerator=1,\
 		/obj/item/stack/marker_beacon/ten=1)
-    id = /obj/item/card/id/away/freightcrew
+    r_pocket = /obj/item/storage/bag/ore
+    id = /obj/item/card/id/away/freightmine
     can_use_alias = TRUE
     any_station_species = TRUE
 
@@ -221,7 +222,7 @@
     random = TRUE
     mob_species = /datum/species/human
     short_desc = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
-    important_info = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew."
+    important_info = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew for a small mom-and-pop business. You are the captain of the ship, and were in charge of the crew."
     uniform = /obj/item/clothing/under/utility/cargo/turtleneck
     shoes = /obj/item/clothing/shoes/workboots
     neck = /obj/item/clothing/neck/cloak/qm
@@ -264,8 +265,37 @@
     desc = "An ID card marked with the rank of Freight Hauler."
     trim = /datum/id_trim/job/cargo_technician
 
+/obj/item/card/id/away/freightmine
+    name = "Freighter ID"
+    desc = "An ID card marked with the rank of Freight Ship Excavator."
+    trim = /datum/id_trim/job/shaft_miner
+
 /obj/item/card/id/away/freightqm
     name = "Freighter Deck Chief ID"
     desc = "An ID card marked with the rank of Freight Deck Chief."
-    trim = /datum/id_trim/job/cargo_technician
+    trim = /datum/id_trim/job/quartermaster
 
+//AREAS//
+/area/ruin/space/has_grav/deepstorage/lostcargo
+	name = "Freighter Ship"
+	icon_state = "yellow"
+
+/area/ruin/space/has_grav/deepstorage/crewbed
+	name = "Freighter Ship Crew Quarters"
+	icon_state = "green"
+
+/area/ruin/space/has_grav/deepstorage/kitchen
+	name = "Freighter Ship Cafeteria"
+	icon_state = "kitchen"
+
+/area/ruin/space/has_grav/deepstorage/dockingbay
+	name = "Freighter Ship Loading Bay"
+	icon_state = "yellow"
+
+/area/ruin/space/has_grav/deepstorage/lostcargomine
+	name = "Freighter Ship Mining Room"
+	icon_state = "yellow"
+
+/area/ruin/space/has_grav/deepstoragelostcargoengine
+	name = "Freighter Ship Maintenance"
+	icon_state = "engine"
