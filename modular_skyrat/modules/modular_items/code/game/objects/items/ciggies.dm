@@ -40,5 +40,5 @@
 		smoked.inhand_icon_state = smoked.icon_off
 		smoked.lit = FALSE
 		smoked.name = copytext_char(smoked.name, 5) //5 == length_char("lit ") + 1
-	H.update_icon()
+	smoked.update_icon()
 	smoker.update_inv_wear_mask()
