@@ -199,6 +199,12 @@
 	slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS
 	var/mutantrace_variation = NO_MUTANTRACE_VARIATION
 
+//For correct work we need to use one slot for one instance of the object
+/obj/item/clothing/ll_arrousalsuckers/Initialize(new_slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS)
+	. = ..()
+	slot_flags = new_slot_flags
+
+
 
 /// Грудь:
 // Ничего (DEFAULT)
