@@ -56,7 +56,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/nanotrasen_representative
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/nanotrasen_representative
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
+	backpack_contents = list(/obj/item/melee/baton/telescopic)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 

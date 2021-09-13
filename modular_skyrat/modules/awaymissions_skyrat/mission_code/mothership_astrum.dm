@@ -22,14 +22,16 @@
 /area/awaymission/mothership_astrum/deck4
 	name = "Mothership Astrum Xeno Studies Holodeck"
 	icon_state = "away4"
-	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+	static_lighting = FALSE
+	base_lighting_alpha = 255
+	base_lighting_color = COLOR_WHITE
 	requires_power = FALSE
 
 /area/awaymission/mothership_astrum/deck5
 	name = "Mothership Astrum Beach Holodeck"
 	icon_state = "away5"
 	requires_power = FALSE
-	dynamic_lighting = FALSE
+	static_lighting = FALSE
 
 //Fluff Notes
 /obj/item/paper/fluff/awaymissions/astrum1
@@ -222,7 +224,7 @@
 				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
-				/obj/item/melee/classic_baton/telescopic = 12)
+				/obj/item/melee/baton/telescopic = 12)
 
 /obj/effect/spawner/lootdrop/astrum/sciloot
 	name = "abductor scientist loot"

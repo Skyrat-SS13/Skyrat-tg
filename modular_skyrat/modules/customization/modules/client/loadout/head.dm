@@ -441,10 +441,10 @@
 
 /datum/loadout_item/head/brfed
 	name = "Brown Fedora"
-	path = /obj/item/clothing/head/fedorabrown
+	path = /obj/item/clothing/head/fedora/fedbrown
 	cost = 2
 
 /datum/loadout_item/head/blfed
 	name = "Black Fedora"
-	path = /obj/item/clothing/head/fedorablack
+	path = /obj/item/clothing/head/fedora/fedblack
 	cost = 2

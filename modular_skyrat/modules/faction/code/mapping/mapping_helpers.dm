@@ -160,8 +160,8 @@
 			new /obj/item/gun/energy/e_gun/mini(src)
 			new /obj/item/gun/energy/kinetic_accelerator/crossbow(src)
 			new /obj/item/gun/energy/e_gun/nuclear(src)
-			new /obj/item/melee/transforming/energy/sword(src)
-			new /obj/item/melee/transforming/energy/sword(src)
+			new /obj/item/melee/energy/sword(src)
+			new /obj/item/melee/energy/sword(src)
 		if(3) //Ballistics + knives
 			new /obj/item/kitchen/knife/combat(src)
 			new /obj/item/kitchen/knife/combat(src)
