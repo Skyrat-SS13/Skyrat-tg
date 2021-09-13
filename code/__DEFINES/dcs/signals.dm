@@ -1062,6 +1062,10 @@
 ///from /mob/living/carbon/human/proc/set_coretemperature(): (oldvalue, newvalue)
 #define COMSIG_HUMAN_CORETEMP_CHANGE "human_coretemp_change"
 
+///from /datum/species/handle_fire. Called when the human is set on fire and burning clothes and stuff
+#define COMSIG_HUMAN_BURNING "human_burning"
+
+
 // /datum/species signals
 
 ///from datum/species/on_species_gain(): (datum/species/new_species, datum/species/old_species)
@@ -1450,9 +1454,9 @@
 /// Called on the organ when it is removed from someone (mob/living/carbon/old_owner)
 #define COMSIG_ORGAN_REMOVED "comsig_organ_removed"
 
-
 ///Called when the ticker enters the pre-game phase
 #define COMSIG_TICKER_ENTER_PREGAME "comsig_ticker_enter_pregame"
 
 ///Called when the ticker sets up the game for start
 #define COMSIG_TICKER_ENTER_SETTING_UP "comsig_ticker_enter_setting_up"
+
