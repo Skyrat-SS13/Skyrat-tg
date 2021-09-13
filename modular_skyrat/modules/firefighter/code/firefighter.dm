@@ -91,7 +91,7 @@
 	mkf.dna_lock = markone.dna_lock
 	mkf.mecha_flags = markone.mecha_flags
 	mkf.strafe = markone.strafe
-	mkf.obj_integrity = round((markone.obj_integrity / markone.max_integrity) * mkf.obj_integrity) //Integ set to the same percentage integ as the old mecha, rounded to be whole number
+	mkf.update_integrity(round((markone.get_integrity() / markone.max_integrity) * mkf.get_integrity())) //Integ set to the same percentage integ as the old mecha, rounded to be whole number
 	if(markone.name != initial(markone.name))
 		mkf.name = markone.name
 	markone.wreckage = FALSE

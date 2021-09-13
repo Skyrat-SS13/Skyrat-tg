@@ -20,8 +20,8 @@ A seperate folder under customization for adding new (WORN) storage items, such 
 
 ### Included files that are not contained in this module:
 (Both the new sprite files, which are in the normal clothing icon locations)
-- modular_skyrat/modules/customization/icons/mob/clothing/storage.dmi
-- modular_skyrat/modules/customization/icons/obj/clothing/storage.dmi
+- modular_skyrat/master_files/icons/mob/clothing/storage.dmi
+- modular_skyrat/master_files/icons/obj/clothing/storage.dmi
 
 ### Credits:
 Orion_the_Fox

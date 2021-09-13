@@ -10,7 +10,7 @@
 	mag_type = /obj/item/ammo_box/magazine/m16
 	can_suppress = FALSE
 	burst_size = 3
-	fire_delay = 4
+	fire_delay = 2
 	worn_icon = 'modular_skyrat/modules/gunsgalore/icons/guns/m16/m16_back.dmi'
 	worn_icon_state = "m16"
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16/m16.ogg'
@@ -35,7 +35,7 @@
 	worn_icon_state = "m16"
 	spread = 0.5
 	burst_size = 3
-	fire_delay = 2
+	fire_delay = 1.90
 
 /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern/v2
 	name = "\improper AR-24 'Patriot'"

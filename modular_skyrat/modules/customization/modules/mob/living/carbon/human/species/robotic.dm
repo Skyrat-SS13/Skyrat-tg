@@ -19,8 +19,10 @@
 	mutant_bodyparts = list()
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
-	coldmod = 0.5
-	heatmod = 3
+	burnmod = 1.5 // Every 0.1% is 10% above the base.
+	brutemod = 1.6 
+	coldmod = 1.2
+	heatmod = 2
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 	payday_modifier = 0.5 //Robots are cheep labor
 	species_language_holder = /datum/language_holder/machine
@@ -81,7 +83,7 @@
 		"ipc_chassis" = ACC_RANDOM
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/ipc_parts.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/ipc_parts.dmi'
 	hair_alpha = 210
 	sexes = 0
 	var/datum/action/innate/monitor_change/screen
@@ -159,7 +161,7 @@
 		"wings" = "None"
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/synthliz_parts_greyscale.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/synthliz_parts_greyscale.dmi'
 
 /datum/species/robotic/synthliz/get_random_body_markings(list/passed_features)
 	var/name = pick("Synth Pecs Lights", "Synth Scutes", "Synth Pecs")
@@ -197,7 +199,7 @@
 		"neck_acc" = "None"
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/synthmammal_parts_greyscale.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 
 /datum/species/robotic/synthetic_mammal/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -281,4 +283,4 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
 	species_language_holder = /datum/language_holder/machine
-	limbs_icon = 'modular_skyrat/modules/customization/icons/mob/species/synthhuman_parts_greyscale.dmi'
+	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/synthhuman_parts_greyscale.dmi'

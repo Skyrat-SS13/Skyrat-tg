@@ -1,7 +1,7 @@
 /obj/item/clothing/head/helmet/chaplain/bland
-	icon = 'modular_skyrat/modules/chaplain/icons/obj/clothings/hats.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	icon_state = "knight_generic"
-	worn_icon = 'modular_skyrat/modules/chaplain/icons/mobs/clothings/head.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	worn_icon_state = "knight_generic"
 
 /obj/item/clothing/head/helmet/chaplain/bland/horned
@@ -19,8 +19,8 @@
 /obj/item/clothing/suit/armor/riot/chaplain/teutonic
 	desc = "Help, Defend, Heal!"
 	icon_state = "knight_teutonic"
-	icon = 'modular_skyrat/modules/chaplain/icons/obj/clothings/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/chaplain/icons/mobs/clothings/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_state = "knight_teutonic"
 
 /obj/item/clothing/suit/armor/riot/chaplain/teutonic/alt
@@ -29,8 +29,8 @@
 
 /obj/item/clothing/suit/armor/riot/chaplain/hospitaller
 	icon_state = "knight_hospitaller"
-	icon = 'modular_skyrat/modules/chaplain/icons/obj/clothings/suits.dmi'
-	worn_icon = 'modular_skyrat/modules/chaplain/icons/mobs/clothings/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_state = "knight_hospitaller"
 
 /obj/item/storage/box/holy/teutonic

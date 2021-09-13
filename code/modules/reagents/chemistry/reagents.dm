@@ -98,7 +98,16 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/addiction_types = null
 	///The amount a robot will pay for a glass of this (20 units but can be higher if you pour more, be frugal!)
 	var/glass_price
-
+	///Whether it will evaporate if left untouched on a liquids simulated puddle
+	//SKYRAT EDIT ADDITION
+	var/evaporates = FALSE
+	///How much fire power does the liquid have, for burning on simulated liquids. Not enough fire power/unit of entire mixture may result in no fire
+	var/liquid_fire_power = 0
+	///How fast does the liquid burn on simulated turfs, if it does
+	var/liquid_fire_burnrate = 0
+	///Whether a fire from this requires oxygen in the atmosphere
+	var/fire_needs_oxygen = TRUE
+	//SKYRAT EDIT END
 
 /datum/reagent/New()
 	SHOULD_CALL_PARENT(TRUE)
@@ -220,7 +229,7 @@ Primarily used in reagents/reaction_agents
 
 /// Called when an overdose starts
 /datum/reagent/proc/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>You feel like you took too much of [name]!</span>")
+	to_chat(M, span_userdanger("You feel like you took too much of [name]!"))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
 	return
 

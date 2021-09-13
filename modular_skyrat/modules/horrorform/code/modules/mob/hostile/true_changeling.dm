@@ -178,14 +178,14 @@
 	var/mob/living/simple_animal/hostile/true_changeling/C = owner
 	if(!C.stored_changeling)
 		to_chat(C,"<span class='warning'>We do not have a form other than this!</span>")
-		return 0
+		return FALSE
 	if(C.stored_changeling.stat == DEAD)
 		to_chat(C,"<span class='warning'>Our human form is dead!</span>")
-		return 0
+		return FALSE
 	if(world.time - C.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
 		var/timeleft = (C.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
 		to_chat(C,"<span class='warning'>We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes.</span>")
-		return 0
+		return FALSE
 	C.visible_message("<span class='warning'>[C] suddenly crunches and twists into a smaller form!</span>", \
 						"<span class='danger'>We return to our lesser form.</span>")
 	C.stored_changeling.loc = get_turf(C)
@@ -193,7 +193,7 @@
 	C.stored_changeling.Stun(2 SECONDS)
 	C.stored_changeling.status_flags &= ~GODMODE
 	qdel(C)
-	return 1
+	return TRUE
 
 /datum/action/innate/devour
 	name = "Devour"

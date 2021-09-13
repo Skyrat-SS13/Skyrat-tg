@@ -2,14 +2,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
-/datum/techweb_node/peacekeeper_ammo
-	id = "advanced_peacekeeper_ammo"
-	display_name = "Advanced Peaeckeeper Ammunition"
-	description = "Alternate round types for the peacekeeper weapon designs."
-	prereq_ids = list("weaponry"  , "adv_weaponry")
-	design_ids = list("b6mm_ihdf","b9mm_hollowpoint","b9mm_ihdf","b10mm_hollowpoint","b10mm_ihdf","b12mm_hollowpoint")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
-
 /datum/techweb_node/peacekeeper_ammo_advanced
 	display_name = "Experimental SMARTGUN Ammunition"
 	description = "Standard ammo for a non-standard SMARTGUN."
@@ -20,48 +12,22 @@
 //////////////////////
 //6mm
 //////////////////////
-/datum/design/b6mm
-	name = "Peacekeeper Ammo Box (6mm)"
-	id = "b6mm"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 30000)
-	build_path = /obj/item/ammo_box/advanced/b6mm
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /obj/item/ammo_box/advanced/b6mm
-	name = "peacekeeper ammo box (6mm)"
+	name = "6.3mm ammo box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm"
 	ammo_type = /obj/item/ammo_casing/b6mm
 	max_ammo = 30
 
-/datum/design/b6mm/rubber
-	name = "Peacekeeper Ammo Box (6mm rubber)"
-	id = "b6mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b6mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
 /obj/item/ammo_box/advanced/b6mm/rubber
-	name = "ammo box (6mm rubber)"
+	name = "6.3mm dissuasive pellet box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-rubber"
 	ammo_type = /obj/item/ammo_casing/b6mm/rubber
 
-/datum/design/b6mm/ihdf
-	name = "Peacekeeper Ammo Box (6mm ihdf)"
-	id = "b6mm_ihdf"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 15000, /datum/material/gold = 15000)
-	build_path = /obj/item/ammo_box/advanced/b6mm/ihdf
-	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
 /obj/item/ammo_box/advanced/b6mm/ihdf
-	name = "peacekeeper ammo box (6mm ihdf)"
+	name = "6.3mm fragmentation pellet box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box10mm-hv"
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
@@ -69,63 +35,28 @@
 //////////////////////
 //9mm
 //////////////////////
-/datum/design/b9mm
-	name = "Peacekeeper Ammo Box (9mm)"
-	id = "b9mm"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 30000)
-	build_path = /obj/item/ammo_box/advanced/b9mm
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /obj/item/ammo_box/advanced/b9mm
-	name = "peacekeeper ammo box (9mm)"
+	name = "9x19mm FMJ box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol_l"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	max_ammo = 30
 
-/datum/design/b9mm/rubber
-	name = "Peacekeeper Ammo Box (9mm rubber)"
-	id = "b9mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b9mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-/obj/item/ammo_box/advanced/b9mm/rubber
-	name = "ammo box (9mm rubber)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "pistol_r"
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-
-/datum/design/b9mm/hp
-	name = "Peacekeeper Ammo Box (9mm hollowpoint)"
-	id = "b9mm_hollowpoint"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/silver = 10000, /datum/material/iron = 10000, /datum/material/glass = 10000)
-	build_path = /obj/item/ammo_box/advanced/b9mm/hp
-	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
 /obj/item/ammo_box/advanced/b9mm/hp
-	name = "peacekeeper ammo box (9mm hollowpoint)"
+	name = "9x19mm JHP box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol"
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 
-/datum/design/b9mm/ihdf
-	name = "Peacekeeper Ammo Box (9mm ihdf)"
-	id = "b9mm_ihdf"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 15000, /datum/material/gold = 15000)
-	build_path = /obj/item/ammo_box/advanced/b9mm/ihdf
-	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+/obj/item/ammo_box/advanced/b9mm/rubber
+	name = "9x19mm Rubber box"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon_state = "pistol_r"
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 
 /obj/item/ammo_box/advanced/b9mm/ihdf
-	name = "peacekeeper ammo box (9mm ihdf)"
+	name = "9x19mm IHDF box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol_hv"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
@@ -133,60 +64,25 @@
 //////////////////////
 //10mm
 //////////////////////
-/datum/design/b10mm
-	name = "Peacekeeper Ammo Box (10mm)"
-	id = "b10mm"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 30000)
-	build_path = /obj/item/ammo_box/advanced/b10mm
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /obj/item/ammo_box/advanced/b10mm
-	name = "peacekeeper ammo box (10mm)"
+	name = "10mm Auto box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50"
 	ammo_type = /obj/item/ammo_casing/b10mm
 	max_ammo = 30
 
-/datum/design/b10mm/rubber
-	name = "Peacekeeper Ammo Box (10mm rubber)"
-	id = "b10mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b10mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
-/obj/item/ammo_box/advanced/b10mm/rubber
-	name = "peacekeeper ammo box (10mm rubber)"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
-	icon_state = "box50-rubber"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-
-/datum/design/b10mm/hp
-	name = "Peacekeeper Ammo Box (10mm hollowpoint)"
-	id = "b10mm_hollowpoint"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/silver = 10000, /datum/material/iron = 10000, /datum/material/glass = 10000)
-	build_path = /obj/item/ammo_box/advanced/b10mm/hp
-	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
 /obj/item/ammo_box/advanced/b10mm/hp
-	name = "peacekeeper ammo box (10mm hollowpoint)"
+	name = "10x25mm JHP box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-lethal"
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 
-/datum/design/b10mm/ihdf
-	name = "Peacekeeper Ammo Box (10mm ihdf)"
-	id = "b10mm_ihdf"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/iron = 15000, /datum/material/gold = 15000)
-	build_path = /obj/item/ammo_box/advanced/b10mm/ihdf
-	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+/obj/item/ammo_box/advanced/b10mm/rubber
+	name = "10x25mm Rubber box"
+	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
+	icon_state = "box50-rubber"
+	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 
 /obj/item/ammo_box/advanced/b10mm/ihdf
 	name = "peacekeeper ammo box (10mm ihdf)"
@@ -197,48 +93,22 @@
 //////////////////////
 //12mm
 //////////////////////
-/datum/design/b12mm
-	name = "Peacekeeper Ammo Box (12mm)"
-	id = "b12mm"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 30000)
-	build_path = /obj/item/ammo_box/advanced/b12mm
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /obj/item/ammo_box/advanced/b12mm
-	name = "peacekeeper ammo box (12mm)"
+	name = "12.7x30mm FMJ box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "magnum_l"
 	ammo_type = /obj/item/ammo_casing/b12mm
 	max_ammo = 15
 
-/datum/design/b12mm/rubber
-	name = "Peacekeeper Ammo Box (12mm rubber)"
-	id = "b12mm_rubber"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/iron = 15000)
-	build_path = /obj/item/ammo_box/advanced/b12mm/rubber
-	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
 /obj/item/ammo_box/advanced/b12mm/rubber
-	name = "peacekeeper ammo box (12mm rubber)"
+	name = "12.7x30mm Beanbag box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "magnum_r"
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 
-/datum/design/b12mm/hp
-	name = "Peacekeeper Ammo Box (12mm hollowpoint)"
-	id = "b12mm_hollowpoint"
-	build_type = PROTOLATHE
-	materials = list(/datum/material/silver = 10000, /datum/material/iron = 10000, /datum/material/glass = 10000)
-	build_path = /obj/item/ammo_box/advanced/b12mm/hp
-	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-
 /obj/item/ammo_box/advanced/b12mm/hp
-	name = "peacekeeper ammo box (12mm hollowpoint)"
+	name = "12.7x30mm JHP box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "magnum_p"
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
@@ -247,7 +117,7 @@
 //SMARTGUN
 //////////////////////
 /datum/design/smartgun
-	name = "Peacekeeper Ammo Box (SMARTGUN)"
+	name = "\improper S.M.A.R.T. Rifle Shock-Rails"
 	id = "smartgun"
 	build_type = PROTOLATHE
 	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
@@ -256,7 +126,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /obj/item/ammo_box/advanced/smartgun
-	name = "peacekeeper ammo box (smartgun)"
+	name = "5mm Shock-Rail box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "smartgun_chain"
 	ammo_type = /obj/item/ammo_casing/smartgun
@@ -283,6 +153,8 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/AltClick(mob/user)
 	. = ..()
+	if(possible_types.len <= 1)
+		return
 	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
 	if(!new_type)
 		new_type = AMMO_TYPE_LETHAL
@@ -333,3 +205,80 @@
 	. = ..()
 	if(stored_ammo.len)
 		. += "[initial(icon_state)]_[round_type]"
+
+////////////////////////////
+///////////14 GAUGE/////////
+////////////////////////////
+
+/obj/item/ammo_casing/s14gauge
+	name = "14 gauge shotgun slug"
+	desc = "A 14 gauge lead slug."
+	icon_state = "blshell"
+	worn_icon_state = "shell"
+	caliber = CALIBER_14GAUGE
+	custom_materials = list(/datum/material/iron=2000)
+	projectile_type = /obj/projectile/bullet/s14gauge_slug
+
+/obj/item/ammo_casing/s14gauge/beanbag
+	name = "14 gauge beanbag slug"
+	desc = "A weak beanbag slug for riot control."
+	icon_state = "bshell"
+	custom_materials = list(/datum/material/iron=250)
+	projectile_type = /obj/projectile/bullet/s14gauge_beanbag
+	harmful = FALSE
+
+/obj/item/ammo_casing/s14gauge/buckshot
+	name = "14 gauge buckshot shell"
+	desc = "A 14 gauge  buckshot shell."
+	icon_state = "gshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge_buckshot
+	pellets = 5
+	variance = 25
+
+/obj/item/ammo_casing/s14gauge/rubbershot
+	name = "14 gauge rubber shot"
+	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
+	icon_state = "bshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge_rubbershot
+	pellets = 5
+	variance = 25
+	custom_materials = list(/datum/material/iron=4000)
+	harmful = FALSE //SKYRAT EDIT ADDITION
+
+/obj/item/ammo_casing/s14gauge/stunslug
+	name = "14 gauge taser slug"
+	desc = "A stunning taser slug."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/s14gauge_stunslug
+	custom_materials = list(/datum/material/iron=500,/datum/material/gold=100)
+	harmful = FALSE
+
+/obj/item/storage/box/rubbershot_14gauge
+	name = "box of 14 gauge rubber shots"
+	desc = "A box full of rubber shots, designed for riot shotguns."
+	icon_state = "rubbershot_box"
+	illustration = null
+
+/obj/item/storage/box/rubbershot_14gauge/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/ammo_casing/s14gauge/rubbershot(src)
+
+/obj/item/storage/box/lethalshot_14gauge
+	name = "box of lethal 14 gauge shotgun shots"
+	desc = "A box full of lethal shots, designed for riot shotguns."
+	icon_state = "lethalshot_box"
+	illustration = null
+
+/obj/item/storage/box/lethalshot_14gauge/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/ammo_casing/s14gauge/buckshot(src)
+
+/obj/item/storage/box/beanbag_14gauge
+	name = "box of 14 gauge beanbags"
+	desc = "A box full of beanbag shells."
+	icon_state = "rubbershot_box"
+	illustration = null
+
+/obj/item/storage/box/beanbag_14gauge/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/ammo_casing/s14gauge/beanbag(src)

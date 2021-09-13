@@ -1,8 +1,8 @@
 /obj/item/clothing/head/helmet/space/hardsuit/odst
 	name = "orbital drop shock trooper helmet"
 	desc = "The helmet of a shocktrooper's hardsuit. It's sturdy and reinforced."
-	icon = 'modular_skyrat/modules/additionalert/odst/icons/obj/clothing/head.dmi'
-	worn_icon = 'modular_skyrat/modules/additionalert/odst/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-odst"
 	hardsuit_type = "odst"
 
@@ -10,9 +10,9 @@
 	name = "orbital drop shock trooper hardsuit"
 	desc = "The hardsuit of a shocktrooper. It's lightweight, yet sturdy and reinforced. "
 	alt_desc = "The hardsuit of a shocktrooper. It's lightweight, yet sturdy and reinforced. "
-	icon = 'modular_skyrat/modules/additionalert/odst/icons/obj/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	icon_state = "ert_odst"
-	worn_icon = 'modular_skyrat/modules/additionalert/odst/icons/mob/clothing/suit.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_state = "ert_odst"
 	inhand_icon_state = "ert_security"
 	hardsuit_type = "odst"

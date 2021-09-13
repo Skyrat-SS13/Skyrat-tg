@@ -23,6 +23,7 @@
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
+/*	SKYRAT EDIT - MOVED TO modular_skyrat/modules/electric_welder/code/electric_welder.dm
 /datum/design/exwelder
 	name = "Experimental Welding Tool"
 	desc = "An experimental welder capable of self-fuel generation."
@@ -32,6 +33,7 @@
 	build_path = /obj/item/weldingtool/experimental
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+*/
 
 /datum/design/rpd
 	name = "Rapid Pipe Dispenser (RPD)"
@@ -52,6 +54,17 @@
 	category = list("Tool Designs")
 	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
 
+//SKYRAT EDIT ADDITION//
+/datum/design/engi_plumbing
+	name = "Engineering Plumbing Constructor"
+	desc = "A tool that can construct several plumbing devices, useful for liquid management."
+	id = "engi_plumbing"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 60000, /datum/material/glass = 5000)  // Costs the same as an RCD.
+	build_path = /obj/item/construction/plumbing/engineering
+	category = list("Tool Designs")
+	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+//SKYRAT EDIT END//
 
 /datum/design/rcd_upgrade/frames
 	name = "RCD frames designs upgrade"
@@ -268,3 +281,24 @@
 	materials = list(/datum/material/iron = 2000, /datum/material/silver = 1500, /datum/material/plasma = 500, /datum/material/titanium = 1500)
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/wirebrush
+	name = "Wirebrush"
+	desc = "A tool to remove rust from walls."
+	id = "wirebrush"
+	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
+	category = list("initial", "Tools")
+	materials = list(/datum/material/iron = 200, /datum/material/glass = 200)
+	build_path = /obj/item/wirebrush
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
+
+/datum/design/wirebrush_adv
+	name = "Advanced Wirebrush"
+	desc = "An advanced wirebrush."
+	id = "wirebrush_adv"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 200, /datum/material/glass = 200, /datum/material/uranium = 200, /datum/material/plasma = 200)
+	build_path = /obj/item/wirebrush/advanced
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SERVICE

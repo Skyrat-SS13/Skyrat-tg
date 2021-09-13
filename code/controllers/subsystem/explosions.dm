@@ -84,7 +84,7 @@ SUBSYSTEM_DEF(explosions)
 	set name = "Check Bomb Impact"
 	set category = "Debug"
 
-	var/newmode = alert("Use reactionary explosions?","Check Bomb Impact", "Yes", "No")
+	var/newmode = tgui_alert(usr, "Use reactionary explosions?","Check Bomb Impact", list("Yes", "No"))
 	var/turf/epicenter = get_turf(mob)
 	if(!epicenter)
 		return
@@ -93,7 +93,7 @@ SUBSYSTEM_DEF(explosions)
 	var/heavy = 0
 	var/light = 0
 	var/list/choices = list("Small Bomb","Medium Bomb","Big Bomb","Custom Bomb")
-	var/choice = input("Bomb Size?") in choices
+	var/choice = tgui_input_list(usr, "Pick the bomb size", "Bomb Size?", choices)
 	switch(choice)
 		if(null)
 			return 0
@@ -354,7 +354,7 @@ SUBSYSTEM_DEF(explosions)
 			for(var/I in T)
 				var/atom/A = I
 				if (length(A.contents) && !(A.flags_1 & PREVENT_CONTENTS_EXPLOSION_1)) //The atom/contents_explosion() proc returns null if the contents ex_acting has been handled by the atom, and TRUE if it hasn't.
-					items += A.GetAllContents()
+					items += A.GetAllContents(ignore_flag_1 = PREVENT_CONTENTS_EXPLOSION_1)
 			for(var/thing in items)
 				var/atom/movable/movable_thing = thing
 				if(QDELETED(movable_thing))
@@ -373,8 +373,10 @@ SUBSYSTEM_DEF(explosions)
 				SSexplosions.medturf += T
 			if(EXPLODE_LIGHT)
 				SSexplosions.lowturf += T
-
-
+		//SKYRAT EDIT ADDITION
+		for(var/obj/machinery/light/iterating_light in T)
+			iterating_light.start_flickering()
+		//SKYRAT EDIT END
 		if(flame_dist && prob(40) && !isspaceturf(T) && !T.density)
 			flameturf += T
 
@@ -414,11 +416,11 @@ SUBSYSTEM_DEF(explosions)
 /// The probability that a distant explosion SFX will be a far explosion sound rather than an echo. (0-100)
 #define FAR_SOUND_PROB 75
 /// The upper limit on screenshake amplitude for nearby explosions.
-#define NEAR_SHAKE_CAP 10
+#define NEAR_SHAKE_CAP 7
 /// The upper limit on screenshake amplifude for distant explosions.
-#define FAR_SHAKE_CAP 2.5
+#define FAR_SHAKE_CAP 1.5
 /// The duration of the screenshake for nearby explosions.
-#define NEAR_SHAKE_DURATION (2.5 SECONDS)
+#define NEAR_SHAKE_DURATION (1.5 SECONDS)
 /// The duration of the screenshake for distant explosions.
 #define FAR_SHAKE_DURATION (1 SECONDS)
 /// The lower limit for the randomly selected hull creaking frequency.

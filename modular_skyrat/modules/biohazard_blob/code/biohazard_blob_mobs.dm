@@ -96,7 +96,7 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		if(prob(40))
+		if(src.can_inject(target))
 			to_chat(C, "<span class='danger'>[src] manages to penetrate your clothing with it's teeth!</span>")
 			C.ForceContractDisease(new /datum/disease/cordyceps(), FALSE, TRUE)
 

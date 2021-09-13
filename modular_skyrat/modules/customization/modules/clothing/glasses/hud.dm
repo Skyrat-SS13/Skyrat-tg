@@ -1,8 +1,8 @@
 /obj/item/clothing/glasses/hud/eyepatch
 	name = "eyepatch HUD"
 	desc = "A simple HUD designed to interface with optical nerves of a lost eye. This one seems busted."
-	icon = 'modular_skyrat/modules/customization/icons/obj/clothing/eyes.dmi'
-	worn_icon = 'modular_skyrat/modules/customization/icons/mob/clothing/eyes.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
 	inhand_icon_state = "eyepatch"
 	can_switch_eye = TRUE	//See modular_skyrat\modules\customization\modules\clothing\glasses\glasses.dm

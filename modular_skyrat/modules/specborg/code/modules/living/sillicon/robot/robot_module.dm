@@ -105,7 +105,7 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/extinguisher,
-		/obj/item/weldingtool/experimental,
+		/obj/item/weldingtool/electric,
 		/obj/item/screwdriver/nuke,
 		/obj/item/wrench/cyborg,
 		/obj/item/crowbar/cyborg,

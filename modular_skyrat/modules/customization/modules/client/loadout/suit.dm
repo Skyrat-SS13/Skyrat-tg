@@ -54,6 +54,10 @@
 	name = "Red Dresscoat"
 	path = /obj/item/clothing/suit/costume/vic_dresscoat/red
 
+/datum/loadout_item/suit/trackjacket
+	name = "Track Jacket"
+	path = /obj/item/clothing/suit/toggle/trackjacket
+
 /*Flannels go inside Misc*/
 /datum/loadout_item/suit/flannel_black
 	name = "Black Flannel"
@@ -150,6 +154,10 @@
 	path = /obj/item/clothing/suit/blackfurrich
 	cost = 3
 
+/datum/loadout_item/suit/coat/custom
+	name = "Alternate Winter Coat"
+	path = /obj/item/clothing/suit/hooded/wintercoat/custom
+	cost= 2
 
 
 //JACKETS

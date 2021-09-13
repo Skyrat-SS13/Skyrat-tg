@@ -9,4 +9,4 @@
 	syllables = list("kulet", "alak", "bidok", "nicol", "anam", "gatal", "mabdug", "kun", "kiror", "nicat", "onshen", "r%rith", "mafol", "sid", "ntdn", "kontuth", "letmos", "mishim", "losush", "othbem", "b^ngeng", "lasgan", "utal", "sedur", "engig", "sunggor", "thistun", "k''shdes", "ngefel", "umer", "uleb", "n shas", "r''mab", "sezom", "shashdon", "m%bnith", "k n", "gitnuk", "daros", "nokim", "mostib", "thethrus", "kagmel", "bidnoz", "elbost", "oten", "ushdish", "kitung", "nubam", "onget", "d%ngstam", "nimar", "gelut", "nis-n", "tarem", "nam", "kozoth", "tokmek", "ed", "et", "thunen", "shokmug", "vutok", "zanos", "torad", "berdan", "nal", "mosol", "othduk", "kinem", "zatthud", "nabtr", "rirn''l", "lised", "danman", "nirk£n", "mubun")
 	default_priority = 90
 	icon_state = "dwarf"
-	icon = 'modular_skyrat/modules/customization/icons/misc/language.dmi'
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'

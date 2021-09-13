@@ -33,6 +33,7 @@ GLOBAL_LIST_INIT(food, list(
 	var/lastchangelog = "" //Saved changlog filesize to detect if there was a change
 	var/ooccolor = "#c43b23"
 	var/asaycolor = "#ff4500" //This won't change the color for current admins, only incoming ones.
+	var/auto_dementor = TRUE //To be turned off by admins that don't want to be dementored at round start.
 	/// If we spawn an ERT as an admin and choose to spawn as the briefing officer, we'll be given this outfit
 	var/brief_outfit = /datum/outfit/centcom/commander
 	var/enable_tips = TRUE
@@ -76,8 +77,6 @@ GLOBAL_LIST_INIT(food, list(
 	var/inquisitive_ghost = 1
 	var/allow_midround_antag = 1
 	var/preferred_map = null
-	var/pda_style = MONO
-	var/pda_color = "#808000"
 
 	//aphrodisiac preference
 	var/aphrodisiacs_pref = 1
@@ -105,15 +104,33 @@ GLOBAL_LIST_INIT(food, list(
 	var/skin_tone = "caucasian1" //Skin color
 	var/eye_color = "000" //Eye color
 	var/datum/scream_type/pref_scream = new /datum/scream_type/human() //Scream type
+	var/datum/laugh_type/pref_laugh = new /datum/laugh_type/human() //Laugh type
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	//Has to include all information that extra organs from mutant bodyparts would need. (so far only genitals now)
 	var/list/features = MANDATORY_FEATURE_LIST
-	var/list/randomise = list(RANDOM_UNDERWEAR = FALSE, RANDOM_UNDERWEAR_COLOR = TRUE, RANDOM_UNDERSHIRT = FALSE, RANDOM_SOCKS = FALSE, RANDOM_BACKPACK = TRUE, RANDOM_JUMPSUIT_STYLE = TRUE, RANDOM_HAIRSTYLE = TRUE, RANDOM_HAIR_COLOR = TRUE, RANDOM_FACIAL_HAIRSTYLE = TRUE, RANDOM_FACIAL_HAIR_COLOR = TRUE, RANDOM_SKIN_TONE = TRUE, RANDOM_EYE_COLOR = TRUE)
+	var/list/randomise = list(
+		RANDOM_UNDERWEAR = TRUE,
+		RANDOM_UNDERWEAR_COLOR = TRUE,
+		RANDOM_UNDERSHIRT = TRUE,
+		RANDOM_SOCKS = TRUE,
+		RANDOM_BACKPACK = TRUE,
+		RANDOM_JUMPSUIT_STYLE = TRUE,
+		RANDOM_HAIRSTYLE = TRUE,
+		RANDOM_HAIR_COLOR = TRUE,
+		RANDOM_FACIAL_HAIRSTYLE = TRUE,
+		RANDOM_FACIAL_HAIR_COLOR = TRUE,
+		RANDOM_SKIN_TONE = TRUE,
+		RANDOM_EYE_COLOR = TRUE,
+		)
 	var/phobia = "spiders"
 	var/list/foodlikes = list()
 	var/list/fooddislikes = list()
 	var/maxlikes = 4
 	var/maxdislikes = 6
+
+	var/pda_style = MONO
+	var/pda_color = "#808000"
+	var/pda_ringer = "beep" //text the PDA emits when messaged
 
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
@@ -165,9 +182,6 @@ GLOBAL_LIST_INIT(food, list(
 	var/list/menuoptions
 
 	var/action_buttons_screen_locs = list()
-
-	///This var stores the amount of points the owner will get for making it out alive.
-	var/hardcore_survival_score = 0
 
 	///Someone thought we were nice! We get a little heart in OOC until we join the server past the below time (we can keep it until the end of the round otherwise)
 	var/hearted
@@ -256,7 +270,7 @@ GLOBAL_LIST_INIT(food, list(
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	set_new_species(/datum/species/human)
-	random_character() //let's create a random character then - rather than a fat, bald and naked man.
+	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.set_macros()
 	real_name = pref_species.random_name(gender,1)
@@ -268,6 +282,28 @@ GLOBAL_LIST_INIT(food, list(
 
 #define APPEARANCE_CATEGORY_COLUMN "<td valign='top' width='14%'>"
 #define MAX_MUTANT_ROWS 4
+#define FLAVORTEXT_JOIN_MINIMUM 150
+
+/datum/preferences/proc/check_flavor_text(inform_client = TRUE)
+	if(!features["flavor_text"])
+		if(check_rights(R_ADMIN, FALSE))
+			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
+			if(resp=="Yes")
+				message_admins("[usr] is bypassing the flavor text requirements.")
+				return TRUE
+		if(inform_client)
+			to_chat(parent, "<span class='userdanger'>You must have a flavor text!</span>")
+		return FALSE
+	if(length(replacetext(features["flavor_text"], " ", "")) < FLAVORTEXT_JOIN_MINIMUM) // No you can't use whitespace to meet the requirement
+		if(check_rights(R_ADMIN, FALSE))
+			var/resp = tgui_input_list(usr, "Do you want to bypass the flavor text requirement?", "Confirmation", list("Yes", "No"), 1 MINUTES)
+			if(resp=="Yes")
+				message_admins("[usr] is bypassing the flavor text requirements.")
+				return TRUE
+		if(inform_client)
+			to_chat(parent, "<span class='userdanger'>Your flavor text must be longer than [FLAVORTEXT_JOIN_MINIMUM] characters!</span>")
+		return FALSE
+	return TRUE
 
 /datum/preferences/proc/ShowChoices(mob/user)
 	if(!user || !user.client)
@@ -423,7 +459,12 @@ GLOBAL_LIST_INIT(food, list(
 
 					dat += "<b>Custom Job Preferences:</b><BR>"
 					dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
-					dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR></td>"
+					dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR>"
+
+					dat += "<br>"
+					dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
+					dat += "<b>PDA Style:</b> <a href='?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
+					dat += "<b>PDA Ringer:</b> <a href='?_src_=prefs;task=input;preference=pda_ringer'>[pda_ringer]</a><br></td>"
 
 					dat += "</tr></table>"
 
@@ -442,6 +483,7 @@ GLOBAL_LIST_INIT(food, list(
 					dat += "<table width='100%'><tr><td width='17%' valign='top'>"
 					dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 					dat += "<b>Scream:</b><BR><a href='?_src_=prefs;preference=scream;task=input'>[pref_scream.name]</a><BR>"
+					dat += "<b>Laugh:</b><BR><a href='?_src_=prefs;preference=laugh;task=input'>[pref_laugh.name]</a><BR>"
 					dat += "<b>Species Naming:</b><BR><a href='?_src_=prefs;preference=custom_species;task=input'>[(features["custom_species"]) ? features["custom_species"] : "Default"]</a><BR>"
 					dat += "<b>Sprite body size:</b><BR><a href='?_src_=prefs;preference=body_size;task=input'>[(features["body_size"] * 100)]%</a> <a href='?_src_=prefs;preference=show_body_size;task=input'>[show_body_size ? "Hide preview" : "Show preview"]</a><BR>"
 					dat += "<h2>Flavor Text</h2>"
@@ -537,8 +579,8 @@ GLOBAL_LIST_INIT(food, list(
 
 						dat += "<h3>Hairstyle</h3>"
 
+						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a><br>"
 						dat += "<a href='?_src_=prefs;preference=hairstyle;task=input'>[hairstyle]</a>"
-						dat += "<a href='?_src_=prefs;preference=previous_hairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HAIRSTYLE]'>[(randomise[RANDOM_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
 						dat += "<br> <a href='?_src_=prefs;preference=hair;task=input'><span class='color_holder_box' style='background-color:#[hair_color]'></span></a>"
@@ -546,8 +588,8 @@ GLOBAL_LIST_INIT(food, list(
 
 						dat += "<BR><h3>Facial Hairstyle</h3>"
 
+						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a><br>"
 						dat += "<a href='?_src_=prefs;preference=facial_hairstyle;task=input'>[facial_hairstyle]</a>"
-						dat += "<a href='?_src_=prefs;preference=previous_facehairstyle;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehairstyle;task=input'>&gt;</a>"
 						//dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_FACIAL_HAIRSTYLE]'>[(randomise[RANDOM_FACIAL_HAIRSTYLE]) ? "Lock" : "Unlock"]</A>"
 
 						dat += "<br> <a href='?_src_=prefs;preference=facial;task=input'><span class='color_holder_box' style='background-color:#[facial_hair_color]'></span></a>"
@@ -1012,9 +1054,6 @@ GLOBAL_LIST_INIT(food, list(
 			dat += "<b>Action Buttons:</b> <a href='?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
 			dat += "<b>Hotkey mode:</b> <a href='?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 			dat += "<br>"
-			dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
-			dat += "<b>PDA Style:</b> <a href='?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
-			dat += "<br>"
 			dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'>[(chat_toggles & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</a><br>"
 			dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'>[(chat_toggles & CHAT_GHOSTRADIO) ? "All Messages":"No Messages"]</a><br>"
 			dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'>[(chat_toggles & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</a><br>"
@@ -1305,19 +1344,18 @@ GLOBAL_LIST_INIT(food, list(
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 17, list/splitJobs = list("Chief Engineer"), widthPerColumn = 295, height = 620)
+/datum/preferences/proc/SetChoices(mob/user, limit = 15, widthPerColumn = 295, height = 620)
 	if(!SSjob)
 		return
 
 	//limit - The amount of jobs allowed per column. Defaults to 17 to make it look nice.
-	//splitJobs - Allows you split the table by job. You can make different tables for each department by including their heads. Defaults to CE to make it look nice.
 	//widthPerColumn - Screen's width for every column.
 	//height - Screen's height.
 
 	var/width = widthPerColumn
 
 	var/HTML = "<center>"
-	if(SSjob.occupations.len <= 0)
+	if(length(SSjob.joinable_occupations) <= 0)
 		HTML += "The job SSticker is not yet finished creating jobs, please try again later"
 		HTML += "<center><a href='?_src_=prefs;preference=job;task=close'>Done</a></center><br>" // Easier to press up here.
 
@@ -1332,15 +1370,15 @@ GLOBAL_LIST_INIT(food, list(
 
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 		var/datum/job/lastJob
+		var/datum/job/overflow_role = SSjob.GetJobType(SSjob.overflow_role)
 
-		for(var/datum/job/job in sortList(SSjob.occupations, /proc/cmp_job_display_asc))
+		for(var/datum/job/job as anything in sortList(SSjob.joinable_occupations, /proc/cmp_job_display_asc))
 
 			index += 1
-			if((index >= limit) || (job.title in splitJobs))
+			if(index >= limit)
 				width += widthPerColumn
 				if((index < limit) && (lastJob != null))
-					//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
-					//the last job's selection color. Creating a rather nice effect.
+					// Fills the rest of the cells with the last job's selection color.
 					for(var/i = 0, i < (limit - index), i += 1)
 						HTML += "<tr bgcolor='[lastJob.selection_color]'><td width='60%' align='right'>&nbsp</td><td>&nbsp</td></tr>"
 				HTML += "</table></td><td width='20%'><table width='100%' cellpadding='1' cellspacing='0'>"
@@ -1357,6 +1395,9 @@ GLOBAL_LIST_INIT(food, list(
 			lastJob = job
 			if(is_banned_from(user.ckey, rank))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;bancheck=[rank]'> BANNED</a></td></tr>"
+				continue
+			if(job.veteran_only && !is_veteran_player(user.client))
+				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[NOT VETERAN\]</font></td></tr>"
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
@@ -1375,7 +1416,7 @@ GLOBAL_LIST_INIT(food, list(
 			if(!job.has_required_languages(src))
 				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[BAD LANGS\]</font></td></tr>"
 				continue
-			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
+			if((job_preferences[overflow_role.title] == JP_LOW) && (rank != overflow_role.title) && !is_banned_from(user.ckey, overflow_role.title))
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
 				continue
 			var/rank_title_line = "[displayed_rank]"
@@ -1419,8 +1460,8 @@ GLOBAL_LIST_INIT(food, list(
 
 			HTML += "<a class='white' href='?_src_=prefs;preference=job;task=setJobLevel;level=[prefUpperLevel];text=[rank]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
 
-			if(rank == SSjob.overflow_role)//Overflow is special
-				if(job_preferences[SSjob.overflow_role] == JP_LOW)
+			if(rank == overflow_role.title)//Overflow is special
+				if(job_preferences[overflow_role.title] == JP_LOW)
 					HTML += "<font color=green>Yes</font>"
 				else
 					HTML += "<font color=red>No</font>"
@@ -1436,7 +1477,7 @@ GLOBAL_LIST_INIT(food, list(
 		HTML += "</td'></tr></table>"
 		HTML += "</center></table>"
 
-		var/message = "Be an [SSjob.overflow_role] if preferences unavailable"
+		var/message = "Be an [overflow_role.title] if preferences unavailable"
 		if(joblessrole == BERANDOMJOB)
 			message = "Get random job if preferences unavailable"
 		else if(joblessrole == RETURNTOLOBBY)
@@ -1464,19 +1505,19 @@ GLOBAL_LIST_INIT(food, list(
 	return TRUE
 
 /datum/preferences/proc/UpdateJobPreference(mob/user, role, desiredLvl)
-	if(!SSjob || SSjob.occupations.len <= 0)
+	if(!SSjob || length(SSjob.joinable_occupations) <= 0)
 		return
 	var/datum/job/job = SSjob.GetJob(role)
 
-	if(!job)
+	if(!job || !(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
 		user << browse(null, "window=mob_occupation")
 		ShowChoices(user)
 		return
 
 	if (!isnum(desiredLvl))
-		to_chat(user, "<span class='danger'>UpdateJobPreference - desired level was not a number. Please notify coders!</span>")
+		to_chat(user, span_danger("UpdateJobPreference - desired level was not a number. Please notify coders!"))
 		ShowChoices(user)
-		return
+		CRASH("UpdateJobPreference called with desiredLvl value of [isnull(desiredLvl) ? "null" : desiredLvl]")
 
 	var/jpval = null
 	switch(desiredLvl)
@@ -1487,7 +1528,7 @@ GLOBAL_LIST_INIT(food, list(
 		if(1)
 			jpval = JP_HIGH
 
-	if(role == SSjob.overflow_role)
+	if(job.type == SSjob.overflow_role)
 		if(job_preferences[job.title] == JP_LOW)
 			jpval = null
 		else
@@ -1595,7 +1636,7 @@ GLOBAL_LIST_INIT(food, list(
 				continue
 			ban_details = i
 			break //we only want to get the most recent ban's details
-		if(ban_details?.len)
+		if(ban_details && ban_details.len)
 			var/expires = "This is a permanent ban."
 			if(ban_details["expiration_time"])
 				expires = " The ban is for [DisplayTimeText(text2num(ban_details["duration"]) MINUTES)] and expires on [ban_details["expiration_time"]] (server time)."
@@ -1612,7 +1653,8 @@ GLOBAL_LIST_INIT(food, list(
 			if("random")
 				switch(joblessrole)
 					if(RETURNTOLOBBY)
-						if(is_banned_from(user.ckey, SSjob.overflow_role))
+						var/datum/job/overflow_role = SSjob.GetJobType(SSjob.overflow_role)
+						if(is_banned_from(user.ckey, overflow_role.title))
 							joblessrole = BERANDOMJOB
 						else
 							joblessrole = BEOVERFLOW
@@ -1795,7 +1837,7 @@ GLOBAL_LIST_INIT(food, list(
 			needs_update = TRUE
 			switch(href_list["preference"])
 				if("use_preset")
-					var/action = alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", "Yes", "No")
+					var/action = tgui_alert(user, "Are you sure you want to use a preset (This will clear your existing markings)?", "", list("Yes", "No"))
 					if(action && action == "Yes")
 						var/list/candidates = GLOB.body_marking_sets.Copy()
 						if(!mismatched_customization)
@@ -1983,7 +2025,7 @@ GLOBAL_LIST_INIT(food, list(
 					var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 					mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 				if("reset_all_colors")
-					var/action = alert(user, "Are you sure you want to reset all colors?", "", "Yes", "No")
+					var/action = tgui_alert(user, "Are you sure you want to reset all colors?", "", list("Yes", "No"))
 					if(action == "Yes")
 						reset_colors()
 
@@ -2021,7 +2063,7 @@ GLOBAL_LIST_INIT(food, list(
 				if("suit")
 					jumpsuit_style = pick(GLOB.jumpsuitlist)
 				if("all")
-					random_character(gender)
+					apply_character_randomization_prefs()
 
 		if("input")
 
@@ -2053,7 +2095,7 @@ GLOBAL_LIST_INIT(food, list(
 							ghost_orbit = new_orbit
 
 				if("ghostaccs")
-					var/new_ghost_accs = alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?",,GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME)
+					var/new_ghost_accs = tgui_alert("Do you want your ghost to show full accessories where possible, hide accessories but still use the directional sprites where possible, or also ignore the directions and stick to the default sprites?", "", list(GHOST_ACCS_FULL_NAME, GHOST_ACCS_DIR_NAME, GHOST_ACCS_NONE_NAME))
 					switch(new_ghost_accs)
 						if(GHOST_ACCS_FULL_NAME)
 							ghost_accs = GHOST_ACCS_FULL
@@ -2063,7 +2105,7 @@ GLOBAL_LIST_INIT(food, list(
 							ghost_accs = GHOST_ACCS_NONE
 
 				if("ghostothers")
-					var/new_ghost_others = alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?",,GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME)
+					var/new_ghost_others = tgui_alert("Do you want the ghosts of others to show up as their own setting, as their default sprites or always as the default white ghost?", "", list(GHOST_OTHERS_THEIR_SETTING_NAME, GHOST_OTHERS_DEFAULT_SPRITE_NAME, GHOST_OTHERS_SIMPLE_NAME))
 					switch(new_ghost_others)
 						if(GHOST_OTHERS_THEIR_SETTING_NAME)
 							ghost_others = GHOST_OTHERS_THEIR_SETTING
@@ -2206,6 +2248,7 @@ GLOBAL_LIST_INIT(food, list(
 					facial_hairstyle = previous_list_item(facial_hairstyle, GLOB.facial_hairstyles_list)
 
 				if("underwear")
+					needs_update = TRUE
 					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_list
 					if(new_underwear)
 						underwear = new_underwear
@@ -2283,6 +2326,22 @@ GLOBAL_LIST_INIT(food, list(
 					if(scream)
 						pref_scream = new scream
 						SEND_SOUND(user, pick(pref_scream.male_screamsounds))
+
+				if("laugh")
+					var/list/available_laughs = list()
+					for(var/spath in subtypesof(/datum/laugh_type)) //We need to build a custom list of available laughs!
+						var/datum/laugh_type/laugh = spath
+						if(initial(laugh.restricted_species_type))
+							if(!istype(pref_species, initial(laugh.restricted_species_type)))
+								continue
+						if(initial(laugh.donator_only) && !GLOB.donator_list[parent.ckey] && !check_rights(R_ADMIN, FALSE))
+							continue
+						available_laughs[initial(laugh.name)] = spath
+					var/new_laugh_id = input(user, "Choose your character's laugh:", "Character Scream")  as null|anything in available_laughs
+					var/datum/laugh_type/laugh = available_laughs[new_laugh_id]
+					if(laugh)
+						pref_laugh = new laugh
+						SEND_SOUND(user, pick(pref_laugh.male_laughsounds))
 
 				if("species")
 					ShowSpeciesMenu(user)
@@ -2553,6 +2612,10 @@ GLOBAL_LIST_INIT(food, list(
 					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
 					if(pickedPDAStyle)
 						pda_style = pickedPDAStyle
+				if("pda_ringer")
+					var/pickedPDAMessage = stripped_input(user, "Choose your PDA ringer message. (Max 20 chars)", "Character Preference", pda_ringer, 20)
+					if(pickedPDAMessage)
+						pda_ringer = pickedPDAMessage
 				if("pda_color")
 					var/pickedPDAColor = input(user, "Choose your PDA Interface color.", "Character Preference", pda_color) as color|null
 					if(pickedPDAColor)
@@ -2571,7 +2634,7 @@ GLOBAL_LIST_INIT(food, list(
 		else
 			switch(href_list["preference"])
 				if("reset_loadout")
-					var/action = alert(user, "Are you sure you want to reset your loadout?", "", "Yes", "No")
+					var/action = tgui_alert(user, "Are you sure you want to reset your loadout?", "", list("Yes", "No"))
 					if(action && action != "Yes")
 						return
 					loadout = list()
@@ -2582,7 +2645,7 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("adv_colors")
 					if(allow_advanced_colors)
-						var/action = alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", "Yes", "No")
+						var/action = tgui_alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", list("Yes", "No"))
 						if(action && action != "Yes")
 							return
 					allow_advanced_colors = !allow_advanced_colors
@@ -2886,8 +2949,7 @@ GLOBAL_LIST_INIT(food, list(
 
 				if("changeslot")
 					if(!load_character(text2num(href_list["num"])))
-						random_character()
-						real_name = random_unique_name(gender)
+						randomise_appearance_prefs()
 						save_character()
 					else
 						needs_update = TRUE
@@ -2938,37 +3000,30 @@ GLOBAL_LIST_INIT(food, list(
 	ShowChoices(user)
 	return 1
 
-/datum/preferences/proc/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, is_latejoiner = TRUE)
+/// Sanitization checks to be performed before using these preferences.
+/datum/preferences/proc/sanitize_chosen_prefs()
+	if(!(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
+		pref_species = new /datum/species/human
+		save_character()
 
-	hardcore_survival_score = 0 //Set to 0 to prevent you getting points from last another time.
+	if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))
+		var/firstspace = findtext(real_name, " ")
+		var/name_length = length(real_name)
+		if(!firstspace) //we need a surname
+			real_name += " [pick(GLOB.last_names)]"
+		else if(firstspace == name_length)
+			real_name += "[pick(GLOB.last_names)]"
 
-	/*if((randomise[RANDOM_SPECIES] || randomise[RANDOM_HARDCORE]) && !character_setup)
+/// Sanitizes the preferences, applies the randomization prefs, and then applies the preference to the human mob.
+/datum/preferences/proc/safe_transfer_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, is_antag = FALSE)
+	apply_character_randomization_prefs(is_antag)
+	sanitize_chosen_prefs()
+	apply_prefs_to(character, icon_updates)
 
-		random_species()
-
-	if((randomise[RANDOM_BODY] || (randomise[RANDOM_BODY_ANTAG] && antagonist) || randomise[RANDOM_HARDCORE]) && !character_setup)
-		slot_randomized = TRUE
-		random_character(gender, antagonist)
-
-	if((randomise[RANDOM_NAME] || (randomise[RANDOM_NAME_ANTAG] && antagonist) || randomise[RANDOM_HARDCORE]) && !character_setup)
-		slot_randomized = TRUE
-		real_name = pref_species.random_name(gender)
-
-	if(randomise[RANDOM_HARDCORE] && parent.mob.mind && !character_setup)
-		if(can_be_random_hardcore())
-			hardcore_random_setup(character, antagonist, is_latejoiner)*/
-
-	if(roundstart_checks)
-		if(CONFIG_GET(flag/humans_need_surnames) && (pref_species.id == "human"))
-			var/firstspace = findtext(real_name, " ")
-			var/name_length = length(real_name)
-			if(!firstspace) //we need a surname
-				real_name += " [pick(GLOB.last_names)]"
-			else if(firstspace == name_length)
-				real_name += "[pick(GLOB.last_names)]"
-
+/// Applies the given preferences to a human mob.
+/datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	character.real_name = real_name
-	character.name = character.real_name
+	character.name = real_name
 
 	character.gender = gender
 	character.age = age
@@ -2985,7 +3040,6 @@ GLOBAL_LIST_INIT(food, list(
 		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color
-
 	character.skin_tone = skin_tone
 	character.hairstyle = hairstyle
 	character.facial_hairstyle = facial_hairstyle
@@ -3002,21 +3056,23 @@ GLOBAL_LIST_INIT(food, list(
 
 	character.selected_scream = pref_scream
 
+	character.selected_laugh = pref_laugh
+
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
-	if(roundstart_checks && !(pref_species.id in GLOB.customizable_races))
+
+	if(!(pref_species.id in GLOB.customizable_races))
 		chosen_species = /datum/species/human
 		set_new_species(/datum/species/human)
 		save_character()
 
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = src)
-	if(!character_setup || (character_setup && show_body_size))
+	if(show_body_size)
 		character.dna.update_body_size()
 	else //We need to update it to 100% in case they switch back
 		character.dna.features["body_size"] = BODY_SIZE_NORMAL
 		character.dna.update_body_size()
 
-	if(character_setup)
 		for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
 			var/obj/item/organ/genital/gent = character.getorganslot(organ_key)
 			if(gent)
@@ -3026,18 +3082,20 @@ GLOBAL_LIST_INIT(food, list(
 	if(length(augments))
 		for(var/key in augments)
 			var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
-			aug.apply(character, character_setup, src)
+			aug.apply(character, TRUE, src)
 
 	if(icon_updates)
 		character.update_body()
 		character.update_hair()
 		character.update_body_parts()
 
-/datum/preferences/proc/can_be_random_hardcore()
-	if(parent.mob.mind.assigned_role in GLOB.command_positions) //No command staff
+/// Returns whether the parent mob should have the random hardcore settings enabled. Assumes it has a mind.
+/datum/preferences/proc/should_be_random_hardcore(datum/job/job, datum/mind/mind)
+	if(!randomise[RANDOM_HARDCORE])
 		return FALSE
-	for(var/A in parent.mob.mind.antag_datums)
-		var/datum/antagonist/antag
+	if(job.departments & DEPARTMENT_COMMAND) //No command staff
+		return FALSE
+	for(var/datum/antagonist/antag as anything in mind.antag_datums)
 		if(antag.get_team()) //No team antags
 			return FALSE
 	return TRUE

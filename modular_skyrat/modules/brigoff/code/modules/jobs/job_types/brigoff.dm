@@ -2,11 +2,11 @@
 	title = "Corrections Officer"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("The Warden and Head of Security")
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Warden and Head of Security"
-	selection_color = "#ddddff"
+	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 150
 	exp_type = EXP_TYPE_CREW
@@ -15,11 +15,15 @@
 	paycheck_department = ACCOUNT_SEC
 
 	outfit = /datum/outfit/job/brigoff
+	plasmaman_outfit = /datum/outfit/plasmaman/security
 	display_order = JOB_DISPLAY_ORDER_BRIGOFF
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
+	departments = DEPARTMENT_SECURITY
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
+
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
 
 /datum/job/brigoff/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()
@@ -38,7 +42,7 @@
 	shoes = /obj/item/clothing/shoes/laceup
 	ears = /obj/item/radio/headset/headset_sec
 	glasses = /obj/item/clothing/glasses/sunglasses
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/restraints/handcuffs = 2)
+	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/restraints/handcuffs = 2, /obj/item/gun/energy/taser/armadyne)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

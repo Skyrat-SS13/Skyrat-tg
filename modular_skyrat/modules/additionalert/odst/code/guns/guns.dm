@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/automatic/pitbull/odst
 	name = "Specialized 'Pitbull' Battle Rifle"
 	desc = "A specialized battle rifle designed for ODST squads."
-	icon = 'modular_skyrat/modules/additionalert/odst//icons/guns/gun_odst.dmi'
+	icon = 'modular_skyrat/modules/additionalert/odst/icons/guns/gun_odst.dmi'
 	righthand_file = 'modular_skyrat/modules/additionalert/odst/icons/guns/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/additionalert/odst/icons/guns/lefthand.dmi'
 	inhand_icon_state = "pitbull"
@@ -17,7 +17,7 @@
 	fire_delay = 3
 	spread = 5
 	mag_display = TRUE
-	mag_display_ammo = TRUE
+	mag_display_ammo = FALSE
 	realistic = TRUE
 	fire_sound = 'modular_skyrat/modules/additionalert/odst/sound/smg_fire.ogg'
 	emp_damageable = FALSE

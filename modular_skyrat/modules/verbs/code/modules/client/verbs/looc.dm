@@ -24,6 +24,9 @@
 			to_chat(src, "<span class='boldannounce'><B>Advertising other servers is not allowed.</B></span>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
+		if(prefs.muted & MUTE_LOOC)
+			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
+			return
 		if(mob.stat)
 			to_chat(src, "<span class='danger'>You cannot use LOOC while unconscious or dead.</span>")  //Skyrat change
 			return
@@ -36,6 +39,24 @@
 	mob.log_talk(msg,LOG_OOC, tag="LOOC")
 
 	var/list/heard = get_hearers_in_view(7, get_top_level_mob(src.mob))
+
+	//SKYRAT EDIT ADDITION BEGIN - AI QoL
+	var/ai_heard_it = FALSE
+	//so the ai can post looc text
+	if(istype(mob,/mob/living/silicon/ai))
+		for(var/mob/camera/ai_eye/eye_of_ai as anything in GLOB.aiEyes)
+			heard = get_hearers_in_view(7, eye_of_ai)
+	//so the ai can see looc text
+	for(var/mob/camera/ai_eye/eye_of_ai as anything in GLOB.aiEyes)
+		for(var/mob/creature in heard) //checks if an ai has already heard it
+			if(istype(creature, /mob/living/silicon/ai))
+				ai_heard_it = TRUE
+		if(ai_heard_it == FALSE) //i dont wanna run an entire fuckin for loop if it turns out the ai can already see the text
+			for(var/mob/creature in heard)
+				if(creature == eye_of_ai)
+					heard += get_top_level_mob(src.mob)
+	//SKYRAT EDIT ADDITION END - AI QoL
+
 	var/list/admin_seen = list()
 	for(var/mob/M in heard)
 		if(!M.client)

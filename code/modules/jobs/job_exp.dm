@@ -26,22 +26,22 @@ GLOBAL_PROTECT(exp_to_update)
 		return (job_requirement - my_exp)
 
 /datum/job/proc/get_exp_req_amount()
-	if(title in (GLOB.command_positions | list("AI")))
+	if(title in (GLOB.central_command_positions | GLOB.command_positions | list("AI"))) //SKYRAT EDIT CHANGE
 		var/uerhh = CONFIG_GET(number/use_exp_restrictions_heads_hours)
 		if(uerhh)
 			return uerhh * 60
 	return exp_requirements
 
 /datum/job/proc/get_exp_req_type()
-	if(title in (GLOB.command_positions | list("AI")))
+	if(title in (GLOB.central_command_positions | GLOB.command_positions | list("AI"))) //SKYRAT EDIT CHANGE
 		if(CONFIG_GET(flag/use_exp_restrictions_heads_department) && exp_type_department)
 			return exp_type_department
 	return exp_type
 
 /proc/job_is_xp_locked(jobtitle)
-	if(!CONFIG_GET(flag/use_exp_restrictions_heads) && (jobtitle in (GLOB.command_positions | list("AI"))))
+	if(!CONFIG_GET(flag/use_exp_restrictions_heads) && (jobtitle in (GLOB.central_command_positions | GLOB.command_positions | list("AI")))) //SKYRAT EDIT CHANGE
 		return FALSE
-	if(!CONFIG_GET(flag/use_exp_restrictions_other) && !(jobtitle in (GLOB.command_positions | list("AI"))))
+	if(!CONFIG_GET(flag/use_exp_restrictions_other) && !(jobtitle in (GLOB.central_command_positions | GLOB.command_positions | list("AI")))) //SKYRAT EDIT CHANGE
 		return FALSE
 	return TRUE
 

@@ -1,11 +1,10 @@
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 ///It's gross, gets the name of it's owner, and is all kinds of fucked up
 /datum/material/meat
 	name = "meat"
 	desc = "Meat"
 	id = /datum/material/meat // So the bespoke versions are categorized under this
 	color = rgb(214, 67, 67)
+	greyscale_colors = rgb(214, 67, 67)
 	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE, MAT_CATEGORY_ITEM_MATERIAL=TRUE)
 	sheet_type = /obj/item/stack/sheet/meat
 	value_per_unit = 0.05
@@ -32,18 +31,27 @@
 	var/nutriment_count = 3 * (amount / MINERAL_MATERIAL_AMOUNT)
 	var/oil_count = 2 * (amount / MINERAL_MATERIAL_AMOUNT)
 	source.AddComponent(/datum/component/edible, list(/datum/reagent/consumable/nutriment = nutriment_count, /datum/reagent/consumable/cooking_oil = oil_count), null, RAW | MEAT | GROSS, null, 30, list("Fleshy"))
-*/
-//SKYRAT EDIT REMOVAL END
-
 
 /datum/material/meat/mob_meat
 	init_flags = MATERIAL_INIT_BESPOKE
+	var/subjectname = ""
+	var/subjectjob = null
 
 /datum/material/meat/mob_meat/Initialize(_id, mob/living/source)
 	if(!istype(source))
 		return FALSE
 
 	name = "[source?.name ? "[source.name]'s" : "mystery"] [initial(name)]"
+
+	if(source.real_name)
+		subjectname = source.real_name
+	else if(source.name)
+		subjectname = source.name
+
+	if(ishuman(source))
+		var/mob/living/carbon/human/human_source = source
+		subjectjob = human_source.job
+
 	return ..()
 
 /datum/material/meat/species_meat

@@ -90,5 +90,5 @@
 
 /obj/item/autosurgeon/bodypart/r_arm_robotic/Initialize(mapload)
 	. = ..()
-	storedbodypart.icon = 'modular_skyrat/modules/customization/icons/mob/augmentation/hi2ipc.dmi'
+	storedbodypart.icon = 'modular_skyrat/master_files/icons/mob/augmentation/hi2ipc.dmi'
 	storedbodypart.organic_render = FALSE

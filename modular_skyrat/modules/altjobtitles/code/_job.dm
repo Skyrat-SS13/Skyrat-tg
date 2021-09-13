@@ -40,7 +40,7 @@
 	alt_titles = list("Executive Officer", "Employment Officer", "Crew Supervisor")
 
 /datum/job/head_of_security
-	alt_titles = list("Security Commander", "Chief Constable", "Chief of Security", "Sherriff")
+	alt_titles = list("Security Commander", "Chief Constable", "Chief of Security", "Sheriff")
 
 /datum/job/chief_engineer
 	alt_titles = list("Engineering Foreman")
@@ -76,7 +76,7 @@
 
 //Science
 /datum/job/scientist
-	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher", "Anomalist", "Lab Technician")
+	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Plasma Researcher", "Anomalist", "Lab Technician", "Xenoarchaeologist")
 
 /datum/job/roboticist
 	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer")

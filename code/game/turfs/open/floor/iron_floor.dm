@@ -11,13 +11,15 @@
 
 /turf/open/floor/iron/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>"
+	. += span_notice("There's a <b>small crack</b> on the edge of it.")
 
 
 /turf/open/floor/iron/rust_heretic_act()
 	if(prob(70))
 		new /obj/effect/temp_visual/glowing_rune(src)
-	ChangeTurf(/turf/open/floor/plating/rust)
+	var/atom/changed_turf = ChangeTurf(/turf/open/floor/plating)
+	changed_turf.AddComponent(/datum/component/rust)
+	return ..()
 
 
 /turf/open/floor/iron/update_icon_state()
@@ -36,6 +38,26 @@
 /turf/open/floor/iron/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 
+/turf/open/floor/iron/edge
+	icon_state = "floor_edge"
+	base_icon_state = "floor_edge"
+	floor_tile = /obj/item/stack/tile/iron/edge
+
+/turf/open/floor/iron/half
+	icon_state = "floor_half"
+	base_icon_state = "floor_half"
+	floor_tile = /obj/item/stack/tile/iron/half
+
+/turf/open/floor/iron/corner
+	icon_state = "floor_corner"
+	base_icon_state = "floor_corner"
+	floor_tile = /obj/item/stack/tile/iron/corner
+
+/turf/open/floor/iron/large
+	icon_state = "floor_large"
+	base_icon_state = "floor_large"
+	floor_tile = /obj/item/stack/tile/iron/large
+
 /turf/open/floor/iron/textured
 	icon_state = "textured"
 	base_icon_state = "textured"
@@ -51,6 +73,11 @@
 	base_icon_state = "textured_half"
 	floor_tile = /obj/item/stack/tile/iron/textured_half
 
+/turf/open/floor/iron/textured_corner
+	icon_state = "textured_corner"
+	base_icon_state = "textured_corner"
+	floor_tile = /obj/item/stack/tile/iron/textured_corner
+
 /turf/open/floor/iron/textured_large
 	icon_state = "textured_large"
 	base_icon_state = "textured_large"
@@ -60,6 +87,26 @@
 	icon_state = "darkfull"
 	base_icon_state = "darkfull"
 	floor_tile = /obj/item/stack/tile/iron/dark
+
+/turf/open/floor/iron/dark/smooth_edge
+	icon_state = "dark_edge"
+	base_icon_state = "dark_edge"
+	floor_tile = /obj/item/stack/tile/iron/dark/smooth_edge
+
+/turf/open/floor/iron/dark/smooth_half
+	icon_state = "dark_half"
+	base_icon_state = "dark_half"
+	floor_tile = /obj/item/stack/tile/iron/dark/smooth_half
+
+/turf/open/floor/iron/dark/smooth_corner
+	icon_state = "dark_corner"
+	base_icon_state = "dark_corner"
+	floor_tile = /obj/item/stack/tile/iron/dark/smooth_corner
+
+/turf/open/floor/iron/dark/smooth_large
+	icon_state = "dark_large"
+	base_icon_state = "dark_large"
+	floor_tile = /obj/item/stack/tile/iron/dark/smooth_large
 
 /turf/open/floor/iron/dark/side
 	icon_state = "dark"
@@ -91,6 +138,11 @@
 	base_icon_state = "textured_dark_half"
 	floor_tile = /obj/item/stack/tile/iron/dark/textured_half
 
+/turf/open/floor/iron/dark/textured_corner
+	icon_state = "textured_dark_corner"
+	base_icon_state = "textured_dark_corner"
+	floor_tile = /obj/item/stack/tile/iron/dark/textured_corner
+
 /turf/open/floor/iron/dark/textured_large
 	icon_state = "textured_dark_large"
 	base_icon_state = "textured_dark_large"
@@ -115,6 +167,26 @@
 	icon_state = "white"
 	base_icon_state = "white"
 	floor_tile = /obj/item/stack/tile/iron/white
+
+/turf/open/floor/iron/white/smooth_edge
+	icon_state = "white_edge"
+	base_icon_state = "white_edge"
+	floor_tile = /obj/item/stack/tile/iron/white/smooth_edge
+
+/turf/open/floor/iron/white/smooth_half
+	icon_state = "white_half"
+	base_icon_state = "white_half"
+	floor_tile = /obj/item/stack/tile/iron/white/smooth_half
+
+/turf/open/floor/iron/white/smooth_corner
+	icon_state = "white_corner"
+	base_icon_state = "white_corner"
+	floor_tile = /obj/item/stack/tile/iron/white/smooth_corner
+
+/turf/open/floor/iron/white/smooth_large
+	icon_state = "white_large"
+	base_icon_state = "white_large"
+	floor_tile = /obj/item/stack/tile/iron/white/smooth_large
 
 /turf/open/floor/iron/white/side
 	icon_state = "whitehall"
@@ -145,6 +217,11 @@
 	icon_state = "textured_white_half"
 	base_icon_state = "textured_white_half"
 	floor_tile = /obj/item/stack/tile/iron/white/textured_half
+
+/turf/open/floor/iron/white/textured_corner
+	icon_state = "textured_white_corner"
+	base_icon_state = "textured_white_corner"
+	floor_tile = /obj/item/stack/tile/iron/white/textured_corner
 
 /turf/open/floor/iron/white/textured_large
 	icon_state = "textured_white_large"
@@ -189,6 +266,11 @@
 	icon_state = "smooth_half"
 	base_icon_state = "smooth_half"
 	floor_tile = /obj/item/stack/tile/iron/smooth_half
+
+/turf/open/floor/iron/smooth_corner
+	icon_state = "smooth_corner"
+	base_icon_state = "smooth_corner"
+	floor_tile = /obj/item/stack/tile/iron/smooth_corner
 
 /turf/open/floor/iron/smooth_large
 	icon_state = "smooth_large"
@@ -288,11 +370,3 @@
 	base_icon_state = "sepia"
 	desc = "Well, the flow of time is normal on these tiles, weird."
 	floor_tile = /obj/item/stack/tile/iron/sepia
-
-/turf/open/floor/iron/yellowsiding
-	icon_state = "yellowsiding"
-	base_icon_state = "yellowsiding"
-
-/turf/open/floor/iron/yellowsiding/corner
-	icon_state = "yellowcornersiding"
-	base_icon_state = "yellowcornersiding"

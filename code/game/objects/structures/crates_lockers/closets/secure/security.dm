@@ -18,8 +18,8 @@
 	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
 	new /obj/item/clothing/head/caphat(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
+	new /obj/item/clothing/suit/toggle/captains_parade(src)
 	new /obj/item/clothing/suit/armor/captain/parade/female(src) //SKYRAT EDIT ADD
-	new /obj/item/clothing/suit/armor/vest/capcarapace/alt(src)
 	new /obj/item/clothing/head/caphat/parade(src)
 	new /obj/item/clothing/suit/captunic(src)
 	new /obj/item/clothing/head/crown/fancy(src)
@@ -46,6 +46,10 @@
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel(src)
 	new /obj/item/clothing/under/rank/civilian/head_of_personnel/skirt(src)
 	new /obj/item/clothing/head/hopcap(src)
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade(src) //SKYRAT EDIT ADDITION START - HOP PARADE UNIFORMS
+	new /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female(src)
+	new /obj/item/clothing/suit/armor/hop_parade(src)
+	new /obj/item/clothing/suit/armor/hop_parade/female(src)	//SKYRAT EDIT ADDITION END
 	new /obj/item/cartridge/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
@@ -74,6 +78,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/hos(src)
+	new /obj/item/clothing/suit/toggle/armor/hos/hos_formal(src)
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/clothing/suit/armor/hos/parade/female(src) // SKYRAT EDIT CHANGE - ORIGINAL: new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
@@ -103,6 +108,7 @@
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
 	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
+	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
@@ -202,6 +208,7 @@
 	new /obj/item/pinpointer/crew(src)
 	new /obj/item/binoculars(src)
 	new /obj/item/storage/box/rxglasses/spyglasskit(src)
+	new /obj/item/taperoll/police(src) //SKYRAT EDIT ADDITION - Detective starts with this in their locker :)
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"

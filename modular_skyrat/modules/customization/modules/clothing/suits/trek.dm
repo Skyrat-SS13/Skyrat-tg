@@ -2,8 +2,8 @@
 /obj/item/clothing/suit/storage/fluff/fedcoat
 	name = "Federation Uniform Jacket"
 	desc = "A uniform jacket from the United Federation. Set phasers to awesome."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/trek.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/trek.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	mutant_variants = NONE
 	icon_state = "fedcoat"
 	inhand_icon_state = "fedcoat"
@@ -66,8 +66,8 @@
 /obj/item/clothing/suit/storage/fluff/mfedcoat
 	name = "Modern Federation Uniform Jacket"
 	desc = "A modern uniform jacket from the United Federation."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits/trek.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suits/trek.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	mutant_variants = NONE
 	icon_state = "fedmodern"
 	inhand_icon_state = "fedmodern"

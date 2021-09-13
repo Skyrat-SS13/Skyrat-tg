@@ -1,8 +1,8 @@
 //More trek clothing
 /obj/item/clothing/under/trek/modular_skyrat
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/trek.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/trek.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/trek_digi.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 
 //VOY
 /obj/item/clothing/under/trek/modular_skyrat/command/voy

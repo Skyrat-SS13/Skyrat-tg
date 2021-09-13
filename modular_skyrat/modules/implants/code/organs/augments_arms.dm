@@ -24,17 +24,14 @@
 /obj/item/organ/cyberimp/arm/armblade
 	name = "arm blade implant"
 	desc = "An integrated blade implant designed to be installed into a persons arm. Stylish and deadly; Although, being caught with this without proper permits is sure to draw unwanted attention."
-	contents = newlist(/obj/item/melee/implantarmblade)
+	items_to_create = list(/obj/item/melee/implantarmblade)
 	icon = 'modular_skyrat/modules/implants/icons/item/implanted_blade.dmi'
 	icon_state = "mantis_blade"
 
 /obj/item/organ/cyberimp/arm/armblade/emag_act()
-	. = ..()
-	if(obj_flags & EMAGGED)
-		return
-	obj_flags |= EMAGGED
+	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated energy arm blade! You madman!</span>")
-	items_list += new /obj/item/melee/implantarmblade/energy(src)
+	items_list += WEAKREF(new /obj/item/melee/implantarmblade/energy(src))
 	return TRUE
 
 /obj/item/organ/cyberimp/arm/hacker
@@ -42,12 +39,12 @@
 	desc = "An small arm implant containing an advanced screwdriver, wirecutters, and multitool designed for engineers and on-the-field machine modification. Actually legal, despite what the name may make you think."
 	icon ='icons/obj/items_cyborg.dmi'
 	icon_state = "multitool_cyborg"
-	contents = newlist(/obj/item/screwdriver/cyborg, /obj/item/wirecutters/cyborg, /obj/item/multitool/abductor/implant)
+	items_to_create = list(/obj/item/screwdriver/cyborg, /obj/item/wirecutters/cyborg, /obj/item/multitool/abductor/implant)
 
 /obj/item/organ/cyberimp/arm/botany
 	name = "botany arm implant"
 	desc = "A rather simple arm implant containing tools used in gardening and botanical research."
-	contents = newlist(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/reagent_containers/glass/beaker/plastic, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
+	items_to_create = list(/obj/item/cultivator, /obj/item/shovel/spade, /obj/item/hatchet, /obj/item/gun/energy/floragun, /obj/item/plant_analyzer, /obj/item/reagent_containers/glass/beaker/plastic, /obj/item/storage/bag/plants, /obj/item/storage/bag/plants/portaseeder)
 
 /obj/item/multitool/abductor/implant
 	name = "multitool"
@@ -58,28 +55,22 @@
 /obj/item/organ/cyberimp/arm/janitor
 	name = "janitorial tools implant"
 	desc = "A set of janitorial tools on the user's arm."
-	contents = newlist(/obj/item/lightreplacer, /obj/item/holosign_creator, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg_drying, /obj/item/mop/advanced, /obj/item/paint/paint_remover, /obj/item/reagent_containers/glass/beaker/large, /obj/item/reagent_containers/spray/cleaner) //Beaker if for refilling sprays
+	items_to_create = list(/obj/item/lightreplacer, /obj/item/holosign_creator, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg_drying, /obj/item/mop/advanced, /obj/item/paint/paint_remover, /obj/item/reagent_containers/glass/beaker/large, /obj/item/reagent_containers/spray/cleaner) //Beaker if for refilling sprays
 
 /obj/item/organ/cyberimp/arm/janitor/emag_act()
-	. = ..()
-	if(obj_flags & EMAGGED)
-		return
-	obj_flags |= EMAGGED
+	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated deluxe cleaning supplies!</span>")
-	items_list += new /obj/item/soap/syndie(src) //We add not replace.
-	items_list += new /obj/item/reagent_containers/spray/cyborg_lube(src)
+	items_list += WEAKREF(new /obj/item/soap/syndie(src)) //We add not replace.
+	items_list += WEAKREF(new /obj/item/reagent_containers/spray/cyborg_lube(src))
 	return TRUE
 
 /obj/item/organ/cyberimp/arm/lighter
 	name = "lighter implant"
 	desc = "A... implanted lighter. Incredibly useless."
-	contents = newlist(/obj/item/lighter/greyscale) //Hilariously useless.
+	items_to_create = list(/obj/item/lighter/greyscale) //Hilariously useless.
 
 /obj/item/organ/cyberimp/arm/lighter/emag_act()
-	. = ..()
-	if(obj_flags & EMAGGED)
-		return
-	obj_flags |= EMAGGED
+	for(var/datum/weakref/created_item in items_list)
 	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated Zippo lighter! Finally, classy smoking!</span>")
-	items_list += new /obj/item/lighter(src) //Now you can choose between bad and worse!
+	items_list += WEAKREF(new /obj/item/lighter(src)) //Now you can choose between bad and worse!
 	return TRUE

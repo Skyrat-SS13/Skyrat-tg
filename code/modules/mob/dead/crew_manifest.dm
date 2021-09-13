@@ -19,6 +19,7 @@
 
 /datum/crew_manifest/ui_data(mob/user)
 	var/list/positions = list(
+		"Central Command" = list("exceptions" = list(), "open" = 0), //SKYRAT EDIT ADDITION
 		"Command" = list("exceptions" = list(), "open" = 0),
 		"Security" = list("exceptions" = list(), "open" = 0),
 		"Engineering" = list("exceptions" = list(), "open" = 0),
@@ -30,6 +31,7 @@
 		"Silicon" = list("exceptions" = list(), "open" = 0)
 	)
 	var/list/departments = list(
+		list("flag" = DEPARTMENT_CENTRAL_COMMAND, "name" = "Central Command"), //SKYRAT EDIT CHANGE
 		list("flag" = DEPARTMENT_COMMAND, "name" = "Command"),
 		list("flag" = DEPARTMENT_SECURITY, "name" = "Security"),
 		list("flag" = DEPARTMENT_ENGINEERING, "name" = "Engineering"),
@@ -40,7 +42,7 @@
 		list("flag" = DEPARTMENT_SILICON, "name" = "Silicon")
 	)
 
-	for(var/job in SSjob.occupations)
+	for(var/job in SSjob.joinable_occupations)
 		// Check if there are additional open positions or if there is no limit
 		if ((job["total_positions"] > 0 && job["total_positions"] > job["current_positions"]) || (job["total_positions"] == -1))
 			for(var/department in departments)

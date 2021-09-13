@@ -1,5 +1,5 @@
 /datum/language/russian
-	name = "Russian"
+	name = "Neo-Russkya"
 	desc = "The official language of the Independent Colonial Confederation of Gilgamesh, originally established in 2122 by the short-lived United Slavic Confederation on Earth."
 	key = "r"
 	flags = TONGUELESS_SPEECH
@@ -10,5 +10,5 @@
 		"ver", "stv", "pro"
 	)
 	icon_state = "russian"
-	icon = 'modular_skyrat/modules/customization/icons/misc/language.dmi'
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 95

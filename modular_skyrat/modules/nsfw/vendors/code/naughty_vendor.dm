@@ -23,6 +23,8 @@
 		/obj/item/clothing/under/misc/poly_tanktop/female = 4,
 		/obj/item/clothing/mask/muzzle/ring = 4,
 		/obj/item/clothing/mask/muzzle/ball = 4,
+		/obj/item/clothing/shoes/jackboots/thigh = 3, //bdsm lookin ass....
+		/obj/item/clothing/shoes/jackboots/knee = 3,
 		/obj/item/clothing/neck/human_petcollar = 8,
 		/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 3,
 		/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 5,

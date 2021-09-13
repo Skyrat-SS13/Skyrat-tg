@@ -36,4 +36,6 @@
 		ANNOUNCER_BRANDINTELLIGENCE = 'modular_skyrat/modules/alerts/sound/ai/default/rampant_brand_int.ogg',
 		ANNOUNCER_SPOOKY = 'modular_skyrat/modules/alerts/sound/ai/default/admin_horror_music.ogg',
 		ANNOUNCER_ERTYES = 'modular_skyrat/modules/alerts/sound/ai/default/yesert.ogg',
-		ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/ai/default/hazdet.ogg')
+		ANNOUNCER_MUTANTS = 'modular_skyrat/modules/alerts/sound/ai/default/hazdet.ogg',
+		ANNOUNCER_KLAXON = 'modular_skyrat/master_files/sound/blackmesa/siren1_long.ogg'
+		)

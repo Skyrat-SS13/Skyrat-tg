@@ -90,12 +90,23 @@
 	crate_name = "compact defibrillator crate"
 
 /datum/supply_pack/medical/medigun
-	name = "Experimental Medical Beam Crate"
-	desc = "Contains a single experimental NT-tech Medical Beam Gun, a highly experimental device capable of sending temporary healing nanites across a short distance."
-	cost = CARGO_CRATE_VALUE * 75
-	access = ACCESS_CMO
-	contains = list(/obj/item/gun/medbeam)
-	crate_name = "medical beam gun crate"
+	name = "CWM-479 Medigun Starter Kit"
+	desc = "Contains a single VeyMedical CWM-479 model medical gun with basic cells"
+	cost = CARGO_CRATE_VALUE * 15
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/storage/briefcase/medicalgunset/standard)
+	crate_name = "CWM-479 Medigun Crate"
+
+/datum/supply_pack/medical/medicells
+	name = "Medicell Replacement Crate"
+	desc = "Contains a single replacement cell for each of the basic Medigun cells."
+	cost = CARGO_CRATE_VALUE * 5
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/medicell/brute1,
+					/obj/item/medicell/burn1,
+					/obj/item/medicell/toxin1,
+					/obj/item/medicell)
+	crate_name = "Medicell Replacemnt Crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Security ////////////////////////////////////////
@@ -132,7 +143,31 @@
 					/obj/item/ammo_box/magazine/multi_sprite/croon)
 	crate_name = "unmarked weapons crate"
 	dangerous = TRUE
-	
+
+/datum/supply_pack/security/wildcat
+	name = "CFA Wildcat Supply Crate"
+	desc = "Local police running low on equipment? Neighbor particularly loud in the early morning? This should help out. (Does not include weapons permits.)"
+	cost = CARGO_CRATE_VALUE * 55 // Bit cheaper then the next up, because it's not to good.
+	contains = list(/obj/item/gun/ballistic/automatic/cfa_wildcat,
+					/obj/item/gun/ballistic/automatic/cfa_wildcat,
+					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
+					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
+					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
+					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
+	crate_name = "CFA sponsored weapons crate"
+	dangerous = TRUE
+
+/datum/supply_pack/security/lasergun // not to be confused with the normal laser gun crate
+	name = "Lasergun Supply Crate"
+	desc = "Really annoying guy hiding behind a window? Janitors refusing to clean up your bullet casings after the sixth 'self defense case' this week? This should help out, and leaves no evidence. (Comes with it's own recharger!)"
+	cost = CARGO_CRATE_VALUE * 75 //give or take 15,000 just to make it harder for a private lone officer purchase.
+	contains = list(/obj/item/gun/energy/laser,
+					/obj/item/gun/energy/laser,
+					/obj/item/gun/energy/laser,
+					/obj/machinery/recharger)
+	crate_name = "energy weapons crate"
+	dangerous = TRUE
+
 /datum/supply_pack/costumes_toys/randomised/improvised
 	name = "Improvised Weapons Crate"
 	desc = "Really hit rock bottom? Well, we've got a few things laying around from a sting-op on pirates we could lend you. (We'll expect these back.)" //they don't, actually.
