@@ -38,13 +38,9 @@
 /obj/item/clothing/suit/toggle/labcoat/cmo/Initialize()
 	. = ..()
 	allowed += list(
-<<<<<<< HEAD
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/gun/energy/medigun, //SKYRAT EDIT MEDIGUNS
 		/obj/item/storage/firstaid //SKYRAT EDIT - ADDITION
-=======
-		/obj/item/melee/baton/telescopic,
->>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic

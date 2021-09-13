@@ -424,11 +424,7 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
-<<<<<<< HEAD
-		/obj/item/melee/classic_baton/peacekeeper, //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/melee/baton/loaded
-=======
 		/obj/item/melee/baton/security/loaded,
->>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/extinguisher/mini)
@@ -533,7 +529,7 @@
 	name = "Syndicate Assault"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		/obj/item/melee/transforming/energy/sword/cyborg,
+		/obj/item/melee/energy/swordd/cyborg,
 		/obj/item/gun/energy/printer,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/cyborg,
 		/obj/item/card/emag,
@@ -570,7 +566,7 @@
 		/obj/item/cautery,
 		/obj/item/surgicaldrill,
 		/obj/item/scalpel,
-		/obj/item/melee/transforming/energy/sword/cyborg/saw,
+		/obj/item/melee/energy/swordd/cyborg/saw,
 		/obj/item/roller/robo,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher/mini,
