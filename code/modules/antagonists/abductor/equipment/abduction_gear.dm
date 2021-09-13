@@ -444,17 +444,6 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	wound_bonus = FALSE
 
 	actions_types = list(/datum/action/item_action/toggle_mode)
-<<<<<<< HEAD
-	convertible = FALSE
-
-	attack_cooldown = 0 SECONDS
-	confusion_amt = 0
-	stamina_loss_amt = 0
-	apply_stun_delay = 0 SECONDS
-	stun_time = 14 SECONDS
-	stamina_loss_amt = 50 //SKYRAT EDIT ADDITION
-=======
->>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 
 	cooldown = 0 SECONDS
 	stamina_damage = 0
@@ -546,13 +535,8 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	toggle(user)
 
 /obj/item/melee/baton/abductor/proc/SleepAttack(mob/living/L,mob/living/user)
-<<<<<<< HEAD
-	playsound(src, stun_sound, 50, TRUE, -1)
-	if(L.incapacitated(TRUE, TRUE) || (L.staminaloss > STAMINA_THRESHOLD_WEAK)) //SKYRAT EDIT CHANGE - ORIGINAL: if(L.incapacitated(TRUE, TRUE))
-=======
 	playsound(src, on_stun_sound, 50, TRUE, -1)
 	if(L.incapacitated(TRUE, TRUE))
->>>>>>> 20468c3f15e (Baton refactor. item/melee/baton is now a subtype of item/melee/baton (formerly classic_baton) (#61207))
 		if(L.anti_magic_check(FALSE, FALSE, TRUE))
 			to_chat(user, span_warning("The specimen's tinfoil protection is interfering with the sleep inducement!"))
 			L.visible_message(span_danger("[user] tried to induced sleep in [L] with [src], but [L.p_their()] tinfoil protection [L.p_them()]!"), \

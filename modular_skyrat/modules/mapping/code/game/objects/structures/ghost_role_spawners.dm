@@ -131,7 +131,7 @@
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
-		/obj/item/melee/baton/loaded
+		/obj/item/melee/baton/security/loaded
 	)
 
 /datum/outfit/ds2/syndicate/brigoff
@@ -146,7 +146,7 @@
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
-		/obj/item/melee/baton/loaded
+		/obj/item/melee/baton/security/loaded
 	)
 
 /datum/outfit/ds2/syndicate/admiral
