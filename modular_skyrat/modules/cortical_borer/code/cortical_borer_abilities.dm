@@ -60,42 +60,42 @@
 	if(cortical_owner.host_sugar())
 		to_chat(owner, span_warning("Sugar inhibits your abilities to function!"))
 		return
-	if(cortical_owner.body_focus)
-		to_chat(owner, span_warning("You already have a focus, you cannot get a new focus!"))
-		return
 	if(cortical_owner.stat_evolution < 5)
 		to_chat(owner, span_warning("You do not have 5 upgrade points for a focus!"))
 		return
 	cortical_owner.stat_evolution -= 5
-	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", list(FOCUS_HEAD, FOCUS_CHEST, FOCUS_ARMS, FOCUS_LEGS))
+	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", list("Head focus", "Chest focus", "Arm focus", "Leg focus"))
 	if(!focus_choice)
 		to_chat(owner, span_warning("You did not choose a focus"))
 		cortical_owner.stat_evolution += 5
 		return
-	cortical_owner.body_focus = focus_choice
-	switch(cortical_owner.body_focus)
-		if(FOCUS_HEAD)
-			to_chat(cortical_owner.human_host, span_notice("Your eyes begin to feel strange..."))
-			var/obj/item/organ/eyes/my_eyes = cortical_owner.human_host.getorgan(/obj/item/organ/eyes)
-			if(my_eyes)
-				my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-				my_eyes.see_in_dark = 8
-				my_eyes.flash_protect = FLASH_PROTECTION_WELDER
-			cortical_owner.human_host.add_client_colour(/datum/client_colour/glass_colour/lightgreen)
-		if(FOCUS_CHEST)
-			to_chat(cortical_owner.human_host, span_notice("Your chest begins to slow down..."))
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_NOBREATH, src)
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_NOHUNGER, src)
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_STABLEHEART, src)
-			ADD_TRAIT(cortical_owner.human_host, TRAIT_HARDLY_WOUNDED, src)
-		if(FOCUS_ARMS)
-			to_chat(cortical_owner.human_host, span_notice("Your arm starts to feel funny..."))
-			var/datum/action/cooldown/borer_armblade/give_owner = new /datum/action/cooldown/borer_armblade
-			give_owner.Grant(cortical_owner.human_host)
-		if(FOCUS_LEGS)
-			to_chat(cortical_owner.human_host, span_notice("You feel faster..."))
-			cortical_owner.human_host.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-			cortical_owner.human_host.add_quirk(/datum/quirk/light_step)
+	switch(focus_choice)
+		if("Head focus")
+			if(cortical_owner.body_focus & FOCUS_HEAD)
+				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
+				return
+			cortical_owner.body_focus |= FOCUS_HEAD
+		if("Chest focus")
+			if(cortical_owner.body_focus & FOCUS_CHEST)
+				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
+				return
+			cortical_owner.body_focus |= FOCUS_CHEST
+		if("Arm focus")
+			if(cortical_owner.body_focus & FOCUS_ARMS)
+				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
+				return
+			cortical_owner.body_focus |= FOCUS_ARMS
+		if("Leg focus")
+			if(cortical_owner.body_focus & FOCUS_LEGS)
+				to_chat(cortical_owner, span_warning("You already have this focus!"))
+				cortical_owner.stat_evolution += 5
+				return
+			cortical_owner.body_focus |= FOCUS_LEGS
+	borer_focus_remove(cortical_owner.human_host)
+	borer_focus_add(cortical_owner.human_host)
 
 /datum/action/cooldown/learn_bloodchemical
 	name = "Learn Chemical from Blood (5 stat points)"
@@ -343,7 +343,9 @@
 		to_chat(cortical_owner, span_notice("You forcefully detach from the host."))
 		to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
 		var/obj/item/organ/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs
-		borer_organ.Remove(cortical_owner.human_host)
+		if(borer_organ)
+			borer_organ.Remove(cortical_owner.human_host)
+		cortical_owner.human_host = null
 		var/turf/human_turfone = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] left [key_name(cortical_owner.human_host)] at [loc_name(human_turfone)]"
 		cortical_owner.log_message(logging_text, LOG_GAME)

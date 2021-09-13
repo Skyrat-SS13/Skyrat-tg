@@ -67,7 +67,7 @@
 				closets += WEAKREF(C)
 
 	if(!length(doors) && !length(flashers) && length(closets))
-		obj_break()
+		atom_break()
 	update_appearance()
 
 
