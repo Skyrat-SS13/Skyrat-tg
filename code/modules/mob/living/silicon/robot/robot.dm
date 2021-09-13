@@ -648,6 +648,7 @@
 		hasShrunk = FALSE
 		resize = (4/3)
 		update_transform()
+	hasAffection = FALSE //Just so they can get the affection modules back if they want them.
 	//SKYRAT EDIT ADDITION END
 	logevent("Chassis model has been reset.")
 	model.transform_to(/obj/item/robot_model)
