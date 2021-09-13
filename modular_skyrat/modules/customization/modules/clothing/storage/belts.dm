@@ -78,6 +78,7 @@
 	STR.allow_big_nesting = TRUE //Same as above, lets the pouch work
 	STR.set_holdable(list(
 		/obj/item/storage/belt/storage_pouch,
+		/obj/item/forging/reagent_weapon/sword,
 		/obj/item/melee/sabre,
 		/obj/item/melee/cleric_mace,
 		/obj/item/kitchen/knife,
