@@ -47,6 +47,7 @@ SUBSYSTEM_DEF(persistence)
 	CollectMaps()
 	SavePhotoPersistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
 	SaveRandomizedRecipes()
+	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
 	SavePaintings()
 	SaveScars()
 	save_custom_outfits()
@@ -257,20 +258,6 @@ SUBSYSTEM_DEF(persistence)
 		T.placer_key = chosen_trophy["placer_key"]
 		T.update_appearance()
 
-<<<<<<< HEAD
-/datum/controller/subsystem/persistence/proc/CollectData()
-	CollectChiselMessages()
-	CollectTrophies()
-	CollectMaps()
-	SavePhotoPersistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
-	SaveRandomizedRecipes()
-	SavePaintings()
-	SaveScars()
-	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
-	save_custom_outfits()
-
-=======
->>>>>>> 4d7f2952e40 ([READY] Adds memory system, and engraving walls with chisels (#60302))
 /datum/controller/subsystem/persistence/proc/GetPhotoAlbums()
 	var/album_path = file("data/photo_albums.json")
 	if(fexists(album_path))

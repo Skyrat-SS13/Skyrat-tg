@@ -85,7 +85,7 @@
 	if(!cellular_emporium) // SKYRAT EDIT START- PREVENTS DUPLICATION ON AMBITION SUBMIT
 		cellular_emporium = new(src)
 	if(!emporium_action)
-		emporium_action = new(cellular_emporium) // SKYRAT EDIT END 
+		emporium_action = new(cellular_emporium) // SKYRAT EDIT END
 	emporium_action.Grant(owner.current)
 
 /datum/antagonist/changeling/on_gain()
@@ -403,19 +403,6 @@
 	handle_clown_mutation(M, removing = FALSE)
 	UnregisterSignal(owner.current, list(COMSIG_MOB_MIDDLECLICKON, COMSIG_MOB_ALTCLICKON))
 
-<<<<<<< HEAD
-
-/datum/antagonist/changeling/greet()
-	if (you_are_greet)
-		to_chat(owner.current, span_boldannounce("You are a changeling! You have absorbed and taken the form of a human."))
-	to_chat(owner.current, "<b>You must complete the following tasks:</b>")
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ling_aler.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
-
-	owner.announce_objectives()
-	..() //SKYRAT EDIT ADDITION - AMBITIONS
-
-=======
->>>>>>> 4d7f2952e40 ([READY] Adds memory system, and engraving walls with chisels (#60302))
 /datum/antagonist/changeling/farewell()
 	to_chat(owner.current, span_userdanger("You grow weak and lose your powers! You are no longer a changeling and are stuck in your current form!"))
 
