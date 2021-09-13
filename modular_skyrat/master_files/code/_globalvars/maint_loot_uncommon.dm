@@ -266,7 +266,6 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/hot_potato/harmless = 25,
 		/obj/item/implanter/sad_trombone = 25,
 		/obj/item/reagent_containers/food/drinks/waterbottle = 25,
-		/obj/item/soapstone/empty = 25,
 		/obj/item/stamp = 5,
 		/obj/item/storage/backpack = 100,
 		/obj/item/storage/belt = 100,
