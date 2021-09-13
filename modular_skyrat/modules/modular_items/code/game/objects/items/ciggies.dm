@@ -28,17 +28,17 @@
     desc = "Light or extinguish the holocigarette"
 
 /datum/action/item_action/toggle_lit/Trigger()
-	var/obj/item/clothing/mask/holocigarette/H = target
-	var/mob/living/carbon/C = owner
-	if(H.lit == FALSE)
-		H.icon_state = H.icon_on
-		H.inhand_icon_state = H.icon_on
-		H.lit = TRUE
-		H.name = "lit [H.name]"
+	var/obj/item/clothing/mask/holocigarette/smoked = target
+	var/mob/living/carbon/smoker = owner
+	if(smoked.lit == FALSE)
+		smoked.icon_state = smoked.icon_on
+		smoked.inhand_icon_state = smoked.icon_on
+		smoked.lit = TRUE
+		smoked.name = "lit [smoked.name]"
 	else
-		H.icon_state = H.icon_off
-		H.inhand_icon_state = H.icon_off
-		H.lit = FALSE
-		H.name = copytext_char(H.name, 5) //5 == length_char("lit ") + 1
+		smoked.icon_state = smoked.icon_off
+		smoked.inhand_icon_state = smoked.icon_off
+		smoked.lit = FALSE
+		smoked.name = copytext_char(smoked.name, 5) //5 == length_char("lit ") + 1
 	H.update_icon()
-	C.update_inv_wear_mask()
+	smoker.update_inv_wear_mask()
