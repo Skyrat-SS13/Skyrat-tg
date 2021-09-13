@@ -176,7 +176,7 @@
     random = TRUE
     mob_species = /datum/species/human
     short_desc = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for a small mom-and-pop business. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
+    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for the ship's Chief. Your job was merely being a deckhand doing freight work and helping with kitchen prep."
     uniform = /obj/item/clothing/under/rank/cargo/casualman
     shoes = /obj/item/clothing/shoes/workboots
     back = /obj/item/storage/backpack
@@ -196,7 +196,7 @@
     random = TRUE
     mob_species = /datum/species/human
     short_desc = "You were running cargo, a typical freight job until pirates attacked. You and your crewmates just barely made it, but the engines are shot. You're trapped in space now, only able to work together to survive this nightmare."
-    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew for a small mom-and-pop business. Your role was to be an excavation and salvage worker for the ship."
+    important_info = "Work with your crew and don't abandon them. You are not directly working with NT, you are an independent freighter crew working under the ship Chief. Your role was to be an excavation and salvage worker for the ship."
     uniform = /obj/item/clothing/under/utility/cargo/gorka
     shoes = /obj/item/clothing/shoes/workboots/mining
     back = /obj/item/storage/backpack
@@ -222,7 +222,7 @@
     random = TRUE
     mob_species = /datum/species/human
     short_desc = "You and your crew were running a normal freight haul until a pirate attack knocked out the engines. All you can do now is try and survive and keep your crew alive."
-    important_info = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew for a small mom-and-pop business. You are the captain of the ship, and were in charge of the crew."
+    important_info = "Do not abandon your crew, lead them and work with them to survive. You are not directly working with NT, you are an independent freighter crew. You are the captain of the ship, which you purchased a while ago, and are in charge of the crew."
     uniform = /obj/item/clothing/under/utility/cargo/turtleneck
     shoes = /obj/item/clothing/shoes/workboots
     neck = /obj/item/clothing/neck/cloak/qm
