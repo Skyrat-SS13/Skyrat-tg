@@ -8,9 +8,14 @@
 /area/centcom
 	name = "CentCom"
 	icon_state = "centcom"
+	/* SKYRAT EDIT START - Dynamic lights on CentCom
+	ORIGINAL:
 	static_lighting = FALSE
 	base_lighting_color = COLOR_WHITE
 	base_lighting_alpha = 255
+	*/
+	static_lighting = TRUE
+	// SKYRAT EDIT END
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
 	area_flags = UNIQUE_AREA | NOTELEPORT
@@ -50,6 +55,11 @@
 	name = "Supplypod Loading Facility"
 	icon_state = "supplypod_loading"
 	var/loading_id = ""
+	// SKYRAT EDIT START - Dynamic lights on CentCom
+	static_lighting = FALSE
+	base_lighting_color = COLOR_WHITE
+	base_lighting_alpha = 255
+	// SKYRAT EDIT END
 
 /area/centcom/supplypod/loading/Initialize()
 	. = ..()
@@ -109,10 +119,12 @@
 /area/tdome/tdomeadmin
 	name = "Thunderdome (Admin.)"
 	icon_state = "purple"
+	static_lighting = TRUE // SKYRAT EDIT - Dynamic Lights on CentCom
 
 /area/tdome/tdomeobserve
 	name = "Thunderdome (Observer.)"
 	icon_state = "purple"
+	static_lighting = TRUE // SKYRAT EDIT - Dynamic Lights on CentCom
 
 
 //ENEMY

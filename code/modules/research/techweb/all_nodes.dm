@@ -321,6 +321,8 @@
 		"burn2medicell",
 		"toxin2medicell",
 		"oxy2medicell",
+		"tempmedicell",
+		"clotmedicell",
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
@@ -700,8 +702,9 @@
 	prereq_ids = list("basic_circuitry", "engineering")
 	design_ids = list(
 		"bot_shell",
-		"door_shell",
 		"controller_shell",
+		"door_shell",
+		"gun_shell",
 		"money_bot_shell",
 		"scanner_gate_shell",
 		"scanner_shell",

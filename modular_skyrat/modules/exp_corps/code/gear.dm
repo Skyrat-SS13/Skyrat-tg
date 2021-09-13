@@ -33,7 +33,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	toolspeed = 0.2
 	throw_range = 3
-	w_class = WEIGHT_CLASS_SMALL 
+	w_class = WEIGHT_CLASS_SMALL
 
 //Pointman's riot shield. Fixable with 1 plasteel, crafting recipe for broken shield
 /obj/item/shield/riot/pointman
@@ -67,7 +67,7 @@
 	return ..()
 
 /obj/item/shield/riot/pointman/proc/repair(mob/user, params)
-	obj_integrity = max_integrity
+	atom_integrity = max_integrity
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		to_chat(user, span_notice("You fix the damage on [src]."))

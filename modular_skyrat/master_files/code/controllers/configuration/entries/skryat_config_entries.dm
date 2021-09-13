@@ -4,6 +4,8 @@
 /datum/config_entry/string/wikiurlskyrat
 	config_entry_value = "https://skyrat13.tk/wiki/index.php"
 
+/datum/config_entry/flag/russian_text_formation
+
 //DISCORD GAME ALERT CONFIGS
 //Role id to ping
 /datum/config_entry/string/game_alert_role_id

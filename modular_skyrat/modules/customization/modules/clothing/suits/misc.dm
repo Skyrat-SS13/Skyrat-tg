@@ -312,3 +312,21 @@
 			step_towards(S,src)
 		for(var/datum/species/robotic/R in orange(2,src))
 			step_towards(R,src)
+
+/obj/item/clothing/suit/trenchbrown
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "Brown trenchcoat"
+	desc = "A brown noir-inspired coat. Looks best if you're not wearing it over a baggy t-shirt."
+	icon_state = "brtrenchcoat"
+	mutant_variants = STYLE_VOX
+	body_parts_covered = CHEST|ARMS
+
+/obj/item/clothing/suit/trenchblack
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "Black trenchcoat"
+	desc = "A matte-black coat. Best suited for space-italians, or maybe a monochrome-cop."
+	icon_state = "bltrenchcoat"
+	mutant_variants = STYLE_VOX
+	body_parts_covered = CHEST|ARMS
