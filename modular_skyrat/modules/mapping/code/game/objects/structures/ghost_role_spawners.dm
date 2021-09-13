@@ -205,7 +205,8 @@
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
 		/obj/item/gun/energy/kinetic_accelerator=1,\
-		/obj/item/stack/marker_beacon/ten=1)
+		/obj/item/stack/marker_beacon/ten=1,\
+		/obj/item/armament_token/sidearm_blackmarket)
     r_pocket = /obj/item/storage/bag/ore
     id = /obj/item/card/id/away/freightmine
     can_use_alias = TRUE
