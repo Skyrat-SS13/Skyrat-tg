@@ -98,10 +98,9 @@ SUBSYSTEM_DEF(traumas)
 			/obj/item/gun/magic/staff/honk, /obj/item/clothing/suit/chaplainsuit/clownpriest, /obj/item/clothing/head/clownmitre,
 			/obj/item/clothing/under/plasmaman/clown
 		)),
-		"greytide" = typecacheof(list(
-			/obj/item/clothing/under/color/grey, /obj/item/melee/baton/cattleprod,
-			/obj/item/spear, /obj/item/clothing/mask/gas, /obj/item/toy/figure/assistant,
-			/obj/structure/statue/sandstone/assistant
+
+		"greytide" = typecacheof(list(/obj/item/clothing/under/color/grey, /obj/item/melee/baton/security/cattleprod,
+			/obj/item/spear, /obj/item/clothing/mask/gas,
 		)),
 		"lizards" = typecacheof(list(
 			/obj/item/toy/plush/lizard_plushie, /obj/item/food/kebab/tail, /obj/item/organ/tail/lizard,
@@ -152,7 +151,7 @@ SUBSYSTEM_DEF(traumas)
 			/obj/item/clothing/under/rank/security/head_of_security, /obj/item/clothing/under/rank/rnd/research_director,
 			/obj/item/clothing/under/rank/medical/chief_medical_officer, /obj/item/clothing/under/rank/engineering/chief_engineer,
 			/obj/item/clothing/under/rank/centcom/officer, /obj/item/clothing/under/rank/centcom/commander,
-			/obj/item/melee/classic_baton/telescopic, /obj/item/card/id/advanced/silver, /obj/item/card/id/advanced/gold,
+			/obj/item/melee/baton/telescopic, /obj/item/card/id/advanced/silver, /obj/item/card/id/advanced/gold,
 			/obj/item/card/id/advanced/centcom, /obj/machinery/door/airlock/command, /obj/item/card/id/advanced/black,
 			/obj/item/toy/figure/captain, /obj/item/toy/figure/ce,
 			/obj/item/toy/figure/dsquad, /obj/item/toy/figure/hop, /obj/item/toy/figure/hos, /obj/item/toy/figure/rd,
