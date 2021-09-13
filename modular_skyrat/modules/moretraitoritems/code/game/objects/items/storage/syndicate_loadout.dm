@@ -161,7 +161,7 @@
 	new /obj/item/dnainjector/geladikinesis(src)
 	new /obj/item/dnainjector/cryokinesis(src)
 	new /obj/item/gun/energy/temperature/security(src)
-	new /obj/item/melee/transforming/energy/sword/saber/blue(src)
+	new /obj/item/melee/energy/sword(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/doctordeath/PopulateContents()
 	new /obj/item/storage/box/syndie_kit/chemical(src)
@@ -240,7 +240,7 @@
 	new /obj/item/clothing/gloves/combat(src)
 
 /obj/item/storage/box/syndie_kit/loadout/lasermanbundle/PopulateContents()
-	new /obj/item/melee/transforming/energy/sword/saber(src)
+	new /obj/item/melee/energy/sword/saber(src)
 	new /obj/item/book/granter/martial/carp(src)
 	new /obj/item/clothing/under/syndicate/combat(src)
 	new /obj/item/clothing/shoes/combat/swat(src)

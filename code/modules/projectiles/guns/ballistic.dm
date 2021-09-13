@@ -278,7 +278,6 @@
 		if (bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
 			chamber_round(TRUE)
 		update_appearance()
-		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 		return TRUE
 	else
 		to_chat(user, span_warning("You cannot seem to get [src] out of your hands!"))
@@ -307,7 +306,8 @@
 	if (display_message)
 		to_chat(user, span_notice("You pull the [magazine_wording] out of [src]."))
 	update_appearance()
-	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD) //SKYRAT EDIT ADDITION
 
 /obj/item/gun/ballistic/can_shoot()
 	return chambered
@@ -417,6 +417,7 @@
 			bolt_locked = TRUE
 			playsound(src, bolt_drop_sound, bolt_drop_sound_volume)
 			update_appearance()
+	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 ///postfire empty checks for bolt locking and sound alarms
 /obj/item/gun/ballistic/proc/postfire_empty_checks(last_shot_succeeded)
@@ -550,7 +551,7 @@
 
 GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	/obj/item/gun/energy/plasmacutter,
-	/obj/item/melee/transforming/energy,
+	/obj/item/melee/energy,
 	/obj/item/dualsaber
 	)))
 
@@ -670,7 +671,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 /obj/item/suppressor
 	name = "suppressor"
 	desc = "A syndicate small-arms suppressor for maximum espionage."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
+	icon = 'icons/obj/guns/ballistic.dmi'
 	icon_state = "suppressor"
 	w_class = WEIGHT_CLASS_TINY
 
