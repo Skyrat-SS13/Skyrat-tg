@@ -672,7 +672,7 @@
 		playsound(M,'sound/weapons/pierce.ogg', rand(10,50), TRUE)
 		var/obj/item/trash/can/crushed_can = new /obj/item/trash/can(M.loc)
 		crushed_can.icon_state = icon_state
-	qdel(src)
+		qdel(src)
 		return TRUE
 	. = ..()
 

@@ -30,7 +30,7 @@
 	STR.set_holdable(list(
 		/obj/item/reagent_containers/food/drinks/soda_cans,
 		/obj/item/reagent_containers/food/drinks/bottle/beer,
-		/obj/item/reagent_containers/food/drinks/ale,
+		/obj/item/reagent_containers/food/drinksbottle/ale,
 		/obj/item/reagent_containers/food/drinks/waterbottle
 		))
 
