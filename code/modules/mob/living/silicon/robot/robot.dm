@@ -153,6 +153,7 @@
 
 	var/list/model_list = list("Engineering" = /obj/item/robot_model/engineering, \
 	"Medical" = /obj/item/robot_model/medical, \
+	"Cargo" = /obj/item/robot_model/cargo, /* SKYRAT EDIT - CARGOBORG */\
 	"Miner" = /obj/item/robot_model/miner, \
 	"Janitor" = /obj/item/robot_model/janitor, \
 	"Service" = /obj/item/robot_model/service)
@@ -166,7 +167,7 @@
 	for(var/option in model_list)
 		var/obj/item/robot_model/model = model_list[option]
 		var/model_icon = initial(model.cyborg_base_icon)
-		model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+		model_icons[option] = image(icon = 'modular_skyrat/master_files/icons/mob/robots.dmi', icon_state = model_icon) // SKYRAT EDIT - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
 
 	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)

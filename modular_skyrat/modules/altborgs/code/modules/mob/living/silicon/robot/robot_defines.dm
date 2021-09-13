@@ -1,4 +1,5 @@
 /mob/living/silicon/robot
+	icon = 'modular_skyrat/master_files/icons/mob/robots.dmi'
 	var/robot_resting = FALSE
 	var/robot_rest_style = ROBOT_REST_NORMAL
 
