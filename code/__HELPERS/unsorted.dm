@@ -205,22 +205,8 @@ Turf and target are separate in case you want to teleport some distance from a t
 		if(!safety && !random)
 			newname = C?.prefs?.read_preference(preference_type)
 		else
-<<<<<<< HEAD
-			switch(role)
-				if(SPECIES_HUMAN)
-					newname = random_unique_name(gender)
-				if("clown")
-					newname = pick(GLOB.clown_names)
-				if("mime")
-					newname = pick(GLOB.mime_names)
-				if("ai")
-					newname = pick(GLOB.ai_names)
-				else
-					return FALSE
-=======
 			var/datum/preference/preference = GLOB.preference_entries[preference_type]
 			newname = preference.create_informed_default_value(C.prefs)
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 
 		for(var/mob/living/M in GLOB.player_list)
 			if(M == src)

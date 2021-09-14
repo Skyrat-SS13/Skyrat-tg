@@ -31,11 +31,7 @@ SUBSYSTEM_DEF(persistence)
 	LoadRecentMaps()
 	LoadPhotoPersistence()
 	LoadRandomizedRecipes()
-<<<<<<< HEAD
-	LoadPaintings()
 	LoadPanicBunker() //SKYRAT EDIT ADDITION - PANICBUNKER
-=======
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 	load_custom_outfits()
 
 	load_adventures()
@@ -48,11 +44,7 @@ SUBSYSTEM_DEF(persistence)
 	CollectMaps()
 	SavePhotoPersistence() //THIS IS PERSISTENCE, NOT THE LOGGING PORTION.
 	SaveRandomizedRecipes()
-<<<<<<< HEAD
 	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
-	SavePaintings()
-=======
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 	SaveScars()
 	save_custom_outfits()
 
