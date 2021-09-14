@@ -132,8 +132,7 @@
 		var/turf/current_loc = get_turf(user)
 		if (!istype(target_loc) || !istype(current_loc) || !(shell.loaded_projectile))
 			return
-		//INVOKE_ASYNC(shell, /obj/item/ammo_casing.proc/throw_proj, target, target_loc, shooter, params, spread) //SKYRAT EDIT REMOVAL - our server is too slow
-		shell.throw_proj(target, target_loc, shooter, params, spread) //SKYRAT EDIT ADDITION our server is too slow
+		INVOKE_ASYNC(shell, /obj/item/ammo_casing.proc/throw_proj, target, target_loc, shooter, params, spread)
 		if(i != num_pellets)
 			shell.newshot()
 
