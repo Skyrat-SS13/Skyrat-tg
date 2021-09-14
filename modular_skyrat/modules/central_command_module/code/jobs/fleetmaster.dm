@@ -66,7 +66,7 @@
 	head = /obj/item/clothing/head/centhat
 	back = /obj/item/storage/backpack/satchel/leather
 	box = /obj/item/storage/box/survival/security
-	backpack_contents = list(/obj/item/melee/baton/loaded, /obj/item/ammo_box/a357 = 4)
+	backpack_contents = list(/obj/item/melee/baton/security/loaded , /obj/item/ammo_box/a357 = 4)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 

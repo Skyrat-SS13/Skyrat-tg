@@ -224,7 +224,7 @@
 				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
-				/obj/item/melee/classic_baton/telescopic = 12)
+				/obj/item/melee/baton/telescopic = 12)
 
 /obj/effect/spawner/lootdrop/astrum/sciloot
 	name = "abductor scientist loot"
