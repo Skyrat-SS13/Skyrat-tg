@@ -9,10 +9,6 @@
 		else
 			text += span_redtext(" died")
 		text += span_bold(" The borer produced [player_borer.children_produced] borers.")
-		if(player_borer.body_focus)
-			text += span_bold(" Their focus was [player_borer.body_focus].")
-		else
-			text += span_bold(" They were unable to gain a focus.")
 	else
 		text += span_redtext(" had their body destroy.")
 	return text

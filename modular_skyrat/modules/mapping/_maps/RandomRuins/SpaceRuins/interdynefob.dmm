@@ -1175,6 +1175,7 @@
 "em" = (
 /obj/machinery/door/airlock/security/old{
 	hackProof = 1;
+	id_tag = Armory;
 	name = "Armory";
 	req_access_txt = "151"
 	},
@@ -1189,6 +1190,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "eo" = (
@@ -1443,19 +1445,6 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "fr" = (
 /obj/structure/rack,
-/obj/item/clothing/head/helmet{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
@@ -1465,6 +1454,38 @@
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 6
+	},
+/obj/item/shield/riot{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/item/shield/riot{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/item/shield/riot{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = 9
+	},
+/obj/item/clothing/suit/armor/riot{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/riot{
+	pixel_y = 2
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = 8;
+	pixel_y = -8
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet/riot{
+	pixel_x = -6
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -1877,18 +1898,24 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "gM" = (
-/obj/structure/rack,
-/obj/item/gun/ballistic/automatic/pistol{
-	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
-	},
-/obj/item/gun/ballistic/automatic/pistol{
-	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
-	},
-/obj/item/gun/ballistic/automatic/pistol{
-	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!"
-	},
 /obj/machinery/light/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/closet/crate/secure/gear,
+/obj/item/ammo_box/magazine/m12g{
+	pixel_x = -8;
+	pixel_y = -2
+	},
+/obj/item/ammo_box/magazine/m12g{
+	pixel_x = -8;
+	pixel_y = -7
+	},
+/obj/item/clothing/gloves/krav_maga/combatglovesplus{
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/obj/item/clothing/gloves/krav_maga/combatglovesplus{
+	pixel_x = 10
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "gN" = (
@@ -2065,6 +2092,9 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "ht" = (
 /obj/structure/table/reinforced,
+/obj/machinery/syndicatebomb/training{
+	desc = "A defective syndicate bomb gutted of its explosives to be used as a training aid for aspiring bomb defusers."
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "hv" = (
@@ -3342,11 +3372,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "ma" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/beer{
+/obj/item/reagent_containers/food/drinks/bottle/beer{
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/item/reagent_containers/food/drinks/beer{
+/obj/item/reagent_containers/food/drinks/bottle/beer{
 	pixel_x = -2;
 	pixel_y = 3
 	},
@@ -4625,8 +4655,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "qr" = (
 /obj/machinery/suit_storage_unit/syndicate{
-	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/black/red;
-	suit_type = /obj/item/clothing/suit/space/syndicate/black/red
+	helmet_type = null
 	},
 /obj/effect/turf_decal/siding/thinplating/dark,
 /obj/machinery/airalarm/directional/north{
@@ -6423,15 +6452,26 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "wv" = (
+/obj/item/ammo_box/c9mm{
+	pixel_x = -2
+	},
 /obj/structure/rack,
-/obj/item/storage/box/rubbershot{
+/obj/item/ammo_box/c9mm{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/ammo_box/magazine/m9mm,
+/obj/item/ammo_box/magazine/m9mm{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = -6;
+	pixel_y = 6
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -7023,6 +7063,14 @@
 	real_name = null
 	},
 /obj/structure/cable,
+/obj/machinery/button/door/directional/west{
+	desc = "To keep your valuable gear away from prying eyes.";
+	id = Armory;
+	name = "Armory Door bolt";
+	normaldoorcontrol = 1;
+	req_access_txt = "151";
+	specialfunctions = 4
+	},
 /turf/open/floor/iron/dark/smooth_corner,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "yB" = (
@@ -7422,6 +7470,18 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "zY" = (
 /obj/structure/table/wood,
+/obj/item/storage/photo_album/syndicate{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/stamp/syndicate{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/obj/item/camera{
+	pixel_x = -5;
+	pixel_y = 11
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "zZ" = (
@@ -7589,15 +7649,6 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "AE" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/bulletproof,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
 	},
@@ -7609,6 +7660,25 @@
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 9
+	},
+/obj/item/melee/energy/sword/sword/saber/purple,
+/obj/item/melee/energy/sword/sword/saber/purple{
+	pixel_x = 7
+	},
+/obj/item/melee/energy/sword/sword/saber/purple{
+	pixel_x = 13
+	},
+/obj/item/melee/baton/telescopic{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/item/melee/baton/telescopic{
+	pixel_x = 10;
+	pixel_y = 9
+	},
+/obj/item/melee/baton/telescopic{
+	pixel_x = -2;
+	pixel_y = 9
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -7726,8 +7796,11 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "Bc" = (
 /obj/machinery/button/door/directional/north{
+	desc = "Keep out the riff-raff.";
 	id = "sadmiral";
+	name = "Admiral's room bolt";
 	normaldoorcontrol = 1;
+	req_access_txt = "151";
 	specialfunctions = 4
 	},
 /obj/effect/turf_decal/siding/wood{
@@ -10084,8 +10157,9 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Jd" = (
 /obj/machinery/light/directional/north,
-/obj/machinery/vending/medical/syndicate_access{
-	onstation = 0
+/obj/machinery/vending/medical/syndicate_access/cybersun{
+	desc = "An advanced vendor that dispenses medical drugs, both recreational and medicinal. It's said to have been salvaged from an old decomissioned Cybersun Cruiser.";
+	name = "\improper SyndiMed ++"
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
@@ -10107,6 +10181,16 @@
 "Ji" = (
 /obj/structure/safe,
 /obj/item/reagent_containers/food/drinks/soda_cans/pwr_game,
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe{
+	desc = "A sleek, sturdy box.";
+	name = "Chameleon Kit"
+	},
+/obj/item/bikehorn,
+/obj/item/paper/crumpled{
+	desc = A letter from Donk co. it has a clown stamp on it, garish.;
+	info = "Hey there Deep Space 2 crew, sorry about your stolen book, hope this horn helps! HONK! -Love Donk Co.";
+	name = "A Note from Donk co."
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "Jj" = (
@@ -10452,6 +10536,17 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Kq" = (
 /obj/structure/table/reinforced,
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_x = 7;
+	pixel_y = 15
+	},
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_x = -7;
+	pixel_y = 15
+	},
+/obj/item/bodybag/environmental/prisoner/syndicate{
+	pixel_y = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "Kr" = (
@@ -10503,6 +10598,9 @@
 /obj/item/radio/headset/interdyne/command,
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate_winter,
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate_winter,
+/obj/item/encryptionkey/headset_interdyne,
+/obj/item/encryptionkey/headset_interdyne,
+/obj/item/encryptionkey/headset_interdyne,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Kz" = (
@@ -10703,17 +10801,36 @@
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Lg" = (
-/obj/structure/rack,
 /obj/item/gun/ballistic/shotgun/riot{
-	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
+	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'.";
+	pixel_x = 7;
+	pixel_y = -5
 	},
 /obj/item/gun/ballistic/shotgun/riot{
 	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
 	},
 /obj/item/gun/ballistic/shotgun/riot{
-	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'."
+	desc = "A riot shotgun - this one is advertised to 'Not miss', quote, 'unlike the shitty hybrid taser'.";
+	pixel_x = -6;
+	pixel_y = 5
 	},
 /obj/structure/reagent_dispensers/peppertank/directional/north,
+/obj/structure/rack/gunrack,
+/obj/item/gun/ballistic/automatic/pistol{
+	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!";
+	pixel_x = 9;
+	pixel_y = -9
+	},
+/obj/item/gun/ballistic/automatic/pistol{
+	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!";
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/gun/ballistic/automatic/pistol{
+	desc = "It's small, it'll fit in your pocket - and's a great last resort self-defense weapon!";
+	pixel_x = -3;
+	pixel_y = 3
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "Lh" = (
@@ -12137,19 +12254,6 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "PT" = (
 /obj/structure/rack,
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
 	},
@@ -12159,6 +12263,27 @@
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 10
+	},
+/obj/item/storage/belt/holster/nukie{
+	pixel_x = 9
+	},
+/obj/item/storage/belt/holster/nukie{
+	pixel_y = 6
+	},
+/obj/item/storage/belt/holster/nukie{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/item/storage/belt/military{
+	pixel_x = -4
+	},
+/obj/item/storage/belt/military{
+	pixel_x = 1;
+	pixel_y = -3
+	},
+/obj/item/storage/belt/military{
+	pixel_x = 6;
+	pixel_y = -6
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -12363,12 +12488,14 @@
 "QC" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/armor/vest{
-	pixel_x = -3;
+	pixel_x = -5;
 	pixel_y = 3
 	},
-/obj/item/clothing/suit/armor/vest,
 /obj/item/clothing/suit/armor/vest{
-	pixel_x = 3;
+	pixel_x = 1
+	},
+/obj/item/clothing/suit/armor/vest{
+	pixel_x = 7;
 	pixel_y = -3
 	},
 /obj/structure/window/reinforced/survival_pod{
@@ -12382,6 +12509,17 @@
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 5
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = -6;
+	pixel_y = -4
+	},
+/obj/item/clothing/head/helmet{
+	pixel_y = -7
+	},
+/obj/item/clothing/head/helmet{
+	pixel_x = 6;
+	pixel_y = -11
 	},
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -12486,6 +12624,17 @@
 /obj/item/clothing/under/utility/sec/old/syndicate,
 /obj/structure/cable,
 /obj/item/clothing/head/sec/navywarden/syndicate,
+/obj/item/clothing/suit/armor/hos/trenchcoat{
+	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10);
+	desc = "A trenchcoat enhanced with a special lightweight kevlar. It has little Syndicate logos sewn onto the shoulder badges with the letters 'MAA' just under it.";
+	name = "Master at arms' armored trenchcoat"
+	},
+/obj/item/clothing/suit/armor/hos{
+	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 10);
+	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a likely chance to get bullied for being outside of the brig";
+	name = "Master at arms' armored greatcoat"
+	},
+/obj/item/clothing/head/hos/beret/syndicate,
 /turf/open/floor/iron/dark/smooth_corner{
 	dir = 8
 	},
@@ -13790,8 +13939,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "VD" = (
 /obj/machinery/suit_storage_unit/syndicate{
-	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/black/red;
-	suit_type = /obj/item/clothing/suit/space/syndicate/black/red
+	helmet_type = null
 	},
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron/smooth_large,

@@ -501,7 +501,7 @@
 	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 3
+	weight = 0 //SKYRAT EDIT CHANGE
 	cost = 10
 	requirements = list(101,101,101,70,50,40,20,15,10,10)
 	repeatable = TRUE

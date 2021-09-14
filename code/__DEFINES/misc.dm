@@ -51,6 +51,12 @@
 #define FIRE_LAYER 1 //If you're on fire
 #define TOTAL_LAYERS 34	//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_; //SKYRAT EDIT CHANGE - 30 from 29. Added BANDAGE_LAYER //SKYRAT EDIT ADDITION - ERP UPDATE - value changed to 34 from 30. Added layers for ERP items.
 
+//Bitflags for the layers an external organ can draw on
+#define EXTERNAL_FRONT (1 << 1)
+#define EXTERNAL_ADJACENT (1 << 2)
+#define EXTERNAL_BEHIND (1 << 3)
+#define ALL_EXTERNAL_OVERLAYS EXTERNAL_FRONT | EXTERNAL_ADJACENT | EXTERNAL_BEHIND
+
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"
@@ -499,22 +505,18 @@ GLOBAL_LIST_INIT(pda_styles, sortList(list(MONO, VT, ORBITRON, SHARE)))
 //Misc text define. Does 4 spaces. Used as a makeshift tabulator.
 #define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
 
-// art quality defines, used in datums/components/art.dm, elsewhere
-#define BAD_ART 12.5
-#define OK_ART 20
-#define GOOD_ART 25
-#define GREAT_ART 50
-
 // possible bitflag return values of intercept_zImpact(atom/movable/AM, levels = 1) calls
 #define FALL_INTERCEPTED (1<<0) //Stops the movable from falling further and crashing on the ground
 #define FALL_NO_MESSAGE (1<<1) //Used to suppress the "[A] falls through [old_turf]" messages where it'd make little sense at all, like going downstairs.
 #define FALL_STOP_INTERCEPTING (1<<2) //Used in situations where halting the whole "intercept" loop would be better, like supermatter dusting (and thus deleting) the atom.
 
 //Religion
-
-#define HOLY_ROLE_DEACON 1 //role below priests, for losing most powers of priests but still being holy.
-#define HOLY_ROLE_PRIEST 2 //default priestly role
-#define HOLY_ROLE_HIGHPRIEST 3 //the one who designates the religion
+///role below priests, for losing most powers of priests but still being holy.
+#define HOLY_ROLE_DEACON 1
+///default priestly role
+#define HOLY_ROLE_PRIEST 2
+///the one who designates the religion
+#define HOLY_ROLE_HIGHPRIEST 3
 
 #define ALIGNMENT_GOOD "good"
 #define ALIGNMENT_NEUT "neutral"
