@@ -6,18 +6,20 @@
 
 /turf/open/openspace/ocean/Initialize()
 	. = ..()
-	var/turf/T = below()
-	if(T.turf_flags & NO_RUINS)
-		ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
-		return
+
 	for(var/obj/structure/flora/plant in contents)
 		qdel(plant)
-	if(!ismineralturf(T))
-		return
-	var/turf/closed/mineral/M = T
-	M.mineralAmt = 0
-	M.gets_drilled()
-	baseturfs = /turf/open/openspace/ocean //This is to ensure that IF random turf generation produces a openturf, there won't be other turfs assigned other than openspace.
+	var/turf/T = below()
+	if(T)
+		if(T.turf_flags & NO_RUINS)
+			ChangeTurf(replacement_turf, null, CHANGETURF_IGNORE_AIR)
+			return
+		if(!ismineralturf(T))
+			return
+		var/turf/closed/mineral/M = T
+		M.mineralAmt = 0
+		M.gets_drilled()
+		baseturfs = /turf/open/openspace/ocean //This is to ensure that IF random turf generation produces a openturf, there won't be other turfs assigned other than openspace.
 
 /turf/open/openspace/ocean/Initialize()
 	. = ..()

@@ -111,8 +111,8 @@
 /obj/item/clothing/shoes/sneakers/brown,
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
-/obj/item/melee/baton/loaded,
-/obj/item/melee/transforming/energy/sword/saber/red,
+/obj/item/melee/baton/security/loaded,
+/obj/item/melee/energy/sword/saber/red,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -176,14 +176,22 @@
 /obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
+"ek" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/multitool,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "ev" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/green,
 /obj/item/clothing/shoes/sneakers/brown,
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
-/obj/item/melee/baton/loaded,
-/obj/item/melee/transforming/energy/sword/saber/green,
+/obj/item/melee/baton/security/loaded,
+/obj/item/melee/energy/sword/saber/green,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -268,6 +276,12 @@
 "gu" = (
 /turf/closed/indestructible/splashscreen,
 /area/start)
+"gE" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/safe/floor,
+/obj/item/seeds/cherry/bomb,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "hh" = (
 /turf/closed/indestructible/rock/snow,
 /area/syndicate_mothership)
@@ -5570,7 +5584,7 @@
 /area/syndicate_mothership/control)
 "tf" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/beer{
+/obj/item/reagent_containers/food/drinks/bottle/beer{
 	pixel_x = 5;
 	pixel_y = -2
 	},
@@ -5680,7 +5694,7 @@
 /area/syndicate_mothership/control)
 "tx" = (
 /obj/structure/table/wood,
-/obj/item/storage/pill_bottle/dice,
+/obj/item/storage/dice,
 /turf/open/floor/iron/grimy,
 /area/centcom/ferry)
 "ty" = (
@@ -6928,10 +6942,6 @@
 /obj/item/clothing/head/helmet/space/plasmaman,
 /turf/open/floor/wood,
 /area/centcom/holding)
-"wk" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/iron/dark,
-/area/centcom/supplypod)
 "wl" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood,
@@ -7389,7 +7399,7 @@
 /area/wizard_station)
 "xy" = (
 /obj/structure/table/wood/fancy,
-/obj/item/storage/pill_bottle/dice{
+/obj/item/storage/dice{
 	icon_state = "magicdicebag"
 	},
 /turf/open/floor/carpet,
@@ -7809,12 +7819,6 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/grass,
 /area/wizard_station)
-"yM" = (
-/obj/structure/table/wood/bar,
-/obj/structure/safe/floor,
-/obj/item/seeds/cherry/bomb,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "yU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
@@ -8365,6 +8369,27 @@
 /obj/item/radio,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
+	},
+/turf/open/floor/iron,
+/area/centcom/ferry)
+"Ak" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -7
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_x = 7
 	},
 /turf/open/floor/iron,
 /area/centcom/ferry)
@@ -12134,8 +12159,8 @@
 /obj/item/clothing/shoes/sneakers/brown,
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
-/obj/item/melee/baton/loaded,
-/obj/item/melee/transforming/energy/sword/saber/red,
+/obj/item/melee/baton/security/loaded,
+/obj/item/melee/energy/sword/saber/red,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -12258,8 +12283,8 @@
 /obj/item/clothing/shoes/sneakers/brown,
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
-/obj/item/melee/baton/loaded,
-/obj/item/melee/transforming/energy/sword/saber/green,
+/obj/item/melee/baton/security/loaded,
+/obj/item/melee/energy/sword/saber/green,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -13707,27 +13732,6 @@
 /obj/machinery/processor,
 /turf/open/floor/iron/cafeteria,
 /area/centcom/holding)
-"Na" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/firstaid/regular{
-	pixel_x = -7
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/item/bodybag/environmental/nanotrasen{
-	pixel_x = 7;
-	pixel_y = 12
-	},
-/obj/item/bodybag/environmental/nanotrasen{
-	pixel_x = 7;
-	pixel_y = 6
-	},
-/obj/item/bodybag/environmental/nanotrasen{
-	pixel_x = 7
-	},
-/turf/open/floor/iron,
-/area/centcom/ferry)
 "Nd" = (
 /turf/closed/indestructible/wood,
 /area/centcom/holding)
@@ -14456,14 +14460,6 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"Tq" = (
-/obj/structure/table/wood/bar,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/multitool,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "Tr" = (
 /obj/structure/closet/chefcloset,
 /turf/open/floor/iron/cafeteria,
@@ -14495,11 +14491,6 @@
 "TC" = (
 /obj/machinery/door/window/eastright,
 /turf/open/floor/carpet/black,
-/area/centcom/holding)
-"TK" = (
-/obj/structure/table/wood/bar,
-/obj/structure/mirror/directional/north,
-/turf/open/floor/wood,
 /area/centcom/holding)
 "TT" = (
 /obj/structure/table/reinforced,
@@ -14665,6 +14656,10 @@
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
+"Vg" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/centcom/supplypod)
 "Vk" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -14879,10 +14874,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/supplypod/loading/one)
-"XK" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/iron,
-/area/centcom/supplypod)
 "XL" = (
 /obj/machinery/door/airlock/wood,
 /turf/open/floor/wood,
@@ -14893,10 +14884,11 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"XT" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/space/basic,
-/area/centcom/supplypod)
+"XV" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/mirror/directional/north,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "Ya" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -41217,7 +41209,7 @@ aa
 aa
 aa
 Nd
-Tq
+ek
 CT
 MG
 YN
@@ -42245,7 +42237,7 @@ aa
 aa
 aa
 Nd
-yM
+gE
 CT
 oV
 CT
@@ -42759,7 +42751,7 @@ aa
 aa
 aa
 Nd
-TK
+XV
 CT
 CT
 CT
@@ -55349,7 +55341,7 @@ ts
 mD
 zh
 uU
-Na
+Ak
 AR
 BC
 sw
@@ -64629,7 +64621,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -64886,7 +64878,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -65901,8 +65893,8 @@ Yn
 Yn
 Yn
 Yn
-wk
-wk
+Vg
+Vg
 Yn
 Yn
 Yn
@@ -66171,7 +66163,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -66428,7 +66420,7 @@ Yn
 NE
 NE
 NE
-XK
+Vg
 aa
 aa
 aa
@@ -67690,8 +67682,8 @@ sV
 qx
 qx
 qx
-XT
-XT
+Vg
+Vg
 Yn
 Yn
 Yn
@@ -67710,10 +67702,10 @@ Yn
 Yn
 Yn
 Yn
-XK
-XK
+Vg
+Vg
 Yn
-aa
+Yn
 aa
 aa
 aa

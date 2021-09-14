@@ -227,9 +227,6 @@
 /obj/item/clothing/under/color/jumpskirt
 	mutant_variants = NONE
 
-/obj/item/clothing/under/dress/skirt
-	mutant_variants = NONE
-
 /obj/item/clothing/under/suit/black/skirt
 	mutant_variants = NONE
 
@@ -309,4 +306,8 @@
 
 /obj/item/clothing/suit/armor/riot/knight/greyscale
 	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/armor/vest/centcom_formal
+	mutant_variants = NONE
+
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

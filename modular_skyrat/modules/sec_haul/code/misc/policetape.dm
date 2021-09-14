@@ -219,7 +219,7 @@
 /obj/structure/jobtape/police
 	name = "police tape"
 	desc = "A length of police tape. Do not cross."
-	req_one_access = list(ACCESS_SECURITY)
+	req_one_access = list(ACCESS_SECURITY, ACCESS_FORENSICS_LOCKERS)
 	icon_base = "police"
 
 /obj/item/taperoll/engi
@@ -245,7 +245,7 @@
 /obj/structure/jobtape/atmos
 	name = "atmospherics tape"
 	desc = "A length of atmospherics tape. Better not cross it."
-	req_one_access = list(ACCESS_ATMOSPHERICS)
+	req_one_access = list(ACCESS_ENGINE_EQUIP, ACCESS_ATMOSPHERICS)
 	icon_base = "atmos"
 
 /obj/item/taperoll/med
@@ -271,5 +271,5 @@
 /obj/structure/jobtape/bio
 	name = "biohazard tape"
 	desc = "A length of biohazard tape. Do not cross."
-	req_one_access = list(ACCESS_VIROLOGY, ACCESS_XENOBIOLOGY)
+	req_one_access = list(ACCESS_RESEARCH, ACCESS_MEDICAL, ACCESS_VIROLOGY, ACCESS_XENOBIOLOGY)
 	icon_base = "bio"

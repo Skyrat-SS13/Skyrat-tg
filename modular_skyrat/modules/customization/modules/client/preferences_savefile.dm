@@ -124,11 +124,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		addtimer(CALLBACK(src, .proc/announce_conflict, notadded), 5 SECONDS)
 
 /datum/preferences/proc/announce_conflict(list/notadded)
-	to_chat(parent, "<span class='alertwarning'>KEYBINDING CONFLICT</span>\n\
-					<span class='alertwarning'>There are new <a href='?_src_=prefs;preference=tab;tab=3'>keybindings</a> that default to keys you've already bound. These will be unbound.</span>")
+	to_chat(parent, "<span class='warningplain'><b><u>Keybinding Conflict</u></b></span>\n\
+					<span class='warningplain'><b>There are new <a href='?_src_=prefs;preference=tab;tab=3'>keybindings</a> that default to keys you've already bound. The new ones will be unbound.</b></span>")
 	for(var/item in notadded)
 		var/datum/keybinding/conflicted = item
-		to_chat(parent, "<span class='danger'>[conflicted.category]: [conflicted.full_name] needs updating</span>")
+		to_chat(parent, span_danger("[conflicted.category]: [conflicted.full_name] needs updating"))
 		LAZYADD(key_bindings["Unbound"], conflicted.name) // set it to unbound to prevent this from opening up again in the future
 		save_preferences()
 
@@ -206,11 +206,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["menuoptions"], menuoptions)
 	READ_FILE(S["enable_tips"], enable_tips)
 	READ_FILE(S["tip_delay"], tip_delay)
+	READ_FILE(S["pda_style"], pda_style)
+	READ_FILE(S["pda_color"], pda_color)
+	READ_FILE(S["darkened_flash"], darkened_flash)
 
-	// Custom hotkeys
-	READ_FILE(S["key_bindings"], key_bindings)
-	check_keybindings()
-	// hearted
+	// OOC commendations
 	READ_FILE(S["hearted_until"], hearted_until)
 	if(hearted_until > world.realtime)
 		hearted = TRUE
@@ -224,6 +224,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			parsed_favs += path
 	favorite_outfits = uniqueList(parsed_favs)
 
+	// Custom hotkeys
+	READ_FILE(S["key_bindings"], key_bindings)
+	check_keybindings() // this apparently fails every time and overwrites any unloaded prefs with the default values, so don't load anything after this line or it won't actually save
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		var/bacpath = "[path].updatebac" //todo: if the savefile version is higher then the server, check the backup, and give the player a prompt to load the backup
@@ -269,8 +272,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	menuoptions = SANITIZE_LIST(menuoptions)
 	be_special = SANITIZE_LIST(be_special)
 	brief_outfit = sanitize_inlist(brief_outfit, subtypesof(/datum/outfit), null)
+	pda_style = sanitize_inlist(pda_style, GLOB.pda_styles, initial(pda_style))
+	pda_color = sanitize_hexcolor(pda_color, 6, 1, initial(pda_color))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
+	darkened_flash = sanitize_integer(darkened_flash, FALSE, TRUE, initial(darkened_flash))
 	announcement_volume = sanitize_integer(announcement_volume, 1, 100, initial(announcement_volume))
 
 	if(needs_update >= 0) //save the updated version
@@ -305,7 +311,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//general preferences
 	WRITE_FILE(S["asaycolor"], asaycolor)
-
+	WRITE_FILE(S["brief_outfit"], brief_outfit)
 	WRITE_FILE(S["ooccolor"], ooccolor)
 	WRITE_FILE(S["screentip_color"], screentip_color)
 	WRITE_FILE(S["lastchangelog"], lastchangelog)
@@ -324,8 +330,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["default_slot"], default_slot)
 	WRITE_FILE(S["toggles"], toggles)
 	WRITE_FILE(S["chat_toggles"], chat_toggles)
-	WRITE_FILE(S["skyrat_toggles"], skyrat_toggles)
-	WRITE_FILE(S["auto_dementor"], auto_dementor)
 	WRITE_FILE(S["ghost_form"], ghost_form)
 	WRITE_FILE(S["ghost_orbit"], ghost_orbit)
 	WRITE_FILE(S["ghost_accs"], ghost_accs)
@@ -347,10 +351,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["menuoptions"], menuoptions)
 	WRITE_FILE(S["enable_tips"], enable_tips)
 	WRITE_FILE(S["tip_delay"], tip_delay)
+	WRITE_FILE(S["pda_style"], pda_style)
+	WRITE_FILE(S["pda_color"], pda_color)
 	WRITE_FILE(S["key_bindings"], key_bindings)
 	WRITE_FILE(S["hearted_until"], (hearted_until > world.realtime ? hearted_until : null))
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
+	WRITE_FILE(S["darkened_flash"], darkened_flash)
+
+	//SKYRAT WRITES
 	WRITE_FILE(S["announcement_volume"], announcement_volume)
+	WRITE_FILE(S["skyrat_toggles"], skyrat_toggles)
+	WRITE_FILE(S["auto_dementor"], auto_dementor)
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -464,6 +475,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["preferred_ai_core_display"], preferred_ai_core_display)
 	READ_FILE(S["prefered_security_department"], prefered_security_department)
 
+	// This is the version when the random security department was removed.
+	// When the minimum is higher than that version, it's impossible for someone to have the "Random" department.
+	#if SAVEFILE_VERSION_MIN > 40
+	#warn The prefered_security_department check in preferences_savefile.dm is no longer necessary.
+	#endif
+
+	if (!(prefered_security_department in GLOB.security_depts_prefs))
+		prefered_security_department = SEC_DEPT_NONE
 	//Jobs
 	READ_FILE(S["joblessrole"], joblessrole)
 	//Load prefs
@@ -559,6 +578,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	READ_FILE(S["ooc_prefs"], ooc_prefs)
 	READ_FILE(S["erp_pref"], erp_pref)
+	READ_FILE(S["sextoys_pref"], sextoys_pref)
 	READ_FILE(S["noncon_pref"], noncon_pref)
 	READ_FILE(S["vore_pref"], vore_pref)
 	READ_FILE(S["general_record"], general_record)
@@ -612,6 +632,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		noncon_pref = "Ask"
 	if(!length(vore_pref))
 		vore_pref = "Ask"
+	if(!length(sextoys_pref))
+		sextoys_pref = "No"
 
 	general_record = sanitize_text(general_record)
 	security_record = sanitize_text(security_record)
@@ -750,6 +772,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
 	WRITE_FILE(S["erp_pref"] , erp_pref)
+	WRITE_FILE(S["sextoys_pref"], sextoys_pref)
 	WRITE_FILE(S["noncon_pref"] , noncon_pref)
 	WRITE_FILE(S["vore_pref"] , vore_pref)
 	WRITE_FILE(S["general_record"] , general_record)

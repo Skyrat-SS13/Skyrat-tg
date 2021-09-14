@@ -42,6 +42,13 @@ export const ChemPress = (props, context) => {
                   product: "bottle",
                 })}
               />
+              <Button.Checkbox
+                content="Vials"
+                checked={product === "vial"}
+                onClick={() => act('change_product', {
+                  product: "vial",
+                })}
+              />
             </LabeledList.Item>
             <LabeledList.Item label="Volume">
               <NumberInput

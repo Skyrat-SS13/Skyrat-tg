@@ -1,4 +1,4 @@
-/obj/item/clothing/head/beret/sec/peacekeeper/sergeant
+/obj/item/clothing/head/sec/peacekeeper/sergeant
 	name = "peacekeeper sergeant hat"
 	desc = "A drill sergeants cap, wearing this increases your loudness. So they say."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'

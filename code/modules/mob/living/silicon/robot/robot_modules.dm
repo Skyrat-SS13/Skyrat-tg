@@ -101,10 +101,9 @@
 			F.times_used = 0
 			F.burnt_out = FALSE
 			F.update_appearance()
-		else if(istype(I, /obj/item/melee/baton))
-			var/obj/item/melee/baton/B = I
-			if(B.cell)
-				B.cell.charge = B.cell.maxcharge
+		else if(istype(I, /obj/item/melee/baton/security))
+			var/obj/item/melee/baton/security/baton = I
+			baton.cell?.charge = baton.cell.maxcharge
 		else if(istype(I, /obj/item/gun/energy))
 			var/obj/item/gun/energy/EG = I
 			if(!EG.chambered)
@@ -425,7 +424,7 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
-		/obj/item/melee/classic_baton/peacekeeper, //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/melee/baton/loaded
+		/obj/item/melee/baton/security/loaded,
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/extinguisher/mini)
@@ -458,7 +457,8 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/glass/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		/obj/item/reagent_containers/food/condiment/enzyme,
+		//Skyrat Edit Start: Borg Buff
+		//obj/item/reagent_containers/food/condiment/enzyme, //edit
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
@@ -468,9 +468,16 @@
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
 		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
 		/obj/item/lighter,
 		/obj/item/storage/bag/tray,
-		/obj/item/reagent_containers/borghypo/borgshaker,
+		//obj/item/reagent_containers/borghypo/borgshaker, //edit
+		/obj/item/reagent_containers/syringe, //edit
+		/obj/item/cooking/cyborg/power, //edit
+		//Skyrat Edit Stop: Borg Buff
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/borg/apparatus/beaker/service)
@@ -522,7 +529,7 @@
 	name = "Syndicate Assault"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		/obj/item/melee/transforming/energy/sword/cyborg,
+		/obj/item/melee/energy/sword/cyborg,
 		/obj/item/gun/energy/printer,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/cyborg,
 		/obj/item/card/emag,
@@ -559,7 +566,7 @@
 		/obj/item/cautery,
 		/obj/item/surgicaldrill,
 		/obj/item/scalpel,
-		/obj/item/melee/transforming/energy/sword/cyborg/saw,
+		/obj/item/melee/energy/sword/cyborg/saw,
 		/obj/item/roller/robo,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher/mini,

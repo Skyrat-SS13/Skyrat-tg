@@ -3,8 +3,8 @@
  */
 /datum/species/shadow/nightmare
 	name = "Nightmare"
-	id = "nightmare"
-	limbs_id = "shadow"
+	id = SPECIES_NIGHTMARE
+	limbs_id = SPECIES_SHADOW
 	burnmod = 1.5
 	no_equip = list(ITEM_SLOT_MASK, ITEM_SLOT_OCLOTHING, ITEM_SLOT_GLOVES, ITEM_SLOT_FEET, ITEM_SLOT_ICLOTHING, ITEM_SLOT_SUITSTORE)
 	species_traits = list(NOBLOOD,NO_UNDERWEAR,NO_DNA_COPY,NOTRANSSTING,NOEYESPRITES)

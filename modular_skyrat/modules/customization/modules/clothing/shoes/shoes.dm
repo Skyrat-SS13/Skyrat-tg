@@ -111,5 +111,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "kneeboots"
 
-
+/obj/item/clothing/shoes/jackboots/timbs
+	name = "fashionable boots"
+	desc = "Fresh from Luna, deadass good for rappers."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "timbs"
 

@@ -2,7 +2,7 @@
 
 /datum/species/mutant
 	name = "High-Functioning mutant"
-	id = "mutant"
+	id = SPECIES_MUTANT
 	say_mod = "moans"
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	species_traits = list(NOBLOOD,NOZOMBIE,HAS_FLESH,HAS_BONE,NOEYESPRITES,LIPS,HAIR)

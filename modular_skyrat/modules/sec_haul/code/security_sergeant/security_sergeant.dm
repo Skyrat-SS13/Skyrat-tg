@@ -9,7 +9,9 @@
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
-	exp_type = EXP_TYPE_SECURITY
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SECURITY
+	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/security_sergeant
 	plasmaman_outfit = /datum/outfit/plasmaman/security
@@ -19,14 +21,16 @@
 
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	departments = DEPARTMENT_SECURITY
+	departments_list = list(
+		/datum/job_department/security,
+	)
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_SERGEANT
 	bounty_types = CIV_JOB_SEC
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/outfit/job/security_sergeant
 	name = "Security Sergeant"
@@ -39,11 +43,11 @@
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black
-	head = /obj/item/clothing/head/beret/sec/peacekeeper/sergeant
+	head = /obj/item/clothing/head/sec/peacekeeper/sergeant
 
 	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT CHANGE - no
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
+	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/armament_token/sidearm)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

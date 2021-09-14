@@ -93,6 +93,7 @@ CREATE TABLE `ban` (
   `unbanned_ip` INT(10) UNSIGNED NULL DEFAULT NULL,
   `unbanned_computerid` VARCHAR(32) NULL DEFAULT NULL,
   `unbanned_round_id` INT(11) UNSIGNED NULL DEFAULT NULL,
+  `discord_reported` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0', /* SKYRAT EDIT - Labelling bans for ease of reporting them over Discord. */
   PRIMARY KEY (`id`),
   KEY `idx_ban_isbanned` (`ckey`,`role`,`unbanned_datetime`,`expiration_time`),
   KEY `idx_ban_isbanned_details` (`ckey`,`ip`,`computerid`,`role`,`unbanned_datetime`,`expiration_time`),
@@ -262,6 +263,25 @@ CREATE TABLE `library` (
   KEY `idx_lib_del_title` (`deleted`,`title`),
   KEY `idx_lib_search` (`deleted`,`author`,`title`,`category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `library_action`
+--
+
+DROP TABLE IF EXISTS `library_action`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `library_action` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `book` int(10) unsigned NOT NULL,
+  `reason` longtext DEFAULT NULL,
+  `ckey` varchar(11) NOT NULL DEFAULT '',
+  `datetime` datetime NOT NULL DEFAULT current_timestamp(),
+  `action` varchar(11) NOT NULL DEFAULT '',
+  `ip_addr` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

@@ -81,13 +81,12 @@
 
 /obj/structure/biohazard_blob/structure/core/Destroy()
 	if(our_controller)
-		our_controller.CoreDeath()
 		our_controller.our_core = null
 	soundloop.stop()
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/structure/biohazard_blob/structure/core/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
+/obj/structure/biohazard_blob/structure/core/run_atom_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
 	if(damage_amount > 10 && world.time > next_retaliation && prob(40))
 		if(our_controller)
 			our_controller.CoreRetaliated()
@@ -177,7 +176,6 @@
 			desc += " It feels damp and smells of rat poison."
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			desc += " It glows softly."
-	AddComponent(/datum/component/slippery, 80)
 
 /obj/structure/biohazard_blob/resin/update_overlays()
 	. = ..()

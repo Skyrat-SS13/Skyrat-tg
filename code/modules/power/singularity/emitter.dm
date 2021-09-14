@@ -67,12 +67,12 @@
 /obj/machinery/power/emitter/ctf
 	name = "Energy Cannon"
 	active = TRUE
-	active_power_usage = FALSE
-	idle_power_usage = FALSE
+	active_power_usage = 0
+	idle_power_usage = 0
 	locked = TRUE
 	req_access_txt = "100"
 	welded = TRUE
-	use_power = FALSE
+	use_power = NO_POWER_USE
 
 /obj/machinery/power/emitter/Initialize()
 	. = ..()
@@ -110,7 +110,7 @@
 	fire_delay = fire_shoot_delay
 	for(var/obj/item/stock_parts/manipulator/manipulator in component_parts)
 		power_usage -= 50 * manipulator.rating
-	active_power_usage = power_usage
+	update_mode_power_usage(ACTIVE_POWER_USE, power_usage)
 
 /obj/machinery/power/emitter/examine(mob/user)
 	. = ..()
@@ -360,6 +360,8 @@
 /obj/machinery/power/emitter/proc/integrate(obj/item/gun/energy/energy_gun, mob/user)
 	if(!istype(energy_gun, /obj/item/gun/energy))
 		return
+	if(istype(energy_gun, /obj/item/gun/energy/medigun))//SKYRAT EDIT MEDIGUNS
+		return //SKYRAT EDIT END
 	if(!user.transferItemToLoc(energy_gun, src))
 		return
 	gun = energy_gun
@@ -558,4 +560,3 @@
 		delay = world.time + 10
 	else if (emitter.charge < 10)
 		playsound(src,'sound/machines/buzz-sigh.ogg', 50, TRUE)
-

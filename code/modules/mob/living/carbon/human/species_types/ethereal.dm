@@ -1,6 +1,6 @@
 /datum/species/ethereal
 	name = "Ethereal"
-	id = "ethereal"
+	id = SPECIES_ETHEREAL
 	attack_verb = "burn"
 	attack_sound = 'sound/weapons/etherealhit.ogg'
 	miss_sound = 'sound/weapons/etherealmiss.ogg'
@@ -92,6 +92,7 @@
 		ethereal_light.set_light_on(FALSE)
 		fixed_mut_color = rgb(128,128,128)
 	H.update_body()
+	H.update_hair() // This should fix the ethereal hair not changing with body, no clue as to why hair is not in update_body but okay
 
 /datum/species/ethereal/proc/on_emp_act(mob/living/carbon/human/H, severity)
 	SIGNAL_HANDLER

@@ -41,13 +41,13 @@
 	return TRUE
 
 /obj/structure/closet/secure_closet/genpop/proc/handle_edit_sentence(mob/user)
-	var/prisoner_name = input(user, "Please input the name of the prisoner.", "Prisoner Name", registered_id.registered_name) as text|null
+	var/prisoner_name = sanitize_text(input(user, "Please input the name of the prisoner.", "Prisoner Name", registered_id.registered_name) as text|null)
 	if(prisoner_name == null | !user.Adjacent(src))
 		return FALSE
 	var/sentence_length = input(user, "Please input the length of their sentence in minutes (0 for perma).", "Sentence Length", registered_id.sentence) as num|null
 	if(sentence_length == null | !user.Adjacent(src))
 		return FALSE
-	var/crimes = input(user, "Please input their crimes.", "Crimes", registered_id.crime) as text|null
+	var/crimes = sanitize_text(input(user, "Please input their crimes.", "Crimes", registered_id.crime) as text|null)
 	if(crimes == null | !user.Adjacent(src))
 		return FALSE
 

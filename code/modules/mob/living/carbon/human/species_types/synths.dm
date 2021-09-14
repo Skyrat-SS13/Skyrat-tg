@@ -1,6 +1,6 @@
 /datum/species/synth
 	name = "Synth" //inherited from the real species, for health scanners and things
-	id = "synth"
+	id = SPECIES_SYNTH
 	say_mod = "beep boops" //inherited from a user's real species
 	sexes = 0
 	species_traits = list(NOTRANSSTING) //all of these + whatever we inherit from the real species
@@ -15,8 +15,8 @@
 	)
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	meat = null
-	damage_overlay_type = "synth"
-	limbs_id = "synth"
+	damage_overlay_type = SPECIES_SYNTH
+	limbs_id = SPECIES_SYNTH
 	///If your health becomes equal to or less than this value, your disguise is supposed to break. Unfortunately, that feature currently isn't implemented, so currently, all this threshold is used for is (I kid you not) determining whether or not your speech uses SPAN_CLOWN while you're disguised as a bananium golem. See the handle_speech() proc further down in this file for more information on that check.
 	var/disguise_fail_health = 75
 	var/datum/species/fake_species //a species to do most of our work for us, unless we're damaged
@@ -32,7 +32,7 @@
 
 /datum/species/synth/military
 	name = "Military Synth"
-	id = "military_synth"
+	id = SPECIES_SYNTH_MILITARY
 	armor = 25
 	punchdamagelow = 10
 	punchdamagehigh = 19
@@ -96,7 +96,7 @@
 		qdel(fake_species)
 		fake_species = null
 		meat = initial(meat)
-		limbs_id = "synth"
+		limbs_id = SPECIES_SYNTH
 		use_skintones = 0
 		sexes = 0
 		fixed_mut_color = ""

@@ -1,11 +1,18 @@
 /datum/map_template/shuttle/ferry
-	name = "centcom ferry"
+	name = "NAV Monarch"
 	port_id = "ferry"
 	suffix = "skyrat"
 	who_can_purchase = null
 
+/datum/map_template/shuttle/cargo
+	name = "NLV Consign"
+	port_id = "cargo"
+	suffix = "skyrat"
+	name = "NLV Consign (Cargo)"
+	who_can_purchase = null
+
 /obj/docking_port/mobile/arrivals_skyrat
-	name = "arrivals interlink shuttle"
+	name = "NTV Relay"
 	id = "arrivals_shuttle"
 	dwidth = 1
 	width = 5

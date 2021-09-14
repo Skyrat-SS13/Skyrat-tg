@@ -271,3 +271,16 @@
 	attack_verb_continuous = list("beeps","sneeds","swords")
 	attack_verb_simple = list("beep","sneed","sword")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg' = 1)
+
+/obj/item/toy/plush/fox/mia
+	name = "Mia’s fox plushie"
+	desc = "A small stuffed silver fox with a collar tag that says “Eavy” and a tiny bell in its fluffy tail."
+	icon_state = "miafox"
+
+/obj/item/toy/plush/fox/kailyn
+	name = "teasable fox plushie"
+	desc = "A familiar looking vixen in a peacekeeper attire, perfect for everyone who intends on venturing in the dark alone! There's a little tag which tells you to not boop its nose."
+	icon_state = "teasefox"
+	attack_verb_continuous = list("sneezes on", "detains", "tazes")
+	attack_verb_simple = list("sneeze on", "detain", "taze")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg' = 1)

@@ -200,6 +200,12 @@
 			candidates.Remove(candidate_player)
 			continue
 
+		//SKYRAT EDIT ADDITION
+		if(!candidate_client.prefs?.be_antag)
+			candidates.Remove(candidate_player)
+			continue
+		//SKYRAT EDIT END
+
 		if(candidate_client.get_remaining_days(minimum_required_age) > 0)
 			candidates.Remove(candidate_player)
 			continue

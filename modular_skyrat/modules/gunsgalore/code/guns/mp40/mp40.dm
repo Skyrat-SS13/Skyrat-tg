@@ -15,6 +15,10 @@
 	worn_icon_state = "mp40"
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mp40/mp40.ogg'
 	fire_sound_volume = 100
+	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_cock.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
 

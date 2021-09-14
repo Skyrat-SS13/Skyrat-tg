@@ -148,7 +148,7 @@
 	inhand_icon_state = "eng_hardsuit"
 	hardsuit_type = "hexp_corps"
 	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
-	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
+	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	jetpack = /obj/item/tank/jetpack/suit
 	cell = /obj/item/stock_parts/cell/hyper
@@ -195,10 +195,6 @@
 		to_chat(owner, "<span class='notice'>You flip the NV goggles up.")
 		my_helmet.disable_nv()
 	my_helmet.update_appearance()
-
-/obj/item/clothing/head/helmet/expeditionary_corps/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/head/helmet/expeditionary_corps/equipped(mob/user, slot)
 	. = ..()

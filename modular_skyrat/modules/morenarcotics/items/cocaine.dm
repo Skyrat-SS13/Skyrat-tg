@@ -7,7 +7,7 @@
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 10)
 
-/obj/item/reagent_containers/crack/crackbrick
+/obj/item/reagent_containers/crackbrick
 	name = "crack brick"
 	desc = "A brick of crack cocaine."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
@@ -16,7 +16,7 @@
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 40)
 
-/obj/item/reagent_containers/crack/crackbrick/attackby(obj/item/W, mob/user, params)
+/obj/item/reagent_containers/crackbrick/attackby(obj/item/W, mob/user, params)
 	if(W.get_sharpness())
 		user.show_message("<span class='notice'>You cut \the [src] into some rocks.</span>", MSG_VISUAL)
 		for(var/i = 1 to 4)
@@ -25,7 +25,7 @@
 
 /datum/crafting_recipe/crackbrick
 	name = "Crack brick"
-	result = /obj/item/reagent_containers/cocainebrick
+	result = /obj/item/reagent_containers/crackbrick
 	reqs = list(/obj/item/reagent_containers/crack = 4)
 	parts = list(/obj/item/reagent_containers/crack = 4)
 	time = 20
@@ -113,7 +113,7 @@
 /datum/export/crack/crackbrick
 	cost = CARGO_CRATE_VALUE * 2.5
 	unit_name = "crack brick"
-	export_types = list(/obj/item/reagent_containers/crack/crackbrick)
+	export_types = list(/obj/item/reagent_containers/crackbrick)
 	include_subtypes = FALSE
 
 /datum/export/cocaine

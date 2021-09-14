@@ -20,7 +20,7 @@
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
 	burnmod = 1.5 // Every 0.1% is 10% above the base.
-	brutemod = 1.6 
+	brutemod = 1.6
 	coldmod = 1.2
 	heatmod = 2
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
@@ -64,7 +64,7 @@
 
 /datum/species/robotic/ipc
 	name = "I.P.C."
-	id = "ipc"
+	id = SPECIES_IPC
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
 		MUTCOLORS_PARTSONLY,
@@ -141,7 +141,7 @@
 
 /datum/species/robotic/synthliz
 	name = "Synthetic Lizardperson"
-	id = "synthliz"
+	id = SPECIES_SYNTHLIZ
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
 		MUTCOLORS,EYECOLOR,
@@ -173,7 +173,7 @@
 
 /datum/species/robotic/synthetic_mammal
 	name = "Synthetic Anthromorph"
-	id = "synthmammal"
+	id = SPECIES_SYNTHMAMMAL
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	default_color = "4B4B4B"
@@ -258,7 +258,7 @@
 
 /datum/species/robotic/synthetic_human
 	name = "Synthetic Humanoid"
-	id = "synthhuman"
+	id = SPECIES_SYNTHHUMAN
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	species_traits = list(

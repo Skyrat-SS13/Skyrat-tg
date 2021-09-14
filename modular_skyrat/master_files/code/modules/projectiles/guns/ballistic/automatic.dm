@@ -158,6 +158,9 @@
 	empty_indicator = TRUE
 	show_bolt_icon = FALSE
 
+/obj/item/gun/ballistic/automatic/tommygun/therealtommy
+	name = "Tommygun"
+
 /obj/item/gun/ballistic/automatic/ar
 	name = "\improper NT-ARG 'Boarder'"
 	desc = "A robust assault rifle used by Nanotrasen fighting forces."

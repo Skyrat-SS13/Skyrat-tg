@@ -15,6 +15,10 @@
 	worn_icon_state = "m16"
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16/m16.ogg'
 	fire_sound_volume = 50
+	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
+	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
+	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
+	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
 

@@ -51,7 +51,6 @@
 	empty_indicator = FALSE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_MEDIUM
-	has_gun_safety = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
@@ -77,7 +76,6 @@
 	empty_indicator = FALSE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	weapon_weight = WEAPON_MEDIUM
-	has_gun_safety = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag
@@ -86,7 +84,7 @@
 /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx
 	name = "CFA Lynx Magazine (4.6x30mm)"
 	desc = "A magazine for the CFA Lynx. It has a small inscription on the base, '4.6x30mm'. Alt+click to reskin it."
-	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'	
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
 	icon_state = "lynx"
 	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_AP, AMMO_TYPE_RUBBER, AMMO_TYPE_INCENDIARY)
 	ammo_type = /obj/item/ammo_casing/c46x30mm

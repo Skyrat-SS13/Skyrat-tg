@@ -513,13 +513,12 @@
 	update_stat()
 	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD*2) && stat == DEAD )
 		become_husk(BURN)
-
 	med_hud_set_health()
-
 	if(stat == SOFT_CRIT)
 		add_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
 	else
 		remove_movespeed_modifier(/datum/movespeed_modifier/carbon_softcrit)
+	SEND_SIGNAL(src, COMSIG_CARBON_HEALTH_UPDATE)
 
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
@@ -1322,4 +1321,5 @@
 
 /mob/living/carbon/proc/attach_rot(mapload)
 	SIGNAL_HANDLER
-	AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)
+	if(mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD))
+		AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)

@@ -50,6 +50,12 @@
 
 /datum/antagonist/traitor/on_gain()
 	owner.special_role = job_rank
+
+	if(give_uplink)
+		owner.give_uplink(silent = TRUE, antag_datum = src)
+
+	uplink = owner.find_syndicate_uplink()
+
 	if(give_objectives)
 		forge_traitor_objectives()
 		forge_ending_objective()
@@ -59,15 +65,6 @@
 	pick_employer(faction)
 
 	traitor_flavor = strings(TRAITOR_FLAVOR_FILE, employer)
-
-	/*
-	SKYRAT EDIT START - AMBITIONS
-	if(give_uplink)
-		owner.give_uplink(silent = TRUE, antag_datum = src)
-
-	uplink = owner.find_syndicate_uplink()
-	SKYRAT EDIT END - AMBITIONS
-	*/
 
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 
@@ -107,7 +104,7 @@
 	/* SKYRAT EDIT REMOVAL
 	var/objective_count = 0
 
-	if ((GLOB.joined_player_list.len >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
+	if((GLOB.joined_player_list.len >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
 		is_hijacker = TRUE
 		objective_count++
 
@@ -117,8 +114,7 @@
 	// This does not give them 1 fewer objectives than intended.
 	for(var/i in objective_count to objective_limit - 1)
 		objectives += forge_single_generic_objective()
-	*/
-
+	*/ //SKYRAT EDIT END
 
 /**
  * ## forge_ending_objective
@@ -178,33 +174,29 @@
 			var/datum/objective/destroy/destroy_objective = new
 			destroy_objective.owner = owner
 			destroy_objective.find_target()
-			objectives += destroy_objective
-			return
+			return destroy_objective
 
 		if(prob(MAROON_PROB))
 			var/datum/objective/maroon/maroon_objective = new
 			maroon_objective.owner = owner
 			maroon_objective.find_target()
-			objectives += maroon_objective
-			return
+			return maroon_objective
 
 		var/datum/objective/assassinate/kill_objective = new
 		kill_objective.owner = owner
 		kill_objective.find_target()
-		objectives += kill_objective
-		return
+		return kill_objective
 
-	if(prob(DOWNLOAD_PROB) && !(locate(/datum/objective/download) in objectives) && !(owner.assigned_role.departments & DEPARTMENT_SCIENCE))
+	if(prob(DOWNLOAD_PROB) && !(locate(/datum/objective/download) in objectives) && !(owner.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_SCIENCE))
 		var/datum/objective/download/download_objective = new
 		download_objective.owner = owner
 		download_objective.gen_amount_goal()
-		objectives += download_objective
-		return
+		return download_objective
 
 	var/datum/objective/steal/steal_objective = new
 	steal_objective.owner = owner
 	steal_objective.find_target()
-	objectives += steal_objective
+	return steal_objective
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -229,7 +221,8 @@
 	data["phrases"] = jointext(GLOB.syndicate_code_phrase, ", ")
 	data["responses"] = jointext(GLOB.syndicate_code_response, ", ")
 	data["theme"] = traitor_flavor["ui_theme"]
-	data["code"] = uplink.unlock_code
+	data["code"] = uplink?.unlock_code
+	data["failsafe_code"] = uplink?.failsafe_code
 	data["intro"] = traitor_flavor["introduction"]
 	data["allies"] = traitor_flavor["allies"]
 	data["goal"] = traitor_flavor["goal"]

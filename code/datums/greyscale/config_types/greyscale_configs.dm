@@ -303,6 +303,7 @@
 	icon_file = 'icons/obj/items/cleric_mace.dmi'
 	json_config = 'code/datums/greyscale/json_configs/items/cleric_mace_worn_gold.json'
 
+/* SKYRAT EDIT START - Beret-lliant (moved to modular_skyrat/modules/berets/code/datums/config_types)
 /datum/greyscale_config/beret
 	name = "Beret"
 	icon_file = 'icons/obj/clothing/head/beret.dmi'
@@ -320,6 +321,7 @@
 /datum/greyscale_config/beret_badge/worn
 	name = "Beret With Badge Worn"
 	json_config = 'code/datums/greyscale/json_configs/beret_badge_worn.json'
+	SKYRAT EDIT END*/
 
 /datum/greyscale_config/suspenders
 	name = "Suspenders"

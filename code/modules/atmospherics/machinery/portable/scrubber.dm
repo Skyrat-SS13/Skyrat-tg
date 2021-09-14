@@ -70,6 +70,11 @@
 	var/atom/target = holding || get_turf(src)
 	scrub(target.return_air())
 
+	//SKYRAT EDIT ADDITION
+	for(var/turf/open/open_turf in view(3, src))
+		if(open_turf.pollution)
+			open_turf.pollution.ScrubAmount(POLLUTION_HEIGHT_DIVISOR)
+	//SKYRAT EDIT END
 
 	return ..()
 
@@ -197,7 +202,7 @@
 	if((!anchored && !movable) || !is_operational)
 		on = FALSE
 		update_appearance()
-	use_power = on ? ACTIVE_POWER_USE : IDLE_POWER_USE
+	update_use_power(on ? ACTIVE_POWER_USE : IDLE_POWER_USE)
 	if(!on)
 		return ..()
 

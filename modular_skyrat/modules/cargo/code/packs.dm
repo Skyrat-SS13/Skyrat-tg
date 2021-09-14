@@ -72,6 +72,13 @@
                     /obj/item/storage/box/medipens)
 	crate_name = "medipen crate"
 
+/datum/supply_pack/medical/medibeam
+	name = "Medical Beam Gun"
+	desc = "Nanotrasen offers you, for an exorbatant fee, the ability to lease one of their ERTs favorite gadgets, the Medical Beam Gun"
+	cost = 1000000 //Special case, we don't want to make this in terms of crates because having bikes be a million credits is the whole meme.
+	contains = list(/obj/item/gun/medbeam)
+	crate_name = "Medical Beamgun Crate"
+
 /datum/supply_pack/medical/hardsuit_medical
 	name = "Medical Hardsuit Crate"
 	desc = "Contains a single hardsuit, built to standard medical specifications."
@@ -90,16 +97,16 @@
 	crate_name = "compact defibrillator crate"
 
 /datum/supply_pack/medical/medigun
-	name = "CWM-479 Medigun Starter Kit"
-	desc = "Contains a single VeyMedical CWM-479 model medical gun with basic cells"
-	cost = CARGO_CRATE_VALUE * 15
+	name = "CWM-479 Medigun"
+	desc = "Contains a single VeyMedical CWM-479 model medical gun; cells not included."
+	cost = CARGO_CRATE_VALUE * 30
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/storage/briefcase/medicalgunset/standard)
 	crate_name = "CWM-479 Medigun Crate"
 
 /datum/supply_pack/medical/medicells
 	name = "Medicell Replacement Crate"
-	desc = "Contains a single replacement cell for each of the basic Medigun cells."
+	desc = "Contains the tier I Medigun cells."
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_MEDICAL
 	contains = list(/obj/item/medicell/brute1,
@@ -119,16 +126,6 @@
 	access_view = ACCESS_SECURITY
 	contains = list(/obj/item/clothing/suit/space/hardsuit/security)
 	crate_name = "security hardsuit crate"
-
-/datum/supply_pack/security/baton_peacekeeper
-	name = "Batons Crate"
-	desc = "Arm the Civil Protection Forces with three batons. Requires Security access to open."
-	cost = CARGO_CRATE_VALUE * 2
-	access_view = ACCESS_SECURITY
-	contains = list(/obj/item/melee/classic_baton/peacekeeper,
-					/obj/item/melee/classic_baton/peacekeeper,
-					/obj/item/melee/classic_baton/peacekeeper)
-	crate_name = "baton crate"
 
 /datum/supply_pack/security/croonsurplus
 	name = "Croon Weapons Crate"

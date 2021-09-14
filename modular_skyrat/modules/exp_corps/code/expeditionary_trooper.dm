@@ -8,7 +8,13 @@
 	selection_color = "#ffeeff"
 	minimal_player_age = 40
 	exp_requirements = 400
-	exp_type = EXP_TYPE_SCIENCE
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SCIENCE
+	exp_granted_type = EXP_TYPE_CREW
+
+	departments_list = list(
+		/datum/job_department/science,
+	)
 
 	outfit = /datum/outfit/job/expeditionary_trooper
 	plasmaman_outfit = /datum/outfit/plasmaman/mining
@@ -23,7 +29,7 @@
 
 	veteran_only = TRUE
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/job/expeditionary_trooper/after_spawn(mob/living/carbon/human/H, mob/M)
 	. = ..()

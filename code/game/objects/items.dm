@@ -113,8 +113,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	///What body parts are covered by the clothing when you wear it
 	var/body_parts_covered = 0
-	///Literally does nothing right now
-	var/gas_transfer_coefficient = 1
 	/// How likely a disease or chemical is to get through a piece of clothing
 	var/permeability_coefficient = 1
 	/// for electrical admittance/conductance (electrocution checks and shit)
@@ -253,7 +251,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 /obj/item/blob_act(obj/structure/blob/B)
 	if(B && B.loc == loc)
-		obj_destruction(MELEE)
+		atom_destruction(MELEE)
 
 /obj/item/ComponentInitialize()
 	. = ..()
@@ -288,6 +286,8 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		worn_icon = SSgreyscale.GetColoredIconByType(greyscale_config_worn, greyscale_colors)
 	if(greyscale_config_worn_digi) // Skyrat Edit
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
+	if(greyscale_config_worn_vox) // Skyrat Edit
+		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
 	if(greyscale_config_inhand_left)
 		lefthand_file = SSgreyscale.GetColoredIconByType(greyscale_config_inhand_left, greyscale_colors)
 	if(greyscale_config_inhand_right)
@@ -753,6 +753,17 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(flags & ITEM_SLOT_NECK)
 		owner.update_inv_neck()
 
+	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+	if(flags & ITEM_SLOT_VAGINA)
+		owner.update_inv_vagina()
+	if(flags & ITEM_SLOT_ANUS)
+		owner.update_inv_anus()
+	if(flags & ITEM_SLOT_NIPPLES)
+		owner.update_inv_nipples()
+	if(flags & ITEM_SLOT_PENIS)
+		owner.update_inv_penis()
+	//SKYRAT EDIT ADDITION END
+
 ///Returns the temperature of src. If you want to know if an item is hot use this proc.
 /obj/item/proc/get_temperature()
 	return heat
@@ -795,6 +806,13 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if (obj_flags & CAN_BE_HIT)
 		return ..()
 	return 0
+
+/obj/item/attack_basic_mob(mob/living/basic/user, list/modifiers)
+	if (obj_flags & CAN_BE_HIT)
+		return ..()
+	return 0
+
+attack_basic_mob
 
 /obj/item/burn()
 	if(!QDELETED(src))

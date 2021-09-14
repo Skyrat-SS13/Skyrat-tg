@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			GLOB.customizable_races[S.id] = TRUE
 		qdel(S)
 	if(!GLOB.roundstart_races.len)
-		GLOB.roundstart_races["human"] = TRUE
+		GLOB.roundstart_races[SPECIES_HUMAN] = TRUE
 
 /datum/species
 	mutant_bodyparts = list()
@@ -388,6 +388,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				C.dropItemToGround(I)
 			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
 				C.put_in_hands(new mutanthands())
+
+	if(ishuman(C))
+		var/mob/living/carbon/human/human = C
+		for(var/obj/item/organ/external/organ_path as anything in external_organs)
+			//Load a persons preferences from DNA
+			var/preference_name = human.dna.features[initial(organ_path.preference)]
+			var/obj/item/organ/external/new_organ = new organ_path(null, preference_name, human.body_type)
+			new_organ.Insert(human)
 
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)

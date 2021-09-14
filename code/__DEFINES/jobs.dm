@@ -51,20 +51,33 @@
 #define JOB_DISPLAY_ORDER_SECURITY_MEDIC 38 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_PRISONER 39
 #define JOB_DISPLAY_ORDER_BRIGOFF 40 //SKYRAT EDIT ADDITON
-#define JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE 41 //SKYRAT EDIT ADDITON - CENTRAL ROLES BELOW HERE!
-#define JOB_DISPLAY_ORDER_BLUESHIELD 42
+#define JOB_DISPLAY_ORDER_FLEETMASTER 41 //SKYRAT EDIT ADDITON - CENTRAL ROLES BELOW HERE!
+#define JOB_DISPLAY_ORDER_BRIDGE_OFFICER 42
+#define JOB_DISPLAY_ORDER_OPERATIONS_INSPECTOR 43
+#define JOB_DISPLAY_ORDER_DECK_CREW 44
+#define JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE 45
+#define JOB_DISPLAY_ORDER_BLUESHIELD 46
 
 
-#define DEPARTMENT_SECURITY (1<<0)
-#define DEPARTMENT_COMMAND (1<<1)
-#define DEPARTMENT_SERVICE (1<<2)
-#define DEPARTMENT_CARGO (1<<3)
-#define DEPARTMENT_ENGINEERING (1<<4)
-#define DEPARTMENT_SCIENCE (1<<5)
-#define DEPARTMENT_MEDICAL (1<<6)
-#define DEPARTMENT_SILICON (1<<7)
-#define DEPARTMENT_CENTRAL_COMMAND (1<<8) //SKYRAT EDIT CHANGE
-
+#define DEPARTMENT_UNASSIGNED "No department assigned"
+#define DEPARTMENT_BITFLAG_SECURITY (1<<0)
+#define DEPARTMENT_SECURITY "Security"
+#define DEPARTMENT_BITFLAG_COMMAND (1<<1)
+#define DEPARTMENT_COMMAND "Command"
+#define DEPARTMENT_BITFLAG_SERVICE (1<<2)
+#define DEPARTMENT_SERVICE "Service"
+#define DEPARTMENT_BITFLAG_CARGO (1<<3)
+#define DEPARTMENT_CARGO "Cargo"
+#define DEPARTMENT_BITFLAG_ENGINEERING (1<<4)
+#define DEPARTMENT_ENGINEERING "Engineering"
+#define DEPARTMENT_BITFLAG_SCIENCE (1<<5)
+#define DEPARTMENT_SCIENCE "Science"
+#define DEPARTMENT_BITFLAG_MEDICAL (1<<6)
+#define DEPARTMENT_MEDICAL "Medical"
+#define DEPARTMENT_BITFLAG_SILICON (1<<7)
+#define DEPARTMENT_SILICON "Silicon"
+#define DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND (1<<8) //SKYRAT EDIT CHANGE
+#define DEPARTMENT_NANOTRASEN_FLEET_COMMAND "Nanotrasen Fleet Command" //SKYRAT EDIT CHANGE
 
 /* Job datum job_flags */
 /// Whether the mob is announced on arrival.
@@ -77,6 +90,13 @@
 #define JOB_CREW_MEMBER (1<<3)
 /// Whether this job can be joined through the new_player menu.
 #define JOB_NEW_PLAYER_JOINABLE (1<<4)
+/// Whether this job appears in bold in the job menu.
+#define JOB_BOLD_SELECT_TEXT (1<<5)
+/// Reopens this position if we lose the player at roundstart.
+#define JOB_REOPEN_ON_ROUNDSTART_LOSS (1<<6)
+/// If the player with this job can have quirks assigned to him or not. Relevant for new player joinable jobs and roundstart antags.
+#define JOB_ASSIGN_QUIRKS (1<<7)
+
 
 #define FACTION_NONE "None"
 #define FACTION_STATION "Station"

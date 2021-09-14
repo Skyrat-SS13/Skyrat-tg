@@ -57,6 +57,7 @@
 		"titaniumglass",
 		"gas_filter",
 		"plasmaman_gas_filter",
+		"oven_tray"
 	)
 
 /datum/techweb_node/mmi
@@ -214,7 +215,6 @@
 		"circuit_multitool",
 		"comp_arithmetic",
 		"comp_clock",
-		"comp_combiner",
 		"comp_comparison",
 		"comp_concat",
 		"comp_concat_list",
@@ -228,15 +228,18 @@
 		"comp_index_table",
 		"comp_length",
 		"comp_light",
+		"comp_list_literal",
 		"comp_logic",
 		"comp_mmi",
 		"comp_module",
 		"comp_multiplexer",
 		"comp_not",
+		"comp_ntnet_receive",
+		"comp_ntnet_send",
 		"comp_pressuresensor",
 		"comp_radio",
-		"comp_ram",
 		"comp_random",
+		"comp_router",
 		"comp_select_query",
 		"comp_self",
 		"comp_soundemitter",
@@ -249,6 +252,7 @@
 		"comp_textcase",
 		"comp_tonumber",
 		"comp_tostring",
+		"comp_typecast",
 		"comp_typecheck",
 		"compact_remote_shell",
 		"component_printer",
@@ -270,6 +274,7 @@
 		"blood_pack",
 		"chem_dispenser",
 		"chem_heater",
+		"chem_mass_spec",
 		"chem_master",
 		"chem_pack",
 		"crewpinpointerprox",
@@ -316,6 +321,8 @@
 		"burn2medicell",
 		"toxin2medicell",
 		"oxy2medicell",
+		"tempmedicell",
+		"clotmedicell",
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
@@ -694,15 +701,31 @@
 	description = "Grants access to more complicated shell designs."
 	prereq_ids = list("basic_circuitry", "engineering")
 	design_ids = list(
-		"bci_implanter",
-		"bci_shell",
 		"bot_shell",
-		"door_shell",
 		"controller_shell",
+		"door_shell",
+		"gun_shell",
 		"money_bot_shell",
+		"scanner_gate_shell",
 		"scanner_shell",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+
+/datum/techweb_node/bci_shells
+	id = "bci_shells"
+	display_name = "Brain-Computer Interfaces"
+	description = "Grants access to biocompatable shell designs and components."
+	prereq_ids = list("adv_shells")
+	design_ids = list(
+		"bci_implanter",
+		"bci_shell",
+		"comp_bar_overlay",
+		"comp_bci_action",
+		"comp_target_intercept",
+		"comp_counter_overlay",
+		"comp_object_overlay",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 500)
 
 /datum/techweb_node/movable_shells_tech
 	id = "movable_shells"
@@ -1211,6 +1234,7 @@
 		"rangemod",
 		"superresonator",
 		"triggermod",
+		"mecha_kineticgun",
 	)//e a r l y    g a  m e)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1360,7 +1384,6 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"medigunspeed",
-		"nightstick_conversion"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)

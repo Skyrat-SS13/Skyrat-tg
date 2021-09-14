@@ -3,7 +3,7 @@
 
 /area/awaymission/black_mesa/outside
 	name = "Black Mesa Outside"
-	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	static_lighting = FALSE
 
 /obj/structure/fluff/server_rack
 	name = "Server Rack"
@@ -351,7 +351,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Stop right there!"
+	speak = list("Stop right there!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -365,7 +365,7 @@
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/item/melee/classic_baton)
+	loot = list(/obj/item/melee/baton)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(FACTION_XEN)
@@ -418,7 +418,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Hey, freeman! Over here!"
+	speak = list("Hey, freeman! Over here!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -495,10 +495,10 @@
 	name = "mob placer"
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = "mobspawner"
-	var/list/possible_mobs
+	var/list/possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 
 /obj/effect/random_mob_placer/Initialize(mapload)
-	..()
+	. = ..()
 	var/mob/picked_mob = pick(possible_mobs)
 	new picked_mob(loc)
 	return INITIALIZE_HINT_QDEL

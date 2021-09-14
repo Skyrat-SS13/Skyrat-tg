@@ -63,6 +63,8 @@
 
 	///for nonhuman bodypart (e.g. monkey)
 	var/animal_origin
+	//for all bodyparts
+	var/part_origin = HUMAN_BODY
 	///whether it can be dismembered with a weapon.
 	var/dismemberable = 1
 
@@ -115,6 +117,9 @@
 	var/obj/item/self_grasp/grasped_by
 	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	var/organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
+
+	///A list of all the external organs we've got stored to draw horns, wings and stuff with (special because we are actually in the limbs unlike normal organs :/ )
+	var/list/obj/item/organ/external/external_organs = list()
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -795,8 +800,15 @@
 		no_update = TRUE
 
 	if(HAS_TRAIT(src, TRAIT_PLASMABURNT) && is_organic_limb())
-		species_id = "plasmaman"
+		species_id = SPECIES_PLASMAMAN
 		dmg_overlay_type = ""
+		should_draw_gender = FALSE
+		should_draw_greyscale = FALSE
+		no_update = TRUE
+
+	if(HAS_TRAIT(limb_owner, TRAIT_INVISIBLE_MAN) && is_organic_limb())
+		species_id = "invisible" //overrides species_id
+		dmg_overlay_type = "" //no damage overlay shown when invisible since the wounds themselves are invisible.
 		should_draw_gender = FALSE
 		should_draw_greyscale = FALSE
 		no_update = TRUE
@@ -895,9 +907,8 @@
 			limb.icon_state = "[animal_origin]_[body_zone]"
 
 		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 			limb_em_block.dir = image_dir
-			limb_em_block.color = GLOB.em_block_color
 			limb.overlays += limb_em_block
 		return
 
@@ -911,9 +922,8 @@
 		limb.icon_state = "[body_zone]" //Inorganic limbs are agender
 
 		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 			limb_em_block.dir = image_dir
-			limb_em_block.color = GLOB.em_block_color
 			limb.overlays += limb_em_block
 
 		if(aux_zone)
@@ -921,9 +931,8 @@
 			. += aux
 
 			if(blocks_emissive)
-				var/mutable_appearance/aux_em_block = mutable_appearance(aux.icon, aux.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
 				aux_em_block.dir = image_dir
-				aux_em_block.color = GLOB.em_block_color
 				aux.overlays += aux_em_block
 
 		return
@@ -954,15 +963,13 @@
 			if(aux_zone)
 				aux.color = "#[draw_color]"
 	if(blocks_emissive)
-		var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 		limb_em_block.dir = image_dir
-		limb_em_block.color = GLOB.em_block_color
 		limb.overlays += limb_em_block
 
 		if(aux_zone)
-			var/mutable_appearance/aux_em_block = mutable_appearance(aux.icon, aux.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
 			aux_em_block.dir = image_dir
-			aux_em_block.color = GLOB.em_block_color
 			aux.overlays += aux_em_block
 */
 //SKYRAT EDIT REMOVAL END

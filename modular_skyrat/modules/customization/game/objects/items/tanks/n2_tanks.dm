@@ -19,6 +19,7 @@
 
 /obj/item/tank/internals/nitrogen/belt
 	icon = 'modular_skyrat/master_files/icons/obj/tank.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/belt.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"

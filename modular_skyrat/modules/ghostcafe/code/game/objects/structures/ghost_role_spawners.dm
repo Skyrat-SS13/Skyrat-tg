@@ -64,13 +64,13 @@
 		to_chat(new_spawn,"<span class='warning'><b>Ghosting is free!</b></span>")
 		//to_chat(new_spawn,"<span class='narsiesmall'>Be warned: People who opt out of EORG will come here. Do not make the area uninhabitable and do NOT commit EORG. This is a safe-zone. If you attack people in EORG, you will be banned for griefing.</span>")
 		var/datum/action/toggle_dead_chat_mob/D = new(new_spawn)
+		new_spawn.put_in_hand(new /obj/item/storage/box/syndie_kit/chameleon/ghostcafe, LEFT_HANDS, forced = TRUE)
 		D.Grant(new_spawn)
 
 /datum/outfit/ghostcafe
 	name = "ID, jumpsuit and shoes"
 	uniform = /obj/item/clothing/under/color/random
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	r_hand = /obj/item/storage/box/syndie_kit/chameleon/ghostcafe
 	id = /obj/item/card/id/advanced/ghost_cafe
 
 /datum/action/toggle_dead_chat_mob

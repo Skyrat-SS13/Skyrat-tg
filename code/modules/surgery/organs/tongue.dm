@@ -34,13 +34,13 @@
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/russian,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/neorusskya,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
 		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
-		/datum/language/japanese // SKYRAT EDIT - customization - extra languages
+		/datum/language/yangyu // SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -107,6 +107,17 @@
 		*/
 		message = lizard_ecks.Replace(message, "ecks$1")
 		message = lizard_eckS.Replace(message, "ECKS$1")
+		//SKYRAT EDIT START: Adding russian version to autohiss
+		if(CONFIG_GET(flag/russian_text_formation))
+			var/static/regex/lizard_hiss_ru = new("с+", "g")
+			var/static/regex/lizard_hiSS_ru = new("С+", "g")
+			message = replacetext(message, "з", "с")
+			message = replacetext(message, "З", "С")
+			message = replacetext(message, "ж", "ш")
+			message = replacetext(message, "Ж", "Ш")
+			message = lizard_hiss_ru.Replace(message, "ссс")
+			message = lizard_hiSS_ru.Replace(message, "ССС")
+		//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/lizard/silver
@@ -222,6 +233,15 @@
 		message = fly_buZZ.Replace(message, "ZZZ")
 		message = replacetext(message, "s", "z")
 		message = replacetext(message, "S", "Z")
+	//SKYRAT EDIT START: Adding russian version to autohiss
+		if(CONFIG_GET(flag/russian_text_formation))
+			var/static/regex/fly_buzz_ru = new("з+", "g")
+			var/static/regex/fly_buZZ_ru = new("З+", "g")
+			message = fly_buzz_ru.Replace(message, "ззз")
+			message = fly_buZZ_ru.Replace(message, "ЗЗЗ")
+			message = replacetext(message, "с", "з")
+			message = replacetext(message, "С", "З")
+	//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly/Initialize(mapload)
@@ -413,9 +433,9 @@
 	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
 	icon_state = "electrotongue"
 	say_mod = "crackles"
+	taste_sensitivity = 10 // ethereal tongues function (very loosely) like a gas spectrometer: vaporising a small amount of the food and allowing it to pass to the nose, resulting in more sensitive taste
 	attack_verb_continuous = list("shocks", "jolts", "zaps")
 	attack_verb_simple = list("shock", "jolt", "zap")
-	sense_of_taste = FALSE
 	var/static/list/languages_possible_ethereal = typecacheof(list(
 		/datum/language/common,
 		/datum/language/draconic,

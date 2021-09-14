@@ -6,12 +6,13 @@
 /obj/machinery/door/airlock/Move()
 	if(multi_tile)
 		SetBounds()
-	. = ..()
+	return ..()
 
 /obj/machinery/door/airlock/Destroy()
 	if(filler)
 		qdel(filler)
-	. = ..()
+		filler = null
+	return ..()
 
 /obj/machinery/door/airlock/proc/SetBounds()
 	if(!multi_tile)
@@ -80,6 +81,11 @@
 
 /obj/airlock_filler_object/singularity_pull(S, current_size)
 	return
+
+/obj/airlock_filler_object/Destroy(force)
+	if(parent_airlock)
+		parent_airlock = null
+	return ..()
 
 //ASSEMBLYS!
 /obj/structure/door_assembly/multi_tile

@@ -77,29 +77,16 @@
 
 /datum/biohazard_blob_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	all_resin = null
+	active_resin = null
+	our_core = null
+	other_structures = null
 	return ..()
 
 /datum/biohazard_blob_controller/proc/CoreRetaliated()
 	structure_progression += PROGRESSION_RETALIATED
 	active_resin.Cut()
 	ActivateAdjacentResinRecursive(get_turf(our_core), 4)
-
-/datum/biohazard_blob_controller/proc/CoreDeath()
-	active_resin.Cut()
-	for(var/t in all_resin)
-		var/obj/structure/biohazard_blob/resin/a_resin = t
-		a_resin.color = null
-		if(a_resin.blooming)
-			a_resin.blooming = FALSE
-			a_resin.set_light(0)
-			a_resin.update_overlays()
-	for(var/obj/structure/biohazard_blob/structure/conditioner/c in other_structures)
-		var/obj/structure/biohazard_blob/structure/our_structure = c
-		qdel(our_structure)
-	for(var/obj/structure/biohazard_blob/structure/spawner/s in other_structures)
-		var/obj/structure/biohazard_blob/structure/our_structure = s
-		qdel(our_structure)
-	return
 
 /datum/biohazard_blob_controller/proc/TrySpreadResin(obj/structure/biohazard_blob/resin/spreaded_resin)
 	. = RESIN_CANT_SPREAD

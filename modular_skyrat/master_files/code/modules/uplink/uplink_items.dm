@@ -82,6 +82,7 @@
 	item = /obj/item/book/granter/martial/cqc
 	cost = 23
 	surplus = 17
+
 // Removed from the uplink for the time being.
 /*datum/uplink_item/stealthy_weapons/cqcplus
 	name = "CQC+ Manual"
@@ -94,7 +95,7 @@
 /datum/uplink_item/stealthy_weapons/telescopicbaton
 	name = "Telescopic Baton"
 	desc = "A telescopic baton, exactly like the ones heads are issued. Good for knocking people down briefly."
-	item = /obj/item/melee/classic_baton/telescopic
+	item = /obj/item/melee/baton/telescopic
 	cost = 2
 	surplus = 0
 
@@ -121,6 +122,15 @@
 	item = /obj/item/radio/headset/chameleon/advanced
 	cost = 4 //Also a BIGBOY tool. Though inconvienent to wield, this allows the wearer to spy and interact with any one frequency they desire, even without the proper encryption key, along with flashbang protection and loudmode. Cannot breach syndiecomms by itself.
 
+/datum/uplink_item/stealthy_tools/syndieshotglasses
+	name = "Extra Large Syndicate Shotglasses"
+	desc = "These modified shot glasses can hold up to 50 units of booze while looking like a regular 15 unit model \
+	guaranteed to knock someone on their ass with a hearty dose of bacchus blessing. Look for the Snake underneath \
+	to tell these are the real deal. Box of 7."
+	item = /obj/item/storage/box/syndieshotglasses
+	cost = 2 //These are taken nearly exactly from Goon, very fun tool.
+	restricted_roles = list("Bartender")
+
 //EXPLOSIVES
 /datum/uplink_item/explosives/buzzkill_traitor
 	name = "Buzzkill Grenade Box"
@@ -129,12 +139,18 @@
 	item = /obj/item/storage/box/syndie_kit/bee_grenades
 	cost = 10
 
-
 /datum/uplink_item/explosives/viscerators_traitor
 	name = "Viscerator Delivery Grenade"
 	desc = "A unique grenade that deploys a swarm of viscerators upon activation, which will chase down and shred \
 			any non-operatives in the area."
 	item = /obj/item/grenade/spawnergrenade/manhacks
+	cost = 7
+	surplus = 35
+
+/datum/uplink_item/explosives/nukeop_traitor
+	name = "Nuclear Delivery Grenade"
+	desc = "A very confusing grenade containing 2 dehydrated nuclear operatives. Stand back when primed."
+	item = /obj/item/grenade/spawnergrenade/therealnuke
 	cost = 7
 	surplus = 35
 
@@ -233,12 +249,6 @@
 	item = /obj/item/ammo_box/magazine/m12g/slug
 
 //SUITS
-/datum/uplink_item/suits/hardsuit/elite_traitor
-	name = "Elite Syndicate Hardsuit"
-	desc = "An upgraded, elite version of the Syndicate hardsuit. It features fireproofing, and also \
-			provides the user with superior armor and mobility compared to the standard Syndicate hardsuit."
-	item = /obj/item/clothing/suit/space/hardsuit/syndi/elite
-	cost = 10
 
 /datum/uplink_item/suits/standard_armor
 	name = "Standard Armor Vest"
@@ -349,25 +359,38 @@
 	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/cryomancer
 	cost = 20
 
+/datum/uplink_item/loadout_skyrat/doctordeath
+	name = "Doctor Death bundle"
+	desc = "Be your very own mad scientist with this toxic bundle! Warning, license void if poisons used on self. Read bottom of bag for more information."
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/doctordeath
+	cost = 25
+
+/datum/uplink_item/loadout_skyrat/donkcoshill
+	name = "Donk Co. Shill bundle"
+	desc = "Love Donk Pockets? Want to shill Donk Co. Toys? This bundle is for you! Contains some DonkSoft guns, a vending machine, restocking units, and a box of Donk Pockets."
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/donkshillkit
+	cost = 10
+
+/datum/uplink_item/loadout_skyrat/downtownspecial
+	name = "Downtown Special bundle"
+	desc = "Ayyy fuggedaboudit! This bundle contains everything to be your own one man mafioso. Including an icon of the Virgin Mary for your own authentic mafia nickname. Gang members not included."
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/downtownspecial
+	cost = 25
+
+/datum/uplink_item/loadout_skyrat/ocelotfoxtrot
+	name = "Snake Eater bundle"
+	desc = "A kit themed around one certain gun spinning cat. Includes his famous colt special, and personalised ammo."
+	item = /obj/item/storage/box/syndie_kit/loadout/ocelotfoxtrot
+	cost = 15
+
 /datum/uplink_item/loadout_skyrat/nt_impostor
-	name = "Corporate Deceit Bundle"
+	name = "Corporate Deceit bundle"
 	desc = "Don the identities of the most powerful men and women in Nanotrasen, and pull strings from the shadows as you please with this specialized kit."
 	item = /obj/item/storage/box/syndie_kit/loadout/nt_impostor
 	cost = 20
 
 /datum/uplink_item/loadout_skyrat/lasermanbundle
-	name = "Laserman Bundle"
+	name = "Laserman bundle"
 	desc = "Themed after an infamous syndicate operative with a particular fighting style, this kit is both a fashionable throwback and a uniquely useful combative loadout."
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 20
-
-//Badass section down here
-///datum/uplink_item/loadout_skyrat/robohand
-//	name = "Robohand Bundle"
-//	desc = "Themed after the infamous terrorist(or not), Johnny Robohand. You have no reason to fail your objectives with this kit. The gun inside requires your arm to be robotic. It comes with a robotic replacement arm. Wake the fuck up, samurai."
-//	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
-//	cost = 35
-
-///datum/uplink_item/loadout_skyrat/robohand/purchase(mob/user, datum/component/uplink/U)
-//	. = ..()
-//	notify_ghosts(message = "[user] has purchased the Johnny Robohand bundle, watch him be a badass!", ghost_sound = 'modular_skyrat/modules/3516/sound/wakeup.ogg', source = user) //Everyone needs to know he's a badass
