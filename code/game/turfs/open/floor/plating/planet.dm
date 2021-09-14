@@ -1,4 +1,5 @@
-/turf/open/floor/plating/dirt
+/* SKYRAT EDIT REMOVAL
+/turf/open/floor/planetary/dirt
 	gender = PLURAL
 	name = "dirt"
 	desc = "Upon closer examination, it's still dirt."
@@ -15,25 +16,25 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
 
-/turf/open/floor/plating/dirt/setup_broken_states()
+/turf/open/floor/planetary/dirt/setup_broken_states()
 	return list("dirt")
 
-/turf/open/floor/plating/dirt/dark
+/turf/open/floor/planetary/dirt/dark
 	icon_state = "greenerdirt"
 	base_icon_state = "greenerdirt"
 
-/turf/open/floor/plating/dirt/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+/turf/open/floor/planetary/dirt/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
 	return
 
-/turf/open/floor/plating/dirt/jungle
+/turf/open/floor/planetary/dirt/jungle
 	slowdown = 0.5
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
-/turf/open/floor/plating/dirt/jungle/dark
+/turf/open/floor/planetary/dirt/jungle/dark
 	icon_state = "greenerdirt"
 	base_icon_state = "greenerdirt"
 
-/turf/open/floor/plating/dirt/jungle/wasteland //Like a more fun version of living in Arizona.
+/turf/open/floor/planetary/dirt/jungle/wasteland //Like a more fun version of living in Arizona.
 	name = "cracked earth"
 	desc = "Looks a bit dry."
 	icon = 'icons/turf/floors.dmi'
@@ -42,10 +43,10 @@
 	slowdown = 1
 	var/floor_variance = 15
 
-/turf/open/floor/plating/dirt/jungle/wasteland/setup_broken_states()
+/turf/open/floor/planetary/dirt/jungle/wasteland/setup_broken_states()
 	return list("[initial(icon_state)]0")
 
-/turf/open/floor/plating/dirt/jungle/wasteland/Initialize()
+/turf/open/floor/planetary/dirt/jungle/wasteland/Initialize()
 	.=..()
 	if(prob(floor_variance))
 		icon_state = "[initial(icon_state)][rand(0,12)]"
@@ -54,7 +55,7 @@
 	name = "jungle grass"
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
-	baseturfs = /turf/open/floor/plating/dirt
+	baseturfs = /turf/open/floor/planetary/dirt
 	desc = "Greener on the other side."
 	icon_state = "junglegrass"
 	base_icon_state = "junglegrass"
@@ -64,4 +65,5 @@
 	mineralSpawnChanceList = list(/obj/item/stack/ore/uranium = 5, /obj/item/stack/ore/diamond = 1, /obj/item/stack/ore/gold = 10,
 		/obj/item/stack/ore/silver = 12, /obj/item/stack/ore/plasma = 20, /obj/item/stack/ore/iron = 40, /obj/item/stack/ore/titanium = 11,
 		/obj/item/stack/ore/bluespace_crystal = 1)
-	baseturfs = /turf/open/floor/plating/dirt/dark
+	baseturfs = /turf/open/floor/planetary/dirt/dark
+*/

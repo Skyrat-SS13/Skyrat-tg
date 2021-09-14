@@ -38280,6 +38280,23 @@
 /mob/living/simple_animal/hostile/retaliate/ghost,
 /turf/open/floor/iron/dark,
 /area/maintenance/starboard/fore)
+"cEe" = (
+/obj/structure/table/wood,
+/obj/item/folder{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/storage/dice{
+	pixel_x = -4
+	},
+/obj/item/pen/red{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken7"
+	},
+/area/maintenance/starboard/fore)
 "cEf" = (
 /obj/structure/chair/sofa/left{
 	color = "#c45c57";
@@ -43912,38 +43929,6 @@
 	},
 /turf/open/floor/engine,
 /area/engineering/gravity_generator)
-"eAk" = (
-/obj/effect/landmark/start/ai/secondary,
-/obj/item/radio/intercom/directional/north{
-	freerange = 1;
-	listening = 0;
-	name = "Custom Channel";
-	pixel_x = 8
-	},
-/obj/item/radio/intercom/directional/east{
-	freerange = 1;
-	listening = 0;
-	name = "Common Channel"
-	},
-/obj/item/radio/intercom/directional/south{
-	freerange = 1;
-	frequency = 1447;
-	listening = 0;
-	name = "Private Channel";
-	pixel_x = 8
-	},
-/obj/machinery/door/window{
-	base_state = "leftsecure";
-	dir = 8;
-	icon_state = "leftsecure";
-	layer = 4.1;
-	name = "Tertiary AI Core Access";
-	atom_integrity = 300;
-	pixel_x = -3;
-	req_access_txt = "16"
-	},
-/turf/open/floor/circuit/red,
-/area/ai_monitored/turret_protected/ai)
 "eAv" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -44796,28 +44781,6 @@
 /obj/structure/chair/stool/bar/directional/north,
 /turf/open/floor/iron,
 /area/commons/fitness/recreation)
-"ePV" = (
-/obj/machinery/turretid{
-	icon_state = "control_stun";
-	name = "AI Chamber turret control";
-	pixel_x = 3;
-	pixel_y = 28
-	},
-/obj/machinery/door/window{
-	base_state = "leftsecure";
-	dir = 8;
-	icon_state = "leftsecure";
-	name = "Primary AI Core Access";
-	atom_integrity = 300;
-	req_access_txt = "16"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "AI Core shutters";
-	name = "AI Core Shutter"
-	},
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/engine,
-/area/ai_monitored/turret_protected/ai)
 "eQf" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/bridge_pipe/orange/visible{
@@ -46136,6 +46099,21 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/commons/toilet/restrooms)
+"fwg" = (
+/obj/structure/table,
+/obj/item/toy/cards/deck{
+	pixel_x = -9
+	},
+/obj/item/storage/dice{
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/item/storage/photo_album/prison{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/turf/open/floor/iron/grimy,
+/area/security/prison)
 "fwx" = (
 /turf/closed/wall,
 /area/engineering/storage/tech)
@@ -48257,23 +48235,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/storage)
-"gsR" = (
-/obj/structure/table/wood,
-/obj/item/folder{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/obj/item/storage/dice{
-	pixel_x = -4
-	},
-/obj/item/pen/red{
-	pixel_x = 4;
-	pixel_y = 4
-	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken7"
-	},
-/area/maintenance/starboard/fore)
 "gsT" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -61042,21 +61003,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/fore)
-"lSv" = (
-/obj/structure/table,
-/obj/item/toy/cards/deck{
-	pixel_x = -9
-	},
-/obj/item/storage/dice{
-	pixel_x = -8;
-	pixel_y = 11
-	},
-/obj/item/storage/photo_album/prison{
-	pixel_x = 8;
-	pixel_y = -3
-	},
-/turf/open/floor/iron/grimy,
-/area/security/prison)
 "lSB" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -62693,6 +62639,30 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/bar/atrium)
+"mCH" = (
+/obj/machinery/door/window{
+	base_state = "rightsecure";
+	dir = 4;
+	icon_state = "rightsecure";
+	name = "Primary AI Core Access";
+	atom_integrity = 300;
+	req_access_txt = "16"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "AI Core shutters";
+	name = "AI Core Shutter"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/light_switch/directional/north{
+	pixel_x = 8
+	},
+/obj/machinery/requests_console/directional/south{
+	department = "AI";
+	departmentType = 5;
+	name = "AI Requests Console"
+	},
+/turf/open/floor/engine,
+/area/ai_monitored/turret_protected/ai)
 "mCS" = (
 /obj/effect/turf_decal/stripes/end,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -65007,6 +64977,38 @@
 /obj/structure/sign/warning/securearea,
 /turf/closed/wall,
 /area/command/bridge)
+"nKK" = (
+/obj/effect/landmark/start/ai/secondary,
+/obj/item/radio/intercom/directional/north{
+	freerange = 1;
+	listening = 0;
+	name = "Custom Channel";
+	pixel_x = -8
+	},
+/obj/item/radio/intercom/directional/west{
+	freerange = 1;
+	listening = 0;
+	name = "Common Channel"
+	},
+/obj/item/radio/intercom/directional/south{
+	freerange = 1;
+	frequency = 1447;
+	listening = 0;
+	name = "Private Channel";
+	pixel_x = -8
+	},
+/obj/machinery/door/window{
+	base_state = "rightsecure";
+	dir = 4;
+	icon_state = "rightsecure";
+	layer = 4.1;
+	name = "Secondary AI Core Access";
+	atom_integrity = 300;
+	pixel_x = 4;
+	req_access_txt = "16"
+	},
+/turf/open/floor/circuit/red,
+/area/ai_monitored/turret_protected/ai)
 "nKO" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -65119,6 +65121,38 @@
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"nMp" = (
+/obj/effect/landmark/start/ai/secondary,
+/obj/item/radio/intercom/directional/north{
+	freerange = 1;
+	listening = 0;
+	name = "Custom Channel";
+	pixel_x = 8
+	},
+/obj/item/radio/intercom/directional/east{
+	freerange = 1;
+	listening = 0;
+	name = "Common Channel"
+	},
+/obj/item/radio/intercom/directional/south{
+	freerange = 1;
+	frequency = 1447;
+	listening = 0;
+	name = "Private Channel";
+	pixel_x = 8
+	},
+/obj/machinery/door/window{
+	base_state = "leftsecure";
+	dir = 8;
+	icon_state = "leftsecure";
+	layer = 4.1;
+	name = "Tertiary AI Core Access";
+	atom_integrity = 300;
+	pixel_x = -3;
+	req_access_txt = "16"
+	},
+/turf/open/floor/circuit/red,
+/area/ai_monitored/turret_protected/ai)
 "nMw" = (
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/ausbushes/grassybush,
@@ -69224,38 +69258,6 @@
 /obj/effect/landmark/start/expeditionary_corps,
 /turf/open/floor/iron,
 /area/command/gateway)
-"ptO" = (
-/obj/effect/landmark/start/ai/secondary,
-/obj/item/radio/intercom/directional/north{
-	freerange = 1;
-	listening = 0;
-	name = "Custom Channel";
-	pixel_x = -8
-	},
-/obj/item/radio/intercom/directional/west{
-	freerange = 1;
-	listening = 0;
-	name = "Common Channel"
-	},
-/obj/item/radio/intercom/directional/south{
-	freerange = 1;
-	frequency = 1447;
-	listening = 0;
-	name = "Private Channel";
-	pixel_x = -8
-	},
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 4;
-	icon_state = "rightsecure";
-	layer = 4.1;
-	name = "Secondary AI Core Access";
-	atom_integrity = 300;
-	pixel_x = 4;
-	req_access_txt = "16"
-	},
-/turf/open/floor/circuit/red,
-/area/ai_monitored/turret_protected/ai)
 "ptQ" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -70637,6 +70639,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cargo/miningoffice)
+"pVr" = (
+/obj/docking_port/stationary/small{
+	dir = 8;
+	name = "SS13: Auxiliary Dock, Station-Maintenance"
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "pVL" = (
 /obj/structure/bed,
 /obj/machinery/iv_drip,
@@ -72272,30 +72281,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/security/prison)
-"qKg" = (
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 4;
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	atom_integrity = 300;
-	req_access_txt = "16"
-	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "AI Core shutters";
-	name = "AI Core Shutter"
-	},
-/obj/effect/turf_decal/delivery,
-/obj/machinery/light_switch/directional/north{
-	pixel_x = 8
-	},
-/obj/machinery/requests_console/directional/south{
-	department = "AI";
-	departmentType = 5;
-	name = "AI Requests Console"
-	},
-/turf/open/floor/engine,
-/area/ai_monitored/turret_protected/ai)
 "qKy" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -84082,6 +84067,28 @@
 	},
 /turf/open/floor/iron/dark,
 /area/service/kitchen)
+"vLm" = (
+/obj/machinery/turretid{
+	icon_state = "control_stun";
+	name = "AI Chamber turret control";
+	pixel_x = 3;
+	pixel_y = 28
+	},
+/obj/machinery/door/window{
+	base_state = "leftsecure";
+	dir = 8;
+	icon_state = "leftsecure";
+	name = "Primary AI Core Access";
+	atom_integrity = 300;
+	req_access_txt = "16"
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "AI Core shutters";
+	name = "AI Core Shutter"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/engine,
+/area/ai_monitored/turret_protected/ai)
 "vLw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -95450,7 +95457,7 @@ cpx
 nAW
 xae
 jOl
-lSv
+fwg
 aav
 aUz
 aeU
@@ -100328,7 +100335,7 @@ aer
 acm
 aaa
 aaa
-cry
+pVr
 aaa
 aaa
 cpx
@@ -117467,7 +117474,7 @@ aAg
 aAg
 asZ
 asZ
-ptO
+nKK
 asZ
 asZ
 aAg
@@ -118238,7 +118245,7 @@ aaw
 aaN
 cdY
 cdZ
-ePV
+vLm
 cdY
 abS
 acd
@@ -118752,7 +118759,7 @@ aaI
 aaU
 cdZ
 cdY
-qKg
+mCH
 cdY
 nhd
 acj
@@ -119523,7 +119530,7 @@ asZ
 asZ
 aAg
 asZ
-eAk
+nMp
 asZ
 aAg
 asZ
@@ -122896,7 +122903,7 @@ cIX
 cIX
 cIV
 dQj
-gsR
+cEe
 cIi
 pFG
 jLU

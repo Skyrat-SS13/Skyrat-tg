@@ -179,7 +179,7 @@
 	required_atoms = list(/mob/living/carbon/human)
 	route = PATH_VOID
 	///soundloop for the void theme
-	var/datum/looping_sound/void_loop/sound_loop
+	var/datum/looping_sound_skyrat/void_loop/sound_loop //SKYRAT EDIT CHANGE
 	///Reference to the ongoing voidstrom that surrounds the heretic
 	var/datum/weather/void_storm/storm
 

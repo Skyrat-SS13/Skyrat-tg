@@ -40,10 +40,12 @@ require only minor tweaks.
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
 #define ZTRAIT_ROCKPLANET_RUINS "Rockplanet Ruins" //SKYRAT EDIT - Adds Ruins to Rockplanet mining map
 
+/* SKYRAT EDIT REMOVAL
 // boolean - weather types that occur on the level
 #define ZTRAIT_SNOWSTORM "Weather_Snowstorm"
 #define ZTRAIT_ASHSTORM "Weather_Ashstorm"
 #define ZTRAIT_VOIDSTORM "Weather_Voidstorm"
+*/
 
 // number - bombcap is multiplied by this before being applied to bombs
 #define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
@@ -69,14 +71,13 @@ require only minor tweaks.
 
 // default trait definitions, used by SSmapping
 #define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)
-#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_STATION = TRUE)
-#define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = CROSSLINKED, ZTRAIT_SPACE_RUINS = TRUE)
+#define ZTRAITS_STATION list(ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_STATION = TRUE) //SKYRAT EDIT CHANGE
+#define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_SPACE_RUINS = TRUE) //SKYRAT EDIT CHANGE
 #define ZTRAITS_LAVALAND list(\
 	ZTRAIT_MINING = TRUE, \
-	ZTRAIT_ASHSTORM = TRUE, \
 	ZTRAIT_LAVA_RUINS = TRUE, \
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
-	ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface)
+	ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface) //SKYRAT EDIT CHANGE
 
 #define DL_NAME "name"
 #define DL_TRAITS "traits"

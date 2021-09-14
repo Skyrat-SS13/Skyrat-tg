@@ -6,3 +6,5 @@
 #define SEC_RESTRICTED_QUIRKS "Blind" = TRUE, "Brain Tumor" = TRUE, "Deaf" = TRUE, "Paraplegic" = TRUE, "Mute" = TRUE, "Foreigner" = TRUE, "Pacifist" = TRUE, "Chunky Fingers" = TRUE, "Nymphomania" = TRUE
 #define HEAD_RESTRICTED_QUIRKS "Blind" = TRUE, "Deaf" = TRUE, "Mute" = TRUE, "Foreigner" = TRUE, "Chunky Fingers" = TRUE, "Nymphomania" = TRUE
 #define TECH_RESTRICTED_QUIRKS "Chunky Fingers" = TRUE
+
+#define FACTION_TRADERSHIP "Tradership"

@@ -40,6 +40,7 @@
 /turf/open/floor/plating/attackby(obj/item/C, mob/user, params)
 	if(..())
 		return
+		/* SKYRAT EDIT CHANGE
 	if(istype(C, /obj/item/stack/rods) && attachment_holes)
 		if(broken || burnt)
 			if(!iscyborg(user))
@@ -74,7 +75,10 @@
 				to_chat(user, span_warning("This section is too damaged to support a tile! Use a welding tool to fix the damage."))
 			else
 				to_chat(user, span_warning("This section is too damaged to support a tile! Use a welding tool or a plating repair tool to fix the damage."))
-	else if(istype(C, /obj/item/cautery/prt)) //plating repair tool
+	*/
+	try_place_tile(C, user, attachment_holes, (broken || burnt))
+	//SKYRAT EDIT END
+	if(istype(C, /obj/item/cautery/prt)) //plating repair tool
 		if((broken || burnt) && C.use_tool(src, user, 0, volume=80))
 			to_chat(user, span_danger("You fix some dents on the broken plating."))
 			icon_state = base_icon_state

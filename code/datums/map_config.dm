@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 //used for holding information about unique properties of maps
 //feed it json files that match the datum layout
 //defaults to box
@@ -26,10 +27,10 @@
 
 	var/allow_custom_shuttles = TRUE
 	var/shuttles = list(
-		"cargo" = "cargo_skyrat",
+		"cargo" = "cargo_box",
 		"ferry" = "ferry_fancy",
 		"whiteship" = "whiteship_box",
-		"emergency" = "emergency_skyrat") //SKYRAT EDIT CHANGE
+		"emergency" = "emergency_box")
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
@@ -107,8 +108,6 @@
 		log_world("map_config shuttles is not a list!")
 		return
 
-	shuttles["emergency"] = "emergency_skyrat"
-
 	traits = json["traits"]
 	// "traits": [{"Linkage": "Cross"}, {"Space Ruins": true}]
 	if (islist(traits))
@@ -160,3 +159,4 @@
 
 /datum/map_config/proc/MakeNextMap()
 	return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")
+*/

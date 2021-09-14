@@ -1,6 +1,6 @@
 // Atmos types used for planetary airs
 /datum/atmosphere/lavaland
-	id = LAVALAND_DEFAULT_ATMOS
+	//id = LAVALAND_DEFAULT_ATMOS SKYRAT EDIT REMOVAL
 
 	base_gases = list(
 		/datum/gas/oxygen=5,
@@ -26,7 +26,7 @@
 	maximum_temp = 350
 
 /datum/atmosphere/icemoon
-	id = ICEMOON_DEFAULT_ATMOS
+	//id = ICEMOON_DEFAULT_ATMOS SKYRAT EDIT REMOVAL
 
 	base_gases = list(
 		/datum/gas/oxygen=5,

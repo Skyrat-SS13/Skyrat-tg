@@ -117,3 +117,4 @@
 /datum/looping_sound/proc/handle_parent_del(datum/source)
 	SIGNAL_HANDLER
 	set_parent(null)
+

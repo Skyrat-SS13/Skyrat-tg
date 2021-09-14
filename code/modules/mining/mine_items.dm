@@ -73,7 +73,7 @@
 	desc = "Used to call and send the mining shuttle."
 	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
-	possible_destinations = "mining_home;mining_away;landing_zone_dock"
+	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public;hugedock;largedock;mediumdock;smalldock" //SKYRAT EDIT CHANGE
 	no_destination_swap = TRUE
 	var/static/list/dumb_rev_heads = list()
 
@@ -90,7 +90,7 @@
 	desc = "Used to call and send the lavaland shuttle."
 	circuit = /obj/item/circuitboard/computer/mining_shuttle/common
 	shuttleId = "mining_common"
-	possible_destinations = "commonmining_home;lavaland_common_away;landing_zone_dock;mining_public"
+	possible_destinations = "commonmining_home;lavaland_common_away;landing_zone_dock;mining_public;hugedock;largedock;mediumdock;smalldock" //SKYRAT EDIT CHANGE
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

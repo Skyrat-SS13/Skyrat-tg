@@ -1,10 +1,9 @@
 // Put tiles here if you want planet ones!
 
-/turf/open/floor/plating/dirt/planet
-	baseturfs = /turf/open/floor/plating/dirt/planet
+/turf/open/floor/planetary/dirt/planet
+	baseturfs = /turf/open/floor/planetary/dirt/planet
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
-	attachment_holes = FALSE
 	footstep = FOOTSTEP_SAND
 	barefootstep = FOOTSTEP_SAND
 	clawfootstep = FOOTSTEP_SAND
@@ -28,7 +27,7 @@
 /turf/open/floor/plating/sandy_dirt/planet
 	planetary_atmos = TRUE
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	baseturfs = /turf/open/floor/plating/dirt/planet
+	baseturfs = /turf/open/floor/planetary/dirt/planet
 
 /////////////   GRASS TURFS   /////////////
 ///////////////////////////////////////////

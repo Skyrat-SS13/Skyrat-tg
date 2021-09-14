@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 ///This datum handles the transitioning from a turf to a specific biome, and handles spawning decorative structures and mobs.
 /datum/biome
 	///Type of turf this biome creates
@@ -23,7 +24,7 @@
 		new flora(gen_turf)
 
 /datum/biome/mudlands
-	turf_type = /turf/open/floor/plating/dirt/jungle/dark
+	turf_type = /turf/open/floor/planetary/dirt/jungle/dark
 	flora_types = list(/obj/structure/flora/grass/jungle,/obj/structure/flora/grass/jungle/b, /obj/structure/flora/rock/jungle, /obj/structure/flora/rock/pile/largejungle)
 	flora_density = 3
 
@@ -41,10 +42,11 @@
 	flora_density = 65
 
 /datum/biome/wasteland
-	turf_type = /turf/open/floor/plating/dirt/jungle/wasteland
+	turf_type = /turf/open/floor/planetary/dirt/jungle/wasteland
 
 /datum/biome/water
 	turf_type = /turf/open/water/jungle
 
 /datum/biome/mountain
 	turf_type = /turf/closed/mineral/random/jungle
+*/
