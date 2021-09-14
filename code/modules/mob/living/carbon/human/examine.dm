@@ -486,32 +486,6 @@
 			. += "<span class='notice'>[temporary_flavor_text]</span>"
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
-
-	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	var/datum/data/record/isinworld = find_record("name", perpname, GLOB.data_core.locked) //i dont know of a better way to do this-it doesnt work on off-station roles. please fix this someone better at coding.
-	for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
-		if ((is_special_character(user)) && isinworld && (antag_datum.view_exploitables))
-			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
-	//SKYRAT EDIT END
-
-		//RP RECORDS FOR OBSERVERS
-	if(client && user.client.holder && isobserver(user))
-		var/line = ""
-		if(!(client.prefs.general_record == ""))
-			line += "<a href='?src=[REF(src)];general_records=1'>\[GEN\]</a>"
-		if(!(client.prefs.security_record == ""))
-			line += "<a href='?src=[REF(src)];security_records=1'>\[SEC\]</a>"
-		if(!(client.prefs.medical_record == ""))
-			line += "<a href='?src=[REF(src)];medical_records=1'>\[MED\]</a>"
-		if(!(client.prefs.background_info == ""))
-			line += "<a href='?src=[REF(src)];flavor_background=1'>\[BG\]</a>"
-		if(!(client.prefs.exploitable_info == ""))
-			line += "<a href='?src=[REF(src)];exploitable_info=1'>\[EXP\]</a>"
-
-		if(!(line == ""))
-			. += "*---------*"
-			. += line
-	//END OF SKYRAT EDIT
 	. += "*---------*</span>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
@@ -536,7 +510,7 @@
 	switch(age)
 		if(-INFINITY to 17) // SKYRAT EDIT ADD START -- AGE EXAMINE
 			age_text = "too young to be here"
-		if(18 to 25) 
+		if(18 to 25)
 			age_text = "a young adult" // SKYRAT EDIT END
 		if(26 to 35)
 			age_text = "of adult age"
