@@ -66,7 +66,7 @@
 	if(!direct_target)
 		var/modifiers = params2list(params)
 		loaded_projectile.preparePixelProjectile(target, user, modifiers, spread)
-	var/loaded_projectile_cache = loaded_projectile
+	var/obj/projectile/loaded_projectile_cache = loaded_projectile
 	loaded_projectile = null
 	loaded_projectile_cache.fire(null, direct_target)
 	return TRUE
