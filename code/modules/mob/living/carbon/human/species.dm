@@ -427,19 +427,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
 				INVOKE_ASYNC(C, /mob/proc/put_in_hands, new mutanthands)
 
-<<<<<<< HEAD
-=======
-	if(ishuman(C))
-		var/mob/living/carbon/human/human = C
-		for(var/obj/item/organ/external/organ_path as anything in external_organs)
-			//Load a persons preferences from DNA
-			var/feature_key_name = human.dna.features[initial(organ_path.feature_key)]
-
-			var/obj/item/organ/external/new_organ = new organ_path(null, feature_key_name, human.body_type)
-
-			new_organ.Insert(human)
-
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)
 
