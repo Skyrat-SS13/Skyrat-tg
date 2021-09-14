@@ -6,21 +6,21 @@
 // A living latex canister is used instead of a grenade.
 
 // Declaring the basic properties and parameters of the Living latex sprayer
-/obj/item/gun/ballistic/revolver/livinglatexsprayer  //this is only used for underbarrel grenade launchers at the moment, but admins can still spawn it if they feel like being assholes
+/obj/item/gun/ballistic/revolver/latexpulv  //this is only used for underbarrel grenade launchers at the moment, but admins can still spawn it if they feel like being assholes
 	// launchers.dm parameters
 	desc = "Sprayer for firing special living latex mass" //LAMELLA TODO: Need a description of the Living latex sprayer
 	name = "Nanite latex sprayer"
-	//icon = "modular_skyrat/modules/fixing_missing_icons/ballistic.dmi" // LAMELLA TODO: Living latex sprayer image file needed
-	icon_state = "living_latex_gun"
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi' // LAMELLA TODO: Living latex sprayer image file needed
+	icon_state = "latex_pulv"
 	worn_icon = "" // LAMELLA TODO: We need a file with an image of a sprayer in the hands of a character
 	inhand_icon_state = "living_latex_gun"
 	worn_icon_state = "living_latex_gun"
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi' //LAMELLA TODO: Need a left-handed image file for the sprayer
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi' // LAMELLA TODO: Need a file with a right-handed image for the sprayer
-	mag_type = /obj/item/ammo_box/magazine/internal/livinglatexcanisterreciever // A special type of ammunition reciever. Defined below in code
+	mag_type = /obj/item/ammo_box/magazine/internal/latexbinreciever // A special type of ammunition reciever. Defined below in code
 	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg' // LAMELLA TODO: Need a living latex sprayer voiceover file
 	w_class = WEIGHT_CLASS_NORMAL
-	pin = /obj/item/firing_pin/latexnanitechip // Special type of firing_pin for living latex gun.
+	pin = null // Special type of firing_pin for living latex gun.
 	bolt_type = BOLT_TYPE_NO_BOLT
 	can_misfire = FALSE
 	// LAMELA TODO: Files for the sound operation
@@ -84,14 +84,16 @@
 	//
 	var/chipslotisclosed = TRUE
 
-
+/obj/item/gun/ballistic/revolver/latexpulv/Initialize()
+	. = ..()
+	icon_state = "closed"
 
 // Definition of the firing pin class
 /obj/item/firing_pin/latexnanitechip
 	name = "latex nanite chip"
 	desc = "A small authentication device, to be inserted into a living latex gun slot to allow operation. Contains a nanite management program." // LAMELLA TODO: Need a description of the chip for the living latex sprayer
-	icon = 'icons/obj/device.dmi' // LAMELLA TODO: Need a file with the image of the latex nanite chip
-	icon_state = "latex_nanite_chip"
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi' // LAMELLA TODO: Need a file with the image of the latex nanite chip
+	icon_state = "pulv_module"
 	worn_icon = "" // LAMELLA TODO: We need a file with the image of the chip in the hands of the character
 	inhand_icon_state = "chip"
 	worn_icon_state = "chip"
@@ -108,19 +110,19 @@
 								) // Default latex program
 
 // Latex Canister Receiver Class definition for Living latex sprayer
-/obj/item/ammo_box/magazine/internal/livinglatexcanisterreciever
+/obj/item/ammo_box/magazine/internal/latexbinreciever
 	name = "Living latex sprayer internal magazine"
-	ammo_type = /obj/item/ammo_casing/livinglatexcanister // // A special type of ammunition. Defined below in code
+	ammo_type = /obj/item/ammo_casing/latexbin // A special type of ammunition. Defined below in code
 	caliber = CALIBER_40MM // GEMINEE TODO: Check the need for a special caliber.
 	max_ammo = 1 // Only one canister can be installed in a Living latex sprayer at a time
 
 // Latex Canister Class definition for Latex sprayer. Single Shot Latex sprayer Ammunition
-/obj/item/ammo_casing/livinglatexcanister
+/obj/item/ammo_casing/latexbin
 	name = "living latex canister"
 	desc = "A canister filled with a mixture of latex and nanites. Used for firing a living latex sprayer. The canister is single-shot and cannot be refilled." // LAMELLA TODO: Need a description of the latex canister
 	caliber = CALIBER_40MM // GEMINEE TODO: Check the need for a special caliber.
-	icon = "" // LAMELLA TODO: Latex canister image file needed
-	icon_state = "living_latex_canister"
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi' // LAMELLA TODO: Latex canister image file needed
+	icon_state = "latex_bin"
 	worn_icon = "" // LAMELA TODO:
 	worn_icon_state = "" // LAMELA TODO:
 	projectile_type = /obj/projectile/bullet/latexball
@@ -129,8 +131,8 @@
 /obj/projectile/bullet/livinglatexball
 	name ="living latexball"
 	desc = "USE A LIVING LATEX SPRAYER"
-	icon = "" // LAMELLA TODO: Need a file with a picture of a latex ball
-	icon_state= "living_latex_ball"
+	//icon = "" // LAMELLA TODO: Need a file with a picture of a latex ball
+	//icon_state= "living_latex_ball"
 	damage = 0 // Living latex ball does not damage targets
 	nodamage = TRUE // Duplicate the lack of damage with a special parameter
 	hitsound = 'sound/weapons/pierce.ogg' // LAMELA TODO: Need a hit sound
@@ -149,8 +151,8 @@
 /obj/effect/temp_visual/livinglatexhit
 	name = "\improper Living latex hit"
 	desc = "A black lump of living latex stuck to the target and then quickly enveloped it in its black tentacles, completely covering the entire body in an even layer." // LAMELA TODO: A description of the hit effect is needed.
-	icon = 'icons/effects/beam_splash.dmi' // LAMELA TODO: We need a file with the effects of a ball of latex.
-	icon_state = "living_latex_hit"
+	//icon = 'icons/effects/beam_splash.dmi' // LAMELA TODO: We need a file with the effects of a ball of latex.
+	//icon_state = "living_latex_hit"
 	layer = ABOVE_ALL_MOB_LAYER
 	pixel_x = 0
 	pixel_y = 0
@@ -159,8 +161,8 @@
 // Class definition depicting a ball of live latex
 /obj/item/shrapnel/livinglatexball
 	name = "livinglatexball"
-	icon = 'icons/obj/guns/ammo.dmi' // LAMELLA TODD: Need a file with a picture of a ball of living latex
-	icon_state = "livinglatexball"
+	//icon = 'icons/obj/guns/ammo.dmi' // LAMELLA TODD: Need a file with a picture of a ball of living latex
+	//icon_state = "livinglatexball"
 	embedding = null // embedding vars are taken from the projectile itself
 
 
@@ -188,7 +190,7 @@
 /// LIVING LATEX SPRAYER LOGIC SECTION ///
 //////////////////////////////////////////
 // Chip slot open and close handler
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/AltClick(mob/user)
+/obj/item/gun/ballistic/revolver/latexpulv/AltClick(mob/user)
 	if(!ishuman(user))
 		return
 
@@ -202,7 +204,7 @@
 		return
 
 // Empty Hand Attack Handler
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/attack_hand(mob/user)
+/obj/item/gun/ballistic/revolver/latexpulv/attack_hand(mob/user)
 	if(ishuman(user))
 		if(!can_trigger_gun(user))
 			return
@@ -247,12 +249,12 @@
 		return
 
 // Chip and canister action handler
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/attackby(obj/item/A, mob/user, params)
+/obj/item/gun/ballistic/revolver/latexpulv/attackby(obj/item/A, mob/user, params)
 	// Blocking the default behavior of the weapon
 	//..()
 
 	// Canister click handler is a copy of the standard ammo click handler
-	if(istype(A, /obj/item/ammo_casing/livinglatexcanister))
+	if(istype(A, /obj/item/ammo_casing/latexbin))
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
 				chambered.forceMove(drop_location())
@@ -317,7 +319,7 @@
 
 
 //The event just before the shot is fired. The moment of recording the program in the projectile
-/obj/item/gun/ballistic/revolver/livinglatexsprayer/before_firing(atom/target,mob/user)
+/obj/item/gun/ballistic/revolver/latexpulv/before_firing(atom/target,mob/user)
 	//Здесь будет выполняться запись программы в сам выстрел латекса
 	// if(.chambered.contents[0])
 	// 	.chambered.contents[0].program = .program
