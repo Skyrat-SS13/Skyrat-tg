@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences
@@ -507,94 +506,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 		for (var/key in key_bindings[action])
 			LAZYADD(output[key], action)
 
-<<<<<<< HEAD
-	var/raw_name = input(user, "Choose your character's [namedata["qdesc"]]:","Character Preference") as text|null
-	if(!raw_name)
-		if(namedata["allow_null"])
-			custom_names[name_id] = get_default_name(name_id)
-		else
-			return
-	else
-		var/sanitized_name = reject_bad_name(raw_name,namedata["allow_numbers"])
-		if(!sanitized_name)
-			to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, [namedata["allow_numbers"] ? "0-9, " : ""]-, ' and . It must not contain any words restricted by IC chat and name filters.</font>")
-			return
-		else
-			custom_names[name_id] = sanitized_name
-
-	if(name_id == "religion")
-		update_bible_and_deity_name(custom_names[name_id])
-
-/datum/preferences/proc/update_bible_and_deity_name(religion)
-	switch(lowertext(religion))
-		if("christianity") // DEFAULT_RELIGION
-			custom_names["bible"] = pick("The Holy Bible","The Dead Sea Scrolls")
-			custom_names["deity"] = "Space Jesus"
-		if("buddhism")
-			custom_names["bible"] = "The Sutras"
-			custom_names["deity"] = "Buddha"
-		if("clownism","honkmother","honk","honkism","comedy")
-			custom_names["bible"] = pick("The Holy Joke Book", "Just a Prank", "Hymns to the Honkmother")
-			custom_names["deity"] = "The Honkmother"
-		if("chaos")
-			custom_names["bible"] = "The Book of Lorgar"
-			custom_names["deity"] = pick("Chaos Gods", "Dark Gods", "Ruinous Powers")
-		if("cthulhu")
-			custom_names["bible"] = "The Necronomicon"
-			custom_names["deity"] = pick("Great Old Ones", "Old Ones")
-		if("hinduism")
-			custom_names["bible"] = "The Vedas"
-			custom_names["deity"] = pick("Brahma", "Vishnu", "Shiva")
-		if("imperium")
-			custom_names["bible"] = "Uplifting Primer"
-			custom_names["deity"] = "Astra Militarum"
-		if("islam")
-			custom_names["bible"] = "Quran"
-			custom_names["deity"] = "Allah"
-		if("judaism")
-			custom_names["bible"] = "The Torah"
-			custom_names["deity"] = "Yahweh"
-		if("lampism")
-			custom_names["bible"] = "Fluorescent Incandescence"
-			custom_names["deity"] = "Lamp"
-		if("monkeyism","apism","gorillism","primatism")
-			custom_names["bible"] = pick("Going Bananas", "Bananas Out For Harambe")
-			custom_names["deity"] = pick("Harambe", "monky")
-		if("mormonism")
-			custom_names["bible"] = "The Book of Mormon"
-			custom_names["deity"] = pick("God", "Elohim", "Godhead")
-		if("pastafarianism")
-			custom_names["bible"] = "The Gospel of the Flying Spaghetti Monster"
-			custom_names["deity"] = "Flying Spaghetti Monster"
-		if("rastafarianism","rasta")
-			custom_names["bible"] = "The Holy Piby"
-			custom_names["deity"] = "Haile Selassie I"
-		if("satanism")
-			custom_names["bible"] = "The Unholy Bible"
-			custom_names["deity"] = "Satan"
-		if("sikhism")
-			custom_names["bible"] = "Guru Granth Sahib"
-			custom_names["deity"] = "Waheguru"
-		if("science")
-			custom_names["bible"] = pick("Principle of Relativity", "Quantum Enigma: Physics Encounters Consciousness", "Programming the Universe", "Quantum Physics and Theology", "String Theory for Dummies", "How To: Build Your Own Warp Drive", "The Mysteries of Bluespace", "Playing God: Collector's Edition")
-			custom_names["deity"] = pick("Albert Einstein", "Stephen Hawking", "Neil deGrasse Tyson", "Carl Sagan", "Richard Dawkins")
-		if("scientology")
-			custom_names["bible"] = pick("The Biography of L. Ron Hubbard","Dianetics")
-			custom_names["deity"] = pick("Money", "Power", "Xenu", "Tom Cruise", "L. Ron Hubbard", "David Miscavige", "John Travolta")
-		if("servicianism", "partying")
-			custom_names["bible"] = "The Tenets of Servicia"
-			custom_names["deity"] = pick("Servicia", "Space Bacchus", "Space Dionysus")
-		if("subgenius")
-			custom_names["bible"] = "Book of the SubGenius"
-			custom_names["deity"] = pick("Jehovah 1", "J. R. \"Bob\" Dobbs")
-		if("toolboxia","greytide")
-			custom_names["bible"] = pick("Toolbox Manifesto","iGlove Assistants")
-			custom_names["deity"] = "Maintenance"
-		else
-			if(custom_names["bible"] == DEFAULT_BIBLE)
-				custom_names["bible"] = "The Holy Book of [religion]"
-*/
-=======
 	return output
 
 /// Returns the default `randomise` variable ouptut
@@ -607,4 +518,3 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 			default_randomization[preference_key] = RANDOM_ENABLED
 
 	return default_randomization
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
