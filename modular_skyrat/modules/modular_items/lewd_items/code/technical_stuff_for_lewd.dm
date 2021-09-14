@@ -1009,7 +1009,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/vagina/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1018,7 +1018,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/anus/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1027,7 +1027,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/nipples/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1036,7 +1036,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/penis/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN

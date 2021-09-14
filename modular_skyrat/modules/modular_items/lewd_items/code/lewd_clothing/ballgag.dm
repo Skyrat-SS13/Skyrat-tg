@@ -172,7 +172,7 @@
 /obj/item/clothing/mask/ballgag/equipped(mob/user, slot)
 	if(chokes_wearer)
 		var/mob/living/carbon/human/U = loc
-		if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
+		if(src == U.wear_mask && U.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy)) //To prevent abusing this thing on non-erp players. We care about them, yes.
 			START_PROCESSING(SSobj, src)
 	return ..()
 

@@ -175,7 +175,7 @@ GLOBAL_VAR_INIT(sec_level_cooldown, FALSE)
 				else
 					var/area/A = get_area(M)
 					if(is_type_in_typecache(A, quiet_areas)) //These areas don't hear it as loudly
-						M.playsound_local(get_turf(M), S, 10), FALSE)
+						M.playsound_local(get_turf(M), S, 10, FALSE)
 					else
 						M.playsound_local(get_turf(M), S, 70, FALSE)
 

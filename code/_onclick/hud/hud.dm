@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.inventory_shown)
 				screenmob.client.screen += toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 				screenmob.client.screen += ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len && !hotkey_ui_hidden)
@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 				screenmob.client.screen -= ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 				screenmob.client.screen -= ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
