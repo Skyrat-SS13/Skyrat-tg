@@ -240,20 +240,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
  * This proc generates which species are available to pick from in character setup.
  * If there are no available roundstart species, defaults to human.
  */
-//SKYRAT EDIT REMOVAL BEGIN - MOVED - CUSTOMIZATION
-/*
 /proc/generate_selectable_species()
-<<<<<<< HEAD
-	for(var/I in subtypesof(/datum/species))
-		var/datum/species/S = new I
-		if(S.check_roundstart_eligible())
-			GLOB.roundstart_races += S.id
-			qdel(S)
-	if(!GLOB.roundstart_races.len)
-		GLOB.roundstart_races += "human"
-*/
-//SKYRAT EDIT REMOVAL END
-=======
 	var/list/selectable_species = list()
 
 	for(var/species_type in subtypesof(/datum/species))
@@ -266,7 +253,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		selectable_species += SPECIES_HUMAN
 
 	return selectable_species
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 
 /**
  * Checks if a species is eligible to be picked at roundstart.

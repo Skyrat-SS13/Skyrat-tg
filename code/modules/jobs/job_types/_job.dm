@@ -410,13 +410,7 @@
 	var/require_human = CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 
 	if(fully_randomize)
-<<<<<<< HEAD
-		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
-			if(player_client.prefs.pref_species.id != SPECIES_HUMAN) //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
-				player_client.prefs.pref_species = new /datum/species/human
-=======
 		if(require_human)
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
 		else
 			player_client.prefs.randomise_appearance_prefs()
@@ -430,15 +424,8 @@
 			fully_replace_character_name(null, GLOB.current_anonymous_theme.anonymous_name(src))
 	else
 		var/is_antag = (player_client.mob.mind in GLOB.pre_setup_antags)
-<<<<<<< HEAD
-		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
-			player_client.prefs.randomise[RANDOM_SPECIES] = FALSE
-			if(player_client.prefs.pref_species.id != SPECIES_HUMAN) //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
-				player_client.prefs.pref_species = new /datum/species/human
-=======
 		if(require_human)
 			player_client.prefs.randomise["species"] = FALSE
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 		player_client.prefs.safe_transfer_prefs_to(src, TRUE, is_antag)
 		if (require_human)
 			set_species(/datum/species/human)
