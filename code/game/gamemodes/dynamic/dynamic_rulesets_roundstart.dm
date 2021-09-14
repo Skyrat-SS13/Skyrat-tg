@@ -92,8 +92,13 @@
 /datum/dynamic_ruleset/roundstart/traitorbro
 	name = "Blood Brothers"
 	antag_flag = ROLE_BROTHER
+<<<<<<< HEAD
 	antag_datum = /datum/antagonist/brother/
 	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
+=======
+	antag_datum = /datum/antagonist/brother
+	protected_roles = list("Prisoner","Security Officer", "Warden", "Detective", "Head of Security", "Captain")
+>>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 	restricted_roles = list("Cyborg", "AI")
 	required_candidates = 2
 	weight = 4
@@ -492,6 +497,7 @@
 /datum/dynamic_ruleset/roundstart/families
 	name = "Families"
 	persistent = TRUE
+	antag_datum = /datum/antagonist/gang
 	antag_flag = ROLE_FAMILIES
 	protected_roles = list("Prisoner", "Head of Personnel")
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant") //SKYRAT EDIT - SEC_HAUL
@@ -563,6 +569,9 @@
 /datum/dynamic_ruleset/roundstart/nuclear/clown_ops
 	name = "Clown Ops"
 	antag_datum = /datum/antagonist/nukeop/clownop
+	antag_flag = ROLE_CLOWN_OPERATIVE
+	antag_preference = ROLE_OPERATIVE
+	antag_flag_override = ROLE_OPERATIVE
 	antag_leader_datum = /datum/antagonist/nukeop/leader/clownop
 	requirements = list(101,101,101,101,101,101,101,101,101,101)
 

@@ -14,12 +14,8 @@
 			candidates.Remove(P)
 		else if((exclusive_roles.len > 0) && !(P.mind.assigned_role.title in exclusive_roles)) // Is the rule exclusive to their job?
 			candidates.Remove(P)
-		else if(antag_flag_override)
-			if(!(antag_flag_override in P.client.prefs.be_special) || is_banned_from(P.ckey, list(antag_flag_override, ROLE_SYNDICATE)))
-				candidates.Remove(P)
-		else
-			if(!(antag_flag in P.client.prefs.be_special) || is_banned_from(P.ckey, list(antag_flag, ROLE_SYNDICATE)))
-				candidates.Remove(P)
+		else if (!((antag_preference || antag_flag) in P.client.prefs.be_special) || is_banned_from(P.ckey, list(antag_flag_override || antag_flag, ROLE_SYNDICATE)))
+			candidates.Remove(P)
 
 /datum/dynamic_ruleset/latejoin/ready(forced = 0)
 	if (!forced)
@@ -52,8 +48,14 @@
 /datum/dynamic_ruleset/latejoin/infiltrator
 	name = "Syndicate Infiltrator"
 	antag_datum = /datum/antagonist/traitor
+<<<<<<< HEAD
 	antag_flag = ROLE_TRAITOR
 	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
+=======
+	antag_flag = ROLE_SYNDICATE_INFILTRATOR
+	antag_flag_override = ROLE_TRAITOR
+	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain")
+>>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
 	weight = 7
@@ -71,7 +73,7 @@
 	name = "Provocateur"
 	persistent = TRUE
 	antag_datum = /datum/antagonist/rev/head
-	antag_flag = ROLE_REV_HEAD
+	antag_flag = ROLE_PROVOCATEUR
 	antag_flag_override = ROLE_REV
 	restricted_roles = list("AI", "Cyborg", "Prisoner", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Corrections Officer", "Chief Medical Officer", "Research Director", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant") //SKYRAT EDIT - Sec_haul
 	enemy_roles = list("AI", "Cyborg", "Security Officer","Detective","Head of Security", "Captain", "Warden")
@@ -147,8 +149,14 @@
 /datum/dynamic_ruleset/latejoin/heretic_smuggler
 	name = "Heretic Smuggler"
 	antag_datum = /datum/antagonist/heretic
+<<<<<<< HEAD
 	antag_flag = ROLE_HERETIC
 	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
+=======
+	antag_flag = ROLE_HERETIC_SMUGGLER
+	antag_flag_override = ROLE_HERETIC
+	protected_roles = list("Security Officer", "Warden", "Head of Personnel", "Detective", "Head of Security", "Captain","Prisoner")
+>>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
 	weight = 4

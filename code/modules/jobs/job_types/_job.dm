@@ -275,6 +275,11 @@
 		holder = "[uniform]"
 	uniform = text2path(holder)
 
+	var/client/client = GLOB.directory[ckey(H.mind?.key)]
+
+	if(client?.is_veteran() && client?.prefs.read_preference(/datum/preference/toggle/playtime_reward_cloak))
+		neck = /obj/item/clothing/neck/cloak/skill_reward/playing
+
 /datum/outfit/job/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
@@ -307,9 +312,6 @@
 		if(H.alt_title_holder) // SKYRAT EDIT ADD -- ALT TITLES
 			PDA.ownjob = H.alt_title_holder // SKYRAT EDIT ADD END
 		PDA.update_label()
-
-	if(H.client?.prefs.playtime_reward_cloak)
-		neck = /obj/item/clothing/neck/cloak/skill_reward/playing
 
 
 /datum/outfit/job/get_chameleon_disguise_info()
@@ -404,25 +406,48 @@
 	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
 	if(!player_client)
 		return // Disconnected while checking for the appearance ban.
+
+	var/require_human = CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+
 	if(fully_randomize)
+<<<<<<< HEAD
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
 			if(player_client.prefs.pref_species.id != SPECIES_HUMAN) //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
+=======
+		if(require_human)
+>>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 			player_client.prefs.randomise_appearance_prefs(~RANDOMIZE_SPECIES)
 		else
 			player_client.prefs.randomise_appearance_prefs()
+
 		player_client.prefs.apply_prefs_to(src)
+
+		if (require_human)
+			set_species(/datum/species/human)
+
 		if(GLOB.current_anonymous_theme)
 			fully_replace_character_name(null, GLOB.current_anonymous_theme.anonymous_name(src))
 	else
 		var/is_antag = (player_client.mob.mind in GLOB.pre_setup_antags)
+<<<<<<< HEAD
 		if(CONFIG_GET(flag/enforce_human_authority) && (job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
 			player_client.prefs.randomise[RANDOM_SPECIES] = FALSE
 			if(player_client.prefs.pref_species.id != SPECIES_HUMAN) //SKYRAT EDIT CHANGE _ WARNING YOU MUST CHANGE THIS WHEN SPECIES DEFINES ARE COMPLETED!!!
 				player_client.prefs.pref_species = new /datum/species/human
+=======
+		if(require_human)
+			player_client.prefs.randomise["species"] = FALSE
+>>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 		player_client.prefs.safe_transfer_prefs_to(src, TRUE, is_antag)
+		if (require_human)
+			set_species(/datum/species/human)
 		if(CONFIG_GET(flag/force_random_names))
-			player_client.prefs.real_name = player_client.prefs.pref_species.random_name(player_client.prefs.gender, TRUE)
+			var/species_type = player_client.prefs.read_preference(/datum/preference/choiced/species)
+			var/datum/species/species = new species_type
+
+			var/gender = player_client.prefs.read_preference(/datum/preference/choiced/gender)
+			real_name = species.random_name(gender, TRUE)
 	dna.update_dna_identity()
 
 	//SKYRAT EDIT ADD -- ALT TITLES
@@ -435,7 +460,7 @@
 	if(GLOB.current_anonymous_theme)
 		fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
 		return
-	apply_pref_name("ai", player_client) // This proc already checks if the player is appearance banned.
+	apply_pref_name(/datum/preference/name/ai, player_client) // This proc already checks if the player is appearance banned.
 	set_core_display_icon(null, player_client)
 
 	//SKYRAT EDIT ADD -- ALT TITLES
@@ -450,14 +475,17 @@
 		var/organic_name
 		if(GLOB.current_anonymous_theme)
 			organic_name = GLOB.current_anonymous_theme.anonymous_name(src)
-		else if(player_client.prefs.randomise[RANDOM_NAME] || CONFIG_GET(flag/force_random_names) || is_banned_from(player_client.ckey, "Appearance"))
+		else if(player_client.prefs.read_preference(/datum/preference/choiced/random_name) == RANDOM_ENABLED || CONFIG_GET(flag/force_random_names) || is_banned_from(player_client.ckey, "Appearance"))
 			if(!player_client)
 				return // Disconnected while checking the appearance ban.
-			organic_name = player_client.prefs.pref_species.random_name(player_client.prefs.gender, TRUE)
+
+			var/species_type = player_client.prefs.read_preference(/datum/preference/choiced/species)
+			var/datum/species/species = new species_type
+			organic_name = species.random_name(player_client.prefs.read_preference(/datum/preference/choiced/gender), TRUE)
 		else
 			if(!player_client)
 				return // Disconnected while checking the appearance ban.
-			organic_name = player_client.prefs.real_name
+			organic_name = player_client.prefs.read_preference(/datum/preference/name/real_name)
 
 		mmi.name = "[initial(mmi.name)]: [organic_name]"
 		if(mmi.brain)
@@ -466,8 +494,8 @@
 			mmi.brainmob.real_name = organic_name //the name of the brain inside the cyborg is the robotized human's name.
 			mmi.brainmob.name = organic_name
 	// If this checks fails, then the name will have been handled during initialization.
-	if(!GLOB.current_anonymous_theme && player_client.prefs.custom_names["cyborg"] != DEFAULT_CYBORG_NAME)
-		apply_pref_name("cyborg", player_client)
+	if(!GLOB.current_anonymous_theme && player_client.prefs.read_preference(/datum/preference/name/cyborg) != DEFAULT_CYBORG_NAME)
+		apply_pref_name(/datum/preference/name/cyborg, player_client)
 
 	//SKYRAT EDIT ADD -- ALT TITLES
 	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])

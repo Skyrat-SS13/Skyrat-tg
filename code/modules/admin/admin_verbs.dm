@@ -12,8 +12,6 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/dsay, /*talk in deadchat using our ckey/fakekey*/
 	/client/proc/investigate_show, /*various admintools for investigation. Such as a singulo grief-log*/
 	/client/proc/secrets,
-	/client/proc/toggle_hear_radio, /*allows admins to hide all radio output*/
-	/client/proc/toggle_split_admin_tabs,
 	/client/proc/reload_admins,
 	/client/proc/reestablish_db_connection, /*reattempt a connection to the database*/
 	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
@@ -77,6 +75,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/toggle_combo_hud, // toggle display of the combination pizza antag and taco sci/med/eng hud
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/datum/admins/proc/open_shuttlepanel, /* Opens shuttle manipulator UI */
+<<<<<<< HEAD
 	/client/proc/deadchat,
 	/client/proc/toggleprayers,
 	/client/proc/toggle_prayer_sound,
@@ -84,6 +83,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/colorasay,
 	/client/proc/resetasaycolor,
 	/client/proc/toggleadminhelpsound,
+=======
+>>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 	/client/proc/respawn_character,
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
 	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
