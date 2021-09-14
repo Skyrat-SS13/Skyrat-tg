@@ -1,17 +1,5 @@
 GLOBAL_LIST_EMPTY(customizable_races)
 
-/proc/generate_selectable_species()
-	for(var/I in subtypesof(/datum/species))
-		var/datum/species/S = new I
-		if(S.check_roundstart_eligible())
-			GLOB.roundstart_races[S.id] = TRUE
-			GLOB.customizable_races[S.id] = TRUE
-		else if (S.always_customizable)
-			GLOB.customizable_races[S.id] = TRUE
-		qdel(S)
-	if(!GLOB.roundstart_races.len)
-		GLOB.roundstart_races[SPECIES_HUMAN] = TRUE
-
 /datum/species
 	mutant_bodyparts = list()
 	///Self explanatory
