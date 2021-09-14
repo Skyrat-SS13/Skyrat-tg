@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(decay)
 		log_world("SSDecay was disabled in config.")
 		return ..()
 	// Putting this first so that it just doesn't waste time iterating through everything if it's not going to do anything anyway.
-	if(prob(0/*50*/))
+	if(prob(50))
 		message_admins("SSDecay will not interact with this round.")
 		log_world("SSDecay will not interact with this round.")
 		return ..()
@@ -59,7 +59,7 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
 
-	severity_modifier = 4 //rand(1, 4)
+	severity_modifier = rand(1, 4)
 
 	message_admins("SSDecay severity modifier set to [severity_modifier]")
 	log_world("SSDecay severity modifier set to [severity_modifier]")
