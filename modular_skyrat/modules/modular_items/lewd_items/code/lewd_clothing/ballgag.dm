@@ -14,7 +14,6 @@
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	gas_transfer_coefficient = 0.9
 	// equip_delay_other = 40
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE

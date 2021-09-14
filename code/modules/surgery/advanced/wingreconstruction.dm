@@ -35,14 +35,11 @@
 		display_results(user, target, span_notice("You succeed in reconstructing [target]'s wings."),
 			span_notice("[user] successfully reconstructs [target]'s wings!"),
 			span_notice("[user] completes the surgery on [target]'s wings."))
-		if(human_target.dna.features["original_moth_wings"] != null)
-			human_target.dna.features["moth_wings"] = human_target.dna.features["original_moth_wings"]
-		else
-			human_target.dna.features["moth_wings"] = "Plain"
-			//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
-			/*
-			human_target.dna.update_uf_block(DNA_MOTH_WINGS_BLOCK)
-			*/
-			//SKYRAT EDIT REMOVAL END
-		human_target.update_mutant_bodyparts()
+		var/obj/item/organ/external/wings/moth/wings = target.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)
+		wings?.heal_wings()
+
+		var/obj/item/organ/external/antennae/antennae = target.getorganslot(ORGAN_SLOT_EXTERNAL_ANTENNAE) //i mean we might aswell heal their antennae too
+		antennae?.heal_antennae()
+
+		human_target.update_body_parts()
 	return ..()
