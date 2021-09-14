@@ -88,7 +88,7 @@
 			highest_pref = job_preferences[job]
 
 	return preview_job
-
+*/
 /datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin)
 	var/datum/job/preview_job = get_highest_priority_job()
 
@@ -107,10 +107,4 @@
 		mannequin.dress_up_as_job(preview_job, TRUE)
 
 	COMPILE_OVERLAYS(mannequin)
-<<<<<<< HEAD
-	parent.show_character_previews(new /mutable_appearance(mannequin))
-	unset_busy_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
-*/
-=======
 	return mannequin.appearance
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))

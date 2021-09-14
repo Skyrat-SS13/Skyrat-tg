@@ -102,13 +102,7 @@
 
 ///Generate a unique key based on our sprites. So that if we've aleady drawn these sprites, they can be found in the cache and wont have to be drawn again (blessing and curse)
 /obj/item/organ/external/proc/generate_icon_cache()
-<<<<<<< HEAD
-	if(sprite_datum)
-		return "[sprite_datum.icon_state]_[preference]"
-	return
-=======
 	return "[sprite_datum.icon_state]_[feature_key]"
->>>>>>> 5a4c87a9fc3 (tgui Preferences Menu + total rewrite of the preferences backend (#61313))
 
 /**This exists so sprite accessories can still be per-layer without having to include that layer's
 *  number in their sprite name, which causes issues when those numbers change.
