@@ -330,3 +330,14 @@
 	icon_state = "bltrenchcoat"
 	mutant_variants = STYLE_VOX
 	body_parts_covered = CHEST|ARMS
+
+/obj/item/clothing/suit/ntrepciv
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "Runner fur coat"
+	desc = "Feels heavy. Perfect for hunting down synthetics in the far off distopia! Wait, that's happening now, damnit.."
+	icon_state = "bladerunner_civ"
+	mutant_variants = NONE
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT

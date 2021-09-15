@@ -150,6 +150,11 @@
 	path = /obj/item/clothing/suit/blackfurrich
 	cost = 3
 
+/datum/loadout_item/suit/coat/ntrepciv
+	name = "Runner Fur Coat"
+	path = /obj/item/clothing/suit/ntrepciv
+	cost = 3
+
 /datum/loadout_item/suit/coat/custom
 	name = "Alternate Winter Coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/custom
