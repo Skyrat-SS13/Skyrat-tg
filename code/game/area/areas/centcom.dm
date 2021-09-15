@@ -8,18 +8,7 @@
 /area/centcom
 	name = "CentCom"
 	icon_state = "centcom"
-<<<<<<< HEAD
-	/* SKYRAT EDIT START - Dynamic lights on CentCom
-	ORIGINAL:
-	static_lighting = FALSE
-	base_lighting_color = COLOR_WHITE
-	base_lighting_alpha = 255
-	*/
 	static_lighting = TRUE
-	// SKYRAT EDIT END
-=======
-	static_lighting = TRUE
->>>>>>> 9590c85108a (restore dynamic lighting to some areas that lost them (#61304))
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
 	area_flags = UNIQUE_AREA | NOTELEPORT
