@@ -1,6 +1,4 @@
 /datum/preferences
-	/// Toggles for our specific functions, such as AOOC and LOOC
-	var/skyrat_toggles
 	/// Loadout prefs. Assoc list of [typepaths] to [associated list of item info].
 	var/list/loadout_list
 	/// Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
