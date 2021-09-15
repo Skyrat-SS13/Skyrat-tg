@@ -334,7 +334,7 @@
 /obj/item/clothing/suit/ntrepciv
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "Runner fur coat"
+	name = "runner fur coat"
 	desc = "Feels heavy. Perfect for hunting down synthetics in the far off distopia! Wait, that's happening now, damnit.."
 	icon_state = "bladerunner_civ"
 	mutant_variants = NONE
