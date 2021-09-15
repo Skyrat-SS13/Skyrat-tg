@@ -82,7 +82,7 @@
 		/obj/item/melee/sabre,
 		/obj/item/melee/cleric_mace,
 		/obj/item/kitchen/knife,
-		/obj/item/melee/classic_baton,
+		/obj/item/melee/baton,
 		/obj/item/melee/baton,
 		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage - - -
 		), list(	// - - - except the second list's items (no fedora in the sheath)

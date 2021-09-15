@@ -1,10 +1,10 @@
-## Title: Xenomorph
+## Title: Fishing
 
-MODULE ID: XENOMORPH
+MODULE ID: FISHING
 
 ### Description:
 
-Changes to the xenomorph antagonist goes here.
+Adds some fishing capabilities.
 
 ### TG Proc Changes:
 
@@ -13,6 +13,7 @@ Changes to the xenomorph antagonist goes here.
 ### Defines:
 
 - N/A
+
 ### Master file additions
 
 - N/A
@@ -23,4 +24,4 @@ Changes to the xenomorph antagonist goes here.
 
 ### Credits:
 
-Floof Ball
+Jake Park
