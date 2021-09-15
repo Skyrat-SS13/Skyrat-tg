@@ -257,7 +257,8 @@
 			chosen_alias = msg
 
 	if(is_pref_char)
-		if(!any_station_species && user.client.prefs.pref_species.type != mob_species)
+		var/species_type = user.client.prefs.read_preference(/datum/preference/choiced/species)
+		if(!any_station_species && species_type != mob_species)
 			alert(user, "Sorry, This spawner is limited to those species: [mob_species]. Please switch your character.", "", "Ok")
 			return FALSE
 

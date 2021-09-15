@@ -149,7 +149,7 @@
 		dna.species = new_race
 		//BODYPARTS AND FEATURES
 		if(pref_load)
-			dna.features = pref_load.features.Copy()
+			dna.features = pref_load.read_.Copy()
 			dna.real_name = pref_load.read_preference(/datum/preference/name/real_name)
 			dna.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()
 			dna.body_markings = pref_load.body_markings.Copy()

@@ -309,6 +309,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["randomise"],  randomise)
 	READ_FILE(S["persistent_scars"] , persistent_scars)
 
+	READ_FILE(S["loadout_list"] , loadout_list)//SKYRAT EDIT ADDITION
+
 	//Load prefs
 	READ_FILE(S["job_preferences"], job_preferences)
 
@@ -324,6 +326,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = SANITIZE_LIST(randomise)
 
 	persistent_scars = sanitize_integer(persistent_scars)
+
+	loadout_list = sanitize_loadout_list(update_loadout_list(loadout_list)) //SKYRAT EDIT ADDITION
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -368,6 +372,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Character
 	WRITE_FILE(S["randomise"] , randomise)
 	WRITE_FILE(S["persistent_scars"] , persistent_scars)
+
+	WRITE_FILE(S["loadout_list"], loadout_list) //SKYRAT EDIT ADDITON
 
 	//Write prefs
 	WRITE_FILE(S["job_preferences"] , job_preferences)

@@ -253,8 +253,8 @@
 
 	data["icon64"] = generate_preview()
 	data["selected_loadout"] = all_selected_paths
-	data["mob_name"] = owner.prefs.real_name
-	data["ismoth"] = istype(owner.prefs.pref_species, /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
+	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
+	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
 	data["job_clothes"] = view_job_clothes
 	data["tutorial_status"] = tutorial_status
 	if(tutorial_status)
@@ -337,14 +337,14 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 				fav_job = SSjob.GetJob(selected_job)
 				break
 
-		if(istype(owner.prefs.pref_species, /datum/species/plasmaman) && fav_job.plasmaman_outfit)
+		if(istype(owner.prefs?.read_preference(/datum/preference/choiced/species), /datum/species/plasmaman) && fav_job.plasmaman_outfit)
 			default_outfit = new fav_job.plasmaman_outfit()
 		else
 			default_outfit = new fav_job.outfit()
-			if(owner.prefs.jumpsuit_style == PREF_SKIRT)
+			if(owner.prefs?.read_preference(/datum/preference/choiced/jumpsuit) == PREF_SKIRT)
 				default_outfit.uniform = text2path("[default_outfit.uniform]/skirt")
 
-			switch(owner.prefs.backpack)
+			switch(owner.prefs?.read_preference(/datum/preference/choiced/backpack))
 				if(GBACKPACK)
 					default_outfit.back = /obj/item/storage/backpack //Grey backpack
 				if(GSATCHEL)

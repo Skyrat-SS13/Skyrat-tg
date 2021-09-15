@@ -3,7 +3,6 @@
 	make_body_marking_references()
 	make_body_marking_set_references()
 	make_body_marking_dna_block_references()
-	make_loadout_references()
 	make_augment_references()
 	make_culture_references()
 	//We're loading donators here because it's the least intrusive way modularly
