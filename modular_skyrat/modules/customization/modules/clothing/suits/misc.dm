@@ -335,7 +335,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "runner fur coat"
-	desc = "Feels heavy. Perfect for hunting down synthetics in the far off distopia! Wait, that's happening now, damnit.."
+	desc = "Feels heavy. Perfect for hunting down synthetics in the far off dystopia! Wait, that's happening now, damnit.."
 	icon_state = "bladerunner_civ"
 	mutant_variants = NONE
 	body_parts_covered = CHEST|GROIN|ARMS
