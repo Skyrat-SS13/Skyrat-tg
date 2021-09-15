@@ -52,7 +52,7 @@
 	l_hand = /obj/item/storage/firstaid/brute
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/security_medic)
+	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/security_medic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
