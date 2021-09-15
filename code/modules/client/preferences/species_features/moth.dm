@@ -11,8 +11,8 @@
 	var/icon/moth_head = icon('icons/mob/human_parts.dmi', "moth_head_m")
 	moth_head.Blend(icon('icons/mob/human_face.dmi', "motheyes"), ICON_OVERLAY)
 
-	for (var/antennae_name in GLOB.moth_antennae_list)
-		var/datum/sprite_accessory/antennae = GLOB.moth_antennae_list[antennae_name]
+	for (var/antennae_name in GLOB.sprite_accessories["moth_antennae"]) //SKYRAT EDIT
+		var/datum/sprite_accessory/antennae = GLOB.sprite_accessories["moth_antennae"][antennae_name] //SKYRAT EDIT
 
 		var/icon/icon_with_antennae = new(moth_head)
 		icon_with_antennae.Blend(icon('icons/mob/moth_antennae.dmi', "m_moth_antennae_[antennae.icon_state]_FRONT"), ICON_OVERLAY)
@@ -54,8 +54,8 @@
 
 	moth_body.Blend(icon('icons/mob/human_face.dmi', "motheyes"), ICON_OVERLAY)
 
-	for (var/markings_name in GLOB.moth_markings_list)
-		var/datum/sprite_accessory/markings = GLOB.moth_markings_list[markings_name]
+	for (var/markings_name in GLOB.sprite_accessories["moth_markings"]) //SKYRAT EDIT
+		var/datum/sprite_accessory/markings = GLOB.sprite_accessories["moth_markings"][markings_name] //SKYRAT EDIT
 		var/icon/icon_with_markings = new(moth_body)
 
 		if (markings_name != "None")
@@ -86,11 +86,7 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/moth_wings/init_possible_values()
-	var/list/icon/values = possible_values_for_sprite_accessory_list_for_body_part(
-		GLOB.moth_wings_list,
-		"moth_wings",
-		list("BEHIND", "FRONT"),
-	)
+	var/list/icon/values = possible_values_for_sprite_accessory_list_for_body_part(GLOB.sprite_accessories["moth_wings"]) //SKYRAT EDIT
 
 	// Moth wings are in a stupid dimension
 	for (var/name in values)

@@ -375,7 +375,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(istype(I))
 				C.dropItemToGround(I)
 			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
-				C.put_in_hands(new mutanthands())
+				INVOKE_ASYNC(C, /mob/living/carbon.proc/put_in_hands, new mutanthands())
 
 	if(ishuman(C))
 		var/mob/living/carbon/human/human = C

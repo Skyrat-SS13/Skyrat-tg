@@ -148,12 +148,12 @@
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
 		//BODYPARTS AND FEATURES
-		if(pref_load)
-			dna.features = pref_load.read_.Copy()
+		if(pref_load) //SKYRAT EDIT TO-DO: FIX THIS SHIT
+			dna.features = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
 			dna.real_name = pref_load.read_preference(/datum/preference/name/real_name)
-			dna.mutant_bodyparts = pref_load.mutant_bodyparts.Copy()
-			dna.body_markings = pref_load.body_markings.Copy()
-			dna.species.body_markings = pref_load.body_markings.Copy()
+			dna.mutant_bodyparts = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
+			dna.body_markings = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
+			dna.species.body_markings = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
 		else
 			if(!retain_features)
 				dna.features = override_features || new_race.get_random_features()
