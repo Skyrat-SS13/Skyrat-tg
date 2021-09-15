@@ -1,6 +1,6 @@
 /datum/preference/toggle/master_erp_preferences
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
-	savefile_key = "erp_pref"
+	savefile_key = "master_erp_pref"
 	savefile_identifier = PREFERENCE_PLAYER
 
 /datum/preference/toggle/erp
