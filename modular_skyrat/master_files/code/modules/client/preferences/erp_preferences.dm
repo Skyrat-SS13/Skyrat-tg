@@ -28,9 +28,9 @@
 	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
 
 /datum/preference/toggle/erp/deserialize(input, datum/preferences/preferences)
-	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		return FALSE
+	. = ..()
 
 /datum/preference/toggle/erp/cum_face
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
