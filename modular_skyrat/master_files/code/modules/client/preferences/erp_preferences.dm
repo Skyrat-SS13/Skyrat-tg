@@ -1,17 +1,36 @@
+/datum/config_entry/flag/disable_erp_preferences
+	default = FALSE
+
 /datum/preference/toggle/master_erp_preferences
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "master_erp_pref"
 	savefile_identifier = PREFERENCE_PLAYER
 
+/datum/preference/toggle/master_erp_preferences/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+
+	return TRUE
+
 /datum/preference/toggle/erp
 	default_value = FALSE
 
 /datum/preference/toggle/erp/is_accessible(datum/preferences/preferences)
-	. = ..()
 	if (!..(preferences))
 		return FALSE
 
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+
 	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
+
+/datum/preference/toggle/erp/read(savefile/savefile, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+	return ..()
 
 /datum/preference/toggle/erp/cum_face
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
