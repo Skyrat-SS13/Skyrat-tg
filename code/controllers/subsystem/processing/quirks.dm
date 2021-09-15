@@ -68,7 +68,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	if(cli.get_exp_living(TRUE) < EXP_ASSIGN_WAYFINDER && !user.has_quirk(/datum/quirk/item_quirk/needswayfinder))
 		var/datum/quirk/wayfinder = /datum/quirk/item_quirk/needswayfinder
 		if(user.add_quirk(wayfinder))
-			SSblackbox.record_feedback("nested tally", "quirks_taken", 1, list(initial(wayfinder.name)))I'
+			SSblackbox.record_feedback("nested tally", "quirks_taken", 1, list(initial(wayfinder.name)))
 /*
  *Randomises the quirks for a specified mob
  */
