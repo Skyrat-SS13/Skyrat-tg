@@ -241,7 +241,7 @@
 		var/initial_string = "Would you like to spawn as a randomly created character, or use the one currently selected in your preferences?"
 		var/action = tgui_alert(user, initial_string, "", list("Use Random Character", "Use Character From Preferences"))
 		if(action && action == "Use Character From Preferences")
-			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
+			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs?.read_preference(/datum/preference/name/real_name)])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
 			var/action2 = tgui_alert(user, warning_string, "", list("Yes", "No"))
 			if(action2 && action2 == "Yes")
 				is_pref_char = TRUE

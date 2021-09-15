@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /mob/dead/new_player
 	flags_1 = NONE
 	invisibility = INVISIBILITY_ABSTRACT
@@ -94,6 +93,7 @@
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
 
+
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
 	if(QDELETED(src) || !src.client)
@@ -150,6 +150,16 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
+		//SKYRAT EDIT ADDITION
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "[jobtitle] is restricted from your species."
+		if(JOB_UNAVAILABLE_LANGUAGE)
+			return "You don't have the required languages for [jobtitle]."
+		if(JOB_NOT_VETERAN)
+			return "You need to be veteran to join as [jobtitle]."
+		//SKYRAT EDIT END
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -169,12 +179,22 @@
 		return JOB_UNAVAILABLE_BANNED
 	if(QDELETED(src))
 		return JOB_UNAVAILABLE_GENERIC
-	if(!job.player_old_enough(client))
-		return JOB_UNAVAILABLE_ACCOUNTAGE
-	if(job.required_playtime_remaining(client))
-		return JOB_UNAVAILABLE_PLAYTIME
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	//SKYRAT EDIT ADDITION
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
+	if(!job.has_required_languages(client.prefs))
+		return JOB_UNAVAILABLE_LANGUAGE
+	if(job.veteran_only && !is_veteran_player(client))
+		return JOB_NOT_VETERAN
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
+	//SKYRAT EDIT END
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
@@ -280,6 +300,7 @@
 	if(SSlag_switch.measures[DISABLE_NON_OBSJOBS])
 		dat += "<div class='notice red' style='font-size: 125%'>Only Observers may join at this time.</div><br>"
 	dat += "<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>"
+	dat += "<div class='notice'>Alert Level: [capitalize(num2seclevel(SSsecurity_level.current_level))]</div>"
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
@@ -301,6 +322,7 @@
 		for(var/datum/job/job_datum as anything in department.department_jobs)
 			if(IsJobUnavailable(job_datum.title, TRUE) != JOB_AVAILABLE)
 				continue
+
 			var/command_bold = ""
 			if(job_datum.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 				command_bold = " command"
@@ -308,6 +330,9 @@
 				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
 			else
 				dept_data += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
+
+
+
 		if(!length(dept_data))
 			dept_data += "<span class='nopositions'>No positions open.</span>"
 		dat += dept_data.Join()
@@ -322,6 +347,7 @@
 	popup.set_content(jointext(dat, ""))
 	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
 
+
 /// Creates, assigns and returns the new_character to spawn as. Assumes a valid mind.assigned_role exists.
 /mob/dead/new_player/proc/create_character(atom/destination)
 	spawning = TRUE
@@ -331,6 +357,9 @@
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
 	if(QDELETED(src) || !client)
 		return // Disconnected while checking for the appearance ban.
+
+
+
 	if(!isAI(spawning_mob)) // Unfortunately there's still snowflake AI code out there.
 		mind.original_character_slot_index = client.prefs.default_slot
 		mind.transfer_to(spawning_mob) //won't transfer key since the mind is not active
@@ -362,6 +391,7 @@
 
 	if(!GLOB.crew_manifest_tgui)
 		GLOB.crew_manifest_tgui = new /datum/crew_manifest(src)
+
 
 	GLOB.crew_manifest_tgui.ui_interact(src)
 
@@ -428,4 +458,3 @@
 
 	// Add verb for re-opening the interview panel, and re-init the verbs for the stat panel
 	add_verb(src, /mob/dead/new_player/proc/open_interview)
-*/

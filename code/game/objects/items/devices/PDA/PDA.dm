@@ -146,9 +146,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					font_index = MODE_MONO
 					font_mode = FONT_MONO
-			//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-			ttone = user.client.prefs.pda_ringer
-			//SKYRAT EDIT ADDITION END
 			equipped = TRUE
 
 /obj/item/pda/proc/update_label()

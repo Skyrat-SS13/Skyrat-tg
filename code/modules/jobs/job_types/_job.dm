@@ -102,10 +102,6 @@
 	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
 	var/policy_index = ""
 
-	//SKYRAT EDIT ADDITION
-	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
-	var/veteran_only = FALSE
-
 
 /datum/job/New()
 	. = ..()
@@ -190,13 +186,10 @@
 	equipOutfit(equipping.outfit, visual_only)
 
 
-/* SKYRAT EDIT MOVAL - MOVED TO ALTTITLEPREFS
-
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
-*/
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
@@ -294,9 +287,6 @@
 		C.registered_name = H.real_name
 		if(H.age)
 			C.registered_age = H.age
-		if(H.alt_title_holder) // SKYRAT EDIT ADD -- ALT TITLES
-			C.real_title = J.title
-			C.assignment = H.alt_title_holder // SKYRAT EDIT ADD END
 		C.update_label()
 		C.update_icon()
 		var/datum/bank_account/B = SSeconomy.bank_accounts_by_id["[H.account_id]"]
@@ -309,8 +299,6 @@
 	if(istype(PDA))
 		PDA.owner = H.real_name
 		PDA.ownjob = J.title
-		if(H.alt_title_holder) // SKYRAT EDIT ADD -- ALT TITLES
-			PDA.ownjob = H.alt_title_holder // SKYRAT EDIT ADD END
 		PDA.update_label()
 
 
@@ -437,11 +425,6 @@
 			real_name = species.random_name(gender, TRUE)
 	dna.update_dna_identity()
 
-	//SKYRAT EDIT ADD -- ALT TITLES
-	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
-		alt_title_holder = player_client.prefs.alt_titles_preferences[job.title]
-	//SKYRAT EDIT ADD END
-
 
 /mob/living/silicon/ai/apply_prefs_job(client/player_client, datum/job/job)
 	if(GLOB.current_anonymous_theme)
@@ -450,12 +433,6 @@
 	apply_pref_name(/datum/preference/name/ai, player_client) // This proc already checks if the player is appearance banned.
 	set_core_display_icon(null, player_client)
 
-	//SKYRAT EDIT ADD -- ALT TITLES
-	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
-		alt_title_holder = player_client.prefs.alt_titles_preferences[job.title]
-	if(aiPDA && alt_title_holder)
-		aiPDA.ownjob = alt_title_holder
-	//SKYRAT EDIT ADD END
 
 /mob/living/silicon/robot/apply_prefs_job(client/player_client, datum/job/job)
 	if(mmi)
@@ -483,13 +460,6 @@
 	// If this checks fails, then the name will have been handled during initialization.
 	if(!GLOB.current_anonymous_theme && player_client.prefs.read_preference(/datum/preference/name/cyborg) != DEFAULT_CYBORG_NAME)
 		apply_pref_name(/datum/preference/name/cyborg, player_client)
-
-	//SKYRAT EDIT ADD -- ALT TITLES
-	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
-		alt_title_holder = player_client.prefs.alt_titles_preferences[job.title]
-	if(aiPDA && alt_title_holder)
-		aiPDA.ownjob = alt_title_holder
-	//SKYRAT EDIT ADD END
 
 /**
  * Called after a successful roundstart spawn.

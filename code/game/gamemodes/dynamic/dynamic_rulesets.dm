@@ -203,7 +203,7 @@
 			continue
 
 		//SKYRAT EDIT ADDITION
-		if(!candidate_client.prefs?.be_antag)
+		if(!candidate_client.prefs?.read_preference(/datum/preference/toggle/be_antag))
 			candidates.Remove(candidate_player)
 			continue
 		//SKYRAT EDIT END

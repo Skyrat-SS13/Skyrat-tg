@@ -329,7 +329,7 @@
 	. = ..()
 	if(!.)
 		return
-	if(H.client?.prefs.sextoys_pref == "No")
+	if(H.client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		return
 	var/hit_percent = (100-(blocked+armor))/100
 	hit_percent = (hit_percent * (100-H.physiology.damage_resistance))/100

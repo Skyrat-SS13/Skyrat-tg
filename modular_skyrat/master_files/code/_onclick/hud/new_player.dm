@@ -9,10 +9,10 @@
 	if(!.)
 		return
 	var/mob/dead/new_player/new_player = hud.mymob
-	new_player.client.prefs.be_antag = !new_player.client.prefs.be_antag
-	base_icon_state = "be_antag_[new_player.client.prefs.be_antag ? "on" : "off"]"
+	new_player.client.prefs?.write_preference(/datum/preference/toggle/be_antag, TRUE)
+	base_icon_state = "be_antag_[new_player.client.prefs?.read_preference(/datum/preference/toggle/be_antag) ? "on" : "off"]"
 	update_appearance(UPDATE_ICON)
-	to_chat(new_player, span_notice("You will now [new_player.client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences."))
+	to_chat(new_player, span_notice("You will now [new_player.client.prefs?.read_preference(/datum/preference/toggle/be_antag) ? "be considered" : "not be considered"] for any antagonist positions set in your preferences."))
 
 /atom/movable/screen/lobby/button/antag_toggle/Initialize(mapload)
 	. = ..()

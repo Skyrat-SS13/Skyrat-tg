@@ -278,7 +278,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 	for(var/mob/Player in GLOB.player_list)//prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
 		if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) && !isbrain(Player) && Player.client && Player != owner && SSjob.GetJob(Player.mind.assigned_role))
-			if(Player.client.prefs?.erp_pref == "Yes" && Player.client.prefs?.noncon_pref == "Yes")
+			if(Player.client.prefs?.read_preference(/datum/preference/toggle/erp) && Player.client.prefs?.read_preference(/datum/preference/toggle/noncon))
 				viable_minds += Player.mind
 	for(var/datum/mind/possible_target in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))
@@ -511,7 +511,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 /datum/brain_trauma/special/sadism/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/H = owner
-	if(someone_suffering() && H.client?.prefs.erp_pref == "Yes")
+	if(someone_suffering() && H.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		H.adjustArousal(2)
 		SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
 	else

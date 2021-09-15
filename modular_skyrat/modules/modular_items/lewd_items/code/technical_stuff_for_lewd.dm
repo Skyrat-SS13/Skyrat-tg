@@ -707,7 +707,7 @@
 
 // Updating vagina slot
 /mob/living/carbon/human/update_inv_vagina()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1]
 			inv.update_icon()
@@ -746,7 +746,7 @@
 
 // Updating anus slot
 /mob/living/carbon/human/update_inv_anus()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1]
 			inv.update_icon()
@@ -785,7 +785,7 @@
 
 // Updating nipples slot
 /mob/living/carbon/human/update_inv_nipples()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1]
 			inv.update_icon()
@@ -824,7 +824,7 @@
 
 // Updating penis slot
 /mob/living/carbon/human/update_inv_penis()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1]
 			inv.update_icon()

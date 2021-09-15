@@ -216,15 +216,6 @@ Possible to do for anyone motivated enough:
 				AI = null
 			else
 				aiPlayer = AI
-	if(aiPlayer)
-		if(aiPlayer.client)
-			if(length(aiPlayer.client.prefs.features["silicon_flavor_text"]))
-				var/message = aiPlayer.client.prefs.features["silicon_flavor_text"]
-				if(length_char(message) <= 40)
-					line = "<span class='notice'>[message]</span>"
-				else
-					line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(aiPlayer)];lookup_info=silicon_flavor_text'>More...</a></span>"
-			line += " <span class='notice'><a href='?src=[REF(aiPlayer)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
 	if(LAZYLEN(masters))
 		if(holo.Impersonation)
 			. += holo.Impersonation.examine(user)

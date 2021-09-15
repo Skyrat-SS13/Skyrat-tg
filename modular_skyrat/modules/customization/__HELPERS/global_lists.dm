@@ -78,19 +78,6 @@
 		GLOB.dna_body_marking_blocks[marking_zone] = GLOB.dna_total_feature_blocks+1
 		GLOB.dna_total_feature_blocks += DNA_BLOCKS_PER_MARKING_ZONE
 
-/proc/make_loadout_references()
-	// Here we build the global loadout lists
-	for(var/path in subtypesof(/datum/loadout_item))
-		var/datum/loadout_item/L = path
-		if(initial(L.path))
-			L = new path()
-			GLOB.loadout_items[L.path] = L
-			if(!GLOB.loadout_category_to_subcategory_to_items[L.category])
-				GLOB.loadout_category_to_subcategory_to_items[L.category] = list()
-			if(!GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory])
-				GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] = list()
-			GLOB.loadout_category_to_subcategory_to_items[L.category][L.subcategory] += L.path
-
 /proc/make_augment_references()
 	// Here we build the global loadout lists
 	for(var/path in subtypesof(/datum/augment_item))

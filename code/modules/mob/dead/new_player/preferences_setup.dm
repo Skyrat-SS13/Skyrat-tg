@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /// Fully randomizes everything in the character.
 /datum/preferences/proc/randomise_appearance_prefs(randomize_flags = ALL)
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
@@ -88,7 +87,7 @@
 			highest_pref = job_preferences[job]
 
 	return preview_job
-*/
+
 /datum/preferences/proc/render_new_preview_appearance(mob/living/carbon/human/dummy/mannequin)
 	var/datum/job/preview_job = get_highest_priority_job()
 
