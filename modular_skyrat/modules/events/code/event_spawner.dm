@@ -126,12 +126,9 @@
 				else
 					equipped.forceMove(get_turf(H))
 
-	var/list/packed_items
 	if(gets_loadout)
-		packed_items = user.client.prefs.equip_preference_loadout(H, FALSE, null)
-
-	if(packed_items)
-		user.client.prefs.add_packed_items(H, packed_items, FALSE)
+		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client?.prefs?.loadout_list))
+			item.post_equip_item(H.client?.prefs, H)
 
 	//Override access of the ID card here
 	var/obj/item/card/id/ID

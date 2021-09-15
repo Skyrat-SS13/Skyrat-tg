@@ -309,7 +309,20 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["randomise"],  randomise)
 	READ_FILE(S["persistent_scars"] , persistent_scars)
 
-	READ_FILE(S["loadout_list"] , loadout_list)//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT ADDITION
+	READ_FILE(S["loadout_list"] , loadout_list)
+
+	READ_FILE(S["languages"] , languages)
+	var/do_get_common_later = FALSE
+	if(isnull(languages))
+		do_get_common_later = TRUE
+	languages = SANITIZE_LIST(languages)
+
+	validate_languages()
+	if(do_get_common_later)
+		try_get_common_language()
+	//SKYRAT EDIT END
+
 
 	//Load prefs
 	READ_FILE(S["job_preferences"], job_preferences)
@@ -373,7 +386,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["randomise"] , randomise)
 	WRITE_FILE(S["persistent_scars"] , persistent_scars)
 
-	WRITE_FILE(S["loadout_list"], loadout_list) //SKYRAT EDIT ADDITON
+	//SKYRAT EDIT ADDITON
+	WRITE_FILE(S["loadout_list"], loadout_list)
+	WRITE_FILE(S["languages"] , languages)
+	//SKYRAT EDIT END
 
 	//Write prefs
 	WRITE_FILE(S["job_preferences"] , job_preferences)
