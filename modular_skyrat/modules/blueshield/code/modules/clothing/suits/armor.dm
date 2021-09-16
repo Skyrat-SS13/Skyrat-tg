@@ -26,7 +26,7 @@
 	inhand_icon_state = "coatblueshield"
 	desc = "A comfy kevlar-lined coat with \"NT\" emblazoned on the back."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/blueshield
-	allowed = list(/obj/item/melee/baton/blueshieldprod)
+	allowed = list(/obj/item/melee/baton/security/loaded)
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 75)
 
 /obj/item/clothing/suit/hooded/wintercoat/blueshield/Initialize()
