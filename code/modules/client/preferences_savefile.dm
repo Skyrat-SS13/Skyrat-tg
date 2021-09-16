@@ -365,6 +365,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return FALSE
 	if(!fexists(path))
 		return FALSE
+
+	character_savefile = null
+
 	var/savefile/S = new /savefile(path)
 	if(!S)
 		return FALSE
@@ -590,7 +593,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["all_quirks"] , all_quirks)
 
 	return TRUE
-
 
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value,list())
