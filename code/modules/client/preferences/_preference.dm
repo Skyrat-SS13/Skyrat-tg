@@ -15,8 +15,11 @@
 /// The priority at which names are decided, needed for proper randomization.
 #define PREFERENCE_PRIORITY_NAMES 5
 
+/// The priority at which mutant bodyparts are set, this is important so that species doesn't override the new parts.
+#define PREFERENCE_PRIORITY_MUTANT_PARTS 6
+
 /// The maximum preference priority, keep this updated, but don't use it for `priority`.
-#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_NAMES
+#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_MUTANT_PARTS
 
 /// For choiced preferences, this key will be used to set display names in constant data.
 #define CHOICED_PREFERENCE_DISPLAY_NAMES "display_names"
@@ -201,16 +204,23 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preferences/proc/get_savefile_for_savefile_identifier(savefile_identifier)
 	RETURN_TYPE(/savefile)
 
+	// Both of these will cache savefiles, but only for a tick.
+	// This is because storing a savefile will lock it, causing later issues down the line.
+
 	if (!parent)
 		return null
 
 	switch (savefile_identifier)
 		if (PREFERENCE_CHARACTER)
-			return character_savefile
+			if (!character_savefile)
+				character_savefile = new /savefile(path)
+				character_savefile.cd = "/character[default_slot]"
+				addtimer(VARSET_CALLBACK(src, character_savefile, null), 1)
 		if (PREFERENCE_PLAYER)
 			if (!game_savefile)
 				game_savefile = new /savefile(path)
 				game_savefile.cd = "/"
+				addtimer(VARSET_CALLBACK(src, game_savefile, null), 1)
 			return game_savefile
 		else
 			CRASH("Unknown savefile identifier [savefile_identifier]")

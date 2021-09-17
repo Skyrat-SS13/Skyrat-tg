@@ -132,7 +132,7 @@
 	holder.transform = holder.transform.Translate(0, translate)
 	current_body_size = features["body_size"]
 
-/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, var/datum/preferences/pref_load, var/list/override_features, var/list/override_mutantparts, var/list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
+/mob/living/carbon/set_species(datum/species/mrace, icon_update = TRUE, var/list/override_features, var/list/override_mutantparts, var/list/override_markings, retain_features = FALSE, retain_mutantparts = FALSE)
 	if(QDELETED(src))
 		CRASH("You're trying to change your species post deletion, this is a recipe for madness")
 	if(mrace && has_dna())
@@ -144,44 +144,31 @@
 		else
 			return
 		deathsound = new_race.deathsound
-		dna.species.on_species_loss(src, new_race, pref_load)
+		dna.species.on_species_loss(src, new_race)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
-		//BODYPARTS AND FEATURES
-		if(pref_load) //SKYRAT EDIT TO-DO: FIX THIS SHIT
-			dna.features = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
-			dna.real_name = pref_load.read_preference(/datum/preference/name/real_name)
-			dna.mutant_bodyparts = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
-			dna.body_markings = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
-			dna.species.body_markings = pref_load.read_preference(/datum/preference/choiced/lizard_body_markings) //SKYRAT EDIT TO-DO: FIX THIS SHIT
-		else
-			if(!retain_features)
-				dna.features = override_features || new_race.get_random_features()
-			if(retain_mutantparts)
-				var/list/list/new_list = new_race.get_random_mutant_bodyparts(dna.features)
-				var/list/compiled_list = list()
-				for(var/key in new_list)
-					if(dna.mutant_bodyparts[key])
-						compiled_list[key] = dna.mutant_bodyparts[key].Copy()
-					else
-						compiled_list[key] = new_list[key].Copy()
-			else
-				dna.mutant_bodyparts = override_mutantparts || new_race.get_random_mutant_bodyparts(dna.features)
-			dna.body_markings = override_markings || new_race.get_random_body_markings(dna.features)
-			dna.species.body_markings = dna.body_markings.Copy()
+
+		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
+		dna.mutant_bodyparts = override_mutantparts || new_race.get_random_mutant_bodyparts(dna.features)
+		//dna.body_markings = override_markings || new_race.get_random_body_markings(dna.features)
+		//dna.species.body_markings = dna.body_markings.Copy()
+		//END OF BODYPARTS AND FEATURES
 
 		copy_mutant_parts_to_species()
 		dna.unique_features = dna.generate_unique_features()
 
 		dna.update_body_size()
 
-		dna.species.on_species_gain(src, old_species, pref_load)
-		//END OF BODYPARTS AND FEATURES
+		dna.species.on_species_gain(src, old_species)
+
+
 		if(ishuman(src))
 			qdel(language_holder)
 			var/species_holder = initial(mrace.species_language_holder)
-			language_holder = new species_holder(src, pref_load)
+			language_holder = new species_holder(src)
 		update_atom_languages()
+
+		to_chat(world, "SET SPECIES CALLED TO HUMAN")
 
 /mob/living/carbon/proc/copy_mutant_parts_to_species()
 	if(!has_dna())

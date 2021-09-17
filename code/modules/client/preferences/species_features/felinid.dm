@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /datum/preference/choiced/tail_human
 	savefile_key = "feature_human_tail"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -31,3 +32,4 @@
 /datum/preference/choiced/ears/create_default_value()
 	var/datum/sprite_accessory/ears/cat/ears = /datum/sprite_accessory/ears/cat
 	return initial(ears.name)
+*/

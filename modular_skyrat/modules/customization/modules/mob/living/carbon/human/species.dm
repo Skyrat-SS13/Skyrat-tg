@@ -335,7 +335,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
 	return list()
 
-/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
 		C.gender = PLURAL

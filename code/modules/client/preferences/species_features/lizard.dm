@@ -1,3 +1,4 @@
+/*
 /proc/generate_lizard_side_shots(list/sprite_accessories, key, include_snout = TRUE)
 	var/list/values = list()
 
@@ -115,7 +116,7 @@
 */
 
 /datum/preference/choiced/lizard_snout
-	savefile_key = "feature_lizard_snout"
+	savefile_key = "feature_lizrd_snout"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_FEATURES
 	main_feature_name = "Snout"
@@ -159,3 +160,4 @@
 		target.dna.species.mutant_bodyparts["tail"] = list()
 	target.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] = value
 	target.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_COLOR_LIST] = list("333", "222", "444")
+*/

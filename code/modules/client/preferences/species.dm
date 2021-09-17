@@ -27,6 +27,7 @@
 	return values
 
 /datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value)
+	to_chat(world, "APPLYING SPECIES TO HUMAN")
 	target.set_species(value, icon_update = FALSE)
 
 /datum/preference/choiced/species/compile_constant_data()
