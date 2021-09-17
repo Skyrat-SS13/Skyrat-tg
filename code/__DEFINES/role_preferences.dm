@@ -87,6 +87,16 @@
 GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_TRAITOR = 0,
 	ROLE_BROTHER = 0,
+<<<<<<< HEAD
+=======
+	ROLE_CHANGELING = 0,
+	ROLE_CLOWN_OPERATIVE = 14,
+	ROLE_CULTIST = 14,
+	ROLE_FAMILIES = 0,
+	ROLE_HERETIC = 0,
+	ROLE_MALF = 0,
+	ROLE_MONKEY = 0,
+>>>>>>> d19db7481fa (Makes clown ops use their own darn defines and fixes nukie icon preference (#61488))
 	ROLE_OPERATIVE = 14,
 	ROLE_CHANGELING = 0,
 	ROLE_WIZARD = 14,
