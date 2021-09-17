@@ -17,6 +17,7 @@
 	gain_text = "<span class='notice'>Your ass feels solid!</span>"
 	lose_text = "<span class='notice'>Your ass doesn't feel so solid anymore.</span>"
 	medical_record_text = "Patient's ass seems incredibly solid."
+	value = 0
 	mob_trait = TRAIT_IRONASS
 
 /datum/quirk/personalspace
