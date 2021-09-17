@@ -50,7 +50,7 @@
 		return
 	if(!radial_based)
 		var/ghost_role = tgui_alert(usr, "Become [mob_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
-		if(ghost_role == "No" || !loc || QDELETED(user))
+		if(ghost_role != "Yes" || !loc || QDELETED(user))
 			return
 	//SKYRAT EDIT ADDITION BEGIN
 	if(!extra_prompts(user))
