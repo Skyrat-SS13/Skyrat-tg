@@ -550,8 +550,10 @@
 						supervisor.", "SYSTEM ERROR:", alert=TRUE)
 
 				dock_id(destination_dock)
-				unbolt_all_doors() //SKYRAT EDIT ADDITION
-				INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_bans) //SKYRAT EDIT ADDITION
+				//SKYRAT EDIT - START
+				unbolt_all_doors()
+				INVOKE_ASYNC(GLOBAL_PROC, /proc/skyrat_postround_handle)
+				//SKYRAT EDIT - END
 				mode = SHUTTLE_ENDGAME
 				timer = 0
 

@@ -209,6 +209,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["pda_style"], pda_style)
 	READ_FILE(S["pda_color"], pda_color)
 	READ_FILE(S["darkened_flash"], darkened_flash)
+	READ_FILE(S["anti_eorg_teleport"], anti_eorg_teleport)
 
 	// OOC commendations
 	READ_FILE(S["hearted_until"], hearted_until)
@@ -277,6 +278,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
 	darkened_flash = sanitize_integer(darkened_flash, FALSE, TRUE, initial(darkened_flash))
+	anti_eorg_teleport = sanitize_integer(anti_eorg_teleport, FALSE, TRUE, initial(anti_eorg_teleport))
 	announcement_volume = sanitize_integer(announcement_volume, 1, 100, initial(announcement_volume))
 
 	if(needs_update >= 0) //save the updated version
@@ -357,6 +359,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["hearted_until"], (hearted_until > world.realtime ? hearted_until : null))
 	WRITE_FILE(S["favorite_outfits"], favorite_outfits)
 	WRITE_FILE(S["darkened_flash"], darkened_flash)
+	WRITE_FILE(S["anti_eorg_teleport"], anti_eorg_teleport)
 
 	//SKYRAT WRITES
 	WRITE_FILE(S["announcement_volume"], announcement_volume)
