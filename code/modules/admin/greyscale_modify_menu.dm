@@ -275,33 +275,14 @@ This is highly likely to cause massive amounts of lag as every object in the gam
 		var/list/icon_state_data = data["steps"][icon_state]
 		for(var/list/step as anything in icon_state_data)
 			CHECK_TICK
-<<<<<<< HEAD
-			var/list/step_data = data["steps"][step]
-			var/image/layer = image(step)
-			var/image/result = step_data["result"]
-			// SKYRAT EDIT BEGIN - Bringing back the GAGS coloring menu - ORIGINAL:
-			/*
-			steps += list(
-				list(
-					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
-					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
-					"config_name"=step_data["config_name"]
-				)
-			)*/
-			steps += list(
-				list(
-					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
-					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
-					"config_name"=step_data["config_name"]
-=======
 			var/image/layer = image(step["step"])
 			var/image/result = image(step["result"])
+			// SKYRAT EDIT BEGIN - Bringing back the GAGS coloring menu
 			steps += list(
 				list(
-					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE),
-					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE),
+					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
+					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
 					"config_name"=step["config_name"]
->>>>>>> 04dfcc65594 (GAGS fix + debug improvements I needed to find it (#60819))
 				)
 			)
 			// SKYRAT EDIT END
