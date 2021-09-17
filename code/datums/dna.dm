@@ -430,7 +430,7 @@
 		update_atom_languages()
 */
 //SKYRAT EDIT REMOVAL BEGIN
-
+/*
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
 	if(icon_update)
@@ -438,7 +438,7 @@
 		update_hair()
 		update_body_parts()
 		update_mutations_overlay()// no lizard with human hulk overlay please.
-
+*/
 
 /mob/proc/has_dna()
 	return

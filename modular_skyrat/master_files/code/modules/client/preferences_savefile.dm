@@ -2,16 +2,6 @@
 
 	READ_FILE(S["loadout_list"], loadout_list)
 
-	READ_FILE(S["languages"], languages)
-	var/do_get_common_later = FALSE
-	if(isnull(languages))
-		do_get_common_later = TRUE
-	languages = SANITIZE_LIST(languages)
-
-	validate_languages()
-	if(do_get_common_later)
-		try_get_common_language()
-
 	READ_FILE(S["augments"] , augments)
 	READ_FILE(S["augment_limb_styles"] , augment_limb_styles)
 
@@ -27,11 +17,16 @@
 		if(!GLOB.robotic_styles_list[key])
 			augment_limb_styles -= key
 
+	READ_FILE(S["features"], features)
+	READ_FILE(S["mutant_bodyparts"], mutant_bodyparts)
+	READ_FILE(S["body_markings"], body_markings)
+
 
 /datum/preferences/proc/save_character_skyrat(savefile/S)
 
 	WRITE_FILE(S["loadout_list"], loadout_list)
-	WRITE_FILE(S["languages"] , languages)
 	WRITE_FILE(S["augments"] , augments)
 	WRITE_FILE(S["augment_limb_styles"] , augment_limb_styles)
-
+	WRITE_FILE(S["features"] , features)
+	WRITE_FILE(S["mutant_bodyparts"] , mutant_bodyparts)
+	WRITE_FILE(S["body_markings"] , body_markings)

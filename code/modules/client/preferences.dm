@@ -472,6 +472,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 /// Applies the given preferences to a human mob.
 /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	character.dna.features = list()
+	character.dna.species.mutant_bodyparts = list()
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)

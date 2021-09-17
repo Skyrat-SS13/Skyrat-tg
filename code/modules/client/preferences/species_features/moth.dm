@@ -78,6 +78,7 @@
 /datum/preference/choiced/moth_markings/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["moth_markings"] = value
 
+/*
 /datum/preference/choiced/moth_wings
 	savefile_key = "feature_moth_wings"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -96,3 +97,4 @@
 
 /datum/preference/choiced/moth_wings/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["moth_wings"] = value
+*/

@@ -6,7 +6,7 @@
 	relevant_mutant_bodypart = "tail_human"
 
 /datum/preference/choiced/tail_human/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["tails"])
+	return assoc_to_keys(GLOB.sprite_accessories["tail"])
 
 /datum/preference/choiced/tail_human/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["tail_human"] = value
@@ -23,7 +23,7 @@
 	relevant_mutant_bodypart = "ears"
 
 /datum/preference/choiced/ears/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["ears"])
+	return GLOB.sprite_accessories["ears"]
 
 /datum/preference/choiced/ears/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["ears"] = value

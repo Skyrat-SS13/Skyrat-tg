@@ -40,8 +40,8 @@
 
 	var/icon/lizard = icon('icons/mob/human_parts_greyscale.dmi', "lizard_chest_m")
 
-	for (var/name in GLOB.sprite_accessories["markings"]) //SKYRAT EDIT
-		var/datum/sprite_accessory/sprite_accessory = GLOB.sprite_accessories["markings"][name] //SKYRAT EDIT
+	for (var/name in GLOB.sprite_accessories["body_markings"]) //SKYRAT EDIT
+		var/datum/sprite_accessory/sprite_accessory = GLOB.sprite_accessories["body_markings"][name] //SKYRAT EDIT
 
 		var/icon/final_icon = icon(lizard)
 
@@ -63,7 +63,10 @@
 	return values
 
 /datum/preference/choiced/lizard_body_markings/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["body_markings"] = value
+	if(!target.dna.mutant_bodyparts["body_markings"])
+		target.dna.mutant_bodyparts["body_markings"] = list()
+	target.dna.mutant_bodyparts["body_markings"][MUTANT_INDEX_NAME] = value
+	target.dna.mutant_bodyparts["body_markings"][MUTANT_INDEX_COLOR_LIST] = list("333", "222", "444")
 
 /datum/preference/choiced/lizard_frills
 	savefile_key = "feature_lizard_frills"
@@ -76,7 +79,10 @@
 	return generate_lizard_side_shots(GLOB.sprite_accessories["frills"], "frills") //SKYRAT EDIT
 
 /datum/preference/choiced/lizard_frills/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["frills"] = value
+	if(!target.dna.species.mutant_bodyparts["frills"])
+		target.dna.species.mutant_bodyparts["frills"] = list()
+	target.dna.species.mutant_bodyparts["frills"][MUTANT_INDEX_NAME] = value
+	target.dna.species.mutant_bodyparts["frills"][MUTANT_INDEX_COLOR_LIST] = list("333", "222", "444")
 
 /datum/preference/choiced/lizard_horns
 	savefile_key = "feature_lizard_horns"
@@ -89,8 +95,12 @@
 	return generate_lizard_side_shots(GLOB.sprite_accessories["horns"], "horns") //SKYRAT EDIT
 
 /datum/preference/choiced/lizard_horns/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["horns"] = value
+	if(!target.dna.species.mutant_bodyparts["horns"])
+		target.dna.species.mutant_bodyparts["horns"] = list()
+	target.dna.species.mutant_bodyparts["horns"][MUTANT_INDEX_NAME] = value
+	target.dna.species.mutant_bodyparts["horns"][MUTANT_INDEX_COLOR_LIST] = list("333", "222", "444")
 
+/* SKYRAT EDIT REMOVAL
 /datum/preference/choiced/lizard_legs
 	savefile_key = "feature_lizard_legs"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -98,10 +108,11 @@
 	relevant_mutant_bodypart = "legs"
 
 /datum/preference/choiced/lizard_legs/init_possible_values()
-	return //assoc_to_keys(GLOB.legs_list) SKYRAT EDIT REMOVAL
+	return GLOB.sprite_accessories["legs"] //SKYRAT EDIT CHANGE
 
 /datum/preference/choiced/lizard_legs/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["legs"] = value
+*/
 
 /datum/preference/choiced/lizard_snout
 	savefile_key = "feature_lizard_snout"
@@ -111,10 +122,13 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/lizard_snout/init_possible_values()
-	return generate_lizard_side_shots(GLOB.sprite_accessories["snouts"], "snout", include_snout = FALSE) //SKYRAT EDIT
+	return generate_lizard_side_shots(GLOB.sprite_accessories["snout"], "snout", include_snout = FALSE) //SKYRAT EDIT
 
 /datum/preference/choiced/lizard_snout/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["snout"] = value
+	if(!target.dna.species.mutant_bodyparts["snout"])
+		target.dna.species.mutant_bodyparts["snout"] = list()
+	target.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_NAME] = value
+	target.dna.species.mutant_bodyparts["snout"][MUTANT_INDEX_COLOR_LIST] = list("333", "222", "444")
 
 /datum/preference/choiced/lizard_spines
 	savefile_key = "feature_lizard_spines"
@@ -123,10 +137,13 @@
 	relevant_mutant_bodypart = "spines"
 
 /datum/preference/choiced/lizard_spines/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["spines"]) //SKYRAT EDIT
+	return GLOB.sprite_accessories["spines"] //SKYRAT EDIT
 
 /datum/preference/choiced/lizard_spines/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["spines"] = value
+	if(!target.dna.species.mutant_bodyparts["spines"])
+		target.dna.species.mutant_bodyparts["spines"] = list()
+	target.dna.species.mutant_bodyparts["spines"][MUTANT_INDEX_NAME] = value
+	target.dna.species.mutant_bodyparts["spines"][MUTANT_INDEX_COLOR_LIST] = list("333", "222", "444")
 
 /datum/preference/choiced/lizard_tail
 	savefile_key = "feature_lizard_tail"
@@ -135,7 +152,10 @@
 	relevant_mutant_bodypart = "tail_lizard"
 
 /datum/preference/choiced/lizard_tail/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["tails_lizard"]) //SKYRAT EDIT
+	return GLOB.sprite_accessories["tail"] //SKYRAT EDIT
 
 /datum/preference/choiced/lizard_tail/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["tail_lizard"] = value
+	if(!target.dna.species.mutant_bodyparts["tail"])
+		target.dna.species.mutant_bodyparts["tail"] = list()
+	target.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] = value
+	target.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_COLOR_LIST] = list("333", "222", "444")

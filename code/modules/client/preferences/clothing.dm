@@ -120,7 +120,7 @@
 
 /datum/preference/choiced/undershirt/apply_to_human(mob/living/carbon/human/target, value)
 	target.undershirt = value
-
+/* SKYRAT EDIT TODO
 /// Underwear preference
 /datum/preference/choiced/underwear
 	savefile_key = "underwear"
@@ -149,3 +149,4 @@
 	data[SUPPLEMENTAL_FEATURE_KEY] = "underwear_color"
 
 	return data
+*/
