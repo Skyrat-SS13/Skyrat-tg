@@ -12454,27 +12454,6 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"bIx" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "innerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/turf_decal/trimline/red/filled/corner{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "bIU" = (
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 4
@@ -12962,24 +12941,6 @@
 "bSv" = (
 /turf/closed/wall,
 /area/cargo/qm)
-"bSI" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "innerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "bSY" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -15864,6 +15825,22 @@
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
+"dgU" = (
+/obj/machinery/door/airlock/security{
+	name = "Brig";
+	req_access_txt = "63; 42"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-side-entrance"
+	},
+/turf/open/floor/iron/dark,
+/area/security/courtroom)
 "dhi" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
@@ -17361,16 +17338,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/cmo)
-"dKB" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/maintenance/disposal)
 "dKT" = (
 /obj/machinery/washing_machine,
 /obj/structure/sign/poster/official/help_others{
@@ -17490,25 +17457,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/science/xenobiology)
-"dMv" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "dMF" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/showroomfloor,
@@ -18400,6 +18348,27 @@
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/carpet,
 /area/command/bridge)
+"efV" = (
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "tcomms-entrance"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Telecommunications";
+	req_access_txt = "61"
+	},
+/turf/open/floor/iron,
+/area/engineering/main)
 "efX" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/decal/cleanable/dirt,
@@ -18481,6 +18450,26 @@
 /mob/living/simple_animal/mouse/brown/tom,
 /turf/open/floor/iron,
 /area/security/prison)
+"ehh" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Engine Room";
+	req_one_access_txt = "10;24"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "engi-entrance"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron,
+/area/engineering/main)
 "ehn" = (
 /obj/structure/table,
 /obj/machinery/airalarm/directional/south,
@@ -18670,13 +18659,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/iron,
 /area/maintenance/disposal/incinerator)
-"ekC" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/maintenance/disposal)
 "ekI" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -19406,29 +19388,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/tram/left)
-"ezy" = (
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "outerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "briglockdown";
-	name = "brig shutters"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "ezA" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -20200,6 +20159,22 @@
 /obj/structure/closet/crate,
 /turf/open/floor/iron,
 /area/cargo/storage)
+"eQq" = (
+/obj/machinery/conveyor{
+	id = "garbage"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor{
+	id = "disposals";
+	name = "Disposals Blast Door"
+	},
+/turf/open/floor/plating,
+/area/maintenance/disposal)
+"eQv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/poddoor/massdriver_trash,
+/turf/open/floor/plating,
+/area/maintenance/disposal)
 "eQS" = (
 /obj/machinery/holopad,
 /obj/effect/landmark/event_spawn,
@@ -20423,6 +20398,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/brig)
+"eUR" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating/asteroid/airless,
+/area/mine/explored)
 "eUU" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -23795,6 +23774,29 @@
 "gre" = (
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
+"gro" = (
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "outerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "briglockdown";
+	name = "brig shutters"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "grp" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/techstorage/command,
@@ -24607,11 +24609,6 @@
 "gIt" = (
 /turf/closed/wall,
 /area/science/robotics/lab)
-"gIy" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/maintenance/disposal)
 "gIF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/closed/wall/r_wall,
@@ -25169,25 +25166,6 @@
 "gSB" = (
 /turf/closed/wall/r_wall,
 /area/security/checkpoint/science)
-"gSC" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "innerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "gSD" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/circuit,
@@ -26701,6 +26679,22 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"hwo" = (
+/obj/machinery/flasher/directional/south{
+	id = "AI";
+	pixel_x = 20
+	},
+/obj/structure/cable,
+/obj/machinery/door/window{
+	atom_integrity = 300;
+	base_state = "rightsecure";
+	dir = 1;
+	icon_state = "rightsecure";
+	name = "Primary AI Core Access";
+	req_access_txt = "16"
+	},
+/turf/open/floor/iron/dark,
+/area/ai_monitored/turret_protected/ai)
 "hwy" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/shower{
@@ -26852,26 +26846,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/starboard/central)
-"hAk" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line,
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "engi-entrance"
-	},
-/obj/machinery/door/airlock/engineering{
-	name = "Engine Room";
-	req_one_access_txt = "10;24"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/engineering/main)
 "hAD" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 4
@@ -27019,6 +26993,21 @@
 /obj/effect/turf_decal/sand/plating,
 /turf/open/floor/plating/airless,
 /area/mine/explored)
+"hDM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door/directional/east{
+	id = "disposals";
+	name = "Disposals Blast Door Control";
+	pixel_x = 27;
+	pixel_y = 7
+	},
+/obj/machinery/computer/pod/old/mass_driver_controller/trash{
+	pixel_x = 27;
+	pixel_y = -5
+	},
+/turf/open/floor/iron,
+/area/maintenance/disposal)
 "hEc" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -27480,6 +27469,26 @@
 /obj/machinery/duct,
 /turf/open/floor/iron,
 /area/security/prison)
+"hLS" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "hLV" = (
 /obj/structure/closet/secure_closet/security/cargo,
 /obj/item/clothing/mask/whistle,
@@ -28042,6 +28051,30 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
+"hYV" = (
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "outerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/preopen{
+	id = "briglockdown";
+	name = "brig shutters"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "hZc" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
 /turf/closed/wall/r_wall,
@@ -28991,30 +29024,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/cytology)
-"itI" = (
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "outerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/door/poddoor/preopen{
-	id = "briglockdown";
-	name = "brig shutters"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "itO" = (
 /obj/machinery/navbeacon/wayfinding/dockescpod3,
 /obj/effect/decal/cleanable/dirt,
@@ -29166,6 +29175,27 @@
 	},
 /turf/open/floor/plating/airless,
 /area/mine/explored)
+"iwp" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "innerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "iwC" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical{
@@ -29974,21 +30004,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/office)
-"iJz" = (
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line,
-/obj/machinery/door/airlock/engineering{
-	name = "Telecommunications";
-	req_access_txt = "61"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "tcomms-entrance"
-	},
-/turf/open/floor/iron,
-/area/engineering/main)
 "iJD" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -32018,22 +32033,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/brig)
-"jBG" = (
-/obj/machinery/flasher/directional/south{
-	id = "AI";
-	pixel_x = 20
-	},
-/obj/structure/cable,
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 1;
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	atom_integrity = 300;
-	req_access_txt = "16"
-	},
-/turf/open/floor/iron/dark,
-/area/ai_monitored/turret_protected/ai)
 "jBO" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -32831,6 +32830,25 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/storage)
+"jRk" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "jRn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
@@ -34072,6 +34090,27 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/primary/tram/left)
+"kqs" = (
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "tcomms-entrance"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Telecommunications";
+	req_access_txt = "61"
+	},
+/turf/open/floor/iron,
+/area/engineering/main)
 "kqy" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -34465,6 +34504,30 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/command/teleporter)
+"kzI" = (
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "outerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/preopen{
+	id = "briglockdown";
+	name = "brig shutters"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "kzW" = (
 /obj/effect/spawner/lootdrop/garbage_spawner,
 /obj/effect/decal/cleanable/dirt,
@@ -35142,6 +35205,25 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningdock)
+"kRd" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "kRh" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
@@ -36144,6 +36226,21 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"lkj" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/machinery/door/airlock/engineering{
+	name = "Telecommunications";
+	req_access_txt = "61"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "tcomms-entrance"
+	},
+/turf/open/floor/iron,
+/area/engineering/main)
 "lkt" = (
 /obj/effect/turf_decal/trimline/green/filled/corner{
 	dir = 1
@@ -36570,27 +36667,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
-"lug" = (
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "tcomms-entrance"
-	},
-/obj/machinery/door/airlock/engineering{
-	name = "Telecommunications";
-	req_access_txt = "61"
-	},
-/turf/open/floor/iron,
-/area/engineering/main)
 "luq" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -37572,6 +37648,29 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
 /area/commons/vacant_room/commissary)
+"lPN" = (
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "outerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "briglockdown";
+	name = "brig shutters"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "lPX" = (
 /obj/machinery/door/window/eastleft{
 	name = "armoury desk";
@@ -37716,25 +37815,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/psychology)
-"lTt" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "innerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "lTu" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
@@ -38658,6 +38738,25 @@
 /obj/structure/ladder,
 /turf/open/floor/iron/showroomfloor,
 /area/service/kitchen/coldroom)
+"mqZ" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "innerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "mrd" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
 	dir = 4;
@@ -39370,6 +39469,26 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"mJe" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "mJg" = (
 /obj/effect/turf_decal/sand/plating,
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -41060,6 +41179,25 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/security/checkpoint/supply)
+"nwD" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "nwO" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
@@ -41078,6 +41216,21 @@
 	dir = 8
 	},
 /area/service/chapel)
+"nxa" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering{
+	name = "Telecommunications";
+	req_access_txt = "61"
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "tcomms-entrance"
+	},
+/turf/open/floor/iron,
+/area/engineering/main)
 "nxj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -41428,13 +41581,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/engineering/atmospherics_engine)
-"nEv" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
-/turf/open/floor/plating/airless,
-/area/mine/explored)
 "nEA" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -43657,6 +43803,16 @@
 /obj/machinery/status_display/ai/directional/south,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
+"oxr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/structure/window/hollow/reinforced/middle{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/disposal)
 "oxt" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Laundry"
@@ -44695,16 +44851,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison)
-"oSV" = (
-/obj/machinery/disposal/delivery_chute{
-	dir = 1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/maintenance/disposal)
 "oTe" = (
 /obj/effect/turf_decal/stripes/end,
 /obj/machinery/atmospherics/pipe/multiz/supply/visible/layer4{
@@ -45846,30 +45992,6 @@
 /obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/iron,
 /area/security/prison)
-"pmS" = (
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "outerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/door/poddoor/preopen{
-	id = "briglockdown";
-	name = "brig shutters"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
 "pmW" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -46012,16 +46134,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
-"pqO" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/structure/disposaloutlet{
-	dir = 4
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/mine/explored)
 "pqW" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
@@ -46821,6 +46933,13 @@
 	dir = 8
 	},
 /area/service/chapel)
+"pFC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/mass_driver/trash{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/disposal)
 "pFN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -47000,25 +47119,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
-"pJZ" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "pKf" = (
 /obj/structure/fluff/tram_rail/anchor{
 	dir = 1
@@ -47367,6 +47467,25 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"pRj" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "pRF" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 8
@@ -48428,6 +48547,24 @@
 	},
 /turf/open/floor/iron,
 /area/maintenance/tram/mid)
+"qnt" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "innerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "qnv" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
@@ -52970,26 +53107,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/surgery)
-"sgk" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "sgJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/assembly/mousetrap/armed,
@@ -55087,6 +55204,25 @@
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
+"tdp" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "innerbrig";
+	name = "Brig";
+	req_access_txt = "63"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/security/brig)
 "tdv" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
@@ -56252,22 +56388,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/genetics)
-"tzK" = (
-/obj/machinery/door/airlock/security{
-	name = "Brig";
-	req_access_txt = "63; 42"
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-side-entrance"
-	},
-/turf/open/floor/iron/dark,
-/area/security/courtroom)
 "tzU" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -56308,26 +56428,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/security/interrogation)
-"tBu" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Engine Room";
-	req_one_access_txt = "10;24"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 8
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "engi-entrance"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron,
-/area/engineering/main)
 "tBC" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -56646,6 +56746,26 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/maintenance/disposal)
+"tIN" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "engi-entrance"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Engine Room";
+	req_one_access_txt = "10;24"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/engineering/main)
 "tJC" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -57007,36 +57127,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/command/gateway)
-"tSk" = (
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "outerbrig";
-	name = "Brig";
-	req_access_txt = "63"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "briglockdown";
-	name = "brig shutters"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/security/brig)
-"tSo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/maintenance/disposal)
 "tSC" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -58474,6 +58564,26 @@
 	},
 /turf/open/floor/plating,
 /area/service/kitchen)
+"uwU" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-right"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "uxd" = (
 /obj/machinery/ore_silo,
 /obj/effect/turf_decal/bot_white/right,
@@ -59390,13 +59500,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison)
-"uPX" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/plating/airless,
-/area/maintenance/disposal)
 "uQe" = (
 /turf/open/floor/plating,
 /area/science/mixing)
@@ -60049,27 +60152,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter/room)
-"vfQ" = (
-/obj/machinery/door/firedoor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "tcomms-entrance"
-	},
-/obj/machinery/door/airlock/engineering{
-	name = "Telecommunications";
-	req_access_txt = "61"
-	},
-/turf/open/floor/iron,
-/area/engineering/main)
 "vfY" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 8
@@ -62028,26 +62110,6 @@
 	},
 /turf/open/floor/iron,
 /area/ai_monitored/command/storage/eva)
-"vUu" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "vUA" = (
 /obj/structure/fluff/tram_rail,
 /turf/open/openspace,
@@ -62910,41 +62972,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/dark,
 /area/service/hydroponics)
-"wlv" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering{
-	name = "Telecommunications";
-	req_access_txt = "61"
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "tcomms-entrance"
-	},
-/turf/open/floor/iron,
-/area/engineering/main)
-"wlz" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "wma" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
@@ -63259,6 +63286,20 @@
 /obj/machinery/duct,
 /turf/open/floor/iron,
 /area/service/janitor)
+"wqI" = (
+/obj/machinery/door/airlock/security{
+	name = "Brig";
+	req_access_txt = "63; 42"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "brig-side-entrance"
+	},
+/turf/open/floor/iron/dark,
+/area/security/prison)
 "wrn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -64514,20 +64555,6 @@
 /obj/machinery/newscaster/directional/east,
 /turf/open/floor/iron/dark,
 /area/service/chapel)
-"wOj" = (
-/obj/machinery/door/airlock/security{
-	name = "Brig";
-	req_access_txt = "63; 42"
-	},
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/red/filled/line,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "brig-side-entrance"
-	},
-/turf/open/floor/iron/dark,
-/area/security/prison)
 "wOm" = (
 /obj/structure/table,
 /obj/machinery/light/directional/north,
@@ -65009,25 +65036,6 @@
 "wXK" = (
 /turf/closed/wall,
 /area/security/interrogation)
-"wXL" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-left"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "wYf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/effect/turf_decal/trimline/neutral/filled/corner,
@@ -65183,6 +65191,26 @@
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
+"xaD" = (
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchExt";
+	name = "Research Division";
+	req_one_access_txt = "47"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "sci-entrance-left"
+	},
+/turf/open/floor/iron,
+/area/science/research)
 "xaP" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 4
@@ -65443,26 +65471,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
-"xgh" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 10
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "xgo" = (
 /obj/effect/turf_decal/trimline/green/filled/corner,
 /obj/effect/turf_decal/siding/thinplating/dark,
@@ -65770,25 +65778,6 @@
 /obj/item/toy/figure/assistant,
 /turf/open/floor/plating/airless,
 /area/science/test_area)
-"xmO" = (
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "sci-entrance-right"
-	},
-/turf/open/floor/iron,
-/area/science/research)
 "xmU" = (
 /obj/effect/turf_decal/siding/thinplating/corner{
 	dir = 8
@@ -66625,13 +66614,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron,
 /area/science/mixing)
-"xHt" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/open/floor/plating/airless,
-/area/mine/explored)
 "xHG" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 1
@@ -96498,9 +96480,9 @@ aJy
 oHp
 aJy
 aJy
-lug
+kqs
 wMp
-wlv
+nxa
 lpV
 lpV
 nQj
@@ -98040,9 +98022,9 @@ aJS
 wXJ
 aJS
 aIG
-vfQ
+efV
 wMp
-iJz
+lkj
 lpV
 lpV
 wMp
@@ -98806,7 +98788,7 @@ fjz
 hmf
 hmf
 bfs
-tBu
+ehh
 rWn
 ybE
 jWU
@@ -99316,7 +99298,7 @@ iXL
 iXL
 iXL
 bhR
-hAk
+tIN
 bhR
 bhR
 bhR
@@ -112391,7 +112373,7 @@ cUf
 lll
 sRB
 toT
-gIy
+hDM
 juI
 adS
 tEb
@@ -112648,8 +112630,8 @@ tjh
 jAl
 tIC
 gCu
-dKB
-tIC
+bBA
+oxr
 adS
 iBI
 cmy
@@ -112905,8 +112887,8 @@ izU
 vnt
 iim
 iim
-iim
-oSV
+eQq
+pFC
 adS
 adS
 adS
@@ -113163,7 +113145,7 @@ bBA
 bBA
 bBA
 bBA
-tSo
+eQv
 bBA
 aae
 aae
@@ -113420,7 +113402,7 @@ aae
 aae
 aae
 bBA
-uPX
+aBM
 bBA
 aae
 aae
@@ -113677,7 +113659,7 @@ aBM
 aae
 aae
 bBA
-ekC
+aBM
 bBA
 aae
 aae
@@ -113934,7 +113916,7 @@ aBM
 aBM
 aBM
 aBM
-dOi
+aBM
 aae
 aae
 aae
@@ -114191,8 +114173,8 @@ aBM
 aBM
 aBM
 aBM
-dOi
-aae
+aBM
+aBM
 aae
 aae
 adS
@@ -114447,10 +114429,10 @@ aBM
 aBM
 aBM
 aBM
-xHt
-nEv
-aae
-aae
+aBM
+eUR
+aBM
+aBM
 aae
 aae
 aae
@@ -114704,11 +114686,11 @@ aBM
 aBM
 aBM
 aBM
-dOi
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -114961,13 +114943,13 @@ aBM
 aBM
 aBM
 aBM
-dOi
-aae
-aae
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -115218,12 +115200,12 @@ aBM
 aBM
 aBM
 aBM
-dOi
-aae
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -115475,11 +115457,11 @@ aBM
 aBM
 aBM
 aBM
-dOi
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -115732,9 +115714,9 @@ aBM
 aBM
 aBM
 aBM
-dOi
 aBM
-aae
+aBM
+aBM
 aae
 aae
 aae
@@ -115989,10 +115971,10 @@ aBM
 aBM
 aBM
 aBM
-dOi
-aae
 aBM
-aae
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -116246,11 +116228,11 @@ aBM
 aBM
 aBM
 aBM
-dOi
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -116501,9 +116483,9 @@ ajc
 aBM
 aBM
 aBM
-xHt
-qix
-nEv
+aBM
+aBM
+aBM
 aBM
 aBM
 aBM
@@ -116758,11 +116740,11 @@ ajc
 ajc
 aBM
 aBM
-dOi
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -117013,13 +116995,13 @@ ajc
 ajc
 ajc
 ajc
-xHt
-qix
-nEv
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -117270,12 +117252,12 @@ ajc
 ajc
 ajc
 ajc
-pqO
 aBM
 aBM
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -117530,9 +117512,9 @@ ajc
 ajc
 ajc
 aBM
-aae
-aae
-aae
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -117787,10 +117769,10 @@ ajc
 ajc
 ajc
 aBM
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -118044,10 +118026,10 @@ ajc
 ajc
 ajc
 ajc
-aae
-aae
-aae
-aae
+aBM
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -118303,9 +118285,9 @@ ajc
 ajc
 ajc
 ajc
-aae
-aae
-aae
+aBM
+aBM
+aBM
 aae
 aae
 aae
@@ -118559,8 +118541,8 @@ ajc
 ajc
 ajc
 ajc
-aae
-aae
+ajc
+ajc
 aae
 aae
 aae
@@ -118815,9 +118797,9 @@ ajc
 ajc
 ajc
 ajc
-aae
-aae
-aae
+ajc
+ajc
+ajc
 aae
 aae
 aae
@@ -159915,7 +159897,7 @@ aae
 aae
 ccM
 xKu
-tzK
+dgU
 aSS
 aUV
 aqL
@@ -160684,7 +160666,7 @@ aae
 aae
 wcv
 nTn
-wOj
+wqI
 nTn
 ccM
 aae
@@ -163776,10 +163758,10 @@ xBo
 xoK
 ohp
 vWt
-lTt
+tdp
 wic
 vWt
-pmS
+hYV
 mHd
 cTA
 lSJ
@@ -164290,10 +164272,10 @@ xkv
 qRW
 cCB
 anB
-bSI
+qnt
 twz
 fxo
-tSk
+lPN
 apO
 pmi
 eSt
@@ -167374,10 +167356,10 @@ xkv
 jIn
 cCB
 anB
-bIx
+iwp
 xWS
 dYC
-ezy
+gro
 apR
 dvg
 xfD
@@ -167888,10 +167870,10 @@ kkW
 sZa
 wJO
 sTm
-gSC
+mqZ
 rVM
 tPS
-itI
+kzI
 xHG
 xUJ
 wGH
@@ -174352,10 +174334,10 @@ aGs
 aGZ
 aGZ
 aHs
-vUu
+xaD
 ovf
 aXY
-sgk
+mJe
 lJk
 iRL
 qUQ
@@ -174866,10 +174848,10 @@ aGu
 aGu
 aGu
 aHw
-dMv
+nwD
 vPF
 qLz
-wXL
+kRd
 vYn
 wOw
 mxF
@@ -177436,10 +177418,10 @@ aGv
 akj
 akj
 udB
-xmO
+jRk
 nTP
 aHb
-pJZ
+pRj
 fho
 wZV
 vkJ
@@ -177950,10 +177932,10 @@ aGz
 odi
 uJw
 txz
-xgh
+hLS
 uJQ
 qWA
-wlz
+uwU
 fTR
 nNy
 sjY
@@ -179307,7 +179289,7 @@ xLA
 vRe
 myx
 hQb
-jBG
+hwo
 byy
 xnP
 tdP
