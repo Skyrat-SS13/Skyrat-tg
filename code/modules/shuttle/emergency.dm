@@ -508,8 +508,9 @@
 				INVOKE_ASYNC(SSticker, /datum/controller/subsystem/ticker.proc/poll_hearts)
 				bolt_all_doors() //SKYRAT EDIT ADDITION
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
-				for(var/mob/living/carbon/human/H in GLOB.player_list)
-					to_chat(H, span_info("You will [H.client.prefs.anti_eorg_teleport ? "be teleported to safe zone" : "stay where you are"] after round end. <a href=?src=[REF(H)];eorg_teleport_bypass=1>Click here to change it.</a>"))
+				if(!CONFIG_GET(flag/disable_eorg_teleport))
+					for(var/mob/living/carbon/human/H in GLOB.player_list)
+						to_chat(H, span_info("You will [H.client.prefs.anti_eorg_teleport ? "be teleported to safe zone" : "stay where you are"] after round end. <a href=?src=[REF(H)];eorg_teleport_bypass=1>Click here to change it until the round end.</a>"))
 
 
 		if(SHUTTLE_STRANDED, SHUTTLE_DISABLED)
