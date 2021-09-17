@@ -11,6 +11,14 @@
 	mob_trait = TRAIT_EXCITABLE
 	icon = "laugh-beam"
 
+/datum/quirk/ironass
+	name = "Iron Ass"
+	desc = "Your ass is incredibly firm, so firm infact that anyone slapping it will suffer grave injuries."
+	gain_text = "<span class='notice'>Your ass feels solid!</span>"
+	lose_text = "<span class='notice'>Your ass doesn't feel so solid anymore.</span>"
+	medical_record_text = "Patient's ass seems incredibly solid."
+	mob_trait = TRAIT_IRONASS
+
 /datum/quirk/personalspace
 	name = "Personal Space"
 	desc = "You'd rather people keep their hands to themselves, and you won't let anyone touch your ass.."
