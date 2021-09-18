@@ -20,3 +20,10 @@
 							/datum/language/skrell = list(LANGUAGE_ATOM),
 							/datum/language/slime = list(LANGUAGE_ATOM)
 	)
+
+/datum/language_holder/human
+	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+								/datum/language/solcommon = list(LANGUAGE_ATOM))
+	
+	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+							/datum/language/solcommon = list(LANGUAGE_ATOM))
