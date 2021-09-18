@@ -1,12 +1,7 @@
 /datum/language/solcommon
 	name = "Sol Common"
 	desc = "The official language of the Sol Federation, Sol Common is a bastardized postmodern version of the centuries old modernization of ecclesiastical Latin. Outside of Sol, it's often spoken by humans who want to preserve the identity of their roots."
-	speech_verb = "proclaims"
-	ask_verb = "queries"
-	exclaim_verb = "declares"
-	whisper_verb = "hushes"
 	key = "sc"
-	sing_verb = "sings"
 	key = "p"
 	space_chance = 30
 	default_priority = 96
@@ -16,6 +11,7 @@
 		"et", "quasi", "dicta", "sunt", "enim", "ipsam", "aut", "odit", "qui", "porro", "amet", "que",
 		"eius", "modi", "inci","ad", "vel", "eum", "iure", "hic", "pa", "mit", "dis", "du", "di", "tol", "mi"
 	)
-	icon = 'modular_skyrat/icons/misc/language.dmi'
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	icon_state = "solcommon"
 	restricted = FALSE
+	
