@@ -36,6 +36,10 @@
 	var/list/gag_sizes // Populated after init, the available sizes it can be (if any)
 	var/list/gag_choices
 
+	var/was_recolored = FALSE
+	var/was_reformed = FALSE
+	var/color_changed = FALSE
+
 // A ballgag, but it chokes! Also its a dick!
 /obj/item/clothing/mask/ballgag/phallic
 	name = "phallic ball gag"
@@ -190,21 +194,21 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/clothing/mask/ballgag_phallic/process(delta_time)
+/obj/item/clothing/mask/ballgag/ballgag_phallic/process(delta_time)
 	var/mob/living/carbon/human/U = loc
 	tt += delta_time
 	if(tt >= time)
-		if(ballgag_size == "small")
+		if(gag_size == "small")
 			U.adjustOxyLoss(rand(0, 2))
 			if(prob(15))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0
-		if(ballgag_size == "medium")
+		if(gag_size == "medium")
 			U.adjustOxyLoss(rand(0, 3))
 			if(prob(20))
 				U.emote(pick("gasp","choke","moan"))
 			tt = 0
-		if(ballgag_size == "big")
+		if(gag_size == "big")
 			U.adjustOxyLoss(rand(1, 4))
 			if(prob(25))
 				U.emote(pick("gasp","choke","moan"))
@@ -212,7 +216,7 @@
 
 //examine stuff
 
-/obj/item/clothing/mask/ballgag_phallic/examine(mob/user)
+/obj/item/clothing/mask/ballgag/ballgag_phallic/examine(mob/user)
 	.=..()
 	if(was_reformed == FALSE && was_recolored == FALSE)
 		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
