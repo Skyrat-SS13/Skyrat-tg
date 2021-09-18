@@ -1,6 +1,6 @@
 /datum/language/solcommon
 	name = "Sol Common"
-	desc = "The official language of the Sol Federation, Sol Common is a bastardized postmodern version of the centuries old modernization of ecclesiastical Latin."
+	desc = "The official language of the Sol Federation, Sol Common is a bastardized postmodern version of the centuries old modernization of ecclesiastical Latin. Outside of Sol, it's often spoken by humans who want to preserve the identity of their roots."
 	speech_verb = "proclaims"
 	ask_verb = "queries"
 	exclaim_verb = "declares"
