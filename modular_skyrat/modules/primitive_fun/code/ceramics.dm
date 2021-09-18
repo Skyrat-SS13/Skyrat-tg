@@ -48,6 +48,13 @@
 	desc = "A pile of clay that can be used to create ceramic artwork."
 	icon_state = "clay"
 
+/datum/export/ceramics
+	cost = 1000
+	unit_name = "ceramic product"
+	export_types = list(/obj/item/plate/ceramic,
+						/obj/item/reagent_containers/glass/bowl/ceramic,
+						/obj/item/reagent_containers/glass/beaker/large/ceramic)
+
 /obj/item/ceramic/plate
 	name = "ceramic plate"
 	desc = "A piece of clay that is flat, in the shape of a plate."
