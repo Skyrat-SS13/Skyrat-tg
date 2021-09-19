@@ -150,11 +150,11 @@
 
 		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
 		dna.mutant_bodyparts = override_mutantparts || new_race.get_random_mutant_bodyparts(dna.features)
-		//dna.body_markings = override_markings || new_race.get_random_body_markings(dna.features)
-		//dna.species.body_markings = dna.body_markings.Copy()
+		dna.body_markings = override_markings || new_race.get_random_body_markings(dna.features)
+		dna.features = override_features || new_race.get_random_features(dna.features)
 		//END OF BODYPARTS AND FEATURES
 
-		copy_mutant_parts_to_species()
+		apply_customizable_dna_features_to_species()
 		dna.unique_features = dna.generate_unique_features()
 
 		dna.update_body_size()
@@ -169,9 +169,10 @@
 		update_atom_languages()
 
 
-/mob/living/carbon/proc/copy_mutant_parts_to_species()
+/mob/living/carbon/proc/apply_customizable_dna_features_to_species()
 	if(!has_dna())
 		CRASH("[src] does not have DNA")
+	dna.species.body_markings = dna.body_markings.Copy()
 	var/list/bodyparts_to_add = dna.mutant_bodyparts.Copy()
 	for(var/key in bodyparts_to_add)
 		var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
@@ -200,36 +201,6 @@
 		dna.features["ethcolor"] = sanitize_hexcolor(getblock(features, DNA_ETHEREAL_COLOR_BLOCK))
 	if(dna.features["skin_color"])
 		dna.features["skin_color"] = sanitize_hexcolor(getblock(features, DNA_SKIN_COLOR_BLOCK))
-	for(var/key in GLOB.genetic_accessories)
-		if(dna.mutant_bodyparts[key] && (dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] in GLOB.genetic_accessories[key]))
-			var/bodypart_block = GLOB.dna_mutant_bodypart_blocks[key]
-			var/list/accessories_for_key = GLOB.sprite_accessories[key]
-			var/list/possible_accessories = GLOB.genetic_accessories[key]
-			var/accessory_name = GLOB.genetic_accessories[key][deconstruct_block(getblock(features, bodypart_block), possible_accessories.len)]
-			dna.mutant_bodyparts[key][MUTANT_INDEX_NAME] = accessory_name
-			var/datum/sprite_accessory/accessory_to_apply = accessories_for_key[accessory_name]
-			if(accessory_to_apply.factual)
-				switch(accessory_to_apply.color_src)
-					if(USE_ONE_COLOR)
-						dna.mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = list(sanitize_hexcolor(getblock(features,bodypart_block+1)))
-					if(USE_MATRIXED_COLORS)
-						dna.mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = list(sanitize_hexcolor(getblock(features,bodypart_block+1)), sanitize_hexcolor(getblock(features,bodypart_block+2)), sanitize_hexcolor(getblock(features,bodypart_block+3)))
-	for(var/zone in GLOB.marking_zones)
-		var/marking_count_block = GLOB.dna_body_marking_blocks[zone]
-		var/first_marking_block = marking_count_block+1
-		var/marking_count = deconstruct_block(getblock(features, marking_count_block), 4)-1
-		if(!marking_count && dna.body_markings[zone])
-			dna.body_markings -= zone
-		if(marking_count)
-			if(!dna.body_markings[zone])
-				dna.body_markings[zone] = list()
-			dna.body_markings[zone].len = marking_count
-			for(var/i in 1 to marking_count)
-				var/marking = GLOB.body_markings_per_limb[zone][deconstruct_block(getblock(features, first_marking_block+(i-1)*DNA_BLOCKS_PER_MARKING), GLOB.body_markings_per_limb[zone].len)]
-				dna.body_markings[zone][i] = marking
-				dna.body_markings[zone][marking] = sanitize_hexcolor(getblock(features, first_marking_block+(i-1)*DNA_BLOCKS_PER_MARKING+1))
-	dna.species.body_markings = dna.body_markings.Copy()
-	copy_mutant_parts_to_species()
 
 	if(icon_update)
 		dna.species.handle_body(src) // We want 'update_body_parts()' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.

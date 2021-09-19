@@ -213,6 +213,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 				character_savefile = new /savefile(path)
 				character_savefile.cd = "/character[default_slot]"
 				addtimer(VARSET_CALLBACK(src, character_savefile, null), 1)
+			return character_savefile
 		if (PREFERENCE_PLAYER)
 			if (!game_savefile)
 				game_savefile = new /savefile(path)

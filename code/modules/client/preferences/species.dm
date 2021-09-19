@@ -26,8 +26,8 @@
 
 	return values
 
-/datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, preferences)
-	target.set_species(value, FALSE, preferences) //SKYRAT EDIT CHANGE
+/datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/prefs)
+	target.set_species(value, FALSE, prefs.features.Copy(), prefs.mutant_bodyparts.Copy(), prefs.body_markings.Copy())
 
 /datum/preference/choiced/species/compile_constant_data()
 	var/list/data = list()
