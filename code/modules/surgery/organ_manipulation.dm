@@ -148,17 +148,11 @@
 			target_organ = tool
 		user.temporarilyRemoveItemFromInventory(target_organ, TRUE)
 		target_organ.Insert(target)
-<<<<<<< HEAD
-		display_results(user, target, "<span class='notice'>You insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
-			"<span class='notice'>[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!</span>",
-			"<span class='notice'>[user] inserts something into [target]'s [parse_zone(target_zone)]!</span>")
-=======
 		display_results(user, target, span_notice("You insert [tool] into [target]'s [parse_zone(target_zone)]."),
 			span_notice("[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!"),
 			span_notice("[user] inserts something into [target]'s [parse_zone(target_zone)]!"))
 		display_pain(target, "Your [parse_zone(target_zone)] throbs with pain as your new [tool] comes to life!")
 
->>>>>>> c5a110308da (Surgery pain messages and screaming in agony (#61252))
 	else if(current_type == "extract")
 		if(target_organ && target_organ.owner == target)
 			display_results(user, target, span_notice("You successfully extract [target_organ] from [target]'s [parse_zone(target_zone)]."),

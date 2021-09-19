@@ -51,17 +51,11 @@
 	time = 24
 
 /datum/surgery_step/prepare_electronics/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-<<<<<<< HEAD
-	display_results(user, target, "<span class='notice'>You begin to prepare electronics in [target]'s [parse_zone(target_zone)]...</span>",
-			"<span class='notice'>[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)].</span>",
-			"<span class='notice'>[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)].</span>")
-=======
 	display_results(user, target, span_notice("You begin to prepare electronics in [target]'s [parse_zone(target_zone)]..."),
 			span_notice("[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)]."),
 			span_notice("[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)]."))
 	display_pain(target, "You can feel a faint buzz in your [parse_zone(target_zone)] as the electronics reboot.", TRUE)
 
->>>>>>> c5a110308da (Surgery pain messages and screaming in agony (#61252))
 //unwrench
 /datum/surgery_step/mechanic_unwrench
 	name = "unwrench bolts"

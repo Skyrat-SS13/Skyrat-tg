@@ -11,17 +11,11 @@
 	time = 16
 
 /datum/surgery_step/incise/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-<<<<<<< HEAD
-	display_results(user, target, "<span class='notice'>You begin to make an incision in [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to make an incision in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to make an incision in [target]'s [parse_zone(target_zone)].</span>")
-=======
 	display_results(user, target, span_notice("You begin to make an incision in [target]'s [parse_zone(target_zone)]..."),
 		span_notice("[user] begins to make an incision in [target]'s [parse_zone(target_zone)]."),
 		span_notice("[user] begins to make an incision in [target]'s [parse_zone(target_zone)]."))
 	display_pain(target, "You feel a stabbing in your [parse_zone(target_zone)].")
 
->>>>>>> c5a110308da (Surgery pain messages and screaming in agony (#61252))
 /datum/surgery_step/incise/tool_check(mob/user, obj/item/tool)
 	if(implement_type == /obj/item && !tool.get_sharpness())
 		return FALSE
@@ -135,17 +129,11 @@
 	time = 54
 
 /datum/surgery_step/saw/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-<<<<<<< HEAD
-	display_results(user, target, "<span class='notice'>You begin to saw through the bone in [target]'s [parse_zone(target_zone)]...</span>",
-		"<span class='notice'>[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)].</span>",
-		"<span class='notice'>[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)].</span>")
-=======
 	display_results(user, target, span_notice("You begin to saw through the bone in [target]'s [parse_zone(target_zone)]..."),
 		span_notice("[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)]."),
 		span_notice("[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)]."))
 	display_pain(target, "You feel a horrid ache spread through the inside of your [parse_zone(target_zone)]!")
 
->>>>>>> c5a110308da (Surgery pain messages and screaming in agony (#61252))
 /datum/surgery_step/saw/tool_check(mob/user, obj/item/tool)
 	if(implement_type == /obj/item && !(tool.get_sharpness() && (tool.force >= 10)))
 		return FALSE
