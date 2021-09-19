@@ -163,6 +163,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		fcopy(S, bacpath) //byond helpfully lets you use a savefile for the first arg.
 		return FALSE
 
+<<<<<<< HEAD
+=======
+	apply_all_client_preferences()
+
+>>>>>>> cde482bb248 (Fix FPS and other preferences not properly applying after reconnect (#61542))
 	//general preferences
 	READ_FILE(S["asaycolor"], asaycolor)
 	READ_FILE(S["brief_outfit"], brief_outfit)

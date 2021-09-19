@@ -440,9 +440,24 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "</td>"
 					mutant_category = 0
 
+<<<<<<< HEAD
 			if(pref_species.external_organs[/obj/item/organ/external/frills])
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
+=======
+/// Applies all PREFERENCE_PLAYER preferences
+/datum/preferences/proc/apply_all_client_preferences()
+	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
+		if (preference.savefile_identifier != PREFERENCE_PLAYER)
+			continue
+
+		value_cache -= preference.type
+		preference.apply_to_client(parent, read_preference(preference.type))
+
+// This is necessary because you can open the set preferences menu before
+// the atoms SS is done loading.
+INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
+>>>>>>> cde482bb248 (Fix FPS and other preferences not properly applying after reconnect (#61542))
 
 				dat += "<h3>Frills</h3>"
 
