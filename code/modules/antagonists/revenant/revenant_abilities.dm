@@ -322,12 +322,7 @@
 		if(prob(20))
 			if(prob(50))
 				new /obj/effect/temp_visual/revenant(thing.loc)
-<<<<<<< HEAD
-			thing.emag_act(null)
-
-=======
 			thing.emag_act(user)
->>>>>>> 1ca508629b8 (Revenant emag log (#61477))
 	for(var/mob/living/silicon/robot/S in T) //Only works on cyborgs, not AI
 		playsound(S, 'sound/machines/warning-buzzer.ogg', 50, TRUE)
 		new /obj/effect/temp_visual/revenant(S.loc)
