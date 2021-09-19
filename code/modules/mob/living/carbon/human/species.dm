@@ -717,11 +717,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			standing += eye_overlay
 			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
-<<<<<<< HEAD
-			var/list/eye_overlays
-=======
 			var/mutable_appearance/eye_overlay
->>>>>>> a71327e0288 (Reduces copypasta in emissive code (#61249))
 			var/obscured = species_human.check_obscured_slots(TRUE) //eyes that shine in the dark shouldn't show when you have glasses
 			var/add_pixel_x = 0
 			var/add_pixel_y = 0
@@ -739,15 +735,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!no_eyeslay)//we need eyes
 				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
 				if(eye_organ.overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-<<<<<<< HEAD
-					eye_overlays += emissive_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
-				for(var/mutable_appearance/eye_overlay as anything in eye_overlays)
-					eye_overlay.pixel_x += add_pixel_x
-					eye_overlay.pixel_y += add_pixel_y
-					if((EYECOLOR in species_traits) && eye_organ)
-						eye_overlay.color = "#" + species_human.eye_color
-					standing += eye_overlay
-=======
 					eye_overlay.overlays += emissive_appearance(eye_overlay.icon, eye_overlay.icon_state, alpha = eye_overlay.alpha)
 
 				eye_overlay.pixel_x += add_pixel_x
@@ -756,7 +743,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					eye_overlay.color = "#" + species_human.eye_color
 				standing += eye_overlay
 
->>>>>>> a71327e0288 (Reduces copypasta in emissive code (#61249))
 	// organic body markings
 	if(HAS_MARKINGS in species_traits)
 		var/obj/item/bodypart/chest/chest = species_human.get_bodypart(BODY_ZONE_CHEST)
