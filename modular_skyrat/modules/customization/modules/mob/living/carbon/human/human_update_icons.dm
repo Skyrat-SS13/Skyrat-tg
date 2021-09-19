@@ -35,6 +35,11 @@
 				applied_style = STYLE_DIGITIGRADE
 
 		var/x_override
+		if(applied_style == STYLE_TAUR_SNAKE)
+			ADD_TRAIT(src, TRAIT_SILENT_FOOTSTEPS, "sprite_accessory")
+		else
+			REMOVE_TRAIT(src, TRAIT_SILENT_FOOTSTEPS, "sprite_accessory")
+
 		switch(applied_style)
 			if(STYLE_DIGITIGRADE)
 				icon_file = w_uniform.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
