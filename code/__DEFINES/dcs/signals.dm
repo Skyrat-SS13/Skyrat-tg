@@ -467,7 +467,7 @@
 #define COMSIG_MOVABLE_POST_THROW "movable_post_throw"
 ///from base of datum/thrownthing/finalize(): (obj/thrown_object, datum/thrownthing) used for when a throw is finished
 #define COMSIG_MOVABLE_THROW_LANDED "movable_throw_landed"
-///from base of atom/movable/onTransitZ(): (old_z, new_z)
+///from base of atom/movable/on_changed_z_level(): (turf/old_turf, turf/new_turf)
 #define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 ///called when the movable is placed in an unaccessible area, used for stationloving: ()
 #define COMSIG_MOVABLE_SECLUDED_LOCATION "movable_secluded"
@@ -562,9 +562,9 @@
 	#define SPEECH_MESSAGE 1
 	// #define SPEECH_BUBBLE_TYPE 2
 	#define SPEECH_SPANS 3
-	/* #define SPEECH_SANITIZE 4
+	// #define SPEECH_SANITIZE 4
 	#define SPEECH_LANGUAGE 5
-	#define SPEECH_IGNORE_SPAM 6
+	/* #define SPEECH_IGNORE_SPAM 6
 	#define SPEECH_FORCED 7 */
 
 ///from /mob/say_dead(): (mob/speaker, message)
@@ -1400,8 +1400,14 @@
 /// Called when the integrated circuit's shell is set.
 #define COMSIG_CIRCUIT_SET_SHELL "circuit_set_shell"
 
-/// Called when the integrated circuit's is locked.
+/// Called when the integrated circuit is locked.
 #define COMSIG_CIRCUIT_SET_LOCKED "circuit_set_locked"
+
+/// Called right before the integrated circuit data is converted to json. Allows modification to the data right before it is returned.
+#define COMSIG_CIRCUIT_PRE_SAVE_TO_JSON "circuit_pre_save_to_json"
+
+/// Called when the integrated circuit is loaded.
+#define COMSIG_CIRCUIT_POST_LOAD "circuit_post_load"
 
 /// Sent to an atom when a [/obj/item/usb_cable] attempts to connect to something. (/obj/item/usb_cable/usb_cable, /mob/user)
 #define COMSIG_ATOM_USB_CABLE_TRY_ATTACH "usb_cable_try_attach"
@@ -1471,3 +1477,4 @@
 ///Called when the ticker sets up the game for start
 #define COMSIG_TICKER_ENTER_SETTING_UP "comsig_ticker_enter_setting_up"
 
+#define COMSIG_GREYSCALE_CONFIG_REFRESHED "greyscale_config_refreshed"
