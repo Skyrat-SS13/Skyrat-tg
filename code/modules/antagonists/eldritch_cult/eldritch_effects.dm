@@ -247,13 +247,8 @@
 //SKYRAT REMOVAL START - Probably don't need this if we're just decapping now
 	/*var/datum/effect_system/reagents_explosion/explosion = new()
 	explosion.set_up(1, get_turf(human_user), TRUE, 0)
-<<<<<<< HEAD
-	explosion.start()*/ 
-//SKYRAT REMOVAL END 
-=======
-	explosion.start(src)
-
->>>>>>> d14b6cc849e (Radically improves explosion logging. (#61419))
+	explosion.start(src)*/
+//SKYRAT REMOVAL END
 
 /obj/effect/broken_illusion/examine(mob/user)
 	. = ..()
