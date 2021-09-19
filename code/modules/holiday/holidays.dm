@@ -615,38 +615,6 @@
 /datum/holiday/xmas/greet()
 	return "Have a merry Christmas!"
 
-<<<<<<< HEAD
-/datum/holiday/xmas/celebrate()
-	. = ..()
-	SSticker.OnRoundstart(CALLBACK(src, .proc/roundstart_celebrate))
-	GLOB.maintenance_loot += list(
-		list(
-			/obj/item/toy/xmas_cracker = 3,
-			/obj/item/clothing/head/santa = 1,
-			/obj/item/a_gift/anything = 1
-		) = MAINT_HOLIDAY_WEIGHT, //SKYRAT CHANGE
-	)
-
-/datum/holiday/xmas/proc/roundstart_celebrate()
-	for(var/obj/machinery/computer/security/telescreen/entertainment/Monitor in GLOB.machines)
-		Monitor.icon_state_on = "entertainment_xmas"
-
-	for(var/mob/living/simple_animal/pet/dog/corgi/ian/Ian in GLOB.mob_living_list)
-		Ian.place_on_head(new /obj/item/clothing/head/helmet/space/santahat(Ian))
-
-
-/datum/holiday/festive_season
-	name = FESTIVE_SEASON
-	begin_day = 1
-	begin_month = DECEMBER
-	end_day = 31
-	drone_hat = /obj/item/clothing/head/santa
-
-/datum/holiday/festive_season/greet()
-	return "Have a nice festive season!"
-
-=======
->>>>>>> cc7993500d1 (Reorganize holidays.dm (#61432))
 /datum/holiday/boxing
 	name = "Boxing Day"
 	begin_day = 26
@@ -677,50 +645,8 @@
 /datum/holiday/friday_thirteenth/getStationPrefix()
 	return pick("Mike","Friday","Evil","Myers","Murder","Deathly","Stabby")
 
-<<<<<<< HEAD
-/datum/holiday/easter
-	name = EASTER
-	drone_hat = /obj/item/clothing/head/rabbitears
-	var/const/days_early = 1 //to make editing the holiday easier
-	var/const/days_extra = 1
-
-/datum/holiday/easter/shouldCelebrate(dd, mm, yyyy, ddd)
-	if(!begin_month)
-		current_year = text2num(time2text(world.timeofday, "YYYY"))
-		var/list/easterResults = EasterDate(current_year+year_offset)
-
-		begin_day = easterResults["day"]
-		begin_month = easterResults["month"]
-
-		end_day = begin_day + days_extra
-		end_month = begin_month
-		if(end_day >= 32 && end_month == MARCH) //begins in march, ends in april
-			end_day -= 31
-			end_month++
-		if(end_day >= 31 && end_month == APRIL) //begins in april, ends in june
-			end_day -= 30
-			end_month++
-
-		begin_day -= days_early
-		if(begin_day <= 0)
-			if(begin_month == APRIL)
-				begin_day += 31
-				begin_month-- //begins in march, ends in april
-
-	return ..()
-
-/datum/holiday/easter/celebrate()
-	. = ..()
-	GLOB.maintenance_loot += list(
-		list(
-			/obj/item/surprise_egg = 15,
-			/obj/item/storage/basket/easter = 15
-		) = MAINT_HOLIDAY_WEIGHT, //SKYRAT CHANGE
-	)
-=======
 /datum/holiday/programmers
 	name = "Programmers' Day"
->>>>>>> cc7993500d1 (Reorganize holidays.dm (#61432))
 
 /datum/holiday/programmers/shouldCelebrate(dd, mm, yyyy, ddd) //Programmer's day falls on the 2^8th day of the year
 	if(mm == 9)
