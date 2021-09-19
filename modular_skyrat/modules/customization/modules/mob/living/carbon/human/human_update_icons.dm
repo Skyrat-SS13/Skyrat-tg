@@ -35,10 +35,12 @@
 				applied_style = STYLE_DIGITIGRADE
 
 		var/x_override
-		if(applied_style == STYLE_TAUR_SNAKE)
-			ADD_TRAIT(src, TRAIT_SILENT_FOOTSTEPS, "sprite_accessory")
+		if(applied_style == STYLE_TAUR_SNAKE) //i hate this but i don't know how else to do this
+			RemoveElement(/datum/element/footstep)
+			AddElement(/datum/element/footstep, FOOTSTEP_MOB_SNAKE, 0.6, -6)
 		else
-			REMOVE_TRAIT(src, TRAIT_SILENT_FOOTSTEPS, "sprite_accessory")
+			RemoveElement(/datum/element/footstep)
+			AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6)
 
 		switch(applied_style)
 			if(STYLE_DIGITIGRADE)
