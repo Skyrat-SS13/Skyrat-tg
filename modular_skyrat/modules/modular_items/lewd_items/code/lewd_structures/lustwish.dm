@@ -39,8 +39,6 @@
 					/obj/item/clothing/mask/ballgag = 8,
 					/obj/item/clothing/mask/ballgag/phallic = 8,
 					/obj/item/clothing/mask/ballgag/phallic/kazoo = 8,
-					/obj/item/clothing/mask/muzzle/ring = 4,
-					/obj/item/clothing/mask/muzzle/ball = 4,
 					/obj/item/clothing/head/domina_cap = 5,
 					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
 					/obj/item/clothing/head/maid = 5,
@@ -49,51 +47,33 @@
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
 					/obj/item/reagent_containers/glass/lewd_filter = 5,
 					/obj/item/clothing/glasses/hypno = 4,
-					/obj/item/clothing/glasses/blindfold = 8,
 					/obj/item/clothing/head/kitty = 4,
 					/obj/item/clothing/head/rabbitears = 4,
 
 
 					//neck
 					/obj/item/clothing/neck/kink_collar = 8,
-					/obj/item/clothing/neck/human_petcollar = 8,
-					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 3,
-					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 5,
-					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 3,
-					/obj/item/clothing/neck/human_petcollar/locked/cross = 3,
 					/obj/item/clothing/neck/human_petcollar/choker = 4,
 
 					//torso clothing
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
 					/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
-					/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
+					/obj/item/clothing/suit/corset = 5,
 					/obj/item/clothing/under/costume/lewdmaid = 5,
-					/obj/item/clothing/under/costume/maid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 3,
 					/obj/item/clothing/under/stripper_outfit = 5,
-					/obj/item/clothing/under/costume/loincloth = 4,
-					/obj/item/clothing/under/misc/stripper = 4,
-					/obj/item/clothing/under/misc/stripper/green = 4,
-					/obj/item/clothing/under/misc/stripper/mankini = 4,
 					/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
 					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
 					/obj/item/clothing/under/misc/gear_harness = 4,
-					/obj/item/clothing/under/shorts/polychromic/pantsu = 4,
-					/obj/item/clothing/under/misc/poly_bottomless = 4,
-					/obj/item/clothing/under/misc/poly_tanktop = 4,
-					/obj/item/clothing/under/misc/poly_tanktop/female = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
 					/obj/item/clothing/gloves/latex_gloves = 8,
-					/obj/item/clothing/gloves/evening = 5,
 
 					//legs
 					/obj/item/clothing/shoes/latex_socks = 8,
 					/obj/item/clothing/shoes/latexheels = 4,
 					/obj/item/clothing/shoes/dominaheels = 4,
-					/obj/item/clothing/shoes/jackboots/thigh = 3,
-					/obj/item/clothing/shoes/jackboots/knee = 3,
 
 					//belt
 					/obj/item/clothing/strapon = 6,
@@ -121,11 +101,6 @@
 					/obj/item/clothing/neck/kink_collar/locked = 4,
 					/obj/item/clothing/neck/mind_collar = 2,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
-					/obj/item/clothing/under/costume/jabroni = 4,
-					/obj/item/clothing/neck/human_petcollar/locked = 2,
-					/obj/item/key/collar = 2,
-					/obj/item/electropack/shockcollar = 4,
-					/obj/item/assembly/signaler = 4,
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
 					/obj/item/reagent_containers/glass/bottle/hexacrocin = 4,
