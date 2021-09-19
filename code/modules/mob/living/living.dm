@@ -1334,7 +1334,7 @@
 				/mob/living/simple_animal/pet/cat,
 				/mob/living/simple_animal/mouse,
 				/mob/living/simple_animal/chicken,
-				/mob/living/simple_animal/cow,
+				/mob/living/basic/cow,
 				/mob/living/simple_animal/hostile/lizard,
 				/mob/living/simple_animal/pet/fox,
 				/mob/living/simple_animal/butterfly,
@@ -1596,9 +1596,9 @@
 		else
 			registered_z = null
 
-/mob/living/onTransitZ(old_z,new_z)
+/mob/living/on_changed_z_level(turf/old_turf, turf/new_turf)
 	..()
-	update_z(new_z)
+	update_z(new_turf?.z)
 
 /mob/living/MouseDrop_T(atom/dropping, atom/user)
 	var/mob/living/U = user
