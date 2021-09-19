@@ -8,6 +8,11 @@
 
 	var/current_color = "pink"
 
+	var/list/torso_styles = list(
+		"Torso",
+		"Groin"
+	)
+
 	//SOME IMPORTANT STUFF
 	var/obj/item/clothing/under/shibari_body/shibaribody
 	var/obj/item/clothing/under/shibari_groin/shibarigroin
