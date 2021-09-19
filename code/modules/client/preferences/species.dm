@@ -26,8 +26,8 @@
 
 	return values
 
-/datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value)
-	target.set_species(value, icon_update = FALSE)
+/datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, preferences)
+	target.set_species(value, icon_update = FALSE, preferences)
 
 /datum/preference/choiced/species/compile_constant_data()
 	var/list/data = list()

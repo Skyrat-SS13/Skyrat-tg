@@ -21,9 +21,6 @@
 			final_icon = icon('icons/mob/human_parts_greyscale.dmi', "lizard_chest_m", direction)
 
 		final_icon.Blend(COLOR_VIBRANT_LIME)
-		//final_icon.Crop(10, 8, 22, 23)
-		final_icon.Scale(26, 32)
-		//final_icon.Crop(-2, 1, 29, 32)
 
 		values[name] = final_icon
 

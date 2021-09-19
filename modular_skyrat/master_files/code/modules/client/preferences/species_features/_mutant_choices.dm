@@ -136,9 +136,9 @@ IMPORTANT NOTES:
 	return data
 
 /datum/preference/choiced_mutant/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list()
-	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
+	if(!target.dna.species.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.species.mutant_bodyparts[relevant_mutant_bodypart] = list()
+	target.dna.species.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
 
 // LEG TYPE, NO ICONS
 /datum/preference/choiced_mutant/leg_type
@@ -147,6 +147,11 @@ IMPORTANT NOTES:
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	relevant_mutant_bodypart = "legs"
 	should_generate_icons = FALSE
+
+/datum/preference/choiced_mutant/leg_type/apply_to_human(mob/living/carbon/human/target, value)
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list()
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
 
 // SNOUTS
 /datum/preference/choiced_mutant/snout
