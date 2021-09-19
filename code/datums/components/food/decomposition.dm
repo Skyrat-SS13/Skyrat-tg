@@ -79,7 +79,7 @@
 	if(!istype(open_turf)) //Are we actually in an open turf?
 		remove_timer()
 		return
- 
+
 	for(var/atom/movable/content as anything in open_turf.contents)
 		if(GLOB.typecache_elevated_structures[content.type])
 			remove_timer()
@@ -111,16 +111,10 @@
 
 /datum/component/decomposition/proc/decompose()
 	var/obj/decomp = parent //Lets us spawn things at decomp
-<<<<<<< HEAD
-	new /obj/effect/decal/cleanable/ants(decomp.loc)
-	new /obj/item/food/badrecipe/moldy(decomp.loc)
-	decomp.visible_message("<span class='warning'>[decomp] gets overtaken by mold and ants! Gross!</span>") //SKYRAT CHANGE, NOTICE TO WARNING
-=======
 	if(produce_ants)
 		new /obj/effect/decal/cleanable/ants(decomp.loc)
 	new decomp_result(decomp.loc)
 	decomp.visible_message("<span class='notice'>[decomp] gets overtaken by mold and ants! Gross!</span>")
->>>>>>> 25cfbef9cda (Food decomposition can mold stuff into different items, and not just moldy messes. (#61233))
 	qdel(decomp)
 	return
 

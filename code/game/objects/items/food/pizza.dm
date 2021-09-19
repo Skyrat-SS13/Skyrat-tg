@@ -35,13 +35,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	decomp_type = /obj/item/food/pizzaslice/moldy
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
-/obj/item/food/pizzaslice/MakeProcessable()
-=======
 /obj/item/food/pizzaslice/bacteria/MakeProcessable()
->>>>>>> 25cfbef9cda (Food decomposition can mold stuff into different items, and not just moldy messes. (#61233))
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/stack/sheet/pizza, 1, 10)
 */
 //SKYRAT EDIT REMOVAL END
