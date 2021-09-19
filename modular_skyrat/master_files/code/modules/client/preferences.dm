@@ -16,3 +16,17 @@
 	/// A list of all bodymarkings
 	var/list/list/body_markings = list()
 
+/// This proc returns an associative list of the default mutant parts of the selected species, with each possible sprite accessory for that mutant part,
+/// and the icon for it.
+/datum/preferences/proc/build_mutant_bodyparts()
+	var/species_id = read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = new species_id
+
+	var/list/required_mutant_part_types = list()
+
+	for(var/mutant_part_name in species.default_mutant_bodyparts)
+		for(var/accessory_type in GLOB.sprite_accessories[mutant_part_name])
+			var/datum/sprite_accessory/sprite_accessory = accessory_type
+			required_mutant_part_types[mutant_part_name][sprite_accessory] = icon(sprite_accessory.icon, sprite_accessory.icon_state, EAST)
+
+	return required_mutant_part_types

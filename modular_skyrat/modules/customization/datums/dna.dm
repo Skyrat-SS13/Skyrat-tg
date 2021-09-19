@@ -168,7 +168,6 @@
 			language_holder = new species_holder(src)
 		update_atom_languages()
 
-		to_chat(world, "SET SPECIES CALLED TO HUMAN")
 
 /mob/living/carbon/proc/copy_mutant_parts_to_species()
 	if(!has_dna())

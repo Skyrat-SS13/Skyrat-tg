@@ -331,3 +331,65 @@ export const FeatureValueInput = (props: {
     />
   );
 };
+
+// SKYRAT FEATURES DOWN HERE
+export const FeatureTriColorInput = (props: FeatureValueProps<string>) => {
+  return (
+    <Stack align="center" fill>
+      <Stack.Item>
+        <Button onClick={() => props.act('set_tri_color_preference', {
+          color: 1,
+        })}>
+          <Box style={{
+            background: props.value.startsWith("#")
+              ? props.value
+              : `#${props.value}`,
+            border: "2px solid white",
+            "box-sizing": "content-box",
+            height: "11px",
+            width: "11px",
+            ...(props.shrink ? {
+              "margin": "1px",
+            } : {}),
+          }} />
+        </Button>
+      </Stack.Item>
+      <Stack.Item>
+        <Button onClick={() => props.act('set_tri_color_preference', {
+          picked_color: 2,
+        })}>
+          <Box style={{
+            background: props.value.startsWith("#")
+              ? props.value
+              : `#${props.value}`,
+            border: "2px solid white",
+            "box-sizing": "content-box",
+            height: "11px",
+            width: "11px",
+            ...(props.shrink ? {
+              "margin": "1px",
+            } : {}),
+          }} />
+        </Button>
+      </Stack.Item>
+      <Stack.Item>
+        <Button onClick={() => props.act('set_tri_color_preference', {
+          picked_color: 3,
+        })}>
+          <Box style={{
+            background: props.value.startsWith("#")
+              ? props.value
+              : `#${props.value}`,
+            border: "2px solid white",
+            "box-sizing": "content-box",
+            height: "11px",
+            width: "11px",
+            ...(props.shrink ? {
+              "margin": "1px",
+            } : {}),
+          }} />
+        </Button>
+      </Stack.Item>
+    </Stack>
+  );
+};
