@@ -25,7 +25,7 @@ IMPORTANT NOTES:
 //Below is an example of one color support, we need to modify it to support three colors, maybe three individual SUPPLIMENTAL data keys
 //problem is this only supports one supplemental feature
 //I will have to make a new component to use that is just 3 color boxes.
-*/
+
 
 /// A preference that is a choice of one option among a fixed set, which supports mutant bodyparts.
 /// Used for preferences such as tails, ears, wings.
@@ -169,7 +169,7 @@ IMPORTANT NOTES:
 	relevant_mutant_bodypart = "horns"
 	should_generate_icons = TRUE
 
-/*
+
 //MUTANT CHOICES WITH NO ICONS - Legs are standard
 /datum/preference/choiced/mutant_choice
 	savefile_key = "feature_leg_type"

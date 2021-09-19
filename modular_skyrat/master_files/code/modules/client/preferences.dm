@@ -30,3 +30,27 @@
 			required_mutant_part_types[mutant_part_name][sprite_accessory] = icon(sprite_accessory.icon, sprite_accessory.icon_state, EAST)
 
 	return required_mutant_part_types
+
+
+/datum/preferences/proc/compile_mutant_data(mutant_key)
+	var/list/data = list()
+
+	var/list/choices = list()
+
+	for (var/choice in GLOB.sprite_accessories[mutant_key])
+		choices += choice
+
+	data["choices"] = choices
+
+	data["name"] = mutant_key
+
+	return data
+
+/datum/preferences/proc/what()
+	var/species_id = read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = new species_id
+
+	for(var/mutant_part in species.default_mutant_bodyparts)
+
+		var/data = compile_mutant_data(mutant_part)
+		//preferences[PREFERENCE_CATEGORY_SECONDARY_FEATURES][mutant_part] += data

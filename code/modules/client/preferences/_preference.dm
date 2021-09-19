@@ -15,11 +15,8 @@
 /// The priority at which names are decided, needed for proper randomization.
 #define PREFERENCE_PRIORITY_NAMES 5
 
-/// The priority at which mutant bodyparts are set, this is important so that species doesn't override the new parts.
-#define PREFERENCE_PRIORITY_MUTANT_PARTS 6
-
 /// The maximum preference priority, keep this updated, but don't use it for `priority`.
-#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_MUTANT_PARTS
+#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_NAMES
 
 /// For choiced preferences, this key will be used to set display names in constant data.
 #define CHOICED_PREFERENCE_DISPLAY_NAMES "display_names"
