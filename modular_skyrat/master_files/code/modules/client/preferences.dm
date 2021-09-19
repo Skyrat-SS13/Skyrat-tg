@@ -42,15 +42,12 @@
 
 	data["choices"] = choices
 
+	var/list/icons = list()
+	for(var/choice in choices)
+		icons[choice] = "[mutant_key]___[sanitize_css_class_name(choice)]"
+
+	data["icons"] = icons
+
 	data["name"] = mutant_key
 
 	return data
-
-/datum/preferences/proc/what()
-	var/species_id = read_preference(/datum/preference/choiced/species)
-	var/datum/species/species = new species_id
-
-	for(var/mutant_part in species.default_mutant_bodyparts)
-
-		var/data = compile_mutant_data(mutant_part)
-		//preferences[PREFERENCE_CATEGORY_SECONDARY_FEATURES][mutant_part] += data
