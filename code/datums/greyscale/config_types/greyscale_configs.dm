@@ -303,9 +303,6 @@
 	icon_file = 'icons/obj/items/cleric_mace.dmi'
 	json_config = 'code/datums/greyscale/json_configs/items/cleric_mace_worn_gold.json'
 
-<<<<<<< HEAD
-/* SKYRAT EDIT START - Beret-lliant (moved to modular_skyrat/modules/berets/code/datums/config_types)
-=======
 /datum/greyscale_config/ceremonial_blade
 	name = "Base Ceremonial Blade"
 	icon_file = 'icons/obj/items/ritual_weapon.dmi'
@@ -321,7 +318,7 @@
 	icon_file = 'icons/obj/items/ritual_weapon.dmi'
 	json_config = 'code/datums/greyscale/json_configs/items/ceremonial_blade_righthand.json'
 
->>>>>>> b69d87a76e5 (Sparring Sect! (#61316))
+/* SKYRAT EDIT START - Beret-lliant (moved to modular_skyrat/modules/berets/code/datums/config_types)
 /datum/greyscale_config/beret
 	name = "Beret"
 	icon_file = 'icons/obj/clothing/head/beret.dmi'
