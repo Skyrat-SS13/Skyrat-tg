@@ -1,1 +1,0 @@
-#define FOOTSTEP_MOB_SNAKE 9
