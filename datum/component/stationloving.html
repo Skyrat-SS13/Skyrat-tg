@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;component&#x2F;stationloving - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/component/stationloving.html#var">Var Details</a> - <a href="datum/component/stationloving.html#proc">Proc Details</a></header>
+<main>
+<h1>stationloving <aside>/<a href="datum.html">datum</a>/<a href="datum/component.html">component</a>/<a href="datum/component/stationloving.html">stationloving</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 2"/></a></h1>
+
+<p>Teleports the movable atom back to a safe turf on the station if it leaves the z-level or becomes inaccessible.</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/component/stationloving.html#var/allow_item_destruction">allow_item_destruction</a></th><td>If FALSE, prevents parent from being qdel'd unless it's a force = TRUE qdel.</td></tr>
+            <tr><th><a href="datum/component/stationloving.html#var/inform_admins">inform_admins</a></th><td>If TRUE, notifies admins when parent is teleported back to the station.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/component/stationloving.html#proc/destination_in_bounds">destination_in_bounds</a></th><td>Checks whether a given destination is within bounds. Returns TRUE if it is, FALSE if it isn't.</td></tr>
+            <tr><th><a href="datum/component/stationloving.html#proc/on_parent_pre_qdeleted">on_parent_pre_qdeleted</a></th><td>Signal handler for before the parent is qdel'd. Can prevent the parent from being deleted where allow_item_destruction is FALSE and force is FALSE.</td></tr>
+            <tr><th><a href="datum/component/stationloving.html#proc/on_parent_unreachable">on_parent_unreachable</a></th><td>Signal handler for when the parent enters an unreachable location. Always relocates the parent.</td></tr>
+            <tr><th><a href="datum/component/stationloving.html#proc/on_parent_z_change">on_parent_z_change</a></th><td>Signal handler when the parent has changed z-levels.
+Checks to make sure it's a valid destination, if it's not then it relacates the parent instead.</td></tr>
+            <tr><th><a href="datum/component/stationloving.html#proc/relocate">relocate</a></th><td>Teleports parent to a safe turf on the station z-level.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/allow_item_destruction"><aside class="declaration">var </aside>allow_item_destruction
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 8"/></a></h3>
+        <p>If FALSE, prevents parent from being qdel'd unless it's a force = TRUE qdel.</p><h3 id="var/inform_admins"><aside class="declaration">var </aside>inform_admins
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 5"/></a></h3>
+        <p>If TRUE, notifies admins when parent is teleported back to the station.</p><h2 id="proc">Proc Details</h2><h3 id="proc/destination_in_bounds"><aside class="declaration">proc </aside>destination_in_bounds<aside>(/<a href="atom.html">atom</a>/destination) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L77">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 77"/></a></aside>
+        </h3>
+        <p>Checks whether a given destination is within bounds. Returns TRUE if it is, FALSE if it isn't.</p><h3 id="proc/on_parent_pre_qdeleted"><aside class="declaration">proc </aside>on_parent_pre_qdeleted<aside>(/<a href="datum.html">datum</a>/source, force) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L97">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 97"/></a></aside>
+        </h3>
+        <p>Signal handler for before the parent is qdel'd. Can prevent the parent from being deleted where allow_item_destruction is FALSE and force is FALSE.</p><h3 id="proc/on_parent_unreachable"><aside class="declaration">proc </aside>on_parent_unreachable<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L117">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 117"/></a></aside>
+        </h3>
+        <p>Signal handler for when the parent enters an unreachable location. Always relocates the parent.</p><h3 id="proc/on_parent_z_change"><aside class="declaration">proc </aside>on_parent_z_change<aside>(/<a href="datum.html">datum</a>/source, /<a href="turf.html">turf</a>/old_turf, /<a href="turf.html">turf</a>/new_turf) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 52"/></a></aside>
+        </h3>
+        <p>Signal handler when the parent has changed z-levels.
+Checks to make sure it's a valid destination, if it's not then it relacates the parent instead.</p><h3 id="proc/relocate"><aside class="declaration">proc </aside>relocate<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/stationloving.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;stationloving.dm 34"/></a></aside>
+        </h3>
+        <p>Teleports parent to a safe turf on the station z-level.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

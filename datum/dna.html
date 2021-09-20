@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;dna - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/dna.html#var">Var Details</a> - <a href="datum/dna.html#proc">Proc Details</a></header>
+<main>
+<h1>dna <aside>/<a href="datum.html">datum</a>/<a href="datum/dna.html">dna</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/dna.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;dna.dm 3"/></a></h1>
+
+<p>DNA DATUM</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/dna.html#var/body_markings">body_markings</a></th><td>Body markings of the DNA's owner. This is for storing their original state for re-creating the character. They'll get changed on species mutation</td></tr>
+            <tr><th><a href="datum/dna.html#var/current_body_size">current_body_size</a></th><td>Current body size, used for proper re-sizing and keeping track of that</td></tr>
+            <tr><th><a href="datum/dna.html#var/unique_enzymes">unique_enzymes</a></th><td>An md5 hash of the dna holder's real name</td></tr>
+            <tr><th><a href="datum/dna.html#var/unique_features">unique_features</a></th><td>Stores the hashed values of the person's non-human features</td></tr>
+            <tr><th><a href="datum/dna.html#var/unique_identity">unique_identity</a></th><td>Stores the hashed values of traits such as skin tones, hair style, and gender</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/dna.html#proc/is_same_as">is_same_as</a></th><td>Checks if two DNAs are practically the same by comparing their most defining features</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/body_markings"><aside class="declaration">var </aside>body_markings
+            <aside>&ndash; /list/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/datums/dna.dm#L5">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;datums&#x2F;dna.dm 5"/></a></h3>
+        <p>Body markings of the DNA's owner. This is for storing their original state for re-creating the character. They'll get changed on species mutation</p><h3 id="var/current_body_size"><aside class="declaration">var </aside>current_body_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/datums/dna.dm#L7">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;datums&#x2F;dna.dm 7"/></a></h3>
+        <p>Current body size, used for proper re-sizing and keeping track of that</p><h3 id="var/unique_enzymes"><aside class="declaration">var </aside>unique_enzymes
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/dna.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;dna.dm 5"/></a></h3>
+        <p>An md5 hash of the dna holder's real name</p><h3 id="var/unique_features"><aside class="declaration">var </aside>unique_features
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/dna.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;dna.dm 12"/></a></h3>
+        <p>Stores the hashed values of the person's non-human features</p><h3 id="var/unique_identity"><aside class="declaration">var </aside>unique_identity
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/dna.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;dna.dm 7"/></a></h3>
+        <p>Stores the hashed values of traits such as skin tones, hair style, and gender</p><h2 id="proc">Proc Details</h2><h3 id="proc/is_same_as"><aside class="declaration">proc </aside>is_same_as<aside>(/<a href="datum.html">datum</a>/<a href="datum/dna.html">dna</a>/target_dna) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/dna.dm#L326">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;dna.dm 326"/></a></aside>
+        </h3>
+        <p>Checks if two DNAs are practically the same by comparing their most defining features</p>
+<p>Arguments:</p>
+<ul>
+<li>target_dna The DNA that we are comparing to</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

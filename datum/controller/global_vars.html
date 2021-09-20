@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;global_vars - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/global_vars.html#var">Var Details</a> - <a href="datum/controller/global_vars.html#proc">Proc Details</a></header>
+<main>
+<h1>global_vars <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/global_vars.html">controller/global_vars</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/globals.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;globals.dm 3"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/GPS_list">GPS_list</a></th><td>Global GPS_list. All  GPS components get saved in here for easy reference.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/acid_overlay">acid_overlay</a></th><td>ACID</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/adamantine_recipes">adamantine_recipes</a></th><td>Others</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/admin_state">admin_state</a></th><td>tgui state: admin_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/admin_verbs_permissions">admin_verbs_permissions</a></th><td>SKYRAT EDIT BEGIN - Player Rank Manager - ORIGINAL: GLOBAL_LIST_INIT(admin_verbs_permissions, list(/client/proc/edit_admin_permissions))</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/alive_player_list">alive_player_list</a></th><td>All alive mobs with clients.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/all_voice_of_god_triggers">all_voice_of_god_triggers</a></th><td>Used to stop listeners with silly or clown-esque (first) names such as &quot;Honk&quot; or &quot;Flip&quot; from screwing up certain commands.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/always_state">always_state</a></th><td>tgui state: always_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/announcer_keys">announcer_keys</a></th><td>Global list of all of our announcer keys.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/areas_by_type">areas_by_type</a></th><td>An association from typepath to area instance. Only includes areas with <code>unique</code> set.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/bsa_unlock">bsa_unlock</a></th><td>BSA unlocked by head ID swipes</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/cell_line_tables">cell_line_tables</a></th><td>These global lists exist to allow our element to have weight tables without having to be seperate instances.
+Assoc list of cell line define | assoc list of datum | cell_line</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/cell_virus_tables">cell_virus_tables</a></th><td>Assoc list of cell virus define | assoc list of datum | cell_virus</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/conscious_state">conscious_state</a></th><td>tgui state: conscious_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/contained_state">contained_state</a></th><td>tgui state: contained_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/current_anonymous_theme">current_anonymous_theme</a></th><td>global reference to the current theme, if there is one.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/current_living_antags">current_living_antags</a></th><td>All alive antags with clients.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/current_observers_list">current_observers_list</a></th><td>All observers with clients that joined as observers.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/dead_player_list">dead_player_list</a></th><td>All dead mobs with clients. Does not include observers.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/deep_inventory_state">deep_inventory_state</a></th><td>tgui state: deep_inventory_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/default_state">default_state</a></th><td>tgui state: default_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/dildo_colors">dildo_colors</a></th><td>POLYCHROMIC DILDO</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/drone_machine_blacklist_enabled">drone_machine_blacklist_enabled</a></th><td>If drones are blacklisted from certain sensitive machines</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/editable_sign_types">editable_sign_types</a></th><td>This is a global list of all signs you can change an existing sign or new sign backing to, when using a pen on them.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/em_block_color">em_block_color</a></th><td>A globaly cached version of <a href="code/__DEFINES/lighting.html#define/EM_BLOCK_COLOR" title="EM_BLOCK_COLOR">EM_BLOCK_COLOR</a> for quick access.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/em_mask_matrix">em_mask_matrix</a></th><td>A globaly cached version of <a href="code/__DEFINES/lighting.html#define/EM_MASK_MATRIX" title="EM_MASK_MATRIX">EM_MASK_MATRIX</a> for quick access.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/emissive_color">emissive_color</a></th><td>A globaly cached version of <a href="code/__DEFINES/lighting.html#define/EMISSIVE_COLOR" title="EMISSIVE_COLOR">EMISSIVE_COLOR</a> for quick access.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/exodrone_launchers">exodrone_launchers</a></th><td>All exodrone launchers.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/exodrones">exodrones</a></th><td>All exodrones.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/exoscanner_bands">exoscanner_bands</a></th><td>List of scanned distances</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/exploration_sites">exploration_sites</a></th><td>All exploration site instances</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/explorer_drone_adventure_db_entries">explorer_drone_adventure_db_entries</a></th><td>All possible adventures in raw form</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/fileaccess_timer">fileaccess_timer</a></th><td>For FTP requests. (i.e. downloading runtime logs.)</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/gas_id_to_canister">gas_id_to_canister</a></th><td>List of all the gases, used in labelling the canisters</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/gas_recipe_meta">gas_recipe_meta</a></th><td>Global list of recipes for atmospheric machines to use</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/gateway_destinations">gateway_destinations</a></th><td>List of possible gateway destinations.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/glide_size_multiplier">glide_size_multiplier</a></th><td>Compensating for time dialation</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/global_funny_embedding">global_funny_embedding</a></th><td>set this to a new instance of a SUBTYPE of global_funny_embedding. The main type is a prototype and will runtime really hard</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/hands_state">hands_state</a></th><td>tgui state: hands_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/hfr_fuels_list">hfr_fuels_list</a></th><td>Global list of recipes for atmospheric machines to use</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/hijack_employers">hijack_employers</a></th><td>employers who hire agents to do the hijack</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/human_adjacent_state">human_adjacent_state</a></th><td>tgui state: human_adjacent_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/ice_cream_flavours">ice_cream_flavours</a></th><td>ICE CREAM FLAVOUR DATUM STUFF</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/integrated_circuits">integrated_circuits</a></th><td>A list of all integrated circuits</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/intento_players">intento_players</a></th><td>All people who have used an Intento this round along with their high scores.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/inventory_state">inventory_state</a></th><td>tgui state: inventory_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/language_menu_state">language_menu_state</a></th><td>tgui state: language_menu_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/liquid_debug_colors">liquid_debug_colors</a></th><td>PROPER GROUPING</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/mafia_bad_signup">mafia_bad_signup</a></th><td>list of ghosts who want to play mafia that have since disconnected. They are kept in the lobby, but not counted for starting a game.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/mafia_game">mafia_game</a></th><td>the current global mafia game running.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/mafia_signup">mafia_signup</a></th><td>list of ghosts who want to play mafia, every time someone enters the list it checks to see if enough are in</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/marker_beacon_colors">marker_beacon_colors</a></th><td>Marker Beacons</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/megafauna_spawn_list">megafauna_spawn_list</a></th><td>Global list of megafauna spawns on cave gen</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/message_modes_stat_limits">message_modes_stat_limits</a></th><td>Whitelist of saymodes or radio extensions that can be spoken through even if not fully conscious.
+Associated values are their maximum allowed mob stats.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/nanotrasen_employers">nanotrasen_employers</a></th><td>employers that are from nanotrasen</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/narcd_underages">narcd_underages</a></th><td>underages who have been reported to security for trying to buy things they shouldn't, so they can't spam</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/never_state">never_state</a></th><td>tgui state: never_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/new_player_state">new_player_state</a></th><td>tgui state: new_player_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/normal_employers">normal_employers</a></th><td>employers who hire agents to do a task and escape... or martyrdom. whatever</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/not_incapacitated_state">not_incapacitated_state</a></th><td>tgui state: not_incapacitated_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/not_incapacitated_turf_state">not_incapacitated_turf_state</a></th><td>tgui state: not_incapacitated_turf_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/notcontained_state">notcontained_state</a></th><td>tgui state: notcontained_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/observer_state">observer_state</a></th><td>tgui state: observer_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/organ_process_order">organ_process_order</a></th><td>Organ slot processing order for life proc</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/orion_events">orion_events</a></th><td>assoc list, [datum singleton] = weight</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/physical_obscured_state">physical_obscured_state</a></th><td>tgui state: physical_obscured_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/physical_state">physical_state</a></th><td>tgui state: physical_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/picture_log_directory">picture_log_directory</a></th><td>Picture logging</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/pipe_color_name">pipe_color_name</a></th><td>Names shown in the examine for every colored atmos component</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/pipe_colors_ordered">pipe_colors_ordered</a></th><td>List that sorts the colors and is used for setting up the pipes layer so that they overlap correctly</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/pipe_paint_colors">pipe_paint_colors</a></th><td>All colors available to pipes and atmos components</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/player_details">player_details</a></th><td>assoc list of ckey -&gt; /datum/player_details</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/poll_options">poll_options</a></th><td>All poll option datums of running polls</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/polls">polls</a></th><td>All currently running polls held as datums</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/preference_breast_sizes">preference_breast_sizes</a></th><td>Those are the values available from prefs</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/preferences_datums">preferences_datums</a></th><td>Yes, this is incredibly long, deal with it. It's to keep that cute little comment at the top.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/reality_smash_track">reality_smash_track</a></th><td>We want reality_smash_tracker to exist only once and be accessible from anywhere.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/req_console_assistance">req_console_assistance</a></th><td>Requests Console</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/rpgloot_controller">rpgloot_controller</a></th><td>Holds the global datum for rpgloot, so anywhere may check for its existence (it signals into whatever it needs to modify, so it shouldn't require fetching)</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/scan_conditions">scan_conditions</a></th><td>Scan condition instances</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/security_officer_distribution">security_officer_distribution</a></th><td>The department distribution of the security officers.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/self_state">self_state</a></th><td>tgui state: self_state</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/special_roles">special_roles</a></th><td>This defines the antagonists you can operate with in the settings.
+Keys are the antagonist, values are the number of days since the player's
+first connection in order to play.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/stat_panel_verbs">stat_panel_verbs</a></th><td>Bare minimum required verbs for stat panel operation</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/station_goals">station_goals</a></th><td>List of available station goals for the crew to be working on</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/syndicate_employers">syndicate_employers</a></th><td>employers that are from the syndicate</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/teleportlocs">teleportlocs</a></th><td>A list of teleport locations</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/the_gateway">the_gateway</a></th><td>Station home gateway</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/time_last_changed_position">time_last_changed_position</a></th><td>The time since the last job opening was created</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/timezoneOffset">timezoneOffset</a></th><td>The difference betwen midnight (of the host computer) and 0 world.ticks.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/trait_name_map">trait_name_map</a></th><td>value -&gt; trait name, generated on use from trait_by_type global</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/triple_ai_controller">triple_ai_controller</a></th><td>global reference to the current theme, if there is one.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/typecache_elevated_structures">typecache_elevated_structures</a></th><td>A typecache listing structures that are considered to have surfaces that you can place items on that are higher than the floor. This, of course, should be restricted to /atom/movables. This is primarily used for food decomposition code.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/voice_of_god_commands">voice_of_god_commands</a></th><td>List of all voice of god commands</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/whitelist">whitelist</a></th><td>SKYRAT EDIT START - Immersion-friendly Admin Prison
+SKYRAT EDIT END</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/wiremod_basic_types">wiremod_basic_types</a></th><td>The basic types that don't have any super special behaviour.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/wiremod_fundamental_types">wiremod_fundamental_types</a></th><td>The fundamental datatypes of the byond game engine.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/world_suspicious_login_log">world_suspicious_login_log</a></th><td>Log associated with [/proc/log_suspicious_login()] - Intended to hold all logins that failed due to suspicious circumstances such as ban detection, CID randomisation etc.</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/xeno_sample_colors">xeno_sample_colors</a></th><td>List of all possible sample colors</td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#var/z_state">z_state</a></th><td>tgui state: z_state</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/controller/global_vars.html#proc/InitGlobaladmin_verbs_permissions">InitGlobaladmin_verbs_permissions</a></th><td>SKYRAT EDIT END</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/GPS_list"><aside class="declaration">var </aside>GPS_list
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/gps.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;gps.dm 2"/></a></h3>
+        <p>Global GPS_list. All  GPS components get saved in here for easy reference.</p><h3 id="var/acid_overlay"><aside class="declaration">var </aside>acid_overlay
+            <aside>&ndash; /static/mutable_appearance</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/obj_defense.dm#L109">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;obj_defense.dm 109"/></a></h3>
+        <p>ACID</p><h3 id="var/adamantine_recipes"><aside class="declaration">var </aside>adamantine_recipes
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/stacks/sheets/mineral.dm#L377">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;stacks&#x2F;sheets&#x2F;mineral.dm 377"/></a></h3>
+        <p>Others</p><h3 id="var/admin_state"><aside class="declaration">var </aside>admin_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/admin_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/admin.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;admin.dm 12"/></a></h3>
+        <p>tgui state: admin_state</p>
+<p>Checks that the user is an admin, end-of-story.</p><h3 id="var/admin_verbs_permissions"><aside class="declaration">var </aside>admin_verbs_permissions
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/admin/admin_verbs.dm#L212">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;admin_verbs.dm 212"/></a></h3>
+        <p>SKYRAT EDIT BEGIN - Player Rank Manager - ORIGINAL: GLOBAL_LIST_INIT(admin_verbs_permissions, list(/client/proc/edit_admin_permissions))</p><h3 id="var/alive_player_list"><aside class="declaration">var </aside>alive_player_list
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/mobs.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mobs.dm 44"/></a></h3>
+        <p>All alive mobs with clients.</p><h3 id="var/all_voice_of_god_triggers"><aside class="declaration">var </aside>all_voice_of_god_triggers
+            <aside>&ndash; /static/regex</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/voice_of_god_command.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;voice_of_god_command.dm 7"/></a></h3>
+        <p>Used to stop listeners with silly or clown-esque (first) names such as &quot;Honk&quot; or &quot;Flip&quot; from screwing up certain commands.</p><h3 id="var/always_state"><aside class="declaration">var </aside>always_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/always_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/always.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;always.dm 12"/></a></h3>
+        <p>tgui state: always_state</p>
+<p>Always grants the user UI_INTERACTIVE. Period.</p><h3 id="var/announcer_keys"><aside class="declaration">var </aside>announcer_keys
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/sound.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;sound.dm 150"/></a></h3>
+        <p>Global list of all of our announcer keys.</p><h3 id="var/areas_by_type"><aside class="declaration">var </aside>areas_by_type
+            <aside>&ndash; /static/list/area</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/mapping.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mapping.dm 46"/></a></h3>
+        <p>An association from typepath to area instance. Only includes areas with <code>unique</code> set.</p><h3 id="var/bsa_unlock"><aside class="declaration">var </aside>bsa_unlock
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/station_goals/bsa.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;station_goals&#x2F;bsa.dm 4"/></a></h3>
+        <p>BSA unlocked by head ID swipes</p><h3 id="var/cell_line_tables"><aside class="declaration">var </aside>cell_line_tables
+            <aside>&ndash; /static/list/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/xenobiology.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;xenobiology.dm 4"/></a></h3>
+        <p>These global lists exist to allow our element to have weight tables without having to be seperate instances.
+Assoc list of cell line define | assoc list of datum | cell_line</p><h3 id="var/cell_virus_tables"><aside class="declaration">var </aside>cell_virus_tables
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/xenobiology.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;xenobiology.dm 35"/></a></h3>
+        <p>Assoc list of cell virus define | assoc list of datum | cell_virus</p><h3 id="var/conscious_state"><aside class="declaration">var </aside>conscious_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/conscious_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/conscious.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;conscious.dm 12"/></a></h3>
+        <p>tgui state: conscious_state</p>
+<p>Only checks if the user is conscious.</p><h3 id="var/contained_state"><aside class="declaration">var </aside>contained_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/contained_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/contained.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;contained.dm 12"/></a></h3>
+        <p>tgui state: contained_state</p>
+<p>Checks that the user is inside the src_object.</p><h3 id="var/current_anonymous_theme"><aside class="declaration">var </aside>current_anonymous_theme
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/anonymous_theme.html">anonymous_theme</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/admin/verbs/anonymousnames.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;anonymousnames.dm 3"/></a></h3>
+        <p>global reference to the current theme, if there is one.</p><h3 id="var/current_living_antags"><aside class="declaration">var </aside>current_living_antags
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/mobs.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mobs.dm 50"/></a></h3>
+        <p>All alive antags with clients.</p><h3 id="var/current_observers_list"><aside class="declaration">var </aside>current_observers_list
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/mobs.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mobs.dm 53"/></a></h3>
+        <p>All observers with clients that joined as observers.</p><h3 id="var/dead_player_list"><aside class="declaration">var </aside>dead_player_list
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/mobs.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mobs.dm 47"/></a></h3>
+        <p>All dead mobs with clients. Does not include observers.</p><h3 id="var/deep_inventory_state"><aside class="declaration">var </aside>deep_inventory_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/deep_inventory_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/deep_inventory.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;deep_inventory.dm 13"/></a></h3>
+        <p>tgui state: deep_inventory_state</p>
+<p>Checks that the src_object is in the user's deep
+(backpack, box, toolbox, etc) inventory.</p><h3 id="var/default_state"><aside class="declaration">var </aside>default_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/default</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/default.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;default.dm 13"/></a></h3>
+        <p>tgui state: default_state</p>
+<p>Checks a number of things -- mostly physical distance for humans
+and view for robots.</p><h3 id="var/dildo_colors"><aside class="declaration">var </aside>dildo_colors
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/modular_items/lewd_items/code/lewd_items/dildo.dm#L157">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;modular_items&#x2F;lewd_items&#x2F;code&#x2F;lewd_items&#x2F;dildo.dm 157"/></a></h3>
+        <p>POLYCHROMIC DILDO</p><h3 id="var/drone_machine_blacklist_enabled"><aside class="declaration">var </aside>drone_machine_blacklist_enabled
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/drone.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;drone.dm 3"/></a></h3>
+        <p>If drones are blacklisted from certain sensitive machines</p><h3 id="var/editable_sign_types"><aside class="declaration">var </aside>editable_sign_types
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/objects.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;objects.dm 42"/></a></h3>
+        <p>This is a global list of all signs you can change an existing sign or new sign backing to, when using a pen on them.</p><h3 id="var/em_block_color"><aside class="declaration">var </aside>em_block_color
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/lighting.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;lighting.dm 80"/></a></h3>
+        <p>A globaly cached version of <a href="code/__DEFINES/lighting.html#define/EM_BLOCK_COLOR" title="EM_BLOCK_COLOR">EM_BLOCK_COLOR</a> for quick access.</p><h3 id="var/em_mask_matrix"><aside class="declaration">var </aside>em_mask_matrix
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/lighting.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;lighting.dm 86"/></a></h3>
+        <p>A globaly cached version of <a href="code/__DEFINES/lighting.html#define/EM_MASK_MATRIX" title="EM_MASK_MATRIX">EM_MASK_MATRIX</a> for quick access.</p><h3 id="var/emissive_color"><aside class="declaration">var </aside>emissive_color
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/lighting.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;lighting.dm 76"/></a></h3>
+        <p>A globaly cached version of <a href="code/__DEFINES/lighting.html#define/EMISSIVE_COLOR" title="EMISSIVE_COLOR">EMISSIVE_COLOR</a> for quick access.</p><h3 id="var/exodrone_launchers"><aside class="declaration">var </aside>exodrone_launchers
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/exodrone.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;exodrone.dm 19"/></a></h3>
+        <p>All exodrone launchers.</p><h3 id="var/exodrones"><aside class="declaration">var </aside>exodrones
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/exodrone.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;exodrone.dm 17"/></a></h3>
+        <p>All exodrones.</p><h3 id="var/exoscanner_bands"><aside class="declaration">var </aside>exoscanner_bands
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/scanner_array.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;scanner_array.dm 5"/></a></h3>
+        <p>List of scanned distances</p><h3 id="var/exploration_sites"><aside class="declaration">var </aside>exploration_sites
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/exploration_site.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;exploration_site.dm 2"/></a></h3>
+        <p>All exploration site instances</p><h3 id="var/explorer_drone_adventure_db_entries"><aside class="declaration">var </aside>explorer_drone_adventure_db_entries
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 48"/></a></h3>
+        <p>All possible adventures in raw form</p><h3 id="var/fileaccess_timer"><aside class="declaration">var </aside>fileaccess_timer
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__HELPERS/files.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;files.dm 7"/></a></h3>
+        <p>For FTP requests. (i.e. downloading runtime logs.)</p>
+<p>However it'd be ok to use for accessing attack logs and such too, which are even laggier.</p><h3 id="var/gas_id_to_canister"><aside class="declaration">var </aside>gas_id_to_canister
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/atmospherics/machinery/portable/canister.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;machinery&#x2F;portable&#x2F;canister.dm 9"/></a></h3>
+        <p>List of all the gases, used in labelling the canisters</p><h3 id="var/gas_recipe_meta"><aside class="declaration">var </aside>gas_recipe_meta
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/atmospherics/machinery/components/gas_recipe_machines/atmos_machines_recipes.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;machinery&#x2F;components&#x2F;gas_recipe_machines&#x2F;atmos_machines_recipes.dm 2"/></a></h3>
+        <p>Global list of recipes for atmospheric machines to use</p><h3 id="var/gateway_destinations"><aside class="declaration">var </aside>gateway_destinations
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/awaymissions/gateway.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;awaymissions&#x2F;gateway.dm 4"/></a></h3>
+        <p>List of possible gateway destinations.</p><h3 id="var/glide_size_multiplier"><aside class="declaration">var </aside>glide_size_multiplier
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/movement.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;movement.dm 8"/></a></h3>
+        <p>Compensating for time dialation</p><h3 id="var/global_funny_embedding"><aside class="declaration">var </aside>global_funny_embedding
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/global_funny_embedding.html">global_funny_embedding</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/events/wizard/embeddies.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;events&#x2F;wizard&#x2F;embeddies.dm 27"/></a></h3>
+        <p>set this to a new instance of a SUBTYPE of global_funny_embedding. The main type is a prototype and will runtime really hard</p><h3 id="var/hands_state"><aside class="declaration">var </aside>hands_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/hands_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/hands.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;hands.dm 12"/></a></h3>
+        <p>tgui state: hands_state</p>
+<p>Checks that the src_object is in the user's hands.</p><h3 id="var/hfr_fuels_list"><aside class="declaration">var </aside>hfr_fuels_list
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/atmospherics/machinery/components/fusion/hfr_fuel_datums.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;atmospherics&#x2F;machinery&#x2F;components&#x2F;fusion&#x2F;hfr_fuel_datums.dm 2"/></a></h3>
+        <p>Global list of recipes for atmospheric machines to use</p><h3 id="var/hijack_employers"><aside class="declaration">var </aside>hijack_employers
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/antagonists.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;antagonists.dm 136"/></a></h3>
+        <p>employers who hire agents to do the hijack</p><h3 id="var/human_adjacent_state"><aside class="declaration">var </aside>human_adjacent_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/human_adjacent_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/human_adjacent.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;human_adjacent.dm 13"/></a></h3>
+        <p>tgui state: human_adjacent_state</p>
+<p>In addition to default checks, only allows interaction for a
+human adjacent user.</p><h3 id="var/ice_cream_flavours"><aside class="declaration">var </aside>ice_cream_flavours
+            <aside>&ndash; /static/list/datum/ice_cream_flavour</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/components/food/ice_cream_holder.dm#L155">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;components&#x2F;food&#x2F;ice_cream_holder.dm 155"/></a></h3>
+        <p>ICE CREAM FLAVOUR DATUM STUFF</p><h3 id="var/integrated_circuits"><aside class="declaration">var </aside>integrated_circuits
+            <aside>&ndash; /static/list/obj/item/integrated_circuit</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/wiremod/core/integrated_circuit.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;wiremod&#x2F;core&#x2F;integrated_circuit.dm 2"/></a></h3>
+        <p>A list of all integrated circuits</p><h3 id="var/intento_players"><aside class="declaration">var </aside>intento_players
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/toys.dm#L1607">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;toys.dm 1607"/></a></h3>
+        <p>All people who have used an Intento this round along with their high scores.</p><h3 id="var/inventory_state"><aside class="declaration">var </aside>inventory_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/inventory_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/inventory.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;inventory.dm 13"/></a></h3>
+        <p>tgui state: inventory_state</p>
+<p>Checks that the src_object is in the user's top-level
+(hand, ear, pocket, belt, etc) inventory.</p><h3 id="var/language_menu_state"><aside class="declaration">var </aside>language_menu_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/language_menu</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/language_menu.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;language_menu.dm 10"/></a></h3>
+        <p>tgui state: language_menu_state</p><h3 id="var/liquid_debug_colors"><aside class="declaration">var </aside>liquid_debug_colors
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/liquids/code/liquid_systems/liquid_groups.dm#L8">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;liquids&#x2F;code&#x2F;liquid_systems&#x2F;liquid_groups.dm 8"/></a></h3>
+        <p>PROPER GROUPING</p><h3 id="var/mafia_bad_signup"><aside class="declaration">var </aside>mafia_bad_signup
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mafia/_defines.dm#L79">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mafia&#x2F;_defines.dm 79"/></a></h3>
+        <p>list of ghosts who want to play mafia that have since disconnected. They are kept in the lobby, but not counted for starting a game.</p><h3 id="var/mafia_game"><aside class="declaration">var </aside>mafia_game
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mafia/_defines.dm#L81">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mafia&#x2F;_defines.dm 81"/></a></h3>
+        <p>the current global mafia game running.</p><h3 id="var/mafia_signup"><aside class="declaration">var </aside>mafia_signup
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mafia/_defines.dm#L77">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mafia&#x2F;_defines.dm 77"/></a></h3>
+        <p>list of ghosts who want to play mafia, every time someone enters the list it checks to see if enough are in</p><h3 id="var/marker_beacon_colors"><aside class="declaration">var </aside>marker_beacon_colors
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mining/equipment/marker_beacons.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mining&#x2F;equipment&#x2F;marker_beacons.dm 2"/></a></h3>
+        <p>Marker Beacons</p><h3 id="var/megafauna_spawn_list"><aside class="declaration">var </aside>megafauna_spawn_list
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/mapping.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mapping.dm 51"/></a></h3>
+        <p>Global list of megafauna spawns on cave gen</p><h3 id="var/message_modes_stat_limits"><aside class="declaration">var </aside>message_modes_stat_limits
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/living_say.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;living_say.dm 69"/></a></h3>
+        <p>Whitelist of saymodes or radio extensions that can be spoken through even if not fully conscious.
+Associated values are their maximum allowed mob stats.</p><h3 id="var/nanotrasen_employers"><aside class="declaration">var </aside>nanotrasen_employers
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/antagonists.dm#L128">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;antagonists.dm 128"/></a></h3>
+        <p>employers that are from nanotrasen</p><h3 id="var/narcd_underages"><aside class="declaration">var </aside>narcd_underages
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/mobs.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;mobs.dm 56"/></a></h3>
+        <p>underages who have been reported to security for trying to buy things they shouldn't, so they can't spam</p><h3 id="var/never_state"><aside class="declaration">var </aside>never_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/never_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/never.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;never.dm 12"/></a></h3>
+        <p>tgui state: never_state</p>
+<p>Always closes the UI, no matter what. See the ui_state in religious_tool.dm to see an example</p><h3 id="var/new_player_state"><aside class="declaration">var </aside>new_player_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/new_player_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/new_player.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;new_player.dm 7"/></a></h3>
+        <p>tgui state: new_player_state</p>
+<p>Checks that the user is a new_player, or if user is an admin</p><h3 id="var/normal_employers"><aside class="declaration">var </aside>normal_employers
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/antagonists.dm#L145">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;antagonists.dm 145"/></a></h3>
+        <p>employers who hire agents to do a task and escape... or martyrdom. whatever</p><h3 id="var/not_incapacitated_state"><aside class="declaration">var </aside>not_incapacitated_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/not_incapacitated_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/not_incapacitated.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;not_incapacitated.dm 12"/></a></h3>
+        <p>tgui state: not_incapacitated_state</p>
+<p>Checks that the user isn't incapacitated</p><h3 id="var/not_incapacitated_turf_state"><aside class="declaration">var </aside>not_incapacitated_turf_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/not_incapacitated_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/not_incapacitated.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;not_incapacitated.dm 20"/></a></h3>
+        <p>tgui state: not_incapacitated_turf_state</p>
+<p>Checks that the user isn't incapacitated and that their loc is a turf</p><h3 id="var/notcontained_state"><aside class="declaration">var </aside>notcontained_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/notcontained_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/notcontained.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;notcontained.dm 13"/></a></h3>
+        <p>tgui state: notcontained_state</p>
+<p>Checks that the user is not inside src_object, and then makes the
+default checks.</p><h3 id="var/observer_state"><aside class="declaration">var </aside>observer_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/observer_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/observer.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;observer.dm 12"/></a></h3>
+        <p>tgui state: observer_state</p>
+<p>Checks that the user is an observer/ghost.</p><h3 id="var/organ_process_order"><aside class="declaration">var </aside>organ_process_order
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/DNA.dm#L229">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;DNA.dm 229"/></a></h3>
+        <p>Organ slot processing order for life proc</p><h3 id="var/orion_events"><aside class="declaration">var </aside>orion_events
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/machinery/computer/arcade/orion.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;computer&#x2F;arcade&#x2F;orion.dm 8"/></a></h3>
+        <p>assoc list, [datum singleton] = weight</p><h3 id="var/physical_obscured_state"><aside class="declaration">var </aside>physical_obscured_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/physical_obscured_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/physical.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;physical.dm 38"/></a></h3>
+        <p>tgui state: physical_obscured_state</p>
+<p>Short-circuits the default state to only check physical distance, being in view doesn't matter</p><h3 id="var/physical_state"><aside class="declaration">var </aside>physical_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/physical</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/physical.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;physical.dm 12"/></a></h3>
+        <p>tgui state: physical_state</p>
+<p>Short-circuits the default state to only check physical distance.</p><h3 id="var/picture_log_directory"><aside class="declaration">var </aside>picture_log_directory
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/logging.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 82"/></a></h3>
+        <p>Picture logging</p><h3 id="var/pipe_color_name"><aside class="declaration">var </aside>pipe_color_name
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__HELPERS/piping_colors_lists.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;piping_colors_lists.dm 34"/></a></h3>
+        <p>Names shown in the examine for every colored atmos component</p><h3 id="var/pipe_colors_ordered"><aside class="declaration">var </aside>pipe_colors_ordered
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__HELPERS/piping_colors_lists.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;piping_colors_lists.dm 18"/></a></h3>
+        <p>List that sorts the colors and is used for setting up the pipes layer so that they overlap correctly</p><h3 id="var/pipe_paint_colors"><aside class="declaration">var </aside>pipe_paint_colors
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__HELPERS/piping_colors_lists.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__HELPERS&#x2F;piping_colors_lists.dm 2"/></a></h3>
+        <p>All colors available to pipes and atmos components</p><h3 id="var/player_details"><aside class="declaration">var </aside>player_details
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/client/player_details.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;client&#x2F;player_details.dm 3"/></a></h3>
+        <p>assoc list of ckey -&gt; /datum/player_details</p><h3 id="var/poll_options"><aside class="declaration">var </aside>poll_options
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/dead/new_player/poll.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;poll.dm 7"/></a></h3>
+        <p>All poll option datums of running polls</p><h3 id="var/polls"><aside class="declaration">var </aside>polls
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/dead/new_player/poll.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;poll.dm 3"/></a></h3>
+        <p>All currently running polls held as datums</p><h3 id="var/preference_breast_sizes"><aside class="declaration">var </aside>preference_breast_sizes
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/_globalvars/lists.dm#L44">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;_globalvars&#x2F;lists.dm 44"/></a></h3>
+        <p>Those are the values available from prefs</p><h3 id="var/preferences_datums"><aside class="declaration">var </aside>preferences_datums
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L1">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 1"/></a></h3>
+        <p>Yes, this is incredibly long, deal with it. It's to keep that cute little comment at the top.</p><h3 id="var/reality_smash_track"><aside class="declaration">var </aside>reality_smash_track
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/reality_smash_tracker.html">reality_smash_tracker</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/game_modes.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;game_modes.dm 13"/></a></h3>
+        <p>We want reality_smash_tracker to exist only once and be accessible from anywhere.</p><h3 id="var/req_console_assistance"><aside class="declaration">var </aside>req_console_assistance
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/machinery/requests_console.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;machinery&#x2F;requests_console.dm 4"/></a></h3>
+        <p>Requests Console</p>
+<p>Originally written by errorage, updated by: Carn, needs more work though. I just added some security fixes</p><h3 id="var/rpgloot_controller"><aside class="declaration">var </aside>rpgloot_controller
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/rpgloot_controller.html">rpgloot_controller</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/events/wizard/rpgloot.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;events&#x2F;wizard&#x2F;rpgloot.dm 42"/></a></h3>
+        <p>Holds the global datum for rpgloot, so anywhere may check for its existence (it signals into whatever it needs to modify, so it shouldn't require fetching)</p><h3 id="var/scan_conditions"><aside class="declaration">var </aside>scan_conditions
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/scanner_array.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;scanner_array.dm 7"/></a></h3>
+        <p>Scan condition instances</p><h3 id="var/security_officer_distribution"><aside class="declaration">var </aside>security_officer_distribution
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/jobs/job_types/security_officer.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;jobs&#x2F;job_types&#x2F;security_officer.dm 51"/></a></h3>
+        <p>The department distribution of the security officers.</p>
+<p>Keys are refs of the security officer mobs. This is to preserve the list's structure even if the
+mob gets deleted. This is also safe, as mobs are guaranteed to have a unique ref, as per /mob/GenerateTag().</p><h3 id="var/self_state"><aside class="declaration">var </aside>self_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/self_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/self.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;self.dm 12"/></a></h3>
+        <p>tgui state: self_state</p>
+<p>Only checks that the user and src_object are the same.</p><h3 id="var/special_roles"><aside class="declaration">var </aside>special_roles
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/role_preferences.dm#L87">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;role_preferences.dm 87"/></a></h3>
+        <p>This defines the antagonists you can operate with in the settings.
+Keys are the antagonist, values are the number of days since the player's
+first connection in order to play.</p><h3 id="var/stat_panel_verbs"><aside class="declaration">var </aside>stat_panel_verbs
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/statpanel.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;statpanel.dm 2"/></a></h3>
+        <p>Bare minimum required verbs for stat panel operation</p><h3 id="var/station_goals"><aside class="declaration">var </aside>station_goals
+            <aside>&ndash; /static/list/datum/station_goal</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/station_goals/station_goal.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;station_goals&#x2F;station_goal.dm 2"/></a></h3>
+        <p>List of available station goals for the crew to be working on</p><h3 id="var/syndicate_employers"><aside class="declaration">var </aside>syndicate_employers
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/antagonists.dm#L116">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;antagonists.dm 116"/></a></h3>
+        <p>employers that are from the syndicate</p><h3 id="var/teleportlocs"><aside class="declaration">var </aside>teleportlocs
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/area/areas.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;area&#x2F;areas.dm 104"/></a></h3>
+        <p>A list of teleport locations</p>
+<p>Adding a wizard area teleport list because motherfucking lag -- Urist
+I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game</p><h3 id="var/the_gateway"><aside class="declaration">var </aside>the_gateway
+            <aside>&ndash; /static/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/gateway.html">gateway</a>/centerstation</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/awaymissions/gateway.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;awaymissions&#x2F;gateway.dm 2"/></a></h3>
+        <p>Station home gateway</p><h3 id="var/time_last_changed_position"><aside class="declaration">var </aside>time_last_changed_position
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/file_system/programs/jobmanagement.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;file_system&#x2F;programs&#x2F;jobmanagement.dm 2"/></a></h3>
+        <p>The time since the last job opening was created</p><h3 id="var/timezoneOffset"><aside class="declaration">var </aside>timezoneOffset
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/time_vars.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;time_vars.dm 3"/></a></h3>
+        <p>The difference betwen midnight (of the host computer) and 0 world.ticks.</p><h3 id="var/trait_name_map"><aside class="declaration">var </aside>trait_name_map
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/traits.dm#L202">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;traits.dm 202"/></a></h3>
+        <p>value -&gt; trait name, generated on use from trait_by_type global</p><h3 id="var/triple_ai_controller"><aside class="declaration">var </aside>triple_ai_controller
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/triple_ai_controller</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/admin/verbs/ai_triumvirate.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;verbs&#x2F;ai_triumvirate.dm 3"/></a></h3>
+        <p>global reference to the current theme, if there is one.</p><h3 id="var/typecache_elevated_structures"><aside class="declaration">var </aside>typecache_elevated_structures
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/typecache.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;typecache.dm 15"/></a></h3>
+        <p>A typecache listing structures that are considered to have surfaces that you can place items on that are higher than the floor. This, of course, should be restricted to /atom/movables. This is primarily used for food decomposition code.</p><h3 id="var/voice_of_god_commands"><aside class="declaration">var </aside>voice_of_god_commands
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/voice_of_god_command.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;voice_of_god_command.dm 9"/></a></h3>
+        <p>List of all voice of god commands</p><h3 id="var/whitelist"><aside class="declaration">var </aside>whitelist
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/admin/whitelist.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;whitelist.dm 3"/></a></h3>
+        <p>SKYRAT EDIT START - Immersion-friendly Admin Prison
+SKYRAT EDIT END</p><h3 id="var/wiremod_basic_types"><aside class="declaration">var </aside>wiremod_basic_types
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/wiremod.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;wiremod.dm 2"/></a></h3>
+        <p>The basic types that don't have any super special behaviour.</p><h3 id="var/wiremod_fundamental_types"><aside class="declaration">var </aside>wiremod_fundamental_types
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/wiremod.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;wiremod.dm 13"/></a></h3>
+        <p>The fundamental datatypes of the byond game engine.</p><h3 id="var/world_suspicious_login_log"><aside class="declaration">var </aside>world_suspicious_login_log
+            <aside>&ndash; /static</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/logging.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;logging.dm 6"/></a></h3>
+        <p>Log associated with [/proc/log_suspicious_login()] - Intended to hold all logins that failed due to suspicious circumstances such as ban detection, CID randomisation etc.</p><h3 id="var/xeno_sample_colors"><aside class="declaration">var </aside>xeno_sample_colors
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/_globalvars/lists/xenobiology.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;_globalvars&#x2F;lists&#x2F;xenobiology.dm 41"/></a></h3>
+        <p>List of all possible sample colors</p><h3 id="var/z_state"><aside class="declaration">var </aside>z_state
+            <aside>&ndash; /static/<a href="datum.html">datum</a>/<a href="datum/ui_state.html">ui_state</a>/z_state</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/tgui/states/zlevel.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;tgui&#x2F;states&#x2F;zlevel.dm 12"/></a></h3>
+        <p>tgui state: z_state</p>
+<p>Only checks that the Z-level of the user and src_object are the same.</p><h2 id="proc">Proc Details</h2><h3 id="proc/InitGlobaladmin_verbs_permissions"><aside class="declaration">proc </aside>InitGlobaladmin_verbs_permissions<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/admin/admin_verbs.dm#L217">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;admin&#x2F;admin_verbs.dm 217"/></a></aside>
+        </h3>
+        <p>SKYRAT EDIT END</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

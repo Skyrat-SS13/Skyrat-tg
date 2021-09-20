@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/atmospherics/atmos_piping.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/atmospherics/atmos_piping.dm 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/MAX_OUTPUT_PRESSURE">MAX_OUTPUT_PRESSURE</a></th><td>(kPa) What pressure pumps and powered equipment max out at.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/MAX_TRANSFER_RATE">MAX_TRANSFER_RATE</a></th><td>(L/s) Maximum speed powered equipment can work at.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/VOLUME_PUMP_LEAK_AMOUNT">VOLUME_PUMP_LEAK_AMOUNT</a></th><td>How many percent of the contents that an overclocked volume pumps leak into the air</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_STANDARD_VOLUME">TANK_STANDARD_VOLUME</a></th><td>The volume of the standard handheld gas tanks on the station.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_MIN_RELEASE_PRESSURE">TANK_MIN_RELEASE_PRESSURE</a></th><td>The minimum pressure an gas tanks release valve can be set to.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_MAX_RELEASE_PRESSURE">TANK_MAX_RELEASE_PRESSURE</a></th><td>The maximum pressure an gas tanks release valve can be set to.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_DEFAULT_RELEASE_PRESSURE">TANK_DEFAULT_RELEASE_PRESSURE</a></th><td>The default initial value gas tanks release valves are set to. (At least the ones containing pure plasma/oxygen.)</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_MELT_TEMPERATURE">TANK_MELT_TEMPERATURE</a></th><td>The internal temperature in kelvins at which a handheld gas tank begins to take damage.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_LEAK_PRESSURE">TANK_LEAK_PRESSURE</a></th><td>The internal pressure in kPa at which a handheld gas tank begins to take damage.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_RUPTURE_PRESSURE">TANK_RUPTURE_PRESSURE</a></th><td>The internal pressure in kPa at which a handheld gas tank almost immediately ruptures.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_FRAGMENT_PRESSURE">TANK_FRAGMENT_PRESSURE</a></th><td>The internal pressure in kPa at which an gas tank that breaks will cause an explosion.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/TANK_FRAGMENT_SCALE">TANK_FRAGMENT_SCALE</a></th><td>Range scaling constant for tank explosions. Calibrated so that a TTV assembled using two 70L tanks will hit the maxcap at at least 160atm.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/PIPING_ALL_LAYER">PIPING_ALL_LAYER</a></th><td>intended to connect with all layers, check for all instead of just one.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/PIPING_ONE_PER_TURF">PIPING_ONE_PER_TURF</a></th><td>can only be built if nothing else with this flag is on the tile already.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/PIPING_DEFAULT_LAYER_ONLY">PIPING_DEFAULT_LAYER_ONLY</a></th><td>can only exist at PIPING_LAYER_DEFAULT</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/PIPING_CARDINAL_AUTONORMALIZE">PIPING_CARDINAL_AUTONORMALIZE</a></th><td>north/south east/west doesn't matter, auto normalize on build.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/PIPING_ALL_COLORS">PIPING_ALL_COLORS</a></th><td>intended to connect with everything, both layers and colors</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/PIPING_BRIDGE">PIPING_BRIDGE</a></th><td>can bridge over pipenets</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/VENTCRAWL_ALLOWED">VENTCRAWL_ALLOWED</a></th><td>Allows for ventcrawling to occur. All atmospheric machines have this flag on by default. Cryo is the exception</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/VENTCRAWL_ENTRANCE_ALLOWED">VENTCRAWL_ENTRANCE_ALLOWED</a></th><td>Allows mobs to enter or leave from atmospheric machines. On for passive, unary, and scrubber vents.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_piping.html#define/VENTCRAWL_CAN_SEE">VENTCRAWL_CAN_SEE</a></th><td>Used to check if a machinery is visible. Called by update_pipe_vision(). On by default for all except cryo.</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/MAX_OUTPUT_PRESSURE"><aside class="declaration">#define </aside>MAX_OUTPUT_PRESSURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 22"/></a>
+    </h3>
+    <p>(kPa) What pressure pumps and powered equipment max out at.</p><h3 id="define/MAX_TRANSFER_RATE"><aside class="declaration">#define </aside>MAX_TRANSFER_RATE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 24"/></a>
+    </h3>
+    <p>(L/s) Maximum speed powered equipment can work at.</p><h3 id="define/PIPING_ALL_COLORS"><aside class="declaration">#define </aside>PIPING_ALL_COLORS
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 72"/></a>
+    </h3>
+    <p>intended to connect with everything, both layers and colors</p><h3 id="define/PIPING_ALL_LAYER"><aside class="declaration">#define </aside>PIPING_ALL_LAYER
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 64"/></a>
+    </h3>
+    <p>intended to connect with all layers, check for all instead of just one.</p><h3 id="define/PIPING_BRIDGE"><aside class="declaration">#define </aside>PIPING_BRIDGE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 74"/></a>
+    </h3>
+    <p>can bridge over pipenets</p><h3 id="define/PIPING_CARDINAL_AUTONORMALIZE"><aside class="declaration">#define </aside>PIPING_CARDINAL_AUTONORMALIZE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L70">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 70"/></a>
+    </h3>
+    <p>north/south east/west doesn't matter, auto normalize on build.</p><h3 id="define/PIPING_DEFAULT_LAYER_ONLY"><aside class="declaration">#define </aside>PIPING_DEFAULT_LAYER_ONLY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 68"/></a>
+    </h3>
+    <p>can only exist at PIPING_LAYER_DEFAULT</p><h3 id="define/PIPING_ONE_PER_TURF"><aside class="declaration">#define </aside>PIPING_ONE_PER_TURF
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 66"/></a>
+    </h3>
+    <p>can only be built if nothing else with this flag is on the tile already.</p><h3 id="define/TANK_DEFAULT_RELEASE_PRESSURE"><aside class="declaration">#define </aside>TANK_DEFAULT_RELEASE_PRESSURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 41"/></a>
+    </h3>
+    <p>The default initial value gas tanks release valves are set to. (At least the ones containing pure plasma/oxygen.)</p><h3 id="define/TANK_FRAGMENT_PRESSURE"><aside class="declaration">#define </aside>TANK_FRAGMENT_PRESSURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 49"/></a>
+    </h3>
+    <p>The internal pressure in kPa at which an gas tank that breaks will cause an explosion.</p><h3 id="define/TANK_FRAGMENT_SCALE"><aside class="declaration">#define </aside>TANK_FRAGMENT_SCALE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 51"/></a>
+    </h3>
+    <p>Range scaling constant for tank explosions. Calibrated so that a TTV assembled using two 70L tanks will hit the maxcap at at least 160atm.</p><h3 id="define/TANK_LEAK_PRESSURE"><aside class="declaration">#define </aside>TANK_LEAK_PRESSURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 45"/></a>
+    </h3>
+    <p>The internal pressure in kPa at which a handheld gas tank begins to take damage.</p><h3 id="define/TANK_MAX_RELEASE_PRESSURE"><aside class="declaration">#define </aside>TANK_MAX_RELEASE_PRESSURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 39"/></a>
+    </h3>
+    <p>The maximum pressure an gas tanks release valve can be set to.</p><h3 id="define/TANK_MELT_TEMPERATURE"><aside class="declaration">#define </aside>TANK_MELT_TEMPERATURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 43"/></a>
+    </h3>
+    <p>The internal temperature in kelvins at which a handheld gas tank begins to take damage.</p><h3 id="define/TANK_MIN_RELEASE_PRESSURE"><aside class="declaration">#define </aside>TANK_MIN_RELEASE_PRESSURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 37"/></a>
+    </h3>
+    <p>The minimum pressure an gas tanks release valve can be set to.</p><h3 id="define/TANK_RUPTURE_PRESSURE"><aside class="declaration">#define </aside>TANK_RUPTURE_PRESSURE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 47"/></a>
+    </h3>
+    <p>The internal pressure in kPa at which a handheld gas tank almost immediately ruptures.</p><h3 id="define/TANK_STANDARD_VOLUME"><aside class="declaration">#define </aside>TANK_STANDARD_VOLUME
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 35"/></a>
+    </h3>
+    <p>The volume of the standard handheld gas tanks on the station.</p><h3 id="define/VENTCRAWL_ALLOWED"><aside class="declaration">#define </aside>VENTCRAWL_ALLOWED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 78"/></a>
+    </h3>
+    <p>Allows for ventcrawling to occur. All atmospheric machines have this flag on by default. Cryo is the exception</p><h3 id="define/VENTCRAWL_CAN_SEE"><aside class="declaration">#define </aside>VENTCRAWL_CAN_SEE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 82"/></a>
+    </h3>
+    <p>Used to check if a machinery is visible. Called by update_pipe_vision(). On by default for all except cryo.</p><h3 id="define/VENTCRAWL_ENTRANCE_ALLOWED"><aside class="declaration">#define </aside>VENTCRAWL_ENTRANCE_ALLOWED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 80"/></a>
+    </h3>
+    <p>Allows mobs to enter or leave from atmospheric machines. On for passive, unary, and scrubber vents.</p><h3 id="define/VOLUME_PUMP_LEAK_AMOUNT"><aside class="declaration">#define </aside>VOLUME_PUMP_LEAK_AMOUNT
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_piping.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_piping.dm 26"/></a>
+    </h3>
+    <p>How many percent of the contents that an overclocked volume pumps leak into the air</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

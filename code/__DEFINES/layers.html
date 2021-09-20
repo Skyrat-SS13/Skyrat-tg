@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;layers.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/layers.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/layers.dm 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/layers.html#define/CATWALK_LAYER">CATWALK_LAYER</a></th><td>catwalk overlay of /turf/open/floor/plating/plating_catwalk</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/LIGHTING_PLANE">LIGHTING_PLANE</a></th><td>Normal 1 per turf dynamic lighting underlays</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/O_LIGHTING_VISUAL_PLANE">O_LIGHTING_VISUAL_PLANE</a></th><td>Lighting objects that are &quot;free floating&quot;</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/ABOVE_LIGHTING_PLANE">ABOVE_LIGHTING_PLANE</a></th><td>Things that should render ignoring lighting</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/BYOND_LIGHTING_PLANE">BYOND_LIGHTING_PLANE</a></th><td>visibility + hiding of things outside of light source range</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/EMISSIVE_PLANE">EMISSIVE_PLANE</a></th><td>This plane masks out lighting to create an &quot;emissive&quot; effect, ie for glowing lights in otherwise dark areas.</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/EMISSIVE_RENDER_TARGET">EMISSIVE_RENDER_TARGET</a></th><td>The render target used by the emissive layer.</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/EMISSIVE_LAYER_UNBLOCKABLE">EMISSIVE_LAYER_UNBLOCKABLE</a></th><td>The layer you should use if you <em>really</em> don't want an emissive overlay to be blocked.</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/CAMERA_STATIC_PLANE">CAMERA_STATIC_PLANE</a></th><td>---------------- MISC -----------------------
+AI Camera Static</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/RUNECHAT_PLANE">RUNECHAT_PLANE</a></th><td>Popup Chat Messages</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/BALLOON_CHAT_PLANE">BALLOON_CHAT_PLANE</a></th><td>Plane for balloon text (text that fades up)</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/ATMOS_GROUP_PLANE">ATMOS_GROUP_PLANE</a></th><td>Debug Atmos Overlays</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/FULLSCREEN_PLANE">FULLSCREEN_PLANE</a></th><td>--------------- FULLSCREEN IMAGES ------------</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/RADIAL_CONTENT_LAYER">RADIAL_CONTENT_LAYER</a></th><td>1000 is an unimportant number, it's just to normalize copied layers</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/SPLASHSCREEN_PLANE">SPLASHSCREEN_PLANE</a></th><td>Plane of the &quot;splash&quot; icon used that shows on the lobby screen. Nothing should ever be above this.</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/CINEMATIC_LAYER">CINEMATIC_LAYER</a></th><td>cinematics are &quot;below&quot; the splash screen</td></tr>
+        <tr><th><a href="code/__DEFINES/layers.html#define/PLANE_MASTERS_GAME">PLANE_MASTERS_GAME</a></th><td>Plane master controller keys</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/ABOVE_LIGHTING_PLANE"><aside class="declaration">#define </aside>ABOVE_LIGHTING_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L127">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 127"/></a>
+    </h3>
+    <p>Things that should render ignoring lighting</p><h3 id="define/ATMOS_GROUP_PLANE"><aside class="declaration">#define </aside>ATMOS_GROUP_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L164">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 164"/></a>
+    </h3>
+    <p>Debug Atmos Overlays</p><h3 id="define/BALLOON_CHAT_PLANE"><aside class="declaration">#define </aside>BALLOON_CHAT_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L161">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 161"/></a>
+    </h3>
+    <p>Plane for balloon text (text that fades up)</p><h3 id="define/BYOND_LIGHTING_PLANE"><aside class="declaration">#define </aside>BYOND_LIGHTING_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L136">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 136"/></a>
+    </h3>
+    <p>visibility + hiding of things outside of light source range</p><h3 id="define/CAMERA_STATIC_PLANE"><aside class="declaration">#define </aside>CAMERA_STATIC_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L154">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 154"/></a>
+    </h3>
+    <p>---------------- MISC -----------------------
+AI Camera Static</p><h3 id="define/CATWALK_LAYER"><aside class="declaration">#define </aside>CATWALK_LAYER
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 56"/></a>
+    </h3>
+    <p>catwalk overlay of /turf/open/floor/plating/plating_catwalk</p><h3 id="define/CINEMATIC_LAYER"><aside class="declaration">#define </aside>CINEMATIC_LAYER
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L198">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 198"/></a>
+    </h3>
+    <p>cinematics are &quot;below&quot; the splash screen</p><h3 id="define/EMISSIVE_LAYER_UNBLOCKABLE"><aside class="declaration">#define </aside>EMISSIVE_LAYER_UNBLOCKABLE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L149">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 149"/></a>
+    </h3>
+    <p>The layer you should use if you <em>really</em> don't want an emissive overlay to be blocked.</p><h3 id="define/EMISSIVE_PLANE"><aside class="declaration">#define </aside>EMISSIVE_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L145">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 145"/></a>
+    </h3>
+    <p>This plane masks out lighting to create an &quot;emissive&quot; effect, ie for glowing lights in otherwise dark areas.</p><h3 id="define/EMISSIVE_RENDER_TARGET"><aside class="declaration">#define </aside>EMISSIVE_RENDER_TARGET
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L147">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 147"/></a>
+    </h3>
+    <p>The render target used by the emissive layer.</p><h3 id="define/FULLSCREEN_PLANE"><aside class="declaration">#define </aside>FULLSCREEN_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L167">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 167"/></a>
+    </h3>
+    <p>--------------- FULLSCREEN IMAGES ------------</p><h3 id="define/LIGHTING_PLANE"><aside class="declaration">#define </aside>LIGHTING_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L119">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 119"/></a>
+    </h3>
+    <p>Normal 1 per turf dynamic lighting underlays</p><h3 id="define/O_LIGHTING_VISUAL_PLANE"><aside class="declaration">#define </aside>O_LIGHTING_VISUAL_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 123"/></a>
+    </h3>
+    <p>Lighting objects that are &quot;free floating&quot;</p><h3 id="define/PLANE_MASTERS_GAME"><aside class="declaration">#define </aside>PLANE_MASTERS_GAME
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L201">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 201"/></a>
+    </h3>
+    <p>Plane master controller keys</p><h3 id="define/RADIAL_CONTENT_LAYER"><aside class="declaration">#define </aside>RADIAL_CONTENT_LAYER
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L186">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 186"/></a>
+    </h3>
+    <p>1000 is an unimportant number, it's just to normalize copied layers</p><h3 id="define/RUNECHAT_PLANE"><aside class="declaration">#define </aside>RUNECHAT_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L158">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 158"/></a>
+    </h3>
+    <p>Popup Chat Messages</p><h3 id="define/SPLASHSCREEN_PLANE"><aside class="declaration">#define </aside>SPLASHSCREEN_PLANE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/layers.dm#L191">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;layers.dm 191"/></a>
+    </h3>
+    <p>Plane of the &quot;splash&quot; icon used that shows on the lobby screen. Nothing should ever be above this.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

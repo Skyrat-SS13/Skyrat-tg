@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;botany.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/botany.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/botany.dm 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/botany.html#define/MAX_PLANT_YIELD">MAX_PLANT_YIELD</a></th><td>-- Botany plant stat defines. --
+MAXES:</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/MIN_PLANT_ENDURANCE">MIN_PLANT_ENDURANCE</a></th><td>MINS:</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/WEED_HARDY_YIELD_MIN">WEED_HARDY_YIELD_MIN</a></th><td>-- Some botany trait value defines. --
+Weed Hardy can only reduce plants to 3 yield.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/CARNIVORY_POTENCY_MIN">CARNIVORY_POTENCY_MIN</a></th><td>Carnivory potency can only reduce potency to 30.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/FUNGAL_METAB_YIELD_MIN">FUNGAL_METAB_YIELD_MIN</a></th><td>Fungle megabolism plants have a min yield of 1.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/TRAY_NAME_UPDATE">TRAY_NAME_UPDATE</a></th><td>-- Hydroponics tray defines. --
+Macro for updating the tray name.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/STATIC_NUTRIENT_CAPACITY">STATIC_NUTRIENT_CAPACITY</a></th><td>Base amount of nutrients a tray can old.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/MAX_TRAY_TOXINS">MAX_TRAY_TOXINS</a></th><td>Maximum amount of toxins a tray can reach.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/MAX_TRAY_PESTS">MAX_TRAY_PESTS</a></th><td>Maxumum pests a tray can reach.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/MAX_TRAY_WEEDS">MAX_TRAY_WEEDS</a></th><td>Maximum weeds a tray can reach.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/GENE_SHEAR_MIN_HEALTH">GENE_SHEAR_MIN_HEALTH</a></th><td>Minumum plant health required for gene shears.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/PLANT_GENE_REMOVABLE">PLANT_GENE_REMOVABLE</a></th><td>-- Flags for genes --
+Plant genes that can be removed via gene shears.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/PLANT_GENE_MUTATABLE">PLANT_GENE_MUTATABLE</a></th><td>Plant genes that can be mutated randomly in strange seeds / due to high instability.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/PLANT_GENE_GRAFTABLE">PLANT_GENE_GRAFTABLE</a></th><td>Plant genes that can be graftable. Used in formatting text, as they need to be set to be graftable anyways.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/MUTATE_EARLY">MUTATE_EARLY</a></th><td>-- Flags for seeds. --
+Allows a plant to wild mutate (mutate on haravest) at a certain instability.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/TRAIT_HALVES_YIELD">TRAIT_HALVES_YIELD</a></th><td>-- Flags for traits. --
+Caps the plant's yield at 5 instead of 10.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/GLOW_ID">GLOW_ID</a></th><td>-- Trait IDs. Plants that match IDs cannot be added to the same plant. --
+Plants that glow.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/PLANT_TYPE_ID">PLANT_TYPE_ID</a></th><td>Plant types.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/TEMP_CHANGE_ID">TEMP_CHANGE_ID</a></th><td>Plants that affect the reagent's temperature.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/CONTENTS_CHANGE_ID">CONTENTS_CHANGE_ID</a></th><td>Plants that affect the reagent contents.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/THROW_IMPACT_ID">THROW_IMPACT_ID</a></th><td>Plants that do something special when they impact.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/REAGENT_TRANSFER_ID">REAGENT_TRANSFER_ID</a></th><td>Plants that transfer reagents on impact.</td></tr>
+        <tr><th><a href="code/__DEFINES/botany.html#define/ATTACK_SELF_ID">ATTACK_SELF_ID</a></th><td>Plants that have a unique effect on attack_self.</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/ATTACK_SELF_ID"><aside class="declaration">#define </aside>ATTACK_SELF_ID
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 66"/></a>
+    </h3>
+    <p>Plants that have a unique effect on attack_self.</p><h3 id="define/CARNIVORY_POTENCY_MIN"><aside class="declaration">#define </aside>CARNIVORY_POTENCY_MIN
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 18"/></a>
+    </h3>
+    <p>Carnivory potency can only reduce potency to 30.</p><h3 id="define/CONTENTS_CHANGE_ID"><aside class="declaration">#define </aside>CONTENTS_CHANGE_ID
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 60"/></a>
+    </h3>
+    <p>Plants that affect the reagent contents.</p><h3 id="define/FUNGAL_METAB_YIELD_MIN"><aside class="declaration">#define </aside>FUNGAL_METAB_YIELD_MIN
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 20"/></a>
+    </h3>
+    <p>Fungle megabolism plants have a min yield of 1.</p><h3 id="define/GENE_SHEAR_MIN_HEALTH"><aside class="declaration">#define </aside>GENE_SHEAR_MIN_HEALTH
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 34"/></a>
+    </h3>
+    <p>Minumum plant health required for gene shears.</p><h3 id="define/GLOW_ID"><aside class="declaration">#define </aside>GLOW_ID
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 54"/></a>
+    </h3>
+    <p>-- Trait IDs. Plants that match IDs cannot be added to the same plant. --
+Plants that glow.</p><h3 id="define/MAX_PLANT_YIELD"><aside class="declaration">#define </aside>MAX_PLANT_YIELD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 3"/></a>
+    </h3>
+    <p>-- Botany plant stat defines. --
+MAXES:</p><h3 id="define/MAX_TRAY_PESTS"><aside class="declaration">#define </aside>MAX_TRAY_PESTS
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 30"/></a>
+    </h3>
+    <p>Maxumum pests a tray can reach.</p><h3 id="define/MAX_TRAY_TOXINS"><aside class="declaration">#define </aside>MAX_TRAY_TOXINS
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 28"/></a>
+    </h3>
+    <p>Maximum amount of toxins a tray can reach.</p><h3 id="define/MAX_TRAY_WEEDS"><aside class="declaration">#define </aside>MAX_TRAY_WEEDS
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 32"/></a>
+    </h3>
+    <p>Maximum weeds a tray can reach.</p><h3 id="define/MIN_PLANT_ENDURANCE"><aside class="declaration">#define </aside>MIN_PLANT_ENDURANCE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 12"/></a>
+    </h3>
+    <p>MINS:</p><h3 id="define/MUTATE_EARLY"><aside class="declaration">#define </aside>MUTATE_EARLY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 46"/></a>
+    </h3>
+    <p>-- Flags for seeds. --
+Allows a plant to wild mutate (mutate on haravest) at a certain instability.</p><h3 id="define/PLANT_GENE_GRAFTABLE"><aside class="declaration">#define </aside>PLANT_GENE_GRAFTABLE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 42"/></a>
+    </h3>
+    <p>Plant genes that can be graftable. Used in formatting text, as they need to be set to be graftable anyways.</p><h3 id="define/PLANT_GENE_MUTATABLE"><aside class="declaration">#define </aside>PLANT_GENE_MUTATABLE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 40"/></a>
+    </h3>
+    <p>Plant genes that can be mutated randomly in strange seeds / due to high instability.</p><h3 id="define/PLANT_GENE_REMOVABLE"><aside class="declaration">#define </aside>PLANT_GENE_REMOVABLE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 38"/></a>
+    </h3>
+    <p>-- Flags for genes --
+Plant genes that can be removed via gene shears.</p><h3 id="define/PLANT_TYPE_ID"><aside class="declaration">#define </aside>PLANT_TYPE_ID
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 56"/></a>
+    </h3>
+    <p>Plant types.</p><h3 id="define/REAGENT_TRANSFER_ID"><aside class="declaration">#define </aside>REAGENT_TRANSFER_ID
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 64"/></a>
+    </h3>
+    <p>Plants that transfer reagents on impact.</p><h3 id="define/STATIC_NUTRIENT_CAPACITY"><aside class="declaration">#define </aside>STATIC_NUTRIENT_CAPACITY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 26"/></a>
+    </h3>
+    <p>Base amount of nutrients a tray can old.</p><h3 id="define/TEMP_CHANGE_ID"><aside class="declaration">#define </aside>TEMP_CHANGE_ID
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 58"/></a>
+    </h3>
+    <p>Plants that affect the reagent's temperature.</p><h3 id="define/THROW_IMPACT_ID"><aside class="declaration">#define </aside>THROW_IMPACT_ID
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 62"/></a>
+    </h3>
+    <p>Plants that do something special when they impact.</p><h3 id="define/TRAIT_HALVES_YIELD"><aside class="declaration">#define </aside>TRAIT_HALVES_YIELD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 50"/></a>
+    </h3>
+    <p>-- Flags for traits. --
+Caps the plant's yield at 5 instead of 10.</p><h3 id="define/TRAY_NAME_UPDATE"><aside class="declaration">#define </aside>TRAY_NAME_UPDATE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 24"/></a>
+    </h3>
+    <p>-- Hydroponics tray defines. --
+Macro for updating the tray name.</p><h3 id="define/WEED_HARDY_YIELD_MIN"><aside class="declaration">#define </aside>WEED_HARDY_YIELD_MIN
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/botany.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;botany.dm 16"/></a>
+    </h3>
+    <p>-- Some botany trait value defines. --
+Weed Hardy can only reduce plants to 3 yield.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

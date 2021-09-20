@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;food - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/food.html#var">Var Details</a> - <a href="obj/item/food.html#proc">Proc Details</a></header>
+<main>
+<h1>food <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/food.html">food</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 2"/></a></h1>
+
+<p>Abstract class to allow us to easily create all the generic &quot;normal&quot; food without too much copy pasta of adding more components</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/food.html#var/ant_attracting">ant_attracting</a></th><td>Does our food normally attract ants?</td></tr>
+            <tr><th><a href="obj/item/food.html#var/bite_consumption">bite_consumption</a></th><td>How much reagents per bite</td></tr>
+            <tr><th><a href="obj/item/food.html#var/burns_in_oven">burns_in_oven</a></th><td>Will this food turn into badrecipe in an oven? Don't use this for everything; preferably mostly for food that is made in an oven to begin with so it burns after some time</td></tr>
+            <tr><th><a href="obj/item/food.html#var/burns_on_grill">burns_on_grill</a></th><td>Will this food turn into badrecipe on a grill? Don't use this for everything; preferably mostly for food that is made on a grill to begin with so it burns after some time</td></tr>
+            <tr><th><a href="obj/item/food.html#var/decomp_req_handle">decomp_req_handle</a></th><td>Food that needs to be picked up in order to decompose.</td></tr>
+            <tr><th><a href="obj/item/food.html#var/decomp_type">decomp_type</a></th><td>What our food decomposes into.</td></tr>
+            <tr><th><a href="obj/item/food.html#var/eat_time">eat_time</a></th><td>How long it will take to eat this food without any other modifiers</td></tr>
+            <tr><th><a href="obj/item/food.html#var/eatverbs">eatverbs</a></th><td>Verbs used when eating this food in the to_chat messages</td></tr>
+            <tr><th><a href="obj/item/food.html#var/food_flags">food_flags</a></th><td>Extra flags for things such as if the food is in a container or not</td></tr>
+            <tr><th><a href="obj/item/food.html#var/food_reagents">food_reagents</a></th><td>List of reagents this food gets on creation</td></tr>
+            <tr><th><a href="obj/item/food.html#var/foodtypes">foodtypes</a></th><td>Bitflag of the types of food this food is</td></tr>
+            <tr><th><a href="obj/item/food.html#var/junkiness">junkiness</a></th><td>How much junkiness this food has? God I should remove junkiness soon</td></tr>
+            <tr><th><a href="obj/item/food.html#var/max_volume">max_volume</a></th><td>Amount of volume the food can contain</td></tr>
+            <tr><th><a href="obj/item/food.html#var/microwaved_type">microwaved_type</a></th><td>What you get if you microwave the food. Use baking for raw things, use microwaving for already cooked things</td></tr>
+            <tr><th><a href="obj/item/food.html#var/preserved_food">preserved_food</a></th><td>Food that's immune to decomposition.</td></tr>
+            <tr><th><a href="obj/item/food.html#var/tastes">tastes</a></th><td>Tastes to describe this food</td></tr>
+            <tr><th><a href="obj/item/food.html#var/trash_type">trash_type</a></th><td>Type of atom thats spawned after eating this item</td></tr>
+            <tr><th><a href="obj/item/food.html#var/venue_value">venue_value</a></th><td>Price of this food if sold in a venue</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/food.html#proc/MakeBakeable">MakeBakeable</a></th><td>This proc handles bakeable components, overwrite if you want different bake results etc.</td></tr>
+            <tr><th><a href="obj/item/food.html#proc/MakeDecompose">MakeDecompose</a></th><td>This proc makes things decompose. Set preserved_food to TRUE to make it never decompose.
+Set decomp_req_handle to TRUE to only make it decompose when someone picks it up.</td></tr>
+            <tr><th><a href="obj/item/food.html#proc/MakeEdible">MakeEdible</a></th><td>This proc adds the edible component, overwrite this if you for some reason want to change some specific args like callbacks.</td></tr>
+            <tr><th><a href="obj/item/food.html#proc/MakeGrillable">MakeGrillable</a></th><td>This proc handles grillable components, overwrite if you want different grill results etc.</td></tr>
+            <tr><th><a href="obj/item/food.html#proc/MakeLeaveTrash">MakeLeaveTrash</a></th><td>This proc handles trash components, overwrite this if you want the object to spawn trash</td></tr>
+            <tr><th><a href="obj/item/food.html#proc/MakeProcessable">MakeProcessable</a></th><td>This proc handles processable elements, overwrite this if you want to add behavior such as slicing, forking, spooning, whatever, to turn the item into something else</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/ant_attracting"><aside class="declaration">var </aside>ant_attracting
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 44"/></a></h3>
+        <p>Does our food normally attract ants?</p><h3 id="var/bite_consumption"><aside class="declaration">var </aside>bite_consumption
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 28"/></a></h3>
+        <p>How much reagents per bite</p><h3 id="var/burns_in_oven"><aside class="declaration">var </aside>burns_in_oven
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 38"/></a></h3>
+        <p>Will this food turn into badrecipe in an oven? Don't use this for everything; preferably mostly for food that is made in an oven to begin with so it burns after some time</p><h3 id="var/burns_on_grill"><aside class="declaration">var </aside>burns_on_grill
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 36"/></a></h3>
+        <p>Will this food turn into badrecipe on a grill? Don't use this for everything; preferably mostly for food that is made on a grill to begin with so it burns after some time</p><h3 id="var/decomp_req_handle"><aside class="declaration">var </aside>decomp_req_handle
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 48"/></a></h3>
+        <p>Food that needs to be picked up in order to decompose.</p><h3 id="var/decomp_type"><aside class="declaration">var </aside>decomp_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 46"/></a></h3>
+        <p>What our food decomposes into.</p><h3 id="var/eat_time"><aside class="declaration">var </aside>eat_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 22"/></a></h3>
+        <p>How long it will take to eat this food without any other modifiers</p><h3 id="var/eatverbs"><aside class="declaration">var </aside>eatverbs
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 26"/></a></h3>
+        <p>Verbs used when eating this food in the to_chat messages</p><h3 id="var/food_flags"><aside class="declaration">var </aside>food_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 16"/></a></h3>
+        <p>Extra flags for things such as if the food is in a container or not</p><h3 id="var/food_reagents"><aside class="declaration">var </aside>food_reagents
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 14"/></a></h3>
+        <p>List of reagents this food gets on creation</p><h3 id="var/foodtypes"><aside class="declaration">var </aside>foodtypes
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 18"/></a></h3>
+        <p>Bitflag of the types of food this food is</p><h3 id="var/junkiness"><aside class="declaration">var </aside>junkiness
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 34"/></a></h3>
+        <p>How much junkiness this food has? God I should remove junkiness soon</p><h3 id="var/max_volume"><aside class="declaration">var </aside>max_volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 20"/></a></h3>
+        <p>Amount of volume the food can contain</p><h3 id="var/microwaved_type"><aside class="declaration">var </aside>microwaved_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 30"/></a></h3>
+        <p>What you get if you microwave the food. Use baking for raw things, use microwaving for already cooked things</p><h3 id="var/preserved_food"><aside class="declaration">var </aside>preserved_food
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 42"/></a></h3>
+        <p>Food that's immune to decomposition.</p><h3 id="var/tastes"><aside class="declaration">var </aside>tastes
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 24"/></a></h3>
+        <p>Tastes to describe this food</p><h3 id="var/trash_type"><aside class="declaration">var </aside>trash_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 32"/></a></h3>
+        <p>Type of atom thats spawned after eating this item</p><h3 id="var/venue_value"><aside class="declaration">var </aside>venue_value
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 40"/></a></h3>
+        <p>Price of this food if sold in a venue</p><h2 id="proc">Proc Details</h2><h3 id="proc/MakeBakeable"><aside class="declaration">proc </aside>MakeBakeable<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L93">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 93"/></a></aside>
+        </h3>
+        <p>This proc handles bakeable components, overwrite if you want different bake results etc.</p><h3 id="proc/MakeDecompose"><aside class="declaration">proc </aside>MakeDecompose<aside>(mapload) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L107">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 107"/></a></aside>
+        </h3>
+        <p>This proc makes things decompose. Set preserved_food to TRUE to make it never decompose.
+Set decomp_req_handle to TRUE to only make it decompose when someone picks it up.</p><h3 id="proc/MakeEdible"><aside class="declaration">proc </aside>MakeEdible<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 68"/></a></aside>
+        </h3>
+        <p>This proc adds the edible component, overwrite this if you for some reason want to change some specific args like callbacks.</p><h3 id="proc/MakeGrillable"><aside class="declaration">proc </aside>MakeGrillable<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L87">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 87"/></a></aside>
+        </h3>
+        <p>This proc handles grillable components, overwrite if you want different grill results etc.</p><h3 id="proc/MakeLeaveTrash"><aside class="declaration">proc </aside>MakeLeaveTrash<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 100"/></a></aside>
+        </h3>
+        <p>This proc handles trash components, overwrite this if you want the object to spawn trash</p><h3 id="proc/MakeProcessable"><aside class="declaration">proc </aside>MakeProcessable<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/food/_food.dm#L83">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;food&#x2F;_food.dm 83"/></a></aside>
+        </h3>
+        <p>This proc handles processable elements, overwrite this if you want to add behavior such as slicing, forking, spooning, whatever, to turn the item into something else</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

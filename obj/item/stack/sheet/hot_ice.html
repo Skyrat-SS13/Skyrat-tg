@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;stack&#x2F;sheet&#x2F;hot_ice - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>hot_ice <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/stack.html">stack</a>/<a href="obj/item/stack/sheet.html">sheet</a>/<a href="obj/item/stack/sheet/hot_ice.html">hot_ice</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/stacks/sheets/hot_ice.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;stacks&#x2F;sheets&#x2F;hot_ice.dm 1"/></a></h1>
+
+<ul>
+<li>SKYRAT EDIT - MODULARIZATION - SEE SKYRAT_MODULAR/MODULES/MATERIALS_GLASS
+/* Glass stack types</li>
+<li>Contains:</li>
+<li>Glass sheets</li>
+<li>Reinforced glass sheets</li>
+<li>Glass shards - TODO: Move this into code/game/object/item/weapons
+*/</li>
+</ul>
+<p>/*</p>
+<ul>
+<li>Glass sheets
+*/
+GLOBAL_LIST_INIT(glass_recipes, list ( <br />
+new/datum/stack_recipe(&quot;directional window&quot;, /obj/structure/window/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;fulltile window&quot;, /obj/structure/window/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;glass shard&quot;, /obj/item/shard, time = 0, on_floor = TRUE) <br />
+))</li>
+</ul>
+<p>/obj/item/stack/sheet/glass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+name = &quot;glass&quot;
+desc = &quot;HOLY SHEET! That is a lot of glass.&quot;
+singular_name = &quot;glass sheet&quot;
+icon_state = &quot;sheet-glass&quot;
+inhand_icon_state = &quot;sheet-glass&quot;
+mats_per_unit = list(/datum/material/glass=MINERAL_MATERIAL_AMOUNT)
+armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 100)
+resistance_flags = ACID_PROOF
+merge_type = /obj/item/stack/sheet/glass
+grind_results = list(/datum/reagent/silicon = 20)
+material_type = /datum/material/glass
+point_value = 1
+tableVariant = /obj/structure/table/glass
+matter_amount = 4
+cost = 500
+source = /datum/robot_energy_storage/glass</p>
+<p>/obj/item/stack/sheet/glass/suicide_act(mob/living/carbon/user)
+user.visible_message(span_suicide(&quot;[user] begins to slice [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!&quot;))
+return BRUTELOSS</p>
+<p>/obj/item/stack/sheet/glass/fifty
+amount = 50</p>
+<p>/obj/item/stack/sheet/glass/get_main_recipes()
+. = ..()
+. += GLOB.glass_recipes</p>
+<p>/obj/item/stack/sheet/glass/attackby(obj/item/W, mob/user, params)
+add_fingerprint(user)
+if(istype(W, /obj/item/stack/cable_coil))
+var/obj/item/stack/cable_coil/CC = W
+if (get_amount() &lt; 1 || CC.get_amount() &lt; 5)
+to_chat(user, &quot;&lt;span class='warning&gt;You need five lengths of coil and one sheet of glass to make wired glass!</span>&quot;)
+return
+CC.use(5)
+use(1)
+to_chat(user, span_notice(&quot;You attach wire to the [name].&quot;))
+var/obj/item/stack/light_w/new_tile = new(user.loc)
+new_tile.add_fingerprint(user)
+return
+if(istype(W, /obj/item/stack/rods))
+var/obj/item/stack/rods/V = W
+if (V.get_amount() &gt;= 1 &amp;&amp; get_amount() &gt;= 1)
+var/obj/item/stack/sheet/rglass/RG = new (get_turf(user))
+if(!QDELETED(RG))
+RG.add_fingerprint(user)
+var/replace = user.get_inactive_held_item()==src
+V.use(1)
+use(1)
+if(QDELETED(src) &amp;&amp; replace &amp;&amp; !QDELETED(RG))
+user.put_in_hands(RG)
+else
+to_chat(user, span_warning(&quot;You need one rod and one sheet of glass to make reinforced glass!&quot;))
+return
+return ..()</p>
+<p>GLOBAL_LIST_INIT(pglass_recipes, list ( <br />
+new/datum/stack_recipe(&quot;directional window&quot;, /obj/structure/window/plasma/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;fulltile window&quot;, /obj/structure/window/plasma/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;plasma glass shard&quot;, /obj/item/shard/plasma, time = 0, on_floor = TRUE) <br />
+))</p>
+<p>/obj/item/stack/sheet/plasmaglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+name = &quot;plasma glass&quot;
+desc = &quot;A glass sheet made out of a plasma-silicate alloy. It looks extremely tough and heavily fire resistant.&quot;
+singular_name = &quot;plasma glass sheet&quot;
+icon_state = &quot;sheet-pglass&quot;
+inhand_icon_state = &quot;sheet-pglass&quot;
+mats_per_unit = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT)
+material_type = /datum/material/alloy/plasmaglass
+armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 75, ACID = 100)
+resistance_flags = ACID_PROOF
+merge_type = /obj/item/stack/sheet/plasmaglass
+grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
+material_flags = NONE
+tableVariant = /obj/structure/table/glass/plasmaglass</p>
+<p>/obj/item/stack/sheet/plasmaglass/fifty
+amount = 50</p>
+<p>/obj/item/stack/sheet/plasmaglass/get_main_recipes()
+. = ..()
+. += GLOB.pglass_recipes</p>
+<p>/obj/item/stack/sheet/plasmaglass/attackby(obj/item/W, mob/user, params)
+add_fingerprint(user)</p>
+<pre><code>if(istype(W, /obj/item/stack/rods))
+	var/obj/item/stack/rods/V = W
+	if (V.get_amount() &gt;= 1 &amp;&amp; get_amount() &gt;= 1)
+		var/obj/item/stack/sheet/plasmarglass/RG = new (get_turf(user))
+		RG.add_fingerprint(user)
+		var/replace = user.get_inactive_held_item()==src
+		V.use(1)
+		use(1)
+		if(QDELETED(src) &amp;&amp; replace)
+			user.put_in_hands(RG)
+	else
+		to_chat(user, span_warning(&quot;You need one rod and one sheet of plasma glass to make reinforced plasma glass!&quot;))
+		return
+else
+	return ..()
+</code></pre>
+<p>/*</p>
+<ul>
+<li>Reinforced glass sheets
+*/
+GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( <br />
+new/datum/stack_recipe(&quot;windoor frame&quot;, /obj/structure/windoor_assembly, 5, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+null, <br />
+new/datum/stack_recipe(&quot;directional reinforced window&quot;, /obj/structure/window/reinforced/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;fulltile reinforced window&quot;, /obj/structure/window/reinforced/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;glass shard&quot;, /obj/item/shard, time = 0, on_floor = TRUE) <br />
+))</li>
+</ul>
+<p>/obj/item/stack/sheet/rglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+name = &quot;reinforced glass&quot;
+desc = &quot;Glass which seems to have rods or something stuck in them.&quot;
+singular_name = &quot;reinforced glass sheet&quot;
+icon_state = &quot;sheet-rglass&quot;
+inhand_icon_state = &quot;sheet-rglass&quot;
+mats_per_unit = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT * 0.5, /datum/material/glass=MINERAL_MATERIAL_AMOUNT)
+armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 70, ACID = 100)
+resistance_flags = ACID_PROOF
+merge_type = /obj/item/stack/sheet/rglass
+grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/iron = 10)
+point_value = 4
+matter_amount = 6
+tableVariant = /obj/structure/table/reinforced/rglass</p>
+<p>/obj/item/stack/sheet/rglass/attackby(obj/item/W, mob/user, params)
+add_fingerprint(user)
+..()</p>
+<p>/obj/item/stack/sheet/rglass/cyborg
+mats_per_unit = null
+cost = 250
+source = /datum/robot_energy_storage/iron</p>
+<pre><code>/// What energy storage this draws glass from as a robot module.
+var/datum/robot_energy_storage/glasource = /datum/robot_energy_storage/glass
+/// The amount of energy this draws from the glass source per stack unit.
+var/glacost = 500
+</code></pre>
+<p>/obj/item/stack/sheet/rglass/cyborg/get_amount()
+return min(round(source.energy / cost), round(glasource.energy / glacost))</p>
+<p>/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE, check = TRUE) // Requires special checks, because it uses two storages
+if(get_amount(used)) //ensure we still have enough energy if called in a do_after chain
+source.use_charge(used * cost)
+glasource.use_charge(used * glacost)
+return TRUE</p>
+<p>/obj/item/stack/sheet/rglass/cyborg/add(amount)
+source.add_charge(amount * cost)
+glasource.add_charge(amount * glacost)</p>
+<p>/obj/item/stack/sheet/rglass/get_main_recipes()
+. = ..()
+. += GLOB.reinforced_glass_recipes</p>
+<p>GLOBAL_LIST_INIT(prglass_recipes, list ( <br />
+new/datum/stack_recipe(&quot;directional reinforced window&quot;, /obj/structure/window/plasma/reinforced/unanchored, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;fulltile reinforced window&quot;, /obj/structure/window/plasma/reinforced/fulltile/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;plasma glass shard&quot;, /obj/item/shard/plasma, time = 0, on_floor = TRUE) <br />
+))</p>
+<p>/obj/item/stack/sheet/plasmarglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+name = &quot;reinforced plasma glass&quot;
+desc = &quot;A glass sheet made out of a plasma-silicate alloy and a rod matrix. It looks hopelessly tough and nearly fire-proof!&quot;
+singular_name = &quot;reinforced plasma glass sheet&quot;
+icon_state = &quot;sheet-prglass&quot;
+inhand_icon_state = &quot;sheet-prglass&quot;
+mats_per_unit = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT, /datum/material/iron = MINERAL_MATERIAL_AMOUNT * 0.5)
+armor = list(MELEE = 20, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
+resistance_flags = ACID_PROOF
+material_flags = NONE
+merge_type = /obj/item/stack/sheet/plasmarglass
+grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10, /datum/reagent/iron = 10)
+point_value = 23
+matter_amount = 8
+tableVariant = /obj/structure/table/reinforced/plasmarglass</p>
+<p>/obj/item/stack/sheet/plasmarglass/get_main_recipes()
+. = ..()
+. += GLOB.prglass_recipes</p>
+<p>GLOBAL_LIST_INIT(titaniumglass_recipes, list(
+new/datum/stack_recipe(&quot;shuttle window&quot;, /obj/structure/window/shuttle/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;glass shard&quot;, /obj/item/shard, time = 0, on_floor = TRUE) <br />
+))</p>
+<p>/obj/item/stack/sheet/titaniumglass
+name = &quot;titanium glass&quot;
+desc = &quot;A glass sheet made out of a titanium-silicate alloy.&quot;
+singular_name = &quot;titanium glass sheet&quot;
+icon_state = &quot;sheet-titaniumglass&quot;
+inhand_icon_state = &quot;sheet-titaniumglass&quot;
+mats_per_unit = list(/datum/material/alloy/titaniumglass=MINERAL_MATERIAL_AMOUNT)
+material_type = /datum/material/alloy/titaniumglass
+armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
+resistance_flags = ACID_PROOF
+merge_type = /obj/item/stack/sheet/titaniumglass
+tableVariant = /obj/structure/table/reinforced/titaniumglass</p>
+<p>/obj/item/stack/sheet/titaniumglass/get_main_recipes()
+. = ..()
+. += GLOB.titaniumglass_recipes</p>
+<p>GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
+new/datum/stack_recipe(&quot;plastitanium window&quot;, /obj/structure/window/plasma/reinforced/plastitanium/unanchored, 2, time = 0, on_floor = TRUE, window_checks = TRUE), <br />
+new/datum/stack_recipe(&quot;plasma glass shard&quot;, /obj/item/shard/plasma, time = 0, on_floor = TRUE) <br />
+))</p>
+<p>/obj/item/stack/sheet/plastitaniumglass
+name = &quot;plastitanium glass&quot;
+desc = &quot;A glass sheet made out of a plasma-titanium-silicate alloy.&quot;
+singular_name = &quot;plastitanium glass sheet&quot;
+icon_state = &quot;sheet-plastitaniumglass&quot;
+inhand_icon_state = &quot;sheet-plastitaniumglass&quot;
+mats_per_unit = list(/datum/material/alloy/plastitaniumglass=MINERAL_MATERIAL_AMOUNT)
+material_type = /datum/material/alloy/plastitaniumglass
+armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
+material_flags = NONE
+resistance_flags = ACID_PROOF
+merge_type = /obj/item/stack/sheet/plastitaniumglass
+tableVariant = /obj/structure/table/reinforced/plastitaniumglass</p>
+<p>/obj/item/stack/sheet/plastitaniumglass/get_main_recipes()
+. = ..()
+. += GLOB.plastitaniumglass_recipes</p>
+<p>/obj/item/shard
+name = &quot;shard&quot;
+desc = &quot;A nasty looking shard of glass.&quot;
+icon = 'icons/obj/shards.dmi'
+icon_state = &quot;large&quot;
+w_class = WEIGHT_CLASS_TINY
+force = 5
+throwforce = 10
+inhand_icon_state = &quot;shard-glass&quot;
+lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+custom_materials = list(/datum/material/glass=MINERAL_MATERIAL_AMOUNT)
+attack_verb_continuous = list(&quot;stabs&quot;, &quot;slashes&quot;, &quot;slices&quot;, &quot;cuts&quot;)
+attack_verb_simple = list(&quot;stab&quot;, &quot;slash&quot;, &quot;slice&quot;, &quot;cut&quot;)
+hitsound = 'sound/weapons/bladeslice.ogg'
+resistance_flags = ACID_PROOF
+armor = list(MELEE = 100, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 100)
+max_integrity = 40
+sharpness = SHARP_EDGED
+var/icon_prefix
+var/obj/item/stack/sheet/weld_material = /obj/item/stack/sheet/glass
+embedding = list(&quot;embed_chance&quot; = 65)</p>
+<p>/obj/item/shard/suicide_act(mob/user)
+user.visible_message(span_suicide(&quot;[user] is slitting [user.p_their()] [pick(&quot;wrists&quot;, &quot;throat&quot;)] with the shard of glass! It looks like [user.p_theyre()] trying to commit suicide.&quot;))
+return (BRUTELOSS)</p>
+<p>/obj/item/shard/Initialize()
+. = ..()
+AddComponent(/datum/component/caltrop, min_damage = force)
+AddComponent(/datum/component/butchering, 150, 65)
+icon_state = pick(&quot;large&quot;, &quot;medium&quot;, &quot;small&quot;)
+switch(icon_state)
+if(&quot;small&quot;)
+pixel_x = rand(-12, 12)
+pixel_y = rand(-12, 12)
+if(&quot;medium&quot;)
+pixel_x = rand(-8, 8)
+pixel_y = rand(-8, 8)
+if(&quot;large&quot;)
+pixel_x = rand(-5, 5)
+pixel_y = rand(-5, 5)
+if (icon_prefix)
+icon_state = &quot;[icon_prefix][icon_state]&quot;</p>
+<pre><code>var/turf/T = get_turf(src)
+if(T &amp;&amp; is_station_level(T.z))
+	SSblackbox.record_feedback(&quot;tally&quot;, &quot;station_mess_created&quot;, 1, name)
+var/static/list/loc_connections = list(
+	COMSIG_ATOM_ENTERED = .proc/on_entered,
+)
+AddElement(/datum/element/connect_loc, loc_connections)
+</code></pre>
+<p>/obj/item/shard/Destroy()
+. = ..()</p>
+<pre><code>var/turf/T = get_turf(src)
+if(T &amp;&amp; is_station_level(T.z))
+	SSblackbox.record_feedback(&quot;tally&quot;, &quot;station_mess_destroyed&quot;, 1, name)
+</code></pre>
+<p>/obj/item/shard/afterattack(atom/A as mob|obj, mob/user, proximity)
+. = ..()
+if(!proximity || !(src in user))
+return
+if(isturf(A))
+return
+if(istype(A, /obj/item/storage))
+return
+var/hit_hand = ((user.active_hand_index % 2 == 0) ? &quot;r_&quot; : &quot;l_&quot;) + &quot;arm&quot;
+if(ishuman(user))
+var/mob/living/carbon/human/H = user
+if(!H.gloves &amp;&amp; !HAS_TRAIT(H, TRAIT_PIERCEIMMUNE)) // golems, etc
+to_chat(H, span_warning(&quot;[src] cuts into your hand!&quot;))
+H.apply_damage(force*0.5, BRUTE, hit_hand)</p>
+<p>/obj/item/shard/attackby(obj/item/I, mob/user, params)
+if(istype(I, /obj/item/lightreplacer))
+var/obj/item/lightreplacer/L = I
+L.attackby(src, user)
+else if(istype(I, /obj/item/stack/sheet/cloth))
+var/obj/item/stack/sheet/cloth/C = I
+to_chat(user, span_notice(&quot;You begin to wrap the [C] around the [src]...&quot;))
+if(do_after(user, 35, target = src))
+var/obj/item/kitchen/knife/shiv/S = new /obj/item/kitchen/knife/shiv
+C.use(1)
+to_chat(user, span_notice(&quot;You wrap the [C] around the [src] forming a makeshift weapon.&quot;))
+remove_item_from_storage(src)
+qdel(src)
+user.put_in_hands(S)</p>
+<pre><code>else
+	return ..()
+</code></pre>
+<p>/obj/item/shard/welder_act(mob/living/user, obj/item/I)
+..()
+if(I.use_tool(src, user, 0, volume=50))
+var/obj/item/stack/sheet/NG = new weld_material(user.loc)
+for(var/obj/item/stack/sheet/G in user.loc)
+if(G == NG)
+continue
+if(G.amount &gt;= G.max_amount)
+continue
+G.attackby(NG, user)
+to_chat(user, span_notice(&quot;You add the newly-formed [NG.name] to the stack. It now contains [NG.amount] sheet\s.&quot;))
+qdel(src)
+return TRUE</p>
+<p>/obj/item/shard/proc/on_entered(datum/source, atom/movable/AM)
+SIGNAL_HANDLER
+if(isliving(AM))
+var/mob/living/L = AM
+if(!(L.movement_type &amp; (FLYING|FLOATING)) || L.buckled)
+playsound(src, 'sound/effects/glass_step.ogg', HAS_TRAIT(L, TRAIT_LIGHT_STEP) ? 30 : 50, TRUE)</p>
+<p>/obj/item/shard/plasma
+name = &quot;purple shard&quot;
+desc = &quot;A nasty looking shard of plasma glass.&quot;
+force = 6
+throwforce = 11
+icon_state = &quot;plasmalarge&quot;
+custom_materials = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT)
+icon_prefix = &quot;plasma&quot;
+weld_material = /obj/item/stack/sheet/plasmaglass</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

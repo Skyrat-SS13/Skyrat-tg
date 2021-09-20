@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/atmospherics/atmos_helpers.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/atmospherics/atmos_helpers.dm 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/CANATMOSPASS">CANATMOSPASS</a></th><td>Check if the turfs allows gas passage based on density, do not use.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/CANVERTICALATMOSPASS">CANVERTICALATMOSPASS</a></th><td>Check if the turfs allows gas passage on a z level, do not use.</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/PIPING_LAYER_SHIFT">PIPING_LAYER_SHIFT</a></th><td>Moves the icon of the device based on the piping layer and on the direction</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/PIPING_FORWARD_SHIFT">PIPING_FORWARD_SHIFT</a></th><td>Moves the icon of the device based on the piping layer and on the direction, the shift amount is dictated by more_shift</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/PIPING_LAYER_DOUBLE_SHIFT">PIPING_LAYER_DOUBLE_SHIFT</a></th><td>Moves the icon of the device based on the piping layer on both x and y</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/THERMAL_ENERGY">THERMAL_ENERGY</a></th><td>Calculate the thermal energy of the selected gas (J)</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/ADD_GAS">ADD_GAS</a></th><td>Directly adds a gas to a gas mixture without checking for its presence beforehand, use only if is certain the absence of said gas</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/ASSERT_GAS">ASSERT_GAS</a></th><td>Adds a gas to a gas mixture but checks if is already present, faster than the same proc</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/TOTAL_MOLES">TOTAL_MOLES</a></th><td>Calculate the total moles of the gas mixture, faster than the proc, good for performance critical areas</td></tr>
+        <tr><th><a href="code/__DEFINES/atmospherics/atmos_helpers.html#define/GAS_OVERLAYS">GAS_OVERLAYS</a></th><td>Returns a list of overlays of every gas in the mixture</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/ADD_GAS"><aside class="declaration">#define </aside>ADD_GAS
+            <aside>(gas_id, out_list)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 35"/></a>
+    </h3>
+    <p>Directly adds a gas to a gas mixture without checking for its presence beforehand, use only if is certain the absence of said gas</p><h3 id="define/ASSERT_GAS"><aside class="declaration">#define </aside>ASSERT_GAS
+            <aside>(gas_id, gas_mixture)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 39"/></a>
+    </h3>
+    <p>Adds a gas to a gas mixture but checks if is already present, faster than the same proc</p><h3 id="define/CANATMOSPASS"><aside class="declaration">#define </aside>CANATMOSPASS
+            <aside>(A, O)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 3"/></a>
+    </h3>
+    <p>Check if the turfs allows gas passage based on density, do not use.</p><h3 id="define/CANVERTICALATMOSPASS"><aside class="declaration">#define </aside>CANVERTICALATMOSPASS
+            <aside>(A, O)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 5"/></a>
+    </h3>
+    <p>Check if the turfs allows gas passage on a z level, do not use.</p><h3 id="define/GAS_OVERLAYS"><aside class="declaration">#define </aside>GAS_OVERLAYS
+            <aside>(gases, out_var)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 51"/></a>
+    </h3>
+    <p>Returns a list of overlays of every gas in the mixture</p><h3 id="define/PIPING_FORWARD_SHIFT"><aside class="declaration">#define </aside>PIPING_FORWARD_SHIFT
+            <aside>(T, PipingLayer, more_shift)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 18"/></a>
+    </h3>
+    <p>Moves the icon of the device based on the piping layer and on the direction, the shift amount is dictated by more_shift</p><h3 id="define/PIPING_LAYER_DOUBLE_SHIFT"><aside class="declaration">#define </aside>PIPING_LAYER_DOUBLE_SHIFT
+            <aside>(T, PipingLayer)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 27"/></a>
+    </h3>
+    <p>Moves the icon of the device based on the piping layer on both x and y</p><h3 id="define/PIPING_LAYER_SHIFT"><aside class="declaration">#define </aside>PIPING_LAYER_SHIFT
+            <aside>(T, PipingLayer)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 9"/></a>
+    </h3>
+    <p>Moves the icon of the device based on the piping layer and on the direction</p><h3 id="define/THERMAL_ENERGY"><aside class="declaration">#define </aside>THERMAL_ENERGY
+            <aside>(gas)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 32"/></a>
+    </h3>
+    <p>Calculate the thermal energy of the selected gas (J)</p><h3 id="define/TOTAL_MOLES"><aside class="declaration">#define </aside>TOTAL_MOLES
+            <aside>(cached_gases, out_var)</aside>
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/atmospherics/atmos_helpers.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;atmospherics&#x2F;atmos_helpers.dm 43"/></a>
+    </h3>
+    <p>Calculate the total moles of the gas mixture, faster than the proc, good for performance critical areas</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

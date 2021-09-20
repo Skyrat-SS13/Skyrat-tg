@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;construction&#x2F;plumbing - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/construction/plumbing.html#var">Var Details</a> - <a href="obj/item/construction/plumbing.html#proc">Proc Details</a></header>
+<main>
+<h1>plumbing <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/construction.html">construction</a>/<a href="obj/item/construction/plumbing.html">plumbing</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1132">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1132"/></a></h1>
+
+<p>The plumbing RCD. All the blueprints are located in _globalvars &gt; lists &gt; construction.dm</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#var/blueprint">blueprint</a></th><td>type of the plumbing machine</td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#var/choices">choices</a></th><td>index, used in the attack self to get the type. stored here since it doesnt change</td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#var/current_layer">current_layer</a></th><td>Current selected layer</td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#var/layers">layers</a></th><td>Possible layers to pick from</td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#var/machinery_data">machinery_data</a></th><td>All info for construction</td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#var/name_to_type">name_to_type</a></th><td>index, used in the attack self to get the type. stored here since it doesnt change</td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#var/plumbing_design_types">plumbing_design_types</a></th><td>This list that holds all the plumbing design types the plumberer can construct. Its purpose is to make it easy to make new plumberer subtypes with a different selection of machines.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#proc/create_machine">create_machine</a></th><td>pretty much rcd_create, but named differently to make myself feel less bad for copypasting from a sibling-type</td></tr>
+            <tr><th><a href="obj/item/construction/plumbing.html#proc/set_plumbing_designs">set_plumbing_designs</a></th><td>Set the list of designs this plumbing rcd can make</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/blueprint"><aside class="declaration">var </aside>blueprint
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1147">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1147"/></a></h3>
+        <p>type of the plumbing machine</p><h3 id="var/choices"><aside class="declaration">var </aside>choices
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1149">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1149"/></a></h3>
+        <p>index, used in the attack self to get the type. stored here since it doesnt change</p><h3 id="var/current_layer"><aside class="declaration">var </aside>current_layer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1159">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1159"/></a></h3>
+        <p>Current selected layer</p><h3 id="var/layers"><aside class="declaration">var </aside>layers
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1157">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1157"/></a></h3>
+        <p>Possible layers to pick from</p><h3 id="var/machinery_data"><aside class="declaration">var </aside>machinery_data
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1153">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1153"/></a></h3>
+        <p>All info for construction</p><h3 id="var/name_to_type"><aside class="declaration">var </aside>name_to_type
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1151">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1151"/></a></h3>
+        <p>index, used in the attack self to get the type. stored here since it doesnt change</p><h3 id="var/plumbing_design_types"><aside class="declaration">var </aside>plumbing_design_types
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1155">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1155"/></a></h3>
+        <p>This list that holds all the plumbing design types the plumberer can construct. Its purpose is to make it easy to make new plumberer subtypes with a different selection of machines.</p><h2 id="proc">Proc Details</h2><h3 id="proc/create_machine"><aside class="declaration">proc </aside>create_machine<aside>(/<a href="atom.html">atom</a>/A, /<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1208">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1208"/></a></aside>
+        </h3>
+        <p>pretty much rcd_create, but named differently to make myself feel less bad for copypasting from a sibling-type</p><h3 id="proc/set_plumbing_designs"><aside class="declaration">proc </aside>set_plumbing_designs<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/RCD.dm#L1184">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;RCD.dm 1184"/></a></aside>
+        </h3>
+        <p>Set the list of designs this plumbing rcd can make</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

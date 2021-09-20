@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;paper - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/paper.html#var">Var Details</a> - <a href="obj/item/paper.html#proc">Proc Details</a></header>
+<main>
+<h1>paper <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/paper.html">paper</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 19"/></a></h1>
+
+<p>Paper is now using markdown (like in github pull notes) for ALL rendering
+so we do loose a bit of functionality but we gain in easy of use of
+paper and getting rid of that crashing bug</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/paper.html#var/contact_poison">contact_poison</a></th><td>Overlay info</td></tr>
+            <tr><th><a href="obj/item/paper.html#var/form_fields">form_fields</a></th><td>When the sheet can be &quot;filled out&quot;
+This is an associated list</td></tr>
+            <tr><th><a href="obj/item/paper.html#var/info">info</a></th><td>What's actually written on the paper.</td></tr>
+            <tr><th><a href="obj/item/paper.html#var/stamped">stamped</a></th><td>Positioning for the stamp in tgui</td></tr>
+            <tr><th><a href="obj/item/paper.html#var/stamps">stamps</a></th><td>The (text for the) stamps on the paper.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/paper.html#proc/copy">copy</a></th><td>This proc copies this sheet of paper to a new
+sheet. Used by carbon papers and the photocopier machine.</td></tr>
+            <tr><th><a href="obj/item/paper.html#proc/fire_act">fire_act</a></th><td>Normaly you just stamp, you don't need to read the thing</td></tr>
+            <tr><th><a href="obj/item/paper.html#proc/make_plane">make_plane</a></th><td>Paper plane folding</td></tr>
+            <tr><th><a href="obj/item/paper.html#proc/setText">setText</a></th><td>This proc sets the text of the paper and updates the
+icons.  You can modify the pen_color after if need
+be.</td></tr>
+            <tr><th><a href="obj/item/paper.html#proc/ui_data">ui_data</a></th><td>TODO: show the sheet will bloodied or crinkling?</td></tr>
+            <tr><th><a href="obj/item/paper.html#proc/ui_host">ui_host</a></th><td>WHHHHY
+This does the overlay stuff</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/contact_poison"><aside class="declaration">var </aside>contact_poison
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 49"/></a></h3>
+        <p>Overlay info</p><h3 id="var/form_fields"><aside class="declaration">var </aside>form_fields
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 54"/></a></h3>
+        <p>When the sheet can be &quot;filled out&quot;
+This is an associated list</p><h3 id="var/info"><aside class="declaration">var </aside>info
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 42"/></a></h3>
+        <p>What's actually written on the paper.</p><h3 id="var/stamped"><aside class="declaration">var </aside>stamped
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 47"/></a></h3>
+        <p>Positioning for the stamp in tgui</p><h3 id="var/stamps"><aside class="declaration">var </aside>stamps
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 46"/></a></h3>
+        <p>The (text for the) stamps on the paper.</p><h2 id="proc">Proc Details</h2><h3 id="proc/copy"><aside class="declaration">proc </aside>copy<aside>(paper_type, /<a href="atom.html">atom</a>/location, colored) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 68"/></a></aside>
+        </h3>
+        <p>This proc copies this sheet of paper to a new
+sheet. Used by carbon papers and the photocopier machine.</p><h3 id="proc/fire_act"><aside class="parent"><a title="/obj" href="obj.html#proc/fire_act">&uarr;</a></aside>fire_act<aside>(exposed_temperature, exposed_volume) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L225">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 225"/></a></aside>
+        </h3>
+        <p>Normaly you just stamp, you don't need to read the thing</p><h3 id="proc/make_plane"><aside class="declaration">proc </aside>make_plane<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/I, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/paperplane/plane_type) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paperplane.dm#L141">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paperplane.dm 141"/></a></aside>
+        </h3>
+        <p>Paper plane folding</p>
+<p>Arguments:</p>
+<ul>
+<li>mob/living/user - who's folding</li>
+<li>obj/item/I - what's being folded</li>
+<li>obj/item/paperplane/plane_type - what it will be folded into (path)</li>
+</ul><h3 id="proc/setText"><aside class="declaration">proc </aside>setText<aside>(text) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L89">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 89"/></a></aside>
+        </h3>
+        <p>This proc sets the text of the paper and updates the
+icons.  You can modify the pen_color after if need
+be.</p><h3 id="proc/ui_data"><aside class="parent"><a title="/datum" href="datum.html#proc/ui_data">&uarr;</a></aside>ui_data<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L253">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 253"/></a></aside>
+        </h3>
+        <p>TODO: show the sheet will bloodied or crinkling?</p><h3 id="proc/ui_host"><aside class="parent"><a title="/datum" href="datum.html#proc/ui_host">&uarr;</a></aside>ui_host<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/paperwork/paper.dm#L364">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;paperwork&#x2F;paper.dm 364"/></a></aside>
+        </h3>
+        <p>WHHHHY
+This does the overlay stuff</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

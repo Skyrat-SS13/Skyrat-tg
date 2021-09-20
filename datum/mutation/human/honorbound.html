@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;mutation&#x2F;human&#x2F;honorbound - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/mutation/human/honorbound.html#var">Var Details</a> - <a href="datum/mutation/human/honorbound.html#proc">Proc Details</a></header>
+<main>
+<h1>honorbound <aside>/<a href="datum.html">datum</a>/<a href="datum/mutation/human/honorbound.html">mutation/human/honorbound</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/honorbound.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;honorbound.dm 3"/></a></h1>
+
+<p>Honorbound prevents you from attacking the unready, the just, or the innocent</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/mutation/human/honorbound.html#var/guilty">guilty</a></th><td>list of guilty people</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/mutation/human/honorbound.html#proc/attack_honor">attack_honor</a></th><td>Signal to see if the mutation allows us to attack a target</td></tr>
+            <tr><th><a href="datum/mutation/human/honorbound.html#proc/guilty">guilty</a></th><td>Called by hooked signals whenever someone attacks the person with this mutation
+Checks if the attacker should be considered guilty and adds them to the guilty list if true</td></tr>
+            <tr><th><a href="datum/mutation/human/honorbound.html#proc/is_honorable">is_honorable</a></th><td>Called by attack_honor signal to check whether an attack should be allowed or not</td></tr>
+            <tr><th><a href="datum/mutation/human/honorbound.html#proc/punishment">punishment</a></th><td>Called when a spell is casted or a magic gun is fired, checks the signal and punishes accordingly</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/guilty"><aside class="declaration">var </aside>guilty
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/honorbound.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;honorbound.dm 14"/></a></h3>
+        <p>list of guilty people</p><h2 id="proc">Proc Details</h2><h3 id="proc/attack_honor"><aside class="declaration">proc </aside>attack_honor<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/honorbound, /<a href="atom.html">atom</a>/clickingon, params) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/honorbound.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;honorbound.dm 51"/></a></aside>
+        </h3>
+        <p>Signal to see if the mutation allows us to attack a target</p><h3 id="proc/guilty"><aside class="declaration">proc </aside>guilty<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user, declaration) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/honorbound.dm#L77">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;honorbound.dm 77"/></a></aside>
+        </h3>
+        <p>Called by hooked signals whenever someone attacks the person with this mutation
+Checks if the attacker should be considered guilty and adds them to the guilty list if true</p>
+<p>Arguments:</p>
+<ul>
+<li>user: person who attacked the honorbound</li>
+<li>declaration: if this wasn't an attack, but instead the honorbound spending favor on declaring this person guilty</li>
+</ul><h3 id="proc/is_honorable"><aside class="declaration">proc </aside>is_honorable<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/honorbound_human, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/target_creature) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/honorbound.dm#L99">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;honorbound.dm 99"/></a></aside>
+        </h3>
+        <p>Called by attack_honor signal to check whether an attack should be allowed or not</p>
+<p>Arguments:</p>
+<ul>
+<li>honorbound_human: typecasted owner of mutation</li>
+<li>target_creature: person honorbound_human is attacking</li>
+</ul><h3 id="proc/punishment"><aside class="declaration">proc </aside>punishment<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/user, school) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/honorbound.dm#L186">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;honorbound.dm 186"/></a></aside>
+        </h3>
+        <p>Called when a spell is casted or a magic gun is fired, checks the signal and punishes accordingly</p>
+<p>Arguments:</p>
+<ul>
+<li>user: typecasted owner of mutation</li>
+<li>school: school of magic casted from the staff/spell</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

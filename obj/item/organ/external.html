@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;organ&#x2F;external - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/organ/external.html#var">Var Details</a> - <a href="obj/item/organ/external.html#proc">Proc Details</a></header>
+<main>
+<h1>external <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/organ.html">organ</a>/<a href="obj/item/organ/external.html">external</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 6"/></a></h1>
+
+<p>System for drawing organs with overlays. These overlays are drawn directly on the bodypart, attached to a person or not
+Works in tandem with the /datum/sprite_accessory datum to generate sprites
+Unlike normal organs, we're actually inside a persons limbs at all times</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/all_layers">all_layers</a></th><td>Convert the bitflag define into the actual layer define</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/cache_key">cache_key</a></th><td>Key of the icon states of all the sprite_datums for easy caching</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/dna_block">dna_block</a></th><td>With what DNA block do we mutate in mutate_feature() ? For genetics</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/layers">layers</a></th><td>Sometimes we need multiple layers, for like the back, middle and front of the person</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/organ_flags">organ_flags</a></th><td>Unremovable is until the features are completely finished</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/ownerlimb">ownerlimb</a></th><td>Reference to the limb we're inside of</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/preference">preference</a></th><td>Defines what kind of 'organ' we're looking at. Sprites have names like 'm_firemoth_mothwings'. 'mothwings' would then be preference</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#var/sprite_datum">sprite_datum</a></th><td>Sprite datum we use to draw on the bodypart</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/Initialize">Initialize</a></th><td>mob_sprite is optional if you havent set sprite_datums for the object, and is used mostly to generate sprite_datums from a persons DNA
+For _mob_sprite we make a distinction between &quot;Round Snout&quot; and &quot;round&quot;. Round Snout is the name of the sprite datum, while &quot;round&quot; would be part of the sprite
+I'm sorry</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/bitflag_to_layer">bitflag_to_layer</a></th><td>Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/can_draw_on_bodypart">can_draw_on_bodypart</a></th><td>Check whether we can draw the overlays. You generally don't want lizard snouts to draw over an EVA suit</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/generate_icon_cache">generate_icon_cache</a></th><td>Generate a unique key based on our sprites. So that if we've aleady drawn these sprites, they can be found in the cache and wont have to be drawn again (blessing and curse)</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/get_global_feature_list">get_global_feature_list</a></th><td>Return a dumb glob list for this specific feature (called from parse_sprite)</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/get_overlays">get_overlays</a></th><td>Add the overlays we need to draw on a person. Called from _bodyparts.dm</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/get_sprite_datum">get_sprite_datum</a></th><td>Because all the preferences have names like &quot;Beautiful Sharp Snout&quot; we need to get the sprite datum with the actual important info</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/mutant_bodyparts_layertext">mutant_bodyparts_layertext</a></th><td>This exists so sprite accessories can still be per-layer without having to include that layer's
+number in their sprite name, which causes issues when those numbers change.</td></tr>
+            <tr><th><a href="obj/item/organ/external.html#proc/mutate_feature">mutate_feature</a></th><td>Update our features after something changed our appearance</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/all_layers"><aside class="declaration">var </aside>all_layers
+            <aside>&ndash; /static/list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 16"/></a></h3>
+        <p>Convert the bitflag define into the actual layer define</p><h3 id="var/cache_key"><aside class="declaration">var </aside>cache_key
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 23"/></a></h3>
+        <p>Key of the icon states of all the sprite_datums for easy caching</p><h3 id="var/dna_block"><aside class="declaration">var </aside>dna_block
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 26"/></a></h3>
+        <p>With what DNA block do we mutate in mutate_feature() ? For genetics</p><h3 id="var/layers"><aside class="declaration">var </aside>layers
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 14"/></a></h3>
+        <p>Sometimes we need multiple layers, for like the back, middle and front of the person</p><h3 id="var/organ_flags">organ_flags
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 11"/></a></h3>
+        <p>Unremovable is until the features are completely finished</p><h3 id="var/ownerlimb"><aside class="declaration">var </aside>ownerlimb
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/bodypart.html">bodypart</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 31"/></a></h3>
+        <p>Reference to the limb we're inside of</p><h3 id="var/preference"><aside class="declaration">var </aside>preference
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 19"/></a></h3>
+        <p>Defines what kind of 'organ' we're looking at. Sprites have names like 'm_firemoth_mothwings'. 'mothwings' would then be preference</p><h3 id="var/sprite_datum"><aside class="declaration">var </aside>sprite_datum
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/sprite_accessory.html">sprite_accessory</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 21"/></a></h3>
+        <p>Sprite datum we use to draw on the bodypart</p><h2 id="proc">Proc Details</h2><h3 id="proc/Initialize"><aside class="parent"><a title="/atom" href="atom.html#proc/Initialize">&uarr;</a></aside>Initialize<aside>(mapload, mob_sprite) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 35"/></a></aside>
+        </h3>
+        <p>mob_sprite is optional if you havent set sprite_datums for the object, and is used mostly to generate sprite_datums from a persons DNA
+For _mob_sprite we make a distinction between &quot;Round Snout&quot; and &quot;round&quot;. Round Snout is the name of the sprite datum, while &quot;round&quot; would be part of the sprite
+I'm sorry</p><h3 id="proc/bitflag_to_layer"><aside class="declaration">proc </aside>bitflag_to_layer<aside>(layer) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 118"/></a></aside>
+        </h3>
+        <p>Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did</p><h3 id="proc/can_draw_on_bodypart"><aside class="declaration">proc </aside>can_draw_on_bodypart<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/human) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L137">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 137"/></a></aside>
+        </h3>
+        <p>Check whether we can draw the overlays. You generally don't want lizard snouts to draw over an EVA suit</p><h3 id="proc/generate_icon_cache"><aside class="declaration">proc </aside>generate_icon_cache<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 100"/></a></aside>
+        </h3>
+        <p>Generate a unique key based on our sprites. So that if we've aleady drawn these sprites, they can be found in the cache and wont have to be drawn again (blessing and curse)</p><h3 id="proc/get_global_feature_list"><aside class="declaration">proc </aside>get_global_feature_list<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L133">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 133"/></a></aside>
+        </h3>
+        <p>Return a dumb glob list for this specific feature (called from parse_sprite)</p><h3 id="proc/get_overlays"><aside class="declaration">proc </aside>get_overlays<aside>(/list/overlay_list, image_dir, image_layer, body_type, image_color) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 78"/></a></aside>
+        </h3>
+        <p>Add the overlays we need to draw on a person. Called from _bodyparts.dm</p><h3 id="proc/get_sprite_datum"><aside class="declaration">proc </aside>get_sprite_datum<aside>(sprite) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L128">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 128"/></a></aside>
+        </h3>
+        <p>Because all the preferences have names like &quot;Beautiful Sharp Snout&quot; we need to get the sprite datum with the actual important info</p><h3 id="proc/mutant_bodyparts_layertext"><aside class="declaration">proc </aside>mutant_bodyparts_layertext<aside>(layer) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L108">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 108"/></a></aside>
+        </h3>
+        <p>This exists so sprite accessories can still be per-layer without having to include that layer's
+number in their sprite name, which causes issues when those numbers change.</p><h3 id="proc/mutate_feature"><aside class="declaration">proc </aside>mutate_feature<aside>(features, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/human) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/surgery/organs/external/_external_organs.dm#L141">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;surgery&#x2F;organs&#x2F;external&#x2F;_external_organs.dm 141"/></a></aside>
+        </h3>
+        <p>Update our features after something changed our appearance</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;datums&#x2F;memory&#x2F;memory_design.md - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+</header>
+<main>
+<h1>code/datums/memory/memory_design.md 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/memory/memory_design.md">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;memory&#x2F;memory_design.md"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><td colspan="2"><h2 id="what-are-memories">What are memories?</h2>
+<p>Memories are events that happen to spacemen that are stored in their mind. They are then turned into generated stories that spessmen can engrave into walls, tattoo onto limbs, changelings can absorb people and read memories, etc.</p>
+<p>One thing i'd keep in mind is that stories are not memories. Memories persist and can be turned into stories of different types (engravings, tats) but stories are simply the output strings of memories.</p>
+<h2 id="how-to-add-a-memory">How to add a memory:</h2>
+<p>Here's a quick step by step guide on adding a memory. It's purposefully been made to be pretty easy! I'm going to be explaining memories with the surgery memory, it's a great example of a memory.</p>
+<h3 id="add-defines-and-memory-text">Add defines and memory text</h3>
+<p><strong>For the define file</strong></p>
+<p><code>#define MEMORY_SUCCESSFUL_SURGERY &quot;surgery&quot;</code></p>
+<p>this define is used in the proc for adding a memory to someone.</p>
+<p><code>#define DETAIL_SURGERY_TYPE &quot;SURGERY_TYPE&quot;</code></p>
+<p>this define is going to be the name of the surgery used, it's passed to the memory through the proc. See the next step for a more in-depth explanation.</p>
+<p><strong>For the memory json</strong></p>
+<p>Keys are in the memory defines, and are also sent by the memory proc. The only one that is not sent by the specific memory is <code>%MOOD</code> which is replaced by a string of the <code>%PROTAGONIST</code>'s moods.</p>
+<p><img src="https://cdn.discordapp.com/attachments/590280000977240105/878375963434569758/unknown.png" alt="surgery example" /></p>
+<p>Note that the memory key consists of the memory define, and then:</p>
+<ul>
+<li>names - name of the story</li>
+<li>starts - the first sentence of the generated story, it should describe what is happening in the memory</li>
+<li>moods - comes after starts, should include <code>%MOOD</code> to show how the <code>%PROTAGONIST</code> feels during the memory.</li>
+</ul>
+<h3 id="add-proc-to-store-memory">Add proc to store memory</h3>
+<p>Here's an in-codebase example of a memory.</p>
+<pre><code class="language-dm">surgeon.mind.add_memory(
+	// argument 1
+	MEMORY_SUCCESSFUL_SURGERY,
+	// argument 2
+	list(
+		DETAIL_PROTAGONIST = surgeon,
+		DETAIL_DEUTERAGONIST = target,
+		DETAIL_SURGERY_TYPE = src,
+	),
+	// argument 3
+	story_value = STORY_VALUE_OKAY,
+	// argument 4, you do not need to include this if there are no flags BUT for the sake of teaching the proc this is included for the example.
+	memory_flags = NONE
+)
+</code></pre>
+<p>First argument is the memory type, basically what is happening. It is a define equal to the memory json key with all the flavor text.</p>
+<p>Second argument is the elements in the memory. You will almost always have a <code>PROTAGONIST</code>, or the main character in the memory. The second most important character is is the <code>DEUTERAGONIST</code>. In the case of this memory, the protag is the surgeon and the deuterag is the patient. Makes sense! There are also non generic memory information, which is shown by the <code>DETAIL_SURGERY_TYPE</code> entry. This will send the name of the surgery to the memory, so it has that information when creating a story.</p>
+<p>Third argument is the story value, or how good of a memory it is. We make really easy memories or roundstart memories like account info worth very little so they show up less often, to offset the fact that they are easy</p>
+<p>Fourth argument are some memory flags, these can be used to cut story generation out where it doesn't make sense (gibbing not sending moods, roundstart memories not sending location, etc)</p>
+<h2 id="ways-to-expand-this-system-in-the-future">Ways to expand this system in the future:</h2>
+<ul>
+<li>Make engraving generic to atoms, not just walls.</li>
+<li>Tattoos could use overlay sprites on the limb.</li>
+<li>Tattoos working on simple animals?</li>
+<li>More wall engraving sprites</li>
+<li>Maybe implement engravings into fantasy affixes? A certain fellow by the name of <code>fikou</code> has worked on RPG stats, that combined with engraved high quality items would be awesome.</li>
+<li>readd special role text:</li>
+</ul>
+<pre><code class="language-dm">if(target.mind?.special_role)
+	return &quot;\the [lowertext(target.mind?.special_role)]&quot;
+</code></pre></td></tr></table></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

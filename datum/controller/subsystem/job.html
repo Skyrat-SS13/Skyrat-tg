@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;subsystem&#x2F;job - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/subsystem/job.html#var">Var Details</a> - <a href="datum/controller/subsystem/job.html#proc">Proc Details</a></header>
+<main>
+<h1>job <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/job.html">job</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/additional_jobs_with_icons">additional_jobs_with_icons</a></th><td>A list of additional jobs that have various icons associated with them including sechud and card trims.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/all_occupations">all_occupations</a></th><td>List of all jobs.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/assigned_captain">assigned_captain</a></th><td>If TRUE, some player has been assigned Captaincy or Acting Captaincy at some point during the shift and has been given the spare ID safe code.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/centcom_jobs">centcom_jobs</a></th><td>A list of jobs associed with Centcom and should use the standard NT Centcom icons.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/chain_of_command">chain_of_command</a></th><td>Keys should be assigned job roles. Values should be &gt;= 1.
+Represents the chain of command on the station. Lower numbers mean higher priority.
+Used to give the Cap's Spare safe code to a an appropriate player.
+Assumed Captain is always the highest in the chain of command.
+See [/datum/controller/subsystem/ticker/proc/equip_characters]</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/dynamic_forced_occupations">dynamic_forced_occupations</a></th><td>Lazylist of mob:occupation_string pairs.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/experience_jobs_map">experience_jobs_map</a></th><td>Dictionary of jobs indexed by the experience type they grant.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/head_of_staff_jobs">head_of_staff_jobs</a></th><td>A list of all Head of Staff jobs.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/joinable_departments">joinable_departments</a></th><td>List of all departments with joinable jobs.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/joinable_departments_by_type">joinable_departments_by_type</a></th><td>List of all joinable departments indexed by their typepath, sorted by their own display order.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/joinable_occupations">joinable_occupations</a></th><td>List of jobs that can be joined through the starting menu.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/name_occupations">name_occupations</a></th><td>Dictionary of all jobs, keys are titles.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/safe_code_request_loc">safe_code_request_loc</a></th><td>The loc to which the emergency safe code has been requested for delivery.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/safe_code_requested">safe_code_requested</a></th><td>Whether the emergency safe code has been requested via a comms console on shifts with no Captain or Acting Captain.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/safe_code_timer_id">safe_code_timer_id</a></th><td>Timer ID for the emergency safe code request.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/station_jobs">station_jobs</a></th><td>A list of all jobs associated with the station. These jobs also have various icons associated with them including sechud and card trims.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#var/type_occupations">type_occupations</a></th><td>Dictionary of all jobs, keys are types.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#proc/DivideOccupations">DivideOccupations</a></th><td></td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#proc/DropLandAtRandomHallwayPoint">DropLandAtRandomHallwayPoint</a></th><td>Lands specified mob at a random spot in the hallways</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#proc/assign_priority_positions">assign_priority_positions</a></th><td>Blindly assigns the required roles to every player in the dynamic_forced_occupations list.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#proc/fill_ai_positions">fill_ai_positions</a></th><td>Attempts to fill out all available AI positions.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#proc/send_spare_id_safe_code">send_spare_id_safe_code</a></th><td>Send a drop pod containing a piece of paper with the spare ID safe code to loc</td></tr>
+            <tr><th><a href="datum/controller/subsystem/job.html#proc/setup_job_lists">setup_job_lists</a></th><td>Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/additional_jobs_with_icons"><aside class="declaration">var </aside>additional_jobs_with_icons
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 41"/></a></h3>
+        <p>A list of additional jobs that have various icons associated with them including sechud and card trims.</p><h3 id="var/all_occupations"><aside class="declaration">var </aside>all_occupations
+            <aside>&ndash; /list/datum/job</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 7"/></a></h3>
+        <p>List of all jobs.</p><h3 id="var/assigned_captain"><aside class="declaration">var </aside>assigned_captain
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 62"/></a></h3>
+        <p>If TRUE, some player has been assigned Captaincy or Acting Captaincy at some point during the shift and has been given the spare ID safe code.</p><h3 id="var/centcom_jobs"><aside class="declaration">var </aside>centcom_jobs
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 43"/></a></h3>
+        <p>A list of jobs associed with Centcom and should use the standard NT Centcom icons.</p><h3 id="var/chain_of_command"><aside class="declaration">var </aside>chain_of_command
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 52"/></a></h3>
+        <p>Keys should be assigned job roles. Values should be &gt;= 1.
+Represents the chain of command on the station. Lower numbers mean higher priority.
+Used to give the Cap's Spare safe code to a an appropriate player.
+Assumed Captain is always the highest in the chain of command.
+See [/datum/controller/subsystem/ticker/proc/equip_characters]</p><h3 id="var/dynamic_forced_occupations"><aside class="declaration">var </aside>dynamic_forced_occupations
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 34"/></a></h3>
+        <p>Lazylist of mob:occupation_string pairs.</p><h3 id="var/experience_jobs_map"><aside class="declaration">var </aside>experience_jobs_map
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 16"/></a></h3>
+        <p>Dictionary of jobs indexed by the experience type they grant.</p><h3 id="var/head_of_staff_jobs"><aside class="declaration">var </aside>head_of_staff_jobs
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 39"/></a></h3>
+        <p>A list of all Head of Staff jobs.</p><h3 id="var/joinable_departments"><aside class="declaration">var </aside>joinable_departments
+            <aside>&ndash; /list/datum/job_department</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 19"/></a></h3>
+        <p>List of all departments with joinable jobs.</p><h3 id="var/joinable_departments_by_type"><aside class="declaration">var </aside>joinable_departments_by_type
+            <aside>&ndash; /list/datum/job_department</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 21"/></a></h3>
+        <p>List of all joinable departments indexed by their typepath, sorted by their own display order.</p><h3 id="var/joinable_occupations"><aside class="declaration">var </aside>joinable_occupations
+            <aside>&ndash; /list/datum/job</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 9"/></a></h3>
+        <p>List of jobs that can be joined through the starting menu.</p><h3 id="var/name_occupations"><aside class="declaration">var </aside>name_occupations
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 11"/></a></h3>
+        <p>Dictionary of all jobs, keys are titles.</p><h3 id="var/safe_code_request_loc"><aside class="declaration">var </aside>safe_code_request_loc
+            <aside>&ndash; /<a href="turf.html">turf</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L71">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 71"/></a></h3>
+        <p>The loc to which the emergency safe code has been requested for delivery.</p><h3 id="var/safe_code_requested"><aside class="declaration">var </aside>safe_code_requested
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 64"/></a></h3>
+        <p>Whether the emergency safe code has been requested via a comms console on shifts with no Captain or Acting Captain.</p><h3 id="var/safe_code_timer_id"><aside class="declaration">var </aside>safe_code_timer_id
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 66"/></a></h3>
+        <p>Timer ID for the emergency safe code request.</p><h3 id="var/station_jobs"><aside class="declaration">var </aside>station_jobs
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 37"/></a></h3>
+        <p>A list of all jobs associated with the station. These jobs also have various icons associated with them including sechud and card trims.</p><h3 id="var/type_occupations"><aside class="declaration">var </aside>type_occupations
+            <aside>&ndash; /list/datum/job</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 13"/></a></h3>
+        <p>Dictionary of all jobs, keys are types.</p><h2 id="proc">Proc Details</h2><h3 id="proc/DivideOccupations"><aside class="declaration">proc </aside>DivideOccupations<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L389">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 389"/></a></aside>
+        </h3>
+        <ul>
+<li>Proc DivideOccupations</li>
+<li>fills var &quot;assigned_role&quot; for all ready players.</li>
+<li>This proc must not have any side effect besides of modifying &quot;assigned_role&quot;.</li>
+</ul><h3 id="proc/DropLandAtRandomHallwayPoint"><aside class="declaration">proc </aside>DropLandAtRandomHallwayPoint<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/living_mob) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L806">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 806"/></a></aside>
+        </h3>
+        <p>Lands specified mob at a random spot in the hallways</p><h3 id="proc/assign_priority_positions"><aside class="declaration">proc </aside>assign_priority_positions<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L932">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 932"/></a></aside>
+        </h3>
+        <p>Blindly assigns the required roles to every player in the dynamic_forced_occupations list.</p><h3 id="proc/fill_ai_positions"><aside class="declaration">proc </aside>fill_ai_positions<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L370">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 370"/></a></aside>
+        </h3>
+        <p>Attempts to fill out all available AI positions.</p><h3 id="proc/send_spare_id_safe_code"><aside class="declaration">proc </aside>send_spare_id_safe_code<aside>(loc) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L926">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 926"/></a></aside>
+        </h3>
+        <p>Send a drop pod containing a piece of paper with the spare ID safe code to loc</p><h3 id="proc/setup_job_lists"><aside class="declaration">proc </aside>setup_job_lists<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/job.dm#L857">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;job.dm 857"/></a></aside>
+        </h3>
+        <p>Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

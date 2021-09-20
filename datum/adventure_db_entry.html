@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;adventure_db_entry - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/adventure_db_entry.html#var">Var Details</a> - <a href="datum/adventure_db_entry.html#proc">Proc Details</a></header>
+<main>
+<h1>adventure_db_entry <aside>/<a href="datum.html">datum</a>/<a href="datum/adventure_db_entry.html">adventure_db_entry</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 72"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/approved">approved</a></th><td>Unapproved adventures won't be used for exploration sites.</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/id">id</a></th><td>db id or null for freshly created adventures</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/name">name</a></th><td>adventure name</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/placed">placed</a></th><td>Was the adventure used for exploration site this round.</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/raw_json">raw_json</a></th><td>actual adventure json string</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/required_site_traits">required_site_traits</a></th><td>required site traits to use this adventure</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/timestamp">timestamp</a></th><td>Time of last change.</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/uploader">uploader</a></th><td>ckey of last change user.</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#var/version">version</a></th><td>json version</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#proc/create_adventure">create_adventure</a></th><td>Creates new adventure instance</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#proc/extract_metadata">extract_metadata</a></th><td>Extracts fields that are used by adventure browser / generation before instantiating</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#proc/refresh">refresh</a></th><td>Updates this entry from db, if possible.</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#proc/remove">remove</a></th><td>Deletes the local AND db entry.</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#proc/save">save</a></th><td>Pushes this entry changes to DB</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#proc/try_loading_adventure">try_loading_adventure</a></th><td>Parses adventure JSON and returns /datum/adventure instance on success</td></tr>
+            <tr><th><a href="datum/adventure_db_entry.html#proc/valid_for_use">valid_for_use</a></th><td>Check if the adventure usable for given exploration site traits</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/approved"><aside class="declaration">var </aside>approved
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 82"/></a></h3>
+        <p>Unapproved adventures won't be used for exploration sites.</p><h3 id="var/id"><aside class="declaration">var </aside>id
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 74"/></a></h3>
+        <p>db id or null for freshly created adventures</p><h3 id="var/name"><aside class="declaration">var </aside>name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L91">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 91"/></a></h3>
+        <p>adventure name</p><h3 id="var/placed"><aside class="declaration">var </aside>placed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 84"/></a></h3>
+        <p>Was the adventure used for exploration site this round.</p><h3 id="var/raw_json"><aside class="declaration">var </aside>raw_json
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 76"/></a></h3>
+        <p>actual adventure json string</p><h3 id="var/required_site_traits"><aside class="declaration">var </aside>required_site_traits
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L95">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 95"/></a></h3>
+        <p>required site traits to use this adventure</p><h3 id="var/timestamp"><aside class="declaration">var </aside>timestamp
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 80"/></a></h3>
+        <p>Time of last change.</p><h3 id="var/uploader"><aside class="declaration">var </aside>uploader
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 78"/></a></h3>
+        <p>ckey of last change user.</p><h3 id="var/version"><aside class="declaration">var </aside>version
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L89">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 89"/></a></h3>
+        <p>json version</p><h2 id="proc">Proc Details</h2><h3 id="proc/create_adventure"><aside class="declaration">proc </aside>create_adventure<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L163">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 163"/></a></aside>
+        </h3>
+        <p>Creates new adventure instance</p><h3 id="proc/extract_metadata"><aside class="declaration">proc </aside>extract_metadata<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L152">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 152"/></a></aside>
+        </h3>
+        <p>Extracts fields that are used by adventure browser / generation before instantiating</p><h3 id="proc/refresh"><aside class="declaration">proc </aside>refresh<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 104"/></a></aside>
+        </h3>
+        <p>Updates this entry from db, if possible.</p><h3 id="proc/remove"><aside class="declaration">proc </aside>remove<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L139">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 139"/></a></aside>
+        </h3>
+        <p>Deletes the local AND db entry.</p><h3 id="proc/save"><aside class="declaration">proc </aside>save<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L121">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 121"/></a></aside>
+        </h3>
+        <p>Pushes this entry changes to DB</p><h3 id="proc/try_loading_adventure"><aside class="declaration">proc </aside>try_loading_adventure<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L169">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 169"/></a></aside>
+        </h3>
+        <p>Parses adventure JSON and returns /datum/adventure instance on success</p><h3 id="proc/valid_for_use"><aside class="declaration">proc </aside>valid_for_use<aside>(/list/site_traits) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/explorer_drone/adventure.dm#L96">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;explorer_drone&#x2F;adventure.dm 96"/></a></aside>
+        </h3>
+        <p>Check if the adventure usable for given exploration site traits</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

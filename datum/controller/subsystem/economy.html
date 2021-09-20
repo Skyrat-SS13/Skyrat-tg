@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;controller&#x2F;subsystem&#x2F;economy - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/controller/subsystem/economy.html#var">Var Details</a> - <a href="datum/controller/subsystem/economy.html#proc">Proc Details</a></header>
+<main>
+<h1>economy <aside>/<a href="datum.html">datum</a>/<a href="datum/controller/subsystem.html">controller/subsystem</a>/<a href="datum/controller/subsystem/economy.html">economy</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L1">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 1"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/bank_accounts_by_id">bank_accounts_by_id</a></th><td>List of normal (no department ones) accounts' identifiers with associated datum accounts, for big O performance.
+A list of sole account datums can be obtained with flatten_list(), another variable would be redundant rn.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/bounty_modifier">bounty_modifier</a></th><td>The modifier multiplied to the value of bounties paid out.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/civ_bounty_tracker">civ_bounty_tracker</a></th><td>How many civilain bounties have been completed so far this shift? Affects civilian budget payout values.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/earning_report">earning_report</a></th><td>Contains the message to send to newscasters about price inflation and earnings, updated on price_update()</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/export_total">export_total</a></th><td>Total value of exported materials.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/import_total">import_total</a></th><td>Total value of imported goods.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/inflation_value">inflation_value</a></th><td>A var that displays the result of inflation_value for easier debugging and tracking.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/mail_blocked">mail_blocked</a></th><td>Mail Holiday: AKA does mail arrive today? Always blocked on Sundays.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/mail_waiting">mail_waiting</a></th><td>Number of mail items generated.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/pack_price_modifier">pack_price_modifier</a></th><td>The modifier multiplied to the value of cargo pack prices.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/station_target">station_target</a></th><td>A var that tracks how much money is expected to be on station at a given time. If less than station_total prices go up in vendors.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/station_target_buffer">station_target_buffer</a></th><td>A passively increasing buffer to help alliviate inflation later into the shift, but to a lesser degree.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/station_total">station_total</a></th><td>A var that collects the total amount of credits owned in player accounts on station, reset and recounted on fire()</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#var/techweb_bounty">techweb_bounty</a></th><td>Departmental cash provided to science when a node is researched in specific configs.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#proc/departmental_payouts">departmental_payouts</a></th><td>Departmental income payments are kept static and linear for every department, and paid out once every 5 minutes, as determined by MAX_GRANT_DPT.
+Iterates over every department account for the same payment.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#proc/get_dep_account">get_dep_account</a></th><td>Handy proc for obtaining a department's bank account, given the department ID, AKA the define assigned for what department they're under.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#proc/inflation_value">inflation_value</a></th><td>Proc that returns a value meant to shift inflation values in vendors, based on how much money exists on the station.</td></tr>
+            <tr><th><a href="datum/controller/subsystem/economy.html#proc/price_update">price_update</a></th><td>Updates the prices of all station vendors with the inflation_value, increasing/decreasing costs across the station, and alerts the crew.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/bank_accounts_by_id"><aside class="declaration">var </aside>bank_accounts_by_id
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 27"/></a></h3>
+        <p>List of normal (no department ones) accounts' identifiers with associated datum accounts, for big O performance.
+A list of sole account datums can be obtained with flatten_list(), another variable would be redundant rn.</p><h3 id="var/bounty_modifier"><aside class="declaration">var </aside>bounty_modifier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 42"/></a></h3>
+        <p>The modifier multiplied to the value of bounties paid out.</p><h3 id="var/civ_bounty_tracker"><aside class="declaration">var </aside>civ_bounty_tracker
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 38"/></a></h3>
+        <p>How many civilain bounties have been completed so far this shift? Affects civilian budget payout values.</p><h3 id="var/earning_report"><aside class="declaration">var </aside>earning_report
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 40"/></a></h3>
+        <p>Contains the message to send to newscasters about price inflation and earnings, updated on price_update()</p><h3 id="var/export_total"><aside class="declaration">var </aside>export_total
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 49"/></a></h3>
+        <p>Total value of exported materials.</p><h3 id="var/import_total"><aside class="declaration">var </aside>import_total
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 51"/></a></h3>
+        <p>Total value of imported goods.</p><h3 id="var/inflation_value"><aside class="declaration">var </aside>inflation_value
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 36"/></a></h3>
+        <p>A var that displays the result of inflation_value for easier debugging and tracking.</p><h3 id="var/mail_blocked"><aside class="declaration">var </aside>mail_blocked
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 55"/></a></h3>
+        <p>Mail Holiday: AKA does mail arrive today? Always blocked on Sundays.</p><h3 id="var/mail_waiting"><aside class="declaration">var </aside>mail_waiting
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 53"/></a></h3>
+        <p>Number of mail items generated.</p><h3 id="var/pack_price_modifier"><aside class="declaration">var </aside>pack_price_modifier
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 44"/></a></h3>
+        <p>The modifier multiplied to the value of cargo pack prices.</p><h3 id="var/station_target"><aside class="declaration">var </aside>station_target
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 32"/></a></h3>
+        <p>A var that tracks how much money is expected to be on station at a given time. If less than station_total prices go up in vendors.</p><h3 id="var/station_target_buffer"><aside class="declaration">var </aside>station_target_buffer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 34"/></a></h3>
+        <p>A passively increasing buffer to help alliviate inflation later into the shift, but to a lesser degree.</p><h3 id="var/station_total"><aside class="declaration">var </aside>station_total
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 30"/></a></h3>
+        <p>A var that collects the total amount of credits owned in player accounts on station, reset and recounted on fire()</p><h3 id="var/techweb_bounty"><aside class="declaration">var </aside>techweb_bounty
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 22"/></a></h3>
+        <p>Departmental cash provided to science when a node is researched in specific configs.</p><h2 id="proc">Proc Details</h2><h3 id="proc/departmental_payouts"><aside class="declaration">proc </aside>departmental_payouts<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L109">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 109"/></a></aside>
+        </h3>
+        <p>Departmental income payments are kept static and linear for every department, and paid out once every 5 minutes, as determined by MAX_GRANT_DPT.
+Iterates over every department account for the same payment.</p><h3 id="proc/get_dep_account"><aside class="declaration">proc </aside>get_dep_account<aside>(dep_id) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 100"/></a></aside>
+        </h3>
+        <p>Handy proc for obtaining a department's bank account, given the department ID, AKA the define assigned for what department they're under.</p><h3 id="proc/inflation_value"><aside class="declaration">proc </aside>inflation_value<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L138">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 138"/></a></aside>
+        </h3>
+        <p>Proc that returns a value meant to shift inflation values in vendors, based on how much money exists on the station.</p>
+<p>If crew are somehow aquiring far too much money, this value will dynamically cause vendables across the station to skyrocket in price until some money is spent.
+Additionally, civilain bounties will cost less, and cargo goodies will increase in price as well.
+The goal here is that if you want to spend money, you'll have to get it, and the most efficient method is typically from other players.</p><h3 id="proc/price_update"><aside class="declaration">proc </aside>price_update<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/controllers/subsystem/economy.dm#L121">
+        <img src="git.png" width="16" height="16" title="code&#x2F;controllers&#x2F;subsystem&#x2F;economy.dm 121"/></a></aside>
+        </h3>
+        <p>Updates the prices of all station vendors with the inflation_value, increasing/decreasing costs across the station, and alerts the crew.</p>
+<p>Iterates over the machines list for vending machines, resets their regular and premium product prices (Not contraband), and sends a message to the newscaster network.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;antagonist&#x2F;traitor - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/antagonist/traitor.html#var">Var Details</a> - <a href="datum/antagonist/traitor.html#proc">Proc Details</a></header>
+<main>
+<h1>traitor <aside>/<a href="datum.html">datum</a>/<a href="datum/antagonist.html">antagonist</a>/<a href="datum/antagonist/traitor.html">traitor</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 18"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#var/employer">employer</a></th><td>the name of the antag flavor this traitor has.</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#var/ending_objective">ending_objective</a></th><td>the final objective the traitor has to accomplish, be it escaping, hijacking, or just martyrdom.</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#var/give_uplink">give_uplink</a></th><td>give this traitor an uplink?</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#var/is_hijacker">is_hijacker</a></th><td>if TRUE, this traitor will always get hijacking as their final objective</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#var/traitor_flavor">traitor_flavor</a></th><td>assoc list of strings set up after employer is given</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#var/uplink">uplink</a></th><td>reference to the uplink this traitor was given, if they were.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#proc/contractor_round_end">contractor_round_end</a></th><td>Proc detailing contract kit buys/completed contracts/additional info</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#proc/forge_ending_objective">forge_ending_objective</a></th><td></td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#proc/forge_escape_objective">forge_escape_objective</a></th><td>Forges a single escape objective and adds it to this datum's objective list.</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#proc/forge_single_generic_objective">forge_single_generic_objective</a></th><td>Adds a generic kill or steal objective to this datum's objective list.</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#proc/forge_traitor_objectives">forge_traitor_objectives</a></th><td>Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#proc/give_codewords">give_codewords</a></th><td>Outputs this shift's codewords and responses to the antag's chat and copies them to their memory.</td></tr>
+            <tr><th><a href="datum/antagonist/traitor.html#proc/roundend_report_footer">roundend_report_footer</a></th><td>Get all the icons/total cost for all our items bought
+Special case for reinforcements, we want to show their ckey and name on round end.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/employer"><aside class="declaration">var </aside>employer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 38"/></a></h3>
+        <p>the name of the antag flavor this traitor has.</p><h3 id="var/ending_objective"><aside class="declaration">var </aside>ending_objective
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/objective.html">objective</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 51"/></a></h3>
+        <p>the final objective the traitor has to accomplish, be it escaping, hijacking, or just martyrdom.</p><h3 id="var/give_uplink"><aside class="declaration">var </aside>give_uplink
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 33"/></a></h3>
+        <p>give this traitor an uplink?</p><h3 id="var/is_hijacker"><aside class="declaration">var </aside>is_hijacker
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L35">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 35"/></a></h3>
+        <p>if TRUE, this traitor will always get hijacking as their final objective</p><h3 id="var/traitor_flavor"><aside class="declaration">var </aside>traitor_flavor
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 41"/></a></h3>
+        <p>assoc list of strings set up after employer is given</p><h3 id="var/uplink"><aside class="declaration">var </aside>uplink
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/component.html">component</a>/<a href="datum/component/uplink.html">uplink</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 44"/></a></h3>
+        <p>reference to the uplink this traitor was given, if they were.</p><h2 id="proc">Proc Details</h2><h3 id="proc/contractor_round_end"><aside class="declaration">proc </aside>contractor_round_end<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L309">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 309"/></a></aside>
+        </h3>
+        <p>Proc detailing contract kit buys/completed contracts/additional info</p><h3 id="proc/forge_ending_objective"><aside class="declaration">proc </aside>forge_ending_objective<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L124">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 124"/></a></aside>
+        </h3>
+        <h2 id="forge-ending-objective">forge_ending_objective</h2>
+<p>Forges the endgame objective and adds it to this datum's objective list.</p><h3 id="proc/forge_escape_objective"><aside class="declaration">proc </aside>forge_escape_objective<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L150">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 150"/></a></aside>
+        </h3>
+        <p>Forges a single escape objective and adds it to this datum's objective list.</p><h3 id="proc/forge_single_generic_objective"><aside class="declaration">proc </aside>forge_single_generic_objective<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L170">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 170"/></a></aside>
+        </h3>
+        <p>Adds a generic kill or steal objective to this datum's objective list.</p><h3 id="proc/forge_traitor_objectives"><aside class="declaration">proc </aside>forge_traitor_objectives<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L98">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 98"/></a></aside>
+        </h3>
+        <p>Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.</p><h3 id="proc/give_codewords"><aside class="declaration">proc </aside>give_codewords<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L237">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 237"/></a></aside>
+        </h3>
+        <p>Outputs this shift's codewords and responses to the antag's chat and copies them to their memory.</p><h3 id="proc/roundend_report_footer"><aside class="parent"><a title="/datum/antagonist" href="datum/antagonist.html#proc/roundend_report_footer">&uarr;</a></aside>roundend_report_footer<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/antagonists/traitor/datum_traitor.dm#L344">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;antagonists&#x2F;traitor&#x2F;datum_traitor.dm 344"/></a></aside>
+        </h3>
+        <p>Get all the icons/total cost for all our items bought
+Special case for reinforcements, we want to show their ckey and name on round end.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

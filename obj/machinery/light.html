@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;machinery&#x2F;light - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/machinery/light.html#var">Var Details</a></header>
+<main>
+<h1>light <aside>/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/light.html">light</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 2"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/base_state">base_state</a></th><td>base description and icon_state</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/brightness">brightness</a></th><td>Luminosity when on, also used in power calculation</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/bulb_emergency_brightness_mul">bulb_emergency_brightness_mul</a></th><td>Multiplier for this light's base brightness in emergency power mode</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/bulb_emergency_colour">bulb_emergency_colour</a></th><td>Determines the colour of the light while it's in emergency mode</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/bulb_emergency_pow_min">bulb_emergency_pow_min</a></th><td>The minimum value for the light's power in emergency mode</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/bulb_emergency_pow_mul">bulb_emergency_pow_mul</a></th><td>The multiplier for determining the light's power in emergency mode</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/cell">cell</a></th><td>Cell reference</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/emergency_mode">emergency_mode</a></th><td>If true, the light is in emergency mode</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/fitting">fitting</a></th><td>String of the light type, used in descriptions and in examine</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/flickering">flickering</a></th><td>Should we flicker?</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/light_type">light_type</a></th><td>The type of light item</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/nightshift_allowed">nightshift_allowed</a></th><td>Set to FALSE to never let this light get switched to night mode.</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/nightshift_brightness">nightshift_brightness</a></th><td>Brightness of the nightshift light</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/nightshift_enabled">nightshift_enabled</a></th><td>Currently in night shift mode?</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/nightshift_light_color">nightshift_light_color</a></th><td>Basecolor of the nightshift light</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/nightshift_light_power">nightshift_light_power</a></th><td>Alpha of the nightshift light</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/no_emergency">no_emergency</a></th><td>If true, this light cannot ever have an emergency mode</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/on">on</a></th><td>Is the light on?</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/on_gs">on_gs</a></th><td>compared to the var/on for static calculations</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/rigged">rigged</a></th><td>True if rigged to explode</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/start_with_cell">start_with_cell</a></th><td>If true, this fixture generates a very weak cell at roundstart</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/static_power_used">static_power_used</a></th><td>Amount of power used</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/status">status</a></th><td>LIGHT_OK, _EMPTY, _BURNED or _BROKEN</td></tr>
+            <tr><th><a href="obj/machinery/light.html#var/switchcount">switchcount</a></th><td>Count of number of times switched on/off, this is used to calculate the probability the light burns out</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/base_state"><aside class="declaration">var </aside>base_state
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 16"/></a></h3>
+        <p>base description and icon_state</p><h3 id="var/brightness"><aside class="declaration">var </aside>brightness
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 24"/></a></h3>
+        <p>Luminosity when on, also used in power calculation</p><h3 id="var/bulb_emergency_brightness_mul"><aside class="declaration">var </aside>bulb_emergency_brightness_mul
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 60"/></a></h3>
+        <p>Multiplier for this light's base brightness in emergency power mode</p><h3 id="var/bulb_emergency_colour"><aside class="declaration">var </aside>bulb_emergency_colour
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 62"/></a></h3>
+        <p>Determines the colour of the light while it's in emergency mode</p><h3 id="var/bulb_emergency_pow_min"><aside class="declaration">var </aside>bulb_emergency_pow_min
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 66"/></a></h3>
+        <p>The minimum value for the light's power in emergency mode</p><h3 id="var/bulb_emergency_pow_mul"><aside class="declaration">var </aside>bulb_emergency_pow_mul
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 64"/></a></h3>
+        <p>The multiplier for determining the light's power in emergency mode</p><h3 id="var/cell"><aside class="declaration">var </aside>cell
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/stock_parts/cell.html">stock_parts/cell</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 42"/></a></h3>
+        <p>Cell reference</p><h3 id="var/emergency_mode"><aside class="declaration">var </aside>emergency_mode
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 56"/></a></h3>
+        <p>If true, the light is in emergency mode</p><h3 id="var/fitting"><aside class="declaration">var </aside>fitting
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 36"/></a></h3>
+        <p>String of the light type, used in descriptions and in examine</p><h3 id="var/flickering"><aside class="declaration">var </aside>flickering
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 32"/></a></h3>
+        <p>Should we flicker?</p><h3 id="var/light_type"><aside class="declaration">var </aside>light_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 34"/></a></h3>
+        <p>The type of light item</p><h3 id="var/nightshift_allowed"><aside class="declaration">var </aside>nightshift_allowed
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 48"/></a></h3>
+        <p>Set to FALSE to never let this light get switched to night mode.</p><h3 id="var/nightshift_brightness"><aside class="declaration">var </aside>nightshift_brightness
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 50"/></a></h3>
+        <p>Brightness of the nightshift light</p><h3 id="var/nightshift_enabled"><aside class="declaration">var </aside>nightshift_enabled
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 46"/></a></h3>
+        <p>Currently in night shift mode?</p><h3 id="var/nightshift_light_color"><aside class="declaration">var </aside>nightshift_light_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 54"/></a></h3>
+        <p>Basecolor of the nightshift light</p><h3 id="var/nightshift_light_power"><aside class="declaration">var </aside>nightshift_light_power
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 52"/></a></h3>
+        <p>Alpha of the nightshift light</p><h3 id="var/no_emergency"><aside class="declaration">var </aside>no_emergency
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 58"/></a></h3>
+        <p>If true, this light cannot ever have an emergency mode</p><h3 id="var/on"><aside class="declaration">var </aside>on
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 18"/></a></h3>
+        <p>Is the light on?</p><h3 id="var/on_gs"><aside class="declaration">var </aside>on_gs
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L20">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 20"/></a></h3>
+        <p>compared to the var/on for static calculations</p><h3 id="var/rigged"><aside class="declaration">var </aside>rigged
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 40"/></a></h3>
+        <p>True if rigged to explode</p><h3 id="var/start_with_cell"><aside class="declaration">var </aside>start_with_cell
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 44"/></a></h3>
+        <p>If true, this fixture generates a very weak cell at roundstart</p><h3 id="var/static_power_used"><aside class="declaration">var </aside>static_power_used
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 22"/></a></h3>
+        <p>Amount of power used</p><h3 id="var/status"><aside class="declaration">var </aside>status
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 30"/></a></h3>
+        <p>LIGHT_OK, _EMPTY, _BURNED or _BROKEN</p><h3 id="var/switchcount"><aside class="declaration">var </aside>switchcount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light.dm 38"/></a></h3>
+        <p>Count of number of times switched on/off, this is used to calculate the probability the light burns out</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

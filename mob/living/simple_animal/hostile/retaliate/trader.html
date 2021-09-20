@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;hostile&#x2F;retaliate&#x2F;trader - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="mob/living/simple_animal/hostile/retaliate/trader.html#var">Var Details</a> - <a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc">Proc Details</a></header>
+<main>
+<h1>Trader <aside>/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/simple_animal.html">simple_animal</a>/<a href="mob/living/simple_animal/hostile.html">hostile</a>/<a href="mob/living/simple_animal/hostile/retaliate.html">retaliate</a>/<a href="mob/living/simple_animal/hostile/retaliate/trader.html">trader</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 8"/></a></h1>
+
+<p>A mob that has some dialogue options with radials, allows for selling items and buying em'</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/buyphrase">buyphrase</a></th><td>Phrase said when the NPC sells you an item.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/interestedphrase">interestedphrase</a></th><td>Phrase said when the NPC finds an item in the wanted_items list in your hands.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/itemrejectphrase">itemrejectphrase</a></th><td>Phrase said when NPC finds none of your inhand items in wanted_items.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/itemsellacceptphrase">itemsellacceptphrase</a></th><td>Phrase said when you accept selling a thing to the NPC.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/itemsellcancelphrase">itemsellcancelphrase</a></th><td>Phrase said when you cancel selling a thing to the NPC.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/lore">lore</a></th><td>Phrases used when you talk to the NPC</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/nocashphrase">nocashphrase</a></th><td>Phrase said when you have too little money to buy an item.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/products">products</a></th><td>Associated list of items the NPC sells with how much they cost.</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/sell_sound">sell_sound</a></th><td>Sound used when item sold/bought</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#var/wanted_items">wanted_items</a></th><td>Associated list of items able to be sold to the NPC with the money given for them.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc/buy_item">buy_item</a></th><td>Generates a radial of the items the NPC sells and lets the user try to buy one
+Arguments:</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc/check_menu">check_menu</a></th><td>Checks if the user is ok to use the radial</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc/deep_lore">deep_lore</a></th><td>Makes the NPC say one picked thing from the lore list variable, can be overriden for fun stuff</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc/generate_cash">generate_cash</a></th><td>Creates a holochip the value set by the proc and puts it in the user's hands
+Arguments:</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc/sell_item">sell_item</a></th><td>Checks if an item is in the list of wanted items and if it is after a Yes/No radial returns generate_cash with the value of the item for the NPC
+Arguments:</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc/try_buy">try_buy</a></th><td>Tries to buy an item from the trader
+Arguments:</td></tr>
+            <tr><th><a href="mob/living/simple_animal/hostile/retaliate/trader.html#proc/try_sell">try_sell</a></th><td>Tries to call sell_item on one of the user's held items, if fail gives a chat message</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/buyphrase"><aside class="declaration">var </aside>buyphrase
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 51"/></a></h3>
+        <p>Phrase said when the NPC sells you an item.</p><h3 id="var/interestedphrase"><aside class="declaration">var </aside>interestedphrase
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 49"/></a></h3>
+        <p>Phrase said when the NPC finds an item in the wanted_items list in your hands.</p><h3 id="var/itemrejectphrase"><aside class="declaration">var </aside>itemrejectphrase
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 43"/></a></h3>
+        <p>Phrase said when NPC finds none of your inhand items in wanted_items.</p><h3 id="var/itemsellacceptphrase"><aside class="declaration">var </aside>itemsellacceptphrase
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 47"/></a></h3>
+        <p>Phrase said when you accept selling a thing to the NPC.</p><h3 id="var/itemsellcancelphrase"><aside class="declaration">var </aside>itemsellcancelphrase
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 45"/></a></h3>
+        <p>Phrase said when you cancel selling a thing to the NPC.</p><h3 id="var/lore"><aside class="declaration">var </aside>lore
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 55"/></a></h3>
+        <p>Phrases used when you talk to the NPC</p><h3 id="var/nocashphrase"><aside class="declaration">var </aside>nocashphrase
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 53"/></a></h3>
+        <p>Phrase said when you have too little money to buy an item.</p><h3 id="var/products"><aside class="declaration">var </aside>products
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L39">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 39"/></a></h3>
+        <p>Associated list of items the NPC sells with how much they cost.</p><h3 id="var/sell_sound"><aside class="declaration">var </aside>sell_sound
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L37">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 37"/></a></h3>
+        <p>Sound used when item sold/bought</p><h3 id="var/wanted_items"><aside class="declaration">var </aside>wanted_items
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L41">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 41"/></a></h3>
+        <p>Associated list of items able to be sold to the NPC with the money given for them.</p><h2 id="proc">Proc Details</h2><h3 id="proc/buy_item"><aside class="declaration">proc </aside>buy_item<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L119">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 119"/></a></aside>
+        </h3>
+        <p>Generates a radial of the items the NPC sells and lets the user try to buy one
+Arguments:</p>
+<ul>
+<li>user - The mob trying to buy something</li>
+</ul><h3 id="proc/check_menu"><aside class="declaration">proc </aside>check_menu<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L90">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 90"/></a></aside>
+        </h3>
+        <p>Checks if the user is ok to use the radial</p>
+<p>Checks if the user is not a mob or is incapacitated or not adjacent to the source of the radial, in those cases returns FALSE, otherwise returns TRUE
+Arguments:</p>
+<ul>
+<li>user - The mob checking the menu</li>
+</ul><h3 id="proc/deep_lore"><aside class="declaration">proc </aside>deep_lore<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L111">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 111"/></a></aside>
+        </h3>
+        <p>Makes the NPC say one picked thing from the lore list variable, can be overriden for fun stuff</p><h3 id="proc/generate_cash"><aside class="declaration">proc </aside>generate_cash<aside>(value, /<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L215">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 215"/></a></aside>
+        </h3>
+        <p>Creates a holochip the value set by the proc and puts it in the user's hands
+Arguments:</p>
+<ul>
+<li>value - The amount of cash that will be on the holochip</li>
+<li>user - The mob we put the holochip in hands of</li>
+</ul><h3 id="proc/sell_item"><aside class="declaration">proc </aside>sell_item<aside>(/<a href="mob.html">mob</a>/user, selling) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L171">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 171"/></a></aside>
+        </h3>
+        <p>Checks if an item is in the list of wanted items and if it is after a Yes/No radial returns generate_cash with the value of the item for the NPC
+Arguments:</p>
+<ul>
+<li>user - The mob trying to sell something</li>
+<li>selling - The item being sold</li>
+</ul><h3 id="proc/try_buy"><aside class="declaration">proc </aside>try_buy<aside>(/<a href="mob.html">mob</a>/user, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/item_to_buy) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L143">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 143"/></a></aside>
+        </h3>
+        <p>Tries to buy an item from the trader
+Arguments:</p>
+<ul>
+<li>user - The mob trying to buy something</li>
+<li>item_to_buy - Item that is being bought</li>
+</ul><h3 id="proc/try_sell"><aside class="declaration">proc </aside>try_sell<aside>(/<a href="mob.html">mob</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/mob/living/simple_animal/friendly/trader.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;mob&#x2F;living&#x2F;simple_animal&#x2F;friendly&#x2F;trader.dm 104"/></a></aside>
+        </h3>
+        <p>Tries to call sell_item on one of the user's held items, if fail gives a chat message</p>
+<p>Gets both items in the user's hands, and then tries to call sell_item on them, if both fail, he gives a chat message
+Arguments:</p>
+<ul>
+<li>user - The mob trying to sell something</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

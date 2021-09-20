@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/~skyrat_defines/signals.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/~skyrat_defines/signals.dm 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOVABLE_RADIO_TALK_INTO">COMSIG_MOVABLE_RADIO_TALK_INTO</a></th><td>When someone talks into a radio</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_LIVING_UPDATED_RESTING">COMSIG_LIVING_UPDATED_RESTING</a></th><td>Resting position for living mob updated</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_HORRORFORM_EXPLODE">COMSIG_HORRORFORM_EXPLODE</a></th><td>Horror form bombastic flag</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_CUMFACED">COMSIG_MOB_CUMFACED</a></th><td>Overlay for whitestuff</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_GUN_AUTOFIRE_SELECTED">COMSIG_GUN_AUTOFIRE_SELECTED</a></th><td>When a gun is switched to automatic fire mode</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_GUN_AUTOFIRE_DESELECTED">COMSIG_GUN_AUTOFIRE_DESELECTED</a></th><td>When a gun is switched off of automatic fire mode</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_UPDATE_AMMO_HUD">COMSIG_UPDATE_AMMO_HUD</a></th><td>The gun needs to update the gun hud!</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_BREACHING">COMSIG_BREACHING</a></th><td>Used by /obj/item/melee/hammer</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_GUN_JAMMED">COMSIG_GUN_JAMMED</a></th><td>The gun has jammed.</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MUTANT_CURED">COMSIG_MUTANT_CURED</a></th><td>When a mutant is cured of the virus</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_ITEM_POWER_USE">COMSIG_ITEM_POWER_USE</a></th><td>Sent when an obj/item calls item_use_power: (use_amount, user, check_only)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_RUN_ARMOR">COMSIG_MOB_RUN_ARMOR</a></th><td>mob/living/proc/updatehealth()</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_LOSS_BRUTE">COMSIG_MOB_LOSS_BRUTE</a></th><td>mob/living/proc/adjustBruteLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_LOSS_FIRE">COMSIG_MOB_LOSS_FIRE</a></th><td>mob/living/proc/adjustBurnLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_LOSS_CLONE">COMSIG_MOB_LOSS_CLONE</a></th><td>mob/living/proc/adjustCloneLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_LOSS_TOX">COMSIG_MOB_LOSS_TOX</a></th><td>mob/living/proc/adjustToxLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_LOSS_OXY">COMSIG_MOB_LOSS_OXY</a></th><td>mob/living/proc/adjustOyxLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_LOSS_STAMINA">COMSIG_MOB_LOSS_STAMINA</a></th><td>mob/living/proc/adjustStaminaLoss (amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_MOB_LOSS_ORGAN">COMSIG_MOB_LOSS_ORGAN</a></th><td>mob/living/proc/adjustOrganLoss (slot, amount)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_TURF_MOB_FALL">COMSIG_TURF_MOB_FALL</a></th><td>from base of /turf/handle_fall(): (mob/faller)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_TURF_LIQUIDS_CREATION">COMSIG_TURF_LIQUIDS_CREATION</a></th><td>from base of /obj/effect/abstract/liquid_turf/Initialize() (/obj/effect/abstract/liquid_turf/liquids)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_FIREALARM_TRIGGERED_ON">COMSIG_FIREALARM_TRIGGERED_ON</a></th><td>obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_FIREALARM_TRIGGERED_OFF">COMSIG_FIREALARM_TRIGGERED_OFF</a></th><td>obj/machinery/firealarm/proc/untrigger_effects()</td></tr>
+        <tr><th><a href="code/__DEFINES/~skyrat_defines/signals.html#define/COMSIG_FIREDOOR_CLOSED_FIRE">COMSIG_FIREDOOR_CLOSED_FIRE</a></th><td>obj/machinery/door/firedoor/proc/trigger_hot()</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/COMSIG_BREACHING"><aside class="declaration">#define </aside>COMSIG_BREACHING
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L22">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 22"/></a>
+    </h3>
+    <p>Used by /obj/item/melee/hammer</p><h3 id="define/COMSIG_FIREALARM_TRIGGERED_OFF"><aside class="declaration">#define </aside>COMSIG_FIREALARM_TRIGGERED_OFF
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L65">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 65"/></a>
+    </h3>
+    <p>obj/machinery/firealarm/proc/untrigger_effects()</p><h3 id="define/COMSIG_FIREALARM_TRIGGERED_ON"><aside class="declaration">#define </aside>COMSIG_FIREALARM_TRIGGERED_ON
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 62"/></a>
+    </h3>
+    <p>obj/machinery/firealarm/proc/trigger_effects(manual = FALSE)</p><h3 id="define/COMSIG_FIREDOOR_CLOSED_FIRE"><aside class="declaration">#define </aside>COMSIG_FIREDOOR_CLOSED_FIRE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L67">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 67"/></a>
+    </h3>
+    <p>obj/machinery/door/firedoor/proc/trigger_hot()</p><h3 id="define/COMSIG_GUN_AUTOFIRE_DESELECTED"><aside class="declaration">#define </aside>COMSIG_GUN_AUTOFIRE_DESELECTED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 17"/></a>
+    </h3>
+    <p>When a gun is switched off of automatic fire mode</p><h3 id="define/COMSIG_GUN_AUTOFIRE_SELECTED"><aside class="declaration">#define </aside>COMSIG_GUN_AUTOFIRE_SELECTED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 15"/></a>
+    </h3>
+    <p>When a gun is switched to automatic fire mode</p><h3 id="define/COMSIG_GUN_JAMMED"><aside class="declaration">#define </aside>COMSIG_GUN_JAMMED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 24"/></a>
+    </h3>
+    <p>The gun has jammed.</p><h3 id="define/COMSIG_HORRORFORM_EXPLODE"><aside class="declaration">#define </aside>COMSIG_HORRORFORM_EXPLODE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 9"/></a>
+    </h3>
+    <p>Horror form bombastic flag</p><h3 id="define/COMSIG_ITEM_POWER_USE"><aside class="declaration">#define </aside>COMSIG_ITEM_POWER_USE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 32"/></a>
+    </h3>
+    <p>Sent when an obj/item calls item_use_power: (use_amount, user, check_only)</p><h3 id="define/COMSIG_LIVING_UPDATED_RESTING"><aside class="declaration">#define </aside>COMSIG_LIVING_UPDATED_RESTING
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 7"/></a>
+    </h3>
+    <p>Resting position for living mob updated</p><h3 id="define/COMSIG_MOB_CUMFACED"><aside class="declaration">#define </aside>COMSIG_MOB_CUMFACED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 11"/></a>
+    </h3>
+    <p>Overlay for whitestuff</p><h3 id="define/COMSIG_MOB_LOSS_BRUTE"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_BRUTE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 42"/></a>
+    </h3>
+    <p>mob/living/proc/adjustBruteLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_CLONE"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_CLONE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 46"/></a>
+    </h3>
+    <p>mob/living/proc/adjustCloneLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_FIRE"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_FIRE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 44"/></a>
+    </h3>
+    <p>mob/living/proc/adjustBurnLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_ORGAN"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_ORGAN
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 54"/></a>
+    </h3>
+    <p>mob/living/proc/adjustOrganLoss (slot, amount)</p><h3 id="define/COMSIG_MOB_LOSS_OXY"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_OXY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 50"/></a>
+    </h3>
+    <p>mob/living/proc/adjustOyxLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_STAMINA"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_STAMINA
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 52"/></a>
+    </h3>
+    <p>mob/living/proc/adjustStaminaLoss (amount)</p><h3 id="define/COMSIG_MOB_LOSS_TOX"><aside class="declaration">#define </aside>COMSIG_MOB_LOSS_TOX
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 48"/></a>
+    </h3>
+    <p>mob/living/proc/adjustToxLoss (amount)</p><h3 id="define/COMSIG_MOB_RUN_ARMOR"><aside class="declaration">#define </aside>COMSIG_MOB_RUN_ARMOR
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 40"/></a>
+    </h3>
+    <p>mob/living/proc/updatehealth()</p><h3 id="define/COMSIG_MOVABLE_RADIO_TALK_INTO"><aside class="declaration">#define </aside>COMSIG_MOVABLE_RADIO_TALK_INTO
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 3"/></a>
+    </h3>
+    <p>When someone talks into a radio</p><h3 id="define/COMSIG_MUTANT_CURED"><aside class="declaration">#define </aside>COMSIG_MUTANT_CURED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 28"/></a>
+    </h3>
+    <p>When a mutant is cured of the virus</p><h3 id="define/COMSIG_TURF_LIQUIDS_CREATION"><aside class="declaration">#define </aside>COMSIG_TURF_LIQUIDS_CREATION
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 58"/></a>
+    </h3>
+    <p>from base of /obj/effect/abstract/liquid_turf/Initialize() (/obj/effect/abstract/liquid_turf/liquids)</p><h3 id="define/COMSIG_TURF_MOB_FALL"><aside class="declaration">#define </aside>COMSIG_TURF_MOB_FALL
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 56"/></a>
+    </h3>
+    <p>from base of /turf/handle_fall(): (mob/faller)</p><h3 id="define/COMSIG_UPDATE_AMMO_HUD"><aside class="declaration">#define </aside>COMSIG_UPDATE_AMMO_HUD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/~skyrat_defines/signals.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;~skyrat_defines&#x2F;signals.dm 19"/></a>
+    </h3>
+    <p>The gun needs to update the gun hud!</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

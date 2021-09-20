@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;mutation&#x2F;human&#x2F;burdened - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/mutation/human/burdened.html#var">Var Details</a> - <a href="datum/mutation/human/burdened.html#proc">Proc Details</a></header>
+<main>
+<h1>burdened <aside>/<a href="datum.html">datum</a>/<a href="datum/mutation/human/burdened.html">mutation/human/burdened</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L3">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 3"/></a></h1>
+
+<p>Burdened grants some more mutations upon injuring yourself sufficiently</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#var/burden_level">burden_level</a></th><td>goes from 0 to 6 (but can be beyond 6, just does nothing) and gives rewards. increased by disabling yourself with debuffs</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/addict_added_burden">addict_added_burden</a></th><td>Signal to increase burden_level (see update_burden proc) if an addiction is added</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/addict_removed_burden">addict_removed_burden</a></th><td>Signal to decrease burden_level (see update_burden proc) if an addiction is removed</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/limbs_added_burden">limbs_added_burden</a></th><td>Signal to decrease burden_level (see update_burden proc) if a limb is added</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/limbs_removed_burden">limbs_removed_burden</a></th><td>Signal to increase burden_level (see update_burden proc) if a limb is removed</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/mutation_added_burden">mutation_added_burden</a></th><td>Signal to increase burden_level (see update_burden proc) if a mutation is added</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/mutation_removed_burden">mutation_removed_burden</a></th><td>Signal to decrease burden_level (see update_burden proc) if a mutation is removed</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/organ_added_burden">organ_added_burden</a></th><td>Signal to decrease burden_level (see update_burden proc) if an organ is added</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/organ_removed_burden">organ_removed_burden</a></th><td>Signal to increase burden_level (see update_burden proc) if an organ is removed</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/trauma_added_burden">trauma_added_burden</a></th><td>Signal to increase burden_level (see update_burden proc) if a trauma is added</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/trauma_removed_burden">trauma_removed_burden</a></th><td>Signal to decrease burden_level (see update_burden proc) if a trauma is removed</td></tr>
+            <tr><th><a href="datum/mutation/human/burdened.html#proc/update_burden">update_burden</a></th><td>Called by hooked signals whenever burden_level var needs to go up or down by 1.
+Sends messages on burden level, gives powers and takes them if needed, etc</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/burden_level"><aside class="declaration">var </aside>burden_level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 13"/></a></h3>
+        <p>goes from 0 to 6 (but can be beyond 6, just does nothing) and gives rewards. increased by disabling yourself with debuffs</p><h2 id="proc">Proc Details</h2><h3 id="proc/addict_added_burden"><aside class="declaration">proc </aside>addict_added_burden<aside>(/<a href="datum.html">datum</a>/<a href="datum/addiction.html">addiction</a>/new_addiction, /<a href="datum.html">datum</a>/<a href="datum/mind.html">mind</a>/addict_mind) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L148">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 148"/></a></aside>
+        </h3>
+        <p>Signal to increase burden_level (see update_burden proc) if an addiction is added</p><h3 id="proc/addict_removed_burden"><aside class="declaration">proc </aside>addict_removed_burden<aside>(/<a href="datum.html">datum</a>/<a href="datum/addiction.html">addiction</a>/old_addiction, /<a href="datum.html">datum</a>/<a href="datum/mind.html">mind</a>/nonaddict_mind) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L154">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 154"/></a></aside>
+        </h3>
+        <p>Signal to decrease burden_level (see update_burden proc) if an addiction is removed</p><h3 id="proc/limbs_added_burden"><aside class="declaration">proc </aside>limbs_added_burden<aside>(/<a href="datum.html">datum</a>/source, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/bodypart.html">bodypart</a>/new_limb, special) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L132">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 132"/></a></aside>
+        </h3>
+        <p>Signal to decrease burden_level (see update_burden proc) if a limb is added</p><h3 id="proc/limbs_removed_burden"><aside class="declaration">proc </aside>limbs_removed_burden<aside>(/<a href="datum.html">datum</a>/source, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/bodypart.html">bodypart</a>/old_limb, special) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L140">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 140"/></a></aside>
+        </h3>
+        <p>Signal to increase burden_level (see update_burden proc) if a limb is removed</p><h3 id="proc/mutation_added_burden"><aside class="declaration">proc </aside>mutation_added_burden<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/burdened, /<a href="datum.html">datum</a>/mutation/human/mutation_type, class) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L160">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 160"/></a></aside>
+        </h3>
+        <p>Signal to increase burden_level (see update_burden proc) if a mutation is added</p><h3 id="proc/mutation_removed_burden"><aside class="declaration">proc </aside>mutation_removed_burden<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/burdened, /<a href="datum.html">datum</a>/mutation/human/mutation_type) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L169">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 169"/></a></aside>
+        </h3>
+        <p>Signal to decrease burden_level (see update_burden proc) if a mutation is removed</p><h3 id="proc/organ_added_burden"><aside class="declaration">proc </aside>organ_added_burden<aside>(/<a href="mob.html">mob</a>/burdened, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/organ.html">organ</a>/new_organ, special) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 104"/></a></aside>
+        </h3>
+        <p>Signal to decrease burden_level (see update_burden proc) if an organ is added</p><h3 id="proc/organ_removed_burden"><aside class="declaration">proc </aside>organ_removed_burden<aside>(/<a href="mob.html">mob</a>/burdened, /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/organ.html">organ</a>/old_organ, special) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 118"/></a></aside>
+        </h3>
+        <p>Signal to increase burden_level (see update_burden proc) if an organ is removed</p><h3 id="proc/trauma_added_burden"><aside class="declaration">proc </aside>trauma_added_burden<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/burdened, /<a href="datum.html">datum</a>/brain_trauma/trauma_added) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L178">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 178"/></a></aside>
+        </h3>
+        <p>Signal to increase burden_level (see update_burden proc) if a trauma is added</p><h3 id="proc/trauma_removed_burden"><aside class="declaration">proc </aside>trauma_removed_burden<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/burdened, /<a href="datum.html">datum</a>/brain_trauma/trauma_removed) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L185">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 185"/></a></aside>
+        </h3>
+        <p>Signal to decrease burden_level (see update_burden proc) if a trauma is removed</p><h3 id="proc/update_burden"><aside class="declaration">proc </aside>update_burden<aside>(increase) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/mutations/holy_mutation/burdened.dm#L55">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;mutations&#x2F;holy_mutation&#x2F;burdened.dm 55"/></a></aside>
+        </h3>
+        <p>Called by hooked signals whenever burden_level var needs to go up or down by 1.
+Sends messages on burden level, gives powers and takes them if needed, etc</p>
+<p>Arguments:</p>
+<ul>
+<li>increase: whether to tick burden_level up or down 1</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

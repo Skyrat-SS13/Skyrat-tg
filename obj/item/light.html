@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;light - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/light.html#var">Var Details</a> - <a href="obj/item/light.html#proc">Proc Details</a></header>
+<main>
+<h1>light <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/light.html">light</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L5">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 5"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/light.html#var/base_state">base_state</a></th><td>Base icon state for each bulb types</td></tr>
+            <tr><th><a href="obj/item/light.html#var/brightness">brightness</a></th><td>How much light it gives off</td></tr>
+            <tr><th><a href="obj/item/light.html#var/rigged">rigged</a></th><td>True if rigged to explode</td></tr>
+            <tr><th><a href="obj/item/light.html#var/status">status</a></th><td>LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN</td></tr>
+            <tr><th><a href="obj/item/light.html#var/switchcount">switchcount</a></th><td>Number of times switched on and off</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/light.html#proc/on_reagent_change">on_reagent_change</a></th><td>Handles rigging the cell if it contains enough plasma.</td></tr>
+            <tr><th><a href="obj/item/light.html#proc/on_reagents_del">on_reagents_del</a></th><td>Handles the reagent holder datum being deleted for some reason. Probably someone making pizza lights.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/base_state"><aside class="declaration">var </aside>base_state
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 19"/></a></h3>
+        <p>Base icon state for each bulb types</p><h3 id="var/brightness"><aside class="declaration">var </aside>brightness
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 15"/></a></h3>
+        <p>How much light it gives off</p><h3 id="var/rigged"><aside class="declaration">var </aside>rigged
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 13"/></a></h3>
+        <p>True if rigged to explode</p><h3 id="var/status"><aside class="declaration">var </aside>status
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 17"/></a></h3>
+        <p>LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN</p><h3 id="var/switchcount"><aside class="declaration">var </aside>switchcount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 21"/></a></h3>
+        <p>Number of times switched on and off</p><h2 id="proc">Proc Details</h2><h3 id="proc/on_reagent_change"><aside class="declaration">proc </aside>on_reagent_change<aside>(/<a href="datum.html">datum</a>/<a href="datum/reagents.html">reagents</a>/holder, ...) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L104">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 104"/></a></aside>
+        </h3>
+        <p>Handles rigging the cell if it contains enough plasma.</p><h3 id="proc/on_reagents_del"><aside class="declaration">proc </aside>on_reagents_del<aside>(/<a href="datum.html">datum</a>/<a href="datum/reagents.html">reagents</a>/holder) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/power/lighting/light_items.dm#L112">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;power&#x2F;lighting&#x2F;light_items.dm 112"/></a></aside>
+        </h3>
+        <p>Handles the reagent holder datum being deleted for some reason. Probably someone making pizza lights.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

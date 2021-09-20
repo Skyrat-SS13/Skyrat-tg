@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;tank - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/tank.html#var">Var Details</a> - <a href="obj/item/tank.html#proc">Proc Details</a></header>
+<main>
+<h1>Gas Tank <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/tank.html">tank</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 10"/></a></h1>
+
+<p>Handheld gas canisters
+Can rupture explosively if overpressurized</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/tank.html#var/air_contents">air_contents</a></th><td>The gases this tank contains. Don't modify this directly, use return_air() to get it instead</td></tr>
+            <tr><th><a href="obj/item/tank.html#var/distribute_pressure">distribute_pressure</a></th><td>The pressure of the gases this tank supplies to internals.</td></tr>
+            <tr><th><a href="obj/item/tank.html#var/excited">excited</a></th><td>Used by process() to track if there's a reason to process each tick</td></tr>
+            <tr><th><a href="obj/item/tank.html#var/leaking">leaking</a></th><td>Whether the tank is currently leaking.</td></tr>
+            <tr><th><a href="obj/item/tank.html#var/tank_holder_icon_state">tank_holder_icon_state</a></th><td>Icon state when in a tank holder. Null makes it incompatible with tank holder.</td></tr>
+            <tr><th><a href="obj/item/tank.html#var/volume">volume</a></th><td>The volume of this tank. Among other things gas tank explosions (including TTVs) scale off of this. Be sure to account for that if you change this or you will break ~~toxins~~ordinance.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/tank.html#proc/atom_break">atom_break</a></th><td>Handles the tank springing a leak.</td></tr>
+            <tr><th><a href="obj/item/tank.html#proc/atom_destruction">atom_destruction</a></th><td>Handles rupturing and fragmenting</td></tr>
+            <tr><th><a href="obj/item/tank.html#proc/handle_tolerances">handle_tolerances</a></th><td>Handles the minimum and maximum pressure tolerances of the tank.</td></tr>
+            <tr><th><a href="obj/item/tank.html#proc/rad_act">rad_act</a></th><td>Handle fragmentation</td></tr>
+            <tr><th><a href="obj/item/tank.html#proc/remove_air_volume">remove_air_volume</a></th><td>Removes some volume of the tanks gases as the tanks distribution pressure.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/air_contents"><aside class="declaration">var </aside>air_contents
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/gas_mixture.html">gas_mixture</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 30"/></a></h3>
+        <p>The gases this tank contains. Don't modify this directly, use return_air() to get it instead</p><h3 id="var/distribute_pressure"><aside class="declaration">var </aside>distribute_pressure
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 36"/></a></h3>
+        <p>The pressure of the gases this tank supplies to internals.</p><h3 id="var/excited"><aside class="declaration">var </aside>excited
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 40"/></a></h3>
+        <p>Used by process() to track if there's a reason to process each tick</p><h3 id="var/leaking"><aside class="declaration">var </aside>leaking
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L34">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 34"/></a></h3>
+        <p>Whether the tank is currently leaking.</p><h3 id="var/tank_holder_icon_state"><aside class="declaration">var </aside>tank_holder_icon_state
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 38"/></a></h3>
+        <p>Icon state when in a tank holder. Null makes it incompatible with tank holder.</p><h3 id="var/volume"><aside class="declaration">var </aside>volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 32"/></a></h3>
+        <p>The volume of this tank. Among other things gas tank explosions (including TTVs) scale off of this. Be sure to account for that if you change this or you will break ~~toxins~~ordinance.</p><h2 id="proc">Proc Details</h2><h3 id="proc/atom_break"><aside class="parent"><a title="/atom" href="atom.html#proc/atom_break">&uarr;</a></aside>atom_break<aside>(damage_flag) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L294">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 294"/></a></aside>
+        </h3>
+        <p>Handles the tank springing a leak.</p><h3 id="proc/atom_destruction"><aside class="parent"><a title="/obj" href="obj.html#proc/atom_destruction">&uarr;</a></aside>atom_destruction<aside>(damage_flag) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L308">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 308"/></a></aside>
+        </h3>
+        <p>Handles rupturing and fragmenting</p><h3 id="proc/handle_tolerances"><aside class="declaration">proc </aside>handle_tolerances<aside>(delta_time) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L275">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 275"/></a></aside>
+        </h3>
+        <p>Handles the minimum and maximum pressure tolerances of the tank.</p>
+<p>Returns true if it did anything of significance, false otherwise
+Arguments:</p>
+<ul>
+<li>delta_time: How long has passed between ticks.</li>
+</ul><h3 id="proc/rad_act"><aside class="parent"><a title="/atom" href="atom.html#proc/rad_act">&uarr;</a></aside>rad_act<aside>(strength) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L326">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 326"/></a></aside>
+        </h3>
+        <p>Handle fragmentation</p><h3 id="proc/remove_air_volume"><aside class="declaration">proc </aside>remove_air_volume<aside>(volume_to_return) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/tanks/tanks.dm#L229">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;tanks&#x2F;tanks.dm 229"/></a></aside>
+        </h3>
+        <p>Removes some volume of the tanks gases as the tanks distribution pressure.</p>
+<p>Arguments:</p>
+<ul>
+<li>volume_to_return: The amount of volume to remove from the tank.</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

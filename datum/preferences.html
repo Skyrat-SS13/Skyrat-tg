@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;preferences - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/preferences.html#var">Var Details</a> - <a href="datum/preferences.html#proc">Proc Details</a></header>
+<main>
+<h1>preferences <aside>/<a href="datum.html">datum</a>/<a href="datum/preferences.html">preferences</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L22">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 22"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/preferences.html#var/announcement_volume">announcement_volume</a></th><td>The current volume setting for announcements</td></tr>
+            <tr><th><a href="datum/preferences.html#var/arousal_preview">arousal_preview</a></th><td>The arousal state of the previewed character, can be toggled by the user</td></tr>
+            <tr><th><a href="datum/preferences.html#var/augment_limb_styles">augment_limb_styles</a></th><td>List of chosen preferred styles for limb replacements</td></tr>
+            <tr><th><a href="datum/preferences.html#var/augments">augments</a></th><td>List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define</td></tr>
+            <tr><th><a href="datum/preferences.html#var/auto_fit_viewport">auto_fit_viewport</a></th><td>Should we automatically fit the viewport?</td></tr>
+            <tr><th><a href="datum/preferences.html#var/body_type">body_type</a></th><td>Agendered spessmen can choose whether to have a male or female bodytype</td></tr>
+            <tr><th><a href="datum/preferences.html#var/brief_outfit">brief_outfit</a></th><td>If we spawn an ERT as an admin and choose to spawn as the briefing officer, we'll be given this outfit</td></tr>
+            <tr><th><a href="datum/preferences.html#var/broadcast_login_logout">broadcast_login_logout</a></th><td>If we want to broadcast deadchat connect/disconnect messages</td></tr>
+            <tr><th><a href="datum/preferences.html#var/chat_on_map">chat_on_map</a></th><td>Runechat preference. If true, certain messages will be displayed on the map, not ust on the chat area. Boolean.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/chosen_augment_slot">chosen_augment_slot</a></th><td>Which augment slot we currently have chosen, this is for UI display</td></tr>
+            <tr><th><a href="datum/preferences.html#var/culture_more_info">culture_more_info</a></th><td>Whether someone wishes to see more information regarding either of those</td></tr>
+            <tr><th><a href="datum/preferences.html#var/darkened_flash">darkened_flash</a></th><td>If TRUE, we replace the flash effect from flashes with a solid black screen</td></tr>
+            <tr><th><a href="datum/preferences.html#var/favorite_outfits">favorite_outfits</a></th><td>What outfit typepaths we've favorited in the SelectEquipment menu</td></tr>
+            <tr><th><a href="datum/preferences.html#var/hearted">hearted</a></th><td>Someone thought we were nice! We get a little heart in OOC until we join the server past the below time (we can keep it until the end of the round otherwise)</td></tr>
+            <tr><th><a href="datum/preferences.html#var/hearted_until">hearted_until</a></th><td>If we have a hearted commendations, we honor it every time the player loads preferences until this time has been passed</td></tr>
+            <tr><th><a href="datum/preferences.html#var/itemoutline_pref">itemoutline_pref</a></th><td>Do we show item hover outlines?</td></tr>
+            <tr><th><a href="datum/preferences.html#var/loadout">loadout</a></th><td>Loadout items, this is an associative list stored as [name] = &quot;info&quot;. Info can be either colors or styles for the loadout items</td></tr>
+            <tr><th><a href="datum/preferences.html#var/loadout_points">loadout_points</a></th><td>How many loadout points we've got remaining</td></tr>
+            <tr><th><a href="datum/preferences.html#var/max_chat_length">max_chat_length</a></th><td>Limit preference on the size of the message. Requires chat_on_map to have effect.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/mismatched_customization">mismatched_customization</a></th><td>Will the person see accessories not meant for their species to choose from</td></tr>
+            <tr><th><a href="datum/preferences.html#var/needs_update">needs_update</a></th><td>Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set</td></tr>
+            <tr><th><a href="datum/preferences.html#var/persistent_scars">persistent_scars</a></th><td>If we have persistent scars enabled</td></tr>
+            <tr><th><a href="datum/preferences.html#var/pixel_size">pixel_size</a></th><td>What size should pixels be displayed as? 0 is strech to fit</td></tr>
+            <tr><th><a href="datum/preferences.html#var/playtime_reward_cloak">playtime_reward_cloak</a></th><td>The playtime_reward_cloak variable can be set to TRUE from the prefs menu only once the user has gained over 5K playtime hours. If true, it allows the user to get a cool looking roundstart cloak.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/pref_culture">pref_culture</a></th><td>Chosen cultural informations</td></tr>
+            <tr><th><a href="datum/preferences.html#var/scaling_method">scaling_method</a></th><td>What scaling method should we use? Distort means nearest neighbor</td></tr>
+            <tr><th><a href="datum/preferences.html#var/screentip_color">screentip_color</a></th><td>Color of screentips at top of screen</td></tr>
+            <tr><th><a href="datum/preferences.html#var/screentip_pref">screentip_pref</a></th><td>Do we show screentips, if so, how big?</td></tr>
+            <tr><th><a href="datum/preferences.html#var/see_chat_non_mob">see_chat_non_mob</a></th><td>Whether non-mob messages will be displayed, such as machine vendor announcements. Requires chat_on_map to have effect. Boolean.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/see_rc_emotes">see_rc_emotes</a></th><td>Whether emotes will be displayed on runechat. Requires chat_on_map to have effect. Boolean.</td></tr>
+            <tr><th><a href="datum/preferences.html#var/show_body_size">show_body_size</a></th><td>Whether the user wants to see body size being shown in the preview</td></tr>
+            <tr><th><a href="datum/preferences.html#var/widescreenpref">widescreenpref</a></th><td>Should we be in the widescreen mode set by the config?</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/preferences.html#proc/apply_character_randomization_prefs">apply_character_randomization_prefs</a></th><td>Randomizes the character according to preferences.</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/apply_prefs_to">apply_prefs_to</a></th><td>Applies the given preferences to a human mob.</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/check_keybindings">check_keybindings</a></th><td>checks through keybindings for outdated unbound keys and updates them</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/hardcore_random_setup">hardcore_random_setup</a></th><td>Setup the random hardcore quirks and give the character the new score prize.</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/randomise_appearance_prefs">randomise_appearance_prefs</a></th><td>Fully randomizes everything in the character.</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/safe_transfer_prefs_to">safe_transfer_prefs_to</a></th><td>Sanitizes the preferences, applies the randomization prefs, and then applies the preference to the human mob.</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/sanitize_chosen_prefs">sanitize_chosen_prefs</a></th><td>Sanitization checks to be performed before using these preferences.</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/select_hardcore_quirks">select_hardcore_quirks</a></th><td>Goes through all quirks that can be used in hardcore mode and select some based on a random budget.
+Returns the new value to be gained with this setup, plus the previously earned score.</td></tr>
+            <tr><th><a href="datum/preferences.html#proc/should_be_random_hardcore">should_be_random_hardcore</a></th><td>Returns whether the parent mob should have the random hardcore settings enabled. Assumes it has a mind.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/announcement_volume"><aside class="declaration">var </aside>announcement_volume
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L245">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 245"/></a></h3>
+        <p>The current volume setting for announcements</p><h3 id="var/arousal_preview"><aside class="declaration">var </aside>arousal_preview
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L243">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 243"/></a></h3>
+        <p>The arousal state of the previewed character, can be toggled by the user</p><h3 id="var/augment_limb_styles"><aside class="declaration">var </aside>augment_limb_styles
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L237">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 237"/></a></h3>
+        <p>List of chosen preferred styles for limb replacements</p><h3 id="var/augments"><aside class="declaration">var </aside>augments
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L235">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 235"/></a></h3>
+        <p>List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define</p><h3 id="var/auto_fit_viewport"><aside class="declaration">var </aside>auto_fit_viewport
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L171">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 171"/></a></h3>
+        <p>Should we automatically fit the viewport?</p><h3 id="var/body_type"><aside class="declaration">var </aside>body_type
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L192">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 192"/></a></h3>
+        <p>Agendered spessmen can choose whether to have a male or female bodytype</p><h3 id="var/brief_outfit"><aside class="declaration">var </aside>brief_outfit
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L40">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 40"/></a></h3>
+        <p>If we spawn an ERT as an admin and choose to spawn as the briefing officer, we'll be given this outfit</p><h3 id="var/broadcast_login_logout"><aside class="declaration">var </aside>broadcast_login_logout
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L196">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 196"/></a></h3>
+        <p>If we want to broadcast deadchat connect/disconnect messages</p><h3 id="var/chat_on_map"><aside class="declaration">var </aside>chat_on_map
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L56">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 56"/></a></h3>
+        <p>Runechat preference. If true, certain messages will be displayed on the map, not ust on the chat area. Boolean.</p><h3 id="var/chosen_augment_slot"><aside class="declaration">var </aside>chosen_augment_slot
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L239">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 239"/></a></h3>
+        <p>Which augment slot we currently have chosen, this is for UI display</p><h3 id="var/culture_more_info"><aside class="declaration">var </aside>culture_more_info
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L252">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 252"/></a></h3>
+        <p>Whether someone wishes to see more information regarding either of those</p><h3 id="var/darkened_flash"><aside class="declaration">var </aside>darkened_flash
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L200">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 200"/></a></h3>
+        <p>If TRUE, we replace the flash effect from flashes with a solid black screen</p><h3 id="var/favorite_outfits"><aside class="declaration">var </aside>favorite_outfits
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L198">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 198"/></a></h3>
+        <p>What outfit typepaths we've favorited in the SelectEquipment menu</p><h3 id="var/hearted"><aside class="declaration">var </aside>hearted
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L188">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 188"/></a></h3>
+        <p>Someone thought we were nice! We get a little heart in OOC until we join the server past the below time (we can keep it until the end of the round otherwise)</p><h3 id="var/hearted_until"><aside class="declaration">var </aside>hearted_until
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L190">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 190"/></a></h3>
+        <p>If we have a hearted commendations, we honor it every time the player loads preferences until this time has been passed</p><h3 id="var/itemoutline_pref"><aside class="declaration">var </aside>itemoutline_pref
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L167">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 167"/></a></h3>
+        <p>Do we show item hover outlines?</p><h3 id="var/loadout"><aside class="declaration">var </aside>loadout
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L212">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 212"/></a></h3>
+        <p>Loadout items, this is an associative list stored as [name] = &quot;info&quot;. Info can be either colors or styles for the loadout items</p><h3 id="var/loadout_points"><aside class="declaration">var </aside>loadout_points
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L210">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 210"/></a></h3>
+        <p>How many loadout points we've got remaining</p><h3 id="var/max_chat_length"><aside class="declaration">var </aside>max_chat_length
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L58">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 58"/></a></h3>
+        <p>Limit preference on the size of the message. Requires chat_on_map to have effect.</p><h3 id="var/mismatched_customization"><aside class="declaration">var </aside>mismatched_customization
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L202">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 202"/></a></h3>
+        <p>Will the person see accessories not meant for their species to choose from</p><h3 id="var/needs_update"><aside class="declaration">var </aside>needs_update
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L233">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 233"/></a></h3>
+        <p>Whether the system should have to update the sprite. This is set to TRUE whenever anything appearance changing is set</p><h3 id="var/persistent_scars"><aside class="declaration">var </aside>persistent_scars
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L194">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 194"/></a></h3>
+        <p>If we have persistent scars enabled</p><h3 id="var/pixel_size"><aside class="declaration">var </aside>pixel_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L175">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 175"/></a></h3>
+        <p>What size should pixels be displayed as? 0 is strech to fit</p><h3 id="var/playtime_reward_cloak"><aside class="declaration">var </aside>playtime_reward_cloak
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L180">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 180"/></a></h3>
+        <p>The playtime_reward_cloak variable can be set to TRUE from the prefs menu only once the user has gained over 5K playtime hours. If true, it allows the user to get a cool looking roundstart cloak.</p><h3 id="var/pref_culture"><aside class="declaration">var </aside>pref_culture
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L248">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 248"/></a></h3>
+        <p>Chosen cultural informations</p><h3 id="var/scaling_method"><aside class="declaration">var </aside>scaling_method
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L177">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 177"/></a></h3>
+        <p>What scaling method should we use? Distort means nearest neighbor</p><h3 id="var/screentip_color"><aside class="declaration">var </aside>screentip_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L165">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 165"/></a></h3>
+        <p>Color of screentips at top of screen</p><h3 id="var/screentip_pref"><aside class="declaration">var </aside>screentip_pref
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L163">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 163"/></a></h3>
+        <p>Do we show screentips, if so, how big?</p><h3 id="var/see_chat_non_mob"><aside class="declaration">var </aside>see_chat_non_mob
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L60">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 60"/></a></h3>
+        <p>Whether non-mob messages will be displayed, such as machine vendor announcements. Requires chat_on_map to have effect. Boolean.</p><h3 id="var/see_rc_emotes"><aside class="declaration">var </aside>see_rc_emotes
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L62">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 62"/></a></h3>
+        <p>Whether emotes will be displayed on runechat. Requires chat_on_map to have effect. Boolean.</p><h3 id="var/show_body_size"><aside class="declaration">var </aside>show_body_size
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L241">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 241"/></a></h3>
+        <p>Whether the user wants to see body size being shown in the preview</p><h3 id="var/widescreenpref"><aside class="declaration">var </aside>widescreenpref
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L173">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 173"/></a></h3>
+        <p>Should we be in the widescreen mode set by the config?</p><h2 id="proc">Proc Details</h2><h3 id="proc/apply_character_randomization_prefs"><aside class="declaration">proc </aside>apply_character_randomization_prefs<aside>(antag_override) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/mob/dead/new_player/preferences_setup.dm#L50">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;preferences_setup.dm 50"/></a></aside>
+        </h3>
+        <p>Randomizes the character according to preferences.</p><h3 id="proc/apply_prefs_to"><aside class="declaration">proc </aside>apply_prefs_to<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/character, icon_updates) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L3100">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 3100"/></a></aside>
+        </h3>
+        <p>Applies the given preferences to a human mob.</p><h3 id="proc/check_keybindings"><aside class="declaration">proc </aside>check_keybindings<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences_savefile.dm#L97">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences_savefile.dm 97"/></a></aside>
+        </h3>
+        <p>checks through keybindings for outdated unbound keys and updates them</p><h3 id="proc/hardcore_random_setup"><aside class="declaration">proc </aside>hardcore_random_setup<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/character) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/mob/dead/new_player/preferences_setup.dm#L100">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;preferences_setup.dm 100"/></a></aside>
+        </h3>
+        <p>Setup the random hardcore quirks and give the character the new score prize.</p><h3 id="proc/randomise_appearance_prefs"><aside class="declaration">proc </aside>randomise_appearance_prefs<aside>(randomise_flags) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/mob/dead/new_player/preferences_setup.dm#L2">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;preferences_setup.dm 2"/></a></aside>
+        </h3>
+        <p>Fully randomizes everything in the character.</p><h3 id="proc/safe_transfer_prefs_to"><aside class="declaration">proc </aside>safe_transfer_prefs_to<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/<a href="mob/living/carbon.html">carbon</a>/<a href="mob/living/carbon/human.html">human</a>/character, icon_updates, is_antag) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L3094">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 3094"/></a></aside>
+        </h3>
+        <p>Sanitizes the preferences, applies the randomization prefs, and then applies the preference to the human mob.</p><h3 id="proc/sanitize_chosen_prefs"><aside class="declaration">proc </aside>sanitize_chosen_prefs<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L3084">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 3084"/></a></aside>
+        </h3>
+        <p>Sanitization checks to be performed before using these preferences.</p><h3 id="proc/select_hardcore_quirks"><aside class="declaration">proc </aside>select_hardcore_quirks<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/mob/dead/new_player/preferences_setup.dm#L108">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;mob&#x2F;dead&#x2F;new_player&#x2F;preferences_setup.dm 108"/></a></aside>
+        </h3>
+        <p>Goes through all quirks that can be used in hardcore mode and select some based on a random budget.
+Returns the new value to be gained with this setup, plus the previously earned score.</p><h3 id="proc/should_be_random_hardcore"><aside class="declaration">proc </aside>should_be_random_hardcore<aside>(/<a href="datum.html">datum</a>/<a href="datum/job.html">job</a>/job, /<a href="datum.html">datum</a>/<a href="datum/mind.html">mind</a>/mind) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/customization/modules/client/preferences.dm#L3166">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;customization&#x2F;modules&#x2F;client&#x2F;preferences.dm 3166"/></a></aside>
+        </h3>
+        <p>Returns whether the parent mob should have the random hardcore settings enabled. Assumes it has a mind.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

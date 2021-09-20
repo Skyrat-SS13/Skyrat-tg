@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>code&#x2F;__DEFINES&#x2F;memory_defines.dm - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="code/__DEFINES/memory_defines.html#define">Define Details</a></header>
+<main>
+<h1>code/__DEFINES/memory_defines.dm 
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm"/></a></h1>
+
+<table class="summary" cellspacing="0">
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_FILE">MEMORY_FILE</a></th><td>name of the file that has all the memory strings</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/ENGRAVING_SAVE_FILE">ENGRAVING_SAVE_FILE</a></th><td>name of the file that has all the saved engravings</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/PRISONER_TATTOO_SAVE_FILE">PRISONER_TATTOO_SAVE_FILE</a></th><td>name of the file that has all the prisoner tattoos</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/ENGRAVING_PERSISTENCE_VERSION">ENGRAVING_PERSISTENCE_VERSION</a></th><td>Current version of the engraving persistence json</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/TATTOO_PERSISTENCE_VERSION">TATTOO_PERSISTENCE_VERSION</a></th><td>Current version of the tattoo persistence json</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MIN_PERSISTENT_ENGRAVINGS">MIN_PERSISTENT_ENGRAVINGS</a></th><td>how many engravings will be loaded max with persistence</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_HAPPY_THRESHOLD">MEMORY_HAPPY_THRESHOLD</a></th><td>threshold for the memory being a happy one 8)</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_SAD_THRESHOLD">MEMORY_SAD_THRESHOLD</a></th><td>threshold for the memory being a sad one :^(</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MOODLESS_MEMORY">MOODLESS_MEMORY</a></th><td>moodlet set if the creature with the memory doesn't use mood (doesn't include mood line)</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/ENGRAVING_BEAUTY_TO_ART_FACTOR">ENGRAVING_BEAUTY_TO_ART_FACTOR</a></th><td>Factor of how beauty is divided to make the engraving art value</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/STORY_VALUE_SHIT">STORY_VALUE_SHIT</a></th><td>How cool a story is!</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_FLAG_NOLOCATION">MEMORY_FLAG_NOLOCATION</a></th><td>this memory doesn't have a location, emit that</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_FLAG_NOMOOD">MEMORY_FLAG_NOMOOD</a></th><td>this memory's protagonist for one reason or another doesn't have a mood, emit that</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_FLAG_NOSTATIONNAME">MEMORY_FLAG_NOSTATIONNAME</a></th><td>this memory shouldn't include the station name (example: revolution memory)</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_FLAG_NOPERSISTENCE">MEMORY_FLAG_NOPERSISTENCE</a></th><td>this memory is REALLY shit and should never be saved in persistence, basically apply this to all quirks.</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_FLAG_ALREADY_USED">MEMORY_FLAG_ALREADY_USED</a></th><td>this memory has already been engraved, and cannot be selected for engraving again.</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_SUCCESSFUL_SURGERY">MEMORY_SUCCESSFUL_SURGERY</a></th><td>a memory of completing a surgery.</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_BOMB_PRIMED">MEMORY_BOMB_PRIMED</a></th><td>a memory of priming a bomb</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_HIGH_FIVE">MEMORY_HIGH_FIVE</a></th><td>a memory of pulling off either a high five or a high ten</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_BORGED">MEMORY_BORGED</a></th><td>a memory of getting borged</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_DEATH">MEMORY_DEATH</a></th><td>a memory of dying! includes time of death</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_CREAMPIED">MEMORY_CREAMPIED</a></th><td>a memory of being creampied! Mentions where</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_SLIPPED">MEMORY_SLIPPED</a></th><td>a memory of being slipped! Mentions on what</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_SPAGHETTI_SPILL">MEMORY_SPAGHETTI_SPILL</a></th><td>A memory of letting my spaghetti spill, how embarrasing!</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_KISS">MEMORY_KISS</a></th><td>A memory of getting a kiss blown. Provides the kisser and kissee.</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_MEAL">MEMORY_MEAL</a></th><td>A memory of a really good meal</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_DRINK">MEMORY_DRINK</a></th><td>A memory of a really good drink</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_FIRE">MEMORY_FIRE</a></th><td>A memory of being lit</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_DISMEMBERED">MEMORY_DISMEMBERED</a></th><td>A memory of limb loss</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_PET_DEAD">MEMORY_PET_DEAD</a></th><td>A memory of seeing a pet die</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_WON_REVOLUTION">MEMORY_WON_REVOLUTION</a></th><td>A memory of leading a winning revolution</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_RECEIVED_MEDAL">MEMORY_RECEIVED_MEDAL</a></th><td>An award ceremony of a medal</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_MEGAFAUNA_KILL">MEMORY_MEGAFAUNA_KILL</a></th><td>A megafauna kill!</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_GUNPOINT">MEMORY_GUNPOINT</a></th><td>Being held at gunpoint</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_GIBBED">MEMORY_GIBBED</a></th><td>Exploding into gibs</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_VENDING_CRUSHED">MEMORY_VENDING_CRUSHED</a></th><td>Crushed by vending machine</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_SUPERMATTER_DUSTED">MEMORY_SUPERMATTER_DUSTED</a></th><td>Dusted by SM</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_NUKECODE">MEMORY_NUKECODE</a></th><td>Nuke ops nuke code memory</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_ACCOUNT">MEMORY_ACCOUNT</a></th><td>These are also memories, but they're examples of what I kinda don't want to be memories. They're stuff that I had to port
+over to this system from the old old and they don't make for good examples</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_QUIRK_DRUG">MEMORY_QUIRK_DRUG</a></th><td>your memorized drug</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/MEMORY_ALLERGY">MEMORY_ALLERGY</a></th><td>your allergy</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/STORY_ENGRAVING">STORY_ENGRAVING</a></th><td>wall engraving stories</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/STORY_CHANGELING_ABSORB">STORY_CHANGELING_ABSORB</a></th><td>changeling memory reading</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/STORY_TATTOO">STORY_TATTOO</a></th><td>tattoos</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/STORY_FLAG_DATED">STORY_FLAG_DATED</a></th><td>include a date this event happened</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/DETAIL_WHERE">DETAIL_WHERE</a></th><td>Generic memory info keys. Use these whenever one of these is the case in a story, because we add extra story piece if these exist.
+The location of the memory, add these to have a chance of it being added to the story</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/DETAIL_PROTAGONIST">DETAIL_PROTAGONIST</a></th><td>The main subject of the memory. Should be whoever has the biggest impact on the story. (As it grabs the memory from this person)</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/DETAIL_WHAT_BY">DETAIL_WHAT_BY</a></th><td>Usually used bespokely by specific memory types and not added generically, but its generaly the object used to cause the memory. E.g. a peel to slip, the food that was eaten.</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/DETAIL_DEUTERAGONIST">DETAIL_DEUTERAGONIST</a></th><td>Used whenever a memory has a secondary character. Used bespokely by actions.</td></tr>
+        <tr><th><a href="code/__DEFINES/memory_defines.html#define/DETAIL_PROTAGONIST_MOOD">DETAIL_PROTAGONIST_MOOD</a></th><td>Automatically obtained details</td></tr></table><h2 id="define">Define Details</h2>
+<h3 id="define/DETAIL_DEUTERAGONIST"><aside class="declaration">#define </aside>DETAIL_DEUTERAGONIST
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L127">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 127"/></a>
+    </h3>
+    <p>Used whenever a memory has a secondary character. Used bespokely by actions.</p><h3 id="define/DETAIL_PROTAGONIST"><aside class="declaration">#define </aside>DETAIL_PROTAGONIST
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L123">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 123"/></a>
+    </h3>
+    <p>The main subject of the memory. Should be whoever has the biggest impact on the story. (As it grabs the memory from this person)</p><h3 id="define/DETAIL_PROTAGONIST_MOOD"><aside class="declaration">#define </aside>DETAIL_PROTAGONIST_MOOD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L129">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 129"/></a>
+    </h3>
+    <p>Automatically obtained details</p><h3 id="define/DETAIL_WHAT_BY"><aside class="declaration">#define </aside>DETAIL_WHAT_BY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L125">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 125"/></a>
+    </h3>
+    <p>Usually used bespokely by specific memory types and not added generically, but its generaly the object used to cause the memory. E.g. a peel to slip, the food that was eaten.</p><h3 id="define/DETAIL_WHERE"><aside class="declaration">#define </aside>DETAIL_WHERE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L121">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 121"/></a>
+    </h3>
+    <p>Generic memory info keys. Use these whenever one of these is the case in a story, because we add extra story piece if these exist.
+The location of the memory, add these to have a chance of it being added to the story</p><h3 id="define/ENGRAVING_BEAUTY_TO_ART_FACTOR"><aside class="declaration">#define </aside>ENGRAVING_BEAUTY_TO_ART_FACTOR
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 24"/></a>
+    </h3>
+    <p>Factor of how beauty is divided to make the engraving art value</p><h3 id="define/ENGRAVING_PERSISTENCE_VERSION"><aside class="declaration">#define </aside>ENGRAVING_PERSISTENCE_VERSION
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L8">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 8"/></a>
+    </h3>
+    <p>Current version of the engraving persistence json</p><h3 id="define/ENGRAVING_SAVE_FILE"><aside class="declaration">#define </aside>ENGRAVING_SAVE_FILE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 4"/></a>
+    </h3>
+    <p>name of the file that has all the saved engravings</p><h3 id="define/MEMORY_ACCOUNT"><aside class="declaration">#define </aside>MEMORY_ACCOUNT
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L101">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 101"/></a>
+    </h3>
+    <p>These are also memories, but they're examples of what I kinda don't want to be memories. They're stuff that I had to port
+over to this system from the old old and they don't make for good examples</p>
+<p>ideally these eventually get moved off this system... though engraving your bank account is so HILARIOUSLY dumb so maybe leave that one
+your memorized code</p><h3 id="define/MEMORY_ALLERGY"><aside class="declaration">#define </aside>MEMORY_ALLERGY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L105">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 105"/></a>
+    </h3>
+    <p>your allergy</p><h3 id="define/MEMORY_BOMB_PRIMED"><aside class="declaration">#define </aside>MEMORY_BOMB_PRIMED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 52"/></a>
+    </h3>
+    <p>a memory of priming a bomb</p><h3 id="define/MEMORY_BORGED"><aside class="declaration">#define </aside>MEMORY_BORGED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 56"/></a>
+    </h3>
+    <p>a memory of getting borged</p><h3 id="define/MEMORY_CREAMPIED"><aside class="declaration">#define </aside>MEMORY_CREAMPIED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L60">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 60"/></a>
+    </h3>
+    <p>a memory of being creampied! Mentions where</p><h3 id="define/MEMORY_DEATH"><aside class="declaration">#define </aside>MEMORY_DEATH
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L58">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 58"/></a>
+    </h3>
+    <p>a memory of dying! includes time of death</p><h3 id="define/MEMORY_DISMEMBERED"><aside class="declaration">#define </aside>MEMORY_DISMEMBERED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L74">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 74"/></a>
+    </h3>
+    <p>A memory of limb loss</p><h3 id="define/MEMORY_DRINK"><aside class="declaration">#define </aside>MEMORY_DRINK
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L70">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 70"/></a>
+    </h3>
+    <p>A memory of a really good drink</p><h3 id="define/MEMORY_FILE"><aside class="declaration">#define </aside>MEMORY_FILE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 2"/></a>
+    </h3>
+    <p>name of the file that has all the memory strings</p><h3 id="define/MEMORY_FIRE"><aside class="declaration">#define </aside>MEMORY_FIRE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L72">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 72"/></a>
+    </h3>
+    <p>A memory of being lit</p><h3 id="define/MEMORY_FLAG_ALREADY_USED"><aside class="declaration">#define </aside>MEMORY_FLAG_ALREADY_USED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 46"/></a>
+    </h3>
+    <p>this memory has already been engraved, and cannot be selected for engraving again.</p><h3 id="define/MEMORY_FLAG_NOLOCATION"><aside class="declaration">#define </aside>MEMORY_FLAG_NOLOCATION
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 38"/></a>
+    </h3>
+    <p>this memory doesn't have a location, emit that</p><h3 id="define/MEMORY_FLAG_NOMOOD"><aside class="declaration">#define </aside>MEMORY_FLAG_NOMOOD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 40"/></a>
+    </h3>
+    <p>this memory's protagonist for one reason or another doesn't have a mood, emit that</p><h3 id="define/MEMORY_FLAG_NOPERSISTENCE"><aside class="declaration">#define </aside>MEMORY_FLAG_NOPERSISTENCE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 44"/></a>
+    </h3>
+    <p>this memory is REALLY shit and should never be saved in persistence, basically apply this to all quirks.</p><h3 id="define/MEMORY_FLAG_NOSTATIONNAME"><aside class="declaration">#define </aside>MEMORY_FLAG_NOSTATIONNAME
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 42"/></a>
+    </h3>
+    <p>this memory shouldn't include the station name (example: revolution memory)</p><h3 id="define/MEMORY_GIBBED"><aside class="declaration">#define </aside>MEMORY_GIBBED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L86">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 86"/></a>
+    </h3>
+    <p>Exploding into gibs</p><h3 id="define/MEMORY_GUNPOINT"><aside class="declaration">#define </aside>MEMORY_GUNPOINT
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 84"/></a>
+    </h3>
+    <p>Being held at gunpoint</p><h3 id="define/MEMORY_HAPPY_THRESHOLD"><aside class="declaration">#define </aside>MEMORY_HAPPY_THRESHOLD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 17"/></a>
+    </h3>
+    <p>threshold for the memory being a happy one 8)</p><h3 id="define/MEMORY_HIGH_FIVE"><aside class="declaration">#define </aside>MEMORY_HIGH_FIVE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L54">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 54"/></a>
+    </h3>
+    <p>a memory of pulling off either a high five or a high ten</p><h3 id="define/MEMORY_KISS"><aside class="declaration">#define </aside>MEMORY_KISS
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 66"/></a>
+    </h3>
+    <p>A memory of getting a kiss blown. Provides the kisser and kissee.</p><h3 id="define/MEMORY_MEAL"><aside class="declaration">#define </aside>MEMORY_MEAL
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L68">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 68"/></a>
+    </h3>
+    <p>A memory of a really good meal</p><h3 id="define/MEMORY_MEGAFAUNA_KILL"><aside class="declaration">#define </aside>MEMORY_MEGAFAUNA_KILL
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L82">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 82"/></a>
+    </h3>
+    <p>A megafauna kill!</p><h3 id="define/MEMORY_NUKECODE"><aside class="declaration">#define </aside>MEMORY_NUKECODE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 92"/></a>
+    </h3>
+    <p>Nuke ops nuke code memory</p><h3 id="define/MEMORY_PET_DEAD"><aside class="declaration">#define </aside>MEMORY_PET_DEAD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L76">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 76"/></a>
+    </h3>
+    <p>A memory of seeing a pet die</p><h3 id="define/MEMORY_QUIRK_DRUG"><aside class="declaration">#define </aside>MEMORY_QUIRK_DRUG
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L103">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 103"/></a>
+    </h3>
+    <p>your memorized drug</p><h3 id="define/MEMORY_RECEIVED_MEDAL"><aside class="declaration">#define </aside>MEMORY_RECEIVED_MEDAL
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L80">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 80"/></a>
+    </h3>
+    <p>An award ceremony of a medal</p><h3 id="define/MEMORY_SAD_THRESHOLD"><aside class="declaration">#define </aside>MEMORY_SAD_THRESHOLD
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 19"/></a>
+    </h3>
+    <p>threshold for the memory being a sad one :^(</p><h3 id="define/MEMORY_SLIPPED"><aside class="declaration">#define </aside>MEMORY_SLIPPED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L62">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 62"/></a>
+    </h3>
+    <p>a memory of being slipped! Mentions on what</p><h3 id="define/MEMORY_SPAGHETTI_SPILL"><aside class="declaration">#define </aside>MEMORY_SPAGHETTI_SPILL
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L64">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 64"/></a>
+    </h3>
+    <p>A memory of letting my spaghetti spill, how embarrasing!</p><h3 id="define/MEMORY_SUCCESSFUL_SURGERY"><aside class="declaration">#define </aside>MEMORY_SUCCESSFUL_SURGERY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 50"/></a>
+    </h3>
+    <p>a memory of completing a surgery.</p><h3 id="define/MEMORY_SUPERMATTER_DUSTED"><aside class="declaration">#define </aside>MEMORY_SUPERMATTER_DUSTED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L90">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 90"/></a>
+    </h3>
+    <p>Dusted by SM</p><h3 id="define/MEMORY_VENDING_CRUSHED"><aside class="declaration">#define </aside>MEMORY_VENDING_CRUSHED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L88">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 88"/></a>
+    </h3>
+    <p>Crushed by vending machine</p><h3 id="define/MEMORY_WON_REVOLUTION"><aside class="declaration">#define </aside>MEMORY_WON_REVOLUTION
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 78"/></a>
+    </h3>
+    <p>A memory of leading a winning revolution</p><h3 id="define/MIN_PERSISTENT_ENGRAVINGS"><aside class="declaration">#define </aside>MIN_PERSISTENT_ENGRAVINGS
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 13"/></a>
+    </h3>
+    <p>how many engravings will be loaded max with persistence</p><h3 id="define/MOODLESS_MEMORY"><aside class="declaration">#define </aside>MOODLESS_MEMORY
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 21"/></a>
+    </h3>
+    <p>moodlet set if the creature with the memory doesn't use mood (doesn't include mood line)</p><h3 id="define/PRISONER_TATTOO_SAVE_FILE"><aside class="declaration">#define </aside>PRISONER_TATTOO_SAVE_FILE
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L6">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 6"/></a>
+    </h3>
+    <p>name of the file that has all the prisoner tattoos</p><h3 id="define/STORY_CHANGELING_ABSORB"><aside class="declaration">#define </aside>STORY_CHANGELING_ABSORB
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L111">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 111"/></a>
+    </h3>
+    <p>changeling memory reading</p><h3 id="define/STORY_ENGRAVING"><aside class="declaration">#define </aside>STORY_ENGRAVING
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L109">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 109"/></a>
+    </h3>
+    <p>wall engraving stories</p><h3 id="define/STORY_FLAG_DATED"><aside class="declaration">#define </aside>STORY_FLAG_DATED
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L117">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 117"/></a>
+    </h3>
+    <p>include a date this event happened</p><h3 id="define/STORY_TATTOO"><aside class="declaration">#define </aside>STORY_TATTOO
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L113">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 113"/></a>
+    </h3>
+    <p>tattoos</p><h3 id="define/STORY_VALUE_SHIT"><aside class="declaration">#define </aside>STORY_VALUE_SHIT
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 29"/></a>
+    </h3>
+    <p>How cool a story is!</p><h3 id="define/TATTOO_PERSISTENCE_VERSION"><aside class="declaration">#define </aside>TATTOO_PERSISTENCE_VERSION
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/__DEFINES/memory_defines.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;__DEFINES&#x2F;memory_defines.dm 10"/></a>
+    </h3>
+    <p>Current version of the tattoo persistence json</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

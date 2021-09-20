@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;machinery&#x2F;rnd&#x2F;bepis - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/machinery/rnd/bepis.html#var">Var Details</a> - <a href="obj/machinery/rnd/bepis.html#proc">Proc Details</a></header>
+<main>
+<h1>bepis <aside>/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/rnd.html">rnd</a>/<a href="obj/machinery/rnd/bepis.html">bepis</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 11"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/account">account</a></th><td>Payer's bank account.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/account_name">account_name</a></th><td>Name on the payer's bank account.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/banked_cash">banked_cash</a></th><td>How much stored player cash exists within the machine.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/banking_amount">banking_amount</a></th><td>How much cash the UI and machine are depositing at a time.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/error_cause">error_cause</a></th><td>When the BEPIS fails to hand out any reward, the ERROR cause will be a randomly picked string displayed on the UI.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/inaccuracy_percentage">inaccuracy_percentage</a></th><td>Variability on the money you actively spend on the BEPIS, with higher inaccuracy making the most change, good and bad to spent cash.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/major_threshold">major_threshold</a></th><td>How much cash you will need to obtain a Major Tech Disk reward.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/minor_rewards">minor_rewards</a></th><td>List of objects that constitute your minor rewards. All rewards are unique or rare outside of the BEPIS.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/minor_threshold">minor_threshold</a></th><td>How much cash you will need to obtain a minor invention reward.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/negative_cash_offset">negative_cash_offset</a></th><td>How much &quot;cost&quot; is removed from both the minor and major threshold costs. Based on laser stock part level.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/positive_cash_offset">positive_cash_offset</a></th><td>How much &quot;cash&quot; is added to your inserted cash efforts for free. Based on manipulator stock part level.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/power_saver">power_saver</a></th><td>Multiplier that lowers how much the BEPIS' power costs are. Maximum of 1, upgraded to a minimum of 0.7. See RefreshParts.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#var/std">std</a></th><td>The standard deviation of the BEPIS's gaussian normal distribution.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#proc/calcsuccess">calcsuccess</a></th><td>Proc used to determine the experiment math and results all in one.
+Uses banked_cash and stock part levels to determine minor, major, and real gauss values for the BEPIS to hold.
+If by the end real is larger than major, You get a tech disk. If all the disks are earned or you at least beat minor, you get a minor reward.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/bepis.html#proc/depositcash">depositcash</a></th><td>Proc that handles the user's account to deposit credits for the BEPIS.
+Handles success and fail cases for transferring credits, then logs the transaction and uses small amounts of power.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/account"><aside class="declaration">var </aside>account
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/bank_account.html">bank_account</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L28">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 28"/></a></h3>
+        <p>Payer's bank account.</p><h3 id="var/account_name"><aside class="declaration">var </aside>account_name
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L30">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 30"/></a></h3>
+        <p>Name on the payer's bank account.</p><h3 id="var/banked_cash"><aside class="declaration">var </aside>banked_cash
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 26"/></a></h3>
+        <p>How much stored player cash exists within the machine.</p><h3 id="var/banking_amount"><aside class="declaration">var </aside>banking_amount
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 24"/></a></h3>
+        <p>How much cash the UI and machine are depositing at a time.</p><h3 id="var/error_cause"><aside class="declaration">var </aside>error_cause
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L32">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 32"/></a></h3>
+        <p>When the BEPIS fails to hand out any reward, the ERROR cause will be a randomly picked string displayed on the UI.</p><h3 id="var/inaccuracy_percentage"><aside class="declaration">var </aside>inaccuracy_percentage
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L46">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 46"/></a></h3>
+        <p>Variability on the money you actively spend on the BEPIS, with higher inaccuracy making the most change, good and bad to spent cash.</p><h3 id="var/major_threshold"><aside class="declaration">var </aside>major_threshold
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 36"/></a></h3>
+        <p>How much cash you will need to obtain a Major Tech Disk reward.</p><h3 id="var/minor_rewards"><aside class="declaration">var </aside>minor_rewards
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 52"/></a></h3>
+        <p>List of objects that constitute your minor rewards. All rewards are unique or rare outside of the BEPIS.</p><h3 id="var/minor_threshold"><aside class="declaration">var </aside>minor_threshold
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L38">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 38"/></a></h3>
+        <p>How much cash you will need to obtain a minor invention reward.</p><h3 id="var/negative_cash_offset"><aside class="declaration">var </aside>negative_cash_offset
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 50"/></a></h3>
+        <p>How much &quot;cost&quot; is removed from both the minor and major threshold costs. Based on laser stock part level.</p><h3 id="var/positive_cash_offset"><aside class="declaration">var </aside>positive_cash_offset
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 48"/></a></h3>
+        <p>How much &quot;cash&quot; is added to your inserted cash efforts for free. Based on manipulator stock part level.</p><h3 id="var/power_saver"><aside class="declaration">var </aside>power_saver
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 44"/></a></h3>
+        <p>Multiplier that lowers how much the BEPIS' power costs are. Maximum of 1, upgraded to a minimum of 0.7. See RefreshParts.</p><h3 id="var/std"><aside class="declaration">var </aside>std
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 40"/></a></h3>
+        <p>The standard deviation of the BEPIS's gaussian normal distribution.</p><h2 id="proc">Proc Details</h2><h3 id="proc/calcsuccess"><aside class="declaration">proc </aside>calcsuccess<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L242">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 242"/></a></aside>
+        </h3>
+        <p>Proc used to determine the experiment math and results all in one.
+Uses banked_cash and stock part levels to determine minor, major, and real gauss values for the BEPIS to hold.
+If by the end real is larger than major, You get a tech disk. If all the disks are earned or you at least beat minor, you get a minor reward.</p><h3 id="proc/depositcash"><aside class="declaration">proc </aside>depositcash<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/research/bepis.dm#L215">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;bepis.dm 215"/></a></aside>
+        </h3>
+        <p>Proc that handles the user's account to deposit credits for the BEPIS.
+Handles success and fail cases for transferring credits, then logs the transaction and uses small amounts of power.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

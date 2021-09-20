@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;implant - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/implant.html#var">Var Details</a> - <a href="obj/item/implant.html#proc">Proc Details</a></header>
+<main>
+<h1>implant <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/implant.html">implant</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 4"/></a></h1>
+
+<p>Parent class for all implants</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/implant.html#var/activated">activated</a></th><td>true for implant types that can be activated, false for ones that are &quot;always on&quot; like mindshield implants</td></tr>
+            <tr><th><a href="obj/item/implant.html#var/allow_multiple">allow_multiple</a></th><td>if false, upon implantation of a duplicate implant, an attempt to combine the new implant's uses with the old one's uses will be made, deleting the new implant if successful or stopping the implantation if not</td></tr>
+            <tr><th><a href="obj/item/implant.html#var/imp_in">imp_in</a></th><td>the mob that's implanted with this</td></tr>
+            <tr><th><a href="obj/item/implant.html#var/implant_color">implant_color</a></th><td>implant color, used for selecting either the &quot;b&quot; version or the &quot;r&quot; version of the implant case sprite when the implant is in a case.</td></tr>
+            <tr><th><a href="obj/item/implant.html#var/uses">uses</a></th><td>how many times this can do something, only relevant for implants with limited uses</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/implant.html#proc/get_data">get_data</a></th><td>Gets implant specifications for the implant pad</td></tr>
+            <tr><th><a href="obj/item/implant.html#proc/implant">implant</a></th><td>What does the implant do upon injection?</td></tr>
+            <tr><th><a href="obj/item/implant.html#proc/removed">removed</a></th><td>Remove implant from mob.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/activated"><aside class="declaration">var </aside>activated
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L10">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 10"/></a></h3>
+        <p>true for implant types that can be activated, false for ones that are &quot;always on&quot; like mindshield implants</p><h3 id="var/allow_multiple"><aside class="declaration">var </aside>allow_multiple
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L16">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 16"/></a></h3>
+        <p>if false, upon implantation of a duplicate implant, an attempt to combine the new implant's uses with the old one's uses will be made, deleting the new implant if successful or stopping the implantation if not</p><h3 id="var/imp_in"><aside class="declaration">var </aside>imp_in
+            <aside>&ndash; /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 12"/></a></h3>
+        <p>the mob that's implanted with this</p><h3 id="var/implant_color"><aside class="declaration">var </aside>implant_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L14">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 14"/></a></h3>
+        <p>implant color, used for selecting either the &quot;b&quot; version or the &quot;r&quot; version of the implant case sprite when the implant is in a case.</p><h3 id="var/uses"><aside class="declaration">var </aside>uses
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L18">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 18"/></a></h3>
+        <p>how many times this can do something, only relevant for implants with limited uses</p><h2 id="proc">Proc Details</h2><h3 id="proc/get_data"><aside class="declaration">proc </aside>get_data<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L137">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 137"/></a></aside>
+        </h3>
+        <p>Gets implant specifications for the implant pad</p><h3 id="proc/implant"><aside class="declaration">proc </aside>implant<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/target, /<a href="mob.html">mob</a>/user, silent, force) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L56">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 56"/></a></aside>
+        </h3>
+        <p>What does the implant do upon injection?</p>
+<p>return true if the implant injects
+return false if there is no room for implant / it fails
+Arguments:</p>
+<ul>
+<li>mob/living/target - mob being implanted</li>
+<li>mob/user - mob doing the implanting</li>
+<li>silent - unused here</li>
+<li>force - if true, implantation will not fail if can_be_implanted_in returns false</li>
+</ul><h3 id="proc/removed"><aside class="declaration">proc </aside>removed<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/source, silent, special) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/items/implants/implant.dm#L116">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;items&#x2F;implants&#x2F;implant.dm 116"/></a></aside>
+        </h3>
+        <p>Remove implant from mob.</p>
+<p>This removes the effects of the implant and moves it out of the mob and into nullspace.
+Arguments:</p>
+<ul>
+<li>mob/living/source - What the implant is being removed from</li>
+<li>silent - unused here</li>
+<li>special - unused here</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

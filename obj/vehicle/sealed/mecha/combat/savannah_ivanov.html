@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;vehicle&#x2F;sealed&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var">Var Details</a> - <a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc">Proc Details</a></header>
+<main>
+<h1>savannah_ivanov <aside>/<a href="obj.html">obj</a>/<a href="obj/vehicle.html">vehicle</a>/<a href="obj/vehicle/sealed.html">sealed</a>/<a href="obj/vehicle/sealed/mecha.html">mecha</a>/<a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html">combat/savannah_ivanov</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 19"/></a></h1>
+
+<h2 id="savannah-ivanov">Savannah-Ivanov!</h2>
+<p>A two person mecha that delegates moving to the driver and shooting to the pilot.
+...Hilarious, right?</p><table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var/aiming_ivanov">aiming_ivanov</a></th><td>toggled by ivanov strike, TRUE when signals are hooked to intercept clicks.</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var/rockets_left">rockets_left</a></th><td>how many rockets can we send with ivanov strike</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var/skyfall_charge_level">skyfall_charge_level</a></th><td>skyfall builds up in charges every 2 seconds, when it reaches 5 charges the ability actually starts</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var/skyfall_cooldown">skyfall_cooldown</a></th><td>skyfall ability cooldown</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var/skyfall_cooldown_time">skyfall_cooldown_time</a></th><td>cooldown time between skyfall uses</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var/strike_cooldown">strike_cooldown</a></th><td>ivanov strike ability cooldown</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#var/strike_cooldown_time">strike_cooldown_time</a></th><td>cooldown time between strike uses</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/abort_skyfall">abort_skyfall</a></th><td></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/begin_landing">begin_landing</a></th><td></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/begin_skyfall_charge">begin_skyfall_charge</a></th><td></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/drop_missile">drop_missile</a></th><td></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/end_missile_targeting">end_missile_targeting</a></th><td></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/land">land</a></th><td></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/on_equipment_click">on_equipment_click</a></th><td>signal called from clicking with equipment</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/on_melee_click">on_melee_click</a></th><td>signal called from clicking with no equipment</td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/skyfall_charge_loop">skyfall_charge_loop</a></th><td></td></tr>
+            <tr><th><a href="obj/vehicle/sealed/mecha/combat/savannah_ivanov.html#proc/start_missile_targeting">start_missile_targeting</a></th><td></td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/aiming_ivanov"><aside class="declaration">var </aside>aiming_ivanov
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L51">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 51"/></a></h3>
+        <p>toggled by ivanov strike, TRUE when signals are hooked to intercept clicks.</p><h3 id="var/rockets_left"><aside class="declaration">var </aside>rockets_left
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L53">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 53"/></a></h3>
+        <p>how many rockets can we send with ivanov strike</p><h3 id="var/skyfall_charge_level"><aside class="declaration">var </aside>skyfall_charge_level
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 44"/></a></h3>
+        <p>skyfall builds up in charges every 2 seconds, when it reaches 5 charges the ability actually starts</p><h3 id="var/skyfall_cooldown"><aside class="declaration">var </aside>skyfall_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 40"/></a></h3>
+        <p>skyfall ability cooldown</p><h3 id="var/skyfall_cooldown_time"><aside class="declaration">var </aside>skyfall_cooldown_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 42"/></a></h3>
+        <p>cooldown time between skyfall uses</p><h3 id="var/strike_cooldown"><aside class="declaration">var </aside>strike_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 47"/></a></h3>
+        <p>ivanov strike ability cooldown</p><h3 id="var/strike_cooldown_time"><aside class="declaration">var </aside>strike_cooldown_time
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L49">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 49"/></a></h3>
+        <p>cooldown time between strike uses</p><h2 id="proc">Proc Details</h2><h3 id="proc/abort_skyfall"><aside class="declaration">proc </aside>abort_skyfall<aside>(/<a href="mob.html">mob</a>/pilot) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L217">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 217"/></a></aside>
+        </h3>
+        <h2 id="abort-skyfall">abort_skyfall</h2>
+<p>Called by skyfall_charge_loop if the charging is interrupted.
+Applies cooldown and resets charge level
+arguments:</p>
+<ul>
+<li>pilot: mob that failed the skyfall ability</li>
+</ul><h3 id="proc/begin_landing"><aside class="declaration">proc </aside>begin_landing<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/pilot) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L154">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 154"/></a></aside>
+        </h3>
+        <h2 id="begin-landing">begin_landing</h2>
+<p>Called by skyfall_charge_loop after some time if it reaches full charge level.
+it's just the animations of the mecha coming down + another timer for the final landing effect
+arguments:</p>
+<ul>
+<li>pilot: mob that activated the skyfall ability</li>
+</ul><h3 id="proc/begin_skyfall_charge"><aside class="declaration">proc </aside>begin_skyfall_charge<aside>(/<a href="mob.html">mob</a>/pilot) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L84">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 84"/></a></aside>
+        </h3>
+        <h2 id="begin-skyfall-charge">begin_skyfall_charge</h2>
+<p>Proc called by the mecha's ability that starts the skyfall loop</p><h3 id="proc/drop_missile"><aside class="declaration">proc </aside>drop_missile<aside>(/<a href="mob.html">mob</a>/gunner, /<a href="turf.html">turf</a>/target_turf) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L284">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 284"/></a></aside>
+        </h3>
+        <h2 id="drop-missile">drop_missile</h2>
+<p>Called via intercepted clicks when the missile ability is active
+Spawns a droppod and starts the cooldown of the missile strike ability
+arguments:</p>
+<ul>
+<li>gunner: mob that activated the ivanov strike</li>
+<li>target_turf: turf of the atom that was clicked on</li>
+</ul><h3 id="proc/end_missile_targeting"><aside class="declaration">proc </aside>end_missile_targeting<aside>(/<a href="mob.html">mob</a>/gunner) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L253">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 253"/></a></aside>
+        </h3>
+        <h2 id="end-missile-targeting">end_missile_targeting</h2>
+<p>Called by the ivanov strike datum action or other actions that would end targetting
+Unhooks signals into clicking to call drop_missile plus other flavor like the overlay
+arguments:</p>
+<ul>
+<li>gunner: mob that activated the ivanov strike</li>
+<li>silent: whether to send feedback messages.</li>
+</ul><h3 id="proc/land"><aside class="declaration">proc </aside>land<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/pilot) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L167">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 167"/></a></aside>
+        </h3>
+        <h2 id="begin-landing">begin_landing</h2>
+<p>Called by skyfall_charge_loop after some time if it reaches full charge level.
+it's just the animations of the mecha coming down + another timer for the final landing effect
+arguments:</p>
+<ul>
+<li>pilot: mob that activated the skyfall ability</li>
+</ul><h3 id="proc/on_equipment_click"><aside class="declaration">proc </aside>on_equipment_click<aside>(/<a href="datum.html">datum</a>/source, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/pilot, /<a href="atom.html">atom</a>/target) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L269">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 269"/></a></aside>
+        </h3>
+        <p>signal called from clicking with equipment</p><h3 id="proc/on_melee_click"><aside class="declaration">proc </aside>on_melee_click<aside>(/<a href="datum.html">datum</a>/source, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/pilot, /<a href="atom.html">atom</a>/target, on_cooldown, is_adjacent) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L262">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 262"/></a></aside>
+        </h3>
+        <p>signal called from clicking with no equipment</p><h3 id="proc/skyfall_charge_loop"><aside class="declaration">proc </aside>skyfall_charge_loop<aside>(/<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/pilot) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L96">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 96"/></a></aside>
+        </h3>
+        <h2 id="skyfall-charge-loop">skyfall_charge_loop</h2>
+<p>The actual skyfall loop itself. Repeatedly calls itself after a do_after, so any interruptions will call abort_skyfall and end the loop
+the other way the loop ends is if charge level (var it's ticking up) gets to SKYFALL_CHARGELEVEL_LAUNCH, in which case it ends the loop and does the ability.
+arguments:</p>
+<ul>
+<li>pilot: mob that activated the skyfall ability</li>
+</ul><h3 id="proc/start_missile_targeting"><aside class="declaration">proc </aside>start_missile_targeting<aside>(/<a href="mob.html">mob</a>/gunner) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/vehicles/mecha/combat/savannah_ivanov.dm#L233">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;vehicles&#x2F;mecha&#x2F;combat&#x2F;savannah_ivanov.dm 233"/></a></aside>
+        </h3>
+        <h2 id="start-missile-targeting">start_missile_targeting</h2>
+<p>Called by the ivanov strike datum action, hooks signals into clicking to call drop_missile
+Plus other flavor like the overlay
+arguments:</p>
+<ul>
+<li>gunner: mob that activated the ivanov strike</li>
+<li>silent: whether to send feedback messages.</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

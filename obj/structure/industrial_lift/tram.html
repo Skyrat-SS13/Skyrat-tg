@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;structure&#x2F;industrial_lift&#x2F;tram - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/structure/industrial_lift/tram.html#var">Var Details</a> - <a href="obj/structure/industrial_lift/tram.html#proc">Proc Details</a></header>
+<main>
+<h1>tram <aside>/<a href="obj.html">obj</a>/<a href="obj/structure/industrial_lift.html">structure/industrial_lift</a>/<a href="obj/structure/industrial_lift/tram.html">tram</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/structures/industrial_lift.dm#L425">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 425"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/structure/industrial_lift/tram.html#var/initial_id">initial_id</a></th><td>for finding the landmark initially - should be the exact same as the landmark's destination id.</td></tr>
+            <tr><th><a href="obj/structure/industrial_lift/tram.html#var/travelling">travelling</a></th><td>set by the tram control console in late initialize</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/structure/industrial_lift/tram.html#proc/find_our_location">find_our_location</a></th><td>Finds the location of the tram</td></tr>
+            <tr><th><a href="obj/structure/industrial_lift/tram.html#proc/tram_travel">tram_travel</a></th><td>Handles moving the tram</td></tr>
+            <tr><th><a href="obj/structure/industrial_lift/tram.html#proc/unlock_controls">unlock_controls</a></th><td>Handles unlocking the tram controls for use after moving</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/initial_id"><aside class="declaration">var </aside>initial_id
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/structures/industrial_lift.dm#L440">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 440"/></a></h3>
+        <p>for finding the landmark initially - should be the exact same as the landmark's destination id.</p><h3 id="var/travelling"><aside class="declaration">var </aside>travelling
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/structures/industrial_lift.dm#L437">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 437"/></a></h3>
+        <p>set by the tram control console in late initialize</p><h2 id="proc">Proc Details</h2><h3 id="proc/find_our_location"><aside class="declaration">proc </aside>find_our_location<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/structures/industrial_lift.dm#L479">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 479"/></a></aside>
+        </h3>
+        <p>Finds the location of the tram</p>
+<p>The initial_id is assumed to the be the landmark the tram is built on in the map
+and where the tram will set itself to be on roundstart.
+The central tram piece goes further into this by actually checking the contents of the turf its on
+for a tram landmark when it docks anywhere. This assures the tram actually knows where it is after docking,
+even in the worst cast scenario.</p><h3 id="proc/tram_travel"><aside class="declaration">proc </aside>tram_travel<aside>(/<a href="obj.html">obj</a>/<a href="obj/effect/landmark/tram.html">effect/landmark/tram</a>/to_where) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/structures/industrial_lift.dm#L511">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 511"/></a></aside>
+        </h3>
+        <p>Handles moving the tram</p>
+<p>Tells the individual tram parts where to actually go and has an extra safety check
+incase multiple inputs get through, preventing conflicting directions and the tram
+literally ripping itself apart. The proc handles the first move before the subsystem
+takes over to keep moving it in process()</p><h3 id="proc/unlock_controls"><aside class="declaration">proc </aside>unlock_controls<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/game/objects/structures/industrial_lift.dm#L539">
+        <img src="git.png" width="16" height="16" title="code&#x2F;game&#x2F;objects&#x2F;structures&#x2F;industrial_lift.dm 539"/></a></aside>
+        </h3>
+        <p>Handles unlocking the tram controls for use after moving</p>
+<p>More safety checks to make sure the tram has actually docked properly
+at a location before users are allowed to interact with the tram console again.
+Tram finds its location at this point before fully unlocking controls to the user.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

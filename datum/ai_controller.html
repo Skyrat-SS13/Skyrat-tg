@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;ai_controller - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/ai_controller.html#var">Var Details</a> - <a href="datum/ai_controller.html#proc">Proc Details</a></header>
+<main>
+<h1>ai_controller <aside>/<a href="datum.html">datum</a>/<a href="datum/ai_controller.html">ai_controller</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 7"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/ai_movement">ai_movement</a></th><td>Reference to the movement datum we use. Is a type on initialize but becomes a ref afterwards.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/ai_status">ai_status</a></th><td>Current status of AI (OFF/ON)</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/ai_traits">ai_traits</a></th><td>Bitfield of traits for this AI to handle extra behavior</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/behavior_args">behavior_args</a></th><td>Stored arguments for behaviors given during their initial creation</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/behavior_cooldowns">behavior_cooldowns</a></th><td>Current actions and their respective last time ran as an assoc list.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/blackboard">blackboard</a></th><td>This is a list of variables the AI uses and can be mutated by actions. When an action is performed you pass this list and any relevant keys for the variables it can mutate.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/continue_processing_when_client">continue_processing_when_client</a></th><td>Can the AI remain in control if there is a client?</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/current_behaviors">current_behaviors</a></th><td>Current actions being performed by the AI.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/current_movement_target">current_movement_target</a></th><td>Current movement target of the AI, generally set by decision making.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/failed_planning_cooldown">failed_planning_cooldown</a></th><td>Cooldown for new plans, to prevent AI from going nuts if it can't think of new plans and looping on end</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/idle_behavior">idle_behavior</a></th><td>The idle behavior this AI performs when it has no actions.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/max_target_distance">max_target_distance</a></th><td>distance to give up on target</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/movement_cooldown">movement_cooldown</a></th><td>Cooldown until next movement</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/movement_delay">movement_delay</a></th><td>Delay between movements. This is on the controller so we can keep the movement datum singleton</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/movement_path">movement_path</a></th><td>A list for the path we're currently following, if we're using JPS pathing</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/pathing_attempts">pathing_attempts</a></th><td>Tracks recent pathing attempts, if we fail too many in a row we fail our current plans.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/paused_until">paused_until</a></th><td>AI paused time</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/pawn">pawn</a></th><td>The atom this controller is controlling</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/planning_subtrees">planning_subtrees</a></th><td>All subtrees this AI has available, will run them in order, so make sure they're in the order you want them to run. On initialization of this type, it will start as a typepath(s) and get converted to references of ai_subtrees found in SSai_controllers when init_subtrees() is called</td></tr>
+            <tr><th><a href="datum/ai_controller.html#var/repath_cooldown">repath_cooldown</a></th><td>Cooldown for JPS movement, how often we're allowed to try making a new path</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/PossessPawn">PossessPawn</a></th><td>Proc to move from one pawn to another, this will destroy the target's existing controller.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/SelectBehaviors">SelectBehaviors</a></th><td>Are we close enough to engage?
+This is where you decide what actions are taken by the AI.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/TryPossessPawn">TryPossessPawn</a></th><td>Abstract proc for initializing the pawn to the new controller</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/UnpossessPawn">UnpossessPawn</a></th><td>Proc for deinitializing the pawn to the old controller</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/able_to_run">able_to_run</a></th><td>Returns TRUE if the ai controller can actually run at the moment.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/change_ai_movement_type">change_ai_movement_type</a></th><td>Overrides the current ai_movement of this controller with a new one</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/get_access">get_access</a></th><td>Use this proc to define how your controller defines what access the pawn has for the sake of pathfinding, likely pointing to whatever ID slot is relevant</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/init_subtrees">init_subtrees</a></th><td>Loops over the subtrees in planning_subtrees and looks at the ai_controllers to grab a reference, ENSURE planning_subtrees ARE TYPEPATHS AND NOT INSTANCES/REFERENCES BEFORE EXECUTING THIS</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/process">process</a></th><td>Runs any actions that are currently running</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/queue_behavior">queue_behavior</a></th><td>Call this to add a behavior to the stack.</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/replace_planning_subtrees">replace_planning_subtrees</a></th><td>Completely replaces the planning_subtrees with a new set based on argument provided, list provided must contain specifically typepaths</td></tr>
+            <tr><th><a href="datum/ai_controller.html#proc/set_ai_status">set_ai_status</a></th><td>This proc handles changing ai status, and starts/stops processing if required.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/ai_movement"><aside class="declaration">var </aside>ai_movement
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/ai_movement.html">ai_movement</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L40">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 40"/></a></h3>
+        <p>Reference to the movement datum we use. Is a type on initialize but becomes a ref afterwards.</p><h3 id="var/ai_status"><aside class="declaration">var </aside>ai_status
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 17"/></a></h3>
+        <p>Current status of AI (OFF/ON)</p><h3 id="var/ai_traits"><aside class="declaration">var </aside>ai_traits
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L11">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 11"/></a></h3>
+        <p>Bitfield of traits for this AI to handle extra behavior</p><h3 id="var/behavior_args"><aside class="declaration">var </aside>behavior_args
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 23"/></a></h3>
+        <p>Stored arguments for behaviors given during their initial creation</p><h3 id="var/behavior_cooldowns"><aside class="declaration">var </aside>behavior_cooldowns
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L15">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 15"/></a></h3>
+        <p>Current actions and their respective last time ran as an assoc list.</p><h3 id="var/blackboard"><aside class="declaration">var </aside>blackboard
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L21">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 21"/></a></h3>
+        <p>This is a list of variables the AI uses and can be mutated by actions. When an action is performed you pass this list and any relevant keys for the variables it can mutate.</p><h3 id="var/continue_processing_when_client"><aside class="declaration">var </aside>continue_processing_when_client
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L27">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 27"/></a></h3>
+        <p>Can the AI remain in control if there is a client?</p><h3 id="var/current_behaviors"><aside class="declaration">var </aside>current_behaviors
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L13">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 13"/></a></h3>
+        <p>Current actions being performed by the AI.</p><h3 id="var/current_movement_target"><aside class="declaration">var </aside>current_movement_target
+            <aside>&ndash; /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L19">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 19"/></a></h3>
+        <p>Current movement target of the AI, generally set by decision making.</p><h3 id="var/failed_planning_cooldown"><aside class="declaration">var </aside>failed_planning_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L31">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 31"/></a></h3>
+        <p>Cooldown for new plans, to prevent AI from going nuts if it can't think of new plans and looping on end</p><h3 id="var/idle_behavior"><aside class="declaration">var </aside>idle_behavior
+            <aside>&ndash; /<a href="datum.html">datum</a>/idle_behavior</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L36">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 36"/></a></h3>
+        <p>The idle behavior this AI performs when it has no actions.</p><h3 id="var/max_target_distance"><aside class="declaration">var </aside>max_target_distance
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L29">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 29"/></a></h3>
+        <p>distance to give up on target</p><h3 id="var/movement_cooldown"><aside class="declaration">var </aside>movement_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 42"/></a></h3>
+        <p>Cooldown until next movement</p><h3 id="var/movement_delay"><aside class="declaration">var </aside>movement_delay
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L44">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 44"/></a></h3>
+        <p>Delay between movements. This is on the controller so we can keep the movement datum singleton</p><h3 id="var/movement_path"><aside class="declaration">var </aside>movement_path
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L48">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 48"/></a></h3>
+        <p>A list for the path we're currently following, if we're using JPS pathing</p><h3 id="var/pathing_attempts"><aside class="declaration">var </aside>pathing_attempts
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L25">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 25"/></a></h3>
+        <p>Tracks recent pathing attempts, if we fail too many in a row we fail our current plans.</p><h3 id="var/paused_until"><aside class="declaration">var </aside>paused_until
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L52">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 52"/></a></h3>
+        <p>AI paused time</p><h3 id="var/pawn"><aside class="declaration">var </aside>pawn
+            <aside>&ndash; /<a href="atom.html">atom</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L9">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 9"/></a></h3>
+        <p>The atom this controller is controlling</p><h3 id="var/planning_subtrees"><aside class="declaration">var </aside>planning_subtrees
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L33">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 33"/></a></h3>
+        <p>All subtrees this AI has available, will run them in order, so make sure they're in the order you want them to run. On initialization of this type, it will start as a typepath(s) and get converted to references of ai_subtrees found in SSai_controllers when init_subtrees() is called</p><h3 id="var/repath_cooldown"><aside class="declaration">var </aside>repath_cooldown
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L50">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 50"/></a></h3>
+        <p>Cooldown for JPS movement, how often we're allowed to try making a new path</p><h2 id="proc">Proc Details</h2><h3 id="proc/PossessPawn"><aside class="declaration">proc </aside>PossessPawn<aside>(/<a href="atom.html">atom</a>/new_pawn) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L88">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 88"/></a></aside>
+        </h3>
+        <p>Proc to move from one pawn to another, this will destroy the target's existing controller.</p><h3 id="proc/SelectBehaviors"><aside class="declaration">proc </aside>SelectBehaviors<aside>(delta_time) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L184">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 184"/></a></aside>
+        </h3>
+        <p>Are we close enough to engage?
+This is where you decide what actions are taken by the AI.</p><h3 id="proc/TryPossessPawn"><aside class="declaration">proc </aside>TryPossessPawn<aside>(/<a href="atom.html">atom</a>/new_pawn) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L114">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 114"/></a></aside>
+        </h3>
+        <p>Abstract proc for initializing the pawn to the new controller</p><h3 id="proc/UnpossessPawn"><aside class="declaration">proc </aside>UnpossessPawn<aside>(destroy) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L118">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 118"/></a></aside>
+        </h3>
+        <p>Proc for deinitializing the pawn to the old controller</p><h3 id="proc/able_to_run"><aside class="declaration">proc </aside>able_to_run<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L127">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 127"/></a></aside>
+        </h3>
+        <p>Returns TRUE if the ai controller can actually run at the moment.</p><h3 id="proc/change_ai_movement_type"><aside class="declaration">proc </aside>change_ai_movement_type<aside>(/<a href="datum.html">datum</a>/<a href="datum/ai_movement.html">ai_movement</a>/new_movement) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L69">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 69"/></a></aside>
+        </h3>
+        <p>Overrides the current ai_movement of this controller with a new one</p><h3 id="proc/get_access"><aside class="declaration">proc </aside>get_access<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L262">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 262"/></a></aside>
+        </h3>
+        <p>Use this proc to define how your controller defines what access the pawn has for the sake of pathfinding, likely pointing to whatever ID slot is relevant</p><h3 id="proc/init_subtrees"><aside class="declaration">proc </aside>init_subtrees<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L78">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 78"/></a></aside>
+        </h3>
+        <p>Loops over the subtrees in planning_subtrees and looks at the ai_controllers to grab a reference, ENSURE planning_subtrees ARE TYPEPATHS AND NOT INSTANCES/REFERENCES BEFORE EXECUTING THIS</p><h3 id="proc/process"><aside class="parent"><a title="/datum" href="datum.html#proc/process">&uarr;</a></aside>process<aside>(delta_time) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L134">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 134"/></a></aside>
+        </h3>
+        <p>Runs any actions that are currently running</p><h3 id="proc/queue_behavior"><aside class="declaration">proc </aside>queue_behavior<aside>(behavior_type, ...) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L215">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 215"/></a></aside>
+        </h3>
+        <p>Call this to add a behavior to the stack.</p><h3 id="proc/replace_planning_subtrees"><aside class="declaration">proc </aside>replace_planning_subtrees<aside>(/list/typepaths_of_new_subtrees) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L73">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 73"/></a></aside>
+        </h3>
+        <p>Completely replaces the planning_subtrees with a new set based on argument provided, list provided must contain specifically typepaths</p><h3 id="proc/set_ai_status"><aside class="declaration">proc </aside>set_ai_status<aside>(new_ai_status) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/datums/ai/_ai_controller.dm#L197">
+        <img src="git.png" width="16" height="16" title="code&#x2F;datums&#x2F;ai&#x2F;_ai_controller.dm 197"/></a></aside>
+        </h3>
+        <p>This proc handles changing ai status, and starts/stops processing if required.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;datum&#x2F;bodypart_aid - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="datum/bodypart_aid.html#var">Var Details</a> - <a href="datum/bodypart_aid.html#proc">Proc Details</a></header>
+<main>
+<h1>bodypart_aid <aside>/<a href="datum.html">datum</a>/<a href="datum/bodypart_aid.html">bodypart_aid</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L4">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 4"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#var/bodypart">bodypart</a></th><td>To which bodypart we're attached to</td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#var/desc_prefix">desc_prefix</a></th><td>Bodypart is [this_prefix] with get_description()</td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#var/integrity">integrity</a></th><td>Keeping track of how damaged our aid is from external things, such as hits, it will break when it reaches 0</td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#var/overlay_prefix">overlay_prefix</a></th><td>Suffix for our used overlay. The suffix is the bodypart zone, and &quot;_digitigrade&quot; for some legs. If this is null then it wont make an overlay. Gauzes are rendered before splints</td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#var/stack_to_drop">stack_to_drop</a></th><td>Which item do we get when we rip this off, while its in pristine condition</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#proc/get_description">get_description</a></th><td>get_description() called by examine procs</td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#proc/is_pristine">is_pristine</a></th><td>is_pristine() called by rip_off()</td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#proc/rip_off">rip_off</a></th><td>rip_off() called when someone rips it off</td></tr>
+            <tr><th><a href="datum/bodypart_aid.html#proc/take_damage">take_damage</a></th><td>take_damage() called when the bandage gets damaged</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/bodypart"><aside class="declaration">var </aside>bodypart
+            <aside>&ndash; /<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/bodypart.html">bodypart</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L9">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 9"/></a></h3>
+        <p>To which bodypart we're attached to</p><h3 id="var/desc_prefix"><aside class="declaration">var </aside>desc_prefix
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L17">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 17"/></a></h3>
+        <p>Bodypart is [this_prefix] with get_description()</p><h3 id="var/integrity"><aside class="declaration">var </aside>integrity
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L7">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 7"/></a></h3>
+        <p>Keeping track of how damaged our aid is from external things, such as hits, it will break when it reaches 0</p><h3 id="var/overlay_prefix"><aside class="declaration">var </aside>overlay_prefix
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L13">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 13"/></a></h3>
+        <p>Suffix for our used overlay. The suffix is the bodypart zone, and &quot;_digitigrade&quot; for some legs. If this is null then it wont make an overlay. Gauzes are rendered before splints</p><h3 id="var/stack_to_drop"><aside class="declaration">var </aside>stack_to_drop
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L11">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 11"/></a></h3>
+        <p>Which item do we get when we rip this off, while its in pristine condition</p><h2 id="proc">Proc Details</h2><h3 id="proc/get_description"><aside class="declaration">proc </aside>get_description<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L82">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 82"/></a></aside>
+        </h3>
+        <p>get_description() called by examine procs</p>
+<p>It will returns a description of the bandage</p><h3 id="proc/is_pristine"><aside class="declaration">proc </aside>is_pristine<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L92">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 92"/></a></aside>
+        </h3>
+        <p>is_pristine() called by rip_off()</p>
+<p>Used to determine whether the bandage can be re-used and won't qdel itself</p><h3 id="proc/rip_off"><aside class="declaration">proc </aside>rip_off<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L70">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 70"/></a></aside>
+        </h3>
+        <p>rip_off() called when someone rips it off</p>
+<p>It will return the bandage if it's considered pristine</p><h3 id="proc/take_damage"><aside class="declaration">proc </aside>take_damage<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/modules/medical/code/bodypart_aid.dm#L56">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;modules&#x2F;medical&#x2F;code&#x2F;bodypart_aid.dm 56"/></a></aside>
+        </h3>
+        <p>take_damage() called when the bandage gets damaged</p>
+<p>This proc will subtract integrity and delete the bandage with a to_chat message to whoever was bandaged</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

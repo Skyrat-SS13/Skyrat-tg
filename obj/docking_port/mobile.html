@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;docking_port&#x2F;mobile - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/docking_port/mobile.html#var">Var Details</a> - <a href="obj/docking_port/mobile.html#proc">Proc Details</a></header>
+<main>
+<h1>mobile <aside>/<a href="obj.html">obj</a>/<a href="obj/docking_port.html">docking_port</a>/<a href="obj/docking_port/mobile.html">mobile</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L322">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 322"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/callTime">callTime</a></th><td>time spent in transit (deciseconds). Should not be lower then 10 seconds without editing the animation of the hyperspace ripples.</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/can_be_called_in_transit">can_be_called_in_transit</a></th><td>Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/can_move_docking_ports">can_move_docking_ports</a></th><td>if this shuttle can move docking ports other than the one it is docked at</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/ignitionTime">ignitionTime</a></th><td>time spent &quot;starting the engines&quot;. Also rate limits how often we try to reserve transit space if its ever full of transiting shuttles.</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/landing_sound">landing_sound</a></th><td>The landing sound to be played</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/mode">mode</a></th><td>current shuttle mode</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/movement_force">movement_force</a></th><td>Whether or not you want your ship to knock people down, and also whether it will throw them several tiles upon launching.</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/port_direction">port_direction</a></th><td>relative direction of the docking port from the front of the shuttle. NORTH is towards front, EAST would be starboard side, WEST port, etc.</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/prearrivalTime">prearrivalTime</a></th><td>time spent after transit 'landing' before actually arriving</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/preferred_direction">preferred_direction</a></th><td>The direction the shuttle prefers to travel in, ie what direction the animation will cause it to appear to be traveling in</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/rechargeTime">rechargeTime</a></th><td>time spent after arrival before being able to begin ignition</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/shuttle_sounds">shuttle_sounds</a></th><td>Does this shuttle play sounds upon landing and takeoff?</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/sound_range">sound_range</a></th><td>The sound range coeff for the landing and take off sound effect</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/takeoff_sound">takeoff_sound</a></th><td>The take off sound to be played</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#var/timer">timer</a></th><td>used as a timer (if you want time left to complete move, use timeLeft proc)</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#proc/beforeShuttleMove">beforeShuttleMove</a></th><td>Misc move procs</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#proc/get_status_text_tgui">get_status_text_tgui</a></th><td>Gets shuttle location status in a form of string for tgui interfaces</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#proc/initiate_docking">initiate_docking</a></th><td>This is the main proc. It instantly moves our mobile port to stationary port <code>new_dock</code>.</td></tr>
+            <tr><th><a href="obj/docking_port/mobile.html#proc/preflight_check">preflight_check</a></th><td>Both lists are associative with a turf:bitflag structure. (new_turfs bitflag space unused currently)
+The bitflag contains the data for what inhabitants of that coordinate should be moved to the new location
+The bitflags can be found in __DEFINES/shuttles.dm</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/callTime"><aside class="declaration">var </aside>callTime
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L336">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 336"/></a></h3>
+        <p>time spent in transit (deciseconds). Should not be lower then 10 seconds without editing the animation of the hyperspace ripples.</p><h3 id="var/can_be_called_in_transit"><aside class="declaration">var </aside>can_be_called_in_transit
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L369">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 369"/></a></h3>
+        <p>Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)</p><h3 id="var/can_move_docking_ports"><aside class="declaration">var </aside>can_move_docking_ports
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L365">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 365"/></a></h3>
+        <p>if this shuttle can move docking ports other than the one it is docked at</p><h3 id="var/ignitionTime"><aside class="declaration">var </aside>ignitionTime
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L338">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 338"/></a></h3>
+        <p>time spent &quot;starting the engines&quot;. Also rate limits how often we try to reserve transit space if its ever full of transiting shuttles.</p><h3 id="var/landing_sound"><aside class="declaration">var </aside>landing_sound
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/master_files/code/modules/shuttle/shuttle.dm#L7">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;master_files&#x2F;code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 7"/></a></h3>
+        <p>The landing sound to be played</p><h3 id="var/mode"><aside class="declaration">var </aside>mode
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L334">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 334"/></a></h3>
+        <p>current shuttle mode</p><h3 id="var/movement_force"><aside class="declaration">var </aside>movement_force
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L357">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 357"/></a></h3>
+        <p>Whether or not you want your ship to knock people down, and also whether it will throw them several tiles upon launching.</p><h3 id="var/port_direction"><aside class="declaration">var </aside>port_direction
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L347">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 347"/></a></h3>
+        <p>relative direction of the docking port from the front of the shuttle. NORTH is towards front, EAST would be starboard side, WEST port, etc.</p><h3 id="var/prearrivalTime"><aside class="declaration">var </aside>prearrivalTime
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L342">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 342"/></a></h3>
+        <p>time spent after transit 'landing' before actually arriving</p><h3 id="var/preferred_direction"><aside class="declaration">var </aside>preferred_direction
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L345">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 345"/></a></h3>
+        <p>The direction the shuttle prefers to travel in, ie what direction the animation will cause it to appear to be traveling in</p><h3 id="var/rechargeTime"><aside class="declaration">var </aside>rechargeTime
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L340">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 340"/></a></h3>
+        <p>time spent after arrival before being able to begin ignition</p><h3 id="var/shuttle_sounds"><aside class="declaration">var </aside>shuttle_sounds
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/master_files/code/modules/shuttle/shuttle.dm#L3">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;master_files&#x2F;code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 3"/></a></h3>
+        <p>Does this shuttle play sounds upon landing and takeoff?</p><h3 id="var/sound_range"><aside class="declaration">var </aside>sound_range
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/master_files/code/modules/shuttle/shuttle.dm#L9">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;master_files&#x2F;code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 9"/></a></h3>
+        <p>The sound range coeff for the landing and take off sound effect</p><h3 id="var/takeoff_sound"><aside class="declaration">var </aside>takeoff_sound
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/modular_skyrat/master_files/code/modules/shuttle/shuttle.dm#L5">
+        <img src="git.png" width="16" height="16" title="modular_skyrat&#x2F;master_files&#x2F;code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 5"/></a></h3>
+        <p>The take off sound to be played</p><h3 id="var/timer"><aside class="declaration">var </aside>timer
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L331">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 331"/></a></h3>
+        <p>used as a timer (if you want time left to complete move, use timeLeft proc)</p><h2 id="proc">Proc Details</h2><h3 id="proc/beforeShuttleMove">beforeShuttleMove<aside>(/<a href="turf.html">turf</a>/newT, rotation, move_mode, /<a href="obj.html">obj</a>/<a href="obj/docking_port.html">docking_port</a>/<a href="obj/docking_port/mobile.html">mobile</a>/moving_dock) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/on_move.dm#L380">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;on_move.dm 380"/></a></aside>
+        </h3>
+        <p>Misc move procs</p><h3 id="proc/get_status_text_tgui"><aside class="declaration">proc </aside>get_status_text_tgui<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/shuttle.dm#L815">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;shuttle.dm 815"/></a></aside>
+        </h3>
+        <p>Gets shuttle location status in a form of string for tgui interfaces</p><h3 id="proc/initiate_docking"><aside class="declaration">proc </aside>initiate_docking<aside>(/<a href="obj.html">obj</a>/<a href="obj/docking_port.html">docking_port</a>/stationary/new_dock, movement_direction, force) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/docking.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;docking.dm 2"/></a></aside>
+        </h3>
+        <p>This is the main proc. It instantly moves our mobile port to stationary port <code>new_dock</code>.</p><h3 id="proc/preflight_check"><aside class="declaration">proc </aside>preflight_check<aside>(/list/old_turfs, /list/new_turfs, /list/areas_to_move, rotation) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/shuttle/docking.dm#L108">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;shuttle&#x2F;docking.dm 108"/></a></aside>
+        </h3>
+        <p>Both lists are associative with a turf:bitflag structure. (new_turfs bitflag space unused currently)
+The bitflag contains the data for what inhabitants of that coordinate should be moved to the new location
+The bitflags can be found in __DEFINES/shuttles.dm</p>
+<p>Hiding turfs if necessary</p>
+<p>Unhiding turfs if necessary</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>

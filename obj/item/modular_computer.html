@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;item&#x2F;modular_computer - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/item/modular_computer.html#var">Var Details</a> - <a href="obj/item/modular_computer.html#proc">Proc Details</a></header>
+<main>
+<h1>modular_computer <aside>/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/modular_computer.html">modular_computer</a></aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L4">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 4"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#var/all_components">all_components</a></th><td>List of &quot;connection ports&quot; in this computer and the components with which they are plugged</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#var/expansion_bays">expansion_bays</a></th><td>Lazy List of extra hardware slots that can be used modularly.</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#var/looping_sound">looping_sound</a></th><td>Whether or not this modular computer uses the looping sound</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#var/max_bays">max_bays</a></th><td>Number of total expansion bays this computer has available.</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#var/soundloop">soundloop</a></th><td>Looping sound for when the computer is on</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/alert_call">alert_call</a></th><td>Displays notification text alongside a soundbeep when requested to by a program.</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/find_hardware_by_name">find_hardware_by_name</a></th><td>Checks all hardware pieces to determine if name matches, if yes, returns the hardware piece, otherwise returns null</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/forget_component">forget_component</a></th><td>This isn't the &quot;uninstall fully&quot; proc, it just makes the computer lose all its references to the component</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/install_component">install_component</a></th><td>Installs component.</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/play_ping">play_ping</a></th><td>Plays a ping sound.</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/set_flashlight_color">set_flashlight_color</a></th><td>Sets the computer's light color, if it has a light.</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/toggle_flashlight">toggle_flashlight</a></th><td>Toggles the computer's flashlight, if it has one.</td></tr>
+            <tr><th><a href="obj/item/modular_computer.html#proc/uninstall_component">uninstall_component</a></th><td>Uninstalls component.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/all_components"><aside class="declaration">var </aside>all_components
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L43">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 43"/></a></h3>
+        <p>List of &quot;connection ports&quot; in this computer and the components with which they are plugged</p><h3 id="var/expansion_bays"><aside class="declaration">var </aside>expansion_bays
+            <aside>&ndash; /list</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L45">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 45"/></a></h3>
+        <p>Lazy List of extra hardware slots that can be used modularly.</p><h3 id="var/looping_sound"><aside class="declaration">var </aside>looping_sound
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L26">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 26"/></a></h3>
+        <p>Whether or not this modular computer uses the looping sound</p><h3 id="var/max_bays"><aside class="declaration">var </aside>max_bays
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L47">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 47"/></a></h3>
+        <p>Number of total expansion bays this computer has available.</p><h3 id="var/soundloop"><aside class="declaration">var </aside>soundloop
+            <aside>&ndash; /<a href="datum.html">datum</a>/<a href="datum/looping_sound.html">looping_sound</a>/computer</aside>
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 24"/></a></h3>
+        <p>Looping sound for when the computer is on</p><h2 id="proc">Proc Details</h2><h3 id="proc/alert_call"><aside class="declaration">proc </aside>alert_call<aside>(/<a href="datum.html">datum</a>/<a href="datum/computer_file/program.html">computer_file/program</a>/caller, alerttext, sound) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L344">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 344"/></a></aside>
+        </h3>
+        <p>Displays notification text alongside a soundbeep when requested to by a program.</p>
+<p>After checking tha the requesting program is allowed to send an alert, creates
+a visible message of the requested text alongside a soundbeep. This proc adds
+text to indicate that the message is coming from this device and the program
+on it, so the supplied text should be the exact message and ending punctuation.</p>
+<p>Arguments:
+The program calling this proc.
+The message that the program wishes to display.</p><h3 id="proc/find_hardware_by_name"><aside class="declaration">proc </aside>find_hardware_by_name<aside>(name) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer_components.dm#L66">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer_components.dm 66"/></a></aside>
+        </h3>
+        <p>Checks all hardware pieces to determine if name matches, if yes, returns the hardware piece, otherwise returns null</p><h3 id="proc/forget_component"><aside class="declaration">proc </aside>forget_component<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/computer_hardware.html">computer_hardware</a>/wipe_memory) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer_components.dm#L57">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer_components.dm 57"/></a></aside>
+        </h3>
+        <p>This isn't the &quot;uninstall fully&quot; proc, it just makes the computer lose all its references to the component</p><h3 id="proc/install_component"><aside class="declaration">proc </aside>install_component<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/computer_hardware.html">computer_hardware</a>/install, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer_components.dm#L24">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer_components.dm 24"/></a></aside>
+        </h3>
+        <p>Installs component.</p><h3 id="proc/play_ping"><aside class="declaration">proc </aside>play_ping<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L92">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 92"/></a></aside>
+        </h3>
+        <p>Plays a ping sound.</p>
+<p>Timers runtime if you try to make them call playsound. Yep.</p><h3 id="proc/set_flashlight_color"><aside class="declaration">proc </aside>set_flashlight_color<aside>(color) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L474">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 474"/></a></aside>
+        </h3>
+        <p>Sets the computer's light color, if it has a light.</p>
+<p>Called from ui_act(), this proc takes a color string and applies it.
+It is seperated from ui_act() to be overwritten as needed.
+Arguments:</p>
+<ul>
+<li>color is the string that holds the color value that we should use. Proc auto-fails if this is null.</li>
+</ul><h3 id="proc/toggle_flashlight"><aside class="declaration">proc </aside>toggle_flashlight<aside>() 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer.dm#L456">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer.dm 456"/></a></aside>
+        </h3>
+        <p>Toggles the computer's flashlight, if it has one.</p>
+<p>Called from ui_act(), does as the name implies.
+It is seperated from ui_act() to be overwritten as needed.</p><h3 id="proc/uninstall_component"><aside class="declaration">proc </aside>uninstall_component<aside>(/<a href="obj.html">obj</a>/<a href="obj/item.html">item</a>/<a href="obj/item/computer_hardware.html">computer_hardware</a>/yeet, /<a href="mob.html">mob</a>/<a href="mob/living.html">living</a>/user) 
+        
+    
+            <a href="https://github.com/Skyrat-SS13/Skyrat-tg/blob/7b61bddbde4f7d3af36d9e1fcd896772751d45a6/code/modules/modular_computers/computers/item/computer_components.dm#L42">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;modular_computers&#x2F;computers&#x2F;item&#x2F;computer_components.dm 42"/></a></aside>
+        </h3>
+        <p>Uninstalls component.</p></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/Skyrat-SS13/Skyrat-tg/tree/7b61bddbde4f7d3af36d9e1fcd896772751d45a6">7b61bdd</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>
