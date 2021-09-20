@@ -308,7 +308,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "vagina"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "vagina"
 	inv_box.screen_loc = ui_vagina_down
 	inv_box.slot_id = ITEM_SLOT_VAGINA
@@ -317,7 +317,7 @@
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "anus"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "anus"
 	inv_box.screen_loc = ui_anus_down
 	inv_box.slot_id = ITEM_SLOT_ANUS
@@ -326,7 +326,7 @@
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "nipples"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "nipples"
 	inv_box.screen_loc = ui_nipples_down
 	inv_box.slot_id = ITEM_SLOT_NIPPLES
@@ -335,7 +335,7 @@
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "penis"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "penis"
 	inv_box.screen_loc = ui_penis_down
 	inv_box.slot_id = ITEM_SLOT_PENIS

@@ -2673,6 +2673,9 @@ GLOBAL_LIST_INIT(food, list(
 						UI_style = pickedui
 						if (parent && parent.mob && parent.mob.hud_used)
 							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
+							// SKYRAT EDIT ADDITION BEGIN - ERP UI
+							parent.mob.hud_used.update_erp_ui_style(erp_ui_style2icon(UI_style))
+							// SKYRAT EDIT ADDITION END
 				if("pda_style")
 					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
 					if(pickedPDAStyle)
