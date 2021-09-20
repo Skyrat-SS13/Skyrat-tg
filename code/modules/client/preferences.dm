@@ -483,7 +483,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
 
+<<<<<<< HEAD
 				dat += "<h3>Legs</h3>"
+=======
+	client?.clear_map(assigned_map)
+>>>>>>> a08f698230e (Harddeletes: Accident edition (#61562))
 
 				dat += "<a href='?_src_=prefs;preference=legs;task=input'>[features["legs"]]</a><BR>"
 
