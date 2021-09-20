@@ -637,15 +637,18 @@
 
 	. += get_name_chaser(user)
 	if(desc)
+		. += "<hr>" //SKYRAT EDIT ADDITION
 		. += desc
 
 	if(custom_materials)
+		. += "<hr>" //SKYRAT EDIT ADDITION
 		var/list/materials_list = list()
 		for(var/i in custom_materials)
 			var/datum/material/M = i
 			materials_list += "[M.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 	if(reagents)
+		. += "<hr>" //SKYRAT EDIT ADDITION
 		if(reagents.flags & TRANSPARENT)
 			. += "It contains:"
 			if(length(reagents.reagent_list))

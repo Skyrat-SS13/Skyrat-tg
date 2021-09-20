@@ -184,16 +184,10 @@
 	if(job.has_banned_quirk(client.prefs))
 		return JOB_UNAVAILABLE_QUIRK
 	//SKYRAT EDIT ADDITION
-	if(job.has_banned_species(client.prefs))
-		return JOB_UNAVAILABLE_SPECIES
 	if(!job.has_required_languages(client.prefs))
 		return JOB_UNAVAILABLE_LANGUAGE
 	if(job.veteran_only && !is_veteran_player(client))
 		return JOB_NOT_VETERAN
-	if(job.has_banned_quirk(client.prefs))
-		return JOB_UNAVAILABLE_QUIRK
-	if(job.has_banned_species(client.prefs))
-		return JOB_UNAVAILABLE_SPECIES
 	//SKYRAT EDIT END
 	return JOB_AVAILABLE
 

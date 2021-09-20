@@ -31,7 +31,7 @@
 	else
 		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
 
-	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]")
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]<hr>") //SKYRAT EDIT CHANGE
 	if(species_visible) //If they have a custom species shown, show the real one too
 		if(dna.features["custom_species"])
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
@@ -486,7 +486,7 @@
 			. += "<span class='notice'>[temporary_flavor_text]</span>"
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
-	. += "*---------*</span>"
+	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
