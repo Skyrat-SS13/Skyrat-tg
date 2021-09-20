@@ -79,50 +79,14 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch
 
-//MISC
-/datum/loadout_item/glasses/blindfold
-	name = "Blindfold"
-	item_path = /obj/item/clothing/glasses/blindfold
 
 /datum/loadout_item/glasses/fakeblindfold
 	name = "Fake Blindfold"
 	item_path = /obj/item/clothing/glasses/trickblindfold
 
-/datum/loadout_item/glasses/cold
-	name = "Cold goggles"
-	item_path = /obj/item/clothing/glasses/cold
-
-/datum/loadout_item/glasses/eyepatch
-	name = "Eyepatch"
-	item_path = /obj/item/clothing/glasses/eyepatch
-
-/datum/loadout_item/glasses/heat
-	name = "Heat goggles"
-	item_path = /obj/item/clothing/glasses/heat
-
-/datum/loadout_item/glasses/hipster
-	name = "Hipster glasses"
-	item_path = /obj/item/clothing/glasses/regular/hipster
-
-/datum/loadout_item/glasses/jamjar
-	name = "Jamjar glasses"
-	item_path = /obj/item/clothing/glasses/regular/jamjar
-
 /datum/loadout_item/glasses/monocle
 	name = "Monocle"
 	item_path = /obj/item/clothing/glasses/monocle
-
-/datum/loadout_item/glasses/orange
-	name = "Orange glasses"
-	item_path = /obj/item/clothing/glasses/orange
-
-/datum/loadout_item/glasses/red
-	name = "Red Glasses"
-	item_path = /obj/item/clothing/glasses/red
-
-/datum/loadout_item/glasses/prescription
-	name = "Prescription glasses"
-	item_path = /obj/item/clothing/glasses/regular
 
 /datum/loadout_item/glasses/thin
 	name = "Thin Glasses"
@@ -148,19 +112,15 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Medical Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/med
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Paramedic")
-	restricted_desc = "Medical"
 
 /datum/loadout_item/glasses/robopatch
 	name = "Diagnostic Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/diagnostic
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Vanguard Operative")
-	restricted_desc = "Science"
-
 /datum/loadout_item/glasses/scipatch
 	name = "Science Eyepatch"
 	item_path = /obj/item/clothing/glasses/hud/eyepatch/sci
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Chemist", "Vanguard Operative")
-	restricted_desc = "Science and Chemists"
 
 /datum/loadout_item/glasses/sechud
 	name = "Security Hud"

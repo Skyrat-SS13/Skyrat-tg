@@ -79,10 +79,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Black Beret"
 	item_path = /obj/item/clothing/head/beret/black
 
-/datum/loadout_item/head/red_beret
-	name = "Red Beret"
-	item_path = /obj/item/clothing/head/beret
-
 /datum/loadout_item/head/black_cap
 	name = "Black Cap"
 	item_path = /obj/item/clothing/head/soft/black
@@ -371,303 +367,188 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Cowboy Hat, Brown"
 	item_path = /obj/item/clothing/head/cowboyhat
 
-/datum/loadout_item/head/cowboyhat/black
+/datum/loadout_item/head/cowboyhat_black
 	name = "Cowboy Hat, Black"
 	item_path = /obj/item/clothing/head/cowboyhat/black
 
-/datum/loadout_item/head/cowboyhat/blackwide
+/datum/loadout_item/head/cowboyhat_blackwide
 	name = "Wide Cowboy Hat, Black"
 	item_path = /obj/item/clothing/head/cowboyhat/blackwide
 
-/datum/loadout_item/head/cowboyhat/wide
+/datum/loadout_item/head/cowboyhat_wide
 	name = "Wide Cowboy Hat, Brown"
 	item_path = /obj/item/clothing/head/cowboyhat/wide
 
-/datum/loadout_item/head/cowboyhat/white
+/datum/loadout_item/head/cowboyhat_white
 	name = "Cowboy Hat, White"
 	item_path = /obj/item/clothing/head/cowboyhat/white
 
-/datum/loadout_item/head/cowboyhat/pink
+/datum/loadout_item/head/cowboyhat_pink
 	name = "Cowboy Hat, Pink"
 	item_path = /obj/item/clothing/head/cowboyhat/pink
 
-/datum/loadout_item/head/cowboyhat/winter
+/datum/loadout_item/head/cowboyhat_winter
 	name = "Winter Cowboy Hat"
 	item_path = /obj/item/clothing/head/cowboyhat/sheriff
 
-/datum/loadout_item/head/cowboyhat/sheriff
+/datum/loadout_item/head/cowboyhat_sheriff
 	name = "Sheriff Hat"
 	item_path = /obj/item/clothing/head/cowboyhat/sheriff/alt
 
-/datum/loadout_item/head/cowboyhat/deputy
+/datum/loadout_item/head/cowboyhat_deputy
 	name = "Deputy Hat"
 	item_path = /obj/item/clothing/head/cowboyhat/deputy
 
 //trek fancy Hats!
-/datum/loadout_item/head/trek/trekcap
+/datum/loadout_item/head/trekcap
 	name = "Federation Officer's Cap (White)"
 	item_path = /obj/item/clothing/head/caphat/formal/fedcover
 	restricted_roles = list("Captain","Head of Personnel")
 
-/datum/loadout_item/head/trek/trekcapcap
+/datum/loadout_item/head/trekcapcap
 	name = "Federation Officer's Cap (Black)"
 	item_path = /obj/item/clothing/head/caphat/formal/fedcover/black
 	restricted_roles = list("Captain","Head of Personnel")
 
-/datum/loadout_item/head/trek/trekcapmedisci
+/datum/loadout_item/head/trekcapmedisci
 	name = "Federation Officer's Cap (Blue)"
 	item_path = /obj/item/clothing/head/caphat/formal/fedcover/medsci
-	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Security Medic","Paramedic","Chemist","Virologist","Psychologist","Geneticist","Research Director","Scientist","Roboticist","Vanguard Operative")
 
-/datum/loadout_item/head/trek/trekcapeng
+/datum/loadout_item/head/trekcapeng
 	name = "Federation Officer's Cap (Yellow)"
 	item_path = /obj/item/clothing/head/caphat/formal/fedcover/eng
-	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
-/datum/loadout_item/head/trek/trekcapsec
+/datum/loadout_item/head/trekcapsec
 	name = "Federation Officer's Cap (Red)"
 	item_path = /obj/item/clothing/head/caphat/formal/fedcover/sec
-	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Security Medic","Security Sergeant","Warden","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
-/*Commenting out Until next Christmas or made automatic
-/datum/gear/santahatr
-	name = "Red Santa Hat"
-	category = SLOT_HEAD
-	item_path = /obj/item/clothing/head/christmashat
-/datum/gear/santahatg
-	name = "Green Santa Hat"
-	category = SLOT_HEAD
-	item_path = /obj/item/clothing/head/christmashatg
-*/
-
-//JOB
-/datum/loadout_item/head/job/captain/imperial
+/datum/loadout_item/head/imperial_cap
 	name = "Captain's Naval Cap"
 	item_path = /obj/item/clothing/head/imperial/cap
 	restricted_roles = list("Captain", "Nanotrasen Representative")
 
-/datum/loadout_item/head/job/hop/imperial
+/datum/loadout_item/head/imperial_hop
 	name = "Head of Personnel's Naval Cap"
 	item_path = /obj/item/clothing/head/imperial/hop
 	restricted_roles = list("Head of Personnel", "Nanotrasen Representative")
 
-/datum/loadout_item/head/job/ce/imperial
+/datum/loadout_item/head/imperial_ce
 	name = "Chief Engineer's blast helmet."
 	item_path = /obj/item/clothing/head/imperial/ce
 	restricted_roles = list("Chief Engineer")
 
-/datum/loadout_item/head/job/cowboyhat/sec
+/datum/loadout_item/head/cowboyhat_sec
 	name = "Cowboy Hat, Security"
 	item_path = /obj/item/clothing/head/cowboyhat/sec
-	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
 
-/datum/loadout_item/head/job/cowboyhat/secwide
+/datum/loadout_item/head/cowboyhat_secwide
 	name = "Wide Cowboy Hat, Security"
 	item_path = /obj/item/clothing/head/cowboyhat/widesec
-	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
 
-/datum/loadout_item/head/job/sec/ushanka
+/datum/loadout_item/head/ushanka
 	name = "Security Ushanka"
 	item_path = /obj/item/clothing/head/ushankasec
-	restricted_desc = "Security"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
 
-/datum/loadout_item/head/job/blasthelmet
+/datum/loadout_item/head/blasthelmet
 	name = "General's Helmet"
 	item_path = /obj/item/clothing/head/imperialhelmet
-	restricted_desc = "Security and Command"
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Civil Disputes Officer","Corrections Officer","Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 
-/datum/loadout_item/head/job/navybluehoscap
+/datum/loadout_item/head/navybluehoscap
 	name = "Head of Security's Naval Cap"
 	item_path = /obj/item/clothing/head/imperial/hos
 	restricted_roles = list("Head of Security")
 
-/datum/loadout_item/head/job/navyblueofficerberet
+/datum/loadout_item/head/navyblueofficerberet
 	name = "Security officer's Navyblue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
-/datum/loadout_item/head/job/solofficercap
+/datum/loadout_item/head/solofficercap
 	name = "Security officer's Sol Cap"
 	item_path = /obj/item/clothing/head/sec/peacekeeper/sol
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
-/datum/loadout_item/head/job/soltrafficoff
+/datum/loadout_item/head/soltrafficoff
 	name = "Traffic Officer Cap"
 	item_path = /obj/item/clothing/head/soltraffic
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant","Civil Disputes Officer")
 
-/datum/loadout_item/head/job/navybluewardenberet
+/datum/loadout_item/head/navybluewardenberet
 	name = "Warden's navyblue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navywarden
 	restricted_roles = list("Warden")
 
-/datum/loadout_item/head/job/cybergoggles	//Cyberpunk-P.I. Outfit
+/datum/loadout_item/head/cybergoggles	//Cyberpunk-P.I. Outfit
 	name = "Type-34C Forensics Headwear"
 	item_path = /obj/item/clothing/head/fedora/det_hat/cybergoggles
 	restricted_roles = list("Detective")
-	restricted_desc = "Detective"
 
-/datum/loadout_item/head/job/nursehat
+/datum/loadout_item/head/nursehat
 	name = "Nurse Hat"
 	item_path = /obj/item/clothing/head/nursehat
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist","Security Medic")
-	restricted_desc = "Medical"
 
-/datum/loadout_item/head/job/imperial
+/datum/loadout_item/head/imperial_generic
 	name = "Naval Officer Cap"
 	item_path = /obj/item/clothing/head/imperial
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
-	restricted_desc = "Command Staff"
 
-/datum/loadout_item/head/job/impgrey
+/datum/loadout_item/head/imperial_grey
 	name = "Grey Naval Officer Cap"
 	item_path = /obj/item/clothing/head/imperial/grey
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer", "Nanotrasen Representative")
-	restricted_desc = "Command Staff"
 
-/datum/loadout_item/head/job/impred
+/datum/loadout_item/head/imperial_red
 	name = "Red Naval Officer Cap"
 	item_path = /obj/item/clothing/head/imperial/red
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
-	restricted_desc = "Command Staff"
 
 // JOB - Berets
-/datum/loadout_item/head/job/atmos_beret
+/datum/loadout_item/head/atmos_beret
 	name = "Atmospherics Beret"
 	item_path = /obj/item/clothing/head/beret/atmos
 	restricted_roles = list("Station Engineer", "Atmospheric Technician", "Chief Engineer")
-	restricted_desc = "Engineering"
 
-/datum/loadout_item/head/job/engi_beret
+/datum/loadout_item/head/engi_beret
 	name = "Engineering Beret"
 	item_path = /obj/item/clothing/head/beret/engi
 	restricted_roles = list("Station Engineer", "Atmospheric Technician", "Chief Engineer")
-	restricted_desc = "Engineering"
-
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-/*
-/datum/loadout_item/head/job/CE_beret
-	name = "Chief Engineer's Beret"
-	item_path = /obj/item/clothing/head/beret/engi/ce
-	restricted_roles = list("Chief Engineer")
-	restricted_desc = "Chief Engineer"
-
-/datum/loadout_item/head/job/CE_beret_alt
-	name = "Chief Engineer's White Beret"
-	item_path = /obj/item/clothing/head/beret/engi/ce/alt
-	restricted_roles = list("Chief Engineer")
-	restricted_desc = "Chief Engineer"
-*/
-// SKYRAT EDIT REMOVAL END
-/datum/loadout_item/head/job/med
+/datum/loadout_item/head/beret_med
 	name = "Medical Beret"
 	item_path = /obj/item/clothing/head/beret/medical
 	restricted_roles = list("Medical Doctor","Virologist", "Chemist", "Chief Medical Officer","Security Medic")
-	restricted_desc = "Medical"
 
-/datum/loadout_item/head/job/med
+/datum/loadout_item/head/beret_paramedic
 	name = "Paramedic Beret"
 	item_path = /obj/item/clothing/head/beret/medical/paramedic
 	restricted_roles = list("Paramedic", "Chief Medical Officer")
-	restricted_desc = "Paramedic"
 
-/datum/loadout_item/head/job/med_viro
+/datum/loadout_item/head/beret_viro
 	name = "Virologist Beret"
 	item_path = /obj/item/clothing/head/beret/medical/virologist
 	restricted_roles = list("Virologist", "Chief Medical Officer")
-	restricted_desc = "Virology"
 
-/datum/loadout_item/head/job/med_chem
+/datum/loadout_item/head/beret_chem
 	name = "Chemist Beret"
 	item_path = /obj/item/clothing/head/beret/medical/chemist
 	restricted_roles = list("Chemist", "Chief Medical Officer")
-	restricted_desc = "Chemistry"
 
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-/*
-/datum/loadout_item/head/job/CMO_beret_alt
-	name = "Chief Medical Officer's Blue Beret"
-	item_path = /obj/item/clothing/head/beret/medical/cmo
-	restricted_roles = list("Chief Medical Officer")
-	restricted_desc = "Chief Medical Officer"
-
-/datum/loadout_item/head/job/CMO_beret
-	name = "Chief Medical Officer's Beret"
-	item_path = /obj/item/clothing/head/beret/medical/cmo/alt
-	restricted_roles = list("Chief Medical Officer")
-	restricted_desc = "Chief Medical Officer"
-*/
-// SKYRAT EDIT REMOVAL END
-/datum/loadout_item/head/job/sci
+/datum/loadout_item/head/beret_sci
 	name = "Scientist's Beret"
 	item_path = /obj/item/clothing/head/beret/science
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Vanguard Operative")
-	restricted_desc = "Science"
 
-/datum/loadout_item/head/job/robo
+/datum/loadout_item/head/beret_robo
 	name = "Roboticist's Beret"
 	item_path = /obj/item/clothing/head/beret/science/fancy/robo
 	restricted_roles = list("Roboticist", "Research Director")
-	restricted_desc = "Robotics"
-
-// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-/*
-/datum/loadout_item/head/job/RD_beret
-	name = "Research Director's Beret"
-	item_path = /obj/item/clothing/head/beret/science/fancy/rd
-	restricted_roles = list("Research Director")
-	restricted_desc = "Research Director"
-
-/datum/loadout_item/head/job/RD_beret_alt
-	name = "Research Director's White Beret"
-	item_path = /obj/item/clothing/head/beret/science/fancy/rd
-	restricted_roles = list("Research Director")
-	restricted_desc = "Research Director"
-
-/datum/loadout_item/head/job/QM_beret
-	name = "Quartermaster's Beret"
-	item_path = /obj/item/clothing/head/beret/cargo/qm
-	restricted_roles = list("Quartermaster")
-	restricted_desc = "Quartermaster"
-
-/datum/loadout_item/head/job/QM_beret
-	name = "Quartermaster's White Beret"
-	item_path = /obj/item/clothing/head/beret/cargo/qm/alt
-	restricted_roles = list("Quartermaster")
-	restricted_desc = "Quartermaster"
-
-/datum/loadout_item/head/job/Cap_beret
-	name = "Captain's Beret"
-	item_path = /obj/item/clothing/head/caphat/beret
-	restricted_roles = list("Captain")
-	restricted_desc = "Captain"
-
-/datum/loadout_item/head/job/Cap_beret_alt
-	name = "Captain's White Beret"
-	item_path = /obj/item/clothing/head/caphat/beret/alt
-	restricted_roles = list("Captain")
-	restricted_desc = "Captain"
-
-/datum/loadout_item/head/job/HOP_beret
-	name = "Head of Personnel's Beret"
-	item_path = /obj/item/clothing/head/hopcap/beret
-	restricted_roles = list("Head of Personnel")
-	restricted_desc = "Head of Personnel"
-
-/datum/loadout_item/head/job/HOP_beret_alt
-	name = "Head of Personnel's White Beret"
-	item_path = /obj/item/clothing/head/hopcap/beret/alt
-	restricted_roles = list("Head of Personnel")
-	restricted_desc = "Head of Personnel"
-*/
-// SKYRAT EDIT REMOVAL END
 
 /datum/loadout_item/head/brfed
 	name = "Brown Fedora"

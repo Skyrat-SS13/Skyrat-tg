@@ -74,11 +74,6 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Lollipop"
 	item_path = /obj/item/food/lollipop
 
-///datum/loadout_item/mask/gum
-	//name = "Gum"
-	//item_path = /obj/item/food/bubblegum
-
-//MISC
 /datum/loadout_item/mask/balaclava
 	name = "Balaclava"
 	item_path = /obj/item/clothing/mask/balaclava
@@ -98,30 +93,6 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 /datum/loadout_item/mask/moustache
 	name = "Fake moustache"
 	item_path = /obj/item/clothing/mask/fakemoustache
-
-/datum/loadout_item/mask/bandana_red
-	name = "Red Bandana"
-	item_path = /obj/item/clothing/mask/bandana/red
-
-/datum/loadout_item/mask/bandana_blue
-	name = "Blue Bandana"
-	item_path = /obj/item/clothing/mask/bandana/blue
-
-/datum/loadout_item/mask/bandana_green
-	name = "Green Bandana"
-	item_path = /obj/item/clothing/mask/bandana/green
-
-/datum/loadout_item/mask/bandana_gold
-	name = "Gold Bandana"
-	item_path = /obj/item/clothing/mask/bandana/gold
-
-/datum/loadout_item/mask/bandana_black
-	name = "Black Bandana"
-	item_path = /obj/item/clothing/mask/bandana/black
-
-/datum/loadout_item/mask/bandana_skull
-	name = "Skull Bandana"
-	item_path = /obj/item/clothing/mask/bandana/skull
 
 /datum/loadout_item/mask/bandana_redft
 	name = "Skin Tight Red Bandana"
@@ -157,4 +128,3 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Sterile Mask"
 	item_path = /obj/item/clothing/mask/surgical
 	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Virologist", "Chemist", "Geneticist", "Paramedic", "Psychologist","Security Medic")
-	restricted_desc = "Medical"

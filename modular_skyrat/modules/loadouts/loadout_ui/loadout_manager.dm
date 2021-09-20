@@ -97,6 +97,9 @@
 		if("set_name")
 			set_item_name(interacted_item)
 
+		if("display_restrictions")
+			display_job_restrictions(interacted_item)
+
 		// Clears the loadout list entirely.
 		if("clear_all_items")
 			LAZYNULL(owner.prefs.loadout_list)
@@ -210,6 +213,14 @@
 	else
 		if(INFO_NAMED in owner.prefs.loadout_list[item.item_path])
 			owner.prefs.loadout_list[item.item_path] -= INFO_NAMED
+
+/datum/loadout_manager/proc/display_job_restrictions(datum/loadout_item/item)
+	var/composed_message = span_boldnotice("The [initial(item.item_path.name)] is restricted to the following roles: <br>")
+	for(var/job_type in item.restricted_roles)
+		composed_message += span_green("[job_type] <br>")
+
+	to_chat(owner, examine_block(composed_message))
+
 
 /// Rotate the dummy [DIR] direction, or reset it to SOUTH dir if we're showing all dirs at once.
 /datum/loadout_manager/proc/rotate_model_dir(dir)
@@ -390,9 +401,11 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 		formatted_item["path"] = item.item_path
 		formatted_item["is_greyscale"] = item.can_be_greyscale
 		formatted_item["is_renamable"] = item.can_be_named
+		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
 		if(LAZYLEN(item.additional_tooltip_contents))
 			formatted_item["tooltip_text"] = item.additional_tooltip_contents.Join("\n")
 
 		formatted_list[array_index++] = formatted_item
 
 	return formatted_list
+

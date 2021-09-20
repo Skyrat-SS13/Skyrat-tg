@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	/// The category of the loadout item.
 	var/category
 	/// The actual item path of the loadout item.
-	var/item_path
+	var/atom/item_path
 	/// List of additional text for the tooltip displayed on this item.
 	var/list/additional_tooltip_contents
 	/// If set, it's a list containing ckeys which only can get the item
@@ -50,8 +50,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	var/list/restricted_roles
 	/// Whether the item is restricted to supporters
 	var/donator_only
-	/// The desc of the restricted item
-	var/restricted_desc
+
 
 /datum/loadout_item/New()
 	if(can_be_named)

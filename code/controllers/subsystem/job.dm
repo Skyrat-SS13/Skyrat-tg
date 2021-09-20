@@ -567,7 +567,7 @@ SUBSYSTEM_DEF(job)
 	if(player_client)
 		to_chat(player_client, span_infoplain("You are the [job.title]."))
 
-	equipping.on_job_equipping(job)
+	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
 	job.announce_job(equipping)
 

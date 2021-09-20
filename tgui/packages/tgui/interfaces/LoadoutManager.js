@@ -96,6 +96,16 @@ export const LoadoutManager = (props, context) => {
                                   })} />
                               </Stack.Item>
                             )}
+                            { !!item.is_job_restricted
+                            && (
+                              <Stack.Item>
+                                <Button
+                                  icon="lock"
+                                  onClick={() => act('display_restrictions', {
+                                    path: item.path,
+                                  })} />
+                              </Stack.Item>
+                            )}
                             <Stack.Item>
                               <Button.Checkbox
                                 checked={selected_loadout.includes(item.path)}

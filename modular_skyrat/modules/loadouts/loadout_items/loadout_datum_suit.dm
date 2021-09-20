@@ -489,95 +489,65 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Security Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant") //Not giving this one to CDOs or COs because it's actually better than the one they spawn with
-	//restricted_desc = "All Security Personnel" //Liar...
-
 /datum/loadout_item/suit/job/cossak
 	name = "Ukrainian Security Jacket"
 	item_path = /obj/item/clothing/suit/cossack/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
-	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/job/brit
 	name = "High Vis Armored Vest"
 	item_path = /obj/item/clothing/suit/toggle/brit/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
-	restricted_desc = "All Security Personnel"
-
 /datum/loadout_item/suit/job/british_jacket
 	name = "Peacekeeper Officer Coat"
 	item_path = /obj/item/clothing/suit/british_officer
 	restricted_roles = list("Head of Security", "Warden","Detective","Security Sergeant")
-	restricted_desc = "All High Ranking Security Personnel"
 
 /datum/loadout_item/suit/job/engi_jacket
 	name = "Engineering Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/engi
 	restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician")
-	restricted_desc = "All Engineering Personnel"
 
 /datum/loadout_item/suit/job/sci_jacket
 	name = "Science Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sci
 	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist", "Vanguard Operative")
-	restricted_desc = "All Science Personnel"
 
 /datum/loadout_item/suit/job/med_jacket
 	name = "Medbay Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/med
 	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Paramedic", "Chemist", "Virologist")
-	restricted_desc = "All Medical Personnel"
 
 /datum/loadout_item/suit/job/supply_jacket
 	name = "Supply Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/supply
 	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
-	restricted_desc = "All Cargo Personnel"
 
 /datum/loadout_item/suit/job/supply_gorka_jacket
 	name = "Supply Gorka Jacket"
 	item_path = /obj/item/clothing/suit/gorka/supply
 	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
-	restricted_desc = "All Cargo Personnel"
 
-// SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-/*
-/datum/loadout_item/suit/job/supply_head_jacket
-	name = "Quartermaster's Jacket"
-	item_path = /obj/item/clothing/suit/toggle/jacket/supply/head
-	restricted_roles = list("Quartermaster")
-	restricted_desc = "Quartermaster Only"
-
-/datum/loadout_item/suit/job/supply_head_jacket
-	name = "Quartermaster's Fur Jacket"
-	item_path = /obj/item/clothing/suit/brownfurrich
-	restricted_roles = list("Quartermaster")
-	restricted_desc = "Quartermaster Only"
-*/
-// SKYRAT EDIT REMOVAL END
 
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/para_red
 	restricted_roles = list("Chief Medical Officer", "Paramedic","Security Medic") // its a medic jacket anyway screw you
-	restricted_desc = "Medical First Responders"
 
 /datum/loadout_item/suit/job/labcoat_highvis
 	name = "High-Vis Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/highvis
 	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic") // why does the atmos get this? sec med is more of a first responder lmao
-	restricted_desc = "First Responders and Detective"
 
 /datum/loadout_item/suit/job/discojacket
 	name = "Disco Ass Blazer"
 	item_path = /obj/item/clothing/suit/discoblazer
 	restricted_roles = list("Detective")
-	restricted_desc = "Superstar Detectives"
 
 /datum/loadout_item/suit/job/deckard
 	name = "Runner Coat"
 	item_path = /obj/item/clothing/suit/toggle/deckard
 	restricted_roles = list("Detective")
-	restricted_desc = "Hungry Detectives"
 
 //Trekkie things.
 /datum/loadout_item/suit/job/trek/fedcoat
@@ -587,13 +557,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/job/trek/fedmedsci
 	name = "Medsci fed jacket"
 	item_path = /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
-	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Security Medic","Psychologist","Geneticist","Research Director","Scientist","Roboticist","Vanguard Operative")
 
 /datum/loadout_item/suit/job/trek/fedeng
 	name = "Ops/Sec fed Jacket"
 	item_path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
-	restricted_desc = "Engineering, Security, and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Modern trekkie
@@ -604,20 +572,17 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/job/trek/fedcoatmodernmedsci
 	name = "Modern medsci jacket"
 	item_path = /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
-	restricted_desc = "Medical and Science"
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Psychologist","Geneticist","Research Director","Scientist","Roboticist","Vanguard Operative")
 
 /datum/loadout_item/suit/job/trek/fedcoatmoderneng
 	name = "Modern ops jacket"
 	item_path = /obj/item/clothing/suit/storage/fluff/mfedcoat/eng
-	restricted_desc = "Engineering and Cargo"
 	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 /datum/loadout_item/suit/job/trek/fedcoatmodernsec
 	name = "Modern sec jacket"
 	item_path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant","Civil Disputes Officer","Corrections Officer")
-	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/bltrench
 	name = "Black Trenchcoat"
