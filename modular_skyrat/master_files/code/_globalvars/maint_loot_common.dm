@@ -139,7 +139,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/wrench = 100
 	) = 200,
 	list( //Stuff you'd get elsewhere but they're not that good
-		/obj/item/beacon = 50,
 		/obj/item/binoculars = 50,
 		/obj/item/bodybag = 200,
 		/obj/item/clothing/gloves/radio = 25,
@@ -254,7 +253,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/toy/plush/bubbleplush = 5,
 		/obj/item/toy/plush/carpplushie = 5,
 		/obj/item/toy/plush/goatplushie = 5,
-		/obj/item/toy/plush/lizardplushie = 5,
+		/obj/item/toy/plush/lizard_plushie/green = 5,
 		/obj/item/toy/plush/moth = 5,
 		/obj/item/toy/plush/narplush = 5,
 		/obj/item/toy/plush/nukeplushie = 5,

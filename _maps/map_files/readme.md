@@ -1,6 +1,6 @@
 SKYRAT MODULAR MAPS
 
-ALL MAPS HAVE BEEN COPIED AND UPDATED AS OF: 09/03/2021
+ALL MAPS HAVE BEEN COPIED AND UPDATED AS OF: 14/08/2021
 
 THE MAPS THAT SHOULD BE CHANGED AND THAT WILL BE LOADED ARE ANY OF THEM WITH THE _skyrat EXTENTION.
 
@@ -22,3 +22,4 @@ UPDATE LOG:
 23:13 04/02/2021 - Gandalf2k15 - Updated metastation and added centcomm_skyrat_z2 and centcomm_skyrat, making the base centcomm modular.
 00:37 09/02/2021 - Gandalf2k15 - Hardset all non-modular maps to upstream.
 18:28 09/03/2021 - Gandalf2k15 - Hardset all maps to upstream and copy over things.
+11:07 14/08/2021 - Jake Park - Hardset all non-modular maps to upstream; added ovens to kitchen and prison on modular maps.

@@ -1,7 +1,8 @@
 /obj/structure/closet/secure_closet/brigoff
-	icon = 'modular_skyrat/modules/brigoff/icons/lockers/closet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
 	name = "corrections officer riot gear"
 	icon_state = "riot"
+	door_anim_time = 0 //CONVERT THESE DOORS YOU LAZY ASSHATS
 
 /obj/structure/closet/secure_closet/brigoff/PopulateContents()
 	..()

@@ -12,28 +12,30 @@
 /obj/item/clothing/head/beret/sec/peacekeeper
 	name = "peacekeeper beret"
 	desc = "A robust beret with the peacekeeper insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_beret"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	icon_state = "beret_badge"
+	greyscale_colors = "#3F3C40#333399"
 	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/sec/peacekeeper/white
-	icon_state = "peacekeeper_beret_white"
+	greyscale_config = /datum/greyscale_config/beret
+	greyscale_config_worn = /datum/greyscale_config/beret/worn
+	icon_state = "beret"
+	greyscale_colors = "#EAEAEA"
 
 /obj/item/clothing/head/hos/beret/peacekeeper
 	name = "head of security's peacekeeper beret"
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_beret_hos"
 	mutant_variants = NONE
 
 /obj/item/clothing/head/beret/sec/navywarden/peacekeeper
 	name = "warden's peacekeeper beret"
 	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "peacekeeper_beret_warden"
+	greyscale_config = /datum/greyscale_config/beret_badge_fancy
+	greyscale_config_worn = /datum/greyscale_config/beret_badge_fancy/worn
+	greyscale_colors = "#3F3C40#FF0000#00AEEF"
+	icon_state = "beret_badge_fancy_twist"
 	mutant_variants = NONE
 
 /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper
@@ -45,7 +47,7 @@
 //PEACEKEEPER UNIFORM
 /obj/item/clothing/under/rank/security/peacekeeper
 	name = "peacekeeper uniform"
-	desc = "A sleek peackeeper uniform, made to a price."
+	desc = "A sleek peacekeeper uniform, made to a price."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "peacekeeper"
@@ -56,14 +58,13 @@
 
 /obj/item/clothing/under/rank/security/peacekeeper/tactical
 	name = "tactical peacekeeper uniform"
-	desc = "A tactical peackeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
+	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
 	icon_state = "peacekeeper_tac"
 	armor = list(MELEE = 5, BULLET = 5, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
 
 /obj/item/clothing/under/rank/security/peacekeeper/blue
 	name = "blue peacekeeper uniform"
 	icon_state = "bsecurity"
-	worn_icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 
 /obj/item/clothing/under/rank/security/warden/peacekeeper
 	name = "peacekeeper wardens suit"
@@ -172,7 +173,7 @@
 //PEACEKEEPER BELTS
 /obj/item/storage/belt/security/peacekeeper
 	name = "peacekeeper belt"
-	desc = "Can hold security gear like handcuffs and flashes. Has a holster for a gun."
+	desc = "This belt can hold security gear like handcuffs and flashes. It has a holster for a gun."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "peacekeeperbelt"
@@ -180,9 +181,9 @@
 	content_overlays = FALSE
 	component_type = /datum/component/storage/concrete/peacekeeper
 
-/datum/component/storage/concrete/peacekeeper/on_alt_click(datum/source, mob/user)
+/datum/component/storage/concrete/peacekeeper/open_storage(mob/user)
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
-		return
+		return FALSE
 	if(locked)
 		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
 		return
@@ -223,8 +224,10 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/gun/ballistic/revolver,
+		/obj/item/gun/energy/disabler,
 		/obj/item/melee/baton,
-		/obj/item/melee/classic_baton,
+		/obj/item/melee/baton,
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
@@ -235,7 +238,7 @@
 		/obj/item/food/donut,
 		/obj/item/kitchen/knife/combat,
 		/obj/item/flashlight/seclite,
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/radio,
 		/obj/item/clothing/gloves,
 		/obj/item/restraints/legcuffs/bola,
@@ -251,7 +254,7 @@
 
 /obj/item/storage/belt/security/webbing/peacekeeper
 	name = "peacekeeper webbing"
-	desc = "Unique and versatile chest rig, can hold security gear."
+	desc = "A tactical chest rig issued to peacekeepers; slow is smooth, smooth is fast. Has a notable lack of a holster that fits energy-based weapons."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "peacekeeper_webbing"
@@ -267,8 +270,9 @@
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
+		/obj/item/gun/ballistic/revolver,
 		/obj/item/melee/baton,
-		/obj/item/melee/classic_baton,
+		/obj/item/melee/baton,
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
@@ -279,7 +283,7 @@
 		/obj/item/food/donut,
 		/obj/item/kitchen/knife/combat,
 		/obj/item/flashlight/seclite,
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/radio,
 		/obj/item/clothing/gloves,
 		/obj/item/restraints/legcuffs/bola,
@@ -312,9 +316,8 @@
 /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
 	name = "Armadyne SS-01 Voidsuit Helmet"
 	desc = "An Armadyne brand voidsuit helmet, with a decent layer of armor, this one comes in the peacekeeper colors."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hardsuit0-peacekeeper"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "peacekeeper"

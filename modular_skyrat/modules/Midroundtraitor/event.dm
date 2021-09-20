@@ -21,12 +21,12 @@
 	var/datum/mind/player_mind = new /datum/mind(applicant.key)
 
 	var/mob/living/carbon/human/operative = new(pick(spawn_locs))
-	applicant.client.prefs.copy_to(operative)
+	applicant.client.prefs.safe_transfer_prefs_to(operative)
 	operative.dna.update_dna_identity()
-	operative.dna.species.before_equip_job(null, operative)
+	operative.dna.species.pre_equip_species_outfit(null, operative)
 	operative.regenerate_icons()
 	SSquirks.AssignQuirks(operative, applicant.client, TRUE, TRUE, null, FALSE, operative)
-	player_mind.assigned_role = "Lone Infiltrator"
+	player_mind.set_assigned_role(SSjob.GetJobType(/datum/job/lone_operative))
 	player_mind.special_role = "Lone Infiltrator"
 	player_mind.active = TRUE
 	player_mind.transfer_to(operative)

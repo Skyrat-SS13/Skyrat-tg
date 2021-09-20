@@ -1,11 +1,18 @@
 /datum/map_template/shuttle/ferry
-	name = "centcom ferry"
+	name = "NAV Monarch"
 	port_id = "ferry"
 	suffix = "skyrat"
 	who_can_purchase = null
 
+/datum/map_template/shuttle/cargo
+	name = "NLV Consign"
+	port_id = "cargo"
+	suffix = "skyrat"
+	name = "NLV Consign (Cargo)"
+	who_can_purchase = null
+
 /obj/docking_port/mobile/arrivals_skyrat
-	name = "arrivals interlink shuttle"
+	name = "NTV Relay"
 	id = "arrivals_shuttle"
 	dwidth = 1
 	width = 5
@@ -33,6 +40,8 @@
 	icon_screen = ""
 	light_color = COLOR_ORANGE_BROWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+
+	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
 
 /obj/machinery/computer/shuttle/arrivals/recall
 	name = "arrivals shuttle recall terminal"

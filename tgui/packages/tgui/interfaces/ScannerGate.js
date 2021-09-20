@@ -180,10 +180,6 @@ const SCANNER_GATE_ROUTES = {
     component: () => ScannerGateGender,
   },
   //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-  Nanites: {
-    title: 'Scanner Mode: Nanites',
-    component: () => ScannerGateNanites,
-  },
 };
 
 const ScannerGateControl = (props, context) => {
@@ -236,9 +232,6 @@ const ScannerGateOff = (props, context) => {
         <Button
           content="Nutrition"
           onClick={() => act('set_mode', { new_mode: 'Nutrition' })} />
-        <Button
-          content="Nanites"
-          onClick={() => act('set_mode', { new_mode: 'Nanites' })} />
       </Box>
     </>
   );
@@ -399,35 +392,6 @@ const ScannerGateGender = (props, context) => {
   );
 };
 //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-
-const ScannerGateNanites = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { reverse, nanite_cloud } = data;
-  return (
-    <>
-      <Box mb={2}>
-        Trigger if the person scanned {reverse ? 'does not have' : 'has'}
-        {' '}nanite cloud {nanite_cloud}.
-      </Box>
-      <Box mb={2}>
-        <LabeledList>
-          <LabeledList.Item label="Cloud ID">
-            <NumberInput
-              value={nanite_cloud}
-              width="65px"
-              minValue={1}
-              maxValue={100}
-              stepPixelSize={2}
-              onChange={(e, value) => act('set_nanite_cloud', {
-                new_cloud: value,
-              })} />
-          </LabeledList.Item>
-        </LabeledList>
-      </Box>
-      <ScannerGateMode />
-    </>
-  );
-};
 
 const ScannerGateMode = (props, context) => {
   const { act, data } = useBackend(context);

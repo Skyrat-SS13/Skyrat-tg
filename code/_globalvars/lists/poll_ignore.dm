@@ -20,8 +20,9 @@
 #define POLL_IGNORE_SPLITPERSONALITY "split_personality"
 #define POLL_IGNORE_CONTRACTOR_SUPPORT "contractor_support"
 #define POLL_IGNORE_ACADEMY_WIZARD "academy_wizard"
+#define POLL_IGNORE_CORTICAL_BORER "cortical_borer" //Skyrat Edit Start: Cortical Borer
 
-
+//Skyrat Edit Start: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SENTIENCE_POTION = "Sentience potion",
 	POLL_IGNORE_POSSESSED_BLADE = "Possessed blade",
@@ -43,7 +44,9 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_SPLITPERSONALITY = "Split Personality",
 	POLL_IGNORE_CONTRACTOR_SUPPORT = "Contractor Support Unit",
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
+	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
 ))
+//Skyrat Edit Stop: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
 
 

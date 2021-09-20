@@ -416,6 +416,58 @@
 /obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
 	adjustmask(user)
 
+//Donation reward for TheOOZ
+/obj/item/clothing/mask/kindle
+	name = "mask of Kindle"
+	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material feels like it's made entirely out of inexpensive plastic."
+	actions_types = list(/datum/action/item_action/adjust)
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	icon_state = "kindle"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	inhand_icon_state = "kindle"
+	mutant_variants = NONE
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
+	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/clothing/mask/kindle/ui_action_click(mob/user, action)
+	adjustmask(user)
+
+/obj/item/clothing/mask/kindle/Initialize()
+	. = ..()
+	AddComponent(/datum/component/knockoff,50,list(BODY_ZONE_HEAD),list(ITEM_SLOT_MASK))
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
+/obj/item/clothing/mask/kindle/proc/on_entered(datum/source, atom/movable/movable)
+	SIGNAL_HANDLER
+	if(damaged_clothes == CLOTHING_SHREDDED)
+		return
+	if(isliving(movable))
+		var/mob/living/crusher = movable
+		if(crusher.m_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & (FLYING|FLOATING)) || crusher.buckled))
+			playsound(src, 'modular_skyrat/master_files/sound/effects/plastic_crush.ogg', 75)
+			visible_message(span_warning("[crusher] steps on the [src], crushing it with ease."))
+			take_damage(200, sound_effect = FALSE)
+
+/obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
+	. = ..()
+	name = "broken mask of Kindle"
+	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
+	icon_state = "kindle_broken"
+	inhand_icon_state = "kindle_broken"
+
+/obj/item/clothing/mask/kindle/repair()
+	. = ..()
+	name = "mended mask of Kindle"
+	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material seems extra flimsy, like it has recently been repaired in a hurry."
+	icon_state = "kindle"
+	inhand_icon_state = "kindle"
+
 //Donation reward for Random516
 /obj/item/clothing/head/drake_skull
 	name = "skull of an ashdrake"
@@ -685,6 +737,14 @@
 	flags_inv = null
 	mutant_variants = NONE
 
+//Donation reward for Lyricalpaws
+/obj/item/clothing/neck/cloak/healercloak
+	name = "legendary healer's cloak"
+	desc = "Worn by the most skilled professional medics on the station, this legendary cloak is only attainable by becoming the pinnacle of healing. This status symbol represents the wearer has spent countless years perfecting their craft of helping the sick and wounded."
+	icon_state = "healercloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
+
 //Donation reward for Kathrin Bailey / Floof Ball
 /obj/item/clothing/under/custom/lannese
 	name = "Lannese Dress"
@@ -776,29 +836,56 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	worn_icon_state = "mikuleggings"
 
+// Donation reward for CandleJax
+/obj/item/clothing/head/helmet/space/plasmaman/candlejax
+	name = "Emission's Helmet"
+	desc = "A special containment helmet designed for heavy usage. Multiple dings and notches are on this one."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "emissionhelm"
+	inhand_icon_state = "emissionhelm"
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, RAD = 0, FIRE = 100, ACID = 75, WOUND = 10)
 
 // Donation reward for CandleJax
-/obj/item/clothing/suit/armor/vest/peacekeeper/jax
-	name = "HepUnit Standard Underweave"
-	desc = "A durable, plated uniform that provides mobility as well as security to the wearer. Most often used by Hephaestus Industries Security Constructs due to their effective use and recyclability."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "heparmor"
-	worn_icon_state = "heparmor"
+/obj/item/clothing/under/plasmaman/security/candlejax
+	name = "Emission's Containment Suit"
+	desc = "A special containment envirosuit designed for abnormally heated plasmafires. This one seems highly customized."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "emissionsuit"
+	inhand_icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
-/obj/item/storage/belt/security/webbing/peacekeeper/jax
-	name = "HepUnit Standard Webbing"
-	desc = "A sturdy, segmented vest that fits over the included uniform. It conceals a number of pockets on the interior, making it ideal for storage across the operating unit's body."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "hepbelt"
-	worn_icon_state = "hepbelt"
+/obj/item/clothing/glasses/zentai
+	var/list/spans = list()
+	actions_types = list(/datum/action/item_action/demonic_whisper)
+
+/obj/item/clothing/glasses/zentai
+	name = "Demonic Sunglasses"
+	desc = "A devilishly fashionable set of shades. An eerie red glint is present."
+	spans = list("velvet")
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "zentai"
+	inhand_icon_state = "zentai"
+	tint = 1
+	glass_colour_type = /datum/client_colour/glass_colour/red
+
+/datum/action/item_action/demonic_whisper
+	name = "Demonic Whisper"
+
+/obj/item/clothing/glasses/zentai/ui_action_click(mob/living/user, action)
+	if(!isliving(user) || !can_use(user))
+		return
+	var/message = input(user, "Speak with a demonic whisper", "Whisper")
+	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
+		return
+	user.whisper(message, spans = spans)
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax
 	name = "HepUnit Standard Helmet"
-	desc = "A concealing riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
+	desc = "An adjustable riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 
@@ -806,7 +893,10 @@
 	worn_icon_state = "hephelmet-visor-nolight"
 	actions_types = list(/datum/action/item_action/togglevisor)
 
-	flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
+	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
+	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
 	var/visor = TRUE
 
 /datum/action/item_action/togglevisor

@@ -72,8 +72,8 @@
 	if(obj_flags & EMAGGED)
 		return
 	if(user)
-		user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!</span>",
-		"<span class='notice'>You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband.</span>")
+		user.visible_message(span_warning("[user] swipes a suspicious card through [src]!"),
+		span_notice("You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband."))
 
 	obj_flags |= EMAGGED
 	contraband = TRUE
@@ -165,6 +165,11 @@
 		return
 	switch(action)
 		if("send")
+			//SKYRAT EDIT CHANGE
+			if(SSshuttle.supply.manual_operation)
+				say("The supply shuttle is currently being manually operated.")
+				return
+			//SKYRAT EDIT END
 			if(!SSshuttle.supply.canMove())
 				say(safety_warning)
 				return
@@ -268,6 +273,10 @@
 			if(requestonly && message_cooldown < world.time)
 				radio.talk_into(src, "A new order has been requested.", RADIO_CHANNEL_SUPPLY)
 				message_cooldown = world.time + 30 SECONDS
+			//SKYRAT EDIT ADDITION
+			for(var/obj/machinery/computer/cargo_control_console/iterating_console in GLOB.cargo_control_consoles)
+				iterating_console.notify_order(SO)
+			//SKYRAT EDIT END
 			. = TRUE
 		if("remove")
 			var/id = text2num(params["id"])

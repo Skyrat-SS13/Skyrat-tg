@@ -287,9 +287,46 @@
 	mutant_variants = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
+/obj/item/clothing/suit/corgisuit/en
+	name = "\improper super-hero E-N suit"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "ensuit"
+	mutant_variants = NONE
 
+/obj/item/clothing/suit/corgisuit/en/New()
+	..()
+	START_PROCESSING(SSobj, src)
 
+/obj/item/clothing/suit/corgisuit/en/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
+/obj/item/clothing/suit/corgisuit/en/process()
+	if(prob(2))
+		for(var/obj/M in orange(2,src))
+			if(!M.anchored && (M.flags_1 & CONDUCT_1))
+				step_towards(M,src)
+		for(var/mob/living/silicon/S in orange(2,src))
+			if(istype(S, /mob/living/silicon/ai)) continue
+			step_towards(S,src)
+		for(var/datum/species/robotic/R in orange(2,src))
+			step_towards(R,src)
 
+/obj/item/clothing/suit/trenchbrown
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "Brown trenchcoat"
+	desc = "A brown noir-inspired coat. Looks best if you're not wearing it over a baggy t-shirt."
+	icon_state = "brtrenchcoat"
+	mutant_variants = STYLE_VOX
+	body_parts_covered = CHEST|ARMS
 
-
+/obj/item/clothing/suit/trenchblack
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "Black trenchcoat"
+	desc = "A matte-black coat. Best suited for space-italians, or maybe a monochrome-cop."
+	icon_state = "bltrenchcoat"
+	mutant_variants = STYLE_VOX
+	body_parts_covered = CHEST|ARMS

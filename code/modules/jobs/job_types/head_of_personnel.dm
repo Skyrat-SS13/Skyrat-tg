@@ -4,7 +4,7 @@
 	department_head = list("Captain")
 	//head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE) //ORIGINAL
 	head_announce = list(RADIO_CHANNEL_SERVICE) //SKYRAT EDIT CHANGE
-	faction = "Station"
+	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
@@ -12,12 +12,16 @@
 	req_admin_notify = 1
 	minimal_player_age = 10
 	exp_requirements = 180
-	exp_type = EXP_TYPE_CREW
-	exp_type_department = EXP_TYPE_SERVICE
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_SERVICE
+	exp_granted_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/hop
 	plasmaman_outfit = /datum/outfit/plasmaman/head_of_personnel
-	departments = DEPARTMENT_COMMAND | DEPARTMENT_SERVICE
+	departments_list = list(
+		/datum/job_department/service,
+		/datum/job_department/command,
+		)
 
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SRV
@@ -34,10 +38,14 @@
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/trophy/silver_cup)
 
-/datum/job/head_of_personnel/announce(mob/living/carbon/human/H, announce_captaincy = FALSE)
-	..()
-	if(announce_captaincy)
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Due to staffing shortages, newly promoted Acting Captain [H.real_name] on deck!"))
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
+
+	voice_of_god_power = 1.4 //Command staff has authority
+
+
+/datum/job/head_of_personnel/get_captaincy_announcement(mob/living/captain)
+	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+
 
 /datum/outfit/job/hop
 	name = "Head of Personnel"
@@ -50,9 +58,13 @@
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	head = /obj/item/clothing/head/hopcap
 	backpack_contents = list(/obj/item/storage/box/ids=1,\
-		/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command = 1)
+		/obj/item/melee/baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command = 1)
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/hop)
+
+	backpack = /obj/item/storage/backpack/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
+	satchel = /obj/item/storage/backpack/satchel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
+	duffelbag = /obj/item/storage/backpack/duffel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 
 	id_trim = /datum/id_trim/job/head_of_personnel
 

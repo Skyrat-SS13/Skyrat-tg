@@ -23,7 +23,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 	var/list/subtypes = subtypesof(type)
 	if (!subtypes || !subtypes.len)
 		return FALSE
-	if (subtypes && subtypes.len)
+	if (subtypes?.len)
 		switch(tgui_alert(usr,"Strict object type detection?", "Type detection", list("Strictly this type","This type and subtypes", "Cancel")))
 			if("Strictly this type")
 				return FALSE

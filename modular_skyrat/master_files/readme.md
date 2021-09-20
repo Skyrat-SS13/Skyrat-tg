@@ -26,6 +26,7 @@ MASTER CODE FILES
 - /master_files/code/modules/mob/living/emote_popup.dm
 - /master_files/code/game/machinery/doors/firedoor.dm
 - /master_files/code/modules/jobs/job_types/cyborg.dm
+- /master_files/code/modules/antagonists/_common/antag_datum.dm
 
 MASTER GLOBAL VARS
 - modular_skyrat/master_files/code/_globalvars/configuration.dm > GLOBAL_VAR_INIT(looc_allowed, TRUE)

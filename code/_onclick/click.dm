@@ -78,9 +78,6 @@
 	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CANCEL_CLICKON)
 		return
 	var/list/modifiers = params2list(params)
-	if(LAZYACCESS(modifiers, RIGHT_CLICK))
-		if(RightClickOn(A))
-			return
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		if(LAZYACCESS(modifiers, MIDDLE_CLICK))
 			ShiftMiddleClickOn(A)
@@ -131,9 +128,14 @@
 	var/obj/item/W = get_active_held_item()
 
 	if(W == A)
-		W.attack_self(src, modifiers)
-		update_inv_hands()
-		return
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
+			W.attack_self_secondary(src, modifiers)
+			update_inv_hands()
+			return
+		else
+			W.attack_self(src, modifiers)
+			update_inv_hands()
+			return
 
 	//These are always reachable.
 	//User itself, current loc, and user inventory
@@ -143,6 +145,7 @@
 		else
 			if(ismob(A))
 				changeNext_move(CLICK_CD_MELEE)
+
 			UnarmedAttack(A, FALSE, modifiers)
 		return
 
@@ -305,28 +308,7 @@
  * Useful for mobs that have their abilities mapped to right click.
  */
 /mob/proc/ranged_secondary_attack(atom/target, modifiers)
-
-/**
- * Right click
- *
- * Used for right-clicking interactions, in similar fashion of AltClick.
- * Returns [atom/proc/RightClick] on the atom being right-clicked, which checks if the click chain doesn't continue.
- * Arguments:
- * * atom/target - The atom being rightclicked.
- */
-/mob/proc/RightClickOn(atom/target)
-	return target.RightClick(src)
-
-/**
- * Proc used for right-clicking
- *
- * Used for right-click interactions, called by [mob/proc/RightClickOn].
- * Returns TRUE if the click chain should not continue from a right-click.
- * Arguments:
- * * mob/user - The mob right-clicking.
- */
-/atom/proc/RightClick(mob/user)
-	if(SEND_SIGNAL(src, COMSIG_CLICK_RIGHT, user) & COMPONENT_CANCEL_CLICK_RIGHT)
+	if(SEND_SIGNAL(src, COMSIG_MOB_ATTACK_RANGED_SECONDARY, target, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
 
 /**
@@ -368,9 +350,11 @@
 	var/mob/living/ML = user
 	if(istype(ML))
 		ML.pulled(src)
+	if(!can_interact(user))
+		return FALSE
 
 /mob/living/CtrlClick(mob/user)
-	if(!isliving(user) || !Adjacent(user) || user.incapacitated())
+	if(!isliving(user) || !user.CanReach(src) || user.incapacitated())
 		return ..()
 
 	if(world.time < user.next_move)
@@ -386,7 +370,7 @@
 
 /mob/living/carbon/human/CtrlClick(mob/user)
 
-	if(!ishuman(user) ||!Adjacent(user) || user.incapacitated())
+	if(!ishuman(user) || !user.CanReach(src) || user.incapacitated())
 		return ..()
 
 	if(world.time < user.next_move)
@@ -410,6 +394,8 @@
 	A.AltClick(src)
 
 /atom/proc/AltClick(mob/user)
+	if(!can_interact(user))
+		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_CLICK_ALT, user) & COMPONENT_CANCEL_CLICK_ALT)
 		return
 	var/turf/T = get_turf(src)
@@ -426,6 +412,8 @@
 
 ///The base proc of when something is right clicked on when alt is held
 /atom/proc/alt_click_secondary(mob/user)
+	if(!can_interact(user))
+		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_CLICK_ALT_SECONDARY, user) & COMPONENT_CANCEL_CLICK_ALT_SECONDARY)
 		return
 
@@ -452,6 +440,8 @@
 	return
 
 /atom/proc/CtrlShiftClick(mob/user)
+	if(!can_interact(user))
+		return FALSE
 	SEND_SIGNAL(src, COMSIG_CLICK_CTRL_SHIFT, user)
 	return
 

@@ -22,6 +22,11 @@
 		Base parts are available for shipping via cargo.
 		-Nanotrasen Naval Command"}
 
+/datum/station_goal/bluespace_cannon/on_report()
+	//Unlock BSA parts
+	var/datum/supply_pack/engineering/bsa/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bsa]
+	P.special_enabled = TRUE
+
 /datum/station_goal/bluespace_cannon/check_completion()
 	if(..())
 		return TRUE
@@ -189,11 +194,11 @@
 /obj/machinery/bsa/full/proc/pre_fire(mob/user, turf/bullseye)
 	if(system_state == SYSTEM_READY)
 		priority_announce("BLUESPACE TARGETING PARAMETERS SET, PREIGNITION STARTING... FIRING IN T-20 SECONDS!", "BLUESPACE ARTILLERY", ANNOUNCER_BLUESPACEARTY)
-		alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_prefire.ogg')
+		alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_prefire.ogg', override_volume = TRUE)
 		system_state = SYSTEM_PREFIRE
-		message_admins("[user] has started the fire cycle of [src]!")
+		message_admins("[user] has started the fire cycle of [src]! Firing at: [ADMIN_VERBOSEJMP(bullseye)]")
 		set_light(5, 5, COLOR_BLUE_LIGHT)
-		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 15 SECONDS)
+		addtimer(CALLBACK(src, .proc/fire, user, bullseye), 20 SECONDS, TIMER_CLIENT_TIME)
 		START_PROCESSING(SSobj, src)
 	return system_state
 
@@ -260,7 +265,7 @@
 		log_game("[key_name(user)] has launched an artillery strike targeting [AREACOORD(bullseye)].")
 		minor_announce("BLUESPACE ARTILLERY FIRE SUCCESSFUL! DIRECT HIT!", "BLUESPACE ARTILLERY", TRUE)
 		explosion(bullseye, ex_power, ex_power*2, ex_power*4)
-		alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_firing.ogg')
+		alert_sound_to_playing('modular_skyrat/modules/bsa_overhaul/sound/superlaser_firing.ogg', override_volume = TRUE)
 	else
 		message_admins("[ADMIN_LOOKUPFLW(user)] has launched an artillery strike targeting [ADMIN_VERBOSEJMP(bullseye)] but it was blocked by [blocker] at [ADMIN_VERBOSEJMP(target)].")
 		log_game("[key_name(user)] has launched an artillery strike targeting [AREACOORD(bullseye)] but it was blocked by [blocker] at [AREACOORD(target)].")
@@ -277,8 +282,10 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/machinery/bsa/full/Destroy()
-	control_unit.cannon = null
-	control_unit = null
+	if(control_unit)
+		if(control_unit.cannon)
+			control_unit.cannon = null
+		control_unit = null
 	. = ..()
 
 /obj/structure/filler
@@ -332,8 +339,9 @@
 	return TRUE
 
 /obj/machinery/bsa_powercore/Destroy()
-	control_unit.core = null
-	control_unit = null
+	if(control_unit)
+		control_unit.core = null
+		control_unit = null
 	attached = null
 	. = ..()
 

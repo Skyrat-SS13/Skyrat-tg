@@ -3,7 +3,7 @@
 
 /area/awaymission/black_mesa/outside
 	name = "Black Mesa Outside"
-	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	static_lighting = FALSE
 
 /obj/structure/fluff/server_rack
 	name = "Server Rack"
@@ -242,6 +242,8 @@
 	base_pixel_y = -154
 	speed = 3
 	pixel_y = -154
+	bound_height = 64
+	bound_width = 64
 	icon_dead = "bullsquid_dead"
 	maxHealth = 3000
 	health = 3000
@@ -259,7 +261,7 @@
 	attack_sound = 'sound/weapons/punch1.ogg'
 	status_flags = NONE
 	del_on_death = TRUE
-	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway/home)
+	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway)
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
 	amount = 50
@@ -320,6 +322,23 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab = 30
 	)
 
+///////////////////HECU SPAWNERS
+/obj/effect/spawner/lootdrop/hecu_smg
+	name = "HECU SMG drops"
+	loot = list(/obj/item/gun/ballistic/automatic/c20r/unrestricted = 30,
+				/obj/item/clothing/mask/gas/hecu2 = 20,
+				/obj/item/clothing/head/helmet = 20,
+				/obj/item/clothing/suit/armor/vest = 15,
+				/obj/item/clothing/shoes/combat = 15)
+
+/obj/effect/spawner/lootdrop/hecu_deagle
+	name = "HECU Deagle drops"
+	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 30,
+				/obj/item/clothing/mask/gas/hecu2 = 20,
+				/obj/item/clothing/head/helmet = 20,
+				/obj/item/clothing/suit/armor/vest = 15,
+				/obj/item/clothing/shoes/combat = 15)
+
 ///////////////////HECU
 /mob/living/simple_animal/hostile/blackmesa/hecu
 	name = "HECU Grunt"
@@ -332,7 +351,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Stop right there!"
+	speak = list("Stop right there!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -346,7 +365,7 @@
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/item/melee/classic_baton)
+	loot = list(/obj/item/melee/baton)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(FACTION_XEN)
@@ -376,7 +395,7 @@
 	icon_living = "hecu_ranged"
 	casingtype = /obj/item/ammo_casing/a50ae
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/item/gun/ballistic/automatic/pistol/deagle)
+	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/lootdrop/hecu_deagle)
 	dodging = TRUE
 	rapid_melee = 1
 
@@ -386,7 +405,7 @@
 	icon_living = "hecu_ranged_smg"
 	casingtype = /obj/item/ammo_casing/c45
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/item/gun/ballistic/automatic/c20r/unrestricted)
+	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/lootdrop/hecu_smg)
 
 /mob/living/simple_animal/hostile/blackmesa/sec
 	name = "Security Guard"
@@ -399,7 +418,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 10
-	speak = "Hey, freeman! Over here!"
+	speak = list("Hey, freeman! Over here!")
 	turns_per_move = 5
 	speed = 0
 	stat_attack = HARD_CRIT
@@ -476,10 +495,10 @@
 	name = "mob placer"
 	icon = 'icons/effects/mapping_helpers.dmi'
 	icon_state = "mobspawner"
-	var/list/possible_mobs
+	var/list/possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 
 /obj/effect/random_mob_placer/Initialize(mapload)
-	..()
+	. = ..()
 	var/mob/picked_mob = pick(possible_mobs)
 	new picked_mob(loc)
 	return INITIALIZE_HINT_QDEL
@@ -498,7 +517,6 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
-	assignedrole = "Science Team"
 	short_desc = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	permanent = FALSE
 	can_use_alias = TRUE
@@ -526,7 +544,6 @@
 /obj/effect/mob_spawn/human/black_mesa/guard
 	name = "Research Facility Security Guard"
 	outfit = /datum/outfit/security_guard
-	assignedrole = "Security Team"
 	short_desc = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/peacekeeper/junior/sol/blackmesa
@@ -557,7 +574,6 @@
 /obj/effect/mob_spawn/human/black_mesa/hecu
 	name = "HECU"
 	outfit = /datum/outfit/hecu
-	assignedrole = "HECU"
 	short_desc = "You are an elite tactical squad deployed into the research facility to contain the infestation. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
 
 /obj/item/clothing/under/rank/security/officer/hecu
@@ -577,7 +593,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	shoes = /obj/item/clothing/shoes/combat
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/assault_rifle/m16, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/tactical)
+	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/assault_rifle/m16, /obj/item/ammo_box/magazine/m16 = 4, /obj/item/storage/firstaid/expeditionary)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
 

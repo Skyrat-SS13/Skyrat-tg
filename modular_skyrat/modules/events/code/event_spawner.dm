@@ -83,7 +83,7 @@
 	name = "opened cryogenic sleeper"
 	//Spawn and copify prefs
 	var/mob/living/carbon/human/H = new(src)
-	user.client.prefs.copy_to(H)
+	user.client.prefs.safe_transfer_prefs_to(H)
 	H.dna.update_dna_identity()
 
 	if(alias)
@@ -92,7 +92,7 @@
 
 	H.forceMove(get_turf(src))
 	//Pre-job equips so Voxes dont die
-	H.dna.species.before_equip_job(null, H)
+	H.dna.species.pre_equip_species_outfit(null, H)
 
 	if(used_outfit && used_outfit != "Naked")
 		H.equipOutfit(used_outfit)

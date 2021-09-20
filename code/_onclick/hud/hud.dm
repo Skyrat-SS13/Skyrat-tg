@@ -113,6 +113,9 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	pull_icon = null
 
 	QDEL_LIST(toggleable_inventory)
+	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+	QDEL_LIST(ERP_toggleable_inventory) // Destroy ERP stuff
+	//SKYRAT EDIT ADDITION END
 	QDEL_LIST(hotkeybuttons)
 	throw_icon = null
 	QDEL_LIST(infodisplay)
@@ -169,6 +172,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 				screenmob.client.screen += static_inventory
 			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.inventory_shown)
 				screenmob.client.screen += toggleable_inventory
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+				screenmob.client.screen += ERP_toggleable_inventory
+			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len && !hotkey_ui_hidden)
 				screenmob.client.screen += hotkeybuttons
 			if(infodisplay.len)
@@ -185,6 +192,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+				screenmob.client.screen -= ERP_toggleable_inventory
+			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)
@@ -205,6 +216,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 				screenmob.client.screen -= static_inventory
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
+			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+				screenmob.client.screen -= ERP_toggleable_inventory
+			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
 				screenmob.client.screen -= hotkeybuttons
 			if(infodisplay.len)
@@ -263,6 +278,12 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 		if (item.icon == ui_style)
 			item.icon = new_ui_style
 
+	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+	for(var/atom/item in ERP_toggleable_inventory)
+		if (item.icon == ui_style)
+			item.icon = new_ui_style
+	//SKYRAT EDIT ADDITION END
+
 	ui_style = new_ui_style
 	build_hand_slots()
 	hide_actions_toggle.InitialiseIcon(src)
@@ -274,9 +295,9 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 	if(hud_used && client)
 		hud_used.show_hud() //Shows the next hud preset
-		to_chat(usr, "<span class='info'>Switched HUD mode. Press F12 to toggle.</span>")
+		to_chat(usr, span_info("Switched HUD mode. Press F12 to toggle."))
 	else
-		to_chat(usr, "<span class='warning'>This mob type does not use a HUD.</span>")
+		to_chat(usr, span_warning("This mob type does not use a HUD."))
 
 
 //(re)builds the hand ui slots, throwing away old ones

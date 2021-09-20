@@ -78,10 +78,11 @@
 	STR.allow_big_nesting = TRUE //Same as above, lets the pouch work
 	STR.set_holdable(list(
 		/obj/item/storage/belt/storage_pouch,
+		/obj/item/forging/reagent_weapon/sword,
 		/obj/item/melee/sabre,
 		/obj/item/melee/cleric_mace,
 		/obj/item/kitchen/knife,
-		/obj/item/melee/classic_baton,
+		/obj/item/melee/baton,
 		/obj/item/melee/baton,
 		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage - - -
 		), list(	// - - - except the second list's items (no fedora in the sheath)
@@ -89,7 +90,7 @@
 		/obj/item/nullrod/carp,
 		/obj/item/nullrod/chainsaw,
 		/obj/item/nullrod/claymore/bostaff,
-		/obj/item/nullrod/hammmer,
+		/obj/item/nullrod/hammer,
 		/obj/item/nullrod/pitchfork,
 		/obj/item/nullrod/pride_hammer,
 		/obj/item/nullrod/spear,
@@ -126,3 +127,38 @@
 	STR.max_items = 6
 	STR.rustle_sound = TRUE
 	STR.max_w_class = WEIGHT_CLASS_SMALL //Rather than have a huge whitelist, the belt can simply hold anything a pocket can hold - Can easily be changed if it somehow becomes an issue
+
+/obj/item/storage/belt/holster/cowboy
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	name = "cowboy belt"
+	desc = "Yee haw! The holster on the side of the hip is leather stamped with swirling lines, all leading back to a deer's antlers."
+	icon_state = "cowboy_belt"
+	worn_icon_state = "cowboy_belt"
+	inhand_icon_state = "utility"
+
+/obj/item/storage/belt/medbandolier
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
+	name = "medical bandolier"
+	desc = "A pocketed, pine green belt slung like a sash over the shoulder. Features numerous pockets for medicines and poisons alike. Now is coward healing time."
+	icon_state = "med_bandolier"
+	worn_icon_state = "med_bandolier"
+
+/obj/item/storage/belt/medbandolier/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/bandolier_storage = GetComponent(/datum/component/storage)
+	bandolier_storage.max_w_class = WEIGHT_CLASS_NORMAL
+	bandolier_storage.max_items = 14
+	bandolier_storage.max_combined_w_class = 35
+	bandolier_storage.set_holdable(list(
+		/obj/item/dnainjector,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/pill,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/reagent_containers/medigel,
+		/obj/item/storage/pill_bottle,
+		/obj/item/implanter,
+		/obj/item/medicell
+		))

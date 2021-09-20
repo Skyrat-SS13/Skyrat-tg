@@ -7,7 +7,7 @@
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 10)
 
-/obj/item/reagent_containers/crack/crackbrick
+/obj/item/reagent_containers/crackbrick
 	name = "crack brick"
 	desc = "A brick of crack cocaine."
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
@@ -16,7 +16,7 @@
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/cocaine/freebase_cocaine = 40)
 
-/obj/item/reagent_containers/crack/crackbrick/attackby(obj/item/W, mob/user, params)
+/obj/item/reagent_containers/crackbrick/attackby(obj/item/W, mob/user, params)
 	if(W.get_sharpness())
 		user.show_message("<span class='notice'>You cut \the [src] into some rocks.</span>", MSG_VISUAL)
 		for(var/i = 1 to 4)
@@ -25,11 +25,13 @@
 
 /datum/crafting_recipe/crackbrick
 	name = "Crack brick"
-	result = /obj/item/reagent_containers/cocainebrick
+	result = /obj/item/reagent_containers/crackbrick
 	reqs = list(/obj/item/reagent_containers/crack = 4)
 	parts = list(/obj/item/reagent_containers/crack = 4)
 	time = 20
 	category = CAT_CHEMISTRY //i might just make a crafting category for drugs at some point
+
+// Should probably give this the edible component at some point
 /obj/item/reagent_containers/cocaine
 	name = "cocaine"
 	desc = "Reenact your favorite scenes from Scarface!"
@@ -39,14 +41,41 @@
 	possible_transfer_amounts = list()
 	list_reagents = list(/datum/reagent/drug/cocaine = 5)
 
-/obj/item/reagent_containers/cocaine/attack(mob/target, mob/user, def_zone)
+/obj/item/reagent_containers/cocaine/proc/snort(mob/living/user)
+	if(!iscarbon(user))
+		return
+	var/covered = ""
+	if(user.is_mouth_covered(head_only = 1))
+		covered = "headgear"
+	else if(user.is_mouth_covered(mask_only = 1))
+		covered = "mask"
+	if(covered)
+		to_chat(user, "<span class='warning'>You have to remove your [covered] first!</span>")
+		return
+	user.visible_message("<span class='notice'[user] starts snorting the [src].</span>")
+	if(do_after(user, 30))
+		to_chat(user, "<span class='notice'>You finish snorting the [src].</span>")
+		if(reagents.total_volume)
+			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
+		qdel(src)
+
+/obj/item/reagent_containers/cocaine/attack(mob/target, mob/user)
 	if(target == user)
-		target.visible_message("<span class='notice'>[user] starts snorting the [src].</span>")
-		if(do_after(user,30))
-			to_chat(target, "<span class='notice'>You finish snorting the [src].</span>")
-			if(reagents.total_volume)
-				reagents.trans_to(target, reagents.total_volume, transfered_by = user, methods = INGEST)
-			qdel(src)
+		snort(user)
+
+/obj/item/reagent_containers/cocaine/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+	if(!in_range(user, src) || user.get_active_held_item())
+		return
+
+	snort(user)
+
+	return
 
 /obj/item/reagent_containers/cocainebrick
 	name = "cocaine brick"
@@ -84,7 +113,7 @@
 /datum/export/crack/crackbrick
 	cost = CARGO_CRATE_VALUE * 2.5
 	unit_name = "crack brick"
-	export_types = list(/obj/item/reagent_containers/crack/crackbrick)
+	export_types = list(/obj/item/reagent_containers/crackbrick)
 	include_subtypes = FALSE
 
 /datum/export/cocaine

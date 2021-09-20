@@ -6,7 +6,7 @@
 	id = "ocean-fissure"
 	description = "A tear in the ocean."
 	suffix = "ocean_fissure.dmm"
-	cost = 5
+	cost = 5 //Ditto!
 
 /datum/map_template/ruin/ocean/fissure/diag
 	name = "Horizontal Thermal Fissure"
@@ -19,7 +19,7 @@
 	id = "ocean-listening"
 	description = "A listening outpost in the ocean."
 	suffix = "ocean_listening_outpost.dmm"
-	cost = 10
+	cost = 10 //Ditto
 	allow_duplicates = FALSE
 
 /datum/map_template/ruin/ocean/mining_site
@@ -27,7 +27,7 @@
 	id = "ocean-miningsite"
 	description = "Ocean mining site."
 	suffix = "ocean_mining_above.dmm"
-	cost = 10
+	cost = 10 //Please, for the love of god. Decrease these when we get more real ruins for oceans
 	allow_duplicates = FALSE
 	always_spawn_with = list(/datum/map_template/ruin/ocean/mining_site_below = PLACE_BELOW)
 
@@ -36,6 +36,22 @@
 	id = "ocean-miningsite-ug"
 	description = "Ocean mining site down."
 	suffix = "ocean_mining_below.dmm"
+	unpickable = TRUE
+
+/datum/map_template/ruin/ocean/saddam_hole
+	name = "Ocean Hideout"
+	id = "ocean-hideout"
+	description = "Ocean hideout."
+	suffix = "ocean_hideout_above.dmm"
+	cost = 10 //Ditto
+	allow_duplicates = FALSE
+	always_spawn_with = list(/datum/map_template/ruin/ocean/saddam_hole_below = PLACE_BELOW)
+
+/datum/map_template/ruin/ocean/saddam_hole_below
+	name = "Ocean Hideout Underground"
+	id = "ocean-hideout-ug"
+	description = "Ocean hideout... one floor down."
+	suffix = "ocean_hideout_below.dmm"
 	unpickable = TRUE
 
 //Some copypastas ahead, but it's how our ruins spawning system works

@@ -29,8 +29,8 @@
 	species = "megacannabis"
 	plantname = "Rainbow Weed"
 	product = /obj/item/food/grown/cannabis/rainbow
-	mutatelist = list()
-	reagents_add = list(/datum/reagent/colorful_reagent = 0.05, /datum/reagent/medicine/psicodine = 0.03, /datum/reagent/drug/happiness = 0.1, /datum/reagent/toxin/mindbreaker = 0.1, /datum/reagent/toxin/lipolicide = 0.15)
+	mutatelist = null
+	reagents_add = list(/datum/reagent/colorful_reagent = 0.05, /datum/reagent/medicine/psicodine = 0.03, /datum/reagent/drug/happiness = 0.1, /datum/reagent/toxin/mindbreaker = 0.1, /datum/reagent/toxin/lipolicide = 0.15, /datum/reagent/drug/space_drugs = 0.15)
 	rarity = 40
 
 /obj/item/seeds/cannabis/death
@@ -64,8 +64,8 @@
 	species = "ocannabis"
 	plantname = "Omega Weed"
 	product = /obj/item/food/grown/cannabis/ultimate
-	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/green)
-	mutatelist = list()
+	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/green, /datum/plant_gene/trait/modified_volume/omega_weed)
+	mutatelist = null
 	reagents_add = list(/datum/reagent/drug/thc = 0.3, //SKYRAT EDIT - MORENARCOTICS
 						/datum/reagent/toxin/mindbreaker = 0.3,
 						/datum/reagent/mercury = 0.15,
@@ -73,7 +73,6 @@
 						/datum/reagent/medicine/atropine = 0.15,
 						/datum/reagent/drug/methamphetamine = 0.15,
 						/datum/reagent/drug/bath_salts = 0.15,
-						/datum/reagent/drug/crank = 0.15,
 						/datum/reagent/drug/krokodil = 0.15,
 						//SKYRAT REMOVAL // /datum/reagent/toxin/lipolicide = 0.15,
 						/datum/reagent/drug/nicotine = 0.1)
@@ -121,5 +120,4 @@
 	desc = "You feel dizzy looking at it. What the fuck?"
 	icon_state = "ocannabis"
 	bite_consumption_mod = 2 // Ingesting like 40 units of drugs in 1 bite at 100 potency
-	max_volume = 420
 	wine_power = 90

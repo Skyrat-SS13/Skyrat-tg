@@ -1,36 +1,24 @@
-/datum/job
-	var/alt_title_pref
-
-/datum/job/proc/get_alt_title_pref(client/preference_source)
-	if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[title])
-		alt_title_pref = preference_source.prefs.alt_titles_preferences[title]
-	else
-		alt_title_pref = title
-
-/datum/job/proc/get_id_titles(mob/living/carbon/human/H, obj/item/card/id/ID)
-	ID.real_title = title
-	if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
-		ID.assignment = H.client.prefs.alt_titles_preferences[title]
-	else if (alt_title_pref)
-		ID.assignment = alt_title_pref
-	else
-		ID.assignment = title
-
-/datum/job/proc/get_pda_titles(mob/living/carbon/human/H, obj/item/pda/PDA)
-	if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[title])
-		PDA.ownjob = H.client.prefs.alt_titles_preferences[title]
-	else if (alt_title_pref)
-		PDA.ownjob = alt_title_pref
-	else
-		PDA.ownjob = title
+/mob/living
+	/// used to hold alt titles because apparently a round-start player applies post-equip before there's a goddamn client in the mob AAAAAAAAAAAAAAAAA
+	var/alt_title_holder
 
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
-		if(alt_title_pref)
+		if(H.alt_title_holder)
 			//timer because these should come after the captain announcement
-			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, alt_title_pref, channels), 1))
+			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.alt_title_holder, channels), 1))
 		else
 			SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+
+//Central Command
+/datum/job/admiral
+	alt_titles = list("Fleet Admiral", "Fleet Commander")
+
+/datum/job/nanotrasen_representative
+	alt_titles = list("Nanotrasen Diplomat", "Central Command Representative")
+
+/datum/job/blueshield
+	alt_titles = list("Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist", "Asset Retention Agent")
 
 //Command
 /datum/job/captain
@@ -76,13 +64,16 @@
 
 //Science
 /datum/job/scientist
-	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Nanomachine Programmer", "Plasma Researcher", "Anomalist", "Lab Technician")
+	alt_titles = list("Circuitry Designer", "Xenobiologist", "Cytologist", "Plasma Researcher", "Anomalist", "Lab Technician", "Xenoarchaeologist")
 
 /datum/job/roboticist
 	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer")
 
 /datum/job/geneticist
 	alt_titles = list("Mutation Researcher")
+
+/datum/job/expeditionary_trooper // taken from chesify's classes update. miss 'em
+	alt_titles = list("Vanguard Medic", "Vanguard Technician", "Vanguard Pointman", "Vanguard Marksman")
 
 //Cargo
 /datum/job/cargo_technician
@@ -119,12 +110,6 @@
 /datum/job/clown
 	alt_titles = list("Jester")
 
-/datum/job/prisoner
-	alt_titles = list("Low Risk Prisoner", "High Risk Prisoner", "Extreme Risk Prisoner", "Protective Custody Prisoner")
-
-/datum/job/assistant
-	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")
-
 /datum/job/botanist
 	alt_titles = list("Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
 
@@ -150,8 +135,12 @@
 /datum/job/brigoff
     alt_titles = list("Brig Officer", "Prison Guard")
 
-/datum/job/blueshield
-	alt_titles = list("Command Bodyguard", "Executive Protection Agent", "Personal Protection Specialist")
+//Civillian
+/datum/job/prisoner
+	alt_titles = list("Low Risk Prisoner", "High Risk Prisoner", "Extreme Risk Prisoner", "Protective Custody Prisoner")
+
+/datum/job/assistant
+	alt_titles = list("Civilian", "Tourist", "Businessman", "Trader", "Entertainer", "Off-Duty Staff", "Freelancer")
 
 //Silicon
 /datum/job/ai

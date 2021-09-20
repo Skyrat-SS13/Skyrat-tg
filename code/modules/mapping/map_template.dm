@@ -138,8 +138,7 @@
 	for(var/L in border)
 		var/turf/turf_to_disable = L
 		SSair.remove_from_active(turf_to_disable) //stop processing turfs along the border to prevent runtimes, we return it in initTemplateBounds()
-		if(turf_to_disable.atmos_adjacent_turfs)
-			turf_to_disable.atmos_adjacent_turfs.Cut()
+		turf_to_disable.atmos_adjacent_turfs?.Cut()
 
 	// Accept cached maps, but don't save them automatically - we don't want
 	// ruins clogging up memory for the whole round.

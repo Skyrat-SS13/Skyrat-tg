@@ -81,3 +81,12 @@
 	glass_icon_state = "milkshake_chocolate"
 	glass_name = "plastic cup of chocolate milkshake"
 	glass_desc = "Reminds you of someone, oddly enough."
+
+/datum/reagent/consumable/beerbatter
+	name = "Beer Batter"
+	description = "Probably not the greatest idea to drink...sludge."
+	color = "#f5f4e9"
+	taste_description = "flour and cheap booze"
+	glass_icon_state = "chocolatepudding"
+	glass_name = "glass of beer batter"
+	glass_desc = "Used in cooking, pure cholesterol, Scottish people eat it."

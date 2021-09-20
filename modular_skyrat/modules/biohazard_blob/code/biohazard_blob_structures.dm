@@ -81,13 +81,12 @@
 
 /obj/structure/biohazard_blob/structure/core/Destroy()
 	if(our_controller)
-		our_controller.CoreDeath()
 		our_controller.our_core = null
 	soundloop.stop()
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/structure/biohazard_blob/structure/core/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
+/obj/structure/biohazard_blob/structure/core/run_atom_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
 	if(damage_amount > 10 && world.time > next_retaliation && prob(40))
 		if(our_controller)
 			our_controller.CoreRetaliated()
@@ -177,7 +176,6 @@
 			desc += " It feels damp and smells of rat poison."
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			desc += " It glows softly."
-	AddComponent(/datum/component/slippery, 80)
 
 /obj/structure/biohazard_blob/resin/update_overlays()
 	. = ..()
@@ -267,11 +265,12 @@
 		RegisterSignal(t, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
 /obj/structure/biohazard_blob/structure/bulb/proc/proximity_trigger(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
 	if(!isliving(AM))
 		return
 	var/mob/living/L = AM
 	if(!(MOLD_FACTION in L.faction))
-		discharge()
+		INVOKE_ASYNC(src, .proc/discharge)
 
 /obj/structure/biohazard_blob/structure/bulb/proc/make_full()
 	//Called by a timer, check if we exist
@@ -469,3 +468,5 @@
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			monster_types = list(/mob/living/simple_animal/hostile/biohazard_blob/centaur)
 	AddComponent(/datum/component/spawner, monster_types, spawn_cooldown, list(MOLD_FACTION), "emerges from", max_spawns)
+
+	/datum/component/spawner

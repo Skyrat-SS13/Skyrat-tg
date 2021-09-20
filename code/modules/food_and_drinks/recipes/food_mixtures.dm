@@ -32,11 +32,11 @@
 
 /datum/chemical_reaction/food/chocolatepudding
 	results = list(/datum/reagent/consumable/chocolatepudding = 20)
-	required_reagents = list(/datum/reagent/consumable/milk/chocolate_milk = 10, /datum/reagent/consumable/eggyolk = 5)
+	required_reagents = list(/datum/reagent/consumable/cream  = 5, /datum/reagent/consumable/coco = 5, /datum/reagent/consumable/eggyolk = 2)
 
 /datum/chemical_reaction/food/vanillapudding
 	results = list(/datum/reagent/consumable/vanillapudding = 20)
-	required_reagents = list(/datum/reagent/consumable/vanilla = 5, /datum/reagent/consumable/milk = 5, /datum/reagent/consumable/eggyolk = 5)
+	required_reagents = list(/datum/reagent/consumable/vanilla = 5, /datum/reagent/consumable/cream = 5, /datum/reagent/consumable/eggyolk = 2)
 
 /datum/chemical_reaction/food/chocolate_bar
 	required_reagents = list(/datum/reagent/consumable/soymilk = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/sugar = 2)
@@ -117,9 +117,13 @@
 	results = list(/datum/reagent/consumable/hot_ramen = 3)
 	required_reagents = list(/datum/reagent/water = 1, /datum/reagent/consumable/dry_ramen = 3)
 
+	pollutant_type = /datum/pollutant/food/spicy_noodles //SKYRAT EDIT ADDITION
+
 /datum/chemical_reaction/food/hell_ramen
 	results = list(/datum/reagent/consumable/hell_ramen = 6)
 	required_reagents = list(/datum/reagent/consumable/capsaicin = 1, /datum/reagent/consumable/hot_ramen = 6)
+
+	pollutant_type = /datum/pollutant/food/spicy_noodles //SKYRAT EDIT ADDITION
 
 /datum/chemical_reaction/food/imitationcarpmeat
 	required_reagents = list(/datum/reagent/toxin/carpotoxin = 5)
@@ -144,7 +148,7 @@
 		new /obj/item/food/dough(location)
 
 /datum/chemical_reaction/food/cakebatter
-	required_reagents = list(/datum/reagent/consumable/eggyolk = 15, /datum/reagent/consumable/flour = 15, /datum/reagent/consumable/sugar = 5)
+	required_reagents = list(/datum/reagent/consumable/eggyolk = 6, /datum/reagent/consumable/eggwhite = 12, /datum/reagent/consumable/flour = 15, /datum/reagent/consumable/sugar = 5)
 	mix_message = "The ingredients form a cake batter."
 	reaction_flags = REACTION_INSTANT
 
@@ -158,7 +162,7 @@
 
 /datum/chemical_reaction/food/pancakebatter
 	results = list(/datum/reagent/consumable/pancakebatter = 15)
-	required_reagents = list(/datum/reagent/consumable/eggyolk = 12, /datum/reagent/consumable/milk = 10, /datum/reagent/consumable/flour = 5)
+	required_reagents = list(/datum/reagent/consumable/eggyolk = 6, /datum/reagent/consumable/eggwhite = 12, /datum/reagent/consumable/milk = 10, /datum/reagent/consumable/flour = 5)
 
 /datum/chemical_reaction/food/ricebowl
 	required_reagents = list(/datum/reagent/consumable/rice = 10, /datum/reagent/water = 10)

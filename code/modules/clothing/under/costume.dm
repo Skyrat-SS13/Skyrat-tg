@@ -283,3 +283,10 @@
 	inhand_icon_state = "SwagOutfit"
 	can_adjust = FALSE
 	mutant_variants = NONE // SKYRAT EDIT ADD
+
+/obj/item/clothing/under/costume/referee
+	name = "referee uniform"
+	desc = "A standard black and white striped uniform to signal authority."
+	icon_state = "referee"
+	inhand_icon_state = "referee"
+	can_adjust = FALSE

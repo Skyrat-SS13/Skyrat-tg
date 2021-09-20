@@ -8,6 +8,7 @@
 	show_name_in_check_antagonists = TRUE
 	show_to_ghosts = TRUE
 	antag_moodlet = /datum/mood_event/focused
+	suicide_cry = "FOR THE SPIDER CLAN!!"
 	///Whether or not this ninja will obtain objectives
 	var/give_objectives = TRUE
 	///Whether or not this ninja receives the standard equipment
@@ -94,11 +95,11 @@
 	//Security Scramble, set to complete upon using your gloves on a security console
 	var/datum/objective/securityobjective = new /datum/objective/security_scramble()
 	objectives += securityobjective
-
+	/* SKYRAT EDIT REMOVAL
 	//Message of Terror, set to complete upon using your gloves a communication console
 	var/datum/objective/communicationobjective = new /datum/objective/terror_message()
 	objectives += communicationobjective
-
+	*/
 	//Survival until end
 	var/datum/objective/survival = new /datum/objective/survive()
 	survival.owner = owner
@@ -117,12 +118,12 @@
 	if(give_equipment)
 		equip_space_ninja(owner.current)
 
-	owner.current.mind.assigned_role = ROLE_NINJA
+	owner.current.mind.set_assigned_role(SSjob.GetJobType(/datum/job/space_ninja))
 	owner.current.mind.special_role = ROLE_NINJA
 	return ..()
 
 /datum/antagonist/ninja/admin_add(datum/mind/new_owner,mob/admin)
-	new_owner.assigned_role = ROLE_NINJA
+	new_owner.set_assigned_role(SSjob.GetJobType(/datum/job/space_ninja))
 	new_owner.special_role = ROLE_NINJA
 	new_owner.add_antag_datum(src)
 	message_admins("[key_name_admin(admin)] has ninja'ed [key_name_admin(new_owner)].")

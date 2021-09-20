@@ -1,3 +1,13 @@
+/datum/loadout_item/backpack/donator/miafoxplush
+	name = "Mia’s fox plushie"
+	path = /obj/item/toy/plush/fox/mia
+	ckeywhitelist = list("fuzlet")
+
+/datum/loadout_item/backpack/donator/teasefoxplush
+	name = "Teasable fox plushie"
+	path = /obj/item/toy/plush/fox/kailyn
+	ckeywhitelist = list("ratraus")
+
 /datum/loadout_item/backpack/donator/drawingtablet
 	name = "Drawing Tablet"
 	path = /obj/item/canvas/drawingtablet
@@ -81,23 +91,28 @@
 	path = /obj/item/clothing/under/rax_turtleneck_gray
 	ckeywhitelist = list("raxraus")
 
-/datum/loadout_item/suit/donator/heparmor
-	name = "HepUnit Standard Underweave"
-	path = /obj/item/clothing/suit/armor/vest/peacekeeper/jax
+/datum/loadout_item/glasses/donator/zentaiglasses
+	name = "Demonic Sunglasses"
+	path = /obj/item/clothing/glasses/zentai
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
-
-/datum/loadout_item/suit/donator/hepbelt
-	name = "HepUnit Standard Webbing"
-	path = /obj/item/storage/belt/security/webbing/peacekeeper/jax
-	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
 /datum/loadout_item/head/donator/hephelmet
 	name = "HepUnit Standard Helmet"
 	path = /obj/item/clothing/head/helmet/sec/peacekeeper/jax
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list("Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+	restricted_roles = list("Vanguard Operative","Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+
+/datum/loadout_item/head/donator/emissionhelm
+	name = "Emission's Helmet"
+	path = /obj/item/clothing/head/helmet/space/plasmaman/candlejax
+	ckeywhitelist = list("candlejax")
+	restricted_roles = list("Shaft Miner","Vanguard Operative","Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
+
+/datum/loadout_item/uniform/donator/emissionsuit
+	name = "Emission's Suit"
+	path = /obj/item/clothing/under/plasmaman/security/candlejax
+	ckeywhitelist = list("candlejax")
+	restricted_roles = list("Shaft Miner","Vanguard Operative","Blueshield", "Head of Security", "Security Officer","Civil Disputes Officer", "Warden", "Detective", "Security Sergeant", "Security Medic", "Corrections Officer")
 
 /datum/loadout_item/head/donator/avipilot
 	name = "Smuggler's Flying Cap"
@@ -129,6 +144,11 @@
 	path = /obj/item/clothing/mask/gas/nightlight
 	ckeywhitelist = list("farsightednightlight")
 
+/datum/loadout_item/mask/donator/kindle_mask
+	name = "Kindle's mask"
+	path = /obj/item/clothing/mask/kindle
+	ckeywhitelist = list("theooz")
+
 /datum/loadout_item/head/donator/drake_skull
 	name = "Skull of an ashdrake"
 	path = /obj/item/clothing/head/drake_skull
@@ -148,6 +168,12 @@
 	name = "Dragon Undergarment"
 	path = /obj/item/clothing/under/custom/blutigen_undergarment
 	ckeywhitelist = list("random516")
+
+/datum/loadout_item/uniform/donator/captain_dress
+	name = "Captain's Dress"
+	path = /obj/item/clothing/under/rank/captain/dress
+	ckeywhitelist = list("netrakyram")
+	restricted_roles = list("Captain")
 
 /datum/loadout_item/uniform/donator/kilano_suit
 	name = "black and gold dress uniform"
@@ -203,6 +229,11 @@
 	name = "Project: Zul-E"
 	path = /obj/item/clothing/suit/hooded/cloak/zuliecloak
 	ckeywhitelist = list("asky")
+
+/datum/loadout_item/backpack/donator/brightcosmos
+	name = "Bright Cosmos cigar"
+	path = /obj/item/clothing/mask/holocigarette/cigar
+	ckeywhitelist = list("lyricalpaws")
 
 /datum/loadout_item/uniform/donator/lannese
 	name = "Lannese Dress"

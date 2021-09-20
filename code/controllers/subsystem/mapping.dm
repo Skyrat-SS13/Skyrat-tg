@@ -21,7 +21,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/ocean_station_ruins_templates = list()
 	var/list/ice_ruins_templates = list()
 	var/list/ice_ruins_underground_templates = list()
-	var/list/asteroid_ruins_templates = list() //SKYRAT EDIT - Adds ruins to LZ2
+	var/list/rockplanet_ruins_templates = list() //SKYRAT EDIT - Adds ruins to Rockplanet mining map
 
 	var/datum/space_level/isolated_ruins_z //Created on demand during ruin loading.
 
@@ -49,25 +49,25 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/space_level/transit
 	var/datum/space_level/empty_space
 	var/num_of_res_levels = 1
+	/// True when in the process of adding a new Z-level, global locking
+	var/adding_new_zlevel = FALSE
 
-//dlete dis once #39770 is resolved
-/datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
-	if(!config)
+/datum/controller/subsystem/mapping/New()
+	..()
 #ifdef FORCE_MAP
-		config = load_map_config(FORCE_MAP)
+	config = load_map_config(FORCE_MAP)
 #else
-		config = load_map_config(error_if_missing = FALSE)
+	config = load_map_config(error_if_missing = FALSE)
 #endif
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
-	HACK_LoadMapConfig()
 	if(initialized)
 		return
 	if(config.defaulted)
 		var/old_config = config
 		config = global.config.defaultmap
 		if(!config || config.defaulted)
-			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Meta Station</span>")
+			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to Meta Station"))
 			config = old_config
 	initialize_biomes()
 	loadWorld()
@@ -91,9 +91,9 @@ SUBSYSTEM_DEF(mapping)
 
 	// Load the virtual reality hub
 	if(CONFIG_GET(flag/virtual_reality))
-		to_chat(world, "<span class='boldannounce'>Loading virtual reality...</span>")
+		to_chat(world, span_boldannounce("Loading virtual reality..."))
 		load_new_z_level("_maps/RandomZLevels/VR/vrhub.dmm", "Virtual Reality Hub")
-		to_chat(world, "<span class='boldannounce'>Virtual reality loaded.</span>")
+		to_chat(world, span_boldannounce("Virtual reality loaded."))
 
 	// Generate mining ruins
 	loading_ruins = TRUE
@@ -136,11 +136,11 @@ SUBSYSTEM_DEF(mapping)
 			spawn_rivers(ice_z, 4, level_trait(ice_z, ZTRAIT_BASETURF), /area/icemoon/underground/unexplored/rivers)
 
 //SKYRAT EDIT START//
-	var/list/asteroid_ruins = levels_by_trait(ZTRAIT_ASTEROID_RUINS)
-	if (asteroid_ruins.len)
-		seedRuins(asteroid_ruins, CONFIG_GET(number/asteroid_budget), list(/area/rockplanet/surface/outdoors/unexplored), asteroid_ruins_templates)
-		for (var/asteroid_z in asteroid_ruins)
-			spawn_rivers(asteroid_z)
+	var/list/rockplanet_ruins = levels_by_trait(ZTRAIT_ROCKPLANET_RUINS)
+	if (rockplanet_ruins.len)
+		seedRuins(rockplanet_ruins, CONFIG_GET(number/rockplanet_budget), list(/area/rockplanet/surface/outdoors/unexplored), rockplanet_ruins_templates)
+		for (var/rockplanet_z in rockplanet_ruins)
+			spawn_rivers(rockplanet_z)
 //SKYRAT EDIT END//
 	// Generate deep space ruins
 	var/list/space_ruins = levels_by_trait(ZTRAIT_SPACE_RUINS)
@@ -157,6 +157,7 @@ SUBSYSTEM_DEF(mapping)
 	setup_map_transitions()
 	generate_station_area_list()
 	initialize_reserved_level(transit.z_value)
+	SSticker.OnRoundstart(CALLBACK(src, .proc/spawn_maintenance_loot))
 	return ..()
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)
@@ -223,13 +224,15 @@ Used by the AI doomsday and the self-destruct nuke.
 	//SKYRAT EDIT END
 	ice_ruins_templates = SSmapping.ice_ruins_templates
 	ice_ruins_underground_templates = SSmapping.ice_ruins_underground_templates
-	asteroid_ruins_templates = SSmapping.asteroid_ruins_templates //SKYRAT EDIT ADDITION
+	rockplanet_ruins_templates = SSmapping.rockplanet_ruins_templates //SKYRAT EDIT ADDITION
 	shuttle_templates = SSmapping.shuttle_templates
 	shelter_templates = SSmapping.shelter_templates
 	unused_turfs = SSmapping.unused_turfs
 	turf_reservations = SSmapping.turf_reservations
 	used_turfs = SSmapping.used_turfs
 	holodeck_templates = SSmapping.holodeck_templates
+	transit = SSmapping.transit
+	areas_in_z = SSmapping.areas_in_z
 
 	config = SSmapping.config
 	next_map_config = SSmapping.next_map_config
@@ -238,7 +241,7 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	z_list = SSmapping.z_list
 
-#define INIT_ANNOUNCE(X) to_chat(world, "<span class='boldannounce'>[X]</span>"); log_world(X)
+#define INIT_ANNOUNCE(X) to_chat(world, span_boldannounce("[X]")); log_world(X)
 /datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
 	. = list()
 	var/start_time = REALTIMEOFDAY
@@ -282,8 +285,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
-		//INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
-		add_startupmessage("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") //SKYRAT EDIT CHANGE
+		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
@@ -295,8 +297,7 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	// load the station
 	station_start = world.maxz + 1
-	//INIT_ANNOUNCE("Loading [config.map_name]...") SKYRAT EDIT REMOVAL
-	add_startupmessage("Loading [config.map_name]...")
+	INIT_ANNOUNCE("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())
@@ -317,17 +318,17 @@ Used by the AI doomsday and the self-destruct nuke.
 	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
 	if(config.minetype != "none")
 		if(mining_map_to_load)
-			add_startupmessage("MINING MAP: Loading mining level...")
+			INIT_ANNOUNCE("MINING MAP: Loading mining level...")
 			if(!mining_traits_to_load)
-				add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
-				LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
-				add_startupmessage("MINING MAP: Loaded successfully.")
-			else
-				add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
-				if(config.minetype == "lavaland")
-					LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-				else if (!isnull(config.minetype) && config.minetype != "none")
-					INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
+				INIT_ANNOUNCE("MINING MAP ERROR: No z-level traits detected, loading without traits.")
+			LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
+			INIT_ANNOUNCE("MINING MAP: Loaded successfully.")
+		if(!mining_map_to_load)
+			INIT_ANNOUNCE("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+			if(config.minetype == "lavaland")
+				LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+			else if (!isnull(config.minetype) && config.minetype != "none")
+				INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 	//SKYRAT EDIT END
 
 #endif
@@ -350,7 +351,7 @@ Used by the AI doomsday and the self-destruct nuke.
 GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/generate_station_area_list()
-	var/list/station_areas_blacklist = typecacheof(list(/area/space, /area/mine, /area/ruin, /area/asteroid/nearstation))
+	var/static/list/station_areas_blacklist = typecacheof(list(/area/space, /area/mine, /area/ruin, /area/asteroid/nearstation))
 	for(var/area/A in world)
 		if (is_type_in_typecache(A, station_areas_blacklist))
 			continue
@@ -422,7 +423,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	message_admins("Randomly rotating map to [VM.map_name]")
 	. = changemap(VM)
 	if (. && VM.map_name != config.map_name)
-		to_chat(world, "<span class='boldannounce'>Map rotation has chosen [VM.map_name] for next round!</span>")
+		to_chat(world, span_boldannounce("Map rotation has chosen [VM.map_name] for next round!"))
 
 /datum/controller/subsystem/mapping/proc/mapvote()
 	if(map_voted || SSmapping.next_map_config) //If voted or set by other means.
@@ -477,8 +478,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		else if(istype(R, /datum/map_template/ruin/icemoon))
 			ice_ruins_templates[R.name] = R
 //SKYRAT EDIT START//
-		else if(istype(R, /datum/map_template/ruin/asteroid))
-			asteroid_ruins_templates[R.name] = R
+		else if(istype(R, /datum/map_template/ruin/rockplanet))
+			rockplanet_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/space))
 			space_ruins_templates[R.name] = R
 		else if(istype(R, /datum/map_template/ruin/ocean))
@@ -547,13 +548,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			if(!mapfile)
 				return
 			away_name = "[mapfile] custom"
-			to_chat(usr,"<span class='notice'>Loading [away_name]...</span>")
+			to_chat(usr,span_notice("Loading [away_name]..."))
 			var/datum/map_template/template = new(mapfile, "Away Mission")
 			away_level = template.load_new_z()
 		else
 			if(answer in GLOB.potentialRandomZlevels)
 				away_name = answer
-				to_chat(usr,"<span class='notice'>Loading [away_name]...</span>")
+				to_chat(usr,span_notice("Loading [away_name]..."))
 				var/datum/map_template/template = new(away_name, "Away Mission")
 				away_level = template.load_new_z()
 			else
@@ -652,3 +653,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		isolated_ruins_z = add_new_zlevel("Isolated Ruins/Reserved", list(ZTRAIT_RESERVED = TRUE, ZTRAIT_ISOLATED_RUINS = TRUE))
 		initialize_reserved_level(isolated_ruins_z.z_value)
 	return isolated_ruins_z.z_value
+
+/datum/controller/subsystem/mapping/proc/spawn_maintenance_loot()
+	for(var/obj/effect/spawner/lootdrop/maintenance/spawner as anything in GLOB.maintenance_loot_spawners)
+		CHECK_TICK
+
+		spawner.spawn_loot()
+		spawner.hide()

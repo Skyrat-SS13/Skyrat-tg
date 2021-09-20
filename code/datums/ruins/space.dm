@@ -237,14 +237,13 @@
 	description = "There seems to be a pair of buses that pulled over for repairs. What were they doing...? Their shipment sure  seems to be filled with a strange mix. \
 	Anyway, it looks like some people tried to fix it up for a long time but didn't really get anywhere..."
 
-/*SKYRAT EDIT CHANGE - Mapping
 /datum/map_template/ruin/space/oldstation
 	id = "oldstation"
 	suffix = "oldstation.dmm"
 	name = "Ancient Space Station"
 	description = "The crew of a space station awaken one hundred years after a crisis. Awaking to a derelict space station on the verge of collapse, and a hostile force of invading \
 	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"
-*/
+
 /datum/map_template/ruin/space/gondoland
 	id = "gondolaasteroid"
 	suffix = "gondolaasteroid.dmm"
@@ -309,3 +308,10 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "hellfactory.dmm"
 	name = "Heck Brewery"
 	description = "An abandoned warehouse and brewing facility, which has been recently rediscovered. Reports claim that the security system entered an ultra-hard lockdown, but these reports are inconclusive."
+
+/datum/map_template/ruin/space/medieval1 //SKYRAT ADDITION CHANGE
+	id = "medieval1"
+	suffix = "medieval1.dmm"
+	name = "Medieval 1"
+	description = "A forgotten peice of history left overrun with a reminder of what brought its destruction"
+	//SKYRAT ADDITION CHANGE END

@@ -17,3 +17,7 @@
 /datum/loadout_item/suit/donator/public/british_officer
 	name = "Modern Winter Coat"
 	path = /obj/item/clothing/suit/modern_winter
+
+/datum/loadout_item/suit/donator/public/blondie
+	name = "Cowboy Vest"
+	path = /obj/item/clothing/suit/cowboyvest

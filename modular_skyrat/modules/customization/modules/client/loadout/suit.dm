@@ -14,10 +14,6 @@
 	name = "Red poncho"
 	path = /obj/item/clothing/suit/poncho/red
 
-/datum/loadout_item/suit/poncho
-	name = "Cowboy Poncho"
-	path = /obj/item/clothing/suit/toggle/ranger
-
 /datum/loadout_item/suit/redhood
 	name = "Red cloak"
 	path = /obj/item/clothing/suit/hooded/cloak/david
@@ -154,6 +150,10 @@
 	path = /obj/item/clothing/suit/blackfurrich
 	cost = 3
 
+/datum/loadout_item/suit/coat/custom
+	name = "Alternate Winter Coat"
+	path = /obj/item/clothing/suit/hooded/wintercoat/custom
+	cost= 2
 
 
 //JACKETS
@@ -329,7 +329,7 @@
 /datum/loadout_item/suit/job/coat_sci
 	name = "Science winter coat"
 	path = /obj/item/clothing/suit/hooded/wintercoat/science
-	restricted_roles = list("Research Director", "Scientist", "Roboticist") // Reserve it to the Science Departement
+	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Vanguard Operative") // Reserve it to the Science Departement
 
 /datum/loadout_item/suit/job/coat_eng
 	name = "Engineering winter coat"
@@ -361,10 +361,14 @@
 	path = /obj/item/clothing/suit/hooded/wintercoat/miner
 	restricted_roles = list("Quartermaster", "Shaft Miner") // Reserve it to Miners and their boss, the Quartermaster
 
+// SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/suit/job/navybluejackethos
 	name = "head of security's navyblue jacket"
 	path = /obj/item/clothing/suit/armor/hos/navyblue
 	restricted_roles = list("Head of Security")
+*/
+// SKYRAT EDIT END
 
 /datum/loadout_item/suit/job/navybluejacketofficer
 	name = "security officer's navyblue jacket"
@@ -379,19 +383,19 @@
 /datum/loadout_item/suit/job/security_jacket
 	name = "Security Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
-	restricted_desc = "All Security Personnel"
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant") //Not giving this one to CDOs or COs because it's actually better than the one they spawn with
+	//restricted_desc = "All Security Personnel" //Liar...
 
 /datum/loadout_item/suit/job/cossak
 	name = "Ukrainian Security Jacket"
 	path = /obj/item/clothing/suit/cossack/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
 	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/job/brit
 	name = "High Vis Armored Vest"
 	path = /obj/item/clothing/suit/toggle/brit/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
 	restricted_desc = "All Security Personnel"
 
 /datum/loadout_item/suit/job/british_jacket
@@ -409,7 +413,7 @@
 /datum/loadout_item/suit/job/sci_jacket
 	name = "Science Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/sci
-	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist")
+	restricted_roles = list("Research Director", "Scientist", "Roboticist", "Geneticist", "Vanguard Operative")
 	restricted_desc = "All Science Personnel"
 
 /datum/loadout_item/suit/job/med_jacket
@@ -430,6 +434,8 @@
 	restricted_roles = list("Quartermaster", "Cargo Technician", "Miner")
 	restricted_desc = "All Cargo Personnel"
 
+// SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+/*
 /datum/loadout_item/suit/job/supply_head_jacket
 	name = "Quartermaster's Jacket"
 	path = /obj/item/clothing/suit/toggle/jacket/supply/head
@@ -441,6 +447,8 @@
 	path = /obj/item/clothing/suit/brownfurrich
 	restricted_roles = list("Quartermaster")
 	restricted_desc = "Quartermaster Only"
+*/
+// SKYRAT EDIT REMOVAL END
 
 /datum/loadout_item/suit/job/labcoat_parared
 	name = "Red Paramedic Labcoat"
@@ -475,13 +483,13 @@
 	name = "Medsci fed jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Security Medic","Psychologist","Geneticist","Research Director","Scientist","Roboticist","Vanguard Operative")
 
 /datum/loadout_item/suit/job/trek/fedeng
 	name = "Ops/Sec fed Jacket"
 	path = /obj/item/clothing/suit/storage/fluff/fedcoat/eng
 	restricted_desc = "Engineering, Security, and Cargo"
-	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Cargo Technician", "Shaft Miner", "Quartermaster")
+	restricted_roles = list("Chief Engineer","Atmospheric Technician","Station Engineer","Warden","Security Medic","Security Sergeant","Detective","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer","Cargo Technician", "Shaft Miner", "Quartermaster")
 
 //Modern trekkie
 /datum/loadout_item/suit/job/trek/fedcoatmodern
@@ -492,7 +500,7 @@
 	name = "Modern medsci jacket"
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci
 	restricted_desc = "Medical and Science"
-	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Geneticist","Research Director","Scientist", "Roboticist")
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Paramedic","Chemist","Virologist","Security Medic","Psychologist","Geneticist","Research Director","Scientist","Roboticist","Vanguard Operative")
 
 /datum/loadout_item/suit/job/trek/fedcoatmoderneng
 	name = "Modern ops jacket"
@@ -503,5 +511,15 @@
 /datum/loadout_item/suit/job/trek/fedcoatmodernsec
 	name = "Modern sec jacket"
 	path = /obj/item/clothing/suit/storage/fluff/mfedcoat/sec
-	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant")
+	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant","Civil Disputes Officer","Corrections Officer")
 	restricted_desc = "All Security Personnel"
+
+/datum/loadout_item/suit/bltrench
+	name = "Black Trenchcoat"
+	path = /obj/item/clothing/suit/trenchblack
+	cost = 2
+
+/datum/loadout_item/suit/brtrench
+	name = "Brown Trenchcoat"
+	path = /obj/item/clothing/suit/trenchbrown
+	cost = 2
