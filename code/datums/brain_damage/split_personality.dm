@@ -145,11 +145,11 @@
 	..() //SKYRAT EDIT
 	to_chat(src, span_notice("As a split personality, you cannot do anything but observe. However, you will eventually gain control of your body, switching places with the current personality.")) //SKYRAT EDIT
 	to_chat(src, span_warning("<b>Do not commit suicide or put the body in a deadly position. Behave like you care about it as much as the owner.</b>")) //SKYRAT EDIT
-/mob/living/split_personality/say(message, bubble_type, var/list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null) //SKYRAT EDIT
+/mob/living/split_personality/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null) //SKYRAT EDIT
 	to_chat(src, span_warning("You cannot speak, your other self is controlling your body!")) //SKYRAT EDIT
 	return FALSE
 
-/mob/living/split_personality/emote(act, m_type, message, intentional) //SKYRAT EDIT
+/mob/living/split_personality/emote(act, m_type = null, message = null, intentional = FALSE) //SKYRAT EDIT
 	return //SKYRAT EDIT
 
 ///////////////BRAINWASHING////////////////////
