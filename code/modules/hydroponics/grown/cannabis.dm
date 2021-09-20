@@ -40,7 +40,7 @@
 	species = "blackcannabis"
 	plantname = "Deathweed"
 	product = /obj/item/food/grown/cannabis/death
-	mutatelist = list()
+	mutatelist = null
 	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
@@ -52,7 +52,7 @@
 	plantname = "Lifeweed"
 	instability = 30
 	product = /obj/item/food/grown/cannabis/white
-	mutatelist = list()
+	mutatelist = null
 	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
