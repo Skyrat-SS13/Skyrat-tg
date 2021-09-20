@@ -149,7 +149,7 @@
 	to_chat(src, span_warning("You cannot speak, your other self is controlling your body!")) //SKYRAT EDIT
 	return FALSE
 
-/mob/living/split_personality/emote(act, m_type = null, message = null, intentional = FALSE) //SKYRAT EDIT
+/mob/living/split_personality/emote(act, m_type, message, intentional) //SKYRAT EDIT
 	return //SKYRAT EDIT
 
 ///////////////BRAINWASHING////////////////////
