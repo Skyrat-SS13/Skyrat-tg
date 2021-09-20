@@ -416,7 +416,7 @@ SUBSYSTEM_DEF(ticker)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
 
 		//SKYRAT EDIT ADDITION
-		if(ishuman(new_player_living) && (player_assigned_role.job_flags & JOB_EQUIP_RANK))
+		if(ishuman(new_player_living))
 			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(new_player_mob.client?.prefs?.loadout_list))
 				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
 		//SKYRAT EDIT END

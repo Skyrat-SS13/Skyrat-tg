@@ -23,6 +23,7 @@ const CharacterControls = (props: {
   handleRotate: () => void,
   handleOpenSpecies: () => void,
   handleAdvancedPrefs: () => void, // SKYRAT EDIT ADDITION
+  handleLoadout: () => void, // SKYRAT EDIT ADDITION
   gender: Gender,
   setGender: (gender: Gender) => void,
   showGender: boolean,
@@ -57,7 +58,7 @@ const CharacterControls = (props: {
           />
         </Stack.Item>
       )}
-      {props.showGender && (
+      {props.handleAdvancedPrefs && (
         // SKYRAT EDIT ADDITION
         <Stack.Item>
           <Button
@@ -65,6 +66,18 @@ const CharacterControls = (props: {
             fontSize="22px"
             icon="atom"
             tooltip="Show Advanced Preferences"
+            tooltipPosition="top"
+          />
+        </Stack.Item>
+      )}
+      {props.handleLoadout && (
+        // SKYRAT EDIT ADDITION
+        <Stack.Item>
+          <Button
+            onClick={props.handleLoadout}
+            fontSize="22px"
+            icon="suitcase"
+            tooltip="Show Loadout Menu"
             tooltipPosition="top"
           />
         </Stack.Item>
@@ -514,7 +527,10 @@ export const MainPage = (props: {
                     }}
                     // SKYRAT EDIT ADDITION
                     handleAdvancedPrefs={() => {
-                      act("open_advanced_prefs")
+                      act("open_advanced_prefs");
+                    }}
+                    handleLoadout={() => {
+                      act("open_loadout");
                     }}
                     // SKYRAT EDIT END
                     setGender={createSetPreference(act, "gender")}

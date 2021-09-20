@@ -275,6 +275,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if ("open_advanced_prefs")
 			to_chat(world, "AZARAK IM HERE IN PREFERENCES.DM ON LINE 276 COME SAVE ME FROM THE SCARY MEN IN THE WHITE VAN")
 
+		if ("open_loadout")
+			if(parent.open_loadout_ui)
+				parent.open_loadout_ui.ui_interact(usr)
+			else
+				var/datum/loadout_manager/tgui = new(usr)
+				tgui.ui_interact(usr)
+
+
+
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/delegation = preference_middleware.action_delegations[action]
 		if (!isnull(delegation))

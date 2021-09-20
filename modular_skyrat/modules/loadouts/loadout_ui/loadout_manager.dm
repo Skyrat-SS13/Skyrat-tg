@@ -57,7 +57,7 @@
 /datum/loadout_manager/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "_LoadoutManager")
+		ui = new(user, src, "LoadoutManager")
 		ui.open()
 
 /datum/loadout_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -336,6 +336,9 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 			if(owner.prefs.job_preferences[selected_job] == JP_HIGH)
 				fav_job = SSjob.GetJob(selected_job)
 				break
+
+		if(!fav_job)
+			fav_job = SSjob.GetJob("Assistant")
 
 		if(istype(owner.prefs?.read_preference(/datum/preference/choiced/species), /datum/species/plasmaman) && fav_job.plasmaman_outfit)
 			default_outfit = new fav_job.plasmaman_outfit()

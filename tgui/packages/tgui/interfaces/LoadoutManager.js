@@ -2,7 +2,7 @@ import { useBackend, useSharedState } from '../backend';
 import { Box, Button, Dimmer, Divider, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
 
-export const _LoadoutManager = (props, context) => {
+export const LoadoutManager = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     selected_loadout,
