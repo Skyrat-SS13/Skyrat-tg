@@ -89,7 +89,7 @@
 
 	new_snapshot.remaining_threat = mid_round_budget
 	new_snapshot.time = world.time
-	new_snapshot.alive_players = GLOB.alive_player_list.len
+	new_snapshot.alive_players = GLOB.useful_player_list.len //SKYRAT CHANGE, alive_player_list TO useful_player_list
 	new_snapshot.dead_players = GLOB.dead_player_list.len
 	new_snapshot.observers = GLOB.current_observers_list.len
 	new_snapshot.total_players = new_snapshot.alive_players + new_snapshot.dead_players + new_snapshot.observers
