@@ -356,6 +356,7 @@
 		/obj/item/weldingtool/mini,
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/bag/sheetsnatcher/borg,
+		/obj/item/kinetic_crusher, //Skyrat edit- Crushers return.
 		/obj/item/gun/energy/kinetic_accelerator/cyborg,
 		/obj/item/gps/cyborg,
 		/obj/item/stack/marker_beacon)
