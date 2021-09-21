@@ -633,11 +633,10 @@
  * Produces a signal [COMSIG_PARENT_EXAMINE]
  */
 /atom/proc/examine(mob/user)
-	. = list("[get_examine_string(user, TRUE)].")
+	. = list("[get_examine_string(user, TRUE)].<hr>")
 
 	. += get_name_chaser(user)
 	if(desc)
-		. += "<hr>" //SKYRAT EDIT ADDITION
 		. += desc
 
 	if(custom_materials)

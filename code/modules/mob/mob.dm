@@ -481,7 +481,14 @@
 	else
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
-	to_chat(src, "<div class='examine_block'><span class='infoplain'>[result.Join("\n")]</span></div>") //SKYRAT EDIT CHANGE
+	//SKYRAT EDIT ADDITION
+	if(result.len)
+		for(var/i = 1, i <= result.len, i++)
+			if(!findtext(result[i], "<hr>"))
+				result[i] += "\n"
+	//SKYRAT EDIT END
+
+	to_chat(src, "<div class='examine_block'><span class='infoplain'>[result.Join()]</span></div>") //SKYRAT EDIT CHANGE
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 
