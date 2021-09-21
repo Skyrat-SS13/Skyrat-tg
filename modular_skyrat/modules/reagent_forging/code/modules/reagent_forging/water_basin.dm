@@ -32,4 +32,10 @@
 			new /obj/item/stack/sheet/mineral/wood(get_turf(src))
 		qdel(src)
 		return
+	if(istype(I, /obj/item/stack/ore/glass))
+		var/obj/item/stack/ore/glass/glass_obj = I
+		if(!glass_obj.use(1))
+			return
+		new /obj/item/ceramic/clay(get_turf(src))
+		return
 	return ..()
