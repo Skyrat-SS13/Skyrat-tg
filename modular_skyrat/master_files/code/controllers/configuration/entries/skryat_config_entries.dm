@@ -6,6 +6,8 @@
 
 /datum/config_entry/flag/russian_text_formation
 
+/datum/config_entry/flag/disable_eorg_teleport
+
 //DISCORD GAME ALERT CONFIGS
 //Role id to ping
 /datum/config_entry/string/game_alert_role_id

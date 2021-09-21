@@ -506,8 +506,14 @@
 				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
 				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority") //SKYRAT EDIT CHANGE - ANNOUNCER_SHUTTLELEFT
 				INVOKE_ASYNC(SSticker, /datum/controller/subsystem/ticker.proc/poll_hearts)
-				bolt_all_doors() //SKYRAT EDIT ADDITION
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
+				//SKYRAT EDIT - START
+				bolt_all_doors()
+				if(!CONFIG_GET(flag/disable_eorg_teleport))
+					for(var/mob/living/carbon/human/H in GLOB.player_list)
+						to_chat(H, span_info("You will [H.client.prefs.anti_eorg_teleport ? "be teleported to safe zone" : "stay where you are"] after round end. <a href=?src=[REF(H)];eorg_teleport_bypass=1>Click here to change it until the round end.</a>"))
+				//SKYRAT EDIT - END
+
 
 		if(SHUTTLE_STRANDED, SHUTTLE_DISABLED)
 			SSshuttle.checkHostileEnvironment()
@@ -550,8 +556,10 @@
 						supervisor.", "SYSTEM ERROR:", alert=TRUE)
 
 				dock_id(destination_dock)
-				unbolt_all_doors() //SKYRAT EDIT ADDITION
-				INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_bans) //SKYRAT EDIT ADDITION
+				//SKYRAT EDIT - START
+				unbolt_all_doors()
+				INVOKE_ASYNC(GLOBAL_PROC, /proc/skyrat_postround_handle)
+				//SKYRAT EDIT - END
 				mode = SHUTTLE_ENDGAME
 				timer = 0
 
