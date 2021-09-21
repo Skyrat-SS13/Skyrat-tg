@@ -19,6 +19,15 @@
 	value = 0
 	mob_trait = TRAIT_IRONASS
 
+/datum/quirk/personalspace
+	name = "Personal Space"
+	desc = "You'd rather people keep their hands to themselves, and you won't let anyone touch your ass. If you're ready for a fight, you might even slap someone for it!"
+	gain_text = "<span class='notice'>You'd like it if people kept their hands off your ass.</span>"
+	lose_text = "<span class='notice'>You're less concerned about people touching your ass.</span>"
+	medical_record_text = "Patient demonstrates negative reactions to their posterior being touched."
+	value = 0
+	mob_trait = TRAIT_PERSONALSPACE
+
 /datum/quirk/dnc
 	name = "Do Not Clone"
 	desc = "For whatever reason, you cannot be cloned in any way. You can still be revived in other ways, <b><i>but medical doctors are not always required to revive you.</i></b>"
