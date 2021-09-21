@@ -308,10 +308,3 @@ suffix = "whiteshipruin_box.dmm"*/
 	suffix = "hellfactory.dmm"
 	name = "Heck Brewery"
 	description = "An abandoned warehouse and brewing facility, which has been recently rediscovered. Reports claim that the security system entered an ultra-hard lockdown, but these reports are inconclusive."
-
-/datum/map_template/ruin/space/medieval1 //SKYRAT ADDITION CHANGE
-	id = "medieval1"
-	suffix = "medieval1.dmm"
-	name = "Medieval 1"
-	description = "A forgotten peice of history left overrun with a reminder of what brought its destruction"
-	//SKYRAT ADDITION CHANGE END
