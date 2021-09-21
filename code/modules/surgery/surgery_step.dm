@@ -90,8 +90,9 @@
 
 	// Skyrat Edit Addition - reward for doing surgery in surgery
 	if(was_sleeping || HAS_TRAIT(target, TRAIT_NUMBED) || target.stat == DEAD)
-		modded_time *= SURGERY_SPEEDUP_AREA
-		to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
+		if(is_type_in_list(get_area(target), list(/area/medical/surgery, /area/science/robotics)) && (TRAIT_FASTMED in user.status_traits) || (TRAIT_QUICK_CARRY in user.status_traits))
+			modded_time *= SURGERY_SPEEDUP_AREA
+			to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
 	// Skyrat Edit End
 	if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
 		modded_time = time
