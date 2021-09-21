@@ -224,7 +224,8 @@
 		           /obj/item/instrument/piano_synth/headphones/spacepods = 1,
 		           /obj/item/clothing/suit/brownbattlecoat = 1, 	//SKYRAT EDIT ADDITION BEGIN
 		           /obj/item/clothing/suit/blackfurrich = 1,
-		           /obj/item/clothing/suit/frenchtrench = 1) 	 //SKYRAT EDIT ADDITION END
+		           /obj/item/clothing/suit/frenchtrench = 1,
+				   /obj/item/clothing/suit/ntrepciv = 1) 	 //SKYRAT EDIT ADDITION END
 	refill_canister = /obj/item/vending_refill/clothing
 	default_price = PAYCHECK_ASSISTANT * 0.7 //Default of
 	extra_price = PAYCHECK_HARD
