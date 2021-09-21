@@ -48,6 +48,10 @@
 			footstep_sounds = 'sound/effects/tank_treads.ogg'
 			RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/play_simplestep_machine)
 			return
+		//skyrat edit
+		if(FOOTSTEP_MOB_SNAKE)
+			footstep_sounds = 'sound/effects/footstep/crawl1.ogg'
+		//
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/play_simplestep)
 	steps_for_living[target] = 0
 

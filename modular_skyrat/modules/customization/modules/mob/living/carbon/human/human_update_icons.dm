@@ -98,7 +98,12 @@
 				applied_style = STYLE_VOX
 			else if((DIGITIGRADE in dna.species.species_traits) && (wear_suit.mutant_variants & STYLE_DIGITIGRADE))
 				applied_style = STYLE_DIGITIGRADE
-
+		if(applied_style == STYLE_TAUR_SNAKE) //i hate this but i don't know how else to do it
+			RemoveElement(/datum/element/footstep)
+			AddElement(/datum/element/footstep, FOOTSTEP_MOB_SNAKE, 0.6, -6)
+		else
+			RemoveElement(/datum/element/footstep)
+			AddElement(/datum/element/footstep, FOOTSTEP_MOB_HUMAN, 0.6, -6)
 		var/x_override
 		switch(applied_style)
 			if(STYLE_DIGITIGRADE)
