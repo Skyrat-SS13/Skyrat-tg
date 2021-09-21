@@ -159,8 +159,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "gp5_mask"
 
-/obj/item/clothing/mask/muzzle/ball
-	name = "ballgag"
+/obj/item/clothing/mask/ballgag/red
+	name = "red ballgag"
 	desc = "I'm pretty fuckin far from okay."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
