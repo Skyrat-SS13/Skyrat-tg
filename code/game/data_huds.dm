@@ -273,6 +273,15 @@ Security HUDs! Basic mode shows only the job.
 		holder.pixel_y = IC.Height() - world.icon_size
 		holder.icon_state = "hud_imp_loyal"
 
+//SKYRAT  EDIT BEGIN
+	if(HAS_TRAIT(src, TRAIT_BROKEN_MINDSHIELD))
+		holder = hud_list[IMPLOYAL_HUD]
+		var/icon/IC = icon(icon, icon_state, dir)
+		holder.icon = 'modular_skyrat/modules/modularcult/mindshields/icons/brokenmindshield.dmi'
+		holder.pixel_y = IC.Height() - world.icon_size
+		holder.icon_state = "hud_imp_loyal_broken"
+//SKYRAT edit end
+
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
 	var/icon/I = icon(icon, icon_state, dir)

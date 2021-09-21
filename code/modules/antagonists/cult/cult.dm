@@ -185,7 +185,7 @@
 
 /datum/antagonist/cult/master
 	ignore_implant = TRUE
-	show_in_antagpanel = FALSE //Feel free to add this later
+	show_in_antagpanel = TRUE  //SKYRAT-EDIT: Allows cult-masters to be manually assigned via staff.
 	var/datum/action/innate/cult/master/finalreck/reckoning = new
 	var/datum/action/innate/cult/master/cultmark/bloodmark = new
 	var/datum/action/innate/cult/master/pulse/throwing = new
