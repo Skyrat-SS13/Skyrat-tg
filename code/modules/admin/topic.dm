@@ -48,7 +48,16 @@
 			return
 		cmd_show_exp_panel(M.client)
 
-// SKYRAT EDIT BEGIN -- ONE CLICK ANTAG
+// SKYRAT EDIT BEGIN -- ONE CLICK ANTAG & MORE ANTAG TOPICS
+	else if(href_list["setmark"])
+		var/mob/_mob = get_mob_by_key(href_list["setmark"])
+		var/mark = input("Enter new mark:", "Edit Mark ([href_list["setmark"]])") as text|null
+		if(!mark)
+			_mob.client.prefs.admin_mark_clear()
+			return
+		mark = sanitize(mark)
+		_mob.client.prefs.admin_mark_set(mark)
+
 	else if(href_list["makeAntag"])
 
 		message_admins("[key_name_admin(usr)] is attempting to make [href_list["makeAntag"]]")
@@ -87,7 +96,7 @@
 		if(src.make_antag(href_list["makeAntag"], opt))
 			message_admins("[key_name_admin(usr)] created '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
 		else message_admins("[key_name_admin(usr)] FAILED to create '[href_list["makeAntag"]]' with a parameter of '[opt]'.")
-// SKYRAT EDIT END -- ONE CLICK ANTAG
+// SKYRAT EDIT END -- ONE CLICK ANTAG & MORE ANTAG TOPICS
 
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))
