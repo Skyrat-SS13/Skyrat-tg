@@ -308,7 +308,7 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 /// Generates the threat level using lorentz distribution and assigns peaceful_percentage.
 /datum/game_mode/dynamic/proc/generate_threat()
 	var/relative_threat = LORENTZ_DISTRIBUTION(threat_curve_centre, threat_curve_width)
-	threat_level = round(lorentz_to_amount(relative_threat), 0.1)
+	threat_level = clamp(round(lorentz_to_amount(relative_threat), 0.1), 0, 70) //SKYRAT EDIT: limiting the threat level to 70 MAX
 
 	peaceful_percentage = round(LORENTZ_CUMULATIVE_DISTRIBUTION(relative_threat, threat_curve_centre, threat_curve_width), 0.01)*100
 
