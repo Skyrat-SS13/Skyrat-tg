@@ -477,7 +477,12 @@
 			else
 				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
 		if(client)
-			line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+			var/erp_pref = client.prefs.read_preference(/datum/preference/toggle/erp)
+			var/noncon_pref = client.prefs.read_preference(/datum/preference/toggle/erp/noncon)
+			if(erp_pref)
+				line += span_notice(" ERP: [erp_pref ? "YES" : "NO"]"
+				if(noncon_pref)
+					line += span_notice(" NON-CON: [noncon_pref ? "YES" : "NO"])
 		if(line)
 			. += line
 	//Temporary flavor text addition:

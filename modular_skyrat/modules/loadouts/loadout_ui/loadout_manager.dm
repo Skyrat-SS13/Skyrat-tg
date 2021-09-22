@@ -364,7 +364,6 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 			if(!(owner.ckey in item.ckeywhitelist))
 				formatted_list.len--
 				continue
-			item.additional_tooltip_contents += "This is a personal donator item for you!"
 		var/list/formatted_item = list()
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path

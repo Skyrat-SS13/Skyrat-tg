@@ -137,7 +137,7 @@ export const LoadoutManager = (props, context) => {
                                 checked={selected_loadout.includes(item.path)}
                                 content="Select"
                                 disabled={
-                                  !!item.is_donator_only && !user_is_donator
+                                  item.is_donator_only && !!user_is_donator
                                 }
                                 fluid
                                 tooltip={item.tooltip_text
