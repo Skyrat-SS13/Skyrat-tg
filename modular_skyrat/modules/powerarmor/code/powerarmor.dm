@@ -260,7 +260,7 @@
 	//the cooldown for
 	COOLDOWN_DECLARE(healing_cooldown)
 	//the list of upgrades possible, starting here
-	var/list/armor_upgraded = list(0, 0, 0, 0) //melee, bullet, laser, energy
+	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0) //melee, bullet, laser, energy, bio, rad
 	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE) //brute, burn, toxin, oxygen, stamina
 	var/speed_upgraded = 0
 	var/list/misc_upgraded = list(FALSE) //spaceproof
@@ -321,6 +321,8 @@
 	armor.bullet = armor_upgraded[2] * 20
 	armor.laser = armor_upgraded[3] * 20
 	armor.energy = armor_upgraded[4] * 20
+	armor.bio = armor_upgraded[5] * 20
+	armor.rad = armor_upgraded[6] * 20
 	slowdown = initial(slowdown) - (speed_upgraded * 0.25)
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
@@ -361,6 +363,10 @@
 				armor_upgraded[3]++
 			if("energy armor")
 				armor_upgraded[4]++
+			if("bio armor")
+				armor_upgraded[5]++
+			if("rad armor")
+				armor_upgraded[6]++
 			if("brute healing")
 				if(healing_upgraded[1])
 					return
@@ -443,6 +449,8 @@
 	armor.bullet = power_suit.armor_upgraded[2] * 20
 	armor.laser = power_suit.armor_upgraded[3] * 20
 	armor.energy = power_suit.armor_upgraded[4] * 20
+	armor.bio = power_suit.armor_upgraded[5] * 20
+	armor.rad = power_suit.armor_upgraded[6] * 20
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -500,6 +508,14 @@
 /obj/item/powerarmor_upgrade/energy_armor
 	upgrade_type = "energy armor"
 	upgrade_cost = 5
+
+/obj/item/powerarmor_upgrade/bio_armor
+	upgrade_type = "bio armor"
+	upgrade_cost = 3
+
+/obj/item/powerarmor_upgrade/rad_armor
+	upgrade_type = "rad armor"
+	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/brute_heal
 	upgrade_type = "brute healing"
@@ -619,6 +635,16 @@
 	id = "paupgradeenergy"
 	build_path = /obj/item/powerarmor_upgrade/energy_armor
 
+/datum/design/powerarmor/upgrades/bio_armor
+	name = "Power Armor Upgrades (Bio Armor)"
+	id = "paupgradebio"
+	build_path = /obj/item/powerarmor_upgrade/bio_armor
+
+/datum/design/powerarmor/upgrades/rad_armor
+	name = "Power Armor Upgrades (Rad Armor)"
+	id = "paupgraderad"
+	build_path = /obj/item/powerarmor_upgrade/rad_armor
+
 /datum/design/powerarmor/upgrades/brute_heal
 	name = "Power Armor Upgrades (Brute Healing)"
 	id = "paupgradebrutehealing"
@@ -678,6 +704,8 @@
 		"paupgradebullet",
 		"paupgradelaser",
 		"paupgradeenergy",
+		"paupgradebio",
+		"paupgraderad",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
