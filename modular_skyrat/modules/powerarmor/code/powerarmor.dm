@@ -250,6 +250,8 @@
 	strip_delay = 50
 	slowdown = 0.5
 
+	light_power = 0.75
+
 	mutant_variants = NONE
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY
 
@@ -263,7 +265,7 @@
 	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0) //melee, bullet, laser, energy, bio, rad
 	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE) //brute, burn, toxin, oxygen, stamina
 	var/speed_upgraded = 0
-	var/list/misc_upgraded = list(FALSE) //spaceproof
+	var/list/misc_upgraded = list(FALSE, FALSE) //spaceproof, light
 
 	var/mob/wearer
 
@@ -338,6 +340,10 @@
 		if(hood && istype(hood, /obj/item/clothing/head/hooded/powerarmor))
 			var/obj/item/clothing/head/hooded/powerarmor/power_hood = hood
 			power_hood.update_upgrades()
+	light_range = 0
+	if(misc_upgraded[2])
+		light_range = 3
+		light_color = LIGHT_COLOR_HALOGEN
 
 /obj/item/clothing/suit/hooded/powerarmor/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/powerarmor_upgrade))
@@ -393,6 +399,10 @@
 				if(misc_upgraded[1])
 					return
 				misc_upgraded[1] = TRUE
+			if("light")
+				if(misc_upgraded[2])
+					return
+				misc_upgraded[2] = TRUE
 		upgrade_item.forceMove(src)
 		upgradelimit -= upgrade_item.upgrade_cost
 		update_upgrades()
@@ -545,6 +555,10 @@
 	upgrade_type = "space proof"
 	upgrade_cost = 15
 
+/obj/item/powerarmor_upgrade/light
+	upgrade_type = "light"
+	upgrade_cost = 2
+
 /datum/design/powerarmor
 	name = "Power Armor"
 	desc = "It is now the time for mankind to wear the machines."
@@ -680,6 +694,11 @@
 	id = "paupgradespaceproof"
 	build_path = /obj/item/powerarmor_upgrade/space_proof
 
+/datum/design/powerarmor/upgrades/light
+	name = "Power Armor Upgrades (Light)"
+	id = "paupgradelight"
+	build_path = /obj/item/powerarmor_upgrade/light
+
 /datum/techweb_node/powerarmor_upgrade_basic
 	id = "powerarmor_upgrade_basic"
 	display_name = "Power Armor Basic Upgrades"
@@ -689,6 +708,7 @@
 	)
 	design_ids = list(
 		"paupgradespeed",
+		"paupgradelight",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
