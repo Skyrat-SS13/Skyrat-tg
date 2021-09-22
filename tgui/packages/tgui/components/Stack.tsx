@@ -5,7 +5,11 @@
  */
 
 import { classes } from 'common/react';
+<<<<<<< HEAD
 import { computeBoxClassName, computeBoxProps } from './Box';
+=======
+import { RefObject } from 'inferno';
+>>>>>>> b1edd353b7a (tgui: Remove Flex IE fixes, Fix IE8 button clicks (#61496))
 import { computeFlexClassName, computeFlexItemClassName, computeFlexItemProps, computeFlexProps, FlexItemProps, FlexProps } from './Flex';
 
 type StackProps = FlexProps & {
@@ -25,12 +29,11 @@ export const Stack = (props: StackProps) => {
           : 'Stack--horizontal',
         className,
         computeFlexClassName(props),
-        computeBoxClassName(props),
       ])}
-      {...computeBoxProps(computeFlexProps({
+      {...computeFlexProps({
         direction: vertical ? 'column' : 'row',
         ...rest,
-      }))}
+      })}
     />
   );
 };
@@ -43,9 +46,13 @@ const StackItem = (props: FlexProps) => {
         'Stack__item',
         className,
         computeFlexItemClassName(rest),
-        computeBoxClassName(rest),
       ])}
+<<<<<<< HEAD
       {...computeBoxProps(computeFlexItemProps(rest))}
+=======
+      ref={innerRef}
+      {...computeFlexItemProps(rest)}
+>>>>>>> b1edd353b7a (tgui: Remove Flex IE fixes, Fix IE8 button clicks (#61496))
     />
   );
 };
@@ -66,9 +73,8 @@ const StackDivider = (props: StackDividerProps) => {
         hidden && 'Stack__divider--hidden',
         className,
         computeFlexItemClassName(rest),
-        computeBoxClassName(rest),
       ])}
-      {...computeBoxProps(computeFlexItemProps(rest))}
+      {...computeFlexItemProps(rest)}
     />
   );
 };
