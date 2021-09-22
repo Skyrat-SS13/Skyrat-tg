@@ -563,3 +563,42 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Dominant cap"
 	item_path = /obj/item/clothing/head/domina_cap
 
+// Donator hats here
+/datum/loadout_item/head/donator
+	donator_only = TRUE
+
+/datum/loadout_item/head/donator/poppy
+	name = "Poppy Flower"
+	item_path = /obj/item/food/grown/poppy
+
+/datum/loadout_item/head/donator/lily
+	name = "Lily Flower"
+	item_path = /obj/item/food/grown/poppy/lily
+
+/datum/loadout_item/head/donator/geranium
+	name = "Geranium Flower"
+	item_path = /obj/item/food/grown/poppy/geranium
+
+/datum/loadout_item/head/donator/fraxinella
+	name = "Fraxinella Flower"
+	item_path = /obj/item/food/grown/poppy/geranium/fraxinella
+
+/datum/loadout_item/head/donator/harebell
+	name = "Harebell Flower"
+	item_path = /obj/item/food/grown/harebell
+
+/datum/loadout_item/head/donator/rose
+	name = "Rose Flower"
+	item_path = /obj/item/food/grown/rose
+
+/datum/loadout_item/head/donator/carbon_rose
+	name = "Carbon Rose Flower"
+	item_path = /obj/item/grown/carbon_rose
+
+/datum/loadout_item/head/donator/enclave
+	name = "Enclave Cap"
+	item_path = /obj/item/clothing/head/soft/enclave
+
+/datum/loadout_item/head/donator/enclaveo
+	name = "Enclave Cap - officer"
+	item_path = /obj/item/clothing/head/soft/enclaveo

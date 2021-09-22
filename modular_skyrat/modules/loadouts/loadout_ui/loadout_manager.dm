@@ -27,6 +27,14 @@
 	/// Our preview sprite.
 	var/icon/dummysprite
 
+/datum/loadout_manager/Destroy(force, ...)
+	owner = null
+	if(menu)
+		QDEL_NULL(menu)
+	if(custom_loadout)
+		QDEL_NULL(custom_loadout)
+	return ..()
+
 /datum/loadout_manager/New(user)
 	owner = CLIENT_FROM_VAR(user)
 	owner.open_loadout_ui = src
@@ -71,6 +79,15 @@
 		if(!interacted_item)
 			stack_trace("Failed to locate desired loadout item (path: [params["path"]]) in the global list of loadout datums!")
 			return
+
+	//Here we will perform basic checks to ensure there are no exploits happening
+	if(interacted_item.donator_only && !GLOB.donator_list[owner.ckey])
+		message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is donator only.")
+		return
+
+	if(interacted_item.ckeywhitelist && !(owner.ckey in interacted_item.ckeywhitelist))
+		message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is ckey locked.")
+		return
 
 	switch(action)
 		// Turns the tutorial on and off.
@@ -264,6 +281,7 @@
 
 	data["icon64"] = generate_preview()
 	data["selected_loadout"] = all_selected_paths
+	data["user_is_donator"] = GLOB.donator_list[owner.ckey]
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
 	data["job_clothes"] = view_job_clothes
@@ -300,7 +318,8 @@
 	loadout_tabs += list(list("name" = "Misc. Under", "title" = "Uniform Slot Items (cont)", "contents" = list_to_data(GLOB.loadout_miscunders)))
 	loadout_tabs += list(list("name" = "Accessory", "title" = "Uniform Accessory Slot Items", "contents" = list_to_data(GLOB.loadout_accessory)))
 	loadout_tabs += list(list("name" = "Inhand", "title" = "In-hand Items", "contents" = list_to_data(GLOB.loadout_inhand_items)))
-	loadout_tabs += list(list("name" = "Other", "title" = "Backpack Items (3 max)", "contents" = list_to_data(GLOB.loadout_pocket_items)))
+	loadout_tabs += list(list("name" = "Toys", "title" = "Toys!", "contents" = list_to_data(GLOB.loadout_toys)))
+	loadout_tabs += list(list("name" = "Other", "title" = "Backpack Items ([MAX_ALLOWED_MISC_ITEMS] max)", "contents" = list_to_data(GLOB.loadout_pocket_items)))
 
 	data["loadout_tabs"] = loadout_tabs
 
@@ -396,12 +415,18 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 
 	var/array_index = 1
 	for(var/datum/loadout_item/item as anything in list_of_datums)
+		if(!isnull(item.ckeywhitelist)) //These checks are also performed in the backend.
+			if(!(owner.ckey in item.ckeywhitelist))
+				continue
+			item.additional_tooltip_contents += "This is a personal donator item for you!"
 		var/list/formatted_item = list()
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
 		formatted_item["is_greyscale"] = item.can_be_greyscale
 		formatted_item["is_renamable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
+		formatted_item["is_donator_only"] = !isnull(item.donator_only)
+		formatted_item["is_ckey_whitelisted"] = !isnull(item.ckeywhitelist)
 		if(LAZYLEN(item.additional_tooltip_contents))
 			formatted_item["tooltip_text"] = item.additional_tooltip_contents.Join("\n")
 

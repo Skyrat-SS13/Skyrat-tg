@@ -31,6 +31,8 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 /datum/loadout_item/accessory/ribbon
 	name = "Ribbon"
 	item_path = /obj/item/clothing/accessory/medal/ribbon
+
+
 /* TO DO - ADD THESE
 /datum/loadout_item/accessory/blue_green_armband
 	name = "Blue and Green Armband"

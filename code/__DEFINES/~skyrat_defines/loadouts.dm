@@ -12,7 +12,7 @@
 #define LOADOUT_ITEM_ACCESSORY "accessory"
 #define LOADOUT_ITEM_INHAND "inhand_items"
 #define LOADOUT_ITEM_MISC "pocket_items"
-#define LOADOUT_ITEM_PLUSHIES "plushie_items"
+#define LOADOUT_ITEM_TOYS "toys"
 
 #define INFO_GREYSCALE "greyscale"
 #define INFO_NAMED "name"

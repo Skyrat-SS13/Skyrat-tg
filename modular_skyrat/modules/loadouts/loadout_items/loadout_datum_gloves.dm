@@ -82,3 +82,12 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 /datum/loadout_item/gloves/diamondring
 	name = "A diamond ring"
 	item_path = /obj/item/clothing/gloves/ring/diamond
+
+//Donator gloves down here
+
+/datum/loadout_item/gloves/donator
+	donator_only = TRUE
+
+/datum/loadout_item/gloves/donator/military
+	name = "Military Gloves"
+	item_path = /obj/item/clothing/gloves/military

@@ -51,20 +51,6 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	/// Whether the item is restricted to supporters
 	var/donator_only
 
-
-/datum/loadout_item/New()
-	if(can_be_named)
-		if(LAZYLEN(additional_tooltip_contents))
-			additional_tooltip_contents.Insert(1, TOOLTIP_RENAMABLE)
-		else
-			LAZYADD(additional_tooltip_contents, TOOLTIP_RENAMABLE)
-
-	if(can_be_greyscale)
-		if(LAZYLEN(additional_tooltip_contents))
-			additional_tooltip_contents.Insert(1, TOOLTIP_GREYSCALE)
-		else
-			LAZYADD(additional_tooltip_contents, TOOLTIP_GREYSCALE)
-
 /*
  * Place our [var/item_path] into [outfit].
  *

@@ -156,3 +156,14 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Dominant heels"
 	item_path = /obj/item/clothing/shoes/dominaheels
 
+//Donator shoes here
+/datum/loadout_item/shoes/donator
+	donator_only = TRUE
+
+/datum/loadout_item/shoes/donator/blackjackboots
+	name = "Black Jackboots"
+	item_path = /obj/item/clothing/shoes/jackboots/black
+
+/datum/loadout_item/shoes/donator/rainbow
+	name = "Rainbow Converse"
+	item_path = /obj/item/clothing/shoes/sneakers/rainbow

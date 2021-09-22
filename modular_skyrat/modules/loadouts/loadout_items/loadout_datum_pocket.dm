@@ -84,71 +84,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Lighter"
 	item_path = /obj/item/lighter
 
-
-/datum/loadout_item/pocket_items/card_binder
-	name = "Card Binder"
-	item_path = /obj/item/storage/card_binder
-
-/datum/loadout_item/pocket_items/card_deck
-	name = "Playing Card Deck"
-	item_path = /obj/item/toy/cards/deck
-
-/datum/loadout_item/pocket_items/kotahi_deck
-	name = "Kotahi Deck"
-	item_path = /obj/item/toy/cards/deck/kotahi
-
-/datum/loadout_item/pocket_items/wizoff_deck
-	name = "Wizoff Deck"
-	item_path = /obj/item/toy/cards/deck/wizoff
-
-/datum/loadout_item/pocket_items/d1
-	name = "D1"
-	item_path = /obj/item/dice/d1
-
-/datum/loadout_item/pocket_items/d2
-	name = "D2"
-	item_path = /obj/item/dice/d2
-
-/datum/loadout_item/pocket_items/d4
-	name = "D4"
-	item_path = /obj/item/dice/d4
-
-/datum/loadout_item/pocket_items/d6
-	name = "D6"
-	item_path = /obj/item/dice/d6
-
-/datum/loadout_item/pocket_items/d6_ebony
-	name = "D6 (Ebony)"
-	item_path = /obj/item/dice/d6/ebony
-
-/datum/loadout_item/pocket_items/d6_space
-	name = "D6 (Space)"
-	item_path = /obj/item/dice/d6/space
-
-/datum/loadout_item/pocket_items/d8
-	name = "D8"
-	item_path = /obj/item/dice/d8
-
-/datum/loadout_item/pocket_items/d10
-	name = "D10"
-	item_path = /obj/item/dice/d10
-
-/datum/loadout_item/pocket_items/d12
-	name = "D12"
-	item_path = /obj/item/dice/d12
-
-/datum/loadout_item/pocket_items/d20
-	name = "D20"
-	item_path = /obj/item/dice/d20
-
-/datum/loadout_item/pocket_items/d100
-	name = "D100"
-	item_path = /obj/item/dice/d100
-
-/datum/loadout_item/pocket_items/d00
-	name = "D00"
-	item_path = /obj/item/dice/d00
-
 /datum/loadout_item/pocket_items/matches
 	name = "Matchbox"
 	item_path = /obj/item/storage/box/matches
@@ -160,7 +95,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/zippolighter
 	name = "Zippo Lighter"
 	item_path = /obj/item/lighter
-
 
 /datum/loadout_item/pocket_items/ttsdevice
 	name = "Text-to-Speech Device"
@@ -245,54 +179,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	item_path = /obj/item/hhmirror
 
 
-//TOYS
-/datum/loadout_item/pocket_items/toy
-	can_be_named = TRUE
-
-/datum/loadout_item/pocket_items/toy/dice
-	name = "Dice bag"
-	item_path = /obj/item/storage/dice
-
-/datum/loadout_item/pocket_items/toy/eightball
-	name = "Magic eightball"
-	item_path = /obj/item/toy/eightball
-
-/datum/loadout_item/pocket_items/toy/tennis
-	name = "Classic Tennis Ball"
-	item_path = /obj/item/toy/tennis
-
-/datum/loadout_item/pocket_items/toy/tennisred
-	name = "Red Tennis Ball"
-	item_path = /obj/item/toy/tennis/red
-
-/datum/loadout_item/pocket_items/toy/tennisyellow
-	name = "Yellow Tennis Ball"
-	item_path = /obj/item/toy/tennis/yellow
-
-/datum/loadout_item/pocket_items/toy/tennisgreen
-	name = "Green Tennis Ball"
-	item_path = /obj/item/toy/tennis/green
-
-/datum/loadout_item/pocket_items/toy/tenniscyan
-	name = "Cyan Tennis Ball"
-	item_path = /obj/item/toy/tennis/cyan
-
-/datum/loadout_item/pocket_items/toy/tennisblue
-	name = "Blue Tennis Ball"
-	item_path = /obj/item/toy/tennis/blue
-
-/datum/loadout_item/pocket_items/toy/tennispurple
-	name = "Purple Tennis Ball"
-	item_path = /obj/item/toy/tennis/purple
-
-/datum/loadout_item/pocket_items/toy/toykatana
-	name = "Toy Katana"
-	item_path = /obj/item/toy/katana
-
-
-/datum/loadout_item/pocket_items/toy/crayons
-	name = "Box of crayons"
-	item_path = /obj/item/storage/crayons
 
 /datum/loadout_item/pocket_items/cross
 	name = "Ornate Cross"
@@ -338,3 +224,22 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/fragrance_amber
 	name = "Amber Perfume"
 	item_path = /obj/item/perfume/amber
+
+//Donator stuffs down here
+/datum/loadout_item/pocket_items/donator
+	donator_only = TRUE
+
+/datum/loadout_item/pocket_items/donator/coin
+	name = "Iron Coin"
+	item_path = /obj/item/coin/iron
+	donator_only = TRUE
+
+/datum/loadout_item/pocket_items/donator/havana_cigar_case
+	name = "Havanian Cigars"
+	item_path = /obj/item/storage/fancy/cigarettes/cigars/havana
+	donator_only = TRUE
+
+/datum/loadout_item/pocket_items/donator/vape
+	name = "E-Cigarette"
+	item_path = /obj/item/clothing/mask/vape
+	donator_only = TRUE

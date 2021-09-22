@@ -7,6 +7,7 @@ export const LoadoutManager = (props, context) => {
   const {
     selected_loadout,
     loadout_tabs,
+    user_is_donator,
     mob_name,
     job_clothes,
     tutorial_status,
@@ -106,10 +107,32 @@ export const LoadoutManager = (props, context) => {
                                   })} />
                               </Stack.Item>
                             )}
+                            { !!item.is_donator_only
+                            && (
+                              <Stack.Item>
+                                <Button
+                                  icon="heart"
+                                  onClick={() => act('donator_explain', {
+                                    path: item.path,
+                                  })}
+                                />
+                              </Stack.Item>
+                            )}
+                            { !!item.is_ckey_whitelisted
+                              && (
+                                <Stack.Item>
+                                  <Button
+                                    icon="user-lock"
+                                  />
+                                </Stack.Item>
+                              )}
                             <Stack.Item>
                               <Button.Checkbox
                                 checked={selected_loadout.includes(item.path)}
                                 content="Select"
+                                disabled={
+                                  !!item.is_donator_only && !user_is_donator
+                                }
                                 fluid
                                 tooltip={item.tooltip_text
                                   ? (item.tooltip_text) : ("")}

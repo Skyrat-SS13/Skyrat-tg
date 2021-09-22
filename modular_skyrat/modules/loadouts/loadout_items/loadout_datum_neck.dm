@@ -198,3 +198,31 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/kinkycollar
 	name = "Kinky collar"
 	item_path = /obj/item/clothing/neck/kink_collar
+
+//Donator neck items here
+/datum/loadout_item/neck/donator
+	donator_only = TRUE
+
+/datum/loadout_item/neck/donator/rscloak
+	name = "Black Cape"
+	item_path = /obj/item/clothing/neck/cloak/rscloak
+
+/datum/loadout_item/neck/donator/rscloakcross
+	name = "Black Cross Cape"
+	item_path = /obj/item/clothing/neck/cloak/rscloak_cross
+
+/datum/loadout_item/neck/donator/rscloakchampion
+	name = "Champion Cape"
+	item_path = /obj/item/clothing/neck/cloak/rscloak_champion
+
+/datum/loadout_item/neck/donator/rscloak_poly
+	name = "Polychromic Cape"
+	item_path = /obj/item/clothing/neck/cloak/polychromic/rscloak
+
+/datum/loadout_item/neck/donator/rscloakcross_poly
+	name = "Polychromic Cape - Cross"
+	item_path = /obj/item/clothing/neck/cloak/polychromic/rscloak_cross
+
+/datum/loadout_item/neck/donator/mantle/regal
+	name = "Regal Mantle"
+	item_path = /obj/item/clothing/neck/mantle/regal
