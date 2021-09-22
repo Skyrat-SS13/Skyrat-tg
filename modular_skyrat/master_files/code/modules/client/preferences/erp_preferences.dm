@@ -17,6 +17,7 @@
 
 /datum/preference/toggle/erp
 	default_value = FALSE
+	abstract_type = /datum/preference/toggle/erp
 
 /datum/preference/toggle/erp/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))

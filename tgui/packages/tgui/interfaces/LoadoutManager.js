@@ -73,6 +73,59 @@ export const LoadoutManager = (props, context) => {
                         onClick={() => act('clear_all_items')} />
                     )}>
                     <Stack grow vertical>
+                      { !!item.is_greyscale
+                            && (
+                              <Stack.Item>
+                                <Button
+                                  icon="palette"
+                                  onClick={() => act('select_color', {
+                                    path: item.path,
+                                  })} />
+                              </Stack.Item>
+                            )}
+                      { !!item.is_renamable
+                            && (
+                              <Stack.Item>
+                                <Button
+                                  icon="pen"
+                                  onClick={() => act('set_name', {
+                                    path: item.path,
+                                  })} />
+                              </Stack.Item>
+                            )}
+                      { !!item.is_job_restricted
+                            && (
+                              <Stack.Item>
+                                <Button
+                                  icon="lock"
+                                  onClick={() => act('display_restrictions', {
+                                    path: item.path,
+                                  })} />
+                              </Stack.Item>
+                            )}
+                      { !!item.is_donator_only
+                            && (
+                              <Stack.Item>
+                                <Button
+                                  icon="heart"
+                                  color="pink"
+                                  onClick={() => act('donator_explain', {
+                                    path: item.path,
+                                  })}
+                                />
+                              </Stack.Item>
+                            )}
+                      { !!item.is_ckey_whitelisted
+                              && (
+                                <Stack.Item>
+                                  <Button
+                                    icon="user-lock"
+                                    onClick={() => act('ckey_explain', {
+                                      path: item.path,
+                                    })}
+                                  />
+                                </Stack.Item>
+                              )}
                       {selectedTab.contents.map(item => (
                         <Stack.Item key={item.name}>
                           <Stack fontSize="15px">
@@ -193,13 +246,6 @@ export const LoadoutPreview = (props, context) => {
               onClick={() => act('rotate_dummy', {
                 dir: "left",
               })} />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              icon="sync"
-              tooltip="Toggle viewing all \
-              preview directions at once."
-              onClick={() => act('show_all_dirs')} />
           </Stack.Item>
           <Stack.Item>
             <Button
