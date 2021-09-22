@@ -29,6 +29,19 @@
 /datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/prefs)
 	target.set_species(value, FALSE, prefs.features.Copy(), prefs.mutant_bodyparts.Copy(), prefs.body_markings.Copy())
 
+	target.dna.update_body_size()
+
+	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+		var/obj/item/organ/genital/gent = target.getorganslot(organ_key)
+		if(gent)
+			gent.aroused = prefs.arousal_preview
+			gent.update_sprite_suffix()
+
+	if(length(prefs.augments))
+		for(var/key in prefs.augments)
+			var/datum/augment_item/aug = GLOB.augment_items[prefs.augments[key]]
+			aug.apply(target, prefs = prefs)
+
 /datum/preference/choiced/species/compile_constant_data()
 	var/list/data = list()
 

@@ -21,6 +21,52 @@
 	READ_FILE(S["mutant_bodyparts"], mutant_bodyparts)
 	READ_FILE(S["body_markings"], body_markings)
 
+	READ_FILE(S["mismatched_customization"], mismatched_customization)
+	READ_FILE(S["allow_advanced_colors"], allow_advanced_colors)
+
+	READ_FILE(S["pref_culture"] , pref_culture)
+	READ_FILE(S["pref_location"] , pref_location)
+	READ_FILE(S["pref_faction"] , pref_faction)
+
+	READ_FILE(S["general_record"], general_record)
+	READ_FILE(S["security_record"], security_record)
+	READ_FILE(S["medical_record"], medical_record)
+	READ_FILE(S["background_info"], background_info)
+	READ_FILE(S["exploitable_info"], exploitable_info)
+
+	general_record = sanitize_text(general_record)
+	security_record = sanitize_text(security_record)
+	medical_record = sanitize_text(medical_record)
+	background_info = sanitize_text(background_info)
+	exploitable_info = sanitize_text(exploitable_info)
+
+	READ_FILE(S["languages"] , languages)
+	languages = SANITIZE_LIST(languages)
+
+	update_pref_species()
+
+	if(!pref_culture || !GLOB.culture_cultures[pref_culture])
+		pref_culture = pref_species.cultures[1]
+	if(!pref_location || !GLOB.culture_locations[pref_location])
+		pref_location = pref_species.locations[1]
+	if(!pref_faction || !GLOB.culture_factions[pref_faction])
+		pref_faction = pref_species.factions[1]
+
+	READ_FILE(S["ooc_prefs"], ooc_prefs)
+	READ_FILE(S["erp_pref"], erp_pref)
+	READ_FILE(S["noncon_pref"], noncon_pref)
+	READ_FILE(S["vore_pref"], vore_pref)
+	ooc_prefs = sanitize_text(ooc_prefs)
+	if(!length(erp_pref))
+		erp_pref = "Ask"
+	if(!length(noncon_pref))
+		noncon_pref = "Ask"
+	if(!length(vore_pref))
+		vore_pref = "Ask"
+
+	validate_languages()
+
+	validate_species_parts()
 
 /datum/preferences/proc/save_character_skyrat(savefile/S)
 
@@ -30,3 +76,17 @@
 	WRITE_FILE(S["features"] , features)
 	WRITE_FILE(S["mutant_bodyparts"] , mutant_bodyparts)
 	WRITE_FILE(S["body_markings"] , body_markings)
+
+	WRITE_FILE(S["mismatched_customization"], mismatched_customization)
+	WRITE_FILE(S["allow_advanced_colors"], allow_advanced_colors)
+
+	WRITE_FILE(S["general_record"] , general_record)
+	WRITE_FILE(S["security_record"] , security_record)
+	WRITE_FILE(S["medical_record"] , medical_record)
+	WRITE_FILE(S["background_info"] , background_info)
+	WRITE_FILE(S["exploitable_info"] , exploitable_info)
+
+	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
+	WRITE_FILE(S["erp_pref"] , erp_pref)
+	WRITE_FILE(S["noncon_pref"] , noncon_pref)
+	WRITE_FILE(S["vore_pref"] , vore_pref)

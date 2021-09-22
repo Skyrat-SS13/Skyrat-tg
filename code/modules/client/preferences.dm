@@ -88,6 +88,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
 	value_cache = null
+	if(pref_species)
+		QDEL_NULL(pref_species)
 	return ..()
 
 /datum/preferences/New(client/C)
@@ -273,7 +275,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			return TRUE
 
 		if ("open_advanced_prefs")
-			to_chat(world, "AZARAK IM HERE IN PREFERENCES.DM ON LINE 276 COME SAVE ME FROM THE SCARY MEN IN THE WHITE VAN")
+			show_advanced_prefs(usr)
 
 		if ("open_loadout")
 			if(parent.open_loadout_ui)
@@ -300,6 +302,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	. = ..()
 	if (.)
 		return
+
+	if(href_list["preference"] || href_list["task"])
+		SkyratTopic(href, href_list, usr)
+		return TRUE
 
 	if (href_list["open_keybindings"])
 		current_window = PREFERENCE_TAB_KEYBINDINGS
@@ -472,6 +478,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
+	for(var/key in augments)
+		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
+		bal -= aug.cost
 	return bal
 
 /datum/preferences/proc/GetPositiveQuirkCount()
