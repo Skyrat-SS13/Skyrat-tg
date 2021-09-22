@@ -394,8 +394,12 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	/// The client that is watching this view
 	var/client/client
 
-/atom/movable/screen/character_preview_view/Initialize(mapload, datum/preferences/preferences, client/client)
+	var/linked_to_prefs = TRUE //SKYRAT EDIT ADDITION
+
+/atom/movable/screen/character_preview_view/Initialize(mapload, datum/preferences/preferences, client/client, prefs_link = TRUE) //SKYRAT EDIT CHANGE
 	. = ..()
+
+	linked_to_prefs = prefs_link //SKYRAT EDIT ADDITION
 
 	assigned_map = "character_preview_[REF(src)]"
 	set_position(1, 1)
@@ -411,7 +415,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 	client?.clear_map(assigned_map)
 
-	preferences?.character_preview_view = null
+	if(linked_to_prefs) //SKYRAT EDIT ADDITION
+		preferences?.character_preview_view = null
 
 	client = null
 	plane_masters = null

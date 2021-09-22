@@ -17,7 +17,7 @@
 	/// A ref to the dummy outfit we're using
 	var/datum/outfit/player_loadout/custom_loadout
 	/// A preview of the current character
-	var/atom/movable/screen/character_preview_view_loadout/character_preview_view_loadout
+	var/atom/movable/screen/character_preview_view/character_preview_view
 	/// Whether we see our favorite job's clothes on the dummy
 	var/view_job_clothes = TRUE
 	/// Whether we see tutorial text in the UI
@@ -31,7 +31,7 @@
 
 /datum/loadout_manager/Destroy(force, ...)
 	owner = null
-	QDEL_NULL(character_preview_view_loadout)
+	QDEL_NULL(character_preview_view)
 	QDEL_NULL(menu)
 	QDEL_NULL(custom_loadout)
 	return ..()
@@ -48,7 +48,7 @@
 		SStgui.close_uis(menu)
 		menu = null
 	owner?.open_loadout_ui = null
-	QDEL_NULL(character_preview_view_loadout)
+	QDEL_NULL(character_preview_view)
 	qdel(custom_loadout)
 	qdel(src)
 
@@ -56,15 +56,15 @@
 	return GLOB.always_state
 
 /datum/loadout_manager/ui_interact(mob/user, datum/tgui/ui)
-	if (!isnull(character_preview_view_loadout) && !(character_preview_view_loadout in owner?.screen))
-		owner?.register_map_obj(character_preview_view_loadout)
+	if (!isnull(character_preview_view) && !(character_preview_view in owner?.screen))
+		owner?.register_map_obj(character_preview_view)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "LoadoutManager")
 		ui.open()
 
-		addtimer(CALLBACK(character_preview_view_loadout, /atom/movable/screen/character_preview_view_loadout/proc/update_body), 1 SECONDS)
+		addtimer(CALLBACK(character_preview_view, /atom/movable/screen/character_preview_view/proc/update_body), 1 SECONDS)
 
 /datum/loadout_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -103,10 +103,10 @@
 		if("select_item")
 			if(params["deselect"])
 				deselect_item(interacted_item)
-				character_preview_view_loadout.update_body()
+				character_preview_view.update_body()
 			else
 				select_item(interacted_item)
-				character_preview_view_loadout.update_body()
+				character_preview_view.update_body()
 
 		if("select_color")
 			select_item_color(interacted_item)
@@ -120,7 +120,7 @@
 		// Clears the loadout list entirely.
 		if("clear_all_items")
 			LAZYNULL(owner.prefs.loadout_list)
-			character_preview_view_loadout.update_body()
+			character_preview_view.update_body()
 
 		// Rotates the dummy left or right depending on params["dir"]
 		if("rotate_dummy")
@@ -132,7 +132,7 @@
 
 		if("update_preview")
 			owner?.prefs.preview_pref = params["updated_preview"]
-			character_preview_view_loadout.update_body()
+			character_preview_view.update_body()
 
 		if("donator_explain")
 			if(GLOB.donator_list[owner.ckey])
@@ -251,9 +251,9 @@
 /// Rotate the dummy [DIR] direction, or reset it to SOUTH dir if we're showing all dirs at once.
 /datum/loadout_manager/proc/rotate_model_dir(dir)
 	if(dir == "left")
-		character_preview_view_loadout.dir = turn(character_preview_view_loadout.dir, 90)
+		character_preview_view.dir = turn(character_preview_view.dir, 90)
 	else
-		character_preview_view_loadout.dir = turn(character_preview_view_loadout.dir, -90)
+		character_preview_view.dir = turn(character_preview_view.dir, -90)
 
 /// Toggle between showing all the dirs and just the front dir of the dummy.
 /datum/loadout_manager/proc/toggle_model_dirs()
@@ -265,18 +265,18 @@
 /datum/loadout_manager/ui_data(mob/user)
 	var/list/data = list()
 
-	if (isnull(character_preview_view_loadout))
-		character_preview_view_loadout = create_character_preview_view_loadout(user)
-	else if (character_preview_view_loadout.client != owner)
+	if (isnull(character_preview_view))
+		character_preview_view = create_character_preview_view(user)
+	else if (character_preview_view.client != owner)
 		// The client re-logged, and doing this when they log back in doesn't seem to properly
 		// carry emissives.
-		character_preview_view_loadout.register_to_client(owner)
+		character_preview_view.register_to_client(owner)
 
 	var/list/all_selected_paths = list()
 	for(var/path in owner.prefs.loadout_list)
 		all_selected_paths += path
 
-	data["character_preview_view_loadout"] = character_preview_view_loadout.assigned_map
+	data["character_preview_view"] = character_preview_view.assigned_map
 	data["selected_loadout"] = all_selected_paths
 	data["user_is_donator"] = GLOB.donator_list[owner.ckey]
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
@@ -323,12 +323,12 @@
 
 	return data
 
-/datum/loadout_manager/proc/create_character_preview_view_loadout(mob/user)
-	character_preview_view_loadout = new(null, owner?.prefs, user.client, FALSE)
-	character_preview_view_loadout.update_body()
-	character_preview_view_loadout.register_to_client(user.client)
+/datum/loadout_manager/proc/create_character_preview_view(mob/user)
+	character_preview_view = new(null, owner?.prefs, user.client)
+	character_preview_view.update_body()
+	character_preview_view.register_to_client(user.client)
 
-	return character_preview_view_loadout
+	return character_preview_view
 
 /// Returns a formatted string for use in the UI.
 /datum/loadout_manager/proc/get_tutorial_text()
