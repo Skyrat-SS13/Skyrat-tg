@@ -112,6 +112,7 @@ export const LoadoutManager = (props, context) => {
                               <Stack.Item>
                                 <Button
                                   icon="heart"
+                                  color="pink"
                                   onClick={() => act('donator_explain', {
                                     path: item.path,
                                   })}
