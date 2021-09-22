@@ -18,7 +18,7 @@
 		if(!part_completion[check_parts])
 			return FALSE
 	for(var/check_tools in 1 to 3)
-		if(!tool_required[check_tools])
+		if(tool_required[check_tools])
 			return FALSE
 	return TRUE
 
@@ -72,10 +72,12 @@
 		to_chat(user, span_notice("You finish using [I] on [src]..."))
 		new /obj/item/clothing/suit/hooded/powerarmor(get_turf(src))
 		qdel(src)
+		qdel(I)
 		return
 
 	//for deconstructing what you have currently built
 	if(I.tool_behaviour == TOOL_CROWBAR)
+		I.play_tool_sound(src, 50)
 		cut_overlays()
 		for(var/check_parts in 1 to 6)
 			part_completion[check_parts] = FALSE
@@ -97,12 +99,14 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]..."))
+		I.play_tool_sound(src, 50)
 		if(!do_after(user, 5 SECONDS, target = src))
 			to_chat(user, span_warning("You interrupt using [I] on [src]!"))
 			in_use = FALSE
 			return
 		tool_required[1] = FALSE
 		in_use = FALSE
+		I.play_tool_sound(src, 50)
 		return
 
 	//for the building process: wrench
@@ -111,17 +115,19 @@
 			to_chat(user, span_warning("[src] is already being worked on!"))
 			return
 		in_use = TRUE
-		if(!tool_required[1])
+		if(!tool_required[2])
 			to_chat(user, span_warning("It is not necessary to use [I] on [src] currently!"))
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]..."))
+		I.play_tool_sound(src, 50)
 		if(!do_after(user, 5 SECONDS, target = src))
 			to_chat(user, span_warning("You interrupt using [I] on [src]!"))
 			in_use = FALSE
 			return
 		tool_required[2] = FALSE
 		in_use = FALSE
+		I.play_tool_sound(src, 50)
 		return
 
 	//for the building process: coil
@@ -131,7 +137,7 @@
 			return
 		in_use = TRUE
 		var/obj/item/stack/cable_coil/cable_item = I
-		if(!tool_required[1])
+		if(!tool_required[3])
 			to_chat(user, span_warning("It is not necessary to use [I] on [src] currently!"))
 			in_use = FALSE
 			return
@@ -145,7 +151,9 @@
 			in_use = FALSE
 			return
 		//so that when deconstructed, it will give us back a coil
-		new /obj/item/stack/cable_coil(src)
+		var/obj/item/stack/stack_item = new /obj/item/stack/cable_coil(get_turf(src))
+		stack_item.amount = 1
+		stack_item.forceMove(src)
 		tool_required[3] = FALSE
 		in_use = FALSE
 		return
@@ -160,7 +168,7 @@
 		var/obj/item/powerarmor/powerarmor_part/armorpart_item = I
 		//this will be checking the tool requirement
 		for(var/check_tools in 1 to 3)
-			if(!tool_required[check_tools])
+			if(tool_required[check_tools])
 				to_chat(user, span_warning("You need to use a certain tool to secure the parts before continuing to add parts! Check the construct's debug!"))
 				in_use = FALSE
 				return
@@ -240,21 +248,37 @@
 	body_parts_covered = HEAD|CHEST|GROIN|LEGS|ARMS
 	equip_delay_self = 50
 	strip_delay = 50
-	slowdown = 3
+	slowdown = 0.5
+
+	mutant_variants = NONE
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY
 
 	///the maximum amount of upgrades it can have (where some upgrades can cost multiple)
-	var/upgradelimit = 10
+	var/upgradelimit = 20
 	///whether the upgradelimit has been up'd, by some item
 	var/upgradeboosted = FALSE
 	//the cooldown for
 	COOLDOWN_DECLARE(healing_cooldown)
 	//the list of upgrades possible, starting here
 	var/list/armor_upgraded = list(0, 0, 0, 0) //melee, bullet, laser, energy
-	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE) //brute, burn, toxin, oxygen
+	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE) //brute, burn, toxin, oxygen, stamina
 	var/speed_upgraded = 0
 	var/list/misc_upgraded = list(FALSE) //spaceproof
 
 	var/mob/wearer
+
+/obj/item/clothing/suit/hooded/powerarmor/emp_act(severity)
+	. = ..()
+	if(wearer && isliving(wearer))
+		var/mob/living/living_wearer = wearer
+		living_wearer.Stun(5 SECONDS)
+		living_wearer.adjustFireLoss(25)
+		to_chat(living_wearer, span_warning("[src] short-circuits, hurting you in the process!"))
+
+/obj/item/clothing/suit/hooded/powerarmor/examine(mob/user)
+	. = ..()
+	. += span_notice("Upgrade Credits Left: [upgradelimit]")
+	. += span_notice("Upgrade Boosted: [upgradeboosted ? "TRUE" : "FALSE"]")
 
 /obj/item/clothing/suit/hooded/powerarmor/Initialize()
 	. = ..()
@@ -285,14 +309,19 @@
 		living_wearer.adjustToxLoss(-3)
 	if(healing_upgraded[4] && living_wearer.getOxyLoss())
 		living_wearer.adjustOxyLoss(-3)
+	if(healing_upgraded[5] && living_wearer.getStaminaLoss())
+		living_wearer.adjustStaminaLoss(-3)
 
 /obj/item/clothing/suit/hooded/powerarmor/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/clothing/suit/hooded/powerarmor/proc/update_upgrades()
-	armor.setRating(armor_upgraded[1] * 20, armor_upgraded[2] * 20, armor_upgraded[3] * 20, armor_upgraded[4] * 20, 0, 0, 0, 0, 0, 0, 0)
-	slowdown = initial(slowdown) - speed_upgraded
+	armor.melee = armor_upgraded[1] * 20
+	armor.bullet = armor_upgraded[2] * 20
+	armor.laser = armor_upgraded[3] * 20
+	armor.energy = armor_upgraded[4] * 20
+	slowdown = initial(slowdown) - (speed_upgraded * 0.25)
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -304,24 +333,21 @@
 		clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
 		max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 		min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-		if(hood)
-			hood.armor.setRating(armor_upgraded[1] * 20, armor_upgraded[2] * 20, armor_upgraded[3] * 20, armor_upgraded[4] * 20, 0, 0, 0, 0, 0, 0, 0)
-			hood.clothing_flags = initial(clothing_flags)
-			hood.min_cold_protection_temperature = initial(min_cold_protection_temperature)
-			hood.max_heat_protection_temperature = initial(max_heat_protection_temperature)
-			hood.heat_protection = initial(heat_protection)
-			hood.cold_protection = initial(cold_protection)
-			if(misc_upgraded[1])
-				hood.heat_protection = HEAD
-				hood.cold_protection = HEAD
-				hood.clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
-				hood.max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
-				hood.min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
+		if(hood && istype(hood, /obj/item/clothing/head/hooded/powerarmor))
+			var/obj/item/clothing/head/hooded/powerarmor/power_hood = hood
+			power_hood.update_upgrades()
 
 /obj/item/clothing/suit/hooded/powerarmor/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/powerarmor_upgrade))
 		var/obj/item/powerarmor_upgrade/upgrade_item = W
+		if(!upgrade_item.usable)
+			to_chat(user, span_warning("[upgrade_item] needs to be upgraded. Use a forged tile to allow usage."))
+			return
 		if(upgradelimit <= 0)
+			to_chat(user, span_warning("[src] does not have any more credits to spend on upgrades."))
+			return
+		if((upgradelimit - upgrade_item.upgrade_cost) < 0)
+			to_chat(user, span_warning("[upgrade_item] would cause a credit deficit."))
 			return
 		if(!upgrade_item.upgrade_type)
 			return
@@ -351,6 +377,10 @@
 				if(healing_upgraded[4])
 					return
 				healing_upgraded[4] = TRUE
+			if("stamina healing")
+				if(healing_upgraded[5])
+					return
+				healing_upgraded[5] = TRUE
 			if("speed")
 				speed_upgraded++
 			if("space proof")
@@ -358,7 +388,32 @@
 					return
 				misc_upgraded[1] = TRUE
 		upgrade_item.forceMove(src)
+		upgradelimit -= upgrade_item.upgrade_cost
 		update_upgrades()
+		return
+	if(istype(W, /obj/item/assembly/signaler/anomaly))
+		if(upgradeboosted)
+			return
+		upgradeboosted = TRUE
+		to_chat(user, span_notice("You use [W] to boost [src] upgrade capacity!"))
+		upgradelimit += 10
+		qdel(W)
+		return
+	if(W.tool_behaviour == TOOL_SCREWDRIVER)
+		W.play_tool_sound(src, 50)
+		if(!do_after(user, 10 SECONDS, target = wearer))
+			return
+		upgradelimit = 20
+		if(upgradeboosted)
+			upgradelimit = 30
+		for(var/obj/check_contents in contents)
+			if(istype(check_contents, /obj/item/powerarmor_upgrade))
+				check_contents.forceMove(get_turf(src))
+		armor_upgraded = list(0, 0, 0, 0)
+		healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
+		speed_upgraded = 0
+		misc_upgraded = list(FALSE)
+		W.play_tool_sound(src, 50)
 	return ..()
 
 /obj/item/clothing/head/hooded/powerarmor
@@ -367,39 +422,289 @@
 	icon = 'modular_skyrat/modules/powerarmor/icons/hats.dmi'
 	worn_icon = 'modular_skyrat/modules/powerarmor/icons/head.dmi'
 	icon_state = "helmet0"
+	mutant_variants = NONE
+
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	flash_protect = FLASH_PROTECTION_WELDER
+
+/obj/item/clothing/head/hooded/powerarmor/Initialize()
+	. = ..()
+	if(suit && istype(suit, /obj/item/clothing/suit/hooded/powerarmor))
+		update_upgrades()
+
+/obj/item/clothing/head/hooded/powerarmor/proc/update_upgrades()
+	if(!suit)
+		return
+	if(!istype(suit, /obj/item/clothing/suit/hooded/powerarmor))
+		return
+	var/obj/item/clothing/suit/hooded/powerarmor/power_suit = suit
+	armor.melee = power_suit.armor_upgraded[1] * 20
+	armor.bullet = power_suit.armor_upgraded[2] * 20
+	armor.laser = power_suit.armor_upgraded[3] * 20
+	armor.energy = power_suit.armor_upgraded[4] * 20
+	clothing_flags = initial(clothing_flags)
+	min_cold_protection_temperature = initial(min_cold_protection_temperature)
+	max_heat_protection_temperature = initial(max_heat_protection_temperature)
+	heat_protection = initial(heat_protection)
+	cold_protection = initial(cold_protection)
+	if(power_suit.misc_upgraded[1])
+		heat_protection = HEAD
+		cold_protection = HEAD
+		clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
+		max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
+		min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 
 /obj/item/powerarmor_upgrade
 	name = "power armor upgrade"
 	desc = "A small item that will upgrade the power suit"
+	icon = 'modular_skyrat/modules/powerarmor/icons/suit_construction.dmi'
+	icon_state = "upgrade"
 
 	var/upgrade_type
 
+	var/upgrade_cost = 0
+
+	var/usable = FALSE
+
+/obj/item/powerarmor_upgrade/Initialize()
+	. = ..()
+	if(upgrade_type)
+		name = "[initial(name)] ([upgrade_type])"
+
+/obj/item/powerarmor_upgrade/examine(mob/user)
+	. = ..()
+	if(!usable)
+		. += span_warning("[src] requires a forged plate attached to allow usability!")
+
+/obj/item/powerarmor_upgrade/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/forging/complete/plate) && !usable)
+		usable = TRUE
+		to_chat(user, span_notice("You activate [src] by using [I] on it."))
+		qdel(I)
+		return
+	return ..()
+
 /obj/item/powerarmor_upgrade/melee_armor
 	upgrade_type = "melee armor"
+	upgrade_cost = 5
 
 /obj/item/powerarmor_upgrade/bullet_armor
 	upgrade_type = "bullet armor"
+	upgrade_cost = 5
 
 /obj/item/powerarmor_upgrade/laser_armor
 	upgrade_type = "laser armor"
+	upgrade_cost = 5
 
 /obj/item/powerarmor_upgrade/energy_armor
 	upgrade_type = "energy armor"
+	upgrade_cost = 5
 
 /obj/item/powerarmor_upgrade/brute_heal
 	upgrade_type = "brute healing"
+	upgrade_cost = 11
 
 /obj/item/powerarmor_upgrade/burn_heal
 	upgrade_type = "burn healing"
+	upgrade_cost = 11
 
 /obj/item/powerarmor_upgrade/toxin_heal
 	upgrade_type = "toxin healing"
+	upgrade_cost = 11
 
 /obj/item/powerarmor_upgrade/oxygen_heal
 	upgrade_type = "oxygen healing"
+	upgrade_cost = 11
+
+/obj/item/powerarmor_upgrade/stamina_heal
+	upgrade_type = "stamina healing"
+	upgrade_cost = 11
 
 /obj/item/powerarmor_upgrade/speed_upgrade
 	upgrade_type = "speed"
+	upgrade_cost = 4
 
 /obj/item/powerarmor_upgrade/space_proof
 	upgrade_type = "space proof"
+	upgrade_cost = 15
+
+/datum/design/powerarmor
+	name = "Power Armor"
+	desc = "It is now the time for mankind to wear the machines."
+	id = "powerarmordebug1"
+	build_type = MECHFAB
+	materials = list(/datum/material/iron = 750, /datum/material/glass = 750)
+	construction_time = 100
+	build_path = /obj/item/assembly/flash/handheld
+	category = list("Power Armor")
+
+/datum/design/powerarmor/skeleton
+	name = "Power Armor Skeleton Construct"
+	id = "paskeleton"
+	build_path = /obj/item/powerarmor/powerarmor_construct
+
+/datum/design/powerarmor/head
+	name = "Power Armor Head Construct"
+	id = "pahead"
+	build_path = /obj/item/powerarmor/powerarmor_part/head
+
+/datum/design/powerarmor/chest
+	name = "Power Armor Chest Construct"
+	id = "pachest"
+	build_path = /obj/item/powerarmor/powerarmor_part/chest
+
+/datum/design/powerarmor/larm
+	name = "Power Armor Left Arm Construct"
+	id = "palarm"
+	build_path = /obj/item/powerarmor/powerarmor_part/larm
+
+/datum/design/powerarmor/rarm
+	name = "Power Armor Right Arm Construct"
+	id = "pararm"
+	build_path = /obj/item/powerarmor/powerarmor_part/rarm
+
+/datum/design/powerarmor/lleg
+	name = "Power Armor Left Leg Construct"
+	id = "palleg"
+	build_path = /obj/item/powerarmor/powerarmor_part/lleg
+
+/datum/design/powerarmor/rleg
+	name = "Power Armor Right Leg Construct"
+	id = "parleg"
+	build_path = /obj/item/powerarmor/powerarmor_part/rleg
+
+/datum/techweb_node/powearmor_construct
+	id = "powerarmor_construct"
+	display_name = "Power Armor Construction"
+	description = "The beginning of enhancing the human experience through worn machines."
+	prereq_ids = list("base")
+	design_ids = list(
+		"paskeleton",
+		"pahead",
+		"pachest",
+		"palarm",
+		"pararm",
+		"palleg",
+		"parleg",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
+/datum/design/powerarmor/upgrades
+	name = "Power Armor Upgrades"
+	desc = "Upgrades can make the difference between life or death."
+	id = "powerarmordebug2"
+	materials = list(/datum/material/iron = 350, /datum/material/glass = 350)
+	construction_time = 20
+	build_path = /obj/item/assembly/flash/handheld
+	category = list("Power Armor")
+
+/datum/design/powerarmor/upgrades/melee_armor
+	name = "Power Armor Upgrades (Melee Armor)"
+	id = "paupgrademelee"
+	build_path = /obj/item/powerarmor_upgrade/melee_armor
+
+/datum/design/powerarmor/upgrades/bullet_armor
+	name = "Power Armor Upgrades (Bullet Armor)"
+	id = "paupgradebullet"
+	build_path = /obj/item/powerarmor_upgrade/bullet_armor
+
+/datum/design/powerarmor/upgrades/laser_armor
+	name = "Power Armor Upgrades (Laser Armor)"
+	id = "paupgradelaser"
+	build_path = /obj/item/powerarmor_upgrade/laser_armor
+
+/datum/design/powerarmor/upgrades/energy_armor
+	name = "Power Armor Upgrades (Energy Armor)"
+	id = "paupgradeenergy"
+	build_path = /obj/item/powerarmor_upgrade/energy_armor
+
+/datum/design/powerarmor/upgrades/brute_heal
+	name = "Power Armor Upgrades (Brute Healing)"
+	id = "paupgradebrutehealing"
+	build_path = /obj/item/powerarmor_upgrade/brute_heal
+
+/datum/design/powerarmor/upgrades/burn_heal
+	name = "Power Armor Upgrades (Burn Healing)"
+	id = "paupgradeburnhealing"
+	build_path = /obj/item/powerarmor_upgrade/burn_heal
+
+/datum/design/powerarmor/upgrades/toxin_heal
+	name = "Power Armor Upgrades (Toxin Healing)"
+	id = "paupgradetoxinhealing"
+	build_path = /obj/item/powerarmor_upgrade/toxin_heal
+
+/datum/design/powerarmor/upgrades/oxygen_heal
+	name = "Power Armor Upgrades (Oxygen Healing)"
+	id = "paupgradeoxygenhealing"
+	build_path = /obj/item/powerarmor_upgrade/oxygen_heal
+
+/datum/design/powerarmor/upgrades/stamina_heal
+	name = "Power Armor Upgrades (Stamina Healing)"
+	id = "paupgradestaminahealing"
+	build_path = /obj/item/powerarmor_upgrade/stamina_heal
+
+/datum/design/powerarmor/upgrades/speed
+	name = "Power Armor Upgrades (Speed)"
+	id = "paupgradespeed"
+	build_path = /obj/item/powerarmor_upgrade/speed_upgrade
+
+/datum/design/powerarmor/upgrades/space_proof
+	name = "Power Armor Upgrades (Space Proof)"
+	id = "paupgradespaceproof"
+	build_path = /obj/item/powerarmor_upgrade/space_proof
+
+/datum/techweb_node/powerarmor_upgrade_basic
+	id = "powerarmor_upgrade_basic"
+	display_name = "Power Armor Basic Upgrades"
+	description = "Maybe if you ran fast enough, you can dodge."
+	prereq_ids = list(
+		"powerarmor_construct",
+	)
+	design_ids = list(
+		"paupgradespeed",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
+/datum/techweb_node/powerarmor_upgrade_intermediate
+	id = "powerarmor_upgrade_intermediate"
+	display_name = "Power Armor Intermediate Upgrades"
+	description = "One's best offense is a great defense."
+	prereq_ids = list(
+		"powerarmor_upgrade_basic",
+	)
+	design_ids = list(
+		"paupgrademelee",
+		"paupgradebullet",
+		"paupgradelaser",
+		"paupgradeenergy",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
+/datum/techweb_node/powerarmor_upgrade_advanced
+	id = "powerarmor_upgrade_advanced"
+	display_name = "Power Armor Advanced Upgrades"
+	description = "At this rate, medics are a thing of the past."
+	prereq_ids = list(
+		"powerarmor_upgrade_intermediate",
+	)
+	design_ids = list(
+		"paupgradebrutehealing",
+		"paupgradeburnhealing",
+		"paupgradetoxinhealing",
+		"paupgradeoxygenhealing",
+		"paupgradestaminahealing",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+
+/datum/techweb_node/powerarmor_upgrade_end
+	id = "powerarmor_upgrade_end"
+	display_name = "Power Armor End Upgrade"
+	description = "When your opponents are no longer able to reach you, you have won."
+	prereq_ids = list(
+		"powerarmor_upgrade_advanced",
+	)
+	design_ids = list(
+		"paupgradespaceproof",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
