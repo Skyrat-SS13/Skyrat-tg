@@ -1,3 +1,4 @@
+/*
 /datum/preference/color_legacy/mutant_color_two
 	savefile_key = "feature_mcolor2"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -39,3 +40,4 @@
 		return FALSE
 
 	return TRUE
+*/

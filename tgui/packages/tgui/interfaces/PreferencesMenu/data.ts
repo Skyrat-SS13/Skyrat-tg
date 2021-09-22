@@ -96,6 +96,9 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
+  preview_options: string;
+  preview_selection: string;
+
   character_preferences: {
     clothing: Record<string, string>;
     features: Record<string, string>;

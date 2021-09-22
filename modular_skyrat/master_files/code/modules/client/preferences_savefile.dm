@@ -52,17 +52,6 @@
 	if(!pref_faction || !GLOB.culture_factions[pref_faction])
 		pref_faction = pref_species.factions[1]
 
-	READ_FILE(S["ooc_prefs"], ooc_prefs)
-	READ_FILE(S["erp_pref"], erp_pref)
-	READ_FILE(S["noncon_pref"], noncon_pref)
-	READ_FILE(S["vore_pref"], vore_pref)
-	ooc_prefs = sanitize_text(ooc_prefs)
-	if(!length(erp_pref))
-		erp_pref = "Ask"
-	if(!length(noncon_pref))
-		noncon_pref = "Ask"
-	if(!length(vore_pref))
-		vore_pref = "Ask"
 
 	validate_languages()
 
@@ -86,7 +75,3 @@
 	WRITE_FILE(S["background_info"] , background_info)
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
 
-	WRITE_FILE(S["ooc_prefs"] , ooc_prefs)
-	WRITE_FILE(S["erp_pref"] , erp_pref)
-	WRITE_FILE(S["noncon_pref"] , noncon_pref)
-	WRITE_FILE(S["vore_pref"] , vore_pref)

@@ -16,6 +16,8 @@
 	var/list/dummy_dir = list(SOUTH)
 	/// A ref to the dummy outfit we're using
 	var/datum/outfit/player_loadout/custom_loadout
+	/// A preview of the current character
+	var/atom/movable/screen/character_preview_view/character_preview_view
 	/// Whether we see our favorite job's clothes on the dummy
 	var/view_job_clothes = TRUE
 	/// Whether we see tutorial text in the UI
@@ -29,10 +31,9 @@
 
 /datum/loadout_manager/Destroy(force, ...)
 	owner = null
-	if(menu)
-		QDEL_NULL(menu)
-	if(custom_loadout)
-		QDEL_NULL(custom_loadout)
+	QDEL_NULL(character_preview_view)
+	QDEL_NULL(menu)
+	QDEL_NULL(custom_loadout)
 	return ..()
 
 /datum/loadout_manager/New(user)
@@ -40,7 +41,6 @@
 	owner.open_loadout_ui = src
 	loadout_on_open = LAZYLISTDUPLICATE(owner.prefs.loadout_list)
 	custom_loadout = new()
-	reset_outfit()
 
 /datum/loadout_manager/ui_close(mob/user)
 	owner?.prefs.save_character()
@@ -48,25 +48,23 @@
 		SStgui.close_uis(menu)
 		menu = null
 	owner?.open_loadout_ui = null
-	clear_human_dummy(dummy_key)
+	QDEL_NULL(character_preview_view)
 	qdel(custom_loadout)
 	qdel(src)
-
-/// Initialize our dummy and dummy_key.
-/datum/loadout_manager/proc/init_dummy()
-	dummy_key = "loadoutmanagerUI_[owner.mob]"
-	generate_dummy_lookalike(dummy_key, owner.mob)
-	unset_busy_human_dummy(dummy_key)
-	return
 
 /datum/loadout_manager/ui_state(mob/user)
 	return GLOB.always_state
 
 /datum/loadout_manager/ui_interact(mob/user, datum/tgui/ui)
+	if (!isnull(character_preview_view) && !(character_preview_view in owner?.screen))
+		owner?.register_map_obj(character_preview_view)
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "LoadoutManager")
 		ui.open()
+
+		addtimer(CALLBACK(character_preview_view, /atom/movable/screen/character_preview_view/proc/update_body), 1 SECONDS)
 
 /datum/loadout_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -105,8 +103,10 @@
 		if("select_item")
 			if(params["deselect"])
 				deselect_item(interacted_item)
+				character_preview_view.update_body()
 			else
 				select_item(interacted_item)
+				character_preview_view.update_body()
 
 		if("select_color")
 			select_item_color(interacted_item)
@@ -120,10 +120,7 @@
 		// Clears the loadout list entirely.
 		if("clear_all_items")
 			LAZYNULL(owner.prefs.loadout_list)
-
-		// Toggles between viewing favorite job clothes on the dummy.
-		if("toggle_job_clothes")
-			view_job_clothes = !view_job_clothes
+			character_preview_view.update_body()
 
 		// Rotates the dummy left or right depending on params["dir"]
 		if("rotate_dummy")
@@ -133,16 +130,19 @@
 		if("show_all_dirs")
 			toggle_model_dirs()
 
+		if("update_preview")
+			owner?.prefs.preview_pref = params["updated_preview"]
+			character_preview_view.update_body()
+
 		if("donator_explain")
 			if(GLOB.donator_list[owner.ckey])
-				to_chat(owner, examine_block("<b><span color='pink'>Thank you for donating, this item is for you <3!</span></b>"))
+				to_chat(owner, examine_block("<b><font color='#f566d6'>Thank you for donating, this item is for you <3!</font></b>"))
 			else
 				to_chat(owner, examine_block(span_boldnotice("This item is restricted to donators only, for more information, please check the discord(#server-info) for more information!")))
 
 		if("ckey_explain")
 			to_chat(owner, examine_block(span_green("This item is restricted to your ckey only. Thank you!")))
 
-	reset_outfit()
 	return TRUE
 
 /// Select [path] item to [category_slot] slot.
@@ -250,29 +250,10 @@
 
 /// Rotate the dummy [DIR] direction, or reset it to SOUTH dir if we're showing all dirs at once.
 /datum/loadout_manager/proc/rotate_model_dir(dir)
-	if(dummy_dir.len > 1)
-		dummy_dir = list(SOUTH)
+	if(dir == "left")
+		character_preview_view.dir = turn(character_preview_view.dir, 90)
 	else
-		if(dir == "left")
-			switch(dummy_dir[1])
-				if(SOUTH)
-					dummy_dir[1] = WEST
-				if(EAST)
-					dummy_dir[1] = SOUTH
-				if(NORTH)
-					dummy_dir[1] = EAST
-				if(WEST)
-					dummy_dir[1] = NORTH
-		else
-			switch(dummy_dir[1])
-				if(SOUTH)
-					dummy_dir[1] = EAST
-				if(EAST)
-					dummy_dir[1] = NORTH
-				if(NORTH)
-					dummy_dir[1] = WEST
-				if(WEST)
-					dummy_dir[1] = SOUTH
+		character_preview_view.dir = turn(character_preview_view.dir, -90)
 
 /// Toggle between showing all the dirs and just the front dir of the dummy.
 /datum/loadout_manager/proc/toggle_model_dirs()
@@ -284,16 +265,24 @@
 /datum/loadout_manager/ui_data(mob/user)
 	var/list/data = list()
 
+	if (isnull(character_preview_view))
+		character_preview_view = create_character_preview_view(user)
+	else if (character_preview_view.client != owner)
+		// The client re-logged, and doing this when they log back in doesn't seem to properly
+		// carry emissives.
+		character_preview_view.register_to_client(owner)
+
 	var/list/all_selected_paths = list()
 	for(var/path in owner.prefs.loadout_list)
 		all_selected_paths += path
 
-	data["icon64"] = generate_preview()
+	data["character_preview_view"] = character_preview_view.assigned_map
 	data["selected_loadout"] = all_selected_paths
 	data["user_is_donator"] = GLOB.donator_list[owner.ckey]
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
-	data["job_clothes"] = view_job_clothes
+	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
+	data["preview_selection"] = owner?.prefs.preview_pref
 	data["tutorial_status"] = tutorial_status
 	if(tutorial_status)
 		data["tutorial_text"] = get_tutorial_text()
@@ -334,22 +323,12 @@
 
 	return data
 
-/// Generate a flat icon preview of our user, if we need to update it.
-/datum/loadout_manager/proc/generate_preview()
-	if(!dummy_key)
-		init_dummy()
+/datum/loadout_manager/proc/create_character_preview_view(mob/user)
+	character_preview_view = new(null, owner?.prefs, user.client)
+	character_preview_view.update_body()
+	character_preview_view.register_to_client(user.client)
 
-	if(update_dummysprite)
-		dummysprite = get_flat_human_icon(
-			null,
-			dummy_key = dummy_key,
-			outfit_override = custom_loadout,
-			showDirs = dummy_dir,
-			prefs = owner.prefs,
-			)
-		update_dummysprite = FALSE
-
-	return icon2base64(dummysprite)
+	return character_preview_view
 
 /// Returns a formatted string for use in the UI.
 /datum/loadout_manager/proc/get_tutorial_text()
@@ -366,49 +345,6 @@ Additionally, UNDERSUITS, HELMETS, MASKS, and GLOVES loadout items
 selected by plasmamen will spawn in their backpack instead of overriding their clothes
 to avoid an untimely and sudden death by fire or suffocation at the start of the shift."}
 
-/// Reset our displayed loadout and re-load all its items from the bottom up.
-/datum/loadout_manager/proc/reset_outfit()
-	var/datum/outfit/job/default_outfit
-	if(view_job_clothes)
-		var/datum/job/fav_job = SSjob.GetJobType(SSjob.overflow_role)
-		for(var/selected_job in owner.prefs.job_preferences)
-			if(owner.prefs.job_preferences[selected_job] == JP_HIGH)
-				fav_job = SSjob.GetJob(selected_job)
-				break
-
-		if(!fav_job)
-			fav_job = SSjob.GetJob("Assistant")
-
-		if(istype(owner.prefs?.read_preference(/datum/preference/choiced/species), /datum/species/plasmaman) && fav_job.plasmaman_outfit)
-			default_outfit = new fav_job.plasmaman_outfit()
-		else
-			default_outfit = new fav_job.outfit()
-			if(owner.prefs?.read_preference(/datum/preference/choiced/jumpsuit) == PREF_SKIRT)
-				default_outfit.uniform = text2path("[default_outfit.uniform]/skirt")
-
-			switch(owner.prefs?.read_preference(/datum/preference/choiced/backpack))
-				if(GBACKPACK)
-					default_outfit.back = /obj/item/storage/backpack //Grey backpack
-				if(GSATCHEL)
-					default_outfit.back = /obj/item/storage/backpack/satchel //Grey satchel
-				if(GDUFFELBAG)
-					default_outfit.back = /obj/item/storage/backpack/duffelbag //Grey Duffel bag
-				if(LSATCHEL)
-					default_outfit.back = /obj/item/storage/backpack/satchel/leather //Leather Satchel
-				if(DSATCHEL)
-					default_outfit.back = default_outfit.satchel //Department satchel
-				if(DDUFFELBAG)
-					default_outfit.back = default_outfit.duffelbag //Department duffel bag
-				else
-					default_outfit.back = default_outfit.backpack //Department backpack
-	else
-		default_outfit = new /datum/outfit()
-
-	custom_loadout.copy_from(default_outfit)
-	qdel(default_outfit)
-
-	update_dummysprite = TRUE
-
 /*
  * Takes an assoc list of [typepath]s to [singleton datum]
  * And formats it into an object for TGUI.
@@ -424,8 +360,9 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 
 	var/array_index = 1
 	for(var/datum/loadout_item/item as anything in list_of_datums)
-		if(item.ckeywhitelist) //These checks are also performed in the backend.
+		if(!isnull(item.ckeywhitelist)) //These checks are also performed in the backend.
 			if(!(owner.ckey in item.ckeywhitelist))
+				formatted_list.len--
 				continue
 			item.additional_tooltip_contents += "This is a personal donator item for you!"
 		var/list/formatted_item = list()
@@ -442,4 +379,5 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 		formatted_list[array_index++] = formatted_item
 
 	return formatted_list
+
 

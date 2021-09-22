@@ -88,8 +88,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
 	value_cache = null
+	//SKYRAT EDIT ADDITION
 	if(pref_species)
 		QDEL_NULL(pref_species)
+	//SKYRAT EDIT END
 	return ..()
 
 /datum/preferences/New(client/C)
@@ -159,6 +161,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if (tainted_character_profiles)
 		data["character_profiles"] = create_character_profiles()
 		tainted_character_profiles = FALSE
+
+	//SKYRAT EDIT BEGIN
+	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
+	data["preview_selection"] = preview_pref
+	//SKYRAT EDIT END
 
 	data["character_preferences"] = compile_character_preferences(user)
 
@@ -274,8 +281,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 
+		//SKYRAT EDIT ADDITION
 		if ("open_advanced_prefs")
 			show_advanced_prefs(usr)
+			return TRUE
+
+		if("update_preview")
+			preview_pref = params["updated_preview"]
+			character_preview_view.update_body()
+			return TRUE
 
 		if ("open_loadout")
 			if(parent.open_loadout_ui)
@@ -283,7 +297,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				var/datum/loadout_manager/tgui = new(usr)
 				tgui.ui_interact(usr)
-
+			return TRUE
+		//SKYRAT EDIT END
 
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
@@ -302,10 +317,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	. = ..()
 	if (.)
 		return
-
+	//SKYRAT EDIT ADDITION
 	if(href_list["preference"] || href_list["task"])
 		SkyratTopic(href, href_list, usr)
 		return TRUE
+	//SKYRAT EDIT END
 
 	if (href_list["open_keybindings"])
 		current_window = PREFERENCE_TAB_KEYBINDINGS
@@ -478,9 +494,11 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	for(var/V in all_quirks)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
+	//SKYRAT EDIT ADDITION
 	for(var/key in augments)
 		var/datum/augment_item/aug = GLOB.augment_items[augments[key]]
 		bal -= aug.cost
+	//SKYRAT EDIT END
 	return bal
 
 /datum/preferences/proc/GetPositiveQuirkCount()

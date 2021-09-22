@@ -58,11 +58,6 @@
 	var/background_info = ""
 	var/exploitable_info = ""
 
-	var/ooc_prefs = ""
-	var/erp_pref = "Ask"
-	var/noncon_pref = "Ask"
-	var/vore_pref = "Ask"
-
 	///Whether the user wants to see body size being shown in the preview
 	var/show_body_size = FALSE
 
@@ -138,22 +133,22 @@
 						var/msg = input(usr, "Set your general record. This is more or less public information, available from security, medical and command consoles", "General Record", general_record) as message|null
 						if(!isnull(msg))
 							general_record = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
-	
+
 					if("medical_record")
 						var/msg = input(usr, "Set your medical record. ", "Medical Record", medical_record) as message|null
 						if(!isnull(msg))
 							medical_record = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
-	
+
 					if("security_record")
 						var/msg = input(usr, "Set your security record. ", "Medical Record", security_record) as message|null
 						if(!isnull(msg))
 							security_record = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
-	
+
 					if("background_info")
 						var/msg = input(usr, "Set your background information. (Where you come from, which culture were you raised in and why you are working here etc.)", "Background Info", background_info) as message|null
 						if(!isnull(msg))
 							background_info = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
-	
+
 					if("exploitable_info")
 						var/msg = input(usr, "Set your exploitable information. This is sensitive informations that antagonists may get to see, recommended for better roleplay experience", "Exploitable Info", exploitable_info) as message|null
 						if(!isnull(msg))
@@ -197,7 +192,7 @@
 								faction_more_info = !faction_more_info
 							if(CULTURE_LOCATION)
 								location_more_info = !location_more_info
-	
+
 					if("language")
 						var/target_lang = text2path(href_list["lang"])
 						var/level = text2num(href_list["level"])
@@ -213,7 +208,7 @@
 							languages[target_lang] = level
 						ShowLangMenu(user)
 						return TRUE
-	
+
 					if("language_button")
 						ShowLangMenu(user)
 						return TRUE
@@ -268,7 +263,7 @@
 							if(desired_set)
 								var/datum/body_marking_set/BMS = GLOB.body_marking_sets[desired_set]
 								body_markings = assemble_body_markings_from_set(BMS, features, pref_species)
-	
+
 					if("reset_color")
 						var/zone = href_list["key"]
 						var/name = href_list["name"]
@@ -326,7 +321,7 @@
 								var/datum/body_marking/BD = GLOB.body_markings[name]
 								if((BD.recommended_species && !(pref_species.id in BD.recommended_species)))
 									possible_candidates -= name
-	
+
 						if(possible_candidates.len == 0)
 							return
 						var/desired_marking = input(user, "Choose your new marking to add:", "Character Preference") as null|anything in possible_candidates
@@ -335,7 +330,7 @@
 							if(!body_markings[zone])
 								body_markings[zone] = list()
 							body_markings[zone][BD.name] = BD.get_default_color(features, pref_species)
-	
+
 					if("remove_marking")
 						var/zone = href_list["key"]
 						var/name = href_list["name"]
@@ -347,7 +342,7 @@
 					if("change_marking")
 						var/zone = href_list["key"]
 						var/changing_name = href_list["name"]
-	
+
 						var/list/possible_candidates = GLOB.body_markings_per_limb[zone].Copy()
 						if(body_markings[zone])
 							//Remove already used markings from the candidates
@@ -476,34 +471,6 @@
 				var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null
 				if(!isnull(msg))
 					features["silicon_flavor_text"] = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
-			if("ooc_prefs")
-				var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
-				if(!isnull(msg))
-					ooc_prefs = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
-			if("erp_pref")
-				switch(erp_pref)
-					if("Yes")
-						erp_pref = "Ask"
-					if("Ask")
-						erp_pref = "No"
-					if("No")
-						erp_pref = "Yes"
-			if("noncon_pref")
-				switch(noncon_pref)
-					if("Yes")
-						noncon_pref = "Ask"
-					if("Ask")
-						noncon_pref = "No"
-					if("No")
-						noncon_pref = "Yes"
-			if("vore_pref")
-				switch(vore_pref)
-					if("Yes")
-						vore_pref = "Ask"
-					if("Ask")
-						vore_pref = "No"
-					if("No")
-						vore_pref = "Yes"
 			if("show_body_size")
 				needs_update = TRUE
 				show_body_size = !show_body_size
@@ -516,9 +483,6 @@
 					features["body_size"] = new_body_size
 			if("character_tab")
 				character_settings_tab = text2num(href_list["tab"])
-			if("character_preview")
-				preview_pref = href_list["tab"]
-				needs_update = TRUE
 			if("adv_colors")
 				if(allow_advanced_colors)
 					var/action = tgui_alert(user, "Are you sure you want to disable advanced colors (This will reset your colors back to default)?", "", list("Yes", "No"))
@@ -541,6 +505,9 @@
 
 /datum/preferences/proc/show_advanced_prefs(mob/user)
 	update_pref_species()
+	if(needs_update)
+		character_preview_view?.update_body()
+		needs_update = FALSE
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += "<center>"
@@ -553,12 +520,6 @@
 	dat += "<center>"
 	dat += "<table width='100%'>"
 	dat += "<tr>"
-	dat += "<td width=35%>"
-	dat += "Preview:"
-	dat += "<a href='?src=[REF(src)];preference=character_preview;tab=[PREVIEW_PREF_JOB]' [preview_pref == PREVIEW_PREF_JOB ? "class='linkOn'" : ""]>[PREVIEW_PREF_JOB]</a>"
-	dat += "<a href='?src=[REF(src)];preference=character_preview;tab=[PREVIEW_PREF_LOADOUT]' [preview_pref == PREVIEW_PREF_LOADOUT ? "class='linkOn'" : ""]>[PREVIEW_PREF_LOADOUT]</a>"
-	dat += "<a href='?src=[REF(src)];preference=character_preview;tab=[PREVIEW_PREF_NAKED]' [preview_pref == PREVIEW_PREF_NAKED ? "class='linkOn'" : ""]>[PREVIEW_PREF_NAKED]</a>"
-	dat += "</td>"
 	switch(character_settings_tab)
 		if(CHAR_TAB_AUGMENTS)
 			dat += "<td width=65%>"
@@ -605,18 +566,6 @@
 					dat += "[html_encode(features["silicon_flavor_text"])]"
 			else
 				dat += "[copytext(html_encode(features["silicon_flavor_text"]), 1, 40)]..."
-			dat +=	"<h2>OOC Preferences</h2>"
-			dat += 	"<b>ERP:</b><a href='?src=[REF(src)];preference=erp_pref'>[erp_pref]</a> "
-			dat += 	"<b>Non-Con:</b><a href='?src=[REF(src)];preference=noncon_pref'>[noncon_pref]</a> "
-			dat += 	"<b>Vore:</b><a href='?src=[REF(src)];preference=vore_pref'>[vore_pref]</a><br>"
-			dat += "<a href='?src=[REF(src)];preference=ooc_prefs'><b>Set OOC prefs</b></a><br>"
-			if(length(ooc_prefs) <= 40)
-				if(!length(ooc_prefs))
-					dat += "\[...\]"
-				else
-					dat += "[html_encode(ooc_prefs)]"
-			else
-				dat += "[copytext(html_encode(ooc_prefs), 1, 40)]..."
 			dat += "</td>"
 			var/mutant_category = 0
 			var/list/generic_cache = GLOB.generic_accessories

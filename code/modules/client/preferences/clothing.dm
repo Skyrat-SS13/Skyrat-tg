@@ -12,7 +12,7 @@
 		if (accessory_name != "Nude")
 			var/datum/sprite_accessory/accessory = accessory_list[accessory_name]
 
-			var/icon/accessory_icon = icon('icons/mob/clothing/underwear.dmi', accessory.icon_state)
+			var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state) //SKYRAT EDIT CHANGE
 			if (color && !accessory.use_static)
 				accessory_icon.Blend(color, ICON_MULTIPLY)
 			icon_with_socks.Blend(accessory_icon, ICON_OVERLAY)
@@ -121,7 +121,7 @@
 /datum/preference/choiced/undershirt/apply_to_human(mob/living/carbon/human/target, value)
 	target.undershirt = value
 
-/*
+
 /// Underwear preference
 /datum/preference/choiced/underwear
 	savefile_key = "underwear"
@@ -150,4 +150,3 @@
 	data[SUPPLEMENTAL_FEATURE_KEY] = "underwear_color"
 
 	return data
-*/

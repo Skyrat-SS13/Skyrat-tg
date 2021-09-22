@@ -1,10 +1,12 @@
 /// Handles the assets for species icons
 /datum/preference_middleware/species
 
+//SKYRAT EDIT ADDITION
 /datum/preference_middleware/species/pre_set_preference(mob/user, preference, value)
 	var/datum/species/species_type = GLOB.species_list[value]
 	preferences.species_updated(species_type)
 	return ..()
+//SKYRAT EDIT END
 
 /datum/preference_middleware/species/get_ui_assets()
 	return list(

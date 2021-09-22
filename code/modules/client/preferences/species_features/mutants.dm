@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /datum/preference/color_legacy/mutant_color
 	savefile_key = "feature_mcolor"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -18,3 +19,4 @@
 		return FALSE
 
 	return TRUE
+*/

@@ -19,7 +19,7 @@
 	var/abstract_parent_type = /datum/quirk
 	/// The icon to show in the preferences menu.
 	/// This references a tgui icon, so it can be FontAwesome or a tgfont (with a tg- prefix).
-	var/icon
+	var/icon = "bug" //SKYRAT EDIT CHANGE
 
 /datum/quirk/Destroy()
 	if(quirk_holder)

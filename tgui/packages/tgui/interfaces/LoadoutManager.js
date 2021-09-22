@@ -1,6 +1,7 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Dimmer, Divider, Section, Stack, Tabs } from '../components';
+import { Box, Button, Dimmer, Section, Stack, Tabs, Dropdown } from '../components';
 import { Window } from '../layouts';
+import { CharacterPreview } from "./CharacterPreview";
 
 export const LoadoutManager = (props, context) => {
   const { act, data } = useBackend(context);
@@ -9,7 +10,8 @@ export const LoadoutManager = (props, context) => {
     loadout_tabs,
     user_is_donator,
     mob_name,
-    job_clothes,
+    preivew_options,
+    preview_selection,
     tutorial_status,
   } = data;
 
@@ -28,7 +30,7 @@ export const LoadoutManager = (props, context) => {
         { !!tutorial_status && (
           <LoadoutTutorialDimmer />
         )}
-        <Stack grow vertical>
+        <Stack fill vertical>
           <Stack.Item>
             <Section
               title="Loadout Categories"
@@ -52,9 +54,9 @@ export const LoadoutManager = (props, context) => {
               </Tabs>
             </Section>
           </Stack.Item>
-          <Stack.Item>
-            <Stack>
-              <Stack.Item grow >
+          <Stack.Item grow>
+            <Stack fill>
+              <Stack.Item grow>
                 { selectedTab && selectedTab.contents ? (
                   <Section
                     title={selectedTab.title}
@@ -70,66 +72,13 @@ export const LoadoutManager = (props, context) => {
                         width={10}
                         onClick={() => act('clear_all_items')} />
                     )}>
-                    <Stack vertical>
+                    <Stack grow vertical>
                       {selectedTab.contents.map(item => (
                         <Stack.Item key={item.name}>
                           <Stack fontSize="15px">
                             <Stack.Item grow align="left">
                               {item.name}
                             </Stack.Item>
-                            { !!item.is_greyscale
-                            && (
-                              <Stack.Item>
-                                <Button
-                                  icon="palette"
-                                  onClick={() => act('select_color', {
-                                    path: item.path,
-                                  })} />
-                              </Stack.Item>
-                            )}
-                            { !!item.is_renamable
-                            && (
-                              <Stack.Item>
-                                <Button
-                                  icon="pen"
-                                  onClick={() => act('set_name', {
-                                    path: item.path,
-                                  })} />
-                              </Stack.Item>
-                            )}
-                            { !!item.is_job_restricted
-                            && (
-                              <Stack.Item>
-                                <Button
-                                  icon="lock"
-                                  onClick={() => act('display_restrictions', {
-                                    path: item.path,
-                                  })} />
-                              </Stack.Item>
-                            )}
-                            { !!item.is_donator_only
-                            && (
-                              <Stack.Item>
-                                <Button
-                                  icon="heart"
-                                  color="pink"
-                                  onClick={() => act('donator_explain', {
-                                    path: item.path,
-                                  })}
-                                />
-                              </Stack.Item>
-                            )}
-                            { !!item.is_ckey_whitelisted
-                              && (
-                                <Stack.Item>
-                                  <Button
-                                    icon="user-lock"
-                                    onClick={() => act('ckey_explain', {
-                                      path: item.path,
-                                    })}
-                                  />
-                                </Stack.Item>
-                              )}
                             <Stack.Item>
                               <Button.Checkbox
                                 checked={selected_loadout.includes(item.path)}
@@ -159,16 +108,18 @@ export const LoadoutManager = (props, context) => {
                   </Section>
                 )}
               </Stack.Item>
-              <Stack.Item width="50%" align="center">
+              <Stack.Item grow>
                 <Section
                   title={`Preview: ${mob_name}`}
                   fill
                   buttons={(
-                    <Button.Checkbox
-                      align="center"
-                      content="Toggle Job Clothes"
-                      checked={job_clothes}
-                      onClick={() => act('toggle_job_clothes')} />
+                    <Dropdown
+                      fill horizontal
+                      selected={preview_selection}
+                      options={preivew_options}
+                      onSelected={value => act('update_preview', {
+                        updated_preview: value,
+                      })} />
                   )}>
                   <LoadoutPreview />
                 </Section>
@@ -214,23 +165,19 @@ export const LoadoutTutorialDimmer = (props, context) => {
 export const LoadoutPreview = (props, context) => {
   const { act, data } = useBackend(context);
   const {
-    icon64,
-    ismoth,
+    character_preview_view: string,
   } = data;
+
   return (
-    <Stack vertical>
-      <Stack.Item>
-        <Box
-          as="img"
-          m={0}
-          src={`data:image/jpeg;base64,${icon64}`}
+    <Stack vertical fill>
+      <Stack.Item grow>
+        <CharacterPreview
           width="100%"
-          minWidth={(ismoth ? 48 : 0)} // moths are too fat, break the preview
-          style={{
-            '-ms-interpolation-mode': 'nearest-neighbor',
-          }} />
-        <Divider />
+          height="100%"
+          align="center"
+          id={data.character_preview_view} />
       </Stack.Item>
+      <Stack.Divider />
       <Stack.Item align="center">
         <Stack>
           <Stack.Item>
