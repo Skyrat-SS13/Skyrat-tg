@@ -280,15 +280,15 @@ This is highly likely to cause massive amounts of lag as every object in the gam
 			// SKYRAT EDIT BEGIN - Bringing back the GAGS coloring menu
 			steps += list(
 				list(
-					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
-					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE),
+					"layer"=icon2html(layer, user, dir=sprite_dir, sourceonly=TRUE),
+					"result"=icon2html(result, user, dir=sprite_dir, sourceonly=TRUE),
 					"config_name"=step["config_name"]
 				)
 			)
 			// SKYRAT EDIT END
 
 	sprite_data["time_spent"] = TICK_DELTA_TO_MS(time_spent)
-	sprite_data["finished"] = icon2html(finished, user, dir=sprite_dir, sourceonly=TRUE, override_skyrat = TRUE)
+	sprite_data["finished"] = icon2html(finished, user, dir=sprite_dir, sourceonly=TRUE)
 	refreshing = FALSE
 
 /datum/greyscale_modify_menu/proc/Unlock()

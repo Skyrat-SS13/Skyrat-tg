@@ -8,6 +8,7 @@
 	gain_text = "<span class='notice'>The ground doesn't feel so rough on your feet anymore.</span>"
 	lose_text = "<span class='danger'>You start feeling the ridges and imperfections on the ground.</span>"
 	medical_record_text = "Patient's feet are more resilient against traction."
+	icon = "boot"
 
 /datum/quirk/linguist
 	name = "Linguist"
@@ -17,6 +18,7 @@
 	gain_text = span_notice("Your brain seems more equipped to handle different modes of conversation.")
 	lose_text = span_danger("Your grasp of the finer points of Draconic idioms fades away.")
 	medical_record_text = "Patient demonstrates a high brain plasticity in regards to language learning."
+	icon = "globe"
 
 //AdditionalEmotes *turf quirks
 /datum/quirk/water_aspect
@@ -27,6 +29,7 @@
 	gain_text = "<span class='notice'>You feel like you can control water.</span>"
 	lose_text = "<span class='danger'>Somehow, you've lost your ability to control water!</span>"
 	medical_record_text = "Patient holds a collection of nanobots designed to synthesize H2O."
+	icon = "water"
 
 /datum/quirk/webbing_aspect
 	name = "Webbing aspect (Emotes)"
@@ -36,6 +39,7 @@
 	gain_text = "<span class='notice'>You could easily spin a web.</span>"
 	lose_text = "<span class='danger'>Somehow, you've lost your ability to weave.</span>"
 	medical_record_text = "Patient has the ability to weave webs with naturally synthesized silk."
+	icon = "spider-web"
 
 /datum/quirk/floral_aspect
 	name = "Floral aspect (Emotes)"
@@ -45,6 +49,7 @@
 	gain_text = "<span class='notice'>You feel like you can grow vines.</span>"
 	lose_text = "<span class='danger'>Somehow, you've lost your ability to rapidly photosynthesize.</span>"
 	medical_record_text = "Patient can rapidly photosynthesize to grow vines."
+	icon = "seedling"
 
 /datum/quirk/ash_aspect
 	name = "Ash aspect (Emotes)"
@@ -54,6 +59,7 @@
 	gain_text = "<span class='notice'>There is a forge smouldering inside of you.</span>"
 	lose_text = "<span class='danger'>Somehow, you've lost your ability to breathe fire.</span>"
 	medical_record_text = "Patients possess a fire breathing gland commonly found in lizard folk."
+	icon = "fire"
 
 /datum/quirk/sparkle_aspect
 	name = "Sparkle aspect (Emotes)"
@@ -63,3 +69,4 @@
 	gain_text = "<span class='notice'>You're covered in sparkling dust!</span>"
 	lose_text = "<span class='danger'>Somehow, you've completely cleaned yourself of glitter..</span>"
 	medical_record_text = "Patient seems to be looking fabulous."
+	icon = "hand-sparkles"

@@ -430,7 +430,7 @@
 		update_atom_languages()
 */
 //SKYRAT EDIT REMOVAL BEGIN
-
+/*
 /mob/living/carbon/human/set_species(datum/species/mrace, icon_update = TRUE, pref_load = FALSE)
 	..()
 	if(icon_update)
@@ -438,7 +438,7 @@
 		update_hair()
 		update_body_parts()
 		update_mutations_overlay()// no lizard with human hulk overlay please.
-
+*/
 
 /mob/proc/has_dna()
 	return
@@ -492,7 +492,7 @@
 /mob/living/carbon/proc/create_dna()
 	dna = new /datum/dna(src)
 	if(!dna.species)
-		var/rando_race = GLOB.species_list[pick(GLOB.roundstart_races)]
+		var/rando_race = pick(get_selectable_species())
 		dna.species = new rando_race()
 
 //proc used to update the mob's appearance after its dna UI has been changed

@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(ckey_to_sooc_name)
 	for(var/c in listeners)
 		var/client/C = c
 		var/mode = listeners[c]
-		var/color = (!anon && CONFIG_GET(flag/allow_admin_ooccolor) && C.prefs.ooccolor) ? C.prefs.ooccolor : GLOB.SOOC_COLOR
+		var/color = (!anon && CONFIG_GET(flag/allow_admin_ooccolor) && C.prefs?.read_preference(/datum/preference/color/ooc_color)) ? C.prefs?.read_preference(/datum/preference/color/ooc_color) : GLOB.SOOC_COLOR
 		var/name = (mode == SOOC_LISTEN_ADMIN && anon) ? "([key])[keyname]" : keyname
 		to_chat(C, "<span class='oocplain'><font color='[color]'><b><span class='prefix'>SOOC:</span> <EM>[name]:</EM> <span class='message linkify'>[msg]</span></b></font></span>")
 

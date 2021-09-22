@@ -67,7 +67,6 @@
 	id = SPECIES_IPC
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
-		MUTCOLORS_PARTSONLY,
 		EYECOLOR,
 		LIPS,
 		HAIR,

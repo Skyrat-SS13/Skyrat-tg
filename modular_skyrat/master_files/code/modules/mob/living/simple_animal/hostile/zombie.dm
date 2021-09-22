@@ -30,7 +30,7 @@
 		//They have claws now.
 		O.r_hand = null
 		O.l_hand = null
-
+/*
 	var/icon/P = get_flat_human_icon_skyrat("zombie_[picked_job]", J, /datum/species/zombie/infectious, SPECIES_ZOMBIE_HALLOWEEN, outfit_override = O)
 	icon = P
 	if(!no_corpse)
@@ -38,3 +38,4 @@
 		corpse.outfit = O
 		corpse.mob_species = /datum/species/zombie
 		corpse.mob_name = name
+*/

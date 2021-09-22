@@ -1,94 +1,15 @@
+/*
 /// Fully randomizes everything in the character.
 /datum/preferences/proc/randomise_appearance_prefs(randomise_flags = ALL)
-	if(randomise_flags & RANDOMIZE_GENDER)
-		gender = pick(MALE, FEMALE, PLURAL)
-		switch(gender)
-			if(MALE, FEMALE)
-				body_type = gender
-			else
-				body_type = pick(MALE, FEMALE)
 	if(randomise_flags & RANDOMIZE_SPECIES)
 		var/rando_race = GLOB.species_list[pick(GLOB.roundstart_races)]
 		pref_species = new rando_race()
 	if(randomise_flags & RANDOMIZE_NAME)
 		real_name = pref_species.random_name(gender, TRUE)
-	if(randomise_flags & RANDOMIZE_AGE)
-		age = rand(AGE_MIN, AGE_MAX)
-	if(randomise_flags & RANDOMIZE_UNDERWEAR)
-		underwear = random_underwear(gender)
-	if(randomise_flags & RANDOMIZE_UNDERWEAR_COLOR)
-		underwear_color = random_short_color()
-	if(randomise_flags & RANDOMIZE_UNDERSHIRT)
-		undershirt = random_undershirt(gender)
-	if(randomise_flags & RANDOMIZE_SOCKS)
-		socks = random_socks()
-	if(randomise_flags & RANDOMIZE_BACKPACK)
-		backpack = random_backpack()
-	if(randomise_flags & RANDOMIZE_JUMPSUIT_STYLE)
-		jumpsuit_style = pick(GLOB.jumpsuitlist)
-	if(randomise_flags & RANDOMIZE_HAIRSTYLE)
-		hairstyle = random_hairstyle(gender)
-	if(randomise_flags & RANDOMIZE_FACIAL_HAIRSTYLE)
-		facial_hairstyle = random_facial_hairstyle(gender)
-	if(randomise_flags & RANDOMIZE_HAIR_COLOR)
-		hair_color = random_short_color()
-	if(randomise_flags & RANDOMIZE_FACIAL_HAIR_COLOR)
-		facial_hair_color = random_short_color()
-	if(randomise_flags & RANDOMIZE_SKIN_TONE)
-		skin_tone = random_skin_tone()
-	if(randomise_flags & RANDOMIZE_EYE_COLOR)
-		eye_color = random_eye_color()
-	if(randomise_flags & RANDOMIZE_FEATURES)
-		features = random_features()
-	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
-	for(var/key in new_features)
-		features[key] = new_features[key]
-	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
-	body_markings = pref_species.get_random_body_markings(features)
 
 /// Randomizes the character according to preferences.
 /datum/preferences/proc/apply_character_randomization_prefs(antag_override = FALSE)
-	if(!randomise[RANDOM_BODY] && !(antag_override && randomise[RANDOM_BODY_ANTAG]))
-		return // Prefs say "no, thank you"
-	if(randomise[RANDOM_GENDER] || antag_override && randomise[RANDOM_GENDER_ANTAG])
-		gender = pick(MALE, FEMALE, PLURAL)
-		switch(gender)
-			if(MALE, FEMALE)
-				body_type = gender
-			else
-				body_type = pick(MALE, FEMALE)
-	if(randomise[RANDOM_SPECIES])
-		random_species()
-	else if(randomise[RANDOM_NAME] || antag_override && randomise[RANDOM_NAME_ANTAG])
-		real_name = pref_species.random_name(gender, TRUE)
-	if(randomise[RANDOM_AGE] || antag_override && randomise[RANDOM_AGE_ANTAG])
-		age = rand(AGE_MIN, AGE_MAX)
-	if(randomise[RANDOM_UNDERWEAR])
-		underwear = random_underwear(gender)
-	if(randomise[RANDOM_UNDERWEAR_COLOR])
-		underwear_color = random_short_color()
-	if(randomise[RANDOM_UNDERSHIRT])
-		undershirt = random_undershirt(gender)
-	if(randomise[RANDOM_SOCKS])
-		socks = random_socks()
-	if(randomise[RANDOM_BACKPACK])
-		backpack = random_backpack()
-	if(randomise[RANDOM_JUMPSUIT_STYLE])
-		jumpsuit_style = pick(GLOB.jumpsuitlist)
-	if(randomise[RANDOM_HAIRSTYLE])
-		hairstyle = random_hairstyle(gender)
-	if(randomise[RANDOM_FACIAL_HAIRSTYLE])
-		facial_hairstyle = random_facial_hairstyle(gender)
-	if(randomise[RANDOM_HAIR_COLOR])
-		hair_color = random_short_color()
-	if(randomise[RANDOM_FACIAL_HAIR_COLOR])
-		facial_hair_color = random_short_color()
-	if(randomise[RANDOM_SKIN_TONE])
-		skin_tone = random_skin_tone()
-	if(randomise[RANDOM_EYE_COLOR])
-		eye_color = random_eye_color()
-	features = random_features()
-
+	return
 
 /datum/preferences/proc/random_species()
 	var/random_species_type = GLOB.species_list[pick(GLOB.roundstart_races)]
@@ -330,3 +251,4 @@
 	humanoid_icon_cache[icon_id] = out_icon
 	dummy_key? unset_busy_human_dummy(dummy_key) : qdel(body)
 	return out_icon
+*/

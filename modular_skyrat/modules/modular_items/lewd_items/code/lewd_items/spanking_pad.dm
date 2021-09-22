@@ -62,12 +62,12 @@
 		return
 
 	var/message = ""
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna spank.
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(M.is_bottomless())
 					message = (user == M) ? pick("spanks themselves with [src]","uses [src] to slap their hips") : pick("slaps [M]'s hips with [src]", "uses [src] to slap [M]'s butt","spanks [M] with [src], making a loud slapping noise","slaps [M]'s thighs with [src]")
-					if(M.client?.prefs.sextoys_pref == "Yes")
+					if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 						if(prob(40) && (M.stat != DEAD))
 							M.emote(pick("twitch_s","moan","blush","gasp"))
 						M.adjustArousal(2)
