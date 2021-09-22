@@ -651,11 +651,9 @@ SUBSYSTEM_DEF(job)
 	for(var/datum/job/job as anything in joinable_occupations)
 		var/regex/jobs = new("[job.title]=(-1|\\d+),(-1|\\d+)")
 		jobs.Find(jobstext)
-		/* SKYRAT EDIT REMOVAL
 		if(length(jobs.group)<2)
 			stack_trace("failed to find a job entry for [job.title] in jobs.txt")
 			continue
-		*/
 		job.total_positions = text2num(jobs.group[1])
 		job.spawn_positions = text2num(jobs.group[2])
 
