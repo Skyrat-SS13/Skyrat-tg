@@ -155,8 +155,6 @@
 			return "[jobtitle] is restricted from your quirks."
 		if(JOB_UNAVAILABLE_SPECIES)
 			return "[jobtitle] is restricted from your species."
-		if(JOB_UNAVAILABLE_LANGUAGE)
-			return "You don't have the required languages for [jobtitle]."
 		if(JOB_NOT_VETERAN)
 			return "You need to be veteran to join as [jobtitle]."
 		//SKYRAT EDIT END
@@ -181,11 +179,9 @@
 		return JOB_UNAVAILABLE_GENERIC
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
+	//SKYRAT EDIT ADDITION
 	if(job.has_banned_quirk(client.prefs))
 		return JOB_UNAVAILABLE_QUIRK
-	//SKYRAT EDIT ADDITION
-	if(!job.has_required_languages(client.prefs))
-		return JOB_UNAVAILABLE_LANGUAGE
 	if(job.veteran_only && !is_veteran_player(client))
 		return JOB_NOT_VETERAN
 	//SKYRAT EDIT END

@@ -123,6 +123,9 @@ export const LoadoutManager = (props, context) => {
                                 <Stack.Item>
                                   <Button
                                     icon="user-lock"
+                                    onClick={() => act('ckey_explain', {
+                                      path: item.path,
+                                    })}
                                   />
                                 </Stack.Item>
                               )}

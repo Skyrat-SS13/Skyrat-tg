@@ -80,14 +80,14 @@
 			stack_trace("Failed to locate desired loadout item (path: [params["path"]]) in the global list of loadout datums!")
 			return
 
-	//Here we will perform basic checks to ensure there are no exploits happening
-	if(interacted_item.donator_only && !GLOB.donator_list[owner.ckey])
-		message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is donator only.")
-		return
+		//Here we will perform basic checks to ensure there are no exploits happening
+		if(interacted_item.donator_only && !GLOB.donator_list[owner.ckey])
+			message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is donator only.")
+			return
 
-	if(interacted_item.ckeywhitelist && !(owner.ckey in interacted_item.ckeywhitelist))
-		message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is ckey locked.")
-		return
+		if(interacted_item.ckeywhitelist && !(owner.ckey in interacted_item.ckeywhitelist))
+			message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is ckey locked.")
+			return
 
 	switch(action)
 		// Turns the tutorial on and off.
@@ -132,6 +132,15 @@
 		// Toggles between showing all dirs of the dummy at once.
 		if("show_all_dirs")
 			toggle_model_dirs()
+
+		if("donator_explain")
+			if(GLOB.donator_list[owner.ckey])
+				to_chat(owner, examine_block("<b><span color='pink'>Thank you for donating, this item is for you <3!</span></b>"))
+			else
+				to_chat(owner, examine_block(span_boldnotice("This item is restricted to donators only, for more information, please check the discord(#server-info) for more information!")))
+
+		if("ckey_explain")
+			to_chat(owner, examine_block(span_green("This item is restricted to your ckey only. Thank you!")))
 
 	reset_outfit()
 	return TRUE
@@ -415,7 +424,7 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 
 	var/array_index = 1
 	for(var/datum/loadout_item/item as anything in list_of_datums)
-		if(!isnull(item.ckeywhitelist)) //These checks are also performed in the backend.
+		if(item.ckeywhitelist) //These checks are also performed in the backend.
 			if(!(owner.ckey in item.ckeywhitelist))
 				continue
 			item.additional_tooltip_contents += "This is a personal donator item for you!"

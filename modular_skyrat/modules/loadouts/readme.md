@@ -4,7 +4,7 @@ MODULE ID: LOADOUT
 
 ### Description:
 
-A loadoud system that uses TGUI to equip players post roundstart.
+A loadout system that uses TGUI to equip players post roundstart.
 
 
 ### Credits:
