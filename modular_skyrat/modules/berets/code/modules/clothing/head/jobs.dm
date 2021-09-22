@@ -144,3 +144,11 @@
 	name = "head of personnel's beret"
 	desc = "A fancy beret designed by NT's Personnel division for their favorite head's head. This one is made out of white fabric. Fancy"
 	greyscale_colors = "#FFFFFF#D60000"
+
+/obj/item/clothing/head/beret/color
+	name = "beret"
+	desc = "A beret, perfect for war veterans and dark, brooding, anti-hero mimes."
+	icon_state = "beret"
+	greyscale_config = /datum/greyscale_config/beret
+	greyscale_config_worn = /datum/greyscale_config/beret/worn
+	greyscale_colors = "#ffffff"

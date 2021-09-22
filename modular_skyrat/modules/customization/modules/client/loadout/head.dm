@@ -21,6 +21,11 @@
 	name = "Black beret"
 	path = /obj/item/clothing/head/beret/black
 
+/datum/loadout_item/head/beretcolor
+	name = "Beret"
+	path = /obj/item/clothing/head/beret/color
+	extra_info = LOADOUT_INFO_ONE_COLOR
+
 /datum/loadout_item/head/flatcap
 	name = "Flat cap"
 	path = /obj/item/clothing/head/flatcap
