@@ -480,9 +480,9 @@
 			var/erp_pref = client.prefs.read_preference(/datum/preference/toggle/erp)
 			var/noncon_pref = client.prefs.read_preference(/datum/preference/toggle/erp/noncon)
 			if(erp_pref)
-				line += span_notice(" ERP: [erp_pref ? "YES" : "NO"]"
+				line += span_notice(" ERP: [erp_pref ? "YES" : "NO"]")
 				if(noncon_pref)
-					line += span_notice(" NON-CON: [noncon_pref ? "YES" : "NO"])
+					line += span_notice(" NON-CON: [noncon_pref ? "YES" : "NO"]")
 		if(line)
 			. += line
 	//Temporary flavor text addition:
