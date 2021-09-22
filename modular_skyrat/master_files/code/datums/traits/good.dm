@@ -8,7 +8,7 @@
 	gain_text = "<span class='notice'>The ground doesn't feel so rough on your feet anymore.</span>"
 	lose_text = "<span class='danger'>You start feeling the ridges and imperfections on the ground.</span>"
 	medical_record_text = "Patient's feet are more resilient against traction."
-	icon = "shoe-prints"
+	icon = "boot"
 
 /datum/quirk/linguist
 	name = "Linguist"
@@ -18,7 +18,7 @@
 	gain_text = span_notice("Your brain seems more equipped to handle different modes of conversation.")
 	lose_text = span_danger("Your grasp of the finer points of Draconic idioms fades away.")
 	medical_record_text = "Patient demonstrates a high brain plasticity in regards to language learning."
-	icon = "language"
+	icon = "globe"
 
 //AdditionalEmotes *turf quirks
 /datum/quirk/water_aspect
@@ -39,7 +39,7 @@
 	gain_text = "<span class='notice'>You could easily spin a web.</span>"
 	lose_text = "<span class='danger'>Somehow, you've lost your ability to weave.</span>"
 	medical_record_text = "Patient has the ability to weave webs with naturally synthesized silk."
-	icon = "spider"
+	icon = "spider-web"
 
 /datum/quirk/floral_aspect
 	name = "Floral aspect (Emotes)"

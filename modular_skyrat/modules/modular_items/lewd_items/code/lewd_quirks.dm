@@ -16,6 +16,7 @@
 	medical_record_text = "Subject has nymphomania."
 	var/obj/item/sextoy
 	var/where
+	icon = "grin-hearts"
 
 //nymphomania players need to satisfy lust, so they need "tools" to "cool" them from time to time. In case if there is NO PLAYERS AROUND.
 /datum/quirk/nymphomania/add_unique()
@@ -59,6 +60,7 @@
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 	var/satisfaction = 1000
 	var/stress = 0
+
 
 /datum/brain_trauma/special/nymphomania/on_gain()
 	var/mob/living/carbon/human/H = owner
@@ -442,6 +444,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	gain_text = span_danger("You have a sudden desire for pain...")
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
+	icon = "hammer"
 
 /datum/quirk/masochism/post_add()
 	. = ..()
@@ -488,6 +491,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	gain_text = span_danger("You feel a sudden desire to inflict pain.")
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
+	icon = "angry"
 
 /datum/quirk/sadism/post_add()
 	. = ..()

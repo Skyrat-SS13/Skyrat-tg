@@ -73,7 +73,13 @@ export const LoadoutManager = (props, context) => {
                         onClick={() => act('clear_all_items')} />
                     )}>
                     <Stack grow vertical>
-                      { !!item.is_greyscale
+                      {selectedTab.contents.map(item => (
+                        <Stack.Item key={item.name}>
+                          <Stack fontSize="15px">
+                            <Stack.Item grow align="left">
+                              {item.name}
+                            </Stack.Item>
+                            { !!item.is_greyscale
                             && (
                               <Stack.Item>
                                 <Button
@@ -83,7 +89,7 @@ export const LoadoutManager = (props, context) => {
                                   })} />
                               </Stack.Item>
                             )}
-                      { !!item.is_renamable
+                            { !!item.is_renamable
                             && (
                               <Stack.Item>
                                 <Button
@@ -93,7 +99,7 @@ export const LoadoutManager = (props, context) => {
                                   })} />
                               </Stack.Item>
                             )}
-                      { !!item.is_job_restricted
+                            { !!item.is_job_restricted
                             && (
                               <Stack.Item>
                                 <Button
@@ -103,7 +109,7 @@ export const LoadoutManager = (props, context) => {
                                   })} />
                               </Stack.Item>
                             )}
-                      { !!item.is_donator_only
+                            { !!item.is_donator_only
                             && (
                               <Stack.Item>
                                 <Button
@@ -115,7 +121,7 @@ export const LoadoutManager = (props, context) => {
                                 />
                               </Stack.Item>
                             )}
-                      { !!item.is_ckey_whitelisted
+                            { !!item.is_ckey_whitelisted
                               && (
                                 <Stack.Item>
                                   <Button
@@ -126,12 +132,6 @@ export const LoadoutManager = (props, context) => {
                                   />
                                 </Stack.Item>
                               )}
-                      {selectedTab.contents.map(item => (
-                        <Stack.Item key={item.name}>
-                          <Stack fontSize="15px">
-                            <Stack.Item grow align="left">
-                              {item.name}
-                            </Stack.Item>
                             <Stack.Item>
                               <Button.Checkbox
                                 checked={selected_loadout.includes(item.path)}

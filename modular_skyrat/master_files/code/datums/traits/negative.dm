@@ -6,7 +6,7 @@
 	value = -4
 	mob_trait = TRAIT_MOOD_NOEXAMINE
 	medical_record_text = "Patient is incapable of communicating their emotions."
-	icon = "meh-blank"
+	icon = "meh"
 
 /datum/quirk/sensitivesnout
 	name = "Sensitive Snout"
