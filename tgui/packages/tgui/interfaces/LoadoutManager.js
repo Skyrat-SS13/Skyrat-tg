@@ -170,11 +170,10 @@ export const LoadoutPreview = (props, context) => {
 
   return (
     <Stack vertical fill>
-      <Stack.Item grow>
+      <Stack.Item grow align="center">
         <CharacterPreview
           width="100%"
           height="100%"
-          align="center"
           id={data.character_preview_view} />
       </Stack.Item>
       <Stack.Divider />
