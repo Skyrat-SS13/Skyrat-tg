@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1 //Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 3
+	var/max_save_slots = 30 //SKYRAT EDIT CHANGE
 
 	//non-preference stuff
 	var/muted = 0
@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			load_path(C.ckey)
 			unlock_content = !!C.IsByondMember()
 			if(unlock_content)
-				max_save_slots = 8
+				max_save_slots = 40 //SKYRAT EDIT CHANGE
 
 	// give them default keybinds and update their movement keys
 	key_bindings = deepCopyList(GLOB.default_hotkeys)
