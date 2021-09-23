@@ -55,11 +55,8 @@
 		var/mob/living/L = AM
 		if(L.mob_size > MOB_SIZE_TINY)
 			playsound(src, stepped_sound, 50, TRUE)
-<<<<<<< HEAD
 */
-=======
 
 /mob/living/simple_animal/hostile/retaliate/frog/add_cell_sample()
 	. = ..()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_FROG, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
->>>>>>> 19712939ede (Cytology content expansion: Jungle mobs. (#61414))
