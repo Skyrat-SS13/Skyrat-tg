@@ -35,13 +35,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	decomp_type = /obj/item/food/pizzaslice/moldy
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
-/obj/item/food/pizzaslice/bacteria/MakeProcessable()
-=======
 /obj/item/food/pizzaslice/MakeProcessable()
->>>>>>> c42ae65fcf1 (fixes a mistake I made with decomp (#61583))
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/stack/sheet/pizza, 1, 10)
 */
 //SKYRAT EDIT REMOVAL END
