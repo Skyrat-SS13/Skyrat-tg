@@ -76,6 +76,5 @@
 	WRITE_FILE(S["medical_record"] , medical_record)
 	WRITE_FILE(S["background_info"] , background_info)
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
-	WRITE_FILE(S["loadout_list"], loadout_list)
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 
