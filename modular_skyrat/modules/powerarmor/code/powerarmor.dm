@@ -329,10 +329,11 @@
 	if(healing_upgraded[5] && living_wearer.getStaminaLoss())
 		living_wearer.adjustStaminaLoss(-3)
 	if(misc_upgraded[4] && living_wearer.bodytemperature != BODYTEMP_NORMAL)
+		var/changing_temp = living_wearer.bodytemperature - BODYTEMP_NORMAL
 		if(living_wearer.bodytemperature > BODYTEMP_NORMAL)
-			living_wearer.adjust_bodytemperature(-10)
+			living_wearer.adjust_bodytemperature(max(-10, -changing_temp))
 		if(living_wearer.bodytemperature < BODYTEMP_NORMAL)
-			living_wearer.adjust_bodytemperature(10)
+			living_wearer.adjust_bodytemperature(min(10, -changing_temp))
 
 /obj/item/clothing/suit/hooded/powerarmor/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -364,7 +365,7 @@
 	light_range = 0
 	if(misc_upgraded[2])
 		light_range = 3
-		light_color = LIGHT_COLOR_HALOGEN
+		light_color = LIGHT_COLOR_LIGHT_CYAN
 
 /obj/item/clothing/suit/hooded/powerarmor/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/powerarmor_upgrade))
