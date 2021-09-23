@@ -424,6 +424,7 @@
 				stored.take_damage(stored.max_integrity * 0.5, sound_effect=FALSE)
 			transfer_fingerprints_to(stored)
 			. = stored
+			QDEL_IN(src, 0)
 	..()
 
 /**
