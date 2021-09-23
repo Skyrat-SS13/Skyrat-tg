@@ -28,23 +28,10 @@ SUBSYSTEM_DEF(ambience)
 		ambience_listening_clients -= to_process
 		return
 
-<<<<<<< HEAD
-		//SKYRAT EDIT ADDITION BEGIN
-		var/volume_mod = 30
-
-		if(current_area.ambience_index == AMBIENCE_GENERIC)
-			volume_mod = 85
-		//SKYRAT EDIT END
-
-		var/sound = pick(current_area.ambientsounds)
-
-		SEND_SOUND(client_iterator.mob, sound(sound, repeat = 0, wait = 0, volume = volume_mod, channel = CHANNEL_AMBIENCE)) //SKYRAT EDIT CHANGE - ORIGINAL: SEND_SOUND(client_iterator.mob, sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE))
-=======
 	if(ambience_listening_clients[to_process] > world.time)
 		return //Not ready for the next sound
 
 	var/area/current_area = get_area(to_process.mob)
->>>>>>> d610ab97c80 (Adds keyloop to the autoclearing ss, cleans up ssambience a bit (#61540))
 
 	if(!current_area) //Something's gone horribly wrong
 		stack_trace("[key_name(to_process)] has somehow ended up in nullspace. WTF did you do")
