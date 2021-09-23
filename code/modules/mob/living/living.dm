@@ -278,6 +278,7 @@
 	if(isliving(AM))
 		current_dir = AM.dir
 	if(AM.Move(get_step(AM.loc, dir_to_target), dir_to_target, glide_size))
+		AM.add_fingerprint(src)
 		Move(get_step(loc, dir_to_target), dir_to_target)
 	if(current_dir)
 		AM.setDir(current_dir)
@@ -1334,7 +1335,7 @@
 				/mob/living/simple_animal/pet/cat,
 				/mob/living/simple_animal/mouse,
 				/mob/living/simple_animal/chicken,
-				/mob/living/simple_animal/cow,
+				/mob/living/basic/cow,
 				/mob/living/simple_animal/hostile/lizard,
 				/mob/living/simple_animal/pet/fox,
 				/mob/living/simple_animal/butterfly,

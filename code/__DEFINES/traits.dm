@@ -325,6 +325,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BYPASS_MEASURES "bypass_lagswitch_measures"
 /// Someone can safely be attacked with honorbound with ONLY a combat mode check, the trait is assuring holding a weapon and hitting won't hurt them..
 #define TRAIT_ALLOWED_HONORBOUND_ATTACK "allowed_honorbound_attack"
+/// The user is sparring
+#define TRAIT_SPARRING "sparring"
 
 #define TRAIT_NOBLEED "nobleed" //This carbon doesn't bleed
 /// This atom can ignore the "is on a turf" check for simple AI datum attacks, allowing them to attack from bags or lockers as long as any other conditions are met
@@ -523,6 +525,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// If present on a [/mob/living/carbon], will make them appear to have a medium level disease on health HUDs.
 #define TRAIT_DISEASELIKE_SEVERITY_MEDIUM "diseaselike_severity_medium"
+
+/// trait denoting someone will crawl faster in soft crit
+#define TRAIT_TENACIOUS "tenacious"
+
+/// trait denoting someone will sometimes recover out of crit
+#define TRAIT_UNBREAKABLE "unbreakable"
 
 //Medical Categories for quirks
 #define CAT_QUIRK_ALL 0
@@ -729,3 +737,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MAGNETIC_ID_CARD "magnetic_id_card"
 /// Traits granted to items due to their chameleon properties.
 #define CHAMELEON_ITEM_TRAIT "chameleon_item_trait"
+
+/// This human wants to see the color of their glasses, for some reason
+#define TRAIT_SEE_GLASS_COLORS "see_glass_colors"

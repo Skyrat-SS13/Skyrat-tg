@@ -129,8 +129,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	. = ..()
 	if(!equipped)
 		if(user.client)
-			background_color = user.client.prefs.pda_color
-			switch(user.client.prefs.pda_style)
+			background_color = user.client.prefs.read_preference(/datum/preference/color/pda_color)
+			switch(user.client.prefs.read_preference(/datum/preference/choiced/pda_style))
 				if(MONO)
 					font_index = MODE_MONO
 					font_mode = FONT_MONO
@@ -146,9 +146,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					font_index = MODE_MONO
 					font_mode = FONT_MONO
-			//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-			ttone = user.client.prefs.pda_ringer
-			//SKYRAT EDIT ADDITION END
 			equipped = TRUE
 
 /obj/item/pda/proc/update_label()

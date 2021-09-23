@@ -1,17 +1,5 @@
 GLOBAL_LIST_EMPTY(customizable_races)
 
-/proc/generate_selectable_species()
-	for(var/I in subtypesof(/datum/species))
-		var/datum/species/S = new I
-		if(S.check_roundstart_eligible())
-			GLOB.roundstart_races[S.id] = TRUE
-			GLOB.customizable_races[S.id] = TRUE
-		else if (S.always_customizable)
-			GLOB.customizable_races[S.id] = TRUE
-		qdel(S)
-	if(!GLOB.roundstart_races.len)
-		GLOB.roundstart_races[SPECIES_HUMAN] = TRUE
-
 /datum/species
 	mutant_bodyparts = list()
 	///Self explanatory
@@ -347,7 +335,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
 	return list()
 
-/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
 		C.gender = PLURAL
@@ -387,15 +375,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(istype(I))
 				C.dropItemToGround(I)
 			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
-				C.put_in_hands(new mutanthands())
-
-	if(ishuman(C))
-		var/mob/living/carbon/human/human = C
-		for(var/obj/item/organ/external/organ_path as anything in external_organs)
-			//Load a persons preferences from DNA
-			var/preference_name = human.dna.features[initial(organ_path.preference)]
-			var/obj/item/organ/external/new_organ = new organ_path(null, preference_name, human.body_type)
-			new_organ.Insert(human)
+				INVOKE_ASYNC(C, /mob/living/carbon.proc/put_in_hands, new mutanthands())
 
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)

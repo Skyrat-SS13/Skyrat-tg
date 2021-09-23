@@ -261,12 +261,12 @@
 	if(!length(shown_skills))
 		to_chat(user, span_notice("You don't seem to have any particularly outstanding skills."))
 		return
-	var/msg = "[span_info("*---------*\n<EM>Your skills</EM>")]\n<span class='notice'>"
+	var/msg = "[span_info("<EM>Your skills</EM>")]\n<span class='notice'><hr>" //SKYRAT EDIT CHANGE
 	for(var/i in shown_skills)
 		var/datum/skill/the_skill = i
 		msg += "[initial(the_skill.name)] - [get_skill_level_name(the_skill)]\n"
 	msg += "</span>"
-	to_chat(user, msg)
+	to_chat(user, examine_block(msg)) //SKYRAT EDIT CHANGE
 
 /datum/mind/proc/set_death_time()
 	SIGNAL_HANDLER
@@ -416,24 +416,24 @@
 	var/obj/item/uplink_loc
 	var/implant = FALSE
 
-	if(traitor_mob.client && traitor_mob.client.prefs)
-		switch(traitor_mob.client.prefs.uplink_spawn_loc)
-			if(UPLINK_PDA)
-				uplink_loc = PDA
-				if(!uplink_loc)
-					uplink_loc = R
-				if(!uplink_loc)
-					uplink_loc = P
-			if(UPLINK_RADIO)
+	var/uplink_spawn_location = traitor_mob.client?.prefs?.read_preference(/datum/preference/choiced/uplink_location)
+	switch (uplink_spawn_location)
+		if(UPLINK_PDA)
+			uplink_loc = PDA
+			if(!uplink_loc)
 				uplink_loc = R
-				if(!uplink_loc)
-					uplink_loc = PDA
-				if(!uplink_loc)
-					uplink_loc = P
-			if(UPLINK_PEN)
+			if(!uplink_loc)
 				uplink_loc = P
-			if(UPLINK_IMPLANT)
-				implant = TRUE
+		if(UPLINK_RADIO)
+			uplink_loc = R
+			if(!uplink_loc)
+				uplink_loc = PDA
+			if(!uplink_loc)
+				uplink_loc = P
+		if(UPLINK_PEN)
+			uplink_loc = P
+		if(UPLINK_IMPLANT)
+			implant = TRUE
 
 	if(!uplink_loc) // We've looked everywhere, let's just implant you
 		implant = TRUE

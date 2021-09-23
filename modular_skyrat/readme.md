@@ -42,11 +42,7 @@ but then our upstream introduces a change in their codebase, changing it from 1 
 As easy of an example as it is, it results in a relatively simple conflict, in the form of
 
 ```byond
-<<<<<<< HEAD
 var/something = 2 //SKYRAT EDIT
-=======
-var/something = 4
->>>>>>> upstream-mirror-123132
 ```
 
 where we pick the preferable option manually.

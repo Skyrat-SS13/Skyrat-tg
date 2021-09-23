@@ -89,7 +89,7 @@
 
 	var/message = ""
 	var/obj/item/organ/genital/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	var/message = ""
 	var/obj/item/organ/genital/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
@@ -542,7 +542,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	var/message = ""
 	var/obj/item/organ/genital/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
@@ -630,7 +630,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	var/message = ""
 	var/obj/item/organ/genital/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
