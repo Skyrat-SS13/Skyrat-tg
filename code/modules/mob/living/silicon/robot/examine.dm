@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/examine(mob/user)
-	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] \a <EM>[src]</EM>!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!") //SKYRAT EDIT CHANGE
 	if(desc)
 		. += "[desc]"
 
@@ -50,6 +50,6 @@
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 	//SKYRAT EDIT ADDITION END
-	. += "*---------*</span>"
+	//. += "*---------*</span>"
 
 	. += ..()

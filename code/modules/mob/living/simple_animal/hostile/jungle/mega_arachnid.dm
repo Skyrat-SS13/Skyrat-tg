@@ -77,13 +77,9 @@
 	desc = "Used by mega arachnids to immobilize their prey."
 	item_flags = DROPDEL
 	flags_1 = NONE
+	icon_state = "flesh_snare"
 	armed = TRUE
-<<<<<<< HEAD
-	icon_state = "tentacle_end"
-	icon = 'icons/obj/guns/projectiles.dmi'
-=======
 
 /obj/item/restraints/legcuffs/beartrap/mega_arachnid/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_MEGA_ARACHNID, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
->>>>>>> 19712939ede (Cytology content expansion: Jungle mobs. (#61414))
