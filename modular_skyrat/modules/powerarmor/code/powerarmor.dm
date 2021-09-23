@@ -262,12 +262,13 @@
 	//the cooldown for
 	COOLDOWN_DECLARE(healing_cooldown)
 	//the list of upgrades possible, starting here
-	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0) //melee, bullet, laser, energy, bio, rad
+	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0, 0) //melee, bullet, laser, energy, bio, rad, fire
 	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE) //brute, burn, toxin, oxygen, stamina
 	var/speed_upgraded = 0
-	var/list/misc_upgraded = list(FALSE, FALSE) //spaceproof, light
+	var/list/misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE) //spaceproof, light, welding, temp-regulating, storage
 
 	var/mob/wearer
+	var/obj/item/storage/backpack/inner_backpack
 
 /obj/item/clothing/suit/hooded/powerarmor/emp_act(severity)
 	. = ..()
@@ -277,14 +278,28 @@
 		living_wearer.adjustFireLoss(25)
 		to_chat(living_wearer, span_warning("[src] short-circuits, hurting you in the process!"))
 
+/obj/item/clothing/suit/hooded/powerarmor/AltClick(mob/user)
+	. = ..()
+	var/list/selection = list()
+	if(misc_upgraded[5])
+		selection += "storage"
+	var/get_choice = tgui_input_list(user, "Choose which option to selection", "Selection Menu", selection)
+	if(!get_choice)
+		return
+	switch(get_choice)
+		if("storage")
+			SEND_SIGNAL(inner_backpack, COMSIG_TRY_STORAGE_SHOW, user)
+
 /obj/item/clothing/suit/hooded/powerarmor/examine(mob/user)
 	. = ..()
+	. += span_notice("ALT + CLICK to open certain options (if upgraded)!")
 	. += span_notice("Upgrade Credits Left: [upgradelimit]")
 	. += span_notice("Upgrade Boosted: [upgradeboosted ? "TRUE" : "FALSE"]")
 
 /obj/item/clothing/suit/hooded/powerarmor/Initialize()
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	inner_backpack = new /obj/item/storage/backpack(src)
 
 /obj/item/clothing/suit/hooded/powerarmor/equipped(mob/user, slot)
 	. = ..()
@@ -313,6 +328,11 @@
 		living_wearer.adjustOxyLoss(-3)
 	if(healing_upgraded[5] && living_wearer.getStaminaLoss())
 		living_wearer.adjustStaminaLoss(-3)
+	if(misc_upgraded[4] && living_wearer.bodytemperature != BODYTEMP_NORMAL)
+		if(living_wearer.bodytemperature > BODYTEMP_NORMAL)
+			living_wearer.adjust_bodytemperature(-10)
+		if(living_wearer.bodytemperature < BODYTEMP_NORMAL)
+			living_wearer.adjust_bodytemperature(10)
 
 /obj/item/clothing/suit/hooded/powerarmor/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -325,6 +345,7 @@
 	armor.energy = armor_upgraded[4] * 20
 	armor.bio = armor_upgraded[5] * 20
 	armor.rad = armor_upgraded[6] * 20
+	armor.fire = armor_upgraded[7] * 20
 	slowdown = initial(slowdown) - (speed_upgraded * 0.25)
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
@@ -373,6 +394,8 @@
 				armor_upgraded[5]++
 			if("rad armor")
 				armor_upgraded[6]++
+			if("fire armor")
+				armor_upgraded[7]++
 			if("brute healing")
 				if(healing_upgraded[1])
 					return
@@ -403,6 +426,18 @@
 				if(misc_upgraded[2])
 					return
 				misc_upgraded[2] = TRUE
+			if("welding")
+				if(misc_upgraded[3])
+					return
+				misc_upgraded[3] = TRUE
+			if("temp regulating")
+				if(misc_upgraded[4])
+					return
+				misc_upgraded[4] = TRUE
+			if("storage")
+				if(misc_upgraded[5])
+					return
+				misc_upgraded[5] = TRUE
 		upgrade_item.forceMove(src)
 		upgradelimit -= upgrade_item.upgrade_cost
 		update_upgrades()
@@ -425,10 +460,11 @@
 		for(var/obj/check_contents in contents)
 			if(istype(check_contents, /obj/item/powerarmor_upgrade))
 				check_contents.forceMove(get_turf(src))
-		armor_upgraded = list(0, 0, 0, 0)
+		armor_upgraded = list(0, 0, 0, 0, 0, 0, 0)
 		healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
 		speed_upgraded = 0
-		misc_upgraded = list(FALSE)
+		misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
+		update_upgrades()
 		W.play_tool_sound(src, 50)
 	return ..()
 
@@ -442,7 +478,7 @@
 
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	flash_protect = FLASH_PROTECTION_WELDER
+	flash_protect = FLASH_PROTECTION_NONE
 
 /obj/item/clothing/head/hooded/powerarmor/Initialize()
 	. = ..()
@@ -461,6 +497,7 @@
 	armor.energy = power_suit.armor_upgraded[4] * 20
 	armor.bio = power_suit.armor_upgraded[5] * 20
 	armor.rad = power_suit.armor_upgraded[6] * 20
+	armor.fire = power_suit.armor_upgraded[7] * 20
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -472,6 +509,9 @@
 		clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
 		max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
 		min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
+	flash_protect = FLASH_PROTECTION_NONE
+	if(power_suit.misc_upgraded[3])
+		flash_protect = FLASH_PROTECTION_WELDER
 
 /obj/item/powerarmor_upgrade
 	name = "power armor upgrade"
@@ -527,6 +567,10 @@
 	upgrade_type = "rad armor"
 	upgrade_cost = 3
 
+/obj/item/powerarmor_upgrade/fire_armor
+	upgrade_type = "fire armor"
+	upgrade_cost = 3
+
 /obj/item/powerarmor_upgrade/brute_heal
 	upgrade_type = "brute healing"
 	upgrade_cost = 11
@@ -558,6 +602,18 @@
 /obj/item/powerarmor_upgrade/light
 	upgrade_type = "light"
 	upgrade_cost = 2
+
+/obj/item/powerarmor_upgrade/tempreg
+	upgrade_type = "temp regulating"
+	upgrade_cost = 5
+
+/obj/item/powerarmor_upgrade/welding
+	upgrade_type = "welding"
+	upgrade_cost = 5
+
+/obj/item/powerarmor_upgrade/storage
+	upgrade_type = "storage"
+	upgrade_cost = 5
 
 /datum/design/powerarmor
 	name = "Power Armor"
@@ -659,6 +715,11 @@
 	id = "paupgraderad"
 	build_path = /obj/item/powerarmor_upgrade/rad_armor
 
+/datum/design/powerarmor/upgrades/fire_armor
+	name = "Power Armor Upgrades (Fire Armor)"
+	id = "paupgradefire"
+	build_path = /obj/item/powerarmor_upgrade/fire_armor
+
 /datum/design/powerarmor/upgrades/brute_heal
 	name = "Power Armor Upgrades (Brute Healing)"
 	id = "paupgradebrutehealing"
@@ -699,6 +760,21 @@
 	id = "paupgradelight"
 	build_path = /obj/item/powerarmor_upgrade/light
 
+/datum/design/powerarmor/upgrades/welding
+	name = "Power Armor Upgrades (Welding)"
+	id = "paupgradewelding"
+	build_path = /obj/item/powerarmor_upgrade/welding
+
+/datum/design/powerarmor/upgrades/tempreg
+	name = "Power Armor Upgrades (Temperature Regulating)"
+	id = "paupgradetempreg"
+	build_path = /obj/item/powerarmor_upgrade/tempreg
+
+/datum/design/powerarmor/upgrades/storage
+	name = "Power Armor Upgrades (Storage)"
+	id = "paupgradestorage"
+	build_path = /obj/item/powerarmor_upgrade/storage
+
 /datum/techweb_node/powerarmor_upgrade_basic
 	id = "powerarmor_upgrade_basic"
 	display_name = "Power Armor Basic Upgrades"
@@ -726,6 +802,7 @@
 		"paupgradeenergy",
 		"paupgradebio",
 		"paupgraderad",
+		"paupgradefire",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
@@ -742,6 +819,8 @@
 		"paupgradetoxinhealing",
 		"paupgradeoxygenhealing",
 		"paupgradestaminahealing",
+		"paupgradewelding",
+		"paupgradetempreg",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
@@ -754,5 +833,6 @@
 	)
 	design_ids = list(
 		"paupgradespaceproof",
+		"paupgradestorage",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
