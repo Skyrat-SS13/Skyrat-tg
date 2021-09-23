@@ -14,7 +14,6 @@
 #define PAYCHECK_MEDIUM 100 //SKYRAT EDIT ORIGINAL = (75) - Pay Raise
 #define PAYCHECK_HARD 125 //SKYRAT EDIT ORIGINAL = (100)  - Pay Raise
 #define PAYCHECK_COMMAND 200
-#define PAYCHECK_NANOTRASEN_FLEET_COMMAND 600 //SKYRAT EDIT ADDITION
 
 #define STATION_TARGET_BUFFER 40
 
@@ -39,8 +38,6 @@
 #define ACCOUNT_SEC_NAME "Defense Budget"
 #define ACCOUNT_CMD "CMD" // SKYRAT EDIT
 #define ACCOUNT_CMD_NAME "Command Budget" // SKYRAT EDIT
-#define ACCOUNT_CCM "CCM" // SKYRAT EDIT
-#define ACCOUNT_CCM_NAME "Central Command Budget" // SKYRAT EDIT
 
 #define NO_FREEBIES "commies go home"
 
