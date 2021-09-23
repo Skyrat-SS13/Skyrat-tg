@@ -101,7 +101,7 @@
 		"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "male_bootymedical"),
 		"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "protectron_medical"),
 		"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "missm_med"),
-		"Qualified Doctor" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "qualified_doctor"),
+		"Qualified Doctor" = image(icon = 'icons/mob/robots.dmi', icon_state = "qualified_doctor"),
 		"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "zoomba_med"),
 		"Arachne" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "arachne"),
 		"Insekt" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "insekt-Med"),
@@ -154,7 +154,6 @@
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 		if("Qualified Doctor")
 			cyborg_base_icon = "qualified_doctor"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
 		if("Arachne")
 			cyborg_base_icon = "arachne"
 			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'

@@ -343,6 +343,7 @@
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
 
+/* SKYRAT EDIT START - MOVED TO modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_modules.dm
 /obj/item/robot_model/medical/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/list/medical_icons = list(
@@ -355,6 +356,7 @@
 		else
 			return FALSE
 	return ..()
+*/
 
 // --------------------- Mining
 /obj/item/robot_model/miner
