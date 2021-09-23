@@ -26,13 +26,19 @@
 /obj/item/clothing/under/shibari_body/Destroy()
 	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
 	R.current_color = current_color
+	R.update_icon_state()
+	R.update_icon()
 	. = ..()
 
 //customization stuff
 /obj/item/clothing/under/shibari_body/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	worn_icon_state = "[initial(icon_state)]_[current_color]"
+
+/obj/item/clothing/under/shibari_body/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/under/shibari_body/Initialize()
 	. = ..()
@@ -112,13 +118,19 @@
 /obj/item/clothing/under/shibari_groin/Destroy()
 	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
 	R.current_color = current_color
+	R.update_icon_state()
+	R.update_icon()
 	. = ..()
+
+/obj/item/clothing/under/shibari_groin/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 
 //customization stuff
 /obj/item/clothing/under/shibari_groin/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	worn_icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/item/clothing/under/shibari_groin/Initialize()
 	. = ..()
@@ -197,13 +209,20 @@
 /obj/item/clothing/under/shibari_fullbody/Destroy()
 	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
 	R.current_color = current_color
+	R.update_icon_state()
+	R.update_icon()
 	. = ..()
 
 //customization stuff
 /obj/item/clothing/under/shibari_fullbody/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	worn_icon_state = "[initial(icon_state)]_[current_color]"
+
+/obj/item/clothing/under/shibari_fullbody/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
+
 
 /obj/item/clothing/under/shibari_fullbody/Initialize()
 	. = ..()
@@ -281,13 +300,19 @@
 /obj/item/clothing/gloves/shibari_hands/Destroy()
 	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
 	R.current_color = current_color
+	R.update_icon_state()
+	R.update_icon()
 	. = ..()
 
 //customization stuff
 /obj/item/clothing/gloves/shibari_hands/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	worn_icon_state = "[initial(icon_state)]_[current_color]"
+
+/obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/gloves/shibari_hands/Initialize()
 	. = ..()
@@ -347,13 +372,19 @@
 /obj/item/clothing/shoes/shibari_legs/Destroy()
 	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
 	R.current_color = current_color
+	R.update_icon_state()
+	R.update_icon()
 	. = ..()
 
 //customization stuff
 /obj/item/clothing/shoes/shibari_legs/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
-	inhand_icon_state = "[initial(icon_state)]_[current_color]"
+	worn_icon_state = "[initial(icon_state)]_[current_color]"
+
+/obj/item/clothing/shoes/shibari_legs/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/shoes/shibari_legs/Initialize()
 	. = ..()
