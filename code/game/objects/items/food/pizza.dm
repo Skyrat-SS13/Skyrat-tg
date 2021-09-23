@@ -37,7 +37,7 @@
 
 //SKYRAT EDIT REMOVAL BEGIN
 /*
-/obj/item/food/pizzaslice/bacteria/MakeProcessable()
+/obj/item/food/pizzaslice/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, /obj/item/stack/sheet/pizza, 1, 10)
 */
 //SKYRAT EDIT REMOVAL END
