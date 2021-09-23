@@ -49,12 +49,8 @@
 #define CELL_LINE_TABLE_MOLD "cell_line_mold_table"
 #define CELL_LINE_TABLE_MOIST "cell_line_moist_table"
 #define CELL_LINE_TABLE_BLOB "cell_line_blob_table"
-<<<<<<< HEAD
-//#define CELL_LINE_TABLE_CLOWN "cell_line_clown_table" //SKYRAT EDIT REMOVAL - if lack of this fails the travis, comment whatever uses this
-=======
 #define CELL_LINE_TABLE_CLOWN "cell_line_clown_table"
 #define CELL_LINE_TABLE_ALGAE "cell_line_algae_table"
->>>>>>> 19712939ede (Cytology content expansion: Jungle mobs. (#61414))
 
 //! Biopsy cell line types
 #define CELL_LINE_TABLE_BEAR "cell_line_bear_table"
