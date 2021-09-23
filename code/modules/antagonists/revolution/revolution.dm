@@ -22,7 +22,7 @@
 /datum/antagonist/rev/can_be_owned(datum/mind/new_owner)
 	. = ..()
 	if(.)
-		if(new_owner.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND))//SKYRAT EDIT CHANGE
+		if(new_owner.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND))//SKYRAT EDIT CHANGE
 			return FALSE
 		if(new_owner.unconvertable)
 			return FALSE
@@ -459,7 +459,7 @@
 			if (isnull(mind))
 				continue
 
-			if (!(mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND)))//SKYRAT EDIT CHANGE
+			if (!(mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
 				continue
 
 			if (mind in ex_revs + ex_headrevs)
@@ -478,7 +478,7 @@
 				mind.announce_objectives()
 
 		for(var/datum/job/job as anything in SSjob.joinable_occupations)
-			if(!(job.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND)))//SKYRAT EDIT CHANGE
+			if(!(job.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
 				continue
 			job.allow_bureaucratic_error = FALSE
 			job.total_positions = 0
