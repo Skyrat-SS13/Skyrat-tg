@@ -147,7 +147,7 @@
 	worn_icon = 'modular_skyrat/modules/aesthetics/clothing/head.dmi'
 
 /obj/item/clothing/head/weddingveil
-	worn_icon = 'modular_skyrat/modules/master_files/clothing/head.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 
 ///////////////////////////////////////////////////////////////////////TURTLENECKS
 /obj/item/clothing/under/syndicate
