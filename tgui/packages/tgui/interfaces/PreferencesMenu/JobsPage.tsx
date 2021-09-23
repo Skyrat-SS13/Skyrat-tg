@@ -218,10 +218,14 @@ const JobRow = (props: {
   const priority = data.job_preferences[job.name];
 
   const createSetPriority = createCreateSetPriorityFromName(context, job.name);
+  const { act } = useBackend<PreferencesMenuData>(context);
 
   const experienceNeeded = data.job_required_experience
     && data.job_required_experience[job.name];
   const daysLeft = data.job_days_left ? data.job_days_left[job.name] : 0;
+
+  const alt_title_selected = data.job_alt_titles[job.name]
+    ? data.job_alt_titles[job.name] : job.name;
 
   let rightSide: InfernoNode;
 
@@ -252,6 +256,14 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
+  } else if (job.veteran && !data.is_veteran) {
+    rightSide = (
+      <Stack align="center" height="100%" pr={1}>
+        <Stack.Item grow textAlign="right">
+          <b>Veteran Only</b>
+        </Stack.Item>
+      </Stack>
+    );
   } else {
     rightSide = (<PriorityButtons
       createSetPriority={createSetPriority}
@@ -259,7 +271,6 @@ const JobRow = (props: {
       priority={priority}
     />);
   }
-
   return (
     <Stack.Item className={props.className} height="100%" style={{
       "margin-top": 0,
@@ -267,13 +278,18 @@ const JobRow = (props: {
       <Stack fill align="center">
         <Tooltip
           content={job.description}
-          position="bottom-start"
+          position="right"
         >
           <Stack.Item className="job-name" width="50%" style={{
             "padding-left": "0.3em",
-          }}>
-
-            {props.job.name}
+          }}> {
+              (!job.alt_titles ? job.name : <Dropdown
+                width="100%"
+                options={job.alt_titles}
+                displayText={alt_title_selected}
+                onSelected={(value) => act("set_job_title", { job: job.name, new_title: value })}
+              />)
+            }
           </Stack.Item>
         </Tooltip>
 

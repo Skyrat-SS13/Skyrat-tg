@@ -1,6 +1,7 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
 		"set_job_preference" = .proc/set_job_preference,
+		"set_job_title" = .proc/set_job_title,
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -25,15 +26,27 @@
 
 	return TRUE
 
+/datum/preference_middleware/jobs/proc/set_job_title(list/params, mob/user)
+	var/default_job_title = params["job"]
+	var/new_job_title = params["new_title"]
+
+	preferences.alt_job_titles[default_job_title] = new_job_title
+
+	return TRUE
+
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
 
 	data["job_preferences"] = preferences.job_preferences
+	data["job_alt_titles"] = preferences.alt_job_titles
 
 	return data
 
 /datum/preference_middleware/jobs/get_ui_static_data(mob/user)
 	var/list/data = list()
+
+	if(is_veteran_player(user.client))
+		data["is_veteran"] = TRUE
 
 	var/list/required_job_playtime = get_required_job_playtime(user)
 	if (!isnull(required_job_playtime))
@@ -42,7 +55,6 @@
 	var/list/job_bans = get_job_bans(user)
 	if (job_bans.len)
 		data["job_bans"] = job_bans
-
 	return data.len > 0 ? data : null
 
 /datum/preference_middleware/jobs/proc/get_required_job_playtime(mob/user)

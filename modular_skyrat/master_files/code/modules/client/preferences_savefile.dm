@@ -34,6 +34,8 @@
 	READ_FILE(S["background_info"], background_info)
 	READ_FILE(S["exploitable_info"], exploitable_info)
 
+	READ_FILE(S["alt_job_titles"], alt_job_titles)
+
 	general_record = sanitize_text(general_record)
 	security_record = sanitize_text(security_record)
 	medical_record = sanitize_text(medical_record)
@@ -74,4 +76,6 @@
 	WRITE_FILE(S["medical_record"] , medical_record)
 	WRITE_FILE(S["background_info"] , background_info)
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
+	WRITE_FILE(S["loadout_list"], loadout_list)
+	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 

@@ -61,6 +61,9 @@
 	///Whether the user wants to see body size being shown in the preview
 	var/show_body_size = FALSE
 
+	///Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
+	var/list/alt_job_titles = list()
+
 /datum/preferences/proc/species_updated(species_type)
 	if(!update_pref_species(species_type))
 		return

@@ -6,6 +6,7 @@ const Janitor: Job = {
   description: "Clean up trash and blood. Replace broken lights. \
     Slip people over.",
   department: Service,
+  alt_titles: ["Janitor", "Custodian", "Custodial Technicial", "Sanitation Technician"],
 };
 
 export default Janitor;

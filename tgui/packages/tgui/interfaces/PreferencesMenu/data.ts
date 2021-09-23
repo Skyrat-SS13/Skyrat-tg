@@ -99,6 +99,8 @@ export type PreferencesMenuData = {
   preview_options: string;
   preview_selection: string;
 
+  is_veteran: BooleanLike;
+
   character_preferences: {
     clothing: Record<string, string>;
     features: Record<string, string>;
@@ -130,6 +132,8 @@ export type PreferencesMenuData = {
     required_playtime: number,
   }>;
   job_preferences: Record<string, JobPriority>;
+
+  job_alt_titles: Record<string, string>;
 
   keybindings: Record<string, string[]>;
   overflow_role: string;
