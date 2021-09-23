@@ -139,7 +139,7 @@
 			msg += event.description
 	else
 		msg += "[span_nicegreen("I don't have much of a reaction to anything right now.")]\n"
-	to_chat(user, msg)
+	to_chat(user, examine_block(msg)) //SKYRAT EDIT CHANGE
 
 ///Called after moodevent/s have been added/removed.
 /datum/component/mood/proc/update_mood()

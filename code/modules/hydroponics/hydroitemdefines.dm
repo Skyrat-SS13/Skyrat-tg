@@ -42,19 +42,19 @@
  */
 /obj/item/plant_analyzer/proc/do_plant_stats_scan(atom/scan_target, mob/user)
 	if(istype(scan_target, /obj/machinery/hydroponics))
-		to_chat(user, scan_tray_stats(scan_target))
+		to_chat(user, examine_block(scan_tray_stats(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/structure/glowshroom))
 		var/obj/structure/glowshroom/shroom_plant = scan_target
-		to_chat(user, scan_plant_stats(shroom_plant.myseed))
+		to_chat(user, examine_block(scan_plant_stats(shroom_plant.myseed))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/item/graft))
-		to_chat(user, get_graft_text(scan_target))
+		to_chat(user, examine_block(get_graft_text(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(isitem(scan_target))
 		var/obj/item/scanned_object = scan_target
 		if(scanned_object.get_plant_seed() || istype(scanned_object, /obj/item/seeds))
-			to_chat(user, scan_plant_stats(scanned_object))
+			to_chat(user, examine_block(scan_plant_stats(scanned_object))) //SKYRAT EDIT CHANGE
 			return TRUE
 	if(isliving(scan_target))
 		var/mob/living/L = scan_target
@@ -75,19 +75,19 @@
  */
 /obj/item/plant_analyzer/proc/do_plant_chem_scan(atom/scan_target, mob/user)
 	if(istype(scan_target, /obj/machinery/hydroponics))
-		to_chat(user, scan_tray_chems(scan_target))
+		to_chat(user, examine_block(scan_tray_chems(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/structure/glowshroom))
 		var/obj/structure/glowshroom/shroom_plant = scan_target
-		to_chat(user, scan_plant_chems(shroom_plant.myseed))
+		to_chat(user, examine_block(scan_plant_chems(shroom_plant.myseed))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/item/graft))
-		to_chat(user, get_graft_text(scan_target))
+		to_chat(user, examine_block(get_graft_text(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(isitem(scan_target))
 		var/obj/item/scanned_object = scan_target
 		if(scanned_object.get_plant_seed() || istype(scanned_object, /obj/item/seeds))
-			to_chat(user, scan_plant_chems(scanned_object))
+			to_chat(user, examine_block(scan_plant_chems(scanned_object))) //SKYRAT EDIT CHANGE
 			return TRUE
 	if(isliving(scan_target))
 		var/mob/living/L = scan_target
