@@ -437,8 +437,6 @@
 	resulting_atoms[random_result] = 1
 	return ..()
 
-//SKYRAT EDIT REMOVAL BEGIN
-/*
 /datum/micro_organism/cell_line/clown/fuck_up_growing(obj/machinery/plumbing/growing_vat/vat)
 	vat.visible_message(span_warning("The biological sample in [vat] seems to have created something horrific!"))
 	QDEL_NULL(vat.biological_sample) //Kill off the sample, we're done
@@ -519,8 +517,6 @@
 		/datum/reagent/sulfur = -1)
 
 	resulting_atoms = list(/mob/living/simple_animal/hostile/retaliate/clown/longface = 1)
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/micro_organism/cell_line/frog
 	desc = "amphibian cells"
