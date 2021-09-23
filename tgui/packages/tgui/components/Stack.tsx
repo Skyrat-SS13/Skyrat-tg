@@ -5,11 +5,7 @@
  */
 
 import { classes } from 'common/react';
-<<<<<<< HEAD
-import { computeBoxClassName, computeBoxProps } from './Box';
-=======
 import { RefObject } from 'inferno';
->>>>>>> b1edd353b7a (tgui: Remove Flex IE fixes, Fix IE8 button clicks (#61496))
 import { computeFlexClassName, computeFlexItemClassName, computeFlexItemProps, computeFlexProps, FlexItemProps, FlexProps } from './Flex';
 
 type StackProps = FlexProps & {
@@ -38,8 +34,12 @@ export const Stack = (props: StackProps) => {
   );
 };
 
-const StackItem = (props: FlexProps) => {
-  const { className, ...rest } = props;
+type StackItemProps = FlexProps & {
+  innerRef?: RefObject<HTMLDivElement>,
+};
+
+const StackItem = (props: StackItemProps) => {
+  const { className, innerRef, ...rest } = props;
   return (
     <div
       className={classes([
@@ -47,12 +47,8 @@ const StackItem = (props: FlexProps) => {
         className,
         computeFlexItemClassName(rest),
       ])}
-<<<<<<< HEAD
-      {...computeBoxProps(computeFlexItemProps(rest))}
-=======
       ref={innerRef}
       {...computeFlexItemProps(rest)}
->>>>>>> b1edd353b7a (tgui: Remove Flex IE fixes, Fix IE8 button clicks (#61496))
     />
   );
 };

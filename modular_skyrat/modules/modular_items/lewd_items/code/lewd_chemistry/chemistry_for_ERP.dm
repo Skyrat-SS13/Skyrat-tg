@@ -12,7 +12,7 @@
 	//can_synth = FALSE
 
 /datum/reagent/drug/crocin/on_mob_life(mob/living/carbon/human/M)
-	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
+	if(M.client && (M.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		if((prob(min(current_cycle/2,5))))
 			M.emote(pick("moan","blush"))
 		if(prob(min(current_cycle/4,10)))
@@ -38,7 +38,7 @@
 	overdose_threshold = 25 //Heavy consequences. Supposed to be big value.
 
 /datum/reagent/drug/hexacrocin/on_mob_life(mob/living/carbon/human/M)
-	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
+	if(M.client && (M.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		if(prob(5))
 			if(prob(current_cycle))
 				M.say(pick("Hnnnnngghh...", "Ohh...", "Mmnnn...","Ghhmph..."))
@@ -64,7 +64,7 @@
 
 /datum/reagent/drug/hexacrocin/overdose_process(mob/living/carbon/human/M)
 	var/mob/living/carbon/human/H = M
-	if(M.client && (M.client.prefs.skyrat_toggles & BIMBO_PREF))
+	if(M.client && (M.client.prefs.read_preference(/datum/preference/toggle/erp/bimbofication)))
 		if(prob(5) && ishuman(M) && !HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_SOBSESSED)/* && M.has_dna() && some shit about bimbofication*/) //yes, pal. an i'm the horseman of the Apocalypse that will make it work. Sorry.
 			to_chat(M, span_purple("Your libido is going haywire! Speaking gets much harder..."))
 			H.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC) //what am i doing with my life.
@@ -90,7 +90,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/human/M)
-	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
+	if(M.client && (M.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		M.set_drugginess(5)
 		if(prob(7))
 			M.emote(pick("twitch","drool","moan","giggle","shaking"))
@@ -125,7 +125,7 @@
 	reagent_state = SOLID
 
 /datum/reagent/drug/camphor/on_mob_life(mob/living/carbon/human/M)
-	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
+	if(M.client && (M.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
 			M.adjustArousal(-12)
@@ -145,7 +145,7 @@
 	overdose_threshold = 20
 
 /datum/reagent/drug/pentacamphor/on_mob_life(mob/living/carbon/human/M)
-	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
+	if(M.client && (M.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		if(ishuman(M))
 			var/old_arousal = M.arousal
 			M.adjustArousal(-18)
@@ -161,7 +161,7 @@
 
 /datum/reagent/drug/pentacamphor/overdose_process(mob/living/carbon/human/M)
 	var/mob/living/carbon/human/H = M
-	if(M.client && (M.client.prefs.skyrat_toggles & APHRO_PREF))
+	if(M.client && (M.client.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		if(!HAS_TRAIT(M, TRAIT_BIMBO) && !HAS_TRAIT(M, TRAIT_NEVERBONER))
 			to_chat(M, span_notice("You feel like you'll never feel aroused again...")) //Go to horny jail *bonk*
 			ADD_TRAIT(M,TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
@@ -232,7 +232,7 @@
 	if(!ishuman(M))//Just in case
 		return..()
 
-	if(H.client?.prefs.skyrat_toggles & BREAST_ENLARGEMENT)
+	if(H.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 		M.breast_enlarger_amount += 5
 		if(M.breast_enlarger_amount >= 100)
 			if(B?.genital_size < 16)
@@ -257,7 +257,7 @@
 			H.apply_damage(1, BRUTE, target)
 
 	//If they've opted out, then route processing though liver.
-	if(!(H.client?.prefs.skyrat_toggles & BREAST_ENLARGEMENT))
+	if(!(H.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement)))
 		var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
 		if(L)
 			L.applyOrganDamage(0.25)
@@ -269,7 +269,7 @@
 /datum/reagent/breast_enlarger/overdose_process(mob/living/carbon/human/M) //Turns you into a female if character is male. Also supposed to add breasts but i'm too dumb to figure out how to make it work
 	var/obj/item/organ/genital/penis/P = M.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/testicles/T = M.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(!(M.client?.prefs.skyrat_toggles & FORCED_FEM))
+	if(!(M.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change)))
 		var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
 		if(L)
 			L.applyOrganDamage(0.25)
@@ -372,7 +372,7 @@ Haha! Kill me please.
 	if(!ishuman(M))
 		return ..()
 
-	if(H.client?.prefs.skyrat_toggles & PENIS_ENLARGEMENT)
+	if(H.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		M.penis_enlarger_amount += 5
 		if(M.penis_enlarger_amount >= 100)
 			if(P?.genital_size < 20)
@@ -396,7 +396,7 @@ Haha! Kill me please.
 				H.apply_damage(1, BRUTE, target)
 
 	//If they've opted out, then route processing though liver.
-	if(!(H.client?.prefs.skyrat_toggles & PENIS_ENLARGEMENT))
+	if(!(H.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)))
 		var/obj/item/organ/liver/L = H.getorganslot(ORGAN_SLOT_LIVER)
 		if(L)
 			L.applyOrganDamage(0.25)
@@ -409,7 +409,7 @@ Haha! Kill me please.
 	if(!istype(M))
 		return ..()
 	// let's not kill them if they didn't consent.
-	if(!(M.client?.prefs.skyrat_toggles & FORCED_MALE))
+	if(!(M.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change)))
 		return..()
 
 	var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)

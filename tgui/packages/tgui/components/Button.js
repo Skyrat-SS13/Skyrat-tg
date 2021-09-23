@@ -75,12 +75,9 @@ export const Button = props => {
       ])}
       tabIndex={!disabled && '0'}
       onKeyDown={e => {
-<<<<<<< HEAD
-=======
         if (props.captureKeys === false) {
           return;
         }
->>>>>>> b1edd353b7a (tgui: Remove Flex IE fixes, Fix IE8 button clicks (#61496))
         const keyCode = window.event ? e.which : e.keyCode;
         // Simulate a click when pressing space or enter.
         if (keyCode === KEY_SPACE || keyCode === KEY_ENTER) {

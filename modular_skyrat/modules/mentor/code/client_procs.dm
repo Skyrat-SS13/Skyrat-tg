@@ -7,17 +7,6 @@
 		GLOB.mentors -= src
 	return ..()
 
-/client/verb/toggle_auto_dementor()
-	set name = "Toggle Admin Auto-Dementor"
-	set category = "Mentor"
-
-	if(!holder || !check_rights_for(src, R_ADMIN))
-		return
-
-	prefs.auto_dementor = !prefs.auto_dementor
-	to_chat(src, "You just toggled Auto-Dementor [(prefs.auto_dementor) ? "on" : "off"].")
-	prefs.save_preferences()
-
 /client/proc/mentor_client_procs(href_list)
 	if(href_list["mentor_msg"])
 		if(CONFIG_GET(flag/mentors_mobname_only))
@@ -48,7 +37,7 @@
 		mentor_datum.owner = src
 		GLOB.mentors[src] = TRUE
 		add_mentor_verbs()
-		if(check_rights_for(src, R_ADMIN,0) && prefs.auto_dementor)
+		if(check_rights_for(src, R_ADMIN,0) && prefs.read_preference(/datum/preference/toggle/admin/auto_dementor))
 			cmd_mentor_dementor()
 
 /client/proc/is_mentor() // admins are mentors too.

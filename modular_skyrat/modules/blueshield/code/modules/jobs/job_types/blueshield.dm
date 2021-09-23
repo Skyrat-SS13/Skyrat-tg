@@ -14,14 +14,14 @@
 	exp_granted_type = EXP_TYPE_CREW
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_CCM
+	paycheck_department = ACCOUNT_CMD
 
 	outfit = /datum/outfit/job/blueshield
 	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	bounty_types = CIV_JOB_SEC
 	departments_list = list(
-		/datum/job_department/nanotrasen_fleet_command,
+		/datum/job_department/central_command,
 		/datum/job_department/command,
 	)
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
