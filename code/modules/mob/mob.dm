@@ -693,16 +693,13 @@
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
-<<<<<<< HEAD
+	//SKYRAT EDIT ADDITION
 	if(ckey)
 		if(is_banned_from(ckey, BAN_RESPAWN))
 			to_chat(usr, "<span class='boldnotice'>You are respawn banned, you can't respawn!</span>")
 			return
-
-	log_game("[key_name(usr)] used abandon mob.")
-=======
+	//SKYRAT EDIT END
 	log_game("[key_name(usr)] used the respawn button.")
->>>>>>> 64140648593 (Fixes the logging text on respawn to correctly say it's respawn instead of "abandon mob" (#61656))
 
 	to_chat(usr, span_boldnotice("Please roleplay correctly!"))
 
