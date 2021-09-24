@@ -15,10 +15,14 @@
 	var/infinite = FALSE
 	var/start_lit = FALSE
 
+<<<<<<< HEAD
 
 	var/scented_type //SKYRAT EDIT ADDITION /// Pollutant type for scented candles
 
 /obj/item/candle/Initialize()
+=======
+/obj/item/candle/Initialize(mapload)
+>>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	if(start_lit)
 		light()

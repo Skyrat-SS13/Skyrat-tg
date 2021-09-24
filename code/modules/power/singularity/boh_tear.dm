@@ -21,8 +21,13 @@
 	pixel_y = -32
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
+<<<<<<< HEAD
 //SKYRAT EDIT START: Nicer RodStopper
 /obj/boh_tear/Initialize()
+=======
+
+/obj/boh_tear/Initialize(mapload)
+>>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	QDEL_IN(src, 10 SECONDS) // vanishes after 10 seconds
 	addtimer(CALLBACK(src, .proc/add_singularity), 5 SECONDS)

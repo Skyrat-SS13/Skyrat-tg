@@ -19,8 +19,13 @@
 	light_on = FALSE
 	var/on = FALSE
 
+<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - MOVED TO MODUALR FLASHLIGHT.DM
 /obj/item/flashlight/Initialize()
+=======
+
+/obj/item/flashlight/Initialize(mapload)
+>>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		on = TRUE
@@ -283,7 +288,7 @@
 	light_system = MOVABLE_LIGHT
 	grind_results = list(/datum/reagent/sulfur = 15)
 
-/obj/item/flashlight/flare/Initialize()
+/obj/item/flashlight/flare/Initialize(mapload)
 	. = ..()
 	fuel = rand(1600, 2000)
 
@@ -467,7 +472,7 @@
 	var/fuel = 0
 
 
-/obj/item/flashlight/glowstick/Initialize()
+/obj/item/flashlight/glowstick/Initialize(mapload)
 	fuel = rand(3200, 4000)
 	set_light_color(color)
 	return ..()

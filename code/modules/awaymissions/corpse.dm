@@ -316,7 +316,7 @@
 	return H
 //SKYRAT EDIT ADDITION END
 
-/obj/effect/mob_spawn/human/Initialize()
+/obj/effect/mob_spawn/human/Initialize(mapload)
 	if(ispath(outfit))
 		outfit = new outfit()
 	if(!outfit)

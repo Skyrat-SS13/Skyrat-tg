@@ -7,7 +7,11 @@
 	var/datum/mind/target
 	item_flags = NOBLUDGEON
 
+<<<<<<< HEAD
 /obj/item/paper/contract/ComponentInitialize()
+=======
+/obj/item/paper/employment_contract/Initialize(mapload)
+>>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	AddElement(/datum/element/update_icon_blocker)
 

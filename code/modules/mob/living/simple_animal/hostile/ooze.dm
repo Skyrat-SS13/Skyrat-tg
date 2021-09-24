@@ -34,7 +34,7 @@
 	///Bitfield of edible food types
 	var/edible_food_types = MEAT
 
-/mob/living/simple_animal/hostile/ooze/Initialize()
+/mob/living/simple_animal/hostile/ooze/Initialize(mapload)
 	. = ..()
 	create_reagents(300)
 	add_cell_sample()
@@ -109,7 +109,7 @@
 	var/datum/action/consume/consume
 
 ///Initializes the mobs abilities and gives them to the mob
-/mob/living/simple_animal/hostile/ooze/gelatinous/Initialize()
+/mob/living/simple_animal/hostile/ooze/gelatinous/Initialize(mapload)
 	. = ..()
 	boost = new
 	boost.Grant(src)
@@ -281,9 +281,13 @@
 	///The ability to shoot a mending globule, a sticky projectile that heals over time.
 	var/obj/effect/proc_holder/globules/globules
 
+<<<<<<< HEAD
 	ghost_controllable = TRUE //SKYRAT EDIT ADDITION - These guys can be helpful... maybe players will be helpful.
 
 /mob/living/simple_animal/hostile/ooze/grapes/Initialize()
+=======
+/mob/living/simple_animal/hostile/ooze/grapes/Initialize(mapload)
+>>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	globules = new
 	AddAbility(globules)

@@ -83,10 +83,14 @@
 		update_appearance()
 		try_detonate(TRUE)
 
+<<<<<<< HEAD
 /obj/machinery/syndicatebomb/proc/play_fearsome_ping()
 	playsound(loc, beepsound, 80, FALSE)
 
 /obj/machinery/syndicatebomb/Initialize()
+=======
+/obj/machinery/syndicatebomb/Initialize(mapload)
+>>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	wires = new /datum/wires/syndicatebomb(src)
 	if(payload)
@@ -251,7 +255,7 @@
 	open_panel = TRUE
 	timer_set = 120
 
-/obj/machinery/syndicatebomb/empty/Initialize()
+/obj/machinery/syndicatebomb/empty/Initialize(mapload)
 	. = ..()
 	wires.cut_all()
 

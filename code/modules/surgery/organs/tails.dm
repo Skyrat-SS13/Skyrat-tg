@@ -53,10 +53,15 @@
 	/// The sprite accessory this tail gives to the human it's attached to. If null, it will inherit its value from the human's DNA once attached.
 	var/spines = "None"
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
 /obj/item/organ/tail/lizard/Initialize()
 	..()
+=======
+/obj/item/organ/tail/lizard/Initialize(mapload)
+	. = ..()
+>>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	color = "#"+ random_color()
 
 /obj/item/organ/tail/lizard/Insert(mob/living/carbon/human/tail_owner, special = FALSE, drop_if_replaced = TRUE)
