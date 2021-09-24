@@ -133,6 +133,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigoff"
 	throw_speed = 0.5
 	inhand_icon_state = "cigoff"
+	slot_flags = ITEM_SLOT_EARS | ITEM_SLOT_MASK //Skyrat edit. Allows cigarettes to go on ear slot.
 	w_class = WEIGHT_CLASS_TINY
 	body_parts_covered = null
 	grind_results = list()
