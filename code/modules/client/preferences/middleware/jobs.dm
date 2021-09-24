@@ -37,6 +37,9 @@
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
 
+	if(isnull(preferences.alt_job_titles))
+		preferences.alt_job_titles = list()
+
 	data["job_preferences"] = preferences.job_preferences
 	data["job_alt_titles"] = preferences.alt_job_titles
 

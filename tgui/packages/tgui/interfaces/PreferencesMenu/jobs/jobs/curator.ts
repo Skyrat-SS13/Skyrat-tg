@@ -6,7 +6,7 @@ const Curator: Job = {
   description: "Read and write books and hand them to people, stock \
     bookshelves, report on station news.",
   department: Service,
-  alt_titles: ["Curator", "Librarian", "Journalist", "Archivist"]
+  alt_titles: ["Curator", "Librarian", "Journalist", "Archivist"],
 };
 
 export default Curator;

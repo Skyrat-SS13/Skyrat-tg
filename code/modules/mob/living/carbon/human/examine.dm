@@ -469,13 +469,7 @@
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
 	if(!skipface)
-		var/line
-		if(length(dna.features["flavor_text"]))
-			var/message = dna.features["flavor_text"]
-			if(length_char(message) <= 40)
-				line = "<span class='notice'>[message]</span>"
-			else
-				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
+		var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
 		if(client)
 			var/erp_pref = client.prefs.read_preference(/datum/preference/toggle/erp)
 			var/noncon_pref = client.prefs.read_preference(/datum/preference/toggle/erp/noncon)

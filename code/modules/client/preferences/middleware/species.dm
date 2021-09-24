@@ -3,6 +3,8 @@
 
 //SKYRAT EDIT ADDITION
 /datum/preference_middleware/species/pre_set_preference(mob/user, preference, value)
+	if(isnull(GLOB.species_list[value]))
+		return ..()
 	var/datum/species/species_type = GLOB.species_list[value]
 	preferences.species_updated(species_type)
 	return ..()

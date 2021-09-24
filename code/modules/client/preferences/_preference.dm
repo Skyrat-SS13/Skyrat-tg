@@ -543,3 +543,17 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 /datum/preference/toggle/is_valid(value)
 	return value == TRUE || value == FALSE
+
+/// A preference for text and text input.
+/datum/preference/text
+	abstract_type = /datum/preference/text
+
+/datum/preference/text/deserialize(input, datum/preferences/preferences)
+	return sanitize(input)
+
+/datum/preference/text/create_default_value()
+	return ""
+
+/datum/preference/text/is_valid(value)
+	return istext(value)
+

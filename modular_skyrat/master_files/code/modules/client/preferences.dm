@@ -68,8 +68,9 @@
 	if(!update_pref_species(species_type))
 		return
 	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
-	for(var/key in new_features)
-		features[key] = new_features[key]
+	for(var/key in features)
+		new_features[key] = features[key]
+	features = new_features
 	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
 	body_markings = pref_species.get_random_body_markings(features)
 	if(pref_species.use_skintones)

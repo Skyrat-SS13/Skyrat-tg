@@ -7,7 +7,7 @@ const HeadOfSecurity: Job = {
     make sure every department is protected, save the Virologist when he gets \
     mauled by monkeys.",
   department: Security,
-  alt_titles: ["Head of Security", "Security Commander"]
+  alt_titles: ["Head of Security", "Security Commander"],
 };
 
 export default HeadOfSecurity;

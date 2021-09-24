@@ -1,6 +1,13 @@
 import { CheckboxInput, FeatureToggle } from "../../base";
 
 export const master_erp_pref: FeatureToggle = {
+  name: "Show/Hide Erotic Roleplay Preferences",
+  category: "ERP",
+  description: "This shows/hides ERP preferences.",
+  component: CheckboxInput,
+};
+
+export const erp_pref: FeatureToggle = {
   name: "Erotic Roleplay Interaction",
   category: "ERP",
   description: "This informs players of if you wish to engage in erotic roleplay.",
