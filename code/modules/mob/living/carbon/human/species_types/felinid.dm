@@ -18,6 +18,12 @@
 	ass_image = 'icons/ass/asscat.png'
 	family_heirlooms = list(/obj/item/toy/cattoy)
 
+// Prevents felinids from taking toxin damage from carpotoxin
+/datum/species/human/felinid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
+	. = ..()
+	if(istype(chem, /datum/reagent/toxin/carpotoxin))
+		var/datum/reagent/toxin/carpotoxin/fish = chem
+		fish.toxpwr = 0
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
@@ -30,13 +36,6 @@
 	if(H)
 		stop_wagging_tail(H)
 	. = ..()
-
-// Prevents felinids from taking toxin damage from carpotoxin
-/datum/species/human/felinid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
-	. = ..()
-	if(istype(chem, /datum/reagent/toxin/carpotoxin))
-		var/datum/reagent/toxin/carpotoxin/fish = chem
-		fish.toxpwr = 0
 
 /datum/species/human/felinid/can_wag_tail(mob/living/carbon/human/H)
 	return mutant_bodyparts["tail_human"] || mutant_bodyparts["waggingtail_human"]
