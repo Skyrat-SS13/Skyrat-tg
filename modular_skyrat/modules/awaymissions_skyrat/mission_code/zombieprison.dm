@@ -642,8 +642,6 @@
 	name = "Scalamov Hostile Inmate"
 	uniform = /obj/item/clothing/under/scalamovprisoner
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	can_use_alias = TRUE
-	any_station_species = TRUE
 
 // Boss
 
