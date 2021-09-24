@@ -239,7 +239,7 @@
 	ranged = 1
 	retreat_distance = 5
 	minimum_distance = 5
-	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
+	loot = list(/obj/effect/spawner/random/prison/guard)
 	robust_searching = 0
 	maxHealth = 50
 	health = 50
@@ -270,7 +270,7 @@
 	ranged = 1
 	retreat_distance = 5
 	minimum_distance = 6
-	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
+	loot = list(/obj/effect/spawner/random/prison/guard)
 	rapid_melee = 1
 	robust_searching = 0
 	maxHealth = 80
@@ -298,7 +298,7 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/prisonmobs.dmi'
 	icon_state = "riotcop"
 	icon_living = "riotcop"
-	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
+	loot = list(/obj/effect/spawner/random/prison/guard)
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	wound_bonus = -10
@@ -342,7 +342,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/prisoner)
+	loot = list(/obj/effect/spawner/random/prison/prisoner)
 	del_on_death = 1
 
 /mob/living/simple_animal/hostile/prison/zombieguard
@@ -362,7 +362,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/zedguard)
+	loot = list(/obj/effect/spawner/random/prison/zedguard)
 	del_on_death = 1
 
 /mob/living/simple_animal/hostile/prison/zombieriot
@@ -382,7 +382,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/zedguard)
+	loot = list(/obj/effect/spawner/random/prison/zedguard)
 	del_on_death = 1
 
 /mob/living/simple_animal/hostile/prison/zombieert
@@ -422,12 +422,12 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/doc)
+	loot = list(/obj/effect/spawner/random/prison/prison_doc)
 	del_on_death = 1
 
 //loot
 
-/obj/effect/spawner/lootdrop/prison/prisoner
+/obj/effect/spawner/random/prison/prisoner
 	name = "Prisoner Loot"
 	loot = list(
 				/obj/item/melee/baseball_bat = 5,
@@ -446,7 +446,7 @@
 				/obj/item/pickaxe = 5
 				)
 
-/obj/effect/spawner/lootdrop/prison/doc
+/obj/effect/spawner/random/prison/prison_doc
 	name = "Doc Loot"
 	loot = list(/obj/item/storage/firstaid/regular = 3,
 				/obj/item/storage/firstaid/brute = 3,
@@ -464,7 +464,7 @@
 				/obj/item/reagent_containers/glass/beaker = 15,
 				/obj/item/clothing/under/scalamovdoc = 8)
 
-/obj/effect/spawner/lootdrop/prison/zedguard
+/obj/effect/spawner/random/prison/zedguard
 	name = "Zed Guard Loot"
 	loot = list(/obj/item/shield/riot = 1,
 				/obj/item/clothing/under/scalamovguard = 2,
@@ -482,7 +482,7 @@
 				/obj/item/clothing/mask/gas/sechailer/swat/spacepol = 5
 				)
 
-/obj/effect/spawner/lootdrop/prison/guard
+/obj/effect/spawner/random/prison/guard
 	name = "Guard Loot"
 	loot = list(/obj/item/shield/riot = 3,
 				/obj/item/clothing/under/scalamovguard = 5,
@@ -500,7 +500,7 @@
 				/obj/item/flashlight/seclite = 10,
 				)
 
-/obj/effect/spawner/lootdrop/prison/warden
+/obj/effect/spawner/random/prison/warden
 	name = "Warden Loot"
 	loot = list(/obj/item/dnainjector/insulated = 25,
 				/obj/item/gun/ballistic/automatic/pistol/aps = 20,
@@ -512,7 +512,7 @@
 				/obj/item/clothing/suit/space/hardsuit/swat = 5,
 				/obj/item/stack/spacecash/c10000 = 30)
 
-/obj/effect/spawner/lootdrop/prison/wardenalive
+/obj/effect/spawner/random/prison/wardenalive
 	name = "Human Warden Loot"
 	loot = list(/mob/living/simple_animal/hostile/prison/warden = 100)
 
@@ -652,7 +652,7 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
-	loot = list(/obj/effect/spawner/lootdrop/prison/wardenalive)
+	loot = list(/obj/effect/spawner/random/prison/wardenalive)
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -685,7 +685,7 @@
 	harm_intent_damage = 30
 	melee_damage_lower = 30
 	melee_damage_upper = 30
-	loot = list(/obj/effect/spawner/lootdrop/prison/warden)
+	loot = list(/obj/effect/spawner/random/prison/warden)
 	del_on_death = 1
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"
