@@ -19,12 +19,12 @@ enum Page {
 }
 
 const CharacterProfiles = (props: {
-  activeSlot: number;
+  activeSlot: number; // SKYRAT EDIT CHANGE
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
   const { profiles, activeSlot, onClick } = props;
-
+  // SKYRAT EDIT CHANGE
   return (
     <Flex align="center" justify="center">
       <Flex.Item width="25%">

@@ -98,8 +98,8 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
-  preview_options: string;
-  preview_selection: string;
+  preview_options: string; // SKYRAT EDIT ADDITION
+  preview_selection: string; // SKYRAT EDIT ADDITION
 
   character_preferences: {
     clothing: Record<string, string>;

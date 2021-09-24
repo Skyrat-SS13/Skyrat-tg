@@ -5,7 +5,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Icon, Stack } from "../components";
 import { Window } from "../layouts";
 
-const ROWS = 6;
+const ROWS = 6; // SKYRAT EDIT CHANGE
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = "50px";
@@ -58,12 +58,12 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
-    icon: "lungs", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
+    icon: "tg-air-tank",
     text: "Enable internals",
   },
 
   disable_internals: {
-    icon: "lungs-virus", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
+    icon: "tg-air-tank-slash",
     text: "Disable internals",
   },
 
@@ -207,7 +207,7 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: "inventory-pocket.png",
   },
-
+  // SKYRAT EDIT ADDITION
   vagina: {
     displayName: "vagina",
     gridSpot: getGridSpotKey([5, 1]),
@@ -232,7 +232,7 @@ const SLOTS: Record<
     image: "inventory-pocket.png",
   },
 };
-
+// SKYRAT EDIT END
 enum ObscuringLevel {
   Completely = 1,
   Hidden = 2,

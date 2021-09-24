@@ -444,7 +444,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	gain_text = span_danger("You have a sudden desire for pain...")
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
-	icon = "hammer"
+	icon = "heart-broken"
 
 /datum/quirk/masochism/post_add()
 	. = ..()
