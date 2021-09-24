@@ -179,7 +179,6 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 	/// Visual object for handling the viscontents
 	var/obj/effect/gateway_portal_effect/portal_visuals
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	var/requires_key = FALSE
 	var/key_used = FALSE
@@ -193,10 +192,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 		return
 	//SKYRAT EDIT END
 
-/obj/machinery/gateway/Initialize()
-=======
 /obj/machinery/gateway/Initialize(mapload)
->>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	generate_destination()
 	update_appearance()
 	portal_visuals = new

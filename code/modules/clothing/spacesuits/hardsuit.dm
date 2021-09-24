@@ -114,13 +114,9 @@
 	var/obj/item/tank/jetpack/suit/jetpack = null
 	var/hardsuit_type
 
-<<<<<<< HEAD
 	var/list/hardsuit_tail_colors			//SKYRAT EDIT ADDITION - CUSTOMIZATION
 
-/obj/item/clothing/suit/space/hardsuit/Initialize()
-=======
 /obj/item/clothing/suit/space/hardsuit/Initialize(mapload)
->>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	if(jetpack && ispath(jetpack))
 		jetpack = new jetpack(src)
 	. = ..()

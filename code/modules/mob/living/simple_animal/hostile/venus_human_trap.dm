@@ -30,13 +30,8 @@
 
 	var/list/vines = list()
 
-<<<<<<< HEAD
-
-/obj/structure/alien/resin/flower_bud/Initialize()
-=======
 /obj/structure/alien/resin/flower_bud/Initialize(mapload)
->>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
-	. = ..()
+=======
 	countdown = new(src)
 	var/list/anchors = list()
 	anchors += locate(x-2,y+2,z)

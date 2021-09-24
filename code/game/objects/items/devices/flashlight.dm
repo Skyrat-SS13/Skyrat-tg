@@ -19,13 +19,8 @@
 	light_on = FALSE
 	var/on = FALSE
 
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL - MOVED TO MODUALR FLASHLIGHT.DM
-/obj/item/flashlight/Initialize()
-=======
-
 /obj/item/flashlight/Initialize(mapload)
->>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		on = TRUE

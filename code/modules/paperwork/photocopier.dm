@@ -44,7 +44,7 @@
 	/// Indicates whether the printer is currently busy copying or not.
 	var/busy = FALSE
 
-/obj/machinery/photocopier/Initialize(mapload)
+/obj/machinery/photocopier/Initialize()
 	. = ..()
 	AddComponent(/datum/component/payment, 5, SSeconomy.get_dep_account(ACCOUNT_CIV), PAYMENT_CLINICAL)
 	toner_cartridge = new(src)
@@ -218,8 +218,8 @@
 /obj/machinery/photocopier/proc/make_devil_paper_copy()
 	if(!paper_copy)
 		return
-	var/obj/item/paper/contract/employment/E = paper_copy
-	var/obj/item/paper/contract/employment/C = new(loc, E.target.current)
+	var/obj/item/paper/employment_contract/E = paper_copy
+	var/obj/item/paper/employment_contract/C = new(loc, E.employee_name)
 	give_pixel_offset(C)
 
 /**

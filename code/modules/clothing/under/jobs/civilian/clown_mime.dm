@@ -32,13 +32,9 @@
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
-/obj/item/clothing/under/rank/civilian/clown/Initialize()
-=======
 /obj/item/clothing/under/rank/civilian/clown/Initialize(mapload)
->>>>>>> 6c01cc2c010 (every case of initialize that should have mapload, does (#61623))
 	. = ..()
 	AddComponent(/datum/component/squeak, list('sound/items/bikehorn.ogg'=1), 50, falloff_exponent = 20) //die off quick please
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CLOWN, CELL_VIRUS_TABLE_GENERIC, rand(2,3), 0)
