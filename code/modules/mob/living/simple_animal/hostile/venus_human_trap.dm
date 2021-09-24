@@ -31,6 +31,7 @@
 	var/list/vines = list()
 
 /obj/structure/alien/resin/flower_bud/Initialize(mapload)
+	. = ..()
 	countdown = new(src)
 	var/list/anchors = list()
 	anchors += locate(x-2,y+2,z)
