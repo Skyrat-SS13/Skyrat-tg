@@ -108,7 +108,7 @@
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/sciloot, /obj/effect/spawner/random/astrum/sciloot)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(ROLE_ABDUCTOR)
@@ -124,7 +124,7 @@
 	melee_damage_upper = 20
 	icon_state = "abductor_scientist_melee"
 	icon_living = "abductor_scientist_melee"
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/sciloot)
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -140,7 +140,7 @@
 	icon_living = "abductor_agent"
 	maxHealth = 160
 	health = 160
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
 //RANGED
 /mob/living/simple_animal/hostile/abductor/ranged
@@ -154,7 +154,7 @@
 	health = 120
 	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/sciloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/sciloot)
 
 /mob/living/simple_animal/hostile/abductor/ranged/agent
 	name = "Abductor Combat Specialist"
@@ -162,7 +162,7 @@
 	icon_living = "abductor_agent_combat_gun"
 	maxHealth = 140
 	health = 140
-	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/lootdrop/astrum/agentloot)
+	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
 //GHOSTROLES
 /obj/effect/mob_spawn/human/lobotomite
@@ -204,7 +204,7 @@
 	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
 	force_opens = TRUE
 
-/obj/effect/spawner/lootdrop/astrum
+/obj/effect/spawner/random/astrum
 	name = "astrum low"
 	loot = list(/obj/item/storage/firstaid/regular = 10,
 				/obj/item/reagent_containers/syringe/penacid = 5,
@@ -216,7 +216,7 @@
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/clothing/shoes/chameleon/noslip = 10)
 
-/obj/effect/spawner/lootdrop/astrum/mid
+/obj/effect/spawner/random/astrum/mid
 	name = "astrum mid"
 	loot = list(/obj/item/storage/firstaid/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
@@ -224,9 +224,9 @@
 				/obj/item/book/granter/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
-				/obj/item/melee/classic_baton/telescopic = 12)
+				/obj/item/melee/baton/telescopic = 12)
 
-/obj/effect/spawner/lootdrop/astrum/sciloot
+/obj/effect/spawner/random/astrum/sciloot
 	name = "abductor scientist loot"
 	loot = list(/obj/item/circular_saw/alien = 10,
 				/obj/item/retractor/alien = 10,
@@ -242,7 +242,7 @@
 				/obj/item/stack/cable_coil = 10,
 				/obj/effect/gibspawner/generic = 30)
 
-/obj/effect/spawner/lootdrop/astrum/agentloot
+/obj/effect/spawner/random/astrum/agentloot
 	name = "abductor agent loot"
 	loot = list(/obj/item/organ/heart/cybernetic/tier3 = 10,
 				/obj/item/clothing/suit/armor/abductor/astrum = 10,

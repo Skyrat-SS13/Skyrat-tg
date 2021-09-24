@@ -3580,7 +3580,7 @@
 	dir = 1;
 	pixel_x = -32
 	},
-/obj/effect/spawner/randomsnackvend,
+/obj/effect/spawner/random/vending/snackvend,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "aHJ" = (
@@ -4231,7 +4231,7 @@
 /turf/open/floor/plating/beach/sand,
 /area/centcom/holding/cafepark)
 "aNu" = (
-/obj/effect/spawner/randomcolavend,
+/obj/effect/spawner/random/vending/colavend,
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "aNy" = (
@@ -5133,7 +5133,7 @@
 	},
 /area/centcom/holding/cafe)
 "aTl" = (
-/mob/living/simple_animal/cow,
+/mob/living/basic/cow,
 /turf/open/floor/plating/grass/planet,
 /area/centcom/holding/cafepark)
 "aTn" = (
@@ -6082,6 +6082,12 @@
 /obj/item/flashlight/lamp,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
+"bxz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "bxC" = (
 /obj/effect/landmark/ert_spawn,
 /obj/effect/turf_decal/stripes/box,
@@ -6267,7 +6273,6 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 10
 	},
-/obj/effect/landmark/start/bridge_officer,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
 "cvG" = (
@@ -6401,6 +6406,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/textured,
 /area/centcom/ncvtitan)
+"cSW" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/newscaster/security_unit/directional/north,
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "cUa" = (
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron/dark,
@@ -6451,10 +6461,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
-"drS" = (
-/obj/structure/holosign/barrier/engineering,
-/turf/open/floor/carpet/executive,
-/area/centcom/interlink)
 "duS" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
@@ -6475,6 +6481,12 @@
 	},
 /turf/open/floor/iron/textured,
 /area/centcom/ncvtitan)
+"dvI" = (
+/obj/machinery/modular_computer/console/preset/command{
+	dir = 4
+	},
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "dyB" = (
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
@@ -6512,18 +6524,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
-"dHt" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 8;
-	height = 7;
-	id = "supply_away";
-	name = "NCV Titan Dock 2";
-	roundstart_template = /datum/map_template/shuttle/cargo;
-	width = 20
-	},
-/turf/open/floor/plating,
-/area/centcom/ncvtitan)
 "dKt" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/seclite,
@@ -6547,6 +6547,13 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/plating,
 /area/centcom/ncvtitan)
+"dLo" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/awaymissions/wildwest/masterclock,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/interlink)
 "dLw" = (
 /obj/structure/table/reinforced,
 /obj/item/grenade/c4{
@@ -6656,9 +6663,7 @@
 /turf/open/floor/iron/textured,
 /area/centcom/ncvtitan)
 "ehN" = (
-/obj/effect/spawner/randomarcade{
-	dir = 8
-	},
+/obj/effect/spawner/random/entertainment/arcade,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "ejl" = (
@@ -6742,7 +6747,6 @@
 /obj/structure/chair/office/light{
 	dir = 1
 	},
-/obj/effect/landmark/start/deck_crew,
 /turf/open/floor/iron/textured,
 /area/centcom/ncvtitan)
 "eoq" = (
@@ -6813,7 +6817,6 @@
 /obj/structure/chair/office/light{
 	dir = 1
 	},
-/obj/effect/landmark/start/deck_crew,
 /turf/open/floor/iron/textured,
 /area/centcom/ncvtitan)
 "eLV" = (
@@ -6855,6 +6858,18 @@
 	},
 /turf/open/floor/carpet/executive,
 /area/centcom/ncvtitan)
+"eYZ" = (
+/obj/structure/table/wood,
+/obj/item/coin/antagtoken,
+/obj/item/toy/figure/captain{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/toy/balloon/arrest{
+	pixel_x = -9
+	},
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "eZJ" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	name = "Brig";
@@ -7133,15 +7148,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
-"gkP" = (
-/obj/machinery/status_display/supply{
-	pixel_y = -32
-	},
-/obj/machinery/computer/cargo_control_console{
-	dir = 1
-	},
-/turf/open/floor/iron/smooth_large,
-/area/centcom/ncvtitan)
 "gmX" = (
 /obj/machinery/door/airlock/silver{
 	name = "Bathroom"
@@ -7152,7 +7158,6 @@
 /obj/structure/chair/office{
 	dir = 4
 	},
-/obj/effect/landmark/start/deck_crew,
 /turf/open/floor/iron/smooth,
 /area/centcom/ncvtitan)
 "gpK" = (
@@ -7521,9 +7526,14 @@
 /area/centcom/ncvtitan)
 "hTw" = (
 /obj/machinery/light/directional/west,
-/obj/effect/spawner/randomsnackvend,
+/obj/effect/spawner/random/vending/snackvend,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
+"hWy" = (
+/obj/structure/table/wood,
+/obj/item/storage/fancy/donut_box,
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "iao" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -7634,16 +7644,6 @@
 /obj/structure/cable,
 /turf/open/floor/circuit/green,
 /area/centcom/ncvtitan)
-"ity" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/red{
-	dir = 8
-	},
-/obj/effect/landmark/start/bridge_officer,
-/turf/open/floor/iron/dark,
-/area/centcom/ncvtitan)
 "ivg" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -7699,6 +7699,12 @@
 /area/centcom/ncvtitan)
 "iTZ" = (
 /turf/open/indestructible/hoteltile,
+/area/centcom/interlink)
+"iVW" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/wood,
 /area/centcom/interlink)
 "iWd" = (
 /obj/effect/turf_decal/tile/blue{
@@ -7779,13 +7785,6 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
-"jik" = (
-/obj/machinery/door/airlock/centcom{
-	name = "Shuttle Dock";
-	req_access_txt = "101"
-	},
-/turf/open/floor/plating,
-/area/centcom/interlink)
 "jmx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -7845,12 +7844,7 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 9
 	},
-/obj/effect/landmark/start/bridge_officer,
 /turf/open/floor/iron/dark,
-/area/centcom/ncvtitan)
-"jwb" = (
-/obj/effect/landmark/start/deck_crew,
-/turf/open/floor/iron/cafeteria,
 /area/centcom/ncvtitan)
 "jwv" = (
 /obj/structure/toilet{
@@ -7885,9 +7879,6 @@
 /obj/machinery/vending/drugs,
 /turf/open/floor/iron/textured,
 /area/centcom/ncvtitan)
-"jCd" = (
-/turf/open/space/basic,
-/area/space)
 "jFj" = (
 /turf/closed/indestructible/necropolis,
 /area/centcom/prison)
@@ -7906,6 +7897,16 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/textured,
 /area/centcom/ncvtitan)
+"jKs" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/computer/crew{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/interlink)
 "jKu" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/window/preopen,
@@ -8163,13 +8164,6 @@
 /obj/effect/spawner/armory_spawn/centcom_lasers,
 /turf/open/floor/iron/smooth_large,
 /area/centcom/ncvtitan)
-"kwx" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/item/kirbyplants/random,
-/turf/open/floor/carpet/executive,
-/area/centcom/interlink)
 "kxE" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -8398,6 +8392,15 @@
 	},
 /turf/open/floor/plating,
 /area/centcom/ncvtitan)
+"lkh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/computer/secure_data{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured,
+/area/centcom/interlink)
 "lkX" = (
 /obj/structure/sign/poster/contraband/robust_softdrinks{
 	name = "Jim Norton's Quebecois Coffee";
@@ -8975,6 +8978,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"nyc" = (
+/obj/structure/sign/poster/official/no_erp{
+	pixel_y = 32
+	},
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "nCk" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
@@ -9122,6 +9131,12 @@
 "okl" = (
 /turf/open/floor/iron/smooth_large,
 /area/centcom/ncvtitan)
+"ooG" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/centcom/interlink)
 "ooR" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -9136,6 +9151,12 @@
 /obj/structure/cable,
 /turf/open/floor/carpet/neon/simple/cyan/nodots,
 /area/centcom/ncvtitan)
+"oqC" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen/fountain,
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "orC" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp,
@@ -9461,6 +9482,13 @@
 	},
 /turf/open/floor/plating/airless,
 /area/centcom/ncvtitan)
+"pPo" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Administrative Office";
+	req_access_txt = "101"
+	},
+/turf/open/floor/plating,
+/area/centcom/interlink)
 "pRy" = (
 /obj/effect/turf_decal/arrows/white{
 	dir = 1
@@ -9554,7 +9582,6 @@
 /obj/structure/chair/office{
 	dir = 4
 	},
-/obj/effect/landmark/start/fleetmaster,
 /turf/open/floor/carpet/executive,
 /area/centcom/ncvtitan)
 "qei" = (
@@ -9665,11 +9692,6 @@
 	},
 /obj/machinery/recharger,
 /turf/open/floor/iron/smooth_large,
-/area/centcom/ncvtitan)
-"qua" = (
-/obj/effect/landmark/start/deck_crew,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
 "quD" = (
 /obj/structure/railing{
@@ -10033,6 +10055,14 @@
 "rKz" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/centcom/ncvtitan)
+"rKV" = (
+/obj/structure/table/wood,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "rKZ" = (
 /obj/structure/table/reinforced,
 /obj/item/crowbar/red,
@@ -10326,6 +10356,11 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/cafeteria,
 /area/centcom/ncvtitan)
+"sYE" = (
+/obj/structure/chair/comfy/brown,
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "sYI" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -10364,10 +10399,6 @@
 "tcU" = (
 /obj/effect/spawner/structure/window/shuttle,
 /turf/open/floor/plating,
-/area/centcom/ncvtitan)
-"tcX" = (
-/obj/effect/landmark/start/deck_crew,
-/turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
 "thU" = (
 /obj/machinery/door/poddoor/ert,
@@ -10471,6 +10502,10 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron/cafeteria,
 /area/centcom/ncvtitan)
+"tvw" = (
+/obj/structure/lattice,
+/turf/closed/indestructible/riveted,
+/area/centcom/interlink)
 "twB" = (
 /obj/structure/dresser,
 /turf/open/floor/carpet/royalblue,
@@ -10593,10 +10628,6 @@
 /area/centcom/ncvtitan)
 "tQa" = (
 /obj/machinery/cryopod,
-/turf/open/floor/iron/dark,
-/area/centcom/ncvtitan)
-"tVf" = (
-/obj/machinery/computer/market_link,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
 "tWh" = (
@@ -11316,6 +11347,22 @@
 /obj/machinery/door/poddoor/ert,
 /turf/open/floor/iron/dark/smooth_large,
 /area/centcom/ncvtitan)
+"wMV" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/blueshield,
+/obj/item/bedsheet/centcom,
+/obj/item/clothing/under/rank/centcom/officer/replica{
+	desc = "A cheaper, unarmored CentCom turtleneck meant for everyday wear. Somewhat of a status symbol.";
+	name = "\improper Civilian CentCom turtleneck"
+	},
+/obj/item/clothing/under/rank/centcom/officer_skirt/replica{
+	desc = "A cheaper, unarmored CentCom skirtleneck meant for everyday wear. Somewhat of a status symbol.";
+	name = "\improper Civilian CentCom skirtleneck"
+	},
+/turf/open/floor/iron/dark/textured,
+/area/centcom/interlink)
 "wPX" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/iron/dark/smooth_large,
@@ -11593,6 +11640,10 @@
 	},
 /turf/open/floor/carpet/orange,
 /area/centcom/ncvtitan)
+"xUn" = (
+/obj/machinery/photocopier,
+/turf/open/floor/carpet/executive,
+/area/centcom/interlink)
 "xUy" = (
 /obj/structure/chair/comfy/brown{
 	color = "#c45c57";
@@ -11620,7 +11671,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/effect/spawner/randomsnackvend,
+/obj/effect/spawner/random/vending/snackvend,
 /turf/open/floor/iron/dark,
 /area/centcom/ncvtitan)
 "xWU" = (
@@ -11667,6 +11718,16 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/centcom/ncvtitan)
+"xYR" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/computer/security{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/textured,
+/area/centcom/interlink)
 "xZI" = (
 /obj/machinery/light/red/directional/west,
 /turf/open/floor/plating,
@@ -11676,7 +11737,6 @@
 /turf/open/floor/carpet/orange,
 /area/centcom/interlink)
 "yao" = (
-/obj/effect/landmark/start/operations_inspector,
 /obj/structure/chair/office{
 	dir = 1
 	},
@@ -12948,7 +13008,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
 aaa
 aaa
 aaa
@@ -12957,10 +13016,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
-aaa
-aaa
-jCd
 aaa
 aaa
 aaa
@@ -12969,7 +13024,12 @@ aaa
 aaa
 aaa
 aaa
-jCd
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -15263,9 +15323,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
-aaa
-jCd
 aaa
 aaa
 aaa
@@ -15275,9 +15332,12 @@ aaa
 aaa
 aaa
 aaa
-jCd
 aaa
-jCd
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -15528,7 +15588,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
 aaa
 aaa
 aaa
@@ -15540,7 +15599,8 @@ aaa
 aaa
 aaa
 aaa
-jCd
+aaa
+aaa
 aaa
 aaa
 jFj
@@ -16032,7 +16092,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
 aaa
 aaa
 aaa
@@ -16041,10 +16100,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
-aaa
-aaa
-jCd
 aaa
 aaa
 aaa
@@ -16053,7 +16108,12 @@ aaa
 aaa
 aaa
 aaa
-jCd
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -18347,9 +18407,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
-aaa
-jCd
 aaa
 aaa
 aaa
@@ -18359,9 +18416,12 @@ aaa
 aaa
 aaa
 aaa
-jCd
 aaa
-jCd
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -18504,7 +18564,7 @@ uQr
 gpK
 rKz
 pUv
-qua
+hhq
 dyB
 dyB
 ufa
@@ -18612,7 +18672,6 @@ aaa
 aaa
 aaa
 aaa
-jCd
 aaa
 aaa
 aaa
@@ -18624,7 +18683,8 @@ aaa
 aaa
 aaa
 aaa
-jCd
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -19789,7 +19849,7 @@ uQr
 fBr
 rKz
 mZH
-tcX
+dyB
 dyB
 dyB
 xHl
@@ -22594,7 +22654,7 @@ leI
 rtY
 leI
 rKz
-tVf
+dyB
 gkq
 dyB
 dyB
@@ -22865,7 +22925,7 @@ uQr
 uQr
 uQr
 uQr
-dHt
+uQr
 uQr
 uQr
 uQr
@@ -23643,7 +23703,7 @@ okl
 okl
 okl
 xYo
-gkP
+ijL
 rKz
 hQR
 bxC
@@ -25937,7 +25997,7 @@ rKz
 rKz
 gTR
 bHP
-jwb
+bHP
 bHP
 bHP
 trq
@@ -27155,11 +27215,11 @@ aHC
 aRZ
 aiL
 aRZ
-drS
-kwx
 aiL
 aiL
+aRZ
 aiL
+aRZ
 aiL
 qLJ
 aiL
@@ -27412,11 +27472,11 @@ aHC
 aHC
 aHC
 aHC
-jik
-aHC
-aHC
-aHC
-aHC
+aDg
+aDg
+aDg
+pPo
+aDg
 aHC
 jgq
 ncg
@@ -27665,15 +27725,15 @@ aaa
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
 aHC
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
+xUn
+dvI
+oqC
+bxz
+aQY
 aHC
 dMY
 aiL
@@ -27922,15 +27982,15 @@ aaa
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
 aHC
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
+nyc
+sYE
+hWy
+bxz
+aQY
 aHC
 jgD
 kyP
@@ -28179,16 +28239,16 @@ aaa
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
 aHC
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aHC
+cSW
+rKV
+eYZ
+bxz
+aQY
+aDg
 vXY
 ieC
 gKj
@@ -28436,15 +28496,15 @@ aaa
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
 aHC
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
+iVW
+iVW
+iVW
+ooG
+aQY
 aHC
 aie
 aVG
@@ -28693,15 +28753,15 @@ aaa
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
 aHC
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
+wMV
+dLo
+xYR
+lkh
+jKs
 aHC
 aaa
 aaa
@@ -28950,15 +29010,15 @@ aaa
 aaa
 aaa
 aaa
+aaa
+aaa
+aaa
+tvw
 aHC
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
-aqG
+aHC
+aHC
+aHC
+aHC
 aHC
 aaa
 aaa
@@ -29207,16 +29267,16 @@ aaa
 aaa
 aaa
 aaa
-aHC
-aHC
-aHC
-aHC
-aHC
-aHC
-aHC
-aHC
-aHC
-aHC
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
+aaa
 aaa
 aaa
 aaa
@@ -29801,11 +29861,11 @@ dPq
 dPq
 rKz
 nap
-ity
+wtv
 uwL
 wtv
 uwL
-ity
+wtv
 mrJ
 rKz
 dPq

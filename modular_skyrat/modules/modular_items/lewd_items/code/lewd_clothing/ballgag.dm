@@ -13,7 +13,6 @@
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	gas_transfer_coefficient = 0.9
 	// equip_delay_other = 40
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
@@ -173,7 +172,7 @@
 /obj/item/clothing/mask/ballgag/equipped(mob/user, slot)
 	if(chokes_wearer)
 		var/mob/living/carbon/human/U = loc
-		if(src == U.wear_mask && U.client?.prefs.sextoys_pref == "Yes") //To prevent abusing this thing on non-erp players. We care about them, yes.
+		if(src == U.wear_mask && U.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) //To prevent abusing this thing on non-erp players. We care about them, yes.
 			START_PROCESSING(SSobj, src)
 	return ..()
 
