@@ -130,6 +130,9 @@
 	//SKYRAT EDIT END
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
+	if(!isnull(medipen_type))
+		new medipen_type(src)
+
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
 		new /obj/item/flashlight/flare(src)
 		new /obj/item/radio/off(src)
