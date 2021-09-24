@@ -491,7 +491,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	gain_text = span_danger("You feel a sudden desire to inflict pain.")
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
-	icon = "angry"
+	icon = "hammer"
 
 /datum/quirk/sadism/post_add()
 	. = ..()
