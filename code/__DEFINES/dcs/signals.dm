@@ -12,7 +12,7 @@
 #define COMSIG_GLOB_VAR_EDIT "!var_edit"
 /// called after an explosion happened : (epicenter, devastation_range, heavy_impact_range, light_impact_range, took, orig_dev_range, orig_heavy_range, orig_light_range)
 #define COMSIG_GLOB_EXPLOSION "!explosion"
-/// mob was created somewhere : (mob)
+/// Called from base of /mob/Initialise : (mob)
 #define COMSIG_GLOB_MOB_CREATED "!mob_created"
 /// mob died somewhere : (mob/living, gibbed)
 #define COMSIG_GLOB_MOB_DEATH "!mob_death"
@@ -345,6 +345,11 @@
 ///called on /living, when pull is attempted, but before it completes, from base of [/mob/living/start_pulling]: (atom/movable/thing, force)
 #define COMSIG_LIVING_TRY_PULL "living_try_pull"
 	#define COMSIG_LIVING_CANCEL_PULL (1 << 0)
+/// Called from /mob/living/update_pull_movespeed
+#define COMSIG_LIVING_UPDATING_PULL_MOVESPEED "living_updating_pull_movespeed"
+/// Called from /mob/living/PushAM -- Called when this mob is about to push a movable, but before it moves
+/// (aotm/movable/being_pushed)
+#define COMSIG_LIVING_PUSHING_MOVABLE "living_pushing_movable"
 ///from base of [/atom/proc/interact]: (mob/user)
 #define COMSIG_ATOM_UI_INTERACT "atom_ui_interact"
 ///called on /living when attempting to pick up an item, from base of /mob/living/put_in_hand_check(): (obj/item/I)
@@ -1334,7 +1339,9 @@
 #define COMSIG_HUMAN_EARLY_UNARMED_ATTACK "human_early_unarmed_attack"
 ///from mob/living/carbon/human/UnarmedAttack(): (atom/target, proximity, modifiers)
 #define COMSIG_HUMAN_MELEE_UNARMED_ATTACK "human_melee_unarmed_attack"
-
+///FROM mob/living/simple_animal/hostile/ooze/eat_atom(): (atom/target, edible_flags)
+#define COMSIG_OOZE_EAT_ATOM "ooze_eat_atom"
+	#define COMPONENT_ATOM_EATEN  (1<<0)
 
 
 // Aquarium related signals
@@ -1485,3 +1492,9 @@
 #define COMSIG_TICKER_ROUND_STARTING "comsig_ticker_round_starting"
 
 #define COMSIG_GREYSCALE_CONFIG_REFRESHED "greyscale_config_refreshed"
+
+// Point of interest signals
+/// Sent from base of /datum/controller/subsystem/points_of_interest/proc/on_poi_element_added : (atom/new_poi)
+#define COMSIG_ADDED_POINT_OF_INTEREST "added_point_of_interest"
+/// Sent from base of /datum/controller/subsystem/points_of_interest/proc/on_poi_element_removed : (atom/old_poi)
+#define COMSIG_REMOVED_POINT_OF_INTEREST "removed_point_of_interest"

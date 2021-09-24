@@ -343,6 +343,21 @@
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
 
+/* SKYRAT EDIT START - MOVED TO modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_modules.dm
+/obj/item/robot_model/medical/be_transformed_to(obj/item/robot_model/old_model)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/medical_icons = list(
+		"Qualified Doctor" = image(icon = 'icons/mob/robots.dmi', icon_state = "qualified_doctor"),
+		)
+	var/medical_robot_icon = show_radial_menu(cyborg, cyborg, medical_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
+	switch(medical_robot_icon)
+		if("Qualified Doctor")
+			cyborg_base_icon = "qualified_doctor"
+		else
+			return FALSE
+	return ..()
+*/
+
 // --------------------- Mining
 /obj/item/robot_model/miner
 	name = "Miner"
