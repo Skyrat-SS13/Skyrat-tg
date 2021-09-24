@@ -182,7 +182,7 @@
 	base_icon_state = "cig"
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
-	slot_flags = ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_EARS //Skyrat edit. Allows packets to go on ears
 	spawn_type = /obj/item/clothing/mask/cigarette/space_cigarette
 	custom_price = PAYCHECK_MEDIUM
 	age_restricted = TRUE
