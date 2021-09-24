@@ -116,19 +116,12 @@
 	var/medipen_type = /obj/item/reagent_containers/hypospray/medipen
 
 /obj/item/storage/box/survival/PopulateContents()
-<<<<<<< HEAD
 	new mask_type(src)
 	if(!isnull(medipen_type))
 		new medipen_type(src)
 
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
 	if(isplasmaman(loc))
-=======
-	if(!isplasmaman(loc))
-		new mask_type(src)
-		new internal_type(src)
-	else
->>>>>>> 7def9d23b48 (Removes the superfluous breathing mask from the survival box of plasmamen (#61603))
 		new /obj/item/tank/internals/plasmaman/belt(src)
 	else if(isvox(loc))
 		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
