@@ -286,7 +286,7 @@
 	var/obj/docking_port/mobile/owner
 	var/datum/transit_instance/transit_instance //SKYRAT EDIT ADDITION
 
-/obj/docking_port/stationary/transit/Initialize()
+/obj/docking_port/stationary/transit/Initialize(mapload)
 	. = ..()
 	SSshuttle.transit += src
 

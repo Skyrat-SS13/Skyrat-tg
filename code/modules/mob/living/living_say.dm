@@ -184,7 +184,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
 		message_range = 1
-		log_talk(message, LOG_WHISPER)
+		log_talk(message, LOG_WHISPER, forced_by=forced)
 		if(stat == HARD_CRIT)
 			var/health_diff = round(-HEALTH_THRESHOLD_DEAD + health)
 			// If we cut our message short, abruptly end it with a-..
@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			deaf_type = 2
 
 		// Create map text prior to modifying message for goonchat, sign lang edition
-		if (client?.prefs.chat_on_map && !(stat == UNCONSCIOUS || stat == HARD_CRIT || is_blind(src)) && (client.prefs.see_chat_non_mob || ismob(speaker)))
+		if (client?.prefs.read_preference(/datum/preference/toggle/enable_runechat) && !(stat == UNCONSCIOUS || stat == HARD_CRIT || is_blind(src)) && (client.prefs.read_preference(/datum/preference/toggle/enable_runechat_non_mobs) || ismob(speaker)))
 			create_chat_message(speaker, message_language, raw_message, spans)
 
 		if(is_blind(src))
@@ -295,7 +295,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		deaf_type = 2 // Since you should be able to hear yourself without looking
 
 	// Create map text prior to modifying message for goonchat
-	if (client?.prefs.chat_on_map && !(stat == UNCONSCIOUS || stat == HARD_CRIT) && (client.prefs.see_chat_non_mob || ismob(speaker)) && can_hear())
+	if (client?.prefs.read_preference(/datum/preference/toggle/enable_runechat) && !(stat == UNCONSCIOUS || stat == HARD_CRIT) && (client.prefs.read_preference(/datum/preference/toggle/enable_runechat_non_mobs) || ismob(speaker)) && can_hear())
 		create_chat_message(speaker, message_language, raw_message, spans)
 
 	// Recompose message for AI hrefs, language incomprehension.
@@ -360,7 +360,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	//speech bubble
 	var/list/speech_bubble_recipients = list()
 	for(var/mob/M in listening)
-		if(M.client && (!M.client.prefs.chat_on_map || (SSlag_switch.measures[DISABLE_RUNECHAT] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES))))
+		if(M.client && (!M.client.prefs.read_preference(/datum/preference/toggle/enable_runechat) || (SSlag_switch.measures[DISABLE_RUNECHAT] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES))))
 			speech_bubble_recipients.Add(M.client)
 	var/image/I = image('icons/mob/talk.dmi', src, "[bubble_type][say_test(message)]", FLY_LAYER)
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
@@ -447,46 +447,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			return ITALICS | REDUCE_RANGE
 
 	return 0
-//SKYRAT custom sayverb
-/mob/living/say_mod(input, message_mods)
-	if(message_mods == MODE_WHISPER_CRIT)
-		return ..()
-	if((input[1] == "!") && (length_char(input) > 1))
-		message_mods = MODE_CUSTOM_SAY
-		return copytext_char(input, 3)
-	var/customsayverb = findtext(input, "*")
-	if(customsayverb)
-		message_mods = MODE_CUSTOM_SAY
-		return lowertext(copytext_char(input, 1, customsayverb))
-	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
-		. = verb_whisper
-	else if(message_mods[WHISPER_MODE] == MODE_WHISPER_CRIT)
-		. = "[verb_whisper] in [p_their()] last breath"
-	else if(message_mods[MODE_SING])
-		. = verb_sing
-	else if(stuttering)
-		if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
-			. = "shakily signs"
-		else
-			. = "stammers"
-	else if(derpspeech)
-		if(HAS_TRAIT(src, TRAIT_SIGN_LANG))
-			. = "incoherently signs"
-		else
-			. = "gibbers"
-	else if(HAS_TRAIT(src, TRAIT_FELINE) && !HAS_TRAIT(src, TRAIT_SIGN_LANG)) //for feline trait
-		. = "meows"
-	else
-		. = ..()
 
-/proc/uncostumize_say(input, message_mods)
-	. = input
-	if(message_mods == MODE_CUSTOM_SAY)
-		var/customsayverb = findtext(input, "*")
-		return lowertext(copytext_char(input, 1, customsayverb))
-
-//SKYRAT custom sayverb end.
-/* original code:
 /mob/living/say_mod(input, list/message_mods = list())
 	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
 		. = verb_whisper
@@ -506,7 +467,6 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 			. = "gibbers"
 	else
 		. = ..()
-*/
 
 /mob/living/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null)
 	if(!message)

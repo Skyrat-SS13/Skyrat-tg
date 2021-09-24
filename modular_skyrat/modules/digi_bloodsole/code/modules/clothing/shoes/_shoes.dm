@@ -7,9 +7,9 @@
 	if(HAS_BLOOD_DNA(src))
 		if (mutant_styles & STYLE_DIGITIGRADE)
 			if(clothing_flags & LARGE_WORN_ICON)
-				. += mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/64x64.dmi', "shoeblood_large")
+				. += mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/64x64.dmi', "shoeblood_large_digi")
 			else
-				. += mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi', "shoeblood")
+				. += mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi', "shoeblood_digi")
 		else
 			if(clothing_flags & LARGE_WORN_ICON)
 				. += mutable_appearance('icons/effects/64x64.dmi', "shoeblood_large")

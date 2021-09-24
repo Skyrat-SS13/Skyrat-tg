@@ -31,7 +31,7 @@
 	/// Whether the rock will turn to the rock_color of its level //SKYRAT EDIT ADDITION
 	var/turn_to_level_color = TRUE //SKYRAT EDIT ADDITION
 
-/turf/closed/mineral/Initialize()
+/turf/closed/mineral/Initialize(mapload)
 	. = ..()
 	var/matrix/M = new
 	M.Translate(-4, -4)
@@ -192,7 +192,7 @@
 		//Currently, Adamantine won't spawn as it has no uses. -Durandan
 	var/mineralChance = 13
 
-/turf/closed/mineral/random/Initialize()
+/turf/closed/mineral/random/Initialize(mapload)
 	if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
 		mineralSpawnChanceList[/obj/item/stack/ore/bananium] = 3
 
@@ -532,8 +532,12 @@
 	icon = 'icons/turf/mining.dmi'
 	smooth_icon = 'icons/turf/walls/red_wall.dmi'
 	base_icon_state = "red_wall"
-
 	turn_to_level_color = FALSE //SKYRAT EDIT ADDITION
+
+/turf/closed/mineral/random/stationside/asteroid/porus
+	name = "porous iron rock"
+	desc = "This rock is filled with pockets of breathable air."
+	baseturfs = /turf/open/floor/plating/asteroid
 
 /turf/closed/mineral/asteroid/porous
 	name = "porous rock"
@@ -551,7 +555,7 @@
 	var/activated_name = null
 	var/mutable_appearance/activated_overlay
 
-/turf/closed/mineral/gibtonite/Initialize()
+/turf/closed/mineral/gibtonite/Initialize(mapload)
 	det_time = rand(8,10) //So you don't know exactly when the hot potato will explode
 	. = ..()
 
@@ -591,7 +595,7 @@
 			var/turf/bombturf = get_turf(src)
 			mineralAmt = 0
 			stage = GIBTONITE_DETONATE
-			explosion(bombturf, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 5, adminlog = notify_admins)
+			explosion(bombturf, devastation_range = 1, heavy_impact_range = 3, light_impact_range = 5, adminlog = notify_admins, explosion_cause = src)
 
 /turf/closed/mineral/gibtonite/proc/defuse()
 	if(stage == GIBTONITE_ACTIVE)
@@ -613,7 +617,7 @@
 		var/turf/bombturf = get_turf(src)
 		mineralAmt = 0
 		stage = GIBTONITE_DETONATE
-		explosion(bombturf, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 5, adminlog = FALSE)
+		explosion(bombturf, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 5, adminlog = FALSE, explosion_cause = src)
 	if(stage == GIBTONITE_STABLE) //Gibtonite deposit is now benign and extractable. Depending on how close you were to it blowing up before defusing, you get better quality ore.
 		var/obj/item/gibtonite/G = new (src)
 		if(det_time <= 0)

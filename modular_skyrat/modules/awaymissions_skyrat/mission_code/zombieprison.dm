@@ -239,7 +239,7 @@
 	ranged = 1
 	retreat_distance = 5
 	minimum_distance = 5
-	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
+	loot = list(/obj/effect/spawner/random/prison/guard)
 	robust_searching = 0
 	maxHealth = 50
 	health = 50
@@ -270,7 +270,7 @@
 	ranged = 1
 	retreat_distance = 5
 	minimum_distance = 6
-	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
+	loot = list(/obj/effect/spawner/random/prison/guard)
 	rapid_melee = 1
 	robust_searching = 0
 	maxHealth = 80
@@ -298,7 +298,7 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/prisonmobs.dmi'
 	icon_state = "riotcop"
 	icon_living = "riotcop"
-	loot = list(/obj/effect/spawner/lootdrop/prison/guard)
+	loot = list(/obj/effect/spawner/random/prison/guard)
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	wound_bonus = -10
@@ -342,7 +342,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/prisoner)
+	loot = list(/obj/effect/spawner/random/prison/prisoner)
 	del_on_death = 1
 
 /mob/living/simple_animal/hostile/prison/zombieguard
@@ -362,7 +362,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/zedguard)
+	loot = list(/obj/effect/spawner/random/prison/zedguard)
 	del_on_death = 1
 
 /mob/living/simple_animal/hostile/prison/zombieriot
@@ -382,7 +382,7 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/zedguard)
+	loot = list(/obj/effect/spawner/random/prison/zedguard)
 	del_on_death = 1
 
 /mob/living/simple_animal/hostile/prison/zombieert
@@ -422,12 +422,12 @@
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	loot = list(/obj/effect/spawner/lootdrop/prison/doc)
+	loot = list(/obj/effect/spawner/random/prison/prison_doc)
 	del_on_death = 1
 
 //loot
 
-/obj/effect/spawner/lootdrop/prison/prisoner
+/obj/effect/spawner/random/prison/prisoner
 	name = "Prisoner Loot"
 	loot = list(
 				/obj/item/melee/baseball_bat = 5,
@@ -446,7 +446,7 @@
 				/obj/item/pickaxe = 5
 				)
 
-/obj/effect/spawner/lootdrop/prison/doc
+/obj/effect/spawner/random/prison/prison_doc
 	name = "Doc Loot"
 	loot = list(/obj/item/storage/firstaid/regular = 3,
 				/obj/item/storage/firstaid/brute = 3,
@@ -464,7 +464,7 @@
 				/obj/item/reagent_containers/glass/beaker = 15,
 				/obj/item/clothing/under/scalamovdoc = 8)
 
-/obj/effect/spawner/lootdrop/prison/zedguard
+/obj/effect/spawner/random/prison/zedguard
 	name = "Zed Guard Loot"
 	loot = list(/obj/item/shield/riot = 1,
 				/obj/item/clothing/under/scalamovguard = 2,
@@ -482,7 +482,7 @@
 				/obj/item/clothing/mask/gas/sechailer/swat/spacepol = 5
 				)
 
-/obj/effect/spawner/lootdrop/prison/guard
+/obj/effect/spawner/random/prison/guard
 	name = "Guard Loot"
 	loot = list(/obj/item/shield/riot = 3,
 				/obj/item/clothing/under/scalamovguard = 5,
@@ -500,7 +500,7 @@
 				/obj/item/flashlight/seclite = 10,
 				)
 
-/obj/effect/spawner/lootdrop/prison/warden
+/obj/effect/spawner/random/prison/warden
 	name = "Warden Loot"
 	loot = list(/obj/item/dnainjector/insulated = 25,
 				/obj/item/gun/ballistic/automatic/pistol/aps = 20,
@@ -512,7 +512,7 @@
 				/obj/item/clothing/suit/space/hardsuit/swat = 5,
 				/obj/item/stack/spacecash/c10000 = 30)
 
-/obj/effect/spawner/lootdrop/prison/wardenalive
+/obj/effect/spawner/random/prison/wardenalive
 	name = "Human Warden Loot"
 	loot = list(/mob/living/simple_animal/hostile/prison/warden = 100)
 
@@ -555,12 +555,15 @@
 	density = FALSE
 	roundstart = FALSE
 	death = FALSE
+	mob_species = /datum/species/human
 	outfit = /datum/outfit/scalamovguard
 	short_desc = "You are a guard for the Scalamov prison. The prison has been overrun with the undead, and you and the remaining guards and a few prisoners have made due in the guard bunkhouse. The armory is cut off from you, and your food stores will only last so long..."
 	flavour_text = "You are a Scalamov prison guard. You've been here for days, maybe weeks. The prisoners in the cafeteria have made themselves known to be hostile. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
-	Do not attack anything in the gateway except in self-defense. The simplemob guards between you and the cafeteria are the exception.\ "
+	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
+	can_use_alias = TRUE
+	any_station_species = TRUE
 
 /datum/outfit/scalamovguard
 	name = "Scalamov Guard"
@@ -578,12 +581,15 @@
 	density = FALSE
 	roundstart = FALSE
 	death = FALSE
+	mob_species = /datum/species/human
 	outfit = /datum/outfit/scalamovdoc
 	short_desc = "You are a medical doctor aboard Scalamov prison. The prison and hospital are overrun, food is going to run out eventually, and the armory is locked down. On top of that, the prisoners that survived took over the cafeteria, and are hostile to you and the guards."
 	flavour_text = "You are a Scalamov prison doctor. You've been here for days, maybe weeks. The prisoners in the cafeteria have made themselves known to be hostile. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
-	Do not attack anything in the gateway except in self-defense. The simplemob guards between you and the cafeteria are the exception.\ "
+	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
+	can_use_alias = TRUE
+	any_station_species = TRUE
 
 /datum/outfit/scalamovdoc
 	name = "Scalamov "
@@ -601,12 +607,15 @@
 	density = FALSE
 	roundstart = FALSE
 	death = FALSE
+	mob_species = /datum/species/human
 	outfit = /datum/outfit/scalamovinmateally
 	short_desc = "You are a Scalamov prisoner, allied with the guards in the guard house. After being rescued, you are willing to look over any previous hostilities with them. You're all in this together."
 	flavour_text = "You are a Scalamov prisoner. The prisoners in the cafeteria have made themselves known to be hostile. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well. \
 	This is not meant to be a protagonist or an antagonist.\
-	Do not attack anything in the gateway except in self-defense. The simplemob guards between you and the cafeteria are the exception.\ "
+	The simplemob guards are to be regarded as crazy, as they will attack you and prisoners alike.\ "
+	can_use_alias = TRUE
+	any_station_species = TRUE
 
 /datum/outfit/scalamovinmateally
 	name = "Scalamov Prisoner"
@@ -621,12 +630,14 @@
 	density = FALSE
 	roundstart = FALSE
 	death = FALSE
-	outfit = /datum/outfit/
+	mob_species = /datum/species/human
+	outfit = /datum/outfit/scalamovinmatehostile
 	short_desc = "You are a Scalamov prisoner. You and some of the other inmates have taken over the cafeteria, and are hostile with the surviving guards. You have plenty of food, but barely any weapons."
 	flavour_text = "You are a Scalamov prisoner. The guards in the guardhouse are your enemies. Do not trust them, only trust those that are with you. Escalate properly through RP before engaging in mechanics. \
 	Remember to use properly roleplay procedures. You may kill the simplemob guards seperating you from the guard's bunkhouse, but do not rush to kill the guards in the guardhouse. \
 	Do not fight or kill the guardhouse players without proper escalation and roleplay. Do not attack the Vanguards unless attacked first. \
 	Remember to AHELP before you decide to run through the entire gateway or something. Try to wait at least 30 minutes into the round before you do so as well."
+
 /datum/outfit/scalamovinmatehostile
 	name = "Scalamov Hostile Inmate"
 	uniform = /obj/item/clothing/under/scalamovprisoner
@@ -652,7 +663,7 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
-	loot = list(/obj/effect/spawner/lootdrop/prison/wardenalive)
+	loot = list(/obj/effect/spawner/random/prison/wardenalive)
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -685,7 +696,7 @@
 	harm_intent_damage = 30
 	melee_damage_lower = 30
 	melee_damage_upper = 30
-	loot = list(/obj/effect/spawner/lootdrop/prison/warden)
+	loot = list(/obj/effect/spawner/random/prison/warden)
 	del_on_death = 1
 	health_doll_icon = "pandora"
 	attack_verb_continuous = "attacked"

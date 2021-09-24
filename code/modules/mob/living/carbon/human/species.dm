@@ -1,5 +1,8 @@
 GLOBAL_LIST_EMPTY(roundstart_races)
 
+/// An assoc list of species types to their features (from get_features())
+GLOBAL_LIST_EMPTY(features_by_species)
+
 /**
  * # species datum
  *
@@ -210,8 +213,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	///List of visual overlays created by handle_body()
 	var/list/body_vis_overlays = list()
 
-
-
 ///////////
 // PROCS //
 ///////////
@@ -224,24 +225,34 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	wings_icons = string_list(wings_icons)
 	..()
 
+/// Gets a list of all species available to choose in roundstart.
+/proc/get_selectable_species()
+	RETURN_TYPE(/list)
+
+	if (!GLOB.roundstart_races.len)
+		GLOB.roundstart_races = generate_selectable_species()
+
+	return GLOB.roundstart_races
+
 /**
  * Generates species available to choose in character setup at roundstart
  *
  * This proc generates which species are available to pick from in character setup.
  * If there are no available roundstart species, defaults to human.
  */
-//SKYRAT EDIT REMOVAL BEGIN - MOVED - CUSTOMIZATION
-/*
 /proc/generate_selectable_species()
-	for(var/I in subtypesof(/datum/species))
-		var/datum/species/S = new I
-		if(S.check_roundstart_eligible())
-			GLOB.roundstart_races += S.id
-			qdel(S)
-	if(!GLOB.roundstart_races.len)
-		GLOB.roundstart_races += "human"
-*/
-//SKYRAT EDIT REMOVAL END
+	var/list/selectable_species = list()
+
+	for(var/species_type in subtypesof(/datum/species))
+		var/datum/species/species = new species_type
+		if(species.check_roundstart_eligible())
+			selectable_species += species.id
+			qdel(species)
+
+	if(!selectable_species.len)
+		selectable_species += SPECIES_HUMAN
+
+	return selectable_species
 
 /**
  * Checks if a species is eligible to be picked at roundstart.
@@ -375,6 +386,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
 /datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+	SHOULD_CALL_PARENT(TRUE)
 	// Drop the items the new species can't wear
 	if((AGENDER in species_traits))
 		C.gender = PLURAL
@@ -413,7 +425,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(istype(I))
 				C.dropItemToGround(I)
 			else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
-				C.put_in_hands(new mutanthands())
+				INVOKE_ASYNC(C, /mob/proc/put_in_hands, new mutanthands)
 
 	for(var/X in inherent_traits)
 		ADD_TRAIT(C, X, SPECIES_TRAIT)
@@ -456,6 +468,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
  * * pref_load - Preferences to be loaded from character setup, loads in preferred mutant things like bodyparts, digilegs, skin color, etc.
  */
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
+	SHOULD_CALL_PARENT(TRUE)
 	if(C.dna.species.exotic_bloodtype)
 		C.dna.blood_type = random_blood_type()
 	if(DIGITIGRADE in species_traits)
@@ -704,11 +717,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			standing += eye_overlay
 			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
-<<<<<<< HEAD
-			var/list/eye_overlays
-=======
 			var/mutable_appearance/eye_overlay
->>>>>>> a71327e0288 (Reduces copypasta in emissive code (#61249))
 			var/obscured = species_human.check_obscured_slots(TRUE) //eyes that shine in the dark shouldn't show when you have glasses
 			var/add_pixel_x = 0
 			var/add_pixel_y = 0
@@ -726,15 +735,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(!no_eyeslay)//we need eyes
 				eye_overlay = mutable_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
 				if(eye_organ.overlay_ignore_lighting && !(obscured & ITEM_SLOT_EYES))
-<<<<<<< HEAD
-					eye_overlays += emissive_appearance('icons/mob/human_face.dmi', eye_organ.eye_icon_state, -BODY_LAYER)
-				for(var/mutable_appearance/eye_overlay as anything in eye_overlays)
-					eye_overlay.pixel_x += add_pixel_x
-					eye_overlay.pixel_y += add_pixel_y
-					if((EYECOLOR in species_traits) && eye_organ)
-						eye_overlay.color = "#" + species_human.eye_color
-					standing += eye_overlay
-=======
 					eye_overlay.overlays += emissive_appearance(eye_overlay.icon, eye_overlay.icon_state, alpha = eye_overlay.alpha)
 
 				eye_overlay.pixel_x += add_pixel_x
@@ -743,7 +743,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					eye_overlay.color = "#" + species_human.eye_color
 				standing += eye_overlay
 
->>>>>>> a71327e0288 (Reduces copypasta in emissive code (#61249))
 	// organic body markings
 	if(HAS_MARKINGS in species_traits)
 		var/obj/item/bodypart/chest/chest = species_human.get_bodypart(BODY_ZONE_CHEST)
@@ -2036,6 +2035,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		else
 			H.adjust_bodytemperature((BODYTEMP_HEATING_MAX + (H.fire_stacks * 12)) * 0.5 * delta_time)
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "on_fire", /datum/mood_event/on_fire)
+			H.mind?.add_memory(MEMORY_FIRE, list(DETAIL_PROTAGONIST = H), story_value = STORY_VALUE_OKAY)
 
 /datum/species/proc/CanIgniteMob(mob/living/carbon/human/H)
 	if(HAS_TRAIT(H, TRAIT_NOFIRE))
@@ -2216,3 +2216,36 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			continue
 
 		current_part.change_bodypart(species_part)
+
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
+/// Returns a list of strings representing features this species has.
+/// Used by the preferences UI to know what buttons to show.
+/datum/species/proc/get_features()
+	var/cached_features = GLOB.features_by_species[type]
+	if (!isnull(cached_features))
+		return cached_features
+
+	var/list/features = list()
+
+	for (var/preference_type in GLOB.preference_entries)
+		var/datum/preference/preference = GLOB.preference_entries[preference_type]
+
+		if ( \
+			(preference.relevant_mutant_bodypart in mutant_bodyparts) \
+			|| (preference.relevant_species_trait in species_traits) \
+		)
+			features += preference.savefile_key
+
+	for (var/obj/item/organ/external/organ_type as anything in external_organs)
+		var/preference = initial(organ_type.preference)
+		if (!isnull(preference))
+			features += preference
+
+	GLOB.features_by_species[type] = features
+
+	return features
+*/
+/// Given a human, will adjust it before taking a picture for the preferences UI.
+/// This should create a CONSISTENT result, so the icons don't randomly change.
+/datum/species/proc/prepare_human_for_preview(mob/living/carbon/human/human)
+	return
