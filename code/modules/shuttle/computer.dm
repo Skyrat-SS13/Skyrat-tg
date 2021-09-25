@@ -32,7 +32,7 @@
 	if(istype(smacking_object, /obj/item/navigation_datacard))
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 		if(M.gateway_stranded)
-			to_chat(user, span_notice("You insert [smacking_object] into [src] loading the navigational data!"))
+			to_chat(user, span_notice("You insert [smacking_object] into [src], loading the navigational data!"))
 			say("Navigational data loaded.")
 			playsound(loc, 'sound/machines/terminal_insert_disc.ogg', 35, 1)
 			M.gateway_stranded = FALSE
