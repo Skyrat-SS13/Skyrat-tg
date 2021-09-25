@@ -671,10 +671,9 @@ GENE SCANNER
 			return
 		//SKYRAT EDIT CHANGE
 		if(weather_controller.current_weathers)
-			for(var/V in weather_controller.current_weathers)
-				var/datum/weather/W = V
-				if(W.barometer_predictable && (T.z in W.impacted_z_levels) && W.area_type == user_area.type && !(W.stage == END_STAGE))
-					ongoing_weather = W
+			for(var/datum/weather/iterating_weather in weather_controller.current_weathers)
+				if(iterating_weather.barometer_predictable && (T.z in iterating_weather.impacted_z_levels) && iterating_weather.area_type == user_area.type && !(iterating_weather.stage == END_STAGE))
+					ongoing_weather = iterating_weather
 					break
 		//SKYRAT EDIT END
 

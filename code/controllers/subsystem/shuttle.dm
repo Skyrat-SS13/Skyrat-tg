@@ -992,10 +992,3 @@ SUBSYSTEM_DEF(shuttle)
 
 	return has_purchase_shuttle_access
 
-//SKYRAT EDIT ADDITION
-/datum/controller/subsystem/shuttle/proc/get_transit_instance(atom/movable/movable_atom)
-	for(var/i in transit_instances)
-		var/datum/transit_instance/iterated_transit = i
-		if(iterated_transit.reservation.IsInBounds(movable_atom))
-			return iterated_transit
-//SKYRAT EDIT END
