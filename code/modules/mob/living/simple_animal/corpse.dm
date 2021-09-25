@@ -36,7 +36,7 @@
 /datum/outfit/syndicatecommandocorpse
 	name = "Syndicate Commando Corpse"
 	uniform = /obj/item/clothing/under/syndicate
-	suit = /obj/item/clothing/suit/space/hardsuit/syndi
+	suit = /obj/item/clothing/suit/space/hardsuit/syndi/camo //SKYRAT EDIT
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	ears = /obj/item/radio/headset
