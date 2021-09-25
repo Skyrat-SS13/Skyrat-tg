@@ -512,10 +512,6 @@
 				/obj/item/clothing/suit/space/hardsuit/swat = 5,
 				/obj/item/stack/spacecash/c10000 = 30)
 
-/obj/effect/spawner/random/prison/wardenalive
-	name = "Human Warden Loot"
-	loot = list(/mob/living/simple_animal/hostile/prison/warden = 100)
-
 //items
 
 /obj/item/clothing/under/scalamovguard
@@ -663,7 +659,6 @@
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
-	loot = list(/obj/effect/spawner/random/prison/wardenalive)
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -682,6 +677,7 @@
 /mob/living/simple_animal/hostile/prison/wardenalive/death(gibbed)
 	spawn_gibs()
 	spawn_gibs()
+	new /mob/living/simple_animal/hostile/prison/warden(src.loc)
 	return ..()
 
 /mob/living/simple_animal/hostile/prison/warden
