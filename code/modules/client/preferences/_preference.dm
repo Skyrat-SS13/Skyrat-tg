@@ -557,3 +557,15 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/text/is_valid(value)
 	return istext(value)
 
+/datum/preference/tri_color
+	abstract_type = /datum/preference/tri_color
+
+/datum/preference/tri_color/deserialize(input, datum/preferences/preferences)
+	var/list/input_colors = input
+	return list(sanitize_color(input_colors[1]), sanitize_color(input_colors[2]), sanitize_color(input_colors[3]))
+
+/datum/preference/tri_color/create_default_value()
+	return list(random_color(), random_color(), random_color())
+
+/datum/preference/tri_color/is_valid(value)
+	return findtext(value[1], GLOB.is_color) && findtext(value[2], GLOB.is_color) && findtext(value[3], GLOB.is_color)

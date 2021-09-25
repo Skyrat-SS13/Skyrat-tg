@@ -1998,9 +1998,16 @@
 	color_src = HAIR
 	em_block = TRUE
 
+/datum/sprite_accessory/caps/none
+	name = "None"
+	icon_state = "none"
+
 /datum/sprite_accessory/caps/round
 	name = "Round"
 	icon_state = "round"
+
+
+
 
 /datum/sprite_accessory/moth_wings
 	icon = 'icons/mob/moth_wings.dmi'

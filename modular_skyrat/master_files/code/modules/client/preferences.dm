@@ -65,7 +65,7 @@
 	var/list/alt_job_titles = list()
 
 /datum/preferences/proc/species_updated(species_type)
-	if(!update_pref_species(species_type))
+	if(!update_pref_species())
 		return
 	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
 	for(var/key in features)
@@ -86,8 +86,8 @@
 	validate_languages()
 	save_character()
 
-/datum/preferences/proc/update_pref_species(passed_type)
-	var/species_type = passed_type || read_preference(/datum/preference/choiced/species)
+/datum/preferences/proc/update_pref_species()
+	var/species_type = read_preference(/datum/preference/choiced/species)
 	if(pref_species)
 		if(pref_species.type == species_type)
 			return FALSE

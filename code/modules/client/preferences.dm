@@ -528,8 +528,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
-
-		preference.apply_to_human(character, read_preference(preference.type), src) //SKYRAT EDIT CHANGE
+		if(preference.is_accessible(src)) // Only apply preferences you can actually access. SKYRAT EDIT CHANGE.
+			preference.apply_to_human(character, read_preference(preference.type), src) //SKYRAT EDIT CHANGE
 
 	character.dna.real_name = character.real_name
 

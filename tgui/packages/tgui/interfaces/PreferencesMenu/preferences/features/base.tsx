@@ -3,7 +3,7 @@ import { BooleanLike, classes } from "common/react";
 import { ComponentType, createComponentVNode, InfernoNode } from "inferno";
 import { VNodeFlags } from "inferno-vnode-flags";
 import { sendAct, useBackend, useLocalState } from "../../../../backend";
-import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input } from "../../../../components";
+import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input, ColorBox } from "../../../../components";
 import { createSetPreference, PreferencesMenuData } from "../../data";
 import { ServerPreferencesFetcher } from "../../ServerPreferencesFetcher";
 
@@ -333,66 +333,6 @@ export const FeatureValueInput = (props: {
 };
 
 // SKYRAT FEATURES DOWN HERE
-export const FeatureTriColorInput = (props: FeatureValueProps<string>) => {
-  return (
-    <Stack align="center" fill>
-      <Stack.Item>
-        <Button onClick={() => props.act('set_tri_color_preference', {
-          color: 1,
-        })}>
-          <Box style={{
-            background: props.value.startsWith("#")
-              ? props.value
-              : `#${props.value}`,
-            border: "2px solid white",
-            "box-sizing": "content-box",
-            height: "11px",
-            width: "11px",
-            ...(props.shrink ? {
-              "margin": "1px",
-            } : {}),
-          }} />
-        </Button>
-      </Stack.Item>
-      <Stack.Item>
-        <Button onClick={() => props.act('set_tri_color_preference', {
-          picked_color: 2,
-        })}>
-          <Box style={{
-            background: props.value.startsWith("#")
-              ? props.value
-              : `#${props.value}`,
-            border: "2px solid white",
-            "box-sizing": "content-box",
-            height: "11px",
-            width: "11px",
-            ...(props.shrink ? {
-              "margin": "1px",
-            } : {}),
-          }} />
-        </Button>
-      </Stack.Item>
-      <Stack.Item>
-        <Button onClick={() => props.act('set_tri_color_preference', {
-          picked_color: 3,
-        })}>
-          <Box style={{
-            background: props.value.startsWith("#")
-              ? props.value
-              : `#${props.value}`,
-            border: "2px solid white",
-            "box-sizing": "content-box",
-            height: "11px",
-            width: "11px",
-            ...(props.shrink ? {
-              "margin": "1px",
-            } : {}),
-          }} />
-        </Button>
-      </Stack.Item>
-    </Stack>
-  );
-};
 
 export const FeatureTextInput = (
   props: FeatureValueProps<string>
@@ -412,4 +352,52 @@ export const FeatureShortTextInput = (
     value={props.value}
     onChange={(_, value) => props.handleSetValue(value)}
   />);
+};
+
+export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
+  const setColorValue = (color, index) => {
+    const currentValue = [...props.value];
+    currentValue[index] = color;
+    props.handleSetValue(currentValue);
+  };
+  return (
+    <Stack align="center" fill>
+      <Stack.Item grow>
+        <Input
+          width="100%"
+          value={props.value[0]}
+          onChange={(_, value) => setColorValue(value, 0)}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <ColorBox
+          color={props.value[0]}
+        />
+      </Stack.Item>
+      <Stack.Item grow>
+        <Input
+          width="100%"
+          value={props.value[1]}
+          onChange={(_, value) => setColorValue(value, 1)}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <ColorBox
+          color={props.value[1]}
+        />
+      </Stack.Item>
+      <Stack.Item grow>
+        <Input
+          width="100%"
+          value={props.value[2]}
+          onChange={(_, value) => setColorValue(value, 2)}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <ColorBox
+          color={props.value[2]}
+        />
+      </Stack.Item>
+    </Stack>
+  );
 };

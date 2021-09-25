@@ -149,9 +149,36 @@
 		dna.species = new_race
 
 		//BODYPARTS AND FEATURES - We need to instantiate the list with compatible mutant parts so we don't break things
-		dna.mutant_bodyparts = override_mutantparts || new_race.get_random_mutant_bodyparts(dna.features)
-		dna.body_markings = override_markings || new_race.get_random_body_markings(dna.features)
-		dna.features = override_features || new_race.get_random_features(dna.features)
+
+		if(override_mutantparts && override_mutantparts.len)
+			for(var/feature in dna.mutant_bodyparts)
+				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
+			dna.mutant_bodyparts = override_mutantparts
+
+		var/list/random_mutantparts = new_race.get_random_mutant_bodyparts(dna.features)
+		for(var/feature in dna.mutant_bodyparts)
+			random_mutantparts[feature] = dna.mutant_bodyparts[feature]
+		dna.mutant_bodyparts = random_mutantparts
+
+		if(override_markings && override_markings.len)
+			for(var/feature in dna.body_markings)
+				override_markings[feature] = dna.body_markings[feature]
+			dna.body_markings = override_markings
+
+		var/list/random_bodymarkings = new_race.get_random_body_markings(dna.features)
+		for(var/feature in dna.body_markings)
+			random_bodymarkings[feature] = dna.body_markings[feature]
+		dna.body_markings = random_bodymarkings
+
+		if(override_features && override_features.len)
+			for(var/feature in dna.features)
+				override_features[feature] = dna.features[feature]
+			dna.features = override_features
+
+		var/list/random_features = new_race.get_random_features(dna.features)
+		for(var/feature in dna.features)
+			random_features[feature] = dna.features[feature]
+		dna.features = random_features
 		//END OF BODYPARTS AND FEATURES
 
 		apply_customizable_dna_features_to_species()
