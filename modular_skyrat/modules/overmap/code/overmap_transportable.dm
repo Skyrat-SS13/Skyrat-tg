@@ -43,12 +43,12 @@
 	items_per_transport_high = 2
 
 /datum/overmap_object/transportable/debris/GetLootTable()
-	return list(/obj/effect/spawner/lootdrop/material_scarce = 100,
-				/obj/effect/spawner/lootdrop/material = 10,
-				/obj/effect/spawner/lootdrop/maintenance = 15,
-				/obj/effect/spawner/lootdrop/ore_scarce = 50,
-				/obj/effect/spawner/lootdrop/ore = 5,
-				/obj/effect/spawner/lootdrop/crate_spawner = 1)
+	return list(/obj/effect/spawner/random/material_scarce = 100,
+				/obj/effect/spawner/random/material = 10,
+				/obj/effect/spawner/random/maintenance = 15,
+				/obj/effect/spawner/random/ore_scarce = 50,
+				/obj/effect/spawner/random/ore = 5,
+				/obj/effect/spawner/random/structure/crate_abandoned = 1)
 
 /obj/effect/abstract/overmap/debris
 	icon_state = "smallobject"
@@ -65,16 +65,16 @@
 	items_per_transport_high = 3
 
 /datum/overmap_object/transportable/wreckage/GetLootTable()
-	return list(/obj/effect/spawner/lootdrop/material = 70,
-				/obj/effect/spawner/lootdrop/ore = 20,
-				/obj/effect/spawner/lootdrop/space/rareseed = 10,
-				/obj/effect/spawner/lootdrop/space/fancytech = 5,
-				/obj/effect/spawner/lootdrop/space/cashmoney = 10,
-				/obj/effect/spawner/lootdrop/armory_contraband = 2,
-				/obj/effect/spawner/lootdrop/maintenance = 50,
-				/obj/effect/spawner/lootdrop/material_scarce = 10,
-				/obj/effect/spawner/lootdrop/space/fancytool/advmedicalonly = 5,
-				/obj/effect/spawner/lootdrop/crate_spawner = 3
+	return list(/obj/effect/spawner/random/material = 70,
+				/obj/effect/spawner/random/ore = 20,
+				/obj/effect/spawner/random/food_or_drink/seed_rare = 10,
+				/obj/effect/spawner/random/exotic/technology = 5,
+				/obj/effect/spawner/random/entertainment/money_large = 10,
+				/obj/effect/spawner/random/contraband/armory = 2,
+				/obj/effect/spawner/random/maintenance = 50,
+				/obj/effect/spawner/random/material_scarce = 10,
+				/obj/effect/spawner/random/exotic/tool = 5,
+				/obj/effect/spawner/random/structure/crate_abandoned = 3
 				)
 
 //For wreckages in storms and such
@@ -96,7 +96,7 @@
 	items_per_transport_high = 5
 
 /datum/overmap_object/transportable/trash/GetLootTable()
-	return list(/obj/effect/spawner/lootdrop/maintenance = 100)
+	return list(/obj/effect/spawner/random/maintenance = 100)
 
 /obj/effect/abstract/overmap/trash
 	icon_state = "smallobject"

@@ -109,7 +109,7 @@
 		qdel(extension)
 	. = ..()
 
-/obj/structure/shuttle/engine/obj_destruction(damage_flag)
+/obj/structure/shuttle/engine/atom_destruction(damage_flag)
 	explosion(src, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 4)
 	return ..()
 

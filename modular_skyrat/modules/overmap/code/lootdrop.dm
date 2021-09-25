@@ -1,6 +1,6 @@
 /// One random selection of some materials, heavily weighted for common drops
-/obj/effect/spawner/lootdrop/material
-	lootcount = 1
+/obj/effect/spawner/random/material
+	spawn_loot_count = 1
 	loot = list(
 		/obj/item/stack/sheet/iron{amount = 15} = 50,
 		/obj/item/stack/sheet/glass{amount = 15} = 15,
@@ -14,8 +14,8 @@
 	)
 
 //Really low amounts/chances of materials
-/obj/effect/spawner/lootdrop/material_scarce
-	lootcount = 1
+/obj/effect/spawner/random/material_scarce
+	spawn_loot_count = 1
 	loot = list(
 		/obj/item/stack/sheet/iron{amount = 5} = 60,
 		/obj/item/stack/sheet/glass{amount = 5} = 20,
@@ -29,8 +29,8 @@
 	)
 
 /// One random selection of some ore, heavily weighted for common drops
-/obj/effect/spawner/lootdrop/ore
-	lootcount = 1
+/obj/effect/spawner/random/ore
+	spawn_loot_count = 1
 	loot = list(
 		/obj/item/stack/ore/iron{amount = 15} = 50,
 		/obj/item/stack/ore/glass{amount = 15} = 15,
@@ -43,8 +43,8 @@
 		/obj/item/stack/ore/bluespace_crystal{amount = 1} = 2
 	)
 
-/obj/effect/spawner/lootdrop/ore_scarce
-	lootcount = 1
+/obj/effect/spawner/random/ore_scarce
+	spawn_loot_count = 1
 	loot = list(
 		/obj/item/stack/ore/iron{amount = 5} = 50,
 		/obj/item/stack/ore/glass{amount = 5} = 15,
@@ -57,7 +57,7 @@
 		/obj/item/stack/ore/bluespace_crystal{amount = 1} = 2
 	)
 
-/obj/effect/spawner/lootdrop/tool
+/obj/effect/spawner/random/tool
 	name = "tool spawner"
 	loot = list(
 		/obj/item/wrench = 1,
@@ -70,7 +70,7 @@
 		/obj/item/multitool = 1
 	)
 
-/obj/effect/spawner/lootdrop/scanner
+/obj/effect/spawner/random/scanner
 	name = "scanner spawner"
 	loot = list(
 		/obj/item/mining_scanner = 1,
@@ -80,7 +80,7 @@
 		/obj/item/radio = 1
 	)
 
-/obj/effect/spawner/lootdrop/powercell
+/obj/effect/spawner/random/powercell
 	name = "powercell spawner"
 	loot = list(
 		/obj/item/stock_parts/cell = 1,
@@ -90,7 +90,7 @@
 		/obj/item/stock_parts/cell/high = 1
 	)
 
-/obj/effect/spawner/lootdrop/bomb_supply
+/obj/effect/spawner/random/bomb_supply
 	name = "bomb supply spawner"
 	loot = list(
 		/obj/item/assembly/igniter = 1,
@@ -99,7 +99,7 @@
 		/obj/item/assembly/timer = 1
 	)
 
-/obj/effect/spawner/lootdrop/toolbox
+/obj/effect/spawner/random/toolbox
 	name = "toolbox spawner"
 	loot = list(
 		/obj/item/storage/toolbox/mechanical = 20,
@@ -108,14 +108,14 @@
 		/obj/item/storage/toolbox/syndicate = 1
 	)
 
-/obj/effect/spawner/lootdrop/tech_supply
+/obj/effect/spawner/random/tech_supply
 	name = "tech supply spawner"
 	loot = list(
-		/obj/effect/spawner/lootdrop/toolbox = 1,
-		/obj/effect/spawner/lootdrop/bomb_supply = 1,
-		/obj/effect/spawner/lootdrop/powercell = 1,
-		/obj/effect/spawner/lootdrop/scanner = 1,
-		/obj/effect/spawner/lootdrop/tool = 1,
+		/obj/effect/spawner/random/toolbox = 1,
+		/obj/effect/spawner/random/bomb_supply = 1,
+		/obj/effect/spawner/random/powercell = 1,
+		/obj/effect/spawner/random/scanner = 1,
+		/obj/effect/spawner/random/tool = 1,
 		/obj/item/storage/belt/utility = 1,
 		/obj/item/clothing/gloves/color/yellow = 1,
 		/obj/item/clothing/gloves/color/fyellow = 1,
@@ -123,16 +123,16 @@
 		/obj/item/assembly/flash = 1
 	)
 
-/obj/effect/spawner/lootdrop/tech_supply/five
+/obj/effect/spawner/random/tech_supply/five
 	name = "5x tech supply spawner"
-	fan_out_items = TRUE
-	lootcount = 5
+	spawn_random_offset = TRUE
+	spawn_loot_count = 5
 
-/obj/effect/spawner/lootdrop/medical
+/obj/effect/spawner/random/medical/equipment
 	name = "medical equipment spawner"
 	loot = list(
-		/obj/effect/spawner/lootdrop/medicine/five = 1,
-		/obj/effect/spawner/lootdrop/medkit = 1,
+		/obj/effect/spawner/random/medical/medicine/five = 1,
+		/obj/effect/spawner/random/medical/medkit = 1,
 		/obj/item/bodybag = 1,
 		/obj/machinery/iv_drip = 1,
 		/obj/structure/closet/crate/freezer/blood = 1,
@@ -141,7 +141,7 @@
 		/obj/item/storage/organbox = 1
 	)
 
-/obj/effect/spawner/lootdrop/medicine
+/obj/effect/spawner/random/medical/medicine
 	name = "medicine spawner"
 	loot = list(
 		/obj/item/stack/medical/bruise_pack = 5,
@@ -151,7 +151,7 @@
 		/obj/item/stack/medical/splint/twelve = 5,
 		/obj/item/stack/medical/suture = 5,
 		/obj/item/stack/medical/mesh = 5,
-		/obj/effect/spawner/lootdrop/toolbox = 1,
+		/obj/effect/spawner/random/toolbox = 1,
 		/obj/item/storage/pill_bottle/mining = 1,
 		/obj/item/storage/pill_bottle/mannitol = 1,
 		/obj/item/storage/pill_bottle/iron = 5,
@@ -162,12 +162,12 @@
 		/obj/item/storage/pill_bottle/multiver = 5
 	)
 
-/obj/effect/spawner/lootdrop/medicine/five
+/obj/effect/spawner/random/medical/medicine/five
 	name = "5x medicine spawner"
-	fan_out_items = TRUE
-	lootcount = 5
+	spawn_random_offset = TRUE
+	spawn_loot_count = 5
 
-/obj/effect/spawner/lootdrop/medkit
+/obj/effect/spawner/random/medical/medkit
 	name = "medkit spawner"
 	loot = list(
 		/obj/item/storage/firstaid/regular = 1,
@@ -178,7 +178,7 @@
 		/obj/item/storage/firstaid/brute = 1
 	)
 
-/obj/effect/spawner/lootdrop/hardsuit
+/obj/effect/spawner/random/hardsuit
 	name = "hardsuit spawner"
 	loot = list(
 		/obj/item/clothing/suit/space/hardsuit/security = 1,
@@ -187,7 +187,7 @@
 		/obj/item/clothing/suit/space/hardsuit/engine = 1
 	)
 
-/obj/effect/spawner/lootdrop/contraband
+/obj/effect/spawner/random/contraband/overmap
 	name = "contraband spawner"
 	loot = list(
 		/obj/item/gun/ballistic/automatic/pistol = 1,
@@ -212,7 +212,7 @@
 		/obj/item/melee/baton/cattleprod = 1
 	)
 
-/obj/effect/spawner/lootdrop/alcohol_bottle
+/obj/effect/spawner/random/alcohol_bottle
 	name = "alcohol bottle spawner"
 	loot = list(
 		/obj/item/reagent_containers/food/drinks/bottle/gin = 1,
@@ -228,7 +228,7 @@
 		/obj/item/reagent_containers/food/drinks/bottle/kahlua = 1
 	)
 
-/obj/effect/spawner/lootdrop/energy_weapon
+/obj/effect/spawner/random/energy_weapon
 	name = "energy weapon spawner"
 	loot = list(
 		/obj/item/gun/energy/e_gun = 1,
@@ -238,31 +238,31 @@
 		/obj/item/gun/energy/taser = 1
 	)
 
-/obj/effect/spawner/lootdrop/ballistic_weapon
+/obj/effect/spawner/random/ballistic_weapon
 	name = "ballistic weapon spawner"
 	loot = list(
-		/obj/item/gun/ballistic/automatic/pistol = 1,
-		/obj/item/gun/ballistic/automatic/pistol/m1911 = 1,
-		/obj/item/gun/ballistic/shotgun = 1
+		/obj/item/gun/ballistic/automatic/assault_rifle/akm,
+		/obj/item/gun/ballistic/automatic/assault_rifle/m16,
+		/obj/item/gun/ballistic/shotgun/sas14 = 1,
 	)
 
-/obj/effect/spawner/lootdrop/handgun
+/obj/effect/spawner/random/handgun
 	name = "handgun spawner"
 	loot = list(
-		/obj/item/gun/ballistic/automatic/pistol = 1,
+		/obj/item/gun/ballistic/automatic/pistol/automag = 1,
 		/obj/item/gun/ballistic/automatic/pistol/m1911 = 1,
 		/obj/item/gun/energy/e_gun/mini = 1
 	)
 
-/obj/effect/spawner/lootdrop/melee_weapon
+/obj/effect/spawner/random/melee_weapon
 	name = "melee weapon spawner"
 	loot = list(
-		/obj/item/melee/baton/loaded = 1,
+		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/switchblade = 1,
 		/obj/item/kitchen/knife/combat/survival = 1
 	)
 
-/obj/effect/spawner/lootdrop/tactical_gear
+/obj/effect/spawner/random/tactical_gear
 	name = "tactical gear spawner"
 	loot = list(
 		/obj/item/clothing/glasses/night = 1,
@@ -271,7 +271,8 @@
 		/obj/item/clothing/head/helmet/riot = 1
 	)
 
-/obj/effect/spawner/lootdrop/grenade
+
+/obj/effect/spawner/random/grenade
 	name = "grenade spawner"
 	loot = list(
 		/obj/item/grenade/c4/x4 = 1,
@@ -281,7 +282,8 @@
 		/obj/item/grenade/empgrenade = 1
 	)
 
-/obj/effect/spawner/lootdrop/ammo
+
+/obj/effect/spawner/random/ammo
 	name = "ammo spawner"
 	loot = list(
 		/obj/item/ammo_box/magazine/m9mm = 1,
@@ -290,7 +292,7 @@
 		/obj/item/ammo_box/magazine/m12g/slug = 1
 	)
 
-/obj/effect/spawner/lootdrop/plushie
+/obj/effect/spawner/random/plushie
 	name = "plushie spawner"
 	loot = list(
 		/obj/item/toy/plush/beeplushie = 1,
@@ -303,22 +305,23 @@
 	)
 
 //Valueable loot dedicated for off-station ruins and facilities
-/obj/effect/spawner/lootdrop/away_loot
+/obj/effect/spawner/random/away_loot
 	name = "away loot spawner"
 	loot = list(
-		/obj/effect/spawner/lootdrop/energy_weapon = 1,
-		/obj/effect/spawner/lootdrop/ballistic_weapon = 1,
-		/obj/effect/spawner/lootdrop/contraband = 1,
-		/obj/effect/spawner/lootdrop/hardsuit = 1,
-		/obj/effect/spawner/lootdrop/medicine/five = 1,
-		/obj/effect/spawner/lootdrop/tech_supply/five = 1,
-		/obj/effect/spawner/lootdrop/space/material = 1,
-		/obj/effect/spawner/lootdrop/melee_weapon = 1,
-		/obj/effect/spawner/lootdrop/tactical_gear = 1,
-		/obj/effect/spawner/lootdrop/grenade = 1
+		/obj/effect/spawner/random/energy_weapon = 1,
+		/obj/effect/spawner/random/ballistic_weapon = 1,
+		/obj/effect/spawner/random/contraband/overmap = 1,
+		/obj/effect/spawner/random/hardsuit = 1,
+		/obj/effect/spawner/random/medical/medicine/five = 1,
+		/obj/effect/spawner/random/tech_supply/five = 1,
+		/obj/effect/spawner/random/engineering/material_rare = 1,
+		/obj/effect/spawner/random/melee_weapon = 1,
+		/obj/effect/spawner/random/tactical_gear = 1,
+
+/obj/effect/spawner/random/grenade = 1
 	)
 
-/obj/effect/spawner/lootdrop/eyewear
+/obj/effect/spawner/random/eyewear
 	name = "eyewear spawner"
 	loot = list(
 		/obj/item/clothing/glasses/meson = 1,
@@ -328,7 +331,7 @@
 		/obj/item/clothing/glasses/sunglasses = 1
 	)
 
-/obj/effect/spawner/lootdrop/clothes
+/obj/effect/spawner/random/clothes
 	name = "clothes spawner"
 	loot = list(
 		/obj/item/clothing/under/color/random = 1,
@@ -348,7 +351,7 @@
 		/obj/item/clothing/under/rank/civilian/bartender/skirt = 1
 	)
 
-/obj/effect/spawner/lootdrop/headgear
+/obj/effect/spawner/random/headgear
 	name = "headgear spawner"
 	loot = list(
 		/obj/item/clothing/head/welding = 1,
@@ -363,7 +366,7 @@
 		/obj/item/clothing/head/bandana = 1
 	)
 
-/obj/effect/spawner/lootdrop/gloves
+/obj/effect/spawner/random/gloves
 	name = "gloves spawner"
 	loot = list(
 		/obj/item/clothing/gloves/color/black = 3,
@@ -375,7 +378,7 @@
 		/obj/item/clothing/gloves/color/brown = 3
 	)
 
-/obj/effect/spawner/lootdrop/shoes
+/obj/effect/spawner/random/gloves
 	name = "shoes spawner"
 	loot = list(
 		/obj/item/clothing/shoes/sneakers/black = 1,
@@ -384,7 +387,7 @@
 		/obj/item/clothing/shoes/jackboots = 1
 	)
 
-/obj/effect/spawner/lootdrop/suit
+/obj/effect/spawner/random/suit
 	name = "suit spawner"
 	loot = list(
 		/obj/item/clothing/suit/toggle/labcoat = 1,
@@ -396,7 +399,7 @@
 		/obj/item/clothing/suit/hooded/wintercoat/aformal = 1
 	)
 
-/obj/effect/spawner/lootdrop/cash
+/obj/effect/spawner/random/casht
 	name = "cash spawner"
 	loot = list(
 		/obj/item/stack/spacecash/c1 = 4,
@@ -409,7 +412,7 @@
 		/obj/item/stack/spacecash/c1000 = 1
 	)
 
-/obj/effect/spawner/lootdrop/cash/five
+/obj/effect/spawner/random/casht/five
 	name = "5x cash spawner"
-	fan_out_items = TRUE
-	lootcount = 5
+	spawn_random_offset = TRUE
+	spawn_loot_count = 5

@@ -38,17 +38,17 @@
 	items_per_transport_high = 2
 
 /datum/overmap_object/transportable/ore_loot/GetLootTable()
-	return list(/obj/effect/spawner/lootdrop/ore_scarce = 10,
-				/obj/effect/spawner/lootdrop/ore = 50,
-				/obj/effect/spawner/lootdrop/ore_rich = 50)
+	return list(/obj/effect/spawner/random/ore_scarce = 10,
+				/obj/effect/spawner/random/ore = 50,
+				/obj/effect/spawner/random/ore_rich = 50)
 
 /obj/effect/abstract/overmap/ore_loot
 	icon_state = "smallobject"
 	layer = OVERMAP_LAYER_LOOT
 	color = LIGHT_COLOR_PURPLE
 
-/obj/effect/spawner/lootdrop/ore_rich
-	lootcount = 1
+/obj/effect/spawner/random/ore_rich
+	spawn_loot_count = 1
 	loot = list(
 		/obj/item/stack/ore/iron{amount = 34} = 50,
 		/obj/item/stack/ore/glass{amount = 25} = 15,

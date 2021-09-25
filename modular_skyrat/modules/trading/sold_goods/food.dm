@@ -18,7 +18,7 @@
 
 /datum/sold_goods/cow
 	cost = 350
-	path = /mob/living/simple_animal/cow
+	path = /mob/living/basic/cow
 
 /datum/sold_goods/goat
 	cost = 220
