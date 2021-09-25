@@ -196,10 +196,9 @@
 /obj/item/powerarmor/powerarmor_part
 	name = "power armor part"
 	desc = "A part of power armor."
-	//checks the constructs [x] in the list
+	///checks the constructs [x] in the list, whether the construct has this part already
 	var/powerarmor_part = 0
-	//enables the constructs [x] in tool_required
-	//this means that after putting in this part, you must do these actions before continuing
+	///enables the constructs [x] in tool_required, requiring this tool before proceeding
 	var/list/powerarmor_tool = list(0)
 
 /obj/item/powerarmor/powerarmor_part/head
@@ -259,15 +258,19 @@
 	var/upgradelimit = 20
 	///whether the upgradelimit has been up'd, by some item
 	var/upgradeboosted = FALSE
-	//the cooldown for
+	///the cooldown for doing the process
 	COOLDOWN_DECLARE(healing_cooldown)
-	//the list of upgrades possible, starting here
-	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0, 0) //melee, bullet, laser, energy, bio, rad, fire
-	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE) //brute, burn, toxin, oxygen, stamina
+	///the list of possible armor upgrades: melee, bullet, laser, energy, bio, rad, fire
+	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0, 0)
+	///the list of possible healing upgrades: brute, burn, toxin, oxygen, stamina
+	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
+	///whether the armor has speed_upgrades, and by how many
 	var/speed_upgraded = 0
-	var/list/misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE) //spaceproof, light, welding, temp-regulating, storage
-
+	///the list of possible misc. upgrades: spaceproof, light, welding, temp-regulating, storage
+	var/list/misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
+	///who is being affected by the power armor; the wearer
 	var/mob/wearer
+	///an inner storage for the power armor, so when you get the upgrade, you can use it
 	var/obj/item/storage/backpack/inner_backpack
 
 /obj/item/clothing/suit/hooded/powerarmor/emp_act(severity)
