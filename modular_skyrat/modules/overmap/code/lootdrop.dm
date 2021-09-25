@@ -209,7 +209,7 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 1,
 		/obj/item/clothing/mask/gas/syndicate = 1,
 		/obj/item/clothing/neck/necklace/dope = 1,
-		/obj/item/melee/baton/cattleprod = 1
+		/obj/item/melee/baton/security/cattleprod = 1
 	)
 
 /obj/effect/spawner/random/alcohol_bottle
