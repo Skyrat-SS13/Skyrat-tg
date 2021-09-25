@@ -30,7 +30,7 @@
 	if(!choice)
 		to_chat(cortical_owner, span_warning("No selection made!"))
 		return
-	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5)
+	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5, added_purity = 1)
 	cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, 30, methods = INGEST)
 	to_chat(cortical_owner.human_host, span_warning("You feel something cool inside of you!"))
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
