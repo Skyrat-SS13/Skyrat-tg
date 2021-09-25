@@ -268,6 +268,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Caretaker Jacket"
 	item_path = /obj/item/clothing/suit/victoriantailcoatbutler
 
+/datum/loadout_item/suit/ntrep_civ
+	name = "Runner fur coat"
+	item_path = /obj/item/clothing/suit/ntrepciv
+
 /datum/loadout_item/suit/yakuzajacket
 	name = "Asian Jacket"
 	item_path = /obj/item/clothing/suit/yakuza
