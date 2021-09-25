@@ -323,16 +323,18 @@
 	)
 
 ///////////////////HECU SPAWNERS
-/obj/effect/spawner/lootdrop/hecu_smg
+/obj/effect/spawner/random/hecu_smg
 	name = "HECU SMG drops"
+	spawn_all_loot = TRUE
 	loot = list(/obj/item/gun/ballistic/automatic/c20r/unrestricted = 30,
 				/obj/item/clothing/mask/gas/hecu2 = 20,
 				/obj/item/clothing/head/helmet = 20,
 				/obj/item/clothing/suit/armor/vest = 15,
 				/obj/item/clothing/shoes/combat = 15)
 
-/obj/effect/spawner/lootdrop/hecu_deagle
+/obj/effect/spawner/random/hecu_deagle
 	name = "HECU Deagle drops"
+	spawn_all_loot = TRUE
 	loot = list(/obj/item/gun/ballistic/automatic/pistol/deagle = 30,
 				/obj/item/clothing/mask/gas/hecu2 = 20,
 				/obj/item/clothing/head/helmet = 20,
@@ -365,7 +367,7 @@
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	combat_mode = TRUE
-	loot = list(/obj/item/melee/classic_baton)
+	loot = list(/obj/item/melee/baton)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 7.5
 	faction = list(FACTION_XEN)
@@ -395,7 +397,7 @@
 	icon_living = "hecu_ranged"
 	casingtype = /obj/item/ammo_casing/a50ae
 	projectilesound = 'sound/weapons/gun/pistol/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/lootdrop/hecu_deagle)
+	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/random/hecu_deagle)
 	dodging = TRUE
 	rapid_melee = 1
 
@@ -405,7 +407,7 @@
 	icon_living = "hecu_ranged_smg"
 	casingtype = /obj/item/ammo_casing/c45
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
-	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/lootdrop/hecu_smg)
+	loot = list(/obj/effect/gibspawner/human, /obj/effect/spawner/random/hecu_smg)
 
 /mob/living/simple_animal/hostile/blackmesa/sec
 	name = "Security Guard"

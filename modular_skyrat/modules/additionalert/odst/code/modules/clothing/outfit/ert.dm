@@ -12,7 +12,7 @@
 	back = /obj/item/storage/backpack/ert/odst
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
-		/obj/item/melee/baton/loaded,\
+		/obj/item/melee/baton/security/loaded ,\
 		)
 	l_pocket = /obj/item/gun/energy/e_gun/mini
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/double
