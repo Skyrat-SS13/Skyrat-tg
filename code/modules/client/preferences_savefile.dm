@@ -320,8 +320,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	persistent_scars = sanitize_integer(persistent_scars)
 
-	loadout_list = sanitize_loadout_list(update_loadout_list(loadout_list)) //SKYRAT EDIT ADDITION
-
 	//Validate job prefs
 	for(var/j in job_preferences)
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
@@ -378,8 +376,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	return TRUE
 
-<<<<<<< HEAD
-=======
 /datum/preferences/proc/sanitize_be_special(list/input_be_special)
 	var/list/output = list()
 
@@ -388,7 +384,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			output += role
 
 	return output.len == input_be_special.len ? input_be_special : output
->>>>>>> ec69a3433e3 (Fix incorrect antagonists showing up on be_special (#61676))
 
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value,list())
