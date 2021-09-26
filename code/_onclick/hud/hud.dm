@@ -92,19 +92,31 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/erp_ui_style
 	// SKYRAT EDIT ADDITION END
 
+	/// Whether or not screentips are enabled.
+	/// This is updated by the preference for cheaper reads than would be
+	/// had with a proc call, especially on one of the hottest procs in the
+	/// game (MouseEntered).
+	var/screentips_enabled = TRUE
+
+	/// The color to use for the screentips.
+	/// This is updated by the preference for cheaper reads than would be
+	/// had with a proc call, especially on one of the hottest procs in the
+	/// game (MouseEntered).
+	var/screentip_color
+
 /datum/hud/New(mob/owner)
 	mymob = owner
 
 	if (!ui_style)
 		// will fall back to the default if any of these are null
-		ui_style = ui_style2icon(owner.client && owner.client.prefs && owner.client.prefs.UI_style)
+		ui_style = ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
 		// SKYRAT EDIT ADDITION BEGIN - ERP UI
-		erp_ui_style = erp_ui_style2icon(owner.client && owner.client.prefs && owner.client.prefs.UI_style)
+		erp_ui_style = erp_ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
 		// SKYRAT EDIT ADDITION END
 	hide_actions_toggle = new
 	hide_actions_toggle.InitialiseIcon(src)
 	if(mymob.client)
-		hide_actions_toggle.locked = mymob.client.prefs.buttons_locked
+		hide_actions_toggle.locked = mymob.client.prefs.read_preference(/datum/preference/toggle/buttons_locked)
 
 	hand_slots = list()
 
@@ -196,7 +208,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.inventory_shown)
 				screenmob.client.screen += toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen += ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len && !hotkey_ui_hidden)
@@ -216,7 +228,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen -= ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
@@ -240,7 +252,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen -= ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
