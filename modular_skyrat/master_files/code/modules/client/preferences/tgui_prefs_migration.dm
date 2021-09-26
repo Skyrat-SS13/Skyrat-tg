@@ -61,6 +61,10 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
         if(mutant_bodyparts[body_part])
             var/type = mutant_bodyparts[body_part][MUTANT_INDEX_NAME]
             var/list/color = mutant_bodyparts[body_part][MUTANT_INDEX_COLOR_LIST]
+			if(color)
+				color[1] = expand_three_digit_color(color[1])
+				color[2] = expand_three_digit_color(color[2])
+				color[3] = expand_three_digit_color(color[3])
             for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
                 if(!preference.relevant_mutant_bodypart || preference.relevant_mutant_bodypart != body_part)
                     continue
@@ -71,10 +75,7 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
                     if(istype(preference, /datum/preference/choiced))
                         write_preference(preference, type)
                         continue
-				if(color)
-					if(istype(preference, /datum/preference/tri_color))
-						color[1] = expand_three_digit_color(color[1])
-						color[2] = expand_three_digit_color(color[2])
-						color[3] = expand_three_digit_color(color[3])
-						write_preference(preference, color)
-						continue
+                    if(color)
+                        if(istype(preference, /datum/preference/tri_color))
+                            write_preference(preference, color)
+                            continue
