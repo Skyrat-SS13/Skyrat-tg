@@ -71,10 +71,10 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
                     if(istype(preference, /datum/preference/choiced))
                         write_preference(preference, type)
                         continue
-                    if(color)
+				if(color)
+					if(istype(preference, /datum/preference/tri_color))
 						color[1] = expand_three_digit_color(color[1])
 						color[2] = expand_three_digit_color(color[2])
 						color[3] = expand_three_digit_color(color[3])
-                        if(istype(preference, /datum/preference/tri_color))
-                            write_preference(preference, color)
-                            continue
+						write_preference(preference, color)
+						continue
