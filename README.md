@@ -22,11 +22,11 @@ Space Station 13 is a paranoia-laden round-based roleplaying game set against th
 [Modularisation Guide](./modular_skyrat/readme.md)
 
 ## DOWNLOADING
-[Downloading](.github/DOWNLOADING.md)
+[Downloading](.github/guides/DOWNLOADING.md)
 
-[Running on the server](.github/RUNNING_A_SERVER.md)
+[Running on the server](.github/guides/RUNNING_A_SERVER.md)
 
-[Maps and Away Missions](.github/MAPS_AND_AWAY_MISSIONS.md)
+[Maps and Away Missions](.github/guides/MAPS_AND_AWAY_MISSIONS.md)
 
 ## :exclamation: How to compile :exclamation:
 
@@ -34,20 +34,20 @@ On **2021-01-04** we have changed the way to compile the codebase.
 
 Find `BUILD.bat` here in the root folder of tgstation, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile.
 
+<<<<<<< HEAD
 After it finishes, you can then [setup the server](.github/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
+=======
+**The long way**. Find `bin/build.cmd` in this folder, and double click it to initiate the build. It consists of multiple steps and might take around 1-5 minutes to compile. If it closes, it means it has finished its job. You can then [setup the server](.github/guides/RUNNING_A_SERVER.md) normally by opening `tgstation.dmb` in DreamDaemon.
+>>>>>>> 28ba8ee9a08 (Fixes some mispathed markdown links in the readme/contribution file (#61494))
 
 **Building tgstation in DreamMaker directly is now deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 
-## Requirements for contributors
-[Guidelines for Contributors](.github/CONTRIBUTING.md)
+## Contributors
+[Guides for Contributors](.github/CONTRIBUTING.md)
 
 [/tg/station HACKMD account](https://hackmd.io/@tgstation) - Design documentation here
-
-[Documenting your code](.github/AUTODOC_GUIDE.md)
-
-[Policy configuration system](.github/POLICYCONFIG.md)
 
 [Interested in some starting lore?](https://github.com/tgstation/common_core)
 

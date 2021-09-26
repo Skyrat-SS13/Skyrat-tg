@@ -2,14 +2,14 @@
 	name = "Trauma Team"
 
 	suit =  /obj/item/clothing/suit/space/hardsuit/ert/traumateam
-	glasses = /obj/item/clothing/glasses/hud/health/sunglasses 
+	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile/infiltrator/ntrauma
 	suit_store = /obj/item/gun/energy/e_gun/stun
 	belt = /obj/item/storage/belt/military/ntrauma
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
-		/obj/item/melee/baton/loaded,\
+		/obj/item/melee/baton/security/loaded ,\
 		/obj/item/reagent_containers/hypospray/combat/nanites,\
 		/obj/item/gun/medbeam,\
 		/obj/item/storage/firstaid/tactical/ntrauma,\
