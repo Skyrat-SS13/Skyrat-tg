@@ -9,11 +9,14 @@ import { JobsPage } from "./JobsPage";
 import { MainPage } from "./MainPage";
 import { SpeciesPage } from "./SpeciesPage";
 import { QuirksPage } from "./QuirksPage";
-
+import { LanguagesPage } from "./LanguagesMenu";
+import { LimbsPage } from "./LimbsPage";
 enum Page {
   Antags,
   Main,
   Jobs,
+  Limbs,
+  Languages,
   Species,
   Quirks,
 }
@@ -54,6 +57,12 @@ export const CharacterPreferenceWindow = (props, context) => {
       break;
     case Page.Jobs:
       pageContents = <JobsPage />;
+      break;
+    case Page.Limbs:
+      pageContents = <LimbsPage />;
+      break;
+    case Page.Languages:
+      pageContents = <LanguagesPage />;
       break;
     case Page.Main:
       pageContents = (<MainPage
@@ -127,6 +136,26 @@ export const CharacterPreferenceWindow = (props, context) => {
                   */}
 
                   Occupations
+                </PageButton>
+              </Stack.Item>
+
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Limbs}
+                  setPage={setCurrentPage}
+                >
+                  Limb Augumentation/Marking
+                </PageButton>
+              </Stack.Item>
+
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Languages}
+                  setPage={setCurrentPage}
+                >
+                  Languages
                 </PageButton>
               </Stack.Item>
 

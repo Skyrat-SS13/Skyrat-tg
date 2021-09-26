@@ -43,10 +43,20 @@
 /datum/preference_middleware/proc/get_character_preferences(mob/user)
 	return null
 
-/// Called every set_preference, returns TRUE if this handled it.
+/// Called before every update_preference, returns TRUE if this handled it.
 /datum/preference_middleware/proc/pre_set_preference(mob/user, preference, value)
+	return FALSE
+
+/// Called after every update_preference, returns TRUE if this handled it.
+/datum/preference_middleware/proc/post_set_preference(mob/user, preference, value)
 	return FALSE
 
 /// Called when a character is changed.
 /datum/preference_middleware/proc/on_new_character(mob/user)
+	return
+
+/// Called when applying preferences to the mob.
+/datum/preference_middleware/proc/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferecnes) //SKYRAT EDIT CHANGE
+	SHOULD_NOT_SLEEP(TRUE)
+	SHOULD_CALL_PARENT(FALSE)
 	return

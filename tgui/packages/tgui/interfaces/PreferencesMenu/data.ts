@@ -53,6 +53,40 @@ export type Quirk = {
   value: number;
 };
 
+export type Language = {
+  description: string;
+  name: string;
+  icon: string;
+};
+
+export type Marking = {
+  name: string;
+  color: string;
+  marking_id: string;
+};
+
+export type MarkingData = {
+  marking_choices: string[];
+  markings_list: Marking[];
+};
+
+export type Limb = {
+  slot: string;
+  name: string;
+  can_augment: boolean;
+  chosen_aug: string;
+  chosen_style: string;
+  aug_choices: Record<string, string>;
+  markings: MarkingData;
+};
+
+export type Organ = {
+  slot: string;
+  name: string;
+  chosen_organ: string;
+  organ_choices: Record<string, string>
+};
+
 export type QuirkInfo = {
   max_positive_quirks: number;
   quirk_info: Record<string, Quirk>;
@@ -135,9 +169,16 @@ export type PreferencesMenuData = {
 
   job_alt_titles: Record<string, string>;
 
+  robotic_styles: string[];
+  limbs_data: Limb[];
+  organs_data: Organ[];
+
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];
+  selected_languages: Language[];
+  unselected_languages: Language[];
+  total_language_points: number;
 
   antag_bans?: string[];
   antag_days_left?: Record<string, number>;

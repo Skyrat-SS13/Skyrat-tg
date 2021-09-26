@@ -9,6 +9,7 @@
 	default_priority = 60
 
 	icon_state = "swarmer"
+	secret = TRUE
 
 	// since various flats and sharps are the same,
 	// all non-accidental notes are doubled in the list

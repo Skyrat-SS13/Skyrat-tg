@@ -41,15 +41,6 @@
 
 	var/datum/species/pref_species
 
-	/// Chosen cultural informations
-	var/pref_culture = /datum/cultural_info/culture/generic
-	var/pref_location = /datum/cultural_info/location/generic
-	var/pref_faction = /datum/cultural_info/faction/none
-	/// Whether someone wishes to see more information regarding either of those
-	var/culture_more_info = FALSE
-	var/location_more_info = FALSE
-	var/faction_more_info = FALSE
-
 	//BACKGROUND STUFF
 	var/general_record = ""
 	var/security_record = ""
@@ -65,40 +56,12 @@
 	var/list/alt_job_titles = list()
 
 /datum/preferences/proc/species_updated(species_type)
-	if(!update_pref_species())
-		return
-	var/list/new_features = pref_species.get_random_features() //We do this to keep flavor text, genital sizes etc.
-	for(var/key in features)
-		new_features[key] = features[key]
-	features = new_features
-	mutant_bodyparts = pref_species.get_random_mutant_bodyparts(features)
-	body_markings = pref_species.get_random_body_markings(features)
-	if(pref_species.use_skintones)
-		features["uses_skintones"] = TRUE
-	//We reset the quirk-based stuff
-	augments = list()
 	all_quirks = list()
 	//Reset cultural stuff
-	pref_culture = pref_species.cultures[1]
-	pref_location = pref_species.locations[1]
-	pref_faction = pref_species.factions[1]
 	try_get_common_language()
-	validate_languages()
 	save_character()
 
-/datum/preferences/proc/update_pref_species()
-	var/species_type = read_preference(/datum/preference/choiced/species)
-	if(pref_species)
-		if(pref_species.type == species_type)
-			return FALSE
-		QDEL_NULL(pref_species)
-	pref_species = new species_type()
-	return TRUE
-
 /datum/preferences/proc/SkyratTopic(href, list/href_list, mob/user)
-	if(update_pref_species())
-		show_advanced_prefs(user)
-		return
 	if(href_list["task"])
 		switch(href_list["task"])
 			if("augment_style")
@@ -158,51 +121,10 @@
 						if(!isnull(msg))
 							exploitable_info = STRIP_HTML_SIMPLE(msg, MAX_FLAVOR_LEN)
 
-					if("cultural_info_change")
-						var/thing = href_list["info"]
-						var/list/choice_list = list()
-						var/list/iteration_list
-						var/list/siphon_list
-						switch(thing)
-							if(CULTURE_CULTURE)
-								iteration_list = pref_species.cultures
-								siphon_list = GLOB.culture_cultures
-							if(CULTURE_FACTION)
-								iteration_list = pref_species.factions
-								siphon_list = GLOB.culture_factions
-							if(CULTURE_LOCATION)
-								iteration_list = pref_species.locations
-								siphon_list = GLOB.culture_locations
-						for(var/cultural_entity in iteration_list)
-							var/datum/cultural_info/CINFO = siphon_list[cultural_entity]
-							choice_list[CINFO.name] = cultural_entity
-						var/new_cultural_thing = input(user, "Choose your character's [thing]:", "Character Preference")  as null|anything in choice_list
-						if(new_cultural_thing)
-							switch(thing)
-								if(CULTURE_CULTURE)
-									pref_culture = choice_list[new_cultural_thing]
-								if(CULTURE_FACTION)
-									pref_faction = choice_list[new_cultural_thing]
-								if(CULTURE_LOCATION)
-									pref_location = choice_list[new_cultural_thing]
-							validate_languages()
-
-					if("cultural_info_toggle")
-						var/thing = href_list["info"]
-						switch(thing)
-							if(CULTURE_CULTURE)
-								culture_more_info = !culture_more_info
-							if(CULTURE_FACTION)
-								faction_more_info = !faction_more_info
-							if(CULTURE_LOCATION)
-								location_more_info = !location_more_info
 
 					if("language")
 						var/target_lang = text2path(href_list["lang"])
 						var/level = text2num(href_list["level"])
-						var/required_lang = get_required_languages()
-						if(required_lang[target_lang]) //Can't do anything to a required language
-							return TRUE
 						var/opt_langs = get_optional_languages()
 						if(!opt_langs[target_lang])
 							return TRUE
@@ -508,10 +430,6 @@
 	show_advanced_prefs(user)
 
 /datum/preferences/proc/show_advanced_prefs(mob/user)
-	update_pref_species()
-	if(needs_update)
-		character_preview_view?.update_body()
-		needs_update = FALSE
 	var/list/dat = list()
 	dat += "<style>span.color_holder_box{display: inline-block; width: 20px; height: 8px; border:1px solid #000; padding: 0px;}</style>"
 	dat += "<center>"
@@ -715,35 +633,6 @@
 			dat += "<td width='70%'></td>"
 			dat += "<td width='9%'></td>"
 			dat += "</tr>"
-			var/even = FALSE
-			for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
-				even = !even
-				var/datum/cultural_info/cult
-				var/prefix
-				var/more = FALSE
-				switch(cultural_thing)
-					if(CULTURE_CULTURE)
-						cult = GLOB.culture_cultures[pref_culture]
-						prefix = "Culture"
-						more = culture_more_info
-					if(CULTURE_LOCATION)
-						cult = GLOB.culture_locations[pref_location]
-						prefix = "Location"
-						more = location_more_info
-					if(CULTURE_FACTION)
-						cult = GLOB.culture_factions[pref_faction]
-						prefix = "Faction"
-						more = faction_more_info
-				var/cult_desc
-				if(more || length(cult.description) <= 160)
-					cult_desc = cult.description
-				else
-					cult_desc = "[copytext(cult.description, 1, 160)]..."
-				dat += "<tr style='background-color:[even ? "#13171C" : "#19232C"]'>"
-				dat += "<td valign='top'><b>[prefix]:</b> <a href='?src=[REF(src)];preference=cultural_info_change;info=[cultural_thing];task=cultural'>[cult.name]</a><font color='#AAAAAA' size=1><b>[cult.get_extra_desc(more)]</b></font></td>"
-				dat += "<td><i>[cult_desc]</i></td>"
-				dat += "<td valign='top'><a href='?src=[REF(src)];preference=cultural_info_toggle;info=[cultural_thing];task=cultural'>[more ? "Show Less" : "Show More"]</a></td>"
-				dat += "</tr>"
 			dat += "</table>"
 			dat += "<table width='100%'><tr>"
 			dat += "<td valign='top' width=33%>"
@@ -936,60 +825,17 @@
 		points -= languages[langpath]
 	return points
 
-/datum/preferences/proc/get_required_languages()
-	var/list/lang_list = list()
-	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
-		var/datum/cultural_info/cult
-		switch(cultural_thing)
-			if(CULTURE_CULTURE)
-				cult = GLOB.culture_cultures[pref_culture]
-			if(CULTURE_LOCATION)
-				cult = GLOB.culture_locations[pref_location]
-			if(CULTURE_FACTION)
-				cult = GLOB.culture_factions[pref_faction]
-		if(cult.required_lang)
-			lang_list[cult.required_lang] = TRUE
-	return lang_list
-
 /datum/preferences/proc/get_optional_languages()
 	var/list/lang_list = list()
 	for(var/lang in pref_species.learnable_languages)
 		lang_list[lang] = TRUE
-	for(var/cultural_thing in list(CULTURE_CULTURE, CULTURE_LOCATION, CULTURE_FACTION))
-		var/datum/cultural_info/cult
-		switch(cultural_thing)
-			if(CULTURE_CULTURE)
-				cult = GLOB.culture_cultures[pref_culture]
-			if(CULTURE_LOCATION)
-				cult = GLOB.culture_locations[pref_location]
-			if(CULTURE_FACTION)
-				cult = GLOB.culture_factions[pref_faction]
-		if(cult.additional_langs)
-			for(var/langtype in cult.additional_langs)
-				lang_list[langtype] = TRUE
 	return lang_list
 
 /datum/preferences/proc/get_available_languages()
-	var/list/lang_list = get_required_languages()
+	var/list/lang_list = list()
 	for(var/lang_key in get_optional_languages())
 		lang_list[lang_key] = TRUE
 	return lang_list
-
-/datum/preferences/proc/validate_languages()
-	var/list/opt_langs = get_optional_languages()
-	var/list/req_langs = get_required_languages()
-	for(var/langkey in languages)
-		if(!opt_langs[langkey] && !req_langs[langkey])
-			languages -= langkey
-	for(var/req_lang in req_langs)
-		if(!languages[req_lang])
-			languages[req_lang] = LANGUAGE_SPOKEN
-	var/left_points = get_linguistic_points()
-	//If we're below 0 points somehow, remove all optional languages
-	if(left_points < 0)
-		for(var/lang in languages)
-			if(!req_langs[lang])
-				languages -= lang
 
 /datum/preferences/proc/can_buy_language(language_path, level)
 	var/points = get_linguistic_points()
@@ -1021,13 +867,12 @@
 	dat += "<td width=10%></td>"
 	dat += "</tr>"
 	var/list/avail_langs = get_available_languages()
-	var/list/req_langs = get_required_languages()
 	var/even = TRUE
 	var/background_cl
 	for(var/lang_path in avail_langs)
 		even = !even
 		var/datum/language/lang_datum = lang_path
-		var/required = (req_langs[lang_path] ? TRUE : FALSE)
+		var/required = FALSE
 		if(even)
 			background_cl = (required ? "#7A5A00" : "#17191C")
 		else
@@ -1069,8 +914,6 @@
 	popup.open(FALSE)
 
 /datum/preferences/proc/validate_species_parts()
-	update_pref_species()
-
 	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
 
 	//Remove all "extra" accessories

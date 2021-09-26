@@ -248,6 +248,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if (istype(requested_preference, /datum/preference/name))
 				tainted_character_profiles = TRUE
 
+			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+				if (preference_middleware.post_set_preference(usr, requested_preference_key, value))
+					return TRUE
+
 			return TRUE
 		if ("set_color_preference")
 			var/requested_preference_key = params["preference"]
@@ -426,10 +430,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 /// Updates the currently displayed body
 /atom/movable/screen/character_preview_view/proc/update_body()
-	if (isnull(body))
-		create_body()
-	else
-		body.wipe_state()
+	create_body()
 	appearance = preferences.render_new_preview_appearance(body)
 
 /atom/movable/screen/character_preview_view/proc/create_body()
@@ -530,6 +531,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 			continue
 		if(preference.is_accessible(src)) // Only apply preferences you can actually access. SKYRAT EDIT CHANGE.
 			preference.apply_to_human(character, read_preference(preference.type), src) //SKYRAT EDIT CHANGE
+
+	for (var/datum/preference_middleware/preference_middleware as anything in middleware) //SKYRAT EDIT CHANGE
+		preference_middleware.apply_to_human(character, src) //SKYRAT EDIT CHANGE
 
 	character.dna.real_name = character.real_name
 

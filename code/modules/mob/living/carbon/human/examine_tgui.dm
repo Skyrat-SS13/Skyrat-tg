@@ -17,7 +17,8 @@
 		dummy_holder = generate_dummy_lookalike(REF(holder), holder)
 		var/datum/job/job_ref = SSjob.GetJob(holder.job)
 		if(job_ref && job_ref.outfit)
-			var/datum/outfit/outfit_ref = new job_ref.outfit()
+			var/datum/outfit/outfit_ref = new()
+			outfit_ref.copy_outfit_from_target(holder)
 			outfit_ref.equip(dummy_holder, visualsOnly=TRUE)
 		examine_panel_screen = new
 		examine_panel_screen.vis_contents += dummy_holder
