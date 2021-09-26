@@ -445,6 +445,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Jeans"
 	item_path = /obj/item/clothing/under/pants/jeans
 
+/datum/loadout_item/under/miscellaneous/jeansripped
+	name = "Ripped Jeans"
+	item_path = /obj/item/clothing/under/pants/jeanripped
+
 /datum/loadout_item/under/miscellaneous/khaki
 	name = "Khaki Pants"
 	item_path = /obj/item/clothing/under/pants/khaki

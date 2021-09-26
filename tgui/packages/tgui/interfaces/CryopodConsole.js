@@ -5,7 +5,9 @@ import { Window } from '../layouts';
 export const CryopodConsole = (props, context) => {
   const { data } = useBackend(context);
   const { account_name } = data;
+
   const welcomeTitle = `Hello, ${account_name || '[REDACTED]'}!`;
+
   return (
     <Window title="Cryopod Console" width={400} height={480}>
       <Window.Content>
@@ -24,9 +26,11 @@ export const CryopodConsole = (props, context) => {
     </Window>
   );
 };
+
 const CrewList = (props, context) => {
   const { data } = useBackend(context);
   const { frozen_crew } = data;
+
   return (
     frozen_crew.length && (
       <Section
