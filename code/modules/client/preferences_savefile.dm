@@ -208,7 +208,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
 	default_slot = sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles = sanitize_integer(toggles, 0, (2**24)-1, initial(toggles))
-	be_special = SANITIZE_LIST(be_special)
+	be_special = sanitize_be_special(SANITIZE_LIST(be_special))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
 
@@ -320,8 +320,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	persistent_scars = sanitize_integer(persistent_scars)
 
-	loadout_list = sanitize_loadout_list(update_loadout_list(loadout_list)) //SKYRAT EDIT ADDITION
-
 	//Validate job prefs
 	for(var/j in job_preferences)
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
@@ -378,6 +376,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	return TRUE
 
+/datum/preferences/proc/sanitize_be_special(list/input_be_special)
+	var/list/output = list()
+
+	for (var/role in input_be_special)
+		if (role in GLOB.special_roles)
+			output += role
+
+	return output.len == input_be_special.len ? input_be_special : output
 
 /proc/sanitize_keybindings(value)
 	var/list/base_bindings = sanitize_islist(value,list())
