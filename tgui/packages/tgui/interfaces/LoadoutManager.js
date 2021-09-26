@@ -105,6 +105,7 @@ export const LoadoutManager = (props, context) => {
                                 <Button
                                   icon="lock"
                                   onClick={() => act('display_restrictions', {
+                                    path: item.path,
                                   })} />
                               </Stack.Item>
                             )}
@@ -115,6 +116,7 @@ export const LoadoutManager = (props, context) => {
                                   icon="heart"
                                   color="pink"
                                   onClick={() => act('donator_explain', {
+                                    path: item.path,
                                   })}
                                 />
                               </Stack.Item>

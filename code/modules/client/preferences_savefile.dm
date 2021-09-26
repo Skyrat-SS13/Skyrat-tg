@@ -96,9 +96,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 41)
 		migrate_preferences_to_tgui_prefs_menu()
 
-/datum/preferences/proc/update_character(current_version, savefile/savefile)
+/datum/preferences/proc/update_character(current_version, savefile/S) //SKYRAT EDIT CHANGE
 	if (current_version < 41)
-		migrate_character_to_tgui_prefs_menu()
+	migrate_character_to_tgui_prefs_menu(S) //SKYRAT EDIT ADDITION
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
@@ -310,6 +310,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	READ_FILE(S["all_quirks"], all_quirks)
 
+	load_character_skyrat(S) //SKYRAT EDIT ADDITION
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(needs_update >= 0)
@@ -327,8 +329,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
 	validate_quirks()
-
-	load_character_skyrat(S) //SKYRAT EDIT ADDITION
 
 	return TRUE
 

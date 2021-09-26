@@ -285,16 +285,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 
-		//SKYRAT EDIT ADDITION
-		if ("open_advanced_prefs")
-			show_advanced_prefs(usr)
-			return TRUE
-
 		if("update_preview")
 			preview_pref = params["updated_preview"]
 			character_preview_view.update_body()
 			return TRUE
-
+		//SKYRAT EDIT ADDITION
 		if ("open_loadout")
 			if(parent.open_loadout_ui)
 				parent.open_loadout_ui.ui_interact(usr)
@@ -321,11 +316,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	. = ..()
 	if (.)
 		return
-	//SKYRAT EDIT ADDITION
-	if(href_list["preference"] || href_list["task"])
-		SkyratTopic(href, href_list, usr)
-		return TRUE
-	//SKYRAT EDIT END
 
 	if (href_list["open_keybindings"])
 		current_window = PREFERENCE_TAB_KEYBINDINGS

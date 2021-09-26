@@ -22,7 +22,6 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 const CharacterControls = (props: {
   handleRotate: () => void,
   handleOpenSpecies: () => void,
-  handleAdvancedPrefs: () => void, // SKYRAT EDIT ADDITION
   handleLoadout: () => void, // SKYRAT EDIT ADDITION
   gender: Gender,
   setGender: (gender: Gender) => void,
@@ -55,18 +54,6 @@ const CharacterControls = (props: {
           <GenderButton
             gender={props.gender}
             handleSetGender={props.setGender}
-          />
-        </Stack.Item>
-      )}
-      {props.handleAdvancedPrefs && (
-        // SKYRAT EDIT ADDITION
-        <Stack.Item>
-          <Button
-            onClick={props.handleAdvancedPrefs}
-            fontSize="22px"
-            icon="atom"
-            tooltip="Show Advanced Preferences"
-            tooltipPosition="top"
           />
         </Stack.Item>
       )}

@@ -78,15 +78,6 @@
 			stack_trace("Failed to locate desired loadout item (path: [params["path"]]) in the global list of loadout datums!")
 			return
 
-		//Here we will perform basic checks to ensure there are no exploits happening
-		if(interacted_item.donator_only && !GLOB.donator_list[owner.ckey])
-			message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is donator only.")
-			return
-
-		if(interacted_item.ckeywhitelist && !(owner.ckey in interacted_item.ckeywhitelist))
-			message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is ckey locked.")
-			return
-
 	switch(action)
 		// Turns the tutorial on and off.
 		if("toggle_tutorial")
@@ -101,6 +92,14 @@
 			return
 
 		if("select_item")
+			//Here we will perform basic checks to ensure there are no exploits happening
+			if(interacted_item.donator_only && !GLOB.donator_list[owner.ckey])
+				message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is donator only.")
+				return
+
+			if(interacted_item.ckeywhitelist && !(owner.ckey in interacted_item.ckeywhitelist))
+				message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is ckey locked.")
+				return
 			if(params["deselect"])
 				deselect_item(interacted_item)
 				character_preview_view.update_body()
@@ -278,7 +277,7 @@
 
 	data["character_preview_view"] = character_preview_view.assigned_map
 	data["selected_loadout"] = all_selected_paths
-	data["user_is_donator"] = GLOB.donator_list[owner.ckey]
+	data["user_is_donator"] = GLOB.donator_list[owner.ckey] || is_admin(user)
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
 	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
