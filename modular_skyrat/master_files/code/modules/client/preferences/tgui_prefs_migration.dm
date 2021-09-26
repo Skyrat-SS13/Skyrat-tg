@@ -57,25 +57,24 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 		write_preference(GLOB.preference_entries[/datum/preference/tri_color/mutant_colors], colors)
 
 /datum/preferences/proc/load_from_legacy_mutantparts()
-    for(var/body_part in GLOB.bodyparts_to_convert)
-        if(mutant_bodyparts[body_part])
-            var/type = mutant_bodyparts[body_part][MUTANT_INDEX_NAME]
-            var/list/color = mutant_bodyparts[body_part][MUTANT_INDEX_COLOR_LIST]
-			if(color)
-				color[1] = expand_three_digit_color(color[1])
-				color[2] = expand_three_digit_color(color[2])
-				color[3] = expand_three_digit_color(color[3])
-            for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
-                if(!preference.relevant_mutant_bodypart || preference.relevant_mutant_bodypart != body_part)
-                    continue
-                if(type)
-                    if(istype(preference, /datum/preference/toggle))
-                        write_preference(preference, TRUE)
-                        continue
-                    if(istype(preference, /datum/preference/choiced))
-                        write_preference(preference, type)
-                        continue
-                    if(color)
-                        if(istype(preference, /datum/preference/tri_color))
-                            write_preference(preference, color)
-                            continue
+	for(var/body_part in GLOB.bodyparts_to_convert)
+		if(mutant_bodyparts[body_part])
+			var/type = mutant_bodyparts[body_part][MUTANT_INDEX_NAME]
+			var/list/colors = mutant_bodyparts[body_part][MUTANT_INDEX_COLOR_LIST]
+			colors[1] = expand_three_digit_color(colors[1])
+			colors[2] = expand_three_digit_color(colors[2])
+			colors[3] = expand_three_digit_color(colors[3])
+			for(var/datum/preference/preference as anything in get_preferences_in_priority_order())
+				if(!preference.relevant_mutant_bodypart || preference.relevant_mutant_bodypart != body_part)
+					continue
+				if(type)
+					if(istype(preference, /datum/preference/toggle))
+						write_preference(preference, TRUE)
+						continue
+					if(istype(preference, /datum/preference/choiced))
+						write_preference(preference, type)
+						continue
+				if(colors)
+					if(istype(preference, /datum/preference/tri_color))
+						write_preference(preference, colors)
+						continue
