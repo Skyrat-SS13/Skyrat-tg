@@ -37,19 +37,19 @@
 		to_chat(user, "<span class='notice'>You empty [src] of all reagents.</span>")
 		reagents.clear_reagents()
 
-/obj/item/reagent_containers/vapecart/empty/attackby(obj/item/I, mob/user, params)
-	if (istype(I, /obj/item/pen) || istype(I, /obj/item/toy/crayon))
+/obj/item/reagent_containers/vapecart/empty/attackby(obj/item/attacked_item, mob/user, params)
+	if (istype(attacked_item, /obj/item/pen) || istype(attacked_item, /obj/item/toy/crayon))
 		if(!user.is_literate())
 			to_chat(user, "<span class='notice'>You scribble illegibly on the label of the vape cart!</span>")
 			return
-		var/t = stripped_input(user, "What would you like to label the vape cart?", name, null, 53)
+		var/new_title = stripped_input(user, "What would you like to label the vape cart?", name, null, 53)
 		if(!user.canUseTopic(src, BE_CLOSE))
 			return
-		if(user.get_active_held_item() != I)
+		if(user.get_active_held_item() != attacked_item)
 			return
-		if(t)
+		if(new_title)
 			labelled = TRUE
-			name = "[t]"
+			name = "[new_title]"
 		else
 			labelled = FALSE
 			update_name()
