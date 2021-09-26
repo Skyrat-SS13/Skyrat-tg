@@ -519,7 +519,7 @@
 
 /obj/item/powerarmor_upgrade
 	name = "power armor upgrade"
-	desc = "A small item that will upgrade the power suit"
+	desc = "A small item that can upgrade the power suit."
 	icon = 'modular_skyrat/modules/powerarmor/icons/suit_construction.dmi'
 	icon_state = "upgrade"
 
