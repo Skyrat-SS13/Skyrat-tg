@@ -10,7 +10,7 @@
 	attack_verb_continuous = list("bops")
 	attack_verb_simple = list("bop")
 
-/obj/item/circlegame/Initialize()
+/obj/item/circlegame/Initialize(mapload)
 	. = ..()
 	var/mob/living/owner = loc
 	if(!istype(owner))
@@ -123,9 +123,14 @@
 			L.dna.species.stop_wagging_tail(M)
 	user.do_attack_animation(M)
 	playsound(M, 'sound/weapons/slap.ogg', 50, TRUE, -1)
-	user.visible_message("<span class='danger'>[user] slaps [M]!</span>",
-	"<span class='notice'>You slap [M]!</span>",\
-	"<span class='hear'>You hear a slap.</span>")
+	if(user.zone_selected == BODY_ZONE_HEAD || user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+		user.visible_message(span_danger("[user] slaps [M] in the face!"),
+		span_notice("You slap [M] in the face!"),\
+		span_hear("You hear a slap."))
+	else
+		user.visible_message(span_danger("[user] slaps [M]!"),
+		span_notice("You slap [M]!"),\
+		span_hear("You hear a slap."))
 	return
 
 /obj/item/slapper/attack_atom(obj/O, mob/living/user, params)
