@@ -2948,6 +2948,7 @@
 	dir = 8;
 	network = list("ss13","prison")
 	},
+/obj/machinery/cryopod,
 /turf/open/floor/iron,
 /area/security/prison)
 "asy" = (
@@ -15917,6 +15918,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/aisat/hallway)
+"cvM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/posialert{
+	pixel_y = -32
+	},
+/turf/open/floor/iron/white,
+/area/science/robotics/lab)
 "cvO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18217,6 +18226,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/medical/psychology)
+"dBL" = (
+/obj/machinery/cryopod,
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron,
+/area/security/prison)
 "dBO" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
@@ -24989,6 +25006,10 @@
 /area/commons/storage/art)
 "hKu" = (
 /obj/machinery/modular_computer/console/preset/civilian,
+/obj/machinery/posialert{
+	pixel_x = 28;
+	pixel_y = 24
+	},
 /turf/open/floor/iron/white,
 /area/science/robotics/lab)
 "hKw" = (
@@ -34400,10 +34421,12 @@
 /turf/open/floor/carpet,
 /area/service/library)
 "nhU" = (
-/obj/machinery/cryopod,
 /obj/machinery/light/directional/north,
 /obj/machinery/computer/cryopod{
 	pixel_y = 24
+	},
+/obj/machinery/cryopod{
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/commons/cryopods)
@@ -36792,7 +36815,7 @@
 /turf/open/floor/iron,
 /area/maintenance/starboard)
 "oEP" = (
-/obj/effect/spawner/random/vending/colavend,
+/obj/machinery/vending/autodrobe/all_access,
 /turf/open/floor/iron,
 /area/commons/locker)
 "oEU" = (
@@ -43624,7 +43647,6 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "sBd" = (
-/obj/structure/closet/wardrobe/pjs,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -43632,7 +43654,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/landmark/start/hangover/closet,
+/obj/machinery/vending/dorms,
 /turf/open/floor/iron,
 /area/commons/dorms)
 "sBl" = (
@@ -50024,13 +50046,11 @@
 /turf/open/floor/iron,
 /area/command/bridge)
 "whN" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
 /obj/machinery/light_switch/directional/south,
+/obj/machinery/cryopod,
 /turf/open/floor/iron/dark,
 /area/commons/cryopods)
 "whY" = (
@@ -50557,6 +50577,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"wAW" = (
+/obj/machinery/vending/access/command,
+/turf/open/floor/wood,
+/area/command/meeting_room)
 "wBd" = (
 /obj/structure/railing,
 /obj/structure/disposalpipe/segment{
@@ -79752,7 +79776,7 @@ afy
 abz
 aaw
 iQf
-aaw
+dBL
 asw
 acd
 awX
@@ -81097,7 +81121,7 @@ nuf
 kKh
 wBy
 rRa
-xQa
+wAW
 kcR
 cGo
 suY
@@ -98326,7 +98350,7 @@ cHR
 bou
 eqR
 bqd
-aPm
+cvM
 box
 btS
 job
