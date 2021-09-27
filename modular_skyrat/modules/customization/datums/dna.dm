@@ -155,30 +155,15 @@
 				override_mutantparts[feature] = dna.mutant_bodyparts[feature]
 			dna.mutant_bodyparts = override_mutantparts
 
-		var/list/random_mutantparts = new_race.get_random_mutant_bodyparts(dna.features)
-		for(var/feature in dna.mutant_bodyparts)
-			random_mutantparts[feature] = dna.mutant_bodyparts[feature]
-		dna.mutant_bodyparts = random_mutantparts
-
 		if(override_markings && override_markings.len)
 			for(var/feature in dna.body_markings)
 				override_markings[feature] = dna.body_markings[feature]
 			dna.body_markings = override_markings
 
-		var/list/random_bodymarkings = new_race.get_random_body_markings(dna.features)
-		for(var/feature in dna.body_markings)
-			random_bodymarkings[feature] = dna.body_markings[feature]
-		dna.body_markings = random_bodymarkings
-
 		if(override_features && override_features.len)
 			for(var/feature in dna.features)
 				override_features[feature] = dna.features[feature]
 			dna.features = override_features
-
-		var/list/random_features = new_race.get_random_features(dna.features)
-		for(var/feature in dna.features)
-			random_features[feature] = dna.features[feature]
-		dna.features = random_features
 		//END OF BODYPARTS AND FEATURES
 
 		apply_customizable_dna_features_to_species()
@@ -202,10 +187,11 @@
 	dna.species.body_markings = dna.body_markings.Copy()
 	var/list/bodyparts_to_add = dna.mutant_bodyparts.Copy()
 	for(var/key in bodyparts_to_add)
-		var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
-		if(!SP.factual)
-			bodyparts_to_add -= key
-			continue
+		if(GLOB.sprite_accessories[key] && bodyparts_to_add[key] && bodyparts_to_add[key][MUTANT_INDEX_NAME])
+			var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
+			if(!SP.factual)
+				bodyparts_to_add -= key
+				continue
 	dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 
 /mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)

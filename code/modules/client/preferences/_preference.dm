@@ -568,6 +568,6 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/tri_color/create_default_value()
 	return list(random_color(), random_color(), random_color())
 
-/datum/preference/tri_color/is_valid(value)
-	return findtext(value[1], GLOB.is_color) && findtext(value[2], GLOB.is_color) && findtext(value[3], GLOB.is_color)
+/datum/preference/tri_color/is_valid(list/value)
+	return islist(value) && value.len == 3 && (findtext(value[1], GLOB.is_color) && findtext(value[2], GLOB.is_color) && findtext(value[3], GLOB.is_color))
 // SKYRAT EDIT END
