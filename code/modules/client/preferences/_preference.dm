@@ -549,7 +549,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	abstract_type = /datum/preference/text
 
 /datum/preference/text/deserialize(input, datum/preferences/preferences)
-	return sanitize(input)
+	return STRIP_HTML_SIMPLE(input, MAX_FLAVOR_LEN)
 
 /datum/preference/text/create_default_value()
 	return ""
