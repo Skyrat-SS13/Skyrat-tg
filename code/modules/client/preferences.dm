@@ -251,7 +251,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				if (preference_middleware.post_set_preference(usr, requested_preference_key, value))
 					return TRUE
-			 // SKYRAT EDIT END
+			// SKYRAT EDIT END
 			return TRUE
 		if ("set_color_preference")
 			var/requested_preference_key = params["preference"]

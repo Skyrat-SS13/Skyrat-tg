@@ -310,7 +310,7 @@
 		I.add_fingerprint(H, ignoregloves = TRUE)
 	return TRUE
 
- // SKYRAT EDIT
+//SKYRAT EDIT
 /**
  * Copies the outfit from a human to itself.
  **/
