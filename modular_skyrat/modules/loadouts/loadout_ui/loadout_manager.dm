@@ -85,7 +85,7 @@
 
 		if("select_item")
 			//Here we will perform basic checks to ensure there are no exploits happening
-			if(interacted_item.donator_only && !GLOB.donator_list[owner.ckey])
+			if(interacted_item.donator_only && !GLOB.donator_list[owner.ckey] && !is_admin(owner))
 				message_admins("LOADOUT SYSTEM: Possible exploit detected, non-donator [owner.ckey] tried loading [interacted_item.item_path], but this is donator only.")
 				return
 
@@ -257,10 +257,13 @@
 	var/list/data = list()
 
 	var/list/all_selected_paths = list()
-	for(var/path in owner.prefs.loadout_list)
+	for(var/path in owner?.prefs?.loadout_list)
 		all_selected_paths += path
 	data["selected_loadout"] = all_selected_paths
-	data["user_is_donator"] = GLOB.donator_list[owner.ckey] || is_admin(user)
+	if(GLOB.donator_list[owner.ckey] || is_admin(owner))
+		data["user_is_donator"] = TRUE
+	else
+		data["user_is_donator"] = FALSE
 	data["mob_name"] = owner.prefs.read_preference(/datum/preference/name/real_name)
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
 	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
