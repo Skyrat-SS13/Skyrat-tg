@@ -239,7 +239,7 @@
 	using.screen_loc = ui_erp_inventory
 	using.hud = src
 	// When creating a character, we will check if the ERP is enabled on the client, if not, then the ERP button is immediately invisible
-	if(owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		using.invisibility = 100
 	static_inventory += using
 	//SKYRAT EDIT ADDITION END

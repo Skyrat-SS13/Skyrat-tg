@@ -1258,3 +1258,39 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 		return FALSE
 	return FALSE
+
+// Add proc for sextoys pref change, to handle hud update
+/datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
+	if(!client.mob)
+		return
+
+	. = ..()
+	if(value)
+		// User set ERP pref to TRUE, make the ERP button of the inventory visible and interactive again
+		if(usr.hud_used)
+			for(var/atom/movable/screen/human/ERP_toggle/E in usr.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 0
+	else
+		if(ishuman(client.mob))
+			var/mob/living/carbon/human/M = client.mob
+			// The user has set the ERP pref to a FALSE value, now we drop all items from ERP slots and can't use them
+			if(M.vagina != null)
+				M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.anus != null)
+				M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.nipples != null)
+				M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.penis != null)
+				M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+		// If the user has an inventory of the ERP open, then we will hide it
+		if(usr.hud_used)
+			if(usr.hud_used.ERP_inventory_shown)
+				usr.hud_used.ERP_inventory_shown = FALSE
+				usr.client.screen -= usr.hud_used.ERP_toggleable_inventory
+			// Find the ERP button of the inventory and make it invisible so that the user cannot interact with it
+			for(var/atom/movable/screen/human/ERP_toggle/E in usr.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 100
+			usr.hud_used.hidden_inventory_update(usr)
+			usr.hud_used.persistent_inventory_update(usr)
