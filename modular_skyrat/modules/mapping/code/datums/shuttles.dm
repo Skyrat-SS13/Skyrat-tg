@@ -70,3 +70,4 @@
 	name = "Freighter Salvage Vessel (Computer Board)"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/computer/shuttle/cargodise
+
