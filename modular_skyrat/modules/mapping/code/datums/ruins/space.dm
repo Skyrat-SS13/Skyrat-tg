@@ -188,3 +188,15 @@
 	name = "Gorilla"
 	description = "There is no need to be upset."
 
+/datum/map_template/ruin/space/pizza
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "pizzatime.dmm"
+	name = "Pizza Shop"
+	description = "Pizza! Pasta! Put it in a box! Deliver it to my house and put..."
+
+/datum/map_template/ruin/space/radiostation
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "djstation.dmm"
+	name = "DJ Hut"
+	description = "A pair of radio hosts try to run a radio show in space."
+

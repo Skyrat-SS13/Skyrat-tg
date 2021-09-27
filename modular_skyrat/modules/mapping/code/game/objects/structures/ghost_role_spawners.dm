@@ -236,6 +236,53 @@
     can_use_alias = TRUE
     any_station_species = TRUE
 
+/obj/effect/mob_spawn/human/pizza
+	name = "cryogenics pod"
+	desc = "A humming cryo pod. The machine is attempting to wake up its occupant."
+	mob_name = "a pizza place worker"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	outfit = /datum/outfit/pizzacook
+	mob_species = /datum/species/human
+	short_desc = "You are an employee of a small pizza shop in space."
+	flavour_text = "Mama mia! Business is slow recently. Luckily you have pamphlets, a teleporter, and a beacon for ships now. Start prepping some pies and making menus for the (hopefully) large crowds of hungry customers!"
+	important_info = "Don't abandon the pizza shop, make some money!"
+	can_use_alias = TRUE
+	any_station_species = TRUE
+
+/datum/outfit/pizzacook
+	name = "Pizza Cook"
+	uniform = /obj/item/clothing/under/rank/civilian/chef
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	id = /obj/item/card/id/away/pizza
+	implants = /obj/item/implant/exile/noteleport
+
+/obj/effect/mob_spawn/human/radiohost
+	name = "cryogenics pod"
+	desc = "A humming cryo pod. The machine is attempting to wake up its occupant."
+	mob_name = "a "
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	outfit = /datum/outfit/radiohost
+	mob_species = /datum/species/human
+	short_desc = "You are a DJ and radio host."
+	flavour_text = "You and your partner run a little radio show in deep space."
+	important_info = "Come up with a gimmick for your show or just mess around, but do not leave the radio station without good reason."
+	can_use_alias = TRUE
+	any_station_species = TRUE
+
+/datum/outfit/radiohost
+	name = "Radio Host"
+	uniform = /obj/item/clothing/under/color/black
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	id = /obj/item/card/id/away/radiohost
+
 //ITEMS//
 /obj/item/radio/headset/cybersun
 	keyslot = new /obj/item/encryptionkey/headset_cybersun
@@ -244,6 +291,11 @@
 	name = "cybersun captain headset"
 	desc = "The headset of the boss."
 	command = TRUE
+
+/obj/item/paper/pamphlet/pizza
+	name = "Pizza Time"
+	desc = "A pamphlet advertising a deep-space pizzeria."
+	info = "Feeling hungry? Come on down to our pizzeria and enjoy a fresh, piping hot pie on us! You won't believe these prices; for the taste and quality of our pizzas and drinks, you'll be soaring through the stars from euphoric bliss! We're accessible via teleporter systems and space-ships!"
 
 //OBJECTS//
 /obj/structure/showcase/machinery/oldpod/used
@@ -260,6 +312,24 @@
 /datum/id_trim/away/blackmarket
 	access = list(ACCESS_AWAY_GENERIC4)
 	assignment = "Deck Crewman"
+
+/obj/item/card/id/away/pizza
+	name = "scuffed ID card"
+	desc = "A faded, scuffed, plastic ID card. You can make out the rank \"Pizzeria Cook\"."
+	trim = /datum/id_trim/away/blackmarket
+
+/datum/id_trim/away/pizza
+	access = list(ACCESS_AWAY_GENERIC4)
+	assignment = "Pizzeria Cook"
+
+/obj/item/card/id/away/radiohost
+	name = "scuffed ID card"
+	desc = "A faded, scuffed, plastic ID card. You can make out the rank \"Radio Host\"."
+	trim = /datum/id_trim/away/blackmarket
+
+/datum/id_trim/away/radiohost
+	access = list(ACCESS_AWAY_GENERIC4)
+	assignment = "Radio Host"
 
 /obj/item/card/id/away/freightcrew
     name = "Freighter ID"
@@ -300,3 +370,12 @@
 /area/ruin/space/has_grav/deepstoragelostcargoengine
 	name = "Freighter Ship Maintenance"
 	icon_state = "engine"
+
+/area/ruin/space/has_grav/radiostation
+	name = "DJ Hut"
+	icon_state = "yellow"
+
+/area/ruin/space/has_grav/pizzaplace
+	name = "Pizza Place"
+	icon_state = "yellow"
+
