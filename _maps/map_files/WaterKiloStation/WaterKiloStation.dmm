@@ -21512,6 +21512,10 @@
 /obj/machinery/light_switch{
 	pixel_y = 24
 	},
+/obj/machinery/posialert{
+	pixel_x = 28;
+	pixel_y = 24
+	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "aZE" = (
@@ -25926,6 +25930,9 @@
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
+/obj/machinery/posialert{
+	pixel_x = -32
+	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "bhC" = (
@@ -64971,7 +64978,6 @@
 /turf/closed/wall/r_wall,
 /area/engineering/atmos)
 "jDJ" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -64990,6 +64996,7 @@
 	dir = 4;
 	name = "command camera"
 	},
+/obj/machinery/vending/access/command,
 /turf/open/floor/iron,
 /area/command/bridge)
 "jDT" = (
@@ -79136,6 +79143,11 @@
 /obj/structure/sign/warning/securearea,
 /turf/closed/wall,
 /area/engineering/gravity_generator)
+"qTC" = (
+/obj/structure/cable,
+/obj/machinery/cryopod,
+/turf/open/floor/plating,
+/area/security/prison)
 "qUJ" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -91532,6 +91544,13 @@
 	dir = 4;
 	network = list("ss13","prison")
 	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/security/prison)
 "xAk" = (
@@ -99204,7 +99223,7 @@ aeu
 cry
 cry
 anu
-cTl
+qTC
 cuQ
 cQs
 vKK

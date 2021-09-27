@@ -17312,6 +17312,9 @@
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
+/obj/machinery/posialert{
+	pixel_x = -32
+	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "bhC" = (
@@ -42997,7 +43000,6 @@
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "fOZ" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -43013,6 +43015,7 @@
 	dir = 4;
 	name = "command camera"
 	},
+/obj/machinery/vending/access/command,
 /turf/open/floor/iron,
 /area/command/bridge)
 "fPq" = (
@@ -57373,6 +57376,11 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/starboard)
+"mtz" = (
+/obj/structure/cable,
+/obj/machinery/cryopod,
+/turf/open/floor/plating,
+/area/security/prison)
 "mtA" = (
 /obj/machinery/porta_turret/ai{
 	dir = 4
@@ -61687,6 +61695,10 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/machinery/light_switch/directional/north,
+/obj/machinery/posialert{
+	pixel_x = 28;
+	pixel_y = 24
+	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "oub" = (
@@ -65645,11 +65657,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/delivery,
 /obj/structure/sign/poster/official/no_erp{
 	pixel_y = -32
 	},
+/obj/machinery/vending/dorms,
 /turf/open/floor/iron/dark,
 /area/commons/locker)
 "qcN" = (
@@ -82292,6 +82304,13 @@
 	dir = 4;
 	network = list("ss13","prison")
 	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/security/prison)
 "xzO" = (
@@ -90138,7 +90157,7 @@ aeu
 aeU
 aeU
 anu
-cTl
+mtz
 qKa
 iig
 qKa
