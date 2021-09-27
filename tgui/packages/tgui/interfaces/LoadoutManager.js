@@ -1,7 +1,6 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Dimmer, Section, Stack, Tabs, Dropdown } from '../components';
+import { Box, Button, Dimmer, Section, Stack, Tabs } from '../components';
 import { Window } from '../layouts';
-import { CharacterPreview } from "./CharacterPreview";
 
 export const LoadoutManager = (props, context) => {
   const { act, data } = useBackend(context);
@@ -72,6 +71,11 @@ export const LoadoutManager = (props, context) => {
                         width={10}
                         onClick={() => act('clear_all_items')} />
                     )}>
+                    <Button
+                      icon="check-double"
+                      color="good"
+                      tooltip="Confirm loadout and exit UI."
+                      onClick={() => act('close_ui', { revert: 0 })} />
                     <Stack grow vertical>
                       {selectedTab.contents.map(item => (
                         <Stack.Item key={item.name}>
@@ -161,22 +165,6 @@ export const LoadoutManager = (props, context) => {
                   </Section>
                 )}
               </Stack.Item>
-              <Stack.Item grow>
-                <Section
-                  title={`Preview: ${mob_name}`}
-                  fill
-                  buttons={(
-                    <Dropdown
-                      fill horizontal
-                      selected={preview_selection}
-                      options={preivew_options}
-                      onSelected={value => act('update_preview', {
-                        updated_preview: value,
-                      })} />
-                  )}>
-                  <LoadoutPreview />
-                </Section>
-              </Stack.Item>
             </Stack>
           </Stack.Item>
         </Stack>
@@ -215,55 +203,3 @@ export const LoadoutTutorialDimmer = (props, context) => {
   );
 };
 
-export const LoadoutPreview = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    character_preview_view: string,
-  } = data;
-
-  return (
-    <Stack vertical fill>
-      <Stack.Item grow align="center">
-        <CharacterPreview
-          width="100%"
-          height="100%"
-          id={data.character_preview_view} />
-      </Stack.Item>
-      <Stack.Divider />
-      <Stack.Item align="center">
-        <Stack>
-          <Stack.Item>
-            <Button
-              icon="check-double"
-              color="good"
-              tooltip="Confirm loadout and exit UI."
-              onClick={() => act('close_ui', { revert: 0 })} />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              icon="chevron-left"
-              tooltip="Turn model preview to the left."
-              onClick={() => act('rotate_dummy', {
-                dir: "left",
-              })} />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              icon="chevron-right"
-              tooltip="Turn model preview to the right."
-              onClick={() => act('rotate_dummy', {
-                dir: "right",
-              })} />
-          </Stack.Item>
-          <Stack.Item>
-            <Button
-              icon="times"
-              color="bad"
-              tooltip="Revert loadout and exit UI."
-              onClick={() => act('close_ui', { revert: 1 })} />
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
-    </Stack>
-  );
-};
