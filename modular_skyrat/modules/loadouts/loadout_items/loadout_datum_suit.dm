@@ -421,7 +421,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Security Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant") //Not giving this one to CDOs or COs because it's actually better than the one they spawn with
-/datum/loadout_item/suit/cossak
+
+/datum/loadout_item/suit/cossak/sec
 	name = "Ukrainian Security Jacket"
 	item_path = /obj/item/clothing/suit/cossack/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
