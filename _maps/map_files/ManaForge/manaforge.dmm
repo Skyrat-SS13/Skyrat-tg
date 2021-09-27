@@ -19733,6 +19733,9 @@
 "bxg" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "bxi" = (
@@ -20196,6 +20199,7 @@
 	pixel_y = 32
 	},
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/science/server)
 "bzx" = (
@@ -29847,7 +29851,6 @@
 "cqW" = (
 /obj/machinery/power/supermatter_crystal/shard/hugbox/fakecrystal{
 	color = "green";
-	is_main_engine = 0;
 	name = "Synthetic Warp Stone Crystal"
 	},
 /turf/open/floor/engine/airless,
@@ -35429,6 +35432,7 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "fhG" = (
@@ -36009,6 +36013,12 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/exit)
 "fHZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4;
+	external_pressure_bound = 120;
+	name = "server vent";
+	piping_layer = 2
+	},
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "fKr" = (
@@ -39428,6 +39438,7 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "jBL" = (
@@ -43354,6 +43365,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
+"nxZ" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/atmospherics/components/binary/pump/on/supply/visible/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "nyk" = (
 /obj/machinery/camera{
 	c_tag = "Security Checkpoint";
@@ -43469,6 +43487,12 @@
 "nDW" = (
 /turf/open/floor/iron/cafeteria,
 /area/maintenance/port/aft)
+"nEf" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/supply{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/science/server)
 "nEm" = (
 /obj/machinery/mineral/ore_redemption{
 	input_dir = 8;
@@ -44011,7 +44035,11 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "omI" = (
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small/red/directional/west,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	name = "Server HVAC";
+	target_temperature = 288.15
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -45822,6 +45850,12 @@
 	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8;
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
 	},
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
@@ -53897,6 +53931,10 @@
 	dir = 1
 	},
 /area/security/prison)
+"xYw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/turf/closed/wall/r_wall,
+/area/science/server)
 "xYA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -96193,7 +96231,7 @@ buL
 bvB
 bhA
 bxg
-bBR
+nxZ
 bDb
 bDb
 bDb
@@ -96448,9 +96486,9 @@ bfV
 bvx
 buH
 byf
-byf
-byf
-byf
+xYw
+xYw
+nEf
 bDb
 xAv
 xAv
