@@ -44,7 +44,7 @@ export const allow_mismatched_parts_toggle: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const mutant_colors_color: Feature<string> = {
+export const mutant_colors_color: Feature<string[]> = {
   name: "Mutant Colors",
   description: "Legacy colors for controlling shit.",
   component: FeatureTriColorInput,
@@ -62,7 +62,7 @@ export const feature_body_markings: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const body_markings_color: FeatureTriColorInput = {
+export const body_markings_color: Feature<string[]> = {
   name: "Body Markings Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -80,7 +80,7 @@ export const feature_tail: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const tail_color: Feature<string> = {
+export const tail_color: Feature<string[]> = {
   name: "Tail Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -98,7 +98,7 @@ export const feature_snout: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const snout_color: FeatureTriColorInput = {
+export const snout_color: Feature<string[]> = {
   name: "Snout Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -116,7 +116,7 @@ export const feature_horns: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const horns_color: Feature<string> = {
+export const horns_color: Feature<string[]> = {
   name: "Horns Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -134,7 +134,7 @@ export const feature_ears: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const ears_color: Feature<string> = {
+export const ears_color: Feature<string[]> = {
   name: "Ears Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -152,7 +152,7 @@ export const feature_wings: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const wings_color: Feature<string> = {
+export const wings_color: Feature<string[]> = {
   name: "Wings Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -170,7 +170,7 @@ export const feature_frills: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const frills_color: Feature<string> = {
+export const frills_color: Feature<string[]> = {
   name: "Frills Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -188,7 +188,7 @@ export const feature_spines: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const spines_color: Feature<string> = {
+export const spines_color: Feature<string[]> = {
   name: "Spines Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -206,7 +206,7 @@ export const feature_legs: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const legs_color: Feature<string> = {
+export const legs_color: Feature<string[]> = {
   name: "Legs Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -224,7 +224,7 @@ export const feature_caps: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const caps_color: FeatureToggle = {
+export const caps_color: Feature<string[]> = {
   name: "Cap Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -242,7 +242,7 @@ export const feature_moth_antennae: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const moth_antennae_color: FeatureToggle = {
+export const moth_antennae_color: Feature<string[]> = {
   name: "Moth Antenna Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -260,7 +260,7 @@ export const feature_moth_markings: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const moth_markings_color: Feature<string> = {
+export const moth_markings_color: Feature<string[]> = {
   name: "Moth Markings Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -278,7 +278,7 @@ export const feature_fluff: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const fluff_color: Feature<string> = {
+export const fluff_color: Feature<string[]> = {
   name: "Fluff Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -296,7 +296,7 @@ export const feature_head_acc: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const head_acc_color: Feature<string> = {
+export const head_acc_color: Feature<string[]> = {
   name: "Head Accessories Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -314,7 +314,7 @@ export const feature_ipc_screen: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const ipc_screen_color: Feature<string> = {
+export const ipc_screen_color: Feature<string[]> = {
   name: "IPC Screen Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -332,7 +332,7 @@ export const feature_ipc_antenna: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const ipc_antenna_color: Feature<string> = {
+export const ipc_antenna_color: Feature<string[]> = {
   name: "IPC Antenna Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -350,7 +350,7 @@ export const feature_ipc_chassis: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const ipc_chassis_color: Feature<string> = {
+export const ipc_chassis_color: Feature<string[]> = {
   name: "IPC Chassis Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -368,7 +368,7 @@ export const feature_neck_acc: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const neck_acc_color: Feature<string> = {
+export const neck_acc_color: Feature<string[]> = {
   name: "Neck Accessories Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -386,7 +386,7 @@ export const feature_skrell_hair: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const skrell_hair_color: Feature<string> = {
+export const skrell_hair_color: Feature<string[]> = {
   name: "Skrell Hair Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -404,7 +404,7 @@ export const feature_taur: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const taur_color: Feature<string> = {
+export const taur_color: Feature<string[]> = {
   name: "Taur Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -422,7 +422,7 @@ export const feature_xenodorsal: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const xenodorsal_color: Feature<string> = {
+export const xenodorsal_color: Feature<string[]> = {
   name: "Xenodorsal Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
@@ -440,7 +440,7 @@ export const feature_xenohead: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const xenohead_color: Feature<string> = {
+export const xenohead_color: Feature<string[]> = {
   name: "Xeno Head Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
