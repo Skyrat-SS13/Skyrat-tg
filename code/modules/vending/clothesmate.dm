@@ -195,7 +195,7 @@
 					/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby = 3,
 					// SKYRAT EDIT - END
 					/obj/item/clothing/glasses/betterunshit = 5,
-					/obj/item/clothing/glasses/thin = 3	//SKYRAT EDIT ADDITION END
+					/obj/item/clothing/glasses/thin = 3,	//SKYRAT EDIT ADDITION END
 					
 					//SKYRAT EDIT - START
 					//Mass dump of lost loadout items
