@@ -295,3 +295,4 @@
 /area/shuttle/cargodise
 	name = "Salvage Vessel"
 	requires_power = FALSE
+
