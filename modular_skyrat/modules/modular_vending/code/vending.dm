@@ -10,5 +10,9 @@
 		premium += skyrat_premium
 	if(skyrat_contraband)
 		contraband += skyrat_contraband
+
+	skyrat_products = null
+	skyrat_premium = null
+	skyrat_contraband = null
 	return ..()
 
