@@ -199,8 +199,6 @@ SUBSYSTEM_DEF(job)
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(job.has_banned_quirk(player.client.prefs))
 		return FALSE
-	if(job.has_banned_species(player.client.prefs))
-		return FALSE
 	if(!job.has_required_languages(player.client.prefs))
 		return FALSE
 	if(job.veteran_only && !is_veteran_player(player.client))
@@ -238,9 +236,6 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(job.has_banned_quirk(player.client.prefs))
 			JobDebug("FOC job not compatible with quirks, Player: [player]")
-			continue
-		if(job.has_banned_species(player.client.prefs))
-			JobDebug("FOC job not compatible with species, Player: [player]")
 			continue
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("FOC job not compatible with languages, Player: [player]")
@@ -294,9 +289,6 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(job.has_banned_quirk(player.client.prefs))
 			JobDebug("GRJ player has incompatible quirk, Player: [player]")
-			continue
-		if(job.has_banned_species(player.client.prefs))
-			JobDebug("GRJ player has incompatible species, Player: [player]")
 			continue
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("GRJ player has incompatible languages, Player: [player]")
@@ -483,11 +475,8 @@ SUBSYSTEM_DEF(job)
 				if(job.has_banned_quirk(player.client.prefs))
 					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
 					continue
-				if(job.has_banned_species(player.client.prefs))
-					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
-					continue
 				if(!job.has_required_languages(player.client.prefs))
-					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					JobDebug("DO player has incompatible languages, Player: [player], Job:[job.title]")
 					continue
 				if(job.veteran_only && !is_veteran_player(player.client))
 					JobDebug("DO player is not veteran, Player: [player], Job:[job.title]")
@@ -857,7 +846,7 @@ SUBSYSTEM_DEF(job)
 	name = "Nanotrasen-Approved Spare ID Safe Code"
 	desc = "Proof that you have been approved for Captaincy, with all its glory and all its horror."
 
-/obj/item/paper/fluff/spare_id_safe_code/Initialize()
+/obj/item/paper/fluff/spare_id_safe_code/Initialize(mapload)
 	. = ..()
 	var/safe_code = SSid_access.spare_id_safe_code
 
@@ -868,7 +857,7 @@ SUBSYSTEM_DEF(job)
 	name = "Emergency Spare ID Safe Code Requisition"
 	desc = "Proof that nobody has been approved for Captaincy. A skeleton key for a skeleton shift."
 
-/obj/item/paper/fluff/emergency_spare_id_safe_code/Initialize()
+/obj/item/paper/fluff/emergency_spare_id_safe_code/Initialize(mapload)
 	. = ..()
 	var/safe_code = SSid_access.spare_id_safe_code
 

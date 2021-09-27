@@ -646,7 +646,7 @@
 	anus = text2path(outfit_data["anus"])
 	nipples = text2path(outfit_data["nipples"])
 	penis = text2path(outfit_data["penis"])
-	..()
+	. = ..()
 
 // Just by analogy with the TG code. No ideas for what this is.
 /mob/proc/update_inv_vagina()

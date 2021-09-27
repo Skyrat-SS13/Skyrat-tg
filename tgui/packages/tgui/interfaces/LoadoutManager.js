@@ -105,7 +105,6 @@ export const LoadoutManager = (props, context) => {
                                 <Button
                                   icon="lock"
                                   onClick={() => act('display_restrictions', {
-                                    path: item.path,
                                   })} />
                               </Stack.Item>
                             )}
@@ -116,7 +115,6 @@ export const LoadoutManager = (props, context) => {
                                   icon="heart"
                                   color="pink"
                                   onClick={() => act('donator_explain', {
-                                    path: item.path,
                                   })}
                                 />
                               </Stack.Item>
@@ -137,7 +135,7 @@ export const LoadoutManager = (props, context) => {
                                 checked={selected_loadout.includes(item.path)}
                                 content="Select"
                                 disabled={
-                                  item.is_donator_only && !!user_is_donator
+                                  item.is_donator_only && !user_is_donator
                                 }
                                 fluid
                                 tooltip={item.tooltip_text
