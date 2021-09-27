@@ -30,7 +30,7 @@ export const penis_girth: FeatureNumeric = {
   component: FeatureNumberInput,
 };
 
-export const penis_taur_mode: FeatureToggle = {
+export const penis_taur_mode_toggle: FeatureToggle = {
   name: "Penis Taur Mode",
   component: CheckboxInput,
 };
