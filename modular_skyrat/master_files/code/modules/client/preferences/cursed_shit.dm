@@ -424,7 +424,7 @@
 	savefile_key = "body_size"
 	minimum = BODY_SIZE_MIN
 	maximum = BODY_SIZE_MAX
-	step = 0.05
+	step = 0.01
 
 /datum/preference/numeric/body_size/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
