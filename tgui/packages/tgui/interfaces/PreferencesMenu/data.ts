@@ -55,6 +55,7 @@ export type Quirk = {
   value: number;
 };
 
+// SKYRAT EDIT
 export type Language = {
   description: string;
   name: string;
@@ -89,6 +90,7 @@ export type Organ = {
   organ_choices: Record<string, string>
 };
 
+// SKYRAT EDIT END
 export type QuirkInfo = {
   max_positive_quirks: number;
   quirk_info: Record<string, Quirk>;
@@ -169,18 +171,21 @@ export type PreferencesMenuData = {
   }>;
   job_preferences: Record<string, JobPriority>;
 
+// SKYRAT EDIT
   job_alt_titles: Record<string, string>;
 
   robotic_styles: string[];
   limbs_data: Limb[];
   organs_data: Organ[];
 
-  keybindings: Record<string, string[]>;
-  overflow_role: string;
-  selected_quirks: string[];
   selected_languages: Language[];
   unselected_languages: Language[];
   total_language_points: number;
+// SKYRAT EDIT END
+  keybindings: Record<string, string[]>;
+  overflow_role: string;
+  selected_quirks: string[];
+
 
   antag_bans?: string[];
   antag_days_left?: Record<string, number>;

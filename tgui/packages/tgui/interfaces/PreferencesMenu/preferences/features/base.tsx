@@ -3,7 +3,9 @@ import { BooleanLike, classes } from "common/react";
 import { ComponentType, createComponentVNode, InfernoNode } from "inferno";
 import { VNodeFlags } from "inferno-vnode-flags";
 import { sendAct, useBackend, useLocalState } from "../../../../backend";
+// SKYRAT EDIT
 import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input, ColorBox } from "../../../../components";
+// SKYRAT EDIT END
 import { createSetPreference, PreferencesMenuData } from "../../data";
 import { ServerPreferencesFetcher } from "../../ServerPreferencesFetcher";
 

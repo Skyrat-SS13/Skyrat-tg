@@ -218,14 +218,17 @@ const JobRow = (props: {
   const priority = data.job_preferences[job.name];
 
   const createSetPriority = createCreateSetPriorityFromName(context, job.name);
+  // SKYRAT EDIT
   const { act } = useBackend<PreferencesMenuData>(context);
+  // SKYRAT EDIT END
 
   const experienceNeeded = data.job_required_experience
     && data.job_required_experience[job.name];
   const daysLeft = data.job_days_left ? data.job_days_left[job.name] : 0;
-
+  // SKYRAT EDIT
   const alt_title_selected = data.job_alt_titles[job.name]
     ? data.job_alt_titles[job.name] : job.name;
+  // SKYRAT EDIT END
 
   let rightSide: InfernoNode;
 
@@ -256,6 +259,7 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
+  // SKYRAT EDIT
   } else if (job.veteran && !data.is_veteran) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
@@ -264,6 +268,7 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
+  // SKYRAT EDIT END
   } else {
     rightSide = (<PriorityButtons
       createSetPriority={createSetPriority}
@@ -278,17 +283,18 @@ const JobRow = (props: {
       <Stack fill align="center">
         <Tooltip
           content={job.description}
-          position="right"
+          position="right"// SKYRAT EDIT bottom-start->right
         >
           <Stack.Item className="job-name" width="50%" style={{
             "padding-left": "0.3em",
-          }}> {
+          }}> { // SKYRAT EDIT
               (!job.alt_titles ? job.name : <Dropdown
                 width="100%"
                 options={job.alt_titles}
                 displayText={alt_title_selected}
                 onSelected={(value) => act("set_job_title", { job: job.name, new_title: value })}
               />)
+            // SKYRAT EDIT END
             }
           </Stack.Item>
         </Tooltip>
