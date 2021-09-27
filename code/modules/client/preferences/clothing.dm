@@ -9,7 +9,7 @@
 	for (var/accessory_name in accessory_list)
 		var/icon/icon_with_socks = new(lower_half)
 		var/datum/sprite_accessory/accessory = accessory_list[accessory_name]
-		if (accessory_name != "Nude" && accessory)
+		if (accessory_name != "Nude" && accessory)  // SKYRAT EDIT
 			var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state) //SKYRAT EDIT CHANGE
 			if (color && !accessory.use_static)
 				accessory_icon.Blend(color, ICON_MULTIPLY)

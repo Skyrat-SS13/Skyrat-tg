@@ -21,7 +21,7 @@
 	var/icon = 'icons/misc/language.dmi'
 	var/icon_state = "popcorn"
 	/// Should this be hidden on the language buy menu?
-	var/secret = FALSE
+	var/secret = FALSE // SKYRAT EDIT
 
 /datum/language/proc/display_icon(atom/movable/hearer)
 	var/understands = hearer.has_language(src.type)

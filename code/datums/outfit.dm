@@ -314,6 +314,7 @@
 /**
  * Copies the outfit from a human to itself.
  **/
+ // SKYRAT EDIT
 /datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
