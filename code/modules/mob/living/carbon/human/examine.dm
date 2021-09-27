@@ -470,15 +470,12 @@
 					break
 	if(!skipface)
 		var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-		if(client)
-			var/erp_pref = client.prefs.read_preference(/datum/preference/toggle/erp)
-			var/noncon_pref = client.prefs.read_preference(/datum/preference/toggle/erp/noncon)
-			if(erp_pref)
-				line += span_notice(" ERP: [erp_pref ? "YES" : "NO"]")
-				if(noncon_pref)
-					line += span_notice(" NON-CON: [noncon_pref ? "YES" : "NO"]")
 		if(line)
 			. += line
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && erp_status_pref != "disabled")
+			. += span_notice(" ERP STATUS: [erp_status_pref]")
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)

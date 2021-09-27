@@ -1,4 +1,4 @@
-import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureNumeric, FeatureToggle } from "../../base";
+import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureNumeric, FeatureToggle, FeatureChoiced } from "../../base";
 
 export const penis_toggle: FeatureToggle = {
   name: "Penis",
@@ -113,4 +113,9 @@ export const breasts_size: FeatureNumeric = {
 export const body_size: FeatureNumeric = {
   name: "Body Size",
   component: FeatureNumberInput,
+};
+
+export const erp_status_pref: FeatureChoiced = {
+  name: "ERP Status",
+  component: FeatureDropdownInput,
 };
