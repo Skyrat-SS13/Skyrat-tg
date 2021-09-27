@@ -21867,16 +21867,11 @@
 /area/science/server)
 "bzx" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 10
-	},
 /obj/machinery/airalarm/directional/north,
-/obj/structure/table,
 /obj/machinery/button/door/directional/east{
 	id = "serverroomrd"
 	},
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on,
 /turf/open/floor/iron/dark,
 /area/science/server)
 "bzA" = (
@@ -22131,6 +22126,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
 /area/science/server)
 "bAB" = (
@@ -22142,17 +22138,22 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
 /area/science/server)
 "bAC" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
 /obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
 /area/science/server)
 "bAD" = (
 /obj/structure/chair/office/light,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
 /area/science/server)
 "bAF" = (
@@ -39092,6 +39093,9 @@
 /turf/open/floor/wood,
 /area/security/prison)
 "fHZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	name = "Server Vent"
+	},
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "fJv" = (
@@ -40821,6 +40825,7 @@
 /area/science/storage)
 "htg" = (
 /obj/effect/landmark/blobstart,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/plating/catwalk_floor{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -43099,10 +43104,10 @@
 /turf/open/floor/iron/smooth_large,
 /area/service/hydroponics)
 "jAK" = (
-/obj/machinery/rnd/server,
 /obj/effect/turf_decal/siding/purple{
 	dir = 6
 	},
+/obj/machinery/rnd/server/master,
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "jBL" = (
@@ -49004,6 +49009,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/cafeteria,
 /area/maintenance/port/aft)
+"oYm" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
+/turf/closed/wall/r_wall,
+/area/science/server)
 "oYv" = (
 /obj/machinery/power/apc/auto_name/north,
 /obj/structure/cable,
@@ -50228,6 +50237,11 @@
 	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 1;
+	external_pressure_bound = 120;
+	name = "server vent"
 	},
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
@@ -102936,7 +102950,7 @@ bsS
 box
 bWr
 aRU
-byf
+oYm
 bzx
 bAC
 bBW
