@@ -1,4 +1,4 @@
-import { FeatureChoiced, FeatureDropdownInput, Feature, FeatureColorInput, FeatureTextInput, FeatureShortTextInput, CheckboxInput, FeatureTriColorInput } from "../../base";
+import { FeatureChoiced, FeatureDropdownInput, Feature, FeatureColorInput, FeatureTextInput, FeatureShortTextInput, CheckboxInput, FeatureTriColorInput, FeatureToggle } from "../../base";
 
 export const feature_leg_type: FeatureChoiced = {
   name: "Leg type",
@@ -38,7 +38,7 @@ export const custom_species_lore: Feature<string> = {
   component: FeatureTextInput,
 };
 
-export const allow_mismatched_parts_toggle: Feature<string> = {
+export const allow_mismatched_parts_toggle: FeatureToggle = {
   name: "Allow Mismatched Parts",
   description: "Want to go completely crazy with your character design? Use this to select any parts from any species!",
   component: CheckboxInput,
@@ -50,7 +50,7 @@ export const mutant_colors_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const body_markings_toggle: Feature<string> = {
+export const body_markings_toggle: FeatureToggle = {
   name: "Body Markings",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -62,13 +62,13 @@ export const feature_body_markings: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const body_markings_color: Feature<string> = {
+export const body_markings_color: FeatureTriColorInput = {
   name: "Body Markings Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
 };
 
-export const tail_toggle: Feature<string> = {
+export const tail_toggle: FeatureToggle = {
   name: "Tail",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -86,7 +86,7 @@ export const tail_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const snout_toggle: Feature<string> = {
+export const snout_toggle: FeatureToggle = {
   name: "Snout",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -98,13 +98,13 @@ export const feature_snout: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const snout_color: Feature<string> = {
+export const snout_color: FeatureTriColorInput = {
   name: "Snout Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
 };
 
-export const horns_toggle: Feature<string> = {
+export const horns_toggle: FeatureToggle = {
   name: "Horns",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -122,7 +122,7 @@ export const horns_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const ears_toggle: Feature<string> = {
+export const ears_toggle: FeatureToggle = {
   name: "Ears",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -140,7 +140,7 @@ export const ears_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const wings_toggle: Feature<string> = {
+export const wings_toggle: FeatureToggle = {
   name: "Wings",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -158,7 +158,7 @@ export const wings_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const frills_toggle: Feature<string> = {
+export const frills_toggle: FeatureToggle = {
   name: "Frills",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -176,7 +176,7 @@ export const frills_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const spines_toggle: Feature<string> = {
+export const spines_toggle: FeatureToggle = {
   name: "Spines",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -194,7 +194,7 @@ export const spines_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const legs_toggle: Feature<string> = {
+export const legs_toggle: FeatureToggle = {
   name: "Legs",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -212,7 +212,7 @@ export const legs_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const caps_toggle: Feature<string> = {
+export const caps_toggle: FeatureToggle = {
   name: "Cap",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -224,13 +224,13 @@ export const feature_caps: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const caps_color: Feature<string> = {
+export const caps_color: FeatureToggle = {
   name: "Cap Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
 };
 
-export const moth_antennae_toggle: Feature<string> = {
+export const moth_antennae_toggle: FeatureToggle = {
   name: "Moth Antenna",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -242,13 +242,13 @@ export const feature_moth_antennae: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const moth_antennae_color: Feature<string> = {
+export const moth_antennae_color: FeatureToggle = {
   name: "Moth Antenna Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
 };
 
-export const moth_markings_toggle: Feature<string> = {
+export const moth_markings_toggle: FeatureToggle = {
   name: "Moth Markings",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -266,7 +266,7 @@ export const moth_markings_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const fluff_toggle: Feature<string> = {
+export const fluff_toggle: FeatureToggle = {
   name: "Fluff",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -284,7 +284,7 @@ export const fluff_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const head_acc_toggle: Feature<string> = {
+export const head_acc_toggle: FeatureToggle = {
   name: "Head Accessories",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -302,7 +302,7 @@ export const head_acc_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const ipc_screen_toggle: Feature<string> = {
+export const ipc_screen_toggle: FeatureToggle = {
   name: "IPC Screen",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -320,7 +320,7 @@ export const ipc_screen_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const ipc_antenna_toggle: Feature<string> = {
+export const ipc_antenna_toggle: FeatureToggle = {
   name: "IPC Antenna",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -338,7 +338,7 @@ export const ipc_antenna_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const ipc_chassis_toggle: Feature<string> = {
+export const ipc_chassis_toggle: FeatureToggle = {
   name: "IPC Chassis",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -356,7 +356,7 @@ export const ipc_chassis_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const neck_acc_toggle: Feature<string> = {
+export const neck_acc_toggle: FeatureToggle = {
   name: "Neck Accessories",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -374,7 +374,7 @@ export const neck_acc_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const skrell_hair_toggle: Feature<string> = {
+export const skrell_hair_toggle: FeatureToggle = {
   name: "Skrell Hair",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -392,7 +392,7 @@ export const skrell_hair_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const taur_toggle: Feature<string> = {
+export const taur_toggle: FeatureToggle = {
   name: "Taur",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -410,7 +410,7 @@ export const taur_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const xenodorsal_toggle: Feature<string> = {
+export const xenodorsal_toggle: FeatureToggle = {
   name: "Xenodorsal",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,
@@ -428,7 +428,7 @@ export const xenodorsal_color: Feature<string> = {
   component: FeatureTriColorInput,
 };
 
-export const xenohead_toggle: Feature<string> = {
+export const xenohead_toggle: FeatureToggle = {
   name: "Xeno Head",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: CheckboxInput,

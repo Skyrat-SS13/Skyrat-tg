@@ -96,9 +96,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 41)
 		migrate_preferences_to_tgui_prefs_menu()
 
-/datum/preferences/proc/update_character(current_version, savefile/S) //SKYRAT EDIT CHANGE
+/datum/preferences/proc/update_character(current_version)
 	if (current_version < 41)
-		migrate_character_to_tgui_prefs_menu(S) //SKYRAT EDIT CHANGE
+		migrate_character_to_tgui_prefs_menu()
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()

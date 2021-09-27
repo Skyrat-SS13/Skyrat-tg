@@ -4,11 +4,8 @@
 	migrate_key_bindings()
 
 /// Handle the migrations necessary from pre-tgui prefs to post-tgui prefs, for characters
-/datum/preferences/proc/migrate_character_to_tgui_prefs_menu(savefile/S) //SKYRAT EDIT CHANGE
+/datum/preferences/proc/migrate_character_to_tgui_prefs_menu()
 	migrate_randomization()
-
-	migrate_skyrat(S) //SKYRAT EDIT ADDITION
-	load_from_legacy_mutantparts() //SKYRAT EDIT ADDITION
 
 // Key bindings used to be "key" -> list("action"),
 // such as "X" -> list("swap_hands").

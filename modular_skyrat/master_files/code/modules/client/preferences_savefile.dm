@@ -41,6 +41,20 @@
 	READ_FILE(S["languages"] , languages)
 	languages = SANITIZE_LIST(languages)
 
+	READ_FILE(S["tgui_prefs_migration"], tgui_prefs_migration)
+	if(!tgui_prefs_migration)
+		to_chat(parent, examine_block(span_redtext("PREFERENCE MIGRATION BEGINNING FOR.\
+		\nDO NOT INTERACT WITH YOUR PREFERENCES UNTIL THIS PROCESS HAS BEEN COMPLETED.\
+		\nDO NOT DISCONNECT UNTIL THIS PROCESS HAS BEEN COMPLETED.\
+		")))
+		migrate_skyrat(S)
+		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
+
+/datum/preferences/proc/check_migration()
+	if(!tgui_prefs_migration)
+		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
+		message_admins("PREFERENCE MIGRATION: [ADMIN_LOOKUPFLW(parent)] has failed the process for migrating PREFERENCES. Check runtimes.")
+
 /datum/preferences/proc/save_character_skyrat(savefile/S)
 
 	WRITE_FILE(S["loadout_list"], loadout_list)
