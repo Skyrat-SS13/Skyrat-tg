@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(language)
 	flags = SS_NO_FIRE
 
 /datum/controller/subsystem/language/Initialize(timeofday)
-	 // SKYRAT EDIT
+	// SKYRAT EDIT
 	if(!GLOB.all_languages.len)
 		for(var/L in subtypesof(/datum/language))
 			var/datum/language/language = L
@@ -16,5 +16,5 @@ SUBSYSTEM_DEF(language)
 			var/datum/language/instance = new language
 
 			GLOB.language_datum_instances[language] = instance
-	 // SKYRAT EDIT END
+	// SKYRAT EDIT END
 	return ..()
