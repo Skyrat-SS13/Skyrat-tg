@@ -123,6 +123,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	if(!loaded_preferences_successfully)
 		save_preferences()
+	tgui_prefs_migration = TRUE //SKYRAT EDIT CHANGE
 	save_character() //let's save this new random character so it doesn't keep generating new ones.
 
 /datum/preferences/ui_interact(mob/user, datum/tgui/ui)
@@ -285,16 +286,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 
-		//SKYRAT EDIT ADDITION
-		if ("open_advanced_prefs")
-			show_advanced_prefs(usr)
-			return TRUE
-
 		if("update_preview")
 			preview_pref = params["updated_preview"]
 			character_preview_view.update_body()
 			return TRUE
-
+		//SKYRAT EDIT ADDITION
 		if ("open_loadout")
 			if(parent.open_loadout_ui)
 				parent.open_loadout_ui.ui_interact(usr)
@@ -321,11 +317,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	. = ..()
 	if (.)
 		return
-	//SKYRAT EDIT ADDITION
-	if(href_list["preference"] || href_list["task"])
-		SkyratTopic(href, href_list, usr)
-		return TRUE
-	//SKYRAT EDIT END
 
 	if (href_list["open_keybindings"])
 		current_window = PREFERENCE_TAB_KEYBINDINGS
@@ -398,12 +389,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	/// The client that is watching this view
 	var/client/client
 
-	var/linked_to_prefs = TRUE //SKYRAT EDIT ADDITION
-
-/atom/movable/screen/character_preview_view/Initialize(mapload, datum/preferences/preferences, client/client, prefs_link = TRUE) //SKYRAT EDIT CHANGE
+/atom/movable/screen/character_preview_view/Initialize(mapload, datum/preferences/preferences, client/client)
 	. = ..()
-
-	linked_to_prefs = prefs_link //SKYRAT EDIT ADDITION
 
 	assigned_map = "character_preview_[REF(src)]"
 	set_position(1, 1)
@@ -418,9 +405,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 		qdel(plane_master)
 
 	client?.clear_map(assigned_map)
-
-	if(linked_to_prefs) //SKYRAT EDIT ADDITION
-		preferences?.character_preview_view = null
 
 	client = null
 	plane_masters = null
