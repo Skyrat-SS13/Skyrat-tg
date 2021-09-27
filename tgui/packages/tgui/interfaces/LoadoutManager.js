@@ -40,7 +40,14 @@ export const LoadoutManager = (props, context) => {
                   align="center"
                   content="Tutorial"
                   onClick={() => act('toggle_tutorial')} />
+
               )}>
+              <Button
+                icon="check-double"
+                color="good"
+                content="Confirm"
+                tooltip="Confirm loadout and exit UI."
+                onClick={() => act('close_ui', { revert: 0 })} />
               <Tabs fluid align="center">
                 {loadout_tabs.map(curTab => (
                   <Tabs.Tab
@@ -71,11 +78,6 @@ export const LoadoutManager = (props, context) => {
                         width={10}
                         onClick={() => act('clear_all_items')} />
                     )}>
-                    <Button
-                      icon="check-double"
-                      color="good"
-                      tooltip="Confirm loadout and exit UI."
-                      onClick={() => act('close_ui', { revert: 0 })} />
                     <Stack grow vertical>
                       {selectedTab.contents.map(item => (
                         <Stack.Item key={item.name}>
