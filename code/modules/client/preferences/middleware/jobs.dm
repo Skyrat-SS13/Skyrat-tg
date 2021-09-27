@@ -1,7 +1,9 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
 		"set_job_preference" = .proc/set_job_preference,
-		"set_job_title" = .proc/set_job_title, // SKYRAT EDIT
+	// SKYRAT EDIT
+		"set_job_title" = .proc/set_job_title,
+	// SKYRAT EDIT END
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -33,24 +35,26 @@
 	preferences.alt_job_titles[default_job_title] = new_job_title
 
 	return TRUE
-
+// SKYRAT EDIT END
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
-
-	if(isnull(preferences.alt_job_titles)) // SKYRAT EDIT
+	// SKYRAT EDIT
+	if(isnull(preferences.alt_job_titles))
 		preferences.alt_job_titles = list()
-
+	// SKYRAT EDIT END
 	data["job_preferences"] = preferences.job_preferences
-	data["job_alt_titles"] = preferences.alt_job_titles // SKYRAT EDIT
+	// SKYRAT EDIT
+	data["job_alt_titles"] = preferences.alt_job_titles
+	// SKYRAT EDIT END
 
 	return data
 
 /datum/preference_middleware/jobs/get_ui_static_data(mob/user)
 	var/list/data = list()
-
-	if(is_veteran_player(user.client)) // SKYRAT EDIT
-		data["is_veteran"] = TRUE // SKYRAT EDIT
-
+	// SKYRAT EDIT
+	if(is_veteran_player(user.client))
+		data["is_veteran"] = TRUE
+ 	// SKYRAT EDIT END
 	var/list/required_job_playtime = get_required_job_playtime(user)
 	if (!isnull(required_job_playtime))
 		data += required_job_playtime

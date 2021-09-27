@@ -310,11 +310,10 @@
 		I.add_fingerprint(H, ignoregloves = TRUE)
 	return TRUE
 
-
+ // SKYRAT EDIT
 /**
  * Copies the outfit from a human to itself.
  **/
- // SKYRAT EDIT
 /datum/outfit/proc/copy_outfit_from_target(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
@@ -343,6 +342,7 @@
 	if(H.belt)
 		belt = H.belt.type
 	return TRUE
+// SKYRAT EDIT END
 
 /// Return a list of all the types that are required to disguise as this outfit type
 /datum/outfit/proc/get_chameleon_disguise_info()

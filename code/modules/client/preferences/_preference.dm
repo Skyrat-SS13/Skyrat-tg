@@ -544,7 +544,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/toggle/is_valid(value)
 	return value == TRUE || value == FALSE
 
- // SKYRAT EDIT BELOW
+// SKYRAT EDIT BELOW
 /// A preference for text and text input.
 /datum/preference/text
 	abstract_type = /datum/preference/text
@@ -570,3 +570,4 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 /datum/preference/tri_color/is_valid(value)
 	return findtext(value[1], GLOB.is_color) && findtext(value[2], GLOB.is_color) && findtext(value[3], GLOB.is_color)
+ // SKYRAT EDIT END
