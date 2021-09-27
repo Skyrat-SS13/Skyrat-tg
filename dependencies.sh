@@ -8,7 +8,7 @@ export BYOND_MAJOR=514
 export BYOND_MINOR=1557 #SKYRAT EDIT CHANGE - Compiler failure due to insufficent memory when running previous builds.
 
 #rust_g git tag
-export RUST_G_VERSION=0.4.10
+export RUST_G_VERSION=0.5.0
 
 #node version
 export NODE_VERSION=12
