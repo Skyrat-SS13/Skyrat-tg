@@ -251,19 +251,11 @@
 	antag_flag = ROLE_FAMILY_HEAD_ASPIRANT
 	antag_flag_override = ROLE_FAMILIES
 	protected_roles = list("Prisoner", "Head of Personnel")
-<<<<<<< HEAD
 	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant") //SKYRAT EDIT - Sec_haul
-	required_candidates = 6 // gotta have 'em ALL
-	weight = 1
-	cost = 25
-	requirements = list(101,101,101,101,101,80,50,30,10,10)
-=======
-	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Research Director")
 	required_candidates = 9
 	weight = 2
 	cost = 19
 	requirements = list(101,101,40,40,30,20,10,10,10,10)
->>>>>>> 6fe8e8d76c7 (FAMILIES 4.0: "fuck it, MRP only this time" (#61123))
 	flags = HIGH_IMPACT_RULESET
 	blocking_rules = list(/datum/dynamic_ruleset/roundstart/families)
 	/// A reference to the handler that is used to run pre_execute(), execute(), etc..

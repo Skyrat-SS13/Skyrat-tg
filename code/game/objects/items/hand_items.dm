@@ -102,62 +102,6 @@
 		to_chat(sucker, span_userdanger("[owner] bops you with [owner.p_their()] [src.name]!"))
 	qdel(src)
 
-/obj/item/slapper
-	name = "slapper"
-	desc = "This is how real men fight."
-	icon_state = "latexballon"
-	inhand_icon_state = "nothing"
-	force = 0
-	throwforce = 0
-	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
-	attack_verb_continuous = list("slaps")
-	attack_verb_simple = list("slap")
-	hitsound = 'sound/effects/snap.ogg'
-	/// How many smaller table smacks we can do before we're out
-	var/table_smacks_left = 3
-
-/obj/item/slapper/attack(mob/M, mob/living/carbon/human/user)
-	if(ishuman(M))
-		var/mob/living/carbon/human/L = M
-		if(L && L.dna && L.dna.species)
-			L.dna.species.stop_wagging_tail(M)
-	user.do_attack_animation(M)
-	playsound(M, 'sound/weapons/slap.ogg', 50, TRUE, -1)
-	if(user.zone_selected == BODY_ZONE_HEAD || user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
-		user.visible_message(span_danger("[user] slaps [M] in the face!"),
-		span_notice("You slap [M] in the face!"),\
-		span_hear("You hear a slap."))
-	else
-		user.visible_message(span_danger("[user] slaps [M]!"),
-		span_notice("You slap [M]!"),\
-		span_hear("You hear a slap."))
-	return
-
-/obj/item/slapper/attack_atom(obj/O, mob/living/user, params)
-	if(!istype(O, /obj/structure/table))
-		return ..()
-
-	var/obj/structure/table/the_table = O
-	var/is_right_clicking = LAZYACCESS(params2list(params), RIGHT_CLICK)
-
-	if(is_right_clicking && table_smacks_left == initial(table_smacks_left)) // so you can't do 2 weak slaps followed by a big slam
-		transform = transform.Scale(5) // BIG slap
-		if(HAS_TRAIT(user, TRAIT_HULK))
-			transform = transform.Scale(2)
-			color = COLOR_GREEN
-		user.do_attack_animation(the_table)
-		SEND_SIGNAL(user, COMSIG_LIVING_SLAM_TABLE, the_table)
-		SEND_SIGNAL(the_table, COMSIG_TABLE_SLAMMED, user)
-		playsound(get_turf(the_table), 'sound/effects/tableslam.ogg', 110, TRUE)
-		user.visible_message("<b>[span_danger("[user] slams [user.p_their()] fist down on [the_table]!")]</b>", "<b>[span_danger("You slam your fist down on [the_table]!")]</b>")
-		qdel(src)
-	else
-		user.do_attack_animation(the_table)
-		playsound(get_turf(the_table), 'sound/effects/tableslam.ogg', 40, TRUE)
-		user.visible_message(span_notice("[user] slaps [user.p_their()] hand on [the_table]."), span_notice("You slap your hand on [the_table]."), vision_distance=COMBAT_MESSAGE_RANGE)
-		table_smacks_left--
-		if(table_smacks_left <= 0)
-			qdel(src)
 
 /obj/item/noogie
 	name = "noogie"
@@ -255,8 +199,6 @@
 	noogie_loop(user, target, iteration)
 
 
-<<<<<<< HEAD
-=======
 /obj/item/slapper
 	name = "slapper"
 	desc = "This is how real men fight."
@@ -448,7 +390,6 @@
 
 
 
->>>>>>> 6fe8e8d76c7 (FAMILIES 4.0: "fuck it, MRP only this time" (#61123))
 /obj/item/kisser
 	name = "kiss"
 	desc = "I want you all to know, everyone and anyone, to seal it with a kiss."
@@ -460,7 +401,8 @@
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
 	/// The kind of projectile this version of the kiss blower fires
 	var/kiss_type = /obj/projectile/kiss
-
+	/// TRUE if the user was aiming anywhere but the mouth when they offer the kiss, if it's offered
+	var/cheek_kiss
 
 /obj/item/kisser/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
@@ -470,7 +412,6 @@
 	user.visible_message("<b>[user]</b> blows \a [blown_kiss] at [target]!", span_notice("You blow \a [blown_kiss] at [target]!"))
 
 	//Shooting Code:
-	blown_kiss.spread = 0
 	blown_kiss.original = target
 	blown_kiss.fired_from = user
 	blown_kiss.firer = user // don't hit ourself that would be really annoying
@@ -478,6 +419,34 @@
 	blown_kiss.preparePixelProjectile(target, user)
 	blown_kiss.fire()
 	qdel(src)
+
+/obj/item/kisser/on_offered(mob/living/carbon/offerer)
+	if(!(locate(/mob/living/carbon) in orange(1, offerer)))
+		return TRUE
+
+	cheek_kiss = (offerer.zone_selected != BODY_ZONE_PRECISE_MOUTH)
+	offerer.visible_message(span_notice("[offerer] leans in slightly, offering a kiss[cheek_kiss ? " on the cheek" : ""]!"),
+		span_notice("You lean in slightly, indicating you'd like to offer a kiss[cheek_kiss ? " on the cheek" : ""]!"), null, 2)
+	offerer.apply_status_effect(STATUS_EFFECT_OFFERING, src)
+	return TRUE
+
+/obj/item/kisser/on_offer_taken(mob/living/carbon/offerer, mob/living/carbon/taker)
+	var/obj/projectile/blown_kiss = new kiss_type(get_turf(offerer))
+	offerer.visible_message("<b>[offerer]</b> gives [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!!", span_notice("You give [taker] \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"), ignored_mobs = taker)
+	to_chat(taker, span_nicegreen("[offerer] gives you \a [blown_kiss][cheek_kiss ? " on the cheek" : ""]!"))
+	offerer.face_atom(taker)
+	taker.face_atom(offerer)
+	offerer.do_item_attack_animation(taker, used_item=src)
+	//We're still firing a shot here because I don't want to deal with some weird edgecase where direct impacting them with the projectile causes it to freak out because there's no angle or something
+	blown_kiss.original = taker
+	blown_kiss.fired_from = offerer
+	blown_kiss.firer = offerer // don't hit ourself that would be really annoying
+	blown_kiss.impacted = list(offerer = TRUE) // just to make sure we don't hit the wearer
+	blown_kiss.preparePixelProjectile(taker, offerer)
+	blown_kiss.suppressed = SUPPRESSED_VERY // this also means it's a direct offer
+	blown_kiss.fire()
+	qdel(src)
+	return TRUE // so the core offering code knows to halt
 
 /obj/item/kisser/death
 	name = "kiss of death"
@@ -519,8 +488,11 @@
  */
 /obj/projectile/kiss/proc/harmless_on_hit(mob/living/living_target)
 	playsound(get_turf(living_target), hitsound, 100, TRUE)
-	living_target.visible_message(span_danger("[living_target] is hit by \a [src]."), span_userdanger("You're hit by \a [src]!"), vision_distance=COMBAT_MESSAGE_RANGE)
-	living_target.mind?.add_memory(MEMORY_KISS, list(DETAIL_PROTAGONIST = living_target, DETAIL_KISSER = firer), story_value = STORY_VALUE_OKAY, memory_flags = MEMORY_CHECK_BLINDNESS)
+	if(!suppressed)  // direct
+		living_target.visible_message(span_danger("[living_target] is hit by \a [src]."), span_userdanger("You're hit by \a [src]!"), vision_distance=COMBAT_MESSAGE_RANGE)
+
+	living_target.mind?.add_memory(MEMORY_KISS, list(DETAIL_PROTAGONIST = living_target, DETAIL_KISSER = firer), story_value = STORY_VALUE_OKAY)
+	SEND_SIGNAL(living_target, COMSIG_ADD_MOOD_EVENT, "kiss", /datum/mood_event/kiss, firer, suppressed)
 	if(isliving(firer))
 		var/mob/living/kisser = firer
 		kisser.mind?.add_memory(MEMORY_KISS, list(DETAIL_PROTAGONIST = living_target, DETAIL_KISSER = firer), story_value = STORY_VALUE_OKAY, memory_flags = MEMORY_CHECK_BLINDNESS)
@@ -558,6 +530,7 @@
 	def_zone = BODY_ZONE_HEAD // let's keep it PG, people
 	. = ..()
 	if(isliving(target))
+		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "kiss", /datum/mood_event/kiss, firer, suppressed)
 		try_fluster(target)
 
 /obj/projectile/kiss/death
