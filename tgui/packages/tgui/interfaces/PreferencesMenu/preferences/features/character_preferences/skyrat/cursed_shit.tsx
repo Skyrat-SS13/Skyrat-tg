@@ -1,4 +1,4 @@
-import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureNumeric, FeatureToggle, FeatureChoiced, FeatureColorInput } from "../../base";
+import { FeatureDropdownInput, Feature, FeatureNumberInput, CheckboxInput, FeatureTriColorInput, FeatureNumeric, FeatureToggle, FeatureChoiced } from "../../base";
 
 export const penis_toggle: FeatureToggle = {
   name: "Penis",
@@ -45,9 +45,9 @@ export const feature_testicles: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const testicles_color: Feature<string> = {
+export const testicles_color: Feature<string[]> = {
   name: "Testicles Color",
-  component: FeatureColorInput,
+  component: FeatureTriColorInput,
 };
 
 export const balls_size: FeatureNumeric = {

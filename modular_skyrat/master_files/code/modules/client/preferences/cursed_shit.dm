@@ -80,22 +80,22 @@
 /datum/preference/numeric/penis_girth/create_default_value()
 	return round((PENIS_MIN_LENGTH + PENIS_MAX_GIRTH) / 2)
 
-/datum/preference/color/penis
+/datum/preference/tri_color/penis
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "penis_color"
 	relevant_mutant_bodypart = "penis"
 
-/datum/preference/color/penis/is_accessible(datum/preferences/preferences)
+/datum/preference/tri_color/penis/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = preferences.read_preference(/datum/preference/toggle/penis)
 	return ((passed_initial_check || allowed) && part_enabled)
 
-/datum/preference/color/penis/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/tri_color/penis/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["penis"])
-		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = "FFF")
-	target.dna.mutant_bodyparts["penis"]["color"] = sanitize_hexcolor(value)
+		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+	target.dna.mutant_bodyparts["penis"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /datum/preference/toggle/penis_taur_mode
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -174,22 +174,22 @@
 	var/datum/sprite_accessory/genital/testicles/none/default = /datum/sprite_accessory/genital/testicles/none
 	return initial(default.name)
 
-/datum/preference/color/testicles
+/datum/preference/tri_color/testicles
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "testicles_color"
 	relevant_mutant_bodypart = "testicles"
 
-/datum/preference/color/testicles/is_accessible(datum/preferences/preferences)
+/datum/preference/tri_color/testicles/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = preferences.read_preference(/datum/preference/toggle/testicles)
 	return ((passed_initial_check || allowed) && part_enabled)
 
-/datum/preference/color/testicles/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/tri_color/testicles/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["testicles"])
-		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = "FFF")
-	target.dna.mutant_bodyparts["testicles"]["color"] = sanitize_hexcolor(value)
+		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+	target.dna.mutant_bodyparts["testicles"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /datum/preference/numeric/balls_size
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
