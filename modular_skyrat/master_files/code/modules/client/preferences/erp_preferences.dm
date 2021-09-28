@@ -70,6 +70,9 @@
 /datum/preference/choiced/erp_status/init_possible_values()
 	return list("Yes", "Ask", "Check OOC", "No")
 
+/datum/preference/choiced/erp_status/create_default_value()
+	return "Ask"
+
 /datum/preference/choiced/erp_status/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
 		return FALSE

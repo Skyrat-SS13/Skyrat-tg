@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		tainted_character_profiles = FALSE
 
 	//SKYRAT EDIT BEGIN
-	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
+	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
 	data["preview_selection"] = preview_pref
 	//SKYRAT EDIT END
 
@@ -284,12 +284,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				return FALSE
 
 			return TRUE
-
+		//SKYRAT EDIT ADDITION
 		if("update_preview")
 			preview_pref = params["updated_preview"]
 			character_preview_view.update_body()
 			return TRUE
-		//SKYRAT EDIT ADDITION
+
 		if ("open_loadout")
 			if(parent.open_loadout_ui)
 				parent.open_loadout_ui.ui_interact(usr)
