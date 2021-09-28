@@ -359,3 +359,4 @@
 	flags_inv = HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = "driscoll_mask"
+	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.

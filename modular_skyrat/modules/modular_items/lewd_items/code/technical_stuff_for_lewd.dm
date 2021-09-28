@@ -1258,3 +1258,34 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 		return FALSE
 	return FALSE
+
+/datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
+	. = ..()
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		if(client.mob.hud_used)
+			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 0
+	else
+		if(ishuman(client.mob))
+			var/mob/living/carbon/human/M = client.mob
+			if(M.vagina != null)
+				M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.anus != null)
+				M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.nipples != null)
+				M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.penis != null)
+				M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+		if(client.mob.hud_used)
+			if(client.mob.hud_used.ERP_inventory_shown)
+				client.mob.hud_used.ERP_inventory_shown = FALSE
+				client.screen -= client.mob.hud_used.ERP_toggleable_inventory
+
+			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 100
+
+
+	client.mob.hud_used.hidden_inventory_update(client.mob)
+	client.mob.hud_used.persistent_inventory_update(client.mob)
