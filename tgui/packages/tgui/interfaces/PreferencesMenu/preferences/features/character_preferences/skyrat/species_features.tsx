@@ -28,7 +28,7 @@ export const ooc_notes: Feature<string> = {
 
 export const custom_species: Feature<string> = {
   name: "Custom Species Name",
-  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  description: "Want to have a fancy species name? Put it here, or leave it blank if you want to use your species' default name.",
   component: FeatureShortTextInput,
 };
 
