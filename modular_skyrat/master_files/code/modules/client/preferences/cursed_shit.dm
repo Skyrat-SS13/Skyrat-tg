@@ -7,7 +7,7 @@
 	default_value = FALSE
 	relevant_mutant_bodypart = "penis"
 
-/datum/preference/toggle/penis/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/penis/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/penis/is_accessible(datum/preferences/preferences)
@@ -80,22 +80,22 @@
 /datum/preference/numeric/penis_girth/create_default_value()
 	return round((PENIS_MIN_LENGTH + PENIS_MAX_GIRTH) / 2)
 
-/datum/preference/tri_color/penis
+/datum/preference/color/penis
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "penis_color"
 	relevant_mutant_bodypart = "penis"
 
-/datum/preference/tri_color/penis/is_accessible(datum/preferences/preferences)
+/datum/preference/color/penis/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = preferences.read_preference(/datum/preference/toggle/penis)
 	return ((passed_initial_check || allowed) && part_enabled)
 
-/datum/preference/tri_color/penis/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/color/penis/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["penis"])
-		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
-	target.dna.mutant_bodyparts["penis"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
+		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = "FFF")
+	target.dna.mutant_bodyparts["penis"]["color"] = sanitize_hexcolor(value)
 
 /datum/preference/toggle/penis_taur_mode
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -104,7 +104,7 @@
 	default_value = FALSE
 	relevant_mutant_bodypart = "penis"
 
-/datum/preference/toggle/penis_taur_mode/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/penis_taur_mode/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["penis_sheath"] = value
 
 /datum/preference/toggle/penis_taur_mode/is_accessible(datum/preferences/preferences)
@@ -141,7 +141,7 @@
 	default_value = FALSE
 	relevant_mutant_bodypart = "testicles"
 
-/datum/preference/toggle/testicles/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/testicles/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/testicles/is_accessible(datum/preferences/preferences)
@@ -167,29 +167,29 @@
 
 /datum/preference/choiced/testicles/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["testicles"])
-		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = "FFF")
 	target.dna.mutant_bodyparts["testicles"]["name"] = value
 
 /datum/preference/choiced/testicles/create_default_value()
 	var/datum/sprite_accessory/genital/testicles/none/default = /datum/sprite_accessory/genital/testicles/none
 	return initial(default.name)
 
-/datum/preference/tri_color/testicles
+/datum/preference/color/testicles
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "testicles_color"
 	relevant_mutant_bodypart = "testicles"
 
-/datum/preference/tri_color/testicles/is_accessible(datum/preferences/preferences)
+/datum/preference/color/testicles/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = preferences.read_preference(/datum/preference/toggle/testicles)
 	return ((passed_initial_check || allowed) && part_enabled)
 
-/datum/preference/tri_color/testicles/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/color/testicles/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["testicles"])
-		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
-	target.dna.mutant_bodyparts["testicles"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
+		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = "FFF")
+	target.dna.mutant_bodyparts["testicles"]["color"] = sanitize_hexcolor(value)
 
 /datum/preference/numeric/balls_size
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -218,7 +218,7 @@
 	default_value = FALSE
 	relevant_mutant_bodypart = "vagina"
 
-/datum/preference/toggle/vagina/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/vagina/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/vagina/is_accessible(datum/preferences/preferences)
@@ -275,7 +275,7 @@
 	default_value = FALSE
 	relevant_mutant_bodypart = "womb"
 
-/datum/preference/toggle/womb/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/womb/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/womb/is_accessible(datum/preferences/preferences)
@@ -332,7 +332,7 @@
 	default_value = FALSE
 	relevant_mutant_bodypart = "breasts"
 
-/datum/preference/toggle/breasts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/breasts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/breasts/is_accessible(datum/preferences/preferences)
@@ -387,9 +387,9 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "breasts_lactation_toggle"
 	default_value = FALSE
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = "breasts"
 
-/datum/preference/toggle/breasts_lactation/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/breasts_lactation/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["breasts_lactation"] = value
 
 /datum/preference/toggle/breasts_lactation/is_accessible(datum/preferences/preferences)
@@ -402,7 +402,7 @@
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "breasts_size"
-	relevant_mutant_bodypart = "testicles"
+	relevant_mutant_bodypart = "breasts"
 	minimum = 0
 	maximum = 16
 

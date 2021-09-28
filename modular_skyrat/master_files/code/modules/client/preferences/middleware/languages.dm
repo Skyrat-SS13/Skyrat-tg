@@ -37,11 +37,11 @@
 	)
 	var/list/name_to_language
 
-/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferecnes) //SKYRAT EDIT CHANGE
+/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) //SKYRAT EDIT CHANGE
 	target.language_holder.understood_languages.Cut()
 	target.language_holder.spoken_languages.Cut()
 	target.language_holder.omnitongue = TRUE // a crappy hack but it works
-	for(var/lang_path in preferecnes.languages)
+	for(var/lang_path in preferences.languages)
 		target.language_holder.understood_languages[lang_path] = list(LANGUAGE_ATOM)
 		target.language_holder.spoken_languages[lang_path] = list(LANGUAGE_ATOM)
 
@@ -70,7 +70,7 @@
 
 	var/list/data = list()
 
-	var/max_languages = preferences.all_quirks.Find("Linguist") ? 4 : 3
+	var/max_languages = preferences.all_quirks.Find(QUIRK_LINGUIST) ? 4 : 3
 	if(!preferences.languages || !preferences.languages.len || (preferences.languages && preferences.languages.len > max_languages)) // Too many languages, or no languages.
 		preferences.languages = list()
 		var/species_type = preferences.read_preference(/datum/preference/choiced/species)
@@ -105,7 +105,7 @@
 
 /datum/preference_middleware/languages/proc/give_language(list/params, mob/user)
 	var/language_name = params["language_name"]
-	var/max_languages = preferences.all_quirks.Find("Linguist") ? 4 : 3
+	var/max_languages = preferences.all_quirks.Find(QUIRK_LINGUIST) ? 4 : 3
 	if(preferences.languages && preferences.languages.len == max_languages) // too many languages
 		return TRUE
 	preferences.languages[name_to_language[language_name]] = LANGUAGE_SPOKEN

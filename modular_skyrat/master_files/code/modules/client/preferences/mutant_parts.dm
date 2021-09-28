@@ -4,7 +4,7 @@
 	savefile_key = "allow_mismatched_parts_toggle"
 	default_value = FALSE
 
-/datum/preference/toggle/allow_mismatched_parts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/allow_mismatched_parts/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/tri_color/mutant_colors
@@ -24,7 +24,7 @@
 	relevant_mutant_bodypart = "body_markings"
 	default_value = FALSE
 
-/datum/preference/toggle/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/body_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/body_markings/is_accessible(datum/preferences/preferences)
@@ -82,7 +82,7 @@
 	relevant_mutant_bodypart = "tail"
 	default_value = FALSE
 
-/datum/preference/toggle/tail/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/tail/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/tail/is_accessible(datum/preferences/preferences)
@@ -140,7 +140,7 @@
 	relevant_mutant_bodypart = "snout"
 	default_value = FALSE
 
-/datum/preference/toggle/snout/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/snout/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/snout/is_accessible(datum/preferences/preferences)
@@ -198,7 +198,7 @@
 	relevant_mutant_bodypart = "horns"
 	default_value = FALSE
 
-/datum/preference/toggle/horns/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/horns/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/horns/is_accessible(datum/preferences/preferences)
@@ -256,7 +256,7 @@
 	relevant_mutant_bodypart = "ears"
 	default_value = FALSE
 
-/datum/preference/toggle/ears/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/ears/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/ears/is_accessible(datum/preferences/preferences)
@@ -314,7 +314,7 @@
 	relevant_mutant_bodypart = "wings"
 	default_value = FALSE
 
-/datum/preference/toggle/wings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/wings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/wings/is_accessible(datum/preferences/preferences)
@@ -372,7 +372,7 @@
 	relevant_mutant_bodypart = "frills"
 	default_value = FALSE
 
-/datum/preference/toggle/frills/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/frills/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/frills/is_accessible(datum/preferences/preferences)
@@ -430,7 +430,7 @@
 	relevant_mutant_bodypart = "spines"
 	default_value = FALSE
 
-/datum/preference/toggle/spines/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/spines/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/spines/is_accessible(datum/preferences/preferences)
@@ -488,7 +488,7 @@
 	relevant_mutant_bodypart = "legs"
 	default_value = FALSE
 
-/datum/preference/toggle/legs/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/legs/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/legs/is_accessible(datum/preferences/preferences)
@@ -546,7 +546,7 @@
 	relevant_mutant_bodypart = "caps"
 	default_value = FALSE
 
-/datum/preference/toggle/caps/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/caps/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/caps/is_accessible(datum/preferences/preferences)
@@ -604,7 +604,7 @@
 	relevant_mutant_bodypart = "moth_antennae"
 	default_value = FALSE
 
-/datum/preference/toggle/moth_antennae/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/moth_antennae/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/moth_antennae/is_accessible(datum/preferences/preferences)
@@ -662,7 +662,7 @@
 	relevant_mutant_bodypart = "moth_markings"
 	default_value = FALSE
 
-/datum/preference/toggle/moth_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/moth_markings/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/moth_markings/is_accessible(datum/preferences/preferences)
@@ -720,7 +720,7 @@
 	relevant_mutant_bodypart = "fluff"
 	default_value = FALSE
 
-/datum/preference/toggle/fluff/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/fluff/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/fluff/is_accessible(datum/preferences/preferences)
@@ -778,7 +778,7 @@
 	relevant_mutant_bodypart = "head_acc"
 	default_value = FALSE
 
-/datum/preference/toggle/head_acc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/head_acc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/head_acc/is_accessible(datum/preferences/preferences)
@@ -836,7 +836,7 @@
 	relevant_mutant_bodypart = "ipc_screen"
 	default_value = FALSE
 
-/datum/preference/toggle/ipc_screen/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/ipc_screen/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/ipc_screen/is_accessible(datum/preferences/preferences)
@@ -894,7 +894,7 @@
 	relevant_mutant_bodypart = "ipc_antenna"
 	default_value = FALSE
 
-/datum/preference/toggle/ipc_antenna/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/ipc_antenna/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/ipc_antenna/is_accessible(datum/preferences/preferences)
@@ -952,7 +952,7 @@
 	relevant_mutant_bodypart = "ipc_chassis"
 	default_value = FALSE
 
-/datum/preference/toggle/ipc_chassis/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/ipc_chassis/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/ipc_chassis/is_accessible(datum/preferences/preferences)
@@ -1010,7 +1010,7 @@
 	relevant_mutant_bodypart = "neck_acc"
 	default_value = FALSE
 
-/datum/preference/toggle/neck_acc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/neck_acc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/neck_acc/is_accessible(datum/preferences/preferences)
@@ -1068,7 +1068,7 @@
 	relevant_mutant_bodypart = "skrell_hair"
 	default_value = FALSE
 
-/datum/preference/toggle/skrell_hair/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/skrell_hair/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/skrell_hair/is_accessible(datum/preferences/preferences)
@@ -1126,7 +1126,7 @@
 	relevant_mutant_bodypart = "taur"
 	default_value = FALSE
 
-/datum/preference/toggle/taur/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/taur/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/taur/is_accessible(datum/preferences/preferences)
@@ -1184,7 +1184,7 @@
 	relevant_mutant_bodypart = "xenodorsal"
 	default_value = FALSE
 
-/datum/preference/toggle/xenodorsal/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/xenodorsal/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/xenodorsal/is_accessible(datum/preferences/preferences)
@@ -1242,7 +1242,7 @@
 	relevant_mutant_bodypart = "xenohead"
 	default_value = FALSE
 
-/datum/preference/toggle/xenohead/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/toggle/xenohead/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE // we dont actually want this to do anything
 
 /datum/preference/toggle/xenohead/is_accessible(datum/preferences/preferences)

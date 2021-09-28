@@ -89,5 +89,5 @@
 		return "disabled"
 	. = ..()
 
-/datum/preference/choiced/erp_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferecnes)
+/datum/preference/choiced/erp_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
