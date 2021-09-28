@@ -56,21 +56,21 @@ const PriorityButton = (props: {
   const className = `PreferencesMenu__Jobs__departments__priority`;
 
   return (
-    <Stack.Item height={PRIORITY_BUTTON_SIZE}>
-      <Button
-        className={classes([
-          className,
-          props.modifier && `${className}--${props.modifier}`,
-        ])}
-        color={props.enabled ? props.color : "white"}
-        circular
-        onClick={props.onClick}
-        tooltip={props.name}
-        tooltipPosition="bottom"
-        height={PRIORITY_BUTTON_SIZE}
-        width={PRIORITY_BUTTON_SIZE}
-      />
-    </Stack.Item>
+    // SKYRAT EDIT START
+    <Button
+      className={classes([
+        className,
+        props.modifier && `${className}--${props.modifier}`,
+      ])}
+      color={props.enabled ? props.color : "white"}
+      circular
+      onClick={props.onClick}
+      tooltip={props.name}
+      tooltipPosition="bottom"
+      height={PRIORITY_BUTTON_SIZE}
+      width={PRIORITY_BUTTON_SIZE}
+    />
+    // SKYRAT EDIT END
   );
 };
 
@@ -144,12 +144,12 @@ const PriorityButtons = (props: {
   const { createSetPriority, isOverflow, priority } = props;
 
   return (
-    <Stack
+    <Box inline // SKYRAT EDIT
       style={{
         "align-items": "center",
         "height": "100%",
-        "justify-content": "flex-end",
-        "padding-left": "0.3em",
+        "textAlign": "end", // SKYRAT EDIT
+        "padding": "0.3em", // SKYRAT EDIT
       }}
     >
       {isOverflow
@@ -203,7 +203,7 @@ const PriorityButtons = (props: {
             />
           </>
         )}
-    </Stack>
+    </Box> // SKYRAT EDIT
   );
 };
 
@@ -277,10 +277,10 @@ const JobRow = (props: {
     />);
   }
   return (
-    <Stack.Item className={props.className} height="100%" style={{
+    <Box className={props.className} style={{ // SKYRAT EDIT
       "margin-top": 0,
     }}>
-      <Stack fill align="center">
+      <Stack align="center" /* SKYRAT EDIT */>
         <Tooltip
           content={job.description}
           position="right"// SKYRAT EDIT bottom-start->right
@@ -299,11 +299,11 @@ const JobRow = (props: {
           </Stack.Item>
         </Tooltip>
 
-        <Stack.Item grow className="options">
+        <Stack.Item width="50%" className="options" /* SKYRAT EDIT */>
           {rightSide}
         </Stack.Item>
       </Stack>
-    </Stack.Item>
+    </Box> // SKYRAT EDIT
   );
 };
 
@@ -324,21 +324,19 @@ const Department = (props: {
   }
 
   return (
-    <Box>
-      <Stack
-        vertical
-        fill>
-        {jobs.head
-          && <JobRow className={`${className} head`} job={jobs.head} />}
-        {jobs.jobs.map((job) => {
-          if (job === jobs.head) {
-            return null;
-          }
+    // SKYRAT EDIT START
+    <Box className="jobRow">
+      {jobs.head
+        && <JobRow className={`${className} head`} job={jobs.head} />}
+      {jobs.jobs.map((job) => {
+        if (job === jobs.head) {
+          return null;
+        }
 
-          return <JobRow className={className} key={job.name} job={job} />;
-        })}
-      </Stack>
+        return <JobRow className={className} key={job.name} job={job} />;
+      })}
     </Box>
+    // SKYRAT EDIT END
   );
 };
 
