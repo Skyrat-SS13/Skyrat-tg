@@ -2942,14 +2942,6 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/maint)
-"asw" = (
-/obj/machinery/camera{
-	c_tag = "Permabrig South";
-	dir = 8;
-	network = list("ss13","prison")
-	},
-/turf/open/floor/iron,
-/area/security/prison)
 "asy" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Firefighting Equipment";
@@ -17684,6 +17676,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+"dgD" = (
+/obj/machinery/cryopod,
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron,
+/area/security/prison)
 "dgF" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
 	dir = 5
@@ -20027,6 +20027,14 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron,
 /area/maintenance/port/fore)
+"eGm" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/posialert{
+	pixel_y = -32
+	},
+/turf/open/floor/iron/white,
+/area/science/robotics/lab)
 "eGr" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood{
@@ -22602,6 +22610,14 @@
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
 /turf/open/floor/iron/grimy,
 /area/service/chapel/office)
+"gka" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/machinery/light_switch/directional/south,
+/obj/machinery/cryopod,
+/turf/open/floor/iron/dark,
+/area/commons/cryopods)
 "gki" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/light/directional/west,
@@ -23525,6 +23541,17 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/atmos)
+"gMr" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "gMv" = (
 /turf/closed/mineral/random/snow,
 /area/icemoon/surface/outdoors)
@@ -24987,10 +25014,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/commons/storage/art)
-"hKu" = (
-/obj/machinery/modular_computer/console/preset/civilian,
-/turf/open/floor/iron/white,
-/area/science/robotics/lab)
 "hKw" = (
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/carpet,
@@ -25240,6 +25263,10 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/engine,
 /area/science/misc_lab)
+"hVW" = (
+/obj/machinery/vending/autodrobe/all_access,
+/turf/open/floor/iron,
+/area/commons/locker)
 "hWG" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -34399,14 +34426,6 @@
 "nhQ" = (
 /turf/open/floor/carpet,
 /area/service/library)
-"nhU" = (
-/obj/machinery/cryopod,
-/obj/machinery/light/directional/north,
-/obj/machinery/computer/cryopod{
-	pixel_y = 24
-	},
-/turf/open/floor/iron/dark,
-/area/commons/cryopods)
 "nhZ" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -36791,10 +36810,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/maintenance/starboard)
-"oEP" = (
-/obj/effect/spawner/random/vending/colavend,
-/turf/open/floor/iron,
-/area/commons/locker)
 "oEU" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
@@ -38772,6 +38787,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/command/teleporter)
+"pKz" = (
+/obj/machinery/vending/access/command,
+/turf/open/floor/wood,
+/area/command/meeting_room)
 "pKI" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Port Mix to West Ports"
@@ -39761,16 +39780,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
-"qmi" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/vending/dorms,
-/turf/open/floor/iron,
-/area/commons/dorms)
 "qmm" = (
 /turf/open/floor/carpet/lone,
 /area/service/chapel)
@@ -40115,6 +40124,14 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/engine_smes)
+"qwZ" = (
+/obj/machinery/modular_computer/console/preset/civilian,
+/obj/machinery/posialert{
+	pixel_x = 28;
+	pixel_y = 24
+	},
+/turf/open/floor/iron/white,
+/area/science/robotics/lab)
 "qxz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer/turbine_computer{
@@ -40276,6 +40293,16 @@
 /obj/structure/bed/roller,
 /turf/open/floor/iron/white,
 /area/medical/medbay/aft)
+"qDJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "qDL" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -43060,6 +43087,16 @@
 /obj/effect/turf_decal/siding/wood/corner,
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
+"sjO" = (
+/obj/machinery/light/directional/north,
+/obj/machinery/computer/cryopod{
+	pixel_y = 24
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/commons/cryopods)
 "skk" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -43633,18 +43670,6 @@
 /obj/effect/spawner/random/maintenance/four,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
-"sBd" = (
-/obj/structure/closet/wardrobe/pjs,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/landmark/start/hangover/closet,
-/turf/open/floor/iron,
-/area/commons/dorms)
 "sBl" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
 	dir = 9
@@ -49235,6 +49260,15 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/security/prison)
+"vKU" = (
+/obj/machinery/camera{
+	c_tag = "Permabrig South";
+	dir = 8;
+	network = list("ss13","prison")
+	},
+/obj/machinery/cryopod,
+/turf/open/floor/iron,
+/area/security/prison)
 "vKY" = (
 /obj/structure/bookcase/random/adult,
 /turf/open/floor/wood,
@@ -50033,16 +50067,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/command/bridge)
-"whN" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/obj/machinery/light_switch/directional/south,
-/turf/open/floor/iron/dark,
-/area/commons/cryopods)
 "whY" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -71588,7 +71612,7 @@ aLE
 avG
 aOp
 cPo
-oEP
+hVW
 oBY
 mbs
 mbs
@@ -79762,8 +79786,8 @@ afy
 abz
 aaw
 iQf
-aaw
-asw
+dgD
+vKU
 acd
 awX
 acd
@@ -81107,7 +81131,7 @@ nuf
 kKh
 wBy
 rRa
-xQa
+pKz
 kcR
 cGo
 suY
@@ -84170,7 +84194,7 @@ hTM
 pLQ
 kxl
 jfd
-nhU
+sjO
 viz
 jmT
 tTw
@@ -84430,7 +84454,7 @@ jfd
 vYo
 luV
 jmu
-whN
+gka
 jfd
 aJw
 aJw
@@ -84937,7 +84961,7 @@ pcX
 pSI
 tHq
 pcX
-qmi
+qDJ
 pSI
 pcX
 tHq
@@ -86481,7 +86505,7 @@ iFi
 hBG
 fOa
 jPU
-sBd
+gMr
 eIL
 mBy
 eKy
@@ -98071,7 +98095,7 @@ rmv
 ykz
 aYV
 bfV
-hKu
+qwZ
 cHM
 biL
 blB
@@ -98336,7 +98360,7 @@ cHR
 bou
 eqR
 bqd
-aPm
+eGm
 box
 btS
 job
