@@ -247,7 +247,7 @@
 	body_parts_covered = HEAD|CHEST|GROIN|LEGS|ARMS
 	equip_delay_self = 50
 	strip_delay = 50
-	slowdown = 0.5
+	slowdown = 0.6
 
 	light_power = 0.75
 
@@ -351,7 +351,7 @@
 	armor.bio = armor_upgraded[5] * 20
 	armor.rad = armor_upgraded[6] * 20
 	armor.fire = armor_upgraded[7] * 20
-	slowdown = 0.5 - (speed_upgraded * 0.1)
+	slowdown = initial(slowdown) - (speed_upgraded * 0.1)
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
