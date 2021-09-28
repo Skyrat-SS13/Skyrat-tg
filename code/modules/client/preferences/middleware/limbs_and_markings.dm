@@ -59,11 +59,10 @@
 /datum/preference_middleware/limbs_and_markings/proc/set_limb_aug_style(list/params, mob/user)
 	var/limb_slot = params["limb_slot"]
 	var/style_name = params["style_name"]
-	if(style_name == "None")
-		preferences.augment_limb_styles -= limbs_to_process[limb_slot]
-		preferences.character_preview_view.update_body()
-		return TRUE
-	preferences.augment_limb_styles[limbs_to_process[limb_slot]] = style_name
+	if(augment_name == "None")
+		preferences.augments -= limbs_to_process[limb_slot]
+	else
+		preferences.augments[limbs_to_process[limb_slot]] = augment_to_path[augment_name]
 	preferences.character_preview_view.update_body()
 	return TRUE
 
