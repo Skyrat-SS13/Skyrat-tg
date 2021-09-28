@@ -17294,26 +17294,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/iron/showroomfloor,
 /area/medical/surgery/room_b)
-"bhB" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/item/stack/sheet/plasteel{
-	amount = 10;
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/book/manual/wiki/robotics_cyborgs,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/obj/item/assembly/flash/handheld,
-/turf/open/floor/iron/dark,
-/area/science/robotics/lab)
 "bhC" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -20796,6 +20776,21 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/maintenance/port)
+"bDR" = (
+/obj/machinery/camera{
+	c_tag = "Prison Cells";
+	dir = 4;
+	network = list("ss13","prison")
+	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/security/prison)
 "bEa" = (
 /obj/machinery/atmospherics/pipe/bridge_pipe/purple/visible,
 /obj/structure/lattice/catwalk,
@@ -39368,6 +39363,11 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"emh" = (
+/obj/structure/cable,
+/obj/machinery/cryopod,
+/turf/open/floor/plating,
+/area/security/prison)
 "emv" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/structure/table/wood,
@@ -42996,25 +42996,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
-"fOZ" = (
-/obj/structure/filingcabinet/chestdrawer,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/firealarm/directional/west,
-/obj/machinery/camera{
-	c_tag = "Bridge Council Door";
-	dir = 4;
-	name = "command camera"
-	},
-/turf/open/floor/iron,
-/area/command/bridge)
 "fPq" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -45316,6 +45297,25 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
+"haq" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/camera{
+	c_tag = "Bridge Council Door";
+	dir = 4;
+	name = "command camera"
+	},
+/obj/machinery/vending/access/command,
+/turf/open/floor/iron,
+/area/command/bridge)
 "haI" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -46117,6 +46117,29 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
+"hqJ" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/stack/sheet/plasteel{
+	amount = 10;
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/book/manual/wiki/robotics_cyborgs,
+/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld,
+/obj/item/assembly/flash/handheld,
+/obj/machinery/posialert{
+	pixel_x = -32
+	},
+/turf/open/floor/iron/dark,
+/area/science/robotics/lab)
 "hrh" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -56294,6 +56317,20 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison)
+"lUj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/sign/poster/official/no_erp{
+	pixel_y = -32
+	},
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron/dark,
+/area/commons/locker)
 "lUB" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/red{
@@ -60087,6 +60124,47 @@
 	},
 /turf/open/floor/plating/rust,
 /area/security/prison)
+"nMe" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/cell_charger,
+/obj/item/assembly/prox_sensor{
+	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/assembly/prox_sensor{
+	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/assembly/prox_sensor{
+	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/assembly/prox_sensor{
+	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/stock_parts/cell/high/plus,
+/obj/item/stock_parts/cell/high/plus,
+/obj/item/stock_parts/cell/high/plus,
+/obj/item/crowbar/red,
+/obj/item/toy/figure/roboticist{
+	pixel_x = 6
+	},
+/obj/machinery/light/directional/north,
+/obj/machinery/light_switch/directional/north,
+/obj/machinery/posialert{
+	pixel_x = 28;
+	pixel_y = 24
+	},
+/turf/open/floor/iron/dark,
+/area/science/robotics/lab)
 "nMm" = (
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical{
 	dir = 8
@@ -61652,43 +61730,6 @@
 	},
 /turf/open/floor/iron,
 /area/command/teleporter)
-"otz" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/cell_charger,
-/obj/item/assembly/prox_sensor{
-	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/assembly/prox_sensor{
-	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/assembly/prox_sensor{
-	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/assembly/prox_sensor{
-	desc = "Used for scanning and alerting when someone enters a certain proximity. This one is slightly shifted to the left.";
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/stock_parts/cell/high/plus,
-/obj/item/crowbar/red,
-/obj/item/toy/figure/roboticist{
-	pixel_x = 6
-	},
-/obj/machinery/light/directional/north,
-/obj/machinery/light_switch/directional/north,
-/turf/open/floor/iron/dark,
-/area/science/robotics/lab)
 "oub" = (
 /obj/structure/curtain,
 /turf/open/floor/plating,
@@ -63758,6 +63799,21 @@
 /obj/structure/sign/warning/securearea,
 /turf/closed/wall,
 /area/maintenance/starboard/aft)
+"ppJ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/light/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron/showroomfloor,
+/area/commons/toilet/restrooms)
 "pqb" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -65638,20 +65694,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
-"qcj" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/spawner/random/vending/colavend,
-/obj/effect/turf_decal/delivery,
-/obj/structure/sign/poster/official/no_erp{
-	pixel_y = -32
-	},
-/turf/open/floor/iron/dark,
-/area/commons/locker)
 "qcN" = (
 /obj/machinery/door/airlock/external{
 	name = "External Airlock";
@@ -75996,21 +76038,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
-"uMr" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/machinery/firealarm/directional/south,
-/obj/machinery/light/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/vending/dorms,
-/turf/open/floor/iron/showroomfloor,
-/area/commons/toilet/restrooms)
 "uNb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -82287,14 +82314,6 @@
 /obj/machinery/power/apc/auto_name/south,
 /turf/open/floor/iron/dark,
 /area/tcommsat/computer)
-"xzI" = (
-/obj/machinery/camera{
-	c_tag = "Prison Cells";
-	dir = 4;
-	network = list("ss13","prison")
-	},
-/turf/open/floor/iron,
-/area/security/prison)
 "xzO" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -89882,7 +89901,7 @@ aeu
 aeU
 aeU
 anu
-xzI
+bDR
 oDs
 chR
 chR
@@ -90139,7 +90158,7 @@ aeu
 aeU
 aeU
 anu
-cTl
+emh
 qKa
 iig
 qKa
@@ -102985,7 +103004,7 @@ fuK
 fuK
 ikp
 fJK
-uMr
+ppJ
 fuK
 lSH
 ajd
@@ -106326,7 +106345,7 @@ imG
 udO
 uFB
 dvc
-qcj
+lUj
 tNZ
 wEY
 tNZ
@@ -112491,7 +112510,7 @@ ega
 uaP
 fDS
 pES
-fOZ
+haq
 jMB
 oaW
 mBn
@@ -118887,7 +118906,7 @@ baH
 auu
 mEv
 uZg
-bhB
+hqJ
 bhC
 aCa
 baj
@@ -120428,7 +120447,7 @@ aXU
 bdb
 cvt
 bah
-otz
+nMe
 jSc
 wWz
 aAF

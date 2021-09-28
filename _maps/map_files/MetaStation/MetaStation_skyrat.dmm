@@ -26578,6 +26578,19 @@
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible,
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"hjz" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/mecha_part_fabricator{
+	dir = 4
+	},
+/obj/machinery/posialert{
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
+/area/science/robotics/lab)
 "hki" = (
 /obj/machinery/air_sensor/atmos/air_tank,
 /turf/open/floor/engine/air,
@@ -31411,6 +31424,17 @@
 	dir = 8
 	},
 /area/hallway/primary/aft)
+"jaR" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
+/obj/machinery/cryopod,
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/open/floor/iron/white,
+/area/security/prison)
 "jbh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood{
@@ -34216,19 +34240,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/wood,
 /area/service/cafeteria)
-"keG" = (
-/obj/machinery/light/directional/north,
-/obj/structure/table,
-/obj/item/clothing/gloves/color/latex,
-/obj/item/clothing/gloves/color/latex,
-/obj/item/clothing/mask/surgical,
-/obj/item/clothing/mask/surgical,
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = -10;
-	pixel_y = -1
-	},
-/turf/open/floor/iron/white,
-/area/science/robotics/lab)
 "keP" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
@@ -36898,6 +36909,25 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/service/chapel)
+"led" = (
+/obj/structure/sign/map/right{
+	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
+	icon_state = "map-right-MS";
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/vending/autodrobe/all_access,
+/turf/open/floor/iron/dark,
+/area/commons/locker)
 "lew" = (
 /obj/machinery/door/window{
 	dir = 1;
@@ -39684,11 +39714,6 @@
 /obj/item/storage/box/holobadge/hos,
 /turf/open/floor/wood,
 /area/command/heads_quarters/hos)
-"mds" = (
-/obj/machinery/airalarm/directional/east,
-/obj/machinery/vending/cigarette,
-/turf/open/floor/iron/dark,
-/area/command/bridge)
 "mdB" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
@@ -40043,6 +40068,10 @@
 /obj/effect/spawner/random/medical/two_percent_xeno_egg_spawner,
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"mjQ" = (
+/obj/machinery/vending/dorms,
+/turf/open/floor/iron,
+/area/commons/dorms)
 "mjS" = (
 /obj/structure/rack,
 /obj/item/stack/medical/mesh,
@@ -40279,12 +40308,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/command/bridge)
-"mnI" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 6
-	},
-/turf/open/floor/iron/white,
-/area/security/prison)
 "mnP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -42423,28 +42446,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science/research)
-"mZe" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/clothing/under/misc/assistantformal,
-/obj/structure/sign/map/right{
-	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
-	icon_state = "map-right-MS";
-	pixel_y = 32
-	},
-/obj/item/clothing/suit/hooded/wintercoat,
-/obj/item/clothing/shoes/winterboots,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/commons/locker)
 "mZh" = (
 /obj/structure/rack,
 /obj/item/cane,
@@ -42649,6 +42650,23 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/ce)
+"ndd" = (
+/obj/machinery/light/directional/north,
+/obj/structure/table,
+/obj/item/clothing/gloves/color/latex,
+/obj/item/clothing/gloves/color/latex,
+/obj/item/clothing/mask/surgical,
+/obj/item/clothing/mask/surgical,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -10;
+	pixel_y = -1
+	},
+/obj/machinery/posialert{
+	pixel_x = 28;
+	pixel_y = 24
+	},
+/turf/open/floor/iron/white,
+/area/science/robotics/lab)
 "ndf" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -43157,6 +43175,11 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/wood,
 /area/service/bar)
+"nmH" = (
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/vending/access/command,
+/turf/open/floor/iron/dark,
+/area/command/bridge)
 "nmL" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -67831,6 +67854,12 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"vXe" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet/executive,
+/area/command/heads_quarters/captain/private)
 "vXl" = (
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 5
@@ -67862,6 +67891,15 @@
 /obj/machinery/vending/wardrobe/law_wardrobe,
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"vXK" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 10
+	},
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/security/prison)
 "vXL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -68140,10 +68178,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
-"wdz" = (
-/obj/machinery/vending/dorms,
-/turf/open/floor/iron,
-/area/commons/dorms)
 "wdC" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance,
@@ -73380,13 +73414,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
-"xWt" = (
-/obj/structure/chair/office{
-	dir = 8
-	},
-/obj/effect/landmark/start/blueshield,
-/turf/open/floor/carpet/executive,
-/area/command/heads_quarters/captain/private)
 "xWz" = (
 /obj/structure/toilet/greyscale{
 	dir = 4
@@ -97259,7 +97286,7 @@ lmr
 uzt
 lmr
 jNH
-nPZ
+vXK
 aio
 aol
 anb
@@ -97516,7 +97543,7 @@ iad
 raW
 yes
 iIc
-mnI
+jaR
 aio
 aol
 apD
@@ -102480,7 +102507,7 @@ cCq
 xwa
 dRv
 aAR
-dRv
+hjz
 pWJ
 mLr
 nGN
@@ -102701,7 +102728,7 @@ hlh
 jfR
 wdU
 qOE
-mds
+nmH
 ium
 xld
 goq
@@ -104489,7 +104516,7 @@ aWf
 vAi
 hbO
 xdI
-xWt
+vXe
 omY
 czk
 phs
@@ -104533,7 +104560,7 @@ tBE
 ipr
 tYm
 cDi
-keG
+ndd
 awU
 pcm
 qQc
@@ -107302,7 +107329,7 @@ gBi
 wpL
 qxK
 wpL
-mZe
+led
 eGq
 pRW
 tHv
@@ -109613,7 +109640,7 @@ mkV
 bBF
 ncL
 oUu
-wdz
+mjQ
 sZz
 pRW
 qhu
