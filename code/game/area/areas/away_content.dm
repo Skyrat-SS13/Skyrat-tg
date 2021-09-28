@@ -10,7 +10,11 @@ Unused icons for new areas are "awaycontent1" ~ "awaycontent30"
 	has_gravity = STANDARD_GRAVITY
 	ambience_index = AMBIENCE_AWAY
 	sound_environment = SOUND_ENVIRONMENT_ROOM
+<<<<<<< HEAD
 	area_flags = NOTELEPORT //SKYRAT EDIT - ADDITION
+=======
+	area_flags = UNIQUE_AREA|NO_ALERTS
+>>>>>>> 74be6236d54 (Secret Gateways: Config loaded Away Missions + Anti-observing Z level traits (#61719))
 
 /area/awaymission/beach
 	name = "Beach"
@@ -27,3 +31,5 @@ Unused icons for new areas are "awaycontent1" ~ "awaycontent30"
 
 	has_gravity = STANDARD_GRAVITY
 
+/area/awaymission/secret
+	area_flags = UNIQUE_AREA|NOTELEPORT|HIDDEN_AREA|NO_ALERTS
