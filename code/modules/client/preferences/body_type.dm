@@ -1,3 +1,4 @@
+/* SKYRAT EDIT REMOVAL
 /datum/preference/choiced/body_type
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	priority = PREFERENCE_PRIORITY_BODY_TYPE
@@ -19,3 +20,4 @@
 
 	var/gender = preferences.read_preference(/datum/preference/choiced/gender)
 	return gender != MALE && gender != FEMALE
+*/
