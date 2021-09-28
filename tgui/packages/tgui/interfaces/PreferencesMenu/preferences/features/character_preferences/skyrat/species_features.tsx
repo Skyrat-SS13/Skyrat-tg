@@ -445,3 +445,8 @@ export const xenohead_color: Feature<string[]> = {
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
 };
+
+export const skin_tone_toggle: FeatureToggle = {
+  name: "Uses skintone",
+  component: CheckboxInput,
+};
