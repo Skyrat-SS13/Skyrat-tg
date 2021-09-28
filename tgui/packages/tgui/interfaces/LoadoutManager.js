@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Dimmer, Section, Stack, Tabs } from '../components';
+import { Box, Button, Section, Stack, Dropdown } from '../components';
 import { Window } from '../layouts';
 
 export const LoadoutManager = (props, context) => {
@@ -8,10 +8,6 @@ export const LoadoutManager = (props, context) => {
     selected_loadout,
     loadout_tabs,
     user_is_donator,
-    mob_name,
-    preivew_options,
-    preview_selection,
-    tutorial_status,
   } = data;
 
   const [selectedTabName, setSelectedTab] = useSharedState(
@@ -23,12 +19,9 @@ export const LoadoutManager = (props, context) => {
   return (
     <Window
       title="Loadout Manager"
-      width={900}
+      width={500}
       height={650}>
       <Window.Content>
-        { !!tutorial_status && (
-          <LoadoutTutorialDimmer />
-        )}
         <Stack fill vertical>
           <Stack.Item>
             <Section
@@ -48,16 +41,16 @@ export const LoadoutManager = (props, context) => {
                 content="Confirm"
                 tooltip="Confirm loadout and exit UI."
                 onClick={() => act('close_ui', { revert: 0 })} />
-              <Tabs fluid align="center">
-                {loadout_tabs.map(curTab => (
-                  <Tabs.Tab
-                    key={curTab.name}
-                    selected={curTab.name === selectedTabName}
-                    onClick={() => setSelectedTab(curTab.name)}>
-                    {curTab.name}
-                  </Tabs.Tab>
-                ))}
-              </Tabs>
+              <Dropdown
+                width="100%"
+                selected={selectedTabName}
+                displayText={selectedTabName}
+                options={loadout_tabs.map((curTab) => ({
+                  value: curTab,
+                  displayText: curTab.name,
+                }))}
+                onSelected={(curTab) => setSelectedTab(curTab.name)}
+              />
             </Section>
           </Stack.Item>
           <Stack.Item grow>
@@ -146,8 +139,6 @@ export const LoadoutManager = (props, context) => {
                                   item.is_donator_only && !user_is_donator
                                 }
                                 fluid
-                                tooltip={item.tooltip_text
-                                  ? (item.tooltip_text) : ("")}
                                 onClick={() => act('select_item', {
                                   path: item.path,
                                   deselect:
@@ -174,34 +165,3 @@ export const LoadoutManager = (props, context) => {
     </Window>
   );
 };
-
-export const LoadoutTutorialDimmer = (props, context) => {
-  const { act, data } = useBackend(context);
-  const {
-    tutorial_text,
-  } = data;
-  return (
-    <Dimmer>
-      <Stack
-        vertical
-        align="center">
-        <Stack.Item
-          textAlign="center"
-          fontSize="14px"
-          preserveWhitespace>
-          {tutorial_text}
-        </Stack.Item>
-        <Stack.Item>
-          <Button
-            mt={1}
-            align="center"
-            fontSize="20px"
-            onClick={() => act('toggle_tutorial')}>
-            Okay.
-          </Button>
-        </Stack.Item>
-      </Stack>
-    </Dimmer>
-  );
-};
-
