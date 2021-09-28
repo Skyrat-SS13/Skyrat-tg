@@ -14,8 +14,8 @@
 	if(skyrat_contraband)
 		contraband += skyrat_contraband
 
-	skyrat_products = null
-	skyrat_premium = null
-	skyrat_contraband = null
+	QDEL_NULL(skyrat_products)
+	QDEL_NULL(skyrat_premium)
+	QDEL_NULL(skyrat_contraband)
 	return ..()
 
