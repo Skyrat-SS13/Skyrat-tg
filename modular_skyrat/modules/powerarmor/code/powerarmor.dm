@@ -351,7 +351,7 @@
 	armor.bio = armor_upgraded[5] * 20
 	armor.rad = armor_upgraded[6] * 20
 	armor.fire = armor_upgraded[7] * 20
-	slowdown = initial(slowdown) - (speed_upgraded * 0.10)
+	slowdown = 0.5 - (speed_upgraded * 0.1)
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -456,6 +456,9 @@
 		qdel(W)
 		return
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
+		if(!isturf(loc))
+			to_chat(user, span_warning("[src] needs to be on the floor in order to use [W] on it!"))
+			return
 		W.play_tool_sound(src, 50)
 		if(!do_after(user, 10 SECONDS, target = wearer))
 			return
