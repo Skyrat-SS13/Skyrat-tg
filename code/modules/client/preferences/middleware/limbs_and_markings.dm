@@ -152,9 +152,8 @@
 	var/augment_name = params["augment_name"]
 	if(augment_name == "Organic")
 		preferences.augments -= organs_to_process[organ_slot]
-		preferences.character_preview_view.update_body()
-		return TRUE
-	preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
+	else
+		preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
 	preferences.character_preview_view.update_body()
 	return TRUE
 
