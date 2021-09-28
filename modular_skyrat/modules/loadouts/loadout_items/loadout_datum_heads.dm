@@ -195,9 +195,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Bear Pelt"
 	item_path = /obj/item/clothing/head/bearpelt
 
-/datum/loadout_item/head/ushanka
-	name ="Ushanka"
-	item_path = /obj/item/clothing/head/ushanka
 
 /datum/loadout_item/head/plague_doctor
 	name = "Plague Doctor Cap"
