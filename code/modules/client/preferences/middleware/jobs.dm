@@ -52,8 +52,7 @@
 /datum/preference_middleware/jobs/get_ui_static_data(mob/user)
 	var/list/data = list()
 	// SKYRAT EDIT
-	if(is_veteran_player(user.client))
-		data["is_veteran"] = TRUE
+	data["is_veteran"] = is_veteran_player(user.client)
 	// SKYRAT EDIT END
 	var/list/required_job_playtime = get_required_job_playtime(user)
 	if (!isnull(required_job_playtime))
