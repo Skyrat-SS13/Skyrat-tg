@@ -105,7 +105,7 @@
 	relevant_mutant_bodypart = "penis"
 
 /datum/preference/toggle/penis_taur_mode/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["penis_sheath"] = value
+	target.dna.features["penis_taur"] = value
 
 /datum/preference/toggle/penis_taur_mode/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
