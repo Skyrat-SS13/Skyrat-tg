@@ -251,7 +251,6 @@
 
 	light_power = 0.75
 
-	mutant_variants = NONE
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESEXTOY
 
 	///the maximum amount of upgrades it can have (where some upgrades can cost multiple)
