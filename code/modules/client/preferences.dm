@@ -413,11 +413,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 /// Updates the currently displayed body
 /atom/movable/screen/character_preview_view/proc/update_body()
-	// SKYRAT EDIT
-	if(!body)
-		create_body()
+	create_body()
 	appearance = preferences.render_new_preview_appearance(body)
-// SKYRAT EDIT END
+
 
 /atom/movable/screen/character_preview_view/proc/create_body()
 	QDEL_NULL(body)
