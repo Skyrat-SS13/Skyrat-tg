@@ -18,8 +18,6 @@
 	var/datum/outfit/player_loadout/custom_loadout
 	/// Whether we see our favorite job's clothes on the dummy
 	var/view_job_clothes = TRUE
-	/// Whether we see tutorial text in the UI
-	var/tutorial_status = FALSE
 	/// Our currently open greyscaling menu.
 	var/datum/greyscale_modify_menu/menu
 	/// Whether we need to update our dummy sprite next ui_data or not.
@@ -71,11 +69,6 @@
 			return
 
 	switch(action)
-		// Turns the tutorial on and off.
-		if("toggle_tutorial")
-			tutorial_status = !tutorial_status
-			return TRUE
-
 		// Closes the UI, reverting our loadout to before edits if params["revert"] is set
 		if("close_ui")
 			if(params["revert"])
@@ -265,9 +258,6 @@
 	data["ismoth"] = istype(owner.prefs.read_preference(/datum/preference/choiced/species), /datum/species/moth) // Moth's humanflaticcon isn't the same dimensions for some reason
 	data["preivew_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
 	data["preview_selection"] = owner?.prefs.preview_pref
-	data["tutorial_status"] = tutorial_status
-	if(tutorial_status)
-		data["tutorial_text"] = get_tutorial_text()
 
 	return data
 
@@ -304,21 +294,6 @@
 	data["loadout_tabs"] = loadout_tabs
 
 	return data
-
-/// Returns a formatted string for use in the UI.
-/datum/loadout_manager/proc/get_tutorial_text()
-	return {"This is the Loadout Manager.
-It allows you to customize what your character will wear on shift start in addition to their job's uniform.
-Only one item can be selected per tab, with the exception of backpack items (three items are allowed in total).
-Some items have tooltips displaying additional information about how they work.
-Some items are compatible with greyscale coloring! You can choose what color they spawn as
-by selecting the item, then by pressing the paint icon next to it and using the greyscaling UI.
-Your loadout items will override the corresponding item in your job's outfit,
-with the exception being BELT, EAR, and GLASSES items,
-which will be placed in your backpack to prevent important items being deleted.
-Additionally, UNDERSUITS, HELMETS, MASKS, and GLOVES loadout items
-selected by plasmamen will spawn in their backpack instead of overriding their clothes
-to avoid an untimely and sudden death by fire or suffocation at the start of the shift."}
 
 /*
  * Takes an assoc list of [typepath]s to [singleton datum]
