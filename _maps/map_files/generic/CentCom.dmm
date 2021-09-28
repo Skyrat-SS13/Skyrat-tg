@@ -176,14 +176,6 @@
 /obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
-"ek" = (
-/obj/structure/table/wood/shuttle_bar,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/multitool,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "ev" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/green,
@@ -276,12 +268,6 @@
 "gu" = (
 /turf/closed/indestructible/splashscreen,
 /area/start)
-"gE" = (
-/obj/structure/table/wood/shuttle_bar,
-/obj/structure/safe/floor,
-/obj/item/seeds/cherry/bomb,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "hh" = (
 /turf/closed/indestructible/rock/snow,
 /area/syndicate_mothership)
@@ -7819,6 +7805,12 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/grass,
 /area/wizard_station)
+"yM" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/safe/floor,
+/obj/item/seeds/cherry/bomb,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "yU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
@@ -13708,6 +13700,10 @@
 	},
 /turf/open/floor/grass,
 /area/centcom/holding)
+"MH" = (
+/obj/effect/spawner/random/entertainment/arcade,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "MI" = (
 /obj/machinery/light/directional/north,
 /obj/structure/table/wood,
@@ -14460,6 +14456,14 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
+"Tq" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/multitool,
+/turf/open/floor/wood,
+/area/centcom/holding)
 "Tr" = (
 /obj/structure/closet/chefcloset,
 /turf/open/floor/iron/cafeteria,
@@ -14491,6 +14495,11 @@
 "TC" = (
 /obj/machinery/door/window/eastright,
 /turf/open/floor/carpet/black,
+/area/centcom/holding)
+"TK" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/structure/mirror/directional/north,
+/turf/open/floor/wood,
 /area/centcom/holding)
 "TT" = (
 /obj/structure/table/reinforced,
@@ -14648,18 +14657,10 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"UV" = (
-/obj/effect/spawner/randomarcade,
-/turf/open/floor/wood,
-/area/centcom/holding)
 "Vc" = (
 /obj/effect/decal/cleanable/vomit/old,
 /turf/open/floor/iron/dark,
 /area/centcom/control)
-"Vg" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/centcom/supplypod)
 "Vk" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -14884,11 +14885,10 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
-"XV" = (
-/obj/structure/table/wood/shuttle_bar,
-/obj/structure/mirror/directional/north,
-/turf/open/floor/wood,
-/area/centcom/holding)
+"XT" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/centcom/supplypod)
 "Ya" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -15045,7 +15045,7 @@
 /turf/open/floor/iron,
 /area/centcom/supplypod/loading/four)
 "ZT" = (
-/mob/living/simple_animal/cow,
+/mob/living/basic/cow,
 /turf/open/floor/grass,
 /area/centcom/holding)
 "ZU" = (
@@ -39430,7 +39430,7 @@ CT
 CT
 XM
 NT
-UV
+MH
 CV
 CT
 NT
@@ -39944,7 +39944,7 @@ CT
 CT
 GY
 NT
-UV
+MH
 CV
 CT
 NT
@@ -41209,7 +41209,7 @@ aa
 aa
 aa
 Nd
-ek
+Tq
 CT
 MG
 YN
@@ -42237,7 +42237,7 @@ aa
 aa
 aa
 Nd
-gE
+yM
 CT
 oV
 CT
@@ -42751,7 +42751,7 @@ aa
 aa
 aa
 Nd
-XV
+TK
 CT
 CT
 CT
@@ -64621,7 +64621,7 @@ Yn
 NE
 NE
 NE
-Vg
+XT
 aa
 aa
 aa
@@ -64878,7 +64878,7 @@ Yn
 NE
 NE
 NE
-Vg
+XT
 aa
 aa
 aa
@@ -65893,8 +65893,8 @@ Yn
 Yn
 Yn
 Yn
-Vg
-Vg
+XT
+XT
 Yn
 Yn
 Yn
@@ -66163,7 +66163,7 @@ Yn
 NE
 NE
 NE
-Vg
+XT
 aa
 aa
 aa
@@ -66420,7 +66420,7 @@ Yn
 NE
 NE
 NE
-Vg
+XT
 aa
 aa
 aa
@@ -67682,8 +67682,8 @@ sV
 qx
 qx
 qx
-Vg
-Vg
+XT
+XT
 Yn
 Yn
 Yn
@@ -67702,8 +67702,8 @@ Yn
 Yn
 Yn
 Yn
-Vg
-Vg
+XT
+XT
 Yn
 Yn
 aa
