@@ -413,10 +413,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/atom/movable/screen/alert/A = throw_alert("[REF(source)]_notify_cloning", /atom/movable/screen/alert/notify_cloning)
 			if(A)
 				var/ui_style = client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
-				var/erp_ui_style = client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
+				var/erp_ui_style = client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 				if(ui_style)
 					A.icon = ui_style2icon(ui_style)
-					A.icon = erp_ui_style2icon(erp_ui_style)
+					A.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 				A.desc = message
 				var/old_layer = source.layer
 				var/old_plane = source.plane
