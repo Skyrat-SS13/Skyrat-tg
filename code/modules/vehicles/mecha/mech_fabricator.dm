@@ -60,7 +60,6 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
-								"Power Armor",
 								"Misc"
 								)
 //SKYRAT EDIT STOP: POWER ARMOR

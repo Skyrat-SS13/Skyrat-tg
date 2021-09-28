@@ -1,3 +1,4 @@
+/*
 /obj/item/powerarmor
 	icon = 'modular_skyrat/modules/powerarmor/icons/suit_construction.dmi'
 
@@ -839,3 +840,4 @@
 		"paupgradestorage",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+*/
