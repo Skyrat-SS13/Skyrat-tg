@@ -69,11 +69,6 @@
 			return
 
 	switch(action)
-		// Turns the tutorial on and off.
-		if("toggle_tutorial")
-			tutorial_status = !tutorial_status
-			return TRUE
-
 		// Closes the UI, reverting our loadout to before edits if params["revert"] is set
 		if("close_ui")
 			if(params["revert"])
