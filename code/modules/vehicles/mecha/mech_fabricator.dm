@@ -42,7 +42,7 @@
 
 	/// Reference to a remote material inventory, such as an ore silo.
 	var/datum/component/remote_materials/rmat
-//SKYRAT EDIT START: POWER ARMOR
+
 	/// A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
 	var/list/part_sets = list(
 								"Cyborg",
@@ -60,10 +60,9 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
-								"Power Armor",
 								"Misc"
 								)
-//SKYRAT EDIT STOP: POWER ARMOR
+
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	stored_research = SSresearch.science_tech
 	rmat = AddComponent(/datum/component/remote_materials, "mechfab", mapload && link_on_init, mat_container_flags=BREAKDOWN_FLAGS_LATHE)
