@@ -339,6 +339,10 @@ to avoid an untimely and sudden death by fire or suffocation at the start of the
 			if(!(owner.ckey in item.ckeywhitelist))
 				formatted_list.len--
 				continue
+		if(item.donator_only) //These checks are also performed in the backend.
+			if(!GLOB.donator_list[owner.ckey] && !is_admin(owner))
+				formatted_list.len--
+				continue
 		var/list/formatted_item = list()
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
