@@ -51,9 +51,8 @@
 	var/augment_name = params["augment_name"]
 	if(augment_name == "None")
 		preferences.augments -= limbs_to_process[limb_slot]
-		preferences.character_preview_view.update_body()
-		return TRUE
-	preferences.augments[limbs_to_process[limb_slot]] = augment_to_path[augment_name]
+	else
+		preferences.augments[limbs_to_process[limb_slot]] = augment_to_path[augment_name]
 	preferences.character_preview_view.update_body()
 	return TRUE
 
