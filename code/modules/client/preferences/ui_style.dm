@@ -25,5 +25,5 @@
 /datum/preference/choiced/ui_style/apply_to_client(client/client, value)
 	client.mob?.hud_used?.update_ui_style(ui_style2icon(value))
 	// SKYRAT EDIT ADDITION BEGIN - ERP UI
-	client.mob?.hud_used?.update_ui_style(erp_ui_style2icon(value))
+	client.mob?.hud_used?.update_erp_ui_style(erp_ui_style2icon(value))
 	// SKYRAT EDIT ADDITION END
