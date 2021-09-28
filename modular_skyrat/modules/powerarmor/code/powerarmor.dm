@@ -319,6 +319,8 @@
 		return
 	if(!isliving(wearer))
 		return
+	if(src != wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING))
+		return
 	var/mob/living/living_wearer = wearer
 	if(healing_upgraded[1] && living_wearer.getBruteLoss())
 		living_wearer.adjustBruteLoss(-3)
@@ -349,7 +351,7 @@
 	armor.bio = armor_upgraded[5] * 20
 	armor.rad = armor_upgraded[6] * 20
 	armor.fire = armor_upgraded[7] * 20
-	slowdown = initial(slowdown) - (speed_upgraded * 0.25)
+	slowdown = initial(slowdown) - (speed_upgraded * 0.10)
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -537,6 +539,8 @@
 	. = ..()
 	if(!usable)
 		. += span_warning("[src] requires a forged plate attached to allow usability!")
+	if(upgrade_cost)
+		. += span_notice("Upgrade Cost: [upgrade_cost]")
 
 /obj/item/powerarmor_upgrade/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/forging/complete/plate) && !usable)
