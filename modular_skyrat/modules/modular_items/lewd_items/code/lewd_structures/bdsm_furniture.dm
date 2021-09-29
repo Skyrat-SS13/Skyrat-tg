@@ -121,7 +121,7 @@
 	// Let's make sure that the X-Stand is in the correct state
 	if(stand_state == "open")
 		toggle_mode(user)
-	var/mob/living/M = unbuckle_mob(buckled_mob)
+	var/mob/living/M = buckled_mob
 	if(M)
 		if(M != user)
 			if(!do_after(user, 5 SECONDS, M)) // Timer for unbuckling one mob with another mob
@@ -141,6 +141,7 @@
 			var/mob/living/L = M.pulledby
 			L.set_pull_offsets(M, L.grab_state)
 		toggle_mode(user)
+	unbuckle_mob(buckled_mob)
 	return M
 
 // Handler for attempting to buckle a mob into a X-Stand

@@ -47,7 +47,7 @@
 	return FALSE
 
 /obj/structure/chair/shibari_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
-	var/mob/living/M = unbuckle_mob(buckled_mob)
+	var/mob/living/M = buckled_mob
 	if(M)
 		if(M != user)
 			if((HAS_TRAIT(user, TRAIT_RIGGER)))
@@ -66,6 +66,7 @@
 		if(isliving(M.pulledby))
 			var/mob/living/L = M.pulledby
 			L.set_pull_offsets(M, L.grab_state)
+	unbuckle_mob(buckled_mob)
 	return M
 
 /obj/structure/chair/shibari_stand/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
@@ -123,7 +124,7 @@
 	add_overlay(shibari_rope_overlay_behind)
 
 /obj/structure/chair/shibari_stand/post_buckle_mob(mob/living/M)
-	M.pixel_y = M.base_pixel_y += 3
+	M.pixel_y = M.base_pixel_y + 4
 	M.pixel_x = M.base_pixel_x
 	M.layer = BELOW_MOB_LAYER
 
@@ -137,7 +138,7 @@
 			current_mob.handcuffed.dropped(current_mob)
 			current_mob.set_handcuffed(null)
 			current_mob.update_handcuffed()
-		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker(current_mob))
+		current_mob.set_handcuffed(new /obj/item/restraints/handcuffs/milker/shibari(current_mob))
 		current_mob.handcuffed.parented_struct = src
 		if(HAS_TRAIT(current_mob, TRAIT_ROPEBUNNY))
 			current_mob.handcuffed.breakouttime = 4 MINUTES
@@ -146,7 +147,7 @@
 //Restore the position of the mob after unbuckling.
 /obj/structure/chair/shibari_stand/post_unbuckle_mob(mob/living/M)
 	M.pixel_x = M.base_pixel_x + M.body_position_pixel_x_offset
-	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
+	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset - 4
 	M.layer = initial(M.layer)
 
 	cut_overlay(shibari_shadow_overlay)

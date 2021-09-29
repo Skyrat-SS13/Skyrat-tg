@@ -172,7 +172,7 @@
 				if(!(them.gloves))
 					if(do_after(user, 60))
 						shibarihands = new(src)
-						if(them.equip_to_slot_if_possible(shibarihands,ITEM_SLOT_HANDS,0,0,1))
+						if(them.equip_to_slot_if_possible(shibarihands,ITEM_SLOT_GLOVES,0,0,1))
 							use(1)
 							shibarihands.current_color = current_color
 							shibarihands.update_icon_state()
