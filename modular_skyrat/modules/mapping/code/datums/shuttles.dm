@@ -44,30 +44,3 @@
 	suffix = "skyrat"
 	name = "Prison Transporter NSS-74"
 
-//Cargodise Salvage Vessel
-/datum/map_template/shuttle/ruin/cargodiselostferry
-	prefix = "_maps/skyrat/shuttles/"
-	suffix = "cargodiselostferry"
-	name = "Excavation Team Ferry"
-
-/obj/machinery/computer/shuttle/cargodise
-	shuttleId = "cargodise"
-	circuit = /obj/item/circuitboard/computer/cargodise
-	shuttleId = "cargodise"
-	possible_destinations = "freighter;whiteship_home"
-
-/obj/machinery/computer/camera_advanced/shuttle_docker/cargodise
-	shuttleId = "cargodise"
-	lock_override = NONE
-	shuttlePortId = "cargodise"
-	jumpto_ports = list("freighter" = 1, "whiteship_home" = 1)
-	view_range = 0
-	x_offset = 2
-	y_offset = 0
-
-
-/obj/item/circuitboard/computer/cargodise
-	name = "Freighter Salvage Vessel (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_GENERIC
-	build_path = /obj/machinery/computer/shuttle/cargodise
-

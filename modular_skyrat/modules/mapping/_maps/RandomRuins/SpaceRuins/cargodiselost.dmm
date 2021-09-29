@@ -87,6 +87,7 @@
 /obj/item/tank/internals/emergency_oxygen/engi,
 /obj/item/tank/internals/oxygen,
 /obj/item/tank/internals/oxygen,
+/obj/effect/spawner/random/engineering/material,
 /turf/open/floor/iron/brown/side{
 	dir = 10
 	},
@@ -173,6 +174,11 @@
 /turf/open/floor/iron/brown/side{
 	dir = 1
 	},
+/area/ruin/space/has_grav/deepstorage/lostcargo)
+"bZ" = (
+/obj/machinery/light,
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/grass,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "cb" = (
 /obj/item/kirbyplants/random,
@@ -643,11 +649,12 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "jX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/mirror/directional/north,
 /obj/structure/sink{
 	pixel_y = 21
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -768,6 +775,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
+"lS" = (
+/obj/structure/bed/roller,
+/obj/item/storage/box/bodybags,
+/obj/item/bodybag/stasis,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
 "lV" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -850,6 +863,7 @@
 /obj/effect/spawner/random/engineering/material_cheap,
 /obj/effect/spawner/random/engineering/material,
 /obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/engineering/material,
 /turf/open/floor/iron/textured,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "nc" = (
@@ -880,6 +894,7 @@
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "nr" = (
+/obj/structure/mirror/directional/north,
 /obj/structure/sink{
 	pixel_y = 21
 	},
@@ -912,6 +927,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/random/contraband/armory,
+/obj/item/ammo_box/a762,
 /turf/open/floor/iron/textured,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "oy" = (
@@ -935,6 +951,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/engineering/material_rare,
 /obj/effect/spawner/random/engineering/material_rare,
+/obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/engineering/material,
+/obj/effect/spawner/random/engineering/material,
 /turf/open/floor/iron/textured,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "oQ" = (
@@ -1045,7 +1065,10 @@
 	dir = 8
 	},
 /mob/living/simple_animal/chicken,
-/mob/living/simple_animal/chicken,
+/mob/living/basic/cow{
+	name = "Betsy";
+	real_name = "Betsy"
+	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "qC" = (
@@ -1060,6 +1083,7 @@
 /obj/item/storage/bag/ammo,
 /obj/item/clothing/suit/armor/bulletproof,
 /obj/item/blackmarket_uplink,
+/obj/item/ammo_box/magazine/cm762,
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "qE" = (
@@ -1332,6 +1356,7 @@
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/item/ammo_box/a762,
 /turf/open/floor/iron/brown/side{
 	dir = 8
 	},
@@ -1399,6 +1424,7 @@
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
 /obj/structure/extinguisher_cabinet/directional/north,
+/obj/item/ammo_box/a762,
 /turf/open/floor/iron/dark/blue,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "wA" = (
@@ -1581,12 +1607,10 @@
 /obj/item/storage/box/stockparts/deluxe,
 /obj/item/storage/box/stockparts/deluxe,
 /obj/structure/closet/crate,
-/obj/item/circuitboard/machine/protolathe/offstation,
-/obj/item/circuitboard/machine/circuit_imprinter/offstation,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/circuitboard/machine/autolathe,
-/obj/item/circuitboard/computer/cargodise,
+/obj/item/circuitboard/machine/protolathe,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "zw" = (
@@ -1637,6 +1661,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/pickaxe/drill,
 /obj/machinery/light/directional/north,
+/obj/item/tank/jetpack/oxygen/harness,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -1665,6 +1690,7 @@
 /obj/item/gps/mining,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/pickaxe/drill,
+/obj/item/tank/jetpack/oxygen/harness,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -1733,12 +1759,13 @@
 /obj/item/tank/internals/emergency_oxygen/engi,
 /obj/item/tank/internals/oxygen,
 /obj/item/tank/internals/oxygen,
+/obj/effect/spawner/random/engineering/material,
 /turf/open/floor/iron/textured,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "BL" = (
 /obj/structure/janitorialcart,
-/obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
+/obj/item/mop/advanced,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "BM" = (
@@ -1841,10 +1868,6 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/checker,
-/area/ruin/space/has_grav/deepstorage/lostcargo)
-"Dv" = (
-/obj/machinery/biogenerator,
-/turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "DJ" = (
 /obj/structure/extinguisher_cabinet/directional/north,
@@ -2059,16 +2082,6 @@
 	},
 /turf/open/floor/iron/textured,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
-"Gv" = (
-/obj/docking_port/stationary{
-	dwidth = 12;
-	height = 5;
-	id = "cargodise";
-	name = "Freighter Ship";
-	width = 12
-	},
-/turf/template_noop,
-/area/template_noop)
 "GA" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
@@ -2139,6 +2152,10 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Hy" = (
@@ -2169,7 +2186,9 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Ib" = (
-/obj/structure/reagent_dispensers/watertank/high,
+/obj/structure/reagent_dispensers/watertank/high{
+	tank_volume = 8000
+	},
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -2208,7 +2227,7 @@
 "IL" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/giant_spider/midwife,
+/mob/living/simple_animal/hostile/giant_spider/nurse,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "IN" = (
@@ -2388,6 +2407,11 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/box/lights/mixed,
 /obj/item/lightreplacer,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/grenade/chem_grenade/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "LC" = (
@@ -2598,9 +2622,9 @@
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "NS" = (
-/obj/structure/table/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/smartfridge/food,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "NZ" = (
@@ -2747,6 +2771,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Qc" = (
 /obj/machinery/light,
+/obj/machinery/biogenerator,
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Qi" = (
@@ -2797,6 +2822,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "QC" = (
@@ -2881,15 +2907,13 @@
 /turf/open/floor/iron/dark/blue,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Sc" = (
-/obj/machinery/door/airlock/glass_large{
-	dir = 8
-	},
 /obj/machinery/door/poddoor{
 	id = "lockdown"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Sk" = (
@@ -3052,7 +3076,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "UX" = (
-/obj/machinery/suit_storage_unit/standard_unit,
+/obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/iron/dark/blue,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Vb" = (
@@ -3209,7 +3233,10 @@
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Xs" = (
-/obj/machinery/smartfridge/food,
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 8
+	},
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "XB" = (
@@ -3220,7 +3247,9 @@
 /turf/closed/mineral/random/asteroid,
 /area/ruin/unpowered/no_grav)
 "XP" = (
-/obj/machinery/power/apc/auto_name/north,
+/obj/machinery/power/apc/auto_name/north{
+	start_charge = 0
+	},
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -3412,7 +3441,6 @@ Zy
 Zy
 Zy
 Zy
-Zy
 XD
 XD
 Zy
@@ -3434,7 +3462,6 @@ XD
 Zy
 "}
 (2,1,1) = {"
-Zy
 Zy
 XD
 XD
@@ -3460,7 +3487,6 @@ XD
 XD
 "}
 (3,1,1) = {"
-Zy
 XD
 XD
 XD
@@ -3486,7 +3512,6 @@ XD
 XD
 "}
 (4,1,1) = {"
-XD
 OP
 hP
 bN
@@ -3513,7 +3538,6 @@ XD
 "}
 (5,1,1) = {"
 XD
-XD
 hP
 hP
 hP
@@ -3538,7 +3562,6 @@ hP
 RA
 "}
 (6,1,1) = {"
-Zy
 OP
 hP
 en
@@ -3564,7 +3587,6 @@ Rh
 Bb
 "}
 (7,1,1) = {"
-Zy
 XD
 Bb
 ew
@@ -3591,7 +3613,6 @@ Bb
 "}
 (8,1,1) = {"
 Zy
-Zy
 Bb
 eV
 Ww
@@ -3616,7 +3637,6 @@ vQ
 hP
 "}
 (9,1,1) = {"
-Zy
 Zy
 Bb
 gz
@@ -3643,7 +3663,6 @@ hP
 "}
 (10,1,1) = {"
 Zy
-Zy
 Bb
 gP
 ur
@@ -3668,7 +3687,6 @@ Bb
 hP
 "}
 (11,1,1) = {"
-Zy
 Zy
 Bb
 hx
@@ -3695,7 +3713,6 @@ hP
 "}
 (12,1,1) = {"
 Zy
-Zy
 Bb
 AA
 ur
@@ -3720,7 +3737,6 @@ Dl
 hP
 "}
 (13,1,1) = {"
-Zy
 Zy
 Bb
 Ac
@@ -3747,7 +3763,6 @@ hP
 "}
 (14,1,1) = {"
 Zy
-Gv
 Vs
 tI
 AU
@@ -3773,14 +3788,13 @@ hP
 "}
 (15,1,1) = {"
 Zy
-Zy
 Bb
 jo
 eg
 mK
 Wh
 Bb
-Ud
+lS
 SP
 Bb
 no
@@ -3798,7 +3812,6 @@ rN
 hP
 "}
 (16,1,1) = {"
-Zy
 Zy
 Bb
 lW
@@ -3825,7 +3838,6 @@ hP
 "}
 (17,1,1) = {"
 Zy
-Zy
 Bb
 WL
 gN
@@ -3850,7 +3862,6 @@ YV
 hP
 "}
 (18,1,1) = {"
-Zy
 Zy
 Bb
 Bb
@@ -3877,7 +3888,6 @@ hP
 "}
 (19,1,1) = {"
 Zy
-Zy
 Bb
 OI
 Lr
@@ -3902,8 +3912,7 @@ rN
 hP
 "}
 (20,1,1) = {"
-Zy
-Zy
+XD
 Bb
 cP
 IA
@@ -3928,8 +3937,7 @@ Tr
 hP
 "}
 (21,1,1) = {"
-Zy
-Zy
+XD
 Bb
 lz
 ht
@@ -3954,7 +3962,6 @@ YV
 hP
 "}
 (22,1,1) = {"
-Zy
 Zy
 Bb
 Kq
@@ -3981,7 +3988,6 @@ hP
 "}
 (23,1,1) = {"
 Zy
-Zy
 bb
 Yy
 hT
@@ -4006,7 +4012,6 @@ XV
 hP
 "}
 (24,1,1) = {"
-Zy
 Zy
 bb
 Yy
@@ -4033,7 +4038,6 @@ hP
 "}
 (25,1,1) = {"
 Zy
-Zy
 bb
 Yy
 Ff
@@ -4058,7 +4062,6 @@ Bb
 hP
 "}
 (26,1,1) = {"
-Zy
 Zy
 bb
 Yo
@@ -4085,7 +4088,6 @@ hP
 "}
 (27,1,1) = {"
 Zy
-Zy
 bb
 Yy
 iU
@@ -4110,7 +4112,6 @@ Wt
 hP
 "}
 (28,1,1) = {"
-Zy
 Zy
 bb
 Yy
@@ -4137,7 +4138,6 @@ hP
 "}
 (29,1,1) = {"
 Zy
-Zy
 bb
 Yy
 Fu
@@ -4162,7 +4162,6 @@ OX
 hP
 "}
 (30,1,1) = {"
-Zy
 Zy
 hP
 NL
@@ -4189,7 +4188,6 @@ hP
 "}
 (31,1,1) = {"
 Zy
-Zy
 aa
 xP
 hq
@@ -4214,7 +4212,6 @@ Aw
 hP
 "}
 (32,1,1) = {"
-Zy
 OP
 hP
 qW
@@ -4240,7 +4237,6 @@ Aw
 hP
 "}
 (33,1,1) = {"
-Zy
 OP
 hP
 bW
@@ -4267,7 +4263,6 @@ hP
 "}
 (34,1,1) = {"
 Zy
-Zy
 hP
 bl
 dM
@@ -4288,11 +4283,10 @@ LP
 Aw
 oQ
 oQ
-PG
+bZ
 hP
 "}
 (35,1,1) = {"
-Zy
 Zy
 aK
 JB
@@ -4319,7 +4313,6 @@ hP
 "}
 (36,1,1) = {"
 Zy
-Zy
 hP
 cL
 jm
@@ -4340,11 +4333,10 @@ Ba
 ye
 ye
 PH
-Dv
+PH
 hP
 "}
 (37,1,1) = {"
-Zy
 Zy
 hP
 Bb
@@ -4371,7 +4363,6 @@ hP
 "}
 (38,1,1) = {"
 Zy
-Zy
 bc
 dk
 jt
@@ -4396,7 +4387,6 @@ Xn
 hP
 "}
 (39,1,1) = {"
-Zy
 OP
 hP
 Bb
@@ -4423,7 +4413,6 @@ hP
 "}
 (40,1,1) = {"
 OP
-OP
 hP
 OI
 lk
@@ -4449,7 +4438,6 @@ hP
 "}
 (41,1,1) = {"
 OP
-OP
 hP
 dn
 ZU
@@ -4474,7 +4462,6 @@ BM
 hP
 "}
 (42,1,1) = {"
-Zy
 OP
 hP
 dn
@@ -4501,7 +4488,6 @@ hP
 "}
 (43,1,1) = {"
 Zy
-Zy
 hP
 dn
 lq
@@ -4526,7 +4512,6 @@ Bb
 hP
 "}
 (44,1,1) = {"
-Zy
 Zy
 hP
 Bb
@@ -4553,7 +4538,6 @@ RA
 "}
 (45,1,1) = {"
 Zy
-Zy
 bk
 dF
 lv
@@ -4578,8 +4562,7 @@ RA
 OP
 "}
 (46,1,1) = {"
-Zy
-Zy
+XD
 hP
 hP
 hP
@@ -4604,9 +4587,8 @@ OP
 Zy
 "}
 (47,1,1) = {"
-Zy
-Zy
-Zy
+XD
+XD
 OP
 OP
 OP

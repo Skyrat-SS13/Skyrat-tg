@@ -245,22 +245,10 @@
 	desc = "The headset of the boss."
 	command = TRUE
 
-/obj/item/circuitboard/computer/cargodise
-	name = "Freighter Salvage Vessel (Computer Board)"
-	greyscale_colors = CIRCUIT_COLOR_GENERIC
-	build_path = /obj/machinery/computer/shuttle/cargodise
-
 //OBJECTS//
 /obj/structure/showcase/machinery/oldpod/used
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
-
-/obj/machinery/computer/shuttle/cargodise
-	shuttleId = "cargodise"
-	circuit = /obj/item/circuitboard/computer/cargodise
-
-/obj/machinery/computer/camera_advanced/shuttle_docker/cargodise
-	shuttleId = "cargodise"
 
 //IDS//
 /obj/item/card/id/away/blackmarket
@@ -291,8 +279,4 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo
 	name = "Freighter Ship"
 	icon_state = "yellow"
-
-/area/shuttle/cargodise
-	name = "Salvage Vessel"
-	requires_power = FALSE
 
