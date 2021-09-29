@@ -238,13 +238,14 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg/power, // Skyrat Removal/Edit - Combines Screwdriver and Wrench into one
-		/obj/item/crowbar/cyborg/power, // Skyrat Removal/Edit - Combines Crowbar and Wirecutters into one
+		/obj/item/screwdriver/cyborg,
+		/obj/item/wrench/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/wirecutters/cyborg,
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
 		/obj/item/geiger_counter/cyborg,
-		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -252,7 +253,6 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/lightreplacer/cyborg, // Skyrat Edit - Surprised Engie borgs don't get these
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
@@ -483,16 +483,9 @@
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
 		/obj/item/lighter,
 		/obj/item/storage/bag/tray,
-		//obj/item/reagent_containers/borghypo/borgshaker, //edit
-		/obj/item/reagent_containers/syringe, //edit
-		/obj/item/cooking/cyborg/power, //edit
-		//Skyrat Edit Stop: Borg Buff
+		/obj/item/reagent_containers/borghypo/borgshaker
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/borg/apparatus/beaker/service)
