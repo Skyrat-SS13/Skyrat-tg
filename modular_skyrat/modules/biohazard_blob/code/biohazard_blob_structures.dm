@@ -86,7 +86,7 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/structure/biohazard_blob/structure/core/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
+/obj/structure/biohazard_blob/structure/core/run_atom_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
 	if(damage_amount > 10 && world.time > next_retaliation && prob(40))
 		if(our_controller)
 			our_controller.CoreRetaliated()

@@ -668,7 +668,14 @@
 		if(tgui_alert(usr, "Send [key_name(M)] to Prison?", "Message", list("Yes", "No")) != "Yes")
 			return
 
+		/// SKYRAT EDIT START - Immersion-friendly Admin Prison
+		var/datum/effect_system/spark_spread/quantum/sparks = new
+		sparks.set_up(10, 1, M)
+		sparks.attach(M.loc)
+		sparks.start()
 		M.forceMove(pick(GLOB.prisonwarp))
+		/// SKYRAT EDIT END
+
 		to_chat(M, span_adminnotice("You have been sent to Prison!"), confidential = TRUE)
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to Prison!")
@@ -1005,6 +1012,7 @@
 		for(var/datum/job/job as anything in SSjob.joinable_occupations)
 			if(job.title == Add)
 				job.total_positions += 1
+				log_job_debug("[key_name(usr)] added a slot to [job.title]")
 				break
 
 		src.manage_free_slots()
@@ -1023,6 +1031,7 @@
 				if(!newtime)
 					to_chat(src.owner, "Setting to amount of positions filled for the job", confidential = TRUE)
 					job.total_positions = job.current_positions
+					log_job_debug("[key_name(usr)] set the job cap for [job.title] to [job.total_positions]")
 					break
 				job.total_positions = newtime
 
@@ -1037,6 +1046,7 @@
 		for(var/datum/job/job as anything in SSjob.joinable_occupations)
 			if(job.title == Remove && job.total_positions - job.current_positions > 0)
 				job.total_positions -= 1
+				log_job_debug("[key_name(usr)] removed a slot from [job.title]")
 				break
 
 		src.manage_free_slots()
@@ -1050,6 +1060,7 @@
 		for(var/datum/job/job as anything in SSjob.joinable_occupations)
 			if(job.title == Unlimit)
 				job.total_positions = -1
+				log_job_debug("[key_name(usr)] removed the limit from [job.title]")
 				break
 
 		src.manage_free_slots()
@@ -1063,6 +1074,7 @@
 		for(var/datum/job/job as anything in SSjob.joinable_occupations)
 			if(job.title == Limit)
 				job.total_positions = job.current_positions
+				log_job_debug("[key_name(usr)] set the limit for [job.title] to [job.total_positions]")
 				break
 
 		src.manage_free_slots()

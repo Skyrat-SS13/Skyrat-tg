@@ -149,6 +149,7 @@
 		"plant_analyzer",
 		"plunger",
 		"pushbroom",
+		"razor",
 		"screwdriver",
 		"secateurs",
 		"shovel",
@@ -236,6 +237,7 @@
 		"comp_not",
 		"comp_ntnet_receive",
 		"comp_ntnet_send",
+		"comp_pinpointer",
 		"comp_pressuresensor",
 		"comp_radio",
 		"comp_random",
@@ -321,6 +323,8 @@
 		"burn2medicell",
 		"toxin2medicell",
 		"oxy2medicell",
+		"tempmedicell",
+		"clotmedicell",
 		//SKYRAT EDIT END  -
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
@@ -1382,7 +1386,6 @@
 
 		//SKYRAT EDIT START - RESEARCH DESIGNS
 		"medigunspeed",
-		"nightstick_conversion"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)

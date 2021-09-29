@@ -35,10 +35,10 @@
 	icon_state = "labcoat_cmo"
 	inhand_icon_state = "labcoat_cmo"
 
-/obj/item/clothing/suit/toggle/labcoat/cmo/Initialize()
+/obj/item/clothing/suit/toggle/labcoat/cmo/Initialize(mapload)
 	. = ..()
 	allowed += list(
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/gun/energy/medigun, //SKYRAT EDIT MEDIGUNS
 		/obj/item/storage/firstaid //SKYRAT EDIT - ADDITION
 	)

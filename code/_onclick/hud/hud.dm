@@ -15,8 +15,29 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Glass" = 'icons/hud/screen_glass.dmi'
 ))
 
+//SKYRAT EDIT - ADDITION - ERP ICONS FIX
+
+GLOBAL_LIST_INIT(available_erp_ui_styles, list(
+	"Midnight" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/midnight.dmi',
+	"Retro" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/retro.dmi',
+	"Plasmafire" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/plasmafire.dmi',
+	"Slimecore" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/slimecore.dmi',
+	"Operative" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/operative.dmi',
+	"Clockwork" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/clockwork.dmi',
+	"Glass" = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/inventory_icons/glass.dmi'
+))
+
+//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
+
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
+
+//SKYRAT EDIT - ADDITION - ERP ICONS FIX
+
+/proc/erp_ui_style2icon(ui_style)
+	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
+
+//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
 
 /datum/hud
 	var/mob/mymob
@@ -60,6 +81,18 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	///UI for screentips that appear when you mouse over things
 	var/atom/movable/screen/screentip/screentip_text
 
+	/// Whether or not screentips are enabled.
+	/// This is updated by the preference for cheaper reads than would be
+	/// had with a proc call, especially on one of the hottest procs in the
+	/// game (MouseEntered).
+	var/screentips_enabled = TRUE
+
+	/// The color to use for the screentips.
+	/// This is updated by the preference for cheaper reads than would be
+	/// had with a proc call, especially on one of the hottest procs in the
+	/// game (MouseEntered).
+	var/screentip_color
+
 	var/atom/movable/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = FALSE
 
@@ -70,18 +103,20 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
+	var/erp_ui_style //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 /datum/hud/New(mob/owner)
 	mymob = owner
 
 	if (!ui_style)
 		// will fall back to the default if any of these are null
-		ui_style = ui_style2icon(owner.client && owner.client.prefs && owner.client.prefs.UI_style)
+		ui_style = ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
+		erp_ui_style = erp_ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 	hide_actions_toggle = new
 	hide_actions_toggle.InitialiseIcon(src)
 	if(mymob.client)
-		hide_actions_toggle.locked = mymob.client.prefs.buttons_locked
+		hide_actions_toggle.locked = mymob.client.prefs.read_preference(/datum/preference/toggle/buttons_locked)
 
 	hand_slots = list()
 
@@ -90,11 +125,14 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 		plane_masters["[instance.plane]"] = instance
 		instance.backdrop(mymob)
 
+	var/datum/preferences/preferences = owner?.client?.prefs
+	screentip_color = preferences?.read_preference(/datum/preference/color/screentip_color)
+	screentips_enabled = preferences?.read_preference(/datum/preference/toggle/enable_screentips)
 	screentip_text = new(null, src)
 	static_inventory += screentip_text
 
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
-		var/atom/movable/plane_master_controller/controller_instance = new mytype(src)
+		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
 		plane_master_controllers[controller_instance.name] = controller_instance
 
 	owner.overlay_fullscreen("see_through_darkness", /atom/movable/screen/fullscreen/see_through_darkness)
@@ -173,7 +211,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.inventory_shown)
 				screenmob.client.screen += toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen += ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len && !hotkey_ui_hidden)
@@ -193,7 +231,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(ERP_toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen -= ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
@@ -217,7 +255,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 			if(toggleable_inventory.len)
 				screenmob.client.screen -= toggleable_inventory
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs.sextoys_pref == "Yes")
+			if(toggleable_inventory.len && screenmob.hud_used && screenmob.hud_used.ERP_inventory_shown && screenmob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				screenmob.client.screen -= ERP_toggleable_inventory
 			//SKYRAT EDIT ADDITION END
 			if(hotkeybuttons.len)
@@ -278,15 +316,25 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 		if (item.icon == ui_style)
 			item.icon = new_ui_style
 
-	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-	for(var/atom/item in ERP_toggleable_inventory)
-		if (item.icon == ui_style)
-			item.icon = new_ui_style
-	//SKYRAT EDIT ADDITION END
-
 	ui_style = new_ui_style
 	build_hand_slots()
 	hide_actions_toggle.InitialiseIcon(src)
+
+//SKYRAT EDIT - ADDITION - ERP ICONS FIX
+
+/datum/hud/proc/update_erp_ui_style(new_erp_ui_style)
+	// do nothing if overridden by a subtype or already on that style
+	if (initial(erp_ui_style) || erp_ui_style == new_erp_ui_style)
+		return
+
+	for(var/atom/item in ERP_toggleable_inventory)
+		if (item.icon == erp_ui_style)
+			item.icon = new_erp_ui_style
+
+	erp_ui_style = new_erp_ui_style
+	hide_actions_toggle.InitialiseIcon(src)
+
+//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
 
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()

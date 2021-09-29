@@ -226,7 +226,7 @@
 	update_icon()
 	var/mob/living/carbon/human/C = usr
 	if(mask_on)
-		if(src == C.wear_mask && C.client?.prefs.sextoys_pref == "Yes")
+		if(src == C.wear_mask && C.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			START_PROCESSING(SSobj, src)
 			time_to_choke_left = time_to_choke
 	else
@@ -330,7 +330,7 @@
 
 // Processing a click with a mask filter on the mask. Needed to intercept call at the object class level. Returns automatically to attack_hand(mob/user) method.
 /obj/item/clothing/mask/gas/bdsm_mask/attackby(obj/item/I, mob/living/user, params)
-	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
+	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_atom(src, user))
 
 // Mouse drop handler
 /obj/item/reagent_containers/glass/lewd_filter/MouseDrop(atom/over_object)

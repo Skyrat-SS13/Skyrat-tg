@@ -22,7 +22,7 @@
 					/obj/item/skillchip/light_remover=2,
 					/obj/item/skillchip/useless_adapter=5,
 					/obj/item/dyespray=3,
-					/obj/item/hairbrush=3 // SKYRAT EDIT ADD - HAIRBRUSHES
+					/obj/item/razor=3,
 					)
 	contraband = list(/obj/item/dice/fudge = 9,
 					/obj/item/clothing/shoes/wheelys/skishoes=4,
