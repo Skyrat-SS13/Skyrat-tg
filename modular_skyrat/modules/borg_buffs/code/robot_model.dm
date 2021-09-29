@@ -23,8 +23,9 @@
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil)
-	var/list/service_modules = list(/obj/item/assembly/flash/cyborg,
-		/obj/item/reagent_containers/glass/beaker/large
+	var/list/service_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
