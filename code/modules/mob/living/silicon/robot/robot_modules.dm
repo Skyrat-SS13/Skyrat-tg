@@ -259,7 +259,7 @@
 		/obj/item/stack/cable_coil)
 	*/
 	//SKYRAT EDIT REMOVAL END
-	basic_modules = skyrat_modules/enginer_modules //SKYRAT EDIT
+	basic_modules = skyrat_borg_enginer_modules //SKYRAT EDIT
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(/obj/item/borg/stun)
 	cyborg_base_icon = "engineer"
@@ -498,7 +498,7 @@
 		/obj/item/borg/apparatus/beaker/service)
 	*/
 	//SKYRAT EDIT REMOVAL END
-	basic_modules = skyrat_modules/service_modules //SKYRAT EDIT
+	basic_modules = skyrat_borg_service_modules //SKYRAT EDIT
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
 	cyborg_base_icon = "service_m" // display as butlerborg for radial model selection
