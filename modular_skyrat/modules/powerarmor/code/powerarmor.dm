@@ -263,8 +263,6 @@
 	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0, 0)
 	///the list of possible healing upgrades: brute, burn, toxin, oxygen, stamina
 	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
-	///whether the armor has speed_upgrades, and by how many
-	var/speed_upgraded = 0
 	///the list of possible misc. upgrades: spaceproof, light, welding, temp-regulating, storage
 	var/list/misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
 	///who is being affected by the power armor; the wearer
@@ -351,7 +349,6 @@
 	armor.bio = armor_upgraded[5] * 20
 	armor.rad = armor_upgraded[6] * 20
 	armor.fire = armor_upgraded[7] * 20
-	slowdown = initial(slowdown) - (speed_upgraded * 0.1)
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -421,8 +418,6 @@
 				if(healing_upgraded[5])
 					return
 				healing_upgraded[5] = TRUE
-			if("speed")
-				speed_upgraded++
 			if("space proof")
 				if(misc_upgraded[1])
 					return
@@ -470,7 +465,6 @@
 				check_contents.forceMove(get_turf(src))
 		armor_upgraded = list(0, 0, 0, 0, 0, 0, 0)
 		healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
-		speed_upgraded = 0
 		misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
 		update_upgrades()
 		W.play_tool_sound(src, 50)
@@ -601,10 +595,6 @@
 	upgrade_type = "stamina healing"
 	upgrade_cost = 11
 
-/obj/item/powerarmor_upgrade/speed_upgrade
-	upgrade_type = "speed"
-	upgrade_cost = 4
-
 /obj/item/powerarmor_upgrade/space_proof
 	upgrade_type = "space proof"
 	upgrade_cost = 15
@@ -623,7 +613,7 @@
 
 /obj/item/powerarmor_upgrade/storage
 	upgrade_type = "storage"
-	upgrade_cost = 5
+	upgrade_cost = 7
 
 /datum/design/powerarmor
 	name = "Power Armor"
@@ -754,11 +744,6 @@
 	name = "Power Armor Upgrades (Stamina Healing)"
 	id = "paupgradestaminahealing"
 	build_path = /obj/item/powerarmor_upgrade/stamina_heal
-
-/datum/design/powerarmor/upgrades/speed
-	name = "Power Armor Upgrades (Speed)"
-	id = "paupgradespeed"
-	build_path = /obj/item/powerarmor_upgrade/speed_upgrade
 
 /datum/design/powerarmor/upgrades/space_proof
 	name = "Power Armor Upgrades (Space Proof)"
