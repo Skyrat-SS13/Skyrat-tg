@@ -6,6 +6,7 @@ const Geneticist: Job = {
   description: "Alter genomes, turn monkeys into humans (and vice-versa), make \
     DNA backups so they can get stolen.",
   department: Science,
+  alt_titles: ["Geneticist", "Mutation Researcher"],
 };
 
 export default Geneticist;

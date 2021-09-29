@@ -31,9 +31,17 @@
 /datum/augment_item/limb/head
 	slot = AUGMENT_SLOT_HEAD
 
+/datum/augment_item/limb/head/cyborg
+	name = "Cyborg"
+	path = /obj/item/bodypart/head/robot/weak
+
 //CHESTS
 /datum/augment_item/limb/chest
 	slot = AUGMENT_SLOT_CHEST
+
+/datum/augment_item/limb/chest/cyborg
+	name = "Cyborg"
+	path = /obj/item/bodypart/chest/robot/weak
 
 //LEFT ARMS
 /datum/augment_item/limb/l_arm

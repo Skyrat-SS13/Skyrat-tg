@@ -8,5 +8,6 @@
 
 /datum/preference/choiced/laugh/apply_to_human(mob/living/carbon/human/target, value)
 	var/laugh_id = GLOB.laugh_types[value]
-	var/datum/laugh_type/laugh_type = new laugh_id
-	target.selected_laugh = laugh_type
+	if(laugh_id)
+		var/datum/laugh_type/laugh_type = new laugh_id
+		target.selected_laugh = laugh_type
