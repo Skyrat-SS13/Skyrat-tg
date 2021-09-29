@@ -208,6 +208,7 @@
 
 /obj/item/clothing/under/shibari_fullbody/Destroy()
 	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+	R.amount = 2
 	R.current_color = current_color
 	R.update_icon_state()
 	R.update_icon()

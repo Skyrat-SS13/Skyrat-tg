@@ -5,6 +5,7 @@
 	desc = "Coil of bondage ropes"
 	amount = 1
 	merge_type = /obj/item/stack/shibari_rope
+	singular_name = "ropes"
 
 	//customisation vars
 	var/current_color = "pink"
@@ -131,14 +132,14 @@
 							qdel(shibarigroin)
 				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_body))
 					if(do_after(user, 60))
-						shibarigroin = new(src)
+						shibarifullbody = new(src)
 						qdel(them.w_uniform)
-						if(them.equip_to_slot_if_possible(shibarigroin,ITEM_SLOT_ICLOTHING,0,0,1))
-							use(1)
-							shibarigroin.current_color = current_color
-							shibarigroin.update_icon_state()
-							shibarigroin.update_icon()
-							shibarigroin = null
+						if(them.equip_to_slot_if_possible(shibarifullbody,ITEM_SLOT_ICLOTHING,0,0,1))
+							use(2)
+							shibarifullbody.current_color = current_color
+							shibarifullbody.update_icon_state()
+							shibarifullbody.update_icon()
+							shibarifullbody = null
 						else
 							qdel(shibarigroin)
 
@@ -151,17 +152,19 @@
 							shibaribody.current_color = current_color
 							shibaribody.update_icon_state()
 							shibaribody.update_icon()
+							shibaribody = null
 						else
 							qdel(shibaribody)
 				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_groin))
 					if(do_after(user, 60))
-						shibaribody = new(src)
+						shibarifullbody = new(src)
 						qdel(them.w_uniform)
-						if(them.equip_to_slot_if_possible(shibaribody,ITEM_SLOT_ICLOTHING,0,0,1))
-							use(1)
-							shibaribody.current_color = current_color
-							shibaribody.update_icon_state()
-							shibaribody.update_icon()
+						if(them.equip_to_slot_if_possible(shibarifullbody,ITEM_SLOT_ICLOTHING,0,0,1))
+							use(2)
+							shibarifullbody.current_color = current_color
+							shibarifullbody.update_icon_state()
+							shibarifullbody.update_icon()
+							shibarifullbody = null
 						else
 							qdel(shibaribody)
 
@@ -174,6 +177,7 @@
 							shibarihands.current_color = current_color
 							shibarihands.update_icon_state()
 							shibarihands.update_icon()
+							shibarihands = null
 						else
 							qdel(shibarihands)
 			else

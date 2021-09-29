@@ -2,17 +2,21 @@
 //s-stand code here//
 /////////////////////
 
-/obj/structure/chair/x_stand
+/obj/structure/chair/shibari_stand
 	name = "shibari stand"
 	desc = "A stand for buckling people with ropes."
-	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
-	icon_state = "xstand"
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi'
+	icon_state = "shibari_stand_"
 	max_buckled_mobs = 1
 	max_integrity = 75
-	var/static/mutable_appearance/xstand_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi', "xstand_overlay", LYING_MOB_LAYER)
+	var/static/mutable_appearance/shibari_rope_overlay
+	var/static/mutable_appearance/shibari_rope_overlay_behind
+	var/static/mutable_appearance/shibari_shadow_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "shibari_shadow", OBJ_LAYER)
 	var/mob/living/carbon/human/current_mob = null
 
 /obj/structure/chair/shibari_stand/Destroy()
+	cut_overlay(shibari_shadow_overlay)
+	cut_overlay(shibari_rope_overlay)
 	. = ..()
 	if(current_mob)
 		if(current_mob.handcuffed)
@@ -73,7 +77,7 @@
 		return FALSE
 
 	var/mob/living/carbon/human/hooman = M
-	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_body)))
+	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_body) || istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
 		to_chat(user, span_warning("There's no way to tie them to the stand!"))
 		return FALSE
 
@@ -91,7 +95,14 @@
 		if(!is_user_buckle_possible(M, user, check_loc))
 			return FALSE
 
+		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_body) || istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
+			to_chat(user, span_warning("There's no way to tie them to the stand!"))
+			return FALSE
+
 		if(buckle_mob(M, check_loc = check_loc))
+			add_overlay(shibari_shadow_overlay)
+			var/obj/item/clothing/under/shibari_body/sheebari = hooman.w_uniform
+			add_rope_overlays(sheebari.current_color)
 			M.visible_message(span_warning("[user] tied [M] to [src]!"),\
 				span_userdanger("[user] tied you to [src]!"),\
 				span_hear("You hear ropes being completely tightened."))
@@ -99,13 +110,20 @@
 		to_chat(user, span_warning("You cannot buckle yourself to this stand, there is no way that level of self-bondage exists!"))
 		return FALSE
 
-// Machine deconstruction process handler
 /obj/structure/chair/shibari_stand/deconstruct()
 	qdel(src)
 	return TRUE
 
+/obj/structure/chair/shibari_stand/proc/add_rope_overlays(color)
+	cut_overlay(shibari_rope_overlay)
+	cut_overlay(shibari_rope_overlay_behind)
+	shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[color]", ABOVE_MOB_LAYER)
+	shibari_rope_overlay_behind = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_behind_[color]", BELOW_MOB_LAYER)
+	add_overlay(shibari_rope_overlay)
+	add_overlay(shibari_rope_overlay_behind)
+
 /obj/structure/chair/shibari_stand/post_buckle_mob(mob/living/M)
-	M.pixel_y = M.base_pixel_y
+	M.pixel_y = M.base_pixel_y += 3
 	M.pixel_x = M.base_pixel_x
 	M.layer = BELOW_MOB_LAYER
 
@@ -131,6 +149,10 @@
 	M.pixel_y = M.base_pixel_y + M.body_position_pixel_y_offset
 	M.layer = initial(M.layer)
 
+	cut_overlay(shibari_shadow_overlay)
+	cut_overlay(shibari_rope_overlay)
+	cut_overlay(shibari_rope_overlay_behind)
+
 	if(current_mob)
 		if(current_mob.handcuffed)
 			current_mob.handcuffed.dropped(current_mob)
@@ -148,38 +170,37 @@
 ///////////////////////////
 
 /obj/item/shibari_stand_kit
-	name = "xstand construction kit"
+	name = "shibari stand construction kit"
 	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
 	icon_state = "xstand_kit"
-	var/unwrapped = 0
 	w_class = WEIGHT_CLASS_HUGE
+	var/list/color_list = list(
+		"black",
+		"teal",
+		"pink"
+	)
 
-/obj/item/shibari_stand_kit/attackby(obj/item/P, mob/user, params) //constructing a bed here.
-	add_fingerprint(user)
-	if(istype(P, /obj/item/wrench))
-		if (!(item_flags & IN_INVENTORY))
-			to_chat(user, span_notice("You begin fastening the frame to the floor."))
-			if(P.use_tool(src, user, 8 SECONDS, volume=50))
-				to_chat(user, span_notice("You assemble the x-stand."))
-				var/obj/structure/chair/shibari_stand/C = new
-				C.loc = loc
-				qdel(src)
-			return
-	else
-		return ..()
+/obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	var/color = input("Pick a color for your stand", "Color") as null|anything in color_list
+	to_chat(user, span_notice("You begin fastening the frame to the floor."))
+	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
+		to_chat(user, span_notice("You assemble the frame."))
+		var/obj/structure/chair/shibari_stand/C = new
+		C.icon_state = "shibari_stand_[color]"
+		C.loc = loc
+		qdel(src)
+	return TRUE
 
-/obj/structure/chair/shibari_stand/attackby(obj/item/P, mob/user, params) //deconstructing a bed. Aww(
-	add_fingerprint(user)
-	if(istype(P, /obj/item/wrench))
-		to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
-		if(P.use_tool(src, user, 8 SECONDS, volume=50))
-			to_chat(user, span_notice("You disassemble the x-stand."))
-			var/obj/item/shibari_stand_kit/C = new
-			C.loc = loc
-			unbuckle_all_mobs()
-			qdel(src)
-		return
-	else
-		return ..()
+/obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/I)
+	. = ..()
+	to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
+	if(I.use_tool(src, user, 8 SECONDS, volume=50))
+		to_chat(user, span_notice("You disassemble the x-stand."))
+		var/obj/item/shibari_stand_kit/C = new
+		C.loc = loc
+		unbuckle_all_mobs()
+		qdel(src)
+	return TRUE
