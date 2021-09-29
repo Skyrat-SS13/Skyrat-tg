@@ -22,7 +22,7 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/stack/tile/iron/base/cyborg,
-		/obj/item/stack/cable_coil
+		/obj/item/stack/cable_coil)
 	var/list/service_modules = list(/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/glass/beaker/large
 		/obj/item/pen,
@@ -44,4 +44,4 @@
 		/obj/item/cooking/cyborg/power,
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
-		/obj/item/borg/apparatus/beaker/service))
+		/obj/item/borg/apparatus/beaker/service)
