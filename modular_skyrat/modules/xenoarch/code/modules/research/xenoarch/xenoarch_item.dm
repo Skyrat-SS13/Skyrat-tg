@@ -9,8 +9,12 @@
 
 /datum/export/xenoarch/useless_relic
 	cost = 400
-	unit_name = "useless relic"
-	export_types = list(/obj/item/xenoarch/useless_relic)
+	unit_name = "xenoarch item"
+	export_types = list(/obj/item/xenoarch/useless_relic,
+						/obj/item/xenoarch/broken_item)
+
+/datum/export/xenoarch/useless_relic/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
+	. = ..()
 
 //broken items
 /obj/item/xenoarch/broken_item
