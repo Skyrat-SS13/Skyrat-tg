@@ -422,6 +422,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/medical/doctor/formal
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic", "Paramedic", "Psychologist")
 
+/datum/loadout_item/under/formal/kimono
+	name = "Kimono"
+	item_path = /obj/item/clothing/under/costume/kimono
+
+/datum/loadout_item/under/formal/kimono_dark
+	name = "Dark Kimono"
+	item_path = /obj/item/clothing/under/costume/kimono/dark
+
+/datum/loadout_item/under/formal/kimono_sakura
+	name = "Sakura Kimono"
+	item_path = /obj/item/clothing/under/costume/kimono_sakura
+
+/datum/loadout_item/under/formal/kimono_fancy
+	name = "Fancy Kimono"
+	item_path =  /obj/item/clothing/under/costume/kimono/fancy
+
 // misc undersuits
 /datum/loadout_item/under/miscellaneous
 
@@ -656,3 +672,8 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "White Scrubs"
 	item_path = /obj/item/clothing/under/rank/medical/doctor/white
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic", "Paramedic")
+
+/datum/loadout_item/under/miscellaneous/swept_skirt
+	name = "Swept Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/swept
+
