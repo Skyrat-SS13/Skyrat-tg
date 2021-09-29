@@ -231,6 +231,8 @@
 // --------------------- Engineering
 /obj/item/robot_model/engineering
 	name = "Engineering"
+	//SKYRAT EDIT REMOVAL BEGIN
+	/*
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/sight/meson,
@@ -255,6 +257,9 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil)
+	*/
+	//SKYRAT EDIT REMOVAL END
+	basic_modules = skyrat_modules/enginer_modules //SKYRAT EDIT
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(/obj/item/borg/stun)
 	cyborg_base_icon = "engineer"
@@ -469,6 +474,8 @@
 // --------------------- Service
 /obj/item/robot_model/service
 	name = "Service"
+	//SKYRAT EDIT REMOVAL BEGIN
+	/*
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/glass/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
@@ -489,6 +496,9 @@
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/borg/apparatus/beaker/service)
+	*/
+	//SKYRAT EDIT REMOVAL END
+	basic_modules = skyrat_modules/service_modules //SKYRAT EDIT
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
 	cyborg_base_icon = "service_m" // display as butlerborg for radial model selection
