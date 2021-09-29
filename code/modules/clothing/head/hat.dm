@@ -168,7 +168,7 @@
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
 	inhand_icon_state = "ushankadown"
-	flags_inv = HIDEEARS|HIDEHAIR
+	flags_inv = HIDEEARS //SKYRAT EDIT (Original: HIDEEARS|HIDEHAIR)
 	var/earflaps = TRUE
 	cold_protection = HEAD
 	///Sprite visible when the ushanka flaps are folded up.
