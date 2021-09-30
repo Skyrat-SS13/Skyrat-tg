@@ -24,7 +24,7 @@
 			if(!QDELETED(D))
 				vv_update_display(D, "deleted", "")
 		// Skyrat edit addition start -- optional bluespace sparks on delete
-		if(T && prefs.skyrat_toggles & ADMINDEL_ZAP_PREF)
+		if(T && prefs.read_preference(/datum/preference/toggle/admin/delete_sparks))
 			playsound(T, 'sound/magic/Repulse.ogg', 100, 1)
 			var/datum/effect_system/spark_spread/quantum/sparks = new
 			sparks.set_up(10, 1, T)
