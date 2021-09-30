@@ -1,3 +1,4 @@
+/*
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
@@ -91,3 +92,4 @@
 
 /datum/preference/choiced/erp_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
+*/
