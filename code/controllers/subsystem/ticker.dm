@@ -478,24 +478,6 @@ SUBSYSTEM_DEF(ticker)
 		var/mob/living/L = I
 		L.notransform = FALSE
 
-<<<<<<< HEAD
-/datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
-	var/m
-	if(selected_tip)
-		m = selected_tip
-	else
-		var/list/randomtips = world.file2list("strings/tips.txt")
-		var/list/memetips = world.file2list("strings/sillytips.txt")
-		if(randomtips.len && prob(95))
-			m = pick(randomtips)
-		else if(memetips.len)
-			m = pick(memetips)
-
-	if(m)
-		to_chat(world, span_purple(examine_block("<span class='oocplain'><b>Tip of the round: </b>[html_encode(m)]</span>"))) //SKYRAT EDIT CHAGNE
-
-=======
->>>>>>> 3c5d6221d7c (You can now use backslashes as an escape character for text modification. (#61621))
 /datum/controller/subsystem/ticker/proc/check_queue()
 	if(!queued_players.len)
 		return
