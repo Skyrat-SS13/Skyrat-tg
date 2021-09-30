@@ -1,3 +1,4 @@
+/*
 //////////////////////////////////////////////////////////////////////////
 //THIS IS NOT HERESY, DO NOT TOUCH IT IN THE NAME OF GOD//////////////////
 //I made this file to prevent myself from touching normal files///////////
@@ -1289,3 +1290,4 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
+*/
