@@ -355,7 +355,7 @@
 				var/erp_ui_style = O.client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 				if(ui_style)
 					A.icon = ui_style2icon(ui_style)
-					A.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
+					//A.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 				if (header)
 					A.name = header
 				A.desc = message
