@@ -71,6 +71,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 			break
 		movable_content.forceMove(moving_turf)
 		playsound(movable_content, 'sound/magic/Disable_Tech.ogg', 50, 1)
+	new /obj/effect/decal/cleanable/ash(target_turf)
 	COOLDOWN_START(src, use_cooldown, 15 SECONDS)
 
 /datum/design/cargo_teleporter
