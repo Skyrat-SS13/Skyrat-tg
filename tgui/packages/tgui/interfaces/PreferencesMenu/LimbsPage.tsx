@@ -58,44 +58,6 @@ export const LimbPage = (props, context) => {
     <Section title={props.limb.name}>
       <Stack fill vertical>
         <Stack.Item>
-          {
-            !!props.limb.can_augment && (
-              <Stack vertical>
-                <Stack.Item>
-                  <Stack fill>
-                    <Stack.Item>
-                      Augumentation:
-                    </Stack.Item>
-                    <Stack.Item grow>
-                      <Dropdown
-                        width="100%"
-                        options={Object.values(props.limb.aug_choices)}
-                        displayText={props.limb.chosen_aug}
-                        onSelected={(value) => act("set_limb_aug", { limb_slot: props.limb.slot, augment_name: value })}
-                      />
-                    </Stack.Item>
-                  </Stack>
-                </Stack.Item>
-                <Stack.Item>
-                  <Stack fill vertical>
-                    <Stack.Item>
-                      Style:
-                    </Stack.Item>
-                    <Stack.Item grow>
-                      <Dropdown
-                        width="100%"
-                        options={props.data.robotic_styles}
-                        displayText={props.limb.chosen_style}
-                        onSelected={(value) => act("set_limb_aug_style", { limb_slot: props.limb.slot, style_name: value })}
-                      />
-                    </Stack.Item>
-                  </Stack>
-                </Stack.Item>
-              </Stack>
-            )
-          }
-        </Stack.Item>
-        <Stack.Item>
           <Markings
             limb={props.limb}
           />
@@ -103,6 +65,53 @@ export const LimbPage = (props, context) => {
       </Stack>
     </Section>
   );
+};
+
+export const AugmentationPage = (props, context) => {
+  const { act } = useBackend<PreferencesMenuData>(context);
+  if (props.limb.can_augment) {
+    return (
+      <Section title={props.limb.name}>
+        <Stack fill vertical>
+          <Stack.Item>
+            <Stack vertical>
+              <Stack.Item>
+                <Stack fill>
+                  <Stack.Item>
+                    Augumentation:
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    <Dropdown
+                      width="100%"
+                      options={Object.values(props.limb.aug_choices)}
+                      displayText={props.limb.chosen_aug}
+                      onSelected={(value) => act("set_limb_aug", { limb_slot: props.limb.slot, augment_name: value })}
+                    />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
+                <Stack fill vertical>
+                  <Stack.Item>
+                    Style:
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    <Dropdown
+                      width="100%"
+                      options={props.data.robotic_styles}
+                      displayText={props.limb.chosen_style}
+                      onSelected={(value) => act("set_limb_aug_style", { limb_slot: props.limb.slot, style_name: value })}
+                    />
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        </Stack>
+      </Section>
+    );
+  }
+  return null;
 };
 
 export const OrganPage = (props, context) => {
@@ -128,10 +137,19 @@ export const OrganPage = (props, context) => {
 
 export const LimbsPage = (props, context) => {
   const { data } = useBackend<PreferencesMenuData>(context);
+  const { act } = useBackend<PreferencesMenuData>(context);
   return (
     <Stack fill>
       <Stack.Item minWidth="33%">
-        <Section title="Limbs">
+        <Section title="Markings">
+          <Stack.Item grow>
+            <Dropdown
+              width="100%"
+              options={Object.values(data.marking_presets)}
+              displayText="Pick a preset:"
+              onSelected={(value) => act("set_preset", { preset: value })}
+            />
+          </Stack.Item>
           {data.limbs_data.map(val => (
             <LimbPage
               key={val.slot}
@@ -161,6 +179,15 @@ export const LimbsPage = (props, context) => {
               />
             ))}
           </Stack>
+        </Section>
+        <Section title="Augmentations">
+          {data.limbs_data.map(val => (
+            <AugmentationPage
+              key={val.slot}
+              limb={val}
+              data={data}
+            />
+          ))}
         </Section>
       </Stack.Item>
     </Stack>
