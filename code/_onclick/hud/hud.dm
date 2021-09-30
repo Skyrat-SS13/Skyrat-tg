@@ -14,7 +14,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Clockwork" = 'icons/hud/screen_clockwork.dmi',
 	"Glass" = 'icons/hud/screen_glass.dmi'
 ))
-
+/*
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 GLOBAL_LIST_INIT(available_erp_ui_styles, list(
@@ -28,17 +28,17 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 ))
 
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
+*/
 /proc/ui_style2icon(ui_style)
 	return GLOB.available_ui_styles[ui_style] || GLOB.available_ui_styles[GLOB.available_ui_styles[1]]
-
+/*
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 /proc/erp_ui_style2icon(ui_style)
 	return GLOB.available_erp_ui_styles[ui_style] || GLOB.available_erp_ui_styles[GLOB.available_erp_ui_styles[1]]
 
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
+*/
 /datum/hud
 	var/mob/mymob
 
@@ -319,7 +319,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	ui_style = new_ui_style
 	build_hand_slots()
 	hide_actions_toggle.InitialiseIcon(src)
-
+/*
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 /datum/hud/proc/update_erp_ui_style(new_erp_ui_style)
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	hide_actions_toggle.InitialiseIcon(src)
 
 //SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
+*/
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"
