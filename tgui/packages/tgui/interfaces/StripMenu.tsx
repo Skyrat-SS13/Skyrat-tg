@@ -230,7 +230,7 @@ const SLOTS: Record<
     displayName: "penis",
     gridSpot: getGridSpotKey([5, 4]),
     image: "inventory-pocket.png",
-  }, */
+  },
 };
 // SKYRAT EDIT END
 enum ObscuringLevel {
