@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 		for(var/obj/effect/decal/cleanable/cargo_mark/destroy_children in marker_children)
 			destroy_children.parent_item = null
 			qdel(destroy_children)
-	. = ..()
+	return ..()
 
 /obj/item/cargo_teleporter/attack_self(mob/user, modifiers)
 	if(length(marker_children) >= 3)
@@ -69,8 +69,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 			continue
 		if(!do_after(user, 1 SECONDS, target = target))
 			break
-		movable_content.forceMove(moving_turf)
-		playsound(movable_content, 'sound/magic/Disable_Tech.ogg', 50, 1)
+		do_teleport(movable_content, moving_turf, asoundout = 'sound/magic/Disable_Tech.ogg')
 	new /obj/effect/decal/cleanable/ash(target_turf)
 	COOLDOWN_START(src, use_cooldown, 15 SECONDS)
 
@@ -117,7 +116,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	if(parent_item)
 		parent_item.marker_children -= src
 	GLOB.cargo_marks -= src
-	. = ..()
+	return ..()
 
 /obj/effect/decal/cleanable/cargo_mark/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
