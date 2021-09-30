@@ -1,4 +1,3 @@
-/*
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
@@ -16,7 +15,7 @@
 		return FALSE
 
 	return TRUE
-
+/*
 /datum/preference/toggle/erp
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_identifier = PREFERENCE_PLAYER
