@@ -1,6 +1,6 @@
 #define LOCKER_FULL -1
 
-/obj/structure/closet//SKYRAT EDIT - ICON OVERRIDEN BY CLOSETS.DM IN ANIMATED DOORS
+/obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/closet.dmi'
@@ -101,11 +101,7 @@
 
 /obj/structure/closet/proc/closet_update_overlays(list/new_overlays)
 	. = new_overlays
-<<<<<<< HEAD
-	if(enable_door_overlay && !is_animating_door) //SKYRAT EDIT CHANGE
-=======
 	if(enable_door_overlay && !is_animating_door)
->>>>>>> 29c49fdd9d1 (Ports animated locker doors (#61229))
 		if(opened && has_opened_overlay)
 			var/mutable_appearance/door_overlay = mutable_appearance(icon, "[icon_state]_open", alpha = src.alpha)
 			. += door_overlay
@@ -254,11 +250,7 @@
 	if(!dense_when_open)
 		set_density(FALSE)
 	dump_contents()
-<<<<<<< HEAD
-	animate_door(FALSE) //SKYRAT EDIT ADDITION
-=======
 	animate_door(FALSE)
->>>>>>> 29c49fdd9d1 (Ports animated locker doors (#61229))
 	update_appearance()
 	after_open(user, force)
 	return TRUE
@@ -316,11 +308,7 @@
 	playsound(loc, close_sound, close_sound_volume, TRUE, -3)
 	opened = FALSE
 	set_density(TRUE)
-<<<<<<< HEAD
-	animate_door(TRUE) //SKYRAT EDIT ADDITION
-=======
 	animate_door(TRUE)
->>>>>>> 29c49fdd9d1 (Ports animated locker doors (#61229))
 	update_appearance()
 	after_close(user)
 	return TRUE
