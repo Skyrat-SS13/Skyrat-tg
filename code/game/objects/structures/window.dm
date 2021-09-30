@@ -605,13 +605,8 @@
 /obj/structure/window/plasma/fulltile/unanchored
 	anchored = FALSE
 
-<<<<<<< HEAD
-/obj/structure/window/plasma/reinforced/fulltile
-	icon = 'icons/obj/smooth_structures/rplasma_window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 /obj/structure/window/reinforced/plasma/fulltile
-	icon = 'icons/obj/smooth_structures/rplasma_window.dmi'
->>>>>>> 496a7685dc7 ([MDB Ignore] Make shuttle windows deconstructable (#61694))
+	icon = 'icons/obj/smooth_structures/rplasma_window.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "rplasma_window-0"
 	base_icon_state = "rplasma_window"
 	state = RWINDOW_SECURE
