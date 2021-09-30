@@ -1,7 +1,7 @@
 /obj/item/device/custom_kit
     name = "modification kit" 
     desc = "A box of parts for modifying a certain object."
-    icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+    icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
     icon_state = "partskit"
     var/from_obj = null //The base object to be converted
     var/to_obj = null //The object to turn it into
