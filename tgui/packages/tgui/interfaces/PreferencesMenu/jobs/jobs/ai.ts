@@ -5,6 +5,7 @@ const AI: Job = {
   name: "AI",
   description: "Assist the crew, follow your laws, coordinate your cyborgs.",
   department: Silicon,
+  alt_titles: ["AI", "Station Intelligence", "Automated Overseer"],
 };
 
 export default AI;

@@ -25,7 +25,7 @@
 		var/obj/item/stack/ore/glass/glass_item = O
 		if(!glass_item.use(1))
 			return
-		new /obj/item/ceramic/clay(src)
+		new /obj/item/ceramic/clay(get_turf(src))
 		return
 	return ..()
 
