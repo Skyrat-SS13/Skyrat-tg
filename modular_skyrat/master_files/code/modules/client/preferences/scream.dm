@@ -8,5 +8,6 @@
 
 /datum/preference/choiced/scream/apply_to_human(mob/living/carbon/human/target, value)
 	var/scream_id = GLOB.scream_types[value]
-	var/datum/scream_type/scream_type = new scream_id
-	target.selected_scream = scream_type
+	if(scream_id)
+		var/datum/scream_type/scream_type = new scream_id
+		target.selected_scream = scream_type

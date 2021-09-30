@@ -6,6 +6,7 @@ const Psychologist: Job = {
   description: "Advocate sanity, self-esteem, and teamwork in a station \
     staffed with headcases.",
   department: Medical,
+  alt_titles: ["Psychologist", "Psychiatrist", "Therapist", "Counsellor"],
 };
 
 export default Psychologist;
