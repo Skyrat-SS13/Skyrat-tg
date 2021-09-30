@@ -6,6 +6,7 @@ const SecurityOfficer: Job = {
   description: "Protect company assets, follow the Standard Operating \
     Procedure, eat donuts",
   department: Security,
+  alt_titles: ["Security Officer", "Security Operative", "Peacekeeper"],
 };
 
 export default SecurityOfficer;

@@ -3,7 +3,9 @@ import { BooleanLike, classes } from "common/react";
 import { ComponentType, createComponentVNode, InfernoNode } from "inferno";
 import { VNodeFlags } from "inferno-vnode-flags";
 import { sendAct, useBackend, useLocalState } from "../../../../backend";
-import { Box, Button, Dropdown, NumberInput, Stack } from "../../../../components";
+// SKYRAT EDIT
+import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input, ColorBox } from "../../../../components";
+// SKYRAT EDIT END
 import { createSetPreference, PreferencesMenuData } from "../../data";
 import { ServerPreferencesFetcher } from "../../ServerPreferencesFetcher";
 
@@ -329,5 +331,75 @@ export const FeatureValueInput = (props: {
           });
       }}
     />
+  );
+};
+
+// SKYRAT FEATURES DOWN HERE
+
+export const FeatureTextInput = (
+  props: FeatureValueProps<string>
+) => {
+  return (<TextArea
+    height="100px"
+    value={props.value}
+    onChange={(_, value) => props.handleSetValue(value)}
+  />);
+};
+
+export const FeatureShortTextInput = (
+  props: FeatureValueProps<string>
+) => {
+  return (<Input
+    width="100%"
+    value={props.value}
+    onChange={(_, value) => props.handleSetValue(value)}
+  />);
+};
+
+export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
+  const setColorValue = (color, index) => {
+    const currentValue = [...props.value];
+    currentValue[index] = color;
+    props.handleSetValue(currentValue);
+  };
+  return (
+    <Stack align="center" fill>
+      <Stack.Item grow>
+        <Input
+          width="100%"
+          value={props.value[0]}
+          onChange={(_, value) => setColorValue(value, 0)}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <ColorBox
+          color={props.value[0]}
+        />
+      </Stack.Item>
+      <Stack.Item grow>
+        <Input
+          width="100%"
+          value={props.value[1]}
+          onChange={(_, value) => setColorValue(value, 1)}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <ColorBox
+          color={props.value[1]}
+        />
+      </Stack.Item>
+      <Stack.Item grow>
+        <Input
+          width="100%"
+          value={props.value[2]}
+          onChange={(_, value) => setColorValue(value, 2)}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <ColorBox
+          color={props.value[2]}
+        />
+      </Stack.Item>
+    </Stack>
   );
 };

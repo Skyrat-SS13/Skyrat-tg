@@ -185,6 +185,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/utility/com
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 
+/datum/loadout_item/under/jumpsuit/vic_vest
+	name = "victorian vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest
+
+/datum/loadout_item/under/jumpsuit/vic_vest
+	name = "red victorian vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/red
+
+/datum/loadout_item/under/jumpsuit/vic_vest
+	name = "blue victorian vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/blue
+
+/datum/loadout_item/under/jumpsuit/vic_vest
+	name = "red alt victorian vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
+
 // Donator jumpsuit stuffs here
 /datum/loadout_item/under/jumpsuit/donator
 	donator_only = TRUE

@@ -8,11 +8,11 @@
 
 	for (var/accessory_name in accessory_list)
 		var/icon/icon_with_socks = new(lower_half)
-
-		if (accessory_name != "Nude")
-			var/datum/sprite_accessory/accessory = accessory_list[accessory_name]
-
-			var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state) //SKYRAT EDIT CHANGE
+		var/datum/sprite_accessory/accessory = accessory_list[accessory_name]
+		//SKYRAT EDIT CHANGE
+		if (accessory_name != "Nude" && accessory)
+			var/icon/accessory_icon = icon(accessory.icon, accessory.icon_state)
+		//SKYRAT EDIT CHANGE END
 			if (color && !accessory.use_static)
 				accessory_icon.Blend(color, ICON_MULTIPLY)
 			icon_with_socks.Blend(accessory_icon, ICON_OVERLAY)
@@ -121,7 +121,6 @@
 /datum/preference/choiced/undershirt/apply_to_human(mob/living/carbon/human/target, value)
 	target.undershirt = value
 
-/* SKYRAT EDIT TODO - FOR WHATEVER REASON, THIS IS BROKEN
 /// Underwear preference
 /datum/preference/choiced/underwear
 	savefile_key = "underwear"
@@ -141,8 +140,8 @@
 		return FALSE
 
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
-	var/datum/species/species = new species_type
-	return !(NO_UNDERWEAR in species.species_traits)
+	var/datum/species/species = species_type
+	return !(NO_UNDERWEAR in initial(species.species_traits))
 
 /datum/preference/choiced/underwear/compile_constant_data()
 	var/list/data = ..()
@@ -150,4 +149,4 @@
 	data[SUPPLEMENTAL_FEATURE_KEY] = "underwear_color"
 
 	return data
-*/
+
