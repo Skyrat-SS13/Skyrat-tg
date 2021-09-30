@@ -357,11 +357,6 @@ export const FeatureShortTextInput = (
 };
 
 export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
-  const setColorValue = (color, index) => {
-    const currentValue = [...props.value];
-    currentValue[index] = color;
-    props.handleSetValue(currentValue);
-  };
   const buttonFromValue = (index) => {
     return (
       <Button onClick={() => {
