@@ -5,6 +5,7 @@ const Mime: Job = {
   name: "Mime",
   description: "...",
   department: Service,
+  alt_titles: ["Mime", "Pantomimist"],
 };
 
 export default Mime;

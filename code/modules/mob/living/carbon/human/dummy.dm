@@ -81,6 +81,9 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 		if(ishuman(target))
 			var/mob/living/carbon/human/human_target = target
 			human_target.copy_clothing_prefs(copycat)
+			// SKYRAT EDIT
+			target?.client?.prefs?.apply_prefs_to(copycat, TRUE)
+			// SKYRAT EDIT END
 
 		copycat.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
 	else

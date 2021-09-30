@@ -29,7 +29,7 @@
 
 /obj/item/clothing/under/rank/cargo/tech/skirt
 	name = "cargo technician's jumpskirt"
-	desc = "Skiiiiirts! They're comfy and easy to wear"
+	desc = "Skiiiiirts! They're comfy and easy to wear!"
 	icon_state = "cargo_skirt"
 	inhand_icon_state = "lb_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -50,4 +50,3 @@
 	name = "shaft miner's jumpsuit"
 	icon_state = "explorer"
 	inhand_icon_state = "explorer"
-	can_adjust = FALSE

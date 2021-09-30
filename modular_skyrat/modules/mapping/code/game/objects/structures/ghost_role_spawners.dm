@@ -166,7 +166,7 @@
 //Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
 
 /obj/effect/mob_spawn/human/lostcargo
-    name = "cryogenics pod"
+    name = "freighter cryo crew pod"
     desc = "A humming cryo pod. There's a freight hauler inside."
     mob_name = "Freighter Crew"
     icon = 'icons/obj/machines/sleeper.dmi'
@@ -186,7 +186,7 @@
     any_station_species = TRUE
 
 /obj/effect/mob_spawn/human/lostminer
-    name = "cryogenics pod"
+    name = "freighter cryo excavator pod"
     desc = "A humming cryo pod. There's an excavation worker inside."
     mob_name = "Freighter Excavator"
     icon = 'icons/obj/machines/sleeper.dmi'
@@ -213,7 +213,7 @@
     any_station_species = TRUE
 
 /obj/effect/mob_spawn/human/lostcargoqm
-    name = "cryogenics pod"
+    name = "freighter cryo boss pod"
     desc = "A humming cryo pod. You see someone who looks In Charge inside."
     mob_name = "Freighter Chief"
     icon = 'icons/obj/machines/sleeper.dmi'
@@ -302,7 +302,6 @@
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
 
-
 //IDS//
 /obj/item/card/id/away/blackmarket
 	name = "scuffed ID card"
@@ -350,26 +349,6 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo
 	name = "Freighter Ship"
 	icon_state = "yellow"
-
-/area/ruin/space/has_grav/deepstorage/crewbed
-	name = "Freighter Ship Crew Quarters"
-	icon_state = "green"
-
-/area/ruin/space/has_grav/deepstorage/kitchen
-	name = "Freighter Ship Cafeteria"
-	icon_state = "kitchen"
-
-/area/ruin/space/has_grav/deepstorage/dockingbay
-	name = "Freighter Ship Loading Bay"
-	icon_state = "yellow"
-
-/area/ruin/space/has_grav/deepstorage/lostcargomine
-	name = "Freighter Ship Mining Room"
-	icon_state = "yellow"
-
-/area/ruin/space/has_grav/deepstoragelostcargoengine
-	name = "Freighter Ship Maintenance"
-	icon_state = "engine"
 
 /area/ruin/space/has_grav/radiostation
 	name = "DJ Hut"
