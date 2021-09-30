@@ -121,7 +121,7 @@
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	var/visor_sprite_path	//SKYRAT EDIT --- Lets the visor not smush the snout
 
-/obj/item/clothing/head/hardhat/weldhat/Initialize()
+/obj/item/clothing/head/hardhat/weldhat/Initialize(mapload)
 	. = ..()
 	update_appearance()
 

@@ -1,7 +1,8 @@
 // Loot drops
-/obj/effect/spawner/lootdrop/wildwest/cash
+/obj/effect/spawner/random/wildwest_cash
 	name = "wild west cash"
-	fan_out_items = TRUE
+	spawn_all_loot = TRUE
+	spawn_random_offset = TRUE
 	loot = list(
 		/obj/item/stack/spacecash/c500,
 		/obj/item/stack/spacecash/c100

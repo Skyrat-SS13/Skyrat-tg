@@ -5,7 +5,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Icon, Stack } from "../components";
 import { Window } from "../layouts";
 
-const ROWS = 5;
+const ROWS = 6; // SKYRAT EDIT CHANGE
 const COLUMNS = 6;
 
 const BUTTON_DIMENSIONS = "50px";
@@ -207,7 +207,7 @@ const SLOTS: Record<
     gridSpot: getGridSpotKey([4, 5]),
     image: "inventory-pocket.png",
   },
-/* Removed by Tannhauser-Gate
+  // SKYRAT EDIT ADDITION
   vagina: {
     displayName: "vagina",
     gridSpot: getGridSpotKey([5, 1]),
@@ -230,9 +230,9 @@ const SLOTS: Record<
     displayName: "penis",
     gridSpot: getGridSpotKey([5, 4]),
     image: "inventory-pocket.png",
-  }, */
+  },
 };
-
+// SKYRAT EDIT END
 enum ObscuringLevel {
   Completely = 1,
   Hidden = 2,
@@ -390,17 +390,9 @@ export const StripMenu = (props, context) => {
                           {slot.image && (
                             <Box
                               as="img"
+                              className="centered-image"
                               src={resolveAsset(slot.image)}
                               opacity={0.7}
-                              style={{
-                                position: "absolute",
-                                width: "32px",
-                                height: "32px",
-                                left: "50%",
-                                top: "50%",
-                                transform:
-                                  "translateX(-50%) translateY(-50%) scale(0.8)",
-                              }}
                             />
                           )}
 

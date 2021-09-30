@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 /// Returns the department this mob was assigned to, if any.
 /datum/job/security_officer/proc/setup_department(mob/living/carbon/human/spawning, client/player_client)
-	var/department = player_client?.prefs?.prefered_security_department
+	var/department = player_client?.prefs?.read_preference(/datum/preference/choiced/security_department)
 	if (!isnull(department))
 		department = get_my_department(spawning, department)
 
@@ -115,11 +115,6 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		var/obj/item/card/id/worn_id = spawning.wear_id
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
 		spawning.sec_hud_set_ID()
-		//SKYRAT EDIT ADDITION -- ALT TITLES
-		if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[title])
-			spawning.alt_title_holder = player_client.prefs.alt_titles_preferences[title]
-			worn_id.assignment = "[spawning.alt_title_holder] ([department])"
-		//SKYRAT EDIT END
 
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 
@@ -223,7 +218,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	id_trim = /datum/id_trim/job/security_officer
 
-/obj/item/radio/headset/headset_sec/alt/department/Initialize()
+/obj/item/radio/headset/headset_sec/alt/department/Initialize(mapload)
 	. = ..()
 	wires = new/datum/wires/radio(src)
 	secure_radio_connections = new

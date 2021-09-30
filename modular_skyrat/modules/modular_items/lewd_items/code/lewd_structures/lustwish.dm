@@ -14,6 +14,7 @@
 	//STUFF SOLD HERE//
 	products = list(//Sex toys
 					/obj/item/clothing/sextoy/signalvib = 8,
+					/obj/item/assembly/signaler = 8,
 					/obj/item/clothing/sextoy/eggvib = 8,
 					/obj/item/clothing/sextoy/buttplug = 6,
 					/obj/item/clothing/sextoy/nipple_clamps = 4,
@@ -32,15 +33,12 @@
 					/obj/item/clothing/sextoy/vibrator = 4,
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
-					/obj/item/pillow = 24,
-					/obj/item/assembly/signaler = 8,
+					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
 					/obj/item/clothing/mask/ballgag/phallic = 8,
 					/obj/item/clothing/mask/ballgag/phallic/kazoo = 8,
-					/obj/item/clothing/mask/muzzle/ring = 4,
-					/obj/item/clothing/mask/muzzle/ball = 4,
 					/obj/item/clothing/head/domina_cap = 5,
 					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
 					/obj/item/clothing/head/maid = 5,
@@ -49,39 +47,23 @@
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
 					/obj/item/reagent_containers/glass/lewd_filter = 5,
 					/obj/item/clothing/glasses/hypno = 4,
-					/obj/item/clothing/glasses/blindfold = 8,
 					/obj/item/clothing/head/kitty = 4,
 					/obj/item/clothing/head/rabbitears = 4,
 
 
 					//neck
 					/obj/item/clothing/neck/kink_collar = 8,
-					/obj/item/clothing/neck/human_petcollar = 8,
-					/obj/item/clothing/neck/human_petcollar/locked/cowcollar = 3,
-					/obj/item/clothing/neck/human_petcollar/locked/bellcollar = 5,
-					/obj/item/clothing/neck/human_petcollar/locked/spikecollar = 3,
-					/obj/item/clothing/neck/human_petcollar/locked/cross = 3,
 					/obj/item/clothing/neck/human_petcollar/choker = 4,
 
 					//torso clothing
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
 					/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
-					/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
 					/obj/item/clothing/under/costume/lewdmaid = 5,
-					/obj/item/clothing/under/costume/maid = 5,
-					/obj/item/clothing/suit/straight_jacket/shackles = 3,
+					/obj/item/clothing/suit/straight_jacket/shackles = 4,
 					/obj/item/clothing/under/stripper_outfit = 5,
-					/obj/item/clothing/under/costume/loincloth = 4,
-					/obj/item/clothing/under/misc/stripper = 4,
-					/obj/item/clothing/under/misc/stripper/green = 4,
-					/obj/item/clothing/under/misc/stripper/mankini = 4,
-					/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
-					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
+					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
+					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
 					/obj/item/clothing/under/misc/gear_harness = 4,
-					/obj/item/clothing/under/shorts/polychromic/pantsu = 4,
-					/obj/item/clothing/under/misc/poly_bottomless = 4,
-					/obj/item/clothing/under/misc/poly_tanktop = 4,
-					/obj/item/clothing/under/misc/poly_tanktop/female = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
@@ -101,8 +83,8 @@
 
 					//chems
 					/obj/item/reagent_containers/pill/crocin = 20,
-					/obj/item/reagent_containers/glass/bottle/crocin = 6,
 					/obj/item/reagent_containers/pill/camphor = 10,
+					/obj/item/reagent_containers/glass/bottle/crocin = 6,
 					/obj/item/reagent_containers/glass/bottle/camphor = 3,
 					/obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, //Those are legal 'cause you can just turn off prefs in round in "CLOWN SMOKE MACHINE+PENIS ENLARGEMENT CHEMICAL CASE". Yes, i have special code-phrase for this. I've seen some shit.
 					/obj/item/reagent_containers/glass/bottle/penis_enlarger = 6,
@@ -111,30 +93,20 @@
 					/obj/item/clothing/glasses/nice_goggles = 1, //easter egg, don't touch plz)
 
 					//fur niture //haha you got it
-					/obj/item/storage/box/bdsmbed_kit = 5,
-					/obj/item/storage/box/strippole_kit = 3,
+					/obj/item/storage/box/bdsmbed_kit = 4,
+					/obj/item/storage/box/strippole_kit = 4,
 					/obj/item/storage/box/xstand_kit = 4,
-					/obj/item/storage/box/milking_kit = 2)
+					/obj/item/storage/box/milking_kit = 4)
 
 	contraband = list(
 					/obj/item/electropack/shockcollar = 4,
 					/obj/item/clothing/neck/kink_collar/locked = 4,
 					/obj/item/clothing/neck/mind_collar = 2,
 					/obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, //my favorite thing, spent 1 month on it. Don't remove please.
-					/obj/item/clothing/under/costume/jabroni = 4,
-					/obj/item/clothing/neck/human_petcollar/locked = 2,
-					/obj/item/key/collar = 2,
-					/obj/item/electropack/shockcollar = 4,
-					/obj/item/assembly/signaler = 4,
 					/obj/item/reagent_containers/pill/hexacrocin = 10,
 					/obj/item/reagent_containers/pill/pentacamphor = 5,
 					/obj/item/reagent_containers/glass/bottle/hexacrocin = 4,
 					/obj/item/reagent_containers/glass/bottle/pentacamphor = 2)
-
-	premium = list(
-		/obj/item/clothing/under/dress/corset = 4,
-		/obj/item/clothing/under/pants/chaps = 4,
-		/obj/item/clothing/neck/human_petcollar/locked/holocollar = 3)
 
 	refill_canister = /obj/item/vending_refill/lustwish
 	payment_department = ACCOUNT_SRV

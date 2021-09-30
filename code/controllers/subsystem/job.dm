@@ -74,7 +74,6 @@ SUBSYSTEM_DEF(job)
 		SetupOccupations()
 	if(CONFIG_GET(flag/load_jobs_from_txt))
 		LoadJobs()
-	generate_selectable_species()
 	set_overflow_role(CONFIG_GET(string/overflow_job))
 	return ..()
 
@@ -175,6 +174,7 @@ SUBSYSTEM_DEF(job)
 	return name_occupations[rank]
 
 /datum/controller/subsystem/job/proc/GetJobType(jobtype)
+	RETURN_TYPE(/datum/job)
 	if(!length(all_occupations))
 		SetupOccupations()
 	return type_occupations[jobtype]
@@ -198,8 +198,6 @@ SUBSYSTEM_DEF(job)
 		return FALSE
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(job.has_banned_quirk(player.client.prefs))
-		return FALSE
-	if(job.has_banned_species(player.client.prefs))
 		return FALSE
 	if(!job.has_required_languages(player.client.prefs))
 		return FALSE
@@ -239,9 +237,6 @@ SUBSYSTEM_DEF(job)
 		if(job.has_banned_quirk(player.client.prefs))
 			JobDebug("FOC job not compatible with quirks, Player: [player]")
 			continue
-		if(job.has_banned_species(player.client.prefs))
-			JobDebug("FOC job not compatible with species, Player: [player]")
-			continue
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("FOC job not compatible with languages, Player: [player]")
 			continue
@@ -276,7 +271,7 @@ SUBSYSTEM_DEF(job)
 			continue
 
 		//SKYRAT EDIT ADDITION
-		if(job.departments_bitflags & DEPARTMENT_BITFLAG_NANOTRASEN_FLEET_COMMAND) //If you want a CC position, select it!
+		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND) //If you want a CC position, select it!
 			continue
 		//SKYRAT EDIT END
 
@@ -294,9 +289,6 @@ SUBSYSTEM_DEF(job)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 		if(job.has_banned_quirk(player.client.prefs))
 			JobDebug("GRJ player has incompatible quirk, Player: [player]")
-			continue
-		if(job.has_banned_species(player.client.prefs))
-			JobDebug("GRJ player has incompatible species, Player: [player]")
 			continue
 		if(!job.has_required_languages(player.client.prefs))
 			JobDebug("GRJ player has incompatible languages, Player: [player]")
@@ -483,11 +475,8 @@ SUBSYSTEM_DEF(job)
 				if(job.has_banned_quirk(player.client.prefs))
 					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
 					continue
-				if(job.has_banned_species(player.client.prefs))
-					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
-					continue
 				if(!job.has_required_languages(player.client.prefs))
-					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					JobDebug("DO player has incompatible languages, Player: [player], Job:[job.title]")
 					continue
 				if(job.veteran_only && !is_veteran_player(player.client))
 					JobDebug("DO player is not veteran, Player: [player], Job:[job.title]")
@@ -529,27 +518,32 @@ SUBSYSTEM_DEF(job)
 
 //We couldn't find a job from prefs for this guy.
 /datum/controller/subsystem/job/proc/HandleUnassigned(mob/dead/new_player/player)
+	var/jobless_role = player.client.prefs.read_preference(/datum/preference/choiced/jobless_role)
+
 	if(PopcapReached())
 		RejectPlayer(player)
-	else if(player.client.prefs.joblessrole == BEOVERFLOW)
-		var/datum/job/overflow_role_datum = GetJobType(overflow_role)
-		var/allowed_to_be_a_loser = !is_banned_from(player.ckey, overflow_role_datum.title)
-		if(QDELETED(player) || !allowed_to_be_a_loser)
-			RejectPlayer(player)
-		else
-			if(!AssignRole(player, overflow_role_datum))
+		return
+
+	switch (jobless_role)
+		if (BEOVERFLOW)
+			var/datum/job/overflow_role_datum = GetJobType(overflow_role)
+			var/allowed_to_be_a_loser = !is_banned_from(player.ckey, overflow_role_datum.title)
+			if(QDELETED(player) || !allowed_to_be_a_loser)
 				RejectPlayer(player)
-	else if(player.client.prefs.joblessrole == BERANDOMJOB)
-		if(!GiveRandomJob(player))
+			else
+				if(!AssignRole(player, overflow_role_datum))
+					RejectPlayer(player)
+		if (BERANDOMJOB)
+			if(!GiveRandomJob(player))
+				RejectPlayer(player)
+		if (RETURNTOLOBBY)
 			RejectPlayer(player)
-	else if(player.client.prefs.joblessrole == RETURNTOLOBBY)
-		RejectPlayer(player)
-	else //Something gone wrong if we got here.
-		var/message = "DO: [player] fell through handling unassigned"
-		JobDebug(message)
-		log_game(message)
-		message_admins(message)
-		RejectPlayer(player)
+		else //Something gone wrong if we got here.
+			var/message = "DO: [player] fell through handling unassigned"
+			JobDebug(message)
+			log_game(message)
+			message_admins(message)
+			RejectPlayer(player)
 
 
 //Gives the player the stuff he should have with his rank
@@ -559,18 +553,10 @@ SUBSYSTEM_DEF(job)
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role(job)
-	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
-	var/display_rank = job.title
-	if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[job.title])
-		display_rank = player_client.prefs.alt_titles_preferences[job.title]
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>You are the [display_rank].</b></span>")
-	/* SKYRAT EDIT ORIGINAL
-	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>You are the [job.title].</b></span>")
-	*/ // SKYRAT EDIT END
+		to_chat(player_client, span_infoplain("You are the [job.title]."))
 
-	equipping.on_job_equipping(job)
+	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
 	job.announce_job(equipping)
 
@@ -581,15 +567,8 @@ SUBSYSTEM_DEF(job)
 			handle_auto_deadmin_roles(player_client, job.title)
 
 
-	var/list/packed_items //SKYRAT EDIT ADD - CUSTOMISATION
-	if(job)
-		if (player_client && job.no_dresscode && job.loadout)
-			packed_items = player_client.prefs.equip_preference_loadout(equipping,FALSE,job,blacklist=job.blacklist_dresscode_slots,initial=TRUE)
-	//SKYRAT EDIT ADDITION END
-
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [job.title]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT -- ALT TITLES
-		// to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</span></b>" // SKYRAT EDIT ORIGINAL
+		to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT ORIGINAL
 
 	job.radio_help_message(equipping)
 
@@ -609,14 +588,6 @@ SUBSYSTEM_DEF(job)
 
 
 	job.after_spawn(equipping, player_client)
-
-	//SKYRAT CHANGE ADDITION BEGIN - CUSTOMIZATION
-	if(!job.no_dresscode && job.loadout)
-		if(player_client)
-			packed_items = player_client.prefs.equip_preference_loadout(equipping, FALSE, job,initial=TRUE)
-	if(packed_items)
-		player_client.prefs.add_packed_items(equipping, packed_items)
-	//SKYRAT CHANGE ADDITION END
 
 /datum/controller/subsystem/job/proc/handle_auto_deadmin_roles(client/C, rank)
 	if(!C?.holder)
@@ -875,7 +846,7 @@ SUBSYSTEM_DEF(job)
 	name = "Nanotrasen-Approved Spare ID Safe Code"
 	desc = "Proof that you have been approved for Captaincy, with all its glory and all its horror."
 
-/obj/item/paper/fluff/spare_id_safe_code/Initialize()
+/obj/item/paper/fluff/spare_id_safe_code/Initialize(mapload)
 	. = ..()
 	var/safe_code = SSid_access.spare_id_safe_code
 
@@ -886,7 +857,7 @@ SUBSYSTEM_DEF(job)
 	name = "Emergency Spare ID Safe Code Requisition"
 	desc = "Proof that nobody has been approved for Captaincy. A skeleton key for a skeleton shift."
 
-/obj/item/paper/fluff/emergency_spare_id_safe_code/Initialize()
+/obj/item/paper/fluff/emergency_spare_id_safe_code/Initialize(mapload)
 	. = ..()
 	var/safe_code = SSid_access.spare_id_safe_code
 
