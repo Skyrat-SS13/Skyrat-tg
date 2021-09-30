@@ -130,6 +130,9 @@
 	//SKYRAT EDIT END
 	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
+	if(!isnull(medipen_type))
+		new medipen_type(src)
+
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
 		new /obj/item/flashlight/flare(src)
 		new /obj/item/radio/off(src)
@@ -1246,7 +1249,7 @@
 	custom_price = PAYCHECK_HARD * 3
 	custom_premium_price = PAYCHECK_HARD * 3
 
-/obj/item/storage/box/gum/happiness/Initialize()
+/obj/item/storage/box/gum/happiness/Initialize(mapload)
 	. = ..()
 	if (prob(25))
 		desc += " You can faintly make out the word 'Hemopagopril' was once scribbled on it."
@@ -1400,7 +1403,7 @@
 	illustration = "fruit"
 	var/theme_name
 
-/obj/item/storage/box/ingredients/Initialize()
+/obj/item/storage/box/ingredients/Initialize(mapload)
 	. = ..()
 	if(theme_name)
 		name = "[name] ([theme_name])"
@@ -1520,7 +1523,7 @@
 	new /obj/item/food/meat/slab/bear(src)
 	new /obj/item/food/meat/slab/spider(src)
 	new /obj/item/food/spidereggs(src)
-	new /obj/item/food/fishmeat/carp(src)
+	new /obj/item/food/meat/slab/penguin(src)
 	new /obj/item/food/meat/slab/xeno(src)
 	new /obj/item/food/meat/slab/corgi(src)
 	new /obj/item/food/meatball(src)
@@ -1535,11 +1538,21 @@
 		new /obj/item/food/grown/cabbage(src)
 	new /obj/item/food/grown/chili(src)
 
+/obj/item/storage/box/ingredients/seafood
+	theme_name = "seafood"
+
+/obj/item/storage/box/ingredients/seafood/PopulateContents()
+	for(var/i in 1 to 2)
+		new /obj/item/food/fishmeat/carp(src)
+		new /obj/item/food/fishmeat/armorfish(src)
+		new /obj/item/food/fishmeat/moonfish(src)
+	new /obj/item/food/fishmeat/gunner_jellyfish(src)
+
 /obj/item/storage/box/ingredients/random
 	theme_name = "random"
 	desc = "This box should not exist, contact the proper authorities."
 
-/obj/item/storage/box/ingredients/random/Initialize()
+/obj/item/storage/box/ingredients/random/Initialize(mapload)
 	.=..()
 	var/chosen_box = pick(subtypesof(/obj/item/storage/box/ingredients) - /obj/item/storage/box/ingredients/random)
 	new chosen_box(loc)

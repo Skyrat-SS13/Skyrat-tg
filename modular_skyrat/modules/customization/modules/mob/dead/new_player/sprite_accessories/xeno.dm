@@ -6,6 +6,10 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
+/datum/sprite_accessory/xenodorsal/none
+	name = "None"
+	icon_state = "none"
+
 /datum/sprite_accessory/xenodorsal/standard
 	name = "Standard"
 	icon_state = "standard"
@@ -32,6 +36,10 @@
 	key = "xenohead"
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = TRUE
+
+/datum/sprite_accessory/xenohead/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/xenohead/standard
 	name = "Standard"

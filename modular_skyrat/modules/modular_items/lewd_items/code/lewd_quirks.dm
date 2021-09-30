@@ -18,6 +18,7 @@
 	medical_record_text = "Subject has nymphomania."
 	var/obj/item/sextoy
 	var/where
+	icon = "grin-hearts"
 
 //nymphomania players need to satisfy lust, so they need "tools" to "cool" them from time to time. In case if there is NO PLAYERS AROUND.
 /datum/quirk/nymphomania/add_unique()
@@ -61,6 +62,7 @@
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 	var/satisfaction = 1000
 	var/stress = 0
+
 
 /datum/brain_trauma/special/nymphomania/on_gain()
 	var/mob/living/carbon/human/H = owner
@@ -280,7 +282,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 	for(var/mob/Player in GLOB.player_list)//prevents crewmembers falling in love with nuke ops they never met, and other annoying hijinks
 		if(Player.mind && Player.stat != DEAD && !isnewplayer(Player) && !isbrain(Player) && Player.client && Player != owner && SSjob.GetJob(Player.mind.assigned_role))
-			if(Player.client.prefs?.erp_pref == "Yes" && Player.client.prefs?.noncon_pref == "Yes")
+			if(Player.client.prefs?.read_preference(/datum/preference/toggle/erp/noncon))
 				viable_minds += Player.mind
 	for(var/datum/mind/possible_target in viable_minds)
 		if(possible_target != owner && ishuman(possible_target.current))
@@ -444,6 +446,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	gain_text = span_danger("You have a sudden desire for pain...")
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
+	icon = "heart-broken"
 
 /datum/quirk/masochism/post_add()
 	. = ..()
@@ -490,6 +493,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 	gain_text = span_danger("You feel a sudden desire to inflict pain.")
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
+	icon = "hammer"
 
 /datum/quirk/sadism/post_add()
 	. = ..()
@@ -513,7 +517,7 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 
 /datum/brain_trauma/special/sadism/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/H = owner
-	if(someone_suffering() && H.client?.prefs.erp_pref == "Yes")
+	if(someone_suffering() && H.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		H.adjustArousal(2)
 		SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
 	else

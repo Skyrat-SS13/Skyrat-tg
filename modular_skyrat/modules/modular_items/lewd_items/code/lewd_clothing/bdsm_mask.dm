@@ -227,7 +227,7 @@
 	update_icon()
 	var/mob/living/carbon/human/C = usr
 	if(mask_on)
-		if(src == C.wear_mask && C.client?.prefs.sextoys_pref == "Yes")
+		if(src == C.wear_mask && C.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			START_PROCESSING(SSobj, src)
 			time_to_choke_left = time_to_choke
 	else

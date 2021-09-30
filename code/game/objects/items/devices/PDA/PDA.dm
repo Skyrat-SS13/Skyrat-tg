@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if((!isnull(cartridge)))
 		. += span_notice("Ctrl+Shift-click to remove the cartridge.") //won't name cart on examine in case it's Detomatix
 
-/obj/item/pda/Initialize()
+/obj/item/pda/Initialize(mapload)
 	. = ..()
 
 	GLOB.PDAs += src
@@ -129,8 +129,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 	. = ..()
 	if(!equipped)
 		if(user.client)
-			background_color = user.client.prefs.pda_color
-			switch(user.client.prefs.pda_style)
+			background_color = user.client.prefs.read_preference(/datum/preference/color/pda_color)
+			switch(user.client.prefs.read_preference(/datum/preference/choiced/pda_style))
 				if(MONO)
 					font_index = MODE_MONO
 					font_mode = FONT_MONO
@@ -146,9 +146,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 				else
 					font_index = MODE_MONO
 					font_mode = FONT_MONO
-			//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-			ttone = user.client.prefs.pda_ringer
-			//SKYRAT EDIT ADDITION END
 			equipped = TRUE
 
 /obj/item/pda/proc/update_label()
@@ -766,6 +763,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 	if((last_text && world.time < last_text + 10) || (everyone && last_everyone && world.time < last_everyone + PDA_SPAM_DELAY))
 		return
+
+	var/list/filter_result = is_ic_filtered_for_pdas(message)
+	if (filter_result)
+		REPORT_CHAT_FILTER_TO_USER(user, filter_result)
+		return
+
 	if(prob(1))
 		message += "\nSent from my PDA"
 	// Send the signal

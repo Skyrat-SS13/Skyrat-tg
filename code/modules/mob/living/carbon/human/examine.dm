@@ -31,7 +31,7 @@
 	else
 		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
 
-	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]")
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]<hr>") //SKYRAT EDIT CHANGE
 	if(species_visible) //If they have a custom species shown, show the real one too
 		if(dna.features["custom_species"])
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
@@ -470,50 +470,20 @@
 					break
 */
 	if(!skipface)
-		var/line
-		if(length(dna.features["flavor_text"]))
-			var/message = dna.features["flavor_text"]
-			if(length_char(message) <= 40)
-				line = "<span class='notice'>[message]</span>"
-			else
-				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
-		if(client)
-			line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
+		var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
 		if(line)
 			. += line
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && erp_status_pref != "disabled")
+			. += span_notice("ERP STATUS: [erp_status_pref]")
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
 			. += "<span class='notice'>[temporary_flavor_text]</span>"
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
-
-	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	var/datum/data/record/isinworld = find_record("name", perpname, GLOB.data_core.locked) //i dont know of a better way to do this-it doesnt work on off-station roles. please fix this someone better at coding.
-	for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
-		if ((is_special_character(user)) && isinworld && (antag_datum.view_exploitables))
-			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
-	//SKYRAT EDIT END
-
-		//RP RECORDS FOR OBSERVERS
-	if(client && user.client.holder && isobserver(user))
-		var/line = ""
-		if(!(client.prefs.general_record == ""))
-			line += "<a href='?src=[REF(src)];general_records=1'>\[GEN\]</a>"
-		if(!(client.prefs.security_record == ""))
-			line += "<a href='?src=[REF(src)];security_records=1'>\[SEC\]</a>"
-		if(!(client.prefs.medical_record == ""))
-			line += "<a href='?src=[REF(src)];medical_records=1'>\[MED\]</a>"
-		if(!(client.prefs.background_info == ""))
-			line += "<a href='?src=[REF(src)];flavor_background=1'>\[BG\]</a>"
-		if(!(client.prefs.exploitable_info == ""))
-			line += "<a href='?src=[REF(src)];exploitable_info=1'>\[EXP\]</a>"
-
-		if(!(line == ""))
-			. += "*---------*"
-			. += line
-	//END OF SKYRAT EDIT
-	. += "*---------*</span>"
+	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
@@ -537,7 +507,7 @@
 	switch(age)
 		if(-INFINITY to 17) // SKYRAT EDIT ADD START -- AGE EXAMINE
 			age_text = "too young to be here"
-		if(18 to 25) 
+		if(18 to 25)
 			age_text = "a young adult" // SKYRAT EDIT END
 		if(26 to 35)
 			age_text = "of adult age"
