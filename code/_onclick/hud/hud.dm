@@ -103,7 +103,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
-	var/erp_ui_style //SKYRAT EDIT - ADDITION - ERP ICONS FIX
+	//var/erp_ui_style //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 /datum/hud/New(mob/owner)
 	mymob = owner
@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	if (!ui_style)
 		// will fall back to the default if any of these are null
 		ui_style = ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
-		erp_ui_style = erp_ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
+		//erp_ui_style = erp_ui_style2icon(owner.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 	hide_actions_toggle = new
 	hide_actions_toggle.InitialiseIcon(src)
