@@ -297,6 +297,39 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				var/datum/loadout_manager/tgui = new(usr)
 				tgui.ui_interact(usr)
 			return TRUE
+		if ("set_tricolor_preference")
+			var/requested_preference_key = params["preference"]
+			var/index_key = params["value"]
+
+			var/datum/preference/requested_preference = GLOB.preference_entries_by_key[requested_preference_key]
+			if (isnull(requested_preference))
+				return FALSE
+
+			if (!istype(requested_preference, /datum/preference/tri_color))
+				return FALSE
+
+			var/default_value_list = read_preference(requested_preference.type)
+			if (!islist(default_value_list))
+				return FALSE
+			var/default_value = default_value_list[index_key]
+
+			// Yielding
+			var/new_color = input(
+				usr,
+				"Select new color",
+				null,
+				default_value || COLOR_WHITE,
+			) as color | null
+
+			if (!new_color)
+				return FALSE
+
+			default_value_list[index_key] = new_color
+
+			if (!update_preference(requested_preference, default_value_list))
+				return FALSE
+
+			return TRUE
 		//SKYRAT EDIT END
 
 
