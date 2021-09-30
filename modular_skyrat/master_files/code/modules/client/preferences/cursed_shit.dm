@@ -1,5 +1,5 @@
 // 200 dollars is 200 dollars :(
-
+/*
 /datum/preference/toggle/penis
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -324,7 +324,7 @@
 	if(!target.dna.mutant_bodyparts["womb"])
 		target.dna.mutant_bodyparts["womb"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
 	target.dna.mutant_bodyparts["womb"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
-
+*/
 /datum/preference/toggle/breasts
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -381,7 +381,7 @@
 	if(!target.dna.mutant_bodyparts["breasts"])
 		target.dna.mutant_bodyparts["breasts"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
 	target.dna.mutant_bodyparts["breasts"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
-
+/*
 /datum/preference/toggle/breasts_lactation
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -397,7 +397,7 @@
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = preferences.read_preference(/datum/preference/toggle/breasts)
 	return part_enabled && (passed_initial_check || allowed)
-
+*/
 /datum/preference/numeric/breasts_size
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
