@@ -189,7 +189,7 @@
 				var/atom/movable/movable_thing = thing
 				if (get_dist(movable_thing, parent) > consume_range)
 					movable_thing.singularity_pull(parent, singularity_size)
-				else
+				else if(!istype(movable_thing, /obj/machinery/field/containment)) //SKYRAT EDIT CHANGE - NO EATING CONTAINMENT YOU BITCH
 					consume(src, movable_thing)
 
 			CHECK_TICK
