@@ -432,7 +432,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/kimono_sakura
 	name = "Sakura Kimono"
-	item_path = /obj/item/clothing/under/costume/kimono_sakura
+	item_path = /obj/item/clothing/under/costume/kimono/sakura
 
 /datum/loadout_item/under/formal/kimono_fancy
 	name = "Fancy Kimono"
