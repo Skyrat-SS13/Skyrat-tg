@@ -177,6 +177,7 @@ export type PreferencesMenuData = {
   robotic_styles: string[];
   limbs_data: Limb[];
   organs_data: Organ[];
+  marking_presets: string[];
 
   selected_languages: Language[];
   unselected_languages: Language[];

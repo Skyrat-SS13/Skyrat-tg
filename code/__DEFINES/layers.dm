@@ -1,34 +1,28 @@
 //Defines for atom layers and planes
 //KEEP THESE IN A NICE ACSCENDING ORDER, PLEASE
 
+//NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
+#define LOWEST_EVER_PLANE -200
+
 #define CLICKCATCHER_PLANE -99
 
 #define PLANE_SPACE -95
-#define PLANE_SPACE_RENDER_TARGET "PLANE_SPACE"
 #define PLANE_SPACE_PARALLAX -90
-#define PLANE_SPACE_PARALLAX_RENDER_TARGET "PLANE_SPACE_PARALLAX"
 
+#define GRAVITY_PULSE_PLANE -11
+#define GRAVITY_PULSE_RENDER_TARGET "*GRAVPULSE_RENDER_TARGET"
 
 #define OPENSPACE_LAYER 600 //Openspace layer over all
 #define OPENSPACE_PLANE -10 //Openspace plane below all turfs //SKYRAT EDIT CHANGE - MOVED TO 10 FROM 9 - Pollution port
 #define OPENSPACE_BACKDROP_PLANE -9 //Black square just over openspace plane to guaranteed cover all in openspace turf //SKYRAT EDIT CHANGE - MOVED TO 9 FROM 8 - Pollution port
 
 
-#define FLOOR_PLANE -8 //SKYRAT EDIT CHANGE - Pollution port
-#define FLOOR_PLANE_RENDER_TARGET "FLOOR_PLANE"
-#define OVER_TILE_PLANE -7 //SKYRAT EDIT CHANGE - Pollution port
-#define WALL_PLANE -6 //SKYRAT EDIT CHANGE - Pollution port
-#define GAME_PLANE -5 //SKYRAT EDIT CHANGE - Pollution port
+#define FLOOR_PLANE -7
 #define GAME_PLANE_RENDER_TARGET "GAME_PLANE"
+#define GAME_PLANE -4
+
 #define MOUSE_TRANSPARENT_PLANE -4 //SKYRAT EDIT ADDITION - Pollution port
 #define MOUSE_TRANSPARENT_PLANE_RENDER_TARGET "MOUSE_TRANSPARENT_PLANE" //SKYRAT EDIT ADDITION - Pollution port
-#define UNDER_FRILL_PLANE -3
-#define UNDER_FRILL_RENDER_TARGET "UNDER_FRILL_PLANE"
-#define FRILL_PLANE -2
-#define FRILL_PLANE_RENDER_TARGET "FRILL_PLANE"
-#define OVER_FRILL_PLANE -1
-#define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
-#define BLACKNESS_PLANE_RENDER_TARGET "BLACKNESS_PLANE"
 
 #define SPACE_LAYER 1.8
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define
@@ -99,10 +93,8 @@
 #define GASFIRE_LAYER 5.05
 #define RIPPLE_LAYER 5.1
 
-#define LANDMARK_PLANE 50
-#define LOW_LANDMARK_LAYER 1
-#define MID_LANDMARK_LAYER 2
-#define HIGH_LANDMARK_LAYER 3
+#define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
+
 
 #define AREA_PLANE 60
 #define MASSIVE_OBJ_PLANE 70
@@ -111,13 +103,9 @@
 
 #define RAD_TEXT_PLANE 90
 
-#define FRILL_MASK_PLANE 95
-#define FRILL_MASK_RENDER_TARGET "*FRILL_MASK_PLANE"
-
 //---------- LIGHTING -------------
 ///Normal 1 per turf dynamic lighting underlays
 #define LIGHTING_PLANE 100
-#define LIGHTING_RENDER_TARGET "LIGHT_PLANE"
 
 ///Lighting objects that are "free floating"
 #define O_LIGHTING_VISUAL_PLANE 110
@@ -125,7 +113,6 @@
 
 ///Things that should render ignoring lighting
 #define ABOVE_LIGHTING_PLANE 120
-#define ABOVE_LIGHTING_RENDER_TARGET "ABOVE_LIGHTING_PLANE"
 
 #define LIGHTING_PRIMARY_LAYER 15	//The layer for the main lights of the station
 #define LIGHTING_PRIMARY_DIMMER_LAYER 15.1	//The layer that dims the main lights of the station
@@ -134,7 +121,6 @@
 
 ///visibility + hiding of things outside of light source range
 #define BYOND_LIGHTING_PLANE 130
-#define BYOND_LIGHTING_RENDER_TARGET "BYOND_LIGHTING_PLANE"
 
 
 //---------- EMISSIVES -------------
@@ -152,7 +138,6 @@
 
 ///AI Camera Static
 #define CAMERA_STATIC_PLANE 200
-#define CAMERA_STATIC_RENDER_TARGET "CAMERA_STATIC_PLANE"
 
 ///Popup Chat Messages
 #define RUNECHAT_PLANE 250
@@ -165,7 +150,6 @@
 
 ///--------------- FULLSCREEN IMAGES ------------
 #define FULLSCREEN_PLANE 500
-#define FULLSCREEN_RENDER_TARGET "FULLSCREEN_PLANE"
 #define FLASH_LAYER 1
 #define FULLSCREEN_LAYER 2
 #define UI_DAMAGE_LAYER 3
@@ -174,12 +158,15 @@
 #define CURSE_LAYER 6
 
 
+//-------------------- Rendering ---------------------
+#define RENDER_PLANE_GAME 990
+#define RENDER_PLANE_NON_GAME 995
+#define RENDER_PLANE_MASTER 999
+
 //-------------------- HUD ---------------------
 //HUD layer defines
 #define HUD_PLANE 1000
-#define HUD_RENDER_TARGET "HUD_PLANE"
 #define ABOVE_HUD_PLANE 1100
-#define ABOVE_HUD_RENDER_TARGET "ABOVE_HUD_PLANE"
 
 #define RADIAL_BACKGROUND_LAYER 0
 ///1000 is an unimportant number, it's just to normalize copied layers
@@ -187,9 +174,9 @@
 
 #define ADMIN_POPUP_LAYER 1
 
+
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this.
 #define SPLASHSCREEN_PLANE 9999
-#define SPLASHSCREEN_RENDER_TARGET "SPLASHSCREEN_PLANE"
 
 #define LOBBY_BACKGROUND_LAYER 3
 #define LOBBY_BUTTON_LAYER 4
