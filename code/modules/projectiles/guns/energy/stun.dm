@@ -25,7 +25,7 @@
 
 /obj/item/gun/energy/disabler
 	name = "disabler"
-	desc = "A self-defense weapon that exhausts organic targets, weakening them until they collapse. Has a secondary fire mode for firing lethal hardlight bullets." // SKYRAT EDIT: 	desc = "A self-defense weapon that exhausts organic targets, weakening them until they collapse."
+	desc = "A self-defense weapon that exhausts organic targets, weakening them until they collapse."
 	icon_state = "disabler"
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
