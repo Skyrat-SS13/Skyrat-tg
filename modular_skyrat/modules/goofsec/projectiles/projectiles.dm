@@ -35,7 +35,8 @@
 	icon_state = "vintorez"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	worn_icon_state = "norwind_worn"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	inhand_icon_state = "vintorez"
 	burst_size = 2
 	fire_delay = 4
@@ -45,6 +46,10 @@
 	fire_sound = null
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez)
 	shaded_charge = TRUE
+
+/obj/item/gun/energy/vintorez/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez
 	name = "hardlight bullet vintorez casing"
@@ -64,7 +69,8 @@
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	worn_icon_state = "norwind_worn"
 	icon_state = "norwind"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	inhand_icon_state = "norwind"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	worn_icon_state = "norwind_worn"
@@ -79,6 +85,10 @@
 	burst_size = 1
 	fire_delay = 10
 	shaded_charge = TRUE
+
+/obj/item/gun/energy/norwind/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/norwind
 	name = "hardlight bullet norwind casing"
@@ -99,12 +109,17 @@
 	icon_state = "ostwind"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	worn_icon_state = "ostwind_worn"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	fire_delay = 2
 	burst_size = 2
 	fire_sound = null
 	can_bayonet = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind)
+
+/obj/item/gun/energy/ostwind/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind
 	name = "hardlight bullet norostwindwind casing"
@@ -126,7 +141,8 @@
 	icon_state = "pitbull"
 	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	worn_icon_state = "ostwind_worn"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	fire_delay = 4.20
 	burst_size = 3
 	fire_sound = null
@@ -134,6 +150,10 @@
 	can_flashlight = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull)
 	shaded_charge = TRUE
+
+/obj/item/gun/energy/pitbull/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull
 	name = "hardlight bullet pitbull casing"
@@ -154,12 +174,17 @@
 	worn_icon_state = "ostwind_worn"
 	inhand_icon_state = "pcr"
 	icon_state = "pcr"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_OCLOTHING
 	fire_delay = 1.80
 	burst_size = 5
 	can_flashlight = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr)
 	shaded_charge = TRUE
+
+/obj/item/gun/energy/pcr/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr
 	name = "hardlight bullet pcr casing"
