@@ -93,11 +93,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 40)
 		LAZYADD(key_bindings["Space"], "hold_throw_mode")
 
-	if (current_version <= 41) //Tannhauser Gate Edit
+	if (current_version < 41)
 		migrate_preferences_to_tgui_prefs_menu()
 
 /datum/preferences/proc/update_character(current_version)
-	if (current_version <= 41) //Tannhauser Gate Edit
+	if (current_version < 41)
 		migrate_character_to_tgui_prefs_menu()
 
 /// checks through keybindings for outdated unbound keys and updates them
