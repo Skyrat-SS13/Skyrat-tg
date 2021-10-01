@@ -253,12 +253,16 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
+// Pizza Chefs
+
 /datum/outfit/pizzacook
 	name = "Pizza Cook"
 	uniform = /obj/item/clothing/under/rank/civilian/chef
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	id = /obj/item/card/id/away/pizza
 	implants = /obj/item/implant/exile/noteleport
+
+//Radio DJs
 
 /obj/effect/mob_spawn/human/radiohost
 	name = "cryogenics pod"
