@@ -4,7 +4,7 @@
     icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
     icon_state = "partskit"
     var/from_obj //The base object to be converted
-    var/to_obj //The object to turn it into
+    var/obj/item/to_obj //The object to turn it into
 
 /obj/item/device/custom_kit/afterattack(obj/target_obj, mob/user as mob, proximity_flag)
     if(!proximity_flag) //Gotta be adjacent to your target
