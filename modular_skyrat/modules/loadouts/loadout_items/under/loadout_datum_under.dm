@@ -462,7 +462,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/misc/taccas
 
 /datum/loadout_item/under/miscellaneous/rancher
-	name = "rancher outfit"
+	name = "Rancher Outfit"
 	item_path = /obj/item/clothing/under/rancher
 
 /datum/loadout_item/under/miscellaneous/rancher_pioneer
