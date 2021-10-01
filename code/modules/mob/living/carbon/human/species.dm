@@ -1515,28 +1515,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	H.send_item_attack_message(I, user, hit_area, affecting)
 
-	//SKYRAT EDIT CHANGE BEGIN
-	//apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness()) //ORIGINAL
-	var/effec_damage
-	var/effec_stam
-	//While on a disarm intent, our hits are glancing, doing less normal damage but more stamina damage
-	if(!user.combat_mode)
-		effec_damage = I.force * TISSUE_DAMAGE_GLANCING_DAMAGE_MULTIPLIER
-		if(I.damtype == BRUTE && !I.get_sharpness())
-			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
-			if(Iwound_bonus)
-				Iwound_bonus += effec_damage
-		else
-			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_GLANCING_STAMINA_MULTIPLIER
-	else
-		effec_damage = I.force
-		if(I.damtype == BRUTE && !I.get_sharpness())
-			effec_stam = effec_damage * BLUNT_TISSUE_DAMAGE_STAMINA_MULTIPLIER
-		else
-			effec_stam = effec_damage * OTHER_TISSUE_DAMAGE_STAMINA_MULTIPLIER
-	apply_damage(effec_damage * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
-	apply_damage(effec_stam, STAMINA, def_zone, armor_block, H)
-	//SKYRAT EDIT CHANGE END
+	apply_damage(I.force * weakness, I.damtype, def_zone, armor_block, H, wound_bonus = Iwound_bonus, bare_wound_bonus = I.bare_wound_bonus, sharpness = I.get_sharpness())
 
 	if(!I.force)
 		return FALSE //item force is zero
@@ -1568,7 +1547,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					else
 						H.adjustOrganLoss(ORGAN_SLOT_BRAIN, I.force * 0.2)
 
-					if(H.mind && H.stat == CONSCIOUS && H != user && prob(I.force + ((100 - H.health) * 0.5))) // rev deconversion through blunt trauma.
+					if(H.mind && H.stat == CONSCIOUS && H != user && prob(I.force + ((MAX_HUMAN_LIFE  - H.health) * 0.5))) // rev deconversion through blunt trauma. SKYRAT EDIT: if(H.mind && H.stat == CONSCIOUS && H != user && prob(I.force + ((100  - H.health) * 0.5)))
 						var/datum/antagonist/rev/rev = H.mind.has_antag_datum(/datum/antagonist/rev)
 						if(rev)
 							rev.remove_revolutionary(FALSE, user)
@@ -1586,11 +1565,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 			if(BODY_ZONE_CHEST)
 				if(H.stat == CONSCIOUS && !I.get_sharpness() && armor_block < 50)
-					if(prob((I.force/2))) //SKYRAT EDIT CHANGE: if(prob(I.force))
+					if(prob((I.force)))
 						H.visible_message("<span class='danger'>[H] is knocked down!</span>", \
 									"<span class='userdanger'>You're knocked down!</span>")
-						//H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
-						H.StaminaKnockdown(10) //SKYRAT EDIT CHANGE ABOVE
+						H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
 
 				if(bloody)
 					if(H.wear_suit)

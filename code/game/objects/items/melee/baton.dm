@@ -312,7 +312,7 @@
 	item_flags = NONE
 	force = 5
 	cooldown = 2.5 SECONDS
-	stamina_damage = 85
+	stamina_damage = 115 // SKYRAT EDIT: Original 85
 	clumsy_knockdown_time = 24 SECONDS
 	affect_cyborg = TRUE
 	on_stun_sound = 'sound/effects/contractorbatonhit.ogg'
@@ -344,7 +344,7 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 50, BIO = 0, RAD = 0, FIRE = 80, ACID = 80)
 
 	throwforce = 7
-	stamina_damage = 60
+	stamina_damage = 45 // 3 baton crit.
 	knockdown_time = 5 SECONDS
 	clumsy_knockdown_time = 15 SECONDS
 	cooldown = 2.5 SECONDS

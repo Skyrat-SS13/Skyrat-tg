@@ -181,9 +181,8 @@
 				terrible_conversion_proc(M, user)
 				visible_message(span_danger("[user] blinds [M] with the flash!"),span_userdanger("[user] blinds you with the flash!"))
 			//easy way to make sure that you can only long stun someone who is facing in your direction
-			//M.adjustStaminaLoss(rand(80,120)*(1-(deviation*0.5)))
-			//M.Paralyze(rand(25,50)*(1-(deviation*0.5)))
-			M.StaminaKnockdown(rand(30,40) * (1-(deviation*0.5))) //SKYRAT EDIT CHANGE - ORIGINAL ABOVE
+			M.adjustStaminaLoss(rand(80,120)*(1-(deviation*0.5)))
+			M.Paralyze(rand(25,50)*(1-(deviation*0.5)))
 		else if(user)
 			visible_message(span_warning("[user] fails to blind [M] with the flash!"),span_danger("[user] fails to blind you with the flash!"))
 		else

@@ -284,8 +284,7 @@
 		var/olddir = C.dir
 		C.moving_diagonally = 0 //If this was part of diagonal move slipping will stop it.
 		if(!(lube & SLIDE_ICE))
-			C.StaminaKnockdown(10, TRUE) //SKYRAT EDIT CHANGE
-			//C.Paralyze(paralyze_amount) - SKYRAT EDIT REMOVAL
+			C.Paralyze(paralyze_amount) // SKYRAT NOTE: Undid the slide change as this broke ice sliding visuals and the mechanic.
 			C.stop_pulling()
 		else
 			C.Knockdown(20)

@@ -2,7 +2,7 @@
 	name = "laser"
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-	damage = 20
+	damage = 27 // SKYRAT EDIT: 20
 	damage_type = BURN
 	hitsound = 'sound/weapons/sear.ogg'
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
@@ -88,7 +88,7 @@
 /obj/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "omnilaser"
-	damage = 30
+	damage = 41 // SKYRAT EDIT: 30
 	damage_type = STAMINA
 	flag = ENERGY
 	hitsound = 'sound/weapons/tap.ogg'

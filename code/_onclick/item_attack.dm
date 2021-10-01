@@ -150,12 +150,7 @@
 /mob/living/attackby(obj/item/I, mob/living/user, params)
 	if(..())
 		return TRUE
-	//user.changeNext_move(CLICK_CD_MELEE) - SKYRAT EDIT CHANGE BEGIN - COMBAT
-	if(user.staminaloss > STAMINA_THRESHOLD_TIRED_CLICK_CD)
-		user.changeNext_move(CLICK_CD_MELEE_TIRED)
-	else
-		user.changeNext_move(CLICK_CD_MELEE)
-	//SKYRAT EDIT END
+	user.changeNext_move(CLICK_CD_MELEE)
 	return I.attack(src, user, params)
 
 /mob/living/attackby_secondary(obj/item/weapon, mob/living/user, params)

@@ -3,8 +3,8 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("Head of Security")
 	faction = FACTION_STATION
-	total_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	spawn_positions = 5 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
+	total_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SET TO 7, WAS 5
+	spawn_positions = 7 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SEE ABOVE
 	supervisors = "the head of security, security sergeants, and the head of your assigned department (if applicable)"	// SKYRAT EDIT: Adds mention of the security sergeant.
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
@@ -53,16 +53,22 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 /datum/job/security_officer/after_roundstart_spawn(mob/living/spawning, client/player_client)
 	. = ..()
-	if(ishuman(spawning))
-		setup_department(spawning, player_client)
+	// SKYRAT EDIT
+	//if(ishuman(spawning))
+	//	setup_department(spawning, player_client)
+	// SKYRAT EDIT END
 
 
 /datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
 	. = ..()
+	//SKYRAT EDIT
+	/*
 	if(ishuman(spawning))
 		var/department = setup_department(spawning, spawning.client)
 		if(department)
 			announce_latejoin(spawning, department, GLOB.security_officer_distribution)
+	*/
+	//SKYRAT EDIT END
 
 
 /// Returns the department this mob was assigned to, if any.
@@ -197,14 +203,14 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: uniform = /obj/item/clothing/under/rank/security/officer
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
+	gloves = /obj/item/clothing/gloves/color/black
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: head = /obj/item/clothing/head/helmet/sec
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: suit = /obj/item/clothing/suit/armor/vest/alt
-	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
+	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT REMOVAL - SEC_HAUL
-	backpack_contents = list(/obj/item/melee/baton/security/loaded=1, /obj/item/armament_token/sidearm) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/security/loaded =1)
+	backpack_contents = list(/obj/item/melee/baton/security/loaded=1) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/security/loaded =1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL

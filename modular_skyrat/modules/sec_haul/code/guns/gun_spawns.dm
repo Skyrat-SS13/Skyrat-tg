@@ -46,18 +46,6 @@
 			guns_spawned++
 	return INITIALIZE_HINT_QDEL
 
-//////////////RIFLE SPAWNER
-/obj/effect/spawner/armory_spawn/rifles
-	icon_state = "random_rifle"
-	gun_count = 4
-	guns = list(
-		/obj/item/gun/ballistic/automatic/pcr,
-		/obj/item/gun/ballistic/automatic/pitbull,
-		/obj/item/gun/ballistic/automatic/ostwind,
-		/obj/item/gun/ballistic/automatic/norwind,
-		/obj/item/gun/ballistic/automatic/vintorez,
-	)
-
 /obj/effect/spawner/armory_spawn/shotguns
 	icon_state = "random_shotgun"
 	gun_count = 4
@@ -70,8 +58,8 @@
 /obj/structure/closet/ammunitionlocker/useful/PopulateContents()
 	new /obj/item/storage/box/rubbershot_14gauge(src)
 	new /obj/item/storage/box/rubbershot_14gauge(src)
-	new /obj/item/storage/box/lethalshot_14gauge(src)
-	new /obj/item/storage/box/lethalshot_14gauge(src)
+	new /obj/item/storage/box/rubbershot_14gauge(src)
+	new /obj/item/storage/box/rubbershot_14gauge(src)
 
 //////////////////////////AMMO BOXES
 /obj/item/storage/box/ammo_box
