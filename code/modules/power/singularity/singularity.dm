@@ -81,6 +81,7 @@
 			notify_volume = 75
 		)
 
+
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()

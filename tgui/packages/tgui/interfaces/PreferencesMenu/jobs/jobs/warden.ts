@@ -7,6 +7,7 @@ const Warden: Job = {
     their time is up, issue equipment to security, be a security officer when \
     they all eventually die.",
   department: Security,
+  alt_titles: ["Warden", "Brig Sergeant", "Dispatch Officer"],
 };
 
 export default Warden;

@@ -5,6 +5,7 @@ const Botanist: Job = {
   name: "Botanist",
   description: "Grow plants for the cook, for medicine, and for recreation.",
   department: Service,
+  alt_titles: ["Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist"],
 };
 
 export default Botanist;
