@@ -446,7 +446,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/misc/gear_harness
 
 /datum/loadout_item/under/miscellaneous/kimunder
-	name = "gear harness"
+	name = "Aerostatic Suit"
 	item_path = /obj/item/clothing/under/misc/kimunder
 
 /datum/loadout_item/under/miscellaneous/countess
