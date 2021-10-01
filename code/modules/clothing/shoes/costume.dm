@@ -51,14 +51,12 @@
 	desc = "Steel-toed and intimidating."
 	icon_state = "MajimaShoes"
 	inhand_icon_state = "MajimaShoes_worn"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/shoes/jackbros
 	name = "frosty boots"
 	desc = "For when you're stepping on up to the plate."
 	icon_state = "JackFrostShoes"
 	inhand_icon_state = "JackFrostShoes_worn"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/shoes/swagshoes
 	name = "swag shoes"
@@ -71,39 +69,34 @@
 	desc = "Excellent for when you need to do cool flashy flips."
 	icon_state = "phantom_shoes"
 	inhand_icon_state = "phantom_shoes"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/shoes/saints
 	name = "saints sneakers"
 	desc = "Officially branded Saints sneakers. Incredibly valuable!"
 	icon_state = "saints_shoes"
 	inhand_icon_state = "saints_shoes"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/shoes/morningstar
 	name = "morningstar boots"
 	desc = "The most expensive boots on this station. Wearing them dropped the value by about 50%."
 	icon_state = "morningstar_shoes"
 	inhand_icon_state = "morningstar_shoes"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/shoes/deckers
 	name = "deckers rollerskates"
 	desc = "t3h c00L3st sh03z j00'LL 3v3r f1nd."
 	icon_state = "decker_shoes"
 	inhand_icon_state = "decker_shoes"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/shoes/sybil_slickers
 	name = "sybil slickers shoes"
 	desc = "FOOTBALL! YEAH!"
 	icon_state = "sneakers_blue"
 	inhand_icon_state = "sneakers_blue"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/shoes/basil_boys
 	name = "basil boys shoes"
 	desc = "FOOTBALL! YEAH!"
 	icon_state = "sneakers_red"
 	inhand_icon_state = "sneakers_red"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
+

@@ -96,7 +96,6 @@
 	armor = list(MELEE = 15, BULLET = 60, LASER = 10, ENERGY = 10, BOMB = 40, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 5)
 	can_flashlight = TRUE
 	dog_fashion = null
-	mutant_variants = NONE // SKYRAT EDIT ADD
 
 /obj/item/clothing/head/helmet/marine
 	name = "marine combat helmet"
