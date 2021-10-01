@@ -507,7 +507,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/suit/sl
 
 /datum/loadout_item/under/formal/formaldressred
-	name = "formal red dress"
+	name = "Formal Red Dress"
 	item_path = /obj/item/clothing/under/misc/formaldressred
 
 /datum/loadout_item/under/formal/assistant
