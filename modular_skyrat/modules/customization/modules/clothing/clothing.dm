@@ -17,31 +17,31 @@
 	var/worn_icon_muzzled
 
 /obj/item/clothing/head
-	mutant_variants = STYLE_MUZZLE | STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/mask
-	mutant_variants = STYLE_MUZZLE | STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/glasses
-	mutant_variants = STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/under
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/suit
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_TAUR_ALL|STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/gloves
-	mutant_variants = STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/shoes
-	mutant_variants = STYLE_DIGITIGRADE|STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/armor
-	mutant_variants = STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/under/color/jumpskirt
-	mutant_variants = STYLE_VOX
+	mutant_variants = NONE
 
 /obj/item/clothing/under/rank/engineering/chief_engineer/skirt
 	mutant_variants = NONE
