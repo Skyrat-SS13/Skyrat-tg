@@ -482,7 +482,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rancher/checkered
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
-	name = "cargo tech casual wear"
+	name = "Cargo Tech Casual Wear"
 	item_path = /obj/item/clothing/under/rank/cargo/casualman
 	restricted_roles = list("Cargo Technician")
 
