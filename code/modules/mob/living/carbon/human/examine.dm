@@ -154,6 +154,7 @@
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/disabled = list()
+	var/list/writing = list() // SKYRAT EDIT ADDITION
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/body_part = X
 		if(body_part.bodypart_disabled)
@@ -321,6 +322,11 @@
 
 	if(just_sleeping)
 		msg += "[t_He] [t_is]n't responding to anything around [t_him] and seem[p_s()] to be asleep.\n"
+
+	for(var/X in writing) // SKYRAT EDIT ADDITION - BODY WRITING
+		if(!w_uniform)
+			var/obj/item/bodypart/BP = X
+			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(BP.writtentext)]\" written on [t_his] [BP.name].</span>\n"
 
 	if(!appears_dead)
 		if(drunkenness && !skipface) //Drunkenness
