@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	else
 		outfit.uniform = item_path
 
-// jumpsuit undersuits
+//////////////////////////////////////////////////////JUMPSUITS
 /datum/loadout_item/under/jumpsuit
 
 /datum/loadout_item/under/jumpsuit/greyscale
@@ -201,228 +201,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "red alt victorian vest"
 	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
 
-// Donator jumpsuit stuffs here
-/datum/loadout_item/under/jumpsuit/donator
-	donator_only = TRUE
-
-/datum/loadout_item/under/jumpsuit/donator/enclavesergeant
-	name = "Enclave - Sergeant"
-	item_path = /obj/item/clothing/under/enclave
-
-/datum/loadout_item/under/jumpsuit/donator/enclaveofficer
-	name = "Enclave - Officer"
-	item_path = /obj/item/clothing/under/enclaveo
-
-/datum/loadout_item/under/jumpsuit/donator/fashionableskirt
-	name = "Fashionable Skirt"
-	item_path = /obj/item/clothing/under/rank/civilian/skirt
-
-/datum/loadout_item/under/jumpsuit/donator/blondie
-	name = "Blonde Cowboy Uniform"
-	item_path = /obj/item/clothing/under/rank/security/detective/cowboy/armorless
-
-
-// formal undersuits
-/datum/loadout_item/under/formal
-
-/datum/loadout_item/under/formal/amish_suit
-	name = "Amish Suit"
-	item_path = /obj/item/clothing/under/suit/sl
-
-/datum/loadout_item/under/formal/assistant
-	name = "Assistant Formal"
-	item_path = /obj/item/clothing/under/misc/assistantformal
-
-/datum/loadout_item/under/formal/beige_suit
-	name = "Beige Suit"
-	item_path = /obj/item/clothing/under/suit/beige
-
-/datum/loadout_item/under/formal/black_suit
-	name = "Black Suit"
-	item_path = /obj/item/clothing/under/suit/black
-
-/datum/loadout_item/under/formal/black_suitskirt
-	name = "Black Suitskirt"
-	item_path = /obj/item/clothing/under/suit/black/skirt
-
-/datum/loadout_item/under/formal/black_tango
-	name = "Black Tango Dress"
-	item_path = /obj/item/clothing/under/dress/blacktango
-
-/datum/loadout_item/under/formal/Black_twopiece
-	name = "Black Two-Piece Suit"
-	item_path = /obj/item/clothing/under/suit/blacktwopiece
-
-/datum/loadout_item/under/formal/black_skirt
-	name = "Black Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt
-
-/datum/loadout_item/under/formal/black_lawyer_suit
-	name = "Black Lawyer Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/black
-
-/datum/loadout_item/under/formal/black_lawyer_skirt
-	name = "Black Lawyer Suitskirt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/black/skirt
-
-/datum/loadout_item/under/formal/blue_suit
-	name = "Blue Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
-
-/datum/loadout_item/under/formal/blue_suitskirt
-	name = "Blue Suitskirt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit/skirt
-
-/datum/loadout_item/under/formal/blue_lawyer_suit
-	name = "Blue Lawyer Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/blue
-
-/datum/loadout_item/under/formal/blue_lawyer_skirt
-	name = "Blue Lawyer Suitskirt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
-
-/datum/loadout_item/under/formal/blue_skirt
-	name = "Blue Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/blue
-
-/datum/loadout_item/under/formal/blue_skirt_plaid
-	name = "Blue Plaid Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/plaid/blue
-
-/datum/loadout_item/under/formal/burgundy_suit
-	name = "Burgundy Suit"
-	item_path = /obj/item/clothing/under/suit/burgundy
-
-/datum/loadout_item/under/formal/charcoal_suit
-	name = "Charcoal Suit"
-	item_path = /obj/item/clothing/under/suit/charcoal
-
-/datum/loadout_item/under/formal/checkered_suit
-	name = "Checkered Suit"
-	item_path = /obj/item/clothing/under/suit/checkered
-
-/datum/loadout_item/under/formal/executive_suit
-	name = "Executive Suit"
-	item_path = /obj/item/clothing/under/suit/black_really
-
-/datum/loadout_item/under/formal/executive_skirt
-	name = "Executive Suitskirt"
-	item_path = /obj/item/clothing/under/suit/black_really/skirt
-
-/datum/loadout_item/under/formal/executive_suit_alt
-	name = "Executive Suit Alt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/female
-
-/datum/loadout_item/under/formal/executive_skirt_alt
-	name = "Executive Suitskirt Alt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/female/skirt
-
-/datum/loadout_item/under/formal/green_suit
-	name = "Green Suit"
-	item_path = /obj/item/clothing/under/suit/green
-
-/datum/loadout_item/under/formal/green_skirt_plaid
-	name = "Green Plaid Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/plaid/green
-
-/datum/loadout_item/under/formal/navy_suit
-	name = "Navy Suit"
-	item_path = /obj/item/clothing/under/suit/navy
-
-/datum/loadout_item/under/formal/maid_outfit
-	name = "Maid Outfit"
-	item_path = /obj/item/clothing/under/costume/maid
-
-/datum/loadout_item/under/formal/maid_uniform
-	name = "Maid Uniform"
-	item_path = /obj/item/clothing/under/rank/civilian/janitor/maid
-
-/datum/loadout_item/under/formal/purple_suit
-	name = "Purple Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/purpsuit
-
-/datum/loadout_item/under/formal/purple_suitskirt
-	name = "Purple Suitskirt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/purpsuit/skirt
-
-/datum/loadout_item/under/formal/purple_skirt
-	name = "Purple Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/purple
-
-/datum/loadout_item/under/formal/purple_skirt_plaid
-	name = "Purple Plaid Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/plaid/purple
-
-/datum/loadout_item/under/formal/red_suit
-	name = "Red Suit"
-	item_path = /obj/item/clothing/under/suit/red
-
-/datum/loadout_item/under/formal/red_lawyer_skirt
-	name = "Red Lawyer Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/red
-
-/datum/loadout_item/under/formal/red_lawyer_skirt
-	name = "Red Lawyer Suitskirt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/red/skirt
-
-/datum/loadout_item/under/formal/red_gown
-	name = "Red Evening Gown"
-	item_path = /obj/item/clothing/under/dress/redeveninggown
-
-/datum/loadout_item/under/formal/red_skirt
-	name = "Red Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/red
-
-/datum/loadout_item/under/formal/red_skirt_plaid
-	name = "Red Plaid Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/plaid
-
-/datum/loadout_item/under/formal/sailor
-	name = "Sailor Suit"
-	item_path = /obj/item/clothing/under/costume/sailor
-
-/datum/loadout_item/under/formal/sailor_skirt
-	name = "Sailor Dress"
-	item_path = /obj/item/clothing/under/dress/sailor
-
-/datum/loadout_item/under/formal/scratch_suit
-	name = "Scratch Suit"
-	item_path = /obj/item/clothing/under/suit/white_on_white
-
-/datum/loadout_item/under/formal/striped_skirt
-	name = "Striped Dress"
-	item_path = /obj/item/clothing/under/dress/striped
-
-/datum/loadout_item/under/formal/sensible_suit
-	name = "Sensible Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/curator
-
-/datum/loadout_item/under/formal/sensible_skirt
-	name = "Sensible Suitskirt"
-	item_path = /obj/item/clothing/under/rank/civilian/curator/skirt
-
-/datum/loadout_item/under/formal/sundress
-	name = "Sundress"
-	item_path = /obj/item/clothing/under/dress/sundress
-
-/datum/loadout_item/under/formal/tuxedo
-	name = "Tuxedo Suit"
-	item_path = /obj/item/clothing/under/suit/tuxedo
-
-/datum/loadout_item/under/formal/waiter
-	name = "Waiter's Suit"
-	item_path = /obj/item/clothing/under/suit/waiter
-
-/datum/loadout_item/under/formal/white_suit
-	name = "White Suit"
-	item_path = /obj/item/clothing/under/suit/white
-
-/datum/loadout_item/under/formal/formalmed
-	name = "Formal Medical Suit"
-	item_path = /obj/item/clothing/under/rank/medical/doctor/formal
-	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic", "Paramedic", "Psychologist")
-
-// misc undersuits
+/////////////////////////////////////////////////////////////MISC UNDERSUITS
 /datum/loadout_item/under/miscellaneous
 
 /datum/loadout_item/under/miscellaneous/camo
@@ -656,3 +435,286 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "White Scrubs"
 	item_path = /obj/item/clothing/under/rank/medical/doctor/white
 	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic", "Paramedic")
+
+/datum/loadout_item/under/miscellaneous/swept_skirt
+	name = "Swept Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/swept
+
+
+/datum/loadout_item/under/miscellaneous/gear_harness
+	name = "Gear Harness"
+	item_path = /obj/item/clothing/under/misc/gear_harness
+
+/datum/loadout_item/under/miscellaneous/kimunder
+	name = "Aerostatic Suit"
+	item_path = /obj/item/clothing/under/misc/kimunder
+
+/datum/loadout_item/under/miscellaneous/countess
+	name = "Countess Dress"
+	item_path = /obj/item/clothing/under/misc/countess
+
+/datum/loadout_item/under/miscellaneous/peakyblinder
+	name = "Birmingham Bling"
+	item_path = /obj/item/clothing/under/misc/peakyblinder
+
+/datum/loadout_item/under/miscellaneous/taccas
+	name = "Tacticasual Uniform"
+	item_path = /obj/item/clothing/under/misc/taccas
+
+/datum/loadout_item/under/miscellaneous/rancher
+	name = "Rancher Outfit"
+	item_path = /obj/item/clothing/under/rancher
+
+/datum/loadout_item/under/miscellaneous/rancher_pioneer
+	name = "Pioneer Outfit"
+	item_path = /obj/item/clothing/under/rancher/pioneer
+
+/datum/loadout_item/under/miscellaneous/rancher_worker
+	name = "Western Worker Outfit"
+	item_path = /obj/item/clothing/under/rancher/worker
+
+/datum/loadout_item/under/miscellaneous/rancher_cowboy
+	name = "Cowboy Outfit"
+	item_path = /obj/item/clothing/under/rancher/cowboy
+
+/datum/loadout_item/under/miscellaneous/rancher_checkered
+	name = "Western Checkered Outfit"
+	item_path = /obj/item/clothing/under/rancher/checkered
+
+/datum/loadout_item/under/miscellaneous/cargo_casual
+	name = "Cargo Tech Casual Wear"
+	item_path = /obj/item/clothing/under/rank/cargo/casualman
+	restricted_roles = list("Cargo Technician")
+
+/datum/loadout_item/under/miscellaneous/cargo_casual
+	name = "black cargo uniform"
+	item_path = /obj/item/clothing/under/misc/evilcargo
+	restricted_roles = list("Cargo Technician")
+
+/datum/loadout_item/under/miscellaneous/eve
+	name = "collection of leaves"
+	item_path = /obj/item/clothing/under/misc/gear_harness/eve
+
+/datum/loadout_item/under/miscellaneous/adam
+	name = "leaf"
+	item_path = /obj/item/clothing/under/costume/loincloth/sensor/adam
+
+////////////////////////////////////////////////////////////////FORMAL UNDERSUITS
+/datum/loadout_item/under/formal
+
+/datum/loadout_item/under/formal/amish_suit
+	name = "Amish Suit"
+	item_path = /obj/item/clothing/under/suit/sl
+
+/datum/loadout_item/under/formal/formaldressred
+	name = "Formal Red Dress"
+	item_path = /obj/item/clothing/under/misc/formaldressred
+
+/datum/loadout_item/under/formal/assistant
+	name = "Assistant Formal"
+	item_path = /obj/item/clothing/under/misc/assistantformal
+
+/datum/loadout_item/under/formal/beige_suit
+	name = "Beige Suit"
+	item_path = /obj/item/clothing/under/suit/beige
+
+/datum/loadout_item/under/formal/black_suit
+	name = "Black Suit"
+	item_path = /obj/item/clothing/under/suit/black
+
+/datum/loadout_item/under/formal/black_suitskirt
+	name = "Black Suitskirt"
+	item_path = /obj/item/clothing/under/suit/black/skirt
+
+/datum/loadout_item/under/formal/black_tango
+	name = "Black Tango Dress"
+	item_path = /obj/item/clothing/under/dress/blacktango
+
+/datum/loadout_item/under/formal/Black_twopiece
+	name = "Black Two-Piece Suit"
+	item_path = /obj/item/clothing/under/suit/blacktwopiece
+
+/datum/loadout_item/under/formal/black_skirt
+	name = "Black Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt
+
+/datum/loadout_item/under/formal/black_lawyer_suit
+	name = "Black Lawyer Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/black
+
+/datum/loadout_item/under/formal/black_lawyer_skirt
+	name = "Black Lawyer Suitskirt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/black/skirt
+
+/datum/loadout_item/under/formal/blue_suit
+	name = "Blue Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
+
+/datum/loadout_item/under/formal/blue_suitskirt
+	name = "Blue Suitskirt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit/skirt
+
+/datum/loadout_item/under/formal/blue_lawyer_suit
+	name = "Blue Lawyer Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/blue
+
+/datum/loadout_item/under/formal/blue_lawyer_skirt
+	name = "Blue Lawyer Suitskirt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/blue/skirt
+
+/datum/loadout_item/under/formal/blue_skirt
+	name = "Blue Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/blue
+
+/datum/loadout_item/under/formal/blue_skirt_plaid
+	name = "Blue Plaid Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/plaid/blue
+
+/datum/loadout_item/under/formal/burgundy_suit
+	name = "Burgundy Suit"
+	item_path = /obj/item/clothing/under/suit/burgundy
+
+/datum/loadout_item/under/formal/charcoal_suit
+	name = "Charcoal Suit"
+	item_path = /obj/item/clothing/under/suit/charcoal
+
+/datum/loadout_item/under/formal/checkered_suit
+	name = "Checkered Suit"
+	item_path = /obj/item/clothing/under/suit/checkered
+
+/datum/loadout_item/under/formal/executive_suit
+	name = "Executive Suit"
+	item_path = /obj/item/clothing/under/suit/black_really
+
+/datum/loadout_item/under/formal/executive_skirt
+	name = "Executive Suitskirt"
+	item_path = /obj/item/clothing/under/suit/black_really/skirt
+
+/datum/loadout_item/under/formal/executive_suit_alt
+	name = "Executive Suit Alt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/female
+
+/datum/loadout_item/under/formal/executive_skirt_alt
+	name = "Executive Suitskirt Alt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/female/skirt
+
+/datum/loadout_item/under/formal/green_suit
+	name = "Green Suit"
+	item_path = /obj/item/clothing/under/suit/green
+
+/datum/loadout_item/under/formal/green_skirt_plaid
+	name = "Green Plaid Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/plaid/green
+
+/datum/loadout_item/under/formal/navy_suit
+	name = "Navy Suit"
+	item_path = /obj/item/clothing/under/suit/navy
+
+/datum/loadout_item/under/formal/maid_outfit
+	name = "Maid Outfit"
+	item_path = /obj/item/clothing/under/costume/maid
+
+/datum/loadout_item/under/formal/maid_uniform
+	name = "Maid Uniform"
+	item_path = /obj/item/clothing/under/rank/civilian/janitor/maid
+
+/datum/loadout_item/under/formal/purple_suit
+	name = "Purple Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/purpsuit
+
+/datum/loadout_item/under/formal/purple_suitskirt
+	name = "Purple Suitskirt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/purpsuit/skirt
+
+/datum/loadout_item/under/formal/purple_skirt
+	name = "Purple Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/purple
+
+/datum/loadout_item/under/formal/purple_skirt_plaid
+	name = "Purple Plaid Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/plaid/purple
+
+/datum/loadout_item/under/formal/red_suit
+	name = "Red Suit"
+	item_path = /obj/item/clothing/under/suit/red
+
+/datum/loadout_item/under/formal/red_lawyer_skirt
+	name = "Red Lawyer Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/red
+
+/datum/loadout_item/under/formal/red_lawyer_skirt
+	name = "Red Lawyer Suitskirt"
+	item_path = /obj/item/clothing/under/rank/civilian/lawyer/red/skirt
+
+/datum/loadout_item/under/formal/red_gown
+	name = "Red Evening Gown"
+	item_path = /obj/item/clothing/under/dress/redeveninggown
+
+/datum/loadout_item/under/formal/red_skirt
+	name = "Red Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/red
+
+/datum/loadout_item/under/formal/red_skirt_plaid
+	name = "Red Plaid Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/plaid
+
+/datum/loadout_item/under/formal/sailor
+	name = "Sailor Suit"
+	item_path = /obj/item/clothing/under/costume/sailor
+
+/datum/loadout_item/under/formal/sailor_skirt
+	name = "Sailor Dress"
+	item_path = /obj/item/clothing/under/dress/sailor
+
+/datum/loadout_item/under/formal/scratch_suit
+	name = "Scratch Suit"
+	item_path = /obj/item/clothing/under/suit/white_on_white
+
+/datum/loadout_item/under/formal/striped_skirt
+	name = "Striped Dress"
+	item_path = /obj/item/clothing/under/dress/striped
+
+/datum/loadout_item/under/formal/sensible_suit
+	name = "Sensible Suit"
+	item_path = /obj/item/clothing/under/rank/civilian/curator
+
+/datum/loadout_item/under/formal/sensible_skirt
+	name = "Sensible Suitskirt"
+	item_path = /obj/item/clothing/under/rank/civilian/curator/skirt
+
+/datum/loadout_item/under/formal/sundress
+	name = "Sundress"
+	item_path = /obj/item/clothing/under/dress/sundress
+
+/datum/loadout_item/under/formal/tuxedo
+	name = "Tuxedo Suit"
+	item_path = /obj/item/clothing/under/suit/tuxedo
+
+/datum/loadout_item/under/formal/waiter
+	name = "Waiter's Suit"
+	item_path = /obj/item/clothing/under/suit/waiter
+
+/datum/loadout_item/under/formal/white_suit
+	name = "White Suit"
+	item_path = /obj/item/clothing/under/suit/white
+
+/datum/loadout_item/under/formal/formalmed
+	name = "Formal Medical Suit"
+	item_path = /obj/item/clothing/under/rank/medical/doctor/formal
+	restricted_roles = list("Medical Doctor", "Chief Medical Officer", "Geneticist", "Chemist", "Virologist", "Security Medic", "Paramedic", "Psychologist")
+
+/datum/loadout_item/under/formal/kimono
+	name = "Kimono"
+	item_path = /obj/item/clothing/under/costume/kimono
+
+/datum/loadout_item/under/formal/kimono_dark
+	name = "Dark Kimono"
+	item_path = /obj/item/clothing/under/costume/kimono/dark
+
+/datum/loadout_item/under/formal/kimono_sakura
+	name = "Sakura Kimono"
+	item_path = /obj/item/clothing/under/costume/kimono/sakura
+
+/datum/loadout_item/under/formal/kimono_fancy
+	name = "Fancy Kimono"
+	item_path =  /obj/item/clothing/under/costume/kimono/fancy

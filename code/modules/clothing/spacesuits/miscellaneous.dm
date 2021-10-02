@@ -370,7 +370,6 @@ Contains:
 	icon_state = "hardsuit0-prt"
 	inhand_icon_state = "hardsuit0-prt"
 	hardsuit_type = "prt"
-	mutant_variants = NONE //SKYRAT EDIT ADDITION
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	actions_types = list()
 	resistance_flags = FIRE_PROOF

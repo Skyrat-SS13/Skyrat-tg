@@ -129,10 +129,10 @@
     if(!.)
         return
     if(borg.hasAffection)
-        to_chat(usr, "<span class='warning'>This unit already has a affection module installed!</span>")
+        to_chat(usr, span_warning("This unit already has a affection module installed!"))
         return FALSE
     if(!(R_TRAIT_WIDE in borg.model.model_features))
-        to_chat(usr, "<span class='warning'>This unit's chassis does not support this module.</span>")
+        to_chat(usr, span_warning("This unit's chassis does not support this module."))
         return FALSE
 
     var/obj/item/dogborg_tongue/dogtongue = new /obj/item/dogborg_tongue(borg.model)
@@ -192,7 +192,6 @@
 		return
 	if(borgo.hasAdvanced)
 		to_chat(user, span_warning("This unit already has advanced materials installed!"))
-		to_chat(user, "There's no room for more materials!")
 		return FALSE;
 
 	var/obj/item/stack/sheet/plasteel/cyborg/plasteel_holder = new(borgo.model)
