@@ -115,10 +115,19 @@
 	name = "\improper Hotel Staff Room"
 	icon_state = "crew_quarters"
 
+<<<<<<< HEAD
 // SKYRAT EDIT ADDITION START
 /area/ruin/space/has_grav/hotel/workroom/quarters
 	name = "Hotel Staff Quarters"
 // SKYRAT EDIT ADDITION END
+=======
+/area/ruin/space/has_grav/hotel/storeroom
+	name = "\improper Hotel Staff Storage"
+	icon_state = "crew_quarters"
+
+
+
+>>>>>>> ae67450df68 (Fix Space Hotel duplicate area (#61815))
 
 //Ruin of Derelict Oupost
 
