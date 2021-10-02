@@ -13,7 +13,7 @@
 
 	src.show_bottom_level = show_bottom_level
 
-	our_turf.plane = OPENSPACE_PLANE
+	our_turf.plane = FLOOR_PLANE //SKYRAT EDIT CHANGE
 	our_turf.layer = OPENSPACE_LAYER
 
 	RegisterSignal(target, COMSIG_TURF_MULTIZ_DEL, .proc/on_multiz_turf_del)
