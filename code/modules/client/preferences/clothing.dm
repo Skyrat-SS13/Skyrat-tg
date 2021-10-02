@@ -1,4 +1,6 @@
-/proc/generate_values_for_underwear(list/accessory_list, list/icons, color, icon_offset)
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
+/proc/generate_values_for_underwear(list/accessory_list, list/icons, color, icon_offset) //SKYRAT EDIT CHANGE - Colorable Undershirt/Socks
 	var/icon/lower_half = icon('icons/blanks/32x32.dmi', "nothing")
 
 	for (var/icon in icons)
@@ -16,8 +18,8 @@
 			if (color && !accessory.use_static)
 				accessory_icon.Blend(color, ICON_MULTIPLY)
 			icon_with_socks.Blend(accessory_icon, ICON_OVERLAY)
-		icon_with_socks.Crop(10, 1+icon_offset, 22, 13+icon_offset)			
-		
+		icon_with_socks.Crop(10, 1+icon_offset, 22, 13+icon_offset)	//SKYRAT EDIT CHANGE - Colorable Undershirt/Socks
+
 		icon_with_socks.Scale(32, 32)
 
 		values[accessory_name] = icon_with_socks
@@ -81,18 +83,19 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/socks/init_possible_values()
-	return generate_values_for_underwear(GLOB.socks_list, list("human_r_leg", "human_l_leg"), COLOR_ALMOST_BLACK, 0)
+	return generate_values_for_underwear(GLOB.socks_list, list("human_r_leg", "human_l_leg"), COLOR_ALMOST_BLACK, 0) //SKYRAT EDIT CHANGE - Colorable Undershirt/Socks
 
 /datum/preference/choiced/socks/apply_to_human(mob/living/carbon/human/target, value)
 	target.socks = value
 
+//SKYRAT EDIT CHANGE BEGIN - Colorable Undershirt/Socks
 /datum/preference/choiced/socks/compile_constant_data()
 	var/list/data = ..()
 
 	data[SUPPLEMENTAL_FEATURE_KEY] = "socks_color"
 
 	return data
-
+//SKYRAT EDIT CHANGE END - Colorable Undershirt/Socks
 
 /// Undershirt preference
 /datum/preference/choiced/undershirt
@@ -102,6 +105,7 @@
 	category = PREFERENCE_CATEGORY_CLOTHING
 	should_generate_icons = TRUE
 
+//SKYRAT EDIT CHANGE BEGIN - Colorable Undershirt/Socks
 /datum/preference/choiced/undershirt/init_possible_values()
 	return generate_values_for_underwear(GLOB.undershirt_list, list("human_chest_m", "human_r_arm", "human_l_arm", "human_r_leg", "human_l_leg", "human_r_hand", "human_l_hand"), COLOR_ALMOST_BLACK,10)
 
@@ -114,7 +118,8 @@
 	data[SUPPLEMENTAL_FEATURE_KEY] = "undershirt_color"
 
 	return data
-	
+//SKYRAT EDIT CHANGE END - Colorable Undershirt/Socks
+
 /// Underwear preference
 /datum/preference/choiced/underwear
 	savefile_key = "underwear"
@@ -124,7 +129,7 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/underwear/init_possible_values()
-	return generate_values_for_underwear(GLOB.underwear_list, list("human_chest_m", "human_r_leg", "human_l_leg"), COLOR_ALMOST_BLACK, 5)
+	return generate_values_for_underwear(GLOB.underwear_list, list("human_chest_m", "human_r_leg", "human_l_leg"), COLOR_ALMOST_BLACK, 5) //SKYRAT EDIT CHANGE - Colorable Undershirt/Socks
 
 /datum/preference/choiced/underwear/apply_to_human(mob/living/carbon/human/target, value)
 	target.underwear = value

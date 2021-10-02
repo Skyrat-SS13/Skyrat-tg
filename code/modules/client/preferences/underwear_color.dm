@@ -1,3 +1,5 @@
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
 /datum/preference/color_legacy/underwear_color
 	savefile_key = "underwear_color"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -14,6 +16,7 @@
 	var/datum/species/species = new species_type
 	return !(NO_UNDERWEAR in species.species_traits)
 
+//SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks
 /datum/preference/color_legacy/undershirt_color
 	savefile_key = "undershirt_color"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -45,3 +48,4 @@
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type
 	return !(NO_UNDERWEAR in species.species_traits)
+//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks
