@@ -81,7 +81,7 @@
 	alert_control.listener.RegisterSignal(src, COMSIG_LIVING_DEATH, /datum/alarm_listener/proc/prevent_alarm_changes)
 	alert_control.listener.RegisterSignal(src, COMSIG_LIVING_REVIVE, /datum/alarm_listener/proc/allow_alarm_changes)
 
-/mob/living/silicon/robot/model/syndicate/Initialize()
+/mob/living/silicon/robot/model/syndicate/Initialize(mapload)
 	. = ..()
 	laws = new /datum/ai_laws/syndicate_override()
 	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
@@ -199,8 +199,8 @@
 		changed_name = GLOB.current_anonymous_theme.anonymous_ai_name(FALSE)
 	else if(custom_name)
 		changed_name = custom_name
-	else if(pref_source && pref_source.prefs.custom_names["cyborg"] != DEFAULT_CYBORG_NAME)
-		apply_pref_name("cyborg", pref_source)
+	else if(pref_source && pref_source.prefs.read_preference(/datum/preference/name/cyborg) != DEFAULT_CYBORG_NAME)
+		apply_pref_name(/datum/preference/name/cyborg, pref_source)
 		return //built in camera handled in proc
 	else
 		changed_name = get_standard_name()
@@ -648,6 +648,7 @@
 		hasShrunk = FALSE
 		resize = (4/3)
 		update_transform()
+	hasAffection = FALSE //Just so they can get the affection modules back if they want them.
 	//SKYRAT EDIT ADDITION END
 	logevent("Chassis model has been reset.")
 	model.transform_to(/obj/item/robot_model)

@@ -247,7 +247,6 @@
 	name = "xenos helmet"
 	icon_state = "xenos"
 	inhand_icon_state = "xenos_helm"
-	mutant_variants = NONE //SKYRAT EDIT ADDITION
 	desc = "A helmet made out of chitinous alien hide."
 	clothing_flags = SNUG_FIT
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
@@ -348,7 +347,6 @@
 	attack_verb_simple = list("warn", "caution", "smash")
 	resistance_flags = NONE
 	dynamic_hair_suffix = ""
-	mutant_variants = NONE // SKYRAT EDIT ADD
 
 /obj/item/clothing/head/santa
 	name = "santa hat"
