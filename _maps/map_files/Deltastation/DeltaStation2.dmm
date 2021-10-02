@@ -5740,6 +5740,17 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/security/prison)
+"aPm" = (
+/obj/machinery/camera{
+	c_tag = "Atmospherics - Testing Room - South";
+	name = "atmospherics camera"
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/iron,
+/area/engineering/atmos/upper)
 "aPn" = (
 /obj/machinery/light/small/directional/west,
 /obj/item/clothing/suit/caution,
@@ -34678,11 +34689,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/grimy,
 /area/service/chapel)
-"epN" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/west,
-/turf/open/floor/iron,
-/area/security/prison)
 "epP" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/brown{
@@ -34795,6 +34801,48 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/engineering/storage/tech)
+"esd" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/item/stock_parts/scanning_module{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/stock_parts/scanning_module{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/stock_parts/scanning_module{
+	pixel_x = -5
+	},
+/obj/item/stock_parts/scanning_module{
+	pixel_x = 5
+	},
+/obj/structure/table,
+/obj/machinery/camera{
+	c_tag = "Cargo Bay - Drone Control Room";
+	dir = 1;
+	name = "cargo camera"
+	},
+/obj/item/stock_parts/micro_laser{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/stock_parts/micro_laser{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stock_parts/micro_laser{
+	pixel_x = 2
+	},
+/obj/item/stock_parts/micro_laser{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/floor/iron,
+/area/cargo/warehouse)
 "esy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -37469,6 +37517,16 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
+"fiG" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/camera{
+	c_tag = "Atmospherics - Testing Room Central";
+	name = "atmospherics camera"
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos/upper)
 "fiJ" = (
 /obj/structure/dresser,
 /obj/machinery/status_display/evac/directional/west,
@@ -37698,6 +37756,11 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/sorting)
+"flV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/obj/machinery/rnd/server/master,
+/turf/open/floor/circuit/green/telecomms/mainframe,
+/area/science/server)
 "flZ" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -42851,11 +42914,6 @@
 "gRT" = (
 /turf/open/floor/wood,
 /area/service/theater/abandoned)
-"gRY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/obj/machinery/rnd/server/master,
-/turf/open/floor/circuit/green/telecomms/mainframe,
-/area/science/server)
 "gSi" = (
 /turf/closed/wall/r_wall,
 /area/science/misc_lab)
@@ -43883,14 +43941,6 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
-"hgA" = (
-/obj/machinery/camera{
-	c_tag = "Engineering - Supermatter Room";
-	dir = 4;
-	name = "engineering camera"
-	},
-/turf/open/floor/iron,
-/area/engineering/supermatter/room)
 "hgE" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -44907,48 +44957,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/hallway/primary/central/aft)
-"hut" = (
-/obj/effect/turf_decal/tile/brown{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/brown,
-/obj/item/stock_parts/scanning_module{
-	pixel_x = -5;
-	pixel_y = 7
-	},
-/obj/item/stock_parts/scanning_module{
-	pixel_x = 5;
-	pixel_y = 7
-	},
-/obj/item/stock_parts/scanning_module{
-	pixel_x = -5
-	},
-/obj/item/stock_parts/scanning_module{
-	pixel_x = 5
-	},
-/obj/structure/table,
-/obj/machinery/camera{
-	c_tag = "Cargo Bay - Aft Starboard";
-	dir = 1;
-	name = "cargo camera"
-	},
-/obj/item/stock_parts/micro_laser{
-	pixel_x = -6;
-	pixel_y = 4
-	},
-/obj/item/stock_parts/micro_laser{
-	pixel_x = -2;
-	pixel_y = 2
-	},
-/obj/item/stock_parts/micro_laser{
-	pixel_x = 2
-	},
-/obj/item/stock_parts/micro_laser{
-	pixel_x = 6;
-	pixel_y = -2
-	},
-/turf/open/floor/iron,
-/area/cargo/warehouse)
 "huK" = (
 /obj/effect/landmark/start/scientist,
 /obj/effect/turf_decal/tile/neutral{
@@ -60444,23 +60452,6 @@
 	icon_state = "wood-broken6"
 	},
 /area/service/library/abandoned)
-"lVf" = (
-/obj/machinery/camera{
-	c_tag = "Engineering - Supermatter Room";
-	dir = 8;
-	name = "engineering camera"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/table/reinforced,
-/obj/item/pipe_dispenser,
-/obj/item/pipe_dispenser,
-/obj/item/pipe_dispenser,
-/obj/item/clothing/glasses/meson/engine,
-/obj/item/clothing/glasses/meson/engine,
-/obj/item/clothing/glasses/meson/engine,
-/turf/open/floor/iron,
-/area/engineering/supermatter/room)
 "lVl" = (
 /obj/item/kirbyplants/random,
 /obj/machinery/light/small/directional/south,
@@ -73034,6 +73025,23 @@
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/iron,
 /area/hallway/primary/central/aft)
+"pEm" = (
+/obj/machinery/camera{
+	c_tag = "Engineering - Supermatter Room East";
+	dir = 8;
+	name = "engineering camera"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/table/reinforced,
+/obj/item/pipe_dispenser,
+/obj/item/pipe_dispenser,
+/obj/item/pipe_dispenser,
+/obj/item/clothing/glasses/meson/engine,
+/obj/item/clothing/glasses/meson/engine,
+/obj/item/clothing/glasses/meson/engine,
+/turf/open/floor/iron,
+/area/engineering/supermatter/room)
 "pEq" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -77398,6 +77406,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/corporate_showroom)
+"qNL" = (
+/obj/machinery/camera{
+	c_tag = "Engineering - Supermatter Room West";
+	dir = 4;
+	name = "engineering camera"
+	},
+/turf/open/floor/iron,
+/area/engineering/supermatter/room)
 "qNM" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -79097,17 +79113,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
-"roo" = (
-/obj/machinery/camera{
-	c_tag = "Atmospherics - Testing Room";
-	name = "atmospherics camera"
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow,
-/turf/open/floor/iron,
-/area/engineering/atmos/upper)
 "row" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/south,
 /turf/open/floor/iron/dark,
@@ -94433,16 +94438,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/service/library)
-"vSW" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/camera{
-	c_tag = "Atmospherics - Testing Room";
-	name = "atmospherics camera"
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos/upper)
 "vTf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -121888,7 +121883,7 @@ xPF
 qAm
 rdH
 ogB
-hgA
+qNL
 rdm
 kzh
 jGi
@@ -126002,7 +125997,7 @@ jYB
 jYB
 hdG
 jYB
-lVf
+pEm
 tBF
 kFs
 hQa
@@ -127744,7 +127739,7 @@ awb
 bOc
 awb
 awb
-roo
+aPm
 wLZ
 oXs
 awb
@@ -128250,7 +128245,7 @@ uVq
 mkY
 bEW
 awb
-vSW
+fiG
 nMS
 rAZ
 awb
@@ -136840,7 +136835,7 @@ dEB
 dFR
 dHq
 dIF
-gRY
+flV
 cOR
 dMb
 czP
@@ -142392,7 +142387,7 @@ caQ
 eYU
 apA
 bXT
-hut
+esd
 iZZ
 rKM
 wEL
@@ -153442,7 +153437,7 @@ qYo
 qYo
 aaa
 pff
-epN
+aJA
 reP
 reP
 npH
