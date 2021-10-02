@@ -778,7 +778,6 @@
 		"powerarmor_construct",
 	)
 	design_ids = list(
-		"paupgradespeed",
 		"paupgradelight",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
