@@ -19,8 +19,8 @@
 		/obj/item/reagent_containers/vapecart = 10
 	)
 	contraband = list(
-    	//REMOVAL // /obj/item/clothing/mask/vape = 5,
-    	/obj/item/reagent_containers/vapecart/empty = 5,
+		//REMOVAL // /obj/item/clothing/mask/vape = 5,
+		/obj/item/reagent_containers/vapecart/empty = 5,
 		/obj/item/reagent_containers/vapecart/bluekush = 4,
 		/obj/item/reagent_containers/vapecart/reddiesel = 4,
 		/obj/item/reagent_containers/vapecart/pwrgame = 4,
