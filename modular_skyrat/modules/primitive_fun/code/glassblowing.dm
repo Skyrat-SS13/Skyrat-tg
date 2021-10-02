@@ -1,13 +1,26 @@
+#define TRAIT_GLASSBLOWING_MASTER "glassblowing_master"
+
+/obj/item/skillchip/glassblowing_master
+	name = "Glassblowing Master skillchip"
+	desc = "A master of glass, perhaps even capable of creating life from glass and fire."
+	auto_traits = list(TRAIT_GLASSBLOWING_MASTER)
+	skill_name = "Glass-Blowing Master"
+	skill_description = "Master the ability to use glass within glassblowing."
+	skill_icon = "certificate"
+	activate_message = "<span class='notice'>The faults within the glass are now to be seen.</span>"
+	deactivate_message = "<span class='notice'>Glass becomes more obscured.</span>"
+
 /obj/item/glassblowing
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 
 /obj/item/glassblowing/glass_globe
 	name = "glass globe"
-	desc = "A glass bowl that is capable of carrying things."
-	icon_state = "glass_bowl"
+	desc = "A glass globe that may eventually hold liquids."
+	icon_state = "glass_globe"
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/export/glassblowing
-	cost = 1000
+	cost = 3000
 	unit_name = "glassblowing product"
 	export_types = list(/obj/item/glassblowing/glass_lens,
 						/obj/item/glassblowing/glass_globe,
@@ -20,14 +33,16 @@
 
 /obj/item/glassblowing/glass_lens
 	name = "glass lens"
-	desc = "A glass bowl that is capable of carrying things."
-	icon_state = "glass_bowl"
+	desc = "A glass lens that can magnify."
+	icon_state = "glass_lens"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/bowl/blowing_glass
 	name = "glass bowl"
 	desc = "A glass bowl that is capable of carrying things."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "glass_bowl"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/beaker/large/blowing_glass
 	name = "glass cup"
@@ -35,12 +50,14 @@
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "glass_cup"
 	custom_materials = null
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/plate/blowing_glass
 	name = "glass plate"
 	desc = "A glass plate that is capable of carrying things."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "glass_plate"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/glassblowing/molten_glass
 	name = "molten glass"
@@ -51,6 +68,7 @@
 	var/list/required_actions = list(0,0,0,0,0) //blowing, spinning, paddles, shears, jacks
 	var/list/current_actions = list(0,0,0,0,0)
 	var/chosen_item
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/glassblowing/molten_glass/Initialize()
 	. = ..()
@@ -92,6 +110,7 @@
 	desc = "A tool that is used to hold the molten glass as well as help shape it."
 	icon_state = "blow_pipe_empty"
 	var/in_use = FALSE
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/crafting_recipe/glass_blowing_rod
 	name = "Glass-blowing Blowing Rod"
@@ -142,7 +161,9 @@
 
 /obj/item/glassblowing/blowing_rod/attackby(obj/item/I, mob/living/user, params)
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
-
+	var/actions_time = 5 SECONDS
+	if(HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER))
+		actions_time = 2 SECONDS
 	if(istype(I, /obj/item/glassblowing/molten_glass))
 		if(find_glass)
 			to_chat(user, span_warning("[src] already has some glass on it still!"))
@@ -161,7 +182,7 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actions_time, target = src))
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
@@ -183,7 +204,7 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actions_time, target = src))
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
@@ -205,7 +226,7 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actions_time, target = src))
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
@@ -222,6 +243,9 @@
 
 /obj/item/glassblowing/blowing_rod/attack_self(mob/user, modifiers)
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
+	var/actions_time = 5 SECONDS
+	if(HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER))
+		actions_time = 2 SECONDS
 	if(find_glass)
 		if(find_glass.world_molten < world.time)
 			to_chat(user, span_warning("The glass has cooled down far too much to be handled..."))
@@ -265,7 +289,7 @@
 						in_use = FALSE
 						return
 					to_chat(user, span_notice("You begin blowing [src]."))
-					if(!do_after(user, 5 SECONDS, target = src))
+					if(!do_after(user, actions_time, target = src))
 						to_chat(user, span_warning("You interrupt an action!"))
 						in_use = FALSE
 						return
@@ -281,7 +305,7 @@
 						in_use = FALSE
 						return
 					to_chat(user, span_notice("You begin spinning [src]."))
-					if(!do_after(user, 5 SECONDS, target = src))
+					if(!do_after(user, actions_time, target = src))
 						to_chat(user, span_warning("You interrupt an action!"))
 						in_use = FALSE
 						return
@@ -325,6 +349,7 @@
 	name = "jacks"
 	desc = "A tool that helps shape glass during the art process."
 	icon_state = "jacks"
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/crafting_recipe/glass_jack
 	name = "Glass-blowing Jacks"
@@ -336,6 +361,7 @@
 	name = "paddle"
 	desc = "A tool that helps shape glass during the art process."
 	icon_state = "paddle"
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/crafting_recipe/glass_paddle
 	name = "Glass-blowing Paddle"
@@ -347,6 +373,7 @@
 	name = "shears"
 	desc = "A tool that helps shape glass during the art process."
 	icon_state = "shears"
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/crafting_recipe/glass_shears
 	name = "Glass-blowing Shears"
@@ -359,6 +386,7 @@
 	desc = "A tool that helps shape glass during the art process."
 	icon_state = "metal_cup_empty"
 	var/has_sand = FALSE
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/crafting_recipe/glass_metal_cup
 	name = "Glass-blowing Metal Cup"

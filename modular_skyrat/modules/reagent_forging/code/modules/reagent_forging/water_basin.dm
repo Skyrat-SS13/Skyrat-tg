@@ -6,12 +6,24 @@
 	anchored = TRUE
 	density = TRUE
 
+	var/bluespaced = FALSE
+
 /obj/structure/reagent_water_basin/Initialize()
 	. = ..()
 	if(is_mining_level(z))
 		icon_state = "primitive_water_basin"
 
 /obj/structure/reagent_water_basin/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/stack/ore/bluespace_crystal))
+		if(bluespaced)
+			to_chat(user, span_warning("[src] has already been connected to another ocean, it does not require this again!"))
+			return
+		var/obj/item/stack/try_stack = I
+		if(!try_stack.use(1))
+			to_chat(user, span_warning("[try_stack] is unable to be added to [src], there is an issue!"))
+			return
+		bluespaced = TRUE
+		return
 	if(istype(I, /obj/item/forging/tongs))
 		var/obj/item/forging/incomplete/searchIncomplete = locate(/obj/item/forging/incomplete) in I.contents
 		if(searchIncomplete?.times_hit < searchIncomplete.average_hits)
@@ -30,6 +42,8 @@
 	if(I.tool_behaviour == TOOL_WRENCH)
 		for(var/i in 1 to 5)
 			new /obj/item/stack/sheet/mineral/wood(get_turf(src))
+		if(bluespaced)
+			new /obj/item/stack/ore/bluespace_crystal(get_turf(src))
 		qdel(src)
 		return
 	if(istype(I, /obj/item/stack/ore/glass))

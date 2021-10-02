@@ -501,7 +501,10 @@
 			to_chat(user, span_warning("You feel that setting [ceramic_item] would not yield anything useful!"))
 			return
 		to_chat(user, span_notice("You start setting [ceramic_item]..."))
-		if(!do_after(user, 5 SECONDS, target = src))
+		var/set_time = 5 SECONDS
+		if(HAS_TRAIT(user, TRAIT_CERAMIC_MASTER))
+			set_time = 2 SECONDS
+		if(!do_after(user, set_time, target = src))
 			to_chat(user, span_warning("You stop setting [ceramic_item]!"))
 			return
 		to_chat(user, span_notice("You finish setting [ceramic_item]..."))
@@ -525,13 +528,20 @@
 			to_chat(user, span_warning("[blowing_item] does not have any glass to heat up."))
 			in_use = FALSE
 			return
+		var/looping_amount = 5
+		var/looping_time = 2 SECONDS
+		var/added_molten = 25 SECONDS
+		if(HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER))
+			looping_amount = 3
+			looping_time = 1 SECONDS
+			added_molten = 40 SECONDS
 		to_chat(user, span_notice("You begin heating up [blowing_item]."))
-		for(var/do_loop in 1 to 5) //I really want 10 seconds, but not all at "once," this makes it feel like less time
-			if(!do_after(user, 2 SECONDS, target = src))
+		for(var/do_loop in 1 to looping_amount) //I really want 10 seconds, but not all at "once," this makes it feel like less time
+			if(!do_after(user, looping_time, target = src))
 				to_chat(user, span_warning("[blowing_item] is interrupted in its heating process."))
 				in_use = FALSE
 				return
-		find_glass.world_molten = world.time + 25 SECONDS
+		find_glass.world_molten = world.time + added_molten
 		to_chat(user, span_notice("You finish heating up [blowing_item]."))
 		in_use = FALSE
 		return
@@ -550,13 +560,18 @@
 			to_chat(user, span_warning("You need to be able to use [glass_item]!"))
 			in_use = FALSE
 			return
-		if(!do_after(user, 5 SECONDS, target = src))
+		var/doing_time = 5 SECONDS
+		var/added_molten = 25 SECONDS
+		if(HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER))
+			doing_time = 2 SECONDS
+			added_molten = 40 SECONDS
+		if(!do_after(user, doing_time, target = src))
 			to_chat(user, span_warning("You stop heating up [glass_item]!"))
 			in_use = FALSE
 			return
 		in_use = FALSE
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
-		spawned_glass.world_molten = world.time + 25 SECONDS
+		spawned_glass.world_molten = world.time + added_molten
 		return
 
 	if(istype(I, /obj/item/glassblowing/metal_cup))
@@ -573,7 +588,12 @@
 			to_chat(user, span_warning("There is no sand within [metal_item]!"))
 			in_use = FALSE
 			return
-		if(!do_after(user, 5 SECONDS, target = src))
+		var/doing_time = 5 SECONDS
+		var/added_molten = 25 SECONDS
+		if(HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER))
+			doing_time = 2 SECONDS
+			added_molten = 40 SECONDS
+		if(!do_after(user, doing_time, target = src))
 			to_chat(user, span_warning("You stop heating up [metal_item]!"))
 			in_use = FALSE
 			return
@@ -581,7 +601,7 @@
 		metal_item.has_sand = FALSE
 		metal_item.icon_state = "metal_cup_empty"
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
-		spawned_glass.world_molten = world.time + 25 SECONDS
+		spawned_glass.world_molten = world.time + added_molten
 		return
 
 	return ..()

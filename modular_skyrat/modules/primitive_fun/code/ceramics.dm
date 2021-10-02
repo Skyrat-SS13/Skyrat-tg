@@ -1,3 +1,15 @@
+#define TRAIT_CERAMIC_MASTER "ceramic_master"
+
+/obj/item/skillchip/ceramic_master
+	name = "Ceramic Master skillchip"
+	desc = "A master of clay, perhaps even capable of creating life from clay and fire."
+	auto_traits = list(TRAIT_CERAMIC_MASTER)
+	skill_name = "Ceramic Master"
+	skill_description = "Master the ability to use clay within ceramics."
+	skill_icon = "certificate"
+	activate_message = "<span class='notice'>The faults within the clay are now to be seen.</span>"
+	deactivate_message = "<span class='notice'>Clay becomes more obscured.</span>"
+
 /obj/structure/water_source/puddle/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/glass_item = O
@@ -47,6 +59,7 @@
 	name = "clay"
 	desc = "A pile of clay that can be used to create ceramic artwork."
 	icon_state = "clay"
+	w_class = WEIGHT_CLASS_SMALL
 
 /datum/export/ceramics
 	cost = 1000
@@ -60,29 +73,34 @@
 	desc = "A piece of clay that is flat, in the shape of a plate."
 	icon_state = "clay_plate"
 	forge_item = /obj/item/plate/ceramic
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/plate/ceramic
 	name = "ceramic plate"
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "clay_plate"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ceramic/bowl
 	name =  "ceramic bowl"
 	desc = "A piece of clay with a raised lip, in the shape of a bowl."
 	icon_state = "clay_bowl"
 	forge_item = /obj/item/reagent_containers/glass/bowl/ceramic
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/bowl/ceramic
 	name = "ceramic bowl"
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "clay_bowl"
 	custom_materials = null
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ceramic/cup
 	name = "ceramic cup"
 	desc = "A piece of clay with high walls, in the shape of a cup. It can hold 120 units."
 	icon_state = "clay_cup"
 	forge_item = /obj/item/reagent_containers/glass/beaker/large/ceramic
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/reagent_containers/glass/beaker/large/ceramic
 	name = "ceramic cup"
@@ -90,6 +108,7 @@
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "clay_cup"
 	custom_materials = null
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/structure/throwing_wheel
 	name = "throwing wheel"
@@ -103,6 +122,9 @@
 
 /obj/structure/throwing_wheel/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/ceramic/clay))
+		spinning_speed = 4 SECONDS
+		if(HAS_TRAIT(user, TRAIT_CERAMIC_MASTER))
+			spinning_speed = 2 SECONDS
 		if(length(contents) >= 1)
 			return
 		if(!do_after(user, spinning_speed, target = src))
@@ -120,6 +142,9 @@
 	return ..()
 
 /obj/structure/throwing_wheel/proc/use_clay(spawn_type, mob/user)
+	spinning_speed = 4 SECONDS
+	if(HAS_TRAIT(user, TRAIT_CERAMIC_MASTER))
+		spinning_speed = 2 SECONDS
 	var/given_message = list(
 		"You slowly start spinning the throwing wheel...",
 		"You place your hands on the clay, slowly shaping it...",
@@ -144,6 +169,9 @@
 	if(in_use)
 		return
 	in_use = TRUE
+	spinning_speed = 4 SECONDS
+	if(HAS_TRAIT(user, TRAIT_CERAMIC_MASTER))
+		spinning_speed = 2 SECONDS
 	if(length(contents) >= 1)
 		var/user_input = tgui_alert(user, "What would you like to do?", "Choice Selection", list("Create", "Remove"))
 		if(!user_input)
