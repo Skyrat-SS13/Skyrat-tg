@@ -14,8 +14,7 @@
 		/obj/item/storage/box/matches = 10,
 		/obj/item/lighter/greyscale = 4,
 		/obj/item/storage/fancy/rollingpapers = 5
-		//SKYRAT EDIT START- VAPECARTS
-		/obj/item/clothing/mask/vape = 5,
+		/obj/item/clothing/mask/vape = 5, //SKYRAT EDIT START- VAPECARTS
 		/obj/item/reagent_containers/vapecart = 10
 	)
 	contraband = list(
