@@ -236,6 +236,7 @@
     can_use_alias = TRUE
     any_station_species = TRUE
 
+// Pizza Chefs
 /obj/effect/mob_spawn/human/pizza
 	name = "cryogenics pod"
 	desc = "A humming cryo pod. The machine is attempting to wake up its occupant."
@@ -253,8 +254,6 @@
 	can_use_alias = TRUE
 	any_station_species = TRUE
 
-// Pizza Chefs
-
 /datum/outfit/pizzacook
 	name = "Pizza Cook"
 	uniform = /obj/item/clothing/under/rank/civilian/chef
@@ -262,7 +261,7 @@
 	id = /obj/item/card/id/away/pizza
 	implants = /obj/item/implant/exile/noteleport
 
-//Radio DJs
+//Radio DJ
 
 /obj/effect/mob_spawn/human/radiohost
 	name = "cryogenics pod"
