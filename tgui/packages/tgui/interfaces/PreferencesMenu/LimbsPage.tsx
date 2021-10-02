@@ -145,7 +145,7 @@ export const LimbsPage = (props, context) => {
           <Stack.Item grow>
             <Dropdown
               width="100%"
-              options={Object.values(data.marking_presets)}
+              options={data.marking_presets}
               displayText="Pick a preset:"
               onSelected={(value) => act("set_preset", { preset: value })}
             />
