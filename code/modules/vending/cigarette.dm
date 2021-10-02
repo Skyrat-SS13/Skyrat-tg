@@ -4,7 +4,6 @@
 	product_slogans = "Space cigs taste good like a cigarette should.;I'd rather toolbox than switch.;Smoke!;Don't believe the reports - smoke today!"
 	product_ads = "Probably not bad for you!;Don't believe the scientists!;It's good for you!;Don't quit, buy more!;Smoke!;Nicotine heaven.;Best cigarettes since 2150.;Award-winning cigs."
 	icon_state = "cigs"
-	//SKYRAT EDIT - Added vapes and regular vapecarts to regular products, removed vapes from contraband, and added more vapecarts to contraband
 	products = list(
 		/obj/item/storage/fancy/cigarettes = 5,
 		/obj/item/storage/fancy/cigarettes/cigpack_candy = 4,
@@ -14,18 +13,20 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_midori = 3,
 		/obj/item/storage/box/matches = 10,
 		/obj/item/lighter/greyscale = 4,
-		/obj/item/storage/fancy/rollingpapers = 5
+		/obj/item/storage/fancy/rollingpapers = 5,
+		//SKYRAT EDIT START - VAPECARTS
 		/obj/item/clothing/mask/vape = 5,
 		/obj/item/reagent_containers/vapecart = 10
 	)
 	contraband = list(
+		//SKYRAT REMOVAL - /obj/item/clothing/mask/vape = 5
 		/obj/item/reagent_containers/vapecart/empty = 5,
 		/obj/item/reagent_containers/vapecart/bluekush = 4,
 		/obj/item/reagent_containers/vapecart/reddiesel = 4,
 		/obj/item/reagent_containers/vapecart/pwrgame = 4,
 		/obj/item/reagent_containers/vapecart/cheese = 4
 	)
-	//SKYRAT EDIT END- VAPECARTS
+	//SKYRAT EDIT END - VAPECARTS
 	premium = list(
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 3,
 		/obj/item/storage/box/gum/nicotine = 2,
