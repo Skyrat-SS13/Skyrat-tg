@@ -491,6 +491,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Brown Trenchcoat"
 	item_path = /obj/item/clothing/suit/trenchbrown
 
+/datum/loadout_item/suit/cardigan
+	name = "Cardigan"
+	item_path = /obj/item/clothing/suit/toggle/jacket/cardigan
+
 //Donator sutis here
 /datum/loadout_item/suit/donator
 	donator_only = TRUE
@@ -518,3 +522,4 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/donator/blondie
 	name = "Cowboy Vest"
 	item_path = /obj/item/clothing/suit/cowboyvest
+

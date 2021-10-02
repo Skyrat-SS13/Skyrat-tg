@@ -1,4 +1,4 @@
-/obj/machinery/vending/hydroseeds
+/obj/machinery/vending/hydroseeds //sneed
 	skyrat_products = list(
 		/obj/item/seeds/cocaleaf = 3,
 		/obj/item/seeds/poppy/opiumpoppy = 3,
