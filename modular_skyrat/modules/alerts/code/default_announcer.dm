@@ -21,7 +21,7 @@
 		ANNOUNCER_GRAVANOMALIES= 'modular_skyrat/modules/alerts/sound/ai/default/gravanomalies.ogg',
 		ANNOUNCER_SPANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/wormholes.ogg',
 		ANNOUNCER_VORTEXANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/anomalies.ogg',
-		ANNOUNCER_BSPACEANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/blusp_anomalies.ogg',
+		ANNOUNCER_BSPACEANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/bluesp_anomalies.ogg',
 		ANNOUNCER_MASSIVEBSPACEANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/invasion.ogg',
 		ANNOUNCER_FLUXANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/flux.ogg',
 		ANNOUNCER_PYROANOMALIES = 'modular_skyrat/modules/alerts/sound/ai/default/pyr_anomalies.ogg',
