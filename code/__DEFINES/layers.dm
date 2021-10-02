@@ -22,7 +22,6 @@
 #define GAME_PLANE -4
 
 #define MOUSE_TRANSPARENT_PLANE -3 //SKYRAT EDIT ADDITION - Pollution port
-#define MOUSE_TRANSPARENT_PLANE_RENDER_TARGET "MOUSE_TRANSPARENT_PLANE" //SKYRAT EDIT ADDITION - Pollution port
 
 #define SPACE_LAYER 1.8
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define
