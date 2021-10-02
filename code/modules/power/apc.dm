@@ -275,6 +275,7 @@
 		area.power_equip = FALSE
 		area.power_environ = FALSE
 		area.power_change()
+		area.apc = null
 	QDEL_NULL(alarm_manager)
 	if(occupier)
 		malfvacate(TRUE)
@@ -325,6 +326,11 @@
 
 	if(auto_name)
 		name = "\improper [get_area_name(area, TRUE)] APC"
+
+	if (area)
+		if (area.apc)
+			WARNING("Duplicate APC created at [AREACOORD(src)]")
+		area.apc = src
 
 	update_appearance()
 
@@ -1045,7 +1051,7 @@
 			)                                                            \
 		)
 			if(!loud)
-				to_chat(user, span_danger("\The [src] has eee disabled!"))
+				to_chat(user, span_danger("\The [src] has been disabled!"))
 			return FALSE
 	return TRUE
 
