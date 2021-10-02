@@ -65,6 +65,9 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 		var/atom/movable/movable_content = check_content
 		if(isliving(movable_content))
 			continue
+		for(var/checks_check in movable_content.contents) //I really want to make sure we dont transport living things
+			if(isliving(checks_check))
+				continue
 		if(movable_content.anchored)
 			continue
 		if(!do_after(user, 1 SECONDS, target = target))
