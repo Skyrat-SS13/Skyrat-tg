@@ -441,8 +441,8 @@
 		if(!candidate_mob.key || !candidate_mob.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (candidate_mob.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
 		//SKYRAT EDIT ADDITION BEGIN
-		if(is_banned_from(M.ckey, BAN_GHOST_TAKEOVER))
-			to_chat(M, "There was a ghost prompt for: [Question], unfortunately you are banned from ghost takeovers.")
+		if(is_banned_from(candidate_mob.ckey, BAN_GHOST_TAKEOVER))
+			to_chat(candidate_mob, "There was a ghost prompt for: [question], unfortunately you are banned from ghost takeovers.")
 			continue
 		//SKYRAT EDIT END
 		if(be_special_flag)
