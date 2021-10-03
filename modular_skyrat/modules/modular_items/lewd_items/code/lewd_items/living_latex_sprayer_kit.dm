@@ -11,9 +11,9 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi'
 	icon_state = "latex_box_closed"
 	base_icon_state = "latex_box_closed"
-	inhand_icon_state = "syringe_kit"
-	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
+	inhand_icon_state = "latex_box"
+	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
+	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	//custom_materials = list(/datum/material/cardboard = 2000)
 	w_class = WEIGHT_CLASS_BULKY // We can carry it only in hands
 
