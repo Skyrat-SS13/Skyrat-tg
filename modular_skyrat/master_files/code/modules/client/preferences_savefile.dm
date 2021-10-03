@@ -75,3 +75,24 @@
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
 
+/datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
+	if (!preference.relevant_mutant_bodypart)
+		return
+	var/part = preference.relevant_mutant_bodypart
+	var/value = read_preference(preference)
+	if (!value)
+		return
+	if (istype(preference, /datum/preference/toggle))
+		if (!value)
+			if (part in mutant_bodyparts)
+				mutant_bodyparts -= part
+		else
+			mutant_bodyparts[part] = list()
+			mutant_bodyparts[part][MUTANT_INDEX_NAME] = read_preference(GLOB.preference_entries_by_key["feature_[part]"])
+			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = read_preference(GLOB.preference_entries_by_key["[part]_color"])
+	if (istype(preference, /datum/preference/choiced))
+		if (part in mutant_bodyparts)
+			mutant_bodyparts[part][MUTANT_INDEX_NAME] = value
+	if (istype(preference, /datum/preference/tri_color))
+		if (part in mutant_bodyparts)
+			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = value
