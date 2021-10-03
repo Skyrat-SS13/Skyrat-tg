@@ -108,11 +108,7 @@
 	var/x = round((world.maxx - width) * 0.5) + 1
 	var/y = round((world.maxy - height) * 0.5) + 1
 
-<<<<<<< HEAD
-	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE, ZTRAIT_CENTCOM = TRUE)) //SKYRAT EDIT CHANGE
-=======
 	var/datum/space_level/level = SSmapping.add_new_zlevel(name, secret ? ZTRAITS_AWAY_SECRET : ZTRAITS_AWAY)
->>>>>>> 74be6236d54 (Secret Gateways: Config loaded Away Missions + Anti-observing Z level traits (#61719))
 	var/datum/parsed_map/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=should_place_on_top)
 	var/list/bounds = parsed.bounds
 	if(!bounds)
