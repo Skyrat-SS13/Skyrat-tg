@@ -218,7 +218,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 		var/mob/dead/observer/selected = pick_n_take(candidates)
 		if(!LAZYLEN(candidates))
 			return FALSE
-		target = makeBody(selected)
+		target = make_body(selected)
 		if(!target.mind.active) //SMH people can't be trusted with shit; why would you DISCONNECT RIGHT AFTER BEING SELECTED FOR THE GHOST ROLE???
 			qdel(target)
 			continue
@@ -249,7 +249,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 		var/leader_chosen = FALSE
 		var/datum/team/nuclear/nuke_team
 		for(var/mob/c in chosen)
-			var/mob/living/carbon/human/new_character=makeBody(c)
+			var/mob/living/carbon/human/new_character = make_body(c)
 			if(!leader_chosen)
 				leader_chosen = TRUE
 				var/datum/antagonist/nukeop/N = new_character.mind.add_antag_datum(/datum/antagonist/nukeop/leader)
