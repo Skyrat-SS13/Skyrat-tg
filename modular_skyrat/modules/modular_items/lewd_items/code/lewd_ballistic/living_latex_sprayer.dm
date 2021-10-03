@@ -270,19 +270,11 @@
 				to_chat(user, span_warning("There is already a chip in [src]!"))
 				return
 			else
-				var/area/a = loc.loc // Gets our locations location, like a dream within a dream
-				if(!isarea(a))
+				if(!user.transferItemToLoc(A,src))
 					return
-				if(!user.transferItemToLoc(W,src))
-					//cut_overlay(cell_overlay)
-					//cell_overlay.icon_state = "milking_cell_empty"
-					//update_all_visuals()
-					return
-
-				pin = W
-				//cut_overlay(cell_overlay)
-				//cell_overlay.icon_state = "milking_cell"
-				//add_overlay(cell_overlay)
+				pin = A
+				cut_overlay(module_overlay)
+				add_overlay(module_overlay)
 				user.visible_message(span_notice("[user] inserts a chip into [src]."), span_notice("You insert a chip into [src]."))
 				//update_all_visuals()
 				return
@@ -367,3 +359,242 @@
 /obj/item/gun/wirecutter_act(mob/living/user, obj/item/I)
 	to_chat(user, "You don't see any wires or anything like that.")
 	return
+
+//
+/obj/item/gun/ballistic/revolver/latexpulv/update_icon_state()
+	..()
+	icon_state = "[pulv_state]"
+
+
+
+//
+/obj/item/ammo_casing/latexbin/update_icon_state()
+	..()
+	if(loaded_projectile)
+		icon_state = "[initial(icon_state)]_[latex_bin_states[1]]"
+	else
+		icon_state = "[initial(icon_state)]_[latex_bin_states[2]]"
+
+//
+// /obj/item/ammo_casing/update_desc()
+// 	desc = "[initial(desc)][loaded_projectile ? null : " This one is spent."]"
+// 	return ..()
+
+/obj/item/gun/ballistic/revolver/latexpulv/attack_self(mob/user, modifiers)
+
+	if(LAZYLEN(user.client?.keys_held) > 0 && user.client?.keys_held[1] == "Z")
+		if(pulv_state == "[initial(icon_state)]_[latexsprayerstates[2]]" || pulv_state == "[initial(icon_state)]_[latexsprayerstates[3]]")
+			if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+				return TRUE
+			else
+				return FALSE
+		else
+			user.visible_message("You need to close [src] before take it by two hands.")
+			return FALSE
+
+	if(pulv_state == "[initial(icon_state)]_[latexsprayerstates[1]]")
+		pulv_state = "[initial(icon_state)]_[latexsprayerstates[2]]" // Switch pulv to closed state
+		src.update_icon()
+		update_glass_latex_overlays()
+		return FALSE
+
+	if(pulv_state == "[initial(icon_state)]_[latexsprayerstates[2]]")
+		pulv_state = "[initial(icon_state)]_[latexsprayerstates[1]]" // Switch pulv to opened state
+		src.update_icon()
+		update_glass_latex_overlays()
+		return FALSE
+//
+/obj/item/gun/ballistic/revolver/latexpulv/attack_self_secondary(mob/user, modifiers)
+
+	if(pulv_state == "[initial(icon_state)]_[latexsprayerstates[2]]") // Pulv closed, need to open
+		user.visible_message("You couldn't do anything with [src]... All controls seem to be locked")
+		return
+	if(pulv_state == "[initial(icon_state)]_[latexsprayerstates[3]]") // Pulv handed, need to unwield from twohands
+		user.visible_message("You need to free your hand to interact with [src].")
+		return
+
+	. = ..()
+	if (LAZYACCESS(modifiers, RIGHT_CLICK))
+		if(!internal_magazine && magazine)
+			if(!magazine.ammo_count())
+				eject_magazine(user)
+				update_glass_latex_overlays()
+				return
+		if(bolt_type == BOLT_TYPE_NO_BOLT)
+			chambered = null
+			var/num_unloaded = 0
+			for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
+				CB.forceMove(drop_location())
+				CB.bounce_away(FALSE, NONE)
+				num_unloaded++
+				var/turf/T = get_turf(drop_location())
+				if(T && is_station_level(T.z))
+					SSblackbox.record_feedback("tally", "station_mess_created", 1, CB.name)
+			if (num_unloaded)
+				to_chat(user, span_notice("You unload [num_unloaded] [cartridge_wording]\s from [src]."))
+				playsound(user, eject_sound, eject_sound_volume, eject_sound_vary)
+				update_appearance()
+			else
+				to_chat(user, span_warning("[src] is empty!"))
+				update_glass_latex_overlays()
+			return
+		if(bolt_type == BOLT_TYPE_LOCKING && bolt_locked)
+			drop_bolt(user)
+
+			return
+		if (recent_rack > world.time)
+			return
+		recent_rack = world.time + rack_delay
+		rack(user)
+		return
+
+
+/**
+ * Handles registering the procs when the Living Latex Sprayer is wielded
+ *
+ * Arguments:
+ * * source - The source of the on_wield proc call
+ * * user - The user which is wielding the Living Latex Sprayer
+ */
+/obj/item/gun/ballistic/revolver/latexpulv/proc/on_wield(obj/item/source, mob/user)
+	SIGNAL_HANDLER
+
+	pulv_state = "[initial(icon_state)]_[latexsprayerstates[3]]"
+	update_glass_latex_overlays()
+	//to_chat(user, span_notice("You brace the [src] against the ground in a firm sweeping stance."))
+	//RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/sweep)
+
+/**
+ * Handles unregistering the procs when the Living Latex Sprayer is unwielded
+ *
+ * Arguments:
+ * * source - The source of the on_unwield proc call
+ * * user - The user which is unwielding the Living Latex Sprayer
+ */
+/obj/item/gun/ballistic/revolver/latexpulv/proc/on_unwield(obj/item/source, mob/user)
+	SIGNAL_HANDLER
+
+	pulv_state = "[initial(icon_state)]_[latexsprayerstates[2]]"
+	update_glass_latex_overlays()
+	//UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
+
+/obj/item/ammo_casing/latexbin/ready_proj(atom/target, mob/living/user, quiet, zone_override = "", atom/fired_from)
+	if (!loaded_projectile)
+		return
+	loaded_projectile.original = target
+	loaded_projectile.firer = user
+	loaded_projectile.fired_from = fired_from
+	loaded_projectile.hit_prone_targets = user.combat_mode
+	if (zone_override)
+		loaded_projectile.def_zone = zone_override
+	else
+		loaded_projectile.def_zone = user.zone_selected
+	loaded_projectile.suppressed = quiet
+
+	if(isgun(fired_from))
+		var/obj/item/gun/G = fired_from
+		loaded_projectile.damage *= G.projectile_damage_multiplier
+		loaded_projectile.stamina *= G.projectile_damage_multiplier
+
+	if(reagents && loaded_projectile.reagents)
+		reagents.trans_to(loaded_projectile, reagents.total_volume, transfered_by = user) //For chemical darts/bullets
+		qdel(reagents)
+
+////////////////////////////////////////////////
+/// LIVING LATEX SPRAYER USER MANUAL SECTION ///
+////////////////////////////////////////////////
+//TODO: Это заглушка, нужно оформить мануал как положено
+/obj/item/book/manual/latex_pulv_manual
+	name = "book"
+	icon = 'icons/obj/library.dmi'
+	icon_state ="book"
+	worn_icon_state = "book"
+	desc = "Crack it open, inhale the musk of its pages, and learn something new."
+	throw_speed = 1
+	throw_range = 5
+	w_class = WEIGHT_CLASS_NORMAL  //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
+	attack_verb_continuous = list("bashes", "whacks", "educates")
+	attack_verb_simple = list("bash", "whack", "educate")
+	resistance_flags = FLAMMABLE
+	drop_sound = 'sound/items/handling/book_drop.ogg'
+	pickup_sound =  'sound/items/handling/book_pickup.ogg'
+	//dat //Actual page content
+	//due_date = 0 //Game time in 1/10th seconds
+	//author //Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
+	//unique = FALSE //false - Normal book, true - Should not be treated as normal book, unable to be copied, unable to be modified
+	//title //The real name of the book.
+	//window_size = null // Specific window size for the book, i.e: "1920x1080", Size x Width
+
+/obj/item/book/manual/latex_pulv_manual/Initialize(mapload)
+		. = ..()
+		dat = {"<html>
+				<head>
+				<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+				<style>
+				h1 {font-size: 18px; margin: 15px 0px 5px;}
+				h2 {font-size: 15px; margin: 15px 0px 5px;}
+				li {margin: 2px 0px 2px 15px;}
+				ul {list-style: none; margin: 5px; padding: 0px;}
+				ol {margin: 5px; padding: 0px 15px;}
+				</style>
+				</head>
+				<body>
+				<h3>Growing Humans</h3>
+
+				Why would you want to grow humans? Well, I'm expecting most readers to be in the slave trade, but a few might actually
+				want to revive fallen comrades. Growing pod people is actually quite simple:
+				<p>
+				<ol>
+				<li>Find a dead person who is in need of revival. </li>
+				<li>Take a blood sample with a syringe (samples of their blood taken BEFORE they died will also work). </li>
+				<li>Inject a packet of replica pod seeds (which can be acquired by either mutating cabbages into replica pods (and then harvesting said replica pods) or by purchasing them from certain corporate entities) with the blood sample. </li>
+				<li>It is imperative to understand that injecting the replica pod plant with blood AFTER it has been planted WILL NOT WORK; you have to inject the SEED PACKET, NOT the TRAY. </li>
+				<li>Plant the seeds. </li>
+				<li>Tend to the replica pod's water and nutrition levels until it is time to harvest the podcloned humanoid. </li>
+				<li>Note that if the corpse's mind (or spirit, or soul, or whatever the hell your local chaplain calls it) is already in a new body or has left this plane of existence entirely, you will just receive seed packets upon harvesting the replica pod plant, not a podperson. </li>
+				</ol>
+				<p>
+				It really is that easy! Good luck!
+
+				</body>
+				</html>
+				"}
+
+////////////////////////////////////
+/// LIVING LATEX SPRAYER ENCODER ///
+////////////////////////////////////
+//TODO: это заглушка для программатора. Нужно полностью реализовать предмет
+/obj/item/pda/latex_pulv_encoder
+	name = "\improper living latex sprayer encoder"
+	desc = "Portable Microcomputer Programming Modules for Live Latex Sprayer."
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi'
+	icon_state = "encoder_off"
+
+/obj/item/pda/latex_pulv_encoder/Initialize(mapload)
+	. = ..()
+
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi'
+	icon_state = "encoder_off"
+	base_icon_state = "encoder_off"
+
+
+//////////////////////////////////////
+/// LIVING LATEX DISSOLVER SECTION ///
+//////////////////////////////////////
+//TODO: это заглушка для растворителя живого латекса. Нужно полностью реализовать предмет
+/obj/item/reagent_containers/spray/chemsprayer/living_latex_dissolver
+	name = "living latex dissolver"
+	desc = "Special solvent for live latex. Safe for skin and mucous membranes."
+	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
+	icon_state = "chemsprayer"
+	inhand_icon_state = "chemsprayer"
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+	throwforce = 0
+	w_class = WEIGHT_CLASS_NORMAL
+	stream_mode = 1
+	current_range = 7
+	spray_range = 4
+	stream_range = 7
+	amount_per_transfer_from_this = 10
+	volume = 600
