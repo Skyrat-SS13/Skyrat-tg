@@ -766,17 +766,11 @@
 
 	if(change_icon_to_default)
 		if(status == BODYPART_ORGANIC)
-<<<<<<< HEAD
-			icon = DEFAULT_BODYPART_ICON_ORGANIC
+			icon = icon_greyscale
 			organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		else if(status == BODYPART_ROBOTIC)
-			icon = DEFAULT_BODYPART_ICON_ROBOTIC
-			organic_render = FALSE //SKYRAT EDIT ADDITION - CUSTOMIZATION
-=======
-			icon = icon_greyscale
-		else if(status == BODYPART_ROBOTIC)
 			icon = icon_robotic
->>>>>>> c1fd222c522 (dehardcodes limb icons (#61570))
+			organic_render = FALSE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 	if(owner)
 		owner.updatehealth()
