@@ -6,6 +6,7 @@ const Chaplain: Job = {
   description: "Hold services and funerals, cremate people, preach your \
     religion, protect the crew against cults.",
   department: Service,
+  alt_titles: ["Chaplain", "Priest", "Preacher"],
 };
 
 export default Chaplain;

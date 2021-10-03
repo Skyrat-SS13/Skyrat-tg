@@ -47,6 +47,12 @@ require only minor tweaks.
 #define ZTRAIT_VOIDSTORM "Weather_Voidstorm"
 */
 
+/// boolean - does this z prevent ghosts from observing it
+#define ZTRAIT_SECRET "Secret"
+
+/// boolean - does this z prevent phasing
+#define ZTRAIT_NOPHASE "No Phase"
+
 // number - bombcap is multiplied by this before being applied to bombs
 #define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
 
@@ -70,14 +76,22 @@ require only minor tweaks.
 #define ZTRAIT_BASETURF "Baseturf"
 
 // default trait definitions, used by SSmapping
-#define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)
+///Z level traits for CentCom
+#define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE, ZTRAIT_NOPHASE = TRUE)
+///Z level traits for Space Station 13
 #define ZTRAITS_STATION list(ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_STATION = TRUE) //SKYRAT EDIT CHANGE
+///Z level traits for Deep Space
 #define ZTRAITS_SPACE list(ZTRAIT_LINKAGE = SELFLOOPING, ZTRAIT_SPACE_RUINS = TRUE) //SKYRAT EDIT CHANGE
+///Z level traits for Lavaland
 #define ZTRAITS_LAVALAND list(\
 	ZTRAIT_MINING = TRUE, \
 	ZTRAIT_LAVA_RUINS = TRUE, \
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
 	ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface) //SKYRAT EDIT CHANGE
+///Z level traits for Away Missions
+#define ZTRAITS_AWAY list(ZTRAIT_AWAY = TRUE)
+///Z level traits for Secret Away Missions
+#define ZTRAITS_AWAY_SECRET list(ZTRAIT_AWAY = TRUE, ZTRAIT_SECRET = TRUE, ZTRAIT_NOPHASE = TRUE)
 
 #define DL_NAME "name"
 #define DL_TRAITS "traits"

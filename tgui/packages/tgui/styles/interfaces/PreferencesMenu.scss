@@ -141,10 +141,27 @@ $department_map: (
           border-right: 2px solid rgba(0, 0, 0, 0.3);
           color: black;
 
+          // SKYRAT EDIT START
           > * {
             height: calc(100% + 0.2em);
-            padding-bottom: 0.2em;
           }
+
+          .jobRow {
+            align-items: center;
+            justify-content: center;
+          }
+
+          .options .Button {
+            margin-right: 0.2em;
+            margin-top: 0.2em;
+          }
+
+          .options:last-child .Button {
+            margin-bottom: 0;
+            margin-right: 0.2em;
+            margin-top: 0.2em;
+          }
+          // SKYRAT EDIT END
 
           &:first-child {
             border-top: 2px solid rgba(0, 0, 0, 0.3);
@@ -153,19 +170,27 @@ $department_map: (
           .options {
             background: rgba(0, 0, 0, 0.2);
             height: 100%;
+            // SKYRAT EDIT START
+            text-align: right;
+            align-items: center;
+            justify-content: center;
+            // SKYRAT EDIT END
           }
         }
 
         &--Captain {
           border: 3px solid rgba(200, 200, 0, 1);
+          border-bottom: 0; // SKYRAT EDIT
 
           &:first-child {
             border-top: 3px solid rgba(200, 200, 0, 1);
           }
 
-          .job-name {
-            font-size: 17px;
+          // SKYRAT EDIT START
+          &:last-child {
+            border-bottom: 3px solid rgba(200, 200, 0, 1);
           }
+          // SKYRAT EDIT END
         }
       }
 

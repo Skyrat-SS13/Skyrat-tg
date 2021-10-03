@@ -553,7 +553,10 @@
 	if(!client)
 		return
 	if(stat == DEAD)
-		sight = (SEE_TURFS|SEE_MOBS|SEE_OBJS)
+		if(!SSmapping.level_trait(z, ZTRAIT_SECRET))
+			sight = (SEE_TURFS|SEE_MOBS|SEE_OBJS)
+		else
+			sight = initial(sight)
 		see_in_dark = 8
 		see_invisible = SEE_INVISIBLE_OBSERVER
 		return
@@ -648,6 +651,7 @@
 		hasShrunk = FALSE
 		resize = (4/3)
 		update_transform()
+	hasAffection = FALSE //Just so they can get the affection modules back if they want them.
 	//SKYRAT EDIT ADDITION END
 	logevent("Chassis model has been reset.")
 	model.transform_to(/obj/item/robot_model)

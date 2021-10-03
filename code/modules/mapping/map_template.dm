@@ -109,13 +109,15 @@
 		affected_turf.air_update_turf(TRUE, TRUE)
 		affected_turf.levelupdate()
 
-/datum/map_template/proc/load_new_z()
+/datum/map_template/proc/load_new_z(secret = FALSE)
 	var/x = round((world.maxx - width) * 0.5) + 1
 	var/y = round((world.maxy - height) * 0.5) + 1
+	//SKYRAT EDIT ADDITION
 	var/coordinate_x = rand(5, 25)
 	var/coordinate_y = rand(5, 25)
 	var/datum/overmap_object/linked_overmap_object = new /datum/overmap_object/shuttle/planet/gateway(SSovermap.main_system, coordinate_x, coordinate_y)
-	var/datum/space_level/level = SSmapping.add_new_zlevel(name, list(ZTRAIT_AWAY = TRUE, ZTRAIT_CENTCOM = TRUE), overmap_obj = linked_overmap_object) //SKYRAT EDIT CHANGE
+	var/datum/space_level/level = SSmapping.add_new_zlevel(name, secret ? ZTRAITS_AWAY_SECRET : ZTRAITS_AWAY, overmap_obj = linked_overmap_object)
+	//SKYRAT EDIT END
 	var/datum/parsed_map/parsed = load_map(file(mappath), x, y, level.z_value, no_changeturf=(SSatoms.initialized == INITIALIZATION_INSSATOMS), placeOnTop=should_place_on_top)
 	var/list/bounds = parsed.bounds
 	if(!bounds)
@@ -188,6 +190,9 @@
 
 //for your ever biggening badminnery kevinz000
 //❤ - Cyberboss
-/proc/load_new_z_level(file, name)
-	var/datum/map_template/template = new(file, name)
-	template.load_new_z()
+/proc/load_new_z_level(file, name, secret)
+	var/datum/map_template/template = new(file, name, TRUE)
+	if(!template.cached_map || template.cached_map.check_for_errors())
+		return FALSE
+	template.load_new_z(secret)
+	return TRUE
