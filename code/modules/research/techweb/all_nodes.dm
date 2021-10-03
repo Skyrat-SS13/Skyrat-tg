@@ -1605,14 +1605,9 @@
 		"savannah_ivanov_targ",
 		"savannah_ivanov_torso",
 	)
-<<<<<<< HEAD
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-*/
-=======
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_tiered_scan/tier3_mechbay = 3000)
-
->>>>>>> 31839d0089b (Adds a new type of Experiment Scans: Machinery Scanning (#61640))
+*/
 /datum/techweb_node/adv_mecha_tools
 	id = "adv_mecha_tools"
 	display_name = "Advanced Exosuit Equipment"
