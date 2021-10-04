@@ -582,14 +582,9 @@
 /// LIVING LATEX DISSOLVER SECTION ///
 //////////////////////////////////////
 //TODO: это заглушка для растворителя живого латекса. Нужно полностью реализовать предмет
-/obj/item/reagent_containers/spray/chemsprayer/living_latex_dissolver
+/obj/item/reagent_containers/spray/living_latex_dissolver
 	name = "living latex dissolver"
 	desc = "Special solvent for live latex. Safe for skin and mucous membranes."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
-	icon_state = "chemsprayer"
-	inhand_icon_state = "chemsprayer"
-	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	throwforce = 0
 	w_class = WEIGHT_CLASS_NORMAL
 	stream_mode = 1

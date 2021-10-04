@@ -25,7 +25,7 @@
 	var/obj/item/ammo_casing/latexbin/bin = /obj/item/ammo_casing/latexbin // Stored latex bin
 	var/obj/item/pda/latex_pulv_encoder/encoder = /obj/item/pda/latex_pulv_encoder // Stored encoder
 	var/obj/item/firing_pin/latexpulvmodule/pin = /obj/item/firing_pin/latexpulvmodule // Stored latex module
-	var/obj/item/reagent_containers/spray/chemsprayer/living_latex_dissolver/dissolver = /obj/item/reagent_containers/spray/chemsprayer/living_latex_dissolver // Stored dissolver
+	var/obj/item/reagent_containers/spray/living_latex_dissolver/dissolver = /obj/item/reagent_containers/spray/living_latex_dissolver // Stored dissolver
 
 	//Overlays
 	var/mutable_appearance/note_overlay = null
@@ -95,44 +95,47 @@
 
 	// Checking that the kit is not on the character
 	if(src.loc != user)
-		if(note)
-			user.put_in_hands(note)
-			note.add_fingerprint(user)
-			user.visible_message(span_notice("[user] removes [note] from [src]."), span_notice("You remove [note] from [src]."))
-			note = null
+		if(isopened == TRUE)
+			if(note)
+				user.put_in_hands(note)
+				note.add_fingerprint(user)
+				user.visible_message(span_notice("[user] removes [note] from [src]."), span_notice("You remove [note] from [src]."))
+				note = null
 
-		else if(pulv)
-			user.put_in_hands(pulv)
-			pulv.add_fingerprint(user)
-			user.visible_message(span_notice("[user] removes [pulv] from [src]."), span_notice("You remove [pulv] from [src]."))
-			pulv = null
+			else if(pulv)
+				user.put_in_hands(pulv)
+				pulv.add_fingerprint(user)
+				user.visible_message(span_notice("[user] removes [pulv] from [src]."), span_notice("You remove [pulv] from [src]."))
+				pulv = null
 
-		else if(bin)
-			user.put_in_hands(bin)
-			bin.add_fingerprint(user)
-			user.visible_message(span_notice("[user] removes [bin] from [src]."), span_notice("You remove [bin] from [src]."))
-			bin = null
+			else if(bin)
+				user.put_in_hands(bin)
+				bin.add_fingerprint(user)
+				user.visible_message(span_notice("[user] removes [bin] from [src]."), span_notice("You remove [bin] from [src]."))
+				bin = null
 
-		else if(encoder)
-			user.put_in_hands(encoder)
-			encoder.add_fingerprint(user)
-			user.visible_message(span_notice("[user] removes [encoder] from [src]."), span_notice("You remove [encoder] from [src]."))
-			encoder = null
+			else if(encoder)
+				user.put_in_hands(encoder)
+				encoder.add_fingerprint(user)
+				user.visible_message(span_notice("[user] removes [encoder] from [src]."), span_notice("You remove [encoder] from [src]."))
+				encoder = null
 
-		else if(pin)
-			user.put_in_hands(pin)
-			pin.add_fingerprint(user)
-			user.visible_message(span_notice("[user] removes [pin] from [src]."), span_notice("You remove [pin] from [src]."))
-			pin = null
+			else if(pin)
+				user.put_in_hands(pin)
+				pin.add_fingerprint(user)
+				user.visible_message(span_notice("[user] removes [pin] from [src]."), span_notice("You remove [pin] from [src]."))
+				pin = null
 
-		else if(dissolver)
-			user.put_in_hands(dissolver)
-			dissolver.add_fingerprint(user)
-			user.visible_message(span_notice("[user] removes [dissolver] from [src]."), span_notice("You remove [dissolver] from [src]."))
-			dissolver = null
+			else if(dissolver)
+				user.put_in_hands(dissolver)
+				dissolver.add_fingerprint(user)
+				user.visible_message(span_notice("[user] removes [dissolver] from [src]."), span_notice("You remove [dissolver] from [src]."))
+				dissolver = null
+			else
+				user.visible_message(span_notice("[src] is empty."))
+			update_kit_overlays()
 		else
-			user.visible_message(span_notice("[src] is empty."))
-		update_kit_overlays()
+			to_chat(user, span_warning("You need to open the crate first!"))
 	else
 		. = ..()
 
@@ -150,7 +153,7 @@
 	if(src.loc == user)
 		// Kit is too large to open or hold
 		if(!isopened)
-			user.visible_message("The kit is too big to open by hand ... Try placing it on some surface.")
+			to_chat(user, "The kit is too big to open by hand ... Try placing it on some surface.")
 			return
 	else
 		. = ..()
@@ -161,7 +164,7 @@
 
 	// Checking that the kit is not on the character
 	if(src.loc != user)
-		if(istype(I,/obj/item/reagent_containers/spray/chemsprayer/living_latex_dissolver/))
+		if(istype(I,/obj/item/reagent_containers/spray/living_latex_dissolver))
 			if(!dissolver)
 				if(!user.transferItemToLoc(I,src))
 					return
@@ -169,7 +172,7 @@
 				user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 
 			else
-				user.visible_message(span_notice("[I] already in [src]. No room for one more."))
+				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
 		else if(istype(I,/obj/item/firing_pin/latexpulvmodule/))
@@ -180,10 +183,10 @@
 					pin = I
 					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 				else
-					user.visible_message(span_notice("You need to put the dissolver into the kit, before you can put the chip."))
+					to_chat(user, span_notice("You need to put the dissolver into the kit, before you can put the chip."))
 					return
 			else
-				user.visible_message(span_notice("[I] already in [src]. No room for one more."))
+				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
 		else if(istype(I,/obj/item/pda/latex_pulv_encoder))
@@ -194,10 +197,10 @@
 					encoder = I
 					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 				else
-					user.visible_message(span_notice("You need to put the chip into the kit, before you can put the encoder."))
+					to_chat(user, span_notice("You need to put the chip into the kit, before you can put the encoder."))
 					return
 			else
-				user.visible_message(span_notice("[I] already in [src]. No room for one more."))
+				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
 		else if(istype(I, /obj/item/ammo_casing/latexbin))
@@ -208,10 +211,10 @@
 					bin = I
 					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 				else
-					user.visible_message(span_notice("You need to put the encoder into the kit, before you can put the latex bin."))
+					to_chat(user, span_notice("You need to put the encoder into the kit, before you can put the latex bin."))
 					return
 			else
-				user.visible_message(span_notice("[I] already in [src]. No room for one more."))
+				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
 		else if(istype(I, /obj/item/gun/ballistic/revolver/latexpulv))
@@ -222,10 +225,10 @@
 					pulv = I
 					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 				else
-					user.visible_message(span_notice("You need to put the latex bin into the kit, before you can put the sprayer."))
+					to_chat(user, span_notice("You need to put the latex bin into the kit, before you can put the sprayer."))
 					return
 			else
-				user.visible_message(span_notice("[I] already in [src]. No room for one more."))
+				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
 		else if(istype(I, /obj/item/book/manual/latex_pulv_manual))
@@ -236,13 +239,13 @@
 					note = I
 					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 				else
-					user.visible_message(span_notice("You need to put the sprayer into the kit, before you can put the note."))
+					to_chat(user, span_notice("You need to put the sprayer into the kit, before you can put the note."))
 					return
 			else
-				user.visible_message(span_notice("[I] already in [src]. No room for one more."))
+				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 		else
-			user.visible_message(span_notice("You see no room for [I] in [src]."))
+			to_chat(user, span_notice("You see no room for [I] in [src]."))
 			return
 		update_kit_overlays()
 	else
@@ -260,12 +263,14 @@
 			update_icon_state()
 			update_kit_overlays()
 			user.visible_message("You open [src].", "[user] open [src].")
+			playsound(user, 'sound/machines/crate_open.ogg', 40, TRUE)
 			return
 		else
 			isopened = FALSE
 			update_icon_state()
 			update_kit_overlays()
 			user.visible_message("You close [src].", "[user] close [src].")
+			playsound(user, 'sound/machines/crate_close.ogg', 40, TRUE)
 			return
 	else
 		. = ..()
