@@ -13085,7 +13085,6 @@
 /area/maintenance/starboard/aft)
 "ceX" = (
 /obj/machinery/holopad,
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science/research)
@@ -31540,14 +31539,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ai_monitored/command/nuke_storage)
-"mGC" = (
-/obj/machinery/power/apc/auto_name/west,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/science/research)
 "mGX" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -32638,9 +32629,6 @@
 /area/engineering/supermatter/room)
 "njb" = (
 /obj/effect/turf_decal/trimline/green/filled/corner,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/maintenance/starboard/aft)
@@ -40114,6 +40102,7 @@
 /turf/open/floor/iron/white,
 /area/science/genetics)
 "rAR" = (
+/obj/machinery/airalarm/directional/west,
 /obj/structure/table,
 /turf/open/floor/iron/freezer,
 /area/service/kitchen/coldroom)
@@ -41192,6 +41181,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/construction/mining/aux_base)
+"shj" = (
+/obj/machinery/power/rad_collector/anchored,
+/obj/structure/window/reinforced/plasma{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "shw" = (
 /obj/structure/table/reinforced,
 /obj/item/radio/intercom/directional/south,
@@ -41688,7 +41686,6 @@
 	id = "rnd2";
 	name = "research lab shutters"
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/white/side{
 	dir = 9
 	},
@@ -41768,7 +41765,9 @@
 /area/engineering/supermatter/room)
 "syN" = (
 /obj/machinery/power/rad_collector/anchored,
-/obj/structure/window/reinforced/plasma,
+/obj/structure/window/reinforced/plasma{
+	dir = 4
+	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /turf/open/floor/engine,
@@ -49796,10 +49795,6 @@
 /obj/item/wirecutters,
 /turf/open/floor/iron,
 /area/commons/vacant_room/commissary)
-"wZy" = (
-/obj/structure/cable,
-/turf/open/floor/iron/white,
-/area/science/research)
 "wZJ" = (
 /obj/structure/table/glass,
 /obj/item/restraints/handcuffs/cable/zipties,
@@ -50915,7 +50910,6 @@
 /obj/structure/sink/kitchen{
 	pixel_y = 24
 	},
-/obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/service/kitchen/coldroom)
 "xHC" = (
@@ -81470,9 +81464,9 @@ uHy
 hua
 mWg
 lPn
-syN
-syN
-syN
+shj
+shj
+shj
 hua
 cIT
 cfZ
@@ -98124,8 +98118,8 @@ blX
 wZe
 dhn
 bsZ
-wZy
-wZy
+bWr
+bWr
 ceX
 bvg
 bDm
@@ -98381,7 +98375,7 @@ bvx
 sxn
 bpX
 uIv
-bta
+bBD
 cnK
 bvH
 bvf
@@ -98895,8 +98889,8 @@ bpf
 iEK
 bpZ
 uIv
-bta
-mGC
+bBD
+gLd
 nhP
 sDW
 eja
