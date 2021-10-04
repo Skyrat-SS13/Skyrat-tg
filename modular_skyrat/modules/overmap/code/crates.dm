@@ -26,3 +26,7 @@
 /obj/structure/closet/crate/large/air_can/PopulateContents()
 	. = ..()
 	new /obj/machinery/portable_atmospherics/canister/air(src)
+
+/obj/structure/closet/crate/large/air_can/PopulateContents()
+	. = ..()
+	new /obj/machinery/portable_atmospherics/canister/air(src)
