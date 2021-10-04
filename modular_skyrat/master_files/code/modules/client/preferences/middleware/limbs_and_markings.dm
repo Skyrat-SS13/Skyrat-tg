@@ -225,19 +225,6 @@
 
 	data["organs_data"] = organs_data
 
-	var/list/presets = GLOB.body_marking_sets.Copy()
-	if (!preferences.mismatched_customization)
-		for (var/name in presets)
-			var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
-			var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
-			to_chat(usr, "[ispath(species)]")
-			to_chat(usr, "[species]")
-			if (!species)
-				presets -= name
-				continue
-			if (BMS.recommended_species && !(initial(species.id) in BMS.recommended_species))
-				to_chat(usr, "[initial(species.id)]")
-				presets -= name
-	data["marking_presets"] = presets
+	data["marking_presets"] = GLOB.body_marking_sets.Copy()
 
 	return data
