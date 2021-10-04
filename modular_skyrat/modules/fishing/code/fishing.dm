@@ -1,98 +1,134 @@
+//when someone casts their fishing rod
+#define COMSIG_START_FISHING "start_fishing"
+//when someone pulls back their fishing rod
+#define COMSIG_FINISH_FISHING "finish_fishing"
+
+//to determine if someone is a fishing master, or not
+#define TRAIT_FISHING_MASTER "fishing_master"
+
 GLOBAL_LIST_INIT(fishing_weights, list(
 	/obj/item/stack/ore/diamond = 1,
 	/obj/item/stack/ore/bluespace_crystal = 1,
-	/obj/item/stack/ore/gold = 3,
-	/obj/item/stack/ore/uranium = 3,
-	/obj/item/stack/ore/titanium = 3,
-	/obj/item/stack/ore/silver = 5,
-	/obj/item/stack/ore/iron = 5,
-	/obj/item/xenoarch/strange_rock = 5,
+	/obj/item/stack/ore/gold = 1,
+	/obj/item/stack/ore/uranium = 1,
+	/obj/item/stack/ore/titanium = 1,
+	/obj/item/stack/ore/silver = 1,
+	/obj/item/stack/ore/iron = 1,
+	/obj/item/xenoarch/strange_rock = 10,
 ))
 
-/turf/open
-	///If fishes are able to be fished from this open turf
-	var/fishspawn_possible = FALSE
+/datum/component/fishing
+	///the list of possible loot you can get from successfully fishing from this
+	var/list/possible_loot = list()
+	///whether this should generate fish when successfully fishing from this
+	var/generate_fish = FALSE
+	//the starting window for when to reel back in (too early before this)
+	COOLDOWN_DECLARE(start_fishing_window)
+	//the closing window for when to reel back in (too late past this)
+	COOLDOWN_DECLARE(stop_fishing_window)
+	///the timer for playing the sound for when to reel back in
+	var/reel_sound_timer
+	///to modify the parent with a bobber icon
+	var/mutable_appearance/mutate_parent
+	var/atom/atom_parent
 
-//water will have ores and fish
-/turf/open/water
-	fishspawn_possible = TRUE
+/datum/component/fishing/Initialize(list/set_loot, allow_fishes = FALSE)
+	if(!isatom(parent))
+		return COMPONENT_INCOMPATIBLE
+	atom_parent = parent
+	if(set_loot)
+		possible_loot = set_loot
+	if(allow_fishes)
+		generate_fish = TRUE
+	RegisterSignal(parent, COMSIG_START_FISHING, .proc/start_fishing)
+	RegisterSignal(parent, COMSIG_FINISH_FISHING, .proc/finish_fishing)
 
-/turf/open/water/lava_land_surface
-	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
-	planetary_atmos = TRUE
-	baseturfs = /turf/open/water/lava_land_surface
+/datum/component/fishing/Destroy(force, silent)
+	UnregisterSignal(parent, COMSIG_START_FISHING)
+	UnregisterSignal(parent, COMSIG_FINISH_FISHING)
+	if(reel_sound_timer)
+		deltimer(reel_sound_timer)
+	return ..()
+
+/datum/component/fishing/proc/start_fishing()
+	var/random_fish_time = rand(3 SECONDS, 6 SECONDS)
+	COOLDOWN_START(src, start_fishing_window, random_fish_time)
+	COOLDOWN_START(src, stop_fishing_window, random_fish_time + 2 SECONDS)
+	if(reel_sound_timer)
+		deltimer(reel_sound_timer)
+	if(mutate_parent)
+		atom_parent.cut_overlay(mutate_parent)
+		QDEL_NULL(mutate_parent)
+	reel_sound_timer = addtimer(CALLBACK(src, .proc/reel_sound), random_fish_time, TIMER_STOPPABLE)
+	mutate_parent = mutable_appearance(icon = 'modular_skyrat/modules/fishing/icons/fishing.dmi', icon_state = "bobber")
+	atom_parent.add_overlay(mutate_parent)
+
+//rather than making a visual change, create a sound to reel back in
+/datum/component/fishing/proc/reel_sound()
+	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
+
+/datum/component/fishing/proc/finish_fishing(atom/fisher = null, master_involved = FALSE)
+	if(reel_sound_timer)
+		deltimer(reel_sound_timer)
+	if(mutate_parent)
+		atom_parent.cut_overlay(mutate_parent)
+		QDEL_NULL(mutate_parent)
+	if(!fisher)
+		return
+	if(COOLDOWN_FINISHED(src, start_fishing_window) && !COOLDOWN_FINISHED(src, stop_fishing_window))
+		var/turf/fisher_turf = get_turf(fisher)
+		create_reward(fisher_turf)
+		if(master_involved)
+			create_reward(fisher_turf)
+
+/datum/component/fishing/proc/create_reward(turf/spawning_turf)
+	if(generate_fish)
+		generate_fish(spawning_turf, random_fish_type())
+	var/atom/spawning_reward = pickweight(possible_loot)
+	new spawning_reward(spawning_turf)
+	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
+	if(prob(1))
+		new /obj/item/skillchip/fishing_master(spawning_turf)
+
+/turf/open/water/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
+
+/turf/open/lava/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = FALSE)
+
+/obj/item/skillchip/fishing_master
+	name = "Fishing Master skillchip"
+	desc = "A master of fishing, capable of wrangling the whole ocean if we must."
+	auto_traits = list(TRAIT_FISHING_MASTER)
+	skill_name = "Fishing Master"
+	skill_description = "Master the ability to fish."
+	skill_icon = "certificate"
+	activate_message = "<span class='notice'>The fish and junk become far more visible beneath the surface.</span>"
+	deactivate_message = "<span class='notice'>The surface begins to cloud up, making it hard to see beneath.</span>"
 
 /obj/item/fishing_rod
 	name = "fishing rod"
-	desc = "A rod that allows you to fish."
+	desc = "A wonderful item that can be used to fish from bodies of liquids."
 	icon = 'modular_skyrat/modules/fishing/icons/fishing.dmi'
 	icon_state = "normal_rod"
 	inhand_icon_state = "normal_rod"
 	lefthand_file = 'modular_skyrat/modules/fishing/icons/fishing_left.dmi'
 	righthand_file = 'modular_skyrat/modules/fishing/icons/fishing_right.dmi'
-	//normal_rod and lava_rod
-	///which turfs are allowed within that rod type
-	var/list/allowed_fishing_turfs = list()
-	///the current turf in which the fishing rod is after
-	var/turf/open/fishing_spot
-	var/allowed_fishing
+	///the target that is currently being fished from
+	var/atom/target_atom
+	///the mob that picked up/equiped the rod and will be listened to
 	var/mob/listening_to
-	var/obj/effect/fishing_bobber/spawned_bobber
 
 /obj/item/fishing_rod/Destroy()
-	if(fishing_spot)
-		fishing_spot = null
-	if(spawned_bobber)
-		QDEL_NULL(spawned_bobber)
 	if(listening_to)
 		UnregisterSignal(listening_to, COMSIG_MOVABLE_MOVED)
 		listening_to = null
-	. = ..()
-
-
-/obj/item/fishing_rod/water_rod
-	allowed_fishing_turfs = list(/turf/open/water)
-
-/datum/crafting_recipe/water_rod
-	name = "Water Fishing Rod"
-	result = /obj/item/fishing_rod/water_rod
-	reqs = list(/obj/item/stack/rods = 2,
-				/obj/item/stack/cable_coil = 2)
-	category = CAT_MISC
-
-/obj/item/fishing_rod/lava_rod
-	icon_state = "lava_rod"
-	inhand_icon_state = "lava_rod"
-	allowed_fishing_turfs = list(/turf/open/lava)
-
-/datum/crafting_recipe/lava_rod
-	name = "Lava Fishing Rod"
-	result = /obj/item/fishing_rod/lava_rod
-	reqs = list(/obj/item/stack/sheet/animalhide/goliath_hide = 2,
-				/obj/item/stack/sheet/sinew = 2)
-	category = CAT_MISC
-
-/obj/item/fishing_rod/admin_rod
-	allowed_fishing_turfs = list(/turf/open/water, /turf/open/lava)
-
-/obj/effect/fishing_bobber
-	name = "fishing bobber"
-	desc = "A tool that bobs in the water to help bait things."
-	icon = 'modular_skyrat/modules/fishing/icons/fishing.dmi'
-	icon_state = "bobber"
-	var/timed_fishing
-
-/obj/effect/fishing_bobber/Initialize(mapload)
-	. = ..()
-	START_PROCESSING(SSobj, src)
-
-/obj/effect/fishing_bobber/Destroy(force)
-	STOP_PROCESSING(SSobj, src)
-	. = ..()
-
-/obj/effect/fishing_bobber/process(delta_time)
-	if(world.time > timed_fishing && world.time < timed_fishing + 2 SECONDS)
-		pixel_y = pick(-2,2)
+	if(target_atom)
+		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
+		target_atom = null
+	return ..()
 
 /obj/item/fishing_rod/equipped(mob/user, slot, initial)
 	. = ..()
@@ -100,8 +136,9 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		return
 	if(listening_to)
 		UnregisterSignal(listening_to, COMSIG_MOVABLE_MOVED)
-		fishing_spot = null
-		allowed_fishing = 0
+	if(target_atom)
+		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
+		target_atom = null
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/check_movement)
 	listening_to = user
 
@@ -110,52 +147,47 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	if(listening_to)
 		UnregisterSignal(listening_to, COMSIG_MOVABLE_MOVED)
 		listening_to = null
-	fishing_spot = null
-	QDEL_NULL(spawned_bobber)
-	allowed_fishing = 0
+	if(target_atom)
+		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
+		target_atom = null
 
 /obj/item/fishing_rod/proc/check_movement()
 	if(!listening_to)
 		return
-	if(!fishing_spot)
+	if(!target_atom)
 		return
-	if(get_dist(fishing_spot, listening_to) >= 4)
-		fishing_spot = null
-		QDEL_NULL(spawned_bobber)
-		allowed_fishing = 0
+	if(get_dist(target_atom, listening_to) >= 4)
+		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
 
 /obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(fishing_spot)
-		if(world.time < allowed_fishing || world.time > allowed_fishing + 2 SECONDS)
-			to_chat(user, span_warning("You feel back [src] to reveal nothing..."))
-			fishing_spot = null
-			QDEL_NULL(spawned_bobber)
+	if(get_dist(target, user) >= 4)
+		return
+	if(target_atom)
+		if(HAS_TRAIT(user, TRAIT_FISHING_MASTER))
+			SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src, master_involved = TRUE)
+			target_atom = null
 			return
-		to_chat(user, span_notice("You reel back [src], catching something..."))
-		if(fishing_spot.fishspawn_possible)
-			var/pick_choose = rand(1, 3)
-			switch(pick_choose)
-				if(1)
-					generate_fish(get_turf(user), random_fish_type())
-				if(2 to 3)
-					var/obj/spawn_objone = pickweight(GLOB.fishing_weights)
-					new spawn_objone(get_turf(user))
-			fishing_spot = null
-			QDEL_NULL(spawned_bobber)
-			return
-		var/obj/spawn_objtwo = pickweight(GLOB.fishing_weights)
-		new spawn_objtwo(get_turf(user))
-		fishing_spot = null
-		QDEL_NULL(spawned_bobber)
+		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
+		target_atom = null
 		return
-	if(!is_type_in_list(target, allowed_fishing_turfs))
-		return
-	var/turf/open/open_turf = target
-	if(get_dist(target, user) >= 4) //not using proximity because I want you to be able to cast the line
-		return
-	to_chat(user, span_notice("You throw out the line to [open_turf]..."))
-	var/choose_timer = (rand(3, 7)) SECONDS
-	allowed_fishing = world.time + choose_timer
-	fishing_spot = open_turf
-	spawned_bobber =  new /obj/effect/fishing_bobber(open_turf)
-	spawned_bobber.timed_fishing = allowed_fishing
+	var/check_fishable = target.GetComponent(/datum/component/fishing)
+	if(!check_fishable)
+		return ..()
+	target_atom = target
+	if(ismovable(target_atom))
+		RegisterSignal(target_atom, COMSIG_MOVABLE_MOVED, .proc/check_movement, override = TRUE)
+	SEND_SIGNAL(target_atom, COMSIG_START_FISHING)
+
+/datum/crafting_recipe/fishing_rod
+	name = "Primitive Fishing Rod"
+	result = /obj/item/fishing_rod
+	reqs = list(/obj/item/stack/sheet/animalhide/goliath_hide = 2,
+				/obj/item/stack/sheet/sinew = 2)
+	category = CAT_MISC
+
+/datum/crafting_recipe/fishing_rod
+	name = "Fishing Rod"
+	result = /obj/item/fishing_rod
+	reqs = list(/obj/item/stack/rods = 2,
+				/obj/item/stack/cable_coil = 2)
+	category = CAT_MISC
