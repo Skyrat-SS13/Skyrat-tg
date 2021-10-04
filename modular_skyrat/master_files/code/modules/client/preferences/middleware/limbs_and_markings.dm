@@ -230,7 +230,7 @@
 		for (var/name in presets)
 			var/datum/body_marking_set/BMS = presets[name]
 			var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
-			if (BMS.recommended_species && !(initial(species.id) in BMS.recommended_species))
+			if (BMS.recommended_species && !(initial(species_type.id) in BMS.recommended_species))
 				presets -= name
 
 	data["marking_presets"] = presets
