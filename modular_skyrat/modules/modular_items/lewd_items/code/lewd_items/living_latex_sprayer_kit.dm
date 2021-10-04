@@ -25,7 +25,7 @@
 	var/obj/item/ammo_casing/latexbin/bin = /obj/item/ammo_casing/latexbin // Stored latex bin
 	var/obj/item/pda/latex_pulv_encoder/encoder = /obj/item/pda/latex_pulv_encoder // Stored encoder
 	var/obj/item/firing_pin/latexpulvmodule/pin = /obj/item/firing_pin/latexpulvmodule // Stored latex module
-	var/obj/item/reagent_containers/spray/living_latex_dissolver/dissolver = /obj/item/reagent_containers/spray/living_latex_dissolver // Stored dissolver
+	var/obj/item/reagent_containers/spray/livinglatexdissolver/dissolver = /obj/item/reagent_containers/spray/livinglatexdissolver // Stored dissolver
 
 	//Overlays
 	var/mutable_appearance/note_overlay = null
@@ -164,7 +164,7 @@
 
 	// Checking that the kit is not on the character
 	if(src.loc != user)
-		if(istype(I,/obj/item/reagent_containers/spray/living_latex_dissolver))
+		if(istype(I, /obj/item/reagent_containers/spray/livinglatexdissolver))
 			if(!dissolver)
 				if(!user.transferItemToLoc(I,src))
 					return

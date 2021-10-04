@@ -10,6 +10,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -24,6 +25,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -40,6 +42,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -54,6 +57,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -69,6 +73,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -82,6 +87,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -96,6 +102,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -111,6 +118,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -125,6 +133,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -142,6 +151,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -156,6 +166,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -173,6 +184,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -196,6 +208,7 @@
 	// worn_icon_taur_hoof = ''
 	// worn_icon_taur_paw = ''
 	// worn_icon_taur_snake = ''
+	custom_materials = list(/datum/material/livinglatex = 500)
 	slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS
 	var/mutantrace_variation = NO_MUTANTRACE_VARIATION
 
@@ -214,6 +227,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -230,6 +244,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -244,6 +259,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -260,6 +276,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
@@ -274,6 +291,7 @@
 	desc = ""
 	icon_state = ""
 	inhand_icon_state = ""
+	custom_materials = list(/datum/material/livinglatex = 500)
 	// icon = ''
 	// worn_icon = ''
 	// worn_icon_digi = ''
