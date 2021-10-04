@@ -79,8 +79,8 @@
 	if (!preference.relevant_mutant_bodypart)
 		return
 	var/part = preference.relevant_mutant_bodypart
-	var/value = read_preference(preference)
-	if (!value)
+	var/value = read_preference(preference.type)
+	if (isnull(value))
 		return
 	if (istype(preference, /datum/preference/toggle))
 		if (!value)
@@ -88,8 +88,8 @@
 				mutant_bodyparts -= part
 		else
 			mutant_bodyparts[part] = list()
-			mutant_bodyparts[part][MUTANT_INDEX_NAME] = read_preference(GLOB.preference_entries_by_key["feature_[part]"])
-			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = read_preference(GLOB.preference_entries_by_key["[part]_color"])
+			mutant_bodyparts[part][MUTANT_INDEX_NAME] = read_preference(GLOB.preference_entries_by_key["feature_[part]"].type)
+			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = read_preference(GLOB.preference_entries_by_key["[part]_color"].type)
 	if (istype(preference, /datum/preference/choiced))
 		if (part in mutant_bodyparts)
 			mutant_bodyparts[part][MUTANT_INDEX_NAME] = value
