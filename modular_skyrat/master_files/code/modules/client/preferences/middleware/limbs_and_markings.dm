@@ -225,6 +225,14 @@
 
 	data["organs_data"] = organs_data
 
-	data["marking_presets"] = GLOB.body_marking_sets.Copy()
+	var/list/presets = GLOB.body_marking_sets.Copy()
+	if (!preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
+		for (var/name in presets)
+			var/datum/body_marking_set/BMS = presets[name]
+			var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
+			if (BMS.recommended_species && !(initial(species.id) in BMS.recommended_species))
+				presets -= name
+
+	data["marking_presets"] = presets
 
 	return data
