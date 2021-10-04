@@ -106,6 +106,8 @@
 	ignore += typesof(/obj/structure/biohazard_blob)
 	//Unused - not supposed to be spawned without SSliquids
 	ignore += typesof(/turf/open/openspace/ocean)
+	//Fireplumes delete themselves, not supposed to be deleted. Causes runtimes.
+	ignore += typesof(/obj/effect/abstract/fireplume)
 	//SKYRAT EDIT END
 
 	var/list/cached_contents = spawn_at.contents.Copy()
