@@ -17312,6 +17312,9 @@
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
+/obj/machinery/posialert{
+	pixel_x = -32
+	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "bhC" = (
@@ -38127,7 +38130,7 @@
 /turf/open/floor/iron,
 /area/security/courtroom)
 "dFv" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
@@ -39135,7 +39138,7 @@
 	},
 /area/maintenance/port/aft)
 "ehf" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/maintenance/disposal/incinerator)
 "ehz" = (
@@ -42997,7 +43000,6 @@
 /turf/open/floor/iron/showroomfloor,
 /area/security/warden)
 "fOZ" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -43013,6 +43015,7 @@
 	dir = 4;
 	name = "command camera"
 	},
+/obj/machinery/vending/access/command,
 /turf/open/floor/iron,
 /area/command/bridge)
 "fPq" = (
@@ -48410,7 +48413,7 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/aisat/atmos)
 "iyz" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/engineering/supermatter/room)
 "iyA" = (
@@ -49339,6 +49342,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
+"iSF" = (
+/obj/machinery/rnd/server/master,
+/turf/open/floor/circuit/green/telecomms/mainframe,
+/area/science/server)
 "iSG" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -54392,11 +54399,9 @@
 /area/hallway/primary/fore)
 "kVo" = (
 /obj/machinery/power/rad_collector/anchored,
-/obj/structure/window/plasma/reinforced{
-	dir = 4
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/structure/window/reinforced/plasma/spawner/east,
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
@@ -57369,6 +57374,11 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/starboard)
+"mtz" = (
+/obj/structure/cable,
+/obj/machinery/cryopod,
+/turf/open/floor/plating,
+/area/security/prison)
 "mtA" = (
 /obj/machinery/porta_turret/ai{
 	dir = 4
@@ -61683,6 +61693,10 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/machinery/light_switch/directional/north,
+/obj/machinery/posialert{
+	pixel_x = 28;
+	pixel_y = 24
+	},
 /turf/open/floor/iron/dark,
 /area/science/robotics/lab)
 "oub" = (
@@ -61897,7 +61911,7 @@
 /turf/open/floor/iron/dark,
 /area/maintenance/port)
 "oAn" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction{
 	dir = 8
 	},
@@ -63392,7 +63406,7 @@
 	},
 /area/ai_monitored/command/storage/satellite)
 "pim" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
 /turf/open/floor/plating/airless,
 /area/engineering/main)
@@ -65641,11 +65655,11 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/delivery,
 /obj/structure/sign/poster/official/no_erp{
 	pixel_y = -32
 	},
+/obj/machinery/vending/dorms,
 /turf/open/floor/iron/dark,
 /area/commons/locker)
 "qcN" = (
@@ -68794,11 +68808,9 @@
 /area/cargo/warehouse)
 "rzN" = (
 /obj/machinery/power/rad_collector/anchored,
-/obj/structure/window/plasma/reinforced{
-	dir = 8
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/structure/window/reinforced/plasma/spawner/west,
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
@@ -72286,7 +72298,7 @@
 /turf/open/floor/plating,
 /area/engineering/break_room)
 "tjq" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/plating,
 /area/engineering/supermatter/room)
@@ -72432,7 +72444,7 @@
 /turf/open/floor/iron/dark/corner,
 /area/hallway/primary/port)
 "tmq" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "tmu" = (
@@ -80673,7 +80685,7 @@
 /turf/open/floor/iron/dark,
 /area/command/bridge)
 "wTq" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/engineering/supermatter)
 "wTC" = (
@@ -82287,6 +82299,13 @@
 	c_tag = "Prison Cells";
 	dir = 4;
 	network = list("ss13","prison")
+	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/cryopod{
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/security/prison)
@@ -90134,7 +90153,7 @@ aeu
 aeU
 aeU
 anu
-cTl
+mtz
 qKa
 iig
 qKa
@@ -122990,7 +123009,7 @@ aim
 bkd
 cNa
 gVB
-baJ
+iSF
 bcz
 baJ
 iOj
