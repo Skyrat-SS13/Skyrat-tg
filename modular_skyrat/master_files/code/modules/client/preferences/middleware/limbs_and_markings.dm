@@ -230,7 +230,10 @@
 		for (var/name in presets)
 			var/datum/body_marking_set/BMS = GLOB.body_marking_sets[name]
 			var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
-			if (!species?.id || (BMS.recommended_species && !(species.id in BMS.recommended_species)))
+			if (!species)
+				presets -= name
+				continue
+			if (BMS.recommended_species && !(initial(species.id) in BMS.recommended_species))
 				presets -= name
 	data["marking_presets"] = presets
 
