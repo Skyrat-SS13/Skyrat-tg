@@ -62,6 +62,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/new_renderkey = "[id]"
 
 	for(var/key in mutant_bodyparts)
+		if (!islist(mutant_bodyparts[key]))
+			continue
 		var/datum/sprite_accessory/S = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(!S || S.icon_state == "none")
 			continue
@@ -547,6 +549,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	. = ..()
 	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
 	for(var/key in C.dna.mutant_bodyparts)
+		if (!islist(C.dna.mutant_bodyparts[key]))
+			continue
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type

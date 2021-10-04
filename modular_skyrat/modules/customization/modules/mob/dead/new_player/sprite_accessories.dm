@@ -227,7 +227,7 @@
 	name = "Thigh-high - Fishnet"
 	icon_state = "fishnet"
 
-/datum/sprite_accessory/socks/fishnet_thigh
+/datum/sprite_accessory/socks/pantyhose_ripped
 	name = "Pantyhose - Ripped"
 	icon_state = "pantyhose_ripped"
 	use_static = null

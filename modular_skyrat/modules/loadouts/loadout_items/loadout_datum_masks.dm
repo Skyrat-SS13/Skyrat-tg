@@ -66,6 +66,10 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Plague Doctor Mask"
 	item_path = /obj/item/clothing/mask/gas/plaguedoctor
 
+/datum/loadout_item/head/monky
+	name = "Monkey Mask"
+	item_path = /obj/item/clothing/mask/gas/monkeymask
+
 /datum/loadout_item/mask/joy
 	name = "Joy Mask"
 	item_path = /obj/item/clothing/mask/joy

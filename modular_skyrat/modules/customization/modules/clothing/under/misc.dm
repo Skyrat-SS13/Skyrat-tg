@@ -636,3 +636,11 @@
 	inhand_icon_state = "b_suit"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
+
+/obj/item/clothing/under/rank/captain/kilt
+	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
+	name = "captain's kilt"
+	icon_state = "capkilt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	inhand_icon_state = "kilt"

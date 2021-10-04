@@ -11,6 +11,7 @@
 		"color_marking" = .proc/color_marking,
 		"remove_marking" = .proc/remove_marking,
 		"set_organ_aug" = .proc/set_organ_aug,
+		"set_preset" = .proc/set_preset,
 	)
 	var/list/limbs_to_process = list(
 		"l_arm" = "Left Arm",
@@ -157,6 +158,14 @@
 	preferences.character_preview_view.update_body()
 	return TRUE
 
+/datum/preference_middleware/limbs_and_markings/proc/set_preset(list/params, mob/user)
+	var/preset = params["preset"]
+	if (preset)
+		var/datum/body_marking_set/BMS = GLOB.body_marking_sets[preset]
+		preferences.body_markings = assemble_body_markings_from_set(BMS, preferences.features, preferences.pref_species)
+	preferences.character_preview_view.update_body()
+	return TRUE
+
 /datum/preference_middleware/limbs_and_markings/get_ui_data(mob/user)
 	var/list/data = list()
 	if(!robotic_styles)
@@ -215,5 +224,15 @@
 		))
 
 	data["organs_data"] = organs_data
+
+	var/list/presets = GLOB.body_marking_sets.Copy()
+	if (!preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts))
+		for (var/name in presets)
+			var/datum/body_marking_set/BMS = presets[name]
+			var/datum/species/species_type = preferences.read_preference(/datum/preference/choiced/species)
+			if (BMS.recommended_species && !(initial(species_type.id) in BMS.recommended_species))
+				presets -= name
+
+	data["marking_presets"] = presets
 
 	return data
