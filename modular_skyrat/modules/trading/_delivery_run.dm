@@ -143,8 +143,9 @@
 /obj/item/delivery_cargo/Initialize(mapload, datum/delivery_run_instance/source_datum, obj/item/paper/passed_paper)
 	. = ..()
 	delivery_instance = source_datum
-	manifest = passed_paper
-	manifest.forceMove(src)
+	if(passed_paper)
+		manifest = passed_paper
+		manifest.forceMove(src)
 	update_appearance()
 
 /obj/item/delivery_cargo/attack_self(mob/living/user)
@@ -159,10 +160,10 @@
 	delivery_instance.TryDeliver(user)
 
 /obj/item/delivery_cargo/Destroy()
-	delivery_instance.CargoDeleted()
-	delivery_instance = null
-	if(manifest)
-		QDEL_NULL(manifest)
+	if(delivery_instance)
+		delivery_instance.CargoDeleted()
+		delivery_instance = null
+	QDEL_NULL(manifest)
 	return ..()
 
 /obj/item/delivery_cargo/tiny

@@ -105,8 +105,7 @@
 	if(state == ENGINE_WELDED)
 		alter_engine_power(-engine_power)
 		RemoveExtension()
-	if(extension)
-		qdel(extension)
+	QDEL_NULL(extension)
 	. = ..()
 
 /obj/structure/shuttle/engine/atom_destruction(damage_flag)
