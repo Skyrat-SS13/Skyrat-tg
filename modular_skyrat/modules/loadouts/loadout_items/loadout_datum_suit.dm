@@ -126,6 +126,34 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Plague Doctor Suit"
 	item_path = /obj/item/clothing/suit/bio_suit/plaguedoctorsuit
 
+/datum/loadout_item/suit/snowman
+	name = "Snowman Outfit"
+	item_path = /obj/item/clothing/suit/snowman
+
+/datum/loadout_item/suit/chicken
+	name = "Chicken Suit"
+	item_path = /obj/item/clothing/suit/chickensuit
+
+/datum/loadout_item/suit/monky
+	name = "Monkey Suit"
+	item_path = /obj/item/clothing/suit/monkeysuit
+
+/datum/loadout_item/suit/cardborg
+	name = "Cardborg Suit"
+	item_path = /obj/item/clothing/suit/cardborg
+
+/datum/loadout_item/suit/xenos
+	name = "Xenos Suit"
+	item_path = /obj/item/clothing/suit/xenos
+
+/datum/loadout_item/suit/ian_costume
+	name = "Corgi Costume"
+	item_path = /obj/item/clothing/suit/hooded/ian_costume
+
+/datum/loadout_item/suit/carp_costume
+	name = "Carp Costume"
+	item_path = /obj/item/clothing/suit/hooded/carp_costume
+
 //MISC
 /datum/loadout_item/suit/poncho
 	name = "Poncho"
