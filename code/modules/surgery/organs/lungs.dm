@@ -565,8 +565,10 @@
 
 /obj/item/organ/lungs/ashwalker/Initialize(mapload)
 	. = ..()
+	//SKYRAT EDIT ADDITION - THIS IS CANCER, WHY ARE LUNGS LIKE THIS.
 	if(!SSair.planetary[LAVALAND_DEFAULT_ATMOS])
 		return ..()
+	//SKYRAT EDIT END
 	var/datum/gas_mixture/immutable/planetary/mix = SSair.planetary[LAVALAND_DEFAULT_ATMOS]
 	// Take a "breath" of the air
 	var/datum/gas_mixture/breath = mix.remove(mix.total_moles() * BREATH_PERCENTAGE)
