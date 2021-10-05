@@ -79,7 +79,7 @@
 	if(isopened && pulv)
 		add_overlay(pulv_overlay)
 	if(isopened && bin)
-		bin_overlay.icon_state = "[initial(icon_state)]_[bin.latex_color]"
+		bin_overlay.icon_state = "box_canister_[bin.latex_color]"
 		add_overlay(bin_overlay)
 	if(isopened && encoder)
 		add_overlay(encoder_overlay)
