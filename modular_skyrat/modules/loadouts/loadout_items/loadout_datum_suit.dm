@@ -118,6 +118,18 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Blue Letterman"
 	item_path = /obj/item/clothing/suit/jacket/letterman_nanotrasen
 
+/datum/loadout_item/suit/owl
+	name = "Owl Cloak"
+	item_path = /obj/item/clothing/suit/toggle/owlwings
+
+/datum/loadout_item/suit/griffin
+	name = "Griffon Cloak"
+	item_path = /obj/item/clothing/suit/toggle/owlwings/griffinwings
+
+/datum/loadout_item/suit/syndi
+	name = "Black And Red Space Suit Replica"
+	item_path = /obj/item/clothing/suit/syndicatefake
+
 /datum/loadout_item/suit/bee
 	name = "Bee Outfit"
 	item_path = /obj/item/clothing/suit/hooded/bee_costume
