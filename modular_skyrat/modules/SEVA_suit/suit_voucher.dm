@@ -19,7 +19,7 @@
 	var/drop_location = drop_location()
 	switch(selection)
 		if("SEVA suit")
-			new /obj/item/clothing/suit/hooded/explorer/seva(drop_location)
+			new /obj/item/clothing/suit/hooded/seva(drop_location)
 			new /obj/item/clothing/mask/gas/seva(drop_location)
 		if("Explorer suit")
 			new /obj/item/clothing/suit/hooded/explorer(drop_location)
