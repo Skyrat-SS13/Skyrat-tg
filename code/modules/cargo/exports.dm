@@ -1,3 +1,5 @@
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
 /* How it works:
 The shuttle arrives at CentCom dock and calls sell(), which recursively loops through all the shuttle contents that are unanchored.
 
