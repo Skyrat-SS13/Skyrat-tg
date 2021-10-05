@@ -80,7 +80,7 @@
 		/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby = 5,
 		/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby = 5,
 		/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby = 5,
-		/obj/item/clothing/under/suit/helltaker = 5
+		/obj/item/clothing/under/suit/helltaker = 5,
 		/obj/item/clothing/glasses/betterunshit = 5,
 		/obj/item/clothing/glasses/thin = 5,
 	)
