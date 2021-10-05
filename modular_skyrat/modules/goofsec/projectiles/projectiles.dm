@@ -46,6 +46,7 @@
 	fire_sound = null
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez)
 	shaded_charge = TRUE
+	cell_type = /obj/item/stock_parts/cell/super
 
 /obj/item/gun/energy/vintorez/ComponentInitialize()
 	. = ..()
@@ -54,7 +55,7 @@
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez
 	name = "hardlight bullet vintorez casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/vintorez
-	e_cost = 83 // 27 damage so 12 shots.
+	e_cost = 1666 // 27 damage so 12 shots.
 	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/vintorez
@@ -85,6 +86,7 @@
 	burst_size = 1
 	fire_delay = 10
 	shaded_charge = TRUE
+	cell_type = /obj/item/stock_parts/cell/super
 
 /obj/item/gun/energy/norwind/ComponentInitialize()
 	. = ..()
@@ -93,7 +95,7 @@
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/norwind
 	name = "hardlight bullet norwind casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/norwind
-	e_cost = 138 // 7 shots, does 1.6x damage normal laser so fire cost increased by 1.6x
+	e_cost = 2857 // 7 shots, does 1.6x damage normal laser so fire cost increased by 1.6x
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/norwind
@@ -116,6 +118,7 @@
 	fire_sound = null
 	can_bayonet = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind)
+	cell_type = /obj/item/stock_parts/cell/super
 
 /obj/item/gun/energy/ostwind/ComponentInitialize()
 	. = ..()
@@ -124,7 +127,7 @@
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind
 	name = "hardlight bullet norostwindwind casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/ostwind
-	e_cost = 83 // 12 shots for 27 damage.
+	e_cost = 1666 // 27 damage so 12 shots.
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/ostwind
@@ -150,6 +153,7 @@
 	can_flashlight = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull)
 	shaded_charge = TRUE
+	cell_type = /obj/item/stock_parts/cell/super
 
 /obj/item/gun/energy/pitbull/ComponentInitialize()
 	. = ..()
@@ -158,7 +162,7 @@
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull
 	name = "hardlight bullet pitbull casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/pitbull
-	e_cost = 83 // 12 shots for 27 damage.
+	e_cost = 1666 // 27 damage so 12 shots.
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/pitbull
@@ -181,6 +185,7 @@
 	can_flashlight = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr)
 	shaded_charge = TRUE
+	cell_type = /obj/item/stock_parts/cell/super
 
 /obj/item/gun/energy/pcr/ComponentInitialize()
 	. = ..()
@@ -189,7 +194,7 @@
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr
 	name = "hardlight bullet pcr casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/pcr
-	e_cost = 83 // 12 shots, for 27 damage.
+	e_cost = 1666 // 27 damage so 12 shots.
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
 
 /obj/projectile/beam/laser/hardlight_bullet/pcr

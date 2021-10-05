@@ -24,3 +24,8 @@
 
 /obj/item/ammo_casing/energy/disabler/hos
 	e_cost = 60
+
+// SKYRAT ADDITION START
+/obj/item/ammo_casing/energy/disabler/skyrat
+	e_cost = 1000
+// SKYRAT ADDITION END
