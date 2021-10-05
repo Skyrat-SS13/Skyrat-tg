@@ -278,8 +278,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_lizzy"
 	inhand_icon_state = "plushie_lizzy"
-	attack_verb_continuous = "wehs"
-	attack_verb_simple = "weh"
+	attack_verb_continuous = list("wehs")
+	attack_verb_simple = list("weh")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 
 /obj/item/toy/plush/fox/mia
