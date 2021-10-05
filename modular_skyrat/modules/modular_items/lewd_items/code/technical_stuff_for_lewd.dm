@@ -3,6 +3,11 @@
 //I made this file to prevent myself from touching normal files///////////
 //////////////////////////////////////////////////////////////////////////
 
+/// Global list of all itemslot
+GLOBAL_LIST_INIT(all_item_slots, list(ITEM_SLOT_OCLOTHING, ITEM_SLOT_ICLOTHING, ITEM_SLOT_GLOVES, ITEM_SLOT_EYES, ITEM_SLOT_EARS, ITEM_SLOT_MASK, ITEM_SLOT_HEAD, ITEM_SLOT_FEET, ITEM_SLOT_ID,
+										ITEM_SLOT_BELT, ITEM_SLOT_BACK, ITEM_SLOT_DEX_STORAGE, ITEM_SLOT_NECK, ITEM_SLOT_HANDS, ITEM_SLOT_BACKPACK, ITEM_SLOT_SUITSTORE, ITEM_SLOT_LPOCKET, ITEM_SLOT_RPOCKET,
+										ITEM_SLOT_HANDCUFFED, ITEM_SLOT_LEGCUFFED, ITEM_SLOT_PENIS, ITEM_SLOT_VAGINA, ITEM_SLOT_ANUS, ITEM_SLOT_NIPPLES))
+
 //moved from my old interactions file 'cause skyrats already did interactions
 
 #define REQUIRE_NONE 0
