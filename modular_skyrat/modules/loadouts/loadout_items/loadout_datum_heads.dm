@@ -195,10 +195,25 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Bear Pelt"
 	item_path = /obj/item/clothing/head/bearpelt
 
-
 /datum/loadout_item/head/plague_doctor
 	name = "Plague Doctor Cap"
 	item_path = /obj/item/clothing/head/plaguedoctorhat
+
+/datum/loadout_item/head/snowman
+	name = "Snowman Head"
+	item_path = /obj/item/clothing/head/snowman
+
+/datum/loadout_item/head/chicken
+	name = "Chicken Suit Head"
+	item_path = /obj/item/clothing/head/chicken
+
+/datum/loadout_item/head/cardborg
+	name = "Cardborg Helmet"
+	item_path = /obj/item/clothing/head/cardborg
+
+/datum/loadout_item/head/xenos
+	name = "Xenos Helmet"
+	item_path = /obj/item/clothing/head/xenos
 
 /datum/loadout_item/head/wedding_veil
 	name = "Wedding Veil"
@@ -272,6 +287,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/ushanka
 	name = "Ushanka"
 	item_path = /obj/item/clothing/head/ushanka
+
+/datum/loadout_item/head/ushanka/soviet
+	name = "Soviet Ushanka"
+	item_path = /obj/item/clothing/head/ushanka/soviet
 
 /datum/loadout_item/head/wrussian
 	name = "Black Papakha"
@@ -447,9 +466,9 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/cowboyhat/widesec
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
 
-/datum/loadout_item/head/ushanka
+/datum/loadout_item/head/ushanka/sec
 	name = "Security Ushanka"
-	item_path = /obj/item/clothing/head/ushankasec
+	item_path = /obj/item/clothing/head/ushanka/sec
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
 
 /datum/loadout_item/head/blasthelmet

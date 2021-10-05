@@ -295,8 +295,8 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/instrument/violin = 1
 	) = 50,
 	list( //Unimportant clothing
-		/obj/item/clothing/accessory/fan_clown_pin = 25,
-		/obj/item/clothing/accessory/fan_mime_pin = 25,
+		/obj/item/clothing/accessory/clown_enjoyer_pin = 25,
+		/obj/item/clothing/accessory/mime_fan_pin = 25,
 		/obj/item/clothing/accessory/lawyers_badge = 5,
 		/obj/item/clothing/accessory/waistcoat = 25,
 		/obj/item/clothing/ears/headphones = 5,
