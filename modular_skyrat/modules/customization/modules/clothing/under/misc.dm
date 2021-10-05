@@ -493,7 +493,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "workpants_red"
 
-
 /obj/item/clothing/under/rank/captain/imperial
 	desc = "A white jumpsuit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
 	name = "captain's naval jumpsuit"
@@ -644,3 +643,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	inhand_icon_state = "kilt"
+
+/obj/item/clothing/under/suit/helltaker
+	name = "red shirt with white pants"
+	desc = "No time. Busy gathering girls."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "helltaker"
