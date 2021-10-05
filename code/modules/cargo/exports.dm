@@ -27,7 +27,7 @@ Then the player gets the profit from selling his own wasted time.
 	var/list/exported_atoms_ref = list() //if they're not deleted they go in here for use.
 
 // external_report works as "transaction" object, pass same one in if you're doing more than one export in single go
-/proc/export_item_and_contents(atom/movable/AM, apply_elastic = FALSE, delete_unsold = TRUE, dry_run=FALSE, datum/export_report/external_report) //skyrat edit
+/proc/export_item_and_contents(atom/movable/AM, apply_elastic = FALSE, delete_unsold = TRUE, dry_run=FALSE, datum/export_report/external_report) //SKYRAT EDIT
 	if(!GLOB.exports_list.len)
 		setupExports()
 
