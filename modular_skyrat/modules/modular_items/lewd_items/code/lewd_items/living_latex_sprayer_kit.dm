@@ -176,10 +176,13 @@
 
 		else if(istype(I,/obj/item/firing_pin/latexpulvmodule/))
 			if(!pin)
-				if(!user.transferItemToLoc(I,src))
-					return
-				pin = I
-				user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
+				if(!encoder)
+					if(!user.transferItemToLoc(I,src))
+						return
+					pin = I
+					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
+				else
+					to_chat(user, span_notice("[user] tries to put the chip in [src]], but the encoder closes the chip slot. You need to remove the encoder first."))
 			else
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
