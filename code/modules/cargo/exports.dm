@@ -27,7 +27,7 @@ Then the player gets the profit from selling his own wasted time.
 	var/list/exported_atoms_ref = list() //if they're not deleted they go in here for use.
 
 // external_report works as "transaction" object, pass same one in if you're doing more than one export in single go
-/proc/export_item_and_contents(atom/movable/AM, apply_elastic = FALSE, delete_unsold = TRUE, dry_run=FALSE, datum/export_report/external_report)
+/proc/export_item_and_contents(atom/movable/AM, apply_elastic = FALSE, delete_unsold = TRUE, dry_run=FALSE, datum/export_report/external_report) //skyrat edit
 	if(!GLOB.exports_list.len)
 		setupExports()
 
@@ -105,7 +105,7 @@ Then the player gets the profit from selling his own wasted time.
 		cost = init_cost
 
 // Checks the cost. 0 cost items are skipped in export.
-/datum/export/proc/get_cost(obj/O, apply_elastic = FALSE)
+/datum/export/proc/get_cost(obj/O, apply_elastic = FALSE) //SKYRAT EDIT
 	var/amount = get_amount(O)
 	if(apply_elastic)
 		if(k_elasticity!=0)
@@ -121,7 +121,7 @@ Then the player gets the profit from selling his own wasted time.
 	return 1
 
 // Checks if the item is fit for export datum.
-/datum/export/proc/applies_to(obj/O, apply_elastic = FALSE)
+/datum/export/proc/applies_to(obj/O, apply_elastic = FALSE) //SKYRAT EDIT
 	if(!is_type_in_typecache(O, export_types))
 		return FALSE
 	if(include_subtypes && is_type_in_typecache(O, exclude_types))
@@ -140,7 +140,7 @@ Then the player gets the profit from selling his own wasted time.
  * get_cost, get_amount and applies_to do not neccesary mean a successful sale.
  *
  */
-/datum/export/proc/sell_object(obj/O, datum/export_report/report, dry_run = TRUE, apply_elastic = FALSE)
+/datum/export/proc/sell_object(obj/O, datum/export_report/report, dry_run = TRUE, apply_elastic = FALSE) //SKYRAT EDIT
 	///This is the value of the object, as derived from export datums.
 	var/the_cost = get_cost(O, apply_elastic)
 	///Quantity of the object in question.
