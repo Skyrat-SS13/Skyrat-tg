@@ -569,6 +569,7 @@
 	desc = "Portable Microcomputer Programming Modules for Live Latex Sprayer."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi'
 	icon_state = "encoder_off"
+	var/obj/item/firing_pin/latexpulvmodule/pin = null
 
 /obj/item/pda/latex_pulv_encoder/Initialize(mapload)
 	. = ..()

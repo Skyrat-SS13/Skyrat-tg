@@ -58,7 +58,7 @@
 	note_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi', "box_note", BELOW_MOB_LAYER + 0.1)
 	pulv_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi', "box_pulv", BELOW_MOB_LAYER + 0.1)
 	bin_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi', "box_canister", BELOW_MOB_LAYER + 0.1)
-	encoder_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi', "box_encoder", BELOW_MOB_LAYER + 0.1)
+	encoder_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi', "box_encoder", BELOW_MOB_LAYER + 0.2)
 	pin_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi', "box_chip", BELOW_MOB_LAYER + 0.1)
 	dissolver_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/latex_pulv.dmi', "box_dissolver", BELOW_MOB_LAYER + 0.1)
 
@@ -170,49 +170,39 @@
 					return
 				dissolver = I
 				user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
-
 			else
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
 		else if(istype(I,/obj/item/firing_pin/latexpulvmodule/))
 			if(!pin)
-				if(dissolver)
-					if(!user.transferItemToLoc(I,src))
-						return
-					pin = I
-					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
-				else
-					to_chat(user, span_notice("You need to put the dissolver into the kit, before you can put the chip."))
+				if(!user.transferItemToLoc(I,src))
 					return
+				pin = I
+				user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 			else
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
-
+		// TODO: проверка, не вставлен ли чип в программатор перед размещением в кейса
 		else if(istype(I,/obj/item/pda/latex_pulv_encoder))
 			if(!encoder)
-				if(pin)
+				if(!encoder.pin) // Проверяем есть ли чип
 					if(!user.transferItemToLoc(I,src))
 						return
 					encoder = I
 					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 				else
-					to_chat(user, span_notice("You need to put the chip into the kit, before you can put the encoder."))
-					return
+					to_chat(user, span_notice("[user] tries to insert [I] into [src], but flash module sticking out of it prevents him from doing it!"), span_notice("You try to insert [I] into [src], but flash module sticking out of it prevents you from doing it!"))
 			else
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 
 		else if(istype(I, /obj/item/ammo_casing/latexbin))
 			if(!bin)
-				if(encoder)
-					if(!user.transferItemToLoc(I,src))
-						return
-					bin = I
-					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
-				else
-					to_chat(user, span_notice("You need to put the encoder into the kit, before you can put the latex bin."))
+				if(!user.transferItemToLoc(I,src))
 					return
+				bin = I
+				user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 			else
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
@@ -280,7 +270,11 @@
 
 	// Checking if the kit has been dragged onto the character, then we are trying to pick up the kit.
 	if(istype(src, /obj/item/latex_kit/) && istype(over, /mob/living/carbon/human/))
-		var/mob/living/carbon/human/M = over
-		M.put_in_hands(src)
-		return
+		if(!isopened)
+			var/mob/living/carbon/human/M = over
+			M.put_in_hands(src)
+			return
+		else
+			to_chat(usr, "[src] too big to handle! Maybe close it first?")
+			return
 	. = ..()
