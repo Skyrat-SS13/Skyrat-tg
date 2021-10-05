@@ -272,6 +272,17 @@
 	attack_verb_simple = list("beep","sneed","sword")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg' = 1,'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg' = 1)
 
+/obj/item/toy/plush/lizzyplush // i'm sorry, little one.
+	name = "Odd lizzy plushie"
+	desc = "A plushie made in the image of a strange looking lizard. A faithful roboticist, and a terrible father. Something about this pose is bothersome."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_lizzy"
+	inhand_icon_state = "plushie_lizzy"
+	attack_verb_continuous = "wehs"
+	attack_verb_simple = "weh"
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
+	gender = MALE
+
 /obj/item/toy/plush/fox/mia
 	name = "Mia’s fox plushie"
 	desc = "A small stuffed silver fox with a collar tag that says “Eavy” and a tiny bell in its fluffy tail."

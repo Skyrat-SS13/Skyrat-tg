@@ -347,6 +347,10 @@
 	name = "Sneed plushie"
 	path = /obj/item/toy/plush/seaduplush
 
+/datum/loadout_item/backpack/plushies/lizzyplush
+	name = "Odd lizzy plushie"
+	path = /obj/item/toy/plush/lizzyplush
+
 /datum/loadout_item/backpack/fragrance
 	subcategory = LOADOUT_SUBCATEGORY_BACKPACK_FRAGRANCE
 	cost = 2
