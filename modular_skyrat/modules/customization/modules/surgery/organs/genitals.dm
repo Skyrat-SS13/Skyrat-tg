@@ -159,9 +159,9 @@
 	icon_state = passed_string
 
 /obj/item/organ/genital/testicles/get_description_string(datum/sprite_accessory/genital/gas)
-	if(genital_name == "Internal") //Checks if Testicles are of Internal Variety
-		visibility_preference = GENITAL_SKIP_VISIBILITY //Removes visibility if yes.
-	else
+	if(genital_name == "Internal") //SKYRAT EDIT ADD  - Checks if Testicles are of Internal Variety
+		visibility_preference = GENITAL_SKIP_VISIBILITY //SKYRAT EDIT ADD  - Removes visibility if yes.
+	else //SKYRAT EDIT ADD
 		return "You see a pair of testicles, they look [lowertext(balls_size_to_description(genital_size))]."
 
 /obj/item/organ/genital/testicles/build_from_dna(datum/dna/DNA, associated_key)
