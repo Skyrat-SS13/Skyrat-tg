@@ -206,6 +206,9 @@
 	pixel_y = 3
 	},
 /obj/item/storage/box/syringes/variety,
+/obj/item/storage/box/medipens{
+	pixel_x = -6
+	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "fm" = (
@@ -455,6 +458,11 @@
 	},
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
+"jv" = (
+/obj/structure/window/reinforced,
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
 "jM" = (
 /obj/machinery/door/airlock/shuttle/glass,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -652,7 +660,6 @@
 /turf/open/floor/iron/dark/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "nr" = (
-/obj/effect/spawner/random/vending/colavend,
 /turf/open/floor/iron/brown/side{
 	dir = 1
 	},
@@ -666,6 +673,10 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/brown,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
+"nM" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "nY" = (
 /obj/machinery/door/window/brigdoor/southright{
@@ -875,13 +886,6 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "rz" = (
 /obj/effect/turf_decal/bot,
-/obj/structure/closet/crate/secure/tradership_cargo_very_valuable{
-	name = "Delivery - DS-2";
-	req_access_txt = "150"
-	},
-/obj/effect/spawner/random/exotic/syndie,
-/obj/effect/spawner/random/exotic/syndie,
-/obj/effect/spawner/random/exotic/syndie,
 /obj/effect/spawner/random/exotic/syndie,
 /obj/effect/spawner/random/exotic/syndie,
 /obj/structure/window/reinforced{
@@ -890,6 +894,24 @@
 /obj/item/clothing/suit/armor/riot,
 /obj/item/shield/riot,
 /obj/item/clothing/head/helmet/riot,
+/obj/effect/spawner/random/exotic/antag_gear,
+/obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/structure/closet/crate/secure/weapon{
+	name = "Delivery - DS-2";
+	req_access_txt = "150"
+	},
+/obj/item/storage/belt/utility/atmostech,
+/obj/item/storage/belt/utility/full/engi,
+/obj/item/storage/belt/utility/syndicate,
+/obj/item/storage/box/monkeycubes,
+/obj/item/storage/box/monkeycubes,
+/obj/item/paper{
+	info = "Admiral, due to increased Nanotrasen presence in your sector, we are providing some extra supplies to deal with it. The telecrystals are to be held for a contact that will come to collect them in the coming weeks, a solo operative. Please ensure they get the crystals, as their mission is gravely important.";
+	name = "CONFIDENTIAL - DS-2 Admiral's Eyes Only"
+	},
+/obj/item/stack/telecrystal{
+	amount = 10
+	},
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "rE" = (
@@ -1044,10 +1066,8 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ug" = (
 /obj/structure/safe,
-/obj/effect/spawner/random/entertainment/money_large,
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/item/clothing/suit/space/hardsuit/syndi,
-/obj/effect/spawner/random/entertainment/money_large,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "uj" = (
@@ -1075,6 +1095,13 @@
 /obj/item/reagent_containers/hashbrick,
 /obj/item/reagent_containers/hashbrick,
 /turf/open/floor/iron/brown,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
+"uv" = (
+/obj/machinery/power/emitter/welded{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "uw" = (
 /obj/structure/table/reinforced,
@@ -1278,7 +1305,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "xI" = (
-/obj/machinery/portable_atmospherics/scrubber,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -1293,6 +1319,11 @@
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/exotic/antag_gear,
 /obj/effect/spawner/random/contraband/armory,
+/obj/item/tank/internals/oxygen/red,
+/obj/item/tank/internals/oxygen/red,
+/obj/item/tank/internals/oxygen/red,
+/obj/item/pickaxe/drill/jackhammer,
+/obj/item/storage/box/minertracker,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ye" = (
@@ -1652,6 +1683,11 @@
 /obj/effect/spawner/random/food_or_drink/three_course_meal,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
+"EB" = (
+/obj/structure/window/reinforced,
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
 "EH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /mob/living/simple_animal/hostile/russian,
@@ -1809,6 +1845,10 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
+"IV" = (
+/obj/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
 "IX" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/secure/gear{
@@ -1832,6 +1872,10 @@
 /obj/item/raw_anomaly_core/random,
 /obj/item/raw_anomaly_core/random,
 /obj/item/raw_anomaly_core/random,
+/obj/item/slime_extract/grey,
+/obj/item/slime_extract/grey,
+/obj/item/slime_extract/grey,
+/obj/item/slime_extract/grey,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Jd" = (
@@ -2001,12 +2045,6 @@
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/deepstorage/lostcargo)
-"Lw" = (
-/obj/effect/spawner/random/vending/snackvend,
-/turf/open/floor/iron/brown/side{
-	dir = 1
-	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Lz" = (
 /obj/item/stack/sheet/iron/twenty,
@@ -2252,14 +2290,14 @@
 /obj/effect/spawner/random/medical/organs,
 /obj/effect/spawner/random/medical/organs,
 /obj/effect/spawner/random/medical/organs,
-/obj/effect/spawner/random/medical/organs,
-/obj/effect/spawner/random/medical/memeorgans,
 /obj/effect/spawner/random/medical/memeorgans,
 /obj/effect/spawner/random/medical/memeorgans,
 /obj/structure/closet/crate/secure/freezer{
 	name = "Delivery - NSV Torch"
 	},
 /obj/item/organ/heart/gland/heal,
+/obj/item/organ/body_egg/alien_embryo,
+/obj/item/organ/brain/alien,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "OP" = (
@@ -2269,10 +2307,6 @@
 /obj/machinery/computer/atmos_alert,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/deepstorage/lostcargo)
-"Pb" = (
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Pl" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -2937,6 +2971,11 @@
 /obj/effect/spawner/random/food_or_drink/soup,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
+"Xm" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/effect/mob_spawn/human/miner/rig,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
 "Xn" = (
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -2988,7 +3027,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "XS" = (
@@ -3181,7 +3219,7 @@ OP
 hP
 Mz
 hP
-Mz
+hP
 hP
 Mz
 hP
@@ -3214,10 +3252,10 @@ XD
 XD
 hP
 hP
-La
-Qk
-La
-Qk
+uv
+BL
+BL
+EB
 La
 hP
 hP
@@ -3249,10 +3287,10 @@ hP
 hP
 hP
 Qk
-Qk
-Qk
-Qk
-Qk
+IV
+ke
+LC
+jv
 Qk
 Wu
 hP
@@ -3284,10 +3322,10 @@ ys
 Bb
 oo
 Qk
-Bb
-Bb
-Bb
-Bb
+IV
+ke
+LC
+nM
 Qk
 Qk
 Bb
@@ -3319,10 +3357,10 @@ Zl
 SU
 Qk
 Ld
-Bb
+IV
 Lz
-BL
-Bb
+LC
+nM
 Ld
 Qk
 SU
@@ -3356,7 +3394,7 @@ Bb
 Bb
 Bb
 xy
-BL
+LC
 Bb
 Bb
 Bb
@@ -3388,10 +3426,10 @@ Vs
 Zl
 Bb
 lC
-ke
+LC
 xI
 XP
-Pb
+LC
 tQ
 wj
 GU
@@ -3469,7 +3507,7 @@ Bb
 gI
 BY
 Bb
-Lw
+nr
 ML
 ML
 ML
@@ -3503,8 +3541,8 @@ Jd
 Bb
 Zn
 Yg
-fO
-En
+Bb
+YK
 xn
 YK
 ML
@@ -3643,8 +3681,8 @@ Js
 Wh
 Ec
 mF
-fO
-En
+Bb
+YK
 YK
 YK
 pF
@@ -4111,7 +4149,7 @@ Zy
 OP
 OP
 OP
-hP
+Bb
 Bb
 Bb
 Bb
@@ -4216,7 +4254,7 @@ Zy
 Zy
 Zy
 Zy
-hP
+Bb
 Bb
 Bb
 Bb
@@ -4681,14 +4719,14 @@ UM
 GT
 bk
 hP
-hP
+Bb
 Mz
 Mz
 Bb
 zK
 ts
 wA
-Vs
+Xm
 MK
 CK
 wm
@@ -4828,7 +4866,7 @@ Zy
 Zy
 Gi
 hP
-hP
+Bb
 wV
 wV
 wV
