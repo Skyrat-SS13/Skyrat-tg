@@ -674,6 +674,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Scratch Suit"
 	item_path = /obj/item/clothing/under/suit/white_on_white
 
+/datum/loadout_item/under/formal/denim_skirt
+	name = "Denim Skirt"
+	item_path = /obj/item/clothing/under/pants/denimskirt
+
 /datum/loadout_item/under/formal/striped_skirt
 	name = "Striped Dress"
 	item_path = /obj/item/clothing/under/dress/striped
