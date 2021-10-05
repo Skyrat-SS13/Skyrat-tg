@@ -177,6 +177,10 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Sneed plushie"
 	item_path = /obj/item/toy/plush/seaduplush
 
+/datum/loadout_item/toys/lizzyplush
+	name = "Odd lizzy plushie"
+	item_path = /obj/item/toy/plush/lizzyplush
+
 /datum/loadout_item/toys/card_binder
 	name = "Card Binder"
 	item_path = /obj/item/storage/card_binder
