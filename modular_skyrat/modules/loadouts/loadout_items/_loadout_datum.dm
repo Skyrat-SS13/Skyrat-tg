@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
  * outfit - The outfit we're equipping our items into.
  * visual - If TRUE, then our outfit is only for visual use (for example, a preview).
  */
-/datum/loadout_item/proc/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+/datum/loadout_item/proc/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(!visuals_only)
 		LAZYADD(outfit.backpack_contents, item_path)
 
