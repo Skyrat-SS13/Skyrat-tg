@@ -22,6 +22,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/always_customizable = FALSE
 	///Flavor text of the species displayed on character creation screeen
 	var/flavor_text = "No description."
+	///Does this species have a special set of overlay clothing, and if so, what is the name of the folder under .../clothing/species that contains them?
+	var/species_clothing_path
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE)
 	var/list/standing	= list()

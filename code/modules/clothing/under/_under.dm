@@ -67,6 +67,8 @@
 	if(random_sensor)
 		//make the sensor mode favor higher levels, except coords.
 		sensor_mode = pick(SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS, SENSOR_COORDS)
+	if(!(body_parts_covered & LEGS)) // Skyrat edit - Teshari skirt
+		greyscale_icon_state = "under_skirt"
 
 /obj/item/clothing/under/emp_act()
 	. = ..()

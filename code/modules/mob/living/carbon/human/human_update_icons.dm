@@ -251,9 +251,6 @@ There are several things that need to be remembered:
 				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
 			overlays_standing[GLASSES_LAYER] = glasses_overlay
 	apply_overlay(GLASSES_LAYER)
-*/
-//SKYRAT EDIT REMOVAL END
-
 
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
@@ -278,7 +275,8 @@ There are several things that need to be remembered:
 			ears_overlay.pixel_y += dna.species.offset_features[OFFSET_EARS][2]
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
-
+*/
+//SKYRAT EDIT REMOVAL END
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*

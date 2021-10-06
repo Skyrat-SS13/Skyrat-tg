@@ -16,6 +16,7 @@
 #define isskrell(A) (is_species(A,/datum/species/skell)) //SKRELL GANG SKRELL GANG
 #define isunathi(A) (is_species(A,/datum/species/unathi))
 #define isvulpkanin(A) (is_species(A,/datum/species/vulpkanin))
+#define isteshari(A) (is_species(A, /datum/species/teshari))
 //Antags
 #define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
 #define iscorticalborer(A) (istype(A, /mob/living/simple_animal/cortical_borer))
