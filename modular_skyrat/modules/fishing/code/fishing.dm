@@ -1,11 +1,3 @@
-//when someone casts their fishing rod
-#define COMSIG_START_FISHING "start_fishing"
-//when someone pulls back their fishing rod
-#define COMSIG_FINISH_FISHING "finish_fishing"
-
-//to determine if someone is a fishing master, or not
-#define TRAIT_FISHING_MASTER "fishing_master"
-
 GLOBAL_LIST_INIT(fishing_weights, list(
 	/obj/item/stack/ore/diamond = 1,
 	/obj/item/stack/ore/bluespace_crystal = 1,
