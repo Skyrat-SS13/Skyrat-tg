@@ -29,7 +29,7 @@
 #define SCANGATE_SYNTHLIZ "synthliz"
 #define SCANGATE_SYNTHMAMMAL "synthmammal"
 #define SCANGATE_SYNTHHUMAN "synthhuman"
-#define SCANGATE_TESHARI "tesh"
+#define SCANGATE_TESHARI "teshari"
 
 #define SCANGATE_GENDER "Gender"
 //SKYRAT EDIT END - MORE SCANNER GATE OPTIONS

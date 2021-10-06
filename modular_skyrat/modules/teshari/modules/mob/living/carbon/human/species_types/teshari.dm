@@ -2,11 +2,18 @@
 	name = "Teshari"
 	id = "teshari"
 	default_color = "6060FF"
-	species_traits = list(MUTCOLORS, NOEYESPRITES, NO_UNDERWEAR)
+	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/teshari_eyes.dmi'
+	species_traits = list(MUTCOLORS, 
+		EYECOLOR, 
+		NO_UNDERWEAR,
+		HAS_FLESH,
+		HAS_BONE,
+		HAS_MARKINGS,
+		)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
-		"snout" = ACC_RANDOM,
 		"ears" = ACC_RANDOM,
+		"fluff" = ACC_RANDOM, 
 		"legs" = "Normal Legs"
 	)
 	disliked_food = GROSS | GRAIN
@@ -22,7 +29,10 @@
 	heatmod = TESHARI_HEATMOD
 	brutemod = TESHARI_BRUTEMOD
 	burnmod = TESHARI_BURNMOD
+	punchdamagelow = TESHARI_PUNCH_LOW
+	punchdamagehigh = TESHARI_PUNCH_HIGH
 	// speedmod = -0.25 // no, because people /will/ bitch about balance
 	bodytemp_normal = BODYTEMP_NORMAL + TESHARI_TEMP_OFFSET
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
+	species_language_holder = /datum/language_holder/teshari

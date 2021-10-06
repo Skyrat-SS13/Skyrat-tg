@@ -346,3 +346,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/spade
 	name = "Succubus Spade Tail"
 	icon_state = "spade"
+
+/datum/sprite_accessory/tails/mammal/teshari
+	recommended_species = list(SPECIES_TESHARI)
+	general_type = "teshari"

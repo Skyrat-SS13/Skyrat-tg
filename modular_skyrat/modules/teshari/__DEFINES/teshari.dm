@@ -3,3 +3,5 @@
 #define TESHARI_BRUTEMOD 1.5
 #define TESHARI_HEATMOD 1.5
 #define TESHARI_COLDMOD 0.67 // Except cold.
+#define TESHARI_PUNCH_LOW 0 // Lower bound punch damage
+#define TESHARI_PUNCH_HIGH 6

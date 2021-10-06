@@ -105,5 +105,6 @@
 #define SPECIES_VULP "vulpkanin"
 #define SPECIES_XENO "xeno"
 #define SPECIES_GHOUL "ghoul"
+#define SPECIES_TESHARI "teshari"
 
 #define SPECIES_MUTANT "mutant"
