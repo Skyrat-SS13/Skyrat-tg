@@ -4,7 +4,7 @@ MODULE ID: SM_CASCADE
 
 ### Description:
 
-The supermatter engine has a chance to throw the supermatter cascade, which is a shift-ending catastrophe (reality-ending)
+The supermatter cascade is a reality-ending catastrophe. Admin-triggered only at this time
 
 ### TG Proc Changes:
 
