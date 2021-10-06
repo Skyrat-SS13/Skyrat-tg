@@ -650,3 +650,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "helltaker"
+
+/obj/item/clothing/under/suit/helltaker/skirt
+	name = "red shirt with white skirt"
+	desc = "No time. Busy gathering boys."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "helltakerskirt"
