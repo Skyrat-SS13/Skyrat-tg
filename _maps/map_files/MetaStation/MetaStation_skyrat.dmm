@@ -20442,21 +20442,6 @@
 /mob/living/simple_animal/pet/dog/corgi/puppy/slime,
 /turf/open/floor/grass,
 /area/science/research)
-"eRa" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 10
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/window/eastleft{
-	name = "Kitchen Delivery";
-	req_access_txt = "28"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/service/kitchen/coldroom)
 "eRd" = (
 /obj/effect/turf_decal/arrows/red{
 	pixel_y = 15
@@ -36861,6 +36846,13 @@
 	},
 /turf/open/floor/iron,
 /area/service/bar)
+"ldo" = (
+/obj/machinery/door/airlock/medical{
+	name = "Medical Cold Room";
+	req_access_txt = "5"
+	},
+/turf/open/floor/iron,
+/area/medical/coldroom)
 "ldD" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/structure/disposalpipe/segment{
@@ -45969,6 +45961,23 @@
 /obj/effect/landmark/start/depsec/science,
 /turf/open/floor/iron,
 /area/security/checkpoint/science)
+"ojx" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/window/eastleft{
+	name = "Kitchen Delivery";
+	req_access_txt = "28"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/airalarm/kitchen_cold_room{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/service/kitchen/coldroom)
 "ojI" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -57149,13 +57158,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
-"sjt" = (
-/obj/machinery/door/airlock/medical{
-	name = "Medical Cold Room";
-	req_access_txt = "5"
-	},
-/turf/open/floor/iron,
-/area/medical/coldroom)
 "sjL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
@@ -93285,7 +93287,7 @@ dux
 ejb
 kUo
 ilb
-sjt
+ldo
 pqU
 rhy
 dNd
@@ -112273,7 +112275,7 @@ lMc
 prY
 gDt
 eLr
-eRa
+ojx
 crV
 alq
 mXn
