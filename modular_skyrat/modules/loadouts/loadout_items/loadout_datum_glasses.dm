@@ -6,10 +6,13 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 /datum/loadout_item/glasses
 	category = LOADOUT_ITEM_GLASSES
 
-/datum/loadout_item/glasses/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(outfit.glasses)
-		LAZYADD(outfit.backpack_contents, outfit.glasses)
-	outfit.glasses = item_path
+/datum/loadout_item/glasses/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
+	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
+		if(outfit.glasses)
+			LAZYADD(outfit.backpack_contents, outfit.glasses)
+		outfit.glasses = item_path
+	else
+		outfit.glasses = item_path
 
 /datum/loadout_item/glasses/post_equip_item(datum/preferences/preference_source, mob/living/carbon/human/equipper)
 	var/obj/item/clothing/glasses/equipped_glasses = locate(item_path) in equipper.get_equipped_items()

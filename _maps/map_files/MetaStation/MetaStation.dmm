@@ -9986,6 +9986,13 @@
 /obj/machinery/telecomms/server/presets/supply,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
+"chJ" = (
+/obj/machinery/door/airlock/medical{
+	name = "Medical Cold Room";
+	req_access_txt = "5"
+	},
+/turf/open/floor/iron,
+/area/medical/coldroom)
 "chR" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -28723,26 +28730,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"icp" = (
-/obj/machinery/light/directional/south,
-/obj/machinery/aug_manipulator,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/button/door/directional/south{
-	id = "roboticsprivacy2";
-	name = "Robotics Privacy Control";
-	req_access_txt = "29"
-	},
-/turf/open/floor/iron/dark,
-/area/science/robotics/lab)
 "icG" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -37324,6 +37311,23 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/security/prison)
+"lmu" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/window/eastleft{
+	name = "Kitchen Delivery";
+	req_access_txt = "28"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/airalarm/kitchen_cold_room{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/service/kitchen/coldroom)
 "lmx" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
@@ -43465,6 +43469,25 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible,
 /turf/open/floor/iron/dark,
 /area/engineering/atmos)
+"nti" = (
+/obj/machinery/light/directional/south,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/button/door/directional/south{
+	id = "roboticsprivacy2";
+	name = "Robotics Privacy Control";
+	req_access_txt = "29"
+	},
+/turf/open/floor/iron/dark,
+/area/science/robotics/lab)
 "ntx" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/engine/o2,
@@ -56998,10 +57021,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
-"sjt" = (
-/obj/machinery/door/airlock/medical,
-/turf/open/floor/iron,
-/area/medical/coldroom)
 "sjF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -58616,21 +58635,6 @@
 /obj/machinery/status_display/evac/directional/south,
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
-"sPQ" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 10
-	},
-/obj/machinery/airalarm/directional/north,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/window/eastleft{
-	name = "Kitchen Delivery";
-	req_access_txt = "28"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/service/kitchen/coldroom)
 "sQe" = (
 /obj/machinery/sparker/directional/north{
 	id = "Xenobio"
@@ -92587,7 +92591,7 @@ dux
 ejb
 kUo
 ilb
-sjt
+chJ
 xfb
 asc
 uPR
@@ -103122,7 +103126,7 @@ eHX
 smS
 uqQ
 rVb
-icp
+nti
 cDi
 qmv
 ipr
@@ -111575,7 +111579,7 @@ bEH
 nER
 gDt
 eLr
-sPQ
+lmu
 crV
 alq
 iay
