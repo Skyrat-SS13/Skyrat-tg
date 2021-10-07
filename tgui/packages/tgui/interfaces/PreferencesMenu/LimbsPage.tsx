@@ -11,7 +11,7 @@ export const Markings = (props, context) => {
         Markings:
       </Stack.Item>
       {props.limb.markings.markings_list.map((marking, index) => (
-        <Stack.Item key={marking.marking_id} grow>
+        <Stack.Item key={marking.marking_id}>
           <Stack>
             <Stack.Item grow>
               <Dropdown
@@ -81,7 +81,7 @@ export const AugmentationPage = (props, context) => {
                     Augumentation:
                   </Stack.Item>
                   <Stack.Item grow>
-                    <Dropdown
+                    <Dropdown grow
                       width="100%"
                       options={Object.values(props.limb.aug_choices)}
                       displayText={props.limb.chosen_aug}
@@ -96,7 +96,7 @@ export const AugmentationPage = (props, context) => {
                     Style:
                   </Stack.Item>
                   <Stack.Item grow>
-                    <Dropdown
+                    <Dropdown grow
                       width="100%"
                       options={props.data.robotic_styles}
                       displayText={props.limb.chosen_style}
@@ -117,7 +117,7 @@ export const AugmentationPage = (props, context) => {
 export const OrganPage = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
   return (
-    <Stack.Item grow>
+    <Stack.Item>
       <Stack fill>
         <Stack.Item>
           {props.organ.name + ": "}
@@ -138,25 +138,28 @@ export const OrganPage = (props, context) => {
 export const LimbsPage = (props, context) => {
   const { data } = useBackend<PreferencesMenuData>(context);
   const { act } = useBackend<PreferencesMenuData>(context);
+  const markings = data.marking_presets ? data.marking_presets : [];
   return (
     <Stack fill>
       <Stack.Item minWidth="33%">
         <Section title="Markings">
-          <Stack.Item grow>
-            <Dropdown
+          <Stack.Item>
+            <Dropdown grow
               width="100%"
-              options={Object.values(data.marking_presets)}
+              options={Object.values(markings)}
               displayText="Pick a preset:"
               onSelected={(value) => act("set_preset", { preset: value })}
             />
           </Stack.Item>
-          {data.limbs_data.map(val => (
-            <LimbPage
-              key={val.slot}
-              limb={val}
-              data={data}
-            />
-          ))}
+          <Stack.Item>
+            {data.limbs_data.map(val => (
+              <LimbPage
+                key={val.slot}
+                limb={val}
+                data={data}
+              />
+            ))}
+          </Stack.Item>
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">

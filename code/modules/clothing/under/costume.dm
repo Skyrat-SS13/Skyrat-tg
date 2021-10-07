@@ -261,7 +261,6 @@
 	icon_state = "JackFrostUniform"
 	inhand_icon_state = "JackFrostUniform"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/yakuza
 	name = "tojo clan pants"
@@ -269,7 +268,6 @@
 	icon_state = "MajimaPants"
 	inhand_icon_state = "MajimaPants"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/dutch
 	name = "dutch's suit"
@@ -277,105 +275,90 @@
 	icon_state = "DutchUniform"
 	inhand_icon_state = "DutchUniform"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/irs
 	name = "internal revenue service outfit"
 	icon_state = "irs_jumpsuit"
 	inhand_icon_state = "irs_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/osi
 	name = "O.S.I. jumpsuit"
 	icon_state = "osi_jumpsuit"
 	inhand_icon_state = "osi_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/tmc
 	name = "Lost MC clothing"
 	icon_state = "tmc_jumpsuit"
 	inhand_icon_state = "tmc_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/pg
 	name = "powder ganger prison jumpsuit"
 	icon_state = "pg_jumpsuit"
 	inhand_icon_state = "pg_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/driscoll
 	name = "O'Driscoll outfit"
 	icon_state = "driscoll_jumpsuit"
 	inhand_icon_state = "driscoll_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/deckers
 	name = "deckers outfit"
 	icon_state = "decker_jumpsuit"
 	inhand_icon_state = "decker_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/morningstar
 	name = "Morningstar suit"
 	icon_state = "morningstar_jumpsuit"
 	inhand_icon_state = "morningstar_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/saints
 	name = "Saints outfit"
 	icon_state = "saints_jumpsuit"
 	inhand_icon_state = "saints_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/phantom
 	name = "Phantom Thief outfit"
 	icon_state = "phantom_jumpsuit"
 	inhand_icon_state = "phantom_jumpsuit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/allies
 	name = "allies tanktop"
 	icon_state = "allies_uniform"
 	inhand_icon_state = "allies_uniform"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/soviet_families
 	name = "soviet conscript uniform"
 	icon_state = "soviet_uniform"
 	inhand_icon_state = "soviet_uniform"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/yuri
 	name = "yuri initiate jumpsuit"
 	icon_state = "yuri_uniform"
 	inhand_icon_state = "yuri_uniform"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/sybil_slickers
 	name = "sybil slickers uniform"
 	icon_state = "football_blue"
 	inhand_icon_state = "football_blue"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/basil_boys
 	name = "basil boys uniform"
 	icon_state = "football_red"
 	inhand_icon_state = "football_red"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/costume/swagoutfit
 	name = "Swag outfit"
@@ -383,7 +366,6 @@
 	icon_state = "SwagOutfit"
 	inhand_icon_state = "SwagOutfit"
 	can_adjust = FALSE
-	mutant_variants = NONE // SKYRAT EDIT ADD
 
 /obj/item/clothing/under/costume/referee
 	name = "referee uniform"

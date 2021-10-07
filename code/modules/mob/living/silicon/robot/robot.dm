@@ -314,11 +314,11 @@
 		if(lamp_enabled || lamp_doom)
 			eye_lights.icon_state = "[model.special_light_key ? "[model.special_light_key]":"[model.cyborg_base_icon]"]_l"
 			eye_lights.color = lamp_doom? COLOR_RED : lamp_color
-			eye_lights.plane = 19 //glowy eyes
+			eye_lights.plane = ABOVE_LIGHTING_PLANE //glowy eyes
 		else
 			eye_lights.icon_state = "[model.special_light_key ? "[model.special_light_key]":"[model.cyborg_base_icon]"]_e"
 			eye_lights.color = COLOR_WHITE
-			eye_lights.plane = -1
+			eye_lights.plane = GAME_PLANE
 		eye_lights.icon = icon
 		add_overlay(eye_lights)
 
@@ -553,7 +553,10 @@
 	if(!client)
 		return
 	if(stat == DEAD)
-		sight = (SEE_TURFS|SEE_MOBS|SEE_OBJS)
+		if(!SSmapping.level_trait(z, ZTRAIT_SECRET))
+			sight = (SEE_TURFS|SEE_MOBS|SEE_OBJS)
+		else
+			sight = initial(sight)
 		see_in_dark = 8
 		see_invisible = SEE_INVISIBLE_OBSERVER
 		return
@@ -609,6 +612,7 @@
 	diag_hud_set_health()
 	diag_hud_set_aishell()
 	update_health_hud()
+	update_icons() //Updates eye_light overlay
 
 /mob/living/silicon/robot/revive(full_heal = FALSE, admin_revive = FALSE)
 	if(..()) //successfully ressuscitated from death
@@ -648,6 +652,7 @@
 		hasShrunk = FALSE
 		resize = (4/3)
 		update_transform()
+	hasAffection = FALSE //Just so they can get the affection modules back if they want them.
 	//SKYRAT EDIT ADDITION END
 	logevent("Chassis model has been reset.")
 	model.transform_to(/obj/item/robot_model)

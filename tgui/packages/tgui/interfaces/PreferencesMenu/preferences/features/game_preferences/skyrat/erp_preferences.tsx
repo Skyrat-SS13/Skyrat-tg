@@ -36,9 +36,9 @@ export const aphro_pref: FeatureToggle = {
 };
 
 export const noncon_pref: FeatureToggle = {
-  name: "Non-con Roleplay",
+  name: "Obsessed Non-con Target",
   category: "ERP",
-  description: "This informs players of if you wish to engage in non-con ERP.",
+  description: "Toggles whether you wish to be an obsessed target for those with the trait.",
   component: CheckboxInput,
 };
 

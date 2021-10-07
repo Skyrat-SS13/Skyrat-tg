@@ -206,7 +206,7 @@
 	check_flags = AB_CHECK_CONSCIOUS
 	button_icon_state = "recruit"
 	icon_icon = 'icons/obj/gang/actions.dmi'
-	cooldown_time = 300
+	cooldown_time = 60 SECONDS // SKYRAT EDIT: 30 SECONDS -> 60 SECONDS
 	/// The family antagonist datum of the "owner" of this action.
 	var/datum/antagonist/gang/my_gang_datum
 
