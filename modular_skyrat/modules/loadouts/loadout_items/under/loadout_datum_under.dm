@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under
 	category = LOADOUT_ITEM_UNIFORM
 
-/datum/loadout_item/under/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+/datum/loadout_item/under/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(isplasmaman(equipper))
 		if(!visuals_only)
 			to_chat(equipper, "Your loadout uniform was not equipped directly due to your envirosuit.")
@@ -510,6 +510,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Formal Red Dress"
 	item_path = /obj/item/clothing/under/misc/formaldressred
 
+/datum/loadout_item/under/formal/pinktutu
+	name = "Pink Tutu"
+	item_path = /obj/item/clothing/under/dress/pinktutu
+
 /datum/loadout_item/under/formal/assistant
 	name = "Assistant Formal"
 	item_path = /obj/item/clothing/under/misc/assistantformal
@@ -638,6 +642,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Red Suit"
 	item_path = /obj/item/clothing/under/suit/red
 
+/datum/loadout_item/under/formal/helltaker
+	name = "Red Shirt with White Trousers"
+	item_path = /obj/item/clothing/under/suit/helltaker
+
+/datum/loadout_item/under/formal/helltaker/skirt
+	name = "Red Shirt with White Skirt"
+	item_path = /obj/item/clothing/under/suit/helltaker/skirt
+
 /datum/loadout_item/under/formal/red_lawyer_skirt
 	name = "Red Lawyer Suit"
 	item_path = /obj/item/clothing/under/rank/civilian/lawyer/red
@@ -670,6 +682,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Scratch Suit"
 	item_path = /obj/item/clothing/under/suit/white_on_white
 
+/datum/loadout_item/under/formal/denim_skirt
+	name = "Denim Skirt"
+	item_path = /obj/item/clothing/under/pants/denimskirt
+
 /datum/loadout_item/under/formal/striped_skirt
 	name = "Striped Dress"
 	item_path = /obj/item/clothing/under/dress/striped
@@ -685,6 +701,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/sundress
 	name = "Sundress"
 	item_path = /obj/item/clothing/under/dress/sundress
+
+/datum/loadout_item/under/formal/sundress/white
+	name = "White Sundress"
+	item_path = /obj/item/clothing/under/dress/sundress/white
 
 /datum/loadout_item/under/formal/tuxedo
 	name = "Tuxedo Suit"

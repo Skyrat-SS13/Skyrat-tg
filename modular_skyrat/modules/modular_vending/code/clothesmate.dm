@@ -59,6 +59,7 @@
 		/obj/item/clothing/suit/toggle/trackjacket = 5,
 		/obj/item/clothing/suit/modernwintercoatthing = 5,
 		/obj/item/clothing/suit/fallsparka = 5,
+		/obj/item/clothing/suit/toggle/lawyer/white = 5,
 		/obj/item/clothing/under/misc/bluetracksuit = 5,
 		/obj/item/clothing/under/suit/black/female/skirt = 5,
 		/obj/item/clothing/under/suit/black/female = 5,
@@ -79,6 +80,8 @@
 		/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby = 5,
 		/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby = 5,
 		/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby = 5,
+		/obj/item/clothing/under/suit/helltaker = 5,
+		/obj/item/clothing/under/suit/helltaker/skirt = 5,
 		/obj/item/clothing/glasses/betterunshit = 5,
 		/obj/item/clothing/glasses/thin = 5,
 	)

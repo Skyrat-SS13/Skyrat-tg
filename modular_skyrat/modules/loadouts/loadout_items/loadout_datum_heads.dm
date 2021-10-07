@@ -1,18 +1,23 @@
 // --- Loadout item datums for heads ---
 
-/// Head Slot Items (Deletes overrided items)
+/// Head Slot Items (Moves overrided items to backpack)
 GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/head))
 
 /datum/loadout_item/head
 	category = LOADOUT_ITEM_HEAD
 
-/datum/loadout_item/head/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+/datum/loadout_item/head/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(isplasmaman(equipper))
 		if(!visuals_only)
 			to_chat(equipper, "Your loadout helmet was not equipped directly due to your envirosuit helmet.")
 			LAZYADD(outfit.backpack_contents, item_path)
+	else if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
+		if(outfit.head)
+			LAZYADD(outfit.backpack_contents, outfit.head)
+		outfit.head = item_path
 	else
 		outfit.head = item_path
+
 
 /datum/loadout_item/head/black_beanie
 	name = "Black Beanie"
@@ -468,7 +473,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/ushanka/sec
 	name = "Security Ushanka"
-	item_path = /obj/item/clothing/head/ushankasec
+	item_path = /obj/item/clothing/head/ushanka/sec
 	restricted_roles = list("Warden","Detective","Security Medic","Security Sergeant","Security Officer","Head of Security","Civil Disputes Officer","Corrections Officer")
 
 /datum/loadout_item/head/blasthelmet
