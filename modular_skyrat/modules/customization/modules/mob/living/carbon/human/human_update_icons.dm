@@ -272,26 +272,26 @@
 		t_state = !isinhands ? (worn_icon_state ? worn_icon_state : icon_state) : (inhand_icon_state ? inhand_icon_state : icon_state)
 
 	//Find a valid icon file from variables+arguments
-	var/file2use
+	var/file_to_use
 	if(override_icon)
-		file2use = override_icon
+		file_to_use = override_icon
 	else
-		file2use = !isinhands ? (worn_icon ? worn_icon : default_icon_file) : default_icon_file
+		file_to_use = !isinhands ? (worn_icon ? worn_icon : default_icon_file) : default_icon_file
 
 	//Find a valid layer from variables+arguments
 	var/layer2use = alternate_worn_layer ? alternate_worn_layer : default_layer
 
 	var/mutable_appearance/standing
 	if(species)
-		standing = wear_species_version(file2use, t_state, layer2use, species)
+		standing = wear_species_version(file_to_use, t_state, layer2use, species)
 	else if(femaleuniform)
-		standing = wear_female_version(t_state,file2use,layer2use,femaleuniform) //should layer2use be in sync with the adjusted value below? needs testing - shiz
+		standing = wear_female_version(t_state,file_to_use,layer2use,femaleuniform) //should layer2use be in sync with the adjusted value below? needs testing - shiz
 	if(!standing)
-		standing = mutable_appearance(file2use, t_state, -layer2use)
+		standing = mutable_appearance(file_to_use, t_state, -layer2use)
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
-	var/list/worn_overlays = worn_overlays(standing, isinhands, file2use, mutant_styles)
+	var/list/worn_overlays = worn_overlays(standing, isinhands, file_to_use, mutant_styles)
 	if(worn_overlays && worn_overlays.len)
 		standing.overlays.Add(worn_overlays)
 
@@ -352,12 +352,12 @@
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()
 
-/obj/item/proc/wear_species_version(file2use, state2use, layer, species)
+/obj/item/proc/wear_species_version(file_to_use, state_to_use, layer, species)
 	return
 
-/obj/item/clothing/wear_species_version(file2use, state2use, layer, species)
+/obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species)
 	LAZYINITLIST(GLOB.species_clothing_icons[species])
-	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file2use]-[state2use]"]
+	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"]
 	if(!species_clothing_icon) 	//Create standing/laying icons if they don't exist
-		generate_species_clothing(file2use, state2use, species)
-	return mutable_appearance(GLOB.species_clothing_icons[species]["[file2use]-[state2use]"], layer = -layer)
+		generate_species_clothing(file_to_use, state_to_use, species)
+	return mutable_appearance(GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"], layer = -layer)
