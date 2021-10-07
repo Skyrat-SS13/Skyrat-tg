@@ -84,7 +84,7 @@
 	if(last_fire && last_fire + 15 SECONDS > world.time)
 		. = span_notice("[user] touches the end of [src] to \the [A], using the residual heat to ignite it in a puff of smoke. What a badass.")
 
-/obj/item/gun/ballistic/revolver/detective
+/obj/item/gun/ballistic/revolver/detective //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper Colt Detective Special"
 	desc = "A classic, if not outdated, law enforcement firearm. Uses .38 Special rounds. \nSome spread rumors that if you loosen the barrel with a wrench, you can \"improve\" it."
 	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
@@ -100,16 +100,16 @@
 	misfire_probability = 0
 	misfire_percentage_increment = 25 //about 1 in 4 rounds, which increases rapidly every shot
 	obj_flags = UNIQUE_RENAME
-	unique_reskin = list("Default" = "detective",
-						"Fitz Special" = "detective_fitz",
-						"Police Positive Special" = "detective_police",
-						"Blued Steel" = "detective_blued",
-						"Stainless Steel" = "detective_stainless",
-						"Gold Trim" = "detective_gold",
-						"Leopard Spots" = "detective_leopard",
-						"The Peacemaker" = "detective_peacemaker",
-						"Black Panther" = "detective_panther"
-						)
+//	unique_reskin = list("Default" = "detective",
+//						"Fitz Special" = "detective_fitz",
+//						"Police Positive Special" = "detective_police",
+//						"Blued Steel" = "detective_blued",
+//						"Stainless Steel" = "detective_stainless",
+//						"Gold Trim" = "detective_gold",
+//						"Leopard Spots" = "detective_leopard",
+//						"The Peacemaker" = "detective_peacemaker",
+//						"Black Panther" = "detective_panther"
+//						)
 
 	/// Used to avoid some redundancy on a revolver loaded with 357 regarding misfiring while being wrenched.
 	var/skip_357_missfire_check = FALSE

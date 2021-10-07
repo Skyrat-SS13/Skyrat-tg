@@ -293,13 +293,13 @@
 	name = "\improper Type-69 Surplus Rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	
+
 /obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
 	name = "\improper NT CMG-1"
 	desc = "A bullpup three-round burst .45 PDW with an eerily familiar design. It has a foldable stock and a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	
+
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
 	desc = "A contemporary rifle that just exited its prototype phase and has started production, a rare sight for now. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
@@ -317,3 +317,28 @@
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 20
+
+/obj/item/gun/ballistic/revolver/mateba/bladerunner
+	name = "\improper NT REV-49"
+	desc = "A prototype 'revolver' from Nanotrasen's Weaponry Division. Only recently started to be sold to SolFed Marshals. For being a revolver, it doesn't seem to have any actual way to reload it."
+	icon_state = "bladerunner"
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
+
+/////////////////////////////////
+////DETECTIVE REVOLVER RESKIN////
+/////////////////////////////////
+
+/obj/item/gun/ballistic/revolver/detective
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	unique_reskin = list("Default" = "detective",
+						"Fitz Special" = "detective_fitz",
+						"Police Positive Special" = "detective_police",
+						"Blued Steel" = "detective_blued",
+						"Stainless Steel" = "detective_stainless",
+						"Gold Trim" = "detective_gold",
+						"Leopard Spots" = "detective_leopard",
+						"The Peacemaker" = "detective_peacemaker",
+						"Black Panther" = "detective_panther",
+						"NT REV-49" = "bladerunner"
+						)
