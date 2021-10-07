@@ -34,7 +34,6 @@
 	burnmod = TESHARI_BURNMOD
 	punchdamagelow = TESHARI_PUNCH_LOW
 	punchdamagehigh = TESHARI_PUNCH_HIGH
-	// speedmod = -0.25 // no, because people /will/ bitch about balance
 	bodytemp_normal = BODYTEMP_NORMAL + TESHARI_TEMP_OFFSET
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
