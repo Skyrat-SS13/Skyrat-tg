@@ -26,7 +26,7 @@
 	foodtypes = VEGETABLES
 	grind_results = list(/datum/reagent/consumable/soymilk = 0)
 	tastes = list("soy" = 1)
-	//wine_power = 20 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 20
 
 // Koibean
 /obj/item/seeds/soya/koi
@@ -48,4 +48,4 @@
 	icon_state = "koibeans"
 	foodtypes = VEGETABLES
 	tastes = list("koi" = 1)
-	//wine_power = 40 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 40

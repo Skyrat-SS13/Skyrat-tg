@@ -127,7 +127,7 @@
 	inhand_icon_state = "bluespace_peel"
 	trash_type = /obj/item/grown/bananapeel/bluespace
 	tastes = list("banana" = 1)
-	//wine_power = 60 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 60
 	wine_flavor = "slippery hypercubes"
 
 /obj/item/grown/bananapeel/bluespace

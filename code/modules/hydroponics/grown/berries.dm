@@ -51,7 +51,7 @@
 	juice_results = list(/datum/reagent/consumable/poisonberryjuice = 0)
 	tastes = list("poison-berry" = 1)
 	distill_reagent = null
-	//wine_power = 35 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 35
 
 // Death Berries
 /obj/item/seeds/berry/death
@@ -76,7 +76,7 @@
 	foodtypes = FRUIT | TOXIC
 	tastes = list("death-berry" = 1)
 	distill_reagent = null
-	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 50
 
 // Glow Berries
 /obj/item/seeds/berry/glow
@@ -103,7 +103,7 @@
 	foodtypes = FRUIT
 	tastes = list("glow-berry" = 1)
 	distill_reagent = null
-	//wine_power = 60 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 60
 
 // Grapes
 /obj/item/seeds/grape

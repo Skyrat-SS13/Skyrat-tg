@@ -27,7 +27,7 @@
 	bite_consumption_mod = 0.5 // Grazing on grass
 	var/stacktype = /obj/item/stack/tile/grass
 	var/tile_coefficient = 0.02 // 1/50
-	//wine_power = 15 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 15
 
 /obj/item/food/grown/grass/attack_self(mob/user)
 	to_chat(user, span_notice("You prepare the astroturf."))

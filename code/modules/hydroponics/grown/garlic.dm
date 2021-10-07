@@ -17,4 +17,4 @@
 	desc = "Delicious, but with a potentially overwhelming odor."
 	icon_state = "garlic"
 	tastes = list("garlic" = 1)
-	//wine_power = 10 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 10

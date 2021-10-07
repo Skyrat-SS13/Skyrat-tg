@@ -31,7 +31,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	foodtypes = FRUIT
 	juice_results = list(/datum/reagent/consumable/watermelonjuice = 0)
-	//wine_power = 40 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 40
 
 /obj/item/food/grown/watermelon/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/watermelonslice, 5, 20)
@@ -59,7 +59,7 @@
 	desc = "The water within this melon has been blessed by some deity that's particularly fond of watermelon."
 	icon_state = "holymelon"
 	bite_consumption_mod = 2
-	//wine_power = 70 //Water to wine, baby. //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 70 //Water to wine, baby.
 	wine_flavor = "divinity"
 
 /obj/item/food/grown/holymelon/make_dryable()

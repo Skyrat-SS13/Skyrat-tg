@@ -26,7 +26,7 @@
 	icon_state = "chilipepper"
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
-	//wine_power = 20 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 20
 
 // Ice Chili
 /obj/item/seeds/chili/ice
@@ -52,7 +52,7 @@
 	icon_state = "icepepper"
 	bite_consumption_mod = 5
 	foodtypes = FRUIT
-	//wine_power = 30 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 30
 
 // Ghost Chili
 /obj/item/seeds/chili/ghost
@@ -79,4 +79,4 @@
 	icon_state = "ghostchilipepper"
 	bite_consumption_mod = 5
 	foodtypes = FRUIT
-	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 50

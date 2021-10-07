@@ -47,4 +47,4 @@
 	desc = "Emblazoned upon the apple is the word 'Kallisti'."
 	icon_state = "goldapple"
 	distill_reagent = null
-	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 50

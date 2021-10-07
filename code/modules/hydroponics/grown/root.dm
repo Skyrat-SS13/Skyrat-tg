@@ -23,7 +23,7 @@
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
 	juice_results = list(/datum/reagent/consumable/carrotjuice = 0)
-	//wine_power = 30 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 30
 
 /obj/item/food/grown/carrot/attackby(obj/item/I, mob/user, params)
 	if(I.get_sharpness())
@@ -54,7 +54,7 @@
 	icon_state = "parsnip"
 	foodtypes = VEGETABLES
 	juice_results = list(/datum/reagent/consumable/parsnipjuice = 0)
-	//wine_power = 35 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 35
 
 
 // White-Beet
@@ -81,7 +81,7 @@
 	icon_state = "whitebeet"
 	bite_consumption_mod = 3
 	foodtypes = VEGETABLES
-	//wine_power = 40 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 40
 
 // Red Beet
 /obj/item/seeds/redbeet
@@ -108,4 +108,4 @@
 	icon_state = "redbeet"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
-	//wine_power = 60 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 60

@@ -77,7 +77,7 @@
 	icon_state = "galaxythistle"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
-	//wine_power = 35 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 35
 	tastes = list("thistle" = 2, "artichoke" = 1)
 
 // Cabbage
@@ -107,7 +107,7 @@
 	desc = "Ewwwwwwwwww. Cabbage."
 	icon_state = "cabbage"
 	foodtypes = VEGETABLES
-	//wine_power = 20 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 20
 
 // Sugarcane
 /obj/item/seeds/sugarcane
@@ -165,7 +165,7 @@
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
 	tastes = list("gunpowder" = 1)
-	//wine_power = 90 //It burns going down, too. //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 90 //It burns going down, too.
 
 //Cherry Bombs
 /obj/item/seeds/cherry/bomb
@@ -187,7 +187,7 @@
 	alt_icon = "cherry_bomb_lit"
 	seed = /obj/item/seeds/cherry/bomb
 	bite_consumption_mod = 3
-	//wine_power = 80 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 80
 
 // aloe
 /obj/item/seeds/aloe

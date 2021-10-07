@@ -97,7 +97,7 @@
 	icon_state = "bluespacetomato"
 	bite_consumption_mod = 3
 	distill_reagent = null
-	//wine_power = 80 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 80
 
 // Killer Tomato
 /obj/item/seeds/tomato/killer

@@ -2,7 +2,7 @@
 	name = "mushroom"
 	bite_consumption_mod = 3
 	foodtypes = VEGETABLES
-	//wine_power = 40 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 40
 
 // Reishi
 /obj/item/seeds/reishi
@@ -84,7 +84,7 @@
 	name = "destroying angel"
 	desc = "<I>Amanita Virosa</I>: Deadly poisonous basidiomycete fungus filled with alpha amatoxins."
 	icon_state = "angel"
-	//wine_power = 60 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 60
 
 // Liberty Cap
 /obj/item/seeds/liberty
@@ -110,7 +110,7 @@
 	name = "liberty-cap"
 	desc = "<I>Psilocybe Semilanceata</I>: Liberate yourself!"
 	icon_state = "libertycap"
-	//wine_power = 80 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 80
 
 // Plump Helmet
 /obj/item/seeds/plump
@@ -251,7 +251,7 @@
 	desc = "<I>Mycena Bregprox</I>: This species of mushroom glows in the dark."
 	icon_state = "glowshroom"
 	var/effect_path = /obj/structure/glowshroom
-	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 50
 
 /obj/item/food/grown/mushroom/glowshroom/attack_self(mob/user)
 	if(isspaceturf(user.loc))
@@ -323,7 +323,7 @@
 	icon_state = "shadowshroom"
 	effect_path = /obj/structure/glowshroom/shadowshroom
 	tastes = list("shadow" = 1, "mushroom" = 1)
-	//wine_power = 60 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 60
 
 /obj/item/food/grown/mushroom/glowshroom/shadowshroom/attack_self(mob/user)
 	. = ..()
@@ -357,4 +357,4 @@
 	desc = "<I>Lycoperdon Faetidus</I>: This puffball is considered a great nuisance not only because of the highly irritating nature of its spores, but also because of its considerable size and unsightly appearance."
 	icon_state = "odious_puffball"
 	tastes = list("rotten garlic" = 2, "mushroom" = 1, "spores" = 1)
-	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
+	wine_power = 50
