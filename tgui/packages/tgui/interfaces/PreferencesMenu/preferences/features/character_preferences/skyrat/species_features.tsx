@@ -450,3 +450,13 @@ export const skin_tone_toggle: FeatureToggle = {
   name: "Uses skintone",
   component: CheckboxInput,
 };
+
+export const undershirt_color: Feature<string> = {
+  name: "Undershirt color",
+  component: FeatureColorInput,
+};
+
+export const socks_color: Feature<string> = {
+  name: "Socks color",
+  component: FeatureColorInput,
+};

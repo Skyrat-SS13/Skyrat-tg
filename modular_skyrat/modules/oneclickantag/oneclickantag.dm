@@ -212,13 +212,13 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	return FALSE
 
 /datum/admins/proc/make_wizard()
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", ROLE_WIZARD, null)
+	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", ROLE_WIZARD, null)
 	var/mob/living/carbon/human/target
 	do
 		var/mob/dead/observer/selected = pick_n_take(candidates)
 		if(!LAZYLEN(candidates))
 			return FALSE
-		target = makeBody(selected)
+		target = make_body(selected)
 		if(!target.mind.active) //SMH people can't be trusted with shit; why would you DISCONNECT RIGHT AFTER BEING SELECTED FOR THE GHOST ROLE???
 			qdel(target)
 			continue
@@ -227,7 +227,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 	return TRUE
 
 /datum/admins/proc/make_nukies(maxCount = 5)
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for a nuke team being sent in?", ROLE_OPERATIVE, null)
+	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you wish to be considered for a nuke team being sent in?", ROLE_OPERATIVE, null)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 	if(candidates.len)
@@ -249,7 +249,7 @@ If anyone can figure out how to get Obsessed to work I would be very appreciativ
 		var/leader_chosen = FALSE
 		var/datum/team/nuclear/nuke_team
 		for(var/mob/c in chosen)
-			var/mob/living/carbon/human/new_character=makeBody(c)
+			var/mob/living/carbon/human/new_character = make_body(c)
 			if(!leader_chosen)
 				leader_chosen = TRUE
 				var/datum/antagonist/nukeop/N = new_character.mind.add_antag_datum(/datum/antagonist/nukeop/leader)
