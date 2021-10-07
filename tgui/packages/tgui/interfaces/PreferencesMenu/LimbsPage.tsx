@@ -6,13 +6,13 @@ import { CharacterPreview } from "./CharacterPreview";
 export const Markings = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
   return (
-    <Stack vertical>
+    <Stack fill vertical>
       <Stack.Item>
         Markings:
       </Stack.Item>
       {props.limb.markings.markings_list.map((marking, index) => (
         <Stack.Item key={marking.marking_id}>
-          <Stack>
+          <Stack fill>
             <Stack.Item grow>
               <Dropdown
                 width="100%"
@@ -56,8 +56,8 @@ export const LimbPage = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
   return (
     <div>
-      <Section title={props.limb.name}>
-        <Stack vertical>
+      <Section fill title={props.limb.name}>
+        <Stack vertical fill>
           <Stack.Item>
             <Markings
               limb={props.limb}
@@ -74,8 +74,8 @@ export const AugmentationPage = (props, context) => {
   if (props.limb.can_augment) {
     return (
       <div style={{ "margin-bottom": "1.5em" }}>
-        <Section title={props.limb.name}>
-          <Stack vertical>
+        <Section fill title={props.limb.name}>
+          <Stack fill vertical>
             <Stack.Item>
               <Stack fill>
                 <Stack.Item>
@@ -141,9 +141,9 @@ export const LimbsPage = (props, context) => {
   const markings = data.marking_presets ? data.marking_presets : [];
   let balance = -data.quirks_balance;
   return (
-    <Stack>
-      <Stack.Item minWidth="33%">
-        <Section scrollable title="Markings">
+    <Stack minHeight="100%">
+      <Stack.Item minWidth="33%" minHeight="100%">
+        <Section fill scrollable title="Markings" height="237%">
           <div>
             <Dropdown grow
               width="100%"
@@ -164,7 +164,7 @@ export const LimbsPage = (props, context) => {
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Character Preview" fill align="center">
+        <Section title="Character Preview" fill align="center" height="237%">
           <CharacterPreview
             id={data.character_preview_view}
             height="25%"
@@ -191,8 +191,8 @@ export const LimbsPage = (props, context) => {
           </Box>
         </Section>
       </Stack.Item>
-      <Stack.Item minWidth="33%" maxHeight="100%">
-        <Section title="Organs">
+      <Stack.Item minWidth="33%">
+        <Section fill title="Organs" height="87%">
           <Stack fill vertical>
             {data.organs_data.map(val => (
               <OrganPage
@@ -203,7 +203,7 @@ export const LimbsPage = (props, context) => {
             ))}
           </Stack>
         </Section>
-        <Section scrollable title="Augmentations">
+        <Section fill scrollable title="Augmentations" height="148%">
           {data.limbs_data.map(val => (
             <AugmentationPage
               key={val.slot}
