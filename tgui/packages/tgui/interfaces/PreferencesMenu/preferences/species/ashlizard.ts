@@ -2,7 +2,7 @@ import { Species } from "./base";
 
 const Ashwalker: Species = {
   description: "The primitive natives of Indecipheres, this race, \
-    remotely related to other spacefaring reptiles has formed a \
+    remotely related to other spacefaring reptiles, has formed a \
     symbiotic relationship with one of the tendrils of the Necropolis. \
     They live in a delicate balance with their surroundings, \
     now threatened by invaders from the stars...",
