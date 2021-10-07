@@ -1,8 +1,6 @@
 /datum/language/schechi
 	name = "Schechi"
 	desc = "The common language of the Teshari, consisting of miscellaneous chirps."
-	speech_verb = "chirps"
-	ask_verb = "chirps"
 	key = "f"
 	flags = LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	space_chance = 40
