@@ -267,7 +267,7 @@
 	if(!usr)
 		return
 	var/mob/dead/new_player/new_player = usr
-	if(IsGuestKey(new_player.key))
+	if(is_guest_key(new_player.key))
 		set_button_status(FALSE)
 		return
 	if(!SSdbcore.Connect())
