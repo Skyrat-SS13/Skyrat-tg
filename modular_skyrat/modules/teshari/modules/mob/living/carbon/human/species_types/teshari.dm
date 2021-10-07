@@ -10,10 +10,13 @@
 		HAS_BONE,
 		HAS_MARKINGS,
 		)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP
+	)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,
-		"ears" = ACC_RANDOM,
-		"fluff" = ACC_RANDOM, 
+		"ears" = ACC_RANDOM, 
 		"legs" = "Normal Legs"
 	)
 	disliked_food = GROSS | GRAIN

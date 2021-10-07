@@ -350,3 +350,14 @@
 /datum/sprite_accessory/tails/mammal/teshari
 	recommended_species = list(SPECIES_TESHARI)
 	general_type = "teshari"
+
+/datum/sprite_accessory/tails/mammal/teshari/default
+	name = "Teshari Default Tail"
+	icon_state = "teshari_default"
+
+/datum/sprite_accessory/tails/mammal/teshari/fluffy
+	name = "Teshari Fluffy Tail"
+	icon_state = "teshari_fluffy"
+/datum/sprite_accessory/tails/mammal/teshari/thin
+	name = "Teshari Thin Tail"
+	icon_state = "teshari_thin"
