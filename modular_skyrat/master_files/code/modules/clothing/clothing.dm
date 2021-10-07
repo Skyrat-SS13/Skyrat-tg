@@ -12,11 +12,11 @@
     return ..()
 
 
-/obj/item/clothing/proc/generate_species_clothing(file2use, state2use, species) // Skyrat specific proc
-	var/icon/human_clothing_icon = icon(file2use, state2use)
+/obj/item/clothing/proc/generate_species_clothing(file_to_use, state_to_use, species) // Skyrat specific proc
+	var/icon/human_clothing_icon = icon(file_to_use, state_to_use)
 
 	if(!greyscale_colors_clothing || !greyscale_icon_state)
-		GLOB.species_clothing_icons[species]["[file2use]-[state2use]"] = human_clothing_icon
+		GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] = human_clothing_icon
 		return
 
 	var/icon/species_icon = icon(species, greyscale_icon_state)
@@ -33,4 +33,4 @@
 
 	species_icon.MapColors(final_list[1], final_list[2], final_list[3])
 	species_icon = fcopy_rsc(species_icon)
-	GLOB.species_clothing_icons[species]["[file2use]-[state2use]"] = species_icon
+	GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] = species_icon
