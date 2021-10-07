@@ -104,4 +104,4 @@
 	icon_state = "kudzupod"
 	foodtypes = VEGETABLES | GROSS
 	tastes = list("kudzu" = 1)
-	wine_power = 20
+	//wine_power = 20 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants

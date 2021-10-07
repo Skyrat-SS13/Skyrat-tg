@@ -30,7 +30,7 @@
 	foodtypes = FRUIT
 	grind_results = list(/datum/reagent/consumable/cherryjelly = 0)
 	tastes = list("cherry" = 1)
-	wine_power = 30
+	//wine_power = 30 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 // Blue Cherries
 /obj/item/seeds/cherry/blue
@@ -53,7 +53,7 @@
 	foodtypes = FRUIT
 	grind_results = list(/datum/reagent/consumable/bluecherryjelly = 0)
 	tastes = list("blue cherry" = 1)
-	wine_power = 50
+	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 //Cherry Bulbs
 /obj/item/seeds/cherry/bulb
@@ -78,7 +78,7 @@
 	foodtypes = FRUIT
 	grind_results = list(/datum/reagent/consumable/cherryjelly = 0)
 	tastes = list("cherry" = 1)
-	wine_power = 50
+	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 //Cherry Bombs
 /obj/item/seeds/cherry/bomb
@@ -100,4 +100,4 @@
 	alt_icon = "cherry_bomb_lit"
 	seed = /obj/item/seeds/cherry/bomb
 	bite_consumption_mod = 3
-	wine_power = 80
+	//wine_power = 80 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants

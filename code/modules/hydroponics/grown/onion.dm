@@ -23,7 +23,7 @@
 	desc = "Nothing to cry over."
 	icon_state = "onion"
 	tastes = list("onions" = 1)
-	wine_power = 30
+	//wine_power = 30 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 /obj/item/food/grown/onion/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/onion_slice, 2, 15)
@@ -44,7 +44,7 @@
 	name = "red onion"
 	desc = "Purple despite the name."
 	icon_state = "onion_red"
-	wine_power = 60
+	//wine_power = 60 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 /obj/item/food/grown/onion/red/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/onion_slice/red, 2, 15)

@@ -32,7 +32,7 @@
 	foodtypes = FRUIT | PINEAPPLE
 	juice_results = list(/datum/reagent/consumable/pineapplejuice = 0)
 	tastes = list("pineapple" = 1)
-	wine_power = 40
+	//wine_power = 40 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 
 /obj/item/food/grown/pineapple/MakeProcessable()

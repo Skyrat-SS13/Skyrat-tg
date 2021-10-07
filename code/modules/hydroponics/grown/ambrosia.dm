@@ -31,7 +31,7 @@
 	seed = /obj/item/seeds/ambrosia
 	name = "ambrosia vulgaris branch"
 	desc = "This is a plant containing various healing chemicals."
-	wine_power = 30
+	//wine_power = 30 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 // Ambrosia Deus
 /obj/item/seeds/ambrosia/deus
@@ -50,7 +50,7 @@
 	name = "ambrosia deus branch"
 	desc = "Eating this makes you feel immortal!"
 	icon_state = "ambrosiadeus"
-	wine_power = 50
+	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 //Ambrosia Gaia
 /obj/item/seeds/ambrosia/gaia
@@ -74,5 +74,5 @@
 	light_system = MOVABLE_LIGHT
 	light_range = 3
 	seed = /obj/item/seeds/ambrosia/gaia
-	wine_power = 70
+	//wine_power = 70 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	wine_flavor = "the earthmother's blessing"

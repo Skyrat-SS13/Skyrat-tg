@@ -28,4 +28,4 @@
 	bite_consumption_mod = 2
 	foodtypes = FRUIT
 	tastes = list("gunpowder" = 1)
-	wine_power = 90 //It burns going down, too.
+	//wine_power = 90 //It burns going down, too. //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants

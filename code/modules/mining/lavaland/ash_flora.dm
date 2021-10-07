@@ -192,7 +192,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	seed = /obj/item/seeds/lavaland/polypore
-	wine_power = 20
+	//wine_power = 20 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 /obj/item/food/grown/ash_flora/Initialize(mapload)
 	. = ..()
@@ -210,7 +210,7 @@
 	desc = "A leaf, from a mushroom."
 	icon_state = "mushroom_leaf"
 	seed = /obj/item/seeds/lavaland/porcini
-	wine_power = 40
+	//wine_power = 40 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "This flora is nutritious and healthy to eat, though slightly laced with nicotine." //SKYRAT EDIT
@@ -220,7 +220,7 @@
 	desc = "The cap of a large mushroom."
 	icon_state = "mushroom_cap"
 	seed = /obj/item/seeds/lavaland/inocybe
-	wine_power = 70
+	//wine_power = 70 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "This flora is poisonous and hallucinogenic." //SKYRAT EDIT
@@ -230,7 +230,7 @@
 	desc = "A long mushroom stem. It's slightly glowing."
 	icon_state = "mushroom_stem"
 	seed = /obj/item/seeds/lavaland/ember
-	wine_power = 60
+	//wine_power = 60 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "This flora contains psychoactive drugs and will also make you glow." //SKYRAT EDIT
@@ -240,7 +240,7 @@
 	desc = "A cactus fruit covered in a thick, reddish skin. And some ash."
 	icon_state = "cactus_fruit"
 	seed = /obj/item/seeds/lavaland/cactus
-	wine_power = 50
+	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	special_desc_requirement = EXAMINE_CHECK_JOB //SKYRAT EDIT
 	special_desc_jobs = list("Botanist") //SKYRAT EDIT
 	special_desc = "This flora is very nutritious and medicinal." //SKYRAT EDIT
@@ -250,7 +250,7 @@
 	desc = "Small, deeply flavourful mushrooms originally native to Tizira."
 	icon_state = "seraka_cap"
 	seed = /obj/item/seeds/lavaland/seraka
-	wine_power = 40
+	//wine_power = 40 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 //SEEDS
 

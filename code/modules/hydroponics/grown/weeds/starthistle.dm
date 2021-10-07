@@ -77,5 +77,5 @@
 	icon_state = "galaxythistle"
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
-	wine_power = 35
+	//wine_power = 35 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	tastes = list("thistle" = 2, "artichoke" = 1)

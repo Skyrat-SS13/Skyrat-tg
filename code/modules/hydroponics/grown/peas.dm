@@ -24,7 +24,7 @@
 	icon_state = "peas"
 	foodtypes = VEGETABLES
 	tastes = list ("peas" = 1, "chalky saltiness" = 1)
-	wine_power = 50
+	//wine_power = 50 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	wine_flavor = "what is, distressingly, fermented peas."
 
 // Laughin' Peas
@@ -56,7 +56,7 @@
 	foodtypes = VEGETABLES
 	juice_results = list (/datum/reagent/consumable/laughsyrup = 0)
 	tastes = list ("a prancing rabbit" = 1) //Vib Ribbon sends her regards.. wherever she is.
-	wine_power = 90
+	//wine_power = 90 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	wine_flavor = "a vector-graphic rabbit dancing on your tongue"
 
 // World Peas - Peace at last, peace at last...
@@ -89,5 +89,5 @@
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES
 	tastes = list ("numbing tranquility" = 2, "warmth" = 1)
-	wine_power = 100
+	//wine_power = 100 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 	wine_flavor = "mind-numbing peace and warmth"

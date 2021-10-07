@@ -5,7 +5,7 @@
 	desc = "It's so sour, your face will twist."
 	icon_state = "lime"
 	foodtypes = FRUIT
-	wine_power = 30
+	//wine_power = 30 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 // Lime
 /obj/item/seeds/lime
@@ -107,7 +107,7 @@
 	icon_state = "firelemon"
 	alt_icon = "firelemon_active"
 	foodtypes = FRUIT
-	wine_power = 70
+	//wine_power = 70 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 //3D Orange
 /obj/item/seeds/orange_3d

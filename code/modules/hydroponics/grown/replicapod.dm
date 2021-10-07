@@ -27,7 +27,7 @@
 	desc = "Ewwwwwwwwww. Cabbage."
 	icon_state = "cabbage"
 	foodtypes = VEGETABLES
-	wine_power = 20
+	//wine_power = 20 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 ///The actual replica pods themselves!
 /obj/item/seeds/replicapod

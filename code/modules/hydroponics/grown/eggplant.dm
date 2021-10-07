@@ -21,7 +21,7 @@
 	desc = "Maybe there's a chicken inside?"
 	icon_state = "eggplant"
 	foodtypes = FRUIT
-	wine_power = 20
+	//wine_power = 20 //SKYRAT EDIT - REMOVAL: Given distill_reagent in morefermentplants
 
 // Egg-Plant
 /obj/item/seeds/eggplant/eggy
