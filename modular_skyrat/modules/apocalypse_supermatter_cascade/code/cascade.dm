@@ -1,6 +1,6 @@
 /turf/open/indestructible/supermatter_cascade
 	name = "supermatter sea"
-	desc = "The end is night... this is a product from the supermatter slowly expanding to consume the whole universe."
+	desc = "The end is nigh... this is a product from the supermatter slowly expanding to consume the whole universe."
 	icon = 'modular_skyrat/modules/apocalypse_supermatter_cascade/icons/cascade.dmi'
 	icon_state = "cascade"
 	//we need 5 seconds between each spread
