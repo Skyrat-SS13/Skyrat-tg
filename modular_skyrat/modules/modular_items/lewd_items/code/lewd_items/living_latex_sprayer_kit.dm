@@ -23,7 +23,7 @@
 	var/obj/item/book/manual/latex_pulv_manual/note = /obj/item/book/manual/latex_pulv_manual // Stored note
 	var/obj/item/gun/ballistic/revolver/latexpulv/pulv = /obj/item/gun/ballistic/revolver/latexpulv // Stored pulv
 	var/obj/item/ammo_casing/latexbin/bin = /obj/item/ammo_casing/latexbin // Stored latex bin
-	var/obj/item/pda/latex_pulv_encoder/encoder = /obj/item/pda/latex_pulv_encoder // Stored encoder
+	var/obj/item/latex_pulv_encoder/encoder = /obj/item/latex_pulv_encoder // Stored encoder
 	var/obj/item/firing_pin/latexpulvmodule/pin = /obj/item/firing_pin/latexpulvmodule // Stored latex module
 	var/obj/item/reagent_containers/spray/livinglatexdissolver/dissolver = /obj/item/reagent_containers/spray/livinglatexdissolver // Stored dissolver
 
@@ -188,7 +188,7 @@
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
 		// TODO: проверка, не вставлен ли чип в программатор перед размещением в кейса
-		else if(istype(I,/obj/item/pda/latex_pulv_encoder))
+		else if(istype(I,/obj/item/latex_pulv_encoder))
 			if(!encoder)
 				if(!encoder.pin) // Проверяем есть ли чип
 					if(!user.transferItemToLoc(I,src))
@@ -213,13 +213,13 @@
 
 		else if(istype(I, /obj/item/gun/ballistic/revolver/latexpulv))
 			if(!pulv)
-				if(bin)
+				if(!pulv.chambered)
 					if(!user.transferItemToLoc(I,src))
 						return
 					pulv = I
 					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 				else
-					to_chat(user, span_notice("You need to put the latex bin into the kit, before you can put the sprayer."))
+					to_chat(user, span_notice("You must first remove the canister from the sprayer, before you can put it to [src]."))
 					return
 			else
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
@@ -227,14 +227,10 @@
 
 		else if(istype(I, /obj/item/book/manual/latex_pulv_manual))
 			if(!note)
-				if(pulv)
-					if(!user.transferItemToLoc(I,src))
-						return
-					note = I
-					user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
-				else
-					to_chat(user, span_notice("You need to put the sprayer into the kit, before you can put the note."))
+				if(!user.transferItemToLoc(I,src))
 					return
+				note = I
+				user.visible_message(span_notice("[user] inserts [I] into [src]."), span_notice("You insert [I] into [src]."))
 			else
 				to_chat(user, span_notice("[I] already in [src]. No room for one more."))
 				return
