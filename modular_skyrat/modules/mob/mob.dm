@@ -9,12 +9,6 @@
 	if(!ckey)
 		return
 	SEND_SIGNAL(new_mob, COMSIG_MOB_PRE_PLAYER_CHANGE, new_mob, src)
-	// if (client)
-	// 	if(client.prefs?.auto_ooc)
-	// 		if (client.prefs.chat_toggles & CHAT_OOC && isliving(new_mob))
-	// 			client.prefs.chat_toggles ^= CHAT_OOC
-	// 		if (!(client.prefs.chat_toggles & CHAT_OOC) && isdead(new_mob))
-	// 			client.prefs.chat_toggles ^= CHAT_OOC
 	new_mob.ckey = ckey
 	if(send_signal)
 		SEND_SIGNAL(src, COMSIG_MOB_KEY_CHANGE, new_mob, src)
