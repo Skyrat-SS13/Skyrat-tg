@@ -243,7 +243,7 @@ SUBSYSTEM_DEF(traumas)
 		"anime" = typecacheof(list(/datum/species/human/felinid)),
 		"clowns" = typecacheof(list(/datum/species/golem/bananium)),
 		"insects" = typecacheof(list(/datum/species/fly, /datum/species/moth)),
-		"birds" = typecacheof(list(/datum/species/teshari)) // Skyrat edit - Teshari birds heheh
+		"birds" = typecacheof(list(/datum/species/teshari, /datum/specties/vox)) // Skyrat edit - Teshari birds heheh
 	)
 
 	return ..()
