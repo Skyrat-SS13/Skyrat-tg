@@ -2442,7 +2442,7 @@
 		if(changeling)
 			//SKYRAT EDIT CHANGE BEGIN - BZ-BUFF-VS-LING
 			//changeling.chem_charges = max(changeling.chem_charges - (2 * REM * delta_time), 0) - SKYRAT EDIT - ORIGINAL
-			changeling.chem_charges = max(changeling.chem_charges - (6 * REM * delta_time), 0)
+			changeling.chem_charges = max(changeling.chem_charges - (4 * REM * delta_time), 0)
 			//SKYRAT EDIT CHANGE END - BZ-BUFF-VS-LING
 	return ..()
 
