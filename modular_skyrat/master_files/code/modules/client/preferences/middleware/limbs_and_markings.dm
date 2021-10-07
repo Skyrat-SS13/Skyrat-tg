@@ -30,7 +30,8 @@
 		"liver" = "Liver",
 		"stomach" = "Stomach",
 		"eyes" = "Eyes",
-		"tongue" = "Tongue"
+		"tongue" = "Tongue",
+		"Mouth implant" = "Mouth implant"
 	)
 
 	var/list/aug_support = list(
@@ -41,7 +42,7 @@
 		"chest" = FALSE, // TODO: figure out why head/chest augs dont render, needed for IPC head on non IPC body
 		"head" = FALSE,
 		"l_hand" = FALSE,
-		"r_hand" = FALSE
+		"r_hand" = FALSE,
 	)
 	var/list/nice_aug_names = list()
 	var/list/augment_to_path = list()
@@ -154,6 +155,7 @@
 	if(augment_name == "Organic")
 		preferences.augments -= organs_to_process[organ_slot]
 	else
+		
 		preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
 	preferences.character_preview_view.update_body()
 	return TRUE

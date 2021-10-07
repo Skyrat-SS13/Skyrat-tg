@@ -18,5 +18,6 @@ export const CharacterPreview = (props: {
       id: props.id,
       type: "map",
     }}
+    position="relative"
   />);
 };
