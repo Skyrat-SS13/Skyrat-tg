@@ -43,14 +43,17 @@
 	var/custom_species = obscured ? "Obscured" : holder.dna.features["custom_species"]
 	var/custom_species_lore = obscured ? "Obscured" : holder.dna.features["custom_species_lore"]
 
-	var/e_prefs
-	var/e_prefs_nc
 	var/ooc_notes = ""
 
-	if(preferences)
-		e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
-		e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
-		ooc_notes += "ERP PREFERENCES: ERP - [e_prefs] | Non-conforming - [e_prefs_nc]\n"
+	if(preferences && preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
+		var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
+		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
+		var/e_prefs_v = preferences.read_preference(/datum)
+		ooc_notes += "ERP PREFERENCES:\n"
+		ooc_notes += "ERP - [e_prefs]\n"
+		ooc_notes += "Non-conforming - [e_prefs_nc]\n"
+		ooc_notes += "VR - [e_prefs_v]\n"
+		ooc_notes += "\n"
 
 	ooc_notes += holder.dna.features["ooc_notes"]
 
