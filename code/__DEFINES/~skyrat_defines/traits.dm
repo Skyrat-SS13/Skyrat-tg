@@ -40,3 +40,6 @@
 
 //Makes sure that people cant be cult sacrificed twice.
 #define TRAIT_SACRIFICED "sacrificed"
+
+//Adds 2 seconds to the Goliath tentacle stun timer.
+#define TRAIT_GOLIATH_STUN "goliath_stun"

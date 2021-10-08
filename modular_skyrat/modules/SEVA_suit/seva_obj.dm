@@ -16,7 +16,7 @@
 	resistance_flags = FIRE_PROOF
 	transparent_protection = HIDEJUMPSUIT
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe)
-	//Code for adding the goliath stun trait should probably go here. -Gonenoculer5
+	clothing_traits = TRAIT_GOLIATH_STUN
 
 /obj/item/clothing/head/hooded/seva
 	name = "SEVA Hood"
