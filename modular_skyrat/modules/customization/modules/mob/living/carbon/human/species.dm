@@ -582,7 +582,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 	return GLOB.customizable_races
 
-/*
+/**
  * Generates races available to choose in character setup at roundstart, yet not playable on the station.
  *
  * This proc generates which species are available to pick from in character setup.
