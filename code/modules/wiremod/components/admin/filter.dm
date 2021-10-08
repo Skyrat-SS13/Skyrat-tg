@@ -11,10 +11,13 @@ GLOBAL_LIST_INIT(wiremod_filter_info, list(
 		"y" = PORT_TYPE_NUMBER,
 		"size" = PORT_TYPE_NUMBER,
 	),
+<<<<<<< HEAD
 	"color" = list(
 		"color" = PORT_TYPE_LIST,
 		"space" = PORT_TYPE_NUMBER,
 	),
+=======
+>>>>>>> f6dfff674fa (Fixed animating filters with circuits and added special signal ports for instant circuit execution. (#61851))
 	"displace" = list(
 		"x" = PORT_TYPE_NUMBER,
 		"y" = PORT_TYPE_NUMBER,

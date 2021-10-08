@@ -22,6 +22,15 @@ GLOBAL_LIST_INIT(circuit_datatypes, generate_circuit_datatypes())
 	/// The flags of the circuit datatype
 	var/datatype_flags = 0
 
+<<<<<<< HEAD
+=======
+	/// The datatypes that this datatype can receive from.
+	var/list/can_receive_from = list()
+
+	/// Whether this datatype should be loaded into the global circuit_datatypes list.
+	var/abstract = FALSE
+
+>>>>>>> f6dfff674fa (Fixed animating filters with circuits and added special signal ports for instant circuit execution. (#61851))
 /**
  * Returns the value to be set for the port
  *
@@ -40,7 +49,7 @@ GLOBAL_LIST_INIT(circuit_datatypes, generate_circuit_datatypes())
  * * datatype_to_check - The datatype to check
  */
 /datum/circuit_datatype/proc/can_receive_from_datatype(datatype_to_check)
-	return datatype == datatype_to_check // This is already done by default on the input port.
+	return datatype == datatype_to_check || (datatype_to_check in can_receive_from)
 
 /**
  * Called when the datatype is given to a port.
