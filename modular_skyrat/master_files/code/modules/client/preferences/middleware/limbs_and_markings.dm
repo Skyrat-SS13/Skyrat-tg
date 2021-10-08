@@ -46,6 +46,10 @@
 	)
 	var/list/nice_aug_names = list()
 	var/list/augment_to_path = list()
+	var/list/costs = list(
+		AUGMENT_CATEGORY_LIMBS = list(),
+		AUGMENT_CATEGORY_ORGANS = list(),
+	)
 	var/list/robotic_styles
 
 /datum/preference_middleware/limbs_and_markings/proc/set_limb_aug(list/params, mob/user)
@@ -155,7 +159,6 @@
 	if(augment_name == "Organic")
 		preferences.augments -= organs_to_process[organ_slot]
 	else
-		
 		preferences.augments[organs_to_process[organ_slot]] = augment_to_path[augment_name]
 	preferences.character_preview_view.update_body()
 	return TRUE
@@ -181,8 +184,15 @@
 			nice_aug_names[limb] = list()
 			for(var/augments in GLOB.augment_slot_to_items[limbs_to_process[limb]])
 				var/obj/item/aug = augments
-				nice_aug_names[limb][augments] = initial(aug.name)
-				augment_to_path[initial(aug.name)] = augments
+				var/cost = 0
+				if(GLOB.augment_items[augments])
+					var/datum/augment_item/expensive_augment = GLOB.augment_items[augments]
+					cost = expensive_augment.cost
+				// To display the cost of the limb, if it's anything aside from 0.
+				var/aug_name = cost != 0 ? initial(aug.name) + " ([cost])" : initial(aug.name)
+				costs[AUGMENT_CATEGORY_LIMBS][aug_name] = cost
+				nice_aug_names[limb][augments] = aug_name
+				augment_to_path[aug_name] = augments
 			nice_aug_names[limb]["none"] = "None"
 		var/chosen_augment
 		if(preferences.augments[limbs_to_process[limb]] && !isnull(nice_aug_names[limb][preferences.augments[limbs_to_process[limb]]]))
@@ -196,6 +206,7 @@
 			"chosen_aug" = chosen_augment,
 			"chosen_style" = preferences.augment_limb_styles[limbs_to_process[limb]] ? preferences.augment_limb_styles[limbs_to_process[limb]] : "None",
 			"aug_choices" = nice_aug_names[limb],
+			"costs" = costs[AUGMENT_CATEGORY_LIMBS],
 			"markings" = list(
 				"marking_choices" = GLOB.body_markings_per_limb[limb],
 				"markings_list" = fix_colors_on_markings_to_tgui(preferences.body_markings[limb], limb)
@@ -210,8 +221,15 @@
 			nice_aug_names[organ] = list()
 			for(var/augments in GLOB.augment_slot_to_items[organs_to_process[organ]])
 				var/obj/item/aug = augments
-				nice_aug_names[organ][augments] = initial(aug.name)
-				augment_to_path[initial(aug.name)] = augments
+				var/cost = 0
+				if(GLOB.augment_items[augments])
+					var/datum/augment_item/expensive_augment = GLOB.augment_items[augments]
+					cost = expensive_augment.cost
+				// To display the cost of the limb, if it's anything aside from 0.
+				var/aug_name = cost != 0 ? initial(aug.name) + " ([cost])" : initial(aug.name)
+				costs[AUGMENT_CATEGORY_ORGANS][aug_name] = cost
+				nice_aug_names[organ][augments] = aug_name
+				augment_to_path[aug_name] = augments
 			nice_aug_names[organ]["organic"] = "Organic"
 		var/chosen_organ
 		if(preferences.augments[organs_to_process[organ]] && !isnull(nice_aug_names[organ][preferences.augments[organs_to_process[organ]]]))
@@ -222,7 +240,8 @@
 			"slot" = organ,
 			"name" = organs_to_process[organ],
 			"chosen_organ" = chosen_organ,
-			"organ_choices" = nice_aug_names[organ]
+			"organ_choices" = nice_aug_names[organ],
+			"costs" = costs[AUGMENT_CATEGORY_ORGANS]
 		))
 
 	data["organs_data"] = organs_data

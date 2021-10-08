@@ -80,6 +80,7 @@ export type Limb = {
   chosen_aug: string;
   chosen_style: string;
   aug_choices: Record<string, string>;
+  costs: Record<string, number>;
   markings: MarkingData;
 };
 
@@ -88,6 +89,7 @@ export type Organ = {
   name: string;
   chosen_organ: string;
   organ_choices: Record<string, string>
+  costs: Record<string, number>;
 };
 
 // SKYRAT EDIT END

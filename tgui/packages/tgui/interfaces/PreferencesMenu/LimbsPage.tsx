@@ -2,6 +2,9 @@ import { Box, Stack, Section, Dropdown, Button, ColorBox } from "../../component
 import { useBackend } from "../../backend";
 import { PreferencesMenuData } from "./data";
 import { CharacterPreview } from "./CharacterPreview";
+import { createLogger } from '../../logging';
+
+const logger = createLogger('augments');
 
 export const Markings = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
@@ -71,6 +74,8 @@ export const LimbPage = (props, context) => {
 
 export const AugmentationPage = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
+  const { data } = useBackend<PreferencesMenuData>(context);
+  let balance = -data.quirks_balance;
   if (props.limb.can_augment) {
     return (
       <div style={{ "margin-bottom": "1.5em" }}>
@@ -86,7 +91,16 @@ export const AugmentationPage = (props, context) => {
                     width="100%"
                     options={Object.values(props.limb.aug_choices)}
                     displayText={props.limb.chosen_aug}
-                    onSelected={(value) => act("set_limb_aug", { limb_slot: props.limb.slot, augment_name: value })}
+                    onSelected={(value) =>
+                    {
+                      // Since the costs are positive,
+                      // it's added and not substracted
+                      logger.log(`${props.limb.costs[value]}`);
+                      if (balance + props.limb.costs[value] > 0) {
+                        return;
+                      }
+                      act("set_limb_aug", { limb_slot: props.limb.slot, augment_name: value });
+                    }}
                   />
                 </Stack.Item>
               </Stack>
@@ -116,6 +130,8 @@ export const AugmentationPage = (props, context) => {
 
 export const OrganPage = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
+  const { data } = useBackend<PreferencesMenuData>(context);
+  let balance = -data.quirks_balance;
   return (
     <Stack.Item>
       <Stack fill>
@@ -127,7 +143,17 @@ export const OrganPage = (props, context) => {
             width="100%"
             options={Object.values(props.organ.organ_choices)}
             displayText={props.organ.chosen_organ}
-            onSelected={(value) => act("set_organ_aug", { organ_slot: props.organ.slot, augment_name: value })}
+            onSelected={(value) =>
+            {
+              // Since the costs are positive, it's added and not substracted
+              logger.log("The balance is at " + balance);
+              logger.log("This organ costs " + props.organ.costs[value]);
+              logger.log("Organ costs are as follow: ");
+              if (balance + props.organ.costs[value] > 0) {
+                return;
+              }
+              act("set_organ_aug", { organ_slot: props.organ.slot, augment_name: value });
+            }}
           />
         </Stack.Item>
       </Stack>
