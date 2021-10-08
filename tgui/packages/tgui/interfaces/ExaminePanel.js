@@ -34,7 +34,6 @@ export const ExaminePanel = (props, context) => {
                     type: 'map',
                   }} />
               )}
-
             </Section>
           </Stack.Item>
           <Stack.Item grow>
