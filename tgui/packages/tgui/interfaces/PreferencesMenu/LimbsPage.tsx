@@ -2,9 +2,6 @@ import { Box, Stack, Section, Dropdown, Button, ColorBox } from "../../component
 import { useBackend } from "../../backend";
 import { PreferencesMenuData } from "./data";
 import { CharacterPreview } from "./CharacterPreview";
-import { createLogger } from '../../logging';
-
-const logger = createLogger('augments');
 
 export const Markings = (props, context) => {
   const { act } = useBackend<PreferencesMenuData>(context);
@@ -95,7 +92,6 @@ export const AugmentationPage = (props, context) => {
                     {
                       // Since the costs are positive,
                       // it's added and not substracted
-                      logger.log(`${props.limb.costs[value]}`);
                       if (balance + props.limb.costs[value] > 0) {
                         return;
                       }
@@ -146,9 +142,6 @@ export const OrganPage = (props, context) => {
             onSelected={(value) =>
             {
               // Since the costs are positive, it's added and not substracted
-              logger.log("The balance is at " + balance);
-              logger.log("This organ costs " + props.organ.costs[value]);
-              logger.log("Organ costs are as follow: ");
               if (balance + props.organ.costs[value] > 0) {
                 return;
               }

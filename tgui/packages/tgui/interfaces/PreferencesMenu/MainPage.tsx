@@ -13,7 +13,7 @@ import { filterMap, sortBy } from "common/collections";
 import { useRandomToggleState } from "./useRandomToggleState";
 
 const CLOTHING_CELL_SIZE = 48;
-const CLOTHING_SIDEBAR_ROWS = 13.4;
+const CLOTHING_SIDEBAR_ROWS = 13.4; // SKYRAT EDIT (Makes the main window prettier) - ORIGINAL: const CLOTHING_SIDEBAR_ROWS = 9;
 
 const CLOTHING_SELECTION_CELL_SIZE = 48;
 const CLOTHING_SELECTION_WIDTH = 5.4;
@@ -525,7 +525,7 @@ export const MainPage = (props: {
 
                 <Stack.Item grow>
                   <CharacterPreview
-                    height="80%"
+                    height="80%" // SKYRAT EDIT - ORIGINAL: height="100%"
                     id={data.character_preview_view} />
                 </Stack.Item>
 

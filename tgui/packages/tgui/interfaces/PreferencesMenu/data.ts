@@ -55,7 +55,7 @@ export type Quirk = {
   value: number;
 };
 
-// SKYRAT EDIT
+// SKYRAT EDIT START
 export type Language = {
   description: string;
   name: string;
