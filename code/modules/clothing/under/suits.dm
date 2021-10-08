@@ -139,7 +139,6 @@
 	inhand_icon_state = "henchmen"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS|HEAD
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEEARS|HIDEEYES|HIDEHAIR
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/clothing/under/suit/tuxedo
 	name = "tuxedo"

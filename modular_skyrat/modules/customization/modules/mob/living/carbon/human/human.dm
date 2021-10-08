@@ -1,5 +1,6 @@
 /mob/living/carbon/human/Topic(href, href_list)
 	. = ..()
+
 	if(href_list["lookup_info"])
 		switch(href_list["lookup_info"])
 			if("genitals")
@@ -18,12 +19,9 @@
 					line += ORG.get_description_string(G)
 				if(length(line))
 					to_chat(usr, "<span class='notice'>[jointext(line, "\n")]</span>")
-			if("flavor_text")
-				if(length(dna.features["flavor_text"]))
-					var/datum/browser/popup = new(usr, "[name]'s flavor text", "[name]'s Flavor Text", 500, 200)
-					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s flavor text", replacetext(dna.features["flavor_text"], "\n", "<BR>")))
-					popup.open()
-					return
+			if("open_examine_panel")
+				tgui.holder = src
+				tgui.ui_interact(usr) //datum has a tgui component, here we open the window
 
 /mob/living/carbon/human/species/synthliz
 	race = /datum/species/robotic/synthliz

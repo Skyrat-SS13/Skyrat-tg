@@ -469,22 +469,13 @@
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
 	if(!skipface)
-		var/line
-		if(length(dna.features["flavor_text"]))
-			var/message = dna.features["flavor_text"]
-			if(length_char(message) <= 40)
-				line = "<span class='notice'>[message]</span>"
-			else
-				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
-		if(client)
-			var/erp_pref = client.prefs.read_preference(/datum/preference/toggle/erp)
-			var/noncon_pref = client.prefs.read_preference(/datum/preference/toggle/erp/noncon)
-			if(erp_pref)
-				line += span_notice(" ERP: [erp_pref ? "YES" : "NO"]")
-				if(noncon_pref)
-					line += span_notice(" NON-CON: [noncon_pref ? "YES" : "NO"]")
+		var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
 		if(line)
 			. += line
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && erp_status_pref != "disabled")
+			. += span_notice("ERP STATUS: [erp_status_pref]")
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)

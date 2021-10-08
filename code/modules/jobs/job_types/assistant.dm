@@ -30,13 +30,15 @@ Assistant
 	)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
-
+	rpg_title = "Lout"
 
 /datum/outfit/job/assistant
 	name = "Assistant"
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
+	uniform = /obj/item/clothing/under/color/random
 
+/* SKYRAT EDIT REMOVAL - THIS OVERRIDES CLOTHING LOADOUTS
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (CONFIG_GET(flag/grey_assistants))
@@ -52,10 +54,11 @@ Assistant
 		uniform = /obj/item/clothing/under/color/grey
 	else
 		uniform = /obj/item/clothing/under/color/jumpskirt/grey
-
+*/
 /datum/outfit/job/assistant/consistent
 	name = "Assistant - Consistent"
 
+/* SKYRAT EDIT REMOVAL
 /datum/outfit/job/assistant/consistent/pre_equip(mob/living/carbon/human/H)
 	..()
 	give_grey_suit(H)
@@ -66,3 +69,4 @@ Assistant
 	// This outfit is used by the assets SS, which is ran before the atoms SS
 	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
 		H.w_uniform?.update_greyscale()
+*/

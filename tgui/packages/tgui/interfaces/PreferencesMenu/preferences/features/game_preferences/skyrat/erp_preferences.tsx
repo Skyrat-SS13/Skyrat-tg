@@ -1,9 +1,16 @@
 import { CheckboxInput, FeatureToggle } from "../../base";
 
 export const master_erp_pref: FeatureToggle = {
+  name: "Show/Hide Erotic Roleplay Preferences",
+  category: "ERP",
+  description: "This shows/hides ERP preferences.",
+  component: CheckboxInput,
+};
+
+export const erp_pref: FeatureToggle = {
   name: "Erotic Roleplay Interaction",
   category: "ERP",
-  description: "This informs players of if you wish to engage in erotic roleplay.",
+  description: "This informs players of if you wish to engage in ERP.",
   component: CheckboxInput,
 };
 
@@ -29,9 +36,9 @@ export const aphro_pref: FeatureToggle = {
 };
 
 export const noncon_pref: FeatureToggle = {
-  name: "Non-con Roleplay",
+  name: "Obsessed Non-con Target",
   category: "ERP",
-  description: "This informs players of if you wish to engage in non-conforming erotic roleplay.",
+  description: "Toggles whether you wish to be an obsessed target for those with the trait.",
   component: CheckboxInput,
 };
 

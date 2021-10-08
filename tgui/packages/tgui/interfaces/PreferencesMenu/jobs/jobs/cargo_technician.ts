@@ -7,6 +7,7 @@ const CargoTechnician: Job = {
     collect empty crates, load and unload the supply shuttle, \
     ship bounty cubes.",
   department: Cargo,
+  alt_titles: ["Cargo Technician", "Deck Worker", "Mailman"],
 };
 
 export default CargoTechnician;

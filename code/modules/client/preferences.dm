@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		middleware += new middleware_type(src)
 
 	if(istype(C))
-		if(!IsGuestKey(C.key))
+		if(!is_guest_key(C.key))
 			load_path(C.ckey)
 			unlock_content = !!C.IsByondMember()
 			if(unlock_content)
@@ -163,7 +163,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		tainted_character_profiles = FALSE
 
 	//SKYRAT EDIT BEGIN
-	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_NAKED)
+	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
 	data["preview_selection"] = preview_pref
 	//SKYRAT EDIT END
 
@@ -247,7 +247,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			if (istype(requested_preference, /datum/preference/name))
 				tainted_character_profiles = TRUE
-
+			//SKYRAT EDIT
+			update_mutant_bodyparts(requested_preference)
+			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+				if (preference_middleware.post_set_preference(usr, requested_preference_key, value))
+					return TRUE
+			//SKYRAT EDIT END
 			return TRUE
 		if ("set_color_preference")
 			var/requested_preference_key = params["preference"]
@@ -280,12 +285,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				return FALSE
 
 			return TRUE
-
 		//SKYRAT EDIT ADDITION
-		if ("open_advanced_prefs")
-			show_advanced_prefs(usr)
-			return TRUE
-
 		if("update_preview")
 			preview_pref = params["updated_preview"]
 			character_preview_view.update_body()
@@ -297,6 +297,39 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				var/datum/loadout_manager/tgui = new(usr)
 				tgui.ui_interact(usr)
+			return TRUE
+		if ("set_tricolor_preference")
+			var/requested_preference_key = params["preference"]
+			var/index_key = params["value"]
+
+			var/datum/preference/requested_preference = GLOB.preference_entries_by_key[requested_preference_key]
+			if (isnull(requested_preference))
+				return FALSE
+
+			if (!istype(requested_preference, /datum/preference/tri_color))
+				return FALSE
+
+			var/default_value_list = read_preference(requested_preference.type)
+			if (!islist(default_value_list))
+				return FALSE
+			var/default_value = default_value_list[index_key]
+
+			// Yielding
+			var/new_color = input(
+				usr,
+				"Select new color",
+				null,
+				default_value || COLOR_WHITE,
+			) as color | null
+
+			if (!new_color)
+				return FALSE
+
+			default_value_list[index_key] = new_color
+
+			if (!update_preference(requested_preference, default_value_list))
+				return FALSE
+
 			return TRUE
 		//SKYRAT EDIT END
 
@@ -317,11 +350,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	. = ..()
 	if (.)
 		return
-	//SKYRAT EDIT ADDITION
-	if(href_list["preference"] || href_list["task"])
-		SkyratTopic(href, href_list, usr)
-		return TRUE
-	//SKYRAT EDIT END
 
 	if (href_list["open_keybindings"])
 		current_window = PREFERENCE_TAB_KEYBINDINGS
@@ -394,12 +422,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	/// The client that is watching this view
 	var/client/client
 
-	var/linked_to_prefs = TRUE //SKYRAT EDIT ADDITION
-
-/atom/movable/screen/character_preview_view/Initialize(mapload, datum/preferences/preferences, client/client, prefs_link = TRUE) //SKYRAT EDIT CHANGE
+/atom/movable/screen/character_preview_view/Initialize(mapload, datum/preferences/preferences, client/client)
 	. = ..()
-
-	linked_to_prefs = prefs_link //SKYRAT EDIT ADDITION
 
 	assigned_map = "character_preview_[REF(src)]"
 	set_position(1, 1)
@@ -415,9 +439,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 	client?.clear_map(assigned_map)
 
-	if(linked_to_prefs) //SKYRAT EDIT ADDITION
-		preferences?.character_preview_view = null
-
 	client = null
 	plane_masters = null
 	preferences = null
@@ -426,11 +447,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 /// Updates the currently displayed body
 /atom/movable/screen/character_preview_view/proc/update_body()
-	if (isnull(body))
-		create_body()
-	else
-		body.wipe_state()
+	create_body()
 	appearance = preferences.render_new_preview_appearance(body)
+
 
 /atom/movable/screen/character_preview_view/proc/create_body()
 	QDEL_NULL(body)
@@ -449,8 +468,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	if (!client)
 		return
 
-	for (var/plane_master_type in subtypesof(/atom/movable/screen/plane_master))
-		var/atom/movable/screen/plane_master/plane_master = new plane_master_type
+	for (var/plane_master_type in subtypesof(/atom/movable/screen/plane_master) - /atom/movable/screen/plane_master/blackness)
+		var/atom/movable/screen/plane_master/plane_master = new plane_master_type()
 		plane_master.screen_loc = "[assigned_map]:CENTER"
 		client?.screen |= plane_master
 
@@ -528,9 +547,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
+	// SKYRAT EDIT
+		if(preference.is_accessible(src)) // Only apply preferences you can actually access.
+			preference.apply_to_human(character, read_preference(preference.type), src)
 
-		preference.apply_to_human(character, read_preference(preference.type), src) //SKYRAT EDIT CHANGE
-
+	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+		preference_middleware.apply_to_human(character, src)
+	// SKYRAT EDIT END
 	character.dna.real_name = character.real_name
 
 	if(icon_updates)

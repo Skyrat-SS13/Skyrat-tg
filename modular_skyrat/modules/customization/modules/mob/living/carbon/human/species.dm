@@ -62,6 +62,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/new_renderkey = "[id]"
 
 	for(var/key in mutant_bodyparts)
+		if (!islist(mutant_bodyparts[key]))
+			continue
 		var/datum/sprite_accessory/S = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(!S || S.icon_state == "none")
 			continue
@@ -251,10 +253,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
-	/// Available cultural informations
-	var/list/cultures = list(CULTURES_EXOTIC, CULTURES_HUMAN)
-	var/list/locations = list(LOCATIONS_GENERIC, LOCATIONS_HUMAN)
-	var/list/factions = list(FACTIONS_GENERIC, FACTIONS_HUMAN)
 	/// List of all the languages our species can learn NO MATTER their background
 	var/list/learnable_languages = list(/datum/language/common)
 
@@ -282,6 +280,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
+	learnable_languages = list(/datum/language/common, /datum/language/uncommon)
 
 /datum/species/mush
 	mutant_bodyparts = list()
@@ -550,6 +549,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	. = ..()
 	var/robot_organs = (ROBOTIC_DNA_ORGANS in C.dna.species.species_traits)
 	for(var/key in C.dna.mutant_bodyparts)
+		if (!islist(C.dna.mutant_bodyparts[key]))
+			continue
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
 		if(SA.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
