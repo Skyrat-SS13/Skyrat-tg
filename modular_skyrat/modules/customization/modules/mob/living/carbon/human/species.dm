@@ -139,9 +139,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 							var/alpha_value = specific_alpha //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
 							var/list/finished_list = list()
-							finished_list += ReadRGB("[color_list[1]]0")
-							finished_list += ReadRGB("[color_list[2]]0")
-							finished_list += ReadRGB("[color_list[3]]0")
+							finished_list += ReadRGB("[color_list[1]]00")
+							finished_list += ReadRGB("[color_list[2]]00")
+							finished_list += ReadRGB("[color_list[3]]00")
 							finished_list += list(0,0,0,alpha_value)
 							for(var/index in 1 to finished_list.len)
 								finished_list[index] /= 255
