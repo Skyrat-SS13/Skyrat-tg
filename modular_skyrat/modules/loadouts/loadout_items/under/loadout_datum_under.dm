@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under
 	category = LOADOUT_ITEM_UNIFORM
 
-/datum/loadout_item/under/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+/datum/loadout_item/under/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(isplasmaman(equipper))
 		if(!visuals_only)
 			to_chat(equipper, "Your loadout uniform was not equipped directly due to your envirosuit.")
@@ -641,6 +641,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/red_suit
 	name = "Red Suit"
 	item_path = /obj/item/clothing/under/suit/red
+
+/datum/loadout_item/under/formal/helltaker
+	name = "Red Shirt with White Trousers"
+	item_path = /obj/item/clothing/under/suit/helltaker
+
+/datum/loadout_item/under/formal/helltaker/skirt
+	name = "Red Shirt with White Skirt"
+	item_path = /obj/item/clothing/under/suit/helltaker/skirt
 
 /datum/loadout_item/under/formal/red_lawyer_skirt
 	name = "Red Lawyer Suit"
