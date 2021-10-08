@@ -98,7 +98,7 @@
 	savefile_key = "erp_status_pref_nc"
 
 /datum/preference/choiced/erp_status_nc/init_possible_values()
-	list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No")
+	return list("Yes - Switch", "Yes - Sub", "Yes - Dom", "Check OOC", "Ask", "No")
 
 /datum/preference/choiced/erp_status_nc/create_default_value()
 	return "Ask"
