@@ -48,9 +48,8 @@
 	if(preferences && preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
 		var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
 		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
-		var/e_prefs_v = preferences.read_preference(/datum)
-		ooc_notes += "ERP PREFERENCES:\n"
-		ooc_notes += "ERP - [e_prefs]\n"
+		var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
+		ooc_notes += "ERP PREFERENCES: [e_prefs]\n"
 		ooc_notes += "Non-conforming - [e_prefs_nc]\n"
 		ooc_notes += "VR - [e_prefs_v]\n"
 		ooc_notes += "\n"
