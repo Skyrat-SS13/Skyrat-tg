@@ -34,10 +34,31 @@
 
 /datum/examine_panel/ui_data(mob/user)
 	var/list/data = list()
-	data["character_name"] = holder.name
+
+	var/datum/preferences/preferences = holder.client?.prefs
+
+	var/skipface = (holder.wear_mask && (holder.wear_mask.flags_inv & HIDEFACE)) || (holder.head && (holder.head.flags_inv & HIDEFACE))
+	var/name = skipface ? "Unknown" : holder.name
+	var/flavor_text = skipface ? "Obscured" :  holder.dna.features["flavor_text"]
+	var/custom_species = skipface ? "Obscured" : holder.dna.features["custom_species"]
+	var/custom_species_lore = skipface ? "Obscured" : holder.dna.features["custom_species_lore"]
+
+	var/e_prefs
+	var/e_prefs_nc
+	var/list/ooc_notes = list()
+
+	if(preferences)
+		e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
+		e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
+		ooc_notes += "ERP PREFERENCES: ERP - [e_prefs] | Non-conforming - [e_prefs_nc]<br>"
+
+	ooc_notes += holder.dna.features["ooc_notes"]
+
+	data["obscured"] = skipface ? TRUE : FALSE
+	data["character_name"] = name
 	data["assigned_map"] = examine_panel_screen.assigned_map
-	data["flavor_text"] = holder.dna.features["flavor_text"]
-	data["ooc_notes"] = holder.dna.features["ooc_notes"]
-	data["custom_species"] = holder.dna.features["custom_species"]
-	data["custom_species_lore"] = holder.dna.features["custom_species_lore"]
+	data["flavor_text"] = flavor_text
+	data["ooc_notes"] = ooc_notes
+	data["custom_species"] = custom_species
+	data["custom_species_lore"] = custom_species_lore
 	return data

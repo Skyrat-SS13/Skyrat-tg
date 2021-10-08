@@ -91,3 +91,33 @@
 
 /datum/preference/choiced/erp_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
+
+/datum/preference/choiced/erp_status_nc
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "erp_status_pref_nc"
+
+/datum/preference/choiced/erp_status_nc/init_possible_values()
+	return list("Yes", "Ask", "No")
+
+/datum/preference/choiced/erp_status_nc/create_default_value()
+	return "Ask"
+
+/datum/preference/choiced/erp_status_nc/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+
+	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
+
+/datum/preference/choiced/erp_status_nc/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return "disabled"
+	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
+		return "disabled"
+	. = ..()
+
+/datum/preference/choiced/erp_status_nc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
