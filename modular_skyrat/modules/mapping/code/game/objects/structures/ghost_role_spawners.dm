@@ -236,6 +236,100 @@
     can_use_alias = TRUE
     any_station_species = TRUE
 
+//ICEMOON DINER
+/obj/effect/mob_spawn/human/dinerworker
+	name = "Diner Worker"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	can_use_alias = TRUE
+	any_station_species = TRUE
+	icon = 'modular_skyrat/modules/stasisrework/icons/obj/machines/stasissleeper.dmi'
+	icon_state = "sleeper"
+	short_desc = "You are an employee at a small diner."
+	flavour_text = "A research base was set up recently nearby, and with most of the colonists leaving for greener worlds, this may be the best way to make business. \
+	Work with your fellow diner workers to make some money and survive the harsh winter."
+	important_info = "Don't abandon the diner! Make some money selling food to weary travelers!"
+	outfit = /datum/outfit/dinerworker
+
+/datum/outfit/dinerworker
+	name = "Diner Uniform"
+	uniform = /obj/item/clothing/under/rank/civilian/chef
+	suit = /obj/item/clothing/suit/apron/chef
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	back = /obj/item/storage/backpack
+	id = /obj/item/card/id/away
+	backpack_contents = list(/obj/item/storage/box/engitank)
+	id_trim = /datum/id_trim/away
+
+//HUNTING GUILD
+/obj/effect/mob_spawn/human/huntboss
+	name = "Lodge Chief"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	can_use_alias = TRUE
+	any_station_species = TRUE
+	icon = 'icons/obj/lavaland/survival_pod.dmi'
+	icon_state = "sleeper"
+	short_desc = "You are the chief of the Hunting Lodge."
+	flavour_text = "Since the dawn of many races, the act of hunting in order to feed your family, prove your strength, or protect your home has been \
+	something many brave men and women have done. With the advances of the modern galaxy, hunting has fallen to the wayside. Luckily, the Hunter Guild was established and has developed into a multi-sector faction.\
+	Your guild and lodge is always looking for new members to teach the values and traditions of hunting to, and your guild has an obligation to culling animal populations."
+	important_info = "Hunt monsters and animals to protect those who live on this world. You are a neutral faction. Don't hunt down station antagonists, focus on neutrality with the station and helping them if animals or monsters attack."
+	outfit = /datum/outfit/huntboss
+
+/datum/outfit/huntboss
+	name = "Chief Hunter Uniform"
+	uniform = /obj/item/clothing/under/rank/security/detective/cowboy
+	head = /obj/item/clothing/head/cowboyhat/sheriff/alt
+	neck = /obj/item/clothing/neck/cowboylea
+	shoes = /obj/item/clothing/shoes/winterboots/ice_boots
+	belt = /obj/item/storage/belt/holster/cowboy
+	back = /obj/item/storage/backpack/satchel/explorer
+	id = /obj/item/card/id/away
+	id_trim = /datum/id_trim/away
+	ears = /obj/item/radio/headset
+
+	backpack_contents = list(
+		/obj/item/storage/box/engitank=1,\
+		/obj/item/gun/ballistic/revolver=1,\
+		/obj/item/ammo_box/a357=3,\
+		/obj/item/kitchen/knife/combat=1
+	)
+
+/obj/effect/mob_spawn/human/hunter
+	name = ""
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	can_use_alias = TRUE
+	any_station_species = TRUE
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	flavour_text = "Since the dawn of many races, the act of hunting in order to feed your family, prove your strength, or protect your home has been \
+	something many brave men and women have done. With the advances of the modern galaxy, hunting has fallen to the wayside. Luckily, the Hunter Guild was established and has developed into a multi-sector faction.\
+	Your guild and lodge is always looking for new members to teach the values and traditions of hunting to, and your guild has an obligation to culling animal populations."
+	important_info = "Hunt monsters and animals to protect those who live on this world. You are a neutral faction.Don't hunt down station antagonists, focus on neutrality with the station and helping them if animals or monsters attack."
+	outfit = /datum/outfit/hunter
+
+/datum/outfit/hunter
+	name = "Hunter Uniform"
+	uniform = /obj/item/clothing/under/rancher/cowboy
+	head = /obj/item/clothing/head/cowboyhat/wide
+	shoes = /obj/item/clothing/shoes/winterboots/ice_boots
+	belt = /obj/item/storage/belt/holster/cowboy
+	back = /obj/item/storage/backpack/satchel/explorer
+	id_trim = /datum/id_trim/away
+	ears = /obj/item/radio/headset
+
+	backpack_contents = list(
+		/obj/item/storage/box/engitank=1,\
+		/obj/item/gun/ballistic/revolver/detective=1,\
+		/obj/item/ammo_box/c38=3,\
+		/obj/item/kitchen/knife/hunting=1
+	)
+
 //ITEMS//
 /obj/item/radio/headset/cybersun
 	keyslot = new /obj/item/encryptionkey/headset_cybersun
@@ -300,3 +394,28 @@
 /area/ruin/space/has_grav/deepstoragelostcargoengine
 	name = "Freighter Ship Maintenance"
 	icon_state = "engine"
+
+/area/ruin/unpowered/diner
+	name = "Diner"
+	icon_state = "yellow"
+
+/area/ruin/unpowered/hunterlodge
+	name = "Hunter Guild Lodge"
+	icon_state = "yellow"
+
+/area/ruin/powered/cabin
+	name = "Cabin"
+	icon_state = "yellow"
+
+/area/ruin/powered/crash
+	name = "Crashed Ship"
+	icon_state = "yellow"
+
+/area/ruin/powered/syndioutpost
+	name = "Syndicate Outpost"
+	icon_state = "yellow"
+
+/area/ruin/oldlab
+	name = "Abandoned Lab"
+	icon_state = "yellow"
+
