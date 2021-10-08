@@ -37,24 +37,24 @@
 
 	var/datum/preferences/preferences = holder.client?.prefs
 
-	var/skipface = (holder.wear_mask && (holder.wear_mask.flags_inv & HIDEFACE)) || (holder.head && (holder.head.flags_inv & HIDEFACE))
-	var/name = skipface ? "Unknown" : holder.name
-	var/flavor_text = skipface ? "Obscured" :  holder.dna.features["flavor_text"]
-	var/custom_species = skipface ? "Obscured" : holder.dna.features["custom_species"]
-	var/custom_species_lore = skipface ? "Obscured" : holder.dna.features["custom_species_lore"]
+	var/obscured = (holder.wear_mask && (holder.wear_mask.flags_inv & HIDEFACE)) || (holder.head && (holder.head.flags_inv & HIDEFACE))
+	var/name = obscured ? "Unknown" : holder.name
+	var/flavor_text = obscured ? "Obscured" :  holder.dna.features["flavor_text"]
+	var/custom_species = obscured ? "Obscured" : holder.dna.features["custom_species"]
+	var/custom_species_lore = obscured ? "Obscured" : holder.dna.features["custom_species_lore"]
 
 	var/e_prefs
 	var/e_prefs_nc
-	var/list/ooc_notes = list()
+	var/ooc_notes = ""
 
 	if(preferences)
 		e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
 		e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
-		ooc_notes += "ERP PREFERENCES: ERP - [e_prefs] | Non-conforming - [e_prefs_nc]<br>"
+		ooc_notes += "ERP PREFERENCES: ERP - [e_prefs] | Non-conforming - [e_prefs_nc]\n"
 
 	ooc_notes += holder.dna.features["ooc_notes"]
 
-	data["obscured"] = skipface ? TRUE : FALSE
+	data["obscured"] = obscured ? TRUE : FALSE
 	data["character_name"] = name
 	data["assigned_map"] = examine_panel_screen.assigned_map
 	data["flavor_text"] = flavor_text
