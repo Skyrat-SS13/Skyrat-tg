@@ -182,6 +182,7 @@ export type PreferencesMenuData = {
   selected_languages: Language[];
   unselected_languages: Language[];
   total_language_points: number;
+  species_restricted_jobs?: string[];
 // SKYRAT EDIT END
   keybindings: Record<string, string[]>;
   overflow_role: string;

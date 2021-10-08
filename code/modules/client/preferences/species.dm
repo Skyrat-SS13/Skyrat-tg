@@ -54,7 +54,7 @@
 
 	var/list/food_flags = FOOD_FLAGS
 
-	for (var/species_id in (get_selectable_species()+get_customizable_races())) //SKYRAT EDIT CHANGE - ORIGINAL: for (var/species_id in get_selectable_species())
+	for (var/species_id in (get_selectable_species() + get_customizable_races())) //SKYRAT EDIT CHANGE - ORIGINAL: for (var/species_id in get_selectable_species())
 		var/species_type = GLOB.species_list[species_id]
 		var/datum/species/species = new species_type
 
