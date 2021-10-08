@@ -50,8 +50,8 @@
 		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
 		var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
 		ooc_notes += "ERP: [e_prefs]\n"
-		ooc_notes += "Non-conforming - [e_prefs_nc]\n"
-		ooc_notes += "VR - [e_prefs_v]\n"
+		ooc_notes += "Non-con: [e_prefs_nc]\n"
+		ooc_notes += "Vore: [e_prefs_v]\n"
 		ooc_notes += "\n"
 
 	ooc_notes += holder.dna.features["ooc_notes"]
