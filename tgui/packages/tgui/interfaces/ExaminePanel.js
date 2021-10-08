@@ -21,7 +21,7 @@ export const ExaminePanel = (props, context) => {
       theme="admin">
       <Window.Content>
         <Stack fill>
-          <Stack.Item grow>
+          <Stack.Item width="30%">
             <Section fill title="Character Preview">
               {!obscured
               && (
