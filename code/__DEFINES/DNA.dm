@@ -83,7 +83,7 @@
 #define MUT_OTHER 3
 
 //DNA - Because fuck you and your magic numbers being all over the codebase.
-#define DNA_BLOCK_SIZE 6
+#define DNA_BLOCK_SIZE 3
 
 #define DNA_EYE_COLOR_BLOCK 4
 #define DNA_FACIAL_HAIR_COLOR_BLOCK 2
