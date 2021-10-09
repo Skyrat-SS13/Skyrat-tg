@@ -39,10 +39,21 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Purple Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/purple
 
+/datum/loadout_item/suit/white_suit_jacket
+	name = "White Suit Jacket"
+	item_path = /obj/item/clothing/suit/toggle/lawyer/white
+
+/datum/loadout_item/suit/suitblackbetter
+	name = "Light Black Suit Jacket"
+	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
+
+/datum/loadout_item/suit/suitwhite
+	name = "Texan Suit Jacket"
+	item_path = /obj/item/clothing/suit/texas
+
 /datum/loadout_item/suit/purple_apron
 	name = "Purple Apron"
 	item_path = /obj/item/clothing/suit/apron/purple_bartender
-
 
 /datum/loadout_item/suit/Suspenders_blue
 	name = "Blue Suspenders"
@@ -285,7 +296,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Fancy Brown Coat"
 	item_path = /obj/item/clothing/suit/brownbattlecoat
 
-
 /datum/loadout_item/suit/bossu
 	name = "Fancy Black Coat"
 	item_path = /obj/item/clothing/suit/blackfurrich
@@ -301,14 +311,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/yakuzajacket
 	name = "Asian Jacket"
 	item_path = /obj/item/clothing/suit/yakuza
-
-/datum/loadout_item/suit/suitblackbetter
-	name = "Light Black Suit Jacket"
-	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
-
-/datum/loadout_item/suit/suitwhite
-	name = "White Suit Jacket"
-	item_path = /obj/item/clothing/suit/texas
 
 /datum/loadout_item/suit/jacketbomber_alt
 	name = "Bomber Jacket w/ Zipper"

@@ -119,3 +119,13 @@ export const erp_status_pref: FeatureChoiced = {
   name: "ERP Status",
   component: FeatureDropdownInput,
 };
+
+export const erp_status_pref_nc: FeatureChoiced = {
+  name: "ERP Non-conforming Status",
+  component: FeatureDropdownInput,
+};
+
+export const erp_status_pref_v: FeatureChoiced = {
+  name: "ERP VR Status",
+  component: FeatureDropdownInput,
+};
