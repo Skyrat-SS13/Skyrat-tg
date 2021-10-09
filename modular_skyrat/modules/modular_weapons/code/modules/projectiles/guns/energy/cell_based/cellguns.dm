@@ -5,6 +5,15 @@
 	var/maxcells = 3 //How much cells can the gun hold.
 	var/cellcount = 0 //How many cells are currently inserted
 	var/list/installedcells = list() //What cells are currently inserted?
+	has_gun_safety = TRUE
+
+/obj/item/gun/energy/cell_loaded/examine(mob/user)
+	. = ..()
+	if(maxcells)
+		. += "<b>[cellcount]</b> out of <b>[maxcells]</b> cell slots are filled."
+		. += span_info("You can use AltClick with an empty hand to remove the most recently inserted cell from the chamber.")
+		for(var/cell in installedcells)
+			. += span_notice("There is \a [cell] loaded in the chamber.") //Shows what cells are currently inside of the gun
 
 /obj/item/gun/energy/cell_loaded/attackby(obj/item/weaponcell/C, mob/user) //Inserts a cell.
 	if(is_type_in_list(C, allowed_cells))//Checks to see if the gun has the capacity based on allowed_types to load a cell.
@@ -36,14 +45,6 @@
 	else
 		to_chat(user, span_notice("The [src] has no cells inside"))
 		return ..()
-
-/obj/item/gun/energy/cell_loaded/examine(mob/user)
-	. = ..()
-	if(maxcells)
-		. += "<b>[cellcount]</b> out of <b>[maxcells]</b> cell slots are filled."
-		. += span_info("You can use AltClick with an empty hand to remove the most recently inserted cell from the chamber.")
-		for(var/cell in installedcells)
-			. += span_notice("There is \a [cell] loaded in the chamber.") //Shows what cells are currently inside of the gun
 
 /obj/item/gun/energy/cell_loaded/debug
 	name = "debug cell gun"

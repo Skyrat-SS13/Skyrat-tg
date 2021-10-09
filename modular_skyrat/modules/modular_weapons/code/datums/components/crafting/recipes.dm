@@ -45,8 +45,8 @@
 /datum/crafting_recipe/medigunfast
 	name = "Medigun Fast Charge Upgrade"
 	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	result = /obj/item/gun/energy/medigun/upgraded
-	reqs = list(/obj/item/gun/energy/medigun/standard = 1,
+	result = /obj/item/gun/energy/cell_loaded/medigun/upgraded
+	reqs = list(/obj/item/gun/energy/cell_loaded/medigun/standard = 1,
 				/obj/item/stack/cable_coil = 5,
 				/obj/item/upgradekit/medigun/charge = 1)
 	time = 150
