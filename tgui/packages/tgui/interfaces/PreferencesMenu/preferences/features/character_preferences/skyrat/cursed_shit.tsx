@@ -121,11 +121,11 @@ export const erp_status_pref: FeatureChoiced = {
 };
 
 export const erp_status_pref_nc: FeatureChoiced = {
-  name: "ERP Non-conforming Status",
+  name: "ERP Non-Con Status",
   component: FeatureDropdownInput,
 };
 
 export const erp_status_pref_v: FeatureChoiced = {
-  name: "ERP VR Status",
+  name: "ERP Vore Status",
   component: FeatureDropdownInput,
 };
