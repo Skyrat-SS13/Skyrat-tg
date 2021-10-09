@@ -247,3 +247,11 @@
 
 /obj/item/clothing/suit/apron
     mutant_variants = STYLE_TAUR_ALL
+
+/obj/item/clothing/suit/toggle/lawyer/white
+	name = "white suit jacket"
+	desc = "A very versatile part of a suit ensable. Oddly in fashion with mobsters."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "suitjacket_white"
+	mutant_variants = NONE

@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	if(!preference_source)
 		return
 
-	var/list/our_loadout = null //preference_source?.loadout_list
+	var/list/our_loadout = preference_source.loadout_list
 	if(can_be_greyscale && (INFO_GREYSCALE in our_loadout[item_path]))
 		if(ispath(item_path, /obj/item/clothing))
 			// When an outfit is equipped in preview, get_equipped_items() does not work, so we have to use get_all_contents()
