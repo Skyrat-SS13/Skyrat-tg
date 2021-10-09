@@ -24,6 +24,15 @@
 		/datum/job_department/security,
 	)
 
+	mail_goodies = list(
+		/obj/item/food/donut/caramel = 10,
+		/obj/item/food/donut/matcha = 10,
+		/obj/item/food/donut/blumpkin = 5,
+		/obj/item/clothing/mask/whistle = 5,
+		/obj/effect/spawner/random/contraband/prison = 5
+		/obj/item/melee/baton/security/boomerang/loaded = 1
+	)
+	rpg_title = "Bailiff"
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
