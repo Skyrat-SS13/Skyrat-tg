@@ -9,15 +9,29 @@
 	var/is_toggled =  TRUE //Is the secondary mode toggled?
 	var/primary_mode = /obj/item/ammo_casing/energy/medical //The default mode
 	var/secondary_mode = /obj/item/ammo_casing/energy/medical //Secondary mode.
+	var/shot_name //What is the name of the currently used ammo type?
+
+/obj/item/weaponcell/proc/refresh_cellname() //refreshes the shot name
+	var/obj/item/ammo_casing/energy/shot = ammo_type
+	if(initial(shot.select_name))
+		shot_name = initial(shot.select_name)
+		return TRUE
+	else
+		return FALSE
+
+/obj/item/weaponcell/Initialize()
+	. = ..()
+	AddElement(/datum/element/item_scaling, 0.5, 1)
+	refresh_cellname()
+
 
 /obj/item/weaponcell/examine(mob/user)
 	. = ..()
+	if(shot_name)
+		. += span_noticealien("Using this on a cell based gun will unlock the [shot_name] firing mode")
 	if(!toggle_modes) //Doesn't show a description if it can't be toggled in the first place.
 		return
-	var/obj/item/ammo_casing/energy/shot = ammo_type
 	. += span_notice("[src] is using the [is_toggled ? "primary" : "secondary"] mode.")
-	if(initial(shot.select_name))
-		. += span_noticealien("Using this on a cell based gun will unlock the [initial(shot.select_name)] firing mode")
 	return .
 
 /obj/item/weaponcell/attack_self(mob/living/user)
@@ -26,9 +40,8 @@
 	is_toggled = !is_toggled //Changes the toggle to the reverse of what it is.
 	src.ammo_type = is_toggled ? primary_mode : secondary_mode
 	playsound(loc,is_toggled ? 'sound/machines/defib_SaftyOn.ogg' : 'sound/machines/defib_saftyOff.ogg', 50)
-	var/obj/item/ammo_casing/energy/shot = ammo_type
-	if(initial(shot.select_name))
-		balloon_alert(user, "set to [initial(shot.select_name)]")
+	if(refresh_cellname())
+		balloon_alert(user, "set to [shot_name]")
 	return
 
 /obj/item/weaponcell/debug
