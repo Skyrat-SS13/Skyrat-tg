@@ -1238,3 +1238,32 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
+
+////
+
+/datum/status_effect/incapacitating/livniglatexspread
+	id = "livniglatexspread"
+	var/obj/effect/temp_visual/curse/latexspread_effect = new
+
+/datum/status_effect/incapacitating/livniglatexspread/on_apply()
+	. = ..()
+	if(!.)
+		return
+	ADD_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
+	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
+	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
+
+/datum/status_effect/incapacitating/livniglatexspread/on_remove()
+	REMOVE_TRAIT(owner, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(id))
+	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
+	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
+	return ..()
+
+//Укажем имя анимации для эффекта распространения живого латекса
+/obj/effect/temp_visual/latexspread
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "curse"
+
+// /mob/living/carbon/human/Latexspread(amount, ignore_canstun = FALSE)
+// 	amount = dna.species.spec_stun(src, amount)
+// 	return ..()
