@@ -1073,3 +1073,66 @@
   - rscadd: added odd lizzy plushie.
   tralezab code, melbert idea!:
   - rscadd: There's a new wizard event, RPG titles. Summon the star duke!
+2021-10-08:
+  Melbert:
+  - bugfix: Quirks that once were not compatible are now incompatible again
+  NamelessFairy & Mothblocks:
+  - rscadd: CTF can now be played through the CTF menu, accessible through the minigames
+      menu
+  SkyratBot:
+  - bugfix: Fixes catwalks not working at all!
+  - bugfix: penetrator rounds will no longer ignore vehicles
+  Tristrian:
+  - bugfix: BZ Metabolizes drains Changeling's chemicals again.
+  thestubborn:
+  - balance: you can no longer instantly weld as any job
+  - bugfix: oh yeah also a digi cap kilt now
+2021-10-09:
+  Colovorat:
+  - imageadd: catwalk floor tile object sprite and inhand sprites
+  Deek-Za:
+  - bugfix: Decal Painter now paints decals once again
+  - rscdel: 'Disabled Tail Trauma qol: Less troubling start for tailed individuals.'
+  GoldenAlpharex:
+  - bugfix: Quirks will no longer be in a weird state where they reset and you don't
+      know why anymore. Check your Augments+ tab if that was happening to you, and
+      remove the augments you don't want.
+  - bugfix: The Limbs Augmentations And Markings page was relabeled "Augments+" and
+      has been revamped visually to work better.
+  - bugfix: You will no longer wake up on the Interlink with your cybernetics looking
+      wrong because you didn't ensure they were set right properly during your sleep
+      (in the prefs menu).
+  - bugfix: The breathing tube is now accessible again in the Augments+ tab.
+  - bugfix: The 'Other' gender is now no longer afraid of itself and will now properly
+      render, allowing you to change gender if you'd like.
+  - code_imp: Quirk balance tallying up is now done outside of the TGUI interface,
+      allowing us to hook other systems that cost points into it.
+  - refactor: Refactored the Augmentations panel to actually look decent and support
+      the usage of quirk points to balance stronger or crippling augments.
+  Melbert:
+  - bugfix: The huds for clown and mime fan are back
+  - bugfix: You can no longer be a simultaneous clown and mime fan, pick a side coward
+  - bugfix: Removing invasive spreading from a plant will now actually remove invasive
+      spreading
+  - refactor: Refactored seed / gene deletion, and a bit of gene addition / removal
+  SkyratBot:
+  - bugfix: fixed ambient occlusion stacking sometimes
+  - refactor: 'Refactored the circuit list datatype to support composite types (i.e.
+      entity list, any list, number list), which are lists that can only contain values
+      of the specified datatype. This also refactors anything that uses the list datatype
+      to use composite lists. qol: NTNet components now use composite lists to send
+      and receive data'
+  - bugfix: Prevented people from infinitely making lists with the list literal component.
+  - bugfix: the Driscoll poncho should be centered now
+  - bugfix: Observers will no longer see ghost icons representing Maintenance Loot
+      Spawners of Roundstart Past once the round has actually started.
+  - bugfix: Fixed default FPS for new players and applies it to them when they join.
+  - rscadd: Emagged and Syndicate borgs can now self-detonate. For emagged borgs,
+      this destroys the MMI, so know what you're signing up for.
+  - code_imp: freon_gas_act is now called freeze_turf. It was only ever used in two
+      places, neither of which involved Freon.
+  - bugfix: Vat beasts now longer lose their ability when someone rides them.
+  axietheaxolotl:
+  - rscadd: Added DeltaTri's donator item.
+  lyricalpaws:
+  - bugfix: Plants distill in to their distill reagents properly.

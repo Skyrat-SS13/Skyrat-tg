@@ -468,10 +468,9 @@
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
-	if(!skipface)
-		var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
-		if(line)
-			. += line
+	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
+	if(line)
+		. += line
 	if(client)
 		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
 		if(erp_status_pref && erp_status_pref != "disabled")
