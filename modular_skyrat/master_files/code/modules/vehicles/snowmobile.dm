@@ -3,10 +3,10 @@
 	desc = "A tracked vehicle designed for use in the snow, it looks like it would have difficulty moving elsewhere, however."
 	icon_state = "snowmobile"
 	icon = 'modular_skyrat/master_files/icons/obj/vehicles/vehicles.dmi'
+	var/static/list/snow_typecache = typecacheof(list(/turf/open/floor/plating/asteroid/snow/icemoon, /turf/open/floor/plating/snowed/smoothed/icemoon))
 
 /obj/vehicle/ridden/atv/snowmobile/Moved()
     . = ..()
-    var/static/list/snow_typecache = typecacheof(list(/turf/open/floor/plating/asteroid/snow/icemoon, /turf/open/floor/plating/snowed/smoothed/icemoon))
     if (QDELETED(src))
         return
     var/datum/component/riding/E = LoadComponent(/datum/component/riding)
