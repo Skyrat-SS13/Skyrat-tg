@@ -5,13 +5,15 @@
 	icon = 'modular_skyrat/master_files/icons/obj/vehicles/vehicles.dmi'
 
 /obj/vehicle/ridden/atv/snowmobile/Moved()
-	. = ..()
-	var/static/list/snow_typecache = typecacheof(list(/turf/open/floor/plating/asteroid/snow/icemoon, /turf/open/floor/plating/snowed/smoothed/icemoon))
-	var/datum/component/riding/E = LoadComponent(/datum/component/riding)
-	if(snow_typecache[loc.type])
-		E.vehicle_move_delay = 1
-	else
-		E.vehicle_move_delay = 2
+    . = ..()
+    var/static/list/snow_typecache = typecacheof(list(/turf/open/floor/plating/asteroid/snow/icemoon, /turf/open/floor/plating/snowed/smoothed/icemoon))
+    if (QDELETED(src))
+        return
+    var/datum/component/riding/E = LoadComponent(/datum/component/riding)
+    if(snow_typecache[loc.type])
+        E.vehicle_move_delay = 1
+    else
+        E.vehicle_move_delay = 2
 
 /obj/vehicle/ridden/atv/snowmobile/snowcurity
 	name = "security snowmobile"
