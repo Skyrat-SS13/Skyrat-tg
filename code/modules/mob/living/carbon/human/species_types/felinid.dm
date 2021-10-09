@@ -49,7 +49,6 @@
 		mutant_bodyparts -= "tail_human"
 	H.update_body()
 
-
 /datum/species/human/felinid/stop_wagging_tail(mob/living/carbon/human/H)
 	if(mutant_bodyparts["waggingtail_human"])
 		mutant_bodyparts["tail_human"] = mutant_bodyparts["waggingtail_human"]
