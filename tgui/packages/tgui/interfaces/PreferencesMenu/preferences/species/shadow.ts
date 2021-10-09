@@ -14,7 +14,7 @@ const Shadowperson: Species = {
     }, {
       icon: "eye",
       name: "Nightvision",
-      description: "Their eyes, adapted to the night, Can \
+      description: "Their eyes, adapted to the night, can \
       see in the dark with no problems.",
     }],
     neutral: [],
