@@ -35,7 +35,7 @@
 		/obj/item/food/donut/matcha = 10,
 		/obj/item/food/donut/blumpkin = 5,
 		/obj/item/clothing/mask/whistle = 5,
-		/obj/item/grenade/flashbang = 5, //Warden gets a box of these from letters, I figure sarge gets a chance at 1.
+		/obj/item/grenade/flashbang = 5 //Warden gets a box of these from letters, I figure sarge gets a chance at 1.
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
 	rpg_title = "Knight"
