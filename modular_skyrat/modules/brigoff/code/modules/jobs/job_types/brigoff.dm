@@ -29,7 +29,7 @@
 		/obj/item/food/donut/matcha = 10,
 		/obj/item/food/donut/blumpkin = 5,
 		/obj/item/clothing/mask/whistle = 5,
-		/obj/effect/spawner/random/contraband/prison = 5 //Gives them something fun to hold over the prisoners, or hide from them.
+		/obj/effect/spawner/random/contraband/prison = 5, //Gives them something fun to hold over the prisoners, or hide from them.
 		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
 	rpg_title = "Bailiff"
