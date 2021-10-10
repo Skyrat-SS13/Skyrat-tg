@@ -315,7 +315,7 @@
 
 /obj/item/toy/plush/tay/examine(mob/user)
 	. = ..()
-		. += span_notice("Alt-Click \the [src.name] to turn it [talking_tay_turned_on ? "off" : "on"].")
+	. += span_notice("Alt-Click \the [src.name] to turn it [talking_tay_turned_on ? "off" : "on"].")
 
 /obj/item/toy/plush/tay/AltClick(mob/user)
 	. = ..()
