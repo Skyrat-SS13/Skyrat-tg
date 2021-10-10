@@ -197,6 +197,10 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 	name = "Wizoff Deck"
 	item_path = /obj/item/toy/cards/deck/wizoff
 
+/datum/loadout_item/toys/tarot
+	name = "Tarot Card Deck"
+	item_path = /obj/item/toy/cards/deck/tarot
+
 /datum/loadout_item/toys/d1
 	name = "D1"
 	item_path = /obj/item/dice/d1
