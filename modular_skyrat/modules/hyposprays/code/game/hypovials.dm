@@ -6,6 +6,7 @@
 	spillable = FALSE
 	volume = 10
 	possible_transfer_amounts = list(1,2,5,10)
+	fill_icon_thresholds = list(10, 25, 50, 75, 100)
 	var/chem_color //Used for hypospray overlay
 
 /obj/item/reagent_containers/glass/vial/update_overlays()
