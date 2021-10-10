@@ -194,7 +194,7 @@
 	var/fp_verb = mode == HYPO_SPRAY ? "spray" : "inject"
 
 	if(injectee != user)
-		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!</span>"), \
+		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!"), \
 						span_userdanger("is trying to [fp_verb] you with [src]!"))
 	if(!do_mob(user, injectee, inject_wait, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, user.zone_selected, penetrates)))
 		return
