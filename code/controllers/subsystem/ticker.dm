@@ -420,7 +420,7 @@ SUBSYSTEM_DEF(ticker)
 		//SKYRAT EDIT ADDITION
 		if(ishuman(new_player_living))
 			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(new_player_mob.client?.prefs?.loadout_list))
-				if (item.restricted_roles && length(item.restricted_roles) > 0 && !(player_assigned_role.title in item.restricted_roles))
+				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
 					continue
 				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
 		//SKYRAT EDIT END
