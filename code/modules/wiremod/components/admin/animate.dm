@@ -29,6 +29,7 @@
 		return
 
 	var/atom/target_atom = target.value
+<<<<<<< HEAD
 	var/last_step_used_filter = FALSE
 	if(result["animation_steps"])
 		animate(target_atom, pixel_x = pixel_x, time = 0, loop = animation_loops.value, flags = ANIMATION_PARALLEL) //Just to start the animation
@@ -48,6 +49,35 @@
 					animate(target_atom, step["vars"], time = step["time"], easing = step["easing"], flags = step["flags"])
 				else
 					animate(time = step["time"], step["vars"], easing = step["easing"], flags = step["flags"])
+=======
+	if(!isatom(target_atom))
+		return
+
+	var/target_for_animation = target_atom
+	if(atom_or_filter.value == COMP_ANIMATE_FILTER)
+		target_for_animation = target_atom.get_filter(filter_target.value)
+
+	if(!target_for_animation)
+		return
+
+	if(!isatom(target_atom))
+		return
+	target_atom.datum_flags |= DF_VAR_EDITED
+
+	var/extra_flags = NONE
+	if(parallel.value)
+		extra_flags |= ANIMATION_PARALLEL
+
+	var/list/first_step = popleft(result["animation_steps"])
+	animate(target_for_animation, time = first_step["time"], first_step["vars"], loop = animation_loops.value, easing = first_step["easing"], flags = first_step["flags"]|extra_flags)
+	for(var/list/step as anything in result["animation_steps"])
+		animate(time = step["time"], step["vars"], easing = step["easing"], flags = step["flags"])
+		if(atom_or_filter.value == COMP_ANIMATE_FILTER)
+			var/list/filter_params = target_atom.filter_data[filter_target.value]
+			for(var/param in step["vars"])
+				if(filter_params.Find(param))
+					filter_params[param] = step["vars"][param]
+>>>>>>> 0ebf4891ada (Fixes bugs with admin circuits, expands upon some admin circuit components and fixes duplicator runtiming when a port doesn't exist. (#61948))
 
 /obj/item/circuit_component/animation_step
 	display_name = "Animation Step"
