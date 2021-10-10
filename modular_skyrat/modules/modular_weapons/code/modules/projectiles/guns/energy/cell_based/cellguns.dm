@@ -46,10 +46,6 @@
 		to_chat(user, span_notice("The [src] has no cells inside"))
 		return ..()
 
-/obj/item/gun/energy/cell_loaded/debug
-	name = "debug cell gun"
-	allowed_cells = list(/obj/item/weaponcell/debug)
-
-/obj/item/gun/energy/cell_loaded/alltypes
+/obj/item/gun/energy/cell_loaded/alltypes //This is for debug.
 	name = "omni gun"
 	allowed_cells = list(/obj/item/weaponcell)

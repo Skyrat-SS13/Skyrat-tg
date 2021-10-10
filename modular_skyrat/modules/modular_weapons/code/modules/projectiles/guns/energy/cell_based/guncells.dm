@@ -25,7 +25,6 @@
 	AddElement(/datum/element/item_scaling, 0.5, 1)
 	refresh_cellname()
 
-
 /obj/item/weaponcell/examine(mob/user)
 	. = ..()
 	if(shot_name)
@@ -52,15 +51,3 @@
 		balloon_alert(user, "set to [shot_name]")
 	return
 
-/obj/item/weaponcell/debug
-	name = "debug medicell"
-	ammo_type = /obj/item/ammo_casing/energy/ion
-
-/obj/item/weaponcell/debug/child
-	name = "debug medicell child"
-	toggle_modes = TRUE
-	primary_mode = /obj/item/ammo_casing/energy/ion
-	secondary_mode = /obj/item/ammo_casing/energy/medical/brute1
-
-/obj/item/weaponcell/medical
-	name = "medical cell"
