@@ -417,6 +417,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	real_name = "Ian" //Intended to hold the name without altering it.
 	gender = MALE
 	desc = "He's the HoP's beloved corgi."
+	icon = 'modular_skyrat/modules/chadian/icons/ian.dmi' //SKYRAT EDIT CHANGE
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "bops"
@@ -449,11 +450,15 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 		desc = "At a ripe old age of [record_age], Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
 		turns_per_move = 20
 
+		old = TRUE //SKYRAT EDIT ADDITION
+
+/* SKYRAT EDIT REMOVAL
 /mob/living/simple_animal/pet/dog/corgi/ian/Life(delta_time = SSMOBS_DT, times_fired)
 	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
 		Write_Memory(FALSE)
 		memory_saved = TRUE
 	..()
+*/
 
 /mob/living/simple_animal/pet/dog/corgi/ian/death()
 	if(!memory_saved)
