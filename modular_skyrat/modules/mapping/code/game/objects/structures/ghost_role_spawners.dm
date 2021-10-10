@@ -276,7 +276,7 @@
 	flavour_text = "Since the dawn of many races, the act of hunting in order to feed your family, prove your strength, or protect your home has been \
 	something many brave men and women have done. With the advances of the modern galaxy, hunting has fallen to the wayside. Luckily, the Hunter Guild was established and has developed into a multi-sector faction.\
 	Your guild and lodge is always looking for new members to teach the values and traditions of hunting to, and your guild has an obligation to culling animal populations."
-	important_info = "Hunt monsters and animals to protect those who live on this world. You are a neutral faction. Don't hunt down station antagonists, focus on neutrality with the station and helping them if animals or monsters attack."
+	important_info = "Hunt monsters and animals to protect those who live on this world. You are a neutral faction. Don't hunt down station antagonists, focus on neutrality with the station and helping people if animals or monsters attack them."
 	outfit = /datum/outfit/huntboss
 
 /datum/outfit/huntboss
@@ -299,7 +299,7 @@
 	)
 
 /obj/effect/mob_spawn/human/hunter
-	name = ""
+	name = "Hunter Guild Member"
 	roundstart = FALSE
 	death = FALSE
 	random = TRUE
@@ -310,7 +310,7 @@
 	flavour_text = "Since the dawn of many races, the act of hunting in order to feed your family, prove your strength, or protect your home has been \
 	something many brave men and women have done. With the advances of the modern galaxy, hunting has fallen to the wayside. Luckily, the Hunter Guild was established and has developed into a multi-sector faction.\
 	Your guild and lodge is always looking for new members to teach the values and traditions of hunting to, and your guild has an obligation to culling animal populations."
-	important_info = "Hunt monsters and animals to protect those who live on this world. You are a neutral faction.Don't hunt down station antagonists, focus on neutrality with the station and helping them if animals or monsters attack."
+	important_info = "Hunt monsters and animals to protect those who live on this world. You are a neutral faction.Don't hunt down station antagonists, focus on neutrality with the station and helping people if animals or monsters attack them."
 	outfit = /datum/outfit/hunter
 
 /datum/outfit/hunter
