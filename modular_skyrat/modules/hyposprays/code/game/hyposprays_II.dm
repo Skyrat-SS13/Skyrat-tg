@@ -152,7 +152,7 @@
 	spray_wait = COMBAT_WAIT_SPRAY
 	spray_self = COMBAT_SELF_INJECT
 	inject_self = COMBAT_SELF_SPRAY
-	penetrates = penetrates ? penetrates | INJECT_CHECK_PENETRATE_THICK : INJECT_CHECK_PENETRATE_THICK
+	penetrates = INJECT_CHECK_PENETRATE_THICK
 	to_chat(user, "You overcharge [src]'s control circuit.")
 	obj_flags |= EMAGGED
 	return TRUE
