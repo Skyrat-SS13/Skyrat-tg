@@ -330,7 +330,7 @@
 	. = ..()
 	if(!iscarbon(speaker)) //only allows it to hear humans, also in effect prevents infinite loops from occuring
 		return
-	if(!on_cooldown & talking_tay_turned_on)
+	if(!on_cooldown && talking_tay_turned_on)
 		addtimer(CALLBACK(src, .proc/stutter_message, raw_message, message_language), message_delay) //delays the message
 
 		on_cooldown = TRUE
