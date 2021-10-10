@@ -90,5 +90,5 @@
 /obj/item/reagent_containers/vapecart/syndicate
 	name = "Syndikush Green Crack cart"
 	desc = "Green Crack is a strain of sativa, not actual crack."
-	list_reagents = list(/datum/reagent/drug/thc = 25, /datum/reagent/medicine/stimulants = 20)
+	list_reagents = list(/datum/reagent/drug/thc = 20, /datum/reagent/medicine/stimulants = 10)
 	custom_price = PAYCHECK_MEDIUM
