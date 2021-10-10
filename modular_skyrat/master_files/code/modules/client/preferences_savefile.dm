@@ -74,6 +74,7 @@
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
+	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)
