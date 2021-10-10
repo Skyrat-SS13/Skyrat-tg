@@ -62,11 +62,11 @@
 //End of power cells
 
 //Upgrade Kit//
-/obj/item/upgradekit/medigun/charge
+/obj/item/device/custom_kit/medigun_fastcharge
 	name = "VeyMedical CWM-479 upgrade kit"
 	desc = "Upgardes the internal battery inside of the medigun, allowing for faster charging and a higher cell capacity. Any cells inside of the origingal medigun during the upgrade process will be lost!"
-	icon = 'icons/obj/storage.dmi'
-	icon_state = "plasticbox"
+	from_obj = /obj/item/gun/energy/cell_loaded/medigun/standard
+	to_obj = /obj/item/gun/energy/cell_loaded/medigun/upgraded
 
 //MEDIGUN WIKI BOOK
 /obj/item/book/manual/wiki/mediguns

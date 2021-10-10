@@ -118,6 +118,6 @@
 	id = "medigunspeed"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/uranium = 5000, /datum/material/glass = 4000, /datum/material/plasma = 2000, /datum/material/diamond = 500)
-	build_path = /obj/item/upgradekit/medigun/charge
+	build_path = /obj/item/device/custom_kit/medigun_fastcharge
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
