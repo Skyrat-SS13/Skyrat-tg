@@ -1588,16 +1588,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
 	restricted = TRUE
 
-//SKYRAT EDIT START - VAPE CARTS
-/datum/uplink_item/device_tools/syndikush
-	name = "Syndikush Green Crack cart"
-	desc = "A cheap Chinese vape cart that contains a potent combination of THC and \
-			stimulants. Not made with real crack."
-	item = /obj/item/reagent_containers/vapecart/syndicate
-	cost = 5
-	surplus = 90
-//SKYRAT EDIT END - VAPE CARTS
-
 //SKYRAT EDIT REMOVAL BEGIN
 /*
 /datum/uplink_item/device_tools/suspiciousphone
