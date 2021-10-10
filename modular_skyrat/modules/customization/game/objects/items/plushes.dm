@@ -294,3 +294,87 @@
 	attack_verb_continuous = list("sneezes on", "detains", "tazes")
 	attack_verb_simple = list("sneeze on", "detain", "taze")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg' = 1)
+
+/obj/item/toy/plush/tay
+	name = "Talking Tay plushie"
+	desc = "Resembling a certain catboy, he repeats whatever you say!"
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_tay"
+	attack_verb_continuous = list("meows")
+	attack_verb_simple = list("meow")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/meow.ogg' = 1)
+	gender = MALE
+	var/talking_tay_turned_on = FALSE
+	var/on_cooldown = FALSE
+	var/cooldown_time = 25
+	var/message_delay = 5
+
+/obj/item/toy/plush/tay/Initialize(mapload)
+	. = ..()
+	become_hearing_sensitive()
+
+/obj/item/toy/plush/tay/examine(mob/user)
+	. = ..()
+		. += span_notice("Alt-Click \the [src.name] to turn it [talking_tay_turned_on ? "off" : "on"].")
+
+/obj/item/toy/plush/tay/AltClick(mob/user)
+	. = ..()
+	talking_tay_turned_on = !talking_tay_turned_on
+	to_chat(user, span_notice("The [src] is now [talking_tay_turned_on ? "on" : "off"]."))
+
+/obj/item/toy/plush/tay/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods)
+	. = ..()
+	if(!iscarbon(speaker)) //only allows it to hear humans, also in effect prevents infinite loops from occuring
+		return
+	if(!on_cooldown & talking_tay_turned_on)
+		addtimer(CALLBACK(src, .proc/stutter_message, raw_message, message_language), message_delay) //delays the message
+
+		on_cooldown = TRUE
+		addtimer(CALLBACK(src, .proc/clear_cooldown), cooldown_time) //just so you cant spam the shit out of it
+
+/obj/item/toy/plush/tay/proc/stutter_message(message, message_language)
+
+	if(prob(5))
+		say("[pick_list_replacements(TAY_DEMON_FILE, "tay_demonic_ramblings")]", language = message_language) //these are all just metal song lyrics
+		icon_state = "plushie_tay_peaceinhell"
+		return
+
+	//THE STUTTERSLUT ALGORITH
+
+	var/list/message_split = splittext(message, " ")
+	var/list/new_message = list()
+
+	for(var/word in message_split)
+		if(prob(10) && word != message_split[1]) //%10 chance of filler
+			new_message += pick("uh...","eh...","um...")
+
+		if(prob(35)) //%35 chance of stutter
+			word = html_decode(word)
+			var/leng = length(word)
+			var/stuttered = ""
+			var/newletter = ""
+			var/rawchar = ""
+			var/stuttered_letters = 0
+
+			var/static/regex/nostutter = regex(@@[ ""''()[\]{}.!?,:;_`~-]@)
+
+			for(var/i = 1, i <= leng, i += length(rawchar))
+				rawchar = newletter = word[i]
+				if(stuttered_letters < 2 && !nostutter.Find(rawchar)) //will only stutter on two letters
+					if(prob(5) || (stuttered_letters == 0)) //will always stutter the first possible letter
+						newletter = "[newletter]-[newletter]"
+						stuttered_letters++
+				stuttered += newletter
+				sanitize(stuttered)
+
+			new_message += stuttered
+		else
+			new_message += word
+
+	message = jointext(new_message, " ")
+
+	say("[message]", language = message_language)
+
+/obj/item/toy/plush/tay/proc/clear_cooldown()
+	on_cooldown = FALSE
+	icon_state = "plushie_tay" //clear demon sprite
