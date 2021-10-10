@@ -320,6 +320,10 @@
 /obj/item/toy/plush/tay/AltClick(mob/user)
 	. = ..()
 	talking_tay_turned_on = !talking_tay_turned_on
+	if(talking_tay_turned_on)
+		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/synth_yes.ogg', 50, TRUE)
+	else
+		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/synth_no.ogg', 50, TRUE)
 	to_chat(user, span_notice("The [src] is now [talking_tay_turned_on ? "on" : "off"]."))
 
 /obj/item/toy/plush/tay/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods)
@@ -333,6 +337,8 @@
 		addtimer(CALLBACK(src, .proc/clear_cooldown), cooldown_time) //just so you cant spam the shit out of it
 
 /obj/item/toy/plush/tay/proc/stutter_message(message, message_language)
+
+	playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/twobeep.ogg', 50, TRUE)
 
 	if(prob(5))
 		say("[pick_list_replacements(TAY_DEMON_FILE, "tay_demonic_ramblings")]", language = message_language) //these are all just metal song lyrics
