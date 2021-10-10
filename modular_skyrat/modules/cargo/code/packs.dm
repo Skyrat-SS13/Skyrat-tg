@@ -109,9 +109,9 @@
 	desc = "Contains the tier I Medigun cells."
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_MEDICAL
-	contains = list(/obj/item/weaponcell/medical/brute1,
-					/obj/item/weaponcell/medical/burn1,
-					/obj/item/weaponcell/medical/toxin1,
+	contains = list(/obj/item/weaponcell/medical/brute,
+					/obj/item/weaponcell/medical/burn,
+					/obj/item/weaponcell/medical/toxin,
 					/obj/item/weaponcell/medical)
 	crate_name = "Medicell Replacemnt Crate"
 

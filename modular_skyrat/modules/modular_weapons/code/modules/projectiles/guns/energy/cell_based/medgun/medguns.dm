@@ -105,9 +105,9 @@
 
 /obj/item/storage/briefcase/medicalgunset/cmo/PopulateContents()
 	new /obj/item/gun/energy/cell_loaded/medigun/cmo(src)
-	new /obj/item/weaponcell/medical/brute1(src)
-	new /obj/item/weaponcell/medical/burn1(src)
-	new /obj/item/weaponcell/medical/toxin1(src)
+	new /obj/item/weaponcell/medical/brute(src)
+	new /obj/item/weaponcell/medical/burn(src)
+	new /obj/item/weaponcell/medical/toxin(src)
 	new /obj/item/book/manual/wiki/mediguns(src)
 
 //Medigun Cells - Spritework is done by Arctaisia!
@@ -121,9 +121,11 @@
 	ammo_type = /obj/item/ammo_casing/energy/medical //This is the ammo type that all mediguns come with.
 	medicell_examine = TRUE
 
+/obj/item/weaponcell/medical/oxygen
+
 //Tier I cells//
 //Brute I//
-/obj/item/weaponcell/medical/brute1
+/obj/item/weaponcell/medical/brute
 	name = "Brute I Medicell"
 	desc = "A small cell with a red glow. Can be used on Mediguns to unlock the Brute I Functionality."
 	icon_state = "Brute1"
@@ -133,7 +135,7 @@
 	toggle_modes = TRUE
 
 //Burn I//
-/obj/item/weaponcell/medical/burn1
+/obj/item/weaponcell/medical/burn
 	name = "Burn I Medicell"
 	desc = "A small cell with a yellow glow. Can be used on Mediguns to unlock the Burn I Functionality."
 	icon_state = "Burn1"
@@ -142,7 +144,7 @@
 	primary_mode = /obj/item/ammo_casing/energy/medical/burn1/safe
 	toggle_modes = TRUE
 //Toxin I//
-/obj/item/weaponcell/medical/toxin1
+/obj/item/weaponcell/medical/toxin
 	name = "Toxin I Medicell"
 	desc = "A small cell with a green glow. Can be used on Mediguns to unlock the Toxin I Functionality."
 	icon_state = "Toxin1"
@@ -150,31 +152,29 @@
 //End of Tier I Cells/
 //Tier II Cells/
 //Brute II//
-/obj/item/weaponcell/medical/brute2
+/obj/item/weaponcell/medical/brute/better
 	name = "Brute II Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute II Functionality."
 	icon_state = "Brute2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute2/safe
 	secondary_mode = /obj/item/ammo_casing/energy/medical/brute2
 	primary_mode = /obj/item/ammo_casing/energy/medical/brute2/safe
-	toggle_modes = TRUE
 //Burn II//
-/obj/item/weaponcell/medical/burn2
+/obj/item/weaponcell/medical/burn/better
 	name = "Burn II Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn II Functionality."
 	icon_state = "Burn2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn2/safe
 	secondary_mode = /obj/item/ammo_casing/energy/medical/burn2
 	primary_mode = /obj/item/ammo_casing/energy/medical/burn2/safe
-	toggle_modes = TRUE
 //Toxin II//
-/obj/item/weaponcell/medical/toxin2
+/obj/item/weaponcell/medical/toxin/better
 	name = "Toxin II Medicell"
 	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functionality."
 	icon_state = "Toxin2"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin2
 //Oxygen II//
-/obj/item/weaponcell/medical/oxy2
+/obj/item/weaponcell/medical/oxygen/better
 	name = "Oxygen II Medicell"
 	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functionality."
 	icon_state = "Oxy2"
@@ -182,31 +182,29 @@
 //End of Tier II
 //Tier III Cells/
 //Brute III//
-/obj/item/weaponcell/medical/brute3
+/obj/item/weaponcell/medical/brute/better/best
 	name = "Brute III Medicell"
 	desc = "A small cell with a intense red glow. Can be used on Mediguns to unlock the Brute III Functoinality"
 	icon_state = "Brute3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/brute3/safe
 	secondary_mode = /obj/item/ammo_casing/energy/medical/brute3
 	primary_mode = /obj/item/ammo_casing/energy/medical/brute3/safe
-	toggle_modes = TRUE
 //Burn III//
-/obj/item/weaponcell/medical/burn3
+/obj/item/weaponcell/medical/burn/better/best
 	name = "Burn III Medicell"
 	desc = "A small cell with a intense yellow glow. Can be used on Mediguns to unlock the Burn III Functoinality"
 	icon_state = "Burn3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/burn3/safe
 	secondary_mode = /obj/item/ammo_casing/energy/medical/burn3
 	primary_mode = /obj/item/ammo_casing/energy/medical/burn3/safe
-	toggle_modes = TRUE
 //Toxin III//
-/obj/item/weaponcell/medical/toxin3
+/obj/item/weaponcell/medical/toxin/better/best
 	name = "Toxin III Medicell"
 	desc = "A small cell with a intense green glow. Can be used on Mediguns to unlock the Toxin II Functionality."
 	icon_state = "Toxin3"
 	ammo_type = /obj/item/ammo_casing/energy/medical/toxin3
 //Oxygen III//
-/obj/item/weaponcell/medical/oxy3
+/obj/item/weaponcell/medical/oxygen/better/best
 	name = "Oxygen III Medicell"
 	desc = "A small cell with a intense blue glow. Can be used on Mediguns to unlock the Oxygen II Functionality."
 	icon_state = "Oxy3"

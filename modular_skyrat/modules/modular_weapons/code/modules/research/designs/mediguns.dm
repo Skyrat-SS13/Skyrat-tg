@@ -6,7 +6,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/libital = 10)
-	build_path = /obj/item/weaponcell/medical/brute2
+	build_path = /obj/item/weaponcell/medical/brute/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -17,7 +17,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/aiuri = 10)
-	build_path = /obj/item/weaponcell/medical/burn2
+	build_path = /obj/item/weaponcell/medical/burn/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -28,7 +28,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/multiver = 10)
-	build_path = /obj/item/weaponcell/medical/toxin2
+	build_path = /obj/item/weaponcell/medical/toxin/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -39,7 +39,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/convermol = 10)
-	build_path = /obj/item/weaponcell/medical/oxy2
+	build_path = /obj/item/weaponcell/medical/oxygen/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -51,7 +51,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/sal_acid = 10)
-	build_path = /obj/item/weaponcell/medical/brute3
+	build_path = /obj/item/weaponcell/medical/brute/better/best
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -62,7 +62,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/oxandrolone = 10)
-	build_path = /obj/item/weaponcell/medical/burn3
+	build_path = /obj/item/weaponcell/medical/burn/better/best
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -73,7 +73,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/pen_acid = 10)
-	build_path = /obj/item/weaponcell/medical/toxin3
+	build_path = /obj/item/weaponcell/medical/toxin/better/best
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -83,7 +83,7 @@
 	id = "oxy3medicell"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
-	build_path = /obj/item/weaponcell/medical/oxy3
+	build_path = /obj/item/weaponcell/medical/oxygen/better/best
 	reagents_list = list(/datum/reagent/medicine/salbutamol = 10)
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
