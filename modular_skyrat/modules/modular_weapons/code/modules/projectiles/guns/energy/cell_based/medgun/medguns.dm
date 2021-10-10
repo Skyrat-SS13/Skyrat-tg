@@ -119,6 +119,7 @@
 	icon_state = "Oxy1"
 	w_class = WEIGHT_CLASS_SMALL
 	ammo_type = /obj/item/ammo_casing/energy/medical //This is the ammo type that all mediguns come with.
+	medicell_examine = TRUE
 
 //Tier I cells//
 //Brute I//
