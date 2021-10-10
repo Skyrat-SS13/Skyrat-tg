@@ -90,8 +90,8 @@
 
 //Utility Medicells
 /datum/design/clotmedicell
-	name = "clotting medicell"
-	desc = "A medicell designed to help deal with bleeding patients"
+	name = "Clotting Medicell"
+	desc = "A Medicell designed to help deal with bleeding patients"
 	id = "clotmedicell"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
@@ -101,8 +101,8 @@
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/tempmedicell
-	name = "temperature adjustment medicell"
-	desc = "A medicell that adjusts the hosts temperature to acceptable levels"
+	name = "Temperature Adjustment Medicell"
+	desc = "A Medicell that adjusts the hosts temperature to acceptable levels"
 	id = "tempmedicell"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
