@@ -11671,7 +11671,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
 /obj/machinery/button/door/directional/west{
 	id = "engsm";
 	name = "Radiation Shutters Control";
@@ -38936,6 +38935,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/brig)
+"fgG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "fgO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -50405,7 +50408,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "iNf" = (
@@ -62001,8 +62003,8 @@
 /area/engineering/atmos)
 "mkl" = (
 /obj/machinery/light/directional/west,
-/obj/machinery/atmospherics/pipe/layer_manifold/green/visible,
 /obj/machinery/status_display/evac/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "mkz" = (
@@ -75566,6 +75568,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"qfy" = (
+/obj/machinery/light/small/directional/south,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Gas to Chamber"
+	},
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "qfA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79394,10 +79404,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
-"rgg" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/turf/closed/wall/r_wall,
-/area/engineering/supermatter)
 "rgv" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -94944,7 +94950,7 @@
 "vJj" = (
 /obj/machinery/light/directional/west,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/layer_manifold/cyan/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "vJu" = (
@@ -96771,14 +96777,6 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
-"wnl" = (
-/obj/machinery/light/small/directional/south,
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8;
-	name = "Gas to Chamber"
-	},
-/turf/open/floor/engine,
-/area/engineering/supermatter)
 "wnm" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/effect/decal/cleanable/dirt,
@@ -124779,8 +124777,8 @@ hdi
 tii
 tii
 tSQ
-rgg
-rgg
+fgG
+fgG
 qzf
 qzf
 hdp
@@ -125036,7 +125034,7 @@ idx
 qzf
 uWq
 qzE
-wnl
+qfy
 qzf
 pEZ
 pEZ
@@ -125293,7 +125291,7 @@ lAe
 qzf
 vDy
 lZo
-rgg
+fgG
 qzf
 axV
 axV
