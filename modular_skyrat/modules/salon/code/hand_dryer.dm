@@ -8,7 +8,7 @@
 	var/busy = FALSE
 
 /obj/machinery/dryer/attack_hand(mob/user)
-	if(isrobot(user) || isAI(user))
+	if(iscyborg(user) || isAI(user))
 		return
 
 	if(!can_interact(user))
@@ -19,7 +19,7 @@
 		return
 
 	to_chat(user, span_notice("You start drying your hands."))
-	playsound(src, 'modular_skyrat/modules/salon/sound/drying.ogg', VOL_EFFECTS_MASTER)
+	playsound(src, 'modular_skyrat/modules/salon/sound/drying.ogg', 50)
 	add_fingerprint(user)
 	busy = TRUE
 	if(do_after(user, 4 SECONDS, src))
