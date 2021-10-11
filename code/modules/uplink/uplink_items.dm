@@ -1500,7 +1500,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			sends you a small beacon that will teleport the larger beacon to your location upon activation."
 	item = /obj/item/sbeacondrop
 	cost = 10
-
+	
+//SKYRAT EDIT REMOVAL BEGIN
+/*
 /datum/uplink_item/device_tools/powersink
 	name = "Power Sink"
 	desc = "When screwed to wiring attached to a power grid and activated, this large device lights up and places excessive \
@@ -1509,6 +1511,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	item = /obj/item/powersink
 	cost = 18 //SKYRAT EDIT: Original value (10)
 	player_minimum = 25
+*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
