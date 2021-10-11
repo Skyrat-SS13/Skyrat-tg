@@ -16,7 +16,7 @@
 
 	return TRUE
 
-/datum/preference/choiced/master_erp_preferences/deserialize(input, datum/preferences/preferences)
+/datum/preference/toggle/master_erp_preferences/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		return FALSE
 	. = ..()
