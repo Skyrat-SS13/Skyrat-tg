@@ -66,17 +66,18 @@
 				target_human.dna.features["mcolor1"] = selected_color
 			if("Three")
 				target_human.dna.features["mcolor2"] = selected_color
-		target_human.apply_customizable_dna_features_to_species()
-		target_human.updateappearance(TRUE, TRUE, TRUE)
-		target_human.update_body()
-		target_human.update_body_parts()
+
+		target_human.regenerate_icons()
 		item_use_power(power_use_amount, user)
 
-		visible_message("[user] finishes painting [target_human]!")
+		visible_message(span_notice("[user] finishes painting [target_human]!"))
+
+		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
+
 
 /obj/item/fur_dyer/proc/dye_marking(mob/living/carbon/human/target_human, mob/living/user)
 
-	var/list/list/current_markings = target_human.dna.body_markings
+	var/list/list/current_markings = target_human.dna.body_markings.Copy()
 
 	if(!current_markings.len)
 		to_chat(user, span_danger("[target_human] has no markings!"))
@@ -113,9 +114,14 @@
 
 	if(do_after(user, 20 SECONDS, target_human))
 		current_markings[selected_marking_area][selected_marking_id] = selected_color
-		target_human.updateappearance(TRUE, TRUE, TRUE)
+
+		target_human.dna.body_markings = current_markings.Copy()
+
+		target_human.regenerate_icons()
 
 		item_use_power(power_use_amount, user)
 
-		visible_message("[user] finishes painting [target_human]!")
+		visible_message(span_notice("[user] finishes painting [target_human]!"))
+
+		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
 
