@@ -42,29 +42,18 @@
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/syndi/wintertas
 	hardsuit_tail_colors = list("EEE", "111", "211")
 
-/obj/item/clothing/suit/space/hardsuit/syndi/camo/attack_self(mob/user)	//Some weird amalgamation from the reskin_obj proc
-	if(cell_cover_open)
-		remove_cell(user)
-		//Y'know, just in case someone wants to use the suit without bothering to toggle it
-	else
-		var/list/radial_items = list() //Used to handle counting to 3. Very challenging.
-		var/list/camo_types = list("Default (Blood-Red)", "Winterized", "Winterized (without tassets)")
-		var/list/camo_icons = list("hardsuit1-syndi", "hardsuit1-syndi-winter", "hardsuit1-syndi-wintertas")
+/obj/item/device/custom_kit/winterized
+	name = "Syndicate Hardsuit winterized plating kit"
+	desc = "A modification kit that comes with the tools neccessary to modify a Standard Blood-Red Hardsuit into it's winterized variant. This one comes with tassets. Warranty void if tampered with, property of Gorlex Marauders."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
+	icon_state = "partskit-synd"
+	from_obj = /obj/item/clothing/suit/space/hardsuit/syndi
+	to_obj = /obj/item/clothing/suit/space/hardsuit/syndi/winter
 
-		for(var/radial_icon_option in camo_types)
-			var/image/item_image = image(icon = src.icon, icon_state = camo_icons[camo_types])
-			radial_items += list("[radial_icon_option]" = item_image)
-		sortList(radial_items)
-		var/pick_camo = show_radial_menu(user, src, radial_items, custom_check = CALLBACK(src, .proc/check_reskin_menu, user), radius = 38, require_near = TRUE)
-		if(!pick_camo)
-			return
-		else
-			switch(pick_camo)
-				if("Default (Blood-Red)")
-					user.put_in_hands(new /obj/item/clothing/suit/space/hardsuit/syndi(get_turf(src)))
-				if("Winterized")
-					user.put_in_hands(new /obj/item/clothing/suit/space/hardsuit/syndi/winter(get_turf(src)))
-				if("Winterized (without tassets)")
-					user.put_in_hands(new /obj/item/clothing/suit/space/hardsuit/syndi/wintertas(get_turf(src)))
-			to_chat(user, "The Hardsuit rematerializes in your hand, you've changed it to [pick_camo]! A small voice crackles from the Hardsuit: 'Warranty is void if tampered with.'")
-			qdel(src)
+/obj/item/device/custom_kit/winterized_notasset
+	name = "Syndicate Hardsuit winterized plating kit"
+	desc = "A modification kit that comes with the tools neccessary to modify a Standard Blood-Red Hardsuit into it's winterized variant. This one comes with no tassets. Warranty void if tampered with, property of Gorlex Marauders."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
+	icon_state = "partskit-synd"
+	from_obj = /obj/item/clothing/suit/space/hardsuit/syndi
+	to_obj = /obj/item/clothing/suit/space/hardsuit/syndi/wintertas
