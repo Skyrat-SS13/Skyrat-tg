@@ -172,10 +172,10 @@
 						to_chat(user, "<span class='notice'>There isnt enough space to write that on [T]'s [BP.name].</span>")
 						return
 
-				if(!(user==T))
-					to_chat(user, "<span class='notice'>You write on [T]'s [BP.name].</span>")
+				if(!(user == target_human))
+					to_chat(user, span_notice("You write on [target_human]'s [bodypart.name]."))
 				else
-					to_chat(user, "<span class='notice'>You write on your [BP.name].</span>")
+					to_chat(user, span_notice("You write on your [bodypart.name]."))
 	else
 		. = ..()
 
