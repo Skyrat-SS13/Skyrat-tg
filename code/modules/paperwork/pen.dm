@@ -165,12 +165,12 @@
 				else
 					to_chat(user, "<span class='notice'>You begin to write on your [BP.name].</span>")
 
-				if(do_mob(user, T, 4 SECONDS))
-					if((length(BP.writtentext))+(length(writting)) < 100) //100 character limmit to stop spamming.
-						BP.writtentext += html_encode(writting) //you can add to text, not remove it.
-					else
-						to_chat(user, "<span class='notice'>There isnt enough space to write that on [T]'s [BP.name].</span>")
-						return
+				if(!(do_mob(user, target_human, 4 SECONDS)))
+					return
+				if(!((length(bodypart.writtentext))+(length(writing)) < 100)) //100 character limmit to stop spamming.
+					to_chat(user, span_notice("There isnt enough space to write that on [target_human]'s [bodypart.name]."))
+					return
+				bodypart.writtentext += html_encode(writing) //you can add to text, not remove it.
 
 				if(!(user == target_human))
 					to_chat(user, span_notice("You write on [target_human]'s [bodypart.name]."))
