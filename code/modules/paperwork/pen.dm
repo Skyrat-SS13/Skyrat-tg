@@ -155,7 +155,7 @@
 					return
 
 				var/writting = input(user, "Add writing, doesn't replace current text", "Writing on [T]")  as text|null
-				if(!writting)
+				if(!writing)
 					return
 
 				var/obj/item/bodypart/bodypart = target_human.get_bodypart(user.zone_selected)
