@@ -51,13 +51,15 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 		return ..()
 	var/turf/moving_turf = get_turf(choice)
 	var/turf/target_turf = get_turf(target)
-	for(var/check_content in target_turf.GetAllContents())
+	for(var/check_content in target_turf.contents)
 		if(isobserver(check_content))
 			continue
 		if(!ismovable(check_content))
 			continue
 		var/atom/movable/movable_content = check_content
 		if(isliving(movable_content))
+			continue
+		if(length(movable_content.get_all_contents_type(/mob/living)))
 			continue
 		if(movable_content.anchored)
 			continue
