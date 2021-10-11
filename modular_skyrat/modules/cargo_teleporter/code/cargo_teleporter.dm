@@ -50,33 +50,20 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	if(!choice)
 		return ..()
 	var/turf/moving_turf = get_turf(choice)
-	var/area/checking_moveturf = get_area(moving_turf)
-	if(checking_moveturf.area_flags & NOTELEPORT)
-		return
 	var/turf/target_turf = get_turf(target)
-	var/area/checking_targetturf = get_area(target_turf)
-	if(checking_targetturf.area_flags & NOTELEPORT)
-		return
-	var/looping_counter = 0
-	for(var/check_content in target_turf.contents)
-		if(looping_counter >= 11)
-			break
-		looping_counter++
+	for(var/check_content in target_turf.GetAllContents())
+		if(isobserver(check_content))
+			continue
 		if(!ismovable(check_content))
 			continue
 		var/atom/movable/movable_content = check_content
 		if(isliving(movable_content))
 			continue
-		for(var/checks_check in movable_content.contents) //I really want to make sure we dont transport living things
-			if(isliving(checks_check))
-				continue
 		if(movable_content.anchored)
 			continue
-		if(!do_after(user, 1 SECONDS, target = target))
-			break
 		do_teleport(movable_content, moving_turf, asoundout = 'sound/magic/Disable_Tech.ogg')
 	new /obj/effect/decal/cleanable/ash(target_turf)
-	COOLDOWN_START(src, use_cooldown, 15 SECONDS)
+	COOLDOWN_START(src, use_cooldown, 8 SECONDS)
 
 /datum/design/cargo_teleporter
 	name = "Cargo Teleporter"
@@ -100,13 +87,13 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 
 /obj/effect/decal/cleanable/cargo_mark
 	name = "cargo mark"
-	desc = "A mark left behind by a cargo teleporter, which allows targeted teleportation."
+	desc = "A mark left behind by a cargo teleporter, which allows targeted teleportation. Can be removed by the cargo teleporter."
 	icon = 'modular_skyrat/modules/cargo_teleporter/icons/cargo_teleporter.dmi'
 	icon_state = "marker"
 	///the reference to the item that spawned the cargo mark
 	var/obj/item/cargo_teleporter/parent_item
 
-	light_range = 1.6
+	light_range = 3
 	light_color = COLOR_VIVID_YELLOW
 
 /obj/effect/decal/cleanable/cargo_mark/attackby(obj/item/W, mob/user, params)
