@@ -84,9 +84,9 @@
 
 /datum/preference/choiced/erp_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -114,9 +114,9 @@
 
 /datum/preference/choiced/erp_status_nc/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status_nc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -144,9 +144,9 @@
 
 /datum/preference/choiced/erp_status_v/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status_v/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)

@@ -198,6 +198,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "polyleatherjacket"
 
+/obj/item/clothing/suit/jacket/leather/polychromic/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/polychromic, list("5D5"))
 
 /obj/item/clothing/suit/toggle/brit/sec
 	name = "high vis armored vest"
