@@ -160,10 +160,10 @@
 
 				var/obj/item/bodypart/bodypart = target_human.get_bodypart(user.zone_selected)
 
-				if(!(user==T))
-					src.visible_message("<span class='notice'>[user] begins to write on [T]'s [BP.name].</span>")
+				if(!(user == target_human))
+					src.visible_message(span_notice("[user] begins to write on [target_human]'s [bodypart.name]."))
 				else
-					to_chat(user, "<span class='notice'>You begin to write on your [BP.name].</span>")
+					to_chat(user, span_notice("You begin to write on your [bodypart.name]."))
 
 				if(!(do_mob(user, target_human, 4 SECONDS)))
 					return
