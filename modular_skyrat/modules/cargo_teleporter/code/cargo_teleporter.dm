@@ -41,6 +41,8 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 /obj/item/cargo_teleporter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
 		return ..()
+	if(target == src)
+		return ..()
 	if(!COOLDOWN_FINISHED(src, use_cooldown))
 		to_chat(user, span_warning("[src] is still on cooldown!"))
 		return
