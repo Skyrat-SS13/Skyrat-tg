@@ -28,12 +28,10 @@
 	name = "Barber"
 	jobtype = /datum/job/barber
 
-	glasses = /obj/item/clothing/glasses/sunglasses/reagent
-	belt = /obj/item/pda/bar
+	glasses = /obj/item/clothing/glasses/sunglasses
+	belt = /obj/item/pda
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/rank/civilian/bartender
-	suit = /obj/item/clothing/suit/armor/vest
-	backpack_contents = list(/obj/item/storage/box/beanbag=1)
+	uniform = /obj/item/clothing/under/rank/barber
 	shoes = /obj/item/clothing/shoes/laceup
 	id_trim = /datum/id_trim/job/barber
 
@@ -41,22 +39,26 @@
 	name = "Barber's locker"
 	icon_state = "barber"
 	icon = 'modular_skyrat/master_files/icons/obj/closet.dmi'
+	req_access = list(ACCESS_BARBER)
 
 /obj/structure/closet/secure_closet/barber/PopulateContents()
+	new /obj/item/clothing/mask/surgical(src) // These three are here, so the barber can pick and choose what he's painting.
+	new /obj/item/clothing/under/rank/medical/doctor/blue(src)
+	new /obj/item/clothing/suit/apron/surgical(src)
+	new /obj/item/clothing/accessory/waistcoat(src)
+	new /obj/item/clothing/under/rank/civilian/lawyer/purpsuit(src)
+	new /obj/item/clothing/suit/toggle/lawyer/purple(src)
 	new /obj/item/razor(src)
 	new /obj/item/hairbrush/comb(src)
 	new /obj/item/scissors(src)
-	new /obj/item/clothing/mask/surgical(src) // These three are here, so the barber can pick and choose what he's painting.
-	new /obj/item/clothing/suit/apron/surgical(src)
-	new /obj/item/clothing/accessory/waistcoat(src)
-	//new /obj/item/clothing/under/rank/barber(src)
-	new /obj/item/clothing/under/(src)
+	new /obj/item/fur_dyer(src)
 	new /obj/item/dyespray(src)
 	new /obj/item/storage/box/lipsticks(src)
 	new /obj/item/reagent_containers/spray/quantum_hair_dye(src)
 	new /obj/item/reagent_containers/spray/barbers_aid(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)
 	new /obj/item/reagent_containers/glass/rag(src)
+	new /obj/item/storage/firstaid(src)
 
 /obj/effect/landmark/start/barber
 	name = "Barber"

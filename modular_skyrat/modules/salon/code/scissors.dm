@@ -8,6 +8,7 @@
 	throw_range = 9
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb_simple = list("cut", "stabbed", "chipped")
+	sharpness = SHARP_EDGED
 
 /obj/item/scissors/attack(mob/living/attacked_mob, mob/living/user, params)
 	if(!ishuman(attacked_mob))

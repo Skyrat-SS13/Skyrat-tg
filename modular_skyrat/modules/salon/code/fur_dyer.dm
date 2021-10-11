@@ -56,7 +56,7 @@
 
 	selected_color = sanitize_hexcolor(selected_color)
 
-	visible_message("[user] starts to masterfully paint [target_human]!")
+	visible_message(span_notice("[user] starts to masterfully paint [target_human]!"))
 
 	if(do_after(user, 20 SECONDS, target_human))
 		switch(selected_mutant_color)
@@ -110,7 +110,7 @@
 
 	selected_color = sanitize_hexcolor(selected_color)
 
-	visible_message("[user] starts to masterfully paint [target_human]!")
+	visible_message(span_notice("[user] starts to masterfully paint [target_human]!"))
 
 	if(do_after(user, 20 SECONDS, target_human))
 		current_markings[selected_marking_area][selected_marking_id] = selected_color

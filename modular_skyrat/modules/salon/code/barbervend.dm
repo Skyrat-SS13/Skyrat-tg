@@ -23,6 +23,7 @@
 		/obj/item/reagent_containers/dropper/precision = 1,
 		/obj/item/lipstick/quantum = 1,
 		/obj/item/razor = 1,
+		/obj/item/storage/box/perfume = 1,
 	)
 
 /obj/item/vending_refill/barbervend
