@@ -150,7 +150,7 @@
 				var/mob/living/carbon/human/T = M
 				if(!target_human) //no human.
 					return
-				if(!T.is_chest_exposed())
+				if(!get_location_accessible(target_human, BODY_ZONE_CHEST))
 					to_chat(user, span_warning("You cannot write on someone with their clothes on."))
 					return
 
