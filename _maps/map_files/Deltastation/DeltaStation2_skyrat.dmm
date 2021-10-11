@@ -202,6 +202,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/grounding_rod/anchored,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "aaO" = (
@@ -18573,10 +18574,10 @@
 /turf/open/floor/iron,
 /area/maintenance/port)
 "cGf" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "cGi" = (
@@ -36587,8 +36588,8 @@
 /turf/open/floor/iron,
 /area/engineering/storage)
 "ezC" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "ezU" = (
@@ -44647,16 +44648,12 @@
 /turf/open/floor/iron/grimy,
 /area/command/heads_quarters/captain)
 "hdi" = (
-/obj/machinery/atmospherics/components/binary/pump/layer2{
-	dir = 8;
-	name = "Gas to Chamber"
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/color_adapter{
+	dir = 4
 	},
-/obj/machinery/atmospherics/components/binary/pump/layer4{
-	dir = 4;
-	name = "Chamber to Cooling"
-	},
-/turf/open/floor/engine,
-/area/engineering/supermatter)
+/turf/open/floor/iron,
+/area/engineering/supermatter/room)
 "hdj" = (
 /obj/machinery/photocopier,
 /obj/machinery/light/directional/east,
@@ -44910,7 +44907,7 @@
 /area/security/interrogation)
 "hhS" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "hia" = (
@@ -47473,6 +47470,7 @@
 /area/engineering/main)
 "hWu" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/plating,
 /area/engineering/supermatter)
 "hWy" = (
@@ -53297,6 +53295,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/tesla_coil/anchored,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "jJq" = (
@@ -61295,8 +61294,6 @@
 	name = "Supermatter Chamber";
 	req_one_access_txt = "10;24"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "lZt" = (
@@ -79397,6 +79394,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/command/bridge)
+"rgg" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "rgv" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -79480,7 +79481,9 @@
 /turf/open/floor/iron,
 /area/service/bar/atrium)
 "rgQ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "rgU" = (
@@ -86339,9 +86342,8 @@
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/rd)
 "tii" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
-/turf/open/floor/engine,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "tim" = (
 /obj/structure/window/reinforced{
@@ -87901,8 +87903,10 @@
 /turf/open/floor/plating,
 /area/command/teleporter)
 "tGP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/color_adapter{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -88842,8 +88846,6 @@
 	name = "Supermatter Chamber";
 	req_one_access_txt = "10;24"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "tSS" = (
@@ -90216,8 +90218,6 @@
 /area/commons/fitness/recreation)
 "uqa" = (
 /obj/machinery/power/supermatter_crystal/engine,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "uqc" = (
@@ -92450,6 +92450,10 @@
 /obj/machinery/airalarm/engine{
 	pixel_y = 23
 	},
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4;
+	name = "Gas to Filter"
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "uWy" = (
@@ -94517,6 +94521,7 @@
 /area/command/heads_quarters/captain)
 "vDy" = (
 /obj/structure/sign/warning/radiation,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "vDG" = (
@@ -96766,6 +96771,14 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/miningoffice)
+"wnl" = (
+/obj/machinery/light/small/directional/south,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Gas to Chamber"
+	},
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "wnm" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/effect/decal/cleanable/dirt,
@@ -97042,9 +97055,7 @@
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "wrL" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 1
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "wrV" = (
@@ -100972,8 +100983,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "xET" = (
@@ -123996,9 +124005,9 @@ vNO
 eyE
 vZy
 tGP
-qzf
-rgQ
 tii
+rgQ
+qzE
 wrL
 jJm
 lBd
@@ -124510,9 +124519,9 @@ vNO
 eyE
 iDn
 cGf
-qzf
-rgQ
 tii
+rgQ
+qzE
 wrL
 jJm
 lYR
@@ -124766,12 +124775,12 @@ otP
 lON
 lgs
 oZO
-ezC
-qzf
-qzf
+hdi
+tii
+tii
 tSQ
-qzf
-qzf
+rgg
+rgg
 qzf
 qzf
 hdp
@@ -125026,8 +125035,8 @@ oZO
 idx
 qzf
 uWq
-hdi
-xeU
+qzE
+wnl
 qzf
 pEZ
 pEZ
@@ -125284,7 +125293,7 @@ lAe
 qzf
 vDy
 lZo
-qzf
+rgg
 qzf
 axV
 axV
