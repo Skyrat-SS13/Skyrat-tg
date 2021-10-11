@@ -147,7 +147,7 @@
 					return FALSE
 
 			else //writing time
-				var/mob/living/carbon/human/T = M
+				var/mob/living/carbon/human/target_human = M
 				if(!target_human) //no human.
 					return
 				if(!get_location_accessible(target_human, BODY_ZONE_CHEST))
