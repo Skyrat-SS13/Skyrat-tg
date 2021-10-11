@@ -326,7 +326,7 @@
 	for(var/X in writing) // SKYRAT EDIT ADDITION - BODY WRITING
 		if(!w_uniform)
 			var/obj/item/bodypart/BP = X
-			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(BP.writtentext)]\" written on [t_his] [BP.name].</span>\n"
+			msg += span_notice("[capitalize(t_He)] has \"[html_encode(BP.writtentext)]\" written on [t_his] [BP.name].\n")
 
 	if(!appears_dead)
 		if(drunkenness && !skipface) //Drunkenness
