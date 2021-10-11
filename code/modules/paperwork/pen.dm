@@ -151,7 +151,7 @@
 				if(!target_human) //no human.
 					return
 				if(!T.is_chest_exposed())
-					to_chat(user, "<span class='warning'>You cannot write on someone with their clothes on.</span>")
+					to_chat(user, span_warning("You cannot write on someone with their clothes on."))
 					return
 
 				var/writting = input(user, "Add writing, doesn't replace current text", "Writing on [T]")  as text|null
