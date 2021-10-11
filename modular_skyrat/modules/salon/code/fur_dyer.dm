@@ -56,19 +56,23 @@
 
 	selected_color = sanitize_hexcolor(selected_color)
 
-	switch(selected_mutant_color)
-		if("One")
-			target_human.dna.features["mcolor"] = selected_color
-		if("Two")
-			target_human.dna.features["mcolor1"] = selected_color
-		if("Three")
-			target_human.dna.features["mcolor2"] = selected_color
+	visible_message("[user] starts to masterfully paint [target_human]!")
 
-	target_human.apply_customizable_dna_features_to_species()
+	if(do_after(user, 20 SECONDS, target_human))
+		switch(selected_mutant_color)
+			if("One")
+				target_human.dna.features["mcolor"] = selected_color
+			if("Two")
+				target_human.dna.features["mcolor1"] = selected_color
+			if("Three")
+				target_human.dna.features["mcolor2"] = selected_color
+		target_human.apply_customizable_dna_features_to_species()
+		target_human.updateappearance(TRUE, TRUE, TRUE)
+		target_human.update_body()
+		target_human.update_body_parts()
+		item_use_power(power_use_amount, user)
 
-	target_human.updateappearance(TRUE, TRUE, TRUE)
-
-	item_use_power(power_use_amount, user)
+		visible_message("[user] finishes painting [target_human]!")
 
 /obj/item/fur_dyer/proc/dye_marking(mob/living/carbon/human/target_human, mob/living/user)
 
@@ -105,8 +109,13 @@
 
 	selected_color = sanitize_hexcolor(selected_color)
 
-	current_markings[selected_marking_area][selected_marking_id] = selected_color
-	target_human.apply_customizable_dna_features_to_species()
-	target_human.updateappearance(TRUE, TRUE, TRUE)
+	visible_message("[user] starts to masterfully paint [target_human]!")
 
-	item_use_power(power_use_amount, user)
+	if(do_after(user, 20 SECONDS, target_human))
+		current_markings[selected_marking_area][selected_marking_id] = selected_color
+		target_human.updateappearance(TRUE, TRUE, TRUE)
+
+		item_use_power(power_use_amount, user)
+
+		visible_message("[user] finishes painting [target_human]!")
+
