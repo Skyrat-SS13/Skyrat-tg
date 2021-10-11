@@ -279,8 +279,8 @@
 			playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, -1)
 			to_chat(target, "<span class='danger'>[src] tried slapping your ass, but it was deflected!")
 			return
-		else if(HAS_TRAIT(target, TRAIT_PERSONALSPACE))
-			if(target.combat_mode)
+		else if(HAS_TRAIT(target, TRAIT_PERSONALSPACE) && (target.stat != UNCONSCIOUS) && (!target.handcuffed)) //You need to be conscious and uncuffed to use Personal Space
+			if(target.combat_mode && (!HAS_TRAIT(target, TRAIT_PACIFISM))) //Being pacified prevents violent counters
 				var/obj/item/bodypart/affecting = src.get_bodypart(BODY_ZONE_HEAD)
 				if(affecting?.receive_damage(2))
 					src.update_damage_overlays()
