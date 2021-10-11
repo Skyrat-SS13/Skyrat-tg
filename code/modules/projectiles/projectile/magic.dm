@@ -246,7 +246,7 @@
 	var/locker_suck = TRUE
 	var/datum/weakref/locker_ref
 
-/obj/projectile/magic/locker/Initialize()
+/obj/projectile/magic/locker/Initialize(mapload)
 	. = ..()
 	var/obj/structure/closet/decay/locker_temp_instance = new(src)
 	locker_ref = WEAKREF(locker_temp_instance)
@@ -292,7 +292,7 @@
 	var/weakened_icon = "decursed"
 	var/auto_destroy = TRUE
 
-/obj/structure/closet/decay/Initialize()
+/obj/structure/closet/decay/Initialize(mapload)
 	. = ..()
 	if(auto_destroy)
 		addtimer(CALLBACK(src, .proc/bust_open), 5 MINUTES)
@@ -479,7 +479,7 @@
 
 	var/zap_power = 20000
 	var/zap_range = 15
-	var/zap_flags = ZAP_MOB_DAMAGE | ZAP_MOB_STUN | ZAP_OBJ_DAMAGE
+	var/zap_flags = ZAP_MOB_DAMAGE | ZAP_MOB_STUN | ZAP_OBJ_DAMAGE | ZAP_LOW_POWER_GEN
 	var/chain
 	var/mob/living/caster
 
@@ -502,7 +502,7 @@
 /obj/projectile/magic/aoe/lightning/no_zap
 	zap_power = 10000
 	zap_range = 4
-	zap_flags = ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE
+	zap_flags = ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE | ZAP_LOW_POWER_GEN
 
 /obj/projectile/magic/aoe/lightning/Destroy()
 	qdel(chain)

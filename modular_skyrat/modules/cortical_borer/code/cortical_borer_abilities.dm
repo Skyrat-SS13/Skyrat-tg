@@ -30,7 +30,7 @@
 	if(!choice)
 		to_chat(cortical_owner, span_warning("No selection made!"))
 		return
-	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5)
+	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5, added_purity = 1)
 	cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, 30, methods = INGEST)
 	to_chat(cortical_owner.human_host, span_warning("You feel something cool inside of you!"))
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
@@ -471,7 +471,7 @@
 		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can reproduce!"))
 		return
 	cortical_owner.chemical_storage -= 100
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 100, POLL_IGNORE_CORTICAL_BORER)
+	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 100, POLL_IGNORE_CORTICAL_BORER)
 	if(!LAZYLEN(candidates))
 		to_chat(cortical_owner, span_notice("No available borers in the hivemind."))
 		cortical_owner.chemical_storage = min(cortical_owner.max_chemical_storage, cortical_owner.chemical_storage + 100)

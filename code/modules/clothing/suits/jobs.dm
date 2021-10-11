@@ -65,7 +65,7 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 
-/obj/item/clothing/suit/det_suit/Initialize()
+/obj/item/clothing/suit/det_suit/Initialize(mapload)
 	. = ..()
 	allowed = GLOB.detective_vest_allowed
 
@@ -150,9 +150,6 @@
 	icon_state = "officerbluejacket"
 	inhand_icon_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
-	//SKYRAT EDIT. Weh.
-	mutant_variants = NONE
-	//SKYRAT EDIT END.
 
 /obj/item/clothing/suit/security/warden
 	name = "warden's jacket"

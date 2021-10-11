@@ -1,5 +1,4 @@
 /datum/preferences/proc/load_character_skyrat(savefile/S)
-
 	READ_FILE(S["loadout_list"], loadout_list)
 
 	READ_FILE(S["augments"] , augments)
@@ -14,19 +13,15 @@
 	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
 	//validating limb styles
 	for(var/key in augment_limb_styles)
-		if(!GLOB.robotic_styles_list[key])
+		if(!GLOB.robotic_styles_list[augment_limb_styles[key]])
 			augment_limb_styles -= key
+
 
 	READ_FILE(S["features"], features)
 	READ_FILE(S["mutant_bodyparts"], mutant_bodyparts)
 	READ_FILE(S["body_markings"], body_markings)
-
 	READ_FILE(S["mismatched_customization"], mismatched_customization)
 	READ_FILE(S["allow_advanced_colors"], allow_advanced_colors)
-
-	READ_FILE(S["pref_culture"] , pref_culture)
-	READ_FILE(S["pref_location"] , pref_location)
-	READ_FILE(S["pref_faction"] , pref_faction)
 
 	READ_FILE(S["general_record"], general_record)
 	READ_FILE(S["security_record"], security_record)
@@ -34,28 +29,31 @@
 	READ_FILE(S["background_info"], background_info)
 	READ_FILE(S["exploitable_info"], exploitable_info)
 
+	READ_FILE(S["alt_job_titles"], alt_job_titles)
+
 	general_record = sanitize_text(general_record)
 	security_record = sanitize_text(security_record)
 	medical_record = sanitize_text(medical_record)
 	background_info = sanitize_text(background_info)
 	exploitable_info = sanitize_text(exploitable_info)
+	loadout_list = sanitize_loadout_list(update_loadout_list(loadout_list))
 
 	READ_FILE(S["languages"] , languages)
 	languages = SANITIZE_LIST(languages)
 
-	update_pref_species()
+	READ_FILE(S["tgui_prefs_migration"], tgui_prefs_migration)
+	if(!tgui_prefs_migration)
+		to_chat(parent, examine_block(span_redtext("PREFERENCE MIGRATION BEGINNING FOR.\
+		\nDO NOT INTERACT WITH YOUR PREFERENCES UNTIL THIS PROCESS HAS BEEN COMPLETED.\
+		\nDO NOT DISCONNECT UNTIL THIS PROCESS HAS BEEN COMPLETED.\
+		")))
+		migrate_skyrat(S)
+		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
 
-	if(!pref_culture || !GLOB.culture_cultures[pref_culture])
-		pref_culture = pref_species.cultures[1]
-	if(!pref_location || !GLOB.culture_locations[pref_location])
-		pref_location = pref_species.locations[1]
-	if(!pref_faction || !GLOB.culture_factions[pref_faction])
-		pref_faction = pref_species.factions[1]
-
-
-	validate_languages()
-
-	validate_species_parts()
+/datum/preferences/proc/check_migration()
+	if(!tgui_prefs_migration)
+		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
+		message_admins("PREFERENCE MIGRATION: [ADMIN_LOOKUPFLW(parent)] has failed the process for migrating PREFERENCES. Check runtimes.")
 
 /datum/preferences/proc/save_character_skyrat(savefile/S)
 
@@ -74,4 +72,29 @@
 	WRITE_FILE(S["medical_record"] , medical_record)
 	WRITE_FILE(S["background_info"] , background_info)
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
+	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
+	WRITE_FILE(S["languages"] , languages)
 
+/datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
+	if (!preference.relevant_mutant_bodypart)
+		return
+	var/part = preference.relevant_mutant_bodypart
+	var/value = read_preference(preference.type)
+	if (isnull(value))
+		return
+	if (istype(preference, /datum/preference/toggle))
+		if (!value)
+			if (part in mutant_bodyparts)
+				mutant_bodyparts -= part
+		else
+			mutant_bodyparts[part] = list()
+			var/datum/preference/choiced/name = GLOB.preference_entries_by_key["feature_[part]"]
+			var/datum/preference/tri_color/color = GLOB.preference_entries_by_key["[part]_color"]
+			mutant_bodyparts[part][MUTANT_INDEX_NAME] = read_preference(name.type)
+			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = read_preference(color.type)
+	if (istype(preference, /datum/preference/choiced))
+		if (part in mutant_bodyparts)
+			mutant_bodyparts[part][MUTANT_INDEX_NAME] = value
+	if (istype(preference, /datum/preference/tri_color))
+		if (part in mutant_bodyparts)
+			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = value

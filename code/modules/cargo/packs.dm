@@ -946,15 +946,6 @@
 	crate_name = "grounding rod crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 
-/datum/supply_pack/engine/collector
-	name = "Radiation Collector Crate"
-	desc = "Contains three radiation collectors. Useful for collecting energy off nearby Supermatter Crystals, Singularities or Teslas!"
-	cost = CARGO_CRATE_VALUE * 8
-	contains = list(/obj/machinery/power/rad_collector,
-					/obj/machinery/power/rad_collector,
-					/obj/machinery/power/rad_collector)
-	crate_name = "collector crate"
-
 /datum/supply_pack/engine/solar
 	name = "Solar Panel Crate"
 	desc = "Go green with this DIY advanced solar array. Contains twenty one solar assemblies, a solar-control circuit board, and tracker. If you have any questions, please check out the enclosed instruction book."
@@ -2433,7 +2424,7 @@
 
 /datum/supply_pack/costumes_toys/mafia/fill(obj/structure/closet/crate/C)
 	for(var/i in 1 to 4)
-		new /obj/effect/spawner/lootdrop/mafia_outfit(C)
+		new /obj/effect/spawner/random/clothing/mafia_outfit(C)
 		new /obj/item/virgin_mary(C)
 		if(prob(30)) //Not all mafioso have mustaches, some people also find this item annoying.
 			new /obj/item/clothing/mask/fakemoustache/italian(C)

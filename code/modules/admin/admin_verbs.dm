@@ -111,6 +111,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/admin_away,
+	/datum/admins/proc/station_traits_panel,
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
@@ -151,7 +152,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/restart_controller,
-	/client/proc/enable_debug_verbs,
+	/client/proc/enable_mapping_verbs,
 	/client/proc/callproc,
 	/client/proc/callproc_datum,
 	/client/proc/SDQL2_query,
@@ -262,7 +263,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_del_all,
-	/client/proc/enable_debug_verbs,
+	/client/proc/enable_mapping_verbs,
 	/proc/possess,
 	/proc/release,
 	/client/proc/reload_admins,
@@ -329,7 +330,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		GLOB.admin_verbs_spawn,
 		/*Debug verbs added by "show debug verbs"*/
 		GLOB.admin_verbs_debug_mapping,
-		/client/proc/disable_debug_verbs,
+		/client/proc/disable_mapping_verbs,
 		/client/proc/readmin
 		))
 

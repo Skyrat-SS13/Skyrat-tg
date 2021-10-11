@@ -1,6 +1,6 @@
 import { exhaustiveCheck } from "common/exhaustive";
 import { useBackend, useLocalState } from "../../backend";
-import { Button, Stack } from "../../components";
+import { Stack, Dropdown, Flex } from "../../components";
 import { Window } from "../../layouts";
 import { PreferencesMenuData } from "./data";
 import { PageButton } from "./PageButton";
@@ -9,35 +9,46 @@ import { JobsPage } from "./JobsPage";
 import { MainPage } from "./MainPage";
 import { SpeciesPage } from "./SpeciesPage";
 import { QuirksPage } from "./QuirksPage";
-
+// SKYRAT EDIT
+import { LanguagesPage } from "./LanguagesMenu";
+import { LimbsPage } from "./LimbsPage";
+// SKYRAT EDIT END
 enum Page {
   Antags,
   Main,
   Jobs,
+// SKYRAT EDIT
+  Limbs,
+  Languages,
+// SKYRAT EDIT END
   Species,
   Quirks,
 }
 
 const CharacterProfiles = (props: {
-  activeSlot: number,
-  onClick: (index: number) => void,
-  profiles: (string | null)[],
+  activeSlot: number; // SKYRAT EDIT CHANGE
+  onClick: (index: number) => void;
+  profiles: (string | null)[];
 }) => {
-  const { profiles } = props;
-
+  const { profiles, activeSlot, onClick } = props;
+  // SKYRAT EDIT CHANGE
   return (
-    <Stack justify="center" wrap>
-      {profiles.map((profile, slot) => (
-        <Stack.Item key={slot}>
-          <Button
-            selected={slot === props.activeSlot}
-            onClick={() => {
-              props.onClick(slot);
-            }} fluid>{profile ?? "New Character"}
-          </Button>
-        </Stack.Item>
-      ))}
-    </Stack>
+    <Flex align="center" justify="center">
+      <Flex.Item width="25%">
+        <Dropdown
+          width="100%"
+          selected={activeSlot}
+          displayText={profiles[activeSlot]}
+          options={profiles.map((profile, slot) => ({
+            value: slot,
+            displayText: profile ?? 'New Character',
+          }))}
+          onSelected={(slot) => {
+            onClick(slot);
+          }}
+        />
+      </Flex.Item>
+    </Flex>
   );
 };
 
@@ -55,6 +66,14 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
+    // SKYRAT EDIT
+    case Page.Limbs:
+      pageContents = <LimbsPage />;
+      break;
+    case Page.Languages:
+      pageContents = <LanguagesPage />;
+      break;
+    // SKYRAT EDIT END
     case Page.Main:
       pageContents = (<MainPage
         openSpecies={() => setCurrentPage(Page.Species)}
@@ -129,7 +148,31 @@ export const CharacterPreferenceWindow = (props, context) => {
                   Occupations
                 </PageButton>
               </Stack.Item>
+              {
+                // SKYRAT EDIT
+              }
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Limbs}
+                  setPage={setCurrentPage}
+                >
+                  Augments+
+                </PageButton>
+              </Stack.Item>
 
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Languages}
+                  setPage={setCurrentPage}
+                >
+                  Languages
+                </PageButton>
+              </Stack.Item>
+              {
+                // SKYRAT EDIT END
+              }
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}

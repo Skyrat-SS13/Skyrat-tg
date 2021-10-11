@@ -191,11 +191,9 @@
 		if(breasts)
 			if(breasts.lactates == TRUE)
 				var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED/100))/100) * (breasts.internal_fluids.maximum_volume/11000) * interval
-				breasts.internal_fluids.add_reagent(/datum/reagent/consumable/milk/breast_milk, regen)
 				if(!breasts.internal_fluids.holder_full())
-					owner.adjust_nutrition(regen / 2)
-				else
-					regen = regen
+					owner.adjust_nutrition(-regen / 2)
+					breasts.internal_fluids.add_reagent(/datum/reagent/consumable/milk/breast_milk, regen)
 
 		if(vagina)
 			if(H.arousal >= AROUS_SYS_LITTLE)

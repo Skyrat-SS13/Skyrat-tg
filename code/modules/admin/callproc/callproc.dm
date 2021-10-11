@@ -26,8 +26,9 @@ GLOBAL_PROTECT(AdminProcCallHandler)
 
 /mob/proccall_handler/Initialize(mapload)
 	. = ..()
-	if(GLOB.AdminProcCallHandler)
+	if(GLOB.AdminProcCallHandler && GLOB.AdminProcCallHandler != src)
 		return INITIALIZE_HINT_QDEL
+	GLOB.AdminProcCallHandler = src
 
 /mob/proccall_handler/vv_edit_var(var_name, var_value)
 	if(GLOB.AdminProcCallHandler != src)
@@ -49,9 +50,7 @@ GLOBAL_PROTECT(AdminProcCallHandler)
 	if(GLOB.AdminProcCallHandler != src)
 		return ..()
 	if(!force)
-		#ifndef UNIT_TESTS
 		stack_trace("Attempted deletion on [type] - [name], aborting.")
-		#endif
 		return QDEL_HINT_LETMELIVE
 	return ..()
 
@@ -248,7 +247,7 @@ GLOBAL_PROTECT(LastAdminCalledProc)
 	if(!lst)
 		return
 
-	if(!A || !IsValidSrc(A))
+	if(!A || !is_valid_src(A))
 		to_chat(usr, span_warning("Error: callproc_datum(): owner of proc no longer exists."), confidential = TRUE)
 		return
 	log_admin("[key_name(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")

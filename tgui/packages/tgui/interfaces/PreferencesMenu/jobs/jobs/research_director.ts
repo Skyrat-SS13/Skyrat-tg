@@ -7,6 +7,7 @@ const ResearchDirector: Job = {
     order, make sure the AI and its Cyborgs aren't rogue, replacing them if \
     they are",
   department: Science,
+  alt_titles: ["Research Director", "Silicon Administrator", "Lead Researcher", "Biorobotics Director", "Research Supervisor", "Chief Science Officer"],
 };
 
 export default ResearchDirector;

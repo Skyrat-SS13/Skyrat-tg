@@ -16,9 +16,9 @@
 
 
 
-/mob/dead/new_player/Initialize()
+/mob/dead/new_player/Initialize(mapload)
 	if(client && SSticker.state == GAME_STATE_STARTUP)
-		var/atom/movable/screen/splash/S = new(client, TRUE, TRUE)
+		var/atom/movable/screen/splash/S = new(null, client, TRUE, TRUE)
 		S.Fade(TRUE)
 
 	if(length(GLOB.newplayer_start))
@@ -114,7 +114,6 @@
 	spawning = TRUE
 
 	observer.started_as_observer = TRUE
-	close_spawn_windows()
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 	to_chat(src, span_notice("Now teleporting."))
 	if (O)
@@ -151,6 +150,10 @@
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
 		//SKYRAT EDIT ADDITION
+		if(JOB_UNAVAILABLE_QUIRK)
+			return "[jobtitle] is restricted from your quirks."
+		if(JOB_UNAVAILABLE_LANGUAGE)
+			return "[jobtitle] is restricted from your languages."
 		if(JOB_NOT_VETERAN)
 			return "You need to be veteran to join as [jobtitle]."
 		//SKYRAT EDIT END
@@ -180,6 +183,10 @@
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
 	//SKYRAT EDIT ADDITION
+	if(!job.has_required_languages(client.prefs))
+		return JOB_UNAVAILABLE_LANGUAGE
+	if(job.has_banned_quirk(client.prefs))
+		return JOB_UNAVAILABLE_QUIRK
 	if(job.veteran_only && !is_veteran_player(client))
 		return JOB_NOT_VETERAN
 	//SKYRAT EDIT END
@@ -193,7 +200,6 @@
 		return FALSE
 
 	if(SSshuttle.arrivals)
-		close_spawn_windows() //In case we get held up
 		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
 			src << tgui_alert(usr,"The arrivals shuttle is currently malfunctioning! You cannot join.")
 			return FALSE
@@ -249,7 +255,7 @@
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
 		else
-			AnnounceArrival(humanc, rank)
+			announce_arrival(humanc, rank)
 		AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()
@@ -346,7 +352,6 @@
 /// Creates, assigns and returns the new_character to spawn as. Assumes a valid mind.assigned_role exists.
 /mob/dead/new_player/proc/create_character(atom/destination)
 	spawning = TRUE
-	close_spawn_windows()
 
 	mind.active = FALSE //we wish to transfer the key manually
 	var/mob/living/spawning_mob = mind.assigned_role.get_spawn_mob(client, destination)
@@ -393,14 +398,6 @@
 /mob/dead/new_player/Move()
 	return 0
 
-
-/mob/dead/new_player/proc/close_spawn_windows()
-
-	src << browse(null, "window=latechoices") //closes late choices window
-	src << browse(null, "window=playersetup") //closes the player setup window
-	src << browse(null, "window=preferences") //closes job selection
-	src << browse(null, "window=mob_occupation")
-	src << browse(null, "window=latechoices") //closes late job selection
 
 // Used to make sure that a player has a valid job preference setup, used to knock players out of eligibility for anything if their prefs don't make sense.
 // A "valid job preference setup" in this situation means at least having one job set to low, or not having "return to lobby" enabled

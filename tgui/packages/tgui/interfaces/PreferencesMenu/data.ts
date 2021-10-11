@@ -13,8 +13,10 @@ export enum Food {
   Gross = "GROSS",
   Junkfood = "JUNKFOOD",
   Meat = "MEAT",
+  Nuts = "NUTS",
   Pineapple = "PINEAPPLE",
   Raw = "RAW",
+  Seafood = "SEAFOOD",
   Sugar = "SUGAR",
   Toxic = "TOXIC",
   Vegetables = "VEGETABLES",
@@ -53,6 +55,44 @@ export type Quirk = {
   value: number;
 };
 
+// SKYRAT EDIT START
+export type Language = {
+  description: string;
+  name: string;
+  icon: string;
+};
+
+export type Marking = {
+  name: string;
+  color: string;
+  marking_id: string;
+};
+
+export type MarkingData = {
+  marking_choices: string[];
+  markings_list: Marking[];
+};
+
+export type Limb = {
+  slot: string;
+  name: string;
+  can_augment: boolean;
+  chosen_aug: string;
+  chosen_style: string;
+  aug_choices: Record<string, string>;
+  costs: Record<string, number>;
+  markings: MarkingData;
+};
+
+export type Organ = {
+  slot: string;
+  name: string;
+  chosen_organ: string;
+  organ_choices: Record<string, string>
+  costs: Record<string, number>;
+};
+
+// SKYRAT EDIT END
 export type QuirkInfo = {
   max_positive_quirks: number;
   quirk_info: Record<string, Quirk>;
@@ -96,8 +136,10 @@ export type PreferencesMenuData = {
   character_preview_view: string;
   character_profiles: (string | null)[];
 
-  preview_options: string;
-  preview_selection: string;
+  preview_options: string; // SKYRAT EDIT ADDITION
+  preview_selection: string; // SKYRAT EDIT ADDITION
+
+  is_veteran: BooleanLike;
 
   character_preferences: {
     clothing: Record<string, string>;
@@ -131,9 +173,25 @@ export type PreferencesMenuData = {
   }>;
   job_preferences: Record<string, JobPriority>;
 
+// SKYRAT EDIT
+  job_alt_titles: Record<string, string>;
+
+  robotic_styles: string[];
+  limbs_data: Limb[];
+  organs_data: Organ[];
+  marking_presets: string[];
+
+  selected_languages: Language[];
+  unselected_languages: Language[];
+  total_language_points: number;
+
+  quirks_balance: number;
+  positive_quirk_count: number;
+// SKYRAT EDIT END
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];
+
 
   antag_bans?: string[];
   antag_days_left?: Record<string, number>;

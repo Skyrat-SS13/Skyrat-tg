@@ -18,7 +18,7 @@
 	base_icon_state = "window"
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK)
 
-/obj/structure/window/plasma/reinforced/fulltile
+/obj/structure/window/reinforced/plasma/fulltile
 	icon = 'modular_skyrat/modules/aesthetics/windows/icons/r_window_plasma.dmi'
 	icon_state = "reinforced_window-0"
 	base_icon_state = "reinforced_window"
