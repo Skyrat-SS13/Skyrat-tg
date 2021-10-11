@@ -5,7 +5,7 @@
 	icon_state = "barbervend"
 	product_slogans = "Spread the colour, like butter, onto toast... Onto their hair.; Sometimes, I dream about dyes...; Paint 'em up and call me Mr. Painter.; Look brother, I'm a vendomat, I solve practical problems."
 	product_ads = "Cut 'em all!; To sheds!; Hair be gone!; Prettify!; Beautify!"
-	req_access = list(ACCESS_KITCHEN)
+	req_access = list(ACCESS_BARBER)
 	refill_canister = /obj/item/vending_refill/barbervend
 	products = list(
 		/obj/item/reagent_containers/spray/quantum_hair_dye = 3,
@@ -14,12 +14,10 @@
 		/obj/item/dyespray = 3,
 		/obj/item/hairbrush = 3,
 		/obj/item/hairbrush/comb = 3,
-	)
-	contraband = list(
-		/obj/item/lipstick/black/death,
+		/obj/item/fur_dyer = 1,
 	)
 	premium = list(
-		//obj/item/weapon/scissors = 3,
+		/obj/item/scissors = 3,
 		/obj/item/reagent_containers/spray/super_barbers_aid = 3,
 		/obj/item/storage/box/lipsticks = 3,
 		/obj/item/reagent_containers/dropper/precision = 1,
