@@ -158,7 +158,7 @@
 				if(!writting)
 					return
 
-				var/obj/item/bodypart/BP = T.get_bodypart(user.zone_selected)
+				var/obj/item/bodypart/bodypart = target_human.get_bodypart(user.zone_selected)
 
 				if(!(user==T))
 					src.visible_message("<span class='notice'>[user] begins to write on [T]'s [BP.name].</span>")
