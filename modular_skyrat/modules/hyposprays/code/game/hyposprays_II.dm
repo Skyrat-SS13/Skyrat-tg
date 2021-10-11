@@ -41,7 +41,7 @@
 	//Can you hotswap vials? - now all hyposprays can!
 	var/quickload = TRUE
 	//Does it go through hardsuits?
-	var/penetrates = FALSE
+	var/penetrates = null
 
 /obj/item/hypospray/mkii/CMO
 	name = "hypospray mk.II deluxe"
@@ -152,7 +152,7 @@
 	spray_wait = COMBAT_WAIT_SPRAY
 	spray_self = COMBAT_SELF_INJECT
 	inject_self = COMBAT_SELF_SPRAY
-	penetrates = TRUE
+	penetrates = INJECT_CHECK_PENETRATE_THICK
 	to_chat(user, "You overcharge [src]'s control circuit.")
 	obj_flags |= EMAGGED
 	return TRUE
@@ -172,7 +172,7 @@
 		return
 	var/mob/living/injectee = target
 
-	if(!injectee.reagents || !injectee.can_inject(user, TRUE, user.zone_selected, penetrates))
+	if(!injectee.reagents || !injectee.can_inject(user, user.zone_selected, penetrates))
 		return
 
 	if(iscarbon(injectee))
@@ -194,9 +194,9 @@
 	var/fp_verb = mode == HYPO_SPRAY ? "spray" : "inject"
 
 	if(injectee != user)
-		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!</span>"), \
-						span_userdanger("is trying to [fp_verb] you with [src]!"))
-	if(!do_mob(user, injectee, inject_wait, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, FALSE, user.zone_selected, penetrates)))
+		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!"), \
+						span_userdanger("[user] is trying to [fp_verb] you with [src]!"))
+	if(!do_mob(user, injectee, inject_wait, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, user.zone_selected, penetrates)))
 		return
 	if(!vial.reagents.total_volume)
 		return

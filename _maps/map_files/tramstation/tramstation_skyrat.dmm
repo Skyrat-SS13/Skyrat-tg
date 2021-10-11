@@ -9613,14 +9613,6 @@
 /obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/commons/dorms)
-"aHZ" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 6
-	},
-/obj/machinery/aug_manipulator,
-/obj/machinery/firealarm/directional/east,
-/turf/open/floor/iron,
-/area/science/robotics/lab)
 "aIb" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Tunnel Access";
@@ -21545,11 +21537,6 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison)
-"eXz" = (
-/obj/machinery/airalarm/directional/north,
-/obj/machinery/icecream_vat,
-/turf/open/floor/iron/showroomfloor,
-/area/service/kitchen/coldroom)
 "eXE" = (
 /obj/structure/cable/multilayer/multiz,
 /obj/effect/decal/cleanable/dirt,
@@ -23596,6 +23583,13 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/security/prison)
+"fRi" = (
+/obj/machinery/icecream_vat,
+/obj/machinery/airalarm/kitchen_cold_room{
+	pixel_y = 24
+	},
+/turf/open/floor/iron/showroomfloor,
+/area/service/kitchen/coldroom)
 "fRN" = (
 /obj/structure/table/reinforced,
 /obj/machinery/keycard_auth/directional/south,
@@ -29703,6 +29697,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
+"ivV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/structure/cable,
+/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/grounding_rod/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "iwb" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/white,
@@ -31475,10 +31476,10 @@
 /turf/open/floor/plating,
 /area/maintenance/central/secondary)
 "jdd" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /obj/structure/cable,
 /obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "jdj" = (
@@ -31519,6 +31520,13 @@
 /obj/structure/girder,
 /turf/open/floor/plating,
 /area/mine/explored)
+"jef" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/structure/cable,
+/obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/grounding_rod/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "jek" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
@@ -44419,10 +44427,10 @@
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
 "oyb" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /obj/structure/cable,
 /obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "oyh" = (
@@ -60515,6 +60523,13 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"vea" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 6
+	},
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron,
+/area/science/robotics/lab)
 "vem" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
@@ -90597,7 +90612,7 @@ mZR
 aaB
 muj
 aaB
-eXz
+fRi
 uKl
 wiN
 afq
@@ -98635,7 +98650,7 @@ oms
 wKG
 nfK
 jdd
-jdd
+ivV
 jdd
 wKG
 jgj
@@ -99663,7 +99678,7 @@ wKG
 oAv
 nfK
 oyb
-oyb
+jef
 oyb
 wKG
 knR
@@ -174169,7 +174184,7 @@ qwW
 kcS
 npC
 aHT
-aHZ
+vea
 dyg
 lSU
 wtF

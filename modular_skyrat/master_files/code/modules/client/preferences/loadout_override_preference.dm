@@ -8,7 +8,7 @@
 	return list(LOADOUT_OVERRIDE_JOB, LOADOUT_OVERRIDE_BACKPACK, LOADOUT_OVERRIDE_CASE)
 
 /datum/preference/choiced/loadout_override_preference/create_default_value()
-	return LOADOUT_OVERRIDE_CASE
+	return LOADOUT_OVERRIDE_BACKPACK
 
 /datum/preference/choiced/loadout_override_preference/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return TRUE

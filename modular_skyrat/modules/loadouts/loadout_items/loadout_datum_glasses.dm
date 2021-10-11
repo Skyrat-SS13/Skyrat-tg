@@ -46,10 +46,6 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Jamjar Glasses"
 	item_path = /obj/item/clothing/glasses/regular/jamjar
 
-/datum/loadout_item/glasses/black_blindfold
-	name = "Black Blindfold"
-	item_path = /obj/item/clothing/glasses/blindfold
-
 /datum/loadout_item/glasses/cold_glasses
 	name = "Cold Glasses"
 	item_path = /obj/item/clothing/glasses/cold
@@ -74,14 +70,9 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Red Glasses"
 	item_path = /obj/item/clothing/glasses/red
 
-/datum/loadout_item/glasses/welding_goggles
-	name = "Welding Goggles"
-	item_path = /obj/item/clothing/glasses/welding
-
 /datum/loadout_item/glasses/eyepatch
 	name = "Eyepatch"
 	item_path = /obj/item/clothing/glasses/eyepatch
-
 
 /datum/loadout_item/glasses/fakeblindfold
 	name = "Fake Blindfold"

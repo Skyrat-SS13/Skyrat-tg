@@ -8383,6 +8383,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 9
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/service/hydroponics)
 "aJC" = (
@@ -16616,7 +16617,6 @@
 /turf/open/floor/iron,
 /area/cargo/storage)
 "bko" = (
-/obj/machinery/aug_manipulator,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
 /area/science/robotics/lab)
@@ -25436,7 +25436,9 @@
 /turf/open/floor/plating,
 /area/science/mixing)
 "bLk" = (
-/obj/machinery/mass_driver/ordnance,
+/obj/machinery/mass_driver/ordnance{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/science/mixing)
 "bLl" = (
@@ -35069,12 +35071,12 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEv" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 8
 	},
 /obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEw" = (
@@ -35090,12 +35092,12 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEy" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 4
 	},
 /obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEz" = (
@@ -35189,12 +35191,12 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "cFe" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 5
 	},
 /obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cFf" = (
@@ -35205,12 +35207,12 @@
 	},
 /area/science/research)
 "cFh" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 9
 	},
 /obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cFi" = (
@@ -46664,6 +46666,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/maintenance/starboard)
+"mPH" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 4
+	},
+/obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/tesla_coil/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "mQo" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -54407,6 +54418,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/gravity_generator)
+"uij" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 8
+	},
+/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/tesla_coil/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "uio" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -87575,7 +87595,7 @@ cqf
 cqD
 cMD
 crs
-cEv
+uij
 cEv
 cFe
 cMD
@@ -88603,7 +88623,7 @@ cqi
 cMD
 cAP
 crv
-cEy
+mPH
 cEy
 cFh
 cMD
