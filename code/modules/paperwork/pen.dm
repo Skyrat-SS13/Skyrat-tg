@@ -154,7 +154,7 @@
 					to_chat(user, span_warning("You cannot write on someone with their clothes on."))
 					return
 
-				var/writting = input(user, "Add writing, doesn't replace current text", "Writing on [T]")  as text|null
+				var/writing = input(user, "Add writing, doesn't replace current text", "Writing on [target_human]")  as text|null
 				if(!writing)
 					return
 
