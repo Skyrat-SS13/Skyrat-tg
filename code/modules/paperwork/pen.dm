@@ -137,8 +137,9 @@
 	if(!istype(M))
 		return
 
-	if(!force)
-		if(M.can_inject(user, 1))
+	if(force)
+		return ..()
+	if(M.can_inject(user, 1))
 			if(user.combat_mode) //old poke requires harm intent.
 				to_chat(user, span_warning("You stab [M] with the pen."))
 				to_chat(M, span_danger("You feel a tiny prick!"))
