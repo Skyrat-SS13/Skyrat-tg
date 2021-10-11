@@ -205,7 +205,7 @@
 		injectee.visible_message(span_danger("[user] uses the [src] on [injectee]!</span>"), \
 						span_userdanger("[user] uses the [src] on you!"))
 	else
-		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", INDIVIDUAL_ATTACK_LOG)
+		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", LOG_ATTACK)
 
 	switch(mode)
 		if(HYPO_INJECT)
