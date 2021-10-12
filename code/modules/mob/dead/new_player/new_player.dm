@@ -285,6 +285,8 @@
 	//SKYRAT EDIT ADDITION
 	if(humanc)
 		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
+			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
+				continue
 			item.post_equip_item(humanc.client?.prefs, humanc)
 	//SKYRAT EDIT END
 
