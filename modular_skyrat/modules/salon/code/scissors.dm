@@ -3,11 +3,7 @@
 	desc = "Some say a barbers best tool is his electric razor, that is not the case. These are used to cut hair in a professional way!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "scissors"
-	force = 10
-	throw_speed = 3
-	throw_range = 9
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb_simple = list("cut", "stabbed", "chipped")
 	sharpness = SHARP_EDGED
 
 /obj/item/scissors/attack(mob/living/attacked_mob, mob/living/user, params)

@@ -49,6 +49,7 @@
 	new /obj/item/clothing/under/rank/civilian/lawyer/purpsuit(src)
 	new /obj/item/clothing/suit/toggle/lawyer/purple(src)
 	new /obj/item/razor(src)
+	new /obj/item/straight_razor(src)
 	new /obj/item/hairbrush/comb(src)
 	new /obj/item/scissors(src)
 	new /obj/item/fur_dyer(src)

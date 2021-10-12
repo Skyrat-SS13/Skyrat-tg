@@ -67,14 +67,6 @@
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "cut_hair"
 
-/obj/item/massager
-	name = "electronic massager"
-	desc = "A device that looks like it would feel really good when applied to one's back!"
-
-	// Massager can provide good feelings and a good mood boost if they are laying flat on their stomach!
-
-/obj/item/massager/attac
-
 /obj/item/razor
 	name = "electric razor"
 	desc = "The latest and greatest power razor born from the science of shaving."
