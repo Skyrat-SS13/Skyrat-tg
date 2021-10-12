@@ -158,10 +158,9 @@
 	**/
 	var/strip_seamless = FALSE
 	if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
-		if(ishuman(source))
-			var/mob/living/carbon/human/victim = source
-			if(victim.l_store == item || victim.r_store == item || victim.wear_id == item)
-				strip_seamless = TRUE
+		var/mob/living/carbon/human/victim = source
+		if(victim.l_store == item || victim.r_store == item || victim.wear_id == item)
+			strip_seamless = TRUE
 
 	if(!strip_seamless)
 		source.visible_message(
