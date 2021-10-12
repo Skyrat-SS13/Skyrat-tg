@@ -148,11 +148,30 @@
 	if (isnull(item))
 		return FALSE
 
+	// SKYRAT EDIT - THIEVING GLOVES
+	/** ORIGINAL:
 	source.visible_message(
 		span_warning("[user] tries to remove [source]'s [item]."),
 		span_userdanger("[user] tries to remove your [item]."),
 		ignored_mobs = user,
 	)
+	**/
+	var/strip_seamless = FALSE
+	if(ishuman(user))
+		var/mob/living/carbon/human/user_h = user
+		if(istype(user_h.gloves, /obj/item/clothing/gloves/color/black/thieving))
+			if(ishuman(source))
+				var/mob/living/carbon/human/victim = source
+				if(victim.l_store == item || victim.r_store == item || victim.wear_id == item)
+					strip_seamless = TRUE
+
+	if(!strip_seamless)
+		source.visible_message(
+			span_warning("[user] tries to remove [source]'s [item]."),
+			span_userdanger("[user] tries to remove your [item]."),
+			ignored_mobs = user,
+		)
+	// SKYRAT EDIT - END
 
 	to_chat(user, span_danger("You try to remove [source]'s [item]..."))
 	source.log_message("[key_name(source)] is being stripped of [item] by [key_name(user)]", LOG_ATTACK, color="red")
@@ -164,7 +183,10 @@
 		if(victim_human.key && !victim_human.client) // AKA braindead
 			if(victim_human.stat <= SOFT_CRIT && LAZYLEN(victim_human.afk_thefts) <= AFK_THEFT_MAX_MESSAGES)
 				var/list/new_entry = list(list(user.name, "tried unequipping your [item.name]", world.time))
-				LAZYADD(victim_human.afk_thefts, new_entry)
+				// SKYRAT EDIT - THIEVING GLOVES
+				if(!strip_seamless)
+					LAZYADD(victim_human.afk_thefts, new_entry)
+				// SKYRAT EDIT - END
 
 	return TRUE
 
@@ -273,7 +295,18 @@
 	if (!.)
 		return
 
+	// SKYRAT EDIT - THIEVING GLOVES
+	/** ORIGINAL
 	return start_unequip_mob(get_item(source), source, user)
+	**/
+	var/obj/item/stripped = get_item(source)
+	var/modifier = 1
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		if(istype(human_user.gloves, /obj/item/clothing/gloves/color/black/thieving))
+			modifier = 0.5
+	return start_unequip_mob(stripped, source, user, stripped.strip_delay * modifier)
+	// SKYRAT EDIT - END
 
 /datum/strippable_item/mob_item_slot/finish_unequip(atom/source, mob/user)
 	var/obj/item/item = get_item(source)
@@ -306,6 +339,13 @@
 
 	// Updates speed in case stripped speed affecting item
 	source.update_equipment_speed_mods()
+
+	//SKYRAT EDIT - THIEVING GLOVES
+	if(ishuman(user))
+		var/mob/living/carbon/human/human_user = user
+		if(istype(human_user.gloves, /obj/item/clothing/gloves/color/black/thieving))
+			human_user.put_in_hands(item)
+	//SKYRAT EDIT END
 
 /// A representation of the stripping UI
 /datum/strip_menu

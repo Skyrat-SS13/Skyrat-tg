@@ -2,13 +2,7 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	special_desc = "Specially designed gloves that allow the wearer to seamlessly lift the belongings of others quickly and quietly."
-	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_factions = list(FACTION_SYNDICATE)
-	special_desc_jobs = list("Detective")
-
-/obj/item/clothing/gloves/color/black/thieving/examine_more(mob/user)
-	. = ..()
-	. += "You see an odd port on the back of the gloves with the letters SYN-STG"
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 
 /datum/uplink_item/stealthy_tools/thieving_gloves
 	name = "Thieving Gloves"
