@@ -1059,13 +1059,15 @@
 	if(!what.canStrip(who))
 		to_chat(src, span_warning("You can't remove \the [what.name], it appears to be stuck!"))
 		return
-	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
-					span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
+	var/silent = HAS_TRAIT(who, TRAIT_STICKY_FINGERS) && (where & (ITEM_SLOT_ID|ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET)) //SKYRAT EDIT ADDITION
+	if (!silent)
+		who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
+						span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
 	to_chat(src, span_danger("You try to remove [who]'s [what.name]..."))
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	if(do_mob(src, who, what.strip_delay * silent ? 0.5 : 1, interaction_key = what))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where

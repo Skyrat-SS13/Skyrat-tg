@@ -67,6 +67,9 @@
 	/// Should we warn about dangerous clothing?
 	var/warn_dangerous_clothing = TRUE
 
+	/// Can it be silent?
+	var/can_be_silent = FALSE //SKYRAT EDIT ADDITION
+
 /// Gets the item from the given source.
 /datum/strippable_item/proc/get_item(atom/source)
 
@@ -148,18 +151,20 @@
 	if (isnull(item))
 		return FALSE
 
-	source.visible_message(
-		span_warning("[user] tries to remove [source]'s [item]."),
-		span_userdanger("[user] tries to remove your [item]."),
-		ignored_mobs = user,
-	)
+	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS) //SKYRAT EDIT ADDITION
+	if (!is_silent)
+		source.visible_message(
+			span_warning("[user] tries to remove [source]'s [item]."),
+			span_userdanger("[user] tries to remove your [item]."),
+			ignored_mobs = user,
+		)
 
 	to_chat(user, span_danger("You try to remove [source]'s [item]..."))
 	user.log_message("[key_name(source)] is being stripped of [item] by [key_name(user)]", LOG_ATTACK, color="red")
 	source.log_message("[key_name(source)] is being stripped of [item] by [key_name(user)]", LOG_VICTIM, color="red", log_globally=FALSE)
 	item.add_fingerprint(src)
 
-	if(ishuman(source))
+	if(ishuman(source) && !is_silent) //SKYRAT EDIT ADDITION original if(ishuman(source))
 		var/mob/living/carbon/human/victim_human = source
 		if(victim_human.key && !victim_human.client) // AKA braindead
 			if(victim_human.stat <= SOFT_CRIT && LAZYLEN(victim_human.afk_thefts) <= AFK_THEFT_MAX_MESSAGES)
@@ -272,8 +277,9 @@
 	. = ..()
 	if (!.)
 		return
-
-	return start_unequip_mob(get_item(source), source, user)
+	//SKYRAT EDIT ADDITION
+	//return start_unequip_mob(get_item(source), source, user)
+	return start_unequip_mob(get_item(source), source, user, can_be_silent=src.can_be_silent)
 
 /datum/strippable_item/mob_item_slot/finish_unequip(atom/source, mob/user)
 	var/obj/item/item = get_item(source)
@@ -290,8 +296,10 @@
 	return equipping.equip_delay_other
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
-/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
+/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay, can_be_silent = FALSE) //SKYRAT EDIT ADDITION original has no can_be_silent
+	//SKYRAT EDIT ADDITION original
+	//if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
+	if (!do_mob(user, source, (strip_delay || item.strip_delay) * ((can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)) ? 0.5 : 1), interaction_key = REF(item)))
 		return FALSE
 
 	return TRUE
