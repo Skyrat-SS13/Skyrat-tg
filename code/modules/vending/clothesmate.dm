@@ -140,7 +140,6 @@
 		/obj/item/clothing/mask/gas/driscoll = 20,
 		/obj/item/clothing/suit/deckers = 20,
 		/obj/item/clothing/under/costume/deckers = 20,
-		/obj/item/clothing/under/costume/decking = 20,
 		/obj/item/clothing/head/deckers = 20,
 		/obj/item/clothing/shoes/deckers = 20,
 		/obj/item/clothing/suit/morningstar = 20,

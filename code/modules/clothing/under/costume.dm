@@ -312,12 +312,6 @@
 	inhand_icon_state = "decker_jumpsuit"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/costume/decking
-	name = "deckers maskless outfit"
-	icon_state = "decking_jumpsuit"
-	inhand_icon_state = "decking_jumpsuit"
-	can_adjust = FALSE
-
 /obj/item/clothing/under/costume/morningstar
 	name = "Morningstar suit"
 	icon_state = "morningstar_jumpsuit"
