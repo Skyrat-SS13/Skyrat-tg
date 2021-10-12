@@ -141,7 +141,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/datum/data/record/foundrecord = find_record("name", name, GLOB.data_core.general)
 	if(foundrecord)
 		foundrecord.fields["rank"] = assignment
-		foundrecord.fields["truerank"] = assignment // SKYRAT EDIT - ALT TITLES
+
 
 /datum/datacore/proc/get_manifest()
 	// First we build up the order in which we want the departments to appear in.
@@ -154,14 +154,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	for(var/datum/data/record/record as anything in GLOB.data_core.general)
 		var/name = record.fields["name"]
 		var/rank = record.fields["rank"]
-		var/truerank = record.fields["truerank"] // SKYRAT EDIT ADD - ALT TITLES
-		var/datum/job/job = SSjob.GetJob(truerank) // SKYRAT EDIT - ORIGINAL CALLED GetJob(rank)
+		var/datum/job/job = SSjob.GetJob(rank)
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list)) // In case an unlawful custom rank is added.
 			var/list/misc_list = manifest_out[DEPARTMENT_UNASSIGNED]
 			misc_list[++misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
-				"truerank" = truerank,
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -172,7 +170,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			var/list/entry = list(
 				"name" = name,
 				"rank" = rank,
-				"truerank" = truerank,
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -223,13 +220,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	var/static/list/show_directions = list(SOUTH, WEST)
 	if(H.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
 		var/assignment = H.mind.assigned_role.title
-		//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
-		var/true_assignment = assignment
-		if(H.client && H.client.prefs && H.client.prefs.alt_titles_preferences[true_assignment]) // latejoin
-			assignment = H.client.prefs.alt_titles_preferences[true_assignment]
-		else if(C && C.prefs && C.prefs.alt_titles_preferences[true_assignment]) // roundstart - yes both do separate things i don't fucking know why but they do and if they're not both there then they don't fucking work leave me ALONE
-			assignment = C.prefs.alt_titles_preferences[true_assignment]
-		//SKYRAT EDIT ADD END
+
 		var/static/record_id_num = 1001
 		var/id = num2hex(record_id_num++,6)
 		if(!C)
@@ -252,7 +243,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["id"] = id
 		G.fields["name"] = H.real_name
 		G.fields["rank"] = assignment
-		G.fields["truerank"] = true_assignment // SKYRAT EDIT ADD - ALT TITLES
 		G.fields["age"] = H.age
 		G.fields["species"] = H.dna.species.name
 		G.fields["fingerprint"] = md5(H.dna.unique_identity)
@@ -267,10 +257,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			G.fields["gender"]  = "Other"
 		G.fields["photo_front"] = photo_front
 		G.fields["photo_side"] = photo_side
-		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD - RP RECORDS
-			G.fields["past_records"] = C.prefs.general_record
-		else
-			G.fields["past_records"] = "" // SKYRAT EDIT END
 		general += G
 
 		//Medical Record
@@ -287,10 +273,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
 		M.fields["notes"] = H.get_quirk_string(!medical, CAT_QUIRK_NOTES)
 		M.fields["notes_d"] = H.get_quirk_string(medical, CAT_QUIRK_NOTES)
-		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD - RP RECORDS
-			M.fields["past_records"] = C.prefs.medical_record
-		else
-			M.fields["past_records"] = "" // SKYRAT EDIT END
 		medical += M
 
 		//Security Record
@@ -301,10 +283,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		S.fields["citation"] = list()
 		S.fields["crim"] = list()
 		S.fields["notes"] = "No notes."
-		if(C && C.prefs && C.prefs.general_record) // SKYRAT EDIT ADD - RP RECORDS
-			S.fields["past_records"] = C.prefs.security_record
-		else
-			S.fields["past_records"] = "" // SKYRAT EDIT END
 		security += S
 
 		//Locked Record
@@ -312,7 +290,6 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["id"] = md5("[H.real_name][assignment]") //surely this should just be id, like the others?
 		L.fields["name"] = H.real_name
 		L.fields["rank"] = assignment
-		L.fields["truerank"] = true_assignment // SKYRAT EDIT ADD - ALT TITLES
 		L.fields["age"] = H.age
 		L.fields["gender"] = H.gender
 		if(H.gender == "male")

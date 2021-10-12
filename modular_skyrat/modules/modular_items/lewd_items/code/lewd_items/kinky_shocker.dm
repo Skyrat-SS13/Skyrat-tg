@@ -1,6 +1,6 @@
 /obj/item/kinky_shocker
 	name = "kinky shocker"
-	desc = "Just a toy, that can weakly shock someone."
+	desc = "A small toy that can weakly shock someone."
 	icon_state = "shocker"
 	inhand_icon_state = "shocker"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -81,7 +81,7 @@
 /obj/item/kinky_shocker/proc/toggle_on(mob/user)
 	if(cell && cell.charge >= cell_hit_cost)
 		shocker_on = !shocker_on
-		to_chat(user, "<span class='notice'>You turn the shocker [shocker_on? "on. Buzz!" : "off."]</span>")
+		to_chat(user, span_notice("You turn the shocker [shocker_on? "on. Buzz!" : "off."]"))
 		playsound(user, shocker_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
 	else
 		shocker_on = FALSE
@@ -104,7 +104,7 @@
 
 	if(shocker_on == TRUE)
 		var/message = ""
-		if(M.client?.prefs.sextoys_pref == "Yes")
+		if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			deductcharge(cell_hit_cost)
 			playsound(loc, 'sound/weapons/taserhit.ogg', 70, 1, -1)
 			switch(user.zone_selected) //to let code know what part of body we gonna tickle
@@ -113,7 +113,14 @@
 					var/obj/item/organ/genital/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
 					if(vagina && penis)
 						if(M.is_bottomless() || (penis.visibility_preference == GENITAL_ALWAYS_SHOW && vagina.visibility_preference == GENITAL_ALWAYS_SHOW))
-							message = (user == M) ? pick("leans the shocker against their penis, letting it shock it. Ouch...","shocks their penis with [src]","leans the shocker against their vagina, letting it shock it. Ouch...","shocks their pussy with [src]") : pick("uses [src] to shock [M]'s penis", "shocks [M]'s penis with [src]","leans the shocker against [M]'s penis, turning shocker on","uses [src] to shock [M]'s vagina", "shocks [M]'s pussy with [src]","leans the shocker against [M]'s vagina, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] penis, letting it shock it. Ouch...",
+														"shocks [M.p_their()] penis with [src]",
+														"leans [src] against [M.p_their()] vagina, letting it shock it. Ouch...",
+														"shocks [M.p_their()] pussy with [src]") : pick("uses [src] to shock [M]'s penis", "shocks [M]'s penis with [src]",
+														"leans [src] against [M]'s penis, turning it on",
+														"uses [src] to shock [M]'s vagina",
+														"shocks [M]'s pussy with [src]",
+														"leans the shocker against [M]'s vagina, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -121,11 +128,14 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
-							message = (user == M) ? pick("leans the shocker against their penis, letting it shock it. Ouch...","shocks their penis with [src]") : pick("uses [src] to shock [M]'s penis", "shocks [M]'s penis with [src]","leans the shocker against [M]'s penis, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] penis, letting it shock it. Ouch...",
+														"shocks [M.p_their()] penis with [src]") : pick("uses [src] to shock [M]'s penis",
+														"shocks [M]'s penis with [src]",
+														"leans [src] against [M]'s penis, turning shocker on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -133,11 +143,14 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-							message = (user == M) ? pick("leans the shocker against their vagina, letting it shock it. Ouch...","shocks their pussy with [src]") : pick("uses [src] to shock [M]'s vagina", "shocks [M]'s pussy with [src]","leans the shocker against [M]'s vagina, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] vagina, letting it shock it. Ouch...",
+														"shocks [M.p_their()] pussy with [src]") : pick("uses [src] to shock [M]'s vagina",
+														"shocks [M]'s pussy with [src]",
+														"leans [src] against [M]'s vagina, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -145,15 +158,18 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 					else if(penis)
 						if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
-							message = (user == M) ? pick("leans the shocker against their penis, letting it shock it. Ouch...","shocks their penis with [src]") : pick("uses [src] to shock [M]'s penis", "shocks [M]'s penis with [src]","leans the shocker against [M]'s penis, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] penis, letting it shock it. Ouch...",
+														"shocks [M.p_their()] penis with [src]") : pick("uses [src] to shock [M]'s penis",
+														"shocks [M]'s penis with [src]",
+														"leans [src] against [M]'s penis, turning shocker on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -161,15 +177,18 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 					else if(vagina)
 						if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-							message = (user == M) ? pick("leans the shocker against their vagina, letting it shock it. Ouch...","shocks their pussy with [src]") : pick("uses [src] to shock [M]'s vagina", "shocks [M]'s pussy with [src]","leans the shocker against [M]'s vagina, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] vagina, letting it shock it. Ouch...",
+														"shocks [M.p_their()] pussy with [src]") : pick("uses [src] to shock [M]'s vagina",
+														"shocks [M]'s pussy with [src]",
+														"leans [src] against [M]'s vagina, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -177,15 +196,18 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 					else
 						if(M.is_bottomless())
-							message = (user == M) ? pick("leans the shocker against their belly, letting it shock it. Ouch...","shocks their tummy with [src]") : pick("uses [src] to shock [M]'s belly", "shocks [M]'s tummy with [src]","leans the shocker against [M]'s belly, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] belly, letting it shock it. Ouch...",
+														"shocks [M.p_their()] tummy with [src]") : pick("uses [src] to shock [M]'s belly",
+														"shocks [M]'s tummy with [src]",
+														"leans [src] against [M]'s belly, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -193,18 +215,21 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 							return
 
 				if(BODY_ZONE_CHEST)
 					var/obj/item/organ/genital/breasts = M.getorganslot(ORGAN_SLOT_BREASTS)
 					if(breasts)
 						if(breasts.visibility_preference == GENITAL_ALWAYS_SHOW || M.is_topless())
-							message = (user == M) ? pick("leans the shocker against their breasts, letting it shock it.","shocks their tits with [src]") : pick("uses [src] to shock [M]'s breasts", "shocks [M]'s nipples with [src]","leans the shocker against [M]'s tits, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] breasts, letting it shock it.",
+														"shocks [M.p_their()] tits with [src]") : pick("uses [src] to shock [M]'s breasts",
+														"shocks [M]'s nipples with [src]",
+														"leans [src] against [M]'s tits, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -212,15 +237,18 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 							return
 
 					else
 						if(M.is_topless())
-							message = (user == M) ? pick("leans the shocker against their chest, letting it shock it.","shocks their nipples with [src]") : pick("uses [src] to shock [M]'s chest", "shocks [M]'s nipples with [src]","leans the shocker against [M]'s chest, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] chest, letting it shock it.",
+														"shocks [M.p_their()] nipples with [src]") : pick("uses [src] to shock [M]'s chest",
+														"shocks [M]'s nipples with [src]",
+														"leans [src] against [M]'s chest, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -228,16 +256,19 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s chest is covered!</span>")
+							to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 							return
 
 				if(BODY_ZONE_R_ARM)
 					if(M.has_arms())
 						if(M.is_hands_uncovered())
-							message = (user == M) ? pick("leans the shocker against their right arm, letting it shock it.","shocks their arm with [src]") : pick("uses [src] to shock [M]'s right arm", "shocks [M]'s right arm with [src]","leans the shocker against [M]'s right arm, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] right arm, letting it shock it.",
+														"shocks [M.p_their()] arm with [src]") : pick("uses [src] to shock [M]'s right arm",
+														"shocks [M]'s right arm with [src]",
+														"leans [src] against [M]'s right arm, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -245,19 +276,22 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s arms is covered!</span>")
+							to_chat(user, span_danger("[M]'s arms are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>Looks like [M] dont have any arms!</span>")
+						to_chat(user, span_danger("[M] doesn't have any arms!"))
 						return
 
 				if(BODY_ZONE_L_ARM)
 					if(M.has_arms())
 						if(M.is_hands_uncovered())
-							message = (user == M) ? pick("leans the shocker against their left arm, letting it shock it.","shocks their arm with [src]") : pick("uses [src] to shock [M]'s left arm", "shocks [M]'s left arm with [src]","leans the shocker against [M]'s left arm, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] left arm, letting it shock it.",
+														"shocks [M.p_their()] arm with [src]") : pick("uses [src] to shock [M]'s left arm",
+														"shocks [M]'s left arm with [src]",
+														"leans [src] against [M]'s left arm, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -265,18 +299,21 @@
 							M.adjustStaminaLoss(3)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s arms is covered!</span>")
+							to_chat(user, span_danger("[M]'s arms are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>Looks like [M] dont have any arms!</span>")
+						to_chat(user, span_danger("[M] doesn't have any arms!"))
 						return
 
 				if(BODY_ZONE_HEAD)
 					if(M.is_head_uncovered())
-						message = (user == M) ? pick("leans the shocker against their head, letting it shock it. Ouch! Why would they do that?!","shocks their head with [src]") : pick("uses [src] to shock [M]'s head", "shocks [M]'s neck with [src]","leans the shocker against [M]'s neck, turning shocker on")
+						message = (user == M) ? pick("leans [src] against [M.p_their()] head, letting it shock it. Ouch! Why would they do that?!",
+													"shocks [M.p_their()] head with [src]") : pick("uses [src] to shock [M]'s head",
+													"shocks [M]'s neck with [src]",
+													"leans [src] against [M]'s neck, turning it on")
 						if(M.stat != DEAD)
 							if(prob(80))
 								M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -284,16 +321,19 @@
 						M.adjustStaminaLoss(2)
 						M.adjustPain(9)
 						M.stuttering += 20
-						user.visible_message("<font color=purple>[user] [message].</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc,'sound/weapons/taserhit.ogg')
 					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s head is covered!</span>")
+						to_chat(user, span_danger("[M]'s head is covered!"))
 						return
 
 				if(BODY_ZONE_L_LEG)
 					if(M.has_feet())
 						if(M.is_barefoot())
-							message = (user == M) ? pick("leans the shocker against their left leg, letting it shock it.","shocks their leg with [src]") : pick("uses [src] to shock [M]'s left leg", "shocks [M]'s left foot with [src]","leans the shocker against [M]'s left leg, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] left leg, letting it shock it.",
+														"shocks [M.p_their()] leg with [src]") : pick("uses [src] to shock [M]'s left leg",
+														"shocks [M]'s left foot with [src]",
+														"leans [src] against [M]'s left leg, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -301,19 +341,22 @@
 							M.adjustStaminaLoss(2)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s toes is covered!</span>")
+							to_chat(user, span_danger("[M]'s toes are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>Looks like [M] don't have any legs!</span>")
+						to_chat(user, span_danger("[M] doesn't have any legs!"))
 						return
 
 				if(BODY_ZONE_R_LEG)
 					if(M.has_feet())
 						if(M.is_barefoot())
-							message = (user == M) ? pick("leans the shocker against their right leg, letting it shock it.","shocks their leg with [src]") : pick("uses [src] to shock [M]'s right leg", "shocks [M]'s right foot with [src]","leans the shocker against [M]'s right leg, turning shocker on")
+							message = (user == M) ? pick("leans [src] against [M.p_their()] right leg, letting it shock it.",
+														"shocks [M.p_their()] leg with [src]") : pick("uses [src] to shock [M]'s right leg",
+														"shocks [M]'s right foot with [src]",
+														"leans [src] against [M]'s right leg, turning it on")
 							if(M.stat != DEAD)
 								if(prob(80))
 									M.emote(pick("twitch","twitch_s","shiver","scream"))
@@ -321,18 +364,18 @@
 							M.adjustStaminaLoss(2)
 							M.adjustPain(9)
 							M.stuttering += 20
-							user.visible_message("<font color=purple>[user] [message].</font>")
+							user.visible_message(span_purple("[user] [message]!"))
 							playsound(loc,'sound/weapons/taserhit.ogg')
 
 						else
-							to_chat(user, "<span class='danger'>Looks like [M]'s toes is covered!</span>")
+							to_chat(user, span_danger("[M]'s toes are covered!"))
 							return
 					else
-						to_chat(user, "<span class='danger'>Looks like [M] don't have any legs!</span>")
+						to_chat(user, span_danger("[M] doesn't have any legs!"))
 						return
 		else
-			to_chat(user, "<span class='danger'>Looks like [M] don't want you to do that.</span>")
+			to_chat(user, span_danger("[M] doesn't want you to do that."))
 			return
 	else
-		to_chat(user, "<span class='danger'>Shocker must be enabled before use!</span>")
+		to_chat(user, span_danger("[src] must be enabled before use!"))
 		return

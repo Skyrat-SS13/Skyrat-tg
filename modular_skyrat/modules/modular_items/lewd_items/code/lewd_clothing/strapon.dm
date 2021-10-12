@@ -110,8 +110,8 @@
 
 //button stuff
 /datum/action/item_action/take_strapon
-    name = "Take strapon dildo in hand"
-    desc = "You need to take this thing in your hand to use it properly."
+    name = "Put strapon in hand"
+    desc = "Put the strapon in your hand in order to use it properly."
 
 /datum/action/item_action/take_strapon/Trigger()
 	var/obj/item/clothing/strapon/H = target
@@ -123,7 +123,7 @@
 	if(src == C.belt)
 		toggle(C)
 	else
-		to_chat(C, "<span class='warning'>You need to equip strapon before using!</span>")
+		to_chat(C, span_warning("You need to put the strapon around your waist before you can use it!"))
 
 /obj/item/clothing/strapon/proc/toggle(user)
 	var/mob/living/carbon/human/C = usr
@@ -134,13 +134,13 @@
 	if(in_hands == TRUE)
 		if(istype(held, /obj/item/strapon_dildo))
 			qdel(held)
-			C.visible_message("<span class='notice'>[user] puts strapon back</span>")
+			C.visible_message(span_notice("[user] puts the strapon back."))
 			in_hands = FALSE
 			return
 
 		else if(istype(unheld, /obj/item/strapon_dildo))
 			qdel(unheld)
-			C.visible_message("<span class='notice'>[user] puts strapon back</span>")
+			C.visible_message(span_notice("[user] puts the strapon back."))
 			in_hands = FALSE
 			return
 
@@ -154,11 +154,11 @@
 					W.strapon_type = strapon_type
 					W.update_icon_state()
 					W.update_icon()
-					C.visible_message("<span class='notice'>[user] takes a strapon in their hand. They look menacingly</span>")
+					C.visible_message(span_notice("[user] holds the strapon in their hand menacingly."))
 					in_hands = TRUE
 					return
 		else
-			C.visible_message("<span class='notice'>[user]'s hand not empty. Can't take strapon in hand</span>")
+			C.visible_message(span_notice("[user] tries to hold the strapon in their hand, but their hand isn't empty!"))
 			return
 	else
 		W = new()
@@ -166,13 +166,13 @@
 		W.strapon_type = strapon_type
 		W.update_icon_state()
 		W.update_icon()
-		C.visible_message("<span class='notice'>[user] takes a strapon in their hand. They look menacingly</span>")
+		C.visible_message(span_notice("[user] holds the strapon in their hand menacingly."))
 		in_hands = TRUE
 		return
 
 /obj/item/strapon_dildo
 	name = "strapon"
-	desc = "You looking menacingly and merciless"
+	desc = "An item with which to be menacing and merciless."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "dildo"
 	inhand_icon_state = "nothing"
@@ -200,17 +200,17 @@
 
 	var/message = ""
 	var/obj/item/organ/genital/vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(user.zone_selected) //to let code know what part of body we gonna fuck
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(vagina)
 					if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-						message = pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with a [src]", "is teasing [M]'s pussy with a [src]")
+						message = pick("delicately rubs [M]'s vagina with [src]", "uses [src] to fuck [M]'s vagina","jams [M]'s pussy with [src]", "teases [M]'s pussy with [src]")
 						M.adjustArousal(6)
 						M.adjustPleasure(8)
 						if(prob(40))
 							M.emote(pick("twitch_s","moan"))
-						user.visible_message("<font color=purple>[user] [message].</font>")
+						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -218,21 +218,21 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
 					else
-						to_chat(user, "<span class='danger'>Looks like [M]'s groin is covered!</span>")
+						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
 				else
-					to_chat(user, "<span class='danger'>Looks like [M] don't have suitable organs for that!</span>")
+					to_chat(user, span_danger("[M] doesn't have suitable genitalia for that!"))
 					return
 
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!M.is_mouth_covered())
-					message = pick("fucks [M]'s mouth with [src]", "choking [M] by inserting [src] into [M]'s throat", "is forcing [M] to suck a [src]", "inserts [src] into [M]'s throat")
+					message = pick("fucks [M]'s mouth with [src]", "chokes [M] by inserting [src] into [M.p_their()] throat", "forces [M] to suck [src]", "inserts [src] into [M]'s throat")
 					M.adjustArousal(4)
 					M.adjustPleasure(1)
 					M.adjustOxyLoss(1.5)
 					if(prob(70))
 						M.emote(pick("gasp","moan"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -241,17 +241,17 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s mouth is covered!</span>")
+					to_chat(user, span_danger("[M]'s mouth is covered!"))
 					return
 
 			else
 				if(M.is_bottomless())
-					message = pick("fucks [M]'s ass with a [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with a [src]", "roughly fucks [M]'s ass with a [src], making them roll eyes up")
+					message = pick("fucks [M]'s ass with [src]", "uses [src] to fuck [M]'s anus", "jams [M]'s ass with [src]", "roughly fucks [M]'s ass with [src], causing their eyes to roll back")
 					M.adjustArousal(5)
 					M.adjustPleasure(5)
 					if(prob(60))
 						M.emote(pick("twitch_s","moan","shiver"))
-					user.visible_message("<font color=purple>[user] [message].</font>")
+					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
@@ -260,8 +260,8 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
 
 				else
-					to_chat(user, "<span class='danger'>Looks like [M]'s anus is covered!</span>")
+					to_chat(user, span_danger("[M]'s anus is covered!"))
 					return
 	else
-		to_chat(user, "<span class='danger'>Looks like [M] doesn't want you to do that.</span>")
+		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return

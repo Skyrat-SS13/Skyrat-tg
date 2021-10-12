@@ -13,7 +13,7 @@
 	///Weakref to the target atom we're pointed at currently
 	var/datum/weakref/target_ref
 
-/obj/machinery/computer/teleporter/Initialize()
+/obj/machinery/computer/teleporter/Initialize(mapload)
 	. = ..()
 	id = "[rand(1000, 9999)]"
 	link_power_station()
@@ -232,37 +232,31 @@
 
 	var/obj/machinery/computer/teleporter/attached_console
 
-/obj/item/circuit_component/teleporter_control_console/Initialize()
-	. = ..()
+/obj/item/circuit_component/teleporter_control_console/populate_ports()
 
 	new_target = add_input_port("New Target", PORT_TYPE_STRING)
 	set_target_trigger = add_input_port("Set Target", PORT_TYPE_SIGNAL)
 	update_trigger = add_input_port("Update Targets", PORT_TYPE_SIGNAL)
 
 	current_target = add_output_port("Current Target", PORT_TYPE_STRING)
-	possible_targets = add_output_port("Possible Targets", PORT_TYPE_LIST)
+	possible_targets = add_output_port("Possible Targets", PORT_TYPE_LIST(PORT_TYPE_ANY))
 	on_fail = add_output_port("Failed", PORT_TYPE_SIGNAL)
 
-/obj/item/circuit_component/teleporter_control_console/register_usb_parent(atom/movable/parent)
+/obj/item/circuit_component/teleporter_control_console/register_usb_parent(atom/movable/shell)
 	. = ..()
 
-	if (istype(parent, /obj/machinery/computer/teleporter))
-		attached_console = parent
+	if (istype(shell, /obj/machinery/computer/teleporter))
+		attached_console = shell
 
 		RegisterSignal(attached_console, COMSIG_TELEPORTER_NEW_TARGET, .proc/on_teleporter_new_target)
 		update_targets()
 
-/obj/item/circuit_component/teleporter_control_console/unregister_usb_parent(atom/movable/parent)
+/obj/item/circuit_component/teleporter_control_console/unregister_usb_parent(atom/movable/shell)
 	UnregisterSignal(attached_console, COMSIG_TELEPORTER_NEW_TARGET)
 	attached_console = null
 	return attached_console
 
 /obj/item/circuit_component/teleporter_control_console/input_received(datum/port/input/port)
-	. = ..()
-
-	if (.)
-		return .
-
 	var/list/targets = attached_console.get_targets()
 
 	if (COMPONENT_TRIGGERED_BY(set_target_trigger, port))

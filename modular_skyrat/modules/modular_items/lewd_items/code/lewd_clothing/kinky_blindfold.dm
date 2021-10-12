@@ -62,7 +62,7 @@
 	. = ..()
 	var/mob/living/carbon/C = user
 	if(src == C.glasses)
-		to_chat(C, "<font color=purple>Blindfold is blocking your vision! You feel yourself so helpless...</font>")
+		to_chat(C, span_purple("The blindfold blocks your vision! You can't make out anything on the other side..."))
 	else
 		return
 
@@ -71,4 +71,4 @@
 	. = ..()
 	var/mob/living/carbon/C = user
 	if(src == C.glasses)
-		to_chat(C, "<font color=purple>Blindfold no longer restricts your vision.</font>")
+		to_chat(C, span_purple("The blindfold no longer restricts your vision."))

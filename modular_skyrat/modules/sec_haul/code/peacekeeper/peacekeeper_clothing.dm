@@ -47,7 +47,7 @@
 //PEACEKEEPER UNIFORM
 /obj/item/clothing/under/rank/security/peacekeeper
 	name = "peacekeeper uniform"
-	desc = "A sleek peackeeper uniform, made to a price."
+	desc = "A sleek peacekeeper uniform, made to a price."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "peacekeeper"
@@ -58,7 +58,7 @@
 
 /obj/item/clothing/under/rank/security/peacekeeper/tactical
 	name = "tactical peacekeeper uniform"
-	desc = "A tactical peackeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
+	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
 	icon_state = "peacekeeper_tac"
 	armor = list(MELEE = 5, BULLET = 5, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
 
@@ -173,7 +173,7 @@
 //PEACEKEEPER BELTS
 /obj/item/storage/belt/security/peacekeeper
 	name = "peacekeeper belt"
-	desc = "Can hold security gear like handcuffs and flashes. Has a holster for a gun."
+	desc = "This belt can hold security gear like handcuffs and flashes. It has a holster for a gun."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "peacekeeperbelt"
@@ -225,8 +225,9 @@
 	STR.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
 		/obj/item/gun/ballistic/revolver,
+		/obj/item/gun/energy/disabler,
 		/obj/item/melee/baton,
-		/obj/item/melee/classic_baton,
+		/obj/item/melee/baton,
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
@@ -237,7 +238,7 @@
 		/obj/item/food/donut,
 		/obj/item/kitchen/knife/combat,
 		/obj/item/flashlight/seclite,
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/radio,
 		/obj/item/clothing/gloves,
 		/obj/item/restraints/legcuffs/bola,
@@ -253,7 +254,7 @@
 
 /obj/item/storage/belt/security/webbing/peacekeeper
 	name = "peacekeeper webbing"
-	desc = "Unique and versatile chest rig, can hold security gear."
+	desc = "A tactical chest rig issued to peacekeepers; slow is smooth, smooth is fast. Has a notable lack of a holster that fits energy-based weapons."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	icon_state = "peacekeeper_webbing"
@@ -271,7 +272,7 @@
 		/obj/item/gun/ballistic/automatic/pistol,
 		/obj/item/gun/ballistic/revolver,
 		/obj/item/melee/baton,
-		/obj/item/melee/classic_baton,
+		/obj/item/melee/baton,
 		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
@@ -282,7 +283,7 @@
 		/obj/item/food/donut,
 		/obj/item/kitchen/knife/combat,
 		/obj/item/flashlight/seclite,
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/radio,
 		/obj/item/clothing/gloves,
 		/obj/item/restraints/legcuffs/bola,

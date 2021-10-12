@@ -1,5 +1,5 @@
-/datum/language/russian
-	name = "Neo-Russkya"
+/datum/language/neorusskya
+	name = "Pan-Slavic"
 	desc = "The official language of the Independent Colonial Confederation of Gilgamesh, originally established in 2122 by the short-lived United Slavic Confederation on Earth."
 	key = "r"
 	flags = TONGUELESS_SPEECH

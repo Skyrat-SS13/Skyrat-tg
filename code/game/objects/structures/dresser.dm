@@ -1,3 +1,5 @@
+//THIS FILE HAS BEEN EDITED BY SKYRAT EDIT
+
 /obj/structure/dresser//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "dresser"
 	desc = "A nicely-crafted wooden dresser. It's filled with lots of undies."
@@ -33,7 +35,7 @@
 			to_chat(user, span_warning("You are not capable of wearing underwear."))
 			return
 
-		var/choice = input(user, "Underwear, Undershirt, or Socks?", "Changing") as null|anything in list("Underwear","Underwear Color","Undershirt","Socks")
+		var/choice = input(user, "Underwear, Undershirt, or Socks?", "Changing") as null|anything in list("Underwear","Underwear Color","Undershirt","Undershirt Color","Socks","Socks Color") //SKYRAT EDIT ADDITION - Colorable Undershirt/Socks
 
 		if(!Adjacent(user))
 			return
@@ -42,6 +44,7 @@
 				var/new_undies = input(user, "Select your underwear", "Changing")  as null|anything in GLOB.underwear_list
 				if(new_undies)
 					H.underwear = new_undies
+
 			if("Underwear Color")
 				var/new_underwear_color = input(H, "Choose your underwear color", "Underwear Color","#"+H.underwear_color) as color|null
 				if(new_underwear_color)
@@ -50,10 +53,19 @@
 				var/new_undershirt = input(user, "Select your undershirt", "Changing") as null|anything in GLOB.undershirt_list
 				if(new_undershirt)
 					H.undershirt = new_undershirt
+			//SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks
+			if("Undershirt Color")
+				var/new_undershirt_color = input(H, "Choose your undershirt color", "Undershirt Color","#"+H.undershirt_color) as color|null
+				if(new_undershirt_color)
+					H.undershirt_color = sanitize_hexcolor(new_undershirt_color)
 			if("Socks")
 				var/new_socks = input(user, "Select your socks", "Changing") as null|anything in GLOB.socks_list
 				if(new_socks)
 					H.socks= new_socks
-
+			if("Socks Color")
+				var/new_socks_color = input(H, "Choose your socks color", "Socks Color","#"+H.socks_color) as color|null
+				if(new_socks_color)
+					H.socks_color = sanitize_hexcolor(new_socks_color)
+			//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks
 		add_fingerprint(H)
 		H.update_body()

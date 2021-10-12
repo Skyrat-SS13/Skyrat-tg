@@ -2,7 +2,7 @@
 
 /obj/structure/pole
 	name = "stripper pole"
-	desc = "A pole fastened to the ceiling and floor, used to show of ones goods to company."
+	desc = "A pole fastened to the ceiling and floor, used to show of one's goods to company."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	icon_state = "pole"
 	density = TRUE
@@ -63,7 +63,7 @@
 //to enable lights by aliclick
 /obj/structure/pole/AltClick(mob/user)
     pole_on = !pole_on
-    to_chat(user, "<span class='notice'>You turn the lights [pole_on? "on. Woah..." : "off."]</span>")
+    to_chat(user, span_notice("You turn the lights [pole_on? "on. Woah..." : "off."]"))
     playsound(user, pole_on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
     update_icon_state()
     update_icon()
@@ -76,10 +76,6 @@
 	update_brightness()
 	if(!length(pole_designs))
 		populate_pole_designs()
-
-/obj/structure/pole/ComponentInitialize()
-    . = ..()
-    AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/structure/pole/update_icon_state()
     . = ..()
@@ -95,7 +91,7 @@
 	if(.)
 		return
 	if(obj_flags & IN_USE)
-		to_chat(user, "It's already in use - wait a bit.")
+		to_chat(user, "[src] is already in use!")
 		return
 	else
 		obj_flags |= IN_USE
@@ -103,7 +99,7 @@
 		user.setDir(SOUTH)
 		user.Stun(100)
 		user.forceMove(src.loc)
-		user.visible_message(pick("<font color=purple>[user] dances on [src]!</font>","<font color=purple>[user] flexes their hip-moving skills on [src]!</font>"))
+		user.visible_message(pick(span_purple("[user] dances on [src]!"), span_purple("[user] flexes their hip-moving skills on [src]!")))
 		animatepole(user)
 		user.layer = layer //set them to the poles layer
 		obj_flags &= ~IN_USE
@@ -153,7 +149,7 @@
 
 /obj/item/polepack
 	name = "pink stripper pole flatpack"
-	desc = "A wrench is required to construct."
+	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/dancing_pole.dmi'
 	throwforce = 0
 	icon_state = "pole_base"
@@ -164,9 +160,9 @@
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY))
-			to_chat(user, "<span class='notice'>You start to fasten the frame to the floor and celing...</span>")
+			to_chat(user, span_notice("You begin fastening the frame to the floor and ceiling..."))
 			if(P.use_tool(src, user, 8 SECONDS, volume=50))
-				to_chat(user, "<span class='notice'>You construct the stripper pole!</span>")
+				to_chat(user, span_notice("You assemble the stripper pole."))
 				var/obj/structure/pole/C = new
 				C.loc = loc
 				qdel(src)
@@ -177,9 +173,9 @@
 /obj/structure/pole/attackby(obj/item/P, mob/user, params) //un-erecting a pole. :(
 	add_fingerprint(user)
 	if(istype(P, /obj/item/wrench))
-		to_chat(user, "<span class='notice'>You start to unfastening the frame...</span>")
+		to_chat(user, span_notice("You begin unfastening the frame from the floor and ceiling..."))
 		if(P.use_tool(src, user, 8 SECONDS, volume=50))
-			to_chat(user, "<span class='notice'>You take down the stripper pole!</span>")
+			to_chat(user, span_notice("You disassemble the stripper pole."))
 			var/obj/item/polepack/C = new
 			C.loc = loc
 			qdel(src)

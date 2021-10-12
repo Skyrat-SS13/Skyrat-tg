@@ -14,14 +14,14 @@
 	exp_granted_type = EXP_TYPE_CREW
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_CCM
+	paycheck_department = ACCOUNT_CMD
 
 	outfit = /datum/outfit/job/blueshield
 	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
 	display_order = JOB_DISPLAY_ORDER_BLUESHIELD
 	bounty_types = CIV_JOB_SEC
 	departments_list = list(
-		/datum/job_department/nanotrasen_fleet_command,
+		/datum/job_department/central_command,
 		/datum/job_department/command,
 	)
 	liver_traits = list(TRAIT_PRETENDER_ROYAL_METABOLISM)
@@ -38,7 +38,7 @@
 
 	veteran_only = TRUE
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/outfit/job/blueshield
 	name = "Blueshield"
@@ -46,11 +46,11 @@
 	uniform = /obj/item/clothing/under/rank/security/blueshield
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	id = /obj/item/card/id/advanced/gold
+	id = /obj/item/card/id/advanced/centcom
 	shoes = /obj/item/clothing/shoes/jackboots
 	ears = /obj/item/radio/headset/heads/blueshield/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	backpack_contents = list(/obj/item/storage/box/gunset/blueshield,/obj/item/melee/baton/blueshieldprod = 1)
+	backpack_contents = list(/obj/item/storage/box/gunset/blueshield,/obj/item/melee/baton/security/loaded = 1)
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
@@ -75,6 +75,7 @@
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/cfa_lynx/no_mag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cfa_lynx(src)

@@ -301,6 +301,14 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/ctf)
+"go" = (
+/obj/structure/chair/stool/bar{
+	dir = 4;
+	item_chair = null;
+	resistance_flags = 64
+	},
+/turf/open/floor/wood,
+/area/ctf)
 "gv" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/carpet/red,
@@ -376,6 +384,14 @@
 	resistance_flags = 64
 	},
 /turf/closed/wall/mineral/iron,
+/area/ctf)
+"hU" = (
+/obj/structure/chair/stool/bar{
+	dir = 8;
+	item_chair = null;
+	resistance_flags = 64
+	},
+/turf/open/floor/wood,
 /area/ctf)
 "hZ" = (
 /obj/effect/turf_decal/trimline/blue/line,
@@ -632,13 +648,6 @@
 /obj/effect/turf_decal/trimline/blue/line,
 /obj/effect/decal/cleanable/shreds,
 /turf/open/floor/iron,
-/area/ctf)
-"mf" = (
-/obj/effect/spawner/randomarcade{
-	dir = 4;
-	resistance_flags = 64
-	},
-/turf/open/floor/wood,
 /area/ctf)
 "mj" = (
 /turf/open/floor/plating/grass,
@@ -966,7 +975,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/bar,
-/obj/item/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/bottle/beer,
 /obj/structure/table/wood{
 	resistance_flags = 64
 	},
@@ -1042,14 +1051,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ctf)
-"vh" = (
-/obj/structure/chair/stool/bar{
-	dir = 4;
-	item_chair = null;
-	resistance_flags = 64
-	},
-/turf/open/floor/wood,
-/area/ctf)
 "vo" = (
 /obj/structure/table/wood{
 	resistance_flags = 64
@@ -1111,6 +1112,13 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
+/area/ctf)
+"wf" = (
+/obj/effect/spawner/random/entertainment/arcade{
+	dir = 4;
+	resistance_flags = 64
+	},
+/turf/open/floor/wood,
 /area/ctf)
 "wU" = (
 /obj/structure/rack{
@@ -1245,13 +1253,6 @@
 	},
 /obj/effect/turf_decal/tile/bar,
 /turf/open/floor/iron,
-/area/ctf)
-"yi" = (
-/obj/effect/spawner/randomarcade{
-	dir = 8;
-	resistance_flags = 64
-	},
-/turf/open/floor/wood,
 /area/ctf)
 "yp" = (
 /obj/effect/turf_decal/siding/yellow,
@@ -1438,6 +1439,13 @@
 	pixel_y = 32
 	},
 /turf/open/floor/eighties,
+/area/ctf)
+"Bt" = (
+/obj/effect/spawner/random/entertainment/arcade{
+	dir = 8;
+	resistance_flags = 64
+	},
+/turf/open/floor/wood,
 /area/ctf)
 "Bx" = (
 /obj/effect/turf_decal/siding/wood{
@@ -1633,7 +1641,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/bar,
-/obj/item/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/bottle/beer,
 /obj/structure/table/reinforced/ctf,
 /turf/open/floor/iron,
 /area/ctf)
@@ -2018,7 +2026,7 @@
 /obj/structure/window/reinforced/fulltile{
 	max_integrity = 5000;
 	name = "hardened window";
-	obj_integrity = 5000
+	atom_integrity = 5000
 	},
 /turf/open/floor/plating,
 /area/ctf)
@@ -2070,14 +2078,6 @@
 	icon_state = "bus";
 	name = "bus"
 	},
-/area/ctf)
-"Md" = (
-/obj/structure/chair/stool/bar{
-	dir = 8;
-	item_chair = null;
-	resistance_flags = 64
-	},
-/turf/open/floor/wood,
 /area/ctf)
 "MM" = (
 /obj/effect/turf_decal/stripes/line{
@@ -3688,9 +3688,9 @@ xs
 td
 Bh
 ql
-vh
+go
 ql
-vh
+go
 QC
 td
 mB
@@ -3725,10 +3725,10 @@ Ag
 BH
 td
 Bh
-mf
-yi
-mf
-yi
+wf
+Bt
+wf
+Bt
 QC
 oq
 mB
@@ -3763,9 +3763,9 @@ El
 BH
 Lr
 Ug
-Md
+hU
 ql
-Md
+hU
 ql
 QC
 oq
@@ -3840,9 +3840,9 @@ BH
 Lr
 Ug
 ql
-vh
+go
 ql
-vh
+go
 QC
 Lr
 Ad
@@ -3877,10 +3877,10 @@ xs
 BH
 td
 Bh
-mf
-yi
-mf
-yi
+wf
+Bt
+wf
+Bt
 QC
 Lr
 Ad
@@ -3915,9 +3915,9 @@ BH
 El
 td
 mP
-Md
+hU
 ql
-Md
+hU
 ql
 QC
 td
@@ -4185,7 +4185,7 @@ dO
 sZ
 Dm
 ql
-vh
+go
 td
 qT
 yX

@@ -16,7 +16,7 @@
 
 /obj/item/serviette_used
 	name = "dirty serviette"
-	desc = "Eww... Throw it in trash!"
+	desc = "Eww... Throw it in the trash!"
 	icon_state = "serviette_dirty"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
@@ -31,11 +31,11 @@
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && ((target in user.client.screen) && !user.is_holding(target)))
-		to_chat(user, "<span class='warning'>You need to take that [target.name] off before cleaning it!</span>")
+		to_chat(user, span_warning("You need to take \the [target.name] off before cleaning it!"))
 	else if(istype(target, /obj/effect/decal/cleanable))
-		user.visible_message("<span class='notice'>[user] begins to clean \the [target.name] out with [src].</span>", "<span class='warning'>You begin to clean \the [target.name] out with [src]...</span>")
+		user.visible_message(span_notice("[user] begins to clean \the [target.name] out with [src]."), span_warning("You begin to clean \the [target.name] out with [src]..."))
 		if(do_after(user, clean_speedies, target = target))
-			to_chat(user, "<span class='notice'>You clean \the [target.name] out.</span>")
+			to_chat(user, span_notice("You clean \the [target.name] out."))
 			var/obj/effect/decal/cleanable/cleanies = target
 			user.mind?.adjust_experience(/datum/skill/cleaning, max(round(cleanies.beauty/CLEAN_SKILL_BEAUTY_ADJUSTMENT),0)) //again, intentional that this does NOT round but mops do.
 			qdel(target)
@@ -46,9 +46,9 @@
 
 
 	else if(istype(target, /obj/structure/window))
-		user.visible_message("<span class='notice'>[user] begins to clean \the [target.name] with [src]...</span>", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
+		user.visible_message(span_notice("[user] begins to clean \the [target.name] with [src]..."), span_notice("You begin to clean \the [target.name] with [src]..."))
 		if(do_after(user, clean_speedies, target = target))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, span_notice("You clean \the [target.name]."))
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			target.set_opacity(initial(target.opacity))
 			user.mind?.adjust_experience(/datum/skill/cleaning, CLEAN_SKILL_GENERIC_WASH_XP)
@@ -58,9 +58,9 @@
 			user.put_in_hands(W)
 
 	else
-		user.visible_message("<span class='notice'>[user] begins to clean \the [target.name] with [src]...</span>", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
+		user.visible_message(span_notice("[user] begins to clean \the [target.name] with [src]..."), span_notice("You begin to clean \the [target.name] with [src]..."))
 		if(do_after(user, clean_speedies, target = target))
-			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
+			to_chat(user, span_notice("You clean \the [target.name]."))
 			if(user && isturf(target))
 				for(var/obj/effect/decal/cleanable/cleanable_decal in target)
 					user.mind?.adjust_experience(/datum/skill/cleaning, round(cleanable_decal.beauty / CLEAN_SKILL_BEAUTY_ADJUSTMENT))
@@ -98,7 +98,7 @@
 /obj/item/serviette_pack/attack_self(mob/user, obj/item/I)
 	switch(servleft)
 		if("4")
-			to_chat(user, "<span class='notice'>You took one of serviettes from pack.</span>")
+			to_chat(user, span_notice("You take a serviette from the pack."))
 			servleft = "3"
 			var/obj/item/serviette/W = new /obj/item/serviette
 			user.put_in_hands(W)
@@ -106,7 +106,7 @@
 			update_icon_state()
 
 		if("3")
-			to_chat(user, "<span class='notice'>You took one of serviettes from pack.</span>")
+			to_chat(user, span_notice("You take a serviette from the pack."))
 			servleft = "2"
 			var/obj/item/serviette/W = new /obj/item/serviette
 			user.put_in_hands(W)
@@ -114,7 +114,7 @@
 			update_icon_state()
 
 		if("2")
-			to_chat(user, "<span class='notice'>You took one of serviettes from pack.</span>")
+			to_chat(user, span_notice("You take a serviette from the pack."))
 			servleft = "1"
 			var/obj/item/serviette/W = new /obj/item/serviette
 			user.put_in_hands(W)
@@ -122,7 +122,7 @@
 			update_icon_state()
 
 		if("1")
-			to_chat(user, "<span class='notice'>You took one of serviettes from pack.</span>")
+			to_chat(user, span_notice("You take a serviette from the pack."))
 			servleft = "0"
 			var/obj/item/serviette/W = new /obj/item/serviette
 			user.put_in_hands(W)
@@ -130,6 +130,6 @@
 			update_icon_state()
 
 		if("0")
-			to_chat(user, "<span class='notice'>There is no more serviettes left!</span>")
+			to_chat(user, span_notice("There are no serviettes left!"))
 			update_icon()
 			update_icon_state()

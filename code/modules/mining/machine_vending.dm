@@ -24,6 +24,7 @@
 		new /datum/data/mining_equipment("Stabilizing Serum", /obj/item/hivelordstabilizer, 400),
 		new /datum/data/mining_equipment("Fulton Beacon", /obj/item/fulton_core, 400),
 		new /datum/data/mining_equipment("Shelter Capsule", /obj/item/survivalcapsule, 400),
+		new /datum/data/mining_equipment("Environment Proof Bodybag", /obj/item/bodybag/environmental, 500), //SKYRAT EDIT - ADDITION
 		new /datum/data/mining_equipment("GAR Meson Scanners", /obj/item/clothing/glasses/meson/gar, 500),
 		new /datum/data/mining_equipment("Explorer's Webbing", /obj/item/storage/belt/mining, 500),
 		new /datum/data/mining_equipment("Point Transfer Card", /obj/item/card/mining_point_card, 500),
@@ -76,7 +77,7 @@
 	src.equipment_path = path
 	src.cost = cost
 
-/obj/machinery/mineral/equipment_vendor/Initialize()
+/obj/machinery/mineral/equipment_vendor/Initialize(mapload)
 	. = ..()
 	build_inventory()
 
@@ -215,7 +216,7 @@
 	name = "golem ship equipment vendor"
 	circuit = /obj/item/circuitboard/machine/mining_equipment_vendor/golem
 
-/obj/machinery/mineral/equipment_vendor/golem/Initialize()
+/obj/machinery/mineral/equipment_vendor/golem/Initialize(mapload)
 	desc += "\nIt seems a few selections have been added."
 	prize_list += list(
 		new /datum/data/mining_equipment("Extra Id", /obj/item/card/id/advanced/mining, 250),

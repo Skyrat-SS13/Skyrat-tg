@@ -1,7 +1,7 @@
 //heels item
 /obj/item/clothing/shoes/latexheels
 	name = "latex heels"
-	desc = "Lace up before use. Pretty hard to walk in these."
+	desc = "Lace up before use. It's pretty difficult to walk in these."
 	icon_state = "latexheels"
 	inhand_icon_state = "latexheels"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_shoes.dmi'
@@ -42,7 +42,7 @@
 	var/mob/living/carbon/human/H = user
 	STOP_PROCESSING(SSobj, src)
 	if(discomfort >= 80)
-		to_chat(H,"<font color=purple>Painful heels no longer hurt your legs</font>")
+		to_chat(H, span_purple("The latex heels no longer hurt your legs."))
 	discomfort = 0
 	slowdown = 4
 
@@ -69,9 +69,9 @@
 	//Discomfort milestone signalling that something is really wrong
 	if(discomfort >= 100 && U.body_position != LYING_DOWN && message_sent == FALSE)
 		if(HAS_TRAIT(U, TRAIT_MASOCHISM))
-			to_chat(U, "<span class='notice'>These heels is causing my feet incredible pain... Such a pleasant sensations!</span>")
+			to_chat(U, span_notice("These heels are causing my feet incredible pain... And I kind of like it!"))
 		else
-			to_chat(U, "<span class='notice'>These heels hurt my feet terribly!</span>")
+			to_chat(U, span_notice("These heels are really hurting my feet!"))
 		message_sent = TRUE
 
 //to make sound when we walking in this
@@ -85,7 +85,7 @@
 
 /obj/item/clothing/shoes/latex_socks
 	name = "latex socks"
-	desc = "Splitting toe shiny socks made of some strange material."
+	desc = "A pair of shiny, split-toe socks made of some strange material."
 	icon_state = "latexsocks"
 	inhand_icon_state = "latexsocks"
 	w_class = WEIGHT_CLASS_SMALL
@@ -106,7 +106,7 @@
 
 /obj/item/clothing/shoes/dominaheels //added for Kubic request
 	name = "dominant heels"
-	desc = "A pair of aesthetically pleasing heels ."
+	desc = "A pair of aesthetically pleasing heels."
 	icon_state = "dominaheels"
 	inhand_icon_state = "dominaheels"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_shoes.dmi'

@@ -1,6 +1,6 @@
 /obj/item/clothing/under/costume/lewdmaid
 	name = "latex maid costume"
-	desc = "Maid costume for fetish reasons."
+	desc = "A maid costume made of a thick latex."
 	icon_state = "lewdmaid"
 	inhand_icon_state = "lewdmaid"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'

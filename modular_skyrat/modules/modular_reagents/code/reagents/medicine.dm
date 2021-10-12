@@ -43,3 +43,27 @@
 	owner.adjustStaminaLoss(5 * REM * delta_time, 0)
 	if(prob(30))
 		INVOKE_ASYNC(owner, /mob.proc/emote, "scream")
+
+//Medigun Clotting Medicine
+/datum/reagent/medicine/coagulant/fabricated
+	name = "fabricated coagulant"
+	description = "A synthesized coagulant created by Mediguns."
+	color = "#ff7373" //255, 155. 155
+	clot_rate = 0.15 //Half as strong as standard coagulant
+	passive_bleed_modifier = 0.5 // around 2/3 the bleeding reduction
+
+
+/datum/reagent/consumable/ethanol/drunken_espatier/on_mob_metabolize(mob/living/L)
+	..()
+	ADD_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END -- i should probably have worked these both into a status effect, maybe
+
+/datum/reagent/consumable/ethanol/drunken_espatier/on_mob_end_metabolize(mob/living/L)
+	REMOVE_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	L.clear_alert("numbed") // SKYRAT EDIT ADD END
+	..()
+
+/datum/reagent/medicine/mine_salve/on_mob_metabolize(mob/living/L)
+	ADD_TRAIT(L, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	L.throw_alert("numbed", /atom/movable/screen/alert/numbed) // SKYRAT EDIT ADD END
+	..()

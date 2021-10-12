@@ -37,7 +37,6 @@
 	desc = "An apron-jacket used by a high class chef."
 	icon_state = "chef"
 	inhand_icon_state = "chef"
-	gas_transfer_coefficient = 0.9
 	permeability_coefficient = 0.5
 	body_parts_covered = CHEST|GROIN|ARMS
 	allowed = list(/obj/item/kitchen)
@@ -66,7 +65,7 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 
-/obj/item/clothing/suit/det_suit/Initialize()
+/obj/item/clothing/suit/det_suit/Initialize(mapload)
 	. = ..()
 	allowed = GLOB.detective_vest_allowed
 
@@ -151,9 +150,6 @@
 	icon_state = "officerbluejacket"
 	inhand_icon_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
-	//SKYRAT EDIT. Weh.
-	mutant_variants = NONE
-	//SKYRAT EDIT END.
 
 /obj/item/clothing/suit/security/warden
 	name = "warden's jacket"

@@ -31,7 +31,7 @@
 	else
 		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
 
-	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]")
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]<hr>") //SKYRAT EDIT CHANGE
 	if(species_visible) //If they have a custom species shown, show the real one too
 		if(dna.features["custom_species"])
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
@@ -100,11 +100,10 @@
 	if(!(obscured & ITEM_SLOT_EYES) )
 		if(glasses  && !(glasses.item_flags & EXAMINE_SKIP))
 			. += "[t_He] [t_has] [glasses.get_examine_string(user)] covering [t_his] eyes."
-		else if(eye_color == BLOODCULT_EYE)
-			if(IS_CULTIST(src) && HAS_TRAIT(src, TRAIT_CULT_EYES))
-				. += "<span class='warning'><B>[t_His] eyes are glowing an unnatural red!</B></span>"
-			else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
-				. += "<span class='warning'><B>[t_His] eyes are bloodshot!</B></span>"
+		else if(HAS_TRAIT(src, TRAIT_UNNATURAL_RED_GLOWY_EYES))
+			. += "<span class='warning'><B>[t_His] eyes are glowing with an unnatural red aura!</B></span>"
+		else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
+			. += "<span class='warning'><B>[t_His] eyes are bloodshot!</B></span>"
 
 	//ears
 	if(ears && !(obscured & ITEM_SLOT_EARS) && !(ears.item_flags & EXAMINE_SKIP))
@@ -429,6 +428,10 @@
 			if(R)
 				. += "<a href='?src=[REF(src)];hud=m;evaluation=1'>\[Medical evaluation\]</a><br>"
 			. += "<a href='?src=[REF(src)];hud=m;quirk=1'>\[See quirks\]</a>"
+			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+			. += "<a href='?src=[REF(src)];hud=m;medrecords=1'>\[View medical records\]</a>"
+			. += "<a href='?src=[REF(src)];hud=m;genrecords=1'>\[View general records\]</a>"
+			//SKYRAT EDIT END
 
 		if(HAS_TRAIT(user, TRAIT_SECURITY_HUD))
 			if(!user.stat && user != src)
@@ -440,11 +443,13 @@
 					criminal = R.fields["criminal"]
 
 				. += "<span class='deptradio'>Criminal status:</span> <a href='?src=[REF(src)];hud=s;status=1'>\[[criminal]\]</a>"
-				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;view=1'>\[View\]</a>",
+				. += jointext(list("<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;viewsec=1'>\[View security records\]</a>", //SKYRAT EDIT CHANGE - EXAMINE RECORDS (changed viewsec)
 					"<a href='?src=[REF(src)];hud=s;add_citation=1'>\[Add citation\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_crime=1'>\[Add crime\]</a>",
 					"<a href='?src=[REF(src)];hud=s;view_comment=1'>\[View comment log\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_comment=1'>\[Add comment\]</a>"), "")
+
+				. += jointext(list("<span class='deptradio'>General record:</span> <a href='?src=[REF(src)];hud=s;genrecords=1'>\[View general records\]</a>"), "") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
 	else if(isobserver(user))
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
@@ -463,46 +468,20 @@
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
-	if(!skipface)
-		var/line
-		if(length(dna.features["flavor_text"]))
-			var/message = dna.features["flavor_text"]
-			if(length_char(message) <= 40)
-				line = "<span class='notice'>[message]</span>"
-			else
-				line = "<span class='notice'>[copytext_char(message, 1, 37)]... <a href='?src=[REF(src)];lookup_info=flavor_text'>More...</a></span>"
-		if(client)
-			line += " <span class='notice'><a href='?src=[REF(src)];lookup_info=ooc_prefs'>\[OOC\]</a></span>"
-		if(line)
-			. += line
+	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
+	if(line)
+		. += line
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && erp_status_pref != "disabled")
+			. += span_notice("ERP STATUS: [erp_status_pref]")
 	//Temporary flavor text addition:
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
 			. += "<span class='notice'>[temporary_flavor_text]</span>"
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
-
-
-
-		//RP RECORDS FOR OBSERVERS
-	if(client && user.client.holder && isobserver(user))
-		var/line = ""
-		if(!(client.prefs.general_record == ""))
-			line += "<a href='?src=[REF(src)];general_records=1'>\[GEN\]</a>"
-		if(!(client.prefs.security_record == ""))
-			line += "<a href='?src=[REF(src)];security_records=1'>\[SEC\]</a>"
-		if(!(client.prefs.medical_record == ""))
-			line += "<a href='?src=[REF(src)];medical_records=1'>\[MED\]</a>"
-		if(!(client.prefs.background_info == ""))
-			line += "<a href='?src=[REF(src)];flavor_background=1'>\[BG\]</a>"
-		if(!(client.prefs.exploitable_info == ""))
-			line += "<a href='?src=[REF(src)];exploitable_info=1'>\[EXP\]</a>"
-
-		if(!(line == ""))
-			. += "*---------*"
-			. += line
-	//END OF SKYRAT EDIT
-	. += "*---------*</span>"
+	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
@@ -517,3 +496,25 @@
 			dat += "[new_text]\n" //dat.Join("\n") doesn't work here, for some reason
 	if(dat.len)
 		return dat.Join()
+
+/mob/living/carbon/human/examine_more(mob/user)
+	. = ..()
+	if ((wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE)))
+		return
+	var/age_text
+	switch(age)
+		if(-INFINITY to 17) // SKYRAT EDIT ADD START -- AGE EXAMINE
+			age_text = "too young to be here"
+		if(18 to 25)
+			age_text = "a young adult" // SKYRAT EDIT END
+		if(26 to 35)
+			age_text = "of adult age"
+		if(36 to 55)
+			age_text = "middle-aged"
+		if(56 to 75)
+			age_text = "rather old"
+		if(76 to 100)
+			age_text = "very old"
+		if(101 to INFINITY)
+			age_text = "withering away"
+	. += list(span_notice("[p_they(TRUE)] appear[p_s()] to be [age_text]."))

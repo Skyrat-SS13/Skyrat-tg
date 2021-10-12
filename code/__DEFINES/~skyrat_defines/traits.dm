@@ -34,3 +34,12 @@
 
 // felinid traits
 #define TRAIT_FELINE "feline_aspect"
+
+// chameleon mutation
+#define TRAIT_CHAMELEON_SKIN "chameleon_skin"
+
+//Makes sure that people cant be cult sacrificed twice.
+#define TRAIT_SACRIFICED "sacrificed"
+
+//to determine if someone is a fishing master, or not
+#define TRAIT_FISHING_MASTER "fishing_master"

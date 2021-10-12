@@ -1,6 +1,7 @@
 /mob/dead/new_player/Login()
 	if(!client)
 		return
+
 	if(CONFIG_GET(flag/use_exp_tracking))
 		client.set_exp_from_db()
 		client.set_db_player_flags()
@@ -8,7 +9,6 @@
 		mind = new /datum/mind(key)
 		mind.active = TRUE
 		mind.set_current(src)
-	my_client = client //SKYRAT EDIT ADDITION
 
 	. = ..()
 	if(!. || !client)
@@ -29,6 +29,9 @@
 
 	client.playtitlemusic()
 
+	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
+	asset_datum.send(client)
+
 	// Check if user should be added to interview queue
 	if (!client.holder && CONFIG_GET(flag/panic_bunker) && CONFIG_GET(flag/panic_bunker_interview) && !(client.ckey in GLOB.interviews.approved_ckeys))
 		var/required_living_minutes = CONFIG_GET(number/panic_bunker_living)
@@ -38,10 +41,7 @@
 			register_for_interview()
 			return
 
-	show_titlescreen() //SKYRAT EDIT CHANGE
-	/* SKYRAT EDIT REMOVAL
 	if(SSticker.current_state < GAME_STATE_SETTING_UP)
 		var/tl = SSticker.GetTimeLeft()
 		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
-		*/
 

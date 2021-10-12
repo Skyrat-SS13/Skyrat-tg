@@ -14,11 +14,20 @@
 	var/cmo_case = FALSE
 
 //Code to give hypospray kits selectable paterns.
+/obj/item/storage/hypospraykit/examine(mob/living/user)
+	. = ..()
+	. += span_notice("Ctrl-Shift-Click to reskin this")
 
 /obj/item/storage/hypospraykit/Initialize()
-	..()
+	. = ..()
 	if(!length(case_designs))
 		populate_case_designs()
+	var/datum/component/storage/stored = GetComponent(/datum/component/storage)
+	stored.max_items = 12
+	stored.can_hold = typecacheof(list(
+		/obj/item/hypospray/mkii,
+		/obj/item/reagent_containers/glass/vial
+	))
 	update_icon_state()
 	update_icon()
 
@@ -64,15 +73,6 @@
 
 //END OF HYPOSPRAY CASE MENU CODE
 
-/obj/item/storage/hypospraykit/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/stored = GetComponent(/datum/component/storage)
-	stored.max_items = 12
-	stored.can_hold = typecacheof(list(
-	/obj/item/hypospray/mkii,
-	/obj/item/reagent_containers/glass/bottle/vial))
-
-
 /obj/item/storage/hypospraykit/empty
 	desc = "A hypospray kit with general use vials."
 
@@ -80,9 +80,9 @@
 	if(empty)
 		return
 	new /obj/item/hypospray/mkii(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/small(src)
+	new /obj/item/reagent_containers/glass/vial/small(src)
+	new /obj/item/reagent_containers/glass/vial/small(src)
+	new /obj/item/reagent_containers/glass/vial/small(src)
 
 /obj/item/storage/hypospraykit/cmo
 	name = "deluxe hypospray kit"
@@ -95,16 +95,16 @@
 	if(empty)
 		return
 	new /obj/item/hypospray/mkii/CMO(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/large/multiver(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/large/salglu(src)
-	new /obj/item/reagent_containers/glass/bottle/vial/large/synthflesh(src)
+	new /obj/item/reagent_containers/glass/vial/large/multiver(src)
+	new /obj/item/reagent_containers/glass/vial/large/salglu(src)
+	new /obj/item/reagent_containers/glass/vial/large/synthflesh(src)
 
 /obj/item/storage/box/vials
 	name = "box of hypovials"
 
 /obj/item/storage/box/vials/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/glass/bottle/vial/small( src )
+		new /obj/item/reagent_containers/glass/vial/small( src )
 
 /obj/item/storage/box/hypospray
 	name = "box of hypospray kits"

@@ -15,7 +15,7 @@
 	var/panel_open = FALSE
 	var/datum/barsign/chosen_sign
 
-/obj/structure/sign/barsign/Initialize()
+/obj/structure/sign/barsign/Initialize(mapload)
 	. = ..()
 	set_sign(new /datum/barsign/hiddensigns/signoff)
 
@@ -45,7 +45,7 @@
 			var/new_sign = new D
 			return set_sign(new_sign)
 
-/obj/structure/sign/barsign/obj_break(damage_flag)
+/obj/structure/sign/barsign/atom_break(damage_flag)
 	. = ..()
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))
 		broken = TRUE

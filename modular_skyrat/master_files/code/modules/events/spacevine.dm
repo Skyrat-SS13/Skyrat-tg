@@ -2,8 +2,8 @@
 	name = "Spacevine"
 	typepath = /datum/round_event/spacevine
 	weight = 10
-	max_occurrences = 3
-	min_players = 10
+	max_occurrences = 1
+	min_players = 60
 
 /datum/round_event/spacevine
 	fakeable = FALSE
@@ -539,6 +539,12 @@
 	var/turf/holder_turf = get_turf(holder)
 	holder_turf.atmos_spawn_air("n2=100;TEMP=293")
 
+//allows the vine to walk 1 tile away from turfs
+/datum/spacevine_mutation/spacewalking
+	name = "space-walking"
+	hue = "#0a1330"
+	severity = 5
+	quality = NEGATIVE
 
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
@@ -636,13 +642,6 @@
 		return
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
 		vine_mutation.on_cross(src, moving_atom)
-	if(istype(moving_atom, /mob/living/simple_animal/hostile/venus_human_trap))
-		var/mob/living/simple_animal/hostile/venus_human_trap/venus_trap = moving_atom
-		if(venus_trap.health >= venus_trap.maxHealth)
-			return
-		venus_trap.adjustHealth(-clamp(venus_trap.health += 2, 0, venus_trap.maxHealth), TRUE, TRUE)
-		to_chat(venus_trap, span_notice("The vines attempt to regenerate some of your wounds!"))
-		return
 
 // ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/spacevine/attack_hand(mob/user, list/modifiers)
@@ -798,21 +797,30 @@
 	for(var/obj/machinery/door/target_door in stepturf.contents)
 		if(prob(50))
 			target_door.open()
+	var/datum/spacevine_mutation/spacewalking/space_mutation = locate() in mutations
 	if(!isspaceturf(stepturf) && stepturf.Enter(src))
-		//Locates any vine on target turf. Calls that vine "spot_taken".
-		var/obj/structure/spacevine/spot_taken = locate() in stepturf
+		spread_two(stepturf, direction)
+	else if(space_mutation && isspaceturf(stepturf) && stepturf.Enter(src))
+		var/turf/closed/wall/find_wall = locate() in range(2, src)
+		var/turf/open/floor/find_floor = locate() in range(2, src)
+		if(find_floor || find_wall)
+			spread_two(stepturf, direction)
 
-		//Locates the vine eating trait in our own seed and calls it eating_mutation.
-		var/datum/spacevine_mutation/vine_eating/eating_mutation = locate() in mutations
+/obj/structure/spacevine/proc/spread_two(turf/target_turf, target_dir)
+	//Locates any vine on target turf. Calls that vine "spot_taken".
+	var/obj/structure/spacevine/spot_taken = locate() in target_turf
 
-		//Proceed if there isn't a vine on the target turf, OR we have vine eater AND target vine is from our seed and doesn't. Vines from other seeds are eaten regardless.
-		if(!spot_taken || (eating_mutation && (spot_taken && !spot_taken.mutations.Find(eating_mutation))))
-			if(!master)
-				return
-			for(var/datum/spacevine_mutation/vine_mutation in mutations)
-				vine_mutation.on_spread(src, stepturf) //Only do the on_spread proc if it actually spreads.
-				stepturf = get_step(src,direction) //in case turf changes, to make sure no runtimes happen
-			master.spawn_spacevine_piece(stepturf, src)
+	//Locates the vine eating trait in our own seed and calls it eating_mutation.
+	var/datum/spacevine_mutation/vine_eating/eating_mutation = locate() in mutations
+
+	//Proceed if there isn't a vine on the target turf, OR we have vine eater AND target vine is from our seed and doesn't. Vines from other seeds are eaten regardless.
+	if(!spot_taken || (eating_mutation && (spot_taken && !spot_taken.mutations.Find(eating_mutation))))
+		if(!master)
+			return
+		for(var/datum/spacevine_mutation/vine_mutation in mutations)
+			vine_mutation.on_spread(src, target_turf) //Only do the on_spread proc if it actually spreads.
+			target_turf = get_step(src,target_dir) //in case turf changes, to make sure no runtimes happen
+		master.spawn_spacevine_piece(target_turf, src)
 
 /obj/structure/spacevine/ex_act(severity, target)
 	var/i
@@ -835,6 +843,13 @@
 	. = ..()
 	if(isvineimmune(mover))
 		return TRUE
+
+/obj/structure/spacevine/attack_ghost(mob/user)
+	var/turf/src_turf = get_turf(src)
+	var/mob/living/simple_animal/hostile/venus_human_trap/check_venus = locate() in src_turf.contents
+	if(!check_venus)
+		return ..()
+	check_venus.attack_ghost(user)
 
 /proc/isvineimmune(atom/checked_atom)
 	if(isliving(checked_atom))

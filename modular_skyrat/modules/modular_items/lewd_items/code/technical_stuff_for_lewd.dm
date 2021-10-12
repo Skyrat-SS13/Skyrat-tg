@@ -20,37 +20,24 @@
 //Looping sound for vibrating stuff//
 /////////////////////////////////////
 
-/datum/looping_sound/vibrator_low
+/datum/looping_sound/vibrator
 	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
 	start_length = 1
 	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
 	mid_length = 1
 	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
-	volume = 80
-	falloff_distance = 1
-	falloff_exponent = 5
-	extra_range = SILENCED_SOUND_EXTRARANGE
-/datum/looping_sound/vibrator_medium
-	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
-	start_length = 1
-	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
-	mid_length = 1
-	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-2.ogg'
-	volume = 90
 	falloff_distance = 1
 	falloff_exponent = 5
 	extra_range = SILENCED_SOUND_EXTRARANGE
 
-/datum/looping_sound/vibrator_hard
-	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
-	start_length = 1
-	mid_sounds = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
-	mid_length = 1
-	end_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-3.ogg'
+/datum/looping_sound/vibrator/low
+	volume = 80
+
+/datum/looping_sound/vibrator/medium
+	volume = 90
+
+/datum/looping_sound/vibrator/high
 	volume = 100
-	falloff_distance = 1
-	falloff_exponent = 5
-	extra_range = SILENCED_SOUND_EXTRARANGE
 
 ////////////////////////////////////////////////////////////////////////////////
 //Boxes for vending machine, to spawn stuff with important cheap tools in pack//
@@ -135,7 +122,7 @@
 	return FALSE
 
 /mob/living/carbon/is_ballgagged()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/mask/ballgag_phallic) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
+	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
 
 //proc for condoms. Need to prevent cum appearing on the floor.
 /mob/proc/wear_condom()
@@ -544,7 +531,7 @@
 ///////////////////////////////////////////////////////////////
 
 /mob/living/proc/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
-	if(forced || (!ckey || client?.prefs.skyrat_toggles & (ngender == FEMALE ? FORCED_FEM : FORCED_MALE)))
+	if(forced || (!ckey || client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change)))
 		gender = ngender
 		return TRUE
 	return FALSE
@@ -559,7 +546,7 @@
 			dna.features["body_model"] = ngender
 			if(!silent)
 				var/adj = ngender == MALE ? "masculine" : "feminine"
-				visible_message("<span class='boldnotice'>[src] suddenly looks more [adj]!</span>", "<span class='boldwarning'>You suddenly feel more [adj]!</span>")
+				visible_message(span_boldnotice("[src] suddenly looks more [adj]!"), span_boldwarning("You suddenly feel more [adj]!"))
 		else if(ngender == NEUTER)
 			dna.features["body_model"] = MALE
 	if(update_icon)
@@ -659,7 +646,7 @@
 	anus = text2path(outfit_data["anus"])
 	nipples = text2path(outfit_data["nipples"])
 	penis = text2path(outfit_data["penis"])
-	..()
+	. = ..()
 
 // Just by analogy with the TG code. No ideas for what this is.
 /mob/proc/update_inv_vagina()
@@ -720,7 +707,7 @@
 
 // Updating vagina slot
 /mob/living/carbon/human/update_inv_vagina()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1]
 			inv.update_icon()
@@ -759,7 +746,7 @@
 
 // Updating anus slot
 /mob/living/carbon/human/update_inv_anus()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1]
 			inv.update_icon()
@@ -798,7 +785,7 @@
 
 // Updating nipples slot
 /mob/living/carbon/human/update_inv_nipples()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1]
 			inv.update_icon()
@@ -837,7 +824,7 @@
 
 // Updating penis slot
 /mob/living/carbon/human/update_inv_penis()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1]
 			inv.update_icon()
@@ -1022,7 +1009,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/vagina/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1031,7 +1018,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/anus/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1040,7 +1027,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/nipples/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1049,7 +1036,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/penis/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1271,3 +1258,34 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 		return FALSE
 	return FALSE
+
+/datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
+	. = ..()
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		if(client.mob.hud_used)
+			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 0
+	else
+		if(ishuman(client.mob))
+			var/mob/living/carbon/human/M = client.mob
+			if(M.vagina != null)
+				M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.anus != null)
+				M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.nipples != null)
+				M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.penis != null)
+				M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+		if(client.mob.hud_used)
+			if(client.mob.hud_used.ERP_inventory_shown)
+				client.mob.hud_used.ERP_inventory_shown = FALSE
+				client.screen -= client.mob.hud_used.ERP_toggleable_inventory
+
+			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 100
+
+
+	client.mob.hud_used.hidden_inventory_update(client.mob)
+	client.mob.hud_used.persistent_inventory_update(client.mob)

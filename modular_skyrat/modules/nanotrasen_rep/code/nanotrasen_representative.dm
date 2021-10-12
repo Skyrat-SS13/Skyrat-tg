@@ -14,14 +14,14 @@
 
 	departments_list = list(
 		/datum/job_department/command,
-		/datum/job_department/nanotrasen_fleet_command
+		/datum/job_department/central_command
 	)
 
 	outfit = /datum/outfit/job/nanotrasen_representative
 	plasmaman_outfit = /datum/outfit/plasmaman/nanotrasen_representative
 
 	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_CCM
+	paycheck_department = ACCOUNT_CMD
 
 	display_order = JOB_DISPLAY_ORDER_NANOTRASEN_REPRESENTATIVE
 	bounty_types = CIV_JOB_SEC
@@ -36,7 +36,7 @@
 
 	veteran_only = TRUE
 
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/job/nanotrasen_representative/after_spawn(mob/living/H, mob/M, latejoin)
 	. = ..()
@@ -56,7 +56,7 @@
 	suit = /obj/item/clothing/suit/armor/vest/nanotrasen_representative
 	shoes = /obj/item/clothing/shoes/jackboots
 	head = /obj/item/clothing/head/nanotrasen_representative
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic)
+	backpack_contents = list(/obj/item/melee/baton/telescopic)
 
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 

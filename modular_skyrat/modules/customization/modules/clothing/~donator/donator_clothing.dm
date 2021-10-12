@@ -454,7 +454,7 @@
 			visible_message(span_warning("[crusher] steps on the [src], crushing it with ease."))
 			take_damage(200, sound_effect = FALSE)
 
-/obj/item/clothing/mask/kindle/obj_destruction(damage_flag)
+/obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
 	. = ..()
 	name = "broken mask of Kindle"
 	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
@@ -836,25 +836,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	worn_icon_state = "mikuleggings"
 
-
-// Donation reward for CandleJax
-/obj/item/clothing/suit/armor/vest/peacekeeper/jax
-	name = "HepUnit Standard Underweave"
-	desc = "A durable, plated uniform that provides mobility as well as security to the wearer. Most often used by Hephaestus Industries Security Constructs due to their effective use and recyclability."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "heparmor"
-	worn_icon_state = "heparmor"
-
-// Donation reward for CandleJax
-/obj/item/storage/belt/security/webbing/peacekeeper/jax
-	name = "HepUnit Standard Webbing"
-	desc = "A sturdy, segmented belt which fits over the included uniform. It conceals a number of pockets on the interior, making it ideal for storage across the operating unit's body."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "hepbelt"
-	worn_icon_state = "hepbelt"
-
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	name = "Emission's Helmet"
@@ -873,6 +854,33 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
 	inhand_icon_state = "emissionsuit"
+
+// Donation reward for CandleJax
+/obj/item/clothing/glasses/zentai
+	var/list/spans = list()
+	actions_types = list(/datum/action/item_action/demonic_whisper)
+
+/obj/item/clothing/glasses/zentai
+	name = "Demonic Sunglasses"
+	desc = "A devilishly fashionable set of shades. An eerie red glint is present."
+	spans = list("velvet")
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "zentai"
+	inhand_icon_state = "zentai"
+	tint = 1
+	glass_colour_type = /datum/client_colour/glass_colour/red
+
+/datum/action/item_action/demonic_whisper
+	name = "Demonic Whisper"
+
+/obj/item/clothing/glasses/zentai/ui_action_click(mob/living/user, action)
+	if(!isliving(user) || !can_use(user))
+		return
+	var/message = input(user, "Speak with a demonic whisper", "Whisper")
+	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
+		return
+	user.whisper(message, spans = spans)
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax
@@ -962,3 +970,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "blueshield"
+
+// Donation reward for DeltaTri
+/obj/item/clothing/suit/jacket/delta
+	name = "grey winter hoodie"
+	desc = "A plain old grey hoodie. It has some puffing on the inside, and a animal fur trim around half of the hood."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "greycoat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT

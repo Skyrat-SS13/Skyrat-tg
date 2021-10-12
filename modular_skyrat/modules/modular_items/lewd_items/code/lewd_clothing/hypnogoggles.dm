@@ -19,7 +19,7 @@
 	victim = user
 	if(slot != ITEM_SLOT_EYES)
 		return
-	if(iscarbon(victim) && victim.client?.prefs.sextoys_pref == "Yes")
+	if(iscarbon(victim) && victim.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(codephrase != "")
 			victim.gain_trauma(new /datum/brain_trauma/induced_hypnosis(codephrase), TRAUMA_RESILIENCE_BASIC)
 		else
@@ -90,7 +90,7 @@
 
 /datum/brain_trauma/induced_hypnosis
 	name = "Hypnosis"
-	desc = "Patient's unconscious is completely enthralled by a word or sentence, focusing their thoughts and actions on it, appears to be induced by something they're wearing."
+	desc = "Patient's subconscious is completely enthralled by a word or sentence. It appears to be induced by something they're wearing."
 	scan_desc = "epileptic induced looping thought pattern"
 	gain_text = ""
 	lose_text = ""
@@ -113,13 +113,12 @@
 /datum/brain_trauma/induced_hypnosis/on_gain()
 	log_game("[key_name(owner)] was hypnogoggled'.")
 	to_chat(owner, "<span class='reallybig hypnophrase'>[hypnotic_phrase]</span>")
-	to_chat(owner, "<span class='notice'>[pick("You feel your thoughts focusing on this phrase... you can't seem to get it out of your head.",\
-												"Your head hurts, but this is all you can think of. It must be vitally important.",\
-												"You feel a part of your mind repeating this over and over. You need to follow these words.",\
-												"Something about this sounds... right, for some reason. You feel like you should follow these words.",\
-												"These words keep echoing in your mind. You find yourself completely fascinated by them.")]</span>")
-	to_chat(owner, "<span class='boldwarning'>You've been hypnotized by this sentence. You must follow these words. If it isn't a clear order, you can freely interpret how to do so,\
-										as long as you act like the words are your highest priority.</span>")
+	to_chat(owner, span_notice(pick("You feel your thoughts focusing on this phrase... you can't seem to get it out of your head.",
+									"Your head hurts, but this is all you can think of. It must be vitally important.",
+									"You feel a part of your mind repeating this over and over. You need to follow these words.",
+									"Something about this sounds... right, for some reason. You feel like you should follow these words.",
+									"These words keep echoing in your mind. You find yourself completely fascinated by them.")))
+	to_chat(owner, span_boldwarning("You've been hypnotized by this sentence. You must follow these words. If it isn't a clear order, you can freely interpret how to do so, as long as you act like the words are your highest priority."))
 	var/atom/movable/screen/alert/hypnosis/hypno_alert = owner.throw_alert("hypnosis", /atom/movable/screen/alert/hypnosis)
 	hypno_alert.desc = "\"[hypnotic_phrase]\"... your mind seems to be fixated on this concept."
 	return ..()

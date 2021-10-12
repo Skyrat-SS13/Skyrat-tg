@@ -1,6 +1,6 @@
 /obj/item/clothing/under/stripper_outfit
 	name = "stripper outfit"
-	desc = "This clothing shows more, than hides"
+	desc = "An item of clothing that leaves little to the imagination."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-digi.dmi'

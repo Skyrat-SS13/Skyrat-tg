@@ -23,7 +23,7 @@
 	bubble_icon = "slime"
 	initial_language_holder = /datum/language_holder/slime
 
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 
 	maxHealth = 150
 	health = 150
@@ -437,7 +437,7 @@
 	return
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] \a <EM>[src]</EM>!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!<hr>") //SKYRAT EDIT CHANGE
 	if (stat == DEAD)
 		. += span_deadsay("It is limp and unresponsive.")
 	else
@@ -464,7 +464,7 @@
 			if(10)
 				. += span_warning("<B>It is radiating with massive levels of electrical activity!</B>")
 
-	. += "*---------*</span>"
+	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 
 /mob/living/simple_animal/slime/proc/discipline_slime(mob/user)
 	if(stat)

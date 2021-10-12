@@ -3,7 +3,7 @@
 
 /obj/item/clothing/head/helmet/space/deprivation_helmet
 	name = "deprivation helmet"
-	desc = "Сompletely cuts the wearer from the outside world."
+	desc = "Сompletely cuts off the wearer from the outside world."
 	icon_state = "dephelmet"
 	inhand_icon_state = "dephelmet"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_hats.dmi'
@@ -53,7 +53,7 @@
 	var/mob/living/carbon/C = usr
 	if(istype(H))
 		if(H == C.head)
-			to_chat(usr, "<span class ='notice'> You can't reach the deprivation helmet switch! </span>")
+			to_chat(usr, span_notice("You can't reach the deprivation helmet switch!"))
 		else
 			H.SwitchHelmet("vision")
 
@@ -63,7 +63,7 @@
 	var/mob/living/carbon/C = usr
 	if(istype(H))
 		if(H == C.head)
-			to_chat(usr, "<span class ='notice'>You can't reach the deprivation helmet switch! </span>")
+			to_chat(usr, span_notice("You can't reach the deprivation helmet switch!"))
 		else
 			H.SwitchHelmet("hearing")
 
@@ -73,7 +73,7 @@
 	var/mob/living/carbon/C = usr
 	if(istype(H))
 		if(H == C.head)
-			to_chat(usr, "<span class ='notice'>You can't reach the deprivation helmet switch! </span>")
+			to_chat(usr, span_notice("You can't reach the deprivation helmet switch!"))
 		else
 			H.SwitchHelmet("speech")
 
@@ -84,51 +84,51 @@
 		if(muzzle == TRUE)
 			muzzle = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
-			to_chat(usr,"<span class ='notice'>Speech switch off</span>")
+			to_chat(usr, span_notice("Speech switch off"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
-//				to_chat(U,"<font color=purple>Your mouth is free. you breathe out with relief.</font>")
+//				to_chat(U, span_purple("Your mouth is free. you breathe out with relief."))
 		else
 			muzzle = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
-			to_chat(usr,"<span class ='notice'>Speech switch on</span>")
+			to_chat(usr, span_notice("Speech switch on"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
-				to_chat(usr,"<font color=purple>Something gagged your mouth! You can't make a single a sound...</font>")
+				to_chat(usr, span_purple("Something is gagging your mouth! You can barely make a sound..."))
 	if(C == "hearing")
 		if(earmuffs == TRUE)
 			earmuffs = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
-			to_chat(usr,"<span class ='notice'>Hearing switch off</span>")
+			to_chat(usr, span_notice("Hearing switch off"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
 				Toggle_Sounds()
-//				to_chat(U,"<font color=purple>Finally you can hear the world around again.</font>")
+//				to_chat(U, span_purple("Finally you can hear the world around again."))
 		else
 			earmuffs = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
-			to_chat(usr,"<span class ='notice'>Hearing switch on</span>")
+			to_chat(usr, span_notice("Hearing switch on"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
 				Toggle_Sounds()
 				stop_client_sounds()
-				to_chat(usr,"<font color=purple>You can barely hear anything! Other sensations have escalated...</font>")
+				to_chat(usr, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
 	if(C == "vision")
 		var/mob/living/carbon/human/user = usr
 		if(prevent_vision == TRUE)
 			prevent_vision = FALSE
 			playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE)
-			to_chat(usr,"<span class ='notice'>Vision switch off</span>")
+			to_chat(usr, span_notice("Vision switch off"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.cure_blind("deprivation_helmet_[REF(src)]")
-//				to_chat(U,"<font color=purple>Helmet no longer restricts your vision.</font>")
+//				to_chat(U, span_purple("Helmet no longer restricts your vision."))
 		else
 			prevent_vision = TRUE
 			playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE)
-			to_chat(usr,"<span class ='notice'>Vision switch on</span>")
+			to_chat(usr, span_notice("Vision switch on"))
 			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.become_blind("deprivation_helmet_[REF(src)]")
-				to_chat(usr,"<font color=purple>The helmet is blocking your vision! You feel so helpless...</font>")
+				to_chat(usr, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
 
 //Client sound switchers for more silense! And check current state of parameters
 //Switcher agregator function
@@ -350,15 +350,15 @@
 	ship_ambience_sound_state = Toggle_Ship_Ambience_Get_Checked(C)
 	if(muzzle == TRUE)
 		ADD_TRAIT(user, TRAIT_MUTE, CLOTHING_TRAIT)
-		to_chat(usr,"<font color=purple>Something gagged your mouth! You can't make a single a sound...</font>")
+		to_chat(usr, span_purple("Something is gagging your mouth! You can barely make a sound..."))
 	if(earmuffs == TRUE)
 		ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
 		Toggle_Sounds()
 		stop_client_sounds()
-		to_chat(usr,"<font color=purple>You can barely hear anything! Other sensations have escalated...</font>")
+		to_chat(usr, span_purple("You can barely hear anything! Your other senses have become more apparent..."))
 	if(prevent_vision == TRUE)
 		user.become_blind("deprivation_helmet_[REF(src)]")
-		to_chat(usr,"<font color=purple>Helmet is blocking your vision! You feel yourself so helpless...</font>")
+		to_chat(usr, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
 
 
 //Here goes code that heals the wearer after unequipping helmet
@@ -377,11 +377,11 @@
 	//some stuff for unequip messages
 	if(src == user.head)
 		if(muzzle == TRUE)
-			to_chat(user,"<font color=purple>Your mouth is free. You breathe out with relief.</font>")
+			to_chat(user, span_purple("Your mouth is free. You breathe out with relief."))
 		if(earmuffs == TRUE)
-			to_chat(user,"<font color=purple>Finally you can hear the world around again.</font>")
+			to_chat(user, span_purple("Finally you can hear the world around you once more."))
 		if(prevent_vision == TRUE)
-			to_chat(user,"<font color=purple>Helmet no longer restricts your vision.</font>")
+			to_chat(user, span_purple("The helmet no longer restricts your vision."))
 
 	//Let's drop sound states
 	ambience_sound_state = null

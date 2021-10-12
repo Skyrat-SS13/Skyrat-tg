@@ -32,7 +32,17 @@
 		"Virology" = /obj/machinery/door/airlock/virology,
 //SKYRAT EDIT ADDITION//
 		"Standard" = /obj/machinery/door/airlock,
-		"Corporate" = /obj/machinery/door/airlock/corporate
+		"Corporate" = /obj/machinery/door/airlock/corporate,
+		"Bathroom" = /obj/machinery/door/airlock/bathroom,
+		"Psychologist" = /obj/machinery/door/airlock/psych,
+		"Asylum" = /obj/machinery/door/airlock/asylum,
+		"Captain" = /obj/machinery/door/airlock/captain,
+		"Head of Personnel" = /obj/machinery/door/airlock/hop,
+		"Head of Security" = /obj/machinery/door/airlock/hos,
+		"Chief Medical Officer" = /obj/machinery/door/airlock/cmo,
+		"Chief Engineer" = /obj/machinery/door/airlock/ce,
+		"Research Director" = /obj/machinery/door/airlock/rd,
+		"Quartermaster" = /obj/machinery/door/airlock/qm
 //SKYRAT EDIT ADDITION END
 	)
 
@@ -137,7 +147,7 @@
 		to_chat(user, "<span class='notice'>You need to get closer!</span>")
 		return
 	if(use_paint(user) && isturf(F))
-		F.AddElement(/datum/element/decal, 'icons/turf/decals.dmi', stored_decal_total, stored_dir, CLEAN_TYPE_PAINT, color, null, null, alpha)
+		F.AddElement(/datum/element/decal, 'icons/turf/decals.dmi', stored_decal_total, stored_dir, null, null, alpha, color, null, CLEAN_TYPE_PAINT, null)
 
 /obj/item/airlock_painter/decal/AltClick(mob/user)
 	. = ..()

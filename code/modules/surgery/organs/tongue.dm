@@ -7,6 +7,7 @@
 	attack_verb_continuous = list("licks", "slobbers", "slaps", "frenches", "tongues")
 	attack_verb_simple = list("lick", "slobber", "slap", "french", "tongue")
 	var/list/languages_possible
+	var/list/languages_native //human mobs can speak with this languages without the accent (letters replaces)
 	var/say_mod = null
 
 	/// Whether the owner of this tongue can taste anything. Being set to FALSE will mean no taste feedback will be provided.
@@ -34,13 +35,13 @@
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/russian,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/neorusskya,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
 		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
-		/datum/language/japanese // SKYRAT EDIT - customization - extra languages
+		/datum/language/yangyu // SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -49,6 +50,12 @@
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
+	if(speech_args[SPEECH_LANGUAGE] in languages_native)
+		return FALSE //no changes
+	modify_speech(source, speech_args)
+
+/obj/item/organ/tongue/proc/modify_speech(datum/source, list/speech_args)
+	return speech_args[SPEECH_MESSAGE]
 
 /obj/item/organ/tongue/Insert(mob/living/carbon/tongue_owner, special = 0)
 	..()
@@ -87,8 +94,9 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
+	languages_native = list(/datum/language/draconic)
 
-/obj/item/organ/tongue/lizard/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/lizard/modify_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")
 	var/static/regex/lizard_hiSS = new("S+", "g")
 	var/static/regex/lizard_kss = new(@"(\w)x", "g")
@@ -107,6 +115,17 @@
 		*/
 		message = lizard_ecks.Replace(message, "ecks$1")
 		message = lizard_eckS.Replace(message, "ECKS$1")
+		//SKYRAT EDIT START: Adding russian version to autohiss
+		if(CONFIG_GET(flag/russian_text_formation))
+			var/static/regex/lizard_hiss_ru = new("с+", "g")
+			var/static/regex/lizard_hiSS_ru = new("С+", "g")
+			message = replacetext(message, "з", "с")
+			message = replacetext(message, "З", "С")
+			message = replacetext(message, "ж", "ш")
+			message = replacetext(message, "Ж", "Ш")
+			message = lizard_hiss_ru.Replace(message, "ссс")
+			message = lizard_hiSS_ru.Replace(message, "ССС")
+		//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/lizard/silver
@@ -196,6 +215,7 @@
 	say_mod = "buzzes"
 	taste_sensitivity = 25 // you eat vomit, this is a mercy
 	modifies_speech = TRUE
+	languages_native = list(/datum/language/buzzwords)
 	var/static/list/languages_possible_fly = typecacheof(list(
 		/datum/language/common,
 		/datum/language/draconic,
@@ -213,7 +233,7 @@
 		/datum/language/buzzwords
 	))
 
-/obj/item/organ/tongue/fly/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/fly/modify_speech(datum/source, list/speech_args)
 	var/static/regex/fly_buzz = new("z+", "g")
 	var/static/regex/fly_buZZ = new("Z+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -222,6 +242,15 @@
 		message = fly_buZZ.Replace(message, "ZZZ")
 		message = replacetext(message, "s", "z")
 		message = replacetext(message, "S", "Z")
+	//SKYRAT EDIT START: Adding russian version to autohiss
+		if(CONFIG_GET(flag/russian_text_formation))
+			var/static/regex/fly_buzz_ru = new("з+", "g")
+			var/static/regex/fly_buZZ_ru = new("З+", "g")
+			message = fly_buzz_ru.Replace(message, "ззз")
+			message = fly_buZZ_ru.Replace(message, "ЗЗЗ")
+			message = replacetext(message, "с", "з")
+			message = replacetext(message, "С", "З")
+	//SKYRAT EDIT END: Adding russian version to autohiss
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly/Initialize(mapload)
@@ -262,7 +291,7 @@
 		else
 			. += span_notice("It is attuned to [mothership].")
 
-/obj/item/organ/tongue/abductor/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/abductor/modify_speech(datum/source, list/speech_args)
 	//Hacks
 	var/message = speech_args[SPEECH_MESSAGE]
 	var/mob/living/carbon/human/user = source
@@ -289,7 +318,7 @@
 	modifies_speech = TRUE
 	taste_sensitivity = 32
 
-/obj/item/organ/tongue/zombie/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/zombie/modify_speech(datum/source, list/speech_args)
 	var/list/message_list = splittext(speech_args[SPEECH_MESSAGE], " ")
 	var/maxchanges = max(round(message_list.len / 1.5), 2)
 
@@ -322,7 +351,7 @@
 	. = ..()
 	languages_possible = languages_possible_alien
 
-/obj/item/organ/tongue/alien/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/alien/modify_speech(datum/source, list/speech_args)
 	playsound(owner, "hiss", 25, TRUE, TRUE)
 
 /obj/item/organ/tongue/bone
@@ -354,12 +383,12 @@
 		/datum/language/calcic
 	))
 
-/obj/item/organ/tongue/bone/Initialize()
+/obj/item/organ/tongue/bone/Initialize(mapload)
 	. = ..()
 	phomeme_type = pick(phomeme_types)
 	languages_possible = languages_possible_skeleton
 
-/obj/item/organ/tongue/bone/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/bone/modify_speech(datum/source, list/speech_args)
 	if (chattering)
 		chatter(speech_args[SPEECH_MESSAGE], phomeme_type, source)
 	switch(phomeme_type)
@@ -389,7 +418,7 @@
 /obj/item/organ/tongue/robot/can_speak_language(language)
 	return TRUE // THE MAGIC OF ELECTRONICS
 
-/obj/item/organ/tongue/robot/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/robot/modify_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
 
 /obj/item/organ/tongue/snail
@@ -398,7 +427,7 @@
 	desc = "A minutely toothed, chitious ribbon, which as a side effect, makes all snails talk IINNCCRREEDDIIBBLLYY SSLLOOWWLLYY."
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/snail/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/snail/modify_speech(datum/source, list/speech_args)
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
 	for(var/i in 1 to length(message))
@@ -413,9 +442,9 @@
 	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
 	icon_state = "electrotongue"
 	say_mod = "crackles"
+	taste_sensitivity = 10 // ethereal tongues function (very loosely) like a gas spectrometer: vaporising a small amount of the food and allowing it to pass to the nose, resulting in more sensitive taste
 	attack_verb_continuous = list("shocks", "jolts", "zaps")
 	attack_verb_simple = list("shock", "jolt", "zap")
-	sense_of_taste = FALSE
 	var/static/list/languages_possible_ethereal = typecacheof(list(
 		/datum/language/common,
 		/datum/language/draconic,
@@ -467,7 +496,7 @@
 
 //Thank you Jwapplephobia for helping me with the literal hellcode below
 
-/obj/item/organ/tongue/tied/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/tied/modify_speech(datum/source, list/speech_args)
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
 	var/exclamation_found = findtext(message, "!")

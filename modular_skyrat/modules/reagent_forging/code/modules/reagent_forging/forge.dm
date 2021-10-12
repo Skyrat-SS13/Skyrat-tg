@@ -16,8 +16,8 @@
 	//normal forges are 0; to increase value, use watcher sinew to increase by 10, to a max of 100.
 	var/sinew_lower_chance = 0
 	var/current_sinew = 0
-	///the number of sheets an ore will produce, up to 3 (so you can upgrade 2 times before maxing)
-	var/goliath_ore_improvement = 1
+	///the number of extra sheets an ore will produce, up to 3
+	var/goliath_ore_improvement = 0
 	///the fuel amount (in seconds) that the forge has (wood)
 	var/forge_fuel_weak = 0
 	///the fuel amount (in seconds) that the forge has (stronger than wood)
@@ -35,11 +35,10 @@
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
-	if(isobserver(user))
-		. += span_notice("The forge has [goliath_ore_improvement]/3 goliath hides.")
-		. += span_notice("The forge has [current_sinew]/10 watcher sinews.")
-		. += span_notice("The forge has [current_core]/3 regenerative cores.")
-		. += span_notice("The forge is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
+	. += span_notice("The forge has [goliath_ore_improvement]/3 goliath hides.")
+	. += span_notice("The forge has [current_sinew]/10 watcher sinews.")
+	. += span_notice("The forge has [current_core]/3 regenerative cores.")
+	. += span_notice("The forge is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.")
 	if(reagent_forging)
 		. += span_notice("The forge has a red tinge, it is ready to imbue chemicals into reagent objects.")
 
@@ -208,13 +207,14 @@
 		return
 
 	if(istype(I, /obj/item/organ/regenerative_core))
-		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
-			to_chat(user, span_warning("This forge is already upgraded."))
-			return
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
 		in_use = TRUE
+		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
+			to_chat(user, span_warning("This forge is already upgraded."))
+			in_use = FALSE
+			return
 		var/obj/item/organ/regenerative_core/used_core = I
 		if(used_core.inert) //no inert cores allowed
 			to_chat(user, span_warning("You cannot use an inert regenerative core."))
@@ -284,7 +284,8 @@
 			return
 		var/src_turf = get_turf(src)
 		var/spawning_item = ore_stack.refined_type
-		for(var/spawn_ore in 1 to goliath_ore_improvement)
+		var/spawning_amount = max(1, (1 + goliath_ore_improvement) * ore_stack.amount)
+		for(var/spawn_ore in 1 to spawning_amount)
 			new spawning_item(src_turf)
 		in_use = FALSE
 		to_chat(user, span_notice("You successfully smelt [ore_stack]."))
@@ -344,13 +345,17 @@
 			in_use = FALSE
 			to_chat(user, span_notice("You successfully heat up the metal, ready to forge a [user_choice]."))
 			return
+		in_use = FALSE
+		return
 
 	if(I.tool_behaviour == TOOL_WRENCH)
 		new /obj/item/stack/sheet/iron/ten(get_turf(src))
-		for(var/i in 1 to current_core)
+		for(var/loopone in 1 to current_core)
 			new /obj/item/organ/regenerative_core(get_turf(src))
-		for(var/i in 1 to current_sinew)
+		for(var/looptwo in 1 to current_sinew)
 			new /obj/item/stack/sheet/sinew(get_turf(src))
+		for(var/loopthree in 1 to goliath_ore_improvement)
+			new /obj/item/stack/sheet/animalhide/goliath_hide(get_turf(src))
 		qdel(src)
 
 	if(istype(I, /obj/item/forging/reagent_weapon) && reagent_forging)
@@ -485,6 +490,98 @@
 		to_chat(user, span_notice("You finish imbueing the tile..."))
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		in_use = FALSE
+		return
+
+	if(istype(I, /obj/item/ceramic))
+		var/obj/item/ceramic/ceramic_item = I
+		if(forge_temperature <= 50)
+			to_chat(user, span_warning("The temperature is not hot enough to start heating [ceramic_item]."))
+			return
+		if(!ceramic_item.forge_item)
+			to_chat(user, span_warning("You feel that setting [ceramic_item] would not yield anything useful!"))
+			return
+		to_chat(user, span_notice("You start setting [ceramic_item]..."))
+		if(!do_after(user, 5 SECONDS, target = src))
+			to_chat(user, span_warning("You stop setting [ceramic_item]!"))
+			return
+		to_chat(user, span_notice("You finish setting [ceramic_item]..."))
+		var/obj/item/ceramic/spawned_ceramic = new ceramic_item.forge_item(get_turf(src))
+		spawned_ceramic.color = ceramic_item.color
+		qdel(ceramic_item)
+		return
+
+	if(istype(I, /obj/item/glassblowing/blowing_rod))
+		var/obj/item/glassblowing/blowing_rod/blowing_item = I
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		if(forge_temperature <= 50)
+			to_chat(user, span_warning("The temperature is not hot enough to start heating [blowing_item]."))
+			in_use = FALSE
+			return
+		var/obj/item/glassblowing/molten_glass/find_glass = locate() in blowing_item.contents
+		if(!find_glass)
+			to_chat(user, span_warning("[blowing_item] does not have any glass to heat up."))
+			in_use = FALSE
+			return
+		to_chat(user, span_notice("You begin heating up [blowing_item]."))
+		for(var/do_loop in 1 to 5) //I really want 10 seconds, but not all at "once," this makes it feel like less time
+			if(!do_after(user, 2 SECONDS, target = src))
+				to_chat(user, span_warning("[blowing_item] is interrupted in its heating process."))
+				in_use = FALSE
+				return
+		find_glass.world_molten = world.time + 25 SECONDS
+		to_chat(user, span_notice("You finish heating up [blowing_item]."))
+		in_use = FALSE
+		return
+
+	if(istype(I, /obj/item/stack/sheet/glass))
+		var/obj/item/stack/sheet/glass/glass_item = I
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		if(forge_temperature <= 50)
+			to_chat(user, span_warning("The temperature is not hot enough to start heating [glass_item]."))
+			in_use = FALSE
+			return
+		if(!glass_item.use(1))
+			to_chat(user, span_warning("You need to be able to use [glass_item]!"))
+			in_use = FALSE
+			return
+		if(!do_after(user, 5 SECONDS, target = src))
+			to_chat(user, span_warning("You stop heating up [glass_item]!"))
+			in_use = FALSE
+			return
+		in_use = FALSE
+		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
+		spawned_glass.world_molten = world.time + 25 SECONDS
+		return
+
+	if(istype(I, /obj/item/glassblowing/metal_cup))
+		var/obj/item/glassblowing/metal_cup/metal_item = I
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		if(forge_temperature <= 50)
+			to_chat(user, span_warning("The temperature is not hot enough to start heating [metal_item]!"))
+			in_use = FALSE
+			return
+		if(!metal_item.has_sand)
+			to_chat(user, span_warning("There is no sand within [metal_item]!"))
+			in_use = FALSE
+			return
+		if(!do_after(user, 5 SECONDS, target = src))
+			to_chat(user, span_warning("You stop heating up [metal_item]!"))
+			in_use = FALSE
+			return
+		in_use = FALSE
+		metal_item.has_sand = FALSE
+		metal_item.icon_state = "metal_cup_empty"
+		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
+		spawned_glass.world_molten = world.time + 25 SECONDS
 		return
 
 	return ..()
