@@ -690,7 +690,6 @@
 	desc = "Granted to the henchmen who deserve it. This probably doesn't include you."
 	icon_state = "henchmen"
 	inhand_icon_state = "henchmen"
-	mutant_variants = NONE // SKYRAT EDIT: Fixes these for vox and shit.
 
 /obj/item/storage/backpack/duffelbag/cops
 	name = "police bag"

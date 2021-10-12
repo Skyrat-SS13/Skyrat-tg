@@ -107,6 +107,9 @@
 	var/job_spawn_title
 	//SKYRAT ADDITION END
 
+	///RPG job names, for the memes
+	var/rpg_title
+
 
 /datum/job/New()
 	. = ..()

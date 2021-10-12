@@ -13,16 +13,14 @@
 #define GRAVITY_PULSE_RENDER_TARGET "*GRAVPULSE_RENDER_TARGET"
 
 #define OPENSPACE_LAYER 600 //Openspace layer over all
-#define OPENSPACE_PLANE -10 //Openspace plane below all turfs //SKYRAT EDIT CHANGE - MOVED TO 10 FROM 9 - Pollution port
-#define OPENSPACE_BACKDROP_PLANE -9 //Black square just over openspace plane to guaranteed cover all in openspace turf //SKYRAT EDIT CHANGE - MOVED TO 9 FROM 8 - Pollution port
+#define OPENSPACE_PLANE -9 //Openspace plane below all turfs
+#define OPENSPACE_BACKDROP_PLANE -8 //Black square just over openspace plane to guaranteed cover all in openspace turf
 
 
 #define FLOOR_PLANE -7
-#define GAME_PLANE_RENDER_TARGET "GAME_PLANE"
 #define GAME_PLANE -4
 
-#define MOUSE_TRANSPARENT_PLANE -4 //SKYRAT EDIT ADDITION - Pollution port
-#define MOUSE_TRANSPARENT_PLANE_RENDER_TARGET "MOUSE_TRANSPARENT_PLANE" //SKYRAT EDIT ADDITION - Pollution port
+#define MOUSE_TRANSPARENT_PLANE -3 //SKYRAT EDIT ADDITION - Pollution port
 
 #define SPACE_LAYER 1.8
 //#define TURF_LAYER 2 //For easy recordkeeping; this is a byond define
