@@ -295,7 +295,7 @@
 	return equipping.equip_delay_other
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
-/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay, can_be_silent = FALSE)
+/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
 	if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
 		return FALSE
 
