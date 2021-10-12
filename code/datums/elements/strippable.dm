@@ -157,13 +157,11 @@
 	)
 	**/
 	var/strip_seamless = FALSE
-	if(ishuman(user))
-		var/mob/living/carbon/human/user_h = user
-		if(HAS_TRAIT(user ,TRAIT_STICKY_FINGERS))
-			if(ishuman(source))
-				var/mob/living/carbon/human/victim = source
-				if(victim.l_store == item || victim.r_store == item || victim.wear_id == item)
-					strip_seamless = TRUE
+	if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
+		if(ishuman(source))
+			var/mob/living/carbon/human/victim = source
+			if(victim.l_store == item || victim.r_store == item || victim.wear_id == item)
+				strip_seamless = TRUE
 
 	if(!strip_seamless)
 		source.visible_message(
@@ -301,7 +299,7 @@
 	**/
 	var/obj/item/stripped = get_item(source)
 	var/modifier = 1
-	if(HAS_TRAIT(user ,TRAIT_STICKY_FINGERS))
+	if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
 		modifier = 0.5
 	return start_unequip_mob(stripped, source, user, stripped.strip_delay * modifier)
 	// SKYRAT EDIT - END
@@ -339,7 +337,8 @@
 	source.update_equipment_speed_mods()
 
 	//SKYRAT EDIT - THIEVING GLOVES
-	if(HAS_TRAIT(user ,TRAIT_STICKY_FINGERS))
+	if(HAS_TRAIT(user, TRAIT_STICKY_FINGERS))
+		var/mob/living/carbon/human/human_user = user
 		human_user.put_in_hands(item)
 	//SKYRAT EDIT END
 
