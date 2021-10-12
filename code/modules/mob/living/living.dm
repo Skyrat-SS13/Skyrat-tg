@@ -1067,17 +1067,13 @@
 	var/strip_delay_modifier = 1
 	var/strip_seamless = FALSE
 	if(ishuman(src))
-		to_chat(src, "Stripping when user ih human.")
 		var/mob/living/carbon/human/user = src
 		if(istype(user.gloves, /obj/item/clothing/gloves/color/black/thieving))
 			strip_delay_modifier = 0.5
-			to_chat(src, "gloves worn")
 		if(ishuman(who))
-			to_chat(src, "Victim is human")
 			var/mob/living/carbon/human/victim = who
 			if(victim.l_store == what || victim.r_store == what || victim.wear_id == what)
 				strip_seamless = TRUE
-				to_chat(src, "seamless")
 
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
