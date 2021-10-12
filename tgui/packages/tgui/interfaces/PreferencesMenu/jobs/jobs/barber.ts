@@ -1,5 +1,5 @@
-import { Job } from "../../base";
-import { Service } from "../../departments";
+import { Job } from "../base";
+import { Service } from "../departments";
 
 const Barber: Job = {
   name: "Barber",

@@ -6,6 +6,7 @@
 	desc = "Dye that is capable of recoloring fur in a mostly permanent way."
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "fur_sprayer"
+	w_class = WEIGHT_CLASS_TINY
 
 	var/mode = COLOR_MODE_SPECIFIC
 
