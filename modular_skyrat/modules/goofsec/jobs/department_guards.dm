@@ -1,4 +1,64 @@
 // /obj/item/clothing/under/rank/security/officer/blueshirt
+
+/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat
+	icon_state = "barney_uniform"
+	worn_icon_state = "barney_uniform"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+
+/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
+	name = "orderly uniform"
+	icon_state = "medical_uniform"
+	worn_icon_state = "medical_uniform"
+
+/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
+	name = "engineering guard uniform"
+	icon_state = "engineer_uniform"
+	worn_icon_state = "engineer_uniform"
+
+/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
+	name = "customs agent uniform"
+	icon_state = "customs_uniform"
+	worn_icon_state = "customs_uniform"
+
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat
+	icon_state = "barney_armor"
+	worn_icon_state = "barney_armor"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
+	icon_state = "guard_armor"
+	worn_icon_state = "guard_armor"
+
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
+	name = "armored orderly coat"
+	desc = "An armored coat, to keep you safe from unruly patients."
+	icon_state = "medical_coat"
+	worn_icon_state = "medical_coat"
+
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
+	name = "armored engineering guard coat"
+	desc = "An armored coat, to keep you safe from unruly patients."
+	icon_state = "engineering_coat"
+	worn_icon_state = "engineering_coat"
+
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
+	name = "armored customs agent coat"
+	desc = "An armored coat, to keep you safe from unruly customers."
+	icon_state = "customs_coat"
+	worn_icon_state = "customs_coat"
+
+/obj/item/clothing/head/helmet/blueshirt/skyrat
+	icon_state = "barney_helm"
+	worn_icon_state = "barney_helm"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+
+/obj/item/clothing/head/helmet/blueshirt/skyrat/guard
+	icon_state = "mallcop_helm"
+	worn_icon_state = "mallcop_helm"
+
 /datum/job/orderly
 	title = "Orderly"
 	job_spawn_title = "Medical Doctor"
@@ -40,10 +100,10 @@
 
 	belt = /obj/item/pda/medical
 	ears = /obj/item/radio/headset/headset_med
-	uniform = /obj/item/clothing/under/rank/medical/doctor
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
 	shoes = /obj/item/clothing/shoes/sneakers/white
-	head =  /obj/item/clothing/head/helmet/blueshirt
-	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/melee/baton/security/loaded
@@ -105,10 +165,10 @@
 
 	belt = /obj/item/pda/science
 	ears = /obj/item/radio/headset/headset_sci
-	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	head =  /obj/item/clothing/head/helmet/blueshirt
-	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/melee/baton/security/loaded
@@ -174,8 +234,8 @@
 	ears = /obj/item/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/misc/bouncer
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	head =  /obj/item/clothing/head/helmet/blueshirt
-	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/melee/baton/security/loaded
@@ -238,10 +298,10 @@
 
 	belt = /obj/item/pda/cargo
 	ears = /obj/item/radio/headset/headset_cargo
-	uniform = /obj/item/clothing/under/rank/cargo/tech
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	head =  /obj/item/clothing/head/helmet/blueshirt
-	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
+	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/melee/baton/security/loaded
@@ -303,10 +363,10 @@
 
 	belt = /obj/item/pda/engineering
 	ears = /obj/item/radio/headset/headset_eng
-	uniform = /obj/item/clothing/under/rank/engineering/engineer
 	shoes = /obj/item/clothing/shoes/workboots
-	head =  /obj/item/clothing/head/helmet/blueshirt
-	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
+	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/melee/baton/security/loaded

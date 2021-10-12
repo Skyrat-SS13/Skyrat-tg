@@ -2,7 +2,7 @@
 	name = "Lone Infiltrator"
 	antag_datum = /datum/antagonist/traitor/infiltrator
 	antag_flag = ROLE_LONE_INFILTRATOR
-	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
+	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
 	required_candidates = 1
 	weight = 5 //Slightly less common than normal midround traitors.
 	cost = 15 //But also slightly more costly.
