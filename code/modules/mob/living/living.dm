@@ -1056,6 +1056,48 @@
 	if(!what.canStrip(who))
 		to_chat(src, span_warning("You can't remove \the [what.name], it appears to be stuck!"))
 		return
+// SKYRAT EDIT BEGIN - THIEVING GLOVES
+	if(length(do_afters))
+		to_chat(src, span_warning("You need full concentration to strip!"))
+		return
+
+	var/strip_delay_modifier = 1
+	var/strip_seamless = FALSE
+	if(ishuman(src) && ishuman(who))
+		var/mob/living/carbon/human/user = src
+		var/mob/living/carbon/human/victim = who
+		if(istype(user.gloves, /obj/item/clothing/gloves/color/black/thieving))
+			strip_delay_modifier = 0.5
+		if(victim.l_store == what || victim.r_store == what || victim.wear_id == what)
+			strip_seamless = TRUE
+
+	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
+	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+	to_chat(src, span_danger("You try to remove [who]'s [what.name]..."))
+	if(!strip_seamless)
+		what.add_fingerprint(src)
+		who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."),
+			span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
+
+	if(do_mob(src, who, what.strip_delay * strip_delay_modifier, interaction_key = what))
+		if(what && Adjacent(who))
+			if(islist(where))
+				var/list/L = where
+				if(what == who.get_item_for_held_index(L[2]))
+					if(what.doStrip(src, who))
+						who.log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
+						log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+						if(strip_seamless)
+							src.put_in_hand(what, ignore_anim = TRUE)
+			if(what == who.get_item_by_slot(where))
+				if(what.doStrip(src, who))
+					who.log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
+					log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+					if(strip_seamless)
+						src.put_in_hand(what, ignore_anim = TRUE)
+
+// ORIGINAL:
+/**
 	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
 					span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
 	to_chat(src, span_danger("You try to remove [who]'s [what.name]..."))
@@ -1074,7 +1116,8 @@
 				if(what.doStrip(src, who))
 					who.log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 					log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
-
+**/
+// SKYRAT EDIT END - THIEVING GLOVES
 // The src mob is trying to place an item on someone
 // Override if a certain mob should be behave differently when placing items (can't, for example)
 /mob/living/stripPanelEquip(obj/item/what, mob/who, where)
@@ -1498,7 +1541,7 @@
 
 	// can't spread fire to mobs that don't catch on fire
 	if(HAS_TRAIT(L, TRAIT_NOFIRE_SPREAD) || HAS_TRAIT(src, TRAIT_NOFIRE_SPREAD))
-		return 
+		return
 
 	if(on_fire)
 		if(L.on_fire) // If they were also on fire
