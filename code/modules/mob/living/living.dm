@@ -1067,13 +1067,12 @@
 	var/strip_delay_modifier = 1
 	var/strip_seamless = FALSE
 	if(ishuman(src))
-		var/mob/living/carbon/human/user = src
-		if(istype(user.gloves, /obj/item/clothing/gloves/color/black/thieving))
+		if(HAS_TRAIT(src, TRAIT_STICKY_FINGERS))
 			strip_delay_modifier = 0.5
-		if(ishuman(who))
-			var/mob/living/carbon/human/victim = who
-			if(victim.l_store == what || victim.r_store == what || victim.wear_id == what)
-				strip_seamless = TRUE
+			if(ishuman(who))
+				var/mob/living/carbon/human/victim = who
+				if(victim.l_store == what || victim.r_store == what || victim.wear_id == what)
+					strip_seamless = TRUE
 
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
