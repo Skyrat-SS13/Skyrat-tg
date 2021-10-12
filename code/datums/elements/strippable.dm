@@ -277,9 +277,8 @@
 	. = ..()
 	if (!.)
 		return
-	//SKYRAT EDIT ADDITION
-	//return start_unequip_mob(get_item(source), source, user)
-	return start_unequip_mob(get_item(source), source, user, can_be_silent=src.can_be_silent)
+
+	return start_unequip_mob(get_item(source), source, user)
 
 /datum/strippable_item/mob_item_slot/finish_unequip(atom/source, mob/user)
 	var/obj/item/item = get_item(source)
@@ -296,10 +295,8 @@
 	return equipping.equip_delay_other
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
-/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay, can_be_silent = FALSE) //SKYRAT EDIT ADDITION original has no can_be_silent
-	//SKYRAT EDIT ADDITION original
-	//if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
-	if (!do_mob(user, source, (strip_delay || item.strip_delay) * ((can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)) ? 0.5 : 1), interaction_key = REF(item)))
+/proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay, can_be_silent = FALSE)
+	if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
 		return FALSE
 
 	return TRUE

@@ -163,7 +163,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	source.log_message(log_message, LOG_VICTIM, color="red", log_globally=FALSE)
 	item.add_fingerprint(src)
 
-	var/result = start_unequip_mob(item, source, user, POCKET_STRIP_DELAY, TRUE)
+	var/result = start_unequip_mob(item, source, user, POCKET_STRIP_DELAY)
 
 	if (!result && !HAS_TRAIT(user, TRAIT_STICKY_FINGERS)) //SKYRAT EDIT ADDITION original if (!result)
 		warn_owner(source)
