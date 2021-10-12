@@ -13,7 +13,7 @@
 	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
 	//validating limb styles
 	for(var/key in augment_limb_styles)
-		if(!GLOB.robotic_styles_list[key])
+		if(!GLOB.robotic_styles_list[augment_limb_styles[key]])
 			augment_limb_styles -= key
 
 

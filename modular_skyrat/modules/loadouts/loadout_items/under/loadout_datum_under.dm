@@ -499,6 +499,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "leaf"
 	item_path = /obj/item/clothing/under/costume/loincloth/sensor/adam
 
+/datum/loadout_item/under/miscellaneous/loincloth_leather
+	name = "leather loincloth"
+	item_path = /obj/item/clothing/under/costume/loincloth/sensor
+
+/datum/loadout_item/under/miscellaneous/loincloth_cloth
+	name = "cloth loincloth"
+	item_path = /obj/item/clothing/under/costume/loincloth/cloth/sensor
+
 ////////////////////////////////////////////////////////////////FORMAL UNDERSUITS
 /datum/loadout_item/under/formal
 
@@ -641,6 +649,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/red_suit
 	name = "Red Suit"
 	item_path = /obj/item/clothing/under/suit/red
+
+/datum/loadout_item/under/formal/helltaker
+	name = "Red Shirt with White Trousers"
+	item_path = /obj/item/clothing/under/suit/helltaker
+
+/datum/loadout_item/under/formal/helltaker/skirt
+	name = "Red Shirt with White Skirt"
+	item_path = /obj/item/clothing/under/suit/helltaker/skirt
 
 /datum/loadout_item/under/formal/red_lawyer_skirt
 	name = "Red Lawyer Suit"
