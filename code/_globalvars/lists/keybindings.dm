@@ -24,6 +24,12 @@
 		var/datum/emote/faketype = i
 		if(!initial(faketype.key))
 			continue
+		//SKYRAT EDIT ADDITION BEGIN
+		if(initial(faketype.check_configs))
+			var/datum/emote/emote = new faketype
+			if (!emote.check_config())
+				continue
+		//SKYRAT EDIT ADDITION END
 		var/datum/keybinding/emote/emote_kb = new
 		emote_kb.link_to_emote(faketype)
 		add_keybinding(emote_kb)

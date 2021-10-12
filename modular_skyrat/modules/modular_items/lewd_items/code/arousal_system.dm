@@ -797,6 +797,14 @@
 	key = "cum"
 	key_third_person = "cums"
 	cooldown = 30 SECONDS
+	check_configs = TRUE
+
+/datum/emote/living/cum/check_config()
+	return !!CONFIG_GET(flag/disable_erp_preferences)
+
+/datum/emote/living/cum/New()
+	if (!check_config())
+		mob_type_allowed_typecache = null
 
 /datum/emote/living/cum/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
