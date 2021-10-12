@@ -159,7 +159,7 @@
 	var/strip_seamless = FALSE
 	if(ishuman(user))
 		var/mob/living/carbon/human/user_h = user
-		if(istype(user_h.gloves, /obj/item/clothing/gloves/color/black/thieving))
+		if(HAS_TRAIT(user ,TRAIT_STICKY_FINGERS))
 			if(ishuman(source))
 				var/mob/living/carbon/human/victim = source
 				if(victim.l_store == item || victim.r_store == item || victim.wear_id == item)
@@ -301,10 +301,8 @@
 	**/
 	var/obj/item/stripped = get_item(source)
 	var/modifier = 1
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		if(istype(human_user.gloves, /obj/item/clothing/gloves/color/black/thieving))
-			modifier = 0.5
+	if(HAS_TRAIT(user ,TRAIT_STICKY_FINGERS))
+		modifier = 0.5
 	return start_unequip_mob(stripped, source, user, stripped.strip_delay * modifier)
 	// SKYRAT EDIT - END
 
@@ -341,10 +339,8 @@
 	source.update_equipment_speed_mods()
 
 	//SKYRAT EDIT - THIEVING GLOVES
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		if(istype(human_user.gloves, /obj/item/clothing/gloves/color/black/thieving))
-			human_user.put_in_hands(item)
+	if(HAS_TRAIT(user ,TRAIT_STICKY_FINGERS))
+		human_user.put_in_hands(item)
 	//SKYRAT EDIT END
 
 /// A representation of the stripping UI

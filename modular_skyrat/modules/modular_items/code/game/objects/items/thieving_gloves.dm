@@ -3,6 +3,7 @@
 	permeability_coefficient = 0.05
 	special_desc = "Specially designed gloves that allow the wearer to seamlessly lift the belongings of others quickly and quietly."
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
+	clothing_traits = TRAIT_STICKY_FINGERS
 
 /datum/uplink_item/stealthy_tools/thieving_gloves
 	name = "Thieving Gloves"
