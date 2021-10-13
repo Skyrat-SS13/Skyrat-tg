@@ -1,5 +1,5 @@
 /datum/examine_panel
-	var/mob/living/carbon/human/holder //client of whoever is using this datum
+	var/mob/living/holder //client of whoever is using this datum
 	var/mob/living/carbon/human/dummy/dummy_holder
 	var/atom/movable/screen/examine_panel_dummy/examine_panel_screen
 
@@ -37,13 +37,28 @@
 
 	var/datum/preferences/preferences = holder.client?.prefs
 
-	var/obscured = (holder.wear_mask && (holder.wear_mask.flags_inv & HIDEFACE)) || (holder.head && (holder.head.flags_inv & HIDEFACE))
-	var/name = obscured ? "Unknown" : holder.name
-	var/flavor_text = obscured ? "Obscured" :  holder.dna.features["flavor_text"]
-	var/custom_species = obscured ? "Obscured" : holder.dna.features["custom_species"]
-	var/custom_species_lore = obscured ? "Obscured" : holder.dna.features["custom_species_lore"]
+	var/flavor_text
+	var/custom_species
+	var/custom_species_lore
+	var/obscured
 
+	if(issilicon(holder))
+		flavor_text = preferences.read_preference(/datum/preference/text/silicon_flavor_text)
+		custom_species = "Silicon"
+		custom_species_lore = "A cyborg unit."
+
+	if(ishuman(holder))
+		var/mob/living/carbon/human/holder_human = holder
+		obscured = (holder_human.wear_mask && (holder_human.wear_mask.flags_inv & HIDEFACE)) || (holder_human.head && (holder_human.head.flags_inv & HIDEFACE))
+		custom_species = obscured ? "Obscured" : holder_human.dna.features["custom_species"]
+		flavor_text = obscured ? "Obscured" :  holder_human.dna.features["flavor_text"]
+		custom_species_lore = obscured ? "Obscured" : holder_human.dna.features["custom_species_lore"]
+
+	// Non-silicons nor humans shouldn't have the examine closely option, otherwise you should handle that here.
+
+	var/name = obscured ? "Unknown" : holder.name
 	var/ooc_notes = ""
+	
 
 	if(preferences && preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
 		var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
@@ -54,7 +69,7 @@
 		ooc_notes += "Vore: [e_prefs_v]\n"
 		ooc_notes += "\n"
 
-	ooc_notes += holder.dna.features["ooc_notes"]
+	ooc_notes += preferences.read_preference(/datum/preference/text/ooc_notes)
 
 	data["obscured"] = obscured ? TRUE : FALSE
 	data["character_name"] = name

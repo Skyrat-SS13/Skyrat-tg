@@ -20,6 +20,12 @@ export const flavor_text: Feature<string> = {
   component: FeatureTextInput,
 };
 
+export const silicon_flavor_text: Feature<string> = {
+  name: "Silicon Flavor Text",
+  description: "Describe your cyborg/AI shell!",
+  component: FeatureTextInput,
+};
+
 export const ooc_notes: Feature<string> = {
   name: "OOC Notes",
   description: "Talk about your character OOCly!",
