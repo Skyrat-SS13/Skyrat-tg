@@ -38,7 +38,7 @@
 
 		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
-		if(do_after(user, 30 SECONDS, target_human))
+		if(do_after(user, 1 MINUTES, target_human))
 			target_human.hairstyle = hair_id
 			target_human.update_hair()
 			balloon_alert_to_viewers("[user] successfully cuts [target_human]'s hair!")
@@ -55,7 +55,7 @@
 
 		to_chat(user, "You begin to masterfully sculpt [target_human]'s facial hair!")
 
-		playsound(src, 'modular_skyrat/modules/salon/sound/haircut.ogg')
+		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
 		if(do_after(user, 20 SECONDS, target_human))
 			target_human.facial_hairstyle = facial_hair_id
