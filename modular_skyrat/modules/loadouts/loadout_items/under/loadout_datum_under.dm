@@ -791,6 +791,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "French Marshall's Uniform"
 	item_path = /obj/item/clothing/under/trek/q
 
+/datum/loadout_item/under/formal/jeanshorts
+	name = "Jean Shorts"
+	item_path = /obj/item/clothing/under/pants/jeanshort
+
 //FAMILIES GEAR
 /datum/loadout_item/under/formal/osi
 	name = "OSI Uniform"
