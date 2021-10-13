@@ -572,3 +572,28 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/proc/spec_revival(mob/living/carbon/human/H)
 	return
+
+/// Gets a list of all customizable races on roundstart.
+/proc/get_customizable_races()
+	RETURN_TYPE(/list)
+
+	if (!GLOB.customizable_races.len)
+		GLOB.customizable_races = generate_customizable_races()
+
+	return GLOB.customizable_races
+
+/**
+ * Generates races available to choose in character setup at roundstart, yet not playable on the station.
+ *
+ * This proc generates which species are available to pick from in character setup.
+ */
+/proc/generate_customizable_races()
+	var/list/customizable_races = list()
+
+	for(var/species_type in subtypesof(/datum/species))
+		var/datum/species/species = new species_type
+		if(species.always_customizable)
+			customizable_races += species.id
+			qdel(species)
+
+	return customizable_races
