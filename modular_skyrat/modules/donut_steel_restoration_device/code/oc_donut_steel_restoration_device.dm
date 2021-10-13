@@ -44,15 +44,9 @@
 /obj/machinery/oc_donut_steel_restoration_device/update_appearance(updates)
 	. = ..()
 	if(occupant)
-		if(processing)
-			icon_state = "sad_on"
-		else
-			icon_state = "sad_off"
+		icon_state = processing ? "sad_on" : "sad_off"
 	else
-		if(state_open)
-			icon_state = "sad_open"
-		else
-			icon_state = "sad_closed"
+		icon_state = state_open ? "sad_open" : "sad_closed"
 
 
 
