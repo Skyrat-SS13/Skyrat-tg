@@ -142,3 +142,11 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Prescription Diagnostic Hud"
 	item_path = /obj/item/clothing/glasses/hud/diagnostic/prescription
 	restricted_roles = list("Research Director","Scientist", "Roboticist")
+
+//Families Gear
+/datum/loadout_item/glasses/osi
+	name = "OSI Glasses"
+	item_path = /obj/item/clothing/glasses/osi
+/datum/loadout_item/glasses/phantom
+	name = "Phantom Glasses"
+	item_path = /obj/item/clothing/glasses/phantom
