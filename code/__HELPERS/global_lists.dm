@@ -43,13 +43,14 @@
 	for(var/spath in subtypesof(/datum/scream_type))
 		var/datum/scream_type/S = new spath()
 		GLOB.scream_types[S.name] = spath
-	sortList(GLOB.scream_types, /proc/cmp_typepaths_asc)
+	sort_list(GLOB.scream_types, /proc/cmp_typepaths_asc)
 
 	//Laugh types
 	for(var/spath in subtypesof(/datum/laugh_type))
 		var/datum/laugh_type/L = new spath()
 		GLOB.laugh_types[L.name] = spath
-	sortList(GLOB.laugh_types, /proc/cmp_typepaths_asc)
+	sort_list(GLOB.laugh_types, /proc/cmp_typepaths_asc)
+	//SKYRAT EDIT END
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))

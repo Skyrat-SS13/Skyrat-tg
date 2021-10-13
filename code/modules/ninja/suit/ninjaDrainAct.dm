@@ -300,7 +300,7 @@
 		laws = new /datum/ai_laws/ninja_override()
 		//SKYRAT EDIT CHANGE BEGIN - Role Selection
 		//model.transform_to(pick(/obj/item/robot_model/syndicate, /obj/item/robot_model/syndicate_medical, /obj/item/robot_model/saboteur)) - SKYRAT EDIT - ORIGINAL
-		var/choice = input(src,"What role do you wish to become?","Select Role") in sortList(modelselected)
+		var/choice = input(src,"What role do you wish to become?","Select Role") in sort_list(modelselected)
 		model.transform_to(modelselected[choice])
 		//SKYRAT EDIT CHANGE END
 

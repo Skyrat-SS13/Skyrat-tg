@@ -128,19 +128,15 @@
 	if(emagged_reagents)
 		emagged_reagents = sort_list(emagged_reagents, /proc/cmp_reagents_asc)
 	if(upgrade_reagents)
-<<<<<<< HEAD
-		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
+		upgrade_reagents = sort_list(upgrade_reagents, /proc/cmp_reagents_asc)
 	//SKYRAT EDIT ADDITION BEGIN - Skyrat-SS13/Skyrat-tg#1931
 	if(upgrade_reagents)
-		upgrade_reagents = sortList(upgrade_reagents, /proc/cmp_reagents_asc)
-	if(upgrade_reagents2)
-		upgrade_reagents2 = sortList(upgrade_reagents2, /proc/cmp_reagents_asc)
-	if(upgrade_reagents3)
-		upgrade_reagents3 = sortList(upgrade_reagents3, /proc/cmp_reagents_asc)
-	//SKYRAT EDIT ADDITION END
-=======
 		upgrade_reagents = sort_list(upgrade_reagents, /proc/cmp_reagents_asc)
->>>>>>> 95c8e00af79 (cleanup _HELPERS/_lists.dm and all the necessary files (#61827))
+	if(upgrade_reagents2)
+		upgrade_reagents2 = sort_list(upgrade_reagents2, /proc/cmp_reagents_asc)
+	if(upgrade_reagents3)
+		upgrade_reagents3 = sort_list(upgrade_reagents3, /proc/cmp_reagents_asc)
+	//SKYRAT EDIT ADDITION END
 	if(is_operational)
 		begin_processing()
 	update_appearance()
