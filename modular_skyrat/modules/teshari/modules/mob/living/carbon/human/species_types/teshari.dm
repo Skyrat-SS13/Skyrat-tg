@@ -46,3 +46,4 @@
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	species_language_holder = /datum/language_holder/teshari
+	body_size_restricted = TRUE

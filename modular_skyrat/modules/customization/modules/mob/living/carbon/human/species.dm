@@ -24,6 +24,8 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/flavor_text = "No description."
 	///Does this species have a special set of overlay clothing, and if so, what is the name of the folder under .../clothing/species that contains them?
 	var/species_clothing_path
+	///Is this species restricted from changing their body_size in character creation?
+	var/body_size_restricted = FALSE
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE)
 	var/list/standing	= list()

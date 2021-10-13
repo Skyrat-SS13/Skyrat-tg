@@ -1,3 +1,3 @@
 /obj/item/clothing/suit/space
-	greyscale_colors_clothing = list(list(10, 20))
-	greyscale_icon_state = "spacesuit"
+	species_clothing_colors = list(list(10, 20))
+	species_clothing_icon_state = "spacesuit"

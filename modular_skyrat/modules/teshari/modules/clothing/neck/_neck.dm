@@ -1,7 +1,7 @@
 /obj/item/clothing/neck
-	greyscale_colors_clothing = list(list(15, 19))
-	greyscale_icon_state = "scarf"
+	species_clothing_colors = list(list(15, 19))
+	species_clothing_icon_state = "scarf"
 
 /obj/item/clothing/neck/tie
-	greyscale_colors_clothing = list(list(16, 20))
-	greyscale_icon_state = "tie"
+	species_clothing_colors = list(list(16, 20))
+	species_clothing_icon_state = "tie"

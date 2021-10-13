@@ -357,7 +357,7 @@
 
 /obj/item/clothing/wear_species_version(file_to_use, state_to_use, layer, species)
 	LAZYINITLIST(GLOB.species_clothing_icons[species])
-	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"]
-	if(!species_clothing_icon) 	//Create standing/laying icons if they don't exist
+	var/icon/species_clothing_icon = GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"] // Check if the icon we want already exists
+	if(!species_clothing_icon) 	// Create standing/laying icons if they don't exist
 		generate_species_clothing(file_to_use, state_to_use, species)
 	return mutable_appearance(GLOB.species_clothing_icons[species]["[file_to_use]-[state_to_use]"], layer = -layer)
