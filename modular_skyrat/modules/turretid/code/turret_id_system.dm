@@ -25,6 +25,5 @@ GLOBAL_LIST_EMPTY(turret_id_refs)
 	if(system_id && GLOB.turret_id_refs[system_id])
 		for(var/i in GLOB.turret_id_refs[system_id])
 			var/obj/machinery/porta_turret/T = i
-			turrets |= T
-			T.cp = src
-			
+			turrets |= WEAKREF(T)
+
