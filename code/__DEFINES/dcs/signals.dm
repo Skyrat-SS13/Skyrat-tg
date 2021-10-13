@@ -819,6 +819,8 @@
 /// from /obj/machinery/atmospherics/components/binary/pump/set_on(active): (on)
 #define COMSIG_PUMP_SET_ON "pump_set_on"
 
+/// from /obj/machinery/light_switch/set_lights(), sent to every switch in the area: (status)
+#define COMSIG_LIGHT_SWITCH_SET "light_switch_set"
 
 // /obj access signals
 
@@ -1464,6 +1466,12 @@
 
 /// Called in /obj/structure/moneybot/add_money(). (to_add)
 #define COMSIG_MONEYBOT_ADD_MONEY "moneybot_add_money"
+
+/// Called in /obj/structure/dispenserbot/add_item(). (obj/item/to_add)
+#define COMSIG_DISPENSERBOT_ADD_ITEM "moneybot_add_item"
+
+/// Called in /obj/structure/dispenserbot/remove_item(). (obj/item/to_remove)
+#define COMSIG_DISPENSERBOT_REMOVE_ITEM "moneybot_remove_item"
 
 /// Called when somebody passes through a scanner gate and it triggers
 #define COMSIG_SCANGATE_PASS_TRIGGER "scangate_pass_trigger"

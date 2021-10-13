@@ -65,3 +65,8 @@
 #define COMSIG_FIREALARM_TRIGGERED_OFF "firealarm_triggered_off"
 /// /obj/machinery/door/firedoor/proc/trigger_hot()
 #define COMSIG_FIREDOOR_CLOSED_FIRE "firedoor_closed_fire"
+
+//when someone casts their fishing rod
+#define COMSIG_START_FISHING "start_fishing"
+//when someone pulls back their fishing rod
+#define COMSIG_FINISH_FISHING "finish_fishing"

@@ -552,7 +552,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if (!islist(C.dna.mutant_bodyparts[key]))
 			continue
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
-		if(SA.factual && SA.organ_type)
+		if(SA?.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
 			if(robot_organs)
 				path.status = ORGAN_ROBOTIC

@@ -34,10 +34,33 @@
 
 /datum/examine_panel/ui_data(mob/user)
 	var/list/data = list()
-	data["character_name"] = holder.name
+
+	var/datum/preferences/preferences = holder.client?.prefs
+
+	var/obscured = (holder.wear_mask && (holder.wear_mask.flags_inv & HIDEFACE)) || (holder.head && (holder.head.flags_inv & HIDEFACE))
+	var/name = obscured ? "Unknown" : holder.name
+	var/flavor_text = obscured ? "Obscured" :  holder.dna.features["flavor_text"]
+	var/custom_species = obscured ? "Obscured" : holder.dna.features["custom_species"]
+	var/custom_species_lore = obscured ? "Obscured" : holder.dna.features["custom_species_lore"]
+
+	var/ooc_notes = ""
+
+	if(preferences && preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
+		var/e_prefs = preferences.read_preference(/datum/preference/choiced/erp_status)
+		var/e_prefs_nc = preferences.read_preference(/datum/preference/choiced/erp_status_nc)
+		var/e_prefs_v = preferences.read_preference(/datum/preference/choiced/erp_status_v)
+		ooc_notes += "ERP: [e_prefs]\n"
+		ooc_notes += "Non-Con: [e_prefs_nc]\n"
+		ooc_notes += "Vore: [e_prefs_v]\n"
+		ooc_notes += "\n"
+
+	ooc_notes += holder.dna.features["ooc_notes"]
+
+	data["obscured"] = obscured ? TRUE : FALSE
+	data["character_name"] = name
 	data["assigned_map"] = examine_panel_screen.assigned_map
-	data["flavor_text"] = holder.dna.features["flavor_text"]
-	data["ooc_notes"] = holder.dna.features["ooc_notes"]
-	data["custom_species"] = holder.dna.features["custom_species"]
-	data["custom_species_lore"] = holder.dna.features["custom_species_lore"]
+	data["flavor_text"] = flavor_text
+	data["ooc_notes"] = ooc_notes
+	data["custom_species"] = custom_species
+	data["custom_species_lore"] = custom_species_lore
 	return data

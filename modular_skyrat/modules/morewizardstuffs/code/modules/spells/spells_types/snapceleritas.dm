@@ -19,8 +19,8 @@
 
 	new /obj/effect/temp_visual/small_smoke/halfsecond(user.drop_location())
 	new /obj/effect/temp_visual/small_smoke/halfsecond(targeted_turf)
-	do_teleport(user, targeted_turf, 0, TRUE, no_effects = TRUE, channel = TELEPORT_CHANNEL_MAGIC)
-	do_teleport(target, user_turf, 0, TRUE, no_effects = TRUE, channel= TELEPORT_CHANNEL_MAGIC)
+	do_teleport(user, targeted_turf, 0, no_effects = TRUE, channel = TELEPORT_CHANNEL_MAGIC)
+	do_teleport(target, user_turf, 0, no_effects = TRUE, channel= TELEPORT_CHANNEL_MAGIC)
 
 
 /obj/effect/proc_holder/spell/pointed/celeritas/can_target(atom/target, mob/user, silent)

@@ -166,6 +166,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//SKYRAT EDIT BEGIN
 	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
 	data["preview_selection"] = preview_pref
+
+	data["quirks_balance"] = GetQuirkBalance()
+	data["positive_quirk_count"] = GetPositiveQuirkCount()
 	//SKYRAT EDIT END
 
 	data["character_preferences"] = compile_character_preferences(user)
@@ -331,6 +334,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if (!update_preference(requested_preference, default_value_list))
 				return FALSE
 
+			return TRUE
+
+		// For the quirks in the prefs menu.
+		if ("get_quirks_balance")
 			return TRUE
 		//SKYRAT EDIT END
 

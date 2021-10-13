@@ -38,4 +38,13 @@
 			return
 		new /obj/item/ceramic/clay(get_turf(src))
 		return
+	if(istype(I, /obj/item/stack/ore/bluespace_crystal))
+		var/check_fishable = GetComponent(/datum/component/fishing)
+		if(check_fishable)
+			return
+		var/obj/item/stack/ore/bluespace_crystal/bs_crystal = I
+		if(!bs_crystal.use(1))
+			return
+		to_chat(user, span_notice("You connect [src], through bluespace, to a distant ocean."))
+		AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
 	return ..()

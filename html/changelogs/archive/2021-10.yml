@@ -1087,3 +1087,152 @@
   thestubborn:
   - balance: you can no longer instantly weld as any job
   - bugfix: oh yeah also a digi cap kilt now
+2021-10-09:
+  Colovorat:
+  - imageadd: catwalk floor tile object sprite and inhand sprites
+  Deek-Za:
+  - bugfix: Decal Painter now paints decals once again
+  - rscdel: 'Disabled Tail Trauma qol: Less troubling start for tailed individuals.'
+  GoldenAlpharex:
+  - bugfix: Quirks will no longer be in a weird state where they reset and you don't
+      know why anymore. Check your Augments+ tab if that was happening to you, and
+      remove the augments you don't want.
+  - bugfix: The Limbs Augmentations And Markings page was relabeled "Augments+" and
+      has been revamped visually to work better.
+  - bugfix: You will no longer wake up on the Interlink with your cybernetics looking
+      wrong because you didn't ensure they were set right properly during your sleep
+      (in the prefs menu).
+  - bugfix: The breathing tube is now accessible again in the Augments+ tab.
+  - bugfix: The 'Other' gender is now no longer afraid of itself and will now properly
+      render, allowing you to change gender if you'd like.
+  - code_imp: Quirk balance tallying up is now done outside of the TGUI interface,
+      allowing us to hook other systems that cost points into it.
+  - refactor: Refactored the Augmentations panel to actually look decent and support
+      the usage of quirk points to balance stronger or crippling augments.
+  Melbert:
+  - bugfix: The huds for clown and mime fan are back
+  - bugfix: You can no longer be a simultaneous clown and mime fan, pick a side coward
+  - bugfix: Removing invasive spreading from a plant will now actually remove invasive
+      spreading
+  - refactor: Refactored seed / gene deletion, and a bit of gene addition / removal
+  SkyratBot:
+  - bugfix: fixed ambient occlusion stacking sometimes
+  - refactor: 'Refactored the circuit list datatype to support composite types (i.e.
+      entity list, any list, number list), which are lists that can only contain values
+      of the specified datatype. This also refactors anything that uses the list datatype
+      to use composite lists. qol: NTNet components now use composite lists to send
+      and receive data'
+  - bugfix: Prevented people from infinitely making lists with the list literal component.
+  - bugfix: the Driscoll poncho should be centered now
+  - bugfix: Observers will no longer see ghost icons representing Maintenance Loot
+      Spawners of Roundstart Past once the round has actually started.
+  - bugfix: Fixed default FPS for new players and applies it to them when they join.
+  - rscadd: Emagged and Syndicate borgs can now self-detonate. For emagged borgs,
+      this destroys the MMI, so know what you're signing up for.
+  - code_imp: freon_gas_act is now called freeze_turf. It was only ever used in two
+      places, neither of which involved Freon.
+  - bugfix: Vat beasts now longer lose their ability when someone rides them.
+  axietheaxolotl:
+  - rscadd: Added DeltaTri's donator item.
+  lyricalpaws:
+  - bugfix: Plants distill in to their distill reagents properly.
+2021-10-10:
+  Arkatos:
+  - bugfix: Thermomachine design icon in the R&D Console UI will now show properly.
+  Guillaume Prata:
+  - bugfix: Cyborgs can interact with a morgue tray to close it now, instead of needing
+      to interact with the main structure.
+  SkyratBot:
+  - bugfix: Bluespace anomalies will no longer teleport camera eyes, such as AI eye,
+      Blob Overmind eye, Advanced Camera consoles, or the Xenobiology Slime management
+      console. This is particularly relevant for the Xenobiology advanced slime console,
+      as the eye cannot move outside of, or while outside of, the area the console
+      is in.
+  - code_imp: Remove a very useless check from APC code
+  - bugfix: SMs meant to be immobile should now be truly immobile.
+  - bugfix: Fixed the dispenser shell and For Each and Filter components not appearing
+      in the component printer.
+  - bugfix: HFR ambience will no longer play intensely when the HFR is out of fuel
+  - bugfix: fixed antagonist preference tooltip showing wrong descriptions
+  - bugfix: Fixed the changeling antag panel
+  - bugfix: Fixed the wizard's antag panel.
+  - bugfix: Fixed variables sometimes just not working.
+  - bugfix: The beams from Emitters, and all hitscan weaponry, now render properly
+      again.
+  - bugfix: Preferences menu now supports Halloween races
+  - spellcheck: Fixed a typo in the Hostile Statue description.
+  SolGov Board of Spacestation Maintenance:
+  - bugfix: NSS Journey's Botany Backroom is no longer missing a disposal pipe segment
+  - bugfix: NSS Journey's Toxins Launch Tube is properly aligned (No longer facing
+      its own wall)
+  jjpark-kb:
+  - rscadd: added a fishing master skill chip
+  - refactor: refactored fishing code
+  sandshark808:
+  - bugfix: As a felinid, typing *wag a second time will stop your tail from wagging
+      as intended.
+  - bugfix: Security Medic, Security Sergeant, and Corrections Officer now get mail
+      goodies.
+  - bugfix: Security Medic, Security Sergeant, and Corrections Officer now have RPG
+      titles for use in a special event.
+2021-10-11:
+  ForrestWick:
+  - rscadd: Added snowmobiles to the game and placed them on Icebox's mining area,
+      security, and the Interdyne icemoon base.
+  - imageadd: snowmobile sprites have been added alongside the snowmobiles.
+  Gandalf2k15:
+  - refactor: Ian is has become is much better
+  Seris02:
+  - bugfix: welding rods down to nothing will no longer cause a runtime
+  - bugfix: fixed the default values not saving for the nc and vr prefs
+  - bugfix: brushing your own hair no longer causes runtimes
+  SkyratBot:
+  - bugfix: Fixes the changeling panel not working at all.
+  - balance: Rad collectors are gone, can be only spawned by admins. SM will now generate
+      power by releasing zaps that will hit tesla coils around it. Roundstart setups
+      might not be enough for bigger stations and t4 machines later in the round,
+      recommended to upgrade the powergen.
+  - rscadd: Added back the reset keybindings button.
+  - bugfix: Fixed weird scaling on the buttons in a tabbed list UI (such as "Communications"
+      in the keybindings menu)
+  - bugfix: The CE's blueprints can now once again show an overlay of the station's
+      original structural layout! Cleaning up after an explosion is now - well, realistically,
+      just as frustrating as ever, but it looks nice!
+  gonenoculer5:
+  - rscadd: Added the tarot card deck, loincloths, and Smoking Pipe to the loadout.
+  linnpap:
+  - bugfix: fixed peacoat and duster sprites so they aren't solid white
+  - bugfix: makes colorable leather jackets actually able to be colored
+2021-10-12:
+  Deek-Za:
+  - balance: Sergeant's hat has armor added.
+  - bugfix: Sergeant's hat is now visible on anthro races.
+  - bugfix: Added contents to SecMed's office first-aid kits on Icebox
+  ForrestWick:
+  - bugfix: Gave cargo ordered snowmobiles the correct path for keys.
+  SkyratBot:
+  - bugfix: Basic mobs can once again be vareditted
+  - bugfix: 'fixes unpowered space ruins actually being powered expansion: more secret
+      away mission stuff'
+  - refactor: Refactored monkey AI a bit, noticeable changes should be minimal!
+  - balance: Bluespace launchpad maximum range decreased from 60 to 40. Traitor launchpad
+      unaffected.
+  - balance: Bluespace launchpads will now give a visual indication of the turf they
+      are teleporting to/teleporting from as well as a noise notification. Does not
+      apply to traitor launchpads.
+  - balance: Bluespace launchpads will now show a beam that fades out between the
+      target turf and the launchpad after it has done the teleportation. Again, does
+      not apply to traitor launchpads.
+  - bugfix: Fixed two issues with paper code. Namely paper text being always colored
+      black outside of edit mode and signatures showing the current name and not the
+      real name.
+  jjpark-kb:
+  - bugfix: 'lavaland: bring back the xenoarch lab (was removed due to map reset)'
+  softcerv:
+  - bugfix: Hypovials now properly display their intended overlay texture, instead
+      of the chemical overlay textures from bottles.
+2021-10-13:
+  SkyratBot:
+  - bugfix: MMI components can't be no longer attached to modules. This was causing
+      race conditions with other MMI components present in the circuit (not much of
+      a good thing).
