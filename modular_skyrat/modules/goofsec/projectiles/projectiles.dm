@@ -18,6 +18,7 @@
 	light_system = NO_LIGHT_SUPPORT
 	light_range = 0
 	light_power = 0
+	damage_type = BRUTE // So they do brute damage but still hit laser armor!
 	sharpness = SHARP_POINTY
 	impact_effect_type = /obj/effect/temp_visual/impact_effect
 	shrapnel_type = /obj/item/shrapnel/bullet
