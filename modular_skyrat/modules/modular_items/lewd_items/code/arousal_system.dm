@@ -807,6 +807,8 @@
 		mob_type_allowed_typecache = null
 
 /datum/emote/living/cum/run_emote(mob/living/user, params, type_override, intentional)
+	if (!check_config())
+		return
 	. = ..()
 	if(!.)
 		return
