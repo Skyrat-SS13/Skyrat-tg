@@ -38,16 +38,11 @@
 
 		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
-		if(do_after(user, 1 MINUTES, target_human))
+		if(do_after(user, 30 SECONDS, target_human))
 			target_human.hairstyle = hair_id
 			target_human.update_hair()
 			balloon_alert_to_viewers("[user] successfully cuts [target_human]'s hair!")
 			new /obj/effect/decal/cleanable/hair(get_turf(src))
-		else
-			balloon_alert_to_viewers("[user] messes up [target_human]'s hair, cutting them!")
-			target_human.hairstyle = "Bedhead"
-			target_human.update_hair()
-			target_human.adjustBruteLoss(5)
 	else
 		if(!target_human.facial_hairstyle == "Shaved" && target_human.wear_mask)
 			balloon_alert(user, "They have no facial hair to cut!")
@@ -67,7 +62,3 @@
 			target_human.update_hair()
 			balloon_alert_to_viewers("[user] successfully cuts [target_human]'s facial hair!")
 			new /obj/effect/decal/cleanable/hair(get_turf(src))
-		else
-			balloon_alert_to_viewers("[user] messes up [target_human]'s facial hair, cutting them!")
-			target_human.adjustBruteLoss(5)
-
