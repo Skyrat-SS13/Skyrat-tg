@@ -480,6 +480,11 @@
 			handle_eye_contact(examinify)
 		else
 			result = examinify.examine_more(src)
+<<<<<<< HEAD
+=======
+			if(!length(result))
+				result += span_notice("<i>You examine [examinify] closer, but find nothing of interest...</i>")
+>>>>>>> e3ee130b073 (Fix double examine showing the examiner when nothing of interest was found (#62053))
 	else
 		result = examinify.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
