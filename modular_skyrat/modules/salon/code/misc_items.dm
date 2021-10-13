@@ -64,6 +64,7 @@
 	// A simple GUI with a list of hairstyles and a view, so people can choose a hairstyle!
 
 /obj/effect/decal/cleanable/hair
+	name = "hair cuttings"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "cut_hair"
 

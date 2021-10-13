@@ -36,13 +36,13 @@
 
 		to_chat(user, span_notice("You begin to masterfully sculpt [target_human]'s hair!"))
 
-		playsound(src, 'modular_skyrat/modules/salon/sound/haircut.ogg')
+		playsound(target_human, 'modular_skyrat/modules/salon/sound/haircut.ogg', 100)
 
 		if(do_after(user, 1 MINUTES, target_human))
 			target_human.hairstyle = hair_id
 			target_human.update_hair()
 			balloon_alert_to_viewers("[user] successfully cuts [target_human]'s hair!")
-			new /obj/effect/decal/cleanable/hair(src.loc)
+			new /obj/effect/decal/cleanable/hair(get_turf(src))
 		else
 			balloon_alert_to_viewers("[user] messes up [target_human]'s hair, cutting them!")
 			target_human.hairstyle = "Bedhead"
@@ -66,7 +66,7 @@
 			target_human.facial_hairstyle = facial_hair_id
 			target_human.update_hair()
 			balloon_alert_to_viewers("[user] successfully cuts [target_human]'s facial hair!")
-			new /obj/effect/decal/cleanable/hair(src.loc)
+			new /obj/effect/decal/cleanable/hair(get_turf(src))
 		else
 			balloon_alert_to_viewers("[user] messes up [target_human]'s facial hair, cutting them!")
 			target_human.adjustBruteLoss(5)
