@@ -611,8 +611,8 @@
  */
 
 /obj/structure/table/optable//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-	name = "operating table"
-	desc = "Used for advanced medical procedures."
+	name = "stasis operating table" // SKYRAT EDIT name = "operating table"
+	desc = "Used for advanced medical procedures. Now comes with built in stasis technology, patented by Cinco: A Family Company!" // SKYRAT EDIT desc = "Used for advanced medical procedures."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "optable"
 	buildstack = /obj/item/stack/sheet/mineral/silver
@@ -620,8 +620,8 @@
 	smoothing_groups = null
 	canSmoothWith = null
 	can_buckle = 1
-	buckle_lying = NO_BUCKLE_LYING
-	buckle_requires_restraints = TRUE
+	buckle_lying = 90 // SKYRAT EDIT old: NO_BUCKLE_LYING
+	buckle_requires_restraints = FALSE // SKYRAT EDIT old: TRUE
 	custom_materials = list(/datum/material/silver = 2000)
 	var/mob/living/carbon/human/patient = null
 	var/obj/machinery/computer/operating/computer = null
@@ -672,6 +672,26 @@
 		return TRUE
 	return FALSE
 
+///SKYRAT EDIT: Operating Tables now provide Stasis
+/obj/structure/table/optable/proc/chill_out(mob/living/target)
+	var/freq = rand(24750, 26550)
+	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 2, frequency = freq)
+	target.apply_status_effect(STATUS_EFFECT_STASIS, STASIS_MACHINE_EFFECT)
+	ADD_TRAIT(target, TRAIT_TUMOR_SUPPRESSED, TRAIT_GENERIC)
+	target.extinguish_mob()
+
+/obj/structure/table/optable/proc/thaw_them(mob/living/target)
+	target.remove_status_effect(STATUS_EFFECT_STASIS, STASIS_MACHINE_EFFECT)
+	REMOVE_TRAIT(target, TRAIT_TUMOR_SUPPRESSED, TRAIT_GENERIC)
+
+/obj/structure/table/optable/post_buckle_mob(mob/living/L)
+	set_patient(L)
+	chill_out(L)
+
+/obj/structure/table/optable/post_unbuckle_mob(mob/living/L)
+	set_patient(null)
+	thaw_them(L)
+///SKYRAT EDIT END
 /*
  * Racks
  */
