@@ -64,7 +64,6 @@
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	var/sound_volume = 25 //Emote volume
 	var/list/allowed_species
-	var/check_configs = FALSE
 	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()

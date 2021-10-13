@@ -359,6 +359,8 @@
 	timeout = 10 MINUTES
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	var/obj/item/organ/genital/penis = getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/vagina = getorganslot(ORGAN_SLOT_VAGINA)
 	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
@@ -797,14 +799,14 @@
 	key = "cum"
 	key_third_person = "cums"
 	cooldown = 30 SECONDS
-	check_configs = TRUE
 
 /datum/emote/living/cum/check_config()
 	return !CONFIG_GET(flag/disable_erp_preferences)
 
-/datum/emote/living/cum/New()
+/datum/emote/living/cum/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
 	if (!check_config())
-		mob_type_allowed_typecache = null
+		return FALSE
+	. = ..()
 
 /datum/emote/living/cum/run_emote(mob/living/user, params, type_override, intentional)
 	if (!check_config())
@@ -841,6 +843,8 @@
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
 
 /obj/item/coom/attack(mob/living/M, mob/user, proximity)
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	if(!proximity)
 		return
 	if(!ishuman(M))
@@ -885,6 +889,8 @@
 //jerk off into bottles
 /obj/item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	if(!proximity)
 		return
 	if(ishuman(target))
