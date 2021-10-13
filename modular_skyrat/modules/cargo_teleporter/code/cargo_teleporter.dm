@@ -35,7 +35,6 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 /obj/item/cargo_teleporter/AltClick(mob/user)
 	if(length(marker_children))
 		for(var/obj/effect/decal/cleanable/cargo_mark/destroy_children in marker_children)
-			destroy_children.parent_item = null
 			qdel(destroy_children)
 
 /obj/item/cargo_teleporter/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
