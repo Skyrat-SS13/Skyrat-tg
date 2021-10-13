@@ -113,6 +113,8 @@
 	var/helmettype = /obj/item/clothing/head/helmet/space/hardsuit
 	var/obj/item/tank/jetpack/suit/jetpack = null
 	var/hardsuit_type
+	/// Whether the helmet is on.
+	var/helmet_on = FALSE
 
 	var/list/hardsuit_tail_colors			//SKYRAT EDIT ADDITION - CUSTOMIZATION
 
