@@ -1231,3 +1231,8 @@
   softcerv:
   - bugfix: Hypovials now properly display their intended overlay texture, instead
       of the chemical overlay textures from bottles.
+2021-10-13:
+  SkyratBot:
+  - bugfix: MMI components can't be no longer attached to modules. This was causing
+      race conditions with other MMI components present in the circuit (not much of
+      a good thing).
