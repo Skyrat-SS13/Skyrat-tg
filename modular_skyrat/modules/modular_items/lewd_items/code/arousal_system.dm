@@ -800,7 +800,7 @@
 	check_configs = TRUE
 
 /datum/emote/living/cum/check_config()
-	return !!CONFIG_GET(flag/disable_erp_preferences)
+	return !CONFIG_GET(flag/disable_erp_preferences)
 
 /datum/emote/living/cum/New()
 	if (!check_config())
