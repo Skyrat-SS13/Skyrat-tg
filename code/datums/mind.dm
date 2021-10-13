@@ -36,7 +36,10 @@
 	var/mob/living/current
 	var/active = FALSE
 
-	var/memory
+	///a list of /datum/memories. assoc type of memory = memory datum. only one type of memory will be stored, new ones of the same type overriding the last.
+	var/list/memories = list()
+	///reference to the memory panel tgui
+	var/datum/memory_panel/memory_panel
 
 	/// Job datum indicating the mind's role. This should always exist after initialization, as a reference to a singleton.
 	var/datum/job/assigned_role
@@ -99,6 +102,8 @@
 
 /datum/mind/Destroy()
 	SSticker.minds -= src
+	QDEL_LIST(memories)
+	QDEL_NULL(memory_panel)
 	QDEL_LIST(antag_datums)
 	QDEL_NULL(language_holder)
 	set_current(null)
@@ -256,26 +261,17 @@
 	if(!length(shown_skills))
 		to_chat(user, span_notice("You don't seem to have any particularly outstanding skills."))
 		return
-	var/msg = "[span_info("*---------*\n<EM>Your skills</EM>")]\n<span class='notice'>"
+	var/msg = "[span_info("<EM>Your skills</EM>")]\n<span class='notice'><hr>" //SKYRAT EDIT CHANGE
 	for(var/i in shown_skills)
 		var/datum/skill/the_skill = i
 		msg += "[initial(the_skill.name)] - [get_skill_level_name(the_skill)]\n"
 	msg += "</span>"
-	to_chat(user, msg)
+	to_chat(user, examine_block(msg)) //SKYRAT EDIT CHANGE
 
 /datum/mind/proc/set_death_time()
 	SIGNAL_HANDLER
 
 	last_death = world.time
-
-/datum/mind/proc/store_memory(new_text)
-	var/newlength = length_char(memory) + length_char(new_text)
-	if (newlength > MAX_MESSAGE_LEN * 100)
-		memory = copytext_char(memory, -newlength-MAX_MESSAGE_LEN * 100)
-	memory += "[new_text]<BR>"
-
-/datum/mind/proc/wipe_memory()
-	memory = null
 
 // Datum antag mind procs
 /datum/mind/proc/add_antag_datum(datum_type_or_instance, team)
@@ -407,7 +403,7 @@
 		return
 	//SKYRAT EDIT ADDITION END
 
-	var/list/all_contents = traitor_mob.GetAllContents()
+	var/list/all_contents = traitor_mob.get_all_contents()
 	var/obj/item/pda/PDA = locate() in all_contents
 	var/obj/item/radio/R = locate() in all_contents
 	var/obj/item/pen/P
@@ -420,24 +416,24 @@
 	var/obj/item/uplink_loc
 	var/implant = FALSE
 
-	if(traitor_mob.client && traitor_mob.client.prefs)
-		switch(traitor_mob.client.prefs.uplink_spawn_loc)
-			if(UPLINK_PDA)
-				uplink_loc = PDA
-				if(!uplink_loc)
-					uplink_loc = R
-				if(!uplink_loc)
-					uplink_loc = P
-			if(UPLINK_RADIO)
+	var/uplink_spawn_location = traitor_mob.client?.prefs?.read_preference(/datum/preference/choiced/uplink_location)
+	switch (uplink_spawn_location)
+		if(UPLINK_PDA)
+			uplink_loc = PDA
+			if(!uplink_loc)
 				uplink_loc = R
-				if(!uplink_loc)
-					uplink_loc = PDA
-				if(!uplink_loc)
-					uplink_loc = P
-			if(UPLINK_PEN)
+			if(!uplink_loc)
 				uplink_loc = P
-			if(UPLINK_IMPLANT)
-				implant = TRUE
+		if(UPLINK_RADIO)
+			uplink_loc = R
+			if(!uplink_loc)
+				uplink_loc = PDA
+			if(!uplink_loc)
+				uplink_loc = P
+		if(UPLINK_PEN)
+			uplink_loc = P
+		if(UPLINK_IMPLANT)
+			implant = TRUE
 
 	if(!uplink_loc) // We've looked everywhere, let's just implant you
 		implant = TRUE
@@ -464,9 +460,6 @@
 	new_uplink.unlock_text = unlock_text
 	if(!silent)
 		to_chat(traitor_mob, span_boldnotice(unlock_text))
-	if(!antag_datum)
-		traitor_mob.mind.store_memory(new_uplink.unlock_note)
-		return
 	antag_datum.antag_memory += new_uplink.unlock_note + "<br>"
 
 
@@ -496,35 +489,6 @@
 		message_admins("[ADMIN_LOOKUPFLW(current)] has been created by [ADMIN_LOOKUPFLW(creator)], an antagonist.")
 		to_chat(current, span_userdanger("Despite your creator's current allegiances, your true master remains [creator.real_name]. If their loyalties change, so do yours. This will never change unless your creator's body is destroyed."))
 
-/datum/mind/proc/show_memory(mob/recipient, window=1)
-	if(!recipient)
-		recipient = current
-	var/output = "<B>[current.real_name]'s Memories:</B><br>"
-	output += memory
-
-
-	var/list/all_objectives = list()
-	for(var/datum/antagonist/A in antag_datums)
-		output += A.antag_memory
-		all_objectives |= A.objectives
-
-	if(all_objectives.len)
-		output += "<B>Objectives:</B>"
-		var/obj_count = 1
-		for(var/datum/objective/objective in all_objectives)
-			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
-			var/list/datum/mind/other_owners = objective.get_owners() - src
-			if(other_owners.len)
-				output += "<ul>"
-				for(var/datum/mind/M in other_owners)
-					output += "<li>Conspirator: [M.name]</li>"
-				output += "</ul>"
-
-	if(window)
-		recipient << browse(output,"window=memory")
-	else if(all_objectives.len || memory)
-		to_chat(recipient, "<span class='infoplain'><i>[output]</i></span>")
-
 /datum/mind/Topic(href, href_list)
 	if(!check_rights(R_ADMIN))
 		return
@@ -549,12 +513,6 @@
 			to_chat(usr, span_warning("Job not found."))
 			return
 		set_assigned_role(new_job)
-
-	else if (href_list["memory_edit"])
-		var/new_memo = stripped_multiline_input(usr, "Write new memory", "Memory", memory, MAX_MESSAGE_LEN)
-		if (isnull(new_memo))
-			return
-		memory = new_memo
 
 	else if (href_list["obj_edit"] || href_list["obj_add"])
 		var/objective_pos //Edited objectives need to keep same order in antag objective list
@@ -679,7 +637,7 @@
 					current.dropItemToGround(W, TRUE) //The TRUE forces all items to drop, since this is an admin undress.
 			if("takeuplink")
 				take_uplink()
-				memory = null//Remove any memory they may have had.
+				wipe_memory()//Remove any memory they may have had.
 				log_admin("[key_name(usr)] removed [current]'s uplink.")
 			if("crystals")
 				if(check_rights(R_FUN, 0))
@@ -727,7 +685,7 @@
 		obj_count++
 
 /datum/mind/proc/find_syndicate_uplink(check_unlocked)
-	var/list/L = current.GetAllContents()
+	var/list/L = current.get_all_contents()
 	for (var/i in L)
 		var/atom/movable/I = i
 		var/datum/component/uplink/found_uplink = I.GetComponent(/datum/component/uplink)

@@ -31,6 +31,16 @@
 
 	family_heirlooms = list(/obj/item/clothing/neck/stethoscope, /obj/item/roller, /obj/item/book/manual/wiki/security_space_law)
 
+	//This is the paramedic goodie list. Secmedics are paramedics more or less so they can use these instead of raiding medbay.
+	mail_goodies = list(
+		/obj/item/reagent_containers/hypospray/medipen = 20,
+		/obj/item/reagent_containers/hypospray/medipen/oxandrolone = 10,
+		/obj/item/reagent_containers/hypospray/medipen/salacid = 10,
+		/obj/item/reagent_containers/hypospray/medipen/salbutamol = 10,
+		/obj/item/reagent_containers/hypospray/medipen/penacid = 10,
+		/obj/item/reagent_containers/hypospray/medipen/survival/luxury = 5
+	)
+	rpg_title = "Battle Cleric"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
@@ -52,7 +62,7 @@
 	l_hand = /obj/item/storage/firstaid/brute
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/security_medic)
+	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/security_medic)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper

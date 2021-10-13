@@ -79,7 +79,7 @@
 	var/datum/action/toggle_scope_zoom/azoom
 	var/pb_knockback = 0
 
-/obj/item/gun/Initialize()
+/obj/item/gun/Initialize(mapload)
 	. = ..()
 	if(pin)
 		pin = new pin(src)
@@ -407,7 +407,7 @@
 			return ..()
 	return
 
-/obj/item/gun/attack_obj(obj/O, mob/living/user, params)
+/obj/item/gun/attack_atom(obj/O, mob/living/user, params)
 	if(user.combat_mode)
 		if(bayonet)
 			O.attackby(bayonet, user)

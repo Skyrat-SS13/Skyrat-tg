@@ -138,3 +138,53 @@
 	suffix = "wreckedhomestead.dmm"
 	name = "NTSS Homestead"
 	description = "A wrecked ship."
+
+/datum/map_template/ruin/space/medieval1
+	id = "medieval1"
+	suffix = "medieval1.dmm"
+	name = "Medieval 1"
+	description = "A forgotten peice of history left overrun with a reminder of what brought its destruction"
+
+/datum/map_template/ruin/space/cargodiselost
+	id = "CargodiseLost"
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "cargodiselost.dmm"
+	name = "Cargodise Lost"
+	description = "A small crew of freight-haulers are marooned in space after pirates knock out their engines. They must survive off of the cargo on board their ship and fend off the pirate boarders on their ship."
+
+/datum/map_template/ruin/space/infestedntship
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "scrapheap.dmm"
+	name = "NT Research Vessel"
+	description = "A zombie-infested NT ship, seemingly dedicated to medical research."
+
+/datum/map_template/ruin/space/piratefort
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "piratefort.dmm"
+	name = "Pirate Fort"
+	description = "A pirate hideout in deep space."
+
+/datum/map_template/ruin/space/syndibase
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "syndibase.dmm"
+	name = "Syndicate Outpost"
+	description = "A Syndicate research outpost in deep space."
+
+/datum/map_template/ruin/space/crash
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "crash.dmm"
+	name = "Crashed Boat"
+	description = "A small ferry crashed into an asteroid."
+
+/datum/map_template/ruin/space/shuttlescrap
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "shuttlescrap.dmm"
+	name = "Broken Shuttle"
+	description = "A small shuttle that clearly got clipped by something."
+
+/datum/map_template/ruin/space/gorilla
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "gorilla.dmm"
+	name = "Gorilla"
+	description = "There is no need to be upset."
+

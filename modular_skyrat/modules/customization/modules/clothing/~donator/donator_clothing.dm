@@ -454,7 +454,7 @@
 			visible_message(span_warning("[crusher] steps on the [src], crushing it with ease."))
 			take_damage(200, sound_effect = FALSE)
 
-/obj/item/clothing/mask/kindle/obj_destruction(damage_flag)
+/obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
 	. = ..()
 	name = "broken mask of Kindle"
 	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
@@ -970,3 +970,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "blueshield"
+
+// Donation reward for DeltaTri
+/obj/item/clothing/suit/jacket/delta
+	name = "grey winter hoodie"
+	desc = "A plain old grey hoodie. It has some puffing on the inside, and a animal fur trim around half of the hood."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "greycoat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT

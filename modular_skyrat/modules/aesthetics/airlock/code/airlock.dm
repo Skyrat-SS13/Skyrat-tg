@@ -46,7 +46,7 @@
 
 /obj/effect/overlay/vis_airlock
 	layer = 0
-	plane = EMISSIVE_PLANE
+	plane = 200
 	vis_flags = VIS_INHERIT_ID
 
 /obj/machinery/door/airlock/Destroy()
@@ -141,12 +141,12 @@
 
 	if(hasPower())
 		if(frame_state == AIRLOCK_FRAME_CLOSED)
-			if(obj_integrity < integrity_failure * max_integrity)
+			if(atom_integrity < integrity_failure * max_integrity)
 				. += get_airlock_overlay("sparks_broken", overlays_file, em_block = FALSE)
-			else if(obj_integrity < (0.75 * max_integrity))
+			else if(atom_integrity < (0.75 * max_integrity))
 				. += get_airlock_overlay("sparks_damaged", overlays_file, em_block = FALSE)
 		else if(frame_state == AIRLOCK_FRAME_OPEN)
-			if(obj_integrity < (0.75 * max_integrity))
+			if(atom_integrity < (0.75 * max_integrity))
 				. += get_airlock_overlay("sparks_open", overlays_file, em_block = FALSE)
 
 	if(note)

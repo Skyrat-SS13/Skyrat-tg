@@ -50,7 +50,7 @@
 		return
 	if(!radial_based)
 		var/ghost_role = tgui_alert(usr, "Become [mob_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
-		if(ghost_role == "No" || !loc || QDELETED(user))
+		if(ghost_role != "Yes" || !loc || QDELETED(user))
 			return
 	//SKYRAT EDIT ADDITION BEGIN
 	if(!extra_prompts(user))
@@ -89,7 +89,7 @@
 	if(instant || (roundstart && (mapload || (SSticker && SSticker.current_state > GAME_STATE_SETTING_UP))))
 		INVOKE_ASYNC(src, .proc/create)
 	else if(ghost_usable)
-		AddElement(/datum/element/point_of_interest)
+		SSpoints_of_interest.make_point_of_interest(src)
 		LAZYADD(GLOB.mob_spawners[name], src)
 
 /obj/effect/mob_spawn/Destroy()
@@ -241,7 +241,7 @@
 		var/initial_string = "Would you like to spawn as a randomly created character, or use the one currently selected in your preferences?"
 		var/action = tgui_alert(user, initial_string, "", list("Use Random Character", "Use Character From Preferences"))
 		if(action && action == "Use Character From Preferences")
-			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
+			var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs?.read_preference(/datum/preference/name/real_name)])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.(ie. intern in Space Hotel)\nUSING STATION CHARACTERS FOR SYNDICATE OR HOSTILE ROLES IS PROHIBITED WILL GET YOU BANNED!\nConsider making a character dedicated to the role.\nDo you wanna proceed?"
 			var/action2 = tgui_alert(user, warning_string, "", list("Yes", "No"))
 			if(action2 && action2 == "Yes")
 				is_pref_char = TRUE
@@ -257,7 +257,8 @@
 			chosen_alias = msg
 
 	if(is_pref_char)
-		if(!any_station_species && user.client.prefs.pref_species.type != mob_species)
+		var/species_type = user.client.prefs.read_preference(/datum/preference/choiced/species)
+		if(!any_station_species && species_type != mob_species)
 			alert(user, "Sorry, This spawner is limited to those species: [mob_species]. Please switch your character.", "", "Ok")
 			return FALSE
 
@@ -281,8 +282,8 @@
 		H.dna.species.pre_equip_species_outfit(null, H)
 		H.regenerate_icons()
 		SSquirks.AssignQuirks(H, user.client, TRUE, TRUE, null, FALSE, H)
-		user.client.prefs.equip_preference_loadout(H, FALSE, blacklist = list(ITEM_SLOT_EARS,ITEM_SLOT_BELT,ITEM_SLOT_ID,ITEM_SLOT_BACK,ITEM_SLOT_ICLOTHING,ITEM_SLOT_BACK,ITEM_SLOT_OCLOTHING,ITEM_SLOT_GLOVES,ITEM_SLOT_FEET,ITEM_SLOT_HEAD,ITEM_SLOT_MASK,ITEM_SLOT_NECK,ITEM_SLOT_EYES,ITEM_SLOT_SUITSTORE,ITEM_SLOT_LPOCKET,ITEM_SLOT_RPOCKET)) //There has to be a better way to do this, this is utter bloat.
-		user.client.prefs.add_packed_items(H, null, FALSE)
+		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client?.prefs?.loadout_list))
+			item.post_equip_item(H.client?.prefs, H)
 	else
 		if(!random || newname)
 			if(newname)
@@ -315,7 +316,7 @@
 	return H
 //SKYRAT EDIT ADDITION END
 
-/obj/effect/mob_spawn/human/Initialize()
+/obj/effect/mob_spawn/human/Initialize(mapload)
 	if(ispath(outfit))
 		outfit = new outfit()
 	if(!outfit)

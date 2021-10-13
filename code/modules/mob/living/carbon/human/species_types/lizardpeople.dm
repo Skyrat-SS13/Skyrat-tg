@@ -3,7 +3,7 @@
 	name = "Lizardperson"
 	id = SPECIES_LIZARD
 	say_mod = "hisses"
-	default_color = "00FF00"
+	default_color = COLOR_VIBRANT_LIME
 	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
@@ -11,10 +11,12 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
-	mutant_bodyparts = list("tail_lizard" = "Smooth", "snout" = "Round", "horns" = "None",
-						"frills" = "None", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
+	mutant_bodyparts = list("tail_lizard" = "Smooth", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
+	external_organs = list(/obj/item/organ/external/horns = "None",
+		/obj/item/organ/external/frills = "None",
+		/obj/item/organ/external/snout = "Round")
 	mutanttongue = /obj/item/organ/tongue/lizard
-	//mutant_organs = list(/obj/item/organ/tail/lizard) //SKYRAT EDIT REMOVAL - CUSTOMIZATION
+	mutant_organs = list(/obj/item/organ/tail/lizard)
 	coldmod = 1.5
 	heatmod = 0.67
 	payday_modifier = 0.75
@@ -27,7 +29,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
 	exotic_bloodtype = "L"
 	disliked_food = GRAIN | DAIRY | CLOTH
-	liked_food = GROSS | MEAT
+	liked_food = GROSS | MEAT | SEAFOOD
 	inert_mutation = FIREBREATH
 	deathsound = 'sound/voice/lizard/deathsound.ogg'
 	wings_icons = list("Dragon")

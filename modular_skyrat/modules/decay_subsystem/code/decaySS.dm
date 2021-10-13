@@ -34,10 +34,20 @@ SUBSYSTEM_DEF(decay)
 		)
 
 /datum/controller/subsystem/decay/Initialize()
+	if(CONFIG_GET(flag/ssdecay_disabled))
+		message_admins("SSDecay was disabled in config.")
+		log_world("SSDecay was disabled in config.")
+		return ..()
+	// Putting this first so that it just doesn't waste time iterating through everything if it's not going to do anything anyway.
+	if(prob(50))
+		message_admins("SSDecay will not interact with this round.")
+		log_world("SSDecay will not interact with this round.")
+		return ..()
+
 	for(var/turf/iterating_turf in world)
 		if(!is_station_level(iterating_turf.z))
 			continue
-		if(istype(iterating_turf, /turf/open/floor/plating/asteroid/snow))
+		if(!(iterating_turf.turf_flags & CAN_BE_DIRTY_1))
 			continue
 		possible_turfs += iterating_turf
 
@@ -49,13 +59,10 @@ SUBSYSTEM_DEF(decay)
 	if(!possible_turfs)
 		CRASH("SSDecay had no possible turfs to use!")
 
-	if(prob(50))
-		message_admins("SSDecay will not interact with this round.")
-		return ..()
-
 	severity_modifier = rand(1, 4)
 
 	message_admins("SSDecay severity modifier set to [severity_modifier]")
+	log_world("SSDecay severity modifier set to [severity_modifier]")
 
 	do_common()
 
@@ -69,7 +76,7 @@ SUBSYSTEM_DEF(decay)
 
 /datum/controller/subsystem/decay/proc/do_common()
 	for(var/turf/open/floor/iterating_floor in possible_turfs)
-		if(!istype(iterating_floor, /turf/open/floor/plating))
+		if(iterating_floor.turf_flags & CAN_DECAY_BREAK_1)
 			if(prob(FLOOR_TILE_MISSING_PERCENT_CHANCE * severity_modifier) && prob(60))
 				iterating_floor.break_tile_to_plating()
 

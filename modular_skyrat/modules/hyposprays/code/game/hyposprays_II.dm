@@ -22,11 +22,11 @@
 	icon = 'modular_skyrat/modules/hyposprays/icons/hyposprays.dmi'
 	desc = "A new development from DeForest Medical, this hypospray takes 60-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
-	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/bottle/vial/small)
+	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/vial/small)
 	//Inject or spray?
 	var/mode = HYPO_INJECT
-	var/obj/item/reagent_containers/glass/bottle/vial/vial
-	var/start_vial = /obj/item/reagent_containers/glass/bottle/vial/small
+	var/obj/item/reagent_containers/glass/vial/vial
+	var/start_vial = /obj/item/reagent_containers/glass/vial/small
 	var/spawnwithvial = TRUE
 
 	//Time taken to inject others
@@ -41,15 +41,15 @@
 	//Can you hotswap vials? - now all hyposprays can!
 	var/quickload = TRUE
 	//Does it go through hardsuits?
-	var/penetrates = FALSE
+	var/penetrates = null
 
 /obj/item/hypospray/mkii/CMO
 	name = "hypospray mk.II deluxe"
-	allowed_containers = list(/obj/item/reagent_containers/glass/bottle/vial/small, /obj/item/reagent_containers/glass/bottle/vial/large)
+	allowed_containers = list(/obj/item/reagent_containers/glass/vial/small, /obj/item/reagent_containers/glass/vial/large)
 	icon_state = "cmo2"
 	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/large/deluxe
+	start_vial = /obj/item/reagent_containers/glass/vial/large/deluxe
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_SPRAY
@@ -71,7 +71,7 @@
 	if(!vial.reagents.total_volume)
 		return
 	var/vial_spritetype = "chem-color"
-	if(/obj/item/reagent_containers/glass/bottle/vial/large in allowed_containers)
+	if(/obj/item/reagent_containers/glass/vial/large in allowed_containers)
 		vial_spritetype += "-cmo"
 	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
 	chem_loaded.color = vial.chem_color
@@ -94,8 +94,8 @@
 	. += "[src] is set to [mode ? "Inject" : "Spray"] contents on application."
 
 /obj/item/hypospray/mkii/proc/unload_hypo(obj/item/hypo, mob/user)
-	if((istype(hypo, /obj/item/reagent_containers/glass/bottle/vial)))
-		var/obj/item/reagent_containers/glass/bottle/vial/container = hypo
+	if((istype(hypo, /obj/item/reagent_containers/glass/vial)))
+		var/obj/item/reagent_containers/glass/vial/container = hypo
 		container.forceMove(user.loc)
 		user.put_in_hands(container)
 		to_chat(user, span_notice("You remove [vial] from [src]."))
@@ -107,12 +107,12 @@
 		return
 
 /obj/item/hypospray/mkii/proc/insert_vial(obj/item/new_vial, mob/living/user, obj/item/current_vial)
-	var/obj/item/reagent_containers/glass/bottle/vial/container = new_vial
+	var/obj/item/reagent_containers/glass/vial/container = new_vial
 	if(!is_type_in_list(container, allowed_containers))
 		to_chat(user, span_notice("[src] doesn't accept this type of vial."))
 		return FALSE
 	if(current_vial)
-		var/obj/item/reagent_containers/glass/bottle/vial/old_container = current_vial
+		var/obj/item/reagent_containers/glass/vial/old_container = current_vial
 		old_container.forceMove(drop_location())
 	if(!user.transferItemToLoc(container, src))
 		return FALSE
@@ -124,7 +124,7 @@
 		user.put_in_hands(current_vial)
 
 /obj/item/hypospray/mkii/attackby(obj/item/used_item, mob/living/user)
-	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial) && vial != null))
+	if((istype(used_item, /obj/item/reagent_containers/glass/vial) && vial != null))
 		if(!quickload)
 			to_chat(user, span_warning("[src] can not hold more than one vial!"))
 			return FALSE
@@ -132,7 +132,7 @@
 			insert_vial(used_item, user, vial)
 			return TRUE
 
-	if((istype(used_item, /obj/item/reagent_containers/glass/bottle/vial)))
+	if((istype(used_item, /obj/item/reagent_containers/glass/vial)))
 		insert_vial(used_item, user)
 		return TRUE
 
@@ -152,7 +152,7 @@
 	spray_wait = COMBAT_WAIT_SPRAY
 	spray_self = COMBAT_SELF_INJECT
 	inject_self = COMBAT_SELF_SPRAY
-	penetrates = TRUE
+	penetrates = INJECT_CHECK_PENETRATE_THICK
 	to_chat(user, "You overcharge [src]'s control circuit.")
 	obj_flags |= EMAGGED
 	return TRUE
@@ -164,7 +164,7 @@
 	return
 
 /obj/item/hypospray/mkii/afterattack(atom/target, mob/living/user, proximity)
-	if((istype(target, /obj/item/reagent_containers/glass/bottle/vial)))
+	if((istype(target, /obj/item/reagent_containers/glass/vial)))
 		insert_vial(target, user, vial)
 		return TRUE
 
@@ -172,7 +172,7 @@
 		return
 	var/mob/living/injectee = target
 
-	if(!injectee.reagents || !injectee.can_inject(user, TRUE, user.zone_selected, penetrates))
+	if(!injectee.reagents || !injectee.can_inject(user, user.zone_selected, penetrates))
 		return
 
 	if(iscarbon(injectee))
@@ -194,9 +194,9 @@
 	var/fp_verb = mode == HYPO_SPRAY ? "spray" : "inject"
 
 	if(injectee != user)
-		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!</span>"), \
-						span_userdanger("is trying to [fp_verb] you with [src]!"))
-	if(!do_mob(user, injectee, inject_wait, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, FALSE, user.zone_selected, penetrates)))
+		injectee.visible_message(span_danger("[user] is trying to [fp_verb] [injectee] with [src]!"), \
+						span_userdanger("[user] is trying to [fp_verb] you with [src]!"))
+	if(!do_mob(user, injectee, inject_wait, extra_checks = CALLBACK(injectee, /mob/living/proc/can_inject, user, user.zone_selected, penetrates)))
 		return
 	if(!vial.reagents.total_volume)
 		return
@@ -205,7 +205,7 @@
 		injectee.visible_message(span_danger("[user] uses the [src] on [injectee]!</span>"), \
 						span_userdanger("[user] uses the [src] on you!"))
 	else
-		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", INDIVIDUAL_ATTACK_LOG)
+		injectee.log_message("<font color='orange'>applied [src] to themselves ([contained]).</font>", LOG_ATTACK)
 
 	switch(mode)
 		if(HYPO_INJECT)

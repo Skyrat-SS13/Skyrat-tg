@@ -4,7 +4,6 @@
 GLOBAL_LIST_INIT(circuit_dupe_whitelisted_types, list(
 	PORT_TYPE_NUMBER,
 	PORT_TYPE_STRING,
-	PORT_TYPE_LIST,
 	PORT_TYPE_ANY,
 	PORT_TYPE_OPTION,
 ))
@@ -109,6 +108,8 @@ GLOBAL_LIST_INIT(circuit_dupe_whitelisted_types, list(
 
 				port.connect(output_port)
 
+	SEND_SIGNAL(src, COMSIG_CIRCUIT_POST_LOAD)
+
 #undef LOG_ERROR
 
 /// Converts a circuit into json.
@@ -180,6 +181,8 @@ GLOBAL_LIST_INIT(circuit_dupe_whitelisted_types, list(
 		new_data["datatype"] = variable.datatype
 		variables += list(new_data)
 	general_data["variables"] = variables
+
+	SEND_SIGNAL(src, COMSIG_CIRCUIT_PRE_SAVE_TO_JSON, general_data)
 
 	return json_encode(general_data)
 

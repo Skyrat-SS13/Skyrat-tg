@@ -1,7 +1,7 @@
 /datum/round_event_control/alien_infestation
 	name = "Alien Infestation"
 	typepath = /datum/round_event/ghost_role/alien_infestation
-	weight = 0 //SKYRAT EDIT CHANGE, ORIGINAL: 5
+	weight = 0 //SKYRAT EDIT CHANGE
 
 	min_players = 10
 
@@ -18,10 +18,8 @@
 
 /datum/round_event/ghost_role/alien_infestation
 	announceWhen = 400
-	//SKYRAT EDIT CHANGE BEGIN
-	//minimum_required = 1 - SKYRAT EDIT - ORIGINAL
-	minimum_required = 2
-	//SKYRAT EDIT CHANGE END
+
+	minimum_required = 1
 	role_name = "alien larva"
 
 	// 50% chance of being incremented by one
