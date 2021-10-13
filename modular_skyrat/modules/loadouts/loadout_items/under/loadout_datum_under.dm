@@ -790,3 +790,44 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/the_Q
 	name = "French Marshall's Uniform"
 	item_path = /obj/item/clothing/under/trek/q
+
+//FAMILIES GEAR
+/datum/loadout_item/under/formal/osi
+	name = "OSI Uniform"
+	item_path = /obj/item/clothing/under/costume/osi
+
+/datum/loadout_item/under/formal/tmc
+	name = "TMC Uniform"
+	item_path = /obj/item/clothing/under/costume/tmc
+
+/datum/loadout_item/under/formal/pg
+	name = "PG Uniform"
+	item_path = /obj/item/clothing/under/costume/pg
+
+/datum/loadout_item/under/formal/driscol
+	name = "Driscol Uniform"
+	item_path = /obj/item/clothing/under/costume/driscoll
+
+/datum/loadout_item/under/formal/deckers
+	name = "Deckers Uniform"
+	item_path = /obj/item/clothing/under/costume/deckers
+
+/datum/loadout_item/under/formal/morningstar
+	name = "Morningstar Uniform"
+	item_path = /obj/item/clothing/under/costume/morningstar
+
+/datum/loadout_item/under/formal/saints
+	name = "Saints Uniform"
+	item_path = /obj/item/clothing/under/costume/saints
+
+/datum/loadout_item/under/formal/phantom
+	name = "Phantom Uniform"
+	item_path = /obj/item/clothing/under/costume/phantom
+
+/datum/loadout_item/under/formal/sybil
+	name = "Sybil Uniform"
+	item_path = /obj/item/clothing/under/costume/sybil_slickers
+
+/datum/loadout_item/under/formal/basil
+	name = "Basil Uniform"
+	item_path = /obj/item/clothing/under/costume/basil_boys

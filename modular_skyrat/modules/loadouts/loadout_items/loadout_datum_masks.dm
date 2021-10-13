@@ -137,3 +137,8 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Sterile Mask"
 	item_path = /obj/item/clothing/mask/surgical
 	restricted_roles = list("Chief Medical Officer", "Medical Doctor", "Virologist", "Chemist", "Geneticist", "Paramedic", "Psychologist","Security Medic")
+
+//Families Gear
+/datum/loadout_item/mask/driscoll
+	name = "Driscoll Mask"
+	item_path = /obj/item/clothing/mask/gas/driscoll
