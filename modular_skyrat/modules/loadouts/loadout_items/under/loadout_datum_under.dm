@@ -746,3 +746,47 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/kimono_fancy
 	name = "Fancy Kimono"
 	item_path =  /obj/item/clothing/under/costume/kimono/fancy
+
+/datum/loadout_item/under/formal/trek
+	name = "Trekkie Uniform"
+	item_path = /obj/item/clothing/under/trek
+
+/datum/loadout_item/under/formal/trek_command
+	name = "Trekkie Command Uniform"
+	item_path = /obj/item/clothing/under/trek/command
+
+/datum/loadout_item/under/formal/trek_engsec
+	name = "Trekkie Engsec Uniform"
+	item_path = /obj/item/clothing/under/trek/engsec
+
+/datum/loadout_item/under/formal/trek_medsci
+	name = "Trekkie Medsci Uniform"
+	item_path = /obj/item/clothing/under/trek/medsci
+
+/datum/loadout_item/under/formal/trek_next_command
+	name = "Trekkie TNG Command Uniform"
+	item_path = /obj/item/clothing/under/trek/command/next
+
+/datum/loadout_item/under/formal/trek_next_engsec
+	name = "Trekkie TNG Engsec Uniform"
+	item_path = /obj/item/clothing/under/trek/engsec/next
+
+/datum/loadout_item/under/formal/trek_next_medsci
+	name = "Trekkie TNG Medsci Uniform"
+	item_path = /obj/item/clothing/under/trek/medsci/next
+
+/datum/loadout_item/under/formal/trek_ent_command
+	name = "Trekkie ENT Command Uniform"
+	item_path = /obj/item/clothing/under/trek/command/ent
+
+/datum/loadout_item/under/formal/trek_ent_engsec
+	name = "Trekkie ENT Engsec Uniform"
+	item_path = /obj/item/clothing/under/trek/engsec/ent
+
+/datum/loadout_item/under/formal/trek_ent_medsci
+	name = "Trekkie ENT Medsci Uniform"
+	item_path = /obj/item/clothing/under/trek/medsci/ent
+
+/datum/loadout_item/under/formal/the_Q
+	name = "French Marshall's Uniform"
+	item_path = /obj/item/clothing/under/trek/q
