@@ -799,10 +799,12 @@
 	cooldown = 30 SECONDS
 
 /datum/emote/living/cum/run_emote(mob/living/user, params, type_override, intentional)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		to_chat(user, span_warning("ERP is Disabled on this server"))
+		return
 	. = ..()
 	if(!.)
 		return
-
 
 	var/obj/item/coomer = new /obj/item/coom(user)
 	var/mob/living/carbon/human/H = user
