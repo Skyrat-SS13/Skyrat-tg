@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/spray/quantum_hair_dye
 	name = "quantum hair dye"
-	desc = "Changes hair colour! Don't forget to read the label!"
+	desc = "Changes hair colour RANDOMLY! Don't forget to read the label!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "hairspraywhite"
 	amount_per_transfer_from_this = 1
