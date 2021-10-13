@@ -16,6 +16,11 @@
 
 	return TRUE
 
+/datum/preference/toggle/master_erp_preferences/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+	. = ..()
+
 /datum/preference/toggle/erp
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_identifier = PREFERENCE_PLAYER
@@ -84,9 +89,9 @@
 
 /datum/preference/choiced/erp_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -114,9 +119,9 @@
 
 /datum/preference/choiced/erp_status_nc/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status_nc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -144,9 +149,9 @@
 
 /datum/preference/choiced/erp_status_v/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status_v/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
