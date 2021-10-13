@@ -21,7 +21,7 @@ export const flavor_text: Feature<string> = {
 };
 
 export const silicon_flavor_text: Feature<string> = {
-  name: "Silicon Flavor Text",
+  name: "Flavor Text (Silicon)",
   description: "Describe your cyborg/AI shell!",
   component: FeatureTextInput,
 };

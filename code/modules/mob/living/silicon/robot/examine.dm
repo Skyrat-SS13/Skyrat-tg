@@ -44,7 +44,7 @@
 		if(DEAD)
 			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
+	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=1'>Examine closely...</a>")
 	if(line)
 		. += line
 	if(client)

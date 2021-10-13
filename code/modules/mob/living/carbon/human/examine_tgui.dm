@@ -14,12 +14,15 @@
 
 /datum/examine_panel/ui_interact(mob/user, datum/tgui/ui)
 	if(!examine_panel_screen)
-		dummy_holder = generate_dummy_lookalike(REF(holder), holder)
-		var/datum/job/job_ref = SSjob.GetJob(holder.job)
-		if(job_ref && job_ref.outfit)
-			var/datum/outfit/outfit_ref = new()
-			outfit_ref.copy_outfit_from_target(holder)
-			outfit_ref.equip(dummy_holder, visualsOnly=TRUE)
+		if(ishuman(holder))
+			dummy_holder = generate_dummy_lookalike(REF(holder), holder)
+			var/datum/job/job_ref = SSjob.GetJob(holder.job)
+			if(job_ref && job_ref.outfit)
+				var/datum/outfit/outfit_ref = new()
+				outfit_ref.copy_outfit_from_target(holder)
+				outfit_ref.equip(dummy_holder, visualsOnly=TRUE)
+		else if(issilicon(holder)) 
+			dummy_holder = image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH) // this doesn't work and just shows a black screen, idk a solution though feel free to pitch in
 		examine_panel_screen = new
 		examine_panel_screen.vis_contents += dummy_holder
 		examine_panel_screen.name = "screen"
