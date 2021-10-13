@@ -83,11 +83,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/hos(src)
-<<<<<<< HEAD
-	// new /obj/item/clothing/suit/toggle/armor/hos/hos_formal(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-=======
-	new /obj/item/clothing/suit/armor/hos/hos_formal(src)
->>>>>>> 3a2d33afaa2 (Converts the behavior from `suit/toggle` to component behavior (#61941))
+	// new /obj/item/clothing/suit/armor/hos/hos_formal(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
