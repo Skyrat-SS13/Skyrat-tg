@@ -16,6 +16,11 @@
 
 	return TRUE
 
+/datum/preference/toggle/master_erp_preferences/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+	. = ..()
+
 /datum/preference/toggle/erp
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_identifier = PREFERENCE_PLAYER
