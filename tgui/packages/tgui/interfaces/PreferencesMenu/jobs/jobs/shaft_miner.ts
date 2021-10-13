@@ -6,6 +6,7 @@ const ShaftMiner: Job = {
   description: "Mine ores and process them into useful materials. \
     Kill hostile wildlife. Go on an adventure in mysterious ruins.",
   department: Cargo,
+  alt_titles: ["Shaft Miner", "Excavator"],
 };
 
 export default ShaftMiner;

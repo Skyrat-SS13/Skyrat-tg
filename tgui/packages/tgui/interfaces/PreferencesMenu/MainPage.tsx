@@ -13,7 +13,7 @@ import { filterMap, sortBy } from "common/collections";
 import { useRandomToggleState } from "./useRandomToggleState";
 
 const CLOTHING_CELL_SIZE = 48;
-const CLOTHING_SIDEBAR_ROWS = 9;
+const CLOTHING_SIDEBAR_ROWS = 13.4; // SKYRAT EDIT CHANGE - ORIGINAL:  9
 
 const CLOTHING_SELECTION_CELL_SIZE = 48;
 const CLOTHING_SELECTION_WIDTH = 5.4;
@@ -22,7 +22,6 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 const CharacterControls = (props: {
   handleRotate: () => void,
   handleOpenSpecies: () => void,
-  handleAdvancedPrefs: () => void, // SKYRAT EDIT ADDITION
   handleLoadout: () => void, // SKYRAT EDIT ADDITION
   gender: Gender,
   setGender: (gender: Gender) => void,
@@ -55,18 +54,6 @@ const CharacterControls = (props: {
           <GenderButton
             gender={props.gender}
             handleSetGender={props.setGender}
-          />
-        </Stack.Item>
-      )}
-      {props.handleAdvancedPrefs && (
-        // SKYRAT EDIT ADDITION
-        <Stack.Item>
-          <Button
-            onClick={props.handleAdvancedPrefs}
-            fontSize="22px"
-            icon="atom"
-            tooltip="Show Advanced Preferences"
-            tooltipPosition="top"
           />
         </Stack.Item>
       )}
@@ -525,10 +512,6 @@ export const MainPage = (props: {
                     handleRotate={() => {
                       act("rotate");
                     }}
-                    // SKYRAT EDIT ADDITION
-                    handleAdvancedPrefs={() => {
-                      act("open_advanced_prefs");
-                    }}
                     handleLoadout={() => {
                       act("open_loadout");
                     }}
@@ -542,13 +525,14 @@ export const MainPage = (props: {
 
                 <Stack.Item grow>
                   <CharacterPreview
-                    height="100%"
+                    height="80%" // SKYRAT EDIT - ORIGINAL: height="100%"
                     id={data.character_preview_view} />
                 </Stack.Item>
 
                 <Dropdown
                   // SKYRAT EDIT ADDITION
                   width="100%"
+                  position="relative"
                   selected={data.preview_selection}
                   options={data.preview_options}
                   onSelected={value => act('update_preview', {

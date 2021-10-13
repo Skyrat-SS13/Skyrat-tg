@@ -33,9 +33,13 @@
 /obj/effect/spawner/random/Initialize(mapload)
 	. = ..()
 
-	if(spawn_on_init)
+	if(should_spawn_on_init())
 		spawn_loot()
 		return INITIALIZE_HINT_QDEL
+
+/// Helper proc that returns TRUE if the spawner should spawn loot in Initialise() and FALSE otherwise. Override this to change spawning behaviour.
+/obj/effect/spawner/random/proc/should_spawn_on_init()
+	return spawn_on_init
 
 ///If the spawner has any loot defined, randomly picks some and spawns it. Does not cleanup the spawner.
 /obj/effect/spawner/random/proc/spawn_loot(lootcount_override)
@@ -110,7 +114,7 @@
 	var/list/spawned_table //list of all items "spawned" and how many
 	var/list/stat_table //list of all items "spawned" and their occurrance probability
 
-/obj/item/loot_table_maker/Initialize()
+/obj/item/loot_table_maker/Initialize(mapload)
 	. = ..()
 	make_table()
 

@@ -8383,6 +8383,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 9
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/service/hydroponics)
 "aJC" = (
@@ -16616,7 +16617,6 @@
 /turf/open/floor/iron,
 /area/cargo/storage)
 "bko" = (
-/obj/machinery/aug_manipulator,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
 /area/science/robotics/lab)
@@ -17399,7 +17399,7 @@
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
 "bmz" = (
-/obj/item/kirbyplants/random,
+/obj/machinery/vending/autodrobe/all_access,
 /turf/open/floor/iron/dark,
 /area/commons/fitness)
 "bmA" = (
@@ -20530,7 +20530,7 @@
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "buw" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating/icemoon,
 /area/engineering/atmos)
 "bux" = (
@@ -25436,7 +25436,9 @@
 /turf/open/floor/plating,
 /area/science/mixing)
 "bLk" = (
-/obj/machinery/mass_driver/ordnance,
+/obj/machinery/mass_driver/ordnance{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/science/mixing)
 "bLl" = (
@@ -28666,7 +28668,9 @@
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bXX" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output,
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/plasma_output{
+	dir = 8
+	},
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bXZ" = (
@@ -28948,7 +28952,9 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bYT" = (
-/obj/machinery/computer/atmos_control/tank/plasma_tank,
+/obj/machinery/computer/atmos_control/tank/plasma_tank{
+	dir = 8
+	},
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -29135,7 +29141,9 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "bZL" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input,
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/plasma_input{
+	dir = 8
+	},
 /turf/open/floor/engine/plasma,
 /area/engineering/atmos)
 "bZM" = (
@@ -31842,6 +31850,7 @@
 /area/maintenance/disposal/incinerator)
 "cou" = (
 /obj/machinery/power/apc/auto_name/south,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/science/cytology)
 "cow" = (
@@ -32024,7 +32033,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/engineering/main)
 "cqa" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible{
 	dir = 4
 	},
@@ -35062,14 +35071,12 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEv" = (
-/obj/machinery/power/rad_collector/anchored,
-/obj/structure/window/plasma/reinforced{
-	dir = 4
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 8
 	},
+/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEw" = (
@@ -35085,14 +35092,12 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEy" = (
-/obj/machinery/power/rad_collector/anchored,
-/obj/structure/window/plasma/reinforced{
-	dir = 8
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 4
 	},
+/obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cEz" = (
@@ -35186,14 +35191,12 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "cFe" = (
-/obj/machinery/power/rad_collector/anchored,
-/obj/structure/window/plasma/reinforced{
-	dir = 4
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 5
 	},
+/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cFf" = (
@@ -35204,14 +35207,12 @@
 	},
 /area/science/research)
 "cFh" = (
-/obj/machinery/power/rad_collector/anchored,
-/obj/structure/window/plasma/reinforced{
-	dir = 8
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
 	dir = 9
 	},
+/obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cFi" = (
@@ -35500,7 +35501,7 @@
 /turf/closed/wall/r_wall,
 /area/engineering/main)
 "cGE" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible{
 	dir = 10
 	},
@@ -35508,7 +35509,7 @@
 /area/engineering/main)
 "cGH" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden,
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/engineering/main)
 "cGI" = (
@@ -35521,7 +35522,7 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "cGK" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/engineering/main)
@@ -35908,7 +35909,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "cMm" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/engineering/main)
 "cMC" = (
@@ -35924,7 +35925,7 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "cMN" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/engineering/supermatter)
 "cMX" = (
@@ -37089,7 +37090,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/science/cytology)
 "dEC" = (
@@ -46666,6 +46666,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/maintenance/starboard)
+"mPH" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 4
+	},
+/obj/structure/window/reinforced/plasma/spawner/west,
+/obj/machinery/power/tesla_coil/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "mQo" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -54050,8 +54059,8 @@
 /turf/open/floor/iron,
 /area/command/heads_quarters/hop)
 "tQX" = (
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/obj/effect/spawner/structure/window/plasma/reinforced,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/engineering/main)
 "tRa" = (
@@ -54409,6 +54418,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/engineering/gravity_generator)
+"uij" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible{
+	dir = 8
+	},
+/obj/structure/window/reinforced/plasma/spawner/east,
+/obj/machinery/power/tesla_coil/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "uio" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
@@ -87577,7 +87595,7 @@ cqf
 cqD
 cMD
 crs
-cEv
+uij
 cEv
 cFe
 cMD
@@ -88605,7 +88623,7 @@ cqi
 cMD
 cAP
 crv
-cEy
+mPH
 cEy
 cFh
 cMD
@@ -107091,7 +107109,7 @@ dtw
 bQZ
 tKG
 gQT
-uHu
+ciD
 uHu
 pPT
 bhG

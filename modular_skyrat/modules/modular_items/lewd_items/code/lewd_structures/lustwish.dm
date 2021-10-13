@@ -14,6 +14,7 @@
 	//STUFF SOLD HERE//
 	products = list(//Sex toys
 					/obj/item/clothing/sextoy/signalvib = 8,
+					/obj/item/assembly/signaler = 8,
 					/obj/item/clothing/sextoy/eggvib = 8,
 					/obj/item/clothing/sextoy/buttplug = 6,
 					/obj/item/clothing/sextoy/nipple_clamps = 4,
@@ -32,8 +33,7 @@
 					/obj/item/clothing/sextoy/vibrator = 4,
 					/obj/item/serviette_pack = 10,
 					/obj/item/restraints/handcuffs/lewd = 8,
-					/obj/item/pillow = 24,
-					/obj/item/assembly/signaler = 8,
+					/obj/item/pillow = 32, //cmon, why there is always 0 pillows, where do you guys stuff it.
 
 					//clothing facial/head
 					/obj/item/clothing/mask/ballgag = 8,
@@ -58,12 +58,17 @@
 					//torso clothing
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
 					/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
-					/obj/item/clothing/suit/corset = 5,
 					/obj/item/clothing/under/costume/lewdmaid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 3,
 					/obj/item/clothing/under/stripper_outfit = 5,
 					/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
 					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
+					/obj/item/clothing/suit/corset = 5,
+					/obj/item/clothing/under/costume/lewdmaid = 5,
+					/obj/item/clothing/suit/straight_jacket/shackles = 4,
+					/obj/item/clothing/under/stripper_outfit = 5,
+					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
+					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
 					/obj/item/clothing/under/misc/gear_harness = 4,
 
 					//hands
@@ -81,8 +86,8 @@
 
 					//chems
 					/obj/item/reagent_containers/pill/crocin = 20,
-					/obj/item/reagent_containers/glass/bottle/crocin = 6,
 					/obj/item/reagent_containers/pill/camphor = 10,
+					/obj/item/reagent_containers/glass/bottle/crocin = 6,
 					/obj/item/reagent_containers/glass/bottle/camphor = 3,
 					/obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, //Those are legal 'cause you can just turn off prefs in round in "CLOWN SMOKE MACHINE+PENIS ENLARGEMENT CHEMICAL CASE". Yes, i have special code-phrase for this. I've seen some shit.
 					/obj/item/reagent_containers/glass/bottle/penis_enlarger = 6,
@@ -91,10 +96,10 @@
 					/obj/item/clothing/glasses/nice_goggles = 1, //easter egg, don't touch plz)
 
 					//fur niture //haha you got it
-					/obj/item/storage/box/bdsmbed_kit = 5,
-					/obj/item/storage/box/strippole_kit = 3,
+					/obj/item/storage/box/bdsmbed_kit = 4,
+					/obj/item/storage/box/strippole_kit = 4,
 					/obj/item/storage/box/xstand_kit = 4,
-					/obj/item/storage/box/milking_kit = 2)
+					/obj/item/storage/box/milking_kit = 4)
 
 	contraband = list(
 					/obj/item/electropack/shockcollar = 4,

@@ -594,6 +594,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(I.flags_inv & HIDEHAIR)
 			hair_hidden = TRUE
 
+	if(H.w_uniform)
+		var/obj/item/item_uniform = H.w_uniform
+		if(isclothing(item_uniform))
+			var/obj/item/clothing/clothing_object = item_uniform
+			dynamic_hair_suffix = clothing_object.dynamic_hair_suffix
+		if(item_uniform.flags_inv & HIDEHAIR)
+			hair_hidden = TRUE
+
 	if(H.wear_mask)
 		var/obj/item/I = H.wear_mask
 		if(!dynamic_hair_suffix && isclothing(I)) //head > mask in terms of head hair
@@ -2127,10 +2135,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	else
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
 	*/
+	//SKYRAT EDIT TAIL TRAUMA BEGIN
+	/* Temporarily disabling until fixed upon player spawm
 	if(tail_owner.dna.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] == mutant_bodyparts["tail"][MUTANT_INDEX_NAME]) //mutant_bodyparts["tail"] should exist here
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "right_tail_regained", /datum/mood_event/tail_regained_right)
 	else
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
+	*/
+	//SKYRAT EDIT TAIL TRAUMA END
 	//SKYRAT EDIT CHANGE END
 
 /*

@@ -6,6 +6,7 @@ const Lawyer: Job = {
   description: "Advocate for prisoners, create law-binding contracts, \
     ensure Security is following protocol and Space Law.",
   department: Security,
+  alt_titles: ["Lawyer", "Internal Affairs Agent", "Human Resources Agent"],
 };
 
 export default Lawyer;

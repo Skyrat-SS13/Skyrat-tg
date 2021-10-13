@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/inhand
 	category = LOADOUT_ITEM_INHAND
 
-/datum/loadout_item/inhand/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
+/datum/loadout_item/inhand/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
 	if(outfit.l_hand && !outfit.r_hand)
 		outfit.r_hand = item_path
 	else
@@ -49,3 +49,6 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/inhand/cane
 	name = "Cane"
 	item_path = /obj/item/cane
+/datum/loadout_item/inhand/smokingpipe
+	name = "Smoking Pipe"
+	item_path = /obj/item/clothing/mask/cigarette/pipe

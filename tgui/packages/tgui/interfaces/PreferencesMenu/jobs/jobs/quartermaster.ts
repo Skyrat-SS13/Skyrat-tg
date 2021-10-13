@@ -6,6 +6,7 @@ const Quartermaster: Job = {
   description: "Coordinate cargo technicians and shaft miners, assist with \
     economical purchasing.",
   department: Cargo,
+  alt_titles: ["Quartermaster", "Deck Chief", "Cargo Foreman"],
 };
 
 export default Quartermaster;
