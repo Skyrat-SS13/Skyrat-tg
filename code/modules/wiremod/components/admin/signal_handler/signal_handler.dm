@@ -68,7 +68,7 @@
 	unregister_all = add_input_port("Unregister All", PORT_TYPE_SIGNAL, order = 2, trigger = .proc/unregister_signals_all)
 
 	add_source_entity()
-	event_triggered = add_output_port("Triggered", PORT_TYPE_SIGNAL, order = 2)
+	event_triggered = add_output_port("Triggered", PORT_TYPE_INSTANT_SIGNAL, order = 2)
 
 /obj/item/circuit_component/signal_handler/proc/add_source_entity()
 	if(target)
@@ -146,11 +146,7 @@
 	signal_ports = ports_to_load
 	for(var/list/data in signal_ports)
 		if(data["is_response"])
-<<<<<<< HEAD
-			var/datum/port/input/bitflag_input = add_input_port(data["name"], PORT_TYPE_SIGNAL, order = 1, trigger = .proc/handle_bitflag_received)
-=======
 			var/datum/port/input/bitflag_input = add_input_port(data["name"], PORT_TYPE_SIGNAL, order = 3, trigger = .proc/handle_bitflag_received)
->>>>>>> 0ebf4891ada (Fixes bugs with admin circuits, expands upon some admin circuit components and fixes duplicator runtiming when a port doesn't exist. (#61948))
 			input_signal_ports[bitflag_input] = data["bitflag"]
 		else
 			output_signal_ports += add_output_port(data["name"], data["type"], order = 1)

@@ -49,3 +49,6 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/inhand/cane
 	name = "Cane"
 	item_path = /obj/item/cane
+/datum/loadout_item/inhand/smokingpipe
+	name = "Smoking Pipe"
+	item_path = /obj/item/clothing/mask/cigarette/pipe
