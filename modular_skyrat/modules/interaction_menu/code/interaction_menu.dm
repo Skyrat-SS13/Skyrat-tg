@@ -80,11 +80,12 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		int.sound_possible = sanitize_islist(ijson["sound_possible"], list("json error"))
 		int.interaction_requires = sanitize_islist(ijson["interaction_requires"], list())
 
-		/// Lewd things
+		int.user_messages = sanitize_islist(ijson["user_messages"], list())
 		int.user_required_parts = sanitize_islist(ijson["user_required_parts"], list())
 		int.user_arousal = sanitize_integer(ijson["user_arousal"], 0, 100, 0)
 		int.user_pleasure = sanitize_integer(ijson["user_pleasure"], 0, 100, 0)
 		int.user_pain = sanitize_integer(ijson["user_pain"], 0, 100, 0)
+		int.target_messages = sanitize_islist(ijson["target_messages"], list())
 		int.target_required_parts = sanitize_islist(ijson["target_required_parts"], list())
 		int.target_arousal = sanitize_integer(ijson["target_arousal"], 0, 100, 0)
 		int.target_pleasure = sanitize_integer(ijson["target_pleasure"], 0, 100, 0)
@@ -111,11 +112,13 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	sound_range = sanitize_integer(json["sound_range"], 1, 7, 1)
 	sound_possible = sanitize_islist(json["sound_possible"], list("json error"))
 	interaction_requires = sanitize_islist(json["interaction_requires"], list())
-	/// Lewd things
+
+	user_messages = sanitize_islist(json["user_messages"], list())
 	user_required_parts = sanitize_islist(json["user_required_parts"], list())
 	user_arousal = sanitize_integer(json["user_arousal"], 0, 100, 0)
 	user_pleasure = sanitize_integer(json["user_pleasure"], 0, 100, 0)
 	user_pain = sanitize_integer(json["user_pain"], 0, 100, 0)
+	target_messages = sanitize_islist(json["target_messages"], list())
 	target_required_parts = sanitize_islist(json["target_required_parts"], list())
 	target_arousal = sanitize_integer(json["target_arousal"], 0, 100, 0)
 	target_pleasure = sanitize_integer(json["target_pleasure"], 0, 100, 0)
@@ -138,10 +141,12 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		"sound_range" = sound_range,
 		"sound_possible" = sound_possible,
 		"interaction_requires" = interaction_requires,
+		"user_messages" = user_messages,
 		"user_required_parts" = user_required_parts,
 		"user_arousal" = user_arousal,
 		"user_pleasure" = user_pleasure,
 		"user_pain" = user_pain,
+		"target_messages" = target_messages,
 		"target_required_parts" = target_required_parts,
 		"target_arousal" = target_arousal,
 		"target_pleasure" = target_pleasure,
@@ -161,6 +166,10 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/distance_allowed = FALSE
 	/// A list of possible messages displayed loaded by the JSON.
 	var/list/message = list()
+	/// A list of possible messages displayed directly to the USER.
+	var/list/user_messages = list()
+	/// A list of possible messages displayed directly to the TARGET.
+	var/list/target_messages = list()
 	/// What category this interaction will fall under in the menu.
 	var/category = INTERACTION_CAT_HIDE
 	/// Defines how we interact with ourselves or others.
@@ -247,6 +256,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	// We replace %USER% with nothing because manual_emote already prepends it.
 	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
 	user.manual_emote(msg)
+	to_chat(user, pick(user_messages))
+	to_chat(target, pick(target_messages))
 	if(sound_use)
 		if(!sound_possible)
 			message_admins("Interaction has sound_use set to TRUE but does not set sound! '[name]'")
