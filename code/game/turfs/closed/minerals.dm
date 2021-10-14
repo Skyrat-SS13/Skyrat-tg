@@ -191,7 +191,7 @@
 
 	. = ..()
 	if (prob(mineralChance))
-		var/path = pickweight(mineralSpawnChanceList)
+		var/path = pick_weight(mineralSpawnChanceList)
 		if(ispath(path, /turf))
 			var/stored_flags = 0
 			var/stored_color = color //SKYRAT EDIT ADDITION

@@ -967,7 +967,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!screw)
 			screw = TRUE
 			to_chat(user, span_notice("You open the cap on [src]."))
-			reagents.flags |= OPENCONTAINER
+			//reagents.flags |= OPENCONTAINER - SKYRAT REMOVAL - VAPE CARTS
 			if(obj_flags & EMAGGED)
 				add_overlay("vapeopen_high")
 			else if(super)

@@ -131,6 +131,18 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Blue Letterman"
 	item_path = /obj/item/clothing/suit/jacket/letterman_nanotrasen
 
+/datum/loadout_item/suit/owl
+	name = "Owl Cloak"
+	item_path = /obj/item/clothing/suit/toggle/owlwings
+
+/datum/loadout_item/suit/griffin
+	name = "Griffon Cloak"
+	item_path = /obj/item/clothing/suit/toggle/owlwings/griffinwings
+
+/datum/loadout_item/suit/syndi
+	name = "Black And Red Space Suit Replica"
+	item_path = /obj/item/clothing/suit/syndicatefake
+
 /datum/loadout_item/suit/bee
 	name = "Bee Outfit"
 	item_path = /obj/item/clothing/suit/hooded/bee_costume
@@ -526,6 +538,47 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/cardigan
 	name = "Cardigan"
 	item_path = /obj/item/clothing/suit/toggle/jacket/cardigan
+
+//Families Gear
+/datum/loadout_item/suit/osi
+	name = "OSI Coat"
+	item_path = /obj/item/clothing/suit/osi
+
+/datum/loadout_item/suit/tmc
+	name = "TMC Coat"
+	item_path = /obj/item/clothing/suit/tmc
+
+/datum/loadout_item/suit/pg
+	name = "PG Coat"
+	item_path = /obj/item/clothing/suit/pg
+
+/datum/loadout_item/suit/driscoll
+	name = "Driscoll Coat"
+	item_path = /obj/item/clothing/suit/driscoll
+
+/datum/loadout_item/suit/deckers
+	name = "Deckers Coat"
+	item_path = /obj/item/clothing/suit/deckers
+
+/datum/loadout_item/suit/morningstar
+	name = "Morningstar Coat"
+	item_path = /obj/item/clothing/suit/morningstar
+
+/datum/loadout_item/suit/saints
+	name = "Saints Coat"
+	item_path = /obj/item/clothing/suit/saints
+
+/datum/loadout_item/suit/phantom
+	name = "Phantom Coat"
+	item_path = /obj/item/clothing/suit/phantom
+
+/datum/loadout_item/suit/sybil
+	name = "Sybil Coat"
+	item_path = /obj/item/clothing/suit/sybil_slickers
+
+/datum/loadout_item/suit/basil
+	name = "Basil Coat"
+	item_path = /obj/item/clothing/suit/basil_boys
 
 //Donator sutis here
 /datum/loadout_item/suit/donator
