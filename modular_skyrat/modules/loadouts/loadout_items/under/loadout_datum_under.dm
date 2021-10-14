@@ -388,6 +388,26 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactitool Turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
 
+/datum/loadout_item/under/miscellaneous/pj_blood
+	name = "Blood-red Pajamas"
+	item_path = /obj/item/clothing/under/syndicate/bloodred/sleepytime
+
+/datum/loadout_item/under/miscellaneous/gladiator
+	name = "Gladiator Uniform"
+	item_path = /obj/item/clothing/under/costume/gladiator
+
+/datum/loadout_item/under/miscellaneous/griffon
+	name = "Griffon Uniform"
+	item_path = /obj/item/clothing/under/costume/griffin
+
+/datum/loadout_item/under/miscellaneous/owl
+	name = "Owl Uniform"
+	item_path = /obj/item/clothing/under/costume/owl
+
+/datum/loadout_item/under/miscellaneous/villain
+	name = "Villain Suit"
+	item_path = /obj/item/clothing/under/costume/villain
+
 /datum/loadout_item/under/miscellaneous/tactical_irish
 	name = "Irish Tactical Sweater"
 	item_path = /obj/item/clothing/under/misc/tactical1

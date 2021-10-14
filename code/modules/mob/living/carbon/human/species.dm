@@ -1220,7 +1220,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return FALSE
 		if(ITEM_SLOT_ANUS)
 			if(H.is_bottomless())
-				return equip_delay_self_check(I, H, bypass_equip_delay_self)
+				if(H.getorganslot(ORGAN_SLOT_ANUS))
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
 			return FALSE
 		if(ITEM_SLOT_NIPPLES)
 			if(H.is_topless())
