@@ -28,7 +28,7 @@
 
 /obj/item/robot_model/ninja/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
-	var/static/list/ninja_icons = sortList(list(
+	var/static/list/ninja_icons = sort_list(list(
 		"Saboteur" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_engi"),
 		"Medical" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_medical"),
 		"Assault" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_sec"),
@@ -137,7 +137,7 @@
 
 /obj/item/robot_model/ninja_saboteur/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
-	var/static/list/ninja_icons = sortList(list(
+	var/static/list/ninja_icons = sort_list(list(
 		"Saboteur" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_engi"),
 		"Medical" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_medical"),
 		"Assault" = image(icon = 'modular_skyrat/modules/specborg/icons/mob/moreborgs.dmi', icon_state = "ninja_sec"),

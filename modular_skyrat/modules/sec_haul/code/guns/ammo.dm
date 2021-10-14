@@ -155,7 +155,7 @@
 	. = ..()
 	if(possible_types.len <= 1)
 		return
-	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
+	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sort_list(possible_types)
 	if(!new_type)
 		new_type = AMMO_TYPE_LETHAL
 	round_type = new_type
@@ -194,7 +194,7 @@
 
 /obj/item/ammo_box/revolver/AltClick(mob/user)
 	. = ..()
-	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sortList(possible_types)
+	var/new_type = input("Please select a magazine type to reskin to:", "Reskin", null, null) as null|anything in sort_list(possible_types)
 	if(!new_type)
 		new_type = AMMO_TYPE_LETHAL
 	round_type = new_type
