@@ -224,6 +224,18 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Wedding Veil"
 	item_path = /obj/item/clothing/head/weddingveil
 
+/datum/loadout_item/head/synde
+	name = "Black Space-helmet Replica"
+	item_path = /obj/item/clothing/head/syndicatefake
+
+/datum/loadout_item/head/glatiator
+	name = "Gladiator Helmet"
+	item_path = /obj/item/clothing/head/helmet/gladiator
+
+/datum/loadout_item/head/griffin
+	name = "Griffon Head"
+	item_path = /obj/item/clothing/head/griffin
+
 /datum/loadout_item/head/poppy
 	name = "Poppy"
 	item_path = /obj/item/food/grown/poppy
