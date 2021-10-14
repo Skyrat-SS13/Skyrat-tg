@@ -259,20 +259,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			SEND_SOUND(sound_cache, mob)
 
 	if(lewd)
-		if(user_required_parts.len)
-			for(var/thing in user_required_parts)
-				var/obj/item/organ/genital/required_part = user.getorganslot(thing)
-				required_part?.aroused = AROUSAL_FULL
-				required_part?.update_sprite_suffix()
-				user.update_body()
-
-		if(target_required_parts.len)
-			for(var/thing in target_required_parts)
-				var/obj/item/organ/genital/required_part = target.getorganslot(thing)
-				required_part?.aroused = AROUSAL_FULL
-				required_part?.update_sprite_suffix()
-				target.update_body()
-
 		user.adjustPleasure(user_pleasure)
 		user.adjustArousal(user_arousal)
 		user.adjustPain(user_pain)
