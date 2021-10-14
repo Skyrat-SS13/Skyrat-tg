@@ -222,7 +222,7 @@
 	icon_state = "breasts"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
-	mutantpart_key = "penis"
+	mutantpart_key = "breasts"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
