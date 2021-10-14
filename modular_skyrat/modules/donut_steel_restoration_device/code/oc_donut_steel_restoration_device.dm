@@ -119,6 +119,7 @@
 	processing = FALSE
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/patient = occupant
+		var/original_name = patient.dna.real_name
 		if(obj_flags & EMAGGED)
 			patient.monkeyize()
 		else
@@ -127,6 +128,10 @@
 			patient.dna.mutant_bodyparts = list()
 			patient?.client?.prefs?.apply_prefs_to(patient, TRUE)
 			patient.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
+			if(patient.dna.real_name != original_name)
+				message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
+				Original Name: [original_name], New Name: [patient.dna.real_name]. \
+				This may be a false positive from changing from a humanized monkey into a character, so be careful.")
 		open_machine()
 		playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
