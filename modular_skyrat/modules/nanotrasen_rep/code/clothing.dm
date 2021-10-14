@@ -60,6 +60,8 @@
 	armor = list(MELEE = 15, BULLET = 5, LASER = 15, ENERGY = 25, BOMB = 10, BIO = 0, RAD = 0, FIRE = 30, ACID = 5, WOUND = 4)
 
 /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep
+	//icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	icon_state = "centcom_formal"
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
 
 /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep
