@@ -41,3 +41,6 @@
 
 //Makes sure that people cant be cult sacrificed twice.
 #define TRAIT_SACRIFICED "sacrificed"
+
+//to determine if someone is a fishing master, or not
+#define TRAIT_FISHING_MASTER "fishing_master"

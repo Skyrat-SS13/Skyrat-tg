@@ -22,9 +22,9 @@
 	if(guns?.len)
 		var/guns_spawned = 0
 		while((gun_count - guns_spawned) && guns.len)
-			var/gunspawn = pickweight(guns)
+			var/gunspawn = pick_weight(guns)
 			while(islist(gunspawn))
-				gunspawn = pickweight(gunspawn)
+				gunspawn = pick_weight(gunspawn)
 			if(!gun_doubles)
 				guns.Remove(gunspawn)
 
