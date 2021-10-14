@@ -1236,3 +1236,68 @@
   - bugfix: MMI components can't be no longer attached to modules. This was causing
       race conditions with other MMI components present in the circuit (not much of
       a good thing).
+2021-10-14:
+  Colovorat:
+  - bugfix: You can no longer extract and transform DNA of species that have no DNA
+  Gonenoculer5:
+  - rscadd: Families gear to the loadout. God this hurts.
+  - rscadd: Trekkies gear to the loadout. Rejoice!
+  - rscadd: Jorts to the loadout. Thats it. Just Jorts.
+  Guillaume Prata:
+  - imageadd: Engineering clothes have working reflective stripes now. Easier for
+      someone to find your corpse in maints, harder for you to hide in the dark to
+      do bad things.
+  Lyroy:
+  - bugfix: fixes the has_banned_species proc for jobs
+  - bugfix: The recent strong storm keeping the Ash Walkers trapped and isolated has
+      finally ended. Miners should be cautious, as the Lavaland natives might start
+      showing up again.
+  - bugfix: Primal Podpeople have finally managed to exit their cryopods again.
+  Melbert:
+  - rscdel: Removed the action button for toggling griffin and owl wings, you can
+      still open and close them with alt-click.
+  - refactor: Toggle Suit component for labcoats, suit coats, and formal coats (and
+      some others)
+  Seris02:
+  - bugfix: server erp prefs will now actually turn off the erp emote
+  SkyratBot:
+  - bugfix: Contractor support units now do not get a second uplink with 20 TC in
+      them.
+  - bugfix: fixes mode switch actions on storage items being broken
+  - bugfix: Fixed base lighting appearance inheritance.
+  - admin: Datum input ports can now have atoms and datums uploaded to them.
+  - bugfix: Malf AIs cannot be rolled midround if one has already been rolled roundstart.
+  - bugfix: Fixes filter list component not being a filter list component
+  - admin: Admins can now stop animations on an object as well as decide if it starts
+      parallel or not.
+  - bugfix: 'Fixed animating filters in steps not working at all. qol: Gave instantly
+      executing ports special datatypes to distinguish what ports cause instant execution'
+  - bugfix: Fixed a runtime with the integrated circuit duplicator
+  - admin: Signal Handler circuit components are no longer limited to 1 registered
+      object.
+  - admin: Get variable circuit components can now get GLOB variables
+  - admin: Animate and Save Shell circuit components will now apply DF_VAR_EDITED
+  - bugfix: regal rat can now eat cheese + runtime fixes for its signal
+  - bugfix: Syringe/Hypospray failure messages now reflect the proper body part.
+  - bugfix: list literal can now contain tables,like they are supposed to
+  Station Engineering Safety Association (SESA):
+  - bugfix: Atmospherics Helmets are properly fitted for muzzled/beaked crewmembers
+      now
+  YakumoChen:
+  - balance: Reverted some Venus Human Trap nerfs, which removed their ability to
+      pull mobs and heal by walking in vines, in exchange for being able to grow vines
+      slightly faster.
+  jjpark-kb:
+  - rscadd: added the conveyor sorter, which can force move things to a direction
+      if in the sorting list
+  - rscadd: added admin-spawned supermatter cascade
+  linnpap:
+  - rscadd: Added vape carts
+  - rscdel: Removed lipolicide from cannabis
+  - rscadd: Adds increased hunger as an effect of THC
+  softcerv:
+  - refactor: Mediguns and Medicells are now subtypes of Cell-Based guns and Weapon-Cells.
+  - refactor: 'Medicells now use a balloon alert rather than a notice when toggling
+      between safe and unsafe. qol: examining medicells now shows the ammo type that
+      is added when using them on a gun. qol: Medigun upgrade kits now use the conversion
+      kit framework, making them easier to upgrade.'
