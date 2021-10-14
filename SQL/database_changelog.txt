@@ -1,33 +1,21 @@
 Any time you make a change to the schema files, remember to increment the database schema version. Generally increment the minor number, major should be reserved for significant changes to the schema. Both values go up to 255.
 
-<<<<<<< HEAD
-The latest database version is 5.18 (5.16 for /tg/); The query to update the schema revision table is:
+The latest database version is 5.19 (5.17 for /tg/); The query to update the schema revision table is:
 
-INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 18);
+INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 19);
 or
-INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 18);
-=======
-The latest database version is 5.17; The query to update the schema revision table is:
-
-INSERT INTO `schema_revision` (`major`, `minor`) VALUES (5, 17);
-or
-INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 17);
->>>>>>> da1a8096c57 (Make round ID nullable in bans and tickets (#61985))
+INSERT INTO `SS13_schema_revision` (`major`, `minor`) VALUES (5, 19);
 
 In any query remember to add a prefix to the table names if you use one.
 
 -----------------------------------------------------
-<<<<<<< HEAD
-Version 5.18, 23 August 2021, by GoldenAlpharex
+Version 5.19, 23 August 2021, by GoldenAlpharex
 Added `discord_report` column to the `ban table`
 
 ```
 `discord_reported` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0', /* SKYRAT EDIT - Labelling bans for ease of reporting them over Discord. */
 ```
-
 -----------------------------------------------------
-Version 5.17, 31 July 2021, by Atlanta-Ned
-=======
 Version 5.17, 8 October 2021, by MrStonedOne + Mothblocks
 Changes any table that requrired a NOT NULL round ID to now accept NULL. In the BSQL past, these were handled as 0, but in the move to rust-g this behavior was lost.
 
@@ -47,8 +35,7 @@ ALTER TABLE `ticket` CHANGE `round_id` `round_id` INT(11) UNSIGNED NULL;
 ```
 
 -----------------------------------------------------
-Version 5.16, 31 July 2021, by Atlanta-Ned
->>>>>>> da1a8096c57 (Make round ID nullable in bans and tickets (#61985))
+Version 5.17, 31 July 2021, by Atlanta-Ned
 Added `library_action` table for tracking reported library books and actions taken on them.
 
 ```
