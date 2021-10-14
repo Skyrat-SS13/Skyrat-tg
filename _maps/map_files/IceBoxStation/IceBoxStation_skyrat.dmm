@@ -458,10 +458,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/ai_monitored/security/armory)
-"aeo" = (
-/obj/structure/tank_holder/emergency_oxygen/engi,
-/turf/open/floor/iron/dark,
-/area/security/office)
 "aer" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/iron/dark,
@@ -549,11 +545,11 @@
 "afG" = (
 /obj/structure/window/reinforced,
 /obj/structure/rack,
-/obj/item/storage/firstaid{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/item/storage/firstaid,
+/obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/brute{
 	pixel_x = -3;
 	pixel_y = -3
@@ -1340,10 +1336,6 @@
 	},
 /turf/open/floor/plating,
 /area/security/execution/education)
-"aoo" = (
-/obj/structure/grille,
-/turf/open/floor/plating/asteroid/snow/icemoon,
-/area/icemoon/surface/outdoors/unexplored/rivers/no_monsters)
 "aot" = (
 /obj/effect/turf_decal/tile/red/full,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1384,10 +1376,6 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/security/brig)
-"aoW" = (
-/obj/structure/lattice,
-/turf/open/floor/plating/asteroid/snow/icemoon,
-/area/icemoon/surface/outdoors/unexplored/rivers/no_monsters)
 "aoX" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
@@ -10379,6 +10367,15 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/surface/outdoors)
+"bKq" = (
+/obj/structure/window/reinforced/plasma{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/power/grounding_rod/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "bKr" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
@@ -11098,6 +11095,16 @@
 /obj/machinery/computer/scan_consolenew,
 /turf/open/floor/iron/white,
 /area/science/genetics)
+"bQt" = (
+/obj/machinery/door/airlock/external{
+	name = "Security Snowmobiles";
+	req_access_txt = "63"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "secsnowmobile"
+	},
+/turf/open/floor/iron/dark,
+/area/security/brig)
 "bQD" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/green{
@@ -31158,6 +31165,17 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
+"mAm" = (
+/obj/item/tank/internals/emergency_oxygen/engi,
+/obj/item/tank/internals/emergency_oxygen/engi{
+	pixel_x = 5
+	},
+/obj/item/tank/internals/emergency_oxygen/engi{
+	pixel_x = 10
+	},
+/obj/structure/rack,
+/turf/open/floor/iron/dark,
+/area/security/brig)
 "mAD" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/portable_atmospherics/pump,
@@ -34892,6 +34910,13 @@
 	},
 /turf/open/floor/wood,
 /area/hallway/secondary/service)
+"oHv" = (
+/obj/item/key/security,
+/obj/item/key/security,
+/obj/item/key/security,
+/obj/structure/rack,
+/turf/open/floor/iron/dark,
+/area/security/brig)
 "oHS" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
@@ -41015,12 +41040,12 @@
 /turf/open/floor/iron,
 /area/construction/mining/aux_base)
 "shj" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/structure/window/reinforced/plasma{
 	dir = 8
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "shw" = (
@@ -41605,12 +41630,12 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "syN" = (
-/obj/machinery/power/rad_collector/anchored,
 /obj/structure/window/reinforced/plasma{
 	dir = 4
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "syO" = (
@@ -43836,6 +43861,12 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"tLb" = (
+/obj/vehicle/ridden/atv/snowmobile/snowcurity{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/security/brig)
 "tLg" = (
 /obj/structure/closet/crate,
 /turf/open/floor/iron,
@@ -46626,6 +46657,7 @@
 /area/medical/medbay)
 "vov" = (
 /obj/structure/closet/secure_closet/miner,
+/obj/item/key/atv,
 /turf/open/floor/iron,
 /area/cargo/miningdock)
 "vpz" = (
@@ -48072,6 +48104,28 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/main)
+"wdQ" = (
+/obj/structure/rack/shelf,
+/obj/item/clothing/suit/hooded/wintercoat/security{
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/obj/item/clothing/suit/hooded/wintercoat/security{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/clothing/suit/hooded/wintercoat/security{
+	pixel_y = 12
+	},
+/obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper{
+	pixel_x = 12
+	},
+/obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper{
+	pixel_x = 6
+	},
+/obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper,
+/turf/open/floor/iron/dark,
+/area/security/brig)
 "weo" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -49050,6 +49104,15 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/port)
+"wJi" = (
+/obj/structure/window/reinforced/plasma{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/power/grounding_rod/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "wJm" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -75894,7 +75957,7 @@ bQM
 bQM
 ace
 adC
-aeo
+liB
 sDK
 pPB
 xHA
@@ -80369,7 +80432,7 @@ wOE
 hua
 lPn
 syN
-syN
+bKq
 syN
 hua
 cIT
@@ -80759,10 +80822,10 @@ boP
 boP
 boP
 boP
-aoo
-boP
-boP
-drh
+atz
+tLb
+tLb
+tLb
 atz
 frw
 bSL
@@ -81016,10 +81079,10 @@ boP
 boP
 boP
 boP
-aoW
-boP
-boP
-drh
+bQt
+edV
+edV
+edV
 atz
 nlR
 pxL
@@ -81273,11 +81336,11 @@ boP
 boP
 boP
 boP
-aoW
-boP
-boP
-drh
-atz
+bQt
+edV
+edV
+edV
+bQt
 fCr
 uzE
 wPF
@@ -81397,7 +81460,7 @@ hua
 mWg
 lPn
 shj
-shj
+wJi
 shj
 hua
 cIT
@@ -81530,10 +81593,10 @@ boP
 boP
 boP
 boP
-aoo
-boP
-boP
-drh
+atz
+wdQ
+mAm
+oHv
 atz
 dbz
 yhW
@@ -81787,11 +81850,11 @@ boP
 boP
 boP
 boP
-sZL
-sZL
-sZL
-sZL
-sZL
+atz
+atz
+atz
+atz
+atz
 ftm
 yhW
 yhW

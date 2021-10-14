@@ -273,7 +273,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
-	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
+	var/atom/movable/loot = pick_weight(GLOB.cme_loot_list)
 	new loot(loc)
 
 /obj/effect/cme/extreme/anomalyNeutralize()
@@ -285,7 +285,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
-	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
+	var/atom/movable/loot = pick_weight(GLOB.cme_loot_list)
 	new loot(loc)
 
 /obj/effect/cme/armageddon/anomalyNeutralize()
@@ -297,5 +297,5 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
-	var/atom/movable/loot = pickweight(GLOB.cme_loot_list)
+	var/atom/movable/loot = pick_weight(GLOB.cme_loot_list)
 	new loot(loc)

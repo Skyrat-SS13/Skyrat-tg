@@ -43,3 +43,6 @@
 
 //Adds 2 seconds to the Goliath tentacle stun timer.
 #define TRAIT_GOLIATH_STUN "goliath_stun"
+
+//to determine if someone is a fishing master, or not
+#define TRAIT_FISHING_MASTER "fishing_master"

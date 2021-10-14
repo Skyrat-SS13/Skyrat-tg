@@ -48,14 +48,15 @@
 		mutant_bodyparts["waggingtail_human"] = mutant_bodyparts["tail_human"]
 		mutant_bodyparts -= "tail_human"
 	H.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/species/human/felinid/stop_wagging_tail(mob/living/carbon/human/H)
 	if(mutant_bodyparts["waggingtail_human"])
 		mutant_bodyparts["tail_human"] = mutant_bodyparts["waggingtail_human"]
 		mutant_bodyparts -= "waggingtail_human"
 	H.update_body()
+
+	*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/species/human/felinid/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	if(ishuman(C))

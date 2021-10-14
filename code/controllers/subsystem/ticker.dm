@@ -420,6 +420,8 @@ SUBSYSTEM_DEF(ticker)
 		//SKYRAT EDIT ADDITION
 		if(ishuman(new_player_living))
 			for(var/datum/loadout_item/item as anything in loadout_list_to_datums(new_player_mob.client?.prefs?.loadout_list))
+				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
+					continue
 				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
 		//SKYRAT EDIT END
 		CHECK_TICK
@@ -483,7 +485,7 @@ SUBSYSTEM_DEF(ticker)
 		return
 	var/hpc = CONFIG_GET(number/hard_popcap)
 	if(!hpc)
-		listclearnulls(queued_players)
+		list_clear_nulls(queued_players)
 		for (var/mob/dead/new_player/NP in queued_players)
 			to_chat(NP, span_userdanger("The alive players limit has been released!<br><a href='?src=[REF(NP)];late_join=override'>[html_encode(">>Join Game<<")]</a>"))
 			SEND_SOUND(NP, sound('sound/misc/notice1.ogg'))
@@ -497,7 +499,7 @@ SUBSYSTEM_DEF(ticker)
 
 	switch(queue_delay)
 		if(5) //every 5 ticks check if there is a slot available
-			listclearnulls(queued_players)
+			list_clear_nulls(queued_players)
 			if(living_player_count() < hpc)
 				if(next_in_line?.client)
 					to_chat(next_in_line, span_userdanger("A slot has opened! You have approximately 20 seconds to join. <a href='?src=[REF(next_in_line)];late_join=override'>\>\>Join Game\<\<</a>"))
@@ -694,18 +696,7 @@ SUBSYSTEM_DEF(ticker)
 	save_admin_data()
 	update_everything_flag_in_db()
 	if(!round_end_sound)
-		round_end_sound = pick(\
-		'sound/roundend/newroundsexy.ogg',
-		'sound/roundend/apcdestroyed.ogg',
-		'sound/roundend/bangindonk.ogg',
-		'sound/roundend/leavingtg.ogg',
-		'sound/roundend/its_only_game.ogg',
-		'sound/roundend/yeehaw.ogg',
-		'sound/roundend/disappointed.ogg',
-		'sound/roundend/scrunglartiy.ogg',
-		'sound/roundend/petersondisappointed.ogg',
-		'sound/roundend/bully2.ogg'\
-		)
+		round_end_sound = choose_round_end_song()
 	///The reference to the end of round sound that we have chosen.
 	var/sound/end_of_round_sound_ref = sound(round_end_sound)
 	for(var/mob/M in GLOB.player_list)
@@ -713,3 +704,12 @@ SUBSYSTEM_DEF(ticker)
 			SEND_SOUND(M.client, end_of_round_sound_ref)
 
 	text2file(login_music, "data/last_round_lobby_music.txt")
+
+/datum/controller/subsystem/ticker/proc/choose_round_end_song()
+	var/list/reboot_sounds = flist("[global.config.directory]/reboot_themes/")
+	var/list/possible_themes = list()
+
+	for(var/themes in reboot_sounds)
+		possible_themes += themes
+	if(possible_themes.len)
+		return "[global.config.directory]/reboot_themes/[pick(possible_themes)]"

@@ -18,7 +18,8 @@
 						/obj/item/seeds/cannabis/death,
 						/obj/item/seeds/cannabis/white,
 						/obj/item/seeds/cannabis/ultimate)
-	reagents_add = list(/datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.35) //SKYRAT EDIT - MORENARCOTICS
+	reagents_add = list(/datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
+	//axed lipolicide, replaced space drugs with thc
 
 
 /obj/item/seeds/cannabis/rainbow
@@ -40,7 +41,7 @@
 	plantname = "Deathweed"
 	product = /obj/item/food/grown/cannabis/death
 	mutatelist = null
-	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
+	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
 /obj/item/seeds/cannabis/white
@@ -52,7 +53,7 @@
 	instability = 30
 	product = /obj/item/food/grown/cannabis/white
 	mutatelist = null
-	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/thc = 0.15, /datum/reagent/toxin/lipolicide = 0.15) //SKYRAT EDIT - MORENARCOTICS
+	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/thc = 0.15) //SKYRAT EDIT - MORENARCOTICS
 	rarity = 40
 
 
@@ -73,7 +74,7 @@
 						/datum/reagent/drug/methamphetamine = 0.15,
 						/datum/reagent/drug/bath_salts = 0.15,
 						/datum/reagent/drug/krokodil = 0.15,
-						/datum/reagent/toxin/lipolicide = 0.15,
+						//SKYRAT REMOVAL // /datum/reagent/toxin/lipolicide = 0.15,
 						/datum/reagent/drug/nicotine = 0.1)
 	rarity = 69
 	graft_gene = /datum/plant_gene/trait/glow/green

@@ -196,6 +196,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/maintenance/port/fore)
+"aaL" = (
+/obj/structure/window/reinforced/plasma/spawner/west{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/power/grounding_rod/anchored,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "aaO" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -5907,8 +5916,8 @@
 /obj/structure/window/reinforced/plasma/spawner/west{
 	dir = 4
 	},
-/obj/machinery/power/rad_collector/anchored,
 /obj/structure/cable,
+/obj/machinery/power/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "aUK" = (
@@ -11662,7 +11671,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
 /obj/machinery/button/door/directional/west{
 	id = "engsm";
 	name = "Radiation Shutters Control";
@@ -18565,10 +18573,10 @@
 /turf/open/floor/iron,
 /area/maintenance/port)
 "cGf" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "cGi" = (
@@ -36579,8 +36587,8 @@
 /turf/open/floor/iron,
 /area/engineering/storage)
 "ezC" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "ezU" = (
@@ -38927,6 +38935,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/brig)
+"fgG" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/turf/closed/wall/r_wall,
+/area/engineering/supermatter)
 "fgO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -41083,6 +41095,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/service/theater/abandoned)
+"fTW" = (
+/obj/structure/window/reinforced/plasma/spawner/west{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/grounding_rod/anchored,
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "fUc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/event_spawn,
@@ -44631,16 +44651,12 @@
 /turf/open/floor/iron/grimy,
 /area/command/heads_quarters/captain)
 "hdi" = (
-/obj/machinery/atmospherics/components/binary/pump/layer2{
-	dir = 8;
-	name = "Gas to Chamber"
+/obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/pipe/color_adapter{
+	dir = 4
 	},
-/obj/machinery/atmospherics/components/binary/pump/layer4{
-	dir = 4;
-	name = "Chamber to Cooling"
-	},
-/turf/open/floor/engine,
-/area/engineering/supermatter)
+/turf/open/floor/iron,
+/area/engineering/supermatter/room)
 "hdj" = (
 /obj/machinery/photocopier,
 /obj/machinery/light/directional/east,
@@ -44894,7 +44910,7 @@
 /area/security/interrogation)
 "hhS" = (
 /obj/effect/turf_decal/delivery,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "hia" = (
@@ -47457,6 +47473,7 @@
 /area/engineering/main)
 "hWu" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/plating,
 /area/engineering/supermatter)
 "hWy" = (
@@ -50391,7 +50408,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "iNf" = (
@@ -53276,9 +53292,12 @@
 /turf/open/floor/iron/dark,
 /area/service/chapel/office)
 "jJm" = (
-/obj/machinery/power/rad_collector/anchored,
+/obj/structure/window/reinforced/plasma/spawner/west{
+	dir = 1
+	},
 /obj/structure/cable,
-/obj/structure/window/reinforced/plasma/spawner/north,
+/obj/machinery/power/tesla_coil/anchored,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "jJq" = (
@@ -61277,8 +61296,6 @@
 	name = "Supermatter Chamber";
 	req_one_access_txt = "10;24"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "lZt" = (
@@ -61986,8 +62003,8 @@
 /area/engineering/atmos)
 "mkl" = (
 /obj/machinery/light/directional/west,
-/obj/machinery/atmospherics/pipe/layer_manifold/green/visible,
 /obj/machinery/status_display/evac/directional/west,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "mkz" = (
@@ -75551,6 +75568,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/service/hydroponics)
+"qfy" = (
+/obj/machinery/light/small/directional/south,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Gas to Chamber"
+	},
+/turf/open/floor/engine,
+/area/engineering/supermatter)
 "qfA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79462,7 +79487,9 @@
 /turf/open/floor/iron,
 /area/service/bar/atrium)
 "rgQ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "rgU" = (
@@ -86321,9 +86348,8 @@
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/rd)
 "tii" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
-/turf/open/floor/engine,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "tim" = (
 /obj/structure/window/reinforced{
@@ -87883,8 +87909,10 @@
 /turf/open/floor/plating,
 /area/command/teleporter)
 "tGP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/color_adapter{
 	dir = 4
 	},
 /turf/open/floor/iron,
@@ -88824,8 +88852,6 @@
 	name = "Supermatter Chamber";
 	req_one_access_txt = "10;24"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "tSS" = (
@@ -90198,8 +90224,6 @@
 /area/commons/fitness/recreation)
 "uqa" = (
 /obj/machinery/power/supermatter_crystal/engine,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "uqc" = (
@@ -92432,6 +92456,10 @@
 /obj/machinery/airalarm/engine{
 	pixel_y = 23
 	},
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4;
+	name = "Gas to Filter"
+	},
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "uWy" = (
@@ -94499,6 +94527,7 @@
 /area/command/heads_quarters/captain)
 "vDy" = (
 /obj/structure/sign/warning/radiation,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/closed/wall/r_wall,
 /area/engineering/supermatter)
 "vDG" = (
@@ -94921,7 +94950,7 @@
 "vJj" = (
 /obj/machinery/light/directional/west,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/layer_manifold/cyan/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "vJu" = (
@@ -97024,9 +97053,7 @@
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
 "wrL" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
-	dir = 1
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "wrV" = (
@@ -100954,8 +100981,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/iron,
 /area/engineering/supermatter/room)
 "xET" = (
@@ -123723,7 +123748,7 @@ rNb
 ezC
 qzf
 aUH
-aUH
+fTW
 aUH
 qzf
 qzf
@@ -123978,9 +124003,9 @@ vNO
 eyE
 vZy
 tGP
-qzf
-rgQ
 tii
+rgQ
+qzE
 wrL
 jJm
 lBd
@@ -124239,7 +124264,7 @@ hWu
 rgQ
 uqa
 wrL
-jJm
+aaL
 vyP
 eZx
 hnW
@@ -124492,9 +124517,9 @@ vNO
 eyE
 iDn
 cGf
-qzf
-rgQ
 tii
+rgQ
+qzE
 wrL
 jJm
 lYR
@@ -124748,12 +124773,12 @@ otP
 lON
 lgs
 oZO
-ezC
-qzf
-qzf
+hdi
+tii
+tii
 tSQ
-qzf
-qzf
+fgG
+fgG
 qzf
 qzf
 hdp
@@ -125008,8 +125033,8 @@ oZO
 idx
 qzf
 uWq
-hdi
-xeU
+qzE
+qfy
 qzf
 pEZ
 pEZ
@@ -125266,7 +125291,7 @@ lAe
 qzf
 vDy
 lZo
-qzf
+fgG
 qzf
 axV
 axV
