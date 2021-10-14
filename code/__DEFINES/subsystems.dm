@@ -20,11 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-<<<<<<< HEAD
-#define DB_MINOR_VERSION 18
-=======
-#define DB_MINOR_VERSION 17
->>>>>>> da1a8096c57 (Make round ID nullable in bans and tickets (#61985))
+#define DB_MINOR_VERSION 19
 
 
 //! ## Timing subsystem
