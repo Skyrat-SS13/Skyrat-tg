@@ -124,6 +124,7 @@
 /area/science/research)
 "aav" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/spider/stickyweb,
 /turf/open/floor/engine,
 /area/science/research)
 "aaw" = (
@@ -148,6 +149,7 @@
 /area/science/research)
 "aaA" = (
 /obj/structure/table,
+/obj/structure/spider/stickyweb,
 /turf/open/floor/engine,
 /area/science/research)
 "aaB" = (
@@ -7482,10 +7484,10 @@
 /turf/open/floor/iron,
 /area/science/robotics/mechbay)
 "awV" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/hallway/primary/central)
+/obj/structure/cable,
+/obj/effect/spawner/random/trash/moisture_trap,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/dorms)
 "awW" = (
 /obj/machinery/camera{
 	c_tag = "Medbay Paramedic Dispatch";
@@ -14936,9 +14938,6 @@
 /area/hallway/secondary/exit/departure_lounge)
 "aWM" = (
 /obj/machinery/washing_machine,
-/obj/structure/sign/plaques/deempisi{
-	pixel_y = 28
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -18956,7 +18955,6 @@
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "bjT" = (
-/obj/structure/cable,
 /obj/machinery/camera{
 	c_tag = "Medbay Treatment";
 	network = list("ss13","medbay")
@@ -19385,6 +19383,7 @@
 	dir = 9
 	},
 /obj/effect/turf_decal/trimline/blue/filled/corner,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "bld" = (
@@ -20317,6 +20316,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "bom" = (
+/obj/effect/spawner/random/trash/moisture_trap,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -20993,7 +20993,6 @@
 /turf/open/floor/iron,
 /area/science/robotics/lab)
 "bqk" = (
-/obj/machinery/aug_manipulator,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -21289,7 +21288,6 @@
 /turf/open/floor/iron/white,
 /area/medical/cryo)
 "brb" = (
-/obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22294,11 +22292,11 @@
 /turf/open/floor/iron/white,
 /area/medical/cryo)
 "btZ" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/white,
-/area/medical/cryo)
+/obj/effect/spawner/random/trash/moisture_trap,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/department/security/brig)
 "bua" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -24106,6 +24104,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "bzT" = (
@@ -25775,6 +25774,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/medical/surgery)
 "bFP" = (
@@ -26897,6 +26899,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/medical/surgery)
 "bKA" = (
@@ -33414,9 +33419,6 @@
 /area/service/chapel/monastery)
 "cgM" = (
 /obj/structure/dresser,
-/obj/structure/sign/plaques/deempisi{
-	pixel_y = 28
-	},
 /turf/open/floor/iron/grimy,
 /area/service/chapel/monastery)
 "cgN" = (
@@ -40989,6 +40991,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/medical/surgery)
 "fGM" = (
@@ -45177,15 +45182,9 @@
 /turf/open/floor/iron/white,
 /area/command/heads_quarters/cmo)
 "jsD" = (
-/obj/structure/sign/plaques/deempisi{
-	pixel_y = 28
-	},
-/obj/item/kirbyplants{
-	icon_state = "plant-21";
-	pixel_y = 3
-	},
-/turf/open/floor/iron/dark,
-/area/service/chapel/office)
+/obj/effect/spawner/random/trash/moisture_trap,
+/turf/open/floor/plating,
+/area/cargo/warehouse)
 "jtf" = (
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/green{
@@ -46890,6 +46889,15 @@
 	},
 /turf/open/floor/iron,
 /area/commons/dorms)
+"kUv" = (
+/obj/effect/landmark/start/medical_doctor,
+/obj/effect/turf_decal/trimline/blue/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/medical/treatment_center)
 "kUU" = (
 /obj/machinery/light/directional/south,
 /obj/structure/cable,
@@ -49662,6 +49670,11 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/entry)
+"not" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/engine,
+/area/science/research)
 "noM" = (
 /turf/open/floor/iron/white,
 /area/science/genetics)
@@ -50134,6 +50147,7 @@
 	light_color = "#d1dfff"
 	},
 /obj/structure/table,
+/obj/effect/spawner/random/trash/cigbutt,
 /turf/open/floor/engine,
 /area/science/research)
 "nKQ" = (
@@ -52175,6 +52189,11 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
+"psk" = (
+/obj/structure/cable,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/engine,
+/area/science/research)
 "psz" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/security/prison)
@@ -53165,6 +53184,7 @@
 	name = "Psychology";
 	req_access_txt = "70"
 	},
+/obj/effect/mapping_helpers/airlock/unres,
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
 "qib" = (
@@ -58862,6 +58882,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
+"vaq" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/engine,
+/area/science/research)
 "vav" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/item/paper/guides/jobs/hydroponics,
@@ -60014,6 +60039,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/medical/treatment_center)
 "vZP" = (
@@ -72409,7 +72435,7 @@ bZY
 bZY
 bZY
 bZY
-jsD
+dpb
 csd
 csp
 csp
@@ -78485,7 +78511,7 @@ gwn
 aiu
 apz
 aqe
-aoK
+btZ
 dcL
 apB
 aiu
@@ -88302,7 +88328,7 @@ mXO
 bsA
 bpD
 brb
-btZ
+fSg
 qlz
 bjc
 bwB
@@ -89067,7 +89093,7 @@ aDZ
 bij
 bsA
 rvH
-uVB
+kUv
 idj
 kDS
 rNJ
@@ -94977,7 +95003,7 @@ bih
 cpJ
 cpP
 avT
-awV
+avT
 bls
 avT
 avT
@@ -95234,7 +95260,7 @@ bih
 bhO
 bio
 aDZ
-aGV
+aDZ
 aDZ
 aDZ
 aDZ
@@ -95491,7 +95517,7 @@ bih
 cpK
 cpQ
 aDZ
-aGV
+aDZ
 blu
 aDZ
 aDZ
@@ -103459,9 +103485,9 @@ bbI
 biC
 aaw
 eFX
+vaq
 aar
-aar
-aar
+psk
 bFs
 nBL
 rPW
@@ -104460,7 +104486,7 @@ aGI
 aHt
 itC
 oEL
-cCY
+jsD
 cDa
 aMw
 aQo
@@ -104487,7 +104513,7 @@ aEj
 aFi
 bHC
 eFX
-aaA
+not
 meE
 meE
 bFs
@@ -106497,7 +106523,7 @@ cVo
 cVo
 cVo
 gtF
-cVo
+awV
 adL
 meX
 aei
