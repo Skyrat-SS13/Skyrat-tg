@@ -118,12 +118,12 @@
 					if(prob(50))
 						new /obj/item/clothing/under/rank/prisoner/supermax(src.loc)
 					else
-						new /obj/item/clothing/under/rank/prisoner/supermax/skirt(src.loc)
+						new /obj/item/clothing/under/rank/prisoner/skirt/supermax(src.loc)
 				if(1 to 18000) // up to 30 mins = minsec
 					if(prob(50))
 						new /obj/item/clothing/under/rank/prisoner/lowsec(src.loc)
 					else
-						new /obj/item/clothing/under/rank/prisoner/lowsec/skirt(src.loc)
+						new /obj/item/clothing/under/rank/prisoner/skirt/lowsec(src.loc)
 				if(18001 to 36000) // 30min-1hr = medsec
 					if(prob(50))
 						new /obj/item/clothing/under/rank/prisoner(src.loc)
@@ -133,7 +133,7 @@
 					if(prob(50))
 						new /obj/item/clothing/under/rank/prisoner/highsec(src.loc)
 					else
-						new /obj/item/clothing/under/rank/prisoner/highsec/skirt(src.loc)
+						new /obj/item/clothing/under/rank/prisoner/skirt/highsec(src.loc)
 			new /obj/item/clothing/shoes/sneakers/orange(src.loc)
 		else
 			qdel(registered_id)
