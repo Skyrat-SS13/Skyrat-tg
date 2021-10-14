@@ -1067,7 +1067,9 @@
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	//SKYRAT EDIT ADDITION
+	//if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	if(do_mob(src, who, what.strip_delay * (HAS_TRAIT(who, TRAIT_STICKY_FINGERS) ? 0.5 : 1), interaction_key = what))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
