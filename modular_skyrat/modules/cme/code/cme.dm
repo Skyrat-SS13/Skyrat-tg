@@ -190,7 +190,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	density = FALSE
 	plane = MASSIVE_OBJ_PLANE
 	plane = ABOVE_LIGHTING_PLANE
-	CanAtmosPass = ATMOS_PASS_DENSITY
+	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/timeleft = CME_MINIMAL_BUBBLE_BURST_TIME
 	var/cme_light_range_lower = CME_MINIMAL_LIGHT_RANGE_LOWER
 	var/cme_light_range_upper = CME_MINIMAL_LIGHT_RANGE_UPPER

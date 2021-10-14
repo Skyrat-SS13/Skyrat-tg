@@ -116,7 +116,7 @@
 			break
 
 	var/list/possible_locs = list(ownturf) //Ownturf, because it could spread into the same turf, but on the wall
-	for(var/T in ownturf.GetAtmosAdjacentTurfs())
+	for(var/T in ownturf.get_atmos_adjacent_turfs())
 		//We encounter a space turf? Make a thick wall to block of that nasty vacuum
 		if(isspaceturf(T))
 			if(!locate(/obj/structure/biohazard_blob/structure/wall, ownturf))
@@ -166,7 +166,7 @@
 	for(var/i in 1 to iterations)
 		for(var/t in turfs)
 			var/turf/open = t
-			for(var/atmoadj in open.GetAtmosAdjacentTurfs())
+			for(var/atmoadj in open.get_atmos_adjacent_turfs())
 				turfs[atmoadj] = TRUE
 	for(var/t in turfs)
 		var/turf/ite_turf = t
@@ -180,7 +180,7 @@
 		//We're dead, no point in doing this
 		return
 	var/list/turfs = list(centrum_turf)
-	for(var/t in centrum_turf.GetAtmosAdjacentTurfs())
+	for(var/t in centrum_turf.get_atmos_adjacent_turfs())
 		turfs += t
 	for(var/t in turfs)
 		var/turf/ite_turf = t

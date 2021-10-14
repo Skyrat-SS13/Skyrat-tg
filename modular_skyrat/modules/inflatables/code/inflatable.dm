@@ -21,7 +21,7 @@
 /obj/structure/inflatable
 	name = "inflatable wall"
 	desc = "An inflated membrane. Do not puncture."
-	CanAtmosPass = ATMOS_PASS_NO
+	can_atmos_pass = ATMOS_PASS_NO
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 40
@@ -50,7 +50,7 @@
 /obj/structure/window/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	playsound(src, hitsound, 75, TRUE)
 
-/obj/structure/inflatable/CanAtmosPass(turf/T)
+/obj/structure/inflatable/can_atmos_pass(turf/T)
 	return !density
 
 /obj/structure/inflatable/ex_act(severity)
@@ -140,7 +140,7 @@
 	name = "inflatable door"
 	density = TRUE
 	anchored = TRUE
-	CanAtmosPass = ATMOS_PASS_DENSITY
+	can_atmos_pass = ATMOS_PASS_DENSITY
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "door_closed"
 	torntype = /obj/item/inflatable/torn/door
