@@ -1203,3 +1203,101 @@
   linnpap:
   - bugfix: fixed peacoat and duster sprites so they aren't solid white
   - bugfix: makes colorable leather jackets actually able to be colored
+2021-10-12:
+  Deek-Za:
+  - balance: Sergeant's hat has armor added.
+  - bugfix: Sergeant's hat is now visible on anthro races.
+  - bugfix: Added contents to SecMed's office first-aid kits on Icebox
+  ForrestWick:
+  - bugfix: Gave cargo ordered snowmobiles the correct path for keys.
+  SkyratBot:
+  - bugfix: Basic mobs can once again be vareditted
+  - bugfix: 'fixes unpowered space ruins actually being powered expansion: more secret
+      away mission stuff'
+  - refactor: Refactored monkey AI a bit, noticeable changes should be minimal!
+  - balance: Bluespace launchpad maximum range decreased from 60 to 40. Traitor launchpad
+      unaffected.
+  - balance: Bluespace launchpads will now give a visual indication of the turf they
+      are teleporting to/teleporting from as well as a noise notification. Does not
+      apply to traitor launchpads.
+  - balance: Bluespace launchpads will now show a beam that fades out between the
+      target turf and the launchpad after it has done the teleportation. Again, does
+      not apply to traitor launchpads.
+  - bugfix: Fixed two issues with paper code. Namely paper text being always colored
+      black outside of edit mode and signatures showing the current name and not the
+      real name.
+  jjpark-kb:
+  - bugfix: 'lavaland: bring back the xenoarch lab (was removed due to map reset)'
+  softcerv:
+  - bugfix: Hypovials now properly display their intended overlay texture, instead
+      of the chemical overlay textures from bottles.
+2021-10-13:
+  SkyratBot:
+  - bugfix: MMI components can't be no longer attached to modules. This was causing
+      race conditions with other MMI components present in the circuit (not much of
+      a good thing).
+2021-10-14:
+  Colovorat:
+  - bugfix: You can no longer extract and transform DNA of species that have no DNA
+  Gonenoculer5:
+  - rscadd: Families gear to the loadout. God this hurts.
+  - rscadd: Trekkies gear to the loadout. Rejoice!
+  - rscadd: Jorts to the loadout. Thats it. Just Jorts.
+  Guillaume Prata:
+  - imageadd: Engineering clothes have working reflective stripes now. Easier for
+      someone to find your corpse in maints, harder for you to hide in the dark to
+      do bad things.
+  Lyroy:
+  - bugfix: fixes the has_banned_species proc for jobs
+  - bugfix: The recent strong storm keeping the Ash Walkers trapped and isolated has
+      finally ended. Miners should be cautious, as the Lavaland natives might start
+      showing up again.
+  - bugfix: Primal Podpeople have finally managed to exit their cryopods again.
+  Melbert:
+  - rscdel: Removed the action button for toggling griffin and owl wings, you can
+      still open and close them with alt-click.
+  - refactor: Toggle Suit component for labcoats, suit coats, and formal coats (and
+      some others)
+  Seris02:
+  - bugfix: server erp prefs will now actually turn off the erp emote
+  SkyratBot:
+  - bugfix: Contractor support units now do not get a second uplink with 20 TC in
+      them.
+  - bugfix: fixes mode switch actions on storage items being broken
+  - bugfix: Fixed base lighting appearance inheritance.
+  - admin: Datum input ports can now have atoms and datums uploaded to them.
+  - bugfix: Malf AIs cannot be rolled midround if one has already been rolled roundstart.
+  - bugfix: Fixes filter list component not being a filter list component
+  - admin: Admins can now stop animations on an object as well as decide if it starts
+      parallel or not.
+  - bugfix: 'Fixed animating filters in steps not working at all. qol: Gave instantly
+      executing ports special datatypes to distinguish what ports cause instant execution'
+  - bugfix: Fixed a runtime with the integrated circuit duplicator
+  - admin: Signal Handler circuit components are no longer limited to 1 registered
+      object.
+  - admin: Get variable circuit components can now get GLOB variables
+  - admin: Animate and Save Shell circuit components will now apply DF_VAR_EDITED
+  - bugfix: regal rat can now eat cheese + runtime fixes for its signal
+  - bugfix: Syringe/Hypospray failure messages now reflect the proper body part.
+  - bugfix: list literal can now contain tables,like they are supposed to
+  Station Engineering Safety Association (SESA):
+  - bugfix: Atmospherics Helmets are properly fitted for muzzled/beaked crewmembers
+      now
+  YakumoChen:
+  - balance: Reverted some Venus Human Trap nerfs, which removed their ability to
+      pull mobs and heal by walking in vines, in exchange for being able to grow vines
+      slightly faster.
+  jjpark-kb:
+  - rscadd: added the conveyor sorter, which can force move things to a direction
+      if in the sorting list
+  - rscadd: added admin-spawned supermatter cascade
+  linnpap:
+  - rscadd: Added vape carts
+  - rscdel: Removed lipolicide from cannabis
+  - rscadd: Adds increased hunger as an effect of THC
+  softcerv:
+  - refactor: Mediguns and Medicells are now subtypes of Cell-Based guns and Weapon-Cells.
+  - refactor: 'Medicells now use a balloon alert rather than a notice when toggling
+      between safe and unsafe. qol: examining medicells now shows the ammo type that
+      is added when using them on a gun. qol: Medigun upgrade kits now use the conversion
+      kit framework, making them easier to upgrade.'
