@@ -109,7 +109,7 @@
 		return
 
 	if(--next_fact <= 0)
-		next_fact = initial(next_fact)
+		next_fact = rand(initial(next_fact), 2 * initial(next_fact))
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
 	use_power(500)
