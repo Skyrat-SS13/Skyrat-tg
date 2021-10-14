@@ -1,3 +1,5 @@
+#define GOLIATH_STUN_TIME_SEVA 12 SECONDS
+
 //A slow but strong beast that tries to stun using its tentacles
 /mob/living/simple_animal/hostile/asteroid/goliath
 	name = "goliath"
@@ -219,7 +221,7 @@
 			continue
 		visible_message(span_danger("[src] grabs hold of [L]!"))
 		if(HAS_TRAIT(L,TRAIT_GOLIATH_STUN)) //SKYRAT EDIT START GOLIATH STUN TIME, SEVA
-			L.Stun(120)
+			L.Stun(GOLIATH_STUN_TIME_SEVA)
 		else			//SKYRAT EDIT END GOLIATH STUN TIME, SEVA
 			L.Stun(100)
 		L.adjustBruteLoss(rand(10,15))
@@ -240,3 +242,5 @@
 	desc = "This saddle will solve all your problems with being killed by lava beasts!"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "goliath_saddle"
+
+#undef GOLIATH_STUN_TIME_SEVA
