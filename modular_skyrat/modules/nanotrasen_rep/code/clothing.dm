@@ -61,6 +61,7 @@
 
 /obj/item/clothing/suit/toggle/armor/vest/centcom_formal/ntrep
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/wintercoat/centcom/ntrep
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
