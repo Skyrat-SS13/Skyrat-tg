@@ -41,7 +41,7 @@
 		var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi', icon_state = L[a])
 		wide.pixel_x = -16
 		standard_icons[a] = wide
-	standard_icons = sortList(standard_icons)
+	standard_icons = sort_list(standard_icons)
 	var/standard_borg_icon = show_radial_menu(cyborg, cyborg , standard_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(standard_borg_icon)
 		if("Default")
@@ -116,7 +116,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			engi_icons[a] = wide
-		engi_icons = sortList(engi_icons)
+		engi_icons = sort_list(engi_icons)
 	var/engi_borg_icon = show_radial_menu(cyborg, cyborg , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(engi_borg_icon)
 		if("Default")
@@ -248,7 +248,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			sec_icons[a] = wide
-		sec_icons = sortList(sec_icons)
+		sec_icons = sort_list(sec_icons)
 	var/sec_borg_icon = show_radial_menu(cyborg, cyborg , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(sec_borg_icon)
 		if("Default")
@@ -361,7 +361,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			peace_icons[a] = wide
-		peace_icons = sortList(peace_icons)
+		peace_icons = sort_list(peace_icons)
 	var/peace_borg_icon = show_radial_menu(cyborg, cyborg , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
 		if("Default")
@@ -442,7 +442,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			janitor_icons[a] = wide
-		janitor_icons = sortList(janitor_icons)
+		janitor_icons = sort_list(janitor_icons)
 	var/janitor_robot_icon = show_radial_menu(cyborg, cyborg , janitor_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(janitor_robot_icon)
 		if("Default")
@@ -524,7 +524,7 @@
 //CLOWN
 /obj/item/robot_model/clown/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
-	var/static/list/clown_icons = sortList(list(
+	var/static/list/clown_icons = sort_list(list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
 		"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "bootyclown"),
 		"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "male_bootyclown"),
@@ -587,7 +587,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			service_icons[a] = wide
-		service_icons = sortList(service_icons)
+		service_icons = sort_list(service_icons)
 	var/service_robot_icon = show_radial_menu(cyborg, cyborg , service_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
 		if("Waitress")
@@ -692,7 +692,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			mining_icons[a] = wide
-		mining_icons = sortList(mining_icons)
+		mining_icons = sort_list(mining_icons)
 	var/mining_borg_icon = show_radial_menu(cyborg, cyborg , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(mining_borg_icon)
 		if("Lavaland")
@@ -820,7 +820,7 @@
 
 /obj/item/robot_model/syndicatejack/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
-	var/static/list/syndicatejack_icons = sortList(list(
+	var/static/list/syndicatejack_icons = sort_list(list(
 		"Saboteur" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_engi"),
 		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical"),
 		"Assault" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
