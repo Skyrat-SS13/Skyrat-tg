@@ -255,7 +255,10 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/msg = pick(message)
 	// We replace %USER% with nothing because manual_emote already prepends it.
 	msg = trim(replacetext(replacetext(msg, "%TARGET%", "[target]"), "%USER%", ""), INTERACTION_MAX_CHAR)
-	user.manual_emote(msg)
+	if(lewd)
+		user.emote("subtler", null, msg, TRUE)
+	else
+		user.manual_emote(msg)
 	var/user_msg = pick(user_messages)
 	user_msg = replacetext(replacetext(user_msg, "%TARGET%", "[target]"), "%USER%", "[user]")
 	to_chat(user, user_msg)
