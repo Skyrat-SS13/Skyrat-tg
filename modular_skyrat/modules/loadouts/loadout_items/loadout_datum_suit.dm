@@ -334,58 +334,68 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 
 //HOODIES
+/datum/loadout_item/suit/hoodie/greyscale
+	name = "Greyscale Hoodie"
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie
+	can_be_greyscale = TRUE
 
-/datum/loadout_item/suit/hoodie/grey
-	name = "Grey Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie
+/datum/loadout_item/suit/hoodie/greyscale_trim
+	name = "Greyscale Trimmed Hoodie"
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/trim
+	can_be_greyscale = TRUE
+
+/datum/loadout_item/suit/hoodie/greyscale_trim_alt
+	name = "Greyscale Trimmed(Alt) Hoodie"
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/trim/alt
+	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/black
 	name = "Black Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/black
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/black
 
 /datum/loadout_item/suit/red
 	name = "Red Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/red
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/red
 
 /datum/loadout_item/suit/blue
 	name = "Blue Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/blue
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/blue
 
 /datum/loadout_item/suit/green
 	name = "Green Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/green
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/green
 
 /datum/loadout_item/suit/orange
-	name = "orange hoodies"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/orange
+	name = "Orange Hoodie"
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/orange
 
 /datum/loadout_item/suit/yellow
 	name = "Yellow Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/yellow
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/yellow
 
 /datum/loadout_item/suit/white
 	name = "White Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/white
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/white
 
 /datum/loadout_item/suit/cti
 	name = "CTI Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/cti
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/cti
 
 /datum/loadout_item/suit/mu
 	name = "Mojave University Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/mu
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/mu
 
 /datum/loadout_item/suit/nt
 	name = "NT Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/nt
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded
 
 /datum/loadout_item/suit/smw
 	name = "SMW Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/smw
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/smw
 
 /datum/loadout_item/suit/nrti
 	name = "NRTI Hoodie"
-	item_path = /obj/item/clothing/suit/storage/toggle/hoodie/nrti
+	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/nrti
 
 //JOB RELATED
 

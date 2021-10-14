@@ -29,33 +29,25 @@
 /// HOODIES ///
 /datum/greyscale_config/hoodie
 	name = "Hoodie"
-	icon_file = 'modular_skyrat/modules/berets/icons/obj/clothing/head/beret.dmi'
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
+	icon_file = 'modular_skyrat/modules/berets/icons/obj/clothing/head/beret.dmi'	//TEMPORARY, WILL BE CHANGED
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie.json'
 
-/datum/greyscale_config/hoodie/trim_a
+/datum/greyscale_config/hoodie/worn
+	name = "Hoodie Worn"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_worn.json'
+
+/datum/greyscale_config/hoodie/trim
 	name = "Trimmed Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_trim.json'
 
-/datum/greyscale_config/hoodie/trim_b
-	name = "Trimmed Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
+/datum/greyscale_config/hoodie/trim/worn
+	name = "Trimmed Hoodie Worn"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_trim_worn.json'
 
-/datum/greyscale_config/hoodie/nt_branded
-	name = "Nanotrasen Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
+/datum/greyscale_config/hoodie/branded
+	name = "Branded Hoodie"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_branded.json'
 
-/datum/greyscale_config/hoodie/smw_branded
-	name = "Nanotrasen Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
-
-/datum/greyscale_config/hoodie/nrti_branded
-	name = "Nanotrasen Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
-
-/datum/greyscale_config/hoodie/mu_branded
-	name = "Nanotrasen Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
-
-/datum/greyscale_config/hoodie/cti_branded
-	name = "Nanotrasen Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret.json'
+/datum/greyscale_config/hoodie/branded/worn
+	name = "Branded Hoodie"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_branded_worn.json'
