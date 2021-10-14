@@ -42,13 +42,3 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-/datum/crafting_recipe/medigunfast
-	name = "Medigun Fast Charge Upgrade"
-	tool_behaviors = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	result = /obj/item/gun/energy/medigun/upgraded
-	reqs = list(/obj/item/gun/energy/medigun/standard = 1,
-				/obj/item/stack/cable_coil = 5,
-				/obj/item/upgradekit/medigun/charge = 1)
-	time = 150
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON

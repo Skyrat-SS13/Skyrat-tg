@@ -43,24 +43,25 @@
 	for(var/spath in subtypesof(/datum/scream_type))
 		var/datum/scream_type/S = new spath()
 		GLOB.scream_types[S.name] = spath
-	sortList(GLOB.scream_types, /proc/cmp_typepaths_asc)
+	sort_list(GLOB.scream_types, /proc/cmp_typepaths_asc)
 
 	//Laugh types
 	for(var/spath in subtypesof(/datum/laugh_type))
 		var/datum/laugh_type/L = new spath()
 		GLOB.laugh_types[L.name] = spath
-	sortList(GLOB.laugh_types, /proc/cmp_typepaths_asc)
+	sort_list(GLOB.laugh_types, /proc/cmp_typepaths_asc)
+	//SKYRAT EDIT END
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))
 		var/datum/species/S = new spath()
 		GLOB.species_list[S.id] = spath
-	sortList(GLOB.species_list, /proc/cmp_typepaths_asc)
+	sort_list(GLOB.species_list, /proc/cmp_typepaths_asc)
 
 	//Surgeries
 	for(var/path in subtypesof(/datum/surgery))
 		GLOB.surgeries_list += new path()
-	sortList(GLOB.surgeries_list, /proc/cmp_typepaths_asc)
+	sort_list(GLOB.surgeries_list, /proc/cmp_typepaths_asc)
 
 	// Hair Gradients - Initialise all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
 	for(var/path in subtypesof(/datum/sprite_accessory/hair_gradient))
@@ -81,7 +82,7 @@
 /proc/init_crafting_recipes(list/crafting_recipes)
 	for(var/path in subtypesof(/datum/crafting_recipe))
 		var/datum/crafting_recipe/recipe = new path()
-		recipe.reqs = sortList(recipe.reqs, /proc/cmp_crafting_req_priority)
+		recipe.reqs = sort_list(recipe.reqs, /proc/cmp_crafting_req_priority)
 		crafting_recipes += recipe
 	return crafting_recipes
 
