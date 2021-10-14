@@ -58,7 +58,6 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 //rather than making a visual change, create a sound to reel back in
 /datum/component/fishing/proc/reel_sound()
 	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
-	mutate_parent.z = -8
 
 /datum/component/fishing/proc/finish_fishing(atom/fisher = null, master_involved = FALSE)
 	if(reel_sound_timer)
@@ -80,7 +79,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	var/atom/spawning_reward = pickweight(possible_loot)
 	if(prob(25))
 		spawning_reward = pickweight(GLOB.trash_loot)
-		while(islist(lootspawn))
+		while(islist(spawning_reward))
 			spawning_reward = pickweight(spawning_reward)
 	new spawning_reward(spawning_turf)
 	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
