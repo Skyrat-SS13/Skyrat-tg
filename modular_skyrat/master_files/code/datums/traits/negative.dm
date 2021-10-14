@@ -6,6 +6,7 @@
 	value = -4
 	mob_trait = TRAIT_MOOD_NOEXAMINE
 	medical_record_text = "Patient is incapable of communicating their emotions."
+	icon = "question-circle"
 
 /datum/quirk/sensitivesnout
 	name = "Sensitive Snout"
@@ -15,6 +16,7 @@
 	medical_record_text = "Patient's nose seems to have a cluster of nerves in the tip, would advise against direct contact."
 	value = -2
 	mob_trait = TRAIT_SENSITIVESNOUT
+	icon = "fingerprint"
 
 /datum/quirk/monophobia
 	name = "Monophobia"
@@ -23,6 +25,7 @@
 	gain_text = "<span class='danger'>You feel really lonely...</span>"
 	lose_text = "<span class='notice'>You feel like you could be safe on your own.</span>"
 	medical_record_text = "Patient feels sick and distressed when not around other people, leading to potentially lethal levels of stress."
+	icon = "people-arrows"
 
 /datum/quirk/monophobia/post_add()
 	. = ..()
@@ -42,3 +45,4 @@
 	medical_record_text = "Patient's digits are thick and lack the dexterity for operating some small devices, computers and non-adapted firearms."
 	value = -8
 	mob_trait = TRAIT_CHUNKYFINGERS
+	icon = "hand-middle-finger"

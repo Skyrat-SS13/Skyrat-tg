@@ -100,6 +100,10 @@
 //ash walker nest
 /area/ruin/unpowered/ash_walkers
 	icon_state = "red"
+	//SKYRAT EDIT ADDITION BEGIN - ASH WALKER MACHINES FIX
+	always_unpowered = FALSE
+	power_equip = TRUE
+	//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/ratvar
 	icon_state = "dk_yellow"
