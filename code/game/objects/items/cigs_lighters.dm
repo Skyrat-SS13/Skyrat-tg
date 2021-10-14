@@ -120,7 +120,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT)
 	grind_results = list(/datum/reagent/carbon = 2)
 
-/obj/item/match/firebrand/Initialize()
+/obj/item/match/firebrand/Initialize(mapload)
 	. = ..()
 	matchignite()
 
@@ -166,7 +166,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	var/pollution_type = /datum/pollutant/smoke //SKYRAT EDIT ADDITION /// What type of pollution does this produce on smoking, changed to weed pollution sometimes
 
 
-/obj/item/clothing/mask/cigarette/Initialize()
+/obj/item/clothing/mask/cigarette/Initialize(mapload)
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 	if(list_reagents)
@@ -384,7 +384,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/carp
 	desc = "A Carp Classic brand cigarette. A small label on its side indicates that it does NOT contain carpotoxin."
 
-/obj/item/clothing/mask/cigarette/carp/Initialize()
+/obj/item/clothing/mask/cigarette/carp/Initialize(mapload)
 	. = ..()
 	if(!prob(5))
 		return
@@ -420,7 +420,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 50
 	list_reagents = null
 
-/obj/item/clothing/mask/cigarette/rollie/Initialize()
+/obj/item/clothing/mask/cigarette/rollie/Initialize(mapload)
 	. = ..()
 	name = pick(list(
 		"bifta",
@@ -502,7 +502,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A manky old roach, or for non-stoners, a used rollup."
 	icon_state = "roach"
 
-/obj/item/cigbutt/roach/Initialize()
+/obj/item/cigbutt/roach/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
@@ -573,7 +573,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	list_reagents = null
 	var/packeditem = FALSE
 
-/obj/item/clothing/mask/cigarette/pipe/Initialize()
+/obj/item/clothing/mask/cigarette/pipe/Initialize(mapload)
 	. = ..()
 	name = "empty [initial(name)]"
 
@@ -696,7 +696,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		"snake"
 		)
 
-/obj/item/lighter/Initialize()
+/obj/item/lighter/Initialize(mapload)
 	. = ..()
 	if(!overlay_state)
 		overlay_state = pick(overlay_list)
@@ -870,7 +870,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		COLOR_ASSEMBLY_PURPLE
 		)
 
-/obj/item/lighter/greyscale/Initialize()
+/obj/item/lighter/greyscale/Initialize(mapload)
 	. = ..()
 	if(!lighter_color)
 		lighter_color = pick(color_list)
@@ -967,7 +967,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!screw)
 			screw = TRUE
 			to_chat(user, span_notice("You open the cap on [src]."))
-			reagents.flags |= OPENCONTAINER
+			//reagents.flags |= OPENCONTAINER - SKYRAT REMOVAL - VAPE CARTS
 			if(obj_flags & EMAGGED)
 				add_overlay("vapeopen_high")
 			else if(super)

@@ -36,7 +36,7 @@
 		qdel(O)
 	..()
 
-/obj/item/slime_extract/Initialize()
+/obj/item/slime_extract/Initialize(mapload)
 	. = ..()
 	create_reagents(100, INJECTABLE | DRAWABLE)
 
@@ -260,7 +260,7 @@
 	name = "yellow slime extract"
 	icon_state = "yellow slime extract"
 	effectmod = "charged"
-	activate_reagents = list(/datum/reagent/blood,/datum/reagent/water)
+	activate_reagents = list(/datum/reagent/blood,/datum/reagent/toxin/plasma,/datum/reagent/water)
 
 /obj/item/slime_extract/yellow/activate(mob/living/carbon/human/user, datum/species/jelly/luminescent/species, activation_type)
 	switch(activation_type)

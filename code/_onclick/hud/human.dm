@@ -239,7 +239,7 @@
 	using.screen_loc = ui_erp_inventory
 	using.hud = src
 	// When creating a character, we will check if the ERP is enabled on the client, if not, then the ERP button is immediately invisible
-	if(owner.client?.prefs.sextoys_pref != "Yes")
+	if(!owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		using.invisibility = 100
 	static_inventory += using
 	//SKYRAT EDIT ADDITION END
@@ -308,7 +308,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "vagina"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "vagina"
 	inv_box.screen_loc = ui_vagina_down
 	inv_box.slot_id = ITEM_SLOT_VAGINA
@@ -317,7 +317,7 @@
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "anus"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "anus"
 	inv_box.screen_loc = ui_anus_down
 	inv_box.slot_id = ITEM_SLOT_ANUS
@@ -326,7 +326,7 @@
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "nipples"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "nipples"
 	inv_box.screen_loc = ui_nipples_down
 	inv_box.slot_id = ITEM_SLOT_NIPPLES
@@ -335,7 +335,7 @@
 
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "penis"
-	inv_box.icon = ui_style
+	inv_box.icon = erp_ui_style
 	inv_box.icon_state = "penis"
 	inv_box.screen_loc = ui_penis_down
 	inv_box.slot_id = ITEM_SLOT_PENIS
@@ -470,7 +470,7 @@
 		if(H.head) screenmob.client.screen -= H.head
 
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-	if(screenmob.hud_used.ERP_inventory_shown && screenmob.hud_used.hud_shown && H.client.prefs?.sextoys_pref == "Yes")
+	if(screenmob.hud_used.ERP_inventory_shown && screenmob.hud_used.hud_shown && H.client.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(H.vagina)
 			// This shity code need for hanlde an moving UI stuff when default inventory expand/collapse
 			if(screenmob.hud_used.inventory_shown && screenmob.hud_used)
@@ -535,7 +535,7 @@
 				screenmob.client.screen += H.r_store
 
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(H.client.prefs?.sextoys_pref == "Yes")
+			if(H.client.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				if(H.vagina)
 					H.vagina.screen_loc = ui_vagina
 					screenmob.client.screen += H.vagina

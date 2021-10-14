@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
 	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
-	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
+	var/list/allowed_contents = typecache_filter_list_reverse(get_all_contents_ignoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
 		var/thing = allowed_contents[i]
@@ -20,14 +20,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/copyTurf(turf/T)
 	if(T.type != type)
-		var/obj/O
-		if(underlays.len) //we have underlays, which implies some sort of transparency, so we want to a snapshot of the previous turf as an underlay
-			O = new()
-			O.underlays += T
 		T.ChangeTurf(type)
-		if(underlays.len)
-			T.underlays.Cut()
-			T.underlays += O.underlays
 	if(T.icon_state != icon_state)
 		T.icon_state = icon_state
 	if(T.icon != icon)
@@ -176,6 +169,11 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 				else
 					qdel(old_liquids, TRUE)
 	//SKYRAT EDIT END
+
+	var/area/thisarea = get_area(W)
+	if(thisarea.lighting_effect)
+		W.add_overlay(thisarea.lighting_effect)
+
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	QUEUE_SMOOTH(src)
 
@@ -213,7 +211,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			qdel(pollution)
 		//SKYRAT EDIT END
 		SSair.remove_from_active(src) //Clean up wall excitement, and refresh excited groups
-		if(ispath(path,/turf/closed))
+		if(ispath(path,/turf/closed) || ispath(path,/turf/cordon))
 			flags |= CHANGETURF_RECALC_ADJACENT
 		return ..()
 

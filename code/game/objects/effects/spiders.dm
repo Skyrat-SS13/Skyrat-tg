@@ -50,7 +50,7 @@
 	var/obj/item/stack/sheet/cloth/woven_cloth = new /obj/item/stack/sheet/cloth
 	user.put_in_hands(woven_cloth)
 
-/obj/structure/spider/stickyweb/Initialize()
+/obj/structure/spider/stickyweb/Initialize(mapload)
 	if(!sealed && prob(50))
 		icon_state = "stickyweb2"
 	. = ..()
@@ -107,7 +107,7 @@
 	/// Mob spawner handling the actual spawn of the spider
 	var/obj/effect/mob_spawn/spider/spawner
 
-/obj/structure/spider/eggcluster/Initialize()
+/obj/structure/spider/eggcluster/Initialize(mapload)
 	pixel_x = base_pixel_x + rand(3,-3)
 	pixel_y = base_pixel_y + rand(3,-3)
 	return ..()
@@ -261,7 +261,7 @@
 		option.image = image(icon = initial(spider.icon), icon_state = initial(spider.icon_state))
 		option.info = span_boldnotice("[initial(spider.menu_description)]")
 		display_spiders[initial(spider.name)] = option
-	sortList(display_spiders)
+	sort_list(display_spiders)
 	var/chosen_spider = show_radial_menu(user, egg, display_spiders, radius = 38)
 	chosen_spider = spider_list[chosen_spider]
 	if(QDELETED(src) || QDELETED(user) || !chosen_spider)
@@ -287,7 +287,7 @@
 	new/obj/item/food/spiderling(get_turf(src))
 	. = ..()
 
-/obj/structure/spider/spiderling/Initialize()
+/obj/structure/spider/spiderling/Initialize(mapload)
 	. = ..()
 	pixel_x = rand(6,-6)
 	pixel_y = rand(6,-6)
@@ -401,7 +401,7 @@
 	icon_state = "cocoon1"
 	max_integrity = 60
 
-/obj/structure/spider/cocoon/Initialize()
+/obj/structure/spider/cocoon/Initialize(mapload)
 	icon_state = pick("cocoon1","cocoon2","cocoon3")
 	. = ..()
 

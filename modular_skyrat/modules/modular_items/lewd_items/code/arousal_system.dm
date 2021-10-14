@@ -178,7 +178,7 @@
 
 /datum/status_effect/body_fluid_regen/tick()
 	var/mob/living/carbon/human/H = owner
-	if(owner.stat != DEAD && H.client?.prefs.sextoys_pref == "Yes")
+	if(owner.stat != DEAD && H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 		var/obj/item/organ/genital/breasts/breasts = owner.getorganslot(ORGAN_SLOT_BREASTS)
 		var/obj/item/organ/genital/vagina/vagina = owner.getorganslot(ORGAN_SLOT_VAGINA)
@@ -192,11 +192,9 @@
 		if(breasts)
 			if(breasts.lactates == TRUE)
 				var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED/100))/100) * (breasts.internal_fluids.maximum_volume/11000) * interval
-				breasts.internal_fluids.add_reagent(/datum/reagent/consumable/milk/breast_milk, regen)
 				if(!breasts.internal_fluids.holder_full())
-					owner.adjust_nutrition(regen / 2)
-				else
-					regen = regen
+					owner.adjust_nutrition(-regen / 2)
+					breasts.internal_fluids.add_reagent(/datum/reagent/consumable/milk/breast_milk, regen)
 
 		if(vagina)
 			if(H.arousal >= AROUS_SYS_LITTLE)
@@ -214,7 +212,7 @@
 	return arousal
 
 /mob/living/carbon/human/proc/adjustArousal(arous = 0)
-	if(stat != DEAD && client?.prefs.sextoys_pref == "Yes")
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		arousal += arous
 
 		var/arousal_flag = AROUSAL_NONE
@@ -290,7 +288,7 @@
 	return pain
 
 /mob/living/carbon/human/proc/adjustPain(pn = 0)
-	if(stat != DEAD && client?.prefs.sextoys_pref == "Yes")
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(pain > pain_limit || pn > pain_limit / 10) // pain system // YOUR SYSTEM IS PAIN, WHY WE'RE GETTING AROUSED BY STEPPING ON ANTS?!
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
 				var/p = pn - (pain_limit / 10)
@@ -317,7 +315,7 @@
 	return pleasure
 
 /mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
-	if(stat != DEAD && client?.prefs.sextoys_pref == "Yes")
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
 			climax(FALSE)
@@ -330,7 +328,7 @@
 	. = ..()
 	if(!.)
 		return
-	if(H.client?.prefs.sextoys_pref == "No")
+	if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
 	var/hit_percent = (100-(blocked+armor))/100
 	hit_percent = (hit_percent * (100-H.physiology.damage_resistance))/100
@@ -362,9 +360,11 @@
 	timeout = 10 MINUTES
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	var/obj/item/organ/genital/penis = getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/vagina = getorganslot(ORGAN_SLOT_VAGINA)
-	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs.sextoys_pref == "Yes")
+	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(!HAS_TRAIT(src, TRAIT_NEVERBONER) && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
@@ -427,7 +427,7 @@
 							span_purple("You can't have an orgasm!"))
 		return TRUE
 
-	else if(manual == FALSE && client?.prefs.sextoys_pref == "Yes")
+	else if(manual == FALSE && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(!HAS_TRAIT(src, TRAIT_NEVERBONER) && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
@@ -486,7 +486,7 @@
 
 /datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming on somebody's face or in beaker.
 	var/mob/living/carbon/human/H = owner
-	if(H.client?.prefs.sextoys_pref == "Yes")
+	if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/temp_arousal = -12
 		var/temp_pleasure = -12
 		var/temp_stamina = 8
@@ -504,7 +504,7 @@
 
 /datum/status_effect/climax/tick()
 	var/mob/living/carbon/human/H = owner
-	if(H.client?.prefs.sextoys_pref == "Yes")
+	if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/temp_arousal = -12
 		var/temp_pleasure = -12
 		var/temp_stamina = 15
@@ -520,7 +520,7 @@
 	var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/testicles/penis = owner.getorganslot(ORGAN_SLOT_PENIS)
 
-	if((H.client?.prefs.sextoys_pref == "Yes") && (H.stat != DEAD))
+	if((H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)) && (H.stat != DEAD))
 		if(penis && balls && H.wear_condom())
 			if(prob(40))
 				H.emote("moan")
@@ -603,7 +603,7 @@
 /obj/item/organ/brain/on_life(delta_time, times_fired) //All your horny is here *points to the head*
 	. = ..()
 	var/mob/living/carbon/human/brain_owner = owner
-	if(istype(brain_owner, /mob/living/carbon/human) && brain_owner.client?.prefs.sextoys_pref == "Yes")
+	if(istype(brain_owner, /mob/living/carbon/human) && brain_owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(!(organ_flags & ORGAN_FAILING))
 			brain_owner.dna.species.handle_arousal(brain_owner, delta_time, times_fired)
 
@@ -653,7 +653,7 @@
 
 /datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused_X)
 	var/atom/movable/screen/alert/aroused_X/arousal_alert = target_human.alerts["aroused"]
-	if(target_human.client?.prefs.sextoys_pref == "Yes")
+	if(target_human.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		switch(target_human.arousal)
 			if(-100 to 1)
 				target_human.clear_alert("aroused", /atom/movable/screen/alert/aroused_X)
@@ -803,7 +803,17 @@
 	cooldown = 30 SECONDS
 */
 
+/datum/emote/living/cum/check_config()
+	return !CONFIG_GET(flag/disable_erp_preferences)
+
+/datum/emote/living/cum/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
+	if (!check_config())
+		return FALSE
+	. = ..()
+
 /datum/emote/living/cum/run_emote(mob/living/user, params, type_override, intentional)
+	if (!check_config())
+		return
 	. = ..()
 	if(!.)
 		return
@@ -836,6 +846,8 @@
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
 
 /obj/item/coom/attack(mob/living/M, mob/user, proximity)
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	if(!proximity)
 		return
 	if(!ishuman(M))
@@ -846,7 +858,7 @@
 	if(!human_cumvictim.client)
 		to_chat(user, span_warning("You can't cum onto [M]."))
 		return
-	if(!(human_cumvictim.client.prefs.skyrat_toggles & CUMFACE_PREF)) //im just paranoid about runtime errors
+	if(!(human_cumvictim.client.prefs.read_preference(/datum/preference/toggle/erp/cum_face))) //im just paranoid about runtime errors
 		to_chat(user, span_warning("You can't cum onto [M]."))
 		return
 	var/mob/living/carbon/human/H = user
@@ -880,6 +892,8 @@
 //jerk off into bottles
 /obj/item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	if(!proximity)
 		return
 	if(ishuman(target))

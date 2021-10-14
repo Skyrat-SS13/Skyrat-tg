@@ -38,7 +38,7 @@
 	/// List of available condibottle styles for UI
 	var/list/condi_styles
 
-/obj/machinery/chem_master/Initialize()
+/obj/machinery/chem_master/Initialize(mapload)
 	create_reagents(100)
 
 	//Calculate the span tags and ids fo all the available pill icons
@@ -398,9 +398,9 @@
 				reagents.trans_to(P, vol_each, transfered_by = usr)
 		//SKYRAT EDIT ADDTION HYPOVIALS START
 		if(item_type == "vial")
-			var/obj/item/reagent_containers/glass/bottle/vial/small/P
+			var/obj/item/reagent_containers/glass/vial/small/P
 			for(var/i = 0; i < amount; i++)
-				P = new/obj/item/reagent_containers/glass/bottle/vial/small(drop_location())
+				P = new/obj/item/reagent_containers/glass/vial/small(drop_location())
 				P.name = trim("[name] vial")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)

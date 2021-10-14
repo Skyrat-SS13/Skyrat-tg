@@ -10,7 +10,7 @@
 	///Does this flashlight have modes?
 	var/has_modes = TRUE
 
-/obj/item/flashlight/Initialize()
+/obj/item/flashlight/Initialize(mapload)
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		turn_on()

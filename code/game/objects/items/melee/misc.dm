@@ -49,7 +49,7 @@
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_EDGED
 
-/obj/item/melee/synthetic_arm_blade/Initialize()
+/obj/item/melee/synthetic_arm_blade/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 60, 80) //very imprecise
 
@@ -75,7 +75,7 @@
 	wound_bonus = 10
 	bare_wound_bonus = 25
 
-/obj/item/melee/sabre/Initialize()
+/obj/item/melee/sabre/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 30, 95, 5) //fast and effective, but as a sword, it might damage the results.
 
@@ -187,7 +187,7 @@
 	var/balanced = 1
 	force_string = "INFINITE"
 
-/obj/item/melee/supermatter_sword/Initialize()
+/obj/item/melee/supermatter_sword/Initialize(mapload)
 	. = ..()
 	shard = new /obj/machinery/power/supermatter_crystal(src)
 	qdel(shard.countdown)
@@ -296,8 +296,8 @@
 /obj/item/melee/roastingstick
 	name = "advanced roasting stick"
 	desc = "A telescopic roasting stick with a miniature shield generator designed to ensure entry into various high-tech shielded cooking ovens and firepits."
-	icon_state = "roastingstick_0"
-	inhand_icon_state = "null"
+	icon_state = "roastingstick"
+	inhand_icon_state = null
 	worn_icon_state = "tele_baton"
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
@@ -305,33 +305,55 @@
 	force = 0
 	attack_verb_continuous = list("hits", "pokes")
 	attack_verb_simple = list("hit", "poke")
+	/// The sausage attatched to our stick.
 	var/obj/item/food/sausage/held_sausage
+	/// Static list of things our roasting stick can interact with.
 	var/static/list/ovens
-	var/on = FALSE
+	/// The beam that links to the oven we use
 	var/datum/beam/beam
+	/// Whether or stick is extended and can recieve sausage
+	var/extended = FALSE
 
-/obj/item/melee/roastingstick/Initialize()
+/obj/item/melee/roastingstick/Initialize(mapload)
 	. = ..()
 	if (!ovens)
 		ovens = typecacheof(list(/obj/singularity, /obj/energy_ball, /obj/machinery/power/supermatter_crystal, /obj/structure/bonfire))
+	AddComponent(/datum/component/transforming, \
+		hitsound_on = hitsound, \
+		clumsy_check = FALSE)
+	RegisterSignal(src, COMSIG_TRANSFORMING_PRE_TRANSFORM, .proc/attempt_transform)
+	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, .proc/on_transform)
 
-/obj/item/melee/roastingstick/attack_self(mob/user)
-	on = !on
-	if(on)
-		extend(user)
-	else
-		if (held_sausage)
-			to_chat(user, span_warning("You can't retract [src] while [held_sausage] is attached!"))
-			return
-		retract(user)
+/*
+ * Signal proc for [COMSIG_TRANSFORMING_PRE_TRANSFORM].
+ *
+ * If there is a sausage attached, returns COMPONENT_BLOCK_TRANSFORM.
+ */
+/obj/item/melee/roastingstick/proc/attempt_transform(obj/item/source, mob/user, active)
+	SIGNAL_HANDLER
 
-	playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, TRUE)
-	add_fingerprint(user)
+	if(held_sausage)
+		to_chat(user, span_warning("You can't retract [src] while [held_sausage] is attached!"))
+		return COMPONENT_BLOCK_TRANSFORM
+
+/*
+ * Signal proc for [COMSIG_TRANSFORMING_ON_TRANSFORM].
+ *
+ * Gives feedback on stick extension.
+ */
+/obj/item/melee/roastingstick/proc/on_transform(obj/item/source, mob/user, active)
+	SIGNAL_HANDLER
+
+	extended = active
+	inhand_icon_state = active ? "nullrod" : null
+	balloon_alert(user, "[active ? "extended" : "collapsed"] [src]")
+	playsound(user ? user : src, 'sound/weapons/batonextend.ogg', 50, TRUE)
+	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/melee/roastingstick/attackby(atom/target, mob/user)
 	..()
 	if (istype(target, /obj/item/food/sausage))
-		if (!on)
+		if (!extended)
 			to_chat(user, span_warning("You must extend [src] to attach anything to it!"))
 			return
 		if (held_sausage)
@@ -355,18 +377,6 @@
 	if(held_sausage)
 		. += mutable_appearance(icon, "roastingstick_sausage")
 
-/obj/item/melee/roastingstick/proc/extend(user)
-	to_chat(user, span_warning("You extend [src]."))
-	icon_state = "roastingstick_1"
-	inhand_icon_state = "nullrod"
-	w_class = WEIGHT_CLASS_BULKY
-
-/obj/item/melee/roastingstick/proc/retract(user)
-	to_chat(user, span_notice("You collapse [src]."))
-	icon_state = "roastingstick_0"
-	inhand_icon_state = null
-	w_class = WEIGHT_CLASS_SMALL
-
 /obj/item/melee/roastingstick/handle_atom_del(atom/target)
 	if (target == held_sausage)
 		held_sausage = null
@@ -374,7 +384,7 @@
 
 /obj/item/melee/roastingstick/afterattack(atom/target, mob/user, proximity)
 	. = ..()
-	if (!on)
+	if (!extended)
 		return
 	if (is_type_in_typecache(target, ovens))
 		if (held_sausage?.roasted)

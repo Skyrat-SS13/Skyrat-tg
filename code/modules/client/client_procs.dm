@@ -110,13 +110,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			hsrc = holder
 		if("usr")
 			hsrc = mob
-		if("prefs")
-			if (inprefs)
-				return
-			inprefs = TRUE
-			. = prefs.process_link(usr,href_list)
-			inprefs = FALSE
-			return
 		if("vars")
 			return view_var_Topic(href,href_list,hsrc)
 
@@ -249,12 +242,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	prefs = GLOB.preferences_datums[ckey]
 	if(prefs)
 		prefs.parent = src
+		prefs.apply_all_client_preferences()
 	else
 		prefs = new /datum/preferences(src)
 		GLOB.preferences_datums[ckey] = prefs
 	prefs.last_ip = address //these are gonna be used for banning
 	prefs.last_id = computer_id //these are gonna be used for banning
-	fps = (prefs.clientfps < 0) ? RECOMMENDED_FPS : prefs.clientfps
 
 	if(fexists(roundend_report_file()))
 		add_verb(src, /client/proc/show_previous_roundend_report)
@@ -413,7 +406,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		adminGreet()
 	if (mob && reconnecting)
 		var/stealth_admin = mob.client?.holder?.fakekey
-		var/announce_leave = mob.client?.prefs?.broadcast_login_logout
+		var/announce_leave = mob.client?.prefs?.read_preference(/datum/preference/toggle/broadcast_login_logout)
 		if (!stealth_admin)
 			deadchat_broadcast(" has reconnected.", "<b>[mob][mob.get_realname_string()]</b>", follow_target = mob, turf_target = get_turf(mob), message_type = DEADCHAT_LOGIN_LOGOUT, admin_only=!announce_leave)
 	add_verbs_from_config()
@@ -472,7 +465,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (!interviewee)
 		initialize_menus()
 
-	view_size = new(src, getScreenSize(prefs.widescreenpref))
+	view_size = new(src, getScreenSize(prefs.read_preference(/datum/preference/toggle/widescreen)))
 	view_size.resetFormat()
 	view_size.setZoomMode()
 	Master.UpdateTickRate()
@@ -490,7 +483,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/Destroy()
 	if(mob)
 		var/stealth_admin = mob.client?.holder?.fakekey
-		var/announce_join = mob.client?.prefs?.broadcast_login_logout
+		var/announce_join = mob.client?.prefs?.read_preference(/datum/preference/toggle/broadcast_login_logout)
 		if (!stealth_admin)
 			deadchat_broadcast(" has disconnected.", "<b>[mob][mob.get_realname_string()]</b>", follow_target = mob, turf_target = get_turf(mob), message_type = DEADCHAT_LOGIN_LOGOUT, admin_only=!announce_join)
 
@@ -530,17 +523,18 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		UNSETEMPTY(movingmob.client_mobs_in_contents)
 		movingmob = null
 	active_mousedown_item = null
-	SSambience.ambience_listening_clients -= src
+	SSambience.remove_ambience_client(src)
 	QDEL_NULL(view_size)
 	QDEL_NULL(void)
 	QDEL_NULL(tooltips)
+	QDEL_NULL(open_loadout_ui) //SKYRAT EDIT ADDITION
 	seen_messages = null
 	Master.UpdateTickRate()
 	..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
 	return QDEL_HINT_HARDDEL_NOW
 
 /client/proc/set_client_age_from_db(connectiontopic)
-	if (IsGuestKey(src.key))
+	if (is_guest_key(src.key))
 		return
 	if(!SSdbcore.Connect())
 		return
@@ -918,7 +912,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, span_danger("Your previous click was ignored because you've done too many in a second"))
 			return
 
-	if (prefs.hotkeys)
+	if (hotkeys)
 		// If hotkey mode is enabled, then clicking the map will automatically
 		// unfocus the text bar. This removes the red color from the text bar
 		// so that the visual focus indicator matches reality.
@@ -1010,8 +1004,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!D?.key_bindings)
 		return
 	movement_keys = list()
-	for(var/key in D.key_bindings)
-		for(var/kb_name in D.key_bindings[key])
+	for(var/kb_name in D.key_bindings)
+		for(var/key in D.key_bindings[kb_name])
 			switch(kb_name)
 				if("North")
 					movement_keys[key] = NORTH
@@ -1045,7 +1039,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (isliving(mob))
 		var/mob/living/M = mob
 		M.update_damage_hud()
-	if (prefs.auto_fit_viewport)
+	if (prefs.read_preference(/datum/preference/toggle/auto_fit_viewport))
 		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
 
 /client/proc/generate_clickcatcher()
@@ -1061,35 +1055,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/proc/AnnouncePR(announcement)
 	if(prefs && prefs.chat_toggles & CHAT_PULLR)
 		to_chat(src, announcement)
-
-/client/proc/show_character_previews(mutable_appearance/source)
-	LAZYINITLIST(char_render_holders)
-	if(!LAZYLEN(char_render_holders))
-		for(var/plane_master_path as anything in subtypesof(/atom/movable/screen/plane_master))
-			var/atom/movable/screen/plane_master/plane_master = new plane_master_path()
-			char_render_holders["plane_master-[plane_master.plane]"] = plane_master
-			plane_master.backdrop(mob)
-			screen |= plane_master
-			plane_master.screen_loc = "character_preview_map:0,CENTER"
-
-	var/pos = 0
-	for(var/dir in GLOB.cardinals)
-		pos++
-		var/atom/movable/screen/preview = char_render_holders["preview-[dir]"]
-		if(!preview)
-			preview = new
-			char_render_holders["preview-[dir]"] = preview
-			screen |= preview
-		preview.appearance = source
-		preview.dir = dir
-		preview.screen_loc = "character_preview_map:0,[pos]"
-
-/client/proc/clear_character_previews()
-	for(var/index in char_render_holders)
-		var/atom/movable/screen/S = char_render_holders[index]
-		screen -= S
-		qdel(S)
-	char_render_holders = null
 
 ///Redirect proc that makes it easier to call the unlock achievement proc. Achievement type is the typepath to the award, user is the mob getting the award, and value is an optional variable used for leaderboard value increments
 /client/proc/give_award(achievement_type, mob/user, value = 1)
@@ -1158,11 +1123,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				if (verbpath.name[1] != "@")
 					new child(src)
 
-	for (var/thing in prefs.menuoptions)
-		var/datum/verbs/menu/menuitem = GLOB.menulist[thing]
-		if (menuitem)
-			menuitem.Load_checked(src)
-
 /client/proc/open_filter_editor(atom/in_atom)
 	if(holder)
 		holder.filteriffic = new /datum/filter_editor(in_atom)
@@ -1185,7 +1145,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return // If already properly set we don't want to reset the timer.
 		SSambience.ambience_listening_clients[src] = world.time + 10 SECONDS //Just wait 10 seconds before the next one aight mate? cheers.
 	else
-		SSambience.ambience_listening_clients -= src
+		SSambience.remove_ambience_client(src)
 
 /// Checks if this client has met the days requirement passed in, or if
 /// they are exempt from it.
@@ -1215,3 +1175,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	var/mob/dead/observer/observer = mob
 	observer.ManualFollow(target)
+
+/client/verb/stop_client_sounds()
+	set name = "Stop Sounds"
+	set category = "OOC"
+	set desc = "Stop Current Sounds"
+	SEND_SOUND(usr, sound(null))
+	tgui_panel?.stop_music()
+	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
