@@ -296,7 +296,9 @@
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
 /proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
+	//SKYRAT EDIT ADDITION -
+	//if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
+	if (!do_mob(user, source, (strip_delay || item.strip_delay) * (HAS_TRAIT(user, TRAIT_STICKY_FINGERS) ? 0.5 : 1), interaction_key = REF(item)))
 		return FALSE
 
 	return TRUE
