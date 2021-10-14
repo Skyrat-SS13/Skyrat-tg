@@ -20,12 +20,12 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 #define INTERACTION_SELF "self"
 #define INTERACTION_OTHER "other"
 
-/mob/living/CtrlShiftClickOn(atom/atom_on)
+/mob/living/carbon/human/CtrlShiftClickOn(atom/atom_on)
 	. = ..()
 	if(.) // already handled, ignore
 		return .
-	if(isliving(atom_on))
-		var/mob/living/clicked_living = atom_on
+	if(ishuman(atom_on))
+		var/mob/living/carbon/human/clicked_living = atom_on
 		var/datum/component/interactable/clicked_int = clicked_living.GetComponent(/datum/component/interactable)
 		if(!clicked_int)
 			message_admins("Interactable CtrlShiftClickOn failure. Inform Coders.")
@@ -80,6 +80,17 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		int.sound_possible = sanitize_islist(ijson["sound_possible"], list("json error"))
 		int.interaction_requires = sanitize_islist(ijson["interaction_requires"], list())
 
+		/// Lewd things
+		int.user_required_parts = sanitize_islist(ijson["user_required_parts"], list())
+		int.user_arousal = sanitize_integer(ijson["user_arousal"], 0, 100, 0)
+		int.user_pleasure = sanitize_integer(ijson["user_pleasure"], 0, 100, 0)
+		int.user_pain = sanitize_integer(ijson["user_pain"], 0, 100, 0)
+		int.target_required_parts = sanitize_islist(ijson["target_required_parts"], list())
+		int.target_arousal = sanitize_integer(ijson["target_arousal"], 0, 100, 0)
+		int.target_pleasure = sanitize_integer(ijson["target_pleasure"], 0, 100, 0)
+		int.target_pain = sanitize_integer(ijson["target_pain"], 0, 100, 0)
+		int.lewd = sanitize_integer(ijson["lewd"], 0, 1, 0)
+
 		GLOB.interaction_instances[iname] = int
 
 /datum/interaction/proc/load_from_json(path)
@@ -100,6 +111,16 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	sound_range = sanitize_integer(json["sound_range"], 1, 7, 1)
 	sound_possible = sanitize_islist(json["sound_possible"], list("json error"))
 	interaction_requires = sanitize_islist(json["interaction_requires"], list())
+	/// Lewd things
+	user_required_parts = sanitize_islist(json["user_required_parts"], list())
+	user_arousal = sanitize_integer(json["user_arousal"], 0, 100, 0)
+	user_pleasure = sanitize_integer(json["user_pleasure"], 0, 100, 0)
+	user_pain = sanitize_integer(json["user_pain"], 0, 100, 0)
+	target_required_parts = sanitize_islist(json["target_required_parts"], list())
+	target_arousal = sanitize_integer(json["target_arousal"], 0, 100, 0)
+	target_pleasure = sanitize_integer(json["target_pleasure"], 0, 100, 0)
+	target_pain = sanitize_integer(json["target_pain"], 0, 100, 0)
+	lewd = sanitize_integer(json["lewd"], 0, 1, 0)
 	return TRUE
 
 /datum/interaction/proc/json_save(path)
@@ -116,28 +137,86 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		"sound_use" = sound_use,
 		"sound_range" = sound_range,
 		"sound_possible" = sound_possible,
-		"interaction_requires" = interaction_requires
+		"interaction_requires" = interaction_requires,
+		"user_required_parts" = user_required_parts,
+		"user_arousal" = user_arousal,
+		"user_pleasure" = user_pleasure,
+		"user_pain" = user_pain,
+		"target_required_parts" = target_required_parts,
+		"target_arousal" = target_arousal,
+		"target_pleasure" = target_pleasure,
+		"target_pain" = target_pain,
+		"lewd" = lewd,
 	)
 	var/file = file(fpath)
 	WRITE_FILE(file, json_encode(json))
 	return TRUE
 
 /datum/interaction
+	/// The name to be displayed in the interaction menu for this interaction
 	var/name = "broken interaction"
+	/// The description of the interacton.
 	var/description = "broken"
+	/// If it can be done at a distance.
 	var/distance_allowed = FALSE
+	/// A list of possible messages displayed loaded by the JSON.
 	var/list/message = list()
+	/// What category this interaction will fall under in the menu.
 	var/category = INTERACTION_CAT_HIDE
+	/// Defines how we interact with ourselves or others.
 	var/usage = INTERACTION_OTHER
+	/// Does this interaction play a sound?
 	var/sound_use = FALSE
+	/// If it plays a sound, how far does it travel?
 	var/sound_range = 1
+	/// Stores the sound for later.
 	var/sound_cache = null
+	/// Is this lewd?
+	var/lewd = FALSE
+	/// What parts do WE need(IMPORTANT TO GET IT TO THE CORRECT DEFINE, ORGAN SLOT)?
+	var/list/user_required_parts = list()
+	/// What parts do they need(IMPORTANT TO GET IT TO THE CORRECT DEFINE, ORGAN SLOT)?
+	var/list/target_required_parts = list()
+	/// The amount of pleasure the target recieves from this interaciton.
+	var/target_pleasure = 0
+	/// The amount of arousal the target recieves from this interaction.
+	var/target_arousal = 0
+	/// The amount of pain the target recieves.
+	var/target_pain = 0
+	/// The amount of pleasure the user recieves.
+	var/user_pleasure = 0
+	/// The amount of arousal the user recieves.
+	var/user_arousal = 0
+	/// The amount of pain the user recieves.
+	var/user_pain = 0
+	/// A list of possible sounds.
 	var/list/sound_possible = list()
+	/// What requirements does this interaction have? See defines.
 	var/list/interaction_requires = list()
 
-/datum/interaction/proc/allow_act(mob/living/user, mob/living/target)
+/datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target == user && usage == INTERACTION_OTHER)
 		return FALSE
+
+	if(lewd && !user.client?.prefs?.read_preference(/datum/preference/toggle/erp) || !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+		return FALSE
+
+	if(user_required_parts.len)
+		for(var/thing in user_required_parts)
+			var/obj/item/organ/genital/required_part = user.getorganslot(thing)
+			if(isnull(required_part))
+				return FALSE
+			if(!required_part.is_exposed())
+				return FALSE
+
+	if(target_required_parts.len)
+		for(var/thing in target_required_parts)
+			var/obj/item/organ/genital/required_part = target.getorganslot(thing)
+			if(isnull(required_part))
+				return FALSE
+			if(!required_part.is_exposed())
+				return FALSE
+
 	for(var/requirement in interaction_requires)
 		switch(requirement)
 			if(INTERACTION_REQUIRE_SELF_HAND)
@@ -157,7 +236,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 				CRASH("Unimplemented interaction requirement '[requirement]'")
 	return TRUE
 
-/datum/interaction/proc/act(mob/living/user, mob/living/target)
+/datum/interaction/proc/act(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(!message)
 		message_admins("Interaction had a null message list. '[name]'")
 		return
@@ -179,12 +258,34 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		for(var/mob/mob in view(sound_range, user))
 			SEND_SOUND(sound_cache, mob)
 
+	if(lewd)
+		if(user_required_parts.len)
+			for(var/thing in user_required_parts)
+				var/obj/item/organ/genital/required_part = user.getorganslot(thing)
+				required_part?.aroused = AROUSAL_FULL
+				required_part?.update_sprite_suffix()
+				user.update_body()
+
+		if(target_required_parts.len)
+			for(var/thing in target_required_parts)
+				var/obj/item/organ/genital/required_part = target.getorganslot(thing)
+				required_part?.aroused = AROUSAL_FULL
+				required_part?.update_sprite_suffix()
+				target.update_body()
+
+		user.adjustPleasure(user_pleasure)
+		user.adjustArousal(user_arousal)
+		user.adjustPain(user_pain)
+		target.adjustPleasure(target_pleasure)
+		target.adjustArousal(target_arousal)
+		target.adjustPain(target_pain)
+
 /datum/component/interactable
-	var/mob/living/self = null
+	var/mob/living/carbon/human/self = null
 	var/interact_last = 0
 	var/interact_next = 0
 
-/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/user)
+/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/user)
 	if(!interaction.allow_act(user, self))
 		return FALSE
 	if(!interaction.distance_allowed && !user.Adjacent(self))
@@ -219,7 +320,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 /datum/component/interactable/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE // This UI is always interactive as we handle distance flags via can_interact
 
-/mob/living/ComponentInitialize()
+/mob/living/carbon/human/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/interactable)
 
@@ -227,7 +328,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	. = ..()
 	self = parent
 
-/mob/living/verb/cmd_interact()
+/mob/living/carbon/human/verb/cmd_interact()
 	set src in view()
 	set category = "IC"
 	set name = "Interact"
@@ -270,7 +371,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	for(var/interaction in GLOB.interaction_instances)
 		if(interaction == params["interaction"])
 			GLOB.interaction_instances[interaction].act(locate(params["userref"]), locate(params["selfref"]))
-			var/mob/living/user = locate(params["userref"])
+			var/mob/living/carbon/human/user = locate(params["userref"])
 			var/datum/component/interactable/int = user.GetComponent(/datum/component/interactable)
 			int.interact_last = world.time
 			interact_next = int.interact_last + INTERACTION_COOLDOWN
