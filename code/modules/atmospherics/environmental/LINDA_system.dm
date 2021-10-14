@@ -70,21 +70,14 @@
 	UNSETEMPTY(atmos_adjacent_turfs)
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
 
-<<<<<<< HEAD
 	UpdateAdjacentPollutants() //SKYRAT EDIT ADDITION //Atmos adjacency could unlock/block adjacent pollutants, this is dirty flags anyway so its fine having it here
 
-//returns a list of adjacent turfs that can share air with this one.
-//alldir includes adjacent diagonal tiles that can share
-// air with both of the related adjacent cardinal tiles
-/turf/proc/GetAtmosAdjacentTurfs(alldir = 0)
-=======
 /**
  * returns a list of adjacent turfs that can share air with this one.
  * alldir includes adjacent diagonal tiles that can share
  * air with both of the related adjacent cardinal tiles
 **/
 /turf/proc/get_atmos_adjacent_turfs(alldir = 0)
->>>>>>> cb5fb1df2de (modules/atmospherics major cleanup (#61904))
 	var/adjacent_turfs
 	if (atmos_adjacent_turfs)
 		adjacent_turfs = atmos_adjacent_turfs.Copy()

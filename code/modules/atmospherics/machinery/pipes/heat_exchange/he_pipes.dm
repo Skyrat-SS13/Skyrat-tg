@@ -26,17 +26,12 @@
 	if(istype(local_turf))
 		if(islava(local_turf))
 			environment_temperature = 5000 //Yuck
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
-		else if (T.liquids && T.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
-			environment_temperature = T.liquids.temp
+		else if (local_turf.liquids && local_turf.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
+			environment_temperature = local_turf.liquids.temp
 		//SKYRAT EDIT END
-		else if(T.blocks_air)
-			environment_temperature = T.temperature
-=======
 		else if(local_turf.blocks_air)
 			environment_temperature = local_turf.temperature
->>>>>>> cb5fb1df2de (modules/atmospherics major cleanup (#61904))
 		else
 			var/turf/open/open_local = local_turf
 			environment_temperature = open_local.GetTemperature()
