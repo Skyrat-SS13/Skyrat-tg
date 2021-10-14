@@ -1,3 +1,17 @@
+/datum/design/board/oc_donut_steel_restoration_device
+	name = "Machine Design (Self-Actualization Device)"
+	desc = "The circuit board for a Self-Actualization Device by Cinco: A Family Company."
+	id = "oc_donut_steel_restoration_device"
+	build_path = /obj/item/circuitboard/machine/oc_donut_steel_restoration_device
+	category = list("Medical Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/obj/item/circuitboard/machine/oc_donut_steel_restoration_device
+	name = "Self-Actualization Device (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_MEDICAL
+	build_path = /obj/machinery/oc_donut_steel_restoration_device
+	req_components = list(/obj/item/stock_parts/micro_laser = 1)
+
 /obj/machinery/oc_donut_steel_restoration_device
 	name = "Self-Actualization Device"
 	desc = "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Morningstar corporation \
@@ -5,15 +19,13 @@
 	Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? \
 	Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
 	via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, \
-	ready to continue on with their day lawsuit-free! \n\n\
-	WARNING: KEEP AWAY FROM POTENTIAL SOURCES OF ELECTRO-MAGNETIC INTERFERENCE."
+	ready to continue on with their day lawsuit-free! WARNING: KEEP AWAY FROM POTENTIAL SOURCES OF ELECTRO-MAGNETIC INTERFERENCE."
 	icon = 'modular_skyrat/modules/donut_steel_restoration_device/cinco_machinery.dmi'
 	icon_state = "sad_open"
 	circuit = /obj/item/circuitboard/machine/oc_donut_steel_restoration_device
 	state_open = FALSE
 	density = TRUE
 	var/processing = FALSE
-	var/datum/looping_sound/microwave/soundloop
 	var/breakout_time = 10 SECONDS
 	var/processing_time = 1 MINUTES
 	var/next_fact = 10
@@ -23,23 +35,9 @@
 	"Please make sure to clean the Self-Actualization Device every fifteen minutes! The Self-Actualization Device is not to be used un-cleaned.", \
 	"Before using the Self-Actualization Device, remove your teeth. You don't want your pearly whites getting in the way of the Self-Actualization Device!" , \
 	"Please make sure to have your pre-Self Actualization Device brain-stimulating full-body gel lube session performed by a licensed lube man.", \
-	"Have more questions about the Self-Actualization Device? Call your Cinco Mancierge to requsition more information about the Self-Actualization Device!" \
+	"Have more questions about the Self-Actualization Device? Call your Cinco Mancierge to requisition more information about the Self-Actualization Device!" \
 	)
 	var/times_processed = 0
-
-/obj/item/circuitboard/machine/oc_donut_steel_restoration_device
-	name = "Self-Actualization Device (Machine Board)"
-	greyscale_colors = CIRCUIT_COLOR_MEDICAL
-	build_path = /obj/machinery/oc_donut_steel_restoration_device
-	req_components = list(/obj/item/stock_parts/micro_laser = 1)
-
-/datum/design/board/oc_donut_steel_restoration_device
-	name = "Machine Design (Self-Actualization Device)"
-	desc = "The circuit board for a Self-Actualization Device by Cinco: A Family Company."
-	id = "oc_donut_steel_restoration_device"
-	build_path = /obj/item/circuitboard/machine/oc_donut_steel_restoration_device
-	category = list("Medical Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /obj/machinery/oc_donut_steel_restoration_device/update_appearance(updates)
 	. = ..()
@@ -52,12 +50,7 @@
 
 /obj/machinery/oc_donut_steel_restoration_device/Initialize(mapload)
 	. = ..()
-	soundloop = new(src,  FALSE)
 	update_appearance()
-
-/obj/machinery/oc_donut_steel_restoration_device/Destroy()
-	QDEL_NULL(soundloop)
-	. = ..()
 
 /obj/machinery/oc_donut_steel_restoration_device/close_machine(mob/user)
 	..()
@@ -68,13 +61,19 @@
 			set_occupant(null)
 			return
 		to_chat(occupant, span_notice("You enter [src]."))
-		addtimer(CALLBACK(src, .proc/eject_new_you), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
-		processing = TRUE
 		update_appearance()
 
 /obj/machinery/oc_donut_steel_restoration_device/open_machine(mob/user)
 	playsound(src, 'sound/machines/click.ogg', 50)
 	..()
+
+/obj/machinery/oc_donut_steel_restoration_device/AltClick(mob/user)
+	. = ..()
+	if(powered() && occupant && !state_open)
+		to_chat(user, "You power on [src].")
+		addtimer(CALLBACK(src, .proc/eject_new_you), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
+		processing = TRUE
+		update_appearance()
 
 /obj/machinery/oc_donut_steel_restoration_device/container_resist_act(mob/living/user)
 	if(!state_open)
@@ -113,7 +112,7 @@
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
 	use_power(500)
-
+/// Ejects the occupant as either their preference character, or as a monke based on emag status.
 /obj/machinery/oc_donut_steel_restoration_device/proc/eject_new_you()
 	if(state_open || !occupant || !powered())
 		return
@@ -121,8 +120,11 @@
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/patient = occupant
 		if(obj_flags & EMAGGED)
-			patient.set_species(/datum/species/monkey)
+			patient.monkeyize()
 		else
+			patient.dna.features = list()
+			patient.dna.body_markings = list()
+			patient.dna.mutant_bodyparts = list()
 			patient?.client?.prefs?.apply_prefs_to(patient, TRUE)
 			patient.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
 		open_machine()
