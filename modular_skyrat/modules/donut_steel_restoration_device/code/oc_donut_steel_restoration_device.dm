@@ -108,12 +108,10 @@
 		open_machine()
 		return
 
-	if(next_fact <= 0)
+	if(--next_fact <= 0)
 		next_fact = initial(next_fact)
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
-	else
-		next_fact--
 	use_power(500)
 
 /obj/machinery/oc_donut_steel_restoration_device/proc/eject_new_you()
