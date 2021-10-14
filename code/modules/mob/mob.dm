@@ -475,16 +475,12 @@
 		if(examine_time && (world.time - examine_time < EXAMINE_MORE_WINDOW))
 			result = examinify.examine_more(src)
 			if(!length(result))
-<<<<<<< HEAD
-				result += span_notice("<i>You examine [src] closer, but find nothing of interest...</i>")
-=======
 				result += span_notice("<i>You examine [examinify] closer, but find nothing of interest...</i>")
 		else
 			result = examinify.examine(src)
 			client.recent_examines[ref_to_atom] = world.time // set to when we last normal examine'd them
 			addtimer(CALLBACK(src, .proc/clear_from_recent_examines, ref_to_atom), RECENT_EXAMINE_MAX_WINDOW)
 			handle_eye_contact(examinify)
->>>>>>> b3f176998d9 (Buffs eye contact, adds "Shifty Eyes" quirk (#61711))
 	else
 		result = examinify.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
