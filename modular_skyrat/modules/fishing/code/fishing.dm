@@ -58,6 +58,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 //rather than making a visual change, create a sound to reel back in
 /datum/component/fishing/proc/reel_sound()
 	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
+	mutate_parent.z = -8
 
 /datum/component/fishing/proc/finish_fishing(atom/fisher = null, master_involved = FALSE)
 	if(reel_sound_timer)
@@ -74,13 +75,17 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 			create_reward(fisher_turf)
 
 /datum/component/fishing/proc/create_reward(turf/spawning_turf)
-	if(generate_fish)
-		generate_fish(spawning_turf, random_fish_type())
+	if(prob(4))
+		new /obj/item/skillchip/fishing_master(spawning_turf)
 	var/atom/spawning_reward = pickweight(possible_loot)
+	if(prob(25))
+		spawning_reward = pickweight(GLOB.trash_loot)
+		while(islist(lootspawn))
+			spawning_reward = pickweight(spawning_reward)
 	new spawning_reward(spawning_turf)
 	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
-	if(prob(1))
-		new /obj/item/skillchip/fishing_master(spawning_turf)
+	if(generate_fish)
+		generate_fish(spawning_turf, random_fish_type())
 
 /turf/open/water/Initialize(mapload)
 	. = ..()
@@ -112,6 +117,10 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	var/atom/target_atom
 	///the mob that picked up/equiped the rod and will be listened to
 	var/mob/listening_to
+
+/obj/item/fishing_rod/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
 
 /obj/item/fishing_rod/Destroy()
 	if(listening_to)
@@ -170,7 +179,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		RegisterSignal(target_atom, COMSIG_MOVABLE_MOVED, .proc/check_movement, override = TRUE)
 	SEND_SIGNAL(target_atom, COMSIG_START_FISHING)
 
-/datum/crafting_recipe/fishing_rod
+/datum/crafting_recipe/fishing_rod_primitive
 	name = "Primitive Fishing Rod"
 	result = /obj/item/fishing_rod
 	reqs = list(/obj/item/stack/sheet/animalhide/goliath_hide = 2,
