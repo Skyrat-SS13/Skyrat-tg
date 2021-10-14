@@ -1,12 +1,13 @@
 GLOBAL_LIST_INIT(fishing_weights, list(
 	/obj/item/stack/ore/diamond = 1,
 	/obj/item/stack/ore/bluespace_crystal = 1,
-	/obj/item/stack/ore/gold = 1,
-	/obj/item/stack/ore/uranium = 1,
-	/obj/item/stack/ore/titanium = 1,
-	/obj/item/stack/ore/silver = 1,
-	/obj/item/stack/ore/iron = 1,
-	/obj/item/xenoarch/strange_rock = 10,
+	/obj/item/stack/ore/gold = 2,
+	/obj/item/stack/ore/uranium = 2,
+	/obj/item/stack/ore/titanium = 3,
+	/obj/item/stack/ore/silver = 3,
+	/obj/item/stack/ore/iron = 5,
+	/obj/item/stack/ore/glass = 5,
+	/obj/item/xenoarch/strange_rock = 1,
 ))
 
 /datum/component/fishing
@@ -76,14 +77,14 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 /datum/component/fishing/proc/create_reward(turf/spawning_turf)
 	if(prob(4))
 		new /obj/item/skillchip/fishing_master(spawning_turf)
-	var/atom/spawning_reward = pickweight(possible_loot)
+	var/atom/spawning_reward = pick_weight(possible_loot)
 	if(prob(25))
-		spawning_reward = pickweight(GLOB.trash_loot)
+		spawning_reward = pick_weight(GLOB.trash_loot)
 		while(islist(spawning_reward))
-			spawning_reward = pickweight(spawning_reward)
+			spawning_reward = pick_weight(spawning_reward)
 	new spawning_reward(spawning_turf)
 	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
-	if(generate_fish)
+	if(generate_fish && prob(70))
 		generate_fish(spawning_turf, random_fish_type())
 
 /turf/open/water/Initialize(mapload)
