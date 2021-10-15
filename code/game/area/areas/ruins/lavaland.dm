@@ -57,34 +57,56 @@
 
 /area/ruin/unpowered/syndicate_lava_base/engineering
 	name = "Syndicate Lavaland Engineering"
+//SKYRAT EDIT ADDITION BEGIN - SYNDIEBROKE
+	always_unpowered = FALSE
+//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/syndicate_lava_base/medbay
 	name = "Syndicate Lavaland Medbay"
+//SKYRAT EDIT ADDITION BEGIN - SYNDIEBROKE
+	always_unpowered = FALSE
+//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/syndicate_lava_base/arrivals
 	name = "Syndicate Lavaland Arrivals"
 
 /area/ruin/unpowered/syndicate_lava_base/bar
 	name = "\improper Syndicate Lavaland Bar"
+//SKYRAT EDIT ADDITION BEGIN - SYNDIEBROKE
+	always_unpowered = FALSE
+//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/syndicate_lava_base/main
 	name = "\improper Syndicate Lavaland Primary Hallway"
+//SKYRAT EDIT ADDITION BEGIN - SYNDIEBROKE
+	always_unpowered = FALSE
+//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/syndicate_lava_base/cargo
 	name = "\improper Syndicate Lavaland Cargo Bay"
+//SKYRAT EDIT ADDITION BEGIN - SYNDIEBROKE
+	always_unpowered = FALSE
+//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/syndicate_lava_base/chemistry
 	name = "Syndicate Lavaland Chemistry"
 
 /area/ruin/unpowered/syndicate_lava_base/virology
 	name = "Syndicate Lavaland Virology"
+//SKYRAT EDIT ADDITION BEGIN - SYNDIEBROKE
+	always_unpowered = FALSE
+//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/syndicate_lava_base/testlab
 	name = "\improper Syndicate Lavaland Experimentation Lab"
 	area_flags = XENOBIOLOGY_COMPATIBLE //SKYRAT EDIT ADDITION - MAPPING
+	always_unpowered = FALSE // SKYRAT EDIT ADDITION - SYNDIEBROKE
 
 /area/ruin/unpowered/syndicate_lava_base/dormitories
 	name = "\improper Syndicate Lavaland Dormitories"
+//SKYRAT EDIT ADDITION BEGIN - SYNDIEBROKE
+	always_unpowered = FALSE
+//SKYRAT EDIT ADDITION END
 
 /area/ruin/unpowered/syndicate_lava_base/telecomms
 	name = "\improper Syndicate Lavaland Telecommunications"
