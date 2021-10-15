@@ -2,10 +2,6 @@
  * Contains:
  * Fork
  * Kitchen knives
- * Ritual Knife
- * Bloodletter
- * Butcher's cleaver
- * Combat Knife
  * Rolling Pins
  * Plastic Utensils
  */
@@ -79,45 +75,11 @@
 	. = ..()
 	AddElement(/datum/element/easily_fragmented, PLASTIC_BREAK_PROBABILITY)
 
-/obj/item/kitchen/knife
+/obj/item/knife/kitchen
 	name = "kitchen knife"
-	icon_state = "knife"
-	inhand_icon_state = "knife"
-	worn_icon_state = "knife"
 	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
-	flags_1 = CONDUCT_1
-	force = 10
-	w_class = WEIGHT_CLASS_SMALL
-	throwforce = 10
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	throw_speed = 3
-	throw_range = 6
-	custom_materials = list(/datum/material/iron=12000)
-	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
-	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
-	sharpness = SHARP_EDGED
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
-	var/bayonet = FALSE //Can this be attached to a gun?
-	wound_bonus = 5
-	bare_wound_bonus = 15
-	tool_behaviour = TOOL_KNIFE
 
-/obj/item/kitchen/knife/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/eyestab)
-	set_butchering()
-
-///Adds the butchering component, used to override stats for special cases
-/obj/item/kitchen/knife/proc/set_butchering()
-	AddComponent(/datum/component/butchering, 80 - force, 100, force - 10) //bonus chance increases depending on force
-
-/obj/item/kitchen/knife/suicide_act(mob/user)
-	user.visible_message(pick(span_suicide("[user] is slitting [user.p_their()] wrists with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide."), \
-						span_suicide("[user] is slitting [user.p_their()] throat with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide."), \
-						span_suicide("[user] is slitting [user.p_their()] stomach open with the [src.name]! It looks like [user.p_theyre()] trying to commit seppuku.")))
-	return (BRUTELOSS)
-
-/obj/item/kitchen/knife/plastic
+/obj/item/knife/plastic
 	name = "plastic knife"
 	icon_state = "plastic_knife"
 	inhand_icon_state = "knife"
@@ -132,10 +94,11 @@
 	sharpness = SHARP_EDGED
 	custom_price = PAYCHECK_PRISONER * 2
 
-/obj/item/kitchen/knife/plastic/Initialize(mapload)
+/obj/item/knife/plastic/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/easily_fragmented, PLASTIC_BREAK_PROBABILITY)
 
+<<<<<<< HEAD
 /obj/item/kitchen/knife/ritual
 	name = "ritual knife"
 	desc = "The unearthly energies that once powered this blade are now dormant."
@@ -263,6 +226,8 @@
 	user.visible_message(span_suicide("[user] forcefully drives \the [src] into [user.p_their()] eye! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return BRUTELOSS
 
+=======
+>>>>>>> f51000f5067 (Repaths knives to not all be children of the kitchen knife. (#62035))
 /obj/item/kitchen/rollingpin
 	name = "rolling pin"
 	desc = "Used to knock out the Bartender."
