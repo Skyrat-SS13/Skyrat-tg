@@ -77,8 +77,8 @@
 		/obj/item/clothing/under/rank/security/peacekeeper/trousers = 3,
 		/obj/item/clothing/under/rank/security/peacekeeper/trousers/red = 3,
 		/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat = 4,
-		/obj/item/clothing/head/ushankasec = 5,
-		/obj/item/clothing/head/ushankasec/blue = 5
+		/obj/item/clothing/head/ushanka/sec = 5,
+		/obj/item/clothing/head/ushanka/sec/blue = 5
 	)
 	contraband = list(
 		/obj/item/clothing/suit/armor/stormtrooper = 1,

@@ -30,6 +30,7 @@
 	M.throw_alert("stoned", /atom/movable/screen/alert/stoned)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
 	M.Dizzy(5 * REM * delta_time)
+	M.adjust_nutrition(-1 * REM * delta_time) //munchies
 	if(DT_PROB(3.5, delta_time))
 		M.emote(pick("laugh","giggle"))
 	..()
@@ -45,7 +46,7 @@
 	var/cg420_message = pick("It's major...", "Oh my goodness...",)
 	if(DT_PROB(1.5, delta_time))
 		M.say("[cg420_message]")
-	M.drowsyness += 0.1 * REM * normalise_creation_purity() * delta_time
+	M.adjust_drowsyness(0.1 * REM * normalise_creation_purity() * delta_time)
 	if(DT_PROB(3.5, delta_time))
 		playsound(M, pick('modular_skyrat/master_files/sound/effects/lungbust_cough1.ogg','modular_skyrat/master_files/sound/effects/lungbust_cough2.ogg'), 50, TRUE)
 		M.emote("cough")

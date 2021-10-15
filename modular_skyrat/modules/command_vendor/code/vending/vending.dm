@@ -19,9 +19,12 @@
 		/obj/item/clothing/under/rank/captain/skirt = 1,
 		/obj/item/clothing/under/rank/captain/humble = 1,
 		/obj/item/clothing/under/rank/captain/dress = 1,
+		/obj/item/clothing/under/rank/captain/kilt = 1,
+		/obj/item/clothing/under/rank/captain/imperial = 1,
 		/obj/item/clothing/head/caphat/parade = 1,
 		/obj/item/clothing/under/rank/captain/parade = 1,
-		/obj/item/clothing/suit/toggle/captains_parade = 1,
+		/obj/item/clothing/under/rank/captain/kilt = 1,
+		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
 		/obj/item/clothing/suit/captunic = 1,
 		/obj/item/clothing/neck/mantle/capmantle = 1,
 		/obj/item/storage/backpack/captain = 1,
@@ -53,6 +56,7 @@
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck/skirt = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/parade = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female = 1,
+		/obj/item/clothing/under/rank/civilian/head_of_personnel/imperial = 1,
 		/obj/item/clothing/suit/toggle/hop_parade = 1,
 		/obj/item/clothing/neck/mantle/hopmantle = 1,
 		/obj/item/storage/backpack/head_of_personnel = 1,
@@ -66,6 +70,7 @@
 		/obj/item/clothing/under/rank/medical/chief_medical_officer = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/skirt = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck = 1,
+		/obj/item/clothing/under/rank/medical/chief_medical_officer/imperial = 1,
 		/obj/item/clothing/neck/mantle/cmomantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
@@ -78,6 +83,7 @@
 		/obj/item/clothing/under/rank/rnd/research_director/alt/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt = 1,
+		/obj/item/clothing/under/rank/rnd/research_director/imperial = 1,
 		/obj/item/clothing/neck/mantle/rdmantle = 1,
 		/obj/item/clothing/suit/toggle/labcoat = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
@@ -87,6 +93,7 @@
 		/obj/item/clothing/head/beret/engi/ce/alt = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer/skirt = 1,
+		/obj/item/clothing/under/rank/engineering/chief_engineer/imperial = 1,
 		/obj/item/clothing/neck/mantle/cemantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
@@ -100,11 +107,12 @@
 		/obj/item/clothing/under/rank/security/head_of_security/grey = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt/skirt = 1,
+		/obj/item/clothing/under/rank/security/head_of_security/imperial = 1,
 		/obj/item/clothing/suit/armor/hos/navyblue = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/parade = 1,
 		/obj/item/clothing/suit/armor/hos/parade = 1,
 		/obj/item/clothing/suit/armor/hos/parade/female = 1,
-		/obj/item/clothing/suit/toggle/armor/hos/hos_formal = 1,
+		/obj/item/clothing/suit/armor/hos/hos_formal = 1,
 		/obj/item/clothing/neck/mantle/hosmantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)

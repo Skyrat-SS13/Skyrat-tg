@@ -40,7 +40,7 @@
 		M.say("[kidfrombrooklyn_message]")
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.25 * REM * delta_time)
 	M.adjustToxLoss(0.25 * REM * delta_time, 0)
-	M.drowsyness += 0.25 * REM * normalise_creation_purity() * delta_time
+	M.adjust_drowsyness(0.25 * REM * normalise_creation_purity() * delta_time)
 	if(DT_PROB(3.5, delta_time))
 		M.emote("twitch")
 	..()

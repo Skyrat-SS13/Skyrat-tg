@@ -10,7 +10,7 @@
 	///Does this flashlight have modes?
 	var/has_modes = TRUE
 
-/obj/item/flashlight/Initialize()
+/obj/item/flashlight/Initialize(mapload)
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		turn_on()
@@ -68,6 +68,7 @@
 		on = TRUE
 		turn_on(user)
 	playsound(user, on ? 'sound/weapons/magin.ogg' : 'sound/weapons/magout.ogg', 40, TRUE)
+	return TRUE
 
 /obj/item/flashlight/proc/turn_off()
 	on = FALSE
@@ -75,7 +76,8 @@
 	update_action_buttons()
 
 /obj/item/flashlight/proc/turn_on(mob/user)
-	START_PROCESSING(SSobj, src)
+	if (uses_battery)
+		START_PROCESSING(SSobj, src)
 	update_brightness()
 	playsound(src, 'modular_skyrat/master_files/sound/effects/flashlight.ogg', 40, TRUE) //Credits to ERIS for the sound
 	update_action_buttons()
