@@ -154,8 +154,8 @@
 	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS) //SKYRAT EDIT ADDITION
 	if (!is_silent)
 		source.visible_message(
-			span_warning("[user] tries to remove [source]'s [item]."),
-			span_userdanger("[user] tries to remove your [item]."),
+			span_warning("[user] tries to remove [source]'s [item.name]."),
+			span_userdanger("[user] tries to remove your [item.name]]."),
 			ignored_mobs = user,
 		)
 

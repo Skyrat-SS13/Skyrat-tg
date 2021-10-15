@@ -310,6 +310,8 @@
 	else
 		update_brightness(null)
 	*/
+	. = ..()
+
 /obj/item/flashlight/flare/update_brightness(mob/user = null)
 	..()
 	if(on)
