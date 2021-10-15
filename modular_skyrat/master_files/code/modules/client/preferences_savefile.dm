@@ -13,7 +13,7 @@
 	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
 	//validating limb styles
 	for(var/key in augment_limb_styles)
-		if(!GLOB.robotic_styles_list[key])
+		if(!GLOB.robotic_styles_list[augment_limb_styles[key]])
 			augment_limb_styles -= key
 
 
@@ -74,6 +74,7 @@
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
+	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)

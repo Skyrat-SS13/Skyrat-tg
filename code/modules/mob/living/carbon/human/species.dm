@@ -1220,7 +1220,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return FALSE
 		if(ITEM_SLOT_ANUS)
 			if(H.is_bottomless())
-				return equip_delay_self_check(I, H, bypass_equip_delay_self)
+				if(H.getorganslot(ORGAN_SLOT_ANUS))
+					return equip_delay_self_check(I, H, bypass_equip_delay_self)
 			return FALSE
 		if(ITEM_SLOT_NIPPLES)
 			if(H.is_topless())
@@ -2135,10 +2136,14 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	else
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
 	*/
+	//SKYRAT EDIT TAIL TRAUMA BEGIN
+	/* Temporarily disabling until fixed upon player spawm
 	if(tail_owner.dna.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] == mutant_bodyparts["tail"][MUTANT_INDEX_NAME]) //mutant_bodyparts["tail"] should exist here
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "right_tail_regained", /datum/mood_event/tail_regained_right)
 	else
 		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
+	*/
+	//SKYRAT EDIT TAIL TRAUMA END
 	//SKYRAT EDIT CHANGE END
 
 /*

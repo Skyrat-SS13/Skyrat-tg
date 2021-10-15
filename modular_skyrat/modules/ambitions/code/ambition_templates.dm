@@ -28,8 +28,8 @@
 /datum/ambition_template/data_theft
 	name = "Data Theft"
 	narrative = "You have been selected out of Donk. Co's leagues of potential sleeper operatives for one particular task."
-	objectives = list("Steal the Blackbox.", "Steal at least 20 technology nodes from the research division.", "Escape on the emergency shuttle alive and out of custody.")
-	tips = list("You should add an objective on how you plan to go about this task.", "The Blackbox is located in Telecomms on most Stations.", "The Blackbox doesn't fit in most bags. You'd need a bag of holding to hide it!", "To steal technology we'll have to print a disk from science and sneak our way to a research console to download nodes on the disk!")
+	objectives = list("Steal the Blackbox.", "Steal the Project Goon hard drive from the Master R&D Server.", "Escape on the emergency shuttle alive and out of custody.")
+	tips = list("You should add an objective on how you plan to go about this task.", "The Blackbox is located in Telecomms on most Stations.", "The Blackbox doesn't fit in most bags. You'd need a bag of holding to hide it!", "The hard drive is located in the Research Server Room on most stations.", "Stealing the hard drive will permanantly cripple research speed!")
 	antag_whitelist = list("Traitor")
 
 //TODO: Changeling Ambition

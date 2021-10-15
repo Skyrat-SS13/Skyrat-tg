@@ -1,16 +1,18 @@
 // --- Loadout item datums for exosuits / suits ---
 
-/// Exosuit / Outersuit Slot Items (Deletes overrided items)
+/// Exosuit / Outersuit Slot Items (Moves items to backpack)
 GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/suit))
 
 /datum/loadout_item/suit
 	category = LOADOUT_ITEM_SUIT
 
-/datum/loadout_item/suit/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	outfit.suit = item_path
-	if(outfit.suit_store)
-		LAZYADD(outfit.backpack_contents, outfit.suit_store)
-		outfit.suit_store = null
+/datum/loadout_item/suit/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE, override_items = LOADOUT_OVERRIDE_BACKPACK)
+	if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
+		if(outfit.suit)
+			LAZYADD(outfit.backpack_contents, outfit.suit)
+		outfit.suit = item_path
+	else
+		outfit.suit = item_path
 
 /datum/loadout_item/suit/winter_coat
 	name = "Winter Coat"
@@ -37,10 +39,21 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Purple Suit Jacket"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/purple
 
+/datum/loadout_item/suit/white_suit_jacket
+	name = "White Suit Jacket"
+	item_path = /obj/item/clothing/suit/toggle/lawyer/white
+
+/datum/loadout_item/suit/suitblackbetter
+	name = "Light Black Suit Jacket"
+	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
+
+/datum/loadout_item/suit/suitwhite
+	name = "Texan Suit Jacket"
+	item_path = /obj/item/clothing/suit/texas
+
 /datum/loadout_item/suit/purple_apron
 	name = "Purple Apron"
 	item_path = /obj/item/clothing/suit/apron/purple_bartender
-
 
 /datum/loadout_item/suit/Suspenders_blue
 	name = "Blue Suspenders"
@@ -117,6 +130,18 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/blue_letterman
 	name = "Blue Letterman"
 	item_path = /obj/item/clothing/suit/jacket/letterman_nanotrasen
+
+/datum/loadout_item/suit/owl
+	name = "Owl Cloak"
+	item_path = /obj/item/clothing/suit/toggle/owlwings
+
+/datum/loadout_item/suit/griffin
+	name = "Griffon Cloak"
+	item_path = /obj/item/clothing/suit/toggle/owlwings/griffinwings
+
+/datum/loadout_item/suit/syndi
+	name = "Black And Red Space Suit Replica"
+	item_path = /obj/item/clothing/suit/syndicatefake
 
 /datum/loadout_item/suit/bee
 	name = "Bee Outfit"
@@ -283,7 +308,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Fancy Brown Coat"
 	item_path = /obj/item/clothing/suit/brownbattlecoat
 
-
 /datum/loadout_item/suit/bossu
 	name = "Fancy Black Coat"
 	item_path = /obj/item/clothing/suit/blackfurrich
@@ -299,14 +323,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/yakuzajacket
 	name = "Asian Jacket"
 	item_path = /obj/item/clothing/suit/yakuza
-
-/datum/loadout_item/suit/suitblackbetter
-	name = "Light Black Suit Jacket"
-	item_path = /obj/item/clothing/suit/toggle/lawyer/black/better
-
-/datum/loadout_item/suit/suitwhite
-	name = "White Suit Jacket"
-	item_path = /obj/item/clothing/suit/texas
 
 /datum/loadout_item/suit/jacketbomber_alt
 	name = "Bomber Jacket w/ Zipper"
@@ -522,6 +538,47 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/cardigan
 	name = "Cardigan"
 	item_path = /obj/item/clothing/suit/toggle/jacket/cardigan
+
+//Families Gear
+/datum/loadout_item/suit/osi
+	name = "OSI Coat"
+	item_path = /obj/item/clothing/suit/osi
+
+/datum/loadout_item/suit/tmc
+	name = "TMC Coat"
+	item_path = /obj/item/clothing/suit/tmc
+
+/datum/loadout_item/suit/pg
+	name = "PG Coat"
+	item_path = /obj/item/clothing/suit/pg
+
+/datum/loadout_item/suit/driscoll
+	name = "Driscoll Coat"
+	item_path = /obj/item/clothing/suit/driscoll
+
+/datum/loadout_item/suit/deckers
+	name = "Deckers Coat"
+	item_path = /obj/item/clothing/suit/deckers
+
+/datum/loadout_item/suit/morningstar
+	name = "Morningstar Coat"
+	item_path = /obj/item/clothing/suit/morningstar
+
+/datum/loadout_item/suit/saints
+	name = "Saints Coat"
+	item_path = /obj/item/clothing/suit/saints
+
+/datum/loadout_item/suit/phantom
+	name = "Phantom Coat"
+	item_path = /obj/item/clothing/suit/phantom
+
+/datum/loadout_item/suit/sybil
+	name = "Sybil Coat"
+	item_path = /obj/item/clothing/suit/sybil_slickers
+
+/datum/loadout_item/suit/basil
+	name = "Basil Coat"
+	item_path = /obj/item/clothing/suit/basil_boys
 
 //Donator sutis here
 /datum/loadout_item/suit/donator

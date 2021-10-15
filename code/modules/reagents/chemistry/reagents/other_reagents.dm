@@ -2440,7 +2440,10 @@
 	if(L.mind)
 		var/datum/antagonist/changeling/changeling = L.mind.has_antag_datum(/datum/antagonist/changeling)
 		if(changeling)
-			changeling.chem_charges = max(changeling.chem_charges - (2 * REM * delta_time), 0)
+			//SKYRAT EDIT CHANGE BEGIN - BZ-BUFF-VS-LING
+			//changeling.chem_charges = max(changeling.chem_charges - (2 * REM * delta_time), 0) - SKYRAT EDIT - ORIGINAL
+			changeling.chem_charges = max(changeling.chem_charges - (4 * REM * delta_time), 0)
+			//SKYRAT EDIT CHANGE END - BZ-BUFF-VS-LING
 	return ..()
 
 /datum/reagent/pax/peaceborg

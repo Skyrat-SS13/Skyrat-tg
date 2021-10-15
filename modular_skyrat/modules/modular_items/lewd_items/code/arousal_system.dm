@@ -212,7 +212,7 @@
 	return arousal
 
 /mob/living/carbon/human/proc/adjustArousal(arous = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		arousal += arous
 
 		var/arousal_flag = AROUSAL_NONE
@@ -288,7 +288,7 @@
 	return pain
 
 /mob/living/carbon/human/proc/adjustPain(pn = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		if(pain > pain_limit || pn > pain_limit / 10) // pain system // YOUR SYSTEM IS PAIN, WHY WE'RE GETTING AROUSED BY STEPPING ON ANTS?!
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
 				var/p = pn - (pain_limit / 10)
@@ -315,7 +315,7 @@
 	return pleasure
 
 /mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
 			climax(FALSE)
@@ -360,6 +360,8 @@
 	timeout = 10 MINUTES
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	var/obj/item/organ/genital/penis = getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/genital/vagina = getorganslot(ORGAN_SLOT_VAGINA)
 	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
@@ -468,6 +470,7 @@
 	var/obj/item/organ/genital/vagina/vagina = owner.getorganslot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/testicles/penis = owner.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/genital/testicles/anus = owner.getorganslot(ORGAN_SLOT_ANUS)
 
 	if(penis)
 		penis.aroused = AROUSAL_NONE
@@ -475,6 +478,8 @@
 		vagina.aroused = AROUSAL_NONE
 	if(balls)
 		balls.aroused = AROUSAL_NONE
+	if(anus)
+		anus.aroused = AROUSAL_NONE
 
 /datum/status_effect/masturbation_climax
 	id = "climax"
@@ -799,7 +804,17 @@
 	key_third_person = "cums"
 	cooldown = 30 SECONDS
 
+/datum/emote/living/cum/check_config()
+	return !CONFIG_GET(flag/disable_erp_preferences)
+
+/datum/emote/living/cum/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
+	if (!check_config())
+		return FALSE
+	. = ..()
+
 /datum/emote/living/cum/run_emote(mob/living/user, params, type_override, intentional)
+	if (!check_config())
+		return
 	. = ..()
 	if(!.)
 		return
@@ -832,6 +847,8 @@
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
 
 /obj/item/coom/attack(mob/living/M, mob/user, proximity)
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	if(!proximity)
 		return
 	if(!ishuman(M))
@@ -876,6 +893,8 @@
 //jerk off into bottles
 /obj/item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
+	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
 	if(!proximity)
 		return
 	if(ishuman(target))

@@ -26,3 +26,7 @@
 #define TOOLTIP_RANDOM_COLOR "RANDOM COLOR -This item has a random color and will change every round."
 #define TOOLTIP_GREYSCALE "GREYSCALED - This item can be customized via the greyscale modification UI."
 #define TOOLTIP_RENAMABLE "RENAMABLE - This item can be given a custom name."
+
+#define LOADOUT_OVERRIDE_JOB "Delete job items"
+#define LOADOUT_OVERRIDE_BACKPACK "Move job to backpack"
+#define LOADOUT_OVERRIDE_CASE "Place all in case"
