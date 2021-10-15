@@ -83,7 +83,7 @@
 	M.silent = FALSE
 	M.dizziness = 0
 	M.disgust = 0
-	M.drowsyness = 0
+	M.set_drowsyness(0)
 	M.stuttering = 0
 	M.slurring = 0
 	M.jitteriness = 0
