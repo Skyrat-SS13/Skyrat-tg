@@ -108,6 +108,11 @@
 	id = "comp_speech"
 	build_path = /obj/item/circuit_component/speech
 
+/datum/design/component/timepiece
+	name = "Timepiece Component"
+	id = "comp_timepiece"
+	build_path = /obj/item/circuit_component/timepiece
+
 /datum/design/component/tostring
 	name = "To String Component"
 	id = "comp_tostring"
@@ -258,6 +263,11 @@
 	id = "comp_typecast"
 	build_path = /obj/item/circuit_component/typecast
 
+/datum/design/component/printer
+	name = "Printer Component"
+	id = "comp_printer"
+	build_path = /obj/item/circuit_component/printer
+
 /datum/design/component/pinpointer
 	name = "Proximity Pinpointer Component"
 	id = "comp_pinpointer"
@@ -299,7 +309,7 @@
 /datum/design/component/filter_list
 	name = "Filter List Component"
 	id = "comp_filter_list"
-	build_path = /obj/item/circuit_component/foreach
+	build_path = /obj/item/circuit_component/filter_list
 
 
 /datum/design/compact_remote_shell

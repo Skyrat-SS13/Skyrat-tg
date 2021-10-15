@@ -68,9 +68,9 @@
 
 //Random lists
 /obj/structure/trash_pile/proc/produce_alpha_item()
-	var/lootspawn = pickweight(GLOB.maintenance_loot)
+	var/lootspawn = pick_weight(GLOB.maintenance_loot)
 	while(islist(lootspawn))
-		lootspawn = pickweight(lootspawn)
+		lootspawn = pick_weight(lootspawn)
 	var/obj/item/I = new lootspawn(get_turf(src))
 	return I
 

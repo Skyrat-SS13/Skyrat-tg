@@ -24,7 +24,7 @@
 
 	AddElement(/datum/element/connect_loc, loc_connections)
 
-/obj/machinery/turnstile/CanAtmosPass(turf/T)
+/obj/machinery/turnstile/can_atmos_pass(turf/T)
 	return TRUE
 
 /obj/machinery/turnstile/bullet_act(obj/projectile/P, def_zone)

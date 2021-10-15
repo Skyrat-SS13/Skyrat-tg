@@ -263,6 +263,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		default_mutant_bodyparts["womb"] = "None"
 		default_mutant_bodyparts["testicles"] = "None"
 		default_mutant_bodyparts["breasts"] = "None"
+		default_mutant_bodyparts["anus"] = "None"
 		default_mutant_bodyparts["penis"] = "None"
 
 /datum/species/dullahan
@@ -552,7 +553,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if (!islist(C.dna.mutant_bodyparts[key]))
 			continue
 		var/datum/sprite_accessory/SA = GLOB.sprite_accessories[key][C.dna.mutant_bodyparts[key][MUTANT_INDEX_NAME]]
-		if(SA.factual && SA.organ_type)
+		if(SA?.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
 			if(robot_organs)
 				path.status = ORGAN_ROBOTIC
@@ -572,3 +573,28 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 /datum/species/proc/spec_revival(mob/living/carbon/human/H)
 	return
+
+/// Gets a list of all customizable races on roundstart.
+/proc/get_customizable_races()
+	RETURN_TYPE(/list)
+
+	if (!GLOB.customizable_races.len)
+		GLOB.customizable_races = generate_customizable_races()
+
+	return GLOB.customizable_races
+
+/**
+ * Generates races available to choose in character setup at roundstart, yet not playable on the station.
+ *
+ * This proc generates which species are available to pick from in character setup.
+ */
+/proc/generate_customizable_races()
+	var/list/customizable_races = list()
+
+	for(var/species_type in subtypesof(/datum/species))
+		var/datum/species/species = new species_type
+		if(species.always_customizable)
+			customizable_races += species.id
+			qdel(species)
+
+	return customizable_races

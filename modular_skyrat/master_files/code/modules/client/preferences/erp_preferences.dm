@@ -1,6 +1,13 @@
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
+/datum/config_entry/str_list/erp_emotes_to_disable
+
+/datum/config_entry/str_list/erp_emotes_to_disable/ValidateAndSet(str_val)
+	. = ..()
+	if (CONFIG_GET(flag/disable_erp_preferences) && (str_val in GLOB.keybindings_by_name))
+		GLOB.keybindings_by_name -= str_val
+
 /datum/preference/toggle/master_erp_preferences
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "master_erp_pref"
@@ -15,6 +22,11 @@
 		return FALSE
 
 	return TRUE
+
+/datum/preference/toggle/master_erp_preferences/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+	. = ..()
 
 /datum/preference/toggle/erp
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
@@ -84,9 +96,9 @@
 
 /datum/preference/choiced/erp_status/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -114,9 +126,9 @@
 
 /datum/preference/choiced/erp_status_nc/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status_nc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -144,9 +156,9 @@
 
 /datum/preference/choiced/erp_status_v/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "disabled"
+		return "No"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "disabled"
+		return "No"
 	. = ..()
 
 /datum/preference/choiced/erp_status_v/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
