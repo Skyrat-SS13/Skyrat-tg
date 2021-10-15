@@ -1,4 +1,4 @@
-#define GOLIATH_STUN_TIME_SEVA 12 SECONDS
+#define GOLIATH_STUN_TIME_SEVA 12 SECONDS //SKYRAT EDIT - SEVA Fix
 
 //A slow but strong beast that tries to stun using its tentacles
 /mob/living/simple_animal/hostile/asteroid/goliath
