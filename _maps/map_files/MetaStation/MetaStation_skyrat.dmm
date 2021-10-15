@@ -3840,6 +3840,13 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/iron/grimy,
 /area/security/detectives_office)
+"aGA" = (
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "barbershopcurtains1"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/service/salon)
 "aGE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9422,6 +9429,8 @@
 	icon_state = "L11"
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "bVm" = (
@@ -10105,6 +10114,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/office)
+"cdw" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/service/salon)
 "cdy" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/medical_doctor,
@@ -22644,6 +22663,8 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/service/salon)
 "fEM" = (
@@ -22833,6 +22854,9 @@
 	pixel_x = -12
 	},
 /obj/structure/mirror/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/service/salon)
 "fJu" = (
@@ -23312,6 +23336,8 @@
 /obj/structure/chair/sofa/bench/left{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/service/salon)
 "fSm" = (
@@ -23544,9 +23570,16 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "fWT" = (
-/obj/machinery/door/airlock{
-	name = "massage room"
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
+/obj/machinery/door/airlock/public{
+	name = "Massage Parlour"
+	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/service/salon)
 "fWV" = (
@@ -24741,6 +24774,9 @@
 /area/space/nearstation)
 "gvK" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "barbershopcurtains"
+	},
 /turf/open/floor/plating,
 /area/service/salon)
 "gvN" = (
@@ -25649,6 +25685,8 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/landmark/event_spawn,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/service/salon)
 "gMA" = (
@@ -28479,6 +28517,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/space_hut)
+"hUi" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/service/salon)
 "hUs" = (
 /obj/item/radio/intercom/directional/west,
 /obj/effect/turf_decal/tile/neutral{
@@ -28794,8 +28841,8 @@
 "ibe" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
-/obj/machinery/door/airlock/glass{
-	name = "barber shop"
+/obj/machinery/door/airlock/public/glass{
+	name = "Barbershop"
 	},
 /turf/open/floor/iron,
 /area/service/salon)
@@ -31423,7 +31470,6 @@
 	icon_state = "L1"
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "jbX" = (
@@ -34326,10 +34372,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
+/obj/machinery/bluespace_vendor/north,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "kgl" = (
@@ -37918,11 +37964,6 @@
 /obj/machinery/power/apc/auto_name/west,
 /turf/open/floor/carpet,
 /area/service/chapel)
-"lvR" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/service/salon)
 "lvY" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron,
@@ -38660,9 +38701,16 @@
 /turf/open/floor/iron,
 /area/hallway/secondary/service)
 "lLe" = (
-/obj/machinery/door/airlock/glass{
-	name = "barber shop"
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
 	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Barbershop"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/service/salon)
 "lLl" = (
@@ -40830,6 +40878,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/service/theater)
+"mxn" = (
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "barbershopcurtains1"
+	},
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/service/salon)
 "mxo" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -41190,6 +41245,11 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/machinery/vending/barbervend,
+/obj/machinery/button/curtain{
+	id = "barbershopcurtains";
+	pixel_x = -25;
+	pixel_y = 24
+	},
 /turf/open/floor/iron,
 /area/service/salon)
 "mDG" = (
@@ -46126,16 +46186,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
-"onH" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/structure/sign/barber{
-	pixel_y = -26
-	},
-/turf/open/floor/iron,
-/area/hallway/secondary/command)
 "onR" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical/glass{
@@ -46491,6 +46541,15 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
+"otI" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/effect/landmark/start/barber,
+/turf/open/floor/iron,
+/area/service/salon)
 "otK" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -50033,7 +50092,6 @@
 	icon_state = "L13"
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
@@ -51878,19 +51936,6 @@
 /obj/structure/marker_beacon/burgundy,
 /turf/open/space/basic,
 /area/space/nearstation)
-"quu" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/hallway/primary/central)
 "quD" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -53386,11 +53431,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "qUy" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/service/salon)
 "qUM" = (
@@ -54932,7 +54977,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "rvu" = (
@@ -55028,13 +55072,18 @@
 	},
 /area/maintenance/starboard/fore)
 "rxh" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/light/warm/directional/west,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/item/kirbyplants/random,
+/obj/machinery/button/curtain{
+	id = "barbershopcurtains";
+	pixel_x = -25;
+	pixel_y = -24
+	},
+/obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron,
 /area/service/salon)
 "rxr" = (
@@ -56470,6 +56519,20 @@
 /obj/effect/turf_decal/siding,
 /turf/open/floor/iron,
 /area/science/lab)
+"rXK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/hallway/primary/central)
 "rXP" = (
 /obj/structure/sign/poster/random{
 	pixel_y = 32
@@ -56661,14 +56724,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/cafeteria,
 /area/service/kitchen)
-"sbY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/purple{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/purple,
-/turf/open/floor/iron,
-/area/service/salon)
 "scf" = (
 /obj/machinery/light/directional/east,
 /obj/machinery/firealarm/directional/east,
@@ -57811,6 +57866,8 @@
 	dir = 1
 	},
 /obj/effect/landmark/start/hangover,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/service/salon)
 "swE" = (
@@ -64874,8 +64931,10 @@
 /turf/open/floor/iron/dark,
 /area/ai_monitored/turret_protected/ai)
 "uVX" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "barbershopcurtains"
+	},
 /turf/open/floor/plating,
 /area/service/salon)
 "uWa" = (
@@ -64936,6 +64995,15 @@
 /obj/effect/landmark/start/cargo_technician,
 /turf/open/floor/iron,
 /area/cargo/sorting)
+"uXl" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/service/salon)
 "uXp" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
@@ -65255,6 +65323,9 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/landmark/start/barber,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/service/salon)
 "vec" = (
@@ -66728,7 +66799,11 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/item/toy/tennis/cyan,
+/obj/machinery/button/curtain{
+	id = "barbershopcurtains1";
+	pixel_x = -25;
+	pixel_y = 24
+	},
 /turf/open/floor/iron,
 /area/service/salon)
 "vDJ" = (
@@ -71860,6 +71935,9 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/hangover,
+/obj/structure/sign/barber{
+	pixel_y = -26
+	},
 /turf/open/floor/iron,
 /area/hallway/secondary/command)
 "xuf" = (
@@ -100430,7 +100508,7 @@ cRq
 bBz
 aaf
 aaf
-sxQ
+aGA
 vDF
 dOr
 fJr
@@ -100689,10 +100767,10 @@ bBz
 bBz
 sxQ
 eMC
-xWA
+otI
 gMj
 kHr
-sxQ
+mxn
 bTG
 aWf
 imr
@@ -100944,13 +101022,13 @@ cRq
 xdS
 bGG
 bJO
-sxQ
+mxn
 lAF
 maG
-xWA
+uXl
 lAF
 sxQ
-quu
+bTQ
 jbJ
 vJX
 bXN
@@ -101457,14 +101535,14 @@ bTl
 pLg
 bGI
 bGH
-onH
+bJP
 sxQ
 mDo
 cvt
-xWA
+uXl
 rxh
 uVX
-quu
+bTQ
 bVg
 xNJ
 fLk
@@ -101719,8 +101797,8 @@ ibe
 mEu
 mEu
 fEL
-xWA
-gvK
+cdw
+uVX
 bTQ
 bVh
 eiA
@@ -102229,13 +102307,13 @@ bEP
 bGH
 bGH
 bJP
-gvK
+uVX
 pSg
 doK
 swv
-xWA
+uXl
 lLe
-bTQ
+rXK
 bVj
 rAY
 fUR
@@ -102486,12 +102564,12 @@ bFd
 fAq
 bIk
 bJP
-gvK
+uVX
 xWA
-mEu
+hUi
 qUy
-sbY
-lvR
+xWA
+sxQ
 kgk
 pIT
 vXu
@@ -102748,7 +102826,7 @@ rLA
 vdX
 soZ
 xWA
-gvK
+uVX
 bUb
 aWf
 imr
@@ -103005,7 +103083,7 @@ gag
 lWB
 oNq
 lZu
-gvK
+uVX
 bUb
 aWf
 imr

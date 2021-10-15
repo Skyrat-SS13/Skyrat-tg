@@ -3566,6 +3566,12 @@
 	dir = 8
 	},
 /area/commons/dorms)
+"atk" = (
+/obj/structure/chair/sofa/bench/right{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/hallway/primary/central)
 "atl" = (
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
@@ -13513,10 +13519,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
-/obj/machinery/door/airlock/glass{
-	name = "barber shop"
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "barbershopcurtains"
 	},
-/turf/open/floor/iron,
+/turf/open/floor/plating,
 /area/service/salon)
 "baW" = (
 /obj/structure/window/reinforced/spawner/east,
@@ -13791,15 +13798,6 @@
 "bbR" = (
 /turf/open/floor/iron,
 /area/cargo/office)
-"bbT" = (
-/obj/effect/turf_decal/tile/purple{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/purple,
-/obj/effect/landmark/start/hangover,
-/obj/structure/table/wood/shuttle_bar,
-/turf/open/floor/iron,
-/area/service/salon)
 "bbU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -25517,10 +25515,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/machinery/camera{
-	c_tag = "Salon";
-	dir = 4
-	},
 /obj/machinery/dryer{
 	dir = 4;
 	pixel_x = -6;
@@ -37672,6 +37666,14 @@
 	},
 /turf/open/floor/iron/goonplaque,
 /area/hallway/secondary/entry)
+"epc" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/holopad,
+/turf/open/floor/iron,
+/area/service/salon)
 "epk" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -39426,8 +39428,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/table/wood/shuttle_bar,
-/obj/item/lighter,
+/obj/structure/chair{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/service/salon)
 "fZk" = (
@@ -42295,6 +42298,19 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
+"iSB" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/landmark/start/barber,
+/obj/machinery/button/curtain{
+	id = "barbershopcurtains1";
+	pixel_x = 25;
+	pixel_y = 24
+	},
+/turf/open/floor/iron,
+/area/service/salon)
 "iSP" = (
 /obj/structure/closet/secure_closet/contraband/armory,
 /obj/effect/spawner/random/maintenance/three,
@@ -45051,12 +45067,6 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron/dark,
 /area/security/office)
-"lnG" = (
-/obj/machinery/dryer{
-	pixel_y = 9
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/commons/toilet)
 "loM" = (
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 1
@@ -45466,16 +45476,6 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/hallway/secondary/service)
-"lHR" = (
-/obj/effect/turf_decal/tile/purple{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/sofa/bench/right{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/service/salon)
 "lHY" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/orange,
@@ -47390,10 +47390,15 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/chair/sofa/bench/left{
-	dir = 8
-	},
 /obj/machinery/light_switch/directional/south,
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/machinery/button/curtain{
+	id = "barbershopcurtains";
+	pixel_x = 25;
+	pixel_y = -24
+	},
 /turf/open/floor/iron,
 /area/service/salon)
 "nCT" = (
@@ -47931,9 +47936,16 @@
 /turf/open/floor/iron,
 /area/commons/fitness)
 "nXi" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Barbershop"
+	},
+/obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/service/salon)
 "nXH" = (
 /obj/machinery/door/firedoor,
@@ -48266,6 +48278,9 @@
 "orS" = (
 /obj/structure/sign/barber{
 	pixel_x = -13
+	},
+/obj/structure/chair/sofa/bench/left{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
@@ -48929,7 +48944,7 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/service/salon)
+/area/maintenance/port)
 "oXL" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -49438,7 +49453,10 @@
 "pvk" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "barbershopcurtains"
+	},
 /turf/open/floor/plating,
 /area/service/salon)
 "pvP" = (
@@ -49704,7 +49722,6 @@
 /turf/open/floor/grass,
 /area/maintenance/starboard/aft)
 "pIc" = (
-/obj/machinery/holopad,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -51088,9 +51105,6 @@
 /area/hallway/secondary/entry)
 "rbC" = (
 /obj/structure/cable,
-/obj/structure/chair/sofa/bench/right{
-	dir = 4
-	},
 /turf/open/floor/iron/dark,
 /area/hallway/primary/central)
 "rbH" = (
@@ -52475,8 +52489,10 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "swH" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/curtain/bounty,
+/obj/effect/spawner/structure/window,
+/obj/structure/curtain/cloth/fancy/mechanical{
+	id = "barbershopcurtains1"
+	},
 /turf/open/floor/plating,
 /area/service/salon)
 "sxl" = (
@@ -53403,6 +53419,9 @@
 	},
 /obj/structure/window{
 	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Salon"
 	},
 /turf/open/floor/iron,
 /area/service/salon)
@@ -57622,13 +57641,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/violet/visible/layer4,
 /turf/open/floor/plating,
 /area/security/prison)
-"xcX" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/plating,
-/area/maintenance/port)
 "xdk" = (
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/east,
@@ -58487,6 +58499,9 @@
 	pixel_y = 10
 	},
 /obj/item/reagent_containers/dropper,
+/obj/machinery/dryer{
+	pixel_y = 14
+	},
 /turf/open/floor/iron,
 /area/service/salon)
 "xPq" = (
@@ -58534,12 +58549,6 @@
 /obj/structure/chair/stool,
 /turf/open/floor/plating,
 /area/maintenance/aft)
-"xRm" = (
-/obj/structure/chair/sofa/bench/left{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/hallway/primary/central)
 "xRn" = (
 /obj/effect/spawner/random/trash/mess,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -81042,7 +81051,7 @@ rHn
 aTJ
 aPK
 xrs
-xcX
+dfx
 dfx
 cCm
 aCM
@@ -82584,10 +82593,10 @@ aSc
 hSc
 tav
 pNh
-deo
+epc
 avr
 baX
-bbT
+deo
 fYH
 tav
 aZH
@@ -82841,10 +82850,10 @@ aSa
 aSr
 tav
 wbV
-deo
+iSB
 gES
 baX
-lHR
+deo
 nCP
 tav
 beA
@@ -83097,7 +83106,7 @@ nTU
 aTL
 aTP
 tav
-swH
+tav
 swH
 tav
 baU
@@ -83357,8 +83366,8 @@ tav
 bCA
 nrB
 orS
+atk
 nrB
-xRm
 rbC
 tav
 aZK
@@ -91564,7 +91573,7 @@ hXw
 awr
 aBz
 aAh
-lnG
+hwE
 hwE
 hwE
 jbp
