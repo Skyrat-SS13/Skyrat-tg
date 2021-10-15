@@ -325,8 +325,7 @@
 
 	backpack_contents = list(
 		/obj/item/storage/box/engitank=1,\
-		/obj/item/gun/ballistic/revolver/detective=1,\
-		/obj/item/ammo_box/c38=3,\
+		/obj/item/armament_token/sidearm=1,\
 		/obj/item/kitchen/knife/hunting=1
 	)
 
