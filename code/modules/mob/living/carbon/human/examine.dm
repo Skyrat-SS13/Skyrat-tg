@@ -13,7 +13,6 @@
 		var/mob/living/L = user
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA) || HAS_TRAIT(L, TRAIT_INVISIBLE_MAN))
 			obscure_name = TRUE
-
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
@@ -459,7 +458,7 @@
 		for(var/datum/gunpoint/GP in gunpointed)
 			. += "<span class='warning'><b>[GP.source.name] [GP.source.p_are()] holding [t_him] at gunpoint with [GP.aimed_gun.name]!</b></span>\n"
 	//SKYRAT EDIT ADDITION END
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	for(var/genital in list("penis", "testicles", "vagina", "breasts", "anus"))
 		if(dna.species.mutant_bodyparts[genital])
@@ -468,6 +467,7 @@
 				if(!(G.is_hidden(src)))
 					. += "<span class='notice'>[t_He] has exposed genitals... <a href='?src=[REF(src)];lookup_info=genitals'>Look closer...</a></span>"
 					break
+*/
 	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=open_examine_panel'>Examine closely...</a>")
 	if(line)
 		. += line
