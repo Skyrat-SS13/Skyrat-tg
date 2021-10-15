@@ -115,8 +115,7 @@
 			ropee.update_icon_state()
 			ropee.update_icon()
 			add_overlay(shibari_shadow_overlay)
-			var/obj/item/clothing/under/shibari_body/sheebari = hooman.w_uniform
-			add_rope_overlays(sheebari.current_color)
+			add_rope_overlays(ropee.current_color)
 			M.visible_message(span_warning("[user] tied [M] to [src]!"),\
 				span_userdanger("[user] tied you to [src]!"),\
 				span_hear("You hear ropes being completely tightened."))
@@ -196,7 +195,8 @@
 	var/list/color_list = list(
 		"black",
 		"teal",
-		"pink"
+		"pink",
+		"red"
 	)
 
 /obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
