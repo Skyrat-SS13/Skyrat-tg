@@ -133,9 +133,9 @@
 				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_body))
 					if(do_after(user, 60))
 						shibarifullbody = new(src)
-						qdel(them.w_uniform)
+						qdel(them.w_uniform, TRUE)
 						if(them.equip_to_slot_if_possible(shibarifullbody,ITEM_SLOT_ICLOTHING,0,0,1))
-							use(2)
+							use(1)
 							shibarifullbody.current_color = current_color
 							shibarifullbody.update_icon_state()
 							shibarifullbody.update_icon()
@@ -158,9 +158,9 @@
 				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_groin))
 					if(do_after(user, 60))
 						shibarifullbody = new(src)
-						qdel(them.w_uniform)
+						qdel(them.w_uniform, TRUE)
 						if(them.equip_to_slot_if_possible(shibarifullbody,ITEM_SLOT_ICLOTHING,0,0,1))
-							use(2)
+							use(1)
 							shibarifullbody.current_color = current_color
 							shibarifullbody.update_icon_state()
 							shibarifullbody.update_icon()

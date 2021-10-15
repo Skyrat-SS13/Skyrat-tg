@@ -13,6 +13,7 @@
 	var/static/mutable_appearance/shibari_rope_overlay_behind
 	var/static/mutable_appearance/shibari_shadow_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "shibari_shadow", OBJ_LAYER)
 	var/mob/living/carbon/human/current_mob = null
+	var/obj/item/stack/shibari_rope/ropee = null
 
 /obj/structure/chair/shibari_stand/Destroy()
 	cut_overlay(shibari_shadow_overlay)
@@ -78,8 +79,11 @@
 		return FALSE
 
 	var/mob/living/carbon/human/hooman = M
-	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_body) || istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
+	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
 		to_chat(user, span_warning("There's no way to tie them to the stand!"))
+		return FALSE
+	if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
+		to_chat(user, span_warning("You'll need some shibari ropes to tie them to the stand!"))
 		return FALSE
 
 	if(M != user)
@@ -96,11 +100,20 @@
 		if(!is_user_buckle_possible(M, user, check_loc))
 			return FALSE
 
-		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_body) || istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
+		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
 			to_chat(user, span_warning("There's no way to tie them to the stand!"))
+			return FALSE
+		if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
+			to_chat(user, span_warning("You'll need some shibari ropes to tie them to the stand!"))
 			return FALSE
 
 		if(buckle_mob(M, check_loc = check_loc))
+			var/obj/item/stack/shibari_rope/rope = user.get_active_held_item()
+			rope.use(1)
+			ropee = new()
+			ropee.current_color = current_color
+			ropee.update_icon_state()
+			ropee.update_icon()
 			add_overlay(shibari_shadow_overlay)
 			var/obj/item/clothing/under/shibari_body/sheebari = hooman.w_uniform
 			add_rope_overlays(sheebari.current_color)
@@ -159,6 +172,9 @@
 			current_mob.handcuffed.dropped(current_mob)
 		current_mob.set_handcuffed(null)
 		current_mob.update_abstract_handcuffed()
+
+	if(ropee)
+		ropee.forceMove(get_turf(src))
 	current_mob = null
 
 /obj/item/restraints/handcuffs/milker/shibari

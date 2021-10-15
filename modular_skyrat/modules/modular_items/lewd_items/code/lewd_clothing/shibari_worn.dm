@@ -24,10 +24,11 @@
 	var/tight = "low" //can be low, medium and hard.
 
 /obj/item/clothing/under/shibari_body/Destroy()
-	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
-	R.current_color = current_color
-	R.update_icon_state()
-	R.update_icon()
+	if(!force)
+		var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+		R.current_color = current_color
+		R.update_icon_state()
+		R.update_icon()
 	. = ..()
 
 //customization stuff
@@ -115,11 +116,12 @@
 	var/current_color = "pink"
 	var/tight = "low" //can be low, medium and hard.
 
-/obj/item/clothing/under/shibari_groin/Destroy()
-	var/obj/item/stack/shibari_rope/R = new(get_turf(src))
-	R.current_color = current_color
-	R.update_icon_state()
-	R.update_icon()
+/obj/item/clothing/under/shibari_groin/Destroy(force)
+	if(!force)
+		var/obj/item/stack/shibari_rope/R = new(get_turf(src))
+		R.current_color = current_color
+		R.update_icon_state()
+		R.update_icon()
 	. = ..()
 
 /obj/item/clothing/under/shibari_groin/ComponentInitialize()
