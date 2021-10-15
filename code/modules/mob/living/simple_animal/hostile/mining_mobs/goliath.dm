@@ -220,10 +220,12 @@
 		if((!QDELETED(spawner) && spawner.faction_check_mob(L)) || L.stat == DEAD)
 			continue
 		visible_message(span_danger("[src] grabs hold of [L]!"))
-		if(HAS_TRAIT(L,TRAIT_GOLIATH_STUN)) //SKYRAT EDIT START GOLIATH STUN TIME, SEVA
+		 //SKYRAT EDIT START - GOLIATH STUN TIME FOR SEVA
+		if(HAS_TRAIT(L,TRAIT_GOLIATH_STUN))
 			L.Stun(GOLIATH_STUN_TIME_SEVA)
-		else			//SKYRAT EDIT END GOLIATH STUN TIME, SEVA
+		else
 			L.Stun(100)
+		//SKYRAT EDIT END
 		L.adjustBruteLoss(rand(10,15))
 		latched = TRUE
 	if(!latched)
