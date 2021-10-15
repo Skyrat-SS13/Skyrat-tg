@@ -4,16 +4,15 @@
  * @license MIT
  */
 
-import { sendMessage } from 'tgui/backend';
-import { pingFail, pingSuccess } from './actions';
-import { PING_INTERVAL, PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
+import { pingSuccess } from './actions';
+import { PING_INTERVAL } from './constants';
 
 export const pingMiddleware = store => {
   let initialized = false;
   let index = 0;
   let interval;
   const pings = [];
-  const sendPing = () => {
+  const sendPing = () => { /* SKYRAT EDIT START - Trying to fix the chat
     for (let i = 0; i < PING_QUEUE_SIZE; i++) {
       const ping = pings[i];
       if (ping && Date.now() - ping.sentAt > PING_TIMEOUT) {
@@ -27,7 +26,7 @@ export const pingMiddleware = store => {
       type: 'ping',
       payload: { index },
     });
-    index = (index + 1) % PING_QUEUE_SIZE;
+    index = (index + 1) % PING_QUEUE_SIZE;*/ // SKYRAT EDIT END
   };
   return next => action => {
     const { type, payload } = action;
