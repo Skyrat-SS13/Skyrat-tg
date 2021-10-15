@@ -642,6 +642,13 @@
 		return
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
 		vine_mutation.on_cross(src, moving_atom)
+	if(istype(moving_atom, /mob/living/simple_animal/hostile/venus_human_trap))
+		var/mob/living/simple_animal/hostile/venus_human_trap/venus_trap = moving_atom
+		if(venus_trap.health >= venus_trap.maxHealth)
+			return
+		venus_trap.adjustHealth(-clamp(venus_trap.health += 2, 0, venus_trap.maxHealth), TRUE, TRUE)
+		to_chat(venus_trap, span_notice("The vines attempt to regenerate some of your wounds!"))
+		return
 
 // ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/spacevine/attack_hand(mob/user, list/modifiers)
@@ -843,13 +850,6 @@
 	. = ..()
 	if(isvineimmune(mover))
 		return TRUE
-
-/obj/structure/spacevine/attack_ghost(mob/user)
-	var/turf/src_turf = get_turf(src)
-	var/mob/living/simple_animal/hostile/venus_human_trap/check_venus = locate() in src_turf.contents
-	if(!check_venus)
-		return ..()
-	check_venus.attack_ghost(user)
 
 /proc/isvineimmune(atom/checked_atom)
 	if(isliving(checked_atom))
