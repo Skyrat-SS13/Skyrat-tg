@@ -43,3 +43,9 @@
 
 //to determine if someone is a fishing master, or not
 #define TRAIT_FISHING_MASTER "fishing_master"
+
+//to determine if someone is a ceramics master, or not
+#define TRAIT_CERAMIC_MASTER "ceramic_master"
+
+//to determine if someone is a glassblowing master, or not
+#define TRAIT_GLASSBLOWING_MASTER "glassblowing_master"

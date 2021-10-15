@@ -1,3 +1,16 @@
+#define DEFAULT_TIMED 5 SECONDS
+#define MASTER_TIMED 2 SECONDS
+
+/obj/item/skillchip/glassblowing_master
+	name = "Glassblowing Master skillchip"
+	desc = "A master of glass, perhaps even capable of creating life from glass and fire."
+	auto_traits = list(TRAIT_GLASSBLOWING_MASTER)
+	skill_name = "Glass-Blowing Master"
+	skill_description = "Master the ability to use glass within glassblowing."
+	skill_icon = "certificate"
+	activate_message = "<span class='notice'>The faults within the glass are now to be seen.</span>"
+	deactivate_message = "<span class='notice'>Glass becomes more obscured.</span>"
+
 /obj/item/glassblowing
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 
@@ -7,7 +20,7 @@
 	icon_state = "glass_bowl"
 
 /datum/export/glassblowing
-	cost = 1000
+	cost = 3000
 	unit_name = "glassblowing product"
 	export_types = list(/obj/item/glassblowing/glass_lens,
 						/obj/item/glassblowing/glass_globe,
@@ -141,6 +154,7 @@
 	return ..()
 
 /obj/item/glassblowing/blowing_rod/attackby(obj/item/I, mob/living/user, params)
+	var/actioning_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
 
 	if(istype(I, /obj/item/glassblowing/molten_glass))
@@ -161,7 +175,7 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actioning_speed, target = src))
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
@@ -183,7 +197,7 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actioning_speed, target = src))
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
@@ -205,7 +219,7 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin using [I] on [src]."))
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actioning_speed, target = src))
 			to_chat(user, span_warning("You interrupt an action!"))
 			in_use = FALSE
 			return
@@ -221,7 +235,9 @@
 	return ..()
 
 /obj/item/glassblowing/blowing_rod/attack_self(mob/user, modifiers)
+	var/actioning_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in contents
+
 	if(find_glass)
 		if(find_glass.world_molten < world.time)
 			to_chat(user, span_warning("The glass has cooled down far too much to be handled..."))
@@ -265,7 +281,7 @@
 						in_use = FALSE
 						return
 					to_chat(user, span_notice("You begin blowing [src]."))
-					if(!do_after(user, 5 SECONDS, target = src))
+					if(!do_after(user, actioning_speed, target = src))
 						to_chat(user, span_warning("You interrupt an action!"))
 						in_use = FALSE
 						return
@@ -281,7 +297,7 @@
 						in_use = FALSE
 						return
 					to_chat(user, span_notice("You begin spinning [src]."))
-					if(!do_after(user, 5 SECONDS, target = src))
+					if(!do_after(user, actioning_speed, target = src))
 						to_chat(user, span_warning("You interrupt an action!"))
 						in_use = FALSE
 						return
@@ -374,3 +390,6 @@
 		has_sand = TRUE
 		icon_state = "metal_cup_full"
 	return ..()
+
+#undef DEFAULT_TIMED
+#undef MASTER_TIMED

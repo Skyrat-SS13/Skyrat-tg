@@ -1,3 +1,9 @@
+#define DEFAULT_TIMED 5 SECONDS
+#define MASTER_TIMED 2 SECONDS
+
+#define DEFAULT_HEATED 25 SECONDS
+#define MASTER_HEATED 50 SECONDS
+
 /obj/structure/reagent_forge
 	name = "forge"
 	desc = "A structure built out of bricks, with the intended purpose of heating up metal."
@@ -512,6 +518,8 @@
 
 	if(istype(I, /obj/item/glassblowing/blowing_rod))
 		var/obj/item/glassblowing/blowing_rod/blowing_item = I
+		var/actioning_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
+		var/actioning_amount = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_HEATED : DEFAULT_HEATED
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -526,18 +534,19 @@
 			in_use = FALSE
 			return
 		to_chat(user, span_notice("You begin heating up [blowing_item]."))
-		for(var/do_loop in 1 to 5) //I really want 10 seconds, but not all at "once," this makes it feel like less time
-			if(!do_after(user, 2 SECONDS, target = src))
-				to_chat(user, span_warning("[blowing_item] is interrupted in its heating process."))
-				in_use = FALSE
-				return
-		find_glass.world_molten = world.time + 25 SECONDS
+		if(!do_after(user, actioning_speed, target = src))
+			to_chat(user, span_warning("[blowing_item] is interrupted in its heating process."))
+			in_use = FALSE
+			return
+		find_glass.world_molten = world.time + actioning_amount
 		to_chat(user, span_notice("You finish heating up [blowing_item]."))
 		in_use = FALSE
 		return
 
 	if(istype(I, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/glass_item = I
+		var/actioning_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
+		var/actioning_amount = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_HEATED : DEFAULT_HEATED
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -550,17 +559,19 @@
 			to_chat(user, span_warning("You need to be able to use [glass_item]!"))
 			in_use = FALSE
 			return
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actioning_speed, target = src))
 			to_chat(user, span_warning("You stop heating up [glass_item]!"))
 			in_use = FALSE
 			return
 		in_use = FALSE
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
-		spawned_glass.world_molten = world.time + 25 SECONDS
+		spawned_glass.world_molten = world.time + actioning_amount
 		return
 
 	if(istype(I, /obj/item/glassblowing/metal_cup))
 		var/obj/item/glassblowing/metal_cup/metal_item = I
+		var/actioning_speed = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_TIMED : DEFAULT_TIMED
+		var/actioning_amount = HAS_TRAIT(user, TRAIT_GLASSBLOWING_MASTER) ? MASTER_HEATED : DEFAULT_HEATED
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -573,7 +584,7 @@
 			to_chat(user, span_warning("There is no sand within [metal_item]!"))
 			in_use = FALSE
 			return
-		if(!do_after(user, 5 SECONDS, target = src))
+		if(!do_after(user, actioning_speed, target = src))
 			to_chat(user, span_warning("You stop heating up [metal_item]!"))
 			in_use = FALSE
 			return
@@ -581,7 +592,7 @@
 		metal_item.has_sand = FALSE
 		metal_item.icon_state = "metal_cup_empty"
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
-		spawned_glass.world_molten = world.time + 25 SECONDS
+		spawned_glass.world_molten = world.time + actioning_amount
 		return
 
 	return ..()
@@ -591,3 +602,9 @@
 	reagent_forging = TRUE
 	sinew_lower_chance = 100
 	forge_temperature = 1000
+
+#undef DEFAULT_TIMED
+#undef MASTER_TIMED
+
+#undef DEFAULT_HEATED
+#undef MASTER_HEATED

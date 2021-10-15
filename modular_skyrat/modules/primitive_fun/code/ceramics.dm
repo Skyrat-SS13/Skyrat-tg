@@ -1,3 +1,16 @@
+#define DEFAULT_SPIN 4 SECONDS
+#define MASTER_SPIN 2 SECONDS
+
+/obj/item/skillchip/ceramic_master
+	name = "Ceramic Master skillchip"
+	desc = "A master of clay, perhaps even capable of creating life from clay and fire."
+	auto_traits = list(TRAIT_CERAMIC_MASTER)
+	skill_name = "Ceramic Master"
+	skill_description = "Master the ability to use clay within ceramics."
+	skill_icon = "certificate"
+	activate_message = "<span class='notice'>The faults within the clay are now to be seen.</span>"
+	deactivate_message = "<span class='notice'>Clay becomes more obscured.</span>"
+
 /obj/structure/water_source/puddle/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/glass_item = O
@@ -55,6 +68,19 @@
 						/obj/item/reagent_containers/glass/bowl/ceramic,
 						/obj/item/reagent_containers/glass/beaker/large/ceramic)
 
+/datum/export/ceramics/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
+	. = ..()
+
+/datum/export/ceramics_unfinished
+	cost = 300
+	unit_name = "unfinished ceramic product"
+	export_types = list(/obj/item/ceramic/plate,
+						/obj/item/ceramic/bowl,
+						/obj/item/ceramic/cup)
+
+/datum/export/ceramics_unfinished/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
+	. = ..()
+
 /obj/item/ceramic/plate
 	name = "ceramic plate"
 	desc = "A piece of clay that is flat, in the shape of a plate."
@@ -98,10 +124,10 @@
 	icon_state = "throw_wheel_empty"
 	density = TRUE
 	anchored = TRUE
-	var/spinning_speed = 4 SECONDS
 	var/in_use = FALSE
 
 /obj/structure/throwing_wheel/attackby(obj/item/I, mob/living/user, params)
+	var/spinning_speed = HAS_TRAIT(user, TRAIT_CERAMIC_MASTER) ? MASTER_SPIN : DEFAULT_SPIN
 	if(istype(I, /obj/item/ceramic/clay))
 		if(length(contents) >= 1)
 			return
@@ -120,6 +146,7 @@
 	return ..()
 
 /obj/structure/throwing_wheel/proc/use_clay(spawn_type, mob/user)
+	var/spinning_speed = HAS_TRAIT(user, TRAIT_CERAMIC_MASTER) ? MASTER_SPIN : DEFAULT_SPIN
 	var/given_message = list(
 		"You slowly start spinning the throwing wheel...",
 		"You place your hands on the clay, slowly shaping it...",
@@ -141,6 +168,7 @@
 
 /obj/structure/throwing_wheel/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	var/spinning_speed = HAS_TRAIT(user, TRAIT_CERAMIC_MASTER) ? MASTER_SPIN : DEFAULT_SPIN
 	if(in_use)
 		return
 	in_use = TRUE
@@ -175,3 +203,6 @@
 				return
 	in_use = FALSE
 	return
+
+#undef DEFAULT_SPIN
+#undef MASTER_SPIN
