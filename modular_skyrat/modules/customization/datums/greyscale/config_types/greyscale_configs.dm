@@ -49,5 +49,16 @@
 	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_branded.json'
 
 /datum/greyscale_config/hoodie/branded/worn
-	name = "Branded Hoodie"
+	name = "Branded Hoodie Worn"
 	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_branded_worn.json'
+
+/// PATTERNED MISC ///
+/// Due to how generic most of these are, they'll be in the same .json and their differences chosen by the icon_state
+/// Currently this includes Flannels and Hawaiian Shirts (Add to this list if it changes)
+/datum/greyscale_config/patterned
+	name = "Patterned Outfit"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/misc/patterned.json'
+
+/datum/greyscale_config/patterned/worn
+	name = "Patterned Outfit Worn"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/misc/patterned_worn.json'
