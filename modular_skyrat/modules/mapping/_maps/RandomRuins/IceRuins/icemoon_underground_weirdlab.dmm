@@ -40,10 +40,11 @@
 /turf/open/floor/iron/icemoon,
 /area/ruin/unpowered)
 "ex" = (
-/obj/structure/table,
-/obj/item/binoculars,
-/turf/open/floor/iron/dark,
-/area/ruin/unpowered)
+/obj/structure/fence/corner{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
 "fw" = (
 /obj/structure/spider/cocoon,
 /turf/open/floor/plating/icemoon,
@@ -56,7 +57,7 @@
 /area/ruin/unpowered)
 "fO" = (
 /obj/item/flashlight/seclite,
-/turf/open/floor/iron/icemoon,
+/turf/open/floor/plating,
 /area/ruin/unpowered)
 "gc" = (
 /obj/structure/decorative/shelf/alcohol_assortment,
@@ -89,8 +90,8 @@
 /area/ruin/unpowered)
 "ih" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/giant_spider/nurse/ice,
-/turf/open/floor/plating/icemoon,
+/mob/living/simple_animal/hostile/giant_spider,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "im" = (
 /obj/structure/decorative/shelf/soda_multipacks,
@@ -129,7 +130,7 @@
 /area/ruin/unpowered)
 "jO" = (
 /obj/item/kirbyplants/random,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "ka" = (
 /obj/item/kitchen/fork,
@@ -145,11 +146,11 @@
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered)
 "kX" = (
-/obj/machinery/power/smes,
-/turf/open/floor/plating,
-/area/ruin/unpowered)
-"lF" = (
 /obj/item/bear_armor,
+/turf/open/floor/plating/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
+"lF" = (
+/obj/structure/fluff/oldturret,
 /turf/open/floor/plating/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
 "lL" = (
@@ -158,6 +159,14 @@
 /area/icemoon/underground/explored)
 "lX" = (
 /turf/closed/wall/r_wall/syndicate,
+/area/ruin/unpowered)
+"mm" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/iron,
+/area/ruin/unpowered)
+"mr" = (
+/obj/structure/mob_spawner/spiders,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "mF" = (
 /obj/structure/table,
@@ -186,6 +195,7 @@
 /obj/structure/table,
 /obj/structure/fluff/paper/stack,
 /obj/item/laser_pointer,
+/obj/item/capturedevice,
 /turf/open/floor/plating/icemoon,
 /area/ruin/unpowered)
 "pf" = (
@@ -193,6 +203,11 @@
 	dir = 4
 	},
 /turf/open/floor/plating/icemoon,
+/area/ruin/unpowered)
+"pp" = (
+/obj/machinery/door/airlock/highsecurity,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/iron/dark,
 /area/ruin/unpowered)
 "qX" = (
 /obj/structure/table,
@@ -206,7 +221,6 @@
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "rm" = (
-/obj/machinery/power/floodlight,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "ro" = (
@@ -225,13 +239,18 @@
 /turf/open/floor/iron/icemoon,
 /area/ruin/unpowered)
 "sp" = (
-/obj/effect/spawner/random/engineering/canister,
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/snow/icemoon,
+/area/icemoon/underground/explored)
+"sW" = (
+/obj/structure/holosign/barrier,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
-"sW" = (
-/obj/structure/table,
-/obj/item/pickaxe/mini,
-/turf/open/floor/iron/dark,
+"uj" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plating,
 /area/ruin/unpowered)
 "ul" = (
 /obj/structure/table,
@@ -240,6 +259,10 @@
 /obj/item/glassblowing/paddle,
 /obj/item/glassblowing/shears,
 /turf/open/floor/plating/icemoon,
+/area/ruin/unpowered)
+"ux" = (
+/obj/structure/spider/cocoon,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "uD" = (
 /obj/machinery/door/airlock/highsecurity,
@@ -279,7 +302,7 @@
 /area/ruin/unpowered)
 "zz" = (
 /obj/item/fireaxe/boneaxe,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "Ac" = (
 /turf/open/floor/plating/icemoon,
@@ -290,7 +313,7 @@
 /turf/open/floor/iron/icemoon,
 /area/ruin/unpowered)
 "AS" = (
-/obj/structure/holosign/barrier,
+/obj/machinery/power/floodlight,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "Bs" = (
@@ -327,25 +350,35 @@
 /obj/effect/mapping_helpers/airlock/abandoned,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered)
+"Fl" = (
+/obj/structure/spider/stickyweb,
+/mob/living/simple_animal/hostile/giant_spider/tarantula,
+/turf/open/floor/plating,
+/area/ruin/unpowered)
 "FI" = (
-/obj/structure/tank_holder/oxygen/yellow,
-/turf/open/floor/iron/dark,
+/obj/effect/spawner/random/engineering/canister,
+/turf/open/floor/plating,
+/area/ruin/unpowered)
+"FK" = (
+/obj/structure/spider/cocoon,
+/turf/open/floor/plating,
 /area/ruin/unpowered)
 "Gc" = (
 /obj/structure/mob_spawner/spiders,
 /turf/open/floor/plating/icemoon,
 /area/ruin/unpowered)
 "Gl" = (
-/obj/structure/fluff/oldturret,
-/turf/open/floor/plating/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
+/obj/structure/tank_holder/oxygen/yellow,
+/turf/open/floor/iron/dark,
+/area/ruin/unpowered)
 "Gx" = (
 /obj/structure/spider/stickyweb,
-/mob/living/simple_animal/hostile/giant_spider/hunter/ice,
-/turf/open/floor/iron/icemoon,
+/mob/living/simple_animal/hostile/giant_spider/hunter,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "GA" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/table,
+/obj/item/pickaxe/mini,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered)
 "Ha" = (
@@ -401,21 +434,29 @@
 /area/icemoon/underground/explored)
 "Nc" = (
 /obj/item/gps/spaceruin,
-/turf/open/floor/iron/icemoon,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "Nq" = (
 /obj/structure/table,
 /obj/item/pickaxe,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered)
+"NO" = (
+/obj/item/poster/random_contraband,
+/turf/open/floor/iron,
+/area/ruin/unpowered)
 "Of" = (
 /obj/item/inducer,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating,
 /area/ruin/unpowered)
 "Ph" = (
 /obj/structure/table,
 /obj/item/clothing/mask/chameleon/broken,
 /turf/open/floor/iron/dark,
+/area/ruin/unpowered)
+"PP" = (
+/obj/item/autosurgeon/organ,
+/turf/open/floor/iron/icemoon,
 /area/ruin/unpowered)
 "Qi" = (
 /obj/machinery/door/airlock/vault{
@@ -428,7 +469,7 @@
 /area/ruin/unpowered)
 "Qn" = (
 /obj/structure/table,
-/obj/item/shovel,
+/obj/item/binoculars,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered)
 "QR" = (
@@ -443,16 +484,18 @@
 	},
 /turf/open/floor/plating/icemoon,
 /area/ruin/unpowered)
+"RR" = (
+/obj/item/radio,
+/turf/open/floor/plating,
+/area/ruin/unpowered)
 "SV" = (
 /mob/living/simple_animal/hostile/giant_spider/hunter/ice,
 /turf/open/floor/plating/icemoon,
 /area/ruin/unpowered)
 "Tb" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/open/floor/plating,
+/area/ruin/unpowered)
 "Te" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark,
@@ -463,11 +506,13 @@
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered)
 "TC" = (
+/obj/machinery/power/smes,
 /turf/open/floor/plating,
 /area/ruin/unpowered)
 "TL" = (
-/obj/machinery/door/airlock/maintenance_hatch,
-/turf/open/floor/plating,
+/obj/structure/table,
+/obj/item/shovel,
+/turf/open/floor/iron/dark,
 /area/ruin/unpowered)
 "TQ" = (
 /turf/open/floor/iron/dark,
@@ -519,29 +564,34 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/plating/icemoon,
 /area/ruin/unpowered)
+"Wq" = (
+/obj/structure/tank_holder/extinguisher,
+/turf/open/floor/iron,
+/area/ruin/unpowered)
 "WB" = (
 /obj/effect/spawner/random/structure/crate_abandoned,
 /turf/open/floor/iron/dark,
 /area/ruin/unpowered)
+"XK" = (
+/turf/open/floor/iron,
+/area/ruin/unpowered)
 "Yj" = (
 /obj/item/extinguisher/advanced,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 "ZK" = (
 /obj/item/pickaxe/emergency,
-/turf/open/floor/iron/icemoon,
+/turf/open/floor/iron,
 /area/ruin/unpowered)
 
 (1,1,1) = {"
 uS
 uS
 uS
-lF
 uS
 uS
 uS
-uS
-uS
+kX
 uS
 uS
 uS
@@ -571,18 +621,16 @@ uS
 "}
 (2,1,1) = {"
 uS
-Nb
-Nb
-Nb
-Nb
-Nb
-Nb
-Nb
+uS
 Nb
 uS
-uS
-uS
-lL
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
+Nb
 Nb
 Nb
 uS
@@ -607,6 +655,9 @@ uS
 uS
 "}
 (3,1,1) = {"
+uS
+Nb
+Nb
 Nb
 lX
 lX
@@ -616,11 +667,6 @@ lX
 lX
 lX
 lX
-kj
-kj
-kj
-kj
-kj
 kj
 kj
 kj
@@ -644,20 +690,18 @@ lX
 uS
 "}
 (4,1,1) = {"
+uS
+uS
+Nb
 Nb
 rb
-AS
+sW
 rb
 TQ
 TQ
 TQ
 Te
 lX
-Gl
-Nb
-Nb
-Nb
-Gl
 Nb
 Nb
 lL
@@ -681,19 +725,17 @@ lX
 uS
 "}
 (5,1,1) = {"
+uS
+uS
+uS
 Nb
 lX
 lX
 lX
-FI
+Gl
 TQ
 TQ
 TQ
-lX
-lX
-lX
-lX
-lX
 lX
 lX
 lX
@@ -719,17 +761,15 @@ uS
 "}
 (6,1,1) = {"
 uS
-Tb
+uS
+uS
+uS
+sp
 Nb
 lX
-FI
+Gl
 TQ
 rs
-TQ
-uD
-TQ
-TQ
-TQ
 TQ
 uD
 TQ
@@ -756,15 +796,13 @@ uS
 "}
 (7,1,1) = {"
 uS
-Tb
-Gl
+uS
+uS
+uS
+sp
+lF
 lX
-sW
-TQ
-TQ
-TQ
-uD
-TQ
+GA
 TQ
 TQ
 TQ
@@ -781,7 +819,7 @@ al
 Ac
 QR
 gk
-Iw
+PP
 vZ
 Ac
 gk
@@ -793,18 +831,16 @@ uS
 "}
 (8,1,1) = {"
 uS
-Tb
+uS
+uS
+uS
+sp
 Nb
 lX
-ex
 Qn
+TL
 TQ
 TQ
-lX
-lX
-lX
-GA
-lX
 lX
 TQ
 TQ
@@ -830,18 +866,16 @@ uS
 "}
 (9,1,1) = {"
 uS
-Tb
+ex
+kj
+kj
+gi
 Nb
 lX
 lX
 lX
 lX
 lX
-lX
-Nb
-Nb
-Nb
-Nb
 lX
 Nq
 TQ
@@ -852,11 +886,11 @@ lX
 lX
 lX
 lX
-uD
+pp
 lX
 lX
 lX
-uD
+pp
 lX
 lX
 lX
@@ -867,17 +901,15 @@ uS
 "}
 (10,1,1) = {"
 uS
-Tb
-lF
+sp
+kX
 Nb
 Nb
 Nb
-lX
-lX
-lX
-lX
-lX
-lX
+sp
+Nb
+Nb
+Nb
 Nb
 lX
 qX
@@ -886,35 +918,33 @@ lX
 Nb
 lX
 jO
-Iw
-Gc
-al
-al
-dA
-Ac
+rm
+mr
+mm
+mm
+ih
+XK
 Yj
-al
-al
-al
-al
+mm
+mm
+mm
+mm
 Of
-Ac
+rm
 lX
 uS
 "}
 (11,1,1) = {"
 uS
-Tb
-Nb
-Nb
-Nb
-lX
-lX
-rm
 sp
-kX
-kX
-lX
+Nb
+Nb
+Nb
+Nb
+sp
+Nb
+lL
+Nb
 Nb
 lX
 TQ
@@ -922,36 +952,34 @@ TQ
 lX
 lX
 lX
-gk
-Iw
-gk
+mm
+XK
+uj
 fO
-gk
-Ac
-al
-fw
-gk
+uj
+XK
+mm
+ux
+mm
 ZK
-Iw
-gk
-Iw
-al
+XK
+uj
+XK
+mm
 lX
 uS
 "}
 (12,1,1) = {"
 uS
-Tb
+sp
 Nb
-Nb
-Nb
-TL
-TC
-TC
-TC
-TC
-TC
-TL
+lL
+lX
+lX
+lX
+lX
+lX
+lX
 Nb
 lX
 rs
@@ -959,35 +987,33 @@ TQ
 Et
 TQ
 Et
-Iw
-dA
-vZ
-gk
-Nc
-gk
-Iw
-gk
-Ac
-Ac
-fw
-Ac
+XK
 ih
-al
+NO
+mm
+Nc
+uj
+rm
+mm
+XK
+rm
+FK
+XK
+Gx
+mm
 lX
 uS
 "}
 (13,1,1) = {"
 uS
-Tb
-Gl
-Nb
+sp
 lF
 lX
 lX
-lX
-lX
-lX
-lX
+AS
+FI
+TC
+TC
 lX
 Nb
 lX
@@ -997,35 +1023,33 @@ lX
 lX
 lX
 jO
-gk
-Iw
-fw
-al
-Ac
+mm
+XK
+ux
+mm
+XK
 ih
-Ac
-al
-Iw
-al
-Ac
-al
-Gc
+XK
+mm
+rm
+mm
+XK
+mm
+mr
 lX
 uS
 "}
 (14,1,1) = {"
 uS
-Tb
-Nb
-Nb
+sp
 Nb
 Tb
-Nb
-Nb
-Nb
-Nb
-lL
-Nb
+rm
+rm
+rm
+rm
+rm
+Tb
 Nb
 lX
 lX
@@ -1041,7 +1065,7 @@ lX
 lX
 lX
 lX
-Ac
+XK
 Gx
 lX
 lX
@@ -1051,10 +1075,8 @@ lX
 uS
 "}
 (15,1,1) = {"
-Nb
-Tb
-Nb
-Nb
+uS
+sp
 Nb
 lX
 lX
@@ -1079,7 +1101,7 @@ JG
 pf
 lX
 zz
-Ht
+ux
 lX
 Kv
 Iw
@@ -1088,10 +1110,8 @@ lX
 uS
 "}
 (16,1,1) = {"
-Nb
-Tb
-Nb
-Nb
+uS
+sp
 Nb
 lX
 lX
@@ -1114,9 +1134,9 @@ Mk
 al
 Ac
 Iw
-uD
-gk
-Iw
+pp
+mm
+XK
 Im
 Iw
 Iw
@@ -1125,10 +1145,8 @@ lX
 uS
 "}
 (17,1,1) = {"
-Nb
-Tb
-Nb
-Nb
+uS
+sp
 Nb
 lX
 lX
@@ -1152,8 +1170,8 @@ mH
 Iw
 al
 lX
-Iw
-al
+rm
+mm
 lX
 nv
 ka
@@ -1163,10 +1181,8 @@ uS
 "}
 (18,1,1) = {"
 uS
-Tb
-Gl
-Nb
-Nb
+sp
+lF
 lX
 lX
 TQ
@@ -1189,8 +1205,8 @@ zu
 gk
 fw
 lX
-gk
-al
+uj
+uj
 lX
 Dj
 Iw
@@ -1200,9 +1216,7 @@ uS
 "}
 (19,1,1) = {"
 uS
-Tb
-Nb
-Nb
+sp
 Nb
 lX
 lX
@@ -1226,8 +1240,8 @@ Iw
 al
 iR
 lX
-fw
-dA
+ux
+Fl
 lX
 iL
 Iw
@@ -1237,9 +1251,7 @@ uS
 "}
 (20,1,1) = {"
 uS
-Tb
-Nb
-Nb
+sp
 Nb
 lX
 lX
@@ -1264,7 +1276,7 @@ al
 iq
 lX
 ZK
-rH
+RR
 lX
 gc
 Iw
@@ -1274,9 +1286,7 @@ uS
 "}
 (21,1,1) = {"
 uS
-Tb
-Nb
-Nb
+sp
 Nb
 lX
 lX
@@ -1300,8 +1310,8 @@ ul
 mY
 Cx
 lX
-mH
-Gc
+Wq
+mr
 lX
 VO
 Iw
@@ -1312,8 +1322,6 @@ uS
 (22,1,1) = {"
 uS
 gi
-kj
-kj
 kj
 lX
 lX
@@ -1347,8 +1355,6 @@ lX
 uS
 "}
 (23,1,1) = {"
-uS
-uS
 uS
 uS
 uS

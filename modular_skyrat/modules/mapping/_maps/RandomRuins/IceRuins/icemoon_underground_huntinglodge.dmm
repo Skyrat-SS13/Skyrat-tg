@@ -208,12 +208,21 @@
 /obj/structure/closet/crate/wooden,
 /turf/open/floor/iron,
 /area/ruin/unpowered/hunterlodge)
+"hv" = (
+/obj/structure/table/wood/poker,
+/obj/effect/spawner/random/entertainment/deck,
+/turf/open/floor/wood,
+/area/ruin/unpowered/hunterlodge)
 "hy" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
 /obj/structure/ore_box,
 /turf/open/floor/wood,
+/area/ruin/unpowered/hunterlodge)
+"hE" = (
+/obj/machinery/light_switch/directional/north,
+/turf/open/floor/carpet,
 /area/ruin/unpowered/hunterlodge)
 "hF" = (
 /obj/structure/tank_dispenser/oxygen,
@@ -473,6 +482,10 @@
 /obj/item/storage/box/lethalshot,
 /obj/item/storage/box/lethalshot,
 /obj/item/storage/box/lethalshot,
+/obj/item/ammo_box/c38,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/hunterlodge)
 "mk" = (
@@ -570,6 +583,13 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/unpowered/hunterlodge)
+"oK" = (
+/obj/machinery/airalarm/all_access{
+	dir = 8;
+	pixel_x = 25
+	},
+/turf/open/floor/wood,
+/area/ruin/unpowered/hunterlodge)
 "oN" = (
 /obj/structure/rack/shelf,
 /obj/item/storage/box/medipens,
@@ -577,6 +597,13 @@
 /obj/item/storage/box/beakers/variety,
 /obj/item/storage/box/bodybags,
 /turf/open/floor/iron/white,
+/area/ruin/unpowered/hunterlodge)
+"pc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/light_switch/directional/east,
+/turf/open/floor/wood,
 /area/ruin/unpowered/hunterlodge)
 "ph" = (
 /obj/structure/table/bronze,
@@ -874,6 +901,18 @@
 "wV" = (
 /obj/structure/window/reinforced,
 /obj/structure/rack/shelf,
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_y = 10
+	},
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_y = 6
+	},
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/hunterlodge)
 "wZ" = (
@@ -891,6 +930,12 @@
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
 /turf/open/floor/iron/kitchen,
+/area/ruin/unpowered/hunterlodge)
+"xv" = (
+/obj/machinery/airalarm/all_access{
+	pixel_y = 25
+	},
+/turf/open/floor/carpet,
 /area/ruin/unpowered/hunterlodge)
 "xR" = (
 /obj/effect/mob_spawn/human/huntboss,
@@ -937,18 +982,16 @@
 	dir = 8
 	},
 /obj/structure/rack,
-/obj/item/gun/ballistic/revolver/revolution{
-	pixel_y = 12
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/obj/item/gun/ballistic/revolver/revolution{
+/obj/item/storage/bag/ammo/marksman{
+	pixel_y = 10
+	},
+/obj/item/storage/bag/ammo/marksman{
 	pixel_y = 6
 	},
-/obj/item/gun/ballistic/revolver/zeta{
-	pixel_y = 2
-	},
-/obj/item/gun/ballistic/revolver/zeta{
-	pixel_y = -2
-	},
+/obj/item/storage/bag/ammo/marksman,
 /turf/open/floor/iron,
 /area/ruin/unpowered/hunterlodge)
 "zG" = (
@@ -1115,6 +1158,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/turf/open/floor/wood,
+/area/ruin/unpowered/hunterlodge)
+"Gs" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light_switch/directional/east,
 /turf/open/floor/wood,
 /area/ruin/unpowered/hunterlodge)
 "GB" = (
@@ -1410,16 +1458,33 @@
 /area/ruin/unpowered/hunterlodge)
 "Ob" = (
 /obj/structure/rack/gunrack,
-/obj/item/gun/ballistic/revolver/rifle{
+/obj/structure/window/reinforced{
+	pixel_y = -4
+	},
+/obj/machinery/door/window/brigdoor{
+	dir = 1
+	},
+/obj/item/armament_token/primary{
+	pixel_y = 12
+	},
+/obj/item/armament_token/primary{
 	pixel_y = 8
 	},
-/obj/item/gun/ballistic/revolver/rifle{
-	pixel_y = 6
-	},
-/obj/item/gun/ballistic/shotgun/lethal{
+/obj/item/armament_token/primary{
 	pixel_y = 4
 	},
-/obj/item/gun/ballistic/shotgun/lethal,
+/obj/item/armament_token/primary,
+/obj/item/armament_token/primary{
+	pixel_y = -4
+	},
+/obj/item/armament_token/primary{
+	pixel_y = -8
+	},
+/obj/item/armament_token/energy{
+	pixel_y = -6
+	},
+/obj/item/armament_token/energy,
+/obj/item/armament_token/energy,
 /turf/open/floor/iron,
 /area/ruin/unpowered/hunterlodge)
 "OD" = (
@@ -1528,6 +1593,15 @@
 /obj/item/ammo_casing/caseless/arrow/wood,
 /obj/item/ammo_casing/caseless/arrow/wood,
 /obj/item/ammo_casing/caseless/arrow/wood,
+/obj/structure/window/reinforced{
+	pixel_y = -4
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/door/window/brigdoor{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/unpowered/hunterlodge)
 "RD" = (
@@ -1680,6 +1754,11 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/unpowered/hunterlodge)
+"Ue" = (
+/obj/structure/table/wood/poker,
+/obj/item/coin/antagtoken,
+/turf/open/floor/wood,
+/area/ruin/unpowered/hunterlodge)
 "Uu" = (
 /turf/closed/mineral/random/snow/underground,
 /area/icemoon/underground/unexplored)
@@ -1809,10 +1888,17 @@
 /area/icemoon/underground/explored)
 "XK" = (
 /obj/structure/table,
-/obj/item/gun/energy/kinetic_accelerator,
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/accounting,
+/turf/open/floor/wood,
+/area/ruin/unpowered/hunterlodge)
+"XU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/light_switch/directional/north,
 /turf/open/floor/wood,
 /area/ruin/unpowered/hunterlodge)
 "Yd" = (
@@ -2101,7 +2187,7 @@ YG
 sm
 VZ
 WI
-aW
+Gs
 Ia
 aW
 IL
@@ -2221,7 +2307,7 @@ YG
 ft
 VZ
 VZ
-qS
+XU
 IL
 IL
 IL
@@ -2260,7 +2346,7 @@ ah
 CK
 VZ
 VZ
-Mk
+xv
 qS
 YI
 YI
@@ -2393,7 +2479,7 @@ aW
 YI
 KR
 Vp
-Vp
+hv
 Is
 tD
 rf
@@ -2432,7 +2518,7 @@ ty
 aW
 YI
 KR
-Vp
+Ue
 Vp
 Is
 tD
@@ -2458,7 +2544,7 @@ eh
 WP
 WP
 VZ
-Mk
+hE
 Mk
 Mk
 is
@@ -3146,13 +3232,13 @@ ba
 YI
 YI
 ba
-YI
+oK
 CF
 ba
 YI
 YI
 ba
-wF
+pc
 aW
 IL
 aW
