@@ -32,8 +32,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		clicked_int.ui_interact(src)
 
 /proc/populate_interaction_instances()
-	if(GLOB.interaction_instances.len)
-		return
 	for(var/spath in subtypesof(/datum/interaction))
 		var/datum/interaction/interaction = new spath()
 		GLOB.interaction_instances[interaction.name] = interaction
