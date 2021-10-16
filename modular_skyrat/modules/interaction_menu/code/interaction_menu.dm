@@ -366,12 +366,15 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	for(var/category in categories)
 		data["categories"] += category
 
+	data["block_interact"] = interact_next >= world.time
+	data["interactions"] = categories
+	return data
+
+/datum/component/interactable/ui_static_data(mob/user)
+	var/list/data = list()
 	data["ref_user"] = REF(user)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
-
-	data["block_interact"] = interact_next >= world.time
-	data["interactions"] = categories
 	return data
 
 
