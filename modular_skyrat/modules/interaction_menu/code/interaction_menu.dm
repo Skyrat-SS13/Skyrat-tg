@@ -79,6 +79,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		interaction.sound_range = sanitize_integer(ijson["sound_range"], 1, 7, 1)
 		interaction.sound_possible = sanitize_islist(ijson["sound_possible"], list("json error"))
 		interaction.interaction_requires = sanitize_islist(ijson["interaction_requires"], list())
+		interaction.color = sanitize_text(ijson["color"])
 
 		interaction.user_messages = sanitize_islist(ijson["user_messages"], list())
 		interaction.user_required_parts = sanitize_islist(ijson["user_required_parts"], list())
@@ -112,6 +113,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	sound_range = sanitize_integer(json["sound_range"], 1, 7, 1)
 	sound_possible = sanitize_islist(json["sound_possible"], list("json error"))
 	interaction_requires = sanitize_islist(json["interaction_requires"], list())
+	color = sanitize_text(json["color"])
 
 	user_messages = sanitize_islist(json["user_messages"], list())
 	user_required_parts = sanitize_islist(json["user_required_parts"], list())
@@ -141,6 +143,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		"sound_range" = sound_range,
 		"sound_possible" = sound_possible,
 		"interaction_requires" = interaction_requires,
+		"color" = color,
 		"user_messages" = user_messages,
 		"user_required_parts" = user_required_parts,
 		"user_arousal" = user_arousal,
@@ -202,6 +205,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/list/sound_possible = list()
 	/// What requirements does this interaction have? See defines.
 	var/list/interaction_requires = list()
+	/// What color should the interaction button be?
+	var/color = "blue"
 
 /datum/interaction/proc/allow_act(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(target == user && usage == INTERACTION_OTHER)
@@ -350,13 +355,16 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 	var/list/descriptions = list()
 	var/list/categories = list()
+	var/list/colors = list()
 	for(var/datum/interaction/interaction in interactions)
 		if(!categories[interaction.category])
 			categories[interaction.category] = list(interaction.name)
 		else categories[interaction.category] += interaction.name
 		descriptions[interaction.name] = interaction.description
+		colors[interaction.name] = interaction.color
 	data["categories"] = list()
 	data["descriptions"] = descriptions
+	data["colors"] = colors
 	for(var/category in categories)
 		data["categories"] += category
 
