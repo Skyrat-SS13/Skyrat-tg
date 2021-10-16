@@ -224,6 +224,18 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Wedding Veil"
 	item_path = /obj/item/clothing/head/weddingveil
 
+/datum/loadout_item/head/synde
+	name = "Black Space-helmet Replica"
+	item_path = /obj/item/clothing/head/syndicatefake
+
+/datum/loadout_item/head/glatiator
+	name = "Gladiator Helmet"
+	item_path = /obj/item/clothing/head/helmet/gladiator
+
+/datum/loadout_item/head/griffin
+	name = "Griffon Head"
+	item_path = /obj/item/clothing/head/griffin
+
 /datum/loadout_item/head/poppy
 	name = "Poppy"
 	item_path = /obj/item/food/grown/poppy
@@ -587,6 +599,35 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/fashionable_cap
 	name = "Fashionable baseball cap"
 	item_path = /obj/item/clothing/head/soft/yankee
+
+//Families Gear
+/datum/loadout_item/head/tmc
+	name = "TMC Hat"
+	item_path = /obj/item/clothing/head/tmc
+
+/datum/loadout_item/head/pg
+	name = "PG Hat"
+	item_path = /obj/item/clothing/head/pg
+
+/datum/loadout_item/head/deckers
+	name = "Deckers Hat"
+	item_path = /obj/item/clothing/head/deckers
+
+/datum/loadout_item/head/morningstar
+	name = "Morningstar Hat"
+	item_path = /obj/item/clothing/head/morningstar
+
+/datum/loadout_item/head/saints
+	name = "Saints Hat"
+	item_path = /obj/item/clothing/head/saints
+
+/datum/loadout_item/head/sybil
+	name = "Sybil Hat"
+	item_path = /obj/item/clothing/head/sybil_slickers
+
+/datum/loadout_item/head/basil
+	name = "Basil Hat"
+	item_path = /obj/item/clothing/head/basil_boys
 
 // Donator hats here
 /datum/loadout_item/head/donator

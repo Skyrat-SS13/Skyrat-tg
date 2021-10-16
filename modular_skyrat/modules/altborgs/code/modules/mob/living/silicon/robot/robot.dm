@@ -90,7 +90,7 @@
 	"Skyrat Service(alt skins)" = /obj/item/robot_model/service/skyrat,
 	"Skyrat Miner(alt skins)" = /obj/item/robot_model/miner/skyrat
 	)
-	var/input_model_sk = input("Please select a module, or choose a reskin.", "Robot", null, null) as null|anything in sortList(skyratmodel)
+	var/input_model_sk = input("Please select a module, or choose a reskin.", "Robot", null, null) as null|anything in sort_list(skyratmodel)
 	if(input_model_sk == "Departmental Modules" || !input_model_sk || model.type != /obj/item/robot_model)
 		return ..()
 	else
