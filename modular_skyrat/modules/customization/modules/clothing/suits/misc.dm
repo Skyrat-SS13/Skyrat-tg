@@ -33,44 +33,6 @@
 	desc = "Botanists screaming of mangos have been rumored to wear this."
 	icon_state = "dutchjacket"
 
-/obj/item/clothing/suit/hawaiian_blue
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "blue hawaiian shirt"
-	icon_state = "hawaiian_blue"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	body_parts_covered = CHEST|GROIN
-	mutant_variants = NONE
-
-
-/obj/item/clothing/suit/hawaiian_orange
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "orange hawaiian shirt"
-	icon_state = "hawaiian_orange"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	body_parts_covered = CHEST|GROIN
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/hawaiian_purple
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "purple hawaiian shirt"
-	icon_state = "hawaiian_purple"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	body_parts_covered = CHEST|GROIN
-	mutant_variants = NONE
-
-
-/obj/item/clothing/suit/hawaiian_green
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "green hawaiian shirt"
-	icon_state = "hawaiian_green"
-	desc = "Strangely en vouge with aviator wearing shibas."
-	body_parts_covered = CHEST|GROIN
-	mutant_variants = NONE
-
 /obj/item/clothing/suit/toggle/trackjacket
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -117,18 +79,6 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-
-/obj/item/clothing/suit/toggle/jacket/cardigan
-	name = "cardigan"
-	desc = "It's like, half a jacket."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "cardigan"
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/toggle/jacket/cardigan/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
 
 /obj/item/clothing/suit/discoblazer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'

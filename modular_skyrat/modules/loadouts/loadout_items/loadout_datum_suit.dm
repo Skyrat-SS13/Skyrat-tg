@@ -197,11 +197,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/costume/tailcoat
 
 /datum/loadout_item/suit/duster
-	name = "Colorable Duster"
+	name = "Greyscale Duster"
 	item_path = /obj/item/clothing/suit/duster/colorable
 
 /datum/loadout_item/suit/peacoat
-	name = "Colorable Peacoat"
+	name = "Greyscale Peacoat"
 	item_path = /obj/item/clothing/suit/toggle/peacoat
 
 /datum/loadout_item/suit/dresscoat
@@ -216,10 +216,15 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Track Jacket"
 	item_path = /obj/item/clothing/suit/toggle/trackjacket
 
-/*Flannels go inside Misc*/
+/*Flannels*/
 /datum/loadout_item/suit/flannel_black
 	name = "Black Flannel"
 	item_path = /obj/item/clothing/suit/toggle/jacket/flannel
+	can_be_greyscale = TRUE
+
+/datum/loadout_item/suit/flannel_black
+	name = "Black Flannel"
+	item_path = /obj/item/clothing/suit/toggle/jacket/flannel	//Thats right, its the same item, I cheated!!! MWAHAHAHAHA!
 
 /datum/loadout_item/suit/flannel_red
 	name = "Red Flannel"
@@ -234,21 +239,26 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/jacket/flannel/brown
 
 /*Hawaiian Shirts*/
+/datum/loadout_item/suit/hawaiian
+	name = "Greyscale Hawaiian Shirt"
+	item_path = /obj/item/clothing/suit/hawaiian
+	can_be_greyscale = TRUE
+
 /datum/loadout_item/suit/hawaiian_blue
 	name = "Blue Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian_blue
+	item_path = /obj/item/clothing/suit/hawaiian	//Thats right, its the same item, I cheated!!! MWAHAHAHAHA!
 
 /datum/loadout_item/suit/hawaiian_orange
 	name = "Orange Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian_orange
+	item_path = /obj/item/clothing/suit/hawaiian/orange
 
 /datum/loadout_item/suit/hawaiian_purple
 	name = "Purple Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian_purple
+	item_path = /obj/item/clothing/suit/hawaiian/purple
 
 /datum/loadout_item/suit/hawaiian_green
 	name = "Green Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian_green
+	item_path = /obj/item/clothing/suit/hawaiian/green
 
 /datum/loadout_item/suit/frenchtrench
 	name = "Blue Trenchcoat"
@@ -289,8 +299,9 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
 
 /datum/loadout_item/suit/urban
-	name = "Urban Coat"
+	name = "Greyscale Urban Coat"
 	item_path = /obj/item/clothing/suit/urban/polychromic
+	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/maxson
 	name = "Fancy Brown Coat"
@@ -316,9 +327,9 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Bomber Jacket w/ Zipper"
 	item_path = /obj/item/clothing/suit/toggle/jacket
 
-/datum/loadout_item/suit/polyjacketleather
-	name = "Colorable leather jacket"
-	item_path = /obj/item/clothing/suit/jacket/leather/polychromic
+/datum/loadout_item/suit/leatherjacket_greyscale
+	name = "Greyscale Leather Jacket"
+	item_path = /obj/item/clothing/suit/jacket/leather/greyscale
 
 /datum/loadout_item/suit/woolcoat
 	name = "Leather overcoat"
