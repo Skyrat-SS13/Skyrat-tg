@@ -88,9 +88,11 @@
 			if (part in mutant_bodyparts)
 				mutant_bodyparts -= part
 		else
-			mutant_bodyparts[part] = list()
 			var/datum/preference/choiced/name = GLOB.preference_entries_by_key["feature_[part]"]
 			var/datum/preference/tri_color/color = GLOB.preference_entries_by_key["[part]_color"]
+			if (isnull(name) || isnull(color))
+				return
+			mutant_bodyparts[part] = list()
 			mutant_bodyparts[part][MUTANT_INDEX_NAME] = read_preference(name.type)
 			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = read_preference(color.type)
 	if (istype(preference, /datum/preference/choiced))
