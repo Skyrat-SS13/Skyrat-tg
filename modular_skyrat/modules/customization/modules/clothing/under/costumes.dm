@@ -22,7 +22,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "decking_jumpsuit"
-	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/qipao/red
