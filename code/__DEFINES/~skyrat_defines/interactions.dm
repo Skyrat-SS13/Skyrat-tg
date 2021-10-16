@@ -2,7 +2,7 @@
 
 // Special values
 #define INTERACTION_MAX_CHAR 255
-#define INTERACTION_COOLDOWN 0.5 SECONDS
+#define INTERACTION_COOLDOWN 1 SECONDS
 
 // If an interaction has this category it will not be shown to players
 #define INTERACTION_CAT_HIDE "hide"
