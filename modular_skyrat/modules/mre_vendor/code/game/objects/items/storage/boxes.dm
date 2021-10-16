@@ -270,7 +270,6 @@
 	name = "MRE - Unhappy Meal"
 	desc = "This strange, suspicious looking MRE does not list its contents. Its packaging offers no hints to what it may contain, except for a long list of seemingly nonsensical names of people, jobs, and drinks. Written in bold text on the side are the words : DEFINITELY FIT FOR HUMAN CONSUMPTION. WE PROMISE."
 	icon_state = "unhappy"
-	illustration = "none"
 
 /obj/item/storage/box/mre/mre_unhappy/PopulateContents()
 	new	/obj/item/food/spidereggsham(src)
