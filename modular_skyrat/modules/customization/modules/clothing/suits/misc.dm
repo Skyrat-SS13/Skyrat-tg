@@ -14,7 +14,7 @@
 	name = "hospital gown"
 	desc = "A complicated drapery with an assortment of velcros and strings, designed to keep a patient modest during medical stay and surgeries."
 	icon_state = "hgown"
-	togglename = "drapes"
+	toggle_noun = "drapes"
 	body_parts_covered = NONE
 	armor = NONE
 	equip_delay_other = 8
@@ -78,7 +78,7 @@
 	name = "track jacket"
 	desc = "A black jacket with blue stripes for the athletic. It is also popular among russian delinquents."
 	icon_state = "trackjacket"
-	togglename = "zipper"
+	toggle_noun = "zipper"
 
 /obj/item/clothing/suit/frenchtrench
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -312,3 +312,21 @@
 			step_towards(S,src)
 		for(var/datum/species/robotic/R in orange(2,src))
 			step_towards(R,src)
+
+/obj/item/clothing/suit/trenchbrown
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "Brown trenchcoat"
+	desc = "A brown noir-inspired coat. Looks best if you're not wearing it over a baggy t-shirt."
+	icon_state = "brtrenchcoat"
+	mutant_variants = STYLE_VOX
+	body_parts_covered = CHEST|ARMS
+
+/obj/item/clothing/suit/trenchblack
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	name = "Black trenchcoat"
+	desc = "A matte-black coat. Best suited for space-italians, or maybe a monochrome-cop."
+	icon_state = "bltrenchcoat"
+	mutant_variants = STYLE_VOX
+	body_parts_covered = CHEST|ARMS

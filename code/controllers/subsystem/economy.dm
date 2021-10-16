@@ -13,7 +13,6 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_CAR = ACCOUNT_CAR_NAME,
 										ACCOUNT_SEC = ACCOUNT_SEC_NAME,
 										ACCOUNT_CMD = ACCOUNT_CMD_NAME, // SKYRAT EDIT
-										ACCOUNT_CCM = ACCOUNT_CCM_NAME, // SKYRAT EDIT
 										)
 	var/list/generated_accounts = list()
 	var/full_ancap = FALSE // Enables extra money charges for things that normally would be free, such as sleepers/cryo/cloning.

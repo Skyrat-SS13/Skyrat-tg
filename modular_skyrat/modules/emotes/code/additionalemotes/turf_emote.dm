@@ -52,7 +52,7 @@ var/current_turf
 				user.allowed_turfs += "holoseat"
 
 		//wings
-		if((istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth)) || HAS_TRAIT(user, TRAIT_SPARKLE_ASPECT))
+		if((istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/external/wings/moth)) || HAS_TRAIT(user, TRAIT_SPARKLE_ASPECT))
 			user.allowed_turfs += "dust" //moth's dust ✨
 
 		//body parts
@@ -86,7 +86,7 @@ var/current_turf
 
 		display_turf[initial(choice)] = option
 
-	sortList(display_turf)
+	sort_list(display_turf)
 	var/chosen_turf = show_radial_menu(user, user, display_turf, custom_check = CALLBACK(src, .proc/check_menu, user))
 
 	if(QDELETED(src) || QDELETED(user) || !chosen_turf)

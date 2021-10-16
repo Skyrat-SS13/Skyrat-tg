@@ -9,10 +9,6 @@
 		else
 			text += span_redtext(" died")
 		text += span_bold(" The borer produced [player_borer.children_produced] borers.")
-		if(player_borer.body_focus)
-			text += span_bold(" Their focus was [player_borer.body_focus].")
-		else
-			text += span_bold(" They were unable to gain a focus.")
 	else
 		text += span_redtext(" had their body destroy.")
 	return text
@@ -101,11 +97,11 @@
 				continue // No parent vent
 			// Stops Cortical Borers getting stuck in small networks.
 			// See: Security, Virology
-			if(temp_vent_parent.other_atmosmch.len > 20)
+			if(temp_vent_parent.other_atmos_machines.len > 20)
 				vents += temp_vent
 	if(!vents.len)
 		return MAP_ERROR
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 10 SECONDS, POLL_IGNORE_CORTICAL_BORER)
+	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 10 SECONDS, POLL_IGNORE_CORTICAL_BORER)
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
 	var/living_number = max(GLOB.player_list.len / 30, 1)

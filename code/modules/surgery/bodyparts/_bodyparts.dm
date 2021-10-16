@@ -1,4 +1,3 @@
-
 /obj/item/bodypart
 	name = "limb"
 	desc = "Why is it detached..."
@@ -7,6 +6,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	icon = 'icons/mob/human_parts.dmi'
 	icon_state = ""
+	/// The icon for Organic limbs using greyscale
+	var/icon_greyscale = DEFAULT_BODYPART_ICON_ORGANIC
+	/// The icon for Robotic limbs
+	var/icon_robotic = DEFAULT_BODYPART_ICON_ROBOTIC
 	layer = BELOW_MOB_LAYER //so it isn't hidden behind objects when on the floor
 	grind_results = list(/datum/reagent/bone_dust = 10, /datum/reagent/liquidgibs = 5) // robotic bodyparts and chests/heads cannot be ground
 	var/mob/living/carbon/owner
@@ -117,6 +120,9 @@
 	var/obj/item/self_grasp/grasped_by
 	var/rendered_bp_icon //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	var/organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
+
+	///A list of all the external organs we've got stored to draw horns, wings and stuff with (special because we are actually in the limbs unlike normal organs :/ )
+	var/list/obj/item/organ/external/external_organs = list()
 
 
 /obj/item/bodypart/Initialize(mapload)
@@ -760,10 +766,10 @@
 
 	if(change_icon_to_default)
 		if(status == BODYPART_ORGANIC)
-			icon = DEFAULT_BODYPART_ICON_ORGANIC
+			icon = icon_greyscale
 			organic_render = TRUE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 		else if(status == BODYPART_ROBOTIC)
-			icon = DEFAULT_BODYPART_ICON_ROBOTIC
+			icon = icon_robotic
 			organic_render = FALSE //SKYRAT EDIT ADDITION - CUSTOMIZATION
 
 	if(owner)
@@ -904,9 +910,8 @@
 			limb.icon_state = "[animal_origin]_[body_zone]"
 
 		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 			limb_em_block.dir = image_dir
-			limb_em_block.color = GLOB.em_block_color
 			limb.overlays += limb_em_block
 		return
 
@@ -920,9 +925,8 @@
 		limb.icon_state = "[body_zone]" //Inorganic limbs are agender
 
 		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 			limb_em_block.dir = image_dir
-			limb_em_block.color = GLOB.em_block_color
 			limb.overlays += limb_em_block
 
 		if(aux_zone)
@@ -930,15 +934,14 @@
 			. += aux
 
 			if(blocks_emissive)
-				var/mutable_appearance/aux_em_block = mutable_appearance(aux.icon, aux.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+				var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
 				aux_em_block.dir = image_dir
-				aux_em_block.color = GLOB.em_block_color
 				aux.overlays += aux_em_block
 
 		return
 
 	if(should_draw_greyscale)
-		limb.icon = 'icons/mob/human_parts_greyscale.dmi'
+		limb.icon = icon_greyscale
 		if(should_draw_gender)
 			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 		else if(use_digitigrade)
@@ -963,15 +966,13 @@
 			if(aux_zone)
 				aux.color = "#[draw_color]"
 	if(blocks_emissive)
-		var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 		limb_em_block.dir = image_dir
-		limb_em_block.color = GLOB.em_block_color
 		limb.overlays += limb_em_block
 
 		if(aux_zone)
-			var/mutable_appearance/aux_em_block = mutable_appearance(aux.icon, aux.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
 			aux_em_block.dir = image_dir
-			aux_em_block.color = GLOB.em_block_color
 			aux.overlays += aux_em_block
 */
 //SKYRAT EDIT REMOVAL END
@@ -1008,7 +1009,7 @@
 
 	/*
 	if(!LAZYLEN(wounds) && current_gauze && !replaced) // no more wounds = no need for the gauze anymore
-		owner.visible_message(span_notice("\The [current_gauze] on [owner]'s [name] falls away."), span_notice("The [current_gauze] on your [name] falls away."))
+		owner.visible_message(span_notice("\The [current_gauze.name] on [owner]'s [name] falls away."), span_notice("The [current_gauze.name] on your [name] falls away."))
 		QDEL_NULL(current_gauze)
 	*/
 
@@ -1026,7 +1027,7 @@
 		bleed_rate += 0.5
 
 	//We want an accurate reading of .len
-	listclearnulls(embedded_objects)
+	list_clear_nulls(embedded_objects)
 	for(var/obj/item/embeddies in embedded_objects)
 		if(!embeddies.isEmbedHarmless())
 			bleed_rate += 0.25
@@ -1084,7 +1085,7 @@
 		return
 	current_gauze.absorption_capacity -= seep_amt
 	if(current_gauze.absorption_capacity <= 0)
-		owner.visible_message(span_danger("\The [current_gauze] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
+		owner.visible_message(span_danger("\The [current_gauze.name] on [owner]'s [name] falls away in rags."), span_warning("\The [current_gauze.name] on your [name] falls away in rags."), vision_distance=COMBAT_MESSAGE_RANGE)
 		QDEL_NULL(current_gauze)
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
 */

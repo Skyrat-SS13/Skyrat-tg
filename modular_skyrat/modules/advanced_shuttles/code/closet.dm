@@ -9,7 +9,6 @@
 	anchored = TRUE
 	density = TRUE
 	icon_state = "wallcloset_white"
-	icon_door_override = TRUE
 	icon_door = "wallcloset_door"
 
 /obj/structure/closet/shuttle/wagon

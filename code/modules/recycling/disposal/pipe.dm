@@ -17,6 +17,10 @@
 	var/initialize_dirs = NONE // bitflags of pipe directions added on init, see \code\_DEFINES\pipe_construction.dm
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
+	//SKYRAT EDIT: HURTSPOSALS
+	/// Whether a disposal pipe will hurt if a person changes direction. `FALSE` for hurting, `TRUE` to prevent making them hurt.
+	var/padded_corners = FALSE
+	//SKYRAT EDIT: HURTSPOSALS
 
 
 /obj/structure/disposalpipe/Initialize(mapload, obj/structure/disposalconstruct/make_from)
@@ -80,7 +84,17 @@
 	var/obj/structure/disposalholder/H2 = locate() in P
 	if(H2 && !H2.active)
 		H.merge(H2)
-
+	/// SKYRAT EDIT START - HURTSPOSAL
+	if(dir != P.dir && !padded_corners)
+		if(prob(20))
+			for(var/objects_within in H.contents)
+				if(!isliving(objects_within))
+					continue
+				var/mob/living/living_within = objects_within
+				if(living_within.stat == DEAD)
+					continue
+				living_within.adjustBruteLoss(5)
+	/// SKYRAT EDIT END
 	H.forceMove(P)
 	return P
 
@@ -216,7 +230,7 @@
 	icon_state = "pipe-t"
 	var/obj/linked // the linked obj/machinery/disposal or obj/disposaloutlet
 
-/obj/structure/disposalpipe/trunk/Initialize()
+/obj/structure/disposalpipe/trunk/Initialize(mapload)
 	. = ..()
 	getlinked()
 

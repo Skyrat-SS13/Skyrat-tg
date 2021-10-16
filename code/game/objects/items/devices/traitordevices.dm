@@ -299,7 +299,7 @@ effective or pretty fucking useless.
 	else
 		turn_off() //SKYRAT EDIT CHANGE
 
-	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") //SKYRAT EDIT MOVE
+	to_chat(user,"<span class='notice'>You [active ? "activate" : "deactivate"] [src].</span>") //SKYRAT EDIT MOVE
 	update_appearance()
 
 /obj/item/storage/toolbox/emergency/turret

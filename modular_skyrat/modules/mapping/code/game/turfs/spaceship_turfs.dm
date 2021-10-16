@@ -44,7 +44,7 @@
 	. = ..()
 	T.transform = transform
 
-/obj/structure/window/shuttle/spaceship
+/obj/structure/window/reinforced/shuttle/spaceship
 	name = "spaceship window"
 	desc = "A pressure-resistant spaceship window."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/spaceships/shipwindows.dmi'
@@ -55,8 +55,8 @@
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTLE_PARTS, SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE, SMOOTH_GROUP_SHIPWALLS)
 	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
 
-/obj/structure/window/shuttle/spaceship/tinted
+/obj/structure/window/reinforced/shuttle/spaceship/tinted
 	opacity = TRUE
 
-/obj/structure/window/shuttle/spaceship/unanchored
+/obj/structure/window/reinforced/shuttle/spaceship/unanchored
 	anchored = FALSE

@@ -6,7 +6,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/libital = 10)
-	build_path = /obj/item/medicell/brute2
+	build_path = /obj/item/weaponcell/medical/brute/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -17,7 +17,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/aiuri = 10)
-	build_path = /obj/item/medicell/burn2
+	build_path = /obj/item/weaponcell/medical/burn/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -28,7 +28,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/multiver = 10)
-	build_path = /obj/item/medicell/toxin2
+	build_path = /obj/item/weaponcell/medical/toxin/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -39,7 +39,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/convermol = 10)
-	build_path = /obj/item/medicell/oxy2
+	build_path = /obj/item/weaponcell/medical/oxygen/better
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -51,7 +51,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/sal_acid = 10)
-	build_path = /obj/item/medicell/brute3
+	build_path = /obj/item/weaponcell/medical/brute/better/best
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -62,7 +62,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/oxandrolone = 10)
-	build_path = /obj/item/medicell/burn3
+	build_path = /obj/item/weaponcell/medical/burn/better/best
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -73,7 +73,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/pen_acid = 10)
-	build_path = /obj/item/medicell/toxin3
+	build_path = /obj/item/weaponcell/medical/toxin/better/best
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
@@ -83,10 +83,34 @@
 	id = "oxy3medicell"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
-	build_path = /obj/item/medicell/oxy3
+	build_path = /obj/item/weaponcell/medical/oxygen/better/best
 	reagents_list = list(/datum/reagent/medicine/salbutamol = 10)
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+//Utility Medicells
+/datum/design/clotmedicell
+	name = "Clotting Medicell"
+	desc = "A Medicell designed to help deal with bleeding patients"
+	id = "clotmedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
+	build_path = /obj/item/weaponcell/medical/utility/clotting
+	reagents_list = list(/datum/reagent/medicine/salglu_solution = 5, /datum/reagent/blood = 5)
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/tempmedicell
+	name = "Temperature Adjustment Medicell"
+	desc = "A Medicell that adjusts the hosts temperature to acceptable levels"
+	id = "tempmedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
+	build_path = /obj/item/weaponcell/medical/utility/temperature
+	reagents_list = list(/datum/reagent/medicine/leporazine = 10)
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 //Upgrade Kit//
 /datum/design/medigunspeedkit
 	name = "VeyMedical CWM-479 Upgrade kit"
@@ -94,6 +118,6 @@
 	id = "medigunspeed"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/uranium = 5000, /datum/material/glass = 4000, /datum/material/plasma = 2000, /datum/material/diamond = 500)
-	build_path = /obj/item/upgradekit/medigun/charge
+	build_path = /obj/item/device/custom_kit/medigun_fastcharge
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL

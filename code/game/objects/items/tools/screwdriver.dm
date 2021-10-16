@@ -47,14 +47,14 @@
 	user.visible_message(span_suicide("[user] is stabbing [src] into [user.p_their()] [pick("temple", "heart")]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	return(BRUTELOSS)
 
-/obj/item/screwdriver/Initialize()
+/obj/item/screwdriver/Initialize(mapload)
 	if(random_color)
 		var/our_color = pick(screwdriver_colors)
 		set_greyscale(colors=list(screwdriver_colors[our_color]))
 	. = ..()
 	AddElement(/datum/element/eyestab)
 
-/obj/item/screwdriver/abductor //SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/screwdriver/abductor
 	name = "alien screwdriver"
 	desc = "An ultrasonic screwdriver."
 	icon = 'icons/obj/abductor.dmi'
@@ -72,7 +72,8 @@
 /obj/item/screwdriver/power
 	name = "hand drill"
 	desc = "A simple powered hand drill."
-	icon_state = "drill" //SKYRAT EDIT CHANGE
+	icon_state = "drill"
+	belt_icon_state = null
 	inhand_icon_state = "drill"
 	worn_icon_state = "drill"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
@@ -87,67 +88,39 @@
 	attack_verb_simple = list("drill", "screw", "jab", "whack")
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
-	toolspeed = 1	// SKYRAT EDIT
+	toolspeed = 0.7
 	random_color = FALSE
+	greyscale_config = null
+	greyscale_config_belt = null
 	greyscale_config_inhand_left = null
 	greyscale_config_inhand_right = null
 
-//SKYRAT EDIT ADDITION BEGIN
-	var/powered_toolspeed = 0.4
-	var/powered = FALSE
-
-/obj/item/screwdriver/Initialize()
+/obj/item/screwdriver/power/Initialize(mapload)
 	. = ..()
-	update_appearance()
+	AddComponent(/datum/component/transforming, \
+		force_on = force, \
+		throwforce_on = throwforce, \
+		hitsound_on = hitsound, \
+		w_class_on = w_class, \
+		clumsy_check = FALSE)
+	RegisterSignal(src, COMSIG_TRANSFORMING_ON_TRANSFORM, .proc/on_transform)
 
-/obj/item/screwdriver/power/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/cell, null, CALLBACK(src, .proc/turn_off))
+/*
+ * Signal proc for [COMSIG_TRANSFORMING_ON_TRANSFORM].
+ *
+ * Toggles between crowbar and wirecutters and gives feedback to the user.
+ */
+/obj/item/screwdriver/power/proc/on_transform(obj/item/source, mob/user, active)
+	SIGNAL_HANDLER
 
-/obj/item/screwdriver/power/CtrlClick(mob/user)
-	. = ..()
-	if(!powered)
-		if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-			return
-	powered = !powered
-	if(powered)
-		to_chat(user, "<span class='notice'>You turn [src] on.</span>")
-		turn_on()
-	else
-		to_chat(user, "<span class='notice'>You turn [src] off.</span>")
-		turn_off()
-	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
-
-/obj/item/screwdriver/power/proc/turn_off()
-	powered = FALSE
-	toolspeed = initial(toolspeed)
-	update_appearance()
-	STOP_PROCESSING(SSobj, src)
-
-/obj/item/screwdriver/power/proc/turn_on()
-	toolspeed = powered_toolspeed
-	update_appearance()
-	START_PROCESSING(SSobj, src)
-
-/obj/item/screwdriver/power/process(delta_time)
-	if(!powered)
-		turn_off()
-		return
-	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
-		turn_off()
-		return
-
-/obj/item/screwdriver/power/update_overlays()
-	. = ..()
-	if(powered)
-		. += mutable_appearance('modular_skyrat/modules/aesthetics/tools/tools.dmi', "drill_on")
-	. += "[initial(icon_state)]_[tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"]"
-//SKYRAT EDIT END
+	tool_behaviour = (active ? TOOL_WRENCH : TOOL_SCREWDRIVER)
+	balloon_alert(user, "attached [active ? "bolt bit" : "screw bit"]")
+	playsound(user ? user : src, 'sound/items/change_drill.ogg', 50, TRUE)
+	return COMPONENT_NO_DEFAULT_MESSAGE
 
 /obj/item/screwdriver/power/examine()
 	. = ..()
 	. += " It's fitted with a [tool_behaviour == TOOL_SCREWDRIVER ? "screw" : "bolt"] bit."
-	. += "[src] is currently [powered ? "powered" : "unpowered"]." //SKYRAT EDIT ADDITION
 
 /obj/item/screwdriver/power/suicide_act(mob/user)
 	if(tool_behaviour == TOOL_SCREWDRIVER)
@@ -157,22 +130,10 @@
 	playsound(loc, 'sound/items/drill_use.ogg', 50, TRUE, -1)
 	return(BRUTELOSS)
 
-/obj/item/screwdriver/power/attack_self(mob/user)
-	playsound(get_turf(user), 'sound/items/change_drill.ogg', 50, TRUE)
-	if(tool_behaviour == TOOL_SCREWDRIVER)
-		tool_behaviour = TOOL_WRENCH
-		balloon_alert(user, "attached bolt bit")
-		//icon_state = "drill_bolt"
-	else
-		tool_behaviour = TOOL_SCREWDRIVER
-		balloon_alert(user, "attached screw bit")
-		//icon_state = "drill_screw"
-	update_appearance() //SKYRAT EDIT ADDITION
-
-/obj/item/screwdriver/cyborg//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/screwdriver/cyborg
 	name = "automated screwdriver"
 	desc = "A powerful automated screwdriver, designed to be both precise and quick."
-	icon = 'modular_skyrat/modules/fixing_missing_icons/items_cyborg.dmi' //skyrat edit
+	icon = 'icons/obj/items_cyborg.dmi'
 	icon_state = "screwdriver_cyborg"
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'

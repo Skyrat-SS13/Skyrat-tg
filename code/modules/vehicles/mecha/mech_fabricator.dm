@@ -42,7 +42,7 @@
 
 	/// Reference to a remote material inventory, such as an ore silo.
 	var/datum/component/remote_materials/rmat
-
+//SKYRAT EDIT START: POWER ARMOR
 	/// A list of categories that valid MECHFAB design datums will broadly categorise themselves under.
 	var/list/part_sets = list(
 								"Cyborg",
@@ -60,9 +60,10 @@
 								"Cybernetics",
 								"Implants",
 								"Control Interfaces",
+								"Power Armor",
 								"Misc"
 								)
-
+//SKYRAT EDIT STOP: POWER ARMOR
 /obj/machinery/mecha_part_fabricator/Initialize(mapload)
 	stored_research = SSresearch.science_tech
 	rmat = AddComponent(/datum/component/remote_materials, "mechfab", mapload && link_on_init, mat_container_flags=BREAKDOWN_FLAGS_LATHE)
@@ -142,6 +143,9 @@
 					sub_category += "Engineering"
 			else
 				sub_category += "All Cyborgs"
+		else if(ispath(built_item, /obj/item/borg_restart_board))
+			sub_category += "All Cyborgs" //Otherwise the restart board shows in the "parts" category, which seems dumb
+
 		// Else check if this design builds a piece of exosuit equipment.
 		else if(built_item in typesof(/obj/item/mecha_parts/mecha_equipment))
 			var/obj/item/mecha_parts/mecha_equipment/E = built_item
@@ -319,8 +323,6 @@
  */
 /obj/machinery/mecha_part_fabricator/proc/dispense_built_part(datum/design/D)
 	var/obj/item/I = new D.build_path(src)
-	I.material_flags |= MATERIAL_NO_EFFECTS //Find a better way to do this.
-	I.set_custom_materials(build_materials)
 
 	being_built = null
 

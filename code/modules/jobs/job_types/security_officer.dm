@@ -34,9 +34,9 @@
 		/obj/item/food/donut/matcha = 10,
 		/obj/item/food/donut/blumpkin = 5,
 		/obj/item/clothing/mask/whistle = 5,
-		/obj/item/melee/baton/boomerang/loaded = 1
+		/obj/item/melee/baton/security/boomerang/loaded = 1
 	)
-
+	rpg_title = "Guard"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 
@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 /// Returns the department this mob was assigned to, if any.
 /datum/job/security_officer/proc/setup_department(mob/living/carbon/human/spawning, client/player_client)
-	var/department = player_client?.prefs?.prefered_security_department
+	var/department = player_client?.prefs?.read_preference(/datum/preference/choiced/security_department)
 	if (!isnull(department))
 		department = get_my_department(spawning, department)
 
@@ -115,11 +115,6 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		var/obj/item/card/id/worn_id = spawning.wear_id
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
 		spawning.sec_hud_set_ID()
-		//SKYRAT EDIT ADDITION -- ALT TITLES
-		if(player_client && player_client.prefs && player_client.prefs.alt_titles_preferences[title])
-			spawning.alt_title_holder = player_client.prefs.alt_titles_preferences[title]
-			worn_id.assignment = "[spawning.alt_title_holder] ([department])"
-		//SKYRAT EDIT END
 
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 
@@ -209,7 +204,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT REMOVAL - SEC_HAUL
-	backpack_contents = list(/obj/item/melee/classic_baton/peacekeeper, /obj/item/armament_token/sidearm) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/melee/baton/security/loaded=1, /obj/item/armament_token/sidearm) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/security/loaded =1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
@@ -223,7 +218,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	id_trim = /datum/id_trim/job/security_officer
 
-/obj/item/radio/headset/headset_sec/alt/department/Initialize()
+/obj/item/radio/headset/headset_sec/alt/department/Initialize(mapload)
 	. = ..()
 	wires = new/datum/wires/radio(src)
 	secure_radio_connections = new
@@ -386,7 +381,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 			indices -= chosen
 			preferences[chosen] = null
 
-	listclearnulls(preferences)
+	list_clear_nulls(preferences)
 
 	departments -= biggest_preference
 

@@ -42,19 +42,19 @@
  */
 /obj/item/plant_analyzer/proc/do_plant_stats_scan(atom/scan_target, mob/user)
 	if(istype(scan_target, /obj/machinery/hydroponics))
-		to_chat(user, scan_tray_stats(scan_target))
+		to_chat(user, examine_block(scan_tray_stats(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/structure/glowshroom))
 		var/obj/structure/glowshroom/shroom_plant = scan_target
-		to_chat(user, scan_plant_stats(shroom_plant.myseed))
+		to_chat(user, examine_block(scan_plant_stats(shroom_plant.myseed))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/item/graft))
-		to_chat(user, get_graft_text(scan_target))
+		to_chat(user, examine_block(get_graft_text(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(isitem(scan_target))
 		var/obj/item/scanned_object = scan_target
 		if(scanned_object.get_plant_seed() || istype(scanned_object, /obj/item/seeds))
-			to_chat(user, scan_plant_stats(scanned_object))
+			to_chat(user, examine_block(scan_plant_stats(scanned_object))) //SKYRAT EDIT CHANGE
 			return TRUE
 	if(isliving(scan_target))
 		var/mob/living/L = scan_target
@@ -75,19 +75,19 @@
  */
 /obj/item/plant_analyzer/proc/do_plant_chem_scan(atom/scan_target, mob/user)
 	if(istype(scan_target, /obj/machinery/hydroponics))
-		to_chat(user, scan_tray_chems(scan_target))
+		to_chat(user, examine_block(scan_tray_chems(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/structure/glowshroom))
 		var/obj/structure/glowshroom/shroom_plant = scan_target
-		to_chat(user, scan_plant_chems(shroom_plant.myseed))
+		to_chat(user, examine_block(scan_plant_chems(shroom_plant.myseed))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(istype(scan_target, /obj/item/graft))
-		to_chat(user, get_graft_text(scan_target))
+		to_chat(user, examine_block(get_graft_text(scan_target))) //SKYRAT EDIT CHANGE
 		return TRUE
 	if(isitem(scan_target))
 		var/obj/item/scanned_object = scan_target
 		if(scanned_object.get_plant_seed() || istype(scanned_object, /obj/item/seeds))
-			to_chat(user, scan_plant_chems(scanned_object))
+			to_chat(user, examine_block(scan_plant_chems(scanned_object))) //SKYRAT EDIT CHANGE
 			return TRUE
 	if(isliving(scan_target))
 		var/mob/living/L = scan_target
@@ -417,7 +417,7 @@
 	flags_1 = NONE
 	resistance_flags = FLAMMABLE
 
-/obj/item/cultivator/rake/Initialize()
+/obj/item/cultivator/rake/Initialize(mapload)
 	. = ..()
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
@@ -457,7 +457,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
-/obj/item/hatchet/Initialize()
+/obj/item/hatchet/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 70, 100)
 
@@ -492,7 +492,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	var/swiping = FALSE
 
-/obj/item/scythe/Initialize()
+/obj/item/scythe/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 90, 105)
 
@@ -555,7 +555,6 @@
 	throwforce = 8
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_BELT
-	material_flags = MATERIAL_NO_EFFECTS
 	custom_materials = list(/datum/material/iron=4000, /datum/material/uranium=1500, /datum/material/gold=500)
 	attack_verb_continuous = list("slashes", "slices", "cuts")
 	attack_verb_simple = list("slash", "slice", "cut")
@@ -573,7 +572,7 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(1,2,5,10,15,25,50)
 
-/obj/item/reagent_containers/glass/bottle/nutrient/Initialize()
+/obj/item/reagent_containers/glass/bottle/nutrient/Initialize(mapload)
 	. = ..()
 	pixel_x = base_pixel_x + rand(-5, 5)
 	pixel_y = base_pixel_y + rand(-5, 5)

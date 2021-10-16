@@ -9,6 +9,7 @@
 		diag_hud.add_to_hud(src)
 	faction += "[REF(src)]"
 	GLOB.mob_living_list += src
+	SSpoints_of_interest.make_point_of_interest(src)
 
 /mob/living/ComponentInitialize()
 	. = ..()
@@ -237,6 +238,7 @@
 	if(!client && (mob_size < MOB_SIZE_SMALL))
 		return
 	now_pushing = TRUE
+	SEND_SIGNAL(src, COMSIG_LIVING_PUSHING_MOVABLE, AM)
 	var/dir_to_target = get_dir(src, AM)
 
 	// If there's no dir_to_target then the player is on the same turf as the atom they're trying to push.
@@ -278,6 +280,7 @@
 	if(isliving(AM))
 		current_dir = AM.dir
 	if(AM.Move(get_step(AM.loc, dir_to_target), dir_to_target, glide_size))
+		AM.add_fingerprint(src)
 		Move(get_step(loc, dir_to_target), dir_to_target)
 	if(current_dir)
 		AM.setDir(current_dir)
@@ -333,14 +336,23 @@
 
 		log_combat(src, M, "grabbed", addition="passive grab")
 		if(!supress_message && !(iscarbon(AM) && HAS_TRAIT(src, TRAIT_STRONG_GRABBER)))
-			//if(isfelinid(AM) && isfelinid(src)) //ORIGINAL
-			if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.getorganslot(ORGAN_SLOT_TAIL) && src.getorganslot(ORGAN_SLOT_TAIL)) //SKYRAT EDIT CHANGE
-				M.visible_message("<span class='warning'>[src] coils their tail with [AM], wow is that okay in public?!</span>", "[src] has entwined their tail with yours!")
-				to_chat(src, "You entwine your tail with [AM]")
+			//SKYRAT EDIT START - Tail coiling
+			if(ishuman(M))
+				if(zone_selected == BODY_ZONE_PRECISE_GROIN && M.getorganslot(ORGAN_SLOT_TAIL) && src.getorganslot(ORGAN_SLOT_TAIL))
+					M.visible_message(span_warning("[src] coils their tail with [AM], wow is that okay in public?!"), "[src] has entwined their tail with yours!")
+					to_chat(src, "You entwine your tail with [AM]")
+				else
+					var/mob/living/carbon/human/grabbed_human = M
+					var/grabbed_by_hands = (zone_selected == "l_arm" || zone_selected == "r_arm") && grabbed_human.usable_hands > 0
+					M.visible_message(span_warning("[src] grabs [M] [grabbed_by_hands ? "by their hands":"passively"]!"), \
+									span_warning("[src] grabs you [grabbed_by_hands ? "by your hands":"passively"]!"), null, null, src)
+					to_chat(src, span_notice("You grab [M] [grabbed_by_hands ? "by their hands":"passively"]!"))
+			// SKYRAT EDIT END
 			else
-				M.visible_message("<span class='warning'>[src] grabs [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>", \
-							"<span class='warning'>[src] grabs you [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by your hands":"passively"]!</span>", null, null, src)
-				to_chat(src, "<span class='notice'>You grab [M] [(zone_selected == "l_arm" || zone_selected == "r_arm" && ishuman(M))? "by their hands":"passively"]!</span>")
+				M.visible_message(span_warning("[src] grabs [M] passively!"), \
+								span_warning("[src] grabs you passively!"), null, null, src)
+				to_chat(src, span_notice("You grab [M] passively!"))
+
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
@@ -803,7 +815,7 @@
 	fire_stacks = 0
 	set_confusion(0)
 	dizziness = 0
-	drowsyness = 0
+	set_drowsyness(0)
 	stuttering = 0
 	slurring = 0
 	jitteriness = 0
@@ -1059,8 +1071,8 @@
 	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
 					span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
 	to_chat(src, span_danger("You try to remove [who]'s [what.name]..."))
-	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
-	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
+	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 	what.add_fingerprint(src)
 	if(do_mob(src, who, what.strip_delay, interaction_key = what))
 		if(what && Adjacent(who))
@@ -1068,12 +1080,12 @@
 				var/list/L = where
 				if(what == who.get_item_for_held_index(L[2]))
 					if(what.doStrip(src, who))
-						who.log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
-						log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+						log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
+						who.log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 			if(what == who.get_item_by_slot(where))
 				if(what.doStrip(src, who))
-					who.log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
-					log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+					log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
+					who.log_message("[key_name(who)] has been stripped of [what] by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 
 // The src mob is trying to place an item on someone
 // Override if a certain mob should be behave differently when placing items (can't, for example)
@@ -1106,8 +1118,8 @@
 				who.visible_message(span_notice("[src] tries to put [what] on [who]."), \
 							span_notice("[src] tries to put [what] on you."), null, null, src)
 		to_chat(src, span_notice("You try to put [what] on [who]..."))
-		who.log_message("[key_name(who)] is having [what] put on them by [key_name(src)]", LOG_ATTACK, color="red")
-		log_message("[key_name(who)] is having [what] put on them by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+		log_message("[key_name(who)] is having [what] put on them by [key_name(src)]", LOG_ATTACK, color="red")
+		who.log_message("[key_name(who)] is having [what] put on them by [key_name(src)]", LOG_VICTIM, color="red", log_globally=FALSE)
 		if(do_mob(src, who, what.equip_delay_other))
 			if(what && Adjacent(who) && what.mob_can_equip(who, src, final_where, TRUE, TRUE))
 				if(temporarilyRemoveItemFromInventory(what))
@@ -1116,8 +1128,8 @@
 							what.forceMove(get_turf(who))
 					else
 						who.equip_to_slot(what, where, TRUE)
-					who.log_message("[key_name(who)] had [what] put on them by [key_name(src)]", LOG_ATTACK, color="red")
-					log_message("[key_name(who)] had [what] put on them by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
+					log_message("[key_name(who)] had [what] put on them by [key_name(src)]", LOG_ATTACK, color="red")
+					who.log_message("[key_name(who)] had [what] put on them by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 
 /mob/living/singularity_pull(S, current_size)
 	..()
@@ -1323,8 +1335,8 @@
 				/mob/living/simple_animal/hostile/asteroid/goliath/beast,
 				/mob/living/simple_animal/hostile/headcrab,
 				/mob/living/simple_animal/hostile/morph,
-				/mob/living/simple_animal/hostile/stickman,
-				/mob/living/simple_animal/hostile/stickman/dog,
+				/mob/living/basic/stickman,
+				/mob/living/basic/stickman/dog,
 				/mob/living/simple_animal/hostile/megafauna/dragon/lesser,
 				/mob/living/simple_animal/hostile/gorilla,
 				/mob/living/simple_animal/parrot,
@@ -1334,7 +1346,7 @@
 				/mob/living/simple_animal/pet/cat,
 				/mob/living/simple_animal/mouse,
 				/mob/living/simple_animal/chicken,
-				/mob/living/simple_animal/cow,
+				/mob/living/basic/cow,
 				/mob/living/simple_animal/hostile/lizard,
 				/mob/living/simple_animal/pet/fox,
 				/mob/living/simple_animal/butterfly,
@@ -1498,7 +1510,7 @@
 
 	// can't spread fire to mobs that don't catch on fire
 	if(HAS_TRAIT(L, TRAIT_NOFIRE_SPREAD) || HAS_TRAIT(src, TRAIT_NOFIRE_SPREAD))
-		return 
+		return
 
 	if(on_fire)
 		if(L.on_fire) // If they were also on fire
@@ -1596,16 +1608,16 @@
 		else
 			registered_z = null
 
-/mob/living/onTransitZ(old_z,new_z)
+/mob/living/on_changed_z_level(turf/old_turf, turf/new_turf)
 	..()
-	update_z(new_z)
+	update_z(new_turf?.z)
 
 /mob/living/MouseDrop_T(atom/dropping, atom/user)
 	var/mob/living/U = user
 	if(isliving(dropping))
 		var/mob/living/M = dropping
 		if(M.can_be_held && U.pulling == M)
-			return M.mob_try_pickup(U) //blame kevinz dont open the mobs inventory if you are picking them up
+			return M.mob_try_pickup(U) //SKYRAT EDIT CHANGE //blame kevinz dont open the mobs inventory if you are picking them up
 	. = ..()
 
 /mob/living/proc/mob_pickup(mob/living/L)
@@ -1634,7 +1646,7 @@
 		if(!do_after(user, 2 SECONDS, target = src))
 			return FALSE
 	mob_pickup(user)
-	return TRUE
+	return TRUE //SKYRAT EDIT CHANGE
 
 /mob/living/proc/get_static_viruses() //used when creating blood and other infective objects
 	if(!LAZYLEN(diseases))
@@ -2207,3 +2219,26 @@
 		exp_list[mind.assigned_role.title] = minutes
 
 	return exp_list
+
+/**
+ * A proc triggered by callback when someone gets slammed by the tram and lands somewhere.
+ *
+ * This proc is used to force people to fall through things like lattice and unplated flooring at the expense of some
+ * extra damage, so jokers can't use half a stack of iron rods to make getting hit by the tram immediately lethal.
+ */
+/mob/living/proc/tram_slam_land()
+	if(!istype(loc, /turf/open/openspace) && !istype(loc, /turf/open/floor/plating))
+		return
+
+	if(istype(loc, /turf/open/floor/plating))
+		var/turf/open/floor/smashed_plating = loc
+		visible_message(span_danger("[src] is thrown violently into [smashed_plating], smashing through it and punching straight through!"),
+				span_userdanger("You're thrown violently into [smashed_plating], smashing through it and punching straight through!"))
+		apply_damage(rand(5,20), BRUTE, BODY_ZONE_CHEST)
+		smashed_plating.ScrapeAway(1, CHANGETURF_INHERIT_AIR)
+
+	for(var/obj/structure/lattice/lattice in loc)
+		visible_message(span_danger("[src] is thrown violently into [lattice], smashing through it and punching straight through!"),
+			span_userdanger("You're thrown violently into [lattice], smashing through it and punching straight through!"))
+		apply_damage(rand(5,10), BRUTE, BODY_ZONE_CHEST)
+		lattice.deconstruct(FALSE)

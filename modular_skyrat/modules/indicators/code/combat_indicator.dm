@@ -50,13 +50,13 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = TRUE
 		src.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
-		src.log_message("<font color='red'>has turned ON the combat indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		src.log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
 		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/combat_indicator_unconscious_signal)
 	else
 		cut_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = FALSE
 		src.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
-		src.log_message("<font color='blue'>has turned OFF the combat indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		src.log_message("<font color='blue'>has turned OFF the combat indicator!</font>", LOG_ATTACK)
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS)
 
 /mob/living/proc/user_toggle_combat_indicator()

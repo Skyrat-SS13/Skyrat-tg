@@ -78,10 +78,11 @@
 	STR.allow_big_nesting = TRUE //Same as above, lets the pouch work
 	STR.set_holdable(list(
 		/obj/item/storage/belt/storage_pouch,
+		/obj/item/forging/reagent_weapon/sword,
 		/obj/item/melee/sabre,
 		/obj/item/melee/cleric_mace,
 		/obj/item/kitchen/knife,
-		/obj/item/melee/classic_baton,
+		/obj/item/melee/baton,
 		/obj/item/melee/baton,
 		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage - - -
 		), list(	// - - - except the second list's items (no fedora in the sheath)
@@ -159,5 +160,5 @@
 		/obj/item/reagent_containers/medigel,
 		/obj/item/storage/pill_bottle,
 		/obj/item/implanter,
-		/obj/item/medicell
+		/obj/item/weaponcell/medical
 		))

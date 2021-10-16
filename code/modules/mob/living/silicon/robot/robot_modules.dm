@@ -6,7 +6,7 @@
  *
  ***************************************************************************************/
 
-/obj/item/robot_model/Initialize()
+/obj/item/robot_model/Initialize(mapload)
 	. = ..()
 	for(var/i in basic_modules)
 		var/obj/item/I = new i(src)
@@ -101,10 +101,9 @@
 			F.times_used = 0
 			F.burnt_out = FALSE
 			F.update_appearance()
-		else if(istype(I, /obj/item/melee/baton))
-			var/obj/item/melee/baton/B = I
-			if(B.cell)
-				B.cell.charge = B.cell.maxcharge
+		else if(istype(I, /obj/item/melee/baton/security))
+			var/obj/item/melee/baton/security/baton = I
+			baton.cell?.charge = baton.cell.maxcharge
 		else if(istype(I, /obj/item/gun/energy))
 			var/obj/item/gun/energy/EG = I
 			if(!EG.chambered)
@@ -232,6 +231,8 @@
 // --------------------- Engineering
 /obj/item/robot_model/engineering
 	name = "Engineering"
+	//SKYRAT EDIT REMOVAL BEGIN
+	/*
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/sight/meson,
@@ -239,13 +240,14 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg/power, // Skyrat Removal/Edit - Combines Screwdriver and Wrench into one
-		/obj/item/crowbar/cyborg/power, // Skyrat Removal/Edit - Combines Crowbar and Wirecutters into one
+		/obj/item/screwdriver/cyborg,
+		/obj/item/wrench/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/wirecutters/cyborg,
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
 		/obj/item/geiger_counter/cyborg,
-		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -253,9 +255,11 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
-		/obj/item/lightreplacer/cyborg, // Skyrat Edit - Surprised Engie borgs don't get these
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil)
+	*/
+	//SKYRAT EDIT REMOVAL END
+	basic_modules = skyrat_borg_enginer_modules //SKYRAT EDIT
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
 	emag_modules = list(/obj/item/borg/stun)
 	cyborg_base_icon = "engineer"
@@ -344,6 +348,21 @@
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
 
+/* SKYRAT EDIT START - MOVED TO modular_skyrat\modules\altborgs\code\modules\mob\living\silicon\robot\robot_modules.dm
+/obj/item/robot_model/medical/be_transformed_to(obj/item/robot_model/old_model)
+	var/mob/living/silicon/robot/cyborg = loc
+	var/list/medical_icons = list(
+		"Qualified Doctor" = image(icon = 'icons/mob/robots.dmi', icon_state = "qualified_doctor"),
+		)
+	var/medical_robot_icon = show_radial_menu(cyborg, cyborg, medical_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
+	switch(medical_robot_icon)
+		if("Qualified Doctor")
+			cyborg_base_icon = "qualified_doctor"
+		else
+			return FALSE
+	return ..()
+*/
+
 // --------------------- Mining
 /obj/item/robot_model/miner
 	name = "Miner"
@@ -425,7 +444,7 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
-		/obj/item/melee/classic_baton/peacekeeper, //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/melee/baton/loaded
+		/obj/item/melee/baton/security/loaded,
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/extinguisher/mini)
@@ -455,6 +474,8 @@
 // --------------------- Service
 /obj/item/robot_model/service
 	name = "Service"
+	//SKYRAT EDIT REMOVAL BEGIN
+	/*
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/glass/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
@@ -469,19 +490,15 @@
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
-		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
 		/obj/item/lighter,
 		/obj/item/storage/bag/tray,
-		//obj/item/reagent_containers/borghypo/borgshaker, //edit
-		/obj/item/reagent_containers/syringe, //edit
-		/obj/item/cooking/cyborg/power, //edit
-		//Skyrat Edit Stop: Borg Buff
+		/obj/item/reagent_containers/borghypo/borgshaker
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/borg/apparatus/beaker/service)
+	*/
+	//SKYRAT EDIT REMOVAL END
+	basic_modules = skyrat_borg_service_modules //SKYRAT EDIT
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/borgshaker/hacked)
 	cyborg_base_icon = "service_m" // display as butlerborg for radial model selection
@@ -530,7 +547,7 @@
 	name = "Syndicate Assault"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		/obj/item/melee/transforming/energy/sword/cyborg,
+		/obj/item/melee/energy/sword/cyborg,
 		/obj/item/gun/energy/printer,
 		/obj/item/gun/ballistic/revolver/grenadelauncher/cyborg,
 		/obj/item/card/emag,
@@ -567,7 +584,7 @@
 		/obj/item/cautery,
 		/obj/item/surgicaldrill,
 		/obj/item/scalpel,
-		/obj/item/melee/transforming/energy/sword/cyborg/saw,
+		/obj/item/melee/energy/sword/cyborg/saw,
 		/obj/item/roller/robo,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher/mini,

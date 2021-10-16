@@ -50,7 +50,7 @@
 
 		options[our_object] = option
 
-	sortList(options)
+	sort_list(options)
 
 	return options
 
@@ -75,6 +75,6 @@
 
 		options[our_crate] = option
 
-	sortList(options)
+	sort_list(options)
 
 	return options
