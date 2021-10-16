@@ -207,6 +207,9 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	if(target == user && usage == INTERACTION_OTHER)
 		return FALSE
 
+	if(lewd && !user.client?.prefs?.read_preference(/datum/preference/toggle/erp) || !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+		return FALSE
+
 	if(user_required_parts.len)
 		for(var/thing in user_required_parts)
 			var/obj/item/organ/genital/required_part = user.getorganslot(thing)
