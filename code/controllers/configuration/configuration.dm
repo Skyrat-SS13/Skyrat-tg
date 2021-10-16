@@ -71,6 +71,8 @@
 	LoadPolicy()
 	LoadChatFilter()
 
+	populate_interaction_instances() //SKYRAT EDIT ADDITION
+
 	loaded = TRUE
 
 	if (Master)

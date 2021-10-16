@@ -47,9 +47,9 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		if(findlasttext(directory + file, ".master.json")) // This is a master json which has special handling
 			populate_interaction_jsons_master(directory + file)
 			continue
-		var/datum/interaction/int = new()
-		if(int.load_from_json(directory + file))
-			GLOB.interaction_instances[int.name] = int
+		var/datum/interaction/interaction = new()
+		if(interaction.load_from_json(directory + file))
+			GLOB.interaction_instances[interaction.name] = interaction
 		else message_admins("Error loading interaction from file: '[directory + file]'. Inform coders.")
 
 /proc/populate_interaction_jsons_master(path)
@@ -69,30 +69,30 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			message_admins("Interaction Master '[path]' contained an invalid interaction! '[iname]'")
 			continue
 
-		var/datum/interaction/int = new()
+		var/datum/interaction/interaction = new()
 
-		int.distance_allowed = sanitize_integer(ijson["distance_allowed"], 0, 1, 0)
-		int.message = sanitize_islist(ijson["message"], list("json error"))
-		int.category = sanitize_text(ijson["category"])
-		int.usage = sanitize_text(ijson["usage"])
-		int.sound_use = sanitize_integer(ijson["sound_use"], 0, 1, 0)
-		int.sound_range = sanitize_integer(ijson["sound_range"], 1, 7, 1)
-		int.sound_possible = sanitize_islist(ijson["sound_possible"], list("json error"))
-		int.interaction_requires = sanitize_islist(ijson["interaction_requires"], list())
+		interaction.distance_allowed = sanitize_integer(ijson["distance_allowed"], 0, 1, 0)
+		interaction.message = sanitize_islist(ijson["message"], list("json error"))
+		interaction.category = sanitize_text(ijson["category"])
+		interaction.usage = sanitize_text(ijson["usage"])
+		interaction.sound_use = sanitize_integer(ijson["sound_use"], 0, 1, 0)
+		interaction.sound_range = sanitize_integer(ijson["sound_range"], 1, 7, 1)
+		interaction.sound_possible = sanitize_islist(ijson["sound_possible"], list("json error"))
+		interaction.interaction_requires = sanitize_islist(ijson["interaction_requires"], list())
 
-		int.user_messages = sanitize_islist(ijson["user_messages"], list())
-		int.user_required_parts = sanitize_islist(ijson["user_required_parts"], list())
-		int.user_arousal = sanitize_integer(ijson["user_arousal"], 0, 100, 0)
-		int.user_pleasure = sanitize_integer(ijson["user_pleasure"], 0, 100, 0)
-		int.user_pain = sanitize_integer(ijson["user_pain"], 0, 100, 0)
-		int.target_messages = sanitize_islist(ijson["target_messages"], list())
-		int.target_required_parts = sanitize_islist(ijson["target_required_parts"], list())
-		int.target_arousal = sanitize_integer(ijson["target_arousal"], 0, 100, 0)
-		int.target_pleasure = sanitize_integer(ijson["target_pleasure"], 0, 100, 0)
-		int.target_pain = sanitize_integer(ijson["target_pain"], 0, 100, 0)
-		int.lewd = sanitize_integer(ijson["lewd"], 0, 1, 0)
+		interaction.user_messages = sanitize_islist(ijson["user_messages"], list())
+		interaction.user_required_parts = sanitize_islist(ijson["user_required_parts"], list())
+		interaction.user_arousal = sanitize_integer(ijson["user_arousal"], 0, 100, 0)
+		interaction.user_pleasure = sanitize_integer(ijson["user_pleasure"], 0, 100, 0)
+		interaction.user_pain = sanitize_integer(ijson["user_pain"], 0, 100, 0)
+		interaction.target_messages = sanitize_islist(ijson["target_messages"], list())
+		interaction.target_required_parts = sanitize_islist(ijson["target_required_parts"], list())
+		interaction.target_arousal = sanitize_integer(ijson["target_arousal"], 0, 100, 0)
+		interaction.target_pleasure = sanitize_integer(ijson["target_pleasure"], 0, 100, 0)
+		interaction.target_pain = sanitize_integer(ijson["target_pain"], 0, 100, 0)
+		interaction.lewd = sanitize_integer(ijson["lewd"], 0, 1, 0)
 
-		GLOB.interaction_instances[iname] = int
+		GLOB.interaction_instances[iname] = interaction
 
 /datum/interaction/proc/load_from_json(path)
 	var/fpath = path
@@ -286,26 +286,26 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/interact_last = 0
 	var/interact_next = 0
 
-/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/user)
-	if(!interaction.allow_act(user, self))
+/datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)
+	if(!interaction.allow_act(target, self))
 		return FALSE
-	if(!interaction.distance_allowed && !user.Adjacent(self))
+	if(!interaction.distance_allowed && !target.Adjacent(self))
 		return FALSE
 	if(interaction.category == INTERACTION_CAT_HIDE)
 		return FALSE
-	if(self == user && interaction.usage == INTERACTION_OTHER)
+	if(self == target && interaction.usage == INTERACTION_OTHER)
 		return FALSE
 	return TRUE
 
 /datum/component/interactable/proc/make_interact_list(datum/component/interactable/other)
 	populate_interaction_instances()
-	var/list/ints = list()
+	var/list/interactions = list()
 	for(var/interaction in GLOB.interaction_instances)
 		if(other.can_interact(GLOB.interaction_instances[interaction], self))
-			ints += GLOB.interaction_instances[interaction]
-	return ints
+			interactions += GLOB.interaction_instances[interaction]
+	return interactions
 
-/datum/component/interactable/proc/mil_mob(mob/user)
+/datum/component/interactable/proc/make_interact_list_mob(mob/user)
 	var/datum/other = user.GetComponent(/datum/component/interactable)
 	if(!other)
 		CRASH("Unable to locate the interactable component for the given mob.")
@@ -338,44 +338,51 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		to_chat(usr, "You are dead.")
 		return
 
-	var/datum/component/interactable/int = GetComponent(/datum/component/interactable)
-	int.ui_interact(get_mob_by_ckey(usr.ckey))
+	var/datum/component/interactable/interaction = GetComponent(/datum/component/interactable)
+	interaction.ui_interact(get_mob_by_ckey(usr.ckey))
 
 /datum/component/interactable/ui_data(mob/user)
 	var/list/data = list()
-	var/list/datum/interaction/ints = mil_mob(user)
+	var/list/datum/interaction/interactions = make_interact_list_mob(user)
 
-	var/list/descs = list()
-	var/list/cats = list()
-	for(var/datum/interaction/int in ints)
-		if(!cats[int.category])
-			cats[int.category] = list(int.name)
-		else cats[int.category] += int.name
-		descs[int.name] = int.description
+	var/list/descriptions = list()
+	var/list/categories = list()
+	for(var/datum/interaction/interaction in interactions)
+		if(!categories[interaction.category])
+			categories[interaction.category] = list(interaction.name)
+		else categories[interaction.category] += interaction.name
+		descriptions[interaction.name] = interaction.description
 	data["categories"] = list()
-	data["descs"] = descs
-	for(var/cat in cats)
-		data["categories"] += cat
+	data["descriptions"] = descriptions
+	for(var/category in categories)
+		data["categories"] += category
 
+	data["block_interact"] = interact_next >= world.time
+	data["interactions"] = categories
+	return data
+
+/datum/component/interactable/ui_static_data(mob/user)
+	var/list/data = list()
 	data["ref_user"] = REF(user)
 	data["ref_self"] = REF(self)
 	data["self"] = self.name
-	data["ints"] = cats
-	data["block_interact"] = interact_next >= world.time
 	return data
+
 
 /datum/component/interactable/ui_act(action, list/params)
 	. = ..()
 	if(.)
 		return
-	populate_interaction_instances()
-	for(var/interaction in GLOB.interaction_instances)
-		if(interaction == params["interaction"])
-			GLOB.interaction_instances[interaction].act(locate(params["userref"]), locate(params["selfref"]))
+	if(params["interaction"])
+		var/interaction_id = params["interaction"]
+		if(GLOB.interaction_instances[interaction_id])
 			var/mob/living/carbon/human/user = locate(params["userref"])
-			var/datum/component/interactable/int = user.GetComponent(/datum/component/interactable)
-			int.interact_last = world.time
-			interact_next = int.interact_last + INTERACTION_COOLDOWN
-			int.interact_next = interact_next
+			if(!can_interact(GLOB.interaction_instances[interaction_id], user))
+				return FALSE
+			GLOB.interaction_instances[interaction_id].act(user, locate(params["selfref"]))
+			var/datum/component/interactable/interaction_component = user.GetComponent(/datum/component/interactable)
+			interaction_component.interact_last = world.time
+			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
+			interaction_component.interact_next = interact_next
 			return TRUE
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
