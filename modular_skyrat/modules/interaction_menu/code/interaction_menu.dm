@@ -207,9 +207,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	if(target == user && usage == INTERACTION_OTHER)
 		return FALSE
 
-	if(lewd && !user.client?.prefs?.read_preference(/datum/preference/toggle/erp) || !target.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		return FALSE
-
 	if(user_required_parts.len)
 		for(var/thing in user_required_parts)
 			var/obj/item/organ/genital/required_part = user.getorganslot(thing)
@@ -262,7 +259,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/user_msg = pick(user_messages)
 	user_msg = replacetext(replacetext(user_msg, "%TARGET%", "[target]"), "%USER%", "[user]")
 	to_chat(user, user_msg)
-	var/target_msg = pick(user_messages)
+	var/target_msg = pick(target_messages)
 	target_msg = replacetext(replacetext(target_msg, "%TARGET%", "[target]"), "%USER%", "[user]")
 	to_chat(target, target_msg)
 	if(sound_use)
