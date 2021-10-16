@@ -12,7 +12,7 @@
 	id = SPECIES_SLIMESTART
 	limbs_id = SPECIES_SLIMEPERSON
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
-	default_color = "00FFFF"
+	default_color = "#00FFFF"
 	say_mod = "says"
 	coldmod = 3
 	heatmod = 1
@@ -62,7 +62,7 @@
 					color_target = "mcolor2"
 				if("Tertiary")
 					color_target = "mcolor3"
-			var/new_mutantcolor = input(H, "Choose your character's new [lowertext(color_choice)] color:", "Form Alteration","#"+DNA.features[color_target]) as color|null
+			var/new_mutantcolor = input(H, "Choose your character's new [lowertext(color_choice)] color:", "Form Alteration",DNA.features[color_target]) as color|null
 			if(!new_mutantcolor)
 				return
 			var/marking_reset = tgui_alert(H, "Would you like to reset your markings to match your new colors?", "", list("Yes", "No"))

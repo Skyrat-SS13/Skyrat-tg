@@ -134,7 +134,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				else
 					switch(S.color_src)
 						if(USE_ONE_COLOR)
-							accessory_overlay.color = "#"+mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
+							accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
 							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
 							var/alpha_value = specific_alpha //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
@@ -148,20 +148,20 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = finished_list
 						if(MUTCOLORS)
 							if(fixed_mut_color)
-								accessory_overlay.color = "#[fixed_mut_color]"
+								accessory_overlay.color = fixed_mut_color
 							else
-								accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+								accessory_overlay.color = H.dna.features["mcolor"]
 						if(HAIR)
 							if(hair_color == "mutcolor")
-								accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+								accessory_overlay.color = H.dna.features["mcolor"]
 							else if(hair_color == "fixedmutcolor")
-								accessory_overlay.color = "#[fixed_mut_color]"
+								accessory_overlay.color = fixed_mut_color
 							else
-								accessory_overlay.color = "#[H.hair_color]"
+								accessory_overlay.color = H.hair_color
 						if(FACEHAIR)
-							accessory_overlay.color = "#[H.facial_hair_color]"
+							accessory_overlay.color = H.facial_hair_color
 						if(EYECOLOR)
-							accessory_overlay.color = "#[H.eye_color]"
+							accessory_overlay.color = H.eye_color
 			else
 				accessory_overlay.color = override_color
 			standing += accessory_overlay
@@ -192,22 +192,22 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				switch(S.extra_color_src) //change the color of the extra overlay
 					if(MUTCOLORS)
 						if(fixed_mut_color)
-							extra_accessory_overlay.color = "#[fixed_mut_color]"
+							extra_accessory_overlay.color = fixed_mut_color
 						else
-							extra_accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+							extra_accessory_overlay.color = H.dna.features["mcolor"]
 					if(MUTCOLORS2)
-						extra_accessory_overlay.color = "#[H.dna.features["mcolor2"]]"
+						extra_accessory_overlay.color = H.dna.features["mcolor2"]
 					if(MUTCOLORS3)
-						extra_accessory_overlay.color = "#[H.dna.features["mcolor3"]]"
+						extra_accessory_overlay.color = H.dna.features["mcolor3"]
 					if(HAIR)
 						if(hair_color == "mutcolor")
-							extra_accessory_overlay.color = "#[H.dna.features["mcolor3"]]"
+							extra_accessory_overlay.color = H.dna.features["mcolor3"]
 						else
-							extra_accessory_overlay.color = "#[H.hair_color]"
+							extra_accessory_overlay.color = H.hair_color
 					if(FACEHAIR)
-						extra_accessory_overlay.color = "#[H.facial_hair_color]"
+						extra_accessory_overlay.color = H.facial_hair_color
 					if(EYECOLOR)
-						extra_accessory_overlay.color = "#[H.eye_color]"
+						extra_accessory_overlay.color = H.eye_color
 
 				standing += extra_accessory_overlay
 
@@ -223,18 +223,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				switch(S.extra2_color_src) //change the color of the extra overlay
 					if(MUTCOLORS)
 						if(fixed_mut_color)
-							extra2_accessory_overlay.color = "#[fixed_mut_color]"
+							extra2_accessory_overlay.color = fixed_mut_color
 						else
-							extra2_accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+							extra2_accessory_overlay.color = H.dna.features["mcolor"]
 					if(MUTCOLORS2)
-						extra2_accessory_overlay.color = "#[H.dna.features["mcolor2"]]"
+						extra2_accessory_overlay.color = H.dna.features["mcolor2"]
 					if(MUTCOLORS3)
-						extra2_accessory_overlay.color = "#[H.dna.features["mcolor3"]]"
+						extra2_accessory_overlay.color = H.dna.features["mcolor3"]
 					if(HAIR)
 						if(hair_color == "mutcolor3")
-							extra2_accessory_overlay.color = "#[H.dna.features["mcolor"]]"
+							extra2_accessory_overlay.color = H.dna.features["mcolor"]
 						else
-							extra2_accessory_overlay.color = "#[H.hair_color]"
+							extra2_accessory_overlay.color = H.hair_color
 
 				standing += extra2_accessory_overlay
 			if (specific_alpha != 255 && !override_color)
@@ -445,7 +445,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			else
 				eye_overlay = mutable_appearance(eye_icon, E.eye_icon_state, -BODY_LAYER)
 			if((EYECOLOR in species_traits) && E)
-				eye_overlay.color = "#" + species_human.eye_color
+				eye_overlay.color = species_human.eye_color
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				eye_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					icon_state += "_d"
 				underwear_overlay = mutable_appearance(underwear.icon, icon_state, -BODY_LAYER)
 				if(!underwear.use_static)
-					underwear_overlay.color = "#" + species_human.underwear_color
+					underwear_overlay.color = species_human.underwear_color
 				standing += underwear_overlay
 
 		if(species_human.undershirt && !(species_human.underwear_visibility & UNDERWEAR_HIDE_SHIRT))
@@ -474,7 +474,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				else
 					undershirt_overlay = mutable_appearance(undershirt.icon, undershirt.icon_state, -BODY_LAYER)
 				if(!undershirt.use_static)
-					undershirt_overlay.color = "#" + species_human.undershirt_color
+					undershirt_overlay.color = species_human.undershirt_color
 				standing += undershirt_overlay
 
 		if(species_human.socks && species_human.num_legs >= 2 && !(mutant_bodyparts["taur"]) && !(species_human.underwear_visibility & UNDERWEAR_HIDE_SOCKS))
@@ -486,7 +486,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					icon_state += "_d"
 				socks_overlay = mutable_appearance(socks.icon, icon_state, -BODY_LAYER)
 				if(!socks.use_static)
-					socks_overlay.color = "#" + species_human.socks_color
+					socks_overlay.color = species_human.socks_color
 				standing += socks_overlay
 
 	if(standing.len)

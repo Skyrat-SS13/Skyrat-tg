@@ -1,7 +1,7 @@
 /datum/species/tajaran
 	name = "Tajaran"
 	id = SPECIES_TAJARAN
-	default_color = "4B4B4B"
+	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -39,20 +39,20 @@
 	//Choose from a variety of mostly coldish, animal, matching colors
 	switch(random)
 		if(1)
-			main_color = "BA8"
-			second_color = "AA9"
+			main_color = "#BBAA88"
+			second_color = "#AAAA99"
 		if(2)
-			main_color = "776"
-			second_color = "887"
+			main_color = "#777766"
+			second_color = "#888877"
 		if(3)
-			main_color = "A98"
-			second_color = "AA9"
+			main_color = "#AA9988"
+			second_color = "#AAAA99"
 		if(4)
-			main_color = "EED"
-			second_color = "FEE"
+			main_color = "#EEEEDD"
+			second_color = "#FFEEEE"
 		if(5)
-			main_color = "DC9"
-			second_color = "DCA"
+			main_color = "#DDCC99"
+			second_color = "#DDCCAA"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color

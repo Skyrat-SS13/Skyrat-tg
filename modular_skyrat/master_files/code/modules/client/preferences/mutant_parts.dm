@@ -49,7 +49,7 @@
 
 /datum/preference/choiced/body_markings/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["body_markings"])
-		target.dna.mutant_bodyparts["body_markings"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["body_markings"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["body_markings"]["name"] = value
 
 /datum/preference/choiced/body_markings/create_default_value()
@@ -70,7 +70,7 @@
 
 /datum/preference/tri_color/body_markings/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["body_markings"])
-		target.dna.mutant_bodyparts["body_markings"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["body_markings"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["body_markings"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Tails
@@ -107,7 +107,7 @@
 
 /datum/preference/choiced/tail/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["tail"])
-		target.dna.mutant_bodyparts["tail"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["tail"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["tail"]["name"] = value
 
 /datum/preference/choiced/tail/create_default_value()
@@ -128,7 +128,7 @@
 
 /datum/preference/tri_color/tail/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["tail"])
-		target.dna.mutant_bodyparts["tail"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["tail"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["tail"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Snouts
@@ -165,7 +165,7 @@
 
 /datum/preference/choiced/snout/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["snout"])
-		target.dna.mutant_bodyparts["snout"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["snout"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["snout"]["name"] = value
 
 /datum/preference/choiced/snout/create_default_value()
@@ -186,7 +186,7 @@
 
 /datum/preference/tri_color/snout/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["snout"])
-		target.dna.mutant_bodyparts["snout"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["snout"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["snout"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Horns
@@ -223,7 +223,7 @@
 
 /datum/preference/choiced/horns/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["horns"])
-		target.dna.mutant_bodyparts["horns"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["horns"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["horns"]["name"] = value
 
 /datum/preference/choiced/horns/create_default_value()
@@ -244,7 +244,7 @@
 
 /datum/preference/tri_color/horns/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["horns"])
-		target.dna.mutant_bodyparts["horns"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["horns"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["horns"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Ears
@@ -281,7 +281,7 @@
 
 /datum/preference/choiced/ears/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ears"])
-		target.dna.mutant_bodyparts["ears"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ears"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ears"]["name"] = value
 
 /datum/preference/choiced/ears/create_default_value()
@@ -302,7 +302,7 @@
 
 /datum/preference/tri_color/ears/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ears"])
-		target.dna.mutant_bodyparts["ears"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ears"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ears"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Wings
@@ -339,7 +339,7 @@
 
 /datum/preference/choiced/wings/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["wings"])
-		target.dna.mutant_bodyparts["wings"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["wings"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["wings"]["name"] = value
 
 /datum/preference/choiced/wings/create_default_value()
@@ -360,7 +360,7 @@
 
 /datum/preference/tri_color/wings/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["wings"])
-		target.dna.mutant_bodyparts["wings"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["wings"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["wings"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Frills
@@ -397,7 +397,7 @@
 
 /datum/preference/choiced/frills/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["frills"])
-		target.dna.mutant_bodyparts["frills"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["frills"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["frills"]["name"] = value
 
 /datum/preference/choiced/frills/create_default_value()
@@ -418,7 +418,7 @@
 
 /datum/preference/tri_color/frills/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["frills"])
-		target.dna.mutant_bodyparts["frills"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["frills"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["frills"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Spines
@@ -455,7 +455,7 @@
 
 /datum/preference/choiced/spines/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["spines"])
-		target.dna.mutant_bodyparts["spines"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["spines"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["spines"]["name"] = value
 
 /datum/preference/choiced/spines/create_default_value()
@@ -476,7 +476,7 @@
 
 /datum/preference/tri_color/spines/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["spines"])
-		target.dna.mutant_bodyparts["spines"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["spines"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["spines"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Legs
@@ -513,7 +513,7 @@
 
 /datum/preference/choiced/legs/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["legs"])
-		target.dna.mutant_bodyparts["legs"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["legs"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["legs"]["name"] = value
 
 /datum/preference/choiced/legs/create_default_value()
@@ -534,7 +534,7 @@
 
 /datum/preference/tri_color/legs/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["legs"])
-		target.dna.mutant_bodyparts["legs"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["legs"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["legs"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Caps
@@ -571,7 +571,7 @@
 
 /datum/preference/choiced/caps/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["caps"])
-		target.dna.mutant_bodyparts["caps"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["caps"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["caps"]["name"] = value
 
 /datum/preference/choiced/caps/create_default_value()
@@ -592,7 +592,7 @@
 
 /datum/preference/tri_color/caps/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["caps"])
-		target.dna.mutant_bodyparts["caps"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["caps"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["caps"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Moth Antennae
@@ -629,7 +629,7 @@
 
 /datum/preference/choiced/moth_antennae/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["moth_antennae"])
-		target.dna.mutant_bodyparts["moth_antennae"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["moth_antennae"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["moth_antennae"]["name"] = value
 
 /datum/preference/choiced/moth_antennae/create_default_value()
@@ -650,7 +650,7 @@
 
 /datum/preference/tri_color/moth_antennae/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["moth_antennae"])
-		target.dna.mutant_bodyparts["moth_antennae"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["moth_antennae"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["moth_antennae"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Moth Markings
@@ -687,7 +687,7 @@
 
 /datum/preference/choiced/moth_markings/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["moth_markings"])
-		target.dna.mutant_bodyparts["moth_markings"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["moth_markings"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["moth_markings"]["name"] = value
 
 /datum/preference/choiced/moth_markings/create_default_value()
@@ -708,7 +708,7 @@
 
 /datum/preference/tri_color/moth_markings/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["moth_markings"])
-		target.dna.mutant_bodyparts["moth_markings"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["moth_markings"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["moth_markings"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Fluff
@@ -745,7 +745,7 @@
 
 /datum/preference/choiced/fluff/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["fluff"])
-		target.dna.mutant_bodyparts["fluff"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["fluff"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["fluff"]["name"] = value
 
 /datum/preference/choiced/fluff/create_default_value()
@@ -766,7 +766,7 @@
 
 /datum/preference/tri_color/fluff/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["fluff"])
-		target.dna.mutant_bodyparts["fluff"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["fluff"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["fluff"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Head Accessories
@@ -803,7 +803,7 @@
 
 /datum/preference/choiced/head_acc/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["head_acc"])
-		target.dna.mutant_bodyparts["head_acc"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["head_acc"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["head_acc"]["name"] = value
 
 /datum/preference/choiced/head_acc/create_default_value()
@@ -824,7 +824,7 @@
 
 /datum/preference/tri_color/head_acc/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["head_acc"])
-		target.dna.mutant_bodyparts["head_acc"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["head_acc"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["head_acc"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// IPC Screens
@@ -861,7 +861,7 @@
 
 /datum/preference/choiced/ipc_screen/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ipc_screen"])
-		target.dna.mutant_bodyparts["ipc_screen"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ipc_screen"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ipc_screen"]["name"] = value
 
 /datum/preference/choiced/ipc_screen/create_default_value()
@@ -882,7 +882,7 @@
 
 /datum/preference/tri_color/ipc_screen/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ipc_screen"])
-		target.dna.mutant_bodyparts["ipc_screen"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ipc_screen"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ipc_screen"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// IPC Antennas
@@ -919,7 +919,7 @@
 
 /datum/preference/choiced/ipc_antenna/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ipc_antenna"])
-		target.dna.mutant_bodyparts["ipc_antenna"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ipc_antenna"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ipc_antenna"]["name"] = value
 
 /datum/preference/choiced/ipc_antenna/create_default_value()
@@ -940,7 +940,7 @@
 
 /datum/preference/tri_color/ipc_antenna/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ipc_antenna"])
-		target.dna.mutant_bodyparts["ipc_antenna"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ipc_antenna"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ipc_antenna"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// IPC Chassis
@@ -977,7 +977,7 @@
 
 /datum/preference/choiced/ipc_chassis/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ipc_chassis"])
-		target.dna.mutant_bodyparts["ipc_chassis"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ipc_chassis"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ipc_chassis"]["name"] = value
 
 /datum/preference/choiced/ipc_chassis/create_default_value()
@@ -998,7 +998,7 @@
 
 /datum/preference/tri_color/ipc_chassis/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["ipc_chassis"])
-		target.dna.mutant_bodyparts["ipc_chassis"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["ipc_chassis"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["ipc_chassis"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Neck Accessories
@@ -1035,7 +1035,7 @@
 
 /datum/preference/choiced/neck_acc/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["neck_acc"])
-		target.dna.mutant_bodyparts["neck_acc"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["neck_acc"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["neck_acc"]["name"] = value
 
 /datum/preference/choiced/neck_acc/create_default_value()
@@ -1056,7 +1056,7 @@
 
 /datum/preference/tri_color/neck_acc/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["neck_acc"])
-		target.dna.mutant_bodyparts["neck_acc"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["neck_acc"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["neck_acc"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Skrell Hair
@@ -1093,7 +1093,7 @@
 
 /datum/preference/choiced/skrell_hair/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["skrell_hair"])
-		target.dna.mutant_bodyparts["skrell_hair"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["skrell_hair"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["skrell_hair"]["name"] = value
 
 /datum/preference/choiced/skrell_hair/create_default_value()
@@ -1114,7 +1114,7 @@
 
 /datum/preference/tri_color/skrell_hair/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["skrell_hair"])
-		target.dna.mutant_bodyparts["skrell_hair"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["skrell_hair"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["skrell_hair"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Taur
@@ -1151,7 +1151,7 @@
 
 /datum/preference/choiced/taur/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["taur"])
-		target.dna.mutant_bodyparts["taur"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["taur"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["taur"]["name"] = value
 
 /datum/preference/choiced/taur/create_default_value()
@@ -1172,7 +1172,7 @@
 
 /datum/preference/tri_color/taur/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["taur"])
-		target.dna.mutant_bodyparts["taur"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["taur"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["taur"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Xenodorsal
@@ -1209,7 +1209,7 @@
 
 /datum/preference/choiced/xenodorsal/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["xenodorsal"])
-		target.dna.mutant_bodyparts["xenodorsal"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["xenodorsal"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["xenodorsal"]["name"] = value
 
 /datum/preference/choiced/xenodorsal/create_default_value()
@@ -1230,7 +1230,7 @@
 
 /datum/preference/tri_color/xenodorsal/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["xenodorsal"])
-		target.dna.mutant_bodyparts["xenodorsal"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["xenodorsal"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["xenodorsal"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /// Xeno heads
@@ -1267,7 +1267,7 @@
 
 /datum/preference/choiced/xenohead/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["xenohead"])
-		target.dna.mutant_bodyparts["xenohead"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["xenohead"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["xenohead"]["name"] = value
 
 /datum/preference/choiced/xenohead/create_default_value()
@@ -1288,5 +1288,5 @@
 
 /datum/preference/tri_color/xenohead/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["xenohead"])
-		target.dna.mutant_bodyparts["xenohead"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["xenohead"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["xenohead"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))

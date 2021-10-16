@@ -1,7 +1,7 @@
 /datum/species/unathi
 	name = "Unathi"
 	id = SPECIES_UNATHI
-	default_color = "4B4B4B"
+	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -41,20 +41,20 @@
 	//Choose from a variety of green or brown colors, with a darker secondary and tertiary
 	switch(random)
 		if(1)
-			main_color = "1C0"
-			second_color = "180"
+			main_color = "#11CC00"
+			second_color = "#118800"
 		if(2)
-			main_color = "5C1"
-			second_color = "5A1"
+			main_color = "#55CC11"
+			second_color = "#55AA11"
 		if(3)
-			main_color = "7A1"
-			second_color = "681"
+			main_color = "#77AA11"
+			second_color = "#668811"
 		if(4)
-			main_color = "862"
-			second_color = "741"
+			main_color = "#886622"
+			second_color = "#774411"
 		if(5)
-			main_color = "3B1"
-			second_color = "391"
+			main_color = "#33BB11"
+			second_color = "#339911"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = second_color
