@@ -16,7 +16,7 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 
-/obj/item/clothing/under/costume/decking
+/obj/item/clothing/under/costume/deckers/alt
 	name = "deckers maskless outfit"
 	desc = "A decker jumpsuit with neon blue coloring."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
