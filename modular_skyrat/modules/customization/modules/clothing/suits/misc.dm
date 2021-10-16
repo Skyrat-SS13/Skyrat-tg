@@ -128,7 +128,7 @@
 
 /obj/item/clothing/suit/toggle/jacket/cardigan/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/suit/discoblazer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'

@@ -22,7 +22,7 @@
 	icon_state = "petcollar_poly"
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
 	var/is_polychromic = TRUE
-	var/poly_colors = list("0BB", "FC0", "FFF")
+	var/poly_colors = list("#00BBBB", "#FFCC00", "#FFFFFF")
 	var/tagname = null
 	var/treat_path = /obj/item/food/cookie
 
@@ -43,7 +43,7 @@
 /obj/item/clothing/neck/human_petcollar/leather
 	name = "leather pet collar"
 	icon_state = "leathercollar_poly"
-	poly_colors = list("222", "888", "888")
+	poly_colors = list("#222222", "#888888", "#888888")
 
 /obj/item/clothing/neck/human_petcollar/choker
 	desc = "Quite fashionable... if you're somebody who's just read their first BDSM-themed erotica novel."
@@ -78,7 +78,7 @@
 /obj/item/clothing/neck/human_petcollar/locked/leather
 	name = "leather pet collar"
 	icon_state = "leathercollar_poly"
-	poly_colors = list("222", "888", "888")
+	poly_colors = list("#222222", "#888888", "#888888")
 
 /obj/item/clothing/neck/human_petcollar/locked/choker
 	name = "choker"

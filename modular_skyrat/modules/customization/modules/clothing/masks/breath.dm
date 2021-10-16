@@ -186,7 +186,7 @@
 	resistance_flags = FLAMMABLE
 	species_exception = list(/datum/species/golem/bananium)
 	var/is_polychromic = TRUE
-	var/poly_colors = list("0BB", "FC0", "FFF")
+	var/poly_colors = list("#00BBBB", "#FFCC00", "#FFFFFF")
 
 /obj/item/clothing/mask/gas/polyclown/ComponentInitialize()
 	. = ..()

@@ -50,7 +50,7 @@
 			if(USE_MATRIXED_COLORS)
 				default_color = DEFAULT_MATRIXED
 			else
-				default_color = "FFF"
+				default_color = "#FFFFFF"
 	if(name == "None")
 		factual = FALSE
 	if(color_src == USE_MATRIXED_COLORS && default_color != DEFAULT_MATRIXED)

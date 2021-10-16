@@ -33,7 +33,7 @@
 
 /datum/preference/choiced/penis/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["penis"])
-		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["penis"]["name"] = value
 
 /datum/preference/choiced/penis/create_default_value()
@@ -94,7 +94,7 @@
 
 /datum/preference/tri_color/penis/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["penis"])
-		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["penis"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /datum/preference/toggle/penis_taur_mode
@@ -167,7 +167,7 @@
 
 /datum/preference/choiced/testicles/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["testicles"])
-		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = "FFF")
+		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = "#FFFFFF")
 	target.dna.mutant_bodyparts["testicles"]["name"] = value
 
 /datum/preference/choiced/testicles/create_default_value()
@@ -188,7 +188,7 @@
 
 /datum/preference/tri_color/testicles/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["testicles"])
-		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["testicles"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /datum/preference/numeric/balls_size
@@ -244,7 +244,7 @@
 
 /datum/preference/choiced/vagina/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["vagina"])
-		target.dna.mutant_bodyparts["vagina"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["vagina"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["vagina"]["name"] = value
 
 /datum/preference/choiced/vagina/create_default_value()
@@ -265,7 +265,7 @@
 
 /datum/preference/tri_color/vagina/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["vagina"])
-		target.dna.mutant_bodyparts["vagina"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["vagina"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["vagina"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /datum/preference/toggle/womb
@@ -301,7 +301,7 @@
 
 /datum/preference/choiced/womb/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["womb"])
-		target.dna.mutant_bodyparts["womb"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["womb"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["womb"]["name"] = value
 
 /datum/preference/choiced/womb/create_default_value()
@@ -322,7 +322,7 @@
 
 /datum/preference/tri_color/womb/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["womb"])
-		target.dna.mutant_bodyparts["womb"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["womb"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["womb"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /datum/preference/toggle/breasts
@@ -358,7 +358,7 @@
 
 /datum/preference/choiced/breasts/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["breasts"])
-		target.dna.mutant_bodyparts["breasts"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["breasts"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["breasts"]["name"] = value
 
 /datum/preference/choiced/breasts/create_default_value()
@@ -379,7 +379,7 @@
 
 /datum/preference/tri_color/breasts/apply_to_human(mob/living/carbon/human/target, value)
 	if(!target.dna.mutant_bodyparts["breasts"])
-		target.dna.mutant_bodyparts["breasts"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+		target.dna.mutant_bodyparts["breasts"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	target.dna.mutant_bodyparts["breasts"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
 
 /datum/preference/toggle/breasts_lactation

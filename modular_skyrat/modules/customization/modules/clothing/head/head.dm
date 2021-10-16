@@ -209,7 +209,7 @@
 
 /obj/item/clothing/head/turb/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/keffiyeh
 	name = "keffiyeh"
@@ -224,7 +224,7 @@
 
 /obj/item/clothing/head/keffiyeh/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "EEA", "FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#EEEEAA", "#FFFFFF"))
 
 /obj/item/clothing/head/hijab
 	name = "hijab"
@@ -239,7 +239,7 @@
 
 /obj/item/clothing/head/hijab/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/polyflatc
 	name = "poly flat cap"
@@ -251,7 +251,7 @@
 
 /obj/item/clothing/head/polyflatc/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/flowerpin
 	name = "Flower Pin"
@@ -261,7 +261,7 @@
 	icon_state = "flowerpin"
 	w_class = WEIGHT_CLASS_SMALL
 	mutant_variants = NONE
-	var/list/poly_colors = list("FFF", "FFF", "FFF")
+	var/list/poly_colors = list("#FFFFFF", "#FFFFFF", "#FFFFFF")
 
 /obj/item/clothing/head/flowerpin/ComponentInitialize()
 	. = ..()

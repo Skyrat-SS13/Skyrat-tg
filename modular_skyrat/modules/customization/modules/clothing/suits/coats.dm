@@ -174,7 +174,7 @@
 
 /obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5", "EEA", "333"))
+	AddElement(/datum/element/polychromic, list("#55DD55", "#EEEEAA", "#333333"))
 
 
 /obj/item/clothing/suit/toggle/deckard
@@ -228,7 +228,7 @@
 
 /obj/item/clothing/suit/duster/colorable/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5"))
+	AddElement(/datum/element/polychromic, list("#55DD55"))
 
 /obj/item/clothing/suit/toggle/peacoat
 	name = "colorable peacoat"
@@ -240,7 +240,7 @@
 
 /obj/item/clothing/suit/toggle/peacoat/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5"))
+	AddElement(/datum/element/polychromic, list("#55DD55"))
 
 /obj/item/clothing/suit/poncho
     mutant_variants = STYLE_TAUR_ALL

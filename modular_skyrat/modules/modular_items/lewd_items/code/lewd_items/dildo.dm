@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	var/poly_size = "medium"
-	var/list/poly_colors = list("FFF", "F88", "888")
+	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 	var/can_customize = TRUE
 	var/size_changed = FALSE
 	var/color_changed = FALSE
