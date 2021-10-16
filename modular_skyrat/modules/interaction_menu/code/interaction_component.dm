@@ -41,6 +41,7 @@
 /datum/component/interactable/proc/open_interaction_menu(datum/source, mob/user)
 	if(!ishuman(user))
 		return
+	build_interactions_list()
 	ui_interact(user)
 
 /datum/component/interactable/proc/can_interact(datum/interaction/interaction, mob/living/carbon/human/target)

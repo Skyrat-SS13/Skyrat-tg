@@ -74,17 +74,10 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 			if(INTERACTION_REQUIRE_SELF_HAND)
 				if(!user.get_active_hand())
 					return FALSE
-			if(INTERACTION_REQUIRE_SELF_SPEAK)
-				if(!user.can_speak())
-					return FALSE
 			if(INTERACTION_REQUIRE_TARGET_HAND)
 				if(!target.get_active_hand())
 					return FALSE
-			if(INTERACTION_REQUIRE_TARGET_SPEAK)
-				if(!target.can_speak())
-					return FALSE
 			else
-				message_admins("Unimplemented interaction requirement '[requirement]'.")
 				CRASH("Unimplemented interaction requirement '[requirement]'")
 	return TRUE
 
