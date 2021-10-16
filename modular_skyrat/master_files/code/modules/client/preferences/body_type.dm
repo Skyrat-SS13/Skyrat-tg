@@ -10,5 +10,5 @@
 /datum/preference/choiced/body_type/apply_to_human(mob/living/carbon/human/target, value)
 	target.body_type = value
 
-/datum/preference/choiced/create_default_value()
+/datum/preference/choiced/body_type/create_default_value()
 	return MALE

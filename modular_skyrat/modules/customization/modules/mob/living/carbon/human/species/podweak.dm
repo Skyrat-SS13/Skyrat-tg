@@ -22,3 +22,4 @@
 	default_mutant_bodyparts = list()
 
 	learnable_languages = list(/datum/language/common, /datum/language/sylvan)
+	always_customizable = FALSE

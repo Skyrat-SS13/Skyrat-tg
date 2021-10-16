@@ -9,6 +9,7 @@
 	equip_delay_other = 25
 	resistance_flags = NONE
 	custom_materials = list(/datum/material/glass = 250)
+	gender = PLURAL
 	var/vision_flags = 0
 	var/darkness_view = 2 // Base human is 2
 	var/invis_view = SEE_INVISIBLE_LIVING // Admin only for now
@@ -224,6 +225,8 @@
 /obj/item/clothing/glasses/regular/proc/on_entered(datum/source, atom/movable/movable)
 	SIGNAL_HANDLER
 	if(damaged_clothes == CLOTHING_SHREDDED)
+		return
+	if(item_flags & IN_INVENTORY)
 		return
 	if(isliving(movable))
 		var/mob/living/crusher = movable

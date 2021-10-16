@@ -185,6 +185,7 @@
 	cyborg.update_module_innate()
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
+	cyborg.set_modularInterface_theme()
 
 	INVOKE_ASYNC(new_model, .proc/do_transform_animation)
 	qdel(src)
@@ -205,6 +206,7 @@
 			cyborg_base_icon = details[SKIN_ICON_STATE]
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
+			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
 		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
@@ -306,14 +308,13 @@
 		/obj/item/pipe_dispenser,
 		/obj/item/extinguisher,
 		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/screwdriver/cyborg,
-		/obj/item/wrench/cyborg,
-		/obj/item/crowbar/cyborg,
-		/obj/item/wirecutters/cyborg,
+		/obj/item/screwdriver/cyborg/power, // Skyrat Removal/Edit - Combines Screwdriver and Wrench into one
+		/obj/item/crowbar/cyborg/power, // Skyrat Removal/Edit - Combines Crowbar and Wirecutters into one
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
 		/obj/item/geiger_counter/cyborg,
+		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
@@ -321,6 +322,7 @@
 		/obj/item/stack/sheet/glass,
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
+		/obj/item/lightreplacer/cyborg, // Skyrat Edit - Surprised Engie borgs don't get these
 		/obj/item/stack/tile/iron/base/cyborg,
 		/obj/item/stack/cable_coil)
 	radio_channels = list(RADIO_CHANNEL_ENGINEERING)
@@ -408,10 +410,31 @@
 	model_select_icon = "medical"
 	model_traits = list(TRAIT_PUSHIMMUNE)
 	hat_offset = 3
+	// SKYRAT EDIT START: Adds all the cyborg skins.
 	borg_skins = list(
-		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical"),
+		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical", SKIN_TRAITS = list(R_TRAIT_SMALL)),
 		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor"),
+		"Zoomba" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "zoomba_med"),
+		"Droid" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "medical", SKIN_HAT_OFFSET = 4),
+		"Sleek" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "sleekmed"),
+		"Marina" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "marinamed"),
+		"Eyebot" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "eyebotmed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)),
+		"Heavy" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "heavymed"),
+		"Bootyborg" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "bootymedical"),
+		"Male Bootyborg" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "male_bootymedical"),
+		// PLEASE ASSUME THE POSITION
+		"Protectron" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "protectron_medical"),
+		"Miss M" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "missm_med"),
+		"Arachne" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "arachne"),
+		"Insekt" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "insekt-Med"),
+		"Mech" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', SKIN_ICON_STATE = "gibbs"),
+		"Hound" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', SKIN_ICON_STATE = "medihound", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Vale" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', SKIN_ICON_STATE = "valemed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Alina" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', SKIN_ICON_STATE = "alina-med", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Drake" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', SKIN_ICON_STATE = "drakemed", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
+		"Borgi" = list(SKIN_ICON = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', SKIN_ICON_STATE = "borgi-medi", SKIN_TRAITS = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
 	)
+	// SKYRAT EDIT END
 
 /obj/item/robot_model/miner
 	name = "Miner"
@@ -508,7 +531,8 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/glass/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		/obj/item/reagent_containers/food/condiment/enzyme,
+		//Skyrat Edit Start: Borg Buff
+		//obj/item/reagent_containers/food/condiment/enzyme, //edit
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
@@ -518,9 +542,16 @@
 		/obj/item/instrument/guitar,
 		/obj/item/instrument/piano_synth,
 		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/juice, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/soda, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol, //edit
+		/obj/item/reagent_containers/borghypo/borgshaker/specific/misc, //edit
+		/obj/item/reagent_containers/dropper,
 		/obj/item/lighter,
 		/obj/item/storage/bag/tray,
-		/obj/item/reagent_containers/borghypo/borgshaker,
+		//obj/item/reagent_containers/borghypo/borgshaker, //edit
+		/obj/item/reagent_containers/syringe, //edit
+		/obj/item/cooking/cyborg/power, //edit
 		/obj/item/borg/lollipop,
 		/obj/item/stack/pipe_cleaner_coil/cyborg,
 		/obj/item/borg/apparatus/beaker/service)

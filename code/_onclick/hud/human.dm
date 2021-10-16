@@ -535,7 +535,7 @@
 				screenmob.client.screen += H.r_store
 
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(H.client.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+			if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				if(H.vagina)
 					H.vagina.screen_loc = ui_vagina
 					screenmob.client.screen += H.vagina

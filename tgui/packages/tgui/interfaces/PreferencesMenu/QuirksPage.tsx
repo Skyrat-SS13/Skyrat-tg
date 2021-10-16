@@ -73,7 +73,7 @@ const QuirkList = (props: {
                     <Stack fill style={{
                       "font-size": "1.2em",
                     }}>
-                      <Stack.Item grow>
+                      <Stack.Item grow basis="content">
                         <b>{quirk.name}</b>
                       </Stack.Item>
 
@@ -83,7 +83,7 @@ const QuirkList = (props: {
                     </Stack>
                   </Stack.Item>
 
-                  <Stack.Item grow style={{
+                  <Stack.Item grow basis="content" style={{
                     "margin-top": 0,
                     "padding": "3px",
                   }}>
@@ -109,7 +109,7 @@ const QuirkList = (props: {
   );
 };
 
-const StatDisplay: StatelessComponent<{}> = (props) => {
+export const StatDisplay: StatelessComponent<{}> = (props) => { // SKYRAT EDIT
   return (
     <Box
       backgroundColor="#eee"
@@ -135,8 +135,9 @@ export const QuirksPage = (props, context) => {
 
   return (
     <ServerPreferencesFetcher
-      render={data => {
-        if (!data) {
+      // SKYRAT EDIT START - Quirks balance refactor
+      render={quirks_data => {
+        if (!quirks_data) { // SKYRAT EDIT END
           return <Box>Loading quirks...</Box>;
         }
 
@@ -144,7 +145,7 @@ export const QuirksPage = (props, context) => {
           max_positive_quirks: maxPositiveQuirks,
           quirk_blacklist: quirkBlacklist,
           quirk_info: quirkInfo,
-        } = data.quirks;
+        } = quirks_data.quirks; // SKYRAT EDIT - Quirks balance refactor
 
         const quirks = Object.entries(quirkInfo);
         quirks.sort(([_, quirkA], [__, quirkB]) => {
@@ -155,21 +156,10 @@ export const QuirksPage = (props, context) => {
           }
         });
 
-        let balance = 0;
-        let positiveQuirks = 0;
-
-        for (const selectedQuirkName of selectedQuirks) {
-          const selectedQuirk = quirkInfo[selectedQuirkName];
-          if (!selectedQuirk) {
-            continue;
-          }
-
-          if (selectedQuirk.value > 0) {
-            positiveQuirks += 1;
-          }
-
-          balance += selectedQuirk.value;
-        }
+        // SKYRAT EDIT START - Better Quirk Count Code
+        let balance = -data.quirks_balance;
+        let positiveQuirks = data.positive_quirk_count;
+        // SKYRAT EDIT END
 
         const getReasonToNotAdd = (quirkName: string) => {
           const quirk = quirkInfo[quirkName];

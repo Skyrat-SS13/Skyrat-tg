@@ -18,6 +18,9 @@
  * preference_source - the preferences of the thing we're equipping
  */
 /mob/living/carbon/human/proc/equip_outfit_and_loadout(datum/outfit/outfit, datum/preferences/preference_source, visuals_only = FALSE, datum/job/equipping_job)
+	if (!preference_source)
+		return FALSE
+
 	var/datum/outfit/equipped_outfit
 
 	if(ispath(outfit))
@@ -27,13 +30,32 @@
 	else
 		CRASH("Outfit passed to equip_outfit_and_loadout was neither a path nor an instantiated type!")
 
+	var/override_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
+
 	var/list/loadout_datums = loadout_list_to_datums(preference_source?.loadout_list)
-	for(var/datum/loadout_item/item as anything in loadout_datums)
-		if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
-			if(client)
-				to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
-			continue
-		item.insert_path_into_outfit(equipped_outfit, src, visuals_only)
+
+	if(override_preference == LOADOUT_OVERRIDE_CASE && !visuals_only)
+		var/obj/item/storage/briefcase/empty/briefcase = new(loc)
+
+		for(var/datum/loadout_item/item as anything in loadout_datums)
+			if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
+				continue
+
+			new item.item_path(briefcase)
+
+		briefcase.name = "[preference_source.read_preference(/datum/preference/name/real_name)]'s travel suitcase"
+
+		put_in_hands(briefcase)
+	else
+		for(var/datum/loadout_item/item as anything in loadout_datums)
+			if(item.restricted_roles && equipping_job && !(equipping_job.title in item.restricted_roles))
+				if(client)
+					to_chat(src, span_warning("You were unable to get a loadout item([initial(item.item_path.name)]) due to job restrictions!"))
+				continue
+
+			item.insert_path_into_outfit(equipped_outfit, src, visuals_only)
 
 	equipOutfit(equipped_outfit, visuals_only)
 
@@ -110,3 +132,6 @@
 			LAZYREMOVE(list_to_clean, path)
 
 	return list_to_clean
+
+/obj/item/storage/briefcase/empty/PopulateContents()
+	return
