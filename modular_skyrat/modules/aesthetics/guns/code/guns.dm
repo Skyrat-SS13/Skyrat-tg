@@ -318,13 +318,6 @@
 	caliber = CALIBER_A762
 	max_ammo = 20
 
-/obj/item/gun/ballistic/revolver/mateba/bladerunner
-	name = "\improper NT REV-49"
-	desc = "A prototype 'revolver' from Nanotrasen's Weaponry Division. Only recently started to be sold to SolFed Marshals. For being a revolver, it doesn't seem to have any actual way to reload it."
-	icon_state = "bladerunner"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
-
 /////////////////////////////////
 ////DETECTIVE REVOLVER RESKIN////
 /////////////////////////////////
