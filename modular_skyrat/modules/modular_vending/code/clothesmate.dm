@@ -29,6 +29,7 @@
 		/obj/item/clothing/suit/hawaiian_green = 5,
 		/obj/item/clothing/under/misc/mechanic = 5,
 		/obj/item/clothing/under/misc/greyshirt = 5,
+		/obj/item/clothing/under/costume/deckers/alt = 5,
 		/obj/item/clothing/under/costume/bathrobe = 5,
 		/obj/item/clothing/under/misc/poly_shirt = 5,
 		/obj/item/clothing/under/misc/poly_kilt = 5,
