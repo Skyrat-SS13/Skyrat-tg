@@ -3,7 +3,6 @@
 	desc = "Uh oh, this one's been eaten!"
 	icon = 'modular_skyrat/modules/mre_vendor/icons/obj/mreicon.dmi'
 	icon_state = "mre"
-	illustration = "burger"
 	var/unheated = TRUE
 
 /obj/item/storage/box/mre/AltClick(mob/user)
@@ -16,6 +15,7 @@
 /obj/item/storage/box/mre/mre_spaghetti
 	name = "MRE - Spaghetti and Meatballs"
 	desc = "This MRE contains spaghetti and meatballs, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_spaghetti/PopulateContents()
 	new /obj/item/food/spaghetti/meatballspaghetti(src)
@@ -29,6 +29,7 @@
 /obj/item/storage/box/mre/mre_hotdog
 	name = "MRE - Ballpark Hotdog"
 	desc = "This MRE contains a hot dog, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_hotdog/PopulateContents()
 	new /obj/item/food/hotdog(src)
@@ -42,6 +43,7 @@
 /obj/item/storage/box/mre/mre_cheeseburger
 	name = "MRE - Cheeseburger"
 	desc = "This MRE contains a cheeseburger, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_cheeseburger/PopulateContents()
 	new /obj/item/food/burger/cheese(src)
@@ -55,6 +57,7 @@
 /obj/item/storage/box/mre/mre_indian
 	name = "MRE - Chicken Curry"
 	desc = "This MRE contains curry, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_indian/PopulateContents()
 	new /obj/item/food/soup/indian_curry(src)
@@ -68,6 +71,7 @@
 /obj/item/storage/box/mre/mre_cajun
 	name = "MRE - Spicy Gumbo"
 	desc = "This MRE contains gumbo, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_cajun/PopulateContents()
 	new /obj/item/food/salad/gumbo(src)
@@ -81,6 +85,7 @@
 /obj/item/storage/box/mre/mre_asian
 	name = "MRE - Beef Noodle"
 	desc = "This MRE contains beef noodles, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_asian/PopulateContents()
 	new /obj/item/food/spaghetti/beefnoodle(src)
@@ -94,6 +99,7 @@
 /obj/item/storage/box/mre/mre_breakfast
 	name = "MRE - Eggs Benedict"
 	desc = "This MRE contains eggs benedict, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_breakfast/PopulateContents()
 	new	/obj/item/food/benedict(src)
@@ -136,6 +142,7 @@
 /obj/item/storage/box/mre/mre_lizard
 	name = "MRE - Lizards' Dumpling"
 	desc = "This MRE, designed for cultural sensitivity, contains atrakor dumpling soup, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_lizard/PopulateContents()
 	new /obj/item/food/soup/atrakor_dumplings(src)
@@ -163,6 +170,7 @@
 /obj/item/storage/box/mre/mre_moth
 	name = "MRE - Moths' Special"
 	desc = "This MRE, designed for cultural sensitivity, contains a freshly used jumpsuit, along with a few sides. It's an okay meal. Written in bold text on the side are the words : NOT FIT FOR HUMAN CONSUMPTION. Good thing you can't read."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_moth/PopulateContents()
 	new	/obj/item/clothing/under/color/black(src)
@@ -190,6 +198,7 @@
 /obj/item/storage/box/mre/mre_seafood
 	name = "MRE - Seafood Surprise"
 	desc = "This MRE contains a delicious moonfish demi-glace, along with a few sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_seafood/PopulateContents()
 	new	/obj/item/food/moonfish_demiglace(src)
@@ -203,6 +212,7 @@
 /obj/item/storage/box/mre/mre_coldweather
 	name = "MRE - Cold Weather"
 	desc = "This MRE contains a generous portion of poutine, along with a few other sides inspired by Earth's coldest regions. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_coldweather/PopulateContents()
 	new	/obj/item/food/poutine(src)
@@ -216,6 +226,7 @@
 /obj/item/storage/box/mre/mre_gamer
 	name = "MRE - Tactical Gamer"
 	desc = "This MRE contains a slice of pizza, as well as other foods carefully selected to meet the nutritional needs of elite gamers everywhere. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_gamer/PopulateContents()
 	new	/obj/item/food/pizzaslice/meat(src)
@@ -229,6 +240,7 @@
 /obj/item/storage/box/mre/mre_fiesta
 	name = "MRE - Spicy Fiesta"
 	desc = "This MRE contains a spicy burrito, along with a few other sides. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_fiesta/PopulateContents()
 	new	/obj/item/food/carneburrito(src)
@@ -242,6 +254,7 @@
 /obj/item/storage/box/mre/mre_continental
 	name = "MRE - Continental Breakfast"
 	desc = "This MRE contains a baguette, along with a few other sides inspired by Earth's European breakfasts. It's an okay meal."
+	illustration = "burger"
 
 /obj/item/storage/box/mre/mre_continental/PopulateContents()
 	new	/obj/item/food/baguette(src)
