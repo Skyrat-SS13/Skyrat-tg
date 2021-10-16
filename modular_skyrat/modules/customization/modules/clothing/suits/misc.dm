@@ -14,7 +14,7 @@
 	name = "hospital gown"
 	desc = "A complicated drapery with an assortment of velcros and strings, designed to keep a patient modest during medical stay and surgeries."
 	icon_state = "hgown"
-	togglename = "drapes"
+	toggle_noun = "drapes"
 	body_parts_covered = NONE
 	armor = NONE
 	equip_delay_other = 8
@@ -78,7 +78,7 @@
 	name = "track jacket"
 	desc = "A black jacket with blue stripes for the athletic. It is also popular among russian delinquents."
 	icon_state = "trackjacket"
-	togglename = "zipper"
+	toggle_noun = "zipper"
 
 /obj/item/clothing/suit/frenchtrench
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'

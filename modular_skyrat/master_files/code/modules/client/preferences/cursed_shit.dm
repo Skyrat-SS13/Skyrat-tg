@@ -308,23 +308,6 @@
 	var/datum/sprite_accessory/genital/womb/none/default = /datum/sprite_accessory/genital/womb/none
 	return initial(default.name)
 
-/datum/preference/tri_color/womb
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "womb_color"
-	relevant_mutant_bodypart = "womb"
-
-/datum/preference/tri_color/womb/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/womb)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/tri_color/womb/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts["womb"])
-		target.dna.mutant_bodyparts["womb"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-	target.dna.mutant_bodyparts["womb"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
-
 /datum/preference/toggle/breasts
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -435,3 +418,43 @@
 
 /datum/preference/numeric/body_size/create_default_value()
 	return BODY_SIZE_NORMAL
+
+/datum/preference/toggle/anus
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "anus_toggle"
+	default_value = FALSE
+	relevant_mutant_bodypart = "anus"
+
+/datum/preference/toggle/anus/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return TRUE // we dont actually want this to do anything
+
+/datum/preference/toggle/anus/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
+	return erp_allowed && (passed_initial_check || allowed)
+
+/datum/preference/choiced/anus
+	savefile_key = "feature_anus"
+	savefile_identifier = PREFERENCE_CHARACTER
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	relevant_mutant_bodypart = "anus"
+
+/datum/preference/choiced/anus/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/part_enabled = preferences.read_preference(/datum/preference/toggle/anus)
+	return ((passed_initial_check || allowed) && part_enabled)
+
+/datum/preference/choiced/anus/init_possible_values()
+	return assoc_to_keys(GLOB.sprite_accessories["anus"])
+
+/datum/preference/choiced/anus/apply_to_human(mob/living/carbon/human/target, value)
+	if(!target.dna.mutant_bodyparts["anus"])
+		target.dna.mutant_bodyparts["anus"] = list("name" = "None", "color" = list("FFF", "FFF", "FFF"))
+	target.dna.mutant_bodyparts["anus"]["name"] = value
+
+/datum/preference/choiced/anus/create_default_value()
+	var/datum/sprite_accessory/genital/anus/none/default = /datum/sprite_accessory/genital/anus/none
+	return initial(default.name)

@@ -86,7 +86,7 @@ var/current_turf
 
 		display_turf[initial(choice)] = option
 
-	sortList(display_turf)
+	sort_list(display_turf)
 	var/chosen_turf = show_radial_menu(user, user, display_turf, custom_check = CALLBACK(src, .proc/check_menu, user))
 
 	if(QDELETED(src) || QDELETED(user) || !chosen_turf)

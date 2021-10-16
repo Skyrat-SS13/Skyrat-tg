@@ -242,6 +242,23 @@
 	name = "Normal"
 	color_src = null
 
+/datum/sprite_accessory/genital/anus
+	organ_type = /obj/item/organ/genital/anus
+	associated_organ_slot = ORGAN_SLOT_ANUS
+	key = "anus"
+	genetic = TRUE
+
+/datum/sprite_accessory/genital/anus/none
+	icon_state = "none"
+	name = "None"
+	factual = FALSE
+	color_src = null
+
+/datum/sprite_accessory/genital/anus/normal
+	icon_state = "anus"
+	name = "Anus"
+	color_src = null
+
 /datum/sprite_accessory/genital/breasts
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
 	organ_type = /obj/item/organ/genital/breasts

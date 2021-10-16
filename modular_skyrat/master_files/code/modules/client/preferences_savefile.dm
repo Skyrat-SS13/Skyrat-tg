@@ -13,7 +13,7 @@
 	augment_limb_styles = SANITIZE_LIST(augment_limb_styles)
 	//validating limb styles
 	for(var/key in augment_limb_styles)
-		if(!GLOB.robotic_styles_list[key])
+		if(!GLOB.robotic_styles_list[augment_limb_styles[key]])
 			augment_limb_styles -= key
 
 
@@ -74,6 +74,7 @@
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
+	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)
@@ -87,9 +88,11 @@
 			if (part in mutant_bodyparts)
 				mutant_bodyparts -= part
 		else
-			mutant_bodyparts[part] = list()
 			var/datum/preference/choiced/name = GLOB.preference_entries_by_key["feature_[part]"]
 			var/datum/preference/tri_color/color = GLOB.preference_entries_by_key["[part]_color"]
+			if (isnull(name) || isnull(color))
+				return
+			mutant_bodyparts[part] = list()
 			mutant_bodyparts[part][MUTANT_INDEX_NAME] = read_preference(name.type)
 			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = read_preference(color.type)
 	if (istype(preference, /datum/preference/choiced))
