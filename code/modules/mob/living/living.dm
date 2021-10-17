@@ -296,12 +296,6 @@
 	if(SEND_SIGNAL(src, COMSIG_LIVING_TRY_PULL, AM, force) & COMSIG_LIVING_CANCEL_PULL)
 		return FALSE
 
-	//SKYRAT EDIT ADDITION
-	if(HAS_TRAIT(AM, TRAIT_OVERSIZED) && !iscyborg(src) && AM.has_gravity())
-		to_chat(src, span_warning("[AM] is far too heavy for you to pull!"))
-		return FALSE
-	//SKYRAT EDIT END
-
 	AM.add_fingerprint(src)
 
 	// If we're pulling something then drop what we're currently pulling and pull this instead.

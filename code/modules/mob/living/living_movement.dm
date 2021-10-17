@@ -39,7 +39,7 @@
 	if(pulling)
 		if(isliving(pulling))
 			var/mob/living/L = pulling
-			if(!slowed_by_drag || L.body_position == STANDING_UP || L.buckled || grab_state >= GRAB_AGGRESSIVE)
+			if(!slowed_by_drag || L.body_position == STANDING_UP || L.buckled || grab_state >= GRAB_AGGRESSIVE || (HAS_TRAIT(L, TRAIT_OVERSIZED) && !iscyborg(src) && !HAS_TRAIT(src, TRAIT_OVERSIZED))) //SKYRAT EDIT CHANGE
 				remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
 				return
 			add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = PULL_PRONE_SLOWDOWN)
