@@ -59,6 +59,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 //rather than making a visual change, create a sound to reel back in
 /datum/component/fishing/proc/reel_sound()
 	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
+	atom_parent.do_alert_animation()
 
 /datum/component/fishing/proc/finish_fishing(atom/fisher = null, master_involved = FALSE)
 	if(reel_sound_timer)
