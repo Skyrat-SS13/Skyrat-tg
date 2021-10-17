@@ -4,8 +4,8 @@
 /datum/quirk/oversized
 	name = "Oversized"
 	desc = "You, for whatever reason, are FAR too tall, and will encounter some rough situations because of it."
-	gain_text = "<span class='notice'>That airlock looks small...</span>"
-	lose_text = "<span class='notice'>Is its still the same size?...</span>" //Lol
+	gain_text = span_notice("That airlock looks small...")
+	lose_text = span_notice("Is it still the same size...?") //Lol
 	medical_record_text = "Patient is abnormally tall."
 	value = 0
 	mob_trait = TRAIT_OVERSIZED
