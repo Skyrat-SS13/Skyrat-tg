@@ -46,19 +46,6 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 
-/obj/item/clothing/under/misc/poly_kilt
-	name = "polychromic kilt"
-	desc = "It's not a skirt!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "polykilt"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	mutant_variants = NONE
-
-/obj/item/clothing/under/misc/poly_kilt/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "F88", "FFF"))
-
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
 	desc = "A far more modern kilt, the tunic's been tossed for a combat sweater, the Hunting tartan swapped for Royal Stuart, the itchy green socks are now not itchy or green!"

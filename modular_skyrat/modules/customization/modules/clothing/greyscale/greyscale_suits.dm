@@ -148,18 +148,44 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/jacket/leather/greyscale
-	desc = "Now with more color!"
+	desc = "Pompadour not included; however, synthetic dyes ARE included."
 	icon_state = "leatherjacket"
 	greyscale_config = /datum/greyscale_config/hoodie/branded
 	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 
+/obj/item/clothing/suit/urban
+	name = "urban coat"
+	desc = "A coat built for urban life."
+	icon_state = "urbanjacket"
+	greyscale_config = /datum/greyscale_config/hoodie/branded
+	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
+	greyscale_colors = "#FFFFFF"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/duster
+	name = "duster"
+	desc = "This station aint big enough for the both of us."\
+	icon_state = "duster"
+	greyscale_config = /datum/greyscale_config/hoodie/branded
+	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
+	greyscale_colors = "#FFFFFF"
+	mutant_variants = NONE
+
+/obj/item/clothing/suit/toggle/peacoat
+	name = "peacoat"
+	desc = "The way you guys are blending in with the local colour. I mean, Flag Girl was bad enough, but U-Boat Captain?"
+	icon_state = "peacoat"
+	greyscale_config = /datum/greyscale_config/hoodie/branded
+	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	flags_1 = IS_PLAYER_COLORABLE_1
+	greyscale_colors = "#FFFFFF"
+	mutant_variants = NONE
 
 /*TODO SUITS*/
-/obj/item/clothing/suit/urban/polychromic
-/obj/item/clothing/suit/duster/colorable
-/obj/item/clothing/suit/toggle/peacoat
 
 /obj/item/clothing/suit/hooded/wintercoat/polychromic
 /obj/item/clothing/head/hooded/winterhood/polychromic

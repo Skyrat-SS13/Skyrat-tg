@@ -79,22 +79,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Green Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/mad
 
-/datum/loadout_item/suit/poncho
-	name = "Poncho"
-	item_path = /obj/item/clothing/suit/poncho
-
-/datum/loadout_item/suit/poncho_green
-	name = "Green Poncho"
-	item_path = /obj/item/clothing/suit/poncho/green
-
-/datum/loadout_item/suit/poncho_red
-	name = "Red Poncho"
-	item_path = /obj/item/clothing/suit/poncho/red
-
-/datum/loadout_item/suit/wawaiian_shirt
-	name = "Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian
-
 /datum/loadout_item/suit/bomber_jacket
 	name = "Bomber Jacket"
 	item_path = /obj/item/clothing/suit/jacket
@@ -198,11 +182,13 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/duster
 	name = "Greyscale Duster"
-	item_path = /obj/item/clothing/suit/duster/colorable
+	item_path = /obj/item/clothing/suit/duster
+	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/peacoat
 	name = "Greyscale Peacoat"
 	item_path = /obj/item/clothing/suit/toggle/peacoat
+	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/dresscoat
 	name = "Black Dresscoat"
@@ -300,7 +286,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/urban
 	name = "Greyscale Urban Coat"
-	item_path = /obj/item/clothing/suit/urban/polychromic
+	item_path = /obj/item/clothing/suit/urban
 	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/maxson
@@ -330,6 +316,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/leatherjacket_greyscale
 	name = "Greyscale Leather Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather/greyscale
+	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/woolcoat
 	name = "Leather overcoat"

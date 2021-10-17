@@ -164,19 +164,6 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/urban/polychromic
-	name = "urban coat"
-	desc = "A coat built for urban life."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "urbanjacket"
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5", "EEA", "333"))
-
-
 /obj/item/clothing/suit/toggle/deckard
 	name = "runner coat"
 	desc = "They say you overused reference. Tell them you're eating in this lovely coat, a long flowing brown one."
@@ -202,37 +189,11 @@
 	toggle_noun = "zipper"
 	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
-
 /obj/item/clothing/suit/toggle/lawyer/black/better
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "suitjacket_black"
 	mutant_variants = NONE
-
-
-/obj/item/clothing/suit/duster/colorable
-	name = "colorable duster"
-	desc = "This station aint big enough for the both of us."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "duster"
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/duster/colorable/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5"))
-
-/obj/item/clothing/suit/toggle/peacoat
-	name = "colorable peacoat"
-	desc = "The way you guys are blending in with the local colour. I mean, Flag Girl was bad enough, but U-Boat Captain?"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "peacoat"
-	mutant_variants = NONE
-
-/obj/item/clothing/suit/toggle/peacoat/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5"))
 
 /obj/item/clothing/suit/poncho
     mutant_variants = STYLE_TAUR_ALL
