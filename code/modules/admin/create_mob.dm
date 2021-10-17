@@ -26,13 +26,9 @@
 	H.dna.blood_type = random_blood_type()
 
 	// Mutant randomizing, doesn't affect the mob appearance unless it's the specific mutant.
-<<<<<<< HEAD
 	//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 	/*
-	H.dna.features["mcolor"] = random_short_color() SKYRAT EDIT - We dont use those in favor for a more modular system
-=======
 	H.dna.features["mcolor"] = "#[random_color()]"
->>>>>>> 694c2999b08 (makes it so the sanitize_hexcolors' default is 6 characters rather than 3 and gets rid of color_legacy (#61980))
 	H.dna.features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
 	H.dna.features["tail_lizard"] = pick(GLOB.tails_list_lizard)
 	H.dna.features["snout"] = pick(GLOB.snouts_list)
