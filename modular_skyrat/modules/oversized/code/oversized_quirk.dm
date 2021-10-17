@@ -26,7 +26,7 @@
 
 /datum/quirk/oversized/proc/on_try_pull(datum/source, atom/movable/target, force)
 	SIGNAL_HANDLER
-	if(!HAS_TRAIT(target, TRAIT_OVERSIZED) && !iscyborg(target) && !target.has_gravity())
+	if(!HAS_TRAIT(target, TRAIT_OVERSIZED) && !iscyborg(target) && quirk_holder.has_gravity())
 		to_chat(target, span_warning("[quirk_holder] is far too heavy for you to pull!"))
 		return COMSIG_LIVING_CANCEL_PULL
 
