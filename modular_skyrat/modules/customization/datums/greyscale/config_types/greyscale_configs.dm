@@ -30,27 +30,27 @@
 /datum/greyscale_config/hoodie
 	name = "Hoodie"
 	icon_file = 'modular_skyrat/modules/berets/icons/obj/clothing/head/beret.dmi'	//TEMPORARY, WILL BE CHANGED
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie.json'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/hoodie/hoodie.json'
 
 /datum/greyscale_config/hoodie/worn
 	name = "Hoodie Worn"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_worn.json'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/hoodie/hoodie_worn.json'
 
 /datum/greyscale_config/hoodie/trim
 	name = "Trimmed Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_trim.json'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/hoodie/hoodie_trim.json'
 
 /datum/greyscale_config/hoodie/trim/worn
 	name = "Trimmed Hoodie Worn"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_trim_worn.json'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/hoodie/hoodie_trim_worn.json'
 
 /datum/greyscale_config/hoodie/branded
 	name = "Branded Hoodie"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_branded.json'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/hoodie/hoodie_branded.json'
 
 /datum/greyscale_config/hoodie/branded/worn
 	name = "Branded Hoodie Worn"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_branded_worn.json'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/hoodie/hoodie_branded_worn.json'
 
 /// PATTERNED + TEMPLATES///
 /// Due to how generic most of these are, they'll be in the same .json and their differences chosen by the icon_state
