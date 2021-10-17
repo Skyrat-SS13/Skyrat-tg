@@ -964,12 +964,7 @@
 		if(draw_color)
 			limb.color = draw_color
 			if(aux_zone)
-<<<<<<< HEAD
-				aux.color = "#[draw_color]"
-=======
 				aux.color = draw_color
-
->>>>>>> 694c2999b08 (makes it so the sanitize_hexcolors' default is 6 characters rather than 3 and gets rid of color_legacy (#61980))
 	if(blocks_emissive)
 		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 		limb_em_block.dir = image_dir
