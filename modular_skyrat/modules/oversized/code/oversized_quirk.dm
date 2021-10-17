@@ -42,3 +42,4 @@
 	UnregisterSignal(human_holder, COMSIG_LIVING_TRY_PULL)
 
 #undef BLOOD_VOLUME_OVERSIZED
+#undef OVERSIZED_SPEED_SLOWDOWN

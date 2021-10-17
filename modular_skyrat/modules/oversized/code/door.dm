@@ -5,7 +5,6 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 	return ..()
 
-
 /obj/machinery/door/proc/on_entered(datum/source, atom/movable/crossed_atom)
 	SIGNAL_HANDLER
 	if(HAS_TRAIT(crossed_atom, TRAIT_OVERSIZED) && ishuman(crossed_atom))
