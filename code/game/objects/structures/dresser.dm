@@ -46,7 +46,7 @@
 					H.underwear = new_undies
 
 			if("Underwear Color")
-				var/new_underwear_color = input(H, "Choose your underwear color", "Underwear Color","#"+H.underwear_color) as color|null
+				var/new_underwear_color = input(H, "Choose your underwear color", "Underwear Color",H.underwear_color) as color|null
 				if(new_underwear_color)
 					H.underwear_color = sanitize_hexcolor(new_underwear_color)
 			if("Undershirt")
