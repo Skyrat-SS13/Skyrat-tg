@@ -259,6 +259,7 @@
 		"comp_timepiece",
 		"comp_tonumber",
 		"comp_tostring",
+		"comp_trigonometry",
 		"comp_typecast",
 		"comp_typecheck",
 		"compact_remote_shell",

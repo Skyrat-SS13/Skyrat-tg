@@ -846,7 +846,7 @@
 			species_color = ""
 
 		if(!dropping_limb && human_owner.dna.check_mutation(HULK))
-			mutation_color = "00aa00"
+			mutation_color = "#00aa00"
 		else
 			mutation_color = ""
 
@@ -958,9 +958,9 @@
 	if(should_draw_greyscale)
 		var/draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
 		if(draw_color)
-			limb.color = "#[draw_color]"
+			limb.color = draw_color
 			if(aux_zone)
-				aux.color = "#[draw_color]"
+				aux.color = draw_color
 	if(blocks_emissive)
 		var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
 		limb_em_block.dir = image_dir
@@ -970,10 +970,18 @@
 			var/mutable_appearance/aux_em_block = emissive_blocker(aux.icon, aux.icon_state, alpha = aux.alpha)
 			aux_em_block.dir = image_dir
 			aux.overlays += aux_em_block
+
+
+	//Draw external organs like horns and frills
+	for(var/obj/item/organ/external/external_organ in external_organs)
+		if(!dropped && !external_organ.can_draw_on_bodypart(owner))
+			continue
+		//Some externals have multiple layers for background, foreground and between
+		for(var/external_layer in external_organ.all_layers)
+			if(external_organ.layers & external_layer)
+				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), icon_gender, draw_color)
 */
 //SKYRAT EDIT REMOVAL END
-
-
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
 	drop_organs()

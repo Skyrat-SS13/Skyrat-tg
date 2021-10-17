@@ -77,9 +77,9 @@
 	if(should_draw_greyscale)
 		draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
 		if(draw_color)
-			limb.color = "#[draw_color]"
+			limb.color = draw_color
 			if(aux_zone)
-				aux.color = "#[draw_color]"
+				aux.color = draw_color
 
 	if (!owner || is_pseudopart || !ishuman(owner))
 		return
@@ -93,7 +93,7 @@
 	//Markings!
 	var/override_color
 	if(HAS_TRAIT(H, TRAIT_HUSK))
-		override_color = "888"
+		override_color = "#888888"
 
 	for(var/key in H.dna.species.body_markings[body_zone])
 		var/datum/body_marking/BM = GLOB.body_markings[key]
@@ -110,9 +110,9 @@
 
 		var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
 		if(override_color)
-			accessory_overlay.color = "#[override_color]"
+			accessory_overlay.color = override_color
 		else
-			accessory_overlay.color = "#[H.dna.species.body_markings[body_zone][key]]"
+			accessory_overlay.color = H.dna.species.body_markings[body_zone][key]
 		accessory_overlay.alpha = H.dna.species.markings_alpha
 		. += accessory_overlay
 
@@ -124,9 +124,9 @@
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
 			if(override_color)
-				accessory_overlay.color = "#[override_color]"
+				accessory_overlay.color = override_color
 			else
-				accessory_overlay.color = "#[H.dna.species.body_markings[aux_zone][key]]"
+				accessory_overlay.color = H.dna.species.body_markings[aux_zone][key]
 			accessory_overlay.alpha = H.dna.species.markings_alpha
 			. += accessory_overlay
 
@@ -151,4 +151,4 @@
 		//Some externals have multiple layers for background, foreground and between
 		for(var/external_layer in external_organ.all_layers)
 			if(external_organ.layers & external_layer)
-				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), icon_gender, "#[draw_color]")
+				external_organ.get_overlays(., image_dir, external_organ.bitflag_to_layer(external_layer), icon_gender, draw_color)

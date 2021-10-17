@@ -336,7 +336,7 @@
 	inhand_icon_state = "sec_hardsuit"
 	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 10, BIO = 100, RAD = 50, FIRE = 75, ACID = 75, WOUND = 20)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
-	hardsuit_tail_colors = list("BBB", "444", "337")
+	hardsuit_tail_colors = list("#BBBBBB", "#444444", "#333377")
 
 /obj/machinery/suit_storage_unit/security_peacekeeper
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
