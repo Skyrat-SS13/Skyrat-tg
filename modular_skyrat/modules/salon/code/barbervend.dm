@@ -12,6 +12,7 @@
 		/obj/item/reagent_containers/spray/baldium = 3,
 		/obj/item/reagent_containers/spray/barbers_aid = 3,
 		/obj/item/hair_dye = 3,
+		/obj/item/dyespray = 5,
 		/obj/item/hairbrush = 3,
 		/obj/item/hairbrush/comb = 3,
 		/obj/item/fur_dyer = 1,
