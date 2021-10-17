@@ -37,7 +37,7 @@
 	human_holder.mob_size = MOB_SIZE_HUMAN
 	human_holder.dna.species.punchdamagelow -= OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.dna.species.punchdamagehigh -= OVERSIZED_HARM_DAMAGE_BONUS
-	var/speedmod = human_holder.dna.species.speedmod - OVERSIZED_SPEED_SLOWDOWN
+	var/speedmod = human_holder.dna.species.speedmod
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	UnregisterSignal(human_holder, COMSIG_LIVING_TRY_PULL)
 
