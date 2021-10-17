@@ -1,4 +1,3 @@
-#define BLOOD_VOLUME_OVERSIZED 1000
 #define OVERSIZED_SPEED_SLOWDOWN 0.5
 
 /datum/quirk/oversized
@@ -15,10 +14,10 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.dna.features["body_size"] = 2
 	human_holder.dna.update_body_size()
-	human_holder.blood_volume = BLOOD_VOLUME_OVERSIZED
 	human_holder.mob_size = MOB_SIZE_LARGE
 	human_holder.dna.species.punchdamagelow += OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.dna.species.punchdamagehigh += OVERSIZED_HARM_DAMAGE_BONUS
+	human_holder.blood_volume_normal = BLOOD_VOLUME_OVERSIZED
 	var/speedmod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
@@ -26,12 +25,11 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.dna.features["body_size"] = human_holder?.client?.prefs?.read_preference(/datum/preference/numeric/body_size)
 	human_holder.dna.update_body_size()
-	human_holder.blood_volume = BLOOD_VOLUME_SAFE
 	human_holder.mob_size = MOB_SIZE_HUMAN
 	human_holder.dna.species.punchdamagelow -= OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.dna.species.punchdamagehigh -= OVERSIZED_HARM_DAMAGE_BONUS
+	human_holder.blood_volume_normal = BLOOD_VOLUME_NORMAL
 	var/speedmod = human_holder.dna.species.speedmod
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 
-#undef BLOOD_VOLUME_OVERSIZED
 #undef OVERSIZED_SPEED_SLOWDOWN
