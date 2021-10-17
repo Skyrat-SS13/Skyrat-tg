@@ -21,7 +21,6 @@
 	human_holder.dna.species.punchdamagehigh += OVERSIZED_HARM_DAMAGE_BONUS
 	var/speedmod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
-	ADD_TRAIT(human_holder, TRAIT_CHUNKYFINGERS, ROUNDSTART_TRAIT)
 	RegisterSignal(human_holder, COMSIG_LIVING_TRY_PULL, .proc/on_try_pull)
 
 /datum/quirk/oversized/proc/on_try_pull(datum/source, atom/movable/target, force)
@@ -40,7 +39,6 @@
 	human_holder.dna.species.punchdamagehigh -= OVERSIZED_HARM_DAMAGE_BONUS
 	var/speedmod = human_holder.dna.species.speedmod - OVERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
-	REMOVE_TRAIT(human_holder, TRAIT_CHUNKYFINGERS, ROUNDSTART_TRAIT)
 	UnregisterSignal(human_holder, COMSIG_LIVING_TRY_PULL)
 
 #undef BLOOD_VOLUME_OVERSIZED
