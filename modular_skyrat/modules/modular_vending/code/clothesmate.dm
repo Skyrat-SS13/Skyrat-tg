@@ -16,7 +16,6 @@
 		/obj/item/clothing/suit/toggle/jacket/hoodie/branded/mu = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/branded/smw = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/branded/nrti = 5,
-		/obj/item/clothing/suit/urban = 5,
 		/obj/item/clothing/suit/toggle/jacket/cardigan = 5,
 		/obj/item/clothing/suit/hawaiian = 5,
 		/obj/item/clothing/suit/hawaiian/orange = 5,

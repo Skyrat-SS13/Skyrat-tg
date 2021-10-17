@@ -284,10 +284,13 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Polychromic Wintercoat"
 	item_path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
 
+/*
 /datum/loadout_item/suit/urban
 	name = "Greyscale Urban Coat"
 	item_path = /obj/item/clothing/suit/urban
 	can_be_greyscale = TRUE
+*/
+//READD TO CLOTHESMATE
 
 /datum/loadout_item/suit/maxson
 	name = "Fancy Brown Coat"

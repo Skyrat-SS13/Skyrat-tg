@@ -330,18 +330,6 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/shoes/winterboots/ice_boots = 5,
 		/obj/item/clothing/suit/hooded/wintercoat/narsie/fake = 10,
 		/obj/item/clothing/suit/hooded/wintercoat/ratvar/fake = 10,
-		/obj/item/clothing/under/dress/skirt/polychromic = 100,
-		/obj/item/clothing/under/dress/skirt/polychromic/pleated = 100,
-		/obj/item/clothing/under/misc/poly_bottomless = 100,
-		/obj/item/clothing/under/misc/poly_kilt = 100,
-		/obj/item/clothing/under/misc/poly_shirt = 100,
-		/obj/item/clothing/under/misc/poly_tanktop = 100,
-		/obj/item/clothing/under/misc/poly_tanktop/female = 100,
-		/obj/item/clothing/under/misc/polyjumpsuit = 100,
-		/obj/item/clothing/under/misc/polyshorts = 100,
-		/obj/item/clothing/under/shorts/polychromic = 100,
-		/obj/item/clothing/under/shorts/polychromic/pantsu = 100,
-		/obj/item/clothing/suit/hooded/wintercoat/polychromic = 100
 	) = 100,
 	list( //Stuff you'd find in maint but like not really
 		/obj/item/food/meat/slab/human = 1,

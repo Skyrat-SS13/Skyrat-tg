@@ -85,13 +85,15 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 	icon_state = "hoodie_SMW"
 	greyscale_colors = "#313131#ffffff"
 
+///---BELOW THIS LINE ARE ITEMS THAT USE THE TEMPLATE METHOD, APPLYING THE LAYERS ACCORDINGLY ALONG WITH PATTERNS. Basically, instead of suitpants and suitskirt, its suittop + pants or skirt---///
+///---MOST OF THESE WILL BE IN THE SAME CONFIG, USE THE ICON_STATE TO DETERMINE WHICH CLOTHING USES WHICH PATTERN
 ///FLANNELS///
 /obj/item/clothing/suit/toggle/jacket/flannel
 	name = "flannel jacket"
 	desc = "A cozy and warm plaid flannel jacket. Praised by Lumberjacks and Truckers alike."
 	icon_state = "flannel"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	greyscale_config = /datum/greyscale_config/SR_suittemplate
+	greyscale_config_worn = /datum/greyscale_config/SR_suittemplate/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#3B3B3B"	//Starts out black
 	mutant_variants = NONE
@@ -113,9 +115,9 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 /obj/item/clothing/suit/hawaiian	//THIS OVERWRITES THE BASE TG HAWAIIAN SHIRT. I DO NOT CARE. IT FUNCTIONS AND APPEARS THE SAME ANYWAYS
 	name = "hawaiian shirt"
 	desc = "Strangely en vouge with aviator wearing shibas."
-	icon_state = "hawaiian_shirt"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	icon_state = "hawaiian"
+	greyscale_config = /datum/greyscale_config/SR_suittemplate
+	greyscale_config_worn = /datum/greyscale_config/SR_suittemplate/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#F79305"	//Starts out blue, to preserve the base tg item
 	mutant_variants = NONE
@@ -132,17 +134,15 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 /obj/item/clothing/suit/hawaiian/green
 	greyscale_colors = "#F79305"
 
-///For the sake of simplicity, the hawaiian tactical uniforms are here too. They use the same overlays and whatnot, but with a Pants overlay applied underneath it all.
-
-
 ///MISC///
 ///These were probably converted from the old Polychromatic system, or are just solo items.
+///Again, same as above, these are all in the same .json and the actual stuff determined by the icon_state
 /obj/item/clothing/suit/toggle/jacket/cardigan
 	name = "cardigan"
 	desc = "It's like, half a jacket."
 	icon_state = "cardigan"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	greyscale_config = /datum/greyscale_config/SR_suitmisc
+	greyscale_config_worn = /datum/greyscale_config/SR_suitmisc/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 	mutant_variants = NONE
@@ -150,27 +150,50 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 /obj/item/clothing/suit/jacket/leather/greyscale
 	desc = "Pompadour not included; however, synthetic dyes ARE included."
 	icon_state = "leatherjacket"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	greyscale_config = /datum/greyscale_config/SR_suitmisc
+	greyscale_config_worn = /datum/greyscale_config/SR_suitmisc/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 
+/*
 /obj/item/clothing/suit/urban
 	name = "urban coat"
 	desc = "A coat built for urban life."
 	icon_state = "urbanjacket"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	greyscale_config = /datum/greyscale_config/SR_suitmisc
+	greyscale_config_worn = /datum/greyscale_config/SR_suitmisc/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 	mutant_variants = NONE
+*/ //I lost the damn icon state oh god oh fuck
+
+/*
+
+	"urbanjacket": [
+		{
+			"type": "icon_state",
+			"icon_state": "urbanjacket_obj",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		}
+	],
+	,
+	"urbanjacket": [
+		{
+			"type": "icon_state",
+			"icon_state": "urbanjacket",
+			"blend_mode": "overlay",
+			"color_ids": [ 1 ]
+		}
+	]
+	*/
 
 /obj/item/clothing/suit/duster
 	name = "duster"
-	desc = "This station aint big enough for the both of us."\
+	desc = "This station aint big enough for the both of us."
 	icon_state = "duster"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	greyscale_config = /datum/greyscale_config/SR_suitmisc
+	greyscale_config_worn = /datum/greyscale_config/SR_suitmisc/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 	mutant_variants = NONE
@@ -179,8 +202,8 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 	name = "peacoat"
 	desc = "The way you guys are blending in with the local colour. I mean, Flag Girl was bad enough, but U-Boat Captain?"
 	icon_state = "peacoat"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	greyscale_config = /datum/greyscale_config/SR_suitmisc
+	greyscale_config_worn = /datum/greyscale_config/SR_suitmisc/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 	mutant_variants = NONE

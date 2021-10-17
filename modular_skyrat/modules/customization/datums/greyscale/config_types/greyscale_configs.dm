@@ -52,13 +52,25 @@
 	name = "Branded Hoodie Worn"
 	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/hoodie/hoodie_branded_worn.json'
 
-/// PATTERNED MISC ///
+/// PATTERNED + TEMPLATES///
 /// Due to how generic most of these are, they'll be in the same .json and their differences chosen by the icon_state
 /// Currently this includes Flannels and Hawaiian Shirts (Add to this list if it changes)
-/datum/greyscale_config/patterned
-	name = "Patterned Outfit"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/misc/patterned.json'
+/datum/greyscale_config/SR_suittemplate
+	name = "Template-Built Suit"
+	icon_file = 'modular_skyrat/modules/berets/icons/obj/clothing/head/beret.dmi'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/template.json'
 
-/datum/greyscale_config/patterned/worn
-	name = "Patterned Outfit Worn"
-	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/misc/patterned_worn.json'
+/datum/greyscale_config/SR_suittemplate/worn
+	name = "Template-Built Suit Worn"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/template_worn.json'
+
+/// MISC ///
+///I just dunno where to put these ones ngl, same as above: determined by the icon_state but otherwise in the same .json
+/datum/greyscale_config/SR_suitmisc
+	name = "Misc Suit"
+	icon_file = 'modular_skyrat/modules/berets/icons/obj/clothing/head/beret.dmi'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/unsorted.json'
+
+/datum/greyscale_config/SR_suitmisc/worn
+	name = "Misc Suit Worn"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/suit/unsorted_worn.json'

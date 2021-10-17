@@ -50,6 +50,7 @@ Self explanatory, this file is for uniforms that are GAGSified. If it doesnt hav
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	mutant_variants = NONE
 
+/*
 /obj/item/clothing/under/dress/skirt/polychromic
 /obj/item/clothing/under/dress/skirt/polychromic/pleated
 /obj/item/clothing/under/misc/poly_shirt
@@ -64,3 +65,4 @@ Self explanatory, this file is for uniforms that are GAGSified. If it doesnt hav
 
 
 /obj/item/card/id/advanced/polychromic
+*/
