@@ -20,6 +20,7 @@
 	READ_FILE(S["features"], features)
 	READ_FILE(S["mutant_bodyparts"], mutant_bodyparts)
 	READ_FILE(S["body_markings"], body_markings)
+	body_markings = update_markings(body_markings)
 	READ_FILE(S["mismatched_customization"], mismatched_customization)
 	READ_FILE(S["allow_advanced_colors"], allow_advanced_colors)
 
@@ -101,3 +102,10 @@
 	if (istype(preference, /datum/preference/tri_color))
 		if (part in mutant_bodyparts)
 			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = value
+
+/datum/preferences/proc/update_markings(list/markings)
+	if (islist(markings))
+		for (var/marking in markings)
+			for (var/title in markings[marking])
+				markings[marking][title] = sanitize_hexcolor(markings[marking][title])
+	return markings

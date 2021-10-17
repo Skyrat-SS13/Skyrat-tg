@@ -55,7 +55,7 @@
 					H.undershirt = new_undershirt
 			//SKYRAT EDIT ADDITION BEGIN - Colorable Undershirt/Socks
 			if("Undershirt Color")
-				var/new_undershirt_color = input(H, "Choose your undershirt color", "Undershirt Color","#"+H.undershirt_color) as color|null
+				var/new_undershirt_color = input(H, "Choose your undershirt color", "Undershirt Color",H.undershirt_color) as color|null
 				if(new_undershirt_color)
 					H.undershirt_color = sanitize_hexcolor(new_undershirt_color)
 			if("Socks")
@@ -63,7 +63,7 @@
 				if(new_socks)
 					H.socks= new_socks
 			if("Socks Color")
-				var/new_socks_color = input(H, "Choose your socks color", "Socks Color","#"+H.socks_color) as color|null
+				var/new_socks_color = input(H, "Choose your socks color", "Socks Color",H.socks_color) as color|null
 				if(new_socks_color)
 					H.socks_color = sanitize_hexcolor(new_socks_color)
 			//SKYRAT EDIT ADDITION END - Colorable Undershirt/Socks
