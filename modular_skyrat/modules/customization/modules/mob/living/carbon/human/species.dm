@@ -263,6 +263,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		default_mutant_bodyparts["womb"] = "None"
 		default_mutant_bodyparts["testicles"] = "None"
 		default_mutant_bodyparts["breasts"] = "None"
+		default_mutant_bodyparts["anus"] = "None"
 		default_mutant_bodyparts["penis"] = "None"
 
 /datum/species/dullahan

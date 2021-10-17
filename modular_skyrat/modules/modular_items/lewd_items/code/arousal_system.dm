@@ -212,7 +212,7 @@
 	return arousal
 
 /mob/living/carbon/human/proc/adjustArousal(arous = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		arousal += arous
 
 		var/arousal_flag = AROUSAL_NONE
@@ -288,7 +288,7 @@
 	return pain
 
 /mob/living/carbon/human/proc/adjustPain(pn = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		if(pain > pain_limit || pn > pain_limit / 10) // pain system // YOUR SYSTEM IS PAIN, WHY WE'RE GETTING AROUSED BY STEPPING ON ANTS?!
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
 				var/p = pn - (pain_limit / 10)
@@ -315,7 +315,7 @@
 	return pleasure
 
 /mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
 			climax(FALSE)
@@ -470,6 +470,7 @@
 	var/obj/item/organ/genital/vagina/vagina = owner.getorganslot(ORGAN_SLOT_VAGINA)
 	var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/testicles/penis = owner.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/genital/testicles/anus = owner.getorganslot(ORGAN_SLOT_ANUS)
 
 	if(penis)
 		penis.aroused = AROUSAL_NONE
@@ -477,6 +478,8 @@
 		vagina.aroused = AROUSAL_NONE
 	if(balls)
 		balls.aroused = AROUSAL_NONE
+	if(anus)
+		anus.aroused = AROUSAL_NONE
 
 /datum/status_effect/masturbation_climax
 	id = "climax"
