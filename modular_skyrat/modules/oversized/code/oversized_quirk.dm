@@ -19,7 +19,8 @@
 	human_holder.mob_size = MOB_SIZE_LARGE
 	human_holder.dna.species.punchdamagelow += OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.dna.species.punchdamagehigh += OVERSIZED_HARM_DAMAGE_BONUS
-	human_holder.dna.species.speedmod += OVERSIZED_SPEED_SLOWDOWN
+	var/speedmod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
+	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	ADD_TRAIT(human_holder, TRAIT_CHUNKYFINGERS, ROUNDSTART_TRAIT)
 	RegisterSignal(human_holder, COMSIG_LIVING_TRY_PULL, .proc/on_try_pull)
 
@@ -37,7 +38,8 @@
 	human_holder.mob_size = MOB_SIZE_HUMAN
 	human_holder.dna.species.punchdamagelow -= OVERSIZED_HARM_DAMAGE_BONUS
 	human_holder.dna.species.punchdamagehigh -= OVERSIZED_HARM_DAMAGE_BONUS
-	human_holder.dna.species.speedmod -= OVERSIZED_SPEED_SLOWDOWN
+	var/speedmod = human_holder.dna.species.speedmod - OVERSIZED_SPEED_SLOWDOWN
+	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	REMOVE_TRAIT(human_holder, TRAIT_CHUNKYFINGERS, ROUNDSTART_TRAIT)
 	UnregisterSignal(human_holder, COMSIG_LIVING_TRY_PULL)
 
