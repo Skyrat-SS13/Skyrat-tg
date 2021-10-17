@@ -88,7 +88,7 @@
 
 /obj/item/clothing/shoes/wraps/poly/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/shoes/sports
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
