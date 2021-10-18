@@ -15,6 +15,8 @@
 	var/aroused = AROUSAL_NONE
 	///Whether the organ is supposed to use a skintoned variant of the sprite
 	var/uses_skintones
+	/// Where the genital is actually located, for clothing checks.
+	var/genital_location = GROIN
 
 //This translates the float size into a sprite string
 /obj/item/organ/genital/proc/get_sprite_size_string()
@@ -51,6 +53,27 @@
 		uses_skintones = SA.uses_skintones
 	update_sprite_suffix()
 
+/obj/item/organ/genital/proc/is_exposed()
+	if(!owner)
+		return TRUE
+
+	if(!ishuman(owner))
+		return TRUE
+
+	var/mob/living/carbon/human/human = owner
+
+	switch(visibility_preference)
+		if(GENITAL_ALWAYS_SHOW)
+			return TRUE
+		if(GENITAL_HIDDEN_BY_CLOTHES)
+			if((human.w_uniform && human.w_uniform.body_parts_covered & genital_location) || (human.wear_suit && human.wear_suit.body_parts_covered & genital_location))
+				return FALSE
+			else
+				return TRUE
+		else
+			return FALSE
+
+
 /obj/item/organ/genital/penis
 	name = "penis"
 	desc = "A male reproductive organ."
@@ -59,7 +82,7 @@
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
 	mutantpart_key = "penis"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	var/girth = 9
 	var/sheath = SHEATH_NONE
 
@@ -146,10 +169,11 @@
 	icon_state = "testicles"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/testicles.dmi'
 	mutantpart_key = "testicles"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TESTICLES
 	aroused = AROUSAL_CANT
+	genital_location = GROIN
 
 /obj/item/organ/genital/testicles/update_genital_icon_state()
 	var/measured_size = clamp(genital_size, 1, 3)
@@ -181,9 +205,10 @@
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
 	icon_state = "vagina"
 	mutantpart_key = "vagina"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
+	genital_location = GROIN
 
 /obj/item/organ/genital/vagina/get_description_string(datum/sprite_accessory/genital/gas)
 	var/returned_string = "You see a [lowertext(genital_name)] vagina."
@@ -210,11 +235,31 @@
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
 	icon_state = "womb"
 	mutantpart_key = "womb"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_WOMB
 	visibility_preference = GENITAL_SKIP_VISIBILITY
 	aroused = AROUSAL_CANT
+	genital_location = GROIN
+
+/obj/item/organ/genital/anus
+	name = "anus"
+	desc = "What do you want me to tell you?"
+	icon = 'modular_skyrat/master_files/icons/obj/genitals/anus.dmi'
+	icon_state = "anus"
+	mutantpart_key = "anus"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	zone = BODY_ZONE_PRECISE_GROIN
+	slot = ORGAN_SLOT_ANUS
+	genital_location = GROIN
+
+/obj/item/organ/genital/anus/get_description_string(datum/sprite_accessory/genital/gas)
+	var/returned_string = "You see an [lowertext(genital_name)]."
+	if(aroused == AROUSAL_PARTIAL)
+		returned_string += " It looks tight."
+	if(aroused == AROUSAL_FULL)
+		returned_string += " It looks very tight."
+	return returned_string
 
 /obj/item/organ/genital/breasts
 	name = "breasts"
@@ -222,10 +267,11 @@
 	icon_state = "breasts"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
-	mutantpart_key = "penis"
-	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("FEB"))
+	mutantpart_key = "breasts"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
+	genital_location = CHEST
 	var/lactates = FALSE
 
 /obj/item/organ/genital/breasts/get_description_string(datum/sprite_accessory/genital/gas)

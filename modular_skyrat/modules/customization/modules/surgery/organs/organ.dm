@@ -20,7 +20,7 @@
 	if(mutantpart_key && istype(H))
 		if(H.dna.species.mutant_bodyparts[mutantpart_key])
 			mutantpart_info = H.dna.species.mutant_bodyparts[mutantpart_key].Copy() //Update the info in case it was changed on the person
-		color = "#[mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]]"
+		color = mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
 		H.dna.species.mutant_bodyparts -= mutantpart_key
 		H.update_body()
 	. = ..()
@@ -28,4 +28,4 @@
 /obj/item/organ/proc/build_from_dna(datum/dna/DNA, associated_key)
 	mutantpart_key = associated_key
 	mutantpart_info = DNA.mutant_bodyparts[associated_key].Copy()
-	color = "#[mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]]"
+	color = mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
