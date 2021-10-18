@@ -177,6 +177,12 @@
 			power_throw--
 		if(HAS_TRAIT(thrown_thing, TRAIT_DWARF))
 			power_throw++
+		//SKYRAT EDIT ADDITION
+		if(HAS_TRAIT(src, TRAIT_OVERSIZED))
+			power_throw++
+		if(HAS_TRAIT(thrown_thing, TRAIT_OVERSIZED))
+			power_throw--
+		//SKYRAT EDIT END
 		if(pulling && grab_state >= GRAB_NECK)
 			power_throw++
 		do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
@@ -882,7 +888,7 @@
 
 /mob/living/carbon/proc/can_defib()
 
-	
+
 	if (suiciding)
 		return DEFIB_FAIL_SUICIDE
 
@@ -914,10 +920,10 @@
 
 		if (BR.suicided || BR.brainmob?.suiciding)
 			return DEFIB_FAIL_NO_INTELLIGENCE
-	
+
 	if(key && key[1] == "@") // Adminghosts (#61870)
 		return DEFIB_NOGRAB_AGHOST
-	
+
 	return DEFIB_POSSIBLE
 
 /mob/living/carbon/harvest(mob/living/user)
