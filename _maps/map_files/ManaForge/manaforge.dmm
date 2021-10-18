@@ -7710,9 +7710,6 @@
 /turf/open/floor/plating,
 /area/hallway/primary/central)
 "aJo" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/machinery/camera{
 	c_tag = "Central Hallway North"
 	},
@@ -19734,6 +19731,9 @@
 "bxg" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "bxi" = (
@@ -20197,6 +20197,7 @@
 	pixel_y = 32
 	},
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/science/server)
 "bzx" = (
@@ -23770,6 +23771,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "bMr" = (
@@ -24351,6 +24353,7 @@
 "bOx" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "bOy" = (
@@ -27523,6 +27526,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "ccV" = (
@@ -28686,7 +28690,7 @@
 	dir = 5
 	},
 /obj/structure/cable,
-/turf/open/floor/plating/catwalk_floor/plated,
+/turf/open/floor/iron,
 /area/engineering/main)
 "cjj" = (
 /obj/machinery/light{
@@ -29845,7 +29849,6 @@
 "cqW" = (
 /obj/machinery/power/supermatter_crystal/shard/hugbox/fakecrystal{
 	color = "green";
-	is_main_engine = FALSE;
 	name = "Synthetic Warp Stone Crystal"
 	},
 /turf/open/floor/engine/airless,
@@ -33789,6 +33792,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/security/warden)
+"dih" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "dka" = (
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -34950,6 +34960,11 @@
 /obj/structure/chair/comfy/black,
 /turf/open/floor/iron,
 /area/commons/dorms)
+"eCU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "eDG" = (
 /obj/structure/table/glass,
 /obj/item/storage/fancy/candle_box,
@@ -35413,6 +35428,7 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "fhG" = (
@@ -35993,6 +36009,12 @@
 /turf/open/floor/plating,
 /area/hallway/secondary/exit)
 "fHZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 4;
+	external_pressure_bound = 120;
+	name = "server vent";
+	piping_layer = 2
+	},
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "fKr" = (
@@ -37632,6 +37654,15 @@
 /obj/item/pen,
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/medical)
+"hDD" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = -12
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "hDI" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=CHE";
@@ -38748,10 +38779,16 @@
 /turf/open/floor/iron/dark,
 /area/security/prison)
 "iQF" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable,
-/turf/open/floor/plating/catwalk_floor/plated,
-/area/engineering/main)
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/landmark/start/hangover,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/hallway/primary/central)
 "iRO" = (
 /obj/machinery/vending/dorms,
 /turf/open/floor/iron/dark,
@@ -39397,6 +39434,7 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
 "jBL" = (
@@ -41799,13 +41837,10 @@
 /area/maintenance/central/secondary)
 "lSQ" = (
 /obj/machinery/vending/dorms{
-	chat_color_name = pink;
-	contraband = list(/obj/item/electropack/shockcollar = 3, /obj/item/clothing/neck/kink_collar/locked = 0, /obj/item/clothing/neck/mind_collar = 2, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag = 2, /obj/item/reagent_containers/pill/hexacrocin = 7, /obj/item/reagent_containers/pill/pentacamphor = 5,  /obj/item/reagent_containers/glass/bottle/hexacrocin = 1, /obj/item/reagent_containers/glass/bottle/pentacamphor = 2);
+	chat_color_name = null;
 	extended_inventory = 1;
 	market_verb = "Deviant";
-	name = "\improper Kinko-Mat 3000";
-	premium = list(/obj/item/vending_refill/lustwish/obj/item/storage/box/bdsmbed_kit = 4, /obj/item/storage/box/strippole_kit = 3, /obj/item/storage/box/xstand_kit = 4, /obj/item/storage/box/milking_kit = 0);
-	products = list(/obj/item/clothing/sextoy/signalvib = 8, /obj/item/clothing/sextoy/eggvib = 8, /obj/item/clothing/sextoy/buttplug = 6, /obj/item/clothing/sextoy/nipple_clamps = 4, /obj/item/clothing/sextoy/double_dildo = 3, /obj/item/clothing/sextoy/vibroring = 6, /obj/item/condom_pack = 20, /obj/item/clothing/sextoy/dildo = 8, /obj/item/clothing/sextoy/custom_dildo = 8, /obj/item/tickle_feather = 8, /obj/item/clothing/sextoy/fleshlight = 8, /obj/item/kinky_shocker = 4, /obj/item/clothing/mask/leatherwhip = 4, /obj/item/clothing/sextoy/magic_wand = 4, /obj/item/bdsm_candle = 4, /obj/item/spanking_pad = 4, /obj/item/clothing/sextoy/vibrator = 4, /obj/item/serviette_pack = 10, /obj/item/restraints/handcuffs/lewd = 8, /obj/item/pillow = 24, /obj/item/assembly/signaler = 8, /obj/item/clothing/mask/ballgag = 8, /obj/item/clothing/mask/ballgag_phallic = 8, /obj/item/clothing/head/domina_cap = 5, /obj/item/clothing/head/helmet/space/deprivation_helmet = 5, /obj/item/clothing/head/maid = 5, /obj/item/clothing/glasses/blindfold/kinky = 5, /obj/item/clothing/ears/kinky_headphones = 5, /obj/item/clothing/mask/gas/bdsm_mask = 5, /obj/item/reagent_containers/glass/lewd_filter = 5, /obj/item/clothing/glasses/hypno = 4, /obj/item/clothing/head/kitty = 4, /obj/item/clothing/head/rabbitears = 4, /obj/item/clothing/neck/kink_collar = 8, /obj/item/clothing/suit/corset = 8, /obj/item/clothing/under/misc/latex_catsuit = 8, /obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5, /obj/item/clothing/under/rank/civilian/janitor/maid = 5, /obj/item/clothing/under/costume/lewdmaid = 5, /obj/item/clothing/under/costume/maid = 5, /obj/item/clothing/suit/straight_jacket/shackles = 3, /obj/item/clothing/under/stripper_outfit = 5, /obj/item/clothing/under/misc/gear_harness = 4, /obj/item/clothing/under/shorts/polychromic/pantsu = 4, /obj/item/clothing/gloves/ball_mittens = 8, /obj/item/clothing/gloves/latex_gloves = 8, /obj/item/clothing/gloves/evening = 5, /obj/item/clothing/shoes/latex_socks = 8, /obj/item/clothing/shoes/latexheels = 4, /obj/item/clothing/shoes/dominaheels = 4, /obj/item/clothing/shoes/jackboots/thigh = 3, /obj/item/clothing/shoes/jackboots/knee = 3, /obj/item/clothing/strapon = 6, /obj/item/storage/belt/erpbelt = 5, /obj/item/reagent_containers/pill/crocin = 20, /obj/item/reagent_containers/glass/bottle/crocin = 6, /obj/item/reagent_containers/pill/camphor = 10, /obj/item/reagent_containers/glass/bottle/camphor = 3, /obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, /obj/item/reagent_containers/glass/bottle/penis_enlarger = 6, /obj/item/clothing/glasses/nice_goggles = 1, /obj/item/storage/box/bdsmbed_kit = 5, /obj/item/storage/box/strippole_kit = 3, /obj/item/storage/box/xstand_kit = 4, /obj/item/storage/box/milking_kit = 2)list(/obj/item/clothing/sextoy/signalvib = 8, /obj/item/clothing/sextoy/eggvib = 8, /obj/item/clothing/sextoy/buttplug = 6, /obj/item/clothing/sextoy/nipple_clamps = 4, /obj/item/clothing/sextoy/double_dildo = 3, /obj/item/clothing/sextoy/vibroring = 6, /obj/item/condom_pack = 20, /obj/item/clothing/sextoy/dildo = 8, /obj/item/clothing/sextoy/custom_dildo = 8, /obj/item/tickle_feather = 8, /obj/item/clothing/sextoy/fleshlight = 8, /obj/item/kinky_shocker = 4, /obj/item/clothing/mask/leatherwhip = 4, /obj/item/clothing/sextoy/magic_wand = 4, /obj/item/bdsm_candle = 4, /obj/item/spanking_pad = 4, /obj/item/clothing/sextoy/vibrator = 4, /obj/item/serviette_pack = 10, /obj/item/restraints/handcuffs/lewd = 8, /obj/item/pillow = 24, /obj/item/assembly/signaler = 8, /obj/item/clothing/mask/ballgag = 8, /obj/item/clothing/mask/ballgag_phallic = 8, /obj/item/clothing/head/domina_cap = 5, /obj/item/clothing/head/helmet/space/deprivation_helmet = 5, /obj/item/clothing/head/maid = 5, /obj/item/clothing/glasses/blindfold/kinky = 5, /obj/item/clothing/ears/kinky_headphones = 5, /obj/item/clothing/mask/gas/bdsm_mask = 5, /obj/item/reagent_containers/glass/lewd_filter = 5, /obj/item/clothing/glasses/hypno = 4, /obj/item/clothing/head/kitty = 4, /obj/item/clothing/head/rabbitears = 4, /obj/item/clothing/neck/kink_collar = 8, /obj/item/clothing/suit/corset = 8, /obj/item/clothing/under/misc/latex_catsuit = 8, /obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5, /obj/item/clothing/under/rank/civilian/janitor/maid = 5, /obj/item/clothing/under/costume/lewdmaid = 5, /obj/item/clothing/under/costume/maid = 5, /obj/item/clothing/suit/straight_jacket/shackles = 3, /obj/item/clothing/under/stripper_outfit = 5, /obj/item/clothing/under/misc/gear_harness = 4, /obj/item/clothing/under/shorts/polychromic/pantsu = 4, /obj/item/clothing/gloves/ball_mittens = 8, /obj/item/clothing/gloves/latex_gloves = 8, /obj/item/clothing/gloves/evening = 5, /obj/item/clothing/shoes/latex_socks = 8, /obj/item/clothing/shoes/latexheels = 4, /obj/item/clothing/shoes/dominaheels = 4, /obj/item/clothing/shoes/jackboots/thigh = 3, /obj/item/clothing/shoes/jackboots/knee = 3, /obj/item/clothing/strapon = 6, /obj/item/storage/belt/erpbelt = 5, /obj/item/reagent_containers/pill/crocin = 20, /obj/item/reagent_containers/glass/bottle/crocin = 6, /obj/item/reagent_containers/pill/camphor = 10, /obj/item/reagent_containers/glass/bottle/camphor = 3, /obj/item/reagent_containers/glass/bottle/breast_enlarger = 6, /obj/item/reagent_containers/glass/bottle/penis_enlarger = 6, /obj/item/clothing/glasses/nice_goggles = 1)
+	name = "\improper Kinko-Mat 3000"
 	},
 /turf/open/floor/carpet/purple,
 /area/maintenance/aft)
@@ -43326,6 +43361,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/science/storage)
+"nxZ" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/machinery/atmospherics/components/binary/pump/on/supply/visible/layer4{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "nyk" = (
 /obj/machinery/camera{
 	c_tag = "Security Checkpoint";
@@ -43441,6 +43483,12 @@
 "nDW" = (
 /turf/open/floor/iron/cafeteria,
 /area/maintenance/port/aft)
+"nEf" = (
+/obj/machinery/atmospherics/pipe/layer_manifold/supply{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/science/server)
 "nEm" = (
 /obj/machinery/mineral/ore_redemption{
 	input_dir = 8;
@@ -43969,6 +44017,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
 "olh" = (
@@ -43982,7 +44031,11 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "omI" = (
-/obj/machinery/light/small/directional/west,
+/obj/machinery/light/small/red/directional/west,
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on{
+	name = "Server HVAC";
+	target_temperature = 288.15
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -44612,7 +44665,7 @@
 	id = "isolationshutter";
 	name = "Isolation Shutter";
 	pixel_y = 23;
-	req_access_txt = "63" 
+	req_access_txt = "63"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -45793,6 +45846,12 @@
 	dir = 8;
 	name = "science camera";
 	network = list("ss13","rd")
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8;
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0
 	},
 /turf/open/floor/iron/dark/telecomms,
 /area/science/server)
@@ -49665,6 +49724,11 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"ufV" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "uga" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -50389,6 +50453,13 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/brigofficer)
+"uOM" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "uPR" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -53856,6 +53927,10 @@
 	dir = 1
 	},
 /area/security/prison)
+"xYw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/turf/closed/wall/r_wall,
+/area/science/server)
 "xYA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79230,7 +79305,7 @@ cfD
 skh
 skh
 dxQ
-iQF
+dxQ
 cji
 cDZ
 cro
@@ -83526,7 +83601,7 @@ ahn
 ahn
 ahn
 ahn
-oHk
+iQF
 aJq
 aMd
 gRd
@@ -96152,7 +96227,7 @@ buL
 bvB
 bhA
 bxg
-bBR
+nxZ
 bDb
 bDb
 bDb
@@ -96407,9 +96482,9 @@ bfV
 bvx
 buH
 byf
-byf
-byf
-byf
+xYw
+xYw
+nEf
 bDb
 xAv
 xAv
@@ -97707,14 +97782,14 @@ bAW
 bOx
 okP
 ccP
-mOj
-mOj
-mOj
+eCU
+eCU
+eCU
 bMk
-mOj
-mOj
-mOj
-dQy
+eCU
+eCU
+eCU
+hDD
 mOj
 mOj
 mOj
@@ -97971,12 +98046,12 @@ lNo
 lNo
 lNo
 lNo
+ufV
 lNo
 lNo
 lNo
 lNo
-lNo
-lNo
+uOM
 lNo
 lNo
 fie
@@ -98228,8 +98303,8 @@ bVk
 bMi
 bMi
 bMi
-pnD
-bMi
+dih
+rzA
 bMi
 bMi
 pnD
