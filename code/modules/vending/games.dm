@@ -26,7 +26,6 @@
 		/obj/item/skillchip/ceramic_master = 2,
 		/obj/item/skillchip/fishing_master = 2,
 		/obj/item/skillchip/useless_adapter=5,
-		/obj/item/dyespray=3,
 		/obj/item/razor=3,
 	)
 	//SKYRAT EDIT: Adds Ceramic, Glassblowing, and Fishing Skillchips
