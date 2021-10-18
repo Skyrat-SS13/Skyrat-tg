@@ -59,8 +59,7 @@
 	// SKYRAT EDIT - Species checks
 	if(restricted_human_species && ishuman(new_holder))
 		var/mob/living/carbon/human/human_holder = new_holder
-		if(human_holder.dna.species in restricted_human_species)
-			to_chat(human_holder, "Quirk [name] can not be applied to your current species, [human_holder.dna.species.name].")
+		if(is_type_in_list(human_holder.dna.species, restricted_human_species))
 			return FALSE
 	// SKYRAT EDIT END
 
