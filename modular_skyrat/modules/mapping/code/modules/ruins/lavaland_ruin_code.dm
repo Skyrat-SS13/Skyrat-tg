@@ -56,7 +56,7 @@
 
 /obj/item/radio/headset/interdyne/alt
 	name = "interdyne headset"
-	desc = "A headset used when marvelining at the nice plasma moat. Protects ears from flashbangs."
+	desc = "A headset used when marveling at the nice plasma moat. Protects ears from flashbangs."
 	icon_state = "syndie_headset"
 	inhand_icon_state = "syndie_headset"
 
