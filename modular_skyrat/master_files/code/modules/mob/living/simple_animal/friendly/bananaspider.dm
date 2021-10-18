@@ -36,8 +36,6 @@
 	desc = "Thank god it's gone...but it does look slippery."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "bananaspider_peel"
-	bitesize = 3
-	eatverb = "devours"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
 	foodtype = GROSS | MEAT | RAW
 	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
@@ -48,7 +46,7 @@
 	. = ..()
 	AddComponent(/datum/component/slippery, 20)
 
-/mob/living/simple_animal/hostile/giant_spider
+/mob/living/simple_animal/hostile/giant_spider/badnanaspider
 	name = "badnana spider"
 	desc = "WHY WOULD GOD ALLOW THIS?!"
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'

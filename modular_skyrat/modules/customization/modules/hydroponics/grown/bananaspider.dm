@@ -1,18 +1,16 @@
-/obj/item/seeds/banana/exotic_banana
-	name = "pack of exotic banana seeds"
+/obj/item/seeds/banana/spider_banana
+	name = "pack of leggy banana seeds"
 	desc = "They're seeds that grow into banana trees. However, those bananas might be alive."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/seeds.dmi'
-	icon_state = "seed_spibanana"
+	icon_state = "seed-spibanana"
 	species = "spiderbanana"
 	growing_icon = 'modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi'
 	icon_grow = "spibanana-grow"
-	plantname = "Spi Banana Tree"
+	plantname = "Leggy Banana Tree"
 	product = /obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable
-	mutatelist = list()
 	genes = list(/datum/plant_gene/trait/slip)
 
 /obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable
-	seed = /obj/item/seeds/banana/exotic_banana
 	name = "banana spider"
 	desc = "You do not know what it is, but you can bet the clown would love it."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
@@ -31,6 +29,5 @@
 	spawn(30)
 		if(!QDELETED(src))
 			var/mob/living/simple_animal/banana_spider/S = new /mob/living/simple_animal/banana_spider(get_turf(src.loc))
-			S.speed += round(10 / max(seed.potency, 1), 1)
 			S.visible_message("<span class='notice'>The banana spider chitters as it stretches its legs.</span>")
 			qdel(src)
