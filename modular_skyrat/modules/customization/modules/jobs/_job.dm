@@ -33,7 +33,7 @@
 	var/my_id = species.id
 	if(species_whitelist && !species_whitelist[my_id])
 		return TRUE
-	else if(!GLOB.roundstart_races[my_id])
+	else if(!(my_id in get_selectable_species()))
 		return TRUE
 	if(species_blacklist && species_blacklist[my_id])
 		return TRUE

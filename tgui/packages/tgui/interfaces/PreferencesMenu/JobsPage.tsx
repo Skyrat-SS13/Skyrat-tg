@@ -268,6 +268,15 @@ const JobRow = (props: {
         </Stack.Item>
       </Stack>
     );
+  } else if (data.species_restricted_jobs
+            && data.species_restricted_jobs.indexOf(job.name) !== -1) {
+    rightSide = (
+      <Stack align="center" height="100%" pr={1}>
+        <Stack.Item grow textAlign="right">
+          <b>Bad species</b>
+        </Stack.Item>
+      </Stack>
+    );
   // SKYRAT EDIT END
   } else {
     rightSide = (<PriorityButtons

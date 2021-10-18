@@ -158,6 +158,12 @@
 	//Show alerts window if user clicked on "Show alerts" in chat
 	if(href_list["showalerts"])
 		alert_control.ui_interact(src)
+	// SKYRAT EDIT ADDITION -- Customization
+	if(href_list["lookup_info"])
+		tgui.holder = src
+		tgui.ui_interact(usr) //datum has a tgui component, here we open the window
+	// SKYRAT EDIT END
+
 
 /mob/living/silicon/robot/get_cell()
 	return cell
@@ -580,10 +586,12 @@
 	if(!client)
 		return
 	if(stat == DEAD)
-		if(!SSmapping.level_trait(z, ZTRAIT_SECRET))
-			sight = (SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		else
+		if(SSmapping.level_trait(z, ZTRAIT_NOXRAY))
+			sight = null
+		else if(is_secret_level(z))
 			sight = initial(sight)
+		else
+			sight = (SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		see_in_dark = 8
 		see_invisible = SEE_INVISIBLE_OBSERVER
 		return
@@ -621,6 +629,10 @@
 
 	if(see_override)
 		see_invisible = see_override
+
+	if(SSmapping.level_trait(z, ZTRAIT_NOXRAY))
+		sight = null
+
 	sync_lighting_plane_alpha()
 
 /mob/living/silicon/robot/update_stat()

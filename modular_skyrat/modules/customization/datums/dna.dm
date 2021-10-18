@@ -189,7 +189,7 @@
 	for(var/key in bodyparts_to_add)
 		if(GLOB.sprite_accessories[key] && bodyparts_to_add[key] && bodyparts_to_add[key][MUTANT_INDEX_NAME])
 			var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
-			if(!SP.factual)
+			if(!SP?.factual)
 				bodyparts_to_add -= key
 				continue
 	dna.species.mutant_bodyparts = bodyparts_to_add.Copy()

@@ -80,7 +80,6 @@
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
 	armor = list(MELEE = 25, BULLET = 20, LASER = 20, ENERGY = 30, BOMB = 20, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 8)
-	togglename = "buttons"
 
 /obj/item/clothing/suit/toggle/hop_parade/Initialize()
 	. = ..()
