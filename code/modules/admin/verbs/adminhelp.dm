@@ -230,12 +230,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	TimeoutVerb()
 
 	statclick = new(null, src)
-<<<<<<< HEAD
-	_interactions = list()
-	_interactions_player = list() // SKYRAT EDIT ADDITION -- Player ticket viewing
-=======
 	ticket_interactions = list()
->>>>>>> 3ef17dd5adf (Admins now get a little notice if they start responding to a ticket someone else is already responding to (#62025))
+	_interactions_player = list() // SKYRAT EDIT ADDITION -- Player ticket viewing
 
 	if(is_bwoink)
 		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
