@@ -34,7 +34,7 @@
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = quirks[quirk_name]
 		//SKYRAT EDIT ADDITION
-		if(quirk.veteran_only && !is_veteran_player(preferences.parent.ckey))
+		if(initial(quirk.veteran_only) && !is_veteran_player(preferences.parent.ckey))
 			continue
 		//SKYRAT EDIT END
 		quirk_info[sanitize_css_class_name(quirk_name)] = list(
@@ -59,7 +59,7 @@
 	//SKYRAT EDIT ADDITION
 	var/list/quirks = SSquirks.get_quirks()
 	var/datum/quirk/quirk = quirks[quirk_name]
-	if(quirk.veteran_only && !is_veteran_player(preferences.parent.ckey))
+	if(initial(quirk.veteran_only) && !is_veteran_player(preferences.parent.ckey))
 		return FALSE
 	//SKYRAT EDIT END
 
