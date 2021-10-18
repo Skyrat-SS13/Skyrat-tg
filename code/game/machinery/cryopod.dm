@@ -322,7 +322,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			if(istype(item_content, /obj/item/pda))
 				var/obj/item/pda/pda = item_content
 				pda.toff = TRUE
-			item_content.dropped()
+			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
 		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)

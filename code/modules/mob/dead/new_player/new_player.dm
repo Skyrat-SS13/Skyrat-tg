@@ -156,6 +156,8 @@
 			return "[jobtitle] is restricted from your languages."
 		if(JOB_NOT_VETERAN)
 			return "You need to be veteran to join as [jobtitle]."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "[jobtitle] is restricted from your species."
 		//SKYRAT EDIT END
 	return "Error: Unknown job availability."
 
@@ -189,6 +191,8 @@
 		return JOB_UNAVAILABLE_QUIRK
 	if(job.veteran_only && !is_veteran_player(client))
 		return JOB_NOT_VETERAN
+	if(job.has_banned_species(client.prefs))
+		return JOB_UNAVAILABLE_SPECIES
 	//SKYRAT EDIT END
 	return JOB_AVAILABLE
 
@@ -285,6 +289,8 @@
 	//SKYRAT EDIT ADDITION
 	if(humanc)
 		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(humanc?.client?.prefs?.loadout_list))
+			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
+				continue
 			item.post_equip_item(humanc.client?.prefs, humanc)
 	//SKYRAT EDIT END
 

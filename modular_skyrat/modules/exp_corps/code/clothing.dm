@@ -153,7 +153,7 @@
 	jetpack = /obj/item/tank/jetpack/suit
 	cell = /obj/item/stock_parts/cell/hyper
 	slowdown = 0.5
-	hardsuit_tail_colors = list("434", "223", "988")
+	hardsuit_tail_colors = list("#443344", "#222233", "#998888")
 
 /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit helmet"

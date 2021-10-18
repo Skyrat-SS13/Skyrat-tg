@@ -2,7 +2,7 @@
 	gender = PLURAL
 	name = "red lipstick"
 	desc = "A generic brand of lipstick."
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE
 	icon_state = "lipstick"
 	w_class = WEIGHT_CLASS_TINY
 	var/colour = "red"
@@ -100,7 +100,7 @@
 		span_notice("You wipe off [target]'s lipstick."))
 	target.update_lips(null)
 
-
+/* SKYRAT EDIT REMOVAL
 /obj/item/razor
 	name = "electric razor"
 	desc = "The latest and greatest power razor born from the science of shaving."
@@ -231,3 +231,4 @@
 			..()
 	else
 		..()
+*/
