@@ -57,7 +57,7 @@
 
 /obj/item/clothing/under/misc/poly_kilt/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "F88", "FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#FF8888", "#FFFFFF"))
 
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
