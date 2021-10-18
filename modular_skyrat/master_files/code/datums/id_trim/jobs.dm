@@ -149,3 +149,13 @@
 				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
 
 	config_job = "brigoff"
+
+/datum/id_trim/job/barber
+	assignment = "Barber"
+	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
+	trim_state = "trim_barber"
+	extra_access = list()
+	minimal_access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_BARBER)
+	config_job = "barber"
+	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
+	job = /datum/job/barber
