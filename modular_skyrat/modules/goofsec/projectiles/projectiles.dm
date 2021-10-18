@@ -48,6 +48,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	supports_swapping_cells = TRUE
 
 /obj/item/gun/energy/vintorez/ComponentInitialize()
 	. = ..()
@@ -88,6 +89,7 @@
 	fire_delay = 10
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	supports_swapping_cells = TRUE
 
 /obj/item/gun/energy/norwind/ComponentInitialize()
 	. = ..()
@@ -120,6 +122,7 @@
 	can_bayonet = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind)
 	cell_type = /obj/item/stock_parts/cell/super
+	supports_swapping_cells = TRUE
 
 /obj/item/gun/energy/ostwind/ComponentInitialize()
 	. = ..()
@@ -155,6 +158,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	supports_swapping_cells = TRUE
 
 /obj/item/gun/energy/pitbull/ComponentInitialize()
 	. = ..()
@@ -187,6 +191,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr)
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
+	supports_swapping_cells = TRUE
 
 /obj/item/gun/energy/pcr/ComponentInitialize()
 	. = ..()
@@ -211,6 +216,7 @@
 	fire_delay = 2 SECONDS
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/peacemaker)
 	shaded_charge = TRUE
+	supports_swapping_cells = FALSE
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/peacemaker
 	name = "hardlight bullet peacemaker casing"

@@ -33,6 +33,8 @@
 	var/use_cyborg_cell = FALSE
 	///set to true so the gun is given an empty cell
 	var/dead_cell = FALSE
+	///Does this gun support swapping energy cells?
+	var/supports_swapping_cells = FALSE
 
 /obj/item/gun/energy/emp_act(severity)
 	. = ..()
@@ -210,6 +212,8 @@
 /obj/item/gun/energy/attackby(obj/item/A, mob/user, params)
 	. = ..()
 	if (.)
+		return
+	if(!supports_swapping_cells)
 		return
 	if(istype(A, /obj/item/stock_parts/cell))
 		if(!cell)
