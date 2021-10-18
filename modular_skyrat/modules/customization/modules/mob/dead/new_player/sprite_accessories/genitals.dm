@@ -166,7 +166,7 @@
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = "vagina"
 	always_color_customizable = TRUE
-	default_color = "fcc"
+	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
 	genetic = TRUE
 	var/alt_aroused = TRUE
