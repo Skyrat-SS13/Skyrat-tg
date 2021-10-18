@@ -26,6 +26,17 @@
 	name = "Beret With Fancy Badge Worn"
 	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/beret/beret_badge_fancy_worn.json'
 
+/////-----UNIFORMS-----/////
+/datum/greyscale_config/turtleneck
+	name = "Turtleneck"
+	icon_file = 'modular_skyrat/modules/berets/icons/obj/clothing/head/beret.dmi'
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/under/unsorted.json'
+
+/datum/greyscale_config/turtleneck/worn
+	name = "Turtleneck Worn"
+	json_config = 'modular_skyrat/modules/customization/datums/greyscale/json_configs/under/unsorted_worn.json'
+
+/////-----SUITS-----/////
 /// HOODIES ///
 /datum/greyscale_config/hoodie
 	name = "Hoodie"

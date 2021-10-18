@@ -95,21 +95,28 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 	greyscale_config = /datum/greyscale_config/SR_suittemplate
 	greyscale_config_worn = /datum/greyscale_config/SR_suittemplate/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
-	greyscale_colors = "#3B3B3B"	//Starts out black
+	greyscale_colors = "#ffffff"
 	mutant_variants = NONE
 	body_parts_covered = CHEST|ARMS //Being a bit shorter, flannels dont cover quite as much as the rest of the woolen jackets (- GROIN)
 	cold_protection = CHEST|ARMS
 	heat_protection = CHEST|ARMS	//As a plus side, they're more insulating, protecting a bit from the heat as well
 
 ///Preset greyscales
+/obj/item/clothing/suit/toggle/jacket/flannel/black
+	greyscale_colors = "#3B3B3B"
+	flags_1 = NONE
+
 /obj/item/clothing/suit/toggle/jacket/flannel/red
 	greyscale_colors = "#A61E1F"
+	flags_1 = NONE
 
 /obj/item/clothing/suit/toggle/jacket/flannel/aqua
 	greyscale_colors = "#1EA4A6"
+	flags_1 = NONE
 
 /obj/item/clothing/suit/toggle/jacket/flannel/brown
 	greyscale_colors = "#662E12"
+	flags_1 = NONE
 
 ///HAWAIIAN SHIRTS///
 /obj/item/clothing/suit/hawaiian	//THIS OVERWRITES THE BASE TG HAWAIIAN SHIRT. I DO NOT CARE. IT FUNCTIONS AND APPEARS THE SAME ANYWAYS
@@ -126,13 +133,16 @@ Self explanatory, this file is for suits that are GAGSified. If it doesnt have g
 ///Preset greyscales
 /obj/item/clothing/suit/hawaiian/orange
 	greyscale_colors = "#F79305"
+	flags_1 = NONE
 
 /obj/item/clothing/suit/hawaiian/purple
 	greyscale_colors = "#F79305"
+	flags_1 = NONE
 
 
 /obj/item/clothing/suit/hawaiian/green
 	greyscale_colors = "#F79305"
+	flags_1 = NONE
 
 ///MISC///
 ///These were probably converted from the old Polychromatic system, or are just solo items.

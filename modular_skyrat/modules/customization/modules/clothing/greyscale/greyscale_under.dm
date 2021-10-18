@@ -1,12 +1,14 @@
 /*
 Self explanatory, this file is for uniforms that are GAGSified. If it doesnt have greyscale, it doesnt go here.
 */
+
+///Misc Uniforms (Probably single-layer)
 /obj/item/clothing/under/sweater
 	name = "turtleneck sweater"
 	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north."
-	icon_state = "bb_turtle"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	icon_state = "turtleneck"
+	greyscale_config = /datum/greyscale_config/turtleneck
+	greyscale_config_worn = /datum/greyscale_config/turtleneck/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -16,35 +18,42 @@ Self explanatory, this file is for uniforms that are GAGSified. If it doesnt hav
 ///Preset greyscales
 /obj/item/clothing/under/sweater/cream
 	greyscale_colors = "#E1D9C9"
+	flags_1 = NONE
 
 /obj/item/clothing/under/sweater/black
 	greyscale_colors = "#303030"
+	flags_1 = NONE
 
 /obj/item/clothing/under/sweater/purple
 	greyscale_colors = "#400062"
+	flags_1 = NONE
 
 /obj/item/clothing/under/sweater/green
 	greyscale_colors = "#09591D"
+	flags_1 = NONE
 
 /obj/item/clothing/under/sweater/red
 	greyscale_colors = "#620000"
-
+	flags_1 = NONE
 /obj/item/clothing/under/sweater/blue
 	greyscale_colors = "#000082"
+	flags_1 = NONE
 
 //Todo - greyscale this?
+//Todo - if not, find the icon
 /obj/item/clothing/under/sweater/keyhole
 	name = "keyhole sweater"
 	desc = "What is the point of this, anyway?"
 	icon_state = "keyholesweater"
 	can_adjust = FALSE
+	flags_1 = NONE
 
 /obj/item/clothing/under/misc/kilt
 	name = "kilt"
 	desc = "It's not a skirt!"
 	icon_state = "kilt"
-	greyscale_config = /datum/greyscale_config/hoodie/branded
-	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+//	greyscale_config = /datum/greyscale_config/hoodie/branded
+//	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
