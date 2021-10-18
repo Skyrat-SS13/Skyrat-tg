@@ -13,7 +13,7 @@
 	if(bodytemperature >= TCRYO && !(HAS_TRAIT(src, TRAIT_HUSK))) //cryosleep or husked people do not pump the blood.
 
 		//Blood regeneration if there is some space
-		if(blood_volume < BLOOD_VOLUME_NORMAL && !HAS_TRAIT(src, TRAIT_NOHUNGER))
+		if(blood_volume < blood_volume_normal && !HAS_TRAIT(src, TRAIT_NOHUNGER)) //SKYRAT EDIT CHANGE
 			var/nutrition_ratio = 0
 			switch(nutrition)
 				if(0 to NUTRITION_LEVEL_STARVING)
@@ -29,7 +29,7 @@
 			if(satiety > 80)
 				nutrition_ratio *= 1.25
 			adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR * delta_time)
-			blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), BLOOD_VOLUME_NORMAL)
+			blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), blood_volume_normal) //SKYRAT EDIT CHANGE
 
 		//Effects of bloodloss
 		var/word = pick("dizzy","woozy","faint")
@@ -44,9 +44,9 @@
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(DT_PROB(2.5, delta_time))
 					to_chat(src, span_warning("You feel [word]."))
-				adjustOxyLoss(round(0.005 * (BLOOD_VOLUME_NORMAL - blood_volume) * delta_time, 1))
+				adjustOxyLoss(round(0.005 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-				adjustOxyLoss(round(0.01 * (BLOOD_VOLUME_NORMAL - blood_volume) * delta_time, 1))
+				adjustOxyLoss(round(0.01 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE
 				if(DT_PROB(2.5, delta_time))
 					blur_eyes(6)
 					to_chat(src, span_warning("You feel very [word]."))
