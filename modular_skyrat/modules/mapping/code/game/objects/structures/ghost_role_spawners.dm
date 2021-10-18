@@ -127,7 +127,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears = /obj/item/radio/headset/interdyne/command/alt
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -142,7 +142,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	head = /obj/item/clothing/head/helmet/swat
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears = /obj/item/radio/headset/interdyne/alt
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -158,7 +158,7 @@
 	id = /obj/item/card/id/advanced/gold/generic
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationadmiral
-	ears = /obj/item/radio/headset/interdyne/command
+	ears = /obj/item/radio/headset/interdyne/command/alt
 
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/H)
 	H.faction |= ROLE_SYNDICATE

@@ -54,11 +54,29 @@
 /obj/item/radio/headset/interdyne
 	keyslot = new /obj/item/encryptionkey/headset_interdyne
 
+/obj/item/radio/headset/interdyne/alt
+	name = "interdyne headset"
+	desc = "A headset used when marvelining at the nice plasma moat. Protects ears from flashbangs."
+	icon_state = "syndie_headset"
+	inhand_icon_state = "syndie_headset"
+
+/obj/item/radio/headset/interdyne/alt/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
 /obj/item/radio/headset/interdyne/command
 	name = "command radio headset"
 	desc = "A headset with a commanding channel."
 	icon_state = "com_headset"
 	command = TRUE
+
+/obj/item/radio/headset/interdyne/command/alt
+	icon_state = "syndie_headset"
+	inhand_icon_state = "syndie_headset"
+
+/obj/item/radio/headset/interdyne/command/alt/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/headset_sec/alt/interdyne
 	keyslot = new /obj/item/encryptionkey/headset_interdyne
