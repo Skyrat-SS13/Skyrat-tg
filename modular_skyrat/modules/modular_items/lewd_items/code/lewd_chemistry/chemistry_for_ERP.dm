@@ -235,7 +235,7 @@
 	if(H.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
 		M.breast_enlarger_amount += 5
 		if(M.breast_enlarger_amount >= 100)
-			if(B?.genital_size < 16)
+			if(B && B?.genital_size < 16)
 				B.genital_size += 1
 				B.update_sprite_suffix()
 				M.update_body()
@@ -375,7 +375,7 @@ Haha! Kill me please.
 	if(H.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement))
 		M.penis_enlarger_amount += 5
 		if(M.penis_enlarger_amount >= 100)
-			if(P?.genital_size < 20)
+			if(P && P?.genital_size < 20)
 				P.genital_size += 1
 				if(prob(20) && P.girth < 20)
 					P.girth +=1

@@ -20,7 +20,7 @@
 
 /mob/living/silicon/robot/proc/rest_style()
 	set name = "Switch Rest Style"
-	set category = "Robot Commands"
+	set category = "AI Commands"
 	set desc = "Select your resting pose."
 	if(!is_dogborg())
 		to_chat(src, "<span class='warning'>You can't do that!</span>")
@@ -39,7 +39,7 @@
 
 /mob/living/silicon/robot/proc/robot_lay_down()
 	set name = "Lay down"
-	set category = "Robot Commands"
+	set category = "AI Commands"
 	if(!is_dogborg())
 		to_chat(src, "<span class='warning'>You can't do that!</span>")
 		return
