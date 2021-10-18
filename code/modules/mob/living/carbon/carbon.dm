@@ -177,12 +177,6 @@
 			power_throw--
 		if(HAS_TRAIT(thrown_thing, TRAIT_DWARF))
 			power_throw++
-		//SKYRAT EDIT ADDITION
-		if(HAS_TRAIT(src, TRAIT_OVERSIZED))
-			power_throw++
-		if(HAS_TRAIT(thrown_thing, TRAIT_OVERSIZED))
-			power_throw--
-		//SKYRAT EDIT END
 		if(pulling && grab_state >= GRAB_NECK)
 			power_throw++
 		do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS

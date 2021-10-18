@@ -49,6 +49,3 @@
 
 //to determine if someone is a glassblowing master, or not
 #define TRAIT_GLASSBLOWING_MASTER "glassblowing_master"
-
-/// The trait that determines if someone has the oversized quirk.
-#define TRAIT_OVERSIZED "trait_oversized"
