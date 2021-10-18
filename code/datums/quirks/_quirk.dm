@@ -20,6 +20,8 @@
 	/// The icon to show in the preferences menu.
 	/// This references a tgui icon, so it can be FontAwesome or a tgfont (with a tg- prefix).
 	var/icon = "bug" //SKYRAT EDIT CHANGE
+	/// SKYRAT EDIT VAR - if the quirk holder ishuman and is of this species, the quirk won't be applied
+	var/list/restricted_human_species
 
 /datum/quirk/Destroy()
 	if(quirk_holder)
@@ -53,6 +55,14 @@
 
 	if(quirk_holder)
 		CRASH("Attempted to add quirk to a holder when it already has a holder.")
+
+	// SKYRAT EDIT - Species checks
+	if(restricted_human_species && ishuman(new_holder))
+		var/mob/living/carbon/human/human_holder = new_holder
+		if(human_holder.dna.species in restricted_human_species)
+			to_chat(human_holder, "Quirk [name] can not be applied to your current species, [human_holder.dna.species.name].")
+			return FALSE
+	// SKYRAT EDIT END
 
 	quirk_holder = new_holder
 	quirk_holder.quirks += src
