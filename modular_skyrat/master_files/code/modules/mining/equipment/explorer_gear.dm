@@ -2,7 +2,8 @@
 /obj/item/clothing/suit/hooded/explorer
   name = "explorer suit"
 	desc = "An armoured suit for exploring harsh environments."
-  	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //To keep the old version.
+  	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'  //To keep the old version.
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //To keep the old version.
 	icon_state = "explorer"
 	inhand_icon_state = "explorer"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
@@ -18,7 +19,8 @@
 /obj/item/clothing/head/hooded/explorer
 	name = "explorer hood"
 	desc = "An armoured hood for exploring harsh environments."
-  	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //To keep the old version.
+  	icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi' //To keep the old version.
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi//To keep the old version.
 	icon_state = "explorer"
 	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
