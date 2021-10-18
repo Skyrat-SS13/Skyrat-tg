@@ -65,6 +65,12 @@
 
 #define STAMINA_MESSAGE_COOLDOWN 20 SECONDS
 
+//Grab breakout odds
+#define OVERSIZED_GRAB_RESIST_BONUS 10 /// For those with the oversized trait, they get this.
+
+// Damage modifiers
+#define OVERSIZED_HARM_DAMAGE_BONUS 5 /// Those with the oversized trait do 5 more damage.
+
 #define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
 /mob/living/carbon
