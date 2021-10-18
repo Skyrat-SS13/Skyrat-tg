@@ -498,7 +498,7 @@
 	//SKYRAT EDIT ADDITION END
 
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
-	SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
+		SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
 		M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
 					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
 		to_chat(M, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
