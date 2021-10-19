@@ -4,6 +4,7 @@
 		/obj/item/clothing/under/dress/pinktutu = 5,
 		/obj/item/clothing/suit/toggle/jacket = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel = 5,
+		/obj/item/clothing/suit/toggle/jacket/flannel/black = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/brown = 5,
