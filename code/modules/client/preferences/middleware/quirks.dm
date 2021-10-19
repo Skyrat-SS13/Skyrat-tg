@@ -59,7 +59,7 @@
 	//SKYRAT EDIT ADDITION
 	var/list/quirks = SSquirks.get_quirks()
 	var/datum/quirk/quirk = quirks[quirk_name]
-	if(initial(quirk.veteran_only) && !is_veteran_player(preferences.parent.ckey))
+	if(initial(quirk.veteran_only) && !is_veteran_player(preferences?.parent.ckey))
 		return FALSE
 	//SKYRAT EDIT END
 
