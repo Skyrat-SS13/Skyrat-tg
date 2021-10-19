@@ -22,7 +22,7 @@
 /obj/item/food/grown/banana/banana_spider_spawnable/attack_self(mob/user)
 	if(awakening || isspaceturf(user.loc))
 		return
-	to_chat(user, "<span class='notice'>You decide to wake up the banana spider...</span>")
+	to_chat(user, span_notice("You decide to wake up the banana spider..."))
 	awakening = 1
 
 	spawn(30)
