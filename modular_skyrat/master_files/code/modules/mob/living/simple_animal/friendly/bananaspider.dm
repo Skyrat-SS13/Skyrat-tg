@@ -65,5 +65,5 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target
-		C.reagents.add_reagent(/datum/reagent/consumable/laughter, 10)
+		carbon_target.reagents.add_reagent(/datum/reagent/consumable/laughter, 10)
 
