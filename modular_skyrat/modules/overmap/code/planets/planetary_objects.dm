@@ -10,6 +10,7 @@
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | CAVES_ALLOWED | FLORA_ALLOWED | MOB_SPAWN_ALLOWED | MEGAFAUNA_SPAWN_ALLOWED | NO_ALERTS
 	ambience_index = AMBIENCE_AWAY
 	outdoors = TRUE
+	static_lighting = TRUE
 
 /datum/biome/mountain
 	turf_type = /turf/closed/mineral/random/jungle
