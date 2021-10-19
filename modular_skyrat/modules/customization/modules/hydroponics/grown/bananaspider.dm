@@ -7,20 +7,18 @@
 	growing_icon = 'modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi'
 	icon_grow = "spibanana-grow"
 	plantname = "Leggy Banana Tree"
-	product = /obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable
+	product = /obj/item/food/grown/banana/banana_spider_spawnable
 	genes = list(/datum/plant_gene/trait/slip)
 
-/obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable
+/obj/item/food/grown/banana/banana_spider_spawnable
 	name = "banana spider"
 	desc = "You do not know what it is, but you can bet the clown would love it."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "spibanana"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
-	foodtype = GROSS | MEAT | RAW | FRUIT
-	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
+	foodtypes = GROSS | MEAT | RAW | FRUIT
 	var/awakening = 0
 
-/obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable/attack_self(mob/user)
+/obj/item/food/grown/banana/banana_spider_spawnable/attack_self(mob/user)
 	if(awakening || isspaceturf(user.loc))
 		return
 	to_chat(user, "<span class='notice'>You decide to wake up the banana spider...</span>")
