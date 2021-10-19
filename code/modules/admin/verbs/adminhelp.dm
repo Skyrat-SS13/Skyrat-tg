@@ -186,11 +186,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	/// If any admins were online when the ticket was initialized
 	var/heard_by_no_admins = FALSE
 	/// The collection of interactions with this ticket. Use AddInteraction() or, preferably, admin_ticket_log()
-	var/list/_interactions
+	var/list/ticket_interactions
 	/// Statclick holder for the ticket
 	var/obj/effect/statclick/ahelp/statclick
 	/// Static counter used for generating each ticket ID
 	var/static/ticket_counter = 0
+	/// The list of clients currently responding to the opening ticket before it gets a response
+	var/list/opening_responders
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -228,7 +230,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	TimeoutVerb()
 
 	statclick = new(null, src)
-	_interactions = list()
+	ticket_interactions = list()
 	_interactions_player = list() // SKYRAT EDIT ADDITION -- Player ticket viewing
 
 	if(is_bwoink)
@@ -256,7 +258,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(heard_by_no_admins && usr && usr.ckey != initiator_ckey)
 		heard_by_no_admins = FALSE
 		send2adminchat(initiator_ckey, "Ticket #[id]: Answered by [key_name(usr)]")
-	_interactions += "[time_stamp()]: [formatted_message]"
+	ticket_interactions += "[time_stamp()]: [formatted_message]"
 
 //Removes the ahelp verb and returns it after 2 minutes
 /datum/admin_help/proc/TimeoutVerb()
@@ -494,7 +496,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	else
 		dat += "<b>DISCONNECTED</b>[FOURSPACES][ClosureLinks(ref_src)]<br>"
 	dat += "<br><b>Log:</b><br><br>"
-	for(var/I in _interactions)
+	for(var/I in ticket_interactions)
 		dat += "[I]<br>"
 
 	// Append any tickets also opened by this user if relevant
