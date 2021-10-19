@@ -27,8 +27,8 @@
 
 	spawn(30)
 		if(!QDELETED(src))
-			var/mob/living/simple_animal/banana_spider/S = new /mob/living/simple_animal/banana_spider(get_turf(src.loc))
-			S.visible_message(span_notice("The banana spider chitters as it stretches its legs."))
+			var/mob/living/simple_animal/banana_spider/banana_spider = new /mob/living/simple_animal/banana_spider(get_turf(src.loc))
+			banana_spider.visible_message(span_notice("The banana spider chitters as it stretches its legs."))
 			qdel(src)
 			
 			
