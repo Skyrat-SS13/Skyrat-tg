@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 /datum/component/fishing/proc/create_reward(turf/spawning_turf)
 	if(generate_fish)
 		generate_fish(spawning_turf, random_fish_type())
-	var/atom/spawning_reward = pickweight(possible_loot)
+	var/atom/spawning_reward = pick_weight(possible_loot)
 	new spawning_reward(spawning_turf)
 	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
 	if(prob(1))

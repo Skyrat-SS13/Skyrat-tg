@@ -35,7 +35,7 @@
 			return
 
 		// Do 1 brute to their head if they're bald. Should've been more careful.
-		if(human_target.hairstyle == "Bald")
+		if(human_target.hairstyle == "Bald" || human_target.hairstyle == "Skinhead" && is_species(human_target, /datum/species/human)) //It can be assumed most anthros have hair on them!
 			human_target.visible_message(span_warning("[usr] scrapes the bristles uncomfortably over [human_target]'s scalp."), span_warning("You scrape the bristles uncomfortably over [human_target]'s scalp."))
 			head.receive_damage(1)
 			return

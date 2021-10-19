@@ -1236,3 +1236,234 @@
   - bugfix: MMI components can't be no longer attached to modules. This was causing
       race conditions with other MMI components present in the circuit (not much of
       a good thing).
+2021-10-14:
+  Colovorat:
+  - bugfix: You can no longer extract and transform DNA of species that have no DNA
+  Gonenoculer5:
+  - rscadd: Families gear to the loadout. God this hurts.
+  - rscadd: Trekkies gear to the loadout. Rejoice!
+  - rscadd: Jorts to the loadout. Thats it. Just Jorts.
+  Guillaume Prata:
+  - imageadd: Engineering clothes have working reflective stripes now. Easier for
+      someone to find your corpse in maints, harder for you to hide in the dark to
+      do bad things.
+  Lyroy:
+  - bugfix: fixes the has_banned_species proc for jobs
+  - bugfix: The recent strong storm keeping the Ash Walkers trapped and isolated has
+      finally ended. Miners should be cautious, as the Lavaland natives might start
+      showing up again.
+  - bugfix: Primal Podpeople have finally managed to exit their cryopods again.
+  Melbert:
+  - rscdel: Removed the action button for toggling griffin and owl wings, you can
+      still open and close them with alt-click.
+  - refactor: Toggle Suit component for labcoats, suit coats, and formal coats (and
+      some others)
+  Seris02:
+  - bugfix: server erp prefs will now actually turn off the erp emote
+  SkyratBot:
+  - bugfix: Contractor support units now do not get a second uplink with 20 TC in
+      them.
+  - bugfix: fixes mode switch actions on storage items being broken
+  - bugfix: Fixed base lighting appearance inheritance.
+  - admin: Datum input ports can now have atoms and datums uploaded to them.
+  - bugfix: Malf AIs cannot be rolled midround if one has already been rolled roundstart.
+  - bugfix: Fixes filter list component not being a filter list component
+  - admin: Admins can now stop animations on an object as well as decide if it starts
+      parallel or not.
+  - bugfix: 'Fixed animating filters in steps not working at all. qol: Gave instantly
+      executing ports special datatypes to distinguish what ports cause instant execution'
+  - bugfix: Fixed a runtime with the integrated circuit duplicator
+  - admin: Signal Handler circuit components are no longer limited to 1 registered
+      object.
+  - admin: Get variable circuit components can now get GLOB variables
+  - admin: Animate and Save Shell circuit components will now apply DF_VAR_EDITED
+  - bugfix: regal rat can now eat cheese + runtime fixes for its signal
+  - bugfix: Syringe/Hypospray failure messages now reflect the proper body part.
+  - bugfix: list literal can now contain tables,like they are supposed to
+  Station Engineering Safety Association (SESA):
+  - bugfix: Atmospherics Helmets are properly fitted for muzzled/beaked crewmembers
+      now
+  YakumoChen:
+  - balance: Reverted some Venus Human Trap nerfs, which removed their ability to
+      pull mobs and heal by walking in vines, in exchange for being able to grow vines
+      slightly faster.
+  jjpark-kb:
+  - rscadd: added the conveyor sorter, which can force move things to a direction
+      if in the sorting list
+  - rscadd: added admin-spawned supermatter cascade
+  linnpap:
+  - rscadd: Added vape carts
+  - rscdel: Removed lipolicide from cannabis
+  - rscadd: Adds increased hunger as an effect of THC
+  softcerv:
+  - refactor: Mediguns and Medicells are now subtypes of Cell-Based guns and Weapon-Cells.
+  - refactor: 'Medicells now use a balloon alert rather than a notice when toggling
+      between safe and unsafe. qol: examining medicells now shows the ammo type that
+      is added when using them on a gun. qol: Medigun upgrade kits now use the conversion
+      kit framework, making them easier to upgrade.'
+2021-10-15:
+  Iamgoofball:
+  - bugfix: Fixes Medical Cyborg reskins to be selectable again.
+  Lyroy:
+  - bugfix: gives the ash walker camp power to fix their machines not working
+  Melbert:
+  - rscadd: 'Icebox: The Chapel, Library, and Departures Lounge (and some maintenance
+      around it) have been revamped and expanded to utilize multi-z.'
+  - bugfix: You no longer see yourself in everything you double examine
+  ORCACommander:
+  - bugfix: CI now passes the gates
+  - bugfix: missing config flag
+  - config: new conflig flag
+  - admin: new conflig flag. inactive by defualt
+  Ryll/Shaps:
+  - spellcheck: Fixed incorrect "the"'s being inserted before the names of improper
+      nouns in item stripping code.
+  - rscadd: Added new quirk, "Shifty Eyes", which rarely causes people who examine
+      you while standing closeby to think that you both made eye contact, even when
+      you didn't.
+  - balance: The time window for making eye contact with someone else has been extended
+      from  examining each other within 1 second to within 2 seconds.
+  Seris02:
+  - bugfix: pAIs are no longer invisible head creatures
+  - bugfix: radio jammers no longer activate when deactivating and vice versa
+  - bugfix: flares no longer continue to burn after running out of fuel
+  - bugfix: stops tgui from migrating prefs when it shouldn't be
+  SkyratBot:
+  - bugfix: Fixed a bug where bans could not be applied if the database connection
+      was not immediately established, even after a re-establish.
+  - server: Updated database schema to allow for null round IDs in bans and tickets.
+  - bugfix: Lavaproof borg upgrade for miner borgs now works properly.
+  - bugfix: Leftover plasma tanks formerly intended for radiation collectors have
+      been removed.
+  - bugfix: Fixes openspace not working if the floor below has been changed
+  - bugfix: Pipes now properly fulfill your nicotine cravings.
+  - balance: The super matter crystal can no longer be immediately delaminated by
+      firing a gun into it, only brought close to the delamination threshold.
+  - bugfix: Fixes the holoparas breaking their users glasses when manifesting bug.
+  ihavenoideahowtonamemyaccount:
+  - rscadd: even more halloween costumes options in the loadout
+2021-10-16:
+  MMMiracles:
+  - rscadd: Tramstation's maintenance now has new catwalk tiles covering the various
+      piping/wiring throughout.
+  - bugfix: Tramstation's powernet should be slightly more resistant to bouts of power
+      outages caused by rogue syndicate mice operatives.
+  - bugfix: Patched up a few missed spots involving pipe/wiring for departments like
+      Botany/Courtroom.
+  SkyratBot:
+  - bugfix: Fixed monkeys having the wrong on fire overlay when ablaze.
+  - spellcheck: No more phantom hand grabbing.
+  - bugfix: quantum pads and other things with fault do_teleport calls no longer cause
+      runtimes
+  - refactor: refactored drowsiness code
+  jjpark-kb:
+  - rscdel: removed sm cascade sea
+2021-10-17:
+  Guillaume Prata:
+  - balance: Atmospheric Technicians will have external airlock access by default
+      now instead of only on skeleton crew.
+  - imageadd: Atmos Optical glasses have a new icon for it's connectable mode.
+  - imageadd: Fire extinguishers now have a worn sprite when they are stored on your
+      Firesuit.
+  Merek2:
+  - rscadd: Deckers maskless outfit.
+  - imageadd: Added decking_jumpsuit to two costume.dmi files for icon and wear state.
+  - code_imp: Modified clothesmate to add deckers maskless outfit.
+  SkyratBot:
+  - bugfix: fixes combat hypospray locking itself out from 10u transfers to 5u when
+      used in-hand
+  - bugfix: Pets no longer enjoy being shoved around.
+  - balance: Growing vats can now be set to regrow the sample upon completion.
+  - balance: Increased the volume of growing vats from 200 to 300u.
+  - bugfix: Organs will now consistently "Fail" once they have reached max damage
+  - rscadd: added ability to change hologram appearance to custom character
+2021-10-18:
+  ATHATH:
+  - bugfix: 'The "don''t allow any organics to escape on the emergency shuttle alive"
+      objective no longer counts inorganic species like golems, plasmamen, androids,
+      etc. qol: Some malf AI objectives have had their descriptions updated to reflect
+      them only caring about player-controlled creatures.'
+  Gandalf2k15:
+  - rscadd: Did you know you can interact with someone by ctrl+shift+clicking them?
+  - rscadd: Added a new job, the barber!
+  - rscadd: Hand dryers!
+  - rscadd: A salon!
+  Horatio22 borrowed Iamgoofball and Surrealaser , spriter d4n0w4r:
+  - imageadd: added 2 new outfits to the detective autodrobe
+  Iamgoofball:
+  - rscadd: 'Adds the Self-Actualization Device for Medbay! Find it under Genetics
+      research. qol: Operating Tables have been equipped with stasis functionality!
+      qol: Cyborgs are no longer immune to surgery speedups.'
+  - rscadd: You now work faster when alone with a patient!
+  - bugfix: Painkillers now properly numb pain.
+  PositiveEntropy, EricZilla:
+  - imageadd: Resprites pinpointers!
+  SkyratBot:
+  - balance: The Goon Source code item is now invulnerable to deletion (aside from
+      ninja intervention), similar to every other high risk item.
+  - spellcheck: Fixed capitalisation errors in hypernoblium crystal usage messages.
+  - rscadd: When all else fails, dusting a Clown can alter the Supermatter's containment
+      field. It might make the situation better. It might not. Who knows, HONK
+  - bugfix: Admins who aghost won't be dragged back to their body when someone attempts
+      to defib them.
+  - admin: Assembly bomb creation is now logged in Kelvin.
+  - bugfix: Fixes the mind name of aliens not being updated when evolving (for real
+      this time)
+  - bugfix: Fixed supermatter lightning bolt target selection. Previously, two grounding
+      rods were always* safe. Now, one grounding rod is always* safe.
+  - bugfix: fixes an error in department officers spawning with wallets
+  - spellcheck: fixed a single bracket typo
+  - bugfix: fixed abductor and advanced tools' recycling results being heavily diminished
+      or taken from their basic counterparts
+  - bugfix: Monkeys can now open worn backpacks by clicking on them.
+  - bugfix: you can no longer exploit the pink crossbreeding power to strip factions
+      from mobs
+  - bugfix: Secways will now say it's broken, rather than it's component.
+  - code_imp: removes color_legacy prefs and changes sanitize_hexcolor()'s default
+      to 6 characters
+  - refactor: Radiation Collectors, Tesla Coils, and Grounding Rods are now subtypes
+      of a common energy_accumulator type. This centralizes logic for smoothing energy
+      release; converting between Joules, Watts, and internal energy units; and ensures
+      that all such accumulators display and generate power along the same smoothing
+      curve.
+  - bugfix: Tesla Coils no longer generate power using half the smoothing that Radiation
+      Collectors used. This was due to a mistake in handling delta_time.
+  - code_imp: 'Removed many magic numbers from power generation code. qol: Tesla Coils
+      will now display energy stored in Joules and power being produced in Watts,
+      much like Radiation Collectors did. qol: Grounding Rods will now display recent
+      energy they''ve absorbed and the sustainable power that this energy could be
+      producing. It should now be very obvious if you could use more Tesla Coils.'
+  - bugfix: Fixed the join/ready buttons not reverting if the game fails to setup.
+  - bugfix: Players with the monkified mutation now have a generic monkey name as
+      opposed to their actual name again.
+  - bugfix: probital now works properly on ingest. you now get mitogen again
+  - bugfix: Non wallsocket lights will be properly colored again. Whoops
+  - spellcheck: Gives shaft miner a more accurate job description
+  jjpark-kb:
+  - rscadd: added the cargo teleporter, item that can teleport items to markers
+  - rscadd: added ceramics skillchip
+  - rscadd: added glassblowing skillchip
+  - rscadd: added glassblowing, ceramics, and fishing skillchips to maint loot and
+      the fun vender
+  - rscadd: unfinished ceramics can now be sold for 300
+  - rscadd: unfinished/finished ceramics will now not have elastic selling prices
+2021-10-19:
+  Gandalf2k15:
+  - rscadd: 'Added a new quirk, oversized. See: for more details.'
+  - rscadd: Oversized people cannot enter mechs or be patted on the head!
+  NotRanged:
+  - rscadd: Re-implemented silicon flavor texts!
+  - bugfix: Fixes dogborg models getting an improper pixel offset on their sprite.
+  - bugfix: Dogborgs get their rest and rest-style verbs back. They are located under
+      AI commands.
+  Ryll/Shaps:
+  - admin: As an admin, if you start replying to a freshly submitted ticket that another
+      admin is already replying to, you'll get a notice that someone already has it
+      open when you get the prompt. Nice to let you know someone else is handling
+      it, so you can coordinate replies better!
+  That REALLY Good Soda Flavor:
+  - refactor: Rolling paper will now use the customizable reagent holder component.
+      This cleans up the code and expands the possibilities for using the component
+      by adding support for dried items.
+  softcerv:
+  - bugfix: medical bandoliers can now hold hypovials again.

@@ -132,32 +132,32 @@
 		return
 	var/turf/target_turf = get_turf(target)
 	if(istype(target, /obj/item/xenoarch/broken_item/tech))
-		var/spawn_item = pickweight(GLOB.tech_reward)
+		var/spawn_item = pick_weight(GLOB.tech_reward)
 		new spawn_item(target_turf)
 		qdel(target)
 		return
 	if(istype(target, /obj/item/xenoarch/broken_item/weapon))
-		var/spawn_item = pickweight(GLOB.weapon_reward)
+		var/spawn_item = pick_weight(GLOB.weapon_reward)
 		new spawn_item(target_turf)
 		qdel(target)
 		return
 	if(istype(target, /obj/item/xenoarch/broken_item/illegal))
-		var/spawn_item = pickweight(GLOB.illegal_reward)
+		var/spawn_item = pick_weight(GLOB.illegal_reward)
 		new spawn_item(target_turf)
 		qdel(target)
 		return
 	if(istype(target, /obj/item/xenoarch/broken_item/alien))
-		var/spawn_item = pickweight(GLOB.alien_reward)
+		var/spawn_item = pick_weight(GLOB.alien_reward)
 		new spawn_item(target_turf)
 		qdel(target)
 		return
 	if(istype(target, /obj/item/xenoarch/broken_item/plant))
-		var/spawn_item = pickweight(GLOB.plant_reward)
+		var/spawn_item = pick_weight(GLOB.plant_reward)
 		new spawn_item(target_turf)
 		qdel(target)
 		return
 	if(istype(target, /obj/item/xenoarch/broken_item/clothing))
-		var/spawn_item = pickweight(GLOB.clothing_reward)
+		var/spawn_item = pick_weight(GLOB.clothing_reward)
 		new spawn_item(target_turf)
 		qdel(target)
 		return
@@ -165,7 +165,7 @@
 		var/spawn_item
 		var/turf/src_turf = get_turf(src)
 		for(var/looptime in 1 to rand(1,4))
-			spawn_item = pickweight(GLOB.animal_reward)
+			spawn_item = pick_weight(GLOB.animal_reward)
 			new spawn_item(src_turf)
 		qdel(target)
 		return

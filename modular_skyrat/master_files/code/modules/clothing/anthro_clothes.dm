@@ -1,6 +1,8 @@
 //This is the file for edge case clothing items that are not properly defined.
 
 //HEAD>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+/obj/item/clothing/head/hardhat/atmos
+	mutant_variants = STYLE_MUZZLE | STYLE_VOX
 
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
