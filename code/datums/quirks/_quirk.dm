@@ -20,8 +20,6 @@
 	/// The icon to show in the preferences menu.
 	/// This references a tgui icon, so it can be FontAwesome or a tgfont (with a tg- prefix).
 	var/icon = "bug" //SKYRAT EDIT CHANGE
-	/// SKYRAT EDIT VAR - if the quirk holder ishuman and is of this species, the quirk won't be applied
-	var/list/restricted_human_species
 
 /datum/quirk/Destroy()
 	if(quirk_holder)
