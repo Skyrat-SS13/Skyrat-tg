@@ -9,6 +9,7 @@
 	value = 0
 	mob_trait = TRAIT_OVERSIZED
 	icon = "expand-arrows-alt"
+	veteran_only = TRUE
 	restricted_human_species = list(/datum/species/teshari)
 
 /datum/quirk/oversized/add()
