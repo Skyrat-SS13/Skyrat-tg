@@ -408,9 +408,9 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Villain Suit"
 	item_path = /obj/item/clothing/under/costume/villain
 
-/datum/loadout_item/under/miscellaneous/tactical_irish
-	name = "Irish Tactical Sweater"
-	item_path = /obj/item/clothing/under/misc/tactical1
+/datum/loadout_item/under/miscellaneous/tactical_sol
+	name = "Sol Tactical Sweater"
+	item_path = /obj/item/clothing/under/misc/soltactical
 
 /datum/loadout_item/under/miscellaneous/tactical_irish
 	name = "British Tactical Sweater"
