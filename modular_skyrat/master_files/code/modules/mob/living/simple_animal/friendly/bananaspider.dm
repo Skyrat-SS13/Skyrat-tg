@@ -64,6 +64,6 @@
 /mob/living/simple_animal/hostile/giant_spider/badnana_spider/AttackingTarget()
 	. = ..()
 	if(iscarbon(target))
-		var/mob/living/carbon/C = target
+		var/mob/living/carbon/carbon_target
 		C.reagents.add_reagent(/datum/reagent/consumable/laughter, 10)
 
