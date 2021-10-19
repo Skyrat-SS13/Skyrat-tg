@@ -20,7 +20,7 @@
 				/obj/item/hypospray,
 				/obj/item/healthanalyzer,
 				/obj/item/reagent_containers/syringe,
-				/obj/item/reagent_containers/glass/bottle/vial,
+				/obj/item/reagent_containers/glass/vial,
 				/obj/item/reagent_containers/glass/beaker,
 				/obj/item/storage/pill_bottle,
 				/obj/item/taperecorder)
@@ -84,7 +84,7 @@
 			/obj/item/hypospray,
 			/obj/item/healthanalyzer,
 			/obj/item/reagent_containers/syringe,
-			/obj/item/reagent_containers/glass/bottle/vial,
+			/obj/item/reagent_containers/glass/vial,
 			/obj/item/reagent_containers/glass/beaker,
 			/obj/item/storage/pill_bottle,
 			/obj/item/taperecorder)

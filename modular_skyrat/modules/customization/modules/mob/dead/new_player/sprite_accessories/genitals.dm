@@ -166,7 +166,7 @@
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = "vagina"
 	always_color_customizable = TRUE
-	default_color = "fcc"
+	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
 	genetic = TRUE
 	var/alt_aroused = TRUE
@@ -240,6 +240,23 @@
 /datum/sprite_accessory/genital/womb/normal
 	icon_state = "none"
 	name = "Normal"
+	color_src = null
+
+/datum/sprite_accessory/genital/anus
+	organ_type = /obj/item/organ/genital/anus
+	associated_organ_slot = ORGAN_SLOT_ANUS
+	key = "anus"
+	genetic = TRUE
+
+/datum/sprite_accessory/genital/anus/none
+	icon_state = "none"
+	name = "None"
+	factual = FALSE
+	color_src = null
+
+/datum/sprite_accessory/genital/anus/normal
+	icon_state = "anus"
+	name = "Anus"
 	color_src = null
 
 /datum/sprite_accessory/genital/breasts

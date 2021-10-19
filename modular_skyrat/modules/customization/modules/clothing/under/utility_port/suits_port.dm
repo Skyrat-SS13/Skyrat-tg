@@ -26,7 +26,7 @@
 	cold_protection = CHEST|ARMS|GROIN
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	mutant_variants = NONE
-	togglename = "zipper"
+	toggle_noun = "zipper"
 
 //Job Jackets
 /obj/item/clothing/suit/toggle/jacket/engi

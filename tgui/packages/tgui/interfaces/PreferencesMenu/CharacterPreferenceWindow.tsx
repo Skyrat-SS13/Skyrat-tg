@@ -157,7 +157,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                   page={Page.Limbs}
                   setPage={setCurrentPage}
                 >
-                  Limb Augumentation/Marking
+                  Augments+
                 </PageButton>
               </Stack.Item>
 

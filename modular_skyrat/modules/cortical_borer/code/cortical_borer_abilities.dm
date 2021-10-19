@@ -471,7 +471,7 @@
 		to_chat(cortical_owner, span_warning("You require at least 100 chemical units before you can reproduce!"))
 		return
 	cortical_owner.chemical_storage -= 100
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 100, POLL_IGNORE_CORTICAL_BORER)
+	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 100, POLL_IGNORE_CORTICAL_BORER)
 	if(!LAZYLEN(candidates))
 		to_chat(cortical_owner, span_notice("No available borers in the hivemind."))
 		cortical_owner.chemical_storage = min(cortical_owner.max_chemical_storage, cortical_owner.chemical_storage + 100)

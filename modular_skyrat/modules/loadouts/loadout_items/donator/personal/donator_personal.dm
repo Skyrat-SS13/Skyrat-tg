@@ -280,3 +280,7 @@
 	item_path = /obj/item/clothing/shoes/sneakers/mikuleggings
 	ckeywhitelist = list("grandvegeta")
 
+/datum/loadout_item/suit/delta_coat
+	name = "Grey Winter Hoodie"
+	item_path = /obj/item/clothing/suit/jacket/delta
+	ckeywhitelist = list("DeltaTri")

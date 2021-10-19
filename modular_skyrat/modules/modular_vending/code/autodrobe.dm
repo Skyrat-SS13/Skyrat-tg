@@ -39,6 +39,9 @@
 		/obj/item/clothing/shoes/jackboots/timbs = 1, //timbs should be in premium tbf
 		/obj/item/clothing/under/costume/loincloth/sensor = 5,
 		/obj/item/clothing/under/costume/loincloth/cloth/sensor = 5,
+		/obj/item/clothing/under/suit/helltaker = 5,
+		/obj/item/clothing/under/suit/helltaker/skirt = 5,
+		/obj/item/clothing/suit/toggle/lawyer/white = 5,
 		)
 
 	skyrat_contraband = list(
