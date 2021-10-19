@@ -23,7 +23,7 @@
 	var/current_color = "pink"
 	var/tight = "low" //can be low, medium and hard.
 
-/obj/item/clothing/under/shibari_body/Destroy()
+/obj/item/clothing/under/shibari_body/Destroy(force)
 	if(!force)
 		var/obj/item/stack/shibari_rope/R = new(get_turf(src))
 		R.current_color = current_color
