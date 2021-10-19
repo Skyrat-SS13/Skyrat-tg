@@ -187,6 +187,11 @@
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
 
+	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
+	if(cyborg.is_dogborg()) //Should pass because model was set previously.
+		new_model.dogborg_equip()
+	//SKYRAT EDIT ADDITION END
+
 	INVOKE_ASYNC(new_model, .proc/do_transform_animation)
 	qdel(src)
 	return new_model
