@@ -54,13 +54,6 @@
 	if(quirk_holder)
 		CRASH("Attempted to add quirk to a holder when it already has a holder.")
 
-	// SKYRAT EDIT - Species checks
-	if(restricted_human_species && ishuman(new_holder))
-		var/mob/living/carbon/human/human_holder = new_holder
-		if(is_type_in_list(human_holder.dna.species, restricted_human_species))
-			return FALSE
-	// SKYRAT EDIT END
-
 	quirk_holder = new_holder
 	quirk_holder.quirks += src
 
