@@ -67,9 +67,9 @@
 	icon_state = "royalkilt"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
-/obj/item/clothing/under/misc/tactical1
-	name = "irish tactical uniform"
-	desc = "The SAM missiles are in the sky! Faint whiffs of cheap booze and Libyan semtex come off this getup, someone was so kind as to leave a book in one of the pockets, too bad it's all in Gaelic!"
+/obj/item/clothing/under/misc/soltactical
+	name = "Sol tactical uniform"
+	desc = "The SAM missiles are in the sky! Faint whiffs of cheap booze and cheaper semtex come off this getup, someone was so kind as to leave a book in one of the pockets, too bad it's all in Uncommon!"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tactical1"
