@@ -91,7 +91,7 @@
 			if(3 to INFINITY)
 				probability += 20
 		if(prob(probability))
-			var/obj/effect/meteor/picked_meteor_type = pickweight(GLOB.meteors_threatening)
+			var/obj/effect/meteor/picked_meteor_type = pick_weight(GLOB.meteors_threatening)
 			if(shuttle.GetShieldPercent())
 				var/shield_damage = initial(picked_meteor_type.shield_damage)
 				var/remaining_damage = shuttle.AbsorbShield(shield_damage)
@@ -146,7 +146,7 @@
 			if(3 to INFINITY)
 				probability += 25
 		if(prob(probability))
-			var/obj/effect/meteor/picked_meteor_type = pickweight(GLOB.meteorsC)
+			var/obj/effect/meteor/picked_meteor_type = pick_weight(GLOB.meteorsC)
 			if(shuttle.GetShieldPercent())
 				var/shield_damage = initial(picked_meteor_type.shield_damage)
 				var/remaining_damage = shuttle.AbsorbShield(shield_damage)

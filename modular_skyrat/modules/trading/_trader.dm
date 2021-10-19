@@ -406,7 +406,7 @@
 			for(var/i in 1 to amount_of_iterations)
 				if(!length(candidates))
 					break
-				var/picked_type = pickweight(candidates)
+				var/picked_type = pick_weight(candidates)
 				candidates -= picked_type
 				//Safety check
 				if(!bought_goods[picked_type])
@@ -419,7 +419,7 @@
 			for(var/i in 1 to amount_of_iterations)
 				if(!length(candidates))
 					break
-				var/picked_type = pickweight(candidates)
+				var/picked_type = pick_weight(candidates)
 				candidates -= picked_type
 				//Safety check
 				if(!sold_goods[picked_type])
@@ -430,14 +430,14 @@
 	if(bounties || !possible_bounties)
 		return
 	LAZYINITLIST(bounties)
-	var/bounty_type = pickweight(possible_bounties)
+	var/bounty_type = pick_weight(possible_bounties)
 	bounties += new bounty_type()
 
 /datum/trader/proc/GainDelivery()
 	if(deliveries || !possible_deliveries)
 		return
 	LAZYINITLIST(deliveries)
-	var/delivery_type = pickweight(possible_deliveries)
+	var/delivery_type = pick_weight(possible_deliveries)
 	deliveries += new delivery_type(src)
 
 /datum/trader/proc/RotateStock()

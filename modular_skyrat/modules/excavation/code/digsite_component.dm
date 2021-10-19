@@ -21,7 +21,7 @@
 	for(var/i in 1 to artifacts)
 		var/added_depth = rand(DIG_DEPTH_LOW,DIG_DEPTH_HIGH)
 		counted_depth += added_depth
-		var/path = pickweight(GLOB.excavation_finds_weight)
+		var/path = pick_weight(GLOB.excavation_finds_weight)
 		var/datum/excavation_find/new_find = new path()
 		find_list["[counted_depth]"] = new_find
 

@@ -498,7 +498,6 @@
 /obj/machinery/computer/trade_console/Destroy()
 	if(linked_pad)
 		unlink_pad()
-	withdraw_credits(credits_held)
 	return ..()
 
 /obj/item/circuitboard/computer/trade_console

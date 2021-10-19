@@ -121,7 +121,7 @@
 	if(!has_attracted_fauna)
 		AttractFauna()
 	var/obj/item/ore_to_return
-	var/type = pickweight(ores_to_mine)
+	var/type = pick_weight(ores_to_mine)
 	ores_to_mine[type] = ores_to_mine[type] - 1
 	if(ores_to_mine[type] == 0)
 		ores_to_mine -= type
@@ -205,6 +205,6 @@
 
 /datum/ore_node_seeder/proc/SeedToLevel(z)
 	for(var/i in 1 to spawners_amount)
-		var/picked_type = pickweight(spawners_weight)
+		var/picked_type = pick_weight(spawners_weight)
 		var/turf/loc_to_spawn = locate(rand(1,world.maxx), rand(1,world.maxy), z)
 		new picked_type(loc_to_spawn)

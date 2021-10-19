@@ -89,8 +89,8 @@
 	var/rubble_type = prob(50) ? /obj/structure/rubble/medium : /obj/structure/rubble/large
 	var/turf/destination = src
 	if(adjacent)
-		ImmediateCalculateAdjacentTurfs()
-		var/list/adjacent_turfs = GetAtmosAdjacentTurfs()
+		immediate_calculate_adjacent_turfs()
+		var/list/adjacent_turfs = get_atmos_adjacent_turfs()
 		var/list/free_turfs = list()
 		for(var/i in adjacent_turfs)
 			var/turf/Turf = i

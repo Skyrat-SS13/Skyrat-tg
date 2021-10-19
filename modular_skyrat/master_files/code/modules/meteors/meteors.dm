@@ -25,7 +25,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 
 /proc/spawn_meteors(number = 10, list/meteortypes)
 	for(var/i = 0; i < number; i++)
-		spawn_meteor(pickweight(meteortypes))
+		spawn_meteor(pick_weight(meteortypes))
 
 /proc/spawn_meteor(meteor_type, dir, z_level, padding = MAP_EDGE_PAD)
 	var/turf/pickedstart

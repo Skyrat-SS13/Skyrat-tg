@@ -35,7 +35,7 @@
 //used by mapping to determine where to place planets, stations, ruins and such
 /datum/overmap_sun_system/proc/GetEmptySpotForZLevelObjectWithinRange(lowx,highx,lowy,highy)
 	return
-	
+
 /datum/overmap_sun_system/proc/CoordsClearHazard(passed_x, passed_y)
 	var/list/objects_to_consider = GetObjectsOnCoords(passed_x, passed_y)
 	for(var/i in objects_to_consider)
@@ -105,7 +105,7 @@
 					highx = iterated_x
 				map_turf.set_coords_overlays(lowx, lowy, highx, highy)
 				if(prob(TRANSPORTABLE_LOOT_CHANCE_PER_TILE))
-					var/transp_type = pickweight(transportables_loot_list)
+					var/transp_type = pick_weight(transportables_loot_list)
 					new transp_type(src, iterated_x, iterated_y)
 				if(prob(ORE_ROCK_PER_TILE_CHANCE))
 					new /datum/overmap_object/ore_rock(src, iterated_x, iterated_y)
@@ -149,7 +149,7 @@
 				continue
 			new chosen_type(src, chosen_x, chosen_y)
 			if(prob(TRANSPORTABLE_SPECIAL_ON_DEBRIS_CHANCE))
-				var/transp_type = pickweight(transportables_loot_list)
+				var/transp_type = pick_weight(transportables_loot_list)
 				new transp_type(src, chosen_x, chosen_y)
 			//Add adjacent turf to the possible pool to spawn
 			for(var/b in 1 to 4)

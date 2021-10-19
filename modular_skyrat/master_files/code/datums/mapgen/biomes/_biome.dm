@@ -15,7 +15,7 @@
 /datum/biome/proc/generate_turf(turf/gen_turf)
 	gen_turf.ChangeTurf(turf_type, null, CHANGETURF_DEFER_CHANGE)
 	if(length(fauna_weight_types) && prob(fauna_density))
-		var/mob/fauna = pickweight(fauna_weight_types)
+		var/mob/fauna = pick_weight(fauna_weight_types)
 		new fauna(gen_turf)
 
 	if(length(flora_types) && prob(flora_density))

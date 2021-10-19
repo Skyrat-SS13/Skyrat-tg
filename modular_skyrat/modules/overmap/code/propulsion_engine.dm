@@ -8,7 +8,7 @@
 	smoothing_groups = list(SMOOTH_GROUP_SHUTTLE_PARTS)
 	max_integrity = 500
 	armor = list(MELEE = 100, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 70) //default + ignores melee
-	CanAtmosPass = ATMOS_PASS_DENSITY
+	can_atmos_pass = ATMOS_PASS_DENSITY
 	density = TRUE
 	anchored = TRUE
 
@@ -26,7 +26,7 @@
 	var/extension_type = /datum/shuttle_extension/engine/propulsion
 	var/datum/shuttle_extension/engine/propulsion/extension
 
-/obj/machinery/atmospherics/components/unary/engine/SetInitDirections()
+/obj/machinery/atmospherics/components/unary/engine/set_init_directions()
 	initialize_directions = REVERSE_DIR(dir)
 
 /obj/machinery/atmospherics/components/unary/engine/Initialize(mapload)
@@ -46,7 +46,7 @@
 	qdel(extension)
 	return ..()
 
-/obj/machinery/atmospherics/components/unary/engine/isConnectable(obj/machinery/atmospherics/target, given_layer)
+/obj/machinery/atmospherics/components/unary/engine/is_connectable(obj/machinery/atmospherics/target, given_layer)
 	if(is_welded)
 		return ..()
 	return FALSE
@@ -60,13 +60,13 @@
 	extension.ApplyToPosition(get_turf(src))
 	if(mapload) //Atmos isn't initialized at mapload
 		return
-	SetInitDirections()
-	atmosinit()
+	set_init_directions()
+	atmos_init()
 	if(length(nodes))
 		var/obj/machinery/atmospherics/node = nodes[1]
 		if(node)
-			node.atmosinit()
-			node.addMember(src)
+			node.atmos_init()
+			node.add_member(src)
 	SSair.add_to_rebuild_queue(src)
 
 /obj/machinery/atmospherics/components/unary/engine/proc/unweld()
@@ -81,7 +81,7 @@
 		if(node)
 			node.disconnect(src)
 			node = null
-			nullifyPipenet(parents[1])
+			nullify_pipenet(parents[1])
 			nodes[1] = null
 
 /obj/machinery/atmospherics/components/unary/engine/ComponentInitialize()
