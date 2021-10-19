@@ -971,3 +971,4 @@
 	rapid_melee = 1
 	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser3.ogg'
+

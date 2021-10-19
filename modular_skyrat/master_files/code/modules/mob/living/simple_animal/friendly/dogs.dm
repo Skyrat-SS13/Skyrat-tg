@@ -178,3 +178,4 @@
 	icon_state = "dobber"
 	icon_dead = "dobbydead"
 	icon_living = "dobber"
+

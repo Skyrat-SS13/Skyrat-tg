@@ -14,7 +14,7 @@
 	response_harm_continuous = "smacks"
 	response_harm_simple = "smack"
 	speak_emote = list("cheeps")
-	friendly_verb_continuous = "cheepss"
+	friendly_verb_continuous = "cheeps"
 	friendly_verb_simple = "cheep"
 	density = FALSE
 	mobility_flags = MOBILITY_FLAGS_REST_CAPABLE_DEFAULT
@@ -28,3 +28,4 @@
 	verb_yell = "screeches"
 	emote_see = list("cheeps.", "makes a loud cheep.", "runs around.", "cheeps happily.")
 	speak_chance = 1
+
