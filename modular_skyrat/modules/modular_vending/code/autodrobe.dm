@@ -21,7 +21,7 @@
 		/obj/item/clothing/under/costume/dutch = 5,
 		/obj/item/clothing/under/costume/arthur = 5,
 		/obj/item/clothing/under/whiterussian = 5,
-		/obj/item/clothing/under/misc/tactical1 = 5,
+		/obj/item/clothing/under/misc/soltactical = 5,
 		/obj/item/clothing/under/uvf = 5,
 		/obj/item/clothing/under/doug_dimmadome = 5,
 		/obj/item/clothing/glasses/biker = 5, //remind me to give these an up state later
