@@ -109,11 +109,11 @@
 
 		if(buckle_mob(M, check_loc = check_loc))
 			var/obj/item/stack/shibari_rope/rope = user.get_active_held_item()
-			rope.use(1)
 			ropee = new()
-			ropee.current_color = current_color
+			ropee.current_color = rope.current_color
 			ropee.update_icon_state()
 			ropee.update_icon()
+			rope.use(1)
 			add_overlay(shibari_shadow_overlay)
 			add_rope_overlays(ropee.current_color)
 			M.visible_message(span_warning("[user] tied [M] to [src]!"),\
