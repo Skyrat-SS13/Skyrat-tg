@@ -3,9 +3,10 @@
 	desc = "They're seeds that grow into banana trees. However, those bananas might be alive."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/seeds.dmi'
 	icon_state = "seed-spibanana"
-	species = "spiderbanana"
+	species = "spibanana"
 	growing_icon = 'modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi'
 	icon_grow = "spibanana-grow"
+	icon_dead = "spibanana-dead"
 	plantname = "Leggy Banana Tree"
 	product = /obj/item/food/grown/banana/banana_spider_spawnable
 	genes = list(/datum/plant_gene/trait/slip)
