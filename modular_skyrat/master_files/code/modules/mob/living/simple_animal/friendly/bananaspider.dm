@@ -61,7 +61,7 @@
 	speed = -0.5
 	faction = list(ROLE_SPIDER)
 
-/mob/living/simple_animal/hostile/giant_spider/AttackingTarget()
+/mob/living/simple_animal/hostile/giant_spider/badnana_spider/AttackingTarget()
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
