@@ -9,6 +9,7 @@
 	value = 0
 	mob_trait = TRAIT_OVERSIZED
 	icon = "expand-arrows-alt"
+	veteran_only = TRUE
 
 /datum/quirk/oversized/add()
 	var/mob/living/carbon/human/human_holder = quirk_holder
