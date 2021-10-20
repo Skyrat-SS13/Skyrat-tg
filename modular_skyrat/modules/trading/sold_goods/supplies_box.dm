@@ -266,8 +266,8 @@
 		)
 	weighted_spawns = list(
 		/obj/item/ammo_box/magazine/m9mm = 10,
-		/obj/effect/spawner/lootdrop/grenade = 10,
-		/obj/effect/spawner/lootdrop/tactical_gear = 10
+		/obj/effect/spawner/random/grenade = 10,
+		/obj/effect/spawner/random/tactical_gear = 10
 		)
 	weighted_spawns_amount = 1
 
