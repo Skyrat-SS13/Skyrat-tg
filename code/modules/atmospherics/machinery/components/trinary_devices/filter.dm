@@ -98,22 +98,6 @@
 		else
 			filtering = FALSE
 
-<<<<<<< HEAD
-	if(filtering && removed.gases[filter_type])
-		var/datum/gas_mixture/filtered_out = new
-
-		filtered_out.temperature = removed.temperature
-		filtered_out.add_gas(filter_type)
-		filtered_out.gases[filter_type][MOLES] = removed.gases[filter_type][MOLES]
-
-		removed.gases[filter_type][MOLES] = 0
-		removed.garbage_collect()
-
-		var/datum/gas_mixture/target = (air2.return_pressure() < MAX_OUTPUT_PRESSURE ? air2 : air1) //if there's no room for the filtered gas; just leave it in air1
-		target.merge(filtered_out)
-
-	air3.merge(removed)
-=======
 	// Process if we have a filter set.
 	// If no filter is set, we just try to forward everything to air3 to avoid gas being outright lost.
 	if(filtering)
@@ -138,7 +122,6 @@
 		air1.merge(removed)
 	else
 		air3.merge(removed)
->>>>>>> f86f89f2594 (filter: Move gas where possible (#62237))
 
 	update_parents()
 
