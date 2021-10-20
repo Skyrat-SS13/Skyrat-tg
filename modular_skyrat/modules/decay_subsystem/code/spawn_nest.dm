@@ -19,7 +19,7 @@
 			"mob_to_spawn" = list("desc" = "Mob to spawn", "type" = "datum", "path" = "/mob/living", "subtypesonly" = TRUE, "value" = chosen),
 			"max_mobs" = list("desc" = "Max mobs", "type" = "number", "value" = 5),
 			"trigger_range" = list("desc" = "Trigger range", "type" = "number", "value" = 5),
-			"spawn_cooldown" = list("desc" = "Spawn cooldown", "type" = "number", "value" = 5 SECONDS),
+			"spawn_cooldown" = list("desc" = "Spawn cooldown", "type" = "number", "value" = 20 SECONDS),
 			"regenerate_time" = list("desc" = "Regenerate time", "type" = "number", "value" = 5 MINUTES),
 			"retaliate_cooldown" = list("desc" = "Retaliate cooldown", "type" = "number", "value" = 10 SECONDS),
 			"ghost_controllable" = list("desc" = "Ghost controllable", "type" = "boolean", "value" = "No"),
