@@ -4475,8 +4475,17 @@
 /turf/open/floor/wood/parquet,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/northeast)
 "pp" = (
-/turf/open/space/basic,
-/area/template_noop)
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/obj/structure/training_machine,
+/obj/item/target,
+/obj/effect/turf_decal/trimline/neutral/filled/warning{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "pq" = (
 /obj/structure/window/reinforced/survival_pod,
 /obj/structure/chair/sofa/bench/right{
@@ -4927,16 +4936,19 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "qA" = (
-/obj/effect/turf_decal/trimline/yellow/line{
-	dir = 4
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 8
 	},
-/obj/structure/training_machine,
-/obj/item/target,
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 1
 	},
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron/dark,
+/obj/machinery/door/window/survival_pod{
+	dir = 4;
+	req_access_txt = "150"
+	},
+/turf/open/floor/iron/dark/blue/side{
+	dir = 4
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "qB" = (
 /obj/structure/bookcase/random/adult,
@@ -4953,19 +4965,9 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "qD" = (
-/obj/effect/turf_decal/trimline/green/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/trimline/neutral/filled/warning{
-	dir = 1
-	},
-/obj/machinery/door/window/survival_pod{
-	dir = 4;
-	req_access_txt = "150"
-	},
-/turf/open/floor/iron/dark/blue/side{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "qE" = (
 /obj/machinery/smartfridge/food,
@@ -5096,8 +5098,9 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "rc" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "re" = (
@@ -5830,9 +5833,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "tA" = (
-/obj/effect/turf_decal/trimline/brown/line{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "tB" = (
@@ -5982,6 +5983,9 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/northeast)
 "uk" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
@@ -6396,11 +6400,17 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "vy" = (
-/obj/effect/turf_decal/trimline/yellow/line{
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 4
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "vz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -6907,18 +6917,12 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
 "xg" = (
-/obj/effect/turf_decal/trimline/green/line{
-	dir = 8
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
 	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark/blue/side{
-	dir = 4
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/security)
+/obj/machinery/atmospherics/components/unary/outlet_injector/on,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "xh" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/backpack/duffelbag/syndie/surgery,
@@ -7557,12 +7561,12 @@
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/northeast)
 "zn" = (
-/obj/effect/turf_decal/stripes/end{
-	dir = 1
+/obj/effect/turf_decal/trimline/brown/line{
+	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/outlet_injector/on,
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
+/obj/effect/turf_decal/trimline/neutral/filled/warning,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/skyrat/interdynefob/security)
 "zp" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
@@ -7721,10 +7725,13 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "zT" = (
-/obj/effect/turf_decal/trimline/brown/line{
+/obj/effect/turf_decal/trimline/yellow/line{
 	dir = 4
 	},
+/obj/structure/training_machine,
+/obj/item/target,
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "zV" = (
@@ -8507,13 +8514,7 @@
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Cw" = (
-/obj/effect/turf_decal/trimline/yellow/line{
-	dir = 4
-	},
-/obj/structure/training_machine,
-/obj/item/target,
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "Cx" = (
@@ -9243,8 +9244,16 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "EH" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/dark/blue/side{
+	dir = 4
+	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "EJ" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -10428,16 +10437,11 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "ID" = (
-/obj/effect/turf_decal/trimline/green/line{
-	dir = 8
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
 	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/neutral/filled/warning,
-/turf/open/floor/iron/dark/blue/side{
-	dir = 4
-	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "IE" = (
 /obj/machinery/hydroponics/constructable,
@@ -10693,12 +10697,11 @@
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/northeast)
 "Jv" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 5
 	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/skyrat/interdynefob/security)
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Jw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -10869,7 +10872,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
 "JS" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
-	dir = 5
+	dir = 4
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -12672,12 +12675,6 @@
 /obj/effect/spawner/random/vending/colavend,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
-"PR" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
-	dir = 4
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "PU" = (
 /obj/structure/bed/dogbed,
 /obj/effect/decal/cleanable/dirt,
@@ -13026,6 +13023,7 @@
 	},
 /obj/item/clothing/head/hos/beret/syndicate,
 /obj/item/clothing/suit/armor/vest/warden/syndicate/syndicate_winter,
+/obj/item/gun/ballistic/revolver/mateba,
 /turf/open/floor/iron/dark/smooth_corner{
 	dir = 8
 	},
@@ -16214,15 +16212,15 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16302,15 +16300,15 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16390,15 +16388,15 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16478,15 +16476,15 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16566,15 +16564,15 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16655,14 +16653,14 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16743,14 +16741,14 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16831,14 +16829,14 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -16919,14 +16917,14 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -17007,14 +17005,14 @@ mc
 mc
 mc
 mc
-pp
-pp
-pp
-pp
-pp
-pp
-pp
-pp
+mc
+mc
+mc
+mc
+mc
+mc
+mc
+mc
 mc
 mc
 mc
@@ -18372,8 +18370,8 @@ Fx
 qU
 mc
 Vt
-zn
-JS
+xg
+Jv
 or
 sm
 Bh
@@ -18461,7 +18459,7 @@ qU
 Vt
 Vt
 Vt
-PR
+JS
 qb
 xa
 BH
@@ -18549,7 +18547,7 @@ qU
 sA
 sA
 sA
-PR
+JS
 qp
 xc
 Cf
@@ -18635,9 +18633,9 @@ Co
 qU
 qU
 mA
-tA
-zT
-PR
+rc
+zn
+JS
 sx
 Pw
 CM
@@ -18723,7 +18721,7 @@ kg
 LJ
 sA
 oV
-uk
+tA
 ak
 gK
 sS
@@ -18810,9 +18808,9 @@ JD
 fd
 TM
 sA
-qA
-vy
-Cw
+pp
+uk
+zT
 HR
 to
 gl
@@ -18900,7 +18898,7 @@ LU
 sA
 lk
 FW
-EH
+Cw
 HR
 tV
 xt
@@ -18986,9 +18984,9 @@ tq
 tw
 tq
 sA
-qD
-xg
-ID
+qA
+vy
+EH
 HR
 vS
 xX
@@ -19162,9 +19160,9 @@ ce
 YF
 wT
 mU
-rc
+qD
 FM
-Jv
+ID
 wY
 Oe
 Zv
