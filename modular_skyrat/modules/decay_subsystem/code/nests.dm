@@ -14,7 +14,7 @@
 	light_color = LIGHT_COLOR_LAVA
 	var/spawn_delay = 0
 	/// What mob to spawn
-	var/list/var/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
+	var/list/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	/// How many mobs can we spawn?
 	var/max_mobs = 3
 	var/list/faction = list(NEST_FACTION)
