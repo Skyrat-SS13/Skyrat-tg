@@ -432,7 +432,17 @@ const PageMain = (props, context) => {
             content="Make Priority Announcement"
             onClick={() => act("makePriorityAnnouncement")}
           />}
-
+          {
+            // SKYRAT EDIT BEGIN
+          }
+          {!!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Emergency Services and Request Sol Federation Police"
+            onClick={() => act("callThePolice")}
+          />}
+          {
+            // SKYRAT EDIT END
+          }
           {!!canToggleEmergencyAccess && <Button.Confirm
             icon="id-card-o"
             content={`${emergencyAccess ? "Disable" : "Enable"} Emergency Maintenance Access`}

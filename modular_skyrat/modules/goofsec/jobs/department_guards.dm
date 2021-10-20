@@ -5,6 +5,7 @@
 	worn_icon_state = "barney_uniform"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	unique_reskin = null
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/orderly
 	name = "orderly uniform"
@@ -26,6 +27,7 @@
 	worn_icon_state = "barney_armor"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	unique_reskin = null
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
 	icon_state = "guard_armor"
@@ -54,6 +56,7 @@
 	worn_icon_state = "barney_helm"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	unique_reskin = null
 
 /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	icon_state = "mallcop_helm"
@@ -340,7 +343,7 @@
 	paycheck_department = ACCOUNT_ENG
 
 	display_order = JOB_DISPLAY_ORDER_ENGINEER_GUARD
-	bounty_types = CIV_JOB_RANDOM
+	bounty_types = CIV_JOB_ENG
 	departments_list = list(
 		/datum/job_department/engineering,
 		)

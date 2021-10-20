@@ -85,6 +85,12 @@
 			RESKIN_ICON_STATE = "peacekeeper_helmet",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper"
+		),
+		"Blue Shift" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi',
+			RESKIN_ICON_STATE = "mallcop_helm",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi',
+			RESKIN_WORN_ICON_STATE = "mallcop_helm"
 		)
 	)
 	/// SKYRAT EDIT ADDITION END

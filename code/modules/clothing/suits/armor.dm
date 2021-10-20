@@ -40,9 +40,9 @@
 		),
 		"Blue Shift" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
-			RESKIN_ICON_STATE = "barney_armor",
+			RESKIN_ICON_STATE = "guard_armor",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
-			RESKIN_WORN_ICON_STATE = "barney_armor"
+			RESKIN_WORN_ICON_STATE = "guard_armor"
 		),
 		"Peacekeeper" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',

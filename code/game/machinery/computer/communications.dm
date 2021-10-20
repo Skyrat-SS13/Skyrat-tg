@@ -6,6 +6,8 @@
 #define STATE_CHANGING_STATUS "changing_status"
 #define STATE_MAIN "main"
 #define STATE_MESSAGES "messages"
+//SKYRAT EDIT ADDITION
+GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 // The communications computer
 /obj/machinery/computer/communications
@@ -380,7 +382,38 @@
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, /datum/controller/subsystem/job.proc/send_spare_id_safe_code, pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
+		// SKYRAT EDIT ADDITION START
+		if ("callThePolice")
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
 
+			if (GLOB.cops_arrived)
+				to_chat(usr, span_warning("The cops have already been called this shift!"))
+				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+				return
+
+			// Check if they have
+			if (!issilicon(usr))
+				var/obj/item/held_item = usr.get_active_held_item()
+				var/obj/item/card/id/id_card = held_item?.GetID()
+				if (!istype(id_card))
+					to_chat(usr, span_warning("You need to swipe your ID!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+				if (!(ACCESS_CAPTAIN in id_card.access))
+					to_chat(usr, span_warning("You are not authorized to do this!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+			GLOB.cops_arrived = TRUE
+			send_in_the_fuzz()
+
+			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation Police Department."))
+			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+
+			log_game("[key_name(usr)] has called the Sol Federation Police Department.")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] has called the Sol Federation Police Department.")
+			deadchat_broadcast(" has called the Sol Federation Police Department.", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+		// SKYRAT EDIT ADDITION END
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
 		to_chat(user, span_warning("This was your last free use without cooldown, you will not be able to use this again for [DisplayTimeText(EMERGENCY_ACCESS_COOLDOWN)]."))
@@ -699,6 +732,88 @@
 	GLOB.shuttle_caller_list -= src
 	SSshuttle.autoEvac()
 	return ..()
+
+/// SKYRAT EDIT BEGIN
+/// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
+/obj/machinery/computer/communications/proc/send_in_the_fuzz()
+	var/team_size
+	var/cops_to_send
+	var/announcement_message = "sussus amogus"
+	var/announcer = "Sol Federation Police Department"
+	switch(SSsecurity_level.current_level)
+		if(SEC_LEVEL_GREEN)
+			team_size = 8
+			cops_to_send = /datum/antagonist/ert/families/beatcop
+			announcement_message = "Hello, crewmembers of [station_name()]! We've received a 911 call about a danger to our citizens and their rights on board your station, \
+			so we're sending some beat cops to check things out. Nothing extreme, just a courtesy call.\
+			\n\nHave a pleasant day!"
+			announcer = "Sol Federation Police Department"
+		if(SEC_LEVEL_BLUE)
+			team_size = 9
+			cops_to_send = /datum/antagonist/ert/families/beatcop/armored
+			announcement_message = "Crewmembers of [station_name()]. We have received confirmed reports of dangers to our citizens and their rights from your station. \
+			We are dispatching some armed officers to help keep the peace and investigate matters. \
+			Do not get in their way, and comply with any and all requests from them.\
+			\n\nHave a secure day."
+			announcer = "Sol Federation Police Department"
+		if(SEC_LEVEL_AMBER)
+			team_size = 10
+			cops_to_send = /datum/antagonist/ert/families/beatcop/swat
+			announcement_message = "Crewmembers of [station_name()]. We have received confirmed reports of extreme dangers to our citizens and their rights from your station. \
+			The Sol Federation does not tolerate abuse towards our citizens, and we will be responding in force to keep the peace and reduce civilian casualties. \
+			We have your station surrounded, do not resist.\
+			\n\nHave a secure day."
+			announcer = "Sol Federation Police Department"
+		if(SEC_LEVEL_RED)
+			team_size = 11
+			cops_to_send = /datum/antagonist/ert/families/beatcop/fbi
+			announcement_message = "We are dispatching our top agents to [station_name()] at the request of the Sol Federation government due to an extreme threat to the safety and rights of our citizens.\
+			\n\nComply with all agents or face the consequences of your actions."
+			announcer = "Sol Federation Bureau of Investigation"
+		if(SEC_LEVEL_DELTA to SEC_LEVEL_GAMMA)
+			team_size = 12
+			cops_to_send = /datum/antagonist/ert/families/beatcop/military
+			announcement_message = "Due to an insane level of danger to our citizens aboard [station_name()], we have dispatched the National Guard to curb any and all threats to our citizens on board the station.\
+			\n\nThe rights of Sol Federation citizens will be ensured. Or else."
+			announcer = "Sol Federation National Guard"
+
+	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg')
+	var/list/candidates = poll_ghost_candidates("The station has called for the police. Will you respond?", "deathsquad")
+
+
+	if(candidates.len)
+		//Pick the (un)lucky players
+		var/numagents = min(team_size,candidates.len)
+
+		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
+		var/index = 0
+		while(numagents && candidates.len)
+			var/spawnloc = spawnpoints[index+1]
+			//loop through spawnpoints one at a time
+			index = (index + 1) % spawnpoints.len
+			var/mob/dead/observer/chosen_candidate = pick(candidates)
+			candidates -= chosen_candidate
+			if(!chosen_candidate.key)
+				continue
+
+			//Spawn the body
+			var/mob/living/carbon/human/cop = new(spawnloc)
+			chosen_candidate.client.prefs.safe_transfer_prefs_to(cop, is_antag = TRUE)
+			cop.key = chosen_candidate.key
+
+			//Give antag datum
+			var/datum/antagonist/ert/families/ert_antag = new cops_to_send
+
+			cop.mind.add_antag_datum(ert_antag)
+			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
+			SSjob.SendToLateJoin(cop)
+
+			//Logging and cleanup
+			log_game("[key_name(cop)] has been selected as an [ert_antag.name]")
+			numagents--
+	GLOB.cops_arrived = TRUE
+	return TRUE
+/// SKYRAT EDIT END
 
 /// Override the cooldown for special actions
 /// Used in places such as CentCom messaging back so that the crew can answer right away
