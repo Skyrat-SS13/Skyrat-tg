@@ -32,21 +32,21 @@
 		return FALSE
 
 	if (returned_prefs["button"] == 1)
-		var/list/prefs = settings["mainsettings"]
-		spawn_it(prefs)
+		spawn_it(settings)
 		return TRUE
 
 /datum/admins/proc/spawn_it(list/settings)
 	. = settings
-	var/mob_to_spawn = settings["mob_to_spawn"]["value"]
-	if (!ispath(settings["mob_to_spawn"]["value"]))
-		mob_to_spawn = text2path(settings["mob_to_spawn"]["value"])
+	var/list/prefs = settings["mainsettings"]
+	var/mob_to_spawn = prefs["mob_to_spawn"]["value"]
+	if (!ispath(prefs["mob_to_spawn"]["value"]))
+		mob_to_spawn = text2path(prefs["mob_to_spawn"]["value"])
 
 	var/obj/structure/mob_spawner/spawned_spawner = new /obj/structure/mob_spawner(get_turf(usr))
 
 	spawned_spawner.monster_types = list(mob_to_spawn)
-	spawned_spawner.max_mobs = settings["max_mobs"]["value"]
-	spawned_spawner.spawn_cooldown = settings["spawn_cooldown"]["value"]
-	spawned_spawner.regenerate_time = settings["regenerate_time"]["value"]
-	spawned_spawner.retaliate_cooldown = settings["retaliate_cooldown"]["value"]
-	spawned_spawner.icon_state = settings["nest_icon"]["value"]
+	spawned_spawner.max_mobs = prefs["max_mobs"]["value"]
+	spawned_spawner.spawn_cooldown = prefs["spawn_cooldown"]["value"]
+	spawned_spawner.regenerate_time = prefs["regenerate_time"]["value"]
+	spawned_spawner.retaliate_cooldown = prefs["retaliate_cooldown"]["value"]
+	spawned_spawner.icon_state = prefs["nest_icon"]["value"]
