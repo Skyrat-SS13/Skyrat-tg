@@ -85,17 +85,14 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "penis_color"
 	relevant_mutant_bodypart = "penis"
+	type_to_check = /datum/preference/toggle/penis
 
-/datum/preference/tri_color/penis/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/penis)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/tri_color/penis/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts["penis"])
-		target.dna.mutant_bodyparts["penis"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-	target.dna.mutant_bodyparts["penis"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
+/datum/preference/tri_bool/penis
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "penis_emissive"
+	relevant_mutant_bodypart = "penis"
+	type_to_check = /datum/preference/toggle/penis
 
 /datum/preference/toggle/penis_taur_mode
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -179,17 +176,14 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "testicles_color"
 	relevant_mutant_bodypart = "testicles"
+	type_to_check = /datum/preference/toggle/testicles
 
-/datum/preference/tri_color/testicles/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/testicles)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/tri_color/testicles/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts["testicles"])
-		target.dna.mutant_bodyparts["testicles"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-	target.dna.mutant_bodyparts["testicles"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
+/datum/preference/tri_bool/testicles
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "testicles_emissive"
+	relevant_mutant_bodypart = "testicles"
+	type_to_check = /datum/preference/toggle/testicles
 
 /datum/preference/numeric/balls_size
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -256,17 +250,14 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "vagina_color"
 	relevant_mutant_bodypart = "vagina"
+	type_to_check = /datum/preference/toggle/vagina
 
-/datum/preference/tri_color/vagina/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/vagina)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/tri_color/vagina/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts["vagina"])
-		target.dna.mutant_bodyparts["vagina"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-	target.dna.mutant_bodyparts["vagina"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
+/datum/preference/tri_bool/vagina
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "vagina_emissive"
+	relevant_mutant_bodypart = "vagina"
+	type_to_check = /datum/preference/toggle/vagina
 
 /datum/preference/toggle/womb
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -353,17 +344,14 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "breasts_color"
 	relevant_mutant_bodypart = "breasts"
+	type_to_check = /datum/preference/toggle/breasts
 
-/datum/preference/tri_color/breasts/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/breasts)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/tri_color/breasts/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts["breasts"])
-		target.dna.mutant_bodyparts["breasts"] = list("name" = "None", "color" = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
-	target.dna.mutant_bodyparts["breasts"]["color"] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
+/datum/preference/tri_bool/breasts
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "breasts_emissive"
+	relevant_mutant_bodypart = "breasts"
+	type_to_check = /datum/preference/toggle/breasts
 
 /datum/preference/toggle/breasts_lactation
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES

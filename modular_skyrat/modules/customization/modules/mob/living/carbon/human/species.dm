@@ -86,7 +86,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	H.remove_overlay(BODY_FRONT_LAYER)
 
 	var/g = (H.body_type == FEMALE) ? "f" : "m"
-
 	for(var/bodypart in bodyparts_to_add)
 		var/datum/sprite_accessory/S = bodypart
 		var/key = S.key
@@ -99,10 +98,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(!override_color && S.special_colorize)
 			override_color = S.get_special_render_colour(H, render_state)
 
+		var/color_layer_list = S.color_layer_names
 		if(S.special_icon_case)
 			icon_to_use = S.get_special_icon(H, render_state)
 		else
 			icon_to_use = S.icon
+
+		if (S.special_render_case)
+			color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
 
 		if(S.special_x_dimension)
 			x_shift = S.get_special_x_dimension(H, render_state)
@@ -116,10 +119,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		for(var/layer in S.relevent_layers)
 			var/layertext = mutant_bodyparts_layertext(layer)
-
+			var/list/mutable_appearance/accessories
 			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
 			accessory_overlay.icon_state = "[render_state]_[layertext]"
+			if (S.color_src == USE_MATRIXED_COLORS && color_layer_list)
+				accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
+				accessories = list()
 
 			if(S.center)
 				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
@@ -137,15 +143,19 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
 							var/list/color_list = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST]
-							var/alpha_value = specific_alpha //this is here and not with the alpha setting code below as setting the alpha on a matrix color mutable appearance breaks it (at least in this case)
-							var/list/finished_list = list()
-							finished_list += ReadRGB("[get_alpha_padded_color(color_list[1])]")
-							finished_list += ReadRGB("[get_alpha_padded_color(color_list[2])]")
-							finished_list += ReadRGB("[get_alpha_padded_color(color_list[3])]")
-							finished_list += list(0,0,0,alpha_value)
-							for(var/index in 1 to finished_list.len)
-								finished_list[index] /= 255
-							accessory_overlay.color = finished_list
+							for (var/n in color_layer_list)
+								var/num = text2num(n)
+								var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
+								matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
+								matrixed_acce = center_image(matrixed_acce, x_shift, S.dimension_y)
+								matrixed_acce.color = color_list[num]
+								matrixed_acce.alpha = specific_alpha
+								accessories += matrixed_acce
+								if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
+									var/mutable_appearance/emissive_overlay = emissive_appearance(matrixed_acce.icon, matrixed_acce.icon_state, -layer, specific_alpha)
+									emissive_overlay.appearance_flags ^= RESET_TRANSFORM
+									emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
+									accessories += emissive_overlay
 						if(MUTCOLORS)
 							if(fixed_mut_color)
 								accessory_overlay.color = fixed_mut_color
@@ -164,7 +174,16 @@ GLOBAL_LIST_EMPTY(customizable_races)
 							accessory_overlay.color = H.eye_color
 			else
 				accessory_overlay.color = override_color
-			standing += accessory_overlay
+			if (accessories)
+				for (var/acces in accessories)
+					standing += acces
+			else
+				standing += accessory_overlay
+				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
+					var/mutable_appearance/emissive_overlay = emissive_appearance(accessory_overlay.icon, accessory_overlay.icon_state, -layer, specific_alpha)
+					emissive_overlay.appearance_flags ^= RESET_TRANSFORM
+					emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
+					standing += emissive_overlay
 
 			if(S.hasinner)
 				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
@@ -440,17 +459,25 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(!(NOEYESPRITES in species_traits))
 			var/obj/item/organ/eyes/E = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/eye_overlay
+			var/mutable_appearance/eye_emissive
 			var/eye_icon = eyes_icon || 'icons/mob/human_face.dmi'
 			if(!E)
 				eye_overlay = mutable_appearance(eye_icon, "eyes_missing", -BODY_LAYER)
 			else
 				eye_overlay = mutable_appearance(eye_icon, E.eye_icon_state, -BODY_LAYER)
+				if (E.is_emissive)
+					eye_emissive = emissive_appearance(eye_icon, E.eye_icon_state, -BODY_LAYER)
 			if((EYECOLOR in species_traits) && E)
 				eye_overlay.color = species_human.eye_color
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				eye_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
+				if (eye_emissive)
+					eye_emissive.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
+					eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
 			standing += eye_overlay
+			if (eye_emissive)
+				standing += eye_emissive
 
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))

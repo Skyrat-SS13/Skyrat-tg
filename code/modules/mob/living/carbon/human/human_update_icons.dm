@@ -711,6 +711,13 @@ generate/load female uniform sprites matching all previously decided variables
 				eye_overlay.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
 			add_overlay(eye_overlay)
+			if (E && E.is_emissive)
+				var/mutable_appearance/emissive_appearance = emissive_appearance('icons/mob/human_face.dmi', E ? E.eye_icon_state : "eyes_missing", -BODY_LAYER)
+				emissive_appearance.appearance_flags ^= RESET_TRANSFORM
+				if(OFFSET_FACE in dna.species.offset_features)
+					emissive_appearance.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
+					emissive_appearance.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
+				add_overlay(emissive_appearance)
 
 	dna.species.handle_hair(src)
 

@@ -97,7 +97,8 @@
 
 	for(var/key in H.dna.species.body_markings[body_zone])
 		var/datum/body_marking/BM = GLOB.body_markings[key]
-
+		if (!BM)
+			continue
 		var/render_limb_string = body_zone
 		switch(body_zone)
 			if(BODY_ZONE_R_LEG, BODY_ZONE_L_LEG)
@@ -108,13 +109,21 @@
 					var/gendaar = (H.body_type == FEMALE) ? "f" : "m"
 					render_limb_string = "[render_limb_string]_[gendaar]"
 
-		var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+		var/mutable_appearance/accessory_overlay
+		var/mutable_appearance/emissive
+		accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+		if (H.dna.species.body_markings[body_zone][key][2])
+			emissive = emissive_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+			emissive.appearance_flags ^= RESET_TRANSFORM
+			emissive.alpha = H.dna.species.markings_alpha
 		if(override_color)
 			accessory_overlay.color = override_color
 		else
-			accessory_overlay.color = H.dna.species.body_markings[body_zone][key]
+			accessory_overlay.color = H.dna.species.body_markings[body_zone][key][1]
 		accessory_overlay.alpha = H.dna.species.markings_alpha
 		. += accessory_overlay
+		if (emissive)
+			. += emissive
 
 	if(aux_zone)
 		for(var/key in H.dna.species.body_markings[aux_zone])
@@ -122,13 +131,21 @@
 
 			var/render_limb_string = aux_zone
 
-			var/mutable_appearance/accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
+			var/mutable_appearance/emissive
+			var/mutable_appearance/accessory_overlay
+			accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
+			if (H.dna.species.body_markings[body_zone][key][2])
+				emissive = emissive_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
+				emissive.appearance_flags ^= RESET_TRANSFORM
+				emissive.alpha = H.dna.species.markings_alpha
 			if(override_color)
 				accessory_overlay.color = override_color
 			else
-				accessory_overlay.color = H.dna.species.body_markings[aux_zone][key]
+				accessory_overlay.color = H.dna.species.body_markings[aux_zone][key][1]
 			accessory_overlay.alpha = H.dna.species.markings_alpha
 			. += accessory_overlay
+			if (emissive)
+				. += emissive
 
 	if(blocks_emissive)
 		var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)

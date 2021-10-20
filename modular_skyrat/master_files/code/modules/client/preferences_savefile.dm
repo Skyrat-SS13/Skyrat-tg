@@ -107,5 +107,6 @@
 	if (islist(markings))
 		for (var/marking in markings)
 			for (var/title in markings[marking])
-				markings[marking][title] = sanitize_hexcolor(markings[marking][title])
+				if (!islist(markings[marking][title]))
+					markings[marking][title] = list(sanitize_hexcolor(markings[marking][title]), FALSE)
 	return markings
