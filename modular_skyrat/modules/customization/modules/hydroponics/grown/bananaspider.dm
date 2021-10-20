@@ -7,6 +7,7 @@
 	growing_icon = 'modular_skyrat/master_files/icons/obj/hydroponics/growing.dmi'
 	icon_grow = "spibanana-grow"
 	icon_dead = "spibanana-dead"
+	icon_harvest = "spibanana-harvest"
 	plantname = "Leggy Banana Tree"
 	product = /obj/item/food/grown/banana/banana_spider_spawnable
 	genes = list(/datum/plant_gene/trait/slip)
@@ -30,5 +31,5 @@
 			var/mob/living/simple_animal/banana_spider/banana_spider = new /mob/living/simple_animal/banana_spider(get_turf(src.loc))
 			banana_spider.visible_message(span_notice("The banana spider chitters as it stretches its legs."))
 			qdel(src)
-			
-			
+
+
