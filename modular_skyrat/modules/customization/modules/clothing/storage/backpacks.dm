@@ -38,13 +38,3 @@
 	new /obj/item/suppressor/specialoffer(src)
 	new /obj/item/suppressor/specialoffer(src)
 	new /obj/item/suppressor/specialoffer(src)
-
-
-/obj/item/storage/backpack/duffelbag/syndie/randomjunk
-	desc = "A sinister looking duffel bag full of what looks to be just a bunch of random junk. Who the hell supplied this?"
-
-/obj/item/storage/backpack/duffelbag/syndie/suppressors/PopulateContents()
-	new /obj/item/suppressor/specialoffer(src)
-	new /obj/item/suppressor/specialoffer(src)
-	new /obj/item/suppressor/specialoffer(src)
-	new /obj/item/suppressor/specialoffer(src)
