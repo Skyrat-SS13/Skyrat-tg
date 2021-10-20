@@ -21,7 +21,7 @@
 			"spawn_cooldown" = list("desc" = "Spawn cooldown", "type" = "number", "value" = 5 SECONDS),
 			"regenerate_time" = list("desc" = "Regenerate time", "type" = "number", "value" = 5 MINUTES),
 			"retaliate_cooldown" = list("desc" = "Retaliate cooldown", "type" = "number", "value" = 10 SECONDS),
-			"ghost_controllable" = list("desc" = "Ghost controllable", "type" = "boolean", "value" = "Yes"),
+			"ghost_controllable" = list("desc" = "Ghost controllable", "type" = "boolean", "value" = "No"),
 			"nest_icon" = list("desc" = "Nest icon", "type" = "string", "value" = "nest"),
 			"spawn" = list("desc" = "Spawn nest", "type" = "button", "callback" = CALLBACK(src, .proc/spawn_it), "value" = "Spawn"),
 		)
