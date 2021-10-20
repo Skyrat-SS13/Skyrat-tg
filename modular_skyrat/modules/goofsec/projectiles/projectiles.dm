@@ -50,10 +50,6 @@
 	cell_type = /obj/item/stock_parts/cell/super
 	supports_swapping_cells = TRUE
 
-/obj/item/gun/energy/vintorez/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
-
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/vintorez
 	name = "hardlight bullet vintorez casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/vintorez
@@ -91,10 +87,6 @@
 	cell_type = /obj/item/stock_parts/cell/super
 	supports_swapping_cells = TRUE
 
-/obj/item/gun/energy/norwind/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
-
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/norwind
 	name = "hardlight bullet norwind casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/norwind
@@ -123,10 +115,6 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind)
 	cell_type = /obj/item/stock_parts/cell/super
 	supports_swapping_cells = TRUE
-
-/obj/item/gun/energy/ostwind/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/ostwind
 	name = "hardlight bullet norostwindwind casing"
@@ -160,10 +148,6 @@
 	cell_type = /obj/item/stock_parts/cell/super
 	supports_swapping_cells = TRUE
 
-/obj/item/gun/energy/pitbull/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
-
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pitbull
 	name = "hardlight bullet pitbull casing"
 	projectile_type = /obj/projectile/beam/laser/hardlight_bullet/pitbull
@@ -192,10 +176,6 @@
 	shaded_charge = TRUE
 	cell_type = /obj/item/stock_parts/cell/super
 	supports_swapping_cells = TRUE
-
-/obj/item/gun/energy/pcr/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
 
 /obj/item/ammo_casing/energy/laser/hardlight_bullet/pcr
 	name = "hardlight bullet pcr casing"
