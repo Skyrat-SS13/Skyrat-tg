@@ -103,3 +103,36 @@
 		/obj/item/gun/energy/laser/cfa_paladin,
 		/obj/item/gun/energy/e_gun,
 	)
+
+/////////////////////////////
+/////////SYNDIE SHIT/////////
+/////////////////////////////
+
+/obj/item/storage/box/ammo_box/c20r
+	name = "C-20r ammo box"
+	desc = "A box filled with 45. ammunition for a certain ominous rifle."
+
+/obj/item/storage/box/ammo_box/c20r/PopulateContents()
+	new /obj/item/ammo_box/magazine/smgm45(src)
+	new /obj/item/ammo_box/magazine/smgm45(src)
+	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/gun_maintenance_supplies(src)
+
+/obj/item/storage/box/ammo_box/bulldog
+	name = "bulldog ammo box"
+	desc = "A box filled with 12 gauge slugs. Whatever this gun is for probably bites hard."
+
+/obj/item/storage/box/ammo_box/bulldog/PopulateContents()
+	new /obj/item/ammo_box/magazine/m12g(src)
+	new /obj/item/ammo_box/magazine/m12g(src)
+	new /obj/item/ammo_box/magazine/m12g(src)
+	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/gun_maintenance_supplies(src)
+
+/obj/effect/spawner/armory_spawn/syndie_rifles
+	icon_state = "random_rifle"
+	gun_count = 4
+	guns = list(
+		/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+		/obj/item/gun/ballistic/automatic/m90,
+	)

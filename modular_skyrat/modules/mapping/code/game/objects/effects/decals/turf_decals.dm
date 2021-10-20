@@ -81,3 +81,32 @@
 ///Misc///
 /obj/effect/turf_decal/skyrat_decals/misc/handicapped
 	icon_state = "handicapped"
+
+///GORLEX LOGO///
+//Bottom
+/obj/effect/turf_decal/skyrat_decals/gorlex/bottom/left
+	icon_state = "g1,1"
+
+/obj/effect/turf_decal/skyrat_decals/gorlex/bottom/middle
+	icon_state = "g1,2"
+
+/obj/effect/turf_decal/skyrat_decals/gorlex/bottom/right
+	icon_state = "g1,3"
+//Middle
+/obj/effect/turf_decal/skyrat_decals/gorlex/middle/left
+	icon_state = "g2,1"
+
+/obj/effect/turf_decal/skyrat_decals/gorlex/middle/middle
+	icon_state = "g2,2"
+
+/obj/effect/turf_decal/skyrat_decals/gorlex/middle/right
+	icon_state = "g2,3"
+//Top
+/obj/effect/turf_decal/skyrat_decals/gorlex/top/left
+	icon_state = "g3,1"
+
+/obj/effect/turf_decal/skyrat_decals/gorlex/top/middle
+	icon_state = "g3,2"
+
+/obj/effect/turf_decal/skyrat_decals/gorlex/top/right
+	icon_state = "g3,3"

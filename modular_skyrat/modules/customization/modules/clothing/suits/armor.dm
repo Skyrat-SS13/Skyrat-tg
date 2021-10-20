@@ -53,10 +53,21 @@
 /obj/item/clothing/suit/armor/vest/warden/syndicate
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "master at arms's vest"
+	name = "master at arms' vest"
 	desc = "Stunning. Menacing. Perfect for the man who gets bullied for leaving the brig."
 	icon_state = "warden_syndie"
 
+/obj/item/clothing/suit/armor/vest/warden/syndicate/syndicate_winter
+	name = "master at arms' winter vest"
+	desc = "Brooding. Tasteful. Perfect for never leaving the brig. Copycat. You aren't even in the same sector as Icebox, why are you wearing this?"
+	icon = 'modular_skyrat/modules/syndie_edits/icons/obj/syndievest_winter_items.dmi'
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/suit/syndievest_winter.dmi'
+	icon_state = "syndievest_winter_maa"
+	body_parts_covered = CHEST|GROIN
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	dog_fashion = null
+	resistance_flags = FIRE_PROOF
 
 // CAPTAIN
 
