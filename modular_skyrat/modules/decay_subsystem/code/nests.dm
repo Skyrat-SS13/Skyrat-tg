@@ -39,6 +39,8 @@
 /obj/structure/mob_spawner/Initialize()
 	. = ..()
 	calculate_trigger_turfs()
+	if(passive_spawning)
+		START_PROCESSING(SSobj, src)
 
 /obj/structure/mob_spawner/proc/calculate_trigger_turfs()
 	for(var/turf/open/seen_turf in view(trigger_range, src))
@@ -60,6 +62,8 @@
 	for(var/t in registered_turfs)
 		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
 	registered_turfs = null
+	if(passive_spawning)
+		STOP_PROCESSING(SSobj, src)
 	return ..()
 
 /obj/structure/mob_spawner/process(delta_time)

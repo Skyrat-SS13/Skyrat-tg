@@ -57,3 +57,5 @@
 	spawned_spawner.icon_state = prefs["nest_icon"]["value"]
 	spawned_spawner.ghost_controllable = prefs["ghost_controllable"]["value"] == "Yes" ? TRUE : FALSE
 	spawned_spawner.passive_spawning = prefs["passive_spawning"]["value"] == "Yes" ? TRUE : FALSE
+	if(prefs["passive_spawning"]["value"] == "Yes")
+		START_PROCESSING(SSobj, spawned_spawner)
