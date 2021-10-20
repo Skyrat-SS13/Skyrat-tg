@@ -54,16 +54,16 @@
 			return
 		set_anchored(!anchored)
 		attacking_item.play_tool_sound(src, 75)
-		user.visible_message(SPAN_NOTICE("[user] [anchored ? "anchored" : "unanchored"] \the [src] [anchored ? "to" : "from"] the ground."), \
-						SPAN_NOTICE("You [anchored ? "anchored" : "unanchored"] \the [src] [anchored ? "to" : "from"] the ground."), \
-						SPAN_HEAR("You hear a ratchet."))
+		user.visible_message(span_notice("[user] [anchored ? "anchored" : "unanchored"] \the [src] [anchored ? "to" : "from"] the ground."), \
+						span_notice("You [anchored ? "anchored" : "unanchored"] \the [src] [anchored ? "to" : "from"] the ground."), \
+						span_hear("You hear a ratchet."))
 		return TRUE
 	else if(attacking_item.tool_behaviour == TOOL_CROWBAR)
-		to_chat(user, SPAN_NOTICE("You start prying open \the [src]..."))
+		to_chat(user, span_notice("You start prying open \the [src]..."))
 		if(attacking_item.use_tool(src, user, 2 SECONDS, volume = 75))
-			user.visible_message(SPAN_NOTICE("[user] pries open \the [src]."), \
-							SPAN_NOTICE("You pry open \the [src]."), \
-							SPAN_HEAR("You hear a crack."))
+			user.visible_message(span_notice("[user] pries open \the [src]."), \
+							span_notice("You pry open \the [src]."), \
+							span_hear("You hear a crack."))
 			drop_loot()
 			qdel(src)
 		return TRUE
@@ -72,10 +72,10 @@
 /obj/structure/supplies_box/examine(mob/user)
 	. = ..()
 	if(anchored)
-		. += SPAN_NOTICE("It is <b>bolted</b> to the ground.")
+		. += span_notice("It is <b>bolted</b> to the ground.")
 	else
-		. += SPAN_NOTICE("You could <b>bolt</b> it to the ground with a <b>wrench</b>.")
-	. += SPAN_NOTICE("You could <b>pry</b> it open.")
+		. += span_notice("You could <b>bolt</b> it to the ground with a <b>wrench</b>.")
+	. += span_notice("You could <b>pry</b> it open.")
 
 /obj/structure/supplies_box/ex_act(severity)
 	if(severity >= EXPLODE_DEVASTATE)
@@ -154,7 +154,7 @@
 	if(!weighted_spawns_amount)
 		return
 	for(var/i in 1 to weighted_spawns_amount)
-		var/picked_type = pickweight(weighted_spawns)
+		var/picked_type = pick_weight(weighted_spawns)
 		new picked_type(location)
 		weighted_spawns -= picked_type
 		if(!weighted_spawns.len)
@@ -247,7 +247,7 @@
 
 /datum/supplies_box_loot/security
 	guaranteed_spawns = list(
-		/obj/item/melee/baton/loaded,
+		/obj/item/melee/baton/security/loaded,
 		/obj/item/restraints/handcuffs/cable/zipties
 		)
 	weighted_spawns = list(
