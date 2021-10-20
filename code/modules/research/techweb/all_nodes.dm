@@ -1130,6 +1130,7 @@
 		"dna_disk",
 		"dnascanner",
 		"scan_console",
+		"oc_donut_steel_restoration_device", // SKYRAT EDIT ADDITION: Added the Self-Actualization Device
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
