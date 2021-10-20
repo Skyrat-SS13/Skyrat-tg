@@ -358,6 +358,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/tailmawwag
 	name = "Tailmaw (wag)"
 	icon_state = "tailmawwag"
+	
 /datum/sprite_accessory/tails/mammal/wagging/tailmaw
 	name = "Tailmaw"
 	icon_state = "tailmaw"
