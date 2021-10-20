@@ -18,11 +18,13 @@
 		"mainsettings" = list(
 			"mob_to_spawn" = list("desc" = "Mob to spawn", "type" = "datum", "path" = "/mob/living", "subtypesonly" = TRUE, "value" = chosen),
 			"max_mobs" = list("desc" = "Max mobs", "type" = "number", "value" = 5),
+			"trigger_range" = list("desc" = "Trigger range", "type" = "number", "value" = 5),
 			"spawn_cooldown" = list("desc" = "Spawn cooldown", "type" = "number", "value" = 5 SECONDS),
 			"regenerate_time" = list("desc" = "Regenerate time", "type" = "number", "value" = 5 MINUTES),
 			"retaliate_cooldown" = list("desc" = "Retaliate cooldown", "type" = "number", "value" = 10 SECONDS),
 			"ghost_controllable" = list("desc" = "Ghost controllable", "type" = "boolean", "value" = "No"),
-			"nest_icon" = list("desc" = "Nest icon", "type" = "string", "value" = "nest"),
+			"passive_spawning" = list("desc" = "Passive spawning", "type" = "boolean", "value" = "No"),
+			"nest_icon" = list("desc" = "Nest icon state", "type" = "string", "value" = "nest"),
 			"spawn" = list("desc" = "Spawn nest", "type" = "button", "callback" = CALLBACK(src, .proc/spawn_it), "value" = "Spawn"),
 		)
 	)
@@ -47,8 +49,11 @@
 
 	spawned_spawner.monster_types = list(mob_to_spawn)
 	spawned_spawner.max_mobs = prefs["max_mobs"]["value"]
+	spawned_spawner.trigger_range = prefs["trigger_range"]["value"]
+	spawned_spawner.calculate_trigger_turfs()
 	spawned_spawner.spawn_cooldown = prefs["spawn_cooldown"]["value"]
 	spawned_spawner.regenerate_time = prefs["regenerate_time"]["value"]
 	spawned_spawner.retaliate_cooldown = prefs["retaliate_cooldown"]["value"]
 	spawned_spawner.icon_state = prefs["nest_icon"]["value"]
 	spawned_spawner.ghost_controllable = prefs["ghost_controllable"]["value"] == "Yes" ? TRUE : FALSE
+	spawned_spawner.passive_spawning = prefs["passive_spawning"]["value"] == "Yes" ? TRUE : FALSE

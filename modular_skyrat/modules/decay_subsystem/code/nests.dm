@@ -31,10 +31,17 @@
 	var/list/loot = list()
 	/// Do spawned mobs become ghost controllable?
 	var/ghost_controllable = FALSE
+	/// The range at which these are triggered.
+	var/trigger_range = 5
+	/// Does this nest passively spawn mobs too?
+	var/passive_spawning = FALSE
 
 /obj/structure/mob_spawner/Initialize()
 	. = ..()
-	for(var/turf/open/seen_turf in view(5, src))
+	calculate_trigger_turfs()
+
+/obj/structure/mob_spawner/proc/calculate_trigger_turfs()
+	for(var/turf/open/seen_turf in view(trigger_range, src))
 		registered_turfs += seen_turf
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
@@ -49,12 +56,20 @@
 	playsound(src, 'sound/effects/blobattack.ogg', 100)
 	return ..()
 
-
 /obj/structure/mob_spawner/Destroy()
 	for(var/t in registered_turfs)
 		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
 	registered_turfs = null
 	return ..()
+
+/obj/structure/mob_spawner/process(delta_time)
+	if(passive_spawning)
+		if(spawned_mobs >= max_mobs)
+			return
+		if(spawn_delay > world.time)
+			return
+		spawn_delay = world.time + spawn_cooldown
+		spawn_mob()
 
 /obj/structure/mob_spawner/proc/proximity_trigger(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -72,20 +87,20 @@
 	if((NEST_FACTION in entered_mob.faction))
 		return
 
+	spawn_mob()
+
+/obj/structure/mob_spawner/proc/spawn_mob()
 	var/sound/sound_to_play = pick('modular_skyrat/master_files/sound/effects/rustle1.ogg', 'modular_skyrat/master_files/sound/effects/rustle2.ogg')
-
 	playsound(src, sound_to_play, 100)
-
 	do_squish(0.8, 1.2)
 
 	spawned_mobs++
 
 	var/chosen_mob_type = pick(monster_types)
 	var/mob/living/L = new chosen_mob_type(loc)
+
 	L.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
-
 	L.faction = faction
-
 	L.ghost_controllable = ghost_controllable
 
 	visible_message(span_danger("[L] emerges from [src]."))
