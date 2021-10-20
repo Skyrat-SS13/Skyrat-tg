@@ -35,6 +35,9 @@
 		/datum/trader_bounty/kitchen_restock_botany = 100,
 		/datum/trader_bounty/kitchen_restock_meat = 100
 		)
+	possible_supplies_bounties = list(
+		/datum/trader_bounty/food_supplies = 100
+		)
 
 /datum/trader/chinese
 	name = "Chinese Restaurant"
@@ -71,6 +74,9 @@
 		/datum/trader_bounty/kitchen_restock_botany = 100,
 		/datum/trader_bounty/kitchen_restock_meat = 100,
 		/datum/trader_bounty/festive_preparations = 150
+		)
+	possible_supplies_bounties = list(
+		/datum/trader_bounty/food_supplies = 100
 		)
 	var/list/fortunes = list("Today it's up to you to create the peacefulness you long for.",
 							"If you refuse to accept anything but the best, you very often get it.",
@@ -117,7 +123,8 @@
 		/datum/sold_goods/chicken = 100,
 		/datum/sold_goods/wheat = 100,
 		/datum/sold_goods/corn = 100,
-		/datum/sold_goods/pumpkin = 100
+		/datum/sold_goods/pumpkin = 100,
+		/datum/sold_goods/food_supplies = 100
 		)
 	possible_bought_goods = list(
 		/datum/bought_goods/eggs = 100,

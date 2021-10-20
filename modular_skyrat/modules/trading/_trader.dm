@@ -60,8 +60,14 @@
 
 	/// Current listed bounties
 	var/list/bounties
-	/// All possible bounties, associative to weight
+	/// Possible normal bounties, associative to weight
 	var/list/possible_bounties
+	/// Reference to the current normal bounty
+	var/current_bounty
+	/// Possible supplies bounties, associative to weight
+	var/list/possible_supplies_bounties
+	/// Reference to the current supplies bounty
+	var/current_supplies_bounty
 	/// Chance to gain a bounty per stock rotation
 	var/bounty_gain_chance = 15
 	/// Chance to gain a bounty when the trader is spawned in
@@ -325,6 +331,10 @@
 	console.write_manifest(bounty.name, counted_amount, bounty.reward_cash, TRUE, user.name)
 	. = bounty.bounty_complete_text
 	bounties -= bounty
+	if(bounty.supplies_bounty)
+		current_supplies_bounty = null
+	else
+		current_bounty = null
 	qdel(bounty)
 	if(!bounties.len)
 		bounties = null
@@ -396,7 +406,9 @@
 
 /datum/trader/proc/InitializeStock()
 	if(prob(initial_bounty_gain_chance))
-		GainBounty()
+		GainNormalBounty()
+	if(prob(initial_bounty_gain_chance))
+		GainSuppliesBounty()
 	if(prob(initial_delivery_gain_chance))
 		GainDelivery()
 	if(possible_bought_goods)
@@ -426,12 +438,24 @@
 					CreateSoldGoodieType(picked_type)
 		candidates = null
 
-/datum/trader/proc/GainBounty()
-	if(bounties || !possible_bounties)
+/datum/trader/proc/GainNormalBounty()
+	if(!possible_bounties || current_bounty)
 		return
 	LAZYINITLIST(bounties)
 	var/bounty_type = pick_weight(possible_bounties)
-	bounties += new bounty_type()
+	var/datum/trader_bounty/new_bounty = new bounty_type()
+	bounties += new_bounty
+	current_bounty = new_bounty
+
+/datum/trader/proc/GainSuppliesBounty()
+	if(!possible_supplies_bounties || current_supplies_bounty)
+		return
+	LAZYINITLIST(bounties)
+	var/bounty_type = pick_weight(possible_supplies_bounties)
+	var/datum/trader_bounty/new_bounty = new bounty_type()
+	new_bounty.supplies_bounty = TRUE
+	bounties += new_bounty
+	current_supplies_bounty = new_bounty
 
 /datum/trader/proc/GainDelivery()
 	if(deliveries || !possible_deliveries)
@@ -442,7 +466,9 @@
 
 /datum/trader/proc/RotateStock()
 	if(prob(bounty_gain_chance))
-		GainBounty()
+		GainNormalBounty()
+	if(prob(bounty_gain_chance))
+		GainSuppliesBounty()
 	if(prob(delivery_gain_chance))
 		GainDelivery()
 	if(prob(TRADER_ABSOLUTE_STOCK_ROTATION_CHANCE))

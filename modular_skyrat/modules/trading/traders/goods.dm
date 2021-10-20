@@ -52,6 +52,10 @@
 								/datum/sold_goods/laptop = 100,
 								/datum/sold_goods/cell = 100,
 								/datum/sold_goods/decent_cell = 100)
+	possible_supplies_bounties = list(
+		/datum/trader_bounty/engineering_supplies = 100,
+		/datum/trader_bounty/material_supplies = 100
+		)
 
 /datum/trader/clothingshop
 	name = "Clothing Store Employee"
@@ -140,7 +144,10 @@
 								/datum/sold_goods/random_medical_stack = 100,
 								/datum/sold_goods/random_medical_stack/two = 100,
 								/datum/sold_goods/flash = 100,
-								/datum/sold_goods/grey_bull = 100)
+								/datum/sold_goods/grey_bull = 100,
+								/datum/sold_goods/material_supplies = 100,
+								/datum/sold_goods/medical_supplies = 100
+								)
 	target_sold_goods_amount = 14
 
 /datum/trader/robots
@@ -171,6 +178,10 @@
 		/datum/trader_bounty/stack/golden_circuits = 100,
 		/datum/trader_bounty/stack/seeing_diamonds = 100
 		)
+	possible_supplies_bounties = list(
+		/datum/trader_bounty/engineering_supplies = 100,
+		/datum/trader_bounty/material_supplies = 100
+		)
 
 /datum/trader/xeno_shop
 	name = "Xenolife Collector"
@@ -193,6 +204,10 @@
 								/datum/sold_goods/goliath = 100)
 	possible_bought_goods = list(/datum/bought_goods/space_carp = 100,
 								/datum/bought_goods/goliath = 100)
+	possible_supplies_bounties = list(
+		/datum/trader_bounty/food_supplies = 100,
+		/datum/trader_bounty/medical_supplies = 100
+		)
 	target_sold_goods_amount = 2
 	target_bought_goods_amount = 2
 
@@ -231,7 +246,9 @@
 								/datum/sold_goods/random_medical_stack/two = 100,
 								/datum/sold_goods/bottle_morphine = 100,
 								/datum/sold_goods/bottle_chloral = 100,
-								/datum/sold_goods/bottle_epinephrine = 100)
+								/datum/sold_goods/bottle_epinephrine = 100,
+								/datum/sold_goods/medical_supplies = 100
+								)
 	possible_bought_goods = list(/datum/bought_goods/liver = 100,
 								/datum/bought_goods/lungs = 100,
 								/datum/bought_goods/heart = 100,
@@ -273,7 +290,8 @@
 								/datum/bought_goods/stack/gold = 100,
 								/datum/bought_goods/stack/uranium = 100,
 								/datum/bought_goods/stack/plasma = 100,
-								/datum/bought_goods/stack/diamond = 100)
+								/datum/bought_goods/stack/diamond = 100
+								)
 	possible_sold_goods = list(/datum/sold_goods/stack/iron_ten = 100,
 								/datum/sold_goods/stack/glass_ten = 100,
 								/datum/sold_goods/stack/silver_ten = 100,
@@ -281,7 +299,9 @@
 								/datum/sold_goods/stack/uranium_ten = 100,
 								/datum/sold_goods/stack/plasma_ten = 100,
 								/datum/sold_goods/stack/diamond_five = 100,
-								/datum/sold_goods/mining_kit = 100)
+								/datum/sold_goods/mining_kit = 100,
+								/datum/sold_goods/material_supplies = 100
+								)
 	target_sold_goods_amount = 6
 	target_bought_goods_amount = 5
 	possible_deliveries = list(
@@ -327,6 +347,9 @@
 	possible_deliveries = list(
 		/datum/delivery_run/artifact_delivery = 100
 		)
+	possible_supplies_bounties = list(
+		/datum/trader_bounty/medical_supplies = 100
+		)
 
 /datum/trader/atmospherics
 	name = "Atmospheric Shop Employee"
@@ -337,5 +360,9 @@
 		/datum/sold_goods/belt/plasma = 100,
 		/datum/sold_goods/emergency_oxygen = 100,
 		/datum/sold_goods/voidsuit = 100,
+		/datum/sold_goods/engineering_supplies = 100,
 	)
+	possible_supplies_bounties = list(
+		/datum/trader_bounty/engineering_supplies = 100
+		)
 	target_sold_goods_amount = 5

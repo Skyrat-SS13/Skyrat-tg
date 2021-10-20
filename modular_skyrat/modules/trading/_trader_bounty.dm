@@ -23,6 +23,8 @@
 	var/bounty_text = "I'm looking to acquire a couple of this exotic item."
 	/// The dialogue the trader shows after completing the bounty
 	var/bounty_complete_text = "Thank you very much for getting me those."
+	/// Whether this bounty is a supplies bounty.
+	var/supplies_bounty = FALSE
 
 /datum/trader_bounty/New()
 	. = ..()
