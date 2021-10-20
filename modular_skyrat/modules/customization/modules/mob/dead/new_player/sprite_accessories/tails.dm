@@ -350,23 +350,22 @@
 /datum/sprite_accessory/tails/mammal/wagging/plugtail
 	name = "plugtail"
 	icon_state = "plugtail"
-	
+
 /datum/sprite_accessory/tails/mammal/wagging/zorgoia
 	name = "Zorgoia tail"
 	icon_state = "zorgoia"
-	
+
 /datum/sprite_accessory/tails/mammal/wagging/tailmawwag
 	name = "Tailmaw (wag)"
 	icon_state = "tailmawwag"
 	color_src = USE_ONE_COLOR
-	
+
 /datum/sprite_accessory/tails/mammal/wagging/tailmaw
 	name = "Tailmaw"
 	icon_state = "tailmaw"
 	color_src = USE_ONE_COLOR
-	
+
 /datum/sprite_accessory/tails/mammal/wagging/snake
 	name = "Snake"
 	icon_state = "snaketail"
 	color_src = USE_ONE_COLOR
-	
