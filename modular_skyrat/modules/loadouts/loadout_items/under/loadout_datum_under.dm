@@ -412,7 +412,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Irish Tactical Sweater"
 	item_path = /obj/item/clothing/under/misc/tactical1
 
-/datum/loadout_item/under/miscellaneous/tactical_irish
+/datum/loadout_item/under/miscellaneous/tactical_british
 	name = "British Tactical Sweater"
 	item_path = /obj/item/clothing/under/uvf
 
