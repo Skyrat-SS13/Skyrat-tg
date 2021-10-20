@@ -24,8 +24,8 @@
 	if(is_banned_from(user.ckey, BAN_MOB_CONTROL))
 		to_chat(user, "Error, you are banned from taking control of player controlled mobs!")
 		return
-	var/query = tgui_alert("Become a [src]?", "Take mob control", list("Yes", "No"))
-	if(query == "No" || !src || QDELETED(src))
+	var/query = tgui_alert(user, "Become a [src]?", "Take mob control", list("Yes", "No"))
+	if(!query || query == "No" || !src || QDELETED(src))
 		return
 	if(key)
 		to_chat(user, "<span class='warning'>Someone else already took this mob!</span>")
