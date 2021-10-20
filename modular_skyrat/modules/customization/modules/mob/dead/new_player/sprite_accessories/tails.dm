@@ -346,3 +346,22 @@
 /datum/sprite_accessory/tails/mammal/wagging/spade
 	name = "Succubus Spade Tail"
 	icon_state = "spade"
+
+/datum/sprite_accessory/tails/mammal/wagging/plugtail
+	name = "plugtail"
+	icon_state = "plugtail"
+	
+/datum/sprite_accessory/tails/mammal/wagging/zorgoia
+	name = "Zorgoia tail"
+	icon_state = "zorgoia"
+	
+/datum/sprite_accessory/tails/mammal/wagging/tailmawwag
+	name = "Tailmaw (wag)"
+	icon_state = "tailmawwag"
+/datum/sprite_accessory/tails/mammal/wagging/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	
+/datum/sprite_accessory/tails/mammal/wagging/snake
+	name = "Snake"
+	icon_state = "snaketail"
