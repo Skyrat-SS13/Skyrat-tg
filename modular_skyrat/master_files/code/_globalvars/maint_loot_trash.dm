@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 	list( //Trash but I don't want to make so much of it.
 		/obj/item/kirbyplants/random = 200,
 		/obj/item/flashlight/lamp = 200,
-		/obj/item/food/american_sausage = 50,
+		/obj/item/food/sausage/american = 50,
 		/obj/item/food/branrequests = 50,
 		/obj/item/paper_bin = 50,
 		/obj/item/paper_bin/construction = 25,
