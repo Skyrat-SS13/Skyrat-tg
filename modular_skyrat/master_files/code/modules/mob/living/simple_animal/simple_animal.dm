@@ -7,18 +7,18 @@
 	If your simple mob is not above simple or mute intelligence, using structures such as welding tanks/canisters/boxes to hinder your opponent is entirely forbidden. \
 	Do not do this."
 
-/mob/living/simple_animal
+/mob/living
 	/// If set to TRUE, ghosts will be able to click on the simple mob and take control of it.
 	var/ghost_controllable = FALSE
 
-/mob/living/simple_animal/attack_ghost(mob/dead/observer/user)
+/mob/living/attack_ghost(mob/dead/observer/user)
 	. = ..()
 	if(.)
 		return
 	if(ghost_controllable)
 		take_control(user)
 
-/mob/living/simple_animal/proc/take_control(mob/user)
+/mob/living/proc/take_control(mob/user)
 	if(key || stat)
 		return
 	if(is_banned_from(user.ckey, BAN_MOB_CONTROL))

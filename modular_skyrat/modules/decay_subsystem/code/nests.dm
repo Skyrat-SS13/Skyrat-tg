@@ -29,6 +29,8 @@
 	var/list/registered_turfs = list()
 	/// What loot do we spawn upon death?
 	var/list/loot = list()
+	/// Do spawned mobs become ghost controllable?
+	var/ghost_controllable = FALSE
 
 /obj/structure/mob_spawner/Initialize()
 	. = ..()
@@ -79,10 +81,12 @@
 	spawned_mobs++
 
 	var/chosen_mob_type = pick(monster_types)
-	var/mob/living/simple_animal/L = new chosen_mob_type(loc)
+	var/mob/living/L = new chosen_mob_type(loc)
 	L.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
 
 	L.faction = faction
+
+	L.ghost_controllable = ghost_controllable
 
 	visible_message(span_danger("[L] emerges from [src]."))
 
