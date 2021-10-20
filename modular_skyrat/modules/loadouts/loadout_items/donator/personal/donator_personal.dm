@@ -283,4 +283,4 @@
 /datum/loadout_item/suit/delta_coat
 	name = "Grey Winter Hoodie"
 	item_path = /obj/item/clothing/suit/jacket/delta
-	ckeywhitelist = list("DeltaTri")
+	ckeywhitelist = list("deltatri")
