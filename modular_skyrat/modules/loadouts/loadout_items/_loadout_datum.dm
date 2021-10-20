@@ -25,6 +25,7 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 			continue
 
 		var/datum/loadout_item/spawned_type = new found_type()
+		// Let's sanitize in case somebody inserted the player's byond name instead of ckey in canonnical form
 		for (var/i = 0, i < length(spawned_type.ckeywhitelist), i++)
 			spawned_type.ckeywhitelist[i] = ckey(spawned_type.ckeywhitelist[i])
 		GLOB.all_loadout_datums[spawned_type.item_path] = spawned_type
