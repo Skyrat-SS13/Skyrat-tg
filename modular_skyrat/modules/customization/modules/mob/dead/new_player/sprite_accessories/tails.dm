@@ -366,3 +366,4 @@
 /datum/sprite_accessory/tails/mammal/wagging/snake
 	name = "Snake"
 	icon_state = "snaketail"
+	
