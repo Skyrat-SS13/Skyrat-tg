@@ -24,6 +24,7 @@
 			"retaliate_cooldown" = list("desc" = "Retaliate cooldown", "type" = "number", "value" = 10 SECONDS),
 			"ghost_controllable" = list("desc" = "Ghost controllable", "type" = "boolean", "value" = "No"),
 			"passive_spawning" = list("desc" = "Passive spawning", "type" = "boolean", "value" = "No"),
+			"faction" = list("desc" = "Faction", "type" = "string", "value" = NEST_FACTION),
 			"nest_icon" = list("desc" = "Nest icon state", "type" = "string", "value" = "nest"),
 			"spawn" = list("desc" = "Spawn nest", "type" = "button", "callback" = CALLBACK(src, .proc/spawn_it), "value" = "Spawn"),
 		)
@@ -57,5 +58,6 @@
 	spawned_spawner.icon_state = prefs["nest_icon"]["value"]
 	spawned_spawner.ghost_controllable = prefs["ghost_controllable"]["value"] == "Yes" ? TRUE : FALSE
 	spawned_spawner.passive_spawning = prefs["passive_spawning"]["value"] == "Yes" ? TRUE : FALSE
+	spawned_spawner.faction += prefs["faction"]["value"]
 	if(prefs["passive_spawning"]["value"] == "Yes")
 		START_PROCESSING(SSobj, spawned_spawner)

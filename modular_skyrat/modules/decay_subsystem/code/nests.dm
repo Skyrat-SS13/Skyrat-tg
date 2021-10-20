@@ -101,20 +101,20 @@
 	spawned_mobs++
 
 	var/chosen_mob_type = pick(monster_types)
-	var/mob/living/L = new chosen_mob_type(loc)
+	var/mob/living/spawned_mob = new chosen_mob_type(loc)
 
-	L.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
-	L.faction = faction
-	L.ghost_controllable = ghost_controllable
+	spawned_mob.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
+	spawned_mob.faction = faction
+	spawned_mob.ghost_controllable = ghost_controllable
 
-	visible_message(span_danger("[L] emerges from [src]."))
+	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
 
-	if(spawned_mobs >= max_mobs)
-		addtimer(CALLBACK(src, .proc/regenerate_mobs), regenerate_time)
+	visible_message(span_danger("[spawned_mob] emerges from [src]."))
 
-/obj/structure/mob_spawner/proc/regenerate_mobs()
-	visible_message(span_danger("[src] contorts and wriggles!"))
-	spawned_mobs = 0
+/obj/structure/mob_spawner/proc/mob_death(mob/living/dead_guy, gibbed)
+	SIGNAL_HANDLER
+	spawned_mobs--
+	UnregisterSignal(dead_guy, COMSIG_LIVING_DEATH)
 
 /obj/structure/mob_spawner/attacked_by(obj/item/I, mob/living/user)
 	. = ..()
