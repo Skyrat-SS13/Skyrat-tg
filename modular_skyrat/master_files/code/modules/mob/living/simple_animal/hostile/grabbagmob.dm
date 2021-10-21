@@ -45,7 +45,7 @@
 	icon_state = "syndicat"
 	icon_living = "syndicat"
 	name = "Syndicate Commando Feline"
-	desc = "An anthro feline member of the Syndicate."
+	desc = "An anthromorphic feline member of the Syndicate."
 
 /mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space/stormtrooper/anthro/fox
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
