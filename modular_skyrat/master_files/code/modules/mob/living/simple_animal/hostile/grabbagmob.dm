@@ -28,7 +28,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/ranged/smg/anthro
 	name = "Syndicate Rapid Gunnder"
-	desc = "A moth-person member of the Syndicate, weilding an SMG."
+	desc = "A moth-person member of the Syndicate, wielding an SMG."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndimoth"
 	icon_living = "syndimoth"
