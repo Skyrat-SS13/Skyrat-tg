@@ -90,7 +90,7 @@
 		preferences.body_markings[limb_slot] = list()
 	if(preferences.body_markings[limb_slot].len >= MAXIMUM_MARKINGS_PER_LIMB)
 		return
-	preferences.body_markings[limb_slot] += list(GLOB.body_markings_per_limb[limb_slot][1] = list("#FFFFFF", FALSE, TRUE)) // Default to the first in the list for the limb.
+	preferences.body_markings[limb_slot] += list(GLOB.body_markings_per_limb[limb_slot][1] = list("#FFFFFF", FALSE)) // Default to the first in the list for the limb.
 	preferences.character_preview_view.update_body()
 	return TRUE
 
