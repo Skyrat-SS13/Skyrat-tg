@@ -252,7 +252,6 @@
 	icon_state = "fatscav"
 	icon_living = "fatscav"
 	loot = list(/obj/effect/spawner/random/maintenance/six)
-	rapid_melee = 1
 	maxHealth = 120
 	health = 120
 	harm_intent_damage = 5
@@ -267,7 +266,6 @@
 	icon_state = "scavcrush"
 	icon_living = "scavcrush"
 	loot = list(/obj/effect/spawner/random/maintenance/three)
-	rapid_melee = 1
 	maxHealth = 80
 	health = 80
 	harm_intent_damage = 5
@@ -286,15 +284,11 @@
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "scavshotgun"
 	icon_living = "scavshotgun"
-	rapid = 2
-	rapid_fire_delay = 6
-	minimum_distance = 3
-	icon_state = "scav"
-	icon_living = "scav"
+	maxHealth = 90
+	health = 90
 	casingtype = /obj/item/ammo_casing/shotgun/buckshot
 	loot = list(/obj/effect/spawner/random/maintenance/five)
 	dodging = FALSE
-	rapid_melee = 1
 	faction = list("hostile")
 	projectilesound = 'sound/weapons/gun/shotgun/shot.ogg'
 
@@ -365,7 +359,6 @@
 	icon_living = "evilbotheavy"
 	health = 125
 	maxHealth = 125
-	healable = 0
 	melee_damage_lower = 20
 	melee_damage_upper = 20
 	attack_verb_continuous = "saws"
@@ -380,7 +373,6 @@
 	icon_living = "evilbotpeace"
 	health = 90
 	maxHealth = 90
-	healable = 0
 	melee_damage_lower = 18
 	melee_damage_upper = 18
 	attack_verb_continuous = "smacks"
@@ -395,10 +387,9 @@
 	icon_living = "evilbotengi"
 	health = 100
 	maxHealth = 100
-	healable = 0
 	melee_damage_type = BURN
-	melee_damage_lower = 12
-	melee_damage_upper = 12
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	attack_verb_continuous = "welds"
 	attack_verb_simple = "weld"
 	attack_sound = 'sound/items/welder.ogg'
@@ -413,10 +404,9 @@
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	health = 75
 	maxHealth = 75
-	healable = 0
 	ranged = 1
-	melee_damage_lower = 12
-	melee_damage_upper = 12
+	melee_damage_lower = 8
+	melee_damage_upper = 8
 	attack_verb_continuous = "gunbutts"
 	attack_verb_simple = "gunbutt"
 	attack_sound = 'sound/weapons/smash.ogg'
@@ -429,7 +419,6 @@
 	icon_living = "evilbotroomba"
 	health = 80
 	maxHealth = 80
-	healable = 0
 	melee_damage_lower = 12
 	melee_damage_upper = 12
 	attack_verb_continuous = "pokes"
@@ -444,7 +433,6 @@
 	icon_living = "evilbotmine"
 	health = 115
 	maxHealth = 115
-	healable = 0
 	melee_damage_lower = 12
 	melee_damage_upper = 12
 	attack_verb_continuous = "cleaves"
@@ -459,7 +447,6 @@
 	icon_living = "evilbotelite"
 	health = 130
 	maxHealth = 130
-	healable = 0
 	melee_damage_lower = 18
 	melee_damage_upper = 18
 	attack_verb_continuous = "bites"
@@ -476,7 +463,6 @@
 	projectilesound = 'sound/weapons/gun/smg/shot.ogg'
 	health = 250
 	maxHealth = 250
-	healable = 0
 	ranged = 1
 	melee_damage_lower = 12
 	melee_damage_upper = 12
@@ -492,9 +478,8 @@
 	icon_living = "protectbot"
 	health = 100
 	maxHealth = 100
-	healable = 0
-	melee_damage_lower = 12
-	melee_damage_upper = 12
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	attack_verb_continuous = "claws"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/genhit2.ogg'
@@ -933,12 +918,6 @@
 	icon_state = "voxlaser"
 	icon_living = "voxlaser"
 	icon_dead = "voxsuitdead"
-	ranged = 1
-	retreat_distance = 5
-	minimum_distance = 5
-	loot = list(/obj/effect/spawner/random/engineering/material_rare = 2)
-	dodging = FALSE
-	rapid_melee = 1
 	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser3.ogg'
 
@@ -963,12 +942,7 @@
 	icon_state = "voxspacelaser"
 	icon_living = "voxspacelaser"
 	icon_dead = "voxspacedead"
-	ranged = 1
-	retreat_distance = 5
-	minimum_distance = 5
 	loot = list(/obj/effect/spawner/random/engineering/material_rare = 4)
-	dodging = FALSE
-	rapid_melee = 1
 	projectiletype = /obj/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser3.ogg'
 
