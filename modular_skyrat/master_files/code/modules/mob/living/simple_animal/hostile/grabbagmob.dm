@@ -21,7 +21,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/ranged/anthro
 	name = "Syndicate Pistoleer"
-	desc = "An anthro member of the Syndicate, weilding a pistol."
+	desc = "An anthromorphic member of the Syndicate, wielding a pistol."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndisquirrel"
 	icon_living = "syndisquirrel"
