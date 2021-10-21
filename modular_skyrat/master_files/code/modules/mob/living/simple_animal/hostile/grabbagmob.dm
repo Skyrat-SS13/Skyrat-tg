@@ -396,7 +396,7 @@
 
 /mob/living/simple_animal/hostile/evilborg/sec
 	name = "Malfunctioning Security Cyborg"
-	desc = "A security cyborg unit, hacked or malfunctioning. There's two guns attached to it."
+	desc = "A security cyborg unit, hacked or malfunctioning. There are two guns attached to it."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "evilbotsec"
 	icon_living = "evilbotsec"
