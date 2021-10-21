@@ -498,20 +498,24 @@
 	//SKYRAT EDIT ADDITION END
 
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
-		SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
-		M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
-					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
-		to_chat(M, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
-		to_chat(src, span_notice("[M] gives you a pat on the head to make you feel better! "))
+		//SKYRAT EDIT ADDITION
+		if(HAS_TRAIT(M, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
+			visible_message(span_warning("[src] tries to pat [M] on the head, but can't reach!"))
+		else //SKYRAT EDIT END
+			SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
+			M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
+						null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
+			to_chat(M, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
+			to_chat(src, span_notice("[M] gives you a pat on the head to make you feel better! "))
 
-		//SKYRAT EDIT ADDITION BEGIN - EMOTES
-		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
-			if(!src.dna.species.is_wagging_tail(src))
-				src.emote("wag")
-		//SKYRAT EDIT ADDITION END
+			//SKYRAT EDIT ADDITION BEGIN - EMOTES
+			if(HAS_TRAIT(src, TRAIT_EXCITABLE))
+				if(!src.dna.species.is_wagging_tail(src))
+					src.emote("wag")
+			//SKYRAT EDIT ADDITION END
 
-		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
-			to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
+			if(HAS_TRAIT(src, TRAIT_BADTOUCH))
+				to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
 
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
