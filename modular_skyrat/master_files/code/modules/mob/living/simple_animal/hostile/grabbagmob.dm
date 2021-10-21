@@ -52,7 +52,7 @@
 	icon_state = "syndifox"
 	icon_living = "syndifox"
 	name = "Syndicate Stormtrooper Fox"
-	desc = "A fox anthro member of the Syndicate."
+	desc = "An anthromorphic fox member of the Syndicate."
 
 //Cult
 /mob/living/simple_animal/hostile/cult
