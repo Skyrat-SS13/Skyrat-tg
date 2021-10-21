@@ -170,8 +170,8 @@
 	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE)
 	death()
 
-/mob/living/simple_animal/pet/dog/dobberman
-	name = "\proper Dobberman"
+/mob/living/simple_animal/pet/dog/dobermann
+	name = "\proper Dobermann"
 	gender = MALE
 	desc = "A larger breed of dog."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
