@@ -7,7 +7,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/melee/anthro
 	name = "Syndicate Shanker"
-	desc = "An anthro red panda member of the Syndicate, weilding a knife."
+	desc = "An anthromorphic red panda member of the Syndicate, wielding a knife."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndiredpan"
 	icon_living = "syndiredpan"
