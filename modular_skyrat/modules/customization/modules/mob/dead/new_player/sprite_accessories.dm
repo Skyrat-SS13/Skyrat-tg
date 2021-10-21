@@ -28,6 +28,8 @@
 	var/special_render_case
 	///Special case of whether the accessory should be shifted in the X dimension, check taur genitals for example
 	var/special_x_dimension
+	///Special case of whether the accessory should be shifted in the Y dimension, check teshari genitals for example
+	var/special_y_dimension
 	///Special case of whether the accessory should have a different icon, check taur genitals for example
 	var/special_icon_case
 	///Special case of applying a different color, like hardsuit tails
@@ -69,6 +71,9 @@
 	return null
 
 /datum/sprite_accessory/proc/get_special_x_dimension(mob/living/carbon/human/H, passed_state)
+	return 0
+
+/datum/sprite_accessory/proc/get_special_y_dimension(mob/living/carbon/human/H, passed_state)
 	return 0
 
 /datum/sprite_accessory/proc/get_default_color(var/list/features, var/datum/species/pref_species) //Needs features for the color information

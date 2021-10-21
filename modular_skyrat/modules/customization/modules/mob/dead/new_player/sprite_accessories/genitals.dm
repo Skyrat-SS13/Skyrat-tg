@@ -37,6 +37,7 @@
 	center = TRUE
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
+	special_y_dimension = TRUE
 	//default_color = DEFAULT_SKIN_OR_PRIMARY //This is the price we're paying for sheaths
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
@@ -61,6 +62,12 @@
 		var/datum/sprite_accessory/taur/SP = GLOB.sprite_accessories["taur"][H.dna.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
 		if(!(SP.taur_mode & STYLE_TAUR_SNAKE))
 			returned = 64
+	return returned
+
+/datum/sprite_accessory/genital/penis/get_special_y_dimension(mob/living/carbon/human/H)
+	var/returned = dimension_y
+	if(isteshari(H.dna.species))
+		returned = -4
 	return returned
 
 /datum/sprite_accessory/genital/penis/none
@@ -117,6 +124,7 @@
 	always_color_customizable = TRUE
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
+	special_y_dimension = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_BEHIND_LAYER)
 	genetic = TRUE
@@ -143,6 +151,12 @@
 			returned = 64
 	return returned
 
+/datum/sprite_accessory/genital/testicles/get_special_y_dimension(mob/living/carbon/human/H)
+	var/returned = dimension_y
+	if(isteshari(H.dna.species))
+		returned = -4
+	return returned
+
 /datum/sprite_accessory/genital/testicles/none
 	icon_state = "none"
 	name = "None"
@@ -166,6 +180,7 @@
 	associated_organ_slot = ORGAN_SLOT_VAGINA
 	key = "vagina"
 	always_color_customizable = TRUE
+	special_y_dimension = TRUE
 	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
 	genetic = TRUE
@@ -183,6 +198,12 @@
 		return "[gen.sprite_suffix]"
 	else
 		return null
+
+/datum/sprite_accessory/genital/vagina/get_special_y_dimension(mob/living/carbon/human/H)
+	var/returned = dimension_y
+	if(isteshari(H.dna.species))
+		returned = -4
+	return returned
 
 /datum/sprite_accessory/genital/vagina/none
 	icon_state = "none"

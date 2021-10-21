@@ -97,6 +97,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		var/icon_to_use
 		var/x_shift
+		var/y_shift
 		var/render_state = bodyparts_to_add[S]
 
 		var/override_color = forced_colour
@@ -113,6 +114,11 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		else
 			x_shift = S.dimension_x
 
+		if(S.special_y_dimension)
+			y_shift = S.get_special_y_dimension(H, render_state)
+		else
+			y_shift = S.dimension_y
+
 		if(S.gender_specific)
 			render_state = "[g]_[key]_[render_state]"
 		else
@@ -126,7 +132,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			accessory_overlay.icon_state = "[render_state]_[layertext]"
 
 			if(S.center)
-				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
+				accessory_overlay = center_image(accessory_overlay, x_shift, y_shift)
 
 
 			if(!override_color)
