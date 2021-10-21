@@ -14,7 +14,7 @@
 
 /mob/living/simple_animal/hostile/syndicate/melee/sword/anthro
 	name = "Syndicate Sword Beast"
-	desc = "An anthro fennec member of the Syndicate, weilding an energy sword and shield."
+	desc = "An anthromorphic fennec member of the Syndicate, wielding an energy sword and shield."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "syndifennec"
 	icon_living = "syndifennec"
