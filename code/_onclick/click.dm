@@ -438,7 +438,7 @@
 /mob/proc/ShiftMiddleClickOn(atom/A)
 	src.pointed(A)
 	return
-
+//SKYRAT EDIT NOTE: CtrlShiftClick for HUMANS has been overriden in click.dm in the interaction module.
 /atom/proc/CtrlShiftClick(mob/user)
 	if(!can_interact(user))
 		return FALSE
