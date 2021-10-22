@@ -48,6 +48,8 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	var/choice = tgui_input_list(user, "Select which cargo mark to teleport the items to?", "Cargo Mark Selection", GLOB.cargo_marks)
 	if(!choice)
 		return ..()
+	if(get_dist(user, target) > 1)
+		return
 	var/turf/moving_turf = get_turf(choice)
 	var/turf/target_turf = get_turf(target)
 	for(var/check_content in target_turf.contents)
