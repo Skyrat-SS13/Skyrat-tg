@@ -74,8 +74,10 @@
 
 /turf/closed/indestructible/splashscreen
 	name = "Space Station 13"
+	desc = null
 	icon = 'icons/blank_title.png'
 	icon_state = ""
+	pixel_x = -64
 	plane = SPLASHSCREEN_PLANE
 	bullet_bounce_sound = null
 
@@ -86,8 +88,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	SStitle.splash_turf = src
 	if(SStitle.icon)
 		icon = SStitle.icon
-<<<<<<< HEAD
-=======
 		handle_generic_titlescreen_sizes()
 
 ///helper proc that will center the screen if the icon is changed to a generic width, to make admins have to fudge around with pixel_x less. returns null
@@ -98,7 +98,6 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 		pixel_x = 0
 	else if(width == 608) // 608x480 is widescreen
 		pixel_x = -64
->>>>>>> d12c784e708 (fixes non-widescreen titles not getting auto-centered on bootup (#62160))
 
 /turf/closed/indestructible/splashscreen/vv_edit_var(var_name, var_value)
 	. = ..()
@@ -106,6 +105,12 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 		switch(var_name)
 			if(NAMEOF(src, icon))
 				SStitle.icon = icon
+				handle_generic_titlescreen_sizes()
+
+/turf/closed/indestructible/start_area
+	name = null
+	desc = null
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/closed/indestructible/reinforced
 	name = "reinforced wall"
