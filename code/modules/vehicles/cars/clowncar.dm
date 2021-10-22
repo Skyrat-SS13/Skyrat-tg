@@ -219,12 +219,6 @@
 		driver.update_mouse_pointer()
 
 ///Fires the cannon where the user clicks
-<<<<<<< HEAD
-/obj/vehicle/sealed/car/clowncar/proc/fire_cannon_at(mob/user, atom/A, params)
-	SIGNAL_HANDLER
-	if(cannonmode != CLOWN_CANNON_READY || !length(return_controllers_with_flag(VEHICLE_CONTROL_KIDNAPPED)))
-		return NONE
-=======
 /obj/vehicle/sealed/car/clowncar/proc/fire_cannon_at(mob/user, atom/target, list/modifiers)
 	SIGNAL_HANDLER
 	if(cannonmode != CLOWN_CANNON_READY || !length(return_controllers_with_flag(VEHICLE_CONTROL_KIDNAPPED)))
@@ -232,7 +226,6 @@
 	//The driver can still examine things and interact with his inventory.
 	if(modifiers[SHIFT_CLICK] || (ismovable(target) && !isturf(target.loc)))
 		return
->>>>>>> 310b68f01b6 (Fixes a very small mistake with the clickon signal procs cleanup. (#62214))
 	var/mob/living/unlucky_sod = pick(return_controllers_with_flag(VEHICLE_CONTROL_KIDNAPPED))
 	mob_exit(unlucky_sod, TRUE)
 	flick("clowncar_recoil", src)
