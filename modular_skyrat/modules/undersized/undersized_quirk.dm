@@ -13,7 +13,7 @@
 
 /datum/quirk/undersized/add()
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	human_holder.dna.features["body_size"] = .3
+	human_holder.dna.features["body_size"] = 0.3
 	human_holder.dna.update_body_size()
 	human_holder.mob_size = MOB_SIZE_SMALL
 	human_holder.dna.species.punchdamagelow += UNDERSIZED_HARM_DAMAGE_PENALITY
