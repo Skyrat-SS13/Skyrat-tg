@@ -167,6 +167,7 @@
 /obj/item/ammo_casing/energy/medical/brute2
 	projectile_type = /obj/projectile/energy/medical/brute/better
 	select_name = "brute II"
+	select_color = "#ff0000ff"
 
 /obj/projectile/energy/medical/brute/better
 	name = "strong brute heal shot"
@@ -179,6 +180,7 @@
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/burn/better
 	select_name = "burn II"
+	select_color = "#ffae00ff"
 
 /obj/projectile/energy/medical/burn/better
 	name = "strong burn heal shot"
@@ -191,6 +193,7 @@
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/oxygen/better
 	select_name = "oxygen II"
+	select_color = "#00d9ffff"
 
 /obj/projectile/energy/medical/oxygen/better
 	name = "strong oxygen heal shot"
@@ -201,6 +204,7 @@
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/toxin/better
 	select_name = "toxin II"
+	select_color = "#15ff00ff"
 
 /obj/projectile/energy/medical/toxin/better
 	name = "strong toxin heal shot"
@@ -231,6 +235,7 @@
 /obj/item/ammo_casing/energy/medical/brute3
 	projectile_type = /obj/projectile/energy/medical/brute/better/best
 	select_name = "brute III"
+	select_color = "#ff0000ff"
 
 /obj/projectile/energy/medical/brute/better/best
 	name = "powerful brute heal shot"
@@ -242,6 +247,7 @@
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/burn/better/best
 	select_name = "burn III"
+	select_color = "#ffae00ff"
 
 /obj/projectile/energy/medical/burn/better/best
 	name = "powerful burn heal shot"
@@ -253,6 +259,7 @@
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/oxygen/better/best
 	select_name = "oxygen III"
+	select_color = "#00d9ffff"
 
 /obj/projectile/energy/medical/oxygen/better/best
 	name = "powerful oxygen heal shot"
@@ -262,6 +269,7 @@
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/toxin/better/best
 	select_name = "toxin III"
+	select_color = "#15ff00ff"
 
 /obj/projectile/energy/medical/toxin/better/best
 	name = "powerful toxin heal shot"
@@ -296,6 +304,7 @@
 /obj/item/ammo_casing/energy/medical/utility/clotting
 	projectile_type = /obj/projectile/energy/medical/utility/clotting
 	select_name = "clotting"
+	select_color = "#ff00eaff"
 
 /obj/projectile/energy/medical/utility/clotting
 	name = "clotting agent shot"
@@ -313,6 +322,7 @@
 /obj/item/ammo_casing/energy/medical/utility/temperature
 	projectile_type = /obj/projectile/energy/medical/utility/temperature
 	select_name = "temperature"
+	select_color = "#002fffff"
 
 /obj/projectile/energy/medical/utility/temperature
 	name = "temperature adjustment shot"
