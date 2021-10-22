@@ -75,24 +75,17 @@ SUBSYSTEM_DEF(economy)
 	station_target_buffer += STATION_TARGET_BUFFER
 	for(var/account in bank_accounts_by_id)
 		var/datum/bank_account/bank_account = bank_accounts_by_id[account]
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT)
 			bank_account.payday(PAYCHECK_CYCLE_AMOUNT)
 		//SKYRAT EDIT ADDITION END
-		if(bank_account?.account_job)
+		if(bank_account?.account_job && !ispath(bank_account.account_job))
 			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
-		if(!istype(bank_account, /datum/bank_account/department))
-			station_total += bank_account.account_balance
+		station_total += bank_account.account_balance
 	//SKYRAT EDIT ADDITION BEGIN
 	if(fire_counter_for_paycheck >= PAYCHECK_CYCLE_WAIT) //30 minutes per each paycheck
 		fire_counter_for_paycheck = 0
 	//SKYRAT EDIT ADDITION END
-=======
-		if(bank_account?.account_job && !ispath(bank_account.account_job))
-			temporary_total += (bank_account.account_job.paycheck * STARTING_PAYCHECKS)
-		station_total += bank_account.account_balance
->>>>>>> fc36aea489a (runtime fix for borgs cryoing with upgrade modules + no more mmi laying around after they cryo, and various other runtime fixes (#62091))
 	station_target = max(round(temporary_total / max(bank_accounts_by_id.len * 2, 1)) + station_target_buffer, 1)
 	if(!market_crashing)
 		price_update()

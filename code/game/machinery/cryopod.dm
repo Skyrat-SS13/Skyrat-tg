@@ -315,8 +315,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	for(var/obj/item/item_content as anything in mob_occupant)
 		if(!istype(item_content) || HAS_TRAIT(item_content, TRAIT_NODROP))
 			continue
-<<<<<<< HEAD
-
+		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
+			continue
 // Skyrat Edit Addition - Cryostorage stores items.
 // Original is just the else statement.
 		if(control_computer)
@@ -328,11 +328,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			control_computer.frozen_item += item_content
 		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
 // Skyrat Edit End
-=======
-		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
-			continue
-		mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
->>>>>>> fc36aea489a (runtime fix for borgs cryoing with upgrade modules + no more mmi laying around after they cryo, and various other runtime fixes (#62091))
 
 	handle_objectives()
 	QDEL_NULL(occupant)
