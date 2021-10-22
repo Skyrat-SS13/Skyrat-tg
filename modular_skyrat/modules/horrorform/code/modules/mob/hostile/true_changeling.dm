@@ -56,7 +56,6 @@
 	devour = new /datum/action/innate/devour
 	turn_to_human.Grant(src)
 	devour.Grant(src)
-	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/simple_animal/hostile/true_changeling/Life()
 	. = ..()
