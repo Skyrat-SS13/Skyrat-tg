@@ -9,7 +9,7 @@
 	e_cost = 120
 	delay = 8
 	harmful = FALSE
-	select_color = "#00b7ffff"
+	select_color = "#00d9ffff"
 /obj/projectile/energy/medical
 	name = "medical heal shot"
 	icon_state = "blue_laser"
@@ -90,6 +90,7 @@
 /obj/item/ammo_casing/energy/medical/brute1
 	projectile_type = /obj/projectile/energy/medical/brute
 	select_name = "brute"
+	select_color = "#ff0000ff"
 
 /obj/projectile/energy/medical/brute
 	name = "brute heal shot"
@@ -105,6 +106,7 @@
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn
 	select_name = "burn"
+	select_color = "#ffae00ff"
 
 /obj/projectile/energy/medical/burn
 	name = "burn heal shot"
@@ -112,6 +114,7 @@
 	var/amount_healed = 7.5
 	var/max_clone = 2/3
 	var/base_disgust = 3
+
 
 /obj/projectile/energy/medical/burn/on_hit(mob/living/target)
 	. = ..()
@@ -121,6 +124,7 @@
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin
 	select_name = "toxin"
+	select_color = "#15ff00ff"
 
 /obj/projectile/energy/medical/toxin
 	name = "toxin heal shot"

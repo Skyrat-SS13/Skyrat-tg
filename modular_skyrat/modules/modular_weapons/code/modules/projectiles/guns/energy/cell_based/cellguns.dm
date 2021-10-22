@@ -32,7 +32,7 @@
 	else
 		..()
 
-/obj/item/gun/energy/update_overlays()
+/obj/item/gun/energy/cell_loaded/update_overlays()
 	. = ..()
 	var/overlay_icon_state = "[icon_state]"
 	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
