@@ -21,6 +21,7 @@
 	var/speedmod = human_holder.dna.species.speedmod + UNDERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	remove_verb(human_holder, /mob/living/verb/pulled)
+	ADD_TRAIT(human_holder, TRAIT_DWARF, QUIRK_TRAIT)
 
 
 /datum/quirk/undersized/remove()
@@ -33,5 +34,6 @@
 	var/speedmod = human_holder.dna.species.speedmod
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	add_verb(human_holder, /mob/living/verb/pulled)
+	REMOVE_TRAIT(human_holder, TRAIT_DWARF, QUIRK_TRAIT)
 
 #undef UNDERSIZED_SPEED_SLOWDOWN
