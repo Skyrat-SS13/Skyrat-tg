@@ -9,7 +9,7 @@
 	e_cost = 120
 	delay = 8
 	harmful = FALSE
-
+	select_color = "#00b7ffff"
 /obj/projectile/energy/medical
 	name = "medical heal shot"
 	icon_state = "blue_laser"
