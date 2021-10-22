@@ -1,5 +1,5 @@
 /obj/item/clothing/gloves/combat
-	name = "combat gloves"
+	name = "black gloves" //SKYRAT EDIT, renamed to make them less obvious
 	desc = "These tactical gloves are fireproof and electrically insulated."
 	icon_state = "black"
 	inhand_icon_state = "blackgloves"
