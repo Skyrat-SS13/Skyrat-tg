@@ -2,7 +2,6 @@
 	Station Airlocks Regular
 */
 
-// ALL OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 /obj/machinery/door/airlock/command
 	icon = 'icons/obj/doors/airlocks/station/command.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_com
@@ -20,6 +19,10 @@
 /obj/machinery/door/airlock/medical
 	icon = 'icons/obj/doors/airlocks/station/medical.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_med
+
+/obj/machinery/door/airlock/hydroponics	//Hydroponics front doors!
+	icon = 'icons/obj/doors/airlocks/station/medical.dmi'	 //Uses same icon as /medical, maybe update it with its own unique icon one day?
+	assemblytype = /obj/structure/door_assembly/door_assembly_hydro
 
 /obj/machinery/door/airlock/maintenance
 	name = "maintenance access"
@@ -100,6 +103,10 @@
 	normal_integrity = 400
 
 /obj/machinery/door/airlock/medical/glass
+	opacity = FALSE
+	glass = TRUE
+
+/obj/machinery/door/airlock/hydroponics/glass //Uses same icon as medical/glass, maybe update it with its own unique icon one day?
 	opacity = FALSE
 	glass = TRUE
 
@@ -342,8 +349,6 @@
 	overlays_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_ext
-<<<<<<< HEAD
-=======
 	req_access = list(ACCESS_EXTERNAL_AIRLOCKS)
 
 	/// Whether or not the airlock can be opened without access from a certain direction while powered, or with bare hands from any direction while unpowered OR pressurized.
@@ -387,7 +392,6 @@
 			return try_to_activate_door(user, should_safety_open)
 
 	return ..()
->>>>>>> 424ad42ffa3 (External airlock access fixes [MDB IGNORE] (#62191))
 
 /// Access free external airlock
 /obj/machinery/door/airlock/external/ruin
