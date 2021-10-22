@@ -21,7 +21,7 @@
 	human_holder.blood_volume_normal = BLOOD_VOLUME_UNDERSIZED
 	var/speedmod = human_holder.dna.species.speedmod + UNDERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
-	remove_verb(src, /mob/living/verb/pulled)
+	remove_verb(human_holder, /mob/living/verb/pulled)
 
 /datum/quirk/undersized/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -33,6 +33,6 @@
 	human_holder.blood_volume_normal = BLOOD_VOLUME_NORMAL
 	var/speedmod = human_holder.dna.species.speedmod
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
-	add_verb(src, /mob/living/verb/pulled)
+	add_verb(human_holder, /mob/living/verb/pulled)
 
 #undef UNDERSIZED_SPEED_SLOWDOWN
