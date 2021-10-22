@@ -18,10 +18,10 @@
 	human_holder.mob_size = MOB_SIZE_SMALL
 	human_holder.dna.species.punchdamagelow += UNDERSIZED_HARM_DAMAGE_PENALITY
 	human_holder.dna.species.punchdamagehigh += UNDERSIZED_HARM_DAMAGE_PENALITY
-	human_holder.blood_volume_normal = BLOOD_VOLUME_UNDERSIZED
 	var/speedmod = human_holder.dna.species.speedmod + UNDERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	remove_verb(human_holder, /mob/living/verb/pulled)
+
 
 /datum/quirk/undersized/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -30,7 +30,6 @@
 	human_holder.mob_size = MOB_SIZE_HUMAN
 	human_holder.dna.species.punchdamagelow -= UNDERSIZED_HARM_DAMAGE_PENALITY
 	human_holder.dna.species.punchdamagehigh -= UNDERSIZED_HARM_DAMAGE_PENALITY
-	human_holder.blood_volume_normal = BLOOD_VOLUME_NORMAL
 	var/speedmod = human_holder.dna.species.speedmod
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	add_verb(human_holder, /mob/living/verb/pulled)
