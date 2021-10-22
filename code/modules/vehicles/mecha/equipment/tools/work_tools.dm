@@ -94,11 +94,6 @@
 		if(M.stat == DEAD)
 			return
 
-<<<<<<< HEAD
-		//var/list/modifiers = params2list(params) - SKYRAT EDIT REMOVAL
-
-=======
->>>>>>> d9f4153a410 (clickon signal procs cleanup (fixes inability to examine things in certain situations). (#62180))
 		if(!source.combat_mode)
 			step_away(M,chassis)
 			if(killer_clamp)
