@@ -97,6 +97,13 @@
 	var/list/selected_quirks = list()
 
 	for (var/quirk in preferences.all_quirks)
+		//SKYRAT EDIT ADDITION
+		var/list/quirks = SSquirks.get_quirks()
+		var/datum/quirk/quirk_datum = quirks[quirk]
+		if(initial(quirk_datum.veteran_only) && !is_veteran_player(preferences?.parent))
+			preferences.all_quirks -= quirk
+			continue
+		//SKYRAT EDIT END
 		selected_quirks += sanitize_css_class_name(quirk)
 
 	return selected_quirks
