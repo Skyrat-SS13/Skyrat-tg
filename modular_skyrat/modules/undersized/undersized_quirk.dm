@@ -22,7 +22,7 @@
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	remove_verb(human_holder, /mob/living/verb/pulled)
 	ADD_TRAIT(human_holder, TRAIT_DWARF, QUIRK_TRAIT)
-
+	passtable_on(human_holder, QUIRK_TRAIT)
 
 /datum/quirk/undersized/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -35,5 +35,6 @@
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	add_verb(human_holder, /mob/living/verb/pulled)
 	REMOVE_TRAIT(human_holder, TRAIT_DWARF, QUIRK_TRAIT)
+	passtable_off(human_holder, QUIRK_TRAIT)
 
 #undef UNDERSIZED_SPEED_SLOWDOWN
