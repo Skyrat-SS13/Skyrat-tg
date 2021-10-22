@@ -2,7 +2,6 @@
 	Station Airlocks Regular
 */
 
-// ALL OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 /obj/machinery/door/airlock/command
 	icon = 'icons/obj/doors/airlocks/station/command.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_com
@@ -355,6 +354,13 @@
 	/// Whether or not the airlock can be opened without access from a certain direction while powered, or with bare hands from any direction while unpowered OR pressurized.
 	var/space_dir = null
 
+/obj/machinery/door/airlock/external/Initialize(mapload, ...)
+	// default setting is for mapping only, let overrides work
+	if(!mapload || req_access_txt || req_one_access_txt)
+		req_access = null
+
+	return ..()
+
 /obj/machinery/door/airlock/external/LateInitialize()
 	. = ..()
 	if(space_dir)
@@ -387,9 +393,17 @@
 
 	return ..()
 
+/// Access free external airlock
+/obj/machinery/door/airlock/external/ruin
+	req_access = null
+
 /obj/machinery/door/airlock/external/glass
 	opacity = FALSE
 	glass = TRUE
+
+/// Access free external glass airlock
+/obj/machinery/door/airlock/external/glass/ruin
+	req_access = null
 
 //////////////////////////////////
 /*
