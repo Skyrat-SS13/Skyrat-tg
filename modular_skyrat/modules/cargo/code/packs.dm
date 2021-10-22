@@ -140,6 +140,16 @@
 					/obj/item/ammo_box/magazine/multi_sprite/croon)
 	crate_name = "unmarked weapons crate"
 	dangerous = TRUE
+	
+/datum/supply_pack/security/pepperballplus
+	name = "Pepperball Self-Defense Supply Crate"
+	desc = "Uneasy times, corporate security get lost during the transfer? Protect yourself.. somewhat."
+	cost = CARGO_CRATE_VALUE * 15
+	contraband = TRUE
+	contains = list(/obj/item/storage/box/gunset/pepperball,
+					/obj/item/storage/box/gunset/pepperball)
+	crate_name = "Pepperball Pistol Crate"
+	dangerous = TRUE
 
 /datum/supply_pack/security/wildcat
 	name = "CFA Wildcat Supply Crate"
