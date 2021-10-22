@@ -968,6 +968,9 @@
 	else if(HAS_TRAIT(target, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
 		visible_message(span_warning("[src] tries to carry [target], but they are too heavy!"))
 		return
+	else if(HAS_TRAIT(src, TRAIT_UNDERSIZED) && !HAS_TRAIT(target, TRAIT_UNDERSIZED))
+		visible_message(span_warning("[src] tries to carry [target], but they are too heavy!"))
+		return
 	//SKYRAT EDIT END
 	visible_message(span_notice("[src] starts[skills_space] lifting [target] onto [p_their()] back..."),
 		span_notice("You[skills_space] start to lift [target] onto your back..."))

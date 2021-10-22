@@ -43,6 +43,9 @@
 			if(HAS_TRAIT(L, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED) && !iscyborg(src))
 				add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = PULL_OVERSIZED_SLOWDOWN)
 				return
+			if(HAS_TRAIT(src, TRAIT_UNDERSIZED) && !HAS_TRAIT(L, TRAIT_UNDERSIZED))
+				add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = PULL_UNDERSIZED_SLOWDOWN)
+				return
 			//SKYRAT EDIT END
 			if(!slowed_by_drag || L.body_position == STANDING_UP || L.buckled || grab_state >= GRAB_AGGRESSIVE)
 				remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
@@ -51,6 +54,11 @@
 			return
 		if(isobj(pulling))
 			var/obj/structure/S = pulling
+			//SKYRAT EDIT ADDITION
+			if(HAS_TRAIT(src, TRAIT_UNDERSIZED))
+				add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/bulky_drag, multiplicative_slowdown = PULL_UNDERSIZED_SLOWDOWN)
+				return
+			//SKYRAT EDIT END
 			if(!slowed_by_drag || !S.drag_slowdown)
 				remove_movespeed_modifier(/datum/movespeed_modifier/bulky_drag)
 				return
