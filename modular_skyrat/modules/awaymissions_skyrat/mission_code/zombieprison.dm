@@ -431,7 +431,7 @@
 	name = "Prisoner Loot"
 	loot = list(
 				/obj/item/melee/baseball_bat = 5,
-				/obj/item/kitchen/knife/shiv = 5,
+				/obj/item/knife/shiv = 5,
 				/obj/item/storage/firstaid/regular = 3,
 				/obj/item/storage/fancy/cigarettes/cigpack_cannabis = 5,
 				/obj/item/clothing/mask/cigarette/rollie/cannabis = 10,
@@ -493,7 +493,7 @@
 				/obj/item/ammo_box/c45 = 3,
 				/obj/item/ammo_box/magazine/wt550m9 = 1,
 				/obj/item/storage/box/lethalshot = 2,
-				/obj/item/kitchen/knife/combat = 2,
+				/obj/item/knife/combat = 2,
 				/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 15,
 				/obj/item/clothing/head/helmet/riot = 5,
 				/obj/item/poster/random_official = 15,
@@ -508,7 +508,7 @@
 				/obj/item/gun/ballistic/automatic/pistol/deagle = 20,
 				/obj/item/clothing/suit/armor/vest/warden/peacekeeper = 25,
 				/obj/item/clothing/gloves/krav_maga/combatglovesplus = 5,
-				/obj/item/kitchen/knife/rainbowknife = 15,
+				/obj/item/knife/rainbowknife = 15,
 				/obj/item/clothing/suit/space/hardsuit/swat = 5,
 				/obj/item/stack/spacecash/c10000 = 30)
 

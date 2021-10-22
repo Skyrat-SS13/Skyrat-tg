@@ -315,7 +315,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	for(var/obj/item/item_content as anything in mob_occupant)
 		if(!istype(item_content) || HAS_TRAIT(item_content, TRAIT_NODROP))
 			continue
-
+		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
+			continue
 // Skyrat Edit Addition - Cryostorage stores items.
 // Original is just the else statement.
 		if(control_computer)
