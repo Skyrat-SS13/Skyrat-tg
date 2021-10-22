@@ -4,7 +4,7 @@
 	implements = list(
 		TOOL_WIRECUTTER		= 100,
 		TOOL_SCALPEL 		= 75,
-		/obj/item/kitchen/knife	= 50,
+		/obj/item/knife	= 50,
 		/obj/item				= 10) // 10% success with any sharp item.
 	time = 24
 

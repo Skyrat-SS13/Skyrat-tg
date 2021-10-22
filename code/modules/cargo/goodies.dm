@@ -37,7 +37,7 @@
 	name = "Combat Knife Single-Pack"
 	desc = "Contains one sharpened combat knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
 	cost = PAYCHECK_HARD * 1.75
-	contains = list(/obj/item/kitchen/knife/combat)
+	contains = list(/obj/item/knife/combat)
 
 /datum/supply_pack/goody/ballistic_single
 	name = "Combat Shotgun Single-Pack"
@@ -138,13 +138,13 @@
 	desc = "The most important thing you could possibly spend your hard-earned money on."
 	cost = PAYCHECK_EASY * 4
 	contains = list(/obj/item/toy/plush/beeplushie)
-
+/* SKYRAT EDIT REMOVAL
 /datum/supply_pack/goody/dyespray
 	name = "Hair Dye Spray"
 	desc = "A cool spray to dye your hair with awesome colors!"
 	cost = PAYCHECK_EASY * 2
 	contains = list(/obj/item/dyespray)
-
+*/
 /datum/supply_pack/goody/beach_ball
 	name = "Beach Ball"
 	// uses desc from item

@@ -163,8 +163,8 @@
 			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
 		if(3) //Ballistics + knives
-			new /obj/item/kitchen/knife/combat(src)
-			new /obj/item/kitchen/knife/combat(src)
+			new /obj/item/knife/combat(src)
+			new /obj/item/knife/combat(src)
 			new /obj/item/switchblade(src)
 			new /obj/item/switchblade(src)
 			new /obj/item/gun/ballistic/automatic/cfa_wildcat(src)

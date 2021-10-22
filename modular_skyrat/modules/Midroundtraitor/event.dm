@@ -55,7 +55,7 @@
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/tank/jetpack/oxygen/harness=1,\
 		/obj/item/gun/ballistic/automatic/pistol=1,\
-		/obj/item/kitchen/knife/combat/survival)
+		/obj/item/knife/combat/survival)
 
 	id_trim = /datum/id_trim/chameleon/operative
 

@@ -79,7 +79,7 @@
 		var/name = marking
 		var/color = markings_list[name]
 		marking_count++
-		fixed_markings += list(list("name" = name, "color" = expand_three_digit_color(color), "marking_id" = "[limb_slot]_[marking_count]"))
+		fixed_markings += list(list("name" = name, "color" = sanitize_hexcolor(color), "marking_id" = "[limb_slot]_[marking_count]"))
 	return fixed_markings
 
 /datum/preference_middleware/limbs_and_markings/proc/add_marking(list/params, mob/user)
@@ -88,7 +88,7 @@
 		preferences.body_markings[limb_slot] = list()
 	if(preferences.body_markings[limb_slot].len >= MAXIMUM_MARKINGS_PER_LIMB)
 		return
-	preferences.body_markings[limb_slot] += list(GLOB.body_markings_per_limb[limb_slot][1] = "FFF") // Default to the first in the list for the limb.
+	preferences.body_markings[limb_slot] += list(GLOB.body_markings_per_limb[limb_slot][1] = "#FFFFFF") // Default to the first in the list for the limb.
 	preferences.character_preview_view.update_body()
 	return TRUE
 
@@ -113,25 +113,24 @@
 /datum/preference_middleware/limbs_and_markings/proc/color_marking(list/params, mob/user)
 	var/limb_slot = params["limb_slot"]
 	var/marking_id = params["marking_id"]
+	var/list/markings = preferences.body_markings[limb_slot]
+	var/list/new_markings = list()
+	var/marking_count = 0
+	var/marking_entry_name
+	for(var/marking_entry in markings)
+		marking_count++
+		if(marking_id == "[limb_slot]_[marking_count]")
+			marking_entry_name = marking_entry
+		new_markings[marking_entry] = markings[marking_entry]
 	var/new_color = input(
 		usr,
 		"Select new color",
 		null,
-		COLOR_WHITE,
+		preferences.body_markings[limb_slot][marking_entry_name],
 	) as color | null
 	if(!new_color)
 		return TRUE
-
-
-	var/list/markings = preferences.body_markings[limb_slot]
-	var/list/new_markings = list()
-	var/marking_count = 0
-	for(var/marking_entry in markings)
-		marking_count++
-		if(marking_id == "[limb_slot]_[marking_count]")
-			new_markings[marking_entry] = sanitize_hexcolor(new_color) // gets the new color from the picker
-			continue
-		new_markings[marking_entry] = markings[marking_entry]
+	new_markings[marking_entry_name] = sanitize_hexcolor(new_color) // gets the new color from the picker
 	preferences.body_markings[limb_slot] = new_markings
 	preferences.character_preview_view.update_body()
 	return TRUE
