@@ -70,6 +70,7 @@
 
 // Damage modifiers
 #define OVERSIZED_HARM_DAMAGE_BONUS 5 /// Those with the oversized trait do 5 more damage.
+#define UNDERSIZED_HARM_DAMAGE_PENALITY 5 /// Those with the undersized trait do 5 less damage.
 
 #define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 

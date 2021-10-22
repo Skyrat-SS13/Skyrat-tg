@@ -53,6 +53,9 @@
 	if(HAS_TRAIT(M, TRAIT_OVERSIZED))
 		to_chat(M, span_warning("You are far too big for this!"))
 		return FALSE
+	if(HAS_TRAIT(M, TRAIT_UNDERSIZED))
+		to_chat(M, span_warning("You are far too small for this!"))
+		return FALSE
 	//SKYRAT EDIT END
 	if(do_after(M, get_enter_delay(M), src, timed_action_flags = IGNORE_HELD_ITEM))
 		mob_enter(M)
