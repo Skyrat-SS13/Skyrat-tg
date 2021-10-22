@@ -55,7 +55,7 @@ GLOBAL_LIST_EMPTY(scream_types)
 
 /datum/scream_type/xeno
 	name = "Xeno Scream"
-	male_screamsounds = list('sound/voice/hiss6.ogg')
+	male_screamsounds = list('modular_skyrat/modules/emotes/sound/voice/xenoscream/alien_death2.ogg', 'modular_skyrat/modules/emotes/sound/voice/xenoscream/alien_help2.ogg', 'modular_skyrat/modules/emotes/sound/voice/xenoscream/alien_roar1.ogg', 'modular_skyrat/modules/emotes/sound/voice/xenoscream/alien_roar6.ogg')
 	female_screamsounds = null
 
 /datum/scream_type/raptor //This is the Teshari scream ported from CitRP which was a cockatoo scream edited by BlackMajor.
