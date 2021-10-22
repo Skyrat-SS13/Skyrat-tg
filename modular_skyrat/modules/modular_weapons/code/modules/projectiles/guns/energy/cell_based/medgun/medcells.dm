@@ -322,7 +322,7 @@
 /obj/item/ammo_casing/energy/medical/utility/temperature
 	projectile_type = /obj/projectile/energy/medical/utility/temperature
 	select_name = "temperature"
-	select_color = "#002fffff"
+	select_color = "#fbff00ff"
 
 /obj/projectile/energy/medical/utility/temperature
 	name = "temperature adjustment shot"
