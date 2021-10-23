@@ -35,7 +35,7 @@
 		human_target.hair_color = sanitize_hexcolor(new_color)
 
 	else
-		var/new_grad_style = input(usr, "Choose a color pattern:", "Hair Dye Spray")  as null|anything in GLOB.hair_gradients_list
+		var/new_grad_style = tgui_input_list(usr, "Choose a color pattern:", "Hair Dye Spray", GLOB.hair_gradients_list)
 		if(!new_grad_style)
 			return
 
