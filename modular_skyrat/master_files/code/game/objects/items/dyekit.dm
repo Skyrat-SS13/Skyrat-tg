@@ -27,7 +27,9 @@
 			return
 
 
-		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."))
+		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."), ignored_mobs=user)
+		if(!dying_themselves)
+			to_chat(user, "You start applying hair dye to [human_target]'s hair...")
 		if(!do_after(usr, 3 SECONDS, target))
 			return
 		human_target.hair_color = sanitize_hexcolor(new_color)
@@ -42,13 +44,17 @@
 			return
 
 
-		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."))
+		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."), ignored_mobs=user)
+		if(!dying_themselves)
+			to_chat(user, "You start applying hair dye to [human_target]'s hair...")
 		if(!do_after(usr, 3 SECONDS, target))
 			return
 		human_target.grad_style = new_grad_style
 		human_target.grad_color = sanitize_hexcolor(new_grad_color)
 	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
-	human_target.visible_message(span_notice("[user] finishes applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair, changing its color!"), span_notice("[dying_themselves ? "You finish" : "[user] finishes"] applying hair dye to [dying_themselves ? "your own" : "your"] hair, changing its color!"))
+	human_target.visible_message(span_notice("[user] finishes applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair, changing its color!"), span_notice("[dying_themselves ? "You finish" : "[user] finishes"] applying hair dye to [dying_themselves ? "your own" : "your"] hair, changing its color!"), ignored_mobs=user)
+	if(!dying_themselves)
+		to_chat(user, "You finish applying hair dye to [human_target]'s hair, changing its color!")
 	human_target.update_hair()
 
 	uses--
