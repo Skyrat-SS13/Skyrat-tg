@@ -38,9 +38,9 @@
 		if(HS.hardsuit_tail_colors)
 			//Currently this way, when I have more time I'll write a hex -> matrix converter to pre-bake them instead
 			var/list/finished_list = list()
-			finished_list += ReadRGB("[HS.hardsuit_tail_colors[1]]0")
-			finished_list += ReadRGB("[HS.hardsuit_tail_colors[2]]0")
-			finished_list += ReadRGB("[HS.hardsuit_tail_colors[3]]0")
+			finished_list += ReadRGB(get_alpha_padded_color(HS.hardsuit_tail_colors[1]))
+			finished_list += ReadRGB(get_alpha_padded_color(HS.hardsuit_tail_colors[2]))
+			finished_list += ReadRGB(get_alpha_padded_color(HS.hardsuit_tail_colors[3]))
 			finished_list += list(0,0,0,255)
 			for(var/index in 1 to finished_list.len)
 				finished_list[index] /= 255
@@ -346,3 +346,26 @@
 /datum/sprite_accessory/tails/mammal/wagging/spade
 	name = "Succubus Spade Tail"
 	icon_state = "spade"
+
+/datum/sprite_accessory/tails/mammal/wagging/plugtail
+	name = "plugtail"
+	icon_state = "plugtail"
+
+/datum/sprite_accessory/tails/mammal/wagging/zorgoia
+	name = "Zorgoia tail"
+	icon_state = "zorgoia"
+
+/datum/sprite_accessory/tails/mammal/wagging/tailmawwag
+	name = "Tailmaw (wag)"
+	icon_state = "tailmawwag"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/snake
+	name = "Snake"
+	icon_state = "snaketail"
+	color_src = USE_ONE_COLOR

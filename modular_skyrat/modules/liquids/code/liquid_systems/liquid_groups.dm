@@ -90,7 +90,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 		var/list/new_adjacent = list()
 		for(var/t in current_adjacent)
 			var/turf/T2 = t
-			for(var/y in T2.GetAtmosAdjacentTurfs())
+			for(var/y in T2.get_atmos_adjacent_turfs())
 				if(!recursive_adjacent[y])
 					new_adjacent[y] = TRUE
 					recursive_adjacent[y] = TRUE
@@ -208,7 +208,7 @@ GLOBAL_VAR_INIT(liquid_debug_colors, FALSE)
 /datum/liquid_group/proc/process_cell(turf/T)
 	if(T.liquids.height <= 1) //Causes a bug when the liquid hangs in the air and is supposed to fall down a level
 		return FALSE
-	for(var/tur in T.GetAtmosAdjacentTurfs())
+	for(var/tur in T.get_atmos_adjacent_turfs())
 		var/turf/T2 = tur
 		//Immutable check thing
 		if(T2.liquids && T2.liquids.immutable)

@@ -242,6 +242,7 @@
 		"comp_ntnet_send",
 		"comp_pinpointer",
 		"comp_pressuresensor",
+		"comp_printer",
 		"comp_radio",
 		"comp_random",
 		"comp_router",
@@ -258,6 +259,7 @@
 		"comp_timepiece",
 		"comp_tonumber",
 		"comp_tostring",
+		"comp_trigonometry",
 		"comp_typecast",
 		"comp_typecheck",
 		"compact_remote_shell",
@@ -1128,6 +1130,7 @@
 		"dna_disk",
 		"dnascanner",
 		"scan_console",
+		"oc_donut_steel_restoration_device", // SKYRAT EDIT ADDITION: Added the Self-Actualization Device
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

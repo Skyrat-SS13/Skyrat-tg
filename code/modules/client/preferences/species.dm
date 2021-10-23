@@ -37,7 +37,7 @@
 //SKYRAT EDIT ADDITION
 	target.dna.update_body_size()
 
-	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS))
+	for(var/organ_key in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS))
 		var/obj/item/organ/genital/gent = target.getorganslot(organ_key)
 		if(gent)
 			gent.aroused = prefs.arousal_preview

@@ -16,6 +16,14 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 
+/obj/item/clothing/under/costume/deckers/alt
+	name = "deckers maskless outfit"
+	desc = "A decker jumpsuit with neon blue coloring."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "decking_jumpsuit"
+	can_adjust = FALSE
+
 /obj/item/clothing/under/costume/qipao/red
 	name = "red qipao"
 	desc = "A qipao, traditionally worn in ancient Earth China by women during social events and lunar new years. This one is red."

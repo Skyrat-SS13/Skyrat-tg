@@ -93,10 +93,6 @@
 
 	var/list/alternate_appearances
 
-
-	/// Last appearance of the atom for demo saving purposes
-	var/image/demo_last_appearance
-
 	///Light systems, both shouldn't be active at the same time.
 	var/light_system = STATIC_LIGHT
 	///Range of the light in tiles. Zero means no light.
@@ -212,8 +208,8 @@
  * the Atom subsystem intialization, or if the atom is being loaded from the map template.
  * If the item is being created at runtime any time after the Atom subsystem is intialized then
  * it's false.
- * 
- * The mapload argument occupies the same position as loc when Initialize() is called by New(). 
+ *
+ * The mapload argument occupies the same position as loc when Initialize() is called by New().
  * loc will no longer be needed after it passed New(), and thus it is being overwritten
  * with mapload at the end of atom/New() before this proc (atom/Initialize()) is called.
  *
@@ -673,7 +669,7 @@
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 /**
- * Called when a mob examines (shift click or verb) this atom twice (or more) within EXAMINE_MORE_TIME (default 1.5 seconds)
+ * Called when a mob examines (shift click or verb) this atom twice (or more) within EXAMINE_MORE_WINDOW (default 1 second)
  *
  * This is where you can put extra information on something that may be superfluous or not important in critical gameplay
  * moments, while allowing people to manually double-examine to take a closer look
@@ -683,8 +679,6 @@
 /atom/proc/examine_more(mob/user)
 	. = list()
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
-	if(!LAZYLEN(.)) // lol ..length
-		return list(span_notice("<i>You examine [src] closer, but find nothing of interest...</i>"))
 
 /**
  * Updates the appearence of the icon

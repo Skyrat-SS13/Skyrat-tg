@@ -23,18 +23,18 @@
 
 /datum/sprite_accessory/wings/angel
 	color_src = USE_ONE_COLOR
-	default_color = "FFF"
+	default_color = "#FFFFFF"
 
 /datum/sprite_accessory/wings/megamoth
 	color_src = USE_ONE_COLOR
-	default_color = "FFF"
+	default_color = "#FFFFFF"
 
 /datum/sprite_accessory/wings/dragon
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/wings/moth
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_wings.dmi' //Needs new icon to suit new naming convention
-	default_color = "FFF"
+	default_color = "#FFFFFF"
 	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT) //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/external/wings/moth
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
