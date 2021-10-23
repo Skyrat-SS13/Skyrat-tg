@@ -1,6 +1,6 @@
 
 /obj/item/storage/box/syndie_kit/spaceassassin/PopulateContents()
-	new /obj/item/kitchen/knife/combat(src)
+	new /obj/item/knife/combat(src)
 	new	/obj/item/book/granter/traitsr/ventcrawl_book(src)
 	switch(pick(list("red", "green", "dgreen", "blue", "orange", "black")))
 		if("green")
@@ -28,7 +28,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/recon/PopulateContents()
 	new /obj/item/clothing/glasses/thermal/syndi(src)
-	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/knife/combat/survival(src)
 	new /obj/item/gun/energy/disabler(src)
 	new /obj/item/storage/briefcase/launchpad(src)
 	new /obj/item/binoculars(src)
@@ -89,7 +89,7 @@
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/clothing/mask/gas/clown_hat(src)
 	new /obj/item/clothing/under/syndicate/sniper(src)
-	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/knife/combat/survival(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops/PopulateContents()
 	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
