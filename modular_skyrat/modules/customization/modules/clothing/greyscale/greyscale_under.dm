@@ -39,8 +39,7 @@ Self explanatory, this file is for uniforms that are GAGSified. If it doesnt hav
 	greyscale_colors = "#000082"
 	flags_1 = NONE
 
-//Todo - greyscale this?
-//Todo - if not, find the icon
+//Todo - find the icon and greyscale it
 /obj/item/clothing/under/sweater/keyhole
 	name = "keyhole sweater"
 	desc = "What is the point of this, anyway?"
@@ -52,8 +51,8 @@ Self explanatory, this file is for uniforms that are GAGSified. If it doesnt hav
 	name = "kilt"
 	desc = "It's not a skirt!"
 	icon_state = "kilt"
-//	greyscale_config = /datum/greyscale_config/hoodie/branded
-//	greyscale_config_worn = /datum/greyscale_config/hoodie/branded/worn
+	greyscale_config = /datum/greyscale_config/turtleneck
+	greyscale_config_worn = /datum/greyscale_config/turtleneck/worn
 	flags_1 = IS_PLAYER_COLORABLE_1
 	greyscale_colors = "#FFFFFF"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
