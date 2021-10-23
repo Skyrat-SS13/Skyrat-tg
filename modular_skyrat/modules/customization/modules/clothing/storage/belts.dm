@@ -81,7 +81,7 @@
 		/obj/item/forging/reagent_weapon/sword,
 		/obj/item/melee/sabre,
 		/obj/item/melee/cleric_mace,
-		/obj/item/kitchen/knife,
+		/obj/item/knife,
 		/obj/item/melee/baton,
 		/obj/item/melee/baton,
 		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage - - -
@@ -160,5 +160,6 @@
 		/obj/item/reagent_containers/medigel,
 		/obj/item/storage/pill_bottle,
 		/obj/item/implanter,
+		/obj/item/reagent_containers/glass/vial,
 		/obj/item/weaponcell/medical
 		))
