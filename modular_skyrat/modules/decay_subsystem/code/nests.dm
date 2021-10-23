@@ -14,7 +14,7 @@
 	light_color = LIGHT_COLOR_LAVA
 	var/spawn_delay = 0
 	/// What mob to spawn
-	var/list/var/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
+	var/list/monster_types = list(/mob/living/simple_animal/hostile/blackmesa/xen/headcrab)
 	/// How many mobs can we spawn?
 	var/max_mobs = 3
 	var/list/faction = list(NEST_FACTION)
@@ -29,6 +29,107 @@
 	var/list/registered_turfs = list()
 	/// What loot do we spawn upon death?
 	var/list/loot = list()
+	/// Do spawned mobs become ghost controllable?
+	var/ghost_controllable = FALSE
+	/// The range at which these are triggered.
+	var/trigger_range = 5
+	/// Does this nest passively spawn mobs too?
+	var/passive_spawning = FALSE
+
+/obj/structure/mob_spawner/Initialize()
+	. = ..()
+	calculate_trigger_turfs()
+	if(passive_spawning)
+		START_PROCESSING(SSobj, src)
+
+/obj/structure/mob_spawner/proc/calculate_trigger_turfs()
+	for(var/turf/open/seen_turf in view(trigger_range, src))
+		registered_turfs += seen_turf
+		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
+
+/obj/structure/mob_spawner/atom_destruction(damage_flag)
+	if(loot)
+		for(var/path in loot)
+			var/number = loot[path]
+			if(!isnum(number))//Default to 1
+				number = 1
+			for(var/i in 1 to number)
+				new path (loc)
+	playsound(src, 'sound/effects/blobattack.ogg', 100)
+	return ..()
+
+/obj/structure/mob_spawner/Destroy()
+	for(var/t in registered_turfs)
+		UnregisterSignal(t, COMSIG_ATOM_ENTERED)
+	registered_turfs = null
+	if(passive_spawning)
+		STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/structure/mob_spawner/process(delta_time)
+	if(passive_spawning)
+		if(spawned_mobs >= max_mobs)
+			return
+		if(spawn_delay > world.time)
+			return
+		spawn_delay = world.time + spawn_cooldown
+		spawn_mob()
+
+/obj/structure/mob_spawner/proc/proximity_trigger(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+	if(spawned_mobs >= max_mobs)
+		return
+	if(spawn_delay > world.time)
+		return
+	spawn_delay = world.time + spawn_cooldown
+
+	if(!isliving(AM))
+		return
+
+	var/mob/living/entered_mob = AM
+
+	if((NEST_FACTION in entered_mob.faction))
+		return
+
+	spawn_mob()
+
+/obj/structure/mob_spawner/proc/spawn_mob()
+	var/sound/sound_to_play = pick('modular_skyrat/master_files/sound/effects/rustle1.ogg', 'modular_skyrat/master_files/sound/effects/rustle2.ogg')
+	playsound(src, sound_to_play, 100)
+	do_squish(0.8, 1.2)
+
+	spawned_mobs++
+
+	var/chosen_mob_type = pick(monster_types)
+	var/mob/living/spawned_mob = new chosen_mob_type(loc)
+
+	spawned_mob.flags_1 |= (flags_1 & ADMIN_SPAWNED_1)
+	spawned_mob.faction = faction
+	spawned_mob.ghost_controllable = ghost_controllable
+
+	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
+
+	visible_message(span_danger("[spawned_mob] emerges from [src]."))
+
+/obj/structure/mob_spawner/proc/mob_death(mob/living/dead_guy, gibbed)
+	SIGNAL_HANDLER
+	spawned_mobs--
+	UnregisterSignal(dead_guy, COMSIG_LIVING_DEATH)
+
+/obj/structure/mob_spawner/attacked_by(obj/item/I, mob/living/user)
+	. = ..()
+	do_jiggle()
+	if(!retaliated)
+		visible_message(span_danger("[src] grubbles angrily!"))
+		var/chosen_mob_type = pick(monster_types)
+		var/mob/living/simple_animal/L = new chosen_mob_type(loc)
+		visible_message(span_danger("[L] emerges from [src]."))
+		retaliated = TRUE
+		addtimer(CALLBACK(src, .proc/ready_retaliate), retaliate_cooldown)
+
+/obj/structure/mob_spawner/proc/ready_retaliate()
+	retaliated = FALSE
+	visible_message(span_danger("[src] calms down."))
 
 ///////////// CUSTOM SPAWNERS
 
