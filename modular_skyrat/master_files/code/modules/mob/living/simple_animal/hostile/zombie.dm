@@ -39,3 +39,15 @@
 		corpse.mob_species = /datum/species/zombie
 		corpse.mob_name = name
 */
+
+/mob/living/simple_animal/hostile/zombie/cheesezombie
+	name = "Cheese Zombie"
+	desc = "Oh God it stinks!!"
+	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
+	icon_state = "cheesezomb"
+	icon_living = "cheesezomb"
+	maxHealth = 100
+	health = 100
+	del_on_death = 1
+	loot = list(/obj/effect/gibspawner/human)
+

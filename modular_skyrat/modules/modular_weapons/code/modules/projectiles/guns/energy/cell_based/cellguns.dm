@@ -6,6 +6,7 @@
 	var/cellcount = 0 //How many cells are currently inserted
 	var/list/installedcells = list() //What cells are currently inserted?
 	has_gun_safety = TRUE
+	automatic_charge_overlays = FALSE //This is needed because Cell based guns use their own custom overlay system.
 
 /obj/item/gun/energy/cell_loaded/examine(mob/user)
 	. = ..()
@@ -30,6 +31,32 @@
 			cellcount += 1
 	else
 		..()
+
+/obj/item/gun/energy/cell_loaded/update_overlays()
+	. = ..()
+	var/overlay_icon_state = "[icon_state]"
+	var/obj/item/ammo_casing/energy/shot = ammo_type[select]
+	if(modifystate)
+		if(single_shot_type_overlay)
+			var/mutable_appearance/full_overlay = mutable_appearance(icon, "[icon_state]_full")
+			full_overlay.color = shot.select_color
+			. += new /mutable_appearance(full_overlay)
+		overlay_icon_state += "_charge"
+
+	var/ratio = get_charge_ratio()
+	ratio = get_charge_ratio()
+	if(ratio == 0 && display_empty)
+		. += "[icon_state]_empty"
+		return
+
+	var/mutable_appearance/charge_overlay = mutable_appearance(icon, overlay_icon_state)
+	if(!shot.select_color)
+		return
+	charge_overlay.color = shot.select_color
+	for(var/i = ratio, i >= 1, i--)
+		charge_overlay.pixel_x = ammo_x_offset * (i - 1)
+		charge_overlay.pixel_y = ammo_y_offset * (i - 1)
+		. += new /mutable_appearance(charge_overlay)
 
 /obj/item/gun/energy/cell_loaded/AltClick(mob/user, modifiers)
 	if(cellcount >= 1) //Is there a cell inside?
