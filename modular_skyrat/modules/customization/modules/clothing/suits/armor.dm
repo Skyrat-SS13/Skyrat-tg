@@ -84,3 +84,18 @@
 /obj/item/clothing/suit/toggle/hop_parade/Initialize()
 	. = ..()
 	allowed = GLOB.security_wintercoat_allowed
+
+/obj/item/clothing/suit/hooded/wintercoat/hop
+	name = "head of personnel's winter coat"
+	desc = "A long cozy winter coat, covered in thick fur. The breast features a proud yellow chevron, reminding everyone that you're the second banana. Someone at CC most really like you, huh?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+
+/obj/item/clothing/suit/hooded/wintercoat/hop/Initialize()
+	. = ..()
+	allowed = GLOB.security_wintercoat_allowed
+
+/obj/item/clothing/head/hooded/winterhood/hop
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "winterhood_hop"
