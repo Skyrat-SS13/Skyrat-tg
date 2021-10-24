@@ -8,7 +8,7 @@
 	force = 2
 	throwforce = 2
 	w_class = WEIGHT_CLASS_NORMAL
-	toolspeed = 2
+	toolspeed = 1.5
 
 /obj/item/screwdriver/makeshift
 	name = "makeshift screwdriver"
@@ -19,7 +19,7 @@
 	force = 1
 	throwforce = 1
 	w_class = WEIGHT_CLASS_NORMAL
-	toolspeed = 2
+	toolspeed = 1.5
 
 /obj/item/weldingtool/makeshift
 	name = "makeshift welder"
@@ -28,9 +28,9 @@
 	icon_state = "makeshift_welder"
 	force = 1
 	throwforce = 2
-	toolspeed = 2
+	toolspeed = 1.5
 	w_class = WEIGHT_CLASS_NORMAL
-	max_fuel = 5
+	max_fuel = 12
 	heat = 1800
 
 /obj/item/wirecutters/makeshift
@@ -42,7 +42,7 @@
 	force = 3
 	throwforce = 2
 	w_class = WEIGHT_CLASS_NORMAL
-	toolspeed = 2
+	toolspeed = 1.5
 
 /obj/item/wrench/makeshift
 	name = "makeshift wrench"
@@ -52,4 +52,4 @@
 	force = 2
 	throwforce = 2
 	w_class = WEIGHT_CLASS_NORMAL
-	toolspeed = 2
+	toolspeed = 1.5
