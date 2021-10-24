@@ -41,6 +41,9 @@
 //Makes sure that people cant be cult sacrificed twice.
 #define TRAIT_SACRIFICED "sacrificed"
 
+//Adds 2 seconds to the Goliath tentacle stun timer.
+#define TRAIT_GOLIATH_STUN "goliath_stun"
+
 //to determine if someone is a fishing master, or not
 #define TRAIT_FISHING_MASTER "fishing_master"
 
@@ -52,3 +55,6 @@
 
 /// The trait that determines if someone has the oversized quirk.
 #define TRAIT_OVERSIZED "trait_oversized"
+
+/// Caninid trait
+#define TRAIT_CANINE "trait_canine"
