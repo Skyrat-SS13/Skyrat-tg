@@ -1,7 +1,3 @@
-/datum/preferences
-	/// The mark applied to this client; usually to denote information for ease of use
-	var/admin_mark
-
 /datum/preferences/proc/admin_mark_set(admin_mark)
 	var/static/list/emoji
 	if(!emoji)

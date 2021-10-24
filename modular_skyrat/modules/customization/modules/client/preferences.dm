@@ -255,6 +255,9 @@ GLOBAL_LIST_INIT(food, list(
 	//Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
 	var/list/languages = list()
 
+	/// The mark applied to this client; usually to denote information for ease of use
+	var/admin_mark
+
 /datum/preferences/New(client/C)
 	parent = C
 
