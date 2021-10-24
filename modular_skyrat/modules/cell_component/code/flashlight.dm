@@ -4,7 +4,7 @@
 	/// Does this flashlight have a cell override?
 	var/cell_override
 	/// How much power(per process) does this flashlight use? If any.
-	power_use_amount = POWER_CELL_USE_VERY_LOW
+	power_use_amount = POWER_CELL_USE_MINIMUM
 	/// Flashlight mode, 0 = low, 1 = med, 2 = high
 	var/flashlight_mode = 0
 	///Does this flashlight have modes?
@@ -36,21 +36,21 @@
 	if(has_modes)
 		switch(flashlight_mode)
 			if(0)
-				power_use_amount = POWER_CELL_USE_VERY_LOW
+				power_use_amount = POWER_CELL_USE_MINIMUM
 				light_range = initial(light_range)
 				light_power = initial(light_power)
 				set_light_on(on)
 				flashlight_mode = 1
 				to_chat(user, "<span class='notice'>You set [src] to low.</span>")
 			if(1)
-				power_use_amount = POWER_CELL_USE_LOW
+				power_use_amount = POWER_CELL_USE_VERY_LOW
 				light_range = initial(light_range) + 2
 				light_power = initial(light_power) + 1
 				set_light_on(on)
 				flashlight_mode = 2
 				to_chat(user, "<span class='notice'>You set [src] to medium.</span>")
 			if(2)
-				power_use_amount = POWER_CELL_USE_NORMAL
+				power_use_amount = POWER_CELL_USE_LOW
 				light_range = initial(light_range) + 4
 				light_power = initial(light_power) + 2
 				set_light_on(on)
