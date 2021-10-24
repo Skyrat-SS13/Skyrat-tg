@@ -169,3 +169,13 @@
 	visible_message(span_warning("[src] makes an odd whining noise.</span>"))
 	explosion(get_turf(src), 0, 1, 6, 9, 2, TRUE)
 	death()
+
+/mob/living/simple_animal/pet/dog/dobermann
+	name = "\proper Dobermann"
+	gender = MALE
+	desc = "A larger breed of dog."
+	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
+	icon_state = "dobber"
+	icon_dead = "dobbydead"
+	icon_living = "dobber"
+
