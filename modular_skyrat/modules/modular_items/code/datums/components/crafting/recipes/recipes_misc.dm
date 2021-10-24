@@ -13,7 +13,7 @@
 	result = /obj/item/hammer/makeshift
 	reqs = list(/obj/item/stack/cable_coil = 1,
 				/obj/item/stack/rods = 2,
-				/obj/item/kitchen/rollingpin = 2)
+				/obj/item/stack/sheet/iron = 2)
 	time = 80
 	category = CAT_MISC
 

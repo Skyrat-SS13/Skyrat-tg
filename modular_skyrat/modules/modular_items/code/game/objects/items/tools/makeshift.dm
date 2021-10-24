@@ -2,12 +2,12 @@
 
 /obj/item/crowbar/makeshift
 	name = "makeshift crowbar"
-	desc = "A makeshift crowbar, flimsily constructed with miscellaneous parts. It's too messed up to fit in a backpack."
+	desc = "A makeshift crowbar, flimsily constructed with miscellaneous parts."
 	icon = 'modular_skyrat/modules/modular_items/icons/obj/items/tools.dmi'
 	icon_state = "makeshift_crowbar"
 	force = 2
 	throwforce = 2
-	w_class = WEIGHT_CLASS_BULKY
+	w_class = WEIGHT_CLASS_NORMAL
 	toolspeed = 2
 
 /obj/item/screwdriver/makeshift
