@@ -732,10 +732,11 @@
 	attack_verb_simple = "boss"
 	attack_sound = 'sound/weapons/cqchit2.ogg'
 	speak_emote = list("squeaks")
+	speak = list("squeaks.", "practices CQC.", "cocks the bolt of a tiny rifle.", "plots to steal DAT DISK!", "fiddles with a tiny radio.")
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
-	faction = list("hostile","syndicate")
+	faction = list(ROLE_SYNDICATE)
 	pressure_resistance = 200
 	gold_core_spawnable = HOSTILE_SPAWN
 
@@ -775,8 +776,8 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 
 /mob/living/simple_animal/hostile/engorge
-    name = "Imp"
-    desc = "A small, demonic creature that moves relatively fast, but doesn't do a lot of damage."
+    name = "Talon Demon"
+    desc = "A demonic creature that moves relatively fast, but doesn't do a lot of damage."
     icon = 'modular_skyrat/master_files/icons/mob/newmobs32x64.dmi'
     icon_state = "engorgedemon"
     icon_living = "engorgedemon"
