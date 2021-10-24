@@ -176,6 +176,7 @@
 			H.add_overlay(H.overlays_standing[BELT_LAYER])
 			H.add_overlay(H.overlays_standing[NECK_LAYER])
 			H.add_overlay(H.overlays_standing[BACK_LAYER])
+			H.add_overlay(H.overlays_standing[BODY_BEHIND_LAYER])
 			H.add_overlay(H.overlays_standing[BODY_FRONT_LAYER])
 			H.add_overlay(H.overlays_standing[HEAD_LAYER])
 			H.add_overlay(H.overlays_standing[HAIR_LAYER])
