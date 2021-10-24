@@ -1,6 +1,6 @@
 /obj/item/dyespray
 	name = "hair dye spray"
-	desc = "A spray to dye hair and to also give it any gradients you'd like." // SKYRAT EDIT - Making the dyespray change hair color
+	desc = "A spray to dye hair as well as giving it any gradient you'd like." // SKYRAT EDIT - Making the dyespray change hair color
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/dyespray.dmi'
 	icon_state = "dyespray"

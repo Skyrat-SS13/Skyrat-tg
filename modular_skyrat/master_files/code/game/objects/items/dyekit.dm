@@ -1,3 +1,6 @@
+#define DYE_OPTION_HAIR_COLOR "Change hair color"
+#define DYE_OPTION_GRADIENT "Apply a gradient"
+
 /**
  * Applies a gradient and a gradient color to a mob OR changes their hair color, depending on what they choose.
  *
@@ -14,13 +17,13 @@
 		return
 
 	var/mob/living/carbon/human/human_target = target
-	var/list/dye_options = list("Change hair color", "Apply a gradient")
+	var/static/list/dye_options = list(DYE_OPTION_HAIR_COLOR, DYE_OPTION_GRADIENT)
 	var/gradient_or_hair = tgui_alert(user, "What would you like to do?", "Hair Dye Spray", dye_options, autofocus=TRUE)
 	if(!gradient_or_hair)
 		return
 
 	var/dying_themselves = target == user
-	if(gradient_or_hair == dye_options[1])
+	if(gradient_or_hair == DYE_OPTION_HAIR_COLOR)
 		var/new_color = input(usr, "Choose a hair color:", "Character Preference","#"+human_target.hair_color) as color|null
 
 		if(!new_color)
@@ -62,3 +65,6 @@
 /obj/item/dyespray/examine(mob/user)
 	. = ..()
 	. += "It has [uses] uses left."
+
+#undef DYE_OPTION_HAIR_COLOR
+#undef DYE_OPTION_GRADIENT
