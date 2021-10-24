@@ -219,7 +219,6 @@
 				return TRUE
 			var/new_asignment = sanitize(params["assignment"])
 			target_id_card.assignment = new_asignment
-			target_id_card.real_title = new_asignment // SKYRAT EDIT ADD -- ALT TITLES
 			playsound(computer, "terminal_type", 50, FALSE)
 			target_id_card.update_label()
 			return TRUE

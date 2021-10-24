@@ -54,7 +54,7 @@
 	box = /obj/item/storage/box/debugtools
 	suit_store = /obj/item/gun/energy/pulse
 	backpack_contents = list(
-		/obj/item/melee/transforming/energy/axe=1,\
+		/obj/item/melee/energy/axe=1,\
 		/obj/item/storage/part_replacer/bluespace/tier4=1,\
 		/obj/item/debug/human_spawner=1,\
 		/obj/item/gun/energy/taser/debug=1,\
@@ -79,7 +79,7 @@
 	suit_store = /obj/item/tank/internals/oxygen
 	internals_slot = ITEM_SLOT_SUITSTORE
 	backpack_contents = list(
-		/obj/item/melee/transforming/energy/axe=1,\
+		/obj/item/melee/energy/axe=1,\
 		/obj/item/storage/part_replacer/bluespace/tier4=1,\
 		/obj/item/debug/human_spawner=1,\
 		/obj/item/gun/energy/pulse=1,\

@@ -95,7 +95,7 @@
 /datum/uplink_item/stealthy_weapons/telescopicbaton
 	name = "Telescopic Baton"
 	desc = "A telescopic baton, exactly like the ones heads are issued. Good for knocking people down briefly."
-	item = /obj/item/melee/classic_baton/telescopic
+	item = /obj/item/melee/baton/telescopic
 	cost = 2
 	surplus = 0
 
@@ -196,6 +196,14 @@
 			Be careful not to glue an item you're already holding!"
 	item = /obj/item/syndie_glue
 	cost = 3
+
+/datum/uplink_item/device_tools/syndikush
+	name = "Syndikush Green Crack cart"
+	desc = "A cheap Chinese vape cart that contains a potent combination of THC and \
+			stimulants. Not made with real crack."
+	item = /obj/item/reagent_containers/vapecart/syndicate
+	cost = 5
+	surplus = 90
 
 //AMMO
 /datum/uplink_item/ammo/pistolaps_traitor

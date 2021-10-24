@@ -16,7 +16,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	//Lore Stuff
 	var/ruinSpawned = FALSE
 
-/obj/item/hilbertshotel/Initialize()
+/obj/item/hilbertshotel/Initialize(mapload)
 	. = ..()
 	//Load templates
 	INVOKE_ASYNC(src, .proc/prepare_rooms)
@@ -254,7 +254,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	explosion_block = INFINITY
 	var/obj/item/hilbertshotel/parentSphere
 
-/turf/open/space/bluespace/Initialize()
+/turf/open/space/bluespace/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 
@@ -352,9 +352,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	requires_power = FALSE
 	has_gravity = TRUE
 	area_flags = NOTELEPORT | HIDDEN_AREA
-	static_lighting = FALSE
-	base_lighting_alpha = 255
-	base_lighting_color = COLOR_WHITE
+	static_lighting = TRUE
 	ambientsounds = list('sound/ambience/servicebell.ogg')
 	var/roomnumber = 0
 	var/obj/item/hilbertshotel/parentSphere
@@ -513,7 +511,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 /obj/item/paper/crumpled/docslogs
 	name = "Research Logs"
 
-/obj/item/paper/crumpled/docslogs/Initialize()
+/obj/item/paper/crumpled/docslogs/Initialize(mapload)
 	. = ..()
 	info = {"<h4><center>Research Logs</center></h4>
 	I might just be onto something here!<br>

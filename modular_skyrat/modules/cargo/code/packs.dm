@@ -109,10 +109,10 @@
 	desc = "Contains the tier I Medigun cells."
 	cost = CARGO_CRATE_VALUE * 5
 	access = ACCESS_MEDICAL
-	contains = list(/obj/item/medicell/brute1,
-					/obj/item/medicell/burn1,
-					/obj/item/medicell/toxin1,
-					/obj/item/medicell)
+	contains = list(/obj/item/weaponcell/medical/brute,
+					/obj/item/weaponcell/medical/burn,
+					/obj/item/weaponcell/medical/toxin,
+					/obj/item/weaponcell/medical)
 	crate_name = "Medicell Replacemnt Crate"
 
 //////////////////////////////////////////////////////////////////////////////
@@ -127,16 +127,6 @@
 	contains = list(/obj/item/clothing/suit/space/hardsuit/security)
 	crate_name = "security hardsuit crate"
 
-/datum/supply_pack/security/baton_peacekeeper
-	name = "Batons Crate"
-	desc = "Arm the Civil Protection Forces with three batons. Requires Security access to open."
-	cost = CARGO_CRATE_VALUE * 2
-	access_view = ACCESS_SECURITY
-	contains = list(/obj/item/melee/classic_baton/peacekeeper,
-					/obj/item/melee/classic_baton/peacekeeper,
-					/obj/item/melee/classic_baton/peacekeeper)
-	crate_name = "baton crate"
-
 /datum/supply_pack/security/croonsurplus
 	name = "Croon Weapons Crate"
 	desc = "Help out in a local revolt, or fund a civil war, it's not like you have a choice in supplier. (Comes with four magazines of ammo.)"
@@ -149,6 +139,16 @@
 					/obj/item/ammo_box/magazine/multi_sprite/croon,
 					/obj/item/ammo_box/magazine/multi_sprite/croon)
 	crate_name = "unmarked weapons crate"
+	dangerous = TRUE
+	
+/datum/supply_pack/security/pepperballplus
+	name = "Pepperball Self-Defense Supply Crate"
+	desc = "Uneasy times, corporate security get lost during the transfer? Protect yourself.. somewhat."
+	cost = CARGO_CRATE_VALUE * 15
+	contraband = TRUE
+	contains = list(/obj/item/storage/box/gunset/pepperball,
+					/obj/item/storage/box/gunset/pepperball)
+	crate_name = "Pepperball Pistol Crate"
 	dangerous = TRUE
 
 /datum/supply_pack/security/wildcat
@@ -354,6 +354,16 @@
 					/obj/item/fuel_pellet,
 					/obj/item/fuel_pellet)
 	crate_name = "drone fuel crate"
+
+/datum/supply_pack/service/snowmobile
+	name = "Snowmobile kit"
+	desc = "trapped on a frigid wasteland? need to get around fast? purchase a refurbished snowmobile, with a FREE 10 microsecond warranty!"
+	cost = 1500 // 1000 points cheaper than ATV
+	contains = list(/obj/vehicle/ridden/atv/snowmobile = 1,
+			/obj/item/key/atv = 1,
+			/obj/item/clothing/mask/gas/explorer = 1)
+	crate_name = "Snowmobile kit"
+	crate_type = /obj/structure/closet/crate/large
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Food Stuff //////////////////////////////////////

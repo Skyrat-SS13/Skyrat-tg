@@ -52,7 +52,7 @@ var/current_turf
 				user.allowed_turfs += "holoseat"
 
 		//wings
-		if((istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/wings/moth)) || HAS_TRAIT(user, TRAIT_SPARKLE_ASPECT))
+		if((istype(user.getorganslot(ORGAN_SLOT_WINGS), /obj/item/organ/external/wings/moth)) || HAS_TRAIT(user, TRAIT_SPARKLE_ASPECT))
 			user.allowed_turfs += "dust" //moth's dust ✨
 
 		//body parts
@@ -86,7 +86,7 @@ var/current_turf
 
 		display_turf[initial(choice)] = option
 
-	sortList(display_turf)
+	sort_list(display_turf)
 	var/chosen_turf = show_radial_menu(user, user, display_turf, custom_check = CALLBACK(src, .proc/check_menu, user))
 
 	if(QDELETED(src) || QDELETED(user) || !chosen_turf)
@@ -110,9 +110,9 @@ var/current_turf
 		var/list/colorable = list("dust", "slime", "vines", "footprint", "pawprint", "hoofprint", "clawprint")
 		if(current_turf in colorable) //These turfs are simply colored after their owner's primary
 			if(ishumanbasic(user) || ishumanoid(user))
-				user.owned_turf.color = "#" + human_user.dna.features["skin_color"]
+				user.owned_turf.color = human_user.dna.features["skin_color"]
 			else
-				user.owned_turf.color = "#" + human_user.dna.features["mcolor"]
+				user.owned_turf.color = human_user.dna.features["mcolor"]
 
 
 		var/list/body_part = list("tails", "constrict")
@@ -133,13 +133,14 @@ var/current_turf
 
 			switch(sprite_type.color_src)
 				if(USE_MATRIXED_COLORS)
-					finished_list += ReadRGB("[color_list[1]]0")
-					finished_list += ReadRGB("[color_list[2]]0")
-					finished_list += ReadRGB("[color_list[3]]0")
+					finished_list += ReadRGB("[get_alpha_padded_color(color_list[1])]")
+					finished_list += ReadRGB("[get_alpha_padded_color(color_list[2])]")
+					finished_list += ReadRGB("[get_alpha_padded_color(color_list[3])]")
 				if(USE_ONE_COLOR)
-					finished_list += ReadRGB("[color_list[1]]0")
-					finished_list += ReadRGB("[color_list[1]]0")
-					finished_list += ReadRGB("[color_list[1]]0")
+					var/padded_string = get_alpha_padded_color(color_list[1])
+					finished_list += ReadRGB(padded_string)
+					finished_list += ReadRGB(padded_string)
+					finished_list += ReadRGB(padded_string)
 
 			finished_list += list(0,0,0,255)
 			for(var/index in 1 to finished_list.len)

@@ -230,12 +230,8 @@
 		return COMPONENT_INCOMPATIBLE
 	parent_atom = parent
 	wielder = parent
-	//SKYRAT EDIT REMOVAL BEGIN -DIGI_BLOODSOLE
-	/*
 	if(!bloody_feet)
 		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-	*/
-	//SKYRAT EDIT REMOVAL END
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/on_clean)
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/on_moved)
 	RegisterSignal(parent, COMSIG_STEP_ON_BLOOD, .proc/on_step_blood)
@@ -245,6 +241,7 @@
 /datum/component/bloodysoles/feet/update_icon()
 	if(ishuman(wielder))
 		var/mob/living/carbon/human/human = wielder
+		fix_soles() //SKYRAT ADDITION - DIGI_BLOODSOLE
 		if(NOBLOODOVERLAY in human.dna.species.species_traits)
 			return
 		if(bloody_shoes[BLOOD_STATE_HUMAN] > 0 && !is_obscured())
@@ -280,19 +277,20 @@
 	..()
 
 /datum/component/bloodysoles/feet/on_step_blood(datum/source, obj/effect/decal/cleanable/pool)
-	//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
-	//this is done in on_step_blood because both update_icon() and initialize() are called before copy_to() is called, which means we wouldn't be able to see if they had digitigrade legs
-	if(!bloody_feet)
-		var/mob/living/carbon/H = parent
-		if (DIGITIGRADE in H.dna.species.species_traits)
-			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-		else
-			bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
-	//SKYRAT EDIT ADDITION END
 	if(wielder.num_legs < 2)
 		return
 
 	..()
+
+//SKYRAT EDIT ADDITION BEGIN - DIGI_BLOODSOLE
+/datum/component/bloodysoles/feet/proc/fix_soles()
+	var/mob/living/carbon/H = parent
+	if (DIGITIGRADE in H.dna.species.species_traits)
+		if (bloody_feet.icon_state != "shoeblood_digi")
+			bloody_feet = mutable_appearance('modular_skyrat/modules/digi_bloodsole/icons/effects/blood.dmi', "shoeblood_digi", SHOES_LAYER)
+	else if (bloody_feet.icon_state != "shoeblood")
+		bloody_feet = mutable_appearance('icons/effects/blood.dmi', "shoeblood", SHOES_LAYER)
+//SKYRAT EDIT ADDITION END
 
 /datum/component/bloodysoles/feet/proc/unequip_shoecover(datum/source)
 	SIGNAL_HANDLER

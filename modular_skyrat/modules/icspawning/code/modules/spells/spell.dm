@@ -38,4 +38,4 @@
 	// Get them back to their regular name.
 	ghost.set_ghost_appearance()
 	if(ghost.client && ghost.client.prefs)
-		ghost.deadchat_name = ghost.client.prefs.real_name
+		ghost.deadchat_name = ghost.client.prefs?.read_preference(/datum/preference/name/real_name)

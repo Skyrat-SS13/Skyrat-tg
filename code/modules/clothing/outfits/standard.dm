@@ -47,7 +47,7 @@
 	head = /obj/item/clothing/head/helmet/thunderdome
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	l_hand = /obj/item/gun/energy/pulse/destroyer
-	l_pocket = /obj/item/kitchen/knife
+	l_pocket = /obj/item/knife/kitchen
 	r_pocket = /obj/item/grenade/smokebomb
 
 /datum/outfit/tournament/green
@@ -223,7 +223,7 @@
 	gloves = /obj/item/clothing/gloves/color/latex
 	head = /obj/item/clothing/head/welding
 	mask = /obj/item/clothing/mask/surgical
-	l_pocket = /obj/item/kitchen/knife
+	l_pocket = /obj/item/knife/kitchen
 	r_pocket = /obj/item/scalpel
 	l_hand = /obj/item/fireaxe
 
@@ -245,7 +245,7 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
 	shoes = /obj/item/clothing/shoes/sneakers/black
-	l_pocket = /obj/item/melee/transforming/energy/sword/saber
+	l_pocket = /obj/item/melee/energy/sword/saber
 	l_hand = /obj/item/storage/secure/briefcase
 
 /datum/outfit/assassin/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -424,7 +424,7 @@
 	suit_store = /obj/item/tank/internals/oxygen
 	back = /obj/item/storage/backpack/holding
 	backpack_contents = list(
-		/obj/item/melee/transforming/energy/axe = 1,
+		/obj/item/melee/energy/axe = 1,
 		/obj/item/storage/part_replacer/bluespace/tier4 = 1,
 		/obj/item/gun/magic/wand/resurrection/debug = 1,
 		/obj/item/gun/magic/wand/death/debug = 1,
@@ -456,7 +456,7 @@
 	suit_store = /obj/item/tank/internals/oxygen
 	back = /obj/item/storage/backpack/holding
 	backpack_contents = list(
-		/obj/item/melee/transforming/energy/axe = 1,
+		/obj/item/melee/energy/axe = 1,
 		/obj/item/storage/part_replacer/bluespace/tier4 = 1,
 		/obj/item/gun/magic/wand/resurrection/debug = 1,
 		/obj/item/gun/magic/wand/death/debug = 1,

@@ -1,7 +1,7 @@
 //used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
 /mob/living/carbon/human/proc/update_mutant_bodyparts(force_update=FALSE)
 	dna.species.handle_mutant_bodyparts(src, force_update = force_update)
-
+	update_body_parts() // basically a better and cooler handle_mutant_bodyparts (at least until handle_mutant_bodyparts is annihilated)
 /mob/living/carbon/human/update_inv_w_uniform()
 	remove_overlay(UNIFORM_LAYER)
 
@@ -279,12 +279,13 @@
 
 	//GENERATE NEW LIMBS
 	var/list/new_limbs = list()
+	var/draw_features = !HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		if(is_taur && (BP.body_part == LEG_LEFT || BP.body_part == LEG_RIGHT))
 			continue
 
-		new_limbs += BP.get_limb_icon()
+		new_limbs += BP.get_limb_icon(draw_external_organs = draw_features)
 	if(new_limbs.len)
 		overlays_standing[BODYPARTS_LAYER] = new_limbs
 

@@ -132,7 +132,7 @@
 		/obj/item/ammo_casing,
 		/obj/item/flashlight,
 		/obj/item/gun,
-		/obj/item/kitchen/knife,
+		/obj/item/knife,
 		/obj/item/reagent_containers,
 		/obj/item/restraints/handcuffs,
 		/obj/item/tank/internals/emergency_oxygen,
@@ -148,12 +148,12 @@
 	inhand_icon_state = "eng_hardsuit"
 	hardsuit_type = "hexp_corps"
 	armor = list(MELEE = 42, BULLET = 42, LASER = 42, ENERGY = 42, BOMB = 60, BIO = 0, RAD = 100, FIRE = 80, ACID = 100, WOUND = 30)
-	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword/saber, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
+	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	jetpack = /obj/item/tank/jetpack/suit
 	cell = /obj/item/stock_parts/cell/hyper
 	slowdown = 0.5
-	hardsuit_tail_colors = list("434", "223", "988")
+	hardsuit_tail_colors = list("#443344", "#222233", "#998888")
 
 /obj/item/clothing/head/helmet/space/hardsuit/expeditionary_corps
 	name = "expeditionary corps hardsuit helmet"

@@ -61,6 +61,14 @@
 	descriptor = SCENT_DESC_SMELL
 	scent = "a metallic scent"
 
+///A special "Quick Dispersal" smoke for special cigars
+/datum/pollutant/bright_cosmos
+	name = "Cosmic Smoke"
+	pollutant_flags = POLLUTANT_SMELL
+	smell_intensity = 1
+	descriptor = SCENT_DESC_SMELL
+	scent = "refreshing mint and inoffensive smoke"
+
 ///Green goo piles and medicine chemical reactions make this
 /datum/pollutant/chemical_vapors
 	name = "Chemical Vapors"

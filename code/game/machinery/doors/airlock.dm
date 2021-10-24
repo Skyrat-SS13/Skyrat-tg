@@ -33,7 +33,7 @@
 	var/em_block_key = "[base_icon_key][em_block]"
 	var/mutable_appearance/em_blocker = airlock_overlays[em_block_key]
 	if(!em_blocker)
-		em_blocker = airlock_overlays[em_block_key] = mutable_appearance(icon_file, icon_state, plane = EMISSIVE_PLANE)
+		em_blocker = airlock_overlays[em_block_key] = mutable_appearance(icon_file, icon_state, plane = EMISSIVE_PLANE, appearance_flags = EMISSIVE_APPEARANCE_FLAGS)
 		em_blocker.color = em_block ? GLOB.em_block_color : GLOB.emissive_color
 
 	return list(., em_blocker)
@@ -144,7 +144,7 @@
 
 	network_id = NETWORK_DOOR_AIRLOCKS
 
-/obj/machinery/door/airlock/Initialize()
+/obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
 	//SKYRAT EDIT ADDITION BEGIN
 	if(multi_tile)
@@ -170,10 +170,10 @@
 	if(glass)
 		airlock_material = "glass"
 	if(security_level > AIRLOCK_SECURITY_IRON)
-		obj_integrity = normal_integrity * AIRLOCK_INTEGRITY_MULTIPLIER
+		atom_integrity = normal_integrity * AIRLOCK_INTEGRITY_MULTIPLIER
 		max_integrity = normal_integrity * AIRLOCK_INTEGRITY_MULTIPLIER
 	else
-		obj_integrity = normal_integrity
+		atom_integrity = normal_integrity
 		max_integrity = normal_integrity
 	if(damage_deflection == AIRLOCK_DAMAGE_DEFLECTION_N && security_level > AIRLOCK_SECURITY_IRON)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
@@ -401,19 +401,6 @@
 			if(!C.wearing_shock_proof_gloves())
 				new /datum/hallucination/shock(C)
 				return
-	if(close_others)
-		for(var/obj/machinery/door/airlock/otherlock as anything in close_others)
-			if(!shuttledocked && !emergency && !otherlock.shuttledocked && !otherlock.emergency && allowed(user))
-				if(otherlock.operating)
-					otherlock.delayed_close_requested = TRUE
-				else
-					addtimer(CALLBACK(otherlock, .proc/close), 2)
-	if(cyclelinkedairlock)
-		if(!shuttledocked && !emergency && !cyclelinkedairlock.shuttledocked && !cyclelinkedairlock.emergency && allowed(user))
-			if(cyclelinkedairlock.operating)
-				cyclelinkedairlock.delayed_close_requested = TRUE
-			else
-				addtimer(CALLBACK(cyclelinkedairlock, .proc/close), 2)
 	..()
 
 /obj/machinery/door/airlock/proc/isElectrified()
@@ -572,12 +559,12 @@
 
 	if(hasPower())
 		if(frame_state == AIRLOCK_FRAME_CLOSED)
-			if(obj_integrity < integrity_failure * max_integrity)
+			if(atom_integrity < integrity_failure * max_integrity)
 				. += get_airlock_overlay("sparks_broken", overlays_file, em_block = FALSE)
-			else if(obj_integrity < (0.75 * max_integrity))
+			else if(atom_integrity < (0.75 * max_integrity))
 				. += get_airlock_overlay("sparks_damaged", overlays_file, em_block = FALSE)
 		else if(frame_state == AIRLOCK_FRAME_OPEN)
-			if(obj_integrity < (0.75 * max_integrity))
+			if(atom_integrity < (0.75 * max_integrity))
 				. += get_airlock_overlay("sparks_open", overlays_file, em_block = FALSE)
 
 	if(note)
@@ -989,14 +976,14 @@
 			to_chat(user, span_warning("[src] is blocked by a seal!"))
 			return
 
-		if(obj_integrity < max_integrity)
+		if(atom_integrity < max_integrity)
 			if(!W.tool_start_check(user, amount=0))
 				return
 			user.visible_message(span_notice("[user] begins welding the airlock."), \
 							span_notice("You begin repairing the airlock..."), \
 							span_hear("You hear welding."))
 			if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, .proc/weld_checks, W, user)))
-				obj_integrity = max_integrity
+				atom_integrity = max_integrity
 				set_machine_stat(machine_stat & ~BROKEN)
 				user.visible_message(span_notice("[user] finishes welding [src]."), \
 									span_notice("You finish repairing the airlock."))
@@ -1115,9 +1102,6 @@
 			return FALSE
 		use_power(50)
 		playsound(src, doorOpen, 30, TRUE)
-
-		if(closeOther != null && istype(closeOther, /obj/machinery/door/airlock/) && !closeOther.density)
-			closeOther.close()
 	else
 		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) - ORIGINAL
 		playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
@@ -1127,6 +1111,25 @@
 
 	if(!density)
 		return TRUE
+
+	if(closeOther != null && istype(closeOther, /obj/machinery/door/airlock))
+		addtimer(CALLBACK(closeOther, .proc/close), 2)
+
+	if(close_others)
+		for(var/obj/machinery/door/airlock/otherlock as anything in close_others)
+			if(!shuttledocked && !emergency && !otherlock.shuttledocked && !otherlock.emergency)
+				if(otherlock.operating)
+					otherlock.delayed_close_requested = TRUE
+				else
+					addtimer(CALLBACK(otherlock, .proc/close), 2)
+
+	if(cyclelinkedairlock)
+		if(!shuttledocked && !emergency && !cyclelinkedairlock.shuttledocked && !cyclelinkedairlock.emergency)
+			if(cyclelinkedairlock.operating)
+				cyclelinkedairlock.delayed_close_requested = TRUE
+			else
+				addtimer(CALLBACK(cyclelinkedairlock, .proc/close), 2)
+
 	SEND_SIGNAL(src, COMSIG_AIRLOCK_OPEN, forced)
 	operating = TRUE
 	update_icon(ALL, AIRLOCK_OPENING, TRUE)
@@ -1233,7 +1236,7 @@
 		return
 
 	// reads from the airlock painter's `available paintjob` list. lets the player choose a paint option, or cancel painting
-	var/current_paintjob = input(user, "Please select a paintjob for this airlock.") as null|anything in sortList(painter.available_paint_jobs)
+	var/current_paintjob = input(user, "Please select a paintjob for this airlock.") as null|anything in sort_list(painter.available_paint_jobs)
 	if(!current_paintjob) // if the user clicked cancel on the popup, return
 		return
 
@@ -1347,10 +1350,10 @@
 		add_hiddenprint(user)
 
 /obj/machinery/door/airlock/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
-	if((damage_amount >= obj_integrity) && (damage_flag == BOMB))
+	if((damage_amount >= atom_integrity) && (damage_flag == BOMB))
 		flags_1 |= NODECONSTRUCT_1  //If an explosive took us out, don't drop the assembly
 	. = ..()
-	if(obj_integrity < (0.75 * max_integrity))
+	if(atom_integrity < (0.75 * max_integrity))
 		update_appearance()
 
 

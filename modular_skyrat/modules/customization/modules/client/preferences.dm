@@ -1,3 +1,4 @@
+/*
 GLOBAL_LIST_EMPTY(preferences_datums)
 
 // i shall taint your pretty preferences file with bobcode
@@ -2658,7 +2659,7 @@ GLOBAL_LIST_INIT(food, list(
 							friendlyname += " (disabled)"
 						maplist[friendlyname] = VM.map_name
 					maplist[default] = null
-					var/pickedmap = input(user, "Choose your preferred map. This will be used to help weight random map selection.", "Character Preference")  as null|anything in sortList(maplist)
+					var/pickedmap = input(user, "Choose your preferred map. This will be used to help weight random map selection.", "Character Preference")  as null|anything in sort_list(maplist)
 					if (pickedmap)
 						preferred_map = maplist[pickedmap]
 
@@ -2668,7 +2669,7 @@ GLOBAL_LIST_INIT(food, list(
 						clientfps = sanitize_integer(desiredfps, -1, 1000, clientfps)
 						parent.fps = (clientfps < 0) ? RECOMMENDED_FPS : clientfps
 				if("ui")
-					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in sortList(GLOB.available_ui_styles)
+					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in sort_list(GLOB.available_ui_styles)
 					if(pickedui)
 						UI_style = pickedui
 						if (parent && parent.mob && parent.mob.hud_used)
@@ -2798,7 +2799,7 @@ GLOBAL_LIST_INIT(food, list(
 						if(!length(key_bindings[old_key]))
 							key_bindings -= old_key
 					key_bindings[full_key] += list(kb_name)
-					key_bindings[full_key] = sortList(key_bindings[full_key])
+					key_bindings[full_key] = sort_list(key_bindings[full_key])
 
 					user << browse(null, "window=capturekeypress")
 					user.client.set_macros()
@@ -3566,3 +3567,4 @@ GLOBAL_LIST_INIT(food, list(
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
 	popup.open(FALSE)
+*/

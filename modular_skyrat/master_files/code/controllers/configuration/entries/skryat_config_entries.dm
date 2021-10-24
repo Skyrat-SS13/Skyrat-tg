@@ -12,3 +12,6 @@
 
 //Reaction roles channel
 /datum/config_entry/string/role_assign_channel_id
+
+// To turn off SSDecay based on a config. You're welcome.
+/datum/config_entry/flag/ssdecay_disabled

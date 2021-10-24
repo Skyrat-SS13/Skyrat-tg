@@ -45,7 +45,7 @@
 	interaction_range = 7 //wireless control range
 	var/obj/item/pda/ai/aiPDA
 
-/mob/living/silicon/Initialize()
+/mob/living/silicon/Initialize(mapload)
 	. = ..()
 	GLOB.silicon_mobs += src
 	faction += "silicon"
@@ -181,25 +181,6 @@
 			return
 		to_chat(usr, href_list["printlawtext"])
 
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(href_list["lookup_info"])
-		switch(href_list["lookup_info"])
-			if("ooc_prefs")
-				if(client)
-					var/str = "[src]'s OOC Notes : <br> <b>ERP :</b> [client.prefs.erp_pref] <b>| Non-Con :</b> [client.prefs.noncon_pref] <b>| Vore :</b> [client.prefs.vore_pref]"
-					str += "<br>[html_encode(client.prefs.ooc_prefs)]"
-					var/datum/browser/popup = new(usr, "[name]'s ooc info", "[name]'s OOC Information", 500, 200)
-					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s OOC information", replacetext(str, "\n", "<BR>")))
-					popup.open()
-					return
-
-			if("silicon_flavor_text")
-				if(client && length(client.prefs.features["silicon_flavor_text"]))
-					var/datum/browser/popup = new(usr, "[name]'s flavor text", "[name]'s Flavor Text", 500, 200)
-					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s flavor text", replacetext(client.prefs.features["silicon_flavor_text"], "\n", "<BR>")))
-					popup.open()
-					return
-	//SKYRAT EDIT ADDITION END
 	return
 
 /mob/living/silicon/proc/statelaws(force = 0)
@@ -229,7 +210,7 @@
 
 	for (var/index in 1 to length(lawcache_hacked))
 		var/law = lawcache_hacked[index]
-		var/num = ionnum()
+		var/num = ion_num()
 		if (length(law) > 0)
 			if (force || lawcache_hackedcheck[index] == "Yes")
 				say("[radiomod] [num]. [law]")
@@ -237,7 +218,7 @@
 
 	for (var/index in 1 to length(lawcache_ion))
 		var/law = lawcache_ion[index]
-		var/num = ionnum()
+		var/num = ion_num()
 		if (length(law) > 0)
 			if (force || lawcache_ioncheck[index] == "Yes")
 				say("[radiomod] [num]. [law]")
@@ -277,7 +258,7 @@
 		if (length(law) > 0)
 			if (!hackedcheck[index])
 				hackedcheck[index] = "No"
-			list += {"<A href='byond://?src=[REF(src)];lawh=[index]'>[hackedcheck[index]] [ionnum()]:</A> <font color='#660000'>[law]</font><BR>"}
+			list += {"<A href='byond://?src=[REF(src)];lawh=[index]'>[hackedcheck[index]] [ion_num()]:</A> <font color='#660000'>[law]</font><BR>"}
 			hackedcheck.len += 1
 
 	for (var/index = 1, index <= laws.ion.len, index++)
@@ -286,7 +267,7 @@
 		if (length(law) > 0)
 			if (!ioncheck[index])
 				ioncheck[index] = "Yes"
-			list += {"<A href='byond://?src=[REF(src)];lawi=[index]'>[ioncheck[index]] [ionnum()]:</A> <font color='#547DFE'>[law]</font><BR>"}
+			list += {"<A href='byond://?src=[REF(src)];lawi=[index]'>[ioncheck[index]] [ion_num()]:</A> <font color='#547DFE'>[law]</font><BR>"}
 			ioncheck.len += 1
 
 	var/number = 1

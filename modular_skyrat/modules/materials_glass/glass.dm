@@ -2,17 +2,17 @@
 #define BUILD_WINDOW_DIRECTIONAL_MOD 0.5
 
 GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
-	new/datum/stack_recipe("plastitanium window", /obj/structure/window/plasma/reinforced/plastitanium/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("plastitanium window", /obj/structure/window/reinforced/plasma/plastitanium/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
 	))
 GLOBAL_LIST_INIT(titaniumglass_recipes, list(
-	new/datum/stack_recipe("shuttle window", /obj/structure/window/shuttle/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("shuttle window", /obj/structure/window/reinforced/shuttle/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE), \
 	new/datum/stack_recipe("spaceship window plate", /obj/item/stack/sheet/spaceshipglass, 1, time = 5), \
 	))
 GLOBAL_LIST_INIT(prglass_recipes, list ( \
-	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/plasma/reinforced/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/plasma/reinforced/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/plasma/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/plasma/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
 	))
 GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
@@ -103,6 +103,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/plasmaglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
 	material_flags = NONE
+	tableVariant = /obj/structure/table/glass/plasmaglass
 
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
@@ -143,6 +144,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/iron = 10)
 	point_value = 4
 	matter_amount = 6
+	tableVariant = /obj/structure/table/reinforced/rglass
 
 /obj/item/stack/sheet/rglass/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
@@ -189,6 +191,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10, /datum/reagent/iron = 10)
 	point_value = 23
 	matter_amount = 8
+	tableVariant = /obj/structure/table/reinforced/plasmarglass
 
 /obj/item/stack/sheet/plasmarglass/get_main_recipes()
 	. = ..()
@@ -205,6 +208,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/titaniumglass
+	tableVariant = /obj/structure/table/reinforced/titaniumglass
 
 /obj/item/stack/sheet/titaniumglass/get_main_recipes()
 	. = ..()
@@ -222,6 +226,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	material_flags = NONE
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plastitaniumglass
+	tableVariant = /obj/structure/table/reinforced/plastitaniumglass
 
 /obj/item/stack/sheet/plastitaniumglass/get_main_recipes()
 	. = ..()
@@ -312,7 +317,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 		var/obj/item/stack/sheet/cloth/C = I
 		to_chat(user, "<span class='notice'>You begin to wrap the [C] around the [src]...</span>")
 		if(do_after(user, 35, target = src))
-			var/obj/item/kitchen/knife/shiv/S = new /obj/item/kitchen/knife/shiv
+			var/obj/item/knife/shiv/S = new /obj/item/knife/shiv
 			C.use(1)
 			to_chat(user, "<span class='notice'>You wrap the [C] around the [src] forming a makeshift weapon.</span>")
 			remove_item_from_storage(src)

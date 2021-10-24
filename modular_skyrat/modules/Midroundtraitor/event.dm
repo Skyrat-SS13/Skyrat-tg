@@ -1,7 +1,7 @@
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator
 	name = "Lone Infiltrator"
 	antag_datum = /datum/antagonist/traitor/infiltrator
-	antag_flag = ROLE_TRAITOR
+	antag_flag = ROLE_LONE_INFILTRATOR
 	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
 	required_candidates = 1
 	weight = 5 //Slightly less common than normal midround traitors.
@@ -55,7 +55,7 @@
 	backpack_contents = list(/obj/item/storage/box/survival/syndie=1,\
 		/obj/item/tank/jetpack/oxygen/harness=1,\
 		/obj/item/gun/ballistic/automatic/pistol=1,\
-		/obj/item/kitchen/knife/combat/survival)
+		/obj/item/knife/combat/survival)
 
 	id_trim = /datum/id_trim/chameleon/operative
 

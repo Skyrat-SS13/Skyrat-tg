@@ -54,7 +54,7 @@
 	//SKYRAT EDIT END
 
 	START_PROCESSING(SSobj, src)
-	AddElement(/datum/element/point_of_interest)
+	SSpoints_of_interest.make_point_of_interest(src)
 
 	var/datum/component/singularity/new_component = AddComponent(
 		/datum/component/singularity, \
@@ -80,6 +80,7 @@
 			header = "IT'S LOOSE",
 			notify_volume = 75
 		)
+
 
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSobj, src)

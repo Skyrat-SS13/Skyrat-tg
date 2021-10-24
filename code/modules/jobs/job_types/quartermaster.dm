@@ -30,7 +30,7 @@
 	mail_goodies = list(
 		/obj/item/circuitboard/machine/emitter = 3
 	)
-
+	rpg_title = "Steward"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 
@@ -51,7 +51,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_hand = /obj/item/clipboard
 	//backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1) //ORIGINAL
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1) //SKYRAT EDIT CHANGE
+	backpack_contents = list(/obj/item/melee/baton/telescopic=1, /obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1) //SKYRAT EDIT CHANGE
 
 	chameleon_extras = /obj/item/stamp/qm
 

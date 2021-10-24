@@ -1,4 +1,4 @@
-#define ADMIN_CANCEL_MIDROUND_TIME (10 SECONDS)
+#define ADMIN_CANCEL_MIDROUND_TIME (60 SECONDS) //SKYRAT EDIT - ORIGINAL 10 SECONDS
 
 /// From a list of rulesets, returns one based on weight and availability.
 /// Mutates the list that is passed into it to remove invalid rules.
@@ -7,7 +7,7 @@
 		return null
 
 	while (TRUE)
-		var/datum/dynamic_ruleset/rule = pickweight(drafted_rules)
+		var/datum/dynamic_ruleset/rule = pick_weight(drafted_rules)
 		if (!rule)
 			return null
 

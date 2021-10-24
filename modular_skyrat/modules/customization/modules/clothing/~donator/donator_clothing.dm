@@ -9,7 +9,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/polychromic/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("666", "CBA", "00F"))
+	AddElement(/datum/element/polychromic, list("#666666", "#CCBBAA", "#0000FF"))
 
 //We need this to color the hood that comes up
 /obj/item/clothing/suit/hooded/wintercoat/polychromic/ToggleHood()
@@ -30,7 +30,7 @@
 	icon_state = "polycloak"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
-	var/list/poly_colors = list("FFF", "FFF", "888")
+	var/list/poly_colors = list("#FFFFFF", "#FFFFFF", "#888888")
 
 /obj/item/clothing/neck/cloak/polychromic/ComponentInitialize()
 	. = ..()
@@ -87,7 +87,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyskirt"
 	mutant_variants = NONE
-	var/list/poly_colors = list("FFF", "F88", "888")
+	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
 /obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
 	. = ..()
@@ -98,7 +98,7 @@
 	desc = "A magnificent pleated skirt complements the woolen polychromatic sweater."
 	icon_state = "polypleat"
 	body_parts_covered = CHEST|GROIN|ARMS
-	poly_colors = list("8CF", "888", "F33")
+	poly_colors = list("#88CCFF", "#888888", "#FF3333")
 
 /obj/item/clothing/under/misc/poly_shirt
 	name = "polychromic button-up shirt"
@@ -110,7 +110,7 @@
 
 /obj/item/clothing/under/misc/poly_shirt/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "333", "333"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#333333", "#333333"))
 
 /obj/item/clothing/under/misc/polyshorts
 	name = "polychromic shorts"
@@ -124,7 +124,7 @@
 
 /obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("333", "888", "888"))
+	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
 
 /obj/item/clothing/under/misc/polyjumpsuit
 	name = "polychromic tri-tone jumpsuit"
@@ -137,7 +137,7 @@
 
 /obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "888", "333"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#888888", "#333333"))
 
 /obj/item/clothing/under/misc/poly_bottomless
 	name = "polychromic bottomless shirt"
@@ -151,7 +151,7 @@
 
 /obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("888", "F33", "FFF"))
+	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
 
 /obj/item/clothing/under/misc/polysweater
 	name = "polychromic sweater"
@@ -166,7 +166,7 @@
 
 /obj/item/clothing/under/misc/polysweater/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
@@ -177,7 +177,7 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	var/list/poly_colors = list("888", "FFF", "8CF")
+	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
 /obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
 	. = ..()
@@ -187,7 +187,7 @@
 	name = "polychromic feminine tank top"
 	desc = "Great for showing off your chest in style. Not recommended for males."
 	icon_state = "polyfemtankpantsu"
-	poly_colors = list("888", "F33", "FFF")
+	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
 
 /obj/item/clothing/under/shorts/polychromic
 	name = "polychromic athletic shorts"
@@ -196,7 +196,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyshortpants"
 	mutant_variants = NONE
-	var/list/poly_colors = list("FFF", "F88", "FFF")
+	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
 
 /obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
 	. = ..()
@@ -208,7 +208,7 @@
 	icon_state = "polypantsu"
 	body_parts_covered = GROIN
 	mutant_variants = NONE
-	poly_colors = list("FFF", "8CF", "FFF")
+	poly_colors = list("#FFFFFF", "#88CCFF", "#FFFFFF")
 
 /**************CKEY EXCLUSIVES*************/
 
@@ -454,7 +454,7 @@
 			visible_message(span_warning("[crusher] steps on the [src], crushing it with ease."))
 			take_damage(200, sound_effect = FALSE)
 
-/obj/item/clothing/mask/kindle/obj_destruction(damage_flag)
+/obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
 	. = ..()
 	name = "broken mask of Kindle"
 	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
@@ -970,3 +970,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "blueshield"
+
+// Donation reward for DeltaTri
+/obj/item/clothing/suit/jacket/delta
+	name = "grey winter hoodie"
+	desc = "A plain old grey hoodie. It has some puffing on the inside, and a animal fur trim around half of the hood."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "greycoat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT

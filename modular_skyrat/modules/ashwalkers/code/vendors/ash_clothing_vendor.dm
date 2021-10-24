@@ -22,3 +22,6 @@
 		/obj/item/clothing/gloves/military/ashwalk = 10
 	)
 
+/obj/machinery/vending/ashclothingvendor/Initialize(mapload)
+	. = ..()
+	onstation = FALSE

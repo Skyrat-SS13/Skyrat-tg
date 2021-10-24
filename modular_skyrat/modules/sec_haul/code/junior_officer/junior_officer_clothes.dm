@@ -25,7 +25,7 @@
 	inhand_icon_state = "jacket"
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|ARMS
-	allowed = list(/obj/item/gun/ballistic/automatic/pistol/pepperball, /obj/item/melee/classic_baton)
+	allowed = list(/obj/item/gun/ballistic/automatic/pistol/pepperball, /obj/item/melee/baton)
 	armor = list(MELEE = 15, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 50, RAD = 0, FIRE = 50, ACID = 50)
-	togglename = "zipper"
+	toggle_noun = "zipper"
 	mutant_variants = NONE

@@ -49,6 +49,7 @@
 #define ORGAN_SLOT_VAGINA "vagina"
 #define ORGAN_SLOT_TESTICLES "testicles"
 #define ORGAN_SLOT_BREASTS "breasts"
+#define ORGAN_SLOT_ANUS "anus"
 
 #define ORGAN_SLOT_WINGS "wings"
 
@@ -56,7 +57,9 @@
 
 #define PREVIEW_PREF_JOB "Job"
 #define PREVIEW_PREF_LOADOUT "Loadout"
+#define PREVIEW_PREF_UNDERWEAR "Underwear"
 #define PREVIEW_PREF_NAKED "Naked"
+#define PREVIEW_PREF_NAKED_AROUSED "Naked - Aroused"
 
 #define BODY_SIZE_NORMAL 1.00
 #define BODY_SIZE_MAX 1.5
@@ -72,7 +75,7 @@
 #define SHEATH_SLIT	"Slit"
 #define SHEATH_MODES list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
 
-#define MANDATORY_FEATURE_LIST list("mcolor" = "FFB","mcolor2" = "FFB","mcolor3" = "FFB","ethcolor" = "FCC","skin_color" = "FED","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL, "custom_species" = null, "uses_skintones" = FALSE)
+#define MANDATORY_FEATURE_LIST list("mcolor" = "#FFFFBB","mcolor2" = "#FFFFBB","mcolor3" = "#FFFFBB","ethcolor" = "#FFCCCC","skin_color" = "#FFEEDD","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL, "custom_species" = null, "uses_skintones" = FALSE)
 
 #define UNDERWEAR_HIDE_SOCKS (1<<0)
 #define UNDERWEAR_HIDE_SHIRT (1<<1)

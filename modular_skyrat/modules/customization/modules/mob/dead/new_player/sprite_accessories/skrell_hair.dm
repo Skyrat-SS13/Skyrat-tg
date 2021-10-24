@@ -11,6 +11,10 @@
 		return TRUE
 	return FALSE
 
+/datum/sprite_accessory/skrell_hair/none
+	name = "None"
+	icon_state = "none"
+
 /datum/sprite_accessory/skrell_hair/long
 	name = "Female"
 	icon_state = "long"

@@ -199,7 +199,7 @@
 	var/can_transfer = TRUE //if golems can switch bodies to this new shell
 	var/mob/living/owner = null //golem's owner if it has one
 	short_desc = "You are a Free Golem. Your family worships The Liberator."
-	flavour_text = "In his infinite and divine wisdom, he set your clan free to travel the stars with a single declaration: \"Yeah go do whatever.\"" 
+	flavour_text = "In his infinite and divine wisdom, he set your clan free to travel the stars with a single declaration: \"Yeah go do whatever.\""
 
 /obj/effect/mob_spawn/human/golem/Initialize(mapload, datum/species/golem/species = null, mob/creator = null)
 	if(species) //spawners list uses object name to register so this goes before ..()
@@ -224,7 +224,6 @@
 			to_chat(new_spawn, policy)
 		to_chat(new_spawn, "Build golem shells in the autolathe, and feed refined mineral sheets to the shells to bring them to life! You are generally a peaceful group unless provoked.")
 	else
-		new_spawn.mind.store_memory("<b>Serve [owner.real_name], your creator.</b>")
 		new_spawn.mind.enslave_mind_to_creator(owner)
 		log_game("[key_name(new_spawn)] possessed a golem shell enslaved to [key_name(owner)].")
 		log_admin("[key_name(new_spawn)] possessed a golem shell enslaved to [key_name(owner)].")
@@ -488,7 +487,7 @@
 /datum/outfit/syndicate_empty/battlecruiser
 	name = "Syndicate Battlecruiser Ship Operative"
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_pocket = /obj/item/kitchen/knife/combat/survival
+	r_pocket = /obj/item/knife/combat/survival
 	belt = /obj/item/storage/belt/military/assault
 
 /obj/effect/mob_spawn/human/syndicate/battlecruiser/assault
@@ -502,7 +501,7 @@
 	name = "Syndicate Battlecruiser Assault Operative"
 	uniform = /obj/item/clothing/under/syndicate/combat
 	l_pocket = /obj/item/ammo_box/magazine/m9mm
-	r_pocket = /obj/item/kitchen/knife/combat/survival
+	r_pocket = /obj/item/knife/combat/survival
 	belt = /obj/item/storage/belt/military
 	suit = /obj/item/clothing/suit/armor/vest
 	suit_store = /obj/item/gun/ballistic/automatic/pistol
@@ -518,8 +517,8 @@
 
 /datum/outfit/syndicate_empty/battlecruiser/assault/captain
 	name = "Syndicate Battlecruiser Captain"
-	l_pocket = /obj/item/melee/transforming/energy/sword/saber/red
-	r_pocket = /obj/item/melee/classic_baton/telescopic
+	l_pocket = /obj/item/melee/energy/sword/saber/red
+	r_pocket = /obj/item/melee/baton/telescopic
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	suit_store = /obj/item/gun/ballistic/revolver/mateba
 	back = /obj/item/storage/backpack/satchel/leather
@@ -750,7 +749,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_pocket = /obj/item/kitchen/knife/combat/survival
+	r_pocket = /obj/item/knife/combat/survival
 	belt = /obj/item/storage/belt/military/assault
 	id = /obj/item/card/id/advanced/black/syndicate_command/crew_id
 	implants = list(/obj/item/implant/weapons_auth)
@@ -764,7 +763,7 @@
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack
-	r_pocket = /obj/item/kitchen/knife/combat/survival
+	r_pocket = /obj/item/knife/combat/survival
 	belt = /obj/item/storage/belt/military/assault
 	id = /obj/item/card/id/advanced/black/syndicate_command/captain_id
 	implants = list(/obj/item/implant/weapons_auth)
@@ -937,7 +936,7 @@
 
 /obj/effect/mob_spawn/cow
 	name = "sleeper"
-	mob_type = /mob/living/simple_animal/cow
+	mob_type = /mob/living/basic/cow
 	death = FALSE
 	roundstart = FALSE
 	mob_gender = FEMALE

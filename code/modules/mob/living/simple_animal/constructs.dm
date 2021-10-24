@@ -45,7 +45,7 @@
 	/// Theme controls color. THEME_CULT is red THEME_WIZARD is purple and THEME_HOLY is blue
 	var/theme = THEME_CULT
 
-/mob/living/simple_animal/hostile/construct/Initialize()
+/mob/living/simple_animal/hostile/construct/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/simple_flying)
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
@@ -90,13 +90,13 @@
 			text_span = "purple"
 		if(THEME_HOLY)
 			text_span = "blue"
-	. = list("<span class='[text_span]'>*---------*\nThis is [icon2html(src, user)] \a <b>[src]</b>!\n[desc]")
+	. = list("<span class='[text_span]'>This is [icon2html(src, user)] \a <b>[src]</b>!\n[desc]<hr>") //SKYRAT EDIT CHANGE
 	if(health < maxHealth)
 		if(health >= maxHealth/2)
 			. += span_warning("[t_He] look[t_s] slightly dented.")
 		else
 			. += span_warning("<b>[t_He] look[t_s] severely dented!</b>")
-	. += "*---------*</span>"
+	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 
 /mob/living/simple_animal/hostile/construct/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	if(isconstruct(user)) //is it a construct?
@@ -303,7 +303,7 @@
 	///The health HUD applied to this mob.
 	var/health_hud = DATA_HUD_MEDICAL_ADVANCED
 
-/mob/living/simple_animal/hostile/construct/artificer/Initialize()
+/mob/living/simple_animal/hostile/construct/artificer/Initialize(mapload)
 	. = ..()
 	var/datum/atom_hud/datahud = GLOB.huds[health_hud]
 	datahud.add_hud_to(src)
@@ -440,7 +440,7 @@
 		return FALSE
 	. = ..()
 
-/mob/living/simple_animal/hostile/construct/harvester/Initialize()
+/mob/living/simple_animal/hostile/construct/harvester/Initialize(mapload)
 	. = ..()
 	var/datum/action/innate/seek_prey/seek = new()
 	seek.Grant(src)

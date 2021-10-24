@@ -66,7 +66,7 @@
 	var/detect_gender = "male" //SKYRAT EDIT - MORE SCANNER GATE OPTIONS
 
 
-/obj/machinery/scanner_gate/Initialize()
+/obj/machinery/scanner_gate/Initialize(mapload)
 	. = ..()
 	wires = new /datum/wires/scanner_gate(src)
 	set_scanline("passive")

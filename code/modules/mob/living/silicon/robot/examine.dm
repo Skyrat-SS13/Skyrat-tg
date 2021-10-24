@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/examine(mob/user)
-	. = list("<span class='info'>*---------*\nThis is [icon2html(src, user)] \a <EM>[src]</EM>!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!") //SKYRAT EDIT CHANGE
 	if(desc)
 		. += "[desc]"
 
@@ -44,12 +44,19 @@
 		if(DEAD)
 			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	var/line = span_notice("<a href='?src=[REF(src)];lookup_info=1'>Examine closely...</a>")
+	if(line)
+		. += line
+	if(client)
+		var/erp_status_pref = client.prefs.read_preference(/datum/preference/choiced/erp_status)
+		if(erp_status_pref && erp_status_pref != "disabled")
+			. += span_notice("ERP STATUS: [erp_status_pref]")
 	if(temporary_flavor_text)
 		if(length_char(temporary_flavor_text) <= 40)
 			. += "<span class='notice'>[temporary_flavor_text]</span>"
 		else
 			. += "<span class='notice'>[copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a></span>"
 	//SKYRAT EDIT ADDITION END
-	. += "*---------*</span>"
+	//. += "*---------*</span>"
 
 	. += ..()

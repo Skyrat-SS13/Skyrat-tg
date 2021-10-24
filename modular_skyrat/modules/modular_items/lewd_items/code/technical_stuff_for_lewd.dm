@@ -10,11 +10,11 @@
 #define REQUIRE_UNEXPOSED 2
 #define REQUIRE_ANY 3
 
-/mob/living
+/mob/living/carbon/human
 	var/has_penis = FALSE
 	var/has_vagina = FALSE
 	var/has_breasts = FALSE
-	var/anus_exposed = FALSE
+	var/has_anus = FALSE
 
 /////////////////////////////////////
 //Looping sound for vibrating stuff//
@@ -173,322 +173,267 @@
 
 
 ///Are we wearing something that covers our chest?
-/mob/living/proc/is_topless()
-	if(istype(src, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = src
-		if((!(H.wear_suit) || !(H.wear_suit.body_parts_covered & CHEST)) && (!(H.w_uniform) || !(H.w_uniform.body_parts_covered & CHEST)))
-			return TRUE
-	else
-		return TRUE
+/mob/living/carbon/human/proc/is_topless()
+	return (!(wear_suit) || !(wear_suit.body_parts_covered & CHEST)) && (!(w_uniform) || !(w_uniform.body_parts_covered & CHEST))
 
 ///Are we wearing something that covers our groin?
-/mob/living/proc/is_bottomless()
-	if(istype(src, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = src
-		if((!(H.wear_suit) || !(H.wear_suit.body_parts_covered & GROIN)) && (!(H.w_uniform) || !(H.w_uniform.body_parts_covered & GROIN)))
-			return TRUE
-	else
-		return TRUE
+/mob/living/carbon/human/proc/is_bottomless()
+	return (!(wear_suit) || !(wear_suit.body_parts_covered & GROIN)) && (!(w_uniform) || !(w_uniform.body_parts_covered & GROIN))
 
 ///Are we wearing something that covers our shoes?
-/mob/living/proc/is_barefoot()
-	if(istype(src, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = src
-		if((!(H.wear_suit) || !(H.wear_suit.body_parts_covered & GROIN)) && (!(H.shoes) || !(H.shoes.body_parts_covered & FEET)))
-			return TRUE
-	else
+/mob/living/carbon/human/proc/is_barefoot()
+	return (!(wear_suit) || !(wear_suit.body_parts_covered & GROIN)) && (!(shoes) || !(shoes.body_parts_covered & FEET))
+
+/mob/living/carbon/human/proc/is_hands_uncovered()
+    return (gloves?.body_parts_covered & ARMS)
+
+/mob/living/carbon/human/proc/is_head_uncovered()
+    return (head?.body_parts_covered & HEAD)
+
+/mob/living/carbon/human/proc/has_penis(nintendo = REQUIRE_ANY)
+	if(issilicon(src) && has_penis)
 		return TRUE
-
-/mob/living/proc/is_hands_uncovered()
-    if(istype(src, /mob/living/carbon/human))
-        var/mob/living/carbon/human/H = src
-        if(H.gloves?.body_parts_covered & ARMS)
-            return FALSE
-    return TRUE
-
-/mob/living/proc/is_head_uncovered()
-    if(istype(src, /mob/living/carbon/human))
-        var/mob/living/carbon/human/H = src
-        if(H.head?.body_parts_covered & HEAD)
-            return FALSE
-    return TRUE
-
-/mob/living/proc/has_penis(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/human/C = src
-	if(issilicon(src) && C.has_penis)
-		return TRUE
-	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_PENIS)
-		if(peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
+	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_PENIS)
+	if(peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
 					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || C.is_bottomless())
-						return TRUE
-					else
-						return FALSE
-				if(REQUIRE_UNEXPOSED)
-					if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !C.is_bottomless())
-						return TRUE
-					else
-						return FALSE
 				else
-					return TRUE
-	return FALSE
-
-/mob/living/proc/has_balls(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/C = src
-	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_TESTICLES)
-		if(peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || C.is_bottomless())
-						return TRUE
-					else
-						return FALSE
-				if(REQUIRE_UNEXPOSED)
-					if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !C.is_bottomless())
-						return TRUE
-					else
-						return FALSE
-				else
-					return TRUE
-	return FALSE
-
-/mob/living/proc/has_vagina(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/human/C = src
-	if(issilicon(src) && C.has_vagina)
-		return TRUE
-	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_VAGINA)
-		if(peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || C.is_bottomless())
-						return TRUE
-					else
-						return FALSE
-				if(REQUIRE_UNEXPOSED)
-					if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !C.is_bottomless())
-						return TRUE
-					else
-						return FALSE
-				else
-					return TRUE
-	return FALSE
-
-/mob/living/proc/has_breasts(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/C = src
-	if(istype(C))
-		var/obj/item/organ/genital/peepee = C.getorganslot(ORGAN_SLOT_BREASTS)
-		if(peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || C.is_topless())
-						return TRUE
-					else
-						return FALSE
-				if(REQUIRE_UNEXPOSED)
-					if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !C.is_topless())
-						return TRUE
-					else
-						return FALSE
-				else
-					return TRUE
-	return FALSE
-
-/mob/living/proc/has_anus(var/nintendo = REQUIRE_ANY)
-	if(issilicon(src))
-		return TRUE
-	switch(nintendo)
-		if(REQUIRE_ANY)
-			return TRUE
-		if(REQUIRE_EXPOSED)
-			switch(anus_exposed)
-				if(-1)
 					return FALSE
-				if(1)
+			if(REQUIRE_UNEXPOSED)
+				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
 					return TRUE
-				else
-					if(is_bottomless())
-						return TRUE
-					else
-						return FALSE
-		if(REQUIRE_UNEXPOSED)
-			if(anus_exposed == -1)
-				if(!anus_exposed)
-					if(!is_bottomless())
-						return TRUE
-					else
-						return FALSE
 				else
 					return FALSE
 			else
 				return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/has_balls(nintendo = REQUIRE_ANY)
+	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_TESTICLES)
+	if(peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
+					return TRUE
+				else
+					return FALSE
+			if(REQUIRE_UNEXPOSED)
+				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
+					return TRUE
+				else
+					return FALSE
+			else
+				return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/has_vagina(nintendo = REQUIRE_ANY)
+	if(issilicon(src) && has_vagina)
+		return TRUE
+	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_VAGINA)
+	if(peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
+					return TRUE
+				else
+					return FALSE
+			if(REQUIRE_UNEXPOSED)
+				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
+					return TRUE
+				else
+					return FALSE
+			else
+				return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/has_breasts(var/nintendo = REQUIRE_ANY)
+	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_BREASTS)
+	if(peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_topless())
+					return TRUE
+				else
+					return FALSE
+			if(REQUIRE_UNEXPOSED)
+				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_topless())
+					return TRUE
+				else
+					return FALSE
+			else
+				return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/has_anus(nintendo = REQUIRE_ANY)
+	if(issilicon(src))
+		return TRUE
+	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_ANUS)
+	if(peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
+					return TRUE
+				else
+					return FALSE
+			if(REQUIRE_UNEXPOSED)
+				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
+					return TRUE
+				else
+					return FALSE
+			else
+				return TRUE
+
+/mob/living/carbon/human/proc/has_arms(nintendo = REQUIRE_ANY)
+	var/handcount = 0
+	var/covered = 0
+	var/iscovered = FALSE
+	for(var/obj/item/bodypart/l_arm/L in bodyparts)
+		handcount++
+	for(var/obj/item/bodypart/r_arm/R in bodyparts)
+		handcount++
+	if(get_item_by_slot(ITEM_SLOT_HANDS))
+		var/obj/item/clothing/gloves/G = get_item_by_slot(ITEM_SLOT_HANDS)
+		covered = G.body_parts_covered
+	if(covered & HANDS)
+		iscovered = TRUE
+	switch(nintendo)
+		if(REQUIRE_ANY)
+			return handcount
+		if(REQUIRE_EXPOSED)
+			if(iscovered)
+				return FALSE
+			else
+				return handcount
+		if(REQUIRE_UNEXPOSED)
+			if(!iscovered)
+				return FALSE
+			else
+				return handcount
 		else
-			return TRUE
+			return handcount
 
-/mob/living/proc/has_arms(var/nintendo = REQUIRE_ANY)
-	if(iscarbon(src))
-		var/mob/living/carbon/C = src
-		var/handcount = 0
-		var/covered = 0
-		var/iscovered = FALSE
-		for(var/obj/item/bodypart/l_arm/L in C.bodyparts)
-			handcount++
-		for(var/obj/item/bodypart/r_arm/R in C.bodyparts)
-			handcount++
-		if(C.get_item_by_slot(ITEM_SLOT_HANDS))
-			var/obj/item/clothing/gloves/G = C.get_item_by_slot(ITEM_SLOT_HANDS)
-			covered = G.body_parts_covered
-		if(covered & HANDS)
-			iscovered = TRUE
-		switch(nintendo)
-			if(REQUIRE_ANY)
-				return handcount
-			if(REQUIRE_EXPOSED)
-				if(iscovered)
-					return FALSE
-				else
-					return handcount
-			if(REQUIRE_UNEXPOSED)
-				if(!iscovered)
-					return FALSE
-				else
-					return handcount
-			else
-				return handcount
-	return FALSE
-
-/mob/living/proc/has_feet(var/nintendo = REQUIRE_ANY)
-	if(iscarbon(src))
-		var/mob/living/carbon/C = src
-		var/feetcount = 0
-		var/covered = 0
-		var/iscovered = FALSE
-		for(var/obj/item/bodypart/l_leg/L in C.bodyparts)
-			feetcount++
-		for(var/obj/item/bodypart/r_leg/R in C.bodyparts)
-			feetcount++
-		if(!C.is_barefoot())
-			covered = TRUE
-		if(covered)
-			iscovered = TRUE
-		switch(nintendo)
-			if(REQUIRE_ANY)
-				return feetcount
-			if(REQUIRE_EXPOSED)
-				if(iscovered)
-					return FALSE
-				else
-					return feetcount
-			if(REQUIRE_UNEXPOSED)
-				if(!iscovered)
-					return FALSE
-				else
-					return feetcount
+/mob/living/carbon/human/proc/has_feet(nintendo = REQUIRE_ANY)
+	var/feetcount = 0
+	var/covered = 0
+	var/iscovered = FALSE
+	for(var/obj/item/bodypart/l_leg/L in bodyparts)
+		feetcount++
+	for(var/obj/item/bodypart/r_leg/R in bodyparts)
+		feetcount++
+	if(!is_barefoot())
+		covered = TRUE
+	if(covered)
+		iscovered = TRUE
+	switch(nintendo)
+		if(REQUIRE_ANY)
+			return feetcount
+		if(REQUIRE_EXPOSED)
+			if(iscovered)
+				return FALSE
 			else
 				return feetcount
-	return FALSE
+		if(REQUIRE_UNEXPOSED)
+			if(!iscovered)
+				return FALSE
+			else
+				return feetcount
+		else
+			return feetcount
 
-/mob/living/proc/get_num_feet()
+/mob/living/carbon/human/proc/get_num_feet()
 	return has_feet(REQUIRE_ANY)
 
 //weird procs go here
-/mob/living/proc/has_ears(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/C = src
-	if(istype(C))
-		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EARS)
-		if(peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(C.get_item_by_slot(ITEM_SLOT_EARS))
-						return FALSE
-					else
-						return TRUE
-				if(REQUIRE_UNEXPOSED)
-					if(!C.get_item_by_slot(ITEM_SLOT_EARS))
-						return FALSE
-					else
-						return TRUE
+/mob/living/carbon/human/proc/has_ears(nintendo = REQUIRE_ANY)
+	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EARS)
+	if(peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(get_item_by_slot(ITEM_SLOT_EARS))
+					return FALSE
 				else
 					return TRUE
+			if(REQUIRE_UNEXPOSED)
+				if(!get_item_by_slot(ITEM_SLOT_EARS))
+					return FALSE
+				else
+					return TRUE
+			else
+				return TRUE
 	return FALSE
 
-/mob/living/proc/has_earsockets(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/C = src
-	if(istype(C))
-		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EARS)
-		if(!peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(C.get_item_by_slot(ITEM_SLOT_EARS))
-						return FALSE
-					else
-						return TRUE
-				if(REQUIRE_UNEXPOSED)
-					if(!C.get_item_by_slot(ITEM_SLOT_EARS))
-						return FALSE
-					else
-						return TRUE
+/mob/living/carbon/human/proc/has_earsockets(nintendo = REQUIRE_ANY)
+	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EARS)
+	if(!peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(get_item_by_slot(ITEM_SLOT_EARS))
+					return FALSE
 				else
 					return TRUE
+			if(REQUIRE_UNEXPOSED)
+				if(!get_item_by_slot(ITEM_SLOT_EARS))
+					return FALSE
+				else
+					return TRUE
+			else
+				return TRUE
 	return FALSE
 
-/mob/living/proc/has_eyes(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/C = src
-	if(istype(C))
-		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EYES)
-		if(peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(C.get_item_by_slot(ITEM_SLOT_EYES))
-						return FALSE
-					else
-						return TRUE
-				if(REQUIRE_UNEXPOSED)
-					if(!C.get_item_by_slot(ITEM_SLOT_EYES))
-						return FALSE
-					else
-						return TRUE
+/mob/living/carbon/human/proc/has_eyes(nintendo = REQUIRE_ANY)
+	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EYES)
+	if(peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(get_item_by_slot(ITEM_SLOT_EYES))
+					return FALSE
 				else
 					return TRUE
+			if(REQUIRE_UNEXPOSED)
+				if(!get_item_by_slot(ITEM_SLOT_EYES))
+					return FALSE
+				else
+					return TRUE
+			else
+				return TRUE
 	return FALSE
 
-/mob/living/proc/has_eyesockets(var/nintendo = REQUIRE_ANY)
-	var/mob/living/carbon/C = src
-	if(istype(C))
-		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EYES)
-		if(!peepee)
-			switch(nintendo)
-				if(REQUIRE_ANY)
-					return TRUE
-				if(REQUIRE_EXPOSED)
-					if(get_item_by_slot(ITEM_SLOT_EYES))
-						return FALSE
-					else
-						return TRUE
-				if(REQUIRE_UNEXPOSED)
-					if(!get_item_by_slot(ITEM_SLOT_EYES))
-						return FALSE
-					else
-						return TRUE
+/mob/living/carbon/human/proc/has_eyesockets(nintendo = REQUIRE_ANY)
+	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EYES)
+	if(!peepee)
+		switch(nintendo)
+			if(REQUIRE_ANY)
+				return TRUE
+			if(REQUIRE_EXPOSED)
+				if(get_item_by_slot(ITEM_SLOT_EYES))
+					return FALSE
 				else
 					return TRUE
+			if(REQUIRE_UNEXPOSED)
+				if(!get_item_by_slot(ITEM_SLOT_EYES))
+					return FALSE
+				else
+					return TRUE
+			else
+				return TRUE
 	return FALSE
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -530,13 +475,13 @@
 ///This code needed for changing character's gender by chems///
 ///////////////////////////////////////////////////////////////
 
-/mob/living/proc/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
-	if(forced || (!ckey || client?.prefs.skyrat_toggles & (ngender == FEMALE ? FORCED_FEM : FORCED_MALE)))
+/mob/living/carbon/human/proc/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
+	if(forced || (!ckey || client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change)))
 		gender = ngender
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
+/mob/living/carbon/human/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
 	var/bender = !(gender == ngender)
 	. = ..()
 	if(!.)
@@ -646,7 +591,7 @@
 	anus = text2path(outfit_data["anus"])
 	nipples = text2path(outfit_data["nipples"])
 	penis = text2path(outfit_data["penis"])
-	..()
+	. = ..()
 
 // Just by analogy with the TG code. No ideas for what this is.
 /mob/proc/update_inv_vagina()
@@ -707,7 +652,7 @@
 
 // Updating vagina slot
 /mob/living/carbon/human/update_inv_vagina()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1]
 			inv.update_icon()
@@ -746,7 +691,7 @@
 
 // Updating anus slot
 /mob/living/carbon/human/update_inv_anus()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1]
 			inv.update_icon()
@@ -785,7 +730,7 @@
 
 // Updating nipples slot
 /mob/living/carbon/human/update_inv_nipples()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1]
 			inv.update_icon()
@@ -824,7 +769,7 @@
 
 // Updating penis slot
 /mob/living/carbon/human/update_inv_penis()
-	if(client?.prefs?.sextoys_pref == "Yes")
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1])
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1]
 			inv.update_icon()
@@ -1009,7 +954,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/vagina/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1018,7 +963,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/anus/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1027,7 +972,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/nipples/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1036,7 +981,7 @@
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/penis/get_obscuring(atom/source)
 	var/mob/M = source
-	if(M.client?.prefs.sextoys_pref == "Yes")
+	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1234,9 +1179,8 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/set_handcuffed(new_value)
-	var/mob/living/carbon/human/H = src
-	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+/mob/living/carbon/human/set_handcuffed(new_value)
+	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		return FALSE
 	..()
 
@@ -1258,3 +1202,34 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 		return FALSE
 	return FALSE
+
+/datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
+	. = ..()
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		if(client.mob.hud_used)
+			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 0
+	else
+		if(ishuman(client.mob))
+			var/mob/living/carbon/human/M = client.mob
+			if(M.vagina != null)
+				M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.anus != null)
+				M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.nipples != null)
+				M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
+			if(M.penis != null)
+				M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+		if(client.mob.hud_used)
+			if(client.mob.hud_used.ERP_inventory_shown)
+				client.mob.hud_used.ERP_inventory_shown = FALSE
+				client.screen -= client.mob.hud_used.ERP_toggleable_inventory
+
+			for(var/atom/movable/screen/human/ERP_toggle/E in client.mob.hud_used.static_inventory)
+				if(istype(E, /atom/movable/screen/human/ERP_toggle))
+					E.invisibility = 100
+
+
+	client.mob.hud_used.hidden_inventory_update(client.mob)
+	client.mob.hud_used.persistent_inventory_update(client.mob)

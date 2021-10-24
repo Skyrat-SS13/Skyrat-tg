@@ -33,7 +33,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	toolspeed = 0.2
 	throw_range = 3
-	w_class = WEIGHT_CLASS_SMALL 
+	w_class = WEIGHT_CLASS_SMALL
 
 //Pointman's riot shield. Fixable with 1 plasteel, crafting recipe for broken shield
 /obj/item/shield/riot/pointman
@@ -67,7 +67,7 @@
 	return ..()
 
 /obj/item/shield/riot/pointman/proc/repair(mob/user, params)
-	obj_integrity = max_integrity
+	atom_integrity = max_integrity
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		to_chat(user, span_notice("You fix the damage on [src]."))
@@ -91,7 +91,7 @@
 	tool_behaviors = list(TOOL_WELDER)
 
 //Marksman's throwing knife and a pouch for it
-/obj/item/kitchen/knife/combat/marksman
+/obj/item/knife/combat/marksman
 	name = "throwing knife"
 	desc = "Very well weighted for throwing, feels awkward to use for anything else."
 	icon = 'modular_skyrat/modules/exp_corps/icons/throwing.dmi'
@@ -110,7 +110,7 @@
 	STR.max_combined_w_class = 60
 	STR.max_items = 10
 	STR.display_numerical_stacking = TRUE
-	STR.can_hold = typecacheof(list(/obj/item/kitchen/knife/combat))
+	STR.can_hold = typecacheof(list(/obj/item/knife/combat))
 
 /datum/component/storage/concrete/marksman/open_storage(mob/user)
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
@@ -119,7 +119,7 @@
 		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
 		return
 
-	var/obj/item/kitchen/knife/combat/knife_to_draw = locate() in real_location()
+	var/obj/item/knife/combat/knife_to_draw = locate() in real_location()
 	if(!knife_to_draw)
 		return ..()
 	remove_from_storage(knife_to_draw, get_turf(user))
@@ -128,8 +128,8 @@
 	user.visible_message("<span class='warning'>[user] draws [knife_to_draw] from [parent]!</span>", "<span class='notice'>You draw [knife_to_draw] from [parent].</span>")
 
 /obj/item/storage/bag/ammo/marksman/PopulateContents() //can kill most basic enemies with 5 knives, though marksmen shouldn't be soloing enemies anyways
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
-	new /obj/item/kitchen/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)
+	new /obj/item/knife/combat/marksman(src)

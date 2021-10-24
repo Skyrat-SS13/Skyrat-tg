@@ -1,4 +1,5 @@
-/obj/item/melee/transforming/energy/sword/ignis
+/* Removed until someone fixes it.
+/obj/item/melee/energy/sword/ignis
 	name = "\improper FTU 'Ignis' plasma sword"
 	desc = "An expensive FTU design, the Ignis is one of many prototypes at making an energy sword out of plasma, rather than hardlight. This one has the FTU flag imprinted on its high-quality wooden hilt, and unlike earlier models, can sustain several hits without exhausting its battery. "
 	icon = 'modular_skyrat/modules/ERT_Factions/FTU/icons/weapons/serviceguns.dmi'
@@ -24,11 +25,11 @@
 	resistance_flags = FIRE_PROOF
 	damtype = BURN
 
-/obj/item/melee/transforming/energy/sword/ignis/transform_messages(mob/living/user, supress_message_text)
+/obj/item/melee/energy/sword/ignis/transform_messages(mob/living/user, supress_message_text)
 	playsound(user, 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_toggle.ogg', 35, TRUE)  //changed it from 50% volume to 35% because deafness
 	if(!supress_message_text)
 		to_chat(user, "<span class='notice'>[src] [active ? "is now active":"can now be concealed"].</span>")
-
+*/
 
 ///////40x32 R37 PULSE RIFLE
 /obj/item/gun/ballistic/automatic/pitbull/pulse/r37

@@ -33,12 +33,12 @@
 /obj/item/circuit_component/medical_console_data/populate_ports()
 	records = add_output_port("Crew Monitoring Data", PORT_TYPE_TABLE)
 
-/obj/item/circuit_component/medical_console_data/register_usb_parent(atom/movable/parent)
+/obj/item/circuit_component/medical_console_data/register_usb_parent(atom/movable/shell)
 	. = ..()
-	if(istype(parent, /obj/machinery/computer/crew))
-		attached_console = parent
+	if(istype(shell, /obj/machinery/computer/crew))
+		attached_console = shell
 
-/obj/item/circuit_component/medical_console_data/unregister_usb_parent(atom/movable/parent)
+/obj/item/circuit_component/medical_console_data/unregister_usb_parent(atom/movable/shell)
 	attached_console = null
 	return ..()
 
@@ -235,7 +235,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if (id_card)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
-			entry["ijob"] = jobs[id_card.real_title || id_card.assignment] //SKYRAT EDIT - ALTERNATE JOB TITLES
+			entry["ijob"] = jobs[id_card.assignment] //SKYRAT EDIT - ALTERNATE JOB TITLES
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)

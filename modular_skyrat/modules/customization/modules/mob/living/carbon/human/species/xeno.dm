@@ -3,7 +3,7 @@
 	name = "Xenomorph Hybrid"
 	id = SPECIES_XENO
 	say_mod = "hisses"
-	default_color = "00FF00"
+	default_color = "#00FF00"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -28,7 +28,6 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = MEAT
-	cultures = list(CULTURES_EXOTIC, CULTURES_XENO)
 	learnable_languages = list(/datum/language/common, /datum/language/xenoknockoff)
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

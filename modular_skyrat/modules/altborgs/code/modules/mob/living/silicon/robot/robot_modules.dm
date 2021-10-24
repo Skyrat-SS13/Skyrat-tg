@@ -41,7 +41,7 @@
 		var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi', icon_state = L[a])
 		wide.pixel_x = -16
 		standard_icons[a] = wide
-	standard_icons = sortList(standard_icons)
+	standard_icons = sort_list(standard_icons)
 	var/standard_borg_icon = show_radial_menu(cyborg, cyborg , standard_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(standard_borg_icon)
 		if("Default")
@@ -85,133 +85,6 @@
 			return FALSE
 	return ..()
 
-//MEDICAL
-/obj/item/robot_model/medical/be_transformed_to(obj/item/robot_model/old_model)
-	var/mob/living/silicon/robot/cyborg = loc
-	var/static/list/med_icons
-	if(!med_icons)
-		med_icons = list(
-		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
-		"Droid" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "medical"),
-		"Sleek" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "sleekmed"),
-		"Marina" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "marinamed"),
-		"Eyebot" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "eyebotmed"),
-		"Heavy" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "heavymed"),
-		"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "bootymedical"),
-		"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "male_bootymedical"),
-		"Protectron" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "protectron_medical"),
-		"Miss M" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "missm_med"),
-		"Qualified Doctor" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "qualified_doctor"),
-		"Zoomba" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "zoomba_med"),
-		"Arachne" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "arachne"),
-		"Insekt" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "insekt-Med"),
-		"Mech" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi', icon_state = "gibbs"),
-		"Drake" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = "drakemedbox")
-		)
-		var/list/L = list("Hound" = "medihound", "Darkhound" = "medihounddark", "Vale" = "valemed", "Borgi" = "borgi-medi")
-		for(var/a in L)
-			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi', icon_state = L[a])
-			wide.pixel_x = -16
-			med_icons[a] = wide
-		med_icons = sortList(med_icons)
-	var/med_borg_icon = show_radial_menu(cyborg, cyborg , med_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
-	switch(med_borg_icon)
-		if("Default")
-			cyborg_base_icon = "medical"
-			model_features = list(R_TRAIT_SMALL)
-		if("Zoomba")
-			cyborg_base_icon = "zoomba_med"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
-		if("Droid")
-			cyborg_base_icon = "medical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-			hat_offset = 4
-		if("Sleek")
-			cyborg_base_icon = "sleekmed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Marina")
-			cyborg_base_icon = "marinamed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Eyebot")
-			cyborg_base_icon = "eyebotmed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_SMALL)
-		if("Heavy")
-			cyborg_base_icon = "heavymed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Bootyborg")
-			cyborg_base_icon = "bootymedical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Male Bootyborg")
-			cyborg_base_icon = "male_bootymedical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Protectron")
-			cyborg_base_icon = "protectron_medical"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Miss M")
-			cyborg_base_icon = "missm_med"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Qualified Doctor")
-			cyborg_base_icon = "qualified_doctor"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Arachne")
-			cyborg_base_icon = "arachne"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Insekt")
-			cyborg_base_icon = "insekt-Med"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		if("Mech")
-			cyborg_base_icon = "gibbs"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/robots_med.dmi'
-		//Dogborgs
-		if("Hound")
-			cyborg_base_icon = "medihound"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
-			sleeper_overlay = "msleeper"
-			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
-		if("Darkhound")
-			cyborg_base_icon = "medihounddark"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
-			sleeper_overlay = "mdsleeper"
-			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
-		if("Vale")
-			cyborg_base_icon = "valemed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
-			sleeper_overlay = "valemedsleeper"
-			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
-		if("Alina")
-			cyborg_base_icon = "alina-med"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
-			special_light_key = "alina"
-			sleeper_overlay = "alinasleeper"
-			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
-		if("Drake")
-			cyborg_base_icon = "drakemed"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
-			sleeper_overlay = "drakemedsleeper"
-			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)
-		if("Borgi")
-			cyborg_base_icon = "borgi-medi"
-			cyborg_icon_override = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_med.dmi'
-			sleeper_overlay = "borgi-medi-sleeper"
-			model_select_icon = "medihound"
-			model_select_alternate_icon = 'modular_skyrat/modules/altborgs/icons/ui/screen_cyborg.dmi'
-			model_features = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE, R_TRAIT_SMALL)
-		else
-			return FALSE
-	return ..()
-
 //ENGINEERING
 /obj/item/robot_model/engineering/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
@@ -242,7 +115,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_eng.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			engi_icons[a] = wide
-		engi_icons = sortList(engi_icons)
+		engi_icons = sort_list(engi_icons)
 	var/engi_borg_icon = show_radial_menu(cyborg, cyborg , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(engi_borg_icon)
 		if("Default")
@@ -374,7 +247,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_sec.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			sec_icons[a] = wide
-		sec_icons = sortList(sec_icons)
+		sec_icons = sort_list(sec_icons)
 	var/sec_borg_icon = show_radial_menu(cyborg, cyborg , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(sec_borg_icon)
 		if("Default")
@@ -487,7 +360,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_pk.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			peace_icons[a] = wide
-		peace_icons = sortList(peace_icons)
+		peace_icons = sort_list(peace_icons)
 	var/peace_borg_icon = show_radial_menu(cyborg, cyborg , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
 		if("Default")
@@ -568,7 +441,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_jani.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			janitor_icons[a] = wide
-		janitor_icons = sortList(janitor_icons)
+		janitor_icons = sort_list(janitor_icons)
 	var/janitor_robot_icon = show_radial_menu(cyborg, cyborg , janitor_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(janitor_robot_icon)
 		if("Default")
@@ -650,7 +523,7 @@
 //CLOWN
 /obj/item/robot_model/clown/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
-	var/static/list/clown_icons = sortList(list(
+	var/static/list/clown_icons = sort_list(list(
 		"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
 		"Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "bootyclown"),
 		"Male Bootyborg" = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/robots_clown.dmi', icon_state = "male_bootyclown"),
@@ -713,7 +586,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_serv.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			service_icons[a] = wide
-		service_icons = sortList(service_icons)
+		service_icons = sort_list(service_icons)
 	var/service_robot_icon = show_radial_menu(cyborg, cyborg , service_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
 		if("Waitress")
@@ -818,7 +691,7 @@
 			var/image/wide = image(icon = 'modular_skyrat/modules/altborgs/icons/mob/widerobot_mine.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			mining_icons[a] = wide
-		mining_icons = sortList(mining_icons)
+		mining_icons = sort_list(mining_icons)
 	var/mining_borg_icon = show_radial_menu(cyborg, cyborg , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 42, require_near = TRUE)
 	switch(mining_borg_icon)
 		if("Lavaland")
@@ -946,7 +819,7 @@
 
 /obj/item/robot_model/syndicatejack/be_transformed_to(obj/item/robot_model/old_model)
 	var/mob/living/silicon/robot/cyborg = loc
-	var/static/list/syndicatejack_icons = sortList(list(
+	var/static/list/syndicatejack_icons = sort_list(list(
 		"Saboteur" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_engi"),
 		"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical"),
 		"Assault" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),

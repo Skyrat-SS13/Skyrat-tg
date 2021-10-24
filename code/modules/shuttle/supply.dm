@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		/mob/living,
 		/obj/structure/blob,
@@ -70,7 +69,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 	for(var/place in areaInstances)
 		var/area/shuttle/shuttle_area = place
 		for(var/turf/shuttle_turf in shuttle_area)
-			for(var/atom/passenger in shuttle_turf.GetAllContents())
+			for(var/atom/passenger in shuttle_turf.get_all_contents())
 				if((is_type_in_typecache(passenger, GLOB.blacklisted_cargo_types) || HAS_TRAIT(passenger, TRAIT_BANNED_FROM_CARGO_SHUTTLE)) && !istype(passenger, /obj/docking_port))
 					return FALSE
 	return TRUE
@@ -262,4 +261,3 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 #undef GOODY_FREE_SHIPPING_MAX
 #undef CRATE_TAX
-*/

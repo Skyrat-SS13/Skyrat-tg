@@ -8,9 +8,13 @@
 	icon_state = "useless[rand(1,8)]"
 
 /datum/export/xenoarch/useless_relic
-	cost = 200
-	unit_name = "useless relic"
-	export_types = list(/obj/item/xenoarch/useless_relic)
+	cost = 400
+	unit_name = "xenoarch item"
+	export_types = list(/obj/item/xenoarch/useless_relic,
+						/obj/item/xenoarch/broken_item)
+
+/datum/export/xenoarch/useless_relic/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
+	. = ..()
 
 //broken items
 /obj/item/xenoarch/broken_item
@@ -38,8 +42,41 @@
 	desc = "A plant that is long past its prime. It is possible to recover it."
 	icon_state = "recover_plant"
 
+/obj/item/xenoarch/broken_item/animal
+	name = "preserved animal carcass"
+	desc = "An animal that is long past its prime. It is possible to recover it."
+	icon_state = "recover_animal"
+
+/obj/item/xenoarch/broken_item/animal/Initialize()
+	. = ..()
+	var/pick_celltype = pick(CELL_LINE_TABLE_BEAR,
+							CELL_LINE_TABLE_BLOBBERNAUT,
+							CELL_LINE_TABLE_BLOBSPORE,
+							CELL_LINE_TABLE_CARP,
+							CELL_LINE_TABLE_CAT,
+							CELL_LINE_TABLE_CHICKEN,
+							CELL_LINE_TABLE_COCKROACH,
+							CELL_LINE_TABLE_CORGI,
+							CELL_LINE_TABLE_COW,
+							CELL_LINE_TABLE_GELATINOUS,
+							CELL_LINE_TABLE_GRAPE,
+							CELL_LINE_TABLE_MEGACARP,
+							CELL_LINE_TABLE_MOUSE,
+							CELL_LINE_TABLE_PINE,
+							CELL_LINE_TABLE_PUG,
+							CELL_LINE_TABLE_SLIME,
+							CELL_LINE_TABLE_SNAKE,
+							CELL_LINE_TABLE_VATBEAST,
+							CELL_LINE_TABLE_NETHER,)
+	AddElement(/datum/element/swabable, pick_celltype, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
+
+/obj/item/xenoarch/broken_item/clothing
+	name = "petrified clothing"
+	desc = "A piece of clothing that has long since lost its beauty."
+	icon_state = "recover_clothing"
+
 /datum/export/xenoarch/broken_item
-	cost = 500
+	cost = 1000
 	unit_name = "broken object"
 	export_types = list(/obj/item/xenoarch/broken_item)
 

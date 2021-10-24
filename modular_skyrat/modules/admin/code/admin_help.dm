@@ -7,14 +7,15 @@
 	if(state != AHELP_ACTIVE)
 		return
 
-	//SKYRAT EDIT ADDITION BEGIN - ADMIN
+	if(handler && handler == usr.ckey) // No need to handle it twice as the same person ;)
+		return
+
 	if(handler && handler != usr.ckey)
 		var/response = tgui_alert(usr, "This ticket is already being handled by [handler]. Do you want to continue?", "Ticket already assigned", list("Yes", "No"))
 		if(!response || response == "No")
 			return
-	//SKYRAT EDIT ADDITION END
 
-	var/msg = "<span class ='adminhelp'>Your ticket is now being handled by [usr?.client?.holder?.fakekey? usr.client.holder.fakekey : "an administrator"]! Please wait while they type their response and/or gather relevant information.</span>"
+	var/msg = span_adminhelp("Your ticket is now being handled by [usr?.client?.holder?.fakekey? usr.client.holder.fakekey : "an administrator"]! Please wait while they type their response and/or gather relevant information.")
 
 	if(initiator)
 		to_chat(initiator, msg)

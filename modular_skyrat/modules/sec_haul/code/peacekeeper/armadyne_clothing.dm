@@ -106,7 +106,7 @@
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/peacekeeper/armadyne
 	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/pdh_corpo)
+	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/pdh_corpo)
 	back = /obj/item/storage/backpack/satchel/leather
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
@@ -128,7 +128,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/dmr
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
-	backpack_contents = list(/obj/item/melee/baton/loaded, /obj/item/storage/box/gunset/pdh_corpo, /obj/item/storage/box/handcuffs, /obj/item/ammo_box/magazine/dmr=2)
+	backpack_contents = list(/obj/item/melee/baton/security/loaded , /obj/item/storage/box/gunset/pdh_corpo, /obj/item/storage/box/handcuffs, /obj/item/ammo_box/magazine/dmr=2)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command

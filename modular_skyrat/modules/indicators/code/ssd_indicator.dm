@@ -10,10 +10,10 @@ GLOBAL_VAR_INIT(ssd_indicator_overlay, mutable_appearance('modular_skyrat/module
 	ssd_indicator = state
 	if(ssd_indicator)
 		add_overlay(GLOB.ssd_indicator_overlay)
-		log_message("<font color='green'>has went SSD and got their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		log_message("<font color='green'>has went SSD and got their indicator!</font>", LOG_ATTACK)
 	else
 		cut_overlay(GLOB.ssd_indicator_overlay)
-		log_message("<font color='green'>is no longer SSD and lost their indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		log_message("<font color='green'>is no longer SSD and lost their indicator!</font>", LOG_ATTACK)
 
 /mob/living/Login()
 	. = ..()

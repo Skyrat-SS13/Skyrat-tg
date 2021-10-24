@@ -3,7 +3,6 @@
 	desc = "A white helmet with an opaque blue visor."
 	icon_state = "chronohelmet"
 	inhand_icon_state = "chronohelmet"
-	mutant_variants = NONE //SKYRAT EDIT ADDITION
 	slowdown = 1
 	armor = list(MELEE = 60, BULLET = 60, LASER = 60, ENERGY = 60, BOMB = 30, BIO = 90, RAD = 90, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -37,7 +36,7 @@
 	var/teleporting = FALSE
 	var/phase_timer_id
 
-/obj/item/clothing/suit/space/chronos/Initialize()
+/obj/item/clothing/suit/space/chronos/Initialize(mapload)
 	teleport_now.chronosuit = src
 	teleport_now.target = src
 	return ..()

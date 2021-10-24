@@ -60,6 +60,34 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
+/datum/design/xeno_hh_scanner
+	name = "Xenoarch Handheld Scanner"
+	desc = "A handheld scanner for strange rocks. It tags the depths to the rock."
+	id = "xeno_hh_scanner"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
+	build_path = /obj/item/xenoarch/handheld_scanner
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+
+/datum/design/xeno_hh_scanner/advanced
+	name = "Xenoarch Advanced Handheld Scanner"
+	id = "xeno_hh_scanner_advanced"
+	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/diamond = 500)
+	build_path = /obj/item/xenoarch/handheld_scanner/advanced
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+
+/datum/design/xeno_hh_recoverer
+	name = "Xenoarch Handheld Recoverer"
+	desc = "An item that has the capabilities to recover items lost due to time."
+	id = "xeno_hh_recoverer"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
+	build_path = /obj/item/xenoarch/handheld_recoverer
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+
 /datum/design/xeno_bag
 	name = "Xenoarch Bag"
 	desc = "A bag that can hold strange rocks."
@@ -157,6 +185,7 @@
 		"hammercm10",
 		"bas_brush",
 		"xeno_tape",
+		"xeno_hh_scanner",
 	)
 
 /datum/techweb_node/xenoarch_storage
@@ -192,5 +221,7 @@
 		"adv_hammer",
 		"adv_brush",
 		"adv_bag",
+		"xeno_hh_scanner_advanced",
+		"xeno_hh_recoverer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)

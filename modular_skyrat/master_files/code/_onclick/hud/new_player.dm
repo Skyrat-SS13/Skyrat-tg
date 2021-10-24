@@ -1,31 +1,3 @@
-/atom/movable/screen/lobby/button/antag_toggle
-	icon = 'modular_skyrat/master_files/icons/hud/lobby/bottom_buttons.dmi'
-	icon_state = "be_antag_off"
-	base_icon_state = "be_antag_off"
-	screen_loc = "TOP:-122,CENTER:-26"
-
-/atom/movable/screen/lobby/button/antag_toggle/Click(location, control, params)
-	. = ..()
-	if(!.)
-		return
-	var/mob/dead/new_player/new_player = hud.mymob
-	new_player.client.prefs.be_antag = !new_player.client.prefs.be_antag
-	base_icon_state = "be_antag_[new_player.client.prefs.be_antag ? "on" : "off"]"
-	update_appearance(UPDATE_ICON)
-	to_chat(new_player, span_notice("You will now [new_player.client.prefs.be_antag ? "be considered" : "not be considered"] for any antagonist positions set in your preferences."))
-
-/atom/movable/screen/lobby/button/antag_toggle/Initialize(mapload)
-	. = ..()
-	if(SSticker.current_state > GAME_STATE_PREGAME)
-		set_button_status(FALSE)
-	else
-		RegisterSignal(SSticker, COMSIG_TICKER_ENTER_SETTING_UP, .proc/hide_ready_button)
-
-/atom/movable/screen/lobby/button/antag_toggle/proc/hide_ready_button()
-	SIGNAL_HANDLER
-	set_button_status(FALSE)
-	UnregisterSignal(SSticker, COMSIG_TICKER_ENTER_SETTING_UP)
-
 /atom/movable/screen/lobby/button/server_swap
 	icon = 'modular_skyrat/master_files/icons/hud/lobby/bottom_buttons.dmi'
 	icon_state = "server_swap"

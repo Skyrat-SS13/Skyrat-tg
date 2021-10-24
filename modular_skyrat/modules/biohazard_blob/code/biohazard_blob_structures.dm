@@ -86,7 +86,7 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
-/obj/structure/biohazard_blob/structure/core/run_obj_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
+/obj/structure/biohazard_blob/structure/core/run_atom_armor(damage_amount, damage_type, damage_flag = 0, attack_dir)
 	if(damage_amount > 10 && world.time > next_retaliation && prob(40))
 		if(our_controller)
 			our_controller.CoreRetaliated()
@@ -380,7 +380,7 @@
 	smoothing_groups = list(SMOOTH_GROUP_ALIEN_RESIN)
 	canSmoothWith = list(SMOOTH_GROUP_ALIEN_RESIN)
 	max_integrity = 200
-	CanAtmosPass = ATMOS_PASS_DENSITY
+	can_atmos_pass = ATMOS_PASS_DENSITY
 
 /obj/structure/biohazard_blob/wall/Destroy()
 	if(our_controller)

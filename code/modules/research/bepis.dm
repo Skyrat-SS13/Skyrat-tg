@@ -59,11 +59,6 @@
 	)
 
 /obj/machinery/rnd/bepis/attackby(obj/item/O, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "chamber_open", "chamber", O))
-		update_appearance()
-		return
-	if(default_deconstruction_crowbar(O))
-		return
 	if(!is_operational)
 		to_chat(user, span_notice("[src] can't accept money when it's not functioning."))
 		return
@@ -84,6 +79,9 @@
 			say("No account detected on card. Aborting.")
 		return
 	return ..()
+
+/obj/machinery/rnd/bepis/screwdriver_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_screwdriver(user, "chamber_open", "chamber", tool)
 
 /obj/machinery/rnd/bepis/RefreshParts()
 	var/C = 0

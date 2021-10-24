@@ -429,7 +429,7 @@ GENE SCANNER
 			render_list += "<span class='notice ml-1'>Detected cybernetic modifications:</span>\n"
 			render_list += "<span class='notice ml-2'>[cyberimp_detect]</span>\n"
 
-	to_chat(user, jointext(render_list, ""), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding
+	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(user.incapacitated())
@@ -477,7 +477,7 @@ GENE SCANNER
 		if(M.has_status_effect(/datum/status_effect/eigenstasium))
 			render_list += "<span class='notice ml-1'>Subject is temporally unstable. Stabilising agent is recommended to reduce disturbances.</span>\n"
 
-		to_chat(user, jointext(render_list, ""), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding
+		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
 
 /obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
@@ -522,7 +522,7 @@ GENE SCANNER
 		else
 			to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
 	else
-		to_chat(user, jointext(render_list, ""))
+		to_chat(user, examine_block(jointext(render_list, ""))) //SKYRAT EDIT CHANGE
 
 /obj/item/healthanalyzer/wound
 	name = "first aid analyzer"
@@ -563,7 +563,7 @@ GENE SCANNER
 
 /obj/item/analyzer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	desc = "A hand-held environmental scanner which reports current gas levels. Alt-Click to use the built in barometer function."
-	name = "analyzer"
+	name = "gas analyzer"
 	custom_price = PAYCHECK_ASSISTANT * 0.9
 	icon = 'icons/obj/device.dmi'
 	icon_state = "analyzer"
@@ -642,7 +642,7 @@ GENE SCANNER
 			var/gas_concentration = env_gases[id][MOLES]/total_moles
 			render_list += "[span_alert("[env_gases[id][GAS_META][META_GAS_NAME]]: [round(gas_concentration*100, 0.01)] % ([round(env_gases[id][MOLES], 0.01)] mol)")]\n"
 		render_list += "[span_info("Temperature: [round(environment.temperature-T0C, 0.01)] &deg;C ([round(environment.temperature, 0.01)] K)")]\n"
-	to_chat(user, jointext(render_list, ""), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding
+	to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE) // we handled the last <br> so we don't need handholding //SKYRAT EDIT CHANGE
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
 	..()
@@ -750,7 +750,7 @@ GENE SCANNER
 			render_list += "[span_boldnotice("Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.")]\
 						\n[span_notice("Instability of the last fusion reaction: [round(cached_scan_results["fusion"], 0.01)].")]"
 
-	to_chat(user, jointext(render_list, "\n")) // we let the join apply newlines so we do need handholding
+	to_chat(user, examine_block(jointext(render_list, "\n"))) // we let the join apply newlines so we do need handholding //SKYRAT EDIT CHANGE
 	return TRUE
 
 //slime scanner
@@ -820,7 +820,7 @@ GENE SCANNER
 	if(T.effectmod)
 		to_render += "\n[span_notice("Core mutation in progress: [T.effectmod]")]\
 					  \n[span_notice("Progress in core mutation: [T.applied] / [SLIME_EXTRACT_CROSSING_REQUIRED]")]"
-	to_chat(user, to_render + "\n========================")
+	to_chat(user, examine_block(to_render + "\n========================")) //SKYRAT EDIT CHANGE
 
 /obj/item/sequence_scanner//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODUL
 	name = "genetic sequence scanner"
@@ -902,7 +902,7 @@ GENE SCANNER
 	for(var/A in buffer)
 		options += get_display_name(A)
 
-	var/answer = input(user, "Analyze Potential", "Sequence Analyzer")  as null|anything in sortList(options)
+	var/answer = input(user, "Analyze Potential", "Sequence Analyzer")  as null|anything in sort_list(options)
 	if(answer && ready && user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		var/sequence
 		for(var/A in buffer) //this physically hurts but i dont know what anything else short of an assoc list

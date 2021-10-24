@@ -141,7 +141,7 @@
 
 /datum/chemical_reaction/drink/hollow_bone
 	results = list(/datum/reagent/consumable/ethanol/hollow_bone = 10)
-	required_reagents = list(/datum/reagent/toxin/bonehurtingjuice = 10,  /datum/reagent/consumable/milk = 15)
+	required_reagents = list(/datum/reagent/toxin/bonehurtingjuice = 10,  /datum/reagent/consumable/soymilk = 15)//Skeletons love milk, and will find soymilk disgusting!
 
 /datum/chemical_reaction/drink/jell_wyrm
 	results = list(/datum/reagent/consumable/ethanol/jell_wyrm = 2)

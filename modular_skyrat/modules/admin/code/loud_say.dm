@@ -13,7 +13,7 @@
 	mob.log_talk(msg, LOG_ASAY)
 
 	msg = keywords_lookup(msg)
-	var/custom_asay_color = (CONFIG_GET(flag/allow_admin_asaycolor) && prefs.asaycolor) ? "<font color=[prefs.asaycolor]>" : "<font color='#FF4500'>"
+	var/custom_asay_color = (CONFIG_GET(flag/allow_admin_asaycolor) && prefs?.read_preference(/datum/preference/color/asay_color)) ? "<font color=[prefs?.read_preference(/datum/preference/color/asay_color)]>" : "<font color='#FF4500'>"
 	msg = "<span class='command_headset'> <span class='adminsay'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> [ADMIN_FLW(mob)]: [custom_asay_color]<span class='message linkify'>[msg]</span></span></span>[custom_asay_color ? "</font>":null]"
 	to_chat(GLOB.admins,
 		type = MESSAGE_TYPE_ADMINCHAT,
