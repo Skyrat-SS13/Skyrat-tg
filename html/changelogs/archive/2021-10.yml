@@ -1515,3 +1515,107 @@
   SkyratBot:
   - balance: Syndicate masks are now fire + acid proof
   - bugfix: CentCom now has one APC per area.
+2021-10-23:
+  Echopsychotic:
+  - imageadd: tails were added here
+  ForrestWick:
+  - rscadd: Added many new mobs to the game files for use in future map projects and
+      admin events. They've also been placed in a few of the skyrat-specific space
+      ruins where appropriate.
+  MeyHaZah, Onule, Fikou:
+  - imageadd: mining gear resprite
+  SkyratBot:
+  - bugfix: The proc call, set var, and spawn atom circuit components will properly
+      resolve any weakrefs passed to them through their list ports.
+  - admin: The signal handler circuit component has two new presets, item_pre_attack_secondary
+      and item_afterattack_secondary.
+  - bugfix: 480x480 titlescreens now load up centered as intended from the widescreen
+      title changes
+  - rscadd: makes it so lockers/crates can have access electronics removed/inserted
+  - admin: Added a "suppress_message_admins" variable to SDQL spells, which prevents
+      the spell's query from getting output to all admins' chat panels. The query
+      will still be written to the game log.
+  - bugfix: The SDQL spell parse error modal grows properly.
+  - bugfix: fixed implant abilities not being properly removed when the implant is
+      removed.
+  - rscadd: Adds a hydroponics airlock type, and replaces old medical hydroponics
+      doors with the newer airlock type.
+  - bugfix: Fixes an issue where people with the doctor phobia were afraid of hydroponics
+      doors.
+  - bugfix: Fixed the contents of certain coded or mapped closets exceeding their
+      storage capacity, like the HoS closet on Delta, which had redundant grey HoS
+      jumpsuit, trenchcoat and beret, or the mixed wardrobe closet with its duplicate
+      bandanas, jacket and green jumpsuits,
+  - bugfix: The Lavaland Syndicate Base is now Powered again.
+  - code_imp: repathed /unpowered Syndicate Base areas to /powered
+  - bugfix: Gas Filters will now always attempt to move gas, as long as at least one
+      output has space available. Any gas not able to be moved to its destination
+      is returned to the input as if it was never removed. Previously, only gases
+      for the main output port would continue to move when the other output port was
+      full.
+  - bugfix: Gas Filters again no longer leaves empty entries for gases that were filtered
+      in the main output.
+  - bugfix: Gas Filters again no longer outright destroys gas when no filters (or
+      a bad filter, somehow) are set. Instead, it will go through to the main output,
+      as before, or if the main output is full, be returned back to the input, as
+      if never removed.
+  - bugfix: Backup human names are once again respected when forcibly humanizing what
+      would otherwise be a non-human head of staff.
+  - bugfix: 'Prying open one of a pair of cycle-linked airlocks will now always close
+      the other (if it is powered). expansion: Arrivals, escape, and pod airlocks
+      now restrict those without access from exiting directly to space. Use is unrestricted
+      when entering the station or a shuttle is docked.'
+  - tweak: Shuttle departures will now force exterior airlocks closed on both the
+      shuttle and docking bay. The lives of your fellow crew members are more important
+      than your tardiness and limbs, employee!
+  - bugfix: Fixed the numbering of escape pods in certain maps.
+  - rscadd: 'Titlescreens are now widescreen''d up. qol: The titlescreen is no longer
+      described as "Effectively impervious to conventional methods of destruction."
+      and only the splash screen can be interacted with'
+  - bugfix: The american sausage has become edible AND roast-stick-friendly!
+  - bugfix: Fixes advanced roasting stick griddling itself when used on a bonfire
+      with a rod griddle built over it instead of using the bonfire to roast the sausage.
+  - bugfix: fixes mining drills showing as pickaxes when worn or held in-hand
+  - bugfix: borgs will no longer leave MMIs while cryoing
+  - bugfix: Fixed maintenance drones being unable to examinate things they currently
+      can't interact with throgh shift-click.
+  - bugfix: Fixed clown car drivers being unable to examinate things or interacting
+      with their inventory while the car is in cannon mode.
+  - bugfix: Fixed honorbound people being unable to pull, examinate and alt-click
+      other living mobs while holding an item that could be used as a melee weapon.
+  - bugfix: Fixed mechas firing their weapons or using their tools when the pilot
+      is examinating things through shift-click.
+  - bugfix: Security Plasmamen spawn with their suit sensors set to Maximum
+  - imageadd: Added thin prescription glasses
+  - bugfix: The Orion Trail's instructions screen is usable again.
+  - bugfix: Changelings that re-adapt with pheremone receptors on, will have them
+      forcefully removed.
+  axietheaxolotl:
+  - imageadd: resprited the HoP's wintercoat
+  - balance: HoP's coat can now hold their egun
+  jjpark-kb:
+  - rscadd: added directional icons for the conveyor sorter
+  softcerv:
+  - bugfix: fixes the placement of type overlays on Medicells.
+  - refactor: refactors the method that cell based guns use to visually display the
+      currently loaded ammo type. As a result of this, temperature adjustment cells
+      now have a yellow select color.
+2021-10-24:
+  Ebin-Halcyon:
+  - bugfix: The Syndicate have cleaned up the tribals making their bases into lavaland
+      patches
+  Guillaume Prata:
+  - bugfix: Space Heaters won't change temperature without draining it's cell charge
+      anymore.
+  ORCACommander:
+  - bugfix: The Following Stations are now in compliance with NT EVA Safety Protocols
+      Submerged Kilo Station, NSS Journey and Blueshift
+  SkyratBot:
+  - bugfix: Fixes some hydro airlocks having null in their req_access.
+  - bugfix: Members of the Science department can no longer get given the objective
+      to steal their own server's source code.
+  - balance: cattleprods can no longer be held in suit storage slots
+  axietheaxolotl:
+  - balance: removed the sec wintercoat glob
+  thestubborn:
+  - rscadd: Canidae Trait! Speak like a dog! Be irresistible to white women!
