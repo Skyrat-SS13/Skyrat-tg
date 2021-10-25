@@ -561,7 +561,8 @@
 "acU" = (
 /obj/machinery/door/airlock/external{
 	name = "Security External Airlock";
-	req_access_txt = "63"
+	req_access_txt = "63";
+	space_dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
@@ -910,7 +911,8 @@
 /area/security/office)
 "afo" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod Three"
+	name = "Escape Pod Three";
+	space_dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -1785,7 +1787,8 @@
 /obj/machinery/door/airlock/external{
 	name = "Labor Camp Shuttle Airlock";
 	req_access_txt = "2";
-	shuttledocked = 1
+	shuttledocked = 1;
+	space_dir = 8
 	},
 /turf/open/floor/plating,
 /area/security/processing)
@@ -2338,7 +2341,8 @@
 /area/maintenance/port/fore)
 "anN" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+	dir = 4;
+	late = 8
 	},
 /obj/machinery/door/airlock/external{
 	name = "Labor Camp Shuttle Airlock";
@@ -2919,7 +2923,8 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external{
 	name = "External Access";
-	req_access_txt = "13"
+	req_access_txt = "13";
+	space_dir = 1
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -3053,7 +3058,8 @@
 /area/holodeck/rec_center)
 "arp" = (
 /obj/machinery/door/airlock/external{
-	req_access_txt = "13"
+	req_access_txt = "13";
+	space_dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -4180,7 +4186,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	req_access_txt = "13"
+	req_access_txt = "13";
+	space_dir = 8
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
@@ -6935,7 +6942,8 @@
 "aEQ" = (
 /obj/machinery/door/airlock/external{
 	name = "Solar Maintenance";
-	req_access_txt = "10; 13"
+	req_access_txt = "10; 13";
+	space_dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable,
@@ -7020,7 +7028,8 @@
 /area/maintenance/fore)
 "aFh" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod One"
+	name = "Escape Pod One";
+	space_dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -7618,7 +7627,7 @@
 /obj/machinery/door/window/brigdoor/southleft{
 	req_access_txt = "37"
 	},
-/obj/item/kitchen/knife/combat/bone{
+/obj/item/knife/combat/bone{
 	pixel_y = 3
 	},
 /turf/open/floor/wood,
@@ -8961,7 +8970,8 @@
 /area/hallway/secondary/entry)
 "aLD" = (
 /obj/machinery/door/airlock/external{
-	name = "Common Mining Shuttle Bay"
+	name = "Common Mining Shuttle Bay";
+	space_dir = 2
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
@@ -9302,7 +9312,7 @@
 /area/service/chapel/office)
 "aML" = (
 /obj/structure/table,
-/obj/item/kitchen/knife,
+/obj/item/knife,
 /obj/item/wirecutters,
 /obj/item/stack/sheet/leather,
 /turf/open/floor/iron,
@@ -9997,8 +10007,7 @@
 "aPv" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1";
-	safety_mode = 1
+	name = "Port Docking Bay 1"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -11059,8 +11068,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "Escape Airlock";
-	safety_mode = 1
+	name = "Escape Airlock"
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
@@ -11286,8 +11294,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1";
-	safety_mode = 1
+	name = "Port Docking Bay 1"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -12495,7 +12502,7 @@
 "aXI" = (
 /obj/machinery/door/airlock/external{
 	name = "Port Docking Bay 1";
-	safety_mode = 1
+	space_dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
@@ -18539,7 +18546,8 @@
 "bpr" = (
 /obj/machinery/door/airlock/external{
 	name = "Mining Dock";
-	req_access_txt = "48"
+	req_access_txt = "48";
+	space_dir = 8
 	},
 /turf/open/floor/plating,
 /area/cargo/miningdock)
@@ -19388,7 +19396,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
-	req_access_txt = "31"
+	req_access_txt = "31";
+	space_dir = 8
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
@@ -20452,7 +20461,8 @@
 "bus" = (
 /obj/machinery/door/airlock/external{
 	name = "External Airlock";
-	req_access_txt = "24"
+	req_access_txt = "24";
+	space_dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -22355,7 +22365,8 @@
 "bBF" = (
 /obj/machinery/door/airlock/external{
 	name = "Atmospherics External Airlock";
-	req_access_txt = "24"
+	req_access_txt = "24";
+	space_dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -28458,7 +28469,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "External Access";
-	req_access_txt = "13"
+	req_access_txt = "13";
+	space_dir = 8
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
@@ -30097,7 +30109,7 @@
 /obj/item/storage/box/donkpockets{
 	pixel_y = 6
 	},
-/obj/item/kitchen/knife{
+/obj/item/knife{
 	pixel_x = 12
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -30848,7 +30860,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Solar Maintenance";
-	req_access_txt = "10; 13"
+	req_access_txt = "10; 13";
+	space_dir = 8
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -32319,7 +32332,8 @@
 /area/engineering/supermatter)
 "cry" = (
 /obj/machinery/door/airlock/external{
-	name = "Construction Zone"
+	name = "Construction Zone";
+	space_dir = 8
 	},
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)
@@ -32417,7 +32431,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Engineering External Access";
-	req_one_access_txt = "10;24"
+	req_one_access_txt = "10;24";
+	space_dir = 2
 	},
 /turf/open/floor/plating,
 /area/engineering/main)
@@ -32519,7 +32534,8 @@
 /area/ai_monitored/turret_protected/aisat_interior)
 "cta" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+	dir = 4;
+	late = 8
 	},
 /obj/machinery/door/airlock/external{
 	name = "MiniSat External Access";
@@ -33802,7 +33818,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Solar Maintenance";
-	req_access_txt = "10; 13"
+	req_access_txt = "10; 13";
+	space_dir = 1
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -33862,8 +33879,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Security Escape Airlock";
-	req_access_txt = "2";
-	safety_mode = 1
+	req_access_txt = "2"
 	},
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/escape)
@@ -33887,8 +33903,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "Cargo Escape Airlock";
-	safety_mode = 1
+	name = "Cargo Escape Airlock"
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit)
@@ -33897,7 +33912,8 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 4"
+	name = "Port Docking Bay 4";
+	space_dir = 2
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -33906,7 +33922,8 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 3"
+	name = "Port Docking Bay 3";
+	space_dir = 2
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -33915,7 +33932,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	req_access_txt = "13"
+	req_access_txt = "13";
+	space_dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard)
@@ -33972,7 +33990,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Solar Maintenance";
-	req_access_txt = "10; 13"
+	req_access_txt = "10; 13";
+	space_dir = 2
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -33997,7 +34016,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod Four";
-	shuttledocked = 1
+	shuttledocked = 1;
+	space_dir = 4
 	},
 /turf/open/floor/plating,
 /area/engineering/main)
@@ -35993,7 +36013,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	req_access_txt = "13"
+	req_access_txt = "13";
+	space_dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
@@ -36286,7 +36307,8 @@
 /area/engineering/main)
 "cTE" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod One"
+	name = "Escape Pod One";
+	space_dir = 8
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -36520,6 +36542,14 @@
 	},
 /turf/open/floor/iron,
 /area/security/prison/safe)
+"dee" = (
+/obj/machinery/door/airlock/external{
+	name = "External Access";
+	req_access_txt = "13";
+	space_dir = 2
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "deg" = (
 /obj/machinery/camera{
 	c_tag = "Prison - Visition (Visitor)";
@@ -39547,8 +39577,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1";
-	safety_mode = 1
+	name = "Port Docking Bay 1"
 	},
 /obj/machinery/navbeacon/wayfinding{
 	location = "Arrival Shuttle"
@@ -40576,8 +40605,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "Escape Airlock";
-	safety_mode = 1
+	name = "Escape Airlock"
 	},
 /obj/machinery/navbeacon/wayfinding{
 	location = "Escape"
@@ -43964,6 +43992,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/medbay/central)
+"klH" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1";
+	space_dir = 1
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "klV" = (
 /obj/machinery/smartfridge/organ,
 /turf/closed/wall,
@@ -44456,6 +44492,14 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"kDi" = (
+/obj/machinery/door/airlock/external{
+	name = "External Access";
+	req_access_txt = "13";
+	space_dir = 2
+	},
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "kDo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -45803,7 +45847,8 @@
 "lWA" = (
 /obj/machinery/door/airlock/external{
 	name = "External Access";
-	req_access_txt = "13"
+	req_access_txt = "13";
+	space_dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -46393,7 +46438,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Cargo Escape Airlock";
-	safety_mode = 1
+	space_dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -47507,7 +47552,7 @@
 /obj/machinery/door/airlock/external{
 	name = "Security Escape Airlock";
 	req_access_txt = "2";
-	safety_mode = 1
+	space_dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -48546,9 +48591,9 @@
 /obj/item/storage/bag/tray,
 /obj/item/storage/bag/tray,
 /obj/item/kitchen/rollingpin,
-/obj/item/kitchen/knife/plastic,
-/obj/item/kitchen/knife/plastic,
-/obj/item/kitchen/knife/plastic,
+/obj/item/knife/plastic,
+/obj/item/knife/plastic,
+/obj/item/knife/plastic,
 /obj/item/clothing/suit/apron/chef,
 /obj/item/clothing/suit/apron/chef,
 /obj/machinery/light{
@@ -52590,6 +52635,16 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
+"sDN" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1";
+	space_dir = 2
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "sDW" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -57908,7 +57963,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "Escape Airlock";
-	safety_mode = 1
+	space_dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -58162,7 +58217,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 3"
+	name = "Port Docking Bay 3";
+	space_dir = 8
 	},
 /turf/open/floor/plating/airless,
 /area/hallway/secondary/entry)
@@ -68447,7 +68503,7 @@ awZ
 ayk
 aPv
 auP
-aUl
+sDN
 uRx
 xzh
 xzh
@@ -70503,7 +70559,7 @@ aAH
 aOh
 aPv
 auP
-aUl
+sDN
 uRx
 xzh
 xzh
@@ -70511,7 +70567,7 @@ xzh
 xzh
 xzh
 uRx
-aPv
+klH
 auP
 gfa
 jly
@@ -100384,7 +100440,7 @@ feO
 cfn
 bAw
 bAw
-cfn
+kDi
 cng
 xzh
 xzh
@@ -103990,7 +104046,7 @@ mtK
 jdH
 keQ
 cOe
-cqu
+dee
 uRx
 xzh
 xzh

@@ -124,6 +124,8 @@
 
 /obj/item/robot_model/proc/rebuild_modules() //builds the usable module list from the modules we have
 	var/mob/living/silicon/robot/cyborg = loc
+	if (!istype(cyborg))
+		return
 	var/list/held_modules = cyborg.held_items.Copy()
 	var/active_module = cyborg.module_active
 	cyborg.uneq_all()
@@ -186,6 +188,11 @@
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
+
+	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
+	if(cyborg.is_dogborg()) //Should pass because model was set previously.
+		new_model.dogborg_equip()
+	//SKYRAT EDIT ADDITION END
 
 	INVOKE_ASYNC(new_model, .proc/do_transform_animation)
 	qdel(src)

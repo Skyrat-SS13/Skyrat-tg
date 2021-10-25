@@ -288,7 +288,7 @@
 		/obj/item/ammo_casing,
 		/obj/item/flashlight,
 		/obj/item/gun,
-		/obj/item/kitchen/knife,
+		/obj/item/knife,
 		/obj/item/reagent_containers,
 		/obj/item/restraints/handcuffs,
 		/obj/item/tank/internals/emergency_oxygen,

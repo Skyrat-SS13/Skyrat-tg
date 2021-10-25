@@ -1447,3 +1447,208 @@
       the fun vender
   - rscadd: unfinished ceramics can now be sold for 300
   - rscadd: unfinished/finished ceramics will now not have elastic selling prices
+2021-10-19:
+  Gandalf2k15:
+  - rscadd: 'Added a new quirk, oversized. See: for more details.'
+  - rscadd: Oversized people cannot enter mechs or be patted on the head!
+  NotRanged:
+  - rscadd: Re-implemented silicon flavor texts!
+  - bugfix: Fixes dogborg models getting an improper pixel offset on their sprite.
+  - bugfix: Dogborgs get their rest and rest-style verbs back. They are located under
+      AI commands.
+  Ryll/Shaps:
+  - admin: As an admin, if you start replying to a freshly submitted ticket that another
+      admin is already replying to, you'll get a notice that someone already has it
+      open when you get the prompt. Nice to let you know someone else is handling
+      it, so you can coordinate replies better!
+  That REALLY Good Soda Flavor:
+  - refactor: Rolling paper will now use the customizable reagent holder component.
+      This cleans up the code and expands the possibilities for using the component
+      by adding support for dried items.
+  softcerv:
+  - bugfix: medical bandoliers can now hold hypovials again.
+2021-10-20:
+  RatFromTheJungle:
+  - bugfix: Makes the irish sweater actually work in the loadout.
+  SkyratBot:
+  - rscadd: Emagging the communications console will now let you purchase dangerous
+      shuttles. The Gigafactral and the Monastery were moved over (and made cheaper),
+      while the Disco Inferno and Oh, Hi Daniel make a return.
+  jjpark-kb:
+  - bugfix: added a range after mark selection for cargo teleporters
+2021-10-21:
+  ATHATH:
+  - bugfix: Butter bears can now attack objects, as they were intended to.
+  - bugfix: Fugu glanded butter bears can now break down walls, matching the behavior
+      of other fugu glanded mobs.
+  - bugfix: Butter bears can now deal damage with their attacks if their melee damage
+      variables (which are zero by default) become nonzero.
+  - bugfix: Butter bear attacks are now considered to be blunt instead of sharp for
+      the purposes of wounds.
+  Gandalf2k15:
+  - rscadd: Added a mob spawner function for admins.
+  MMMiracles:
+  - bugfix: Pacifists can now fire the circuit gun.
+  - rscadd: Added new pair of glasses that can be found within the trash piles of
+      maintenance.
+  SkyratBot:
+  - bugfix: da vim can now be entered again.
+  jjpark-kb:
+  - bugfix: fixed ash farm plants from becoming unharvestable
+  - rscadd: ash farm plants can have regen cores used on them to drop (as a chance)
+      their produce
+  - rscadd: ash farm plants can have watcher sinews used on them to have (as a chance)
+      a lower growing time
+  - bugfix: primitive fishing rod recipe is fixed
+  - balance: fishing rods require 2 hands now
+  - balance: easier to get the fishing skill chip (higher chance while fishing)
+  - balance: trash is now within the pool to get loot from for fishing
+  - balance: fishing will yield less strange rocks
+  softcerv:
+  - bugfix: Hypovials now fit inside of medical belts again.
+2021-10-22:
+  Melbert:
+  - bugfix: Fixes people getting rejected by the panic bunker when they probably shouldn't
+      have been (if you can read this, it probably doesn't affect you anymore)
+  RatFromTheJungle:
+  - rscadd: PepperballGun goody+crate
+  SkyratBot:
+  - balance: Syndicate masks are now fire + acid proof
+  - bugfix: CentCom now has one APC per area.
+2021-10-23:
+  Echopsychotic:
+  - imageadd: tails were added here
+  ForrestWick:
+  - rscadd: Added many new mobs to the game files for use in future map projects and
+      admin events. They've also been placed in a few of the skyrat-specific space
+      ruins where appropriate.
+  MeyHaZah, Onule, Fikou:
+  - imageadd: mining gear resprite
+  SkyratBot:
+  - bugfix: The proc call, set var, and spawn atom circuit components will properly
+      resolve any weakrefs passed to them through their list ports.
+  - admin: The signal handler circuit component has two new presets, item_pre_attack_secondary
+      and item_afterattack_secondary.
+  - bugfix: 480x480 titlescreens now load up centered as intended from the widescreen
+      title changes
+  - rscadd: makes it so lockers/crates can have access electronics removed/inserted
+  - admin: Added a "suppress_message_admins" variable to SDQL spells, which prevents
+      the spell's query from getting output to all admins' chat panels. The query
+      will still be written to the game log.
+  - bugfix: The SDQL spell parse error modal grows properly.
+  - bugfix: fixed implant abilities not being properly removed when the implant is
+      removed.
+  - rscadd: Adds a hydroponics airlock type, and replaces old medical hydroponics
+      doors with the newer airlock type.
+  - bugfix: Fixes an issue where people with the doctor phobia were afraid of hydroponics
+      doors.
+  - bugfix: Fixed the contents of certain coded or mapped closets exceeding their
+      storage capacity, like the HoS closet on Delta, which had redundant grey HoS
+      jumpsuit, trenchcoat and beret, or the mixed wardrobe closet with its duplicate
+      bandanas, jacket and green jumpsuits,
+  - bugfix: The Lavaland Syndicate Base is now Powered again.
+  - code_imp: repathed /unpowered Syndicate Base areas to /powered
+  - bugfix: Gas Filters will now always attempt to move gas, as long as at least one
+      output has space available. Any gas not able to be moved to its destination
+      is returned to the input as if it was never removed. Previously, only gases
+      for the main output port would continue to move when the other output port was
+      full.
+  - bugfix: Gas Filters again no longer leaves empty entries for gases that were filtered
+      in the main output.
+  - bugfix: Gas Filters again no longer outright destroys gas when no filters (or
+      a bad filter, somehow) are set. Instead, it will go through to the main output,
+      as before, or if the main output is full, be returned back to the input, as
+      if never removed.
+  - bugfix: Backup human names are once again respected when forcibly humanizing what
+      would otherwise be a non-human head of staff.
+  - bugfix: 'Prying open one of a pair of cycle-linked airlocks will now always close
+      the other (if it is powered). expansion: Arrivals, escape, and pod airlocks
+      now restrict those without access from exiting directly to space. Use is unrestricted
+      when entering the station or a shuttle is docked.'
+  - tweak: Shuttle departures will now force exterior airlocks closed on both the
+      shuttle and docking bay. The lives of your fellow crew members are more important
+      than your tardiness and limbs, employee!
+  - bugfix: Fixed the numbering of escape pods in certain maps.
+  - rscadd: 'Titlescreens are now widescreen''d up. qol: The titlescreen is no longer
+      described as "Effectively impervious to conventional methods of destruction."
+      and only the splash screen can be interacted with'
+  - bugfix: The american sausage has become edible AND roast-stick-friendly!
+  - bugfix: Fixes advanced roasting stick griddling itself when used on a bonfire
+      with a rod griddle built over it instead of using the bonfire to roast the sausage.
+  - bugfix: fixes mining drills showing as pickaxes when worn or held in-hand
+  - bugfix: borgs will no longer leave MMIs while cryoing
+  - bugfix: Fixed maintenance drones being unable to examinate things they currently
+      can't interact with throgh shift-click.
+  - bugfix: Fixed clown car drivers being unable to examinate things or interacting
+      with their inventory while the car is in cannon mode.
+  - bugfix: Fixed honorbound people being unable to pull, examinate and alt-click
+      other living mobs while holding an item that could be used as a melee weapon.
+  - bugfix: Fixed mechas firing their weapons or using their tools when the pilot
+      is examinating things through shift-click.
+  - bugfix: Security Plasmamen spawn with their suit sensors set to Maximum
+  - imageadd: Added thin prescription glasses
+  - bugfix: The Orion Trail's instructions screen is usable again.
+  - bugfix: Changelings that re-adapt with pheremone receptors on, will have them
+      forcefully removed.
+  axietheaxolotl:
+  - imageadd: resprited the HoP's wintercoat
+  - balance: HoP's coat can now hold their egun
+  jjpark-kb:
+  - rscadd: added directional icons for the conveyor sorter
+  softcerv:
+  - bugfix: fixes the placement of type overlays on Medicells.
+  - refactor: refactors the method that cell based guns use to visually display the
+      currently loaded ammo type. As a result of this, temperature adjustment cells
+      now have a yellow select color.
+2021-10-24:
+  Ebin-Halcyon:
+  - bugfix: The Syndicate have cleaned up the tribals making their bases into lavaland
+      patches
+  Guillaume Prata:
+  - bugfix: Space Heaters won't change temperature without draining it's cell charge
+      anymore.
+  ORCACommander:
+  - bugfix: The Following Stations are now in compliance with NT EVA Safety Protocols
+      Submerged Kilo Station, NSS Journey and Blueshift
+  SkyratBot:
+  - bugfix: Fixes some hydro airlocks having null in their req_access.
+  - bugfix: Members of the Science department can no longer get given the objective
+      to steal their own server's source code.
+  - balance: cattleprods can no longer be held in suit storage slots
+  axietheaxolotl:
+  - balance: removed the sec wintercoat glob
+  thestubborn:
+  - rscadd: Canidae Trait! Speak like a dog! Be irresistible to white women!
+2021-10-25:
+  ForrestWick:
+  - rscadd: gives the cargodise lost/cargo freighter ghost role an iv drip so they
+      don't die of bloodloss
+  - bugfix: fixed badnana spider factions
+  Gonenoculer5:
+  - balance: SEVA suits no longer accept goliath plates, as was intended by the original
+      PR author, and now add two seconds of stun to goliath grabs. Dont shoot the
+      messenger.
+  - bugfix: A recent factory mixup in the core worlds made it so that SEVA suits were
+      comming with plate hooks for enviromental suits. Centcom has corrected this,
+      and as such SEVA suits are now back to their manufactuing spec.
+  - code_imp: Relocated SEVA from explorer subtype to its own, to avoid inheriting
+      plate addition from the hooded/explorer/XYZ subtype.
+  NotRanged:
+  - rscadd: Blob, swarmer, and xeno events should roll naturally again.
+  PositiveEntropy:
+  - imageadd: Resprites the defibrillator!
+  SkyratBot:
+  - bugfix: fixes bomb implants blowing you up anyway when closing the window instead
+      of pressing the "No" option
+  - bugfix: fixes bomb implants blowing you up when clicking the action button while
+      the confirmation popup is still up
+  - bugfix: The SM air alarm on MetaStation and TramStation once again starts unlocked,
+      and can also be locked and unlocked by Engineers instead of just Atmospherics
+      Technicians. This matches the setup on Delta, IceBox, and Kilo.
+  - spellcheck: Offering items to other players now has punctuation
+  - rscadd: Added a rare skillchip to maint.
+  - balance: Makes wizard a high impact ruleset.
+  - bugfix: Fixes pacifists wielding mjollnir being able to shock people.
+  - bugfix: Regular/Advanced mops are now in the same categories of the auto/protolathe.
+  Statickx:
+  - bugfix: Added suit sensors to blood-red pajamas in the loadout menu.
