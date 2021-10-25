@@ -45,6 +45,7 @@
 	name = "Warden"
 	jobtype = /datum/job/warden
 
+<<<<<<< HEAD
 	belt = /obj/item/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security/warden/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/under/rank/security/warden
@@ -63,7 +64,27 @@
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
 	box = /obj/item/storage/box/survival/security
-
-	implants = list(/obj/item/implant/mindshield)
-
+=======
 	id_trim = /datum/id_trim/job/warden
+	uniform = /obj/item/clothing/under/rank/security/warden
+	suit = /obj/item/clothing/suit/armor/vest/warden/alt
+	suit_store = /obj/item/gun/energy/disabler
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		)
+	belt = /obj/item/pda/warden
+	ears = /obj/item/radio/headset/headset_sec/alt
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/warden
+	shoes = /obj/item/clothing/shoes/jackboots
+	l_pocket = /obj/item/restraints/handcuffs
+	r_pocket = /obj/item/assembly/flash/handheld
+
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+>>>>>>> 8e6f4375be6 (Reorganizes the order of items in job outfits (#61553))
+
+	box = /obj/item/storage/box/survival/security
+	implants = list(/obj/item/implant/mindshield)

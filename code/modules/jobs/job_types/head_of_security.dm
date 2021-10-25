@@ -47,6 +47,7 @@
 	jobtype = /datum/job/head_of_security
 
 	id = /obj/item/card/id/advanced/silver
+<<<<<<< HEAD
 	belt = /obj/item/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/security/head_of_security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/under/rank/security/head_of_security
@@ -57,24 +58,46 @@
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
 	suit_store = /obj/item/flashlight/seclite //SKYRAT EDIT CHANGE - SEC_HAUL & HOS_NERF - ORIGINAL: /obj/item/gun/energy/e_gun SEC_HAUL: /obj/item/gun/ballistic/automatic/pistol/g18
 	r_pocket = /obj/item/assembly/flash/handheld
+=======
+	id_trim = /datum/id_trim/job/head_of_security
+	uniform = /obj/item/clothing/under/rank/security/head_of_security
+	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
+	suit_store = /obj/item/gun/energy/e_gun
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
+		)
+	belt = /obj/item/pda/heads/hos
+	ears = /obj/item/radio/headset/heads/hos/alt
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/hos/beret
+	shoes = /obj/item/clothing/shoes/jackboots
+>>>>>>> 8e6f4375be6 (Reorganizes the order of items in job outfits (#61553))
 	l_pocket = /obj/item/restraints/handcuffs
-	backpack_contents = list(/obj/item/melee/baton/security/loaded=1, /obj/item/modular_computer/tablet/preset/advanced/command=1)
+	r_pocket = /obj/item/assembly/flash/handheld
 
+<<<<<<< HEAD
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
 	box = /obj/item/storage/box/survival/security
+=======
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+>>>>>>> 8e6f4375be6 (Reorganizes the order of items in job outfits (#61553))
 
+	box = /obj/item/storage/box/survival/security
+	chameleon_extras = list(
+		/obj/item/gun/energy/e_gun/hos,
+		/obj/item/stamp/hos,
+		)
 	implants = list(/obj/item/implant/mindshield)
-
-	chameleon_extras = list(/obj/item/gun/energy/e_gun/hos, /obj/item/stamp/hos)
-
-	id_trim = /datum/id_trim/job/head_of_security
 
 /datum/outfit/job/hos/hardsuit
 	name = "Head of Security (Hardsuit)"
 
-	mask = /obj/item/clothing/mask/gas/sechailer
 	suit = /obj/item/clothing/suit/space/hardsuit/security/hos
 	suit_store = /obj/item/tank/internals/oxygen
-	backpack_contents = list(/obj/item/melee/baton/security/loaded=1)
+	mask = /obj/item/clothing/mask/gas/sechailer
