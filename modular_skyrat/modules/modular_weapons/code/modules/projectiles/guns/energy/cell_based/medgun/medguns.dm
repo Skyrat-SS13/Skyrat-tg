@@ -230,4 +230,5 @@
 /obj/item/weaponcell/medical/utility/hardlight_gown
 	name = "Hardlight Gown Medicell"
 	desc = "A medicell that creates a hopsital gown made out of hardlight on the target"
+	icon_state = "gown"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/gown
