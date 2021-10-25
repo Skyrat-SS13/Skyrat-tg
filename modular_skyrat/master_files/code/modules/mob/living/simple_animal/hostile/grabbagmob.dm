@@ -732,7 +732,8 @@
 	attack_verb_simple = "boss"
 	attack_sound = 'sound/weapons/cqchit2.ogg'
 	speak_emote = list("squeaks")
-	speak = list("squeaks.", "practices CQC.", "cocks the bolt of a tiny rifle.", "plots to steal DAT DISK!", "fiddles with a tiny radio.")
+	emote_see = list("squeaks.", "practices CQC.", "cocks the bolt of a tiny CR20.", "plots to steal DAT DISK!", "fiddles with a tiny radio.")
+	speak_chance = 1
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 1500
