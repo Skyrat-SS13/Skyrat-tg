@@ -106,6 +106,10 @@
 		return
 	if(target.anchored)
 		return
+	// SKYRAT EDIT START - Cargo borgs
+	if(!amount)
+		return
+	// SKYRAT EDIT END
 
 	if(isitem(target))
 		var/obj/item/I = target

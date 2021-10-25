@@ -162,6 +162,11 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
+		/// SKYRAT EDIT START - Cargo borgs
+		else if(istype(module, /obj/item/hand_labeler/cyborg))
+			var/obj/item/hand_labeler/cyborg/labeler = module
+			labeler.labels_left = 30
+		/// SKYRAT EDIT END
 
 	cyborg.toner = cyborg.tonermax
 
@@ -201,11 +206,16 @@
 /obj/item/robot_model/proc/be_transformed_to(obj/item/robot_model/old_model, forced = FALSE)
 	if(islist(borg_skins) && !forced)
 		var/mob/living/silicon/robot/cyborg = loc
-		var/list/reskin_icons = list()
-		for(var/skin in borg_skins)
-			var/list/details = borg_skins[skin]
-			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/robots.dmi', icon_state = details[SKIN_ICON_STATE])
-		var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
+		 // SKYRAT EDIT ADDITION - Fixing the cyborg radial menu
+		if(length(GLOB.cyborg_all_models_icon_list[name]) == 0)
+			for(var/skin in borg_skins)
+				var/list/details = borg_skins[skin]
+				var/icon_offset_x = 0
+				if(details[SKIN_TRAITS] && (R_TRAIT_WIDE in details[SKIN_TRAITS]))
+					icon_offset_x = ROBOT_WIDE_OFFSET_X
+				GLOB.cyborg_all_models_icon_list[name][skin] = image(icon = details[SKIN_ICON] || 'icons/mob/robots.dmi', icon_state = details[SKIN_ICON_STATE], pixel_x = icon_offset_x)
+		var/borg_skin = show_radial_menu(cyborg, cyborg, GLOB.cyborg_all_models_icon_list[name], custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
+		// SKYRAT EDIT END
 		if(!borg_skin)
 			return FALSE
 		var/list/details = borg_skins[borg_skin]
@@ -214,6 +224,12 @@
 		if(!isnull(details[SKIN_ICON]))
 			cyborg.icon = details[SKIN_ICON]
 			cyborg_icon_override = details[SKIN_ICON] // SKYRAT EDIT ADDITION
+		// SKYRAT EDIT START - Moved it up so we could deduce base_pixel_x based on R_TRAIT_WIDE, while also letting people override it manually if need be.
+		if(!isnull(details[SKIN_TRAITS]))
+			model_traits += details[SKIN_TRAITS]
+			if(R_TRAIT_WIDE in model_traits)
+				cyborg.base_pixel_x = ROBOT_WIDE_OFFSET_X
+		// SKYRAT EDIT END
 		if(!isnull(details[SKIN_PIXEL_X]))
 			cyborg.base_pixel_x = details[SKIN_PIXEL_X]
 		if(!isnull(details[SKIN_PIXEL_Y]))
@@ -222,8 +238,6 @@
 			special_light_key = details[SKIN_LIGHT_KEY]
 		if(!isnull(details[SKIN_HAT_OFFSET]))
 			hat_offset = details[SKIN_HAT_OFFSET]
-		if(!isnull(details[SKIN_TRAITS]))
-			model_traits += details[SKIN_TRAITS]
 	for(var/i in old_model.added_modules)
 		added_modules += i
 		old_model.added_modules -= i

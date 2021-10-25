@@ -8,6 +8,8 @@
 /// Cyborgs with unique sprites for when they get totally broken down.
 #define R_TRAIT_UNIQUEWRECK	"unique_wreck"
 /// Represents wide/quadruped/dogborg type models.
-#define R_TRAIT_WIDE		"wide_borg"
+#define R_TRAIT_WIDE "wide_borg"
 /// Any model small enough to reject the shrinker upgrade.
-#define R_TRAIT_SMALL		"small_chassis"
+#define R_TRAIT_SMALL "small_chassis"
+/// Represents how much the wideborg sprite will be shifted along the X axis.
+#define ROBOT_WIDE_OFFSET_X -16

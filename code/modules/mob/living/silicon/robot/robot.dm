@@ -176,29 +176,37 @@
 		to_chat(src,span_userdanger("ERROR: Model installer reply timeout. Please check internal connections."))
 		return
 
-	var/list/model_list = list("Engineering" = /obj/item/robot_model/engineering, \
-	"Medical" = /obj/item/robot_model/medical, \
-	"Cargo" = /obj/item/robot_model/cargo, /* SKYRAT EDIT - CARGOBORG */\
-	"Miner" = /obj/item/robot_model/miner, \
-	"Janitor" = /obj/item/robot_model/janitor, \
-	"Service" = /obj/item/robot_model/service)
-	if(!CONFIG_GET(flag/disable_peaceborg))
-		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
-	if(!CONFIG_GET(flag/disable_secborg))
-		model_list["Security"] = /obj/item/robot_model/security
+	// SKYRAT EDIT START - Making the cyborg model list static to reduce how many times it's generated.
+	if(length(GLOB.cyborg_model_list) == 0)
+		GLOB.cyborg_model_list = list("Engineering" = /obj/item/robot_model/engineering, \
+		"Medical" = /obj/item/robot_model/medical, \
+		"Cargo" = /obj/item/robot_model/cargo, /* SKYRAT EDIT - CARGOBORG */\
+		"Miner" = /obj/item/robot_model/miner, \
+		"Janitor" = /obj/item/robot_model/janitor, \
+		"Service" = /obj/item/robot_model/service)
+		if(!CONFIG_GET(flag/disable_peaceborg))
+			GLOB.cyborg_model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
+		if(!CONFIG_GET(flag/disable_secborg))
+			GLOB.cyborg_model_list["Security"] = /obj/item/robot_model/security
+		for(var/model in GLOB.cyborg_model_list)
+			// Creating the lists here since we know all the model icons will need them right after.
+			GLOB.cyborg_all_models_icon_list[model] = list()
+	// SKYRAT EDIT END
 
 	// Create radial menu for choosing borg model
-	var/list/model_icons = list()
-	for(var/option in model_list)
-		var/obj/item/robot_model/model = model_list[option]
-		var/model_icon = initial(model.cyborg_base_icon)
-		model_icons[option] = image(icon = 'modular_skyrat/master_files/icons/mob/robots.dmi', icon_state = model_icon) // SKYRAT EDIT - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+	// SKYRAT EDIT START - Making the model icons list static to reduce how many times it's generated.
+	if(length(GLOB.cyborg_base_models_icon_list) == 0)
+		for(var/option in GLOB.cyborg_model_list)
+			var/obj/item/robot_model/model = GLOB.cyborg_model_list[option]
+			var/model_icon = initial(model.cyborg_base_icon)
+			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'modular_skyrat/master_files/icons/mob/robots.dmi', icon_state = model_icon) // SKYRAT EDIT - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
+	// SKYRAT EDIT END
 
-	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
+	var/input_model = show_radial_menu(src, src, GLOB.cyborg_base_models_icon_list, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)
 		return
 
-	model.transform_to(model_list[input_model])
+	model.transform_to(GLOB.cyborg_model_list[input_model])
 
 
 /// Used to setup the a basic and (somewhat) unique name for the robot.

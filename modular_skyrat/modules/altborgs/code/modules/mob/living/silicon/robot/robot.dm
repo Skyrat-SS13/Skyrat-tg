@@ -70,19 +70,19 @@
 /mob/living/silicon/robot/start_pulling(atom/movable/AM, state, force, supress_message)
 	. = ..()
 	if(is_dogborg())
-		pixel_x = -16
+		pixel_x = ROBOT_WIDE_OFFSET_X
 
 /mob/living/silicon/robot/stop_pulling()
 	. = ..()
 	if(is_dogborg())
-		pixel_x = -16
+		pixel_x = ROBOT_WIDE_OFFSET_X
 
 /mob/living/silicon/robot/pick_model()
 	if(model.type != /obj/item/robot_model)
 		return
 
 	if(wires.is_cut(WIRE_RESET_MODEL))
-		to_chat(src,"<span class='userdanger'>ERROR: Module installer reply timeout. Please check internal connections.</span>")
+		to_chat(src,span_userdanger("ERROR: Module installer reply timeout. Please check internal connections."))
 		return
 
 	var/list/skyratmodel = list(
