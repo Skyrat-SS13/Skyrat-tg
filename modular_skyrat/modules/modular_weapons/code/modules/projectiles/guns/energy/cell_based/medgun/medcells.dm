@@ -341,6 +341,7 @@
 /obj/item/ammo_casing/energy/medical/utility/gown
 	projectile_type = /obj/projectile/energy/medical/utility/gown
 	select_name = "gown"
+	select_color = "#00ffbf"
 
 /obj/projectile/energy/medical/utility/gown
 	name = "hardlight surgical gown field"
