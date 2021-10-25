@@ -364,6 +364,14 @@
 	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
 	icon_state = "lgown"
 
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight/dropped(mob/user)
+	. = ..()
+	var/mob/living/carbon/wearer = user
+	if((wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING)) == src && !QDELETED(src))
+		to_chat(wearer, span_notice("The [src] disappeared after being removed"))
+		qdel(src)
+		return
+
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
 #undef MINIMUM_TEMP_DIFFERENCE
