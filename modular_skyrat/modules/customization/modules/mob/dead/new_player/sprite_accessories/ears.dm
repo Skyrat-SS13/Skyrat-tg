@@ -237,3 +237,8 @@
 /datum/sprite_accessory/ears/mutant/deerear
 	name = "Deer (ear)"
 	icon_state = "deerear"
+
+/datum/sprite_accessory/ears/mutant/deer2
+	name = "Deer 2"
+	icon_state = "deer2"
+
