@@ -9,9 +9,19 @@
 				"}
 	return dat
 
-/obj/item/implant/mortis/trigger(emote, mob/source)
-	if(emote == "deathgasp")
-		playsound(source.loc, 'modular_skyrat/modules/chaplain/sound/misc/mortis.ogg', 50, 0)
+/obj/item/implant/mortis/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
+	. = ..()
+	if(.)
+		RegisterSignal(target, COMSIG_MOB_EMOTED("deathgasp"), .proc/on_deathgasp)
+
+/obj/item/implant/mortis/removed(mob/target, silent = FALSE, special = FALSE)
+	. = ..()
+	if(.)
+		UnregisterSignal(target, COMSIG_MOB_EMOTED("deathgasp"))
+
+/obj/item/implant/mortis/proc/on_deathgasp(mob/source)
+	SIGNAL_HANDLER
+	playsound(source.loc, 'modular_skyrat/modules/chaplain/sound/misc/mortis.ogg', 50, 0)
 
 /obj/item/implanter/mortis
 	name = "implanter (MORTIS)"
