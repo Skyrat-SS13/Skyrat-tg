@@ -2,7 +2,7 @@
 
 /obj/item/crowbar/makeshift
 	name = "makeshift crowbar"
-	desc = "A makeshift crowbar, flimsily constructed with miscellaneous parts."
+	desc = "A makeshift crowbar, flimsily constructed with miscellaneous parts. The only good thing about it is the nasty-looking hammerhead on one end."
 	icon = 'modular_skyrat/modules/modular_items/icons/obj/items/tools.dmi'
 	icon_state = "makeshift_crowbar"
 	force = 2
