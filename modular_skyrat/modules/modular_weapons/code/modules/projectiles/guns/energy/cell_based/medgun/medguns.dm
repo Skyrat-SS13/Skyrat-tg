@@ -226,3 +226,8 @@
 	desc = "A medicell that adjusts the hosts temperature to acceptable levels"
 	icon_state = "temperature"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/temperature
+
+/obj/item/weaponcell/medical/utility/hardlight_gown
+	name = "Hardlight Gown Medicell"
+	desc = "A medicell that creates a hopsital gown made out of hardlight on the target"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/gown

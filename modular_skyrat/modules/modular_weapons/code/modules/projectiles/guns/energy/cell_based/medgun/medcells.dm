@@ -337,6 +337,28 @@
 		return FALSE
 	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
 
+//Surgical Gown Medicell.
+/obj/item/ammo_casing/energy/medical/utility/gown
+	projectile_type = /obj/projectile/energy/medical/utility/gown
+	select_name = "gown"
+
+/obj/projectile/energy/medical/utility/gown
+	name = "hardlight surgical gown field"
+
+/obj/projectile/energy/medical/utility/gown/on_hit(mob/living/target)
+	if(!istype(target, /mob/living/carbon/human)) //Dead check isn't fully needed, since it'd be reasonable for this to work on corpses.
+		return
+	var/mob/living/carbon/wearer = target
+	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	if(wearer.equip_to_slot_if_possible(gown, ITEM_SLOT_OCLOTHING, 1, 1, 1))
+		return
+		//put some text in here later.
+
+
+//Objects Used by medicells.
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	name = "Hardlight Hospital Gown"
+
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
 #undef MINIMUM_TEMP_DIFFERENCE
