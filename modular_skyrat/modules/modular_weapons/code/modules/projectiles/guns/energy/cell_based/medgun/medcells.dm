@@ -361,6 +361,8 @@
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
 	name = "Hardlight Hospital Gown"
+	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
+	icon_state = "lgown"
 
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
