@@ -24,6 +24,7 @@
 	uniform = /obj/item/clothing/under/utility/cargo/syndicate
 	suit = null //Subtype moment
 	r_pocket = /obj/item/storage/bag/ore
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/kitchen/knife/combat/survival=1,
@@ -34,6 +35,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Lavaland Syndicate Deck Officer"
+	r_hand = /obj/item/gun/ballistic/automatic/sniper_rifle
 	uniform = /obj/item/clothing/under/rank/cargo/qm/syndie
 	neck = /obj/item/clothing/neck/cloak/qm/syndie
 	ears = /obj/item/radio/headset/interdyne/command

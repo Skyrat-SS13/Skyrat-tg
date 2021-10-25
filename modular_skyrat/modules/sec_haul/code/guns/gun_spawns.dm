@@ -129,6 +129,15 @@
 	new /obj/item/storage/bag/ammo(src)
 	new /obj/item/gun_maintenance_supplies(src)
 
+/obj/item/storage/box/ammo_box/sniper
+	name = "sniper rifle ammo box"
+	desc = "A box filled with 12 gauge slugs. Whatever this gun is for probably bites hard."
+
+/obj/item/storage/box/ammo_box/sniper/PopulateContents()
+	new /obj/item/ammo_box/magazine/sniper_rounds(src)
+	new /obj/item/storage/bag/ammo(src)
+	new /obj/item/gun_maintenance_supplies(src)
+
 /obj/effect/spawner/armory_spawn/syndie_rifles
 	icon_state = "random_rifle"
 	gun_count = 4
