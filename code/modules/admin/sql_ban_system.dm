@@ -251,6 +251,7 @@
 		<input type='hidden' name='old_globalban' value='[global_ban]'>
 		<input type='hidden' name='page' value='[page]'>
 		<input type='hidden' name='adminkey' value='[admin_key]'>
+		<input type='hidden' name='role' value='[role]'>
 		<br>
 		When ticked, edits here will also affect bans created with matching ckey, IP, CID and time. Use this to edit all role bans which were made at the same time.
 		"}
@@ -485,6 +486,7 @@
 			changes += list("Reason" = "[href_list["oldreason"]]<br>to<br>[reason]")
 		if(!changes.len)
 			error_state += "No changes were detected."
+		roles_to_ban += href_list["role"]
 	else
 		severity = href_list["radioseverity"]
 		if(!severity)
