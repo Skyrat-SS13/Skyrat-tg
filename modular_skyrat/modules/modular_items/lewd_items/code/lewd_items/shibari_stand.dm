@@ -210,7 +210,7 @@
 		to_chat(user, span_notice("You assemble the frame."))
 		var/obj/structure/chair/shibari_stand/C = new
 		C.icon_state = "shibari_stand_[color]"
-		C.loc = loc
+		C.forceMove(get_turf(src))
 		qdel(src)
 	return TRUE
 
@@ -220,7 +220,7 @@
 	if(I.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You disassemble the x-stand."))
 		var/obj/item/shibari_stand_kit/C = new
-		C.loc = loc
+		C.forceMove(get_turf(src))
 		unbuckle_all_mobs()
 		qdel(src)
 	return TRUE
