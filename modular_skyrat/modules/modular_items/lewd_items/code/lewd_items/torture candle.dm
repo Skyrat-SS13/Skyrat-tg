@@ -144,7 +144,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("drips some wax on [M.p_their()] penis, causing [M.p_them()] to moan in pleasure",
@@ -159,7 +159,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("drips some wax on themselves, letting it reach his vagina. He moans in pleasure.","drips some wax on the [M]'s pussy, he moans in pleasure") : pick("drips some wax on the [M]'s vagina, he moans in pleasure","tilts the candle. Wax slowly goes down, reaching the [M]'s vagina.","tilts the candle. Drops of wax, dripping right from [src] right on the [M]'s pussy, made him moan.")
@@ -170,7 +170,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
@@ -186,7 +186,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -201,7 +201,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -216,7 +216,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -234,7 +234,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -248,7 +248,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -264,7 +264,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -278,7 +278,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -293,7 +293,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -307,7 +307,7 @@
 										M.emote(pick("twitch_s" ,"gasp","shiver"))
 								user.visible_message(span_purple("[user] [message]!"))
 								playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
-													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE)
+													'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)
 
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
