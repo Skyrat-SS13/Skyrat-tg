@@ -40,40 +40,40 @@
 	target.dna.features["custom_species_lore"] = value
 
 // SKYRAT EDIT ADDITION BEGIN -- RP RECORDS REJUVINATION
-/datum/preference/text/general_records/
+/datum/preference/text/general_record/
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "general_records"
+	savefile_key = "general_record"
 
-/datum/preference/text/general_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.client.prefs.general_record = value
+/datum/preference/text/general_record/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.dna.features["general_record"] = value
 
-/datum/preference/text/medical_records/
+/datum/preference/text/medical_record/
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "medical_records"
+	savefile_key = "medical_record"
 
-/datum/preference/text/medical_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.client.prefs.medical_record = value
+/datum/preference/text/medical_record/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.dna.features["medical_record"] = value
 
-/datum/preference/text/security_records/
+/datum/preference/text/security_record/
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "security_records"
+	savefile_key = "security_record"
 
-/datum/preference/text/security_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.client.prefs.security_record = value
+/datum/preference/text/security_record/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.dna.features["security_record"] = value
 
-/datum/preference/text/exploitable_records/
+/datum/preference/text/exploitable_info/
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "exploitable_records"
+	savefile_key = "exploitable_info"
 
-/datum/preference/text/exploitable_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.client.prefs.exploitable_info = value
+/datum/preference/text/exploitable_info/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.dna.features["exploitable_info"] = value
 
-/* /datum/preference/text/background_records/
+/* /datum/preference/text/background_info/
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "background_records_key" */
+	savefile_key = "background_info" */
 // SKYRAT EDIT END

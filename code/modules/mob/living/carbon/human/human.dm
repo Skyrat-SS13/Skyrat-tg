@@ -111,7 +111,7 @@
 		if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD) && !HAS_TRAIT(H, TRAIT_MEDICAL_HUD))
 			return
 		var/datum/data/record/general_record = find_record("name", perpname, GLOB.data_core.general) //SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-		var/datum/data/record/med_record = find_record("name", perpname, GLOB.data_core.medical)
+//unused		var/datum/data/record/med_record = find_record("name", perpname, GLOB.data_core.medical)
 		var/datum/data/record/sec_record = find_record("name", perpname, GLOB.data_core.security)//SKYRAT EDIT ADDITION END
 		if(href_list["photo_front"] || href_list["photo_side"])
 			if(!general_record) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
@@ -209,11 +209,15 @@
 					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
-			if(href_list["medrecords"])
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-				to_chat(usr, "<b>Medical Record:</b> [med_record.fields["past_records"]]")
+			if(href_list["medrecords"])
+				if(!src.has_dna())
+					return
+				to_chat(usr, "<b>Medical Record:</b> [src.dna.features["medical_record"]]")
 			if(href_list["genrecords"])
-				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+				if(!src.has_dna())
+					return
+				to_chat(usr, "<b>General Record:</b> [src.dna.features["general_record"]]")
 			//SKYRAT EDIT END
 			return //Medical HUD ends here.
 
@@ -275,7 +279,9 @@
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [sec_record.fields["notes"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
+				if(!src.has_dna())
+					return
+				to_chat(usr, "<b>Security Record:</b> [src.dna.features["security_record"]]") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
 				return
 
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
@@ -284,7 +290,9 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+				if(!src.has_dna())
+					return
+				to_chat(usr, "<b>General Record:</b> [src.dna.features["general_record"]]")
 			//SKYRAT EDIT END
 
 			if(href_list["add_citation"])
@@ -378,10 +386,12 @@
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
 	if (is_special_character(usr))
-		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
+//		var/perpname = get_face_name(get_id_name(""))
+//		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
 		if(href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exp_records"]]")
+			if(!src.has_dna())
+				return
+			to_chat(usr, "<b>Exploitable information:</b> [src.dna.features["exploitable_info"]]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
