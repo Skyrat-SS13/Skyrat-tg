@@ -23,3 +23,6 @@
 
 	learnable_languages = list(/datum/language/common, /datum/language/sylvan)
 	always_customizable = FALSE
+
+/datum/species/pod/podweak/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
+	return
