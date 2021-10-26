@@ -38,3 +38,42 @@
 
 /datum/preference/text/custom_species_lore/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["custom_species_lore"] = value
+
+// SKYRAT EDIT ADDITION BEGIN -- RP RECORDS REJUVINATION
+/datum/preference/text/general_records/
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "general_records"
+
+/datum/preference/text/general_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.client.prefs.general_record = value
+
+/datum/preference/text/medical_records/
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "medical_records"
+
+/datum/preference/text/medical_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.client.prefs.medical_record = value
+
+/datum/preference/text/security_records/
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "security_records"
+
+/datum/preference/text/security_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.client.prefs.security_record = value
+
+/datum/preference/text/exploitable_records/
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "exploitable_records"
+
+/datum/preference/text/exploitable_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.client.prefs.exploitable_info = value
+
+/* /datum/preference/text/background_records/
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "background_records_key" */
+// SKYRAT EDIT END

@@ -484,6 +484,13 @@
 	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
+	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+	var/datum/data/record/isinworld = find_record("name", perpname, GLOB.data_core.general) //i dont know of a better way to do this-it doesnt work on off-station roles. please fix this someone better at coding.
+	for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
+		if ((is_special_character(user)) && isinworld && (antag_datum.view_exploitables))
+			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+	//SKYRAT EDIT END
+
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()
 	if(!pronoun_replacement)
