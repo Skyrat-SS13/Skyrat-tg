@@ -1600,3 +1600,97 @@
   - refactor: refactors the method that cell based guns use to visually display the
       currently loaded ammo type. As a result of this, temperature adjustment cells
       now have a yellow select color.
+2021-10-24:
+  Ebin-Halcyon:
+  - bugfix: The Syndicate have cleaned up the tribals making their bases into lavaland
+      patches
+  Guillaume Prata:
+  - bugfix: Space Heaters won't change temperature without draining it's cell charge
+      anymore.
+  ORCACommander:
+  - bugfix: The Following Stations are now in compliance with NT EVA Safety Protocols
+      Submerged Kilo Station, NSS Journey and Blueshift
+  SkyratBot:
+  - bugfix: Fixes some hydro airlocks having null in their req_access.
+  - bugfix: Members of the Science department can no longer get given the objective
+      to steal their own server's source code.
+  - balance: cattleprods can no longer be held in suit storage slots
+  axietheaxolotl:
+  - balance: removed the sec wintercoat glob
+  thestubborn:
+  - rscadd: Canidae Trait! Speak like a dog! Be irresistible to white women!
+2021-10-25:
+  ForrestWick:
+  - rscadd: gives the cargodise lost/cargo freighter ghost role an iv drip so they
+      don't die of bloodloss
+  - bugfix: fixed badnana spider factions
+  Gonenoculer5:
+  - balance: SEVA suits no longer accept goliath plates, as was intended by the original
+      PR author, and now add two seconds of stun to goliath grabs. Dont shoot the
+      messenger.
+  - bugfix: A recent factory mixup in the core worlds made it so that SEVA suits were
+      comming with plate hooks for enviromental suits. Centcom has corrected this,
+      and as such SEVA suits are now back to their manufactuing spec.
+  - code_imp: Relocated SEVA from explorer subtype to its own, to avoid inheriting
+      plate addition from the hooded/explorer/XYZ subtype.
+  NotRanged:
+  - rscadd: Blob, swarmer, and xeno events should roll naturally again.
+  PositiveEntropy:
+  - imageadd: Resprites the defibrillator!
+  SkyratBot:
+  - bugfix: fixes bomb implants blowing you up anyway when closing the window instead
+      of pressing the "No" option
+  - bugfix: fixes bomb implants blowing you up when clicking the action button while
+      the confirmation popup is still up
+  - bugfix: The SM air alarm on MetaStation and TramStation once again starts unlocked,
+      and can also be locked and unlocked by Engineers instead of just Atmospherics
+      Technicians. This matches the setup on Delta, IceBox, and Kilo.
+  - spellcheck: Offering items to other players now has punctuation
+  - rscadd: Added a rare skillchip to maint.
+  - balance: Makes wizard a high impact ruleset.
+  - bugfix: Fixes pacifists wielding mjollnir being able to shock people.
+  - bugfix: Regular/Advanced mops are now in the same categories of the auto/protolathe.
+  Statickx:
+  - bugfix: Added suit sensors to blood-red pajamas in the loadout menu.
+2021-10-26:
+  ForrestWick:
+  - bugfix: 'Syndicate Mouseperatives will not longer try to murder their own team
+      grammar: Renames the imp to Talon Demon'
+  SkyratBot:
+  - bugfix: fixes a slight issue with the hair color not being visible on ghosts after
+      the legacy color removal
+  - bugfix: Backup human names will now properly only apply when you are a nonhuman
+      head of staff, rather than any head of staff.
+  - code_imp: LabeledList.Item now supports arbitrary nodes as labels. String labels
+      still work as previously.
+  - code_imp: RoundGauge now supports an alertBefore property, for when warnings need
+      to happen below a threshold. This can combine sensibly to form ranges with alertAfter.
+  - refactor: 'The HFR interface has been heavily rewritten and restructured, fixing
+      many edge cases where data was empty, unset, or took extreme values. Major parts
+      now have their own file. The structure of gas lists is now consistent. Static
+      data is used for more values. Much presentation layer logic has been moved to
+      tgui instead of dm. Some processing that should never have happened, in tgui
+      or anywhere else, is now gone forever. qol: The HFR UI now displays the recipe
+      specific gases that each fuel will create in a large table inside an expandable
+      area. This can be collapsed when not needed. qol: The HFR UI now uses a minimum
+      mass for the scale of its gas lists. This should provide a visual cue for when
+      a gas mix is running out, or needs more fuel to start. qol: The HFR UI now graphs
+      its various gas mixtures on a unified logarithmic scale, and tells you how fast
+      the temperatures are changing in real units after all effects. qol: The HFR
+      UI now displays reactor status through gauges, with scales set to indicate typical
+      ranges involved, and warnings to indicate when something is going wrong. qol:
+      The HFR UI now directly displays reaction instability, reaction activity, and
+      the cell charge of the local APC. Reaction activity is the amount of heat output
+      relative to what is permitted by the heat output limiter. This is effectively
+      making explicit the result of a calculation you would otherwise need to do anyway,
+      and makes it easier to notice when a reaction has stalled. qol; The HFR UI will
+      now helpfully inform you in discerning red text if you have no recipe set, or
+      if any one of the gas mixtures is empty. This should be particularly helpful
+      for noticing when you didn''t add any coolant. Please involve coolant when operating
+      a nuclear reactor. qol: The HFR UI now always lists Plasma, BZ, and Proto-Nitrate
+      in the moderator gas list, and provides tooltips explaining their usage and
+      purpose. qol: The HFR UI now has many other tooltips, from explaining the function
+      and purpose of the various reactor controls, to the fringe effects of uncommon
+      moderator gases.'
+  - code_imp: heat_output_bool is gone forever yes this deserves its own changelog
+      entry

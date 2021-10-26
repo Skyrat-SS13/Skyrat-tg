@@ -123,6 +123,10 @@
 	fitted = FEMALE_UNIFORM_TOP
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 
+/obj/item/clothing/under/syndicate/bloodred/sleepytime/sensors
+	has_sensor = HAS_SENSORS
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+
 /obj/item/clothing/under/syndicate/tacticool/CtrlShiftClick(mob/user) //This handles changing the design between new and old for skirtle and turtlenecks
 	. = ..()
 	if(user.canUseTopic(src, TRUE, FALSE, TRUE, TRUE, FALSE))
