@@ -397,6 +397,8 @@
 				var/list/interactable_inrange_humans = list()
 
 				for(var/mob/living/carbon/human/iterating_human in view(1, src))
+					if(iterating_human == src)
+						continue
 					if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 						interactable_inrange_humans[iterating_human.name] = iterating_human
 
@@ -408,10 +410,6 @@
 				var/climax_choice = tgui_alert(src, "You are cumming, choose where to shoot your load.", "Load preference!", buttons)
 
 				visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
-				emote("moan")
-				testicles.reagents.remove_all(testicles.reagents.total_volume * 0.6)
-				apply_status_effect(/datum/status_effect/climax)
-				apply_status_effect(/datum/status_effect/climax_cooldown)
 
 				var/create_cum_decal = FALSE
 
@@ -468,6 +466,10 @@
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
 							to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [p_their()] load into it."))
+				emote("moan")
+				testicles.reagents.remove_all(testicles.reagents.total_volume * 0.6)
+				apply_status_effect(/datum/status_effect/climax)
+				apply_status_effect(/datum/status_effect/climax_cooldown)
 				if(create_cum_decal)
 					var/turf/our_turf = get_turf(src)
 					new /obj/effect/decal/cleanable/cum(our_turf)
