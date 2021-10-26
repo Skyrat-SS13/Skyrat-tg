@@ -115,7 +115,7 @@
 			ropee.update_icon()
 			rope.use(1)
 			add_overlay(shibari_shadow_overlay)
-			add_rope_overlays(ropee.current_color)
+			add_rope_overlays(ropee.current_color, M?.dna?.species?.mutant_bodyparts["taur"])
 			M.visible_message(span_warning("[user] tied [M] to [src]!"),\
 				span_userdanger("[user] tied you to [src]!"),\
 				span_hear("You hear ropes being completely tightened."))
@@ -127,10 +127,13 @@
 	qdel(src)
 	return TRUE
 
-/obj/structure/chair/shibari_stand/proc/add_rope_overlays(color)
+/obj/structure/chair/shibari_stand/proc/add_rope_overlays(color, taur)
 	cut_overlay(shibari_rope_overlay)
 	cut_overlay(shibari_rope_overlay_behind)
-	shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[color]", ABOVE_MOB_LAYER)
+	if(taur)
+		shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[color]_snek", ABOVE_MOB_LAYER)
+	else
+		shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[color]", ABOVE_MOB_LAYER)
 	shibari_rope_overlay_behind = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_behind_[color]", BELOW_MOB_LAYER)
 	add_overlay(shibari_rope_overlay)
 	add_overlay(shibari_rope_overlay_behind)
