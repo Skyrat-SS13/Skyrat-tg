@@ -161,7 +161,7 @@
 				to_chat(usr, span_warning("You can't climax right now..."))
 				return
 			else
-				climax(TRUE)
+				climax()
 	else
 		to_chat(src, span_warning("You can't cum right now!"))
 
@@ -317,7 +317,7 @@
 	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
-			climax(FALSE)
+			climax()
 	else
 		pleasure -= abs(pleas)
 	pleasure = min(max(pleasure,0),100)
@@ -358,7 +358,7 @@
 	mood_change = -6
 	timeout = 10 MINUTES
 
-/mob/living/carbon/human/proc/climax(manual = TRUE)
+/mob/living/carbon/human/proc/climax()
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
 
@@ -366,7 +366,7 @@
 	var/obj/item/organ/genital/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/genital/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
 
-	if(manual == TRUE && !has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(!has_status_effect(/datum/status_effect/climax_cooldown) && client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(!HAS_TRAIT(src, TRAIT_NEVERBONER) && !has_status_effect(/datum/status_effect/climax_cooldown))
 			switch(gender)
 				if(MALE)
