@@ -140,7 +140,7 @@
 					/obj/item/ammo_box/magazine/multi_sprite/croon)
 	crate_name = "unmarked weapons crate"
 	dangerous = TRUE
-	
+
 /datum/supply_pack/security/pepperballplus
 	name = "Pepperball Self-Defense Supply Crate"
 	desc = "Uneasy times, corporate security get lost during the transfer? Protect yourself.. somewhat."
@@ -162,17 +162,6 @@
 					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat,
 					/obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat)
 	crate_name = "CFA sponsored weapons crate"
-	dangerous = TRUE
-
-/datum/supply_pack/security/lasergun // not to be confused with the normal laser gun crate
-	name = "Lasergun Supply Crate"
-	desc = "Really annoying guy hiding behind a window? Janitors refusing to clean up your bullet casings after the sixth 'self defense case' this week? This should help out, and leaves no evidence. (Comes with it's own recharger!)"
-	cost = CARGO_CRATE_VALUE * 75 //give or take 15,000 just to make it harder for a private lone officer purchase.
-	contains = list(/obj/item/gun/energy/laser,
-					/obj/item/gun/energy/laser,
-					/obj/item/gun/energy/laser,
-					/obj/machinery/recharger)
-	crate_name = "energy weapons crate"
 	dangerous = TRUE
 
 /datum/supply_pack/costumes_toys/randomised/improvised
