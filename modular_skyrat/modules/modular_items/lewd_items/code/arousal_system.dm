@@ -462,6 +462,10 @@
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots their sticky load onto the floor!"), \
 								span_userlove("You shoot string after string of hot cum, hitting the floor!"))
+						else if(climax_into_choice == "On them")
+							create_cum_decal = TRUE
+							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
+								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
