@@ -263,4 +263,4 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	if(!check_rights(R_DEBUG))
 		return
 
-	populate_interaction_jsons(INTERACTION_JSON_FOLDER)
+	populate_interaction_instances()
