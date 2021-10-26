@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(emergency_responders, list())
 			to_chat(user, span_warning("The 911 call has been declared fradulent!"))
 			GLOB.fradulent_911_declared = TRUE
 			var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
-			station_balance?.adjust_money(20000) // paying for the gas to drive all the fuckin' way out to the frontier
+			station_balance?._adjust_money(-20000) // paying for the gas to drive all the fuckin' way out to the frontier
 
 			priority_announce("Hello, crewmembers of [station_name()]. Our emergency services have reported that you have made a fraudulent \
 			911 call. Please note that the punishment for fraudulent 911 calls is a $20,000 fine and \
