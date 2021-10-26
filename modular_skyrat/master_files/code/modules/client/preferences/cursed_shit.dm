@@ -446,3 +446,4 @@
 /datum/preference/choiced/anus/create_default_value()
 	var/datum/sprite_accessory/genital/anus/none/default = /datum/sprite_accessory/genital/anus/none
 	return initial(default.name)
+

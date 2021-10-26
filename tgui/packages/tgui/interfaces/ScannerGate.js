@@ -103,6 +103,10 @@ const TARGET_SPECIES_LIST = [
     name: 'Synthetic Human',
     value: 'synthhuman',
   },
+  {
+    name: 'Teshari',
+    value: 'teshari',
+  },
 ];
 
 const TARGET_GENDER_LIST = [

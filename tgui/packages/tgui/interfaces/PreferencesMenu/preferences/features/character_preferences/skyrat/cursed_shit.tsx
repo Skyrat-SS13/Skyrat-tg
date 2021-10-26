@@ -154,3 +154,9 @@ export const erp_status_pref_v: FeatureChoiced = {
   name: "ERP Vore Status",
   component: FeatureDropdownInput,
 };
+
+export const erp_status_pref_mechanics: FeatureChoiced = {
+  name: "ERP Mechanical Status",
+  component: FeatureDropdownInput,
+};
+
