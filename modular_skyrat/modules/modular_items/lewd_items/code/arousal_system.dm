@@ -396,11 +396,9 @@
 
 				var/list/interactable_inrange_humans = list()
 
-				for(var/iterating_inrange_object as anything in view(1, src))
-					if(ishuman(iterating_inrange_object))
-						var/mob/living/carbon/human/iterating_human = iterating_inrange_object
-						if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-							interactable_inrange_humans[iterating_human.name] = iterating_human
+				for(var/mob/living/carbon/human/iterating_human in view(1, src))
+					if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+						interactable_inrange_humans[iterating_human.name] = iterating_human
 
 				var/list/buttons = list("On the floor")
 
