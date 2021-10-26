@@ -337,6 +337,42 @@
 		return FALSE
 	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
 
+//Surgical Gown Medicell.
+/obj/item/ammo_casing/energy/medical/utility/gown
+	projectile_type = /obj/projectile/energy/medical/utility/gown
+	select_name = "gown"
+	select_color = "#00ffbf"
+
+/obj/projectile/energy/medical/utility/gown
+	name = "hardlight surgical gown field"
+
+/obj/projectile/energy/medical/utility/gown/on_hit(mob/living/target)
+	if(!istype(target, /mob/living/carbon/human)) //Dead check isn't fully needed, since it'd be reasonable for this to work on corpses.
+		return
+	var/mob/living/carbon/wearer = target
+	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	if(wearer.equip_to_slot_if_possible(gown, ITEM_SLOT_OCLOTHING, 1, 1, 1))
+		wearer.visible_message(span_notice("The [gown] covers [wearer] body"), span_notice("The [gown] wraps around your body, covering you"))
+		return
+	else
+		wearer.visible_message(span_notice("The [gown] fails to fit on [wearer], instantly disentagrating away"), span_notice("The [gown] unable to fit on you, disentagrates into nothing"))
+		return FALSE
+
+
+//Objects Used by medicells.
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	name = "Hardlight Hospital Gown"
+	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
+	icon_state = "lgown"
+
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight/dropped(mob/user)
+	. = ..()
+	var/mob/living/carbon/wearer = user
+	if((wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING)) == src && !QDELETED(src))
+		to_chat(wearer, span_notice("The [src] disappeared after being removed"))
+		qdel(src)
+		return
+
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS
 #undef MINIMUM_TEMP_DIFFERENCE
