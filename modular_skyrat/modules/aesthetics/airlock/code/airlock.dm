@@ -544,10 +544,10 @@
 	icon = 'modular_skyrat/modules/airlocks/bathroom.dmi'
 
 /obj/machinery/door/airlock/hydroponics
-	icon = 'modular_skyrat/modules/airlocks/botany.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/botany.dmi'
 
 /obj/structure/door_assembly/door_assembly_hydro
-	icon = 'modular_skyrat/modules/airlocks/botany.dmi'
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/botany.dmi'
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef AIRLOCK_LIGHT_POWER
