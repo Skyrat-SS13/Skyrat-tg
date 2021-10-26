@@ -9406,28 +9406,12 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
-"bJM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
-	dir = 8
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/disposal/incinerator)
 "bJN" = (
 /turf/closed/wall,
 /area/science/xenobiology)
-"bJP" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/disposal/incinerator)
 "bJS" = (
 /obj/machinery/door/poddoor/incinerator_atmos_aux,
 /turf/open/floor/plating/icemoon,
-/area/maintenance/disposal/incinerator)
-"bJV" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
-	dir = 1
-	},
-/turf/open/floor/plating/snowed/icemoon,
 /area/maintenance/disposal/incinerator)
 "bJW" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
@@ -14987,6 +14971,10 @@
 "dGF" = (
 /turf/closed/wall/r_wall,
 /area/science/mixing/chamber)
+"dGQ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors)
 "dHe" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -16190,6 +16178,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/medical/virology)
+"epq" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
+	dir = 8
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors)
 "epN" = (
 /obj/machinery/atmospherics/components/trinary/filter/atmos/n2{
 	dir = 4
@@ -18555,6 +18549,17 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/medical/medbay/central)
+"fGb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/binary/pressure_valve/on{
+	dir = 4;
+	name = "Output Release"
+	},
+/turf/open/floor/engine,
+/area/engineering/supermatter/room)
 "fGe" = (
 /turf/open/openspace,
 /area/cargo/storage)
@@ -19537,6 +19542,12 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
+"gfe" = (
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 8
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors)
 "gfi" = (
 /obj/machinery/door/firedoor/heavy,
 /obj/machinery/door/airlock/research{
@@ -20093,14 +20104,6 @@
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron/dark,
 /area/medical/virology)
-"guy" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/structure/table,
-/obj/item/ai_module/core,
-/turf/open/floor/iron,
-/area/command/heads_quarters/rd)
 "guJ" = (
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -25181,12 +25184,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/wood/parquet,
 /area/service/bar/atrium)
-"jeE" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
-	dir = 1
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/supermatter/room)
 "jeJ" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
@@ -29868,10 +29865,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/cmo)
-"lGj" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/supermatter/room)
 "lGS" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance/three,
@@ -31750,17 +31743,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
-"mDW" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/atmospherics/components/binary/valve/digital/on{
-	dir = 4;
-	name = "Output Release"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
-/area/engineering/supermatter/room)
 "mEr" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -42313,12 +42295,6 @@
 	dir = 6
 	},
 /area/science/research)
-"sfD" = (
-/obj/machinery/atmospherics/components/binary/valve/digital{
-	name = "Waste Release"
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "sfX" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8
@@ -43215,6 +43191,10 @@
 /obj/machinery/power/supermatter_crystal/engine,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
+"szV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors)
 "szW" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -43764,12 +43744,6 @@
 /obj/item/clothing/gloves/boxing,
 /turf/open/floor/iron,
 /area/maintenance/starboard/fore)
-"sOq" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
-	dir = 8
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/atmos)
 "sOs" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -47896,6 +47870,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/medical/surgery/room_b)
+"uTn" = (
+/obj/machinery/atmospherics/components/binary/pressure_valve/on{
+	name = "Waste Release"
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "uTB" = (
 /obj/machinery/atmospherics/pipe/multiz/supply/visible/layer4{
 	color = "#0000ff";
@@ -52348,6 +52328,12 @@
 /obj/structure/table,
 /turf/open/floor/iron,
 /area/cargo/miningdock)
+"xra" = (
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/icemoon/surface/outdoors)
 "xrc" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -53316,6 +53302,14 @@
 	},
 /turf/open/floor/iron,
 /area/cargo/qm)
+"xNc" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/structure/table,
+/obj/item/ai_module/core,
+/turf/open/floor/iron,
+/area/command/heads_quarters/rd)
 "xNq" = (
 /obj/machinery/computer/security/telescreen{
 	name = "Test Chamber Monitor";
@@ -84799,7 +84793,7 @@ tHa
 icH
 tHa
 xvr
-mDW
+fGb
 eia
 qnJ
 tPd
@@ -85314,13 +85308,13 @@ jvW
 lpW
 iaV
 lBH
-lGj
-jeE
-boP
-boP
-boP
-boP
-boP
+szV
+szV
+szV
+szV
+szV
+szV
+xra
 boP
 boP
 boP
@@ -86320,7 +86314,7 @@ lbm
 mvU
 uHm
 jay
-sfD
+uTn
 cpq
 iZv
 ccm
@@ -89920,7 +89914,7 @@ nAA
 xjx
 nxB
 xjx
-sOq
+gfe
 boP
 boP
 boP
@@ -91723,12 +91717,12 @@ ods
 suK
 xlf
 bEY
-bJM
-bJP
-bJP
-bJP
-bJP
-bJV
+epq
+dGQ
+dGQ
+dGQ
+dGQ
+xra
 boP
 boP
 boP
@@ -98377,7 +98371,7 @@ ewi
 ebk
 jgo
 mJV
-guy
+xNc
 jpF
 iLK
 ubZ
