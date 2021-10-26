@@ -372,11 +372,11 @@
 				if(MALE)
 					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
 												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m3.ogg'), 50, TRUE)
+												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_m3.ogg'), 50, TRUE, ignore_walls = FALSE)
 				if(FEMALE)
 					playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_f1.ogg',
 												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f2.ogg',
-												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE)
+												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE)
 			if(penis)
 				if(!testicles) //If we have no god damn balls, we can't cum anywhere... GET BALLS!
 					if(penis?.is_exposed())
@@ -399,8 +399,8 @@
 				for(var/mob/living/carbon/human/iterating_human in view(1, src))
 					if(iterating_human == src)
 						continue
-					if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-						interactable_inrange_humans[iterating_human.name] = iterating_human
+					//if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+					interactable_inrange_humans[iterating_human.name] = iterating_human
 
 				var/list/buttons = list("On the floor")
 
@@ -923,7 +923,7 @@
 		user.visible_message(span_warning("[user] starts masturbating into [target]!"), span_danger("You start masturbating into [target]!"))
 		if(do_after(user,60))
 			user.visible_message(span_warning("[user] cums into [target]!"), span_danger("You cum into [target]!"))
-			playsound(target, "desecration", 50, TRUE)
+			playsound(target, "desecration", 50, TRUE, ignore_walls = FALSE)
 			R.trans_to(target, cum_volume)
 			if(prob(40))
 				user.emote("moan")
@@ -933,7 +933,7 @@
 		if(do_after(user,60))
 			var/turf/T = get_turf(target)
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
-			playsound(target, "desecration", 50, TRUE)
+			playsound(target, "desecration", 50, TRUE, ignore_walls = FALSE)
 			new/obj/effect/decal/cleanable/cum(T)
 			if(prob(40))
 				user.emote("moan")
