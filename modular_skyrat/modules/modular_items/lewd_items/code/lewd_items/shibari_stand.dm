@@ -199,7 +199,8 @@
 		"black",
 		"teal",
 		"pink",
-		"red"
+		"red",
+		"white"
 	)
 
 /obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
