@@ -68,8 +68,8 @@
 	icon_state = "cap_parade_fem"
 	inhand_icon_state = "by_suit"
 
-// HEAD OF PERSONNEL
-/obj/item/clothing/suit/toggle/hop_parade (Lowered the armor values, but technically they'd be giving up their vest for this so they deserve some armor)
+// HEAD OF PERSONNEL (Lowered the armor values, but technically they'd be giving up their vest for this so they deserve some armor)
+/obj/item/clothing/suit/toggle/hop_parade
 	name = "head of personnel's parade jacket"
 	desc = "A luxurious deep blue jacket for the Head of Personnel, woven with a red trim. It smells of bureaucracy."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
