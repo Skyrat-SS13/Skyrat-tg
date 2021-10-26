@@ -26,31 +26,21 @@
 	var/distance = max(0,get_dist(get_turf(src),T))
 
 //Flash
-	if(M.flash_act(2, affect_silicon = 1))
-		//M.Paralyze(max(20/max(1,distance), 5)) //SKYRAT EDIT REMOVAL - COMBAT
-		//M.Knockdown(max(200/max(1,distance), 60)) //SKYRAT EDIT REMOVAL - COMBAT
-		M.add_confusion(max(30/max(1,distance), 10))
+	if(M.flash_act(affect_silicon = 1))
+		M.Paralyze(max(20/max(1,distance), 5))
+		M.Knockdown(max(200/max(1,distance), 60))
 
 //Bang
 	if(!distance || loc == M || loc == M.loc) //Stop allahu akbarring rooms with this.
-		//M.Paralyze(20)  - SKYRAT EDIT REMOVAL - COMBAT
-		//M.Knockdown(200) - SKYRAT EDIT REMOVAL - COMBAT
-		M.StaminaKnockdown(40, TRUE, TRUE, knockdown_amt = 5 SECONDS)
-		//M.soundbang_act(1, 200, 10, 15) - SKYRAT EDIT REMOVAL - COMBAT
-		M.soundbang_act(2, 0, 10, 15)
+		M.Paralyze(20)
+		M.Knockdown(200)
+		M.soundbang_act(1, 200, 10, 15)
 	else
-		var/target_intensity = 1 //SKYRAT EDIT ADDITION - COMBAT
 		if(distance <= 1) // Adds more stun as to not prime n' pull (#45381)
-			//M.Paralyze(5)
-			//M.Knockdown(30)
-			target_intensity++
-		//M.soundbang_act(1, max(200/max(1,distance), 60), rand(0, 5))
-		if(M.soundbang_act(target_intensity, 0, rand(0, 5), 7))
-			if(target_intensity >= 2)
-				M.StaminaKnockdown(30, TRUE, TRUE, knockdown_amt = 5 SECONDS)
-			else
-				M.StaminaKnockdown(25, knockdown_amt = 3 SECONDS)
-				//SKYRAT EDIT CHANGES END
+			M.Paralyze(5)
+			M.Knockdown(30)
+		M.soundbang_act(1, max(200/max(1,distance), 60), rand(0, 5))
+
 
 /obj/item/grenade/stingbang
 	name = "stingbang"

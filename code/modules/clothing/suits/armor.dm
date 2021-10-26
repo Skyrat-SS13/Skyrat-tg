@@ -23,6 +23,43 @@
 	inhand_icon_state = "armoralt"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "armoralt",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "armoralt"
+		),
+		"Alternative Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "armor",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "armor"
+		),
+		"Blue Shift" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "guard_armor",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "guard_armor"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_armor",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper",
+			RESKIN_MUTANT_VARIANTS = NONE
+		),
+		"Black Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_black",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper_black",
+			RESKIN_MUTANT_VARIANTS = NONE
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/alt
 	desc = "A Type I armored vest that provides decent protection against most types of damage."
@@ -87,6 +124,48 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Greatcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hos",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hos"
+		),
+		"Trenchcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hostrench",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hostrench"
+		),
+		"Formal Jacket" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hosformal",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hosformal"
+		),
+		"Navy Blue Jacket" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hosbluejacket",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hosbluejacket"
+		),
+		"Trenchcloak" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "trenchcloak",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "trenchcloak"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_MUTANT_VARIANTS = NONE
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/hos/trenchcoat
 	name = "armored trenchcoat"
@@ -118,6 +197,30 @@
 	strip_delay = 70
 	resistance_flags = FLAMMABLE
 	dog_fashion = null
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Warden Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "warden_alt",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "warden_alt"
+		),
+		"Alternative Warden Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "warden_jacket",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "warden_jacket"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_trench_warden",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_warden",
+			RESKIN_MUTANT_VARIANTS = NONE
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/warden/alt
 	name = "warden's armored jacket"

@@ -390,7 +390,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/pj_blood
 	name = "Blood-red Pajamas"
-	item_path = /obj/item/clothing/under/syndicate/bloodred/sleepytime
+	item_path = /obj/item/clothing/under/syndicate/bloodred/sleepytime/sensors
 
 /datum/loadout_item/under/miscellaneous/gladiator
 	name = "Gladiator Uniform"
