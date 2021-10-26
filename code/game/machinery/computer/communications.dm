@@ -413,7 +413,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					return
 			GLOB.cops_arrived = TRUE
 			send_in_the_fuzz(EMERGENCY_RESPONSE_POLICE)
-
+			GLOB.caller_of_911 = usr.name
 			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation Police Department."))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
@@ -443,7 +443,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					return
 			GLOB.cops_arrived = TRUE
 			send_in_the_fuzz(EMERGENCY_RESPONSE_FIRE)
-
+			GLOB.caller_of_911 = usr.name
 			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation Fire Department."))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
@@ -473,7 +473,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					return
 			GLOB.cops_arrived = TRUE
 			send_in_the_fuzz(EMERGENCY_RESPONSE_EMT)
-
+			GLOB.caller_of_911 = usr.name
 			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation EMTs."))
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
