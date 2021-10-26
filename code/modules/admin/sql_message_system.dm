@@ -648,8 +648,15 @@
 		WHERE type = :type
 		AND deleted = 0
 		AND (expire_timestamp > NOW() OR expire_timestamp IS NULL)
+<<<<<<< HEAD
 		AND ((type != 'message' AND type != 'watchlist entry') OR targetckey = :targetckey)
 	"}, list("targetckey" = target_ckey, "type" = type))
+=======
+		AND (type = 'memo' OR targetckey = :targetckey)
+		[after_timestamp? "AND timestamp > :after_timestamp": ""]
+		[!show_secret? "AND secret = 0": ""]
+	"}, parameters)
+>>>>>>> 9c3fb6cfd76 ([s] Hotfix notes not belonging to players being shown to players (#62352))
 	if(!query_get_message_output.warn_execute())
 		qdel(query_get_message_output)
 		return
