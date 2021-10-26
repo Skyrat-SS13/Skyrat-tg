@@ -69,7 +69,7 @@
 	inhand_icon_state = "by_suit"
 
 // HEAD OF PERSONNEL
-/obj/item/clothing/suit/toggle/hop_parade
+/obj/item/clothing/suit/toggle/hop_parade (Lowered the armor values, but technically they'd be giving up their vest for this so they deserve some armor)
 	name = "head of personnel's parade jacket"
 	desc = "A luxurious deep blue jacket for the Head of Personnel, woven with a red trim. It smells of bureaucracy."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -79,6 +79,11 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	heat_protection = CHEST|GROIN|ARMS
+	armor = list(MELEE = 25, BULLET = 20, LASER = 20, ENERGY = 30, BOMB = 20, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 8)
+
+/obj/item/clothing/suit/toggle/hop_parade/Initialize()
+	. = ..()
+	allowed = GLOB.security_wintercoat_allowed
 
 /obj/item/clothing/suit/hooded/wintercoat/hop
 	name = "head of personnel's winter coat"
