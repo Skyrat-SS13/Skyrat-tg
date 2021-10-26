@@ -161,7 +161,7 @@
 				to_chat(usr, span_warning("You can't climax right now..."))
 				return
 			else
-				climax()
+				climax(TRUE)
 	else
 		to_chat(src, span_warning("You can't cum right now!"))
 
@@ -317,7 +317,7 @@
 	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
-			climax()
+			climax(FALSE)
 	else
 		pleasure -= abs(pleas)
 	pleasure = min(max(pleasure,0),100)
@@ -358,8 +358,11 @@
 	mood_change = -6
 	timeout = 10 MINUTES
 
-/mob/living/carbon/human/proc/climax()
+/mob/living/carbon/human/proc/climax(manual = TRUE)
 	if (CONFIG_GET(flag/disable_erp_preferences))
+		return
+
+	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && manual != TRUE)
 		return
 
 	var/obj/item/organ/genital/penis/penis = getorganslot(ORGAN_SLOT_PENIS)

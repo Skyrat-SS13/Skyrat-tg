@@ -74,6 +74,9 @@
 /datum/preference/toggle/erp/noncon
 	savefile_key = "noncon_pref"
 
+/datum/preference/toggle/erp/autocum
+	savefile_key = "autocum_pref"
+
 /datum/preference/choiced/erp_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
