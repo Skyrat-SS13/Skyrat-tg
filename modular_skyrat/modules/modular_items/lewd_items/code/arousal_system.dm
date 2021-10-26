@@ -405,7 +405,7 @@
 				if(interactable_inrange_humans.len)
 					buttons += "Inside/on someone"
 
-				var/climax_choice = tgui_alert(src, "You are cumming, choose where to shoot your load~", "Load preference!", buttons)
+				var/climax_choice = tgui_alert(src, "You are cumming, choose where to shoot your load.", "Load preference!", buttons)
 
 				visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 				emote("moan")
@@ -421,7 +421,7 @@
 						if(condom.condom_state == "broken")
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots [p_their()] load into [condom], sending cum onto the floor!"), \
-								span_userlove("You shoot string after string of cum, but it sprays out [condom], hitting the floor!"))
+								span_userlove("You shoot string after string of cum, but it sprays out of [condom], hitting the floor!"))
 						else
 							condom.condom_use()
 							visible_message(span_userlove("[src] shoots [p_their()] load into [condom], filling it up!"), \
