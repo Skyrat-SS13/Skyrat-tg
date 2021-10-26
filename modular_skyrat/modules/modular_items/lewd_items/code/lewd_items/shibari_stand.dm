@@ -115,7 +115,7 @@
 			ropee.update_icon()
 			rope.use(1)
 			add_overlay(shibari_shadow_overlay)
-			add_rope_overlays(ropee.current_color, M?.dna?.species?.mutant_bodyparts["taur"])
+			add_rope_overlays(ropee.current_color, hooman?.dna?.species?.mutant_bodyparts["taur"])
 			M.visible_message(span_warning("[user] tied [M] to [src]!"),\
 				span_userdanger("[user] tied you to [src]!"),\
 				span_hear("You hear ropes being completely tightened."))
