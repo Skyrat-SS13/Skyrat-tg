@@ -467,6 +467,7 @@
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
+							to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [p_their()] load into it."))
 				if(create_cum_decal)
 					var/turf/our_turf = get_turf(src)
 					new /obj/effect/decal/cleanable/cum(our_turf)
