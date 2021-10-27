@@ -564,16 +564,8 @@ SUBSYSTEM_DEF(job)
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role(job)
-	//SKYRAT EDIT ADD - ALTERNATE JOB TITLES
-	var/display_rank = job.title
-	if(player_client && player_client.prefs && player_client.prefs.alt_job_titles[job.title])
-		display_rank = player_client.prefs.alt_job_titles[job.title]
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>You are the [display_rank].</b></span>")
-	/* SKYRAT EDIT ORIGINAL
-	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>You are the [job.title].</b></span>")
-	*/ // SKYRAT EDIT END
+		to_chat(player_client, span_infoplain("You are the [job.title]."))
 
 	equipping.on_job_equipping(job, player_client?.prefs) //SKYRAT EDIT CHANGE
 
@@ -587,8 +579,7 @@ SUBSYSTEM_DEF(job)
 
 
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this. Your role is that of a [job.title]. Regardless of what your job title may be, please work to fulfil that role.</b></span>") //SKYRAT EDIT -- ALT TITLES
-		// to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</span></b>" // SKYRAT EDIT ORIGINAL
+		to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</span></b>" // SKYRAT EDIT ORIGINAL
 	job.radio_help_message(equipping)
 
 	if(player_client)
