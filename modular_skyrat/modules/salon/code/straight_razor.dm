@@ -23,6 +23,9 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/location = user.zone_selected
+		if(!(location in list(BODY_ZONE_PRECISE_MOUTH)) && !user.combat_mode)
+			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their facial hair.\""))
+			return
 		if(location == BODY_ZONE_PRECISE_MOUTH && !H.get_bodypart(BODY_ZONE_HEAD))
 			to_chat(user, span_warning("[H] doesn't have a head!"))
 			return
