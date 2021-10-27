@@ -370,15 +370,17 @@
 	icon_state = "snaketail"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/tails/mammal/wagging/snakestripe
-	name = "Snake stripe"
-	icon_state = "snakestripe"
+/datum/sprite_accessory/tails/mammal/teshari
+	recommended_species = list(SPECIES_TESHARI)
+	general_type = "teshari"
 
-/datum/sprite_accessory/tails/mammal/wagging/snakedual
-	name = "Snake dual"
-	icon_state = "snakedual"
+/datum/sprite_accessory/tails/mammal/teshari/default
+	name = "Teshari Default Tail"
+	icon_state = "teshari_default"
 
-/datum/sprite_accessory/tails/mammal/wagging/datashark
-	name = "Data shark"
-	icon_state = "datashark"
-
+/datum/sprite_accessory/tails/mammal/teshari/fluffy
+	name = "Teshari Fluffy Tail"
+	icon_state = "teshari_fluffy"
+/datum/sprite_accessory/tails/mammal/teshari/thin
+	name = "Teshari Thin Tail"
+	icon_state = "teshari_thin"
