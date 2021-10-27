@@ -195,40 +195,24 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	jobtype = /datum/job/security_officer
 
 	id_trim = /datum/id_trim/job/security_officer
-	uniform = /obj/item/clothing/under/rank/security/officer
-	suit = /obj/item/clothing/suit/armor/vest/alt
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: uniform = /obj/item/clothing/under/rank/security/officer
+	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: suit = /obj/item/clothing/suit/armor/vest/alt
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded = 1,
-		)
+		/obj/item/armament_token/sidearm = 1
+		) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/security/loaded =1)
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-<<<<<<< HEAD
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: uniform = /obj/item/clothing/under/rank/security/officer
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
-	head =  /obj/item/clothing/head/beret/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: head = /obj/item/clothing/head/helmet/sec
-	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/black //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: suit = /obj/item/clothing/suit/armor/vest/alt
+	head = /obj/item/clothing/head/beret/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: head = /obj/item/clothing/head/helmet/sec
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/gun/energy/disabler //SKYRAT EDIT REMOVAL - SEC_HAUL
-	backpack_contents = list(/obj/item/melee/baton/security/loaded=1, /obj/item/armament_token/sidearm) //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/security/loaded =1)
 
 	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper//SKYRAT EDIT CHANGE - SEC_HAUL
-	box = /obj/item/storage/box/survival/security
-=======
-	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/helmet/sec
-	shoes = /obj/item/clothing/shoes/jackboots
-	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
-
-	backpack = /obj/item/storage/backpack/security
-	satchel = /obj/item/storage/backpack/satchel/sec
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec
->>>>>>> 8e6f4375be6 (Reorganizes the order of items in job outfits (#61553))
 
 	box = /obj/item/storage/box/survival/security
 	chameleon_extras = list(

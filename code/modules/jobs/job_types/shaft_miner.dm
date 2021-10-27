@@ -35,23 +35,15 @@
 		/obj/item/flashlight/seclite = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/mining_voucher = 1,
-		/obj/item/stack/marker_beacon/ten = 1,
-		)
+		/obj/item/suit_voucher = 1,
+		/obj/item/stack/marker_beacon/ten = 1
+		) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
 	belt = /obj/item/pda/shaftminer
 	ears = /obj/item/radio/headset/headset_cargo/mining
 	gloves = /obj/item/clothing/gloves/color/black
 	shoes = /obj/item/clothing/shoes/workboots/mining
 	l_pocket = /obj/item/reagent_containers/hypospray/medipen/survival
 	r_pocket = /obj/item/storage/bag/ore //causes issues if spawned in backpack
-<<<<<<< HEAD
-	backpack_contents = list(
-		/obj/item/flashlight/seclite=1,\
-		/obj/item/knife/combat/survival=1,\
-		/obj/item/mining_voucher=1,\
-		/obj/item/suit_voucher=1,\
-		/obj/item/stack/marker_beacon/ten=1) //SKYRAT EDIT: Suit_Voucher is an addition, one line up
-=======
->>>>>>> 8e6f4375be6 (Reorganizes the order of items in job outfits (#61553))
 
 	backpack = /obj/item/storage/backpack/explorer
 	satchel = /obj/item/storage/backpack/satchel/explorer

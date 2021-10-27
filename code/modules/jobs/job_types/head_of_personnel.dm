@@ -64,18 +64,14 @@
 	head = /obj/item/clothing/head/hopcap
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 
-<<<<<<< HEAD
 	backpack = /obj/item/storage/backpack/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	satchel = /obj/item/storage/backpack/satchel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	duffelbag = /obj/item/storage/backpack/duffel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 
-	id_trim = /datum/id_trim/job/head_of_personnel
-=======
 	chameleon_extras = list(
 		/obj/item/gun/energy/e_gun,
 		/obj/item/stamp/hop,
 		)
->>>>>>> 8e6f4375be6 (Reorganizes the order of items in job outfits (#61553))
 
 /datum/outfit/job/hop/pre_equip(mob/living/carbon/human/H)
 	..()

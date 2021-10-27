@@ -54,21 +54,14 @@
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/research_director
 	uniform = /obj/item/clothing/under/rank/rnd/research_director
-	suit = /obj/item/clothing/suit/toggle/labcoat
+	suit = /obj/item/clothing/suit/toggle/labcoat/rd //SKYRAT EDIT CHANGE
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic = 1,
 		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
 		)
 	belt = /obj/item/pda/heads/rd
 	ears = /obj/item/radio/headset/heads/rd
-<<<<<<< HEAD
-	uniform = /obj/item/clothing/under/rank/rnd/research_director
 	shoes = /obj/item/clothing/shoes/jackboots //SKYRAT EDIT CHANGE
-	suit = /obj/item/clothing/suit/toggle/labcoat/rd //SKYRAT EDIT CHANGE
-	l_hand = /obj/item/clipboard
-=======
-	shoes = /obj/item/clothing/shoes/sneakers/brown
->>>>>>> 8e6f4375be6 (Reorganizes the order of items in job outfits (#61553))
 	l_pocket = /obj/item/laser_pointer
 	l_hand = /obj/item/clipboard
 
