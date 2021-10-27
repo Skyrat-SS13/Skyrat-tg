@@ -68,11 +68,11 @@ export const exploitable_records: Feature<string> = {
   component: FeatureTextInput,
 };
 
-/* export const background_info: Feature<string> = {
-  name: "Background info",
+export const background_records: Feature<string> = {
+  name: "Background Info",
   description: "nobody uses this lmao",
   component: FeatureTextInput,
-};  */
+};
 // SKYRAT EDIT END
 export const allow_mismatched_parts_toggle: FeatureToggle = {
   name: "Allow Mismatched Parts",

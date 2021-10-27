@@ -72,8 +72,12 @@
 /datum/preference/text/exploitable_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-/* /datum/preference/text/background_info
+/datum/preference/text/background_records
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "background_info" */
+	savefile_key = "background_records"
+
+/datum/preference/text/background_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
 // SKYRAT EDIT END

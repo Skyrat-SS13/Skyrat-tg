@@ -12,7 +12,7 @@ my last 2 prs in one.
 
 ### TG Proc/File Changes:
 
-EDIT: examine.dm, human.dm, datacore.dm, flavor_text.dm, species_features.tx, tgui.dm. Allowed links to appear in chat when viewing people with huds/as certain antags, allows clikcing them to paste the records of the other party into chat. Re-implements the storing and handling of records into datacore, adds UI for that in flavor_text and species_features. Modified TGUI to recognize the exploitable manifest.
+EDIT: examine.dm, human.dm, datacore.dm, flavor_text.dm, species_features.tx, tgui.dm, preferences.dm, preferences_savefile.dm. Allowed links to appear in chat when viewing people with huds/as certain antags, allows clikcing them to paste the records of the other party into chat. Re-implements the storing and handling of records into datacore, adds UI for that in flavor_text and species_features. Modified TGUI to recognize the exploitable manifest. Adds a var in preferences.dm, adds a copy of tgui pref migration code to preferences_savefile.dm to migrate old records into the new way of handling them.
 
 ### Defines:
 
@@ -24,7 +24,7 @@ EDIT: examine.dm, human.dm, datacore.dm, flavor_text.dm, species_features.tx, tg
 
 ### Included files that are not contained in this module:
 
-- RecordManifest.js
+- RecordManifest.js, skyrat_records_migration.dm
 
 ### Credits:
 
