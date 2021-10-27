@@ -200,6 +200,10 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/offensive_notes
 	/// Used in obj/item/examine to determines whether or not to detail an item's statistics even if it does not meet the force requirements
 	var/override_notes = FALSE
+	// SKYRAT EDIT ADDITION START
+	/// Does this use the advanced reskinning setup?
+	var/uses_advanced_reskins = FALSE
+	// SKYRAT EDIT ADDITION END
 
 /obj/item/Initialize(mapload)
 
@@ -1255,3 +1259,35 @@ attack_basic_mob
 /obj/item/proc/on_offer_taken(mob/living/carbon/offerer, mob/living/carbon/taker)
 	if(SEND_SIGNAL(src, COMSIG_ITEM_OFFER_TAKEN, offerer, taker) & COMPONENT_OFFER_INTERRUPT)
 		return TRUE
+
+/// SKYRAT EDIT ADDITION START
+/obj/item/reskin_obj(mob/M)
+	if(!uses_advanced_reskins)
+		return ..()
+	if(!LAZYLEN(unique_reskin))
+		return
+
+	var/list/items = list()
+	for(var/reskin_option in unique_reskin)
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON], icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
+		items += list("[reskin_option]" = item_image)
+	sort_list(items)
+
+	var/pick = show_radial_menu(M, src, items, custom_check = CALLBACK(src, .proc/check_reskin_menu, M), radius = 38, require_near = TRUE)
+	if(!pick)
+		return
+	if(!unique_reskin[pick])
+		return
+	current_skin = pick
+	icon = unique_reskin[pick][RESKIN_ICON]
+	icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+	worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
+	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
+		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+	if(unique_reskin[pick][RESKIN_MUTANT_VARIANTS])
+		mutant_variants = unique_reskin[pick][RESKIN_MUTANT_VARIANTS]
+	if(ishuman(M))
+		var/mob/living/carbon/human/wearer = M
+		wearer.regenerate_icons() // update that mf
+	to_chat(M, "[src] is now skinned as '[pick].'")
+/// SKYRAT EDIT ADDITION END
