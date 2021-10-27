@@ -134,7 +134,7 @@
 			var/mutable_appearance/emissive
 			var/mutable_appearance/accessory_overlay
 			accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
-			if (H.dna.species.body_markings[body_zone][key][2])
+			if (H.dna.species.body_markings[aux_zone][key][2])
 				emissive = emissive_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
 				emissive.appearance_flags ^= RESET_TRANSFORM
 				emissive.alpha = H.dna.species.markings_alpha
