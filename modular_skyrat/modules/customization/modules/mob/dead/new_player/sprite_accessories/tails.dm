@@ -384,3 +384,15 @@
 /datum/sprite_accessory/tails/mammal/teshari/thin
 	name = "Teshari Thin Tail"
 	icon_state = "teshari_thin"
+
+/datum/sprite_accessory/tails/mammal/wagging/snakestripe
+	name = "Snake stripe"
+	icon_state = "snakestripe"
+
+/datum/sprite_accessory/tails/mammal/wagging/snakedual
+	name = "Snake dual"
+	icon_state = "snakedual"
+
+/datum/sprite_accessory/tails/mammal/wagging/datashark
+	name = "Data shark"
+	icon_state = "datashark"

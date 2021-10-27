@@ -302,3 +302,8 @@
 	name = "Teshari Feathers Thin Mane"
 	icon_state = "teshari_feathers_thinmane"
 	color_src = USE_ONE_COLOR 
+
+/datum/sprite_accessory/ears/mutant/deer2
+	name = "Deer 2"
+	icon_state = "deer2"
+	color_src = USE_ONE_COLOR
