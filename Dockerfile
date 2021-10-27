@@ -1,6 +1,9 @@
 # base = ubuntu + full apt update
 FROM ubuntu:xenial AS base
+<<<<<<< HEAD
 
+=======
+>>>>>>> 17c022283bc (Cleanup some fails (#62375))
 RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get upgrade -y \
