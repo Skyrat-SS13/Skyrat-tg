@@ -89,14 +89,17 @@
 		H.hairstyle = "Bald"
 
 	H.update_hair()
-	playsound(loc, 'sound/items/welder2.ogg', 20, TRUE)
+	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 
 /obj/item/razor/attack(mob/M, mob/living/user)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/location = user.zone_selected
-		if((location in list(BODY_ZONE_PRECISE_EYES, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !H.get_bodypart(BODY_ZONE_HEAD))
+		if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !user.combat_mode)
+			to_chat(user, span_warning("You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair.\""))
+			return
+		if((location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !H.get_bodypart(BODY_ZONE_HEAD))
 			to_chat(user, span_warning("[H] doesn't have a head!"))
 			return
 		if(location == BODY_ZONE_PRECISE_MOUTH)
@@ -176,47 +179,3 @@
 	new /obj/item/perfume/strawberry(src)
 	new /obj/item/perfume/cherry(src)
 	new /obj/item/perfume/amber(src)
-
-/obj/item/hair_dye
-	name = "colored hair dye spray"
-	desc = "A spray to dye your hair any color you'd like."
-	w_class = WEIGHT_CLASS_TINY
-	icon = 'icons/obj/dyespray.dmi'
-	icon_state = "dyespray"
-
-	var/uses = 10
-
-/obj/item/hair_dye/attack_self(mob/user)
-	dye(user)
-
-/obj/item/hair_dye/pre_attack(atom/target, mob/living/user, params)
-	dye(target)
-	return ..()
-
-/obj/item/hair_dye/proc/dye(mob/target)
-	if(!ishuman(target))
-		return
-
-	if(!uses)
-		return
-
-	var/mob/living/carbon/human/human_target = target
-
-	var/new_color = input(usr, "Choose a hair color:", "Character Preference","#"+human_target.hair_color) as color|null
-
-	if(!new_color)
-		return
-
-	human_target.hair_color = sanitize_hexcolor(new_color)
-	to_chat(human_target, span_notice("You start applying the hair dye..."))
-	if(!do_after(usr, 3 SECONDS, target))
-		return
-	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
-	human_target.update_hair()
-
-	uses--
-
-/obj/item/hair_dye/examine(mob/user)
-	. = ..()
-	. += "It has [uses] uses left."
-
