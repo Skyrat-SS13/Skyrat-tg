@@ -46,7 +46,7 @@
 	savefile_key = "general_record"
 
 /datum/preference/text/general_record/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["general_record"] = value
+	return FALSE
 
 /datum/preference/text/medical_record
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -54,7 +54,7 @@
 	savefile_key = "medical_record"
 
 /datum/preference/text/medical_record/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["medical_record"] = value
+	return FALSE
 
 /datum/preference/text/security_record
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -62,7 +62,7 @@
 	savefile_key = "security_record"
 
 /datum/preference/text/security_record/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["security_record"] = value
+	return FALSE
 
 /datum/preference/text/exploitable_info
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -70,7 +70,7 @@
 	savefile_key = "exploitable_info"
 
 /datum/preference/text/exploitable_info/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	target.dna.features["exploitable_info"] = value
+	return FALSE
 
 /* /datum/preference/text/background_info
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
