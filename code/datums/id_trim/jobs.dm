@@ -283,15 +283,11 @@
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 	job = /datum/job/head_of_personnel
 
-<<<<<<< HEAD
-/datum/id_trim/job/head_of_security //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
-=======
 /datum/id_trim/job/head_of_personnel/New()
 	common_access = JOB_ACCESS_GENERAL | JOB_ACCESS_SUPPLY
 	return ..()
 
-/datum/id_trim/job/head_of_security
->>>>>>> 4d15fbc4f0f (Basic ID cards with job trims can now hold higher level accesses to their own departments. (#62275))
+/datum/id_trim/job/head_of_security //SKYRAT EDIT: ID TRIM ACCESS OVERRIDEN IN MODULAR JOBS.DM
 	assignment = "Head of Security"
 	trim_state = "trim_headofsecurity"
 	extra_access = list(ACCESS_TELEPORTER)
