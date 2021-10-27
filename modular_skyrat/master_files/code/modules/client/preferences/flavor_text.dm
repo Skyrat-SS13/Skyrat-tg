@@ -72,8 +72,8 @@
 /datum/preference/text/exploitable_info/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["exploitable_info"] = value
 
- /datum/preference/text/background_info/
+/* /datum/preference/text/background_info
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "background_info"
+	savefile_key = "background_info" */
 // SKYRAT EDIT END
