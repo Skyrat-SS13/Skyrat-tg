@@ -284,9 +284,7 @@
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
-				if(!src.has_dna())
-					return
-				to_chat(usr, "<b>General Record:</b> [src.dna.features["general_record"]]")
+				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
 			//SKYRAT EDIT END
 
 			if(href_list["add_citation"])
@@ -383,7 +381,7 @@
 		var/perpname = get_face_name(get_id_name(""))
 		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
 		if(href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exp_records"]]")
+			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.

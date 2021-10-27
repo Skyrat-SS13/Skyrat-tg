@@ -11,7 +11,7 @@
 		var/name = general_record.fields["name"]
 		var/rank = general_record.fields["rank"]
 		var/truerank = general_record.fields["truerank"] // SKYRAT EDIT ADD - ALT TITLES
-		var/exploitables = general_record.fields["exp_records"]
+		var/exploitables = general_record.fields["exploitable_records"]
 		var/datum/job/job = SSjob.GetJob(truerank) // SKYRAT EDIT - ORIGINAL CALLED GetJob(rank)
 		var/exploitables_empty = (length(exploitables) < 2)
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list) && (!exploitables_empty)) // In case an unlawful custom rank is added.
@@ -20,7 +20,7 @@
 				"name" = name,
 				"rank" = rank,
 				"truerank" = truerank,
-				"exp_records" = exploitables,
+				"exploitable_records" = exploitables,
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -34,7 +34,7 @@
 				"name" = name,
 				"rank" = rank,
 				"truerank" = truerank,
-				"exp_records" = exploitables,
+				"exploitable_records" = exploitables,
 				)
 			var/list/exp_department_list = exp_manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -69,7 +69,7 @@
 	if(action == "show_exploitables")
 		var/exploitable_id = params["exploitable_id"]
 		var/datum/data/record/exploitable_record = find_record("name", exploitable_id, GLOB.data_core.general)
-		to_chat(usr, "<b>Exploitable information:</b> [exploitable_record.fields["exp_records"]]")
+		to_chat(usr, "<b>Exploitable information:</b> [exploitable_record.fields["exploitable_records"]]")
 
 /datum/record_manifest/ui_data(mob/user)
 	var/list/positions = list()
