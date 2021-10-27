@@ -45,31 +45,31 @@ export const custom_species_lore: Feature<string> = {
 };
 // SKYRAT EDIT ADDITION BEGIN -- RECORDS REJUVINATION
 export const general_record: Feature<string> = {
-  name: "General Records",
+  name: "Records - General",
   description: "Your general records! These are records that are for general viewing-things like employment, qualifications, etc. By default, anyone with a HUD/records access can view these.",
   component: FeatureTextInput,
 };
 
 export const security_record: Feature<string> = {
-  name: "Security Records",
+  name: "Records - Security",
   description: "Your security records! These are records for criminal records, arrest history, things like that. Sec officers can view these.",
   component: FeatureTextInput,
 };
 
 export const medical_record: Feature<string> = {
-  name: "Medical Records",
+  name: "Records - Medical",
   description: "Your medical records! These are records for things like medical history, prescriptions, DNR orders, etc. Medical staff can view these.",
   component: FeatureTextInput,
 };
 
 export const exploitable_info: Feature<string> = {
-  name: "Exploitable Info",
+  name: "Records - Exploitable",
   description: "This section is for information antagonists can use, IN CHARACTER AND OUT. If you are willing to be disrupted by antagonists MORE than the average player (this is usually a very fun experience, if you're into that kind of roleplay), put it here! Also for things antagonists can use against your character.",
   component: FeatureTextInput,
 };
 
 export const background_info: Feature<string> = {
-  name: "Background Info",
+  name: "Records - Background",
   description: "nobody uses this lmao",
   component: FeatureTextInput,
 };
