@@ -514,7 +514,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/labcoat_highvis
 	name = "High-Vis Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/highvis
-	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic") // why does the atmos get this? sec med is more of a first responder lmao
+	restricted_roles = list("Chief Medical Officer", "Paramedic", "Atmospheric Technician", "Detective", "Security Medic", "Chemist", "Orderly") // And now chemist and orderly get it too.
 
 /datum/loadout_item/suit/discojacket
 	name = "Disco Ass Blazer"
