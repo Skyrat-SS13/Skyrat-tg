@@ -52,7 +52,7 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded = 1,
 		/obj/item/clothing/head/beret/sec/peacekeeper = 1,
-		 /obj/item/armament_token/sidearm = 1
+		/obj/item/armament_token/sidearm = 1
 		) //SKRYAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack_contents = list(/obj/item/melee/baton/security/loaded =1)
 	belt = /obj/item/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
