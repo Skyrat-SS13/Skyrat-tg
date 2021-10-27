@@ -257,12 +257,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			G.fields["gender"]  = "Other"
 		G.fields["photo_front"] = photo_front
 		G.fields["photo_side"] = photo_side
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/general_records)) // SKYRAT EDIT ADD - RP RECORDS
-			G.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/general_records)
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/general)) // SKYRAT EDIT ADD - RP RECORDS
+			G.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/general)
 		else
 			G.fields["past_records"] = ""
-		if (C && C.prefs && C.prefs.read_preference(/datum/preference/text/exploitable_records))
-			G.fields["exploitable_records"] = C.prefs.read_preference(/datum/preference/text/exploitable_records)
+		if (C && C.prefs && C.prefs.read_preference(/datum/preference/text/exploitable))
+			G.fields["exploitable_records"] = C.prefs.read_preference(/datum/preference/text/exploitable)
 		else
 			G.fields["exploitable_records"] = "" //SKYRAT EDIT END
 		general += G
@@ -281,8 +281,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
 		M.fields["notes"] = H.get_quirk_string(!medical, CAT_QUIRK_NOTES)
 		M.fields["notes_d"] = H.get_quirk_string(medical, CAT_QUIRK_NOTES)
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/medical_records)) // SKYRAT EDIT ADD - RP RECORDS
-			M.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/medical_records)
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/medical)) // SKYRAT EDIT ADD - RP RECORDS
+			M.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/medical)
 		else
 			M.fields["past_records"] = "" //SKYRAT EDIT END
 		medical += M
@@ -295,8 +295,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		S.fields["citation"] = list()
 		S.fields["crim"] = list()
 		S.fields["notes"] = "No notes."
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/security_records)) // SKYRAT EDIT ADD - RP RECORDS
-			S.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/security_records)
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/security)) // SKYRAT EDIT ADD - RP RECORDS
+			S.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/security)
 		else
 			S.fields["past_records"] = "" //SKYRAT EDIT END
 		security += S

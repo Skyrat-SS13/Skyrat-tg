@@ -40,42 +40,42 @@
 	target.dna.features["custom_species_lore"] = value
 
 // SKYRAT EDIT ADDITION BEGIN -- RP RECORDS REJUVINATION
-/datum/preference/text/general_records
+/datum/preference/text/general
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "general_records"
+	savefile_key = "general_record"
 
 /datum/preference/text/general_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-/datum/preference/text/medical_records
+/datum/preference/text/medical
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "medical_records"
+	savefile_key = "medical_record"
 
 /datum/preference/text/medical_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-/datum/preference/text/security_records
+/datum/preference/text/security
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "security_records"
+	savefile_key = "security_record"
 
 /datum/preference/text/security_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-/datum/preference/text/exploitable_records
+/datum/preference/text/exploitable
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "exploitable_records"
+	savefile_key = "exploitable_info"
 
 /datum/preference/text/exploitable_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
-/datum/preference/text/background_records
+/datum/preference/text/background
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "background_records"
+	savefile_key = "background_info"
 
 /datum/preference/text/background_records/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE

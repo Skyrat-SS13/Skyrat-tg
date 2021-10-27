@@ -24,11 +24,11 @@
 	READ_FILE(S["mismatched_customization"], mismatched_customization)
 	READ_FILE(S["allow_advanced_colors"], allow_advanced_colors)
 
-	READ_FILE(S["general_record"], general_record)
+/*	READ_FILE(S["general_record"], general_record)
 	READ_FILE(S["security_record"], security_record)
 	READ_FILE(S["medical_record"], medical_record)
 	READ_FILE(S["background_info"], background_info)
-	READ_FILE(S["exploitable_info"], exploitable_info)
+	READ_FILE(S["exploitable_info"], exploitable_info) */
 
 	READ_FILE(S["alt_job_titles"], alt_job_titles)
 
@@ -51,24 +51,10 @@
 		migrate_skyrat(S)
 		addtimer(CALLBACK(src, .proc/check_migration), 10 SECONDS)
 
-	READ_FILE(S["skyrat_records_migration"], skyrat_records_migration) //TODO: what happens if both happen at once? stop that
-	if(!skyrat_records_migration)
-		to_chat(parent, examine_block(span_redtext("RECORDS MIGRATION BEGINNING FOR THIS CHARACTER.\
-		\nDO NOT INTERACT WITH YOUR RECORDS UNTIL THIS PROCESS HAS BEEN COMPLETED.\
-		\nDO NOT DISCONNECT UNTIL THIS PROCESS HAS BEEN COMPLETED.\
-		")))
-		migrate_record(S)
-		addtimer(CALLBACK(src, .proc/check_records_migration), 10 SECONDS)
-
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
 		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN PREFERENCE MIGRATION, REPORT THIS IMMEDIATELY.")))
 		message_admins("PREFERENCE MIGRATION: [ADMIN_LOOKUPFLW(parent)] has failed the process for migrating PREFERENCES. Check runtimes.")
-
-/datum/preferences/proc/check_records_migration()
-	if(!skyrat_records_migration)
-		to_chat(parent, examine_block(span_redtext("CRITICAL FAILURE IN RECORDS MIGRATION, REPORT THIS IMMEDIATELY.")))
-		message_admins("RECORDS MIGRATION: [ADMIN_LOOKUPFLW(parent)] has failed the process for migrating RECORDS. Check runtimes, or ban niko for being a bad coder.")
 
 /datum/preferences/proc/save_character_skyrat(savefile/S)
 
@@ -82,15 +68,14 @@
 	WRITE_FILE(S["mismatched_customization"], mismatched_customization)
 	WRITE_FILE(S["allow_advanced_colors"], allow_advanced_colors)
 
-	WRITE_FILE(S["general_record"] , general_record)
+/*	WRITE_FILE(S["general_record"] , general_record)
 	WRITE_FILE(S["security_record"] , security_record)
 	WRITE_FILE(S["medical_record"] , medical_record)
 	WRITE_FILE(S["background_info"] , background_info)
-	WRITE_FILE(S["exploitable_info"] , exploitable_info)
+	WRITE_FILE(S["exploitable_info"] , exploitable_info) */
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
 	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
-	WRITE_FILE(S["skyrat_records_migration"], skyrat_records_migration)
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)
