@@ -33,6 +33,8 @@
 	var/use_cyborg_cell = FALSE
 	///set to true so the gun is given an empty cell
 	var/dead_cell = FALSE
+	///Does this gun support swapping energy cells?
+	var/supports_swapping_cells = FALSE
 
 /obj/item/gun/energy/emp_act(severity)
 	. = ..()
@@ -206,11 +208,35 @@
 		worn_icon_state = temp_icon_to_use
 	return ..()
 
+// SKYRAT ADDITION START
+/obj/item/gun/energy/attackby(obj/item/A, mob/user, params)
+	. = ..()
+	if (.)
+		return
+	if(!supports_swapping_cells)
+		return
+	if(istype(A, /obj/item/stock_parts/cell))
+		if(!cell)
+			to_chat(user, span_notice("You insert [A] into [src]."))
+			cell = A
+			A.forceMove(src)
+			cut_overlays()
+			update_overlays()
+			return
+		to_chat(user, span_notice("You swap [cell] for [A] in [src]."))
+		cell.forceMove(get_turf(src))
+		cell = A
+		A.forceMove(src)
+		cut_overlays()
+		update_overlays()
+// SKYRAT ADDITION END
 
 /obj/item/gun/energy/update_overlays()
 	. = ..()
-	if(!automatic_charge_overlays)
+	// SKYRAT EDIT START
+	if(!automatic_charge_overlays || !cell)
 		return
+	// SKYRAT EDIT END
 
 	var/overlay_icon_state = "[icon_state]_charge"
 	if(modifystate)
