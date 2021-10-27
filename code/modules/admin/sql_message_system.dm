@@ -74,23 +74,12 @@
 		note_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("High", "Medium", "Minor", "None")
 		if(!note_severity)
 			return
-<<<<<<< HEAD
-	var/datum/db_query/query_create_message = SSdbcore.NewQuery(/* SKYRAT EDIT CHANGE - MULTISERVER */{"
-		INSERT INTO [format_table_name("messages")] (type, targetckey, adminckey, text, timestamp, server_name, server, server_ip, server_port, round_id, secret, expire_timestamp, severity, playtime)
-		VALUES (:type, :target_ckey, :admin_ckey, :text, :timestamp, :server_name, :server, INET_ATON(:internet_address), :port, :round_id, :secret, :expiry, :note_severity, (SELECT `minutes` FROM [format_table_name("role_time")] WHERE `ckey` = :target_ckey AND `job` = 'Living'))
-	"}, list(
-=======
 	var/list/parameters = list(
->>>>>>> 001db28eacd (Players now see any notes they may have gotten whilst disconnected when they join  the server for the next time (#62063))
 		"type" = type,
 		"target_ckey" = target_ckey,
 		"admin_ckey" = admin_ckey,
 		"text" = text,
-<<<<<<< HEAD
-		"timestamp" = timestamp,
 		"server_name" = CONFIG_GET(string/serversqlname), // SKYRAT EDIT ADDITION - MULTISERVER
-=======
->>>>>>> 001db28eacd (Players now see any notes they may have gotten whilst disconnected when they join  the server for the next time (#62063))
 		"server" = server,
 		"internet_address" = world.internet_address || "0",
 		"port" = "[world.port]",
