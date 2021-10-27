@@ -926,6 +926,9 @@
 		"inducer",
 		"tray_goggles",
 		"holopad",
+		//SKYRAT EDIT - ADDITION MEDIGUNS
+		"gownmedicell",
+		//SKYRAT EDIT END
 		"vendatray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
