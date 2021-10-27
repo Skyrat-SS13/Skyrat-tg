@@ -507,11 +507,7 @@
 		to_chat(usr, span_danger("Ban not [edit_id ? "edited" : "created"] because the following errors were present:\n[error_state.Join("\n")]"), confidential = TRUE)
 		return
 	if(edit_id)
-<<<<<<< HEAD
-		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes) // SKYRAT EDIT CHANGE - MULTISERVER
-=======
-		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes, roles_to_ban[1] == "Server")
->>>>>>> eff18729dc9 (Fixes 2 issues with the unbanning panel and adds a reban button. (#62122))
+		edit_ban(edit_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, page, admin_key, changes, roles_to_ban[1] == "Server") // SKYRAT EDIT CHANGE - MULTISERVER
 	else
 		create_ban(player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, severity, reason, global_ban, roles_to_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 
@@ -600,60 +596,31 @@
 	if(!SSdbcore.MassInsert(format_table_name("ban"), sql_ban, warn = TRUE, special_columns = special_columns))
 		return
 	var/target = ban_target_string(player_key, player_ip, player_cid)
-<<<<<<< HEAD
-	var/msg = "has created a [global_ban ? "global" : "local"] [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][roles_to_ban[1] == "Server" ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]." // SKYRAT EDIT CHANGE - MULTISERVER
-	log_admin_private("[kn] [msg][roles_to_ban[1] == "Server" ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
-	message_admins("[kna] [msg][roles_to_ban[1] == "Server" ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
-=======
-	var/msg = "has created a [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]."
+	var/msg = "has created a [global_ban ? "global" : "local"] [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]." // SKYRAT EDIT CHANGE - MULTISERVER
 	log_admin_private("[kn] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
 	message_admins("[kna] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
->>>>>>> eff18729dc9 (Fixes 2 issues with the unbanning panel and adds a reban button. (#62122))
 	if(applies_to_admins)
 		send2adminchat("BAN ALERT","[kn] [msg]")
 	if(player_ckey)
 		create_message("note", player_ckey, admin_ckey, note_reason, null, null, 0, 0, null, 0, severity)
-<<<<<<< HEAD
-	var/client/C = GLOB.directory[player_ckey]
-	// var/datum/admin_help/AH = admin_ticket_log(player_ckey, "[kna] [msg]") // SKYRAT EDIT ORIGINAL
-	var/datum/admin_help/AH = admin_ticket_log(player_ckey, "[kna] [msg]", FALSE) // SKYRAT EDIT --  Player ticket viewing
-	var/appeal_url = "No ban appeal url set!"
-	appeal_url = CONFIG_GET(string/banappeals)
-	var/is_admin = FALSE
-	if(C)
-		build_ban_cache(C)
-		to_chat(C, "<span class='boldannounce'>You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] [global_ban ? "This ban applies to all of our servers." : "This is a single-server ban, and only applies to this server."] The round ID is [GLOB.round_id].</span><br><span class='danger'>To appeal this ban go to [appeal_url]</span>", confidential = TRUE) // SKYRAT EDIT CHANGE - MULTISERVER
-		if(GLOB.admin_datums[C.ckey] || GLOB.deadmins[C.ckey])
-			is_admin = TRUE
-		if(roles_to_ban[1] == "Server" && (!is_admin || (is_admin && applies_to_admins)))
-			qdel(C)
-		//SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
-		if(BAN_PACIFICATION in roles_to_ban)
-			if(ismob(C.mob))
-				ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
-		//SKYRAT EDIT END
-	if(roles_to_ban[1] == "Server" && AH)
-		AH.Resolve()
-	for(var/client/i in GLOB.clients - C)
-		if(i.address == player_ip || i.computer_id == player_cid)
-			build_ban_cache(i)
-			to_chat(i, "<span class='boldannounce'>You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [roles_to_ban[1] == "Server" ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br><span class='danger'>This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] [global_ban ? "This ban applies to all of our servers." : "This is a single-server ban, and only applies to this server."] The round ID is [GLOB.round_id].</span><br><span class='danger'>To appeal this ban go to [appeal_url]</span>", confidential = TRUE) // SKYRAT EDIT CHANGE - MULTISERVER
-			if(GLOB.admin_datums[i.ckey] || GLOB.deadmins[i.ckey])
-				is_admin = TRUE
-			if(roles_to_ban[1] == "Server" && (!is_admin || (is_admin && applies_to_admins)))
-				qdel(i)
-=======
 
 	var/player_ban_notification = span_boldannounce("You have been [applies_to_admins ? "admin " : ""]banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
 	var/other_ban_notification = span_boldannounce("Another player sharing your IP or CID has been banned by [usr.client.key] from [is_server_ban ? "the server" : " Roles: [roles_to_ban.Join(", ")]"].\nReason: [reason]</span><br>[span_danger("This ban is [isnull(duration) ? "permanent." : "temporary, it will be removed in [time_message]."] The round ID is [GLOB.round_id].")]")
 
 	notify_all_banned_players(player_ckey, player_ip, player_cid, player_ban_notification, other_ban_notification, is_server_ban, applies_to_admins)
 
-	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]")
+	//SKYRAT EDIT ADDITION BEGIN - EXTRA_BANS
+	if(BAN_PACIFICATION in roles_to_ban)
+		var/client/C = GLOB.directory[player_ckey]
+		if(ismob(C.mob))
+			ADD_TRAIT(C.mob, TRAIT_PACIFISM, ROUNDSTART_TRAIT)
+	//SKYRAT EDIT END
+
+	//var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]") // SKYRAT EDIT ORIGINAL
+	var/datum/admin_help/linked_ahelp_ticket = admin_ticket_log(player_ckey, "[kna] [msg]", FALSE) // SKYRAT EDIT --  Player ticket viewing
 
 	if(is_server_ban && linked_ahelp_ticket)
 		linked_ahelp_ticket.Resolve()
->>>>>>> eff18729dc9 (Fixes 2 issues with the unbanning panel and adds a reban button. (#62122))
 
 /datum/admins/proc/unban_panel(player_key, admin_key, player_ip, player_cid, page = 0)
 	if(!check_rights(R_BAN))
@@ -842,9 +809,6 @@
 			to_chat(i, span_boldannounce("[usr.client.key] has removed a ban from [role] for your IP or CID."), confidential = TRUE)
 	unban_panel(player_key, admin_key, player_ip, player_cid, page)
 
-<<<<<<< HEAD
-/datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, admin_key, page, list/changes) // SKYRAT EDIT CHANGE - MULTISERVER
-=======
 /// Sometimes an admin did not intend to unban a player. This proc undoes an unbanning operation by setting the unbanned_ keys in the DB back to null.
 /datum/admins/proc/reban(ban_id, applies_to_admins, player_key, player_ip, player_cid, role, page, admin_key)
 	if(!check_rights(R_BAN))
@@ -888,8 +852,7 @@
 	notify_all_banned_players(ckey(player_key), player_ip, player_cid, banned_player_message, banned_other_message, kick_banned_players, applies_to_admins)
 	unban_panel(player_key, admin_key, player_ip, player_cid, page)
 
-/datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, mirror_edit, old_key, old_ip, old_cid, old_applies, admin_key, page, list/changes, is_server_ban)
->>>>>>> eff18729dc9 (Fixes 2 issues with the unbanning panel and adds a reban button. (#62122))
+/datum/admins/proc/edit_ban(ban_id, player_key, ip_check, player_ip, cid_check, player_cid, use_last_connection, applies_to_admins, duration, interval, reason, global_ban, mirror_edit, old_key, old_ip, old_cid, old_applies, admin_key, page, list/changes, is_server_ban) // SKYRAT EDIT CHANGE - MULTISERVER
 	if(!check_rights(R_BAN))
 		return
 	if(!SSdbcore.Connect())
