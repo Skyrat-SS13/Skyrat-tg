@@ -579,7 +579,7 @@ SUBSYSTEM_DEF(job)
 
 
 	if(player_client)
-		to_chat(player_client, "<span class='infoplain'><b>As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.</span></b>" // SKYRAT EDIT ORIGINAL
+		to_chat(player_client, span_infoplain("As the [job.title] you answer directly to [job.supervisors]. Special circumstances may change this.")) // SKYRAT EDIT ORIGINAL
 
 	job.radio_help_message(equipping)
 
