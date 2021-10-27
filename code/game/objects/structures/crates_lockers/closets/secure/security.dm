@@ -33,7 +33,6 @@
 	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
 	new /obj/item/clothing/gloves/color/captain(src)
 	new /obj/item/storage/belt/sabre(src)
-	new /obj/item/storage/box/gunset/pdh_captain(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
 
@@ -93,7 +92,7 @@
 	// new /obj/item/clothing/under/rank/security/head_of_security/alt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	// new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src) //SKYRAT EDIT ADDITON - SEC_HAUL
-	// new /obj/item/clothing/head/hos(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	new /obj/item/clothing/head/hos(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars(src)
 	// new /obj/item/clothing/under/rank/security/head_of_security/grey(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
@@ -110,7 +109,6 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
-	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
 	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/warden
