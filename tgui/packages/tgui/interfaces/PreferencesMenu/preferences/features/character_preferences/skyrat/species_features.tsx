@@ -43,7 +43,7 @@ export const custom_species_lore: Feature<string> = {
   description: "Add some lore for your species! Won't show up if there's no custom species.",
   component: FeatureTextInput,
 };
-
+// SKYRAT EDIT ADDITION BEGIN -- RECORDS REJUVINATION
 export const general_records: Feature<string> = {
   name: "General Records",
   description: "Your general records! These are records that are for general viewing-things like employment, qualifications, etc. By default, anyone with a HUD/records access can view these.",
@@ -72,8 +72,8 @@ export const exploitable_records: Feature<string> = {
   name: "Background info",
   description: "nobody uses this lmao",
   component: FeatureTextInput,
-}; */
-
+};  */
+// SKYRAT EDIT END
 export const allow_mismatched_parts_toggle: FeatureToggle = {
   name: "Allow Mismatched Parts",
   description: "Want to go completely crazy with your character design? Use this to select any parts from any species!",
