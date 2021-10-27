@@ -123,7 +123,7 @@
 					setblock(unique_features, blocknumber, construct_block(marking_list.Find(marking), marking_list.len))
 
 /datum/dna/proc/update_body_size()
-	if(!holder || current_body_size == features["body_size"])
+	if(!holder || species.body_size_restricted || current_body_size == features["body_size"])
 		return
 	var/change_multiplier = features["body_size"] / current_body_size
 	//We update the translation to make sure our character doesn't go out of the southern bounds of the tile

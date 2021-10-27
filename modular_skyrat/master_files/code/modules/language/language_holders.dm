@@ -22,7 +22,8 @@
 								/datum/language/spacer = list(LANGUAGE_ATOM),
 								/datum/language/vox = list(LANGUAGE_ATOM),
 								/datum/language/yangyu = list(LANGUAGE_ATOM),
-								/datum/language/zolmach = list(LANGUAGE_ATOM))
+								/datum/language/zolmach = list(LANGUAGE_ATOM),
+								/datum/language/schechi = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/uncommon = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM),
@@ -39,4 +40,5 @@
 							/datum/language/spacer = list(LANGUAGE_ATOM),
 							/datum/language/vox = list(LANGUAGE_ATOM),
 							/datum/language/yangyu = list(LANGUAGE_ATOM),
-							/datum/language/zolmach = list(LANGUAGE_ATOM))
+							/datum/language/zolmach = list(LANGUAGE_ATOM),
+							/datum/language/schechi = list(LANGUAGE_ATOM))
