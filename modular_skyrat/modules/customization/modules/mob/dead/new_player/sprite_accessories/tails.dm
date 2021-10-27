@@ -392,7 +392,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/snakedual
 	name = "Snake dual"
 	icon_state = "snakedual"
-
+	
 /datum/sprite_accessory/tails/mammal/wagging/datashark
 	name = "Data shark"
 	icon_state = "datashark"
