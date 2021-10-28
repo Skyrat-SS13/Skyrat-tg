@@ -203,6 +203,7 @@
 			RESKIN_ICON_STATE = "peacekeeper_warden",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_warden"
+		),
 		"Sol" = list(
 			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
 			RESKIN_ICON_STATE = "policewardenalt",
