@@ -378,7 +378,7 @@
 	human_host = null
 
 //borers shouldnt be able to whisper...
-/mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
+/mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof)
 	to_chat(src, span_warning("You are not able to whisper!"))
 	return FALSE
 
