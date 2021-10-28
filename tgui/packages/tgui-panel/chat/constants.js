@@ -83,7 +83,11 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_OOC,
     name: 'OOC',
     description: 'The bluewall of global OOC messages',
+<<<<<<< HEAD
     selector: '.ooc, .adminooc, .oocplain, .looc, .rlooc',
+=======
+    selector: '.ooc, .adminooc, .adminobserverooc, .oocplain',
+>>>>>>> 3abc01526a0 (Includes `adminobserverooc` span in the OOC selector for chat (#62304))
   },
   {
     type: MESSAGE_TYPE_ADMINPM,
