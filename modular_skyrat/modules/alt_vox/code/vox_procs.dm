@@ -3,7 +3,7 @@
 #define VOX_DELAY 300
 
 /mob/living/silicon/ai
-	var/vox_type = VOX_MIL //SKYRAT EDIT ADDITION
+	var/vox_type = VOX_NORMAL //SKYRAT EDIT ADDITION
 
 	var/vox_word_string
 
@@ -200,6 +200,7 @@
 				return TRUE
 			return FALSE
 
+/* Disabling them until someone can make sure they don't sound incredibly awful.
 /mob/living/silicon/ai/verb/switch_vox()
 	set name = "Switch Vox Voice"
 	set desc = "Switch your VOX announcement voice!"
@@ -213,6 +214,7 @@
 	vox_type = selection
 
 	to_chat(src, "Vox voice set to [vox_type]")
+*/
 
 /mob/living/silicon/ai/verb/display_word_string()
 	set name = "Display Word String"
