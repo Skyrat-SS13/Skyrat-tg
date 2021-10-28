@@ -57,7 +57,7 @@
 
 /obj/item/clothing/under/misc/poly_kilt/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "F88", "FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#FF8888", "#FFFFFF"))
 
 /obj/item/clothing/under/misc/royalkilt
 	name = "royal kilt"
@@ -130,6 +130,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tac_s"
+	mutant_variants = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/misc/bluetracksuit
 	name = "blue tracksuit"
@@ -369,6 +370,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cargotechjean"
 	inhand_icon_state = "lb_suit"
+	mutant_variants = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/rank/cargo/qm/syndie
 	name = "deck officer's jumpsuit"
@@ -492,7 +494,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "workpants_red"
-
 
 /obj/item/clothing/under/rank/captain/imperial
 	desc = "A white jumpsuit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
@@ -644,3 +645,17 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	inhand_icon_state = "kilt"
+
+/obj/item/clothing/under/suit/helltaker
+	name = "red shirt with white pants"
+	desc = "No time. Busy gathering girls."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "helltaker"
+
+/obj/item/clothing/under/suit/helltaker/skirt
+	name = "red shirt with white skirt"
+	desc = "No time. Busy gathering boys."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "helltakerskirt"

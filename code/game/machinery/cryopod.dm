@@ -315,14 +315,15 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	for(var/obj/item/item_content as anything in mob_occupant)
 		if(!istype(item_content) || HAS_TRAIT(item_content, TRAIT_NODROP))
 			continue
-
+		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
+			continue
 // Skyrat Edit Addition - Cryostorage stores items.
 // Original is just the else statement.
 		if(control_computer)
 			if(istype(item_content, /obj/item/pda))
 				var/obj/item/pda/pda = item_content
 				pda.toff = TRUE
-			item_content.dropped()
+			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
 		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)

@@ -185,7 +185,7 @@
 	antag_flag = ROLE_SLEEPER_AGENT
 	antag_flag_override = ROLE_TRAITOR
 	protected_roles = list("Prisoner", "Blueshield", "Corrections Officer", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Head of Security", "Captain", "Nanotrasen Representative", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster", "Vanguard Operative") //SKYRAT EDIT - SEC_HAUL
-	restricted_roles = list("Cyborg", "AI", "Positronic Brain")
+	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
 	required_candidates = 1
 	weight = 7
 	cost = 10
@@ -251,7 +251,7 @@
 	antag_flag = ROLE_FAMILY_HEAD_ASPIRANT
 	antag_flag_override = ROLE_FAMILIES
 	protected_roles = list("Prisoner", "Head of Personnel")
-	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant") //SKYRAT EDIT - Sec_haul
+	restricted_roles = list("Cyborg", "AI", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Corrections Officer", "Vanguard Operative", "Nanotrasen Representative", "Blueshield", "Civil Disputes Officer", "Security Sergeant", "Orderly", "Bouncer", "Customs Agent", "Engineering Guard", "Science Guard") //SKYRAT EDIT - Sec_haul
 	required_candidates = 9
 	weight = 2
 	cost = 19
@@ -320,6 +320,7 @@
 	cost = 35
 	requirements = list(101,101,80,70,60,60,50,50,40,40)
 	required_type = /mob/living/silicon/ai
+	blocking_rules = list(/datum/dynamic_ruleset/roundstart/malf_ai)
 
 /datum/dynamic_ruleset/midround/malf/trim_candidates()
 	..()
@@ -369,7 +370,7 @@
 	weight = 1
 	cost = 20
 	requirements = list(90,90,90,80,60,40,30,20,10,10)
-	repeatable = TRUE
+	flags = HIGH_IMPACT_RULESET
 
 /datum/dynamic_ruleset/midround/from_ghosts/wizard/ready(forced = FALSE)
 	if (required_candidates > (dead_players.len + list_observers.len))
@@ -516,7 +517,7 @@
 				continue // No parent vent
 			// Stops Aliens getting stuck in small networks.
 			// See: Security, Virology
-			if(temp_vent_parent.other_atmosmch.len > 20)
+			if(temp_vent_parent.other_atmos_machines.len > 20)
 				vents += temp_vent
 	if(!vents.len)
 		return FALSE

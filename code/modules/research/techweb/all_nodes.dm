@@ -215,17 +215,22 @@
 	design_ids = list(
 		"circuit_multitool",
 		"comp_arithmetic",
+		"comp_binary_convert",
 		"comp_clock",
 		"comp_comparison",
 		"comp_concat",
 		"comp_concat_list",
+		"comp_decimal_convert",
 		"comp_delay",
 		"comp_direction",
+		"comp_filter_list",
+		"comp_foreach",
 		"comp_get_column",
 		"comp_gps",
 		"comp_health",
 		"comp_hear",
 		"comp_index",
+		"comp_index_assoc",
 		"comp_index_table",
 		"comp_length",
 		"comp_light",
@@ -239,6 +244,7 @@
 		"comp_ntnet_send",
 		"comp_pinpointer",
 		"comp_pressuresensor",
+		"comp_printer",
 		"comp_radio",
 		"comp_random",
 		"comp_router",
@@ -252,8 +258,10 @@
 		"comp_string_contains",
 		"comp_tempsensor",
 		"comp_textcase",
+		"comp_timepiece",
 		"comp_tonumber",
 		"comp_tostring",
+		"comp_trigonometry",
 		"comp_typecast",
 		"comp_typecheck",
 		"compact_remote_shell",
@@ -481,7 +489,6 @@
 		"pneumatic_seal",
 		"power control",
 		"powermonitor",
-		"rad_collector",
 		"recharger",
 		"recycler",
 		"rped",
@@ -712,6 +719,7 @@
 	design_ids = list(
 		"bot_shell",
 		"controller_shell",
+		"dispenser_shell",
 		"door_shell",
 		"gun_shell",
 		"money_bot_shell",
@@ -918,6 +926,9 @@
 		"inducer",
 		"tray_goggles",
 		"holopad",
+		//SKYRAT EDIT - ADDITION MEDIGUNS
+		"gownmedicell",
+		//SKYRAT EDIT END
 		"vendatray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
@@ -1124,6 +1135,7 @@
 		"dna_disk",
 		"dnascanner",
 		"scan_console",
+		"oc_donut_steel_restoration_device", // SKYRAT EDIT ADDITION: Added the Self-Actualization Device
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

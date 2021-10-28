@@ -44,28 +44,6 @@
 	//Updates the number of stored chemicals for powers
 	handle_changeling(delta_time, times_fired)
 
-	if(staminaloss) //SKYRAT EDIT ADDITION bEGIN
-		//Stamina regeneration: Regens faster, the more health you have, and the more staminaloss you have
-		var/flat = STAMINA_STATIC_REGEN_FLAT
-		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-			flat += STAMINA_EXTRA_FLAT_IN_CRIT
-		adjustStaminaLoss(-(flat+(staminaloss/STAMINALOSS_REGEN_COEFF)) * (STAMINA_STATIC_REGEN_MULTIPLIER + (max(health/maxHealth, 0))))
-		if(staminaloss > STAMINA_THRESHOLD_MESSAGE_ACHE && world.time > next_stamina_message && stat != DEAD)
-			next_stamina_message = world.time + STAMINA_MESSAGE_COOLDOWN
-			switch(FLOOR(staminaloss,1))
-				if(STAMINA_THRESHOLD_MESSAGE_ACHE to STAMINA_THRESHOLD_MESSAGE_MILD)
-					to_chat(src, "<span class='warning'>You feel winded.</span>") //SKYRAT EDIT Grammar
-				if(STAMINA_THRESHOLD_MESSAGE_MILD to STAMINA_THRESHOLD_MESSAGE_MEDIUM)
-					to_chat(src, "<span class='warning'>You feel tired!</span>") //SKYRAT EDIT Grammar
-				if(STAMINA_THRESHOLD_MESSAGE_MEDIUM to STAMINA_THRESHOLD_MESSAGE_HIGH)
-					to_chat(src, "<span class='warning'>You have trouble standing on your legs!</span>") //SKYRAT EDIT Grammar
-				if(STAMINA_THRESHOLD_MESSAGE_HIGH to STAMINA_THRESHOLD_MESSAGE_SEVERE)
-					to_chat(src, "<span class='warning'>You feel worn-out!</span>")
-				if(STAMINA_THRESHOLD_MESSAGE_SEVERE to STAMINA_THRESHOLD_MESSAGE_OHGOD)
-					to_chat(src, "<span class='warning'>You feel exhausted!</span>")
-				if(STAMINA_THRESHOLD_MESSAGE_OHGOD to INFINITY)
-					to_chat(src, "<span class='warning'>You feel fatigued!</span>")
-					//SKYRAT EDIT END
 	if(. && mind) //. == not dead
 		for(var/key in mind.addiction_points)
 			var/datum/addiction/addiction = SSaddiction.all_addictions[key]
@@ -389,21 +367,15 @@
 	return
 
 /mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired)
-	return //SKYRAT EDIT ADDITION
-	/* SKYRAT EDIT REMVOAL
-/mob/living/carbon/proc/handle_bodyparts(delta_time, times_fired)
 	var/stam_regen = FALSE
 	if(stam_regen_start_time <= world.time)
 		stam_regen = TRUE
 		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 			. |= BODYPART_LIFE_UPDATE_HEALTH //make sure we remove the stamcrit
-	*/
-	/*
 	for(var/I in bodyparts)
 		var/obj/item/bodypart/BP = I
 		if(BP.needs_processing)
 			. |= BP.on_life(delta_time, times_fired, stam_regen)
-	*/ //SKYRAT EDIT END
 
 /mob/living/carbon/proc/handle_organs(delta_time, times_fired)
 	if(stat != DEAD)
@@ -415,8 +387,8 @@
 		if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 1) || reagents.has_reagent(/datum/reagent/cryostylane)) // No organ decay if the body contains formaldehyde.
 			return
 		for(var/V in internal_organs)
-			var/obj/item/organ/O = V
-			O.on_death(delta_time, times_fired) //Needed so organs decay while inside the body.
+			var/obj/item/organ/organ = V
+			organ.on_death(delta_time, times_fired) //Needed so organs decay while inside the body.
 
 /mob/living/carbon/handle_diseases(delta_time, times_fired)
 	for(var/thing in diseases)
@@ -546,7 +518,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		dizziness = max(dizziness - (restingpwr * delta_time), 0)
 
 	if(drowsyness)
-		drowsyness = max(drowsyness - (restingpwr * delta_time), 0)
+		adjust_drowsyness(-1 * restingpwr * delta_time)
 		blur_eyes(1 * delta_time)
 		if(DT_PROB(2.5, delta_time))
 			AdjustSleeping(100)

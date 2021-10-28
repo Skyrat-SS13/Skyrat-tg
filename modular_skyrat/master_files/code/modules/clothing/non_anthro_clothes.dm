@@ -156,6 +156,9 @@
 
 /obj/item/clothing/head/helmet/knight/greyscale
 	mutant_variants = NONE
+
+/obj/item/clothing/head/mob_holder
+	mutant_variants = NONE
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

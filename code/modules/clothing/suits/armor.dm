@@ -23,6 +23,43 @@
 	inhand_icon_state = "armoralt"
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "armoralt",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "armoralt"
+		),
+		"Alternative Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "armor",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "armor"
+		),
+		"Blue Shift" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "guard_armor",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "guard_armor"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_armor",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper",
+			RESKIN_MUTANT_VARIANTS = NONE
+		),
+		"Black Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_black",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper_black",
+			RESKIN_MUTANT_VARIANTS = NONE
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/alt
 	desc = "A Type I armored vest that provides decent protection against most types of damage."
@@ -87,6 +124,48 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	strip_delay = 80
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Greatcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hos",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hos"
+		),
+		"Trenchcoat" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hostrench",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hostrench"
+		),
+		"Formal Jacket" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hosformal",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hosformal"
+		),
+		"Navy Blue Jacket" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "hosbluejacket",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "hosbluejacket"
+		),
+		"Trenchcloak" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "trenchcloak",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "trenchcloak"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_hos",
+			RESKIN_MUTANT_VARIANTS = NONE
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/hos/trenchcoat
 	name = "armored trenchcoat"
@@ -95,6 +174,17 @@
 	inhand_icon_state = "hostrench"
 	flags_inv = 0
 	strip_delay = 80
+
+/obj/item/clothing/suit/armor/hos/hos_formal
+	name = "\improper Head of Security's parade jacket"
+	desc = "For when an armoured vest isn't fashionable enough."
+	icon_state = "hosformal"
+	inhand_icon_state = "hostrench"
+	body_parts_covered = CHEST|GROIN|ARMS
+
+/obj/item/clothing/suit/armor/hos/hos_formal/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "warden's jacket"
@@ -107,6 +197,30 @@
 	strip_delay = 70
 	resistance_flags = FLAMMABLE
 	dog_fashion = null
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Warden Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "warden_alt",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "warden_alt"
+		),
+		"Alternative Warden Armor" = list(
+			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "warden_jacket",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "warden_jacket"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi',
+			RESKIN_ICON_STATE = "peacekeeper_trench_warden",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeper_trench_warden",
+			RESKIN_MUTANT_VARIANTS = NONE
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/warden/alt
 	name = "warden's armored jacket"
@@ -138,23 +252,21 @@
 	desc = "A sinister looking vest of advanced armor worn over a black and red fireproof jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer."
 	icon_state = "syndievest"
 
-/obj/item/clothing/suit/toggle/captains_parade
-	name = "captain's formal jacket"
+/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal
+	name = "captain's parade jacket"
 	desc = "For when an armoured vest isn't fashionable enough."
 	icon_state = "capformal"
 	inhand_icon_state = "capspacesuit"
 	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 50, BULLET = 40, LASER = 50, ENERGY = 50, BOMB = 25, BIO = 0, RAD = 0, FIRE = 100, ACID = 90, WOUND = 10)
-	togglename = "buttons"
 
-/obj/item/clothing/suit/toggle/captains_parade/Initialize(mapload)
+/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal/Initialize(mapload)
 	. = ..()
-	allowed = GLOB.security_wintercoat_allowed
+	AddComponent(/datum/component/toggle_icon)
 
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
 	desc = "A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Helps the wearer resist shoving in close quarters."
-	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //SKYRAT EDIT CHANGE
 	icon_state = "riot"
 	inhand_icon_state = "swat_suit"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -313,7 +425,7 @@
 	inhand_icon_state = "knight_greyscale"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS//Can change color and add prefix
 	armor = list(MELEE = 35, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 10, RAD = 10, FIRE = 40, ACID = 40, WOUND = 15)
-	
+
 /obj/item/clothing/suit/armor/vest/durathread
 	name = "durathread vest"
 	desc = "A vest made of durathread with strips of leather acting as trauma plates."
@@ -353,28 +465,14 @@
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 
-/obj/item/clothing/suit/toggle/armor/vest/centcom_formal
+/obj/item/clothing/suit/armor/centcom_formal
 	name = "\improper CentCom formal coat"
 	desc = "A stylish coat given to CentCom Commanders. Perfect for sending ERTs to suicide missions with style!"
 	icon_state = "centcom_formal"
 	inhand_icon_state = "centcom"
 	body_parts_covered = CHEST|GROIN|ARMS
 	armor = list(MELEE = 35, BULLET = 40, LASER = 40, ENERGY = 50, BOMB = 35, BIO = 10, RAD = 10, FIRE = 10, ACID = 60)
-	togglename = "buttons"
 
-/obj/item/clothing/suit/toggle/armor/vest/centcom_formal/Initialize(mapload)
+/obj/item/clothing/suit/armor/centcom_formal/Initialize(mapload)
 	. = ..()
-	allowed = GLOB.security_wintercoat_allowed
-
-/obj/item/clothing/suit/toggle/armor/hos/hos_formal
-	name = "\improper Head of Security's formal jacket"
-	desc = "For when an armoured vest isn't fashionable enough."
-	icon_state = "hosformal"
-	inhand_icon_state = "hostrench"
-	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 70, ACID = 90, WOUND = 10)
-	togglename = "buttons"
-
-/obj/item/clothing/suit/toggle/armor/hos/hos_formal/Initialize(mapload)
-	. = ..()
-	allowed = GLOB.security_wintercoat_allowed
+	AddComponent(/datum/component/toggle_icon)

@@ -123,7 +123,7 @@
 					setblock(unique_features, blocknumber, construct_block(marking_list.Find(marking), marking_list.len))
 
 /datum/dna/proc/update_body_size()
-	if(!holder || current_body_size == features["body_size"])
+	if(!holder || species.body_size_restricted || current_body_size == features["body_size"])
 		return
 	var/change_multiplier = features["body_size"] / current_body_size
 	//We update the translation to make sure our character doesn't go out of the southern bounds of the tile
@@ -189,7 +189,7 @@
 	for(var/key in bodyparts_to_add)
 		if(GLOB.sprite_accessories[key] && bodyparts_to_add[key] && bodyparts_to_add[key][MUTANT_INDEX_NAME])
 			var/datum/sprite_accessory/SP = GLOB.sprite_accessories[key][bodyparts_to_add[key][MUTANT_INDEX_NAME]]
-			if(!SP.factual)
+			if(!SP?.factual)
 				bodyparts_to_add -= key
 				continue
 	dna.species.mutant_bodyparts = bodyparts_to_add.Copy()

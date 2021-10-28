@@ -24,7 +24,7 @@
 		/obj/item/clothing/head/caphat/parade = 1,
 		/obj/item/clothing/under/rank/captain/parade = 1,
 		/obj/item/clothing/under/rank/captain/kilt = 1,
-		/obj/item/clothing/suit/toggle/captains_parade = 1,
+		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
 		/obj/item/clothing/suit/captunic = 1,
 		/obj/item/clothing/neck/mantle/capmantle = 1,
 		/obj/item/storage/backpack/captain = 1,
@@ -112,7 +112,7 @@
 		/obj/item/clothing/under/rank/security/head_of_security/parade = 1,
 		/obj/item/clothing/suit/armor/hos/parade = 1,
 		/obj/item/clothing/suit/armor/hos/parade/female = 1,
-		/obj/item/clothing/suit/toggle/armor/hos/hos_formal = 1,
+		/obj/item/clothing/suit/armor/hos/hos_formal = 1,
 		/obj/item/clothing/neck/mantle/hosmantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)

@@ -45,6 +45,7 @@
 	data["job_preferences"] = preferences.job_preferences
 	// SKYRAT EDIT
 	data["job_alt_titles"] = preferences.alt_job_titles
+	data["species_restricted_jobs"] = get_unavailable_jobs_for_species()
 	// SKYRAT EDIT END
 
 	return data
@@ -99,3 +100,16 @@
 			data += job.title
 
 	return data
+
+//SKYRAT EDIT ADDITION BEGIN - CHECKING FOR INCOMPATIBLE SPECIES
+//This returns a list of jobs that are unavailable for the player's current species
+/datum/preference_middleware/jobs/proc/get_unavailable_jobs_for_species()
+	var/list/data = list()
+
+	for (var/datum/job/job as anything in SSjob.all_occupations)
+		if (job.has_banned_species(preferences))
+			data += job.title
+
+	return data
+
+//SKYRAT EDIT ADDITION END

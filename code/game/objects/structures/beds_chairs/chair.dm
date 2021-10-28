@@ -129,7 +129,12 @@
 /obj/structure/chair/post_buckle_mob(mob/living/M)
 	. = ..()
 	handle_layer()
-
+	//SKYRAT EDIT ADDITION
+	if(HAS_TRAIT(M, TRAIT_OVERSIZED))
+		visible_message(span_warning("[src] buckles under the weight of [M] causing it to break!"))
+		playsound(src, 'modular_skyrat/modules/oversized/sound/chair_break.ogg', 70, TRUE)
+		deconstruct()
+	//SKYRAT EDIT END
 /obj/structure/chair/post_unbuckle_mob()
 	. = ..()
 	handle_layer()
@@ -229,6 +234,15 @@
 	if(!overlays_from_child_procs)
 		overlays_from_child_procs = list(image('icons/obj/chairs.dmi', loc, "echair_over", pixel_x = -1))
 	. = ..()
+
+/obj/structure/chair/comfy/carp
+	name = "carpskin chair"
+	desc = "A luxurious chair, the many purple scales reflect the light in a most pleasing manner."
+	icon_state = "carp_chair"
+	buildstacktype = /obj/item/stack/sheet/animalhide/carp
+
+/obj/structure/chair/comfy/carp/GetArmrest()
+	return mutable_appearance('icons/obj/chairs.dmi', "carp_chair_armrest")
 
 /obj/structure/chair/office
 	anchored = FALSE

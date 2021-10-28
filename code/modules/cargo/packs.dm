@@ -296,7 +296,7 @@
 					/obj/item/clothing/suit/armor/vest)
 	crate_name = "armor crate" */
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL
+
 /datum/supply_pack/security/disabler
 	name = "Disabler Crate"
 	desc = "Three stamina-draining disabler weapons. Requires Security access to open."
@@ -306,7 +306,7 @@
 					/obj/item/gun/energy/disabler,
 					/obj/item/gun/energy/disabler)
 	crate_name = "disabler crate"
-*/
+
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
@@ -330,7 +330,7 @@
 					/obj/item/clothing/head/helmet/sec)
 	crate_name = "helmet crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HAUL
+
 /datum/supply_pack/security/laser
 	name = "Lasers Crate"
 	desc = "Contains three lethal, high-energy laser guns. Requires Security access to open."
@@ -340,7 +340,7 @@
 					/obj/item/gun/energy/laser,
 					/obj/item/gun/energy/laser)
 	crate_name = "laser crate"
-*/
+
 
 /datum/supply_pack/security/securitybarriers
 	name = "Security Barrier Grenades"
@@ -420,8 +420,6 @@
 					/obj/item/clothing/mask/gas/sechailer)
 	crate_name = "security clothing crate"
 
-//SKYRAT EDIT REMOVAL BEGIN - No stunbaton
-/*
 /datum/supply_pack/security/baton
 	name = "Stun Batons Crate"
 	desc = "Arm the Civil Protection Forces with three stun batons. Batteries included. Requires Security access to open."
@@ -431,8 +429,6 @@
 					/obj/item/melee/baton/security/loaded,
 					/obj/item/melee/baton/security/loaded)
 	crate_name = "stun baton crate"
-*/
-//SKYRAT EDIT REMOVAL END - No stunbaton
 
 /datum/supply_pack/security/wall_flash
 	name = "Wall-Mounted Flash Crate"
@@ -494,9 +490,9 @@
 	name = "Combat Knives Crate"
 	desc = "Contains three sharpened combat knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot. Requires Armory access to open."
 	cost = CARGO_CRATE_VALUE * 3
-	contains = list(/obj/item/kitchen/knife/combat,
-					/obj/item/kitchen/knife/combat,
-					/obj/item/kitchen/knife/combat)
+	contains = list(/obj/item/knife/combat,
+					/obj/item/knife/combat,
+					/obj/item/knife/combat)
 	crate_name = "combat knife crate"
 
 /datum/supply_pack/security/armory/ballistic
@@ -520,7 +516,7 @@
 					/obj/item/gun/energy/e_gun/dragnet)
 	crate_name = "\improper DRAGnet crate"
 
-/* - SKYRAT EDIT REMOVAL - SEC_HUAL
+
 /datum/supply_pack/security/armory/energy
 	name = "Energy Guns Crate"
 	desc = "Contains two Energy Guns, capable of firing both nonlethal and lethal blasts of light. Requires Armory access to open."
@@ -529,7 +525,7 @@
 					/obj/item/gun/energy/e_gun)
 	crate_name = "energy gun crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
-*/
+
 
 /datum/supply_pack/security/armory/exileimp
 	name = "Exile Implants Crate"
@@ -939,21 +935,12 @@
 	name = "Grounding Rod Crate"
 	desc = "Four grounding rods guaranteed to keep any uppity tesla coil's lightning under control."
 	cost = CARGO_CRATE_VALUE * 8
-	contains = list(/obj/machinery/power/grounding_rod,
-					/obj/machinery/power/grounding_rod,
-					/obj/machinery/power/grounding_rod,
-					/obj/machinery/power/grounding_rod)
+	contains = list(/obj/machinery/power/energy_accumulator/grounding_rod,
+					/obj/machinery/power/energy_accumulator/grounding_rod,
+					/obj/machinery/power/energy_accumulator/grounding_rod,
+					/obj/machinery/power/energy_accumulator/grounding_rod)
 	crate_name = "grounding rod crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
-
-/datum/supply_pack/engine/collector
-	name = "Radiation Collector Crate"
-	desc = "Contains three radiation collectors. Useful for collecting energy off nearby Supermatter Crystals, Singularities or Teslas!"
-	cost = CARGO_CRATE_VALUE * 8
-	contains = list(/obj/machinery/power/rad_collector,
-					/obj/machinery/power/rad_collector,
-					/obj/machinery/power/rad_collector)
-	crate_name = "collector crate"
 
 /datum/supply_pack/engine/solar
 	name = "Solar Panel Crate"
@@ -1000,10 +987,10 @@
 	name = "Tesla Coil Crate"
 	desc = "Whether it's high-voltage executions, creating research points, or just plain old assistant electrofrying: This pack of four Tesla coils can do it all!"
 	cost = CARGO_CRATE_VALUE * 10
-	contains = list(/obj/machinery/power/tesla_coil,
-					/obj/machinery/power/tesla_coil,
-					/obj/machinery/power/tesla_coil,
-					/obj/machinery/power/tesla_coil)
+	contains = list(/obj/machinery/power/energy_accumulator/tesla_coil,
+					/obj/machinery/power/energy_accumulator/tesla_coil,
+					/obj/machinery/power/energy_accumulator/tesla_coil,
+					/obj/machinery/power/energy_accumulator/tesla_coil)
 	crate_name = "tesla coil crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 
@@ -1934,7 +1921,7 @@
 				continue
 
 		//here we randomly replace our pizzas for a chance at the full range
-		var/obj/item/food/pizza/replacement_type = pickweight(pizza_types)
+		var/obj/item/food/pizza/replacement_type = pick_weight(pizza_types)
 		pizza_types -= replacement_type
 		if(replacement_type && !istype(P.pizza, replacement_type))
 			QDEL_NULL(P.pizza)
@@ -2402,7 +2389,7 @@
 	var/the_toy
 	for(var/i in 1 to num_contained)
 		if(prob(50))
-			the_toy = pickweight(GLOB.arcade_prize_pool)
+			the_toy = pick_weight(GLOB.arcade_prize_pool)
 		else
 			the_toy = pick(subtypesof(/obj/item/toy/plush))
 		new the_toy(C)

@@ -6,6 +6,7 @@ export const ExaminePanel = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     character_name,
+    obscured,
     assigned_map,
     flavor_text,
     ooc_notes,
@@ -20,16 +21,19 @@ export const ExaminePanel = (props, context) => {
       theme="admin">
       <Window.Content>
         <Stack fill>
-          <Stack.Item grow>
+          <Stack.Item width="30%">
             <Section fill title="Character Preview">
-              <ByondUi
-                height="100%"
-                width="100%"
-                className="ExaminePanel__map"
-                params={{
-                  id: assigned_map,
-                  type: 'map',
-                }} />
+              {!obscured
+              && (
+                <ByondUi
+                  height="100%"
+                  width="100%"
+                  className="ExaminePanel__map"
+                  params={{
+                    id: assigned_map,
+                    type: 'map',
+                  }} />
+              )}
             </Section>
           </Stack.Item>
           <Stack.Item grow>

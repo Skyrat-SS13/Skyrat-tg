@@ -20,7 +20,7 @@
 	new /obj/item/storage/backpack/satchel/cap(src)
 	new /obj/item/storage/backpack/duffelbag/captain(src)
 	new /obj/item/clothing/under/rank/captain/parade(src)
-	new /obj/item/clothing/suit/toggle/captains_parade(src)
+	new /obj/item/clothing/suit/armor/vest/capcarapace/captains_formal(src)
 	new /obj/item/clothing/head/caphat/parade(src)
 	new /obj/item/clothing/suit/captunic(src)
 	*/
@@ -83,7 +83,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/hos(src)
-	// new /obj/item/clothing/suit/toggle/armor/hos/hos_formal(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	// new /obj/item/clothing/suit/armor/hos/hos_formal(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/cartridge/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
@@ -93,7 +93,7 @@
 	// new /obj/item/clothing/under/rank/security/head_of_security/alt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	// new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src) //SKYRAT EDIT ADDITON - SEC_HAUL
-	// new /obj/item/clothing/head/hos(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+	new /obj/item/clothing/head/hos(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars(src)
 	// new /obj/item/clothing/under/rank/security/head_of_security/grey(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
@@ -110,7 +110,6 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
-	new /obj/item/storage/box/gunset/glock18_hos(src) //SKYRAT EDIT CHANGE
 	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/warden

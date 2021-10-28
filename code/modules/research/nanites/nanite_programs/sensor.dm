@@ -292,6 +292,7 @@
 		"Tajaran" = /datum/species/tajaran,
 		"Dwarf" = /datum/species/dwarf,
 		"IPC" = /datum/species/robotic/ipc,
+		"Teshari" = /datum/species/teshari,
 		"Synthetic Lizard" = /datum/species/robotic/synthliz,
 		"Synthetic Mammal" = /datum/species/robotic/synthetic_mammal,
 		"Synthetic Human" = /datum/species/robotic/synthetic_human, // SKYRAT EDIT - END

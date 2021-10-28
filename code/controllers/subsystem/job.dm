@@ -203,6 +203,8 @@ SUBSYSTEM_DEF(job)
 		return FALSE
 	if(job.veteran_only && !is_veteran_player(player.client))
 		return FALSE
+	if(job.has_banned_species(player.client.prefs))
+		return FALSE
 	//SKYRAT EDIT END
 	var/position_limit = job.total_positions
 	if(!latejoin)
@@ -242,6 +244,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.veteran_only && !is_veteran_player(player.client))
 			JobDebug("FOC player is not veteran, Player: [player]")
+		if(job.has_banned_species(player.client.prefs))
+			JobDebug("FOC job not compatible with species, Player: [player]")
+			continue
 		//SKYRAT EDIT END
 		if(job.required_playtime_remaining(player.client))
 			JobDebug("FOC player not enough xp, Player: [player]")
@@ -295,6 +300,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(job.veteran_only && !is_veteran_player(player.client))
 			JobDebug("GRJ player is not veteran, Player: [player]")
+		if(job.has_banned_species(player.client.prefs))
+			JobDebug("GRJ player has incompatible species, Player: [player]")
+			continue
 		//SKYRAT EDIT END
 
 		if(job.required_playtime_remaining(player.client))
@@ -481,6 +489,9 @@ SUBSYSTEM_DEF(job)
 				if(job.veteran_only && !is_veteran_player(player.client))
 					JobDebug("DO player is not veteran, Player: [player], Job:[job.title]")
 					continue
+				if(job.has_banned_species(player.client.prefs))
+					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
+					continue
 				//SKYRAT EDIT END
 
 				if(job.required_playtime_remaining(player.client))
@@ -617,7 +628,8 @@ SUBSYSTEM_DEF(job)
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)
 		if(J.spawn_positions > 0)
-			var/officer_positions = min(12, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 12 officers
+			// SKYRAT EDIT - Reduced from 12 max sec to 7 max sec due to departmental security being deactivated and replaced.
+			var/officer_positions = min(7, max(J.spawn_positions, round(unassigned.len / ssc))) //Scale between configured minimum and 12 officers
 			JobDebug("Setting open security officer positions to [officer_positions]")
 			J.total_positions = officer_positions
 			J.spawn_positions = officer_positions

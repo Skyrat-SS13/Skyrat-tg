@@ -183,7 +183,8 @@
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/surgical_drapes, //for true paramedics
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
-		/obj/item/medicell, //SKYRAT EDIT MEDIGUNS
+		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
+		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
 		/obj/item/bonesetter,
@@ -246,7 +247,7 @@
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_box,
 		/obj/item/food/donut,
-		/obj/item/kitchen/knife/combat,
+		/obj/item/knife/combat,
 		/obj/item/flashlight/seclite,
 		/obj/item/melee/baton/telescopic,
 		/obj/item/radio,
@@ -315,7 +316,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/reagent_containers/food/drinks/bottle,
 		/obj/item/stack/medical,
-		/obj/item/kitchen/knife,
+		/obj/item/knife,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/gps,
 		/obj/item/storage/bag/ore,

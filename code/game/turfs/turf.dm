@@ -170,7 +170,6 @@ GLOBAL_LIST_EMPTY(station_turfs)
 	requires_activation = FALSE
 	..()
 
-	vis_locs = null //clears this atom out of all viscontents
 	vis_contents.Cut()
 
 /// WARNING WARNING
@@ -525,6 +524,8 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 /turf/proc/add_blueprints(atom/movable/AM)
 	var/image/I = new
+	I.plane = GAME_PLANE
+	I.layer = OBJ_LAYER
 	I.appearance = AM.appearance
 	I.appearance_flags = RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM
 	I.loc = src
@@ -562,13 +563,9 @@ GLOBAL_LIST_EMPTY(station_turfs)
 
 /turf/handle_fall(mob/faller)
 	SEND_SIGNAL(src, COMSIG_TURF_MOB_FALL, faller) //SKYRAT EDIT ADDITION
-	//SKYRAT EDIT REMOVAL BEGIN - SOUNDS - moved to other place, to make you thud when you voluntairly rest
-	/* SKYRAT EDIT REMOVAL BEGIN
 	if(has_gravity(src))
 		playsound(src, "bodyfall", 50, TRUE)
-	//faller.drop_all_held_items()
-	*/
-	//SKYRAT EDIT END
+	faller.drop_all_held_items()
 
 /turf/proc/photograph(limit=20)
 	var/image/I = new()

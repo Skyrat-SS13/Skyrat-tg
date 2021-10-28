@@ -79,7 +79,7 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1)
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 70, 1, -1, ignore_walls = FALSE)
 					else
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return

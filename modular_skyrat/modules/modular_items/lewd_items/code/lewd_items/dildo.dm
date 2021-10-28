@@ -100,7 +100,7 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE, ignore_walls = FALSE)
 					else
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
@@ -122,7 +122,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("Looks like [M]'s mouth is covered!"))
@@ -141,7 +141,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s anus is covered!"))
@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	var/poly_size = "medium"
-	var/list/poly_colors = list("FFF", "F88", "888")
+	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 	var/can_customize = TRUE
 	var/size_changed = FALSE
 	var/color_changed = FALSE
@@ -317,7 +317,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE, ignore_walls = FALSE)
 					else
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s mouth is covered!"))
@@ -358,7 +358,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s anus is covered!"))
@@ -427,7 +427,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/double_dildo/proc/toggle(mob/living/carbon/user)
 	var/mob/living/carbon/human/C = usr
-	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
+	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
 	var/obj/item/held = C.get_active_held_item()
 	var/obj/item/unheld = C.get_inactive_held_item()
 
@@ -545,7 +545,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE, ignore_walls = FALSE)
 					else
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
@@ -567,7 +567,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("Looks like [M]'s mouth is covered!"))
@@ -586,7 +586,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s anus is covered!"))
@@ -635,7 +635,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE, ignore_walls = FALSE)
 					else
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
@@ -659,7 +659,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s mouth is covered!"))
@@ -680,7 +680,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s anus is covered!"))
