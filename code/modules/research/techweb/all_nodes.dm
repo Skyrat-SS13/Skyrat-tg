@@ -215,10 +215,12 @@
 	design_ids = list(
 		"circuit_multitool",
 		"comp_arithmetic",
+		"comp_binary_convert",
 		"comp_clock",
 		"comp_comparison",
 		"comp_concat",
 		"comp_concat_list",
+		"comp_decimal_convert",
 		"comp_delay",
 		"comp_direction",
 		"comp_filter_list",
@@ -924,6 +926,9 @@
 		"inducer",
 		"tray_goggles",
 		"holopad",
+		//SKYRAT EDIT - ADDITION MEDIGUNS
+		"gownmedicell",
+		//SKYRAT EDIT END
 		"vendatray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)

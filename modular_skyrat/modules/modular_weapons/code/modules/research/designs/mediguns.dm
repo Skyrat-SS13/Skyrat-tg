@@ -111,6 +111,16 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/gownmedicell
+	name = "Hardlight Gown Medicell"
+	desc = "A Medicell that deploys a hardlight hospital gown on a patient."
+	id = "gownmedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000)
+	build_path = /obj/item/weaponcell/medical/utility/hardlight_gown
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 //Upgrade Kit//
 /datum/design/medigunspeedkit
 	name = "VeyMedical CWM-479 Upgrade kit"
