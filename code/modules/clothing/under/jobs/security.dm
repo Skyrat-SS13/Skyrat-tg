@@ -23,8 +23,6 @@
 	desc = "A tactical security jumpsuit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rsecurity"
 	inhand_icon_state = "r_suit"
-<<<<<<< Updated upstream
-=======
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -132,8 +130,6 @@
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
->>>>>>> Stashed changes
-
 /obj/item/clothing/under/rank/security/officer/grey
 	name = "grey security jumpsuit"
 	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
@@ -175,8 +171,6 @@
 	desc = "A formal security suit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rwarden"
 	inhand_icon_state = "r_suit"
-<<<<<<< Updated upstream
-=======
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -217,8 +211,6 @@
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
-
->>>>>>> Stashed changes
 
 /obj/item/clothing/under/rank/security/warden/grey
 	name = "grey security suit"
