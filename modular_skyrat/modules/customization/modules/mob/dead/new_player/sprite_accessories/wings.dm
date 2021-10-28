@@ -130,6 +130,9 @@
 	default_color = DEFAULT_PRIMARY
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT, SPECIES_SYNTHLIZ)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one
 	name = "Bat"

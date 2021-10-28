@@ -32,6 +32,7 @@ export const Markings = (props, context) => {
             <Stack.Item>
               <Button fill
                 color={marking.emissive ? "good" : "bad"}
+                tooltip="The 'E' is for 'Emissive', meaning does it glow or not. Green for glow, red for no glow."
                 onClick={() => act("change_emissive", { limb_slot: props.limb.slot, marking_id: marking.marking_id, emissive: marking.emissive })}
               >
                 E

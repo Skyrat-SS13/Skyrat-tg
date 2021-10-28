@@ -67,10 +67,10 @@
 			aux = image(limb.icon, "[aux_zone]", -aux_layer, image_dir)
 			. += aux
 		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, -BODYPARTS_LAYER, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
 			limb_em_block.dir = image_dir
 			limb_em_block.color = GLOB.em_block_color
-			limb.overlays += limb_em_block
+			. += limb_em_block
 		return
 
 	var/draw_color
@@ -85,6 +85,19 @@
 		return
 
 	var/mob/living/carbon/human/H = owner
+
+	if(blocks_emissive)
+		var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, -BODYPARTS_LAYER,  plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+		limb_em_block.dir = image_dir
+		limb_em_block.color = GLOB.em_block_color
+		. += limb_em_block
+
+		if(aux_zone)
+			var/mutable_appearance/aux_em_block = mutable_appearance(aux.icon, aux.icon_state, -BODYPARTS_LAYER, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
+			aux_em_block.dir = image_dir
+			aux_em_block.color = GLOB.em_block_color
+			. += aux_em_block
+
 	//set specific alpha before setting the markings alpha
 	if (alpha != 255)
 		for (var/ov in .)
@@ -112,15 +125,13 @@
 		var/mutable_appearance/accessory_overlay
 		var/mutable_appearance/emissive
 		accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
+		accessory_overlay.alpha = H.dna.species.markings_alpha
 		if (H.dna.species.body_markings[body_zone][key][2])
-			emissive = emissive_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -BODYPARTS_LAYER)
-			emissive.appearance_flags ^= RESET_TRANSFORM
-			emissive.alpha = H.dna.species.markings_alpha
+			emissive = emissive_appearance_copy(accessory_overlay)
 		if(override_color)
 			accessory_overlay.color = override_color
 		else
 			accessory_overlay.color = H.dna.species.body_markings[body_zone][key][1]
-		accessory_overlay.alpha = H.dna.species.markings_alpha
 		. += accessory_overlay
 		if (emissive)
 			. += emissive
@@ -134,30 +145,16 @@
 			var/mutable_appearance/emissive
 			var/mutable_appearance/accessory_overlay
 			accessory_overlay = mutable_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
+			accessory_overlay.alpha = H.dna.species.markings_alpha
 			if (H.dna.species.body_markings[aux_zone][key][2])
-				emissive = emissive_appearance(BM.icon, "[BM.icon_state]_[render_limb_string]", -aux_layer)
-				emissive.appearance_flags ^= RESET_TRANSFORM
-				emissive.alpha = H.dna.species.markings_alpha
+				emissive = emissive_appearance_copy(accessory_overlay)
 			if(override_color)
 				accessory_overlay.color = override_color
 			else
 				accessory_overlay.color = H.dna.species.body_markings[aux_zone][key][1]
-			accessory_overlay.alpha = H.dna.species.markings_alpha
 			. += accessory_overlay
 			if (emissive)
 				. += emissive
-
-	if(blocks_emissive)
-		var/mutable_appearance/limb_em_block = mutable_appearance(limb.icon, limb.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
-		limb_em_block.dir = image_dir
-		limb_em_block.color = GLOB.em_block_color
-		limb.overlays += limb_em_block
-
-		if(aux_zone)
-			var/mutable_appearance/aux_em_block = mutable_appearance(aux.icon, aux.icon_state, plane = EMISSIVE_PLANE, appearance_flags = KEEP_APART)
-			aux_em_block.dir = image_dir
-			aux_em_block.color = GLOB.em_block_color
-
 
 	if(!draw_external_organs)
 		return

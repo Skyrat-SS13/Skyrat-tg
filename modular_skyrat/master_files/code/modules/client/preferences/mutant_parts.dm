@@ -756,61 +756,6 @@
 	relevant_mutant_bodypart = "fluff"
 	type_to_check = /datum/preference/toggle/fluff
 
-/// Head Accessories
-
-/datum/preference/toggle/head_acc
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "head_acc_toggle"
-	relevant_mutant_bodypart = "head_acc"
-	default_value = FALSE
-
-/datum/preference/toggle/head_acc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return TRUE // we dont actually want this to do anything
-
-/datum/preference/toggle/head_acc/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	return passed_initial_check || allowed
-
-/datum/preference/choiced/head_acc
-	savefile_key = "feature_head_acc"
-	savefile_identifier = PREFERENCE_CHARACTER
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_mutant_bodypart = "head_acc"
-
-/datum/preference/choiced/head_acc/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/head_acc)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/choiced/head_acc/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["head_acc"])
-
-/datum/preference/choiced/head_acc/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
-	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
-
-/datum/preference/choiced/head_acc/create_default_value()
-	var/datum/sprite_accessory/head_accessory/none/default = /datum/sprite_accessory/head_accessory/none
-	return initial(default.name)
-
-/datum/preference/tri_color/head_acc
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "head_acc_color"
-	relevant_mutant_bodypart = "head_acc"
-	type_to_check = /datum/preference/toggle/head_acc
-
-/datum/preference/tri_bool/head_acc
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "head_acc_emissive"
-	relevant_mutant_bodypart = "head_acc"
-	type_to_check = /datum/preference/toggle/head_acc
-
 /// IPC Screens
 
 /datum/preference/toggle/ipc_screen
@@ -1243,3 +1188,116 @@
 	savefile_key = "xenohead_emissive"
 	relevant_mutant_bodypart = "xenohead"
 	type_to_check = /datum/preference/toggle/xenohead
+
+
+/// Head Accessories - Unless more get added, this is only able to be applied for one person, a donator only thing
+
+/datum/preference/toggle/head_acc
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "head_acc_toggle"
+	relevant_mutant_bodypart = "head_acc"
+	default_value = FALSE
+
+/datum/preference/toggle/head_acc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return TRUE // we dont actually want this to do anything
+
+/datum/preference/toggle/head_acc/is_accessible(datum/preferences/preferences)
+	var/ckeycheck = preferences?.parent.ckey == "whirlsam"
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	return ckeycheck && (passed_initial_check || allowed)
+
+/datum/preference/choiced/head_acc
+	savefile_key = "feature_head_acc"
+	savefile_identifier = PREFERENCE_CHARACTER
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	relevant_mutant_bodypart = "head_acc"
+
+/datum/preference/choiced/head_acc/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/part_enabled = preferences.read_preference(/datum/preference/toggle/head_acc)
+	return ((passed_initial_check || allowed) && part_enabled)
+
+/datum/preference/choiced/head_acc/init_possible_values()
+	return assoc_to_keys(GLOB.sprite_accessories["head_acc"])
+
+/datum/preference/choiced/head_acc/apply_to_human(mob/living/carbon/human/target, value)
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
+
+/datum/preference/choiced/head_acc/create_default_value()
+	var/datum/sprite_accessory/head_accessory/none/default = /datum/sprite_accessory/head_accessory/none
+	return initial(default.name)
+
+/datum/preference/tri_color/head_acc
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "head_acc_color"
+	relevant_mutant_bodypart = "head_acc"
+	type_to_check = /datum/preference/toggle/head_acc
+
+/datum/preference/tri_bool/head_acc
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "head_acc_emissive"
+	relevant_mutant_bodypart = "head_acc"
+	type_to_check = /datum/preference/toggle/head_acc
+
+/// Neck Accessories - Same as head_acc
+
+/datum/preference/toggle/neck_acc
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "neck_acc_toggle"
+	relevant_mutant_bodypart = "neck_acc"
+	default_value = FALSE
+
+/datum/preference/toggle/neck_acc/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return TRUE // we dont actually want this to do anything
+
+/datum/preference/toggle/neck_acc/is_accessible(datum/preferences/preferences)
+	var/ckeycheck = preferences?.parent.ckey == "whirlsam"
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	return ckeycheck && (passed_initial_check || allowed)
+
+/datum/preference/choiced/neck_acc
+	savefile_key = "feature_neck_acc"
+	savefile_identifier = PREFERENCE_CHARACTER
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	relevant_mutant_bodypart = "neck_acc"
+
+/datum/preference/choiced/neck_acc/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/part_enabled = preferences.read_preference(/datum/preference/toggle/neck_acc)
+	return ((passed_initial_check || allowed) && part_enabled)
+
+/datum/preference/choiced/neck_acc/init_possible_values()
+	return assoc_to_keys(GLOB.sprite_accessories["neck_acc"])
+
+/datum/preference/choiced/neck_acc/apply_to_human(mob/living/carbon/human/target, value)
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
+
+/datum/preference/choiced/neck_acc/create_default_value()
+	var/datum/sprite_accessory/neck_accessory/none/default = /datum/sprite_accessory/neck_accessory/none
+	return initial(default.name)
+
+/datum/preference/tri_color/neck_acc
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "neck_acc_color"
+	relevant_mutant_bodypart = "neck_acc"
+	type_to_check = /datum/preference/toggle/neck_acc
+
+/datum/preference/tri_bool/neck_acc
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "neck_acc_emissive"
+	relevant_mutant_bodypart = "neck_acc"
+	type_to_check = /datum/preference/toggle/neck_acc

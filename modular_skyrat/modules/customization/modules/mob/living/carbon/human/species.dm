@@ -151,14 +151,15 @@ GLOBAL_LIST_EMPTY(customizable_races)
 								var/num = text2num(n)
 								var/mutable_appearance/matrixed_acce = mutable_appearance(icon_to_use, layer = -layer)
 								matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
-								matrixed_acce = center_image(matrixed_acce, x_shift, S.dimension_y)
 								matrixed_acce.color = color_list[num]
 								matrixed_acce.alpha = specific_alpha
+								if (S.center)
+									matrixed_acce = center_image(matrixed_acce, x_shift, S.dimension_y)
 								accessories += matrixed_acce
 								if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
-									var/mutable_appearance/emissive_overlay = emissive_appearance(matrixed_acce.icon, matrixed_acce.icon_state, -layer, specific_alpha)
-									emissive_overlay.appearance_flags ^= RESET_TRANSFORM
-									emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
+									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce)
+									//if (S.center)
+									//	emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
 									accessories += emissive_overlay
 						if(MUTCOLORS)
 							if(fixed_mut_color)
@@ -184,9 +185,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			else
 				standing += accessory_overlay
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
-					var/mutable_appearance/emissive_overlay = emissive_appearance(accessory_overlay.icon, accessory_overlay.icon_state, -layer, specific_alpha)
-					emissive_overlay.appearance_flags ^= RESET_TRANSFORM
-					emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
+					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay)
+					//if (S.center)
+					//	emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
 					standing += emissive_overlay
 
 			if(S.hasinner)
@@ -470,7 +471,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			else
 				eye_overlay = mutable_appearance(eye_icon, E.eye_icon_state, -BODY_LAYER)
 				if (E.is_emissive)
-					eye_emissive = emissive_appearance(eye_icon, E.eye_icon_state, -BODY_LAYER)
+					eye_emissive = emissive_appearance_copy(eye_overlay)
 			if((EYECOLOR in species_traits) && E)
 				eye_overlay.color = species_human.eye_color
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
