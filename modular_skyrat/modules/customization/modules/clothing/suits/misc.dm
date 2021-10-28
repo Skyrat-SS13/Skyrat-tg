@@ -285,7 +285,8 @@
 	name = "security ukrainian coat"
 	icon_state = "don_cossak"
 	mutant_variants = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
+
 
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
