@@ -2,7 +2,7 @@
 	name = "bench"
 	desc = "Firm and uncomfortable."
 	icon = 'modular_skyrat/modules/aesthetics/bench/icons/bench.dmi'
-	icon_state = "benchmiddle"
+	icon_state = "bench_middle"
 
 /obj/structure/chair/sofa/bench/left
 	icon_state = "bench_left"
@@ -11,7 +11,7 @@
 	icon_state = "bench_right"
 
 /obj/structure/chair/sofa/bench/corner
-	icon_state = "benchcorner"
+	icon_state = "bench_corner"
 
 /*
 /obj/structure/chair/sofa/monorail
