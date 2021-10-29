@@ -17,7 +17,7 @@
 	id = /obj/item/card/id/advanced/centcom/ert/gcc
 	id_trim = /datum/id_trim/gcc
 
-/datum/outfit/centcom/ert/gcc
+/datum/outfit/centcom/ert/gcc/heavy
 	name = "Gilgamesh Colonial Confederation Heavy Soldier"
 	head = /obj/item/clothing/head/helmet/gcc_heavy
 	suit = /obj/item/clothing/suit/armor/heavy/gcc
