@@ -25,6 +25,8 @@
 	back = /obj/item/deployable_turret_folded
 	backpack_contents = null
 
+	l_pocket = /obj/item/wrench/combat
+
 	id_trim = /datum/id_trim/gcc/heavy
 
 /datum/outfit/centcom/ert/gcc/commander
