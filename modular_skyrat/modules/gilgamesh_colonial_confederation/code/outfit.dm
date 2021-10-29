@@ -22,6 +22,9 @@
 	head = /obj/item/clothing/head/helmet/gcc_heavy
 	suit = /obj/item/clothing/suit/armor/heavy/gcc
 
+	back = /obj/item/deployable_turret_folded
+	backpack_contents = null
+
 	id_trim = /datum/id_trim/gcc/heavy
 
 /datum/outfit/centcom/ert/gcc/commander
