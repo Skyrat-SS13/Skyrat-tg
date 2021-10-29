@@ -222,3 +222,14 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	name = "Low wings (Top)"
 	icon_state = "low_top"
+
+/datum/sprite_accessory/wings/mammal/spider
+	name = "Spider legs"
+	icon_state = "spider"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/robowing
+	name = "mechanical dragon wings"
+	icon_state = "robowing"
+	color_src = USE_MATRIXED_COLORS
+
