@@ -1,4 +1,4 @@
-## Title: Gilgamesh Colonial Federation ERT
+## Title: Gilgamesh Colonial Confederation ERT
 
 MODULE ID: GCC ERT
 
@@ -9,3 +9,4 @@ A new style ERT for our Russian downstreams, requested by them! It's a cool look
 ### Credits:
 Gandalf2k15 - Code and some icons.
 Ramirez - Icons and idea.
+Flavrius - Icons + misc.

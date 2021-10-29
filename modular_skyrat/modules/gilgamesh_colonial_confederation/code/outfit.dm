@@ -1,9 +1,9 @@
 /datum/outfit/centcom/ert/gcc
-	name = "Gilgamesh Colonial Federation Soldier"
+	name = "Gilgamesh Colonial Confederation Soldier"
 
 	head = /obj/item/clothing/head/helmet/rus_helmet/gcc
 	glasses = /obj/item/clothing/glasses/night
-	ears = /obj/item/radio/headset/syndicate/alt
+	ears = /obj/item/radio/headset/headset_cent/alt/with_key
 	mask = /obj/item/clothing/mask/balaclavaadjust
 	uniform = /obj/item/clothing/under/costume/gcc
 	suit = /obj/item/clothing/suit/armor/vest/russian/gcc
@@ -15,10 +15,17 @@
 	shoes = /obj/item/clothing/shoes/jackboots/black
 
 	id = /obj/item/card/id/advanced/centcom/ert/gcc
+	id_trim = /datum/id_trim/gcc
 
+/datum/outfit/centcom/ert/gcc
+	name = "Gilgamesh Colonial Confederation Heavy Soldier"
+	head = /obj/item/clothing/head/helmet/gcc_heavy
+	suit = /obj/item/clothing/suit/armor/heavy/gcc
+
+	id_trim = /datum/id_trim/gcc/heavy
 
 /datum/outfit/centcom/ert/gcc/commander
-	name = "Gilgamesh Colonial Federation Platoon Commander"
+	name = "Gilgamesh Colonial Confederation Platoon Commander"
 	head = /obj/item/clothing/head/beret/sec/gcc
 
-	id = /obj/item/card/id/advanced/centcom/ert/gcc/commander
+	id_trim = /datum/id_trim/gcc/commander
