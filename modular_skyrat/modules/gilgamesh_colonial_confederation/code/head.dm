@@ -28,10 +28,10 @@
 	update_appearance()
 
 /obj/item/clothing/head/helmet/gcc_heavy/update_icon_state()
+	. = ..()
 	var/state = "[initial(icon_state)]"
 	if(position)
 		state += "-down"
 	else
 		state += "-up"
 	icon_state = state
-	return ..()

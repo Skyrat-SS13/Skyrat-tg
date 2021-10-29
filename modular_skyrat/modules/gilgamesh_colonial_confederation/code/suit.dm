@@ -16,3 +16,4 @@
 	armor = list(MELEE = 70, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, RAD = 100, FIRE = 90, ACID = 90)
 	slowdown = 2
 	equip_delay_self = 5 SECONDS
+	mutant_variants = STYLE_DIGITIGRADE

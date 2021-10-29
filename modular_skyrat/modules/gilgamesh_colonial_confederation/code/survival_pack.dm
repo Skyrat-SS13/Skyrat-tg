@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/modules/exp_corps/icons/survival_pack.dmi'
 	illustration = null
 
-/obj/item/storage/box/expeditionary_survival/PopulateContents()
+/obj/item/storage/box/gcc_survival_pack/PopulateContents()
 	new /obj/item/storage/box/rations(src)
 	new /obj/item/flashlight/glowstick(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
