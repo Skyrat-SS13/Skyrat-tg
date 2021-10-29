@@ -11,7 +11,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/gcc/full
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/gcc_survival_pack)
+	backpack_contents = list(/obj/item/storage/box/gcc_survival_pack, /obj/item/clothing/mask/gas/alt)
 	shoes = /obj/item/clothing/shoes/jackboots/black
 
 	id = /obj/item/card/id/advanced/centcom/ert/gcc
@@ -21,6 +21,7 @@
 	name = "Gilgamesh Colonial Confederation Heavy Soldier"
 	head = /obj/item/clothing/head/helmet/gcc_heavy
 	suit = /obj/item/clothing/suit/armor/heavy/gcc
+	mask = /obj/item/clothing/mask/gas/alt
 
 	back = /obj/item/deployable_turret_folded
 	backpack_contents = null
