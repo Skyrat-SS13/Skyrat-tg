@@ -23,7 +23,7 @@
 	// SKYRAT EDIT START - Moving voice changing to Malf only
 #ifdef AI_VOX
 	var/mob/living/silicon/ai/malf_ai = owner.current
-	add_verb(malf_ai, /mob/living/silicon/ai/proc/switch_vox)
+	malf_ai.vox_voices += VOX_MIL
 #endif
 	// SKYRAT EDIT END
 
@@ -40,7 +40,7 @@
 		malf_ai.remove_malf_abilities()
 		// SKYRAT EDIT START - Moving voice changing to Malf only
 #ifdef AI_VOX
-		remove_verb(malf_ai, /mob/living/silicon/ai/proc/switch_vox)
+		malf_ai.vox_voices -= VOX_MIL
 		malf_ai.vox_type = VOX_NORMAL
 #endif
 		// SKYRAT EDIT END
