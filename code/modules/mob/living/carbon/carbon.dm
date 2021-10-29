@@ -1306,11 +1306,6 @@
 	return ..()
 
 
-<<<<<<< HEAD
-/mob/living/carbon/proc/attach_rot(mapload)
-	SIGNAL_HANDLER
-=======
 /mob/living/carbon/proc/attach_rot()
->>>>>>> f03fd9dd8ab (Few minor runtime fixes (#62394))
 	if(mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD))
 		AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)
