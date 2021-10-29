@@ -16,6 +16,9 @@
 					/obj/item/clothing/under/syndicate/combat = 3,
 					/obj/item/clothing/shoes/combat = 3,
 					/obj/item/clothing/mask/gas/syndicate = 3)
+	contraband = list(/obj/item/knife/combat = 1,
+					/obj/item/clothing/under/syndicate/coldres = 2,
+					/obj/item/clothing/shoes/combat/coldres = 2)
 	premium = list(/obj/item/knife/combat/survival = 1,
 					/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 5,
 					/obj/item/clothing/gloves/combat = 3)

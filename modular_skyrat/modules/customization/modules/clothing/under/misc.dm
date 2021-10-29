@@ -130,6 +130,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tac_s"
+	mutant_variants = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/misc/bluetracksuit
 	name = "blue tracksuit"
@@ -369,6 +370,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cargotechjean"
 	inhand_icon_state = "lb_suit"
+	mutant_variants = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/rank/cargo/qm/syndie
 	name = "deck officer's jumpsuit"
