@@ -14,7 +14,7 @@
 
 /obj/item/clothing/head/helmet/gcc_heavy
 	name = "altyn helmet"
-	desc = "A very heavy Russian combat helmet with a ballistics visor. Alt+click it to adjust."
+	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
