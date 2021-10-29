@@ -13,7 +13,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor"
-	armor = list(MELEE = 60, BULLET = 60, LASER = 40, ENERGY = 40, BOMB = 80, BIO = 50, RAD = 50, FIRE = 90, ACID = 90)
+	armor = list(MELEE = 70, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, RAD = 100, FIRE = 90, ACID = 90)
 	slowdown = 2
 	equip_delay_self = 5 SECONDS
 	mutant_variants = STYLE_DIGITIGRADE
