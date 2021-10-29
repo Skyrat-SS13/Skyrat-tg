@@ -648,7 +648,7 @@
 		var/turf/host_turf = get_turf(src)
 		if(!host_turf)
 			CRASH("attackby on APC when it's not on a turf")
-		if (host_turf.intact)
+		if (host_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
 			to_chat(user, span_warning("You must remove the floor plating in front of the APC first!"))
 			return
 		else if (terminal)
@@ -979,8 +979,8 @@
 				"status" = equipment,
 				"topicParams" = list(
 					"auto" = list("eqp" = 3),
-					"on"   = list("eqp" = 2),
-					"off"  = list("eqp" = 1)
+					"on" = list("eqp" = 2),
+					"off" = list("eqp" = 1),
 				)
 			),
 			list(
@@ -989,8 +989,8 @@
 				"status" = lighting,
 				"topicParams" = list(
 					"auto" = list("lgt" = 3),
-					"on"   = list("lgt" = 2),
-					"off"  = list("lgt" = 1)
+					"on" = list("lgt" = 2),
+					"off" = list("lgt" = 1),
 				)
 			),
 			list(
@@ -999,8 +999,8 @@
 				"status" = environ,
 				"topicParams" = list(
 					"auto" = list("env" = 3),
-					"on"   = list("env" = 2),
-					"off"  = list("env" = 1)
+					"on" = list("env" = 2),
+					"off" = list("env" = 1),
 				)
 			)
 		)

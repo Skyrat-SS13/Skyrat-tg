@@ -126,8 +126,11 @@
 	if(. && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		var/open = FALSE
-		if(H.dna.features["wings"] != "None")
-			if(H.dna.species.mutant_bodyparts["wingsopen"])
+//			if(H.dna.features["wings"] != "None") // This was our check before, leaving it here in case it's needed when someone gets around to fixing this.
+//				if(H.dna.species.mutant_bodyparts["wingsopen"])
+		var/obj/item/organ/external/wings/functional/wings = H.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)
+		if(istype(wings))
+			if(wings.wings_open)
 				open = TRUE
 				H.CloseWings()
 			else
