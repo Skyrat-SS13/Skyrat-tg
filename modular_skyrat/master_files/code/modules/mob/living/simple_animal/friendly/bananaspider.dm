@@ -59,7 +59,7 @@
 	melee_damage_upper = 5
 	move_to_delay = 4
 	speed = -0.5
-	faction = list(ROLE_SPIDER)
+	faction = list("spiders")
 
 /mob/living/simple_animal/hostile/giant_spider/badnana_spider/AttackingTarget()
 	. = ..()

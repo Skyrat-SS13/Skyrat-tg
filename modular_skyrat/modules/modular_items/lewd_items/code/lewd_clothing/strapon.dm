@@ -128,7 +128,7 @@
 
 /obj/item/clothing/strapon/proc/toggle(user)
 	var/mob/living/carbon/human/C = usr
-	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE)
+	playsound(C, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 40, TRUE, ignore_walls = FALSE)
 	var/obj/item/held = C.get_active_held_item()
 	var/obj/item/unheld = C.get_inactive_held_item()
 
@@ -217,7 +217,7 @@
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE)
+											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 60, TRUE, ignore_walls = FALSE)
 					else
 						to_chat(user, span_danger("[M]'s groin is covered!"))
 						return
@@ -239,7 +239,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 40, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s mouth is covered!"))
@@ -258,7 +258,7 @@
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang3.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang4.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
-										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE)
+										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s anus is covered!"))

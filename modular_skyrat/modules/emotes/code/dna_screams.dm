@@ -70,3 +70,7 @@
 /datum/species/lizard
 	screamsounds = list('sound/voice/lizard/lizard_scream_1.ogg', 'sound/voice/lizard/lizard_scream_2.ogg', 'sound/voice/lizard/lizard_scream_3.ogg')
 	femalescreamsounds = null
+
+/datum/species/teshari
+	screamsounds = list('modular_skyrat/modules/emotes/sound/emotes/raptorscream.ogg')
+	femalescreamsounds = null

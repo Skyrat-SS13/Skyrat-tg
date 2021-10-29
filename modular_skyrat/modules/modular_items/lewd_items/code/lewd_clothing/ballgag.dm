@@ -76,7 +76,7 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
-						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1)
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1, ignore_walls = FALSE)
 
 //to update model lol
 /obj/item/clothing/mask/ballgag/ComponentInitialize()

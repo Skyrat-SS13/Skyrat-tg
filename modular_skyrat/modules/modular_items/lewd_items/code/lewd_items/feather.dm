@@ -30,7 +30,7 @@
 				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg', 					//i duplicate this part of code because im useless shitcoder that can't make it work properly without tons of repeating code blocks
             			            'sound/items/handling/cloth_pickup.ogg',				//if you can make it better - go ahead, modify it, please.
-        	       	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)	//selfdestruction - 100
+        	       	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)	//selfdestruction - 100
 			else
 				to_chat(user, span_danger("[M]'s groin is covered!"))
 				return
@@ -49,7 +49,7 @@
 				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
             			            'sound/items/handling/cloth_pickup.ogg',
-        	       	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
+        	       	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)
 			else
 				to_chat(user, span_danger("[M]'s chest is covered!"))
 				return
@@ -68,7 +68,7 @@
 					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
             				            'sound/items/handling/cloth_pickup.ogg',
-        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
+        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)
 				else
 					to_chat(user, span_danger("[M]'s toes are covered!"))
 					return
@@ -90,7 +90,7 @@
 					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
             				            'sound/items/handling/cloth_pickup.ogg',
-        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
+        	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)
 
 				else
 					to_chat(user, span_danger("[M]'s toes are covered!"))
@@ -112,7 +112,7 @@
 				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
            				            'sound/items/handling/cloth_pickup.ogg',
-       	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
+       	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)
 
 			else
 				to_chat(user, span_danger("[M]'s armpits are covered!"))
@@ -131,7 +131,7 @@
 				user.visible_message(span_purple("[user] [message]!"))
 				playsound(loc, pick('sound/items/handling/cloth_drop.ogg',
            				            'sound/items/handling/cloth_pickup.ogg',
-       	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1)
+       	        	    		    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)
 
 			else
 				to_chat(user, span_danger("[M]'s armpits are covered!"))

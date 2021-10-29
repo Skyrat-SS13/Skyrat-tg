@@ -9,7 +9,7 @@
 	px_x = 0
 	px_y = 0
 	stam_damage_coeff = 1
-	max_stamina_damage = 120
+	max_stamina_damage = 162 // SKYRAT EDIT CHANGE: originally 120, update for stamina crit
 	grind_results = null
 	wound_resistance = 10
 	var/obj/item/cavity_item

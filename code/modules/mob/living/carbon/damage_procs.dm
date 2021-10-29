@@ -38,14 +38,11 @@
 		if(CLONE)
 			adjustCloneLoss(damage_amount, forced = forced)
 		if(STAMINA)
-			/* SKYRAT EDIT REMOVAL BEGIN
 			if(BP)
 				if(BP.receive_damage(0, 0, damage_amount))
 					update_damage_overlays()
 			else
 				adjustStaminaLoss(damage_amount, forced = forced)
-			*/ // SKYRAT EDIT REMOVAL END
-			adjustStaminaLoss(damage_amount, forced = forced) //SKYRAT EDIT ADDITiON
 	return TRUE
 
 
