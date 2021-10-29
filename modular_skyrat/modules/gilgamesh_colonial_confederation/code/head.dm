@@ -8,7 +8,7 @@
 	armor = list("melee" = 40, "bullet" = 30, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 20, "fire" = 50, "acid" = 50, "wound" = 20)
 
 /obj/item/clothing/head/beret/sec/gcc
-	name = "commanders beret"
+	name = "commander's beret"
 	desc = "Za rodinu!!"
 	armor = list("melee" = 40, "bullet" = 30, "laser" = 15, "energy" = 30, "bomb" = 25, "bio" = 0, "rad" = 20, "fire" = 50, "acid" = 50, "wound" = 20)
 
