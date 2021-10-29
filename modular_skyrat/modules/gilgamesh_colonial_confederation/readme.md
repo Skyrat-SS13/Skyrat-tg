@@ -1,0 +1,11 @@
+## Title: Gilgamesh Colonial Federation ERT
+
+MODULE ID: GCC ERT
+
+### Description:
+
+A new style ERT for our Russian downstreams, requested by them! It's a cool looking Russian style space ERT with guns and vodka!
+
+### Credits:
+Gandalf2k15 - Code and some icons.
+Ramirez - Icons and idea.
