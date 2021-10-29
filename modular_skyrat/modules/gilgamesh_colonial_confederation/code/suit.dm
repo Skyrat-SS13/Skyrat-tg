@@ -8,7 +8,7 @@
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/armor/heavy/gcc
-	name = "russian Redut heavy armor"
+	name = "REDUT armor system"
 	desc = "vodka"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
