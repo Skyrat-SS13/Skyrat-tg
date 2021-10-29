@@ -22,10 +22,10 @@
 	head = /obj/item/clothing/head/helmet/gcc_heavy
 	suit = /obj/item/clothing/suit/armor/heavy/gcc
 	mask = /obj/item/clothing/mask/gas/alt
-
+	belt = /obj/item/storage/belt/military/gcc/full_heavy
+	suit_store = /obj/item/gun/ballistic/automatic/pistol
 	back = /obj/item/deployable_turret_folded
 	backpack_contents = null
-
 	l_pocket = /obj/item/wrench/combat
 
 	id_trim = /datum/id_trim/gcc/heavy
@@ -33,5 +33,8 @@
 /datum/outfit/centcom/ert/gcc/commander
 	name = "Gilgamesh Colonial Confederation Platoon Commander"
 	head = /obj/item/clothing/head/beret/sec/gcc
+	belt = /obj/item/storage/belt/military/gcc/full_commander
+	suit_store = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
 
 	id_trim = /datum/id_trim/gcc/commander
+

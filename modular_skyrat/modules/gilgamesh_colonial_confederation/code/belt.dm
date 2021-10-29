@@ -14,3 +14,19 @@
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
 	),src)
+
+/obj/item/storage/belt/military/gcc/full_heavy/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/m9mm = 4,
+		/obj/item/knife/combat = 1,
+		/obj/item/grenade/smokebomb = 1,
+		/obj/item/grenade/frag = 1,
+	),src)
+
+/obj/item/storage/belt/military/gcc/full_commander/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/ppsh = 4,
+		/obj/item/knife/combat = 1,
+		/obj/item/grenade/smokebomb = 1,
+		/obj/item/grenade/frag = 1,
+	),src)
