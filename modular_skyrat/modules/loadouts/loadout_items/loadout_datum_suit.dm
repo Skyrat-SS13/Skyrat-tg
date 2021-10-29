@@ -468,7 +468,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/cossak/sec
 	name = "Ukrainian Security Jacket"
-	item_path = /obj/item/clothing/suit/cossack/sec
+	item_path = /obj/item/clothing/suit/armor/cossack/sec
 	restricted_roles = list("Head of Security", "Security Officer", "Warden", "Detective", "Security Medic", "Security Sergeant", "Civil Disputes Officer", "Corrections Officer")
 
 /datum/loadout_item/suit/brit

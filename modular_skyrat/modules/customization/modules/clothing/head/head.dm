@@ -172,7 +172,7 @@
 	icon_state = "papakha_kuban"
 	dog_fashion = null
 
-/obj/item/clothing/head/sec/sol
+/obj/item/clothing/head/sec/peacekeeper/sol
 	name = "sol police cap"
 	desc = "Be a proper boy in blue with this cap, comes with a black visor to block out inconvenient truths."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'

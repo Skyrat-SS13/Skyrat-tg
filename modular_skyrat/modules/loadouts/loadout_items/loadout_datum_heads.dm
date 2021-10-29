@@ -499,13 +499,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/navyblueofficerberet
-	name = "Security officer's Navyblue beret"
+	name = "Security Officer's Navyblue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
 /datum/loadout_item/head/solofficercap
-	name = "Security officer's Sol Cap"
-	item_path = /obj/item/clothing/head/sec/sol
+	name = "Security Officer's Sol Cap"
+	item_path = /obj/item/clothing/head/sec/peacekeeper/sol
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
 /datum/loadout_item/head/soltrafficoff

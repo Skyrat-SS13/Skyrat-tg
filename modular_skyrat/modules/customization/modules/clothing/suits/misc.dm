@@ -279,14 +279,13 @@
 	icon_state = "kuban_cossak"
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/cossack/sec
+/obj/item/clothing/suit/armor/cossack/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "security ukrainian coat"
+	desc = "Cossacks, oh cossacks, let's go, cossachenki."
 	icon_state = "don_cossak"
 	mutant_variants = NONE
-	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
-
 
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"
