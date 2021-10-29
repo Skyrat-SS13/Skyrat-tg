@@ -9,7 +9,7 @@
 
 /obj/item/clothing/suit/armor/heavy/gcc
 	name = "REDUT armor system"
-	desc = "vodka"
+	desc = "A strong set of full-body armor designed for harsh environments. It has nothing in it to aid the user's movement."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor"
