@@ -6,7 +6,6 @@
 	mission = "Assist the station."
 	polldesc = "a squad of specialized GCC soldiers"
 
-
 /datum/antagonist/ert/gcc
 	name = "Gilgamesh Colonial Confederation Soldier"
 	role = "Soldier"
