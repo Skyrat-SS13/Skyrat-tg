@@ -4,9 +4,12 @@ const Snail: Species = {
   description: "A race that is slimy and has a shell. Though they can walk, they prefer to crawl on the ground.\
                 They are weak to a few things though, so be cautious when around them.",
   features: {
-    good: [
-
-    ],
+    good: [{
+      icon: "temperature-low",
+      name: "Cold Strength",
+      description: "Snails are have some tolerance for cold \
+        temperatures.",
+    }],
     neutral: [{
       icon: "fist-raised",
       name: "Shell",
@@ -29,11 +32,6 @@ const Snail: Species = {
       name: "Eletricity Weakness",
       description: "Snails are mainly liquids \
         and will be shocked harder.",
-    }, {
-      icon: "temperature-low",
-      name: "Cold Strength",
-      description: "Snails are have some tolerance for cold \
-        temperatures.",
     }, {
       icon: "temperature-high",
       name: "Heat Weakness",
