@@ -23,9 +23,9 @@
 	var/allow_batform = TRUE ///SKYRAT EDIT: Allow a neutered version of vampires without batform
 
 /datum/species/vampire/check_roundstart_eligible()
-	// if(SSevents.holidays && SSevents.holidays[HALLOWEEN]) SKYRAT EDIT - ALL YEAR :smiling_imp:
-		return TRUE
-	return FALSE
+	//if(SSevents.holidays && SSevents.holidays[HALLOWEEN]) SKYRAT EDIT - ALL YEAR :smiling_imp:
+	return TRUE
+	//return FALSE
 
 /datum/species/vampire/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	. = ..()
@@ -63,7 +63,7 @@
 		to_chat(C, span_warning("You don't belong here!"))
 		C.adjustFireLoss(10 * delta_time)
 		C.adjust_fire_stacks(3 * delta_time)
-		C.IgniteMob() *\
+		C.IgniteMob() */
 
 /datum/species/vampire/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/nullrod/whip))
