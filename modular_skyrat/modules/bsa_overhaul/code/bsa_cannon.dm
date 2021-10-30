@@ -325,7 +325,7 @@
 	default_unfasten_wrench(user, I, 10)
 	if(anchored)
 		var/turf/T = loc
-		if(isturf(T) && !T.intact)
+		if(isturf(T) && T.underfloor_accessibility >= UNDERFLOOR_INTERACTABLE)
 			attached = locate() in T
 			if(!attached)
 				set_light(0)
