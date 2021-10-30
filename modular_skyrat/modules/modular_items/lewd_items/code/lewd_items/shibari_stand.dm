@@ -62,6 +62,7 @@
 				span_hear("You hear loose ropes."))
 		else
 			user.visible_message(span_notice("You unbuckle yourself from [src]."),\
+				span_notice("You unbuckle yourself from [src]."),\
 				span_hear("You hear loose ropes."))
 		add_fingerprint(user)
 		if(isliving(M.pulledby))
@@ -80,10 +81,10 @@
 
 	var/mob/living/carbon/human/hooman = M
 	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
-		to_chat(user, span_warning("There's no way to tie them to the stand!"))
+		to_chat(user, span_warning("They need to be wearing ropes to be tied to the stand!"))
 		return FALSE
 	if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
-		to_chat(user, span_warning("You'll need some shibari ropes to tie them to the stand!"))
+		to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!!"))
 		return FALSE
 
 	if(M != user)
@@ -101,10 +102,10 @@
 			return FALSE
 
 		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
-			to_chat(user, span_warning("There's no way to tie them to the stand!"))
+			to_chat(user, span_warning("They need to be wearing ropes to be tied to the stand!"))
 			return FALSE
 		if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
-			to_chat(user, span_warning("You'll need some shibari ropes to tie them to the stand!"))
+			to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!"))
 			return FALSE
 
 		if(buckle_mob(M, check_loc = check_loc))
