@@ -7,7 +7,7 @@ const Vampire: Species = {
       icon: "bed",
       name: "Locker Brooding",
       description: "Vampires can delay The Thirst and heal by resting in a \
-        coffin. So THAT'S why they do that!",
+        rectangular shaped object. So THAT'S why they do that!",
     }, {
       icon: "skull",
       name: "Minor Undead",
