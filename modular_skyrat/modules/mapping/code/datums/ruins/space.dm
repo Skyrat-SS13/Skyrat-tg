@@ -188,3 +188,9 @@
 	name = "Gorilla"
 	description = "There is no need to be upset."
 
+/datum/map_template/ruin/space/skyrat/minefield
+	id = "minefield"
+	prefix = "modular_skyrat/modules/mapping/_maps/RandomRuins/SpaceRuins/"
+	suffix = "minefield.dmm"
+	name = "Abandoned Sweeper Testing Site"
+	description = "An old training grounds for some minesweeper agents, better watch out if they didnt disarm them all"
