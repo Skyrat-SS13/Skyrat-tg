@@ -40,7 +40,7 @@ const Vampire: Species = {
     }],
   },
   lore: [
-        "Vampires are ambiguous beings, but the one side effect they generally agree on is, The Thirst. The Thirst requires them to feast on blood to maintain their bodies health, and in return it gives them many bonuses. Because of this, Vampires have split into two clans, one that embraces their powers as a blessing and one that rejects it.",
+    "Vampires are ambiguous beings, but the one side effect they generally agree on is, The Thirst. The Thirst requires them to feast on blood to maintain their bodies health, and in return it gives them many bonuses. Because of this, Vampires have split into two clans, one that embraces their powers as a blessing and one that rejects it.",
     "\"What the fuck does any of this mean\" - Doctor Micheals, reading their centcomm report about the new 'hires'.",
   ],
 };
