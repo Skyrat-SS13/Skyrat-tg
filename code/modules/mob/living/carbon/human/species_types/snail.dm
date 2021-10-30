@@ -25,7 +25,7 @@
 	exotic_bloodtype = "L" //SKYRAT EDIT: Roundstart Snails - No more lube
 
 //SKYRAT EDIT: Roundstart Snails
-/datum/species/vampire/check_roundstart_eligible()
+/datum/species/snail/check_roundstart_eligible()
 	return TRUE
 //SKYRAT EDIT: Roundstart Snails
 
