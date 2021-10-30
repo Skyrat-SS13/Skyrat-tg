@@ -128,3 +128,10 @@
 	color_src = USE_ONE_COLOR
 	extra = TRUE
 	extra_color_src = MUTCOLORS2
+
+/datum/sprite_accessory/taur/fatlizard
+	name = "Fat liz (tri-color)"
+	icon_state = "fatlizard"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+

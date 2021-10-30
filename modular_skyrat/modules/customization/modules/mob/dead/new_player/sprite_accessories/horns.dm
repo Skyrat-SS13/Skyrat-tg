@@ -33,3 +33,9 @@
 /datum/sprite_accessory/horns/uni
 	name = "Uni"
 	icon_state = "uni"
+
+/datum/sprite_accessory/horns/dragonl
+	name = "Dragon large"
+	icon_state = "dragonl"
+	color_src = USE_ONE_COLOR
+
