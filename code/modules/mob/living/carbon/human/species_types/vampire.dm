@@ -63,7 +63,7 @@
 		to_chat(C, span_warning("You don't belong here!"))
 		C.adjustFireLoss(10 * delta_time)
 		C.adjust_fire_stacks(3 * delta_time)
-		C.IgniteMob() *\
+		C.IgniteMob() */
 
 /datum/species/vampire/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/nullrod/whip))
