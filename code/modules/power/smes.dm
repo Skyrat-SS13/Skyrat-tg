@@ -116,7 +116,7 @@
 			return
 
 		var/turf/T = get_turf(user)
-		if (T.underfloor_accessibility < UNDERFLOOR_INTERACTABLE) //can we get to the underfloor?
+		if (T.intact) //is the floor plating removed ?
 			to_chat(user, span_warning("You must first remove the floor plating!"))
 			return
 

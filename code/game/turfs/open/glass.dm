@@ -5,8 +5,7 @@
 	icon_state = "glass-0"
 	base_icon_state = "glass"
 	baseturfs = /turf/open/openspace
-	overfloor_placed = FALSE // We can't tear this up, with tools, explosives, or other means.
-	underfloor_accessibility = UNDERFLOOR_VISIBLE
+	intact = FALSE //this means wires go on top
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_FLOOR_TRANSPARENT_GLASS)
 	canSmoothWith = list(SMOOTH_GROUP_FLOOR_TRANSPARENT_GLASS)

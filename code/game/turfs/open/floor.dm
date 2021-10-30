@@ -18,9 +18,8 @@
 
 	thermal_conductivity = 0.04
 	heat_capacity = 10000
+	intact = TRUE
 	tiled_dirt = TRUE
-
-	overfloor_placed = TRUE
 
 	var/broken = FALSE
 	var/burnt = FALSE
@@ -167,7 +166,7 @@
 	. = ..()
 	if(.)
 		return .
-	if(overfloor_placed && istype(object, /obj/item/stack/tile))
+	if(intact && istype(object, /obj/item/stack/tile))
 		try_replace_tile(object, user, params)
 		return TRUE
 	if(user.combat_mode && istype(object, /obj/item/stack/sheet))
@@ -176,7 +175,7 @@
 	return FALSE
 
 /turf/open/floor/crowbar_act(mob/living/user, obj/item/I)
-	if(overfloor_placed && pry_tile(I, user))
+	if(intact && pry_tile(I, user))
 		return TRUE
 
 /turf/open/floor/proc/try_replace_tile(obj/item/stack/tile/T, mob/user, params)

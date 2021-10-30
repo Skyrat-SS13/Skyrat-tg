@@ -294,10 +294,10 @@
 		net.add_plumber(src, dir)
 		net.add_plumber(P, opposite_dir)
 
-/datum/component/plumbing/proc/hide(atom/movable/AM, should_hide)
+/datum/component/plumbing/proc/hide(atom/movable/AM, intact)
 	SIGNAL_HANDLER
 
-	tile_covered = should_hide
+	tile_covered = intact
 	AM.update_appearance()
 
 /datum/component/plumbing/proc/change_ducting_layer(obj/caller, obj/O, new_layer = DUCT_LAYER_DEFAULT)

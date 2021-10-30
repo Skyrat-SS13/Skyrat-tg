@@ -107,7 +107,7 @@
 	var/eject_range = 5
 	var/turf/open/floor/floorturf
 
-	if(isfloorturf(T) && T.overfloor_placed) // pop the tile if present
+	if(isfloorturf(T) && T.intact) //intact floor, pop the tile
 		floorturf = T
 		if(floorturf.floor_tile)
 			new floorturf.floor_tile(T)

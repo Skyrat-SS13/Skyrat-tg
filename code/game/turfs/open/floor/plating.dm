@@ -11,8 +11,7 @@
 	name = "plating"
 	icon_state = "plating"
 	base_icon_state = "plating"
-	overfloor_placed = FALSE
-	underfloor_accessibility = UNDERFLOOR_INTERACTABLE
+	intact = FALSE
 	baseturfs = /turf/baseturf_bottom
 	footstep = FOOTSTEP_PLATING
 	barefootstep = FOOTSTEP_HARD_BAREFOOT
