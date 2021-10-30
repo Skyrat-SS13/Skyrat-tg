@@ -361,51 +361,51 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/trim/alt
 	can_be_greyscale = TRUE
 
-/datum/loadout_item/suit/black
+/datum/loadout_item/suit/hoodie/black
 	name = "Black Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/black
 
-/datum/loadout_item/suit/red
+/datum/loadout_item/suit/hoodie/red
 	name = "Red Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/red
 
-/datum/loadout_item/suit/blue
+/datum/loadout_item/suit/hoodie/blue
 	name = "Blue Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/blue
 
-/datum/loadout_item/suit/green
+/datum/loadout_item/suit/hoodie/green
 	name = "Green Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/green
 
-/datum/loadout_item/suit/orange
+/datum/loadout_item/suit/hoodie/orange
 	name = "Orange Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/orange
 
-/datum/loadout_item/suit/yellow
+/datum/loadout_item/suit/hoodie/yellow
 	name = "Yellow Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/yellow
 
-/datum/loadout_item/suit/white
+/datum/loadout_item/suit/hoodie/grey
 	name = "Grey Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/grey
 
-/datum/loadout_item/suit/nt
+/datum/loadout_item/suit/hoodie/nt
 	name = "NT Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded
 
-/datum/loadout_item/suit/smw
+/datum/loadout_item/suit/hoodie/smw
 	name = "SMW Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/smw
 
-/datum/loadout_item/suit/nrti
+/datum/loadout_item/suit/hoodie/nrti
 	name = "NRTI Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/nrti
 
-/datum/loadout_item/suit/cti
+/datum/loadout_item/suit/hoodie/cti
 	name = "CTI Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/cti
 
-/datum/loadout_item/suit/mu
+/datum/loadout_item/suit/hoodie/mu
 	name = "Mojave University Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/branded/mu
 
