@@ -20,6 +20,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	var/info_text = "You are a <span class='danger'>Vampire</span>. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform //attached to the datum itself to avoid cloning memes, and other duplicates
+	var/allow_batform = TRUE ///SKYRAT EDIT: Allow a neutered version of vampires without batform
 
 /datum/species/vampire/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
@@ -31,14 +32,14 @@
 	to_chat(C, "[info_text]")
 	C.skin_tone = "albino"
 	C.update_body(0)
-	if(isnull(batform))
+	if(isnull(batform) && allow_batform) ///SKYRAT EDIT: Allow a neutered version of vampires without batform
 		batform = new
 		C.AddSpell(batform)
 	C.set_safe_hunger_level()
 
 /datum/species/vampire/on_species_loss(mob/living/carbon/C)
 	. = ..()
-	if(!isnull(batform))
+	if(!isnull(batform) && allow_batform) ///SKYRAT EDIT: Allow a neutered version of vampires without batform
 		C.RemoveSpell(batform)
 		QDEL_NULL(batform)
 
