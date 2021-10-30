@@ -20,32 +20,36 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/human
 	var/info_text = "You are a <span class='danger'>Vampire</span>. You will slowly but constantly lose blood if outside of a coffin. If inside a coffin, you will slowly heal. You may gain more blood by grabbing a live victim and using your drain ability."
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/batform //attached to the datum itself to avoid cloning memes, and other duplicates
-	var/allow_batform = TRUE ///SKYRAT EDIT: Allow a neutered version of vampires without batform
+	var/halloween_version = FALSE //SKYRAT EDIT: Allow a neutered version of vampires without batform
 
 /datum/species/vampire/check_roundstart_eligible()
 	//if(SSevents.holidays && SSevents.holidays[HALLOWEEN]) SKYRAT EDIT - ALL YEAR :smiling_imp:
 	return TRUE
-	//return FALSE
+	//return FALSE SKYRAT EDIT - ALL YEAR :smiling_imp:
 
 /datum/species/vampire/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	. = ..()
 	to_chat(C, "[info_text]")
-	// C.skin_tone = "albino"
+	// C.skin_tone = "albino" SKYRAT EDIT: Allow vampires to be different skin tones beside one
 	C.update_body(0)
-	if(isnull(batform) && allow_batform) ///SKYRAT EDIT: Allow a neutered version of vampires without batform
+	//SKYRAT EDIT: Allow a neutered version of vampires without batform
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		halloween_version = TRUE
+	if(isnull(batform) && halloween_version)
+	//SKYRAT EDIT: Allow a neutered version of vampires without batform
 		batform = new
 		C.AddSpell(batform)
 	C.set_safe_hunger_level()
 
 /datum/species/vampire/on_species_loss(mob/living/carbon/C)
 	. = ..()
-	if(!isnull(batform) && allow_batform) ///SKYRAT EDIT: Allow a neutered version of vampires without batform
+	if(!isnull(batform) && halloween_version) //SKYRAT EDIT: Allow a neutered version of vampires without batform
 		C.RemoveSpell(batform)
 		QDEL_NULL(batform)
 
 /datum/species/vampire/spec_life(mob/living/carbon/human/C, delta_time, times_fired)
 	. = ..()
-	if(istype(C.loc, /obj/structure/closet/)) // SKYRAT EDIT - NORMAL CLOSETS INSTEAD OF COFFINS.
+	if(istype(C.loc, /obj/structure/closet)) // SKYRAT EDIT - NORMAL CLOSETS INSTEAD OF COFFINS.
 		C.heal_overall_damage(1.5 * delta_time, 1.5 * delta_time, 0, BODYPART_ORGANIC) // SKYRAT EDIT - ORIGINAL 2 - Fast, but not as fast due ot them being able to use normal lockers.
 		C.adjustToxLoss(-1 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - 50% base speed to keep it fair
 		C.adjustOxyLoss(-2 * delta_time) // SKYRAT EDIT - ORIGINAL 2 - None here, oxy should heal fast
@@ -58,12 +62,12 @@
 		if(H)
 			H.shape.dust() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dusted.
 		C.dust()
-	/* var/area/A = get_area(C)
-	if(istype(A, /area/service/chapel))
+	var/area/A = get_area(C)
+	if(istype(A, /area/service/chapel) && halloween_version) // SKYRAT EDIT: If vampires have bat form, they cannot enter the church
 		to_chat(C, span_warning("You don't belong here!"))
 		C.adjustFireLoss(10 * delta_time)
 		C.adjust_fire_stacks(3 * delta_time)
-		C.IgniteMob() */
+		C.IgniteMob()
 
 /datum/species/vampire/check_species_weakness(obj/item/weapon, mob/living/attacker)
 	if(istype(weapon, /obj/item/nullrod/whip))
