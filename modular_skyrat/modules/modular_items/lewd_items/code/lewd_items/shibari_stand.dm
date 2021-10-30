@@ -81,7 +81,7 @@
 
 	var/mob/living/carbon/human/hooman = M
 	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
-		to_chat(user, span_warning("They need to be wearing ropes to be tied to the stand!"))
+		to_chat(user, span_warning("You'll need to completely tie their body!"))
 		return FALSE
 	if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
 		to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!!"))
@@ -102,7 +102,7 @@
 			return FALSE
 
 		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
-			to_chat(user, span_warning("They need to be wearing ropes to be tied to the stand!"))
+			to_chat(user, span_warning("You'll need to completely tie their body!"))
 			return FALSE
 		if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
 			to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!"))
