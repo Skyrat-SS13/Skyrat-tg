@@ -23,7 +23,7 @@
 	var/halloween_version = FALSE //SKYRAT EDIT: Allow a neutered version of vampires without batform
 
 /datum/species/vampire/check_roundstart_eligible()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN]) SKYRAT EDIT - sleepy time roundstart check
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN]) // SKYRAT EDIT - sleepy time roundstart check
 		return TRUE
 	return ..()
 
