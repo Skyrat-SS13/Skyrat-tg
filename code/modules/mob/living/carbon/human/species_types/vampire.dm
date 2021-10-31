@@ -43,7 +43,7 @@
 
 /datum/species/vampire/on_species_loss(mob/living/carbon/C)
 	. = ..()
-	if(!isnull(batform)
+	if(!isnull(batform))
 		C.RemoveSpell(batform)
 		QDEL_NULL(batform)
 
