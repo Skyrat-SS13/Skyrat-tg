@@ -7185,9 +7185,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/science/robotics/mechbay)
-"blw" = (
-/turf/open/floor/mech_bay_recharge_floor,
-/area/science/robotics/mechbay)
 "blz" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -9406,28 +9403,12 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning,
 /turf/open/floor/iron/white,
 /area/science/xenobiology)
-"bJM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
-	dir = 8
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/disposal/incinerator)
 "bJN" = (
 /turf/closed/wall,
 /area/science/xenobiology)
-"bJP" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
-/turf/open/floor/plating/snowed/icemoon,
-/area/maintenance/disposal/incinerator)
 "bJS" = (
 /obj/machinery/door/poddoor/incinerator_atmos_aux,
 /turf/open/floor/plating/icemoon,
-/area/maintenance/disposal/incinerator)
-"bJV" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
-	dir = 1
-	},
-/turf/open/floor/plating/snowed/icemoon,
 /area/maintenance/disposal/incinerator)
 "bJW" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
@@ -18877,6 +18858,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/cafeteria,
 /area/maintenance/port/aft)
+"fRl" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
+	dir = 8
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/maintenance/disposal/incinerator)
 "fRo" = (
 /obj/structure/table/glass,
 /obj/item/hatchet,
@@ -19303,6 +19290,10 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/commons/vacant_room/office)
+"fYK" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
+/turf/open/floor/plating/snowed/icemoon,
+/area/maintenance/disposal/incinerator)
 "fYO" = (
 /obj/machinery/camera{
 	c_tag = "Research Division Access";
@@ -21317,6 +21308,12 @@
 /obj/effect/spawner/random/trash/grille_or_waste,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
+"haM" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
+	dir = 8
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/engineering/atmos)
 "hbc" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating{
@@ -23015,6 +23012,12 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"ibO" = (
+/obj/machinery/atmospherics/components/binary/valve/digital{
+	name = "Waste Release"
+	},
+/turf/open/floor/iron,
+/area/engineering/atmos)
 "ici" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
@@ -25181,12 +25184,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/wood/parquet,
 /area/service/bar/atrium)
-"jeE" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
-	dir = 1
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/supermatter/room)
 "jeJ" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable,
@@ -29442,6 +29439,17 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/hallway/secondary/exit/departure_lounge)
+"lvU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/atmospherics/components/binary/valve/digital/on{
+	dir = 4;
+	name = "Output Release"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/engine,
+/area/engineering/supermatter/room)
 "lvY" = (
 /obj/structure/table,
 /obj/machinery/recharger,
@@ -29699,10 +29707,6 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
-"lCJ" = (
-/obj/machinery/light/small/directional/north,
-/turf/open/floor/mech_bay_recharge_floor,
-/area/maintenance/department/electrical)
 "lCO" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -29868,10 +29872,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/command/heads_quarters/cmo)
-"lGj" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/supermatter/room)
 "lGS" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance/three,
@@ -31750,17 +31750,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/central)
-"mDW" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/obj/machinery/atmospherics/components/binary/valve/digital/on{
-	dir = 4;
-	name = "Output Release"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/engine,
-/area/engineering/supermatter/room)
 "mEr" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -32177,6 +32166,9 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"mOE" = (
+/turf/open/floor/iron/recharge_floor,
+/area/science/robotics/mechbay)
 "mPc" = (
 /obj/machinery/requests_console/directional/west{
 	department = "Cargo Bay";
@@ -35659,10 +35651,6 @@
 /obj/machinery/light/built/directional/west,
 /turf/open/floor/iron/white,
 /area/maintenance/port/fore)
-"oFq" = (
-/obj/machinery/newscaster/directional/west,
-/turf/open/floor/mech_bay_recharge_floor,
-/area/science/robotics/mechbay)
 "oFu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -41049,6 +41037,12 @@
 	},
 /turf/open/floor/iron,
 /area/science/mixing)
+"rzM" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/maintenance/disposal/incinerator)
 "rzN" = (
 /obj/effect/turf_decal/tile/red/full,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -42313,12 +42307,6 @@
 	dir = 6
 	},
 /area/science/research)
-"sfD" = (
-/obj/machinery/atmospherics/components/binary/valve/digital{
-	name = "Waste Release"
-	},
-/turf/open/floor/iron,
-/area/engineering/atmos)
 "sfX" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8
@@ -43764,12 +43752,6 @@
 /obj/item/clothing/gloves/boxing,
 /turf/open/floor/iron,
 /area/maintenance/starboard/fore)
-"sOq" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
-	dir = 8
-	},
-/turf/open/floor/plating/snowed/icemoon,
-/area/engineering/atmos)
 "sOs" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -44190,6 +44172,12 @@
 /obj/structure/light_construct/directional/west,
 /turf/open/floor/plating,
 /area/construction)
+"tbA" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/icemoon,
+/area/engineering/supermatter/room)
 "tbG" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
@@ -47962,6 +47950,10 @@
 	icon_state = "platingdmg1"
 	},
 /area/maintenance/aft)
+"uVf" = (
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/recharge_floor,
+/area/maintenance/department/electrical)
 "uVg" = (
 /obj/item/trash/energybar,
 /turf/open/floor/plating,
@@ -48005,6 +47997,10 @@
 	dir = 4
 	},
 /area/science/misc_lab)
+"uXl" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+/turf/open/floor/plating/snowed/icemoon,
+/area/engineering/supermatter/room)
 "uXt" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -48853,6 +48849,10 @@
 	},
 /turf/open/floor/iron,
 /area/engineering/atmos)
+"vAp" = (
+/obj/machinery/newscaster/directional/west,
+/turf/open/floor/iron/recharge_floor,
+/area/science/robotics/mechbay)
 "vAt" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -84799,7 +84799,7 @@ tHa
 icH
 tHa
 xvr
-mDW
+lvU
 eia
 qnJ
 tPd
@@ -85314,8 +85314,8 @@ jvW
 lpW
 iaV
 lBH
-lGj
-jeE
+uXl
+tbA
 boP
 boP
 boP
@@ -86320,7 +86320,7 @@ lbm
 mvU
 uHm
 jay
-sfD
+ibO
 cpq
 iZv
 ccm
@@ -89920,7 +89920,7 @@ nAA
 xjx
 nxB
 xjx
-sOq
+haM
 boP
 boP
 boP
@@ -91723,12 +91723,12 @@ ods
 suK
 xlf
 bEY
-bJM
-bJP
-bJP
-bJP
-bJP
-bJV
+fRl
+fYK
+fYK
+fYK
+fYK
+rzM
 boP
 boP
 boP
@@ -96558,7 +96558,7 @@ bez
 bfT
 xRl
 biG
-oFq
+vAp
 aRk
 lhH
 bfT
@@ -97586,7 +97586,7 @@ pJN
 eXe
 jxf
 biG
-blw
+mOE
 bjP
 bnb
 bfT
@@ -101667,7 +101667,7 @@ alP
 alP
 alP
 alP
-lCJ
+uVf
 auL
 auJ
 wKY
