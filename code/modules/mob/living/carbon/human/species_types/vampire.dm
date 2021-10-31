@@ -24,8 +24,8 @@
 /*
 /datum/species/vampire/check_roundstart_eligible()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN]) SKYRAT EDIT - sleepy time roundstart check
-	return TRUE
-	
+		return TRUE
+	return ..()
 */
 /datum/species/vampire/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	. = ..()
