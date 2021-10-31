@@ -24,10 +24,6 @@
 	mutanttongue = /obj/item/organ/tongue/snail
 	exotic_bloodtype = "L" //SKYRAT EDIT: Roundstart Snails - No more lube
 
-//SKYRAT EDIT: Roundstart Snails
-/datum/species/snail/check_roundstart_eligible()
-	return TRUE
-//SKYRAT EDIT: Roundstart Snails
 
 /datum/species/snail/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	if(istype(chem,/datum/reagent/consumable/salt))
