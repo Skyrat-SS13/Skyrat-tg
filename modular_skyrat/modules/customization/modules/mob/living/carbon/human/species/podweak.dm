@@ -25,7 +25,7 @@
 	always_customizable = FALSE
 
 /datum/species/pod/weak/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
-	if(H.stat == DEAD, UNCONSCIOUS)
+	if(H.stat != CONSCIOUS)
 		return
 
 	var/light_amount = 0 //how much light there is in the place, affects receiving nutrition and healing
