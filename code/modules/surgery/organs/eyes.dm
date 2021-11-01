@@ -264,6 +264,7 @@
 /obj/item/organ/eyes/robotic/glow/proc/terminate_effects()
 	if(owner && active)
 		deactivate()
+	remove_mob_overlay() //SKYRAT EDIT ADDITION
 	active = FALSE
 	clear_visuals(TRUE)
 	STOP_PROCESSING(SSfastprocess, src)
@@ -294,7 +295,7 @@
 
 /obj/item/organ/eyes/robotic/glow/proc/assume_rgb(newcolor)
 	current_color_string = newcolor
-	eye_color = RGB2EYECOLORSTRING(current_color_string)
+	eye_color = current_color_string //SKYRAT EDIT CHANGE
 	if(!QDELETED(owner) && ishuman(owner)) //Other carbon mobs don't have eye color.
 		owner.dna.species.handle_body(owner)
 
@@ -319,6 +320,12 @@
 
 /obj/item/organ/eyes/robotic/glow/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
+	//SKYRAT EDIT ADDITION
+	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
+	mob_overlay.color = eye_color
+	current_color_string = eye_color
+	add_mob_overlay()
+	//SKYRAT EDIT END
 	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, .proc/update_visuals)
 
 /obj/item/organ/eyes/robotic/glow/Remove(mob/living/carbon/eye_owner, special = FALSE)
@@ -339,7 +346,7 @@
 	clear_visuals()
 	if(!silent)
 		to_chat(owner, span_warning("Your [src] shuts off!"))
-	remove_mob_overlay()
+	//remove_mob_overlay() SKYRAT EDIT REMOVAL
 
 /obj/item/organ/eyes/robotic/glow/proc/update_visuals(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
