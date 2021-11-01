@@ -43,7 +43,7 @@
 
 /obj/item/clothing/glasses/weldingvisortoggle(mob/user)
 	. = ..()
-	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : null
+	alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : initial(alternate_worn_layer) // SKYRAT EDIT - ORIGINAL : alternate_worn_layer = up ? ABOVE_BODY_FRONT_HEAD_LAYER : null
 	if(. && user)
 		user.update_sight()
 		if(iscarbon(user))
@@ -360,6 +360,7 @@
 	visor_vars_to_toggle = VISOR_FLASHPROTECT | VISOR_TINT
 	flags_cover = GLASSESCOVERSEYES
 	glass_colour_type = /datum/client_colour/glass_colour/gray
+	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER // SKYRAT EDIT - Just so it works until I make the change upstream
 
 /obj/item/clothing/glasses/welding/attack_self(mob/user)
 	weldingvisortoggle(user)

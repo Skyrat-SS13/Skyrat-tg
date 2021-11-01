@@ -989,6 +989,120 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "goldengoggles"
+	slot_flags = ITEM_SLOT_EYES | ITEM_SLOT_HEAD // Making it fit in both first just so it can properly fit on the head slot in the loadout
 	flash_protect = FLASH_PROTECTION_NONE
+	flags_cover = GLASSESCOVERSEYES
+	custom_materials = null // Don't want that to go in the autolathe
 	visor_vars_to_toggle = 0
 	tint = 0
+	/// Was welding protection added yet?
+	var/welding_upgraded = FALSE
+	/// Was welding protection toggled on, if welding_upgraded is TRUE?
+	var/welding_protection = FALSE
+
+/obj/item/clothing/glasses/welding/goldengoggles/Initialize()
+	. = ..()
+	visor_toggling()
+
+/obj/item/clothing/glasses/welding/goldengoggles/examine(mob/user)
+	. = ..()
+	if(welding_upgraded)
+		. += "It has been upgraded with welding shutters, which are currently [welding_protection ? "closed" : "opened"]."
+
+/obj/item/clothing/glasses/welding/goldengoggles/item_action_slot_check(slot, mob/user)
+	. = ..()
+	if(. && slot == ITEM_SLOT_HEAD)
+		return FALSE
+
+/obj/item/clothing/glasses/welding/goldengoggles/attack_self(mob/user)
+	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+		to_chat(user, span_warning("You can't seem to slip those on your eyes from the top of your head!"))
+		return
+	. = ..()
+
+/obj/item/clothing/glasses/welding/goldengoggles/visor_toggling()
+	. = ..()
+	slot_flags = up ? ITEM_SLOT_EYES | ITEM_SLOT_HEAD : ITEM_SLOT_EYES
+	shutters_toggling()
+
+/obj/item/clothing/glasses/welding/goldengoggles/weldingvisortoggle(mob/user)
+	. = ..()
+	handle_sight_updating(user)
+
+/obj/item/clothing/glasses/welding/goldengoggles/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(!istype(attacking_item, /obj/item/clothing/glasses/welding))
+		..()
+	if(welding_upgraded)
+		to_chat(user, span_warning("\The [src] was already upgraded to have welding protection!"))
+		return
+	qdel(attacking_item)
+	welding_upgraded = TRUE
+	to_chat(user, span_notice("You upgrade \the [src] with some welding shutters, offering you the ability to toggle welding protection!"))
+	actions += new /datum/action/item_action/toggle_steampunk_goggles_welding_protection(src)
+
+/// Proc that handles the whole toggling the welding protection on and off, with user feedback.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_welding_shutters(mob/user)
+	if(!can_use(user) || !user)
+		return FALSE
+	if(!toggle_welding_protection(user))
+		return FALSE
+
+	to_chat(user, span_notice("You slide \the [src]'s welding shutters slider, [welding_protection ? "closing" : "opening"] them."))
+	
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		C.head_update(src, forced = 1)
+	update_action_buttons()
+	return TRUE
+
+/// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_welding_protection(mob/user)
+	if(!welding_upgraded)
+		return FALSE
+	welding_protection = !welding_protection
+
+	visor_vars_to_toggle = welding_protection ? VISOR_FLASHPROTECT | VISOR_TINT : initial(visor_vars_to_toggle)
+	shutters_toggling()
+	// We also need to make sure the user has their vision modified. We already checked that there was a user, so this is safe.
+	handle_sight_updating(user)
+
+/// Proc handling changing the flash protection and the tint of the goggles.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/shutters_toggling()
+	if(welding_protection)
+		if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
+			flash_protect = up ? FLASH_PROTECTION_NONE : FLASH_PROTECTION_WELDER
+	else
+		flash_protect = FLASH_PROTECTION_NONE
+	tint = flash_protect
+
+/// Proc handling to update the sight of the user, while forcing an update_tint() call every time, due to how the welding protection toggle works.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/handle_sight_updating(mob/user)
+	if(user && (user.get_item_by_slot(ITEM_SLOT_HEAD) == src || user.get_item_by_slot(ITEM_SLOT_EYES) == src))
+		user.update_sight()
+		if(iscarbon(user))
+			var/mob/living/carbon/carbon_user = user
+			carbon_user.update_tint()
+			carbon_user.head_update(src, forced = TRUE)
+
+/obj/item/clothing/glasses/welding/goldengoggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
+	if(!is_welding_toggle)
+		return ..()
+	else
+		toggle_welding_protection(user)
+
+/// Action button for toggling the welding shutters (aka, welding protection) on or off.
+/datum/action/item_action/toggle_steampunk_goggles_welding_protection
+	name = "Toggle Welding Shutters"
+
+/// We need to do a bit of code duplication here to ensure that we do the right kind of ui_action_click(), while keeping it modular.
+/datum/action/item_action/toggle_steampunk_goggles_welding_protection/Trigger()
+	if(!IsAvailable())
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
+		return FALSE
+	if(!target || !istype(target, /obj/item/clothing/glasses/welding/goldengoggles))
+		return FALSE
+	
+	var/obj/item/clothing/glasses/welding/goldengoggles/goggles = target
+	goggles.ui_action_click(owner, src, is_welding_toggle = TRUE)
+	return TRUE
