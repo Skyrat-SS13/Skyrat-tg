@@ -84,6 +84,16 @@
 	icon_state = "hot_spearhead"
 	spawn_item = /obj/item/forging/complete/spear
 
+/obj/item/forging/incomplete/axe
+	name = "incomplete axe head"
+	icon_state = "hot_axehead"
+	spawn_item = /obj/item/forging/complete/axe
+
+/obj/item/forging/incomplete/hammer
+	name = "incomplete hammer head"
+	icon_state = "hot_hammerhead"
+	spawn_item = /obj/item/forging/complete/hammer
+
 /obj/item/forging/incomplete/plate
 	name = "incomplete plate"
 	icon_state = "hot_plate"
@@ -112,86 +122,17 @@
 	desc = "A spear head, ready to get some wood for completion."
 	icon_state = "spearhead"
 
+/obj/item/forging/complete/axe
+	name = "axe head"
+	desc = "An axe head, ready to get some wood for completion."
+	icon_state = "axehead"
+
+/obj/item/forging/complete/hammer
+	name = "hammer head"
+	desc = "A hammer head, ready to get some wood for completion."
+	icon_state = "hammerhead"
+
 /obj/item/forging/complete/plate
 	name = "plate"
 	desc = "A plate, best used in combination with multiple plates."
 	icon_state = "plate"
-
-/obj/item/forging/reagent_tile
-	name = "reagent tile"
-	desc = "A tile that is ready to be placed down. It is capable of being imbued."
-	icon_state = "full_plate"
-	var/list/imbued_reagent = list()
-	var/has_imbued = FALSE
-
-/obj/item/forging/reagent_tile/Initialize()
-	. = ..()
-	create_reagents(500, INJECTABLE | REFILLABLE)
-
-/turf/open/floor/plating/attackby(obj/item/C, mob/user, params)
-	. = ..()
-	if(istype(C, /obj/item/forging/reagent_tile))
-		var/obj/item/forging/reagent_tile/reagent_tile = C
-		var/turf/open/floor/reagent_plating/reagent_plating = ChangeTurf(/turf/open/floor/reagent_plating)
-		reagent_plating.imbued_reagent = reagent_tile.imbued_reagent
-		reagent_plating.name = reagent_tile.name
-		reagent_plating.color = reagent_tile.color
-		reagent_plating.has_imbued = reagent_tile.has_imbued
-		reagent_plating.previous_turf = src.type
-		qdel(reagent_tile)
-
-/turf/open/floor/reagent_plating
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
-	icon_state = "plate_plating"
-	var/list/imbued_reagent = list()
-	var/list/current_affect = list()
-	var/world_timer = 0
-	var/obj/item/reagent_containers/reagent_container
-	var/has_imbued = FALSE
-	var/turf/previous_turf
-
-/turf/open/floor/reagent_plating/Initialize(mapload)
-	. = ..()
-	reagent_container = new /obj/item/reagent_containers(src)
-
-/turf/open/floor/reagent_plating/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	qdel(reagent_container)
-	. = ..()
-
-/turf/open/floor/reagent_plating/process()
-	if(world_timer >= world.time)
-		return
-	world_timer = world.time + 2 SECONDS
-	if(!contents || imbued_reagent.len <= 0)
-		return
-	for(var/attempt_injectee in current_affect)
-		if(get_turf(attempt_injectee) != src)
-			current_affect -= attempt_injectee
-			continue
-		if(!iscarbon(attempt_injectee))
-			current_affect -= attempt_injectee
-			continue
-		var/mob/living/carbon/carbon_mob = attempt_injectee
-		if(!carbon_mob.can_inject())
-			continue
-		for(var/reagent_list in imbued_reagent)
-			reagent_container.reagents.add_reagent(reagent_list, 0.5)
-			reagent_container.reagents.trans_to(target = carbon_mob, amount = 0.5, transfered_by = src, methods = INJECT)
-	if(current_affect.len <= 0)
-		STOP_PROCESSING(SSobj, src)
-
-/turf/open/floor/reagent_plating/Entered(atom/movable/arrived, direction)
-	. = ..()
-	if(iscarbon(arrived))
-		current_affect += arrived
-		START_PROCESSING(SSobj, src)
-
-/turf/open/floor/reagent_plating/crowbar_act(mob/living/user, obj/item/I)
-	var/obj/item/forging/reagent_tile/reagent_tile = new /obj/item/forging/reagent_tile(get_turf(src))
-	reagent_tile.name = name
-	reagent_tile.color = color
-	reagent_tile.imbued_reagent = imbued_reagent
-	reagent_tile.has_imbued = has_imbued
-	ChangeTurf(previous_turf)
-	I.play_tool_sound(src, 80)
