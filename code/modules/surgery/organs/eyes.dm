@@ -320,13 +320,13 @@
 
 /obj/item/organ/eyes/robotic/glow/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
+	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, .proc/update_visuals)
 	//SKYRAT EDIT ADDITION
 	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
 	mob_overlay.color = eye_color
 	current_color_string = eye_color
 	add_mob_overlay()
 	//SKYRAT EDIT END
-	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, .proc/update_visuals)
 
 /obj/item/organ/eyes/robotic/glow/Remove(mob/living/carbon/eye_owner, special = FALSE)
 	. = ..()
