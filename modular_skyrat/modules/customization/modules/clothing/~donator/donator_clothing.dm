@@ -999,6 +999,8 @@
 	var/welding_upgraded = FALSE
 	/// Was welding protection toggled on, if welding_upgraded is TRUE?
 	var/welding_protection = FALSE
+	/// The sound played when toggling the shutters.
+	var/shutters_sound = 'sound/effects/clock_tick.ogg'
 
 /obj/item/clothing/glasses/welding/goldengoggles/Initialize()
 	. = ..()
@@ -1023,7 +1025,7 @@
 /obj/item/clothing/glasses/welding/goldengoggles/visor_toggling()
 	. = ..()
 	slot_flags = up ? ITEM_SLOT_EYES | ITEM_SLOT_HEAD : ITEM_SLOT_EYES
-	shutters_toggling()
+	toggle_vision_effects()
 
 /obj/item/clothing/glasses/welding/goldengoggles/weldingvisortoggle(mob/user)
 	. = ..()
@@ -1041,14 +1043,14 @@
 	actions += new /datum/action/item_action/toggle_steampunk_goggles_welding_protection(src)
 
 /// Proc that handles the whole toggling the welding protection on and off, with user feedback.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_welding_shutters(mob/user)
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_shutters(mob/user)
 	if(!can_use(user) || !user)
 		return FALSE
 	if(!toggle_welding_protection(user))
 		return FALSE
 
 	to_chat(user, span_notice("You slide \the [src]'s welding shutters slider, [welding_protection ? "closing" : "opening"] them."))
-	
+	playsound(user, shutters_sound, 100, TRUE)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.head_update(src, forced = 1)
@@ -1062,12 +1064,13 @@
 	welding_protection = !welding_protection
 
 	visor_vars_to_toggle = welding_protection ? VISOR_FLASHPROTECT | VISOR_TINT : initial(visor_vars_to_toggle)
-	shutters_toggling()
+	toggle_vision_effects()
 	// We also need to make sure the user has their vision modified. We already checked that there was a user, so this is safe.
 	handle_sight_updating(user)
+	return TRUE
 
 /// Proc handling changing the flash protection and the tint of the goggles.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/shutters_toggling()
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_vision_effects()
 	if(welding_protection)
 		if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
 			flash_protect = up ? FLASH_PROTECTION_NONE : FLASH_PROTECTION_WELDER
@@ -1088,7 +1091,7 @@
 	if(!is_welding_toggle)
 		return ..()
 	else
-		toggle_welding_protection(user)
+		toggle_shutters(user)
 
 /// Action button for toggling the welding shutters (aka, welding protection) on or off.
 /datum/action/item_action/toggle_steampunk_goggles_welding_protection
@@ -1102,7 +1105,7 @@
 		return FALSE
 	if(!target || !istype(target, /obj/item/clothing/glasses/welding/goldengoggles))
 		return FALSE
-	
+
 	var/obj/item/clothing/glasses/welding/goldengoggles/goggles = target
 	goggles.ui_action_click(owner, src, is_welding_toggle = TRUE)
 	return TRUE
