@@ -985,7 +985,7 @@
 //Donation reward for GoldenAlpharex
 /obj/item/clothing/glasses/welding/goldengoggles
 	name = "steampunk goggles"
-	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head..."
+	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head... They have a rather fancy brass trim around the lenses."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
 	icon_state = "goldengoggles"
