@@ -349,17 +349,14 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/hoodie/greyscale
 	name = "Greyscale Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie
-	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/hoodie/greyscale_trim
 	name = "Greyscale Trimmed Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/trim
-	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/hoodie/greyscale_trim_alt
 	name = "Greyscale Trimmed(Alt) Hoodie"
 	item_path = /obj/item/clothing/suit/toggle/jacket/hoodie/trim/alt
-	can_be_greyscale = TRUE
 
 /datum/loadout_item/suit/hoodie/black
 	name = "Black Hoodie"
