@@ -8,8 +8,7 @@
 		jammed = TRUE
 		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
 		if(magazine)
-			magazine.forceMove(src.loc)
-			playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+			eject_magazine()
 
 /obj/item/gun/ballistic/automatic/examine(mob/user)
 	. = ..()
