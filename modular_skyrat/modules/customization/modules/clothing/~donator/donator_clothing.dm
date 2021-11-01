@@ -981,3 +981,14 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+//Donation reward for GoldenAlpharex
+/obj/item/clothing/glasses/welding/goldengoggles
+	name = "steampunk goggles"
+	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head..."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "goldengoggles"
+	flash_protect = FLASH_PROTECTION_NONE
+	visor_vars_to_toggle = 0
+	tint = 0
