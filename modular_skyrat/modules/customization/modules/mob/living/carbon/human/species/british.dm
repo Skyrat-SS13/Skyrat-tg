@@ -25,7 +25,7 @@
 		"taur" = "None",
 		"horns" = "None"
 	)
-	liked_food = GROSS | FRIED | Tea | Beef Wellington
+	liked_food = GROSS | FRIED | TEA | BEEF WELLINGTON
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	limbs_id = SPECIES_HUMAN
