@@ -320,8 +320,11 @@
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
+<<<<<<< HEAD
 		/obj/item/geiger_counter/cyborg,
 		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
+=======
+>>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,

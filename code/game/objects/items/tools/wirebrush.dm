@@ -9,6 +9,7 @@
 	icon_state = "wirebrush"
 	tool_behaviour = TOOL_RUSTSCRAPER
 	toolspeed = 1
+<<<<<<< HEAD
 
 /**
  * An advanced form of the wirebrush that trades the safety of the user for instant rust removal.
@@ -61,3 +62,5 @@
 
 /obj/item/wirebrush/advanced/pre_attack_secondary()
 	return SECONDARY_ATTACK_CALL_NORMAL
+=======
+>>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))

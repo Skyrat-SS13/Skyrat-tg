@@ -313,6 +313,7 @@
 
 /turf/open/proc/ClearWet()//Nuclear option of immediately removing slipperyness from the tile instead of the natural drying over time
 	qdel(GetComponent(/datum/component/wet_floor))
+<<<<<<< HEAD
 
 /turf/open/rad_act(strength)
 	. = ..()
@@ -338,3 +339,5 @@
 	if(gas_change)
 		air.garbage_collect()
 		air_update_turf(FALSE, FALSE)
+=======
+>>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
