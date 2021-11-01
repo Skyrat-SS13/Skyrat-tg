@@ -1106,3 +1106,5 @@
 	var/obj/item/clothing/glasses/welding/goldengoggles/goggles = target
 	goggles.ui_action_click(owner, src, is_welding_toggle = TRUE)
 	return TRUE
+
+// End of the code for GoldenAlpharex's donator item :^)
