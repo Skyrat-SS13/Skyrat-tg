@@ -266,7 +266,7 @@ const SpeciesPageInner = (props: {
                   <Button
                     key={speciesKey}
                     onClick={() => {
-                      if(species.veteran_only && !data.is_veteran) {
+                      if (species.veteran_only && !data.is_veteran) {
                         return;
                       }
                       setSpecies(speciesKey);
@@ -287,7 +287,7 @@ const SpeciesPageInner = (props: {
                         species.icon,
                       ])}
                       ml={-1}
-                      />
+                    />
                   </Button>
                 );
                 if (species.veteran_only && !data.is_veteran) {
