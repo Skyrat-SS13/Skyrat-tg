@@ -1,5 +1,5 @@
 /datum/species/unathi/british
-	name = "The people of England" // unathi because im psure they're lizards at heart
+	name = "The 'people' of England" // unathi because im psure they're lizards at heart
 	id = SPECIES_TEA
 	default_color = "#4B4B4B"
 	species_traits = list(MUTCOLORS,
