@@ -12,7 +12,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	hoodtype = /obj/item/clothing/head/hooded/seva
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, RAD = 15, FIRE = 100, ACID = 25, WOUND = 2)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, FIRE = 100, ACID = 25, WOUND = 2)
 	resistance_flags = FIRE_PROOF
 	transparent_protection = HIDEJUMPSUIT
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe)
@@ -28,7 +28,7 @@
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 	cold_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, RAD = 15, FIRE= 100, ACID = 25, WOUND = 1)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, FIRE= 100, ACID = 25, WOUND = 1)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/mask/gas/seva
