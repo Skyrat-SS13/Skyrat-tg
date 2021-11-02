@@ -109,7 +109,6 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/melee/baton/security/loaded
 	backpack_contents = list(
 		/obj/item/melee/baton/security/loaded = 1,
 		)
