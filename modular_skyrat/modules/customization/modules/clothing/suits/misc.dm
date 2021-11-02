@@ -283,7 +283,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "security ukrainian coat"
-	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back.."
+	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
 	icon_state = "don_cossak"
 	mutant_variants = NONE
 
