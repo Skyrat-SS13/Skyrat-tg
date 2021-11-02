@@ -23,6 +23,7 @@
 	mutanteyes = /obj/item/organ/eyes/snail
 	mutanttongue = /obj/item/organ/tongue/snail
 	exotic_bloodtype = "L" //SKYRAT EDIT: Roundstart Snails - No more lube
+	veteran_only = TRUE // SKYRAT EDIT - Roundstart Snails
 
 
 /datum/species/snail/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)

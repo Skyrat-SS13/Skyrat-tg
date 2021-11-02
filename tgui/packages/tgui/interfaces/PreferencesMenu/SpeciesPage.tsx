@@ -261,30 +261,45 @@ const SpeciesPageInner = (props: {
           <Stack.Item>
             <Box height="calc(100vh - 170px)" overflowY="auto" pr={3}>
               {species.map(([speciesKey, species]) => {
-                return (
+                /// SKYRAT EDIT START - Veteran-only species
+                let speciesPage = (
                   <Button
-                    key={speciesKey}
-                    onClick={() => setSpecies(speciesKey)}
-                    selected={
-                      data.character_preferences.misc.species === speciesKey
+                  key={speciesKey}
+                  onClick={() => {
+                    if(species.veteran_only && !data.is_veteran) {
+                      return;
                     }
-                    tooltip={species.name}
-                    style={{
-                      display: "block",
-                      height: "64px",
-                      width: "64px",
-                    }}
-                  >
+                    setSpecies(speciesKey);
+                  }}
+                  selected={
+                    data.character_preferences.misc.species === speciesKey
+                  }
+                  tooltip={species.name}
+                  style={{
+                    display: "block",
+                    height: "64px",
+                    width: "64px",
+                  }}
+                    >
                     <Box
                       className={classes([
                         "species64x64",
                         species.icon,
                       ])}
                       ml={-1}
-                    />
+                      />
                   </Button>
                 );
-              })}
+                if (species.veteran_only && !data.is_veteran) {
+                  let tooltipContent = species.name + " - You need to be a veteran to select this race, apply today!"
+                  speciesPage = (
+                  <Tooltip content={tooltipContent}>
+                    {speciesPage}
+                  </Tooltip>);
+                }
+                return speciesPage;
+                /// SKYRAT EDIT END
+                })}
             </Box>
           </Stack.Item>
 
