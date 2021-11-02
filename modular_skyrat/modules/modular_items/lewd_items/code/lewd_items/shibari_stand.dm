@@ -6,7 +6,7 @@
 	name = "shibari stand"
 	desc = "A stand for buckling people with ropes."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi'
-	icon_state = "shibari_stand_"
+	icon_state = "shibari_stand"
 	max_buckled_mobs = 1
 	max_integrity = 75
 	var/static/mutable_appearance/shibari_rope_overlay
@@ -14,6 +14,17 @@
 	var/static/mutable_appearance/shibari_shadow_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "shibari_shadow", OBJ_LAYER)
 	var/mob/living/carbon/human/current_mob = null
 	var/obj/item/stack/shibari_rope/ropee = null
+	var/current_color = "pink"
+
+// Default initialization
+/obj/structure/chair/shibari_stand/Initialize()
+	. = ..()
+	update_icon_state()
+	update_icon()
+
+/obj/structure/chair/shibari_stand/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[current_color]"
 
 /obj/structure/chair/shibari_stand/Destroy()
 	cut_overlay(shibari_shadow_overlay)
@@ -194,34 +205,71 @@
 	desc = "Construction requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/bdsm_furniture.dmi'
 	throwforce = 0
-	icon_state = "xstand_kit"
+	icon_state = "shibari_kit"
 	w_class = WEIGHT_CLASS_HUGE
-	var/list/color_list = list(
-		"black",
-		"teal",
-		"pink",
-		"red",
-		"white"
-	)
+	var/current_color = "pink"
+	var/color_changed = FALSE
+	var/static/list/shibarikit_designs
+
+/obj/item/shibari_stand_kit/proc/populate_shibarikit_designs()
+	shibarikit_designs = list(
+		"pink" = image (icon = src.icon, icon_state = "shibari_kit_pink"),
+		"teal" = image (icon = src.icon, icon_state = "shibari_kit_teal"),
+		"black" = image (icon = src.icon, icon_state = "shibari_kit_black"),
+		"red" = image (icon = src.icon, icon_state = "shibari_kit_red"),
+		"white" = image (icon = src.icon, icon_state = "shibari_kit_white"))
+
+// Default initialization
+/obj/item/shibari_stand_kit/Initialize()
+	. = ..()
+	update_icon_state()
+	update_icon()
+
+/obj/item/shibari_stand_kit/update_icon_state()
+	. = ..()
+	icon_state = "[initial(icon_state)]_[current_color]"
+
+//to change model
+/obj/item/shibari_stand_kit/AltClick(mob/user, obj/item/I)
+	if(color_changed == FALSE)
+		. = ..()
+		if(.)
+			return
+		var/choice = show_radial_menu(user,src, shibarikit_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		if(!choice)
+			return FALSE
+		current_color = choice
+		update_icon()
+		color_changed = TRUE
+	else
+		return
+
+//to check if we can change shackles' model
+/obj/item/shibari_stand_kit/proc/check_menu(mob/living/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated())
+		return FALSE
+	return TRUE
 
 /obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
-	var/color = input("Pick a color for your stand", "Color") as null|anything in color_list
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You assemble the frame."))
 		var/obj/structure/chair/shibari_stand/C = new
-		C.icon_state = "shibari_stand_[color]"
+		C.icon_state = "shibari_stand_[current_color]"
 		C.forceMove(get_turf(src))
 		qdel(src)
 	return TRUE
 
 /obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/I)
 	. = ..()
-	to_chat(user, span_notice("You begin unfastening the frame of x-stand..."))
+	to_chat(user, span_notice("You begin unfastening the frame of shibari stand..."))
 	if(I.use_tool(src, user, 8 SECONDS, volume=50))
-		to_chat(user, span_notice("You disassemble the x-stand."))
+		to_chat(user, span_notice("You disassemble the shibari stand."))
 		var/obj/item/shibari_stand_kit/C = new
+		C.icon_state = "shibari_kit_[current_color]"
 		C.forceMove(get_turf(src))
 		unbuckle_all_mobs()
 		qdel(src)
