@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	/obj/item/stack/ore/silver = 3,
 	/obj/item/stack/ore/iron = 5,
 	/obj/item/stack/ore/glass = 5,
-	/obj/item/xenoarch/strange_rock = 1,
+	/obj/item/xenoarch/strange_rock = 3,
 ))
 
 /datum/component/fishing
@@ -71,26 +71,28 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		return
 	if(COOLDOWN_FINISHED(src, start_fishing_window) && !COOLDOWN_FINISHED(src, stop_fishing_window))
 		var/turf/fisher_turf = get_turf(fisher)
-		create_reward(fisher_turf)
+		create_reward(fisher_turf, silent = FALSE)
 		if(master_involved)
-			create_reward(fisher_turf)
+			create_reward(fisher_turf, silent = TRUE)
 
-/datum/component/fishing/proc/create_reward(turf/spawning_turf)
+/datum/component/fishing/proc/create_reward(turf/spawning_turf, silent = FALSE)
 	var/atom/spawning_reward
 	switch(rand(1, 100))
-		if(1 to 50)
-			spawning_reward = pick_weight(GLOB.trash_loot)
-			while(islist(spawning_reward))
-				spawning_reward = pick_weight(spawning_reward)
-		if(51 to 75)
+		if(1 to 40)
+			var/list/trashy_list = GLOB.trash_loot
+			trashy_list = trashy_list[1]
+			spawning_reward = pick_weight(trashy_list)
+		if(41 to 65)
 			if(generate_fish)
 				generate_fish(spawning_turf, random_fish_type())
-		if(76 to 95)
+		if(66 to 97)
 			spawning_reward = pick_weight(possible_loot)
-		if(96 to 100)
+		if(98 to 100)
 			spawning_reward = /obj/item/skillchip/fishing_master
-	new spawning_reward(spawning_turf)
-	atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
+	if(spawning_reward)
+		new spawning_reward(spawning_turf)
+	if(!silent)
+		atom_parent.visible_message(span_notice("Something flys out of [atom_parent]!"))
 
 /turf/open/water/Initialize(mapload)
 	. = ..()
