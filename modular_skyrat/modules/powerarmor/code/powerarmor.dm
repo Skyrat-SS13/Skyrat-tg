@@ -782,7 +782,6 @@
 		"paupgradelaser",
 		"paupgradeenergy",
 		"paupgradebio",
-		"paupgraderad",
 		"paupgradefire",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
