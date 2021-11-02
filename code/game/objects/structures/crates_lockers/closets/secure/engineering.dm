@@ -5,6 +5,7 @@
 
 /obj/structure/closet/secure_closet/engineering_chief/PopulateContents()
 	..()
+<<<<<<< HEAD
 	new /obj/item/clothing/neck/cloak/ce(src)
 	// new /obj/item/clothing/under/rank/engineering/chief_engineer(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	// new /obj/item/clothing/under/rank/engineering/chief_engineer/skirt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
@@ -12,6 +13,10 @@
 	new /obj/item/clothing/head/hardhat/weldhat/white(src)
 	new /obj/item/clothing/gloves/color/chief_engineer(src)
 	// new /obj/item/clothing/shoes/sneakers/brown(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+=======
+
+	new /obj/item/storage/bag/garment/engineering_chief (src)
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/tank/jetpack/suit(src)
 	new /obj/item/cartridge/ce(src)
 	new /obj/item/radio/headset/heads/ce(src)
@@ -19,16 +24,19 @@
 	new /obj/item/areaeditor/blueprints(src)
 	new /obj/item/holosign_creator/atmos(src)
 	new /obj/item/assembly/flash/handheld(src)
-	new /obj/item/clothing/glasses/meson/engine(src)
 	new /obj/item/door_remote/chief_engineer(src)
 	new /obj/item/pipe_dispenser/bluespace(src) // SKYRAT EDIT -- BLUESPACE RPD -- ORIGINAL: new /obj/item/pipe_dispenser(src)
 	new /obj/item/circuitboard/machine/techfab/department/engineering(src)
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/suit/hooded/wintercoat/engineering/ce(src)
 	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
+=======
+
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"

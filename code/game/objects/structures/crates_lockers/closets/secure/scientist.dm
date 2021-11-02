@@ -5,9 +5,10 @@
 
 /obj/structure/closet/secure_closet/research_director/PopulateContents()
 	..()
-	new /obj/item/clothing/neck/cloak/rd(src)
+
 	new /obj/item/clothing/suit/bio_suit/scientist(src)
 	new /obj/item/clothing/head/bio_hood/scientist(src)
+<<<<<<< HEAD
 	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
 	/*
 	new /obj/item/clothing/suit/toggle/labcoat(src)
@@ -21,6 +22,9 @@
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	*/
 	// END
+=======
+	new /obj/item/storage/bag/garment/research_director(src)
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/cartridge/rd(src)
 	new /obj/item/radio/headset/heads/rd(src)
 	new /obj/item/megaphone/command(src)
@@ -32,7 +36,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/science(src)
 	new /obj/item/storage/photo_album/rd(src)
 	new /obj/item/storage/box/skillchips/science(src)
-	new /obj/item/clothing/suit/hooded/wintercoat/science/rd(src)
+
 
 
 /obj/structure/closet/secure_closet/cytology

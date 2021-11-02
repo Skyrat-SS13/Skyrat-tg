@@ -5,6 +5,7 @@
 
 /obj/structure/closet/secure_closet/captains/PopulateContents()
 	..()
+<<<<<<< HEAD
 	new /obj/item/clothing/suit/hooded/wintercoat/captain(src)
 	new /obj/item/clothing/neck/cloak/cap(src)
 	new /obj/item/clothing/neck/petcollar(src)
@@ -26,12 +27,19 @@
 	*/
 	// SKYRAT EDIT REMOVAL END
 	new /obj/item/clothing/head/crown/fancy(src)
+=======
+
+	new /obj/item/storage/backpack/captain(src)
+	new /obj/item/storage/backpack/satchel/cap(src)
+	new /obj/item/storage/backpack/duffelbag/captain(src)
+	new /obj/item/clothing/neck/petcollar(src)
+	new /obj/item/pet_carrier(src)
+	new /obj/item/storage/bag/garment/captain(src)
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/cartridge/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
-	new /obj/item/clothing/glasses/sunglasses/gar/supergar(src)
-	new /obj/item/clothing/gloves/color/captain(src)
 	new /obj/item/storage/belt/sabre(src)
 	new /obj/item/storage/box/gunset/pdh_captain(src) //SKYRAT EDIT CHANGE - SEC_HAUL
 	new /obj/item/door_remote/captain(src)
@@ -45,6 +53,7 @@
 
 /obj/structure/closet/secure_closet/hop/PopulateContents()
 	..()
+<<<<<<< HEAD
 	new /obj/item/clothing/neck/cloak/hop(src)
 	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
 	/*
@@ -59,20 +68,32 @@
 	new /obj/item/cartridge/hop(src)
 	new /obj/item/radio/headset/heads/hop(src)
 	// new /obj/item/clothing/shoes/sneakers/brown(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+=======
+	new /obj/item/storage/bag/garment/hop(src)
+	new /obj/item/storage/lockbox/medal/service(src)
+	new /obj/item/cartridge/hop(src)
+	new /obj/item/radio/headset/heads/hop(src)
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/storage/box/ids(src)
 	new /obj/item/megaphone/command(src)
-	new /obj/item/clothing/suit/armor/vest/alt(src)
 	new /obj/item/assembly/flash/handheld(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/glasses/sunglasses(src)
 	new /obj/item/gun/energy/e_gun(src) //SKYRAT EDIT
+=======
+	new /obj/item/gun/energy/e_gun(src)
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/door_remote/civilian(src)
 	new /obj/item/circuitboard/machine/techfab/department/service(src)
 	new /obj/item/storage/photo_album/hop(src)
 	new /obj/item/storage/lockbox/medal/hop(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/suit/hooded/wintercoat/hop(src)
+=======
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"
@@ -82,6 +103,7 @@
 
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
+<<<<<<< HEAD
 	new /obj/item/clothing/neck/cloak/hos(src)
 	// new /obj/item/clothing/suit/armor/hos/hos_formal(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
 	new /obj/item/cartridge/hos(src)
@@ -97,11 +119,16 @@
 	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars(src)
 	// new /obj/item/clothing/under/rank/security/head_of_security/grey(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
+=======
+
+	new /obj/item/cartridge/hos(src)
+	new /obj/item/radio/headset/heads/hos(src)
+	new /obj/item/storage/bag/garment/hos(src)
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/storage/lockbox/medal/sec(src)
 	new /obj/item/megaphone/sec(src)
 	new /obj/item/holosign_creator/security(src)
 	new /obj/item/storage/lockbox/loyalty(src)
-	new /obj/item/clothing/mask/gas/sechailer/swat(src)
 	new /obj/item/storage/box/flashbangs(src)
 	new /obj/item/shield/riot/tele(src)
 	new /obj/item/storage/belt/security/peacekeeper/full(src) //SKYRAT EDIT CHANGE - SEC_HAUL
@@ -109,8 +136,12 @@
 	new /obj/item/pinpointer/nuke(src)
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
+<<<<<<< HEAD
 	new /obj/item/clothing/suit/hooded/wintercoat/security/hos(src)
 	new /obj/item/storage/box/armament_tokens_sarge(src) // SKYRAT EDIT ADDITION
+=======
+
+>>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
