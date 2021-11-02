@@ -280,18 +280,18 @@ const SpeciesPageInner = (props: {
                       height: "64px",
                       width: "64px",
                     }}
-                      >
-                      <Box
-                        className={classes([
-                          "species64x64",
-                          species.icon,
-                        ])}
-                        ml={-1}
-                        />
+                  >
+                    <Box
+                      className={classes([
+                        "species64x64",
+                        species.icon,
+                      ])}
+                      ml={-1}
+                      />
                   </Button>
                 );
                 if (species.veteran_only && !data.is_veteran) {
-                  let tooltipContent = species.name + " - You need to be a veteran to select this race, apply today!"
+                  let tooltipContent = species.name + " - You need to be a veteran to select this race, apply today!";
                   speciesPage = (
                     <Tooltip content={tooltipContent}>
                       {speciesPage}
