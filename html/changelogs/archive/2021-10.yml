@@ -1827,3 +1827,100 @@
   - imageadd: New thinklite(tm) brand reflective strips are now included on non-humanoid
       engineering wear as well! The Association has also updated the non-humanoid
       Atmospherics Hardhat to be up to spec!
+2021-10-29:
+  Ebin-Halcyon:
+  - rscadd: '''Contraband'' gear to SyndiVends, is it really contraband in the Syndicate?'
+  GoldenAlpharex:
+  - bugfix: Ambience music should now be cut a lot less often.
+  - bugfix: The colorable leather jacket was promptly reminded of the "colorable"
+      part of its name and can now be changed in-game again.
+  - bugfix: Middle and corner benches have become corporeal again.
+  SkyratBot:
+  - rscdel: Removed leftover HTML from spawner menu
+  - refactor: Spawner menu is now easier to read
+  - bugfix: Emergency inlet access on the mining station eastern-most airlocks has
+      been removed.
+  - bugfix: Fixed mining station east airlocks requiring external airlock access instead
+      of mining access.
+  - bugfix: Removed access requirements from southern mining station public external
+      airlocks.
+  - bugfix: The SM now properly provides bonus power for operating in a low pressure
+      environment. Make sure you can keep it cool enough, and remember, space or a
+      vacuum won't work, but it will damage the SM!
+  - code_imp: Calculations relating to the SM pressure bonus are now derived from
+      human readable parameters.
+  - bugfix: Double Bedsheets now properly show the bedsheet sprites.
+  - bugfix: Felinids can no longer be head of staff if human authority is required.
+  - bugfix: The foreigner quirk on felinids now works as it does with all other nonhumans
+      who have their own languages, rather than also giving Galactic Uncommon.
+  - bugfix: Bank machines will now immediately stop withdrawing funds if the machine
+      is broken or unpowered.
+  - bugfix: fixed a runtime in physical experiments trying to unregister a signal
+      from a non-existant atom
+  - bugfix: The crafting menu now uses scrollable sections, fitting the window regardless
+      of resize. A little easier to use.
+  - bugfix: Fixed an issue with the crafting menu not being fully dimmed while crafting.
+2021-10-30:
+  ATHATH:
+  - balance: Heavily EMPing a jumpsuit or another piece of under clothing will now
+      short out its suit sensors (as if they had shorted out from damage to the jumpsuit)
+      instead of randomizing their setting. You can repair them with a cable coil
+      as normal.
+  - bugfix: The sensor list will now be updated when your jumpsuit is EMP'd to reflect
+      any possible changes in suit sensor status.
+  - bugfix: Under clothing will now respect the EMP_PROTECT_SELF flag.
+  Aphast:
+  - bugfix: Added a locked door inside of a dangerous research facility, to prevent
+      an unnecessary casualty.
+  GoldenAlpharex:
+  - bugfix: The AI VOX announcer voice is by default the one it's meant to be, the
+      normal one.
+  - bugfix: The non-standard VOX announcer voices have had their volumes reduced.
+  - code_imp: Improves the VOX announcer voice code quite a bit.
+  - bugfix: Fixed the veteran-only quirks, making them available once again.
+  - config: Added a newline at the end of veteran_players.txt to avoid mistakes happening
+      with the Manage Player Ranks verb.
+  IsaacTheSharkWolf:
+  - rscadd: Barbershop with spa and tattoo/piercing workshop.
+  - rscdel: A bunch of maint objects to save on performance
+  - bugfix: Fixed the whole airlock space_dir vars issue thingymajig (hopefully)
+  Melbert:
+  - bugfix: The OOC messages of people with minor admin ranks now respect OOC filters
+      in chat tabs
+  SkyratBot:
+  - code_imp: Vending machines no longer require a unique panel overlay for each new
+      type
+  - imageadd: Hot Ice icons are now consistent, and now have an stack icon showing
+      two pieces for when there are between 17 and 33 pieces in the stack.
+  - bugfix: You're (hopefully) no longer able to make timed singlecaps using nitryl.
+      I really liked this one honestly, it's got an aggressive amount of heart and
+      soul
+  - bugfix: Corporate Sofas now have their rear middle sprites fixed to align with
+      the rest of the rear sofa sprites.
+  - refactor: Reworked `/turf/var/intact` into variables which don't conflate underfloor
+      visibility, underfloor interactability, and overfloor presence. This fixes many
+      bugs relating to turfs in general, especially catwalks and glass flooring.
+  - imageadd: made command envirosuits more consistent
+  - bugfix: Pressure Tanks will now refuse to accept materials without a specific
+      material type during construction.
+  - bugfix: Pressure Tanks will now drop the correct amount of materials during deconstruction.
+  - bugfix: Pressure Tanks will now send you flying if you continue to slice open
+      a sufficiently pressurized tank despite the warning, rather than doing nothing.
+  - bugfix: Pressure Tanks will release their gas contents when destroyed, rather
+      than voiding them.
+  Timberpoes feat. JohnFulpWillard:
+  - config: Modified how ambiguous VALUE_MODE_FLAG keyed_list config entries are parsed
+      and added additional config logging for when weirdness with keyed_list config
+      entries happens in general. (Timberpoes)
+  - config: /datum/config_entry/keyed_list/probability was unused and has been deleted.
+      (Timberpoes)
+  - bugfix: 'The Cloth Golem preferences profile now works (JohnFulpWillard) qol:
+      The species-changing magic mirror variants now list species names instead of
+      internal code IDs. (JohnFulpWillard) qol: Shadowperson species should now show
+      as "Shadow" instead of "???" (JohnFulpWillard)'
+2021-10-31:
+  GoldenAlpharex:
+  - bugfix: You can finally remember how to place down wires again! How did you even
+      forget something so simple?
+  ORCACommander:
+  - bugfix: Hair Dye is Back on the Menu

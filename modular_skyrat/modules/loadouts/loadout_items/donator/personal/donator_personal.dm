@@ -96,6 +96,11 @@
 	item_path = /obj/item/clothing/glasses/zentai
 	ckeywhitelist = list("candlejax")
 
+/datum/loadout_item/glasses/goldengoggles
+	name = "Steampunk Goggles"
+	item_path = /obj/item/clothing/glasses/welding/goldengoggles
+	ckeywhitelist = list("goldenalpharex")
+
 /datum/loadout_item/head/hephelmet
 	name = "HepUnit Standard Helmet"
 	item_path = /obj/item/clothing/head/helmet/sec/peacekeeper/jax
