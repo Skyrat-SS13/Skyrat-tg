@@ -1052,8 +1052,8 @@
 	to_chat(user, span_notice("You slide \the [src]'s welding shutters slider, [welding_protection ? "closing" : "opening"] them."))
 	playsound(user, shutters_sound, 100, TRUE)
 	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		C.head_update(src, forced = 1)
+		var/mob/living/carbon/carbon_user = user
+		carbon_user.head_update(src, forced = 1)
 	update_action_buttons()
 	return TRUE
 
