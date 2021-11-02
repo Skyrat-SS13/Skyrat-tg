@@ -60,8 +60,8 @@
 		to_chat(C, span_danger("You ran out of blood!"))
 		var/obj/shapeshift_holder/H = locate() in C
 		if(H)
-			H.shape.adjustBruteLoss(100) //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dusted.
-		C.adjustBruteLoss(175) // Skyrat Edit - Owch! Ran out of blood.
+			H.shape.death() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dusted.
+		C.death() // Skyrat Edit - Owch! Ran out of blood.
 	var/area/A = get_area(C)
 	if(istype(A, /area/service/chapel) && halloween_version) // SKYRAT EDIT: If vampires have bat form, they cannot enter the church
 		to_chat(C, span_warning("You don't belong here!"))
