@@ -159,11 +159,7 @@
 	allowed = list(/obj/item/melee/sickly_blade, /obj/item/forbidden_book, /obj/item/living_heart)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	// slightly better than normal cult robes
-<<<<<<< HEAD
-	armor = list(MELEE = 50, BULLET = 65, LASER = 35,ENERGY = 45, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20) //SKYRAT EDIT - ORIGINAL: armor = list(MELEE = 50, BULLET = 50, LASER = 50,ENERGY = 50, BOMB = 35, BIO = 20, RAD = 0, FIRE = 20, ACID = 20)
-=======
-	armor = list(MELEE = 50, BULLET = 50, LASER = 50,ENERGY = 50, BOMB = 35, BIO = 20, FIRE = 20, ACID = 20)
->>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
+	armor = list(MELEE = 50, BULLET = 65, LASER = 35,ENERGY = 45, BOMB = 35, BIO = 20, FIRE = 20, ACID = 20) //SKYRAT EDIT - ORIGINAL: armor = list(MELEE = 50, BULLET = 50, LASER = 50,ENERGY = 50, BOMB = 35, BIO = 20, FIRE = 20, ACID = 20)
 
 /obj/item/reagent_containers/glass/beaker/eldritch
 	name = "flask of eldritch essence"

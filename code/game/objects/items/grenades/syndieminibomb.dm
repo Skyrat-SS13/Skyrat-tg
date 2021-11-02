@@ -59,21 +59,10 @@
 	. = ..()
 	update_mob()
 	playsound(loc, 'sound/effects/empulse.ogg', 50, TRUE)
-<<<<<<< HEAD
-	radiation_pulse(src, rad_damage)
-	for(var/turf/T in view(freeze_range,loc))
-		if(isfloorturf(T))
-			var/turf/open/floor/F = T
-			F.MakeSlippery(TURF_WET_PERMAFROST, 6 MINUTES)
-			for(var/mob/living/carbon/L in T)
-				L.adjustStaminaLoss(stamina_damage)
-				L.adjust_bodytemperature(-230)
-=======
 	radiation_pulse(src, max_range = rad_range, threshold = rad_threshold, chance = 100)
 	for (var/turf/open/floor/floor in view(freeze_range, loc))
 		floor.MakeSlippery(TURF_WET_PERMAFROST, 6 MINUTES)
 		for(var/mob/living/carbon/victim in floor)
 			victim.adjustStaminaLoss(stamina_damage)
 			victim.adjust_bodytemperature(temp_adjust)
->>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
 	qdel(src)

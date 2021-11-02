@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-#define RAD_LEVEL_NORMAL 9
-#define RAD_LEVEL_MODERATE 100
-#define RAD_LEVEL_HIGH 400
-#define RAD_LEVEL_VERY_HIGH 800
-#define RAD_LEVEL_CRITICAL 1500
-
-/obj/item/geiger_counter //DISCLAIMER: I know nothing about how real-life Geiger counters work. This will not be realistic. ~Xhuis//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
 /obj/item/geiger_counter //DISCLAIMER: I know nothing about how real-life Geiger counters work. This will not be realistic. ~Xhuis
->>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
 	name = "\improper Geiger counter"
 	desc = "A handheld device used for detecting and measuring radiation pulses."
 	icon = 'icons/obj/device.dmi'

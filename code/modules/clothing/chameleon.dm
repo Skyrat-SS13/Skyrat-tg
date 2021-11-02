@@ -381,13 +381,9 @@
 	random_sensor = FALSE
 	resistance_flags = NONE
 	can_adjust = FALSE
-<<<<<<< HEAD
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "A chameleon jumpsuit employed by the Syndicate in infiltration operations." // Skyrat edit
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
-=======
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
+	special_desc = "A chameleon jumpsuit employed by the Syndicate in infiltration operations." // SKYRAT EDIT
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
->>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
@@ -416,13 +412,9 @@
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	resistance_flags = NONE
-<<<<<<< HEAD
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit 
-	special_desc = "A chameleon vest employed by the Syndicate in infiltration operations." // Skyrat edit
-=======
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
->>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
+	special_desc = "A chameleon vest employed by the Syndicate in infiltration operations." // SKYRAT EDIT
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
@@ -450,13 +442,9 @@
 	icon_state = "meson"
 	inhand_icon_state = "meson"
 	resistance_flags = NONE
-<<<<<<< HEAD
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
-	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
-	special_desc = "Chameleon glasses employed by the Syndicate in infiltration operations." // Skyrat edit
-=======
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
->>>>>>> 0f3c4e51f72 (Modernizing Radiation -- TL;DR: Radiation is now a status effect healed by tox healing, and contamination is removed (#62265))
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
+	special_desc = "Chameleon glasses employed by the Syndicate in infiltration operations." // SKYRAT EDIT
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
