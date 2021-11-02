@@ -9,7 +9,7 @@
 /obj/item/clothing/suit/armor/vest/debug
 	name = "Bluespace Tech vest"
 	desc = "A sleek piece of armour designed for Bluespace agents."
-	armor = list("melee" = 95, "bullet" = 95, "laser" = 95, "energy" = 95, "bomb" = 95, "bio" = 95, "rad" = 100, "fire" = 98, "acid" = 98)
+	armor = list("melee" = 95, "bullet" = 95, "laser" = 95, "energy" = 95, "bomb" = 95, "bio" = 95, "fire" = 98, "acid" = 98)
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/clothing/suit/space/hardsuit/ert/debug
@@ -19,7 +19,7 @@
 	inhand_icon_state = "flightsuit"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/debug
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	armor = list("melee" = 98, "bullet" = 98, "laser" = 98, "energy" = 98, "bomb" = 98, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
+	armor = list("melee" = 98, "bullet" = 98, "laser" = 98, "energy" = 98, "bomb" = 98, "bio" = 100, "fire" = 100, "acid" = 100)
 	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/clothing/head/helmet/space/hardsuit/ert/debug
@@ -29,7 +29,7 @@
 	inhand_icon_state = "hardsuit0-flight"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	hardsuit_type = "flight"
-	armor = list("melee" = 98, "bullet" = 98, "laser" = 98, "energy" = 98, "bomb" = 98, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100)
+	armor = list("melee" = 98, "bullet" = 98, "laser" = 98, "energy" = 98, "bomb" = 98, "bio" = 100, "fire" = 100, "acid" = 100)
 
 /obj/item/clothing/shoes/combat/debug
 	clothing_flags = NOSLIP
