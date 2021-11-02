@@ -38,8 +38,6 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 /datum/loadout_item
 	/// Displayed name of the loadout item.
 	var/name
-	/// Whether this item has greyscale support.
-	var/can_be_greyscale = FALSE
 	/// Whether this item can be renamed.
 	var/can_be_named = FALSE
 	/// The category of the loadout item.
@@ -76,6 +74,8 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 		return
 
 	var/list/our_loadout = preference_source.loadout_list
+	var/atom/loadout_atom = item_path
+	var/can_be_greyscale = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
 	if(can_be_greyscale && (INFO_GREYSCALE in our_loadout[item_path]))
 		if(ispath(item_path, /obj/item/clothing))
 			// When an outfit is equipped in preview, get_equipped_items() does not work, so we have to use get_all_contents()

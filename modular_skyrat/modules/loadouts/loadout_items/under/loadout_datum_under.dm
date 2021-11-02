@@ -26,12 +26,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/greyscale
 	name = "Greyscale Jumpsuit"
-	can_be_greyscale = TRUE
 	item_path = /obj/item/clothing/under/color
 
 /datum/loadout_item/under/jumpsuit/greyscale_skirt
 	name = "Greyscale Jumpskirt"
-	can_be_greyscale = TRUE
 	item_path = /obj/item/clothing/under/color/jumpskirt
 
 /datum/loadout_item/under/jumpsuit/random

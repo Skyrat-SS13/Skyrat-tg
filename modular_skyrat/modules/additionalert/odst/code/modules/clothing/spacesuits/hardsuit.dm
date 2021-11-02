@@ -18,7 +18,7 @@
 	hardsuit_type = "odst"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/odst
 	allowed = list(/obj/item/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/tank/internals)
-	armor = list(MELEE = 65, BULLET = 50, LASER = 50, ENERGY = 60, BOMB = 55, BIO = 100, RAD = 70, FIRE = 100, ACID = 100, WOUND = 65)
+	armor = list(MELEE = 65, BULLET = 50, LASER = 50, ENERGY = 60, BOMB = 55, BIO = 100, FIRE = 100, ACID = 100, WOUND = 65)
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF | ACID_PROOF

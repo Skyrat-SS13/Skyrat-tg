@@ -83,7 +83,6 @@
 	if(!IsLivingHuman(target))
 		return FALSE
 	target.adjustToxLoss(-amount_healed)
-	target.radiation = max(target.radiation - (amount_healed * 8), 0)//Rads are treatable, but inefficent//
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//

@@ -297,6 +297,8 @@
 			glasses = /obj/item/clothing/glasses/regular/circle
 		if ("Hipster")
 			glasses = /obj/item/clothing/glasses/regular/hipster
+		if ("Modern")
+			glasses = /obj/item/clothing/glasses/betterunshit
 		else
 			glasses = /obj/item/clothing/glasses/regular
 
