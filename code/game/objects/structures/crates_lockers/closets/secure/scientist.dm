@@ -8,23 +8,7 @@
 
 	new /obj/item/clothing/suit/bio_suit/scientist(src)
 	new /obj/item/clothing/head/bio_hood/scientist(src)
-<<<<<<< HEAD
-	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-	/*
-	new /obj/item/clothing/suit/toggle/labcoat(src)
-	new /obj/item/clothing/under/rank/rnd/research_director(src)
-	new /obj/item/clothing/under/rank/rnd/research_director/skirt(src)
-	new /obj/item/clothing/under/rank/rnd/research_director/alt(src)
-	new /obj/item/clothing/under/rank/rnd/research_director/alt/skirt(src)
-	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck(src)
-	new /obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt(src)
-	new /obj/item/clothing/head/beret/science(src)
-	new /obj/item/clothing/shoes/sneakers/brown(src)
-	*/
-	// END
-=======
 	new /obj/item/storage/bag/garment/research_director(src)
->>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/cartridge/rd(src)
 	new /obj/item/radio/headset/heads/rd(src)
 	new /obj/item/megaphone/command(src)

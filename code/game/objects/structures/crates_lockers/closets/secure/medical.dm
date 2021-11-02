@@ -76,19 +76,7 @@
 
 	new /obj/item/clothing/suit/bio_suit/cmo(src)
 	new /obj/item/clothing/head/bio_hood/cmo(src)
-<<<<<<< HEAD
-	new /obj/item/clothing/suit/toggle/labcoat/cmo(src)
-	// SKYRAT EDIT REMOVAL BEGIN - MOVED TO COMMAND CLOTHING VENDOR
-	/*
-	new /obj/item/clothing/under/rank/medical/chief_medical_officer(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	new /obj/item/clothing/under/rank/medical/chief_medical_officer/skirt(src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	new /obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck(src) // SKYRAT EDIT ADDITION // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	new /obj/item/clothing/shoes/sneakers/brown (src) // SKYRAT EDIT REMOVAL - COMMAND CLOTHING VENDOR
-	*/
-	// SKYRAT EDIT END
-=======
 	new /obj/item/storage/bag/garment/chief_medical(src)
->>>>>>> d982c13b3f3 (Adds garment bags to reduce locker clutter (#62329))
 	new /obj/item/cartridge/cmo(src)
 	new /obj/item/radio/headset/heads/cmo(src)
 	new /obj/item/megaphone/command(src)
