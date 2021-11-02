@@ -10,9 +10,9 @@
 	for(var/datum/data/record/general_record in GLOB.data_core.general)
 		var/name = general_record.fields["name"]
 		var/rank = general_record.fields["rank"]
-		var/truerank = general_record.fields["truerank"] // SKYRAT EDIT ADD - ALT TITLES
+		var/truerank = general_record.fields["truerank"]
 		var/exploitables = general_record.fields["exploitable_records"]
-		var/datum/job/job = SSjob.GetJob(truerank) // SKYRAT EDIT - ORIGINAL CALLED GetJob(rank)
+		var/datum/job/job = SSjob.GetJob(truerank)
 		var/exploitables_empty = (length(exploitables) < 2)
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list) && (!exploitables_empty)) // In case an unlawful custom rank is added.
 			var/list/exp_misc_list = exp_manifest_out[DEPARTMENT_UNASSIGNED]

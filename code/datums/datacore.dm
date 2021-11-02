@@ -266,7 +266,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			G.fields["exploitable_records"] = C.prefs.read_preference(/datum/preference/text/exploitable)
 		else
 			G.fields["exploitable_records"] = ""
-		//SKYRAT ADDITION END
+		// SKYRAT ADDITION END
 		general += G
 
 		//Medical Record
@@ -283,10 +283,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
 		M.fields["notes"] = H.get_quirk_string(!medical, CAT_QUIRK_NOTES)
 		M.fields["notes_d"] = H.get_quirk_string(medical, CAT_QUIRK_NOTES)
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/medical)) // SKYRAT EDIT ADD - RP RECORDS
+		// SKYRAT EDIT ADD - RP RECORDS
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/medical))
 			M.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/medical)
 		else
-			M.fields["past_records"] = "" //SKYRAT EDIT END
+			M.fields["past_records"] = ""
+		// SKYRAT EDIT END
 		medical += M
 
 		//Security Record
@@ -297,10 +299,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		S.fields["citation"] = list()
 		S.fields["crim"] = list()
 		S.fields["notes"] = "No notes."
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/security)) // SKYRAT EDIT ADD - RP RECORDS
+		// SKYRAT EDIT ADD - RP RECORDS
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/security))
 			S.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/security)
 		else
-			S.fields["past_records"] = "" //SKYRAT EDIT END
+			S.fields["past_records"] = ""
+		// SKYRAT EDIT END
 		security += S
 
 		//Locked Record
