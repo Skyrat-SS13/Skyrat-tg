@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	/obj/item/stack/ore/silver = 3,
 	/obj/item/stack/ore/iron = 5,
 	/obj/item/stack/ore/glass = 5,
-	/obj/item/xenoarch/strange_rock = 3,
+	/obj/item/xenoarch/strange_rock = 2,
 ))
 
 /datum/component/fishing
