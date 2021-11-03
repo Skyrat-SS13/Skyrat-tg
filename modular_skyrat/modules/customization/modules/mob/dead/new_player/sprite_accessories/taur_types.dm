@@ -135,3 +135,63 @@
 	taur_mode = STYLE_TAUR_PAW
 	color_src = USE_MATRIXED_COLORS
 
+/datum/sprite_accessory/taur/fatfeline
+	name = "Fat feline (tri-color)"
+	icon_state = "fatfeline"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/taur/fatwolf
+	name = "Fat wolf (tri-color)"
+	icon_state = "fatwolf"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/taur/fatdrake
+	name = "Fat drake (tri-color)"
+	icon_state = "fatdrake"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/taur/wasp
+	name = "Wasp (dual-color)"
+	icon_state = "wasp"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+	hide_legs = TRUE
+
+/datum/sprite_accessory/taur/fatsynfllight
+	name = "Fat synth seline (lights)"
+	icon_state = "fatsynfllight"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/taur/fatsynflbelly
+	name = "Fat synth feline (belly)"
+	icon_state = "fatsynflbelly"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/taur/fatsynlzbelly
+	name = "Fat synth lizard (belly)"
+	icon_state = "fatsynlzbelly"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/taur/fatsynlzlight
+	name = "Fat synth lizard (lights)"
+	icon_state = "fatsynlzlight"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/taur/fatsynwfbelly
+	name = "Fat synth wolf (belly)"
+	icon_state = "fatsynwfbelly"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
+	
+/datum/sprite_accessory/taur/fatsynwflight
+	name = "Fat synth wolf (light)"
+	icon_state = "fatsynwflight"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_MATRIXED_COLORS
