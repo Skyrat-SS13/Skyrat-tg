@@ -319,6 +319,19 @@ GLOBAL_LIST_EMPTY(antagonists)
 		ambitions_removal()
 	//SKYRAT EDIT ADDITION END
 	on_removal()
+	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
+	if (is_special_character(user))
+		for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
+			if (!(antag_datum) && user.mind.has_exploitable_menu == TRUE|| (!(antag_datum.view_exploitables) && user.mind.has_exploitable_menu == TRUE))
+				remove_verb(user.mind.current, /mob/proc/view_exploitables_verb)
+				user.mind.has_exploitable_menu = FALSE
+	if (!(is_special_character(user)) && user.mind.has_exploitable_menu)
+		remove_verb(user.mind.current, /mob/proc/view_exploitables_verb)
+		user.mind.has_exploitable_menu = FALSE
+	if (!(is_special_character(user)) && !(user.mind.has_exploitable_menu))
+		return
+
+	//SKYRAT EDIT ADDITION END
 
 //gamemode/proc/is_mode_antag(antagonist/A) => TRUE/FALSE
 

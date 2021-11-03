@@ -93,6 +93,8 @@
 	var/list/active_addictions
 	///List of objective-specific equipment that couldn't properly be given to the mind
 	var/list/failed_special_equipment
+	// SKYRAT EDIT ADDITION -- EXPLOITABLE MENU - tracks if mob has the verb
+	var/has_exploitable_menu = FALSE
 
 /datum/mind/New(_key)
 	key = _key
@@ -308,6 +310,14 @@
 		//If we already have ambitions done, call the add proc to give us the proper powers/uplinks
 		if(my_ambitions.submitted)
 			A.ambitions_add()
+	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLES MENU
+	for(var/datum/antagonist/antag_datum in src?.antag_datums)
+		if ((antag_datum.view_exploitables && has_exploitable_menu == FALSE))
+			add_verb(current, /mob/proc/view_exploitables_verb)
+			has_exploitable_menu = TRUE
+
+	//SKYRAT EDIT ADDITION END
+
 	//SKYRAT EDIT ADDITION END
 	return A
 
@@ -320,6 +330,13 @@
 		//SKYRAT EDIT ADDITION BEGIN - AMBITIONS
 		if(A.uses_ambitions && my_ambitions.submitted)
 			A.ambitions_removal()
+		//SKYRAT EDIT ADDITION END
+
+		//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLES MENU
+		for(var/datum/antagonist/antag_datum in src?.antag_datums)
+			if (!(antag_datum.view_exploitables && has_exploitable_menu == TRUE))
+				remove_verb(current, /mob/proc/view_exploitables_verb)
+				has_exploitable_menu = FALSE
 		//SKYRAT EDIT ADDITION END
 		return TRUE
 
