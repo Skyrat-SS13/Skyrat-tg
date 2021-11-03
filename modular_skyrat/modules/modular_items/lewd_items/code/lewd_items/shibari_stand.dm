@@ -222,6 +222,7 @@
 // Default initialization
 /obj/item/shibari_stand_kit/Initialize()
 	. = ..()
+	populate_shibarikit_designs()
 	update_icon_state()
 	update_icon()
 
@@ -230,21 +231,15 @@
 	icon_state = "[initial(icon_state)]_[current_color]"
 
 //to change model
-/obj/item/shibari_stand_kit/AltClick(mob/user, obj/item/I)
-	if(color_changed == FALSE)
-		. = ..()
-		if(.)
-			return
-		var/choice = show_radial_menu(user,src, shibarikit_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
-		if(!choice)
-			return FALSE
-		current_color = choice
-		update_icon()
-		color_changed = TRUE
-	else
-		return
+/obj/item/shibari_stand_kit/screwdriver_act(mob/living/user, obj/item/tool)
+	var/choice = show_radial_menu(user,src, shibarikit_designs, custom_check = CALLBACK(src, .proc/check_menu, user, tool), radius = 36, require_near = TRUE)
+	if(!choice)
+		return FALSE
+	to_chat(user, span_notice("You switched the frame's plastic fittings color to [choice]."))
+	current_color = choice
+	update_appearance()
+	return TRUE
 
-//to check if we can change shackles' model
 /obj/item/shibari_stand_kit/proc/check_menu(mob/living/user)
 	if(!istype(user))
 		return FALSE
@@ -253,7 +248,6 @@
 	return TRUE
 
 /obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
-	. = ..()
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You assemble the frame."))
@@ -264,7 +258,6 @@
 	return TRUE
 
 /obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/I)
-	. = ..()
 	to_chat(user, span_notice("You begin unfastening the frame of shibari stand..."))
 	if(I.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You disassemble the shibari stand."))
