@@ -8,18 +8,20 @@
 
 	var/list/departments_by_type = SSjob.joinable_departments_by_type
 	for(var/datum/data/record/general_record in GLOB.data_core.general)
+		var/exploitables = general_record.fields["exploitable_records"]
+		var/exploitables_empty = (length(general_record.fields["exploitable_records"]) < 2)
+		if (exploitables_empty)
+			continue
 		var/name = general_record.fields["name"]
 		var/rank = general_record.fields["rank"]
-		var/truerank = general_record.fields["truerank"]
-		var/exploitables = general_record.fields["exploitable_records"]
-		var/datum/job/job = SSjob.GetJob(truerank)
-		var/exploitables_empty = (length(exploitables) < 2)
+//		var/truerank = general_record.fields["truerank"]
+		var/datum/job/job = SSjob.GetJob(rank)
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list) && (!exploitables_empty)) // In case an unlawful custom rank is added.
 			var/list/exp_misc_list = exp_manifest_out[DEPARTMENT_UNASSIGNED]
 			exp_misc_list[++exp_misc_list.len] = list(
 				"name" = name,
 				"rank" = rank,
-				"truerank" = truerank,
+//				"truerank" = truerank,
 				"exploitable_records" = exploitables,
 				)
 			continue
@@ -28,12 +30,10 @@
 			if(!department)
 				stack_trace("get_exploitable_manifest() failed to get job department for [department_type] of [job.type]")
 				continue
-			if(exploitables_empty)
-				continue
 			var/list/exp_entry = list(
 				"name" = name,
 				"rank" = rank,
-				"truerank" = truerank,
+//				"truerank" = truerank,
 				"exploitable_records" = exploitables,
 				)
 			var/list/exp_department_list = exp_manifest_out[department.department_name]

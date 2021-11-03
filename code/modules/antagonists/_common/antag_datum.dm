@@ -318,21 +318,34 @@ GLOBAL_LIST_EMPTY(antagonists)
 	if(uses_ambitions && owner.my_ambitions.submitted)
 		ambitions_removal()
 	//SKYRAT EDIT ADDITION END
-	on_removal()
-	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
-	if (is_special_character(user))
-		for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
-			if (!(antag_datum) && user.mind.has_exploitable_menu == TRUE|| (!(antag_datum.view_exploitables) && user.mind.has_exploitable_menu == TRUE))
-				remove_verb(user.mind.current, /mob/proc/view_exploitables_verb)
-				user.mind.has_exploitable_menu = FALSE
-	if (!(is_special_character(user)) && user.mind.has_exploitable_menu)
-		remove_verb(user.mind.current, /mob/proc/view_exploitables_verb)
-		user.mind.has_exploitable_menu = FALSE
-	if (!(is_special_character(user)) && !(user.mind.has_exploitable_menu))
-		return
-
+	//SKYRAT EDIT ADDITON BEGIN - EXPLOITABLE MENU
+	var/is_removed_antag = src
+	var/has_exploitable_antag_not_removed = FALSE
+	for(var/datum/antagonist/antag_datum in owner?.antag_datums)
+		if (antag_datum == is_removed_antag && antag_datum.view_exploitables)
+			if (owner.has_exploitable_menu && has_exploitable_antag_not_removed == FALSE)
+				remove_verb(owner.current, /mob/proc/view_exploitables_verb)
+				owner.has_exploitable_menu = FALSE
+				continue
+			continue
+		if (antag_datum == is_removed_antag)
+			continue
+		if (antag_datum.view_exploitables)
+			has_exploitable_antag_not_removed = TRUE
+			if (!(owner.has_exploitable_menu))
+				add_verb(owner.current, /mob/proc/view_exploitables_verb)
+				owner.has_exploitable_menu = TRUE
+				continue
+			continue
+		if (!(antag_datum.view_exploitables && has_exploitable_antag_not_removed == FALSE))
+			if (owner.has_exploitable_menu)
+				remove_verb(owner.current, /mob/proc/view_exploitables_verb)
+				owner.has_exploitable_menu = FALSE
+				continue
+			continue
 	//SKYRAT EDIT ADDITION END
 
+	on_removal()
 //gamemode/proc/is_mode_antag(antagonist/A) => TRUE/FALSE
 
 /**
