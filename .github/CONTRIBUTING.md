@@ -135,9 +135,8 @@ There is no strict process when it comes to merging pull requests. Pull requests
 
 * After leaving reviews on an open pull request, maintainers may convert it to a draft. Once you have addressed all their comments to the best of your ability, feel free to mark the pull as `Ready for Review` again.
 
-<<<<<<< HEAD
 * **Pull requests that include sprites must have in-game screenshots that were taken on your own test-server in the PR body.** For instance, if you're adding new clothes, a screenshot of those clothes being worn is expected in the PR body. Not every single direction needs to be displayed, but each icon that's actually being used in-game should be showcased.
-=======
+
 ## Good Boy Points
 
 Each GitHub account has a score known as Good Boy Points, or GBP. This is a system we use to ensure that the codebase stays maintained and that contributors fix bugs as well as add features.
@@ -151,7 +150,6 @@ Negative GBP increases the likelihood of a maintainer closing your PR. With that
 There is no benefit to having a higher positive GBP score, since GBP only comes into consideration when it is negative.
 
 You can see each tag and their GBP values [Here](https://github.com/tgstation/tgstation/blob/master/.github/gbp.toml). 
->>>>>>> 1a5a16a3bc0 (Adds a note in the guide for contributors and the PR template to explain what GBP is (#62406))
 
 ## Porting features/sprites/sounds/tools from other codebases
 
