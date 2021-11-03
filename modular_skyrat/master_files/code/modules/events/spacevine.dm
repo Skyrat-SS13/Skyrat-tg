@@ -556,7 +556,7 @@
 	severity = 3
 	quality = POSITIVE
 
-/datum/spacevine_mutation/low_layer/on_grow(obj/structure/spacevine/vine_object)
+/datum/spacevine_mutation/low_layer/on_spread(obj/structure/spacevine/vine_object, turf/target)
 	vine_object.layer = TURF_LAYER
 	vine_object.plane = FLOOR_PLANE
 
@@ -567,8 +567,9 @@
 	quality = POSITIVE
 
 /datum/spacevine_mutation/breach_fixing/on_spread(obj/structure/spacevine/vine_object, turf/grown_turf)
-	if(isspaceturf(grown_turf))
-		grown_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
+	for(/turf/open/space/space_turf in range(1, src))
+		space_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
+		space_turf.color = plant_color
 
 /turf/open/floor/plating/kudzu
 	name = "vine flooring"
