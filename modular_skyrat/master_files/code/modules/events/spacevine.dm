@@ -567,7 +567,7 @@
 	quality = POSITIVE
 
 /datum/spacevine_mutation/breach_fixing/on_spread(obj/structure/spacevine/vine_object, turf/grown_turf)
-	for(/turf/open/space/space_turf in range(1, src))
+	for(var/turf/open/space/space_turf in range(2, grown_turf))
 		space_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
 		space_turf.color = plant_color
 
