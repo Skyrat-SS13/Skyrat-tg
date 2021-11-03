@@ -407,7 +407,6 @@
 	var/turf/planted_turf = get_turf(src)
 	var/list/added_mut_list = list()
 	new /datum/spacevine_controller(planted_turf, added_mut_list, 50, 5)
-	new /mob/living/simple_animal/hostile/venus_human_trap(planted_turf)
 
 /datum/spacevine_mutation/seeding/on_cross(obj/structure/spacevine/holder, mob/crosser)
 	if(isliving(crosser))
@@ -545,6 +544,57 @@
 	hue = "#0a1330"
 	severity = 5
 	quality = NEGATIVE
+
+/datum/spacevine_mutation/low_layer
+	name = "low-layer"
+	hue = "#a9adb1"
+	severity = 3
+	quality = POSITIVE
+
+/datum/spacevine_mutation/low_layer/on_grow(obj/structure/spacevine/vine_object)
+	vine_object.layer = TURF_LAYER
+	vine_object.plane = FLOOR_PLANE
+
+/datum/spacevine_mutation/breach_fixing
+	name = "breach-fixing"
+	hue = "#43a1ff"
+	severity = 5
+	quality = POSITIVE
+
+/datum/spacevine_mutation/breach_fixing/on_spread(obj/structure/spacevine/holder, turf/grown_turf)
+	if(isspaceturf(grown_turf))
+		grown_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
+
+/turf/open/floor/plating/kudzu
+	name = "vine flooring"
+	icon = 'modular_skyrat/modules/aesthetics/floors/icons/floors.dmi'
+	icon_state = "vinefloor"
+
+/turf/open/floor/plating/kudzu/attacked_by(obj/item/attacking_item, mob/living/user)
+	if(istype(attacking_item, /obj/item/wirecutters))
+		ChangeTurf(/turf/open/space)
+	else
+		return ..()
+
+/datum/spacevine_mutation/carbon_recycling
+	name = "carbon-recycling"
+	hue = "#008a50"
+	severity = 5
+	quality = POSITIVE
+
+/datum/spacevine_mutation/carbon_recycling/process_mutation(obj/structure/spacevine/vine_object)
+	var/turf/open/floor/current_turf = vine_object.loc
+	if(!istype(current_turf))
+		return
+	var/datum/gas_mixture/gas_mix = current_turf.air
+	if(!gas_mix.gases[/datum/gas/carbon_dioxide])
+		return
+	var/moles_to_replace = severity * vine_object.energy
+	gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] = max(gas_mix.gases[/datum/gas/carbon_dioxide][MOLES] - moles_to_replace, 0)
+	gas_mix.garbage_collect()
+
+	var/happy_atmos = "oxygen=[moles_to_replace];TEMP=296"
+	current_turf.atmos_spawn_air(happy_atmos)
 
 // SPACE VINES (Note that this code is very similar to Biomass code)
 /obj/structure/spacevine
