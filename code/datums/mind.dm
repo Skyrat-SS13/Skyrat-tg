@@ -310,14 +310,12 @@
 		//If we already have ambitions done, call the add proc to give us the proper powers/uplinks
 		if(my_ambitions.submitted)
 			A.ambitions_add()
+	//SKYRAT EDIT ADDITION END
 	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLES MENU
 	for(var/datum/antagonist/antag_datum in src?.antag_datums)
 		if ((antag_datum.view_exploitables && has_exploitable_menu == FALSE))
 			add_verb(current, /mob/proc/view_exploitables_verb)
 			has_exploitable_menu = TRUE
-
-	//SKYRAT EDIT ADDITION END
-
 	//SKYRAT EDIT ADDITION END
 	return A
 
