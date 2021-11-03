@@ -235,9 +235,10 @@
 	var/choice = show_radial_menu(user,src, shibarikit_designs, custom_check = CALLBACK(src, .proc/check_menu, user, tool), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
-	to_chat(user, span_notice("You switched the frame's plastic fittings color to [choice]."))
-	current_color = choice
-	update_appearance()
+	if(tool.use_tool(src, user, 0, volume=40))
+		to_chat(user, span_notice("You switched the frame's plastic fittings color to [choice]."))
+		current_color = choice
+		update_appearance()
 	return TRUE
 
 /obj/item/shibari_stand_kit/proc/check_menu(mob/living/user)
