@@ -155,13 +155,12 @@
 
 //stuff to apply processing on equip and add mood event for perverts
 /obj/item/clothing/under/shibari_groin/equipped(mob/user, slot)
-	.=..()
 	var/mob/living/carbon/human/C = user
 	if(C?.dna?.mutant_bodyparts["taur"])
 		slowdown = 4
 	else
 		slowdown = 0
-	user.update_equipment_speed_mods()
+	. = ..()
 	if(src == C.w_uniform)
 		START_PROCESSING(SSobj, src)
 	if(HAS_TRAIT(C, TRAIT_ROPEBUNNY))
