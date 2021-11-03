@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 				generate_fish(spawning_turf, random_fish_type())
 		if(66 to 98)
 			spawning_reward = pick_weight(possible_loot)
-		if(98 to 100)
+		if(99 to 100)
 			spawning_reward = /obj/item/skillchip/fishing_master
 	if(spawning_reward)
 		new spawning_reward(spawning_turf)
