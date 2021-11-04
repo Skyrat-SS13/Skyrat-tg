@@ -358,6 +358,19 @@
 		wearer.visible_message(span_notice("The [gown] fails to fit on [wearer], instantly disentagrating away"), span_notice("The [gown] unable to fit on you, disentagrates into nothing"))
 		return FALSE
 
+//Salve Medicell
+/obj/item/ammo_casing/energy/medical/utility/salve
+	projectile_type = /obj/projectile/energy/medical/utility/salve
+	select_name = "salve"
+	select_color = "#00af57"
+
+/obj/projectile/energy/medical/utility/salve
+	name = "salve globule"
+	icon_state = "glob_projectile" //Replace this texture later.
+	shrapnel_type = /obj/item/mending_globule/hardlight
+	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
+	nodamage = TRUE
+	damage = 0
 
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
@@ -372,6 +385,22 @@
 		to_chat(wearer, span_notice("The [src] disappeared after being removed"))
 		qdel(src)
 		return
+
+//Salve Globule
+/obj/item/mending_globule/hardlight
+	name = "salve globule"
+	desc = "a ball of regenerative synthetic plant matter, contained within a soft hardlight field"
+	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
+	heals_left = 30 //This means it'll be heaing 15 damage per type max.
+
+
+/obj/item/mending_globule/hardlight/process()
+	if(!bodypart)
+		return FALSE
+	bodypart.heal_damage(0.5,0.5) //Reduced healing rate over original
+	heals_left--
+	if(heals_left <= 0)
+		qdel(src)
 
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS

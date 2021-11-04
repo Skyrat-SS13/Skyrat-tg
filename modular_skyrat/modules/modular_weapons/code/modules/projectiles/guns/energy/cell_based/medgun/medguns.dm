@@ -232,3 +232,8 @@
 	desc = "A medicell that creates a hopsital gown made out of hardlight on the target"
 	icon_state = "gown"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/gown
+
+/obj/item/weaponcell/medical/utility/salve
+	name = "Hardlight Salve Medicell"
+	desc = "A medicell that applies a healing globule of synthetic plant matter to a patient"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/salve
