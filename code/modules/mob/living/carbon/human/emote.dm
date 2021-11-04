@@ -58,9 +58,10 @@
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	var/mob/living/carbon/human/H = user
-	if(H.mind?.miming)
+	var/mob/living/carbon/human/human = user
+	if(human.mind?.miming)
 		return
+<<<<<<< HEAD
 	if(ishumanbasic(H) || isfelinid(H))
 		if(user.gender == FEMALE)
 			return pick('sound/voice/human/femalescream_1.ogg', 'sound/voice/human/femalescream_2.ogg', 'sound/voice/human/femalescream_3.ogg', 'sound/voice/human/femalescream_4.ogg', 'sound/voice/human/femalescream_5.ogg')
@@ -83,6 +84,9 @@
 					'sound/creatures/monkey/monkey_screech_6.ogg',
 					'sound/creatures/monkey/monkey_screech_7.ogg')
 */
+=======
+	return human.dna.species.get_scream_sound(human)
+>>>>>>> eff448fc65d (How did this emote go this long being like this (#62522))
 
 /datum/emote/living/carbon/human/scream/screech //If a human tries to screech it'll just scream.
 	key = "screech"
