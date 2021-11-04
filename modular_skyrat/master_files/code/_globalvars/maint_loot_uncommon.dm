@@ -133,7 +133,8 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/box/fireworks = 5,
 		/obj/item/storage/box/handcuffs = 5,
 		/obj/item/toy/cards/deck/syndicate = 5,
-		/obj/item/wormhole_jaunter = 5
+		/obj/item/wormhole_jaunter = 5,
+		/obj/item/blackmarket_uplink = 100,
 	) = 200,
 	list( //Ammo
 		/obj/item/ammo_casing/shotgun/beanbag = 50,
@@ -158,7 +159,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/ammo_casing/c45 = 10,
 		/obj/item/ammo_casing/c9mm = 10,
 		/obj/item/ammo_casing/caseless/foam_dart = 100,
-		/obj/item/ammo_casing/caseless/foam_dart/riot = 100 ,
+		/obj/item/ammo_casing/caseless/foam_dart/riot = 100,
 	) = 50,
 	list( // Good memes.
 		/obj/item/aicard/aitater = 10,
