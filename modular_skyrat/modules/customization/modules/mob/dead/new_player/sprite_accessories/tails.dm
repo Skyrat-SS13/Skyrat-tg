@@ -346,3 +346,41 @@
 /datum/sprite_accessory/tails/mammal/wagging/spade
 	name = "Succubus Spade Tail"
 	icon_state = "spade"
+
+/datum/sprite_accessory/tails/mammal/wagging/plugtail
+	name = "plugtail"
+	icon_state = "plugtail"
+
+/datum/sprite_accessory/tails/mammal/wagging/zorgoia
+	name = "Zorgoia tail"
+	icon_state = "zorgoia"
+
+/datum/sprite_accessory/tails/mammal/wagging/tailmawwag
+	name = "Tailmaw (wag)"
+	icon_state = "tailmawwag"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/wagging/snake
+	name = "Snake"
+	icon_state = "snaketail"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/tails/mammal/teshari
+	recommended_species = list(SPECIES_TESHARI)
+	general_type = "teshari"
+
+/datum/sprite_accessory/tails/mammal/teshari/default
+	name = "Teshari Default Tail"
+	icon_state = "teshari_default"
+
+/datum/sprite_accessory/tails/mammal/teshari/fluffy
+	name = "Teshari Fluffy Tail"
+	icon_state = "teshari_fluffy"
+/datum/sprite_accessory/tails/mammal/teshari/thin
+	name = "Teshari Thin Tail"
+	icon_state = "teshari_thin"

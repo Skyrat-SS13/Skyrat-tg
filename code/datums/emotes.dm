@@ -101,11 +101,6 @@
 
 	msg = replace_pronoun(user, msg)
 
-	if(isliving(user))
-		var/mob/living/sender = user
-		for(var/obj/item/implant/implant in sender.implants)
-			implant.trigger(key, sender)
-
 	if(!msg)
 		return
 
@@ -113,7 +108,7 @@
 	var/dchatmsg = "<b>[user]</b> [msg]"
 
 	var/tmp_sound = get_sound(user)
-	if(tmp_sound && (!only_forced_audio || !intentional) && !TIMER_COOLDOWN_CHECK(user, type))
+	if(tmp_sound && should_play_sound(user, intentional) && !TIMER_COOLDOWN_CHECK(user, type))
 		TIMER_COOLDOWN_START(user, type, audio_cooldown)
 		//SKYRAT EDIT CHANGE BEGIN
 		//playsound(user, tmp_sound, 50, vary) - SKYRAT EDIT - ORIGINAL
@@ -288,6 +283,20 @@
 				check = TRUE
 		return check
 	//SKYRAT EDIT END
+
+/**
+ * Check to see if the user should play a sound when performing the emote.
+ *
+ * Arguments:
+ * * user - Person that is doing the emote.
+ * * intentional - Bool that says whether the emote was forced (FALSE) or not (TRUE).
+ *
+ * Returns a bool about whether or not the user should play a sound when performing the emote.
+ */
+/datum/emote/proc/should_play_sound(mob/user, intentional = FALSE)
+	if(only_forced_audio && intentional)
+		return FALSE
+	return TRUE
 
 /**
 * Allows the intrepid coder to send a basic emote

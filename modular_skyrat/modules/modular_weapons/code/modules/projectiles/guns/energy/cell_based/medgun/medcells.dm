@@ -9,7 +9,7 @@
 	e_cost = 120
 	delay = 8
 	harmful = FALSE
-
+	select_color = "#00d9ffff"
 /obj/projectile/energy/medical
 	name = "medical heal shot"
 	icon_state = "blue_laser"
@@ -83,13 +83,13 @@
 	if(!IsLivingHuman(target))
 		return FALSE
 	target.adjustToxLoss(-amount_healed)
-	target.radiation = max(target.radiation - (amount_healed * 8), 0)//Rads are treatable, but inefficent//
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
 /obj/item/ammo_casing/energy/medical/brute1
 	projectile_type = /obj/projectile/energy/medical/brute
 	select_name = "brute"
+	select_color = "#ff0000ff"
 
 /obj/projectile/energy/medical/brute
 	name = "brute heal shot"
@@ -105,6 +105,7 @@
 /obj/item/ammo_casing/energy/medical/burn1
 	projectile_type = /obj/projectile/energy/medical/burn
 	select_name = "burn"
+	select_color = "#ffae00ff"
 
 /obj/projectile/energy/medical/burn
 	name = "burn heal shot"
@@ -112,6 +113,7 @@
 	var/amount_healed = 7.5
 	var/max_clone = 2/3
 	var/base_disgust = 3
+
 
 /obj/projectile/energy/medical/burn/on_hit(mob/living/target)
 	. = ..()
@@ -121,6 +123,7 @@
 /obj/item/ammo_casing/energy/medical/toxin1
 	projectile_type = /obj/projectile/energy/medical/toxin
 	select_name = "toxin"
+	select_color = "#15ff00ff"
 
 /obj/projectile/energy/medical/toxin
 	name = "toxin heal shot"
@@ -163,6 +166,7 @@
 /obj/item/ammo_casing/energy/medical/brute2
 	projectile_type = /obj/projectile/energy/medical/brute/better
 	select_name = "brute II"
+	select_color = "#ff0000ff"
 
 /obj/projectile/energy/medical/brute/better
 	name = "strong brute heal shot"
@@ -175,6 +179,7 @@
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/burn/better
 	select_name = "burn II"
+	select_color = "#ffae00ff"
 
 /obj/projectile/energy/medical/burn/better
 	name = "strong burn heal shot"
@@ -187,6 +192,7 @@
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/oxygen/better
 	select_name = "oxygen II"
+	select_color = "#00d9ffff"
 
 /obj/projectile/energy/medical/oxygen/better
 	name = "strong oxygen heal shot"
@@ -197,6 +203,7 @@
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/toxin/better
 	select_name = "toxin II"
+	select_color = "#15ff00ff"
 
 /obj/projectile/energy/medical/toxin/better
 	name = "strong toxin heal shot"
@@ -227,6 +234,7 @@
 /obj/item/ammo_casing/energy/medical/brute3
 	projectile_type = /obj/projectile/energy/medical/brute/better/best
 	select_name = "brute III"
+	select_color = "#ff0000ff"
 
 /obj/projectile/energy/medical/brute/better/best
 	name = "powerful brute heal shot"
@@ -238,6 +246,7 @@
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/burn/better/best
 	select_name = "burn III"
+	select_color = "#ffae00ff"
 
 /obj/projectile/energy/medical/burn/better/best
 	name = "powerful burn heal shot"
@@ -249,6 +258,7 @@
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/oxygen/better/best
 	select_name = "oxygen III"
+	select_color = "#00d9ffff"
 
 /obj/projectile/energy/medical/oxygen/better/best
 	name = "powerful oxygen heal shot"
@@ -258,6 +268,7 @@
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/toxin/better/best
 	select_name = "toxin III"
+	select_color = "#15ff00ff"
 
 /obj/projectile/energy/medical/toxin/better/best
 	name = "powerful toxin heal shot"
@@ -292,6 +303,7 @@
 /obj/item/ammo_casing/energy/medical/utility/clotting
 	projectile_type = /obj/projectile/energy/medical/utility/clotting
 	select_name = "clotting"
+	select_color = "#ff00eaff"
 
 /obj/projectile/energy/medical/utility/clotting
 	name = "clotting agent shot"
@@ -309,6 +321,7 @@
 /obj/item/ammo_casing/energy/medical/utility/temperature
 	projectile_type = /obj/projectile/energy/medical/utility/temperature
 	select_name = "temperature"
+	select_color = "#fbff00ff"
 
 /obj/projectile/energy/medical/utility/temperature
 	name = "temperature adjustment shot"
@@ -322,6 +335,42 @@
 	if(abs(difference) <= MINIMUM_TEMP_DIFFERENCE) //It won't adjust temperature if the difference is too low
 		return FALSE
 	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
+
+//Surgical Gown Medicell.
+/obj/item/ammo_casing/energy/medical/utility/gown
+	projectile_type = /obj/projectile/energy/medical/utility/gown
+	select_name = "gown"
+	select_color = "#00ffbf"
+
+/obj/projectile/energy/medical/utility/gown
+	name = "hardlight surgical gown field"
+
+/obj/projectile/energy/medical/utility/gown/on_hit(mob/living/target)
+	if(!istype(target, /mob/living/carbon/human)) //Dead check isn't fully needed, since it'd be reasonable for this to work on corpses.
+		return
+	var/mob/living/carbon/wearer = target
+	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	if(wearer.equip_to_slot_if_possible(gown, ITEM_SLOT_OCLOTHING, 1, 1, 1))
+		wearer.visible_message(span_notice("The [gown] covers [wearer] body"), span_notice("The [gown] wraps around your body, covering you"))
+		return
+	else
+		wearer.visible_message(span_notice("The [gown] fails to fit on [wearer], instantly disentagrating away"), span_notice("The [gown] unable to fit on you, disentagrates into nothing"))
+		return FALSE
+
+
+//Objects Used by medicells.
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	name = "Hardlight Hospital Gown"
+	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
+	icon_state = "lgown"
+
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight/dropped(mob/user)
+	. = ..()
+	var/mob/living/carbon/wearer = user
+	if((wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING)) == src && !QDELETED(src))
+		to_chat(wearer, span_notice("The [src] disappeared after being removed"))
+		qdel(src)
+		return
 
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS

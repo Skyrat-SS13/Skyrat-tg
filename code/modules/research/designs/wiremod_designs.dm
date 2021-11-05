@@ -103,6 +103,16 @@
 	id = "comp_random"
 	build_path = /obj/item/circuit_component/random
 
+/datum/design/component/binary_conversion
+	name = "Binary Conversion Component"
+	id = "comp_binary_convert"
+	build_path = /obj/item/circuit_component/binary_decimal/binary_conversion
+
+/datum/design/component/decimal_conversion
+	name = "Decimal Conversion Component"
+	id = "comp_decimal_convert"
+	build_path = /obj/item/circuit_component/binary_decimal/decimal_conversion
+
 /datum/design/component/species
 	name = "Get Species Component"
 	id = "comp_species"
@@ -452,3 +462,12 @@
 	build_path = /obj/item/circuitboard/machine/bci_implanter
 	build_type = IMPRINTER | COMPONENT_PRINTER
 	category = list("Circuitry", "Core")
+
+/datum/design/assembly_shell
+	name = "Assembly Shell"
+	desc = "An assembly shell that can be attached to wires and other assemblies."
+	id = "assembly_shell"
+	materials = list(/datum/material/glass = 2000, /datum/material/iron = 5000)
+	build_path = /obj/item/assembly/wiremod
+	build_type = PROTOLATHE | COMPONENT_PRINTER
+	category = list("Circuitry", "Shells")

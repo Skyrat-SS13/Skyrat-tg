@@ -318,10 +318,13 @@
 			if(!GLOB.donator_list[owner.ckey] && !is_admin(owner))
 				formatted_list.len--
 				continue
+
+		var/atom/loadout_atom = item.item_path
+
 		var/list/formatted_item = list()
 		formatted_item["name"] = item.name
 		formatted_item["path"] = item.item_path
-		formatted_item["is_greyscale"] = item.can_be_greyscale
+		formatted_item["is_greyscale"] = !!(initial(loadout_atom.greyscale_config) && initial(loadout_atom.greyscale_colors) && (initial(loadout_atom.flags_1) & IS_PLAYER_COLORABLE_1))
 		formatted_item["is_renamable"] = item.can_be_named
 		formatted_item["is_job_restricted"] = !isnull(item.restricted_roles)
 		formatted_item["is_donator_only"] = !isnull(item.donator_only)
