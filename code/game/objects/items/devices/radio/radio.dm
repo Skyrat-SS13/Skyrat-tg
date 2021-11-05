@@ -313,7 +313,7 @@
 				return
 
 <<<<<<< HEAD
-	talk_into(speaker, raw_message, , spans, language=message_language, direct=FALSE) //SKYRAT EDIT CHANGE - GUNPOINT
+	talk_into(speaker, raw_message, , spans, language=message_language, message_mods=filtered_mods, direct=FALSE) //SKYRAT EDIT CHANGE - GUNPOINT
 =======
 	talk_into(speaker, raw_message, , spans, language=message_language, message_mods=filtered_mods)
 >>>>>>> 2c43f67d5b7 (custom say emotes, or in other words, radio emotes (#62130))
