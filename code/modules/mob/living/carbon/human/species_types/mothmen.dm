@@ -65,11 +65,8 @@
 	human_mob.dna.features["wings"] = wings
 	human_mob.dna.features["moth_wings"] = wings
 	human_mob.update_body()
-<<<<<<< HEAD
 */
 //SKYRAT EDIT REMOVAL END
-=======
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human/human)
 	return 'sound/voice/moth/scream_moth.ogg'
->>>>>>> eff448fc65d (How did this emote go this long being like this (#62522))
