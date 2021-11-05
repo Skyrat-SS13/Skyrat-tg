@@ -34,7 +34,7 @@
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/mob/clothing/feet.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/ashwalkers/icons/mob/clothing/feet_digi.dmi'
 	name = "tribal leg wraps"
-	desc = "a mundane set of leg wraps often worn by tribal villagers."
+	desc = "A mundane set of leg wraps often worn by tribal villagers."
 	icon_state = "mundanecuffs"
 	mutant_variants = STYLE_DIGITIGRADE
 
