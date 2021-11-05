@@ -33,7 +33,7 @@
 
 	///If the announcer overrides alert messages, use that message.
 	if(SSstation.announcer.custom_alert_message && !has_important_message)
-		announcement +=  SSstation.announcer.custom_alert_message
+		announcement += SSstation.announcer.custom_alert_message
 	else
 		announcement += "<br>[span_alert("[html_encode(text)]")]<br>"
 	announcement += "<br>"
@@ -86,7 +86,7 @@
 
 	var/datum/comm_message/M = new
 	M.title = title
-	M.content =  text
+	M.content = text
 
 	SScommunications.send_message(M)
 
