@@ -58,7 +58,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/mob/clothing/uniform.dmi'
 	name = "ash walker tunic"
-	desc = "A tattered red tunic of reddened fabric"
+	desc = "A tattered red tunic of reddened fabric."
 	icon_state = "caesar_clothes"
 	mutant_variants = STYLE_DIGITIGRADE
 
