@@ -542,7 +542,7 @@
 		/obj/machinery/vending/medical = "NanoMed Plus",
 		/obj/machinery/vending/drugs = "NanoDrug Plus",
 		/obj/machinery/vending/wallmed = "NanoMed",
-		/obj/machinery/vending/assist  = "Part-Mart",
+		/obj/machinery/vending/assist = "Part-Mart",
 		/obj/machinery/vending/engivend = "Engi-Vend",
 		/obj/machinery/vending/hydronutrients = "NutriMax",
 		/obj/machinery/vending/hydroseeds = "MegaSeed Servitor",
@@ -557,7 +557,8 @@
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
 		/obj/machinery/vending/dorms = "LustWish",	//SKYRAT EDIT CHANGE - ERP UPDATE - ORIGINAL: /obj/machinery/vending/dorms = "KinkVend"
-		/obj/machinery/vending/access/command = "Command Outfitting Station") //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/access/command = "Command Outfitting Station", //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/barbervend = "Fab-O-Vend") //SKYRAT EDIT ADDITION
 
 /obj/item/circuitboard/machine/vendor/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)

@@ -21,7 +21,7 @@
 /obj/item/clothing/under/pants/black/robohand
 	name = "badass pants"
 	desc = "Strangely firm yet soft black pants, these appear to have some armor padding for added protection."
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 5)
+	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)
 
 /obj/item/autosurgeon/organ/syndicate/nodrop
 	starting_organ = /obj/item/organ/cyberimp/brain/anti_drop
@@ -31,7 +31,7 @@
 	name = "badass sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks flashes. These ones seem to be bulletproof?"
 	body_parts_covered = HEAD
-	armor = list(MELEE = 20, BULLET = 60, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 5)
+	armor = list(MELEE = 20, BULLET = 60, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)
 
 //Again, not a bug, it's a feature. ALL PARTS COVERED!!
 /obj/item/clothing/suit/armor/bulletproof/robohand
