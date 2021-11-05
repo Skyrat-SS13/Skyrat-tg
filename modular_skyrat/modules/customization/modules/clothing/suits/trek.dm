@@ -24,7 +24,7 @@
 				/obj/item/reagent_containers/glass/beaker,
 				/obj/item/storage/pill_bottle,
 				/obj/item/taperecorder)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 	var/unbuttoned = 0
 
 //This makes the fed coats button and unbuttonable. Doesn't aply to modern fedcoats.
@@ -88,7 +88,7 @@
 			/obj/item/reagent_containers/glass/beaker,
 			/obj/item/storage/pill_bottle,
 			/obj/item/taperecorder)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 
 
 /obj/item/clothing/suit/storage/fluff/mfedcoat/medsci

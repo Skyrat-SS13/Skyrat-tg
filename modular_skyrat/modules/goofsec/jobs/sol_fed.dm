@@ -175,6 +175,9 @@ GLOBAL_LIST_INIT(emergency_responders, list())
 
 /obj/item/false_911_call_reporter/attack_self(mob/user, modifiers)
 	. = ..()
+	if(!GLOB.amt_911_responders)
+		to_chat(user, "There's no 911 responders. Stop spawning shit that you don't know how to use.")
+		return
 	if(!activated && !GLOB.fradulent_911_declared)
 		activated = TRUE
 		icon_state = "reporter_on"
