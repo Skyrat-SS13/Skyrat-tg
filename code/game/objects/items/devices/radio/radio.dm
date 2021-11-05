@@ -312,11 +312,7 @@
 			if (idx && (idx % 2) == (message_mods[RADIO_EXTENSION] == MODE_L_HAND))
 				return
 
-<<<<<<< HEAD
 	talk_into(speaker, raw_message, , spans, language=message_language, message_mods=filtered_mods, direct=FALSE) //SKYRAT EDIT CHANGE - GUNPOINT
-=======
-	talk_into(speaker, raw_message, , spans, language=message_language, message_mods=filtered_mods)
->>>>>>> 2c43f67d5b7 (custom say emotes, or in other words, radio emotes (#62130))
 
 // Checks if this radio can receive on the given frequency.
 /obj/item/radio/proc/can_receive(freq, level)
