@@ -8,7 +8,7 @@
 
 /obj/item/clothing/mask/gas/bdsm_mask
 	name = "latex gasmask"
-	desc = "A toned gas mask that completely muffles the wearer. Wearing this makes breathing alot more difficult."
+	desc = "A toned gas mask that completely muffles the wearer. Wearing this makes breathing a lot difficult."
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
