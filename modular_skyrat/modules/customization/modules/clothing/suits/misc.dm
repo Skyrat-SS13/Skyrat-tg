@@ -275,17 +275,17 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "ukrainian coat"
-	desc = "Cossacks, oh cossacks, let's go, cossachenki."
+	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
 	icon_state = "kuban_cossak"
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/cossack/sec
+/obj/item/clothing/suit/armor/cossack/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "security ukrainian coat"
+	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
 	icon_state = "don_cossak"
 	mutant_variants = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"

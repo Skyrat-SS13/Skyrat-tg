@@ -96,7 +96,7 @@
 	item_path = /obj/item/clothing/glasses/zentai
 	ckeywhitelist = list("candlejax")
 
-/datum/loadout_item/glasses/goldengoggles
+/datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
 	item_path = /obj/item/clothing/glasses/welding/goldengoggles
 	ckeywhitelist = list("goldenalpharex")
