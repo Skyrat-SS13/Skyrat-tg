@@ -9,12 +9,8 @@
 		TRAIT_NOHUNGER,
 		TRAIT_NOBREATH,
 	)
-<<<<<<< HEAD
-	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "wings" = "None")
-=======
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
 	mutant_bodyparts = list("wings" = "None")
->>>>>>> bb86c015eb7 (Nerfs felipires and dullanids. (#62432))
 	use_skintones = TRUE
 	mutantbrain = /obj/item/organ/brain/dullahan
 	mutanteyes = /obj/item/organ/eyes/dullahan
