@@ -3,7 +3,6 @@
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
-	flags_1 = RAD_PROTECT_CONTENTS_1 | RAD_NO_CONTAMINATE_1
 	rad_insulation = RAD_MEDIUM_INSULATION
 	pass_flags_self = PASSCLOSEDTURF
 
@@ -77,7 +76,7 @@
 	desc = null
 	icon = 'icons/blank_title.png'
 	icon_state = ""
-	pixel_x = -64
+	pixel_x = 0 // SKYRAT EDIT - Re-centering the title screen - ORIGINAL: pixel_x = -64
 	plane = SPLASHSCREEN_PLANE
 	bullet_bounce_sound = null
 
@@ -97,7 +96,7 @@ INITIALIZE_IMMEDIATE(/turf/closed/indestructible/splashscreen)
 	if(width == 480) // 480x480 is nonwidescreen
 		pixel_x = 0
 	else if(width == 608) // 608x480 is widescreen
-		pixel_x = -64
+		pixel_x = 0 // SKYRAT EDIT - Re-centering the title screen - ORIGINAL: pixel_x = -64
 
 /turf/closed/indestructible/splashscreen/vv_edit_var(var_name, var_value)
 	. = ..()

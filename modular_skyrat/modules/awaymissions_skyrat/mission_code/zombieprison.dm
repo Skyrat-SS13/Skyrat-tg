@@ -521,7 +521,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/clothing/mob/under/prisonmob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/clothing/mob/under/prisonmobdigi.dmi'
 	icon_state = "prisoncopuni"
-	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" = 10, "bio" = 0, "fire" = 50, "acid" = 50)
 
 /obj/item/clothing/under/scalamovdoc
 	desc = "A blue shirt with integrated brown, padded vest. The uniform is lined with materials to enhance resistance to fire, radiation, and biohazards."
@@ -530,7 +530,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/clothing/mob/under/prisonmob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/clothing/mob/under/prisonmobdigi.dmi'
 	icon_state = "prisondocuni"
-	armor = list("melee" = 5, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 80, "rad" = 50, "fire" = 80, "acid" = 50)
+	armor = list("melee" = 5, "bullet" = 5, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 80, "fire" = 80, "acid" = 50)
 
 /obj/item/clothing/under/scalamovprisoner
 	desc = "A prisoner jumpsuit for the Scalamov prison, lined with material to provide biohazard resistance.."
@@ -539,7 +539,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/clothing/mob/under/prisonmob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/clothing/mob/under/prisonmobdigi.dmi'
 	icon_state = "prisonuni"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 60, "rad" = 10, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 60, "fire" = 30, "acid" = 30)
 
 
 //GHOSTROLES
