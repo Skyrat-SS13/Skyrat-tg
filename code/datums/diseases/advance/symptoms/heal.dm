@@ -334,7 +334,7 @@
 			return power * 0.9
 		if(SOFT_CRIT)
 			return power * 0.5
-	if(M.getBruteLoss() + M.getFireLoss() >= 170 && !active_coma) //SKYRAT EDIT: ORIGINAL: 70 - Removes sudden damage KO, by making it happen in already-crit, because 70 is alot less health here as compared to TG.
+	if(M.getBruteLoss() + M.getFireLoss() >= 103 && !active_coma) //SKYRAT EDIT: ORIGINAL: 70 - Adjusts this to remain 37.5% of total health(plus crit health). Because 70 is alot less health here then it is on tg.
 		to_chat(M, span_warning("You feel yourself slip into a regenerative coma..."))
 		active_coma = TRUE
 		addtimer(CALLBACK(src, .proc/coma, M), 60)
