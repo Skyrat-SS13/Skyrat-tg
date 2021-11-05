@@ -22,6 +22,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/vehicles/vehicles.dmi'
 	key_type = /obj/item/key/security
 
+/datum/component/riding/vehicle/atv/snowmobile/snowcurity
+	keytype = /obj/item/key/security
+
 /obj/vehicle/ridden/snowmobile/snowcurity
 	. = ..()
 	make_ridable()
