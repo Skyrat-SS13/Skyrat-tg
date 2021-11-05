@@ -366,11 +366,7 @@ Auto Patrol: []"},
 		if(BOT_PREP_ARREST) // preparing to arrest target
 
 			// see if he got away. If he's no no longer adjacent or inside a closet or about to get up, we hunt again.
-<<<<<<< HEAD
-			if( !Adjacent(target) || !isturf(target.loc) ||  (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
-=======
-			if( !Adjacent(target) || !isturf(target.loc) || target.AmountParalyzed() < 40)
->>>>>>> 6c0aba5da4c (removes double spaces AFTER symbols (#62515))
+			if( !Adjacent(target) || !isturf(target.loc) || (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
 				back_to_hunt()
 				return
 
