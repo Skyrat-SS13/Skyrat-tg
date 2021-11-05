@@ -26,7 +26,7 @@
 	keytype = /obj/item/key/security
 
 /obj/vehicle/ridden/atv/snowmobile/snowcurity/proc/make_ridable()
-	AddElement(/datum/element/ridable, /datum/component/atv/snowmobile/snowcurity)
+	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/atv/snowmobile/snowcurity)
 
 
 /obj/vehicle/ridden/atv/snowmobile/syndicate
