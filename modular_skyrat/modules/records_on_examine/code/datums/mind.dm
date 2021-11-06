@@ -4,18 +4,16 @@
 		if (has_exploitable_menu)
 			remove_verb(current, /mob/proc/view_exploitables_verb)
 			has_exploitable_menu = FALSE
-			return
 		return
-	//Remove the verb and set the tracker to false if this datum has no exploitables, but dont break, so it can be overridden if another datum is found with exploitables.
+	var/should_see_exploitables = FALSE
 	for(var/datum/antagonist/antag_datum in src?.antag_datums)
-		if (!(antag_datum.view_exploitables) && has_exploitable_menu)
-			remove_verb(current, /mob/proc/view_exploitables_verb)
-			has_exploitable_menu = FALSE
-			continue
-		//We don't need to keep trying if we find a datum with exploitables. Players are allowed to view exploitables if they have at least one datum with the var. So, break.
+		// Players are allowed to view exploitables if they have at least one antag_datum datum with view_exploitables set to TRUE.
 		if (antag_datum.view_exploitables)
-			if (!has_exploitable_menu)
-				add_verb(current, /mob/proc/view_exploitables_verb)
-				has_exploitable_menu = TRUE
-				break
+			should_see_exploitables = TRUE
 			break
+	if(!has_exploitable_menu && should_see_exploitables)
+		add_verb(current, /mob/proc/view_exploitables_verb)
+		has_exploitable_menu = TRUE
+	else if(has_exploitable_menu && !should_see_exploitables)
+		remove_verb(current, /mob/proc/view_exploitables_verb)
+		has_exploitable_menu = FALSE
