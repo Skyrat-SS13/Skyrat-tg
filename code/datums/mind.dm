@@ -336,7 +336,7 @@
 		if(my_ambitions.submitted)
 			A.ambitions_add()
 	//SKYRAT EDIT ADDITION END
-	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLES MENU
+	//SKYRAT EDIT ADDITION - EXPLOITABLES MENU
 	src.handle_exploitables_menu()
 	return A
 
