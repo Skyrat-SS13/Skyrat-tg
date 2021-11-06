@@ -3,6 +3,10 @@
 	assignment = "SolGov"
 	trim_state = "trim_solgov"
 
+/datum/id_trim/solgov/New()
+	. = ..()
+	access = SSid_access.get_region_access_list(list(REGION_CENTCOM, REGION_ALL_STATION))
+
 /datum/id_trim/solgov/liasion
 	assignment = "SolGov Liasion"
 
