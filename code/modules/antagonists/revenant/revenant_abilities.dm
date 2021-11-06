@@ -354,7 +354,7 @@
 		if(iscarbon(mob))
 			if(ishuman(mob))
 				var/mob/living/carbon/human/H = mob
-				if(H.dna && H.dna.species && !HAS_TRAIT(H, TRAIT_NODISEASE) && H.mob_biotype != MOB_UNDEAD)
+				if(H.dna && H.dna.species && !HAS_TRAIT(H, TRAIT_VIRUSIMMUNE) && H.mob_biotype != MOB_UNDEAD)
 					H.dna.species.handle_hair(H,"#1d2953") //will be reset when blight is cured
 				var/blightfound = FALSE
 				for(var/datum/disease/revblight/blight in H.diseases)
