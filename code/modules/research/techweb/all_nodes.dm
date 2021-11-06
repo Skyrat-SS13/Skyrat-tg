@@ -1306,6 +1306,9 @@
 	design_ids = list(
 		"biogenerator",
 		"flora_gun",
+		//SKYRAT EDIT - ADDITION MEDIGUNS
+		"salvemedicell",
+		//SKYRAT EDIT END
 		"hydro_tray",
 		"portaseeder",
 		"seed_extractor",
