@@ -1731,7 +1731,8 @@
 /area/science/xenobiology)
 "afX" = (
 /obj/machinery/door/airlock/external{
-	name = "Science Escape Pod"
+	name = "Science Escape Pod";
+	space_dir = 1
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -9438,7 +9439,8 @@
 /area/maintenance/starboard)
 "aKn" = (
 /obj/machinery/door/airlock/external{
-	name = "Cargo Escape Pod"
+	name = "Cargo Escape Pod";
+	space_dir = 4
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -17987,7 +17989,8 @@
 /area/medical/virology)
 "bmI" = (
 /obj/machinery/door/airlock/external{
-	name = "Medical Escape Pod"
+	name = "Medical Escape Pod";
+	space_dir = 8
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -24178,7 +24181,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
 	name = "Brig Shuttle Airlock";
-	req_one_access_txt = "63"
+	req_one_access_txt = "63";
+	space_dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -25506,7 +25510,8 @@
 "bXe" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	name = "Departure Shuttle Airlock"
+	name = "Departure Shuttle Airlock";
+	space_dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -31442,7 +31447,8 @@
 "cqN" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	name = "Ferry Shuttle Airlock"
+	name = "Ferry Shuttle Airlock";
+	space_dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -34255,20 +34261,10 @@
 /area/hallway/secondary/entry)
 "cCj" = (
 /obj/machinery/door/airlock/external{
-	name = "Arrival Shuttle Airlock";
-	safety_mode = 1
+	name = "Arrival Shuttle Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/navbeacon/wayfinding,
-/turf/open/floor/iron/dark,
-/area/hallway/secondary/entry)
-"cCk" = (
-/obj/machinery/door/airlock/external{
-	name = "Arrival Shuttle Airlock"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/hallway/secondary/entry)
 "cCm" = (
@@ -39122,7 +39118,8 @@
 "ehd" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/airlock/external{
-	name = "Security Escape Pod"
+	name = "Security Escape Pod";
+	space_dir = 2
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -51629,7 +51626,8 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/machinery/door/airlock/external{
 	name = "Mining Dock Airlock";
-	req_access_txt = "48"
+	req_access_txt = "48";
+	space_dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -52203,7 +52201,8 @@
 "kdL" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/door/airlock/external{
-	name = "Security Escape Pod"
+	name = "Security Escape Pod";
+	space_dir = 2
 	},
 /turf/open/floor/plating/airless,
 /area/maintenance/port/aft)
@@ -54755,7 +54754,8 @@
 "lgJ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
-	name = "External Freight Airlock"
+	name = "External Freight Airlock";
+	space_dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -57309,7 +57309,7 @@
 "msi" = (
 /obj/machinery/door/airlock/external{
 	name = "Arrival Shuttle Airlock";
-	safety_mode = 1
+	space_dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -123360,7 +123360,7 @@ aSD
 eLO
 cCi
 tXO
-cCk
+msi
 bUN
 bUN
 bUN

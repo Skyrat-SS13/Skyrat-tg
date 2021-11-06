@@ -5108,7 +5108,8 @@
 /area/hallway/secondary/entry)
 "aUc" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod One"
+	name = "Escape Pod One";
+	space_dir = 1
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -15445,8 +15446,7 @@
 "djz" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external{
-	name = "Arrival Airlock";
-	safety_mode = 1
+	name = "Arrival Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -15463,8 +15463,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Arrival Airlock";
-	safety_mode = 1
+	name = "Arrival Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -19555,7 +19554,8 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Departure Lounge Airlock"
+	name = "Departure Lounge Airlock";
+	space_dir = 2
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
@@ -21859,6 +21859,14 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/parquet,
 /area/medical/psychology)
+"fqs" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock";
+	space_dir = 1
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "fqt" = (
 /obj/structure/bodycontainer/crematorium{
 	dir = 1;
@@ -35318,7 +35326,8 @@
 /area/solars/port/fore)
 "kzn" = (
 /obj/machinery/door/airlock/external{
-	name = "Departure Lounge Airlock"
+	name = "Departure Lounge Airlock";
+	space_dir = 2
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -47840,7 +47849,8 @@
 /area/science/research)
 "oRL" = (
 /obj/machinery/door/airlock/external{
-	name = "Auxiliary Airlock"
+	name = "Auxiliary Airlock";
+	space_dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
@@ -52760,7 +52770,8 @@
 /area/commons/vacant_room/office)
 "qHq" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod Three"
+	name = "Escape Pod Three";
+	space_dir = 1
 	},
 /turf/open/floor/plating,
 /area/commons/fitness/recreation)
@@ -65183,6 +65194,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"uZJ" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock";
+	space_dir = 2
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "uZY" = (
 /obj/structure/frame/machine{
 	anchored = 1
@@ -72905,7 +72926,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod Four";
-	req_access_txt = "32"
+	req_access_txt = "32";
+	space_dir = 4
 	},
 /turf/open/floor/iron,
 /area/maintenance/starboard)
@@ -84820,13 +84842,13 @@ aVx
 aWU
 djz
 aZZ
-djC
+uZJ
 aaa
 aaa
 aaa
 aaa
 aaa
-djz
+fqs
 bsk
 djC
 sYu
@@ -86876,13 +86898,13 @@ qYu
 aWU
 djz
 aZZ
-djC
+uZJ
 aaa
 aaa
 aaa
 aaa
 aaa
-djz
+fqs
 bsk
 djC
 aVu
