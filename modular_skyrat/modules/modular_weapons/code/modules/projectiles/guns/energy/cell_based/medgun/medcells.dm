@@ -412,7 +412,7 @@
 	if(!bodypart.get_damage()) //Makes it poof as soon as the body part is fully healed, no keeping this on forever.
 		qdel(src)
 		return FALSE
-	bodypart.heal_damage(0.25,0.5) //Reduced healing rate over original
+	bodypart.heal_damage(0.25,0.25) //Reduced healing rate over original
 	heals_left--
 	if(heals_left <= 0)
 		qdel(src)
