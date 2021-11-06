@@ -403,8 +403,8 @@
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 20
 
-/datum/uplink_item/loadout_skyrat/lasermanbundle
+/datum/uplink_item/loadout_skyrat/greytide
 	name = "Greytide bundle"
 	desc = "The shores are coming in, the tide is riding. The unknowable power once feared by all and carved into the minds of assistants has been harnessed by the Syndicate to bring you this 'revolutionary' loadout, for all sorts of purposes."
 	item = /obj/item/storage/box/syndie_kit/loadout/greytide
-	cost = 25
+	cost = 30
