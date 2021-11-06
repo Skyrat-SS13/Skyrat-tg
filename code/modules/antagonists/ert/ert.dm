@@ -269,25 +269,25 @@
 		H.infodisplay -= H.wanted_lvl
 		QDEL_NULL(H.wanted_lvl)
 	..()
-
+// SKYRAT EDIT START
 /datum/antagonist/ert/families/greet()
-	var/missiondesc =  "<span class='warningplain'><B><font size=6 color=red>You are the [name].</font></B>"
-	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the local government.</font></B>"
+	var/missiondesc = "<span class='warningplain'><B><font size=6 color=red>You are the [name].</font></B>"
+	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Sol Federation as a [role].</font></B>"
 	missiondesc += "<BR><B><font size=5 color=red>You are NOT a deathsquad. You are here to help innocents escape violence, criminal activity, and other dangerous things.</font></B>"
-	missiondesc += "<BR>After an uptick in gang violence on [station_name()], you are responding to emergency calls from the station for immediate SSC Police assistance!\n"
+	missiondesc += "<BR>You are responding to emergency calls from the station for immediate SolFed Police assistance!\n"
 	missiondesc += "<BR><B>Your Mission</B>:"
 	missiondesc += "<BR> <B>1.</B> Serve the public trust."
 	missiondesc += "<BR> <B>2.</B> Protect the innocent."
 	missiondesc += "<BR> <B>3.</B> Uphold the law."
-	missiondesc += "<BR> <B>4.</B> Find the Undercover Cops."
-	missiondesc += "<BR> <B>5.</B> Detain Nanotrasen Security personnel if they harm any citizen."
-	missiondesc += "<BR> You can <B>see gangsters</B> using your <B>special sunglasses</B>.</span>"
+	missiondesc += "<BR> <B>4.</B> Contact whoever called 911 and assist in resolving the matter."
+	missiondesc += "<BR> <B>5.</B> Protect, ensure, and uphold the rights of Sol Federation citizens on board [station_name()]."
 	to_chat(owner,missiondesc)
 	var/policy = get_policy(ROLE_FAMILIES)
 	if(policy)
 		to_chat(owner, policy)
 	var/mob/living/M = owner.current
 	M.playsound_local(M, 'sound/effects/families_police.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+// SKYRAT EDIT END
 
 /datum/antagonist/ert/families/undercover_cop
 	name = "Undercover Cop"
@@ -350,7 +350,7 @@
 	outfit = /datum/outfit/families_police/beatcop/fbi
 
 /datum/antagonist/ert/families/beatcop/military
-	name = "Space Military"
+	name = "National Guard" // SKYRAT EDIT original: Space Military
 	role = "Sergeant"
 	outfit = /datum/outfit/families_police/beatcop/military
 

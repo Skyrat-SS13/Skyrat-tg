@@ -502,7 +502,6 @@
 			if(prob(current_size * 5) && hand.w_class >= ((11-current_size)/2)  && dropItemToGround(hand))
 				step_towards(hand, src)
 				to_chat(src, span_warning("\The [S] pulls \the [hand] from your grip!"))
-	rad_act(current_size * 3)
 
 #define CPR_PANIC_SPEED (0.8 SECONDS)
 
@@ -1018,7 +1017,7 @@
 		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
 		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
 		return
-	var/health_deficiency = max((maxHealth - health), staminaloss*0.75) //SKYRAT EDIT CHANGE: var/health_deficiency = max((maxHealth - health), staminaloss)
+	var/health_deficiency = max((maxHealth - health), staminaloss)
 	if(health_deficiency >= 40)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown, TRUE, multiplicative_slowdown = health_deficiency / 75)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying, TRUE, multiplicative_slowdown = health_deficiency / 25)
