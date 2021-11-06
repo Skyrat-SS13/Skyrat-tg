@@ -477,8 +477,8 @@
 
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
 		//SKYRAT EDIT ADDITION
-		if(HAS_TRAIT(M, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
-			visible_message(span_warning("[src] tries to pat [M] on the head, but can't reach!"))
+		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(M, TRAIT_OVERSIZED))
+			visible_message(span_warning("[M] tries to pat [src] on the head, but can't reach!"))
 		else //SKYRAT EDIT END
 			SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
 			M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
