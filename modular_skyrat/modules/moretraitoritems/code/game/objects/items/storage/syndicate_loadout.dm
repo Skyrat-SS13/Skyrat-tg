@@ -253,7 +253,7 @@
 	new /obj/item/spear/grey_tide(src)
 	new /obj/item/book/granter/crafting_recipe/pipegun_prime(src)
 	new /obj/item/book/granter/crafting_recipe/trash_cannon(src)
-	new /obj/item/construction/rcd/arcd(src)
+	new /obj/item/construction/rcd/loaded/upgraded(src)
 	for(var/i in 1 to 3)
 		new /obj/item/rcd_ammo/large(src)
 	new /obj/item/clothing/under/color/grey/ancient(src)
