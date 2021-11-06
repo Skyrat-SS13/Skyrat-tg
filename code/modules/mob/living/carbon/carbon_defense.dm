@@ -479,6 +479,9 @@
 		//SKYRAT EDIT ADDITION
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(M, TRAIT_OVERSIZED))
 			visible_message(span_warning("[M] tries to pat [src] on the head, but can't reach!"))
+		else if(HAS_TRAIT(src, TRAIT_UNDERSIZED) && !HAS_TRAIT(M, TRAIT_UNDERSIZED))
+			visible_message(span_warning("[M] tries to pat [src] on the head, a loud cracking noise coming from their back as they bend down!"))
+			M.apply_damage(1, BRUTE, BODY_ZONE_CHEST)
 		else //SKYRAT EDIT END
 			SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
 			M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
