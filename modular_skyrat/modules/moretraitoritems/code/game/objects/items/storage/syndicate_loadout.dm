@@ -261,9 +261,8 @@
 	for(var/i in 1 to 3)
 		new /obj/item/gas_filter(src)
 	new /obj/item/storage/belt/chameleon(src)
-	new /obj/item/storage/toolbox/syndicate(src)
+	new /obj/item/storage/toolbox/mechanical/old/clean(src) //contains insuls for the aspiring god of tiding
 	new /obj/item/clothing/shoes/chameleon/noslip(src)
-	new /obj/item/clothing/gloves/color/yellow(src) //syndi toolbox comes with combat gloves, but what is a tider without their genuine insuls?
 	new /obj/item/clothing/glasses/sunglasses/big(src)
 	for(var/i in 1 to 6)
 		new /obj/structure/sign/poster/contraband/grey_tide(src) //:)
