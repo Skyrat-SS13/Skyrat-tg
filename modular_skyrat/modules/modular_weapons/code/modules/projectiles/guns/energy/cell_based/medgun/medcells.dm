@@ -396,6 +396,8 @@
 	name = "salve globule"
 	desc = "a ball of regenerative synthetic plant matter, contained within a soft hardlight field"
 	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon_state = "globule"
 	heals_left = 40 //This means it'll be heaing 15 damage per type max.
 	var/attached_part //The part that the globule is attached to
 	var/attached_mob //The mob that the globule is attached to
