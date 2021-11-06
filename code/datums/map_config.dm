@@ -16,7 +16,7 @@
 	// Config actually from the JSON - should default to Meta
 	var/map_name = "Meta Station"
 	var/map_path = "map_files/MetaStation"
-	var/map_file = "MetaStation.dmm"
+	var/map_file = "MetaStation_skyrat.dmm" // SKYRAT EDIT - Making OUR Meta the default map to load.
 
 	var/traits = null
 	var/space_ruin_levels = 7

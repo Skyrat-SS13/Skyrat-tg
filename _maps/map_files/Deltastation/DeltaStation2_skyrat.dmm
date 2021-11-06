@@ -201,7 +201,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/machinery/power/grounding_rod/anchored,
+/obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
@@ -396,7 +396,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod 2";
-	safety_mode = 1
+	space_dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -716,7 +716,8 @@
 /area/hallway/secondary/entry)
 "acX" = (
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port"
+	name = "External Docking Port";
+	space_dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/turf_decal/stripes/line,
@@ -962,7 +963,8 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port"
+	name = "External Docking Port";
+	space_dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -982,8 +984,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port";
-	safety_mode = 1
+	name = "External Docking Port"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1784,7 +1785,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod 1";
-	safety_mode = 1
+	space_dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -5917,7 +5918,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/power/tesla_coil/anchored,
+/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "aUK" = (
@@ -33564,11 +33565,13 @@
 /turf/open/floor/grass,
 /area/hallway/secondary/exit/departure_lounge)
 "dYI" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port"
+	name = "External Docking Port";
+	space_dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -33577,22 +33580,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
-/area/hallway/secondary/exit/departure_lounge)
-"dYJ" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/external{
-	name = "External Docking Port"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/hallway/secondary/exit/departure_lounge)
+/area/hallway/secondary/entry)
 "dYM" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
@@ -35081,7 +35069,8 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "External Docking Port";
-	req_access_txt = "63"
+	req_access_txt = "63";
+	space_dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -36688,23 +36677,6 @@
 	},
 /turf/open/floor/iron,
 /area/commons/toilet/auxiliary)
-"eAM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/airlock/external{
-	name = "External Docking Port";
-	safety_mode = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/hallway/secondary/entry)
 "eAP" = (
 /obj/structure/sign/painting/library_private{
 	pixel_x = 32;
@@ -37245,8 +37217,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port";
-	safety_mode = 1
+	name = "External Docking Port"
 	},
 /obj/machinery/navbeacon/wayfinding{
 	location = "Escape"
@@ -41134,7 +41105,7 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/power/grounding_rod/anchored,
+/obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
 "fUc" = (
@@ -43588,8 +43559,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port";
-	safety_mode = 1
+	name = "External Docking Port"
 	},
 /obj/machinery/navbeacon/wayfinding,
 /obj/effect/turf_decal/stripes/line{
@@ -53336,7 +53306,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/machinery/power/tesla_coil/anchored,
+/obj/machinery/power/energy_accumulator/tesla_coil/anchored,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/engine,
 /area/engineering/supermatter)
@@ -53575,7 +53545,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "External Docking Port";
-	safety_mode = 1
+	space_dir = 4
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -58064,23 +58034,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/science/mixing)
-"lcU" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/machinery/door/airlock/external{
-	name = "External Docking Port";
-	safety_mode = 1
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/hallway/secondary/entry)
 "lcZ" = (
 /obj/effect/spawner/random/trash/cigbutt,
 /turf/open/floor/carpet,
@@ -70248,8 +70201,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port";
-	safety_mode = 1
+	name = "External Docking Port"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -73426,7 +73378,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port"
+	name = "External Docking Port";
+	space_dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -77780,7 +77733,7 @@
 /turf/open/floor/iron,
 /area/security/prison/safe)
 "qKx" = (
-/obj/machinery/power/tesla_coil,
+/obj/machinery/power/energy_accumulator/tesla_coil,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/engineering/main)
@@ -81302,8 +81255,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/external{
-	name = "External Docking Port";
-	safety_mode = 1
+	name = "External Docking Port"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -85419,7 +85371,7 @@
 /turf/open/floor/iron,
 /area/cargo/warehouse)
 "sTy" = (
-/obj/machinery/power/tesla_coil,
+/obj/machinery/power/energy_accumulator/tesla_coil,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/camera{
 	c_tag = "Engineering - Secure Storage";
@@ -135075,7 +135027,7 @@ aaO
 abf
 adq
 aaO
-aea
+oBn
 aaO
 tgb
 tXx
@@ -140985,7 +140937,7 @@ aad
 aad
 aad
 aaO
-oBn
+aea
 aaO
 aad
 aaa
@@ -140993,7 +140945,7 @@ aaa
 aaa
 aad
 aaO
-eAM
+dYI
 aaO
 aad
 aad
@@ -143203,7 +143155,7 @@ dSU
 ecc
 dSU
 dSU
-dYI
+rKN
 eej
 eeS
 eeb
@@ -143299,14 +143251,14 @@ aad
 aad
 aad
 aaO
-lcU
+pwB
 aaO
 aad
 aaa
 aaa
 aad
 aaO
-lcU
+pwB
 aaO
 aad
 aad
@@ -143717,7 +143669,7 @@ aaa
 aaa
 aaa
 dSU
-dYJ
+jMX
 eek
 eeU
 eek
@@ -143813,7 +143765,7 @@ aaO
 abf
 ads
 aaO
-eAM
+jKG
 aaO
 afb
 afz
