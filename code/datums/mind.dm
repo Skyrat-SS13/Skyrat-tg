@@ -93,7 +93,8 @@
 	var/list/active_addictions
 	///List of objective-specific equipment that couldn't properly be given to the mind
 	var/list/failed_special_equipment
-	// SKYRAT EDIT ADDITION -- EXPLOITABLE MENU - tracks if mob has the verb
+	// SKYRAT EDIT ADDITION -- EXPLOITABLE MENU
+	///Tracks if the target has the view_exploitables_verb verb. THIS MUST BE CHANGED IF THE VERB IS ADDED OR REMOVED OR ELSE STUFF BREAKS.
 	var/has_exploitable_menu = FALSE
 
 /datum/mind/New(_key)
@@ -276,6 +277,30 @@
 	last_death = world.time
 
 // Datum antag mind procs
+//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
+/datum/mind/proc/handle_exploitables_menu()
+	//Only returns true if no datums are present in the mind. Without this, the for loop would end prematurely, as it would be null.
+	if (!antag_datums)
+		if (has_exploitable_menu)
+			remove_verb(current, /mob/proc/view_exploitables_verb)
+			has_exploitable_menu = FALSE
+			return
+		return
+	//Remove the verb and set the tracker to false if this datum has no exploitables, but dont break, so it can be overridden if another datum is found with exploitables.
+	for(var/datum/antagonist/antag_datum in src?.antag_datums)
+		if (!(antag_datum.view_exploitables) && has_exploitable_menu)
+			remove_verb(current, /mob/proc/view_exploitables_verb)
+			has_exploitable_menu = FALSE
+			continue
+		//We don't need to keep trying if we find a datum with exploitables. Players are allowed to view exploitables if they have at least one datum with the var. So, break.
+		if (antag_datum.view_exploitables)
+			if (!has_exploitable_menu)
+				add_verb(current, /mob/proc/view_exploitables_verb)
+				has_exploitable_menu = TRUE
+				break
+			break
+//SKYRAT EDIT ADDITION END
+
 /datum/mind/proc/add_antag_datum(datum_type_or_instance, team)
 	if(!datum_type_or_instance)
 		return
@@ -312,11 +337,7 @@
 			A.ambitions_add()
 	//SKYRAT EDIT ADDITION END
 	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLES MENU
-	for(var/datum/antagonist/antag_datum in src?.antag_datums)
-		if ((antag_datum.view_exploitables && has_exploitable_menu == FALSE))
-			add_verb(current, /mob/proc/view_exploitables_verb)
-			has_exploitable_menu = TRUE
-	//SKYRAT EDIT ADDITION END
+	src.handle_exploitables_menu()
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -329,13 +350,9 @@
 		if(A.uses_ambitions && my_ambitions.submitted)
 			A.ambitions_removal()
 		//SKYRAT EDIT ADDITION END
+		//SKYRAT EDIT ADDITION - EXPLOITABLE MENU
+		src.handle_exploitables_menu()
 
-		//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLES MENU
-		for(var/datum/antagonist/antag_datum in src?.antag_datums)
-			if (!(antag_datum.view_exploitables && has_exploitable_menu == TRUE))
-				remove_verb(current, /mob/proc/view_exploitables_verb)
-				has_exploitable_menu = FALSE
-		//SKYRAT EDIT ADDITION END
 		return TRUE
 
 
@@ -343,6 +360,11 @@
 	for(var/a in antag_datums)
 		var/datum/antagonist/A = a
 		A.on_removal()
+	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
+	if (has_exploitable_menu)
+		remove_verb(current, /mob/proc/view_exploitables_verb)
+		has_exploitable_menu = FALSE
+	//SKYRAT EDIT ADDITION END
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
