@@ -489,6 +489,7 @@
 	for(var/datum/antagonist/antag_datum in user?.mind?.antag_datums)
 		if ((is_special_character(user)) && is_in_world && (antag_datum.view_exploitables))
 			. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
+			break
 	//SKYRAT EDIT END
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!

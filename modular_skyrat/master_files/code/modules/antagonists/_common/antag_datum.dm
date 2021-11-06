@@ -40,3 +40,6 @@
 
 /datum/antagonist/cult //cult is adminbus only... im not sure about this but im doing it anyway
 	view_exploitables = TRUE
+
+/*/datum/antagonist/abductor //maybe?
+	view_exploitables = TRUE */
