@@ -8,7 +8,7 @@ MODULE ID: records_on_examine
 
 This PR allows med/sec huds to view medical/security records on examine, respectively, as well as allowing you to view general records. It
 also allows certain antags to view exploitables on examine as well. It also fully restores what functionality records had prior to the pref rework. Basically,
-my last 2 prs in one. It also refactors how record saves are handled.
+my last 2 prs in one. It also refactors how record saves are handled, and how admin antag removals work.
 
 ### TG Proc/File Changes:
 
