@@ -6,7 +6,7 @@
 	icon_state = "chain_armor"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/armor/reagent_clothing/Initialize()
@@ -22,7 +22,7 @@
 	icon_state = "chain_glove"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 	mutant_variants = NONE
 
 /obj/item/clothing/gloves/reagent_clothing/Initialize()
@@ -37,7 +37,7 @@
 	icon_state = "chain_helmet"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 
 /obj/item/clothing/head/helmet/reagent_clothing/Initialize()
 	. = ..()
@@ -50,7 +50,7 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "chain_boot"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
-	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
@@ -65,7 +65,7 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "plate_boot"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
-	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
@@ -80,7 +80,7 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "horseshoe"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
-	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 

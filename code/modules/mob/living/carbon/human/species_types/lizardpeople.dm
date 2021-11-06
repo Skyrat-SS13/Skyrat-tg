@@ -123,6 +123,11 @@
 */
 //SKYRAT EDIT REMOVAL END
 
+/datum/species/lizard/get_scream_sound(mob/living/carbon/human/lizard)
+	return pick('sound/voice/lizard/lizard_scream_1.ogg',
+				'sound/voice/lizard/lizard_scream_2.ogg',
+				'sound/voice/lizard/lizard_scream_3.ogg')
+
 /*
 Lizard subspecies: ASHWALKERS
 */

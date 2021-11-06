@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/mapping/icons/unique/turnstile.dmi'
 	icon_state = "turnstile_map"
 	density = TRUE
-	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 10, bio = 100, rad = 100, fire = 90, acid = 70)
+	armor = list(melee = 50, bullet = 50, laser = 50, energy = 50, bomb = 10, bio = 100, fire = 90, acid = 70)
 	anchored = TRUE
 	use_power = FALSE
 	idle_power_usage = 2

@@ -12,7 +12,7 @@
 /obj/item/clothing/under/rank/security
 	icon = 'icons/obj/clothing/under/security.dmi'
 	worn_icon = 'icons/mob/clothing/under/security.dmi'
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 30, WOUND = 10)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
@@ -91,10 +91,45 @@
 			RESKIN_ICON_STATE = "fatigues",
 			RESKIN_WORN_ICON = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi',
 			RESKIN_WORN_ICON_STATE = "fatigues"
+		),
+		"Sol" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policealt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policealt"
+		),
+		"Sol Cadet" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policecadetalt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policecadetalt"
+		),
+		"Sol Traffic" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policetrafficalt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policetrafficalt"
+		),
+		"Trousers" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "workpants_red",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "workpants_red"
+		),
+		"Peacekeeper Trousers" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "workpants_blue",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "workpants_blue"
+		),
+		"Kilt" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "blackwatch",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "blackwatch"
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
-
 /obj/item/clothing/under/rank/security/officer/grey
 	name = "grey security jumpsuit"
 	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
@@ -168,10 +203,15 @@
 			RESKIN_ICON_STATE = "peacekeeper_warden",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_warden"
+		),
+		"Sol" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policewardenalt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policewardenalt"
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
-
 
 /obj/item/clothing/under/rank/security/warden/grey
 	name = "grey security suit"
@@ -235,7 +275,7 @@
 	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
 	icon_state = "rhos"
 	inhand_icon_state = "r_suit"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	strip_delay = 60
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
@@ -409,9 +449,11 @@
 	desc = "Flare cut trousers and a dirty shirt that might have been classy before someone took a piss in the armpits. It's the dress of a superstar."
 	icon_state = "jamrock_suit"
 	inhand_icon_state = "jamrock_suit"
+	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/kim
 	name = "aerostatic suit"
 	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
 	icon_state = "aerostatic_suit"
 	inhand_icon_state = "aerostatic_suit"
+	can_adjust = FALSE
