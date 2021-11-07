@@ -400,4 +400,3 @@
 /datum/sprite_accessory/tails/mammal/wagging/snakestripealt
 	name = "Snake stripe (alt)"
 	icon_state = "snakestripealt"
-
