@@ -855,7 +855,7 @@
 		return
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
 		vine_mutation.on_buckle(src, entangled_mob)
-	if((entangled_mob.stat != DEAD) && (entangled_mob.buckled != src) && is_human(entangled_mob)) //not dead or captured
+	if((entangled_mob.stat != DEAD) && (entangled_mob.buckled != src) && ishuman(entangled_mob)) //not dead or captured
 		to_chat(entangled_mob, span_danger("The vines [pick("wind", "tangle", "tighten")] around you!"))
 		buckle_mob(entangled_mob, 1)
 
