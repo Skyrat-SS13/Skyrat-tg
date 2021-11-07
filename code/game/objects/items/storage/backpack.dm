@@ -56,7 +56,7 @@
 	inhand_icon_state = "holdingpack"
 	resistance_flags = FIRE_PROOF
 	item_flags = NO_MAT_REDEMPTION
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 60, ACID = 50)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 60, ACID = 50)
 	component_type = /datum/component/storage/concrete/bluespace/bag_of_holding
 
 /obj/item/storage/backpack/holding/ComponentInitialize()
@@ -146,6 +146,24 @@
 	desc = "It's a very robust backpack."
 	icon_state = "securitypack"
 	inhand_icon_state = "securitypack"
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Backpack" = list(
+			RESKIN_ICON = 'icons/obj/storage.dmi',
+			RESKIN_ICON_STATE = "securitypack",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "securitypack"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
+			RESKIN_ICON_STATE = "peacepack",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "peacepack"
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
+
 
 /obj/item/storage/backpack/captain
 	name = "captain's backpack"
@@ -291,6 +309,23 @@
 	desc = "A robust satchel for security related needs."
 	icon_state = "satchel-sec"
 	inhand_icon_state = "satchel-sec"
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Satchel" = list(
+			RESKIN_ICON = 'icons/obj/storage.dmi',
+			RESKIN_ICON_STATE = "satchel-sec",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "satchel-sec"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
+			RESKIN_ICON_STATE = "peacekeepersatchel",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeepersatchel"
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/storage/backpack/satchel/explorer
 	name = "explorer satchel"
@@ -333,7 +368,7 @@
 	*/
 	var/contraband_list = list(/obj/item/storage/bag/ammo=4, /obj/item/storage/belt/utility/syndicate=1, /obj/item/storage/toolbox/syndicate=7, /obj/item/card/id/advanced/chameleon=6, /obj/item/storage/secure/briefcase/syndie=3, /obj/item/stack/telecrystal=2, /obj/item/storage/belt/military=12, /obj/item/storage/pill_bottle/aranesp=11, /obj/item/storage/pill_bottle/happy=12, /obj/item/storage/pill_bottle/stimulant=9, /obj/item/storage/pill_bottle/lsd=10, /obj/item/storage/fancy/cigarettes/cigpack_syndicate=8, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims=10, /obj/item/reagent_containers/food/drinks/bottle/absinthe=12, /obj/item/storage/box/fireworks/dangerous=11, /obj/item/food/grown/cannabis/white=9, /obj/item/food/grown/cannabis=13, /obj/item/food/grown/cannabis/rainbow=8, /obj/item/food/grown/mushroom/libertycap=11, /obj/item/clothing/mask/gas/syndicate=10, /obj/item/vending_refill/donksoft=13, /obj/item/ammo_box/foambox/riot=11, /obj/item/soap/syndie=7)
 	for(var/i in 1 to 3)
-		var/contraband_type = pickweight(contraband_list)
+		var/contraband_type = pick_weight(contraband_list)
 		contraband_list -= contraband_type
 		new contraband_type(src)
 
@@ -450,6 +485,23 @@
 	desc = "A large duffel bag for holding extra security supplies and ammunition."
 	icon_state = "duffel-sec"
 	inhand_icon_state = "duffel-sec"
+	// SKYRAT EDIT ADDITION START
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic Dufflebag" = list(
+			RESKIN_ICON = 'icons/obj/storage.dmi',
+			RESKIN_ICON_STATE = "duffel-sec",
+			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "duffel-sec"
+		),
+		"Peacekeeper" = list(
+			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
+			RESKIN_ICON_STATE = "peacekeeperduffle",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
+			RESKIN_WORN_ICON_STATE = "peacekeeperduffle"
+		)
+	)
+	/// SKYRAT EDIT ADDITION END
 
 /obj/item/storage/backpack/duffelbag/sec/surgery
 	name = "surgical duffel bag"
@@ -695,3 +747,4 @@
 	name = "police bag"
 	desc = "A large duffel bag for holding extra police gear."
 	slowdown = 0
+

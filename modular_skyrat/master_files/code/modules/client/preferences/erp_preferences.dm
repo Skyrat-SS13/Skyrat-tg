@@ -1,6 +1,13 @@
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
+/datum/config_entry/str_list/erp_emotes_to_disable
+
+/datum/config_entry/str_list/erp_emotes_to_disable/ValidateAndSet(str_val)
+	. = ..()
+	if (CONFIG_GET(flag/disable_erp_preferences) && (str_val in GLOB.keybindings_by_name))
+		GLOB.keybindings_by_name -= str_val
+
 /datum/preference/toggle/master_erp_preferences
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "master_erp_pref"
@@ -66,6 +73,9 @@
 
 /datum/preference/toggle/erp/noncon
 	savefile_key = "noncon_pref"
+
+/datum/preference/toggle/erp/autocum
+	savefile_key = "autocum_pref"
 
 /datum/preference/choiced/erp_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -155,4 +165,34 @@
 	. = ..()
 
 /datum/preference/choiced/erp_status_v/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	return FALSE
+
+/datum/preference/choiced/erp_status_mechanics
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "erp_status_pref_mechanics"
+
+/datum/preference/choiced/erp_status_mechanics/init_possible_values()
+	return list("Roleplay only", "Mechanical only", "Mechanical and Roleplay", "None")
+
+/datum/preference/choiced/erp_status_mechanics/create_default_value()
+	return "None"
+
+/datum/preference/choiced/erp_status_mechanics/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
+
+	return preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
+
+/datum/preference/choiced/erp_status_mechanics/deserialize(input, datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return "None"
+	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
+		return "None"
+	. = ..()
+
+/datum/preference/choiced/erp_status_mechanics/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE

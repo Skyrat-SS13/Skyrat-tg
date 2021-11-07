@@ -5,7 +5,7 @@
 		switch(href_list["lookup_info"])
 			if("genitals")
 				var/list/line = list()
-				for(var/genital in list("penis", "testicles", "vagina", "breasts"))
+				for(var/genital in list("penis", "testicles", "vagina", "breasts", "anus"))
 					if(!dna.species.mutant_bodyparts[genital])
 						continue
 					var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
@@ -46,6 +46,9 @@
 
 /mob/living/carbon/human/species/roundstartslime
 	race = /datum/species/jelly/roundstartslime
+
+/mob/living/carbon/human/species/teshari
+	race = /datum/species/teshari
 
 /mob/living/carbon/human/verb/toggle_undies()
 	set category = "IC"

@@ -53,6 +53,7 @@ export type Quirk = {
   icon: string;
   name: string;
   value: number;
+  veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
 };
 
 // SKYRAT EDIT START
@@ -184,9 +185,9 @@ export type PreferencesMenuData = {
   selected_languages: Language[];
   unselected_languages: Language[];
   total_language_points: number;
-
   quirks_balance: number;
   positive_quirk_count: number;
+  species_restricted_jobs?: string[];
 // SKYRAT EDIT END
   keybindings: Record<string, string[]>;
   overflow_role: string;

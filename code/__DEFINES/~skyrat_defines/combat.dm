@@ -65,6 +65,12 @@
 
 #define STAMINA_MESSAGE_COOLDOWN 20 SECONDS
 
+//Grab breakout odds
+#define OVERSIZED_GRAB_RESIST_BONUS 10 /// For those with the oversized trait, they get this.
+
+// Damage modifiers
+#define OVERSIZED_HARM_DAMAGE_BONUS 5 /// Those with the oversized trait do 5 more damage.
+
 #define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
 /mob/living/carbon
@@ -132,42 +138,20 @@
 							head_knock = TRUE
 
 						target.visible_message("<span class='danger'>[user.name] violently slams [target.name]'s head into the floor!</span>", \
-							"<span class='userdanger'>[user.name] slams your head against the floor[head_knock ? ", knocking you out cold" : ""]!</span>", ignored_mobs=user)
-						to_chat(user, "<span class='danger'>You slam [target.name] head against the floor[head_knock ? ", knocking [target.p_them()] out cold" : ""]!</span>")
+							"<span class='userdanger'>[user.name] slams your head against the floor!</span>", ignored_mobs=user)
+						to_chat(user, "<span class='danger'>You slam [target.name] head against the floor!</span>")
 
-						//Check to see if our head is protected by atleast 20 melee armor
+						//Check to see if our head is protected by at least 20 melee armor
 						if(head_knock)
-							if(target.stat == CONSCIOUS)
-								target.Unconscious(400)
 							target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 15)
 
 						target.apply_damage(15, BRUTE, affecting, armor_block)
 						playsound(target, 'sound/effects/hit_kick.ogg', 70)
-						log_combat(user, target, "headsmashes", "against the floor (trying to knock unconscious)")
+						log_combat(user, target, "headsmashes", "against the floor")
 
 	//Chances are, no matter what you do on disarm you're gonna break your grip by accident because of shoving, let make a good use of disarm intent for maneuvers then
 	if(modifiers && modifiers["right"])
 		switch(user.zone_selected)
-			if(BODY_ZONE_HEAD)
-				//Chokehold
-				. = TRUE
-				user.changeNext_move(1.5 SECONDS)
-				target.visible_message("<span class='danger'>[user.name] wraps [user.p_their()] arm around [target.name]'s neck and chokes [target.p_them()]!</span>", \
-						"<span class='userdanger'>[user.name] wraps [user.p_their()] arm around your neck and chokes you!</span>", ignored_mobs=user)
-				to_chat(user, "<span class='danger'>You lock [target.name]'s neck with your arm and begin to choke [target.p_them()]...</span>")
-				if(do_mob(user, target, 1.5 SECONDS))
-					var/in_progress = TRUE
-					log_combat(user, target, "chokeholds", "(trying to knock unconscious)")
-					while(in_progress)
-						user.changeNext_move(1 SECONDS)
-						if(!do_mob(user, target, 1 SECONDS))
-							in_progress = FALSE
-							break
-						to_chat(target, "<span class='warning'>[user] is choking you!</span>")
-						target.losebreath = max(3, target.losebreath)
-						target.adjustOxyLoss(2)
-						if(target.oxyloss > 50)
-							target.Unconscious(400)
 			if(BODY_ZONE_CHEST)
 				if(istype(user.mind.martial_art, /datum/martial_art/cqc)) //If you know CQC, You can't suplex and instead have the ability to use the chokehold, Sorry.
 					return

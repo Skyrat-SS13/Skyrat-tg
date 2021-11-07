@@ -77,7 +77,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/greyscale_beret
 	name = "Greyscale Beret"
-	can_be_greyscale = TRUE
 	item_path = /obj/item/clothing/head/beret
 
 /datum/loadout_item/head/black_beret
@@ -223,6 +222,18 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/wedding_veil
 	name = "Wedding Veil"
 	item_path = /obj/item/clothing/head/weddingveil
+
+/datum/loadout_item/head/synde
+	name = "Black Space-helmet Replica"
+	item_path = /obj/item/clothing/head/syndicatefake
+
+/datum/loadout_item/head/glatiator
+	name = "Gladiator Helmet"
+	item_path = /obj/item/clothing/head/helmet/gladiator
+
+/datum/loadout_item/head/griffin
+	name = "Griffon Head"
+	item_path = /obj/item/clothing/head/griffin
 
 /datum/loadout_item/head/poppy
 	name = "Poppy"
@@ -487,12 +498,12 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	restricted_roles = list("Head of Security")
 
 /datum/loadout_item/head/navyblueofficerberet
-	name = "Security officer's Navyblue beret"
+	name = "Security Officer's Navyblue beret"
 	item_path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
 /datum/loadout_item/head/solofficercap
-	name = "Security officer's Sol Cap"
+	name = "Security Officer's Sol Cap"
 	item_path = /obj/item/clothing/head/sec/peacekeeper/sol
 	restricted_roles = list("Security Officer","Security Medic","Security Sergeant",)
 
@@ -587,6 +598,35 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/fashionable_cap
 	name = "Fashionable baseball cap"
 	item_path = /obj/item/clothing/head/soft/yankee
+
+//Families Gear
+/datum/loadout_item/head/tmc
+	name = "TMC Hat"
+	item_path = /obj/item/clothing/head/tmc
+
+/datum/loadout_item/head/pg
+	name = "PG Hat"
+	item_path = /obj/item/clothing/head/pg
+
+/datum/loadout_item/head/deckers
+	name = "Deckers Hat"
+	item_path = /obj/item/clothing/head/deckers
+
+/datum/loadout_item/head/morningstar
+	name = "Morningstar Hat"
+	item_path = /obj/item/clothing/head/morningstar
+
+/datum/loadout_item/head/saints
+	name = "Saints Hat"
+	item_path = /obj/item/clothing/head/saints
+
+/datum/loadout_item/head/sybil
+	name = "Sybil Hat"
+	item_path = /obj/item/clothing/head/sybil_slickers
+
+/datum/loadout_item/head/basil
+	name = "Basil Hat"
+	item_path = /obj/item/clothing/head/basil_boys
 
 // Donator hats here
 /datum/loadout_item/head/donator

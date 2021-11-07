@@ -25,7 +25,7 @@
 /datum/reagent/drug/opium/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * delta_time)
 	M.adjustToxLoss(1 * REM * delta_time, 0)
-	M.drowsyness += 0.5 * REM * normalise_creation_purity() * delta_time
+	M.adjust_drowsyness(0.5 * REM * normalise_creation_purity() * delta_time)
 	..()
 	. = TRUE
 

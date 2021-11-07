@@ -97,22 +97,22 @@
 		if("low")
 			toy_on = TRUE
 			vibration_mode = "low"
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop1.start()
 		if("medium")
 			toy_on = TRUE
 			vibration_mode = "medium"
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop2.start()
 		if("high")
 			toy_on = TRUE
 			vibration_mode = "high"
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 			soundloop3.start()
 		if("off")
 			toy_on = FALSE
 			vibration_mode = "off"
-			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magout.ogg', 20, TRUE, ignore_walls = FALSE)
 
 /obj/item/clothing/sextoy/eggvib/equipped(mob/user, slot, initial)
 	. = ..()
@@ -392,13 +392,13 @@
 	switch(mode)
 		if("low")
 			vibration_mode = "low"
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 		if("medium")
 			vibration_mode = "medium"
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 		if("high")
 			vibration_mode = "high"
-			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE)
+			playsound(loc, 'sound/weapons/magin.ogg', 20, TRUE, ignore_walls = FALSE)
 
 //Processing
 /obj/item/clothing/sextoy/signalvib/equipped(mob/user, slot, initial)

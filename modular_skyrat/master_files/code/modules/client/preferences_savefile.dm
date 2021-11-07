@@ -20,6 +20,7 @@
 	READ_FILE(S["features"], features)
 	READ_FILE(S["mutant_bodyparts"], mutant_bodyparts)
 	READ_FILE(S["body_markings"], body_markings)
+	body_markings = update_markings(body_markings)
 	READ_FILE(S["mismatched_customization"], mismatched_customization)
 	READ_FILE(S["allow_advanced_colors"], allow_advanced_colors)
 
@@ -74,6 +75,7 @@
 	WRITE_FILE(S["exploitable_info"] , exploitable_info)
 	WRITE_FILE(S["alt_job_titles"], alt_job_titles)
 	WRITE_FILE(S["languages"] , languages)
+	WRITE_FILE(S["tgui_prefs_migration"] , tgui_prefs_migration)
 
 /datum/preferences/proc/update_mutant_bodyparts(datum/preference/preference)
 	if (!preference.relevant_mutant_bodypart)
@@ -87,9 +89,11 @@
 			if (part in mutant_bodyparts)
 				mutant_bodyparts -= part
 		else
-			mutant_bodyparts[part] = list()
 			var/datum/preference/choiced/name = GLOB.preference_entries_by_key["feature_[part]"]
 			var/datum/preference/tri_color/color = GLOB.preference_entries_by_key["[part]_color"]
+			if (isnull(name) || isnull(color))
+				return
+			mutant_bodyparts[part] = list()
 			mutant_bodyparts[part][MUTANT_INDEX_NAME] = read_preference(name.type)
 			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = read_preference(color.type)
 	if (istype(preference, /datum/preference/choiced))
@@ -98,3 +102,10 @@
 	if (istype(preference, /datum/preference/tri_color))
 		if (part in mutant_bodyparts)
 			mutant_bodyparts[part][MUTANT_INDEX_COLOR_LIST] = value
+
+/datum/preferences/proc/update_markings(list/markings)
+	if (islist(markings))
+		for (var/marking in markings)
+			for (var/title in markings[marking])
+				markings[marking][title] = sanitize_hexcolor(markings[marking][title])
+	return markings

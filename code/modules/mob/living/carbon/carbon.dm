@@ -9,10 +9,11 @@
 
 	GLOB.carbon_list += src
 	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/attach_rot)
+	RegisterSignal(src, COMSIG_CARBON_DISARM_COLLIDE, .proc/disarm_collision)
 
 /mob/living/carbon/Destroy()
 	//This must be done first, so the mob ghosts correctly before DNA etc is nulled
-	. =  ..()
+	. = ..()
 
 	QDEL_LIST(hand_bodyparts)
 	QDEL_LIST(internal_organs)
@@ -177,6 +178,12 @@
 			power_throw--
 		if(HAS_TRAIT(thrown_thing, TRAIT_DWARF))
 			power_throw++
+		//SKYRAT EDIT ADDITION
+		if(HAS_TRAIT(src, TRAIT_OVERSIZED))
+			power_throw++
+		if(HAS_TRAIT(thrown_thing, TRAIT_OVERSIZED))
+			power_throw--
+		//SKYRAT EDIT END
 		if(pulling && grab_state >= GRAB_NECK)
 			power_throw++
 		do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
@@ -391,6 +398,9 @@
 	var/obj/item/organ/alien/plasmavessel/vessel = getorgan(/obj/item/organ/alien/plasmavessel)
 	if(vessel)
 		. += "Plasma Stored: [vessel.storedPlasma]/[vessel.max_plasma]"
+	var/obj/item/organ/heart/vampire/darkheart = getorgan(/obj/item/organ/heart/vampire)
+	if(darkheart)
+		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
 	if(locate(/obj/item/assembly/health) in src)
 		. += "Health: [health]"
 
@@ -522,48 +532,16 @@
 
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
-	//TODO: Make this much more cleaner
-	//SKYRAT EDIT - ORIGINAL: if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
-	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN
-		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
-			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
-				//When you get floored by stamina, you also get a brief stun and disarm
-				to_chat(src, "<span class='boldwarning'>You feel weak and collapse!</span>")
-				ADD_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED, src)
-				addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_ALREADYSTAMINAFLOORED, src), STAMINA_KNOCKDOWN_COOLDOWN)
-				Paralyze(0.5 SECONDS)
-				Knockdown(5 SECONDS)
-		else
-			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-			if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-				REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-				REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-				filters -= FILTER_STAMINACRIT
-
-
-		if(stam > STAMINA_THRESHOLD_HARDCRIT)
-			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-				to_chat(src, "<span class='boldwarning'>You're too exhausted to keep going...</span>")
-				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-				ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-				ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
-				filters += FILTER_STAMINACRIT
-
-	else
-		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-		filters -= FILTER_STAMINACRIT //Temporary tweak to fix aheals bugging this - SKYRAT EDIT CHANGE END
-	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat) SKYRAT EDIT REMOVAL BEGIN
-		enter_stamcrit()
+	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold)
+		if (!stat)
+			enter_stamcrit()
 	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+		filters -= FILTER_STAMINACRIT
 	else
-		return*/ //SKYRAT EDIT REMOVAL END
+		return
 	update_health_hud()
 
 /mob/living/carbon/update_sight()
@@ -864,9 +842,9 @@
 		suiciding = FALSE
 		regenerate_limbs()
 		regenerate_organs()
+		QDEL_NULL(handcuffed)
+		QDEL_NULL(legcuffed)
 		set_handcuffed(null)
-		for(var/obj/item/restraints/R in contents) //actually remove cuffs from inventory
-			qdel(R)
 		update_handcuffed()
 	cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
 	..()
@@ -881,6 +859,8 @@
 //SKYRAT EDIT ADDITION END
 
 /mob/living/carbon/proc/can_defib()
+
+
 	if (suiciding)
 		return DEFIB_FAIL_SUICIDE
 
@@ -912,6 +892,9 @@
 
 		if (BR.suicided || BR.brainmob?.suiciding)
 			return DEFIB_FAIL_NO_INTELLIGENCE
+
+	if(key && key[1] == "@") // Adminghosts (#61870)
+		return DEFIB_NOGRAB_AGHOST
 
 	return DEFIB_POSSIBLE
 
@@ -1030,7 +1013,7 @@
 			limb_list = list(BODY_ZONE_HEAD, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			for(var/obj/item/bodypart/B in bodyparts)
 				limb_list -= B.body_zone
-		var/result = input(usr, "Please choose which body part to [edit_action]","[capitalize(edit_action)] Body Part") as null|anything in sortList(limb_list)
+		var/result = input(usr, "Please choose which body part to [edit_action]","[capitalize(edit_action)] Body Part") as null|anything in sort_list(limb_list)
 		if(result)
 			var/obj/item/bodypart/BP = get_bodypart(result)
 			switch(edit_action)
@@ -1072,7 +1055,7 @@
 		for(var/i in artpaths)
 			var/datum/martial_art/M = i
 			artnames[initial(M.name)] = M
-		var/result = input(usr, "Choose the martial art to teach","JUDO CHOP") as null|anything in sortList(artnames, /proc/cmp_typepaths_asc)
+		var/result = input(usr, "Choose the martial art to teach","JUDO CHOP") as null|anything in sort_list(artnames, /proc/cmp_typepaths_asc)
 		if(!usr)
 			return
 		if(QDELETED(src))
@@ -1088,7 +1071,7 @@
 		if(!check_rights(NONE))
 			return
 		var/list/traumas = subtypesof(/datum/brain_trauma)
-		var/result = input(usr, "Choose the brain trauma to apply","Traumatize") as null|anything in sortList(traumas, /proc/cmp_typepaths_asc)
+		var/result = input(usr, "Choose the brain trauma to apply","Traumatize") as null|anything in sort_list(traumas, /proc/cmp_typepaths_asc)
 		if(!usr)
 			return
 		if(QDELETED(src))
@@ -1110,7 +1093,7 @@
 		if(!check_rights(NONE))
 			return
 		var/list/hallucinations = subtypesof(/datum/hallucination)
-		var/result = input(usr, "Choose the hallucination to apply","Send Hallucination") as null|anything in sortList(hallucinations, /proc/cmp_typepaths_asc)
+		var/result = input(usr, "Choose the hallucination to apply","Send Hallucination") as null|anything in sort_list(hallucinations, /proc/cmp_typepaths_asc)
 		if(!usr)
 			return
 		if(QDELETED(src))
@@ -1328,7 +1311,17 @@
 	return ..()
 
 
-/mob/living/carbon/proc/attach_rot(mapload)
-	SIGNAL_HANDLER
+/mob/living/carbon/proc/attach_rot()
 	if(mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD))
 		AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)
+
+/mob/living/carbon/proc/disarm_collision(mob/living/carbon/collateral, mob/living/carbon/shover, mob/living/carbon/target)
+	SIGNAL_HANDLER
+	target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
+	if(!collateral.is_shove_knockdown_blocked())
+		collateral.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
+	target.visible_message(span_danger("[shover] shoves [target.name] into [collateral.name]!"),
+		span_userdanger("You're shoved into [collateral.name] by [shover]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
+	to_chat(src, span_danger("You shove [target.name] into [collateral.name]!"))
+	log_combat(src, target, "shoved", "into [collateral.name]")
+	return COMSIG_CARBON_SHOVE_HANDLED

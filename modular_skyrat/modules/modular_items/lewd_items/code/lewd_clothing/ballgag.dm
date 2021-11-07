@@ -5,7 +5,7 @@
 
 /obj/item/clothing/mask/ballgag
 	name = "ball gag"
-	desc = "Prevents wearer from speaking"
+	desc = "Prevents the wearer from speaking."
 	icon_state = "ballgag"
 	inhand_icon_state = "ballgag"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -39,7 +39,7 @@
 // A ballgag, but it chokes! Also its a dick!
 /obj/item/clothing/mask/ballgag/phallic
 	name = "phallic ball gag"
-	desc = "Prevents the wearer from speaking, as well as make breathing even harder."
+	desc = "Prevents the wearer from speaking, as well as making breathing harder."
 	icon_state = "chokegag"
 	inhand_icon_state = "blindfold"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
@@ -75,7 +75,7 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f2.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f3.ogg',
-						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1)
+						'modular_skyrat/modules/modular_items/lewd_items/sounds/under_moan_f4.ogg'), moan_volume, 1, -1, ignore_walls = FALSE)
 
 //to update model lol
 /obj/item/clothing/mask/ballgag/ComponentInitialize()

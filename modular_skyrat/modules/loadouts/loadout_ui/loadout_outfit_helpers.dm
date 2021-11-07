@@ -18,6 +18,9 @@
  * preference_source - the preferences of the thing we're equipping
  */
 /mob/living/carbon/human/proc/equip_outfit_and_loadout(datum/outfit/outfit, datum/preferences/preference_source, visuals_only = FALSE, datum/job/equipping_job)
+	if (!preference_source)
+		return FALSE
+
 	var/datum/outfit/equipped_outfit
 
 	if(ispath(outfit))

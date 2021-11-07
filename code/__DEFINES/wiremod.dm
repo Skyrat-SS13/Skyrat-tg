@@ -22,6 +22,10 @@
 #define PORT_TYPE_NUMBER "number"
 /// Signal datatype
 #define PORT_TYPE_SIGNAL "signal"
+/// Signal datatype, with a slight variation in name to suggest it causes instant execution. Can only be an output port.
+#define PORT_TYPE_INSTANT_SIGNAL "instant signal"
+/// Signal datatype, with a slight variation in name to suggest that it can be used to respond to instant execution.
+#define PORT_TYPE_RESPONSE_SIGNAL "response signal"
 /// Table datatype. Derivative of list, contains other lists with matching columns.
 #define PORT_TYPE_TABLE "table"
 /// Options datatype. Derivative of string.
@@ -47,6 +51,8 @@
 #define PORT_ATOM_MAX_RANGE 7
 
 #define COMPONENT_DEFAULT_NAME "component"
+
+#define COMPONENT_DEFAULT_CATEGORY "Unassigned"
 
 /// The minimum position of the x and y co-ordinates of the component in the UI
 #define COMPONENT_MIN_RANDOM_POS 200
@@ -101,21 +107,21 @@
 #define CIRCUIT_FLAG_INPUT_SIGNAL (1<<0)
 /// Creates an output trigger that sends a pulse whenever the component is successfully triggered
 #define CIRCUIT_FLAG_OUTPUT_SIGNAL (1<<1)
-/// Prohibits the component from being duplicated via the module duplicator
-#define CIRCUIT_FLAG_UNDUPEABLE (1<<2)
 /// Marks a circuit component as admin only. Admins will only be able to link/unlink with these circuit components.
-#define CIRCUIT_FLAG_ADMIN (1<<3)
+#define CIRCUIT_FLAG_ADMIN (1<<2)
 /// This circuit component does not show in the menu.
-#define CIRCUIT_FLAG_HIDDEN (1<<4)
+#define CIRCUIT_FLAG_HIDDEN (1<<3)
 /// This circuit component has been marked as a component that has instant execution and will show up in the UI as so. This will only cause a visual change.
-#define CIRCUIT_FLAG_INSTANT (1<<5)
+#define CIRCUIT_FLAG_INSTANT (1<<4)
 /// This circuit component can't be loaded in module component. Saves us some headaches.
-#define CIRCUIT_FLAG_REFUSE_MODULE (1<<6)
+#define CIRCUIT_FLAG_REFUSE_MODULE (1<<5)
 
 // Datatype flags
 /// The datatype supports manual inputs
 #define DATATYPE_FLAG_ALLOW_MANUAL_INPUT (1<<0)
 /// The datatype won't update the value when it is connected to the port
 #define DATATYPE_FLAG_AVOID_VALUE_UPDATE (1<<1)
+/// Allows the datatype to take entity values from the circuit multitool.
+#define DATATYPE_FLAG_ALLOW_ATOM_INPUT (1<<2)
 /// The datatype has been generated and is an existing composite datatype
-#define DATATYPE_FLAG_COMPOSITE (1<<2)
+#define DATATYPE_FLAG_COMPOSITE (1<<3)

@@ -386,7 +386,7 @@
 	lingstingdisplay.hud = src
 	infodisplay += lingstingdisplay
 
-	zone_select =  new /atom/movable/screen/zone_sel()
+	zone_select = new /atom/movable/screen/zone_sel()
 	zone_select.icon = ui_style
 	zone_select.hud = src
 	zone_select.update_appearance()
@@ -535,7 +535,7 @@
 				screenmob.client.screen += H.r_store
 
 			//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-			if(H.client.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+			if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 				if(H.vagina)
 					H.vagina.screen_loc = ui_vagina
 					screenmob.client.screen += H.vagina

@@ -259,8 +259,8 @@
 	var/upgradeboosted = FALSE
 	///the cooldown for doing the process
 	COOLDOWN_DECLARE(healing_cooldown)
-	///the list of possible armor upgrades: melee, bullet, laser, energy, bio, rad, fire
-	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0, 0)
+	///the list of possible armor upgrades: melee, bullet, laser, energy, bio, fire
+	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0)
 	///the list of possible healing upgrades: brute, burn, toxin, oxygen, stamina
 	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
 	///the list of possible misc. upgrades: spaceproof, light, welding, temp-regulating, storage
@@ -347,8 +347,7 @@
 	armor.laser = armor_upgraded[3] * 20
 	armor.energy = armor_upgraded[4] * 20
 	armor.bio = armor_upgraded[5] * 20
-	armor.rad = armor_upgraded[6] * 20
-	armor.fire = armor_upgraded[7] * 20
+	armor.fire = armor_upgraded[6] * 20
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -394,10 +393,8 @@
 				armor_upgraded[4]++
 			if("bio armor")
 				armor_upgraded[5]++
-			if("rad armor")
-				armor_upgraded[6]++
 			if("fire armor")
-				armor_upgraded[7]++
+				armor_upgraded[6]++
 			if("brute healing")
 				if(healing_upgraded[1])
 					return
@@ -498,8 +495,7 @@
 	armor.laser = power_suit.armor_upgraded[3] * 20
 	armor.energy = power_suit.armor_upgraded[4] * 20
 	armor.bio = power_suit.armor_upgraded[5] * 20
-	armor.rad = power_suit.armor_upgraded[6] * 20
-	armor.fire = power_suit.armor_upgraded[7] * 20
+	armor.fire = power_suit.armor_upgraded[6] * 20
 	clothing_flags = initial(clothing_flags)
 	min_cold_protection_temperature = initial(min_cold_protection_temperature)
 	max_heat_protection_temperature = initial(max_heat_protection_temperature)
@@ -565,10 +561,6 @@
 
 /obj/item/powerarmor_upgrade/bio_armor
 	upgrade_type = "bio armor"
-	upgrade_cost = 3
-
-/obj/item/powerarmor_upgrade/rad_armor
-	upgrade_type = "rad armor"
 	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/fire_armor
@@ -710,11 +702,6 @@
 	id = "paupgradebio"
 	build_path = /obj/item/powerarmor_upgrade/bio_armor
 
-/datum/design/powerarmor/upgrades/rad_armor
-	name = "Power Armor Upgrades (Rad Armor)"
-	id = "paupgraderad"
-	build_path = /obj/item/powerarmor_upgrade/rad_armor
-
 /datum/design/powerarmor/upgrades/fire_armor
 	name = "Power Armor Upgrades (Fire Armor)"
 	id = "paupgradefire"
@@ -795,7 +782,6 @@
 		"paupgradelaser",
 		"paupgradeenergy",
 		"paupgradebio",
-		"paupgraderad",
 		"paupgradefire",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)

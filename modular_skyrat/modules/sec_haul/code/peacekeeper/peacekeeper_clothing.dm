@@ -51,7 +51,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "peacekeeper"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10) //Don't worry, these are copies.
 	can_adjust = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -60,7 +59,6 @@
 	name = "tactical peacekeeper uniform"
 	desc = "A tactical peacekeeper uniform, woven with a lightweight layer of kevlar to provide minor ballistic and stab protection."
 	icon_state = "peacekeeper_tac"
-	armor = list(MELEE = 5, BULLET = 5, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
 
 /obj/item/clothing/under/rank/security/peacekeeper/blue
 	name = "blue peacekeeper uniform"
@@ -139,11 +137,6 @@
 	icon_state = "peacekeeper_spacecoat"
 	worn_icon_state = "peacekeeper_spacecoat"
 	mutant_variants = NONE
-	body_parts_covered = CHEST|GROIN|ARMS
-	armor = list(MELEE = 35, BULLET = 25, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 0, RAD = 10, FIRE = 30, ACID = 30, WOUND = 20)
-	cold_protection = CHEST|GROIN|ARMS
-	heat_protection = CHEST|GROIN|ARMS
-	strip_delay = 60
 
 //PEACEKEEPER GLOVES
 /obj/item/clothing/gloves/combat/peacekeeper
@@ -153,8 +146,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "peacekeeper_gloves"
 	worn_icon_state = "peacekeeper"
-	cut_type = null
 	siemens_coefficient = 0.5
+	permeability_coefficient = 1
+	strip_delay = 20
+	cold_protection = 0
+	min_cold_protection_temperature = null
+	heat_protection = 0
+	max_heat_protection_temperature = null
+	resistance_flags = FLAMMABLE
+	armor = null
+	cut_type = null
 
 /obj/item/clothing/gloves/tackler/peacekeeper
 	name = "peacekeeper gripper gloves"
@@ -236,7 +237,7 @@
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_box,
 		/obj/item/food/donut,
-		/obj/item/kitchen/knife/combat,
+		/obj/item/knife/combat,
 		/obj/item/flashlight/seclite,
 		/obj/item/melee/baton/telescopic,
 		/obj/item/radio,
@@ -281,7 +282,7 @@
 		/obj/item/ammo_casing/shotgun,
 		/obj/item/ammo_box,
 		/obj/item/food/donut,
-		/obj/item/kitchen/knife/combat,
+		/obj/item/knife/combat,
 		/obj/item/flashlight/seclite,
 		/obj/item/melee/baton/telescopic,
 		/obj/item/radio,
@@ -300,11 +301,13 @@
 	icon_state = "peacekeeper_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"
-	armor = list(MELEE = 15, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 10, RAD = 0, FIRE = 60, ACID = 35)
-
-/obj/item/clothing/shoes/combat/peacekeeper/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/suitstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/suitstep2.ogg'=1), 40, falloff_exponent = SOUND_FALLOFF_EXPONENT)
+	armor = null
+	strip_delay = 30
+	equip_delay_other = 50
+	resistance_flags = NONE
+	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+	can_be_tied = FALSE
 
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"
@@ -321,8 +324,7 @@
 	icon_state = "hardsuit0-peacekeeper"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "peacekeeper"
-	armor = list(MELEE = 40, BULLET = 20, LASER = 35, ENERGY = 45, BOMB = 10, BIO = 100, RAD = 50, FIRE = 90, ACID = 75, WOUND = 20)
-	slowdown = 0.7
+	armor = list(MELEE = 35, BULLET = 15, LASER = 30,ENERGY = 40, BOMB = 10, BIO = 100, FIRE = 75, ACID = 75, WOUND = 20)
 
 /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
 	name = "Armadyne SS-01 Voidsuit"
@@ -332,10 +334,9 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
 	icon_state = "hardsuit-peacekeeper"
 	inhand_icon_state = "sec_hardsuit"
-	armor = list(MELEE = 40, BULLET = 20, LASER = 35, ENERGY = 45, BOMB = 10, BIO = 100, RAD = 50, FIRE = 90, ACID = 75, WOUND = 20)
+	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 10, BIO = 100, FIRE = 75, ACID = 75, WOUND = 20)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
-	slowdown = 0.7
-	hardsuit_tail_colors = list("BBB", "444", "337")
+	hardsuit_tail_colors = list("#BBBBBB", "#444444", "#333377")
 
 /obj/machinery/suit_storage_unit/security_peacekeeper
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security_peacekeeper

@@ -26,12 +26,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/greyscale
 	name = "Greyscale Jumpsuit"
-	can_be_greyscale = TRUE
 	item_path = /obj/item/clothing/under/color
 
 /datum/loadout_item/under/jumpsuit/greyscale_skirt
 	name = "Greyscale Jumpskirt"
-	can_be_greyscale = TRUE
 	item_path = /obj/item/clothing/under/color/jumpskirt
 
 /datum/loadout_item/under/jumpsuit/random
@@ -184,22 +182,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Command Utility Uniform"
 	item_path = /obj/item/clothing/under/utility/com
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
-
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest
-
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "red victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/red
-
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "blue victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/blue
-
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "red alt victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
 
 /////////////////////////////////////////////////////////////MISC UNDERSUITS
 /datum/loadout_item/under/miscellaneous
@@ -388,11 +370,31 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactitool Turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
 
+/datum/loadout_item/under/miscellaneous/pj_blood
+	name = "Blood-red Pajamas"
+	item_path = /obj/item/clothing/under/syndicate/bloodred/sleepytime/sensors
+
+/datum/loadout_item/under/miscellaneous/gladiator
+	name = "Gladiator Uniform"
+	item_path = /obj/item/clothing/under/costume/gladiator
+
+/datum/loadout_item/under/miscellaneous/griffon
+	name = "Griffon Uniform"
+	item_path = /obj/item/clothing/under/costume/griffin
+
+/datum/loadout_item/under/miscellaneous/owl
+	name = "Owl Uniform"
+	item_path = /obj/item/clothing/under/costume/owl
+
+/datum/loadout_item/under/miscellaneous/villain
+	name = "Villain Suit"
+	item_path = /obj/item/clothing/under/costume/villain
+
 /datum/loadout_item/under/miscellaneous/tactical_irish
 	name = "Irish Tactical Sweater"
 	item_path = /obj/item/clothing/under/misc/tactical1
 
-/datum/loadout_item/under/miscellaneous/tactical_irish
+/datum/loadout_item/under/miscellaneous/tactical_british
 	name = "British Tactical Sweater"
 	item_path = /obj/item/clothing/under/uvf
 
@@ -746,3 +748,108 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/kimono_fancy
 	name = "Fancy Kimono"
 	item_path =  /obj/item/clothing/under/costume/kimono/fancy
+
+/datum/loadout_item/under/formal/trek
+	name = "Trekkie Uniform"
+	item_path = /obj/item/clothing/under/trek
+
+/datum/loadout_item/under/formal/trek_command
+	name = "Trekkie Command Uniform"
+	item_path = /obj/item/clothing/under/trek/command
+
+/datum/loadout_item/under/formal/trek_engsec
+	name = "Trekkie Engsec Uniform"
+	item_path = /obj/item/clothing/under/trek/engsec
+
+/datum/loadout_item/under/formal/trek_medsci
+	name = "Trekkie Medsci Uniform"
+	item_path = /obj/item/clothing/under/trek/medsci
+
+/datum/loadout_item/under/formal/trek_next_command
+	name = "Trekkie TNG Command Uniform"
+	item_path = /obj/item/clothing/under/trek/command/next
+
+/datum/loadout_item/under/formal/trek_next_engsec
+	name = "Trekkie TNG Engsec Uniform"
+	item_path = /obj/item/clothing/under/trek/engsec/next
+
+/datum/loadout_item/under/formal/trek_next_medsci
+	name = "Trekkie TNG Medsci Uniform"
+	item_path = /obj/item/clothing/under/trek/medsci/next
+
+/datum/loadout_item/under/formal/trek_ent_command
+	name = "Trekkie ENT Command Uniform"
+	item_path = /obj/item/clothing/under/trek/command/ent
+
+/datum/loadout_item/under/formal/trek_ent_engsec
+	name = "Trekkie ENT Engsec Uniform"
+	item_path = /obj/item/clothing/under/trek/engsec/ent
+
+/datum/loadout_item/under/formal/trek_ent_medsci
+	name = "Trekkie ENT Medsci Uniform"
+	item_path = /obj/item/clothing/under/trek/medsci/ent
+
+/datum/loadout_item/under/formal/the_Q
+	name = "French Marshall's Uniform"
+	item_path = /obj/item/clothing/under/trek/q
+
+/datum/loadout_item/under/formal/vic_vest
+	name = "Victorian Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest
+
+/datum/loadout_item/under/formal/vic_vest/red
+	name = "Red Victorian Shirt with Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/red
+
+/datum/loadout_item/under/formal/vic_vest/blue
+	name = "Blue Victorian Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/blue
+
+/datum/loadout_item/under/formal/vic_vest/red/shirt
+	name = "Red Victorian Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
+
+/datum/loadout_item/under/formal/jeanshorts //why are these formal??? who the fuck wears jorts formally??????
+	name = "Jean Shorts"
+	item_path = /obj/item/clothing/under/pants/jeanshort
+
+//FAMILIES GEAR
+/datum/loadout_item/under/formal/osi
+	name = "OSI Uniform"
+	item_path = /obj/item/clothing/under/costume/osi
+
+/datum/loadout_item/under/formal/tmc
+	name = "TMC Uniform"
+	item_path = /obj/item/clothing/under/costume/tmc
+
+/datum/loadout_item/under/formal/pg
+	name = "PG Uniform"
+	item_path = /obj/item/clothing/under/costume/pg
+
+/datum/loadout_item/under/formal/driscol
+	name = "Driscol Uniform"
+	item_path = /obj/item/clothing/under/costume/driscoll
+
+/datum/loadout_item/under/formal/deckers
+	name = "Deckers Uniform"
+	item_path = /obj/item/clothing/under/costume/deckers
+
+/datum/loadout_item/under/formal/morningstar
+	name = "Morningstar Uniform"
+	item_path = /obj/item/clothing/under/costume/morningstar
+
+/datum/loadout_item/under/formal/saints
+	name = "Saints Uniform"
+	item_path = /obj/item/clothing/under/costume/saints
+
+/datum/loadout_item/under/formal/phantom
+	name = "Phantom Uniform"
+	item_path = /obj/item/clothing/under/costume/phantom
+
+/datum/loadout_item/under/formal/sybil
+	name = "Sybil Uniform"
+	item_path = /obj/item/clothing/under/costume/sybil_slickers
+
+/datum/loadout_item/under/formal/basil
+	name = "Basil Uniform"
+	item_path = /obj/item/clothing/under/costume/basil_boys
