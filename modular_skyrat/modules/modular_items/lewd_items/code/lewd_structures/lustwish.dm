@@ -59,12 +59,6 @@
 					/obj/item/clothing/under/misc/latex_catsuit = 8,
 					/obj/item/clothing/suit/straight_jacket/latex_straight_jacket = 5,
 					/obj/item/clothing/under/costume/lewdmaid = 5,
-					/obj/item/clothing/suit/straight_jacket/shackles = 3,
-					/obj/item/clothing/under/stripper_outfit = 5,
-					/obj/item/clothing/under/misc/stripper/bunnysuit = 4,
-					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 4,
-					/obj/item/clothing/suit/corset = 5,
-					/obj/item/clothing/under/costume/lewdmaid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 4,
 					/obj/item/clothing/under/stripper_outfit = 5,
 					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
@@ -74,11 +68,14 @@
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
 					/obj/item/clothing/gloves/latex_gloves = 8,
+					/obj/item/clothing/gloves/evening = 5,
 
 					//legs
 					/obj/item/clothing/shoes/latex_socks = 8,
 					/obj/item/clothing/shoes/latexheels = 4,
 					/obj/item/clothing/shoes/dominaheels = 4,
+					/obj/item/clothing/shoes/jackboots/thigh = 3,
+					/obj/item/clothing/shoes/jackboots/knee = 3,
 
 					//belt
 					/obj/item/clothing/strapon = 6,

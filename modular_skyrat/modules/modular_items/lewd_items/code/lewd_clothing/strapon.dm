@@ -57,11 +57,6 @@
 	if(!length(strapon_types))
 		populate_strapon_types()
 
-	//random color variation on start. Because why not?
-	strapon_type = pick(strapon_types)
-	update_icon_state()
-	update_icon()
-
 //shitcode here, please improve if you can. Genitals overlapping with strapon, doesn't cool!
 
 /obj/item/clothing/strapon/equipped(mob/user, slot)
@@ -174,13 +169,6 @@
 		C.visible_message(span_notice("[user] holds the strapon in their hand menacingly."))
 		in_hands = TRUE
 		return
-
-//examine stuff
-
-/obj/item/clothing/strapon/examine(mob/user)
-	.=..()
-	if(type_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
 
 /obj/item/strapon_dildo
 	name = "strapon"

@@ -129,20 +129,13 @@
 	if(toy_on == TRUE)
 		if(vibration_mode == "low")
 			U.adjustArousal(0.5 * delta_time)
-			U.adjustPleasure(0.6 * delta_time)
+			U.adjustPleasure(0.5 * delta_time)
 		if(vibration_mode == "medium")
 			U.adjustArousal(0.6 * delta_time)
-			U.adjustPleasure(0.9 * delta_time)
+			U.adjustPleasure(0.6 * delta_time)
 		if(vibration_mode == "high")
 			U.adjustArousal(0.7 * delta_time)
-			U.adjustPleasure(1.5 * delta_time)
-
-//examine stuff
-
-/obj/item/clothing/sextoy/eggvib/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+			U.adjustPleasure(0.7 * delta_time)
 
 //////////////////////////
 ///Signal vibrating egg///
@@ -430,11 +423,3 @@
 		if(vibration_mode == "high")
 			U.adjustArousal(0.7 * delta_time)
 			U.adjustPleasure(0.7 * delta_time)
-
-//examine stuff
-
-/obj/item/clothing/sextoy/signalvib/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
-

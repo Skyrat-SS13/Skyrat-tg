@@ -315,10 +315,3 @@
 			current_whip_type = "hard"
 		if("weak")
 			current_whip_type = "weak"
-
-//examine stuff
-
-/obj/item/clothing/mask/leatherwhip/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"

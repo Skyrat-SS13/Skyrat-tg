@@ -56,11 +56,6 @@
 	if(!length(dildo_designs))
 		populate_dildo_designs()
 
-	//random color variation on start. Because why not?
-	current_color = pick(dildo_designs)
-	update_icon_state()
-	update_icon()
-
 /obj/item/clothing/sextoy/dildo/update_icon_state()
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]"
@@ -154,14 +149,6 @@
 	else
 		to_chat(user, span_danger("[M] doesn't want you to do that."))
 		return
-
-//examine stuff
-
-/obj/item/clothing/sextoy/dildo/examine(mob/user)
-	.=..()
-	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
-
 
 ///////////////////////
 ///POLYCHROMIC DILDO///
