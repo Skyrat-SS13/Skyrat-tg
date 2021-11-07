@@ -6,7 +6,7 @@
 	assigned_icon_state = "assigned_centcom"
 
 /datum/id_trim/gcc
-	assignment = "Gilgamesh Colonial Confederation Soldier"
+	assignment = "Novaya Rossiyskaya Imperiya Soldier"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_gcc"
 
@@ -16,9 +16,9 @@
 
 
 /datum/id_trim/gcc/commander
-	assignment = "Gilgamesh Colonial Confederation Platoon Commander"
+	assignment = "Novaya Rossiyskaya Imperiya Platoon Commander"
 	trim_state = "trim_gcc_commander"
 
 /datum/id_trim/gcc/heavy
-	assignment = "Gilgamesh Colonial Confederation Heavy Soldier"
+	assignment = "Novaya Rossiyskaya Imperiya Heavy Soldier"
 	trim_state = "trim_gcc"

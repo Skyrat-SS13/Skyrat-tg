@@ -1,13 +1,13 @@
 /datum/ert/gcc
 	roles = list(/datum/antagonist/ert/gcc, /datum/antagonist/ert/gcc/heavy)
 	leader_role = /datum/antagonist/ert/gcc/commander
-	rename_team = "Gilgamesh Colonial Confederation Platoon"
+	rename_team = "Novaya Rossiyskaya Imperiya Platoon"
 	code = "Red"
 	mission = "Assist the station."
 	polldesc = "a squad of specialized GCC soldiers"
 
 /datum/antagonist/ert/gcc
-	name = "Gilgamesh Colonial Confederation Soldier"
+	name = "Novaya Rossiyskaya Imperiya Soldier"
 	role = "Soldier"
 	outfit = /datum/outfit/centcom/ert/gcc
 
@@ -25,11 +25,11 @@
 	return TRUE
 
 /datum/antagonist/ert/gcc/commander
-	name = "Gilgamesh Colonial Confederation Commander"
+	name = "Novaya Rossiyskaya Imperiya Commander"
 	role = "Commander"
 	outfit = /datum/outfit/centcom/ert/gcc/commander
 
 /datum/antagonist/ert/gcc/heavy
-	name = "Gilgamesh Colonial Confederation Heavy Soldier"
+	name = "Novaya Rossiyskaya Imperiya Heavy Soldier"
 	role = "Heavy Soldier"
 	outfit = /datum/outfit/centcom/ert/gcc/heavy

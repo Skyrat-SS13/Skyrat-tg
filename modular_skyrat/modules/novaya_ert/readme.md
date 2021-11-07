@@ -1,6 +1,6 @@
-## Title: Gilgamesh Colonial Confederation ERT
+## Title: Novaya Rossiyskaya Imperiya ERT
 
-MODULE ID: GCC ERT
+MODULE ID: NRI ERT
 
 ### Description:
 

@@ -1,5 +1,5 @@
 /datum/outfit/centcom/ert/gcc
-	name = "Gilgamesh Colonial Confederation Soldier"
+	name = "Novaya Rossiyskaya Imperiya Soldier"
 
 	head = /obj/item/clothing/head/helmet/rus_helmet/gcc
 	glasses = /obj/item/clothing/glasses/night
@@ -18,7 +18,7 @@
 	id_trim = /datum/id_trim/gcc
 
 /datum/outfit/centcom/ert/gcc/heavy
-	name = "Gilgamesh Colonial Confederation Heavy Soldier"
+	name = "Novaya Rossiyskaya Imperiya Heavy Soldier"
 	head = /obj/item/clothing/head/helmet/gcc_heavy
 	suit = /obj/item/clothing/suit/armor/heavy/gcc
 	mask = /obj/item/clothing/mask/gas/alt
@@ -31,7 +31,7 @@
 	id_trim = /datum/id_trim/gcc/heavy
 
 /datum/outfit/centcom/ert/gcc/commander
-	name = "Gilgamesh Colonial Confederation Platoon Commander"
+	name = "Novaya Rossiyskaya Imperiya Platoon Commander"
 	head = /obj/item/clothing/head/beret/sec/gcc
 	belt = /obj/item/storage/belt/military/gcc/full_commander
 	suit_store = /obj/item/gun/ballistic/automatic/submachine_gun/ppsh
