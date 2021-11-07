@@ -32,8 +32,8 @@
 	bounty_types = CIV_JOB_SEC
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	rpg_title = "Guard Leader"
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
@@ -47,34 +47,37 @@
 	jobtype = /datum/job/head_of_security
 
 	id = /obj/item/card/id/advanced/silver
+	id_trim = /datum/id_trim/job/head_of_security
+	uniform = /obj/item/clothing/under/rank/security/head_of_security
+	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
+	suit_store = /obj/item/flashlight/seclite //SKYRAT EDIT CHANGE - SEC_HAUL & HOS_NERF - ORIGINAL: /obj/item/gun/energy/e_gun SEC_HAUL: /obj/item/gun/ballistic/automatic/pistol/g18
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
+		)
 	belt = /obj/item/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
-	uniform = /obj/item/clothing/under/rank/security/head_of_security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/under/rank/security/head_of_security
-	shoes = /obj/item/clothing/shoes/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL
-	suit = /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/suit/armor/hos/trenchcoat
-	gloves = /obj/item/clothing/gloves/combat/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/hos/beret/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/head/hos/beret
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: /obj/item/clothing/glasses/hud/security/sunglasses
-	suit_store = /obj/item/flashlight/seclite //SKYRAT EDIT CHANGE - SEC_HAUL & HOS_NERF - ORIGINAL: /obj/item/gun/energy/e_gun SEC_HAUL: /obj/item/gun/ballistic/automatic/pistol/g18
-	r_pocket = /obj/item/assembly/flash/handheld
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/hos/beret
+	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/restraints/handcuffs
-	backpack_contents = list(/obj/item/melee/baton/loaded=1, /obj/item/modular_computer/tablet/preset/advanced/command=1)
+	r_pocket = /obj/item/assembly/flash/handheld
 
-	backpack = /obj/item/storage/backpack/security/peacekeeper //SKYRAT EDIT CHANGE - SEC_HAUL - ORIGINAL: backpack = /obj/item/storage/backpack/security
-	satchel = /obj/item/storage/backpack/satchel/sec/peacekeeper
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/peacekeeper
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+
 	box = /obj/item/storage/box/survival/security
-
+	chameleon_extras = list(
+		/obj/item/gun/energy/e_gun/hos,
+		/obj/item/stamp/hos,
+		)
 	implants = list(/obj/item/implant/mindshield)
-
-	chameleon_extras = list(/obj/item/gun/energy/e_gun/hos, /obj/item/stamp/hos)
-
-	id_trim = /datum/id_trim/job/head_of_security
 
 /datum/outfit/job/hos/hardsuit
 	name = "Head of Security (Hardsuit)"
 
-	mask = /obj/item/clothing/mask/gas/sechailer
 	suit = /obj/item/clothing/suit/space/hardsuit/security/hos
 	suit_store = /obj/item/tank/internals/oxygen
-	backpack_contents = list(/obj/item/melee/baton/loaded=1)
+	mask = /obj/item/clothing/mask/gas/sechailer

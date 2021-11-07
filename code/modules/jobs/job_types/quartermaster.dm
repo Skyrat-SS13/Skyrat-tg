@@ -30,8 +30,8 @@
 	mail_goodies = list(
 		/obj/item/circuitboard/machine/emitter = 3
 	)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	rpg_title = "Steward"
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 
 /datum/job/quartermaster/after_spawn(mob/living/carbon/human/H, mob/M) //SKYRAT EDIT - Gubman 3.1
@@ -42,17 +42,17 @@
 	name = "Quartermaster"
 	jobtype = /datum/job/quartermaster
 
-	belt = /obj/item/pda/quartermaster
-	//ears = /obj/item/radio/headset/headset_cargo //ORIGINAL
-	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE
 	id = /obj/item/card/id/advanced/silver //SKYRAT EDIT CHANGE
+	id_trim = /datum/id_trim/job/quartermaster
 	uniform = /obj/item/clothing/under/rank/cargo/qm
-	shoes = /obj/item/clothing/shoes/sneakers/brown
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic=1,
+		/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1
+		) //SKYRAT EDIT CHANGE - ORIGINAL: backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1)
+	belt = /obj/item/pda/quartermaster
+	ears = /obj/item/radio/headset/heads/qm //SKYRAT EDIT CHANGE - OIGINAL: ears = /obj/item/radio/headset/headset_cargo
 	glasses = /obj/item/clothing/glasses/sunglasses
+	shoes = /obj/item/clothing/shoes/sneakers/brown
 	l_hand = /obj/item/clipboard
-	//backpack_contents = list(/obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1) //ORIGINAL
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/cargo/quartermaster = 1) //SKYRAT EDIT CHANGE
 
 	chameleon_extras = /obj/item/stamp/qm
-
-	id_trim = /datum/id_trim/job/quartermaster

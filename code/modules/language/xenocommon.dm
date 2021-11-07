@@ -6,3 +6,4 @@
 	default_priority = 50
 
 	icon_state = "xeno"
+	secret = TRUE // SKYRAT EDIT

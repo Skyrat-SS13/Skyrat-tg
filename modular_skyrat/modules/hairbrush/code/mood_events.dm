@@ -4,7 +4,7 @@
 	timeout = 4 MINUTES
 
 /datum/mood_event/brushed/add_effects(mob/brusher)
-	description = span_nicegreen("[brusher.name] brushed my hair recently, that felt great!\n")
+	description = span_nicegreen("[brusher? brusher.name : "I"] brushed my hair recently, that felt great!\n")
 
 /datum/mood_event/brushed/self
 	description = span_nicegreen("I brushed my hair recently!\n")

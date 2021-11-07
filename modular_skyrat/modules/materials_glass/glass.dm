@@ -2,17 +2,17 @@
 #define BUILD_WINDOW_DIRECTIONAL_MOD 0.5
 
 GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
-	new/datum/stack_recipe("plastitanium window", /obj/structure/window/plasma/reinforced/plastitanium/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("plastitanium window", /obj/structure/window/reinforced/plasma/plastitanium/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
 	))
 GLOBAL_LIST_INIT(titaniumglass_recipes, list(
-	new/datum/stack_recipe("shuttle window", /obj/structure/window/shuttle/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("shuttle window", /obj/structure/window/reinforced/shuttle/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("glass shard", /obj/item/shard, time = 0, on_floor = TRUE), \
 	new/datum/stack_recipe("spaceship window plate", /obj/item/stack/sheet/spaceshipglass, 1, time = 5), \
 	))
 GLOBAL_LIST_INIT(prglass_recipes, list ( \
-	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/plasma/reinforced/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
-	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/plasma/reinforced/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("directional reinforced window", /obj/structure/window/reinforced/plasma/unanchored, time = BUILD_WINDOW * BUILD_WINDOW_DIRECTIONAL_MOD, on_floor = TRUE, window_checks = TRUE), \
+	new/datum/stack_recipe("fulltile reinforced window", /obj/structure/window/reinforced/plasma/fulltile/unanchored, 2, time = BUILD_WINDOW, on_floor = TRUE, window_checks = TRUE), \
 	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 0, on_floor = TRUE) \
 	))
 GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
@@ -40,7 +40,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	icon_state = "sheet-glass"
 	inhand_icon_state = "sheet-glass"
 	mats_per_unit = list(/datum/material/glass=MINERAL_MATERIAL_AMOUNT)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 100)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 100)
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/glass
 	grind_results = list(/datum/reagent/silicon = 20)
@@ -98,11 +98,12 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	inhand_icon_state = "sheet-pglass"
 	mats_per_unit = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/alloy/plasmaglass
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 75, ACID = 100)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 75, ACID = 100)
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plasmaglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
-	material_flags = MATERIAL_NO_EFFECTS
+	material_flags = NONE
+	tableVariant = /obj/structure/table/glass/plasmaglass
 
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
@@ -137,12 +138,13 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	icon_state = "sheet-rglass"
 	inhand_icon_state = "sheet-rglass"
 	mats_per_unit = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT * 0.5, /datum/material/glass=MINERAL_MATERIAL_AMOUNT)
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 70, ACID = 100)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 70, ACID = 100)
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/rglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/iron = 10)
 	point_value = 4
 	matter_amount = 6
+	tableVariant = /obj/structure/table/reinforced/rglass
 
 /obj/item/stack/sheet/rglass/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
@@ -161,7 +163,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 /obj/item/stack/sheet/rglass/cyborg/get_amount()
 	return min(round(source.energy / cost), round(glasource.energy / glacost))
 
-/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE) // Requires special checks, because it uses two storages
+/obj/item/stack/sheet/rglass/cyborg/use(used, transfer = FALSE, check = TRUE) // Requires special checks, because it uses two storages
 	if(get_amount(used)) //ensure we still have enough energy if called in a do_after chain
 		source.use_charge(used * cost)
 		glasource.use_charge(used * glacost)
@@ -182,13 +184,14 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	icon_state = "sheet-prglass"
 	inhand_icon_state = "sheet-prglass"
 	mats_per_unit = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT, /datum/material/iron = MINERAL_MATERIAL_AMOUNT * 0.5)
-	armor = list(MELEE = 20, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
+	armor = list(MELEE = 20, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 100)
 	resistance_flags = ACID_PROOF
-	material_flags = MATERIAL_NO_EFFECTS
+	material_flags = NONE
 	merge_type = /obj/item/stack/sheet/plasmarglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10, /datum/reagent/iron = 10)
 	point_value = 23
 	matter_amount = 8
+	tableVariant = /obj/structure/table/reinforced/plasmarglass
 
 /obj/item/stack/sheet/plasmarglass/get_main_recipes()
 	. = ..()
@@ -202,9 +205,10 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	inhand_icon_state = "sheet-titaniumglass"
 	mats_per_unit = list(/datum/material/alloy/titaniumglass=MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/alloy/titaniumglass
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 100)
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/titaniumglass
+	tableVariant = /obj/structure/table/reinforced/titaniumglass
 
 /obj/item/stack/sheet/titaniumglass/get_main_recipes()
 	. = ..()
@@ -218,10 +222,11 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	inhand_icon_state = "sheet-plastitaniumglass"
 	mats_per_unit = list(/datum/material/alloy/plastitaniumglass=MINERAL_MATERIAL_AMOUNT)
 	material_type = /datum/material/alloy/plastitaniumglass
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 80, ACID = 100)
-	material_flags = MATERIAL_NO_EFFECTS
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 100)
+	material_flags = NONE
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plastitaniumglass
+	tableVariant = /obj/structure/table/reinforced/plastitaniumglass
 
 /obj/item/stack/sheet/plastitaniumglass/get_main_recipes()
 	. = ..()
@@ -243,7 +248,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	attack_verb_simple = list("stab", "slash", "slice", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	resistance_flags = ACID_PROOF
-	armor = list(MELEE = 100, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 100)
+	armor = list(MELEE = 100, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 0, FIRE = 50, ACID = 100)
 	max_integrity = 40
 	sharpness = SHARP_EDGED
 	var/icon_prefix
@@ -312,7 +317,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 		var/obj/item/stack/sheet/cloth/C = I
 		to_chat(user, "<span class='notice'>You begin to wrap the [C] around the [src]...</span>")
 		if(do_after(user, 35, target = src))
-			var/obj/item/kitchen/knife/shiv/S = new /obj/item/kitchen/knife/shiv
+			var/obj/item/knife/shiv/S = new /obj/item/knife/shiv
 			C.use(1)
 			to_chat(user, "<span class='notice'>You wrap the [C] around the [src] forming a makeshift weapon.</span>")
 			remove_item_from_storage(src)

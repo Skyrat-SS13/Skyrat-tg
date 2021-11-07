@@ -109,6 +109,68 @@
 	desc = "A measuring tape specifically produced to measure the depth that has been dug into strange rocks."
 	icon_state = "tape"
 
+/obj/item/xenoarch/handheld_scanner
+	name = "handheld scanner"
+	desc = "A handheld scanner for strange rocks. It tags the depths to the rock."
+	icon_state = "scanner"
+	var/scanning_speed = 5 SECONDS
+	var/scan_advanced = FALSE
+
+/obj/item/xenoarch/handheld_scanner/advanced
+	name = "advanced handheld scanner"
+	icon_state = "adv_scanner"
+	scanning_speed = 1 SECONDS
+	scan_advanced = TRUE
+
+/obj/item/xenoarch/handheld_recoverer
+	name = "handheld recoverer"
+	desc = "An item that has the capabilities to recover items lost due to time."
+	icon_state = "recoverer"
+
+/obj/item/xenoarch/handheld_recoverer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(!proximity_flag)
+		return
+	var/turf/target_turf = get_turf(target)
+	if(istype(target, /obj/item/xenoarch/broken_item/tech))
+		var/spawn_item = pick_weight(GLOB.tech_reward)
+		new spawn_item(target_turf)
+		qdel(target)
+		return
+	if(istype(target, /obj/item/xenoarch/broken_item/weapon))
+		var/spawn_item = pick_weight(GLOB.weapon_reward)
+		new spawn_item(target_turf)
+		qdel(target)
+		return
+	if(istype(target, /obj/item/xenoarch/broken_item/illegal))
+		var/spawn_item = pick_weight(GLOB.illegal_reward)
+		new spawn_item(target_turf)
+		qdel(target)
+		return
+	if(istype(target, /obj/item/xenoarch/broken_item/alien))
+		var/spawn_item = pick_weight(GLOB.alien_reward)
+		new spawn_item(target_turf)
+		qdel(target)
+		return
+	if(istype(target, /obj/item/xenoarch/broken_item/plant))
+		var/spawn_item = pick_weight(GLOB.plant_reward)
+		new spawn_item(target_turf)
+		qdel(target)
+		return
+	if(istype(target, /obj/item/xenoarch/broken_item/clothing))
+		var/spawn_item = pick_weight(GLOB.clothing_reward)
+		new spawn_item(target_turf)
+		qdel(target)
+		return
+	if(istype(target, /obj/item/xenoarch/broken_item/animal))
+		var/spawn_item
+		var/turf/src_turf = get_turf(src)
+		for(var/looptime in 1 to rand(1,4))
+			spawn_item = pick_weight(GLOB.animal_reward)
+			new spawn_item(src_turf)
+		qdel(target)
+		return
+	return ..()
+
 /obj/item/storage/belt/utility/xenoarch
 	name = "xenoarch toolbelt"
 	desc = "Holds tools."
@@ -121,13 +183,15 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 21
-	STR.max_items = 12
+	STR.max_combined_w_class = 100
+	STR.max_items = 15
 	STR.max_combined_w_class = 1000
 	STR.set_holdable(list(
 		/obj/item/xenoarch/hammer,
 		/obj/item/xenoarch/brush,
 		/obj/item/xenoarch/tape_measure,
+		/obj/item/xenoarch/handheld_scanner,
+		/obj/item/xenoarch/handheld_recoverer,
 		/obj/item/t_scanner/adv_mining_scanner,
 		/obj/item/mining_scanner,
 		/obj/item/gps
@@ -153,7 +217,7 @@
 	STR.max_w_class = WEIGHT_CLASS_GIGANTIC
 	STR.allow_quick_empty = TRUE
 	STR.max_combined_w_class = 1000
-	STR.max_items = 10
+	STR.max_items = 20
 	STR.display_numerical_stacking = FALSE
 	STR.can_hold = typecacheof(list(/obj/item/xenoarch/strange_rock))
 
@@ -204,7 +268,7 @@
 /obj/item/storage/bag/xenoarch/adv/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 30
+	STR.max_items = 40
 
 /obj/structure/closet/xenoarch
 	name = "xenoarchaeology equipment locker"
@@ -221,7 +285,15 @@
 	new /obj/item/xenoarch/hammer/cm10(src)
 	new /obj/item/xenoarch/brush(src)
 	new /obj/item/xenoarch/tape_measure(src)
+	new /obj/item/xenoarch/handheld_scanner(src)
 	new /obj/item/storage/bag/xenoarch(src)
 	new /obj/item/storage/belt/utility/xenoarch(src)
 	new /obj/item/t_scanner/adv_mining_scanner(src)
 	new /obj/item/pickaxe(src)
+
+/obj/structure/closet/xenoarch/ashwalker_version
+	name = "dusty xenoarchaeology equipment locker"
+
+/obj/structure/closet/xenoarch/ashwalker_version/PopulateContents()
+	. = ..()
+	new /obj/item/xenoarch/handheld_recoverer(src)

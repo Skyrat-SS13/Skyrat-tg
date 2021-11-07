@@ -3,13 +3,12 @@
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,HAIR,FACEHAIR)
 	default_mutant_bodyparts = list("tail" = ACC_RANDOM, "snout" = ACC_RANDOM, "spines" = ACC_RANDOM, "frills" = ACC_RANDOM, "horns" = ACC_RANDOM, "body_markings" = ACC_RANDOM, "legs" = "Digitigrade Legs", "taur" = "None", "wings" = "None")
 	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/lizard_parts_greyscale.dmi'
-	cultures = list(CULTURES_EXOTIC, CULTURES_LIZARD, CULTURES_HUMAN)
 	learnable_languages = list(/datum/language/common, /datum/language/draconic)
 	payday_modifier = 0.75
 
 /datum/species/lizard/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
-	var/main_color = random_short_color()
+	var/main_color = "#[random_color()]"
 	var/second_color
 	var/third_color
 	var/random = rand(1,3)
@@ -21,17 +20,14 @@
 			second_color = main_color
 			third_color = main_color
 		if(3) //Third case, more randomisation
-			second_color = random_short_color()
-			third_color = random_short_color()
+			second_color = "#[random_color()]"
+			third_color = "#[random_color()]"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color
 	return returned
 
 /datum/species/lizard/ashwalker
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR,HAIR,FACEHAIR)
 	always_customizable = TRUE
-	cultures = list(/datum/cultural_info/culture/lavaland)
-	locations = list(/datum/cultural_info/location/stateless)
-	factions = list(/datum/cultural_info/faction/none)
 	learnable_languages = list(/datum/language/draconic)

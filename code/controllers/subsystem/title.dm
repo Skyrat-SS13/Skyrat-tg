@@ -1,4 +1,3 @@
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 SUBSYSTEM_DEF(title)
 	name = "Title Screen"
 	flags = SS_NO_FIRE
@@ -40,6 +39,7 @@ SUBSYSTEM_DEF(title)
 
 	if(splash_turf)
 		splash_turf.icon = icon
+		splash_turf.handle_generic_titlescreen_sizes()
 
 	return ..()
 
@@ -67,4 +67,3 @@ SUBSYSTEM_DEF(title)
 	splash_turf = SStitle.splash_turf
 	file_path = SStitle.file_path
 	previous_icon = SStitle.previous_icon
-*/

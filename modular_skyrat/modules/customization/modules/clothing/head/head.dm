@@ -4,7 +4,7 @@
 	name = "flak helmet"
 	icon_state = "m1helm"
 	inhand_icon_state = "helmet"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0.1, "bio" = 0, "rad" = 0, "fire" = -10, "acid" = -15, "wound" = 1)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0.1, "bio" = 0, "fire" = -10, "acid" = -15, "wound" = 1)
 	desc = "A dilapidated helmet used in ancient wars. This one is brittle and essentially useless. An ace of spades is tucked into the band around the outer shell."
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/tiny/spacenam	//So you can stuff other things in the elastic band instead of it simply being a fluff thing.
 	mutant_variants = NONE
@@ -115,7 +115,7 @@
 	inhand_icon_state= "cowboy_black_sec"
 
 
-/obj/item/clothing/head/ushankasec
+/obj/item/clothing/head/ushanka/sec
 	name = "security ushanka"
 	desc = "There's more to life than money, with this red ushanka, you can prove it for $19.99."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -123,43 +123,13 @@
 	icon_state = "ushankared"
 	inhand_icon_state = "ushankadown"
 	mutant_variants = NONE
-	flags_inv = HIDEEARS|HIDEHAIR
-	var/earflaps = TRUE
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 
-/obj/item/clothing/head/ushankasec/attack_self(mob/user)
-	if(earflaps)
-		icon_state = "ushankaredup"
-		inhand_icon_state = "ushankaup"
-		to_chat(user, "<span class='notice'>You raise the ear flaps on the ushanka.</span>")
-	else
-		icon_state = "ushankared"
-		inhand_icon_state = "ushankadown"
-		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
-	earflaps = !earflaps
-
-/obj/item/clothing/head/ushankasec/blue
+/obj/item/clothing/head/ushanka/sec/blue
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "ushankablue"
 	inhand_icon_state = "ushankadown"
 	mutant_variants = NONE
-	flags_inv = HIDEEARS|HIDEHAIR
-	earflaps = TRUE
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
-
-/obj/item/clothing/head/ushankasec/attack_self(mob/user)
-	if(earflaps)
-		icon_state = "ushankablueup"
-		inhand_icon_state = "ushankaup"
-		to_chat(user, "<span class='notice'>You raise the ear flaps on the ushanka.</span>")
-	else
-		icon_state = "ushankablue"
-		inhand_icon_state = "ushankadown"
-		to_chat(user, "<span class='notice'>You lower the ear flaps on the ushanka.</span>")
-	earflaps = !earflaps
 
 /obj/item/clothing/head/soft/enclave
 	name = "neo american cap"
@@ -239,7 +209,7 @@
 
 /obj/item/clothing/head/turb/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/keffiyeh
 	name = "keffiyeh"
@@ -254,7 +224,7 @@
 
 /obj/item/clothing/head/keffiyeh/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "EEA", "FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#EEEEAA", "#FFFFFF"))
 
 /obj/item/clothing/head/hijab
 	name = "hijab"
@@ -269,7 +239,7 @@
 
 /obj/item/clothing/head/hijab/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/polyflatc
 	name = "poly flat cap"
@@ -281,7 +251,7 @@
 
 /obj/item/clothing/head/polyflatc/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/head/flowerpin
 	name = "Flower Pin"
@@ -291,7 +261,7 @@
 	icon_state = "flowerpin"
 	w_class = WEIGHT_CLASS_SMALL
 	mutant_variants = NONE
-	var/list/poly_colors = list("FFF", "FFF", "FFF")
+	var/list/poly_colors = list("#FFFFFF", "#FFFFFF", "#FFFFFF")
 
 /obj/item/clothing/head/flowerpin/ComponentInitialize()
 	. = ..()
@@ -312,7 +282,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "imphop"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
+	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50)
 
 /obj/item/clothing/head/imperial/hos
 	name = "head of security's naval officer cap"
@@ -320,7 +290,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "imphos"
-	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, RAD = 0, FIRE = 50, ACID = 60, WOUND = 10)
+	armor = list(MELEE = 40, BULLET = 30, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 10, FIRE = 50, ACID = 60, WOUND = 10)
 	strip_delay = 80
 
 /obj/item/clothing/head/imperial/grey
@@ -336,7 +306,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "impcap"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, RAD = 0, FIRE = 50, ACID = 50, WOUND = 5)
+	armor = list(MELEE = 25, BULLET = 15, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 5)
 	strip_delay = 60
 
 /obj/item/clothing/head/imperial/ce
@@ -344,7 +314,7 @@
 	desc = "Despite seeming like it's made of metal, it's actually a very cheap plastic.."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	armor = list(MELEE = 15, BULLET = 5, LASER = 20, ENERGY = 10, BOMB = 20, BIO = 10, RAD = 20, FIRE = 100, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 15, BULLET = 5, LASER = 20, ENERGY = 10, BOMB = 20, BIO = 10, FIRE = 100, ACID = 50, WOUND = 10)
 	clothing_flags = STOPSPRESSUREDAMAGE
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
@@ -421,3 +391,37 @@
 	icon_state = "deputy_hat"
 	mutant_variants = NONE
 	desc = "A light brown hat with a smell of iron. There's a small set of antlers embroidered on the inside."
+
+/obj/item/clothing/head/soft/yankee
+	name = "fashionable baseball cap"
+	desc = "Rimmed and brimmed."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "yankeesoft"
+	soft_type = "yankee"
+	dog_fashion = /datum/dog_fashion/head/yankee
+	mutant_variants = NONE
+
+/obj/item/clothing/head/soft/yankee/rimless
+	name = "rimless fashionable baseball cap"
+	desc = "Rimless for her pleasure."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "yankeenobrimsoft"
+	soft_type = "yankeenobrim"
+
+/obj/item/clothing/head/fedora/fedbrown
+	name = "Brown fedora"
+	desc = "A noir-inspired fedora. Covers the eyes. Makes you look menacing, assuming you don't have a neckbeard."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "brfedora"
+	mutant_variants = NONE
+
+/obj/item/clothing/head/fedora/fedblack
+	name = "Black fedora"
+	desc = "A matte-black fedora. Looks solid enough. It'll only look good on you if you don't have a neckbeard."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "blfedora"
+	mutant_variants = NONE

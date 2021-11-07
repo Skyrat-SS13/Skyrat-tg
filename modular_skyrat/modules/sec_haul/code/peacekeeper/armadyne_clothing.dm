@@ -12,7 +12,6 @@
 	desc = "A robust tactical uniform worn by Armadyne corporate."
 	icon_state = "armadyne_tac"
 	worn_icon_state = "armadyne_tac"
-	armor = list(MELEE = 15, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
 
 /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
 	name = "armadyne corporate beret"
@@ -22,7 +21,6 @@
 	greyscale_colors = "#3F3C40#5B2423#491716"
 	icon_state = "beret_badge_fancy_diagonal"
 	mutant_variants = NONE
-	armor = list(MELEE = 50, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 0, RAD = 0, FIRE = 90, ACID = 90, WOUND = 30)
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/armadyne
 	name = "armored armadyne trenchcoat"
@@ -30,7 +28,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "armadyne_trench"
-	armor = list(MELEE = 50, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 0, RAD = 0, FIRE = 90, ACID = 90, WOUND = 30)
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
 	name = "armadyne armor jacket"
@@ -40,10 +37,6 @@
 	icon_state = "armadyne_jacket"
 	worn_icon_state = "armadyne_jacket"
 	mutant_variants = NONE
-	armor = list(MELEE = 50, BULLET = 70, LASER = 60, ENERGY = 60, BOMB = 50, BIO = 0, RAD = 0, FIRE = 90, ACID = 90, WOUND = 30)
-	cold_protection = CHEST|GROIN|LEGS|ARMS
-	heat_protection = CHEST|GROIN|LEGS|ARMS
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
 	name = "armadyne armor vest"
@@ -106,7 +99,7 @@
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/peacekeeper/armadyne
 	r_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic, /obj/item/storage/box/gunset/pdh_corpo)
+	backpack_contents = list(/obj/item/melee/baton/telescopic, /obj/item/storage/box/gunset/pdh_corpo)
 	back = /obj/item/storage/backpack/satchel/leather
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command
@@ -128,7 +121,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/dmr
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
 	belt = /obj/item/storage/belt/security/webbing/peacekeeper/armadyne
-	backpack_contents = list(/obj/item/melee/baton/loaded, /obj/item/storage/box/gunset/pdh_corpo, /obj/item/storage/box/handcuffs, /obj/item/ammo_box/magazine/dmr=2)
+	backpack_contents = list(/obj/item/melee/baton/security/loaded , /obj/item/storage/box/gunset/pdh_corpo, /obj/item/storage/box/handcuffs, /obj/item/ammo_box/magazine/dmr=2)
 	back = /obj/item/storage/backpack/security
 	box = /obj/item/storage/box/survival/security
 	l_pocket = /obj/item/megaphone/command

@@ -1,7 +1,7 @@
 /datum/species/skrell
 	name = "Skrell"
 	id = SPECIES_SKRELL
-	default_color = "4B4B4B"
+	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -89,7 +89,7 @@
 	name = "skrell lungs"
 	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
 	icon_state = "lungs"
-	safe_toxins_max = 40
+	safe_plasma_max = 40
 	safe_co2_max = 40
 
 	cold_message = "You can't stand the freezing cold with every breath you take!"
@@ -126,17 +126,17 @@
 	//Choose from a range of green-blue colors
 	switch(random)
 		if(1)
-			main_color = "4F7"
+			main_color = "#44FF77"
 		if(2)
-			main_color = "2F8"
+			main_color = "#22FF88"
 		if(3)
-			main_color = "2FB"
+			main_color = "#22FFBB"
 		if(4)
-			main_color = "2FF"
+			main_color = "#22FFFF"
 		if(5)
-			main_color = "2BF"
+			main_color = "#22BBFF"
 		if(6)
-			main_color = "26F"
+			main_color = "#2266FF"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = main_color
 	returned["mcolor3"] = main_color

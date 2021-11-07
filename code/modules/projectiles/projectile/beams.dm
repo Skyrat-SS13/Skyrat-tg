@@ -2,7 +2,7 @@
 	name = "laser"
 	icon_state = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-	damage = 20
+	damage = 27 // SKYRAT EDIT: 20
 	damage_type = BURN
 	hitsound = 'sound/weapons/sear.ogg'
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
@@ -34,7 +34,7 @@
 	damage = 25
 	speed = 0.6 // higher power = faster, that's how light works right
 
-/obj/projectile/beam/laser/hellfire/Initialize()
+/obj/projectile/beam/laser/hellfire/Initialize(mapload)
 	. = ..()
 	transform *= 2
 
@@ -73,9 +73,8 @@
 /obj/projectile/beam/xray
 	name = "\improper X-ray beam"
 	icon_state = "xray"
-	flag = RAD
+	flag = TOX
 	damage = 15
-	irradiate = 300
 	range = 15
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
 
@@ -88,7 +87,7 @@
 /obj/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "omnilaser"
-	damage = 30
+	damage = 41 // SKYRAT EDIT: 30
 	damage_type = STAMINA
 	flag = ENERGY
 	hitsound = 'sound/weapons/tap.ogg'

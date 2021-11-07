@@ -25,6 +25,8 @@
 	var/measured = FALSE
 	///Whether the ite has been scanned, revealing the max and safe depth
 	var/scanned = FALSE
+	///Whether the ite has been advance scanned, revealing the true depth
+	var/adv_scanned = FALSE
 	///The scan state for when encountering the strange rock ore in mining.
 	var/scan_state = "rock_Strange"
 
@@ -36,6 +38,8 @@
 /obj/item/xenoarch/strange_rock/examine(mob/user)
 	. = ..()
 	. += span_notice("[scanned ? "This item has been scanned. Max Depth: [max_depth] cm. Safe Depth: [safe_depth] cm." : "This item has not been scanned."]")
+	if(adv_scanned)
+		. += span_notice("The item depth is [item_depth] cm.")
 	. += span_notice("[measured ? "This item has been measured. Dug Depth: [dug_depth]." : "This item has not been measured."]")
 	if(measured && dug_depth > item_depth)
 		. += span_warning("The rock is crumbling, even just brushing it will destroy it!")
@@ -44,11 +48,11 @@
 	var/choose_tier = rand(1,100)
 	switch(choose_tier)
 		if(1 to 70)
-			hidden_item = pickweight(GLOB.tier1_reward)
+			hidden_item = pick_weight(GLOB.tier1_reward)
 		if(71 to 97)
-			hidden_item = pickweight(GLOB.tier2_reward)
+			hidden_item = pick_weight(GLOB.tier2_reward)
 		if(98 to 100)
-			hidden_item = pickweight(GLOB.tier3_reward)
+			hidden_item = pick_weight(GLOB.tier3_reward)
 
 /obj/item/xenoarch/strange_rock/proc/create_depth()
 	max_depth = rand(21, 100)
@@ -64,10 +68,15 @@
 	return TRUE
 
 //returns true if the strange rock is scanned
-/obj/item/xenoarch/strange_rock/proc/get_scanned()
+/obj/item/xenoarch/strange_rock/proc/get_scanned(var/use_advanced = FALSE)
 	if(scanned)
+		if(!adv_scanned && use_advanced)
+			adv_scanned = TRUE
+			return TRUE
 		return FALSE
 	scanned = TRUE
+	if(use_advanced)
+		adv_scanned = TRUE
 	return TRUE
 
 /obj/item/xenoarch/strange_rock/proc/try_dig(var/dig_amount)
@@ -132,10 +141,23 @@
 			dug_depth += rand(1,5)
 			return
 		if(get_measured())
-			to_chat(user, span_notice("You successfully attach a holo measuring tape to the strange rock; the strange rock will now report its depth always!"))
+			to_chat(user, span_notice("You successfully attach a holo measuring tape to the strange rock; the strange rock will now report its dug depth always!"))
 			return
 		to_chat(user, span_warning("The strange rock was already marked with a holo measuring tape."))
 
+	if(istype(I, /obj/item/xenoarch/handheld_scanner))
+		var/obj/item/xenoarch/handheld_scanner/item_scanner = I
+		to_chat(user, span_notice("You begin to scan [src] using [item_scanner]."))
+		if(!do_after(user, item_scanner.scanning_speed, target = src))
+			to_chat(user, span_warning("You interrupt your scanning, damaging the rock in the process!"))
+			dug_depth += rand(1,5)
+			return
+		if(get_scanned(item_scanner.scan_advanced))
+			to_chat(user, span_notice("You successfully attach a holo scanning module to the strange rock; the strange rock will now report its depth information always!"))
+			if(adv_scanned)
+				to_chat(user, span_notice("The rock's item depth is being reported!"))
+			return
+		to_chat(user, span_warning("The strange rock was already marked with a holo scanning module."))
 
 //turfs
 /turf/closed/mineral/strange_rock

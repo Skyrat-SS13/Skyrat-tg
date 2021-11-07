@@ -28,8 +28,8 @@
 /datum/ambition_template/data_theft
 	name = "Data Theft"
 	narrative = "You have been selected out of Donk. Co's leagues of potential sleeper operatives for one particular task."
-	objectives = list("Steal the Blackbox.", "Escape on the emergency shuttle alive and out of custody.")
-	tips = list("You should add an objective on how you plan to go about this task.", "The Blackbox is located in Telecomms on most Stations.", "The Blackbox doesn't fit in most bags. You'd need a bag of holding to hide it!")
+	objectives = list("Steal the Blackbox.", "Steal the Project Goon hard drive from the Master R&D Server.", "Escape on the emergency shuttle alive and out of custody.")
+	tips = list("You should add an objective on how you plan to go about this task.", "The Blackbox is located in Telecomms on most Stations.", "The Blackbox doesn't fit in most bags. You'd need a bag of holding to hide it!", "The hard drive is located in the Research Server Room on most stations.", "Stealing the hard drive will permanantly cripple research speed!")
 	antag_whitelist = list("Traitor")
 
 //TODO: Changeling Ambition
@@ -82,3 +82,34 @@
 	job_whitelist = list("Scientist")
 
 //TODO: Everything Past Cook and Scientist Ambitions
+
+/datum/ambition_template/mkultra
+	name = "Mind Control Victim"
+	narrative = "My head.... <groans> It keeps hurting, can't think straight... Gotta get a grip. They've done something to me, I know it, it was supposed to just be another medical checkup but somethings wrong, I don't feel like I'm myself anymore."
+	objectives = list("Find out about the station's secret experiments, the documents hidden in the vault might have information on them.", "It happened after I went in for an appointment, perhaps interrogating the CMO will get me more information!", "They used some weird chamber on me, if I can get my hands on some of the disks they use to store technology perhaps I can expose them!", "I need to stay hidden though, they'll never believe me, or worse they'll sedate me and put me back in!")
+	tips = list("The workers, they probably don't know much about this so I should avoid harming them...", "The heads will likely be tough to crack, but I know they're hiding it from me, sometimes you have to use force to get what you need.", "There might be others like me, I should try to contact them.")
+	
+/datum/ambition_template/yarrharr
+	name = "Lone Pirate"
+	narrative = "I've made it in, my maties are watching and supplying me with gear. The vault, the pearl of the station, just waiting for someone to walk in and take it's treasure. But it's not just riches I'm after, the leaders of this ship have been tyrannical and I think it's time for some justice at sea."
+	objectives = list("Plan a raid on the vault and steal all the valuables inside, the golden belt especially will be a fine trophy.", "Capture a head of staff, maybe even the captain, and have the crew decide their fate, if they have been kind to their peope they will receive mercy.", "Escape alive and with your stolen goods.")
+	tips = list("While the valuables are for me the justice is not, I'm here to enforce the will of the crew and whatever they decide will be the outcome")
+	
+/datum/ambition_template/cyberterror
+	name = "Cyber Terrorist"
+	narrative = "<%Uplink connection established, welcome #Agent#%> We have detected multiple ways to weaken the station through their artificial units, you will be tasked with manipulating the cybernetic elements of the station to greatly hinder it's productivity and teach them a lesson about over-reliance on technology!"
+	objectives = list("Sabotage the camera feed of the station, make it hard for them to see.", "Hack APCs in strategic locations, this way we can disable their machinery and lights as we see fit.", "Acquire the authentication code for telecommunications and use it to monitor or delete messages, perhaps we can acquire more information or aid another agent this way.", "Our gear allows us to subvert the station borgs, they will be of great use to us.")
+	tips = list("A multitool can be used to mess with the focus of the camera, it also won't trigger it's alert system.", "With a bit of experimentation and some signallers, we can remotely turn off power in areas via their APCs.", "The ability to read all messages is quite powerful, shame that the Chief Engineer did not bother to hide the paper with the password in his office!")
+	
+/datum/ambition_template/stampman
+	name = "Stamp Collector"
+	narrative = "Stamps, such an underappreciated art! Did you ever stop to take a closer look at one before marking a piece of paper with it? If you did, you'd notice all the intricate details that go into them, the beautiful sculpted pieces soaked in the ink... All left to gather dust in the offices of those moronic heads. I think it's time for someone with more appreciation for the art to take care of them!"
+	objectives = list("Break into the office of every head of staff and steal their stamp, they will be fine additions to my collection!", "Leave signs and messages so that they may know the stamp man is coming!", "Try to keep a low profile and avoid open combat, cleanup costs are immense.")
+	tips = list("Getting in is the easy part, an airlock authenticator, perhaps some jaws of lie should do the trick!", "Sure, we could go about it silently but where's the fun in that? A bit of gloating always makes things more interesting.")
+
+/datum/ambition_template/syndicate_fight_club
+	name = "Syndicate Fight Club"
+	narrative = "Today you're feeling quite pent up and extra hyped. What's an awesome idea to do then? A fight club! It can let you blow off some steam and have some fun!"
+	objectives = list("This is a really easy thing to do. Legally or illegally host your own fight club for the station crew and try to get a few members to join it.", "Any fight club needs a way to show who's their best fighter! So why don't you go and get the championship belt and brawl with your club members to see who is worthy of owning the belt..", "Prevent ALL acts of shutting down your fight club. The fight club will not end until it's abandoned you unless you have retired from your position and let one of your club members become the new leader.")
+	tips = list("Not all fight clubs go by the same rules, you can try to get a form of martial arts or CQC in order to get the upperhand against your club members and or the station crew.", "A few ways of obtaining the championship belt is by either, A.) Having a brawl with the captain or a head of staff for it. B.) Breaking into the vault and taking it yourself. C.) Convincing the captain or a head of staff to give it to you.", "Now remember, in a fight club, there's only one rule: Don't talk about the fight club. Have an uprise against security for trying to stop your fight club, convince the captain to allow your fight club to exist, security and or medical will likely try to shut it down so stay aware of what security and medical are doing.")
+

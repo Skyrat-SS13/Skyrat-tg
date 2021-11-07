@@ -86,15 +86,26 @@
 	fail_prob = min(max(0, modded_time - (time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)),99)//if modded_time > time * modifier, then fail_prob = modded_time - time*modifier. starts at 0, caps at 99
 	modded_time = min(modded_time, time * SURGERY_SLOWDOWN_CAP_MULTIPLIER)//also if that, then cap modded_time at time*modifier
 
-	// Skyrat Edit Addition - reward for doing surgery in surgery
-	if(is_type_in_list(get_area(target), list(/area/medical/surgery, /area/science/robotics)) && (TRAIT_FASTMED in user.status_traits) || (TRAIT_QUICK_CARRY in user.status_traits))
-		modded_time *= SURGERY_SPEEDUP_AREA
-		to_chat(user, "<span class='notice'>You breathe in relief as all the tools and equipment you need are in easy reach!</span>")
-	// Skyrat Edit End
-	if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
-		modded_time = time
-
 	var/was_sleeping = (target.stat != DEAD && target.IsSleeping())
+
+	// Skyrat Edit Addition - reward for doing surgery on calm patients, and for using surgery rooms(ie. surgerying alone)
+	if(was_sleeping || HAS_TRAIT(target, TRAIT_NUMBED) || target.stat == DEAD)
+		modded_time *= SURGERY_SPEEDUP_AREA
+		to_chat(user, span_notice("You are able to work faster due to the patient's calm attitude!"))
+	var/quiet_enviromnent = TRUE
+	for(var/mob/living/carbon/human/loud_people in view(3, target))
+		if(loud_people != user && loud_people != target)
+			quiet_enviromnent = FALSE
+			break
+	if(quiet_enviromnent)
+		modded_time *= SURGERY_SPEEDUP_AREA
+		to_chat(user, span_notice("You are able to work faster due to the quiet environment!"))
+	// Skyrat Edit End
+	// Skyrat Edit: Cyborgs are no longer immune to surgery speedups.
+	//if(iscyborg(user))//any immunities to surgery slowdown should go in this check.
+		//modded_time = time
+	// Skyrat Edit End
+
 
 	if(do_after(user, modded_time, target = target, interaction_key = user.has_status_effect(STATUS_EFFECT_HIPPOCRATIC_OATH) ? target : DOAFTER_SOURCE_SURGERY)) //If we have the hippocratic oath, we can perform one surgery on each target, otherwise we can only do one surgery in total.
 
@@ -111,7 +122,7 @@
 		if(advance && !repeatable)
 			surgery.status++
 			if(surgery.status > surgery.steps.len)
-				surgery.complete()
+				surgery.complete(user)
 
 	if(target.stat == DEAD && was_sleeping && user.client)
 		user.client.give_award(/datum/award/achievement/misc/sandman, user)
@@ -181,3 +192,19 @@
 	if(!target_detailed)
 		var/you_feel = pick("a brief pain", "your body tense up", "an unnerving sensation")
 		target.show_message(vague_message, MSG_VISUAL, span_notice("You feel [you_feel] as you are operated on."))
+/**
+ * Sends a pain message to the target, including a chance of screaming.
+ *
+ * Arguments:
+ * * target - Who the message will be sent to
+ * * pain_message - The message to be displayed
+ * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
+ */
+//SKYRAT EDIT START: Fixes painkillers not actually stopping pain.
+/datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
+	if(HAS_TRAIT(target, TRAIT_NUMBED) || target.stat >= UNCONSCIOUS)
+		return
+	to_chat(target, span_userdanger(pain_message))
+	if(prob(30) && !mechanical_surgery)
+		target.emote("scream")
+//SKYRAT EDIT END

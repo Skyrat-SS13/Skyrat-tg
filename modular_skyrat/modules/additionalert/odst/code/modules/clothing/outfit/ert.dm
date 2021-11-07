@@ -7,12 +7,12 @@
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/combat
-	suit_store = /obj/item/gun/ballistic/automatic/pitbull/odst
+	suit_store = /obj/item/gun/energy/pitbull
 	belt = /obj/item/storage/belt/military/odst
 	back = /obj/item/storage/backpack/ert/odst
 	backpack_contents = list(
 		/obj/item/storage/box/survival/security,\
-		/obj/item/melee/baton/loaded,\
+		/obj/item/melee/baton/security/loaded ,\
 		)
 	l_pocket = /obj/item/gun/energy/e_gun/mini
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/double
@@ -38,10 +38,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/storage/belt/military/odst/PopulateContents()
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
-	new	/obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
-	new /obj/item/ammo_box/magazine/multi_sprite/pitbull (src)
 	new /obj/item/crowbar/red  (src)
 	new /obj/item/grenade/frag (src)
 	new /obj/item/grenade/frag (src)

@@ -115,7 +115,7 @@
 	if(isturf(target_loc) || (ismob(target_loc) && isturf(target_loc.loc)))
 		return viewers(range, get_turf(target_loc))
 	else
-		return typecache_filter_list(target_loc.GetAllContents(), GLOB.typecache_living)
+		return typecache_filter_list(target_loc.get_all_contents(), GLOB.typecache_living)
 
 /obj/item/assembly/flash/proc/try_use_flash(mob/user = null)
 	if(burnt_out || (world.time < last_trigger + cooldown))
@@ -181,9 +181,8 @@
 				terrible_conversion_proc(M, user)
 				visible_message(span_danger("[user] blinds [M] with the flash!"),span_userdanger("[user] blinds you with the flash!"))
 			//easy way to make sure that you can only long stun someone who is facing in your direction
-			//M.adjustStaminaLoss(rand(80,120)*(1-(deviation*0.5)))
-			//M.Paralyze(rand(25,50)*(1-(deviation*0.5)))
-			M.StaminaKnockdown(rand(30,40) * (1-(deviation*0.5))) //SKYRAT EDIT CHANGE - ORIGINAL ABOVE
+			M.adjustStaminaLoss(rand(80,120)*(1-(deviation*0.5)))
+			M.Paralyze(rand(25,50)*(1-(deviation*0.5)))
 		else if(user)
 			visible_message(span_warning("[user] fails to blind [M] with the flash!"),span_danger("[user] fails to blind you with the flash!"))
 		else
@@ -208,7 +207,7 @@
 	if(victim.flags_1 & IS_SPINNING_1)
 		return DEVIATION_NONE
 
-	if(HAS_TRAIT(victim, TRAIT_FLASH_SENSITIVE)) //Basically if you have Flypeople eyes
+	if(HAS_TRAIT(victim, TRAIT_FLASH_SENSITIVE)) //If your eyes are sensitive and can be flashed from any direction.
 		return DEVIATION_NONE
 
 	// Are they on the same tile? We'll return partial deviation. This may be someone flashing while lying down
@@ -400,7 +399,7 @@
 				to_chat(M, span_hypnophrase("The light makes you feel oddly relaxed..."))
 				M.add_confusion(min(M.get_confusion() + 10, 20))
 				M.dizziness += min(M.dizziness + 10, 20)
-				M.drowsyness += min(M.drowsyness + 10, 20)
+				M.adjust_drowsyness(min(M.drowsyness+10, 20))
 				M.apply_status_effect(STATUS_EFFECT_PACIFY, 100)
 			else
 				M.apply_status_effect(/datum/status_effect/trance, 200, TRUE)
@@ -414,7 +413,7 @@
 		to_chat(M, span_notice("Such a pretty light..."))
 		M.add_confusion(min(M.get_confusion() + 4, 20))
 		M.dizziness += min(M.dizziness + 4, 20)
-		M.drowsyness += min(M.drowsyness + 4, 20)
+		M.adjust_drowsyness(min(M.drowsyness+4, 20))
 		M.apply_status_effect(STATUS_EFFECT_PACIFY, 40)
 
 #undef CONFUSION_STACK_MAX_MULTIPLIER

@@ -37,7 +37,6 @@
 	var/aiRestorePowerRoutine = POWER_RESTORATION_OFF
 	var/requires_power = POWER_REQ_ALL
 	var/can_be_carded = TRUE
-	var/viewalerts = 0
 	var/icon/holo_icon //Default is assigned when AI is created.
 	var/obj/vehicle/sealed/mecha/controlled_mech //For controlled_mech a mech, to determine whether to relaymove or use the AI eye.
 	var/radio_enabled = TRUE //Determins if a carded AI can speak with its built in radio or not.
@@ -100,10 +99,11 @@
 	var/atom/cam_prev
 
 	var/datum/robot_control/robot_control
-	///Alarm listener datum, handes caring about alarm events and such
-	var/datum/alarm_listener/listener
+	/// Station alert datum for showing alerts UI
+	var/datum/station_alert/alert_control
 	///remember AI's last location
 	var/atom/lastloc
+	interaction_range = null
 
 
 
@@ -125,7 +125,6 @@
 	if(target_ai.mind)
 		target_ai.mind.transfer_to(src)
 		if(mind.special_role)
-			mind.store_memory("As an AI, you must obey your silicon laws above all else. Your objectives will consider you to be dead.")
 			to_chat(src, span_userdanger("You have been installed as an AI! "))
 			to_chat(src, span_danger("You must obey your silicon laws above all else. Your objectives will consider you to be dead."))
 
@@ -142,7 +141,7 @@
 
 	create_eye()
 	if(client)
-		INVOKE_ASYNC(src, .proc/apply_pref_name,"ai",client)
+		INVOKE_ASYNC(src, .proc/apply_pref_name, /datum/preference/name/ai, client)
 
 	INVOKE_ASYNC(src, .proc/set_core_display_icon)
 
@@ -179,9 +178,9 @@
 	ADD_TRAIT(src, TRAIT_PULL_BLOCKED, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_HANDS_BLOCKED, ROUNDSTART_TRAIT)
 
-	listener = new(list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER, ALARM_CAMERA, ALARM_BURGLAR, ALARM_MOTION), list(z))
-	RegisterSignal(listener, COMSIG_ALARM_TRIGGERED, .proc/alarm_triggered)
-	RegisterSignal(listener, COMSIG_ALARM_CLEARED, .proc/alarm_cleared)
+	alert_control = new(src, list(ALARM_ATMOS, ALARM_FIRE, ALARM_POWER, ALARM_CAMERA, ALARM_BURGLAR, ALARM_MOTION), list(z), camera_view = TRUE)
+	RegisterSignal(alert_control.listener, COMSIG_ALARM_TRIGGERED, .proc/alarm_triggered)
+	RegisterSignal(alert_control.listener, COMSIG_ALARM_CLEARED, .proc/alarm_cleared)
 
 /mob/living/silicon/ai/key_down(_key, client/user)
 	if(findtext(_key, "numpad")) //if it's a numpad number, we can convert it to just the number
@@ -215,7 +214,7 @@
 	QDEL_NULL(doomsday_device)
 	QDEL_NULL(robot_control)
 	QDEL_NULL(aiMulti)
-	QDEL_NULL(listener)
+	QDEL_NULL(alert_control)
 	malfhack = null
 	current = null
 	Bot = null
@@ -239,10 +238,10 @@
 /mob/living/silicon/ai/proc/set_core_display_icon(input, client/C)
 	if(client && !C)
 		C = client
-	if(!input && !C?.prefs?.preferred_ai_core_display)
+	if(!input && !C?.prefs?.read_preference(/datum/preference/choiced/ai_core_display))
 		icon_state = initial(icon_state)
 	else
-		var/preferred_icon = input ? input : C.prefs.preferred_ai_core_display
+		var/preferred_icon = input ? input : C.prefs.read_preference(/datum/preference/choiced/ai_core_display)
 		icon_state = resolve_ai_icon(preferred_icon)
 
 /mob/living/silicon/ai/verb/pick_icon()
@@ -294,40 +293,6 @@
 		. += "[connected_robot.name] | S.Integrity: [connected_robot.health]% | Cell: [connected_robot.cell ? "[connected_robot.cell.charge]/[connected_robot.cell.maxcharge]" : "Empty"] | \
 		Model: [connected_robot.designation] | Loc: [get_area_name(connected_robot, TRUE)] | Status: [robot_status]"
 	. += "AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]" //Count of total AI shells
-
-/mob/living/silicon/ai/proc/ai_alerts()
-	var/dat = "<HEAD><TITLE>Current Station Alerts</TITLE><META HTTP-EQUIV='Refresh' CONTENT='10'></HEAD><BODY>\n"
-	dat += "<A HREF='?src=[REF(src)];mach_close=aialerts'>Close</A><BR><BR>"
-	var/list/alarms = listener.alarms
-	for (var/alarm_type in alarms)
-		dat += "<B>[alarm_type]</B><BR>\n"
-		var/list/alerts = alarms[alarm_type]
-		if (length(alerts))
-			for (var/alarm in alerts)
-				var/list/alm = alerts[alarm]
-				var/area/A = alm[1]
-				var/C = alm[2]
-				var/list/sources = alm[3]
-				dat += "<NOBR>"
-				if (C && istype(C, /list))
-					var/dat2 = ""
-					for (var/obj/machinery/camera/I in C)
-						dat2 += "[(dat2=="") ? "" : " | "]<A HREF=?src=[REF(src)];switchcamera=[REF(I)]>[I.c_tag]</A>"
-					dat += "-- [A.name] ([(dat2!="") ? dat2 : "No Camera"])"
-				else if (C && istype(C, /obj/machinery/camera))
-					var/obj/machinery/camera/Ctmp = C
-					dat += "-- [A.name] (<A HREF=?src=[REF(src)];switchcamera=[REF(C)]>[Ctmp.c_tag]</A>)"
-				else
-					dat += "-- [A.name] (No Camera)"
-				if (sources.len > 1)
-					dat += "- [sources.len] sources"
-				dat += "</NOBR><BR>\n"
-		else
-			dat += "-- All Systems Nominal<BR>\n"
-		dat += "<BR>\n"
-
-	viewalerts = 1
-	src << browse(dat, "window=aialerts&can_close=0")
 
 /mob/living/silicon/ai/proc/ai_call_shuttle()
 	if(control_disabled)
@@ -420,15 +385,13 @@
 		return
 
 	if (href_list["mach_close"])
-		if (href_list["mach_close"] == "aialerts")
-			viewalerts = 0
 		var/t1 = "window=[href_list["mach_close"]]"
 		unset_machine()
 		src << browse(null, t1)
 	if (href_list["switchcamera"])
 		switchCamera(locate(href_list["switchcamera"]) in GLOB.cameranet.cameras)
 	if (href_list["showalerts"])
-		ai_alerts()
+		alert_control.ui_interact(src)
 #ifdef AI_VOX
 	if(href_list["say_word"])
 		play_vox_word(href_list["say_word"], null, src, vox_type) //SKYRAT EDIT CHANGE
@@ -565,15 +528,11 @@
 			queueAlarm("--- [alarm_type] alarm detected in [home_name]! ([dat2])", alarm_type)
 	else
 		queueAlarm("--- [alarm_type] alarm detected in [home_name]! (No Camera)", alarm_type)
-	if (viewalerts)
-		ai_alerts()
 	return 1
 
 /mob/living/silicon/ai/proc/alarm_cleared(datum/source, alarm_type, area/source_area)
 	SIGNAL_HANDLER
 	queueAlarm("--- [alarm_type] alarm in [source_area.name] has been cleared.", alarm_type, 0)
-	if(viewalerts)
-		ai_alerts()
 
 //Replaces /mob/living/silicon/ai/verb/change_network() in ai.dm & camera.dm
 //Adds in /mob/living/silicon/ai/proc/ai_network_change() instead
@@ -597,12 +556,12 @@
 		if(!C.can_use())
 			continue
 
-		tempnetwork.Remove("rd", "toxins", "prison")
+		tempnetwork.Remove("rd", "ordnance", "prison")
 		if(tempnetwork.len)
 			for(var/i in C.network)
 				cameralist[i] = i
 	var/old_network = network
-	network = input(U, "Which network would you like to view?") as null|anything in sortList(cameralist)
+	network = input(U, "Which network would you like to view?") as null|anything in sort_list(cameralist)
 
 	if(!U.eyeobj)
 		U.view_core()
@@ -629,21 +588,35 @@
 	if(incapacitated())
 		return
 	var/input
-	switch(tgui_alert(usr,"Would you like to select a hologram based on a crew member, an animal, or switch to a unique avatar?",,list("Crew Member","Unique","Animal")))
-		if("Crew Member")
-			var/list/personnel_list = list()
+	switch(tgui_alert(usr,"Would you like to select a hologram based on a custom character, an animal, or switch to a unique avatar?",,list("Custom Character","Unique","Animal")))
+		if("Custom Character")
+			switch(tgui_alert(usr,"Would you like to base it off of your current character loadout, or a member on station?",,list("My Character","Station Member")))
+				if("Station Member")
+					var/list/personnel_list = list()
 
-			for(var/datum/data/record/t in GLOB.data_core.locked)//Look in data core locked.
-				personnel_list["[t.fields["name"]]: [t.fields["rank"]]"] = t.fields["image"]//Pull names, rank, and image.
+					for(var/datum/data/record/record_datum in GLOB.data_core.locked)//Look in data core locked.
+						personnel_list["[record_datum.fields["name"]]: [record_datum.fields["rank"]]"] = record_datum.fields["image"]//Pull names, rank, and image.
 
-			if(personnel_list.len)
-				input = input("Select a crew member:") as null|anything in sortList(personnel_list)
-				var/icon/character_icon = personnel_list[input]
-				if(character_icon)
-					qdel(holo_icon)//Clear old icon so we're not storing it in memory.
-					holo_icon = getHologramIcon(icon(character_icon))
-			else
-				tgui_alert(usr,"No suitable records found. Aborting.")
+					if(personnel_list.len)
+						input = input("Select a crew member:") as null|anything in sort_list(personnel_list)
+						var/icon/character_icon = personnel_list[input]
+						if(character_icon)
+							qdel(holo_icon)//Clear old icon so we're not storing it in memory.
+							holo_icon = getHologramIcon(icon(character_icon))
+					else
+						tgui_alert(usr,"No suitable records found. Aborting.")
+				if("My Character")
+					switch(tgui_alert(usr,"WARNING: Your AI hologram will take the appearance of your currently selected character ([usr.client.prefs?.read_preference(/datum/preference/name/real_name)]). Are you sure you want to proceed?",,list("Yes","No")))
+						if("Yes")
+							var/mob/living/carbon/human/dummy/ai_dummy = new
+							var/mutable_appearance/appearance = usr.client.prefs.render_new_preview_appearance(ai_dummy)
+							var/icon/character_icon = getHologramIcon(getFlatIcon(appearance))
+							if(character_icon)
+								qdel(holo_icon)
+								qdel(ai_dummy)
+								holo_icon = character_icon
+						if("No")
+							return FALSE
 
 		if("Animal")
 			var/list/icon_list = list(
@@ -662,7 +635,7 @@
 			"spider" = 'icons/mob/animal.dmi'
 			)
 
-			input = input("Please select a hologram:") as null|anything in sortList(icon_list)
+			input = input("Please select a hologram:") as null|anything in sort_list(icon_list)
 			if(input)
 				qdel(holo_icon)
 				switch(input)
@@ -683,7 +656,7 @@
 				"clock" = 'icons/mob/ai.dmi'
 				)
 
-			input = input("Please select a hologram:") as null|anything in sortList(icon_list)
+			input = input("Please select a hologram:") as null|anything in sort_list(icon_list)
 			if(input)
 				qdel(holo_icon)
 				switch(input)
@@ -786,6 +759,7 @@
 		new_core.circuit.battery = battery
 		ai_restore_power()//So the AI initially has power.
 		control_disabled = TRUE //Can't control things remotely if you're stuck in a card!
+		interaction_range = 0
 		radio_enabled = FALSE //No talking on the built-in radio for you either!
 		forceMove(card)
 		card.AI = src
@@ -828,7 +802,7 @@
 
 	var/rendered = "<i><span class='game say'>[start][span_name("[hrefpart][namepart] ([jobpart])</a> ")]<span class='message'>[treated_message]</span></span></i>"
 
-	if (client?.prefs.chat_on_map && (client.prefs.see_chat_non_mob || ismob(speaker)))
+	if (client?.prefs.read_preference(/datum/preference/toggle/enable_runechat) && (client.prefs.read_preference(/datum/preference/toggle/enable_runechat_non_mobs) || ismob(speaker)))
 		create_chat_message(speaker, message_language, raw_message, spans)
 	show_message(rendered, 2)
 
@@ -952,7 +926,7 @@
 		to_chat(src, "No usable AI shell beacons detected.")
 
 	if(!target || !(target in possible)) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
-		target = input(src, "Which body to control?") as null|anything in sortNames(possible)
+		target = input(src, "Which body to control?") as null|anything in sort_names(possible)
 
 	if (!target || target.stat == DEAD || target.deployed || !(!target.connected_ai ||(target.connected_ai == src)))
 		return

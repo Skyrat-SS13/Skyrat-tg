@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
 
-/obj/machinery/computer/cryopod/Initialize()
+/obj/machinery/computer/cryopod/Initialize(mapload)
 	. = ..()
 	GLOB.cryopod_computers += src
 
@@ -141,7 +141,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/datum/weakref/control_computer_weakref
 	COOLDOWN_DECLARE(last_no_computer_message)
 
-/obj/machinery/cryopod/Initialize()
+/obj/machinery/cryopod/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
@@ -315,14 +315,15 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	for(var/obj/item/item_content as anything in mob_occupant)
 		if(!istype(item_content) || HAS_TRAIT(item_content, TRAIT_NODROP))
 			continue
-
+		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
+			continue
 // Skyrat Edit Addition - Cryostorage stores items.
 // Original is just the else statement.
 		if(control_computer)
 			if(istype(item_content, /obj/item/pda))
 				var/obj/item/pda/pda = item_content
 				pda.toff = TRUE
-			item_content.dropped()
+			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content
 		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)

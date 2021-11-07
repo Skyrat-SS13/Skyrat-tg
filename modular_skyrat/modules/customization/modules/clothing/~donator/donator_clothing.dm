@@ -9,7 +9,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/polychromic/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("666", "CBA", "00F"))
+	AddElement(/datum/element/polychromic, list("#666666", "#CCBBAA", "#0000FF"))
 
 //We need this to color the hood that comes up
 /obj/item/clothing/suit/hooded/wintercoat/polychromic/ToggleHood()
@@ -30,7 +30,7 @@
 	icon_state = "polycloak"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/cloaks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/neck.dmi'
-	var/list/poly_colors = list("FFF", "FFF", "888")
+	var/list/poly_colors = list("#FFFFFF", "#FFFFFF", "#888888")
 
 /obj/item/clothing/neck/cloak/polychromic/ComponentInitialize()
 	. = ..()
@@ -87,7 +87,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyskirt"
 	mutant_variants = NONE
-	var/list/poly_colors = list("FFF", "F88", "888")
+	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
 /obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
 	. = ..()
@@ -98,7 +98,7 @@
 	desc = "A magnificent pleated skirt complements the woolen polychromatic sweater."
 	icon_state = "polypleat"
 	body_parts_covered = CHEST|GROIN|ARMS
-	poly_colors = list("8CF", "888", "F33")
+	poly_colors = list("#88CCFF", "#888888", "#FF3333")
 
 /obj/item/clothing/under/misc/poly_shirt
 	name = "polychromic button-up shirt"
@@ -110,7 +110,7 @@
 
 /obj/item/clothing/under/misc/poly_shirt/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "333", "333"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#333333", "#333333"))
 
 /obj/item/clothing/under/misc/polyshorts
 	name = "polychromic shorts"
@@ -124,7 +124,7 @@
 
 /obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("333", "888", "888"))
+	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
 
 /obj/item/clothing/under/misc/polyjumpsuit
 	name = "polychromic tri-tone jumpsuit"
@@ -137,7 +137,7 @@
 
 /obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF", "888", "333"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF", "#888888", "#333333"))
 
 /obj/item/clothing/under/misc/poly_bottomless
 	name = "polychromic bottomless shirt"
@@ -151,7 +151,7 @@
 
 /obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("888", "F33", "FFF"))
+	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
 
 /obj/item/clothing/under/misc/polysweater
 	name = "polychromic sweater"
@@ -166,7 +166,7 @@
 
 /obj/item/clothing/under/misc/polysweater/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
@@ -177,7 +177,7 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 	mutant_variants = NONE
-	var/list/poly_colors = list("888", "FFF", "8CF")
+	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
 /obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
 	. = ..()
@@ -187,7 +187,7 @@
 	name = "polychromic feminine tank top"
 	desc = "Great for showing off your chest in style. Not recommended for males."
 	icon_state = "polyfemtankpantsu"
-	poly_colors = list("888", "F33", "FFF")
+	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
 
 /obj/item/clothing/under/shorts/polychromic
 	name = "polychromic athletic shorts"
@@ -196,7 +196,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyshortpants"
 	mutant_variants = NONE
-	var/list/poly_colors = list("FFF", "F88", "FFF")
+	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
 
 /obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
 	. = ..()
@@ -208,7 +208,7 @@
 	icon_state = "polypantsu"
 	body_parts_covered = GROIN
 	mutant_variants = NONE
-	poly_colors = list("FFF", "8CF", "FFF")
+	poly_colors = list("#FFFFFF", "#88CCFF", "#FFFFFF")
 
 /**************CKEY EXCLUSIVES*************/
 
@@ -351,7 +351,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
 
 //Donation reward for Thedragmeme
@@ -454,7 +454,7 @@
 			visible_message(span_warning("[crusher] steps on the [src], crushing it with ease."))
 			take_damage(200, sound_effect = FALSE)
 
-/obj/item/clothing/mask/kindle/obj_destruction(damage_flag)
+/obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
 	. = ..()
 	name = "broken mask of Kindle"
 	desc = "The mask which belongs to NanoTrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
@@ -672,7 +672,7 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
 	mutant_variants = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0)
 
 //Donation reward for inferno707
 /obj/item/clothing/mask/hheart
@@ -836,25 +836,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/feet.dmi'
 	worn_icon_state = "mikuleggings"
 
-
-// Donation reward for CandleJax
-/obj/item/clothing/suit/armor/vest/peacekeeper/jax
-	name = "HepUnit Standard Underweave"
-	desc = "A durable, plated uniform that provides mobility as well as security to the wearer. Most often used by Hephaestus Industries Security Constructs due to their effective use and recyclability."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "heparmor"
-	worn_icon_state = "heparmor"
-
-// Donation reward for CandleJax
-/obj/item/storage/belt/security/webbing/peacekeeper/jax
-	name = "HepUnit Standard Webbing"
-	desc = "A sturdy, segmented belt which fits over the included uniform. It conceals a number of pockets on the interior, making it ideal for storage across the operating unit's body."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "hepbelt"
-	worn_icon_state = "hepbelt"
-
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/space/plasmaman/candlejax
 	name = "Emission's Helmet"
@@ -863,7 +844,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 	inhand_icon_state = "emissionhelm"
-	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, RAD = 0, FIRE = 100, ACID = 75, WOUND = 10)
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 100, ACID = 75, WOUND = 10)
 
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/security/candlejax
@@ -873,6 +854,33 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
 	inhand_icon_state = "emissionsuit"
+
+// Donation reward for CandleJax
+/obj/item/clothing/glasses/zentai
+	var/list/spans = list()
+	actions_types = list(/datum/action/item_action/demonic_whisper)
+
+/obj/item/clothing/glasses/zentai
+	name = "Demonic Sunglasses"
+	desc = "A devilishly fashionable set of shades. An eerie red glint is present."
+	spans = list("velvet")
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "zentai"
+	inhand_icon_state = "zentai"
+	tint = 1
+	glass_colour_type = /datum/client_colour/glass_colour/red
+
+/datum/action/item_action/demonic_whisper
+	name = "Demonic Whisper"
+
+/obj/item/clothing/glasses/zentai/ui_action_click(mob/living/user, action)
+	if(!isliving(user) || !can_use(user))
+		return
+	var/message = input(user, "Speak with a demonic whisper", "Whisper")
+	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
+		return
+	user.whisper(message, spans = spans)
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/helmet/sec/peacekeeper/jax
@@ -962,3 +970,155 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "blueshield"
+
+// Donation reward for DeltaTri
+/obj/item/clothing/suit/jacket/delta
+	name = "grey winter hoodie"
+	desc = "A plain old grey hoodie. It has some puffing on the inside, and a animal fur trim around half of the hood."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "greycoat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+//Donation reward for GoldenAlpharex
+/obj/item/clothing/glasses/welding/goldengoggles
+	name = "steampunk goggles"
+	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head... They have a rather fancy brass trim around the lenses."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "goldengoggles"
+	slot_flags = ITEM_SLOT_EYES | ITEM_SLOT_HEAD // Making it fit in both first just so it can properly fit on the head slot in the loadout
+	flash_protect = FLASH_PROTECTION_NONE
+	flags_cover = GLASSESCOVERSEYES
+	custom_materials = null // Don't want that to go in the autolathe
+	visor_vars_to_toggle = 0
+	tint = 0
+
+	/// Was welding protection added yet?
+	var/welding_upgraded = FALSE
+	/// Was welding protection toggled on, if welding_upgraded is TRUE?
+	var/welding_protection = FALSE
+	/// The sound played when toggling the shutters.
+	var/shutters_sound = 'sound/effects/clock_tick.ogg'
+
+/obj/item/clothing/glasses/welding/goldengoggles/Initialize()
+	. = ..()
+	visor_toggling()
+
+/obj/item/clothing/glasses/welding/goldengoggles/examine(mob/user)
+	. = ..()
+	if(welding_upgraded)
+		. += "It has been upgraded with welding shutters, which are currently [welding_protection ? "closed" : "opened"]."
+
+/obj/item/clothing/glasses/welding/goldengoggles/item_action_slot_check(slot, mob/user)
+	. = ..()
+	if(. && slot == ITEM_SLOT_HEAD)
+		return FALSE
+
+/obj/item/clothing/glasses/welding/goldengoggles/attack_self(mob/user)
+	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+		to_chat(user, span_warning("You can't seem to slip those on your eyes from the top of your head!"))
+		return
+	. = ..()
+
+/obj/item/clothing/glasses/welding/goldengoggles/visor_toggling()
+	. = ..()
+	slot_flags = up ? ITEM_SLOT_EYES | ITEM_SLOT_HEAD : ITEM_SLOT_EYES
+	toggle_vision_effects()
+
+/obj/item/clothing/glasses/welding/goldengoggles/weldingvisortoggle(mob/user)
+	. = ..()
+	handle_sight_updating(user)
+
+/obj/item/clothing/glasses/welding/goldengoggles/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(!istype(attacking_item, /obj/item/clothing/glasses/welding))
+		..()
+	if(welding_upgraded)
+		to_chat(user, span_warning("\The [src] was already upgraded to have welding protection!"))
+		return
+	qdel(attacking_item)
+	welding_upgraded = TRUE
+	to_chat(user, span_notice("You upgrade \the [src] with some welding shutters, offering you the ability to toggle welding protection!"))
+	actions += new /datum/action/item_action/toggle_steampunk_goggles_welding_protection(src)
+
+/// Proc that handles the whole toggling the welding protection on and off, with user feedback.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_shutters(mob/user)
+	if(!can_use(user) || !user)
+		return FALSE
+	if(!toggle_welding_protection(user))
+		return FALSE
+
+	to_chat(user, span_notice("You slide \the [src]'s welding shutters slider, [welding_protection ? "closing" : "opening"] them."))
+	playsound(user, shutters_sound, 100, TRUE)
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		carbon_user.head_update(src, forced = 1)
+	update_action_buttons()
+	return TRUE
+
+/// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_welding_protection(mob/user)
+	if(!welding_upgraded)
+		return FALSE
+	welding_protection = !welding_protection
+
+	visor_vars_to_toggle = welding_protection ? VISOR_FLASHPROTECT | VISOR_TINT : initial(visor_vars_to_toggle)
+	toggle_vision_effects()
+	// We also need to make sure the user has their vision modified. We already checked that there was a user, so this is safe.
+	handle_sight_updating(user)
+	return TRUE
+
+/// Proc handling changing the flash protection and the tint of the goggles.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_vision_effects()
+	if(welding_protection)
+		if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
+			flash_protect = up ? FLASH_PROTECTION_NONE : FLASH_PROTECTION_WELDER
+	else
+		flash_protect = FLASH_PROTECTION_NONE
+	tint = flash_protect
+
+/// Proc handling to update the sight of the user, while forcing an update_tint() call every time, due to how the welding protection toggle works.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/handle_sight_updating(mob/user)
+	if(user && (user.get_item_by_slot(ITEM_SLOT_HEAD) == src || user.get_item_by_slot(ITEM_SLOT_EYES) == src))
+		user.update_sight()
+		if(iscarbon(user))
+			var/mob/living/carbon/carbon_user = user
+			carbon_user.update_tint()
+			carbon_user.head_update(src, forced = TRUE)
+
+/obj/item/clothing/glasses/welding/goldengoggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
+	if(!is_welding_toggle)
+		return ..()
+	else
+		toggle_shutters(user)
+
+/// Action button for toggling the welding shutters (aka, welding protection) on or off.
+/datum/action/item_action/toggle_steampunk_goggles_welding_protection
+	name = "Toggle Welding Shutters"
+
+/// We need to do a bit of code duplication here to ensure that we do the right kind of ui_action_click(), while keeping it modular.
+/datum/action/item_action/toggle_steampunk_goggles_welding_protection/Trigger()
+	if(!IsAvailable())
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
+		return FALSE
+	if(!target || !istype(target, /obj/item/clothing/glasses/welding/goldengoggles))
+		return FALSE
+
+	var/obj/item/clothing/glasses/welding/goldengoggles/goggles = target
+	goggles.ui_action_click(owner, src, is_welding_toggle = TRUE)
+	return TRUE
+
+// End of the code for GoldenAlpharex's donator item :^)
+
+//Donation reward for MyGuy49
+/obj/item/clothing/suit/cloak/ashencloak
+	name = "Ashen Wastewalker Cloak"
+	desc = "A cloak of advanced make. Clearly beyond what ashwalkers are capable of, it was probably pulled from a downed vessel or something. It seems to have been reinforced with goliath hide and watcher sinew, and the hood has been torn off."
+	icon_state = "ashencloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	body_parts_covered = CHEST|LEGS|ARMS
+	mutant_variants = NONE

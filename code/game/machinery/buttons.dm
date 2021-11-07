@@ -10,7 +10,7 @@
 	var/device_type = null
 	var/id = null
 	var/initialized_button = 0
-	armor = list(MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 10, BIO = 100, RAD = 100, FIRE = 90, ACID = 70)
+	armor = list(MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 10, BIO = 100, FIRE = 90, ACID = 70)
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
@@ -219,10 +219,10 @@
 			device = C
 	..()
 
-/obj/machinery/button/door/incinerator_vent_toxmix
+/obj/machinery/button/door/incinerator_vent_ordmix
 	name = "combustion chamber vent control"
-	id = INCINERATOR_TOXMIX_VENT
-	req_access = list(ACCESS_TOXINS)
+	id = INCINERATOR_ORDMIX_VENT
+	req_access = list(ACCESS_ORDNANCE)
 
 /obj/machinery/button/door/incinerator_vent_atmos_main
 	name = "turbine vent control"
@@ -278,8 +278,8 @@
 	name = "combustion chamber ignition switch"
 	desc = "A remote control switch for the combustion chamber's igniter."
 
-/obj/machinery/button/ignition/incinerator/toxmix
-	id = INCINERATOR_TOXMIX_IGNITER
+/obj/machinery/button/ignition/incinerator/ordmix
+	id = INCINERATOR_ORDMIX_IGNITER
 
 /obj/machinery/button/ignition/incinerator/atmos
 	id = INCINERATOR_ATMOS_IGNITER

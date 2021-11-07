@@ -1,11 +1,8 @@
-/datum/job/cyborg/after_spawn(mob/living/silicon/robot/R, mob/M)
-	. = ..()
-	R.updatename(M.client)
-	R.gender = NEUTER
-	for(var/mob/living/silicon/ai/AI in GLOB.silicon_mobs)
-		if(AI.z == 3)
-			if(!(R.connected_ai))
-				R.set_connected_ai(AI)
-	R.lawsync()
-	R.show_laws()
-
+/mob/living/silicon/robot/proc/latejoin_find_parent_ai(target_z_level = 3)
+	if(connected_ai)
+		return
+	var/mob/living/silicon/ai/AI = select_active_ai_with_fewest_borgs(target_z_level)
+	if(AI)
+		set_connected_ai(AI)
+	lawsync()
+	show_laws()

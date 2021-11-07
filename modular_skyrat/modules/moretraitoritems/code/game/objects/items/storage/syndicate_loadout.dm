@@ -1,6 +1,6 @@
 
 /obj/item/storage/box/syndie_kit/spaceassassin/PopulateContents()
-	new /obj/item/kitchen/knife/combat(src)
+	new /obj/item/knife/combat(src)
 	new	/obj/item/book/granter/traitsr/ventcrawl_book(src)
 	switch(pick(list("red", "green", "dgreen", "blue", "orange", "black")))
 		if("green")
@@ -28,7 +28,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/recon/PopulateContents()
 	new /obj/item/clothing/glasses/thermal/syndi(src)
-	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/knife/combat/survival(src)
 	new /obj/item/gun/energy/disabler(src)
 	new /obj/item/storage/briefcase/launchpad(src)
 	new /obj/item/binoculars(src)
@@ -89,7 +89,7 @@
 	new /obj/item/clothing/gloves/color/latex/nitrile(src)
 	new /obj/item/clothing/mask/gas/clown_hat(src)
 	new /obj/item/clothing/under/syndicate/sniper(src)
-	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/knife/combat/survival(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/metaops/PopulateContents()
 	new /obj/item/clothing/suit/space/hardsuit/syndi(src)
@@ -161,7 +161,7 @@
 	new /obj/item/dnainjector/geladikinesis(src)
 	new /obj/item/dnainjector/cryokinesis(src)
 	new /obj/item/gun/energy/temperature/security(src)
-	new /obj/item/melee/transforming/energy/sword/saber/blue(src)
+	new /obj/item/melee/energy/sword(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/doctordeath/PopulateContents()
 	new /obj/item/storage/box/syndie_kit/chemical(src)
@@ -223,7 +223,7 @@
 /obj/item/storage/box/syndie_kit/loadout/nt_impostor/PopulateContents()
 	new /obj/item/clothing/under/rank/centcom/officer(src)
 	new /obj/item/clothing/head/centcom_cap(src)
-	new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal(src)
+	new /obj/item/clothing/suit/armor/centcom_formal(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/radio/headset/headset_cent/impostorsr(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
@@ -240,7 +240,7 @@
 	new /obj/item/clothing/gloves/combat(src)
 
 /obj/item/storage/box/syndie_kit/loadout/lasermanbundle/PopulateContents()
-	new /obj/item/melee/transforming/energy/sword/saber(src)
+	new /obj/item/melee/energy/sword/saber(src)
 	new /obj/item/book/granter/martial/carp(src)
 	new /obj/item/clothing/under/syndicate/combat(src)
 	new /obj/item/clothing/shoes/combat/swat(src)

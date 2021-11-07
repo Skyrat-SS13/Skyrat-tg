@@ -9,6 +9,10 @@
 	generic = "Screen"
 	relevent_layers = list(BODY_ADJ_LAYER)
 
+/datum/sprite_accessory/screen/none
+	name = "None"
+	icon_state = "none"
+
 /datum/sprite_accessory/screen/blank
 	name = "Blank"
 	icon_state = "blank"
@@ -181,6 +185,10 @@
 	factual = FALSE
 	key = "ipc_chassis"
 	generic = "Chassis Type"
+
+/datum/sprite_accessory/ipc_chassis/none
+	name = "None"
+	icon_state = "none"
 
 /datum/sprite_accessory/ipc_chassis/mcgreyscale
 	name = "Morpheus Cyberkinetics(Greyscale)"

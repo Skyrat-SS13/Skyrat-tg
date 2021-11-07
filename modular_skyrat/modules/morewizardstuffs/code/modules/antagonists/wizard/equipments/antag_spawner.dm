@@ -18,7 +18,7 @@
 		if(!ishuman(M.current))
 			continue
 		var/mob/living/carbon/human/W = M.current
-		var/list/candidates = pollGhostCandidates("Would you like to be an imposter wizard?", ROLE_WIZARD)
+		var/list/candidates = poll_ghost_candidates("Would you like to be an imposter wizard?", ROLE_WIZARD)
 		if(!candidates)
 			to_chat(user, "<span class='warning'>Unable to duplicate! You can either attack the spellbook with the contract to refund your points, or wait and try again later..</span>")
 			return

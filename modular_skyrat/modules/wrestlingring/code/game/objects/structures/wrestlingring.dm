@@ -62,7 +62,7 @@
 	icon_state = "turnbuckle"
 	density = TRUE
 	anchored = TRUE
-	armor = list(MELEE = 50, BULLET = 70, LASER = 70, ENERGY = 100, BOMB = 10, BIO = 100, RAD = 100, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 50, BULLET = 70, LASER = 70, ENERGY = 100, BOMB = 10, BIO = 100, FIRE = 0, ACID = 0)
 	max_integrity = 75
 	var/ini_dir
 
@@ -85,13 +85,13 @@
 	add_fingerprint(user)
 
 	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode)
-		if(obj_integrity < max_integrity)
+		if(atom_integrity < max_integrity)
 			if(!I.tool_start_check(user, amount=0))
 				return
 
 			to_chat(user, span_notice("You begin repairing [src]..."))
 			if(I.use_tool(src, user, 40, volume=50))
-				obj_integrity = max_integrity
+				atom_integrity = max_integrity
 				to_chat(user, span_notice("You repair [src]."))
 		else
 			to_chat(user, span_warning("[src] is already in good condition!"))

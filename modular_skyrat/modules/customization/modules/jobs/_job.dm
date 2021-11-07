@@ -13,8 +13,10 @@
 	var/list/species_blacklist
 	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
 	var/list/required_languages = list(/datum/language/common = LANGUAGE_SPOKEN)
-	//Alt titles
-	var/list/alt_titles = list()
+
+	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
+	var/veteran_only = FALSE
+
 
 /datum/job/proc/has_banned_quirk(datum/preferences/pref)
 	if(!pref) //No preferences? We'll let you pass, this time (just a precautionary check,you dont wanna mess up gamemode setting logic)
@@ -26,10 +28,12 @@
 	return FALSE
 
 /datum/job/proc/has_banned_species(datum/preferences/pref)
-	var/my_id = pref.pref_species.id
+	var/species_type = pref.read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = new species_type
+	var/my_id = species.id
 	if(species_whitelist && !species_whitelist[my_id])
 		return TRUE
-	else if(!GLOB.roundstart_races[my_id])
+	else if(!(my_id in get_selectable_species()))
 		return TRUE
 	if(species_blacklist && species_blacklist[my_id])
 		return TRUE
@@ -67,7 +71,7 @@
 	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
 
 /datum/job/nanotrasen_representative
-	banned_quirks = list(SEC_RESTRICTED_QUIRKS)
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
 // Command
 /datum/job/captain
@@ -128,3 +132,16 @@
 		if(!pref.languages[lang] || pref.languages[lang] < required_languages[lang])
 			return FALSE
 	return TRUE
+
+// Nanotrasen Fleet
+/datum/job/fleetmaster
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/operations_inspector
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/deck_crew
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
+
+/datum/job/bridge_officer
+	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)

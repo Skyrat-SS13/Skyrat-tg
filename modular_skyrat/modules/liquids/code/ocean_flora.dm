@@ -123,7 +123,7 @@
 		if(1 to 3)
 			to_spawn_path = /obj/structure/flora/scrap
 		if(4 to 6) //Ocean trash, I guess
-			to_spawn_path = /obj/effect/spawner/lootdrop/maintenance
+			to_spawn_path = /obj/effect/spawner/random/maintenance
 		else
 			if(prob(50))
 				to_spawn_path = default_1

@@ -1,3 +1,5 @@
+#define GOLIATH_STUN_TIME_SEVA 12 SECONDS //SKYRAT EDIT - SEVA Fix
+
 //A slow but strong beast that tries to stun using its tentacles
 /mob/living/simple_animal/hostile/asteroid/goliath
 	name = "goliath"
@@ -106,7 +108,7 @@
 	var/can_saddle = FALSE
 	var/saddled = FALSE
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/Initialize()
+/mob/living/simple_animal/hostile/asteroid/goliath/beast/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/tameable, food_types = list(/obj/item/food/grown/ash_flora), tame_chance = 10, bonus_tame_chance = 5, after_tame = CALLBACK(src, .proc/tamed))
 
@@ -129,7 +131,7 @@
 /mob/living/simple_animal/hostile/asteroid/goliath/beast/proc/tamed(mob/living/tamer)
 	can_saddle = TRUE
 
-/mob/living/simple_animal/hostile/asteroid/goliath/beast/random/Initialize()
+/mob/living/simple_animal/hostile/asteroid/goliath/beast/random/Initialize(mapload)
 	. = ..()
 	if(prob(1))
 		new /mob/living/simple_animal/hostile/asteroid/goliath/beast/ancient(loc)
@@ -218,7 +220,12 @@
 		if((!QDELETED(spawner) && spawner.faction_check_mob(L)) || L.stat == DEAD)
 			continue
 		visible_message(span_danger("[src] grabs hold of [L]!"))
-		L.Stun(100)
+		//SKYRAT EDIT START - GOLIATH STUN TIME FOR SEVA
+		if(HAS_TRAIT(L,TRAIT_GOLIATH_STUN))
+			L.Stun(GOLIATH_STUN_TIME_SEVA)
+		else
+			L.Stun(100)
+		//SKYRAT EDIT END
 		L.adjustBruteLoss(rand(10,15))
 		latched = TRUE
 	if(!latched)
@@ -237,3 +244,5 @@
 	desc = "This saddle will solve all your problems with being killed by lava beasts!"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "goliath_saddle"
+
+#undef GOLIATH_STUN_TIME_SEVA

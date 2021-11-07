@@ -182,6 +182,15 @@
 			update_inv_s_store()
 
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
+		if(ITEM_SLOT_PENIS)
+			if(src.is_bottomless())
+				if(penis)
+					return
+				penis = I
+				update_inv_penis()
+			else
+				to_chat(usr, "[src] is not bottomless, you cannot access [usr == src ? "your" : src.p_their()] penis!")
+
 		if(ITEM_SLOT_VAGINA)
 			if(src.is_bottomless())
 				if(vagina)
@@ -189,7 +198,7 @@
 				vagina = I
 				update_inv_vagina()
 			else
-				to_chat(usr, "[src] is not bottomless, you cannot access to vagina")
+				to_chat(usr, "[src] is not bottomless, you cannot access [usr == src ? "your" : src.p_their()] vagina!")
 
 		if(ITEM_SLOT_ANUS)
 			if(src.is_bottomless())
@@ -198,7 +207,7 @@
 				anus = I
 				update_inv_anus()
 			else
-				to_chat(usr, "[src] is not bottomless, you cannot access to anus")
+				to_chat(usr, "[src] is not bottomless, you cannot access [usr == src ? "your" : src.p_their()] anus!")
 
 		if(ITEM_SLOT_NIPPLES)
 			if(src.is_topless())
@@ -207,16 +216,7 @@
 				nipples = I
 				update_inv_nipples()
 			else
-				to_chat(usr, "[src] is not topless, you cannot access to nipples")
-
-		if(ITEM_SLOT_PENIS)
-			if(src.is_bottomless())
-				if(penis)
-					return
-				penis = I
-				update_inv_penis()
-			else
-				to_chat(usr, "[src] is not bottomless, you cannot access to penis")
+				to_chat(usr, "[src] is not topless, you cannot access [usr == src ? "your" : src.p_their()] nipples!")
 
 		//SKYRAT EDIT ADDITION END
 
@@ -435,4 +435,3 @@
 		return
 	stored.attack_hand(src) // take out thing from item in storage slot
 	return
-

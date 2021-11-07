@@ -26,27 +26,27 @@
 	cold_protection = CHEST|ARMS|GROIN
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	mutant_variants = NONE
-	togglename = "zipper"
+	toggle_noun = "zipper"
 
 //Job Jackets
 /obj/item/clothing/suit/toggle/jacket/engi
 	name = "engineering jacket"
 	desc = "A comfortable jacket in engineering yellow."
 	icon_state = "engi_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 20, FIRE = 30, ACID = 45, WOUND = 0)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 45, WOUND = 0)
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/t_scanner, /obj/item/construction/rcd, /obj/item/pipe_dispenser, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
 
 /obj/item/clothing/suit/toggle/jacket/sci
 	name = "science jacket"
 	desc = "A comfortable jacket in science purple."
 	icon_state = "sci_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 0)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 10, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 
 /obj/item/clothing/suit/toggle/jacket/med
 	name = "medbay jacket"
 	desc = "A comfortable jacket in medical blue."
 	icon_state = "med_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 50, RAD = 0, FIRE = 0, ACID = 45, WOUND = 0)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 0, ACID = 45, WOUND = 0)
 
 /obj/item/clothing/suit/toggle/jacket/supply
 	name = "cargo jacket"
@@ -72,7 +72,7 @@
 	name = "security jacket"
 	desc = "A comfortable jacket in security blue. Probably against uniform regulations."
 	icon_state = "sec_dep_jacket"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, RAD = 0, FIRE = 0, ACID = 45, WOUND = 0)
+	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45, WOUND = 0)
 
 /obj/item/clothing/suit/toggle/jacket/sec/old	//Oldsec (Red)
 	icon_state = "sec_dep_jacket_old"

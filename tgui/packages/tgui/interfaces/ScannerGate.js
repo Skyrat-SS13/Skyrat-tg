@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NumberInput, Section } from '../components';
+import { Box, Button, LabeledList, Section } from '../components';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 import { Window } from '../layouts';
 
@@ -102,6 +102,10 @@ const TARGET_SPECIES_LIST = [
   {
     name: 'Synthetic Human',
     value: 'synthhuman',
+  },
+  {
+    name: 'Teshari',
+    value: 'teshari',
   },
 ];
 

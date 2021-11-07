@@ -39,7 +39,7 @@
 	. = ..()
 	cargo_holder = null
 
-/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/action(mob/living/source, atom/target, params)
+/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/action(mob/living/source, atom/target, list/modifiers)
 	if(!action_checks(target))
 		return
 	if(!cargo_holder)
@@ -93,8 +93,6 @@
 		var/mob/living/M = target
 		if(M.stat == DEAD)
 			return
-
-		//var/list/modifiers = params2list(params) - SKYRAT EDIT REMOVAL
 
 		if(!source.combat_mode)
 			step_away(M,chassis)
@@ -166,12 +164,12 @@
 	range = MECHA_MELEE|MECHA_RANGED
 	mech_flags = EXOSUIT_MODULE_WORKING
 
-/obj/item/mecha_parts/mecha_equipment/extinguisher/Initialize()
+/obj/item/mecha_parts/mecha_equipment/extinguisher/Initialize(mapload)
 	. = ..()
 	create_reagents(1000)
 	reagents.add_reagent(/datum/reagent/water, 1000)
 
-/obj/item/mecha_parts/mecha_equipment/extinguisher/action(mob/source, atom/target, params)
+/obj/item/mecha_parts/mecha_equipment/extinguisher/action(mob/source, atom/target, list/modifiers)
 	if(!action_checks(target) || get_dist(chassis, target)>3)
 		return
 
@@ -243,7 +241,7 @@
 	///determines what we'll so when clicking on a turf
 	var/mode = MODE_DECONSTRUCT
 
-/obj/item/mecha_parts/mecha_equipment/rcd/Initialize()
+/obj/item/mecha_parts/mecha_equipment/rcd/Initialize(mapload)
 	. = ..()
 	GLOB.rcd_list += src
 
@@ -251,7 +249,7 @@
 	GLOB.rcd_list -= src
 	return ..()
 
-/obj/item/mecha_parts/mecha_equipment/rcd/action(mob/source, atom/target, params)
+/obj/item/mecha_parts/mecha_equipment/rcd/action(mob/source, atom/target, list/modifiers)
 	if(!isturf(target) && !istype(target, /obj/machinery/door/airlock))
 		target = get_turf(target)
 	if(!action_checks(target) || get_dist(chassis, target)>3 || istype(target, /turf/open/space/transit))

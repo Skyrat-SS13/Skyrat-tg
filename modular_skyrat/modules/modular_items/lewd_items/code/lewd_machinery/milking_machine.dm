@@ -1,6 +1,6 @@
 /obj/structure/chair/milking_machine
 	name = "Milking machine"
-	desc = "Stationary device for milking people."
+	desc = "A stationary device for milking... things."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
 	icon_state = "milking_pink_off"
 	max_buckled_mobs = 1
@@ -103,7 +103,7 @@
 // Additional examine text
 /obj/structure/chair/milking_machine/examine(mob/user)
 	. = ..()
-	. +="<span class='notice'>Why are these metal mounts on the armrests?</span>"
+	. +=span_notice("What are these metal mounts on the armrests for...?")
 
 /obj/structure/chair/milking_machine/Destroy()
 	. = ..()
@@ -177,7 +177,7 @@
 	machine_color = choice
 	update_icon()
 	color_changed = TRUE
-	to_chat(user, "<span class='notice'>You have changed the color of the milking machine!</span>")
+	to_chat(user, span_notice("You change the color of the milking machine."))
 	return TRUE
 
 // Checking if we can use the menu
@@ -362,7 +362,7 @@
 			// Have difficulty unbuckling if overly aroused
 			if(M.arousal >= 60)
 				if((current_mode != mode_list[1]) && (current_mode != mode_list[2]))
-					to_chat(M, "<font color=purple>You are too horny to try to get out!</font>")
+					to_chat(M, span_purple("You are too horny to try to get out!"))
 					return
 				else
 					M.visible_message(span_notice("[M] unbuckles [M.p_them()]self from [src]."),\
@@ -389,7 +389,7 @@
 	if(panel_open && cell)
 		user.put_in_hands(cell)
 		cell.add_fingerprint(user)
-		user.visible_message("<span class='notice'>[user] removes [cell] from [src].</span>", "<span class='notice'>You remove [cell] from [src].</span>")
+		user.visible_message(span_notice("[user] removes [cell] from [src]."), span_notice("You remove [cell] from [src]."))
 		removecell()
 		update_all_visuals()
 		return
@@ -410,7 +410,7 @@
 	if(istype(W, /obj/item/reagent_containers) && !(W.item_flags & ABSTRACT) && W.is_open_container())
 		. = TRUE // No afterattack
 		if(panel_open)
-			to_chat(user, "<span class='warning'>You can't use the [src.name] while its panel is opened!</span>")
+			to_chat(user, span_warning("You can't use [src] while its panel is opened!"))
 			return
 		var/obj/item/reagent_containers/B = W
 		. = TRUE // No afterattack
@@ -423,10 +423,10 @@
 	if(istype(W, /obj/item/stock_parts/cell))
 		if(panel_open)
 			if(!anchored)
-				to_chat(user, "<span class='warning'>[src] isn't attached to the ground!</span>")
+				to_chat(user, span_warning("[src] isn't attached to the ground!"))
 				return
 			if(cell)
-				to_chat(user, "<span class='warning'>There is already a cell in [src]!</span>")
+				to_chat(user, span_warning("There is already a cell in [src]!"))
 				return
 			else
 				var/area/a = loc.loc // Gets our locations location, like a dream within a dream
@@ -442,11 +442,11 @@
 				cut_overlay(cell_overlay)
 				cell_overlay.icon_state = "milking_cell"
 				add_overlay(cell_overlay)
-				user.visible_message("<span class='notice'>[user] inserts a cell into [src].</span>", "<span class='notice'>You insert a cell into [src].</span>")
+				user.visible_message(span_notice("[user] inserts a cell into [src]."), span_notice("You insert a cell into [src]."))
 				update_all_visuals()
 				return
 		else
-			to_chat(user, "<span class='warning'>Maintenance panel [src] isn't opened!</span>")
+			to_chat(user, span_warning("[src]'s maintenance panel isn't opened!"))
 			return
 	else
 		if(screwdriver_action(user, icon_state, icon_state, W))
@@ -475,10 +475,10 @@
 	if(beaker)
 		try_put_in_hand(beaker, user)
 		beaker = null
-		to_chat(user, "<span class='notice'>You took the beaker out of the machine</font>")
+		to_chat(user, span_notice("You take the beaker out of [src]"))
 	if(new_beaker)
 		beaker = new_beaker
-		to_chat(user, "<span class='notice'>You put the beaker in the machine</font>")
+		to_chat(user, span_notice("You put the beaker in [src]"))
 	return TRUE
 
 // We will try to take the item in our hand, if it doesn’t work, then drop it into the car tile
@@ -503,7 +503,7 @@
 			cut_overlay(panel_overlay)
 			panel_overlay.icon_state = "milking_panel"
 			add_overlay(panel_overlay)
-			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
+			to_chat(user, span_notice("You open the maintenance hatch of [src]."))
 		else
 			panel_open = FALSE
 			cut_overlay(panel_overlay)
@@ -513,7 +513,7 @@
 			cut_overlay(cell_overlay)
 			cell_overlay.icon_state = "milking_cell_empty"
 
-			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
+			to_chat(user, span_notice("You close the maintenance hatch of [src]."))
 
 		return TRUE
 	return FALSE
@@ -661,11 +661,11 @@
 
 /obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/I)
 	if((flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>You start to deconstructing the milking machine...</span>")
+		to_chat(user, span_notice("You being to deconstruct [src]..."))
 		if(I.use_tool(src, user, 8 SECONDS, volume=50))
 			I.play_tool_sound(src, 50)
 			deconstruct(TRUE)
-			to_chat(user, "<span class='notice'>You have disassembled the milking machine!</span>")
+			to_chat(user, span_notice("You disassemble [src]."))
 		return TRUE
 	return TRUE
 
@@ -934,7 +934,7 @@
 		return
 	if(action == "ejectCreature")
 		unbuckle_mob(current_mob)
-		to_chat(usr,"<span class='notice'>You ejected creature from the machine</font>")
+		to_chat(usr,span_notice("You eject [current_mob] from [src]"))
 		return TRUE
 
 	if(action == "ejectBeaker")
@@ -946,28 +946,28 @@
 		current_mode = mode_list[1]
 		pump_state = pump_state_list[1]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You turn off the machine</font>")
+		to_chat(usr,span_notice("You turn off [src]"))
 		return TRUE
 
 	if(action == "setLowMode")
 		current_mode = mode_list[2]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You switched the machine in Low mode</font>")
+		to_chat(usr,span_notice("You switch [src] onto low mode"))
 		return TRUE
 
 	if(action == "setMediumMode")
 		current_mode = mode_list[3]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You switched the machine in Medium mode</font>")
+		to_chat(usr,span_notice("You switch [src] onto medium mode"))
 		return TRUE
 
 	if(action == "setHardMode")
 		current_mode = mode_list[4]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You switched the machine in Hard mode</font>")
+		to_chat(usr,span_notice("You switch [src] onto hard mode"))
 		return TRUE
 
 	if(action == "unplug")
@@ -976,25 +976,25 @@
 		pump_state = pump_state_list[1]
 		current_selected_organ = null
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You detach liner from organs</font>")
+		to_chat(usr,span_notice("You detach the liner."))
 		return TRUE
 
 	if(action == "setBreasts")
 		current_selected_organ = current_breasts
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You attach liner to the breasts</font>")
+		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setVagina")
 		current_selected_organ = current_vagina
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You attach liner to the vagina</font>")
+		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setTesticles")
 		current_selected_organ = current_testicles
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You attach liner to the testicles</font>")
+		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setMilk")
@@ -1020,13 +1020,13 @@
 		current_vessel.reagents.trans_to(beaker, amount)
 		current_vessel.reagents.reagent_list[1].name
 		update_all_visuals()
-		to_chat(usr,"<span class='notice'>You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]</font>")
+		to_chat(usr,span_notice("You transfer [amount] of [current_vessel.reagents.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
 // Milking machine construction kit
 /obj/item/milking_machine/constructionkit
 	name = "milking machine construction parts"
-	desc = "Construction parts for milking machine. Requires wrench."
+	desc = "Construction parts for a milking machine. Assembly requires a wrench."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/milking_machine.dmi'
 	icon_state = "milkbuild"
 	var/current_color = "pink"
@@ -1059,5 +1059,5 @@
 					N.machine_color = N.machine_color_list[2]
 					N.icon_state = "milking_teal_off"
 			qdel(src)
-			to_chat(user, "<span class='notice'>You have assembled the milking machine!</span>")
+			to_chat(user, span_notice("You assemble the milking machine."))
 			return

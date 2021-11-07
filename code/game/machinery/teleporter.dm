@@ -16,7 +16,7 @@
 	var/obj/machinery/teleport/station/power_station
 	var/calibrated = FALSE//Calibration prevents mutation
 
-/obj/machinery/teleport/hub/Initialize()
+/obj/machinery/teleport/hub/Initialize(mapload)
 	. = ..()
 	link_power_station()
 
@@ -91,10 +91,9 @@
 							human.set_species(species_to_transform)
 							log_game("[human] ([key_name(human)]) was turned into a [initial(species_to_transform.name)] through [src].")
 
-					human.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0)
 					*/ //SKYRAT EDIT REMOVAL END
 					//SKRYAT EDIT CHANGE BEGIN
-					to_chat(human, "<span class='danger'>Your limbs lose molecular cohesion as you teleport!</span>")
+					to_chat(human, span_danger("Your limbs lose molecular cohesion as you teleport!"))
 					var/list/bodyparts_dismember = list()
 					var/rad_mod = 0
 					for(var/obj/item/bodypart/BP in human.bodyparts)
@@ -109,7 +108,6 @@
 						BP.dismember()
 						bodyparts_dismember.Remove(BP) //GC optimisation
 						qdel(BP)
-					human.apply_effect((rand(480 + rad_mod - accuracy * 40, 880 + rad_mod - accuracy * 60)), EFFECT_IRRADIATE, 0)
 					//SKYRAT EDIT CHANGE END
 			calibrated = FALSE
 	return
@@ -121,7 +119,7 @@
 /obj/machinery/teleport/hub/proc/is_ready()
 	. = !panel_open && !(machine_stat & (BROKEN|NOPOWER)) && power_station && power_station.engaged && !(power_station.machine_stat & (BROKEN|NOPOWER))
 
-/obj/machinery/teleport/hub/syndicate/Initialize()
+/obj/machinery/teleport/hub/syndicate/Initialize(mapload)
 	. = ..()
 	var/obj/item/stock_parts/matter_bin/super/super_bin = new(src)
 	LAZYADD(component_parts, super_bin)
@@ -142,7 +140,7 @@
 	var/list/linked_stations = list()
 	var/efficiency = 0
 
-/obj/machinery/teleport/station/Initialize()
+/obj/machinery/teleport/station/Initialize(mapload)
 	. = ..()
 	link_console_and_hub()
 

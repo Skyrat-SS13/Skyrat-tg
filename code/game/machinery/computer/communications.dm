@@ -1,10 +1,17 @@
 #define IMPORTANT_ACTION_COOLDOWN (60 SECONDS)
+#define EMERGENCY_ACCESS_COOLDOWN (30 SECONDS)
 #define MAX_STATUS_LINE_LENGTH 40
 
 #define STATE_BUYING_SHUTTLE "buying_shuttle"
 #define STATE_CHANGING_STATUS "changing_status"
 #define STATE_MAIN "main"
 #define STATE_MESSAGES "messages"
+//SKYRAT EDIT ADDITION
+GLOBAL_VAR_INIT(cops_arrived, FALSE)
+#define EMERGENCY_RESPONSE_POLICE "WOOP WOOP THAT'S THE SOUND OF THE POLICE"
+#define EMERGENCY_RESPONSE_FIRE "DISCO INFERNO"
+#define EMERGENCY_RESPONSE_EMT "AAAAAUGH, I'M DYING, I NEEEEEEEEEED A MEDIC BAG"
+//SKYRAT EDIT END
 
 // The communications computer
 /obj/machinery/computer/communications
@@ -18,6 +25,7 @@
 
 	/// Cooldown for important actions, such as messaging CentCom or other sectors
 	COOLDOWN_DECLARE(static/important_action_cooldown)
+	COOLDOWN_DECLARE(static/emergency_access_cooldown)
 
 	/// The current state of the UI
 	var/state = STATE_MAIN
@@ -38,10 +46,20 @@
 	/// Used to clear the modal to change alert level
 	var/alert_level_tick = 0
 
+	/// The timer ID for sending the next cross-comms message
+	var/send_cross_comms_message_timer
+
 	/// The last lines used for changing the status display
 	var/static/last_status_display
 
-/obj/machinery/computer/communications/Initialize()
+	///how many uses the console has done of toggling the emergency access
+	var/toggle_uses = 0
+	///how many uses can you toggle emergency access with before cooldowns start occuring BOTH ENABLE/DISABLE
+	var/toggle_max_uses = 3
+	///when was emergency access last toggled
+	var/last_toggled
+
+/obj/machinery/computer/communications/Initialize(mapload)
 	. = ..()
 	GLOB.shuttle_caller_list += src
 	AddComponent(/datum/component/gps, "Secured Communications Signal")
@@ -218,7 +236,10 @@
 			SSshuttle.existing_shuttle = SSshuttle.emergency
 			SSshuttle.action_load(shuttle, replace = TRUE)
 			bank_account.adjust_money(-shuttle.credit_cost)
-			minor_announce("[usr.real_name] has purchased [shuttle.name] for [shuttle.credit_cost] credits.[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
+
+			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : usr.real_name
+			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] credits.[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
+
 			message_admins("[ADMIN_LOOKUPFLW(usr)] purchased [shuttle.name].")
 			log_shuttle("[key_name(usr)] has purchased [shuttle.name].")
 			SSblackbox.record_feedback("text", "shuttle_purchase", 1, shuttle.name)
@@ -263,18 +284,19 @@
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 			var/destination = params["destination"]
-			var/list/payload = list()
 
-			var/network_name = CONFIG_GET(string/cross_comms_network)
-			if (network_name)
-				payload["network"] = network_name
-			payload["sender_ckey"] = usr.ckey
+			log_game("[key_name(usr)] is about to send the following message to [destination]: [message]")
+			to_chat(
+				GLOB.admins,
+				span_adminnotice( \
+					"<b color='orange'>CROSS-SECTOR MESSAGE (OUTGOING):</b> [ADMIN_LOOKUPFLW(usr)] is about to send \
+					the following message to <b>[destination]</b> (will autoapprove in [DisplayTimeText(CROSS_SECTOR_CANCEL_TIME)]): \
+					<b><a href='?src=[REF(src)];reject_cross_comms_message=1'>REJECT</a></b><br> \
+					[html_encode(message)]" \
+				)
+			)
 
-			send2otherserver(html_decode(station_name()), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload)
-			minor_announce(message, title = "Outgoing message to allied station")
-			usr.log_talk(message, LOG_SAY, tag = "message to the other server")
-			message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server\[s].")
-			deadchat_broadcast(" has sent an outgoing message to the other station(s).</span>", "<span class='bold'>[usr.real_name]", usr, message_type = DEADCHAT_ANNOUNCEMENT)
+			send_cross_comms_message_timer = addtimer(CALLBACK(src, .proc/send_cross_comms_message, usr, destination, message), CROSS_SECTOR_CANCEL_TIME, TIMER_STOPPABLE)
 
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("setState")
@@ -329,6 +351,8 @@
 			state = STATE_MAIN
 			playsound(src, 'sound/machines/terminal_on.ogg', 50, FALSE)
 		if ("toggleEmergencyAccess")
+			if(emergency_access_cooldown(usr)) //if were in cooldown, dont allow the following code
+				return
 			if (!authenticated_as_silicon_or_captain(usr))
 				return
 			if (GLOB.emergency_access)
@@ -365,6 +389,131 @@
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, /datum/controller/subsystem/job.proc/send_spare_id_safe_code, pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
+		// SKYRAT EDIT ADDITION START
+		if ("callThePolice")
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+
+			if (GLOB.cops_arrived)
+				to_chat(usr, span_warning("911 has already been called this shift!"))
+				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+				return
+
+			// Check if they have
+			if (!issilicon(usr))
+				var/obj/item/held_item = usr.get_active_held_item()
+				var/obj/item/card/id/id_card = held_item?.GetID()
+				if (!istype(id_card))
+					to_chat(usr, span_warning("You need to swipe your ID!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+				if (!(ACCESS_CAPTAIN in id_card.access))
+					to_chat(usr, span_warning("You are not authorized to do this!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+			GLOB.cops_arrived = TRUE
+			send_in_the_fuzz(EMERGENCY_RESPONSE_POLICE)
+			GLOB.caller_of_911 = usr.name
+			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation Police Department."))
+			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+
+			log_game("[key_name(usr)] has called the Sol Federation Police Department.")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] has called the Sol Federation Police Department.")
+			deadchat_broadcast(" has called the Sol Federation Police Department.", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+		if ("callTheFireDep")
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+
+			if (GLOB.cops_arrived)
+				to_chat(usr, span_warning("911 has already been called this shift!"))
+				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+				return
+
+			// Check if they have
+			if (!issilicon(usr))
+				var/obj/item/held_item = usr.get_active_held_item()
+				var/obj/item/card/id/id_card = held_item?.GetID()
+				if (!istype(id_card))
+					to_chat(usr, span_warning("You need to swipe your ID!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+				if (!(ACCESS_CAPTAIN in id_card.access))
+					to_chat(usr, span_warning("You are not authorized to do this!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+			GLOB.cops_arrived = TRUE
+			send_in_the_fuzz(EMERGENCY_RESPONSE_FIRE)
+			GLOB.caller_of_911 = usr.name
+			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation Fire Department."))
+			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+
+			log_game("[key_name(usr)] has called the Sol Federation Fire Department.")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] has called the Sol Federation Fire Department.")
+			deadchat_broadcast(" has called the Sol Federation Fire Department.", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+		if ("callTheParameds")
+			if (!authenticated_as_silicon_or_captain(usr))
+				return
+
+			if (GLOB.cops_arrived)
+				to_chat(usr, span_warning("911 has already been called this shift!"))
+				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+				return
+
+			// Check if they have
+			if (!issilicon(usr))
+				var/obj/item/held_item = usr.get_active_held_item()
+				var/obj/item/card/id/id_card = held_item?.GetID()
+				if (!istype(id_card))
+					to_chat(usr, span_warning("You need to swipe your ID!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+				if (!(ACCESS_CAPTAIN in id_card.access))
+					to_chat(usr, span_warning("You are not authorized to do this!"))
+					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
+					return
+			GLOB.cops_arrived = TRUE
+			send_in_the_fuzz(EMERGENCY_RESPONSE_EMT)
+			GLOB.caller_of_911 = usr.name
+			to_chat(usr, span_notice("Authorization confirmed. 911 call dispatched to the Sol Federation EMTs."))
+			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+
+			log_game("[key_name(usr)] has called the Sol Federation EMTs.")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] has called the Sol Federation EMTs.")
+			deadchat_broadcast(" has called the Sol Federation EMTs.", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
+		// SKYRAT EDIT ADDITION END
+/obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
+	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
+		to_chat(user, span_warning("This was your last free use without cooldown, you will not be able to use this again for [DisplayTimeText(EMERGENCY_ACCESS_COOLDOWN)]."))
+		COOLDOWN_START(src, emergency_access_cooldown, EMERGENCY_ACCESS_COOLDOWN)
+		++toggle_uses //add a use so that this if() is false the next time you try this button
+		return FALSE
+
+	if(!COOLDOWN_FINISHED(src, emergency_access_cooldown))
+		var/time_left = DisplayTimeText(COOLDOWN_TIMELEFT(src, emergency_access_cooldown), 1)
+		to_chat(user, span_warning("Emergency Access is still in cooldown for [time_left]!"))
+		return TRUE //dont use the button, we are in cooldown
+	else if((last_toggled + EMERGENCY_ACCESS_COOLDOWN) < world.time)
+		toggle_uses = 0 //either cooldown is done, or we just havent touched it in 30 seconds, either way reset uses
+
+	++toggle_uses //add a use
+	last_toggled = world.time
+	return FALSE //if we are not in cooldown, allow using the button
+
+/obj/machinery/computer/communications/proc/send_cross_comms_message(mob/user, destination, message)
+	send_cross_comms_message_timer = null
+
+	var/list/payload = list()
+
+	var/network_name = CONFIG_GET(string/cross_comms_network)
+	if (network_name)
+		payload["network"] = network_name
+	payload["sender_ckey"] = usr.ckey
+
+	send2otherserver(html_decode(station_name()), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload)
+	minor_announce(message, title = "Outgoing message to allied station")
+	usr.log_talk(message, LOG_SAY, tag = "message to the other server")
+	message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server\[s].")
+	deadchat_broadcast(" has sent an outgoing message to the other station(s).</span>", "<span class='bold'>[usr.real_name]", usr, message_type = DEADCHAT_ANNOUNCEMENT)
 
 /obj/machinery/computer/communications/ui_data(mob/user)
 	var/list/data = list(
@@ -477,20 +626,11 @@
 					if (!can_purchase_this_shuttle(shuttle_template))
 						continue
 
-					var/has_access = FALSE
-
-					for (var/purchase_access in shuttle_template.who_can_purchase)
-						if (purchase_access in authorize_access)
-							has_access = TRUE
-							break
-
-					if (!has_access)
-						continue
-
 					shuttles += list(list(
 						"name" = shuttle_template.name,
 						"description" = shuttle_template.description,
 						"creditCost" = shuttle_template.credit_cost,
+						"emagOnly" = shuttle_template.emag_only,
 						"prerequisites" = shuttle_template.prerequisites,
 						"ref" = REF(shuttle_template),
 					))
@@ -515,6 +655,29 @@
 		"maxStatusLineLength" = MAX_STATUS_LINE_LENGTH,
 		"maxMessageLength" = MAX_MESSAGE_LEN,
 	)
+
+/obj/machinery/computer/communications/Topic(href, href_list)
+	. = ..()
+	if (.)
+		return
+
+	if (href_list["reject_cross_comms_message"])
+		if (!usr.client?.holder)
+			log_game("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
+			message_admins("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
+			return
+
+		if (isnull(send_cross_comms_message_timer))
+			to_chat(usr, span_warning("It's too late!"))
+			return
+
+		deltimer(send_cross_comms_message_timer)
+		send_cross_comms_message_timer = null
+
+		log_admin("[key_name(usr)] has cancelled the outgoing cross-comms message.")
+		message_admins("[key_name(usr)] has cancelled the outgoing cross-comms message.")
+
+		return TRUE
 
 /// Returns whether or not the communications console can communicate with the station
 /obj/machinery/computer/communications/proc/has_communication()
@@ -559,6 +722,9 @@
 /obj/machinery/computer/communications/proc/can_purchase_this_shuttle(datum/map_template/shuttle/shuttle_template)
 	if (isnull(shuttle_template.who_can_purchase))
 		return FALSE
+
+	if (shuttle_template.emag_only)
+		return !!(obj_flags & EMAGGED)
 
 	for (var/access in authorize_access)
 		if (access in shuttle_template.who_can_purchase)
@@ -628,6 +794,79 @@
 	SSshuttle.autoEvac()
 	return ..()
 
+/// SKYRAT EDIT BEGIN
+/// Internal. Polls ghosts and sends in a team of space cops according to the alert level, accompanied by an announcement.
+/obj/machinery/computer/communications/proc/send_in_the_fuzz(ordered_team)
+	var/team_size
+	var/cops_to_send
+	var/announcement_message = "sussus amogus"
+	var/announcer = "Sol Federation Police Department"
+	var/poll_question = "fuck you leatherman"
+	switch(ordered_team)
+		if(EMERGENCY_RESPONSE_POLICE)
+			team_size = 8
+			cops_to_send = /datum/antagonist/ert/request_911/police
+			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate police support, and we are \
+			sending our best officers to support your station.\n\n\
+			Please note that faulty 911 calls are punishable by a 5 year super-jail sentence and an immediate $20,000 fine."
+			announcer = "Sol Federation Police Department"
+			poll_question = "The station has called for the police. Will you respond?"
+		if(EMERGENCY_RESPONSE_FIRE)
+			team_size = 8
+			cops_to_send = /datum/antagonist/ert/request_911/fire
+			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate firefighting support, and we are \
+			sending our best firefighters to support your station.\n\n\
+			Please note that faulty 911 calls are punishable by a 5 year super-jail sentence and an immediate $20,000 fine."
+			announcer = "Sol Federation Fire Department"
+			poll_question = "The station has called for the fire department. Will you respond?"
+		if(EMERGENCY_RESPONSE_EMT)
+			team_size = 8
+			cops_to_send = /datum/antagonist/ert/request_911/emt
+			announcement_message = "Crewmembers of [station_name()]. this is the Sol Federation. We've recieved a request for immediate medical support, and we are \
+			sending our best emergency medical technicians to support your station.\n\n\
+			Please note that faulty 911 calls are punishable by a 5 year super-jail sentence and an immediate $20,000 fine."
+			announcer = "Sol Federation EMTs"
+			poll_question = "The station has called for medical support. Will you respond?"
+
+	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg')
+	var/list/candidates = poll_ghost_candidates(poll_question, "deathsquad")
+
+
+	if(candidates.len)
+		//Pick the (un)lucky players
+		var/numagents = min(team_size,candidates.len)
+
+		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
+		var/index = 0
+		GLOB.amt_911_responders = numagents
+		while(numagents && candidates.len)
+			var/spawnloc = spawnpoints[index+1]
+			//loop through spawnpoints one at a time
+			index = (index + 1) % spawnpoints.len
+			var/mob/dead/observer/chosen_candidate = pick(candidates)
+			candidates -= chosen_candidate
+			if(!chosen_candidate.key)
+				continue
+
+			//Spawn the body
+			var/mob/living/carbon/human/cop = new(spawnloc)
+			chosen_candidate.client.prefs.safe_transfer_prefs_to(cop, is_antag = TRUE)
+			cop.key = chosen_candidate.key
+
+			//Give antag datum
+			var/datum/antagonist/ert/request_911/ert_antag = new cops_to_send
+
+			cop.mind.add_antag_datum(ert_antag)
+			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
+			SSjob.SendToLateJoin(cop)
+
+			//Logging and cleanup
+			log_game("[key_name(cop)] has been selected as an [ert_antag.name]")
+			numagents--
+	GLOB.cops_arrived = TRUE
+	return TRUE
+/// SKYRAT EDIT END
+
 /// Override the cooldown for special actions
 /// Used in places such as CentCom messaging back so that the crew can answer right away
 /obj/machinery/computer/communications/proc/override_cooldown()
@@ -653,6 +892,7 @@
 		possible_answers = new_possible_answers
 
 #undef IMPORTANT_ACTION_COOLDOWN
+#undef EMERGENCY_ACCESS_COOLDOWN
 #undef MAX_STATUS_LINE_LENGTH
 #undef STATE_BUYING_SHUTTLE
 #undef STATE_CHANGING_STATUS

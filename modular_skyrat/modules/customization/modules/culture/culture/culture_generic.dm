@@ -1,7 +1,7 @@
 /datum/cultural_info/culture/generic
 	name = "Other Culture"
 	description = "You are from one of the many small, relatively unknown cultures scattered across the galaxy."
-	additional_langs = list(/datum/language/spacer, /datum/language/japanese)
+	additional_langs = list(/datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/vatgrown
 	name = "Vat Grown"
@@ -14,7 +14,7 @@
 	gateway installations or other facilities that occupy the vastness of space. Spacers near the core worlds are accustomed to life in the fast lane, constantly moving between \
 	places, meeting a myriad of people and experiencing many of the cultures and worlds close to humanity's home. As such, Spacers of the core systems tend to be busy, sociable and \
 	mobile, rarely satisfied with settled life. They almost universally know how to live and work in the void and take to such jobs more readily than their planet-bound counterparts."
-	additional_langs = list(/datum/language/spacer, /datum/language/japanese)
+	additional_langs = list(/datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/spacer_frontier
 	name = "Spacer, Frontier"
@@ -28,7 +28,7 @@
 /datum/cultural_info/culture/generic_human
 	name = "Humankind"
 	description = "You are from one of various planetary cultures of humankind."
-	additional_langs = list(/datum/language/russian, /datum/language/gutter, /datum/language/spacer, /datum/language/japanese)
+	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/martian_surfacer
 	name = "Martian, Surfacer"
@@ -54,7 +54,7 @@
 	The long recovery period of Earth has resulted in much of the population being environmentally aware and heavily conservationist, eager to avoid past mistakes. Most Earthers are \
 	a content folk who see themselves as close to nature and keepers of the heritage of humanity."
 	economic_power = 1.1
-	additional_langs = list(/datum/language/japanese)
+	additional_langs = list(/datum/language/yangyu)
 
 /datum/cultural_info/culture/luna_poor
 	name = "Luna, Lower Class"
@@ -81,7 +81,7 @@
 	Unfortunately, the years since the war have not been easy on Terra and the long period of economic recovery has not made life easy. The people of Terra are typically employed \
 	in the military, industrial, government or service sectors, with an emphasis being placed on military service. Terrans today are generally poor, bitter and a somewhat broken people angry and \
 	resentful about their loss in the Gaia Conflict. An upbringing on Terra emphasises an odd mix of service to the state, liberalism and militarism."
-	required_lang = /datum/language/russian
+	required_lang = /datum/language/neorusskya
 	economic_power = 0.9
 
 /datum/cultural_info/culture/venusian_upper
@@ -115,7 +115,7 @@
 	the planet has led to the people of Pluto having something of a seedy reputation, its citizens being viewed with disrepute. The people themselves, however, are usually \
 	just happy to get off the rock and to healthier locales. Unfortunately, despite the efforts of the wider SCG, many Plutonians tend to maintain criminal ties, even offworld."
 	economic_power = 0.8
-	additional_langs = list(/datum/language/russian, /datum/language/gutter, /datum/language/spacer, /datum/language/japanese)
+	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/ceti
 	name = "Cetite"
@@ -133,5 +133,5 @@
 	Many of these cultures have strict interpersonal hierarchies, though their dwellers are no stranger to betrayal and climbing up the social ladder with blood-stained hands is often the way to go. \
 	A common philosophy in these oft-clashing places is the simple phrase, 'Do as thou wilt'."
 	economic_power = 1
-	additional_langs = list(/datum/language/zolmach, /datum/language/japanese)
+	additional_langs = list(/datum/language/zolmach, /datum/language/yangyu)
 

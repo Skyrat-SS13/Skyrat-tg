@@ -11,12 +11,19 @@
 	//mutant_organs = list(/obj/item/organ/tail/cat) //SKYRAT EDIT REMOVAL - CUSTOMIZATION
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/felinid
-	disliked_food = GROSS | RAW | CLOTH
+	disliked_food = GROSS | CLOTH | RAW
+	liked_food = SEAFOOD
 	var/original_felinid = TRUE //set to false for felinids created by mass-purrbation
 	payday_modifier = 0.75
 	ass_image = 'icons/ass/asscat.png'
 	family_heirlooms = list(/obj/item/toy/cattoy)
 
+// Prevents felinids from taking toxin damage from carpotoxin
+/datum/species/human/felinid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
+	. = ..()
+	if(istype(chem, /datum/reagent/toxin/carpotoxin))
+		var/datum/reagent/toxin/carpotoxin/fish = chem
+		fish.toxpwr = 0
 
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
@@ -41,14 +48,15 @@
 		mutant_bodyparts["waggingtail_human"] = mutant_bodyparts["tail_human"]
 		mutant_bodyparts -= "tail_human"
 	H.update_body()
-*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/species/human/felinid/stop_wagging_tail(mob/living/carbon/human/H)
 	if(mutant_bodyparts["waggingtail_human"])
 		mutant_bodyparts["tail_human"] = mutant_bodyparts["waggingtail_human"]
 		mutant_bodyparts -= "waggingtail_human"
 	H.update_body()
+
+	*/
+//SKYRAT EDIT REMOVAL END
 
 /datum/species/human/felinid/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	if(ishuman(C))
@@ -128,3 +136,13 @@
 				new_ears.Insert(H, TRUE, FALSE)
 	if(!silent)
 		to_chat(H, span_boldnotice("You are no longer a cat."))
+
+/datum/species/human/felinid/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.hairstyle = "Hime Cut"
+	human.hair_color = "#ffcccc" // pink
+	human.update_hair()
+
+	var/obj/item/organ/ears/cat/cat_ears = human.getorgan(/obj/item/organ/ears/cat)
+	if (cat_ears)
+		cat_ears.color = human.hair_color
+		human.update_body()

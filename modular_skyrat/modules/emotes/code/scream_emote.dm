@@ -7,8 +7,6 @@
 	if(!(. = ..()))
 		return
 	if(!user.is_muzzled() && !(user.mind && user.mind.miming))
-		if(ishuman(user))
-			user.adjustOxyLoss(5)
 		var/sound = get_sound(user, TRUE)
 		playsound(user.loc, sound, sound_volume, vary, 4, 1.2)
 

@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(randommining)
 		fdel("data/previous_mining.dat")
 
 	if(!fexists("config/skyrat/mining_levels.txt"))
-		add_startupmessage("RANDOM MINING ERROR: mining_levels.txt does not exist, unable to load mining level!")
+		to_chat(world, span_boldannounce("RANDOM MINING ERROR: mining_levels.txt does not exist, unable to load mining level!"))
 		return ..()
 
 	var/list/lines = world.file2list("config/skyrat/mining_levels.txt")
@@ -45,7 +45,7 @@ SUBSYSTEM_DEF(randommining)
 			continue
 		possible_choices[name] = traits
 		possible_names += name
-		add_startupmessage("RANDOM MINING: [uppertext(name)] Level loaded!")
+		to_chat(world, span_boldannounce("RANDOM MINING: [uppertext(name)] Level loaded!"))
 
 	if(voted_map)
 		chosen_map = voted_map
@@ -55,12 +55,12 @@ SUBSYSTEM_DEF(randommining)
 		traits = possible_choices[chosen_map]
 
 	if(!chosen_map)
-		add_startupmessage("RANDOM MINING: Error, no map was chosen!")
+		to_chat(world, span_boldannounce("RANDOM MINING: Error, no map was chosen!"))
 		return ..()
 	else if(voted_map)
-		add_startupmessage("RANDOM MINING: Voted map loaded!")
+		to_chat(world, span_boldannounce("RANDOM MINING: Voted map loaded!"))
 	else
-		add_startupmessage("RANDOM MINING: Map randomly picked!")
+		to_chat(world, span_boldannounce("RANDOM MINING: Map randomly picked!"))
 
 	var/F = file("data/previous_mining.dat")
 	WRITE_FILE(F, chosen_map)
@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(randommining)
 	if(voted_next_map) //If voted or set by other means.
 		return
 	if(SSvote.mode) //Theres already a vote running, default to rotation.
-		to_chat(world, "<span class='boldannounce'>MAPPING VOTE ERROR; VOTE IN PROGRESS, REVERTING TO RANDOM MAP.")
+		to_chat(world, span_boldannounce("MAPPING VOTE ERROR; VOTE IN PROGRESS, REVERTING TO RANDOM MAP."))
 		if(fexists("data/next_mining.dat"))
 			fdel("data/next_mining.dat")
 		return

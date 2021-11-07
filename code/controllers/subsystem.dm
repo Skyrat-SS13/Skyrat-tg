@@ -246,8 +246,7 @@
 	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE, start_timeofday)
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	//to_chat(world, span_boldannounce("[msg]"))
-	add_startupmessage(msg) //SKYRAT EDIT CHANGE
+	to_chat(world, span_boldannounce("[msg]"))
 	log_world(msg)
 	return time
 

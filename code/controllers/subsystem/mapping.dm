@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(mapping)
 		var/old_config = config
 		config = global.config.defaultmap
 		if(!config || config.defaulted)
-			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to Meta Station"))
+			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to Meta Station."))
 			config = old_config
 	initialize_biomes()
 	loadWorld()
@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(mapping)
 
 	// Pick a random away mission.
 	if(CONFIG_GET(flag/roundstart_away))
-		createRandomZlevel()
+		createRandomZlevel(prob(CONFIG_GET(number/config_gateway_chance)))
 
 	// Load the virtual reality hub
 	if(CONFIG_GET(flag/virtual_reality))
@@ -285,8 +285,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
-		//INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
-		add_startupmessage("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") //SKYRAT EDIT CHANGE
+		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
@@ -298,8 +297,7 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	// load the station
 	station_start = world.maxz + 1
-	//INIT_ANNOUNCE("Loading [config.map_name]...") SKYRAT EDIT REMOVAL
-	add_startupmessage("Loading [config.map_name]...")
+	INIT_ANNOUNCE("Loading [config.map_name]...")
 	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())
@@ -320,13 +318,13 @@ Used by the AI doomsday and the self-destruct nuke.
 	var/mining_traits_to_load = GLOB.mining_traits[SSrandommining.traits]
 	if(config.minetype != "none")
 		if(mining_map_to_load)
-			add_startupmessage("MINING MAP: Loading mining level...")
+			INIT_ANNOUNCE("MINING MAP: Loading mining level...")
 			if(!mining_traits_to_load)
-				add_startupmessage("MINING MAP ERROR: No z-level traits detected, loading without traits.")
+				INIT_ANNOUNCE("MINING MAP ERROR: No z-level traits detected, loading without traits.")
 			LoadGroup(FailedZs, "Mining Level", "map_files/Mining", mining_map_to_load, default_traits = mining_traits_to_load)
-			add_startupmessage("MINING MAP: Loaded successfully.")
+			INIT_ANNOUNCE("MINING MAP: Loaded successfully.")
 		if(!mining_map_to_load)
-			add_startupmessage("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
+			INIT_ANNOUNCE("MINING MAP ERROR: No loadable map z-levels detected, reverting to backup mining system!")
 			if(config.minetype == "lavaland")
 				LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
 			else if (!isnull(config.minetype) && config.minetype != "none")
@@ -345,10 +343,10 @@ Used by the AI doomsday and the self-destruct nuke.
 #undef INIT_ANNOUNCE
 
 	// Custom maps are removed after station loading so the map files does not persist for no reason.
-	if(config.map_path == "custom")
+	if(config.map_path == CUSTOM_MAP_PATH)
 		fdel("_maps/custom/[config.map_file]")
 		// And as the file is now removed set the next map to default.
-		next_map_config = load_map_config(default_to_box = TRUE)
+		next_map_config = load_default_map_config()
 
 GLOBAL_LIST_EMPTY(the_station_areas)
 
@@ -380,7 +378,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	var/pmv = CONFIG_GET(flag/preference_map_voting)
 	if(pmv)
 		for (var/client/c in GLOB.clients)
-			var/vote = c.prefs.preferred_map
+			var/vote = c.prefs.read_preference(/datum/preference/choiced/preferred_map)
 			if (!vote)
 				if (global.config.defaultmap)
 					mapvotes[global.config.defaultmap.map_name] += 1
@@ -418,7 +416,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 		if(pmv)
 			mapvotes[map] = mapvotes[map]*VM.voteweight
 
-	var/pickedmap = pickweight(mapvotes)
+	var/pickedmap = pick_weight(mapvotes)
 	if (!pickedmap)
 		return
 	var/datum/map_config/VM = global.config.maplist[pickedmap]
@@ -436,7 +434,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/changemap(datum/map_config/VM)
 	if(!VM.MakeNextMap())
-		next_map_config = load_map_config(default_to_box = TRUE)
+		next_map_config = load_default_map_config()
 		message_admins("Failed to set new map with next_map.json for [VM.map_name]! Using default as backup!")
 		return
 
@@ -456,11 +454,11 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/preloadRuinTemplates()
 	// Still supporting bans by filename
-	var/list/banned = generateMapList("[global.config.directory]/lavaruinblacklist.txt")
-	banned += generateMapList("[global.config.directory]/spaceruinblacklist.txt")
-	banned += generateMapList("[global.config.directory]/iceruinblacklist.txt")
+	var/list/banned = generateMapList("lavaruinblacklist.txt")
+	banned += generateMapList("spaceruinblacklist.txt")
+	banned += generateMapList("iceruinblacklist.txt")
 
-	for(var/item in sortList(subtypesof(/datum/map_template/ruin), /proc/cmp_ruincost_priority))
+	for(var/item in sort_list(subtypesof(/datum/map_template/ruin), /proc/cmp_ruincost_priority))
 		var/datum/map_template/ruin/ruin_type = item
 		// screen out the abstract subtypes
 		if(!initial(ruin_type.id))
@@ -493,7 +491,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 //SKYRAT EDIT END//
 
 /datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
-	var/list/unbuyable = generateMapList("[global.config.directory]/unbuyableshuttles.txt")
+	var/list/unbuyable = generateMapList("unbuyableshuttles.txt")
 
 	for(var/item in subtypesof(/datum/map_template/shuttle))
 		var/datum/map_template/shuttle/shuttle_type = item
@@ -542,8 +540,10 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	var/list/possible_options = GLOB.potentialRandomZlevels + "Custom"
 	var/away_name
 	var/datum/space_level/away_level
-
-	var/answer = input("What kind ? ","Away") as null|anything in possible_options
+	var/secret = FALSE
+	if(tgui_alert(usr, "Do you want your mission secret? (This will prevent ghosts from looking at your map in any way other than through a living player's eyes.)", "Are you $$$ekret?", list("Yes", "No")) == "Yes")
+		secret = TRUE
+	var/answer = input("What kind?","Away") as null|anything in possible_options
 	switch(answer)
 		if("Custom")
 			var/mapfile = input("Pick file:", "File") as null|file
@@ -552,13 +552,13 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 			away_name = "[mapfile] custom"
 			to_chat(usr,span_notice("Loading [away_name]..."))
 			var/datum/map_template/template = new(mapfile, "Away Mission")
-			away_level = template.load_new_z()
+			away_level = template.load_new_z(secret)
 		else
 			if(answer in GLOB.potentialRandomZlevels)
 				away_name = answer
 				to_chat(usr,span_notice("Loading [away_name]..."))
 				var/datum/map_template/template = new(away_name, "Away Mission")
-				away_level = template.load_new_z()
+				away_level = template.load_new_z(secret)
 			else
 				return
 
@@ -657,8 +657,8 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 	return isolated_ruins_z.z_value
 
 /datum/controller/subsystem/mapping/proc/spawn_maintenance_loot()
-	for(var/obj/effect/spawner/lootdrop/maintenance/spawner as anything in GLOB.maintenance_loot_spawners)
+	for(var/obj/effect/spawner/random/maintenance/spawner as anything in GLOB.maintenance_loot_spawners)
 		CHECK_TICK
 
 		spawner.spawn_loot()
-		spawner.hide()
+		qdel(spawner)

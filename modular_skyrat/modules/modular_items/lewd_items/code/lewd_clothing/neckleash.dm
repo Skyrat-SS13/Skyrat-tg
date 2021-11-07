@@ -27,7 +27,7 @@
 /datum/status_effect/leash_pet/on_apply()
 	redirect_component = WEAKREF(owner.AddComponent(/datum/component/redirect, list(COMSIG_LIVING_RESIST = CALLBACK(src, .proc/owner_resist))))
 	if(!owner.stat)
-		to_chat(owner, "<span class='userdanger'>You have been leashed!</span>")
+		to_chat(owner, span_userdanger("You have been leashed!"))
 	return ..()
 
 //This lets the pet resist their leash
@@ -39,7 +39,7 @@
 		//deleash = 100
 	if(do_mob(owner, owner, deleash))//do_mob creates a progress bar and then enacts the code after. Owner, owner, because it's an act on themself
 		if(!QDELETED(src))
-			to_chat(owner, "<span class='warning'>[owner] has removed their leash!</span>")
+			to_chat(owner, span_warning("[owner] has removed their leash!"))
 			owner.remove_status_effect(/datum/status_effect/leash_pet)
 
 /obj/item/leash
@@ -120,7 +120,7 @@
 /obj/item/leash/attack(mob/living/carbon/human/C, mob/living/user) //C is the target, user is the one with the leash
 	.=..()
 	if(C.has_status_effect(/datum/status_effect/leash_pet)) //If the pet is already leashed, do not leash them. For the love of god.
-		to_chat(user, "<span class='notice'>[C] has already been leashed.</span>")
+		to_chat(user, span_notice("[C] has already been leashed."))
 		return
 	if(istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/petcollar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/electropack/shockcollar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/kink_collar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/kink_collar/locked))
 		var/leashtime = 50
@@ -144,7 +144,7 @@
 			for(var/mob/viewing in viewers(user, null))
 				if(viewing == leash_master)
 				else
-					viewing.show_message("<span class='warning'>[leash_pet] has been leashed by [leash_master]!</span>", 1)
+					viewing.show_message(span_warning("[leash_pet] has been leashed by [leash_master]!"), 1)
 			if(leash_pet.has_status_effect(/datum/status_effect/leash_dom)) //Pet leashed themself. They are not the dom
 				leash_pet.apply_status_effect(/datum/status_effect/leash_freepet)
 				leash_pet.remove_status_effect(/datum/status_effect/leash_dom)
@@ -154,9 +154,9 @@
 					return
 				if(!(leash_pet.get_item_by_slot(ITEM_SLOT_NECK))) //The pet has slipped their collar and is not the pet anymore.
 					for(var/mob/viewing in viewers(user, null))
-						viewing.show_message("<span class='notice'>[leash_pet] has slipped out of their collar!!</span>", 1)
-					to_chat(leash_pet, "<span class='notice'>You have slipped out of your collar!</span>")
-					to_chat(loc, "<span class='notice'>[leash_pet] has slipped out of their collar!</span>")
+						viewing.show_message(span_notice("[leash_pet] has slipped out of their collar!!"), 1)
+					to_chat(leash_pet, span_notice("You have slipped out of your collar!"))
+					to_chat(loc, span_notice("[leash_pet] has slipped out of their collar!"))
 					leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
 
 				if(!leash_pet.has_status_effect(/datum/status_effect/leash_pet)) //If there is no pet, there is no dom. Loop breaks.
@@ -174,7 +174,7 @@
 
 	else //No collar, no fun
 		var/leash_message = pick("Your pet needs a collar")
-		to_chat(user, "<span class='notice'>[leash_message]</span>")
+		to_chat(user, span_notice("[leash_message]"))
 
 /obj/effect/ebeam/leash
 	name = "leash"
@@ -273,8 +273,8 @@
 		return
 	if(leash_pet.x > leash_master.x + 3 || leash_pet.x < leash_master.x - 3 || leash_pet.y > leash_master.y + 3 || leash_pet.y < leash_master.y - 3)
 		//var/leash_knockdown_message = "[leash_pet] got pulled to the ground by their leash!"
-		//to_chat(leash_master, "<span class='notice'>[leash_knockdown_message]</span>")
-		//to_chat(leash_pet, "<span class='notice'>[leash_knockdown_message]</span>")
+		//to_chat(leash_master, span_notice("[leash_knockdown_message]"))
+		//to_chat(leash_pet, span_notice("[leash_knockdown_message]"))
 		leash_pet.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 
 	//This code is to check if the pet has gotten too far away, and then break the leash.
@@ -287,11 +287,11 @@
 		var/leash_break_message = "The leash snapped free from [leash_pet]!"
 		for(var/mob/viewing in viewers(leash_pet, null))
 			if(viewing == leash_master)
-				to_chat(leash_master, "<span class='warning'>The leash snapped free from your pet!</span>")
+				to_chat(leash_master, span_warning("The leash snapped free from your pet!"))
 			if(viewing == leash_pet)
-				to_chat(leash_pet, "<span class='warning'>Your leash has popped from your collar!</span>")
+				to_chat(leash_pet, span_warning("Your leash has popped from your collar!"))
 			else
-				viewing.show_message("<span class='warning'>[leash_break_message]</span>", 1)
+				viewing.show_message(span_warning("[leash_break_message]"), 1)
 		leash_pet.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 		leash_pet.adjustOxyLoss(5)
 		leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
@@ -398,9 +398,9 @@
 		var/leash_break_message = "The leash snapped free from [leash_pet]!"
 		for(var/mob/viewing in viewers(leash_pet, null))
 			if(viewing == leash_pet)
-				to_chat(leash_pet, "<span class='warning'>Your leash has popped from your collar!</span>")
+				to_chat(leash_pet, span_warning("Your leash has popped from your collar!"))
 			else
-				viewing.show_message("<span class='warning'>[leash_break_message]</span>", 1)
+				viewing.show_message(span_warning("[leash_break_message]"), 1)
 		leash_pet.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 		leash_pet.adjustOxyLoss(5)
 		leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
@@ -426,7 +426,7 @@
 	if(leash_master.is_holding_item_of_type(/obj/item/leash) || istype(leash_master.get_item_by_slot(ITEM_SLOT_BELT), /obj/item/leash))
 		return  //Dom still has the leash as it turns out. Cancel the proc.
 	for(var/mob/viewing in viewers(leash_master, null))
-		viewing.show_message("<span class='notice'>[leash_master] has dropped the leash.</span>", 1)
+		viewing.show_message(span_notice("[leash_master] has dropped the leash."), 1)
 	//DOM HAS DROPPED LEASH. PET IS FREE. SCP HAS BREACHED CONTAINMENT.
 	leash_pet.remove_movespeed_modifier(/datum/movespeed_modifier/leash_pet/leash_pet_slowdown)
 	leash_master.remove_status_effect(/datum/status_effect/leash_dom) //No dom with no leash. We will get a new dom if the leash is picked back up.
@@ -537,7 +537,7 @@
 /obj/item/leash/attack(mob/living/carbon/C, mob/living/user) //C is the target, user is the one with the leash
 	.=..()
 	if(C.has_status_effect(/datum/status_effect/leash_pet)) //If the pet is already leashed, do not leash them. For the love of god.
-		to_chat(user, "<span class='notice'>[C] has already been leashed.</span>")
+		to_chat(user, span_notice("[C] has already been leashed."))
 		return
 	if(istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/petcollar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/electropack/shockcollar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/kink_collar) || istype(C.get_item_by_slot(ITEM_SLOT_NECK), /obj/item/clothing/neck/kink_collar/locked))
 		var/leashtime = 50
@@ -562,7 +562,7 @@
 			for(var/mob/viewing in viewers(user, null))
 				if(viewing == leash_master)
 				else
-					viewing.show_message("<span class='warning'>[leash_pet] has been leashed by [leash_master]!</span>", 1)
+					viewing.show_message(span_warning("[leash_pet] has been leashed by [leash_master]!"), 1)
 			if(leash_pet.has_status_effect(/datum/status_effect/leash_dom)) //Pet leashed themself. They are not the dom
 				leash_pet.apply_status_effect(/datum/status_effect/leash_freepet)
 				leash_pet.remove_status_effect(/datum/status_effect/leash_dom)
@@ -572,9 +572,9 @@
 					return
 				if(!(leash_pet.get_item_by_slot(ITEM_SLOT_NECK))) //The pet has slipped their collar and is not the pet anymore.
 					for(var/mob/viewing in viewers(user, null))
-						viewing.show_message("<span class='notice'>[leash_pet] has slipped out of their collar!!</span>", 1)
-					to_chat(leash_pet, "<span class='notice'>You have slipped out of your collar!</span>")
-					to_chat(loc, "<span class='notice'>[leash_pet] has slipped out of their collar!</span>")
+						viewing.show_message(span_notice("[leash_pet] has slipped out of their collar!!"), 1)
+					to_chat(leash_pet, span_notice("You have slipped out of your collar!"))
+					to_chat(loc, span_notice("[leash_pet] has slipped out of their collar!"))
 					leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
 
 					qdel(leashrope)
@@ -595,7 +595,7 @@
 
 	else //No collar, no fun
 		var/leash_message = pick("Your pet needs a collar")
-		to_chat(user, "<span class='notice'>[leash_message]</span>")
+		to_chat(user, span_notice("[leash_message]"))
 
 //Called when the leash is used in hand
 //Tugs the pet closer
@@ -685,8 +685,8 @@
 		return
 	if(leash_pet.x > leash_master.x + 3 || leash_pet.x < leash_master.x - 3 || leash_pet.y > leash_master.y + 3 || leash_pet.y < leash_master.y - 3)
 		//var/leash_knockdown_message = "[leash_pet] got pulled to the ground by their leash!"
-		//to_chat(leash_master, "<span class='notice'>[leash_knockdown_message]</span>")
-		//to_chat(leash_pet, "<span class='notice'>[leash_knockdown_message]</span>")
+		//to_chat(leash_master, span_notice("[leash_knockdown_message]"))
+		//to_chat(leash_pet, span_notice("[leash_knockdown_message]"))
 		leash_pet.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 
 	//This code is to check if the pet has gotten too far away, and then break the leash.
@@ -699,11 +699,11 @@
 		var/leash_break_message = "The leash snapped free from [leash_pet]!"
 		for(var/mob/viewing in viewers(leash_pet, null))
 			if(viewing == leash_master)
-				to_chat(leash_master, "<span class='warning'>The leash snapped free from your pet!</span>")
+				to_chat(leash_master, span_warning("The leash snapped free from your pet!"))
 			if(viewing == leash_pet)
-				to_chat(leash_pet, "<span class='warning'>Your leash has popped from your collar!</span>")
+				to_chat(leash_pet, span_warning("Your leash has popped from your collar!"))
 			else
-				viewing.show_message("<span class='warning'>[leash_break_message]</span>", 1)
+				viewing.show_message(span_warning("[leash_break_message]"), 1)
 		leash_pet.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 		leash_pet.adjustOxyLoss(5)
 		leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
@@ -810,9 +810,9 @@
 		var/leash_break_message = "The leash snapped free from [leash_pet]!"
 		for(var/mob/viewing in viewers(leash_pet, null))
 			if(viewing == leash_pet)
-				to_chat(leash_pet, "<span class='warning'>Your leash has popped from your collar!</span>")
+				to_chat(leash_pet, span_warning("Your leash has popped from your collar!"))
 			else
-				viewing.show_message("<span class='warning'>[leash_break_message]</span>", 1)
+				viewing.show_message(span_warning("[leash_break_message]"), 1)
 		leash_pet.apply_effect(20, EFFECT_KNOCKDOWN, 0)
 		leash_pet.adjustOxyLoss(5)
 		leash_pet.remove_status_effect(/datum/status_effect/leash_pet)
@@ -832,7 +832,7 @@
 	if(leash_master.is_holding_item_of_type(/obj/item/leash) || istype(leash_master.get_item_by_slot(ITEM_SLOT_BELT), /obj/item/leash))
 		return  //Dom still has the leash as it turns out. Cancel the proc.
 	for(var/mob/viewing in viewers(leash_master, null))
-		viewing.show_message("<span class='notice'>[leash_master] has dropped the leash.</span>", 1)
+		viewing.show_message(span_notice("[leash_master] has dropped the leash."), 1)
 	//DOM HAS DROPPED LEASH. PET IS FREE. SCP HAS BREACHED CONTAINMENT.
 	leash_pet.remove_movespeed_modifier(/datum/movespeed_modifier/leash_pet/leash_pet_slowdown)
 	leash_master.remove_status_effect(/datum/status_effect/leash_dom) //No dom with no leash. We will get a new dom if the leash is picked back up.

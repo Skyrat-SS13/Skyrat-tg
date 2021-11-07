@@ -266,7 +266,7 @@
 	icon_state = "combat_off"
 	screen_loc = ui_combat_toggle
 
-/atom/movable/screen/combattoggle/Initialize()
+/atom/movable/screen/combattoggle/Initialize(mapload)
 	. = ..()
 	update_appearance()
 
@@ -673,8 +673,9 @@
 	plane = SPLASHSCREEN_PLANE
 	var/client/holder
 
-/* SKYRAT EDIT REMOVAL
-/atom/movable/screen/splash/New(client/C, visible, use_previous_title) //TODO: Make this use INITIALIZE_IMMEDIATE, except its not easy
+INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
+
+/atom/movable/screen/splash/Initialize(mapload, client/C, visible, use_previous_title)
 	. = ..()
 	if(!istype(C))
 		return
@@ -689,12 +690,10 @@
 			icon = SStitle.icon
 	else
 		if(!SStitle.previous_icon)
-			qdel(src)
-			return
+			return INITIALIZE_HINT_QDEL
 		icon = SStitle.previous_icon
 
 	holder.screen += src
-*/
 
 /atom/movable/screen/splash/proc/Fade(out, qdel_after = TRUE)
 	if(QDELETED(src))

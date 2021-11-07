@@ -9,14 +9,17 @@
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 	dir = NONE // dir will contain dominant direction for junction pipes
 	max_integrity = 200
-	armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
+	armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 100, BOMB = 0, BIO = 100, FIRE = 90, ACID = 30)
 	layer = DISPOSAL_PIPE_LAYER // slightly lower than wires and other pipes
-	flags_1 = RAD_PROTECT_CONTENTS_1 | RAD_NO_CONTAMINATE_1
 	damage_deflection = 10
 	var/dpdir = NONE // bitmask of pipe directions
 	var/initialize_dirs = NONE // bitflags of pipe directions added on init, see \code\_DEFINES\pipe_construction.dm
 	var/flip_type // If set, the pipe is flippable and becomes this type when flipped
 	var/obj/structure/disposalconstruct/stored
+	//SKYRAT EDIT: HURTSPOSALS
+	/// Whether a disposal pipe will hurt if a person changes direction. `FALSE` for hurting, `TRUE` to prevent making them hurt.
+	var/padded_corners = FALSE
+	//SKYRAT EDIT: HURTSPOSALS
 
 
 /obj/structure/disposalpipe/Initialize(mapload, obj/structure/disposalconstruct/make_from)
@@ -80,7 +83,17 @@
 	var/obj/structure/disposalholder/H2 = locate() in P
 	if(H2 && !H2.active)
 		H.merge(H2)
-
+	/// SKYRAT EDIT START - HURTSPOSAL
+	if(dir != P.dir && !padded_corners)
+		if(prob(20))
+			for(var/objects_within in H.contents)
+				if(!isliving(objects_within))
+					continue
+				var/mob/living/living_within = objects_within
+				if(living_within.stat == DEAD)
+					continue
+				living_within.adjustBruteLoss(5)
+	/// SKYRAT EDIT END
 	H.forceMove(P)
 	return P
 
@@ -93,7 +106,7 @@
 	var/eject_range = 5
 	var/turf/open/floor/floorturf
 
-	if(isfloorturf(T) && T.intact) //intact floor, pop the tile
+	if(isfloorturf(T) && T.overfloor_placed) // pop the tile if present
 		floorturf = T
 		if(floorturf.floor_tile)
 			new floorturf.floor_tile(T)
@@ -216,7 +229,7 @@
 	icon_state = "pipe-t"
 	var/obj/linked // the linked obj/machinery/disposal or obj/disposaloutlet
 
-/obj/structure/disposalpipe/trunk/Initialize()
+/obj/structure/disposalpipe/trunk/Initialize(mapload)
 	. = ..()
 	getlinked()
 

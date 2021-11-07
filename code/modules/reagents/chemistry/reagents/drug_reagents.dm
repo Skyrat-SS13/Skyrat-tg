@@ -680,6 +680,7 @@
 		return
 
 	ADD_TRAIT(invisible_man, TRAIT_INVISIBLE_MAN, name)
+	ADD_TRAIT(invisible_man, TRAIT_HIDE_EXTERNAL_ORGANS, name)
 
 	var/datum/dna/druggy_dna = invisible_man.has_dna()
 	if(druggy_dna?.species)
@@ -695,6 +696,7 @@
 	if(HAS_TRAIT(invisible_man, TRAIT_INVISIBLE_MAN))
 		invisible_man.add_to_all_human_data_huds() //Is this safe, what do you think, Floyd?
 		REMOVE_TRAIT(invisible_man, TRAIT_INVISIBLE_MAN, name)
+		REMOVE_TRAIT(invisible_man, TRAIT_HIDE_EXTERNAL_ORGANS, name)
 		to_chat(invisible_man, span_notice("As you sober up, opacity once again returns to your body meats."))
 
 		var/datum/dna/druggy_dna = invisible_man.has_dna()
@@ -756,7 +758,7 @@
 	kronkaine_fiend.adjustOrganLoss(ORGAN_SLOT_HEART, 0.4 * REM * delta_time)
 	kronkaine_fiend.Jitter(10 * REM * delta_time)
 	kronkaine_fiend.AdjustSleeping(-20 * REM * delta_time)
-	kronkaine_fiend.drowsyness = max(kronkaine_fiend.drowsyness - (5 * REM * delta_time), 0)
+	kronkaine_fiend.adjust_drowsyness(-5 * REM * delta_time)
 	if(volume < 10)
 		return
 	for(var/possible_purger in kronkaine_fiend.reagents.reagent_list)

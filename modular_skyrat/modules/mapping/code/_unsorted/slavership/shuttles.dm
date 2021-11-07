@@ -80,7 +80,7 @@
 	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/gun/ballistic/automatic/pistol/cfa_snub/empty,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub,
@@ -110,7 +110,7 @@
 	skillchips = list(/obj/item/skillchip/job/engineer)
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/radio,
-		/obj/item/melee/classic_baton/telescopic,
+		/obj/item/melee/baton/telescopic,
 		/obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,
 		/obj/item/ammo_box/magazine/multi_sprite/cfa_ruby/ap,

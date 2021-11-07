@@ -542,7 +542,7 @@
 	starting_temp = T20C+20
 
 /obj/effect/abstract/liquid_turf/immutable/Initialize()
-	..()
+	. = ..()
 	reagent_list = starting_mixture.Copy()
 	total_reagents = 0
 	for(var/key in reagent_list)

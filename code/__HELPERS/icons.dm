@@ -991,7 +991,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	if(job)
 		body.dna.species.pre_equip_species_outfit(job, body, TRUE)
 	if(outfit)
-		body.equipOutfit(outfit, TRUE)
+		body.equip_outfit_and_loadout(outfit, prefs, TRUE) //SKYRAT EDIT CHANGE
 
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
 	COMPILE_OVERLAYS(body)
@@ -1053,12 +1053,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	dummySave = null
 	fdel("tmp/dummySave.sav") //if you get the idea to try and make this more optimized, make sure to still call unlock on the savefile after every write to unlock it.
 
-/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null, override_skyrat = FALSE) /// SKYRAT EDIT - icon2html override instead of fully disabling it - Original: /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
-	// SKYRAT EDIT START - icon2html override instead of fully disabling it
-	if(!override_skyrat)
-		return "" //SKYRAT EDIT DISABLE - ICON2HTML
-	// SKYRAT EDIT END
-
+/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE, extra_classes = null)
 	if (!thing)
 		return
 	if(SSlag_switch.measures[DISABLE_USR_ICON2HTML] && usr && !HAS_TRAIT(usr, TRAIT_BYPASS_MEASURES))
@@ -1082,7 +1077,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	if (!isicon(I))
 		if (isfile(thing)) //special snowflake
-			var/name = sanitize_filename("[generate_asset_name(thing)].png")
+			var/name = SANITIZE_FILENAME("[generate_asset_name(thing)].png")
 			if (!SSassets.cache[name])
 				SSassets.transport.register_asset(name, thing)
 			for (var/thing2 in targets)
@@ -1163,8 +1158,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 //Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target, sourceonly = FALSE)
-	return ""
-	/* SKYRAT EDIT REMOVAL
 	if (!thing)
 		return
 	if(SSlag_switch.measures[DISABLE_USR_ICON2HTML] && usr && !HAS_TRAIT(usr, TRAIT_BYPASS_MEASURES))
@@ -1175,7 +1168,6 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	var/icon/I = getFlatIcon(thing)
 	return icon2html(I, target, sourceonly = sourceonly)
-*/
 
 GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
@@ -1231,5 +1223,58 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	GLOB.transformation_animation_objects -= src
 	if(filters && length(filters) >= filter_index)
 		filters -= filters[filter_index]
-	//else
-	// filters = null
+
+/**
+ * Center's an image.
+ * Requires:
+ * The Image
+ * The x dimension of the icon file used in the image
+ * The y dimension of the icon file used in the image
+ * eg: center_image(image_to_center, 32,32)
+ * eg2: center_image(image_to_center, 96,96)
+**/
+/proc/center_image(image/image_to_center, x_dimension = 0, y_dimension = 0)
+	if(!image_to_center)
+		return
+
+	if(!x_dimension || !y_dimension)
+		return
+
+	if((x_dimension == world.icon_size) && (y_dimension == world.icon_size))
+		return image_to_center
+
+	//Offset the image so that it's bottom left corner is shifted this many pixels
+	//This makes it infinitely easier to draw larger inhands/images larger than world.iconsize
+	//but still use them in game
+	var/x_offset = -((x_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+	var/y_offset = -((y_dimension / world.icon_size) - 1) * (world.icon_size * 0.5)
+
+	//Correct values under world.icon_size
+	if(x_dimension < world.icon_size)
+		x_offset *= -1
+	if(y_dimension < world.icon_size)
+		y_offset *= -1
+
+	image_to_center.pixel_x = x_offset
+	image_to_center.pixel_y = y_offset
+
+	return image_to_center
+
+///Flickers an overlay on an atom
+/proc/flick_overlay_static(overlay_image, atom/source, duration)
+	set waitfor = FALSE
+	if(!source || !overlay_image)
+		return
+	source.add_overlay(overlay_image)
+	sleep(duration)
+	source.cut_overlay(overlay_image)
+
+///Perform a shake on an atom, resets its position afterwards
+/atom/proc/Shake(pixelshiftx = 15, pixelshifty = 15, duration = 250)
+	var/initialpixelx = pixel_x
+	var/initialpixely = pixel_y
+	var/shiftx = rand(-pixelshiftx,pixelshiftx)
+	var/shifty = rand(-pixelshifty,pixelshifty)
+	animate(src, pixel_x = pixel_x + shiftx, pixel_y = pixel_y + shifty, time = 0.2, loop = duration)
+	pixel_x = initialpixelx
+	pixel_y = initialpixely

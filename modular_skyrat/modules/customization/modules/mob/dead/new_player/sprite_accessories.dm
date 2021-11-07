@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
+
 /datum/sprite_accessory
 	///Unique key of an accessroy. All tails should have "tail", ears "ears" etc.
 	var/key = null
@@ -41,6 +43,8 @@
 	var/list/ckey_whitelist
 	///Whether this feature is genetic, and thus modifiable by DNA consoles
 	var/genetic = FALSE
+	var/uses_emissives = FALSE
+	var/color_layer_names
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -50,11 +54,23 @@
 			if(USE_MATRIXED_COLORS)
 				default_color = DEFAULT_MATRIXED
 			else
-				default_color = "FFF"
+				default_color = "#FFFFFF"
 	if(name == "None")
 		factual = FALSE
 	if(color_src == USE_MATRIXED_COLORS && default_color != DEFAULT_MATRIXED)
 		default_color = DEFAULT_MATRIXED
+	if (color_src == USE_MATRIXED_COLORS)
+		color_layer_names = list()
+		if (!GLOB.cached_mutant_icon_files[icon])
+			GLOB.cached_mutant_icon_files[icon] = icon_states(new /icon(icon))
+		for (var/layer in relevent_layers)
+			var/layertext = layer == BODY_BEHIND_LAYER ? "BEHIND" : (layer == BODY_ADJ_LAYER ? "ADJ" : "FRONT")
+			if ("m_[key]_[icon_state]_[layertext]_primary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["1"] = "primary"
+			if ("m_[key]_[icon_state]_[layertext]_secondary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["2"] = "secondary"
+			if ("m_[key]_[icon_state]_[layertext]_tertiary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["3"] = "tertiary"
 
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return FALSE
@@ -179,15 +195,15 @@
 	name = "Knee-high - Bee (Old)"
 	icon_state = "bee_knee_old"
 
-/datum/sprite_accessory/underwear/socks/christmas_norm
+/datum/sprite_accessory/socks/christmas_norm
 	name = "Normal - Christmas"
 	icon_state = "christmas_norm"
 
-/datum/sprite_accessory/underwear/socks/candycaner_norm
+/datum/sprite_accessory/socks/candycaner_norm
 	name = "Normal - Red Candy Cane"
 	icon_state = "candycaner_norm"
 
-/datum/sprite_accessory/underwear/socks/candycaneg_norm
+/datum/sprite_accessory/socks/candycaneg_norm
 	name = "Normal - Green Candy Cane"
 	icon_state = "candycaneg_norm"
 
@@ -227,7 +243,7 @@
 	name = "Thigh-high - Fishnet"
 	icon_state = "fishnet"
 
-/datum/sprite_accessory/socks/fishnet_thigh
+/datum/sprite_accessory/socks/pantyhose_ripped
 	name = "Pantyhose - Ripped"
 	icon_state = "pantyhose_ripped"
 	use_static = null

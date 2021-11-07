@@ -5,11 +5,14 @@
 
 <!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
 
-## Why It's Good For The Game
+## How This Contributes To The Skyrat Roleplay Experience
 
-<!-- Please add a short description of why you think these changes would benefit the game. If you can't justify it in words, it might not be worth adding. -->
+<!-- Please add a short description of why you think these changes would benefit the game and the roleplay atmosphere of the server. If you can't justify it in words, it might not be worth adding. -->
 
 ## Changelog
+
+<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly mark your PRs to prevent unnecessary GBP loss. You can read up on GBP and it's effects on PRs in the tgstation guides for contributors. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
+
 :cl:
 add: Added new mechanics or gameplay changes
 add: Added more things

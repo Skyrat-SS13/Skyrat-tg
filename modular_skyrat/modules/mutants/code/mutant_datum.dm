@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(mutant_infection_list) // A list of all mutant_infection organ
 
 /datum/component/mutant_infection/proc/regenerate()
 	if(!host.mind)
-		var/list/candidates = pollCandidatesForMob("Do you want to play as a mutant([host.name])?", M = host)
+		var/list/candidates = poll_candidates_for_mob("Do you want to play as a mutant([host.name])?", target_mob = host)
 		if(!candidates.len)
 			return
 		var/client/C = pick_n_take(candidates)

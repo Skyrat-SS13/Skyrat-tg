@@ -3,7 +3,7 @@
 	generic = "Horns"
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER, BODY_ADJ_LAYER)
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/horns.dmi'
-	default_color = "555"
+	default_color = "#555555"
 	genetic = TRUE
 
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)

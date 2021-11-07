@@ -48,7 +48,7 @@
 				gender_string += ", "
 			gender_string += "[spec_key]"
 			first = FALSE
-	var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs.real_name])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.\nDo you wanna proceed?"
+	var/warning_string = "WARNING: This spawner will use your currently selected character in prefs ([user.client.prefs?.read_preference(/datum/preference/name/real_name)])\nMake sure that the character is not used as a station crew, or would have a good reason to be this role.\nDo you wanna proceed?"
 	if(species_string)
 		warning_string += "\nThis role is restricted to those species: [species_string]"
 	if(gender_string)
@@ -64,10 +64,10 @@
 		alias = msg
 	if(!user || !user.client)
 		return
-	if(species_whitelist && !(user.client.prefs.pref_species.id in species_whitelist))
+	if(species_whitelist && !(user.client.prefs?.read_preference(/datum/preference/choiced/species) in species_whitelist))
 		alert(user, "Sorry, This spawner is limited to those species: [species_string]. Please switch your character.", "", "Ok")
 		return
-	if(gender_whitelist && !(user.client.prefs.gender in gender_whitelist))
+	if(gender_whitelist && !(user.client.prefs?.read_preference(/datum/preference/choiced/gender) in gender_whitelist))
 		alert(user, "Sorry, This spawner is limited to those genders: [gender_string]. Please switch your character.", "", "Ok")
 		return
 	if(used)
@@ -126,12 +126,9 @@
 				else
 					equipped.forceMove(get_turf(H))
 
-	var/list/packed_items
 	if(gets_loadout)
-		packed_items = user.client.prefs.equip_preference_loadout(H, FALSE, null)
-
-	if(packed_items)
-		user.client.prefs.add_packed_items(H, packed_items, FALSE)
+		for(var/datum/loadout_item/item as anything in loadout_list_to_datums(H?.client?.prefs?.loadout_list))
+			item.post_equip_item(H.client?.prefs, H)
 
 	//Override access of the ID card here
 	var/obj/item/card/id/ID

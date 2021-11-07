@@ -63,7 +63,7 @@
 	var/gunlight_state = "flight"
 
 	var/can_bayonet = FALSE //if a bayonet can be added or removed if it already has one.
-	var/obj/item/kitchen/knife/bayonet
+	var/obj/item/knife/bayonet
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0
 
@@ -127,7 +127,7 @@
 
 	burst_size = 1
 
-	sortList(fire_select_modes, /proc/cmp_numeric_asc)
+	sort_list(fire_select_modes, /proc/cmp_numeric_asc)
 
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
@@ -246,8 +246,13 @@
 	return TRUE
 
 //called after the gun has successfully fired its chambered ammo.
-/obj/item/gun/proc/process_chamber()
-	return FALSE
+/obj/item/gun/proc/process_chamber(empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)
+	handle_chamber(empty_chamber, from_firing, chamber_next_round)
+	SEND_SIGNAL(src, COMSIG_GUN_CHAMBER_PROCESSED)
+
+/obj/item/gun/proc/handle_chamber(empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)
+	return
+
 
 //check if there's enough ammo/energy/whatever to shoot one time
 //i.e if clicking would make it shoot
@@ -303,6 +308,9 @@
 
 /obj/item/gun/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
+	return fire_gun(target, user, flag, params)
+
+/obj/item/gun/proc/fire_gun(atom/target, mob/living/user, flag, params)
 	if(QDELETED(target))
 		return
 	if(firing_burst)
@@ -518,7 +526,7 @@
 			return ..()
 	return
 
-/obj/item/gun/attack_obj(obj/O, mob/living/user, params)
+/obj/item/gun/attack_atom(obj/O, mob/living/user, params)
 	if(user.combat_mode)
 		if(bayonet)
 			O.attackby(bayonet, user)
@@ -541,8 +549,8 @@
 			alight = new(src)
 			if(loc == user)
 				alight.Grant(user)
-	else if(istype(I, /obj/item/kitchen/knife))
-		var/obj/item/kitchen/knife/K = I
+	else if(istype(I, /obj/item/knife))
+		var/obj/item/knife/K = I
 		if(!can_bayonet || !K.bayonet || bayonet) //ensure the gun has an attachment point available, and that the knife is compatible with it.
 			return ..()
 		if(!user.transferItemToLoc(I, src))
@@ -562,7 +570,7 @@
 		return
 	if((can_flashlight && gun_light) && (can_bayonet && bayonet)) //give them a choice instead of removing both
 		var/list/possible_items = list(gun_light, bayonet)
-		var/obj/item/item_to_remove = input(user, "Select an attachment to remove", "Attachment Removal") as null|obj in sortNames(possible_items)
+		var/obj/item/item_to_remove = input(user, "Select an attachment to remove", "Attachment Removal") as null|obj in sort_names(possible_items)
 		if(!item_to_remove || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 			return
 		return remove_gun_attachment(user, I, item_to_remove)

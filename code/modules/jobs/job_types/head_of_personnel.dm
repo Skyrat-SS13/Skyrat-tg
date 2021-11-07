@@ -37,8 +37,8 @@
 	)
 
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/trophy/silver_cup)
-
-	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS
+	rpg_title = "Guild Questgiver"
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
@@ -52,21 +52,26 @@
 	jobtype = /datum/job/head_of_personnel
 
 	id = /obj/item/card/id/advanced/silver
+	id_trim = /datum/id_trim/job/head_of_personnel
+	uniform = /obj/item/clothing/under/rank/civilian/head_of_personnel
+	backpack_contents = list(
+		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/modular_computer/tablet/preset/advanced/command = 1,
+		/obj/item/storage/box/ids = 1,
+		)
 	belt = /obj/item/pda/heads/hop
 	ears = /obj/item/radio/headset/heads/hop
-	uniform = /obj/item/clothing/under/rank/civilian/head_of_personnel
-	shoes = /obj/item/clothing/shoes/sneakers/brown
 	head = /obj/item/clothing/head/hopcap
-	backpack_contents = list(/obj/item/storage/box/ids=1,\
-		/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced/command = 1)
-
-	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/hop)
+	shoes = /obj/item/clothing/shoes/sneakers/brown
 
 	backpack = /obj/item/storage/backpack/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	satchel = /obj/item/storage/backpack/satchel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	duffelbag = /obj/item/storage/backpack/duffel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 
-	id_trim = /datum/id_trim/job/head_of_personnel
+	chameleon_extras = list(
+		/obj/item/gun/energy/e_gun,
+		/obj/item/stamp/hop,
+		)
 
 /datum/outfit/job/hop/pre_equip(mob/living/carbon/human/H)
 	..()

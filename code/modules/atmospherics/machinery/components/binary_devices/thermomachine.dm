@@ -1,4 +1,5 @@
 #define THERMOMACHINE_SAFE_TEMPERATURE 500000
+#define THERMOMACHINE_POWER_CONVERSION 0.01
 
 /obj/machinery/atmospherics/components/binary/thermomachine
 	icon = 'icons/obj/atmospherics/components/thermomachine.dmi'
@@ -9,7 +10,7 @@
 
 	density = TRUE
 	max_integrity = 300
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 80, ACID = 30)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, FIRE = 80, ACID = 30)
 	layer = OBJ_LAYER
 	circuit = /obj/item/circuitboard/machine/thermomachine
 
@@ -40,18 +41,20 @@
 
 	// Efficiency dictates how much we throttle the heat exchange process.
 	var/efficiency = 1
+	///Efficiency minimum amount, min 0.25, max 1 (works best on higher laser tiers)
+	var/parts_efficiency = 1
 
-/obj/machinery/atmospherics/components/binary/thermomachine/Initialize()
+/obj/machinery/atmospherics/components/binary/thermomachine/Initialize(mapload)
 	. = ..()
 	RefreshParts()
 	update_appearance()
 
-/obj/machinery/atmospherics/components/binary/thermomachine/isConnectable()
+/obj/machinery/atmospherics/components/binary/thermomachine/is_connectable()
 	if(!anchored || panel_open)
 		return FALSE
 	. = ..()
 
-/obj/machinery/atmospherics/components/binary/thermomachine/getNodeConnects()
+/obj/machinery/atmospherics/components/binary/thermomachine/get_node_connects()
 	return list(dir, turn(dir, 180))
 
 /obj/machinery/atmospherics/components/binary/thermomachine/on_construction(obj_color, set_layer)
@@ -77,7 +80,7 @@
 		calculated_laser_rating += laser.rating
 	min_temperature = max(T0C - (base_cooling + calculated_laser_rating * 15), TCMB) //73.15K with T1 stock parts
 	max_temperature = T20C + (base_heating * calculated_laser_rating) //573.15K with T1 stock parts
-
+	parts_efficiency = min(calculated_laser_rating * 0.125, 1)
 
 /obj/machinery/atmospherics/components/binary/thermomachine/update_icon_state()
 	switch(target_temperature)
@@ -107,7 +110,7 @@
 		else
 			icon_state = "thermo_1"
 		return ..()
-	icon_state = "thermo_0"
+	icon_state = "thermo_base"
 	return ..()
 
 /obj/machinery/atmospherics/components/binary/thermomachine/update_overlays()
@@ -115,8 +118,8 @@
 	if(!initial(icon))
 		return
 	var/mutable_appearance/thermo_overlay = new(initial(icon))
-	. += getpipeimage(thermo_overlay, "pipe", dir, COLOR_LIME, piping_layer)
-	. += getpipeimage(thermo_overlay, "pipe", turn(dir, 180), COLOR_MOSTLY_PURE_RED, piping_layer)
+	. += get_pipe_image(thermo_overlay, "pipe", dir, COLOR_LIME, piping_layer)
+	. += get_pipe_image(thermo_overlay, "pipe", turn(dir, 180), COLOR_MOSTLY_PURE_RED, piping_layer)
 
 /obj/machinery/atmospherics/components/binary/thermomachine/examine(mob/user)
 	. = ..()
@@ -199,14 +202,14 @@
 			exchange_target = airs[2]
 
 		if(exchange_target.total_moles() < 5)
-			mole_eff_thermal_port = 0.001
+			mole_eff_thermal_port = 0.1
 		else
-			mole_eff_thermal_port = 1 - (1 / (exchange_target.total_moles() + 1)) * 5
+			mole_eff_thermal_port = max(1 - (1 / (exchange_target.total_moles() + 1)) * 5, 0.1)
 
 	if(main_port.total_moles() < 5)
-		mole_eff_main_port = 0.001
+		mole_eff_main_port = 0.1
 	else
-		mole_eff_main_port = 1 - (1 / (main_port.total_moles() + 1)) * 5
+		mole_eff_main_port = max(1 - (1 / (main_port.total_moles() + 1)) * 5, 0.1)
 
 	mole_efficiency = min(mole_eff_main_port, mole_eff_thermal_port)
 
@@ -225,6 +228,7 @@
 			efficiency *= clamp(log(1.55, exchange_target.total_moles()) * 0.15, 0.65, 1)
 
 		efficiency *= mole_efficiency
+		efficiency = max(efficiency, parts_efficiency)
 
 		if (exchange_target.temperature > THERMOMACHINE_SAFE_TEMPERATURE && safeties)
 			on = FALSE
@@ -244,17 +248,17 @@
 
 	if(!cooling)
 		efficiency *= mole_efficiency
+		efficiency = max(efficiency, parts_efficiency)
 
 	main_port.temperature = max((THERMAL_ENERGY(main_port) + (heat_amount * efficiency)) / main_port.heat_capacity(), TCMB)
 
-	heat_amount = abs(heat_amount)
+	heat_amount = min(abs(heat_amount), 1e8) * THERMOMACHINE_POWER_CONVERSION
 	var/power_usage = 0
+	var/power_efficiency = max(efficiency, 0.4)
 	if(abs(temperature_target_delta)  > 1)
-		power_usage = (heat_amount * 0.35 + idle_power_usage) ** (1.25 - (5e7 * efficiency) / (max(5e7, heat_amount)))
+		power_usage = (heat_amount * 0.05 + idle_power_usage) ** (1.05 - (5e7 * power_efficiency) / (max(5e7, heat_amount)))
 	else
 		power_usage = idle_power_usage
-	if(power_usage > 1e6)
-		power_usage *= efficiency
 
 	use_power(power_usage)
 	update_appearance()
@@ -283,7 +287,7 @@
 /obj/machinery/atmospherics/components/binary/thermomachine/default_change_direction_wrench(mob/user, obj/item/I)
 	if(!..())
 		return FALSE
-	SetInitDirections()
+	set_init_directions()
 	update_appearance()
 	return TRUE
 
@@ -296,15 +300,15 @@
 /obj/machinery/atmospherics/components/binary/thermomachine/proc/connect_pipes()
 	var/obj/machinery/atmospherics/node1 = nodes[1]
 	var/obj/machinery/atmospherics/node2 = nodes[2]
-	atmosinit()
+	atmos_init()
 	node1 = nodes[1]
 	if(node1)
-		node1.atmosinit()
-		node1.addMember(src)
+		node1.atmos_init()
+		node1.add_member(src)
 	node2 = nodes[2]
 	if(node2)
-		node2.atmosinit()
-		node2.addMember(src)
+		node2.atmos_init()
+		node2.add_member(src)
 	SSair.add_to_rebuild_queue(src)
 
 /obj/machinery/atmospherics/components/binary/thermomachine/proc/disconnect_pipes()
@@ -319,9 +323,9 @@
 			node2.disconnect(src)
 		nodes[2] = null
 	if(parents[1])
-		nullifyPipenet(parents[1])
+		nullify_pipenet(parents[1])
 	if(parents[2])
-		nullifyPipenet(parents[2])
+		nullify_pipenet(parents[2])
 
 /obj/machinery/atmospherics/components/binary/thermomachine/attackby_secondary(obj/item/item, mob/user, params)
 	. = ..()
@@ -383,7 +387,7 @@
 		return TRUE
 
 /obj/machinery/atmospherics/components/binary/thermomachine/proc/explode()
-	explosion(loc, 0, 0, 3, 3, TRUE)
+	explosion(loc, 0, 0, 3, 3, TRUE, explosion_cause = src)
 	var/datum/gas_mixture/main_port = airs[1]
 	var/datum/gas_mixture/exchange_target = airs[2]
 	if(main_port)
@@ -435,7 +439,7 @@
 	switch(action)
 		if("power")
 			on = !on
-			use_power = on ? ACTIVE_POWER_USE : IDLE_POWER_USE
+			update_use_power(on ? ACTIVE_POWER_USE : IDLE_POWER_USE)
 			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			. = TRUE
 		if("cooling")
@@ -485,7 +489,7 @@
 	on = TRUE
 	icon_state = "thermo_base_1"
 
-/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on/Initialize()
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on/Initialize(mapload)
 	. = ..()
 	if(target_temperature == initial(target_temperature))
 		target_temperature = min_temperature
@@ -496,7 +500,7 @@
 	greyscale_colors = COLOR_CYAN
 	cooling = TRUE
 
-/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on/coldroom/Initialize()
+/obj/machinery/atmospherics/components/binary/thermomachine/freezer/on/coldroom/Initialize(mapload)
 	. = ..()
 	target_temperature = COLD_ROOM_TEMP
 
@@ -508,3 +512,4 @@
 	icon_state = "thermo_base_1"
 
 #undef THERMOMACHINE_SAFE_TEMPERATURE
+#undef THERMOMACHINE_POWER_CONVERSION

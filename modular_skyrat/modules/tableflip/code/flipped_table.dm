@@ -50,7 +50,7 @@
 
 /obj/structure/flippedtable/CtrlShiftClick(mob/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src))
+	if(!istype(user) || !user.can_interact_with(src) || iscorticalborer(user)) //skyrat edit: no borer flipping
 		return FALSE
 	user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")
 	if(do_after(user, max_integrity/4))
@@ -64,7 +64,7 @@
 
 /obj/structure/table/CtrlShiftClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !user.can_interact_with(src) || isobserver(user))
+	if(!istype(user) || !user.can_interact_with(src) || isobserver(user) || iscorticalborer(user)) //skyrat edit: no borer flipping
 		return
 	if(can_flip)
 		user.visible_message("<span class='danger'>[user] starts flipping [src]!</span>", "<span class='notice'>You start flipping over the [src]!</span>")

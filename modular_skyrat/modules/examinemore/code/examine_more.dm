@@ -27,7 +27,7 @@ would only be recognisable with someone that had the syndicate trait.
 
 
 /obj/item/examine_more(mob/user)
-	. = list()
+	. = ..()
 	if(special_desc)
 		var/composed_message
 		switch(special_desc_requirement)
@@ -94,10 +94,6 @@ would only be recognisable with someone that had the syndicate trait.
 						composed_message = "You note the following because of your loyalty to <b>[faction_i]</b>: <br>"
 						composed_message += special_desc
 						. += composed_message
-
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE_MORE, user, .)
-	if(!LAZYLEN(.)) // lol ..length
-		return list("<span class='notice'><i>You examine [src] closer, but find nothing of interest...</i></span>")
 
 //////////
 //Examples:

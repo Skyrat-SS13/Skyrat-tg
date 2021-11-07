@@ -2,7 +2,7 @@
 	name = "Spontaneous Brain Trauma"
 	typepath = /datum/round_event/brain_trauma
 	weight = 25
-	max_occurrences = 0 //SKYRAT EDIT ADDITION - EVENTS
+	max_occurrences = 0 //SKYRAT EDIT CHANGE
 
 /datum/round_event/brain_trauma
 	fakeable = FALSE
@@ -28,7 +28,7 @@
 		15;TRAUMA_RESILIENCE_LOBOTOMY,
 		5;TRAUMA_RESILIENCE_MAGIC)
 
-	var/trauma_type = pickweight(list(
+	var/trauma_type = pick_weight(list(
 		BRAIN_TRAUMA_MILD = 60,
 		BRAIN_TRAUMA_SEVERE = 30,
 		BRAIN_TRAUMA_SPECIAL = 10

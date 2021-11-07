@@ -31,17 +31,32 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 			nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
 			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE)
 			flick_emote_popup_on_mob("combat", 20)
-			visible_message("<span class='warning'><b>[src] gets ready for combat!</b></span>")
+			var/ciweapon
+			if(get_active_held_item())
+				ciweapon = get_active_held_item()
+				if(istype(ciweapon, /obj/item/gun))
+					visible_message(span_boldwarning("[src] raises \the [ciweapon] with their finger on the trigger, ready for combat!"))
+				else
+					visible_message(span_boldwarning("[src] readies \the [ciweapon] with a tightened grip and offensive stance, ready for combat!"))
+			else
+				if(issilicon(src))
+					visible_message(span_boldwarning("<b>[src] shifts its armour plating into a defensive stance, ready for combat!"))
+				if(ishuman(src))
+					visible_message(span_boldwarning("[src] raises [p_their()] fists in an offensive stance, ready for combat!"))
+				if(isalien(src))
+					visible_message(span_boldwarning("[src] hisses in a terrifying stance, claws raised and ready for combat!"))
+				else
+					visible_message(span_boldwarning("[src] gets ready for combat!"))
 		add_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = TRUE
 		src.apply_status_effect(STATUS_EFFECT_SURRENDER, src)
-		src.log_message("<font color='red'>has turned ON the combat indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		src.log_message("<font color='red'>has turned ON the combat indicator!</font>", LOG_ATTACK)
 		RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/combat_indicator_unconscious_signal)
 	else
 		cut_overlay(GLOB.combat_indicator_overlay)
 		combat_indicator = FALSE
 		src.remove_status_effect(STATUS_EFFECT_SURRENDER, src)
-		src.log_message("<font color='blue'>has turned OFF the combat indicator!</font>", INDIVIDUAL_ATTACK_LOG)
+		src.log_message("<font color='blue'>has turned OFF the combat indicator!</font>", LOG_ATTACK)
 		UnregisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS)
 
 /mob/living/proc/user_toggle_combat_indicator()

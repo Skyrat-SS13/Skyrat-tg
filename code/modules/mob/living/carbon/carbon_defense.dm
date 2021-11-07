@@ -300,10 +300,16 @@
 	var/shove_dir = get_dir(loc, target_oldturf)
 	var/turf/target_shove_turf = get_step(target.loc, shove_dir)
 	var/mob/living/carbon/target_collateral_carbon
-	var/obj/structure/table/target_table
-	var/obj/machinery/disposal/bin/target_disposal_bin
 	var/shove_blocked = FALSE //Used to check if a shove is blocked so that if it is knockdown logic can be applied
-
+	var/handled = FALSE
+	for(var/atom/movable/every_single_thing_but_target as anything in target_shove_turf.contents - target)
+		if(SEND_SIGNAL(every_single_thing_but_target, COMSIG_CARBON_DISARM_COLLIDE, src, target) & COMSIG_CARBON_SHOVE_HANDLED)
+			handled = TRUE
+			break
+		if(!handled)
+			SEND_SIGNAL(target, COMSIG_CARBON_DISARM_COLLIDE, src, target)
+	if(handled)
+		return //We are using an object's disarm collision reaction instead of base disarm reactions.
 	//Thank you based whoneedsspace
 	target_collateral_carbon = locate(/mob/living/carbon) in target_shove_turf.contents
 
@@ -316,21 +322,17 @@
 	else
 		target.Move(target_shove_turf, shove_dir)
 		if(get_turf(target) == target_oldturf)
-			target_table = locate(/obj/structure/table) in target_shove_turf.contents
-			target_disposal_bin = locate(/obj/machinery/disposal/bin) in target_shove_turf.contents
 			shove_blocked = TRUE
 
-	if(target.body_position == LYING_DOWN && !target.IsParalyzed()) //SKYRAT EDIT CHANGE ORIGINAL: if(target.IsKnockdown() && !target.IsParalyzed())
+	if(target.IsKnockdown() && !target.IsParalyzed())
 		target.Paralyze(SHOVE_CHAIN_PARALYZE)
 		target.visible_message(span_danger("[name] kicks [target.name] onto [target.p_their()] side!"),
 						span_userdanger("You're kicked onto your side by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
 		to_chat(src, span_danger("You kick [target.name] onto [target.p_their()] side!"))
-		target.adjustStaminaLoss(20) //Ouch! SKYRAT EDIT ADDDITON
 		addtimer(CALLBACK(target, /mob/living/proc/SetKnockdown, 0), SHOVE_CHAIN_PARALYZE)
 		log_combat(src, target, "kicks", "onto their side (paralyzing)")
-		return //SKYRAT EDIT ADDITION
 
-	if(shove_blocked && !target.is_shove_knockdown_blocked() && !target.buckled && target.body_position != LYING_DOWN) //SKYRAT EDIT CHANGE - ORIGINAL: if(shove_blocked && !target.is_shove_knockdown_blocked() && !target.buckled)
+	if(shove_blocked && !target.is_shove_knockdown_blocked() && !target.buckled)
 		var/directional_blocked = FALSE
 		if(shove_dir in GLOB.cardinals) //Directional checks to make sure that we're not shoving through a windoor or something like that
 			var/target_turf = get_turf(target)
@@ -343,36 +345,12 @@
 					if(obj_content.flags_1 & ON_BORDER_1 && obj_content.dir == turn(shove_dir, 180) && obj_content.density)
 						directional_blocked = TRUE
 						break
-		if((!target_table && !target_collateral_carbon && !target_disposal_bin) || directional_blocked)
-			//target.Knockdown(SHOVE_KNOCKDOWN_SOLID) - ORIGINAL
-			target.StaminaKnockdown(10) //SKYRAT EDIT
-			target.visible_message("<span class='danger'>[name] shoves [target.name], knocking [target.p_them()] down!</span>",
-							"<span class='userdanger'>You're knocked down from a shove by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, "<span class='danger'>You shove [target.name], knocking [target.p_them()] down!</span>")
-			log_combat(src, target, "shoved", "knocking them down")
-		else if(target_table)
-			//target.Knockdown(SHOVE_KNOCKDOWN_TABLE) - ORIGINAL
-			target.StaminaKnockdown(10) //SKYRAT EDIT
-			target.visible_message("<span class='danger'>[name] shoves [target.name] onto \the [target_table]!</span>",
-							"<span class='userdanger'>You're shoved onto \the [target_table] by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, "<span class='danger'>You shove [target.name] onto \the [target_table]!</span>")
-			target.throw_at(target_table, 1, 1, null, FALSE) //1 speed throws with no spin are basically just forcemoves with a hard collision check
-			log_combat(src, target, "shoved", "onto [target_table] (table)")
-		else if(target_collateral_carbon)
-			target.StaminaKnockdown(10) //SKYRAT EDIT
-			if(!target_collateral_carbon.is_shove_knockdown_blocked())
-				target_collateral_carbon.StaminaKnockdown(1) //SKYRAT EDIT
-			target.visible_message("<span class='danger'>[name] shoves [target.name] into [target_collateral_carbon.name]!</span>",
-				"<span class='userdanger'>You're shoved into [target_collateral_carbon.name] by [name]!</span>", "<span class='hear'>You hear aggressive shuffling followed by a loud thud!</span>", COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, "<span class='danger'>You shove [target.name] into [target_collateral_carbon.name]!</span>")
-			log_combat(src, target, "shoved", "into [target_collateral_carbon.name]")
-		else if(target_disposal_bin)
+		if((!target_collateral_carbon) || directional_blocked)
 			target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
-			target.forceMove(target_disposal_bin)
-			target.visible_message(span_danger("[name] shoves [target.name] into \the [target_disposal_bin]!"),
-							span_userdanger("You're shoved into \the [target_disposal_bin] by [target.name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
-			to_chat(src, span_danger("You shove [target.name] into \the [target_disposal_bin]!"))
-			log_combat(src, target, "shoved", "into [target_disposal_bin] (disposal bin)")
+			target.visible_message(span_danger("[name] shoves [target.name], knocking [target.p_them()] down!"),
+							span_userdanger("You're knocked down from a shove by [name]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
+			to_chat(src, span_danger("You shove [target.name], knocking [target.p_them()] down!"))
+			log_combat(src, target, "shoved", "knocking them down")
 	else
 		target.visible_message(span_danger("[name] shoves [target.name]!"),
 						span_userdanger("You're shoved by [name]!"), span_hear("You hear aggressive shuffling!"), COMBAT_MESSAGE_RANGE, src)
@@ -498,20 +476,24 @@
 	//SKYRAT EDIT ADDITION END
 
 	else if(check_zone(M.zone_selected) == BODY_ZONE_HEAD) //Headpats!
-		SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
-		M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
-					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
-		to_chat(M, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
-		to_chat(src, span_notice("[M] gives you a pat on the head to make you feel better! "))
+		//SKYRAT EDIT ADDITION
+		if(HAS_TRAIT(src, TRAIT_OVERSIZED) && !HAS_TRAIT(M, TRAIT_OVERSIZED))
+			visible_message(span_warning("[M] tries to pat [src] on the head, but can't reach!"))
+		else //SKYRAT EDIT END
+			SEND_SIGNAL(src, COMSIG_CARBON_HEADPAT, M)
+			M.visible_message(span_notice("[M] gives [src] a pat on the head to make [p_them()] feel better!"), \
+						null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
+			to_chat(M, span_notice("You give [src] a pat on the head to make [p_them()] feel better!"))
+			to_chat(src, span_notice("[M] gives you a pat on the head to make you feel better! "))
 
-		//SKYRAT EDIT ADDITION BEGIN - EMOTES
-		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
-			if(!src.dna.species.is_wagging_tail(src))
-				src.emote("wag")
-		//SKYRAT EDIT ADDITION END
+			//SKYRAT EDIT ADDITION BEGIN - EMOTES
+			if(HAS_TRAIT(src, TRAIT_EXCITABLE))
+				if(!src.dna.species.is_wagging_tail(src))
+					src.emote("wag")
+			//SKYRAT EDIT ADDITION END
 
-		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
-			to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
+			if(HAS_TRAIT(src, TRAIT_BADTOUCH))
+				to_chat(M, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
 
 	else
 		SEND_SIGNAL(src, COMSIG_CARBON_HUGGED, M)
@@ -655,7 +637,7 @@
 	if(effect_amount > 0)
 		if(stun_pwr)
 			Paralyze((stun_pwr*effect_amount)*0.1)
-			StaminaKnockdown(stun_pwr/2) //SKYRAT EDIT CHANGE: Knockdown(stun_pwr*effect_amount)
+			Knockdown(stun_pwr*effect_amount)
 
 		if(ears && (deafen_pwr || damage_pwr))
 			var/ear_damage = damage_pwr * effect_amount
