@@ -1,11 +1,11 @@
-/obj/item/storage/box/gcc_survival_pack
-	name = "GCC survival pack"
-	desc = "A box filled with useful emergency items, supplied by the GCC."
+/obj/item/storage/box/nri_survival_pack
+	name = "NRI survival pack"
+	desc = "A box filled with useful emergency items, supplied by the NRI."
 	icon_state = "survival_pack"
 	icon = 'modular_skyrat/modules/exp_corps/icons/survival_pack.dmi'
 	illustration = null
 
-/obj/item/storage/box/gcc_survival_pack/PopulateContents()
+/obj/item/storage/box/nri_survival_pack/PopulateContents()
 	new /obj/item/storage/box/rations(src)
 	new /obj/item/flashlight/glowstick(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)

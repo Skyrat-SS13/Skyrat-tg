@@ -1,4 +1,4 @@
-/obj/item/clothing/under/costume/gcc //Copied from the russian outfit
+/obj/item/clothing/under/costume/nri //Copied from the russian outfit
 	name = "advanced russian tracksuit"
 	desc = "The latest in tactical and comfortable russian military outfits."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
