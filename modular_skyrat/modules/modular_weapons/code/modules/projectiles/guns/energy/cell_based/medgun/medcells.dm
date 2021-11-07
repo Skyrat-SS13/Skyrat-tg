@@ -376,6 +376,25 @@
 		return FALSE
 	. = ..()
 
+//Hardlight Rollerbed Medicell
+/obj/item/ammo_casing/energy/medical/utility/bed
+	projectile_type = /obj/projectile/energy/medical/utility/bed
+	select_name = "rollerbed"
+	select_color = "#00fff2"
+
+/obj/projectile/energy/medical/utility/bed
+	name = "hardlight bed field"
+
+/obj/projectile/energy/medical/utility/bed/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human)) //Only checks if they are human, it would make sense for this to work on the dead.
+		return FALSE
+	if(HAS_TRAIT(target, TRAIT_FLOORED) || target.resting) //Is the person already on the floor to begin with? Mostly a measure to prevent spamming.
+		new /obj/structure/bed/roller/medigun(target.loc)
+		return TRUE
+	else
+		return FALSE
+
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
 	name = "Hardlight Hospital Gown"
@@ -414,6 +433,26 @@
 	bodypart.heal_damage(0.25,0.25) //Reduced healing rate over original
 	heals_left--
 	if(heals_left <= 0)
+		qdel(src)
+
+//Hardlight Roller Bed.
+/obj/structure/bed/roller/medigun
+	name = "Hardlight Roller Bed"
+	desc = "A Roller Bed made out of Hardlight"
+	max_integrity = 1
+	buildstacktype = FALSE //It would not be good if people could use this to farm materials.
+
+/obj/structure/bed/roller/medigun/post_unbuckle_mob(mob/living/M)
+	. = ..()
+	qdel(src)
+
+/obj/structure/bed/roller/medigun/MouseDrop(over_object, src_location, over_location)
+	if(over_object == usr && Adjacent(usr))
+		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+			return FALSE
+		if(has_buckled_mobs())
+			return FALSE
+		usr.visible_message(span_notice("[usr] deactivates \the [src.name]."), span_notice("You deactivate \the [src.name]."))
 		qdel(src)
 
 //End of utility
