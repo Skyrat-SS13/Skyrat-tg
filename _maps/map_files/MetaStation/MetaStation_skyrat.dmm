@@ -3647,15 +3647,11 @@
 "aEN" = (
 /obj/structure/table,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "aEP" = (
@@ -5108,7 +5104,8 @@
 /area/hallway/secondary/entry)
 "aUc" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod One"
+	name = "Escape Pod One";
+	space_dir = 1
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -9475,12 +9472,6 @@
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"bVK" = (
-/obj/structure/lattice,
-/obj/structure/lattice/catwalk,
-/obj/structure/marker_beacon/burgundy,
-/turf/open/space/basic,
-/area/space/nearstation)
 "bVL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -9742,7 +9733,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "bYL" = (
-/turf/open/floor/mech_bay_recharge_floor,
+/turf/open/floor/iron/recharge_floor,
 /area/maintenance/port/aft)
 "bYM" = (
 /obj/machinery/computer/mech_bay_power_console,
@@ -15445,8 +15436,7 @@
 "djz" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external{
-	name = "Arrival Airlock";
-	safety_mode = 1
+	name = "Arrival Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -15463,8 +15453,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Arrival Airlock";
-	safety_mode = 1
+	name = "Arrival Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -19555,7 +19544,8 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Departure Lounge Airlock"
+	name = "Departure Lounge Airlock";
+	space_dir = 2
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
@@ -21822,12 +21812,8 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
 /obj/structure/cable,
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "fqh" = (
@@ -21859,6 +21845,14 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/parquet,
 /area/medical/psychology)
+"fqs" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock";
+	space_dir = 1
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "fqt" = (
 /obj/structure/bodycontainer/crematorium{
 	dir = 1;
@@ -32109,11 +32103,7 @@
 /turf/open/floor/iron,
 /area/security/checkpoint/science)
 "jpf" = (
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "jpn" = (
@@ -35030,7 +35020,7 @@
 /turf/open/floor/iron,
 /area/command/gateway)
 "kuD" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos{
 	dir = 1
 	},
 /obj/structure/lattice/catwalk,
@@ -35318,7 +35308,8 @@
 /area/solars/port/fore)
 "kzn" = (
 /obj/machinery/door/airlock/external{
-	name = "Departure Lounge Airlock"
+	name = "Departure Lounge Airlock";
+	space_dir = 2
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -35970,7 +35961,7 @@
 /turf/open/floor/iron/white,
 /area/medical/chemistry)
 "kKv" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste,
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos,
 /turf/open/floor/plating/airless,
 /area/engineering/supermatter/room)
 "kKH" = (
@@ -47840,7 +47831,8 @@
 /area/science/research)
 "oRL" = (
 /obj/machinery/door/airlock/external{
-	name = "Auxiliary Airlock"
+	name = "Auxiliary Airlock";
+	space_dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
@@ -51607,11 +51599,7 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/structure/cable,
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "qkN" = (
@@ -52760,7 +52748,8 @@
 /area/commons/vacant_room/office)
 "qHq" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod Three"
+	name = "Escape Pod Three";
+	space_dir = 1
 	},
 /turf/open/floor/plating,
 /area/commons/fitness/recreation)
@@ -57397,11 +57386,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "sof" = (
@@ -65183,6 +65168,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"uZJ" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock";
+	space_dir = 2
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "uZY" = (
 /obj/structure/frame/machine{
 	anchored = 1
@@ -67412,7 +67407,7 @@
 /area/science/misc_lab/range)
 "vNT" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos{
 	dir = 1
 	},
 /turf/open/space,
@@ -69309,11 +69304,7 @@
 /area/medical/treatment_center)
 "wyY" = (
 /obj/structure/chair/stool/directional/north,
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "wzf" = (
@@ -72905,7 +72896,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod Four";
-	req_access_txt = "32"
+	req_access_txt = "32";
+	space_dir = 4
 	},
 /turf/open/floor/iron,
 /area/maintenance/starboard)
@@ -83279,11 +83271,11 @@ aaa
 lMJ
 aaa
 aaa
-bVK
+quc
 lMJ
 lMJ
 lMJ
-bVK
+quc
 aaa
 aaa
 aVs
@@ -84820,13 +84812,13 @@ aVx
 aWU
 djz
 aZZ
-djC
+uZJ
 aaa
 aaa
 aaa
 aaa
 aaa
-djz
+fqs
 bsk
 djC
 sYu
@@ -86876,13 +86868,13 @@ qYu
 aWU
 djz
 aZZ
-djC
+uZJ
 aaa
 aaa
 aaa
 aaa
 aaa
-djz
+fqs
 bsk
 djC
 aVu

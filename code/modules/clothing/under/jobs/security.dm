@@ -91,10 +91,45 @@
 			RESKIN_ICON_STATE = "fatigues",
 			RESKIN_WORN_ICON = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi',
 			RESKIN_WORN_ICON_STATE = "fatigues"
+		),
+		"Sol" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policealt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policealt"
+		),
+		"Sol Cadet" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policecadetalt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policecadetalt"
+		),
+		"Sol Traffic" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policetrafficalt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policetrafficalt"
+		),
+		"Trousers" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "workpants_red",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "workpants_red"
+		),
+		"Peacekeeper Trousers" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "workpants_blue",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "workpants_blue"
+		),
+		"Kilt" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "blackwatch",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "blackwatch"
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
-
 /obj/item/clothing/under/rank/security/officer/grey
 	name = "grey security jumpsuit"
 	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
@@ -168,10 +203,15 @@
 			RESKIN_ICON_STATE = "peacekeeper_warden",
 			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
 			RESKIN_WORN_ICON_STATE = "peacekeeper_warden"
+		),
+		"Sol" = list(
+			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi',
+			RESKIN_ICON_STATE = "policewardenalt",
+			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi',
+			RESKIN_WORN_ICON_STATE = "policewardenalt"
 		)
 	)
 	/// SKYRAT EDIT ADDITION END
-
 
 /obj/item/clothing/under/rank/security/warden/grey
 	name = "grey security suit"
@@ -409,9 +449,11 @@
 	desc = "Flare cut trousers and a dirty shirt that might have been classy before someone took a piss in the armpits. It's the dress of a superstar."
 	icon_state = "jamrock_suit"
 	inhand_icon_state = "jamrock_suit"
+	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/security/detective/kim
 	name = "aerostatic suit"
 	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
 	icon_state = "aerostatic_suit"
 	inhand_icon_state = "aerostatic_suit"
+	can_adjust = FALSE

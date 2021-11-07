@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
+
 /datum/sprite_accessory
 	///Unique key of an accessroy. All tails should have "tail", ears "ears" etc.
 	var/key = null
@@ -41,6 +43,8 @@
 	var/list/ckey_whitelist
 	///Whether this feature is genetic, and thus modifiable by DNA consoles
 	var/genetic = FALSE
+	var/uses_emissives = FALSE
+	var/color_layer_names
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -55,6 +59,18 @@
 		factual = FALSE
 	if(color_src == USE_MATRIXED_COLORS && default_color != DEFAULT_MATRIXED)
 		default_color = DEFAULT_MATRIXED
+	if (color_src == USE_MATRIXED_COLORS)
+		color_layer_names = list()
+		if (!GLOB.cached_mutant_icon_files[icon])
+			GLOB.cached_mutant_icon_files[icon] = icon_states(new /icon(icon))
+		for (var/layer in relevent_layers)
+			var/layertext = layer == BODY_BEHIND_LAYER ? "BEHIND" : (layer == BODY_ADJ_LAYER ? "ADJ" : "FRONT")
+			if ("m_[key]_[icon_state]_[layertext]_primary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["1"] = "primary"
+			if ("m_[key]_[icon_state]_[layertext]_secondary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["2"] = "secondary"
+			if ("m_[key]_[icon_state]_[layertext]_tertiary" in GLOB.cached_mutant_icon_files[icon])
+				color_layer_names["3"] = "tertiary"
 
 /datum/sprite_accessory/proc/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/BP)
 	return FALSE
