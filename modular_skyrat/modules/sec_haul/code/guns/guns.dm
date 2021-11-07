@@ -8,8 +8,7 @@
 		jammed = TRUE
 		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
 		if(magazine)
-			magazine.forceMove(src.loc)
-			playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+			eject_magazine()
 
 /obj/item/gun/ballistic/automatic/examine(mob/user)
 	. = ..()
@@ -703,6 +702,7 @@
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
+	caliber = CALIBER_14GAUGE
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 6
 
@@ -729,6 +729,7 @@
 
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
+	caliber = CALIBER_14GAUGE
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 4
 
