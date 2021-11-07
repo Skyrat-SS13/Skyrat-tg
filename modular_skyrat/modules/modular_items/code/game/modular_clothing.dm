@@ -25,7 +25,7 @@
 	icon = 'modular_skyrat/modules/modular_items/icons/obj/modular_clothing.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi'
 	icon_state = "fatigues"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 30, ACID = 30, WOUND = 10)
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 30, WOUND = 10)
 	strip_delay = 50
 	alt_covers_chest = FALSE
 	sensor_mode = SENSOR_COORDS
