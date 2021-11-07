@@ -15,13 +15,13 @@
 	var/mode = VORE_MODE_HOLD
 	var/list/data = list()
 
-/obj/vbelly/Initialize(mapload, mob/living/holder = null, data = default_belly_info)
+/obj/vbelly/Initialize(mapload, mob/living/holder = null, data = default_belly_info())
 	. = ..()
 	if (!holder)
 		return INITIALIZE_HINT_QDEL
 	if (!SSair.planetary[OPENTURF_DEFAULT_ATMOS])
 		var/datum/gas_mixture/immutable/planetary/mix = new
-		mix.parse_LIST_immutable(OPENTURF_DEFAULT_ATMOS)
+		mix.parse_string_immutable(OPENTURF_DEFAULT_ATMOS)
 		SSair.planetary[OPENTURF_DEFAULT_ATMOS] = mix
 	forceMove(holder)
 	name = data["name"]
@@ -36,9 +36,9 @@
 	if (isliving(arrived))
 		var/mob/living/arrived_mob = arrived
 		if (desc)
-			to_chat(arrived_mob) = span_notice(desc)
-		if (owner && arrived_mob.client?.vr_prefs?.tastes_of)
-			to_chat(owner, span_notice("[arrived_mob] tastes of [arrived_mob.client?.vr_prefs?.tastes_of]."))
+			to_chat(arrived_mob, span_notice(desc))
+		if (owner && arrived_mob.client?.prefs?.vr_prefs?.tastes_of)
+			to_chat(owner, span_notice("[arrived_mob] tastes of [arrived_mob.client?.prefs?.vr_prefs?.tastes_of]."))
 		check_mode()
 
 /obj/vbelly/Exited(atom/movable/gone, direction)
@@ -55,19 +55,19 @@
 		STOP_PROCESSING(SSvore, src)
 	var/all_done = TRUE
 	if (mode == VORE_MODE_DIGEST)
-		for (var/mob/living/victim in src)
-			if (victim.stat == DEAD)
+		for (var/mob/living/prey in src)
+			if (prey.stat == DEAD)
 				continue
-			victim.apply_damage(4, BURN)
-			if (victim.stat != DEAD)
+			prey.apply_damage(4, BURN)
+			if (prey.stat != DEAD)
 				all_done = FALSE
 			else
-				var/pred_message = pick_and_replace(data[LIST_DIGEST_PRED], list("%pred" = "[owner]", "%prey" = "[victim]"))
-				var/prey_message = pick_and_replace(data[LIST_DIGEST_PREY], list("%pred" = "[owner]", "%prey" = "[victim]"))
+				var/pred_message = vore_replace(data[LIST_DIGEST_PRED], owner, prey)
+				var/prey_message = vore_replace(data[LIST_DIGEST_PREY], owner, prey)
 				if (pred_message)
 					to_chat(owner, span_warning(pred_message))
 				if (prey_message)
-					to_chat(victim, span_warning(prey_message))
+					to_chat(prey, span_warning(prey_message))
 				prey.release_belly_contents()
 				for (var/obj/item/item in prey)
 					if (!prey.dropItemToGround(item))
@@ -83,7 +83,7 @@
 	if (owner)
 		return owner.drop_location()
 	if (SSjob.latejoin_trackers.len)
-		return pick(latejoin_trackers)
+		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
 
 /obj/vbelly/proc/mass_release_from_contents()
@@ -102,14 +102,6 @@
 	if (loc && istype(loc, /obj/vbelly))
 		return
 	. = ..()
-
-/proc/default_belly_info()
-	return list(name = "belly", "desc" = "", "mode" = VORE_MODE_HOLD,\
-				LIST_DIGEST_PREY = list(),\
-				LIST_DIGEST_PRED = list(),\
-				LIST_STRUGGLE_INSIDE = list(),\
-				LIST_STRUGGLE_OUTSIDE = list(),\
-				LIST_EXAMINE = list())
 
 /* DEBUGGING
 /proc/write_belly_info(savefile/S, slot, data)

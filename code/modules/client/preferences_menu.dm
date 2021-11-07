@@ -24,3 +24,17 @@
 	preferences.update_static_data(usr)
 	preferences.ui_interact(usr)
 
+//SKYRAT EDIT ADDITION - VORE
+/datum/verbs/menu/Preferences/verb/open_vore_preferences()
+	set category = "OOC"
+	set name = "Open Vore Preferences"
+	set desc = "Open Vore Preferences"
+
+	var/datum/preferences/preferences = usr?.client?.prefs
+	if (!preferences)
+		return
+
+	if (!preferences.vr_prefs)
+		preferences.vr_prefs = new(usr.client)
+	preferences.vr_prefs.ui_interact(usr)
+//SKYRAT EDIT END
