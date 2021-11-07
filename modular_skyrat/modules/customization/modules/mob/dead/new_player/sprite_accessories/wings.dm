@@ -229,10 +229,13 @@
 	name = "Low wings (Top)"
 	icon_state = "low_top"
 <<<<<<< HEAD
+<<<<<<< HEAD
 	dimension_x = 46
 	dimension_y = 34
 	center = TRUE
 =======
+=======
+>>>>>>> Extra_stuffs
 
 /datum/sprite_accessory/wings/mammal/spider
 	name = "Spider legs"

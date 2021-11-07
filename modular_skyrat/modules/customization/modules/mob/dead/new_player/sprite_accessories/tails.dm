@@ -400,3 +400,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/snakestripealt
 	name = "Snake stripe (alt)"
 	icon_state = "snakestripealt"
+
+/datum/sprite_accessory/tails/mammal/wagging/datashark
+	name = "Data shark"
+	icon_state = "datashark"
