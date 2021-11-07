@@ -244,4 +244,3 @@
 	icon_state = "robowing"
 	color_src = USE_MATRIXED_COLORS
 
->>>>>>> 5ca06e5... Hyena hair, robo wings, and spooder wings addition
