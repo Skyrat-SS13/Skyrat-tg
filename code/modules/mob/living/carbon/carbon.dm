@@ -181,17 +181,13 @@
 			power_throw--
 		if(HAS_TRAIT(thrown_thing, TRAIT_DWARF))
 			power_throw++
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(HAS_TRAIT(src, TRAIT_OVERSIZED))
 			power_throw++
 		if(HAS_TRAIT(thrown_thing, TRAIT_OVERSIZED))
 			power_throw--
 		//SKYRAT EDIT END
-		if(pulling && grab_state >= GRAB_NECK)
-=======
 		if(neckgrab_throw)
->>>>>>> 5b119f3ab75 (Fixes sleeping carp wave kick dealing insane damage + wounds, fixes neckgrab throws not being harder (#62498))
 			power_throw++
 		do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
