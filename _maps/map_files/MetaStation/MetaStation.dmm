@@ -133,15 +133,13 @@
 /turf/closed/wall,
 /area/maintenance/central)
 "abu" = (
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Two";
+	space_dir = 1
 	},
-/obj/structure/fans/tiny/invisible,
-/turf/open/space/basic,
-/area/space)
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/security/prison)
 "abx" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
@@ -468,17 +466,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/security/prison)
-"adF" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/open/space/basic,
-/area/space)
 "adG" = (
 /obj/machinery/computer/bookmanagement,
 /obj/structure/table,
@@ -1218,6 +1205,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/warden)
+"ajy" = (
+/obj/structure/lattice,
+/turf/closed/wall/mineral/plastitanium,
+/area/hallway/secondary/entry)
 "ajF" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/westleft{
@@ -3608,15 +3599,11 @@
 "aEN" = (
 /obj/structure/table,
 /obj/item/reagent_containers/food/drinks/drinkingglass,
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "aET" = (
@@ -9367,7 +9354,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "bYL" = (
-/turf/open/floor/mech_bay_recharge_floor,
+/turf/open/floor/iron/recharge_floor,
 /area/maintenance/port/aft)
 "bYM" = (
 /obj/machinery/computer/mech_bay_power_console,
@@ -10955,11 +10942,12 @@
 /turf/open/floor/iron/showroomfloor,
 /area/maintenance/starboard/secondary)
 "cpN" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+/obj/structure/lattice,
+/obj/machinery/atmospherics/components/unary/passive_vent{
 	dir = 8
 	},
-/turf/open/floor/plating/airless,
-/area/maintenance/disposal/incinerator)
+/turf/open/space,
+/area/space/nearstation)
 "cpQ" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/glass/beaker{
@@ -13740,10 +13728,8 @@
 	},
 /area/ai_monitored/command/nuke_storage)
 "cTV" = (
-/obj/docking_port/stationary/random{
-	id = "pod_lavaland";
-	name = "lavaland"
-	},
+/obj/structure/lattice/catwalk,
+/obj/structure/marker_beacon/burgundy,
 /turf/open/space,
 /area/space)
 "cTY" = (
@@ -21129,14 +21115,9 @@
 /area/service/chapel/office)
 "fpQ" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
+	dir = 8
 	},
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
-/obj/structure/cable,
+/obj/item/radio/intercom/prison/directional/west,
 /turf/open/floor/iron/white,
 /area/security/prison)
 "fpU" = (
@@ -24990,6 +24971,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/security/brig)
+"gFa" = (
+/obj/docking_port/stationary/random{
+	dir = 4;
+	id = "pod_4_lavaland";
+	name = "lavaland"
+	},
+/turf/open/space/basic,
+/area/space)
 "gFb" = (
 /obj/structure/railing{
 	dir = 1
@@ -26043,6 +26032,14 @@
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/open/floor/engine/n2,
 /area/engineering/atmos)
+"hdd" = (
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod One";
+	space_dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "hdl" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
@@ -28927,6 +28924,9 @@
 	name = "Escape Pod One";
 	space_dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
 "ifh" = (
@@ -30220,6 +30220,9 @@
 	name = "Escape Pod Three";
 	space_dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "escape-pod-3"
+	},
 /turf/open/floor/plating,
 /area/commons/fitness/recreation)
 "iDs" = (
@@ -30830,6 +30833,9 @@
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod Two";
 	space_dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/security/prison)
@@ -32063,11 +32069,7 @@
 /turf/open/floor/iron,
 /area/security/checkpoint/science)
 "jpf" = (
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "jpn" = (
@@ -34276,11 +34278,10 @@
 /area/science/robotics/lab)
 "keP" = (
 /obj/docking_port/stationary/random{
-	dir = 4;
-	id = "pod_4_lavaland";
+	id = "pod_2_lavaland";
 	name = "lavaland"
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space)
 "keX" = (
 /obj/structure/cable,
@@ -35045,12 +35046,12 @@
 /turf/open/floor/iron,
 /area/command/gateway)
 "kuD" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
+/obj/structure/lattice,
+/obj/machinery/atmospherics/components/unary/passive_vent{
 	dir = 1
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/space/basic,
-/area/engineering/atmos)
+/area/space/nearstation)
 "kuJ" = (
 /obj/machinery/door/airlock{
 	name = "Central Emergency Storage"
@@ -35924,9 +35925,10 @@
 /turf/open/floor/carpet,
 /area/service/chapel)
 "kKv" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste,
-/turf/open/floor/plating/airless,
-/area/engineering/supermatter/room)
+/obj/structure/lattice,
+/obj/machinery/atmospherics/components/unary/passive_vent,
+/turf/open/space/basic,
+/area/space/nearstation)
 "kKA" = (
 /obj/effect/spawner/random/maintenance,
 /obj/effect/turf_decal/bot_white,
@@ -41417,6 +41419,7 @@
 "mLm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/hallway/primary/port)
 "mLp" = (
@@ -49208,11 +49211,7 @@
 /area/science/lab)
 "ptL" = (
 /obj/structure/chair/stool/directional/north,
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "ptZ" = (
@@ -51642,11 +51641,7 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/structure/cable,
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "qkz" = (
@@ -52516,8 +52511,10 @@
 /turf/open/floor/iron,
 /area/engineering/atmos)
 "qBq" = (
-/turf/closed/wall/mineral/plastitanium,
-/area/hallway/secondary/entry)
+/obj/structure/lattice/catwalk,
+/obj/structure/marker_beacon/burgundy,
+/turf/open/space/basic,
+/area/space)
 "qBw" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -53816,6 +53813,7 @@
 /turf/open/floor/plating,
 /area/service/chapel)
 "rch" = (
+/obj/structure/lattice,
 /turf/closed/wall/mineral/plastitanium,
 /area/security/prison)
 "rcl" = (
@@ -53916,12 +53914,13 @@
 	},
 /area/solars/port/fore)
 "rec" = (
-/obj/docking_port/stationary/random{
-	dir = 4;
-	id = "pod_3_lavaland";
-	name = "lavaland"
+/obj/docking_port/stationary{
+	dwidth = 1;
+	height = 4;
+	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
+	width = 3
 	},
-/turf/open/space,
+/turf/open/space/basic,
 /area/space)
 "reo" = (
 /obj/machinery/computer/security/wooden_tv{
@@ -57229,11 +57228,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
 	},
-/obj/item/radio/intercom/directional/north{
-	desc = "A station intercom. It looks like it has been modified to not broadcast.";
-	name = "prison intercom";
-	prison_radio = 1
-	},
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/iron,
 /area/security/prison)
 "sof" = (
@@ -57603,12 +57598,12 @@
 /turf/open/floor/iron,
 /area/construction/storage_wing)
 "suP" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+/obj/structure/lattice,
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 1
 	},
 /turf/open/space/basic,
-/area/medical/virology)
+/area/space/nearstation)
 "suX" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/blue/filled/warning{
@@ -58930,8 +58925,6 @@
 	dir = 8
 	},
 /obj/machinery/vending/coffee{
-	custom_premium_price = 0;
-	custom_price = 0;
 	default_price = 0;
 	extra_price = 0;
 	fair_market_price = 0;
@@ -60016,16 +60009,17 @@
 /turf/open/floor/engine,
 /area/engineering/supermatter/room)
 "tpc" = (
-/obj/structure/fans/tiny/invisible,
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Four";
+	req_access_txt = "32";
+	space_dir = 4
 	},
-/turf/open/space/basic,
-/area/space)
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/maintenance/starboard)
 "tpj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -66790,6 +66784,9 @@
 	req_access_txt = "32";
 	space_dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/maintenance/starboard)
 "vIC" = (
@@ -66798,11 +66795,12 @@
 /turf/open/floor/carpet,
 /area/service/library)
 "vIJ" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 4
 	},
-/turf/open/floor/plating/airless,
-/area/science/xenobiology)
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "vJt" = (
 /obj/structure/cable,
 /obj/machinery/firealarm/directional/west,
@@ -67052,12 +67050,12 @@
 /turf/open/floor/engine,
 /area/science/misc_lab/range)
 "vNT" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/atmos_waste{
+/obj/structure/lattice,
+/obj/machinery/atmospherics/components/unary/passive_vent{
 	dir = 1
 	},
 /turf/open/space,
-/area/engineering/atmos)
+/area/space/nearstation)
 "vNU" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/carpet,
@@ -67726,10 +67724,15 @@
 /turf/open/floor/iron,
 /area/hallway/primary/central)
 "waq" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/marker_beacon/burgundy,
-/turf/open/space,
-/area/space/nearstation)
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 1;
+	height = 4;
+	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
+	width = 3
+	},
+/turf/open/space/basic,
+/area/space)
 "wbl" = (
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -69815,8 +69818,12 @@
 /turf/open/floor/iron,
 /area/service/hydroponics/garden)
 "wOY" = (
-/obj/structure/fans/tiny/invisible,
-/turf/open/space/basic,
+/obj/docking_port/stationary/random{
+	dir = 4;
+	id = "pod_3_lavaland";
+	name = "lavaland"
+	},
+/turf/open/space,
 /area/space)
 "wPd" = (
 /obj/machinery/light/small/directional/north,
@@ -70534,7 +70541,7 @@
 /area/service/library)
 "xcN" = (
 /obj/docking_port/stationary/random{
-	id = "pod_2_lavaland";
+	id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space,
@@ -71417,6 +71424,7 @@
 /obj/item/stack/license_plates/empty/fifty,
 /obj/item/stack/license_plates/empty/fifty,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/radio/intercom/prison/directional/north,
 /turf/open/floor/plating,
 /area/security/prison)
 "xsT" = (
@@ -82790,10 +82798,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-quc
-lMJ
 qBq
+lMJ
+ajy
+aRA
 aRA
 aRA
 aRA
@@ -83052,7 +83060,7 @@ aaa
 aaa
 aaa
 aaa
-wOY
+aRA
 nZg
 aUb
 aVt
@@ -83304,12 +83312,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-cTV
-aaa
+xcN
 aaa
 aaa
-abu
+aaa
+rec
+hdd
 bsk
 ieR
 aVu
@@ -83566,7 +83574,7 @@ aaa
 aaa
 aaa
 aaa
-wOY
+aRA
 aSI
 aRA
 bFH
@@ -83818,10 +83826,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-quc
-lMJ
 qBq
+lMJ
+ajy
+aRA
 aRA
 aRA
 aRA
@@ -93608,7 +93616,7 @@ tXK
 oTJ
 qgY
 vIC
-vIC
+bHj
 eql
 vIC
 rmd
@@ -94577,7 +94585,7 @@ wvy
 abe
 abe
 abe
-fpQ
+aby
 xvO
 agH
 afJ
@@ -94833,7 +94841,7 @@ pna
 ber
 pna
 pna
-pna
+fpQ
 tSU
 hbm
 cBe
@@ -98422,10 +98430,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-waq
+cTV
 lMJ
 rch
+aax
 aax
 aax
 urv
@@ -98684,7 +98692,7 @@ aaa
 aaa
 aaa
 aaa
-wOY
+aax
 kxJ
 aax
 aaw
@@ -98936,11 +98944,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-xcN
-aaa
+keP
 aaa
 aaa
+aaa
+rec
 abu
 xBL
 iPc
@@ -99198,7 +99206,7 @@ aaa
 aaa
 aaa
 aaa
-wOY
+aax
 dxH
 aax
 qWF
@@ -99450,10 +99458,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-quc
+qBq
 lMJ
 rch
+aax
 aax
 aax
 aax
@@ -111286,9 +111294,9 @@ aaa
 aaa
 aaa
 ebG
-wOY
-adF
-wOY
+ebG
+iDm
+ebG
 ebG
 oGD
 hNh
@@ -111544,7 +111552,7 @@ aaa
 aaa
 ebG
 aaa
-aaa
+waq
 aaa
 ebG
 ebG
@@ -112315,7 +112323,7 @@ aaa
 aaa
 quc
 aaa
-rec
+aaa
 aaa
 tdI
 afD
@@ -112572,7 +112580,7 @@ aaa
 aaa
 lMJ
 aaa
-aaa
+wOY
 aaa
 tdI
 afD
@@ -119298,9 +119306,9 @@ dgk
 dgk
 dgv
 atm
-wOY
+alr
 tpc
-wOY
+alr
 atm
 twf
 aaa
@@ -119554,11 +119562,11 @@ dgm
 dgu
 dgm
 dgB
-lMJ
+atm
 aaa
+waq
 aaa
-aaa
-lMJ
+atm
 oAQ
 lMJ
 aaa
@@ -120070,7 +120078,7 @@ aaa
 aaa
 lMJ
 aaa
-aav
+aaa
 aaa
 lMJ
 oAQ
@@ -120325,11 +120333,11 @@ lMJ
 lMJ
 lMJ
 lMJ
-quc
+lMJ
 aaa
-keP
+aav
 aaa
-quc
+lMJ
 oAQ
 aaa
 aaa
@@ -120582,11 +120590,11 @@ aaa
 aaa
 aaa
 aaa
-lMJ
+quc
 aaa
+gFa
 aaa
-aaa
-lMJ
+quc
 twf
 lMJ
 lMJ

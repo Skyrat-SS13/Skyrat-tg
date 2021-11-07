@@ -56,7 +56,7 @@
 	limb.external_organs.Add(src)
 	ownerlimb = limb
 
-	. =  ..()
+	. = ..()
 
 	limb.contents.Add(src)
 

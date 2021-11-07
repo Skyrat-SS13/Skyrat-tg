@@ -9,10 +9,11 @@
 
 	GLOB.carbon_list += src
 	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/attach_rot)
+	RegisterSignal(src, COMSIG_CARBON_DISARM_COLLIDE, .proc/disarm_collision)
 
 /mob/living/carbon/Destroy()
 	//This must be done first, so the mob ghosts correctly before DNA etc is nulled
-	. =  ..()
+	. = ..()
 
 	QDEL_LIST(hand_bodyparts)
 	QDEL_LIST(internal_organs)
@@ -150,12 +151,15 @@
 
 	var/atom/movable/thrown_thing
 	var/obj/item/I = get_active_held_item()
+	var/neckgrab_throw = FALSE // we can't check for if it's a neckgrab throw when totaling up power_throw since we've already stopped pulling them by then, so get it early
 
 	if(!I)
 		if(pulling && isliving(pulling) && grab_state >= GRAB_AGGRESSIVE)
 			var/mob/living/throwable_mob = pulling
 			if(!throwable_mob.buckled)
 				thrown_thing = throwable_mob
+				if(grab_state >= GRAB_NECK)
+					neckgrab_throw = TRUE
 				stop_pulling()
 				if(HAS_TRAIT(src, TRAIT_PACIFISM))
 					to_chat(src, span_notice("You gently let go of [throwable_mob]."))
@@ -183,7 +187,7 @@
 		if(HAS_TRAIT(thrown_thing, TRAIT_OVERSIZED))
 			power_throw--
 		//SKYRAT EDIT END
-		if(pulling && grab_state >= GRAB_NECK)
+		if(neckgrab_throw)
 			power_throw++
 		do_attack_animation(target, no_effect = 1) //SKYRAT EDIT ADDITION - AESTHETICS
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 50, TRUE, -1) //SKYRAT EDIT ADDITION - AESTHETICS
@@ -397,6 +401,9 @@
 	var/obj/item/organ/alien/plasmavessel/vessel = getorgan(/obj/item/organ/alien/plasmavessel)
 	if(vessel)
 		. += "Plasma Stored: [vessel.storedPlasma]/[vessel.max_plasma]"
+	var/obj/item/organ/heart/vampire/darkheart = getorgan(/obj/item/organ/heart/vampire)
+	if(darkheart)
+		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
 	if(locate(/obj/item/assembly/health) in src)
 		. += "Health: [health]"
 
@@ -528,48 +535,16 @@
 
 /mob/living/carbon/update_stamina()
 	var/stam = getStaminaLoss()
-	//TODO: Make this much more cleaner
-	//SKYRAT EDIT - ORIGINAL: if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat)
-	if(stam > STAMINA_THRESHOLD_WEAK) //SKYRAT EDIT CHANGE BEGIN
-		if(stam > STAMINA_THRESHOLD_KNOCKDOWN)
-			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) && !HAS_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED))
-				//When you get floored by stamina, you also get a brief stun and disarm
-				to_chat(src, "<span class='boldwarning'>You feel weak and collapse!</span>")
-				ADD_TRAIT(src, TRAIT_ALREADYSTAMINAFLOORED, src)
-				addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_ALREADYSTAMINAFLOORED, src), STAMINA_KNOCKDOWN_COOLDOWN)
-				Paralyze(0.5 SECONDS)
-				Knockdown(5 SECONDS)
-		else
-			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-			if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-				REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-				REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-				REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-				filters -= FILTER_STAMINACRIT
-
-
-		if(stam > STAMINA_THRESHOLD_HARDCRIT)
-			if(!HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-				to_chat(src, "<span class='boldwarning'>You're too exhausted to keep going...</span>")
-				ADD_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-				ADD_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-				ADD_TRAIT(src, TRAIT_FLOORED, STAMINA)
-				filters += FILTER_STAMINACRIT
-
-	else
-		if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
-			REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
-			REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
-			REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
-		filters -= FILTER_STAMINACRIT //Temporary tweak to fix aheals bugging this - SKYRAT EDIT CHANGE END
-	/*if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold && !stat) SKYRAT EDIT REMOVAL BEGIN
-		enter_stamcrit()
+	if(stam > DAMAGE_PRECISION && (maxHealth - stam) <= crit_threshold)
+		if (!stat)
+			enter_stamcrit()
 	else if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 		REMOVE_TRAIT(src, TRAIT_INCAPACITATED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, STAMINA)
 		REMOVE_TRAIT(src, TRAIT_FLOORED, STAMINA)
+		filters -= FILTER_STAMINACRIT
 	else
-		return*/ //SKYRAT EDIT REMOVAL END
+		return
 	update_health_hud()
 
 /mob/living/carbon/update_sight()
@@ -870,9 +845,9 @@
 		suiciding = FALSE
 		regenerate_limbs()
 		regenerate_organs()
+		QDEL_NULL(handcuffed)
+		QDEL_NULL(legcuffed)
 		set_handcuffed(null)
-		for(var/obj/item/restraints/R in contents) //actually remove cuffs from inventory
-			qdel(R)
 		update_handcuffed()
 	cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
 	..()
@@ -1339,7 +1314,17 @@
 	return ..()
 
 
-/mob/living/carbon/proc/attach_rot(mapload)
-	SIGNAL_HANDLER
+/mob/living/carbon/proc/attach_rot()
 	if(mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD))
 		AddComponent(/datum/component/rot, 6 MINUTES, 10 MINUTES, 1)
+
+/mob/living/carbon/proc/disarm_collision(mob/living/carbon/collateral, mob/living/carbon/shover, mob/living/carbon/target)
+	SIGNAL_HANDLER
+	target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
+	if(!collateral.is_shove_knockdown_blocked())
+		collateral.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
+	target.visible_message(span_danger("[shover] shoves [target.name] into [collateral.name]!"),
+		span_userdanger("You're shoved into [collateral.name] by [shover]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
+	to_chat(src, span_danger("You shove [target.name] into [collateral.name]!"))
+	log_combat(src, target, "shoved", "into [collateral.name]")
+	return COMSIG_CARBON_SHOVE_HANDLED

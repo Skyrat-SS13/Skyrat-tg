@@ -83,7 +83,6 @@
 	if(!IsLivingHuman(target))
 		return FALSE
 	target.adjustToxLoss(-amount_healed)
-	target.radiation = max(target.radiation - (amount_healed * 8), 0)//Rads are treatable, but inefficent//
 
 //T1 Healing Projectiles//
 //The Basic Brute Heal Projectile//
@@ -336,6 +335,86 @@
 	if(abs(difference) <= MINIMUM_TEMP_DIFFERENCE) //It won't adjust temperature if the difference is too low
 		return FALSE
 	target.adjust_bodytemperature(difference < 0 ? -TEMP_PER_SHOT : TEMP_PER_SHOT)
+
+//Surgical Gown Medicell.
+/obj/item/ammo_casing/energy/medical/utility/gown
+	projectile_type = /obj/projectile/energy/medical/utility/gown
+	select_name = "gown"
+	select_color = "#00ffbf"
+
+/obj/projectile/energy/medical/utility/gown
+	name = "hardlight surgical gown field"
+
+/obj/projectile/energy/medical/utility/gown/on_hit(mob/living/target)
+	if(!istype(target, /mob/living/carbon/human)) //Dead check isn't fully needed, since it'd be reasonable for this to work on corpses.
+		return
+	var/mob/living/carbon/wearer = target
+	var/obj/item/clothing/gown = new /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	if(wearer.equip_to_slot_if_possible(gown, ITEM_SLOT_OCLOTHING, 1, 1, 1))
+		wearer.visible_message(span_notice("The [gown] covers [wearer] body"), span_notice("The [gown] wraps around your body, covering you"))
+		return
+	else
+		wearer.visible_message(span_notice("The [gown] fails to fit on [wearer], instantly disentagrating away"), span_notice("The [gown] unable to fit on you, disentagrates into nothing"))
+		return FALSE
+
+//Salve Medicell
+/obj/item/ammo_casing/energy/medical/utility/salve
+	projectile_type = /obj/projectile/energy/medical/utility/salve
+	select_name = "salve"
+	select_color = "#00af57"
+
+/obj/projectile/energy/medical/utility/salve
+	name = "salve globule"
+	icon_state = "glob_projectile" //Replace this texture later.
+	shrapnel_type = /obj/item/mending_globule/hardlight
+	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
+	nodamage = TRUE
+	damage = 0
+
+/obj/projectile/energy/medical/utility/salve/on_hit(mob/living/target)
+	if(!IsLivingHuman(target)) //No using this on the dead or synths.
+		return FALSE
+	. = ..()
+
+//Objects Used by medicells.
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
+	name = "Hardlight Hospital Gown"
+	desc = "A hospital Gown made out of hardlight, you can barely feel it on your body"
+	icon_state = "lgown"
+
+/obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight/dropped(mob/user)
+	. = ..()
+	var/mob/living/carbon/wearer = user
+	if((wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING)) == src && !QDELETED(src))
+		to_chat(wearer, span_notice("The [src] disappeared after being removed"))
+		qdel(src)
+		return
+
+//Salve Globule
+/obj/item/mending_globule/hardlight
+	name = "salve globule"
+	desc = "a ball of regenerative synthetic plant matter, contained within a soft hardlight field"
+	embedding = list("embed_chance" = 100, ignore_throwspeed_threshold = TRUE, "pain_mult" = 0, "jostle_pain_mult" = 0, "fall_chance" = 0)
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	icon_state = "globule"
+	heals_left = 40 //This means it'll be heaing 15 damage per type max.
+	var/attached_part //The part that the globule is attached to
+	var/attached_mob //The mob that the globule is attached to
+
+/obj/item/mending_globule/unembedded()
+	. = ..()
+	qdel(src)
+
+/obj/item/mending_globule/hardlight/process()
+	if(!bodypart)
+		return FALSE
+	if(!bodypart.get_damage()) //Makes it poof as soon as the body part is fully healed, no keeping this on forever.
+		qdel(src)
+		return FALSE
+	bodypart.heal_damage(0.25,0.25) //Reduced healing rate over original
+	heals_left--
+	if(heals_left <= 0)
+		qdel(src)
 
 //End of utility
 #undef UPGRADED_MEDICELL_PASSFLAGS

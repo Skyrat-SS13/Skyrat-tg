@@ -17,10 +17,15 @@
 
 /obj/item/ammo_casing/energy/disabler
 	projectile_type = /obj/projectile/beam/disabler
-	select_name  = "disable"
+	select_name = "disable"
 	e_cost = 50
 	fire_sound = 'sound/weapons/taser2.ogg'
 	harmful = FALSE
 
 /obj/item/ammo_casing/energy/disabler/hos
 	e_cost = 60
+
+// SKYRAT ADDITION START
+/obj/item/ammo_casing/energy/disabler/skyrat
+	e_cost = 1000
+// SKYRAT ADDITION END
