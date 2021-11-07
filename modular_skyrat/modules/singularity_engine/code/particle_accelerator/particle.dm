@@ -62,7 +62,7 @@
 	return
 
 /obj/effect/accelerated_particle/proc/toxmob(mob/living/M)
-	M.rad_act(energy*6)
+	M.adjustToxLoss(energy / 10)
 
 /obj/effect/accelerated_particle/proc/move()
 	if(!step(src,dir))

@@ -12,10 +12,59 @@
 	time = 40
 	category = CAT_CLOTHING
 
+/datum/crafting_recipe/reagent_ring
+	name = "Reagent Ring"
+	result = /obj/item/clothing/gloves/ring/reagent_clothing
+	reqs = list(/obj/item/forging/complete/chain = 2)
+	time = 40
+	category = CAT_CLOTHING
+
 /datum/crafting_recipe/chain_helmet
 	name = "Chain Helmet"
 	result = /obj/item/clothing/head/helmet/reagent_clothing
 	reqs = list(/obj/item/forging/complete/chain = 5)
+	time = 40
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/chain_collar
+	name = "Chain Collar"
+	result = /obj/item/clothing/neck/kink_collar/reagent_clothing
+	reqs = list(/obj/item/forging/complete/chain = 3)
+	time = 40
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/chain_cuffs
+	name = "Chain Handcuffs"
+	result = /obj/item/restraints/handcuffs/reagent_clothing
+	reqs = list(/obj/item/forging/complete/chain = 10)
+	time = 40
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/chain_boot
+	name = "Chain Boots"
+	result = /obj/item/clothing/shoes/chain_boots
+	reqs = list(/obj/item/forging/complete/chain = 4)
+	time = 40
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/plate_boot
+	name = "Plated Boots"
+	result = /obj/item/clothing/shoes/plated_boots
+	reqs = list(/obj/item/forging/complete/plate = 4)
+	time = 40
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/horseshoe
+	name = "Horseshoe"
+	result = /obj/item/clothing/shoes/horseshoe
+	reqs = list(/obj/item/forging/complete/chain = 4)
+	time = 40
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/plate_buckler
+	name = "Plated Buckler"
+	result = /obj/item/shield/riot/buckler/reagent_weapon
+	reqs = list(/obj/item/forging/complete/plate = 5)
 	time = 40
 	category = CAT_CLOTHING
 
@@ -38,7 +87,7 @@
 	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/reagent_spear
-	name = "Reagent Staff"
+	name = "Reagent Spear"
 	result = /obj/item/forging/reagent_weapon/spear
 	reqs = list(/obj/item/forging/complete/spear = 1,
 				/obj/item/stack/sheet/mineral/wood = 2)
@@ -46,11 +95,23 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-/datum/crafting_recipe/reagent_tile
-	name = "Reagent Tile"
-	result = /obj/item/forging/reagent_tile
-	reqs = list(/obj/item/forging/complete/plate = 4)
-	category = CAT_MISC
+/datum/crafting_recipe/reagent_axe
+	name = "Reagent Axe"
+	result = /obj/item/forging/reagent_weapon/axe
+	reqs = list(/obj/item/forging/complete/axe = 1,
+				/obj/item/stack/sheet/mineral/wood = 2)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/reagent_hammer
+	name = "Reagent Hammer"
+	result = /obj/item/forging/reagent_weapon/hammer
+	reqs = list(/obj/item/forging/complete/hammer = 1,
+				/obj/item/stack/sheet/mineral/wood = 2)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
 
 /datum/crafting_recipe/primitive_billow
 	name = "Primitive Forging Billow"

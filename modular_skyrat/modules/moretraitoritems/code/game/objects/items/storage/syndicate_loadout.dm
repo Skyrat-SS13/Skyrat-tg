@@ -223,7 +223,7 @@
 /obj/item/storage/box/syndie_kit/loadout/nt_impostor/PopulateContents()
 	new /obj/item/clothing/under/rank/centcom/officer(src)
 	new /obj/item/clothing/head/centcom_cap(src)
-	new /obj/item/clothing/suit/toggle/armor/vest/centcom_formal(src)
+	new /obj/item/clothing/suit/armor/centcom_formal(src)
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/radio/headset/headset_cent/impostorsr(src)
 	new /obj/item/clothing/glasses/sunglasses(src)

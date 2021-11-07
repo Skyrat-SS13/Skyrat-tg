@@ -1,5 +1,5 @@
 /obj/item/scissors
-	name = "barbers scissors"
+	name = "barber's scissors"
 	desc = "Some say a barbers best tool is his electric razor, that is not the case. These are used to cut hair in a professional way!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "scissors"

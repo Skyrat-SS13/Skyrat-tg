@@ -5108,7 +5108,8 @@
 /area/hallway/secondary/entry)
 "aUc" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod One"
+	name = "Escape Pod One";
+	space_dir = 1
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -9475,12 +9476,6 @@
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
-"bVK" = (
-/obj/structure/lattice,
-/obj/structure/lattice/catwalk,
-/obj/structure/marker_beacon/burgundy,
-/turf/open/space/basic,
-/area/space/nearstation)
 "bVL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -15445,8 +15440,7 @@
 "djz" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/external{
-	name = "Arrival Airlock";
-	safety_mode = 1
+	name = "Arrival Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -15463,8 +15457,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Arrival Airlock";
-	safety_mode = 1
+	name = "Arrival Airlock"
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/entry)
@@ -19555,7 +19548,8 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external{
-	name = "Departure Lounge Airlock"
+	name = "Departure Lounge Airlock";
+	space_dir = 2
 	},
 /turf/open/floor/iron,
 /area/hallway/secondary/exit/departure_lounge)
@@ -21859,6 +21853,14 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/parquet,
 /area/medical/psychology)
+"fqs" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock";
+	space_dir = 1
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "fqt" = (
 /obj/structure/bodycontainer/crematorium{
 	dir = 1;
@@ -35318,7 +35320,8 @@
 /area/solars/port/fore)
 "kzn" = (
 /obj/machinery/door/airlock/external{
-	name = "Departure Lounge Airlock"
+	name = "Departure Lounge Airlock";
+	space_dir = 2
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -39268,9 +39271,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/item/reagent_containers/dropper/precision{
-	pixel_x = -7
-	},
 /obj/item/lipstick/random,
 /obj/item/reagent_containers/spray/quantum_hair_dye{
 	pixel_x = 6
@@ -47843,7 +47843,8 @@
 /area/science/research)
 "oRL" = (
 /obj/machinery/door/airlock/external{
-	name = "Auxiliary Airlock"
+	name = "Auxiliary Airlock";
+	space_dir = 2
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
@@ -52763,7 +52764,8 @@
 /area/commons/vacant_room/office)
 "qHq" = (
 /obj/machinery/door/airlock/external{
-	name = "Escape Pod Three"
+	name = "Escape Pod Three";
+	space_dir = 1
 	},
 /turf/open/floor/plating,
 /area/commons/fitness/recreation)
@@ -59130,8 +59132,6 @@
 	dir = 8
 	},
 /obj/machinery/vending/coffee{
-	custom_premium_price = 0;
-	custom_price = 0;
 	default_price = 0;
 	extra_price = 0;
 	fair_market_price = 0;
@@ -65188,6 +65188,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/mixing)
+"uZJ" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "Arrival Airlock";
+	space_dir = 2
+	},
+/turf/open/floor/plating,
+/area/hallway/secondary/entry)
 "uZY" = (
 /obj/structure/frame/machine{
 	anchored = 1
@@ -72910,7 +72920,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod Four";
-	req_access_txt = "32"
+	req_access_txt = "32";
+	space_dir = 4
 	},
 /turf/open/floor/iron,
 /area/maintenance/starboard)
@@ -83284,11 +83295,11 @@ aaa
 lMJ
 aaa
 aaa
-bVK
+quc
 lMJ
 lMJ
 lMJ
-bVK
+quc
 aaa
 aaa
 aVs
@@ -84825,13 +84836,13 @@ aVx
 aWU
 djz
 aZZ
-djC
+uZJ
 aaa
 aaa
 aaa
 aaa
 aaa
-djz
+fqs
 bsk
 djC
 sYu
@@ -86881,13 +86892,13 @@ qYu
 aWU
 djz
 aZZ
-djC
+uZJ
 aaa
 aaa
 aaa
 aaa
 aaa
-djz
+fqs
 bsk
 djC
 aVu
