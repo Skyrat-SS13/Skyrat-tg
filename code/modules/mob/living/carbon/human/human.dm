@@ -260,7 +260,7 @@
 					sec_hud_set_security_status()
 				return
 
-			if(href_list["view"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+			if(href_list["view"])
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
