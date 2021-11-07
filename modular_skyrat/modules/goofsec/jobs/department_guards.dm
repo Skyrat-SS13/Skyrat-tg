@@ -109,7 +109,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/melee/baton/security/loaded
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
@@ -174,7 +176,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/melee/baton/security/loaded
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		)
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science
@@ -241,7 +245,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/melee/baton/security/loaded
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		)
 	glasses = /obj/item/clothing/glasses/sunglasses
 
 	backpack = /obj/item/storage/backpack
@@ -307,7 +313,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/melee/baton/security/loaded
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -372,7 +380,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/engineering_guard
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/melee/baton/security/loaded
+	backpack_contents = list(
+		/obj/item/melee/baton/security/loaded = 1,
+		)
 
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng

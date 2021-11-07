@@ -35,7 +35,7 @@
 	wash_atom(loc)
 
 /turf/open/water/overlay/proc/wash_atom(atom/A)
-	A.wash(CLEAN_RAD | CLEAN_TYPE_WEAK) // Clean radiation non-instantly
+	A.wash(CLEAN_RAD) // Clean radiation non-instantly
 	A.wash(CLEAN_WASH)
 ///////////// CLEANING  BLOCK /////////////
 ///////////////////////////////////////////

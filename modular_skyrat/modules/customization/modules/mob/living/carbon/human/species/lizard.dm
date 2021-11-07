@@ -28,6 +28,6 @@
 	return returned
 
 /datum/species/lizard/ashwalker
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,DIGITIGRADE,HAS_FLESH,HAS_BONE,NO_UNDERWEAR,HAIR,FACEHAIR)
 	always_customizable = TRUE
 	learnable_languages = list(/datum/language/draconic)

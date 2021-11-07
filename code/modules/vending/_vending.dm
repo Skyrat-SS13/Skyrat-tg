@@ -54,7 +54,7 @@
 	verb_exclaim = "beeps"
 	max_integrity = 300
 	integrity_failure = 0.33
-	armor = list(MELEE = 20, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 70)
+	armor = list(MELEE = 20, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 70)
 	circuit = /obj/item/circuitboard/machine/vendor
 	payment_department = ACCOUNT_SRV
 	light_power = 0.5
@@ -262,9 +262,9 @@
 
 /obj/machinery/vending/update_overlays()
 	. = ..()
-	if(!light_mask)
-		return
-	if(!(machine_stat & BROKEN) && powered())
+	if(panel_open)
+		. += panel_type
+	if(light_mask && !(machine_stat & BROKEN) && powered())
 		. += emissive_appearance(icon, light_mask)
 
 /obj/machinery/vending/atom_break(damage_flag)
@@ -432,9 +432,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return TRUE
 	if(anchored)
 		default_deconstruction_screwdriver(user, icon_state, icon_state, I)
-		cut_overlays()
-		if(panel_open)
-			add_overlay(panel_type)
+		update_appearance()
 		updateUsrDialog()
 	else
 		to_chat(user, span_warning("You must first secure [src]."))

@@ -61,7 +61,7 @@
 	name = "Horn"
 	icon_state = "rhino"
 	extra = TRUE
-	extra = MUTCOLORS3
+	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/rodent
 	name = "Rodent"
@@ -201,7 +201,7 @@
 	name = "Horn (Top)"
 	icon_state = "frhino"
 	extra = TRUE
-	extra = MUTCOLORS3
+	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/snouts/mammal/fhusky
 	name = "Husky (Top)"

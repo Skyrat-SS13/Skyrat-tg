@@ -53,6 +53,7 @@ export type Quirk = {
   icon: string;
   name: string;
   value: number;
+  veteran_only: boolean; // SKYRAT EDIT - Veteran quirks
 };
 
 // SKYRAT EDIT START

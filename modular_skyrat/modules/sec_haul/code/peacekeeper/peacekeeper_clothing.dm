@@ -324,7 +324,7 @@
 	icon_state = "hardsuit0-peacekeeper"
 	inhand_icon_state = "sec_helm"
 	hardsuit_type = "peacekeeper"
-	armor = list(MELEE = 35, BULLET = 15, LASER = 30,ENERGY = 40, BOMB = 10, BIO = 100, RAD = 50, FIRE = 75, ACID = 75, WOUND = 20)
+	armor = list(MELEE = 35, BULLET = 15, LASER = 30,ENERGY = 40, BOMB = 10, BIO = 100, FIRE = 75, ACID = 75, WOUND = 20)
 
 /obj/item/clothing/suit/space/hardsuit/security_peacekeeper
 	name = "Armadyne SS-01 Voidsuit"
@@ -334,7 +334,7 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
 	icon_state = "hardsuit-peacekeeper"
 	inhand_icon_state = "sec_hardsuit"
-	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 10, BIO = 100, RAD = 50, FIRE = 75, ACID = 75, WOUND = 20)
+	armor = list(MELEE = 35, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 10, BIO = 100, FIRE = 75, ACID = 75, WOUND = 20)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/security_peacekeeper
 	hardsuit_tail_colors = list("#BBBBBB", "#444444", "#333377")
 
