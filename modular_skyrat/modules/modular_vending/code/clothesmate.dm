@@ -7,7 +7,6 @@
 		/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/brown = 5,
-		/obj/item/clothing/suit/hooded/wintercoat/custom = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/trim = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/trim/alt = 5,
@@ -85,7 +84,6 @@
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
 		/obj/item/clothing/shoes/jackboots/timbs = 2,
 		/obj/item/clothing/head/soft/yankee = 3,
-		/obj/item/instrument/piano_synth/headphones/spacepods = 1,
 		/obj/item/clothing/suit/brownbattlecoat = 1,
 		/obj/item/clothing/suit/blackfurrich = 1,
 		/obj/item/clothing/suit/frenchtrench = 1,
