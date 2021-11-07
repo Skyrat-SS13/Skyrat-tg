@@ -324,6 +324,7 @@
 #define OFFSET_BACK "back"
 #define OFFSET_SUIT "suit"
 #define OFFSET_NECK "neck"
+#define OFFSET_ACCESSORY "accessory" // Skyrat edit - addition
 
 //MINOR TWEAKS/MISC
 //#define AGE_MIN 17	//youngest a character can be //ORIGINAL
@@ -398,6 +399,7 @@
 #define DEFIB_FAIL_FAILING_BRAIN (1<<6)
 #define DEFIB_FAIL_NO_BRAIN (1<<7)
 #define DEFIB_FAIL_NO_INTELLIGENCE (1<<8)
+#define DEFIB_NOGRAB_AGHOST (1<<9)
 
 // Bit mask of possible return values by can_defib that would result in a revivable patient
 #define DEFIB_REVIVABLE_STATES (DEFIB_FAIL_NO_HEART | DEFIB_FAIL_FAILING_HEART | DEFIB_FAIL_HUSK | DEFIB_FAIL_TISSUE_DAMAGE | DEFIB_FAIL_FAILING_BRAIN | DEFIB_POSSIBLE)

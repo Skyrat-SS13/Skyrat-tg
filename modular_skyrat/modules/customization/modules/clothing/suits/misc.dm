@@ -128,7 +128,7 @@
 
 /obj/item/clothing/suit/toggle/jacket/cardigan/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("FFF"))
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/suit/discoblazer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -178,7 +178,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/brownfurrich/public
 	name = "fur coat"
@@ -215,7 +215,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/modern_winter
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -248,7 +248,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/autumn
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -260,7 +260,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/texas
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -275,17 +275,17 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "ukrainian coat"
-	desc = "Cossacks, oh cossacks, let's go, cossachenki."
+	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
 	icon_state = "kuban_cossak"
 	mutant_variants = NONE
 
-/obj/item/clothing/suit/cossack/sec
+/obj/item/clothing/suit/armor/cossack/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	name = "security ukrainian coat"
+	desc = "Hop on your horse, dawn your really fluffy hat, and strap this coat to your back."
 	icon_state = "don_cossak"
 	mutant_variants = NONE
-	armor = list(MELEE = 10, BULLET = 10, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 
 /obj/item/clothing/suit/corgisuit/en
 	name = "\improper super-hero E-N suit"

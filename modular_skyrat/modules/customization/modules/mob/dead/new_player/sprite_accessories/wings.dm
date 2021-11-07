@@ -23,18 +23,18 @@
 
 /datum/sprite_accessory/wings/angel
 	color_src = USE_ONE_COLOR
-	default_color = "FFF"
+	default_color = "#FFFFFF"
 
 /datum/sprite_accessory/wings/megamoth
 	color_src = USE_ONE_COLOR
-	default_color = "FFF"
+	default_color = "#FFFFFF"
 
 /datum/sprite_accessory/wings/dragon
 	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/wings/moth
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/moth_wings.dmi' //Needs new icon to suit new naming convention
-	default_color = "FFF"
+	default_color = "#FFFFFF"
 	recommended_species = list(SPECIES_MOTH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_INSECT) //Mammals too, I guess. They wont get flight though, see the wing organs for that logic
 	organ_type = /obj/item/organ/external/wings/moth
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
@@ -130,6 +130,9 @@
 	default_color = DEFAULT_PRIMARY
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT, SPECIES_SYNTHLIZ)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one
 	name = "Bat"
@@ -217,8 +220,14 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	name = "Low wings"
 	icon_state = "low"
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
 
 /datum/sprite_accessory/wings/low_wings_top
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	name = "Low wings (Top)"
 	icon_state = "low_top"
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE

@@ -9,7 +9,7 @@
 	icon_state = "coatparamed"
 	inhand_icon_state = "coatparamed"
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight/pen, /obj/item/reagent_containers/glass/bottle, /obj/item/reagent_containers/glass/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 50, "rad" = 0, "fire" = 0, "acid" = 45, "wound" = 3)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 50, "fire" = 0, "acid" = 45, "wound" = 3)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/paramedic
 
 /obj/item/clothing/head/hooded/winterhood/paramedic
@@ -26,7 +26,7 @@
 	icon_state = "coatrobotics"
 	inhand_icon_state = "coatrobotics"
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/melee/baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/screwdriver, /obj/item/crowbar, /obj/item/wrench, /obj/item/stack/cable_coil, /obj/item/weldingtool, /obj/item/multitool)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/robotics
 
 /obj/item/clothing/head/hooded/winterhood/robotics
@@ -59,7 +59,7 @@
 	desc = "A brass-plated button up winter coat. Instead of a zipper tab, it has a brass cog with a tiny red gemstone inset."
 	icon_state = "coatratvar"
 	inhand_icon_state = "coatratvar"
-	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60, "wound" = 10)
+	armor = list("melee" = 30, "bullet" = 45, "laser" = -10, "energy" = 0, "bomb" = 30, "bio" = 0, "fire" = 60, "acid" = 60, "wound" = 10)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/ratvar
 	var/real = TRUE
 
@@ -91,7 +91,7 @@
 	desc = "A somber button-up in tones of grey entropy and a wicked crimson zipper. When pulled all the way up, the zipper looks like a bloody gash. The zipper pull looks like a single drop of blood."
 	icon_state = "coatnarsie"
 	inhand_icon_state = "coatnarsie"
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "rad" = 10, "fire" = 30, "acid" = 30, "wound" = 10)
+	armor = list("melee" = 30, "bullet" = 20, "laser" = 30,"energy" = 10, "bomb" = 30, "bio" = 10, "fire" = 30, "acid" = 30, "wound" = 10)
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/restraints/legcuffs/bola/cult,/obj/item/melee/cultblade,/obj/item/melee/cultblade/dagger,/obj/item/reagent_containers/glass/beaker/unholywater,/obj/item/cult_shift,/obj/item/flashlight/flare/culttorch,/obj/item/melee/cultblade/halberd)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/narsie
 	var/real = TRUE
@@ -120,7 +120,7 @@
 	icon_state = "coatratvar"
 	inhand_icon_state = "coatratvar"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
 	real = FALSE
 
 /obj/item/clothing/suit/hooded/wintercoat/narsie/fake
@@ -129,7 +129,7 @@
 	icon_state = "coatnarsie"
 	inhand_icon_state = "coatnarsie"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0, "wound" = 0)
 	real = FALSE
 
 /obj/item/clothing/suit/flakjack
@@ -142,7 +142,7 @@
 	blood_overlay_type = "armor"
 	body_parts_covered = CHEST
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = -5, "acid" = -15, "wound" = 0) //nylon sucks against acid
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 0, "fire" = -5, "acid" = -15, "wound" = 0) //nylon sucks against acid
 	mutant_variants = NONE
 
 /obj/item/clothing/suit/hooded/cloak/david
@@ -174,7 +174,7 @@
 
 /obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5", "EEA", "333"))
+	AddElement(/datum/element/polychromic, list("#55DD55", "#EEEEAA", "#333333"))
 
 
 /obj/item/clothing/suit/toggle/deckard
@@ -187,7 +187,7 @@
 	inhand_icon_state = "det_suit"
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 45)
+	armor = list(MELEE = 25, BULLET = 10, LASER = 25, ENERGY = 35, BOMB = 0, BIO = 0, FIRE = 0, ACID = 45)
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 
@@ -199,7 +199,7 @@
 
 /obj/item/clothing/suit/jacket/leather/polychromic/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5"))
+	AddElement(/datum/element/polychromic, list("#55DD55"))
 
 /obj/item/clothing/suit/toggle/brit/sec
 	name = "high vis armored vest"
@@ -210,7 +210,7 @@
 	mutant_variants = NONE
 	blood_overlay_type = "coat"
 	toggle_noun = "zipper"
-	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
+	armor = list(MELEE = 10, BULLET = 5, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
 
 /obj/item/clothing/suit/toggle/lawyer/black/better
@@ -230,7 +230,7 @@
 
 /obj/item/clothing/suit/duster/colorable/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5"))
+	AddElement(/datum/element/polychromic, list("#55DD55"))
 
 /obj/item/clothing/suit/toggle/peacoat
 	name = "colorable peacoat"
@@ -242,7 +242,7 @@
 
 /obj/item/clothing/suit/toggle/peacoat/ComponentInitialize()
 	. = ..()
-	AddElement(/datum/element/polychromic, list("5D5"))
+	AddElement(/datum/element/polychromic, list("#55DD55"))
 
 /obj/item/clothing/suit/poncho
     mutant_variants = STYLE_TAUR_ALL

@@ -15,20 +15,20 @@
 		/obj/item/food/donut = 12,
 		/obj/item/storage/box/evidence = 6,
 		/obj/item/flashlight/seclite = 4,
-    	/obj/item/gun_maintenance_supplies = 40,
-		/obj/item/taperoll/police = 4
+		/obj/item/restraints/legcuffs/bola/energy = 7
 	)
 	contraband = list(
 		/obj/item/clothing/glasses/sunglasses = 2,
-		/obj/item/storage/fancy/donut_box = 2,
-		/obj/item/armament_token/sidearm_blackmarket = 2
+		/obj/item/storage/fancy/donut_box = 2
 	)
 	premium = list(
-		/obj/item/storage/belt/security/webbing/peacekeeper = 5,
+		/obj/item/storage/belt/security/webbing = 5,
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 1,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 1,
-		/obj/item/grenade/stingbang = 1
+		/obj/item/clothing/gloves/tackler = 5,
+		/obj/item/grenade/stingbang = 1,
+		/obj/item/watertank/pepperspray = 2
 	)
 	refill_canister = /obj/item/vending_refill/security_peacekeeper
 	default_price = PAYCHECK_MEDIUM
@@ -53,48 +53,19 @@
 	icon_state = "secdrobe"
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
-	products = list(
-		/obj/item/clothing/suit/hooded/wintercoat/security/peacekeeper = 4,
-		/obj/item/storage/backpack/security/peacekeeper = 3,
-		/obj/item/storage/backpack/satchel/sec/peacekeeper = 3,
-		/obj/item/storage/backpack/duffelbag/sec/peacekeeper = 3,
-		/obj/item/clothing/under/rank/security/peacekeeper = 3,
-		/obj/item/clothing/under/rank/security/peacekeeper/blue = 3,
-		/obj/item/clothing/under/rank/security/peacekeeper/tactical = 3,
-		/obj/item/clothing/under/rank/security/peacekeeper/junior/sol = 2,
-		/obj/item/clothing/under/rank/security/peacekeeper/junior/sol/traffic = 2,
-		/obj/item/clothing/under/rank/security/peacekeeper/sol = 7,
-		/obj/item/clothing/shoes/combat/peacekeeper = 3,
-		/obj/item/clothing/head/beret/sec/peacekeeper = 3,
-		/obj/item/clothing/head/soft/sec = 3,
-		/obj/item/clothing/head/sec/peacekeeper/sol = 3,
-		/obj/item/clothing/head/soltraffic = 3,
-		/obj/item/clothing/mask/bandana/black = 3,
-		/obj/item/clothing/gloves/combat/peacekeeper = 3,
-		/obj/item/clothing/suit/toggle/brit/sec = 7,
-		/obj/item/clothing/under/pants/khaki = 3,
-		/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
-		/obj/item/clothing/under/rank/security/peacekeeper/trousers = 3,
-		/obj/item/clothing/under/rank/security/peacekeeper/trousers/red = 3,
-		/obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat = 4,
-		/obj/item/clothing/head/ushanka/sec = 5,
-		/obj/item/clothing/head/ushanka/sec/blue = 5
-	)
-	contraband = list(
-		/obj/item/clothing/suit/armor/stormtrooper = 1,
-		/obj/item/clothing/head/helmet/stormtrooper = 1,
-		/obj/item/clothing/shoes/combat/stormtrooper = 1,
-		/obj/item/clothing/gloves/combat/peacekeeper/stormtrooper = 1,
-		/obj/item/clothing/head/cowboyhat/widesec = 1,
-		/obj/item/clothing/under/rank/security/blackwatch = 1,
-		/obj/item/clothing/suit/cossack/sec = 2,
-		/obj/item/clothing/mask/gas/german = 3
-	)
-	premium = list(
-		/obj/item/clothing/under/rank/security/officer/formal = 3,
-		/obj/item/clothing/suit/security/officer = 3,
-		/obj/item/clothing/head/beret/sec/navyofficer = 3
-		)
+	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 3,
+					/obj/item/storage/backpack/security = 3,
+					/obj/item/storage/backpack/satchel/sec = 3,
+					/obj/item/storage/backpack/duffelbag/sec = 3,
+					/obj/item/clothing/under/rank/security/officer = 15,
+					/obj/item/clothing/shoes/jackboots = 3,
+					/obj/item/clothing/head/beret/sec = 3,
+					/obj/item/clothing/head/soft/sec = 3,
+					/obj/item/clothing/mask/bandana/red = 3,
+					/obj/item/clothing/gloves/color/black = 3,
+					/obj/item/clothing/under/pants/khaki = 3)
+	premium = list(/obj/item/clothing/suit/security/officer = 3,
+					/obj/item/clothing/head/beret/sec/navyofficer = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/peacekeeper_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MOSTLY_PURE_RED

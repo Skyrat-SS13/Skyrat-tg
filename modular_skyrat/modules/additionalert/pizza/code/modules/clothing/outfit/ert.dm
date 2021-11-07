@@ -11,7 +11,7 @@
 	back = /obj/item/storage/backpack/ert/odst
 	backpack_contents = list(
 		/obj/item/storage/box/survival,\
-		/obj/item/kitchen/knife,\
+		/obj/item/knife,\
 		/obj/item/storage/box/ingredients/italian,\
 		)
 
@@ -27,7 +27,7 @@
 	back = /obj/item/storage/backpack/ert/odst
 	backpack_contents = list(
 		/obj/item/storage/box/survival,\
-		/obj/item/kitchen/knife/hotknife,\
+		/obj/item/knife/hotknife,\
 		/obj/item/storage/box/ingredients/italian,\
 		)
 

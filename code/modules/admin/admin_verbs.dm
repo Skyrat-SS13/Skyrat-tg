@@ -89,6 +89,7 @@ GLOBAL_LIST_INIT(admin_verbs_sounds, list(/client/proc/play_local_sound, /client
 GLOBAL_PROTECT(admin_verbs_sounds)
 GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
+	/client/proc/spawn_mob_spawner, // SKYRAT EDIT ADDITION
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
@@ -181,6 +182,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_display_init_log,
 	/client/proc/cmd_display_overlay_log,
 	/client/proc/reload_configuration,
+	/client/proc/reload_interactions, //SKYRAT EDIT ADDITION
 	/client/proc/atmos_control,
 	/client/proc/reload_cards,
 	/client/proc/validate_cards,
@@ -509,13 +511,13 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		if(null)
 			return
 		if("Small Bomb (1, 2, 3, 3)")
-			explosion(epicenter, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3, flash_range =  3, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
+			explosion(epicenter, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3, flash_range = 3, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
 		if("Medium Bomb (2, 3, 4, 4)")
-			explosion(epicenter, devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, flash_range =  4, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
+			explosion(epicenter, devastation_range = 2, heavy_impact_range = 3, light_impact_range = 4, flash_range = 4, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
 		if("Big Bomb (3, 5, 7, 5)")
-			explosion(epicenter, devastation_range = 3, heavy_impact_range = 5, light_impact_range = 7, flash_range =  5, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
+			explosion(epicenter, devastation_range = 3, heavy_impact_range = 5, light_impact_range = 7, flash_range = 5, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
 		if("Maxcap")
-			explosion(epicenter, devastation_range = GLOB.MAX_EX_DEVESTATION_RANGE, heavy_impact_range = GLOB.MAX_EX_HEAVY_RANGE, light_impact_range = GLOB.MAX_EX_LIGHT_RANGE, flash_range =  GLOB.MAX_EX_FLASH_RANGE, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
+			explosion(epicenter, devastation_range = GLOB.MAX_EX_DEVESTATION_RANGE, heavy_impact_range = GLOB.MAX_EX_HEAVY_RANGE, light_impact_range = GLOB.MAX_EX_LIGHT_RANGE, flash_range = GLOB.MAX_EX_FLASH_RANGE, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
 		if("Custom Bomb")
 			var/range_devastation = input("Devastation range (in tiles):") as null|num
 			if(range_devastation == null)

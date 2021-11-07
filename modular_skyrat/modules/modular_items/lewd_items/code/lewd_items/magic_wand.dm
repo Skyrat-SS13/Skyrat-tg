@@ -96,7 +96,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("massages their penis with the [src]","gently teases their penis with [src]") : pick("delicately massages [M]'s penis with [src]", "uses [src] to gently massage [M]'s penis","leans the vibrator against [M]'s penis")
@@ -105,7 +105,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("massages their pussy with the [src]","gently teases their pussy with [src]") : pick("delicately massages [M]'s pussy with [src]", "uses [src] to gently massage [M]'s pussy","leans the vibrator against [M]'s pussy")
@@ -114,7 +114,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
@@ -128,7 +128,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -141,7 +141,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -155,7 +155,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("massages their vagina with the [src]","gently teases their pussy with [src]") : pick("massages [M]'s vagina with [src]", "uses [src] to massage [M]'s crotch","leans the vibrator against [M]'s pussy")
@@ -164,7 +164,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("massages their penis with the [src]","teases teases their penis with [src]") : pick("massages [M]'s penis with [src]", "uses [src] to massage [M]'s penis","leans the vibrator against [M]'s penis")
@@ -173,7 +173,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE, ignore_walls = FALSE)
 
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
@@ -187,7 +187,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -200,7 +200,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -214,7 +214,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("massages their vagina with the [src]","hardly teases their pussy with [src]") : pick("leans vibrator tight to [M]'s vagina with [src]", "uses [src] to agressively massage [M]'s crotch","leans the vibrator against [M]'s pussy")
@@ -223,7 +223,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE, ignore_walls = FALSE)
 
 							else if(M.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
 								message = (user == M) ? pick("massages their penis with the [src]","hardly teases their penis with [src]") : pick("leans vibrator tight to [M]'s penis with [src]", "uses [src] to agressively massage [M]'s penis","leans the vibrator against [M]'s penis")
@@ -232,7 +232,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE, ignore_walls = FALSE)
 
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
@@ -246,7 +246,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -259,7 +259,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s groin is covered!"))
 								return
@@ -275,7 +275,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -287,7 +287,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 10, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -301,7 +301,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -313,7 +313,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 20, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -327,7 +327,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return
@@ -340,7 +340,7 @@
 								if(prob(30) && (M.stat != DEAD))
 									M.emote(pick("twitch_s","moan"))
 								user.visible_message(span_purple("[user] [message]!"))
-								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE)
+								playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', 30, TRUE, ignore_walls = FALSE)
 							else
 								to_chat(user, span_danger("Looks like [M]'s chest is covered!"))
 								return

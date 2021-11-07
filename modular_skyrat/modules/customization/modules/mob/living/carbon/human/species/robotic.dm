@@ -1,6 +1,6 @@
 /datum/species/robotic
 	say_mod = "beeps"
-	default_color = "00FF00"
+	default_color = "#00FF00"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
@@ -175,7 +175,7 @@
 	id = SPECIES_SYNTHMAMMAL
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	default_color = "4B4B4B"
+	default_color = "#4B4B4B"
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
 		MUTCOLORS,EYECOLOR,
@@ -208,33 +208,33 @@
 	var/random = rand(1,7)
 	switch(random)
 		if(1)
-			main_color = "FFF"
-			second_color = "333"
-			third_color = "333"
+			main_color = "#FFFFFF"
+			second_color = "#333333"
+			third_color = "#333333"
 		if(2)
-			main_color = "FFD"
-			second_color = "D61"
-			third_color = "A52"
+			main_color = "#FFFFDD"
+			second_color = "#DD6611"
+			third_color = "#AA5522"
 		if(3)
-			main_color = "D61"
-			second_color = "FFF"
-			third_color = "D61"
+			main_color = "#DD6611"
+			second_color = "#FFFFFF"
+			third_color = "#DD6611"
 		if(4)
-			main_color = "CCC"
-			second_color = "FFF"
-			third_color = "FFF"
+			main_color = "#CCCCCC"
+			second_color = "#FFFFFF"
+			third_color = "#FFFFFF"
 		if(5)
-			main_color = "A52"
-			second_color = "C83"
-			third_color = "FFF"
+			main_color = "#AA5522"
+			second_color = "#CC8833"
+			third_color = "#FFFFFF"
 		if(6)
-			main_color = "FFD"
-			second_color = "FEC"
-			third_color = "FDB"
+			main_color = "#FFFFDD"
+			second_color = "#FFEECC"
+			third_color = "#FFDDBB"
 		if(7) //Oh no you've rolled the sparkle dog
-			main_color = random_short_color()
-			second_color = random_short_color()
-			third_color = random_short_color()
+			main_color = "#[random_color()]"
+			second_color = "#[random_color()]"
+			third_color = "#[random_color()]"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
 	returned["mcolor3"] = third_color

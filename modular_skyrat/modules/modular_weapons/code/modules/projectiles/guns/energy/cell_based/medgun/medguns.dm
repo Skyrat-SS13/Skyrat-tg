@@ -226,3 +226,29 @@
 	desc = "A medicell that adjusts the hosts temperature to acceptable levels"
 	icon_state = "temperature"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/temperature
+
+/obj/item/weaponcell/medical/utility/hardlight_gown
+	name = "Hardlight Gown Medicell"
+	desc = "A medicell that creates a hopsital gown made out of hardlight on the target"
+	icon_state = "gown"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/gown
+
+/obj/item/weaponcell/medical/utility/salve
+	name = "Hardlight Salve Medicell"
+	desc = "A medicell that applies a healing globule of synthetic plant matter to a patient"
+	icon_state = "salve"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/salve
+
+
+//Empty Medicell//
+/obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.
+	name = "Empty Salve Medicell"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/upgrades.dmi'
+	icon_state = "empty"
+	desc = "A unactivated Salve Medicell, use this on an aloe leaf to make this into a usable cell"
+	from_obj = /obj/item/food/grown/aloe
+	to_obj = /obj/item/weaponcell/medical/utility/salve
+
+/obj/item/device/custom_kit/empty_cell/Initialize()
+	. = ..()
+	AddElement(/datum/element/item_scaling, 0.5, 1)

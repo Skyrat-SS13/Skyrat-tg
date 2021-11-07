@@ -1,4 +1,4 @@
-import { FeatureChoiced, FeatureDropdownInput, Feature, FeatureColorInput, FeatureTextInput, FeatureShortTextInput, CheckboxInput, FeatureTriColorInput, FeatureToggle } from "../../base";
+import { FeatureChoiced, FeatureDropdownInput, Feature, FeatureColorInput, FeatureTextInput, FeatureShortTextInput, CheckboxInput, FeatureTriColorInput, FeatureTriBoolInput, FeatureToggle } from "../../base";
 
 export const feature_leg_type: FeatureChoiced = {
   name: "Leg type",
@@ -17,6 +17,12 @@ export const feature_mcolor3: Feature<string> = {
 export const flavor_text: Feature<string> = {
   name: "Flavor Text",
   description: "Describe your character!",
+  component: FeatureTextInput,
+};
+
+export const silicon_flavor_text: Feature<string> = {
+  name: "Flavor Text (Silicon)",
+  description: "Describe your cyborg/AI shell!",
   component: FeatureTextInput,
 };
 
@@ -44,6 +50,18 @@ export const allow_mismatched_parts_toggle: FeatureToggle = {
   component: CheckboxInput,
 };
 
+export const allow_emissives_toggle: FeatureToggle = {
+  name: "Allow Emissives",
+  description: "Time to become a glowstick.",
+  component: CheckboxInput,
+};
+
+export const eye_emissives: FeatureToggle = {
+  name: "Eye Emissives",
+  description: "Turn your eyes into sparklers.",
+  component: CheckboxInput,
+};
+
 export const mutant_colors_color: Feature<string[]> = {
   name: "Mutant Colors",
   description: "Legacy colors for controlling shit.",
@@ -68,6 +86,12 @@ export const body_markings_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const body_markings_emissive: Feature<boolean[]> = {
+  name: "Body Markings Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const tail_toggle: FeatureToggle = {
   name: "Tail",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -84,6 +108,12 @@ export const tail_color: Feature<string[]> = {
   name: "Tail Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const tail_emissive: Feature<boolean[]> = {
+  name: "Tail Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const snout_toggle: FeatureToggle = {
@@ -104,6 +134,12 @@ export const snout_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const snout_emissive: Feature<boolean[]> = {
+  name: "Snout Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const horns_toggle: FeatureToggle = {
   name: "Horns",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -120,6 +156,12 @@ export const horns_color: Feature<string[]> = {
   name: "Horns Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const horns_emissive: Feature<boolean[]> = {
+  name: "Horns Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const ears_toggle: FeatureToggle = {
@@ -140,6 +182,12 @@ export const ears_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const ears_emissive: Feature<boolean[]> = {
+  name: "Ears Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const wings_toggle: FeatureToggle = {
   name: "Wings",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -156,6 +204,12 @@ export const wings_color: Feature<string[]> = {
   name: "Wings Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const wings_emissive: Feature<boolean[]> = {
+  name: "Wings Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const frills_toggle: FeatureToggle = {
@@ -176,6 +230,13 @@ export const frills_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const frills_emissive: Feature<boolean[]> = {
+  name: "Frills Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
+
 export const spines_toggle: FeatureToggle = {
   name: "Spines",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -192,6 +253,12 @@ export const spines_color: Feature<string[]> = {
   name: "Spines Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const spines_emissive: Feature<boolean[]> = {
+  name: "Spines Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const legs_toggle: FeatureToggle = {
@@ -230,6 +297,12 @@ export const caps_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const caps_emissive: Feature<boolean[]> = {
+  name: "Caps Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const moth_antennae_toggle: FeatureToggle = {
   name: "Moth Antenna",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -246,6 +319,12 @@ export const moth_antennae_color: Feature<string[]> = {
   name: "Moth Antenna Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const moth_antennae_emissive: Feature<boolean[]> = {
+  name: "Moth Antennae Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const moth_markings_toggle: FeatureToggle = {
@@ -266,6 +345,12 @@ export const moth_markings_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const moth_markings_emissive: Feature<boolean[]> = {
+  name: "Moth Markings Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const fluff_toggle: FeatureToggle = {
   name: "Fluff",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -282,6 +367,12 @@ export const fluff_color: Feature<string[]> = {
   name: "Fluff Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const fluff_emissive: Feature<boolean[]> = {
+  name: "Fluff Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const head_acc_toggle: FeatureToggle = {
@@ -302,6 +393,12 @@ export const head_acc_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const head_acc_emissive: Feature<boolean[]> = {
+  name: "Head Accessories Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const ipc_screen_toggle: FeatureToggle = {
   name: "IPC Screen",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -320,6 +417,12 @@ export const ipc_screen_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const ipc_screen_emissive: Feature<boolean[]> = {
+  name: "IPC Screen Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const ipc_antenna_toggle: FeatureToggle = {
   name: "IPC Antenna",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -336,6 +439,12 @@ export const ipc_antenna_color: Feature<string[]> = {
   name: "IPC Antenna Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const ipc_antenna_emissive: Feature<boolean[]> = {
+  name: "IPC Antenna Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const ipc_chassis_toggle: FeatureToggle = {
@@ -374,6 +483,12 @@ export const neck_acc_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const neck_acc_emissive: Feature<boolean[]> = {
+  name: "Neck Accessories Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const skrell_hair_toggle: FeatureToggle = {
   name: "Skrell Hair",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -390,6 +505,12 @@ export const skrell_hair_color: Feature<string[]> = {
   name: "Skrell Hair Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const skrell_hair_emissive: Feature<boolean[]> = {
+  name: "Skrell Hair Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const taur_toggle: FeatureToggle = {
@@ -410,6 +531,12 @@ export const taur_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const taur_emissive: Feature<boolean[]> = {
+  name: "Taur Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const xenodorsal_toggle: FeatureToggle = {
   name: "Xenodorsal",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -428,6 +555,12 @@ export const xenodorsal_color: Feature<string[]> = {
   component: FeatureTriColorInput,
 };
 
+export const xenodorsal_emissive: Feature<boolean[]> = {
+  name: "Xenodorsal Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
+};
+
 export const xenohead_toggle: FeatureToggle = {
   name: "Xeno Head",
   description: "Add some lore for your species! Won't show up if there's no custom species.",
@@ -444,6 +577,12 @@ export const xenohead_color: Feature<string[]> = {
   name: "Xeno Head Colors",
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriColorInput,
+};
+
+export const xenohead_emissive: Feature<boolean[]> = {
+  name: "Xenohead Emissives",
+  description: "Want to have a fancy species name? Put it here, or leave it blank.",
+  component: FeatureTriBoolInput,
 };
 
 export const skin_tone_toggle: FeatureToggle = {

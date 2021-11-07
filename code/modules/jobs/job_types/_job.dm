@@ -102,12 +102,21 @@
 	/// String. If set to a non-empty one, it will be the key for the policy text value to show this role on spawn.
 	var/policy_index = ""
 
+	//SKYRAT ADDITION START
+	/// Job title to use for spawning. Allows a job to spawn without needing map edits.
+	var/job_spawn_title
+	//SKYRAT ADDITION END
+
 	///RPG job names, for the memes
 	var/rpg_title
 
 
 /datum/job/New()
 	. = ..()
+	//SKYRAT ADDITION START
+	if(!job_spawn_title)
+		job_spawn_title = title
+	//SKYRAT ADDITION END
 	var/list/jobs_changes = get_map_changes()
 	if(!jobs_changes)
 		return
@@ -238,7 +247,7 @@
 	box = /obj/item/storage/box/survival
 
 	var/backpack = /obj/item/storage/backpack
-	var/satchel  = /obj/item/storage/backpack/satchel
+	var/satchel = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
 
 	var/pda_slot = ITEM_SLOT_BELT
@@ -324,7 +333,7 @@
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
 	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 
-
+//SKYRAT EDIT START
 /// Returns an atom where the mob should spawn in.
 /datum/job/proc/get_roundstart_spawn_point()
 	if(random_spawns_possible)
@@ -341,8 +350,8 @@
 				hangover_landmark.used = TRUE
 				break
 			return hangover_spawn_point || get_latejoin_spawn_point()
-	if(length(GLOB.jobspawn_overrides[title]))
-		return pick(GLOB.jobspawn_overrides[title])
+	if(length(GLOB.jobspawn_overrides[job_spawn_title]))
+		return pick(GLOB.jobspawn_overrides[job_spawn_title])
 	var/obj/effect/landmark/start/spawn_point = get_default_roundstart_spawn_point()
 	if(!spawn_point) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 		return get_latejoin_spawn_point()
@@ -352,7 +361,7 @@
 /// Handles finding and picking a valid roundstart effect landmark spawn point, in case no uncommon different spawning events occur.
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
-		if(spawn_point.name != title)
+		if(spawn_point.name != job_spawn_title)
 			continue
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
@@ -365,12 +374,13 @@
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
-	if(length(GLOB.jobspawn_overrides[title])) //We're doing something special today.
-		return pick(GLOB.jobspawn_overrides[title])
+	if(length(GLOB.jobspawn_overrides[job_spawn_title])) //We're doing something special today.
+		return pick(GLOB.jobspawn_overrides[job_spawn_title])
 	if(length(SSjob.latejoin_trackers))
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
 
+//SKYRAT EDIT END
 
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)
@@ -417,8 +427,9 @@
 		if(require_human)
 			player_client.prefs.randomise["species"] = FALSE
 		player_client.prefs.safe_transfer_prefs_to(src, TRUE, is_antag)
-		if (require_human)
+		if (require_human && !ishumanbasic(src))
 			set_species(/datum/species/human)
+			apply_pref_name(/datum/preference/name/backup_human, player_client)
 		if(CONFIG_GET(flag/force_random_names))
 			var/species_type = player_client.prefs.read_preference(/datum/preference/choiced/species)
 			var/datum/species/species = new species_type
