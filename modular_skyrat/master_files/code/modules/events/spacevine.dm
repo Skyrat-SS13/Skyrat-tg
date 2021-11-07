@@ -483,7 +483,7 @@
 	quality = NEGATIVE
 
 /datum/spacevine_mutation/radiation/on_grow(obj/structure/spacevine/vine_object)
-	radiation_pulse(vine_object, 100, 3)
+	radiation_pulse(src, max_range = 5, threshold = RAD_EXTREME_INSULATION)
 
 
 // Generates miasma on growth
