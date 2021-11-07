@@ -254,16 +254,12 @@
 	new /obj/item/book/granter/crafting_recipe/pipegun_prime(src)
 	new /obj/item/book/granter/crafting_recipe/trash_cannon(src)
 	new /obj/item/construction/rcd/loaded/upgraded(src)
-	for(var/i in 1 to 3)
-		new /obj/item/rcd_ammo/large(src)
 	new /obj/item/clothing/under/color/grey/ancient(src)
 	new /obj/item/clothing/mask/gas(src)
-	for(var/i in 1 to 3)
-		new /obj/item/gas_filter(src)
 	new /obj/item/storage/belt/chameleon(src)
 	new /obj/item/storage/toolbox/mechanical/old/clean(src) //contains insuls for the aspiring god of tiding
 	new /obj/item/clothing/shoes/chameleon/noslip(src)
 	new /obj/item/clothing/glasses/sunglasses/big(src)
-	for(var/i in 1 to 6)
+	for(var/i in 1 to 5)
 		new /obj/structure/sign/poster/contraband/grey_tide(src) //:)
 	
