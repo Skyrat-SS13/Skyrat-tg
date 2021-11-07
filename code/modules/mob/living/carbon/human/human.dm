@@ -260,7 +260,7 @@
 					sec_hud_set_security_status()
 				return
 
-			if(href_list["viewsec"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+			if(href_list["view"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
@@ -275,7 +275,6 @@
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [sec_record.fields["notes"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
 				return
 
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
@@ -285,6 +284,13 @@
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+
+			if(href_list["secrecords"])
+				if(!H.canUseHUD())
+					return
+				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
+					return
+				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]")
 			//SKYRAT EDIT END
 
 			if(href_list["add_citation"])
