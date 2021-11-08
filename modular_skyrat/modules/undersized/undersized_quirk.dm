@@ -13,7 +13,7 @@
 
 /datum/quirk/undersized/add()
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	human_holder.dna.features["body_size"] = 0.3
+	human_holder.dna.features["body_size"] = 0.5
 	human_holder.dna.update_body_size()
 	human_holder.mob_size = MOB_SIZE_SMALL
 	human_holder.dna.species.punchdamagelow += UNDERSIZED_HARM_DAMAGE_PENALITY
@@ -34,7 +34,6 @@
 	var/speedmod = human_holder.dna.species.speedmod
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	REMOVE_TRAIT(human_holder, TRAIT_DWARF, QUIRK_TRAIT)
-	REMOVE_TRAIT(human_holder, TRAIT_CHUNKYFINGERS, QUIRK_TRAIT)
 	passtable_off(human_holder, QUIRK_TRAIT)
 
 #undef UNDERSIZED_SPEED_SLOWDOWN
