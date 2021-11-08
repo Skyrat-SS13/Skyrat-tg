@@ -20,7 +20,11 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
+<<<<<<< HEAD
 #define DB_MINOR_VERSION 19
+=======
+#define DB_MINOR_VERSION 18
+>>>>>>> 6b3103e6125 (Add the known alts panel, which prevents suspicious login logs for whitelisted ckeys (#62520))
 
 
 //! ## Timing subsystem
