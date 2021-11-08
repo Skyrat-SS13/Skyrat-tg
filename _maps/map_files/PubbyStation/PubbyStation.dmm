@@ -908,12 +908,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/ai_sat_ext_as)
-"adG" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/turf/open/space/basic,
-/area/solars/starboard/fore)
 "adH" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "MiniSat Maintenance";
@@ -6468,7 +6462,7 @@
 /area/maintenance/department/security/brig)
 "aut" = (
 /obj/item/clothing/head/collectable/police,
-/turf/open/floor/mech_bay_recharge_floor,
+/turf/open/floor/iron/recharge_floor,
 /area/maintenance/department/security/brig)
 "auu" = (
 /obj/machinery/computer/mech_bay_power_console{
@@ -17882,7 +17876,7 @@
 /turf/open/floor/plating,
 /area/science/robotics/mechbay)
 "bfz" = (
-/turf/open/floor/mech_bay_recharge_floor,
+/turf/open/floor/iron/recharge_floor,
 /area/science/robotics/mechbay)
 "bfA" = (
 /obj/machinery/computer/mech_bay_power_console,
@@ -18066,9 +18060,8 @@
 /turf/open/floor/plating,
 /area/service/kitchen)
 "bgl" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
-	dir = 4;
-	name = "Outlet Injector"
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
+	dir = 4
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
@@ -30676,10 +30669,7 @@
 /turf/open/floor/iron,
 /area/command/heads_quarters/ce)
 "bVI" = (
-/obj/machinery/light/small{
-	dir = 8;
-	light_color = "#d8b1b1"
-	},
+/obj/machinery/light/small/red/directional/west,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -30693,10 +30683,7 @@
 /turf/open/floor/iron/dark,
 /area/engineering/storage/tech)
 "bVK" = (
-/obj/machinery/light/small{
-	dir = 4;
-	light_color = "#d8b1b1"
-	},
+/obj/machinery/light/small/red/directional/east,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -44279,7 +44266,7 @@
 	start_active = 1
 	},
 /turf/open/floor/plating/airless,
-/area/tcommsat/computer)
+/area/space/nearstation)
 "iCe" = (
 /obj/machinery/atmospherics/components/trinary/mixer{
 	dir = 4;
@@ -53292,11 +53279,8 @@
 /turf/open/floor/iron/white,
 /area/medical/storage)
 "qoq" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 1;
-	frequency = 1441;
-	id = "inc_in";
-	piping_layer = 2
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
+	dir = 1
 	},
 /turf/open/floor/plating/airless,
 /area/maintenance/disposal/incinerator)
@@ -56791,7 +56775,7 @@
 /turf/open/floor/plating,
 /area/engineering/supermatter/room)
 "tlU" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
+/obj/machinery/atmospherics/components/unary/passive_vent{
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
@@ -58618,9 +58602,8 @@
 /area/commons/fitness/recreation)
 "uPu" = (
 /obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
-	dir = 8;
-	name = "Atmospherics waste output"
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
+	dir = 8
 	},
 /turf/open/space/basic,
 /area/maintenance/disposal/incinerator)
@@ -91489,7 +91472,7 @@ aaa
 aaa
 aaa
 aaa
-emV
+aaa
 iBJ
 clw
 hQz
@@ -104704,7 +104687,7 @@ ajA
 ajt
 aaa
 ajt
-adG
+ajA
 ajt
 aaa
 ajt
@@ -105741,7 +105724,7 @@ auq
 auq
 ajA
 ajA
-adG
+ajA
 ajA
 ajA
 ajA
@@ -106764,7 +106747,7 @@ ajA
 ajt
 aaa
 ajt
-adG
+ajA
 ajt
 aaa
 aaa
@@ -107013,7 +106996,7 @@ aaa
 aaa
 aaa
 ajt
-adG
+ajA
 ajA
 ajt
 ajt
