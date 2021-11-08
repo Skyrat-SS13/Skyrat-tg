@@ -33,11 +33,14 @@
 	var/no_glasses
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
+	var/is_emissive = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/organ/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(eye_owner))
 		var/mob/living/carbon/human/human_owner = eye_owner
+		if (human_owner.emissive_eyes)
+			is_emissive = TRUE
 		old_eye_color = human_owner.eye_color
 		if(eye_color)
 			human_owner.eye_color = eye_color
@@ -56,6 +59,8 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/affected_human = owner
 		old_eye_color = affected_human.eye_color
+		if (affected_human.emissive_eyes)
+			is_emissive = TRUE
 		if(eye_color)
 			affected_human.eye_color = eye_color
 			affected_human.regenerate_icons()
@@ -83,6 +88,7 @@
 	eye_owner.set_blurriness(0)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
+	is_emissive = FALSE
 
 
 /obj/item/organ/eyes/on_life(delta_time, times_fired)

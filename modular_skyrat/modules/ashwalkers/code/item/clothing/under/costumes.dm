@@ -47,3 +47,24 @@
 	desc = "A poorly sewn dress made of white materials."
 	icon_state = "lizcheo"
 
+/obj/item/clothing/under/costume/gladiator/ash_walker/chestwrap
+	icon = 'modular_skyrat/modules/ashwalkers/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/mob/clothing/uniform.dmi'
+	name = "loincloth and chestwrap"
+	desc = "A poorly sewn dress made of white materials."
+	icon_state = "chestwrap"
+
+/obj/item/clothing/under/costume/gladiator/ash_walker/caesar_clothes
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/mob/clothing/uniform.dmi'
+	name = "ash walker tunic"
+	desc = "A tattered red tunic of reddened fabric."
+	icon_state = "caesar_clothes"
+	mutant_variants = STYLE_DIGITIGRADE
+
+/obj/item/clothing/under/costume/gladiator/ash_walker/legskirt_d
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/modules/ashwalkers/icons/mob/clothing/uniform.dmi'
+	name = "ash walker waistcloth"
+	desc = "A unisex waistcloth to serve as a kilt or skirt."
+	icon_state = "legskirt_d"
