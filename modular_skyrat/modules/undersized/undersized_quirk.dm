@@ -21,7 +21,6 @@
 	var/speedmod = human_holder.dna.species.speedmod + UNDERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
 	ADD_TRAIT(human_holder, TRAIT_DWARF, QUIRK_TRAIT)
-	ADD_TRAIT(human_holder, TRAIT_CHUNKYFINGERS, QUIRK_TRAIT)
 	passtable_on(human_holder, QUIRK_TRAIT)
 
 /datum/quirk/undersized/remove()
