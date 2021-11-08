@@ -56,7 +56,7 @@
 /datum/preferences/New(client/C)
 	. = ..()
 	if (!vr_prefs)
-		vr_prefs = new(C)
+		vr_prefs = new(C, src)
 
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()

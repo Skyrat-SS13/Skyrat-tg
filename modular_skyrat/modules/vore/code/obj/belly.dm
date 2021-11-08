@@ -38,7 +38,7 @@
 		if (desc)
 			to_chat(arrived_mob, span_notice(desc))
 		if (owner && arrived_mob.client?.prefs?.vr_prefs?.tastes_of)
-			to_chat(owner, span_notice("[arrived_mob] tastes of [arrived_mob.client?.prefs?.vr_prefs?.tastes_of]."))
+			to_chat(owner, span_notice("[arrived_mob] tastes of [arrived_mob.client.prefs.vr_prefs.tastes_of]."))
 		check_mode()
 
 /obj/vbelly/Exited(atom/movable/gone, direction)
@@ -58,12 +58,15 @@
 		for (var/mob/living/prey in src)
 			if (prey.stat == DEAD)
 				continue
+			if (prey.client?.prefs?.vr_prefs)
+				if (!prey.client.prefs.vr_prefs.vore_enabled || !(prey.client.prefs.vr_prefs.vore_toggles & DIGESTABLE))
+					continue
 			prey.apply_damage(4, BURN)
 			if (prey.stat != DEAD)
 				all_done = FALSE
 			else
-				var/pred_message = vore_replace(data[LIST_DIGEST_PRED], owner, prey)
-				var/prey_message = vore_replace(data[LIST_DIGEST_PREY], owner, prey)
+				var/pred_message = vore_replace(data[LIST_DIGEST_PRED], owner, prey, name)
+				var/prey_message = vore_replace(data[LIST_DIGEST_PREY], owner, prey, name)
 				if (pred_message)
 					to_chat(owner, span_warning(pred_message))
 				if (prey_message)
@@ -102,20 +105,3 @@
 	if (loc && istype(loc, /obj/vbelly))
 		return
 	. = ..()
-
-/* DEBUGGING
-/proc/write_belly_info(savefile/S, slot, data)
-	if (!islist(data) || !S || !S.dir.Find("slot[slot]"))
-		return FALSE
-	S.cd = "slot[slot]"
-	WRITE_FILE(S[LIST_DIGEST_PREY], data[LIST_DIGEST_PREY])
-	WRITE_FILE(S[LIST_DIGEST_PRED], data[LIST_DIGEST_PRED])
-	WRITE_FILE(S[LIST_STRUGGLE_INSIDE], data[LIST_STRUGGLE_INSIDE])
-	WRITE_FILE(S[LIST_STRUGGLE_OUTSIDE], data[LIST_STRUGGLE_OUTSIDE])
-	WRITE_FILE(S[LIST_EXAMINE], data[LIST_EXAMINE])
-	WRITE_FILE(S["name"], data["name"])
-	WRITE_FILE(S["desc"], data["desc"])
-	WRITE_FILE(S["mode"], data["mode"])
-	S.cd = ".."
-	return data
-*/

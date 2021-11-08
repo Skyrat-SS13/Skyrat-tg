@@ -36,5 +36,6 @@
 
 	if (!preferences.vr_prefs)
 		preferences.vr_prefs = new(usr.client)
+	preferences.vr_prefs.update_static_data(usr)
 	preferences.vr_prefs.ui_interact(usr)
 //SKYRAT EDIT END

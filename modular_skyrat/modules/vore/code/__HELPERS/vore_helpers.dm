@@ -1,8 +1,8 @@
-/proc/vore_replace(messages, mob/living/pred=null, mob/living/prey=null)
+/proc/vore_replace(messages, mob/living/pred=null, mob/living/prey=null, belly=null)
 	if (!istext(messages) && !(islist(messages) && length(messages)))
 		return ""
 	var/message = istext(messages) ? messages : pick(messages)
-	var/list/replacements = list("%pred" = "[pred]", "%prey" = "[prey]")
+	var/list/replacements = list("%pred" = "[pred]", "%prey" = "[prey]", "%belly" = "[belly]")
 	for (var/replacement in replacements)
 		message = replacetext(message, replacement, replacements[replacement])
 	return message
@@ -25,7 +25,7 @@
 		belly.mass_release_from_contents()
 
 /proc/default_belly_info()
-	return list(name = "belly", "desc" = "", "mode" = VORE_MODE_HOLD,\
+	return list("name" = "belly", "desc" = "", "mode" = VORE_MODE_HOLD,\
 				LIST_DIGEST_PREY = list(),\
 				LIST_DIGEST_PRED = list(),\
 				LIST_STRUGGLE_INSIDE = list(),\
