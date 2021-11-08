@@ -87,7 +87,7 @@
 /obj/item/stack/shibari_rope/examine(mob/user)
 	.=..()
 	if(color_changed == FALSE)
-		. += "<span class='notice'>Alt-Click \the [src.name] to customize it.</span>"
+		. += span_notice("Alt-Click \the [src.name] to customize it.</span>")
 
 //mechanics stuff
 /obj/item/stack/shibari_rope/can_merge(obj/item/stack/check)
