@@ -304,31 +304,16 @@
 	var/threat = 5
 
 	if(harm)
-<<<<<<< HEAD
-		weapon.attack(C, src)
-	if(ishuman(C))
-		C.stuttering = 5
-		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
-		C.StaminaKnockdown(60,TRUE)
-		var/mob/living/carbon/human/H = C
-		threat = H.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
-	else
-		//C.Paralyze(100) SKYRAT EDIT CHANGE BELOW
-		C.StaminaKnockdown(60,TRUE)
-		C.stuttering = 5
-		threat = C.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
-=======
 		weapon.attack(current_target, src)
 	if(ishuman(current_target))
+		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT - ORIGINAL: current_target.Paralyze(100)
 		current_target.stuttering = 5
-		current_target.Paralyze(100)
 		var/mob/living/carbon/human/human_target = current_target
 		threat = human_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
 	else
-		current_target.Paralyze(100)
+		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT - ORIGINAL: current_target.Paralyze(100)
 		current_target.stuttering = 5
 		threat = current_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
->>>>>>> b39ccd408e9 (Beepsky refactor and Bot code improvement (#62510))
 
 	log_combat(src, target, "stunned")
 	if(security_mode_flags & SECBOT_DECLARE_ARRESTS)
@@ -366,20 +351,13 @@
 				else
 					stun_attack(target)
 
-<<<<<<< HEAD
-					//mode = BOT_PREP_ARREST SKYRAT EDIT CHANGE BELOW
-					//set_anchored(TRUE)
-					target_lastloc = target.loc
-					if(target.incapacitated()) //SKYRAT EDIT ADDITION
-						mode = BOT_PREP_ARREST
-						set_anchored(TRUE)
-					return
-=======
-				mode = BOT_PREP_ARREST
-				set_anchored(TRUE)
+				//mode = BOT_PREP_ARREST SKYRAT EDIT CHANGE BELOW
+				//set_anchored(TRUE)
 				target_lastloc = target.loc
+				if(target.incapacitated()) //SKYRAT EDIT ADDITION
+					mode = BOT_PREP_ARREST
+					set_anchored(TRUE)
 				return
->>>>>>> b39ccd408e9 (Beepsky refactor and Bot code improvement (#62510))
 
 			// not next to perp
 			var/turf/olddist = get_dist(src, target)
@@ -391,11 +369,7 @@
 
 		if(BOT_PREP_ARREST) // preparing to arrest target
 			// see if he got away. If he's no no longer adjacent or inside a closet or about to get up, we hunt again.
-<<<<<<< HEAD
-			if( !Adjacent(target) || !isturf(target.loc) || (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if( !Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
-=======
-			if(!Adjacent(target) || !isturf(target.loc) || target.AmountParalyzed() < 40)
->>>>>>> b39ccd408e9 (Beepsky refactor and Bot code improvement (#62510))
+			if(!Adjacent(target) || !isturf(target.loc) || (target.AmountParalyzed() < 40 && target.staminaloss < STAMINA_THRESHOLD_SOFTCRIT)) //SKYRAT EDIT CHANGE: if(!Adjacent(target) || !isturf(target.loc) ||  target.AmountParalyzed() < 40)
 				back_to_hunt()
 				return
 
@@ -498,15 +472,11 @@
 		ed_assembly.add_overlay("hs_hole")
 		ed_assembly.created_name = name
 		new /obj/item/assembly/prox_sensor(Tsec)
-<<<<<<< HEAD
-		/* var/obj/item/gun/energy/disabler/G = new (Tsec) - SKYRAT EDIT REMOVAL START
-		G.cell.charge = 0
-		G.update_appearance() */ // SKYRAT EDIT REMOVAL END - no more disabler farms
-=======
+		/* SKYRAT EDIT REMOVAL START - no more disabler farms
 		var/obj/item/gun/energy/disabler/disabler_gun = new(Tsec)
 		disabler_gun.cell.charge = 0
 		disabler_gun.update_appearance()
->>>>>>> b39ccd408e9 (Beepsky refactor and Bot code improvement (#62510))
+		*/ // SKYRAT EDIT END
 		if(prob(50))
 			new /obj/item/bodypart/l_leg/robot(Tsec)
 			if(prob(25))
@@ -522,11 +492,7 @@
 		secbot_assembly.add_overlay("hs_hole")
 		secbot_assembly.created_name = name
 		new /obj/item/assembly/prox_sensor(Tsec)
-<<<<<<< HEAD
-		// drop_part(baton_type, Tsec) - SKYRAT EDIT REMOVAL - no more baton farms
-=======
-		drop_part(weapon, Tsec)
->>>>>>> b39ccd408e9 (Beepsky refactor and Bot code improvement (#62510))
+		// drop_part(weapon, Tsec) - SKYRAT EDIT REMOVAL - no more baton farms
 
 		if(prob(50))
 			drop_part(robot_arm, Tsec)
