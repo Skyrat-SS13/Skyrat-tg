@@ -209,8 +209,8 @@
 					to_chat(usr,  "<span class='notice ml-1'>Detected physiological traits:</span>\n<span class='notice ml-2'>[quirkstring]</span>")
 				else
 					to_chat(usr,  "<span class='notice ml-1'>No physiological traits found.</span>")
-			if(href_list["medrecords"])
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
+			if(href_list["medrecords"])
 				to_chat(usr, "<b>Medical Record:</b> [med_record.fields["past_records"]]")
 			if(href_list["genrecords"])
 				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
@@ -260,7 +260,7 @@
 					sec_hud_set_security_status()
 				return
 
-			if(href_list["viewsec"]) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+			if(href_list["view"])
 				if(!H.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
@@ -275,7 +275,6 @@
 					to_chat(usr, "Added by [c.author] at [c.time]")
 					to_chat(usr, "----------")
 				to_chat(usr, "<b>Notes:</b> [sec_record.fields["notes"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
-				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]") //SKYRAT EDIT ADDITION - EXAMINE RECORDS
 				return
 
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
@@ -285,6 +284,13 @@
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
+
+			if(href_list["secrecords"])
+				if(!H.canUseHUD())
+					return
+				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
+					return
+				to_chat(usr, "<b>Security Record:</b> [sec_record.fields["past_records"]]")
 			//SKYRAT EDIT END
 
 			if(href_list["add_citation"])
@@ -379,9 +385,9 @@
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
 	if (is_special_character(usr))
 		var/perpname = get_face_name(get_id_name(""))
-		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.locked)
+		var/datum/data/record/EXP = find_record("name", perpname, GLOB.data_core.general)
 		if(href_list["exprecords"])
-			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exp_records"]]")
+			to_chat(usr, "<b>Exploitable information:</b> [EXP.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
 	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
