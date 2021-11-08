@@ -1307,6 +1307,9 @@
 	design_ids = list(
 		"biogenerator",
 		"flora_gun",
+		//SKYRAT EDIT - ADDITION MEDIGUNS
+		"salvemedicell",
+		//SKYRAT EDIT END
 		"hydro_tray",
 		"portaseeder",
 		"seed_extractor",
@@ -1720,7 +1723,7 @@
 
 /datum/techweb_node/mech_disabler
 	id = "mech_disabler"
-	display_name =  "Exosuit Weapon (CH-DS \"Peacemaker\" Mounted Disabler)"
+	display_name = "Exosuit Weapon (CH-DS \"Peacemaker\" Mounted Disabler)"
 	description = "A basic piece of mech weaponry"
 	prereq_ids = list("beam_weapons")
 	design_ids = list(
@@ -1794,7 +1797,7 @@
 
 /datum/techweb_node/mech_diamond_drill
 	id = "mech_diamond_drill"
-	display_name =  "Exosuit Diamond Drill"
+	display_name = "Exosuit Diamond Drill"
 	description = "A diamond drill fit for a large exosuit"
 	prereq_ids = list("adv_mining")
 	design_ids = list(
