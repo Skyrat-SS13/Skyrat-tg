@@ -12,7 +12,7 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
 	icon_state = "bullet"
 	name = "hardlight bullet"
-	pass_flags = PASSTABLE // All of the below is to not break kayfabe about it not being a bullet.
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE  // All of the below is to not break kayfabe about it not being a bullet.
 	hitsound ='sound/weapons/pierce.ogg'
 	hitsound_wall = "ricochet"
 	light_system = NO_LIGHT_SUPPORT
