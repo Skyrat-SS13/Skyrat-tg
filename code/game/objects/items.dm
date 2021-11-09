@@ -1049,7 +1049,7 @@ attack_basic_mob
 	return !HAS_TRAIT(src, TRAIT_NODROP) && !(item_flags & ABSTRACT)
 
 /obj/item/proc/doStrip(mob/stripper, mob/owner)
-	//SKYRAT EDIT BEGIN - original  return owner.dropItemToGround(src)
+	//SKYRAT EDIT CHANGE BEGIN - THIEVING GLOVES - ORIGINAL: return owner.dropItemToGround(src)
 	if (!owner.dropItemToGround(src))
 		return FALSE
 	if (HAS_TRAIT(stripper, TRAIT_STICKY_FINGERS))

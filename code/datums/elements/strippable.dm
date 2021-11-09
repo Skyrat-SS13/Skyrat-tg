@@ -68,7 +68,7 @@
 	var/warn_dangerous_clothing = TRUE
 
 	/// Can it be silent?
-	var/can_be_silent = FALSE //SKYRAT EDIT ADDITION
+	var/can_be_silent = FALSE //SKYRAT EDIT ADDITION - THIEVING GLOVES
 
 /// Gets the item from the given source.
 /datum/strippable_item/proc/get_item(atom/source)
@@ -151,20 +151,22 @@
 	if (isnull(item))
 		return FALSE
 
-	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS) //SKYRAT EDIT ADDITION
+	//SKYRAT EDIT CHANGE START - THIEVING GLOVES
+	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)
 	if (!is_silent)
 		source.visible_message(
 			span_warning("[user] tries to remove [source]'s [item.name]."),
 			span_userdanger("[user] tries to remove your [item.name]]."),
 			ignored_mobs = user,
 		)
+	//SKYRAT EDIT CHANGE END
 
 	to_chat(user, span_danger("You try to remove [source]'s [item]..."))
 	user.log_message("[key_name(source)] is being stripped of [item] by [key_name(user)]", LOG_ATTACK, color="red")
 	source.log_message("[key_name(source)] is being stripped of [item] by [key_name(user)]", LOG_VICTIM, color="red", log_globally=FALSE)
 	item.add_fingerprint(src)
 
-	if(ishuman(source) && !is_silent) //SKYRAT EDIT ADDITION original if(ishuman(source))
+	if(ishuman(source) && !is_silent) //SKYRAT EDIT ADDITION - THIEVING GLOVES ORIGINAL if(ishuman(source))
 		var/mob/living/carbon/human/victim_human = source
 		if(victim_human.key && !victim_human.client) // AKA braindead
 			if(victim_human.stat <= SOFT_CRIT && LAZYLEN(victim_human.afk_thefts) <= AFK_THEFT_MAX_MESSAGES)
@@ -296,9 +298,9 @@
 
 /// A utility function for `/datum/strippable_item`s to start unequipping an item from a mob.
 /proc/start_unequip_mob(obj/item/item, mob/source, mob/user, strip_delay)
-	//SKYRAT EDIT ADDITION -
+	//SKYRAT EDIT ADDITION - THIEVING GLOVES
 	//if (!do_mob(user, source, strip_delay || item.strip_delay, interaction_key = REF(item)))
-	if (!do_mob(user, source, (strip_delay || item.strip_delay) * (HAS_TRAIT(user, TRAIT_STICKY_FINGERS) ? 0.5 : 1), interaction_key = REF(item)))
+	if (!do_mob(user, source, (strip_delay || item.strip_delay) * (HAS_TRAIT(user, TRAIT_STICKY_FINGERS) ? THIEVING_GLOVES_STRIP_SLOWDOWN : NORMAL_STRIP_SLOWDOWN), interaction_key = REF(item)))
 		return FALSE
 
 	return TRUE

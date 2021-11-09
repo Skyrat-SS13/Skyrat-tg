@@ -29,3 +29,7 @@
 
 /// This slot can't be seen, but can be accessed.
 #define STRIPPABLE_OBSCURING_HIDDEN 2
+
+//SKYRAT EDIT ADDITION
+#define THIEVING_GLOVES_STRIP_SLOWDOWN 0.5 //a multiplier for the amount of time it takes to strip someone
+#define NORMAL_STRIP_SLOWDOWN 1
