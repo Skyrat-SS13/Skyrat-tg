@@ -115,10 +115,6 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Cigarette pack"
 	item_path = /obj/item/storage/fancy/cigarettes
 
-/datum/loadout_item/pocket_items/wallet
-	name = "Wallet"
-	item_path = /obj/item/storage/wallet
-
 /datum/loadout_item/pocket_items/flask
 	name = "Flask"
 	item_path = /obj/item/reagent_containers/food/drinks/flask
