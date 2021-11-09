@@ -364,23 +364,6 @@
 		to_chat(living_crosser, span_alert("The vines slip you!"))
 
 
-// Teleports on hit
-/datum/spacevine_mutation/teleporting
-	name = "teleporting"
-	plant_color = "#1105b6"
-	severity = 3
-	quality = NEGATIVE
-
-/datum/spacevine_mutation/teleporting/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/I, expected_damage)
-	if(isliving(hitter))
-		var/mob/living/attacking_mob = hitter
-		if(isvineimmune(attacking_mob))
-			return
-		if(prob(25))
-			do_teleport(attacking_mob, get_turf(attacking_mob), 8, asoundin = 'sound/effects/phasein.ogg', channel = TELEPORT_CHANNEL_BLUESPACE)
-	. = expected_damage
-
-
 // Has a chance to reflect melee damage
 /datum/spacevine_mutation/meleereflecting
 	name = "melee reflecting"
@@ -519,30 +502,6 @@
 		living_eater.adjustFireLoss(-5)
 		living_eater.adjustToxLoss(-5)
 
-
-//Produces oxygen gas on growth
-/datum/spacevine_mutation/oxygen_producing
-	name = "oxygen-producing"
-	plant_color = "#4620ee"
-	severity = 10
-	quality = POSITIVE
-
-/datum/spacevine_mutation/oxygen_producing/on_grow(obj/structure/spacevine/vine_object)
-	var/turf/vine_object_turf = get_turf(vine_object)
-	vine_object_turf.atmos_spawn_air("o2=100;TEMP=293")
-
-
-//Produces nitrogen gas on growth
-/datum/spacevine_mutation/nitrogen_producing
-	name = "nitrogen-producing"
-	plant_color = "#ce2929"
-	severity = 10
-	quality = POSITIVE
-
-/datum/spacevine_mutation/nitrogen_producing/on_grow(obj/structure/spacevine/vine_object)
-	var/turf/vine_object_turf = get_turf(vine_object)
-	vine_object_turf.atmos_spawn_air("n2=100;TEMP=293")
-
 //allows the vine to walk 1 tile away from turfs
 /datum/spacevine_mutation/spacewalking
 	name = "space-walking"
@@ -567,7 +526,13 @@
 	quality = POSITIVE
 
 /datum/spacevine_mutation/breach_fixing/on_spread(obj/structure/spacevine/vine_object, turf/grown_turf)
-	for(var/turf/open/space/space_turf in range(2, grown_turf))
+	for(var/turf/open/space/space_turf in range(1, grown_turf))
+		var/range_check = FALSE
+		for(var/turf/locking_turf in range(2, space_turf))
+			if(!isarea(locking_turf, /area/space))
+				range_check = TRUE
+		if(!range_check)
+			continue
 		space_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
 		space_turf.color = plant_color
 
