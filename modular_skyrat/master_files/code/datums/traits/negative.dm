@@ -8,6 +8,26 @@
 	medical_record_text = "Patient is incapable of communicating their emotions."
 	icon = "question-circle"
 
+/datum/quirk/fragile
+	name = "Fragility"
+	desc = "You feel incredibly fragile. Incoming brute and burn damage is increased!"
+	value = -6
+	mob_trait = TRAIT_FRAGILE
+	medical_record_text = "Patient's body has adapted to low gravity. Sadly low-gravity environments are not conducive to strong bone development."
+	icon = "question-circle" //placeholder
+
+/datum/quirk/fragile/post_add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.physiology.brute_mod *= 1.25
+	H.physiology.burn_mod *= 1.2
+
+/datum/quirk/fragile/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.physiology.brute_mod /= 1.25
+	H.physiology.burn_mod /= 1.2
+
 /datum/quirk/sensitivesnout
 	name = "Sensitive Snout"
 	desc = "Your face has always been sensitive, and it really hurts when someone pokes it!"
