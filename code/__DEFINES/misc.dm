@@ -526,4 +526,10 @@ GLOBAL_LIST_INIT(pda_styles, sort_list(list(MONO, VT, ORBITRON, SHARE)))
 #define SKILLCHIP_CATEGORY_JOB "job"
 
 /// Emoji icon set
+<<<<<<< HEAD
 #define EMOJI_SET 'modular_skyrat/master_files/icons/emoji.dmi' // SKYRAT EDIT
+=======
+#define EMOJI_SET 'icons/emoji.dmi'
+/// Achievements icon set
+#define ACHIEVEMENTS_SET 'icons/ui_icons/achievements/achievements.dmi'
+>>>>>>> 3f664852349 (Fixes missing award icons by filling the assets list on runtime. Plus new icons and unit test. (#62665))
