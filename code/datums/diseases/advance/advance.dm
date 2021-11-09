@@ -244,14 +244,15 @@
 		else
 			visibility_flags &= ~HIDDEN_SCANNER
 
-		if(properties["transmittable"]>=11)
+		/*if(properties["transmittable"]>=11)
 			SetSpread(DISEASE_SPREAD_AIRBORNE)
 		else if(properties["transmittable"]>=7)
 			SetSpread(DISEASE_SPREAD_CONTACT_SKIN)
 		else if(properties["transmittable"]>=3)
 			SetSpread(DISEASE_SPREAD_CONTACT_FLUIDS)
 		else
-			SetSpread(DISEASE_SPREAD_BLOOD)
+			SetSpread(DISEASE_SPREAD_BLOOD)*/
+		SetSpread(DISEASE_SPREAD_BLOOD)
 
 		permeability_mod = max(CEILING(0.4 * properties["transmittable"], 1), 1)
 		cure_chance = clamp(7.5 - (0.5 * properties["resistance"]), 5, 10) // can be between 5 and 10
