@@ -288,3 +288,40 @@
   - bugfix: Nanotrasen has updated medical records upon finding out that it was still
       tracking those incompatible with illegal cloning technology, which is banned
       sector-wide. Such records have been expunged.
+2021-11-09:
+  GoldenAlpharex:
+  - bugfix: Fixed certain preferences being reset to their default values when trying
+      to change them, due to the dropdown menu of options changing numbers into text
+      and due to that not being supported by numeric preferences. AKA, changing pixel
+      scaling method will work again.
+  Melbert:
+  - bugfix: Chaplains can no longer select admin only null rods.
+  PositiveEntropy, Naevii:
+  - imageadd: Ports BeeStation cloak designs!
+  RatFromTheJungle:
+  - balance: rebalances teshari incomming damage to 20-25% vs the previous of 50%,
+      and gives them a single point more of punch damage so they quit magically rolling
+      0, don't ask, I also don't know why.
+  Ryll/Shaps:
+  - rscadd: Yawns can now propagate and cause other nearby mobs who see it to yawn
+      as well.
+  ShizCalev:
+  - bugfix: Radioactive microlasers will no longer irradiate humans wearing radiation
+      proof clothing.
+  SkyratBot:
+  - imageadd: Turret Control frames now have a dedicated icon, rather than literally
+      using the APC image.
+  - bugfix: Randomized reagent recipes (so far only metalgen and the secret sauce)
+      should no longer from time to time require reagents that are normally TOO hard
+      (emphasis on TOO) to get or unobtainable by non-antag players (e.g. most mutation
+      toxins, syndie stims, godblood, spores)
+  coldud13:
+  - bugfix: floating lights and radios at arrivals on delta have been cleaned up
+  nikothedude:
+  - rscadd: Adds a fancy new menu for antags to view exploitables from! OOC>View crew
+      exploitables
+  - bugfix: Fixes the functionality of records. All previous methods of using records
+      work now.
+  - refactor: Record loading and saving is now handled in flavor_text.dm. admin_remove
+      now uses owner.remove_antag_datum(src) instead of on_remove() to remove antag
+      datums.
