@@ -1,4 +1,4 @@
-import { Button, Section, Stack, Dropdown, Flex } from '../components';
+import { Button, Section, Dropdown, Flex } from '../components';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -26,6 +26,7 @@ const switchNames = {
   "name": "Name",
   "desc": "Description",
   "mode": "Mode",
+  "swallow_verb": "Swallow Verb",
 };
 const stringNames = {
   "digest_messages_prey": "Prey Digest Messages",
@@ -37,48 +38,60 @@ const stringNames = {
 
 export const BellyStack = (props, context) => {
   const { act, data } = useBackend(context);
-  const { current_belly, bellies, string_types, selected_belly } = data;
-  const buttonFromName = (name) => {
+  const { 
+    current_belly,
+    bellies,
+    string_types,
+    selected_belly,
+    other_types,
+  } = data;
+  const buttonFromName = (name, index) => {
     return (
-      <Stack fill>
-        <Stack.Item>
-          <Button
-            content={switchNames[name]}
-            onClick={() => act('belly_act', { varname: name, belly: selected_belly })}
-          />
-        </Stack.Item>
-        <Stack.Item grow>
-          {modeToText(current_belly[name])}
-        </Stack.Item>
-      </Stack>
+      <Flex.Item key={index}>
+        <Flex direction="row">
+          <Flex.Item>
+            <Button
+              content={switchNames[name]}
+              onClick={() => act('belly_act', { varname: name, belly: selected_belly })}
+            />
+          </Flex.Item>
+          <Flex.Item align="end">
+            {modeToText(current_belly[name])}
+          </Flex.Item>
+        </Flex>
+      </Flex.Item>
     );
   };
   return (
     <Section title="Bellies" buttons={(
       <Dropdown
         options={bellies}
-        selected={bellies[selected_belly]}
+        selected={bellies[selected_belly - 1]}
         onSelected={(value) => act('select_belly', { belly: bellies.indexOf(value) + 1 })} />
     )}>
-      {buttonFromName("name")}
-      {buttonFromName("desc")}
-      {buttonFromName("mode")}
-      <Flex wrap="wrap">
-        {string_types.map((value, index) => (
-          <Flex.Item key={index}>
-            <Button
-              content={stringNames[value]}
-              onClick={() => act('belly_act', { varname: value, belly: selected_belly })} />
-          </Flex.Item>
-        ))}
+      <Flex direction="column">
+        {other_types.map((value, index) => {
+          return buttonFromName(value, index);
+        })}
       </Flex>
+      <Section title="Messages">
+        <Flex wrap="wrap">
+          {string_types.map((value, index) => (
+            <Flex.Item key={index}>
+              <Button
+                content={stringNames[value]}
+                onClick={() => act('belly_act', { varname: value, belly: selected_belly })} />
+            </Flex.Item>
+          ))}
+        </Flex>
+      </Section>
     </Section>
   );
 };
 
 export const VorePanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { enabled, toggles, unsaved } = data;
+  const { enabled, toggles, unsaved, selected_belly } = data;
   return (
     <Window
       title={"Vore Panel"}
@@ -88,16 +101,27 @@ export const VorePanel = (props, context) => {
         <Section
           title={unsaved ? "Save Prefs (Unsaved)" : "Save Prefs"}
           buttons={(
-            <Button
-              content={"Save Prefs"}
-              color="red"
-              onClick={() => act('save_prefs')} />
+            <Flex>
+              <Flex.Item>
+                <Button
+                  content={"Discard Changes"}
+                  color="red"
+                  disabled={!unsaved}
+                  onClick={() => act('discard_changes', { belly: selected_belly })} />
+              </Flex.Item>
+              <Flex.Item>
+                <Button
+                  content={"Save Prefs"}
+                  color="red"
+                  onClick={() => act('save_prefs')} />
+              </Flex.Item>
+            </Flex>
           )} />
         <Section
           title="Vore Prefs"
           buttons={(
             <Button
-              content={enabled ? "Enable Vore" : "Disable Vore"}
+              content={enabled ? "Disable Vore" : "Enable Vore"}
               color={enabled ? "green" : "red"}
               onClick={() => act('toggle_vore', {
                 toggle: !enabled,
@@ -120,6 +144,7 @@ export const VorePanel = (props, context) => {
                       })} />
                   </Flex.Item>
                 ))}
+              </Flex>
             </Section>
           )}
         </Section>

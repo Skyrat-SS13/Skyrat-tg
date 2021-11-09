@@ -1,12 +1,3 @@
-#define VORE_MODE_HOLD		0
-#define VORE_MODE_DIGEST	1
-#define VORE_MODE_ABSORB	2
-#define LIST_DIGEST_PREY			"digest_messages_prey"
-#define LIST_DIGEST_PRED			"digest_messages_owner"
-#define LIST_STRUGGLE_INSIDE		"struggle_messages_inside"
-#define LIST_STRUGGLE_OUTSIDE		"struggle_messages_outside"
-#define LIST_EXAMINE				"examine_messages"
-
 /obj/vbelly
 	name = "belly"
 	desc = ""
@@ -15,21 +6,43 @@
 	var/mode = VORE_MODE_HOLD
 	var/list/data = list()
 
-/obj/vbelly/Initialize(mapload, mob/living/holder = null, data = default_belly_info())
+/obj/vbelly/Initialize(mapload, mob/living/living_owner, list/belly_data)
 	. = ..()
-	if (!holder)
+	if (!istype(living_owner))
 		return INITIALIZE_HINT_QDEL
+	owner = living_owner
 	if (!SSair.planetary[OPENTURF_DEFAULT_ATMOS])
 		var/datum/gas_mixture/immutable/planetary/mix = new
 		mix.parse_string_immutable(OPENTURF_DEFAULT_ATMOS)
 		SSair.planetary[OPENTURF_DEFAULT_ATMOS] = mix
-	forceMove(holder)
+	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	forceMove(owner)
+	set_data(belly_data)
+
+/obj/vbelly/proc/set_data(_data)
+	for (var/varname in static_belly_vars())
+		if (!(varname in _data))
+			return FALSE
+	data = _data
 	name = data["name"]
 	desc = data["desc"]
 	mode = data["mode"]
 
-/obj/vbelly/return_air()
-	return SSair.planetary[OPENTURF_DEFAULT_ATMOS] //people don't want to have to wear internals while inside someone
+
+/datum/gas_mixture/normalized //yeah I should REALLY find a different way to do this
+/datum/gas_mixture/normalized/New()
+	gases = list()
+	add_gases(/datum/gas/oxygen, /datum/gas/nitrogen)
+	temperature = T20C
+	gases[/datum/gas/oxygen][MOLES] = MOLES_O2STANDARD
+	gases[/datum/gas/nitrogen][MOLES] = MOLES_N2STANDARD
+
+/obj/vbelly/assume_air()
+	return 0
+
+/obj/vbelly/return_air() //people don't want to have to wear internals while inside someone
+	var/static/datum/gas_mixture/normalized/mix = new
+	return mix.copy()
 
 /obj/vbelly/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
@@ -39,10 +52,13 @@
 			to_chat(arrived_mob, span_notice(desc))
 		if (owner && arrived_mob.client?.prefs?.vr_prefs?.tastes_of)
 			to_chat(owner, span_notice("[arrived_mob] tastes of [arrived_mob.client.prefs.vr_prefs.tastes_of]."))
+		RegisterSignal(arrived, COMSIG_LIVING_RESIST, .proc/prey_resist)
 		check_mode()
 
 /obj/vbelly/Exited(atom/movable/gone, direction)
 	. = ..()
+	if (isliving(gone))
+		UnregisterSignal(gone, COMSIG_LIVING_RESIST)
 	//todo
 
 /obj/vbelly/proc/check_mode()
@@ -59,7 +75,7 @@
 			if (prey.stat == DEAD)
 				continue
 			if (prey.client?.prefs?.vr_prefs)
-				if (!prey.client.prefs.vr_prefs.vore_enabled || !(prey.client.prefs.vr_prefs.vore_toggles & DIGESTABLE))
+				if (!prey.check_vore_toggle(DIGESTABLE))
 					continue
 			prey.apply_damage(4, BURN)
 			if (prey.stat != DEAD)
@@ -97,7 +113,25 @@
 	if (!(to_release in contents))
 		return FALSE
 	to_release.forceMove(drop_location())
-	send_vore_message(owner, span_warning("[owner] ejects the [to_release] from their [src]!"), SEE_OTHER_MESSAGES)
+	send_vore_message(owner, span_warning("%a|[owner]|You|| eject%a|s||| the [to_release] from %a|their|your|| [src]!"), SEE_OTHER_MESSAGES)
+
+/obj/vbelly/proc/on_examine(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+
+	if (!user.check_vore_toggle(SEE_EXAMINES))
+		return
+	if (!isnull(data[LIST_EXAMINE]) && data[LIST_EXAMINE].len)
+		for (var/mob/living/living_mob in contents)
+			examine_list += span_warning(vore_replace(data[LIST_EXAMINE], owner, living_mob, name))
+			break //not sure how you'd do this with multiple prey... hm.
+
+/obj/vbelly/proc/prey_resist(datum/source, mob/living/prey)
+	var/prey_message = span_warning(vore_replace(data[LIST_STRUGGLE_INSIDE], owner, prey, name))
+	for (var/mob/living/prey_target in contents)
+		if (!prey_target.check_vore_toggle(SEE_STRUGGLES))
+			continue
+		to_chat(prey_target, prey_message)
+	send_vore_message(owner, vore_replace(data[LIST_STRUGGLE_INSIDE], owner, prey, name), SEE_STRUGGLES, prey)
 
 // MISC PROCS
 
