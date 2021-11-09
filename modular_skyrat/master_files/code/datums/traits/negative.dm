@@ -29,13 +29,13 @@
 
 /datum/quirk/monophobia/post_add()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H.gain_trauma(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
+	var/mob/living/carbon/human/user = quirk_holder
+	user.gain_trauma(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/monophobia/remove()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	H?.cure_trauma_type(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
+	var/mob/living/carbon/human/user = quirk_holder
+	user?.cure_trauma_type(/datum/brain_trauma/severe/monophobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/ashwalkertalons
 	name = "Chunky Fingers"
