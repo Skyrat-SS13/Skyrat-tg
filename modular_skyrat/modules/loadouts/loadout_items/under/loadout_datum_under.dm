@@ -390,6 +390,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Villain Suit"
 	item_path = /obj/item/clothing/under/costume/villain
 
+/datum/loadout_item/under/miscellaneous/costume/vic_dress
+	name = "Black victorian dress"
+	item_path = /obj/item/clothing/under/costume/vic_dress
+
+/datum/loadout_item/under/miscellaneous/costume/vic_dress_red
+	name = "Red victorian dress"
+	item_path = /obj/item/clothing/under/costume/vic_dress/red
+
 /datum/loadout_item/under/miscellaneous/tactical_irish
 	name = "Irish Tactical Sweater"
 	item_path = /obj/item/clothing/under/misc/tactical1
