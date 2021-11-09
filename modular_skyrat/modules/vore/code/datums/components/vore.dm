@@ -78,4 +78,5 @@
 	if (belly)
 		send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|manages|manage|manages| to [vr.get_belly_var("swallow_verb")] %a|[M]|[M]|you| into %a|their|your|their| [vr.get_belly_var("name")]!"), SEE_OTHER_MESSAGES, M)
 		M.forceMove(belly)
+		SStgui.update_uis(vr)
 

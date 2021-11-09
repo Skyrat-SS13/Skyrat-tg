@@ -27,6 +27,7 @@
 	name = data["name"]
 	desc = data["desc"]
 	mode = data["mode"]
+	check_mode()
 
 
 /datum/gas_mixture/normalized //yeah I should REALLY find a different way to do this
@@ -41,8 +42,8 @@
 	return 0
 
 /obj/vbelly/return_air() //people don't want to have to wear internals while inside someone
-	var/static/datum/gas_mixture/normalized/mix = new
-	return mix.copy()
+	var/datum/gas_mixture/normalized/mix = new
+	return mix
 
 /obj/vbelly/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
@@ -54,11 +55,15 @@
 			to_chat(owner, span_notice("[arrived_mob] tastes of [arrived_mob.client.prefs.vr_prefs.tastes_of]."))
 		RegisterSignal(arrived, COMSIG_LIVING_RESIST, .proc/prey_resist)
 		check_mode()
+	if (owner.client?.prefs?.vr_prefs)
+		SStgui.update_uis(owner.client.prefs.vr_prefs)
 
 /obj/vbelly/Exited(atom/movable/gone, direction)
 	. = ..()
 	if (isliving(gone))
 		UnregisterSignal(gone, COMSIG_LIVING_RESIST)
+	if (owner.client?.prefs?.vr_prefs)
+		SStgui.update_uis(owner.client.prefs.vr_prefs)
 	//todo
 
 /obj/vbelly/proc/check_mode()
@@ -96,6 +101,8 @@
 		//todo
 		all_done = TRUE
 	if (all_done == TRUE)
+		if (owner.client?.prefs?.vr_prefs)
+			SStgui.update_uis(owner.client.prefs.vr_prefs)
 		STOP_PROCESSING(SSvore, src)
 
 /obj/vbelly/drop_location()
@@ -108,6 +115,7 @@
 /obj/vbelly/proc/mass_release_from_contents()
 	for (var/atom/movable/to_release as anything in contents)
 		to_release.forceMove(drop_location())
+	//add a message here?
 
 /obj/vbelly/proc/release_from_contents(atom/movable/to_release)
 	if (!(to_release in contents))
@@ -127,11 +135,13 @@
 
 /obj/vbelly/proc/prey_resist(datum/source, mob/living/prey)
 	var/prey_message = span_warning(vore_replace(data[LIST_STRUGGLE_INSIDE], owner, prey, name))
+	var/list/ignored = list()
 	for (var/mob/living/prey_target in contents)
+		ignored += prey_target
 		if (!prey_target.check_vore_toggle(SEE_STRUGGLES))
 			continue
 		to_chat(prey_target, prey_message)
-	send_vore_message(owner, vore_replace(data[LIST_STRUGGLE_INSIDE], owner, prey, name), SEE_STRUGGLES, prey)
+	send_vore_message(owner, span_warning(vore_replace(data[LIST_STRUGGLE_OUTSIDE]), owner, prey, name), SEE_STRUGGLES, prey, ignored=ignored)
 
 // MISC PROCS
 

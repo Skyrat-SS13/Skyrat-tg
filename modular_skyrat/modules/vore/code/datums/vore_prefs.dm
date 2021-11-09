@@ -44,7 +44,7 @@
 		selected_belly = 1
 	READ_FILE(S["vore_taste"], tastes_of)
 	READ_FILE(S["bellies"], bellies)
-	if (!bellies)
+	if (!bellies || !bellies.len)
 		bellies = list()
 		bellies.Add(list(default_belly_info()))
 
@@ -63,7 +63,7 @@
 	WRITE_FILE(S["vore_toggles"], vore_toggles)
 	WRITE_FILE(S["selected_belly"], selected_belly)
 	WRITE_FILE(S["vore_taste"], tastes_of)
-	if (!bellies)
+	if (!bellies || !bellies.len)
 		bellies = list()
 		bellies.Add(list(default_belly_info()))
 	WRITE_FILE(S["bellies"], bellies)
@@ -113,7 +113,8 @@
 										LIST_EXAMINE)
 	if (vore && unsaved_changes["bellies"][selected_belly]["belly_ref"])
 		belly_data["has_contents"] = TRUE
-		belly_data["contents"] = vore.get_belly_contents(unsaved_changes["bellies"][selected_belly]["belly_ref"])
+		belly_data["contents"] = vore.get_belly_contents(unsaved_changes["bellies"][selected_belly]["belly_ref"], TRUE)
+		belly_data["contents_noref"] = vore.get_belly_contents(unsaved_changes["bellies"][selected_belly]["belly_ref"], FALSE)
 	data["current_belly"] = belly_data
 
 	data["toggles"] = list()
@@ -192,11 +193,11 @@
 			if (!isnum(belly))
 				return
 			var/atom/movable/target = locate(ref)
-			var/datum/component/vore/vore = prefs.parent.mob.GetComponent(/datum/component/vore)
+			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
 			if (!vore || !target || !(target in vore.get_belly_contents(belly)))
 				return
-			var/action = get_input(usr, "contents_act", belly, "[target]")
-			switch(action)
+			var/action_choice = get_input(usr, "contents_act", belly, "[target]")
+			switch(action_choice)
 				if("Examine")
 					if(ismob(usr))
 						target.examine(usr)
@@ -204,13 +205,22 @@
 					var/obj/vbelly/bellyobj = vore.bellies[belly]
 					bellyobj.release_from_contents(target)
 				if("Transfer")
-					var/choice = input(usr, "Which belly do you want to transfer to?", "Transfer", belly) as null|anything in get_belly_names(TRUE, TRUE)
+					var/choice = input(usr, "Which belly do you want to transfer to?", "Transfer", belly) as null|anything in belly_name_list(TRUE, TRUE)
 					if (isnull(choice) || choice == belly)
 						return
 					target.forceMove(vore.bellies[choice])
 					//add a message here?
 				else
 					return
+		if("eject_all")
+			var/belly = params["belly"]
+			if (!isnum(belly))
+				return
+			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
+			if (!vore)
+				return
+			var/obj/vbelly/bellyobj = vore.bellies[unsaved_changes["bellies"][belly]["belly_ref"]]
+			bellyobj.mass_release_from_contents()
 
 /datum/vore_prefs/proc/get_input(user, var_name, belly, misc_info=null)
 	if (!istext(var_name))
@@ -333,9 +343,14 @@
 	return TRUE
 
 /datum/vore_prefs/proc/save_temp()
+	if (!unsaved_changes)
+		return
 	for (var/belly in 1 to unsaved_changes["bellies"].len)
 		while (unsaved_changes["bellies"][belly]["belly_ref"] > belly)
 			bellies -= bellies[belly]
+			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
+			if (vore)
+				vore.remove_belly(belly)
 		for (var/var_name in unsaved_changes["bellies"][belly])
 			if ((var_name in static_belly_vars()))
 				bellies[belly][var_name] = unsaved_changes["bellies"][belly][var_name]

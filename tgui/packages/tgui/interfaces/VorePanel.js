@@ -85,8 +85,35 @@ export const BellyStack = (props, context) => {
           ))}
         </Flex>
       </Section>
+      <ContentsStack />
     </Section>
   );
+};
+
+export const ContentsStack = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { has_contents, contents, contents_noref, selected_belly } = data;
+  if (has_contents === true) {
+    return (
+      <Section title="Contents" buttons={(
+        <Button
+          content="Eject All"
+          color="red"
+          onSelected={(value) => act('eject_all', { belly: selected_belly })} />
+      )}>
+        <Flex wrap="wrap">
+          {contents_noref.map((value, index) => (
+            <Flex.Item key={index}>
+              <Button
+                content={value}
+                onClick={() => act('contents_act', { ref: contents[value], belly: selected_belly })} />
+            </Flex.Item>
+          ))}
+        </Flex>
+      </Section>
+    );
+  }
+  return null;
 };
 
 export const VorePanel = (props, context) => {
