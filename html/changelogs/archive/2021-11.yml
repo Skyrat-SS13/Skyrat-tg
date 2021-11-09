@@ -199,3 +199,129 @@
   SpaceVampire:
   - bugfix: Those who stand below the shoulders of giants, are now correctly unable
       to reach up to that glorious head above.
+2021-11-07:
+  Bumtickley00:
+  - bugfix: Cold seiver now quickly heals your radiation instead of quickly killing
+      you
+  Detrender:
+  - rscadd: added chestwrap and loincloth uniform
+  - rscadd: added added ash walker tunic
+  - rscadd: added ornate mantle
+  - rscadd: added ornate leg wraps
+  - rscadd: added mundane leg wraps
+  - rscadd: added ash walker waistcloth
+  - rscadd: added chestwrap and loincloth, ashwalker tunic, ornate mantle, ornate
+      leg wraps, mantle, mundane leg wraps, ashwalker waistcloth, and loincloth to
+      ashwalker vendor
+  - rscadd: added donator item "ashen cloak"
+  Echopsychotic:
+  - rscadd: Added new tails and ears
+  - bugfix: Datashark was not on the select screen before it is now
+  - imageadd: Added addition snake tail sprites Striped and dual colored as well as
+      deer ears from virgo
+  GoldenAlpharex:
+  - bugfix: The Auto-Dementor pref will now start unchecked, so people know that they
+      are actually mentors.
+  - bugfix: Fixes a few minor issues with our modular maps.
+  - bugfix: Our modular MetaStation map will now be the one that loads in case the
+      map config loading fails for one reason or another.
+  GoldenAlpharex, with some oversight from Timberpoes:
+  - bugfix: Maps will now correctly be loaded at the start of a round. Hurray!
+  - code_imp: Improved the code for loading map configs and made it more documented,
+      while also removing a way to delete config files while I was at it.
+  ORCACommander:
+  - bugfix: fixed erp server toggle runtime
+  RatFromTheJungle:
+  - spellcheck: changes around and otherwise corrects odd grammar in a specific PR's
+      items.
+  - bugfix: fixes security snowmobiles.
+  SkyratBot:
+  - bugfix: Godmoded shades should no longer spawn from posessed blades spawning spirits
+      too fast.
+  - imageadd: Added fallback icons for clothing inhands
+  - server: Patches multiple(?) arbitrary file related vulnerabilities
+  - bugfix: Fixed the emissive appearances (basically what you can see even in complete
+      darkness) and possibly other overlays of vending machines being removed when
+      the wire panel is opened/closed.
+  - bugfix: Fixed the random double bed sheets spawners spawning normal bedsheets.
+  - bugfix: Fixed double bed sheets other than the standard white one looking like
+      single bed sheets when dyed.
+  YakumoChen:
+  - bugfix: Trash Piles can spawn in place of Maint Crates once again.
+  dawsonkeyes:
+  - bugfix: fixed corporate deceit bundle error item
+  jjpark-kb:
+  - balance: ashwalker staff no longer has charges
+  - balance: ashwalker staff can only be used by ashwalkers
+  - balance: ashwalker staff can only be used on tiles right next to it
+  softcerv:
+  - rscadd: adds in the Hardlight Salve Medicell, please read https://github.com/Skyrat-SS13/Skyrat-tg/pull/9268
+      for more details.
+2021-11-08:
+  Nyksia:
+  - bugfix: aliens can no longer clear eggs before the hugger bursts out
+  Ryll/Shaps:
+  - balance: Being launched into a solid atom by Sleeping Carp's Wave Kick has been
+      fixed to no longer deal far more damage and wounding power than originally intended,
+      and can no longer cause outright compound fractures in healthy targets.
+  - bugfix: Throwing someone you have in a neckgrab or are choking will now properly
+      throw them harder than normal.
+  Seris02:
+  - rscadd: Glow in the dark markings/bodyparts/eyes
+  SkyratBot:
+  - bugfix: CentCom's suit using an old icon, and fixed the gas mask and helmet's
+      icon not showing
+  - bugfix: Bits of space near the station are no longer randomly powered by unconnected
+      areas. Outlet Injectors used for sending gas to space have been replaced with
+      Passive Vents.
+  - bugfix: The waste air from Virology on Tramstation will now be removed. Previously,
+      the turf that the outlet injector was on was unpowered.
+  - spellcheck: Fixed a typo on the singulo toy.
+  - bugfix: anonymous names doesn't break anymore! it works! hip hip hooray!
+  - bugfix: Items with dash actions and the Bluespace Prophecy trauma now utilise
+      proper teleportation code, disallowing teleportation to and from teleport restricted
+      areas.
+  - rscadd: unit test for map load
+  - rscadd: directory param to map load + whitelist for data and _maps
+  - rscadd: advertising for mojave sun in tg commit logs
+  YakumoChen:
+  - bugfix: Nanotrasen has updated medical records upon finding out that it was still
+      tracking those incompatible with illegal cloning technology, which is banned
+      sector-wide. Such records have been expunged.
+2021-11-09:
+  GoldenAlpharex:
+  - bugfix: Fixed certain preferences being reset to their default values when trying
+      to change them, due to the dropdown menu of options changing numbers into text
+      and due to that not being supported by numeric preferences. AKA, changing pixel
+      scaling method will work again.
+  Melbert:
+  - bugfix: Chaplains can no longer select admin only null rods.
+  PositiveEntropy, Naevii:
+  - imageadd: Ports BeeStation cloak designs!
+  RatFromTheJungle:
+  - balance: rebalances teshari incomming damage to 20-25% vs the previous of 50%,
+      and gives them a single point more of punch damage so they quit magically rolling
+      0, don't ask, I also don't know why.
+  Ryll/Shaps:
+  - rscadd: Yawns can now propagate and cause other nearby mobs who see it to yawn
+      as well.
+  ShizCalev:
+  - bugfix: Radioactive microlasers will no longer irradiate humans wearing radiation
+      proof clothing.
+  SkyratBot:
+  - imageadd: Turret Control frames now have a dedicated icon, rather than literally
+      using the APC image.
+  - bugfix: Randomized reagent recipes (so far only metalgen and the secret sauce)
+      should no longer from time to time require reagents that are normally TOO hard
+      (emphasis on TOO) to get or unobtainable by non-antag players (e.g. most mutation
+      toxins, syndie stims, godblood, spores)
+  coldud13:
+  - bugfix: floating lights and radios at arrivals on delta have been cleaned up
+  nikothedude:
+  - rscadd: Adds a fancy new menu for antags to view exploitables from! OOC>View crew
+      exploitables
+  - bugfix: Fixes the functionality of records. All previous methods of using records
+      work now.
+  - refactor: Record loading and saving is now handled in flavor_text.dm. admin_remove
+      now uses owner.remove_antag_datum(src) instead of on_remove() to remove antag
+      datums.

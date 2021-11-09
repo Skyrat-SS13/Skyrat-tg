@@ -995,6 +995,7 @@
 	custom_materials = null // Don't want that to go in the autolathe
 	visor_vars_to_toggle = 0
 	tint = 0
+
 	/// Was welding protection added yet?
 	var/welding_upgraded = FALSE
 	/// Was welding protection toggled on, if welding_upgraded is TRUE?
@@ -1111,3 +1112,13 @@
 	return TRUE
 
 // End of the code for GoldenAlpharex's donator item :^)
+
+//Donation reward for MyGuy49
+/obj/item/clothing/suit/cloak/ashencloak
+	name = "Ashen Wastewalker Cloak"
+	desc = "A cloak of advanced make. Clearly beyond what ashwalkers are capable of, it was probably pulled from a downed vessel or something. It seems to have been reinforced with goliath hide and watcher sinew, and the hood has been torn off."
+	icon_state = "ashencloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	body_parts_covered = CHEST|LEGS|ARMS
+	mutant_variants = NONE

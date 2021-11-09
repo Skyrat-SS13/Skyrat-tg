@@ -189,9 +189,9 @@
 
 /datum/preference/choiced/erp_status_mechanics/deserialize(input, datum/preferences/preferences)
 	if(CONFIG_GET(flag/disable_erp_preferences))
-		return "No"
+		return "None"
 	if(!preferences.read_preference(/datum/preference/toggle/master_erp_preferences))
-		return "No"
+		return "None"
 	. = ..()
 
 /datum/preference/choiced/erp_status_mechanics/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
