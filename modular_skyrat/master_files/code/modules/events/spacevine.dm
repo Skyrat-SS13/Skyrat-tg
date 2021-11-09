@@ -529,7 +529,7 @@
 	for(var/turf/open/space/space_turf in range(1, grown_turf))
 		var/range_check = FALSE
 		for(var/turf/locking_turf in range(2, space_turf))
-			if(!isarea(locking_turf, /area/space))
+			if(!istype(get_area(locking_turf), /area/space))
 				range_check = TRUE
 		if(!range_check)
 			continue
