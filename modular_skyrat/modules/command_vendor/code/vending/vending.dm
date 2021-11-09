@@ -25,6 +25,7 @@
 		/obj/item/clothing/under/rank/captain/parade = 1,
 		/obj/item/clothing/under/rank/captain/kilt = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
+		/obj/item/clothing/suit/armor/vest/capcarapace/jacket = 1,
 		/obj/item/clothing/suit/captunic = 1,
 		/obj/item/clothing/neck/mantle/capmantle = 1,
 		/obj/item/storage/backpack/captain = 1,
