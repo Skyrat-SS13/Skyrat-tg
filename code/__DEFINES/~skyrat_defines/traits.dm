@@ -15,6 +15,7 @@
 #define TRAIT_STICKY_FINGERS "sticky_fingers" //This is so a mob can strip items faster and picks them up after
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
+#define TRAIT_FRAGILE "fragility" // increased incoming damage (1.2x burn, 1.25x brute multiplicative), numbers designed to make Teshari who take this as vulnerable as before their buff.
 
 //AdditionalEmotes *turf traits
 #define TRAIT_WATER_ASPECT "water_aspect"
