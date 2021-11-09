@@ -31,3 +31,297 @@
   - rscadd: added a reagent buckler, collar, ring, 3 shoes, axe, hammer, handcuff
   - balance: changed some values on weapons and armor
   - rscdel: removed the reagent tile
+2021-11-02:
+  ForrestWick:
+  - bugfix: crucial removal of something from a ruin that can cause massive problems
+  SkyratBot:
+  - rscadd: Pai Printer Module
+  - bugfix: admin heals no longer delete all restraints in target's inventory
+  tf-4:
+  - bugfix: Ballistic guns that are vulnerable to EMPs will no longer have a phantom
+      mag when EMP'd
+  - bugfix: m23 and m2 shotguns can now be loaded with 14 gauge ammo as intended
+2021-11-03:
+  Guillaume Prata:
+  - balance: Plasmamen belt tanks volume and the rate that their lungs consume plasma
+      got lowered to 1/4 to stop the easy 2 hour long O2 inside a plasmamen belt tank
+      trick. It doesn't change how long the internals last for plasmamen.
+  Kryson:
+  - balance: Regular medical syringe guns have been replaced with syringe rifles
+  - imageadd: new dna/dart/medical Syringe gun sprite
+  RatFromTheJungle:
+  - bugfix: fixes the guard baton being deleted because you brought your wintercoat
+      to work.
+  Ryll/Shaps:
+  - rscadd: Added shaking soda cans! Take an unopened soda can and right click it
+      in hand to shake it all around, increasing its fizziness.
+  - balance: Having an unopened soda can hucked at you will actually hurt quite a
+      bit, around the level of a toolbox. This also has a chance of bursting the soda
+      can on impact, leaving it useless as a weapon after.
+  SkyratBot:
+  - balance: brain washing now cures up to lobotomy tier traumas
+  - rscadd: You can now disarm someone into an available open locker to close it on
+      them as your disarming action.
+  - rscadd: You can now disarm someone into an available closed locker to open the
+      locker behind them up.
+  - balance: The organic slurry is now retained inside the rat after it is dipped
+      in welding fuel.
+  - bugfix: Gas mask subtypes will no longer scare people with Greytider Phobia
+  - bugfix: Cellular Emporium UI has been refreshed. Remaining genetic points and
+      readaptation can still be seen while scrolling.
+  - bugfix: Centcomm engineers have finally figured out how to remove the violin from
+      the wall in Icebox security
+  - bugfix: Icebox has received a number of genturf and area related fixes
+  - bugfix: A spooky active turf has been removed from the abandoned plasma facility
+      ruins
+  - bugfix: The area above the gulag has been moved to the mining exploration area
+      to prevent venting the
+  - bugfix: The duplicate APC in Icebox maint has been tracked down and destroyed.
+      Again.
+  - balance: Obsessed have a low chance of stuttering and displaying shifty behavior
+      near their targets, instead of vomiting or passing out if on good mood. This
+      is to better allow verbal interactions between obsessed and obsession target,
+      while keeping them shifty and creepy.
+  - spellcheck: corrected the name of the peripherals control board being secured
+      on the Savannah-Ivanov
+  - balance: Radiation is now a status effect, where you are either irradiated or
+      not. When irradiated, you will take constant toxin damage, and irregular burn
+      damage. Radiation is removed once all toxin damage is healed. Standing under
+      a shower will pause the harmful effects of radiation, making it easier to heal.
+      Everything that is irradiated will glow green.
+  - balance: A lot of radiation sources keep their radiating capabilities, though
+      most of it was eyeballed. If anything was significantly nerfed/buffed, feel
+      free to let me know.
+  - rscdel: Removes contamination from radiation.
+  - balance: Uranium structures will irradiate those around them, but will be delayed,
+      giving you time to stay away.
+  - rscdel: The radioactive microlaser no longer irradiates, but still has its knockdown,
+      which was never related.
+  - balance: Seiver now heals high toxin damage when cold, but only if the patient
+      is irradiated.
+  - balance: Screwdriver (the drink) and Potassium Iodide are similar. They will heal
+      toxin damage when the target is irradiated.
+  - balance: Screwdriver, Potassium Iodide, and Pentetic Acid will halt the damaging
+      effects of radiation, just like showers. This means no tox damage or burns.
+  - balance: The gravity generator, instead of giving radiation when on, will now
+      have a high gravity field around it.
+  - balance: Radiation protection has been kept to engineering hardsuits, rad suits,
+      and H.E.C.K. suits. This can be expanded to others, those are just the ones
+      I recognized.
+  - balance: Genetics no longer uses radiation, but instead genetic damage. Genetic
+      damage works very similarly--once it tops 100%, you will start to take toxin
+      damage. Gorillas are now made through genetic damage instead of radiation.
+  - rscdel: Removed the halogen counter PDA app.
+  - rscdel: Removed the emag effect on geiger counters, though an emag functionality
+      can be added back later.
+  - rscdel: Removed the geiger counter from cyborgs, but mostly because it's not actually
+      really that useful anymore? Everything glows green!
+  - rscdel: Removed the advanced wirebrush, a weird consumer of radiation with an
+      extremely niche purpose. The standard wirebrush still exists.
+  - rscdel: Removed radiation scanning from meson goggles.
+  - rscdel: Removed leftover radiation collectors on ruins.
+  - rscdel: Removed radiation from the radioisotope thermoelectric generator, though
+      it still produces power. Trivia points if you actually know what that is!
+  - balance: The EMP'd advanced energy gun now deals burn damage instead of radiation
+      damage.
+  - balance: Technetium 99 and Unstable Mutagen now deal toxin damage instead of radiation
+      damage.
+  - balance: Polonium will now irradiate the mob its in, and deal toxin damage if
+      they're already irradiated (or can't be).
+  - balance: Breathing tritium will now irradiate you after a certain amount, as well
+      as deal toxin damage.
+  - code_imp: vampire drain now uses the cooldown system
+  - rscadd: 'There''s a new traitor flavor: The Champions of Evil'
+  - bugfix: Shapeshifting into a Human while in a vent will once again gib you.
+  - bugfix: Fixes catwalks being added on top of each other infinitely.
+  jjpark-kb:
+  - bugfix: fixes glassblowing and ceramics to work on the forge again
+  tf-4:
+  - bugfix: Due to budget cuts, the NCV Titan no longer has seven APCs in the same
+      area.
+2021-11-04:
+  SkyratBot:
+  - bugfix: Removes a XSS vulnerability while picking religious sect.
+2021-11-05:
+  ATHATH:
+  - bugfix: Liches (and mortals) can no longer use explosive lances to store grenade
+      phylacteries inside of indestructible objects (including structures)), immortal
+      mobs, or effects. As a side effect, you should no longer accidentally trigger
+      your explosive lance on the wrong target by misclicking on a piece of graffiti
+      during the heat of combat.
+  GoldenAlpharex:
+  - bugfix: The titlescreens are now centered again.
+  Melbert:
+  - spellcheck: Dormat -> Dormant
+  SkyratBot:
+  - bugfix: Fixes an exploit that allowed players to disable holodeck safety without
+      following the proper conditions
+  - bugfix: fixed some buttons having zero width
+  - bugfix: Fluid ducts will no longer duplicate when unwrenched
+  - bugfix: Fixed blind mobs not receiving messages for when a food item has finished
+      baking ("You smell something great / a burnt smell...")
+  - spellcheck: Added punctuation to the above messages.
+  - bugfix: Fixes an exploit that allowed players to arbitrarily spawn any path.
+  - admin: the party alarm now flashes roughly 2.5 times slower
+  - bugfix: PACMANs could previously be emaged, but now there's a indicator when you
+      do so successfully.
+  - bugfix: Corpses will no longer scream when their limbs melt to the bone in icemoon's
+      plasma lava
+  - bugfix: fixed guns that are supposed to be undroppable (implant guns, guns when
+      using an anti-drop implant) dropping anyway when you shoot yourself in the leg
+      due to being Clumsy
+  thestubborn:
+  - bugfix: the victorian suits are in the loadout now
+2021-11-06:
+  ReinaCoder:
+  - bugfix: Fixes the two Disco Elysium detectives suits to be non-adjustable
+  SkyratBot:
+  - balance: The wine cork fired when champagne is popped open is now a projectile
+      and not a thrown item. It can ricochet on walls and will leave an harmless wine
+      cork item when its trajectory has finished.
+  - bugfix: This also fixes a small exploit with hand-thrown corks knocking people
+      down, which was unintended.
+  - server: Init profiles are now logged separately from standard ones, in init_profiler.json
+  - bugfix: Fixed the curator PDA having some inconsistent-looking icons for slotted
+      in IDs and pAIs.
+  - bugfix: Vampires and Dullahans can no longer select Cat ears and Cat tails. You
+      monsters.
+  - bugfix: sharding someone no longer causes an invisible dead mob
+  - bugfix: Radstorms dont mutate people who are immune to rads
+  - admin: Added the color matrix editor. It is available from a dropdown option in
+      an atom's View Variables menu as well as when editing an existing color matrix.
+  - rscadd: custom say emotes, or in other words, radio emotes. The format is for
+      example "screams and shouts*damnit!" with any relevant radio keys, language
+      keys and all that used as normal, for example, ";,o screams and shouts*damnit!"
+      or you can use just the emote, ie, ";screams!*"
+  - bugfix: Corpses will no longer cough, spit, or choke on blood when you hit them
+      in the chest really hard
+  SpaceVampire:
+  - bugfix: Those who stand below the shoulders of giants, are now correctly unable
+      to reach up to that glorious head above.
+2021-11-07:
+  Bumtickley00:
+  - bugfix: Cold seiver now quickly heals your radiation instead of quickly killing
+      you
+  Detrender:
+  - rscadd: added chestwrap and loincloth uniform
+  - rscadd: added added ash walker tunic
+  - rscadd: added ornate mantle
+  - rscadd: added ornate leg wraps
+  - rscadd: added mundane leg wraps
+  - rscadd: added ash walker waistcloth
+  - rscadd: added chestwrap and loincloth, ashwalker tunic, ornate mantle, ornate
+      leg wraps, mantle, mundane leg wraps, ashwalker waistcloth, and loincloth to
+      ashwalker vendor
+  - rscadd: added donator item "ashen cloak"
+  Echopsychotic:
+  - rscadd: Added new tails and ears
+  - bugfix: Datashark was not on the select screen before it is now
+  - imageadd: Added addition snake tail sprites Striped and dual colored as well as
+      deer ears from virgo
+  GoldenAlpharex:
+  - bugfix: The Auto-Dementor pref will now start unchecked, so people know that they
+      are actually mentors.
+  - bugfix: Fixes a few minor issues with our modular maps.
+  - bugfix: Our modular MetaStation map will now be the one that loads in case the
+      map config loading fails for one reason or another.
+  GoldenAlpharex, with some oversight from Timberpoes:
+  - bugfix: Maps will now correctly be loaded at the start of a round. Hurray!
+  - code_imp: Improved the code for loading map configs and made it more documented,
+      while also removing a way to delete config files while I was at it.
+  ORCACommander:
+  - bugfix: fixed erp server toggle runtime
+  RatFromTheJungle:
+  - spellcheck: changes around and otherwise corrects odd grammar in a specific PR's
+      items.
+  - bugfix: fixes security snowmobiles.
+  SkyratBot:
+  - bugfix: Godmoded shades should no longer spawn from posessed blades spawning spirits
+      too fast.
+  - imageadd: Added fallback icons for clothing inhands
+  - server: Patches multiple(?) arbitrary file related vulnerabilities
+  - bugfix: Fixed the emissive appearances (basically what you can see even in complete
+      darkness) and possibly other overlays of vending machines being removed when
+      the wire panel is opened/closed.
+  - bugfix: Fixed the random double bed sheets spawners spawning normal bedsheets.
+  - bugfix: Fixed double bed sheets other than the standard white one looking like
+      single bed sheets when dyed.
+  YakumoChen:
+  - bugfix: Trash Piles can spawn in place of Maint Crates once again.
+  dawsonkeyes:
+  - bugfix: fixed corporate deceit bundle error item
+  jjpark-kb:
+  - balance: ashwalker staff no longer has charges
+  - balance: ashwalker staff can only be used by ashwalkers
+  - balance: ashwalker staff can only be used on tiles right next to it
+  softcerv:
+  - rscadd: adds in the Hardlight Salve Medicell, please read https://github.com/Skyrat-SS13/Skyrat-tg/pull/9268
+      for more details.
+2021-11-08:
+  Nyksia:
+  - bugfix: aliens can no longer clear eggs before the hugger bursts out
+  Ryll/Shaps:
+  - balance: Being launched into a solid atom by Sleeping Carp's Wave Kick has been
+      fixed to no longer deal far more damage and wounding power than originally intended,
+      and can no longer cause outright compound fractures in healthy targets.
+  - bugfix: Throwing someone you have in a neckgrab or are choking will now properly
+      throw them harder than normal.
+  Seris02:
+  - rscadd: Glow in the dark markings/bodyparts/eyes
+  SkyratBot:
+  - bugfix: CentCom's suit using an old icon, and fixed the gas mask and helmet's
+      icon not showing
+  - bugfix: Bits of space near the station are no longer randomly powered by unconnected
+      areas. Outlet Injectors used for sending gas to space have been replaced with
+      Passive Vents.
+  - bugfix: The waste air from Virology on Tramstation will now be removed. Previously,
+      the turf that the outlet injector was on was unpowered.
+  - spellcheck: Fixed a typo on the singulo toy.
+  - bugfix: anonymous names doesn't break anymore! it works! hip hip hooray!
+  - bugfix: Items with dash actions and the Bluespace Prophecy trauma now utilise
+      proper teleportation code, disallowing teleportation to and from teleport restricted
+      areas.
+  - rscadd: unit test for map load
+  - rscadd: directory param to map load + whitelist for data and _maps
+  - rscadd: advertising for mojave sun in tg commit logs
+  YakumoChen:
+  - bugfix: Nanotrasen has updated medical records upon finding out that it was still
+      tracking those incompatible with illegal cloning technology, which is banned
+      sector-wide. Such records have been expunged.
+2021-11-09:
+  GoldenAlpharex:
+  - bugfix: Fixed certain preferences being reset to their default values when trying
+      to change them, due to the dropdown menu of options changing numbers into text
+      and due to that not being supported by numeric preferences. AKA, changing pixel
+      scaling method will work again.
+  Melbert:
+  - bugfix: Chaplains can no longer select admin only null rods.
+  PositiveEntropy, Naevii:
+  - imageadd: Ports BeeStation cloak designs!
+  RatFromTheJungle:
+  - balance: rebalances teshari incomming damage to 20-25% vs the previous of 50%,
+      and gives them a single point more of punch damage so they quit magically rolling
+      0, don't ask, I also don't know why.
+  Ryll/Shaps:
+  - rscadd: Yawns can now propagate and cause other nearby mobs who see it to yawn
+      as well.
+  ShizCalev:
+  - bugfix: Radioactive microlasers will no longer irradiate humans wearing radiation
+      proof clothing.
+  SkyratBot:
+  - imageadd: Turret Control frames now have a dedicated icon, rather than literally
+      using the APC image.
+  - bugfix: Randomized reagent recipes (so far only metalgen and the secret sauce)
+      should no longer from time to time require reagents that are normally TOO hard
+      (emphasis on TOO) to get or unobtainable by non-antag players (e.g. most mutation
+      toxins, syndie stims, godblood, spores)
+  coldud13:
+  - bugfix: floating lights and radios at arrivals on delta have been cleaned up
+  nikothedude:
+  - rscadd: Adds a fancy new menu for antags to view exploitables from! OOC>View crew
+      exploitables
+  - bugfix: Fixes the functionality of records. All previous methods of using records
+      work now.
+  - refactor: Record loading and saving is now handled in flavor_text.dm. admin_remove
+      now uses owner.remove_antag_datum(src) instead of on_remove() to remove antag
+      datums.

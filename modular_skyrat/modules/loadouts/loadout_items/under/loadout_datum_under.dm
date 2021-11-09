@@ -183,22 +183,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/utility/com
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
 
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest
-
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "red victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/red
-
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "blue victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/blue
-
-/datum/loadout_item/under/jumpsuit/vic_vest
-	name = "red alt victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
-
 /////////////////////////////////////////////////////////////MISC UNDERSUITS
 /datum/loadout_item/under/miscellaneous
 
@@ -809,7 +793,23 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "French Marshall's Uniform"
 	item_path = /obj/item/clothing/under/trek/q
 
-/datum/loadout_item/under/formal/jeanshorts
+/datum/loadout_item/under/formal/vic_vest
+	name = "Victorian Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest
+
+/datum/loadout_item/under/formal/vic_vest/red
+	name = "Red Victorian Shirt with Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/red
+
+/datum/loadout_item/under/formal/vic_vest/blue
+	name = "Blue Victorian Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/blue
+
+/datum/loadout_item/under/formal/vic_vest/red/shirt
+	name = "Red Victorian Vest"
+	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
+
+/datum/loadout_item/under/formal/jeanshorts //why are these formal??? who the fuck wears jorts formally??????
 	name = "Jean Shorts"
 	item_path = /obj/item/clothing/under/pants/jeanshort
 
