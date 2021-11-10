@@ -38,9 +38,9 @@
 		if(HS.hardsuit_tail_colors)
 			//Currently this way, when I have more time I'll write a hex -> matrix converter to pre-bake them instead
 			var/list/finished_list = list()
-			finished_list += ReadRGB(get_alpha_padded_color(HS.hardsuit_tail_colors[1]))
-			finished_list += ReadRGB(get_alpha_padded_color(HS.hardsuit_tail_colors[2]))
-			finished_list += ReadRGB(get_alpha_padded_color(HS.hardsuit_tail_colors[3]))
+			finished_list += ReadRGB("[HS.hardsuit_tail_colors[1]]00")
+			finished_list += ReadRGB("[HS.hardsuit_tail_colors[2]]00")
+			finished_list += ReadRGB("[HS.hardsuit_tail_colors[3]]00")
 			finished_list += list(0,0,0,255)
 			for(var/index in 1 to finished_list.len)
 				finished_list[index] /= 255
@@ -384,3 +384,19 @@
 /datum/sprite_accessory/tails/mammal/teshari/thin
 	name = "Teshari Thin Tail"
 	icon_state = "teshari_thin"
+
+/datum/sprite_accessory/tails/mammal/wagging/snakestripe
+	name = "Snake stripe"
+	icon_state = "snakestripe"
+
+/datum/sprite_accessory/tails/mammal/wagging/snakedual
+	name = "Snake dual"
+	icon_state = "snakedual"
+	
+/datum/sprite_accessory/tails/mammal/wagging/datashark
+	name = "Data shark"
+	icon_state = "datashark"
+
+/datum/sprite_accessory/tails/mammal/wagging/snakestripealt
+	name = "Snake stripe (alt)"
+	icon_state = "snakestripealt"

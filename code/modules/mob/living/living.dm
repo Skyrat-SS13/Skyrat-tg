@@ -800,7 +800,6 @@
 	remove_CC()
 	set_disgust(0)
 	losebreath = 0
-	radiation = 0
 	set_nutrition(NUTRITION_LEVEL_FED + 50)
 	bodytemperature = get_body_temp_normal(apply_change=FALSE)
 	set_blindness(0)
@@ -1074,13 +1073,19 @@
 	if(!what.canStrip(who))
 		to_chat(src, span_warning("You can't remove \the [what.name], it appears to be stuck!"))
 		return
-	who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
-					span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
+	//SKYRAT EDIT ADDITION BEGIN - THIEVING GLOVES
+	var/silent = HAS_TRAIT(who, TRAIT_STICKY_FINGERS) && (where & (ITEM_SLOT_ID|ITEM_SLOT_LPOCKET|ITEM_SLOT_RPOCKET))
+	if (!silent)
+		who.visible_message(span_warning("[src] tries to remove [who]'s [what.name]."), \
+						span_userdanger("[src] tries to remove your [what.name]."), null, null, src)
+	//SKYRAT EDIT ADDITION END
 	to_chat(src, span_danger("You try to remove [who]'s [what.name]..."))
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_VICTIM, color="red", log_globally = FALSE)
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	//SKYRAT EDIT CHANGE - THIEVING GLOVES
+	//if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	if(do_mob(src, who, what.strip_delay * (HAS_TRAIT(who, TRAIT_STICKY_FINGERS) ? 0.5 : 1), interaction_key = what))
 		if(what && Adjacent(who))
 			if(islist(where))
 				var/list/L = where
@@ -1270,7 +1275,7 @@
 			Robot.connected_ai.disconnect_shell()
 		if(Robot.mmi)
 			qdel(Robot.mmi)
-		Robot.notify_ai(NEW_BORG)
+		Robot.notify_ai(AI_NOTIFICATION_NEW_BORG)
 	else
 		for(var/obj/item/item in src)
 			if(!dropItemToGround(item))
@@ -1420,21 +1425,6 @@
 		G.summoner = new_mob
 		G.Recall()
 		to_chat(G, span_holoparasite("Your summoner has changed form!"))
-
-/mob/living/rad_act(amount)
-	. = ..()
-
-	if(!amount || (amount < RAD_MOB_SKIN_PROTECTION) || HAS_TRAIT(src, TRAIT_RADIMMUNE))
-		return
-
-	amount -= RAD_BACKGROUND_RADIATION // This will always be at least 1 because of how skin protection is calculated
-
-	var/blocked = getarmor(null, RAD)
-
-	if(amount > RAD_BURN_THRESHOLD)
-		apply_damage(RAD_BURN_CURVE(amount), BURN, null, blocked)
-
-	apply_effect((amount*RAD_MOB_COEFFICIENT)/max(1, (radiation**2)*RAD_OVERDOSE_REDUCTION), EFFECT_IRRADIATE, blocked)
 
 /mob/living/anti_magic_check(magic = TRUE, holy = FALSE, tinfoil = FALSE, chargecost = 1, self = FALSE)
 	. = ..()

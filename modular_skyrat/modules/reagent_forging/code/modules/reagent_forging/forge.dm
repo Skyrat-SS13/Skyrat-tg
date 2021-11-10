@@ -368,7 +368,7 @@
 			new /obj/item/stack/sheet/animalhide/goliath_hide(get_turf(src))
 		qdel(src)
 
-	if(istype(I, /obj/item))
+	if(I.GetComponent(/datum/component/reagent_weapon))
 		var/obj/item/attacking_item = I
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
@@ -379,41 +379,59 @@
 			in_use = FALSE
 			return
 		var/datum/component/reagent_weapon/weapon_component = attacking_item.GetComponent(/datum/component/reagent_weapon)
-		var/datum/component/reagent_clothing/clothing_component = attacking_item.GetComponent(/datum/component/reagent_clothing)
-		if(!weapon_component && !clothing_component)
+		if(!weapon_component)
 			to_chat(user, span_warning("[attacking_item] is unable to be imbued!"))
 			in_use = FALSE
 			return
-		if(weapon_component)
-			if(length(weapon_component.imbued_reagent))
-				to_chat(user, span_warning("[attacking_item] has already been imbued!"))
-				in_use = FALSE
-				return
-			if(!do_after(user, 10 SECONDS, target = src))
-				to_chat(user, span_warning("You abandon imbueing [attacking_item]!"))
-				in_use = FALSE
-				return
-			for(var/datum/reagent/weapon_reagent in attacking_item.reagents.reagent_list)
-				if(weapon_reagent.volume < 200)
-					attacking_item.reagents.remove_all_type(weapon_reagent.type)
-					continue
-				weapon_component.imbued_reagent += weapon_reagent.type
-				attacking_item.name = "[weapon_reagent.name] [attacking_item.name]"
-		if(clothing_component)
-			if(length(clothing_component.imbued_reagent))
-				to_chat(user, span_warning("[attacking_item] has already been imbued!"))
-				in_use = FALSE
-				return
-			if(!do_after(user, 10 SECONDS, target = src))
-				to_chat(user, span_warning("You abandon imbueing [attacking_item]!"))
-				in_use = FALSE
-				return
-			for(var/datum/reagent/clothing_reagent in attacking_item.reagents.reagent_list)
-				if(clothing_reagent.volume < 200)
-					attacking_item.reagents.remove_all_type(clothing_reagent.type)
-					continue
-				clothing_component.imbued_reagent += clothing_reagent.type
-				attacking_item.name = "[clothing_reagent.name] [attacking_item.name]"
+		if(length(weapon_component.imbued_reagent))
+			to_chat(user, span_warning("[attacking_item] has already been imbued!"))
+			in_use = FALSE
+			return
+		if(!do_after(user, 10 SECONDS, target = src))
+			to_chat(user, span_warning("You abandon imbueing [attacking_item]!"))
+			in_use = FALSE
+			return
+		for(var/datum/reagent/weapon_reagent in attacking_item.reagents.reagent_list)
+			if(weapon_reagent.volume < 200)
+				attacking_item.reagents.remove_all_type(weapon_reagent.type)
+				continue
+			weapon_component.imbued_reagent += weapon_reagent.type
+			attacking_item.name = "[weapon_reagent.name] [attacking_item.name]"
+		attacking_item.color = mix_color_from_reagents(attacking_item.reagents.reagent_list)
+		to_chat(user, span_notice("You finish imbueing [attacking_item]..."))
+		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
+		in_use = FALSE
+		return
+
+	if(I.GetComponent(/datum/component/reagent_clothing))
+		var/obj/item/attacking_item = I
+		if(in_use) //only insert one at a time
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		if(!reagent_forging)
+			to_chat(user, span_warning("You must enchant the forge to allow reagent imbueing!"))
+			in_use = FALSE
+			return
+		var/datum/component/reagent_clothing/clothing_component = attacking_item.GetComponent(/datum/component/reagent_clothing)
+		if(!clothing_component)
+			to_chat(user, span_warning("[attacking_item] is unable to be imbued!"))
+			in_use = FALSE
+			return
+		if(length(clothing_component.imbued_reagent))
+			to_chat(user, span_warning("[attacking_item] has already been imbued!"))
+			in_use = FALSE
+			return
+		if(!do_after(user, 10 SECONDS, target = src))
+			to_chat(user, span_warning("You abandon imbueing [attacking_item]!"))
+			in_use = FALSE
+			return
+		for(var/datum/reagent/clothing_reagent in attacking_item.reagents.reagent_list)
+			if(clothing_reagent.volume < 200)
+				attacking_item.reagents.remove_all_type(clothing_reagent.type)
+				continue
+			clothing_component.imbued_reagent += clothing_reagent.type
+			attacking_item.name = "[clothing_reagent.name] [attacking_item.name]"
 		attacking_item.color = mix_color_from_reagents(attacking_item.reagents.reagent_list)
 		to_chat(user, span_notice("You finish imbueing [attacking_item]..."))
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)

@@ -21,16 +21,6 @@
 	mob_trait = TRAIT_IRONASS
 	icon = "hand-paper"
 
-/datum/quirk/dnc
-	name = "Do Not Clone"
-	desc = "For whatever reason, you cannot be cloned in any way. You can still be revived in other ways, <b><i>but medical doctors are not always required to revive you.</i></b>"
-	gain_text = "<span class='notice'>Your feel your soul binding itself to your body.</span>"
-	lose_text = "<span class='notice'>You can feel your spirit detach from your body.</span>"
-	medical_record_text = "Patient's anatomy is incompatible with conventional cloning techniques."
-	value = 0
-	mob_trait = TRAIT_DNC
-	icon = "users-slash"
-
 /datum/quirk/dnr
 	name = "Do Not Revive"
 	desc = "For whatever reason, you cannot be revived in any way."

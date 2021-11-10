@@ -280,7 +280,7 @@
 	icon_state = "vest_combat"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
-	armor = list(MELEE = 40, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 20, BIO = 50, RAD = 30, FIRE = 90, ACID = 90)
+	armor = list(MELEE = 40, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 20, BIO = 50, FIRE = 90, ACID = 90)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	allowed = list(
 		/obj/item/melee,
@@ -302,7 +302,7 @@
 	inhand_icon_state = "alienhelmet"
 	blockTracking = TRUE
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
-	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, RAD = 20, FIRE = 100, ACID = 100, WOUND = 15)
+	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 // Machine that removes nanites

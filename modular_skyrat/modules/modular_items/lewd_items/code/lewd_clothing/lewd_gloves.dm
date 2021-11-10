@@ -26,7 +26,7 @@
 //ball_mittens reinforced
 /obj/item/clothing/gloves/ball_mittens_reinforced //We getting this item by using handcuffs on normal ball mittens
 	name = "reinforced ball mittens"
-	desc = "Do not put these on, it's REALLY hard to take them off! But they looks so comfortable..."
+	desc = "Do not put these on, it's REALLY hard to take them off! But they look so comfortable..."
 	icon_state = "ballmittens"
 	inhand_icon_state = "ballmittens"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
