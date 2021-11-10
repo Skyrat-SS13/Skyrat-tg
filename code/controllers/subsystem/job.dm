@@ -203,25 +203,8 @@ SUBSYSTEM_DEF(job)
 
 	if(do_eligibility_checks && (check_job_eligibility(player, job, "AR", add_job_to_log = TRUE) != JOB_AVAILABLE))
 		return FALSE
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(job.has_banned_quirk(player.client.prefs))
-		return FALSE
-	if(!job.has_required_languages(player.client.prefs))
-		return FALSE
-	if(job.veteran_only && !is_veteran_player(player.client))
-		return FALSE
-	if(job.has_banned_species(player.client.prefs))
-		return FALSE
-	//SKYRAT EDIT END
-	var/position_limit = job.total_positions
-	if(!latejoin)
-		position_limit = job.spawn_positions
-	JobDebug("Player: [player] is now Rank: [job.title], JCP:[job.current_positions], JPL:[position_limit]")
-=======
 
 	JobDebug("Player: [player] is now Rank: [job.title], JCP:[job.current_positions], JPL:[latejoin ? job.total_positions : job.spawn_positions]")
->>>>>>> c157d40e177 (Overhauls job eligibility checking and improves job debug logging. (#62586))
 	player.mind.set_assigned_role(job)
 	unassigned -= player
 	job.current_positions++
@@ -245,26 +228,8 @@ SUBSYSTEM_DEF(job)
 		if(isnull(player_job_level))
 			JobDebug("FOC player job not enabled, Player: [player]")
 			continue
-<<<<<<< HEAD
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(job.has_banned_quirk(player.client.prefs))
-			JobDebug("FOC job not compatible with quirks, Player: [player]")
-			continue
-		if(!job.has_required_languages(player.client.prefs))
-			JobDebug("FOC job not compatible with languages, Player: [player]")
-			continue
-		if(job.veteran_only && !is_veteran_player(player.client))
-			JobDebug("FOC player is not veteran, Player: [player]")
-		if(job.has_banned_species(player.client.prefs))
-			JobDebug("FOC job not compatible with species, Player: [player]")
-			continue
-		//SKYRAT EDIT END
-		if(job.required_playtime_remaining(player.client))
-			JobDebug("FOC player not enough xp, Player: [player]")
-=======
 		else if(player_job_level != level)
 			JobDebug("FOC player job enabled at wrong level, Player: [player], TheirLevel: [job_priority_level_to_string(player_job_level)], ReqLevel: [job_priority_level_to_string(level)]")
->>>>>>> c157d40e177 (Overhauls job eligibility checking and improves job debug logging. (#62586))
 			continue
 
 		// This check handles its own output to JobDebug.
@@ -296,43 +261,14 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ skipping command role, Player: [player], Job: [job]")
 			continue
 
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(job.departments_bitflags & DEPARTMENT_BITFLAG_CENTRAL_COMMAND) //If you want a CC position, select it!
+			JobDebug("GRJ skipping Central Command role, Player: [player], Job: [job]")
 			continue
 		//SKYRAT EDIT END
-
-		if(is_banned_from(player.ckey, job.title) || QDELETED(player))
-			if(QDELETED(player))
-				JobDebug("GRJ isbanned failed, Player deleted")
-				break
-			JobDebug("GRJ isbanned failed, Player: [player], Job: [job.title]")
-			continue
-
-		if(!job.player_old_enough(player.client))
-			JobDebug("GRJ player not old enough, Player: [player]")
-			continue
-
-		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		if(job.has_banned_quirk(player.client.prefs))
-			JobDebug("GRJ player has incompatible quirk, Player: [player]")
-			continue
-		if(!job.has_required_languages(player.client.prefs))
-			JobDebug("GRJ player has incompatible languages, Player: [player]")
-			continue
-		if(job.veteran_only && !is_veteran_player(player.client))
-			JobDebug("GRJ player is not veteran, Player: [player]")
-		if(job.has_banned_species(player.client.prefs))
-			JobDebug("GRJ player has incompatible species, Player: [player]")
-			continue
-		//SKYRAT EDIT END
-
-		if(job.required_playtime_remaining(player.client))
-			JobDebug("GRJ player not enough xp, Player: [player]")
-=======
+		
 		// This check handles its own output to JobDebug.
 		if(check_job_eligibility(player, job, "GRJ", add_job_to_log = TRUE) != JOB_AVAILABLE)
->>>>>>> c157d40e177 (Overhauls job eligibility checking and improves job debug logging. (#62586))
 			continue
 
 		if(AssignRole(player, job, do_eligibility_checks = FALSE))
@@ -511,29 +447,8 @@ SUBSYSTEM_DEF(job)
 				if(isnull(player_job_level))
 					JobDebug("FOC player job not enabled, Player: [player]")
 					continue
-<<<<<<< HEAD
-
-				//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-				if(job.has_banned_quirk(player.client.prefs))
-					JobDebug("DO player has incompatible quirk, Player: [player], Job:[job.title]")
-					continue
-				if(!job.has_required_languages(player.client.prefs))
-					JobDebug("DO player has incompatible languages, Player: [player], Job:[job.title]")
-					continue
-				if(job.veteran_only && !is_veteran_player(player.client))
-					JobDebug("DO player is not veteran, Player: [player], Job:[job.title]")
-					continue
-				if(job.has_banned_species(player.client.prefs))
-					JobDebug("DO player has incompatible species, Player: [player], Job:[job.title]")
-					continue
-				//SKYRAT EDIT END
-
-				if(job.required_playtime_remaining(player.client))
-					JobDebug("DO player not enough xp, Player: [player], Job:[job.title]")
-=======
 				else if(player_job_level != level)
 					JobDebug("FOC player job enabled but at different level, Player: [player], TheirLevel: [job_priority_level_to_string(player_job_level)], ReqLevel: [job_priority_level_to_string(level)]")
->>>>>>> c157d40e177 (Overhauls job eligibility checking and improves job debug logging. (#62586))
 					continue
 
 				if(check_job_eligibility(player, job, "DO", add_job_to_log = TRUE) != JOB_AVAILABLE)
@@ -1010,6 +925,24 @@ SUBSYSTEM_DEF(job)
 	if(is_banned_from(player.ckey, possible_job.title))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED
+
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(possible_job.has_banned_quirk(player.client.prefs))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_QUIRK)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_QUIRK
+
+	if(!possible_job.has_required_languages(player.client.prefs))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_LANGUAGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_LANGUAGE
+
+	if(possible_job.veteran_only && !is_veteran_player(player.client))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_NOT_VETERAN)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_NOT_VETERAN
+
+	if(possible_job.has_banned_species(player.client.prefs))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_SPECIES)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_SPECIES
+	//SKYRAT EDIT END
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.
 	if(QDELETED(player))

@@ -149,7 +149,6 @@
 			return "Your account is not old enough for [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
 			return "[jobtitle] is already filled to capacity."
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION
 		if(JOB_UNAVAILABLE_QUIRK)
 			return "[jobtitle] is restricted from your quirks."
@@ -160,10 +159,8 @@
 		if(JOB_UNAVAILABLE_SPECIES)
 			return "[jobtitle] is restricted from your species."
 		//SKYRAT EDIT END
-=======
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."
->>>>>>> c157d40e177 (Overhauls job eligibility checking and improves job debug logging. (#62586))
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
