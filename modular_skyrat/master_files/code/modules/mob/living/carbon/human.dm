@@ -9,7 +9,7 @@
 		Stun(0.5 SECONDS) // You can't move and you can't use items
 		//Nailed it!
 		visible_message(span_notice("[src] lands elegantly on [p_their()] feet!"),
-			span_warning("You fall [levels] level[levels > 1 ? "s" : ""] into [T], perfecting the landing!"))
+			span_warning("You fall [levels > 1 ? "[levels] levels" : "one level"] into [T], perfecting the landing!"))
 		return
 	
 	if(!HAS_TRAIT(src, TRAIT_FREERUNNING) || levels > 1) // falling off one level
