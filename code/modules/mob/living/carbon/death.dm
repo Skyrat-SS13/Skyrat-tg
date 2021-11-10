@@ -5,7 +5,11 @@
 	silent = FALSE
 	losebreath = 0
 
+	/* SKYRAT EDIT CHANGE - VORE - Don't want prefbreak happening thank you very much
 	if(!gibbed)
+		INVOKE_ASYNC(src, .proc/emote, "deathgasp")
+	*/
+	if(!gibbed && !istype(loc, /obj/vbelly))
 		INVOKE_ASYNC(src, .proc/emote, "deathgasp")
 	reagents.end_metabolization(src)
 

@@ -1,6 +1,10 @@
 /datum/component/vore
-	var/list/bellies = list()
+	var/list/obj/vbelly/bellies = list()
 	var/mob/living/owner
+	var/tastes_of = "nothing in particular"
+	var/vore_toggles = VORE_TOGGLES_DEFAULT
+	var/selected_belly = 1
+	var/vore_enabled = TRUE
 
 /datum/component/vore/Initialize()
 	if (!isliving(parent))
@@ -19,23 +23,19 @@
 
 	owner.release_belly_contents()
 
-/datum/component/vore/proc/get_belly_contents(selected_belly, ref=FALSE, living=FALSE)
-	var/obj/vbelly/belly = bellies[selected_belly]
-	var/list/belly_contents = list()
-	for (var/atom/movable/AM as anything in belly)
-		if (living)
-			if (!isliving(AM))
-				continue
-		if (ref)
-			belly_contents[AM.name] = ref(AM) //ref(AM) returns a string that can be used in locate() to get that atom back
-		else
-			belly_contents += AM
-	return belly_contents
+/datum/component/vore/proc/get_belly_contents(bellynum, ref=FALSE, living=FALSE, as_string=FALSE, ignored=null)
+	if (bellynum < 1 || bellynum > bellies.len)
+		return
+	return bellies[bellynum].get_belly_contents(ref, living, as_string, ignored)
 
 /datum/component/vore/proc/update_bellies()
 	if (!owner.client?.prefs?.vr_prefs)
 		return
 	var/datum/vore_prefs/vore = owner.client.prefs.vr_prefs
+	vore_toggles = vore.vore_toggles
+	tastes_of = vore.tastes_of
+	selected_belly = vore.selected_belly
+	vore_enabled = vore.vore_enabled
 	for (var/bellynum in 1 to vore.bellies.len)
 		if (bellynum > bellies.len)
 			var/obj/vbelly/belly = new(null, owner, vore.bellies[bellynum])
@@ -57,26 +57,53 @@
 		return
 
 	if (client.prefs?.vr_prefs?.vore_enabled)
-		AddComponent(/datum/component/vore)
+		var/datum/component/vore/vore = LoadComponent(/datum/component/vore)
+		vore.update_bellies()
 		add_verb(src, /mob/living/proc/Ingest)
 	else
 		remove_verb(src, /mob/living/proc/Ingest)
 
-/mob/living/proc/Ingest(mob/living/M in oview(1)) //this will get moved to an interaction or something, rather than a proc, before it gets merged, this is just so I can actually use it for the moment
+/mob/living/proc/Ingest(mob/living/prey in oview(1)) //this will get moved to an interaction or something, rather than a proc, before it gets merged, this is just so I can actually use it for the moment
 	/* //turned off for debugging
-	if (!client?.prefs?.vr_prefs?.vore_enabled || !M.client?.prefs?.vr_prefs?.vore_enabled)
+	if (prey == src)
 		return
-	if (!(M.client.prefs.vr_prefs & DEVOURABLE))
-		to_chat(src, span_warning("[M] can't be eaten!"))
+	if (!client?.prefs?.vr_prefs?.vore_enabled || !prey.client?.prefs?.vr_prefs?.vore_enabled)
+		return
+	if (!(prey.client.prefs.vr_prefs & DEVOURABLE))
+		to_chat(src, span_warning("[prey] can't be eaten!"))
 	*/
-	var/datum/vore_prefs/vr = client.prefs.vr_prefs
-	send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|is attempting|begin|begins| to [vr.get_belly_var("swallow_verb")] %a|[M]|[M]|you| into %a|their|your|their| [vr.get_belly_var("name")]!"), SEE_OTHER_MESSAGES, M)
-	if (!do_after(src, 3 SECONDS, M))
-		return
 	var/datum/component/vore/vore = LoadComponent(/datum/component/vore)
-	var/obj/vbelly/belly = vore?.bellies[client.prefs.vr_prefs.selected_belly]
+	send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|is attempting|begin|begins| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|their|your|their| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey)
+	if (!do_after(src, VORE_EATING_TIME, prey))
+		return
+	var/obj/vbelly/belly = vore?.bellies[vore.selected_belly]
 	if (belly)
-		send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|manages|manage|manages| to [vr.get_belly_var("swallow_verb")] %a|[M]|[M]|you| into %a|their|your|their| [vr.get_belly_var("name")]!"), SEE_OTHER_MESSAGES, M)
-		M.forceMove(belly)
-		SStgui.update_uis(vr)
+		send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|manages|manage|manages| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|their|your|their| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey)
+		prey.forceMove(belly)
+		if (client?.prefs?.vr_prefs)
+			SStgui.update_uis(client.prefs.vr_prefs)
 
+/mob/living/proc/IngestInside(mob/living/prey, mob/living/inside_of)
+	/* //turned off for debugging
+	if (prey == src)
+		return
+	if (!client?.prefs?.vr_prefs?.vore_enabled || !prey.client?.prefs?.vr_prefs?.vore_enabled)
+		return
+	if (!(prey.client.prefs.vr_prefs & DEVOURABLE))
+		to_chat(src, span_warning("[prey] can't be eaten!"))
+	*/
+	var/datum/component/vore/vore = LoadComponent(/datum/component/vore)
+	var/datum/component/vore/pred_vore = inside_of.LoadComponent(/datum/component/vore)
+	if (pred_vore.vore_toggles & SEE_OTHER_MESSAGES)
+		to_chat(inside_of, span_warning("Someone inside of you is eating someone else!"))
+	send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|is attempting|begin|begins| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|their|your|their| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey, audience=FALSE)
+	if (!do_after(src, VORE_EATING_TIME, prey))
+		return
+	var/obj/vbelly/belly = vore?.bellies[vore.selected_belly]
+	if (belly)
+		if (pred_vore.vore_toggles & SEE_OTHER_MESSAGES)
+			to_chat(inside_of, span_warning("Someone inside of you has eaten someone else!"))
+		send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|manages|manage|manages| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|their|your|their| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey, audience=FALSE)
+		prey.forceMove(belly)
+		if (client?.prefs?.vr_prefs)
+			SStgui.update_uis(client.prefs.vr_prefs)

@@ -4,7 +4,7 @@
 
 	var/vore_enabled = FALSE //master toggle
 	var/vore_toggles = VORE_TOGGLES_DEFAULT
-	var/tastes_of = ""
+	var/tastes_of = "nothing in particular"
 	var/list/bellies = list()
 
 	var/list/unsaved_changes = null
@@ -39,7 +39,6 @@
 	READ_FILE(S["vore_enabled"], vore_enabled)
 	S.cd = "/char[slot]"
 	READ_FILE(S["vore_toggles"], vore_toggles)
-	READ_FILE(S["selected_belly"], selected_belly)
 	if(!selected_belly || !isnum(selected_belly))
 		selected_belly = 1
 	READ_FILE(S["vore_taste"], tastes_of)
@@ -47,6 +46,8 @@
 	if (!bellies || !bellies.len)
 		bellies = list()
 		bellies.Add(list(default_belly_info()))
+	READ_FILE(S["selected_belly"], selected_belly)
+	selected_belly = clamp(selected_belly, 1, bellies.len)
 
 /datum/vore_prefs/proc/save_prefs(slot = null)
 	slot = slot || prefs.default_slot || 1
@@ -93,9 +94,22 @@
 	if (!vore_enabled) //not gonna get used anyway so no point in sending all the rest
 		return data
 
+	data["in_belly"] = FALSE
+	if (istype(user.loc, /obj/vbelly))
+		var/obj/vbelly/bellyobj = user.loc
+		data["in_belly"] = TRUE
+		var/list/inside_data = list()
+		inside_data["belly_inside"] = ref(bellyobj)
+		inside_data["desc"] = bellyobj.desc
+		inside_data["name"] = "[bellyobj.owner]'s [bellyobj.name]"
+		inside_data["contents"] = bellyobj.get_belly_contents(ref=TRUE, as_string=TRUE, ignored=user)
+		inside_data["contents_noref"] = bellyobj.get_belly_contents(ref=FALSE, as_string=TRUE, ignored=user)
+		data["inside_data"] = inside_data
+
 	data["selected_belly"] = selected_belly
+	data["tastes_of"] = get_temp("tastes_of")
 	var/list/belly_names = belly_name_list()
-	if (bellies.len < MAX_BELLIES)
+	if (belly_names.len < MAX_BELLIES)
 		belly_names += "New Belly"
 	data["bellies"] = belly_names
 
@@ -104,26 +118,24 @@
 	belly_data["name"] = get_temp("name", belly=selected_belly)
 	belly_data["desc"] = get_temp("desc", belly=selected_belly)
 	belly_data["mode"] = get_temp("mode", belly=selected_belly)
+	belly_data["can_taste"] = get_temp("can_taste", belly=selected_belly)
 	belly_data["swallow_verb"] = get_temp("swallow_verb", belly=selected_belly)
-	belly_data["has_contents"] = null
 	belly_data["string_types"] = list(LIST_DIGEST_PREY, \
 										LIST_DIGEST_PRED, \
 										LIST_STRUGGLE_INSIDE, \
 										LIST_STRUGGLE_OUTSIDE, \
 										LIST_EXAMINE)
-	if (vore && unsaved_changes["bellies"][selected_belly]["belly_ref"])
-		belly_data["has_contents"] = TRUE
-		belly_data["contents"] = vore.get_belly_contents(unsaved_changes["bellies"][selected_belly]["belly_ref"], TRUE)
-		belly_data["contents_noref"] = vore.get_belly_contents(unsaved_changes["bellies"][selected_belly]["belly_ref"], FALSE)
+	data["has_contents"] = FALSE
+	var/list/contents_of = vore?.get_belly_contents(unsaved_changes["bellies"][selected_belly]["belly_ref"], ref=TRUE, as_string=TRUE)
+	if (contents_of && contents_of.len)
+		data["has_contents"] = TRUE
+		data["contents"] = contents_of
+		data["contents_noref"] = vore.get_belly_contents(unsaved_changes["bellies"][selected_belly]["belly_ref"], ref=FALSE, as_string=TRUE)
 	data["current_belly"] = belly_data
 
 	data["toggles"] = list()
-	data["toggles"] += get_temp("vore_toggles", toggle=SEE_EXAMINES)
-	data["toggles"] += get_temp("vore_toggles", toggle=SEE_STRUGGLES)
-	data["toggles"] += get_temp("vore_toggles", toggle=SEE_OTHER_MESSAGES)
-	data["toggles"] += get_temp("vore_toggles", toggle=DEVOURABLE)
-	data["toggles"] += get_temp("vore_toggles", toggle=DIGESTABLE)
-	data["toggles"] += get_temp("vore_toggles", toggle=ABSORBABLE)
+	for (var/num in 1 to VORE_TOGGLES_AMOUNT)
+		data["toggles"] += get_temp("vore_toggles", toggle=(1 << (num - 1)))
 
 	return data
 
@@ -135,10 +147,12 @@
 								LIST_STRUGGLE_INSIDE, \
 								LIST_STRUGGLE_OUTSIDE, \
 								LIST_EXAMINE)
-	data["other_types"] = list("name", \
+	data["other_belly_types"] = list("name", \
 								"desc", \
 								"mode", \
-								"swallow_verb")
+								"swallow_verb", \
+								"can_taste")
+	data["other_types"] = list("tastes_of")
 	return data
 
 /datum/vore_prefs/ui_act(action, list/params)
@@ -155,6 +169,10 @@
 	switch(action)
 		if("save_prefs")
 			save_prefs()
+		if("discard_changes")
+			unsaved_changes = list()
+			has_unsaved = FALSE
+			lazy_init_temp()
 		if("toggle_vore")
 			vore_enabled = params["toggle"]
 			has_unsaved = TRUE
@@ -167,7 +185,12 @@
 			var/belly = params["belly"]
 			if (!isnum(belly))
 				return FALSE
-			set_temp(var_name, get_input(usr, var_name, belly), belly)
+			var/input = get_input(usr, var_name, belly)
+			to_chat(usr, "<span class='red bold'>[var_name]</span>: [isnull(input) ? "null" : input]")
+			set_temp(var_name, input, belly)
+		if("othervar_act")
+			var/var_name = params["varname"]
+			set_temp(var_name, get_input(usr, var_name, 0))
 		if("select_belly")
 			var/belly = params["belly"]
 			if (!isnum(belly))
@@ -176,7 +199,8 @@
 				unsaved_changes["bellies"] += list(list("belly_ref" = 0))
 				selected_belly = unsaved_changes["bellies"].len
 			else
-				selected_belly = clamp(belly, 0, unsaved_changes["bellies"].len)
+				selected_belly = clamp(belly, 1, unsaved_changes["bellies"].len)
+			has_unsaved = TRUE
 		if("remove_belly")
 			var/belly = params["belly"]
 			if (!isnum(belly))
@@ -187,36 +211,61 @@
 			if (yes != "Yes")
 				return
 			unsaved_changes["bellies"] -= unsaved_changes["bellies"][belly]
+			has_unsaved = TRUE
 		if("contents_act")
 			var/ref = params["ref"]
 			var/belly = params["belly"]
 			if (!isnum(belly))
 				return
 			var/atom/movable/target = locate(ref)
-			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
-			if (!vore || !target || !(target in vore.get_belly_contents(belly)))
+			var/datum/component/vore/vore = prefs.parent?.mob?.GetComponent(/datum/component/vore)
+			if (!vore || !target || !(target in vore.get_belly_contents(unsaved_changes["bellies"][belly]["belly_ref"])))
 				return
 			var/action_choice = get_input(usr, "contents_act", belly, "[target]")
 			switch(action_choice)
 				if("Examine")
-					if(ismob(usr))
-						target.examine(usr)
+					if(ismob(usr) && (target in vore.get_belly_contents(unsaved_changes["bellies"][belly]["belly_ref"])))
+						usr.examinate(target)
 				if("Eject")
 					var/obj/vbelly/bellyobj = vore.bellies[belly]
 					bellyobj.release_from_contents(target)
 				if("Transfer")
-					var/choice = input(usr, "Which belly do you want to transfer to?", "Transfer", belly) as null|anything in belly_name_list(TRUE, TRUE)
-					if (isnull(choice) || choice == belly)
+					var/belly_names = belly_name_list(TRUE, TRUE)
+					var/choice = input(usr, "Which belly do you want to transfer to?", "Transfer", belly) as null|anything in belly_names
+					if (isnull(choice) || choice == belly || !(target in vore.get_belly_contents(unsaved_changes["bellies"][belly]["belly_ref"])))
 						return
-					target.forceMove(vore.bellies[choice])
+					target.forceMove(vore.bellies[belly_names[choice]])
 					//add a message here?
+				else
+					return
+		if("inside_act")
+			var/ref = params["ref"]
+			var/inside_of = params["belly_in"]
+			var/atom/movable/target = locate(ref)
+			var/obj/vbelly/inside = locate(inside_of)
+			if (!istype(inside) || usr.loc != inside || !target || !(target in inside))
+				return
+			var/action_choice = get_input(usr, "inside_act[isliving(target) ? "_living" : ""]", 1, "[target]")
+			if (!isliving(usr) || !(target in inside) || usr.loc != inside)
+				return
+			var/mob/living/user = usr
+			switch(action_choice)
+				if("Examine")
+					user.examinate(target)
+				if("Pick Up")
+					if (user.stat)
+						to_chat(user, span_warning("You can't do this in your state!"))
+					else
+						user.put_in_active_hand(target)
+				if("Devour")
+					user.IngestInside(target, inside.owner)
 				else
 					return
 		if("eject_all")
 			var/belly = params["belly"]
 			if (!isnum(belly))
 				return
-			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
+			var/datum/component/vore/vore = prefs.parent?.mob?.GetComponent(/datum/component/vore)
 			if (!vore)
 				return
 			var/obj/vbelly/bellyobj = vore.bellies[unsaved_changes["bellies"][belly]["belly_ref"]]
@@ -227,12 +276,17 @@
 		return
 	belly = belly || selected_belly //not sure if this needs to be here
 	var/static/list/onelineinputs = list("name", "tastes_of", "swallow_verb")
+	var/static/list/alertinputs = list("can_taste" = list("Yes", "No", "Cancel"))
 	var/static/list/listinputs = list(	"mode" = list(	"Hold" = VORE_MODE_HOLD, \
 														"Digest" = VORE_MODE_DIGEST, \
 														"Absorb" = VORE_MODE_ABSORB), \
 										"contents_act" = list(	"Examine", \
 																"Eject", \
-																"Transfer"))
+																"Transfer"), \
+										"inside_act" = list(	"Examine", \
+																"Pick Up"), \
+										"inside_act_living" = list(	"Examine", \
+																	"Devour"))
 	var/static/list/multilineinputs = list("desc" = FALSE, \
 											LIST_DIGEST_PREY = TRUE, \
 											LIST_DIGEST_PRED = TRUE, \
@@ -240,7 +294,7 @@
 											LIST_STRUGGLE_OUTSIDE = TRUE, \
 											LIST_EXAMINE = TRUE) //name of var - is it a list that needs to be joined into a string
 	var/static/list/cant_be_empty = list("tastes_of" = "nothing in particular", "name" = null, "swallow_verb" = "swallow") //name of var - value to take if output is null, null means take the previous value
-	var/static/list/not_a_var = list("contents_act" = "Examine") //name of the input - default value
+	var/static/list/not_a_var = list("contents_act" = "Examine", "inside_act" = "Examine", "inside_act_living" = "Examine") //name of the input - default value
 	var/output
 	var/name_and_desc = get_desc_for_input(var_name, misc_info)
 	var/var_value = (var_name in not_a_var) ? not_a_var[var_name] : get_temp(var_name, belly)
@@ -257,18 +311,26 @@
 			output = splittext(STRIP_HTML_SIMPLE(multilinehelper.Replace(output, "$1"), MAX_MESSAGE_LEN), "\n\n")
 
 	else if (!isnull(listinputs[var_name]))
+		var/static/list/has_no_value = list("contents_act", "inside_act", "inside_act_living")
 		output = input(user, name_and_desc[2], name_and_desc[1], var_value) as null|anything in listinputs[var_name]
+		if (!(var_name in has_no_value))
+			output = listinputs[var_name][output]
+
+	else if (!isnull(alertinputs[var_name]))
+		output = alert(user, name_and_desc[2], name_and_desc[1], alertinputs[var_name][1], alertinputs[var_name][2], alertinputs[var_name][3])
+		if (output == "Cancel")
+			output = null
 
 	else
 		return
 
-	if ((output == var_value && !(var_name in not_a_var)) || isnull(output))
-		return
 	if (istext(output))
 		output = STRIP_HTML_SIMPLE(output, MAX_MESSAGE_LEN) //yeet
 	if (istext(output) && output == "")
 		if (var_name in cant_be_empty)
 			return cant_be_empty[var_name] || var_value
+	if ((output == var_value && !(var_name in not_a_var)) || isnull(output))
+		return
 	return output
 
 /datum/vore_prefs/proc/get_desc_for_input(var_name, misc_info=null)
@@ -282,6 +344,8 @@
 			return list("Mode", "Select the new mode of the [get_temp("name", selected_belly)].")
 		if ("swallow_verb")
 			return list("Swallow Verb", "Enter the new swallow verb of the [get_temp("name", selected_belly)]. Remember to put it in the infinitive tense, ie swallow, gulp, etc.")
+		if ("can_taste")
+			return list("Can Taste", "Can the [get_temp("name", selected_belly)] taste things?")
 		if ("tastes_of")
 			return list("Tastes like", "What does your character taste like?")
 		if (LIST_DIGEST_PREY)
@@ -295,6 +359,10 @@
 		if (LIST_EXAMINE)
 			return list("Examine Messages", "Enter the new examine messages, one will be selected when someone examines you. [common_insert]")
 		if ("contents_act")
+			return list("Perform Action", "What do you want to do with [misc_info]?")
+		if ("inside_act")
+			return list("Perform Action", "What do you want to do with [misc_info]?")
+		if ("inside_act_living")
 			return list("Perform Action", "What do you want to do with [misc_info]?")
 
 	return list("Something went wrong", "Something went wrong, tell a coder to look at vore code for the [var_name] var being sent.")
@@ -361,6 +429,9 @@
 	unsaved_changes = list()
 	lazy_init_temp()
 	if (isliving(prefs?.parent?.mob))
+		if (istype(prefs.parent.mob.loc, /obj/vbelly))
+			var/obj/vbelly/bellyobj = prefs.parent.mob.loc
+			bellyobj.check_mode()
 		var/datum/component/vore/vore = prefs.parent.mob.LoadComponent(/datum/component/vore)
 		vore.update_bellies()
 

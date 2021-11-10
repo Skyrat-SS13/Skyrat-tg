@@ -1,4 +1,4 @@
-import { Button, Section, Dropdown, Flex } from '../components';
+import { Button, Section, Dropdown, Stack, Flex } from '../components';
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
 
@@ -26,6 +26,7 @@ const switchNames = {
   "name": "Name",
   "desc": "Description",
   "mode": "Mode",
+  "can_taste": "Can Taste",
   "swallow_verb": "Swallow Verb",
 };
 const stringNames = {
@@ -43,7 +44,7 @@ export const BellyStack = (props, context) => {
     bellies,
     string_types,
     selected_belly,
-    other_types,
+    other_belly_types,
   } = data;
   const buttonFromName = (name, index) => {
     return (
@@ -64,13 +65,24 @@ export const BellyStack = (props, context) => {
   };
   return (
     <Section title="Bellies" buttons={(
-      <Dropdown
-        options={bellies}
-        selected={bellies[selected_belly - 1]}
-        onSelected={(value) => act('select_belly', { belly: bellies.indexOf(value) + 1 })} />
+      <Stack>
+        <Stack.Item>
+          <Button
+            content="Remove Belly"
+            color="red"
+            disabled={bellies.length <= 1 ? true : false}
+            onClick={() => act('remove_belly', { belly: selected_belly })} />
+        </Stack.Item>
+        <Stack.Item>
+          <Dropdown
+            options={bellies}
+            selected={bellies[selected_belly - 1]}
+            onSelected={(value) => act('select_belly', { belly: bellies.indexOf(value) + 1 })} />
+        </Stack.Item>
+      </Stack>
     )}>
       <Flex direction="column">
-        {other_types.map((value, index) => {
+        {other_belly_types.map((value, index) => {
           return buttonFromName(value, index);
         })}
       </Flex>
@@ -92,14 +104,15 @@ export const BellyStack = (props, context) => {
 
 export const ContentsStack = (props, context) => {
   const { act, data } = useBackend(context);
-  const { has_contents, contents, contents_noref, selected_belly } = data;
-  if (has_contents === true) {
+  const { has_contents, selected_belly } = data;
+  if (has_contents) {
+    const { contents, contents_noref } = data;
     return (
       <Section title="Contents" buttons={(
         <Button
           content="Eject All"
           color="red"
-          onSelected={(value) => act('eject_all', { belly: selected_belly })} />
+          onClick={() => act('eject_all', { belly: selected_belly })} />
       )}>
         <Flex wrap="wrap">
           {contents_noref.map((value, index) => (
@@ -116,9 +129,45 @@ export const ContentsStack = (props, context) => {
   return null;
 };
 
+export const InsideStack = (props, context) => {
+  const { act, data } = useBackend(context);
+  const in_belly = data["in_belly"];
+  if (in_belly) {
+    const inside_data = data["inside_data"];
+    return (
+      <Section title={"Inside of " + inside_data["name"]}>
+        <Stack vertical>
+          <Stack.Item align="center">
+            {inside_data["desc"]}
+          </Stack.Item>
+          <Stack wrap="wrap">
+            {inside_data["contents_noref"].map((value, index) => (
+              <Stack.Item key={index}>
+                <Button
+                  content={value}
+                  onClick={() => act('inside_act', {
+                    ref: inside_data["contents"][value],
+                    belly_in: inside_data["belly_inside"],
+                  })} />
+              </Stack.Item>
+            ))}
+          </Stack>
+        </Stack>
+      </Section>
+    );
+  }
+  return null;
+};
+
 export const VorePanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { enabled, toggles, unsaved, selected_belly } = data;
+  const {
+    enabled,
+    toggles,
+    unsaved,
+    selected_belly,
+    tastes_of,
+  } = data;
   return (
     <Window
       title={"Vore Panel"}
@@ -144,6 +193,7 @@ export const VorePanel = (props, context) => {
               </Flex.Item>
             </Flex>
           )} />
+        <InsideStack />
         <Section
           title="Vore Prefs"
           buttons={(
@@ -158,7 +208,7 @@ export const VorePanel = (props, context) => {
             <BellyStack />
           )}
           {enabled && (
-            <Section title="Toggles">
+            <Section title="Toggles and other Prefs">
               <Flex wrap="wrap">
                 {toggles.map((val, i) => (
                   <Flex.Item key={i}>
@@ -172,6 +222,19 @@ export const VorePanel = (props, context) => {
                   </Flex.Item>
                 ))}
               </Flex>
+              <Section title="Other Prefs">
+                <Stack>
+                  <Stack.Item>
+                    <Button
+                      content="Tastes of"
+                      onClick={() => act('othervar_act', { varname: "tastes_of" })}
+                    />
+                  </Stack.Item>
+                  <Stack.Item align="end">
+                    {tastes_of}
+                  </Stack.Item>
+                </Stack>
+              </Section>
             </Section>
           )}
         </Section>

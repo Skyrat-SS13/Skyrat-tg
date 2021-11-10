@@ -6,6 +6,7 @@
 #define ABSORBABLE				(1 << 5)
 //#define CAN_HEAR_NOISES		(1 << 6)
 //#define SIMPLEMOB_VORE		(1 << 7)
+#define VORE_TOGGLES_AMOUNT		6 //update this if you add more toggles above
 #define VORE_TOGGLES_DEFAULT	(SEE_EXAMINES|SEE_STRUGGLES|SEE_OTHER_MESSAGES|DEVOURABLE)
 
 #define VORE_MODE_HOLD			0
@@ -20,3 +21,4 @@
 
 #define MAX_BELLIES 			8
 #define MAX_BELLY_NAME_LENGTH	30 //yeah I dunno, adjust this if you want to
+#define VORE_EATING_TIME		(5 SECONDS)

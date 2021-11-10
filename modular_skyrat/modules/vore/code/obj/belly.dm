@@ -2,14 +2,21 @@
 	name = "belly"
 	desc = ""
 	invisibility = INVISIBILITY_MAXIMUM
+	var/datum/gas_mixture/air_contents = new()
 	var/mob/living/owner = null
 	var/mode = VORE_MODE_HOLD
+	var/can_taste = FALSE
+	var/swallow_verb = "nom"
 	var/list/data = list()
 
 /obj/vbelly/Initialize(mapload, mob/living/living_owner, list/belly_data)
 	. = ..()
 	if (!istype(living_owner))
 		return INITIALIZE_HINT_QDEL
+	air_contents.add_gases(/datum/gas/oxygen, /datum/gas/nitrogen)
+	air_contents.temperature = T20C
+	air_contents.gases[/datum/gas/oxygen][MOLES] = MOLES_O2STANDARD
+	air_contents.gases[/datum/gas/nitrogen][MOLES] = MOLES_N2STANDARD
 	owner = living_owner
 	if (!SSair.planetary[OPENTURF_DEFAULT_ATMOS])
 		var/datum/gas_mixture/immutable/planetary/mix = new
@@ -20,30 +27,30 @@
 	set_data(belly_data)
 
 /obj/vbelly/proc/set_data(_data)
-	for (var/varname in static_belly_vars())
-		if (!(varname in _data))
-			return FALSE
+	for (var/varname in _data)
+		if (!(varname in static_belly_vars()))
+			_data -= varname
 	data = _data
 	name = data["name"]
 	desc = data["desc"]
 	mode = data["mode"]
+	can_taste = data["can_taste"] == "Yes" ? TRUE : FALSE
+	swallow_verb = data["swallow_verb"]
 	check_mode()
 
-
-/datum/gas_mixture/normalized //yeah I should REALLY find a different way to do this
-/datum/gas_mixture/normalized/New()
-	gases = list()
-	add_gases(/datum/gas/oxygen, /datum/gas/nitrogen)
-	temperature = T20C
-	gases[/datum/gas/oxygen][MOLES] = MOLES_O2STANDARD
-	gases[/datum/gas/nitrogen][MOLES] = MOLES_N2STANDARD
-
-/obj/vbelly/assume_air()
-	return 0
-
+//todo: should REALLY find a better way to do this.
+/obj/vbelly/assume_air(datum/gas_mixture/giver)
+	var/datum/gas_mixture/copy = air_contents.copy()
+	return copy.merge(giver)
 /obj/vbelly/return_air() //people don't want to have to wear internals while inside someone
-	var/datum/gas_mixture/normalized/mix = new
-	return mix
+	var/datum/gas_mixture/copy = air_contents.copy()
+	return copy
+/obj/vbelly/return_analyzable_air() //people don't want to have to wear internals while inside someone
+	var/datum/gas_mixture/copy = air_contents.copy()
+	return copy
+/obj/vbelly/remove_air(amount) //people don't want to have to wear internals while inside someone
+	var/datum/gas_mixture/copy = air_contents.copy()
+	return copy.remove(amount)
 
 /obj/vbelly/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
@@ -51,8 +58,9 @@
 		var/mob/living/arrived_mob = arrived
 		if (desc)
 			to_chat(arrived_mob, span_notice(desc))
-		if (owner && arrived_mob.client?.prefs?.vr_prefs?.tastes_of)
-			to_chat(owner, span_notice("[arrived_mob] tastes of [arrived_mob.client.prefs.vr_prefs.tastes_of]."))
+		var/datum/component/vore/vore = arrived_mob.GetComponent(/datum/component/vore)
+		if (owner && can_taste && vore?.tastes_of)
+			to_chat(owner, span_notice("[arrived_mob] tastes of [vore.tastes_of]."))
 		RegisterSignal(arrived, COMSIG_LIVING_RESIST, .proc/prey_resist)
 		check_mode()
 	if (owner.client?.prefs?.vr_prefs)
@@ -66,6 +74,22 @@
 		SStgui.update_uis(owner.client.prefs.vr_prefs)
 	//todo
 
+/obj/vbelly/proc/get_belly_contents(ref=FALSE, living=FALSE, as_string=FALSE, ignored=null)
+	var/list/belly_contents = list()
+	var/list/keep_track = list()
+	for (var/atom/movable/AM as anything in src)
+		if (ignored && (AM == ignored || (AM in ignored)))
+			continue
+		if (living && !isliving(AM))
+			continue
+		var/key = as_string ? "[AM][keep_track["[AM]"] ? " ([keep_track["[AM]"]])" : ""]" : AM
+		if (ref)
+			belly_contents[key] = ref(AM) //ref(AM) returns a string that can be used in locate() to get that atom back
+		else
+			belly_contents += key
+		keep_track["[AM]"] = keep_track["[AM]"] ? keep_track["[AM]"] + 1 : 2
+	return belly_contents
+
 /obj/vbelly/proc/check_mode()
 	if (mode == VORE_MODE_HOLD)
 		return
@@ -77,15 +101,10 @@
 	var/all_done = TRUE
 	if (mode == VORE_MODE_DIGEST)
 		for (var/mob/living/prey in src)
-			if (prey.stat == DEAD)
+			if (!prey.check_vore_toggle(DIGESTABLE))
 				continue
-			if (prey.client?.prefs?.vr_prefs)
-				if (!prey.check_vore_toggle(DIGESTABLE))
-					continue
 			prey.apply_damage(4, BURN)
-			if (prey.stat != DEAD)
-				all_done = FALSE
-			else
+			if (prey.stat == DEAD)
 				var/pred_message = vore_replace(data[LIST_DIGEST_PRED], owner, prey, name)
 				var/prey_message = vore_replace(data[LIST_DIGEST_PREY], owner, prey, name)
 				if (pred_message)
@@ -97,6 +116,8 @@
 					if (!prey.dropItemToGround(item))
 						qdel(item)
 				qdel(prey)
+			else
+				all_done = FALSE
 	if (mode == VORE_MODE_ABSORB)
 		//todo
 		all_done = TRUE
@@ -112,6 +133,12 @@
 		return pick(SSjob.latejoin_trackers)
 	return SSjob.get_last_resort_spawn_points()
 
+/obj/vbelly/AllowDrop()
+	return TRUE
+
+/obj/vbelly/AllowClick()
+	return TRUE
+
 /obj/vbelly/proc/mass_release_from_contents()
 	for (var/atom/movable/to_release as anything in contents)
 		to_release.forceMove(drop_location())
@@ -121,7 +148,7 @@
 	if (!(to_release in contents))
 		return FALSE
 	to_release.forceMove(drop_location())
-	send_vore_message(owner, span_warning("%a|[owner]|You|| eject%a|s||| the [to_release] from %a|their|your|| [src]!"), SEE_OTHER_MESSAGES)
+	send_vore_message(owner, span_warning("%a|[owner]|You|| eject%a|s||| [to_release] from %a|their|your|| [name]!"), SEE_OTHER_MESSAGES)
 
 /obj/vbelly/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
@@ -135,13 +162,15 @@
 
 /obj/vbelly/proc/prey_resist(datum/source, mob/living/prey)
 	var/prey_message = span_warning(vore_replace(data[LIST_STRUGGLE_INSIDE], owner, prey, name))
-	var/list/ignored = list()
+	var/list/ignored_mobs = list()
 	for (var/mob/living/prey_target in contents)
-		ignored += prey_target
+		ignored_mobs += prey_target
 		if (!prey_target.check_vore_toggle(SEE_STRUGGLES))
 			continue
-		to_chat(prey_target, prey_message)
-	send_vore_message(owner, span_warning(vore_replace(data[LIST_STRUGGLE_OUTSIDE]), owner, prey, name), SEE_STRUGGLES, prey, ignored=ignored)
+		if (!isnull(data[LIST_STRUGGLE_INSIDE]) && data[LIST_STRUGGLE_INSIDE].len)
+			to_chat(prey_target, prey_message)
+	if (!isnull(data[LIST_STRUGGLE_OUTSIDE]) && data[LIST_STRUGGLE_OUTSIDE].len)
+		send_vore_message(owner, span_warning(vore_replace(data[LIST_STRUGGLE_OUTSIDE], owner, prey, name)), SEE_STRUGGLES, prey, ignored=ignored_mobs)
 
 // MISC PROCS
 
