@@ -252,7 +252,7 @@
 			SetSpread(DISEASE_SPREAD_CONTACT_FLUIDS)
 		else
 			SetSpread(DISEASE_SPREAD_BLOOD)*/
-		SetSpread(DISEASE_SPREAD_BLOOD)
+		SetSpread(DISEASE_SPREAD_BLOOD) //Skyrat Changes, just makes tranmiss default to low spread
 
 		permeability_mod = max(CEILING(0.4 * properties["transmittable"], 1), 1)
 		cure_chance = clamp(7.5 - (0.5 * properties["resistance"]), 5, 10) // can be between 5 and 10
