@@ -35,7 +35,7 @@
 	var/charged = TRUE
 	var/charge_time = 20 // Original value: 15
 	var/detonation_damage = 50
-	var/backstab_bonus = 25 // Original value: 25
+	var/backstab_bonus = 25 // Original value: 30
 	var/wielded = FALSE // track wielded status on item
 
 /obj/item/bone_crusher/Initialize(mapload)
