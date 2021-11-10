@@ -34,4 +34,6 @@
 #define THICKNESS_ALPHA_COEFFICIENT 0.0025
 
 //Cap for active emitters that can be running for a very long time
-#define POLLUTION_ACTIVE_EMITTER_CAP 300
+#define POLLUTION_ACTIVE_EMITTER_CAP 200
+//For things that you dont want to cause too much pollution
+#define POLLUTION_PASSIVE_EMITTER_CAP 70
