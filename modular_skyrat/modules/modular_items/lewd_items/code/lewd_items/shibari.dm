@@ -100,10 +100,10 @@
 			return FALSE
 	return TRUE
 
-/obj/item/stack/shibari_rope/attack(mob/living/carbon/carmeme, mob/living/user)
+/obj/item/stack/shibari_rope/attack(mob/living/carbon/attackedmeme, mob/living/user)
 	add_fingerprint(user)
-	if(ishuman(carmeme))
-		var/mob/living/carbon/human/them = carmeme
+	if(ishuman(attackedmeme))
+		var/mob/living/carbon/human/them = attackedmeme
 		switch(user.zone_selected)
 			if(BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
 				if(!(them.shoes))
