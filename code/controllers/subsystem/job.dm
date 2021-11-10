@@ -927,6 +927,10 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_BANNED
 
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(possible_job.veteran_only && !is_veteran_player(player.client))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_NOT_VETERAN)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_NOT_VETERAN
+
 	if(possible_job.has_banned_quirk(player.client.prefs))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_QUIRK)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_QUIRK
@@ -934,10 +938,6 @@ SUBSYSTEM_DEF(job)
 	if(!possible_job.has_required_languages(player.client.prefs))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_LANGUAGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_LANGUAGE
-
-	if(possible_job.veteran_only && !is_veteran_player(player.client))
-		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_NOT_VETERAN)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
-		return JOB_NOT_VETERAN
 
 	if(possible_job.has_banned_species(player.client.prefs))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_SPECIES)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
