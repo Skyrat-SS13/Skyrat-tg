@@ -220,6 +220,8 @@
 /obj/item/crusher_trophy/attackby(obj/item/A, mob/living/user)
 	if(istype(A, /obj/item/kinetic_crusher))
 		add_to(A, user)
+	if(istype(A, /obj/item/bone_crusher)) //sinful that I couldn't just add this to my own module but oh well.
+		add_to(A, user)
 	else
 		..()
 
