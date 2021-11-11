@@ -6,7 +6,6 @@
 	hardsuit_type = "marine"
 	armor = list(MELEE = 65, BULLET = 65, LASER = 65, ENERGY = 60, BOMB = 80, BIO = 100, FIRE = 100, ACID = 80)
 
-  
 /obj/item/clothing/suit/space/hardsuit/ert/marine
 	name = "marine hardsuit"
 	desc = "The standard issue hardsuit of the Nanotrasen Marine Corps, fitted with advanced plasteel composite plating and a nanogel-lined undersuit for maximum protection and minimal slowdown."
@@ -19,7 +18,7 @@
 /obj/item/clothing/suit/space/hardsuit/ert/marine/Initialize()
 	. = ..()
 	AddElement(/datum/element/empprotection, EMP_PROTECT_CONTENTS)
-	
+
 /obj/item/storage/backpack/ert/marine
 	name = "marine backpack"
 	desc = "A spacious backpack with lots of pockets and a magnetic latching mechanism to attach to whatever gear one might wear. In this case, preferrably a marine hardsuit."
