@@ -506,7 +506,7 @@
 					/obj/item/storage/bag/quiver,
 					/obj/item/clothing/head/helmet/knight/red,
 					/obj/item/clothing/head/helmet/knight/blue,
-					/obj/item/food/bread)
+					/obj/item/food/bread/plain)
 	crate_name = "vintage crate"
 
 /datum/supply_pack/service/hydrohelper
