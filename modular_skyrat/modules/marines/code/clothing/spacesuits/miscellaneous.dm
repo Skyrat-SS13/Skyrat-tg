@@ -19,9 +19,7 @@
 	armor = list(MELEE = 65, BULLET = 65, LASER = 65, ENERGY = 60, BOMB = 80, BIO = 100, FIRE = 100, ACID = 80)
 
 // 1 2 3 4 marine corps marine corps
-/obj/item/clothing/suit/space/hardsuit/ert/marine/Initialize()
-	. = ..()
-	AddElement(/datum/element/empprotection, EMP_PROTECT_CONTENTS)
+//parent type already has EMP protection and stuff
 
 /obj/item/storage/backpack/ert/marine
 	name = "marine backpack"
