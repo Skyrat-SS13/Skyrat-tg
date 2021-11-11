@@ -46,9 +46,12 @@
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
 
-	var/space = subtle_message[1] != "," ? " " : ""
+	subtle_message = html_decode(subtle_message)
+	var/space = (subtle_message[1] in GLOB.no_spacing_emote_characters) ? " " : ""
 	if(!(subtle_message[length(subtle_message)] in GLOB.auto_punctuation_character_blacklist))
 		subtle_message += "."
+
+	subtle_message = html_encode(subtle_message)
 
 	subtle_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i></span>"
 
@@ -115,7 +118,7 @@
 
 	user.log_message(subtler_message, LOG_SUBTLER)
 
-	var/space = subtler_message[1] != "," ? " " : ""
+	var/space = (subtler_message[1] in GLOB.no_spacing_emote_characters) ? " " : ""
 	if(!(subtler_message[length(subtler_message)] in GLOB.auto_punctuation_character_blacklist))
 		subtler_message += "."
 	subtler_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i></span>"
