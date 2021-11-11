@@ -441,6 +441,16 @@
 	desc = "A Roller Bed made out of Hardlight"
 	max_integrity = 1
 	buildstacktype = FALSE //It would not be good if people could use this to farm materials.
+	var/deploytime = 20 SECONDS //How long the roller beds lasts for without someone buckled to it.
+
+/obj/structure/bed/roller/medigun/Initialize()
+	. = ..()
+	addtimer(CALLBACK(src, .proc/CheckBed), deploytime)
+
+/obj/structure/bed/roller/medigun/proc/CheckBed()
+	if(!has_buckled_mobs())
+		qdel(src)
+		return TRUE
 
 /obj/structure/bed/roller/medigun/post_unbuckle_mob(mob/living/M)
 	. = ..()
