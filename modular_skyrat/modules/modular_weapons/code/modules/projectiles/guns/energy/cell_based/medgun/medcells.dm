@@ -389,6 +389,8 @@
 	. = ..()
 	if(!istype(target, /mob/living/carbon/human)) //Only checks if they are human, it would make sense for this to work on the dead.
 		return FALSE
+	for(var/obj/structure/bed/roller/medigun in target.loc) //Prevents multiple beds from being spawned on the same turf
+		return FALSE
 	if(HAS_TRAIT(target, TRAIT_FLOORED) || target.resting) //Is the person already on the floor to begin with? Mostly a measure to prevent spamming.
 		new /obj/structure/bed/roller/medigun(target.loc)
 		return TRUE
@@ -439,6 +441,7 @@
 /obj/structure/bed/roller/medigun
 	name = "Hardlight Roller Bed"
 	desc = "A Roller Bed made out of Hardlight"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
 	max_integrity = 1
 	buildstacktype = FALSE //It would not be good if people could use this to farm materials.
 	var/deploytime = 20 SECONDS //How long the roller beds lasts for without someone buckled to it.
@@ -449,7 +452,7 @@
 
 /obj/structure/bed/roller/medigun/proc/CheckBed()
 	if(!has_buckled_mobs())
-		qdel(src)
+		qdel(src) //Deletes the roller bed, mostly meant to prevent stockpiling and clutter
 		return TRUE
 
 /obj/structure/bed/roller/medigun/post_unbuckle_mob(mob/living/M)
