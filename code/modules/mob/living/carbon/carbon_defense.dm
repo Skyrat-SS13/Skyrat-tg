@@ -284,18 +284,18 @@
 				var/obj/item/bodypart/affecting = src.get_bodypart(BODY_ZONE_HEAD)
 				if(affecting?.receive_damage(2))
 					src.update_damage_overlays()
-				visible_message("<span class='danger'>[src] tried slapping [target]'s ass, but they were slapped!</span>",
-				"<span class='danger'>You tried slapping [target]'s ass, but they hit you back, ouch!</span>",\
+				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were slapped instead!"),
+				span_danger("You tried slapping [target]'s ass, but they hit you back, ouch!"),
 				"You hear a slap.", ignored_mobs = list(target))
 				playsound(target.loc, 'sound/effects/snap.ogg', 50, TRUE, -1)
-				to_chat(target, "<span class='danger'>[src] tried slapping your ass, but you hit them back!")
+				to_chat(target, span_danger("[src] tried slapping your ass, but you hit them back!"))
 				return
 			else
-				visible_message("<span class='danger'>[src] tried slapping [target]'s ass, but they were blocked!</span>",
-				"<span class='danger'>You tried slapping [target]'s ass, but they blocked you!</span>",\
+				visible_message(span_danger("[src] tried slapping [target]'s ass, but they were blocked!"),
+				span_danger("You tried slapping [target]'s ass, but they blocked you!"),
 				"You hear a slap.", ignored_mobs = list(target))
 				playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
-				to_chat(target, "<span class='danger'>[src] tried slapping your ass, but you blocked them!")
+				to_chat(target, span_danger("[src] tried slapping your ass, but you blocked them!"))
 				return
 		else
 			do_ass_slap_animation(target)
