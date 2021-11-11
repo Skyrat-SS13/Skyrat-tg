@@ -8,8 +8,8 @@
 
 
 /obj/item/bone_crusher
-	icon = 'icons/obj/mining.dmi'
-	icon_state = "crusher"
+	icon = 'modular_skyrat/modules/bonecrusher/bone_crusher.dmi'
+	icon_state = "bone_crusher"
 	inhand_icon_state = "crusher0"
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
