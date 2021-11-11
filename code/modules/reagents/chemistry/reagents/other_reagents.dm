@@ -214,7 +214,7 @@
 	if(methods & TOUCH)
 		exposed_mob.extinguish_mob() // extinguish removes all fire stacks
 	if(methods & VAPOR)
-		if(!isfelinid(exposed_mob))
+		if(!isfelinid(exposed_mob) || HAS_TRAIT(exposed_mob, TRAIT_FELINE)) // SKYRAT EDIT - Feline trait :)
 			return
 		exposed_mob.incapacitate(1) // startles the felinid, canceling any do_after
 		SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "watersprayed", /datum/mood_event/watersprayed)
