@@ -16,6 +16,8 @@
 #define SCENT_DESC_SMELL       "smell"
 #define SCENT_DESC_FRAGRANCE   "fragrance"
 
+#define POLLUTION_DISSIPATION_PLANETARY_MULTIPLIER 4
+
 ///Minimum amount of smell power to be able to sniff a pollutant
 #define POLLUTANT_SMELL_THRESHOLD 3.5
 
