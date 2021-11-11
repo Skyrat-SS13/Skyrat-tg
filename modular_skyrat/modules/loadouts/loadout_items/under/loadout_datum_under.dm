@@ -80,7 +80,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/rnd/research_director/imperial
 	restricted_roles = list("Research Director")
 
-
 /datum/loadout_item/under/jumpsuit/impcommand
 	name = "Light Grey Officer's Naval Jumpsuit"
 	item_path = /obj/item/clothing/under/imperial
@@ -142,7 +141,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/utility/para_red
 	restricted_roles = list("Chief Medical Officer", "Paramedic", "Security Medic")
 
-
 /datum/loadout_item/under/jumpsuit/utility
 	name = "Utility Uniform"
 	item_path = /obj/item/clothing/under/utility
@@ -161,7 +159,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Science Utility Uniform"
 	item_path = /obj/item/clothing/under/utility/sci
 	restricted_roles = list("Scientist", "Roboticist", "Geneticist", "Research Director", "Vanguard Operative")
-
 
 /datum/loadout_item/under/jumpsuit/hlscientist
 	name = "Ridiculous Scientist Outfit"
@@ -182,6 +179,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Command Utility Uniform"
 	item_path = /obj/item/clothing/under/utility/com
 	restricted_roles = list("Captain", "Head of Personnel", "Blueshield", "Head of Security", "Research Director", "Quartermaster", "Chief Medical Officer", "Chief Engineer")
+
+/datum/loadout_item/under/jumpsuit/polysweater
+	name = "Polychromic Sweater"
+	item_path = /obj/item/clothing/under/misc/polysweater
 
 /////////////////////////////////////////////////////////////MISC UNDERSUITS
 /datum/loadout_item/under/miscellaneous
@@ -402,7 +403,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactitool Skirtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
 
-
 /datum/loadout_item/under/miscellaneous/blacknwhite
 	name = "Classic Prisoner Jumpsuit"
 	item_path = /obj/item/clothing/under/rank/prisoner/classic
@@ -441,7 +441,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/swept_skirt
 	name = "Swept Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/swept
-
 
 /datum/loadout_item/under/miscellaneous/gear_harness
 	name = "Gear Harness"
@@ -511,6 +510,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 ////////////////////////////////////////////////////////////////FORMAL UNDERSUITS
 /datum/loadout_item/under/formal
+
+/datum/loadout_item/under/formal/vic_dress
+	name = "Black victorian dress"
+	item_path = /obj/item/clothing/under/costume/vic_dress
+
+/datum/loadout_item/under/formal/vic_dress_red
+	name = "Red victorian dress"
+	item_path = /obj/item/clothing/under/costume/vic_dress/red
 
 /datum/loadout_item/under/formal/amish_suit
 	name = "Amish Suit"
