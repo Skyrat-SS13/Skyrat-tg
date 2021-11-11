@@ -313,7 +313,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			extinguish()
 			return
 
-	location.PolluteTurf(pollution_type, 10) //SKYRAT EDIT ADDITION
+	location.PolluteTurf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP) //SKYRAT EDIT ADDITION
 
 	smoketime -= delta_time * (1 SECONDS)
 	if(smoketime <= 0)
@@ -1082,7 +1082,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	//SKYRAT EDIT ADDITION
 	//open flame removed because vapes are a closed system, they won't light anything on fire
 	var/turf/my_turf = get_turf(src)
-	my_turf.PolluteTurf(/datum/pollutant/smoke/vape, 10)
+	my_turf.PolluteTurf(/datum/pollutant/smoke/vape, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	//SKYRAT EDIT END
 
 	if(obj_flags & EMAGGED)
