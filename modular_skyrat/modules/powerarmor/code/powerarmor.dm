@@ -262,7 +262,7 @@
 	///the list of possible armor upgrades: melee, bullet, laser, energy, bio, fire
 	var/list/armor_upgraded = list(0, 0, 0, 0, 0, 0)
 	///the list of possible healing upgrades: brute, burn, toxin, oxygen, stamina
-	var/list/healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
+	var/list/healing_upgraded = list(0, 0, 0, 0, 0)
 	///the list of possible misc. upgrades: spaceproof, light, welding, temp-regulating, storage
 	var/list/misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
 	///who is being affected by the power armor; the wearer
@@ -312,7 +312,7 @@
 /obj/item/clothing/suit/hooded/powerarmor/process(delta_time)
 	if(!COOLDOWN_FINISHED(src, healing_cooldown))
 		return
-	COOLDOWN_START(src, healing_cooldown, 3 SECONDS)
+	COOLDOWN_START(src, healing_cooldown, 2 SECONDS)
 	if(!wearer)
 		return
 	if(!isliving(wearer))
@@ -320,16 +320,11 @@
 	if(src != wearer.get_item_by_slot(ITEM_SLOT_OCLOTHING))
 		return
 	var/mob/living/living_wearer = wearer
-	if(healing_upgraded[1] && living_wearer.getBruteLoss())
-		living_wearer.adjustBruteLoss(-3)
-	if(healing_upgraded[2] && living_wearer.getFireLoss())
-		living_wearer.adjustFireLoss(-3)
-	if(healing_upgraded[3] && living_wearer.getToxLoss())
-		living_wearer.adjustToxLoss(-3)
-	if(healing_upgraded[4] && living_wearer.getOxyLoss())
-		living_wearer.adjustOxyLoss(-3)
-	if(healing_upgraded[5] && living_wearer.getStaminaLoss())
-		living_wearer.adjustStaminaLoss(-3)
+	living_wearer.adjustBruteLoss(-healing_upgraded[1])
+	living_wearer.adjustFireLoss(-healing_upgraded[2])
+	living_wearer.adjustToxLoss(-healing_upgraded[3])
+	living_wearer.adjustOxyLoss(-healing_upgraded[4])
+	living_wearer.adjustStaminaLoss(-healing_upgraded[5])
 	if(misc_upgraded[4] && living_wearer.bodytemperature != BODYTEMP_NORMAL)
 		var/changing_temp = living_wearer.bodytemperature - BODYTEMP_NORMAL
 		if(living_wearer.bodytemperature > BODYTEMP_NORMAL)
@@ -384,37 +379,49 @@
 		var/upgrade_name = upgrade_item.upgrade_type
 		switch(upgrade_name)
 			if("melee armor")
+				if(armor_upgraded[1] >= 4)
+					return
 				armor_upgraded[1]++
 			if("bullet armor")
+				if(armor_upgraded[2] >= 4)
+					return
 				armor_upgraded[2]++
 			if("laser armor")
+				if(armor_upgraded[3] >= 4)
+					return
 				armor_upgraded[3]++
 			if("energy armor")
+				if(armor_upgraded[4] >= 4)
+					return
 				armor_upgraded[4]++
 			if("bio armor")
+				if(armor_upgraded[5] >= 4)
+					return
 				armor_upgraded[5]++
 			if("fire armor")
+				if(armor_upgraded[6] >= 4)
+					return
 				armor_upgraded[6]++
 			if("brute healing")
-				if(healing_upgraded[1])
+				if(healing_upgraded[1] >= 6)
 					return
-				healing_upgraded[1] = TRUE
+				healing_upgraded[1]++
 			if("burn healing")
-				if(healing_upgraded[2])
+				if(healing_upgraded[2] >= 6)
 					return
-				healing_upgraded[2] = TRUE
+				healing_upgraded[2]++
 			if("toxin healing")
-				if(healing_upgraded[3])
+				if(healing_upgraded[3] >= 6)
 					return
-				healing_upgraded[3] = TRUE
+				healing_upgraded[3]++
 			if("oxygen healing")
-				if(healing_upgraded[4])
+				if(healing_upgraded[4] >= 6)
 					return
-				healing_upgraded[4] = TRUE
+				healing_upgraded[4]++
 			if("stamina healing")
-				if(healing_upgraded[5])
+				if(healing_upgraded[5] >= 6)
 					return
-				healing_upgraded[5] = TRUE
+				healing_upgraded[5]++
 			if("space proof")
 				if(misc_upgraded[1])
 					return
@@ -452,7 +459,7 @@
 			to_chat(user, span_warning("[src] needs to be on the floor in order to use [W] on it!"))
 			return
 		W.play_tool_sound(src, 50)
-		if(!do_after(user, 10 SECONDS, target = wearer))
+		if(!do_after(user, 10 SECONDS, target = src))
 			return
 		upgradelimit = 20
 		if(upgradeboosted)
@@ -461,7 +468,7 @@
 			if(istype(check_contents, /obj/item/powerarmor_upgrade))
 				check_contents.forceMove(get_turf(src))
 		armor_upgraded = list(0, 0, 0, 0, 0, 0, 0)
-		healing_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
+		healing_upgraded = list(0, 0, 0, 0, 0)
 		misc_upgraded = list(FALSE, FALSE, FALSE, FALSE, FALSE)
 		update_upgrades()
 		W.play_tool_sound(src, 50)
@@ -545,51 +552,51 @@
 
 /obj/item/powerarmor_upgrade/melee_armor
 	upgrade_type = "melee armor"
-	upgrade_cost = 5
+	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/bullet_armor
 	upgrade_type = "bullet armor"
-	upgrade_cost = 5
+	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/laser_armor
 	upgrade_type = "laser armor"
-	upgrade_cost = 5
+	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/energy_armor
 	upgrade_type = "energy armor"
-	upgrade_cost = 5
+	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/bio_armor
 	upgrade_type = "bio armor"
-	upgrade_cost = 3
+	upgrade_cost = 2
 
 /obj/item/powerarmor_upgrade/fire_armor
 	upgrade_type = "fire armor"
-	upgrade_cost = 3
+	upgrade_cost = 2
 
 /obj/item/powerarmor_upgrade/brute_heal
 	upgrade_type = "brute healing"
-	upgrade_cost = 11
+	upgrade_cost = 4
 
 /obj/item/powerarmor_upgrade/burn_heal
 	upgrade_type = "burn healing"
-	upgrade_cost = 11
+	upgrade_cost = 4
 
 /obj/item/powerarmor_upgrade/toxin_heal
 	upgrade_type = "toxin healing"
-	upgrade_cost = 11
+	upgrade_cost = 4
 
 /obj/item/powerarmor_upgrade/oxygen_heal
 	upgrade_type = "oxygen healing"
-	upgrade_cost = 11
+	upgrade_cost = 4
 
 /obj/item/powerarmor_upgrade/stamina_heal
 	upgrade_type = "stamina healing"
-	upgrade_cost = 11
+	upgrade_cost = 4
 
 /obj/item/powerarmor_upgrade/space_proof
 	upgrade_type = "space proof"
-	upgrade_cost = 15
+	upgrade_cost = 7
 
 /obj/item/powerarmor_upgrade/light
 	upgrade_type = "light"
@@ -597,15 +604,15 @@
 
 /obj/item/powerarmor_upgrade/tempreg
 	upgrade_type = "temp regulating"
-	upgrade_cost = 5
+	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/welding
 	upgrade_type = "welding"
-	upgrade_cost = 5
+	upgrade_cost = 3
 
 /obj/item/powerarmor_upgrade/storage
 	upgrade_type = "storage"
-	upgrade_cost = 7
+	upgrade_cost = 5
 
 /datum/design/powerarmor
 	name = "Power Armor"
