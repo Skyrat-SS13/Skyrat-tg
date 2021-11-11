@@ -22,15 +22,9 @@
 
 /datum/quirk/personalspace
 	name = "Personal Space"
-<<<<<<< HEAD
 	desc = "You'd rather people keep their hands to themselves, and you won't let anyone touch your ass.."
 	gain_text = span_notice("You'd like it if people kept their hands off your ass.")
 	lose_text = span_notice("You're less concerned about people touching your ass.")
-=======
-	desc = "You'd rather people keep their hands to themselves, and you won't let anyone touch your ass. If you're ready for a fight, you might even slap someone for it!"
-	gain_text = "<span class='notice'>You'd like it if people kept their hands off your ass.</span>"
-	lose_text = "<span class='notice'>You're less concerned about people touching your ass.</span>"
->>>>>>> 565af1f16bc (minor punctuation fix + added to trait description)
 	medical_record_text = "Patient demonstrates negative reactions to their posterior being touched."
 	value = 0
 	mob_trait = TRAIT_PERSONALSPACE
