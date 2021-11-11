@@ -34,6 +34,7 @@
 	medical_record_text = "Patient demonstrates negative reactions to their posterior being touched."
 	value = 0
 	mob_trait = TRAIT_PERSONALSPACE
+	icon = "hand-paper"
 
 /datum/quirk/dnr
 	name = "Do Not Revive"
