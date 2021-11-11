@@ -1,7 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "av" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/russian/ranged,
+/mob/living/simple_animal/hostile/russian/ranged{
+	faction = list("hostile")
+	},
 /turf/open/floor/iron/dark/green/corner{
 	dir = 1
 	},
@@ -296,10 +298,6 @@
 /obj/structure/ore_box,
 /turf/open/floor/iron/dark/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
-"hl" = (
-/mob/living/simple_animal/hostile/giant_spider/tarantula/scrawny,
-/turf/open/floor/iron/dark/brown,
-/area/ruin/space/has_grav/deepstorage/lostcargo)
 "hq" = (
 /obj/structure/bed,
 /obj/item/bedsheet/dorms,
@@ -365,6 +363,7 @@
 	dir = 4
 	},
 /obj/structure/closet/crate/freezer/blood,
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "hT" = (
@@ -620,7 +619,7 @@
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "mz" = (
-/mob/living/simple_animal/hostile/russian,
+/mob/living/simple_animal/hostile/looter/big,
 /turf/open/floor/iron/dark/green/side{
 	dir = 1
 	},
@@ -673,6 +672,15 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/brown,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
+"nE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/simple_animal/hostile/syndicate/melee/anthro{
+	desc = "An anthromorphic bandit, geared up in tactical gear.";
+	faction = list("hostile");
+	name = "Geared Pirate"
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "nM" = (
 /obj/structure/window/reinforced,
@@ -769,7 +777,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "pF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/russian,
+/mob/living/simple_animal/hostile/vox/melee,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "pH" = (
@@ -809,6 +817,10 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/turf/open/floor/iron/brown,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
+"qw" = (
+/mob/living/simple_animal/hostile/looter,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "qy" = (
@@ -923,6 +935,11 @@
 	dir = 4
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
+"rI" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/simple_animal/hostile/looter/crusher,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
 "sa" = (
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -1023,7 +1040,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "tI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/russian,
+/mob/living/simple_animal/hostile/looter,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "tJ" = (
@@ -1066,7 +1083,6 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ug" = (
 /obj/structure/safe,
-/obj/effect/spawner/random/exotic/antag_gear,
 /obj/item/clothing/suit/space/hardsuit/syndi,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -1297,7 +1313,7 @@
 /turf/open/floor/iron/dark/blue,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "xn" = (
-/mob/living/simple_animal/hostile/russian,
+/mob/living/simple_animal/hostile/vox/melee,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "xy" = (
@@ -1334,6 +1350,10 @@
 "yl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark/green/side,
+/area/ruin/space/has_grav/deepstorage/lostcargo)
+"yp" = (
+/mob/living/simple_animal/hostile/giant_spider/badnana_spider,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "ys" = (
 /obj/machinery/cryopod{
@@ -1514,9 +1534,7 @@
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "AK" = (
-/mob/living/simple_animal/hostile/pirate/ranged{
-	faction = list("russian")
-	},
+/mob/living/simple_animal/hostile/looter/ranged/space/laser,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "AM" = (
@@ -1528,7 +1546,7 @@
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "AN" = (
-/mob/living/simple_animal/hostile/russian/ranged,
+/mob/living/simple_animal/hostile/looter/ranged/space/laser,
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "AQ" = (
@@ -1570,6 +1588,11 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "BM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/mob/living/simple_animal/pet/dog/dobermann{
+	desc = "The freighter's loyal, canine companion!";
+	dir = 8;
+	name = "Ace"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "BN" = (
@@ -1646,7 +1669,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Eg" = (
 /mob/living/simple_animal/hostile/pirate/melee{
-	faction = list("russian")
+	faction = list("hostile")
 	},
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -1690,7 +1713,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "EH" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
-/mob/living/simple_animal/hostile/russian,
+/mob/living/simple_animal/hostile/vox/melee,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "EO" = (
@@ -1752,7 +1775,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "FX" = (
-/obj/machinery/power/apc/auto_name/north{
+/obj/machinery/power/apc/auto_name/directional/north{
 	start_charge = 0
 	},
 /obj/structure/cable,
@@ -1831,7 +1854,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "IE" = (
 /mob/living/simple_animal/hostile/pirate/melee{
-	faction = list("russian")
+	faction = list("hostile")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -1855,7 +1878,7 @@
 	name = "Delivery - Enclave";
 	req_access_txt = "2"
 	},
-/obj/item/kitchen/knife/combat,
+/obj/item/knife/combat,
 /obj/item/reagent_containers/hypospray/medipen/stimpack,
 /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars,
 /obj/item/clothing/under/enclave/real,
@@ -1967,7 +1990,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "JV" = (
 /mob/living/simple_animal/hostile/pirate/melee{
-	faction = list("russian")
+	faction = list("hostile")
 	},
 /turf/open/floor/iron/dark/green/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -2136,6 +2159,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "MH" = (
 /obj/effect/spawner/random/medical/patient_stretcher,
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "MJ" = (
@@ -2244,6 +2268,7 @@
 /obj/item/stack/sheet/mineral/gold{
 	amount = 20
 	},
+/obj/structure/bed/dogbed,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "NX" = (
@@ -2296,7 +2321,6 @@
 	name = "Delivery - NSV Torch"
 	},
 /obj/item/organ/heart/gland/heal,
-/obj/item/organ/body_egg/alien_embryo,
 /obj/item/organ/brain/alien,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
@@ -2553,7 +2577,7 @@
 	},
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Sk" = (
-/mob/living/simple_animal/hostile/russian,
+/mob/living/simple_animal/hostile/looter/crusher,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Sl" = (
@@ -3041,7 +3065,9 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/russian/ranged/mosin,
+/mob/living/simple_animal/hostile/russian/ranged/mosin{
+	faction = list("hostile")
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "XY" = (
@@ -3063,7 +3089,7 @@
 /area/ruin/space/has_grav/deepstorage/lostcargo)
 "Yt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/mob/living/simple_animal/hostile/russian,
+/mob/living/simple_animal/hostile/looter,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -3633,13 +3659,13 @@ Rt
 Bb
 FB
 Vs
-tI
+nE
 Vs
 AW
 Vs
 Vs
 Vs
-tI
+rI
 Vs
 Ym
 MY
@@ -3928,7 +3954,7 @@ gI
 Zl
 Bb
 hN
-xn
+qw
 vB
 ML
 Ae
@@ -4798,7 +4824,7 @@ Bb
 KF
 XS
 XS
-XS
+yp
 XS
 RA
 Bb
@@ -4833,7 +4859,7 @@ hP
 qi
 QU
 RA
-hl
+RA
 RA
 hr
 Bb

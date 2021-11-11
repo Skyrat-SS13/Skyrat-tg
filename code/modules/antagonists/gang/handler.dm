@@ -161,7 +161,7 @@ GLOBAL_VAR(families_override_theme)
 			log_game("[gangbanger] was not a human, and thus has lost their gangster role.")
 			replacement_gangsters++
 	if(replacement_gangsters)
-		for(var/j = 0, j < replacement_gangsters, j++)
+		for(var/j in 1 to replacement_gangsters)
 			if(!antag_candidates.len)
 				log_game("Unable to find more replacement gangsters. Not all of the gangs will spawn.")
 				break
@@ -328,102 +328,3 @@ GLOBAL_VAR(families_override_theme)
 	if(!midround_ruleset)
 		announcement_message += "  They will arrive at the [(end_time - start_time) / (1 MINUTES)] minute mark."
 	priority_announce(announcement_message, "Station Spaceship Detection Systems")
-
-/// Internal. Polls ghosts and sends in a team of space cops according to the wanted level, accompanied by an announcement. Will let the shuttle leave 10 minutes after sending. Freezes the wanted level.
-/datum/gang_handler/proc/send_in_the_fuzz()
-	var/team_size
-	var/cops_to_send
-	var/announcement_message = "PUNK ASS BALLA BITCH"
-	var/announcer = "Spinward Stellar Coalition"
-	if(GLOB.joined_player_list.len > LOWPOP_FAMILIES_COUNT)
-		switch(wanted_level)
-			if(1)
-				team_size = 8
-				cops_to_send = /datum/antagonist/ert/families/beatcop
-				announcement_message = "Hello, crewmembers of [station_name()]! We've received a few calls about some potential violent gang activity on board your station, so we're sending some beat cops to check things out. Nothing extreme, just a courtesy call. However, while they check things out for about 10 minutes, we're going to have to ask that you keep your escape shuttle parked.\n\nHave a pleasant day!"
-				announcer = "Spinward Stellar Coalition Police Department"
-			if(2)
-				team_size = 9
-				cops_to_send = /datum/antagonist/ert/families/beatcop/armored
-				announcement_message = "Crewmembers of [station_name()]. We have received confirmed reports of violent gang activity from your station. We are dispatching some armed officers to help keep the peace and investigate matters. Do not get in their way, and comply with any and all requests from them. We have blockaded the local warp gate, and your shuttle cannot depart for another 10 minutes.\n\nHave a secure day."
-				announcer = "Spinward Stellar Coalition Police Department"
-			if(3)
-				team_size = 10
-				cops_to_send = /datum/antagonist/ert/families/beatcop/swat
-				announcement_message = "Crewmembers of [station_name()]. We have received confirmed reports of extreme gang activity from your station resulting in heavy civilian casualties. The Spinward Stellar Coalition does not tolerate abuse towards our citizens, and we will be responding in force to keep the peace and reduce civilian casualties. We have your station surrounded, and all gangsters must drop their weapons and surrender peacefully.\n\nHave a secure day."
-				announcer = "Spinward Stellar Coalition Police Department"
-			if(4)
-				team_size = 11
-				cops_to_send = /datum/antagonist/ert/families/beatcop/fbi
-				announcement_message = "We are dispatching our top agents to [station_name()] at the request of the Spinward Stellar Coalition government due to an extreme terrorist level threat against this Nanotrasen owned station. All gangsters must surrender IMMEDIATELY. Failure to comply can and will result in death. We have blockaded your warp gates and will not allow any escape until the situation is resolved within our standard response time of 10 minutes.\n\nSurrender now or face the consequences of your actions."
-				announcer = "Federal Bureau of Investigation"
-			if(5)
-				team_size = 12
-				cops_to_send = /datum/antagonist/ert/families/beatcop/military
-				announcement_message = "Due to an insane level of civilian casualties aboard [station_name()], we have dispatched the National Guard to curb any and all gang activity on board the station. We have heavy cruisers watching the shuttle. Attempt to leave before we allow you to, and we will obliterate your station and your escape shuttle.\n\nYou brought this on yourselves by murdering so many civilians."
-				announcer = "Spinward Stellar Coalition National Guard"
-	else
-		switch(wanted_level)
-			if(1)
-				team_size = 5
-				cops_to_send = /datum/antagonist/ert/families/beatcop
-				announcement_message = "Hello, crewmembers of [station_name()]! We've received a few calls about some potential violent gang activity on board your station, so we're sending some beat cops to check things out. Nothing extreme, just a courtesy call. However, while they check things out for about 10 minutes, we're going to have to ask that you keep your escape shuttle parked.\n\nHave a pleasant day!"
-				announcer = "Spinward Stellar Coalition Police Department"
-			if(2)
-				team_size = 6
-				cops_to_send = /datum/antagonist/ert/families/beatcop/armored
-				announcement_message = "Crewmembers of [station_name()]. We have received confirmed reports of violent gang activity from your station. We are dispatching some armed officers to help keep the peace and investigate matters. Do not get in their way, and comply with any and all requests from them. We have blockaded the local warp gate, and your shuttle cannot depart for another 10 minutes.\n\nHave a secure day."
-				announcer = "Spinward Stellar Coalition Police Department"
-			if(3)
-				team_size = 7
-				cops_to_send = /datum/antagonist/ert/families/beatcop/swat
-				announcement_message = "Crewmembers of [station_name()]. We have received confirmed reports of extreme gang activity from your station resulting in heavy civilian casualties. The Spinward Stellar Coalition does not tolerate abuse towards our citizens, and we will be responding in force to keep the peace and reduce civilian casualties. We have your station surrounded, and all gangsters must drop their weapons and surrender peacefully.\n\nHave a secure day."
-				announcer = "Spinward Stellar Coalition Police Department"
-			if(4)
-				team_size = 8
-				cops_to_send = /datum/antagonist/ert/families/beatcop/fbi
-				announcement_message = "We are dispatching our top agents to [station_name()] at the request of the Spinward Stellar Coalition government due to an extreme terrorist level threat against this Nanotrasen owned station. All gangsters must surrender IMMEDIATELY. Failure to comply can and will result in death. We have blockaded your warp gates and will not allow any escape until the situation is resolved within our standard response time of 10 minutes.\n\nSurrender now or face the consequences of your actions."
-				announcer = "Federal Bureau of Investigation"
-			if(5)
-				team_size = 10
-				cops_to_send = /datum/antagonist/ert/families/beatcop/military
-				announcement_message = "Due to an insane level of civilian casualties aboard [station_name()], we have dispatched the National Guard to curb any and all gang activity on board the station. We have heavy cruisers watching the shuttle. Attempt to leave before we allow you to, and we will obliterate your station and your escape shuttle.\n\nYou brought this on yourselves by murdering so many civilians."
-				announcer = "Spinward Stellar Coalition National Guard"
-
-	priority_announce(announcement_message, announcer, 'sound/effects/families_police.ogg')
-	var/list/candidates = poll_ghost_candidates("Do you want to help clean up crime on this station?", "deathsquad")
-
-
-	if(candidates.len)
-		//Pick the (un)lucky players
-		var/numagents = min(team_size,candidates.len)
-
-		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
-		var/index = 0
-		while(numagents && candidates.len)
-			var/spawnloc = spawnpoints[index+1]
-			//loop through spawnpoints one at a time
-			index = (index + 1) % spawnpoints.len
-			var/mob/dead/observer/chosen_candidate = pick(candidates)
-			candidates -= chosen_candidate
-			if(!chosen_candidate.key)
-				continue
-
-			//Spawn the body
-			var/mob/living/carbon/human/cop = new(spawnloc)
-			chosen_candidate.client.prefs.safe_transfer_prefs_to(cop, is_antag = TRUE)
-			cop.key = chosen_candidate.key
-
-			//Give antag datum
-			var/datum/antagonist/ert/families/ert_antag = new cops_to_send
-
-			cop.mind.add_antag_datum(ert_antag)
-			cop.mind.set_assigned_role(SSjob.GetJobType(ert_antag.ert_job_path))
-			SSjob.SendToLateJoin(cop)
-
-			//Logging and cleanup
-			log_game("[key_name(cop)] has been selected as an [ert_antag.name]")
-			numagents--
-	cops_arrived = TRUE
-	update_wanted_level(wanted_level) // gotta make sure everyone's wanted level display looks nice
-	return TRUE

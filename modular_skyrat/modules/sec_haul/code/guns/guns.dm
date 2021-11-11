@@ -8,8 +8,7 @@
 		jammed = TRUE
 		playsound(src, 'sound/effects/stall.ogg', 60, TRUE)
 		if(magazine)
-			magazine.forceMove(src.loc)
-			playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+			eject_magazine()
 
 /obj/item/gun/ballistic/automatic/examine(mob/user)
 	. = ..()
@@ -374,146 +373,7 @@
 
 /////////////////////PCR
 
-/obj/item/gun/ballistic/automatic/pcr
-	name = "\improper PCR-9 SMG"
-	desc = "An accurate, fast-firing SMG chambered in 9x19mm."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pcr.dmi'
-	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
-	worn_icon_state = "ostwind_worn"
-	inhand_icon_state = "pcr"
-	icon_state = "pcr"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	w_class = WEIGHT_CLASS_BULKY
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pcr
-	fire_delay = 1.80
-	can_suppress = FALSE
-	burst_size = 5
-	spread = 10
-	can_bayonet = FALSE
-	mag_display = TRUE
-	mag_display_ammo = TRUE
-	realistic = TRUE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/smg_fire.ogg'
-	emp_damageable = TRUE
-	armadyne = TRUE
-	can_flashlight = TRUE
-
-/obj/item/ammo_box/magazine/multi_sprite/pcr
-	name = "9mm SMG magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
-	max_ammo = 32
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-
-/obj/item/ammo_box/magazine/multi_sprite/pcr/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/pcr/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-	round_type = AMMO_TYPE_IHDF
-
-/obj/item/ammo_box/magazine/multi_sprite/pcr/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/gun/ballistic/automatic/pitbull
-	name = "\improper Pitbull PDW"
-	desc = "A sturdy personal defense weapon designed to fire 10mm Auto rounds."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pitbull.dmi'
-	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	inhand_icon_state = "pitbull"
-	icon_state = "pitbull"
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
-	worn_icon_state = "ostwind_worn"
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
-	fire_delay = 4.20
-	can_suppress = FALSE
-	burst_size = 3
-	spread = 15
-	mag_display = TRUE
-	mag_display_ammo = TRUE
-	realistic = TRUE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/sfrifle_fire.ogg'
-	emp_damageable = TRUE
-	armadyne = TRUE
-	can_bayonet = TRUE
-	can_flashlight = TRUE
-
-/obj/item/ammo_box/magazine/multi_sprite/pitbull
-	name = "10mm SMG magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	caliber = CALIBER_10MM
-	max_ammo = 24
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-
-/obj/item/ammo_box/magazine/multi_sprite/pitbull/hp
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/pitbull/ihdf
-	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
-	round_type = AMMO_TYPE_IHDF
-
-/obj/item/ammo_box/magazine/multi_sprite/pitbull/rubber
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
 /////////////////DTR
-/obj/item/gun/ballistic/automatic/ostwind
-	name = "\improper DTR-6 Rifle"
-	desc = "A 6.3mm special-purpose rifle designed for specific situations."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
-	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	inhand_icon_state = "ostwind"
-	icon_state = "ostwind"
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
-	worn_icon_state = "ostwind_worn"
-	alt_icons = TRUE
-	alt_icon_state = "ostwind_worn"
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind
-	spread = 10
-	fire_delay = 2
-	can_suppress = FALSE
-	burst_size = 2
-	mag_display = TRUE
-	mag_display_ammo = TRUE
-	realistic = TRUE
-	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
-	emp_damageable = TRUE
-	armadyne = TRUE
-	can_bayonet = TRUE
-
-/obj/item/ammo_box/magazine/multi_sprite/ostwind
-	name = "6.3mm Rifle Magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "pcr"
-	ammo_type = /obj/item/ammo_casing/b6mm
-	caliber = CALIBER_6MM
-	max_ammo = 30
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
-
-/obj/item/ammo_box/magazine/multi_sprite/ostwind/rubber
-	ammo_type = /obj/item/ammo_casing/b6mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/ammo_box/magazine/multi_sprite/ostwind/ihdf
-	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
-	round_type = AMMO_TYPE_IHDF
-
 
 /////////////////////CROON 40x32
 /obj/item/gun/ballistic/automatic/croon
@@ -603,110 +463,6 @@
 	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/rubber
-	ammo_type = /obj/item/ammo_casing/b9mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/////////////////////NORWIND
-/obj/item/gun/ballistic/automatic/norwind
-	name = "\improper M112 'Norwind'"
-	desc = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
-	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
-	worn_icon_state = "norwind_worn"
-	icon_state = "norwind"
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	inhand_icon_state = "norwind"
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
-	worn_icon_state = "norwind_worn"
-	alt_icons = TRUE
-	alt_icon_state = "norwind_worn"
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/norwind
-	can_suppress = FALSE
-	can_bayonet = TRUE
-	mag_display = TRUE
-	can_flashlight = TRUE
-	mag_display_ammo = TRUE
-	actions_types = null
-	realistic = TRUE
-	zoomable = TRUE
-	zoom_amt = 7
-	zoom_out_amt = 5
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/ltrifle_fire.ogg'
-	emp_damageable = TRUE
-	armadyne = TRUE
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
-	burst_size = 1
-	fire_delay = 10
-
-/obj/item/ammo_box/magazine/multi_sprite/norwind
-	name = "12.7x30mm DMR Magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "norwind"
-	ammo_type = /obj/item/ammo_casing/b12mm
-	caliber = CALIBER_12MM
-	max_ammo = 8
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER)
-
-/obj/item/ammo_box/magazine/multi_sprite/norwind/hp
-	ammo_type = /obj/item/ammo_casing/b12mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/norwind/rubber
-	ammo_type = /obj/item/ammo_casing/b12mm/rubber
-	round_type = AMMO_TYPE_RUBBER
-
-/obj/item/gun/ballistic/automatic/vintorez
-	name = "\improper VKC 'Vintorez'"
-	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9mm for peacekeeping work."
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/vintorez.dmi'
-	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
-	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
-	icon_state = "vintorez"
-	worn_icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
-	worn_icon_state = "norwind_worn"
-	alt_icons = TRUE
-	alt_icon_state = "vintorez_worn"
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	inhand_icon_state = "vintorez"
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez
-	can_suppress = FALSE
-	can_bayonet = FALSE
-	mag_display = FALSE
-	mag_display_ammo = FALSE
-	realistic = TRUE
-	burst_size = 2
-	fire_delay = 4
-	spread = 10
-	zoomable = TRUE
-	zoom_amt = 7
-	zoom_out_amt = 5
-	fire_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
-	emp_damageable = TRUE
-	armadyne = TRUE
-
-/obj/item/ammo_box/magazine/multi_sprite/vintorez
-	name = "9x19mm carbine magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "norwind"
-	ammo_type = /obj/item/ammo_casing/b9mm
-	caliber = CALIBER_9MM
-	max_ammo = 20
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-
-/obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
-	ammo_type = /obj/item/ammo_casing/b9mm/hp
-	round_type = AMMO_TYPE_HOLLOWPOINT
-
-/obj/item/ammo_box/magazine/multi_sprite/vintorez/ihdf
-	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
-	round_type = AMMO_TYPE_IHDF
-
-/obj/item/ammo_box/magazine/multi_sprite/vintorez/rubber
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
@@ -946,6 +702,7 @@
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
+	caliber = CALIBER_14GAUGE
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 6
 
@@ -972,6 +729,7 @@
 
 /obj/item/ammo_box/magazine/internal/shot/as2
 	name = "shotgun internal magazine"
+	caliber = CALIBER_14GAUGE
 	ammo_type = /obj/item/ammo_casing/s14gauge
 	max_ammo = 4
 
