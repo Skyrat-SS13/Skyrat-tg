@@ -45,19 +45,24 @@
 
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
-	subtle_message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(subtle_message)]</i></span>"
 
-	for(var/mob/M in GLOB.dead_mob_list)
-		if(!M.client || isnewplayer(M))
+	var/space = subtle_message[1] != "," ? " " : ""
+	if(!(subtle_message[length(subtle_message)] in GLOB.auto_punctuation_character_blacklist))
+		subtle_message += "."
+
+	subtle_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i></span>"
+
+	for(var/mob/ghosts in GLOB.dead_mob_list)
+		if(!ghosts.client || isnewplayer(ghosts))
 			continue
-		var/T = get_turf(src)
-		if(M.stat == DEAD && M.client && (M.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(M in viewers(T, null)))
-			M.show_message(subtle_message)
+		var/their_turf = get_turf(src)
+		if(ghosts.stat == DEAD && ghosts.client && (ghosts.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghosts in viewers(their_turf, null)))
+			ghosts.show_message(subtle_message)
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message(message=subtle_message,hearing_distance=1)
+		user.audible_message(message = subtle_message, hearing_distance = 1, separation = space)
 	else
-		user.visible_message(message=subtle_message,self_message=subtle_message,vision_distance=1)
+		user.visible_message(message = subtle_message, self_message = subtle_message, vision_distance = 1, separation = space)
 
 
 ///////////////// SUBTLE 2: NO GHOST BOOGALOO
@@ -109,12 +114,16 @@
 		return FALSE
 
 	user.log_message(subtler_message, LOG_SUBTLER)
-	subtler_message = "<span class='emote'><b>[user]</b> " + "<i>[user.say_emphasis(subtler_message)]</i></span>"
+
+	var/space = subtler_message[1] != "," ? " " : ""
+	if(!(subtler_message[length(subtler_message)] in GLOB.auto_punctuation_character_blacklist))
+		subtler_message += "."
+	subtler_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i></span>"
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message_subtler(message=subtler_message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.audible_message_subtler(message=subtler_message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list, separation = space)
 	else
-		user.visible_message(message=subtler_message,self_message=subtler_message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.visible_message(message=subtler_message,self_message=subtler_message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list, separation = space)
 
 ///////////////// VERB CODE
 /mob/living/proc/subtle_keybind()
@@ -127,7 +136,7 @@
 	set name = "Subtle"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	usr.emote("subtle")
 
@@ -136,20 +145,20 @@
 	set name = "Subtler Anti-Ghost"
 	set category = "IC"
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	usr.emote("subtler")
 
 //This is bad code.
-/atom/proc/audible_message_subtler(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, self_message, audible_message_flags = NONE)
+/atom/proc/audible_message_subtler(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, self_message, audible_message_flags = NONE, separation = " ")
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 	if(self_message)
 		hearers -= src
 	hearers -= ignored_mobs
 	var/raw_msg = message
 	if(audible_message_flags & EMOTE_MESSAGE)
-		message = "<b>[src]</b> [message]"
-	for(var/mob/M in hearers)
-		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(M, audible_message_flags) && M.can_hear())
-			M.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
-		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
+		message = "<b>[src]</b>[separation][message]"
+	for(var/mob/listener in hearers)
+		if(audible_message_flags & EMOTE_MESSAGE && runechat_prefs_check(listener, audible_message_flags) && listener.can_hear())
+			listener.create_chat_message(src, raw_message = raw_msg, runechat_flags = audible_message_flags)
+		listener.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)

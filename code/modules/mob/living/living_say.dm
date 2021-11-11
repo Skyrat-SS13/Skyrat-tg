@@ -439,6 +439,11 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 
 	message = capitalize(message)
 
+	// SKYRAT EDIT START - Better emotes (auto-punctuation)
+	if(!(message[length(message)] in GLOB.auto_punctuation_character_blacklist))
+		message += "."
+	// SKYRAT EDIT END
+
 	return message
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
