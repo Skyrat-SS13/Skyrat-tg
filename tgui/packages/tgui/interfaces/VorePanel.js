@@ -18,6 +18,8 @@ const modeToText = (mode) => {
       return "Digest";
     case 2:
       return "Absorb";
+    case 3:
+      return "Unabsorb";
     default:
       return mode;
   }
@@ -31,11 +33,15 @@ const switchNames = {
   "tastes_of": "Tastes of",
 };
 const stringNames = {
-  "digest_messages_prey": "Prey Digest Messages",
-  "digest_messages_owner": "Pred Digest Messages",
-  "struggle_messages_inside": "Struggle Messages Inside",
-  "struggle_messages_outside": "Struggle Messages Outside",
-  "examine_messages": "Examine Messages",
+  "dmp": "Digest (to prey)",
+  "dmo": "Digest (to pred)",
+  "amp": "Absorb (to prey)",
+  "amo": "Absorb (to pred)",
+  "ump": "Unabsorb (to prey)",
+  "umo": "Unabsorb (to pred)",
+  "smi": "Struggle (to inside)",
+  "smo": "Struggle (to outside)",
+  "em": "Examine",
 };
 
 const buttonFromName = (buttonName, index, action, textContent) => {
@@ -99,6 +105,9 @@ export const BellyStack = (props, context) => {
       </Flex>
       <Section title="Messages">
         <Flex wrap="wrap">
+          Messages that will be sent upon:
+        </Flex>
+        <Flex wrap="wrap" pu={1.5}>
           {string_types.map((value, index) => (
             <Flex.Item key={index} pr={1} pb={0.5}>
               <Button
@@ -117,7 +126,7 @@ export const ContentsStack = (props, context) => {
   const { act, data } = useBackend(context);
   const { has_contents, selected_belly } = data;
   if (has_contents) {
-    const { contents, contents_noref } = data;
+    const { contents } = data;
     return (
       <Section title="Contents" buttons={(
         <Button
@@ -126,11 +135,12 @@ export const ContentsStack = (props, context) => {
           onClick={() => act('eject_all', { belly: selected_belly })} />
       )}>
         <Flex wrap="wrap">
-          {contents_noref.map((value, index) => (
+          {contents.map((value, index) => (
             <Flex.Item key={index} pr={1} pb={0.5}>
               <Button
-                content={value}
-                onClick={() => act('contents_act', { ref: contents[value], belly: selected_belly })} />
+                content={value["name"]}
+                textColor={value["absorbed"] && "purple"}
+                onClick={() => act('contents_act', { ref: value["ref"], belly: selected_belly })} />
             </Flex.Item>
           ))}
         </Flex>
@@ -155,12 +165,13 @@ export const InsideStack = (props, context) => {
             </Flex.Item>
           </Flex>
           <Flex wrap="wrap">
-            {inside_data["contents_noref"].map((value, index) => (
+            {inside_data["contents"].map((value, index) => (
               <Flex.Item key={index} pr={1} pb={0.5} pu={1}>
                 <Button
-                  content={value}
+                  content={value["name"]}
+                  textColor={value["absorbed"] && "purple"}
                   onClick={() => act('inside_act', {
-                    ref: inside_data["contents"][value],
+                    ref: value["ref"],
                     belly_in: inside_data["belly_inside"],
                   })} />
               </Flex.Item>
@@ -231,7 +242,7 @@ export const VorePanel = (props, context) => {
                       content={toggleNames[i]}
                       color={val ? "green" : "red"}
                       onClick={() => act('toggle_act', {
-                        pref: i,
+                        pref: i+1,
                         toggle: !val,
                       })} />
                   </Flex.Item>

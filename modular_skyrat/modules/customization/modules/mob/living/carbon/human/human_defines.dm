@@ -13,3 +13,5 @@
 	var/datum/examine_panel/tgui = new() //create the datum
 	//Whether or not the human has emissive eyes
 	var/emissive_eyes
+	//The current character slot (set during apply_prefs_to)
+	var/character_slot

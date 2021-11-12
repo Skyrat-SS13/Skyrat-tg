@@ -217,6 +217,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			// Save existing character
 			save_character()
 
+			//SKYRAT EDIT ADDITION - VORE
+			if(!vr_prefs.load_slotted_prefs(TRUE, slot_from_prefs=params["slot"]))
+				return TRUE
+
 			// SAFETY: `load_character` performs sanitization the slot number
 			if (!load_character(params["slot"]))
 				tainted_character_profiles = TRUE
@@ -557,6 +561,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.apply_to_human(character, src)
+
+	character.character_slot = default_slot
 	// SKYRAT EDIT END
 	character.dna.real_name = character.real_name
 
