@@ -89,7 +89,7 @@
 
 /datum/vore_prefs/ui_data(mob/user)
 	var/list/data = list()
-	data["enabled"] = vore_enabled ? TRUE : null //to help with the tgui code so that 0's don't show up.
+	data["enabled"] = vore_enabled
 	data["unsaved"] = has_unsaved
 	if (!vore_enabled) //not gonna get used anyway so no point in sending all the rest
 		return data
@@ -107,7 +107,7 @@
 		data["inside_data"] = inside_data
 
 	data["selected_belly"] = selected_belly
-	data["tastes_of"] = get_temp("tastes_of")
+	data["other_prefs"] = list("tastes_of" = get_temp("tastes_of")) //expand this into more lines if you add more here
 	var/list/belly_names = belly_name_list()
 	if (belly_names.len < MAX_BELLIES)
 		belly_names += "New Belly"
@@ -135,7 +135,7 @@
 
 	data["toggles"] = list()
 	for (var/num in 1 to VORE_TOGGLES_AMOUNT)
-		data["toggles"] += get_temp("vore_toggles", toggle=(1 << (num - 1)))
+		data["toggles"] += get_temp("vore_toggles", toggle=(1 << num))
 
 	return data
 
@@ -400,7 +400,7 @@
 	has_unsaved = TRUE
 	if (toggle)
 		if (isnull(unsaved_changes[var_name]))
-			unsaved_changes[var_name] = isnum(vars[var_name]) ? vars[var_name] : 0
+			unsaved_changes[var_name] = isnull(vars[var_name]) ? 0 : vars[var_name]
 		if (value)
 			unsaved_changes[var_name] |= (1 << toggle)
 		else

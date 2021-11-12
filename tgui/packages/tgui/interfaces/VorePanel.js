@@ -28,6 +28,7 @@ const switchNames = {
   "mode": "Mode",
   "can_taste": "Can Taste",
   "swallow_verb": "Swallow Verb",
+  "tastes_of": "Tastes of",
 };
 const stringNames = {
   "digest_messages_prey": "Prey Digest Messages",
@@ -35,6 +36,27 @@ const stringNames = {
   "struggle_messages_inside": "Struggle Messages Inside",
   "struggle_messages_outside": "Struggle Messages Outside",
   "examine_messages": "Examine Messages",
+};
+
+const buttonFromName = (buttonName, index, action, textContent) => {
+  return (
+    <Flex.Item key={index}>
+      <Flex direction="row" grow fill align="baseline">
+        <Flex.Item>
+          <Button
+            minWidth={8}
+            mb={1}
+            content={buttonName}
+            onClick={action}
+          />
+        </Flex.Item>
+        <Flex.Item pr={3} pl={2} pb={1} pu={1}
+          grow fill preserveWhitespace >
+          {textContent}
+        </Flex.Item>
+      </Flex>
+    </Flex.Item>
+  );
 };
 
 export const BellyStack = (props, context) => {
@@ -46,23 +68,6 @@ export const BellyStack = (props, context) => {
     selected_belly,
     other_belly_types,
   } = data;
-  const buttonFromName = (name, index) => {
-    return (
-      <Flex.Item key={index}>
-        <Flex direction="row">
-          <Flex.Item>
-            <Button
-              content={switchNames[name]}
-              onClick={() => act('belly_act', { varname: name, belly: selected_belly })}
-            />
-          </Flex.Item>
-          <Flex.Item align="end">
-            {modeToText(current_belly[name])}
-          </Flex.Item>
-        </Flex>
-      </Flex.Item>
-    );
-  };
   return (
     <Section title="Bellies" buttons={(
       <Stack>
@@ -70,26 +75,32 @@ export const BellyStack = (props, context) => {
           <Button
             content="Remove Belly"
             color="red"
+            height={1.61}
             disabled={bellies.length <= 1 ? true : false}
             onClick={() => act('remove_belly', { belly: selected_belly })} />
         </Stack.Item>
         <Stack.Item>
           <Dropdown
             options={bellies}
+            height={1.61}
             selected={bellies[selected_belly - 1]}
             onSelected={(value) => act('select_belly', { belly: bellies.indexOf(value) + 1 })} />
         </Stack.Item>
       </Stack>
     )}>
-      <Flex direction="column">
+      <Flex direction="column" fill>
         {other_belly_types.map((value, index) => {
-          return buttonFromName(value, index);
+          return buttonFromName(
+            switchNames[value],
+            index,
+            () => act('belly_act', { varname: value, belly: selected_belly }),
+            modeToText(current_belly[value]));
         })}
       </Flex>
       <Section title="Messages">
         <Flex wrap="wrap">
           {string_types.map((value, index) => (
-            <Flex.Item key={index}>
+            <Flex.Item key={index} pr={1} pb={0.5}>
               <Button
                 content={stringNames[value]}
                 onClick={() => act('belly_act', { varname: value, belly: selected_belly })} />
@@ -116,7 +127,7 @@ export const ContentsStack = (props, context) => {
       )}>
         <Flex wrap="wrap">
           {contents_noref.map((value, index) => (
-            <Flex.Item key={index}>
+            <Flex.Item key={index} pr={1} pb={0.5}>
               <Button
                 content={value}
                 onClick={() => act('contents_act', { ref: contents[value], belly: selected_belly })} />
@@ -136,23 +147,26 @@ export const InsideStack = (props, context) => {
     const inside_data = data["inside_data"];
     return (
       <Section title={"Inside of " + inside_data["name"]}>
-        <Stack vertical>
-          <Stack.Item align="center">
-            {inside_data["desc"]}
-          </Stack.Item>
-          <Stack wrap="wrap">
+        <Flex direction="column">
+          <Flex wrap="wrap">
+            <Flex.Item align="center" preserveWhitespace
+              textAlign="center" mb={1} wrap="wrap">
+              {inside_data["desc"]}
+            </Flex.Item>
+          </Flex>
+          <Flex wrap="wrap">
             {inside_data["contents_noref"].map((value, index) => (
-              <Stack.Item key={index}>
+              <Flex.Item key={index} pr={1} pb={0.5} pu={1}>
                 <Button
                   content={value}
                   onClick={() => act('inside_act', {
                     ref: inside_data["contents"][value],
                     belly_in: inside_data["belly_inside"],
                   })} />
-              </Stack.Item>
+              </Flex.Item>
             ))}
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
       </Section>
     );
   }
@@ -166,7 +180,8 @@ export const VorePanel = (props, context) => {
     toggles,
     unsaved,
     selected_belly,
-    tastes_of,
+    other_prefs,
+    other_types,
   } = data;
   return (
     <Window
@@ -177,21 +192,21 @@ export const VorePanel = (props, context) => {
         <Section
           title={unsaved ? "Save Prefs (Unsaved)" : "Save Prefs"}
           buttons={(
-            <Flex>
-              <Flex.Item>
+            <Stack>
+              <Stack.Item>
                 <Button
                   content={"Discard Changes"}
                   color="red"
                   disabled={!unsaved}
                   onClick={() => act('discard_changes', { belly: selected_belly })} />
-              </Flex.Item>
-              <Flex.Item>
+              </Stack.Item>
+              <Stack.Item>
                 <Button
                   content={"Save Prefs"}
                   color="red"
                   onClick={() => act('save_prefs')} />
-              </Flex.Item>
-            </Flex>
+              </Stack.Item>
+            </Stack>
           )} />
         <InsideStack />
         <Section
@@ -204,14 +219,14 @@ export const VorePanel = (props, context) => {
                 toggle: !enabled,
               })} />
           )} >
-          {enabled && (
+          {!!enabled && (
             <BellyStack />
           )}
-          {enabled && (
+          {!!enabled && (
             <Section title="Toggles and other Prefs">
-              <Flex wrap="wrap">
+              <Flex wrap="wrap" >
                 {toggles.map((val, i) => (
-                  <Flex.Item key={i}>
+                  <Flex.Item key={i} pr={1} pb={0.5}>
                     <Button
                       content={toggleNames[i]}
                       color={val ? "green" : "red"}
@@ -223,17 +238,15 @@ export const VorePanel = (props, context) => {
                 ))}
               </Flex>
               <Section title="Other Prefs">
-                <Stack>
-                  <Stack.Item>
-                    <Button
-                      content="Tastes of"
-                      onClick={() => act('othervar_act', { varname: "tastes_of" })}
-                    />
-                  </Stack.Item>
-                  <Stack.Item align="end">
-                    {tastes_of}
-                  </Stack.Item>
-                </Stack>
+                <Flex direction="column" fill>
+                  {other_types.map((value, index) => {
+                    return buttonFromName(
+                      switchNames[value],
+                      index,
+                      () => act('othervar_act', { varname: value }),
+                      other_prefs[value]);
+                  })}
+                </Flex>
               </Section>
             </Section>
           )}

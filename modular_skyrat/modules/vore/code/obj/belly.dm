@@ -160,7 +160,7 @@
 			examine_list += span_warning(vore_replace(data[LIST_EXAMINE], owner, living_mob, name))
 			break //not sure how you'd do this with multiple prey... hm.
 
-/obj/vbelly/proc/prey_resist(datum/source, mob/living/prey)
+/obj/vbelly/proc/prey_resist(datum/source, mob/living/prey) //incorporate struggling mechanics later?
 	var/prey_message = span_warning(vore_replace(data[LIST_STRUGGLE_INSIDE], owner, prey, name))
 	var/list/ignored_mobs = list()
 	for (var/mob/living/prey_target in contents)
