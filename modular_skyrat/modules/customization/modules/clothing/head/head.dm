@@ -79,16 +79,6 @@
 /obj/item/clothing/head/intern/developer
 	name = "\improper Intern beancap"
 
-/obj/item/clothing/head/sec/navywarden/syndicate
-	name = "master at arms' beret"
-	desc = "Surprisingly stylish, if you lived in a silent impressionist film."
-	greyscale_config = /datum/greyscale_config/beret_badge
-	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-	greyscale_colors = "#353535#AAAAAA"
-	icon_state = "beret_badge"
-	dog_fashion = null
-
-
 /obj/item/clothing/head/cowboyhat/blackwide
 	name = "wide brimmed black cowboy hat"
 	desc = "The Man in Black, he walked the earth but is now six foot under, this hat a stark reminder. Bring your courage, your righteousness... measure it against my resolve, and you will fail."

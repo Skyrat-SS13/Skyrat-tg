@@ -1,5 +1,5 @@
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/winter
-	name = "winterized Syndicate hardsuit helmet"
+	name = "winterized syndicate hardsuit helmet"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in combat mode. Property of Gorlex Marauders."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -9,7 +9,7 @@
 	hardsuit_type = "syndi-winter"
 
 /obj/item/clothing/suit/space/hardsuit/syndi/winter
-	name = "winterized Syndicate hardsuit"
+	name = "winterized syndicate hardsuit"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in combat mode. Property of Gorlex Marauders."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -21,7 +21,7 @@
 	hardsuit_tail_colors = list("EEE", "111", "211")
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi/wintertas
-	name = "winterized Syndicate hardsuit helmet"
+	name = "winterized syndicate hardsuit helmet"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor, it is in combat mode. Property of Gorlex Marauders."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -31,7 +31,7 @@
 	hardsuit_type = "syndi-wintertas"
 
 /obj/item/clothing/suit/space/hardsuit/syndi/wintertas
-	name = "winterized Syndicate hardsuit"
+	name = "winterized syndicate hardsuit"
 	desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor; this version does not have tassets, it is in EVA mode. Property of Gorlex Marauders."
 	alt_desc = "A winterized variant of the ever feared Blood-Red Hardsuit for work in frozen conditions, despite the extra padding for comfort it does not have superior armor; this version does not have tassets, it is in combat mode. Property of Gorlex Marauders."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -43,7 +43,7 @@
 	hardsuit_tail_colors = list("EEE", "111", "211")
 
 /obj/item/device/custom_kit/winterized
-	name = "syndicate Hardsuit winterized plating kit"
+	name = "syndicate hardsuit winterized plating kit"
 	desc = "A modification kit that comes with the tools neccessary to modify a Standard Blood-Red Hardsuit into it's winterized variant. This one comes with tassets. Warranty void if tampered with, property of Gorlex Marauders."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit-synd"
@@ -51,7 +51,7 @@
 	to_obj = /obj/item/clothing/suit/space/hardsuit/syndi/winter
 
 /obj/item/device/custom_kit/winterized_notasset
-	name = "syndicate Hardsuit winterized plating kit"
+	name = "syndicate hardsuit winterized plating kit"
 	desc = "A modification kit that comes with the tools neccessary to modify a Standard Blood-Red Hardsuit into it's winterized variant. This one comes with no tassets. Warranty void if tampered with, property of Gorlex Marauders."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/kits.dmi'
 	icon_state = "partskit-synd"

@@ -247,7 +247,7 @@
 	dog_fashion = null
 	resistance_flags = FIRE_PROOF
 
-/obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate // ICON OVERRIDED IN /modular_skyrat/modules/Syndie_edits/code/clothing/suit/syndie_edits.dm
 	name = "syndicate captain's vest"
 	desc = "A sinister looking vest of advanced armor worn over a black and red fireproof jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer."
 	icon_state = "syndievest"

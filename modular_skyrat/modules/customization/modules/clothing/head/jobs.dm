@@ -9,9 +9,13 @@
 	greyscale_colors = "#3F3C40#FFCE5B"
 
 /obj/item/clothing/head/hos/beret/syndicate
-	name = "syndicate beret"
-	desc = "A black beret with thick armor padding inside. Stylish and robust."
-	greyscale_colors = "#3F3C40#DB2929"
+	name = "master at arms' beret"
+	desc = "Surprisingly stylish, if you lived in a silent impressionist film."
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#353535#AAAAAA"
+	icon_state = "beret_badge"
+	dog_fashion = null
 
 /obj/item/clothing/head/beret/sec/navywarden
 	name = "warden's beret"
@@ -131,6 +135,17 @@
 	name = "captain's beret"
 	desc = "For the Captains known for their sense of fashion. This one is made out of white fabric. Fancy"
 	greyscale_colors = "#FFFFFF#FFCE5B"
+
+/obj/item/clothing/head/caphat/beret/syndicate
+	name = "syndicate beret"
+	desc = "A black beret with thick armor padding inside. Stylish and robust."
+	greyscale_colors = "#3F3C40#DB2929"
+
+/obj/item/clothing/head/caphat/beret/syndicate/gorlex
+	name = "gorlex beret"
+	desc = "A black beret with thick armour padding, it bears the insignia of the Gorlex Marauders. Get in, get dirty, get out."
+	greyscale_colors = "#3F3C40#DB2929"
+	icon_state = "badge_fancy_diagonal_first"
 
 /obj/item/clothing/head/hopcap/beret
 	name = "head of personnel's beret"

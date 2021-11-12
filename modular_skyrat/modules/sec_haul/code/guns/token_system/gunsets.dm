@@ -390,3 +390,37 @@
 	new /obj/item/storage/box/beanbag(src)
 	new /obj/item/storage/box/beanbag(src)
 	new /obj/item/storage/box/beanbag(src)
+
+/////////////////
+//SYNDICATE
+////////////////
+/obj/item/storage/box/gunset/syndie
+	name = "syndicate gun supply box"
+	desc = "A ominous looking gun supply case."
+	icon_state = "syndiebox"
+
+//ADMIRAL
+/obj/item/storage/box/gunset/syndie/aps
+	name = "9x25mm machine pistol supply box"
+	desc = "Ideally contains a special 9x25mm Pistol. Smells distinctly Russian."
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/box/gunset/syndie/aps/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/automatic/pistol/aps(src)
+	new /obj/item/ammo_box/magazine/m9mm_aps(src)
+	new /obj/item/ammo_box/magazine/m9mm_aps(src)
+	new /obj/item/ammo_box/magazine/m9mm_aps(src)
+
+//ADMIRAL
+/obj/item/storage/box/gunset/syndie/unica
+	name = ".357 revolver supply box"
+	desc = "Ideally contains a a special .357 revolver. Smells distinctly Russian."
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/box/gunset/syndie/unica/PopulateContents()
+	. = ..()
+	new /obj/item/gun/ballistic/revolver/mateba(src)
+	new /obj/item/ammo_box/a357(src)
+	new /obj/item/ammo_box/a357(src)
+	new /obj/item/ammo_box/a357(src)

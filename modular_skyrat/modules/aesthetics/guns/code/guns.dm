@@ -317,3 +317,32 @@
 	ammo_type = /obj/item/ammo_casing/a762
 	caliber = CALIBER_A762
 	max_ammo = 20
+
+/obj/item/gun/ballistic/automatic/c20r/kt45c
+	name = "\improper KT-45c"
+	desc = "A heavily modified bullpup carbine, it's magwell has been altered to make it shoot .32. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp."
+	icon_state = "kt45c"
+	inhand_icon_state = "kt45c"
+	mag_type = /obj/item/ammo_box/magazine/smgm45/kt45c
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
+	can_bayonet = FALSE
+
+/obj/item/ammo_box/magazine/smgm45/kt45c
+	name = "PDW magazine (.32)"
+	ammo_type = /obj/item/ammo_casing/c32
+	caliber = "c32acp"
+
+/obj/item/ammo_box/magazine/smgm45/k45c/ap
+	name = "PDW magazine (Armour Piercing .32)"
+	ammo_type = /obj/item/ammo_casing/c32/ap
+	caliber = "c32acp"
+
+/obj/item/ammo_box/magazine/smgm45/k45c/incen
+	name = "PDW magazine (Incendiary .32)"
+	ammo_type = /obj/item/ammo_casing/c32_incendiary
+	caliber = "c32acp"
+
+/obj/item/ammo_box/magazine/smgm45/k45c/hp
+	name = "PDW magazine (Hollowpoints .32)"
+	ammo_type = /obj/item/ammo_casing/c32/hp
+	caliber = "c32acp"

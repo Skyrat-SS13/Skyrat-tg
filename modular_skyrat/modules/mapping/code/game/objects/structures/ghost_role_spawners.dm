@@ -93,8 +93,8 @@
 	uniform = /obj/item/clothing/under/syndicate
 	shoes = /obj/item/clothing/shoes/combat
 	ears = /obj/item/radio/headset/interdyne
-	back = /obj/item/storage/backpack
-	id = /obj/item/card/id/advanced/black
+	back = /obj/item/storage/backpack/duffelbag/syndie
+	id = /obj/item/card/id/advanced/black/syndicate
 	implants = list(/obj/item/implant/weapons_auth)
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/assistant
 
@@ -127,7 +127,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears =  /obj/item/radio/headset/interdyne/command/alt
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -142,7 +142,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	head = /obj/item/clothing/head/helmet/swat
-	ears = /obj/item/radio/headset/headset_sec/alt/interdyne
+	ears = /obj/item/radio/headset/interdyne/alt
 
 	backpack_contents = list(
 		/obj/item/storage/box/handcuffs,\
@@ -155,10 +155,9 @@
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	head = /obj/item/clothing/head/hos/beret/syndicate
 	back = /obj/item/storage/backpack
-	id = /obj/item/card/id/advanced/gold/generic
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/aps)
+	id = /obj/item/card/id/advanced/black/syndicate/captain
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationadmiral
-	ears = /obj/item/radio/headset/interdyne/command
+	ears = /obj/item/radio/headset/interdyne/command/alt
 
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/H)
 	H.faction |= ROLE_SYNDICATE

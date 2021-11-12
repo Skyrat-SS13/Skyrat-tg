@@ -12,6 +12,9 @@
 	dog_fashion = null
 	resistance_flags = FIRE_PROOF
 
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/suit/syndievest_winter.dmi'
+
 //Syndicate hardsuit changes
 
 /obj/item/clothing/head/helmet/space/hardsuit/syndi

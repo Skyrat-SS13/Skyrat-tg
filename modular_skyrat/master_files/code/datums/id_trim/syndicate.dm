@@ -34,35 +34,20 @@
 	assignment = "Station Medical Officer"
 	trim_state = "trim_stationmedicalofficer"
 
-/datum/id_trim/syndicom/skyrat/assault/masteratarms
-	assignment = "Master At Arms"
-	trim_state = "trim_masteratarms"
-	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
-
 /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	assignment = "Brig Officer"
 	trim_state = "trim_brigofficer"
-	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_SECURITY)
 
-/datum/id_trim/syndicom/skyrat/assault/chiefmasteratarms
-	assignment = "Chief Master At Arms"
-	trim_state = "trim_chiefmasteratarms"
-	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
-
-/datum/id_trim/syndicom/skyrat/assault/chiefresearchofficer
-	assignment = "Chief Research Officer"
-	trim_state = "trim_chiefresearchofficer"
-	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
-
-/datum/id_trim/syndicom/skyrat/assault/chiefengineeringofficer
-	assignment = "Chief Engineering Officer"
-	trim_state = "trim_chiefengineeringofficer"
-	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+/datum/id_trim/syndicom/skyrat/assault/masteratarms
+	assignment = "Master At Arms"
+	trim_state = "trim_masteratarms"
+	access = list(ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_SECURITY,ACCESS_SYNDICATE_ARMOURY)
 
 /datum/id_trim/syndicom/skyrat/assault/stationadmiral
 	assignment = "Station Admiral"
-	trim_state = "trim_stationadmiral"
-	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_LEADER)
+	trim_state = "trim_syndicateshipcaptain"
+	access = list(ACCESS_ENGINE_EQUIP,ACCESS_SYNDICATE,ACCESS_ROBOTICS,ACCESS_SYNDICATE_SECURITY,ACCESS_SYNDICATE_ARMOURY,ACCESS_SYNDICATE_LEADER)
 
 ///Interdyne
 
