@@ -33,6 +33,7 @@
 	RegisterSignal(owner.current, COMSIG_MOB_EXAMINATE, .proc/on_examinate)
 	owner.teach_crafting_recipe(/datum/crafting_recipe/skeleton_key)
 	owner.teach_crafting_recipe(/datum/crafting_recipe/ashnecklace) //SKYRAT EDIT DRACONIC NECKLACE//
+	owner.teach_crafting_recipe(/datum/crafting_recipe/bone_crusher) //SKYRAT EDIT BONE CRUSHER//
 
 /datum/antagonist/ashwalker/on_removal()
 	. = ..()
