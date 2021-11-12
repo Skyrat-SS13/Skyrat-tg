@@ -448,12 +448,14 @@
 
 /obj/structure/bed/roller/medigun/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/CheckBed), deploytime)
+	addtimer(CALLBACK(src, .proc/check_bed), deploytime)
 
-/obj/structure/bed/roller/medigun/proc/CheckBed()
+/obj/structure/bed/roller/medigun/proc/check_bed() //Checks to see if anyone is buckled to the bed, if not the bed will qdel itself.
 	if(!has_buckled_mobs())
 		qdel(src) //Deletes the roller bed, mostly meant to prevent stockpiling and clutter
 		return TRUE
+	else
+		return FALSE
 
 /obj/structure/bed/roller/medigun/post_unbuckle_mob(mob/living/M)
 	. = ..()
