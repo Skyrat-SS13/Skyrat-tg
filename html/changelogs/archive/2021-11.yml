@@ -369,3 +369,97 @@
   Wallem:
   - bugfix: Makes ants incapable of affecting the afterlife.
   - bugfix: Ants, gibs, and garbage cleanable decals now properly show up above pipes.
+2021-11-11:
+  ATHATH:
+  - bugfix: The gluttony sin ruin is no longer radioactive.
+  - bugfix: Quantum pads can teleport non-living things again.
+  - bugfix: Quantum pads can teleport creatures who aren't buckled to something again.
+      Creatures who are buckled to something unanchored can still be teleported by
+      quantum pads, but creatures who are buckled to something anchored cannot.
+  - bugfix: Quantum pads can no longer involuntarily teleport ghosts, although ghosts
+      can still click on a quantum pad to teleport to that quantum pad's destination
+      pad.
+  ArdentSpark:
+  - bugfix: Readding missing loadout items, and removing items from non-donator access
+      as it was previously
+  - bugfix: Adds Red Victorian Dress, Black Victorian Dress and Polychromic Sweater.
+  - bugfix: Migrates Poppy, Lily, Geranium, Rose, Sunflower, Harebell and Rainbow
+      Bunch to donator only once more, reducing the admin spam.
+  GoldenAlpharex:
+  - bugfix: Cat-people that were meant to land on their feet, will now land on their
+      feet.
+  Guillaume Prata:
+  - balance: Pneumatic airlocks seals are normal sized now and can be printed at the
+      Science lathe.
+  - balance: After dealing with another weekly subverted Engborg spacing the armory.
+      CentCom's Robotics division decided to downgrade the Engborg RCD by removing
+      it's Reinforced Wall deconstruction.
+  - balance: Due to budget cuts, the RPDs can't place transit tube under dense objects
+      like windows anymore.
+  Nanotrasen Threading department:
+  - imageadd: Departmental Vox guards can now wear their fancy coats!
+  SkyratBot:
+  - bugfix: Fixed non-human and non-silicon mobs being unable to mine rock walls when
+      bumping into them.
+  - bugfix: The "Choking (No N2O)" alert now functions correctly.
+  - bugfix: fixes the fall chance on mending globules to properly work as intended.
+  - imageadd: The irradiated status effect has a new alert sprite.
+  - refactor: 'Refactor parts of the job assignment system, unifying job eligibility
+      checks. qol: Adds improved logging for job assignment.'
+  - bugfix: fixed chem analyzer not showing impure reagents that don't have impure
+      chem (like multiver)
+  - bugfix: Cyborgs can now shake up compromised carbons with the hugging module.
+  - rscadd: Added antivirus-protection to plasmaman suits and all its variants(the
+      entire set).
+  - refactor: Wall mounted and directional objects have undergone major internal simplification.
+      Please report anything unusual!
+  - bugfix: You can no longer stack an indefinite amount of Intercoms on the same
+      wall.
+  - bugfix: Defibrillator Mounts, Bluespace Gas Vendors, Turret Controlers, and Ticket
+      Machines are now considered wall items.
+  - bugfix: Wall mounted items on top of the wall now consistently check against other
+      items on top of the wall, and items coming out of the wall now consistently
+      check against other items coming out of the wall.
+  - bugfix: The various directional pixel offsets within an APC, Fire Extinguisher
+      Cabinet, Intercom, or Newscaster have been made consistent with each other.
+  - bugfix: The pixel offsets of Intercoms, Fire Alarms, Fire Extinguisher Cabinets,
+      Flashers, and Newscasters have been made consistent between roundstart and constructed
+      instances.
+  - bugfix: 'Constructed Turret Controls will no longer oddly overhang the wall they
+      were placed on. qol: Defibrillator mounts now better indicate which side of
+      the wall they are on.'
+  - bugfix: Some instances where there were multiple identical lights on the same
+      tile have been fixed to only have one.
+  - bugfix: Chimps no longer get grumpy when you hug them or throw things with no
+      throw force at them.
+  - imageadd: Adamantine textures.
+  - bugfix: Stops the "You lack optic scanners, you get stunned" singularity event
+      from affecting blinded or dead mobs.
+  - bugfix: Blob structures can no longer be animated with bolts of animation.
+  - balance: The nob + antinob hfr fuel type is now limited to 1e8 instead of 1e8
+      * 1.2
+  - bugfix: The phobia of authority will no longer make mobs afraid of regular id
+      cards.
+  thestubborn:
+  - bugfix: restored items to the lustvendor
+2021-11-12:
+  Azarak:
+  - balance: Pollution has been changed to be less intrusive with the smoke.
+  Echopsychotic:
+  - rscadd: Hyena hair
+  - rscadd: drago_wings (two colors)
+  - rscadd: Spider legs
+  SkyratBot:
+  - rscadd: Felinids don't like getting sprayed with water.
+  - code_imp: Adds a new status effect, incapacitated, which causes your do_afters
+      to stop.
+  - bugfix: The color matrix editor now logs all modifications it makes to colors.
+  - bugfix: Fixes an exploit that allowed players to spawn crates marked as special.
+  - rscadd: Vending machines now have nicer welcome screens
+  - refactor: Vending machine UIs now do not hide bank balance information while scrolling
+  - admin: Priming grenades are now logged in individual's attack logs.
+  Tastyfish:
+  - spellcheck: Fixes a typo in the ambitions screen.
+  softcerv:
+  - bugfix: Using a conversion kit will no longer display a first person message to
+      people besides the user.
