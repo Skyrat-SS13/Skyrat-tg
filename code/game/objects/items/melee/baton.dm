@@ -157,7 +157,7 @@
 /obj/item/melee/baton/proc/get_stun_description(mob/living/target, mob/living/user)
 	. = list()
 
-	.["visible"] =  "<span class ='danger'>[user] knocks [target] down with [src]!</span>"
+	.["visible"] = "<span class ='danger'>[user] knocks [target] down with [src]!</span>"
 	.["local"] = "<span class ='userdanger'>[user] knocks you down with [src]!</span>"
 
 	return .
@@ -523,7 +523,7 @@
 	if(!target.IsKnockdown())
 		to_chat(target, span_warning("Your muscles seize, making you collapse [trait_check ? ", but your body quickly recovers..." : "!"]"))
 
-	//target.Knockdown(knockdown_time * (trait_check ? 0.1 : 1)) // SKYRAT EDIT DISABLE
+	target.Knockdown(knockdown_time * (trait_check ? 0.1 : 1))
 
 /obj/item/melee/baton/security/get_wait_description()
 	return span_danger("The baton is still charging!")
