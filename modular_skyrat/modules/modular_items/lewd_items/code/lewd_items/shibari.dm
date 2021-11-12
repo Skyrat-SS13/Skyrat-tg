@@ -223,7 +223,7 @@
 				else
 					return ..()
 		else
-			to_chat(user, span_danger("Looks like [M] don't want you to do that."))
+			to_chat(user, span_danger("Looks like [M] doesn't want you to do that."))
 			return ..()
 	else
 		return ..()
