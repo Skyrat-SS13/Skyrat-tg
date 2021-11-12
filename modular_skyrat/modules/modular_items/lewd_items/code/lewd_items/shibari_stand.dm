@@ -256,9 +256,9 @@
 		qdel(src)
 	return TRUE
 
-/obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/I)
+/obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/tool)
 	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
-	if(I.use_tool(src, user, 8 SECONDS, volume=50))
+	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You disassemble \the [src]."))
 		var/obj/item/shibari_stand_kit/stand = new
 		stand.icon_state = "shibari_kit_[current_color]"
