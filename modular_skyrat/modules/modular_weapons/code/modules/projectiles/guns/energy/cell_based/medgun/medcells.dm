@@ -467,7 +467,7 @@
 			return FALSE
 		if(has_buckled_mobs())
 			return FALSE
-		usr.visible_message(span_notice("[usr] deactivates \the [src.name]."), span_notice("You deactivate \the [src.name]."))
+		usr.visible_message(span_notice("[usr] deactivates \the [src]."), span_notice("You deactivate \the [src]."))
 		qdel(src)
 
 //End of utility
