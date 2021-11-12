@@ -453,9 +453,9 @@
 /obj/structure/bed/roller/medigun/proc/check_bed() //Checks to see if anyone is buckled to the bed, if not the bed will qdel itself.
 	if(!has_buckled_mobs())
 		qdel(src) //Deletes the roller bed, mostly meant to prevent stockpiling and clutter
-		return TRUE
+		return TRUE //There is nothing on the bed.
 	else
-		return FALSE
+		return FALSE //There is something on the bed.
 
 /obj/structure/bed/roller/medigun/post_unbuckle_mob(mob/living/M)
 	. = ..()
