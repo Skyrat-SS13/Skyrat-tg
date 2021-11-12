@@ -19,7 +19,7 @@
 
 ///traits gained by brain traumas, can be removed if the brain trauma is gone
 #define APHRO_TRAIT			"aphro"
-//traits gained by quirks, cannot be removed unless the quirk itself is gone
+///traits gained by quirks, cannot be removed unless the quirk itself is gone
 #define LEWDQUIRK_TRAIT		"lewdquirks"
 ///traits gained by chemicals, you get the idea
 #define LEWDCHEM_TRAIT		"lewdchem"
