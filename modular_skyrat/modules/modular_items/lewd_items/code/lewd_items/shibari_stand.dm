@@ -80,6 +80,11 @@
 	return buckled
 
 /obj/structure/chair/shibari_stand/user_buckle_mob(mob/living/buckled, mob/user, check_loc = TRUE)
+
+	if(!buckled.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		to_chat(user, span_danger("Looks like [buckled] doesn't want you to do that."))
+		return FALSE
+
 	if(!is_user_buckle_possible(buckled, user, check_loc))
 		return FALSE
 	add_fingerprint(user)
