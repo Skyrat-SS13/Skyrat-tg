@@ -4,7 +4,7 @@
 //how to do this so if someone has a good idea, drop it in the comments and I'll commit it. The only actual changes to this should be on
 //lines 11-16, 36, 38 and lines 48-49. Changes are noted where made.
 //Also yes this is recipe locked to ashwalkers only, since thats the primary demographic this is intended for. Intended to be slightly weaker
-//than the PKC, but better than most weapons ashwalkers can make because of trophies existing.
+//than the PKC, but better than most weapons ashwalkers can make because of trophies existing. Credit to the original owner of this code.
 
 
 /obj/item/bone_crusher
