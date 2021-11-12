@@ -11,8 +11,8 @@
 	icon = 'modular_skyrat/modules/bonecrusher/bone_crusher.dmi'
 	icon_state = "bone_crusher"
 	inhand_icon_state = "crusher0"
-	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+	lefthand_file = 'modular_skyrat/modules/bonecrusher/bone_crusher_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/bonecrusher/bone_crusher_righthand.dmi'
 	name = "makeshift proto-kinetic axe"
 	desc = "Upon closer examination, this appears to be what could be called a definitive 'tech club', compared to its estranged cousin, the Proto-Kinetic Crusher. Resembling more akin to a bone axe with metal strapped to it, this crude but effective weapon is the Ashwalkers response to the PKC."
 	force = 0 //You can't hit stuff unless wielded
