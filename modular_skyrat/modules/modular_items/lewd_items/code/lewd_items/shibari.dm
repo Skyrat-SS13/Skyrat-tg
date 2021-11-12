@@ -103,7 +103,7 @@
 /obj/item/stack/shibari_rope/attack(mob/living/carbon/attacked, mob/living/user)
 	add_fingerprint(user)
 	if(ishuman(attacked))
-		if(buckled.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		if(attacked.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			var/mob/living/carbon/human/them = attacked
 			switch(user.zone_selected)
 				if(BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
