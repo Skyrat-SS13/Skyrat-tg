@@ -50,9 +50,11 @@
 // Object cannot rotate
 /obj/structure/chair/shibari_stand/can_be_rotated(mob/user)
 	return FALSE
+
 // User cannot rotate the object
 /obj/structure/chair/shibari_stand/can_user_rotate(mob/user)
 	return FALSE
+
 // Another plug to disable rotation
 /obj/structure/chair/shibari_stand/attack_tk(mob/user)
 	return FALSE
@@ -141,10 +143,7 @@
 /obj/structure/chair/shibari_stand/proc/add_rope_overlays(color, taur)
 	cut_overlay(shibari_rope_overlay)
 	cut_overlay(shibari_rope_overlay_behind)
-	if(taur)
-		shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[color]_snek", ABOVE_MOB_LAYER)
-	else
-		shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[color]", ABOVE_MOB_LAYER)
+	shibari_rope_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_above_[taur ? "[color]_snek" : "[color]"]", ABOVE_MOB_LAYER)
 	shibari_rope_overlay_behind = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_structures/shibari_stand.dmi', "ropes_behind_[color]", BELOW_MOB_LAYER)
 	add_overlay(shibari_rope_overlay)
 	add_overlay(shibari_rope_overlay_behind)
