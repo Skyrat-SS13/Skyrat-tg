@@ -1,6 +1,6 @@
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag
 	name = "latex sleeping bag"
-	desc = "A tight sleeping bag made of a shiny material. It's dangerous to put it on yourself."
+	desc = "A tight sleeping bag made of a shiny material. It would be dangerous to put it on yourself."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_normal.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_digi.dmi'

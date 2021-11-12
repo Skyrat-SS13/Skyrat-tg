@@ -93,6 +93,9 @@
 	var/list/active_addictions
 	///List of objective-specific equipment that couldn't properly be given to the mind
 	var/list/failed_special_equipment
+	// SKYRAT EDIT ADDITION -- EXPLOITABLE MENU
+	///Tracks if the target has the view_exploitables_verb verb. THIS MUST BE CHANGED IF THE VERB IS ADDED OR REMOVED OR ELSE STUFF BREAKS.
+	var/has_exploitable_menu = FALSE
 
 /datum/mind/New(_key)
 	key = _key
@@ -274,6 +277,7 @@
 	last_death = world.time
 
 // Datum antag mind procs
+
 /datum/mind/proc/add_antag_datum(datum_type_or_instance, team)
 	if(!datum_type_or_instance)
 		return
@@ -309,6 +313,8 @@
 		if(my_ambitions.submitted)
 			A.ambitions_add()
 	//SKYRAT EDIT ADDITION END
+	//SKYRAT EDIT ADDITION - EXPLOITABLES MENU
+	src.handle_exploitables_menu()
 	return A
 
 /datum/mind/proc/remove_antag_datum(datum_type)
@@ -321,6 +327,9 @@
 		if(A.uses_ambitions && my_ambitions.submitted)
 			A.ambitions_removal()
 		//SKYRAT EDIT ADDITION END
+		//SKYRAT EDIT ADDITION - EXPLOITABLE MENU
+		src.handle_exploitables_menu()
+
 		return TRUE
 
 
@@ -328,6 +337,11 @@
 	for(var/a in antag_datums)
 		var/datum/antagonist/A = a
 		A.on_removal()
+	//SKYRAT EDIT ADDITION BEGIN - EXPLOITABLE MENU
+	if (has_exploitable_menu)
+		remove_verb(current, /mob/proc/view_exploitables_verb)
+		has_exploitable_menu = FALSE
+	//SKYRAT EDIT ADDITION END
 
 /datum/mind/proc/has_antag_datum(datum_type, check_subtypes = TRUE)
 	if(!datum_type)
