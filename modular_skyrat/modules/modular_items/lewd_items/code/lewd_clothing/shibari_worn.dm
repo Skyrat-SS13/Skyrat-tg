@@ -74,7 +74,7 @@
 
 /obj/item/clothing/under/shibari/torso
 	name = "Shibari ropes"
-	desc = "Nice looking rope bondage"
+	desc = "Nice looking rope bondage."
 	icon_state = "shibari_body"
 
 //processing stuff
@@ -97,7 +97,7 @@
 
 /obj/item/clothing/under/shibari/groin
 	name = "Crotch rope shibari"
-	desc = "A rope that teases the wearer's genitals"
+	desc = "A rope that teases the wearer's genitals."
 	icon_state = "shibari_groin"
 
 //stuff to apply processing on equip and add mood event for perverts
@@ -155,7 +155,7 @@
 
 /obj/item/clothing/gloves/shibari_hands
 	name = "Shibari arms bondage"
-	desc = "Bondage ropes that cover arms"
+	desc = "Bondage ropes that cover arms."
 	icon_state = "shibari_arms"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
@@ -222,7 +222,7 @@
 
 /obj/item/clothing/shoes/shibari_legs
 	name = "Shibari arms bondage"
-	desc = "Bondage ropes that cover arms"
+	desc = "Bondage ropes that cover arms."
 	icon_state = "shibari_legs"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_shoes.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_shoes.dmi'

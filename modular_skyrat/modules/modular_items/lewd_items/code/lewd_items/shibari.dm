@@ -2,7 +2,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	icon_state = "shibari_rope"
 	name = "Shibari ropes"
-	desc = "Coil of bondage ropes"
+	desc = "Coil of bondage ropes."
 	amount = 1
 	merge_type = /obj/item/stack/shibari_rope
 	singular_name = "ropes"
