@@ -710,29 +710,29 @@
 		return
 
 	var/mob/living/carbon/human/consumer = user
-	var/random = rand(1,4)
+	var/random = rand(1,3) //SKYRAT EDIT START - Commenting out #1 because it makes people invisible.
 
 	switch(random)
-		if(1)
+	/*	if(1)
 			to_chat(user, span_danger("Your appearance morphs to that of a very small humanoid ash dragon! You get to look like a freak without the cool abilities."))
 			consumer.dna.features = list("mcolor" = "#A02720", "tail_lizard" = "Dark Tiger", "tail_human" = "None", "snout" = "Sharp", "horns" = "Curled", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "Long", "body_markings" = "Dark Tiger Body", "legs" = "Digitigrade Legs")
 			consumer.eye_color = "#FEE5A3"
-			consumer.set_species(/datum/species/lizard)
-		if(2)
+			consumer.set_species(/datum/species/lizard) */
+		if(1)
 			to_chat(user, span_danger("Your flesh begins to melt! Miraculously, you seem fine otherwise."))
 			consumer.set_species(/datum/species/skeleton)
-		if(3)
+		if(2)
 			to_chat(user, span_danger("Power courses through you! You can now shift your form at will."))
 			if(user.mind)
 				var/obj/effect/proc_holder/spell/targeted/shapeshift/dragon/dragon_shapeshift = new
 				user.mind.AddSpell(dragon_shapeshift)
-		if(4)
+		if(3)
 			to_chat(user, span_danger("You feel like you could walk straight through lava now."))
 			ADD_TRAIT(user, TRAIT_LAVA_IMMUNE, type)
 
 	playsound(user,'sound/items/drink.ogg', 30, TRUE)
 	qdel(src)
-
+//SKYRAT EDIT END - Commenting out #1 because it makes people invisible.
 /obj/item/lava_staff
 	name = "staff of lava"
 	desc = "The ability to fill the emergency shuttle with lava. What more could you want out of life?"
