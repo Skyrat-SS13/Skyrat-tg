@@ -38,10 +38,10 @@
 	unbuckle_all_mobs(TRUE)
 
 /obj/structure/chair/shibari_stand/attack_hand(mob/living/user)
-	var/mob/living/attackedmobmeme = locate() in src.loc
+	var/mob/living/attacked_mob = locate() in src.loc
 	if(!has_buckled_mobs())
-		if(attackedmobmeme?.can_buckle_to)
-			user_buckle_mob(attackedmobmeme, user, check_loc = TRUE)
+		if(attacked_mob?.can_buckle_to)
+			user_buckle_mob(attacked_mob, user, check_loc = TRUE)
 	else
 		var/mob/living/buckled_mob = buckled_mobs[1]
 		user_unbuckle_mob(buckled_mob, user)
@@ -58,16 +58,16 @@
 	return FALSE
 
 /obj/structure/chair/shibari_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
-	var/mob/living/buckledmeme = buckled_mob
-	if(buckledmeme)
-		if(buckledmeme != user)
+	var/mob/living/buckled = buckled_mob
+	if(buckled)
+		if(buckled != user)
 			if((HAS_TRAIT(user, TRAIT_RIGGER)))
-				if(!do_after(user, 5 SECONDS, buckledmeme))
+				if(!do_after(user, 5 SECONDS, buckled))
 					return FALSE
 			else
-				if(!do_after(user, 10 SECONDS, buckledmeme))
+				if(!do_after(user, 10 SECONDS, buckled))
 					return FALSE
-			buckledmeme.visible_message(span_notice("[user] unbuckles [buckledmeme] from [src]."),\
+			buckled.visible_message(span_notice("[user] unbuckles [buckled] from [src]."),\
 				span_notice("[user] unbuckles you from [src]."),\
 				span_hear("You hear loose ropes."))
 		else
@@ -75,50 +75,50 @@
 				span_notice("You unbuckle yourself from [src]."),\
 				span_hear("You hear loose ropes."))
 		add_fingerprint(user)
-		if(isliving(buckledmeme.pulledby))
-			var/mob/living/L = buckledmeme.pulledby
-			L.set_pull_offsets(buckledmeme, L.grab_state)
+		if(isliving(buckled.pulledby))
+			var/mob/living/L = buckled.pulledby
+			L.set_pull_offsets(buckled, L.grab_state)
 	unbuckle_mob(buckled_mob)
-	return buckledmeme
+	return buckled
 
-/obj/structure/chair/shibari_stand/user_buckle_mob(mob/living/buckledmeme, mob/user, check_loc = TRUE)
-	if(!is_user_buckle_possible(buckledmeme, user, check_loc))
+/obj/structure/chair/shibari_stand/user_buckle_mob(mob/living/buckled, mob/user, check_loc = TRUE)
+	if(!is_user_buckle_possible(buckled, user, check_loc))
 		return FALSE
 	add_fingerprint(user)
 
-	if(!ishuman(buckledmeme))
+	if(!ishuman(buckled))
 		return FALSE
 
-	var/mob/living/carbon/human/hooman = buckledmeme
-	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
+	var/mob/living/carbon/human/hooman = buckled
+	if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari/full)))
 		to_chat(user, span_warning("You'll need to completely tie their body!"))
 		return FALSE
 	if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
 		to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!!"))
 		return FALSE
 
-	if(buckledmeme != user)
-		buckledmeme.visible_message(span_warning("[user] starts tying [buckledmeme] to [src]!"),\
+	if(buckled != user)
+		buckled.visible_message(span_warning("[user] starts tying [buckled] to [src]!"),\
 			span_userdanger("[user] starts tying you to [src]!"),\
 			span_hear("You hear ropes being tightened."))
 		if((HAS_TRAIT(user, TRAIT_RIGGER)))
-			if(!do_after(user, 5 SECONDS, buckledmeme))
+			if(!do_after(user, 5 SECONDS, buckled))
 				return FALSE
 		else
-			if(!do_after(user, 10 SECONDS, buckledmeme))
+			if(!do_after(user, 10 SECONDS, buckled))
 				return FALSE
 
-		if(!is_user_buckle_possible(buckledmeme, user, check_loc))
+		if(!is_user_buckle_possible(buckled, user, check_loc))
 			return FALSE
 
-		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari_fullbody)))
+		if(!(istype(hooman.w_uniform, /obj/item/clothing/under/shibari/full)))
 			to_chat(user, span_warning("You'll need to completely tie their body!"))
 			return FALSE
 		if(!istype(user.get_active_held_item(), /obj/item/stack/shibari_rope))
 			to_chat(user, span_warning("You'll need to be holding shibari ropes to tie them to the stand!"))
 			return FALSE
 
-		if(buckle_mob(buckledmeme, check_loc = check_loc))
+		if(buckle_mob(buckled, check_loc = check_loc))
 			var/obj/item/stack/shibari_rope/rope = user.get_active_held_item()
 			ropee = new()
 			ropee.current_color = rope.current_color
@@ -127,7 +127,7 @@
 			rope.use(1)
 			add_overlay(shibari_shadow_overlay)
 			add_rope_overlays(ropee.current_color, hooman?.dna?.species?.mutant_bodyparts["taur"])
-			buckledmeme.visible_message(span_warning("[user] tied [buckledmeme] to [src]!"),\
+			buckled.visible_message(span_warning("[user] tied [buckled] to [src]!"),\
 				span_userdanger("[user] tied you to [src]!"),\
 				span_hear("You hear ropes being completely tightened."))
 	else
@@ -149,10 +149,10 @@
 	add_overlay(shibari_rope_overlay)
 	add_overlay(shibari_rope_overlay_behind)
 
-/obj/structure/chair/shibari_stand/post_buckle_mob(mob/living/buckledmeme)
-	buckledmeme.pixel_y = buckledmeme.base_pixel_y + 4
-	buckledmeme.pixel_x = buckledmeme.base_pixel_x
-	buckledmeme.layer = BELOW_MOB_LAYER
+/obj/structure/chair/shibari_stand/post_buckle_mob(mob/living/buckled)
+	buckled.pixel_y = buckled.base_pixel_y + 4
+	buckled.pixel_x = buckled.base_pixel_x
+	buckled.layer = BELOW_MOB_LAYER
 
 	if(LAZYLEN(buckled_mobs))
 		if(ishuman(buckled_mobs[1]))
@@ -171,10 +171,10 @@
 		current_mob.update_abstract_handcuffed()
 
 //Restore the position of the mob after unbuckling.
-/obj/structure/chair/shibari_stand/post_unbuckle_mob(mob/living/buckledmeme)
-	buckledmeme.pixel_x = buckledmeme.base_pixel_x + buckledmeme.body_position_pixel_x_offset
-	buckledmeme.pixel_y = buckledmeme.base_pixel_y + buckledmeme.body_position_pixel_y_offset - 4
-	buckledmeme.layer = initial(buckledmeme.layer)
+/obj/structure/chair/shibari_stand/post_unbuckle_mob(mob/living/buckled)
+	buckled.pixel_x = buckled.base_pixel_x + buckled.body_position_pixel_x_offset
+	buckled.pixel_y = buckled.base_pixel_y + buckled.body_position_pixel_y_offset - 4
+	buckled.layer = initial(buckled.layer)
 
 	cut_overlay(shibari_shadow_overlay)
 	cut_overlay(shibari_rope_overlay)
@@ -251,9 +251,9 @@
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
 	if(tool.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You assemble the frame."))
-		var/obj/structure/chair/shibari_stand/standmeme = new
-		standmeme.icon_state = "shibari_stand_[current_color]"
-		standmeme.forceMove(get_turf(src))
+		var/obj/structure/chair/shibari_stand/stand = new
+		stand.icon_state = "shibari_stand_[current_color]"
+		stand.forceMove(get_turf(src))
 		qdel(src)
 	return TRUE
 
@@ -261,9 +261,9 @@
 	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
 	if(I.use_tool(src, user, 8 SECONDS, volume=50))
 		to_chat(user, span_notice("You disassemble \the [src]."))
-		var/obj/item/shibari_stand_kit/standmeme = new
-		standmeme.icon_state = "shibari_kit_[current_color]"
-		standmeme.forceMove(get_turf(src))
+		var/obj/item/shibari_stand_kit/stand = new
+		stand.icon_state = "shibari_kit_[current_color]"
+		stand.forceMove(get_turf(src))
 		unbuckle_all_mobs()
 		qdel(src)
 	return TRUE

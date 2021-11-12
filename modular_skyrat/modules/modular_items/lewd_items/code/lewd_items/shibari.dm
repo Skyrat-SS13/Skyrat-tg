@@ -18,11 +18,11 @@
 	)
 
 	//SOME IMPORTANT STUFF
-	var/obj/item/clothing/under/shibari_body/shibaribody
-	var/obj/item/clothing/under/shibari_groin/shibarigroin
-	var/obj/item/clothing/under/shibari_fullbody/shibarifullbody
-	var/obj/item/clothing/shoes/shibari_legs/shibarilegs
-	var/obj/item/clothing/gloves/shibari_hands/shibarihands
+	var/obj/item/clothing/under/shibari/torso/shibari_body
+	var/obj/item/clothing/under/shibari/groin/shibari_groin
+	var/obj/item/clothing/under/shibari/full/shibari_fullbody
+	var/obj/item/clothing/shoes/shibari_legs/shibari_legs
+	var/obj/item/clothing/gloves/shibari_hands/shibari_hands
 
 //customisation stuff
 
@@ -41,12 +41,12 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 //to change model
-/obj/item/stack/shibari_rope/AltClick(mob/user, obj/item/I)
+/obj/item/stack/shibari_rope/AltClick(mob/user, obj/item/thing)
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, ropes_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user,src, ropes_designs, custom_check = CALLBACK(src, .proc/check_menu, user, thing), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -100,10 +100,10 @@
 			return FALSE
 	return TRUE
 
-/obj/item/stack/shibari_rope/attack(mob/living/carbon/attackedmeme, mob/living/user)
+/obj/item/stack/shibari_rope/attack(mob/living/carbon/attacked, mob/living/user)
 	add_fingerprint(user)
-	if(ishuman(attackedmeme))
-		var/mob/living/carbon/human/them = attackedmeme
+	if(ishuman(attacked))
+		var/mob/living/carbon/human/them = attacked
 		switch(user.zone_selected)
 			if(BODY_ZONE_L_LEG || BODY_ZONE_R_LEG)
 				if(!(them.shoes))
@@ -114,18 +114,18 @@
 						span_userdanger("[user] starts tying your feet!"),\
 						span_hear("You hear ropes being tightened."))
 					if(do_after(user, 60))
-						shibarilegs = new(src)
-						if(them.equip_to_slot_if_possible(shibarilegs,ITEM_SLOT_FEET,0,0,1))
+						shibari_legs = new(src)
+						if(them.equip_to_slot_if_possible(shibari_legs,ITEM_SLOT_FEET,0,0,1))
 							use(1)
-							shibarilegs.current_color = current_color
-							shibarilegs.update_icon_state()
-							shibarilegs.update_icon()
-							shibarilegs = null
+							shibari_legs.current_color = current_color
+							shibari_legs.update_icon_state()
+							shibari_legs.update_icon()
+							shibari_legs = null
 							them.visible_message(span_warning("[user] tied [them]'s feet!"),\
 								span_userdanger("[user] tied your feet!"),\
 								span_hear("You hear ropes being completely tightened."))
 						else
-							qdel(shibarilegs)
+							qdel(shibari_legs)
 
 			if(BODY_ZONE_PRECISE_GROIN)
 				if(!(them.w_uniform))
@@ -133,36 +133,36 @@
 						span_userdanger("[user] starts tying your groin!"),\
 						span_hear("You hear ropes being tightened."))
 					if(do_after(user, 60))
-						shibarigroin = new(src)
-						if(them.equip_to_slot_if_possible(shibarigroin,ITEM_SLOT_ICLOTHING,0,0,1))
+						shibari_groin = new(src)
+						if(them.equip_to_slot_if_possible(shibari_groin,ITEM_SLOT_ICLOTHING,0,0,1))
 							use(1)
-							shibarigroin.current_color = current_color
-							shibarigroin.update_icon_state()
-							shibarigroin.update_icon()
-							shibarigroin = null
+							shibari_groin.current_color = current_color
+							shibari_groin.update_icon_state()
+							shibari_groin.update_icon()
+							shibari_groin = null
 							them.visible_message(span_warning("[user] tied [them]'s groin!"),\
 								span_userdanger("[user] tied your groin!"),\
 								span_hear("You hear ropes being completely tightened."))
 						else
-							qdel(shibarigroin)
-				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_body))
+							qdel(shibari_groin)
+				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari/torso))
 					them.visible_message(span_warning("[user] starts tying [them]'s groin!"),\
 						span_userdanger("[user] starts tying your groin!"),\
 						span_hear("You hear ropes being tightened."))
 					if(do_after(user, 60))
-						shibarifullbody = new(src)
+						shibari_fullbody = new(src)
 						qdel(them.w_uniform, force = TRUE)
-						if(them.equip_to_slot_if_possible(shibarifullbody,ITEM_SLOT_ICLOTHING,0,0,1))
+						if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 							use(1)
-							shibarifullbody.current_color = current_color
-							shibarifullbody.update_icon_state()
-							shibarifullbody.update_icon()
-							shibarifullbody = null
+							shibari_fullbody.current_color = current_color
+							shibari_fullbody.update_icon_state()
+							shibari_fullbody.update_icon()
+							shibari_fullbody = null
 							them.visible_message(span_warning("[user] tied [them]'s groin!"),\
 								span_userdanger("[user] tied your groin!"),\
 								span_hear("You hear ropes being completely tightened."))
 						else
-							qdel(shibarigroin)
+							qdel(shibari_fullbody)
 
 			if(BODY_ZONE_CHEST)
 				if(!(them.w_uniform))
@@ -170,36 +170,36 @@
 						span_userdanger("[user] starts tying your chest!"),\
 						span_hear("You hear ropes being tightened."))
 					if(do_after(user, 60))
-						shibaribody = new(src)
-						if(them.equip_to_slot_if_possible(shibaribody,ITEM_SLOT_ICLOTHING,0,0,1))
+						shibari_body = new(src)
+						if(them.equip_to_slot_if_possible(shibari_body,ITEM_SLOT_ICLOTHING,0,0,1))
 							use(1)
-							shibaribody.current_color = current_color
-							shibaribody.update_icon_state()
-							shibaribody.update_icon()
-							shibaribody = null
+							shibari_body.current_color = current_color
+							shibari_body.update_icon_state()
+							shibari_body.update_icon()
+							shibari_body = null
 							them.visible_message(span_warning("[user] tied [them]'s chest!"),\
 								span_userdanger("[user] tied your chest!"),\
 								span_hear("You hear ropes being completely tightened."))
 						else
-							qdel(shibaribody)
-				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari_groin))
+							qdel(shibari_body)
+				else if(istype(them.w_uniform, /obj/item/clothing/under/shibari/groin))
 					them.visible_message(span_warning("[user] starts tying [them]'s chest!"),\
 						span_userdanger("[user] starts tying your chest!"),\
 						span_hear("You hear ropes being tightened."))
 					if(do_after(user, 60))
-						shibarifullbody = new(src)
+						shibari_fullbody = new(src)
 						qdel(them.w_uniform, force = TRUE)
-						if(them.equip_to_slot_if_possible(shibarifullbody,ITEM_SLOT_ICLOTHING,0,0,1))
+						if(them.equip_to_slot_if_possible(shibari_fullbody,ITEM_SLOT_ICLOTHING,0,0,1))
 							use(1)
-							shibarifullbody.current_color = current_color
-							shibarifullbody.update_icon_state()
-							shibarifullbody.update_icon()
-							shibarifullbody = null
+							shibari_fullbody.current_color = current_color
+							shibari_fullbody.update_icon_state()
+							shibari_fullbody.update_icon()
+							shibari_fullbody = null
 							them.visible_message(span_warning("[user] tied [them]'s chest!"),\
 								span_userdanger("[user] tied your chest!"),\
 								span_hear("You hear ropes being completely tightened."))
 						else
-							qdel(shibaribody)
+							qdel(shibari_fullbody)
 
 			if(BODY_ZONE_L_ARM || BODY_ZONE_R_ARM)
 				if(!(them.gloves))
@@ -207,18 +207,18 @@
 						span_userdanger("[user] starts tying your hands!"),\
 						span_hear("You hear ropes being tightened."))
 					if(do_after(user, 60))
-						shibarihands = new(src)
-						if(them.equip_to_slot_if_possible(shibarihands,ITEM_SLOT_GLOVES,0,0,1))
+						shibari_hands = new(src)
+						if(them.equip_to_slot_if_possible(shibari_hands,ITEM_SLOT_GLOVES,0,0,1))
 							use(1)
-							shibarihands.current_color = current_color
-							shibarihands.update_icon_state()
-							shibarihands.update_icon()
-							shibarihands = null
+							shibari_hands.current_color = current_color
+							shibari_hands.update_icon_state()
+							shibari_hands.update_icon()
+							shibari_hands = null
 							them.visible_message(span_warning("[user] tied [them]'s hands!"),\
 								span_userdanger("[user] tied your hands!"),\
 								span_hear("You hear ropes being completely tightened."))
 						else
-							qdel(shibarihands)
+							qdel(shibari_hands)
 			else
 				return ..()
 	else
