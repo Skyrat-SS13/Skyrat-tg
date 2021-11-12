@@ -29,3 +29,8 @@
 	icon_state = "marine"
 	inhand_icon_state = "securitypack"
 	resistance_flags = FIRE_PROOF
+
+/obj/item/storage/backpack/ert/marine/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_combined_w_class = 30
