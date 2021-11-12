@@ -568,7 +568,7 @@
 //Hips are red after spanking
 /datum/status_effect/spanked
 	id = "spanked"
-	duration = 900 SECONDS
+	duration = 300 SECONDS
 	alert_type = null
 
 /mob/living/carbon/human/examine(mob/user)
@@ -593,7 +593,7 @@
 /datum/status_effect/subspace
 	id = "subspace"
 	tick_interval = 10
-	duration = 10 MINUTES
+	duration = 5 MINUTES
 	alert_type = null
 
 /datum/status_effect/subspace/on_apply()
