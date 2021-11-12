@@ -17,7 +17,6 @@
 #define isunathi(A) (is_species(A,/datum/species/unathi))
 #define isvulpkanin(A) (is_species(A,/datum/species/vulpkanin))
 #define isteshari(A) (is_species(A, /datum/species/teshari))
-#define issnail(A) (is_species(A, /datum/species/snail))
 //Antags
 #define ishorrorling(A) (istype(A, /mob/living/simple_animal/hostile/true_changeling))
 #define iscorticalborer(A) (istype(A, /mob/living/simple_animal/cortical_borer))
