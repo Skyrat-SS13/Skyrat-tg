@@ -40,12 +40,8 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.w_uniform)
-			if(HAS_TRAIT(hooman, TRAIT_RIGGER))
-				if(do_after(hooman, 20, target = src))
-					qdel(src)
-			else
-				if(do_after(hooman, 100, target = src))
-					qdel(src)
+			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+				qdel(src)
 		else
 			return
 	. = ..()
@@ -192,12 +188,8 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.gloves)
-			if(HAS_TRAIT(hooman, TRAIT_RIGGER))
-				if(do_after(hooman, 20, target = src))
-					qdel(src)
-			else
-				if(do_after(hooman, 100, target = src))
-					qdel(src)
+			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+				qdel(src)
 		else
 			return
 	. = ..()
@@ -261,12 +253,8 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/human/hooman = user
 		if(src == hooman.shoes)
-			if(HAS_TRAIT(hooman, TRAIT_RIGGER))
-				if(do_after(hooman, 20, target = src))
-					qdel(src)
-			else
-				if(do_after(hooman, 100, target = src))
-					qdel(src)
+			if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
+				qdel(src)
 		else
 			return
 	. = ..()

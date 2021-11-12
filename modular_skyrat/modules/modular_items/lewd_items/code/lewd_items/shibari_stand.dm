@@ -100,8 +100,8 @@
 		return FALSE
 
 	if(buckled != user)
-		buckled.visible_message(span_warning("[user] starts tying [buckled] to [src]!"),\
-			span_userdanger("[user] starts tying you to [src]!"),\
+		buckled.visible_message(span_warning("[user] starts tying [buckled] to \the [src]!"),\
+			span_userdanger("[user] starts tying you to \the [src]!"),\
 			span_hear("You hear ropes being tightened."))
 		if((HAS_TRAIT(user, TRAIT_RIGGER)))
 			if(!do_after(user, 5 SECONDS, buckled))
@@ -129,8 +129,8 @@
 			rope.use(1)
 			add_overlay(shibari_shadow_overlay)
 			add_rope_overlays(ropee.current_color, hooman?.dna?.species?.mutant_bodyparts["taur"])
-			buckled.visible_message(span_warning("[user] tied [buckled] to [src]!"),\
-				span_userdanger("[user] tied you to [src]!"),\
+			buckled.visible_message(span_warning("[user] tied [buckled] to \the [src]!"),\
+				span_userdanger("[user] tied you to \the [src]!"),\
 				span_hear("You hear ropes being completely tightened."))
 	else
 		to_chat(user, span_warning("You cannot buckle yourself to this stand, there is no way that level of self-bondage exists!"))
