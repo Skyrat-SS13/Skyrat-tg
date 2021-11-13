@@ -6,7 +6,7 @@ MODULE ID: CUSTOMIZATION
 
  IF YOU WANT TO ADD AN EXTRA FEATURE TO SOMEONES DNA LOOK AT "code/__DEFINES/~skyrat_defines/DNA.dm"
 
-Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb body marking system. Adds in loadout, with lots of clothing ported over. Adds in all the missing species. Adds in flavor text and OOC prefs. Adds in special rendering cases for digitigrades, taurs, snouts, voxes etc. Adds in changeable PDA ringtone message.
+Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb body marking system. Adds in loadout, with lots of clothing ported over. Adds in all the missing species. Adds in flavor text and OOC prefs. Adds in special rendering cases for digitigrades, taurs, snouts, voxes etc. Adds in changeable PDA ringtone message. Adds in alt job titles.
 
 ### TG Proc Changes:
 
@@ -43,6 +43,8 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
 
  ./code/controllers/subsystem/job.dm > /datum/controller/subsystem/job/proc/FindOccupationCandidates(), /datum/controller/subsystem/job/proc/GiveRandomJob(), /datum/controller/subsystem/job/proc/DivideOccupations(), /datum/controller/subsystem/job/proc/AssignRole()
  ./code/modules/mob/dead/new_player/new_player.dm > /mob/dead/new_player/proc/IsJobUnavailable(), /proc/get_job_unavailable_error_message()
+
+ ./code/datums/datacore.dm > /datum/datacore/proc/get_manifest()
 
 ### Defines:
 

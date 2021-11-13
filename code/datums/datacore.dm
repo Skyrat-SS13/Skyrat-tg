@@ -155,11 +155,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		var/name = record.fields["name"]
 		var/rank = record.fields["rank"]
 		var/datum/job/job = SSjob.GetJob(rank)
+		var/chosen_rank = rank == record.fields["rank_altfor"] ? (record.fields["rank_altname"] || rank) : rank // SKYRAT EDIT ADDITION - customization
 		if(!job || !(job.job_flags & JOB_CREW_MANIFEST) || !LAZYLEN(job.departments_list)) // In case an unlawful custom rank is added.
 			var/list/misc_list = manifest_out[DEPARTMENT_UNASSIGNED]
 			misc_list[++misc_list.len] = list(
 				"name" = name,
-				"rank" = rank,
+				"rank" = chosen_rank, // SKYRAT EDIT CHANGE - customization
 				)
 			continue
 		for(var/department_type as anything in job.departments_list)
@@ -169,7 +170,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 				continue
 			var/list/entry = list(
 				"name" = name,
-				"rank" = rank,
+				"rank" = chosen_rank, // SKYRAT EDIT CHANGE - customization
 				)
 			var/list/department_list = manifest_out[department.department_name]
 			if(istype(job, department.department_head))
@@ -243,6 +244,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["id"] = id
 		G.fields["name"] = H.real_name
 		G.fields["rank"] = assignment
+		// SKYRAT EDIT ADDITION BEGIN - customization
+		var/altname = C.prefs.alt_job_titles[assignment]
+		if(altname)
+			G.fields["rank_altfor"] = assignment
+			G.fields["rank_altname"] = altname
+		// SKYRAT EDIT ADDITION END - customization
 		G.fields["age"] = H.age
 		G.fields["species"] = H.dna.species.name
 		G.fields["fingerprint"] = md5(H.dna.unique_identity)
