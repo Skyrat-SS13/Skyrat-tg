@@ -311,7 +311,7 @@
 			if (yes != "Yes")
 				return
 			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
-			var/people_inside = vore?.get_belly_contents(belly, living=TRUE)
+			var/list/people_inside = vore?.get_belly_contents(belly, living=TRUE)
 			if (people_inside?.len)
 				alert(usr, "You can't remove a belly with people still inside!", "What are you doing?!", "OK")
 				return
