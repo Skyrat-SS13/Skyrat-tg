@@ -69,24 +69,12 @@
 	icon_state = "bone_axe0"
 	base_icon_state = "bone_axe"
 	name = "bone axe"
-	desc = "A large, vicious axe crafted out of several sharpened bone plates and crudely tied together. Made of monsters, by killing monsters, for killing monsters. Is capable of AoE swiping in the attacking direction."
-	var/swiping = FALSE // Whether the axe is actively AoE swiping something.
+	desc = "A large, vicious axe crafted out of several sharpened bone plates and crudely tied together. Made of monsters, by killing monsters, for killing monsters."
 
 /obj/item/fireaxe/boneaxe/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=5, force_wielded=32, icon_wielded="[base_icon_state]1") //SKYRAT EDIT; Original force_wielded = 23
 
-/obj/item/melee/boneaxe/attack(mob/living/target, mob/living/carbon/human/user)
-	var/turf/user_turf = get_turf(user)
-	var/dir_to_target = get_dir(user_turf, get_turf(target))
-	swiping = TRUE
-	var/static/list/boneaxe_cleave_angles = list(0, -45, 45) //so that the animation animates towards the target clicked and not towards a side target
-	for(var/i in boneaxe_cleave_angles)
-		var/turf/turf = get_step(user_turf, turn(dir_to_target, i))
-		for(var/mob/living/living_target in turf)
-			if(user.Adjacent(living_target) && living_target.body_position != LYING_DOWN)
-				melee_attack_chain(user, living_target)
-	swiping = FALSE
 
 /*
  * Metal Hydrogen Axe
