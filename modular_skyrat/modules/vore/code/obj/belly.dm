@@ -267,10 +267,12 @@
 
 	if (!user.check_vore_toggle(SEE_EXAMINES))
 		return
-	if (!isnull(data[LIST_EXAMINE]) && data[LIST_EXAMINE].len)
-		for (var/mob/living/living_mob in contents)
-			examine_list += span_warning(vore_replace(data[LIST_EXAMINE], owner, living_mob, name))
-			break //not sure how you'd do this with multiple prey... hm.
+	var/list/examine_list = data[LIST_EXAMINE]
+	if (!examine_list?.len)
+		return
+	for (var/mob/living/living_mob in contents)
+		examine_list += span_warning(vore_replace(data[LIST_EXAMINE], owner, living_mob, name))
+		break //not sure how you'd do this with multiple prey... hm.
 
 /obj/vbelly/proc/examine_absorb(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER

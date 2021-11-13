@@ -41,7 +41,8 @@
 /datum/component/vore/proc/get_belly_contents(bellynum, ref=FALSE, living=FALSE, as_string=FALSE, ignored=null, full=FALSE)
 	if (bellynum < 1 || bellynum > bellies.len)
 		return
-	return bellies[bellynum].get_belly_contents(ref, living, as_string, ignored, full)
+	var/list/belly_contents = bellies[bellynum].get_belly_contents(ref, living, as_string, ignored, full)
+	return belly_contents
 
 /datum/component/vore/proc/update_bellies(set_ref=FALSE) //update everything
 	if (!owner.client?.prefs?.vr_prefs)

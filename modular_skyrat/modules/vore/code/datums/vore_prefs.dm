@@ -239,7 +239,8 @@
 		for (var/num in 1 to VORE_TOGGLE_SECTION_AMOUNT)
 			var/list/switch_list = switch_toggles(num)
 			var/list/toggle_list = list()
-			for (var/x in 1 to switch_list[3].len)
+			var/list/toggle_names = switch_list[3]
+			for (var/x in 1 to toggle_names.len)
 				toggle_list += get_var(switch_list[2], toggle=(1 << x))
 			data["toggles"][switch_list[2]] = toggle_list
 
@@ -310,7 +311,8 @@
 			if (yes != "Yes")
 				return
 			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
-			if (vore && vore.get_belly_contents(belly, living=TRUE)?.len)
+			var/people_inside = vore?.get_belly_contents(belly, living=TRUE)
+			if (people_inside?.len)
 				alert(usr, "You can't remove a belly with people still inside!", "What are you doing?!", "OK")
 				return
 			bellies.Cut(belly, belly+1)
