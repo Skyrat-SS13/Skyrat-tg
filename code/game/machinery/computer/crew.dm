@@ -235,7 +235,10 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if (id_card)
 			entry["name"] = id_card.registered_name
 			entry["assignment"] = id_card.assignment
-			entry["ijob"] = jobs[id_card.assignment] //SKYRAT EDIT - ALTERNATE JOB TITLES
+			// SKYRAT EDIT CHANGE BEGIN - customization
+			if(jobs[id_card.assignment])
+				entry["ijob"] = jobs[id_card.assignment]
+			// SKYRAT EDIT CHANGE END - customization
 
 		// Binary living/dead status
 		if (sensor_mode >= SENSOR_LIVING)
