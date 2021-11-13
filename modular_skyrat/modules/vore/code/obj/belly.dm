@@ -267,7 +267,7 @@
 
 	if (!user.check_vore_toggle(SEE_EXAMINES))
 		return
-	var/list/examine_list = data[LIST_EXAMINE]
+	var/list/examine_message_list = data[LIST_EXAMINE]
 	if (!examine_list?.len)
 		return
 	for (var/mob/living/living_mob in contents)
