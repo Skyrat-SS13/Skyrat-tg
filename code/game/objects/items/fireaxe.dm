@@ -73,7 +73,7 @@
 
 /obj/item/fireaxe/boneaxe/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=5, force_wielded=23, icon_wielded="[base_icon_state]1")
+	AddComponent(/datum/component/two_handed, force_unwielded=5, force_wielded=32, icon_wielded="[base_icon_state]1") //SKYRAT EDIT; Original force_wielded = 23
 
 
 /*

@@ -130,9 +130,9 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	desc = "A sharpened bone. The bare minimum in survival."
-	embedding = list("pain_mult" = 4, "embed_chance" = 35, "fall_chance" = 10)
+	embedding = list("pain_mult" = 4, "embed_chance" = 45, "fall_chance" = 10)  //SKYRAT EDIT; Original embed_chance = 35
 	force = 15
-	throwforce = 15
+	throwforce = 20 //SKYRAT EDIT; Original throwforce = 15
 	custom_materials = null
 
 /obj/item/knife/combat/cyborg

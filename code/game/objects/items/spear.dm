@@ -181,8 +181,9 @@
 	desc = "A haphazardly-constructed yet still deadly weapon. The pinnacle of modern technology."
 	force = 12
 	throwforce = 22
-	armour_penetration = 15 //Enhanced armor piercing
+	reach = 2 //SKYRAT EDIT
+	armour_penetration = 20 //Enhanced armor piercing; SKYRAT EDIT; Original armour_penetration = 15
 
 /obj/item/spear/bonespear/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=12, force_wielded=20, icon_wielded="[icon_prefix]1")
+	AddComponent(/datum/component/two_handed, force_unwielded=12, force_wielded=16, icon_wielded="[icon_prefix]1") //SKYRAT EDIT; Original force_wielded = 20

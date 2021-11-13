@@ -283,7 +283,7 @@
 	icon_state = "bonearmor"
 	inhand_icon_state = "bonearmor"
 	blood_overlay_type = "armor"
-	armor = list(MELEE = 35, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 35, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 40, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10) //SKYRAT EDIT; Original BOMB = 25
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
 
 /obj/item/clothing/suit/armor/bulletproof

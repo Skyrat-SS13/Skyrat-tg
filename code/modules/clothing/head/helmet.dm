@@ -379,7 +379,7 @@
 	desc = "An intimidating tribal helmet, it doesn't look very comfortable."
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDESNOUT
 	flags_cover = HEADCOVERSEYES
-	armor = list(MELEE = 35, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50)
+	armor = list(MELEE = 35, BULLET = 25, LASER = 25, ENERGY = 35, BOMB = 40, BIO = 0, FIRE = 50, ACID = 50) //SKYRAT EDIT; Original BOMB = 25
 	icon_state = "skull"
 	inhand_icon_state = "skull"
 	strip_delay = 100
