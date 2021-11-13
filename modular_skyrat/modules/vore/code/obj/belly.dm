@@ -33,6 +33,10 @@
 	set_data(belly_data, bellynum)
 	belly_string_ref = "belly_[ref(src)]"
 
+/obj/vbelly/Destroy()
+	mass_release_from_contents()
+	. = ..()
+
 /obj/vbelly/proc/set_data(_data, bellynum)
 	for (var/varname in _data)
 		if (!(varname in static_belly_vars()))

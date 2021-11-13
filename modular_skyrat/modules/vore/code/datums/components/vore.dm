@@ -92,7 +92,7 @@
 		var/obj/vbelly/belly = loc
 		forceMove(belly.drop_location())
 
-/mob/living/verb/Ingest(mob/living/prey in oview(1)) //this will get moved to an interaction or something, rather than a verb, (before it gets merged hopefully), this is just so it can actually be used
+/mob/living/verb/Ingest(mob/living/prey in oview(1)) //this should be moved to some other way of doing things rather than a verb
 	set name = "Vore Person"
 	set category = "Vore"
 
