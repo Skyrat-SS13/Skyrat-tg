@@ -213,6 +213,12 @@
 	. = ..()
 	if(methods & TOUCH)
 		exposed_mob.extinguish_mob() // extinguish removes all fire stacks
+	if(methods & VAPOR)
+		if(!isfelinid(exposed_mob) || HAS_TRAIT(exposed_mob, TRAIT_FELINE)) // SKYRAT EDIT - Feline trait :)
+			return
+		exposed_mob.incapacitate(1) // startles the felinid, canceling any do_after
+		SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "watersprayed", /datum/mood_event/watersprayed)
+
 
 /datum/reagent/water/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	. = ..()
@@ -2773,9 +2779,21 @@
 		amount_left = round(reac_volume,0.1)
 		exposed_mob.apply_status_effect(STATUS_EFFECT_ANTS, amount_left)
 
+/datum/reagent/ants/expose_obj(obj/exposed_obj, reac_volume)
+	. = ..()
+	var/turf/open/my_turf = exposed_obj.loc // No dumping ants on an object in a storage slot
+	if(!istype(my_turf)) //Are we actually in an open turf?
+		return
+	var/static/list/accepted_types = typecacheof(list(/obj/machinery/atmospherics, /obj/structure/cable, /obj/structure/disposalpipe))
+	if(!accepted_types[exposed_obj.type]) // Bypasses pipes, vents, and cables to let people create ant mounds on top easily.
+		return
+	expose_turf(my_turf, reac_volume)
+
 /datum/reagent/ants/expose_turf(turf/exposed_turf, reac_volume)
 	. = ..()
-	if((reac_volume < 10) || isspaceturf(exposed_turf))
+	if(!istype(exposed_turf) || isspaceturf(exposed_turf)) // Is the turf valid
+		return
+	if((reac_volume <= 10)) // Makes sure people don't duplicate ants.
 		return
 
 	var/obj/effect/decal/cleanable/ants/pests = locate() in exposed_turf.contents
