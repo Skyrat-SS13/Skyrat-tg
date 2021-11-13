@@ -73,7 +73,6 @@
 		/obj/item/clothing/under/rank/captain/suit/skirt = 2,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/suit/skirt = 2,
 		/obj/item/clothing/suit/jacket = 2,
-		/obj/item/clothing/suit/hooded/wintercoat/custom = 5, //SKYRAT EDIT - INCREASED MARKET OR SOMETHING
 		/obj/item/clothing/suit/jacket/puffer/vest = 2,
 		/obj/item/clothing/suit/jacket/puffer = 2,
 		/obj/item/clothing/suit/jacket/letterman = 2,
