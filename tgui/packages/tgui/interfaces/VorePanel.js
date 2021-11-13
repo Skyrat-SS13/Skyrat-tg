@@ -1,15 +1,7 @@
-import { Button, Section, Dropdown, Stack, Flex } from '../components';
-import { useBackend } from '../backend';
+import { Button, Section, Dropdown, Stack, Flex, Tabs } from '../components';
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 
-const toggleNames = {
-  0: "See Examine Messages",
-  1: "See Struggle Messages",
-  2: "See Other Vore Messages",
-  3: "Devourable",
-  4: "Digestable",
-  5: "Absorbable",
-};
 const modeToText = (mode) => {
   switch (mode) {
     case 0:
@@ -104,12 +96,12 @@ export const BellyStack = (props, context) => {
         })}
       </Flex>
       <Section title="Messages">
-        <Flex wrap="wrap">
+        <Flex wrap="wrap" mb={1}>
           Messages that will be sent upon:
         </Flex>
-        <Flex wrap="wrap" pu={1.5}>
+        <Flex wrap="wrap">
           {string_types.map((value, index) => (
-            <Flex.Item key={index} pr={1} pb={0.5}>
+            <Flex.Item key={index} pr={1} pb={0.5} pu={1}>
               <Button
                 content={stringNames[value]}
                 onClick={() => act('belly_act', { varname: value, belly: selected_belly })} />
@@ -155,24 +147,27 @@ export const InsideStack = (props, context) => {
   const in_belly = data["in_belly"];
   if (in_belly) {
     const inside_data = data["inside_data"];
+    const { name, absorbed, desc, belly_inside, contents } = inside_data;
     return (
-      <Section title={"Inside of " + inside_data["name"]}>
-        <Flex direction="column">
+      <Section
+        title={(absorbed ? "Absorbed in " : "Inside of ") + name}
+        textColor={absorbed && "purple"} >
+        <Flex direction="column" textColor={null}>
           <Flex wrap="wrap">
             <Flex.Item align="center" preserveWhitespace
               textAlign="center" mb={1} wrap="wrap">
-              {inside_data["desc"]}
+              {desc}
             </Flex.Item>
           </Flex>
           <Flex wrap="wrap">
-            {inside_data["contents"].map((value, index) => (
+            {contents.map((value, index) => (
               <Flex.Item key={index} pr={1} pb={0.5} pu={1}>
                 <Button
                   content={value["name"]}
                   textColor={value["absorbed"] && "purple"}
                   onClick={() => act('inside_act', {
                     ref: value["ref"],
-                    belly_in: inside_data["belly_inside"],
+                    belly_in: belly_inside,
                   })} />
               </Flex.Item>
             ))}
@@ -184,6 +179,32 @@ export const InsideStack = (props, context) => {
   return null;
 };
 
+export const ToggleSection = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { toggles, toggle_types } = data;
+  const [
+    selectedTab,
+    setSelectedTab,
+  ] = useLocalState(context, 'TogglesTab', 0);
+  const current = toggle_types[selectedTab];
+  return (
+    <Flex wrap="wrap">
+      {toggles[current[1]].map((val, i) => (
+        <Flex.Item key={i} pr={1} pb={0.5}>
+          <Button
+            content={current[2][i]}
+            color={val ? "green" : "red"}
+            onClick={() => act('toggle_act', {
+              varname: current[1],
+              pref: i+1,
+              toggle: !val,
+            })} />
+        </Flex.Item>
+      ))}
+    </Flex>
+  );
+};
+
 export const VorePanel = (props, context) => {
   const { act, data } = useBackend(context);
   const {
@@ -191,9 +212,14 @@ export const VorePanel = (props, context) => {
     toggles,
     unsaved,
     selected_belly,
-    other_prefs,
-    other_types,
+    character_prefs,
+    character_types,
+    toggle_types,
   } = data;
+  const [
+    selectedTab,
+    setSelectedTab,
+  ] = useLocalState(context, 'TogglesTab', 0);
   return (
     <Window
       title={"Vore Panel"}
@@ -225,7 +251,7 @@ export const VorePanel = (props, context) => {
           buttons={(
             <Button
               content={enabled ? "Disable Vore" : "Enable Vore"}
-              color={enabled ? "green" : "red"}
+              color={!enabled && "red"}
               onClick={() => act('toggle_vore', {
                 toggle: !enabled,
               })} />
@@ -234,28 +260,26 @@ export const VorePanel = (props, context) => {
             <BellyStack />
           )}
           {!!enabled && (
-            <Section title="Toggles and other Prefs">
-              <Flex wrap="wrap" >
-                {toggles.map((val, i) => (
-                  <Flex.Item key={i} pr={1} pb={0.5}>
-                    <Button
-                      content={toggleNames[i]}
-                      color={val ? "green" : "red"}
-                      onClick={() => act('toggle_act', {
-                        pref: i+1,
-                        toggle: !val,
-                      })} />
-                  </Flex.Item>
+            <Section title="Toggles">
+              <Tabs>
+                {toggle_types.map((value, i) => (
+                  <Tabs.Tab
+                    key={i}
+                    selected={selectedTab === i}
+                    onClick={() => setSelectedTab(i)}>
+                    {value[0]}
+                  </Tabs.Tab>
                 ))}
-              </Flex>
-              <Section title="Other Prefs">
+              </Tabs>
+              <ToggleSection />
+              <Section title="Character Prefs">
                 <Flex direction="column" fill>
-                  {other_types.map((value, index) => {
+                  {character_types.map((value, index) => {
                     return buttonFromName(
                       switchNames[value],
                       index,
-                      () => act('othervar_act', { varname: value }),
-                      other_prefs[value]);
+                      () => act('charvar_act', { varname: value }),
+                      character_prefs[value]);
                   })}
                 </Flex>
               </Section>

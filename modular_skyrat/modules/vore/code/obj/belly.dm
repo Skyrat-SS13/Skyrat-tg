@@ -13,6 +13,7 @@
 	var/list/absorbed = list()
 	var/static_data_cooldown = 0 //so we don't send data over and over and over
 	var/static_timer = FALSE
+	var/belly_string_ref
 
 /obj/vbelly/Initialize(mapload, mob/living/living_owner, list/belly_data, bellynum)
 	. = ..()
@@ -30,6 +31,7 @@
 	RegisterSignal(owner, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 	forceMove(owner)
 	set_data(belly_data, bellynum)
+	belly_string_ref = "belly_[ref(src)]"
 
 /obj/vbelly/proc/set_data(_data, bellynum)
 	for (var/varname in _data)
@@ -46,7 +48,7 @@
 		belly_ref = bellynum
 
 //people don't want to have to wear internals while inside someone
-//todo: should REALLY find a better way to do this tbh.
+//todo: should REALLY find a better way to do this
 /obj/vbelly/assume_air(datum/gas_mixture/giver)
 	var/datum/gas_mixture/copy = air_contents.copy()
 	return copy.merge(giver)
@@ -64,36 +66,55 @@
 	. = ..()
 	if (isliving(arrived))
 		var/mob/living/arrived_mob = arrived
-		if (desc && arrived_mob.check_vore_toggle(SEE_OTHER_MESSAGES))
+		if (desc && arrived_mob.check_vore_toggle(SEE_OTHER_MESSAGES, VORE_CHAT_TOGGLES))
 			to_chat(arrived_mob, span_notice(desc))
 		var/datum/component/vore/vore = arrived_mob.GetComponent(/datum/component/vore)
-		if (owner.check_vore_toggle(SEE_OTHER_MESSAGES) && can_taste && vore?.tastes_of)
-			to_chat(owner, span_notice("[arrived_mob] tastes of [vore.tastes_of]."))
+		if (owner.check_vore_toggle(SEE_OTHER_MESSAGES, VORE_CHAT_TOGGLES) && can_taste)
+			to_chat(owner, span_notice("[arrived_mob] tastes of [vore.char_vars["tastes_of"]]."))
 		RegisterSignal(arrived, COMSIG_LIVING_RESIST, .proc/prey_resist)
 		check_mode()
+		arrived_mob.become_blind(belly_string_ref)
+	if (iscarbon(arrived))
+		var/mob/living/carbon/carbon_arrived = arrived
+		carbon_arrived.update_suit_sensors()
 	update_static_vore_data()
 
 /obj/vbelly/Exited(atom/movable/gone, direction)
 	. = ..()
+	if (gone in absorbed)
+		absorbed -= gone
+		UnregisterSignal(gone, COMSIG_PARENT_EXAMINE)
+	if (gone in absorbing)
+		absorbing -= gone
 	if (isliving(gone))
 		UnregisterSignal(gone, COMSIG_LIVING_RESIST)
+		var/mob/living/living_gone = gone
+		living_gone.cure_blind(belly_string_ref)
+		if (living_gone.client?.prefs?.vr_prefs)
+			living_gone.client.prefs.vr_prefs.needs_update |= UPDATE_INSIDE
+			living_gone.client.prefs.vr_prefs.update_static_data(living_gone)
+	if (iscarbon(gone))
+		var/mob/living/carbon/carbon_gone = gone
+		carbon_gone.update_suit_sensors()
 	check_mode()
 	update_static_vore_data()
 
-/obj/vbelly/proc/update_static_vore_data(force=FALSE, only_contents=FALSE)
-	if (force)
-		static_data_cooldown = 0
-		static_timer = FALSE
+/obj/vbelly/proc/update_static_vore_data(force=FALSE, only_contents=FALSE, timer = FALSE)
+	static_data_cooldown = (force || timer) ? 0 : static_data_cooldown
+	static_timer = timer ? FALSE : static_timer
 	if (static_data_cooldown > world.time)
 		if (!static_timer)
 			static_timer = TRUE
-			addtimer(CALLBACK(src, .proc/update_static_vore_data, TRUE), static_data_cooldown - world.time)
+			addtimer(CALLBACK(src, .proc/update_static_vore_data, FALSE, FALSE, TRUE), static_data_cooldown - world.time)
 		return
 	static_data_cooldown = world.time + 0.5 SECONDS
 	for (var/mob/living/living in src)
-		living.client?.prefs?.vr_prefs.update_static_data(living)
-	if (!only_contents)
-		owner.client?.prefs?.vr_prefs.update_static_data(owner)
+		if (living.client?.prefs?.vr_prefs)
+			living.client.prefs.vr_prefs.needs_update |= UPDATE_INSIDE
+			living.client.prefs.vr_prefs.update_static_data(living)
+	if (!only_contents && owner.client?.prefs?.vr_prefs)
+		owner.client.prefs.vr_prefs.needs_update |= UPDATE_CONTENTS
+		owner.client.prefs.vr_prefs.update_static_data(owner)
 
 /obj/vbelly/proc/get_belly_contents(ref=FALSE, living=FALSE, as_string=FALSE, ignored=null, full=FALSE)
 	var/list/belly_contents = list()
@@ -125,16 +146,14 @@
 		STOP_PROCESSING(SSvore, src)
 	if (mode == VORE_MODE_DIGEST)
 		for (var/mob/living/prey in src)
-			if (!prey.check_vore_toggle(DIGESTABLE))
+			if (!prey.check_vore_toggle(DIGESTABLE, VORE_MECHANICS_TOGGLES))
 				continue
 			prey.apply_damage(4, BURN)
 			if (prey.stat == DEAD)
 				var/pred_message = vore_replace(data[LIST_DIGEST_PRED], owner, prey, name)
 				var/prey_message = vore_replace(data[LIST_DIGEST_PREY], owner, prey, name)
-				if (pred_message && owner.check_vore_toggle(SEE_OTHER_MESSAGES))
-					to_chat(owner, span_warning(pred_message))
-				if (prey_message && owner.check_vore_toggle(SEE_OTHER_MESSAGES))
-					to_chat(prey, span_warning(prey_message))
+				vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
+				vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
 				prey.release_belly_contents()
 				for (var/obj/item/item in prey)
 					if (!prey.dropItemToGround(item))
@@ -144,9 +163,10 @@
 			else
 				all_done = FALSE
 
+	//may wanna make this use nutrition in the future or something
 	if (mode == VORE_MODE_ABSORB)
 		for (var/mob/living/prey in absorbed)
-			if (!prey.check_vore_toggle(ABSORBABLE))
+			if (!prey.check_vore_toggle(ABSORBABLE, VORE_MECHANICS_TOGGLES))
 				absorbed -= prey
 				should_update = TRUE
 				continue
@@ -154,7 +174,9 @@
 				absorbed[prey] += 2
 				all_done = FALSE
 		for (var/mob/living/prey in src)
-			if ((prey in absorbed) || !prey.check_vore_toggle(ABSORBABLE))
+			if ((prey in absorbed) || !prey.check_vore_toggle(ABSORBABLE, VORE_MECHANICS_TOGGLES))
+				if (prey in absorbing)
+					absorbing -= prey
 				continue
 			if (!absorbing[prey])
 				absorbing[prey] = 0
@@ -163,10 +185,8 @@
 				RegisterSignal(prey, COMSIG_PARENT_EXAMINE, .proc/examine_absorb)
 				var/pred_message = vore_replace(data[LIST_ABSORB_PRED], owner, prey, name)
 				var/prey_message = vore_replace(data[LIST_ABSORB_PREY], owner, prey, name)
-				if (pred_message && owner.check_vore_toggle(SEE_OTHER_MESSAGES))
-					to_chat(owner, span_warning(pred_message))
-				if (prey_message && owner.check_vore_toggle(SEE_OTHER_MESSAGES))
-					to_chat(prey, span_warning(prey_message))
+				vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
+				vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
 				absorbing -= prey
 				absorbed[prey] = 100
 				should_update = TRUE
@@ -184,10 +204,8 @@
 				UnregisterSignal(prey, COMSIG_PARENT_EXAMINE)
 				var/pred_message = vore_replace(data[LIST_UNABSORB_PRED], owner, prey, name)
 				var/prey_message = vore_replace(data[LIST_UNABSORB_PREY], owner, prey, name)
-				if (pred_message && owner.check_vore_toggle(SEE_OTHER_MESSAGES))
-					to_chat(owner, span_warning(pred_message))
-				if (prey_message && owner.check_vore_toggle(SEE_OTHER_MESSAGES))
-					to_chat(prey, span_warning(prey_message))
+				vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
+				vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
 				absorbed -= prey
 				should_update = TRUE
 			else
@@ -228,8 +246,8 @@
 		to_release.forceMove(drop_location())
 	//add a message here?
 
-/obj/vbelly/proc/release_from_contents(atom/movable/to_release)
-	if (!(to_release in contents))
+/obj/vbelly/proc/release_from_contents(atom/movable/to_release, willing=FALSE)
+	if (!(to_release in contents) || (willing && (to_release in absorbed)))
 		return FALSE
 	to_release.forceMove(drop_location())
 	send_vore_message(owner, span_warning("%a|[owner]|You|| eject%a|s||| [to_release] from %a|[owner.p_their()]|your|| [name]!"), SEE_OTHER_MESSAGES)
@@ -263,16 +281,7 @@
 	var/list/ignored_mobs = list()
 	for (var/mob/living/prey_target in contents)
 		ignored_mobs += prey_target
-		if (!prey_message || !prey_target.check_vore_toggle(SEE_STRUGGLES))
-			continue
-		to_chat(prey_target, span_warning(prey_message))
+		vore_message(prey_target, prey_message, SEE_STRUGGLES, warning=TRUE)
 	var/out_message = vore_replace(data[LIST_STRUGGLE_OUTSIDE], owner, prey, name)
 	if (out_message)
-		send_vore_message(owner, span_warning(out_message), SEE_STRUGGLES, prey, ignored=ignored_mobs)
-
-// MISC PROCS
-
-/mob/living/carbon/human/update_sensor_list()
-	if (loc && istype(loc, /obj/vbelly))
-		return
-	. = ..()
+		send_vore_message(owner, span_warning(out_message), SEE_STRUGGLES, prey=prey, ignored=ignored_mobs)

@@ -500,6 +500,11 @@
 
 
 /mob/living/blind_examine_check(atom/examined_thing)
+	//SKYRAT EDIT ADDITION - VORE
+	if (istype(loc, /obj/vbelly))
+		if ((examined_thing in loc) && !HAS_TRAIT_NOT_FROM(src, TRAIT_BLIND, "belly_[ref(loc)]"))
+			return TRUE
+	//SKYRAT EDIT END
 	//need to be next to something and awake
 	if(!Adjacent(examined_thing) || incapacitated())
 		to_chat(src, span_warning("Something is there, but you can't see it!"))

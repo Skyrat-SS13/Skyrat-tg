@@ -68,7 +68,7 @@
 		//make the sensor mode favor higher levels, except coords.
 		sensor_mode = pick(SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS, SENSOR_COORDS)
 	// SKYRAT EDIT START - Teshari skirt
-	if(!(body_parts_covered & LEGS)) 
+	if(!(body_parts_covered & LEGS))
 		species_clothing_icon_state = "under_skirt"
 	// SKYRAT EDIT END
 
@@ -135,6 +135,11 @@
 	update_sensor_list()
 
 /mob/living/carbon/human/proc/update_sensor_list()
+	//SKYRAT EDIT ADDITION - VORE
+	if (loc && istype(loc, /obj/vbelly))
+		GLOB.suit_sensors_list -= src
+		return
+	//SKYRAT EDIT END
 	var/obj/item/clothing/under/U = w_uniform
 	if(istype(U) && U.has_sensor > 0 && U.sensor_mode)
 		GLOB.suit_sensors_list |= src

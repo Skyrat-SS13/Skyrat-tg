@@ -90,6 +90,13 @@
 	if (is_reserved_level(destination_turf.z))
 		if (is_type_in_typecache(destination_area, allowed_shuttles))
 			return TRUE
+	//SKYRAT EDIT ADDITION - VORE
+	var/atom/loc_to_check = atom_to_check.loc
+	while(ismob(loc_to_check) || isobj(loc_to_check))
+		if (istype(loc_to_check,/obj/vbelly))
+			return FALSE
+		loc_to_check = loc_to_check.loc
+	//SKYRAT EDIT END
 
 	return FALSE
 

@@ -19,13 +19,13 @@
 		return prey_replace.Replace(message, "$1")
 	return audience_replace.Replace(message, "$1")
 
-/proc/send_vore_message(atom/movable/source, message, pref_respecting, prey=null, replace=TRUE, ignored=null, audience=TRUE, only=null)
-	var/turf/T = get_turf(source)
+/proc/send_vore_message(atom/movable/pred, message, pref_respecting, section=VORE_CHAT_TOGGLES, prey=null, replace=TRUE, ignored=null, audience=TRUE, only=null)
+	var/turf/T = get_turf(pred)
 	if (!message || (!T && !only && audience))
 		return
-	var/list/hearers = only ? only : (audience ? get_hearers_in_view(DEFAULT_MESSAGE_RANGE, source) : list(source, prey))
+	var/list/hearers = only ? only : (audience ? get_hearers_in_view(DEFAULT_MESSAGE_RANGE, pred) : list(pred, prey))
 	for (var/mob/hearer in hearers)
-		if (!hearer || !hearer.check_vore_toggle(pref_respecting))
+		if (!hearer || !hearer.check_vore_toggle(pref_respecting, section))
 			continue
 		if (ignored && (hearer in ignored))
 			continue
@@ -33,25 +33,39 @@
 			continue
 		var/message_replace = message
 		if (replace)
-			message_replace = person_vore_replace(message, hearer, source, prey)
+			message_replace = person_vore_replace(message, hearer, pred, prey)
 		to_chat(hearer, message_replace)
 
-/proc/vore_message(mob/living/target, message, pref_respecting)
+/proc/vore_message(mob/target, message, pref_respecting, section=VORE_CHAT_TOGGLES, warning=FALSE)
 	if (!istype(target) || !message)
 		return
-	if (!target.check_vore_toggle(pref_respecting))
+	if (!isnull(pref_respecting) && !target.check_vore_toggle(pref_respecting, section))
 		return
+	if (warning)
+		message = span_warning(message)
 	to_chat(target, message)
 
-/mob/proc/check_vore_toggle(toggle)
-	return client?.prefs?.vr_prefs.vore_enabled && (client.prefs.vr_prefs.vore_toggles & toggle)
+/* make sure to implement a sound cooldown before you use this
+/proc/send_vore_sound(atom/movable/source, sound, pref_respecting, range=DEFAULT_MESSAGE_RANGE)
+	if (!source || !sound)
+		return
+	for (var/mob/hearer in get_hearers_in_view(range, source))
+		if (!hearer.check_vore_toggle(pref_respecting))
+			continue
+		if(HAS_TRAIT(hearer, TRAIT_DEAF))
+			continue
+		SEND_SOUND(hearer, sound)
+*/
 
-/mob/living/check_vore_toggle(toggle)
+/mob/proc/check_vore_toggle(toggle, section=VORE_CHAT_TOGGLES)
+	return client?.prefs?.vr_prefs.vore_enabled && (client.prefs.vr_prefs.vore_toggles[section] & toggle)
+
+/mob/living/check_vore_toggle(toggle, section=VORE_CHAT_TOGGLES)
 	. = ..()
 	if (.)
 		return
 	var/datum/component/vore/vore = GetComponent(/datum/component/vore)
-	return vore?.vore_enabled && (vore.vore_toggles & toggle)
+	return vore?.vore_enabled && (vore.vore_toggles[section] & toggle)
 
 /mob/living/proc/release_belly_contents()
 	var/datum/component/vore/vore = GetComponent(/datum/component/vore)

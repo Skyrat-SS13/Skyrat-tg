@@ -3,16 +3,15 @@
 	var/datum/preferences/prefs //this is here because for modular reasons we aren't gonna set a client var every time
 
 	var/vore_enabled = FALSE //master toggle
-	var/vore_toggles = VORE_TOGGLES_DEFAULT
-	var/tastes_of = "nothing in particular"
+	var/vore_toggles
 	var/list/bellies = list()
 
 	var/has_unsaved = FALSE
 	var/selected_belly = 1
-	/* someone else can do this
-	can hear noises toggle + vore noises
-	simplemob vore
-	*/
+
+	var/char_vars
+
+	var/needs_update = UPDATE_ALL|UPDATE_STATIC_DATA
 
 /datum/vore_prefs/New(client/holder = null, datum/preferences/_prefs=null)
 	if (!holder || !_prefs)
@@ -35,21 +34,18 @@
 	. = TRUE
 	S.cd = "/"
 	READ_FILE(S["vore_enabled"], vore_enabled)
+	//var/version
+	//READ_FILE(S["savefile_version"], version)
+	//do any sanity checks for version here in the future if you need to (create a new proc for it)
 	S.cd = "/char[slot]"
 	READ_FILE(S["vore_toggles"], vore_toggles)
-	if (isnull(vore_toggles))
-		vore_toggles = VORE_TOGGLES_DEFAULT
-	if(!selected_belly || !isnum(selected_belly))
-		selected_belly = 1
-	READ_FILE(S["vore_taste"], tastes_of)
+	READ_FILE(S["char_vars"], char_vars)
 	READ_FILE(S["bellies"], bellies)
-	if (!bellies || !bellies.len)
-		bellies = list()
-		bellies.Add(list(default_belly_info()))
 	if (read_selected)
 		READ_FILE(S["selected_belly"], selected_belly)
-	selected_belly = clamp(selected_belly, 1, bellies.len)
 	has_unsaved = FALSE
+	needs_update |= UPDATE_ALL
+	sanitize_vars()
 
 /datum/vore_prefs/proc/save_prefs(slot = null)
 	if (isnull(slot))
@@ -62,18 +58,46 @@
 	. = TRUE
 	S.cd = "/"
 	WRITE_FILE(S["vore_enabled"], vore_enabled)
+	WRITE_FILE(S["savefile_version"], VORE_SAVEFILE_VERSION)
 	S.cd = "/char[slot]"
+	sanitize_vars()
 	WRITE_FILE(S["vore_toggles"], vore_toggles)
 	WRITE_FILE(S["selected_belly"], selected_belly)
-	WRITE_FILE(S["vore_taste"], tastes_of)
-	if (!bellies || !bellies.len)
-		bellies = list()
-		bellies.Add(list(default_belly_info()))
+	WRITE_FILE(S["char_vars"], char_vars)
 	WRITE_FILE(S["bellies"], bellies)
 	has_unsaved = FALSE
 
+/datum/vore_prefs/proc/sanitize_vars()
+	//statics
+	var/static/list/default_vore_toggles = list(VORE_MECHANICS_TOGGLES = VORE_MECHANICS_TOGGLES_DEFAULT,\
+												VORE_CHAT_TOGGLES = VORE_CHAT_TOGGLES_DEFAULT/*,\
+												VORE_SOUND_TOGGLES = VORE_SOUND_TOGGLES_DEFAULT*/)
+	var/static/list/character_vars = list("tastes_of" = "nothing in particular")
+	var/static/list/default_belly_vars = default_belly_info()
+
+	if (isnull(vore_toggles) || !islist(vore_toggles))
+		vore_toggles = default_vore_toggles.Copy()
+	else
+		for (var/item in default_vore_toggles)
+			if (!(item in vore_toggles))
+				vore_toggles[item] = default_vore_toggles[item]
+	if (isnull(char_vars) || !islist(char_vars))
+		char_vars = character_vars.Copy()
+	else
+		for (var/item in character_vars)
+			if (!(item in char_vars))
+				char_vars[item] = character_vars[item]
+	if (!bellies || !bellies.len)
+		bellies = list()
+		bellies.Add(list(default_belly_info()))
+	else
+		for (var/belly in bellies)
+			for (var/item in default_belly_vars)
+				if (!(item in belly))
+					belly[item] = default_belly_vars[item]
+	selected_belly = clamp(selected_belly, 1, bellies.len)
+
 /datum/vore_prefs/proc/load_slotted_prefs(read_selected=FALSE, slot_from_prefs=null)
-	//load prefs->check belly_refs for missing bellies->insert at missing points
 	var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
 	if (vore)
 		if (!isnull(slot_from_prefs))
@@ -116,6 +140,7 @@
 /datum/vore_prefs/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
+		needs_update |= UPDATE_ALL|UPDATE_STATIC_DATA
 		ui = new(user, src, "VorePanel")
 		ui.open()
 
@@ -125,65 +150,112 @@
 
 	return data
 
+/proc/static_test()
+	to_chat(usr, "static test called more than once")
+	return 1
+/proc/const_test()
+	to_chat(usr, "const test called more than once")
+	return 1
+
+// Most data is passed through static, so that we can update it on command, rather than having the server sending boatloads of data all the time
 /datum/vore_prefs/ui_static_data(mob/user)
 	var/list/data = list()
+
+	var/static/a = static_test()
+
+	//true static data goes here
+
+	var/static/list/string_types = list(LIST_DIGEST_PREY, \
+										LIST_DIGEST_PRED, \
+										LIST_ABSORB_PREY, \
+										LIST_ABSORB_PRED, \
+										LIST_UNABSORB_PREY, \
+										LIST_UNABSORB_PRED, \
+										LIST_STRUGGLE_INSIDE, \
+										LIST_STRUGGLE_OUTSIDE, \
+										LIST_EXAMINE)
+	var/static/list/other_belly_types = list("name", \
+										"desc", \
+										"mode", \
+										"swallow_verb", \
+										"can_taste")
+	var/static/list/character_types = list("tastes_of")
+
+	var/datum/component/vore/vore = user.GetComponent(/datum/component/vore)
+
+	if (needs_update & UPDATE_STATIC_DATA)
+		needs_update &= ~UPDATE_STATIC_DATA
+
+		var/list/toggletypes = list()
+		for (var/num_toggle in 1 to VORE_TOGGLE_SECTION_AMOUNT)
+			toggletypes += list(switch_toggles(num_toggle))
+		data["toggle_types"] = toggletypes
+
+		data["string_types"] = string_types
+		data["other_belly_types"] = other_belly_types
+		data["character_types"] = character_types
+
+	//data that gets updated whenever called goes here
 	data["enabled"] = vore_enabled
 	if (!vore_enabled) //not gonna get used anyway so no point in sending all the rest
 		return data
 
-	//todo: make the contents list into a list of lists, each one with three values, name, ref and absorbed, so that we can use map in tgui
-	data["in_belly"] = FALSE
-	if (istype(user.loc, /obj/vbelly))
-		var/obj/vbelly/bellyobj = user.loc
-		data["in_belly"] = TRUE
-		var/list/inside_data = list()
-		inside_data["belly_inside"] = ref(bellyobj)
-		inside_data["desc"] = bellyobj.desc
-		inside_data["name"] = "[bellyobj.owner]'s [bellyobj.name]"
-		inside_data["contents"] = bellyobj.get_belly_contents(as_string=TRUE, ignored=user, full=TRUE)
-		data["inside_data"] = inside_data
+	if (needs_update & UPDATE_INSIDE)
+		needs_update &= ~UPDATE_INSIDE
+		//What belly we're inside
+		data["in_belly"] = istype(user.loc, /obj/vbelly)
+		if (istype(user.loc, /obj/vbelly))
+			var/obj/vbelly/bellyobj = user.loc
+			var/list/inside_data = list()
+			inside_data["belly_inside"] = ref(bellyobj)
+			inside_data["absorbed"] = (user in bellyobj.absorbed)
+			inside_data["desc"] = bellyobj.desc
+			inside_data["name"] = "[bellyobj.owner]'s [bellyobj.name]"
+			inside_data["contents"] = bellyobj.get_belly_contents(as_string=TRUE, ignored=user, full=TRUE)
+			data["inside_data"] = inside_data
 
-	data["selected_belly"] = selected_belly
-	data["other_prefs"] = list("tastes_of" = get_var("tastes_of")) //expand this into more lines if you add more here
-	var/list/belly_names = belly_name_list()
-	if (belly_names.len < MAX_BELLIES)
-		belly_names += "New Belly"
-	data["bellies"] = belly_names
+	if (needs_update & UPDATE_BELLY_LIST)
+		needs_update &= ~UPDATE_BELLY_LIST
+		//Selected belly and list of belly names for the dropdown
+		data["selected_belly"] = selected_belly
+		var/list/belly_names = belly_name_list()
+		if (belly_names.len < MAX_BELLIES)
+			belly_names += "New Belly"
+		data["bellies"] = belly_names
 
-	var/list/belly_data = list()
-	belly_data["name"] = get_var("name", belly=selected_belly)
-	belly_data["desc"] = get_var("desc", belly=selected_belly)
-	belly_data["mode"] = get_var("mode", belly=selected_belly)
-	belly_data["can_taste"] = get_var("can_taste", belly=selected_belly)
-	belly_data["swallow_verb"] = get_var("swallow_verb", belly=selected_belly)
-	data["has_contents"] = FALSE
-	var/datum/component/vore/vore = user.GetComponent(/datum/component/vore)
-	var/list/contents = vore?.get_belly_contents(selected_belly, as_string=TRUE, full=TRUE)
-	if (contents?.len)
-		vore?.bellies[selected_belly].update_static_vore_data(TRUE, TRUE) //keep this updated too
-		data["has_contents"] = TRUE
-		data["contents"] = contents
-	data["current_belly"] = belly_data
+	if (needs_update & UPDATE_BELLY_VARS)
+		needs_update &= ~UPDATE_BELLY_VARS
+		//Belly vars like names and stuff for the current belly
+		var/list/belly_data = list()
+		for (var/other_type in other_belly_types)
+			belly_data[other_type] = get_var(other_type, belly=selected_belly)
+		data["current_belly"] = belly_data
+		vore?.bellies[selected_belly].update_static_vore_data(force = TRUE, only_contents = TRUE) //keep theirs updated too
 
-	data["toggles"] = list()
-	for (var/num in 1 to VORE_TOGGLES_AMOUNT)
-		data["toggles"] += get_var("vore_toggles", toggle=(1 << num))
+	if (needs_update & UPDATE_CONTENTS)
+		needs_update &= ~UPDATE_CONTENTS
+		//Contents
+		var/list/contents = vore?.get_belly_contents(selected_belly, as_string=TRUE, full=TRUE)
+		data["has_contents"] = !!contents?.len
+		if (contents?.len)
+			data["contents"] = contents
 
-	data["string_types"] = list(LIST_DIGEST_PREY, \
-								LIST_DIGEST_PRED, \
-								LIST_ABSORB_PREY, \
-								LIST_ABSORB_PRED, \
-								LIST_UNABSORB_PREY, \
-								LIST_UNABSORB_PRED, \
-								LIST_STRUGGLE_INSIDE, \
-								LIST_STRUGGLE_OUTSIDE, \
-								LIST_EXAMINE)
-	data["other_belly_types"] = list("name", \
-								"desc", \
-								"mode", \
-								"swallow_verb", \
-								"can_taste")
-	data["other_types"] = list("tastes_of")
+	if (needs_update & UPDATE_TOGGLES)
+		needs_update &= ~UPDATE_TOGGLES
+		data["toggles"] = list()
+		for (var/num in 1 to VORE_TOGGLE_SECTION_AMOUNT)
+			var/list/switch_list = switch_toggles(num)
+			var/list/toggle_list = list()
+			for (var/x in 1 to switch_list[3].len)
+				toggle_list += get_var(switch_list[2], toggle=(1 << x))
+			data["toggles"][switch_list[2]] = toggle_list
+
+	if (needs_update & UPDATE_CHAR_VARS)
+		needs_update &= ~UPDATE_CHAR_VARS
+		data["character_prefs"] = list()
+		for (var/char_var in character_types)
+			data["character_prefs"][char_var] = get_var(char_var)
+
 	return data
 
 /datum/vore_prefs/ui_act(action, list/params)
@@ -192,10 +264,6 @@
 		return
 
 	. = TRUE
-
-	to_chat(usr, "[action]")
-	for (var/x in params)
-		to_chat(usr, "[x]: [params[x]]") //debugging code
 
 	switch(action)
 		if("save_prefs")
@@ -214,21 +282,20 @@
 			has_unsaved = TRUE
 			update_static_data(usr)
 		if("toggle_act")
-			set_var("vore_toggles", params["toggle"], toggle=params["pref"])
+			set_var(params["varname"], params["toggle"], toggle=params["pref"])
 		if("belly_act")
 			var/var_name = params["varname"]
 			var/belly = params["belly"]
 			if (!isnum(belly))
 				return FALSE
 			var/input = get_input(usr, var_name, belly)
-			to_chat(usr, "<span class='red bold'>[var_name]</span>: [isnull(input) ? "null" : input]")
 			set_var(var_name, input, belly)
-		if("othervar_act")
+		if("charvar_act")
 			var/var_name = params["varname"]
 			set_var(var_name, get_input(usr, var_name, 0))
 		if("select_belly")
 			var/belly = params["belly"]
-			if (!isnum(belly))
+			if (!isnum(belly) || belly == selected_belly)
 				return FALSE
 			if (belly > bellies.len)
 				bellies += list(default_belly_info())
@@ -237,6 +304,7 @@
 				vore?.update_bellies()
 			else
 				selected_belly = clamp(belly, 1, bellies.len)
+			needs_update |= UPDATE_BELLY_VARS|UPDATE_BELLY_LIST|UPDATE_CONTENTS
 			update_static_data(usr)
 			has_unsaved = TRUE
 		if("remove_belly")
@@ -251,9 +319,11 @@
 			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
 			if (vore && vore.get_belly_contents(belly, living=TRUE)?.len)
 				alert(usr, "You can't remove a belly with people still inside!", "What are you doing?!", "OK")
+				return
 			bellies.Cut(belly, belly+1)
 			vore?.remove_belly(belly)
 			selected_belly = clamp(selected_belly, 1, bellies.len)
+			needs_update |= UPDATE_BELLY_VARS|UPDATE_BELLY_LIST|UPDATE_CONTENTS
 			update_static_data(usr)
 			has_unsaved = TRUE
 		if("contents_act")
@@ -273,12 +343,14 @@
 				if("Eject")
 					var/obj/vbelly/bellyobj = vore.bellies[belly]
 					if (target in bellyobj.absorbed)
-						vore_message(usr, span_warning("You can't eject someone who's been absorbed!"))
-					bellyobj.release_from_contents(target)
+						vore_message(usr, "You can't eject someone who's been absorbed!", warning=TRUE)
+						return
+					bellyobj.release_from_contents(target, willing=TRUE)
 				if("Transfer")
 					var/belly_names = belly_name_list(TRUE, TRUE)
 					if (target in vore.bellies[belly].absorbed)
-						vore_message(usr, span_warning("You can't transfer someone who's been absorbed!"))
+						vore_message(usr, "You can't transfer someone who's been absorbed!", warning=TRUE)
+						return
 					var/choice = input(usr, "Which belly do you want to transfer to?", "Transfer", belly) as null|anything in belly_names
 					if (isnull(choice) || choice == belly || !(target in vore.get_belly_contents(belly)))
 						return
@@ -307,7 +379,8 @@
 						user.put_in_active_hand(target)
 				if("Devour")
 					if (target in inside.absorbed)
-						vore_message(user, span_warning("You can devour someone who's been absorbed into a bodypart!"))
+						vore_message(user, "You can devour someone who's been absorbed into a bodypart!", warning=TRUE)
+						return
 					user.IngestInside(target, inside.owner, inside)
 				else
 					return
@@ -432,6 +505,22 @@
 
 	return list("Something went wrong", "Something went wrong, tell a coder to look at vore code for the [var_name] var being sent.")
 
+/datum/vore_prefs/proc/switch_toggles(toggle_section) //returns a list with the first value being the name of the section, the second being the name of the var that it is linked to, and the third being a list of the name of each of the toggles in it, in order
+	switch(toggle_section)
+		if(1) //mechanics
+			var/static/list/mechanics		= list("Mechanics", VORE_MECHANICS_TOGGLES, list("Devourable", "Digestable", "Absorbable"))
+			return mechanics
+		if(2) //chat
+			var/static/list/chat_toggles	= list("Chat Toggles", VORE_CHAT_TOGGLES, list("See Examine Messages", "See Struggle Messages", "See Other Messages"))
+			return chat_toggles
+		/*
+		if(3) //sound
+			var/static/list/sound_toggles	= list("Sound", VORE_SOUND_TOGGLES, list("Hear Gulp Sounds", "Hear Idle Belly Sounds", "Hear Digest Sounds", "Hear Struggle Sounds", "Hear Death Sounds"))
+			return sound_toggles
+		*/
+		else
+			return null
+
 /datum/vore_prefs/proc/belly_name_list(add_select=FALSE)
 	var/list/belly_names = list()
 	var/list/keep_track = list()
@@ -444,7 +533,6 @@
 			belly_names[formatted_belly_name] = belly
 	return belly_names
 
-//This should all be redone to be hardcoded for safety but for now it'll do
 /datum/vore_prefs/proc/set_var(var_name, value, belly=null, toggle=null)
 	. = FALSE
 	if (isnull(value))
@@ -453,42 +541,50 @@
 		CRASH("Vore prefs attempted an unsafe set_temp: [STRIP_HTML_SIMPLE(var_name, 20)]!") //this should probably be taken out and merged with the above check before it's merged
 
 	if (belly && (var_name in static_belly_vars()))
+		has_unsaved = TRUE
 		bellies[belly][var_name] = value
+		needs_update |= UPDATE_BELLY_VARS
 		. = TRUE
 
-	if (!. && !(var_name in vars))
-		return
-
-	has_unsaved = TRUE
-	if (!. && toggle)
-		if (isnull(vars[var_name]))
-			vars[var_name] = 0
+	if (!. && !isnull(toggle))
+		if (isnull(vore_toggles[var_name]))
+			vore_toggles[var_name] = 0
 		if (value)
-			vars[var_name] |= (1 << toggle)
+			vore_toggles[var_name] |= (1 << toggle)
 		else
-			vars[var_name] &= ~(1 << toggle)
+			vore_toggles[var_name] &= ~(1 << toggle)
+		has_unsaved = TRUE
+		needs_update |= UPDATE_TOGGLES
 		. = TRUE
-	if (!.)
-		vars[var_name] = value
+
+	if (!. && (var_name in char_vars))
+		has_unsaved = TRUE
+		char_vars[var_name] = value
+		needs_update |= UPDATE_CHAR_VARS
 		. = TRUE
-	if (isliving(prefs?.parent?.mob))
-		if (istype(prefs.parent.mob.loc, /obj/vbelly))
-			var/obj/vbelly/bellyobj = prefs.parent.mob.loc
-			bellyobj.check_mode()
-		var/datum/component/vore/vore = prefs.parent.mob.LoadComponent(/datum/component/vore)
-		vore.update_bellies()
-	update_static_data(usr)
+
+	if (.)
+		var/datum/component/vore/vore = prefs.parent.mob.GetComponent(/datum/component/vore)
+		if (needs_update & UPDATE_TOGGLES)
+			if (istype(prefs.parent.mob.loc, /obj/vbelly))
+				var/obj/vbelly/bellyobj = prefs.parent.mob.loc
+				bellyobj.check_mode()
+			vore?.vore_toggles = vore_toggles
+		if (needs_update & UPDATE_CHAR_VARS)
+			vore?.char_vars = char_vars
+		if (needs_update & UPDATE_BELLY_VARS)
+			vore?.update_belly(belly)
+		update_static_data(usr)
 	return
 
 /datum/vore_prefs/proc/get_var(var_name, belly=null, toggle=null)
 	if (belly && (var_name in static_belly_vars()))
 		return bellies[belly][var_name]
-	if (!(var_name in vars))
-		return
 	if (!isnull(toggle))
-		var/toggle_var = vars[var_name]
-		return (toggle_var & toggle)
-	return vars[var_name]
+		return (vore_toggles[var_name] & toggle)
+	if (!(var_name in char_vars))
+		return
+	return char_vars[var_name]
 
 //debug proc to clear bellies
 /datum/vore_prefs/proc/clear_bellies()
