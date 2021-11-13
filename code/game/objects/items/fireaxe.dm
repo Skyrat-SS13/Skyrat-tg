@@ -70,10 +70,10 @@
 	base_icon_state = "bone_axe"
 	name = "bone axe"
 	desc = "A large, vicious axe crafted out of several sharpened bone plates and crudely tied together. Made of monsters, by killing monsters, for killing monsters."
-
+	armour_penetration = 30 //Very enhanced armor piercing; SKYRAT EDIT
 /obj/item/fireaxe/boneaxe/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=5, force_wielded=32, icon_wielded="[base_icon_state]1") //SKYRAT EDIT; Original force_wielded = 23
+	AddComponent(/datum/component/two_handed, force_unwielded=5, force_wielded=28, icon_wielded="[base_icon_state]1") //SKYRAT EDIT; Original force_wielded = 23
 
 
 /*
