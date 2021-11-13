@@ -155,7 +155,7 @@ export const InsideStack = (props, context) => {
         <Flex direction="column" textColor={null}>
           <Flex wrap="wrap">
             <Flex.Item align="center" preserveWhitespace
-              textAlign="center" mb={1} wrap="wrap">
+              textAlign="center" mb={1} wrap="wrap" fill grow>
               {desc}
             </Flex.Item>
           </Flex>

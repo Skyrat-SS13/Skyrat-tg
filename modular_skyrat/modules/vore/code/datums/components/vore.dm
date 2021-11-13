@@ -24,11 +24,12 @@
 
 /datum/component/vore/proc/update_current_slot()
 	if (!isnull(current_slot))
-		return
+		return current_slot
 	if (ishuman(owner))
 		var/mob/living/carbon/human/character = owner
 		current_slot = character.character_slot
-		return
+		if (!isnull(current_slot))
+			return current_slot
 	current_slot = owner.client?.prefs.default_slot
 	return current_slot
 
@@ -84,6 +85,7 @@
 /mob/living/proc/update_vore_verbs()
 	if (client.prefs?.vr_prefs?.vore_enabled)
 		var/datum/component/vore/vore = LoadComponent(/datum/component/vore)
+		client.prefs.vr_prefs.load_slotted_prefs() //make a way to save before this just in case has_unsaved is TRUE?
 		vore.update_bellies()
 		add_verb(src, /mob/living/verb/Ingest)
 	else

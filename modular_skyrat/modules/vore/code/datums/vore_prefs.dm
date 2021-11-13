@@ -1,3 +1,5 @@
+//original code by: Seris02
+
 /datum/vore_prefs
 	var/path
 	var/datum/preferences/prefs //this is here because for modular reasons we aren't gonna set a client var every time
@@ -534,6 +536,8 @@
 	if (belly && (var_name in static_belly_vars()))
 		has_unsaved = TRUE
 		bellies[belly][var_name] = value
+		if (var_name == "name") //specific case I'm sorry
+			needs_update |= UPDATE_BELLY_LIST
 		needs_update |= UPDATE_BELLY_VARS
 		. = TRUE
 

@@ -38,9 +38,15 @@
 	. = ..()
 
 /obj/vbelly/proc/set_data(_data, bellynum)
+	if(isnull(_data))
+		return
 	for (var/varname in _data)
 		if (!(varname in static_belly_vars()))
 			_data -= varname
+	var/static/default_belly_list = default_belly_info()
+	for (var/varname in default_belly_list)
+		if (!(varname in _data))
+			_data[varname] = default_belly_list[varname]
 	data = _data
 	name = data["name"]
 	desc = data["desc"]
