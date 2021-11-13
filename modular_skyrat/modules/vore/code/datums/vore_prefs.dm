@@ -150,18 +150,9 @@
 
 	return data
 
-/proc/static_test()
-	to_chat(usr, "static test called more than once")
-	return 1
-/proc/const_test()
-	to_chat(usr, "const test called more than once")
-	return 1
-
 // Most data is passed through static, so that we can update it on command, rather than having the server sending boatloads of data all the time
 /datum/vore_prefs/ui_static_data(mob/user)
 	var/list/data = list()
-
-	var/static/a = static_test()
 
 	//true static data goes here
 
@@ -585,7 +576,3 @@
 	if (!(var_name in char_vars))
 		return
 	return char_vars[var_name]
-
-//debug proc to clear bellies
-/datum/vore_prefs/proc/clear_bellies()
-	bellies = list(default_belly_info())
