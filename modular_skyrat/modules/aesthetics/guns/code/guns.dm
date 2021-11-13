@@ -293,13 +293,13 @@
 	name = "\improper Type-69 Surplus Rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	
+
 /obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
 	name = "\improper NT CMG-1"
 	desc = "A bullpup three-round burst .45 PDW with an eerily familiar design. It has a foldable stock and a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	
+
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
 	desc = "A contemporary rifle that just exited its prototype phase and has started production, a rare sight for now. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
@@ -318,7 +318,7 @@
 	caliber = CALIBER_A762
 	max_ammo = 20
 
-/obj/item/gun/ballistic/automatic/c20r/kt45c
+/obj/item/gun/ballistic/automatic/kt45c
 	name = "\improper KT-45c"
 	desc = "A heavily modified bullpup carbine, it's magwell has been altered to make it shoot .32. Has a 'Scarborough Arms - Per falcis, per pravitas' buttstamp."
 	icon_state = "kt45c"
@@ -326,6 +326,12 @@
 	mag_type = /obj/item/ammo_box/magazine/smgm45/kt45c
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT)
 	can_bayonet = FALSE
+	selector_switch_icon = TRUE
+	fire_delay = 2
+	burst_size = 3
+	mag_display = TRUE
+	mag_display_ammo = FALSE
+	empty_indicator = FALSE
 
 /obj/item/ammo_box/magazine/smgm45/kt45c
 	name = "PDW magazine (.32)"

@@ -153,8 +153,7 @@
 	name = "DS-2 Station Admiral"
 	uniform = /obj/item/clothing/under/utility/com/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
-	head = /obj/item/clothing/head/hos/beret/syndicate
-	back = /obj/item/storage/backpack
+	head = /obj/item/clothing/head/caphat/beret/syndicate
 	id = /obj/item/card/id/advanced/black/syndicate/captain
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/stationadmiral
 	ears = /obj/item/radio/headset/interdyne/command/alt
