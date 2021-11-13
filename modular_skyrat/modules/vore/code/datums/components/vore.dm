@@ -68,12 +68,17 @@
 	bellies.Cut(bellynum, bellynum+1)
 	qdel(belly)
 
-//these could probably go somewhere else
-/mob/living/Login()
+//change this to mob/living once/if you make simplemob vore a thing
+/mob/living/carbon/human/Login()
 	. = ..()
 	if (!. || !client)
 		return
 	update_vore_verbs()
+
+/mob/living/Login()
+	. = ..()
+	if (!. || !client)
+		return
 	add_verb(src, /mob/living/proc/OOC_Escape)
 
 /mob/living/proc/update_vore_verbs()

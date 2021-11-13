@@ -529,7 +529,7 @@
 	if (isnull(value))
 		return
 	if (!var_name || !istext(var_name) || (belly && !isnum(belly)) || (toggle && !isnum(toggle)))
-		CRASH("Vore prefs attempted an unsafe set_temp: [STRIP_HTML_SIMPLE(var_name, 20)]!") //this should probably be taken out and merged with the above check before it's merged
+		stack_trace("Vore prefs attempted an unsafe set_temp: [STRIP_HTML_SIMPLE("[var_name]", 20)]!")
 
 	if (belly && (var_name in static_belly_vars()))
 		has_unsaved = TRUE
