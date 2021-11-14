@@ -1,4 +1,4 @@
-/datum/emote/silicon
+/* /datum/emote/silicon
 	mob_type_allowed_typecache = list(/mob/living/silicon)
 	emote_type = EMOTE_AUDIBLE
 
@@ -68,3 +68,4 @@
 	message = "activates their slow clap processor."
 	emote_type = EMOTE_AUDIBLE
 	sound = 'sound/machines/slowclap.ogg'
+*/

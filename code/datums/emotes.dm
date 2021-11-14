@@ -64,6 +64,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	var/sound_volume = 25 //Emote volume
 	var/list/allowed_species
+	var/silicon_allowed = FALSE
 	//SKYRAT EDIT ADDITION END
 
 /datum/emote/New()
@@ -277,6 +278,8 @@
 	//SKYRAT EDIT BEGIN
 	if(allowed_species)
 		var/check = FALSE
+		if(silicon_allowed && issilicon(user))
+			check = TRUE
 		if(ishuman(user))
 			var/mob/living/carbon/human/sender = user
 			if(sender.dna.species.type in allowed_species)
