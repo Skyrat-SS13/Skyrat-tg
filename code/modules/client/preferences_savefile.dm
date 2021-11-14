@@ -102,6 +102,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	if (current_version < 42)
 		// migrate_body_types(savefile) // SKYRAT EDIT - This'll fuck up savefiles
+		return // SKYRAT EDIT - Linters won't shut up otherwise, changing this in the next PR.
+
+	return // SKYRAT EDIT - Linters won't shut up otherwise
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
