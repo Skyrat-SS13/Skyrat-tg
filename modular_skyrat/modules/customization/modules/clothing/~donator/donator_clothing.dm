@@ -1122,3 +1122,24 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	body_parts_covered = CHEST|LEGS|ARMS
 	mutant_variants = NONE
+
+/obj/item/clothing/head/nanotrasen_representative/hubert
+	name = "CC Ensign's cap"
+	desc = "A tailor made peaked cap, denoting the rank of Ensign."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "CCofficerhat"
+
+/obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
+	name = "CC Ensign's armoured vest"
+	desc = "A tailor made Ensign's armoured vest, providing the same protection - but in a more stylish fashion."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "CCvest"
+
+/obj/item/clothing/under/rank/nanotrasen_representative/hubert
+	name = "CC Ensign's uniform"
+	desc = "A tailor-made Ensign's uniform, various medals and chains hang down from it."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "CCofficer"

@@ -376,6 +376,27 @@
 		return FALSE
 	. = ..()
 
+//Hardlight Rollerbed Medicell
+/obj/item/ammo_casing/energy/medical/utility/bed
+	projectile_type = /obj/projectile/energy/medical/utility/bed
+	select_name = "rollerbed"
+	select_color = "#00fff2"
+
+/obj/projectile/energy/medical/utility/bed
+	name = "hardlight bed field"
+
+/obj/projectile/energy/medical/utility/bed/on_hit(mob/living/target)
+	. = ..()
+	if(!istype(target, /mob/living/carbon/human)) //Only checks if they are human, it would make sense for this to work on the dead.
+		return FALSE
+	for(var/obj/structure/bed/roller/medigun in target.loc) //Prevents multiple beds from being spawned on the same turf
+		return FALSE
+	if(HAS_TRAIT(target, TRAIT_FLOORED) || target.resting) //Is the person already on the floor to begin with? Mostly a measure to prevent spamming.
+		new /obj/structure/bed/roller/medigun(target.loc)
+		return TRUE
+	else
+		return FALSE
+
 //Objects Used by medicells.
 /obj/item/clothing/suit/toggle/labcoat/hospitalgown/hardlight
 	name = "Hardlight Hospital Gown"
@@ -414,6 +435,39 @@
 	bodypart.heal_damage(0.25,0.25) //Reduced healing rate over original
 	heals_left--
 	if(heals_left <= 0)
+		qdel(src)
+
+//Hardlight Roller Bed.
+/obj/structure/bed/roller/medigun
+	name = "Hardlight Roller Bed"
+	desc = "A Roller Bed made out of Hardlight"
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/mediguns/misc.dmi'
+	max_integrity = 1
+	buildstacktype = FALSE //It would not be good if people could use this to farm materials.
+	var/deploytime = 20 SECONDS //How long the roller beds lasts for without someone buckled to it.
+
+/obj/structure/bed/roller/medigun/Initialize()
+	. = ..()
+	addtimer(CALLBACK(src, .proc/check_bed), deploytime)
+
+/obj/structure/bed/roller/medigun/proc/check_bed() //Checks to see if anyone is buckled to the bed, if not the bed will qdel itself.
+	if(!has_buckled_mobs())
+		qdel(src) //Deletes the roller bed, mostly meant to prevent stockpiling and clutter
+		return TRUE //There is nothing on the bed.
+	else
+		return FALSE //There is something on the bed.
+
+/obj/structure/bed/roller/medigun/post_unbuckle_mob(mob/living/M)
+	. = ..()
+	qdel(src)
+
+/obj/structure/bed/roller/medigun/MouseDrop(over_object, src_location, over_location)
+	if(over_object == usr && Adjacent(usr))
+		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+			return FALSE
+		if(has_buckled_mobs())
+			return FALSE
+		usr.visible_message(span_notice("[usr] deactivates \the [src]."), span_notice("You deactivate \the [src]."))
 		qdel(src)
 
 //End of utility
