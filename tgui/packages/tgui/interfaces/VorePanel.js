@@ -27,11 +27,11 @@ const toggleTooltips = (toggle) => {
     case "Leave Essence Cube":
       return "Do you leave an essence cube behind when you're digested?";
     case "See Examine Messages":
-      return "Do you want to see someone's custom examine messages if they've eaten someone else?"
+      return "Do you want to see someone's custom examine messages if they've eaten someone else?";
     case "See Struggle Messages":
-      return "Do you want to see someone's custom struggle messages if someone they've eaten struggles inside them?"
+      return "Do you want to see someone's custom struggle messages if someone they've eaten struggles inside them?";
     case "See Other Messages":
-      return "Do you want to see the other miscellaneous vore messages?"
+      return "Do you want to see the other miscellaneous vore messages?";
     default:
       return null;
   }
