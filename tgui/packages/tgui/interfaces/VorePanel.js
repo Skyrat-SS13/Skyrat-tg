@@ -16,6 +16,26 @@ const modeToText = (mode) => {
       return mode;
   }
 };
+const toggleTooltips = (toggle) => {
+  switch (toggle) {
+    case "Devourable":
+      return "Can you be vored?";
+    case "Digestable":
+      return "Can you be digested?";
+    case "Absorbable":
+      return "Can you be absorbed?";
+    case "Leave Essence Cube":
+      return "Do you leave an essence cube behind when you're digested?";
+    case "See Examine Messages":
+      return "Do you want to see someone's custom examine messages if they've eaten someone else?"
+    case "See Struggle Messages":
+      return "Do you want to see someone's custom struggle messages if someone they've eaten struggles inside them?"
+    case "See Other Messages":
+      return "Do you want to see the other miscellaneous vore messages?"
+    default:
+      return null;
+  }
+};
 const switchNames = {
   "name": "Name",
   "desc": "Description",
@@ -194,6 +214,7 @@ export const ToggleSection = (props, context) => {
           <Button
             content={current[2][i]}
             color={val ? "green" : "red"}
+            tooltip={toggleTooltips(current[2][i])}
             onClick={() => act('toggle_act', {
               varname: current[1],
               pref: i+1,

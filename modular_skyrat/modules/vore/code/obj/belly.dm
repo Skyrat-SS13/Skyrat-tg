@@ -169,7 +169,10 @@
 					for (var/obj/item/item in prey)
 						if (!prey.dropItemToGround(item))
 							qdel(item)
-					qdel(prey)
+					if (prey.check_vore_toggle(LEAVE_ESSENCE_CUBE, VORE_MECHANICS_TOGGLES))
+						//new /obj/item/essence_cube(src, prey)
+					else
+						qdel(prey)
 					should_update = TRUE
 				else
 					all_done = FALSE

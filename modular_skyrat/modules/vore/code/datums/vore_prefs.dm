@@ -500,10 +500,10 @@
 
 	return list("Something went wrong", "Something went wrong, tell a coder to look at vore code for the [var_name] var being sent.")
 
-/datum/vore_prefs/proc/switch_toggles(toggle_section) //returns a list with the first value being the name of the section, the second being the name of the var that it is linked to, and the third being a list of the name of each of the toggles in it, in order
+/datum/vore_prefs/proc/switch_toggles(toggle_section) //returns a list with the first value being the name of the section, the second being the name of the var that it is linked to, the third being a list of the name of each of the toggles in it, in order, and the fourth being a list of the tooltips of the respective prefs
 	switch(toggle_section)
 		if(1) //mechanics
-			var/static/list/mechanics		= list("Mechanics", VORE_MECHANICS_TOGGLES, list("Devourable", "Digestable", "Absorbable"))
+			var/static/list/mechanics		= list("Mechanics", VORE_MECHANICS_TOGGLES, list("Devourable", "Digestable", "Absorbable", "Leave Essence Cube"))
 			return mechanics
 		if(2) //chat
 			var/static/list/chat_toggles	= list("Chat Toggles", VORE_CHAT_TOGGLES, list("See Examine Messages", "See Struggle Messages", "See Other Messages"))
@@ -570,7 +570,7 @@
 		if (needs_update & UPDATE_CHAR_VARS)
 			vore?.char_vars = char_vars
 		if (needs_update & UPDATE_BELLY_VARS)
-			vore?.update_belly(belly)
+			vore?.update_belly(belly, bellies[belly])
 		update_static_data(usr)
 	return
 

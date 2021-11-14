@@ -3,11 +3,12 @@
 //TOGGLES - EVERYTHING YOU NEED TO UPDATE FOR NEW THINGS IS IN THIS SECTION OR IN THE switch_toggles() PROC IN vore_prefs.dm (although if creating a new section, update sanitize_vars() in vore_prefs.dm)
 
 #define VORE_MECHANICS_TOGGLES "mechanics"
-#define VORE_MECHANICS_TOGGLES_DEFAULT (DEVOURABLE)
+#define VORE_MECHANICS_TOGGLES_DEFAULT (DEVOURABLE|LEAVE_ESSENCE_CUBE)
 #define DEVOURABLE (1 << 1)
 #define DIGESTABLE (1 << 2)
 #define ABSORBABLE (1 << 3)
-//#define SIMPLEMOB (1 << 4)
+#define LEAVE_ESSENCE_CUBE (1 << 4)
+//#define SIMPLEMOB (1 << 5)
 
 #define VORE_CHAT_TOGGLES "chat"
 #define VORE_CHAT_TOGGLES_DEFAULT (SEE_EXAMINES|SEE_STRUGGLES|SEE_OTHER_MESSAGES)
