@@ -96,7 +96,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 41)
 		migrate_preferences_to_tgui_prefs_menu()
 
-/datum/preferences/proc/update_character(current_version)
+/datum/preferences/proc/update_character(current_version, savefile/savefile)
 	if (current_version < 41)
 		migrate_character_to_tgui_prefs_menu()
 
