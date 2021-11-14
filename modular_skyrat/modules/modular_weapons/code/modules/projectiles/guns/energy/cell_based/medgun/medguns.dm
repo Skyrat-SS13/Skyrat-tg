@@ -239,6 +239,11 @@
 	icon_state = "salve"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/salve
 
+/obj/item/weaponcell/medical/utility/bed
+	name = "Hardlight Roller Bed Medicell"
+	desc = "A medicell that summons a temporary roller bed under a patient already lying on the floor"
+	icon_state = "gown"
+	ammo_type = /obj/item/ammo_casing/energy/medical/utility/bed
 
 //Empty Medicell//
 /obj/item/device/custom_kit/empty_cell //Having the empty cell as an upgrade kit sounds jank, but it should work well.
