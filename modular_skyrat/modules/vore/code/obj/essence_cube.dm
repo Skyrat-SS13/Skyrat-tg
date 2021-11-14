@@ -31,7 +31,7 @@
 		spin_away(delete_body=FALSE)
 
 /obj/item/essence_cube/attack_self(mob/user)
-	var/static/error = span_warning("They can't be revived right now!")
+	var/error = span_warning("They can't be revived right now!")
 	if (!ismob(loc))
 		to_chat(user, span_warning("You can't use the essence cube without having it in your hand!"))
 		return
@@ -73,20 +73,17 @@
 	if (is_deleting)
 		return
 	is_deleting = TRUE
-	var/static/speen = span_warning("The essence cube begins to spin wildly!")
-	visible_message(speen)
+	visible_message(span_warning("The essence cube begins to spin wildly!"))
 	addtimer(CALLBACK(src, .proc/delete_self, fail, delete_body), (2 SECONDS))
 	SpinAnimation(6)
 
 /obj/item/essence_cube/proc/delete_self(fail=TRUE, delete_body=TRUE)
-	var/static/delete = span_warning("<b>The essence cube suddenly spins itself out of existence!</b>")
-	var/static/succeed = span_warning("[to_revive.real_name] appears suddenly appears where the essence cube was!")
 	UnregisterSignal(to_revive, COMSIG_PARENT_PREQDELETED)
 	if (fail)
-		visible_message(delete)
+		visible_message(span_warning("<b>The essence cube suddenly spins itself out of existence!</b>"))
 		if (delete_body)
 			qdel(to_revive)
 	else
-		visible_message(succeed)
+		visible_message(span_warning("[to_revive.real_name] appears suddenly appears where the essence cube was!"))
 		to_revive.forceMove(loc.drop_location()) //where the cube was
 	qdel(src)
