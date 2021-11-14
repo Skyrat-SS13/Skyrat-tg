@@ -41,11 +41,7 @@ SUBSYSTEM_DEF(economy)
 	var/bounty_modifier = 1
 	///The modifier multiplied to the value of cargo pack prices.
 	var/pack_price_modifier = 1
-<<<<<<< HEAD
-	var/market_crashing = FALSE
 	var/fire_counter_for_paycheck = 0 //SKYRAT EDIT ADDITION
-=======
->>>>>>> 136239a6537 (market crashing is now a status strait to avoid concurrence problems. (#62706))
 
 	/// Total value of exported materials.
 	var/export_total = 0
