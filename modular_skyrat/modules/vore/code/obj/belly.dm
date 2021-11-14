@@ -48,11 +48,11 @@
 		if (!(varname in _data))
 			_data[varname] = default_belly_list[varname]
 	data = _data
-	name = data["name"]
-	desc = data["desc"]
-	mode = data["mode"]
-	can_taste = data["can_taste"] == "Yes" ? TRUE : FALSE
-	swallow_verb = data["swallow_verb"]
+	name = data[BELLY_NAME]
+	desc = data[BELLY_DESC]
+	mode = data[BELLY_MODE]
+	can_taste = data[BELLY_CAN_TASTE] == "Yes" ? TRUE : FALSE
+	swallow_verb = data[BELLY_SWALLOW_VERB]
 	check_mode()
 	if (!isnull(bellynum))
 		belly_ref = bellynum
@@ -261,7 +261,9 @@
 	if (!(to_release in contents) || (willing && (to_release in absorbed)))
 		return FALSE
 	to_release.forceMove(drop_location())
-	send_vore_message(owner, span_warning("%a|[owner]|You|| eject%a|s||| [to_release] from %a|[owner.p_their()]|your|| [name]!"), SEE_OTHER_MESSAGES)
+	var/pred_message = "You eject [to_release] from your [name]!"
+	var/audience_message = "[owner] ejects [to_release] from [owner.p_their()] [name]!"
+	send_vore_message(owner, pred_message, null, audience_message, SEE_OTHER_MESSAGES)
 
 /obj/vbelly/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
@@ -294,6 +296,6 @@
 	for (var/mob/living/prey_target in contents)
 		ignored_mobs += prey_target
 		vore_message(prey_target, prey_message, SEE_STRUGGLES, warning=TRUE)
-	var/out_message = vore_replace(data[LIST_STRUGGLE_OUTSIDE], owner, prey, name)
-	if (out_message)
-		send_vore_message(owner, span_warning(out_message), SEE_STRUGGLES, prey=prey, ignored=ignored_mobs)
+	var/pred_and_audience_message = vore_replace(data[LIST_STRUGGLE_OUTSIDE], owner, prey, name)
+	if (pred_and_audience_message)
+		send_vore_message(owner, span_warning(pred_and_audience_message), null, span_warning(pred_and_audience_message), SEE_STRUGGLES, prey=prey, ignored=ignored_mobs)

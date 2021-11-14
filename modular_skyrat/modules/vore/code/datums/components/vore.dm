@@ -115,15 +115,21 @@
 		to_chat(src, span_warning("[prey] can't be eaten!"))
 		return
 	var/datum/component/vore/vore = LoadComponent(/datum/component/vore)
-	send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|is attempting|begin|begins| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|[p_their()]|your|[p_their()]| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey=prey)
+	var/belly_name = vore.bellies[vore.selected_belly].name
+	var/belly_swallow = vore.bellies[vore.selected_belly].swallow_verb
+	var/pred_message = span_warning("You begin to [belly_swallow] [prey] into your [belly_name]!")
+	var/prey_message = span_warning("[src] begins to [belly_swallow] you into [p_their()] [belly_name]!")
+	var/audience_message = span_warning("[src] is attempting to [belly_swallow] [prey] into [p_their()] [belly_name]!")
+	send_vore_message(src, pred_message, prey_message, audience_message, SEE_OTHER_MESSAGES, prey=prey)
 	if (!do_after(src, VORE_EATING_TIME, prey))
 		return
 	var/obj/vbelly/belly = vore?.bellies[vore.selected_belly]
 	if (belly)
-		send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|manages|manage|manages| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|[p_their()]|your|[p_their()]| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey=prey)
+		var/pred_message2 = span_warning("You manage to [belly_swallow] [prey] into your [belly_name]!")
+		var/prey_message2 = span_warning("[src] manages to [belly_swallow] you into [p_their()] [belly_name]!")
+		var/audience_message2 = span_warning("[src] manages to [belly_swallow] [prey] into [p_their()] [belly_name]!")
+		send_vore_message(src, pred_message2, prey_message2, audience_message2, SEE_OTHER_MESSAGES, prey=prey)
 		prey.forceMove(belly)
-		if (client?.prefs?.vr_prefs)
-			SStgui.update_uis(client.prefs.vr_prefs)
 
 /mob/living/proc/IngestInside(mob/living/prey, mob/living/inside_of, obj/vbelly/belly_inside)
 	if (prey == src)
@@ -132,14 +138,20 @@
 		to_chat(src, span_warning("[prey] can't be eaten!"))
 		return
 	var/datum/component/vore/vore = LoadComponent(/datum/component/vore)
-	vore_message(inside_of, "Someone inside of you is eating someone else!", SEE_OTHER_MESSAGES, VORE_CHAT_TOGGLES, warning=TRUE)
-	send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|is attempting|begin|begins| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|[p_their()]|your|[p_their()]| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey=prey, only=belly_inside.get_belly_contents(living=TRUE))
+	var/belly_name = vore.bellies[vore.selected_belly].name
+	var/belly_swallow = vore.bellies[vore.selected_belly].swallow_verb
+	var/pred_message = span_warning("You begin to [belly_swallow] [prey] into your [belly_name]!")
+	var/prey_message = span_warning("[src] begins to [belly_swallow] you into [p_their()] [belly_name]!")
+	var/audience_message = span_warning("[src] is attempting to [belly_swallow] [prey] into [p_their()] [belly_name]!")
+	vore_message(inside_of, "Someone inside of you is eating someone else!", SEE_OTHER_MESSAGES, warning=TRUE)
+	send_vore_message(src, pred_message, prey_message, audience_message, SEE_OTHER_MESSAGES, prey=prey, only=belly_inside.get_belly_contents(living=TRUE))
 	if (!do_after(src, VORE_EATING_TIME, prey))
 		return
 	var/obj/vbelly/belly = vore?.bellies[vore.selected_belly]
 	if (belly)
+		var/pred_message2 = span_warning("You manage to [belly_swallow] [prey] into your [belly_name]!")
+		var/prey_message2 = span_warning("[src] manages to [belly_swallow] you into [p_their()] [belly_name]!")
+		var/audience_message2 = span_warning("[src] manages to [belly_swallow] [prey] into [p_their()] [belly_name]!")
 		vore_message(inside_of, "Someone inside of you is eating someone else!", SEE_OTHER_MESSAGES, VORE_CHAT_TOGGLES, warning=TRUE)
-		send_vore_message(src, span_warning("%a|[src]|You|[src]| %a|manages|manage|manages| to [vore.bellies[vore.selected_belly].swallow_verb] %a|[prey]|[prey]|you| into %a|[p_their()]|your|[p_their()]| [vore.bellies[vore.selected_belly].name]!"), SEE_OTHER_MESSAGES, prey=prey, only=belly_inside.get_belly_contents(living=TRUE))
+		send_vore_message(src, pred_message2, prey_message2, audience_message2, SEE_OTHER_MESSAGES, prey=prey, only=belly_inside.get_belly_contents(living=TRUE))
 		prey.forceMove(belly)
-		if (client?.prefs?.vr_prefs)
-			SStgui.update_uis(client.prefs.vr_prefs)

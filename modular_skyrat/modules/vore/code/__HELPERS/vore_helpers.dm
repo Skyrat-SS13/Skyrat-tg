@@ -19,9 +19,9 @@
 		return prey_replace.Replace(message, "$1")
 	return audience_replace.Replace(message, "$1")
 
-/proc/send_vore_message(atom/movable/pred, message, pref_respecting, section=VORE_CHAT_TOGGLES, prey=null, replace=TRUE, ignored=null, audience=TRUE, only=null)
+/proc/send_vore_message(atom/movable/pred, pred_message, prey_message, audience_message, pref_respecting, section=VORE_CHAT_TOGGLES, prey=null, replace=TRUE, ignored=null, audience=TRUE, only=null)
 	var/turf/T = get_turf(pred)
-	if (!message || (!T && !only && audience))
+	if (!pred || !pred_message || (!T && !only && audience))
 		return
 	var/list/hearers = only ? only : (audience ? get_hearers_in_view(DEFAULT_MESSAGE_RANGE, pred) : list(pred, prey))
 	for (var/mob/hearer in hearers)
@@ -31,10 +31,12 @@
 			continue
 		if (!only && audience && hearer.lighting_alpha > LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE && T.is_softly_lit() && !in_range(T,hearer))
 			continue
-		var/message_replace = message
-		if (replace)
-			message_replace = person_vore_replace(message, hearer, pred, prey)
-		to_chat(hearer, message_replace)
+		if (hearer == pred)
+			to_chat(hearer, pred_message)
+		else if (prey && hearer == prey)
+			to_chat(hearer, prey_message)
+		else
+			to_chat(hearer, audience_message)
 
 /proc/vore_message(mob/target, message, pref_respecting, section=VORE_CHAT_TOGGLES, warning=FALSE)
 	if (!istype(target) || !message)
