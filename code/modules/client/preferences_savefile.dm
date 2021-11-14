@@ -102,6 +102,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	if (current_version < 42)
 		// migrate_body_types(savefile) // SKYRAT EDIT - This'll fuck up savefiles
+		migrate_mentor() // SKYRAT EDIT - Make mentors alive again
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
