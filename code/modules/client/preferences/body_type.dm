@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 /* SKYRAT EDIT REMOVAL
-=======
 #define USE_GENDER "Use gender"
 
->>>>>>> 0ab5f14870b (Allows any character to use the body type setting regardless of gender (#62733))
 /datum/preference/choiced/body_type
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	priority = PREFERENCE_PRIORITY_BODY_TYPE
@@ -26,13 +23,8 @@
 	if (!..(preferences))
 		return FALSE
 
-<<<<<<< HEAD
-	var/gender = preferences.read_preference(/datum/preference/choiced/gender)
-	return gender != MALE && gender != FEMALE
-*/
-=======
 	var/datum/species/species = preferences.read_preference(/datum/preference/choiced/species)
 	return initial(species.sexes)
 
 #undef USE_GENDER
->>>>>>> 0ab5f14870b (Allows any character to use the body type setting regardless of gender (#62733))
+*/
