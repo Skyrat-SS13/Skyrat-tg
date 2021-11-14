@@ -55,7 +55,6 @@
 	attack_verb_simple = list("attack", "poke", "jab", "tear", "lacerate", "gore")
 	wound_bonus = -15
 	bare_wound_bonus = 15
-	reach = 2
 	sharpness = SHARP_POINTY
 
 /obj/item/forging/reagent_weapon/spear/ComponentInitialize()
