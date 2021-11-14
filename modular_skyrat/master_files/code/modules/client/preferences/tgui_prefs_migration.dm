@@ -99,5 +99,5 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 	tgui_prefs_migration = TRUE
 	WRITE_FILE(S["tgui_prefs_migration"], tgui_prefs_migration)
 
-/datum/preference/proc/migrate_mentor()
+/datum/preferences/proc/migrate_mentor()
 	write_preference(GLOB.preference_entries[/datum/preference/toggle/admin/auto_dementor], FALSE) // Someone thought it was a good idea to make it start at true :)
