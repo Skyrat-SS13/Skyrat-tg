@@ -98,3 +98,6 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 	to_chat(parent, examine_block(span_greentext("Preference migration successful! You may safely interact with the preferences menu.")))
 	tgui_prefs_migration = TRUE
 	WRITE_FILE(S["tgui_prefs_migration"], tgui_prefs_migration)
+
+/datum/preferences/proc/migrate_mentor()
+	write_preference(GLOB.preference_entries[/datum/preference/toggle/admin/auto_dementor], FALSE) // Someone thought it was a good idea to make it start at true :)
