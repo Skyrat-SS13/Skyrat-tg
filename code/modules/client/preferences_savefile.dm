@@ -101,7 +101,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		migrate_character_to_tgui_prefs_menu()
 
 	if (current_version < 42)
-		migrate_body_types(savefile)
+		// migrate_body_types(savefile) // SKYRAT EDIT - This'll fuck up savefiles
 
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
