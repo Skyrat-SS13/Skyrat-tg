@@ -152,15 +152,11 @@
 /mob/living/simple_animal/bot/medbot/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)
 
-/mob/living/simple_animal/bot/medbot/get_controls(mob/user)
-	var/dat
-	dat += hack(user)
-	dat += showpai(user)
-	dat += "<TT><B>Medical Unit Controls v1.1</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
-	dat += "<br>Behaviour controls are [locked ? "locked" : "unlocked"]<hr>"
+// Variables sent to TGUI
+/mob/living/simple_animal/bot/medbot/ui_data(mob/user)
+	var/list/data = ..()
 	if(!locked || issilicon(user) || isAdminGhostAI(user))
+<<<<<<< HEAD
 		dat += "<TT>Healing Threshold: "
 		dat += "<a href='?src=[REF(src)];adj_threshold=-10'>--</a> "
 		dat += "<a href='?src=[REF(src)];adj_threshold=-5'>-</a> "
@@ -213,6 +209,48 @@
 				speak("New knowledge found! Surgical efficacy improved to [round(heal_amount/initial(heal_amount)*100)]%!")
 	Skyrat Edit End */
 	update_controls()
+=======
+		data["custom_controls"]["heal_threshold"] = heal_threshold
+		data["custom_controls"]["speaker"] = !shut_up
+		data["custom_controls"]["crit_alerts"] = declare_crit
+		data["custom_controls"]["stationary_mode"] = stationary_mode
+		data["custom_controls"]["sync_tech"] = TRUE
+	return data
+
+// Actions received from TGUI
+/mob/living/simple_animal/bot/medbot/ui_act(action, params)
+	. = ..()
+	if(. || (locked && !usr.has_unlimited_silicon_privilege))
+		return
+	switch(action)
+		if("heal_threshold")
+			var/adjust_num = round(text2num(params["threshold"]))
+			heal_threshold = adjust_num
+			if(heal_threshold < 5)
+				heal_threshold = 5
+			if(heal_threshold > 75)
+				heal_threshold = 75
+		if("speaker")
+			shut_up = !shut_up
+		if("crit_alerts")
+			declare_crit = !declare_crit
+		if("stationary_mode")
+			stationary_mode = !stationary_mode
+			path = list()
+			update_appearance()
+		if("sync_tech")
+			var/oldheal_amount = heal_amount
+			var/tech_boosters
+			for(var/index in linked_techweb.researched_designs)
+				var/datum/design/surgery/healing/design = SSresearch.techweb_design_by_id(index)
+				if(!istype(design))
+					continue
+				tech_boosters++
+			if(tech_boosters)
+				heal_amount = (round(tech_boosters/2,0.1)*initial(heal_amount))+initial(heal_amount) //every 2 tend wounds tech gives you an extra 100% healing, adjusting for unique branches (combo is bonus)
+				if(oldheal_amount < heal_amount)
+					speak("New knowledge found! Surgical efficacy improved to [round(heal_amount/initial(heal_amount)*100)]%!")
+>>>>>>> 8946d261553 (Simplebot TGUI conversion (#62748))
 	return
 
 /mob/living/simple_animal/bot/medbot/attackby(obj/item/W as obj, mob/user as mob, params)
