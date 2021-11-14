@@ -149,7 +149,7 @@
 	desc = "Recovered from the aftermath of a revolt aboard Defense Outpost Theta Aegis, in which a seemingly endless tide of Assistants caused heavy casualities among Nanotrasen military forces."
 	attack_verb_continuous = list("gores")
 	attack_verb_simple = list("gore")
-	force=15
+	force = 15
 
 /obj/item/spear/grey_tide/ComponentInitialize()
 	. = ..()
@@ -182,8 +182,9 @@
 	force = 12
 	throwforce = 22
 	reach = 2 //SKYRAT EDIT
-	armour_penetration = 20 //Enhanced armor piercing; SKYRAT EDIT; Original armour_penetration = 15
-
+//SKYRAT EDIT REMOVAL BEGIN - Hollow-point spears (get it because HP bad at penetrating armor *background laughter*)
+//	armour_penetration = 20 //Enhanced armor piercing; SKYRAT EDIT; Original armour_penetration = 15
+//SKYRAT EDIT REMOVAL END
 /obj/item/spear/bonespear/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=12, force_wielded=16, icon_wielded="[icon_prefix]1") //SKYRAT EDIT; Original force_wielded = 20
