@@ -217,6 +217,17 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/datum/team/team = get_team()
 	if(team)
 		team.remove_member(owner)
+<<<<<<< HEAD
+=======
+	SEND_SIGNAL(owner, COMSIG_ANTAGONIST_REMOVED, src)
+
+	// Remove HUDs that they should no longer see
+	var/mob/living/current = owner.current
+	for (var/datum/atom_hud/alternate_appearance/basic/has_antagonist/antag_hud as anything in GLOB.has_antagonist_huds)
+		if (!antag_hud.mobShouldSee(current))
+			antag_hud.remove_hud_from(current)
+
+>>>>>>> dd30542dff8 (Fix team antag HUDs displaying when they shouldn't, and the other way around, fix round end antag HUDs (#62771))
 	qdel(src)
 
 /**
@@ -405,6 +416,26 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/datum/objective/hijack/H = locate() in objectives
 	return H?.hijack_speed_override || hijack_speed
 
+<<<<<<< HEAD
+=======
+/// Adds a HUD that will show you other members with the same antagonist.
+/// If an antag typepath is passed to `antag_to_check`, will check that, otherwise will use the source type.
+/datum/antagonist/proc/add_team_hud(mob/target, antag_to_check)
+	QDEL_NULL(team_hud)
+
+	team_hud = target.add_alt_appearance(
+		/datum/atom_hud/alternate_appearance/basic/has_antagonist,
+		"antag_team_hud_[REF(src)]",
+		image('icons/mob/hud.dmi', target, antag_hud_name),
+		antag_to_check || type,
+	)
+
+	// Add HUDs that they couldn't see before
+	for (var/datum/atom_hud/alternate_appearance/basic/has_antagonist/antag_hud as anything in GLOB.has_antagonist_huds)
+		if (antag_hud.mobShouldSee(owner.current))
+			antag_hud.add_hud_to(owner.current)
+
+>>>>>>> dd30542dff8 (Fix team antag HUDs displaying when they shouldn't, and the other way around, fix round end antag HUDs (#62771))
 //This one is created by admin tools for custom objectives
 /datum/antagonist/custom
 	antagpanel_category = "Custom"
