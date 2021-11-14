@@ -73,11 +73,11 @@
 		belly.mass_release_from_contents()
 
 /proc/default_belly_info()
-	return list("name" = "belly", \
-				"desc" = "", \
-				"swallow_verb" = "swallow",\
-				"can_taste" = "Yes",\
-				"mode" = VORE_MODE_HOLD,\
+	return list(BELLY_NAME = "belly", \
+				BELLY_DESC = "", \
+				BELLY_SWALLOW_VERB = "swallow",\
+				BELLY_CAN_TASTE = "Yes",\
+				BELLY_MODE = VORE_MODE_HOLD,\
 				LIST_DIGEST_PREY = list(),\
 				LIST_DIGEST_PRED = list(),\
 				LIST_ABSORB_PREY = list(),\
@@ -89,11 +89,11 @@
 				LIST_EXAMINE = list())
 
 /proc/static_belly_vars() //this could probably be better
-	var/static/list/belly_vars = list(	"name", \
-										"desc", \
-										"swallow_verb",\
-										"can_taste",\
-										"mode",\
+	var/static/list/belly_vars = list(	BELLY_NAME, \
+										BELLY_DESC, \
+										BELLY_SWALLOW_VERB,\
+										BELLY_CAN_TASTE,\
+										BELLY_MODE,\
 										LIST_DIGEST_PREY,\
 										LIST_DIGEST_PRED,\
 										LIST_ABSORB_PREY,\

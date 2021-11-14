@@ -152,84 +152,85 @@
 /obj/vbelly/process()
 	var/all_done = TRUE //should it stop processing
 	var/should_update = FALSE //should it call a vore prefs ui update on mobs inside, and on the owner
-	if (mode == VORE_MODE_HOLD)
-		STOP_PROCESSING(SSvore, src)
-	if (mode == VORE_MODE_DIGEST)
-		for (var/mob/living/prey in src)
-			if (!prey.check_vore_toggle(DIGESTABLE, VORE_MECHANICS_TOGGLES))
-				continue
-			prey.apply_damage(4, BURN)
-			if (prey.stat == DEAD)
-				var/pred_message = vore_replace(data[LIST_DIGEST_PRED], owner, prey, name)
-				var/prey_message = vore_replace(data[LIST_DIGEST_PREY], owner, prey, name)
-				vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
-				vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
-				prey.release_belly_contents()
-				for (var/obj/item/item in prey)
-					if (!prey.dropItemToGround(item))
-						qdel(item)
-				qdel(prey)
-				should_update = TRUE
-			else
-				all_done = FALSE
+	switch(mode)
+		if (VORE_MODE_HOLD)
+			all_done = TRUE
+		if (VORE_MODE_DIGEST)
+			for (var/mob/living/prey in src)
+				if (!prey.check_vore_toggle(DIGESTABLE, VORE_MECHANICS_TOGGLES))
+					continue
+				prey.apply_damage(4, BURN)
+				if (prey.stat == DEAD)
+					var/pred_message = vore_replace(data[LIST_DIGEST_PRED], owner, prey, name)
+					var/prey_message = vore_replace(data[LIST_DIGEST_PREY], owner, prey, name)
+					vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
+					vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
+					prey.release_belly_contents()
+					for (var/obj/item/item in prey)
+						if (!prey.dropItemToGround(item))
+							qdel(item)
+					qdel(prey)
+					should_update = TRUE
+				else
+					all_done = FALSE
 
-	//may wanna make this use nutrition in the future or something
-	if (mode == VORE_MODE_ABSORB)
-		for (var/mob/living/prey in absorbed)
-			if (!prey.check_vore_toggle(ABSORBABLE, VORE_MECHANICS_TOGGLES))
-				absorbed -= prey
-				should_update = TRUE
-				continue
-			if (absorbed[prey] < 100)
-				absorbed[prey] += 2
-				all_done = FALSE
-		for (var/mob/living/prey in src)
-			if ((prey in absorbed) || !prey.check_vore_toggle(ABSORBABLE, VORE_MECHANICS_TOGGLES))
-				if (prey in absorbing)
+		//may wanna make this use nutrition in the future or something
+		if (VORE_MODE_ABSORB)
+			for (var/mob/living/prey in absorbed)
+				if (!prey.check_vore_toggle(ABSORBABLE, VORE_MECHANICS_TOGGLES))
+					absorbed -= prey
+					should_update = TRUE
+					continue
+				if (absorbed[prey] < 100)
+					absorbed[prey] += 2
+					all_done = FALSE
+			for (var/mob/living/prey in src)
+				if ((prey in absorbed) || !prey.check_vore_toggle(ABSORBABLE, VORE_MECHANICS_TOGGLES))
+					if (prey in absorbing)
+						absorbing -= prey
+					continue
+				if (!absorbing[prey])
+					absorbing[prey] = 0
+				absorbing[prey] += 2 //fires every 2 seconds, so this will take 100 seconds
+				if (absorbing[prey] >= 100)
+					RegisterSignal(prey, COMSIG_PARENT_EXAMINE, .proc/examine_absorb)
+					var/pred_message = vore_replace(data[LIST_ABSORB_PRED], owner, prey, name)
+					var/prey_message = vore_replace(data[LIST_ABSORB_PREY], owner, prey, name)
+					vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
+					vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
 					absorbing -= prey
-				continue
-			if (!absorbing[prey])
-				absorbing[prey] = 0
-			absorbing[prey] += 2 //fires every 2 seconds, so this will take 100 seconds
-			if (absorbing[prey] >= 100)
-				RegisterSignal(prey, COMSIG_PARENT_EXAMINE, .proc/examine_absorb)
-				var/pred_message = vore_replace(data[LIST_ABSORB_PRED], owner, prey, name)
-				var/prey_message = vore_replace(data[LIST_ABSORB_PREY], owner, prey, name)
-				vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
-				vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
-				absorbing -= prey
-				absorbed[prey] = 100
-				should_update = TRUE
-			else
-				all_done = FALSE
+					absorbed[prey] = 100
+					should_update = TRUE
+				else
+					all_done = FALSE
 
-	if (mode == VORE_MODE_UNABSORB)
-		for (var/mob/living/prey in absorbed)
-			if (!(prey in src))
-				absorbed -= prey
-				should_update = TRUE
-				continue
-			absorbed[prey] -= 2 //fires every 2 seconds, so this will take 100 seconds
-			if (absorbed[prey] <= 0)
-				UnregisterSignal(prey, COMSIG_PARENT_EXAMINE)
-				var/pred_message = vore_replace(data[LIST_UNABSORB_PRED], owner, prey, name)
-				var/prey_message = vore_replace(data[LIST_UNABSORB_PREY], owner, prey, name)
-				vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
-				vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
-				absorbed -= prey
-				should_update = TRUE
-			else
-				all_done = FALSE
-		for (var/mob/living/prey in absorbing)
-			if (!(prey in src))
-				absorbing -= prey
-				should_update = TRUE
-				continue
-			absorbing[prey] -= 2
-			if (absorbing[prey] <= 0)
-				absorbing -= prey
-			else
-				all_done = FALSE
+		if (VORE_MODE_UNABSORB)
+			for (var/mob/living/prey in absorbed)
+				if (!(prey in src))
+					absorbed -= prey
+					should_update = TRUE
+					continue
+				absorbed[prey] -= 2 //fires every 2 seconds, so this will take 100 seconds
+				if (absorbed[prey] <= 0)
+					UnregisterSignal(prey, COMSIG_PARENT_EXAMINE)
+					var/pred_message = vore_replace(data[LIST_UNABSORB_PRED], owner, prey, name)
+					var/prey_message = vore_replace(data[LIST_UNABSORB_PREY], owner, prey, name)
+					vore_message(owner, pred_message, SEE_OTHER_MESSAGES, warning=TRUE)
+					vore_message(prey, prey_message, SEE_OTHER_MESSAGES, warning=TRUE)
+					absorbed -= prey
+					should_update = TRUE
+				else
+					all_done = FALSE
+			for (var/mob/living/prey in absorbing)
+				if (!(prey in src))
+					absorbing -= prey
+					should_update = TRUE
+					continue
+				absorbing[prey] -= 2
+				if (absorbing[prey] <= 0)
+					absorbing -= prey
+				else
+					all_done = FALSE
 
 	if (all_done)
 		STOP_PROCESSING(SSvore, src)
@@ -267,8 +268,7 @@
 
 	if (!user.check_vore_toggle(SEE_EXAMINES))
 		return
-	var/list/examine_message_list = data[LIST_EXAMINE]
-	if (!examine_list?.len)
+	if (!length(data[LIST_EXAMINE]))
 		return
 	for (var/mob/living/living_mob in contents)
 		examine_list += span_warning(vore_replace(data[LIST_EXAMINE], owner, living_mob, name))

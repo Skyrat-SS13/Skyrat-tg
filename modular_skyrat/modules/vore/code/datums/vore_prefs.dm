@@ -167,11 +167,11 @@
 										LIST_STRUGGLE_INSIDE, \
 										LIST_STRUGGLE_OUTSIDE, \
 										LIST_EXAMINE)
-	var/static/list/other_belly_types = list("name", \
-										"desc", \
-										"mode", \
-										"swallow_verb", \
-										"can_taste")
+	var/static/list/other_belly_types = list(BELLY_NAME, \
+										BELLY_DESC, \
+										BELLY_MODE, \
+										BELLY_SWALLOW_VERB, \
+										BELLY_CAN_TASTE)
 	var/static/list/character_types = list("tastes_of")
 
 	var/datum/component/vore/vore = user.GetComponent(/datum/component/vore)
@@ -307,7 +307,7 @@
 				return
 			if (bellies.len <= 1)
 				return
-			var/yes = input(usr, "Confirm", "Are you certain you want to delete the [get_var("name", belly)]? If you decide afterwards that you want to un-delete it, just click the \"Discard Changes\" button. However, once you save your prefs, there will be no going back. Are you certain?", "No") as null|anything in list("Yes", "No")
+			var/yes = input(usr, "Confirm", "Are you certain you want to delete the [get_var(BELLY_NAME, belly)]? If you decide afterwards that you want to un-delete it, just click the \"Discard Changes\" button. However, once you save your prefs, there will be no going back. Are you certain?", "No") as null|anything in list("Yes", "No")
 			if (yes != "Yes")
 				return
 			var/datum/component/vore/vore = prefs?.parent?.mob?.GetComponent(/datum/component/vore)
@@ -394,21 +394,21 @@
 		return
 	belly = belly || selected_belly //not sure if this needs to be here
 	//things that can go in a non-multiline text box
-	var/static/list/onelineinputs = list("name", "tastes_of", "swallow_verb")
+	var/static/list/onelineinputs = list(BELLY_NAME, "tastes_of", BELLY_SWALLOW_VERB)
 	//things that only have two options, this is really only just because I like how it looks
-	var/static/list/alertinputs = list(	"can_taste" = list("Yes", "No"),\
+	var/static/list/alertinputs = list(	BELLY_CAN_TASTE = list("Yes", "No"),\
 										"inside_act" = list("Examine", "Pick up"),\
 										"inside_act_living" = list("Examine", "Devour"))
 	//things that have more than two options - if the corresponding list doesn't have any arguments for the keys, then put the var name into the not_a_var list, along with a default value to select
-	var/static/list/listinputs = list(	"mode" = list(	"Hold" = VORE_MODE_HOLD, \
-														"Digest" = VORE_MODE_DIGEST, \
-														"Absorb" = VORE_MODE_ABSORB, \
-														"Unabsorb" = VORE_MODE_UNABSORB), \
+	var/static/list/listinputs = list(	BELLY_MODE = list(	"Hold" = VORE_MODE_HOLD, \
+															"Digest" = VORE_MODE_DIGEST, \
+															"Absorb" = VORE_MODE_ABSORB, \
+															"Unabsorb" = VORE_MODE_UNABSORB), \
 										"contents_act" = list(	"Examine", \
 																"Eject", \
 																"Transfer"))
 	//things that require a multiline text box - put the key as the var name, and the value as TRUE if it needs to be joined from a list and split into one afterwards
-	var/static/list/multilineinputs = list("desc" = FALSE, \
+	var/static/list/multilineinputs = list(BELLY_DESC = FALSE, \
 											LIST_DIGEST_PREY = TRUE, \
 											LIST_DIGEST_PRED = TRUE, \
 											LIST_ABSORB_PREY = TRUE, \
@@ -419,7 +419,7 @@
 											LIST_STRUGGLE_OUTSIDE = TRUE, \
 											LIST_EXAMINE = TRUE)
 	//name of var - value to take if output is null, null means take the previous value
-	var/static/list/cant_be_empty = list("tastes_of" = "nothing in particular", "name" = null, "swallow_verb" = "swallow")
+	var/static/list/cant_be_empty = list("tastes_of" = "nothing in particular", BELLY_NAME = null, BELLY_SWALLOW_VERB = "swallow")
 	var/static/list/not_a_var = list("contents_act" = "Examine") //name of the input - default value
 	var/output
 	var/name_and_desc = get_desc_for_input(var_name, misc_info)
@@ -462,15 +462,15 @@
 	var/static/common_insert = "%pred will be replaced with the predator's name, %prey with the prey's name, and %belly with the name of the belly. Make sure to put two lines between each seperate message."
 	switch(var_name)
 		if ("name")
-			return list("Name", "Enter the new name of the [get_var("name", selected_belly)].")
+			return list("Name", "Enter the new name of the [get_var(BELLY_NAME, selected_belly)].")
 		if ("desc")
-			return list("Description", "Enter the new description for the [get_var("name", selected_belly)].")
+			return list("Description", "Enter the new description for the [get_var(BELLY_NAME, selected_belly)].")
 		if ("mode")
-			return list("Mode", "Select the new mode of the [get_var("name", selected_belly)].")
+			return list("Mode", "Select the new mode of the [get_var(BELLY_NAME, selected_belly)].")
 		if ("swallow_verb")
-			return list("Swallow Verb", "Enter the new swallow verb of the [get_var("name", selected_belly)]. Remember to put it in the infinitive tense, ie swallow, gulp, etc.")
+			return list("Swallow Verb", "Enter the new swallow verb of the [get_var(BELLY_NAME, selected_belly)]. Remember to put it in the infinitive tense, ie swallow, gulp, etc.")
 		if ("can_taste")
-			return list("Can Taste", "Can the [get_var("name", selected_belly)] taste things?")
+			return list("Can Taste", "Can the [get_var(BELLY_NAME, selected_belly)] taste things?")
 		if ("tastes_of")
 			return list("Tastes like", "What does your character taste like?")
 		if (LIST_DIGEST_PREY)
@@ -478,13 +478,13 @@
 		if (LIST_DIGEST_PRED)
 			return list("Pred Digest Messages", "Enter the new digest messages for you to be shown, one will be selected when the prey is digested. [common_insert]")
 		if (LIST_ABSORB_PREY)
-			return list("Prey Absorb Messages", "Enter the new absorb messages for prey to be shown, one will be selected when the prey is absorbed into the [get_var("name", selected_belly)]. [common_insert]")
+			return list("Prey Absorb Messages", "Enter the new absorb messages for prey to be shown, one will be selected when the prey is absorbed into the [get_var(BELLY_NAME, selected_belly)]. [common_insert]")
 		if (LIST_ABSORB_PRED)
-			return list("Pred Absorb Messages", "Enter the new absorb messages for you to be shown, one will be selected when the prey is absorbed into the [get_var("name", selected_belly)]. [common_insert]")
+			return list("Pred Absorb Messages", "Enter the new absorb messages for you to be shown, one will be selected when the prey is absorbed into the [get_var(BELLY_NAME, selected_belly)]. [common_insert]")
 		if (LIST_UNABSORB_PREY)
-			return list("Prey Unabsorb Messages", "Enter the new unabsorb messages for prey to be shown, one will be selected when the prey is unabsorbed from the [get_var("name", selected_belly)]. [common_insert]")
+			return list("Prey Unabsorb Messages", "Enter the new unabsorb messages for prey to be shown, one will be selected when the prey is unabsorbed from the [get_var(BELLY_NAME, selected_belly)]. [common_insert]")
 		if (LIST_UNABSORB_PRED)
-			return list("Pred Unabsorb Messages", "Enter the new unabsorb messages for you to be shown, one will be selected when the prey is unabsorbed from the [get_var("name", selected_belly)]. [common_insert]")
+			return list("Pred Unabsorb Messages", "Enter the new unabsorb messages for you to be shown, one will be selected when the prey is unabsorbed from the [get_var(BELLY_NAME, selected_belly)]. [common_insert]")
 		if (LIST_STRUGGLE_INSIDE)
 			return list("Struggle Messages (Inside)", "Enter the new struggle messages (shown to those inside the belly), one will be selected when one of the prey resists. [common_insert]")
 		if (LIST_STRUGGLE_OUTSIDE)
@@ -520,7 +520,7 @@
 	var/list/belly_names = list()
 	var/list/keep_track = list()
 	for (var/belly in 1 to bellies.len)
-		var/bellyname = get_var("name", belly=belly)
+		var/bellyname = get_var(BELLY_NAME, belly=belly)
 		keep_track[bellyname] = keep_track[bellyname] ? (keep_track[bellyname] + 1) : 1
 		var/formatted_belly_name = bellyname + ((keep_track[bellyname] > 1) ? " ([keep_track[bellyname]])" : "")
 		belly_names += formatted_belly_name
@@ -538,7 +538,7 @@
 	if (belly && (var_name in static_belly_vars()))
 		has_unsaved = TRUE
 		bellies[belly][var_name] = value
-		if (var_name == "name") //specific case I'm sorry
+		if (var_name == BELLY_NAME) //specific case I'm sorry
 			needs_update |= UPDATE_BELLY_LIST
 		needs_update |= UPDATE_BELLY_VARS
 		. = TRUE

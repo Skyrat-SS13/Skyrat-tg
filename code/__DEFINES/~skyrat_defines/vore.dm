@@ -58,6 +58,12 @@
 #define VORE_MODE_UNABSORB				3
 //#define VORE_MODE_NOISY				4
 
+
+#define BELLY_NAME						"name"
+#define BELLY_DESC						"desc"
+#define BELLY_MODE						"mode"
+#define BELLY_SWALLOW_VERB				"swallow_verb"
+#define BELLY_CAN_TASTE					"can_taste"
 #define LIST_DIGEST_PREY				"dmp" //digest_messages_prey
 #define LIST_DIGEST_PRED				"dmo" //digest_messages_owner
 #define LIST_ABSORB_PREY				"amp" //absorb_messages_prey

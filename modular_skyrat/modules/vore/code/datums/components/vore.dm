@@ -62,9 +62,13 @@
 			belly.set_data(vore.bellies[bellynum], belly_ref)
 
 /datum/component/vore/proc/update_belly(bellynum, data)
+	if (!bellynum || bellynum > bellies.len)
+		return
 	bellies[bellynum].set_data(data)
 
 /datum/component/vore/proc/remove_belly(bellynum)
+	if (!bellynum || bellynum > bellies.len)
+		return
 	var/obj/vbelly/belly = bellies[bellynum]
 	belly.mass_release_from_contents()
 	bellies.Cut(bellynum, bellynum+1)
