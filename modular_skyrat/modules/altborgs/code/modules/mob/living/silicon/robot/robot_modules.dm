@@ -4,20 +4,6 @@
 	var/mob/living/silicon/robot/cyborg = loc
 	add_verb(cyborg , /mob/living/silicon/robot/proc/robot_lay_down)
 	add_verb(cyborg , /mob/living/silicon/robot/proc/rest_style)
-/* - TODO ADD SLEEPERS
-	var/obj/item/dogborg/sleeper/K9/flavour/I = new(src)
-	if(istype(src, /obj/item/robot_model/engineering))
-		I.icon_state = "decompiler"
-	if(istype(src, /obj/item/robot_model/security))
-		I.icon_state = "sleeperb"
-	if(istype(src, /obj/item/robot_model/medical))
-		I.icon_state = "sleeper"
-	if(istype(src, /obj/item/robot_model/service))
-		I.icon_state = "servicer"
-		if(cyborg_base_icon == "scrubpup")
-			I.icon_state = "compactor"
-	basic_modules += I
-*/
 	rebuild_modules()
 
 //ROBOT ADDITIONAL MODULES
