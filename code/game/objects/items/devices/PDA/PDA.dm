@@ -279,28 +279,18 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 				dat += "<h4>General Functions</h4>"
 				dat += "<ul>"
-<<<<<<< HEAD
-				dat += "<li><a href='byond://?src=[REF(src)];choice=1'>[PDAIMG(notes)]Notekeeper</a></li>"
-				dat += "<li><a href='byond://?src=[REF(src)];choice=2'>[PDAIMG(mail)]Messenger</a></li>"
-				dat += "<li><a href='byond://?src=[REF(src)];choice=6'>[PDAIMG(skills)]Skill Tracker</a></li>"
-				dat += "<li><a href='byond://?src=[REF(src)];choice=41'>[PDAIMG(notes)]View Crew Manifest</a></li>" // SKYRAT EDIT ADD - MANIFESTS PUBLICALLY
-=======
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_NOTEKEEPER]'>[PDAIMG(notes)]Notekeeper</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_MESSENGER]'>[PDAIMG(mail)]Messenger</a></li>"
 				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_SKILL_TRACKER]'>[PDAIMG(skills)]Skill Tracker</a></li>"
->>>>>>> 026857414f6 (The detomatix cart now sends forged messages that make PDAs explode if one tries to reply to them instead of detonating them right off the bat. (#62494))
-
+				dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_CREW_MANIFEST]'>[PDAIMG(notes)]View Crew Manifest</a></li>" // SKYRAT EDIT - PUBLIC MANIFESTS
+				
 				if (cartridge)
 					if (cartridge.access & CART_CLOWN)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Honk'>[PDAIMG(honk)]Honk Synthesizer</a></li>"
 						dat += "<li><a href='byond://?src=[REF(src)];choice=Trombone'>[PDAIMG(honk)]Sad Trombone</a></li>"
-<<<<<<< HEAD
 				//	if (cartridge.access & CART_MANIFEST)
 				//		dat += "<li><a href='byond://?src=[REF(src)];choice=41'>[PDAIMG(notes)]View Crew Manifest</a></li>" SKYRAT EDIT REMOVAL - MANIFESTS PUBLIC
-=======
-					if (cartridge.access & CART_MANIFEST)
-						dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_CREW_MANIFEST]'>[PDAIMG(notes)]View Crew Manifest</a></li>"
->>>>>>> 026857414f6 (The detomatix cart now sends forged messages that make PDAs explode if one tries to reply to them instead of detonating them right off the bat. (#62494))
+
 					if(cartridge.access & CART_STATUS_DISPLAY)
 						dat += "<li><a href='byond://?src=[REF(src)];choice=[PDA_UI_STATUS_DISPLAY]'>[PDAIMG(status)]Set Status Display</a></li>"
 					dat += "</ul>"
