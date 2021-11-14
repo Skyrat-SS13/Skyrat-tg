@@ -50,7 +50,7 @@
 
 
 /datum/emote/living/human/beep2
-	key = "beep2"
+	key = "beep"
 	key_third_person = "beeps"
 	message = "beeps."
 	message_param = "beeps at %t."
