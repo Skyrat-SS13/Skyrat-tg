@@ -602,7 +602,7 @@
 
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
-	mood_change = 1
+	mood_change = 0
 
 ///////////////////////
 ///AROUSAL INDICATOR///
