@@ -231,3 +231,14 @@
 	dimension_x = 46
 	dimension_y = 34
 	center = TRUE
+
+/datum/sprite_accessory/wings/mammal/spider
+	name = "Spider legs"
+	icon_state = "spider"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/robowing
+	name = "mechanical dragon wings"
+	icon_state = "robowing"
+	color_src = USE_MATRIXED_COLORS
+
