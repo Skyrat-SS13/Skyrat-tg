@@ -1,0 +1,90 @@
+/**
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
+ @use 'sass:color';
+ @use 'sass:meta';
+
+ $neutral: rgb(0, 0, 0);
+
+ @use '../colors.scss' with (
+   $primary: $neutral,
+   $fg-map-keys: (),
+   $bg-map-keys: (),
+ );
+ @use '../base.scss' with (
+   $color-bg: color.scale($neutral, $lightness: 0%),
+   $color-bg-grad-spread: 0%,
+ );
+
+ .theme-pulvencoder {
+   // Components
+   @include meta.load-css('../components/Button.scss', $with: (
+     'color-default': color.scale($neutral, $lightness: -30%),
+     'color-transparent-text': color.scale($neutral, $lightness: 30%),
+   ));
+   @include meta.load-css('../components/ProgressBar.scss', $with: (
+     'color-default-fill': $neutral,
+     'background-color': rgb(9, 0, 129),
+   ));
+   @include meta.load-css('../components/Section.scss');
+
+   // Layouts
+   @include meta.load-css('../layouts/Layout.scss');
+   @include meta.load-css('../layouts/Window.scss');
+   @include meta.load-css('../layouts/TitleBar.scss', $with: (
+     'background-color': color.scale($neutral, $lightness: 0%),
+   ));
+
+   .Layout__content {
+     background-image: url('../../../../../modular_skyrat/modules/modular_items/lewd_items/icons/UI/encoder_base.png');
+      position: absolute;
+      background-size: 100%;
+    }
+
+    .Layout__content--scrollable {
+      overflow-y: hidden;
+      margin-bottom: 0;
+    }
+
+    .Window__contentPadding {
+      margin: 0;
+      // IE8: Calc not supported
+      height: 100%;
+      // 0.01 is needed to make the scrollbar not appear
+      // due to rem rendering inaccuracies in IE11.
+      height: calc(100% - 1.01rem);
+    }
+
+    .Window__resizeHandle__se {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      width: 0;
+      height: 0;
+      height: 0;
+      cursor: 'pointer';
+    }
+
+    .Window__resizeHandle__s {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0;
+      height: 0;
+      cursor: 'pointer';
+    }
+
+    .Window__resizeHandle__e {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      width: 0;
+      cursor: 'pointer';
+    }
+  }

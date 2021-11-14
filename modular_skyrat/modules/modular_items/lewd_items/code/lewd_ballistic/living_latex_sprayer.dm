@@ -285,7 +285,6 @@
 	// Space for other handlers, for example emag
 
 	update_appearance()
-	A.update_appearance()
 	return
 
 /obj/projectile/bullet/latexball/proc/livinglatexspread(mob/target, list/latexprogram)
