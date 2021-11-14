@@ -6,7 +6,7 @@
 ///NYMPHOMANIA///
 /////////////////
 
-/datum/quirk/nymphomania
+/*/datum/quirk/nymphomania
 	name = "Nymphomania"
 	desc = "You have an overwhelming urge to have sex with someone. Constantly."
 	value = -2 //This gives you uncomfortable stuff. But you can change it to 0. Don't change to positive values, it will be dumb.
@@ -153,7 +153,7 @@
 			continue
 		if(istype(M))
 			return TRUE
-	return FALSE
+	return FALSE */
 
 //////////////////////
 ///SEXUAL OBSESSION///
