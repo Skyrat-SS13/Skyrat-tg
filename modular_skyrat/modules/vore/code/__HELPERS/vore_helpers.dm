@@ -7,18 +7,6 @@
 		message = replacetext(message, replacement, replacements[replacement])
 	return message
 
-//syntax: %a|what the text seen by the audience is|what the text seen by the pred is|what the text seen by the prey is|
-//ie "%a|pred_here|You|pred_here| %a|manages|manage|manages| to eat %a|prey_here|prey_here|you|!"
-/proc/person_vore_replace(message, mob/target, mob/living/pred=null, mob/living/prey=null)
-	var/static/regex/audience_replace = regex(@"%a\|([\s\S]*?)\|[\s\S]*?\|[\s\S]*?\|", "g")
-	var/static/regex/pred_replace = regex(@"%a\|[\s\S]*?\|([\s\S]*?)\|[\s\S]*?\|", "g")
-	var/static/regex/prey_replace = regex(@"%a\|[\s\S]*?\|[\s\S]*?\|([\s\S]*?)\|", "g")
-	if (target == pred)
-		return pred_replace.Replace(message, "$1")
-	if (target == prey)
-		return prey_replace.Replace(message, "$1")
-	return audience_replace.Replace(message, "$1")
-
 /proc/send_vore_message(atom/movable/pred, pred_message, prey_message, audience_message, pref_respecting, section=VORE_CHAT_TOGGLES, prey=null, replace=TRUE, ignored=null, audience=TRUE, only=null)
 	var/turf/T = get_turf(pred)
 	if (!pred || !pred_message || (!T && !only && audience))
