@@ -72,7 +72,7 @@
 	desc = "A large, vicious axe crafted out of several sharpened bone plates and crudely tied together. Made of monsters, by killing monsters, for killing monsters."
 //SKYRAT EDIT ADDITION BEGIN - Slight antimob axe buff
 	var/faction_bonus_force = 9 //Bonus force dealt against certain factions. Blatantly stolen from the arrow code, because shitcode
-	var/list/nemesis_factions = list("mining", "boss") //Any mob with a faction that exists in this list will take bonus damage/effects
+	var/static/list/nemesis_factions = list("mining", "boss") //Any mob with a faction that exists in this list will take bonus damage/effects
 
 /obj/item/fireaxe/boneaxe/ComponentInitialize()
 	. = ..()
