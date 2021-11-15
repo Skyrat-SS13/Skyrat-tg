@@ -267,6 +267,33 @@ From every rule, there's exceptions, due to many circumstances. Don't think abou
 Due to the way byond loads files, it has become necessary to make a different folder for handling our modular defines.
 That folder is **`code/__DEFINES/~skyrat_defines`**, in which you can add them to the existing files, or create those files as necessary.
 
+### Module folder layout
+
+To keep form and ensure most modules are easy to navigate and to keep control of the amount of files and folders being made in the repository, you are required to follow this layout.
+
+Ensure the folder names are exactly as stated.
+
+Top most folder: module_id
+
+**code**: Any .DM files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+
+- Good: /modular_skyrat/modules/example_module/code/disease_mob.dm
+- Bad: /modular_skyrat/modules/example_module/code/modules/antagonists/disease/disease_mob.dm
+
+**icons**: Any .DMI files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+
+- Good: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
+- Bad: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
+
+**sound**: Any SOUND files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
+
+- Good: See above.
+- Bad: See above.
+
+The readme should go into the parent folder, module_id.
+
+DO NOT MIX AND MATCH FILE TYPES IN FOLDERS!
+
 ## Exemplary PR's
 
 Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
