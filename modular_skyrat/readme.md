@@ -282,7 +282,7 @@ Top most folder: module_id
 
 **icons**: Any .DMI files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
 
-- Good: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
+- Good: /modular_skyrat/modules/example_module/icons/mining_righthand.dmi
 - Bad: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
 
 **sound**: Any SOUND files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
@@ -292,7 +292,7 @@ Top most folder: module_id
 
 The readme should go into the parent folder, module_id.
 
-DO NOT MIX AND MATCH FILE TYPES IN FOLDERS!
+**DO NOT MIX AND MATCH FILE TYPES IN FOLDERS!**
 
 ## Exemplary PR's
 
