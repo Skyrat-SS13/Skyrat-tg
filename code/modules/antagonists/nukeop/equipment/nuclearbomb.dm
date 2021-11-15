@@ -504,7 +504,7 @@ GLOBAL_VAR(station_nuke_source)
 	SSticker.roundend_check_paused = FALSE
 
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
-	var/turf/bomb_location = get_turf(src)
+	// var/turf/bomb_location = get_turf(src) // SKYRAT EDIT REMOVAL - Shut up linters
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
 	/* SKYRAT EDIT REMOVAL
 	if(off_station != NUKE_NEAR_MISS) // Don't kill people in the station if the nuke missed, even if we are technically on the same z-level
