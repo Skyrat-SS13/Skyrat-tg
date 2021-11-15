@@ -49,7 +49,7 @@
 	cooldown = 2 SECONDS
 
 
-/datum/emote/living/human/beep2
+/datum/emote/living/human/beep
 	key = "beep"
 	key_third_person = "beeps"
 	message = "beeps."
