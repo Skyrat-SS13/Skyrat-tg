@@ -294,6 +294,14 @@ The readme should go into the parent folder, module_id.
 
 **DO NOT MIX AND MATCH FILE TYPES IN FOLDERS!**
 
+### Commenting out code - DON'T DO IT!
+
+If you are commenting out redundant code, do not comment it out, instead, delete it.
+
+Even if you think someone is going to redo whatever it is you're commenting out, don't, gitblame exists for a reason.
+
+This also applies to files, do not comment out entire files, just delete them instead. This helps us keep down on filebloat and pointless comments.
+
 ## Exemplary PR's
 
 Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
