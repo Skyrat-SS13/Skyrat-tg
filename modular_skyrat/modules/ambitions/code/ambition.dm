@@ -61,7 +61,7 @@
 		dat += "<HR>"
 
 	dat += "<b>Antagonists are supposed to provide excitement and intrigue, drive a story with the crew, and provide fun and interesting experience for people involved. <BR> Remember, it's not about winning or losing, but about the story and interactions, this is a roleplay server.</b><BR><BR>"
-	dat += "<i>Here you write your ambitions for your antagonist round! Ambitions are your motive and what you plan to accomplish throught the round.</i>"
+	dat += "<i>Here you write your ambitions for your antagonist round! Ambitions are your motive and what you plan to accomplish throughout the round.</i>"
 	dat += "<BR><i>After filling all things out and submitting your ambition, your uplink/powers will unlock.</i>"
 	//SKYRAT EDIT ADDITION -- RECORDS MENU
 	dat += "<BR><i>For your narrative, you could try thinking about your character's current conflicts, use the View Crew Exploitables verb in the OOC tab, or many other things.</i>"
