@@ -430,7 +430,6 @@ But i keeped it as unobtainable breain trauma, so admins can add it through VV *
 //Mood boost
 /datum/mood_event/bimbo
 	description = span_purple("So-o... Help..less... Lo-ve it!\n")
-	mood_change = 0 //i deserve the right to keep this here even if the parent is also 0 just to say that the psychopath that coded it is jackshit insane for making it +20 previously
 
 ///////////////
 ///MASOCHISM///
