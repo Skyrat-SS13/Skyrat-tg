@@ -1,7 +1,7 @@
 /obj/machinery/posialert
 	name = "automated positronic alert console"
 	desc = "A console that will ping when a positronic personality is available for download."
-	icon = 'modular_skyrat/modules/posi_alert/icons/terminals.dmi'
+	icon = 'modular_skyrat/modules/positronic_alert_console/icons/terminals.dmi'
 	icon_state = "posialert"
 	var/inuse = FALSE
 
