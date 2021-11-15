@@ -41,13 +41,13 @@
 	damage = 7
 	range = 5
 	mine_range = 5
-	dismemberment = 30 //SKYRAT EDIT CHANGE
+	dismemberment = 25 //SKYRAT EDIT CHANGE
 
 /obj/projectile/plasma/adv/mech
 	damage = 10
 	range = 9
 	mine_range = 7 //SKYRAT EDIT CHANGE - ORIGINAL: 3
-	dismemberment = 40 //SKYRAT EDIT CHANGE
+	dismemberment = 30 //SKYRAT EDIT CHANGE
 
 /obj/projectile/plasma/turret
 	//Between normal and advanced for damage, made a beam so not the turret does not destroy glass
