@@ -509,13 +509,13 @@
 	severity = 6
 	quality = NEGATIVE
 
-/datum/spacevine_mutation/low_layer
-	name = "low-layer"
+/datum/spacevine_mutation/domesticated
+	name = "domesticated"
 	plant_color = "#a9adb1"
 	severity = 3
 	quality = POSITIVE
 
-/datum/spacevine_mutation/low_layer/on_spread(obj/structure/spacevine/vine_object, turf/target)
+/datum/spacevine_mutation/domesticated/on_spread(obj/structure/spacevine/vine_object, turf/target)
 	vine_object.layer = TURF_LAYER
 	vine_object.plane = FLOOR_PLANE
 
@@ -809,7 +809,8 @@
 		vine_mutation.on_grow(src)
 
 /obj/structure/spacevine/proc/entangle_mob()
-	if(!has_buckled_mobs() && prob(25))
+	var/datum/spacevine_mutation/domesticated/domesticated = locate() in mutations
+	if(!has_buckled_mobs() && prob(25) && !domesticated)
 		for(var/mob/living/entangled_mob in src.loc)
 			entangle(entangled_mob)
 			if(has_buckled_mobs())
@@ -828,9 +829,11 @@
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinals)
 	var/turf/stepturf = get_step(src,direction)
-	for(var/obj/machinery/door/target_door in stepturf.contents)
-		if(prob(50))
-			target_door.open()
+	var/datum/spacevine_mutation/domesticated/domesticated = locate() in mutations
+	if(!domesticated)
+		for(var/obj/machinery/door/target_door in stepturf.contents)
+			if(prob(50))
+				target_door.open()
 	var/datum/spacevine_mutation/spacewalking/space_mutation = locate() in mutations
 	if(!isspaceturf(stepturf) && stepturf.Enter(src))
 		spread_two(stepturf, direction)
