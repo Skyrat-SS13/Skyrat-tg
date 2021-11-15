@@ -179,6 +179,12 @@
 	buildstackamount = 2
 	item_chair = null
 	var/mutable_appearance/armrest
+	// SKYRAT EDIT START - Making this shit easier to subtype
+	/// The icon file for the armrest's overlay.
+	var/armrest_icon = 'icons/obj/chairs.dmi'
+	/// The icon state of the armrest's overlay.
+	var/armrest_icon_state = "comfychair_armrest"
+	// SKYRAT EDIT END
 
 /obj/structure/chair/comfy/Initialize(mapload)
 	armrest = GetArmrest()
@@ -186,7 +192,7 @@
 	return ..()
 
 /obj/structure/chair/comfy/proc/GetArmrest()
-	return mutable_appearance('icons/obj/chairs.dmi', "comfychair_armrest")
+	return mutable_appearance(armrest_icon, armrest_icon_state) // SKYRAT EDIT - Making it easier to subtype - Original: return mutable_appearance('icons/obj/chairs.dmi', "comfychair_armrest")
 
 /obj/structure/chair/comfy/Destroy()
 	QDEL_NULL(armrest)
