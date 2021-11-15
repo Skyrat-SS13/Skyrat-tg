@@ -345,17 +345,14 @@
 
 /datum/mood_event/orgasm
 	description = span_purple("Woah... This pleasant tiredness... I love it.\n")
-	mood_change = 0 //8 is not fair(tm)
 	timeout = 5 MINUTES
 
 /datum/mood_event/climaxself
 	description = span_purple("I just came in my own underwear. Messy.\n")
-	mood_change = 0
 	timeout = 4 MINUTES
 
 /datum/mood_event/overgasm
 	description = span_warning("Uhh... I don't want to be horny anymore.\n") //Me too, buddy. Me too.
-	mood_change = 0
 	timeout = 10 MINUTES
 
 /mob/living/carbon/human/proc/climax(manual = TRUE)
@@ -577,7 +574,6 @@
 //Mood boost for masochist
 /datum/mood_event/perv_spanked
 	description = span_purple("Ah, yes! More! Punish me!\n")
-	mood_change = 0
 	timeout = 5 MINUTES
 
 /////////////////////
@@ -602,7 +598,6 @@
 
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
-	mood_change = 0
 
 ///////////////////////
 ///AROUSAL INDICATOR///
