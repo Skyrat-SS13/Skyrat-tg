@@ -64,6 +64,7 @@
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES
 	var/sound_volume = 25 //Emote volume
 	var/list/allowed_species
+	/// Are silicons explicitely allowed to use this emote?
 	var/silicon_allowed = FALSE
 	//SKYRAT EDIT ADDITION END
 
