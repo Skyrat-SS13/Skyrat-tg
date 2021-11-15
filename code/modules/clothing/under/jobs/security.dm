@@ -87,9 +87,9 @@
 			RESKIN_WORN_ICON_STATE = "junior_officer"
 		),
 		"Battle Dress Uniform" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/modular_items/icons/obj/modular_clothing.dmi',
+			RESKIN_ICON = 'modular_skyrat/modules/modular_items/icons/modular_clothing.dmi',
 			RESKIN_ICON_STATE = "fatigues",
-			RESKIN_WORN_ICON = 'modular_skyrat/modules/modular_items/icons/mob/modular_clothing.dmi',
+			RESKIN_WORN_ICON = 'modular_skyrat/modules/modular_items/icons/modular_clothing.dmi',
 			RESKIN_WORN_ICON_STATE = "fatigues"
 		),
 		"Sol" = list(
