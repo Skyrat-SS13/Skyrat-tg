@@ -294,7 +294,7 @@ The readme should go into the parent folder, module_id.
 
 **DO NOT MIX AND MATCH FILE TYPES IN FOLDERS!**
 
-### Commenting out code - DON'T DO IT!
+### Commenting out code - DON'T DO IT
 
 If you are commenting out redundant code, do not comment it out, instead, delete it.
 
