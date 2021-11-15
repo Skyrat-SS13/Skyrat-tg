@@ -506,13 +506,11 @@ GLOBAL_VAR(station_nuke_source)
 /obj/machinery/nuclearbomb/proc/really_actually_explode(off_station)
 	var/turf/bomb_location = get_turf(src)
 	Cinematic(get_cinematic_type(off_station),world,CALLBACK(SSticker,/datum/controller/subsystem/ticker/proc/station_explosion_detonation,src))
-<<<<<<< HEAD
-	explosion(src, 40, 50, 70, 80, TRUE, TRUE) //SKYRAT EDIT ADDITION
-	//INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, z) SKYRAT EDIT REMOVAL
-=======
+	/* SKYRAT EDIT REMOVAL
 	if(off_station != NUKE_NEAR_MISS) // Don't kill people in the station if the nuke missed, even if we are technically on the same z-level
 		INVOKE_ASYNC(GLOBAL_PROC,.proc/KillEveryoneOnZLevel, bomb_location.z)
->>>>>>> 9b0ee745bfc (The Nuke kills everyone when it goes off. (#62807))
+	*/
+	explosion(src, 40, 50, 70, 80, TRUE, TRUE) //SKYRAT EDIT ADDITION
 
 /obj/machinery/nuclearbomb/proc/get_cinematic_type(off_station)
 	if(off_station < NUKE_NEAR_MISS)
