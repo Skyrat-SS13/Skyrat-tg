@@ -302,6 +302,8 @@ Even if you think someone is going to redo whatever it is you're commenting out,
 
 This also applies to files, do not comment out entire files, just delete them instead. This helps us keep down on filebloat and pointless comments.
 
+**This does not apply to non-modular changes.**
+
 ## Exemplary PR's
 
 Here are a couple PR's that are great examples of the guide being followed, reference them if you are stuck:
