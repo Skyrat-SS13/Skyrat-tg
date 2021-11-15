@@ -186,7 +186,7 @@
 
 //SKYRAT EDIT ADDITION BEGIN - Slight antimob spear buff
 	var/faction_bonus_force = 8 //Bonus force dealt against certain factions. Blatantly stolen from the arrow code, because shitcode
-	var/list/nemesis_factions = list("mining", "boss") //Any mob with a faction that exists in this list will take bonus damage/effects
+	var/static/list/nemesis_factions = list("mining", "boss") //Any mob with a faction that exists in this list will take bonus damage/effects
 
 /obj/item/spear/bonespear/ComponentInitialize()
 	. = ..()
