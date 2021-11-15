@@ -276,16 +276,19 @@ Ensure the folder names are exactly as stated.
 Top most folder: module_id
 
 **code**: Any .DM files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
-Good: /modular_skyrat/modules/example_module/code/disease_mob.dm
-Bad: /modular_skyrat/modules/example_module/code/modules/antagonists/disease/disease_mob.dm
+
+- Good: /modular_skyrat/modules/example_module/code/disease_mob.dm
+- Bad: /modular_skyrat/modules/example_module/code/modules/antagonists/disease/disease_mob.dm
 
 **icons**: Any .DMI files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
-Good: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
-Bad: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
+
+- Good: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
+- Bad: /modular_skyrat/modules/example_module/icons/mob/inhands/equipment/mining_righthand.dmi
 
 **sound**: Any SOUND files must go in here, DO NOT COPY THE DIRECTORY OF THE ORIGINAL FILE YOU ARE ADDING.
-Good: See above.
-Bad: See above.
+
+- Good: See above.
+- Bad: See above.
 
 The readme should go into the parent folder, module_id.
 
