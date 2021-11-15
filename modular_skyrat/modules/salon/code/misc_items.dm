@@ -152,10 +152,7 @@
 	desc = "A glowing red-blue-white stripe you won't mistake for any other!"
 	icon = 'modular_skyrat/modules/salon/icons/items.dmi'
 	icon_state = "barber"
-
-/obj/item/sign/barber
-	name = "barbershop sign"
-	desc = "A glowing red-blue-white stripe you won't mistake for any other!"
+	buildable_sign = FALSE // Don't want them removed, they look too jank.
 
 /obj/item/storage/box/perfume
 	name = "box of perfumes"
