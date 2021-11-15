@@ -182,9 +182,24 @@
 	force = 12
 	throwforce = 22
 	reach = 2 //SKYRAT EDIT
-//SKYRAT EDIT REMOVAL BEGIN - Hollow-point spears (get it because HP bad at penetrating armor *background laughter*)
-//	armour_penetration = 20 //Enhanced armor piercing; SKYRAT EDIT; Original armour_penetration = 15
-//SKYRAT EDIT REMOVAL END
+	armour_penetration = 15
+
+//SKYRAT EDIT ADDITION BEGIN - Slight antimob spear buff
+	var/faction_bonus_force = 8 //Bonus force dealt against certain factions. Blatantly stolen from the arrow code, because shitcode
+	var/list/nemesis_factions = list("mining", "boss") //Any mob with a faction that exists in this list will take bonus damage/effects
+
 /obj/item/spear/bonespear/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=12, force_wielded=16, icon_wielded="[icon_prefix]1") //SKYRAT EDIT; Original force_wielded = 20
+
+/obj/item/spear/bonespear/attack(mob/living/target, mob/living/carbon/human/user)
+	var/is_nemesis_faction = FALSE
+	for(var/found_faction in target.faction)
+		if(found_faction in nemesis_factions)
+			is_nemesis_faction = TRUE
+			force += faction_bonus_force
+			break
+	. = ..()
+	if(is_nemesis_faction)
+		force -= faction_bonus_force
+//SKYRAT EDIT ADDITION END - Slight antimob spear buff
