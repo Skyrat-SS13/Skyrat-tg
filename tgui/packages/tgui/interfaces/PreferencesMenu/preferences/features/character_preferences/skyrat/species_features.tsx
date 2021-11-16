@@ -70,7 +70,7 @@ export const exploitable_info: Feature<string> = {
 
 export const pda_ringer: Feature<string> = {
   name: "PDA Ringer Message",
-  description: "Want your PDA to say something other than \"beep\"? Maybe make it scream about BLOOD or EXPLOSIONS or DEPTHS? Accepts the first 20 characters.",
+  description: "Want your PDA to say something other than \"beep\"? Accepts the first 20 characters.",
   component: FeatureShortTextInput,
 };
 
