@@ -4,8 +4,8 @@
 /datum/quirk/excitable
 	name = "Excitable!"
 	desc = "Head patting makes your tail wag! You're very excitable! WAG WAG."
-	gain_text = "<span class='notice'>You crave for some headpats!</span>"
-	lose_text = "<span class='notice'>You no longer care for headpats all that much.</span>"
+	gain_text = span_notice("You crave for some headpats!")
+	lose_text = span_notice("You no longer care for headpats all that much.")
 	medical_record_text = "Patient seems to get excited easily."
 	value = 0
 	mob_trait = TRAIT_EXCITABLE
@@ -14,8 +14,8 @@
 /datum/quirk/ironass
 	name = "Iron Ass"
 	desc = "Your ass is incredibly firm, so firm infact that anyone slapping it will suffer grave injuries."
-	gain_text = "<span class='notice'>Your ass feels solid!</span>"
-	lose_text = "<span class='notice'>Your ass doesn't feel so solid anymore.</span>"
+	gain_text = span_notice("Your ass feels solid!")
+	lose_text = span_notice("Your ass doesn't feel so solid anymore.")
 	medical_record_text = "Patient's ass seems incredibly solid."
 	value = 0
 	mob_trait = TRAIT_IRONASS
@@ -24,8 +24,8 @@
 /datum/quirk/dnr
 	name = "Do Not Revive"
 	desc = "For whatever reason, you cannot be revived in any way."
-	gain_text = "<span class='notice'>Your spirit gets too scarred to accept revival.</span>"
-	lose_text = "<span class='notice'>You can feel your soul healing again.</span>"
+	gain_text = span_notice("Your spirit gets too scarred to accept revival.")
+	lose_text = span_notice("You can feel your soul healing again.")
 	medical_record_text = "Patient is a DNR, and cannot be revived in any way."
 	value = 0
 	mob_trait = TRAIT_DNR
@@ -92,11 +92,11 @@
 	if(flipped)
 		info = initial(info)
 		flipped = FALSE
-		to_chat(user, "<span class='notice'>You unflip the card.</span>")
+		to_chat(user, span_notice("You unflip the card."))
 	else
 		info = info2
 		flipped = TRUE
-		to_chat(user, "<span class='notice'>You flip the card.</span>")
+		to_chat(user, span_notice("You flip the card."))
 
 /datum/quirk/item_quirk/joker/process()
 	if(pcooldown > world.time)

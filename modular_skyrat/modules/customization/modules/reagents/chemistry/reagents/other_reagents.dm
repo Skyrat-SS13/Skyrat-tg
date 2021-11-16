@@ -45,5 +45,5 @@
 	if(prob(20))
 		M.emote("nya")
 	if(prob(20))
-		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Mew")]</span>")
+		to_chat(M, span_notice("[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Mew")]"))
 	..()

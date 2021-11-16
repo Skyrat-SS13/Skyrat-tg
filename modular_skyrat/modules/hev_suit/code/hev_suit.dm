@@ -164,7 +164,7 @@
 	if(!new_setting)
 		new_setting = HEV_NOTIFICATION_TEXT_AND_VOICE
 
-	to_chat(my_suit.current_user, "<span class='notice'>[my_suit] notification mode is now [new_setting].")
+	to_chat(my_suit.current_user, span_notice("[my_suit] notification mode is now [new_setting]."))
 
 	my_suit.send_notifications = new_setting
 
@@ -438,7 +438,7 @@
 		return
 	current_internals_tank = current_user.get_item_by_slot(ITEM_SLOT_SUITSTORE)
 	ADD_TRAIT(current_internals_tank, TRAIT_NODROP, "hev_trait")
-	to_chat(current_user, "<span class='notice'>You hear a click as [current_internals_tank] is secured to your suit.</span>")
+	to_chat(current_user, span_notice("You hear a click as [current_internals_tank] is secured to your suit."))
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/03_atmospherics_on.ogg', 50)
 	send_message("...CALIBRATED", HEV_COLOR_GREEN)
 	send_message("CALIBRATING VITALSIGN MONITORING SYSTEMS...")
@@ -642,7 +642,7 @@
 	timer_id = addtimer(CALLBACK(src, .proc/finished), 4 SECONDS, TIMER_STOPPABLE)
 
 /obj/item/clothing/suit/space/hardsuit/hev_suit/proc/finished()
-	to_chat(current_user, "<span class='notice'>You feel [src] seal around your body, locking it in place!</span>")
+	to_chat(current_user, span_notice("You feel [src] seal around your body, locking it in place!"))
 	ADD_TRAIT(src, TRAIT_NODROP, "hev_trait")
 	send_message("ALL SYSTEMS ONLINE, WELCOME [uppertext(current_user.real_name)]", HEV_COLOR_GREEN)
 	playsound(src, 'modular_skyrat/master_files/sound/blackmesa/hev/09_safe_day.ogg', 50)

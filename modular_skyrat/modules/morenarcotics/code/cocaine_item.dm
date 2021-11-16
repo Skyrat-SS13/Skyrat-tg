@@ -18,7 +18,7 @@
 
 /obj/item/reagent_containers/crackbrick/attackby(obj/item/W, mob/user, params)
 	if(W.get_sharpness())
-		user.show_message("<span class='notice'>You cut \the [src] into some rocks.</span>", MSG_VISUAL)
+		user.show_message(span_notice("You cut \the [src] into some rocks."), MSG_VISUAL)
 		for(var/i = 1 to 4)
 			new /obj/item/reagent_containers/crack(user.loc)
 		qdel(src)
@@ -50,11 +50,11 @@
 	else if(user.is_mouth_covered(mask_only = 1))
 		covered = "mask"
 	if(covered)
-		to_chat(user, "<span class='warning'>You have to remove your [covered] first!</span>")
+		to_chat(user, span_warning("You have to remove your [covered] first!"))
 		return
-	user.visible_message("<span class='notice'[user] starts snorting the [src].</span>")
+	user.visible_message(span_notice("'[user] starts snorting the [src]."))
 	if(do_after(user, 30))
-		to_chat(user, "<span class='notice'>You finish snorting the [src].</span>")
+		to_chat(user, span_notice("You finish snorting the [src]."))
 		if(reagents.total_volume)
 			reagents.trans_to(user, reagents.total_volume, transfered_by = user, methods = INGEST)
 		qdel(src)
@@ -88,9 +88,9 @@
 
 
 /obj/item/reagent_containers/cocainebrick/attack_self(mob/user)
-	user.visible_message("<span class='notice'>[user] starts breaking up the [src].</span>")
+	user.visible_message(span_notice("[user] starts breaking up the [src]."))
 	if(do_after(user,10))
-		to_chat(user, "<span class='notice'>You finish breaking up the [src].</span>")
+		to_chat(user, span_notice("You finish breaking up the [src]."))
 		for(var/i = 1 to 5)
 			new /obj/item/reagent_containers/cocaine(user.loc)
 		qdel(src)

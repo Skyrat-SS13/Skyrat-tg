@@ -11,8 +11,8 @@
 /datum/quirk/sensitivesnout
 	name = "Sensitive Snout"
 	desc = "Your face has always been sensitive, and it really hurts when someone pokes it!"
-	gain_text = "<span class='notice'>Your face is awfully sensitive.</span>"
-	lose_text = "<span class='notice'>Your face feels numb.</span>"
+	gain_text = span_notice("Your face is awfully sensitive.")
+	lose_text = span_notice("Your face feels numb.")
 	medical_record_text = "Patient's nose seems to have a cluster of nerves in the tip, would advise against direct contact."
 	value = -2
 	mob_trait = TRAIT_SENSITIVESNOUT
@@ -22,8 +22,8 @@
 	name = "Monophobia"
 	desc = "You will become increasingly stressed when not in company of others, triggering panic reactions ranging from sickness to heart attacks."
 	value = -6
-	gain_text = "<span class='danger'>You feel really lonely...</span>"
-	lose_text = "<span class='notice'>You feel like you could be safe on your own.</span>"
+	gain_text = span_danger("You feel really lonely...")
+	lose_text = span_notice("You feel like you could be safe on your own.")
 	medical_record_text = "Patient feels sick and distressed when not around other people, leading to potentially lethal levels of stress."
 	icon = "people-arrows"
 
@@ -40,8 +40,8 @@
 /datum/quirk/ashwalkertalons
 	name = "Chunky Fingers"
 	desc = "Your digits are thick and tough and unable to use modular computers including tablets, certain devices like laser pointers, and non-adapted firearms."
-	gain_text = "<span class='notice'>Your fingers feel thicker and slightly less dextrous. You expect you'll have a difficult time using computers, certain small devices and firearms.</span>"
-	lose_text = "<span class='notice'>Your digits feel lithe and capable once more.</span>"
+	gain_text = span_notice("Your fingers feel thicker and slightly less dextrous. You expect you'll have a difficult time using computers, certain small devices and firearms.")
+	lose_text = span_notice("Your digits feel lithe and capable once more.")
 	medical_record_text = "Patient's digits are thick and lack the dexterity for operating some small devices, computers and non-adapted firearms."
 	value = -8
 	mob_trait = TRAIT_CHUNKYFINGERS
