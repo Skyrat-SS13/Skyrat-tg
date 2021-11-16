@@ -108,7 +108,8 @@
 	// SKYRAT EDIT START - Better emotes - Original: var/dchatmsg = "<b>[user]</b> [msg]"
 	msg = html_decode(msg)
 	var/space = !(msg[1] in GLOB.no_spacing_emote_characters) ? " " : ""
-	if(!(msg[length(msg)] in GLOB.auto_punctuation_character_blacklist))
+	var/static/regex/auto_punctuation_character_blacklist = regex(@#(\.|\,|\!|\?|\'|\"|\~|\||\_|\+|\-)#)
+	if(!(auto_punctuation_character_blacklist.Find(msg[length(msg)])))
 		msg += "."
 	msg = html_encode(msg)
 	var/dchatmsg = "<b>[user]</b>[space][msg]"

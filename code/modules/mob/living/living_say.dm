@@ -440,8 +440,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	message = capitalize(message)
 
 	// SKYRAT EDIT START - Better emotes (auto-punctuation)
-	if(!(message[length(message)] in GLOB.auto_punctuation_character_blacklist))
+	var/static/regex/auto_punctuation_character_blacklist = regex(@"(\.|\,|\!|\?|\~|\||\_|\+|\-)")
+	if(!(auto_punctuation_character_blacklist.Find(message[length(message)])))
 		message += "."
+	
 	// SKYRAT EDIT END
 
 	return message
