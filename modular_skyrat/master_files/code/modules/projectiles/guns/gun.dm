@@ -95,7 +95,7 @@
 
 /datum/action/item_action/toggle_safety
 	name = "Toggle Safety"
-	icon_icon = 'modular_skyrat/modules/gunsafety/icons/hud/actions.dmi'
+	icon_icon = 'modular_skyrat/modules/gunsafety/icons/actions.dmi'
 	button_icon_state = "safety_on"
 
 /obj/item/gun/ui_action_click(mob/user, actiontype)
