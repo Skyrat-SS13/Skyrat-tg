@@ -17,7 +17,7 @@
 
 ///Checks if the wings can soften short falls
 /obj/item/organ/external/wings/proc/can_soften_fall()
-	return TRUE
+	return FALSE // SKYRAT EDIT - No free fall softening for everyone - Original: return TRUE
 
 ///The true wings that you can use to fly and shit (you cant actually shit with them)
 /obj/item/organ/external/wings/functional
@@ -31,6 +31,11 @@
 
 	///Are our wings open or closed?
 	var/wings_open = FALSE
+
+// SKYRAT EDIT START - No free fall sooftening for everyone
+/obj/item/organ/external/wings/functional/can_soften_fall()
+	return TRUE
+// SKYRAT EDIT END
 
 /obj/item/organ/external/wings/functional/get_global_feature_list()
 	// SKYRAT EDIT TODO: Add support for wings_open
