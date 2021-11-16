@@ -204,3 +204,4 @@
 		force -= faction_bonus_force
 
 ///SKYRAT EDIT ADDITION END - Slight antimob spear buff
+
