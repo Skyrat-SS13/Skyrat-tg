@@ -19,18 +19,19 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	armor = list(MELEE = 70, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 90, ACID = 90)
-	var/position = TRUE
+	/// What position the helmet is in, TRUE = DOWN, FALSE = UP
+	var/helmet_position = TRUE
 
 /obj/item/clothing/head/helmet/nri_heavy/AltClick(mob/user)
 	. = ..()
-	position = !position
-	to_chat(user, span_notice("You flip [src] [position ? "down" : "up"] with a heavy clunk!"))
+	helmet_position = !helmet_position
+	to_chat(user, span_notice("You flip [src] [helmet_position ? "down" : "up"] with a heavy clunk!"))
 	update_appearance()
 
 /obj/item/clothing/head/helmet/nri_heavy/update_icon_state()
 	. = ..()
 	var/state = "[initial(icon_state)]"
-	if(position)
+	if(helmet_position)
 		state += "-down"
 	else
 		state += "-up"
