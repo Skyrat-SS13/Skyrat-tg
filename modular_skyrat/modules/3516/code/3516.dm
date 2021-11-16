@@ -35,18 +35,18 @@
 		var/mob/living/carbon/human/H = user
 		var/obj/item/bodypart/selected_hand = H.get_active_hand()
 		if(selected_hand.status != BODYPART_ROBOTIC)
-			to_chat(user, "<span class='warning'>You can't seem to figure out how to use [src], perhaps you need to check the manual?")
+			to_chat(user, span_warning("You can't seem to figure out how to use [src], perhaps you need to check the manual?"))
 			return
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/j3516/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message)
 	if(!istype(AM, mag_type))
-		to_chat(user, "<span class='warning'>\The [AM] doesn't seem to fit into \the [src]...</span>")
+		to_chat(user, span_warning("\The [AM] doesn't seem to fit into \the [src]..."))
 		return FALSE
 	if(user.transferItemToLoc(AM, src))
 		magazine = AM
 		if (display_message)
-			to_chat(user, "<span class='notice'>You load a new [magazine_wording] into \the [src].</span>")
+			to_chat(user, span_notice("You load a new [magazine_wording] into \the [src]."))
 		playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
 		if (bolt_type == BOLT_TYPE_OPEN && !bolt_locked)
 			chamber_round(TRUE)
@@ -57,7 +57,7 @@
 		animate(transform = null, time = 2)
 		return TRUE
 	else
-		to_chat(user, "<span class='warning'>You cannot seem to get \the [src] out of your hands!</span>")
+		to_chat(user, span_warning("You cannot seem to get \the [src] out of your hands!"))
 		return FALSE
 
 
@@ -73,16 +73,16 @@
 	var/obj/item/ammo_box/magazine/old_mag = magazine
 	if (tac_load)
 		if (insert_magazine(user, tac_load, FALSE))
-			to_chat(user, "<span class='notice'>You perform an elite tactical reload on \the [src].</span>")
+			to_chat(user, span_notice("You perform an elite tactical reload on \the [src]."))
 		else
-			to_chat(user, "<span class='warning'>You dropped the old [magazine_wording], but the new one doesn't fit. How embarassing.</span>")
+			to_chat(user, span_warning("You dropped the old [magazine_wording], but the new one doesn't fit. How embarassing."))
 			magazine = null
 	else
 		magazine = null
 	user.put_in_hands(old_mag)
 	old_mag.update_appearance()
 	if (display_message)
-		to_chat(user, "<span class='notice'>You pull the [magazine_wording] out of \the [src].</span>")
+		to_chat(user, span_notice("You pull the [magazine_wording] out of \the [src]."))
 	update_appearance()
 	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand again
 	animate(transform = turn(matrix(), 240), time = 2)

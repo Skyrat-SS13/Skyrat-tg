@@ -20,9 +20,9 @@
 			last_AH = pop(prev_tickets)
 			last_AH.PlayerTicketPanel()
 			return
-		
+
 		// client had no tickets this round
-		to_chat(src, "<span class='warning'>You have not had an ahelp ticket this round.</span>")
+		to_chat(src, span_warning("You have not had an ahelp ticket this round."))
 		return
 
 	current_ticket.PlayerTicketPanel()

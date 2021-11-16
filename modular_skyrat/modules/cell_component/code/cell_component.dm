@@ -108,18 +108,18 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 
 	if(!inserted_cell)
 		if(user)
-			to_chat(user, "<span class='danger'>There is no cell inside [equipment]</span>")
+			to_chat(user, span_danger("There is no cell inside [equipment]"))
 		return COMPONENT_NO_CELL
 
 	if(check_only && inserted_cell.charge < use_amount)
 		if(user)
-			to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+			to_chat(user, span_danger("The cell inside [equipment] does not have enough charge to perform this action!"))
 		return COMPONENT_NO_CHARGE
 
 	if(!inserted_cell.use(use_amount))
 		inserted_cell.update_appearance()  //Updates the attached cell sprite - Why does this not happen in cell.use?
 		if(user)
-			to_chat(user, "<span class='danger'>The cell inside [equipment] does not have enough charge to perform this action!</span>")
+			to_chat(user, span_danger("The cell inside [equipment] does not have enough charge to perform this action!"))
 		return COMPONENT_NO_CHARGE
 
 	inserted_cell.update_appearance()
@@ -130,12 +130,12 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 	SIGNAL_HANDLER
 
 	if(!inserted_cell)
-		examine_list += "<span class='danger'>It does not have a cell inserted!</span>"
+		examine_list += span_danger("It does not have a cell inserted!")
 	else if(!inside_robot)
-		examine_list += "<span class='notice'>It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left. \
-						Ctrl+Shift+Click to remove the [inserted_cell]."
+		examine_list += span_notice("It has [inserted_cell] inserted. It has <b>[inserted_cell.percent()]%</b> charge left. \
+						Ctrl+Shift+Click to remove the [inserted_cell].")
 	else
-		examine_list += "<span class='notice'>It is drawing power from an external powersource, reading <b>[inserted_cell.percent()]%</b> charge.</span>"
+		examine_list += span_notice("It is drawing power from an external powersource, reading <b>[inserted_cell.percent()]%</b> charge.")
 
 /// Handling of cell removal.
 /datum/component/cell/proc/remove_cell(datum/source, mob/user)
@@ -153,7 +153,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		return
 
 	if(inserted_cell)
-		to_chat(user, "<span class='notice'>You remove [inserted_cell] from [equipment]!</span>")
+		to_chat(user, span_notice("You remove [inserted_cell] from [equipment]!"))
 		playsound(equipment, 'sound/weapons/magout.ogg', 40, TRUE)
 		inserted_cell.forceMove(get_turf(equipment))
 		INVOKE_ASYNC(user, /mob/living.proc/put_in_hands, inserted_cell)
@@ -162,7 +162,7 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 			on_cell_removed.Invoke()
 		handle_cell_overlays(TRUE)
 	else
-		to_chat(user, "<span class='danger'>There is no cell inserted in [equipment]!</span>")
+		to_chat(user, span_danger("There is no cell inserted in [equipment]!"))
 
 /// Handling of cell insertion.
 /datum/component/cell/proc/insert_cell(datum/source, obj/item/inserting_item, mob/living/user, params)
@@ -177,10 +177,10 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		return
 
 	if(inserted_cell) //No quickswap compatibility
-		to_chat(user, "<span class='danger'>There is already a cell inserted in [equipment]!</span>")
+		to_chat(user, span_danger("There is already a cell inserted in [equipment]!"))
 		return
 
-	to_chat(user, "<span class='notice'>You insert [inserting_item] into [equipment]!</span>")
+	to_chat(user, span_notice("You insert [inserting_item] into [equipment]!"))
 	playsound(equipment, 'sound/weapons/magin.ogg', 40, TRUE)
 	inserted_cell = inserting_item
 	inserting_item.forceMove(parent)
