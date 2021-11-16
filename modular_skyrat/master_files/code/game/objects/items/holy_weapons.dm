@@ -130,7 +130,7 @@
 /obj/item/nullrod/rosary
 	name = "prayer beads"
 	desc = "A set of prayer beads used by many of the more traditional religions in space"
-	icon = 'modular_skyrat/modules/chaplain/icons/obj/holy_weapons.dmi'
+	icon = 'modular_skyrat/modules/chaplain/icons/holy_weapons.dmi'
 	icon_state = "rosary"
 	force = 4
 	throwforce = 0
