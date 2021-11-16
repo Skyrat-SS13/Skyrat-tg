@@ -70,7 +70,7 @@
 	base_icon_state = "bone_axe"
 	name = "bone axe"
 	desc = "A large, vicious axe crafted out of several sharpened bone plates and crudely tied together. Made of monsters, by killing monsters, for killing monsters."
-//SKYRAT EDIT ADDITION BEGIN - Slight antimob axe buff
+///SKYRAT EDIT ADDITION BEGIN - Slight antimob axe buff
 ///Bonus force dealt against certain factions. Blatantly stolen from the arrow code, because shitcode
 	var/faction_bonus_force = 9
 ///Any mob with a faction that exists in this list will take bonus damage/effects
@@ -90,7 +90,7 @@
 	. = ..()
 	if(is_nemesis_faction)
 		force -= faction_bonus_force
-//SKYRAT EDIT ADDITION END - Slight antimob axe buff
+///SKYRAT EDIT ADDITION END - Slight antimob axe buff
 
 /*
  * Metal Hydrogen Axe
