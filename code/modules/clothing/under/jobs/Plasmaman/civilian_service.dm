@@ -6,7 +6,8 @@
 	inhand_icon_state = "plasmaman"
 	icon = 'icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'icons/mob/clothing/under/plasmaman.dmi'
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, RAD = 0, FIRE = 95, ACID = 95)
+	permeability_coefficient = 0.5
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 95, ACID = 95)
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	can_adjust = FALSE
 	strip_delay = 80
@@ -60,7 +61,7 @@
 	desc = "An air-tight khaki suit designed for operations on lavaland by plasmamen."
 	icon_state = "explorer_envirosuit"
 	inhand_icon_state = "explorer_envirosuit"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, RAD = 0, FIRE = 95, ACID = 95)//SKYRAT EDIT
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 95, ACID = 95)//SKYRAT EDIT
 
 /obj/item/clothing/under/plasmaman/chef
 	name = "chef's plasma envirosuit"

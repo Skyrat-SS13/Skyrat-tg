@@ -153,7 +153,6 @@
 /area/awaymission/research/interior/engineering)
 "aL" = (
 /obj/structure/window/reinforced/plasma/spawner/west,
-/obj/machinery/power/energy_accumulator/rad_collector/anchored,
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/awaymission/research/interior/engineering)
@@ -192,8 +191,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/airalarm{
-	dir = 4;
+/obj/machinery/airalarm/directional/west{
 	pixel_x = -32
 	},
 /obj/effect/turf_decal/tile/yellow,
@@ -563,8 +561,7 @@
 "ct" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/regular,
-/obj/machinery/airalarm{
-	dir = 4;
+/obj/machinery/airalarm/directional/west{
 	pixel_x = -32
 	},
 /turf/open/floor/iron/dark,
@@ -630,7 +627,7 @@
 	id = "cryopodg2";
 	name = "panic lockdown button"
 	},
-/obj/machinery/airalarm{
+/obj/machinery/airalarm/directional/north{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/tile/purple{
@@ -1204,7 +1201,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior)
 "ej" = (
-/obj/machinery/airalarm{
+/obj/machinery/airalarm/directional/north{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/tile/yellow,
@@ -1340,7 +1337,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/cryo)
 "ew" = (
-/obj/machinery/airalarm{
+/obj/machinery/airalarm/directional/north{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/tile/purple{
@@ -1494,8 +1491,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/security)
 "eT" = (
-/obj/machinery/airalarm{
-	dir = 4;
+/obj/machinery/airalarm/directional/west{
 	pixel_x = -32
 	},
 /turf/open/floor/iron/dark,
@@ -1685,7 +1681,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/security)
 "fu" = (
-/obj/machinery/airalarm{
+/obj/machinery/airalarm/directional/north{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/tile/red,
@@ -2975,8 +2971,7 @@
 	id = "cryopodg1";
 	name = "panic lockdown button"
 	},
-/obj/machinery/airalarm{
-	dir = 1;
+/obj/machinery/airalarm/directional/south{
 	pixel_y = -32
 	},
 /obj/effect/turf_decal/tile/purple{
@@ -3070,7 +3065,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/dorm)
 "iZ" = (
-/obj/machinery/airalarm{
+/obj/machinery/airalarm/directional/north{
 	pixel_y = 32
 	},
 /obj/effect/turf_decal/tile/blue,
@@ -3935,8 +3930,7 @@
 	dir = 1;
 	layer = 2.9
 	},
-/obj/machinery/airalarm{
-	dir = 8;
+/obj/machinery/airalarm/directional/east{
 	pixel_x = 32
 	},
 /turf/open/floor/iron{
@@ -4395,8 +4389,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/escapepods)
 "mX" = (
-/obj/machinery/airalarm{
-	dir = 8;
+/obj/machinery/airalarm/directional/east{
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/tile/green{
@@ -4558,7 +4551,8 @@
 /area/awaymission/research/interior/escapepods)
 "yr" = (
 /obj/machinery/airalarm/engine{
-	pixel_y = 23
+	pixel_y = 23;
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/awaymission/research/interior/engineering)
@@ -4644,9 +4638,8 @@
 /turf/open/floor/engine,
 /area/awaymission/research/interior/engineering)
 "Gv" = (
-/obj/machinery/camera{
+/obj/machinery/camera/directional/east{
 	c_tag = "Engineering - Supermatter";
-	dir = 8;
 	name = "engineering camera"
 	},
 /turf/open/floor/engine,

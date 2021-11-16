@@ -250,13 +250,23 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["m_stat"] = "Stable"
 		G.fields["gender"] = H.gender
 		if(H.gender == "male")
-			G.fields["gender"]  = "Male"
+			G.fields["gender"] = "Male"
 		else if(H.gender == "female")
-			G.fields["gender"]  = "Female"
+			G.fields["gender"] = "Female"
 		else
-			G.fields["gender"]  = "Other"
+			G.fields["gender"] = "Other"
 		G.fields["photo_front"] = photo_front
 		G.fields["photo_side"] = photo_side
+		// SKYRAT ADDITION START - RP RECORDS
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/general))
+			G.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/general)
+		else
+			G.fields["past_records"] = ""
+		if (C && C.prefs && C.prefs.read_preference(/datum/preference/text/exploitable))
+			G.fields["exploitable_records"] = C.prefs.read_preference(/datum/preference/text/exploitable)
+		else
+			G.fields["exploitable_records"] = ""
+		// SKYRAT ADDITION END
 		general += G
 
 		//Medical Record
@@ -273,6 +283,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		M.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
 		M.fields["notes"] = H.get_quirk_string(!medical, CAT_QUIRK_NOTES)
 		M.fields["notes_d"] = H.get_quirk_string(medical, CAT_QUIRK_NOTES)
+		// SKYRAT EDIT ADD - RP RECORDS
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/medical))
+			M.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/medical)
+		else
+			M.fields["past_records"] = ""
+		// SKYRAT EDIT END
 		medical += M
 
 		//Security Record
@@ -283,6 +299,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		S.fields["citation"] = list()
 		S.fields["crim"] = list()
 		S.fields["notes"] = "No notes."
+		// SKYRAT EDIT ADD - RP RECORDS
+		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/security))
+			S.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/security)
+		else
+			S.fields["past_records"] = ""
+		// SKYRAT EDIT END
 		security += S
 
 		//Locked Record
@@ -293,11 +315,11 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		L.fields["age"] = H.age
 		L.fields["gender"] = H.gender
 		if(H.gender == "male")
-			G.fields["gender"]  = "Male"
+			G.fields["gender"] = "Male"
 		else if(H.gender == "female")
-			G.fields["gender"]  = "Female"
+			G.fields["gender"] = "Female"
 		else
-			G.fields["gender"]  = "Other"
+			G.fields["gender"] = "Other"
 		L.fields["blood_type"] = H.dna.blood_type
 		L.fields["b_dna"] = H.dna.unique_enzymes
 		L.fields["identity"] = H.dna.unique_identity

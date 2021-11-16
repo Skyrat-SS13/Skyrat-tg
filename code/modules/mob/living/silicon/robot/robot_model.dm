@@ -188,6 +188,7 @@
 	new_model.rebuild_modules()
 	cyborg.radio.recalculateChannels()
 	cyborg.set_modularInterface_theme()
+	log_silicon("CYBORG: [key_name(cyborg)] has transformed into the [new_model] model.")
 
 	//SKYRAT EDIT ADDITION BEGIN - ALTBORGS - Old check for 'dogborg' var no longer necessary, refactored into model_features instead.
 	if(cyborg.is_dogborg()) //Should pass because model was set previously.
@@ -258,7 +259,7 @@
 	cyborg.notransform = FALSE
 	cyborg.updatehealth()
 	cyborg.update_icons()
-	cyborg.notify_ai(NEW_MODEL)
+	cyborg.notify_ai(AI_NOTIFICATION_NEW_MODEL)
 	if(cyborg.hud_used)
 		cyborg.hud_used.update_robot_modules_display()
 	SSblackbox.record_feedback("tally", "cyborg_modules", 1, cyborg.model)
@@ -320,7 +321,6 @@
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
-		/obj/item/geiger_counter/cyborg,
 		/obj/item/holosign_creator/atmos, // Skyrat Edit - Adds Holofans to engineering borgos
 		/obj/item/assembly/signaler/cyborg,
 		/obj/item/areaeditor/blueprints/cyborg,

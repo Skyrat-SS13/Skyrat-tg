@@ -96,6 +96,11 @@
 	item_path = /obj/item/clothing/glasses/zentai
 	ckeywhitelist = list("candlejax")
 
+/datum/loadout_item/head/goldengoggles
+	name = "Steampunk Goggles"
+	item_path = /obj/item/clothing/glasses/welding/goldengoggles
+	ckeywhitelist = list("goldenalpharex")
+
 /datum/loadout_item/head/hephelmet
 	name = "HepUnit Standard Helmet"
 	item_path = /obj/item/clothing/head/helmet/sec/peacekeeper/jax
@@ -284,3 +289,21 @@
 	name = "Grey Winter Hoodie"
 	item_path = /obj/item/clothing/suit/jacket/delta
 	ckeywhitelist = list("deltatri")
+
+/datum/loadout_item/head/hubertcc
+	name = "CC Ensign's cap"
+	item_path = /obj/item/clothing/head/nanotrasen_representative/hubert
+	ckeywhitelist = list("hackertdog")
+	restricted_roles = list("Nanotrasen Representative")
+
+/datum/loadout_item/suit/hubertcc
+	name = "CC Ensign's armoured vest"
+	item_path = /obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
+	ckeywhitelist = list("hackertdog")
+	restricted_roles = list("Nanotrasen Representative")
+
+/datum/loadout_item/under/jumpsuit/hubertcc
+	name = "CC Ensign's uniform"
+	item_path = /obj/item/clothing/under/rank/nanotrasen_representative/hubert
+	ckeywhitelist = list("hackertdog")
+	restricted_roles = list("Nanotrasen Representative")

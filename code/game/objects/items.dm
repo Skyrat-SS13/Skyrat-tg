@@ -1060,7 +1060,15 @@ attack_basic_mob
 	return !HAS_TRAIT(src, TRAIT_NODROP) && !(item_flags & ABSTRACT)
 
 /obj/item/proc/doStrip(mob/stripper, mob/owner)
-	return owner.dropItemToGround(src)
+	//SKYRAT EDIT CHANGE BEGIN - THIEVING GLOVES - ORIGINAL: return owner.dropItemToGround(src)
+	if (!owner.dropItemToGround(src))
+		return FALSE
+	if (HAS_TRAIT(stripper, TRAIT_STICKY_FINGERS))
+		stripper.put_in_hands(src)
+	return TRUE
+	//SKYRAT EDIT END
+
+
 
 ///Does the current embedding var meet the criteria for being harmless? Namely, does it have a pain multiplier and jostle pain mult of 0? If so, return true.
 /obj/item/proc/isEmbedHarmless()

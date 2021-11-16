@@ -335,14 +335,6 @@
 	crate_name = "dance machine crate"
 */
 
-/datum/supply_pack/misc/fuel_pellets
-	name = "Exploration Drone Fuel Crate"
-	desc = "Atmos on fire, and you still really wanna explore the stars? We've got you covered, for the fuel atleast."
-	cost = CARGO_CRATE_VALUE * 15
-	contains = list(/obj/item/fuel_pellet,
-					/obj/item/fuel_pellet,
-					/obj/item/fuel_pellet)
-	crate_name = "drone fuel crate"
 
 /datum/supply_pack/service/snowmobile
 	name = "Snowmobile kit"
@@ -514,7 +506,7 @@
 					/obj/item/storage/bag/quiver,
 					/obj/item/clothing/head/helmet/knight/red,
 					/obj/item/clothing/head/helmet/knight/blue,
-					/obj/item/food/bread)
+					/obj/item/food/bread/plain)
 	crate_name = "vintage crate"
 
 /datum/supply_pack/service/hydrohelper

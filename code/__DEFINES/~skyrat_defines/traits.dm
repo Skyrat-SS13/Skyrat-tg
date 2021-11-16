@@ -5,7 +5,6 @@
 #define TRAIT_OXYIMMUNE	"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
 #define TRAIT_IRONASS "ironass"
 #define TRAIT_MOOD_NOEXAMINE "mood_noexamine" // Can't assess your own mood
-#define TRAIT_DNC "cant_clone"
 #define TRAIT_DNR "cant_revive" //You just can't be revived without supernatural means
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
@@ -13,6 +12,7 @@
 #define TRAIT_FREE_GHOST "free_ghost" // Can ghost and return freely with this trait
 #define QUIRK_LINGUIST "Linguist" // Extra language point.
 #define GLUED_ITEM_TRAIT "glued-item" // This is for glued items, undroppable. Syndie glue applies this.
+#define TRAIT_STICKY_FINGERS "sticky_fingers" //This is so a mob can strip items faster and picks them up after
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
 

@@ -130,6 +130,9 @@
 	default_color = DEFAULT_PRIMARY
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_INSECT, SPECIES_SYNTHLIZ)
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
 
 /datum/sprite_accessory/wings/mammal/bat //TODO: port my sprite from hyper for this one
 	name = "Bat"
@@ -217,8 +220,25 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	name = "Low wings"
 	icon_state = "low"
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
 
 /datum/sprite_accessory/wings/low_wings_top
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/wings.dmi'
 	name = "Low wings (Top)"
 	icon_state = "low_top"
+	dimension_x = 46
+	dimension_y = 34
+	center = TRUE
+
+/datum/sprite_accessory/wings/mammal/spider
+	name = "Spider legs"
+	icon_state = "spider"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/robowing
+	name = "mechanical dragon wings"
+	icon_state = "robowing"
+	color_src = USE_MATRIXED_COLORS
+

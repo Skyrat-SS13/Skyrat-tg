@@ -121,6 +121,26 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/bedmedicell
+	name = "Hardlight Roller Bed Medicell"
+	desc = "A Medicell that deploys a hardlight roller bed under a patient lying down."
+	id = "bedmedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000)
+	build_path = /obj/item/weaponcell/medical/utility/bed
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/salvemedicell
+	name = "Empty Salve Medicell"
+	desc = "A Empty Medicell that can be upgraded by aloe into a usable Salve Medicell."
+	id = "salvemedicell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000)
+	build_path = /obj/item/device/custom_kit/empty_cell
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 //Upgrade Kit//
 /datum/design/medigunspeedkit
 	name = "VeyMedical CWM-479 Upgrade kit"

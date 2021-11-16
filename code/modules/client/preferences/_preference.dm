@@ -9,7 +9,7 @@
 #define PREFERENCE_PRIORITY_GENDER 3
 
 /// The priority at which body type is decided, applied after gender so we can
-/// make sure they're non-binary.
+/// support the "use gender" option.
 #define PREFERENCE_PRIORITY_BODY_TYPE 4
 
 /// The priority at which names are decided, needed for proper randomization.
@@ -498,6 +498,8 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	abstract_type = /datum/preference/numeric
 
 /datum/preference/numeric/deserialize(input, datum/preferences/preferences)
+	if(istext(input)) // Sometimes TGUI will return a string instead of a number, so we take that into account.
+		input = text2num(input) // Worst case, it's null, it'll just use create_default_value()
 	return sanitize_float(input, minimum, maximum, step, create_default_value())
 
 /datum/preference/numeric/serialize(input)
@@ -548,14 +550,62 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 /datum/preference/tri_color
 	abstract_type = /datum/preference/tri_color
+	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
+	var/actually_check = TRUE
 
 /datum/preference/tri_color/deserialize(input, datum/preferences/preferences)
 	var/list/input_colors = input
-	return list(sanitize_color(input_colors[1]), sanitize_color(input_colors[2]), sanitize_color(input_colors[3]))
+	return list(sanitize_hexcolor(input_colors[1]), sanitize_hexcolor(input_colors[2]), sanitize_hexcolor(input_colors[3]))
 
 /datum/preference/tri_color/create_default_value()
-	return list(random_color(), random_color(), random_color())
+	return list("#[random_color()]", "#[random_color()]", "#[random_color()]")
 
 /datum/preference/tri_color/is_valid(list/value)
 	return islist(value) && value.len == 3 && (findtext(value[1], GLOB.is_color) && findtext(value[2], GLOB.is_color) && findtext(value[3], GLOB.is_color))
+
+/datum/preference/tri_color/is_accessible(datum/preferences/preferences)
+	if (!actually_check || type == abstract_type)
+		return ..(preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/part_enabled = preferences.read_preference(type_to_check)
+	return ((passed_initial_check || allowed) && part_enabled)
+
+/datum/preference/tri_color/apply_to_human(mob/living/carbon/human/target, value)
+	if (type == abstract_type)
+		return ..()
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_COLOR_LIST] = list(sanitize_hexcolor(value[1]), sanitize_hexcolor(value[2]), sanitize_hexcolor(value[3]))
+
+/datum/preference/tri_bool
+	abstract_type = /datum/preference/tri_bool
+	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts
+
+/datum/preference/tri_bool/deserialize(input, datum/preferences/preferences)
+	var/list/input_bools = input
+	return list(sanitize_integer(input_bools[1]), sanitize_integer(input_bools[2]), sanitize_integer(input_bools[3]))
+
+/datum/preference/tri_bool/create_default_value()
+	return list(FALSE, FALSE, FALSE)
+
+/datum/preference/tri_bool/is_valid(list/value)
+	return islist(value) && value.len == 3 && isnum(value[1]) && isnum(value[2]) && isnum(value[3])
+
+/datum/preference/tri_bool/is_accessible(datum/preferences/preferences)
+	if(type == abstract_type)
+		return ..(preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/emissives_allowed = preferences.read_preference(/datum/preference/toggle/allow_emissives)
+	var/part_enabled = preferences.read_preference(type_to_check)
+	return ((passed_initial_check || allowed) && part_enabled && emissives_allowed)
+
+/datum/preference/tri_bool/apply_to_human(mob/living/carbon/human/target, value)
+	if (type == abstract_type)
+		return ..()
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(sanitize_integer(value[1]), sanitize_integer(value[2]), sanitize_integer(value[3]))
+
 // SKYRAT EDIT END

@@ -5,7 +5,6 @@ GLOBAL_VAR(caller_of_911)
 GLOBAL_LIST_INIT(emergency_responders, list())
 /datum/antagonist/ert/request_911
 	name = "911 Responder"
-	antag_hud_type = ANTAG_HUD_SPACECOP
 	antag_hud_name = "hud_spacecop"
 	suicide_cry = "FOR THE SOL FEDERATION!!"
 	var/department = "Some stupid shit"
@@ -13,7 +12,6 @@ GLOBAL_LIST_INIT(emergency_responders, list())
 /datum/antagonist/ert/request_911/apply_innate_effects(mob/living/mob_override)
 	..()
 	var/mob/living/M = mob_override || owner.current
-	add_antag_hud(antag_hud_type, antag_hud_name, M)
 	if(M.hud_used)
 		var/datum/hud/H = M.hud_used
 		var/atom/movable/screen/wanted/giving_wanted_lvl = new /atom/movable/screen/wanted()
@@ -25,7 +23,6 @@ GLOBAL_LIST_INIT(emergency_responders, list())
 
 /datum/antagonist/ert/request_911/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
-	remove_antag_hud(antag_hud_type, M)
 	if(M.hud_used)
 		var/datum/hud/H = M.hud_used
 		H.infodisplay -= H.wanted_lvl
@@ -175,6 +172,9 @@ GLOBAL_LIST_INIT(emergency_responders, list())
 
 /obj/item/false_911_call_reporter/attack_self(mob/user, modifiers)
 	. = ..()
+	if(!GLOB.amt_911_responders)
+		to_chat(user, "There's no 911 responders. Stop spawning shit that you don't know how to use.")
+		return
 	if(!activated && !GLOB.fradulent_911_declared)
 		activated = TRUE
 		icon_state = "reporter_on"

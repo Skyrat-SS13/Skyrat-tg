@@ -351,7 +351,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	mutant_variants = NONE
 	can_adjust = FALSE //There wasnt an adjustable sprite anyways
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)	//same armor as a greyshirt - DONOR ITEMS ARE PURELY COSMETIC
 	has_sensor = HAS_SENSORS	//Actually has sensors, to balance the new lack of armor
 
 //Donation reward for Thedragmeme
@@ -672,7 +672,7 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back
 	mutant_variants = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 0, "acid" = 0)
 
 //Donation reward for inferno707
 /obj/item/clothing/mask/hheart
@@ -844,7 +844,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
 	inhand_icon_state = "emissionhelm"
-	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, RAD = 0, FIRE = 100, ACID = 75, WOUND = 10)
+	armor = list(MELEE = 20, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 100, ACID = 75, WOUND = 10)
 
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/security/candlejax
@@ -981,3 +981,165 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+//Donation reward for GoldenAlpharex
+/obj/item/clothing/glasses/welding/goldengoggles
+	name = "steampunk goggles"
+	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head... They have a rather fancy brass trim around the lenses."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+	icon_state = "goldengoggles"
+	slot_flags = ITEM_SLOT_EYES | ITEM_SLOT_HEAD // Making it fit in both first just so it can properly fit on the head slot in the loadout
+	flash_protect = FLASH_PROTECTION_NONE
+	flags_cover = GLASSESCOVERSEYES
+	custom_materials = null // Don't want that to go in the autolathe
+	visor_vars_to_toggle = 0
+	tint = 0
+
+	/// Was welding protection added yet?
+	var/welding_upgraded = FALSE
+	/// Was welding protection toggled on, if welding_upgraded is TRUE?
+	var/welding_protection = FALSE
+	/// The sound played when toggling the shutters.
+	var/shutters_sound = 'sound/effects/clock_tick.ogg'
+
+/obj/item/clothing/glasses/welding/goldengoggles/Initialize()
+	. = ..()
+	visor_toggling()
+
+/obj/item/clothing/glasses/welding/goldengoggles/examine(mob/user)
+	. = ..()
+	if(welding_upgraded)
+		. += "It has been upgraded with welding shutters, which are currently [welding_protection ? "closed" : "opened"]."
+
+/obj/item/clothing/glasses/welding/goldengoggles/item_action_slot_check(slot, mob/user)
+	. = ..()
+	if(. && slot == ITEM_SLOT_HEAD)
+		return FALSE
+
+/obj/item/clothing/glasses/welding/goldengoggles/attack_self(mob/user)
+	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+		to_chat(user, span_warning("You can't seem to slip those on your eyes from the top of your head!"))
+		return
+	. = ..()
+
+/obj/item/clothing/glasses/welding/goldengoggles/visor_toggling()
+	. = ..()
+	slot_flags = up ? ITEM_SLOT_EYES | ITEM_SLOT_HEAD : ITEM_SLOT_EYES
+	toggle_vision_effects()
+
+/obj/item/clothing/glasses/welding/goldengoggles/weldingvisortoggle(mob/user)
+	. = ..()
+	handle_sight_updating(user)
+
+/obj/item/clothing/glasses/welding/goldengoggles/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(!istype(attacking_item, /obj/item/clothing/glasses/welding))
+		..()
+	if(welding_upgraded)
+		to_chat(user, span_warning("\The [src] was already upgraded to have welding protection!"))
+		return
+	qdel(attacking_item)
+	welding_upgraded = TRUE
+	to_chat(user, span_notice("You upgrade \the [src] with some welding shutters, offering you the ability to toggle welding protection!"))
+	actions += new /datum/action/item_action/toggle_steampunk_goggles_welding_protection(src)
+
+/// Proc that handles the whole toggling the welding protection on and off, with user feedback.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_shutters(mob/user)
+	if(!can_use(user) || !user)
+		return FALSE
+	if(!toggle_welding_protection(user))
+		return FALSE
+
+	to_chat(user, span_notice("You slide \the [src]'s welding shutters slider, [welding_protection ? "closing" : "opening"] them."))
+	playsound(user, shutters_sound, 100, TRUE)
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		carbon_user.head_update(src, forced = 1)
+	update_action_buttons()
+	return TRUE
+
+/// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_welding_protection(mob/user)
+	if(!welding_upgraded)
+		return FALSE
+	welding_protection = !welding_protection
+
+	visor_vars_to_toggle = welding_protection ? VISOR_FLASHPROTECT | VISOR_TINT : initial(visor_vars_to_toggle)
+	toggle_vision_effects()
+	// We also need to make sure the user has their vision modified. We already checked that there was a user, so this is safe.
+	handle_sight_updating(user)
+	return TRUE
+
+/// Proc handling changing the flash protection and the tint of the goggles.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_vision_effects()
+	if(welding_protection)
+		if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
+			flash_protect = up ? FLASH_PROTECTION_NONE : FLASH_PROTECTION_WELDER
+	else
+		flash_protect = FLASH_PROTECTION_NONE
+	tint = flash_protect
+
+/// Proc handling to update the sight of the user, while forcing an update_tint() call every time, due to how the welding protection toggle works.
+/obj/item/clothing/glasses/welding/goldengoggles/proc/handle_sight_updating(mob/user)
+	if(user && (user.get_item_by_slot(ITEM_SLOT_HEAD) == src || user.get_item_by_slot(ITEM_SLOT_EYES) == src))
+		user.update_sight()
+		if(iscarbon(user))
+			var/mob/living/carbon/carbon_user = user
+			carbon_user.update_tint()
+			carbon_user.head_update(src, forced = TRUE)
+
+/obj/item/clothing/glasses/welding/goldengoggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
+	if(!is_welding_toggle)
+		return ..()
+	else
+		toggle_shutters(user)
+
+/// Action button for toggling the welding shutters (aka, welding protection) on or off.
+/datum/action/item_action/toggle_steampunk_goggles_welding_protection
+	name = "Toggle Welding Shutters"
+
+/// We need to do a bit of code duplication here to ensure that we do the right kind of ui_action_click(), while keeping it modular.
+/datum/action/item_action/toggle_steampunk_goggles_welding_protection/Trigger()
+	if(!IsAvailable())
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
+		return FALSE
+	if(!target || !istype(target, /obj/item/clothing/glasses/welding/goldengoggles))
+		return FALSE
+
+	var/obj/item/clothing/glasses/welding/goldengoggles/goggles = target
+	goggles.ui_action_click(owner, src, is_welding_toggle = TRUE)
+	return TRUE
+
+// End of the code for GoldenAlpharex's donator item :^)
+
+//Donation reward for MyGuy49
+/obj/item/clothing/suit/cloak/ashencloak
+	name = "Ashen Wastewalker Cloak"
+	desc = "A cloak of advanced make. Clearly beyond what ashwalkers are capable of, it was probably pulled from a downed vessel or something. It seems to have been reinforced with goliath hide and watcher sinew, and the hood has been torn off."
+	icon_state = "ashencloak"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	body_parts_covered = CHEST|LEGS|ARMS
+	mutant_variants = NONE
+
+/obj/item/clothing/head/nanotrasen_representative/hubert
+	name = "CC Ensign's cap"
+	desc = "A tailor made peaked cap, denoting the rank of Ensign."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "CCofficerhat"
+
+/obj/item/clothing/suit/armor/vest/nanotrasen_representative/hubert
+	name = "CC Ensign's armoured vest"
+	desc = "A tailor made Ensign's armoured vest, providing the same protection - but in a more stylish fashion."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "CCvest"
+
+/obj/item/clothing/under/rank/nanotrasen_representative/hubert
+	name = "CC Ensign's uniform"
+	desc = "A tailor-made Ensign's uniform, various medals and chains hang down from it."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "CCofficer"

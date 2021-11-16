@@ -6,7 +6,6 @@
 	roundend_category = "traitors"
 	antagpanel_category = "Malf AI"
 	job_rank = ROLE_MALF
-	antag_hud_type = ANTAG_HUD_TRAITOR
 	antag_hud_name = "traitor"
 	var/employer = "The Syndicate"
 	var/give_objectives = TRUE
@@ -20,6 +19,12 @@
 	owner.special_role = job_rank
 	if(give_objectives)
 		forge_ai_objectives()
+	// SKYRAT EDIT START - Moving voice changing to Malf only
+#ifdef AI_VOX
+	var/mob/living/silicon/ai/malf_ai = owner.current
+	malf_ai.vox_voices += VOX_MIL
+#endif
+	// SKYRAT EDIT END
 
 	add_law_zero()
 	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/malf.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
@@ -32,6 +37,12 @@
 		var/mob/living/silicon/ai/malf_ai = owner.current
 		malf_ai.set_zeroth_law("")
 		malf_ai.remove_malf_abilities()
+		// SKYRAT EDIT START - Moving voice changing to Malf only
+#ifdef AI_VOX
+		malf_ai.vox_voices -= VOX_MIL
+		malf_ai.vox_type = VOX_NORMAL
+#endif
+		// SKYRAT EDIT END
 		QDEL_NULL(malf_ai.malf_picker)
 
 	if(!silent && owner.current)
@@ -100,7 +111,6 @@
 	. = ..()
 
 	var/mob/living/silicon/ai/datum_owner = mob_override || owner.current
-	add_antag_hud(antag_hud_type, antag_hud_name, datum_owner)
 
 	if(istype(datum_owner))
 		datum_owner.hack_software = TRUE
@@ -112,7 +122,6 @@
 	. = ..()
 
 	var/mob/living/silicon/ai/datum_owner = mob_override || owner.current
-	remove_antag_hud(antag_hud_type, datum_owner)
 
 	if(istype(datum_owner))
 		datum_owner.hack_software = FALSE

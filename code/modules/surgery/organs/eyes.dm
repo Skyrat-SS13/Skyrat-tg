@@ -33,11 +33,14 @@
 	var/no_glasses
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
+	var/is_emissive = FALSE //SKYRAT EDIT ADDITION
 
 /obj/item/organ/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(eye_owner))
 		var/mob/living/carbon/human/human_owner = eye_owner
+		if (human_owner.emissive_eyes)
+			is_emissive = TRUE
 		old_eye_color = human_owner.eye_color
 		if(eye_color)
 			human_owner.eye_color = eye_color
@@ -56,6 +59,8 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/affected_human = owner
 		old_eye_color = affected_human.eye_color
+		if (affected_human.emissive_eyes)
+			is_emissive = TRUE
 		if(eye_color)
 			affected_human.eye_color = eye_color
 			affected_human.regenerate_icons()
@@ -83,6 +88,7 @@
 	eye_owner.set_blurriness(0)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
+	is_emissive = FALSE
 
 
 /obj/item/organ/eyes/on_life(delta_time, times_fired)
@@ -253,7 +259,7 @@
 
 /obj/item/organ/eyes/robotic/glow/Initialize(mapload)
 	. = ..()
-	mob_overlay = image('icons/mob/human_face.dmi', "eyes_glow_gs")
+	mob_overlay = image('modular_skyrat/master_files/icons/mob/human_face.dmi', "eyes_glow_gs") //SKURAT EDIT CHANGE
 
 /obj/item/organ/eyes/robotic/glow/Destroy()
 	terminate_effects()
@@ -266,6 +272,7 @@
 /obj/item/organ/eyes/robotic/glow/proc/terminate_effects()
 	if(owner && active)
 		deactivate()
+	remove_mob_overlay() //SKYRAT EDIT ADDITION
 	active = FALSE
 	clear_visuals(TRUE)
 	STOP_PROCESSING(SSfastprocess, src)
@@ -283,7 +290,7 @@
 		activate()
 
 /obj/item/organ/eyes/robotic/glow/proc/prompt_for_controls(mob/user)
-	var/color = input(owner, "Select Color", "Select color", "#ffffff") as color|null
+	var/color = input(owner, "Select Color", "Select color", current_color_string) as color|null //SKYRAT EDIT CHANGE
 	if(!color || QDELETED(src) || QDELETED(user) || QDELETED(owner) || owner != user)
 		return
 	var/range = input(user, "Enter range (0 - [max_light_beam_distance])", "Range Select", 0) as null|num
@@ -296,7 +303,7 @@
 
 /obj/item/organ/eyes/robotic/glow/proc/assume_rgb(newcolor)
 	current_color_string = newcolor
-	eye_color = RGB2EYECOLORSTRING(current_color_string)
+	eye_color = current_color_string //SKYRAT EDIT CHANGE
 	if(!QDELETED(owner) && ishuman(owner)) //Other carbon mobs don't have eye color.
 		owner.dna.species.handle_body(owner)
 
@@ -322,6 +329,12 @@
 /obj/item/organ/eyes/robotic/glow/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE)
 	. = ..()
 	RegisterSignal(eye_owner, COMSIG_ATOM_DIR_CHANGE, .proc/update_visuals)
+	//SKYRAT EDIT ADDITION
+	var/eye_color = owner.client?.prefs?.read_preference(/datum/preference/color/eye_color)
+	mob_overlay.color = eye_color
+	current_color_string = eye_color
+	add_mob_overlay()
+	//SKYRAT EDIT END
 
 /obj/item/organ/eyes/robotic/glow/Remove(mob/living/carbon/eye_owner, special = FALSE)
 	. = ..()
@@ -341,7 +354,7 @@
 	clear_visuals()
 	if(!silent)
 		to_chat(owner, span_warning("Your [src] shuts off!"))
-	remove_mob_overlay()
+	//remove_mob_overlay() SKYRAT EDIT REMOVAL
 
 /obj/item/organ/eyes/robotic/glow/proc/update_visuals(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
