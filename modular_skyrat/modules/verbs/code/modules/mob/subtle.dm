@@ -47,10 +47,9 @@
 	user.log_message(prefix_log_message, LOG_EMOTE)
 
 	subtle_message = html_decode(subtle_message)
-	var/space = (subtle_message[1] in GLOB.no_spacing_emote_characters) ? " " : ""
-	var/static/regex/auto_punctuation_character_blacklist = regex(@#(\.|\,|\!|\?|\'|\"|\~|\||\_|\+|\-)#)
-	if(!(auto_punctuation_character_blacklist.Find(subtle_message[length(subtle_message)])))
-		subtle_message += "."
+
+	var/space = should_have_space_before_emote(subtle_message) ? " " : ""
+	subtle_message = auto_punctuate(subtle_message)
 
 	subtle_message = html_encode(subtle_message)
 
@@ -119,10 +118,13 @@
 
 	user.log_message(subtler_message, LOG_SUBTLER)
 
-	var/space = (subtler_message[1] in GLOB.no_spacing_emote_characters) ? " " : ""
-	var/static/regex/auto_punctuation_character_blacklist = regex(@#(\.|\,|\!|\?|\'|\"|\~|\||\_|\+|\-)#)
-	if(!(auto_punctuation_character_blacklist.Find(subtler_message[length(subtler_message)])))
-		subtler_message += "."
+	subtler_message = html_decode(subtler_message)
+
+	var/space = should_have_space_before_emote(subtler_message) ? " " : ""
+	subtler_message = auto_punctuate(subtler_message)
+
+	subtler_message = html_encode(subtler_message)
+
 	subtler_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i></span>"
 
 	if(emote_type == EMOTE_AUDIBLE)

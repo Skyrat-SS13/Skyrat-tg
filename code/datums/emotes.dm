@@ -107,10 +107,8 @@
 	user.log_message(msg, LOG_EMOTE)
 	// SKYRAT EDIT START - Better emotes - Original: var/dchatmsg = "<b>[user]</b> [msg]"
 	msg = html_decode(msg)
-	var/space = !(msg[1] in GLOB.no_spacing_emote_characters) ? " " : ""
-	var/static/regex/auto_punctuation_character_blacklist = regex(@#(\.|\,|\!|\?|\'|\"|\~|\||\_|\+|\-)#)
-	if(!(auto_punctuation_character_blacklist.Find(msg[length(msg)])))
-		msg += "."
+	var/space = should_have_space_before_emote(msg[1]) ? " " : ""
+	msg = auto_punctuate(msg)
 	msg = html_encode(msg)
 	var/dchatmsg = "<b>[user]</b>[space][msg]"
 	// SKYRAT EDIT END
