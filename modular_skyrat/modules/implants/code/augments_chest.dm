@@ -12,7 +12,7 @@
 /obj/item/organ/cyberimp/chest/scanner/ui_action_click(owner, action)
 	if(istype(action, /datum/action/item_action/organ_action/use))
 		if(organ_flags & ORGAN_FAILING)
-			to_chat(owner, "<span class='warning'>Your health analyzer relays an error! It can't interface with your body in its current condition!</span>")
+			to_chat(owner, span_warning("Your health analyzer relays an error! It can't interface with your body in its current condition!"))
 			return
 		else
 			healthscan(owner, owner, 1, TRUE)

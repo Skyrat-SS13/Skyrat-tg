@@ -24,12 +24,12 @@
 	return TRUE
 
 /datum/surgery_step/fix_robot_brain/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to fix [target]'s posibrain...</span>",
+	display_results(user, target, span_notice("You begin to fix [target]'s posibrain..."),
 		"[user] begins to fix [target]'s posibrain.",
 		"[user] begins to perform surgery on [target]'s posibrain.")
 
 /datum/surgery_step/fix_robot_brain/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You succeed in fixing [target]'s posibrain.</span>",
+	display_results(user, target, span_notice("You succeed in fixing [target]'s posibrain."),
 		"[user] successfully fixes [target]'s posibrain!",
 		"[user] completes the surgery on [target]'s posibrain.")
 	if(target.mind && target.mind.has_antag_datum(/datum/antagonist/brainwashed))
@@ -40,11 +40,11 @@
 
 /datum/surgery_step/fix_robot_brain/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(target.getorganslot(ORGAN_SLOT_BRAIN))
-		display_results(user, target, "<span class='warning'>You screw up, causing more damage!</span>",
-			"<span class='warning'>[user] screws up, causing damage to the circuits!</span>",
+		display_results(user, target, span_warning("You screw up, causing more damage!"),
+			span_warning("[user] screws up, causing damage to the circuits!"),
 			"[user] completes the surgery on [target]'s posibrain.")
 		target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 60)
 		target.gain_trauma_type(BRAIN_TRAUMA_SEVERE, TRAUMA_RESILIENCE_LOBOTOMY)
 	else
-		user.visible_message("<span class='warning'>[user] suddenly notices that the posibrain [user.p_they()] [user.p_were()] working on is not there anymore.", "<span class='warning'>You suddenly notice that the posibrain you were working on is not there anymore.</span>")
+		user.visible_message(span_warning("[user] suddenly notices that the posibrain [user.p_they()] [user.p_were()] working on is not there anymore."), span_warning("You suddenly notice that the posibrain you were working on is not there anymore."))
 	return FALSE

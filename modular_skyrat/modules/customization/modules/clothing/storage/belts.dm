@@ -16,11 +16,11 @@
     if(used_belt.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
         var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location()
         if (!pouch)
-            to_chat(M, "<span class='warning'>[parent] doesn't seem to have a pouch to empty.</span>")
+            to_chat(M, span_warning("[parent] doesn't seem to have a pouch to empty."))
             return FALSE //oopsie!! If we don't have a pouch! You're fucked!
         var/datum/component/storage/STR = pouch.GetComponent(/datum/component/storage)
         if(locked)
-            to_chat(M, "<span class='warning'>[parent] seems to be locked!</span>")
+            to_chat(M, span_warning("[parent] seems to be locked!"))
             return FALSE
         if(dump_destination.storage_contents_dump_act(STR, M))
             playsound(used_belt, "rustle", 50, TRUE, -5)
@@ -42,13 +42,13 @@
 		add_fingerprint(user)
 		playsound(src, 'sound/items/unsheath.ogg', 50, TRUE, -5)
 		if(!user.put_in_hands(drawn_item))
-			to_chat(user, "<span class='notice'>You fumble for [drawn_item] and it falls on the floor.</span>")
+			to_chat(user, span_notice("You fumble for [drawn_item] and it falls on the floor."))
 			update_appearance()
 			return
-		user.visible_message("<span class='notice'>[user] takes [drawn_item] out of [src].</span>", "<span class='notice'>You take [drawn_item] out of [src].</span>")
+		user.visible_message(span_notice("[user] takes [drawn_item] out of [src]."), span_notice("You take [drawn_item] out of [src]."))
 		update_appearance()
 	else
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, span_warning("[src] is empty!"))
 	. = ..()
 
 /obj/item/storage/belt/crusader/update_icon(updates)
@@ -62,9 +62,9 @@
 
 /obj/item/storage/belt/crusader/examine(mob/user)
 	. = ..()
-	.+= "<span class='notice'>Ctrl-click it to easily open its inventory.</span>"
+	.+= span_notice("Ctrl-click it to easily open its inventory.")
 	if(contents.len == 2)	//If there's no sword/rod in the sheath slot it doesnt display the alt-click instruction
-		. += "<span class='notice'>Alt-click it to quickly draw the blade.</span>"
+		. += span_notice("Alt-click it to quickly draw the blade.")
 		return
 
 /obj/item/storage/belt/crusader/ComponentInitialize()
@@ -109,7 +109,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
 	name = "storage pouch"
-	desc = "<span class='notice'>Click on this to open your belt's inventory!</span>"
+	desc = span_notice("Click on this to open your belt's inventory!")
 	icon_state = "storage_pouch_icon"
 	worn_icon_state = "no name"	//Intentionally sets the worn icon to an error
 	w_class = WEIGHT_CLASS_BULKY //Still cant put it in your bags, its technically a belt

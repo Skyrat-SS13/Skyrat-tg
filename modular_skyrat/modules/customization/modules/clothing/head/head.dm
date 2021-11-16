@@ -343,10 +343,10 @@
 		return
 	if(goggles)
 		icon_state = "gblast_helmet"
-		to_chat(user, "<span class='notice'>You put all your effort into pulling the goggles up.</span>")
+		to_chat(user, span_notice("You put all your effort into pulling the goggles up."))
 	else
 		icon_state = "gblast_helmetv"
-		to_chat(user, "<span class='notice'>You focus all your willpower to put the goggles down on your eyes.</span>")
+		to_chat(user, span_notice("You focus all your willpower to put the goggles down on your eyes."))
 	goggles = !goggles
 	if(user)
 		user.head_update(src, forced = 1)

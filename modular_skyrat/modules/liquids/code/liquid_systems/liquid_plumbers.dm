@@ -24,9 +24,9 @@
 
 /obj/machinery/plumbing/liquid_input_pump/attack_hand(mob/user)
 	if(!anchored)
-		to_chat(user, "<span class='warning'>[src] needs to be anchored first!</span>")
+		to_chat(user, span_warning("[src] needs to be anchored first!"))
 		return
-	to_chat(user, "<span class='notice'>You turn [src] [turned_on ? "off" : "on"].</span>")
+	to_chat(user, span_notice("You turn [src] [turned_on ? "off" : "on"]."))
 	turned_on = !turned_on
 
 /obj/machinery/plumbing/liquid_input_pump/CtrlClick(mob/living/user)
@@ -42,8 +42,8 @@
 
 /obj/machinery/plumbing/liquid_input_pump/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's currently [turned_on ? "ON" : "OFF"].</span>"
-	. += "<span class='notice'>It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)</span>"
+	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
+	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)")
 
 /obj/machinery/plumbing/liquid_input_pump/Initialize(mapload, bolt)
 	. = ..()
@@ -118,9 +118,9 @@
 
 /obj/machinery/plumbing/liquid_output_pump/attack_hand(mob/user)
 	if(!anchored)
-		to_chat(user, "<span class='warning'>[src] needs to be anchored first!</span>")
+		to_chat(user, span_warning("[src] needs to be anchored first!"))
 		return
-	to_chat(user, "<span class='notice'>You turn [src] [turned_on ? "off" : "on"].</span>")
+	to_chat(user, span_notice("You turn [src] [turned_on ? "off" : "on"]."))
 	turned_on = !turned_on
 
 /obj/machinery/plumbing/liquid_output_pump/CtrlClick(mob/living/user)
@@ -136,8 +136,8 @@
 
 /obj/machinery/plumbing/liquid_output_pump/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's currently [turned_on ? "ON" : "OFF"].</span>"
-	. += "<span class='notice'>It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)</span>"
+	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
+	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)")
 
 /obj/machinery/plumbing/liquid_output_pump/proc/can_pump()
 	if(!turned_on || !anchored || panel_open || !isturf(loc) || reagents.total_volume == 0)
