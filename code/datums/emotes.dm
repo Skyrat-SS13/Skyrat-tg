@@ -108,7 +108,6 @@
 	// SKYRAT EDIT START - Better emotes - Original: var/dchatmsg = "<b>[user]</b> [msg]"
 	msg = html_decode(msg)
 	var/space = should_have_space_before_emote(msg[1]) ? " " : ""
-	msg = auto_punctuate(msg)
 	msg = html_encode(msg)
 	var/dchatmsg = "<b>[user]</b>[space][msg]"
 	// SKYRAT EDIT END

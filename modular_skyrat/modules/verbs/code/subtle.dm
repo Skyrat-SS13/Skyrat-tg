@@ -47,10 +47,7 @@
 	user.log_message(prefix_log_message, LOG_EMOTE)
 
 	subtle_message = html_decode(subtle_message)
-
 	var/space = should_have_space_before_emote(subtle_message) ? " " : ""
-	subtle_message = auto_punctuate(subtle_message)
-
 	subtle_message = html_encode(subtle_message)
 
 	subtle_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i></span>"
@@ -119,10 +116,7 @@
 	user.log_message(subtler_message, LOG_SUBTLER)
 
 	subtler_message = html_decode(subtler_message)
-
 	var/space = should_have_space_before_emote(subtler_message) ? " " : ""
-	subtler_message = auto_punctuate(subtler_message)
-
 	subtler_message = html_encode(subtler_message)
 
 	subtler_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i></span>"
