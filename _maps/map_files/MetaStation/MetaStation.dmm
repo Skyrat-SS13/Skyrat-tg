@@ -6540,6 +6540,14 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/wood,
 /area/maintenance/port/aft)
+"bmX" = (
+/obj/machinery/camera{
+	c_tag = "Xenobiology Lab - Pen #2";
+	dir = 9;
+	network = list("ss13","rd","xeno")
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "bng" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -13905,6 +13913,18 @@
 	},
 /turf/open/floor/iron,
 /area/science/misc_lab)
+"cXn" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/camera{
+	c_tag = "Xenobiology Lab - Central South";
+	dir = 9;
+	network = list("ss13","rd","xeno")
+	},
+/obj/machinery/status_display/ai/directional/north,
+/turf/open/floor/iron/white,
+/area/science/xenobiology)
 "cXC" = (
 /obj/structure/sign/warning/securearea,
 /turf/closed/wall/r_wall,
@@ -17136,6 +17156,45 @@
 /obj/machinery/holopad,
 /turf/open/floor/wood,
 /area/service/bar)
+"eat" = (
+/obj/machinery/camera{
+	c_tag = "Warden's Office";
+	dir = 10
+	},
+/obj/structure/table,
+/obj/machinery/button/door{
+	desc = "Controls the shutters over the cell windows.";
+	id = "Secure Gate";
+	name = "Cell Window Control";
+	pixel_x = -6;
+	pixel_y = 7;
+	req_access_txt = "63";
+	specialfunctions = 4
+	},
+/obj/machinery/button/door{
+	desc = "Controls the shutters over the brig windows.";
+	id = "briglockdown";
+	name = "Brig Lockdown Control";
+	pixel_x = 6;
+	pixel_y = 7;
+	req_access_txt = "63"
+	},
+/obj/machinery/button/door{
+	desc = "Controls the blast doors in front of the prison wing.";
+	id = "Prison Gate";
+	name = "Prison Wing Lockdown";
+	pixel_y = -3;
+	req_access_txt = "2"
+	},
+/obj/item/key/security,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/security/warden)
 "eau" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 8
@@ -18880,6 +18939,25 @@
 /obj/structure/chair/stool/directional/west,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
+"eDF" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/machinery/camera{
+	c_tag = "Engineering - Foyer - Starboard";
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet/directional/north,
+/turf/open/floor/iron,
+/area/engineering/break_room)
 "eDY" = (
 /obj/item/beacon,
 /obj/effect/turf_decal/stripes/line{
@@ -18984,18 +19062,6 @@
 	},
 /turf/open/floor/iron,
 /area/command/heads_quarters/ce)
-"eFN" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/camera{
-	c_tag = "Xenobiology Lab - Central South";
-	dir = 6;
-	network = list("ss13","rd","xeno")
-	},
-/obj/machinery/status_display/ai/directional/north,
-/turf/open/floor/iron/white,
-/area/science/xenobiology)
 "eFQ" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 8
@@ -20228,25 +20294,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"fbG" = (
-/obj/machinery/vending/cigarette,
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 1
-	},
-/obj/machinery/camera{
-	c_tag = "Engineering - Foyer - Starboard";
-	dir = 6
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/obj/structure/extinguisher_cabinet/directional/north,
-/turf/open/floor/iron,
-/area/engineering/break_room)
 "fbI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -30953,6 +31000,15 @@
 /obj/item/clothing/suit/caution,
 /turf/open/floor/plating,
 /area/maintenance/starboard/secondary)
+"iUd" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 8
+	},
+/obj/machinery/airalarm/mixingchamber{
+	pixel_y = -24
+	},
+/turf/open/floor/iron,
+/area/science/mixing/chamber)
 "iUC" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 4
@@ -31841,45 +31897,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/science/research)
-"joJ" = (
-/obj/machinery/camera{
-	c_tag = "Warden's Office";
-	dir = 5
-	},
-/obj/structure/table,
-/obj/machinery/button/door{
-	desc = "Controls the shutters over the cell windows.";
-	id = "Secure Gate";
-	name = "Cell Window Control";
-	pixel_x = -6;
-	pixel_y = 7;
-	req_access_txt = "63";
-	specialfunctions = 4
-	},
-/obj/machinery/button/door{
-	desc = "Controls the shutters over the brig windows.";
-	id = "briglockdown";
-	name = "Brig Lockdown Control";
-	pixel_x = 6;
-	pixel_y = 7;
-	req_access_txt = "63"
-	},
-/obj/machinery/button/door{
-	desc = "Controls the blast doors in front of the prison wing.";
-	id = "Prison Gate";
-	name = "Prison Wing Lockdown";
-	pixel_y = -3;
-	req_access_txt = "2"
-	},
-/obj/item/key/security,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
-/turf/open/floor/iron,
-/area/security/warden)
 "joX" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -33512,15 +33529,6 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /turf/open/floor/iron/dark/telecomms,
 /area/tcommsat/server)
-"jTS" = (
-/obj/effect/turf_decal/stripes/white/line{
-	dir = 8
-	},
-/obj/machinery/airalarm/mixingchamber{
-	pixel_y = -24
-	},
-/turf/open/floor/iron,
-/area/science/mixing/chamber)
 "jUt" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -35042,6 +35050,18 @@
 /obj/item/lighter,
 /turf/open/floor/wood,
 /area/commons/dorms)
+"kxn" = (
+/obj/machinery/airalarm/server{
+	dir = 8;
+	pixel_x = -22
+	},
+/obj/machinery/light/small/directional/west,
+/obj/machinery/camera/directional/west{
+	c_tag = "Telecomms - Server Room - Aft-Port";
+	network = list("ss13","tcomms")
+	},
+/turf/open/floor/iron/dark/telecomms,
+/area/tcommsat/server)
 "kxo" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -42595,18 +42615,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/engineering/main)
-"ngJ" = (
-/obj/machinery/airalarm/server{
-	dir = 8;
-	pixel_x = -22
-	},
-/obj/machinery/light/small/directional/west,
-/obj/machinery/camera/directional/west{
-	c_tag = "Telecomms - Server Room - Aft-Port";
-	network = list("ss13","tcomms")
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/tcommsat/server)
 "ngK" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/ywflowers,
@@ -43544,14 +43552,6 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron/white,
 /area/medical/virology)
-"nxE" = (
-/obj/machinery/camera{
-	c_tag = "Xenobiology Lab - Pen #8";
-	dir = 5;
-	network = list("ss13","rd","xeno")
-	},
-/turf/open/floor/engine,
-/area/science/xenobiology)
 "nxX" = (
 /turf/closed/wall/r_wall,
 /area/command/heads_quarters/hop)
@@ -50422,14 +50422,6 @@
 	},
 /turf/open/floor/iron,
 /area/hallway/primary/fore)
-"pUY" = (
-/obj/machinery/camera{
-	c_tag = "Xenobiology Lab - Pen #2";
-	dir = 6;
-	network = list("ss13","rd","xeno")
-	},
-/turf/open/floor/engine,
-/area/science/xenobiology)
 "pVa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -64755,6 +64747,14 @@
 	dir = 1
 	},
 /area/engineering/main)
+"vfU" = (
+/obj/machinery/camera{
+	c_tag = "Xenobiology Lab - Pen #8";
+	dir = 10;
+	network = list("ss13","rd","xeno")
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "vge" = (
 /obj/machinery/flasher/portable,
 /obj/machinery/light/small/directional/east,
@@ -100148,7 +100148,7 @@ uRX
 adY
 oNN
 vRZ
-joJ
+eat
 aFR
 whs
 adY
@@ -104597,7 +104597,7 @@ mWI
 cyK
 czD
 njs
-jTS
+iUd
 xzt
 xzt
 wQA
@@ -116620,7 +116620,7 @@ pQr
 apc
 lLs
 atm
-fbG
+eDF
 cRR
 qaa
 dCK
@@ -116678,7 +116678,7 @@ oxn
 hhx
 wzC
 qMG
-nxE
+vfU
 tfi
 cSn
 qKh
@@ -118466,7 +118466,7 @@ aaa
 rhT
 gbO
 dlV
-pUY
+bmX
 hjf
 nRQ
 uzW
@@ -118476,7 +118476,7 @@ qKh
 qKh
 qKh
 cSd
-eFN
+cXn
 pud
 cPX
 kOu
@@ -127431,7 +127431,7 @@ bGd
 bGd
 bJm
 bNX
-ngJ
+kxn
 bOc
 gfU
 aaa
