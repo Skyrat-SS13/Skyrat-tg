@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 
 	var/result = start_unequip_mob(item, source, user, POCKET_STRIP_DELAY)
 
-	if (!result && !HAS_TRAIT(user, TRAIT_STICKY_FINGERS)) //SKYRAT EDIT ADDITION original if (!result)
+	if (!(result || HAS_TRAIT(user, TRAIT_STICKY_FINGERS))) //SKYRAT EDIT ADDITION original if (!result)
 		warn_owner(source)
 
 	return result

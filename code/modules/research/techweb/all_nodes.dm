@@ -931,6 +931,7 @@
 		"holopad",
 		//SKYRAT EDIT - ADDITION MEDIGUNS
 		"gownmedicell",
+		"bedmedicell",
 		//SKYRAT EDIT END
 		"vendatray",
 	)
