@@ -179,7 +179,7 @@
 	icon_prefix = "bone_spear"
 	name = "bone spear"
 	desc = "A haphazardly-constructed yet still deadly weapon. The pinnacle of modern technology."
-	force = 8 //SKYRAT EDIT; Original force = 12
+	force = 12
 	throwforce = 22
 	reach = 2 //SKYRAT EDIT
 	armour_penetration = 15
@@ -204,4 +204,3 @@
 		force -= faction_bonus_force
 
 ///SKYRAT EDIT ADDITION END - Slight antimob spear buff
-
