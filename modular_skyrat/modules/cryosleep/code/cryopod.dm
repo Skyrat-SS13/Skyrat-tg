@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 /obj/machinery/computer/cryopod
 	name = "cryogenic oversight console"
 	desc = "An interface between crew and the cryogenic storage oversight systems."
-	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: 'icons/obj/machines/cryopod.dmi'
+	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cellconsole_1"
 	icon_keyboard = null
 	// circuit = /obj/item/circuitboard/cryopodcontrol
@@ -25,9 +25,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	// Used for logging people entering cryosleep and important items they are carrying.
 	var/list/frozen_crew = list()
-// Skyrat Edit Addition - Cryostorage stores items.
-	var/list/frozen_item = list()
-// Skyrat Edit End
 
 	var/storage_type = "crewmembers"
 	var/storage_name = "Cryogenic Oversight Control"
@@ -62,29 +59,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/list/data = list()
 	data["frozen_crew"] = frozen_crew
 
-// Skyrat Edit Addition - Cryostorage stores items.
-	var/list/ref_list = list()
-	var/list/ref_name = list()
-
-	for(var/obj/item/item in frozen_item)
-		var/ref = REF(item)
-		ref_list += ref
-		ref_name[ref] = item.name
-
-	data["ref_list"] = ref_list
-	data["ref_name"] = ref_name
-
-	// Check Access for item dropping.
-	var/ref_allw = FALSE
-	if(isliving(user))
-		var/mob/living/living_user = user
-		var/obj/item/card/id/id = living_user.get_idcard()
-		if(id)
-			if((ACCESS_HEADS in id.access) || (ACCESS_ARMORY in id.access))
-				ref_allw = TRUE
-	data["ref_allw"] = ref_allw
-// Skyrat Edit End
-
 	var/obj/item/card/id/id_card
 	var/datum/bank_account/current_user
 	if(isliving(user))
@@ -97,33 +71,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	return data
 
-// Skyrat Edit Addition - Cryostorage stores items.
-/obj/machinery/computer/cryopod/ui_act(action, list/params)
-	. = ..()
-	if(.)
-		return
-	switch(action)
-		if("item_get")
-			var/item_get = params["item_get"]
-			var/obj/item/item = locate(item_get)
-			if(item in frozen_item)
-				item.forceMove(drop_location())
-				frozen_item.Remove(item_get, item)
-				visible_message("[src] dispenses \the [item].")
-				message_admins("[item] was retrieved from cryostorage at [ADMIN_COORDJMP(src)]")
-			else
-				CRASH("Invalid REF# for ui_act. Not inside internal list!")
-			return TRUE
-
-		else
-			CRASH("Illegal action for ui_act: '[action]'")
-// Skyrat Edit End
-
 // Cryopods themselves.
 /obj/machinery/cryopod
 	name = "cryogenic freezer"
 	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
-	icon = 'icons/obj/machines/cryopod.dmi'
+	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
 	density = TRUE
 	anchored = TRUE
@@ -317,17 +269,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			continue
 		if (issilicon(mob_occupant) && istype(item_content, /obj/item/mmi))
 			continue
-// Skyrat Edit Addition - Cryostorage stores items.
-// Original is just the else statement.
-		if(control_computer)
-			if(istype(item_content, /obj/item/pda))
-				var/obj/item/pda/pda = item_content
-				pda.toff = TRUE
-			item_content.dropped(mob_occupant)
-			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
-			control_computer.frozen_item += item_content
-		else mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
-// Skyrat Edit End
+		mob_occupant.transferItemToLoc(item_content, drop_location(), force = TRUE, silent = TRUE)
 
 	handle_objectives()
 	QDEL_NULL(occupant)
