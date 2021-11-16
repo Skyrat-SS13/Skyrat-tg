@@ -102,13 +102,13 @@
 	if(pcooldown > world.time)
 		return
 	pcooldown = world.time + pcooldown_time
-	var/mob/living/carbon/human/H = quirk_holder
-	if(H && istype(H))
-		if(H.stat == CONSCIOUS)
+	var/mob/living/carbon/human/user = quirk_holder
+	if(user && istype(user))
+		if(user.stat == CONSCIOUS)
 			if(prob(20))
-				H.emote("laugh")
-				addtimer(CALLBACK(H, /mob/proc/emote, "laugh"), 5 SECONDS)
-				addtimer(CALLBACK(H, /mob/proc/emote, "laugh"), 10 SECONDS)
+				user.emote("laugh")
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 5 SECONDS)
+				addtimer(CALLBACK(user, /mob/proc/emote, "laugh"), 10 SECONDS)
 
 /datum/quirk/feline_aspect
 	name = "Feline Traits"
