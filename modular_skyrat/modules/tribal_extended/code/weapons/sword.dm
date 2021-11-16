@@ -18,6 +18,8 @@
 	block_chance = 0
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 100, "acid" = 50)
 
+///SKYRAT EDIT ADDITION BEGIN - Slight funny utility sword buff
 /obj/item/claymore/bone/melee_attack_chain(mob/user, atom/target, params)
 	. = ..()
 	user.changeNext_move(CLICK_CD_MELEE * 0.8)
+///SKYRAT EDIT ADDITION END - Slight funny utility sword buff
