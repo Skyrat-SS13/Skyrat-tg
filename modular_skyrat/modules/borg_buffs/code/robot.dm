@@ -121,6 +121,7 @@
 	name = "Cyborg Inducer"
 	desc = "A tool for inductively charging internal power cells using the battery of a cyborg"
 	powertransfer = 250
+	var/power_safety_threshold = 1000
 
 
 
@@ -147,7 +148,7 @@
 	if(istype(target_atom, /obj/item/clothing/suit/space))
 		to_chat(user, span_alert("Error unable to interface with device."))
 		return FALSE
-	if(cell.charge <= 1000 ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
+	if(cell.charge <= power_safety_threshold ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
 		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
 		return
 	if(istype(target_atom, /obj))
@@ -160,7 +161,7 @@
 			return TRUE
 		user.visible_message(span_notice("[user] starts recharging [target_atom] with [src]."), span_notice("You start recharging [target_atom] with [src]."))
 		while(target_cell.charge < target_cell.maxcharge)
-			if(do_after(user, 1 SECONDS, target = user) && cell.charge)
+			if(do_after(user, 1 SECONDS, target = user) && cell.charge > (power_safety_threshold + powertransfer)
 				done_any = TRUE
 				induce(target_cell, coefficient)
 				do_sparks(1, FALSE, target_atom)
