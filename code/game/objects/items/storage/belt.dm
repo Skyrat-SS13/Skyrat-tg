@@ -185,6 +185,7 @@
 		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
 		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
 		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
+		/obj/item/hypospray/mkii, //SKYRAT EDIT HYPOSPRAYS
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
 		/obj/item/bonesetter,
