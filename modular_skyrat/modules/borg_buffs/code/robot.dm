@@ -150,6 +150,9 @@ obj/item/inducer/cyborg
 	if(istype(A, /obj/item/clothing/suit/space))
 		to_chat(user, span_alert("Error unable to interface with device."))
 		return FALSE
+	if(cell.charge <= 1000 ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
+		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
+		return
 	if(istype(A, /obj))
 		O = A
 	if(C)
