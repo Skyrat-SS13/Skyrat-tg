@@ -122,9 +122,9 @@
 	subtler_message = "<span class='emote'><b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i></span>"
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message_subtler(message=subtler_message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list, separation = space)
+		user.audible_message_subtler(message = subtler_message, hearing_distance = 1, ignored_mobs = GLOB.dead_mob_list, separation = space)
 	else
-		user.visible_message(message=subtler_message,self_message=subtler_message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list, separation = space)
+		user.visible_message(message = subtler_message, self_message = subtler_message, vision_distance = 1, ignored_mobs = GLOB.dead_mob_list, separation = space)
 
 ///////////////// VERB CODE
 /mob/living/proc/subtle_keybind()
