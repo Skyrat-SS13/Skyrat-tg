@@ -28,7 +28,7 @@
 /obj/item/melee/energy/sword/ignis/transform_messages(mob/living/user, supress_message_text)
 	playsound(user, 'modular_skyrat/modules/ERT_Factions/FTU/sound/ignis_toggle.ogg', 35, TRUE)  //changed it from 50% volume to 35% because deafness
 	if(!supress_message_text)
-		to_chat(user, "<span class='notice'>[src] [active ? "is now active":"can now be concealed"].</span>")
+		to_chat(user, span_notice("[src] [active ? "is now active":"can now be concealed"]."))
 */
 
 ///////40x32 R37 PULSE RIFLE

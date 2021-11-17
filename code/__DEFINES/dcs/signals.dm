@@ -67,6 +67,9 @@
 ///from SSsecurity_level when the security level changes : (new_level)
 #define COMSIG_SECURITY_LEVEL_CHANGED "security_level_changed"
 
+///from SSshuttle when the supply shuttle starts spawning orders : ()
+#define COMSIG_SUPPLY_SHUTTLE_BUY "supply_shuttle_buy"
+
 //////////////////////////////////////////////////////////////////
 
 // /datum signals
@@ -942,6 +945,15 @@
 	///used to interrupt insertion
 	#define COMPONENT_CLOSET_INSERT_INTERRUPT (1<<0)
 
+///From open: (forced)
+#define COMSIG_CLOSET_PRE_OPEN "closet_pre_open"
+	#define BLOCK_OPEN (1<<0)
+///From open: (forced)
+#define COMSIG_CLOSET_POST_OPEN "closet_post_open"
+
+///a deliver_first element closet was successfully delivered
+#define COMSIG_CLOSET_DELIVERED "crate_delivered"
+
 ///Eigenstasium
 ///From base of [/datum/controller/subsystem/eigenstates/proc/use_eigenlinked_atom]: (var/target)
 #define COMSIG_EIGENSTATE_ACTIVATE "eigenstate_activate"
@@ -1172,6 +1184,29 @@
 #define COMSIG_SEED_ON_GROW "plant_on_grow"
 ///called when a seed is planted in a tray (obj/machinery/hydroponics)
 #define COMSIG_SEED_ON_PLANTED "plant_on_plant"
+
+//Hydro tray
+///from base of /obj/machinery/hydroponics/set_seed() : (obj/item/new_seed)
+#define COMSIG_HYDROTRAY_SET_SEED "hydrotray_set_seed"
+///from base of /obj/machinery/hydroponics/set_self_sustaining() : (new_value)
+#define COMSIG_HYDROTRAY_SET_SELFSUSTAINING "hydrotray_set_selfsustaining"
+///from base of /obj/machinery/hydroponics/set_weedlevel() : (new_value)
+#define COMSIG_HYDROTRAY_SET_WEEDLEVEL "hydrotray_set_weedlevel"
+///from base of /obj/machinery/hydroponics/set_pestlevel() : (new_value)
+#define COMSIG_HYDROTRAY_SET_PESTLEVEL "hydrotray_set_pestlevel"
+///from base of /obj/machinery/hydroponics/set_waterlevel() : (new_value)
+#define COMSIG_HYDROTRAY_SET_WATERLEVEL "hydrotray_set_waterlevel"
+///from base of /obj/machinery/hydroponics/set_plant_health() : (new_value)
+#define COMSIG_HYDROTRAY_SET_PLANT_HEALTH "hydrotray_set_plant_health"
+///from base of /obj/machinery/hydroponics/set_toxic() : (new_value)
+#define COMSIG_HYDROTRAY_SET_TOXIC "hydrotray_set_toxic"
+///from base of /obj/machinery/hydroponics/set_plant_status() : (new_value)
+#define COMSIG_HYDROTRAY_SET_PLANT_STATUS "hydrotray_set_plant_status"
+///from base of /obj/machinery/hydroponics/update_tray() : (mob/user, product_count)
+#define COMSIG_HYDROTRAY_ON_HARVEST "hydrotray_on_harvest"
+///from base of /obj/machinery/hydroponics/plantdies()
+#define COMSIG_HYDROTRAY_PLANT_DEATH "hydrotray_plant_death"
+
 
 //Gibs
 
@@ -1572,3 +1607,10 @@
 
 /// Called when a techweb design is removed (datum/design/removed_design, custom)
 #define COMSIG_TECHWEB_REMOVE_DESIGN "techweb_remove_design"
+
+// Antagonist signals
+/// Called on the mind when an antagonist is being gained, after the antagonist list has updated (datum/antagonist/antagonist)
+#define COMSIG_ANTAGONIST_GAINED "antagonist_gained"
+
+/// Called on the mind when an antagonist is being removed, after the antagonist list has updated (datum/antagonist/antagonist)
+#define COMSIG_ANTAGONIST_REMOVED "antagonist_removed"

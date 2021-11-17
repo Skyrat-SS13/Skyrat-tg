@@ -163,7 +163,7 @@
 		H.ckey = user.ckey
 
 	//Greet!
-	to_chat(H, "<span class='big'>You are the [job_name]</span>")
-	to_chat(H, "<span class='bold'>[flavor_text]</span>")
+	to_chat(H, span_big("You are the [job_name]"))
+	to_chat(H, span_bold("[flavor_text]"))
 	if(disappear_after_spawn)
 		qdel(src)

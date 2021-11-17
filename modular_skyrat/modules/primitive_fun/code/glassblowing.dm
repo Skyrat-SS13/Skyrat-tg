@@ -8,8 +8,8 @@
 	skill_name = "Glass-Blowing Master"
 	skill_description = "Master the ability to use glass within glassblowing."
 	skill_icon = "certificate"
-	activate_message = "<span class='notice'>The faults within the glass are now to be seen.</span>"
-	deactivate_message = "<span class='notice'>Glass becomes more obscured.</span>"
+	activate_message = span_notice("The faults within the glass are now to be seen.")
+	deactivate_message = span_notice("Glass becomes more obscured.")
 
 /obj/item/glassblowing
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
