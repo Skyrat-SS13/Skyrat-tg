@@ -38,7 +38,7 @@
 	aimed_gun = gun
 
 	source.face_atom(target)
-	source.visible_message("<span class='danger'>[source.name] aims at [target.name] with the [aimed_gun.name]!</span>")
+	source.visible_message(span_danger("[source.name] aims at [target.name] with the [aimed_gun.name]!"))
 
 	was_running = (source.m_intent == MOVE_INTENT_RUN)
 	if(was_running)
@@ -82,7 +82,7 @@
 		return
 	if(!allow_use && CanReact())
 		source.log_message("[source] shot [target] because they attacked/disarmed/pulled", LOG_ATTACK)
-		to_chat(source, "<span class='warning'>You pull the trigger instinctively to [target.name] actions!</span>")
+		to_chat(source, span_warning("You pull the trigger instinctively to [target.name] actions!"))
 		INVOKE_ASYNC(src, .proc/ShootTarget)
 
 /datum/gunpoint/proc/LockOn()
@@ -93,11 +93,11 @@
 		locked = TRUE
 		log_combat(target, source, "locked onto with aiming")
 		playsound(get_turf(source), 'modular_skyrat/modules/gunpoint/sound/targeton.ogg', 50,1)
-		to_chat(source, "<span class='notice'><b>You lock onto [target.name]!</b></span>")
-		target.visible_message("<span class='warning'><b>[source.name] holds [target.name] at gunpoint with the [aimed_gun.name]!</b></span>", "<span class='userdanger'>[source.name] holds you at gunpoint with the [aimed_gun.name]!</span>")
+		to_chat(source, span_notice("<b>You lock onto [target.name]!</b>"))
+		target.visible_message(span_warning("<b>[source.name] holds [target.name] at gunpoint with the [aimed_gun.name]!</b>"), span_userdanger("[source.name] holds you at gunpoint with the [aimed_gun.name]!"))
 		if(target.gunpointed.len == 1)//First case
-			to_chat(target, "<span class='danger'>You'll <b>get shot</b> if you <b>use radio</b>, <b>move</b> or <b>interact with items</b>!</span>")
-			to_chat(target, "<span class='notice'>You can however take items out, toss harmless items or drop them.</span>")
+			to_chat(target, span_danger("You'll <b>get shot</b> if you <b>use radio</b>, <b>move</b> or <b>interact with items</b>!"))
+			to_chat(target, span_notice("You can however take items out, toss harmless items or drop them."))
 		var/list/choice_list = ConstructChoiceList()
 		gunpoint_gui = show_radial_menu_gunpoint(source, target , choice_list, select_proc = CALLBACK(src, .proc/GunpointGuiReact, source), radius = 42)
 		if(target.gp_effect.icon_state != "locked")
@@ -132,7 +132,7 @@
 	source.gunpointing = null
 	if(locked)
 		QDEL_NULL(gunpoint_gui)
-		target.visible_message("<span class='notice'>[source.name] no longer holds [target.name] at gunpoint.</span>", "<span class='notice'><b>[source.name] no longer holds you at gunpoint.</b></span>")
+		target.visible_message(span_notice("[source.name] no longer holds [target.name] at gunpoint."), span_notice("<b>[source.name] no longer holds you at gunpoint.</b>"))
 	source = null
 	target = null
 	aimed_gun = null
@@ -159,7 +159,7 @@
 	if(!allow_radio && CanReact())
 		if(direct)
 			source.log_message("[source] shot [target] because they spoke on radio", LOG_ATTACK)
-			to_chat(source, "<span class='warning'>You pull the trigger instinctively as [target.name] speaks on the radio!</span>")
+			to_chat(source, span_warning("You pull the trigger instinctively as [target.name] speaks on the radio!"))
 			INVOKE_ASYNC(src, .proc/ShootTarget)
 
 /datum/gunpoint/proc/MovedReact(datum/datum_source, atom/moved, direction, forced)
@@ -184,7 +184,7 @@
 		return
 	if(!allow_use && CanReact())
 		source.log_message("[source] shot [target] because they used an item", LOG_ATTACK)
-		to_chat(source, "<span class='warning'>You pull the trigger instinctively as [target.name] uses an item!</span>")
+		to_chat(source, span_warning("You pull the trigger instinctively as [target.name] uses an item!"))
 		ShootTarget()
 
 /datum/gunpoint/proc/SourceMoved(datum/datum_source)
@@ -214,16 +214,16 @@
 						safe = FALSE
 						break
 				if(safe)
-					to_chat(target, "<span class='notice'>[source.name] signals you can <b>use radio</b>.</span>")
+					to_chat(target, span_notice("[source.name] signals you can <b>use radio</b>."))
 				else
-					to_chat(target, "<span class='danger'>[source.name] signals you can use radio, however other people still don't</span>")
+					to_chat(target, span_danger("[source.name] signals you can use radio, however other people still don't"))
 			else
 				var/forbid_counts = 0
 				for(var/datum/gunpoint/gp in target.gunpointed)
 					if(gp.allow_radio == FALSE)
 						forbid_counts += 1
 				if(forbid_counts == 1) //Only first one warns the victim
-					to_chat(target, "<span class='danger'>[source.name] signals you can't <b>use radio</b>.</span>")
+					to_chat(target, span_danger("[source.name] signals you can't <b>use radio</b>."))
 		if("use")
 			allow_use = !allow_use
 			if(allow_use)
@@ -233,16 +233,16 @@
 						safe = FALSE
 						break
 				if(safe)
-					to_chat(target, "<span class='notice'>[source.name] signals you can <b>interact with items</b>.</span>")
+					to_chat(target, span_notice("[source.name] signals you can <b>interact with items</b>."))
 				else
-					to_chat(target, "<span class='danger'>[source.name] signals you can interact with items, however other people still don't</span>")
+					to_chat(target, span_danger("[source.name] signals you can interact with items, however other people still don't"))
 			else
 				var/forbid_counts = 0
 				for(var/datum/gunpoint/gp in target.gunpointed)
 					if(gp.allow_use == FALSE)
 						forbid_counts += 1
 				if(forbid_counts == 1) //Only first one warns the victim
-					to_chat(target, "<span class='danger'>[source.name] signals you can't <b>interact with items</b>.</span>")
+					to_chat(target, span_danger("[source.name] signals you can't <b>interact with items</b>."))
 		if("move")
 			allow_move = !allow_move
 			if(allow_move)
@@ -252,16 +252,16 @@
 						safe = FALSE
 						break
 				if(safe)
-					to_chat(target, "<span class='notice'>[source.name] signals you can <b>move</b>.</span>")
+					to_chat(target, span_notice("[source.name] signals you can <b>move</b>."))
 				else
-					to_chat(target, "<span class='danger'>[source.name] signals you can move, however other people still don't</span>")
+					to_chat(target, span_danger("[source.name] signals you can move, however other people still don't"))
 			else
 				var/forbid_counts = 0
 				for(var/datum/gunpoint/gp in target.gunpointed)
 					if(gp.allow_move == FALSE)
 						forbid_counts += 1
 				if(forbid_counts == 1) //Only first one warns the victim
-					to_chat(target, "<span class='danger'>[source.name] signals you can't <b>move</b>.</span>")
+					to_chat(target, span_danger("[source.name] signals you can't <b>move</b>."))
 	var/list/new_choices = ConstructChoiceList()
 	gunpoint_gui.entry_animation = FALSE
 	gunpoint_gui.change_choices(new_choices,FALSE)

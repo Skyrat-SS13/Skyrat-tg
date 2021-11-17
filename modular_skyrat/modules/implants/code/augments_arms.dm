@@ -30,7 +30,7 @@
 
 /obj/item/organ/cyberimp/arm/armblade/emag_act()
 	for(var/datum/weakref/created_item in items_list)
-	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated energy arm blade! You madman!</span>")
+	to_chat(usr, span_notice("You unlock [src]'s integrated energy arm blade! You madman!"))
 	items_list += WEAKREF(new /obj/item/melee/implantarmblade/energy(src))
 	return TRUE
 
@@ -59,7 +59,7 @@
 
 /obj/item/organ/cyberimp/arm/janitor/emag_act()
 	for(var/datum/weakref/created_item in items_list)
-	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated deluxe cleaning supplies!</span>")
+	to_chat(usr, span_notice("You unlock [src]'s integrated deluxe cleaning supplies!"))
 	items_list += WEAKREF(new /obj/item/soap/syndie(src)) //We add not replace.
 	items_list += WEAKREF(new /obj/item/reagent_containers/spray/cyborg_lube(src))
 	return TRUE
@@ -71,6 +71,6 @@
 
 /obj/item/organ/cyberimp/arm/lighter/emag_act()
 	for(var/datum/weakref/created_item in items_list)
-	to_chat(usr, "<span class='notice'>You unlock [src]'s integrated Zippo lighter! Finally, classy smoking!</span>")
+	to_chat(usr, span_notice("You unlock [src]'s integrated Zippo lighter! Finally, classy smoking!"))
 	items_list += WEAKREF(new /obj/item/lighter(src)) //Now you can choose between bad and worse!
 	return TRUE

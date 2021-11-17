@@ -10,7 +10,7 @@
 	circuit = /obj/item/circuitboard/machine/stasissleeper
 	idle_power_usage = 40
 	active_power_usage = 340
-	var/enter_message = "<span class='notice'><b>You feel cool air surround you. You go numb as your senses turn inward.<b></span>"
+	var/enter_message = span_notice("<b>You feel cool air surround you. You go numb as your senses turn inward.<b>")
 	var/last_stasis_sound = FALSE
 	fair_market_price = 10
 	payment_department = ACCOUNT_MED
@@ -20,9 +20,9 @@
 
 /obj/machinery/stasissleeper/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click to [state_open ? "close" : "open"] the machine.</span>"
-	. += "<span class='notice'>A light blinking on the side indicates that it is [occupant ? "occupied" : "vacant"].</span>"
-	. += "<span class='notice'>It has a screen on the side displaying the vitals of the occupant. Interact to read it.</span>"
+	. += span_notice("Alt-click to [state_open ? "close" : "open"] the machine.")
+	. += span_notice("A light blinking on the side indicates that it is [occupant ? "occupied" : "vacant"].")
+	. += span_notice("It has a screen on the side displaying the vitals of the occupant. Interact to read it.")
 
 /obj/machinery/stasissleeper/open_machine()
 	if(!state_open && !panel_open)
@@ -58,9 +58,9 @@
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	if(!panel_open)
-		user.visible_message("<span class='notice'>\The [src] [state_open ? "hisses as it seals shut." : "hisses as it swings open."].</span>", \
-						"<span class='notice'>You [state_open ? "close" : "open"] \the [src].</span>", \
-						"<span class='hear'>You hear a nearby machine [state_open ? "seal shut." : "swing open."].</span>")
+		user.visible_message(span_notice("\The [src] [state_open ? "hisses as it seals shut." : "hisses as it swings open."]."), \
+						span_notice("You [state_open ? "close" : "open"] \the [src]."), \
+						span_hear("You hear a nearby machine [state_open ? "seal shut." : "swing open."]."))
 	if(state_open)
 		close_machine()
 	else
@@ -72,8 +72,8 @@
 	. = ..()
 
 /obj/machinery/stasissleeper/container_resist_act(mob/living/user)
-	visible_message("<span class='notice'>[occupant] emerges from [src]!</span>",
-		"<span class='notice'>You climb out of [src]!</span>")
+	visible_message(span_notice("[occupant] emerges from [src]!"),
+		span_notice("You climb out of [src]!"))
 	open_machine()
 	if(IS_IN_STASIS(user))
 		thaw_them(user)
@@ -122,10 +122,10 @@
 	if(.)
 		return
 	if(occupant)
-		to_chat(user, "<span class='warning'>[src] is currently occupied!</span>")
+		to_chat(user, span_warning("[src] is currently occupied!"))
 		return
 	if(state_open)
-		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!</span>")
+		to_chat(user, span_warning("[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!"))
 		return
 	default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I)
 
@@ -145,28 +145,28 @@
 	. = !(state_open || panel_open || (flags_1 & NODECONSTRUCT_1)) && I.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		I.play_tool_sound(src, 50)
-		visible_message("<span class='notice'>[usr] pries open [src].</span>", "<span class='notice'>You pry open [src].</span>")
+		visible_message(span_notice("[usr] pries open [src]."), span_notice("You pry open [src]."))
 		open_machine()
 
 /obj/machinery/stasissleeper/attack_hand(mob/user)
 	if(occupant)
 		if(occupant == user)
-			to_chat(user, "<span class='notice'>You read the vitals readout on the inside of the stasis unit.</span>")
+			to_chat(user, span_notice("You read the vitals readout on the inside of the stasis unit."))
 		else
-			to_chat(user, "<span class='notice'>You read the vitals readout on the side of the stasis unit.</span>")
+			to_chat(user, span_notice("You read the vitals readout on the side of the stasis unit."))
 		healthscan(user, occupant, SCANNER_VERBOSE, TRUE)
 	else
-		to_chat(user, "<span class='warning'>The vitals readout is blank, the stasis unit is unoccupied!</span>")
+		to_chat(user, span_warning("The vitals readout is blank, the stasis unit is unoccupied!"))
 
 /obj/machinery/stasissleeper/attack_hand_secondary(mob/user)
 	if(occupant)
 		if(occupant == user)
-			to_chat(user, "<span class='notice'>You read the bloodstream readout on the inside of the stasis unit.</span>")
+			to_chat(user, span_notice("You read the bloodstream readout on the inside of the stasis unit."))
 		else
-			to_chat(user, "<span class='notice'>You read the bloodstream readout on the side of the stasis unit.</span>")
+			to_chat(user, span_notice("You read the bloodstream readout on the side of the stasis unit."))
 		chemscan(user, occupant)
 	else
-		to_chat(user, "<span class='warning'>The bloodstream readout is blank, the stasis unit is unoccupied!</span>")
+		to_chat(user, span_warning("The bloodstream readout is blank, the stasis unit is unoccupied!"))
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/stasissleeper/attack_ai(mob/user)

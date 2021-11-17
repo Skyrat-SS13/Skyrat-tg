@@ -80,7 +80,7 @@
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
 /mob/living/carbon/proc/KnockToFloor(silent = TRUE, ignore_canknockdown = FALSE, knockdown_amt = 1)
 	if(!silent && body_position != LYING_DOWN)
-		to_chat(src, "<span class='warning'>You are knocked to the floor!</span>")
+		to_chat(src, span_warning("You are knocked to the floor!"))
 	Knockdown(knockdown_amt, ignore_canknockdown)
 
 /mob/living/proc/StaminaKnockdown(stamina_damage, disarm, brief_stun, hardstun, ignore_canknockdown = FALSE, paralyze_amount, knockdown_amt = 1)
@@ -124,12 +124,12 @@
 					var/time_doing = 4 SECONDS
 					if(target.stat != CONSCIOUS)
 						time_doing = 2 SECONDS
-						target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head tight and slams it down!</span>", ignored_mobs=user)
-						to_chat(user, "<span class='danger'>You grasp [target.name]'s head and slam it down!</span>")
+						target.visible_message(span_danger("[user.name] holds [target.name]'s head tight and slams it down!"), ignored_mobs=user)
+						to_chat(user, span_danger("You grasp [target.name]'s head and slam it down!"))
 					else
-						target.visible_message("<span class='danger'>[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!</span>", \
-							"<span class='userdanger'>You struggle as [user.name] holds your head and tries to overpower you!</span>", ignored_mobs=user)
-						to_chat(user, "<span class='danger'>You grasp [target.name]'s head and try to overpower [target.p_them()]...</span>")
+						target.visible_message(span_danger("[user.name] holds [target.name]'s head and tries to overpower [target.p_them()]!"), \
+							span_userdanger("'>You struggle as [user.name] holds your head and tries to overpower you!"), ignored_mobs=user)
+						to_chat(user, span_danger("You grasp [target.name]'s head and try to overpower [target.p_them()]..."))
 					user.changeNext_move(time_doing)
 					if(do_mob(user, target, time_doing))
 						var/armor_block = target.run_armor_check(affecting, MELEE)
@@ -137,9 +137,9 @@
 						if(armor_block < HEADSMASH_BLOCK_ARMOR)
 							head_knock = TRUE
 
-						target.visible_message("<span class='danger'>[user.name] violently slams [target.name]'s head into the floor!</span>", \
-							"<span class='userdanger'>[user.name] slams your head against the floor!</span>", ignored_mobs=user)
-						to_chat(user, "<span class='danger'>You slam [target.name] head against the floor!</span>")
+						target.visible_message(span_danger("[user.name] violently slams [target.name]'s head into the floor!"), \
+							span_userdanger("'>[user.name] slams your head against the floor!"), ignored_mobs=user)
+						to_chat(user, span_danger("You slam [target.name] head against the floor!"))
 
 						//Check to see if our head is protected by at least 20 melee armor
 						if(head_knock)
@@ -158,9 +158,9 @@
 				//Suplex!
 				. = TRUE
 				user.changeNext_move(3 SECONDS)
-				target.visible_message("<span class='danger'>[user.name] holds [target.name] tight and starts lifting [target.p_them()] up!</span>", \
-						"<span class='userdanger'>[user.name] holds you tight and lifts you up!</span>", ignored_mobs=user)
-				to_chat(user, "<span class='danger'>You hold [target.name] tight and lift [target.p_them()] up...</span>")
+				target.visible_message(span_danger("[user.name] holds [target.name] tight and starts lifting [target.p_them()] up!"), \
+						span_userdanger("'>[user.name] holds you tight and lifts you up!"), ignored_mobs=user)
+				to_chat(user, span_danger("You hold [target.name] tight and lift [target.p_them()] up..."))
 				if(do_mob(user, target, 3 SECONDS))
 					var/move_dir = get_dir(target, user)
 					var/moved_turf = get_turf(target)
@@ -169,9 +169,9 @@
 						if(IS_OPAQUE_TURF(next_turf))
 							break
 						moved_turf = next_turf
-					target.visible_message("<span class='danger'>[user.name] suplexes [target.name] down to the ground!</span>", \
-						"<span class='userdanger'>[user.name] suplexes you!</span>", ignored_mobs=user)
-					to_chat(user, "<span class='danger'>You suplex [target.name]!</span>")
+					target.visible_message(span_danger("[user.name] suplexes [target.name] down to the ground!"), \
+						span_userdanger("'>[user.name] suplexes you!"), ignored_mobs=user)
+					to_chat(user, span_danger("You suplex [target.name]!"))
 					user.StaminaKnockdown(30, TRUE, TRUE)
 					user.SpinAnimation(7,1)
 					target.SpinAnimation(7,1)
@@ -187,13 +187,13 @@
 				//Dislocation
 				. = TRUE
 				user.changeNext_move(4 SECONDS)
-				target.visible_message("<span class='danger'>[user.name] twists [target.name]'s [affecting.name] violently!</span>", \
-						"<span class='userdanger'>[user.name] twists your [affecting.name] violently!</span>", ignored_mobs=user)
-				to_chat(user, "<span class='danger'>You start twisting [target.name]'s [affecting.name] violently!</span>")
+				target.visible_message(span_danger("[user.name] twists [target.name]'s [affecting.name] violently!"), \
+						span_userdanger("'>[user.name] twists your [affecting.name] violently!"), ignored_mobs=user)
+				to_chat(user, span_danger("You start twisting [target.name]'s [affecting.name] violently!"))
 				if(do_mob(user, target, 4 SECONDS))
-					target.visible_message("<span class='danger'>[user.name] dislocates [target.name]'s [affecting.name]!</span>", \
-						"<span class='userdanger'>[user.name] dislocates your [affecting.name]!</span>", ignored_mobs=user)
-					to_chat(user, "<span class='danger'>You dislocate [target.name]'s [affecting.name]!</span>")
+					target.visible_message(span_danger("[user.name] dislocates [target.name]'s [affecting.name]!"), \
+						span_userdanger("'>[user.name] dislocates your [affecting.name]!"), ignored_mobs=user)
+					to_chat(user, span_danger("You dislocate [target.name]'s [affecting.name]!"))
 					affecting.force_wound_upwards(/datum/wound/blunt/moderate)
 					log_combat(user, target, "dislocates", "the [affecting.name]")
 

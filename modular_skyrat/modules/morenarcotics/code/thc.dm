@@ -27,7 +27,7 @@
 
 //shit for effects
 /datum/mood_event/stoned
-	description = "<span class='nicegreen'>You're totally baked right now...</span>\n"
+	description = span_nicegreen("You're totally baked right now...\n")
 	mood_change = 6
 	timeout = 3 MINUTES
 
@@ -52,7 +52,7 @@
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.add_filter("weed_blur", 10, angular_blur_filter(0, 0, 0.45))
 	if(DT_PROB(2.5, delta_time))
-		to_chat(M, "<span class='notice'>[high_message]</span>")
+		to_chat(M, span_notice("[high_message]"))
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "stoned", /datum/mood_event/stoned, name)
 	M.throw_alert("stoned", /atom/movable/screen/alert/stoned)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED

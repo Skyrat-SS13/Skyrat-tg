@@ -14,7 +14,7 @@
 	strip_delay = 40
 
 /obj/item/clothing/gloves/ring/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!</span>")
+	user.visible_message(span_suicide("\[user] is putting the [src] in [user.p_their()] mouth! It looks like [user] is trying to choke on the [src]!"))
 	return OXYLOSS
 
 
@@ -26,7 +26,7 @@
 	worn_icon_state = "dring"
 
 /obj/item/clothing/gloves/ring/diamond/attack_self(mob/user)
-	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
+	user.visible_message(span_warning("\The [user] gets down on one knee, presenting \the [src]."),span_warning("You get down on one knee, presenting \the [src]."))
 
 /obj/item/clothing/gloves/ring/silver
 	name = "silver ring"

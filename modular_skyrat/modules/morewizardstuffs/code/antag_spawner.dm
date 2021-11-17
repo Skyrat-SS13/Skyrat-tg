@@ -6,7 +6,7 @@
 
 /obj/item/antag_spawner/impostors/proc/check_usability(mob/user)
 	if(!user.mind.has_antag_datum(/datum/antagonist/wizard, TRUE))
-		to_chat(user, "<span class='danger'>You have no idea on how to use this thing.</span>")
+		to_chat(user, span_danger("You have no idea on how to use this thing."))
 		return FALSE
 	return TRUE
 
@@ -20,7 +20,7 @@
 		var/mob/living/carbon/human/W = M.current
 		var/list/candidates = poll_ghost_candidates("Would you like to be an imposter wizard?", ROLE_WIZARD)
 		if(!candidates)
-			to_chat(user, "<span class='warning'>Unable to duplicate! You can either attack the spellbook with the contract to refund your points, or wait and try again later..</span>")
+			to_chat(user, span_warning("Unable to duplicate! You can either attack the spellbook with the contract to refund your points, or wait and try again later.."))
 			return
 		var/mob/dead/observer/C = pick(candidates)
 
