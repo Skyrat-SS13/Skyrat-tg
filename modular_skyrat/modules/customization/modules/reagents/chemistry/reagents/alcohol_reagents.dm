@@ -22,8 +22,6 @@
 /datum/reagent/consumable/ethanol/synthanol/on_mob_life(mob/living/carbon/C)
 	if(!(C.mob_biotypes & MOB_ROBOTIC))
 		C.reagents.remove_reagent(type, 3.6) //gets removed from organics very fast
-		if(prob(25))
-			C.vomit(5, FALSE, FALSE)
 	return ..()
 
 /datum/reagent/consumable/ethanol/synthanol/expose_mob(mob/living/carbon/C, method=TOUCH, volume)
@@ -296,8 +294,6 @@
 /datum/reagent/consumable/ethanol/coldscales/on_mob_life(mob/living/carbon/M)
 	if(islizard(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/oil_drum
@@ -332,8 +328,6 @@
 /datum/reagent/consumable/ethanol/nord_king/on_mob_life(mob/living/carbon/M)
 	if(ishumanbasic(M) || isdwarf(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/velvet_kiss
@@ -350,8 +344,6 @@
 /datum/reagent/consumable/ethanol/velvet_kiss/on_mob_life(mob/living/carbon/M)
 	if(iszombie(M) || isvampire(M) || isdullahan(M)) //Rare races!
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/abduction_fruit
@@ -368,8 +360,6 @@
 /datum/reagent/consumable/ethanol/abduction_fruit/on_mob_life(mob/living/carbon/M)
 	if(isabductor(M)) //add xenohyrids to this at some point
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/bug_zapper
@@ -386,8 +376,6 @@
 /datum/reagent/consumable/ethanol/bug_zapper/on_mob_life(mob/living/carbon/M)
 	if(isinsect(M) || isflyperson(M) || ismoth(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/mush_crush
@@ -404,8 +392,6 @@
 /datum/reagent/consumable/ethanol/mush_crush/on_mob_life(mob/living/carbon/M)
 	if(ispodperson(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/hollow_bone
@@ -422,8 +408,6 @@
 /datum/reagent/consumable/ethanol/hollow_bone/on_mob_life(mob/living/carbon/M)
 	if(isplasmaman(M) || isskeleton(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/jell_wyrm
@@ -440,9 +424,6 @@
 /datum/reagent/consumable/ethanol/jell_wyrm/on_mob_life(mob/living/carbon/M)
 	if(isjellyperson(M) || isslimeperson(M) || isluminescent(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
-		M.adjustToxLoss(1, 0) //Low tox due to being carp + jell toxins.
 	return ..()
 
 /datum/reagent/consumable/ethanol/laval_spit //Yes Laval
@@ -459,8 +440,6 @@
 /datum/reagent/consumable/ethanol/laval_spit/on_mob_life(mob/living/carbon/M)
 	if(isgolem(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/frisky_kitty
@@ -477,8 +456,6 @@
 /datum/reagent/consumable/ethanol/frisky_kitty/on_mob_life(mob/living/carbon/M)
 	if(ismammal(M) || isfelinid(M))
 		quality = RACE_DRINK
-	else
-		M.adjust_disgust(25)
 	return ..()
 
 /datum/reagent/consumable/ethanol/appletini
