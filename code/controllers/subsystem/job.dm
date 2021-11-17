@@ -805,7 +805,8 @@ SUBSYSTEM_DEF(job)
 	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
 		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
 		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot", \
-		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative")
+		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative", "Space Police", "SolGov", "SolGov Liasion", "Barber", "Orderly", "Science Guard", "Bouncer", "Customs Agent", "Engineering Guard")
+	//SKYRAT EDIT ADDITIONS: Blueshield, NT Rep, Shuttle Pilot, Sec Medic, Sec Sarge, CDO, Vanguard Op, Space Police, SolGov, SolGov Liasion, Barber, Orderly, Science Guard, Bouncer, Customs Agent, Engineering Guard
 
 	centcom_jobs = list("Central Command", "VIP Guest", "Custodian", "Thunderdome Overseer", "CentCom Official", "Medical Officer", "Research Officer", \
 		"Special Ops Officer", "Admiral", "CentCom Commander", "CentCom Bartender", "Private Security Force", "Fleetmaster", "Bridge Officer", "Operations Inspector", \
