@@ -225,22 +225,22 @@
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
 	model_flags = BORG_MODEL_ENGINEERING
 
-/obj/item/borg/upgrade/inducer/action(mob/living/silicon/robot/R, user = usr)
+/obj/item/borg/upgrade/inducer/action(mob/living/silicon/robot/targetRobot, user = usr)
 	. = ..()
 	if(.)
 
-		var/obj/item/inducer/cyborg/Inducer = locate() in R
+		var/obj/item/inducer/cyborg/Inducer = locate() in targetRobot
 		if(Inducer)
 			to_chat(user, span_warning("This unit is already equipped with an inducer module!"))
 			return FALSE
 
-		Inducer = new(R.model)
-		R.model.basic_modules += Inducer
-		R.model.add_module(Inducer, FALSE, TRUE)
+		Inducer = new(targetRobot.model)
+		targetRobot.model.basic_modules += Inducer
+		targetRobot.model.add_module(Inducer, FALSE, TRUE)
 
-/obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/R, user = usr)
+/obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/targetRobot, user = usr)
 	. = ..()
 	if (.)
-		var/obj/item/inducer/cyborg/Inducer = locate() in R.model
+		var/obj/item/inducer/cyborg/Inducer = locate() in targetRobot.model
 		if (Inducer)
-			R.model.remove_module(Inducer, TRUE)
+			targetRobot.model.remove_module(Inducer, TRUE)
