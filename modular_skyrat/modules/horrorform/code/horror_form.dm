@@ -16,14 +16,14 @@
 /datum/action/changeling/horror_form/sting_action(mob/living/carbon/human/user)
 	if(!user || user.notransform)
 		return 0
-	user.visible_message("<span class='warning'>[user] writhes and contorts, their body expanding to inhuman proportions!</span>", \
-						"<span class='danger'>We begin our transformation to our true form!</span>")
+	user.visible_message(span_warning("[user] writhes and contorts, their body expanding to inhuman proportions!"), \
+						span_danger("We begin our transformation to our true form!"))
 	if(!do_after(user, 30, target = user, timed_action_flags = IGNORE_HELD_ITEM))
-		user.visible_message("<span class='warning'>[user]'s transformation abruptly reverts itself!</span>", \
-							"<span class='warning'>Our transformation has been interrupted!</span>")
+		user.visible_message(span_warning("[user]'s transformation abruptly reverts itself!"), \
+							span_warning("Our transformation has been interrupted!"))
 		return 0
-	user.visible_message("<span class='warning'>[user] grows into an abomination and lets out an awful scream!</span>", \
-						"<span class='userdanger'>We cast off our petty shell and enter our true form!</span>")
+	user.visible_message(span_warning("[user] grows into an abomination and lets out an awful scream!"), \
+						span_userdanger("We cast off our petty shell and enter our true form!"))
 	if(user.handcuffed)
 		var/obj/O = user.get_item_by_slot(ITEM_SLOT_HANDCUFFED)
 		if(istype(O))
@@ -40,7 +40,7 @@
 		var/obj/structure/closet/C = user.loc
 		if(istype(C))
 			if(C && user.loc == C)
-				C.visible_message("<span class='warning'>[C]'s door breaks and opens!</span>")
+				C.visible_message(span_warning("[C]'s door breaks and opens!"))
 				new /obj/effect/decal/cleanable/greenglow(C.drop_location())
 				C.welded = FALSE
 				C.locked = FALSE

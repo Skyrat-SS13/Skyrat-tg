@@ -7,12 +7,12 @@
 	if(!traits)
 		return TRUE
 	if(HAS_TRAIT(src, (traits)))
-		to_chat(user, "<span class='boldwarning'>You already know about [traitname].</span>")
+		to_chat(user, span_boldwarning("You already know about [traitname]."))
 		return
 	return FALSE
 
 /obj/item/book/granter/traitsr/on_reading_start(mob/user)
-	to_chat(user, "<span class='notice'>You start reading about [traitname]...</span>")
+	to_chat(user, span_notice("You start reading about [traitname]..."))
 
 /obj/item/book/granter/traitsr/on_reading_finished(mob/user)
 	to_chat(user, "[greet]")
@@ -23,13 +23,13 @@
 /obj/item/book/granter/traitsr/onlearned(mob/user)
 	..()
 	if(oneuse)
-		user.visible_message("<span class='warning'>You rip out the pages of the [src]!</span>")
+		user.visible_message(span_warning("You rip out the pages of the [src]!"))
 
 /obj/item/book/granter/traitsr/ventcrawl_book
 	traits = TRAIT_VENTCRAWLER_ALWAYS
 	name = "Military Contortionist Guide"
 	traitname = "ventcrawling expert"
 	desc = "A special operations handbook for teaching people with at least a basic understanding of infiltration tactics how to most effectively utilize small spaces such as air ducts or pipes."
-	greet = "<span class='boldannounce'>You’ve mastered the art of climbing through air pipes!</span>"
+	greet = span_boldannounce("You’ve mastered the art of climbing through air pipes!")
 	icon_state = "stealthmanual"
 	remarks = list("Have a healthy diet...", "Know when to use vents to your advantage...", "Don't be seen climbing into vents...", "Best paired with close quarters skills...", "Pressure resistant gear recommended...")

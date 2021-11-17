@@ -87,7 +87,7 @@
 	climbable = TRUE
 
 /obj/structure/railing/stone/attackby(obj/item/wrench, mob/living/user, params)
-	to_chat(user, "<span class='notice'>You frown as you realise this wall is in fact made of stone, and cannot be uprooted from the ground and dragged along with a mere wrench.</span>")
+	to_chat(user, span_notice("You frown as you realise this wall is in fact made of stone, and cannot be uprooted from the ground and dragged along with a mere wrench."))
 	return
 
 /obj/structure/railing/stone/left
@@ -122,6 +122,6 @@
 
 /obj/machinery/button/dungeon/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
-		to_chat(user, "<span class='notice'>You prod around the rim of the bricks and try and jam it in. Looks like it isn't coming out this way.</span>")
+		to_chat(user, span_notice("You prod around the rim of the bricks and try and jam it in. Looks like it isn't coming out this way."))
 		return
 // Let's not open the maintenance panel of a stone brick.

@@ -62,16 +62,16 @@
 /obj/item/clothing/neck/human_petcollar/locked/attackby(obj/item/K, mob/user, params)
 	if(istype(K, /obj/item/key/collar))
 		if(lock != FALSE)
-			to_chat(user, "<span class='warning'>With a click the collar unlocks!</span>")
+			to_chat(user, span_warning("With a click the collar unlocks!"))
 			lock = FALSE
 		else
-			to_chat(user, "<span class='warning'>With a click the collar locks!</span>")
+			to_chat(user, span_warning("With a click the collar locks!"))
 			lock = TRUE
 	return
 
 /obj/item/clothing/neck/human_petcollar/locked/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK) && lock != FALSE)
-		to_chat(user, "<span class='warning'>The collar is locked! You'll need unlock the collar before you can take it off!</span>")
+		to_chat(user, span_warning("The collar is locked! You'll need unlock the collar before you can take it off!"))
 		return
 	..()
 

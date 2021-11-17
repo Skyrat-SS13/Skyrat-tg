@@ -61,7 +61,7 @@
 			M.adjustFireLoss(-reac_volume)
 			M.adjustBruteLoss(-reac_volume)
 			if(show_message)
-				to_chat(M, "<span class='notice'>You feel much better...</span>")
+				to_chat(M, span_notice("You feel much better..."))
 	..()
 
 /datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/M)
