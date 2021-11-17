@@ -130,49 +130,49 @@
 	if(istype(W, /obj/item/stock_parts/cell))
 		return
 
-/obj/item/inducer/cyborg/recharge(atom/movable/A, mob/user)
-	if(!iscyborg(user)) //
+/obj/item/inducer/cyborg/recharge(atom/movable/TargetAtom, mob/user)
+	if(!iscyborg(user))
 		return
-	var/mob/living/silicon/robot/borgy = user
-	cell = borgy.cell //
-	if(!isturf(A) && user.loc == A)
+	var/mob/living/silicon/robot/borgUser = user
+	cell = borgUser.cell
+	if(!isturf(TargetAtom) && user.loc == TargetAtom)
 		return FALSE
 	if(recharging)
 		return TRUE
 	else
 		recharging = TRUE
-	var/obj/item/stock_parts/cell/C = A.get_cell()
-	var/obj/O
+	var/obj/item/stock_parts/cell/targetCell = TargetAtom.get_cell()
+	var/obj/targetObject
 	var/coefficient = 1
-	if(istype(A, /obj/item/gun/energy))
+	if(istype(TargetAtom, /obj/item/gun/energy))
 		to_chat(user, span_alert("Error unable to interface with device."))
 		return FALSE
-	if(istype(A, /obj/item/clothing/suit/space))
+	if(istype(TargetAtom, /obj/item/clothing/suit/space))
 		to_chat(user, span_alert("Error unable to interface with device."))
 		return FALSE
 	if(cell.charge <= 1000 ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
 		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
 		return
-	if(istype(A, /obj))
-		O = A
-	if(C)
+	if(istype(TargetAtom, /obj))
+		targetObject = A
+	if(targetCell)
 		var/done_any = FALSE
-		if(C.charge >= C.maxcharge)
-			to_chat(user, span_notice("[A] is fully charged!"))
+		if(targetCell.charge >= targetCell.maxcharge)
+			to_chat(user, span_notice("[targetAtom] is fully charged!"))
 			recharging = FALSE
 			return TRUE
-		user.visible_message(span_notice("[user] starts recharging [A] with [src]."), span_notice("You start recharging [A] with [src]."))
-		while(C.charge < C.maxcharge)
+		user.visible_message(span_notice("[user] starts recharging [targetAtom] with [src]."), span_notice("You start recharging [targetAtom] with [src]."))
+		while(targetCell.charge < targetCell.maxcharge)
 			if(do_after(user, 10, target = user) && cell.charge)
 				done_any = TRUE
-				induce(C, coefficient)
-				do_sparks(1, FALSE, A)
-				if(O)
-					O.update_appearance()
+				induce(targetCell, coefficient)
+				do_sparks(1, FALSE, targetAtom)
+				if(targetObject)
+					targetObject.update_appearance()
 			else
 				break
 		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message(span_notice("[user] recharged [A]!"), span_notice("You recharged [A]!"))
+			user.visible_message(span_notice("[user] recharged [targetAtom]!"), span_notice("You recharged [targetAtom]!"))
 		recharging = FALSE
 		return TRUE
 	recharging = FALSE
