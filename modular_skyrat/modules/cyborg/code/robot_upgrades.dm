@@ -220,7 +220,6 @@
 /obj/item/borg/upgrade/inducer//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "engineering cyborg inducer upgrade"
 	desc = "An inducer device for the engineering cyborg."
-	//icon = 'icons/obj/storage.dmi'
 	icon_state = "cyborg_upgrade3"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
