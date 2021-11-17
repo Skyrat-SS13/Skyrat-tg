@@ -154,25 +154,25 @@
 		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
 		return
 	if(istype(TargetAtom, /obj))
-		targetObject = A
+		targetObject = TargetAtom
 	if(targetCell)
 		var/done_any = FALSE
 		if(targetCell.charge >= targetCell.maxcharge)
-			to_chat(user, span_notice("[targetAtom] is fully charged!"))
+			to_chat(user, span_notice("[TargetAtom] is fully charged!"))
 			recharging = FALSE
 			return TRUE
-		user.visible_message(span_notice("[user] starts recharging [targetAtom] with [src]."), span_notice("You start recharging [targetAtom] with [src]."))
+		user.visible_message(span_notice("[user] starts recharging [TargetAtom] with [src]."), span_notice("You start recharging [TargetAtom] with [src]."))
 		while(targetCell.charge < targetCell.maxcharge)
 			if(do_after(user, 10, target = user) && cell.charge)
 				done_any = TRUE
 				induce(targetCell, coefficient)
-				do_sparks(1, FALSE, targetAtom)
+				do_sparks(1, FALSE, TargetAtom)
 				if(targetObject)
 					targetObject.update_appearance()
 			else
 				break
 		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message(span_notice("[user] recharged [targetAtom]!"), span_notice("You recharged [targetAtom]!"))
+			user.visible_message(span_notice("[user] recharged [TargetAtom]!"), span_notice("You recharged [TargetAtom]!"))
 		recharging = FALSE
 		return TRUE
 	recharging = FALSE
