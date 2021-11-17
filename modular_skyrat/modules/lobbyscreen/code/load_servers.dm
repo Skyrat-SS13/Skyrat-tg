@@ -13,7 +13,7 @@ SUBSYSTEM_DEF(serverswap)
 		return ..()
 
 	if(!fexists("config/skyrat/swap_ips.txt"))
-		to_chat_immediate(world, "<span class='boldwarning'>SERVER SWAP ERROR: swap_ips.txt does not exist, unable to set up server swapping!")
+		to_chat_immediate(world, span_boldwarning("SERVER SWAP ERROR: swap_ips.txt does not exist, unable to set up server swapping!"))
 		return ..()
 
 	var/list/lines = world.file2list("config/skyrat/swap_ips.txt")

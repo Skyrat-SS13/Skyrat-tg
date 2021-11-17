@@ -20,10 +20,10 @@
 
 /obj/item/autosurgeon/bodypart/attack_self(mob/user)//when the object it used...
 	if(!uses)
-		to_chat(user, "<span class='alert'>[src] has already been used. The tools are dull and won't reactivate.</span>")
+		to_chat(user, span_alert("[src] has already been used. The tools are dull and won't reactivate."))
 		return
 	if(!storedbodypart)
-		to_chat(user, "<span class='alert'>[src] currently has no implant stored.</span>")
+		to_chat(user, span_alert("[src] currently has no implant stored."))
 		return
 	if(!ishuman(user))
 		return
@@ -33,13 +33,13 @@
 	var/obj/item/bodypart/oldBP = H.get_bodypart(storedbodypart.body_zone)
 
 	if(oldBP)
-		to_chat(H, "<span class='warning'>The [src] removes your [oldBP.name]!")
+		to_chat(H, span_warning("The [src] removes your [oldBP.name]!"))
 		oldBP.dismember()
 
-	user.visible_message("<span class='notice'>[H] presses a button on [src], and you hear a short mechanical noise.</span>", "<span class='notice'>You feel a sharp sting as [src] plunges into your body.</span>")
+	user.visible_message(span_notice("[H] presses a button on [src], and you hear a short mechanical noise."), span_notice("You feel a sharp sting as [src] plunges into your body."))
 
 	if(!storedbodypart.attach_limb(H))
-		to_chat(H, "<span class='warning'>The [src] fails to attach [storedbodypart]!")
+		to_chat(H, span_warning("The [src] fails to attach [storedbodypart]!"))
 		return
 
 	playsound(get_turf(H), 'sound/weapons/circsawhit.ogg', 50, TRUE)
@@ -53,15 +53,15 @@
 /obj/item/autosurgeon/bodypart/attackby(obj/item/I, mob/user, params)
 	if(istype(I, bodypart_type))
 		if(storedbodypart)
-			to_chat(user, "<span class='alert'>[src] already has an implant stored.</span>")
+			to_chat(user, span_alert("[src] already has an implant stored."))
 			return
 		else if(!uses)
-			to_chat(user, "<span class='alert'>[src] has already been used up.</span>")
+			to_chat(user, span_alert("[src] has already been used up."))
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		storedbodypart = I
-		to_chat(user, "<span class='notice'>You insert the [I] into [src].</span>")
+		to_chat(user, span_notice("You insert the [I] into [src]."))
 	else
 		return ..()
 
@@ -69,14 +69,14 @@
 	if(..())
 		return TRUE
 	if(!storedbodypart)
-		to_chat(user, "<span class='warning'>There's no implant in [src] for you to remove!</span>")
+		to_chat(user, span_warning("There's no implant in [src] for you to remove!"))
 	else
 		var/atom/drop_loc = user.drop_location()
 		for(var/J in src)
 			var/atom/movable/AM = J
 			AM.forceMove(drop_loc)
 
-		to_chat(user, "<span class='notice'>You remove the [storedbodypart] from [src].</span>")
+		to_chat(user, span_notice("You remove the [storedbodypart] from [src]."))
 		I.play_tool_sound(src)
 		storedbodypart = null
 		if(uses != INFINITE)

@@ -186,7 +186,7 @@
 	if(!isliving(user) || !user.CanReach(parent) || user.incapacitated())
 		return FALSE
 	if(locked)
-		to_chat(user, "<span class='warning'>[parent] seems to be locked!</span>")
+		to_chat(user, span_warning("[parent] seems to be locked!"))
 		return
 
 	var/atom/A = parent
@@ -198,7 +198,7 @@
 	remove_from_storage(gun_to_draw, get_turf(user))
 	playsound(parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
 	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
-	user.visible_message("<span class='warning'>[user] draws [gun_to_draw] from [parent]!</span>", "<span class='notice'>You draw [gun_to_draw] from [parent].</span>")
+	user.visible_message(span_warning("[user] draws [gun_to_draw] from [parent]!"), span_notice("You draw [gun_to_draw] from [parent]."))
 
 
 /datum/component/storage/concrete/peacekeeper/mob_item_insertion_feedback(mob/user, mob/M, obj/item/I, override = FALSE)
@@ -212,11 +212,11 @@
 
 	for(var/mob/viewing in viewers(user, null))
 		if(M == viewing)
-			to_chat(usr, "<span class='notice'>You put [I] [insert_preposition]to [parent].</span>")
+			to_chat(usr, span_notice("You put [I] [insert_preposition]to [parent]."))
 		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
+			viewing.show_message(span_notice("[M] puts [I] [insert_preposition]to [parent]."), MSG_VISUAL)
 		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
+			viewing.show_message(span_notice("[M] puts [I] [insert_preposition]to [parent]."), MSG_VISUAL)
 
 /obj/item/storage/belt/security/peacekeeper/ComponentInitialize()
 	. = ..()

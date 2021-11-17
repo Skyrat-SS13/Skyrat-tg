@@ -185,9 +185,19 @@
 	)
 	if(!CONFIG_GET(flag/disable_peaceborg))
 		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
+	/* SKYRAT EDIT: DISABLED SECURITY CYBORG FOR TECHWEB SETUP
 	if(!CONFIG_GET(flag/disable_secborg))
 		model_list["Security"] = /obj/item/robot_model/security
-
+	*/
+	// SKYRAT EDIT ADDITION: Techweb locked cyborg modules
+	for(var/i in SSresearch.science_tech.researched_designs)
+		var/datum/design/cyborg_module/D = SSresearch.techweb_design_by_id(i)
+		if(!istype(D))
+			continue
+		if(D.unlocked_module_name == "Security" && CONFIG_GET(flag/disable_secborg))
+			continue
+		model_list[D.unlocked_module_name] = D.unlocked_module_path
+	// SKYRAT EDIT END
 	// Create radial menu for choosing borg model
 	var/list/model_icons = list()
 	for(var/option in model_list)
