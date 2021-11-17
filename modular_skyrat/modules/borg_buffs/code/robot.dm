@@ -116,3 +116,75 @@
 		tool_behaviour = TOOL_KNIFE
 		to_chat(user, span_notice("You attach the knife bit to [src]."))
 		icon_state = "knife_screw_cyborg"
+
+obj/item/inducer/cyborg
+	name = "Cyborg Inducer"
+	desc = "A tool for inductively charging internal power cells using the battery of a cyborg"
+	powertransfer = 250
+
+
+
+/obj/item/inducer/cyborg/attackby(obj/item/W, mob/user)
+	if(W.tool_behaviour == TOOL_SCREWDRIVER)
+		return
+	if(istype(W, /obj/item/stock_parts/cell))
+		return
+
+/obj/item/inducer/cyborg/recharge(atom/movable/A, mob/user)
+	if(!iscyborg(user)) //
+		return
+	var/mob/living/silicon/robot/borgy = user
+	cell = borgy.cell //
+	if(!isturf(A) && user.loc == A)
+		return FALSE
+	if(recharging)
+		return TRUE
+	else
+		recharging = TRUE
+	var/obj/item/stock_parts/cell/C = A.get_cell()
+	var/obj/O
+	var/coefficient = 1
+	if(istype(A, /obj/item/gun/energy))
+		to_chat(user, span_alert("Error unable to interface with device."))
+		return FALSE
+	if(istype(A, /obj/item/clothing/suit/space))
+		to_chat(user, span_alert("Error unable to interface with device."))
+		return FALSE
+	if(istype(A, /obj))
+		O = A
+	if(C)
+		var/done_any = FALSE
+		if(C.charge >= C.maxcharge)
+			to_chat(user, span_notice("[A] is fully charged!"))
+			recharging = FALSE
+			return TRUE
+		user.visible_message(span_notice("[user] starts recharging [A] with [src]."), span_notice("You start recharging [A] with [src]."))
+		while(C.charge < C.maxcharge)
+			if(do_after(user, 10, target = user) && cell.charge)
+				done_any = TRUE
+				induce(C, coefficient)
+				do_sparks(1, FALSE, A)
+				if(O)
+					O.update_appearance()
+			else
+				break
+		if(done_any) // Only show a message if we succeeded at least once
+			user.visible_message(span_notice("[user] recharged [A]!"), span_notice("You recharged [A]!"))
+		recharging = FALSE
+		return TRUE
+	recharging = FALSE
+
+
+/obj/item/inducer/attack(mob/M, mob/living/user)
+	if(user.combat_mode)
+		return ..()
+
+	if(cantbeused(user))
+		return
+
+	if(recharge(M, user))
+		return
+	return ..()
+
+/obj/item/inducer/cyborg/attack_self(mob/user)
+	return
