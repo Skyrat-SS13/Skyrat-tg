@@ -241,6 +241,6 @@
 /obj/item/borg/upgrade/inducer/deactivate(mob/living/silicon/robot/target_robot, user = usr)
 	. = ..()
 	if (.)
-		var/obj/item/inducer/cyborg/Inducer = locate() in target_robot.model
-		if (Inducer)
-			target_robot.model.remove_module(Inducer, TRUE)
+		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
+		if (inducer)
+			target_robot.model.remove_module(inducer, TRUE)
