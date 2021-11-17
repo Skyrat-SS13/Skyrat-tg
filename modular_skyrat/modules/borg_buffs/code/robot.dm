@@ -178,14 +178,14 @@
 	recharging = FALSE
 
 
-/obj/item/inducer/attack(mob/M, mob/living/user)
+/obj/item/inducer/attack(mob/targetMob, mob/living/user)
 	if(user.combat_mode)
 		return ..()
 
 	if(cantbeused(user))
 		return
 
-	if(recharge(M, user))
+	if(recharge(targetMob, user))
 		return
 	return ..()
 
