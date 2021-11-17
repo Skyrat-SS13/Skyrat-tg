@@ -124,11 +124,8 @@
 
 
 
-/obj/item/inducer/cyborg/attackby(obj/item/Weapon, mob/user)
-	if(Weapon.tool_behaviour == TOOL_SCREWDRIVER)
-		return
-	if(istype(Weapon, /obj/item/stock_parts/cell))
-		return
+/obj/item/inducer/cyborg/attackby(obj/item/weapon, mob/user)
+	return
 
 /obj/item/inducer/cyborg/recharge(atom/movable/target_atom, mob/user)
 	if(!iscyborg(user))
