@@ -214,8 +214,14 @@ SUBSYSTEM_DEF(job)
 	JobDebug("Running FOC, Job: [job], Level: [job_priority_level_to_string(level)]")
 	var/list/candidates = list()
 	for(var/mob/dead/new_player/player in unassigned)
+		if(!player)
+			JobDebug("FOC player no longer exists.")
+			continue
+		if(!player.client)
+			JobDebug("FOC player client no longer exists, Player: [player]")
+			continue
 		// Initial screening check. Does the player even have the job enabled, if they do - Is it at the correct priority level?
-		var/player_job_level = player.client.prefs.job_preferences[job.title]
+		var/player_job_level = player.client?.prefs.job_preferences[job.title]
 		if(isnull(player_job_level))
 			JobDebug("FOC player job not enabled, Player: [player]")
 			continue
@@ -799,7 +805,8 @@ SUBSYSTEM_DEF(job)
 	additional_jobs_with_icons = list("Emergency Response Team Commander", "Security Response Officer", "Engineering Response Officer", "Medical Response Officer", \
 		"Entertainment Response Officer", "Religious Response Officer", "Janitorial Response Officer", "Death Commando", "Security Officer (Engineering)", \
 		"Security Officer (Cargo)", "Security Officer (Medical)", "Security Officer (Science)", "Blueshield", "Nanotrasen Representative", "Shuttle Pilot", \
-		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative")
+		"Security Medic", "Security Sergeant", "Civil Disputes Officer", "Vanguard Operative", "Space Police", "SolGov", "SolGov Liasion", "Barber", "Orderly", "Science Guard", "Bouncer", "Customs Agent", "Engineering Guard")
+	//SKYRAT EDIT ADDITIONS: Blueshield, NT Rep, Shuttle Pilot, Sec Medic, Sec Sarge, CDO, Vanguard Op, Space Police, SolGov, SolGov Liasion, Barber, Orderly, Science Guard, Bouncer, Customs Agent, Engineering Guard
 
 	centcom_jobs = list("Central Command", "VIP Guest", "Custodian", "Thunderdome Overseer", "CentCom Official", "Medical Officer", "Research Officer", \
 		"Special Ops Officer", "Admiral", "CentCom Commander", "CentCom Bartender", "Private Security Force", "Fleetmaster", "Bridge Officer", "Operations Inspector", \

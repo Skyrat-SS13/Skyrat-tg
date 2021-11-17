@@ -20,7 +20,7 @@
 
 /obj/effect/proc_holder/spell/targeted/stimpack/cast(mob/living/user)
 	..()
-	to_chat(user, "<span class='notice'>Time appears to slow as your bodily functions rapidly speed up.</span>")
+	to_chat(user, span_notice("Time appears to slow as your bodily functions rapidly speed up."))
 	user.SetKnockdown(0)
 	user.setStaminaLoss(0)
 	user.set_resting(FALSE)
